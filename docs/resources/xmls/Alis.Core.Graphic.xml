@@ -61,6 +61,4138 @@
             </summary>
             <param name="filePath">The file path</param>
         </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Constructs.GlShader">
+            <summary>
+                The gl shader class
+            </summary>
+            <seealso cref="T:System.IDisposable" />
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShader.#ctor(System.String,Alis.Core.Graphic.OpenGL.Gl.ShaderType)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Graphic.OpenGL.Constructs.GlShader" /> class
+            </summary>
+            <param name="source">The source</param>
+            <param name="type">The type</param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="P:Alis.Core.Graphic.OpenGL.Constructs.GlShader.ShaderId">
+            <summary>
+                Gets or sets the value of the shader id
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.OpenGL.Constructs.GlShader.ShaderType">
+            <summary>
+                Gets or sets the value of the shader type
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.OpenGL.Constructs.GlShader.ShaderLog">
+            <summary>
+                Gets the value of the shader log
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShader.Dispose">
+            <summary>
+                Disposes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShader.Finalize">
+            <summary>
+                /
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShader.Dispose(System.Boolean)">
+            <summary>
+                Disposes the disposing
+            </summary>
+            <param name="disposing">The disposing</param>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram">
+            <summary>
+                The gl shader program class
+            </summary>
+            <seealso cref="T:System.IDisposable" />
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram.DisposeChildren">
+            <summary>
+                Specifies whether this program will dispose of the child
+                vertex/fragment programs when the IDisposable method is called.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram.FragmentShader">
+            <summary>
+                Specifies the fragment shader used in this program.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram.ProgramId">
+            <summary>
+                Specifies the OpenGL shader program ID.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram.shaderParams">
+            <summary>
+                The shader params
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram.VertexShader">
+            <summary>
+                Specifies the vertex shader used in this program.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram.#ctor(Alis.Core.Graphic.OpenGL.Constructs.GlShader,Alis.Core.Graphic.OpenGL.Constructs.GlShader)">
+            <summary>
+                Links a vertex and fragment shader together to create a shader program.
+            </summary>
+            <param name="vertexShader">Specifies the vertex shader.</param>
+            <param name="fragmentShader">Specifies the fragment shader.</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram.#ctor(System.String,System.String)">
+            <summary>
+                Creates two shaders and then links them together to create a shader program.
+            </summary>
+            <param name="vertexShaderSource">Specifies the source code of the vertex shader.</param>
+            <param name="fragmentShaderSource">Specifies the source code of the fragment shader.</param>
+        </member>
+        <member name="P:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram.Item(System.String)">
+            <summary>
+                Queries the shader parameter hashtable to find a matching attribute/uniform.
+            </summary>
+            <param name="name">Specifies the case-sensitive name of the shader attribute/uniform.</param>
+            <returns>The requested attribute/uniform, or null on a failure.</returns>
+        </member>
+        <member name="P:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram.ProgramLog">
+            <summary>
+                Gets the value of the program log
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram.Dispose">
+            <summary>
+                Disposes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram.GetParams">
+            <summary>
+                Parses all of the parameters (attributes/uniforms) from the two attached shaders
+                and then loads their location by passing this shader program into the parameter object.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram.TypeFromAttributeType(Alis.Core.Graphic.OpenGL.Gl.ActiveAttribType)">
+            <summary>
+                Types the from attribute type using the specified type
+            </summary>
+            <param name="type">The type</param>
+            <exception cref="T:System.Exception"></exception>
+            <returns>The type</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram.TypeFromUniformType(Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType)">
+            <summary>
+                Types the from uniform type using the specified type
+            </summary>
+            <param name="type">The type</param>
+            <exception cref="T:System.Exception"></exception>
+            <returns>The type</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram.Use">
+            <summary>
+                Uses this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram.GetUniformLocation(System.String)">
+            <summary>
+                Gets the uniform location using the specified name
+            </summary>
+            <param name="name">The name</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram.GetAttributeLocation(System.String)">
+            <summary>
+                Gets the attribute location using the specified name
+            </summary>
+            <param name="name">The name</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram.Finalize">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram.Dispose(System.Boolean)">
+            <summary>
+                Disposes the disposing
+            </summary>
+            <param name="disposing">The disposing</param>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam">
+            <summary>
+                The gl shader program param class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam.Location">
+            <summary>
+                Specifies the location of the parameter in the OpenGL program.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam.Name">
+            <summary>
+                Specifies the case-sensitive name of the parameter.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam.ParamType">
+            <summary>
+                Specifies the parameter type (either attribute or uniform).
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam.Program">
+            <summary>
+                Specifies the OpenGL program ID.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam.ProgramId">
+            <summary>
+                The program id
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam.Type">
+            <summary>
+                Specifies the C# equivalent of the GLSL data type.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam.#ctor(System.Type,Alis.Core.Graphic.OpenGL.Constructs.ParamType,System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam" /> class
+            </summary>
+            <param name="type">The type</param>
+            <param name="paramType">The param type</param>
+            <param name="name">The name</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam.#ctor(System.Type,Alis.Core.Graphic.OpenGL.Constructs.ParamType,System.String,System.UInt32,System.Int32)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam" /> class
+            </summary>
+            <param name="type">The type</param>
+            <param name="paramType">The param type</param>
+            <param name="name">The name</param>
+            <param name="program">The program</param>
+            <param name="location">The location</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam.GetLocation(Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram)">
+            <summary>
+                Gets the location of the parameter in a compiled OpenGL program.
+            </summary>
+            <param name="program">Specifies the shader program that contains this parameter.</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam.SetValue(System.Boolean)">
+            <summary>
+                Sets the value using the specified param
+            </summary>
+            <param name="param">The param</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam.SetValue(System.Int32)">
+            <summary>
+                Sets the value using the specified param
+            </summary>
+            <param name="param">The param</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam.SetValue(System.Single)">
+            <summary>
+                Sets the value using the specified param
+            </summary>
+            <param name="param">The param</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam.SetValue(System.Numerics.Vector2)">
+            <summary>
+                Sets the value using the specified param
+            </summary>
+            <param name="param">The param</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam.SetValue(System.Numerics.Vector3)">
+            <summary>
+                Sets the value using the specified param
+            </summary>
+            <param name="param">The param</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam.SetValue(System.Numerics.Vector4)">
+            <summary>
+                Sets the value using the specified param
+            </summary>
+            <param name="param">The param</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam.SetValue(System.Numerics.Matrix4x4)">
+            <summary>
+                Sets the value using the specified param
+            </summary>
+            <param name="param">The param</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam.SetValue(System.Single[])">
+            <summary>
+                Sets the value using the specified param
+            </summary>
+            <param name="param">The param</param>
+            <exception cref="T:System.ArgumentException">param was an unexpected length. </exception>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam.EnsureType``1">
+            <summary>
+                Ensures the type
+            </summary>
+            <typeparam name="T">The </typeparam>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Constructs.ParamType">
+            <summary>
+                The param type enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Constructs.ParamType.Uniform">
+            <summary>
+                The uniform param type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Constructs.ParamType.Attribute">
+            <summary>
+                The attribute param type
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl">
+            <summary>
+                The gl class
+            </summary>
+            <summary>
+                The gl class
+            </summary>
+            <summary>
+                the methods here are just convenience wrappers for calling the raw gl* method
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.AttachShader">
+            <summary>
+                The attach shader
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.BindBuffer">
+            <summary>
+                The bind buffer
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.BindSampler">
+            <summary>
+                The bind sampler
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.BindTexture">
+            <summary>
+                The bind texture
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.BindVertexArray">
+            <summary>
+                The bind vertex array
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.BlendEquation">
+            <summary>
+                The blend equation
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.BlendFunc">
+            <summary>
+                The blend func
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.BufferData">
+            <summary>
+                The buffer data
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.Clear">
+            <summary>
+                The clear
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.ClearColor">
+            <summary>
+                The clear color
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.CompileShader">
+            <summary>
+                The compile shader
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.CreateProgram">
+            <summary>
+                The create program
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.CreateShader">
+            <summary>
+                The create shader
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.DeleteBuffers">
+            <summary>
+                The delete buffers
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.DeleteProgram">
+            <summary>
+                The delete program
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.DeleteShader">
+            <summary>
+                The delete shader
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.DeleteTextures">
+            <summary>
+                The delete textures
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.DeleteVertexArrays">
+            <summary>
+                The delete vertex arrays
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.DetachShader">
+            <summary>
+                The detach shader
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.Disable">
+            <summary>
+                The disable
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.DisableVertexAttribArray">
+            <summary>
+                The disable vertex attrib array
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.DrawElementsBaseVertex">
+            <summary>
+                The draw elements base vertex
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.Enable">
+            <summary>
+                The enable
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.EnableVertexAttribArrayDel">
+            <summary>
+                The enable vertex attrib array del
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.GenBuffers">
+            <summary>
+                The gen buffers
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.GenTextures">
+            <summary>
+                The gen textures
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.GenVertexArrays">
+            <summary>
+                The gen vertex arrays
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.GetActiveAttrib">
+            <summary>
+                The get active attrib
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.GetActiveUniform">
+            <summary>
+                The get active uniform
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.GetAttribLocation">
+            <summary>
+                The get attrib location
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.GetProgramInfoLogDel">
+            <summary>
+                The get program info log del
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.GetProgramiv">
+            <summary>
+                The get programiv
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.GetShaderInfoLogDel">
+            <summary>
+                The get shader info log del
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.GetShaderiv">
+            <summary>
+                The get shaderiv
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.GetUniformLocation">
+            <summary>
+                The get uniform location
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.LinkProgram">
+            <summary>
+                The link program
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.PixelStorei">
+            <summary>
+                The pixel storei
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.Scissor">
+            <summary>
+                The scissor
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.ShaderSourceDel">
+            <summary>
+                The shader source del
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.TexImage2D">
+            <summary>
+                The tex image
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.TexParameteri">
+            <summary>
+                The tex parameteri
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.Uniform1F">
+            <summary>
+                The uniform 1f
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.Uniform1I">
+            <summary>
+                The uniform 1i
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.Uniform2F">
+            <summary>
+                The uniform 2f
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.Uniform3F">
+            <summary>
+                The uniform 3f
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.Uniform3Fv">
+            <summary>
+                The uniform 3fv
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.Uniform4F">
+            <summary>
+                The uniform 4f
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.Uniform4Fv">
+            <summary>
+                The uniform 4fv
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.UniformMatrix3FvDel">
+            <summary>
+                The uniform matrix 3fv del
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.UniformMatrix4FvDel">
+            <summary>
+                The uniform matrix 4fv del
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.UseProgram">
+            <summary>
+                The use program
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.VertexAttribPointerDel">
+            <summary>
+                The vertex attrib pointer del
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.Viewport">
+            <summary>
+                The viewport
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl._getString">
+            <summary>
+                The get string
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGenBuffers">
+            <summary>
+                The gen buffers
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glDeleteBuffers">
+            <summary>
+                The delete buffers
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glViewport">
+            <summary>
+                The viewport
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glClearColor">
+            <summary>
+                The clear color
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glClear">
+            <summary>
+                The clear
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glEnable">
+            <summary>
+                The enable
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glDisable">
+            <summary>
+                The disable
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glBlendEquation">
+            <summary>
+                The blend equation
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glBlendFunc">
+            <summary>
+                The blend func
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUseProgram">
+            <summary>
+                The use program
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGetShaderiv">
+            <summary>
+                The get shaderiv
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGetShaderInfoLog">
+            <summary>
+                The get shader info log del
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glCreateShader">
+            <summary>
+                The create shader
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glShaderSource">
+            <summary>
+                The shader source del
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glCompileShader">
+            <summary>
+                The compile shader
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glDeleteShader">
+            <summary>
+                The delete shader
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGetProgramiv">
+            <summary>
+                The get programiv
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGetProgramInfoLog">
+            <summary>
+                The get program info log del
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glCreateProgram">
+            <summary>
+                The create program
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glAttachShader">
+            <summary>
+                The attach shader
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glLinkProgram">
+            <summary>
+                The link program
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGetUniformLocation">
+            <summary>
+                The get uniform location
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGetAttribLocation">
+            <summary>
+                The get attrib location
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glDetachShader">
+            <summary>
+                The detach shader
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glDeleteProgram">
+            <summary>
+                The delete program
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGetActiveAttrib">
+            <summary>
+                The get active attrib
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGetActiveUniform">
+            <summary>
+                The get active uniform
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUniform1F">
+            <summary>
+                The uniform 1f
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUniform2F">
+            <summary>
+                The uniform 2f
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUniform3F">
+            <summary>
+                The uniform 3f
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUniform4F">
+            <summary>
+                The uniform 4f
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUniform1I">
+            <summary>
+                The uniform 1i
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUniform3Fv">
+            <summary>
+                The uniform 3fv
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUniform4Fv">
+            <summary>
+                The uniform 4fv
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUniformMatrix3Fv">
+            <summary>
+                The uniform matrix 3fv del
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUniformMatrix4Fv">
+            <summary>
+                The uniform matrix 4fv del
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glBindSampler">
+            <summary>
+                The bind sampler
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glBindVertexArray">
+            <summary>
+                The bind vertex array
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glBindBuffer">
+            <summary>
+                The bind buffer
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glEnableVertexAttribArray">
+            <summary>
+                The enable vertex attrib array del
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glDisableVertexAttribArray">
+            <summary>
+                The disable vertex attrib array
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glVertexAttribPointer">
+            <summary>
+                The vertex attrib pointer del
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glBindTexture">
+            <summary>
+                The bind texture
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glBufferData">
+            <summary>
+                The buffer data
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glScissor">
+            <summary>
+                The scissor
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glDrawElementsBaseVertex">
+            <summary>
+                The draw elements base vertex
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glDeleteVertexArrays">
+            <summary>
+                The delete vertex arrays
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGenVertexArrays">
+            <summary>
+                The gen vertex arrays
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGenTextures">
+            <summary>
+                The gen textures
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glPixelStorei">
+            <summary>
+                The pixel storei
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glTexImage2D">
+            <summary>
+                The tex image
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glTexParameteri">
+            <summary>
+                The tex parameteri
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glDeleteTextures">
+            <summary>
+                The delete textures
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Gl._``1(System.String)">
+            <summary>
+                S
+            </summary>
+            <param name="command"></param>
+            <typeparam name="T">The </typeparam>
+            <exception cref="T:System.Exception">nogo: {method} from {typeof(T).Name}</exception>
+            <returns>The</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Gl.glGetString(Alis.Core.Graphic.OpenGL.Gl.StringName)">
+            <summary>
+                Gls the get string using the specified pname
+            </summary>
+            <param name="pname">The pname</param>
+            <returns>The string</returns>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.GetString">
+            <summary>
+                The get string
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.ActiveAttribType">
+            <summary>
+                The active attrib type enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveAttribType.Float">
+            <summary>
+                The float active attrib type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveAttribType.FloatVec2">
+            <summary>
+                The float vec active attrib type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveAttribType.FloatVec3">
+            <summary>
+                The float vec active attrib type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveAttribType.FloatVec4">
+            <summary>
+                The float vec active attrib type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveAttribType.FloatMat2">
+            <summary>
+                The float mat active attrib type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveAttribType.FloatMat3">
+            <summary>
+                The float mat active attrib type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveAttribType.FloatMat4">
+            <summary>
+                The float mat active attrib type
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType">
+            <summary>
+                The active uniform type enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.Int">
+            <summary>
+                The int active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.Float">
+            <summary>
+                The float active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.FloatVec2">
+            <summary>
+                The float vec active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.FloatVec3">
+            <summary>
+                The float vec active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.FloatVec4">
+            <summary>
+                The float vec active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.IntVec2">
+            <summary>
+                The int vec active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.IntVec3">
+            <summary>
+                The int vec active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.IntVec4">
+            <summary>
+                The int vec active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.Bool">
+            <summary>
+                The bool active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.BoolVec2">
+            <summary>
+                The bool vec active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.BoolVec3">
+            <summary>
+                The bool vec active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.BoolVec4">
+            <summary>
+                The bool vec active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.FloatMat2">
+            <summary>
+                The float mat active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.FloatMat3">
+            <summary>
+                The float mat active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.FloatMat4">
+            <summary>
+                The float mat active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.Sampler1D">
+            <summary>
+                The sampler active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.Sampler2D">
+            <summary>
+                The sampler active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.Sampler3D">
+            <summary>
+                The sampler active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.SamplerCube">
+            <summary>
+                The sampler cube active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.Sampler1DShadow">
+            <summary>
+                The sampler shadow active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.Sampler2DShadow">
+            <summary>
+                The sampler shadow active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.Sampler2DRect">
+            <summary>
+                The sampler rect active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.Sampler2DRectShadow">
+            <summary>
+                The sampler rect shadow active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.FloatMat2X3">
+            <summary>
+                The float mat 2x active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.FloatMat2X4">
+            <summary>
+                The float mat 2x active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.FloatMat3X2">
+            <summary>
+                The float mat 3x active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.FloatMat3X4">
+            <summary>
+                The float mat 3x active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.FloatMat4X2">
+            <summary>
+                The float mat 4x active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.FloatMat4X3">
+            <summary>
+                The float mat 4x active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.Sampler1DArray">
+            <summary>
+                The sampler array active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.Sampler2DArray">
+            <summary>
+                The sampler array active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.SamplerBuffer">
+            <summary>
+                The sampler buffer active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.Sampler1DArrayShadow">
+            <summary>
+                The sampler array shadow active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.Sampler2DArrayShadow">
+            <summary>
+                The sampler array shadow active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.SamplerCubeShadow">
+            <summary>
+                The sampler cube shadow active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.UnsignedIntVec2">
+            <summary>
+                The unsigned int vec active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.UnsignedIntVec3">
+            <summary>
+                The unsigned int vec active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.UnsignedIntVec4">
+            <summary>
+                The unsigned int vec active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.IntSampler1D">
+            <summary>
+                The int sampler active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.IntSampler2D">
+            <summary>
+                The int sampler active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.IntSampler3D">
+            <summary>
+                The int sampler active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.IntSamplerCube">
+            <summary>
+                The int sampler cube active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.IntSampler2DRect">
+            <summary>
+                The int sampler rect active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.IntSampler1DArray">
+            <summary>
+                The int sampler array active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.IntSampler2DArray">
+            <summary>
+                The int sampler array active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.IntSamplerBuffer">
+            <summary>
+                The int sampler buffer active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.UnsignedIntSampler1D">
+            <summary>
+                The unsigned int sampler active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.UnsignedIntSampler2D">
+            <summary>
+                The unsigned int sampler active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.UnsignedIntSampler3D">
+            <summary>
+                The unsigned int sampler active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.UnsignedIntSamplerCube">
+            <summary>
+                The unsigned int sampler cube active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.UnsignedIntSampler2DRect">
+            <summary>
+                The unsigned int sampler rect active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.UnsignedIntSampler1DArray">
+            <summary>
+                The unsigned int sampler array active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.UnsignedIntSampler2DArray">
+            <summary>
+                The unsigned int sampler array active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.UnsignedIntSamplerBuffer">
+            <summary>
+                The unsigned int sampler buffer active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.Sampler2DMultisample">
+            <summary>
+                The sampler multisample active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.IntSampler2DMultisample">
+            <summary>
+                The int sampler multisample active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.UnsignedIntSampler2DMultisample">
+            <summary>
+                The unsigned int sampler multisample active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.Sampler2DMultisampleArray">
+            <summary>
+                The sampler multisample array active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.IntSampler2DMultisampleArray">
+            <summary>
+                The int sampler multisample array active uniform type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ActiveUniformType.UnsignedIntSampler2DMultisampleArray">
+            <summary>
+                The unsigned int sampler multisample array active uniform type
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.BeginMode">
+            <summary>
+                The begin mode enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BeginMode.Points">
+            <summary>
+                The points begin mode
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BeginMode.Lines">
+            <summary>
+                The lines begin mode
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BeginMode.LineLoop">
+            <summary>
+                The line loop begin mode
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BeginMode.LineStrip">
+            <summary>
+                The line strip begin mode
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BeginMode.Triangles">
+            <summary>
+                The triangles begin mode
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BeginMode.TriangleStrip">
+            <summary>
+                The triangle strip begin mode
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BeginMode.TriangleFan">
+            <summary>
+                The triangle fan begin mode
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BeginMode.LinesAdjacency">
+            <summary>
+                The lines adjacency begin mode
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BeginMode.LineStripAdjacency">
+            <summary>
+                The line strip adjacency begin mode
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BeginMode.TrianglesAdjacency">
+            <summary>
+                The triangles adjacency begin mode
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BeginMode.TriangleStripAdjacency">
+            <summary>
+                The triangle strip adjacency begin mode
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BeginMode.Patches">
+            <summary>
+                The patches begin mode
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BeginMode.Quads">
+            <summary>
+                The quads begin mode
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BeginMode.QuadStrip">
+            <summary>
+                The quad strip begin mode
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.BlendEquationMode">
+            <summary>
+                The blend equation mode enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendEquationMode.FuncAdd">
+            <summary>
+                The func add blend equation mode
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendEquationMode.Min">
+            <summary>
+                The min blend equation mode
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendEquationMode.Max">
+            <summary>
+                The max blend equation mode
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendEquationMode.FuncSubtract">
+            <summary>
+                The func subtract blend equation mode
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendEquationMode.FuncReverseSubtract">
+            <summary>
+                The func reverse subtract blend equation mode
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorDest">
+            <summary>
+                The blending factor dest enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorDest.Zero">
+            <summary>
+                The zero blending factor dest
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorDest.SrcColor">
+            <summary>
+                The src color blending factor dest
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorDest.OneMinusSrcColor">
+            <summary>
+                The one minus src color blending factor dest
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorDest.SrcAlpha">
+            <summary>
+                The src alpha blending factor dest
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorDest.OneMinusSrcAlpha">
+            <summary>
+                The one minus src alpha blending factor dest
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorDest.DstAlpha">
+            <summary>
+                The dst alpha blending factor dest
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorDest.OneMinusDstAlpha">
+            <summary>
+                The one minus dst alpha blending factor dest
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorDest.DstColor">
+            <summary>
+                The dst color blending factor dest
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorDest.OneMinusDstColor">
+            <summary>
+                The one minus dst color blending factor dest
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorDest.ConstantColor">
+            <summary>
+                The constant color blending factor dest
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorDest.ConstantColorExt">
+            <summary>
+                The constant color ext blending factor dest
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorDest.OneMinusConstantColor">
+            <summary>
+                The one minus constant color blending factor dest
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorDest.OneMinusConstantColorExt">
+            <summary>
+                The one minus constant color ext blending factor dest
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorDest.ConstantAlpha">
+            <summary>
+                The constant alpha blending factor dest
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorDest.ConstantAlphaExt">
+            <summary>
+                The constant alpha ext blending factor dest
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorDest.OneMinusConstantAlpha">
+            <summary>
+                The one minus constant alpha blending factor dest
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorDest.OneMinusConstantAlphaExt">
+            <summary>
+                The one minus constant alpha ext blending factor dest
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorDest.One">
+            <summary>
+                The one blending factor dest
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorSrc">
+            <summary>
+                The blending factor src enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorSrc.Zero">
+            <summary>
+                The zero blending factor src
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorSrc.SrcAlpha">
+            <summary>
+                The src alpha blending factor src
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorSrc.OneMinusSrcAlpha">
+            <summary>
+                The one minus src alpha blending factor src
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorSrc.DstAlpha">
+            <summary>
+                The dst alpha blending factor src
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorSrc.OneMinusDstAlpha">
+            <summary>
+                The one minus dst alpha blending factor src
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorSrc.DstColor">
+            <summary>
+                The dst color blending factor src
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorSrc.OneMinusDstColor">
+            <summary>
+                The one minus dst color blending factor src
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorSrc.SrcAlphaSaturate">
+            <summary>
+                The src alpha saturate blending factor src
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorSrc.ConstantColor">
+            <summary>
+                The constant color blending factor src
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorSrc.ConstantColorExt">
+            <summary>
+                The constant color ext blending factor src
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorSrc.OneMinusConstantColor">
+            <summary>
+                The one minus constant color blending factor src
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorSrc.OneMinusConstantColorExt">
+            <summary>
+                The one minus constant color ext blending factor src
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorSrc.ConstantAlpha">
+            <summary>
+                The constant alpha blending factor src
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorSrc.ConstantAlphaExt">
+            <summary>
+                The constant alpha ext blending factor src
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorSrc.OneMinusConstantAlpha">
+            <summary>
+                The one minus constant alpha blending factor src
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorSrc.OneMinusConstantAlphaExt">
+            <summary>
+                The one minus constant alpha ext blending factor src
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BlendingFactorSrc.One">
+            <summary>
+                The one blending factor src
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.BufferTarget">
+            <summary>
+                The buffer target enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferTarget.ArrayBuffer">
+            <summary>
+                The array buffer buffer target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferTarget.ElementArrayBuffer">
+            <summary>
+                The element array buffer buffer target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferTarget.PixelPackBuffer">
+            <summary>
+                The pixel pack buffer buffer target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferTarget.PixelUnpackBuffer">
+            <summary>
+                The pixel unpack buffer buffer target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferTarget.UniformBuffer">
+            <summary>
+                The uniform buffer buffer target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferTarget.TextureBuffer">
+            <summary>
+                The texture buffer buffer target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferTarget.TransformFeedbackBuffer">
+            <summary>
+                The transform feedback buffer buffer target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferTarget.CopyReadBuffer">
+            <summary>
+                The copy read buffer buffer target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferTarget.CopyWriteBuffer">
+            <summary>
+                The copy write buffer buffer target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferTarget.DrawIndirectBuffer">
+            <summary>
+                The draw indirect buffer buffer target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferTarget.AtomicCounterBuffer">
+            <summary>
+                The atomic counter buffer buffer target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferTarget.DispatchIndirectBuffer">
+            <summary>
+                The dispatch indirect buffer buffer target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferTarget.QueryBuffer">
+            <summary>
+                The query buffer buffer target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferTarget.ShaderStorageBuffer">
+            <summary>
+                The shader storage buffer buffer target
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.BufferUsageHint">
+            <summary>
+                The buffer usage hint enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferUsageHint.StreamDraw">
+            <summary>
+                The stream draw buffer usage hint
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferUsageHint.StreamRead">
+            <summary>
+                The stream read buffer usage hint
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferUsageHint.StreamCopy">
+            <summary>
+                The stream copy buffer usage hint
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferUsageHint.StaticDraw">
+            <summary>
+                The static draw buffer usage hint
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferUsageHint.StaticRead">
+            <summary>
+                The static read buffer usage hint
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferUsageHint.StaticCopy">
+            <summary>
+                The static copy buffer usage hint
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferUsageHint.DynamicDraw">
+            <summary>
+                The dynamic draw buffer usage hint
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferUsageHint.DynamicRead">
+            <summary>
+                The dynamic read buffer usage hint
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.BufferUsageHint.DynamicCopy">
+            <summary>
+                The dynamic copy buffer usage hint
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.ClearBufferMask">
+            <summary>
+                The clear buffer mask enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ClearBufferMask.DepthBufferBit">
+            <summary>
+                The depth buffer bit clear buffer mask
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ClearBufferMask.AccumBufferBit">
+            <summary>
+                The accum buffer bit clear buffer mask
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ClearBufferMask.StencilBufferBit">
+            <summary>
+                The stencil buffer bit clear buffer mask
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ClearBufferMask.ColorBufferBit">
+            <summary>
+                The color buffer bit clear buffer mask
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.DrawElementsType">
+            <summary>
+                The draw elements type enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.DrawElementsType.UnsignedByte">
+            <summary>
+                The unsigned byte draw elements type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.DrawElementsType.UnsignedShort">
+            <summary>
+                The unsigned short draw elements type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.DrawElementsType.UnsignedInt">
+            <summary>
+                The unsigned int draw elements type
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.EnableCap">
+            <summary>
+                The enable cap enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.LineSmooth">
+            <summary>
+                The line smooth enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.PolygonSmooth">
+            <summary>
+                The polygon smooth enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.CullFace">
+            <summary>
+                The cull face enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.DepthTest">
+            <summary>
+                The depth test enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.StencilTest">
+            <summary>
+                The stencil test enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Dither">
+            <summary>
+                The dither enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Blend">
+            <summary>
+                The blend enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.IndexLogicOp">
+            <summary>
+                The index logic op enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.ColorLogicOp">
+            <summary>
+                The color logic op enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.ScissorTest">
+            <summary>
+                The scissor test enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.AutoNormal">
+            <summary>
+                The auto normal enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Map1Color4">
+            <summary>
+                The map color enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Map1Index">
+            <summary>
+                The map index enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Map1Normal">
+            <summary>
+                The map normal enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Map1TextureCoord1">
+            <summary>
+                The map texture coord enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Map1TextureCoord2">
+            <summary>
+                The map texture coord enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Map1TextureCoord3">
+            <summary>
+                The map texture coord enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Map1TextureCoord4">
+            <summary>
+                The map texture coord enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Map1Vertex3">
+            <summary>
+                The map vertex enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Map1Vertex4">
+            <summary>
+                The map vertex enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Map2Color4">
+            <summary>
+                The map color enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Map2Index">
+            <summary>
+                The map index enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Map2Normal">
+            <summary>
+                The map normal enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Map2TextureCoord1">
+            <summary>
+                The map texture coord enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Map2TextureCoord2">
+            <summary>
+                The map texture coord enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Map2TextureCoord3">
+            <summary>
+                The map texture coord enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Map2TextureCoord4">
+            <summary>
+                The map texture coord enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Map2Vertex3">
+            <summary>
+                The map vertex enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Map2Vertex4">
+            <summary>
+                The map vertex enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Texture1D">
+            <summary>
+                The texture enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Texture2D">
+            <summary>
+                The texture enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.PolygonOffsetPoint">
+            <summary>
+                The polygon offset point enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.PolygonOffsetLine">
+            <summary>
+                The polygon offset line enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.ClipPlane0">
+            <summary>
+                The clip plane enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.ClipPlane1">
+            <summary>
+                The clip plane enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.ClipPlane2">
+            <summary>
+                The clip plane enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.ClipPlane3">
+            <summary>
+                The clip plane enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.ClipPlane4">
+            <summary>
+                The clip plane enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.ClipPlane5">
+            <summary>
+                The clip plane enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Convolution1D">
+            <summary>
+                The convolution enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Convolution1DExt">
+            <summary>
+                The convolution ext enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Convolution2D">
+            <summary>
+                The convolution enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Convolution2DExt">
+            <summary>
+                The convolution ext enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Separable2D">
+            <summary>
+                The separable enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Separable2DExt">
+            <summary>
+                The separable ext enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Histogram">
+            <summary>
+                The histogram enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.HistogramExt">
+            <summary>
+                The histogram ext enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.MinmaxExt">
+            <summary>
+                The minmax ext enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.PolygonOffsetFill">
+            <summary>
+                The polygon offset fill enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.RescaleNormalExt">
+            <summary>
+                The rescale normal ext enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Texture3DExt">
+            <summary>
+                The texture ext enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.VertexArray">
+            <summary>
+                The vertex array enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.NormalArray">
+            <summary>
+                The normal array enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.ColorArray">
+            <summary>
+                The color array enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.IndexArray">
+            <summary>
+                The index array enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.TextureCoordArray">
+            <summary>
+                The texture coord array enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.EdgeFlagArray">
+            <summary>
+                The edge flag array enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.InterlaceSgix">
+            <summary>
+                The interlace sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Multisample">
+            <summary>
+                The multisample enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.SampleAlphaToCoverage">
+            <summary>
+                The sample alpha to coverage enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.SampleAlphaToMaskSgis">
+            <summary>
+                The sample alpha to mask sgis enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.SampleAlphaToOne">
+            <summary>
+                The sample alpha to one enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.SampleAlphaToOneSgis">
+            <summary>
+                The sample alpha to one sgis enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.SampleCoverage">
+            <summary>
+                The sample coverage enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.SampleMaskSgis">
+            <summary>
+                The sample mask sgis enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.TextureColorTableSgi">
+            <summary>
+                The texture color table sgi enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.ColorTable">
+            <summary>
+                The color table enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.ColorTableSgi">
+            <summary>
+                The color table sgi enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.PostConvolutionColorTable">
+            <summary>
+                The post convolution color table enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.PostConvolutionColorTableSgi">
+            <summary>
+                The post convolution color table sgi enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.PostColorMatrixColorTable">
+            <summary>
+                The post color matrix color table enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.PostColorMatrixColorTableSgi">
+            <summary>
+                The post color matrix color table sgi enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.Texture4DSgis">
+            <summary>
+                The texture sgis enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.PixelTexGenSgix">
+            <summary>
+                The pixel tex gen sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.SpriteSgix">
+            <summary>
+                The sprite sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.ReferencePlaneSgix">
+            <summary>
+                The reference plane sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.IrInstrument1Sgix">
+            <summary>
+                The ir instrument sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.CalligraphicFragmentSgix">
+            <summary>
+                The calligraphic fragment sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.FramezoomSgix">
+            <summary>
+                The framezoom sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.FogOffsetSgix">
+            <summary>
+                The fog offset sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.SharedTexturePaletteExt">
+            <summary>
+                The shared texture palette ext enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.AsyncHistogramSgix">
+            <summary>
+                The async histogram sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.PixelTextureSgis">
+            <summary>
+                The pixel texture sgis enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.AsyncTexImageSgix">
+            <summary>
+                The async tex image sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.AsyncDrawPixelsSgix">
+            <summary>
+                The async draw pixels sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.AsyncReadPixelsSgix">
+            <summary>
+                The async read pixels sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.FragmentLightingSgix">
+            <summary>
+                The fragment lighting sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.FragmentColorMaterialSgix">
+            <summary>
+                The fragment color material sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.FragmentLight0Sgix">
+            <summary>
+                The fragment light sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.FragmentLight1Sgix">
+            <summary>
+                The fragment light sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.FragmentLight2Sgix">
+            <summary>
+                The fragment light sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.FragmentLight3Sgix">
+            <summary>
+                The fragment light sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.FragmentLight4Sgix">
+            <summary>
+                The fragment light sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.FragmentLight5Sgix">
+            <summary>
+                The fragment light sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.FragmentLight6Sgix">
+            <summary>
+                The fragment light sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.FragmentLight7Sgix">
+            <summary>
+                The fragment light sgix enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.ColorSum">
+            <summary>
+                The color sum enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.SecondaryColorArray">
+            <summary>
+                The secondary color array enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.TextureCubeMap">
+            <summary>
+                The texture cube map enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.ProgramPointSize">
+            <summary>
+                The program point size enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.VertexProgramPointSize">
+            <summary>
+                The vertex program point size enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.DepthClamp">
+            <summary>
+                The depth clamp enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.TextureCubeMapSeamless">
+            <summary>
+                The texture cube map seamless enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.PointSprite">
+            <summary>
+                The point sprite enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.RasterizerDiscard">
+            <summary>
+                The rasterizer discard enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.FramebufferSrgb">
+            <summary>
+                The framebuffer srgb enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.SampleMask">
+            <summary>
+                The sample mask enable cap
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.EnableCap.PrimitiveRestart">
+            <summary>
+                The primitive restart enable cap
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.PixelFormat">
+            <summary>
+                The pixel format enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.ColorIndex">
+            <summary>
+                The color index pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.StencilIndex">
+            <summary>
+                The stencil index pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.DepthComponent">
+            <summary>
+                The depth component pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.Red">
+            <summary>
+                The red pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.Green">
+            <summary>
+                The green pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.Blue">
+            <summary>
+                The blue pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.Alpha">
+            <summary>
+                The alpha pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.Rgb">
+            <summary>
+                The rgb pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.Rgba">
+            <summary>
+                The rgba pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.Luminance">
+            <summary>
+                The luminance pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.LuminanceAlpha">
+            <summary>
+                The luminance alpha pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.AbgrExt">
+            <summary>
+                The abgr ext pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.CmykExt">
+            <summary>
+                The cmyk ext pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.CmykaExt">
+            <summary>
+                The cmyka ext pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.Bgr">
+            <summary>
+                The bgr pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.Bgra">
+            <summary>
+                The bgra pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.Ycrcb422Sgix">
+            <summary>
+                The ycrcb 422 sgix pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.Ycrcb444Sgix">
+            <summary>
+                The ycrcb 444 sgix pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.Rg">
+            <summary>
+                The rg pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.RgInteger">
+            <summary>
+                The rg integer pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.DepthStencil">
+            <summary>
+                The depth stencil pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.RedInteger">
+            <summary>
+                The red integer pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.GreenInteger">
+            <summary>
+                The green integer pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.BlueInteger">
+            <summary>
+                The blue integer pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.AlphaInteger">
+            <summary>
+                The alpha integer pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.RgbInteger">
+            <summary>
+                The rgb integer pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.RgbaInteger">
+            <summary>
+                The rgba integer pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.BgrInteger">
+            <summary>
+                The bgr integer pixel format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelFormat.BgraInteger">
+            <summary>
+                The bgra integer pixel format
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat">
+            <summary>
+                The pixel internal format enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DepthComponent">
+            <summary>
+                The depth component pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Alpha">
+            <summary>
+                The alpha pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgb">
+            <summary>
+                The rgb pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgba">
+            <summary>
+                The rgba pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Luminance">
+            <summary>
+                The luminance pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.LuminanceAlpha">
+            <summary>
+                The luminance alpha pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.R3G3B2">
+            <summary>
+                The  pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Alpha4">
+            <summary>
+                The alpha pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Alpha8">
+            <summary>
+                The alpha pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Alpha12">
+            <summary>
+                The alpha 12 pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Alpha16">
+            <summary>
+                The alpha 16 pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Luminance4">
+            <summary>
+                The luminance pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Luminance8">
+            <summary>
+                The luminance pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Luminance12">
+            <summary>
+                The luminance 12 pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Luminance16">
+            <summary>
+                The luminance 16 pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Luminance4Alpha4">
+            <summary>
+                The luminance alpha pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Luminance6Alpha2">
+            <summary>
+                The luminance alpha pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Luminance8Alpha8">
+            <summary>
+                The luminance alpha pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Luminance12Alpha4">
+            <summary>
+                The luminance 12 alpha pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Luminance12Alpha12">
+            <summary>
+                The luminance 12 alpha 12 pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Luminance16Alpha16">
+            <summary>
+                The luminance 16 alpha 16 pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Intensity">
+            <summary>
+                The intensity pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Intensity4">
+            <summary>
+                The intensity pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Intensity8">
+            <summary>
+                The intensity pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Intensity12">
+            <summary>
+                The intensity 12 pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Intensity16">
+            <summary>
+                The intensity 16 pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgb2Ext">
+            <summary>
+                The rgb ext pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgb4">
+            <summary>
+                The rgb pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgb5">
+            <summary>
+                The rgb pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgb8">
+            <summary>
+                The rgb pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgb10">
+            <summary>
+                The rgb 10 pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgb12">
+            <summary>
+                The rgb 12 pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgb16">
+            <summary>
+                The rgb 16 pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgba2">
+            <summary>
+                The rgba pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgba4">
+            <summary>
+                The rgba pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgb5A1">
+            <summary>
+                The rgb pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgba8">
+            <summary>
+                The rgba pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgb10A2">
+            <summary>
+                The rgb 10 pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgba12">
+            <summary>
+                The rgba 12 pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgba16">
+            <summary>
+                The rgba 16 pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DualAlpha4Sgis">
+            <summary>
+                The dual alpha sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DualAlpha8Sgis">
+            <summary>
+                The dual alpha sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DualAlpha12Sgis">
+            <summary>
+                The dual alpha 12 sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DualAlpha16Sgis">
+            <summary>
+                The dual alpha 16 sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DualLuminance4Sgis">
+            <summary>
+                The dual luminance sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DualLuminance8Sgis">
+            <summary>
+                The dual luminance sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DualLuminance12Sgis">
+            <summary>
+                The dual luminance 12 sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DualLuminance16Sgis">
+            <summary>
+                The dual luminance 16 sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DualIntensity4Sgis">
+            <summary>
+                The dual intensity sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DualIntensity8Sgis">
+            <summary>
+                The dual intensity sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DualIntensity12Sgis">
+            <summary>
+                The dual intensity 12 sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DualIntensity16Sgis">
+            <summary>
+                The dual intensity 16 sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DualLuminanceAlpha4Sgis">
+            <summary>
+                The dual luminance alpha sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DualLuminanceAlpha8Sgis">
+            <summary>
+                The dual luminance alpha sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.QuadAlpha4Sgis">
+            <summary>
+                The quad alpha sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.QuadAlpha8Sgis">
+            <summary>
+                The quad alpha sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.QuadLuminance4Sgis">
+            <summary>
+                The quad luminance sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.QuadLuminance8Sgis">
+            <summary>
+                The quad luminance sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.QuadIntensity4Sgis">
+            <summary>
+                The quad intensity sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.QuadIntensity8Sgis">
+            <summary>
+                The quad intensity sgis pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DepthComponent16">
+            <summary>
+                The depth component 16 pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DepthComponent16Sgix">
+            <summary>
+                The depth component 16 sgix pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DepthComponent24">
+            <summary>
+                The depth component 24 pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DepthComponent24Sgix">
+            <summary>
+                The depth component 24 sgix pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DepthComponent32">
+            <summary>
+                The depth component 32 pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DepthComponent32Sgix">
+            <summary>
+                The depth component 32 sgix pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedRed">
+            <summary>
+                The compressed red pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedRg">
+            <summary>
+                The compressed rg pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.R8">
+            <summary>
+                The  pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.R16">
+            <summary>
+                The 16 pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rg8">
+            <summary>
+                The rg pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rg16">
+            <summary>
+                The rg 16 pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.R16F">
+            <summary>
+                The 16f pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.R32F">
+            <summary>
+                The 32f pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rg16F">
+            <summary>
+                The rg 16f pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rg32F">
+            <summary>
+                The rg 32f pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.R8I">
+            <summary>
+                The 8i pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.R8Ui">
+            <summary>
+                The 8ui pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.R16I">
+            <summary>
+                The 16i pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.R16Ui">
+            <summary>
+                The 16ui pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.R32I">
+            <summary>
+                The 32i pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.R32Ui">
+            <summary>
+                The 32ui pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rg8I">
+            <summary>
+                The rg 8i pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rg8Ui">
+            <summary>
+                The rg 8ui pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rg16I">
+            <summary>
+                The rg 16i pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rg16Ui">
+            <summary>
+                The rg 16ui pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rg32I">
+            <summary>
+                The rg 32i pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rg32Ui">
+            <summary>
+                The rg 32ui pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedRgbS3TcDxt1Ext">
+            <summary>
+                The compressed rgb 3tc dxt ext pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedRgbaS3TcDxt1Ext">
+            <summary>
+                The compressed rgba 3tc dxt ext pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedRgbaS3TcDxt3Ext">
+            <summary>
+                The compressed rgba 3tc dxt ext pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedRgbaS3TcDxt5Ext">
+            <summary>
+                The compressed rgba 3tc dxt ext pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedAlpha">
+            <summary>
+                The compressed alpha pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedLuminance">
+            <summary>
+                The compressed luminance pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedLuminanceAlpha">
+            <summary>
+                The compressed luminance alpha pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedIntensity">
+            <summary>
+                The compressed intensity pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedRgb">
+            <summary>
+                The compressed rgb pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedRgba">
+            <summary>
+                The compressed rgba pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DepthStencil">
+            <summary>
+                The depth stencil pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgba32F">
+            <summary>
+                The rgba 32f pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgb32F">
+            <summary>
+                The rgb 32f pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgba16F">
+            <summary>
+                The rgba 16f pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgb16F">
+            <summary>
+                The rgb 16f pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Depth24Stencil8">
+            <summary>
+                The depth 24 stencil pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.R11FG11FB10F">
+            <summary>
+                The 11f 11f 10f pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgb9E5">
+            <summary>
+                The rgb pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Srgb">
+            <summary>
+                The srgb pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Srgb8">
+            <summary>
+                The srgb pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.SrgbAlpha">
+            <summary>
+                The srgb alpha pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Srgb8Alpha8">
+            <summary>
+                The srgb alpha pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.SluminanceAlpha">
+            <summary>
+                The sluminance alpha pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Sluminance8Alpha8">
+            <summary>
+                The sluminance alpha pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Sluminance">
+            <summary>
+                The sluminance pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Sluminance8">
+            <summary>
+                The sluminance pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedSrgb">
+            <summary>
+                The compressed srgb pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedSrgbAlpha">
+            <summary>
+                The compressed srgb alpha pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedSluminance">
+            <summary>
+                The compressed sluminance pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedSluminanceAlpha">
+            <summary>
+                The compressed sluminance alpha pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedSrgbS3TcDxt1Ext">
+            <summary>
+                The compressed srgb 3tc dxt ext pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedSrgbAlphaS3TcDxt1Ext">
+            <summary>
+                The compressed srgb alpha 3tc dxt ext pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedSrgbAlphaS3TcDxt3Ext">
+            <summary>
+                The compressed srgb alpha 3tc dxt ext pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedSrgbAlphaS3TcDxt5Ext">
+            <summary>
+                The compressed srgb alpha 3tc dxt ext pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.DepthComponent32F">
+            <summary>
+                The depth component 32f pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Depth32FStencil8">
+            <summary>
+                The depth 32f stencil pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgba32Ui">
+            <summary>
+                The rgba 32ui pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgb32Ui">
+            <summary>
+                The rgb 32ui pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgba16Ui">
+            <summary>
+                The rgba 16ui pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgb16Ui">
+            <summary>
+                The rgb 16ui pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgba8Ui">
+            <summary>
+                The rgba 8ui pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgb8Ui">
+            <summary>
+                The rgb 8ui pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgba32I">
+            <summary>
+                The rgba 32i pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgb32I">
+            <summary>
+                The rgb 32i pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgba16I">
+            <summary>
+                The rgba 16i pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgb16I">
+            <summary>
+                The rgb 16i pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgba8I">
+            <summary>
+                The rgba 8i pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Rgb8I">
+            <summary>
+                The rgb 8i pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Float32UnsignedInt248Rev">
+            <summary>
+                The float 32 unsigned int 248 rev pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedRedRgtc1">
+            <summary>
+                The compressed red rgtc pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedSignedRedRgtc1">
+            <summary>
+                The compressed signed red rgtc pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedRgRgtc2">
+            <summary>
+                The compressed rg rgtc pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.CompressedSignedRgRgtc2">
+            <summary>
+                The compressed signed rg rgtc pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.One">
+            <summary>
+                The one pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Two">
+            <summary>
+                The two pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Three">
+            <summary>
+                The three pixel internal format
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelInternalFormat.Four">
+            <summary>
+                The four pixel internal format
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter">
+            <summary>
+                The pixel store parameter enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.UnpackSwapBytes">
+            <summary>
+                The unpack swap bytes pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.UnpackLsbFirst">
+            <summary>
+                The unpack lsb first pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.UnpackRowLength">
+            <summary>
+                The unpack row length pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.UnpackSkipRows">
+            <summary>
+                The unpack skip rows pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.UnpackSkipPixels">
+            <summary>
+                The unpack skip pixels pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.UnpackAlignment">
+            <summary>
+                The unpack alignment pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PackSwapBytes">
+            <summary>
+                The pack swap bytes pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PackLsbFirst">
+            <summary>
+                The pack lsb first pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PackRowLength">
+            <summary>
+                The pack row length pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PackSkipRows">
+            <summary>
+                The pack skip rows pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PackSkipPixels">
+            <summary>
+                The pack skip pixels pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PackAlignment">
+            <summary>
+                The pack alignment pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PackSkipImages">
+            <summary>
+                The pack skip images pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PackSkipImagesExt">
+            <summary>
+                The pack skip images ext pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PackImageHeight">
+            <summary>
+                The pack image height pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PackImageHeightExt">
+            <summary>
+                The pack image height ext pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.UnpackSkipImages">
+            <summary>
+                The unpack skip images pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.UnpackSkipImagesExt">
+            <summary>
+                The unpack skip images ext pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.UnpackImageHeight">
+            <summary>
+                The unpack image height pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.UnpackImageHeightExt">
+            <summary>
+                The unpack image height ext pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PackSkipVolumesSgis">
+            <summary>
+                The pack skip volumes sgis pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PackImageDepthSgis">
+            <summary>
+                The pack image depth sgis pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.UnpackSkipVolumesSgis">
+            <summary>
+                The unpack skip volumes sgis pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.UnpackImageDepthSgis">
+            <summary>
+                The unpack image depth sgis pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PixelTileWidthSgix">
+            <summary>
+                The pixel tile width sgix pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PixelTileHeightSgix">
+            <summary>
+                The pixel tile height sgix pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PixelTileGridWidthSgix">
+            <summary>
+                The pixel tile grid width sgix pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PixelTileGridHeightSgix">
+            <summary>
+                The pixel tile grid height sgix pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PixelTileGridDepthSgix">
+            <summary>
+                The pixel tile grid depth sgix pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PixelTileCacheSizeSgix">
+            <summary>
+                The pixel tile cache size sgix pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PackResampleSgix">
+            <summary>
+                The pack resample sgix pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.UnpackResampleSgix">
+            <summary>
+                The unpack resample sgix pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.PackSubsampleRateSgix">
+            <summary>
+                The pack subsample rate sgix pixel store parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelStoreParameter.UnpackSubsampleRateSgix">
+            <summary>
+                The unpack subsample rate sgix pixel store parameter
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.PixelType">
+            <summary>
+                The pixel type enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.Byte">
+            <summary>
+                The byte pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedByte">
+            <summary>
+                The unsigned byte pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.Short">
+            <summary>
+                The short pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedShort">
+            <summary>
+                The unsigned short pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.Int">
+            <summary>
+                The int pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedInt">
+            <summary>
+                The unsigned int pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.Float">
+            <summary>
+                The float pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.HalfFloat">
+            <summary>
+                The half float pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.Bitmap">
+            <summary>
+                The bitmap pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedByte332">
+            <summary>
+                The unsigned byte 332 pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedByte332Ext">
+            <summary>
+                The unsigned byte 332 ext pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedShort4444">
+            <summary>
+                The unsigned short 4444 pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedShort4444Ext">
+            <summary>
+                The unsigned short 4444 ext pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedShort5551">
+            <summary>
+                The unsigned short 5551 pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedShort5551Ext">
+            <summary>
+                The unsigned short 5551 ext pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedInt8888">
+            <summary>
+                The unsigned int 8888 pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedInt8888Ext">
+            <summary>
+                The unsigned int 8888 ext pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedInt1010102">
+            <summary>
+                The unsigned int 1010102 pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedInt1010102Ext">
+            <summary>
+                The unsigned int 1010102 ext pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedByte233Reversed">
+            <summary>
+                The unsigned byte 233 reversed pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedShort565">
+            <summary>
+                The unsigned short 565 pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedShort565Reversed">
+            <summary>
+                The unsigned short 565 reversed pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedShort4444Reversed">
+            <summary>
+                The unsigned short 4444 reversed pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedShort1555Reversed">
+            <summary>
+                The unsigned short 1555 reversed pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedInt8888Reversed">
+            <summary>
+                The unsigned int 8888 reversed pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedInt2101010Reversed">
+            <summary>
+                The unsigned int 2101010 reversed pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedInt248">
+            <summary>
+                The unsigned int 248 pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedInt10F11F11FRev">
+            <summary>
+                The unsigned int 10 11 11 rev pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.UnsignedInt5999Rev">
+            <summary>
+                The unsigned int 5999 rev pixel type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.PixelType.Float32UnsignedInt248Rev">
+            <summary>
+                The float 32 unsigned int 248 rev pixel type
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.ProgramParameter">
+            <summary>
+                The program parameter enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ProgramParameter.ActiveUniformBlockMaxNameLength">
+            <summary>
+                The active uniform block max name length program parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ProgramParameter.ActiveUniformBlocks">
+            <summary>
+                The active uniform blocks program parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ProgramParameter.DeleteStatus">
+            <summary>
+                The delete status program parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ProgramParameter.LinkStatus">
+            <summary>
+                The link status program parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ProgramParameter.ValidateStatus">
+            <summary>
+                The validate status program parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ProgramParameter.InfoLogLength">
+            <summary>
+                The info log length program parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ProgramParameter.AttachedShaders">
+            <summary>
+                The attached shaders program parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ProgramParameter.ActiveUniforms">
+            <summary>
+                The active uniforms program parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ProgramParameter.ActiveUniformMaxLength">
+            <summary>
+                The active uniform max length program parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ProgramParameter.ActiveAttributes">
+            <summary>
+                The active attributes program parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ProgramParameter.ActiveAttributeMaxLength">
+            <summary>
+                The active attribute max length program parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ProgramParameter.TransformFeedbackVaryingMaxLength">
+            <summary>
+                The transform feedback varying max length program parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ProgramParameter.TransformFeedbackBufferMode">
+            <summary>
+                The transform feedback buffer mode program parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ProgramParameter.TransformFeedbackVaryings">
+            <summary>
+                The transform feedback varyings program parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ProgramParameter.GeometryVerticesOut">
+            <summary>
+                The geometry vertices out program parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ProgramParameter.GeometryInputType">
+            <summary>
+                The geometry input type program parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ProgramParameter.GeometryOutputType">
+            <summary>
+                The geometry output type program parameter
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.ShaderParameter">
+            <summary>
+                The shader parameter enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ShaderParameter.ShaderType">
+            <summary>
+                The shader type shader parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ShaderParameter.DeleteStatus">
+            <summary>
+                The delete status shader parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ShaderParameter.CompileStatus">
+            <summary>
+                The compile status shader parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ShaderParameter.InfoLogLength">
+            <summary>
+                The info log length shader parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ShaderParameter.ShaderSourceLength">
+            <summary>
+                The shader source length shader parameter
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.ShaderType">
+            <summary>
+                The shader type enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ShaderType.FragmentShader">
+            <summary>
+                The fragment shader shader type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ShaderType.VertexShader">
+            <summary>
+                The vertex shader shader type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ShaderType.GeometryShader">
+            <summary>
+                The geometry shader shader type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ShaderType.TessControlShader">
+            <summary>
+                The tess control shader shader type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ShaderType.TessEvaluationShader">
+            <summary>
+                The tess evaluation shader shader type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.ShaderType.ComputeShader">
+            <summary>
+                The compute shader shader type
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.StringName">
+            <summary>
+                The string name enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.StringName.Vendor">
+            <summary>
+                The vendor string name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.StringName.Renderer">
+            <summary>
+                The renderer string name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.StringName.Version">
+            <summary>
+                The version string name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.StringName.Extensions">
+            <summary>
+                The extensions string name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.StringName.ShadingLanguageVersion">
+            <summary>
+                The shading language version string name
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.TextureParameter">
+            <summary>
+                The texture parameter enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.Nearest">
+            <summary>
+                The nearest texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.Linear">
+            <summary>
+                The linear texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.NearestMipMapNearest">
+            <summary>
+                The nearest mip map nearest texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.LinearMipMapNearest">
+            <summary>
+                The linear mip map nearest texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.NearestMipMapLinear">
+            <summary>
+                The nearest mip map linear texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.LinearMipMapLinear">
+            <summary>
+                The linear mip map linear texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.ClampToEdge">
+            <summary>
+                The clamp to edge texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.ClampToBorder">
+            <summary>
+                The clamp to border texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.MirrorClampToEdge">
+            <summary>
+                The mirror clamp to edge texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.MirroredRepeat">
+            <summary>
+                The mirrored repeat texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.Repeat">
+            <summary>
+                The repeat texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.Red">
+            <summary>
+                The red texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.Green">
+            <summary>
+                The green texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.Blue">
+            <summary>
+                The blue texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.Alpha">
+            <summary>
+                The alpha texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.Zero">
+            <summary>
+                The zero texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.One">
+            <summary>
+                The one texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.CompareRefToTexture">
+            <summary>
+                The compare ref to texture texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.None">
+            <summary>
+                The none texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.StencilIndex">
+            <summary>
+                The stencil index texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.DepthComponent">
+            <summary>
+                The depth component texture parameter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameter.MaxAnisotropyExt">
+            <summary>
+                The max anisotropy ext texture parameter
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName">
+            <summary>
+                The texture parameter name enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName.TextureBaseLevel">
+            <summary>
+                The texture base level texture parameter name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName.TextureBorderColor">
+            <summary>
+                The texture border color texture parameter name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName.TextureCompareMode">
+            <summary>
+                The texture compare mode texture parameter name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName.TextureCompareFunc">
+            <summary>
+                The texture compare func texture parameter name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName.TextureLodBias">
+            <summary>
+                The texture lod bias texture parameter name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName.TextureMagFilter">
+            <summary>
+                The texture mag filter texture parameter name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName.TextureMaxLevel">
+            <summary>
+                The texture max level texture parameter name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName.TextureMaxLod">
+            <summary>
+                The texture max lod texture parameter name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName.TextureMinFilter">
+            <summary>
+                The texture min filter texture parameter name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName.TextureMinLod">
+            <summary>
+                The texture min lod texture parameter name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName.TextureSwizzleR">
+            <summary>
+                The texture swizzle texture parameter name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName.TextureSwizzleG">
+            <summary>
+                The texture swizzle texture parameter name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName.TextureSwizzleB">
+            <summary>
+                The texture swizzle texture parameter name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName.TextureSwizzleA">
+            <summary>
+                The texture swizzle texture parameter name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName.TextureSwizzleRgba">
+            <summary>
+                The texture swizzle rgba texture parameter name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName.TextureWrapS">
+            <summary>
+                The texture wrap texture parameter name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName.TextureWrapT">
+            <summary>
+                The texture wrap texture parameter name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName.TextureWrapR">
+            <summary>
+                The texture wrap texture parameter name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureParameterName.MaxAnisotropyExt">
+            <summary>
+                The max anisotropy ext texture parameter name
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.TextureTarget">
+            <summary>
+                The texture target enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureTarget.Texture1D">
+            <summary>
+                The texture texture target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureTarget.Texture2D">
+            <summary>
+                The texture texture target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureTarget.Texture3D">
+            <summary>
+                The texture texture target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureTarget.Texture1DArray">
+            <summary>
+                The texture array texture target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureTarget.Texture2DArray">
+            <summary>
+                The texture array texture target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureTarget.TextureRectangle">
+            <summary>
+                The texture rectangle texture target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureTarget.TextureCubeMap">
+            <summary>
+                The texture cube map texture target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureTarget.TextureCubeMapPositiveX">
+            <summary>
+                The texture cube map positive texture target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureTarget.TextureCubeMapNegativeX">
+            <summary>
+                The texture cube map negative texture target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureTarget.TextureCubeMapPositiveY">
+            <summary>
+                The texture cube map positive texture target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureTarget.TextureCubeMapNegativeY">
+            <summary>
+                The texture cube map negative texture target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureTarget.TextureCubeMapPositiveZ">
+            <summary>
+                The texture cube map positive texture target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureTarget.TextureCubeMapNegativeZ">
+            <summary>
+                The texture cube map negative texture target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureTarget.TextureCubeMapArray">
+            <summary>
+                The texture cube map array texture target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureTarget.Texture2DMultisample">
+            <summary>
+                The texture multisample texture target
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.TextureTarget.Texture2DMultisampleArray">
+            <summary>
+                The texture multisample array texture target
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.Gl.VertexAttribPointerType">
+            <summary>
+                The vertex attrib pointer type enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.VertexAttribPointerType.Byte">
+            <summary>
+                The byte vertex attrib pointer type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.VertexAttribPointerType.UnsignedByte">
+            <summary>
+                The unsigned byte vertex attrib pointer type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.VertexAttribPointerType.Short">
+            <summary>
+                The short vertex attrib pointer type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.VertexAttribPointerType.UnsignedShort">
+            <summary>
+                The unsigned short vertex attrib pointer type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.VertexAttribPointerType.Int">
+            <summary>
+                The int vertex attrib pointer type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.VertexAttribPointerType.UnsignedInt">
+            <summary>
+                The unsigned int vertex attrib pointer type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.VertexAttribPointerType.Float">
+            <summary>
+                The float vertex attrib pointer type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.VertexAttribPointerType.Double">
+            <summary>
+                The double vertex attrib pointer type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.VertexAttribPointerType.HalfFloat">
+            <summary>
+                The half float vertex attrib pointer type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.VertexAttribPointerType.UnsignedUInt2101010Reversed">
+            <summary>
+                The unsigned int 2101010 reversed vertex attrib pointer type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.VertexAttribPointerType.UnsignedInt2101010Reversed">
+            <summary>
+                The unsigned int 2101010 reversed vertex attrib pointer type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.VertexAttribPointerType.UnsignedUInt101111Reversed">
+            <summary>
+                The unsigned int 101111 reversed vertex attrib pointer type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.Uint1">
+            <summary>
+                The uint
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.Int1">
+            <summary>
+                The int
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.Matrix4Float">
+            <summary>
+                The matrix float
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Gl.GenBuffer">
+            <summary>
+                Gens the buffer
+            </summary>
+            <returns>The uint</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Gl.DeleteBuffer(System.UInt32)">
+            <summary>
+                Deletes the buffer using the specified buffer
+            </summary>
+            <param name="buffer">The buffer</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Gl.GetShaderInfoLog(System.UInt32)">
+            <summary>
+                Gets the shader info log using the specified shader
+            </summary>
+            <param name="shader">The shader</param>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Gl.ShaderSource(System.UInt32,System.String)">
+            <summary>
+                Shaders the source using the specified shader
+            </summary>
+            <param name="shader">The shader</param>
+            <param name="source">The source</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Gl.GetShaderCompileStatus(System.UInt32)">
+            <summary>
+                Describes whether get shader compile status
+            </summary>
+            <param name="shader">The shader</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Gl.GetProgramInfoLog(System.UInt32)">
+            <summary>
+                Gets the program info log using the specified program
+            </summary>
+            <param name="program">The program</param>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Gl.GetProgramLinkStatus(System.UInt32)">
+            <summary>
+                Describes whether get program link status
+            </summary>
+            <param name="program">The program</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Gl.UniformMatrix4Fv(System.Int32,System.Numerics.Matrix4x4)">
+            <summary>
+                Uniforms the matrix 4fv using the specified location
+            </summary>
+            <param name="location">The location</param>
+            <param name="param">The param</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Gl.VertexAttribPointer(System.Int32,System.Int32,Alis.Core.Graphic.OpenGL.Gl.VertexAttribPointerType,System.Boolean,System.Int32,System.IntPtr)">
+            <summary>
+                Vertexes the attrib pointer using the specified index
+            </summary>
+            <param name="index">The index</param>
+            <param name="size">The size</param>
+            <param name="type">The type</param>
+            <param name="normalized">The normalized</param>
+            <param name="stride">The stride</param>
+            <param name="pointer">The pointer</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Gl.EnableVertexAttribArray(System.Int32)">
+            <summary>
+                Enables the vertex attrib array using the specified index
+            </summary>
+            <param name="index">The index</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Gl.GenVertexArray">
+            <summary>
+                Gens the vertex array
+            </summary>
+            <returns>The uint</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Gl.DeleteVertexArray(System.UInt32)">
+            <summary>
+                Deletes the vertex array using the specified vao
+            </summary>
+            <param name="vao">The vao</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Gl.GenTexture">
+            <summary>
+                Gens the texture
+            </summary>
+            <returns>The uint</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.Gl.DeleteTexture(System.UInt32)">
+            <summary>
+                Deletes the texture using the specified texture
+            </summary>
+            <param name="texture">The texture</param>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.NumericsExtensions.Vector3Ext">
+            <summary>
+                The vector ext class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.NumericsExtensions.Vector3Ext.TakeMin(System.Numerics.Vector3,System.Numerics.Vector3)">
+            <summary>
+                Store the minimum values of x, y, and z between the two vectors.
+            </summary>
+            <param name="tv">The Vector3 to perform the TakeMin on.</param>
+            <param name="v">Vector to check against.</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.NumericsExtensions.Vector3Ext.TakeMax(System.Numerics.Vector3,System.Numerics.Vector3)">
+            <summary>
+                Store the maximum values of x, y, and z between the two vectors.
+            </summary>
+            <param name="tv">The Vector3 to perform the TakeMax on.</param>
+            <param name="v">Vector to check against.</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.NumericsExtensions.Vector3Ext.Normalize(System.Numerics.Vector3)">
+            <summary>
+                Normalizes the Vector3 structure to have a peak value of one.
+            </summary>
+            <param name="v">The Vector3 to perform the Normalize on.</param>
+            <returns>if (Length = 0) return Zero; else return Vector3(x,y,z)/Length.</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.NumericsExtensions.Vector3Ext.Dot(System.Numerics.Vector3,System.Numerics.Vector3)">
+            <summary>
+                Performs the Vector3 scalar dot product.
+            </summary>
+            <param name="tv">The Vector3 to perform the dot product on.</param>
+            <param name="v">Second dot product term.</param>
+            <returns>Vector3.Dot(this, v).</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.NumericsExtensions.Vector3Ext.Get(System.Numerics.Vector3,System.Int32)">
+            <summary>
+                Provide an accessor for each of the elements of the Vector structure.
+            </summary>
+            <param name="v">The Vector3 to access.</param>
+            <param name="index">The element to access (0 = X, 1 = Y, 2 = Z).</param>
+            <returns>The element of the Vector3 as indexed by i.</returns>
+        </member>
+        <member name="T:Alis.Core.Graphic.OpenGL.NumericsExtensions.Vector4Ext">
+            <summary>
+                The vector ext class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.OpenGL.NumericsExtensions.Vector4Ext.Get(System.Numerics.Vector4,System.Int32)">
+            <summary>
+                Gets the v
+            </summary>
+            <param name="v">The </param>
+            <param name="index">The index</param>
+            <returns>The float</returns>
+        </member>
         <member name="T:Alis.Core.Graphic.Properties.NativeGraphic">
             <summary>
               Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
