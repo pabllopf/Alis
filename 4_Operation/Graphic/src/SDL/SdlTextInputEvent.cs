@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.SDL
@@ -6,7 +7,7 @@ namespace Alis.Core.Graphic.SDL
     ///     The sdl textinputevent
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct SdlTextInputEvent
+    public struct SdlTextInputEvent
     {
         /// <summary>
         ///     The type
@@ -24,8 +25,8 @@ namespace Alis.Core.Graphic.SDL
         public uint windowID;
 
         /// <summary>
-        ///     The sdl textinputevent text size
+        ///     The sdl text text size
         /// </summary>
-        public fixed byte text[Sdl.SdlTextinputeventTextSize];
+        public IntPtr text;
     }
 }
