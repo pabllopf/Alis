@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Graphic.ImGui;
+using Alis.Core.Graphic.SDL;
 
 namespace Alis.App.Engine
 {
