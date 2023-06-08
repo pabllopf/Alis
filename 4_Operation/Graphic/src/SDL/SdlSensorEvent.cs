@@ -6,7 +6,7 @@ namespace Alis.Core.Graphic.SDL
     ///     The sdl sensorevent
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct SdlSensorEvent
+    public struct SdlSensorEvent
     {
         /// <summary>
         ///     The type
@@ -26,6 +26,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The data
         /// </summary>
-        public fixed float data[6];
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
+        public float[] data;
     }
 }
