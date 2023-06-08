@@ -69,6 +69,8 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         public static void SdlRender()
         {
+            bool running = true;
+            
             // Initilizes SDL.
             if (Sdl.SDL_Init(Sdl.SdlInitEverything) < 0)
             {
@@ -100,15 +102,31 @@ namespace Alis.Core.Graphic.Sample
             {
                 Console.WriteLine($"There was an issue creating the renderer. {Sdl.SDL_GetError()}");
             }
-            
-            // Sets the color that the screen will be cleared with.
-            Sdl.SDL_SetRenderDrawColor(renderer, 135, 206, 235, 255);
 
-            // Clears the current render surface.
-            Sdl.SDL_RenderClear(renderer);
+            while (running)
+            {
+                // Check to see if there are any events and continue to do so until the queue is empty.
+                while (Sdl.SDL_PollEvent(out SdlEvent e) == 1)
+                {
+                    switch (e.type)
+                    {
+                        case SdlEventType.SdlQuit:
+                            running = false;
+                            break;
+                    }
+                }
 
-            // Switches out the currently presented render surface with the one we just did work on.
-            Sdl.SDL_RenderPresent(renderer);
+                RenderColors();
+                
+                // Sets the color that the screen will be cleared with.
+                Sdl.SDL_SetRenderDrawColor(renderer, _red, _green, _blue, 255);
+
+                // Clears the current render surface.
+                Sdl.SDL_RenderClear(renderer);
+
+                // Switches out the currently presented render surface with the one we just did work on.
+                Sdl.SDL_RenderPresent(renderer);
+            }
             
             Sdl.SDL_DestroyRenderer(renderer);
             Sdl.SDL_DestroyWindow(window);

@@ -6,7 +6,7 @@ namespace Alis.Core.Graphic.SDL
     ///     The sdl hapticdirection
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct SdlHapticDirection
+    public unsafe struct SdlHapticDirection
     {
         /// <summary>
         ///     The type
@@ -16,6 +16,6 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The dir
         /// </summary>
-        public int[] dir;
+        public fixed int dir[3];
     }
 }

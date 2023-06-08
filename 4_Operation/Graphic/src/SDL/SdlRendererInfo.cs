@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.SDL
     ///     The sdl rendererinfo
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct SdlRendererInfo
+    public unsafe struct SdlRendererInfo
     {
         /// <summary>
         ///     The name
@@ -27,7 +27,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public uint[] texture_formats;
+        public fixed uint texture_formats[16];
 
         /// <summary>
         ///     The max texture width
@@ -38,6 +38,5 @@ namespace Alis.Core.Graphic.SDL
         ///     The max texture height
         /// </summary>
         public int max_texture_height;
-        
     }
 }

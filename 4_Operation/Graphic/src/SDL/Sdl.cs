@@ -116,18 +116,22 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="str">The str</param>
         /// <param name="buffer">The buffer</param>
+        /// <param name="bufferSize">The buffer size</param>
         /// <returns>The buffer</returns>
-        internal static byte[] Utf8Encode(string str, byte[] buffer)
+        internal static unsafe byte* Utf8Encode(string str, byte* buffer, int bufferSize)
         {
             if (str == null)
             {
-                throw new ArgumentNullException(nameof(str));
+                return (byte*) 0;
             }
 
-            Encoding.UTF8.GetBytes(str, 0, str.Length, buffer, 0);
+            fixed (char* strPtr = str)
+            {
+                Encoding.UTF8.GetBytes(strPtr, str.Length + 1, buffer, bufferSize);
+            }
+
             return buffer;
         }
-
 
 
         /// <summary>
@@ -135,16 +139,19 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="str">The str</param>
         /// <returns>The buffer</returns>
-        internal static byte[] Utf8EncodeHeap(string str)
+        internal static unsafe byte* Utf8EncodeHeap(string str)
         {
             if (str == null)
             {
-                return null;
+                return (byte*) 0;
             }
 
-            int bufferSize = Encoding.UTF8.GetByteCount(str);
-            byte[] buffer = new byte[bufferSize];
-            Encoding.UTF8.GetBytes(str, 0, str.Length, buffer, 0);
+            int bufferSize = Utf8Size(str);
+            byte* buffer = (byte*) Marshal.AllocHGlobal(bufferSize);
+            fixed (char* strPtr = str)
+            {
+                Encoding.UTF8.GetBytes(strPtr, str.Length + 1, buffer, bufferSize);
+            }
 
             return buffer;
         }
@@ -156,22 +163,29 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="s">The </param>
         /// <param name="freePtr">The free ptr</param>
         /// <returns>The result</returns>
-        public static string UTF8_ToManaged(IntPtr s, bool freePtr = false)
+        public static unsafe string UTF8_ToManaged(IntPtr s, bool freePtr = false)
         {
             if (s == IntPtr.Zero)
             {
                 return null;
             }
 
-            byte[] buffer = new byte[1024]; // Tamaño de buffer arbitrario
-            int length = 0;
-            while (Marshal.ReadByte(s, length) != 0)
+            
+            byte* ptr = (byte*) s;
+            while (*ptr != 0)
             {
-                buffer[length] = Marshal.ReadByte(s, length);
-                length++;
+                ptr++;
+            }
+            int len = (int) (ptr - (byte*) s);
+            if (len == 0)
+            {
+                return string.Empty;
             }
 
-            string result = Encoding.UTF8.GetString(buffer, 0, length);
+            char* chars = stackalloc char[len];
+            int strLen = Encoding.UTF8.GetChars((byte*) s, len, chars, len);
+            string result = new string(chars, 0, strLen);
+
 
             if (freePtr)
             {
@@ -263,9 +277,55 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl rwops memory ro
         /// </summary>
-        public const uint SdlRwopsMemoryRo = 5;
+        public const uint SdlRwopsMemoryRo = 5; 
 
+        /// <summary>
+        ///     The sdlr wops size callback
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate long SdlrWopsSizeCallback(IntPtr context);
 
+        /// <summary>
+        ///     The sdlr wops seek callback
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate long SdlrWopsSeekCallback(
+            IntPtr context,
+            long offset,
+            int whence
+        );
+
+        /// <summary>
+        ///     The sdlr wops read callback
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate IntPtr SdlrWopsReadCallback(
+            IntPtr context,
+            IntPtr ptr,
+            IntPtr size,
+            IntPtr maxnum
+        );
+
+        /// <summary>
+        ///     The sdlr wops write callback
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate IntPtr SdlrWopsWriteCallback(
+            IntPtr context,
+            IntPtr ptr,
+            IntPtr size,
+            IntPtr num
+        );
+
+        /// <summary>
+        ///     The sdlr wops close callback
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate int SdlrWopsCloseCallback(
+            IntPtr context
+        );
+
+        
         /// <summary>
         ///     Internals the sdl rw from file using the specified file
         /// </summary>
@@ -273,9 +333,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="mode">The mode</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RWFromFile", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  IntPtr INTERNAL_SDL_RWFromFile(
-            byte[] file,
-            byte[] mode
+        private static extern unsafe IntPtr INTERNAL_SDL_RWFromFile(
+            byte* file,
+            byte* mode
         );
 
         /// <summary>
@@ -284,17 +344,19 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <param name="mode">The mode</param>
         /// <returns>The rw ops</returns>
-        public static  IntPtr SDL_RWFromFile(
+        public static unsafe IntPtr SDL_RWFromFile(
             string file,
             string mode
         )
         {
-            byte[] utf8File = Utf8EncodeHeap(file);
-            byte[] utf8Mode = Utf8EncodeHeap(mode);
+            byte* utf8File = Utf8EncodeHeap(file);
+            byte* utf8Mode = Utf8EncodeHeap(mode);
             IntPtr rwOps = INTERNAL_SDL_RWFromFile(
                 utf8File,
                 utf8Mode
             );
+            Marshal.FreeHGlobal((IntPtr) utf8Mode);
+            Marshal.FreeHGlobal((IntPtr) utf8File);
             return rwOps;
         }
 
@@ -546,7 +608,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="datasize">The datasize</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_LoadFile", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  IntPtr INTERNAL_SDL_LoadFile(byte[] file, out IntPtr datasize);
+        private static extern unsafe IntPtr INTERNAL_SDL_LoadFile(byte* file, out IntPtr datasize);
 
         /// <summary>
         ///     Sdls the load file using the specified file
@@ -554,10 +616,11 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <param name="datasize">The datasize</param>
         /// <returns>The result</returns>
-        public static  IntPtr SDL_LoadFile(string file, out IntPtr datasize)
+        public static unsafe IntPtr SDL_LoadFile(string file, out IntPtr datasize)
         {
-            byte[] utf8File = Utf8EncodeHeap(file);
+            byte* utf8File = Utf8EncodeHeap(file);
             IntPtr result = INTERNAL_SDL_LoadFile(utf8File, out datasize);
+            Marshal.FreeHGlobal((IntPtr) utf8File);
             return result;
         }
 
@@ -567,7 +630,13 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_SetMainReady();
 
+        
+        /// <summary>
+        ///     The sdl main func
+        /// </summary>
+        public delegate int SdlMainFunc(int argc, IntPtr argv);
 
+        
         /// <summary>
         ///     Sdls the win rt run app using the specified main function
         /// </summary>
@@ -1443,21 +1512,20 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="name">The name</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetHint", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  IntPtr INTERNAL_SDL_GetHint(byte[] name);
+        private static extern unsafe IntPtr INTERNAL_SDL_GetHint(byte* name);
 
         /// <summary>
         ///     Sdls the get hint using the specified name
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The string</returns>
-        public static string SDL_GetHint(string name)
+        public static unsafe string SDL_GetHint(string name)
         {
             int utf8NameBufSize = Utf8Size(name);
-            byte[] utf8Name = new byte[utf8NameBufSize];
-
+            byte* utf8Name = stackalloc byte[utf8NameBufSize];
             return UTF8_ToManaged(
                 INTERNAL_SDL_GetHint(
-                    Utf8Encode(name, utf8Name)
+                    Utf8Encode(name, utf8Name, utf8NameBufSize)
                 )
             );
         }
@@ -1469,9 +1537,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="value">The value</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetHint", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  SdlBool INTERNAL_SDL_SetHint(
-            byte[] name,
-            byte[] value
+        private static extern unsafe SdlBool INTERNAL_SDL_SetHint(
+            byte* name,
+            byte* value
         );
 
         /// <summary>
@@ -1480,14 +1548,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="name">The name</param>
         /// <param name="value">The value</param>
         /// <returns>The sdl bool</returns>
-        public static  SdlBool SDL_SetHint(string name, string value)
+        public static unsafe SdlBool SDL_SetHint(string name, string value)
         {
             int utf8NameBufSize = Utf8Size(name);
+            byte* utf8Name = stackalloc byte[utf8NameBufSize];
+
             int utf8ValueBufSize = Utf8Size(value);
-            
+            byte* utf8Value = stackalloc byte[utf8ValueBufSize];
+
             return INTERNAL_SDL_SetHint(
-                Utf8Encode(name, new byte[utf8NameBufSize]),
-                Utf8Encode(value, new byte[utf8ValueBufSize])
+                Utf8Encode(name, utf8Name, utf8NameBufSize),
+                Utf8Encode(value, utf8Value, utf8ValueBufSize)
             );
         }
 
@@ -1499,9 +1570,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="priority">The priority</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetHintWithPriority", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  SdlBool INTERNAL_SDL_SetHintWithPriority(
-            byte[] name,
-            byte[] value,
+        private static extern unsafe SdlBool INTERNAL_SDL_SetHintWithPriority(
+            byte* name,
+            byte* value,
             SdlHintPriority priority
         );
 
@@ -1512,18 +1583,21 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="value">The value</param>
         /// <param name="priority">The priority</param>
         /// <returns>The sdl bool</returns>
-        public static  SdlBool SDL_SetHintWithPriority(
+        public static unsafe SdlBool SDL_SetHintWithPriority(
             string name,
             string value,
             SdlHintPriority priority
         )
         {
             int utf8NameBufSize = Utf8Size(name);
+            byte* utf8Name = stackalloc byte[utf8NameBufSize];
+
             int utf8ValueBufSize = Utf8Size(value);
+            byte* utf8Value = stackalloc byte[utf8ValueBufSize];
 
             return INTERNAL_SDL_SetHintWithPriority(
-                Utf8Encode(name, new byte[utf8NameBufSize]),
-                Utf8Encode(value, new byte[utf8ValueBufSize]),
+                Utf8Encode(name, utf8Name, utf8NameBufSize),
+                Utf8Encode(value, utf8Value, utf8ValueBufSize),
                 priority
             );
         }
@@ -1536,8 +1610,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="defaultValue">The default value</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetHintBoolean", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  SdlBool INTERNAL_SDL_GetHintBoolean(
-            byte[] name,
+        private static extern unsafe SdlBool INTERNAL_SDL_GetHintBoolean(
+            byte* name,
             SdlBool defaultValue
         );
 
@@ -1547,14 +1621,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="name">The name</param>
         /// <param name="defaultValue">The default value</param>
         /// <returns>The sdl bool</returns>
-        public static  SdlBool SDL_GetHintBoolean(
+        public static unsafe SdlBool SDL_GetHintBoolean(
             string name,
             SdlBool defaultValue
         )
         {
             int utf8NameBufSize = Utf8Size(name);
+            byte* utf8Name = stackalloc byte[utf8NameBufSize];
             return INTERNAL_SDL_GetHintBoolean(
-                Utf8Encode(name, new byte[utf8NameBufSize]),
+                Utf8Encode(name, utf8Name, utf8NameBufSize),
                 defaultValue
             );
         }
@@ -1584,17 +1659,18 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetError", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_SetError(byte[] fmtAndArglist);
+        private static extern unsafe void INTERNAL_SDL_SetError(byte* fmtAndArglist);
 
         /// <summary>
         ///     Sdls the set error using the specified fmt and arglist
         /// </summary>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_SetError(string fmtAndArglist)
+        public static unsafe void SDL_SetError(string fmtAndArglist)
         {
             int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte* utf8FmtAndArglist = stackalloc byte[utf8FmtAndArglistBufSize];
             INTERNAL_SDL_SetError(
-                Utf8Encode(fmtAndArglist, new byte[utf8FmtAndArglistBufSize])
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
             );
         }
 
@@ -1609,22 +1685,36 @@ namespace Alis.Core.Graphic.SDL
         public static extern IntPtr SDL_GetErrorMsg(IntPtr errstr, int maxlength);
 
 
+        
+        /// <summary>
+        ///     The sdl logoutputfunction
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate void SdlLogOutputFunction(
+            IntPtr userdata,
+            int category,
+            SdlLogPriority priority,
+            IntPtr message
+        );
+
+        
         /// <summary>
         ///     Internals the sdl log using the specified fmt and arglist
         /// </summary>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_Log", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_Log(byte[] fmtAndArglist);
+        private static extern unsafe void INTERNAL_SDL_Log(byte* fmtAndArglist);
 
         /// <summary>
         ///     Sdls the log using the specified fmt and arglist
         /// </summary>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_Log(string fmtAndArglist)
+        public static unsafe void SDL_Log(string fmtAndArglist)
         {
             int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte* utf8FmtAndArglist = stackalloc byte[utf8FmtAndArglistBufSize];
             INTERNAL_SDL_Log(
-                Utf8Encode(fmtAndArglist, new byte[utf8FmtAndArglistBufSize])
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
             );
         }
 
@@ -1635,9 +1725,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="category">The category</param>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogVerbose", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_LogVerbose(
+        private static extern unsafe void INTERNAL_SDL_LogVerbose(
             int category,
-            byte[] fmtAndArglist
+            byte* fmtAndArglist
         );
 
         /// <summary>
@@ -1645,15 +1735,16 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_LogVerbose(
+        public static unsafe void SDL_LogVerbose(
             int category,
             string fmtAndArglist
         )
         {
             int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte* utf8FmtAndArglist = stackalloc byte[utf8FmtAndArglistBufSize];
             INTERNAL_SDL_LogVerbose(
                 category,
-                Utf8Encode(fmtAndArglist, new byte[utf8FmtAndArglistBufSize])
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
             );
         }
 
@@ -1664,9 +1755,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="category">The category</param>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogDebug", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_LogDebug(
+        private static extern unsafe void INTERNAL_SDL_LogDebug(
             int category,
-            byte[] fmtAndArglist
+            byte* fmtAndArglist
         );
 
         /// <summary>
@@ -1674,15 +1765,16 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_LogDebug(
+        public static unsafe void SDL_LogDebug(
             int category,
             string fmtAndArglist
         )
         {
             int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte* utf8FmtAndArglist = stackalloc byte[utf8FmtAndArglistBufSize];
             INTERNAL_SDL_LogDebug(
                 category,
-                Utf8Encode(fmtAndArglist, new byte[utf8FmtAndArglistBufSize])
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
             );
         }
 
@@ -1693,9 +1785,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="category">The category</param>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogInfo", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_LogInfo(
+        private static extern unsafe void INTERNAL_SDL_LogInfo(
             int category,
-            byte[] fmtAndArglist
+            byte* fmtAndArglist
         );
 
         /// <summary>
@@ -1703,15 +1795,16 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_LogInfo(
+        public static unsafe void SDL_LogInfo(
             int category,
             string fmtAndArglist
         )
         {
             int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte* utf8FmtAndArglist = stackalloc byte[utf8FmtAndArglistBufSize];
             INTERNAL_SDL_LogInfo(
                 category,
-                Utf8Encode(fmtAndArglist, new byte[utf8FmtAndArglistBufSize])
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
             );
         }
 
@@ -1722,9 +1815,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="category">The category</param>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogWarn", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_LogWarn(
+        private static extern unsafe void INTERNAL_SDL_LogWarn(
             int category,
-            byte[] fmtAndArglist
+            byte* fmtAndArglist
         );
 
         /// <summary>
@@ -1732,15 +1825,16 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_LogWarn(
+        public static unsafe void SDL_LogWarn(
             int category,
             string fmtAndArglist
         )
         {
             int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte* utf8FmtAndArglist = stackalloc byte[utf8FmtAndArglistBufSize];
             INTERNAL_SDL_LogWarn(
                 category,
-                Utf8Encode(fmtAndArglist, new byte[utf8FmtAndArglistBufSize])
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
             );
         }
 
@@ -1751,9 +1845,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="category">The category</param>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogError", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_LogError(
+        private static extern unsafe void INTERNAL_SDL_LogError(
             int category,
-            byte[] fmtAndArglist
+            byte* fmtAndArglist
         );
 
         /// <summary>
@@ -1761,15 +1855,16 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_LogError(
+        public static unsafe void SDL_LogError(
             int category,
             string fmtAndArglist
         )
         {
             int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte* utf8FmtAndArglist = stackalloc byte[utf8FmtAndArglistBufSize];
             INTERNAL_SDL_LogError(
                 category,
-                Utf8Encode(fmtAndArglist, new byte[utf8FmtAndArglistBufSize])
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
             );
         }
 
@@ -1780,9 +1875,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="category">The category</param>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogCritical", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_LogCritical(
+        private static extern unsafe void INTERNAL_SDL_LogCritical(
             int category,
-            byte[] fmtAndArglist
+            byte* fmtAndArglist
         );
 
         /// <summary>
@@ -1790,15 +1885,16 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_LogCritical(
+        public static unsafe void SDL_LogCritical(
             int category,
             string fmtAndArglist
         )
         {
             int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte* utf8FmtAndArglist = stackalloc byte[utf8FmtAndArglistBufSize];
             INTERNAL_SDL_LogCritical(
                 category,
-                Utf8Encode(fmtAndArglist, new byte[utf8FmtAndArglistBufSize])
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
             );
         }
 
@@ -1810,10 +1906,10 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="priority">The priority</param>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogMessage", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_LogMessage(
+        private static extern unsafe void INTERNAL_SDL_LogMessage(
             int category,
             SdlLogPriority priority,
-            byte[] fmtAndArglist
+            byte* fmtAndArglist
         );
 
         /// <summary>
@@ -1822,17 +1918,18 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="category">The category</param>
         /// <param name="priority">The priority</param>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_LogMessage(
+        public static unsafe void SDL_LogMessage(
             int category,
             SdlLogPriority priority,
             string fmtAndArglist
         )
         {
             int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte* utf8FmtAndArglist = stackalloc byte[utf8FmtAndArglistBufSize];
             INTERNAL_SDL_LogMessage(
                 category,
                 priority,
-                Utf8Encode(fmtAndArglist, new byte[utf8FmtAndArglistBufSize])
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
             );
         }
 
@@ -1844,10 +1941,10 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="priority">The priority</param>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogMessageV", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_LogMessageV(
+        private static extern unsafe void INTERNAL_SDL_LogMessageV(
             int category,
             SdlLogPriority priority,
-            byte[] fmtAndArglist
+            byte* fmtAndArglist
         );
 
         /// <summary>
@@ -1856,17 +1953,18 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="category">The category</param>
         /// <param name="priority">The priority</param>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_LogMessageV(
+        public static unsafe void SDL_LogMessageV(
             int category,
             SdlLogPriority priority,
             string fmtAndArglist
         )
         {
             int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte* utf8FmtAndArglist = stackalloc byte[utf8FmtAndArglistBufSize];
             INTERNAL_SDL_LogMessageV(
                 category,
                 priority,
-                Utf8Encode(fmtAndArglist, new byte[utf8FmtAndArglistBufSize])
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
             );
         }
 
@@ -1992,7 +2090,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="messageboxdata">The messageboxdata</param>
         /// <param name="buttonid">The buttonid</param>
         /// <returns>The result</returns>
-        public static  int SDL_ShowMessageBox([In] ref SdlMessageBoxData messageboxdata, out int buttonid)
+        public static unsafe int SDL_ShowMessageBox([In] ref SdlMessageBoxData messageboxdata, out int buttonid)
         {
             InternalSdlMessageBoxData data = new InternalSdlMessageBoxData
             {
@@ -2021,7 +2119,11 @@ namespace Alis.Core.Graphic.SDL
             }
 
             int result;
-            result = INTERNAL_SDL_ShowMessageBox(ref data, out buttonid);
+            fixed (InternalSdlMessageBoxButtonData* buttonsPtr = &buttons[0])
+            {
+                data.buttons = (IntPtr) buttonsPtr;
+                result = INTERNAL_SDL_ShowMessageBox(ref data, out buttonid);
+            }
 
             Marshal.FreeHGlobal(data.colorScheme);
             for (int i = 0; i < messageboxdata.numbuttons; i++)
@@ -2045,10 +2147,10 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="window">The window</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_ShowSimpleMessageBox", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_SDL_ShowSimpleMessageBox(
+        private static extern unsafe int INTERNAL_SDL_ShowSimpleMessageBox(
             SdlMessageBoxFlags flags,
-            byte[] title,
-            byte[] message,
+            byte* title,
+            byte* message,
             IntPtr window
         );
 
@@ -2060,7 +2162,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="message">The message</param>
         /// <param name="window">The window</param>
         /// <returns>The int</returns>
-        public static  int SDL_ShowSimpleMessageBox(
+        public static unsafe int SDL_ShowSimpleMessageBox(
             SdlMessageBoxFlags flags,
             string title,
             string message,
@@ -2068,13 +2170,15 @@ namespace Alis.Core.Graphic.SDL
         )
         {
             int utf8TitleBufSize = Utf8Size(title);
-            
+            byte* utf8Title = stackalloc byte[utf8TitleBufSize];
+
             int utf8MessageBufSize = Utf8Size(message);
-            
+            byte* utf8Message = stackalloc byte[utf8MessageBufSize];
+
             return INTERNAL_SDL_ShowSimpleMessageBox(
                 flags,
-                Utf8Encode(title, new byte[utf8TitleBufSize]),
-                Utf8Encode(message, new byte[utf8MessageBufSize]),
+                Utf8Encode(title, utf8Title, utf8TitleBufSize),
+                Utf8Encode(message, utf8Message, utf8MessageBufSize),
                 window
             );
         }
@@ -2626,7 +2730,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The bool</returns>
         public static bool SDL_WINDOWPOS_ISCENTERED(int x) => (x & 0xFFFF0000) == SdlWindowposCenteredMask;
 
+        
+        /// <summary>
+        ///     The sdl hittest
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate SdlHitTestResult SdlHitTest(IntPtr win, IntPtr area, IntPtr data);
 
+        
         /// <summary>
         ///     Internals the sdl create window using the specified title
         /// </summary>
@@ -2638,8 +2749,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="flags">The flags</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateWindow", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  IntPtr INTERNAL_SDL_CreateWindow(
-            byte[] title,
+        private static extern unsafe IntPtr INTERNAL_SDL_CreateWindow(
+            byte* title,
             int x,
             int y,
             int w,
@@ -2657,7 +2768,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="h">The </param>
         /// <param name="flags">The flags</param>
         /// <returns>The int ptr</returns>
-        public static  IntPtr SDL_CreateWindow(
+        public static unsafe IntPtr SDL_CreateWindow(
             string title,
             int x,
             int y,
@@ -2666,9 +2777,10 @@ namespace Alis.Core.Graphic.SDL
             SdlWindowFlags flags
         )
         {
-            int utf8TitleBufSize = Utf8Size(title); ;
+            int utf8TitleBufSize = Utf8Size(title);
+            byte* utf8Title = stackalloc byte[utf8TitleBufSize];
             return INTERNAL_SDL_CreateWindow(
-                Utf8Encode(title, new byte[utf8TitleBufSize]),
+                Utf8Encode(title, utf8Title, utf8TitleBufSize),
                 x, y, w, h,
                 flags
             );
@@ -2964,9 +3076,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="name">The name</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowData", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  IntPtr INTERNAL_SDL_GetWindowData(
+        private static extern unsafe IntPtr INTERNAL_SDL_GetWindowData(
             IntPtr window,
-            byte[] name
+            byte* name
         );
 
         /// <summary>
@@ -2975,15 +3087,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="window">The window</param>
         /// <param name="name">The name</param>
         /// <returns>The int ptr</returns>
-        public static  IntPtr SDL_GetWindowData(
+        public static unsafe IntPtr SDL_GetWindowData(
             IntPtr window,
             string name
         )
         {
             int utf8NameBufSize = Utf8Size(name);
+            byte* utf8Name = stackalloc byte[utf8NameBufSize];
             return INTERNAL_SDL_GetWindowData(
                 window,
-                Utf8Encode(name, new byte[utf8NameBufSize])
+                Utf8Encode(name, utf8Name, utf8NameBufSize)
             );
         }
 
@@ -3232,19 +3345,20 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="path">The path</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_LoadLibrary", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_SDL_GL_LoadLibrary(byte[] path);
+        private static extern unsafe int INTERNAL_SDL_GL_LoadLibrary(byte* path);
 
         /// <summary>
         ///     Sdls the gl load library using the specified path
         /// </summary>
         /// <param name="path">The path</param>
         /// <returns>The result</returns>
-        public static  int SDL_GL_LoadLibrary(string path)
+        public static unsafe int SDL_GL_LoadLibrary(string path)
         {
-            byte[] utf8Path = Utf8EncodeHeap(path);
+            byte* utf8Path = Utf8EncodeHeap(path);
             int result = INTERNAL_SDL_GL_LoadLibrary(
                 utf8Path
             );
+            Marshal.FreeHGlobal((IntPtr) utf8Path);
             return result;
         }
 
@@ -3255,18 +3369,20 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="proc">The proc</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GL_GetProcAddress(byte[] proc);
+        public static extern IntPtr SDL_GL_GetProcAddress(IntPtr proc);
+
         
         /// <summary>
         ///     Sdls the gl get proc address using the specified proc
         /// </summary>
         /// <param name="proc">The proc</param>
         /// <returns>The int ptr</returns>
-        public static  IntPtr SDL_GL_GetProcAddress(string proc)
+        public static unsafe IntPtr SDL_GL_GetProcAddress(string proc)
         {
             int utf8ProcBufSize = Utf8Size(proc);
+            byte* utf8Proc = stackalloc byte[utf8ProcBufSize];
             return SDL_GL_GetProcAddress(
-                Utf8Encode(proc, new byte[utf8ProcBufSize])
+                (IntPtr) Utf8Encode(proc, utf8Proc, utf8ProcBufSize)
             );
         }
 
@@ -3282,8 +3398,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="extension">The extension</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_ExtensionSupported", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  SdlBool INTERNAL_SDL_GL_ExtensionSupported(
-            byte[] extension
+        private static extern unsafe SdlBool INTERNAL_SDL_GL_ExtensionSupported(
+            byte* extension
         );
 
         /// <summary>
@@ -3291,11 +3407,12 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="extension">The extension</param>
         /// <returns>The sdl bool</returns>
-        public static  SdlBool SDL_GL_ExtensionSupported(string extension)
+        public static unsafe SdlBool SDL_GL_ExtensionSupported(string extension)
         {
-            int utf8ExtensionBufSize = Utf8Size(extension); ;
+            int utf8ExtensionBufSize = Utf8Size(extension);
+            byte* utf8Extension = stackalloc byte[utf8ExtensionBufSize];
             return INTERNAL_SDL_GL_ExtensionSupported(
-                Utf8Encode(extension, new byte[utf8ExtensionBufSize])
+                Utf8Encode(extension, utf8Extension, utf8ExtensionBufSize)
             );
         }
 
@@ -3486,9 +3603,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="userdata">The userdata</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowData", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  IntPtr INTERNAL_SDL_SetWindowData(
+        private static extern unsafe IntPtr INTERNAL_SDL_SetWindowData(
             IntPtr window,
-            byte[] name,
+            byte* name,
             IntPtr userdata
         );
 
@@ -3499,16 +3616,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="name">The name</param>
         /// <param name="userdata">The userdata</param>
         /// <returns>The int ptr</returns>
-        public static  IntPtr SDL_SetWindowData(
+        public static unsafe IntPtr SDL_SetWindowData(
             IntPtr window,
             string name,
             IntPtr userdata
         )
         {
             int utf8NameBufSize = Utf8Size(name);
+            byte* utf8Name = stackalloc byte[utf8NameBufSize];
             return INTERNAL_SDL_SetWindowData(
                 window,
-                Utf8Encode(name, new byte[utf8NameBufSize]),
+                Utf8Encode(name, utf8Name, utf8NameBufSize),
                 userdata
             );
         }
@@ -3740,9 +3858,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="window">The window</param>
         /// <param name="title">The title</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowTitle", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_SetWindowTitle(
+        private static extern unsafe void INTERNAL_SDL_SetWindowTitle(
             IntPtr window,
-            byte[] title
+            byte* title
         );
 
         /// <summary>
@@ -3750,15 +3868,16 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="window">The window</param>
         /// <param name="title">The title</param>
-        public static  void SDL_SetWindowTitle(
+        public static unsafe void SDL_SetWindowTitle(
             IntPtr window,
             string title
         )
         {
-            int utf8TitleBufSize = Utf8Size(title); ;
+            int utf8TitleBufSize = Utf8Size(title);
+            byte* utf8Title = stackalloc byte[utf8TitleBufSize];
             INTERNAL_SDL_SetWindowTitle(
                 window,
-                Utf8Encode(title, new byte[utf8TitleBufSize])
+                Utf8Encode(title, utf8Title, utf8TitleBufSize)
             );
         }
 
@@ -3800,8 +3919,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="driverName">The driver name</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_VideoInit", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_SDL_VideoInit(
-            byte[] driverName
+        private static extern unsafe int INTERNAL_SDL_VideoInit(
+            byte* driverName
         );
 
         /// <summary>
@@ -3809,11 +3928,12 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="driverName">The driver name</param>
         /// <returns>The int</returns>
-        public static  int SDL_VideoInit(string driverName)
+        public static unsafe int SDL_VideoInit(string driverName)
         {
-            int utf8DriverNameBufSize = Utf8Size(driverName); ;
+            int utf8DriverNameBufSize = Utf8Size(driverName);
+            byte* utf8DriverName = stackalloc byte[utf8DriverNameBufSize];
             return INTERNAL_SDL_VideoInit(
-                Utf8Encode(driverName, new byte[utf8DriverNameBufSize])
+                Utf8Encode(driverName, utf8DriverName, utf8DriverNameBufSize)
             );
         }
 
@@ -4047,8 +4167,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="path">The path</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_Vulkan_LoadLibrary", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_SDL_Vulkan_LoadLibrary(
-            byte[] path
+        private static extern unsafe int INTERNAL_SDL_Vulkan_LoadLibrary(
+            byte* path
         );
 
         /// <summary>
@@ -4056,12 +4176,13 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="path">The path</param>
         /// <returns>The result</returns>
-        public static  int SDL_Vulkan_LoadLibrary(string path)
+        public static unsafe int SDL_Vulkan_LoadLibrary(string path)
         {
-            byte[] utf8Path = Utf8EncodeHeap(path);
+            byte* utf8Path = Utf8EncodeHeap(path);
             int result = INTERNAL_SDL_Vulkan_LoadLibrary(
                 utf8Path
             );
+            Marshal.FreeHGlobal((IntPtr) utf8Path);
             return result;
         }
 
@@ -7724,8 +7845,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="text">The text</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetClipboardText", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_SDL_SetClipboardText(
-            byte[] text
+        private static extern unsafe int INTERNAL_SDL_SetClipboardText(
+            byte* text
         );
 
         /// <summary>
@@ -7733,14 +7854,15 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="text">The text</param>
         /// <returns>The result</returns>
-        public static  int SDL_SetClipboardText(
+        public static unsafe int SDL_SetClipboardText(
             string text
         )
         {
-            byte[] utf8Text = Utf8EncodeHeap(text);
+            byte* utf8Text = Utf8EncodeHeap(text);
             int result = INTERNAL_SDL_SetClipboardText(
                 utf8Text
             );
+            Marshal.FreeHGlobal((IntPtr) utf8Text);
             return result;
         }
 
@@ -7769,6 +7891,15 @@ namespace Alis.Core.Graphic.SDL
         public const int SdlTextinputeventTextSize = 32;
 
 
+        /// <summary>
+        ///     The sdl eventfilter
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate int SdlEventFilter(
+            IntPtr userdata, 
+            IntPtr sdlevent 
+        );
+        
         /// <summary>
         ///     Sdls the pump events
         /// </summary>
@@ -8084,8 +8215,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="name">The name</param>
         /// <returns>The sdl scancode</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetScancodeFromName", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  SdlScancode INTERNAL_SDL_GetScancodeFromName(
-            byte[] name
+        private static extern unsafe SdlScancode INTERNAL_SDL_GetScancodeFromName(
+            byte* name
         );
 
         /// <summary>
@@ -8093,11 +8224,12 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The sdl scancode</returns>
-        public static  SdlScancode SDL_GetScancodeFromName(string name)
+        public static unsafe SdlScancode SDL_GetScancodeFromName(string name)
         {
-            int utf8NameBufSize = Utf8Size(name); ;
+            int utf8NameBufSize = Utf8Size(name);
+            byte* utf8Name = stackalloc byte[utf8NameBufSize];
             return INTERNAL_SDL_GetScancodeFromName(
-                Utf8Encode(name, new byte[utf8NameBufSize])
+                Utf8Encode(name, utf8Name, utf8NameBufSize)
             );
         }
         
@@ -8122,8 +8254,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="name">The name</param>
         /// <returns>The sdl keycode</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyFromName", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  SdlKeycode INTERNAL_SDL_GetKeyFromName(
-            byte[] name
+        private static extern unsafe SdlKeycode INTERNAL_SDL_GetKeyFromName(
+            byte* name
         );
 
         /// <summary>
@@ -8131,11 +8263,12 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The sdl keycode</returns>
-        public static  SdlKeycode SDL_GetKeyFromName(string name)
+        public static unsafe SdlKeycode SDL_GetKeyFromName(string name)
         {
             int utf8NameBufSize = Utf8Size(name);
+            byte* utf8Name = stackalloc byte[utf8NameBufSize];
             return INTERNAL_SDL_GetKeyFromName(
-                Utf8Encode(name, new byte[utf8NameBufSize])
+                Utf8Encode(name, utf8Name, utf8NameBufSize)
             );
         }
         
@@ -8799,8 +8932,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pchGuid">The pch guid</param>
         /// <returns>The guid</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetGUIDFromString", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  Guid INTERNAL_SDL_JoystickGetGUIDFromString(
-            byte[] pchGuid
+        private static extern unsafe Guid INTERNAL_SDL_JoystickGetGUIDFromString(
+            byte* pchGuid
         );
 
         /// <summary>
@@ -8808,11 +8941,12 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="pchGuid">The pch guid</param>
         /// <returns>The guid</returns>
-        public static  Guid SDL_JoystickGetGUIDFromString(string pchGuid)
+        public static unsafe Guid SDL_JoystickGetGUIDFromString(string pchGuid)
         {
             int utf8PchGuidBufSize = Utf8Size(pchGuid);
+            byte* utf8PchGuid = stackalloc byte[utf8PchGuidBufSize];
             return INTERNAL_SDL_JoystickGetGUIDFromString(
-                Utf8Encode(pchGuid, new byte[utf8PchGuidBufSize])
+                Utf8Encode(pchGuid, utf8PchGuid, utf8PchGuidBufSize)
             );
         }
 
@@ -9145,8 +9279,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="mappingString">The mapping string</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerAddMapping", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_SDL_GameControllerAddMapping(
-            byte[] mappingString
+        private static extern unsafe int INTERNAL_SDL_GameControllerAddMapping(
+            byte* mappingString
         );
 
         /// <summary>
@@ -9154,14 +9288,15 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="mappingString">The mapping string</param>
         /// <returns>The result</returns>
-        public static  int SDL_GameControllerAddMapping(
+        public static unsafe int SDL_GameControllerAddMapping(
             string mappingString
         )
         {
-            byte[] utf8MappingString = Utf8EncodeHeap(mappingString);
+            byte* utf8MappingString = Utf8EncodeHeap(mappingString);
             int result = INTERNAL_SDL_GameControllerAddMapping(
                 utf8MappingString
             );
+            Marshal.FreeHGlobal((IntPtr) utf8MappingString);
             return result;
         }
 
@@ -9448,8 +9583,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller axis</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetAxisFromString", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  SdlGameControllerAxis INTERNAL_SDL_GameControllerGetAxisFromString(
-            byte[] pchString
+        private static extern unsafe SdlGameControllerAxis INTERNAL_SDL_GameControllerGetAxisFromString(
+            byte* pchString
         );
 
         /// <summary>
@@ -9457,13 +9592,14 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller axis</returns>
-        public static  SdlGameControllerAxis SDL_GameControllerGetAxisFromString(
+        public static unsafe SdlGameControllerAxis SDL_GameControllerGetAxisFromString(
             string pchString
         )
         {
-            int utf8PchStringBufSize = Utf8Size(pchString); ;
+            int utf8PchStringBufSize = Utf8Size(pchString);
+            byte* utf8PchString = stackalloc byte[utf8PchStringBufSize];
             return INTERNAL_SDL_GameControllerGetAxisFromString(
-                Utf8Encode(pchString, new byte[utf8PchStringBufSize])
+                Utf8Encode(pchString, utf8PchString, utf8PchStringBufSize)
             );
         }
 
@@ -9546,8 +9682,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller button</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetButtonFromString", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  SdlGameControllerButton INTERNAL_SDL_GameControllerGetButtonFromString(
-            byte[] pchString
+        private static extern unsafe SdlGameControllerButton INTERNAL_SDL_GameControllerGetButtonFromString(
+            byte* pchString
         );
 
         /// <summary>
@@ -9555,13 +9691,14 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller button</returns>
-        public static  SdlGameControllerButton SDL_GameControllerGetButtonFromString(
+        public static unsafe SdlGameControllerButton SDL_GameControllerGetButtonFromString(
             string pchString
         )
         {
             int utf8PchStringBufSize = Utf8Size(pchString);
+            byte* utf8PchString = stackalloc byte[utf8PchStringBufSize];
             return INTERNAL_SDL_GameControllerGetButtonFromString(
-                Utf8Encode(pchString, new byte[utf8PchStringBufSize])
+                Utf8Encode(pchString, utf8PchString, utf8PchStringBufSize)
             );
         }
 
@@ -10722,25 +10859,37 @@ namespace Alis.Core.Graphic.SDL
 
 
         /// <summary>
+        ///     The sdl audiocallback
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate void SdlAudioCallback(
+            IntPtr userdata,
+            IntPtr stream,
+            int len
+        );
+
+        /// <summary>
         ///     Internals the sdl audio init using the specified driver name
         /// </summary>
         /// <param name="driverName">The driver name</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AudioInit", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_SDL_AudioInit(
-            byte[] driverName
+        private static extern unsafe int INTERNAL_SDL_AudioInit(
+            byte* driverName
         );
 
         /// <summary>
-        ///     SDL audio init using the specified driver name
+        ///     Sdls the audio init using the specified driver name
         /// </summary>
         /// <param name="driverName">The driver name</param>
         /// <returns>The int</returns>
-        public static int SDL_AudioInit(string driverName)
+        public static unsafe int SDL_AudioInit(string driverName)
         {
             int utf8DriverNameBufSize = Utf8Size(driverName);
-            byte[] utf8DriverName = Utf8Encode(driverName, new byte[utf8DriverNameBufSize]);
-            return INTERNAL_SDL_AudioInit(utf8DriverName);
+            byte* utf8DriverName = stackalloc byte[utf8DriverNameBufSize];
+            return INTERNAL_SDL_AudioInit(
+                Utf8Encode(driverName, utf8DriverName, utf8DriverNameBufSize)
+            );
         }
 
         /// <summary>
@@ -11020,8 +11169,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="allowedChanges">The allowed changes</param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_OpenAudioDevice", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  uint INTERNAL_SDL_OpenAudioDevice(
-            byte[] device,
+        private static extern unsafe uint INTERNAL_SDL_OpenAudioDevice(
+            byte* device,
             int iscapture,
             ref SdlAudioSpec desired,
             out SdlAudioSpec obtained,
@@ -11037,7 +11186,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="obtained">The obtained</param>
         /// <param name="allowedChanges">The allowed changes</param>
         /// <returns>The uint</returns>
-        public static  uint SDL_OpenAudioDevice(
+        public static unsafe uint SDL_OpenAudioDevice(
             string device,
             int iscapture,
             ref SdlAudioSpec desired,
@@ -11046,9 +11195,9 @@ namespace Alis.Core.Graphic.SDL
         )
         {
             int utf8DeviceBufSize = Utf8Size(device);
-            byte[] utf8Device = new byte[utf8DeviceBufSize];
+            byte* utf8Device = stackalloc byte[utf8DeviceBufSize];
             return INTERNAL_SDL_OpenAudioDevice(
-                Utf8Encode(device, utf8Device),
+                Utf8Encode(device, utf8Device, utf8DeviceBufSize),
                 iscapture,
                 ref desired,
                 out obtained,
@@ -11257,8 +11406,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 64</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ulong SDL_GetPerformanceFrequency();
+        
+        /// <summary>
+        ///     The sdl timercallback
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate uint SdlTimerCallback(uint interval, IntPtr param);
 
-
+        
         /// <summary>
         ///     Sdls the add timer using the specified interval
         /// </summary>
@@ -11280,6 +11435,18 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_RemoveTimer(int id);
+        
+        /// <summary>
+        ///     The sdl windowsmessagehook
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate IntPtr SdlWindowsMessageHook(
+            IntPtr userdata,
+            IntPtr hWnd,
+            uint message,
+            ulong wParam,
+            long lParam
+        );
 
         /// <summary>
         ///     Sdls the set windows message hook using the specified callback
@@ -11307,6 +11474,12 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_RenderGetD3D11Device(IntPtr renderer);
+        
+        /// <summary>
+        ///     The sdl iphoneanimationcallback
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate void SdlIPhoneAnimationCallback(IntPtr p);
 
         /// <summary>
         ///     Sdls the i phone set animation callback using the specified window
@@ -11437,8 +11610,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="permission">The permission</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AndroidRequestPermission", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  SdlBool INTERNAL_SDL_AndroidRequestPermission(
-            byte[] permission
+        private static extern unsafe SdlBool INTERNAL_SDL_AndroidRequestPermission(
+            byte* permission
         );
 
         /// <summary>
@@ -11446,14 +11619,15 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="permission">The permission</param>
         /// <returns>The result</returns>
-        public static  SdlBool SDL_AndroidRequestPermission(
+        public static unsafe SdlBool SDL_AndroidRequestPermission(
             string permission
         )
         {
-            byte[] permissionPtr = Utf8EncodeHeap(permission);
+            byte* permissionPtr = Utf8EncodeHeap(permission);
             SdlBool result = INTERNAL_SDL_AndroidRequestPermission(
                 permissionPtr
             );
+            Marshal.FreeHGlobal((IntPtr) permissionPtr);
             return result;
         }
         
@@ -11467,8 +11641,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="yOffset">The offset</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AndroidShowToast", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_SDL_AndroidShowToast(
-            byte[] message,
+        private static extern unsafe int INTERNAL_SDL_AndroidShowToast(
+            byte* message,
             int duration,
             int gravity,
             int xOffset,
@@ -11484,7 +11658,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="xOffset">The offset</param>
         /// <param name="yOffset">The offset</param>
         /// <returns>The result</returns>
-        public static  int SDL_AndroidShowToast(
+        public static unsafe int SDL_AndroidShowToast(
             string message,
             int duration,
             int gravity,
@@ -11492,7 +11666,7 @@ namespace Alis.Core.Graphic.SDL
             int yOffset
         )
         {
-            byte[] messagePtr = Utf8EncodeHeap(message);
+            byte* messagePtr = Utf8EncodeHeap(message);
             int result = INTERNAL_SDL_AndroidShowToast(
                 messagePtr,
                 duration,
@@ -11500,6 +11674,7 @@ namespace Alis.Core.Graphic.SDL
                 xOffset,
                 yOffset
             );
+            Marshal.FreeHGlobal((IntPtr) messagePtr);
             return result;
         }
         
@@ -11549,9 +11724,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="app">The app</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetPrefPath", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  IntPtr INTERNAL_SDL_GetPrefPath(
-            byte[] org,
-            byte[] app
+        private static extern unsafe IntPtr INTERNAL_SDL_GetPrefPath(
+            byte* org,
+            byte* app
         );
 
         /// <summary>
@@ -11560,23 +11735,22 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="org">The org</param>
         /// <param name="app">The app</param>
         /// <returns>The string</returns>
-        public static string SDL_GetPrefPath(string org, string app)
+        public static unsafe string SDL_GetPrefPath(string org, string app)
         {
             int utf8OrgBufSize = Utf8Size(org);
-            byte[] utf8Org = new byte[utf8OrgBufSize];
+            byte* utf8Org = stackalloc byte[utf8OrgBufSize];
 
             int utf8AppBufSize = Utf8Size(app);
-            byte[] utf8App = new byte[utf8AppBufSize];
-
-            Utf8Encode(org, utf8Org);
-            Utf8Encode(app, utf8App);
+            byte* utf8App = stackalloc byte[utf8AppBufSize];
 
             return UTF8_ToManaged(
-                INTERNAL_SDL_GetPrefPath(utf8Org, utf8App),
+                INTERNAL_SDL_GetPrefPath(
+                    Utf8Encode(org, utf8Org, utf8OrgBufSize),
+                    Utf8Encode(app, utf8App, utf8AppBufSize)
+                ),
                 true
             );
         }
-
 
         /// <summary>
         ///     Sdls the get power info using the specified secs
@@ -11752,17 +11926,18 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="url">The url</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_OpenURL", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_SDL_OpenURL(byte[] url);
+        private static extern unsafe int INTERNAL_SDL_OpenURL(byte* url);
 
         /// <summary>
         ///     Sdls the open url using the specified url
         /// </summary>
         /// <param name="url">The url</param>
         /// <returns>The result</returns>
-        public static  int SDL_OpenURL(string url)
+        public static unsafe int SDL_OpenURL(string url)
         {
-            byte[] urlPtr = Utf8EncodeHeap(url);
+            byte* urlPtr = Utf8EncodeHeap(url);
             int result = INTERNAL_SDL_OpenURL(urlPtr);
+            Marshal.FreeHGlobal((IntPtr) urlPtr);
             return result;
         }
     }
