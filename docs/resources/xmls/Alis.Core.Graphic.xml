@@ -9564,7 +9564,7 @@
         </member>
         <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding">
             <summary>
-            The padding
+                The padding
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlEventaction">
@@ -10796,6 +10796,310 @@
             <summary>
                 The sdl hint override sdl hintpriority
             </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlImage">
+            <summary>
+                The sdl image class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.#cctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Graphic.SDL.SdlImage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlImage.NativeLibName">
+            <summary>
+                The native lib name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlImage.SdlImageMajorVersion">
+            <summary>
+                The sdl image major version
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlImage.SdlImageMinorVersion">
+            <summary>
+                The sdl image minor version
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlImage.SdlImagePatchlevel">
+            <summary>
+                The sdl image patchlevel
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlImage.ImgInitFlags">
+            <summary>
+                The img initflags enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlImage.ImgInitFlags.ImgInitJpg">
+            <summary>
+                The img init jpg img initflags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlImage.ImgInitFlags.ImgInitPng">
+            <summary>
+                The img init png img initflags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlImage.ImgInitFlags.ImgInitTif">
+            <summary>
+                The img init tif img initflags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlImage.ImgInitFlags.ImgInitWebp">
+            <summary>
+                The img init webp img initflags
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.SDL_IMAGE_VERSION(Alis.Core.Graphic.SDL.SdlVersion@)">
+            <summary>
+                Sdls the image version using the specified x
+            </summary>
+            <param name="x">The </param>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.INTERNAL_IMG_Linked_Version">
+            <summary>
+                Internals the img linked version
+            </summary>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_Linked_Version">
+            <summary>
+                Imgs the linked version
+            </summary>
+            <returns>The result</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_Init(Alis.Core.Graphic.SDL.SdlImage.ImgInitFlags)">
+            <summary>
+                Imgs the init using the specified flags
+            </summary>
+            <param name="flags">The flags</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_Quit">
+            <summary>
+                Imgs the quit
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.INTERNAL_IMG_Load(System.Byte*)">
+            <summary>
+                Internals the img load using the specified file
+            </summary>
+            <param name="file">The file</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_Load(System.String)">
+            <summary>
+                Imgs the load using the specified file
+            </summary>
+            <param name="file">The file</param>
+            <returns>The handle</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_Load_RW(System.IntPtr,System.Int32)">
+            <summary>
+                Imgs the load rw using the specified src
+            </summary>
+            <param name="src">The src</param>
+            <param name="freesrc">The freesrc</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.INTERNAL_IMG_LoadTyped_RW(System.IntPtr,System.Int32,System.Byte*)">
+            <summary>
+                Internals the img load typed rw using the specified src
+            </summary>
+            <param name="src">The src</param>
+            <param name="freesrc">The freesrc</param>
+            <param name="type">The type</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_LoadTyped_RW(System.IntPtr,System.Int32,System.String)">
+            <summary>
+                Imgs the load typed rw using the specified src
+            </summary>
+            <param name="src">The src</param>
+            <param name="freesrc">The freesrc</param>
+            <param name="type">The type</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.INTERNAL_IMG_LoadTexture(System.IntPtr,System.Byte*)">
+            <summary>
+                Internals the img load texture using the specified renderer
+            </summary>
+            <param name="renderer">The renderer</param>
+            <param name="file">The file</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_LoadTexture(System.IntPtr,System.String)">
+            <summary>
+                Imgs the load texture using the specified renderer
+            </summary>
+            <param name="renderer">The renderer</param>
+            <param name="file">The file</param>
+            <returns>The handle</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_LoadTexture_RW(System.IntPtr,System.IntPtr,System.Int32)">
+            <summary>
+                Imgs the load texture rw using the specified renderer
+            </summary>
+            <param name="renderer">The renderer</param>
+            <param name="src">The src</param>
+            <param name="freesrc">The freesrc</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.INTERNAL_IMG_LoadTextureTyped_RW(System.IntPtr,System.IntPtr,System.Int32,System.Byte*)">
+            <summary>
+                Internals the img load texture typed rw using the specified renderer
+            </summary>
+            <param name="renderer">The renderer</param>
+            <param name="src">The src</param>
+            <param name="freesrc">The freesrc</param>
+            <param name="type">The type</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_LoadTextureTyped_RW(System.IntPtr,System.IntPtr,System.Int32,System.String)">
+            <summary>
+                Imgs the load texture typed rw using the specified renderer
+            </summary>
+            <param name="renderer">The renderer</param>
+            <param name="src">The src</param>
+            <param name="freesrc">The freesrc</param>
+            <param name="type">The type</param>
+            <returns>The handle</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_ReadXPMFromArray(System.String[])">
+            <summary>
+                Imgs the read xpm from array using the specified xpm
+            </summary>
+            <param name="xpm">The xpm</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.INTERNAL_IMG_SavePNG(System.IntPtr,System.Byte*)">
+            <summary>
+                Internals the img save png using the specified surface
+            </summary>
+            <param name="surface">The surface</param>
+            <param name="file">The file</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_SavePNG(System.IntPtr,System.String)">
+            <summary>
+                Imgs the save png using the specified surface
+            </summary>
+            <param name="surface">The surface</param>
+            <param name="file">The file</param>
+            <returns>The result</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_SavePNG_RW(System.IntPtr,System.IntPtr,System.Int32)">
+            <summary>
+                Imgs the save png rw using the specified surface
+            </summary>
+            <param name="surface">The surface</param>
+            <param name="dst">The dst</param>
+            <param name="freedst">The freedst</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.INTERNAL_IMG_SaveJPG(System.IntPtr,System.Byte*,System.Int32)">
+            <summary>
+                Internals the img save jpg using the specified surface
+            </summary>
+            <param name="surface">The surface</param>
+            <param name="file">The file</param>
+            <param name="quality">The quality</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_SaveJPG(System.IntPtr,System.String,System.Int32)">
+            <summary>
+                Imgs the save jpg using the specified surface
+            </summary>
+            <param name="surface">The surface</param>
+            <param name="file">The file</param>
+            <param name="quality">The quality</param>
+            <returns>The result</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_SaveJPG_RW(System.IntPtr,System.IntPtr,System.Int32,System.Int32)">
+            <summary>
+                Imgs the save jpg rw using the specified surface
+            </summary>
+            <param name="surface">The surface</param>
+            <param name="dst">The dst</param>
+            <param name="freedst">The freedst</param>
+            <param name="quality">The quality</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_GetError">
+            <summary>
+                Imgs the get error
+            </summary>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_SetError(System.String)">
+            <summary>
+                Imgs the set error using the specified fmt and arglist
+            </summary>
+            <param name="fmtAndArglist">The fmt and arglist</param>
+        </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlImage.ImgAnimation">
+            <summary>
+                The img animation
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlImage.ImgAnimation.W">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlImage.ImgAnimation.H">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlImage.ImgAnimation.Frames">
+            <summary>
+                The frames
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlImage.ImgAnimation.Delays">
+            <summary>
+                The delays
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_LoadAnimation(System.String)">
+            <summary>
+                Imgs the load animation using the specified file
+            </summary>
+            <param name="file">The file</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_LoadAnimation_RW(System.IntPtr,System.Int32)">
+            <summary>
+                Imgs the load animation rw using the specified src
+            </summary>
+            <param name="src">The src</param>
+            <param name="freesrc">The freesrc</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_LoadAnimationTyped_RW(System.IntPtr,System.Int32,System.String)">
+            <summary>
+                Imgs the load animation typed rw using the specified src
+            </summary>
+            <param name="src">The src</param>
+            <param name="freesrc">The freesrc</param>
+            <param name="type">The type</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_FreeAnimation(System.IntPtr)">
+            <summary>
+                Imgs the free animation using the specified anim
+            </summary>
+            <param name="anim">The anim</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_LoadGIFAnimation_RW(System.IntPtr)">
+            <summary>
+                Imgs the load gif animation rw using the specified src
+            </summary>
+            <param name="src">The src</param>
+            <returns>The int ptr</returns>
         </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlJoyAxisEvent">
             <summary>
@@ -15051,6 +15355,801 @@
             <summary>
                 The window id
             </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlTtf">
+            <summary>
+                The sdl ttf class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.#cctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Graphic.SDL.SdlTtf" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTtf.NativeLibName">
+            <summary>
+                The native lib name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTtf.SdlTtfMajorVersion">
+            <summary>
+                The sdl ttf major version
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTtf.SdlTtfMinorVersion">
+            <summary>
+                The sdl ttf minor version
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTtf.SdlTtfPatchlevel">
+            <summary>
+                The sdl ttf patchlevel
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTtf.UnicodeBomNative">
+            <summary>
+                The unicode bom native
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTtf.UnicodeBomSwapped">
+            <summary>
+                The unicode bom swapped
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTtf.TtfStyleNormal">
+            <summary>
+                The ttf style normal
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTtf.TtfStyleBold">
+            <summary>
+                The ttf style bold
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTtf.TtfStyleItalic">
+            <summary>
+                The ttf style italic
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTtf.TtfStyleUnderline">
+            <summary>
+                The ttf style underline
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTtf.TtfStyleStrikethrough">
+            <summary>
+                The ttf style strikethrough
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTtf.TtfHintingNormal">
+            <summary>
+                The ttf hinting normal
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTtf.TtfHintingLight">
+            <summary>
+                The ttf hinting light
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTtf.TtfHintingMono">
+            <summary>
+                The ttf hinting mono
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTtf.TtfHintingNone">
+            <summary>
+                The ttf hinting none
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTtf.TtfHintingLightSubpixel">
+            <summary>
+                The ttf hinting light subpixel
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.SDL_TTF_VERSION(Alis.Core.Graphic.SDL.SdlVersion@)">
+            <summary>
+                Sdls the ttf version using the specified x
+            </summary>
+            <param name="x">The </param>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_LinkedVersion">
+            <summary>
+                Internals the ttf linked version
+            </summary>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_LinkedVersion">
+            <summary>
+                Ttfs the linked version
+            </summary>
+            <returns>The result</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_ByteSwappedUNICODE(System.Int32)">
+            <summary>
+                Ttfs the byte swapped unicode using the specified swapped
+            </summary>
+            <param name="swapped">The swapped</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_Init">
+            <summary>
+                Ttfs the init
+            </summary>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_OpenFont(System.Byte*,System.Int32)">
+            <summary>
+                Internals the ttf open font using the specified file
+            </summary>
+            <param name="file">The file</param>
+            <param name="ptsize">The ptsize</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_OpenFont(System.String,System.Int32)">
+            <summary>
+                Ttfs the open font using the specified file
+            </summary>
+            <param name="file">The file</param>
+            <param name="ptsize">The ptsize</param>
+            <returns>The handle</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_OpenFontRW(System.IntPtr,System.Int32,System.Int32)">
+            <summary>
+                Ttfs the open font rw using the specified src
+            </summary>
+            <param name="src">The src</param>
+            <param name="freesrc">The freesrc</param>
+            <param name="ptsize">The ptsize</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_OpenFontIndex(System.Byte*,System.Int32,System.Int64)">
+            <summary>
+                Internals the ttf open font index using the specified file
+            </summary>
+            <param name="file">The file</param>
+            <param name="ptsize">The ptsize</param>
+            <param name="index">The index</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_OpenFontIndex(System.String,System.Int32,System.Int64)">
+            <summary>
+                Ttfs the open font index using the specified file
+            </summary>
+            <param name="file">The file</param>
+            <param name="ptsize">The ptsize</param>
+            <param name="index">The index</param>
+            <returns>The handle</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_OpenFontIndexRW(System.IntPtr,System.Int32,System.Int32,System.Int64)">
+            <summary>
+                Ttfs the open font index rw using the specified src
+            </summary>
+            <param name="src">The src</param>
+            <param name="freesrc">The freesrc</param>
+            <param name="ptsize">The ptsize</param>
+            <param name="index">The index</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_SetFontSize(System.IntPtr,System.Int32)">
+            <summary>
+                Ttfs the set font size using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="ptsize">The ptsize</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_GetFontStyle(System.IntPtr)">
+            <summary>
+                Ttfs the get font style using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_SetFontStyle(System.IntPtr,System.Int32)">
+            <summary>
+                Ttfs the set font style using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="style">The style</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_GetFontOutline(System.IntPtr)">
+            <summary>
+                Ttfs the get font outline using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_SetFontOutline(System.IntPtr,System.Int32)">
+            <summary>
+                Ttfs the set font outline using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="outline">The outline</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_GetFontHinting(System.IntPtr)">
+            <summary>
+                Ttfs the get font hinting using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_SetFontHinting(System.IntPtr,System.Int32)">
+            <summary>
+                Ttfs the set font hinting using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="hinting">The hinting</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_FontHeight(System.IntPtr)">
+            <summary>
+                Ttfs the font height using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_FontAscent(System.IntPtr)">
+            <summary>
+                Ttfs the font ascent using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_FontDescent(System.IntPtr)">
+            <summary>
+                Ttfs the font descent using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_FontLineSkip(System.IntPtr)">
+            <summary>
+                Ttfs the font line skip using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_GetFontKerning(System.IntPtr)">
+            <summary>
+                Ttfs the get font kerning using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_SetFontKerning(System.IntPtr,System.Int32)">
+            <summary>
+                Ttfs the set font kerning using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="allowed">The allowed</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_FontFaces(System.IntPtr)">
+            <summary>
+                Ttfs the font faces using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_FontFaceIsFixedWidth(System.IntPtr)">
+            <summary>
+                Ttfs the font face is fixed width using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_FontFaceFamilyName(System.IntPtr)">
+            <summary>
+                Internals the ttf font face family name using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_FontFaceFamilyName(System.IntPtr)">
+            <summary>
+                Ttfs the font face family name using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_FontFaceStyleName(System.IntPtr)">
+            <summary>
+                Internals the ttf font face style name using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_FontFaceStyleName(System.IntPtr)">
+            <summary>
+                Ttfs the font face style name using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_GlyphIsProvided(System.IntPtr,System.UInt16)">
+            <summary>
+                Ttfs the glyph is provided using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="ch">The ch</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_GlyphIsProvided32(System.IntPtr,System.UInt32)">
+            <summary>
+                Ttfs the glyph is provided 32 using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="ch">The ch</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_GlyphMetrics(System.IntPtr,System.UInt16,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)">
+            <summary>
+                Ttfs the glyph metrics using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="ch">The ch</param>
+            <param name="minx">The minx</param>
+            <param name="maxx">The maxx</param>
+            <param name="miny">The miny</param>
+            <param name="maxy">The maxy</param>
+            <param name="advance">The advance</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_GlyphMetrics32(System.IntPtr,System.UInt32,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Int32@)">
+            <summary>
+                Ttfs the glyph metrics 32 using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="ch">The ch</param>
+            <param name="minx">The minx</param>
+            <param name="maxx">The maxx</param>
+            <param name="miny">The miny</param>
+            <param name="maxy">The maxy</param>
+            <param name="advance">The advance</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_SizeText(System.IntPtr,System.String,System.Int32@,System.Int32@)">
+            <summary>
+                Ttfs the size text using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="w">The </param>
+            <param name="h">The </param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_SizeUTF8(System.IntPtr,System.Byte*,System.Int32@,System.Int32@)">
+            <summary>
+                Internals the ttf size utf 8 using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="w">The </param>
+            <param name="h">The </param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_SizeUTF8(System.IntPtr,System.String,System.Int32@,System.Int32@)">
+            <summary>
+                Ttfs the size utf 8 using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="w">The </param>
+            <param name="h">The </param>
+            <returns>The result</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_SizeUNICODE(System.IntPtr,System.String,System.Int32@,System.Int32@)">
+            <summary>
+                Ttfs the size unicode using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="w">The </param>
+            <param name="h">The </param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_MeasureText(System.IntPtr,System.String,System.Int32,System.Int32@,System.Int32@)">
+            <summary>
+                Ttfs the measure text using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="measureWidth">The measure width</param>
+            <param name="extent">The extent</param>
+            <param name="count">The count</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_MeasureUTF8(System.IntPtr,System.Byte*,System.Int32,System.Int32@,System.Int32@)">
+            <summary>
+                Internals the ttf measure utf 8 using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="measureWidth">The measure width</param>
+            <param name="extent">The extent</param>
+            <param name="count">The count</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_MeasureUTF8(System.IntPtr,System.String,System.Int32,System.Int32@,System.Int32@)">
+            <summary>
+                Ttfs the measure utf 8 using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="measureWidth">The measure width</param>
+            <param name="extent">The extent</param>
+            <param name="count">The count</param>
+            <returns>The result</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_MeasureUNICODE(System.IntPtr,System.String,System.Int32,System.Int32@,System.Int32@)">
+            <summary>
+                Ttfs the measure unicode using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="measureWidth">The measure width</param>
+            <param name="extent">The extent</param>
+            <param name="count">The count</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderText_Solid(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor)">
+            <summary>
+                Ttfs the render text solid using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_RenderUTF8_Solid(System.IntPtr,System.Byte*,Alis.Core.Graphic.SDL.SdlColor)">
+            <summary>
+                Internals the ttf render utf 8 solid using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUTF8_Solid(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor)">
+            <summary>
+                Ttfs the render utf 8 solid using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <returns>The result</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUNICODE_Solid(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor)">
+            <summary>
+                Ttfs the render unicode solid using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderText_Solid_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+            <summary>
+                Ttfs the render text solid wrapped using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <param name="wrapLength">The wrap length</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_RenderUTF8_Solid_Wrapped(System.IntPtr,System.Byte*,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+            <summary>
+                Internals the ttf render utf 8 solid wrapped using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <param name="wrapLength">The wrap length</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUTF8_Solid_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+            <summary>
+                Ttfs the render utf 8 solid wrapped using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <param name="wrapLength">The wrap length</param>
+            <returns>The result</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUNICODE_Solid_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+            <summary>
+                Ttfs the render unicode solid wrapped using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <param name="wrapLength">The wrap length</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderGlyph_Solid(System.IntPtr,System.UInt16,Alis.Core.Graphic.SDL.SdlColor)">
+            <summary>
+                Ttfs the render glyph solid using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="ch">The ch</param>
+            <param name="fg">The fg</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderGlyph32_Solid(System.IntPtr,System.UInt32,Alis.Core.Graphic.SDL.SdlColor)">
+            <summary>
+                Ttfs the render glyph 32 solid using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="ch">The ch</param>
+            <param name="fg">The fg</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderText_Shaded(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor)">
+            <summary>
+                Ttfs the render text shaded using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <param name="bg">The bg</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_RenderUTF8_Shaded(System.IntPtr,System.Byte*,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor)">
+            <summary>
+                Internals the ttf render utf 8 shaded using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <param name="bg">The bg</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUTF8_Shaded(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor)">
+            <summary>
+                Ttfs the render utf 8 shaded using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <param name="bg">The bg</param>
+            <returns>The result</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUNICODE_Shaded(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor)">
+            <summary>
+                Ttfs the render unicode shaded using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <param name="bg">The bg</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderText_Shaded_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+            <summary>
+                Ttfs the render text shaded wrapped using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <param name="bg">The bg</param>
+            <param name="wrapLength">The wrap length</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_RenderUTF8_Shaded_Wrapped(System.IntPtr,System.Byte*,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+            <summary>
+                Internals the ttf render utf 8 shaded wrapped using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <param name="bg">The bg</param>
+            <param name="wrapLength">The wrap length</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUTF8_Shaded_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+            <summary>
+                Ttfs the render utf 8 shaded wrapped using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <param name="bg">The bg</param>
+            <param name="wrapLength">The wrap length</param>
+            <returns>The result</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUNICODE_Shaded_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+            <summary>
+                Ttfs the render unicode shaded wrapped using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <param name="bg">The bg</param>
+            <param name="wrapLength">The wrap length</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderGlyph_Shaded(System.IntPtr,System.UInt16,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor)">
+            <summary>
+                Ttfs the render glyph shaded using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="ch">The ch</param>
+            <param name="fg">The fg</param>
+            <param name="bg">The bg</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderGlyph32_Shaded(System.IntPtr,System.UInt32,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor)">
+            <summary>
+                Ttfs the render glyph 32 shaded using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="ch">The ch</param>
+            <param name="fg">The fg</param>
+            <param name="bg">The bg</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderText_Blended(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor)">
+            <summary>
+                Ttfs the render text blended using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_RenderUTF8_Blended(System.IntPtr,System.Byte*,Alis.Core.Graphic.SDL.SdlColor)">
+            <summary>
+                Internals the ttf render utf 8 blended using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUTF8_Blended(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor)">
+            <summary>
+                Ttfs the render utf 8 blended using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <returns>The result</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUNICODE_Blended(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor)">
+            <summary>
+                Ttfs the render unicode blended using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderText_Blended_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+            <summary>
+                Ttfs the render text blended wrapped using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <param name="wrapped">The wrapped</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_RenderUTF8_Blended_Wrapped(System.IntPtr,System.Byte*,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+            <summary>
+                Internals the ttf render utf 8 blended wrapped using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <param name="wrapped">The wrapped</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUTF8_Blended_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+            <summary>
+                Ttfs the render utf 8 blended wrapped using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <param name="wrapped">The wrapped</param>
+            <returns>The result</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUNICODE_Blended_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+            <summary>
+                Ttfs the render unicode blended wrapped using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="text">The text</param>
+            <param name="fg">The fg</param>
+            <param name="wrapped">The wrapped</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderGlyph_Blended(System.IntPtr,System.UInt16,Alis.Core.Graphic.SDL.SdlColor)">
+            <summary>
+                Ttfs the render glyph blended using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="ch">The ch</param>
+            <param name="fg">The fg</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderGlyph32_Blended(System.IntPtr,System.UInt32,Alis.Core.Graphic.SDL.SdlColor)">
+            <summary>
+                Ttfs the render glyph 32 blended using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="ch">The ch</param>
+            <param name="fg">The fg</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_SetDirection(System.Int32)">
+            <summary>
+                Ttfs the set direction using the specified direction
+            </summary>
+            <param name="direction">The direction</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_SetScript(System.Int32)">
+            <summary>
+                Ttfs the set script using the specified script
+            </summary>
+            <param name="script">The script</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_CloseFont(System.IntPtr)">
+            <summary>
+                Ttfs the close font using the specified font
+            </summary>
+            <param name="font">The font</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_Quit">
+            <summary>
+                Ttfs the quit
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_WasInit">
+            <summary>
+                Ttfs the was init
+            </summary>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.SDL_GetFontKerningSize(System.IntPtr,System.Int32,System.Int32)">
+            <summary>
+                Sdls the get font kerning size using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="prevIndex">The prev index</param>
+            <param name="index">The index</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_GetFontKerningSizeGlyphs(System.IntPtr,System.UInt16,System.UInt16)">
+            <summary>
+                Ttfs the get font kerning size glyphs using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="previousCh">The previous ch</param>
+            <param name="ch">The ch</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_GetFontKerningSizeGlyphs32(System.IntPtr,System.UInt16,System.UInt16)">
+            <summary>
+                Ttfs the get font kerning size glyphs 32 using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="previousCh">The previous ch</param>
+            <param name="ch">The ch</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_GetError">
+            <summary>
+                Ttfs the get error
+            </summary>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_SetError(System.String)">
+            <summary>
+                Ttfs the set error using the specified fmt and arglist
+            </summary>
+            <param name="fmtAndArglist">The fmt and arglist</param>
         </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlUserEvent">
             <summary>
