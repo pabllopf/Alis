@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.SDL
@@ -35,7 +36,7 @@ namespace Alis.Core.Graphic.SDL
     ///     The sdl texteditingevent
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct SdlTextEditingEvent
+    public struct SdlTextEditingEvent
     {
         /// <summary>
         ///     The type
@@ -55,7 +56,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl texteditingevent text size
         /// </summary>
-        public fixed byte text[Sdl.SdlTexteditingeventTextSize];
+        private IntPtr textPtr;
 
         /// <summary>
         ///     The start
@@ -66,5 +67,19 @@ namespace Alis.Core.Graphic.SDL
         ///     The length
         /// </summary>
         public int length;
+        
+        /// <summary>
+        /// Gets or sets the value of the text
+        /// </summary>
+        public byte[] text
+        {
+            get
+            {
+                byte[] textBytes = new byte[Sdl.SdlTexteditingeventTextSize];
+                Marshal.Copy(textPtr, textBytes, 0, Sdl.SdlTexteditingeventTextSize);
+                return textBytes;
+            }
+            set => Marshal.Copy(value, 0, textPtr, Sdl.SdlTexteditingeventTextSize);
+        }
     }
 }

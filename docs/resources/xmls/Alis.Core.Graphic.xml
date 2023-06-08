@@ -9562,9 +9562,14 @@
                 The drop
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding">
+        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.paddingPtr">
             <summary>
                 The padding
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.SDL.SdlEvent.padding">
+            <summary>
+            Gets or sets the value of the padding
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlEventaction">
@@ -15236,7 +15241,7 @@
                 The window id
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlTextEditingEvent.text">
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextEditingEvent.textPtr">
             <summary>
                 The sdl texteditingevent text size
             </summary>
@@ -15249,6 +15254,11 @@
         <member name="F:Alis.Core.Graphic.SDL.SdlTextEditingEvent.length">
             <summary>
                 The length
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.SDL.SdlTextEditingEvent.text">
+            <summary>
+            Gets or sets the value of the text
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlTextInputEvent">
@@ -15273,7 +15283,7 @@
         </member>
         <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.text">
             <summary>
-                The sdl textinputevent text size
+                The sdl text text size
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlTouchDeviceType">

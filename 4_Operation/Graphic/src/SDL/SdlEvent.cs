@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.SDL
@@ -186,6 +187,20 @@ namespace Alis.Core.Graphic.SDL
         ///     The padding
         /// </summary>
         [FieldOffset(0)]
-        private byte padding;
+        private IntPtr paddingPtr;
+
+        /// <summary>
+        /// Gets or sets the value of the padding
+        /// </summary>
+        public byte[] padding
+        {
+            get
+            {
+                byte[] textBytes = new byte[Sdl.SdlTexteditingeventTextSize];
+                Marshal.Copy(paddingPtr, textBytes, 0, Sdl.SdlTexteditingeventTextSize);
+                return textBytes;
+            }
+            set => Marshal.Copy(value, 0, paddingPtr, Sdl.SdlTexteditingeventTextSize);
+        }
     }
 }
