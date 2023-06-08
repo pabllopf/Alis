@@ -9562,6 +9562,11 @@
                 The drop
             </summary>
         </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding">
+            <summary>
+            The padding
+            </summary>
+        </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlEventaction">
             <summary>
                 The sdl eventaction enum

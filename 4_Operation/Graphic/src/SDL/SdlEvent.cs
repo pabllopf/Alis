@@ -152,5 +152,11 @@ namespace Alis.Core.Graphic.SDL
         ///     The drop
         /// </summary>
          public SdlDropEvent drop;
+        
+        /// <summary>
+        /// The padding
+        /// </summary>
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 56)]
+        public byte[] padding;
     }
 }
