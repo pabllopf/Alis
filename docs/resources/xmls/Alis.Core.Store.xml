@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Alis.Core.Aspect.Memory.Test</name>
+        <name>Alis.Core.Store</name>
     </assembly>
     <members>
     </members>
