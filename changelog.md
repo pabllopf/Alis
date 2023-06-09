@@ -5,6 +5,111 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.0.8] - 2023-06-09
+### :sparkles: New Features
+- [`f69c4b4`](https://github.com/pabllopf/Alis/commit/f69c4b45cf1929cbf9c03aa59b4a7d47e5d22e12) - add the gravity config to physic settings of the videogame *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`37beb39`](https://github.com/pabllopf/Alis/commit/37beb39c229796ef555c7f729b30452b73a5e1a4) - add the angulr velocity to the boxcollider *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`793b734`](https://github.com/pabllopf/Alis/commit/793b734e2aab2c3c8ade8e7671aa0760a0f45e8d) - create new directory to engine Alis.App.Engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fbe66a7`](https://github.com/pabllopf/Alis/commit/fbe66a7bdd696a004845a481cc0de2ab5341ee59) - add native sdl2, imgui and opengl *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`247fad2`](https://github.com/pabllopf/Alis/commit/247fad2f031316e86870304ed5ffc6deffc56237) - add support with sdl2 and opengl *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`98685a2`](https://github.com/pabllopf/Alis/commit/98685a27ce3117374d0f5fa77aea6833da8332dc) - add new sln file to templates of alis *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6114c95`](https://github.com/pabllopf/Alis/commit/6114c95e86f3b78b845ac1473682fbd98c343def) - add new sln to alis.templates *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6dbc2f8`](https://github.com/pabllopf/Alis/commit/6dbc2f801b6338abb100ec09c274291b5e21d8db) - new module Ia and new module profiling *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5b8b791`](https://github.com/pabllopf/Alis/commit/5b8b791a17cd5ff016c5fe99f82ea778236e48da) - add sdl audio backend to audio module. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`55e68ab`](https://github.com/pabllopf/Alis/commit/55e68ab54b3df3eb708eb0ac8aea6004a60b6e3a) - refactor sdl main class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fdd681b`](https://github.com/pabllopf/Alis/commit/fdd681bc7cd5221d43f8f15646053e32263bcec0) - add new 2 controller of windows *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8a5f623`](https://github.com/pabllopf/Alis/commit/8a5f623c0c17171136c7d7a3da470dce7be8a6c1) - new module "Scripting" *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b10e3b8`](https://github.com/pabllopf/Alis/commit/b10e3b81ce0ca1a54d863bb1bdf3e9d7f7ab0ad5) - delete all unsafe code to do more security of sdl module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bb4991f`](https://github.com/pabllopf/Alis/commit/bb4991f3b7d474c4206e8888cabbee5b4f3c1e97) - create store and translation modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5dd931f`](https://github.com/pabllopf/Alis/commit/5dd931f41cdcf0366e337d750ccc5f985028296d) - new module "store" to include the system pay. *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`44df77f`](https://github.com/pabllopf/Alis/commit/44df77fa94854aab373bf83a8346269b9c9515b8) - resources of api graphic *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`31c6e36`](https://github.com/pabllopf/Alis/commit/31c6e369e3fcf1e7dbfa0e82a7ad99fb5730a58e) - the unsafe block of code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6080680`](https://github.com/pabllopf/Alis/commit/60806801f94709f629f3b1a44378171ac636725f) - delete dependencie with unsafe code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ac73804`](https://github.com/pabllopf/Alis/commit/ac738040b969d75608dc0420dd0cda4c007182b0) - restore the sln and update the assets folder of engine. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8239997`](https://github.com/pabllopf/Alis/commit/8239997cd367fd1b143e8aadcf167948372d1424) - imgui module and gen code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`409c7a5`](https://github.com/pabllopf/Alis/commit/409c7a56e9a3f1a40b9fec43c6f04108eb6113b6) - refactor the resources folder to equals on input graphic and audio modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aa85caa`](https://github.com/pabllopf/Alis/commit/aa85caa6b8db0ca6dab9f8f7771b6bedaa26d4b3) - the resources files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0e403fa`](https://github.com/pabllopf/Alis/commit/0e403fa6c025f70b43a7805eb6746829d6ca5a42) - sdl sintax of the main solution *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1542166`](https://github.com/pabllopf/Alis/commit/1542166c01d32fdb6b1225af32080d18955fd67e) - the dir access on windows machines *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d7dd99c`](https://github.com/pabllopf/Alis/commit/d7dd99c160f808ebec29400b13f56514a5fd3890) - Unvalidated local pointer arithmetic *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`96915bd`](https://github.com/pabllopf/Alis/commit/96915bdac406013346c77cc4d88f9b949cb9c71f) - Unvalidated local pointer arithmetic *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6556c13`](https://github.com/pabllopf/Alis/commit/6556c13bd5cfb0c7ff47e7cd6523b06e95a2112b) - the last memory Unvalidated local pointer arithmetic *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`48d978e`](https://github.com/pabllopf/Alis/commit/48d978ea45510794ba73588cb4998f46c48b16cb) - the ramdon generator *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9dbc58e`](https://github.com/pabllopf/Alis/commit/9dbc58e9b284de36c09f1821759b6937ca4162c7) - Make sure that using this pseudorandom number generator is safe here *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e35987b`](https://github.com/pabllopf/Alis/commit/e35987b7dbe5366fdd317d7ecc3f00021c5ffc02) - Remove this unread private field '_seed' or refactor the code to use its value. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8e8833a`](https://github.com/pabllopf/Alis/commit/8e8833a8e8e77d41b4c6f5865f5e87a2f4de1dbe) - Use the 'value' parameter in this property set accessor declaration *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`91f4d71`](https://github.com/pabllopf/Alis/commit/91f4d716fe8ce1833ec400f9b062d8a06db66701) - Make sure this weak hash algorithm is not used in a sensitive context here. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`43ad053`](https://github.com/pabllopf/Alis/commit/43ad0538398dc98a4e7642eff6f55c6603486d6a) - the sdl audio *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6b0c449`](https://github.com/pabllopf/Alis/commit/6b0c4497b937a2c120f2bcddafcacae11778bf8b) - the input system of alis *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`539d624`](https://github.com/pabllopf/Alis/commit/539d6249ae8e4ee9a0a21bf1764ff7f37ff0e0f8) - sdl error with vars *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e2ad49c`](https://github.com/pabllopf/Alis/commit/e2ad49c0a8c9e5e571175728496253a846f207f7) - separate the calls of OpenGL and context code. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1682f83`](https://github.com/pabllopf/Alis/commit/1682f83008ea32b1dab06e360aa1edeac006b79f) - the main sln names *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`44ec8d9`](https://github.com/pabllopf/Alis/commit/44ec8d9dad7a088cb24be550d3ab38cc857a2af0) - 'preb' is null on at least one execution path. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`efff881`](https://github.com/pabllopf/Alis/commit/efff88152cad37427fd3ebdf761bd03421482d01) - Add a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`97b7787`](https://github.com/pabllopf/Alis/commit/97b77870550200eb1015d5fe8ea982883bfee474) - Dispose 'tcpClient' when it is no longer needed. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ed62613`](https://github.com/pabllopf/Alis/commit/ed62613632a30eb5c7b4c6e3857797423dfb3b16) - Refactor Vector2F 'GetHashCode' to not reference mutable fields. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d1a04d6`](https://github.com/pabllopf/Alis/commit/d1a04d6c22a315b9e06e8b958c76d32d32140fe2) - Vector3F Refactor 'GetHashCode' to not reference mutable fields *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2258072`](https://github.com/pabllopf/Alis/commit/225807205b8d1419e86a0076cf9ed0bad4c5df2a) - Matrix4X4F Refactor 'GetHashCode' to not reference mutable fields. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0cc58e6`](https://github.com/pabllopf/Alis/commit/0cc58e67d23c25d4db03807d5a83e9bfc6ac0707) - RectangleF Refactor 'GetHashCode' to not reference mutable fields *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4bbf783`](https://github.com/pabllopf/Alis/commit/4bbf783e6e885b21eef792cc89fbc2678445bc25) - reduce size of the Sdl file *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`41ac71c`](https://github.com/pabllopf/Alis/commit/41ac71c7f52aca8c3e870546d8c00c9b63addae5) - the main sdl class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b7a6b8c`](https://github.com/pabllopf/Alis/commit/b7a6b8c112f2956663a798969537344432f6e591) - delete all unsafe code of audio module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`159c75f`](https://github.com/pabllopf/Alis/commit/159c75f33832d030ead462467061aba41d8baf90) - resolve some unsafe code to to safe *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fb6c6b0`](https://github.com/pabllopf/Alis/commit/fb6c6b08b57143d7c58bf18a019b3d0ada3c1e9f) - delete some unsafe code of graphic module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`73d8319`](https://github.com/pabllopf/Alis/commit/73d8319801f651cf1972acc704be51055d275914) - the encoding text *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`035d853`](https://github.com/pabllopf/Alis/commit/035d85301df7a0302432cffa025c024b3ac184b5) - delete all unsafe code of sfml module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`377002b`](https://github.com/pabllopf/Alis/commit/377002b6663851ef0936de5ff0a7711f6d4ce9f1) - abstract the input system *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b63a640`](https://github.com/pabllopf/Alis/commit/b63a640bd058c88f9fe4627422cf1c6684f7d260) - the sdl unsafe code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2b8caf2`](https://github.com/pabllopf/Alis/commit/2b8caf2309bf4013572c89b9786819c5dd4549e8) - the event unsafe code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7b92206`](https://github.com/pabllopf/Alis/commit/7b92206bfab0bfdeb0b6150d95c8d56700a9352a) - delete unsafe code SdlHapticCondition *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`31f7a96`](https://github.com/pabllopf/Alis/commit/31f7a96b0f7b706d0bd433255821d18d0bc46715) - allow SizeConst of arrays *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ad75acf`](https://github.com/pabllopf/Alis/commit/ad75acf78e49f2b70290c43dafb943edd88f1a87) - delete all unsafe code of byte[] *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9ddaf77`](https://github.com/pabllopf/Alis/commit/9ddaf77ef1ac5727f410778fa97efc1661d5bfb9) - the sdl unsafe code of events *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1bb469e`](https://github.com/pabllopf/Alis/commit/1bb469e2c0ccde37c99aebfadfdcfc4424508b32) - byte[] unsafe code to do with intptr *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d056781`](https://github.com/pabllopf/Alis/commit/d056781c3f9e8206428b9d850f2ad461d08ce0fb) - the SdlSensorEvent *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e1f9e9a`](https://github.com/pabllopf/Alis/commit/e1f9e9a4f2ac46d647fc7c02a6cb026a55d7915a) - SdlRendererInfo *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d8da437`](https://github.com/pabllopf/Alis/commit/d8da437acefdc5d48ad7dc7c5aa22acde3458668) - delete unsafe code of opengl module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4dcc5fe`](https://github.com/pabllopf/Alis/commit/4dcc5fe09762c0f102eaf62d6d7cea57120180f1) - the engine with imgui *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6260ad6`](https://github.com/pabllopf/Alis/commit/6260ad6e144be16f7a2f47f2485e11c752ecf55b) - delete unsafe code of ImDrawCmd *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3b7fb5b`](https://github.com/pabllopf/Alis/commit/3b7fb5b83a400a8efa94e0849dc8f1cbe3c3f0a0) - the byte sdl input event *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`abeb900`](https://github.com/pabllopf/Alis/commit/abeb9003ad68504b40a54035c6a743a7b363fbec) - padding byte converter *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0cfa609`](https://github.com/pabllopf/Alis/commit/0cfa609eee00bc00d48a2425537188d42ed55c0e) - quite unsafe code of rendered sdl imgui *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bc6899d`](https://github.com/pabllopf/Alis/commit/bc6899d38d7b72894dbb2511f7d90addfd8024b7) - the imgui unsafe code to compile *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`dc2dfb3`](https://github.com/pabllopf/Alis/commit/dc2dfb3256d0a4954509428581ed06fc6a2b2a4a) - new 4 test to world class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`19f22be`](https://github.com/pabllopf/Alis/commit/19f22be324817d1bb23148b6db1bf60347dd2827) - 4 new test for world class to checj add and remove of joints *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :construction_worker: Build System
+- [`72a843c`](https://github.com/pabllopf/Alis/commit/72a843cb7838c9fe2c05a45fca2f2301808b28ee) - **deps**: bump SkiaSharp.NativeAssets.Linux from 2.88.1 to 2.88.3 *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`bb4f4ba`](https://github.com/pabllopf/Alis/commit/bb4f4ba2972cbef28d1cf0a4d65c34bd14365e5d) - **deps**: bump SkiaSharp.Views.Maui.Controls.Compatibility *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`541b120`](https://github.com/pabllopf/Alis/commit/541b120d80f806dd7e959d3d2a1f95d6b4bdd664) - **deps**: bump Microsoft.AspNetCore.Components.WebAssembly *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`8302a07`](https://github.com/pabllopf/Alis/commit/8302a071df5fe2ec82d94c4d196067fc98900cb2) - **deps**: bump Microsoft.AspNetCore.Components.WebAssembly.DevServer *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`283764c`](https://github.com/pabllopf/Alis/commit/283764c4a5e361802f0e63d72d68f34b985ea38c) - **deps**: bump SkiaSharp.Views.Maui.Controls from 2.88.1 to 2.88.3 *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`220af10`](https://github.com/pabllopf/Alis/commit/220af1064ace0b7d52ba2aa3ede709953a80540a) - **deps**: bump actions/dependency-review-action from 2 to 3 *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+
+### :art: Code Style Changes
+- [`d4537d9`](https://github.com/pabllopf/Alis/commit/d4537d9d794261ab4ce1ec2d80ec7099161b778f) - update the sln with new scripts and configs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4ec3d77`](https://github.com/pabllopf/Alis/commit/4ec3d7757dc06355dd177341eb18d9f31ff69198) - refactor all class and structs of imgui to do more clean code. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e6db497`](https://github.com/pabllopf/Alis/commit/e6db497c8afa9002d510a43b50a373ea312c2d0b) - refactor to do more clean code the sln files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b451740`](https://github.com/pabllopf/Alis/commit/b45174028fc7139a0a6711e49bcac83aad49cace) - move sln templates to folder templates *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`28c4dc2`](https://github.com/pabllopf/Alis/commit/28c4dc24b7764fb00c70d1dab4c94aa35216a50e) - extract class of sdl_mixer *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0699bd6`](https://github.com/pabllopf/Alis/commit/0699bd61f44e38b343e975fead1d69dfecdd816a) - Use the 'value' parameter in this property set accessor declaration *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cc3ec2c`](https://github.com/pabllopf/Alis/commit/cc3ec2c1dd5ab975a6230e44c2bed81e64af9df9) - refactor names of sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5d87492`](https://github.com/pabllopf/Alis/commit/5d87492d3911c696aec53e3dcb1d8d2def31ce34) - refactor the main sln files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`69294cf`](https://github.com/pabllopf/Alis/commit/69294cff7f8ea162c6d78af772bf197a8a06eca6) - delete all bugs of Graph *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0163c08`](https://github.com/pabllopf/Alis/commit/0163c08331e5bdcb94012d3465a57062f6cc6299) - refactor the main sdl2 file *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1b813a8`](https://github.com/pabllopf/Alis/commit/1b813a8b1ee9c67a0e417721d15a7744413975af) - moce delegates to files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`107dc2f`](https://github.com/pabllopf/Alis/commit/107dc2f2c5ddf9e163c3759f25ad7ebd4787f682) - reset sln with new modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :flying_saucer: Other Changes
+- [`6e10cf0`](https://github.com/pabllopf/Alis/commit/6e10cf08e530d4f94c5853dd76e18ec035fba8bc) - delete the class consolegame and soundgame *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fe931d1`](https://github.com/pabllopf/Alis/commit/fe931d1a66c543ce4eb7330d95e81e664b13c1af) - delete matrix2x2f of physic module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`de37ae2`](https://github.com/pabllopf/Alis/commit/de37ae23b19bb974fd68a8ca90a5eaf0ba95995b) - reduce langversion to 8 *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.0.7] - 2023-04-30
 
 ### :sparkles: New Features
@@ -813,3 +918,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.0.6]: https://github.com/pabllopf/Alis/compare/v0.0.5...v0.0.6
 
 [v0.0.7]: https://github.com/pabllopf/Alis/compare/v0.0.6...v0.0.7
+
+[v0.0.8]: https://github.com/pabllopf/Alis/compare/v0.0.7...v0.0.8
