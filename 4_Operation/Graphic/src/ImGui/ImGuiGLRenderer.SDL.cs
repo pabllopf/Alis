@@ -172,14 +172,24 @@ namespace Alis.Core.Graphic.ImGui
                     return;
                 }
                 case SdlEventType.SdlKeydown:
+                    if (evt.key.keysym.scancode == SdlScancode.SdlScancodeW)
+                    {
+                        io.KeysDown[(int)ImGuiKey.W] = true;
+                    }
+                    return;
                 case SdlEventType.SdlKeyup:
                 {
-                    SdlScancode key = evt.key.keysym.scancode;
-                    io.KeysDown[(int) key] = evt.type == SdlEventType.SdlKeydown;
-                    io.KeyShift = (SDL_GetModState() & SdlKeymod.KmodShift) != 0;
-                    io.KeyCtrl = (SDL_GetModState() & SdlKeymod.KmodCtrl) != 0;
-                    io.KeyAlt = (SDL_GetModState() & SdlKeymod.KmodAlt) != 0;
-                    io.KeySuper = (SDL_GetModState() & SdlKeymod.KmodGui) != 0;
+                    if (evt.key.keysym.scancode == SdlScancode.SdlScancodeW)
+                    {
+                        io.KeysDown[(int)ImGuiKey.W] = false;
+                    }
+
+                    //SdlScancode key = evt.key.keysym.scancode;
+                    //io.KeysDown[(int) key] = evt.type == SdlEventType.SdlKeydown;
+                    //io.KeyShift = (SDL_GetModState() & SdlKeymod.KmodShift) != 0;
+                    //io.KeyCtrl = (SDL_GetModState() & SdlKeymod.KmodCtrl) != 0;
+                    //io.KeyAlt = (SDL_GetModState() & SdlKeymod.KmodAlt) != 0;
+                    //io.KeySuper = (SDL_GetModState() & SdlKeymod.KmodGui) != 0;
                     break;
                 }
             }

@@ -32916,131 +32916,6 @@
                 The sdl gl context reset isolation flag sdl glcontext
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId">
-            <summary>
-                The sdl windoweventid enum
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId.SdlWindoweventNone">
-            <summary>
-                The sdl windowevent none sdl windoweventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId.SdlWindoweventShown">
-            <summary>
-                The sdl windowevent shown sdl windoweventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId.SdlWindoweventHidden">
-            <summary>
-                The sdl windowevent hidden sdl windoweventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId.SdlWindoweventExposed">
-            <summary>
-                The sdl windowevent exposed sdl windoweventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId.SdlWindoweventMoved">
-            <summary>
-                The sdl windowevent moved sdl windoweventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId.SdlWindoweventResized">
-            <summary>
-                The sdl windowevent resized sdl windoweventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId.SdlWindoweventSizeChanged">
-            <summary>
-                The sdl windowevent size changed sdl windoweventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId.SdlWindoweventMinimized">
-            <summary>
-                The sdl windowevent minimized sdl windoweventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId.SdlWindoweventMaximized">
-            <summary>
-                The sdl windowevent maximized sdl windoweventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId.SdlWindoweventRestored">
-            <summary>
-                The sdl windowevent restored sdl windoweventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId.SdlWindoweventEnter">
-            <summary>
-                The sdl windowevent enter sdl windoweventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId.SdlWindoweventLeave">
-            <summary>
-                The sdl windowevent leave sdl windoweventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId.SdlWindoweventFocusGained">
-            <summary>
-                The sdl windowevent focus gained sdl windoweventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId.SdlWindoweventFocusLost">
-            <summary>
-                The sdl windowevent focus lost sdl windoweventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId.SdlWindoweventClose">
-            <summary>
-                The sdl windowevent close sdl windoweventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId.SdlWindoweventTakeFocus">
-            <summary>
-                The sdl windowevent take focus sdl windoweventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId.SdlWindoweventHitTest">
-            <summary>
-                The sdl windowevent hit test sdl windoweventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId.SdlWindoweventIccprofChanged">
-            <summary>
-                The sdl windowevent iccprof changed sdl windoweventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlWindowEventId.SdlWindoweventDisplayChanged">
-            <summary>
-                The sdl windowevent display changed sdl windoweventid
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.SDL.Sdl.SdlDisplayEventId">
-            <summary>
-                The sdl displayeventid enum
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlDisplayEventId.SdlDisplayeventNone">
-            <summary>
-                The sdl displayevent none sdl displayeventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlDisplayEventId.SdlDisplayeventOrientation">
-            <summary>
-                The sdl displayevent orientation sdl displayeventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlDisplayEventId.SdlDisplayeventConnected">
-            <summary>
-                The sdl displayevent connected sdl displayeventid
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.Sdl.SdlDisplayEventId.SdlDisplayeventDisconnected">
-            <summary>
-                The sdl displayevent disconnected sdl displayeventid
-            </summary>
-        </member>
         <member name="T:Alis.Core.Graphic.SDL.Sdl.SdlDisplayOrientation">
             <summary>
                 The sdl displayorientation enum
@@ -39928,6 +39803,31 @@
                 The data
             </summary>
         </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlDisplayEventId">
+            <summary>
+                The sdl displayeventid enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayEventId.SdlDisplayeventNone">
+            <summary>
+                The sdl displayevent none sdl displayeventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayEventId.SdlDisplayeventOrientation">
+            <summary>
+                The sdl displayevent orientation sdl displayeventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayEventId.SdlDisplayeventConnected">
+            <summary>
+                The sdl displayevent connected sdl displayeventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayEventId.SdlDisplayeventDisconnected">
+            <summary>
+                The sdl displayevent disconnected sdl displayeventid
+            </summary>
+        </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlDisplayMode">
             <summary>
                 The sdl displaymode
@@ -40178,7 +40078,7 @@
                 The drop
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.paddingPtr">
+        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding0">
             <summary>
                 The padding
             </summary>
@@ -47070,6 +46970,106 @@
         <member name="F:Alis.Core.Graphic.SDL.SdlWindowEvent.data2">
             <summary>
                 The data
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlWindowEventId">
+            <summary>
+                The sdl windoweventid enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlWindowEventId.SdlWindoweventNone">
+            <summary>
+                The sdl windowevent none sdl windoweventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlWindowEventId.SdlWindoweventShown">
+            <summary>
+                The sdl windowevent shown sdl windoweventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlWindowEventId.SdlWindoweventHidden">
+            <summary>
+                The sdl windowevent hidden sdl windoweventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlWindowEventId.SdlWindoweventExposed">
+            <summary>
+                The sdl windowevent exposed sdl windoweventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlWindowEventId.SdlWindoweventMoved">
+            <summary>
+                The sdl windowevent moved sdl windoweventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlWindowEventId.SdlWindoweventResized">
+            <summary>
+                The sdl windowevent resized sdl windoweventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlWindowEventId.SdlWindoweventSizeChanged">
+            <summary>
+                The sdl windowevent size changed sdl windoweventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlWindowEventId.SdlWindoweventMinimized">
+            <summary>
+                The sdl windowevent minimized sdl windoweventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlWindowEventId.SdlWindoweventMaximized">
+            <summary>
+                The sdl windowevent maximized sdl windoweventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlWindowEventId.SdlWindoweventRestored">
+            <summary>
+                The sdl windowevent restored sdl windoweventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlWindowEventId.SdlWindoweventEnter">
+            <summary>
+                The sdl windowevent enter sdl windoweventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlWindowEventId.SdlWindoweventLeave">
+            <summary>
+                The sdl windowevent leave sdl windoweventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlWindowEventId.SdlWindoweventFocusGained">
+            <summary>
+                The sdl windowevent focus gained sdl windoweventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlWindowEventId.SdlWindoweventFocusLost">
+            <summary>
+                The sdl windowevent focus lost sdl windoweventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlWindowEventId.SdlWindoweventClose">
+            <summary>
+                The sdl windowevent close sdl windoweventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlWindowEventId.SdlWindoweventTakeFocus">
+            <summary>
+                The sdl windowevent take focus sdl windoweventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlWindowEventId.SdlWindoweventHitTest">
+            <summary>
+                The sdl windowevent hit test sdl windoweventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlWindowEventId.SdlWindoweventIccprofChanged">
+            <summary>
+                The sdl windowevent iccprof changed sdl windoweventid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlWindowEventId.SdlWindoweventDisplayChanged">
+            <summary>
+                The sdl windowevent display changed sdl windoweventid
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlWinRtDeviceFamily">

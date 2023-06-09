@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlKeyboardEvent.cs
+//  File:SdlDisplayEventId.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,54 +27,31 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-
 namespace Alis.Core.Graphic.SDL
 {
     /// <summary>
-    ///     The sdl keyboardevent
+    ///     The sdl displayeventid enum
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct SdlKeyboardEvent
+    public enum SdlDisplayEventId : byte
     {
         /// <summary>
-        ///     The type
+        ///     The sdl displayevent none sdl displayeventid
         /// </summary>
-        public SdlEventType type;
+        SdlDisplayeventNone,
 
         /// <summary>
-        ///     The timestamp
+        ///     The sdl displayevent orientation sdl displayeventid
         /// </summary>
-        public uint timestamp;
+        SdlDisplayeventOrientation,
 
         /// <summary>
-        ///     The window id
+        ///     The sdl displayevent connected sdl displayeventid
         /// </summary>
-        public uint windowID;
+        SdlDisplayeventConnected, 
 
         /// <summary>
-        ///     The state
+        ///     The sdl displayevent disconnected sdl displayeventid
         /// </summary>
-        public byte state;
-
-        /// <summary>
-        ///     The repeat
-        /// </summary>
-        public byte repeat;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        private byte padding2;
-
-        /// <summary>
-        ///     The padding
-        /// </summary>
-        private byte padding3;
-
-        /// <summary>
-        ///     The keysym
-        /// </summary>
-        public SdlKeysym keysym;
+        SdlDisplayeventDisconnected 
     }
 }
