@@ -117,7 +117,7 @@ namespace Alis.Core.Graphic.ImGui
         ///     Processes the event using the specified evt
         /// </summary>
         /// <param name="evt">The evt</param>
-        public unsafe void ProcessEvent(SdlEvent evt)
+        public void ProcessEvent(SdlEvent evt)
         {
             ImGuiIoPtr io = ImGui.GetIo();
             switch (evt.type)
