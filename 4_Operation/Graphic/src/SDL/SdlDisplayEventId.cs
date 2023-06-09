@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:SdlDisplayEventId.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,31 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Core.Profiling.Sample
+namespace Alis.Core.Graphic.SDL
 {
     /// <summary>
-    ///     The program class
+    ///     The sdl displayeventid enum
     /// </summary>
-    public static class Program
+    public enum SdlDisplayEventId : byte
     {
         /// <summary>
-        ///     Main the args
+        ///     The sdl displayevent none sdl displayeventid
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            throw new NotImplementedException();
-        }
+        SdlDisplayeventNone,
+
+        /// <summary>
+        ///     The sdl displayevent orientation sdl displayeventid
+        /// </summary>
+        SdlDisplayeventOrientation,
+
+        /// <summary>
+        ///     The sdl displayevent connected sdl displayeventid
+        /// </summary>
+        SdlDisplayeventConnected, 
+
+        /// <summary>
+        ///     The sdl displayevent disconnected sdl displayeventid
+        /// </summary>
+        SdlDisplayeventDisconnected 
     }
 }

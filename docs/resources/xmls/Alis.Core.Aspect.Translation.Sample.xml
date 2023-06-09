@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Aspect.Translation.Sample</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Aspect.Time.Sample.Program">
+            <summary>
+                The program class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Time.Sample.Program.Main(System.String[])">
+            <summary>
+                Main the args
+            </summary>
+            <param name="args">The args</param>
+        </member>
+    </members>
+</doc>

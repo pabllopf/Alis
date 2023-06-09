@@ -349,13 +349,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         {
             RenderStates.MarshalData marshaledStates = states.Marshal();
 
-            unsafe
-            {
-                fixed (Vertex* vertexPtr = vertices)
-                {
-                    sfRenderTexture_drawPrimitives(CPointer, vertexPtr + start, count, type, ref marshaledStates);
-                }
-            }
+            sfRenderTexture_drawPrimitives(CPointer, vertices, count, type, ref marshaledStates);
         }
 
         ////////////////////////////////////////////////////////////
@@ -694,7 +688,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="type">The type</param>
         /// <param name="renderStates">The render states</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern unsafe void sfRenderTexture_drawPrimitives(IntPtr cPointer, Vertex* vertexPtr,
+        private static extern void sfRenderTexture_drawPrimitives(IntPtr cPointer, Vertex[] vertexPtr,
             uint vertexCount, PrimitiveType type, ref RenderStates.MarshalData renderStates);
 
         /// <summary>

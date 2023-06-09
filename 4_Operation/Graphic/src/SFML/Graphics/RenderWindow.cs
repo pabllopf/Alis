@@ -91,13 +91,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
             // Copy the string to a null-terminated UTF-32 byte array
             byte[] titleAsUtf32 = Encoding.UTF32.GetBytes(title + '\0');
 
-            unsafe
-            {
-                fixed (byte* titlePtr = titleAsUtf32)
-                {
-                    CPointer = sfRenderWindow_createUnicode(mode, (IntPtr) titlePtr, style, ref settings);
-                }
-            }
+            CPointer = sfRenderWindow_createUnicode(mode, titleAsUtf32, style, ref settings);
 
             Initialize();
         }
@@ -376,14 +370,8 @@ namespace Alis.Core.Graphic.SFML.Graphics
         public void Draw(Vertex[] vertices, uint start, uint count, PrimitiveType type, RenderStates states)
         {
             RenderStates.MarshalData marshaledStates = states.Marshal();
-
-            unsafe
-            {
-                fixed (Vertex* vertexPtr = vertices)
-                {
-                    sfRenderWindow_drawPrimitives(CPointer, vertexPtr + start, count, type, ref marshaledStates);
-                }
-            }
+            
+            sfRenderWindow_drawPrimitives(CPointer, vertices, count, type, ref marshaledStates);
         }
 
         ////////////////////////////////////////////////////////////
@@ -488,13 +476,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
             // Copy the title to a null-terminated UTF-32 byte array
             byte[] titleAsUtf32 = Encoding.UTF32.GetBytes(title + '\0');
 
-            unsafe
-            {
-                fixed (byte* titlePtr = titleAsUtf32)
-                {
-                    sfRenderWindow_setUnicodeTitle(CPointer, (IntPtr) titlePtr);
-                }
-            }
+            sfRenderWindow_setUnicodeTitle(CPointer, titleAsUtf32);
         }
 
         ////////////////////////////////////////////////////////////
@@ -507,13 +489,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public override void SetIcon(uint width, uint height, byte[] pixels)
         {
-            unsafe
-            {
-                fixed (byte* pixelsPtr = pixels)
-                {
-                    sfRenderWindow_setIcon(CPointer, width, height, pixelsPtr);
-                }
-            }
+            sfRenderWindow_setIcon(CPointer, width, height, pixels);
         }
 
         ////////////////////////////////////////////////////////////
@@ -783,7 +759,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="params">The params</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfRenderWindow_createUnicode(VideoMode mode, IntPtr title, Styles style,
+        private static extern IntPtr sfRenderWindow_createUnicode(VideoMode mode, byte[] title, Styles style,
             ref ContextSettings @params);
 
         /// <summary>
@@ -889,7 +865,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <param name="title">The title</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_setUnicodeTitle(IntPtr cPointer, IntPtr title);
+        private static extern void sfRenderWindow_setUnicodeTitle(IntPtr cPointer, byte[] title);
 
         /// <summary>
         ///     Sfs the render window set icon using the specified c pointer
@@ -899,8 +875,8 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="height">The height</param>
         /// <param name="pixels">The pixels</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern unsafe void
-            sfRenderWindow_setIcon(IntPtr cPointer, uint width, uint height, byte* pixels);
+        private static extern void
+            sfRenderWindow_setIcon(IntPtr cPointer, uint width, uint height, byte[] pixels);
 
         /// <summary>
         ///     Sfs the render window set visible using the specified c pointer
@@ -1075,7 +1051,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="type">The type</param>
         /// <param name="renderStates">The render states</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern unsafe void sfRenderWindow_drawPrimitives(IntPtr cPointer, Vertex* vertexPtr,
+        private static extern void sfRenderWindow_drawPrimitives(IntPtr cPointer, Vertex[] vertexPtr,
             uint vertexCount, PrimitiveType type, ref RenderStates.MarshalData renderStates);
 
         /// <summary>

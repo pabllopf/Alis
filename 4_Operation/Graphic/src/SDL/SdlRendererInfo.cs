@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.SDL
     ///     The sdl rendererinfo
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct SdlRendererInfo
+    public struct SdlRendererInfo
     {
         /// <summary>
         ///     The name
@@ -27,7 +27,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public fixed uint texture_formats[16];
+        public IntPtr textureFormatsPtr;
 
         /// <summary>
         ///     The max texture width
@@ -38,5 +38,19 @@ namespace Alis.Core.Graphic.SDL
         ///     The max texture height
         /// </summary>
         public int max_texture_height;
+        
+        /// <summary>
+        /// Gets or sets the value of the text
+        /// </summary>
+        public int[] texture_formats
+        {
+            get
+            {
+                int[] dataBytes = new int[16];
+                Buffer.BlockCopy(texture_formats, 0, dataBytes, 0, 16);
+                return dataBytes;
+            }
+            set => Marshal.Copy(value, 0, textureFormatsPtr, 16);
+        }
     }
 }

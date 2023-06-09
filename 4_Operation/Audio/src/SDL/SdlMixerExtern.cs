@@ -271,7 +271,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
         [DllImport(SdlMixer.NativeLibName, EntryPoint = "SDL_SetError", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern unsafe void INTERNAL_SDL_SetError(byte* fmtAndArglist);
+        internal static extern  void INTERNAL_SDL_SetError(byte[] fmtAndArglist);
 
         /// <summary>
         ///     Internals the sdl get error
@@ -442,8 +442,8 @@ namespace Alis.Core.Audio.SDL
         /// <param name="paths">The paths</param>
         /// <returns>The int</returns>
         [DllImport(SdlMixer.NativeLibName, EntryPoint = "Mix_SetSoundFonts", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern unsafe int INTERNAL_Mix_SetSoundFonts(
-            byte* paths
+        internal static extern  int INTERNAL_Mix_SetSoundFonts(
+            byte[] paths
         );
 
         /// <summary>
@@ -698,8 +698,8 @@ namespace Alis.Core.Audio.SDL
         /// <param name="command">The command</param>
         /// <returns>The int</returns>
         [DllImport(SdlMixer.NativeLibName, EntryPoint = "Mix_SetMusicCMD", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern unsafe int INTERNAL_Mix_SetMusicCMD(
-            byte* command
+        internal static extern  int INTERNAL_Mix_SetMusicCMD(
+            byte[] command
         );
 
         /// <summary>

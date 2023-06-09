@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Base.Attributes;
@@ -41,7 +42,7 @@ namespace Alis.Core.Graphic.SFML.Windows
     public class Clipboard
     {
         /// <summary>
-        ///     The contents of the Clipboard as a UTF-32 string
+        ///     The contents of the Clipboard as a UTF-32 string.
         /// </summary>
         public static string Contents
         {
@@ -49,33 +50,31 @@ namespace Alis.Core.Graphic.SFML.Windows
             {
                 IntPtr source = sfClipboard_getUnicodeString();
 
-                uint length = 0;
-                unsafe
+                List<byte> sourceBytes = new List<byte>();
+
+                byte currentByte;
+                int offset = 0;
+
+                do
                 {
-                    for (uint* ptr = (uint*) source.ToPointer(); *ptr != 0; ++ptr)
-                    {
-                        length++;
-                    }
+                    currentByte = Marshal.ReadByte(source, offset);
+                    sourceBytes.Add(currentByte);
+                    offset += 4;
                 }
+                while (currentByte != 0);
 
-                byte[] sourceBytes = new byte[length * 4];
-                Marshal.Copy(source, sourceBytes, 0, sourceBytes.Length);
-
-                return Encoding.UTF32.GetString(sourceBytes);
+                return Encoding.UTF32.GetString(sourceBytes.ToArray());
             }
             set
             {
                 byte[] utf32 = Encoding.UTF32.GetBytes(value + '\0');
-
-                unsafe
-                {
-                    fixed (byte* ptr = utf32)
-                    {
-                        sfClipboard_setUnicodeString((IntPtr) ptr);
-                    }
-                }
+                IntPtr ptr = Marshal.AllocCoTaskMem(utf32.Length);
+                Marshal.Copy(utf32, 0, ptr, utf32.Length);
+                sfClipboard_setUnicodeString(ptr);
+                Marshal.FreeCoTaskMem(ptr);
             }
         }
+
 
         /// <summary>
         ///     Sfs the clipboard get unicode string

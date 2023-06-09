@@ -1140,7 +1140,7 @@
             </summary>
             <returns>The result</returns>
         </member>
-        <member name="M:Alis.Core.Audio.SDL.SdlMixer.INTERNAL_SDL_RWFromFile(System.Byte*,System.Byte*)">
+        <member name="M:Alis.Core.Audio.SDL.SdlMixer.INTERNAL_SDL_RWFromFile(System.Byte[],System.Byte[])">
             <summary>
                 Internals the sdl rw from file using the specified file
             </summary>
@@ -1148,7 +1148,7 @@
             <param name="mode">The mode</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Audio.SDL.SdlMixer.INTERNAL_Mix_LoadMUS(System.Byte*)">
+        <member name="M:Alis.Core.Audio.SDL.SdlMixer.INTERNAL_Mix_LoadMUS(System.Byte[])">
             <summary>
                 Internals the mix load mus using the specified file
             </summary>
@@ -1157,7 +1157,7 @@
         </member>
         <member name="M:Alis.Core.Audio.SDL.SdlMixer.Mix_LoadMUS(System.String)">
             <summary>
-                Mixes the load mus using the specified file
+            Mixes the load mus using the specified file
             </summary>
             <param name="file">The file</param>
             <returns>The handle</returns>
@@ -1273,29 +1273,20 @@
             <param name="str">The str</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Audio.SDL.SdlMixer.Utf8Encode(System.String,System.Byte*,System.Int32)">
-            <summary>
-                Utfs the 8 encode using the specified str
-            </summary>
-            <param name="str">The str</param>
-            <param name="buffer">The buffer</param>
-            <param name="bufferSize">The buffer size</param>
-            <returns>The buffer</returns>
-        </member>
         <member name="M:Alis.Core.Audio.SDL.SdlMixer.Utf8EncodeHeap(System.String)">
             <summary>
-                Utfs the 8 encode heap using the specified str
+            Utfs the 8 encode using the specified str
             </summary>
             <param name="str">The str</param>
-            <returns>The buffer</returns>
+            <returns>The encoded bytes</returns>
         </member>
         <member name="M:Alis.Core.Audio.SDL.SdlMixer.UTF8_ToManaged(System.IntPtr,System.Boolean)">
             <summary>
-                Utfs the 8 to managed using the specified s
+                Converts UTF-8 to managed string using the specified pointer.
             </summary>
-            <param name="s">The </param>
-            <param name="freePtr">The free ptr</param>
-            <returns>The result</returns>
+            <param name="s">The pointer to the UTF-8 string</param>
+            <param name="freePtr">Indicates whether to free the pointer</param>
+            <returns>The result as a managed string</returns>
         </member>
         <member name="M:Alis.Core.Audio.SDL.SdlMixer.SDL_GetError">
             <summary>
@@ -1305,9 +1296,16 @@
         </member>
         <member name="M:Alis.Core.Audio.SDL.SdlMixer.SDL_SetError(System.String)">
             <summary>
-                Sdls the set error using the specified fmt and arglist
+                Sets the error using the specified format and argument list.
             </summary>
-            <param name="fmtAndArglist">The fmt and arglist</param>
+            <param name="formatAndArgList">The format and argument list.</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SDL.SdlMixer.Utf8Encode(System.String)">
+            <summary>
+            Utfs the 8 encode using the specified str
+            </summary>
+            <param name="str">The str</param>
+            <returns>The byte array</returns>
         </member>
         <member name="M:Alis.Core.Audio.SDL.SdlMixer.Mix_LoadWAV(System.String)">
             <summary>
@@ -1318,11 +1316,11 @@
         </member>
         <member name="M:Alis.Core.Audio.SDL.SdlMixer.SDL_RWFromFile(System.String,System.String)">
             <summary>
-                Sdls the rw from file using the specified file
+                SDL RW from file using the specified file
             </summary>
             <param name="file">The file</param>
             <param name="mode">The mode</param>
-            <returns>The rw ops</returns>
+            <returns>The RW ops</returns>
         </member>
         <member name="T:Alis.Core.Audio.SDL.SdlMixerExtern">
             <summary>
@@ -1508,7 +1506,7 @@
             <param name="maxlength">The maxlength</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Audio.SDL.SdlMixerExtern.INTERNAL_SDL_SetError(System.Byte*)">
+        <member name="M:Alis.Core.Audio.SDL.SdlMixerExtern.INTERNAL_SDL_SetError(System.Byte[])">
             <summary>
                 Internals the sdl set error using the specified fmt and arglist
             </summary>
@@ -1641,7 +1639,7 @@
             </summary>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Audio.SDL.SdlMixerExtern.INTERNAL_Mix_SetSoundFonts(System.Byte*)">
+        <member name="M:Alis.Core.Audio.SDL.SdlMixerExtern.INTERNAL_Mix_SetSoundFonts(System.Byte[])">
             <summary>
                 Internals the mix set sound fonts using the specified paths
             </summary>
@@ -1855,7 +1853,7 @@
             </summary>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Audio.SDL.SdlMixerExtern.INTERNAL_Mix_SetMusicCMD(System.Byte*)">
+        <member name="M:Alis.Core.Audio.SDL.SdlMixerExtern.INTERNAL_Mix_SetMusicCMD(System.Byte[])">
             <summary>
                 Internals the mix set music cmd using the specified command
             </summary>
@@ -2002,6 +2000,21 @@
         <member name="T:Alis.Core.Audio.SDL.SoundFontDelegate">
             <summary>
                 The sound font delegate
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.SFML.Chunk">
+            <summary>
+                Structure mapping the C library arguments passed to the data callback
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SFML.Chunk.samples">
+            <summary>
+                The samples
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SFML.Chunk.sampleCount">
+            <summary>
+                The sample count
             </summary>
         </member>
         <member name="T:Alis.Core.Audio.SFML.Listener">
@@ -2920,7 +2933,7 @@
             <param name="size">The size</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.sfSoundBuffer_createFromSamples(System.Int16*,System.UInt32,System.UInt32,System.UInt32)">
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.sfSoundBuffer_createFromSamples(System.Int16[],System.UInt32,System.UInt32,System.UInt32)">
             <summary>
                 Sfs the sound buffer create from samples using the specified samples
             </summary>
@@ -3336,11 +3349,6 @@
                 The my seek callback
             </summary>
         </member>
-        <member name="F:Alis.Core.Audio.SFML.SoundStream.myTempBuffer">
-            <summary>
-                The my temp buffer
-            </summary>
-        </member>
         <member name="M:Alis.Core.Audio.SFML.SoundStream.#ctor">
             <summary>
                 Default constructor
@@ -3495,9 +3503,9 @@
             </summary>
             <param name="disposing">Is the GC disposing the object, or is it an explicit call ?</param>
         </member>
-        <member name="M:Alis.Core.Audio.SFML.SoundStream.GetData(Alis.Core.Audio.SFML.SoundStream.Chunk@,System.IntPtr)">
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.GetData(Alis.Core.Audio.SFML.Chunk@,System.IntPtr)">
             <summary>
-                Called each time new audio data is needed to feed the stream
+            Called each time new audio data is needed to feed the stream
             </summary>
             <param name="dataChunk">Data chunk to fill with new audio samples</param>
             <param name="userData">User data -- unused</param>
@@ -3678,21 +3686,6 @@
             </summary>
             <param name="soundStream">The sound stream</param>
             <returns>The systems time</returns>
-        </member>
-        <member name="T:Alis.Core.Audio.SFML.SoundStream.Chunk">
-            <summary>
-                Structure mapping the C library arguments passed to the data callback
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SFML.SoundStream.Chunk.samples">
-            <summary>
-                The samples
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SFML.SoundStream.Chunk.sampleCount">
-            <summary>
-                The sample count
-            </summary>
         </member>
         <member name="T:Alis.Core.Audio.SFML.SoundStream.GetDataCallbackType">
             <summary>

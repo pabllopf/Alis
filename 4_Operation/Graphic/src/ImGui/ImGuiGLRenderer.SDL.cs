@@ -29,6 +29,7 @@
 
 using System;
 using System.Numerics;
+using System.Text;
 using Alis.Core.Graphic.SDL;
 using static Alis.Core.Graphic.SDL.Sdl;
 
@@ -116,7 +117,7 @@ namespace Alis.Core.Graphic.ImGui
         ///     Processes the event using the specified evt
         /// </summary>
         /// <param name="evt">The evt</param>
-        public unsafe void ProcessEvent(SdlEvent evt)
+        public void ProcessEvent(SdlEvent evt)
         {
             ImGuiIoPtr io = ImGui.GetIo();
             switch (evt.type)
@@ -166,7 +167,7 @@ namespace Alis.Core.Graphic.ImGui
                 }
                 case SdlEventType.SdlTextinput:
                 {
-                    string str = new string((sbyte*) evt.text.text);
+                    string str = new string(Encoding.UTF8.GetString(bytes: evt.text.text));
                     io.AddInputCharactersUtf8(str);
                     return;
                 }
@@ -175,6 +176,7 @@ namespace Alis.Core.Graphic.ImGui
                 {
                     SdlScancode key = evt.key.keysym.scancode;
                     io.KeysDown[(int) key] = evt.type == SdlEventType.SdlKeydown;
+                    Console.WriteLine("io.KeysDown[" + key + "] = " + evt.type + io.KeysDown[(int) key]);
                     io.KeyShift = (SDL_GetModState() & SdlKeymod.KmodShift) != 0;
                     io.KeyCtrl = (SDL_GetModState() & SdlKeymod.KmodCtrl) != 0;
                     io.KeyAlt = (SDL_GetModState() & SdlKeymod.KmodAlt) != 0;

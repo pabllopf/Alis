@@ -650,7 +650,26 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         /// <param name="pname">The pname</param>
         /// <returns>The string</returns>
-        public static unsafe string glGetString(StringName pname) => new string((sbyte*) _getString(pname));
+        public static string glGetString(StringName pname)
+        {
+            IntPtr ptr = _getString(pname);
+            if (ptr == IntPtr.Zero)
+            {
+                return string.Empty;
+            }
+
+            int length = 0;
+            while (Marshal.ReadByte(ptr, length) != 0)
+            {
+                length++;
+            }
+
+            byte[] buffer = new byte[length];
+            Marshal.Copy(ptr, buffer, 0, length);
+
+            return Encoding.ASCII.GetString(buffer);
+        }
+
 
 
         /// <summary>

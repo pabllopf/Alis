@@ -87,18 +87,15 @@ namespace Alis.Core.Graphic.SFML.Windows
         {
             get
             {
-                unsafe
+                uint count;
+                VideoMode[] modesPtr = sfVideoMode_getFullscreenModes(out count);
+                VideoMode[] modes = new VideoMode[count];
+                for (uint i = 0; i < count; ++i)
                 {
-                    uint count;
-                    VideoMode* modesPtr = sfVideoMode_getFullscreenModes(out count);
-                    VideoMode[] modes = new VideoMode[count];
-                    for (uint i = 0; i < count; ++i)
-                    {
-                        modes[i] = modesPtr[i];
-                    }
-
-                    return modes;
+                    modes[i] = modesPtr[i];
                 }
+
+                return modes;
             }
         }
 
@@ -142,7 +139,7 @@ namespace Alis.Core.Graphic.SFML.Windows
         /// <param name="count">The count</param>
         /// <returns>The video mode</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern unsafe VideoMode* sfVideoMode_getFullscreenModes(out uint count);
+        private static extern VideoMode[] sfVideoMode_getFullscreenModes(out uint count);
 
         /// <summary>
         ///     Describes whether sf video mode is valid

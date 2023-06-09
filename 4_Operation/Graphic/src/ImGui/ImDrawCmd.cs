@@ -33,9 +33,9 @@ using System.Numerics;
 namespace Alis.Core.Graphic.ImGui
 {
     /// <summary>
-    ///     The im draw cmd
+    /// The im draw cmd
     /// </summary>
-    public unsafe struct ImDrawCmd
+    public struct ImDrawCmd
     {
         /// <summary>
         ///     The clip rect
@@ -70,6 +70,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The user callback data
         /// </summary>
-        public void* UserCallbackData;
+        public IntPtr UserCallbackData;
     }
+
 }

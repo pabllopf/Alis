@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Math.Matrix
     /// </summary>
     ////////////////////////////////////////////////////////////
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct Matrix3X3F
+    public struct Matrix3X3F
     {
         /// <summary>
         ///     The ez
@@ -50,6 +50,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="c3">The c3.</param>
         public Matrix3X3F(Vector3F c1, Vector3F c2, Vector3F c3)
         {
+            array = new float[9];
             Ex = c1;
             Ey = c2;
             Ez = c3;
@@ -67,6 +68,8 @@ namespace Alis.Core.Aspect.Math.Matrix
             float a10, float a11, float a12,
             float a20, float a21, float a22)
         {
+            array = new float[9];
+            
             array[0] = a00;
             array[3] = a01;
             array[6] = a02;
@@ -80,13 +83,15 @@ namespace Alis.Core.Aspect.Math.Matrix
             Ex = new Vector3F(a00, a01, a02);
             Ey = new Vector3F(a10, a11, a12);
             Ez = new Vector3F(a20, a21, a22);
+            
+            
         }
 
         // column-major!
         /// <summary>
         ///     The array
         /// </summary>
-        private fixed float array[3 * 3];
+        private float[] array;
 
         /// <summary>
         ///     Solve A * x = b, where b is a column vector. This is more efficient than computing the inverse in one-shot

@@ -93,34 +93,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// </summary>
         ////////////////////////////////////////////////////////////
         public uint VertexCount => sfVertexArray_getVertexCount(CPointer);
-
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Read-write access to vertices by their index.
-        ///     This function doesn't check index, it must be in range
-        ///     [0, VertexCount - 1]. The behaviour is undefined
-        ///     otherwise.
-        /// </summary>
-        /// <param name="index">Index of the vertex to get</param>
-        /// <returns>Reference to the index-th vertex</returns>
-        ////////////////////////////////////////////////////////////
-        public Vertex this[uint index]
-        {
-            get
-            {
-                unsafe
-                {
-                    return *sfVertexArray_getVertex(CPointer, index);
-                }
-            }
-            set
-            {
-                unsafe
-                {
-                    *sfVertexArray_getVertex(CPointer, index) = value;
-                }
-            }
-        }
+        
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -248,7 +221,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="index">The index</param>
         /// <returns>The vertex</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern unsafe Vertex* sfVertexArray_getVertex(IntPtr cPointer, uint index);
+        private static extern Vertex[] sfVertexArray_getVertex(IntPtr cPointer, uint index);
 
         /// <summary>
         ///     Sfs the vertex array clear using the specified c pointer

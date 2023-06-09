@@ -320,13 +320,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public void Update(byte[] pixels, uint width, uint height, uint x, uint y)
         {
-            unsafe
-            {
-                fixed (byte* ptr = pixels)
-                {
-                    sfTexture_updateFromPixels(CPointer, ptr, width, height, x, y);
-                }
-            }
+            sfTexture_updateFromPixels(CPointer, pixels, width, height, x, y);
         }
 
         ////////////////////////////////////////////////////////////
@@ -587,7 +581,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern unsafe void sfTexture_updateFromPixels(IntPtr texture, byte* pixels, uint width,
+        private static extern  void sfTexture_updateFromPixels(IntPtr texture, byte[] pixels, uint width,
             uint height, uint x, uint y);
 
         /// <summary>

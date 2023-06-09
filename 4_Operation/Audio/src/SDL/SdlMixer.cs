@@ -351,34 +351,31 @@ namespace Alis.Core.Audio.SDL
         /// <param name="mode">The mode</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RWFromFile", CallingConvention = CallingConvention.Cdecl)]
-        private static extern unsafe IntPtr INTERNAL_SDL_RWFromFile(
-            byte* file,
-            byte* mode
+        private static extern IntPtr INTERNAL_SDL_RWFromFile(
+            byte[] file,
+            byte[] mode
         );
 
-        /* IntPtr refers to a Mix_Music* */
+        
         /// <summary>
         ///     Internals the mix load mus using the specified file
         /// </summary>
         /// <param name="file">The file</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "Mix_LoadMUS", CallingConvention = CallingConvention.Cdecl)]
-        private static extern unsafe IntPtr INTERNAL_Mix_LoadMUS(
-            byte* file
+        private static extern  IntPtr INTERNAL_Mix_LoadMUS(
+            byte[] file
         );
 
         /// <summary>
-        ///     Mixes the load mus using the specified file
+        /// Mixes the load mus using the specified file
         /// </summary>
         /// <param name="file">The file</param>
         /// <returns>The handle</returns>
-        public static unsafe IntPtr Mix_LoadMUS(string file)
+        public static IntPtr Mix_LoadMUS(string file)
         {
-            byte* utf8File = Utf8EncodeHeap(file);
-            IntPtr handle = INTERNAL_Mix_LoadMUS(
-                utf8File
-            );
-            Marshal.FreeHGlobal((IntPtr) utf8File);
+            byte[] utf8File = Utf8Encode(file);
+            IntPtr handle = INTERNAL_Mix_LoadMUS(utf8File);
             return handle;
         }
 
@@ -431,9 +428,9 @@ namespace Alis.Core.Audio.SDL
         public static string Mix_GetMusicCopyrightTag(IntPtr music) => UTF8_ToManaged(SdlMixerExtern.INTERNAL_Mix_GetMusicCopyrightTag(music)
         );
 
-        /* IntPtr refers to a void* */
+        
 
-        /* chunk refers to a Mix_Chunk* */
+        
         /// <summary>
         ///     Mixes the play channel using the specified channel
         /// </summary>
@@ -448,7 +445,7 @@ namespace Alis.Core.Audio.SDL
         )
             => SdlMixerExtern.Mix_PlayChannelTimed(channel, chunk, loops, -1);
 
-        /* chunk refers to a Mix_Chunk* */
+        
         /// <summary>
         ///     Mixes the fade in channel using the specified channel
         /// </summary>
@@ -470,14 +467,10 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="command">The command</param>
         /// <returns>The result</returns>
-        public static unsafe int Mix_SetMusicCMD(string command)
+        public static  int Mix_SetMusicCMD(string command)
         {
-            byte* utf8Cmd = Utf8EncodeHeap(command);
-            int result = SdlMixerExtern.INTERNAL_Mix_SetMusicCMD(
-                utf8Cmd
-            );
-            Marshal.FreeHGlobal((IntPtr) utf8Cmd);
-            return result;
+            byte[] utf8Cmd = Utf8Encode(command);
+            return SdlMixerExtern.INTERNAL_Mix_SetMusicCMD(utf8Cmd);
         }
 
         /// <summary>
@@ -485,13 +478,10 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="paths">The paths</param>
         /// <returns>The result</returns>
-        public static unsafe int Mix_SetSoundFonts(string paths)
+        public static int Mix_SetSoundFonts(string paths)
         {
-            byte* utf8Paths = Utf8EncodeHeap(paths);
-            int result = SdlMixerExtern.INTERNAL_Mix_SetSoundFonts(
-                utf8Paths
-            );
-            Marshal.FreeHGlobal((IntPtr) utf8Paths);
+            byte[] utf8Paths = Utf8Encode(paths);
+            int result = SdlMixerExtern.INTERNAL_Mix_SetSoundFonts(utf8Paths);
             return result;
         }
 
@@ -502,9 +492,9 @@ namespace Alis.Core.Audio.SDL
         public static string Mix_GetSoundFonts() => UTF8_ToManaged(SdlMixerExtern.INTERNAL_Mix_GetSoundFonts()
         );
 
-        /* Only available in 2.0.5 or later. */
+        
 
-        /* Only available in 2.0.5 or later. */
+        
 
         /// <summary>
         ///     Mixes the get timidity cfg
@@ -536,7 +526,7 @@ namespace Alis.Core.Audio.SDL
             SdlMixerExtern.SDL_ClearError();
         }
 
-        /* Used for stack allocated string marshaling. */
+        
         /// <summary>
         ///     Utfs the 8 size using the specified str
         /// </summary>
@@ -551,108 +541,52 @@ namespace Alis.Core.Audio.SDL
 
             return str.Length * 4 + 1;
         }
-
+        
         /// <summary>
-        ///     Utfs the 8 encode using the specified str
+        /// Utfs the 8 encode using the specified str
         /// </summary>
         /// <param name="str">The str</param>
-        /// <param name="buffer">The buffer</param>
-        /// <param name="bufferSize">The buffer size</param>
-        /// <returns>The buffer</returns>
-        internal static unsafe byte* Utf8Encode(string str, byte* buffer, int bufferSize)
+        /// <returns>The encoded bytes</returns>
+        internal static byte[] Utf8EncodeHeap(string str)
         {
             if (str == null)
             {
-                return (byte*) 0;
+                return null;
             }
 
-            fixed (char* strPtr = str)
-            {
-                Encoding.UTF8.GetBytes(strPtr, str.Length + 1, buffer, bufferSize);
-            }
-
-            return buffer;
+            byte[] encodedBytes = Encoding.UTF8.GetBytes(str);
+            return encodedBytes;
         }
 
-        /* Used for heap allocated string marshaling.
-         * Returned byte* must be free'd with FreeHGlobal.
-         */
+        
         /// <summary>
-        ///     Utfs the 8 encode heap using the specified str
+        ///     Converts UTF-8 to managed string using the specified pointer.
         /// </summary>
-        /// <param name="str">The str</param>
-        /// <returns>The buffer</returns>
-        internal static unsafe byte* Utf8EncodeHeap(string str)
-        {
-            if (str == null)
-            {
-                return (byte*) 0;
-            }
-
-            int bufferSize = Utf8Size(str);
-            byte* buffer = (byte*) Marshal.AllocHGlobal(bufferSize);
-            fixed (char* strPtr = str)
-            {
-                Encoding.UTF8.GetBytes(strPtr, str.Length + 1, buffer, bufferSize);
-            }
-
-            return buffer;
-        }
-
-        /* This is public because SDL_DropEvent needs it! */
-        /// <summary>
-        ///     Utfs the 8 to managed using the specified s
-        /// </summary>
-        /// <param name="s">The </param>
-        /// <param name="freePtr">The free ptr</param>
-        /// <returns>The result</returns>
-        public static unsafe string UTF8_ToManaged(IntPtr s, bool freePtr = false)
+        /// <param name="s">The pointer to the UTF-8 string</param>
+        /// <param name="freePtr">Indicates whether to free the pointer</param>
+        /// <returns>The result as a managed string</returns>
+        public static string UTF8_ToManaged(IntPtr s, bool freePtr = false)
         {
             if (s == IntPtr.Zero)
             {
                 return null;
             }
 
-            /* We get to do strlen ourselves! */
-            byte* ptr = (byte*) s;
-            while (*ptr != 0)
+            int len = 0;
+            while (Marshal.ReadByte(s, len) != 0)
             {
-                ptr++;
+                len++;
             }
 
-            /* TODO: This #ifdef is only here because the equivalent
-             * .NET 2.0 constructor appears to be less efficient?
-             * Here's the pretty version, maybe steal this instead:
-             *
-            string result = new string(
-                (sbyte*) s, // Also, why sbyte???
-                0,
-                (int) (ptr - (byte*) s),
-                System.Text.Encoding.UTF8
-            );
-             * See the CoreCLR source for more info.
-             * -flibit
-             */
-#if NETSTANDARD2_0
-			/* Modern C# lets you just send the byte*, nice! */
-			string result = System.Text.Encoding.UTF8.GetString(
-				(byte*) s,
-				(int) (ptr - (byte*) s)
-			);
-#else
-            /* Old C# requires an extra memcpy, bleh! */
-            int len = (int) (ptr - (byte*) s);
             if (len == 0)
             {
                 return string.Empty;
             }
 
-            char* chars = stackalloc char[len];
-            int strLen = Encoding.UTF8.GetChars((byte*) s, len, chars, len);
-            string result = new string(chars, 0, strLen);
-#endif
+            byte[] buffer = new byte[len];
+            Marshal.Copy(s, buffer, 0, len);
+            string result = Encoding.UTF8.GetString(buffer, 0, len);
 
-            /* Some SDL functions will malloc, we have to free! */
             if (freePtr)
             {
                 SdlMixerExtern.SDL_free(s);
@@ -661,6 +595,7 @@ namespace Alis.Core.Audio.SDL
             return result;
         }
 
+
         /// <summary>
         ///     Sdls the get error
         /// </summary>
@@ -668,17 +603,17 @@ namespace Alis.Core.Audio.SDL
         public static string SDL_GetError() => UTF8_ToManaged(SdlMixerExtern.INTERNAL_SDL_GetError());
 
         /// <summary>
-        ///     Sdls the set error using the specified fmt and arglist
+        ///     Sets the error using the specified format and argument list.
         /// </summary>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static unsafe void SDL_SetError(string fmtAndArglist)
-        {
-            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
-            byte* utf8FmtAndArglist = stackalloc byte[utf8FmtAndArglistBufSize];
-            SdlMixerExtern.INTERNAL_SDL_SetError(
-                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
-            );
-        }
+        /// <param name="formatAndArgList">The format and argument list.</param>
+        public static void SDL_SetError(string formatAndArgList) => SdlMixerExtern.INTERNAL_SDL_SetError(Utf8Encode(formatAndArgList));
+
+        /// <summary>
+        /// Utfs the 8 encode using the specified str
+        /// </summary>
+        /// <param name="str">The str</param>
+        /// <returns>The byte array</returns>
+        private static byte[] Utf8Encode(string str) => Encoding.UTF8.GetBytes(str);
 
         /// <summary>
         ///     Mixes the load wav using the specified file
@@ -690,27 +625,18 @@ namespace Alis.Core.Audio.SDL
             IntPtr rwops = SDL_RWFromFile(file, "rb");
             return SdlMixerExtern.Mix_LoadWAV_RW(rwops, 1);
         }
-
+        
         /// <summary>
-        ///     Sdls the rw from file using the specified file
+        ///     SDL RW from file using the specified file
         /// </summary>
         /// <param name="file">The file</param>
         /// <param name="mode">The mode</param>
-        /// <returns>The rw ops</returns>
-        public static unsafe IntPtr SDL_RWFromFile(
-            string file,
-            string mode
-        )
+        /// <returns>The RW ops</returns>
+        public static IntPtr SDL_RWFromFile(string file, string mode)
         {
-            byte* utf8File = Utf8EncodeHeap(file);
-            byte* utf8Mode = Utf8EncodeHeap(mode);
-            IntPtr rwOps = INTERNAL_SDL_RWFromFile(
-                utf8File,
-                utf8Mode
-            );
-            Marshal.FreeHGlobal((IntPtr) utf8Mode);
-            Marshal.FreeHGlobal((IntPtr) utf8File);
-            return rwOps;
+            byte[] utf8File = Encoding.UTF8.GetBytes(file);
+            byte[] utf8Mode = Encoding.UTF8.GetBytes(mode);
+            return INTERNAL_SDL_RWFromFile(utf8File, utf8Mode);
         }
     }
 }

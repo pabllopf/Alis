@@ -31,7 +31,7 @@ using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Entity;
-using Alis.Core.Graphic.SDL;
+using Alis.Core.Graphic;
 using Alis.Core.Graphic.SFML.Windows;
 using Alis.Core.Manager.Scene;
 
@@ -42,47 +42,10 @@ namespace Alis.Core.Manager.Input
     public class InputManager : InputManagerBase
     {
         /// <summary>
-        ///     The axis
-        /// </summary>
-        private List<SdlGameControllerAxis> axis;
-
-        /// <summary>
-        ///     The axis temp
-        /// </summary>
-        private List<SdlGameControllerAxis> axisTemp;
-
-        /// <summary>
-        ///     The buttons
-        /// </summary>
-        private List<SdlGameControllerButton> buttons;
-
-        /// <summary>
-        ///     The buttons temp
-        /// </summary>
-        private Dictionary<string, SdlGameControllerButton> buttonsTemp;
-
-
-        /// <summary>
-        ///     The currentsdl numjoysticks
-        /// </summary>
-        private int currentSdlNumJoysticks;
-
-        /// <summary>
-        ///     The joysticks
-        /// </summary>
-        private List<IntPtr> joysticks;
-
-        /// <summary>
         ///     Array of key of keyboard
         /// </summary>
         private List<Key> keys;
-
-
-        /// <summary>
-        ///     The sdl event
-        /// </summary>
-        private SdlEvent sdlEvent;
-
+        
         /// <summary>
         ///     Temp list of keys
         /// </summary>
@@ -104,6 +67,7 @@ namespace Alis.Core.Manager.Input
         /// </summary>
         public override void Init()
         {
+            /*
             Sdl.SDL_SetHint(Sdl.SdlHintXinputEnabled, "0");
             Sdl.SDL_SetHint(Sdl.SdlHintJoystickThread, "1");
             Sdl.SDL_Init(Sdl.SdlInitEverything);
@@ -138,6 +102,9 @@ namespace Alis.Core.Manager.Input
             axisTemp = new List<SdlGameControllerAxis>();
 
             keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
+            tempListOfKeys = new List<Key>();*/
+            
+            keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
             tempListOfKeys = new List<Key>();
         }
 
@@ -160,6 +127,7 @@ namespace Alis.Core.Manager.Input
         /// </summary>
         public override void BeforeUpdate()
         {
+            /*
             Sdl.SDL_JoystickUpdate();
             Sdl.SDL_GameControllerUpdate();
 
@@ -185,7 +153,7 @@ namespace Alis.Core.Manager.Input
                 }
 
                 currentSdlNumJoysticks = Sdl.SDL_NumJoysticks();
-            }
+            }*/
         }
 
         /// <summary>
@@ -193,6 +161,7 @@ namespace Alis.Core.Manager.Input
         /// </summary>
         public override void Update()
         {
+            /*
             while (Sdl.SDL_PollEvent(out sdlEvent) != 0)
             {
                 if (Sdl.SDL_NumJoysticks() > 0)
@@ -241,7 +210,7 @@ namespace Alis.Core.Manager.Input
                         }
                     }
                 }
-            }
+            }*/
         }
 
         /// <summary>

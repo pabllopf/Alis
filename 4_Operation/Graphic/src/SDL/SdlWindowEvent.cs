@@ -26,7 +26,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The window event
         /// </summary>
-        public Sdl.SdlWindowEventId windowEvent; // event, lolC#
+        public SdlWindowEventId windowEvent; // event, lolC#
 
         /// <summary>
         ///     The padding

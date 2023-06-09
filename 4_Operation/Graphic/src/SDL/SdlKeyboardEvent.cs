@@ -60,7 +60,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The repeat
         /// </summary>
-        public byte repeat; /* non-zero if this is a repeat */
+        public byte repeat;
 
         /// <summary>
         ///     The padding

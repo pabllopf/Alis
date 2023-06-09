@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.SDL
@@ -6,7 +7,7 @@ namespace Alis.Core.Graphic.SDL
     ///     The sdl sensorevent
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct SdlSensorEvent
+    public struct SdlSensorEvent
     {
         /// <summary>
         ///     The type
@@ -26,6 +27,20 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The data
         /// </summary>
-        public fixed float data[6];
+        public IntPtr dataPtr;
+        
+        /// <summary>
+        /// Gets or sets the value of the text
+        /// </summary>
+        public float[] data
+        {
+            get
+            {
+                float[] dataBytes = new float[6];
+                Buffer.BlockCopy(data, 0, dataBytes, 0, 6);
+                return dataBytes;
+            }
+            set => Marshal.Copy(value, 0, dataPtr, 6);
+        }
     }
 }
