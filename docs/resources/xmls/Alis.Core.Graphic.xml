@@ -45907,9 +45907,164 @@
                 The window id
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.textPtr">
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte0">
             <summary>
-                The sdl texteditingevent text size
+            The byte
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte1">
+            <summary>
+            The byte
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte2">
+            <summary>
+            The byte
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte3">
+            <summary>
+            The byte
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte4">
+            <summary>
+            The byte
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte5">
+            <summary>
+            The byte
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte6">
+            <summary>
+            The byte
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte7">
+            <summary>
+            The byte
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte8">
+            <summary>
+            The byte
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte9">
+            <summary>
+            The byte
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte10">
+            <summary>
+            The byte 10
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte11">
+            <summary>
+            The byte 11
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte12">
+            <summary>
+            The byte 12
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte13">
+            <summary>
+            The byte 13
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte14">
+            <summary>
+            The byte 14
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte15">
+            <summary>
+            The byte 15
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte16">
+            <summary>
+            The byte 16
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte17">
+            <summary>
+            The byte 17
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte18">
+            <summary>
+            The byte 18
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte19">
+            <summary>
+            The byte 19
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte20">
+            <summary>
+            The byte 20
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte21">
+            <summary>
+            The byte 21
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte22">
+            <summary>
+            The byte 22
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte23">
+            <summary>
+            The byte 23
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte24">
+            <summary>
+            The byte 24
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte25">
+            <summary>
+            The byte 25
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte26">
+            <summary>
+            The byte 26
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte27">
+            <summary>
+            The byte 27
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte28">
+            <summary>
+            The byte 28
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte29">
+            <summary>
+            The byte 29
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte30">
+            <summary>
+            The byte 30
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.byte31">
+            <summary>
+            The byte 31
             </summary>
         </member>
         <member name="P:Alis.Core.Graphic.SDL.SdlTextInputEvent.text">
