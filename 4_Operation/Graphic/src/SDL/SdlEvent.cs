@@ -189,168 +189,333 @@ namespace Alis.Core.Graphic.SDL
         [FieldOffset(0)]
         private byte padding0;
         
+        /// <summary>
+        /// The padding
+        /// </summary>
         [FieldOffset(0)]
         private byte padding1;
         
+        /// <summary>
+        /// The padding
+        /// </summary>
         [FieldOffset(0)]
         private byte padding2;
         
+        /// <summary>
+        /// The padding
+        /// </summary>
         [FieldOffset(0)]
         private byte padding3;
         
+        /// <summary>
+        /// The padding
+        /// </summary>
         [FieldOffset(0)]
         private byte padding4;
         
+        /// <summary>
+        /// The padding
+        /// </summary>
         [FieldOffset(0)]
         private byte padding5;
         
+        /// <summary>
+        /// The padding
+        /// </summary>
         [FieldOffset(0)]
         private byte padding6;
         
+        /// <summary>
+        /// The padding
+        /// </summary>
         [FieldOffset(0)]
         private byte padding7;
         
+        /// <summary>
+        /// The padding
+        /// </summary>
         [FieldOffset(0)]
         private byte padding8;
         
+        /// <summary>
+        /// The padding
+        /// </summary>
         [FieldOffset(0)]
         private byte padding9;
         
+        /// <summary>
+        /// The padding 10
+        /// </summary>
         [FieldOffset(0)]
         private byte padding10;
         
+        /// <summary>
+        /// The padding 11
+        /// </summary>
         [FieldOffset(0)]
         private byte padding11;
         
+        /// <summary>
+        /// The padding 12
+        /// </summary>
         [FieldOffset(0)]
         private byte padding12;
         
+        /// <summary>
+        /// The padding 13
+        /// </summary>
         [FieldOffset(0)]
         private byte padding13;
         
+        /// <summary>
+        /// The padding 14
+        /// </summary>
         [FieldOffset(0)]
         private byte padding14;
         
+        /// <summary>
+        /// The padding 15
+        /// </summary>
         [FieldOffset(0)]
         private byte padding15;
         
+        /// <summary>
+        /// The padding 16
+        /// </summary>
         [FieldOffset(0)]
         private byte padding16;
         
+        /// <summary>
+        /// The padding 17
+        /// </summary>
         [FieldOffset(0)]
         private byte padding17;
         
+        /// <summary>
+        /// The padding 18
+        /// </summary>
         [FieldOffset(0)]
         private byte padding18;
         
+        /// <summary>
+        /// The padding 19
+        /// </summary>
         [FieldOffset(0)]
         private byte padding19;
         
+        /// <summary>
+        /// The padding 20
+        /// </summary>
         [FieldOffset(0)]
         private byte padding20;
         
+        /// <summary>
+        /// The padding 21
+        /// </summary>
         [FieldOffset(0)]
         private byte padding21;
         
+        /// <summary>
+        /// The padding 22
+        /// </summary>
         [FieldOffset(0)]
         private byte padding22;
         
+        /// <summary>
+        /// The padding 23
+        /// </summary>
         [FieldOffset(0)]
         private byte padding23;
         
+        /// <summary>
+        /// The padding 24
+        /// </summary>
         [FieldOffset(0)]
         private byte padding24;
         
+        /// <summary>
+        /// The padding 25
+        /// </summary>
         [FieldOffset(0)]
         private byte padding25;
         
+        /// <summary>
+        /// The padding 26
+        /// </summary>
         [FieldOffset(0)]
         private byte padding26;
         
+        /// <summary>
+        /// The padding 27
+        /// </summary>
         [FieldOffset(0)]
         private byte padding27;
         
+        /// <summary>
+        /// The padding 28
+        /// </summary>
         [FieldOffset(0)]
         private byte padding28;
         
+        /// <summary>
+        /// The padding 29
+        /// </summary>
         [FieldOffset(0)]
         private byte padding29;
         
+        /// <summary>
+        /// The padding 30
+        /// </summary>
         [FieldOffset(0)]
         private byte padding30;
         
+        /// <summary>
+        /// The padding 31
+        /// </summary>
         [FieldOffset(0)]
         private byte padding31;
         
+        /// <summary>
+        /// The padding 32
+        /// </summary>
         [FieldOffset(0)]
         private byte padding32;
         
+        /// <summary>
+        /// The padding 33
+        /// </summary>
         [FieldOffset(0)]
         private byte padding33;
         
+        /// <summary>
+        /// The padding 34
+        /// </summary>
         [FieldOffset(0)]
         private byte padding34;
         
+        /// <summary>
+        /// The padding 35
+        /// </summary>
         [FieldOffset(0)]
         private byte padding35;
         
+        /// <summary>
+        /// The padding 36
+        /// </summary>
         [FieldOffset(0)]
         private byte padding36;
         
+        /// <summary>
+        /// The padding 37
+        /// </summary>
         [FieldOffset(0)]
         private byte padding37;
         
+        /// <summary>
+        /// The padding 38
+        /// </summary>
         [FieldOffset(0)]
         private byte padding38;
         
+        /// <summary>
+        /// The padding 39
+        /// </summary>
         [FieldOffset(0)]
         private byte padding39;
         
+        /// <summary>
+        /// The padding 40
+        /// </summary>
         [FieldOffset(0)]
         private byte padding40;
         
+        /// <summary>
+        /// The padding 41
+        /// </summary>
         [FieldOffset(0)]
         private byte padding41;
         
+        /// <summary>
+        /// The padding 42
+        /// </summary>
         [FieldOffset(0)]
         private byte padding42;
         
+        /// <summary>
+        /// The padding 43
+        /// </summary>
         [FieldOffset(0)]
         private byte padding43;
         
+        /// <summary>
+        /// The padding 44
+        /// </summary>
         [FieldOffset(0)]
         private byte padding44;
         
+        /// <summary>
+        /// The padding 45
+        /// </summary>
         [FieldOffset(0)]
         private byte padding45;
         
+        /// <summary>
+        /// The padding 46
+        /// </summary>
         [FieldOffset(0)]
         private byte padding46;
         
+        /// <summary>
+        /// The padding 47
+        /// </summary>
         [FieldOffset(0)]
         private byte padding47;
         
+        /// <summary>
+        /// The padding 48
+        /// </summary>
         [FieldOffset(0)]
         private byte padding48;
         
+        /// <summary>
+        /// The padding 49
+        /// </summary>
         [FieldOffset(0)]
         private byte padding49;
         
+        /// <summary>
+        /// The padding 50
+        /// </summary>
         [FieldOffset(0)]
         private byte padding50;
         
+        /// <summary>
+        /// The padding 51
+        /// </summary>
         [FieldOffset(0)]
         private byte padding51;
         
+        /// <summary>
+        /// The padding 52
+        /// </summary>
         [FieldOffset(0)]
         private byte padding52;
         
+        /// <summary>
+        /// The padding 53
+        /// </summary>
         [FieldOffset(0)]
         private byte padding53;
         
+        /// <summary>
+        /// The padding 54
+        /// </summary>
         [FieldOffset(0)]
         private byte padding54;
         
+        /// <summary>
+        /// The padding 55
+        /// </summary>
         [FieldOffset(0)]
         private byte padding55;
 
