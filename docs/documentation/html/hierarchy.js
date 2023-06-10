@@ -26,7 +26,7 @@ var hierarchy =
     [ "Alis.Core.Aspect.Math.Matrix.Matrix4X4F.CanonicalBasis", "d1/d9d/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4_x4_f_1_1_canonical_basis.html", null ],
     [ "Alis.Core.Physic.Tools.Triangulation.Delaunay.CdtDecomposer", "d4/dc2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_cdt_decomposer.html", null ],
     [ "Alis.Core.Physic.Tools.ConvexHull.ChainHull", "d3/d87/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_chain_hull.html", null ],
-    [ "Alis.Core.Audio.SFML.SoundStream.Chunk", "de/d6a/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream_1_1_chunk.html", null ],
+    [ "Alis.Core.Audio.SFML.Chunk", "d6/d0d/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_chunk.html", null ],
     [ "Alis.Builder.Core.Component.Collider.CircleColliderBuilder", "d9/d50/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_circle_collider_builder.html", null ],
     [ "Alis.Core.Aspect.Math.Figures.D2.Circle.CircleF", "dc/d2d/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_figures_1_1_d2_1_1_circle_1_1_circle_f.html", null ],
     [ "Alis.Core.Aspect.Math.Figures.D2.Circle.CircleI", "d4/d47/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_figures_1_1_d2_1_1_circle_1_1_circle_i.html", null ],

@@ -1,6 +1,5 @@
 var class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream =
 [
-    [ "Chunk", "de/d6a/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream_1_1_chunk.html", "de/d6a/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream_1_1_chunk" ],
     [ "SoundStream", "d2/d3d/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream.html#a3c3232498e76ddbfaec34affaab0d8d7", null ],
     [ "Play", "d2/d3d/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream.html#acc0db77bc10d1e4a9f47ccb1ebbdc549", null ],
     [ "Pause", "d2/d3d/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream.html#a295321e3693df865a11610f34be34aee", null ],
@@ -40,7 +39,6 @@ var class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream =
     [ "SeekCallbackType", "d2/d3d/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream.html#ac9a3cd4457c1c1d3eaa4c4b629d4c974", null ],
     [ "myGetDataCallback", "d2/d3d/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream.html#a855e5592aba5c0888de260e74d16506f", null ],
     [ "mySeekCallback", "d2/d3d/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream.html#a1ecb2cf6fbeaef0534cb3203b6f95d01", null ],
-    [ "myTempBuffer", "d2/d3d/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream.html#a3dac68e1884bb9f8148315f6b43a0bd5", null ],
     [ "SampleRate", "d2/d3d/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream.html#a487b9268ad8221267fe5b29e8faded4d", null ],
     [ "ChannelCount", "d2/d3d/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream.html#a0149bebaf71a031a5307160495211b34", null ],
     [ "Status", "d2/d3d/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream.html#a14403c7f246960007f00da4a08b3432a", null ],

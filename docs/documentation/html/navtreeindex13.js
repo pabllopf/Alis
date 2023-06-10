@@ -1,5 +1,11 @@
 var NAVTREEINDEX13 =
 {
+"d3/d94/class_alis_1_1_builder_1_1_core_1_1_manager_1_1_setting_manager_builder.html#a07f0fc5065ebc67adfb1b7a46b98c544":[1,0,0,1,0,2,2,4],
+"d3/d94/class_alis_1_1_builder_1_1_core_1_1_manager_1_1_setting_manager_builder.html#a1aeaa1b9015c1ef5acbcbc157e9db7a0":[1,0,0,1,0,2,2,2],
+"d3/d94/class_alis_1_1_builder_1_1_core_1_1_manager_1_1_setting_manager_builder.html#a30267f1c2ff48ce076bcdcabddaeff31":[1,0,0,1,0,2,2,0],
+"d3/d94/class_alis_1_1_builder_1_1_core_1_1_manager_1_1_setting_manager_builder.html#a6942c4b8be7c5f4dee5bf285eb98e896":[1,0,0,1,0,2,2,1],
+"d3/d94/class_alis_1_1_builder_1_1_core_1_1_manager_1_1_setting_manager_builder.html#a71411833f01c13a7099de33baf50ecfc":[1,0,0,1,0,2,2,3],
+"d3/d94/class_alis_1_1_builder_1_1_core_1_1_manager_1_1_setting_manager_builder.html#ab1d6bae35db68d7184a524ca759b6ae5":[1,0,0,1,0,2,2,6],
 "d3/d94/class_alis_1_1_builder_1_1_core_1_1_manager_1_1_setting_manager_builder.html#ae432fea99da4564739810e385fc3250e":[1,0,0,1,0,2,2,5],
 "d3/d96/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_manager_of.html":[1,0,0,2,0,2,0,34],
 "d3/d96/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_manager_of.html#acf219c8fbd1f03c57e5ef494e23b12d8":[1,0,0,2,0,2,0,34,0],
@@ -208,13 +214,13 @@ var NAVTREEINDEX13 =
 "d3/dfc/namespace_alis_1_1_builder_1_1_core_1_1_component_1_1_light.html":[0,0,0,1,0,0,3],
 "d3/dfc/namespace_alis_1_1_builder_1_1_core_1_1_component_1_1_light.html":[1,0,0,1,0,0,3],
 "d3/dfd/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_window_event.html":[1,0,0,2,4,3,80],
-"d3/dfd/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_window_event.html#a002172c90d6d267f6b58962f70d5512b":[1,0,0,2,4,3,80,3],
 "d3/dfd/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_window_event.html#a164cd6137498597c381a86f8116109a7":[1,0,0,2,4,3,80,1],
 "d3/dfd/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_window_event.html#a1fd363992318329f4fb3c6a56b154d58":[1,0,0,2,4,3,80,7],
 "d3/dfd/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_window_event.html#a40f37e8a08250996cb364c010e17ec9a":[1,0,0,2,4,3,80,4],
 "d3/dfd/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_window_event.html#a552f739598f4e6d946449bf273cc684b":[1,0,0,2,4,3,80,2],
 "d3/dfd/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_window_event.html#aae60baeda87b48c93517c5e9dd27d80c":[1,0,0,2,4,3,80,8],
 "d3/dfd/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_window_event.html#ab5b2f502000f77a1d1e3757461722c97":[1,0,0,2,4,3,80,0],
+"d3/dfd/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_window_event.html#ab5f37ea4cb9c710ac9f795efbefe6f96":[1,0,0,2,4,3,80,3],
 "d3/dfd/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_window_event.html#ad689231b44244506b6014cf1cfb79475":[1,0,0,2,4,3,80,6],
 "d3/dfd/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_window_event.html#af29dd65be4177aaf0c7239b2e65afcd1":[1,0,0,2,4,3,80,5],
 "d4/d03/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_point.html":[1,0,0,2,4,3,64],
@@ -243,11 +249,5 @@ var NAVTREEINDEX13 =
 "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#a830d16d8330181abc28527be3ba8b021":[1,0,0,2,7,0,6,2,20],
 "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#a94a216f62ab39c7dcc977021312dc325":[1,0,0,2,7,0,6,2,7],
 "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#ab2500353a58a669c51ed7c5b09f34f6d":[1,0,0,2,7,0,6,2,1],
-"d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#ab61623220705856ae935d1b52d5048b6":[1,0,0,2,7,0,6,2,0],
-"d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#abc373667bfc54535a79fae603147d436":[1,0,0,2,7,0,6,2,18],
-"d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#ad19daf3b87d508c4163e0f1872b9cee5":[1,0,0,2,7,0,6,2,8],
-"d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#ad49665c24c53950f60eec0e0a8a2ad0d":[1,0,0,2,7,0,6,2,17],
-"d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#adebb5e497c460be7740629e7656790e8":[1,0,0,2,7,0,6,2,13],
-"d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#ae7c41a6231bc0d995609b01c23a5860b":[1,0,0,2,7,0,6,2,3],
-"d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#afd49c8d04014d5cfb06f61c3ed9dbd66":[1,0,0,2,7,0,6,2,12]
+"d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#ab61623220705856ae935d1b52d5048b6":[1,0,0,2,7,0,6,2,0]
 };

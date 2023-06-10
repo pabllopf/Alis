@@ -33,7 +33,7 @@ var class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_texture =
     [ "sfTexture_destroy", "d9/dfe/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_texture.html#a73e8ec68fc27da9f845b9949eb2a406c", null ],
     [ "sfTexture_getSize", "d9/dfe/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_texture.html#acfb2157b943894c74e36ec520a540ce3", null ],
     [ "sfTexture_copyToImage", "d9/dfe/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_texture.html#a11a0cb2648bd27173f89dd5cc232c5fb", null ],
-    [ "sfTexture_updateFromPixels", "d9/dfe/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_texture.html#ab886a6dcc2da5794f43b97bfbefc884e", null ],
+    [ "sfTexture_updateFromPixels", "d9/dfe/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_texture.html#a493029ce6d9f1ec49ab6be8991891e35", null ],
     [ "sfTexture_updateFromTexture", "d9/dfe/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_texture.html#a2b0f70825c04d858fc1a557820ae16a3", null ],
     [ "sfTexture_updateFromImage", "d9/dfe/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_texture.html#af9f59e8ae7ee8ae36c573af691bbf37a", null ],
     [ "sfTexture_updateFromWindow", "d9/dfe/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_texture.html#a84d7a8f2ca3cad2c663962bcedffce75", null ],

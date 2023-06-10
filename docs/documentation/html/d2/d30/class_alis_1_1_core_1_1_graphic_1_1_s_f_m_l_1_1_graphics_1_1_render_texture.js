@@ -46,7 +46,7 @@ var class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture 
     [ "sfRenderTexture_setRepeated", "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#ad38679e0d374a800089eec1e5f0bf05c", null ],
     [ "sfRenderTexture_isRepeated", "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#aa8b4daa8368202ca0fef76b217e74803", null ],
     [ "sfRenderTexture_generateMipmap", "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#a0005bbc28463ff835aad1a2ebf5e4f55", null ],
-    [ "sfRenderTexture_drawPrimitives", "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#a4e9b626f2cb72a89f89753d2db3e09e9", null ],
+    [ "sfRenderTexture_drawPrimitives", "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#ad02dad13e3dc460f727b8a539e5996d9", null ],
     [ "sfRenderTexture_pushGLStates", "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#a012f3f388c26f94a844c5f8cf958a9be", null ],
     [ "sfRenderTexture_popGLStates", "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#aa61168e3172c2fc49c100730c3a05f9f", null ],
     [ "sfRenderTexture_resetGLStates", "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#a229b30f32a0a1f27e8b5d90e8dc76696", null ],

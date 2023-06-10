@@ -20,7 +20,7 @@ var class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_recorder =
     [ "sfSoundRecorder_getSampleRate", "d0/d94/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_recorder.html#a5ba491ea33981059d506b8cf62ca3c72", null ],
     [ "sfSoundRecorder_isAvailable", "d0/d94/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_recorder.html#a21608d78ef7d595a48692c10967f4a74", null ],
     [ "sfSoundRecorder_setProcessingInterval", "d0/d94/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_recorder.html#ad088968e55faa20fe521f70f3c469d0e", null ],
-    [ "sfSoundRecorder_getAvailableDevices", "d0/d94/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_recorder.html#a9ce23dd959e4972cabdeec953cfc1d5e", null ],
+    [ "sfSoundRecorder_getAvailableDevices", "d0/d94/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_recorder.html#aebbad2e2e5b5763c51fd044da5400f9a", null ],
     [ "sfSoundRecorder_getDefaultDevice", "d0/d94/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_recorder.html#a5aa0c89444d8bd5006578d8cbef8b5c1", null ],
     [ "sfSoundRecorder_setDevice", "d0/d94/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_recorder.html#ae1a1254d21875f5a089510862c8d1c6f", null ],
     [ "sfSoundRecorder_getDevice", "d0/d94/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_recorder.html#aec1c02ea55d94eee1181f83c9a81bb56", null ],

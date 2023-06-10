@@ -11,13 +11,6 @@ var class_alis_1_1_core_1_1_manager_1_1_input_1_1_input_manager =
     [ "Reset", "d5/d89/class_alis_1_1_core_1_1_manager_1_1_input_1_1_input_manager.html#aabe36d141ae697bf7a19cdc8308bb1ea", null ],
     [ "Stop", "d5/d89/class_alis_1_1_core_1_1_manager_1_1_input_1_1_input_manager.html#a2f25e97abb4154d47ddbf6b583d0a3a1", null ],
     [ "Exit", "d5/d89/class_alis_1_1_core_1_1_manager_1_1_input_1_1_input_manager.html#a6f6e19dbc2fb49526b27c7e572915cf0", null ],
-    [ "axis", "d5/d89/class_alis_1_1_core_1_1_manager_1_1_input_1_1_input_manager.html#a8f0d098756ec513f58e3616b178b507d", null ],
-    [ "axisTemp", "d5/d89/class_alis_1_1_core_1_1_manager_1_1_input_1_1_input_manager.html#a7b8e6923f65be10d7b4f7334f86fc2f3", null ],
-    [ "buttons", "d5/d89/class_alis_1_1_core_1_1_manager_1_1_input_1_1_input_manager.html#ad54816cfebdbc6ba4b6312d6c3c8b585", null ],
-    [ "buttonsTemp", "d5/d89/class_alis_1_1_core_1_1_manager_1_1_input_1_1_input_manager.html#a1baa74a6ec8d5d7b6648705bda825049", null ],
-    [ "currentSdlNumJoysticks", "d5/d89/class_alis_1_1_core_1_1_manager_1_1_input_1_1_input_manager.html#a3fc4825c7af922125382d4ef2e715a80", null ],
-    [ "joysticks", "d5/d89/class_alis_1_1_core_1_1_manager_1_1_input_1_1_input_manager.html#ae3c97b776f243fc82039a683dff0ebc7", null ],
     [ "keys", "d5/d89/class_alis_1_1_core_1_1_manager_1_1_input_1_1_input_manager.html#aa2fe5e94dabc6b076c67836d6f348035", null ],
-    [ "sdlEvent", "d5/d89/class_alis_1_1_core_1_1_manager_1_1_input_1_1_input_manager.html#ab561f7524558933c43ed7384ed03de12", null ],
     [ "tempListOfKeys", "d5/d89/class_alis_1_1_core_1_1_manager_1_1_input_1_1_input_manager.html#a114b12e101af8168836e9fd86129aca7", null ]
 ];

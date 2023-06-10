@@ -18,7 +18,7 @@ var class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer =
     [ "sfVertexBuffer_copy", "d5/d3b/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#ab930fabe5f2b77820612e62978c41932", null ],
     [ "sfVertexBuffer_destroy", "d5/d3b/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#aee34eb795523aa947c2edb26e445e756", null ],
     [ "sfVertexBuffer_getVertexCount", "d5/d3b/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a0141f17b3f79a99d23da4626806349eb", null ],
-    [ "sfVertexBuffer_update", "d5/d3b/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a67434dc7687035ca6da92d342c2f030f", null ],
+    [ "sfVertexBuffer_update", "d5/d3b/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#accd56801a9e237195b4a03fa7f560387", null ],
     [ "sfVertexBuffer_updateFromVertexBuffer", "d5/d3b/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#ada48341059cbfb2978ae7d45115dbb49", null ],
     [ "sfVertexBuffer_swap", "d5/d3b/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#afe8de2b228103d6f9a340903ce8e6d3a", null ],
     [ "sfVertexBuffer_getNativeHandle", "d5/d3b/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#ad92943a103fa15212f599917323caf1a", null ],

@@ -12,7 +12,7 @@ var class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array =
     [ "sfVertexArray_copy", "d7/d07/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#ac32997805542a81d23a526bdbe613977", null ],
     [ "sfVertexArray_destroy", "d7/d07/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#ab3d95c51e43085d0146683c7fe1471bb", null ],
     [ "sfVertexArray_getVertexCount", "d7/d07/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#abaf16a7b72f29998fc000ab1feedbc82", null ],
-    [ "sfVertexArray_getVertex", "d7/d07/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#a65653322f48fc9c4569475d472b0573e", null ],
+    [ "sfVertexArray_getVertex", "d7/d07/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#aa0c3dbee64b8cbbe29496ebb4d4fef64", null ],
     [ "sfVertexArray_clear", "d7/d07/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#acfbdde2e54a7e9d4fb3de87bb48c4030", null ],
     [ "sfVertexArray_resize", "d7/d07/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#a69189d3886dfb360a9e475724dee9d61", null ],
     [ "sfVertexArray_append", "d7/d07/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#ab68df90cbf557f21182e065c9420de0c", null ],
@@ -23,6 +23,5 @@ var class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array =
     [ "sfRenderTexture_drawVertexArray", "d7/d07/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#a63f4de3a00ce955e9ac7f91da0e2a2ab", null ],
     [ "VertexCount", "d7/d07/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#acd1d13820b3f10f23f878f412e987f09", null ],
     [ "Bounds", "d7/d07/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#aff879dec78b6ed49dd11c7ec59414bc6", null ],
-    [ "this[uint index]", "d7/d07/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#a44c760ec41a8747912d283f2fc274822", null ],
     [ "PrimitiveType", "d7/d07/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#a7b59ce885621c7c9b725100157058be2", null ]
 ];

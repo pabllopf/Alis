@@ -11,7 +11,7 @@ var class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_buffer =
     [ "sfSoundBuffer_createFromFile", "d2/ddd/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_buffer.html#adf0cbc60f75e68d0c72c311a4fa9eb1c", null ],
     [ "sfSoundBuffer_createFromStream", "d2/ddd/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_buffer.html#a26f9d01b2eedbb54192ceb7cd0916ea1", null ],
     [ "sfSoundBuffer_createFromMemory", "d2/ddd/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_buffer.html#ad74ffcaeffd5420bfc662cb44c6c0300", null ],
-    [ "sfSoundBuffer_createFromSamples", "d2/ddd/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_buffer.html#a56a3c8d13843eebbd92e423dd7582dcd", null ],
+    [ "sfSoundBuffer_createFromSamples", "d2/ddd/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_buffer.html#ac5e5317ea08efdbd4f28c5bb0d3286a8", null ],
     [ "sfSoundBuffer_copy", "d2/ddd/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_buffer.html#a66ccb950311cfed6b7ab313176c1c125", null ],
     [ "sfSoundBuffer_destroy", "d2/ddd/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_buffer.html#aaf3c90471e344be613636a46143dc8cb", null ],
     [ "sfSoundBuffer_saveToFile", "d2/ddd/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_buffer.html#a28a7f036b4f9573602e01167c43d3359", null ],
