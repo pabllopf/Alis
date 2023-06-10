@@ -11,7 +11,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The colors
         /// </summary>
-        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.Struct, SizeConst = (int) SdlMessageBoxColorType.SdlMessageboxColorMax)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int) SdlMessageBoxColorType.SdlMessageboxColorMax)]
         public SdlMessageBoxColor[] colors;
     }
 }
