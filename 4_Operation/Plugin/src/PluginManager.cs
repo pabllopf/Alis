@@ -82,7 +82,6 @@ namespace Alis.Core.Plugin
                         {
                             IPlugin plugin = (IPlugin)Activator.CreateInstance(type);
                             loadedPlugins.Add(plugin);
-                            plugin.Initialize();
                         }
                     }
                 }
@@ -145,5 +144,39 @@ namespace Alis.Core.Plugin
         {
             return RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && RuntimeInformation.OSDescription.Contains("Android");
         }
+
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
+        public void Initialize()
+        {
+            loadedPlugins.ForEach(plugin => plugin.Initialize());
+        }
+
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
+        public void Update()
+        {
+            loadedPlugins.ForEach(plugin => plugin.Update());
+        }
+
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
+        public void Render()
+        {
+            loadedPlugins.ForEach(plugin => plugin.Render());
+        }
+
+        /// <summary>
+        /// Shutdowns this instance
+        /// </summary>
+        public void Shutdown()
+        {
+            loadedPlugins.ForEach(plugin => plugin.Shutdown());
+        }
+        
+
     }
 }

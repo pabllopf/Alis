@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:Sum.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,24 +28,67 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Plugin;
 
 namespace Alis.Core.Plugin.Sample
 {
     /// <summary>
-    ///     The program class
+    /// The sum plugin class
     /// </summary>
-    public static class Program
+    /// <seealso cref="IPlugin"/>
+    public class SumPlugin : IPlugin
     {
         /// <summary>
-        ///     Main the args
+        /// Initializes this instance
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        public void Initialize()
         {
-            PluginManager pluginManager = new PluginManager();
-            pluginManager.LoadPlugins("Assets/Plugins");
+            Console.WriteLine("Sum plugin initialized");
+            Console.WriteLine("sample plugin Sum(4, 5)=" + Sum(4, 5));
+        }
+
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
+        public void Update()
+        {
             
-            pluginManager.Initialize();
+        }
+
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
+        public void Render()
+        {
+           
+        }
+
+        /// <summary>
+        /// Shutdowns this instance
+        /// </summary>
+        public void Shutdown()
+        {
+            
+        }
+
+        /// <summary>
+        /// Sums the a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <returns>The int</returns>
+        public int Sum(int a, int b)
+        {
+            return a + b;
+        }
+
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
+        public void Dispose()
+        {
+            // No se requiere ninguna operación de liberación de recursos para este plugin
         }
     }
+
 }

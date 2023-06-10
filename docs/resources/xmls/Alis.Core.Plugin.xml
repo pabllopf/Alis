@@ -85,5 +85,25 @@
             </summary>
             <returns>The bool</returns>
         </member>
+        <member name="M:Alis.Core.Plugin.PluginManager.Initialize">
+            <summary>
+            Initializes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Plugin.PluginManager.Update">
+            <summary>
+            Updates this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Plugin.PluginManager.Render">
+            <summary>
+            Renders this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Plugin.PluginManager.Shutdown">
+            <summary>
+            Shutdowns this instance
+            </summary>
+        </member>
     </members>
 </doc>
