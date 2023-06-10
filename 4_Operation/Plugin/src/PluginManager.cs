@@ -55,8 +55,12 @@ namespace Alis.Core.Plugin
             {
                throw new NotSupportedException("Unsupported platform. Plugins will not be loaded.");
             }
+            
+            Console.WriteLine("os: " + platformFolder);
 
             string platformPluginsDirectory = Path.Combine(pluginsDirectory, platformFolder);
+            
+            Console.WriteLine("directory: " + platformPluginsDirectory);
 
             if (!Directory.Exists(platformPluginsDirectory))
             {
