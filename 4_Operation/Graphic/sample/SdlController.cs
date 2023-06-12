@@ -107,7 +107,7 @@ namespace Alis.Core.Graphic.Sample
                 Sdl.SdlWindowposUndefined,
                 Width,
                 Height,
-                Sdl.SdlWindowFlags.SdlWindowShown);
+                SdlWindowFlags.SdlWindowShown);
 
             if (window == IntPtr.Zero)
             {
@@ -118,8 +118,8 @@ namespace Alis.Core.Graphic.Sample
             var renderer = Sdl.SDL_CreateRenderer(
                 window,
                 -1,
-                Sdl.SdlRendererFlags.SdlRendererAccelerated |
-                Sdl.SdlRendererFlags.SdlRendererPresentvsync);
+                SdlRendererFlags.SdlRendererAccelerated |
+                SdlRendererFlags.SdlRendererPresentvsync);
 
             if (renderer == IntPtr.Zero)
             {
