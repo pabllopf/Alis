@@ -54,36 +54,7 @@
         </member>
         <member name="T:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass">
             <summary>
-                A class used by managed classes to managed unmanaged DLLs.
-                This will extract and load DLLs from embedded binary resources.
-                This can be used with pinvoke, as well as manually loading DLLs your own way. If you use pinvoke, you don't need to
-                load the DLLs, just
-                extract them. When the DLLs are extracted, the %PATH% environment variable is updated to point to the temporary
-                folder.
-                To Use
-                <list type="">
-                    <item>
-                        Add all of the DLLs as binary file resources to the project Propeties. Double click
-                        Properties/Resources.resx,
-                        Add Resource, Add Existing File. The resource name will be similar but not exactly the same as the DLL file
-                        name.
-                    </item>
-                    <item>
-                        In a static constructor of your application, call EmbeddedDllClass.ExtractEmbeddedDlls() for each DLL
-                        that is needed
-                    </item>
-                    <example>
-                        EmbeddedDllClass.ExtractEmbeddedDlls("libFrontPanel-pinv.dll", Properties.Resources.libFrontPanel_pinv);
-                    </example>
-                    <item>
-                        Optional: In a static constructor of your application, call EmbeddedDllClass.LoadDll() to load the DLLs
-                        you have extracted. This is not necessary for pinvoke
-                    </item>
-                    <example>
-                        EmbeddedDllClass.LoadDll("myscrewball.dll");
-                    </example>
-                    <item>Continue using standard Pinvoke methods for the desired functions in the DLL</item>
-                </list>
+            The embedded dll class
             </summary>
         </member>
         <member name="P:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.CurrentDirectory">
@@ -97,6 +68,18 @@
             </summary>
             <param name="dllName">name of DLL file to create (including dll suffix)</param>
             <param name="resourceBytes">The resource name (fully qualified)</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.IsRunningOniOS">
+            <summary>
+                Describes whether this instance is running oni os
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.IsRunningOnAndroid">
+            <summary>
+                Describes whether this instance is running on android
+            </summary>
+            <returns>The bool</returns>
         </member>
         <member name="T:Alis.Core.Aspect.Base.Exceptions.ComponentDontExits">
             <summary>

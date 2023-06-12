@@ -30,40 +30,12 @@
 using System;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Aspect.Base.Dll
 {
     /// <summary>
-    ///     A class used by managed classes to managed unmanaged DLLs.
-    ///     This will extract and load DLLs from embedded binary resources.
-    ///     This can be used with pinvoke, as well as manually loading DLLs your own way. If you use pinvoke, you don't need to
-    ///     load the DLLs, just
-    ///     extract them. When the DLLs are extracted, the %PATH% environment variable is updated to point to the temporary
-    ///     folder.
-    ///     To Use
-    ///     <list type="">
-    ///         <item>
-    ///             Add all of the DLLs as binary file resources to the project Propeties. Double click
-    ///             Properties/Resources.resx,
-    ///             Add Resource, Add Existing File. The resource name will be similar but not exactly the same as the DLL file
-    ///             name.
-    ///         </item>
-    ///         <item>
-    ///             In a static constructor of your application, call EmbeddedDllClass.ExtractEmbeddedDlls() for each DLL
-    ///             that is needed
-    ///         </item>
-    ///         <example>
-    ///             EmbeddedDllClass.ExtractEmbeddedDlls("libFrontPanel-pinv.dll", Properties.Resources.libFrontPanel_pinv);
-    ///         </example>
-    ///         <item>
-    ///             Optional: In a static constructor of your application, call EmbeddedDllClass.LoadDll() to load the DLLs
-    ///             you have extracted. This is not necessary for pinvoke
-    ///         </item>
-    ///         <example>
-    ///             EmbeddedDllClass.LoadDll("myscrewball.dll");
-    ///         </example>
-    ///         <item>Continue using standard Pinvoke methods for the desired functions in the DLL</item>
-    ///     </list>
+    /// The embedded dll class
     /// </summary>
     public static class EmbeddedDllClass
     {
@@ -79,6 +51,26 @@ namespace Alis.Core.Aspect.Base.Dll
         /// <param name="resourceBytes">The resource name (fully qualified)</param>
         public static void ExtractEmbeddedDlls(string dllName, byte[] resourceBytes)
         {
+            /*
+            string extension = String.Empty;
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                extension = $".dll";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                extension = IsRunningOniOS() ? $".dylib" : ".dylib";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                extension = IsRunningOnAndroid() ? $".so" : ".so";
+            }
+            else
+            {
+                throw new NotSupportedException("Unsupported platform. Plugins will not be loaded.");
+            }*/
+
             Assembly assem = Assembly.GetExecutingAssembly();
             string[] names = assem.GetManifestResourceNames();
             AssemblyName an = assem.GetName();
@@ -99,7 +91,9 @@ namespace Alis.Core.Aspect.Base.Dll
 
             //Directory.SetCurrentDirectory(dirTemp);
 
-            string dllPath = Path.Combine(dirTemp, dllName);
+            //string dllPath = Path.Combine(dirTemp, $"{dllName}{extension}");
+            
+            string dllPath = Path.Combine(dirTemp, $"{dllName}");
 
             if (!File.Exists(dllPath))
             {
@@ -108,5 +102,20 @@ namespace Alis.Core.Aspect.Base.Dll
 
             Console.WriteLine($"dllPath={dllPath}");
         }
+        
+        /// <summary>
+        ///     Describes whether this instance is running oni os
+        /// </summary>
+        /// <returns>The bool</returns>
+        private static bool IsRunningOniOS() => RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && (RuntimeInformation.OSDescription.Contains("iPhone") || RuntimeInformation.OSDescription.Contains("iPad"));
+
+
+        /// <summary>
+        ///     Describes whether this instance is running on android
+        /// </summary>
+        /// <returns>The bool</returns>
+        private static bool IsRunningOnAndroid() => RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && RuntimeInformation.OSDescription.Contains("Android");
+
+        
     }
 }
