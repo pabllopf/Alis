@@ -370,7 +370,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         public void Draw(Vertex[] vertices, uint start, uint count, PrimitiveType type, RenderStates states)
         {
             RenderStates.MarshalData marshaledStates = states.Marshal();
-            
+
             sfRenderWindow_drawPrimitives(CPointer, vertices, count, type, ref marshaledStates);
         }
 

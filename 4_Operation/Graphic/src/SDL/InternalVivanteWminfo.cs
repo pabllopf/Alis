@@ -41,11 +41,11 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The display
         /// </summary>
-        public IntPtr display; 
+        public IntPtr display;
 
         /// <summary>
         ///     The window
         /// </summary>
-        public IntPtr window; 
+        public IntPtr window;
     }
 }

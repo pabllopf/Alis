@@ -72,7 +72,7 @@ namespace Alis.Sample.Pong
             {
                 case Key.W:
                     velocity = new Vector2F(velocity.X, 0);
-                    
+
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
                 case Key.S:

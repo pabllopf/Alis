@@ -42,16 +42,16 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl touch device direct sdl touchdevicetype
         /// </summary>
-        SdlTouchDeviceDirect, 
+        SdlTouchDeviceDirect,
 
         /// <summary>
         ///     The sdl touch device indirect absolute sdl touchdevicetype
         /// </summary>
-        SdlTouchDeviceIndirectAbsolute, 
+        SdlTouchDeviceIndirectAbsolute,
 
         /// <summary>
         ///     The sdl touch device indirect relative sdl touchdevicetype
         /// </summary>
-        SdlTouchDeviceIndirectRelative 
+        SdlTouchDeviceIndirectRelative
     }
 }

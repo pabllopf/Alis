@@ -190,10 +190,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="vertexCount">Number of vertices to copy</param>
         /// <param name="offset">Offset in the buffer to copy to</param>
         ////////////////////////////////////////////////////////////
-        public bool Update(Vertex[] vertices, uint vertexCount, uint offset)
-        {
-            return sfVertexBuffer_update(CPointer, vertices, vertexCount, offset);
-        }
+        public bool Update(Vertex[] vertices, uint vertexCount, uint offset) => sfVertexBuffer_update(CPointer, vertices, vertexCount, offset);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -312,7 +309,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="offset">The offset</param>
         /// <returns>The bool</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern  bool sfVertexBuffer_update(IntPtr cPointer, Vertex[] vertices, uint vertexCount,
+        private static extern bool sfVertexBuffer_update(IntPtr cPointer, Vertex[] vertices, uint vertexCount,
             uint offset);
 
         /// <summary>

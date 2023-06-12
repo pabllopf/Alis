@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:PluginManager.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,22 +37,23 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Plugin
 {
     /// <summary>
-    /// The plugin manager class
+    ///     The plugin manager class
     /// </summary>
-    /// <seealso cref="IDisposable"/>
+    /// <seealso cref="IDisposable" />
     public class PluginManager : IDisposable
     {
         /// <summary>
-        /// The loaded plugins
-        /// </summary>
-        private readonly List<IPlugin> loadedPlugins;
-        /// <summary>
-        /// The loaded assemblies
+        ///     The loaded assemblies
         /// </summary>
         private readonly List<Assembly> loadedAssemblies;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PluginManager"/> class
+        ///     The loaded plugins
+        /// </summary>
+        private readonly List<IPlugin> loadedPlugins;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="PluginManager" /> class
         /// </summary>
         public PluginManager()
         {
@@ -32,13 +62,21 @@ namespace Alis.Core.Plugin
         }
 
         /// <summary>
-        /// Loads the plugins using the specified plugins directory
+        ///     Disposes this instance
+        /// </summary>
+        public void Dispose()
+        {
+            UnloadPlugins();
+        }
+
+        /// <summary>
+        ///     Loads the plugins using the specified plugins directory
         /// </summary>
         /// <param name="pluginsDirectory">The plugins directory</param>
         public void LoadPlugins(string pluginsDirectory)
         {
             string platformFolder;
-            
+
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 platformFolder = "Windows";
@@ -53,13 +91,13 @@ namespace Alis.Core.Plugin
             }
             else
             {
-               throw new NotSupportedException("Unsupported platform. Plugins will not be loaded.");
+                throw new NotSupportedException("Unsupported platform. Plugins will not be loaded.");
             }
-            
+
             Console.WriteLine("os: " + platformFolder);
 
             string platformPluginsDirectory = Path.Combine(pluginsDirectory, platformFolder);
-            
+
             Console.WriteLine("directory: " + platformPluginsDirectory);
 
             if (!Directory.Exists(platformPluginsDirectory))
@@ -70,7 +108,7 @@ namespace Alis.Core.Plugin
             string[] pluginFiles = Directory.GetFiles(platformPluginsDirectory)
                 .Where(file => IsPluginFile(file))
                 .ToArray();
-            
+
             foreach (string pluginFile in pluginFiles)
             {
                 try
@@ -84,7 +122,7 @@ namespace Alis.Core.Plugin
                     {
                         if (typeof(IPlugin).IsAssignableFrom(type))
                         {
-                            IPlugin plugin = (IPlugin)Activator.CreateInstance(type);
+                            IPlugin plugin = (IPlugin) Activator.CreateInstance(type);
                             loadedPlugins.Add(plugin);
                         }
                     }
@@ -95,9 +133,9 @@ namespace Alis.Core.Plugin
                 }
             }
         }
-        
+
         /// <summary>
-        /// Describes whether this instance is plugin file
+        ///     Describes whether this instance is plugin file
         /// </summary>
         /// <param name="filePath">The file path</param>
         /// <returns>The bool</returns>
@@ -108,7 +146,7 @@ namespace Alis.Core.Plugin
         }
 
         /// <summary>
-        /// Unloads the plugins
+        ///     Unloads the plugins
         /// </summary>
         public void UnloadPlugins()
         {
@@ -121,36 +159,22 @@ namespace Alis.Core.Plugin
             loadedAssemblies.Clear();
         }
 
-        /// <summary>
-        /// Disposes this instance
-        /// </summary>
-        public void Dispose()
-        {
-            UnloadPlugins();
-        }
-        
-        
-        /// <summary>
-        /// Describes whether this instance is running oni os
-        /// </summary>
-        /// <returns>The bool</returns>
-        private bool IsRunningOniOS()
-        {
-            return RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && (RuntimeInformation.OSDescription.Contains("iPhone") || RuntimeInformation.OSDescription.Contains("iPad"));
-        }
-        
-        
-        /// <summary>
-        /// Describes whether this instance is running on android
-        /// </summary>
-        /// <returns>The bool</returns>
-        private bool IsRunningOnAndroid()
-        {
-            return RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && RuntimeInformation.OSDescription.Contains("Android");
-        }
 
         /// <summary>
-        /// Initializes this instance
+        ///     Describes whether this instance is running oni os
+        /// </summary>
+        /// <returns>The bool</returns>
+        private bool IsRunningOniOS() => RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && (RuntimeInformation.OSDescription.Contains("iPhone") || RuntimeInformation.OSDescription.Contains("iPad"));
+
+
+        /// <summary>
+        ///     Describes whether this instance is running on android
+        /// </summary>
+        /// <returns>The bool</returns>
+        private bool IsRunningOnAndroid() => RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && RuntimeInformation.OSDescription.Contains("Android");
+
+        /// <summary>
+        ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
@@ -158,7 +182,7 @@ namespace Alis.Core.Plugin
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public void Update()
         {
@@ -166,7 +190,7 @@ namespace Alis.Core.Plugin
         }
 
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render()
         {
@@ -174,13 +198,11 @@ namespace Alis.Core.Plugin
         }
 
         /// <summary>
-        /// Shutdowns this instance
+        ///     Shutdowns this instance
         /// </summary>
         public void Shutdown()
         {
             loadedPlugins.ForEach(plugin => plugin.Shutdown());
         }
-        
-
     }
 }

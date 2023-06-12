@@ -30,10 +30,9 @@
 namespace Alis.Core.Graphic.SDL.Extern
 {
     /// <summary>
-    /// The sdl extern class
+    ///     The sdl extern class
     /// </summary>
     public class SdlExtern
     {
-        
     }
 }

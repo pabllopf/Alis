@@ -28,18 +28,17 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Plugin;
 
 namespace Alis.Core.Plugin.Sample
 {
     /// <summary>
-    /// The sum plugin class
+    ///     The sum plugin class
     /// </summary>
-    /// <seealso cref="IPlugin"/>
+    /// <seealso cref="IPlugin" />
     public class SumPlugin : IPlugin
     {
         /// <summary>
-        /// Initializes this instance
+        ///     Initializes this instance
         /// </summary>
         public void Initialize()
         {
@@ -48,47 +47,40 @@ namespace Alis.Core.Plugin.Sample
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public void Update()
         {
-            
         }
 
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render()
         {
-           
         }
 
         /// <summary>
-        /// Shutdowns this instance
+        ///     Shutdowns this instance
         /// </summary>
         public void Shutdown()
         {
-            
         }
 
         /// <summary>
-        /// Sums the a
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <returns>The int</returns>
-        public int Sum(int a, int b)
-        {
-            return a + b;
-        }
-
-        /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {
             // No se requiere ninguna operación de liberación de recursos para este plugin
         }
-    }
 
+        /// <summary>
+        ///     Sums the a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <returns>The int</returns>
+        public int Sum(int a, int b) => a + b;
+    }
 }

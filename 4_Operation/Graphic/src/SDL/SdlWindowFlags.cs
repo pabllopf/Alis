@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SdlWindowFlags.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 
 namespace Alis.Core.Graphic.SDL
@@ -77,52 +106,52 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl window allow highdpi sdl windowflags
         /// </summary>
-        SdlWindowAllowHighdpi = 0x00002000, 
+        SdlWindowAllowHighdpi = 0x00002000,
 
         /// <summary>
         ///     The sdl window mouse capture sdl windowflags
         /// </summary>
-        SdlWindowMouseCapture = 0x00004000, 
+        SdlWindowMouseCapture = 0x00004000,
 
         /// <summary>
         ///     The sdl window always on top sdl windowflags
         /// </summary>
-        SdlWindowAlwaysOnTop = 0x00008000, 
+        SdlWindowAlwaysOnTop = 0x00008000,
 
         /// <summary>
         ///     The sdl window skip taskbar sdl windowflags
         /// </summary>
-        SdlWindowSkipTaskbar = 0x00010000, 
+        SdlWindowSkipTaskbar = 0x00010000,
 
         /// <summary>
         ///     The sdl window utility sdl windowflags
         /// </summary>
-        SdlWindowUtility = 0x00020000, 
+        SdlWindowUtility = 0x00020000,
 
         /// <summary>
         ///     The sdl window tooltip sdl windowflags
         /// </summary>
-        SdlWindowTooltip = 0x00040000, 
+        SdlWindowTooltip = 0x00040000,
 
         /// <summary>
         ///     The sdl window popup menu sdl windowflags
         /// </summary>
-        SdlWindowPopupMenu = 0x00080000, 
+        SdlWindowPopupMenu = 0x00080000,
 
         /// <summary>
         ///     The sdl window keyboard grabbed sdl windowflags
         /// </summary>
-        SdlWindowKeyboardGrabbed = 0x00100000, 
+        SdlWindowKeyboardGrabbed = 0x00100000,
 
         /// <summary>
         ///     The sdl window vulkan sdl windowflags
         /// </summary>
-        SdlWindowVulkan = 0x10000000, 
+        SdlWindowVulkan = 0x10000000,
 
         /// <summary>
         ///     The sdl window metal sdl windowflags
         /// </summary>
-        SdlWindowMetal = 0x2000000, 
+        SdlWindowMetal = 0x2000000,
 
         /// <summary>
         ///     The sdl window input grabbed sdl windowflags

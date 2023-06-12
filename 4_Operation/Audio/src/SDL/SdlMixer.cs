@@ -356,19 +356,19 @@ namespace Alis.Core.Audio.SDL
             byte[] mode
         );
 
-        
+
         /// <summary>
         ///     Internals the mix load mus using the specified file
         /// </summary>
         /// <param name="file">The file</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "Mix_LoadMUS", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  IntPtr INTERNAL_Mix_LoadMUS(
+        private static extern IntPtr INTERNAL_Mix_LoadMUS(
             byte[] file
         );
 
         /// <summary>
-        /// Mixes the load mus using the specified file
+        ///     Mixes the load mus using the specified file
         /// </summary>
         /// <param name="file">The file</param>
         /// <returns>The handle</returns>
@@ -428,9 +428,7 @@ namespace Alis.Core.Audio.SDL
         public static string Mix_GetMusicCopyrightTag(IntPtr music) => UTF8_ToManaged(SdlMixerExtern.INTERNAL_Mix_GetMusicCopyrightTag(music)
         );
 
-        
 
-        
         /// <summary>
         ///     Mixes the play channel using the specified channel
         /// </summary>
@@ -445,7 +443,7 @@ namespace Alis.Core.Audio.SDL
         )
             => SdlMixerExtern.Mix_PlayChannelTimed(channel, chunk, loops, -1);
 
-        
+
         /// <summary>
         ///     Mixes the fade in channel using the specified channel
         /// </summary>
@@ -467,7 +465,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="command">The command</param>
         /// <returns>The result</returns>
-        public static  int Mix_SetMusicCMD(string command)
+        public static int Mix_SetMusicCMD(string command)
         {
             byte[] utf8Cmd = Utf8Encode(command);
             return SdlMixerExtern.INTERNAL_Mix_SetMusicCMD(utf8Cmd);
@@ -492,9 +490,6 @@ namespace Alis.Core.Audio.SDL
         public static string Mix_GetSoundFonts() => UTF8_ToManaged(SdlMixerExtern.INTERNAL_Mix_GetSoundFonts()
         );
 
-        
-
-        
 
         /// <summary>
         ///     Mixes the get timidity cfg
@@ -526,7 +521,7 @@ namespace Alis.Core.Audio.SDL
             SdlMixerExtern.SDL_ClearError();
         }
 
-        
+
         /// <summary>
         ///     Utfs the 8 size using the specified str
         /// </summary>
@@ -541,9 +536,9 @@ namespace Alis.Core.Audio.SDL
 
             return str.Length * 4 + 1;
         }
-        
+
         /// <summary>
-        /// Utfs the 8 encode using the specified str
+        ///     Utfs the 8 encode using the specified str
         /// </summary>
         /// <param name="str">The str</param>
         /// <returns>The encoded bytes</returns>
@@ -558,7 +553,7 @@ namespace Alis.Core.Audio.SDL
             return encodedBytes;
         }
 
-        
+
         /// <summary>
         ///     Converts UTF-8 to managed string using the specified pointer.
         /// </summary>
@@ -609,7 +604,7 @@ namespace Alis.Core.Audio.SDL
         public static void SDL_SetError(string formatAndArgList) => SdlMixerExtern.INTERNAL_SDL_SetError(Utf8Encode(formatAndArgList));
 
         /// <summary>
-        /// Utfs the 8 encode using the specified str
+        ///     Utfs the 8 encode using the specified str
         /// </summary>
         /// <param name="str">The str</param>
         /// <returns>The byte array</returns>
@@ -625,7 +620,7 @@ namespace Alis.Core.Audio.SDL
             IntPtr rwops = SDL_RWFromFile(file, "rb");
             return SdlMixerExtern.Mix_LoadWAV_RW(rwops, 1);
         }
-        
+
         /// <summary>
         ///     SDL RW from file using the specified file
         /// </summary>

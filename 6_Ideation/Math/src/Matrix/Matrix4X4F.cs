@@ -196,10 +196,7 @@ namespace Alis.Core.Aspect.Math.Matrix
 
         /// <summary>Gets or sets the translation component of this matrix.</summary>
         /// <value>The translation component of the current instance.</value>
-        public Vector3 Translation
-        {
-            get => new Vector3(M41, M42, M43);
-        }
+        public Vector3 Translation => new Vector3(M41, M42, M43);
 
         /// <summary>Adds each element in one matrix with its corresponding element in a second matrix.</summary>
         /// <param name="value1">The first matrix.</param>
@@ -257,14 +254,14 @@ namespace Alis.Core.Aspect.Math.Matrix
                                                                                 value1.M31 != value2.M31 || value1.M32 != value2.M32 || value1.M33 != value2.M33 || value1.M34 != value2.M34 ||
                                                                                 value1.M41 != value2.M41 || value1.M42 != value2.M42 || value1.M43 != value2.M43 || value1.M44 != value2.M44;
 
- 
+
         /// <summary>Adds each element in one matrix with its corresponding element in a second matrix.</summary>
         /// <param name="value1">The first matrix.</param>
         /// <param name="value2">The second matrix.</param>
         /// <returns>The matrix that contains the summed values of <paramref name="value1" /> and <paramref name="value2" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Matrix4X4F Add(Matrix4X4F value1, Matrix4X4F value2) => value1 + value2;
-        
+
 
         /// <summary>Creates a matrix for rotating points around the Z axis.</summary>
         /// <param name="radians">The amount, in radians, by which to rotate around the Z-axis.</param>
@@ -284,7 +281,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             result = new Matrix4X4F(
                 c, s, 0, 0,
                 -s, c, 0, 0,
-                0, 0, 1, 0, 
+                0, 0, 1, 0,
                 0, 0, 0, 1);
 
             return result;
@@ -328,23 +325,20 @@ namespace Alis.Core.Aspect.Math.Matrix
                 value.M11 * q12 + value.M12 * q22 + value.M13 * q32,
                 value.M11 * q13 + value.M12 * q23 + value.M13 * q33,
                 value.M14,
-                
                 value.M21 * q11 + value.M22 * q21 + value.M23 * q31,
                 value.M21 * q12 + value.M22 * q22 + value.M23 * q32,
                 value.M21 * q13 + value.M22 * q23 + value.M23 * q33,
                 value.M24,
-                
                 value.M31 * q11 + value.M32 * q21 + value.M33 * q31,
                 value.M31 * q12 + value.M32 * q22 + value.M33 * q32,
                 value.M31 * q13 + value.M32 * q23 + value.M33 * q33,
                 value.M34,
-                
                 value.M41 * q11 + value.M42 * q21 + value.M43 * q31,
                 value.M41 * q12 + value.M42 * q22 + value.M43 * q32,
                 value.M41 * q13 + value.M42 * q23 + value.M43 * q33,
                 value.M44
-                );
-            
+            );
+
             return result;
         }
 

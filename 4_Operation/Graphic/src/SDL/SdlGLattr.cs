@@ -162,11 +162,11 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl gl context reset notification sdl glattr
         /// </summary>
-        SdlGlContextResetNotification, 
+        SdlGlContextResetNotification,
 
         /// <summary>
         ///     The sdl gl context no error sdl glattr
         /// </summary>
-        SdlGlContextNoError 
+        SdlGlContextNoError
     }
 }

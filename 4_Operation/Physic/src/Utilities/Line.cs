@@ -126,7 +126,7 @@ namespace Alis.Core.Physic.Utilities
                 intersectionPoint = new Vector2F(
                     x1 + ua * (x2 - x1),
                     y1 + ua * (y2 - y1)
-                    );
+                );
                 return true;
             }
 
@@ -159,7 +159,7 @@ namespace Alis.Core.Physic.Utilities
                 i = new Vector2F(
                     (b2 * c1 - b1 * c2) / det,
                     (a1 * c2 - a2 * c1) / det
-                    );
+                );
             }
 
             return i;
@@ -230,8 +230,8 @@ namespace Alis.Core.Physic.Utilities
                             point = new Vector2F(
                                 point1.X + ua * b,
                                 point1.Y + ua * d
-                                );
-                            
+                            );
+
                             return true;
                         }
                     }

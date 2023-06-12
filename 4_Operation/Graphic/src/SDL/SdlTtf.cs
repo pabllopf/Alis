@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
@@ -88,11 +87,12 @@ namespace Alis.Core.Graphic.SDL
                 }
             }
         }
+
         /// <summary>
         ///     The native lib name
         /// </summary>
         internal const string NativeLibName = "sdl2_ttf";
-        
+
         /// <summary>
         ///     The sdl ttf major version
         /// </summary>
@@ -176,14 +176,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <param name="ptsize">The ptsize</param>
         /// <returns>The handle</returns>
-        public static  IntPtr TTF_OpenFont(string file, int ptsize)
+        public static IntPtr TTF_OpenFont(string file, int ptsize)
         {
             byte[] utf8File = Sdl.Utf8EncodeHeap(file);
             IntPtr handle = SdlTtfExtern.INTERNAL_TTF_OpenFont(
                 utf8File,
                 ptsize
             );
-            
+
             return handle;
         }
 
@@ -195,7 +195,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="fg">The fg</param>
         /// <param name="wrapped">The wrapped</param>
         /// <returns>The result</returns>
-        public static  IntPtr TTF_RenderUTF8_Blended_Wrapped(
+        public static IntPtr TTF_RenderUTF8_Blended_Wrapped(
             IntPtr font,
             string text,
             SdlColor fg,
@@ -209,10 +209,10 @@ namespace Alis.Core.Graphic.SDL
                 fg,
                 wrapped
             );
-            
+
             return result;
         }
-        
+
         /// <summary>
         ///     Ttfs the get error
         /// </summary>
@@ -235,7 +235,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The result</returns>
-        public static  IntPtr TTF_RenderUTF8_Blended(
+        public static IntPtr TTF_RenderUTF8_Blended(
             IntPtr font,
             string text,
             SdlColor fg
@@ -247,7 +247,7 @@ namespace Alis.Core.Graphic.SDL
                 utf8Text,
                 fg
             );
-           
+
             return result;
         }
 
@@ -260,7 +260,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="bg">The bg</param>
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The result</returns>
-        public static  IntPtr TTF_RenderUTF8_Shaded_Wrapped(
+        public static IntPtr TTF_RenderUTF8_Shaded_Wrapped(
             IntPtr font,
             string text,
             SdlColor fg,
@@ -276,7 +276,7 @@ namespace Alis.Core.Graphic.SDL
                 bg,
                 wrapLength
             );
-            
+
             return result;
         }
 
@@ -288,7 +288,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="fg">The fg</param>
         /// <param name="bg">The bg</param>
         /// <returns>The result</returns>
-        public static  IntPtr TTF_RenderUTF8_Shaded(
+        public static IntPtr TTF_RenderUTF8_Shaded(
             IntPtr font,
             string text,
             SdlColor fg,
@@ -302,7 +302,7 @@ namespace Alis.Core.Graphic.SDL
                 fg,
                 bg
             );
-            
+
             return result;
         }
 
@@ -314,7 +314,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="fg">The fg</param>
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The result</returns>
-        public static  IntPtr TTF_RenderUTF8_Solid_Wrapped(
+        public static IntPtr TTF_RenderUTF8_Solid_Wrapped(
             IntPtr font,
             string text,
             SdlColor fg,
@@ -328,7 +328,7 @@ namespace Alis.Core.Graphic.SDL
                 fg,
                 wrapLength
             );
-            
+
             return result;
         }
 
@@ -339,7 +339,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The result</returns>
-        public static  IntPtr TTF_RenderUTF8_Solid(
+        public static IntPtr TTF_RenderUTF8_Solid(
             IntPtr font,
             string text,
             SdlColor fg
@@ -351,7 +351,7 @@ namespace Alis.Core.Graphic.SDL
                 utf8Text,
                 fg
             );
-            
+
             return result;
         }
 
@@ -364,7 +364,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="extent">The extent</param>
         /// <param name="count">The count</param>
         /// <returns>The result</returns>
-        public static  int TTF_MeasureUTF8(
+        public static int TTF_MeasureUTF8(
             IntPtr font,
             string text,
             int measureWidth,
@@ -380,7 +380,7 @@ namespace Alis.Core.Graphic.SDL
                 out extent,
                 out count
             );
-           
+
             return result;
         }
 
@@ -392,7 +392,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="w">The </param>
         /// <param name="h">The </param>
         /// <returns>The result</returns>
-        public static  int TTF_SizeUTF8(
+        public static int TTF_SizeUTF8(
             IntPtr font,
             string text,
             out int w,
@@ -406,7 +406,7 @@ namespace Alis.Core.Graphic.SDL
                 out w,
                 out h
             );
-            
+
             return result;
         }
 
@@ -424,7 +424,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="ptsize">The ptsize</param>
         /// <param name="index">The index</param>
         /// <returns>The handle</returns>
-        public static  IntPtr TTF_OpenFontIndex(
+        public static IntPtr TTF_OpenFontIndex(
             string file,
             int ptsize,
             long index
@@ -436,7 +436,7 @@ namespace Alis.Core.Graphic.SDL
                 ptsize,
                 index
             );
-            
+
             return handle;
         }
 
@@ -461,9 +461,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="x">The </param>
         public static void SDL_TTF_VERSION(out SdlVersion x)
         {
-            x.major = SdlTtf.SdlTtfMajorVersion;
-            x.minor = SdlTtf.SdlTtfMinorVersion;
-            x.patch = SdlTtf.SdlTtfPatchlevel;
+            x.major = SdlTtfMajorVersion;
+            x.minor = SdlTtfMinorVersion;
+            x.patch = SdlTtfPatchlevel;
         }
     }
 }

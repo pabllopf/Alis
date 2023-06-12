@@ -855,7 +855,7 @@ namespace Alis.Core.Graphic.SFML.Windows
         /// <param name="height">The height</param>
         /// <param name="pixels">The pixels</param>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern  void sfWindow_setIcon(IntPtr cPointer, uint width, uint height, byte[] pixels);
+        private static extern void sfWindow_setIcon(IntPtr cPointer, uint width, uint height, byte[] pixels);
 
         /// <summary>
         ///     Sfs the window set visible using the specified c pointer

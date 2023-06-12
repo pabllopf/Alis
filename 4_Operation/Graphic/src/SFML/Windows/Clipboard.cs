@@ -60,8 +60,7 @@ namespace Alis.Core.Graphic.SFML.Windows
                     currentByte = Marshal.ReadByte(source, offset);
                     sourceBytes.Add(currentByte);
                     offset += 4;
-                }
-                while (currentByte != 0);
+                } while (currentByte != 0);
 
                 return Encoding.UTF32.GetString(sourceBytes.ToArray());
             }

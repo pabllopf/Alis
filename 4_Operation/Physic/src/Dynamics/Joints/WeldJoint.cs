@@ -341,8 +341,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 -rA.Y * iA - rB.Y * iB,
                 rA.X * iA + rB.X * iB,
                 iA + iB
-                );
-            
+            );
+
             if (stiffness > 0.0f)
             {
                 kk.GetInverse22(ref mass);
@@ -368,7 +368,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     mass.Ez.X,
                     mass.Ez.Y,
                     invM != 0.0f ? 1.0f / invM : 0.0f
-                    );
+                );
             }
             else if (kk.Ez.Z == 0.0f)
             {
@@ -442,7 +442,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     impulse1.X,
                     impulse1.Y,
                     impulse.Z
-                    );
+                );
 
                 Vector2F p = impulse1;
 
@@ -508,7 +508,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 -rA.Y * iA - rB.Y * iB,
                 rA.X * iA + rB.X * iB,
                 iA + iB
-                );
+            );
 
             if (stiffness > 0.0f)
             {

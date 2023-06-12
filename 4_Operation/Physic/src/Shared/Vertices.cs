@@ -619,7 +619,7 @@ namespace Alis.Core.Physic.Shared
                     position.X * matrix.M11 + position.Y * matrix.M21 + matrix.M41,
                     position.X * matrix.M12 + position.Y * matrix.M22 + matrix.M42
                 );
-                
+
                 destinationArray[destinationIndex + x] = destination;
             }
         }

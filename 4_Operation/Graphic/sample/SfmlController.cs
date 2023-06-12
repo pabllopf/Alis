@@ -35,24 +35,14 @@ using Alis.Core.Graphic.SFML.Windows;
 namespace Alis.Core.Graphic.Sample
 {
     /// <summary>
-    /// The sfml controller class
+    ///     The sfml controller class
     /// </summary>
     public class SfmlController
     {
         /// <summary>
-        ///     The width
-        /// </summary>
-        private const int Width = 640;
-
-        /// <summary>
-        ///     The height
-        /// </summary>
-        private const int Height = 480;
-        
-        /// <summary>
         ///     The blue
         /// </summary>
-        private byte _red;
+        private byte _blue;
 
         /// <summary>
         ///     The blue
@@ -62,20 +52,30 @@ namespace Alis.Core.Graphic.Sample
         /// <summary>
         ///     The blue
         /// </summary>
-        private byte _blue;
-        
+        private byte _red;
+
         /// <summary>
-        /// The key
+        ///     The axis
+        /// </summary>
+        public List<Axis> axis = new List<Axis>((Axis[]) Enum.GetValues(typeof(Axis)));
+
+        /// <summary>
+        ///     The key
         /// </summary>
         public List<Key> keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
 
         /// <summary>
-        /// The axis
+        ///     The width
         /// </summary>
-        public List<Axis> axis = new List<Axis>((Axis[]) Enum.GetValues(typeof(Axis)));
-        
+        private const int Width = 640;
+
         /// <summary>
-        /// Runs this instance
+        ///     The height
+        /// </summary>
+        private const int Height = 480;
+
+        /// <summary>
+        ///     Runs this instance
         /// </summary>
         public int Run()
         {
@@ -86,7 +86,7 @@ namespace Alis.Core.Graphic.Sample
             window.SetFramerateLimit(60);
 
             window.Closed += (sender, args) => window.Close();
-            
+
             // Configura los eventos de input
             window.KeyPressed += OnKeyPressed;
             window.MouseButtonPressed += OnMouseButtonPressed;
@@ -94,18 +94,18 @@ namespace Alis.Core.Graphic.Sample
             window.JoystickConnected += WindowOnJoystickConnected;
             window.JoystickDisconnected += WindowOnJoystickDisconnected;
             window.JoystickMoved += WindowOnJoystickMoved;
-            
+
             InitJoystick();
-            
+
             while (window.IsOpen)
             {
                 Joystick.Update();
-                
+
                 if (Keyboard.IsKeyPressed(Key.Escape))
                 {
                     break;
                 }
-                
+
                 for (int index = 0; index < keys.Count - 7; index++)
                 {
                     Key key = keys[index];
@@ -114,20 +114,20 @@ namespace Alis.Core.Graphic.Sample
                         Console.WriteLine($" {key}");
                     }
                 }
-                
+
                 window.DispatchEvents();
                 window.Clear(new Color(_red, _green, _blue));
                 window.Display();
-                
+
                 RenderColors();
             }
 
             return 0;
         }
-        
-        
+
+
         /// <summary>
-        /// Renders the colors
+        ///     Renders the colors
         /// </summary>
         private void RenderColors()
         {
@@ -149,7 +149,7 @@ namespace Alis.Core.Graphic.Sample
                 _blue -= 1;
             }
         }
-        
+
         /// <summary>
         ///     Windows the on joystick moved using the specified sender
         /// </summary>
@@ -210,9 +210,9 @@ namespace Alis.Core.Graphic.Sample
         {
             Console.WriteLine($"Botón del mouse presionado: {e.Button}");
         }
-        
+
         /// <summary>
-        /// Inits the joystick
+        ///     Inits the joystick
         /// </summary>
         public void InitJoystick()
         {
@@ -250,7 +250,7 @@ namespace Alis.Core.Graphic.Sample
         }
 
         /// <summary>
-        /// Updatecontrollerses
+        ///     Updatecontrollerses
         /// </summary>
         public void Updatecontrollers()
         {

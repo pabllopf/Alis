@@ -1,4 +1,32 @@
-using System;
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SdlTextInputEvent.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.SDL
@@ -23,169 +51,169 @@ namespace Alis.Core.Graphic.SDL
         ///     The window id
         /// </summary>
         public uint windowID;
-        
+
         /// <summary>
-        /// The byte
+        ///     The byte
         /// </summary>
         private byte byte0;
-        
+
         /// <summary>
-        /// The byte
+        ///     The byte
         /// </summary>
         private byte byte1;
-        
+
         /// <summary>
-        /// The byte
+        ///     The byte
         /// </summary>
         private byte byte2;
-        
+
         /// <summary>
-        /// The byte
+        ///     The byte
         /// </summary>
         private byte byte3;
 
         /// <summary>
-        /// The byte
+        ///     The byte
         /// </summary>
         private byte byte4;
-        
+
         /// <summary>
-        /// The byte
+        ///     The byte
         /// </summary>
         private byte byte5;
-        
+
         /// <summary>
-        /// The byte
+        ///     The byte
         /// </summary>
         private byte byte6;
-        
+
         /// <summary>
-        /// The byte
+        ///     The byte
         /// </summary>
         private byte byte7;
-        
+
         /// <summary>
-        /// The byte
+        ///     The byte
         /// </summary>
         private byte byte8;
-        
+
         /// <summary>
-        /// The byte
+        ///     The byte
         /// </summary>
         private byte byte9;
-        
+
         /// <summary>
-        /// The byte 10
+        ///     The byte 10
         /// </summary>
         private byte byte10;
-        
+
         /// <summary>
-        /// The byte 11
+        ///     The byte 11
         /// </summary>
         private byte byte11;
-        
+
         /// <summary>
-        /// The byte 12
+        ///     The byte 12
         /// </summary>
         private byte byte12;
-        
+
         /// <summary>
-        /// The byte 13
+        ///     The byte 13
         /// </summary>
         private byte byte13;
-        
+
         /// <summary>
-        /// The byte 14
+        ///     The byte 14
         /// </summary>
         private byte byte14;
-        
+
         /// <summary>
-        /// The byte 15
+        ///     The byte 15
         /// </summary>
         private byte byte15;
-        
+
         /// <summary>
-        /// The byte 16
+        ///     The byte 16
         /// </summary>
         private byte byte16;
-        
+
         /// <summary>
-        /// The byte 17
+        ///     The byte 17
         /// </summary>
         private byte byte17;
-        
+
         /// <summary>
-        /// The byte 18
+        ///     The byte 18
         /// </summary>
         private byte byte18;
-        
+
         /// <summary>
-        /// The byte 19
+        ///     The byte 19
         /// </summary>
         private byte byte19;
-        
+
         /// <summary>
-        /// The byte 20
+        ///     The byte 20
         /// </summary>
         private byte byte20;
-        
+
         /// <summary>
-        /// The byte 21
+        ///     The byte 21
         /// </summary>
         private byte byte21;
-        
+
         /// <summary>
-        /// The byte 22
+        ///     The byte 22
         /// </summary>
         private byte byte22;
-        
+
         /// <summary>
-        /// The byte 23
+        ///     The byte 23
         /// </summary>
         private byte byte23;
-        
+
         /// <summary>
-        /// The byte 24
+        ///     The byte 24
         /// </summary>
         private byte byte24;
-        
+
         /// <summary>
-        /// The byte 25
+        ///     The byte 25
         /// </summary>
         private byte byte25;
-        
+
         /// <summary>
-        /// The byte 26
+        ///     The byte 26
         /// </summary>
         private byte byte26;
-        
+
         /// <summary>
-        /// The byte 27
+        ///     The byte 27
         /// </summary>
         private byte byte27;
-        
+
         /// <summary>
-        /// The byte 28
+        ///     The byte 28
         /// </summary>
         private byte byte28;
-        
+
         /// <summary>
-        /// The byte 29
+        ///     The byte 29
         /// </summary>
         private byte byte29;
-        
+
         /// <summary>
-        /// The byte 30
+        ///     The byte 30
         /// </summary>
         private byte byte30;
-        
+
         /// <summary>
-        /// The byte 31
+        ///     The byte 31
         /// </summary>
         private byte byte31;
-        
+
         /// <summary>
-        /// Gets or sets the value of the text
+        ///     Gets or sets the value of the text
         /// </summary>
         public byte[] text
         {
@@ -224,9 +252,9 @@ namespace Alis.Core.Graphic.SDL
                     byte28,
                     byte29,
                     byte30,
-                    byte31,
+                    byte31
                 };
-                
+
                 return textBytes;
             }
         }

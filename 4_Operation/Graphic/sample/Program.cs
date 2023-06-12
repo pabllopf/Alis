@@ -27,23 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
-using System.Collections.Generic;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Graphic.SDL;
-using Alis.Core.Graphic.SFML.Graphics;
-using Alis.Core.Graphic.SFML.Windows;
 
 namespace Alis.Core.Graphic.Sample
 {
     /// <summary>
-    /// The program class
+    ///     The program class
     /// </summary>
     public static class Program
     {
         /// <summary>
-        /// Main the args
+        ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
         private static void Main(string[] args)
@@ -67,7 +62,6 @@ namespace Alis.Core.Graphic.Sample
                             run = sdlController.Run();
                             break;
                     }
-                    
                 }
                 catch (Exception ex)
                 {

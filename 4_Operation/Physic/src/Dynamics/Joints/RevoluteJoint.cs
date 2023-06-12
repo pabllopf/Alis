@@ -497,7 +497,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 -rA.Y * rA.X * iA - rB.Y * rB.X * iB,
                 mA + mB + rA.X * rA.X * iA + rB.X * rB.X * iB
             );
-            
+
             axialMass = iA + iB;
             bool fixedRotation;
             if (axialMass > 0.0f)
@@ -620,7 +620,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vector2F impulse = k.Solve(-cdot);
 
                 this.impulse = new Vector2F(impulse.X, impulse.Y);
-                
+
                 vA -= mA * impulse;
                 wA -= iA * MathUtils.Cross(rA, impulse);
 
@@ -702,7 +702,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     -iA * rA.X * rA.Y - iB * rB.X * rB.Y,
                     -iA * rA.X * rA.Y - iB * rB.X * rB.Y,
                     mA + mB + iA * rA.X * rA.X + iB * rB.X * rB.X
-                    );
+                );
 
                 Vector2F impulse = -k.Solve(c);
 

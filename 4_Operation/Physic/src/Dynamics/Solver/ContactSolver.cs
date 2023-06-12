@@ -519,39 +519,39 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     Vector2F b = new Vector2F(
                         vn1 - cp1.VelocityBias,
                         vn2 - cp2.VelocityBias
-                        );
-                    
+                    );
+
                     // Compute b'
                     b -= MathUtils.Mul(ref vc.K, a);
 
                     //
-                        // Case 1: vn = 0
-                        //
-                        // 0 = A * x + b'
-                        //
-                        // Solve for x:
-                        //
-                        // x = - inv(A) * b'
-                        //
-                        Vector2F x = -MathUtils.Mul(ref vc.NormalMass, b);
+                    // Case 1: vn = 0
+                    //
+                    // 0 = A * x + b'
+                    //
+                    // Solve for x:
+                    //
+                    // x = - inv(A) * b'
+                    //
+                    Vector2F x = -MathUtils.Mul(ref vc.NormalMass, b);
 
-                        if ((x.X >= 0.0f) && (x.Y >= 0.0f))
-                        {
-                            // Get the incremental impulse
-                            Vector2F d = x - a;
+                    if ((x.X >= 0.0f) && (x.Y >= 0.0f))
+                    {
+                        // Get the incremental impulse
+                        Vector2F d = x - a;
 
-                            // Apply incremental impulse
-                            Vector2F p1 = d.X * normal;
-                            Vector2F p2 = d.Y * normal;
-                            vA -= mA * (p1 + p2);
-                            wA -= iA * (MathUtils.Cross(cp1.Ra, p1) + MathUtils.Cross(cp2.Ra, p2));
+                        // Apply incremental impulse
+                        Vector2F p1 = d.X * normal;
+                        Vector2F p2 = d.Y * normal;
+                        vA -= mA * (p1 + p2);
+                        wA -= iA * (MathUtils.Cross(cp1.Ra, p1) + MathUtils.Cross(cp2.Ra, p2));
 
-                            vB += mB * (p1 + p2);
-                            wB += iB * (MathUtils.Cross(cp1.Rb, p1) + MathUtils.Cross(cp2.Rb, p2));
+                        vB += mB * (p1 + p2);
+                        wB += iB * (MathUtils.Cross(cp1.Rb, p1) + MathUtils.Cross(cp2.Rb, p2));
 
-                            // Accumulate
-                            cp1.NormalImpulse = x.X;
-                            cp2.NormalImpulse = x.Y;
+                        // Accumulate
+                        cp1.NormalImpulse = x.X;
+                        cp2.NormalImpulse = x.Y;
 
 #if B2_DEBUG_SOLVER
                             // Postconditions
@@ -565,36 +565,36 @@ namespace Alis.Core.Physic.Dynamics.Solver
                             Debug.Assert(Math.Abs(vn1 - cp1.VelocityBias) < k_errorTol);
                             Debug.Assert(Math.Abs(vn2 - cp2.VelocityBias) < k_errorTol);
 #endif
-                            break;
-                        }
+                        break;
+                    }
 
-                        //
-                        // Case 2: vn1 = 0 and x2 = 0
-                        //
-                        //   0 = a11 * x1 + a12 * 0 + b1' 
-                        // vn2 = a21 * x1 + a22 * 0 + b2'
-                        //
-                        x = new Vector2F(-cp1.NormalMass * b.X, 0.0f);
-                        vn1 = 0.0f;
-                        vn2 = vc.K.Ex.Y * x.X + b.Y;
+                    //
+                    // Case 2: vn1 = 0 and x2 = 0
+                    //
+                    //   0 = a11 * x1 + a12 * 0 + b1' 
+                    // vn2 = a21 * x1 + a22 * 0 + b2'
+                    //
+                    x = new Vector2F(-cp1.NormalMass * b.X, 0.0f);
+                    vn1 = 0.0f;
+                    vn2 = vc.K.Ex.Y * x.X + b.Y;
 
-                        if ((x.X >= 0.0f) && (vn2 >= 0.0f))
-                        {
-                            // Get the incremental impulse
-                            Vector2F d = x - a;
+                    if ((x.X >= 0.0f) && (vn2 >= 0.0f))
+                    {
+                        // Get the incremental impulse
+                        Vector2F d = x - a;
 
-                            // Apply incremental impulse
-                            Vector2F p1 = d.X * normal;
-                            Vector2F p2 = d.Y * normal;
-                            vA -= mA * (p1 + p2);
-                            wA -= iA * (MathUtils.Cross(cp1.Ra, p1) + MathUtils.Cross(cp2.Ra, p2));
+                        // Apply incremental impulse
+                        Vector2F p1 = d.X * normal;
+                        Vector2F p2 = d.Y * normal;
+                        vA -= mA * (p1 + p2);
+                        wA -= iA * (MathUtils.Cross(cp1.Ra, p1) + MathUtils.Cross(cp2.Ra, p2));
 
-                            vB += mB * (p1 + p2);
-                            wB += iB * (MathUtils.Cross(cp1.Rb, p1) + MathUtils.Cross(cp2.Rb, p2));
+                        vB += mB * (p1 + p2);
+                        wB += iB * (MathUtils.Cross(cp1.Rb, p1) + MathUtils.Cross(cp2.Rb, p2));
 
-                            // Accumulate
-                            cp1.NormalImpulse = x.X;
-                            cp2.NormalImpulse = x.Y;
+                        // Accumulate
+                        cp1.NormalImpulse = x.X;
+                        cp2.NormalImpulse = x.Y;
 
 #if B2_DEBUG_SOLVER
                             // Postconditions
@@ -605,36 +605,36 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
                             Debug.Assert(Math.Abs(vn1 - cp1.VelocityBias) < k_errorTol);
 #endif
-                            break;
-                        }
+                        break;
+                    }
 
-                        //
-                        // Case 3: vn2 = 0 and x1 = 0
-                        //
-                        // vn1 = a11 * 0 + a12 * x2 + b1' 
-                        //   0 = a21 * 0 + a22 * x2 + b2'
-                        //
-                        x = new Vector2F(0.0f, -cp2.NormalMass * b.Y);
-                        vn1 = vc.K.Ey.X * x.Y + b.X;
-                        vn2 = 0.0f;
+                    //
+                    // Case 3: vn2 = 0 and x1 = 0
+                    //
+                    // vn1 = a11 * 0 + a12 * x2 + b1' 
+                    //   0 = a21 * 0 + a22 * x2 + b2'
+                    //
+                    x = new Vector2F(0.0f, -cp2.NormalMass * b.Y);
+                    vn1 = vc.K.Ey.X * x.Y + b.X;
+                    vn2 = 0.0f;
 
-                        if ((x.Y >= 0.0f) && (vn1 >= 0.0f))
-                        {
-                            // Resubstitute for the incremental impulse
-                            Vector2F d = x - a;
+                    if ((x.Y >= 0.0f) && (vn1 >= 0.0f))
+                    {
+                        // Resubstitute for the incremental impulse
+                        Vector2F d = x - a;
 
-                            // Apply incremental impulse
-                            Vector2F p1 = d.X * normal;
-                            Vector2F p2 = d.Y * normal;
-                            vA -= mA * (p1 + p2);
-                            wA -= iA * (MathUtils.Cross(cp1.Ra, p1) + MathUtils.Cross(cp2.Ra, p2));
+                        // Apply incremental impulse
+                        Vector2F p1 = d.X * normal;
+                        Vector2F p2 = d.Y * normal;
+                        vA -= mA * (p1 + p2);
+                        wA -= iA * (MathUtils.Cross(cp1.Ra, p1) + MathUtils.Cross(cp2.Ra, p2));
 
-                            vB += mB * (p1 + p2);
-                            wB += iB * (MathUtils.Cross(cp1.Rb, p1) + MathUtils.Cross(cp2.Rb, p2));
+                        vB += mB * (p1 + p2);
+                        wB += iB * (MathUtils.Cross(cp1.Rb, p1) + MathUtils.Cross(cp2.Rb, p2));
 
-                            // Accumulate
-                            cp1.NormalImpulse = x.X;
-                            cp2.NormalImpulse = x.Y;
+                        // Accumulate
+                        cp1.NormalImpulse = x.X;
+                        cp2.NormalImpulse = x.Y;
 
 #if B2_DEBUG_SOLVER
                             // Postconditions
@@ -645,36 +645,36 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
                             Debug.Assert(Math.Abs(vn2 - cp2.VelocityBias) < k_errorTol);
 #endif
-                            break;
-                        }
+                        break;
+                    }
 
-                        //
-                        // Case 4: x1 = 0 and x2 = 0
-                        // 
-                        // vn1 = b1
-                        // vn2 = b2;
-                        x = Vector2F.Zero;
-                        vn1 = b.X;
-                        vn2 = b.Y;
+                    //
+                    // Case 4: x1 = 0 and x2 = 0
+                    // 
+                    // vn1 = b1
+                    // vn2 = b2;
+                    x = Vector2F.Zero;
+                    vn1 = b.X;
+                    vn2 = b.Y;
 
-                        if ((vn1 >= 0.0f) && (vn2 >= 0.0f))
-                        {
-                            // Resubstitute for the incremental impulse
-                            Vector2F d = x - a;
+                    if ((vn1 >= 0.0f) && (vn2 >= 0.0f))
+                    {
+                        // Resubstitute for the incremental impulse
+                        Vector2F d = x - a;
 
-                            // Apply incremental impulse
-                            Vector2F p1 = d.X * normal;
-                            Vector2F p2 = d.Y * normal;
-                            vA -= mA * (p1 + p2);
-                            wA -= iA * (MathUtils.Cross(cp1.Ra, p1) + MathUtils.Cross(cp2.Ra, p2));
+                        // Apply incremental impulse
+                        Vector2F p1 = d.X * normal;
+                        Vector2F p2 = d.Y * normal;
+                        vA -= mA * (p1 + p2);
+                        wA -= iA * (MathUtils.Cross(cp1.Ra, p1) + MathUtils.Cross(cp2.Ra, p2));
 
-                            vB += mB * (p1 + p2);
-                            wB += iB * (MathUtils.Cross(cp1.Rb, p1) + MathUtils.Cross(cp2.Rb, p2));
+                        vB += mB * (p1 + p2);
+                        wB += iB * (MathUtils.Cross(cp1.Rb, p1) + MathUtils.Cross(cp2.Rb, p2));
 
-                            // Accumulate
-                            cp1.NormalImpulse = x.X;
-                            cp2.NormalImpulse = x.Y;
-                        }
+                        // Accumulate
+                        cp1.NormalImpulse = x.X;
+                        cp2.NormalImpulse = x.Y;
+                    }
                 }
 
                 velocities[indexA].V = vA;

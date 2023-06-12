@@ -33,7 +33,7 @@ using System.Numerics;
 namespace Alis.Core.Graphic.ImGui
 {
     /// <summary>
-    /// The im draw cmd
+    ///     The im draw cmd
     /// </summary>
     public struct ImDrawCmd
     {
@@ -72,5 +72,4 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         public IntPtr UserCallbackData;
     }
-
 }

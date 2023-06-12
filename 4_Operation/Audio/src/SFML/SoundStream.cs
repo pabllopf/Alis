@@ -35,11 +35,9 @@ using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Audio.SFML
 {
-    
     /// <summary>
     ///     Abstract base class for streamed audio sources
     /// </summary>
-    
     internal abstract class SoundStream : ObjectBase
     {
         /// <summary>
@@ -51,40 +49,39 @@ namespace Alis.Core.Audio.SFML
         ///     The my seek callback
         /// </summary>
         private SeekCallbackType mySeekCallback;
-        
+
         /// <summary>
         ///     Default constructor
         /// </summary>
-        
         public SoundStream() :
             base(IntPtr.Zero)
         {
         }
 
-        
+
         /// <summary>
         ///     Sample rate of the stream
         ///     The sample rate is the number of audio samples played per
         ///     second. The higher, the better the quality.
         /// </summary>
-        
+
         public uint SampleRate => sfSoundStream_getSampleRate(CPointer);
 
-        
+
         /// <summary>
         ///     Number of channels (1 = mono, 2 = stereo)
         /// </summary>
-        
+
         public uint ChannelCount => sfSoundStream_getChannelCount(CPointer);
 
-        
+
         /// <summary>
         ///     Current status of the sound stream (see SoundStatus enum)
         /// </summary>
-        
+
         public SoundStatus Status => sfSoundStream_getStatus(CPointer);
 
-        
+
         /// <summary>
         ///     Flag if the music should loop after reaching the end.
         ///     If set, the music will restart from beginning after
@@ -92,14 +89,14 @@ namespace Alis.Core.Audio.SFML
         ///     Loop = false is set.
         ///     The default looping state for music is false.
         /// </summary>
-        
+
         public bool Loop
         {
             get => sfSoundStream_getLoop(CPointer);
             set => sfSoundStream_setLoop(CPointer, value);
         }
 
-        
+
         /// <summary>
         ///     Pitch of the stream.
         ///     The pitch represents the perceived fundamental frequency
@@ -108,41 +105,41 @@ namespace Alis.Core.Audio.SFML
         ///     is to modify the playing speed of the sound as well.
         ///     The default value for the pitch is 1.
         /// </summary>
-        
+
         public float Pitch
         {
             get => sfSoundStream_getPitch(CPointer);
             set => sfSoundStream_setPitch(CPointer, value);
         }
 
-        
+
         /// <summary>
         ///     Volume of the stream.
         ///     The volume is a value between 0 (mute) and 100 (full volume).
         ///     The default value for the volume is 100.
         /// </summary>
-        
+
         public float Volume
         {
             get => sfSoundStream_getVolume(CPointer);
             set => sfSoundStream_setVolume(CPointer, value);
         }
 
-        
+
         /// <summary>
         ///     3D position of the stream in the audio scene.
         ///     Only sounds with one channel (mono sounds) can be
         ///     spatialized.
         ///     The default position of a sound is (0, 0, 0).
         /// </summary>
-        
+
         public Vector3F Position
         {
             get => sfSoundStream_getPosition(CPointer);
             set => sfSoundStream_setPosition(CPointer, value);
         }
 
-        
+
         /// <summary>
         ///     Make the stream's position relative to the listener or absolute.
         ///     Making a sound relative to the listener will ensure that it will always
@@ -151,14 +148,14 @@ namespace Alis.Core.Audio.SFML
         ///     produced by the listener, or sounds attached to it.
         ///     The default value is false (position is absolute).
         /// </summary>
-        
+
         public bool RelativeToListener
         {
             get => sfSoundStream_isRelativeToListener(CPointer);
             set => sfSoundStream_setRelativeToListener(CPointer, value);
         }
 
-        
+
         /// <summary>
         ///     Minimum distance of the music.
         ///     The "minimum distance" of a sound is the maximum
@@ -168,14 +165,14 @@ namespace Alis.Core.Audio.SFML
         ///     of the listener") is an invalid value and is forbidden.
         ///     The default value of the minimum distance is 1.
         /// </summary>
-        
+
         public float MinDistance
         {
             get => sfSoundStream_getMinDistance(CPointer);
             set => sfSoundStream_setMinDistance(CPointer, value);
         }
 
-        
+
         /// <summary>
         ///     Attenuation factor of the stream.
         ///     The attenuation is a multiplicative factor which makes
@@ -187,27 +184,27 @@ namespace Alis.Core.Audio.SFML
         ///     very quickly as it gets further from the listener.
         ///     The default value of the attenuation is 1.
         /// </summary>
-        
+
         public float Attenuation
         {
             get => sfSoundStream_getAttenuation(CPointer);
             set => sfSoundStream_setAttenuation(CPointer, value);
         }
 
-        
+
         /// <summary>
         ///     Current playing position of the stream.
         ///     The playing position can be changed when the music is
         ///     either paused or playing.
         /// </summary>
-        
+
         public Time PlayingOffset
         {
             get => sfSoundStream_getPlayingOffset(CPointer);
             set => sfSoundStream_setPlayingOffset(CPointer, value);
         }
 
-        
+
         /// <summary>
         ///     Start or resume playing the audio stream.
         ///     This function starts the stream if it was stopped, resumes
@@ -216,43 +213,39 @@ namespace Alis.Core.Audio.SFML
         ///     This function uses its own thread so that it doesn't block
         ///     the rest of the program while the stream is played.
         /// </summary>
-        
         public void Play()
         {
             sfSoundStream_play(CPointer);
         }
 
-        
+
         /// <summary>
         ///     Pause the audio stream.
         ///     This function pauses the stream if it was playing,
         ///     otherwise (stream already paused or stopped) it has no effect.
         /// </summary>
-        
         public void Pause()
         {
             sfSoundStream_pause(CPointer);
         }
 
-        
+
         /// <summary>
         ///     Stop playing the audio stream.
         ///     This function stops the stream if it was playing or paused,
         ///     and does nothing if it was already stopped.
         ///     It also resets the playing position (unlike pause()).
         /// </summary>
-        
         public void Stop()
         {
             sfSoundStream_stop(CPointer);
         }
 
-        
+
         /// <summary>
         ///     Provide a string describing the object
         /// </summary>
         /// <returns>String description of the object</returns>
-        
         public override string ToString() => "[SoundStream]" +
                                              " SampleRate(" + SampleRate + ")" +
                                              " ChannelCount(" + ChannelCount + ")" +
@@ -266,13 +259,12 @@ namespace Alis.Core.Audio.SFML
                                              " Attenuation(" + Attenuation + ")" +
                                              " PlayingOffset(" + PlayingOffset + ")";
 
-        
+
         /// <summary>
         ///     Set the audio stream parameters, you must call it before Play()
         /// </summary>
         /// <param name="channelCount">Number of channels</param>
         /// <param name="sampleRate">Sample rate, in samples per second</param>
-        
         protected void Initialize(uint channelCount, uint sampleRate)
         {
             myGetDataCallback = GetData;
@@ -280,37 +272,34 @@ namespace Alis.Core.Audio.SFML
             CPointer = sfSoundStream_create(myGetDataCallback, mySeekCallback, channelCount, sampleRate, IntPtr.Zero);
         }
 
-        
+
         /// <summary>
         ///     Virtual function called each time new audio data is needed to feed the stream
         /// </summary>
         /// <param name="samples">Array of samples to fill for the stream</param>
         /// <returns>True to continue playback, false to stop</returns>
-        
         protected abstract bool OnGetData(out short[] samples);
 
-        
+
         /// <summary>
         ///     Virtual function called to seek into the stream
         /// </summary>
         /// <param name="timeOffset">New position</param>
-        
         protected abstract void OnSeek(Time timeOffset);
 
-        
+
         /// <summary>
         ///     Handle the destruction of the object
         /// </summary>
         /// <param name="disposing">Is the GC disposing the object, or is it an explicit call ?</param>
-        
         protected override void Destroy(bool disposing)
         {
             sfSoundStream_destroy(CPointer);
         }
 
-        
+
         /// <summary>
-        /// Called each time new audio data is needed to feed the stream
+        ///     Called each time new audio data is needed to feed the stream
         /// </summary>
         /// <param name="dataChunk">Data chunk to fill with new audio samples</param>
         /// <param name="userData">User data -- unused</param>
@@ -320,21 +309,20 @@ namespace Alis.Core.Audio.SFML
             if (OnGetData(out short[] dataChunkSamples))
             {
                 dataChunk.samples = dataChunkSamples;
-                dataChunk.sampleCount = (uint)dataChunkSamples.Length;
+                dataChunk.sampleCount = (uint) dataChunkSamples.Length;
 
                 return true;
             }
 
             return false;
         }
-        
+
         /// <summary>
         ///     Called to seek in the stream
         /// </summary>
         /// <param name="timeOffset">New position</param>
         /// <param name="userData">User data -- unused</param>
         /// <returns>If false is returned, the playback is aborted</returns>
-        
         private void Seek(Time timeOffset, IntPtr userData)
         {
             OnSeek(timeOffset);
@@ -533,7 +521,6 @@ namespace Alis.Core.Audio.SFML
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Time sfSoundStream_getPlayingOffset(IntPtr soundStream);
 
-        
 
         /// <summary>
         ///     The get data callback type

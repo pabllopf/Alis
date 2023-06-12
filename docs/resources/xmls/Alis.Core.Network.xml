@@ -1552,14 +1552,14 @@
                 The buffer factory
             </summary>
         </member>
-        <member name="F:Alis.Core.Network.WebSocketClientFactory.tcpClient">
-            <summary>
-            The tcp client
-            </summary>
-        </member>
         <member name="F:Alis.Core.Network.WebSocketClientFactory._bufferPool">
             <summary>
                 The buffer pool
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.WebSocketClientFactory.tcpClient">
+            <summary>
+                The tcp client
             </summary>
         </member>
         <member name="M:Alis.Core.Network.WebSocketClientFactory.#ctor">
@@ -1575,6 +1575,11 @@
                 Used to get a memory stream. Feel free to implement your own buffer pool. MemoryStreams
                 will be disposed when no longer needed and can be returned to the pool.
             </param>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketClientFactory.Dispose">
+            <summary>
+                Disposes this instance
+            </summary>
         </member>
         <member name="M:Alis.Core.Network.WebSocketClientFactory.ConnectAsync(System.Uri,System.Threading.CancellationToken)">
             <summary>
@@ -1667,11 +1672,6 @@
             <param name="port">The destination port</param>
             <param name="cancellationToken">Used to cancel the request</param>
             <returns>A connected and open stream</returns>
-        </member>
-        <member name="M:Alis.Core.Network.WebSocketClientFactory.Dispose">
-            <summary>
-            Disposes this instance
-            </summary>
         </member>
         <member name="M:Alis.Core.Network.WebSocketClientFactory.ValidateServerCertificate(System.Object,System.Security.Cryptography.X509Certificates.X509Certificate,System.Security.Cryptography.X509Certificates.X509Chain,System.Net.Security.SslPolicyErrors)">
             <summary>

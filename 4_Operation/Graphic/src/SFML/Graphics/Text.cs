@@ -184,7 +184,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
             {
                 // Get a pointer to the source string (UTF-32)
                 byte[] source = sfText_getUnicodeString(CPointer);
-                
+
                 // Convert it to a C# string
                 return Encoding.UTF32.GetString(source);
             }

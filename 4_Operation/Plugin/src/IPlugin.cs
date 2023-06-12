@@ -32,24 +32,27 @@ using System;
 namespace Alis.Core.Plugin
 {
     /// <summary>
-    /// The plugin interface
+    ///     The plugin interface
     /// </summary>
     public interface IPlugin : IDisposable
     {
         /// <summary>
-        /// Initializes this instance
+        ///     Initializes this instance
         /// </summary>
         void Initialize();
+
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         void Update();
+
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         void Render();
+
         /// <summary>
-        /// Shutdowns this instance
+        ///     Shutdowns this instance
         /// </summary>
         void Shutdown();
     }

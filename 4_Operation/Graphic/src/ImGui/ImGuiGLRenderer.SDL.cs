@@ -167,7 +167,7 @@ namespace Alis.Core.Graphic.ImGui
                 }
                 case SdlEventType.SdlTextinput:
                 {
-                    string str = new string(Encoding.UTF8.GetString(bytes: evt.text.text));
+                    string str = new string(Encoding.UTF8.GetString(evt.text.text));
                     io.AddInputCharactersUtf8(str);
                     return;
                 }

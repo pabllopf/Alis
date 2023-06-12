@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Core.Plugin.Sample
 {
     /// <summary>
@@ -44,7 +42,7 @@ namespace Alis.Core.Plugin.Sample
         {
             PluginManager pluginManager = new PluginManager();
             pluginManager.LoadPlugins("Assets/Plugins");
-            
+
             pluginManager.Initialize();
         }
     }

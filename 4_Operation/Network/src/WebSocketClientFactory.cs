@@ -57,14 +57,14 @@ namespace Alis.Core.Network
         private readonly Func<MemoryStream> _bufferFactory;
 
         /// <summary>
-        /// The tcp client
-        /// </summary>
-        private TcpClient tcpClient;
-
-        /// <summary>
         ///     The buffer pool
         /// </summary>
         private readonly IBufferPool _bufferPool;
+
+        /// <summary>
+        ///     The tcp client
+        /// </summary>
+        private TcpClient tcpClient;
 
         /// <summary>
         ///     Initialises a new instance of the WebSocketClientFactory class without caring about internal buffers
@@ -73,7 +73,6 @@ namespace Alis.Core.Network
         {
             _bufferPool = new BufferPool();
             _bufferFactory = _bufferPool.GetBuffer;
-            
         }
 
         /// <summary>
@@ -84,6 +83,14 @@ namespace Alis.Core.Network
         ///     will be disposed when no longer needed and can be returned to the pool.
         /// </param>
         public WebSocketClientFactory(Func<MemoryStream> bufferFactory) => _bufferFactory = bufferFactory;
+
+        /// <summary>
+        ///     Disposes this instance
+        /// </summary>
+        public void Dispose()
+        {
+            tcpClient?.Dispose();
+        }
 
         /// <summary>
         ///     Connect with default options
@@ -294,7 +301,7 @@ namespace Alis.Core.Network
 
             cancellationToken.ThrowIfCancellationRequested();
             Stream stream = tcpClient.GetStream();
-            
+
             if (isSecure)
             {
                 SslStream sslStream = new SslStream(stream, false, ValidateServerCertificate, null);
@@ -308,14 +315,6 @@ namespace Alis.Core.Network
 
             Events.Log.ConnectionNotSecure(loggingGuid);
             return stream;
-        }
-
-        /// <summary>
-        /// Disposes this instance
-        /// </summary>
-        public void Dispose()
-        {
-            tcpClient?.Dispose();
         }
 
         /// <summary>

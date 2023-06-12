@@ -29,9 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Entity;
-using Alis.Core.Graphic;
 using Alis.Core.Graphic.SFML.Windows;
 using Alis.Core.Manager.Scene;
 
@@ -45,7 +43,7 @@ namespace Alis.Core.Manager.Input
         ///     Array of key of keyboard
         /// </summary>
         private List<Key> keys;
-        
+
         /// <summary>
         ///     Temp list of keys
         /// </summary>
@@ -103,7 +101,7 @@ namespace Alis.Core.Manager.Input
 
             keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
             tempListOfKeys = new List<Key>();*/
-            
+
             keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
             tempListOfKeys = new List<Key>();
         }

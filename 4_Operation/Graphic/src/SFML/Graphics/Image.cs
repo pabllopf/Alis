@@ -137,7 +137,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
                 throw new LoadingFailedException("image");
             }
         }
-        
+
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Construct the image directly from an array of pixels
@@ -364,7 +364,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="pixels">The pixels</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern  IntPtr sfImage_createFromPixels(uint width, uint height, byte[] pixels);
+        private static extern IntPtr sfImage_createFromPixels(uint width, uint height, byte[] pixels);
 
         /// <summary>
         ///     Sfs the image create from file using the specified filename

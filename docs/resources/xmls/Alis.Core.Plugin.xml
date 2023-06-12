@@ -6,103 +6,103 @@
     <members>
         <member name="T:Alis.Core.Plugin.IPlugin">
             <summary>
-            The plugin interface
+                The plugin interface
             </summary>
         </member>
         <member name="M:Alis.Core.Plugin.IPlugin.Initialize">
             <summary>
-            Initializes this instance
+                Initializes this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Plugin.IPlugin.Update">
             <summary>
-            Updates this instance
+                Updates this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Plugin.IPlugin.Render">
             <summary>
-            Renders this instance
+                Renders this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Plugin.IPlugin.Shutdown">
             <summary>
-            Shutdowns this instance
+                Shutdowns this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Plugin.PluginManager">
             <summary>
-            The plugin manager class
+                The plugin manager class
             </summary>
-            <seealso cref="T:System.IDisposable"/>
-        </member>
-        <member name="F:Alis.Core.Plugin.PluginManager.loadedPlugins">
-            <summary>
-            The loaded plugins
-            </summary>
+            <seealso cref="T:System.IDisposable" />
         </member>
         <member name="F:Alis.Core.Plugin.PluginManager.loadedAssemblies">
             <summary>
-            The loaded assemblies
+                The loaded assemblies
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Plugin.PluginManager.loadedPlugins">
+            <summary>
+                The loaded plugins
             </summary>
         </member>
         <member name="M:Alis.Core.Plugin.PluginManager.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Plugin.PluginManager"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Plugin.PluginManager" /> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Plugin.PluginManager.Dispose">
+            <summary>
+                Disposes this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Plugin.PluginManager.LoadPlugins(System.String)">
             <summary>
-            Loads the plugins using the specified plugins directory
+                Loads the plugins using the specified plugins directory
             </summary>
             <param name="pluginsDirectory">The plugins directory</param>
         </member>
         <member name="M:Alis.Core.Plugin.PluginManager.IsPluginFile(System.String)">
             <summary>
-            Describes whether this instance is plugin file
+                Describes whether this instance is plugin file
             </summary>
             <param name="filePath">The file path</param>
             <returns>The bool</returns>
         </member>
         <member name="M:Alis.Core.Plugin.PluginManager.UnloadPlugins">
             <summary>
-            Unloads the plugins
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Plugin.PluginManager.Dispose">
-            <summary>
-            Disposes this instance
+                Unloads the plugins
             </summary>
         </member>
         <member name="M:Alis.Core.Plugin.PluginManager.IsRunningOniOS">
             <summary>
-            Describes whether this instance is running oni os
+                Describes whether this instance is running oni os
             </summary>
             <returns>The bool</returns>
         </member>
         <member name="M:Alis.Core.Plugin.PluginManager.IsRunningOnAndroid">
             <summary>
-            Describes whether this instance is running on android
+                Describes whether this instance is running on android
             </summary>
             <returns>The bool</returns>
         </member>
         <member name="M:Alis.Core.Plugin.PluginManager.Initialize">
             <summary>
-            Initializes this instance
+                Initializes this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Plugin.PluginManager.Update">
             <summary>
-            Updates this instance
+                Updates this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Plugin.PluginManager.Render">
             <summary>
-            Renders this instance
+                Renders this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Plugin.PluginManager.Shutdown">
             <summary>
-            Shutdowns this instance
+                Shutdowns this instance
             </summary>
         </member>
     </members>

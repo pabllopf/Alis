@@ -37,14 +37,11 @@ using Alis.Core.Aspect.Memory.Streams.SFML;
 
 namespace Alis.Core.Audio.SFML
 {
-    
     /// <summary>
     ///     Storage for audio samples defining a sound
     /// </summary>
-    
     internal class SoundBuffer : ObjectBase
     {
-        
         /// <summary>
         ///     Construct a sound buffer from a file
         ///     Here is a complete list of all the supported audio formats:
@@ -53,7 +50,6 @@ namespace Alis.Core.Audio.SFML
         /// </summary>
         /// <param name="filename">Path of the sound file to load</param>
         /// <exception cref="LoadingFailedException" />
-        
         public SoundBuffer(string filename) :
             base(sfSoundBuffer_createFromFile(filename))
         {
@@ -63,7 +59,7 @@ namespace Alis.Core.Audio.SFML
             }
         }
 
-        
+
         /// <summary>
         ///     Construct a sound buffer from a custom stream.
         ///     Here is a complete list of all the supported audio formats:
@@ -72,7 +68,6 @@ namespace Alis.Core.Audio.SFML
         /// </summary>
         /// <param name="stream">Source stream to read from</param>
         /// <exception cref="LoadingFailedException" />
-        
         public SoundBuffer(Stream stream) :
             base(IntPtr.Zero)
         {
@@ -87,7 +82,7 @@ namespace Alis.Core.Audio.SFML
             }
         }
 
-        
+
         /// <summary>
         ///     Construct a sound buffer from a file in memory.
         ///     Here is a complete list of all the supported audio formats:
@@ -96,7 +91,6 @@ namespace Alis.Core.Audio.SFML
         /// </summary>
         /// <param name="bytes">Byte array containing the file contents</param>
         /// <exception cref="LoadingFailedException" />
-        
         public SoundBuffer(byte[] bytes) :
             base(IntPtr.Zero)
         {
@@ -116,7 +110,7 @@ namespace Alis.Core.Audio.SFML
             }
         }
 
-        
+
         /// <summary>
         ///     Construct a sound buffer from an array of samples
         /// </summary>
@@ -128,18 +122,26 @@ namespace Alis.Core.Audio.SFML
             base(IntPtr.Zero)
         {
             if (samples == null)
+            {
                 throw new ArgumentNullException(nameof(samples));
+            }
 
             int sampleCount = samples.Length;
 
             if (sampleCount == 0)
+            {
                 throw new ArgumentException("The sample array must not be empty.", nameof(samples));
+            }
 
             if (channelCount == 0)
+            {
                 throw new ArgumentException("The channel count must be greater than 0.", nameof(channelCount));
+            }
 
             if (sampleRate == 0)
+            {
                 throw new ArgumentException("The sample rate must be greater than 0.", nameof(sampleRate));
+            }
 
             IntPtr samplesPtr = IntPtr.Zero;
             bool success = false;
@@ -149,7 +151,7 @@ namespace Alis.Core.Audio.SFML
                 samplesPtr = Marshal.AllocHGlobal(sampleCount * sizeof(short));
                 Marshal.Copy(samples, 0, samplesPtr, sampleCount);
 
-                CPointer = sfSoundBuffer_createFromSamples(samples, (uint)sampleCount, channelCount, sampleRate);
+                CPointer = sfSoundBuffer_createFromSamples(samples, (uint) sampleCount, channelCount, sampleRate);
 
                 if (CPointer != IntPtr.Zero)
                 {
@@ -178,47 +180,46 @@ namespace Alis.Core.Audio.SFML
                 throw new LoadingFailedException("sound buffer");
             }
         }
-        
+
         /// <summary>
         ///     Construct a sound buffer from another sound buffer
         /// </summary>
         /// <param name="copy">Sound buffer to copy</param>
-        
         public SoundBuffer(SoundBuffer copy) :
             base(sfSoundBuffer_copy(copy.CPointer))
         {
         }
 
-        
+
         /// <summary>
         ///     Sample rate of the sound buffer.
         ///     The sample rate is the number of audio samples played per
         ///     second. The higher, the better the quality.
         /// </summary>
-        
+
         public uint SampleRate => sfSoundBuffer_getSampleRate(CPointer);
 
-        
+
         /// <summary>
         ///     Number of channels (1 = mono, 2 = stereo)
         /// </summary>
-        
+
         public uint ChannelCount => sfSoundBuffer_getChannelCount(CPointer);
 
-        
+
         /// <summary>
         ///     Total duration of the buffer
         /// </summary>
-        
+
         public Time Duration => sfSoundBuffer_getDuration(CPointer);
 
-        
+
         /// <summary>
         ///     Array of audio samples stored in the buffer.
         ///     The format of the returned samples is 16 bits signed integer
         ///     (sf::Int16).
         /// </summary>
-        
+
         public short[] Samples
         {
             get
@@ -229,7 +230,7 @@ namespace Alis.Core.Audio.SFML
             }
         }
 
-        
+
         /// <summary>
         ///     Save the sound buffer to an audio file.
         ///     Here is a complete list of all the supported audio formats:
@@ -238,26 +239,23 @@ namespace Alis.Core.Audio.SFML
         /// </summary>
         /// <param name="filename">Path of the sound file to write</param>
         /// <returns>True if saving has been successful</returns>
-        
         public bool SaveToFile(string filename) => sfSoundBuffer_saveToFile(CPointer, filename);
 
-        
+
         /// <summary>
         ///     Provide a string describing the object
         /// </summary>
         /// <returns>String description of the object</returns>
-        
         public override string ToString() => "[SoundBuffer]" +
                                              " SampleRate(" + SampleRate + ")" +
                                              " ChannelCount(" + ChannelCount + ")" +
                                              " Duration(" + Duration + ")";
 
-        
+
         /// <summary>
         ///     Handle the destruction of the object
         /// </summary>
         /// <param name="disposing">Is the GC disposing the object, or is it an explicit call ?</param>
-        
         protected override void Destroy(bool disposing)
         {
             sfSoundBuffer_destroy(CPointer);
@@ -297,7 +295,7 @@ namespace Alis.Core.Audio.SFML
         /// <param name="sampleRate">The sample rate</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern  IntPtr sfSoundBuffer_createFromSamples(short[] samples, uint sampleCount,
+        private static extern IntPtr sfSoundBuffer_createFromSamples(short[] samples, uint sampleCount,
             uint channelsCount, uint sampleRate);
 
         /// <summary>

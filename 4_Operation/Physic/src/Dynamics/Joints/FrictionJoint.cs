@@ -301,8 +301,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 -iA * rA.X * rA.Y - iB * rB.X * rB.Y,
                 -iA * rA.X * rA.Y - iB * rB.X * rB.Y,
                 mA + mB + iA * rA.X * rA.X + iB * rB.X * rB.X
-                );
-            
+            );
+
             linearMass = k.Inverse;
 
             angularMass = iA + iB;

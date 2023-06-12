@@ -6,18 +6,58 @@
     <members>
         <member name="T:Alis.Core.Graphic.Sample.Program">
             <summary>
-            The program class
+                The program class
             </summary>
         </member>
         <member name="M:Alis.Core.Graphic.Sample.Program.Main(System.String[])">
             <summary>
-            Main the args
+                Main the args
             </summary>
             <param name="args">The args</param>
         </member>
         <member name="T:Alis.Core.Graphic.Sample.SdlController">
             <summary>
-            The sdl controller class
+                The sdl controller class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController._blue">
+            <summary>
+                The blue
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController._green">
+            <summary>
+                The blue
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController._red">
+            <summary>
+                The blue
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController.axis">
+            <summary>
+                The sdl game controller axis
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController.buttons">
+            <summary>
+                The sdl game controller button
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController.keys">
+            <summary>
+                The sdl keycode
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController.running">
+            <summary>
+                The running
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SdlController.sdlEvent">
+            <summary>
+                The sdl event
             </summary>
         </member>
         <member name="F:Alis.Core.Graphic.Sample.SdlController.Width">
@@ -30,54 +70,14 @@
                 The height
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.Sample.SdlController._red">
-            <summary>
-                The blue
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.Sample.SdlController._green">
-            <summary>
-                The blue
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.Sample.SdlController._blue">
-            <summary>
-                The blue
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.Sample.SdlController.sdlEvent">
-            <summary>
-            The sdl event
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.Sample.SdlController.buttons">
-            <summary>
-            The sdl game controller button
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.Sample.SdlController.axis">
-            <summary>
-            The sdl game controller axis
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.Sample.SdlController.keys">
-            <summary>
-            The sdl keycode
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.Sample.SdlController.running">
-            <summary>
-            The running
-            </summary>
-        </member>
         <member name="M:Alis.Core.Graphic.Sample.SdlController.Run">
             <summary>
-            Runs this instance
+                Runs this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Graphic.Sample.SdlController.RenderColors">
             <summary>
-            Renders the colors
+                Renders the colors
             </summary>
         </member>
         <member name="M:Alis.Core.Graphic.Sample.SdlController.Sdlinput">
@@ -87,12 +87,37 @@
         </member>
         <member name="M:Alis.Core.Graphic.Sample.SdlController.UpdateInput">
             <summary>
-            Updates the input
+                Updates the input
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.Sample.SfmlController">
             <summary>
-            The sfml controller class
+                The sfml controller class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SfmlController._blue">
+            <summary>
+                The blue
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SfmlController._green">
+            <summary>
+                The blue
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SfmlController._red">
+            <summary>
+                The blue
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SfmlController.axis">
+            <summary>
+                The axis
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.SfmlController.keys">
+            <summary>
+                The key
             </summary>
         </member>
         <member name="F:Alis.Core.Graphic.Sample.SfmlController.Width">
@@ -105,39 +130,14 @@
                 The height
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.Sample.SfmlController._red">
-            <summary>
-                The blue
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.Sample.SfmlController._green">
-            <summary>
-                The blue
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.Sample.SfmlController._blue">
-            <summary>
-                The blue
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.Sample.SfmlController.keys">
-            <summary>
-            The key
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.Sample.SfmlController.axis">
-            <summary>
-            The axis
-            </summary>
-        </member>
         <member name="M:Alis.Core.Graphic.Sample.SfmlController.Run">
             <summary>
-            Runs this instance
+                Runs this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Graphic.Sample.SfmlController.RenderColors">
             <summary>
-            Renders the colors
+                Renders the colors
             </summary>
         </member>
         <member name="M:Alis.Core.Graphic.Sample.SfmlController.WindowOnJoystickMoved(System.Object,Alis.Core.Graphic.SFML.Windows.JoystickMoveEventArgs)">
@@ -184,12 +184,12 @@
         </member>
         <member name="M:Alis.Core.Graphic.Sample.SfmlController.InitJoystick">
             <summary>
-            Inits the joystick
+                Inits the joystick
             </summary>
         </member>
         <member name="M:Alis.Core.Graphic.Sample.SfmlController.Updatecontrollers">
             <summary>
-            Updatecontrollerses
+                Updatecontrollerses
             </summary>
         </member>
     </members>
