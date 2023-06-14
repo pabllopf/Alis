@@ -56,7 +56,32 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The data
         /// </summary>
-        public IntPtr dataPtr;
+        public float float0;
+        
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public float float1;
+
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public float float2;
+
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public float float3;
+        
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public float float4;
+
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public float float5;
 
         /// <summary>
         ///     Gets or sets the value of the text
@@ -65,11 +90,16 @@ namespace Alis.Core.Graphic.SDL
         {
             get
             {
-                float[] dataBytes = new float[6];
-                Buffer.BlockCopy(data, 0, dataBytes, 0, 6);
-                return dataBytes;
+                return new float[6]
+                {
+                    float0,
+                    float1,
+                    float2,
+                    float3,
+                    float4,
+                    float5
+                };
             }
-            set => Marshal.Copy(value, 0, dataPtr, 6);
         }
     }
 }

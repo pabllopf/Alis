@@ -44844,9 +44844,84 @@
                 The num texture formats
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.textureFormatsPtr">
+        <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.textureFormats0">
             <summary>
                 The texture formats
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.textureFormats1">
+            <summary>
+            The texture formats
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.textureFormats2">
+            <summary>
+            The texture formats
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.textureFormats3">
+            <summary>
+            The texture formats
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.textureFormats4">
+            <summary>
+            The texture formats
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.textureFormats5">
+            <summary>
+            The texture formats
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.textureFormats6">
+            <summary>
+            The texture formats
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.textureFormats7">
+            <summary>
+            The texture formats
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.textureFormats8">
+            <summary>
+            The texture formats
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.textureFormats9">
+            <summary>
+            The texture formats
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.textureFormats10">
+            <summary>
+            The texture formats 10
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.textureFormats11">
+            <summary>
+            The texture formats 11
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.textureFormats12">
+            <summary>
+            The texture formats 12
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.textureFormats13">
+            <summary>
+            The texture formats 13
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.textureFormats14">
+            <summary>
+            The texture formats 14
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.textureFormats15">
+            <summary>
+            The texture formats 15
             </summary>
         </member>
         <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.max_texture_width">
@@ -46164,7 +46239,32 @@
                 The which
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlSensorEvent.dataPtr">
+        <member name="F:Alis.Core.Graphic.SDL.SdlSensorEvent.float0">
+            <summary>
+                The data
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlSensorEvent.float1">
+            <summary>
+                The data
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlSensorEvent.float2">
+            <summary>
+                The data
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlSensorEvent.float3">
+            <summary>
+                The data
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlSensorEvent.float4">
+            <summary>
+                The data
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlSensorEvent.float5">
             <summary>
                 The data
             </summary>

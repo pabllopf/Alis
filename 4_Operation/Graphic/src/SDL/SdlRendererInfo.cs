@@ -56,8 +56,83 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public IntPtr textureFormatsPtr;
-
+        public int textureFormats0;
+        
+        /// <summary>
+        /// The texture formats
+        /// </summary>
+        public int textureFormats1;
+        
+        /// <summary>
+        /// The texture formats
+        /// </summary>
+        public int textureFormats2;
+        
+        /// <summary>
+        /// The texture formats
+        /// </summary>
+        public int textureFormats3;
+        
+        /// <summary>
+        /// The texture formats
+        /// </summary>
+        public int textureFormats4;
+        
+        /// <summary>
+        /// The texture formats
+        /// </summary>
+        public int textureFormats5;
+        
+        /// <summary>
+        /// The texture formats
+        /// </summary>
+        public int textureFormats6;
+        
+        /// <summary>
+        /// The texture formats
+        /// </summary>
+        public int textureFormats7;
+        
+        /// <summary>
+        /// The texture formats
+        /// </summary>
+        public int textureFormats8;
+        
+        /// <summary>
+        /// The texture formats
+        /// </summary>
+        public int textureFormats9;
+        
+        /// <summary>
+        /// The texture formats 10
+        /// </summary>
+        public int textureFormats10;
+        
+        /// <summary>
+        /// The texture formats 11
+        /// </summary>
+        public int textureFormats11;
+        
+        /// <summary>
+        /// The texture formats 12
+        /// </summary>
+        public int textureFormats12;
+        
+        /// <summary>
+        /// The texture formats 13
+        /// </summary>
+        public int textureFormats13;
+        
+        /// <summary>
+        /// The texture formats 14
+        /// </summary>
+        public int textureFormats14;
+        
+        /// <summary>
+        /// The texture formats 15
+        /// </summary>
+        public int textureFormats15;
+        
         /// <summary>
         ///     The max texture width
         /// </summary>
@@ -75,11 +150,26 @@ namespace Alis.Core.Graphic.SDL
         {
             get
             {
-                int[] dataBytes = new int[16];
-                Buffer.BlockCopy(texture_formats, 0, dataBytes, 0, 16);
-                return dataBytes;
+                return new int[16]
+                {
+                    textureFormats0,
+                    textureFormats1,
+                    textureFormats2,
+                    textureFormats3,
+                    textureFormats4,
+                    textureFormats5,
+                    textureFormats6,
+                    textureFormats7,
+                    textureFormats8,
+                    textureFormats9,
+                    textureFormats10,
+                    textureFormats11,
+                    textureFormats12,
+                    textureFormats13,
+                    textureFormats14,
+                    textureFormats15
+                };
             }
-            set => Marshal.Copy(value, 0, textureFormatsPtr, 16);
         }
     }
 }
