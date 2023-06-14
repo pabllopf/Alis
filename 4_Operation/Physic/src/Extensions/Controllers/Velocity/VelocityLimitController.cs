@@ -166,7 +166,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Velocity
                         temp = new Vector2F(
                             temp.X * ratio,
                             temp.Y * ratio
-                            );
+                        );
                         body.LinearVelocity = temp;
                     }
                 }

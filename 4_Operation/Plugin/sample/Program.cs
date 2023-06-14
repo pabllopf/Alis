@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Core.Plugin.Sample
 {
     /// <summary>
@@ -42,7 +40,10 @@ namespace Alis.Core.Plugin.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            throw new NotImplementedException();
+            PluginManager pluginManager = new PluginManager();
+            pluginManager.LoadPlugins("Assets/Plugins");
+
+            pluginManager.Initialize();
         }
     }
 }

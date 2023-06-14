@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SdlSensorEvent.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.InteropServices;
 
@@ -27,20 +56,50 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The data
         /// </summary>
-        public IntPtr dataPtr;
+        public float float0;
         
         /// <summary>
-        /// Gets or sets the value of the text
+        ///     The data
+        /// </summary>
+        public float float1;
+
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public float float2;
+
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public float float3;
+        
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public float float4;
+
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public float float5;
+
+        /// <summary>
+        ///     Gets or sets the value of the text
         /// </summary>
         public float[] data
         {
             get
             {
-                float[] dataBytes = new float[6];
-                Buffer.BlockCopy(data, 0, dataBytes, 0, 6);
-                return dataBytes;
+                return new float[6]
+                {
+                    float0,
+                    float1,
+                    float2,
+                    float3,
+                    float4,
+                    float5
+                };
             }
-            set => Marshal.Copy(value, 0, dataPtr, 6);
         }
     }
 }

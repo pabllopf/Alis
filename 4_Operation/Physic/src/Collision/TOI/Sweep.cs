@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Collision.TOI
             xfb.Position = new Vector2F(
                 (1.0f - beta) * C0.X + beta * C.X,
                 (1.0f - beta) * C0.Y + beta * C.Y
-                );
+            );
             float angle = (1.0f - beta) * A0 + beta * A;
             xfb.Rotation.Set(angle);
 

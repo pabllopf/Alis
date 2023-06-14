@@ -568,7 +568,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
                 if (multipartDetection || polygon.Count <= 2)
                 {
-                    if (polygonEntrance != null && SearchNextHullEntrance(detectedPolygons, polygonEntrance.Value, out polygonEntrance))
+                    if ((polygonEntrance != null) && SearchNextHullEntrance(detectedPolygons, polygonEntrance.Value, out polygonEntrance))
                     {
                         searchOn = true;
                     }
@@ -1087,7 +1087,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             vertex1Index = 0;
             vertex2Index = 0;
-            
+
             foundEdgeCoord = new Vector2F(foundEdgeCoord.X, coordInsideThePolygon.Y);
 
             if ((xCoords != null) && (xCoords.Count > 1) && (xCoords.Count % 2 == 0))

@@ -127,17 +127,17 @@ namespace Alis.Core.Aspect.Math.Matrix
             float col2X = Ey.X;
             float col1Y = Ex.Y;
             float col2Y = Ey.Y;
-            
+
             float det = col1X * col2Y - col2X * col1Y;
             //Box2DxDebug.Assert(det != 0.0f);
             det = 1.0f / det;
-            
+
             Matrix2X2F matrix2X2F = new Matrix2X2F(
                 det * col2Y,
                 -det * col2X,
                 -det * col1Y,
                 det * col1X
-                );
+            );
             return matrix2X2F;
         }
 
@@ -157,7 +157,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             Vector2F x = new Vector2F(
                 det * (col2Y * b.X - col2X * b.Y),
                 det * (col1X * b.Y - col1Y * b.X)
-                );
+            );
             return x;
         }
 
@@ -197,7 +197,7 @@ namespace Alis.Core.Aspect.Math.Matrix
                     -det * c,
                     -det * b,
                     det * a
-                    );
+                );
                 return result;
             }
         }

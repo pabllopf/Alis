@@ -77,9 +77,7 @@ namespace Alis.Core.Graphic.SFML.Windows
         /// <param name="hotspot">(x,y) location of the hotspot</param>
         public Cursor(byte[] pixels, Vector2U size, Vector2U hotspot)
             : base((IntPtr) 0)
-        {
-            CPointer = sfCursor_createFromPixels(pixels, size, hotspot);
-        }
+            => CPointer = sfCursor_createFromPixels(pixels, size, hotspot);
 
         /// <summary>
         ///     Enumeration of possibly available native system cursor types

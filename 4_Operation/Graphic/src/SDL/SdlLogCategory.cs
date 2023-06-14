@@ -129,7 +129,7 @@ namespace Alis.Core.Graphic.SDL
         ///     The sdl log category reserved10 sdl logcategory
         /// </summary>
         SdlLogCategoryReserved10,
-            
+
         /// <summary>
         ///     The sdl log category custom sdl logcategory
         /// </summary>

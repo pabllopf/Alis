@@ -135,7 +135,6 @@ namespace Alis.Core.Aspect.Math.Figures.D2.Rectangle
             if ((interLeft < interRight) && (interTop < interBottom))
             {
                 overlap = new RectangleF(
-                    
                     interLeft,
                     interTop,
                     interRight - interLeft,

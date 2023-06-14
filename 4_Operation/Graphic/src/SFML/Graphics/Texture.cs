@@ -581,7 +581,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern  void sfTexture_updateFromPixels(IntPtr texture, byte[] pixels, uint width,
+        private static extern void sfTexture_updateFromPixels(IntPtr texture, byte[] pixels, uint width,
             uint height, uint x, uint y);
 
         /// <summary>

@@ -47,11 +47,11 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl displayevent connected sdl displayeventid
         /// </summary>
-        SdlDisplayeventConnected, 
+        SdlDisplayeventConnected,
 
         /// <summary>
         ///     The sdl displayevent disconnected sdl displayeventid
         /// </summary>
-        SdlDisplayeventDisconnected 
+        SdlDisplayeventDisconnected
     }
 }

@@ -27,14 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region Using Statements
-
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Graphic.Properties;
-
-#endregion
 
 namespace Alis.Core.Graphic.SDL
 {
@@ -91,37 +87,6 @@ namespace Alis.Core.Graphic.SDL
             }
         }
 
-        #region SDL2# Variables
-
-        /* Used by DllImport to load the native library. */
-        /// <summary>
-        ///     The native lib name
-        /// </summary>
-        private const string NativeLibName = "sdl2_image";
-
-        #endregion
-
-        #region SDL_image.h
-
-        /* Similar to the headers, this is the version we're expecting to be
-         * running with. You will likely want to check this somewhere in your
-         * program!
-         */
-        /// <summary>
-        ///     The sdl image major version
-        /// </summary>
-        public const int SdlImageMajorVersion = 2;
-
-        /// <summary>
-        ///     The sdl image minor version
-        /// </summary>
-        public const int SdlImageMinorVersion = 0;
-
-        /// <summary>
-        ///     The sdl image patchlevel
-        /// </summary>
-        public const int SdlImagePatchlevel = 6;
-
         /// <summary>
         ///     The img initflags enum
         /// </summary>
@@ -148,6 +113,27 @@ namespace Alis.Core.Graphic.SDL
             /// </summary>
             ImgInitWebp = 0x00000008
         }
+
+
+        /// <summary>
+        ///     The native lib name
+        /// </summary>
+        private const string NativeLibName = "sdl2_image";
+
+        /// <summary>
+        ///     The sdl image major version
+        /// </summary>
+        public const int SdlImageMajorVersion = 2;
+
+        /// <summary>
+        ///     The sdl image minor version
+        /// </summary>
+        public const int SdlImageMinorVersion = 0;
+
+        /// <summary>
+        ///     The sdl image patchlevel
+        /// </summary>
+        public const int SdlImagePatchlevel = 6;
 
         /// <summary>
         ///     Sdls the image version using the specified x
@@ -196,14 +182,14 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void IMG_Quit();
 
-        /* IntPtr refers to an SDL_Surface* */
+
         /// <summary>
         ///     Internals the img load using the specified file
         /// </summary>
         /// <param name="file">The file</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_Load", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  IntPtr INTERNAL_IMG_Load(
+        private static extern IntPtr INTERNAL_IMG_Load(
             byte[] file
         );
 
@@ -212,18 +198,17 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="file">The file</param>
         /// <returns>The handle</returns>
-        public static  IntPtr IMG_Load(string file)
+        public static IntPtr IMG_Load(string file)
         {
             byte[] utf8File = Sdl.Utf8EncodeHeap(file);
             IntPtr handle = INTERNAL_IMG_Load(
                 utf8File
             );
-            
+
             return handle;
         }
 
-        /* src refers to an SDL_RWops*, IntPtr to an SDL_Surface* */
-        /* THIS IS A PUBLIC RWops FUNCTION! */
+
         /// <summary>
         ///     Imgs the load rw using the specified src
         /// </summary>
@@ -236,8 +221,7 @@ namespace Alis.Core.Graphic.SDL
             int freesrc
         );
 
-        /* src refers to an SDL_RWops*, IntPtr to an SDL_Surface* */
-        /* THIS IS A PUBLIC RWops FUNCTION! */
+
         /// <summary>
         ///     Internals the img load typed rw using the specified src
         /// </summary>
@@ -246,7 +230,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="type">The type</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_LoadTyped_RW", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  IntPtr INTERNAL_IMG_LoadTyped_RW(
+        private static extern IntPtr INTERNAL_IMG_LoadTyped_RW(
             IntPtr src,
             int freesrc,
             byte[] type
@@ -259,7 +243,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="freesrc">The freesrc</param>
         /// <param name="type">The type</param>
         /// <returns>The int ptr</returns>
-        public static  IntPtr IMG_LoadTyped_RW(
+        public static IntPtr IMG_LoadTyped_RW(
             IntPtr src,
             int freesrc,
             string type
@@ -274,7 +258,7 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-        /* IntPtr refers to an SDL_Texture*, renderer to an SDL_Renderer* */
+
         /// <summary>
         ///     Internals the img load texture using the specified renderer
         /// </summary>
@@ -282,7 +266,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_LoadTexture", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  IntPtr INTERNAL_IMG_LoadTexture(
+        private static extern IntPtr INTERNAL_IMG_LoadTexture(
             IntPtr renderer,
             byte[] file
         );
@@ -293,7 +277,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="renderer">The renderer</param>
         /// <param name="file">The file</param>
         /// <returns>The handle</returns>
-        public static  IntPtr IMG_LoadTexture(
+        public static IntPtr IMG_LoadTexture(
             IntPtr renderer,
             string file
         )
@@ -303,15 +287,11 @@ namespace Alis.Core.Graphic.SDL
                 renderer,
                 utf8File
             );
-            
+
             return handle;
         }
 
-        /* renderer refers to an SDL_Renderer*.
-         * src refers to an SDL_RWops*.
-         * IntPtr to an SDL_Texture*.
-         */
-        /* THIS IS A PUBLIC RWops FUNCTION! */
+
         /// <summary>
         ///     Imgs the load texture rw using the specified renderer
         /// </summary>
@@ -326,11 +306,7 @@ namespace Alis.Core.Graphic.SDL
             int freesrc
         );
 
-        /* renderer refers to an SDL_Renderer*.
-         * src refers to an SDL_RWops*.
-         * IntPtr to an SDL_Texture*.
-         */
-        /* THIS IS A PUBLIC RWops FUNCTION! */
+
         /// <summary>
         ///     Internals the img load texture typed rw using the specified renderer
         /// </summary>
@@ -340,7 +316,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="type">The type</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_LoadTextureTyped_RW", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  IntPtr INTERNAL_IMG_LoadTextureTyped_RW(
+        private static extern IntPtr INTERNAL_IMG_LoadTextureTyped_RW(
             IntPtr renderer,
             IntPtr src,
             int freesrc,
@@ -355,7 +331,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="freesrc">The freesrc</param>
         /// <param name="type">The type</param>
         /// <returns>The handle</returns>
-        public static  IntPtr IMG_LoadTextureTyped_RW(
+        public static IntPtr IMG_LoadTextureTyped_RW(
             IntPtr renderer,
             IntPtr src,
             int freesrc,
@@ -369,11 +345,11 @@ namespace Alis.Core.Graphic.SDL
                 freesrc,
                 utf8Type
             );
-           
+
             return handle;
         }
 
-        /* IntPtr refers to an SDL_Surface* */
+
         /// <summary>
         ///     Imgs the read xpm from array using the specified xpm
         /// </summary>
@@ -385,7 +361,7 @@ namespace Alis.Core.Graphic.SDL
             string[] xpm
         );
 
-        /* surface refers to an SDL_Surface* */
+
         /// <summary>
         ///     Internals the img save png using the specified surface
         /// </summary>
@@ -393,7 +369,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_SavePNG", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_IMG_SavePNG(
+        private static extern int INTERNAL_IMG_SavePNG(
             IntPtr surface,
             byte[] file
         );
@@ -404,19 +380,18 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="surface">The surface</param>
         /// <param name="file">The file</param>
         /// <returns>The result</returns>
-        public static  int IMG_SavePNG(IntPtr surface, string file)
+        public static int IMG_SavePNG(IntPtr surface, string file)
         {
             byte[] utf8File = Sdl.Utf8EncodeHeap(file);
             int result = INTERNAL_IMG_SavePNG(
                 surface,
                 utf8File
             );
-            
+
             return result;
         }
 
-        /* surface refers to an SDL_Surface*, dst to an SDL_RWops* */
-        /* THIS IS A PUBLIC RWops FUNCTION! */
+
         /// <summary>
         ///     Imgs the save png rw using the specified surface
         /// </summary>
@@ -431,7 +406,7 @@ namespace Alis.Core.Graphic.SDL
             int freedst
         );
 
-        /* surface refers to an SDL_Surface* */
+
         /// <summary>
         ///     Internals the img save jpg using the specified surface
         /// </summary>
@@ -440,7 +415,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="quality">The quality</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_SaveJPG", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_IMG_SaveJPG(
+        private static extern int INTERNAL_IMG_SaveJPG(
             IntPtr surface,
             byte[] file,
             int quality
@@ -453,7 +428,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <param name="quality">The quality</param>
         /// <returns>The result</returns>
-        public static  int IMG_SaveJPG(IntPtr surface, string file, int quality)
+        public static int IMG_SaveJPG(IntPtr surface, string file, int quality)
         {
             byte[] utf8File = Sdl.Utf8EncodeHeap(file);
             int result = INTERNAL_IMG_SaveJPG(
@@ -461,12 +436,11 @@ namespace Alis.Core.Graphic.SDL
                 utf8File,
                 quality
             );
-            
+
             return result;
         }
 
-        /* surface refers to an SDL_Surface*, dst to an SDL_RWops* */
-        /* THIS IS A PUBLIC RWops FUNCTION! */
+
         /// <summary>
         ///     Imgs the save jpg rw using the specified surface
         /// </summary>
@@ -498,9 +472,60 @@ namespace Alis.Core.Graphic.SDL
             Sdl.SDL_SetError(fmtAndArglist);
         }
 
-        #region Animated Image Support
 
-        /* This region is only available in 2.0.6 or higher. */
+        /// <summary>
+        ///     Imgs the load animation using the specified file
+        /// </summary>
+        /// <param name="file">The file</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr IMG_LoadAnimation(
+            [In, MarshalAs(UnmanagedType.LPStr)] string file
+        );
+
+
+        /// <summary>
+        ///     Imgs the load animation rw using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <param name="freesrc">The freesrc</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr IMG_LoadAnimation_RW(
+            IntPtr src,
+            int freesrc
+        );
+
+
+        /// <summary>
+        ///     Imgs the load animation typed rw using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <param name="freesrc">The freesrc</param>
+        /// <param name="type">The type</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr IMG_LoadAnimationTyped_RW(
+            IntPtr src,
+            int freesrc,
+            [In, MarshalAs(UnmanagedType.LPStr)] string type
+        );
+
+
+        /// <summary>
+        ///     Imgs the free animation using the specified anim
+        /// </summary>
+        /// <param name="anim">The anim</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void IMG_FreeAnimation(IntPtr anim);
+
+        /// <summary>
+        ///     Imgs the load gif animation rw using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr IMG_LoadGIFAnimation_RW(IntPtr src);
 
         /// <summary>
         ///     The img animation
@@ -520,75 +545,12 @@ namespace Alis.Core.Graphic.SDL
             /// <summary>
             ///     The frames
             /// </summary>
-            public IntPtr Frames; /* SDL_Surface** */
+            public IntPtr Frames;
 
             /// <summary>
             ///     The delays
             /// </summary>
-            public IntPtr Delays; /* int* */
+            public IntPtr Delays;
         }
-
-        /* IntPtr refers to an IMG_Animation* */
-        /// <summary>
-        ///     Imgs the load animation using the specified file
-        /// </summary>
-        /// <param name="file">The file</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr IMG_LoadAnimation(
-            [In, MarshalAs(UnmanagedType.LPStr)] string file
-        );
-
-        /* IntPtr refers to an IMG_Animation*, src to an SDL_RWops* */
-        /* THIS IS A PUBLIC RWops FUNCTION! */
-        /// <summary>
-        ///     Imgs the load animation rw using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="freesrc">The freesrc</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr IMG_LoadAnimation_RW(
-            IntPtr src,
-            int freesrc
-        );
-
-        /* IntPtr refers to an IMG_Animation*, src to an SDL_RWops* */
-        /* THIS IS A PUBLIC RWops FUNCTION! */
-        /// <summary>
-        ///     Imgs the load animation typed rw using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="freesrc">The freesrc</param>
-        /// <param name="type">The type</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr IMG_LoadAnimationTyped_RW(
-            IntPtr src,
-            int freesrc,
-            [In, MarshalAs(UnmanagedType.LPStr)] string type
-        );
-
-        /* anim refers to an IMG_Animation* */
-        /// <summary>
-        ///     Imgs the free animation using the specified anim
-        /// </summary>
-        /// <param name="anim">The anim</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void IMG_FreeAnimation(IntPtr anim);
-
-        /* IntPtr refers to an IMG_Animation*, src to an SDL_RWops* */
-        /* THIS IS A PUBLIC RWops FUNCTION! */
-        /// <summary>
-        ///     Imgs the load gif animation rw using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr IMG_LoadGIFAnimation_RW(IntPtr src);
-
-        #endregion
-
-        #endregion
     }
 }

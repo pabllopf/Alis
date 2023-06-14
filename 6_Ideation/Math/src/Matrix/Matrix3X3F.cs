@@ -69,7 +69,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             float a20, float a21, float a22)
         {
             array = new float[9];
-            
+
             array[0] = a00;
             array[3] = a01;
             array[6] = a02;
@@ -83,8 +83,6 @@ namespace Alis.Core.Aspect.Math.Matrix
             Ex = new Vector3F(a00, a01, a02);
             Ey = new Vector3F(a10, a11, a12);
             Ez = new Vector3F(a20, a21, a22);
-            
-            
         }
 
         // column-major!
@@ -145,14 +143,14 @@ namespace Alis.Core.Aspect.Math.Matrix
                 det * d,
                 -det * b,
                 0.0f
-                );
-            
+            );
+
             m.Ey = new Vector3F(
                 -det * b,
                 det * a,
                 0.0f
             );
-            
+
             m.Ez = new Vector3F(
                 0.0f,
                 0.0f,
@@ -173,19 +171,19 @@ namespace Alis.Core.Aspect.Math.Matrix
             float a11 = Ex.X, a12 = Ey.X, a13 = Ez.X;
             float a22 = Ey.Y, a23 = Ez.Y;
             float a33 = Ez.Z;
-            
+
             m.Ex = new Vector3F(
                 det * (a22 * a33 - a23 * a23),
                 det * (a13 * a23 - a12 * a33),
                 det * (a12 * a23 - a13 * a22)
             );
-            
+
             m.Ey = new Vector3F(
                 det * (a13 * a23 - a12 * a33),
                 det * (a11 * a33 - a13 * a13),
                 det * (a13 * a12 - a11 * a23)
             );
-            
+
             m.Ez = new Vector3F(
                 det * (a12 * a23 - a13 * a22),
                 det * (a13 * a12 - a11 * a23),

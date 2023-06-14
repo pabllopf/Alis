@@ -34,24 +34,14 @@ using Alis.Core.Graphic.SDL;
 namespace Alis.Core.Graphic.Sample
 {
     /// <summary>
-    /// The sdl controller class
+    ///     The sdl controller class
     /// </summary>
     public class SdlController
     {
         /// <summary>
-        ///     The width
-        /// </summary>
-        private const int Width = 640;
-
-        /// <summary>
-        ///     The height
-        /// </summary>
-        private const int Height = 480;
-        
-        /// <summary>
         ///     The blue
         /// </summary>
-        private byte _red;
+        private byte _blue;
 
         /// <summary>
         ///     The blue
@@ -61,39 +51,48 @@ namespace Alis.Core.Graphic.Sample
         /// <summary>
         ///     The blue
         /// </summary>
-        private byte _blue;
-        
-        /// <summary>
-        /// The sdl event
-        /// </summary>
-        private SdlEvent sdlEvent;
-        
-        /// <summary>
-        /// The sdl game controller button
-        /// </summary>
-        List<SdlGameControllerButton> buttons = new List<SdlGameControllerButton>((SdlGameControllerButton[]) Enum.GetValues(typeof(SdlGameControllerButton)));
-        /// <summary>
-        /// The sdl game controller axis
-        /// </summary>
-        List<SdlGameControllerAxis> axis = new List<SdlGameControllerAxis>((SdlGameControllerAxis[]) Enum.GetValues(typeof(SdlGameControllerAxis)));
+        private byte _red;
 
         /// <summary>
-        /// The sdl keycode
+        ///     The sdl game controller axis
         /// </summary>
-        List<SdlKeycode> keys = new List<SdlKeycode>((SdlKeycode[]) Enum.GetValues(typeof(SdlKeycode)));
-        
+        private List<SdlGameControllerAxis> axis = new List<SdlGameControllerAxis>((SdlGameControllerAxis[]) Enum.GetValues(typeof(SdlGameControllerAxis)));
+
         /// <summary>
-        /// The running
+        ///     The sdl game controller button
         /// </summary>
-        bool running = true;
-        
+        private List<SdlGameControllerButton> buttons = new List<SdlGameControllerButton>((SdlGameControllerButton[]) Enum.GetValues(typeof(SdlGameControllerButton)));
+
         /// <summary>
-        /// Runs this instance
+        ///     The sdl keycode
+        /// </summary>
+        private List<SdlKeycode> keys = new List<SdlKeycode>((SdlKeycode[]) Enum.GetValues(typeof(SdlKeycode)));
+
+        /// <summary>
+        ///     The running
+        /// </summary>
+        private bool running = true;
+
+        /// <summary>
+        ///     The sdl event
+        /// </summary>
+        private SdlEvent sdlEvent;
+
+        /// <summary>
+        ///     The width
+        /// </summary>
+        private const int Width = 640;
+
+        /// <summary>
+        ///     The height
+        /// </summary>
+        private const int Height = 480;
+
+        /// <summary>
+        ///     Runs this instance
         /// </summary>
         public int Run()
         {
-             
-
             // Initilizes SDL.
             if (Sdl.SDL_Init(Sdl.SdlInitEverything) < 0)
             {
@@ -107,7 +106,7 @@ namespace Alis.Core.Graphic.Sample
                 Sdl.SdlWindowposUndefined,
                 Width,
                 Height,
-                Sdl.SdlWindowFlags.SdlWindowShown);
+                SdlWindowFlags.SdlWindowShown);
 
             if (window == IntPtr.Zero)
             {
@@ -115,11 +114,11 @@ namespace Alis.Core.Graphic.Sample
             }
 
             // Creates a new SDL hardware renderer using the default graphics device with VSYNC enabled.
-            var renderer = Sdl.SDL_CreateRenderer(
+            IntPtr renderer = Sdl.SDL_CreateRenderer(
                 window,
                 -1,
-                Sdl.SdlRendererFlags.SdlRendererAccelerated |
-                Sdl.SdlRendererFlags.SdlRendererPresentvsync);
+                SdlRendererFlags.SdlRendererAccelerated |
+                SdlRendererFlags.SdlRendererPresentvsync);
 
             if (renderer == IntPtr.Zero)
             {
@@ -127,11 +126,11 @@ namespace Alis.Core.Graphic.Sample
             }
 
             Sdlinput();
-            
+
             while (running)
             {
                 UpdateInput();
-                
+
                 RenderColors();
 
                 // Sets the color that the screen will be cleared with.
@@ -149,9 +148,9 @@ namespace Alis.Core.Graphic.Sample
             Sdl.SDL_Quit();
             return 0;
         }
-        
+
         /// <summary>
-        /// Renders the colors
+        ///     Renders the colors
         /// </summary>
         private void RenderColors()
         {
@@ -203,7 +202,7 @@ namespace Alis.Core.Graphic.Sample
         }
 
         /// <summary>
-        /// Updates the input
+        ///     Updates the input
         /// </summary>
         public void UpdateInput()
         {
@@ -225,6 +224,7 @@ namespace Alis.Core.Graphic.Sample
                         {
                             Console.WriteLine(sdlEvent.key.keysym.sym + " was pressed");
                         }
+
                         break;
                 }
                 /*

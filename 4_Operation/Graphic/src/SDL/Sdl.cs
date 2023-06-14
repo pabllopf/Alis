@@ -33,7 +33,6 @@ using System.Text;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Graphic.Properties;
 
-
 namespace Alis.Core.Graphic.SDL
 {
     /// <summary>
@@ -88,150 +87,128 @@ namespace Alis.Core.Graphic.SDL
                 }
             }
         }
-        
+
+
+        /// <summary>
+        ///     The sdl audiocallback
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate void SdlAudioCallback(
+            IntPtr userdata,
+            IntPtr stream,
+            int len
+        );
+
+
+        /// <summary>
+        ///     The sdl eventfilter
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate int SdlEventFilter(
+            IntPtr userdata,
+            IntPtr sdlevent
+        );
+
+
+        /// <summary>
+        ///     The sdl hittest
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate SdlHitTestResult SdlHitTest(IntPtr win, IntPtr area, IntPtr data);
+
+        /// <summary>
+        ///     The sdl iphoneanimationcallback
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate void SdlIPhoneAnimationCallback(IntPtr p);
+
+
+        /// <summary>
+        ///     The sdl logoutputfunction
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate void SdlLogOutputFunction(
+            IntPtr userdata,
+            int category,
+            SdlLogPriority priority,
+            IntPtr message
+        );
+
+
+        /// <summary>
+        ///     The sdl main func
+        /// </summary>
+        public delegate int SdlMainFunc(int argc, IntPtr argv);
+
+        /// <summary>
+        ///     The sdlr wops close callback
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate int SdlrWopsCloseCallback(
+            IntPtr context
+        );
+
+        /// <summary>
+        ///     The sdlr wops read callback
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate IntPtr SdlrWopsReadCallback(
+            IntPtr context,
+            IntPtr ptr,
+            IntPtr size,
+            IntPtr maxnum
+        );
+
+        /// <summary>
+        ///     The sdlr wops seek callback
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate long SdlrWopsSeekCallback(
+            IntPtr context,
+            long offset,
+            int whence
+        );
+
+        /// <summary>
+        ///     The sdlr wops size callback
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate long SdlrWopsSizeCallback(IntPtr context);
+
+        /// <summary>
+        ///     The sdlr wops write callback
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate IntPtr SdlrWopsWriteCallback(
+            IntPtr context,
+            IntPtr ptr,
+            IntPtr size,
+            IntPtr num
+        );
+
+        /// <summary>
+        ///     The sdl timercallback
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate uint SdlTimerCallback(uint interval, IntPtr param);
+
+        /// <summary>
+        ///     The sdl windowsmessagehook
+        /// </summary>
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate IntPtr SdlWindowsMessageHook(
+            IntPtr userdata,
+            IntPtr hWnd,
+            uint message,
+            ulong wParam,
+            long lParam
+        );
+
         /// <summary>
         ///     The native lib name
         /// </summary>
         private const string NativeLibName = "sdl2";
 
-
-        
-        /// <summary>
-        ///     Utfs the 8 size using the specified str
-        /// </summary>
-        /// <param name="str">The str</param>
-        /// <returns>The int</returns>
-        internal static int Utf8Size(string str)
-        {
-            if (str == null)
-            {
-                return 0;
-            }
-
-            return str.Length * 4 + 1;
-        }
-
-        /// <summary>
-        ///     Utfs the 8 encode using the specified str
-        /// </summary>
-        /// <param name="str">The str</param>
-        /// <param name="buffer">The buffer</param>
-        /// <param name="bufferSize">The buffer size</param>
-        /// <returns>The buffer</returns>
-        internal static byte[] Utf8Encode(string str, byte[] buffer, int bufferSize)
-        {
-            if (str == null)
-            {
-                return null;
-            }
-        
-            Encoding.UTF8.GetBytes(str, 0, str.Length, buffer, 0);
-            buffer[str.Length] = 0; // Null-terminate the string
-        
-            return buffer;
-        }
-
-
-
-        /// <summary>
-        ///     Utfs the 8 encode heap using the specified str
-        /// </summary>
-        /// <param name="str">The str</param>
-        /// <returns>The buffer</returns>
-        internal static byte[] Utf8EncodeHeap(string str)
-        {
-            if (str == null)
-            {
-                return null;
-            }
-        
-            int bufferSize = Encoding.UTF8.GetByteCount(str) + 1;
-            byte[] buffer = new byte[bufferSize];
-            Encoding.UTF8.GetBytes(str, 0, str.Length, buffer, 0);
-            buffer[bufferSize - 1] = 0; // Null-terminate the string
-        
-            return buffer;
-        }
-
-
-        
-        /// <summary>
-        ///     Utfs the 8 to managed using the specified s
-        /// </summary>
-        /// <param name="s">The </param>
-        /// <param name="freePtr">The free ptr</param>
-        /// <returns>The result</returns>
-        public static string UTF8_ToManaged(IntPtr s, bool freePtr = false)
-        {
-            if (s == IntPtr.Zero)
-            {
-                return null;
-            }
-        
-            byte[] bytes = new byte[0];
-            int len = 0;
-            while (Marshal.ReadByte(s, len) != 0)
-            {
-                len++;
-            }
-        
-            if (len == 0)
-            {
-                return string.Empty;
-            }
-        
-            bytes = new byte[len];
-            Marshal.Copy(s, bytes, 0, len);
-            string result = Encoding.UTF8.GetString(bytes);
-        
-            if (freePtr)
-            {
-                SDL_free(s);
-            }
-        
-            return result;
-        }
-
-
-        
-        /// <summary>
-        ///     Sdls the fourcc using the specified a
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <param name="c">The </param>
-        /// <param name="d">The </param>
-        /// <returns>The uint</returns>
-        public static uint SDL_FOURCC(byte a, byte b, byte c, byte d) => (uint) (a | (b << 8) | (c << 16) | (d << 24));
-
-        
-
-        /// <summary>
-        ///     Sdls the malloc using the specified size
-        /// </summary>
-        /// <param name="size">The size</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern IntPtr SDL_malloc(int size);
-
-        /// <summary>
-        ///     Sdls the free using the specified memblock
-        /// </summary>
-        /// <param name="memblock">The memblock</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void SDL_free(IntPtr memblock);
-
-        
-        /// <summary>
-        ///     Sdls the memcpy using the specified dst
-        /// </summary>
-        /// <param name="dst">The dst</param>
-        /// <param name="src">The src</param>
-        /// <param name="len">The len</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_memcpy(IntPtr dst, IntPtr src, IntPtr len);
-        
         /// <summary>
         ///     The rw seek set
         /// </summary>
@@ -250,413 +227,32 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl rwops unknown
         /// </summary>
-        public const uint SdlRwopsUnknown = 0; 
+        public const uint SdlRwopsUnknown = 0;
 
         /// <summary>
         ///     The sdl rwops winfile
         /// </summary>
-        public const uint SdlRwopsWinfile = 1; 
+        public const uint SdlRwopsWinfile = 1;
 
         /// <summary>
         ///     The sdl rwops stdfile
         /// </summary>
-        public const uint SdlRwopsStdfile = 2; 
+        public const uint SdlRwopsStdfile = 2;
 
         /// <summary>
         ///     The sdl rwops jnifile
         /// </summary>
-        public const uint SdlRwopsJnifile = 3; 
+        public const uint SdlRwopsJnifile = 3;
 
         /// <summary>
         ///     The sdl rwops memory
         /// </summary>
-        public const uint SdlRwopsMemory = 4; 
+        public const uint SdlRwopsMemory = 4;
 
         /// <summary>
         ///     The sdl rwops memory ro
         /// </summary>
-        public const uint SdlRwopsMemoryRo = 5; 
-
-        /// <summary>
-        ///     The sdlr wops size callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate long SdlrWopsSizeCallback(IntPtr context);
-
-        /// <summary>
-        ///     The sdlr wops seek callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate long SdlrWopsSeekCallback(
-            IntPtr context,
-            long offset,
-            int whence
-        );
-
-        /// <summary>
-        ///     The sdlr wops read callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate IntPtr SdlrWopsReadCallback(
-            IntPtr context,
-            IntPtr ptr,
-            IntPtr size,
-            IntPtr maxnum
-        );
-
-        /// <summary>
-        ///     The sdlr wops write callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate IntPtr SdlrWopsWriteCallback(
-            IntPtr context,
-            IntPtr ptr,
-            IntPtr size,
-            IntPtr num
-        );
-
-        /// <summary>
-        ///     The sdlr wops close callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int SdlrWopsCloseCallback(
-            IntPtr context
-        );
-
-        
-        /// <summary>
-        ///     Internals the sdl rw from file using the specified file
-        /// </summary>
-        /// <param name="file">The file</param>
-        /// <param name="mode">The mode</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_RWFromFile", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  IntPtr INTERNAL_SDL_RWFromFile(
-            byte[] file,
-            byte[] mode
-        );
-
-        /// <summary>
-        ///     Sdls the rw from file using the specified file
-        /// </summary>
-        /// <param name="file">The file</param>
-        /// <param name="mode">The mode</param>
-        /// <returns>The rw ops</returns>
-        public static  IntPtr SDL_RWFromFile(
-            string file,
-            string mode
-        )
-        {
-            byte[] utf8File = Utf8EncodeHeap(file);
-            byte[] utf8Mode = Utf8EncodeHeap(mode);
-            IntPtr rwOps = INTERNAL_SDL_RWFromFile(
-                utf8File,
-                utf8Mode
-            );
-            return rwOps;
-        }
-
-        
-        /// <summary>
-        ///     Sdls the alloc rw
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_AllocRW();
-
-        
-        /// <summary>
-        ///     Sdls the free rw using the specified area
-        /// </summary>
-        /// <param name="area">The area</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_FreeRW(IntPtr area);
-
-        
-        /// <summary>
-        ///     Sdls the rw from fp using the specified fp
-        /// </summary>
-        /// <param name="fp">The fp</param>
-        /// <param name="autoclose">The autoclose</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_RWFromFP(IntPtr fp, SdlBool autoclose);
-
-        
-        /// <summary>
-        ///     Sdls the rw from mem using the specified mem
-        /// </summary>
-        /// <param name="mem">The mem</param>
-        /// <param name="size">The size</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_RWFromMem(IntPtr mem, int size);
-
-        
-        /// <summary>
-        ///     Sdls the rw from const mem using the specified mem
-        /// </summary>
-        /// <param name="mem">The mem</param>
-        /// <param name="size">The size</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_RWFromConstMem(IntPtr mem, int size);
-
-        
-        /// <summary>
-        ///     Sdls the r wsize using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        /// <returns>The long</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern long SDL_RWsize(IntPtr context);
-
-        /// <summary>
-        ///     Sdls the r wseek using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        /// <param name="offset">The offset</param>
-        /// <param name="whence">The whence</param>
-        /// <returns>The long</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern long SDL_RWseek(
-            IntPtr context,
-            long offset,
-            int whence
-        );
-
-        /// <summary>
-        ///     Sdls the r wtell using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        /// <returns>The long</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern long SDL_RWtell(IntPtr context);
-
-        
-        /// <summary>
-        ///     Sdls the r wread using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        /// <param name="ptr">The ptr</param>
-        /// <param name="size">The size</param>
-        /// <param name="maxnum">The maxnum</param>
-        /// <returns>The long</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern long SDL_RWread(
-            IntPtr context,
-            IntPtr ptr,
-            IntPtr size,
-            IntPtr maxnum
-        );
-
-        
-        /// <summary>
-        ///     Sdls the r wwrite using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        /// <param name="ptr">The ptr</param>
-        /// <param name="size">The size</param>
-        /// <param name="maxnum">The maxnum</param>
-        /// <returns>The long</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern long SDL_RWwrite(
-            IntPtr context,
-            IntPtr ptr,
-            IntPtr size,
-            IntPtr maxnum
-        );
-
-        
-
-        /// <summary>
-        ///     Sdls the read u 8 using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <returns>The byte</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte SDL_ReadU8(IntPtr src);
-
-        /// <summary>
-        ///     Sdls the read le 16 using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <returns>The int 16</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ushort SDL_ReadLE16(IntPtr src);
-
-        /// <summary>
-        ///     Sdls the read be 16 using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <returns>The int 16</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ushort SDL_ReadBE16(IntPtr src);
-
-        /// <summary>
-        ///     Sdls the read le 32 using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <returns>The int 32</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_ReadLE32(IntPtr src);
-
-        /// <summary>
-        ///     Sdls the read be 32 using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <returns>The int 32</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_ReadBE32(IntPtr src);
-
-        /// <summary>
-        ///     Sdls the read le 64 using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <returns>The int 64</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ulong SDL_ReadLE64(IntPtr src);
-
-        /// <summary>
-        ///     Sdls the read be 64 using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <returns>The int 64</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ulong SDL_ReadBE64(IntPtr src);
-        
-        /// <summary>
-        ///     Sdls the write u 8 using the specified dst
-        /// </summary>
-        /// <param name="dst">The dst</param>
-        /// <param name="value">The value</param>
-        /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_WriteU8(IntPtr dst, byte value);
-
-        /// <summary>
-        ///     Sdls the write le 16 using the specified dst
-        /// </summary>
-        /// <param name="dst">The dst</param>
-        /// <param name="value">The value</param>
-        /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_WriteLE16(IntPtr dst, ushort value);
-
-        /// <summary>
-        ///     Sdls the write be 16 using the specified dst
-        /// </summary>
-        /// <param name="dst">The dst</param>
-        /// <param name="value">The value</param>
-        /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_WriteBE16(IntPtr dst, ushort value);
-
-        /// <summary>
-        ///     Sdls the write le 32 using the specified dst
-        /// </summary>
-        /// <param name="dst">The dst</param>
-        /// <param name="value">The value</param>
-        /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_WriteLE32(IntPtr dst, uint value);
-
-        /// <summary>
-        ///     Sdls the write be 32 using the specified dst
-        /// </summary>
-        /// <param name="dst">The dst</param>
-        /// <param name="value">The value</param>
-        /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_WriteBE32(IntPtr dst, uint value);
-
-        /// <summary>
-        ///     Sdls the write le 64 using the specified dst
-        /// </summary>
-        /// <param name="dst">The dst</param>
-        /// <param name="value">The value</param>
-        /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_WriteLE64(IntPtr dst, ulong value);
-
-        /// <summary>
-        ///     Sdls the write be 64 using the specified dst
-        /// </summary>
-        /// <param name="dst">The dst</param>
-        /// <param name="value">The value</param>
-        /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_WriteBE64(IntPtr dst, ulong value);
-
-        
-        /// <summary>
-        ///     Sdls the r wclose using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        /// <returns>The long</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern long SDL_RWclose(IntPtr context);
-
-        /// <summary>
-        ///     Internals the sdl load file using the specified file
-        /// </summary>
-        /// <param name="file">The file</param>
-        /// <param name="datasize">The datasize</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_LoadFile", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  IntPtr INTERNAL_SDL_LoadFile(byte[] file, out IntPtr datasize);
-
-        /// <summary>
-        ///     Sdls the load file using the specified file
-        /// </summary>
-        /// <param name="file">The file</param>
-        /// <param name="datasize">The datasize</param>
-        /// <returns>The result</returns>
-        public static  IntPtr SDL_LoadFile(string file, out IntPtr datasize)
-        {
-            byte[] utf8File = Utf8EncodeHeap(file);
-            IntPtr result = INTERNAL_SDL_LoadFile(utf8File, out datasize);
-            return result;
-        }
-
-        /// <summary>
-        ///     Sdls the set main ready
-        /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_SetMainReady();
-
-        
-        /// <summary>
-        ///     The sdl main func
-        /// </summary>
-        public delegate int SdlMainFunc(int argc, IntPtr argv);
-
-        
-        /// <summary>
-        ///     Sdls the win rt run app using the specified main function
-        /// </summary>
-        /// <param name="mainFunction">The main function</param>
-        /// <param name="reserved">The reserved</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_WinRTRunApp(
-            SdlMainFunc mainFunction,
-            IntPtr reserved
-        );
-        
-        /// <summary>
-        ///     Sdls the ui kit run app using the specified argc
-        /// </summary>
-        /// <param name="argc">The argc</param>
-        /// <param name="argv">The argv</param>
-        /// <param name="mainFunction">The main function</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_UIKitRunApp(
-            int argc,
-            IntPtr argv,
-            SdlMainFunc mainFunction
-        );
+        public const uint SdlRwopsMemoryRo = 5;
 
 
         /// <summary>
@@ -711,57 +307,7 @@ namespace Alis.Core.Graphic.SDL
                                               SdlInitEvents | SdlInitJoystick | SdlInitHaptic |
                                               SdlInitGamecontroller | SdlInitSensor;
 
-        /// <summary>
-        ///     Sdls the init using the specified flags
-        /// </summary>
-        /// <param name="flags">The flags</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_Init(uint flags);
 
-        /// <summary>
-        ///     Sdls the init sub system using the specified flags
-        /// </summary>
-        /// <param name="flags">The flags</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_InitSubSystem(uint flags);
-
-        /// <summary>
-        ///     Sdls the quit
-        /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_Quit();
-
-        /// <summary>
-        ///     Sdls the quit sub system using the specified flags
-        /// </summary>
-        /// <param name="flags">The flags</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_QuitSubSystem(uint flags);
-
-        /// <summary>
-        ///     Sdls the was init using the specified flags
-        /// </summary>
-        /// <param name="flags">The flags</param>
-        /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_WasInit(uint flags);
-        
-        /// <summary>
-        ///     Internals the sdl get platform
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetPlatform", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GetPlatform();
-
-        /// <summary>
-        ///     Sdls the get platform
-        /// </summary>
-        /// <returns>The string</returns>
-        public static string SDL_GetPlatform() => UTF8_ToManaged(INTERNAL_SDL_GetPlatform());
-
- 
         /// <summary>
         ///     The sdl hint framebuffer acceleration
         /// </summary>
@@ -870,14 +416,14 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintRenderScaleQuality =
             "SDL_RENDER_SCALE_QUALITY";
 
-        
+
         /// <summary>
         ///     The sdl hint video highdpi disabled
         /// </summary>
         public const string SdlHintVideoHighdpiDisabled =
             "SDL_VIDEO_HIGHDPI_DISABLED";
 
-        
+
         /// <summary>
         ///     The sdl hint ctrl click emulate right click
         /// </summary>
@@ -920,7 +466,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintVideoMacFullscreenSpaces =
             "SDL_VIDEO_MAC_FULLSCREEN_SPACES";
 
-        
+
         /// <summary>
         ///     The sdl hint winrt privacy policy url
         /// </summary>
@@ -939,7 +485,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintWinrtHandleBackButton =
             "SDL_WINRT_HANDLE_BACK_BUTTON";
 
-        
+
         /// <summary>
         ///     The sdl hint no signal handlers
         /// </summary>
@@ -1018,7 +564,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintAndroidApkExpansionPatchFileVersion =
             "SDL_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION";
 
-        
+
         /// <summary>
         ///     The sdl hint mouse focus clickthrough
         /// </summary>
@@ -1043,7 +589,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintAppleTvRemoteAllowRotation =
             "SDL_APPLE_TV_REMOTE_ALLOW_ROTATION";
 
-        
+
         /// <summary>
         ///     The sdl hint audio resampling mode
         /// </summary>
@@ -1086,7 +632,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintWindowsIntresourceIconSmall =
             "SDL_WINDOWS_INTRESOURCE_ICON_SMALL";
 
-        
+
         /// <summary>
         ///     The sdl hint ios hide home indicator
         /// </summary>
@@ -1105,7 +651,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlVideoX11NetWmBypassCompositor =
             "SDL_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR";
 
-        
+
         /// <summary>
         ///     The sdl hint mouse double click time
         /// </summary>
@@ -1166,7 +712,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintAndroidTrapBackButton =
             "SDL_ANDROID_TRAP_BACK_BUTTON";
 
-        
+
         /// <summary>
         ///     The sdl hint mouse touch events
         /// </summary>
@@ -1215,7 +761,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintWaveFactChunk =
             "SDL_WAVE_FACT_CHUNK";
 
-        
+
         /// <summary>
         ///     The sdl hint vido x11 window visualid
         /// </summary>
@@ -1258,12 +804,12 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintGamecontrollertype =
             "SDL_GAMECONTROLLERTYPE";
 
-        
+
         /// <summary>
         ///     The sdl hint joystick hidapi correlate xinput
         /// </summary>
         public const string SdlHintJoystickHidapiCorrelateXinput =
-            "SDL_JOYSTICK_HIDAPI_CORRELATE_XINPUT"; 
+            "SDL_JOYSTICK_HIDAPI_CORRELATE_XINPUT";
 
         /// <summary>
         ///     The sdl hint joystick rawinput
@@ -1355,7 +901,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintJoystickHidapiPs5Rumble =
             "SDL_JOYSTICK_HIDAPI_PS5_RUMBLE";
 
-        
+
         /// <summary>
         ///     The sdl hint windows force mutex critical sections
         /// </summary>
@@ -1446,7 +992,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintVideoWaylandAllowLibdecor =
             "SDL_VIDEO_WAYLAND_ALLOW_LIBDECOR";
 
-        
+
         /// <summary>
         ///     The sdl hint video egl allow transparency
         /// </summary>
@@ -1495,713 +1041,6 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintLinuxJoystickClassic =
             "SDL_LINUX_JOYSTICK_CLASSIC";
 
-        /// <summary>
-        ///     Sdls the clear hints
-        /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_ClearHints();
-
-        /// <summary>
-        ///     Internals the sdl get hint using the specified name
-        /// </summary>
-        /// <param name="name">The name</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetHint", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  IntPtr INTERNAL_SDL_GetHint(byte[] name);
-
-        /// <summary>
-        ///     Sdls the get hint using the specified name
-        /// </summary>
-        /// <param name="name">The name</param>
-        /// <returns>The string</returns>
-        public static  string SDL_GetHint(string name)
-        {
-            int utf8NameBufSize = Utf8Size(name);
-            byte[] utf8Name = new byte[utf8NameBufSize];
-            return UTF8_ToManaged(
-                INTERNAL_SDL_GetHint(
-                    Utf8Encode(name, utf8Name, utf8NameBufSize)
-                )
-            );
-        }
-
-        /// <summary>
-        ///     Internals the sdl set hint using the specified name
-        /// </summary>
-        /// <param name="name">The name</param>
-        /// <param name="value">The value</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SetHint", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  SdlBool INTERNAL_SDL_SetHint(
-            byte[] name,
-            byte[] value
-        );
-
-        /// <summary>
-        ///     Sdls the set hint using the specified name
-        /// </summary>
-        /// <param name="name">The name</param>
-        /// <param name="value">The value</param>
-        /// <returns>The sdl bool</returns>
-        public static  SdlBool SDL_SetHint(string name, string value)
-        {
-            int utf8NameBufSize = Utf8Size(name);
-            byte[] utf8Name = new byte[utf8NameBufSize];
-
-            int utf8ValueBufSize = Utf8Size(value);
-            byte[] utf8Value = new byte[utf8ValueBufSize];
-
-            return INTERNAL_SDL_SetHint(
-                Utf8Encode(name, utf8Name, utf8NameBufSize),
-                Utf8Encode(value, utf8Value, utf8ValueBufSize)
-            );
-        }
-
-        /// <summary>
-        ///     Internals the sdl set hint with priority using the specified name
-        /// </summary>
-        /// <param name="name">The name</param>
-        /// <param name="value">The value</param>
-        /// <param name="priority">The priority</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SetHintWithPriority", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  SdlBool INTERNAL_SDL_SetHintWithPriority(
-            byte[] name,
-            byte[] value,
-            SdlHintPriority priority
-        );
-
-        /// <summary>
-        ///     Sdls the set hint with priority using the specified name
-        /// </summary>
-        /// <param name="name">The name</param>
-        /// <param name="value">The value</param>
-        /// <param name="priority">The priority</param>
-        /// <returns>The sdl bool</returns>
-        public static  SdlBool SDL_SetHintWithPriority(
-            string name,
-            string value,
-            SdlHintPriority priority
-        )
-        {
-            int utf8NameBufSize = Utf8Size(name);
-            byte[] utf8Name = new byte[utf8NameBufSize];
-
-            int utf8ValueBufSize = Utf8Size(value);
-            byte[] utf8Value = new byte[utf8ValueBufSize];
-
-            return INTERNAL_SDL_SetHintWithPriority(
-                Utf8Encode(name, utf8Name, utf8NameBufSize),
-                Utf8Encode(value, utf8Value, utf8ValueBufSize),
-                priority
-            );
-        }
-
-        
-        /// <summary>
-        ///     Internals the sdl get hint boolean using the specified name
-        /// </summary>
-        /// <param name="name">The name</param>
-        /// <param name="defaultValue">The default value</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetHintBoolean", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  SdlBool INTERNAL_SDL_GetHintBoolean(
-            byte[] name,
-            SdlBool defaultValue
-        );
-
-        /// <summary>
-        ///     Sdls the get hint boolean using the specified name
-        /// </summary>
-        /// <param name="name">The name</param>
-        /// <param name="defaultValue">The default value</param>
-        /// <returns>The sdl bool</returns>
-        public static  SdlBool SDL_GetHintBoolean(
-            string name,
-            SdlBool defaultValue
-        )
-        {
-            int utf8NameBufSize = Utf8Size(name);
-            byte[] utf8Name = new byte[utf8NameBufSize];
-            return INTERNAL_SDL_GetHintBoolean(
-                Utf8Encode(name, utf8Name, utf8NameBufSize),
-                defaultValue
-            );
-        }
-
-        /// <summary>
-        ///     Sdls the clear error
-        /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_ClearError();
-
-        /// <summary>
-        ///     Internals the sdl get error
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetError", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GetError();
-
-        /// <summary>
-        ///     Sdls the get error
-        /// </summary>
-        /// <returns>The string</returns>
-        public static string SDL_GetError() => UTF8_ToManaged(INTERNAL_SDL_GetError());
-
-        
-        /// <summary>
-        ///     Internals the sdl set error using the specified fmt and arglist
-        /// </summary>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SetError", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_SetError(byte[] fmtAndArglist);
-
-        /// <summary>
-        ///     Sdls the set error using the specified fmt and arglist
-        /// </summary>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_SetError(string fmtAndArglist)
-        {
-            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
-            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
-            INTERNAL_SDL_SetError(
-                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
-            );
-        }
-
-        
-        /// <summary>
-        ///     Sdls the get error msg using the specified errstr
-        /// </summary>
-        /// <param name="errstr">The errstr</param>
-        /// <param name="maxlength">The maxlength</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GetErrorMsg(IntPtr errstr, int maxlength);
-
-
-        
-        /// <summary>
-        ///     The sdl logoutputfunction
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void SdlLogOutputFunction(
-            IntPtr userdata,
-            int category,
-            SdlLogPriority priority,
-            IntPtr message
-        );
-
-        
-        /// <summary>
-        ///     Internals the sdl log using the specified fmt and arglist
-        /// </summary>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_Log", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_Log(byte[] fmtAndArglist);
-
-        /// <summary>
-        ///     Sdls the log using the specified fmt and arglist
-        /// </summary>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_Log(string fmtAndArglist)
-        {
-            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
-            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
-            INTERNAL_SDL_Log(
-                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
-            );
-        }
-
-        
-        /// <summary>
-        ///     Internals the sdl log verbose using the specified category
-        /// </summary>
-        /// <param name="category">The category</param>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_LogVerbose", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_LogVerbose(
-            int category,
-            byte[] fmtAndArglist
-        );
-
-        /// <summary>
-        ///     Sdls the log verbose using the specified category
-        /// </summary>
-        /// <param name="category">The category</param>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_LogVerbose(
-            int category,
-            string fmtAndArglist
-        )
-        {
-            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
-            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
-            INTERNAL_SDL_LogVerbose(
-                category,
-                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
-            );
-        }
-
-        
-        /// <summary>
-        ///     Internals the sdl log debug using the specified category
-        /// </summary>
-        /// <param name="category">The category</param>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_LogDebug", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_LogDebug(
-            int category,
-            byte[] fmtAndArglist
-        );
-
-        /// <summary>
-        ///     Sdls the log debug using the specified category
-        /// </summary>
-        /// <param name="category">The category</param>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_LogDebug(
-            int category,
-            string fmtAndArglist
-        )
-        {
-            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
-            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
-            INTERNAL_SDL_LogDebug(
-                category,
-                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
-            );
-        }
-
-        
-        /// <summary>
-        ///     Internals the sdl log info using the specified category
-        /// </summary>
-        /// <param name="category">The category</param>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_LogInfo", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_LogInfo(
-            int category,
-            byte[] fmtAndArglist
-        );
-
-        /// <summary>
-        ///     Sdls the log info using the specified category
-        /// </summary>
-        /// <param name="category">The category</param>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_LogInfo(
-            int category,
-            string fmtAndArglist
-        )
-        {
-            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
-            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
-            INTERNAL_SDL_LogInfo(
-                category,
-                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
-            );
-        }
-
-        
-        /// <summary>
-        ///     Internals the sdl log warn using the specified category
-        /// </summary>
-        /// <param name="category">The category</param>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_LogWarn", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_LogWarn(
-            int category,
-            byte[] fmtAndArglist
-        );
-
-        /// <summary>
-        ///     Sdls the log warn using the specified category
-        /// </summary>
-        /// <param name="category">The category</param>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_LogWarn(
-            int category,
-            string fmtAndArglist
-        )
-        {
-            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
-            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
-            INTERNAL_SDL_LogWarn(
-                category,
-                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
-            );
-        }
-
-        
-        /// <summary>
-        ///     Internals the sdl log error using the specified category
-        /// </summary>
-        /// <param name="category">The category</param>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_LogError", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_LogError(
-            int category,
-            byte[] fmtAndArglist
-        );
-
-        /// <summary>
-        ///     Sdls the log error using the specified category
-        /// </summary>
-        /// <param name="category">The category</param>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_LogError(
-            int category,
-            string fmtAndArglist
-        )
-        {
-            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
-            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
-            INTERNAL_SDL_LogError(
-                category,
-                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
-            );
-        }
-
-        
-        /// <summary>
-        ///     Internals the sdl log critical using the specified category
-        /// </summary>
-        /// <param name="category">The category</param>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_LogCritical", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_LogCritical(
-            int category,
-            byte[] fmtAndArglist
-        );
-
-        /// <summary>
-        ///     Sdls the log critical using the specified category
-        /// </summary>
-        /// <param name="category">The category</param>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_LogCritical(
-            int category,
-            string fmtAndArglist
-        )
-        {
-            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
-            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
-            INTERNAL_SDL_LogCritical(
-                category,
-                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
-            );
-        }
-
-        
-        /// <summary>
-        ///     Internals the sdl log message using the specified category
-        /// </summary>
-        /// <param name="category">The category</param>
-        /// <param name="priority">The priority</param>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_LogMessage", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_LogMessage(
-            int category,
-            SdlLogPriority priority,
-            byte[] fmtAndArglist
-        );
-
-        /// <summary>
-        ///     Sdls the log message using the specified category
-        /// </summary>
-        /// <param name="category">The category</param>
-        /// <param name="priority">The priority</param>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_LogMessage(
-            int category,
-            SdlLogPriority priority,
-            string fmtAndArglist
-        )
-        {
-            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
-            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
-            INTERNAL_SDL_LogMessage(
-                category,
-                priority,
-                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
-            );
-        }
-
-        
-        /// <summary>
-        ///     Internals the sdl log message v using the specified category
-        /// </summary>
-        /// <param name="category">The category</param>
-        /// <param name="priority">The priority</param>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_LogMessageV", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_LogMessageV(
-            int category,
-            SdlLogPriority priority,
-            byte[] fmtAndArglist
-        );
-
-        /// <summary>
-        ///     Sdls the log message v using the specified category
-        /// </summary>
-        /// <param name="category">The category</param>
-        /// <param name="priority">The priority</param>
-        /// <param name="fmtAndArglist">The fmt and arglist</param>
-        public static  void SDL_LogMessageV(
-            int category,
-            SdlLogPriority priority,
-            string fmtAndArglist
-        )
-        {
-            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
-            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
-            INTERNAL_SDL_LogMessageV(
-                category,
-                priority,
-                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
-            );
-        }
-
-        /// <summary>
-        ///     Sdls the log get priority using the specified category
-        /// </summary>
-        /// <param name="category">The category</param>
-        /// <returns>The sdl log priority</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlLogPriority SDL_LogGetPriority(
-            int category
-        );
-
-        /// <summary>
-        ///     Sdls the log set priority using the specified category
-        /// </summary>
-        /// <param name="category">The category</param>
-        /// <param name="priority">The priority</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_LogSetPriority(
-            int category,
-            SdlLogPriority priority
-        );
-
-        /// <summary>
-        ///     Sdls the log set all priority using the specified priority
-        /// </summary>
-        /// <param name="priority">The priority</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_LogSetAllPriority(
-            SdlLogPriority priority
-        );
-
-        /// <summary>
-        ///     Sdls the log reset priorities
-        /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_LogResetPriorities();
-
-        
-        /// <summary>
-        ///     Sdls the log get output function using the specified callback
-        /// </summary>
-        /// <param name="callback">The callback</param>
-        /// <param name="userdata">The userdata</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        private static extern void SDL_LogGetOutputFunction(
-            out IntPtr callback,
-            out IntPtr userdata
-        );
-
-        /// <summary>
-        ///     Sdls the log get output function using the specified callback
-        /// </summary>
-        /// <param name="callback">The callback</param>
-        /// <param name="userdata">The userdata</param>
-        public static void SDL_LogGetOutputFunction(
-            out SdlLogOutputFunction callback,
-            out IntPtr userdata
-        )
-        {
-            IntPtr result = IntPtr.Zero;
-            SDL_LogGetOutputFunction(
-                out result,
-                out userdata
-            );
-            if (result != IntPtr.Zero)
-            {
-                callback = (SdlLogOutputFunction) Marshal.GetDelegateForFunctionPointer(
-                    result,
-                    typeof(SdlLogOutputFunction)
-                );
-            }
-            else
-            {
-                callback = null;
-            }
-        }
-
-        
-        /// <summary>
-        ///     Sdls the log set output function using the specified callback
-        /// </summary>
-        /// <param name="callback">The callback</param>
-        /// <param name="userdata">The userdata</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_LogSetOutputFunction(
-            SdlLogOutputFunction callback,
-            IntPtr userdata
-        );
-
-        /// <summary>
-        ///     Internals the sdl show message box using the specified messageboxdata
-        /// </summary>
-        /// <param name="messageboxdata">The messageboxdata</param>
-        /// <param name="buttonid">The buttonid</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_ShowMessageBox", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int INTERNAL_SDL_ShowMessageBox([In] ref InternalSdlMessageBoxData messageboxdata, out int buttonid);
-
-        
-        /// <summary>
-        ///     Internals the alloc utf 8 using the specified str
-        /// </summary>
-        /// <param name="str">The str</param>
-        /// <returns>The mem</returns>
-        private static IntPtr INTERNAL_AllocUTF8(string str)
-        {
-            if (string.IsNullOrEmpty(str))
-            {
-                return IntPtr.Zero;
-            }
-
-            byte[] bytes = Encoding.UTF8.GetBytes(str + '\0');
-            IntPtr mem = SDL_malloc(bytes.Length);
-            Marshal.Copy(bytes, 0, mem, bytes.Length);
-            return mem;
-        }
-
-        /// <summary>
-        ///     Sdls the show message box using the specified messageboxdata
-        /// </summary>
-        /// <param name="messageboxdata">The messageboxdata</param>
-        /// <param name="buttonid">The buttonid</param>
-        /// <returns>The result</returns>
-        public static int SDL_ShowMessageBox(ref SdlMessageBoxData messageboxdata, out int buttonid)
-        {
-            InternalSdlMessageBoxData data = new InternalSdlMessageBoxData
-            {
-                flags = messageboxdata.flags,
-                window = messageboxdata.window,
-                title = INTERNAL_AllocUTF8(messageboxdata.title),
-                message = INTERNAL_AllocUTF8(messageboxdata.message),
-                numbuttons = messageboxdata.numbuttons
-            };
-
-            InternalSdlMessageBoxButtonData[] buttons = new InternalSdlMessageBoxButtonData[messageboxdata.numbuttons];
-            IntPtr buttonsPtr = IntPtr.Zero;
-
-            try
-            {
-                for (int i = 0; i < messageboxdata.numbuttons; i++)
-                {
-                    buttons[i] = new InternalSdlMessageBoxButtonData
-                    {
-                        flags = messageboxdata.buttons[i].flags,
-                        buttonid = messageboxdata.buttons[i].buttonid,
-                        text = INTERNAL_AllocUTF8(messageboxdata.buttons[i].text)
-                    };
-                }
-
-                buttonsPtr = Marshal.AllocHGlobal(buttons.Length * Marshal.SizeOf<InternalSdlMessageBoxButtonData>());
-                for (int i = 0; i < buttons.Length; i++)
-                {
-                    IntPtr buttonPtr = buttonsPtr + (i * Marshal.SizeOf<InternalSdlMessageBoxButtonData>());
-                    Marshal.StructureToPtr(buttons[i], buttonPtr, false);
-                }
-
-                data.buttons = buttonsPtr;
-
-                IntPtr colorSchemePtr = IntPtr.Zero;
-                if (messageboxdata.colorScheme != null)
-                {
-                    colorSchemePtr = Marshal.AllocHGlobal(Marshal.SizeOf<SdlMessageBoxColorScheme>());
-                    Marshal.StructureToPtr(messageboxdata.colorScheme.Value, colorSchemePtr, false);
-                }
-
-                int result = INTERNAL_SDL_ShowMessageBox(ref data, out buttonid);
-
-                for (int i = 0; i < messageboxdata.numbuttons; i++)
-                {
-                    SDL_free(buttons[i].text);
-                }
-
-                SDL_free(data.message);
-                SDL_free(data.title);
-
-                if (colorSchemePtr != IntPtr.Zero)
-                {
-                    Marshal.DestroyStructure<SdlMessageBoxColorScheme>(colorSchemePtr);
-                    Marshal.FreeHGlobal(colorSchemePtr);
-                }
-
-                return result;
-            }
-            finally
-            {
-                if (buttonsPtr != IntPtr.Zero)
-                {
-                    Marshal.FreeHGlobal(buttonsPtr);
-                }
-            }
-        }
-
-
-        
-        /// <summary>
-        ///     Internals the sdl show simple message box using the specified flags
-        /// </summary>
-        /// <param name="flags">The flags</param>
-        /// <param name="title">The title</param>
-        /// <param name="message">The message</param>
-        /// <param name="window">The window</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_ShowSimpleMessageBox", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_SDL_ShowSimpleMessageBox(
-            SdlMessageBoxFlags flags,
-            byte[] title,
-            byte[] message,
-            IntPtr window
-        );
-
-        /// <summary>
-        ///     Sdls the show simple message box using the specified flags
-        /// </summary>
-        /// <param name="flags">The flags</param>
-        /// <param name="title">The title</param>
-        /// <param name="message">The message</param>
-        /// <param name="window">The window</param>
-        /// <returns>The int</returns>
-        public static  int SDL_ShowSimpleMessageBox(
-            SdlMessageBoxFlags flags,
-            string title,
-            string message,
-            IntPtr window
-        )
-        {
-            int utf8TitleBufSize = Utf8Size(title);
-            byte[] utf8Title = new byte[utf8TitleBufSize];
-
-            int utf8MessageBufSize = Utf8Size(message);
-            byte[] utf8Message = new byte[utf8MessageBufSize];
-
-            return INTERNAL_SDL_ShowSimpleMessageBox(
-                flags,
-                Utf8Encode(title, utf8Title, utf8TitleBufSize),
-                Utf8Encode(message, utf8Message, utf8MessageBufSize),
-                window
-            );
-        }
-        
-
 
         /// <summary>
         ///     The sdl major version
@@ -2218,358 +1057,6 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         public const int SdlPatchlevel = 18;
 
-        /// <summary>
-        ///     The sdl patchlevel
-        /// </summary>
-        public static readonly int SdlCompiledversion = SDL_VERSIONNUM(
-            SdlMajorVersion,
-            SdlMinorVersion,
-            SdlPatchlevel
-        );
-        
-        /// <summary>
-        ///     Sdls the version using the specified x
-        /// </summary>
-        /// <param name="x">The </param>
-        public static void SDL_VERSION(out SdlVersion x)
-        {
-            x.major = SdlMajorVersion;
-            x.minor = SdlMinorVersion;
-            x.patch = SdlPatchlevel;
-        }
-
-        /// <summary>
-        ///     Sdls the versionnum using the specified x
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="z">The </param>
-        /// <returns>The int</returns>
-        public static int SDL_VERSIONNUM(int x, int y, int z) => x * 1000 + y * 100 + z;
-
-        /// <summary>
-        ///     Describes whether sdl version atleast
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="z">The </param>
-        /// <returns>The bool</returns>
-        public static bool SDL_VERSION_ATLEAST(int x, int y, int z) => SdlCompiledversion >= SDL_VERSIONNUM(x, y, z);
-
-        /// <summary>
-        ///     Sdls the get version using the specified ver
-        /// </summary>
-        /// <param name="ver">The ver</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_GetVersion(out SdlVersion ver);
-
-        /// <summary>
-        ///     Internals the sdl get revision
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetRevision", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GetRevision();
-
-        /// <summary>
-        ///     Sdls the get revision
-        /// </summary>
-        /// <returns>The string</returns>
-        public static string SDL_GetRevision() => UTF8_ToManaged(INTERNAL_SDL_GetRevision());
-
-        /// <summary>
-        ///     Sdls the get revision number
-        /// </summary>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetRevisionNumber();
-
-        /// <summary>
-        ///     The sdl glprofile enum
-        /// </summary>
-        [Flags]
-        public enum SdlGLprofile
-        {
-            /// <summary>
-            ///     The sdl gl context profile core sdl glprofile
-            /// </summary>
-            SdlGlContextProfileCore = 0x0001,
-
-            /// <summary>
-            ///     The sdl gl context profile compatibility sdl glprofile
-            /// </summary>
-            SdlGlContextProfileCompatibility = 0x0002,
-
-            /// <summary>
-            ///     The sdl gl context profile es sdl glprofile
-            /// </summary>
-            SdlGlContextProfileEs = 0x0004
-        }
-
-        /// <summary>
-        ///     The sdl glcontext enum
-        /// </summary>
-        [Flags]
-        public enum SdlGLcontext
-        {
-            /// <summary>
-            ///     The sdl gl context debug flag sdl glcontext
-            /// </summary>
-            SdlGlContextDebugFlag = 0x0001,
-
-            /// <summary>
-            ///     The sdl gl context forward compatible flag sdl glcontext
-            /// </summary>
-            SdlGlContextForwardCompatibleFlag = 0x0002,
-
-            /// <summary>
-            ///     The sdl gl context robust access flag sdl glcontext
-            /// </summary>
-            SdlGlContextRobustAccessFlag = 0x0004,
-
-            /// <summary>
-            ///     The sdl gl context reset isolation flag sdl glcontext
-            /// </summary>
-            SdlGlContextResetIsolationFlag = 0x0008
-        }
-
-        /// <summary>
-        ///     The sdl displayorientation enum
-        /// </summary>
-        public enum SdlDisplayOrientation
-        {
-            /// <summary>
-            ///     The sdl orientation unknown sdl displayorientation
-            /// </summary>
-            SdlOrientationUnknown,
-
-            /// <summary>
-            ///     The sdl orientation landscape sdl displayorientation
-            /// </summary>
-            SdlOrientationLandscape,
-
-            /// <summary>
-            ///     The sdl orientation landscape flipped sdl displayorientation
-            /// </summary>
-            SdlOrientationLandscapeFlipped,
-
-            /// <summary>
-            ///     The sdl orientation portrait sdl displayorientation
-            /// </summary>
-            SdlOrientationPortrait,
-
-            /// <summary>
-            ///     The sdl orientation portrait flipped sdl displayorientation
-            /// </summary>
-            SdlOrientationPortraitFlipped
-        }
-
-        
-        /// <summary>
-        ///     The sdl flashoperation enum
-        /// </summary>
-        public enum SdlFlashOperation
-        {
-            /// <summary>
-            ///     The sdl flash cancel sdl flashoperation
-            /// </summary>
-            SdlFlashCancel,
-
-            /// <summary>
-            ///     The sdl flash briefly sdl flashoperation
-            /// </summary>
-            SdlFlashBriefly,
-
-            /// <summary>
-            ///     The sdl flash until focused sdl flashoperation
-            /// </summary>
-            SdlFlashUntilFocused
-        }
-
-        /// <summary>
-        ///     The sdl windowflags enum
-        /// </summary>
-        [Flags]
-        public enum SdlWindowFlags : uint
-        {
-            /// <summary>
-            ///     The sdl window fullscreen sdl windowflags
-            /// </summary>
-            SdlWindowFullscreen = 0x00000001,
-
-            /// <summary>
-            ///     The sdl window opengl sdl windowflags
-            /// </summary>
-            SdlWindowOpengl = 0x00000002,
-
-            /// <summary>
-            ///     The sdl window shown sdl windowflags
-            /// </summary>
-            SdlWindowShown = 0x00000004,
-
-            /// <summary>
-            ///     The sdl window hidden sdl windowflags
-            /// </summary>
-            SdlWindowHidden = 0x00000008,
-
-            /// <summary>
-            ///     The sdl window borderless sdl windowflags
-            /// </summary>
-            SdlWindowBorderless = 0x00000010,
-
-            /// <summary>
-            ///     The sdl window resizable sdl windowflags
-            /// </summary>
-            SdlWindowResizable = 0x00000020,
-
-            /// <summary>
-            ///     The sdl window minimized sdl windowflags
-            /// </summary>
-            SdlWindowMinimized = 0x00000040,
-
-            /// <summary>
-            ///     The sdl window maximized sdl windowflags
-            /// </summary>
-            SdlWindowMaximized = 0x00000080,
-
-            /// <summary>
-            ///     The sdl window mouse grabbed sdl windowflags
-            /// </summary>
-            SdlWindowMouseGrabbed = 0x00000100,
-
-            /// <summary>
-            ///     The sdl window input focus sdl windowflags
-            /// </summary>
-            SdlWindowInputFocus = 0x00000200,
-
-            /// <summary>
-            ///     The sdl window mouse focus sdl windowflags
-            /// </summary>
-            SdlWindowMouseFocus = 0x00000400,
-
-            /// <summary>
-            ///     The sdl window fullscreen desktop sdl windowflags
-            /// </summary>
-            SdlWindowFullscreenDesktop =
-                SdlWindowFullscreen | 0x00001000,
-
-            /// <summary>
-            ///     The sdl window foreign sdl windowflags
-            /// </summary>
-            SdlWindowForeign = 0x00000800,
-
-            /// <summary>
-            ///     The sdl window allow highdpi sdl windowflags
-            /// </summary>
-            SdlWindowAllowHighdpi = 0x00002000, 
-
-            /// <summary>
-            ///     The sdl window mouse capture sdl windowflags
-            /// </summary>
-            SdlWindowMouseCapture = 0x00004000, 
-
-            /// <summary>
-            ///     The sdl window always on top sdl windowflags
-            /// </summary>
-            SdlWindowAlwaysOnTop = 0x00008000, 
-
-            /// <summary>
-            ///     The sdl window skip taskbar sdl windowflags
-            /// </summary>
-            SdlWindowSkipTaskbar = 0x00010000, 
-
-            /// <summary>
-            ///     The sdl window utility sdl windowflags
-            /// </summary>
-            SdlWindowUtility = 0x00020000, 
-
-            /// <summary>
-            ///     The sdl window tooltip sdl windowflags
-            /// </summary>
-            SdlWindowTooltip = 0x00040000, 
-
-            /// <summary>
-            ///     The sdl window popup menu sdl windowflags
-            /// </summary>
-            SdlWindowPopupMenu = 0x00080000, 
-
-            /// <summary>
-            ///     The sdl window keyboard grabbed sdl windowflags
-            /// </summary>
-            SdlWindowKeyboardGrabbed = 0x00100000, 
-
-            /// <summary>
-            ///     The sdl window vulkan sdl windowflags
-            /// </summary>
-            SdlWindowVulkan = 0x10000000, 
-
-            /// <summary>
-            ///     The sdl window metal sdl windowflags
-            /// </summary>
-            SdlWindowMetal = 0x2000000, 
-
-            /// <summary>
-            ///     The sdl window input grabbed sdl windowflags
-            /// </summary>
-            SdlWindowInputGrabbed =
-                SdlWindowMouseGrabbed
-        }
-
-        
-        /// <summary>
-        ///     The sdl hittestresult enum
-        /// </summary>
-        public enum SdlHitTestResult
-        {
-            /// <summary>
-            ///     The sdl hittest normal sdl hittestresult
-            /// </summary>
-            SdlHittestNormal, 
-
-            /// <summary>
-            ///     The sdl hittest draggable sdl hittestresult
-            /// </summary>
-            SdlHittestDraggable, 
-
-            /// <summary>
-            ///     The sdl hittest resize topleft sdl hittestresult
-            /// </summary>
-            SdlHittestResizeTopleft,
-
-            /// <summary>
-            ///     The sdl hittest resize top sdl hittestresult
-            /// </summary>
-            SdlHittestResizeTop,
-
-            /// <summary>
-            ///     The sdl hittest resize topright sdl hittestresult
-            /// </summary>
-            SdlHittestResizeTopright,
-
-            /// <summary>
-            ///     The sdl hittest resize right sdl hittestresult
-            /// </summary>
-            SdlHittestResizeRight,
-
-            /// <summary>
-            ///     The sdl hittest resize bottomright sdl hittestresult
-            /// </summary>
-            SdlHittestResizeBottomright,
-
-            /// <summary>
-            ///     The sdl hittest resize bottom sdl hittestresult
-            /// </summary>
-            SdlHittestResizeBottom,
-
-            /// <summary>
-            ///     The sdl hittest resize bottomleft sdl hittestresult
-            /// </summary>
-            SdlHittestResizeBottomleft,
-
-            /// <summary>
-            ///     The sdl hittest resize left sdl hittestresult
-            /// </summary>
-            SdlHittestResizeLeft
-        }
 
         /// <summary>
         ///     The sdl windowpos undefined mask
@@ -2592,3613 +1079,403 @@ namespace Alis.Core.Graphic.SDL
         public const int SdlWindowposCentered = 0x2FFF0000;
 
         /// <summary>
-        ///     Sdls the windowpos undefined display using the specified x
+        ///     The sdl swsurface
         /// </summary>
-        /// <param name="x">The </param>
-        /// <returns>The int</returns>
-        public static int SDL_WINDOWPOS_UNDEFINED_DISPLAY(int x) => SdlWindowposUndefinedMask | x;
+        public const uint SdlSwsurface = 0x00000000;
 
         /// <summary>
-        ///     Describes whether sdl windowpos isundefined
+        ///     The sdl prealloc
         /// </summary>
-        /// <param name="x">The </param>
-        /// <returns>The bool</returns>
-        public static bool SDL_WINDOWPOS_ISUNDEFINED(int x) => (x & 0xFFFF0000) == SdlWindowposUndefinedMask;
+        public const uint SdlPrealloc = 0x00000001;
 
         /// <summary>
-        ///     Sdls the windowpos centered display using the specified x
+        ///     The sdl rleaccel
         /// </summary>
-        /// <param name="x">The </param>
-        /// <returns>The int</returns>
-        public static int SDL_WINDOWPOS_CENTERED_DISPLAY(int x) => SdlWindowposCenteredMask | x;
+        public const uint SdlRleaccel = 0x00000002;
 
         /// <summary>
-        ///     Describes whether sdl windowpos iscentered
+        ///     The sdl dontfree
         /// </summary>
-        /// <param name="x">The </param>
-        /// <returns>The bool</returns>
-        public static bool SDL_WINDOWPOS_ISCENTERED(int x) => (x & 0xFFFF0000) == SdlWindowposCenteredMask;
+        public const uint SdlDontfree = 0x00000004;
 
-        
-        /// <summary>
-        ///     The sdl hittest
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate SdlHitTestResult SdlHitTest(IntPtr win, IntPtr area, IntPtr data);
-
-        
-        /// <summary>
-        ///     Internals the sdl create window using the specified title
-        /// </summary>
-        /// <param name="title">The title</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_CreateWindow", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  IntPtr INTERNAL_SDL_CreateWindow(
-            byte[] title,
-            int x,
-            int y,
-            int w,
-            int h,
-            SdlWindowFlags flags
-        );
-
-        /// <summary>
-        ///     Sdls the create window using the specified title
-        /// </summary>
-        /// <param name="title">The title</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The int ptr</returns>
-        public static  IntPtr SDL_CreateWindow(
-            string title,
-            int x,
-            int y,
-            int w,
-            int h,
-            SdlWindowFlags flags
-        )
-        {
-            int utf8TitleBufSize = Utf8Size(title);
-            byte[] utf8Title = new byte[utf8TitleBufSize];
-            return INTERNAL_SDL_CreateWindow(
-                Utf8Encode(title, utf8Title, utf8TitleBufSize),
-                x, y, w, h,
-                flags
-            );
-        }
-
-        
-        /// <summary>
-        ///     Sdls the create window and renderer using the specified width
-        /// </summary>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="windowFlags">The window flags</param>
-        /// <param name="window">The window</param>
-        /// <param name="renderer">The renderer</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_CreateWindowAndRenderer(
-            int width,
-            int height,
-            SdlWindowFlags windowFlags,
-            out IntPtr window,
-            out IntPtr renderer
-        );
-
-        
-        /// <summary>
-        ///     Sdls the create window from using the specified data
-        /// </summary>
-        /// <param name="data">The data</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_CreateWindowFrom(IntPtr data);
-
-        
-        /// <summary>
-        ///     Sdls the destroy window using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_DestroyWindow(IntPtr window);
-
-        /// <summary>
-        ///     Sdls the disable screen saver
-        /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_DisableScreenSaver();
-
-        /// <summary>
-        ///     Sdls the enable screen saver
-        /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_EnableScreenSaver();
-
-        
-        /// <summary>
-        ///     Sdls the get closest display mode using the specified display index
-        /// </summary>
-        /// <param name="displayIndex">The display index</param>
-        /// <param name="mode">The mode</param>
-        /// <param name="closest">The closest</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GetClosestDisplayMode(
-            int displayIndex,
-            ref SdlDisplayMode mode,
-            out SdlDisplayMode closest
-        );
-
-        /// <summary>
-        ///     Sdls the get current display mode using the specified display index
-        /// </summary>
-        /// <param name="displayIndex">The display index</param>
-        /// <param name="mode">The mode</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetCurrentDisplayMode(
-            int displayIndex,
-            out SdlDisplayMode mode
-        );
-
-        /// <summary>
-        ///     Internals the sdl get current video driver
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetCurrentVideoDriver", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GetCurrentVideoDriver();
-
-        /// <summary>
-        ///     Sdls the get current video driver
-        /// </summary>
-        /// <returns>The string</returns>
-        public static string SDL_GetCurrentVideoDriver() => UTF8_ToManaged(INTERNAL_SDL_GetCurrentVideoDriver());
-
-        /// <summary>
-        ///     Sdls the get desktop display mode using the specified display index
-        /// </summary>
-        /// <param name="displayIndex">The display index</param>
-        /// <param name="mode">The mode</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetDesktopDisplayMode(
-            int displayIndex,
-            out SdlDisplayMode mode
-        );
-
-        /// <summary>
-        ///     Internals the sdl get display name using the specified index
-        /// </summary>
-        /// <param name="index">The index</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetDisplayName", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GetDisplayName(int index);
-
-        /// <summary>
-        ///     Sdls the get display name using the specified index
-        /// </summary>
-        /// <param name="index">The index</param>
-        /// <returns>The string</returns>
-        public static string SDL_GetDisplayName(int index) => UTF8_ToManaged(INTERNAL_SDL_GetDisplayName(index));
-
-        /// <summary>
-        ///     Sdls the get display bounds using the specified display index
-        /// </summary>
-        /// <param name="displayIndex">The display index</param>
-        /// <param name="rect">The rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetDisplayBounds(
-            int displayIndex,
-            out SdlRect rect
-        );
-
-        
-        /// <summary>
-        ///     Sdls the get display dpi using the specified display index
-        /// </summary>
-        /// <param name="displayIndex">The display index</param>
-        /// <param name="ddpi">The ddpi</param>
-        /// <param name="hdpi">The hdpi</param>
-        /// <param name="vdpi">The vdpi</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetDisplayDPI(
-            int displayIndex,
-            out float ddpi,
-            out float hdpi,
-            out float vdpi
-        );
-
-        
-        /// <summary>
-        ///     Sdls the get display orientation using the specified display index
-        /// </summary>
-        /// <param name="displayIndex">The display index</param>
-        /// <returns>The sdl display orientation</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlDisplayOrientation SDL_GetDisplayOrientation(
-            int displayIndex
-        );
-
-        /// <summary>
-        ///     Sdls the get display mode using the specified display index
-        /// </summary>
-        /// <param name="displayIndex">The display index</param>
-        /// <param name="modeIndex">The mode index</param>
-        /// <param name="mode">The mode</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetDisplayMode(
-            int displayIndex,
-            int modeIndex,
-            out SdlDisplayMode mode
-        );
-
-        
-        /// <summary>
-        ///     Sdls the get display usable bounds using the specified display index
-        /// </summary>
-        /// <param name="displayIndex">The display index</param>
-        /// <param name="rect">The rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetDisplayUsableBounds(
-            int displayIndex,
-            out SdlRect rect
-        );
-
-        /// <summary>
-        ///     Sdls the get num display modes using the specified display index
-        /// </summary>
-        /// <param name="displayIndex">The display index</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetNumDisplayModes(
-            int displayIndex
-        );
-
-        /// <summary>
-        ///     Sdls the get num video displays
-        /// </summary>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetNumVideoDisplays();
-
-        /// <summary>
-        ///     Sdls the get num video drivers
-        /// </summary>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetNumVideoDrivers();
-
-        /// <summary>
-        ///     Internals the sdl get video driver using the specified index
-        /// </summary>
-        /// <param name="index">The index</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetVideoDriver", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GetVideoDriver(
-            int index
-        );
-
-        /// <summary>
-        ///     Sdls the get video driver using the specified index
-        /// </summary>
-        /// <param name="index">The index</param>
-        /// <returns>The string</returns>
-        public static string SDL_GetVideoDriver(int index) => UTF8_ToManaged(INTERNAL_SDL_GetVideoDriver(index));
-
-        
-        /// <summary>
-        ///     Sdls the get window brightness using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The float</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern float SDL_GetWindowBrightness(
-            IntPtr window
-        );
-
-        
-        /// <summary>
-        ///     Sdls the set window opacity using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="opacity">The opacity</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetWindowOpacity(
-            IntPtr window,
-            float opacity
-        );
-
-        
-        /// <summary>
-        ///     Sdls the get window opacity using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="outOpacity">The out opacity</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetWindowOpacity(
-            IntPtr window,
-            out float outOpacity
-        );
-
-        
-        /// <summary>
-        ///     Sdls the set window modal for using the specified modal window
-        /// </summary>
-        /// <param name="modalWindow">The modal window</param>
-        /// <param name="parentWindow">The parent window</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetWindowModalFor(
-            IntPtr modalWindow,
-            IntPtr parentWindow
-        );
-
-        
-        /// <summary>
-        ///     Sdls the set window input focus using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetWindowInputFocus(IntPtr window);
-
-        
-        /// <summary>
-        ///     Internals the sdl get window data using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="name">The name</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowData", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  IntPtr INTERNAL_SDL_GetWindowData(
-            IntPtr window,
-            byte[] name
-        );
-
-        /// <summary>
-        ///     Sdls the get window data using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="name">The name</param>
-        /// <returns>The int ptr</returns>
-        public static  IntPtr SDL_GetWindowData(
-            IntPtr window,
-            string name
-        )
-        {
-            int utf8NameBufSize = Utf8Size(name);
-            byte[] utf8Name = new byte[utf8NameBufSize];
-            return INTERNAL_SDL_GetWindowData(
-                window,
-                Utf8Encode(name, utf8Name, utf8NameBufSize)
-            );
-        }
-
-        
-        /// <summary>
-        ///     Sdls the get window display index using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetWindowDisplayIndex(
-            IntPtr window
-        );
-
-        
-        /// <summary>
-        ///     Sdls the get window display mode using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="mode">The mode</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetWindowDisplayMode(
-            IntPtr window,
-            out SdlDisplayMode mode
-        );
-
-        
-        /// <summary>
-        ///     Sdls the get window icc profile using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="mode">The mode</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GetWindowICCProfile(
-            IntPtr window,
-            out IntPtr mode
-        );
 
-        
-        /// <summary>
-        ///     Sdls the get window flags using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_GetWindowFlags(IntPtr window);
-
-        
-        /// <summary>
-        ///     Sdls the get window from id using the specified id
-        /// </summary>
-        /// <param name="id">The id</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GetWindowFromID(uint id);
-
-        
-        /// <summary>
-        ///     Sdls the get window gamma ramp using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="red">The red</param>
-        /// <param name="green">The green</param>
-        /// <param name="blue">The blue</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetWindowGammaRamp(
-            IntPtr window,
-            [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)]
-            ushort[] red,
-            [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)]
-            ushort[] green,
-            [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)]
-            ushort[] blue
-        );
-
-        
-        /// <summary>
-        ///     Sdls the get window grab using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_GetWindowGrab(IntPtr window);
-
-        
-        /// <summary>
-        ///     Sdls the get window keyboard grab using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_GetWindowKeyboardGrab(IntPtr window);
-
-        
-        /// <summary>
-        ///     Sdls the get window mouse grab using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_GetWindowMouseGrab(IntPtr window);
-
-        
-        /// <summary>
-        ///     Sdls the get window id using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_GetWindowID(IntPtr window);
-
-        
-        /// <summary>
-        ///     Sdls the get window pixel format using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_GetWindowPixelFormat(
-            IntPtr window
-        );
-
-        
-        /// <summary>
-        ///     Sdls the get window maximum size using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="maxW">The max</param>
-        /// <param name="maxH">The max</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_GetWindowMaximumSize(
-            IntPtr window,
-            out int maxW,
-            out int maxH
-        );
-
-        
-        /// <summary>
-        ///     Sdls the get window minimum size using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="minW">The min</param>
-        /// <param name="minH">The min</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_GetWindowMinimumSize(
-            IntPtr window,
-            out int minW,
-            out int minH
-        );
-
-        
-        /// <summary>
-        ///     Sdls the get window position using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_GetWindowPosition(
-            IntPtr window,
-            out int x,
-            out int y
-        );
-
-        
-        /// <summary>
-        ///     Sdls the get window size using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_GetWindowSize(
-            IntPtr window,
-            out int w,
-            out int h
-        );
-
-        
-        /// <summary>
-        ///     Sdls the get window surface using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GetWindowSurface(IntPtr window);
-
-        
-        /// <summary>
-        ///     Internals the sdl get window title using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowTitle", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GetWindowTitle(
-            IntPtr window
-        );
-
-        /// <summary>
-        ///     Sdls the get window title using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The string</returns>
-        public static string SDL_GetWindowTitle(IntPtr window) => UTF8_ToManaged(
-            INTERNAL_SDL_GetWindowTitle(window)
-        );
-
-        
-        /// <summary>
-        ///     Sdls the gl bind texture using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="texw">The texw</param>
-        /// <param name="texh">The texh</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GL_BindTexture(
-            IntPtr texture,
-            out float texw,
-            out float texh
-        );
-
-        
-        /// <summary>
-        ///     Sdls the gl create context using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GL_CreateContext(IntPtr window);
-
-        
-        /// <summary>
-        ///     Sdls the gl delete context using the specified context
-        /// </summary>
-        /// <param name="context">The context</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_GL_DeleteContext(IntPtr context);
-
-        /// <summary>
-        ///     Internals the sdl gl load library using the specified path
-        /// </summary>
-        /// <param name="path">The path</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GL_LoadLibrary", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_SDL_GL_LoadLibrary(byte[] path);
-
-        /// <summary>
-        ///     Sdls the gl load library using the specified path
-        /// </summary>
-        /// <param name="path">The path</param>
-        /// <returns>The result</returns>
-        public static  int SDL_GL_LoadLibrary(string path)
-        {
-            byte[] utf8Path = Utf8EncodeHeap(path);
-            int result = INTERNAL_SDL_GL_LoadLibrary(
-                utf8Path
-            );
-            return result;
-        }
-
-        
-        /// <summary>
-        ///     Sdls the gl get proc address using the specified proc
-        /// </summary>
-        /// <param name="proc">The proc</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GL_GetProcAddress(byte[] proc);
-
-        
-        /// <summary>
-        ///     Sdls the gl get proc address using the specified proc
-        /// </summary>
-        /// <param name="proc">The proc</param>
-        /// <returns>The int ptr</returns>
-        public static  IntPtr SDL_GL_GetProcAddress(string proc)
-        {
-            int utf8ProcBufSize = Utf8Size(proc);
-            byte[] utf8Proc = new byte[utf8ProcBufSize];
-            return SDL_GL_GetProcAddress(
-                Utf8Encode(proc, utf8Proc, utf8ProcBufSize)
-            );
-        }
-
         /// <summary>
-        ///     Sdls the gl unload library
+        ///     The sdl pressed
         /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_GL_UnloadLibrary();
+        public const byte SdlPressed = 1;
 
         /// <summary>
-        ///     Internals the sdl gl extension supported using the specified extension
+        ///     The sdl released
         /// </summary>
-        /// <param name="extension">The extension</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GL_ExtensionSupported", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  SdlBool INTERNAL_SDL_GL_ExtensionSupported(
-            byte[] extension
-        );
-
-        /// <summary>
-        ///     Sdls the gl extension supported using the specified extension
-        /// </summary>
-        /// <param name="extension">The extension</param>
-        /// <returns>The sdl bool</returns>
-        public static  SdlBool SDL_GL_ExtensionSupported(string extension)
-        {
-            int utf8ExtensionBufSize = Utf8Size(extension);
-            byte[] utf8Extension = new byte[utf8ExtensionBufSize];
-            return INTERNAL_SDL_GL_ExtensionSupported(
-                Utf8Encode(extension, utf8Extension, utf8ExtensionBufSize)
-            );
-        }
-
-        
-        /// <summary>
-        ///     Sdls the gl reset attributes
-        /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_GL_ResetAttributes();
-
-        /// <summary>
-        ///     Sdls the gl get attribute using the specified attr
-        /// </summary>
-        /// <param name="attr">The attr</param>
-        /// <param name="value">The value</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GL_GetAttribute(
-            SdlGLattr attr,
-            out int value
-        );
-
-        /// <summary>
-        ///     Sdls the gl get swap interval
-        /// </summary>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GL_GetSwapInterval();
+        public const byte SdlReleased = 0;
 
-        
-        /// <summary>
-        ///     Sdls the gl make current using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="context">The context</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GL_MakeCurrent(
-            IntPtr window,
-            IntPtr context
-        );
-
-        
-        /// <summary>
-        ///     Sdls the gl get current window
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GL_GetCurrentWindow();
-
-        
-        /// <summary>
-        ///     Sdls the gl get current context
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GL_GetCurrentContext();
 
-        
         /// <summary>
-        ///     Sdls the gl get drawable size using the specified window
+        ///     The sdl texteditingevent text size
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_GL_GetDrawableSize(
-            IntPtr window,
-            out int w,
-            out int h
-        );
+        public const int SdlTexteditingeventTextSize = 32;
 
         /// <summary>
-        ///     Sdls the gl set attribute using the specified attr
+        ///     The sdl textinputevent text size
         /// </summary>
-        /// <param name="attr">The attr</param>
-        /// <param name="value">The value</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GL_SetAttribute(
-            SdlGLattr attr,
-            int value
-        );
+        public const int SdlTextinputeventTextSize = 32;
 
         /// <summary>
-        ///     Sdls the gl set attribute using the specified attr
+        ///     The sdl query
         /// </summary>
-        /// <param name="attr">The attr</param>
-        /// <param name="profile">The profile</param>
-        /// <returns>The int</returns>
-        public static int SDL_GL_SetAttribute(
-            SdlGLattr attr,
-            SdlGLprofile profile
-        )
-            => SDL_GL_SetAttribute(attr, (int) profile);
+        public const int SdlQuery = -1;
 
         /// <summary>
-        ///     Sdls the gl set swap interval using the specified interval
+        ///     The sdl ignore
         /// </summary>
-        /// <param name="interval">The interval</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GL_SetSwapInterval(int interval);
+        public const int SdlIgnore = 0;
 
-        
         /// <summary>
-        ///     Sdls the gl swap window using the specified window
+        ///     The sdl disable
         /// </summary>
-        /// <param name="window">The window</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_GL_SwapWindow(IntPtr window);
+        public const int SdlDisable = 0;
 
-        
         /// <summary>
-        ///     Sdls the gl unbind texture using the specified texture
+        ///     The sdl enable
         /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GL_UnbindTexture(IntPtr texture);
+        public const int SdlEnable = 1;
 
-        
         /// <summary>
-        ///     Sdls the hide window using the specified window
+        ///     The sdlk scancode mask
         /// </summary>
-        /// <param name="window">The window</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_HideWindow(IntPtr window);
+        public const int SdlkScancodeMask = 1 << 30;
 
         /// <summary>
-        ///     Sdls the is screen saver enabled
+        ///     The sdl button left
         /// </summary>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_IsScreenSaverEnabled();
+        public const uint SdlButtonLeft = 1;
 
-        
         /// <summary>
-        ///     Sdls the maximize window using the specified window
+        ///     The sdl button middle
         /// </summary>
-        /// <param name="window">The window</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_MaximizeWindow(IntPtr window);
+        public const uint SdlButtonMiddle = 2;
 
-        
         /// <summary>
-        ///     Sdls the minimize window using the specified window
+        ///     The sdl button right
         /// </summary>
-        /// <param name="window">The window</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_MinimizeWindow(IntPtr window);
+        public const uint SdlButtonRight = 3;
 
-        
         /// <summary>
-        ///     Sdls the raise window using the specified window
+        ///     The sdl button x1
         /// </summary>
-        /// <param name="window">The window</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_RaiseWindow(IntPtr window);
+        public const uint SdlButtonX1 = 4;
 
-        
         /// <summary>
-        ///     Sdls the restore window using the specified window
+        ///     The sdl button x2
         /// </summary>
-        /// <param name="window">The window</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_RestoreWindow(IntPtr window);
+        public const uint SdlButtonX2 = 5;
 
-        
         /// <summary>
-        ///     Sdls the set window brightness using the specified window
+        ///     The max value
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="brightness">The brightness</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetWindowBrightness(
-            IntPtr window,
-            float brightness
-        );
-
-        
-        /// <summary>
-        ///     Internals the sdl set window data using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="name">The name</param>
-        /// <param name="userdata">The userdata</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowData", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  IntPtr INTERNAL_SDL_SetWindowData(
-            IntPtr window,
-            byte[] name,
-            IntPtr userdata
-        );
+        public const uint SdlTouchMouseid = uint.MaxValue;
 
-        /// <summary>
-        ///     Sdls the set window data using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="name">The name</param>
-        /// <param name="userdata">The userdata</param>
-        /// <returns>The int ptr</returns>
-        public static  IntPtr SDL_SetWindowData(
-            IntPtr window,
-            string name,
-            IntPtr userdata
-        )
-        {
-            int utf8NameBufSize = Utf8Size(name);
-            byte[] utf8Name = new byte[utf8NameBufSize];
-            return INTERNAL_SDL_SetWindowData(
-                window,
-                Utf8Encode(name, utf8Name, utf8NameBufSize),
-                userdata
-            );
-        }
-
-        
-        /// <summary>
-        ///     Sdls the set window display mode using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="mode">The mode</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetWindowDisplayMode(
-            IntPtr window,
-            ref SdlDisplayMode mode
-        );
-
-        
-        
-        /// <summary>
-        ///     Sdls the set window display mode using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="mode">The mode</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetWindowDisplayMode(
-            IntPtr window,
-            IntPtr mode
-        );
 
-        
         /// <summary>
-        ///     Sdls the set window fullscreen using the specified window
+        ///     The sdl hat centered
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetWindowFullscreen(
-            IntPtr window,
-            uint flags
-        );
-
-        
-        /// <summary>
-        ///     Sdls the set window gamma ramp using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="red">The red</param>
-        /// <param name="green">The green</param>
-        /// <param name="blue">The blue</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetWindowGammaRamp(
-            IntPtr window,
-            [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)]
-            ushort[] red,
-            [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)]
-            ushort[] green,
-            [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)]
-            ushort[] blue
-        );
+        public const byte SdlHatCentered = 0x00;
 
-        
         /// <summary>
-        ///     Sdls the set window grab using the specified window
+        ///     The sdl hat up
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="grabbed">The grabbed</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_SetWindowGrab(
-            IntPtr window,
-            SdlBool grabbed
-        );
+        public const byte SdlHatUp = 0x01;
 
-        
         /// <summary>
-        ///     Sdls the set window keyboard grab using the specified window
+        ///     The sdl hat right
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="grabbed">The grabbed</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_SetWindowKeyboardGrab(
-            IntPtr window,
-            SdlBool grabbed
-        );
+        public const byte SdlHatRight = 0x02;
 
-        
         /// <summary>
-        ///     Sdls the set window mouse grab using the specified window
+        ///     The sdl hat down
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="grabbed">The grabbed</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_SetWindowMouseGrab(
-            IntPtr window,
-            SdlBool grabbed
-        );
+        public const byte SdlHatDown = 0x04;
 
-
-        
         /// <summary>
-        ///     Sdls the set window icon using the specified window
+        ///     The sdl hat left
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="icon">The icon</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_SetWindowIcon(
-            IntPtr window,
-            IntPtr icon
-        );
-
-        
-        /// <summary>
-        ///     Sdls the set window maximum size using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="maxW">The max</param>
-        /// <param name="maxH">The max</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_SetWindowMaximumSize(
-            IntPtr window,
-            int maxW,
-            int maxH
-        );
+        public const byte SdlHatLeft = 0x08;
 
-        
-        /// <summary>
-        ///     Sdls the set window minimum size using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="minW">The min</param>
-        /// <param name="minH">The min</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_SetWindowMinimumSize(
-            IntPtr window,
-            int minW,
-            int minH
-        );
-
-        
-        /// <summary>
-        ///     Sdls the set window position using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_SetWindowPosition(
-            IntPtr window,
-            int x,
-            int y
-        );
-
-        
-        /// <summary>
-        ///     Sdls the set window size using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_SetWindowSize(
-            IntPtr window,
-            int w,
-            int h
-        );
-
-        
         /// <summary>
-        ///     Sdls the set window bordered using the specified window
+        ///     The sdl hat up
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="bordered">The bordered</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_SetWindowBordered(
-            IntPtr window,
-            SdlBool bordered
-        );
+        public const byte SdlHatRightup = SdlHatRight | SdlHatUp;
 
-        
-        /// <summary>
-        ///     Sdls the get window borders size using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="top">The top</param>
-        /// <param name="left">The left</param>
-        /// <param name="bottom">The bottom</param>
-        /// <param name="right">The right</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetWindowBordersSize(
-            IntPtr window,
-            out int top,
-            out int left,
-            out int bottom,
-            out int right
-        );
-
-        
         /// <summary>
-        ///     Sdls the set window resizable using the specified window
+        ///     The sdl hat down
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="resizable">The resizable</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_SetWindowResizable(
-            IntPtr window,
-            SdlBool resizable
-        );
+        public const byte SdlHatRightdown = SdlHatRight | SdlHatDown;
 
-        
         /// <summary>
-        ///     Sdls the set window always on top using the specified window
+        ///     The sdl hat up
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="onTop">The on top</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_SetWindowAlwaysOnTop(
-            IntPtr window,
-            SdlBool onTop
-        );
+        public const byte SdlHatLeftup = SdlHatLeft | SdlHatUp;
 
-        
         /// <summary>
-        ///     Internals the sdl set window title using the specified window
+        ///     The sdl hat down
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="title">The title</param>
-        [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowTitle", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  void INTERNAL_SDL_SetWindowTitle(
-            IntPtr window,
-            byte[] title
-        );
-
-        /// <summary>
-        ///     Sdls the set window title using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="title">The title</param>
-        public static  void SDL_SetWindowTitle(
-            IntPtr window,
-            string title
-        )
-        {
-            int utf8TitleBufSize = Utf8Size(title);
-            byte[] utf8Title = new byte[utf8TitleBufSize];
-            INTERNAL_SDL_SetWindowTitle(
-                window,
-                Utf8Encode(title, utf8Title, utf8TitleBufSize)
-            );
-        }
-
-        
-        /// <summary>
-        ///     Sdls the show window using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_ShowWindow(IntPtr window);
-
-        
-        /// <summary>
-        ///     Sdls the update window surface using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_UpdateWindowSurface(IntPtr window);
-
-        
-        /// <summary>
-        ///     Sdls the update window surface rects using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="rects">The rects</param>
-        /// <param name="numrects">The numrects</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_UpdateWindowSurfaceRects(
-            IntPtr window,
-            [In] SdlRect[] rects,
-            int numrects
-        );
+        public const byte SdlHatLeftdown = SdlHatLeft | SdlHatDown;
 
-        /// <summary>
-        ///     Internals the sdl video init using the specified driver name
-        /// </summary>
-        /// <param name="driverName">The driver name</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_VideoInit", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_SDL_VideoInit(
-            byte[] driverName
-        );
 
         /// <summary>
-        ///     Sdls the video init using the specified driver name
+        ///     The sdl iphone max gforce
         /// </summary>
-        /// <param name="driverName">The driver name</param>
-        /// <returns>The int</returns>
-        public static  int SDL_VideoInit(string driverName)
-        {
-            int utf8DriverNameBufSize = Utf8Size(driverName);
-            byte[] utf8DriverName = new byte[utf8DriverNameBufSize];
-            return INTERNAL_SDL_VideoInit(
-                Utf8Encode(driverName, utf8DriverName, utf8DriverNameBufSize)
-            );
-        }
+        public const float SdlIphoneMaxGforce = 5.0f;
 
         /// <summary>
-        ///     Sdls the video quit
+        ///     The sdl haptic constant
         /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_VideoQuit();
+        public const ushort SdlHapticConstant = 1 << 0;
 
-        
         /// <summary>
-        ///     Sdls the set window hit test using the specified window
+        ///     The sdl haptic sine
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="callback">The callback</param>
-        /// <param name="callbackData">The callback data</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetWindowHitTest(
-            IntPtr window,
-            SdlHitTest callback,
-            IntPtr callbackData
-        );
+        public const ushort SdlHapticSine = 1 << 1;
 
-        
         /// <summary>
-        ///     Sdls the get grabbed window
+        ///     The sdl haptic leftright
         /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GetGrabbedWindow();
+        public const ushort SdlHapticLeftright = 1 << 2;
 
-        
         /// <summary>
-        ///     Sdls the set window mouse rect using the specified window
+        ///     The sdl haptic triangle
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="rect">The rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetWindowMouseRect(
-            IntPtr window,
-            ref SdlRect rect
-        );
+        public const ushort SdlHapticTriangle = 1 << 3;
 
-        
         /// <summary>
-        ///     Sdls the set window mouse rect using the specified window
+        ///     The sdl haptic sawtoothup
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="rect">The rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetWindowMouseRect(
-            IntPtr window,
-            IntPtr rect
-        );
+        public const ushort SdlHapticSawtoothup = 1 << 4;
 
-        
         /// <summary>
-        ///     Sdls the get window mouse rect using the specified window
+        ///     The sdl haptic sawtoothdown
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GetWindowMouseRect(
-            IntPtr window
-        );
+        public const ushort SdlHapticSawtoothdown = 1 << 5;
 
-        
         /// <summary>
-        ///     Sdls the flash window using the specified window
+        ///     The sdl haptic spring
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="operation">The operation</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_FlashWindow(
-            IntPtr window,
-            SdlFlashOperation operation
-        );
-
-        /// <summary>
-        ///     The sdl blendmode enum
-        /// </summary>
-        [Flags]
-        public enum SdlBlendMode
-        {
-            /// <summary>
-            ///     The sdl blendmode none sdl blendmode
-            /// </summary>
-            SdlBlendmodeNone = 0x00000000,
-
-            /// <summary>
-            ///     The sdl blendmode blend sdl blendmode
-            /// </summary>
-            SdlBlendmodeBlend = 0x00000001,
-
-            /// <summary>
-            ///     The sdl blendmode add sdl blendmode
-            /// </summary>
-            SdlBlendmodeAdd = 0x00000002,
-
-            /// <summary>
-            ///     The sdl blendmode mod sdl blendmode
-            /// </summary>
-            SdlBlendmodeMod = 0x00000004,
-
-            /// <summary>
-            ///     The sdl blendmode mul sdl blendmode
-            /// </summary>
-            SdlBlendmodeMul = 0x00000008, 
-
-            /// <summary>
-            ///     The sdl blendmode invalid sdl blendmode
-            /// </summary>
-            SdlBlendmodeInvalid = 0x7FFFFFFF
-        }
-
-        /// <summary>
-        ///     The sdl blendoperation enum
-        /// </summary>
-        public enum SdlBlendOperation
-        {
-            /// <summary>
-            ///     The sdl blendoperation add sdl blendoperation
-            /// </summary>
-            SdlBlendoperationAdd = 0x1,
-
-            /// <summary>
-            ///     The sdl blendoperation subtract sdl blendoperation
-            /// </summary>
-            SdlBlendoperationSubtract = 0x2,
-
-            /// <summary>
-            ///     The sdl blendoperation rev subtract sdl blendoperation
-            /// </summary>
-            SdlBlendoperationRevSubtract = 0x3,
-
-            /// <summary>
-            ///     The sdl blendoperation minimum sdl blendoperation
-            /// </summary>
-            SdlBlendoperationMinimum = 0x4,
-
-            /// <summary>
-            ///     The sdl blendoperation maximum sdl blendoperation
-            /// </summary>
-            SdlBlendoperationMaximum = 0x5
-        }
-
-        /// <summary>
-        ///     The sdl blendfactor enum
-        /// </summary>
-        public enum SdlBlendFactor
-        {
-            /// <summary>
-            ///     The sdl blendfactor zero sdl blendfactor
-            /// </summary>
-            SdlBlendfactorZero = 0x1,
-
-            /// <summary>
-            ///     The sdl blendfactor one sdl blendfactor
-            /// </summary>
-            SdlBlendfactorOne = 0x2,
-
-            /// <summary>
-            ///     The sdl blendfactor src color sdl blendfactor
-            /// </summary>
-            SdlBlendfactorSrcColor = 0x3,
-
-            /// <summary>
-            ///     The sdl blendfactor one minus src color sdl blendfactor
-            /// </summary>
-            SdlBlendfactorOneMinusSrcColor = 0x4,
-
-            /// <summary>
-            ///     The sdl blendfactor src alpha sdl blendfactor
-            /// </summary>
-            SdlBlendfactorSrcAlpha = 0x5,
-
-            /// <summary>
-            ///     The sdl blendfactor one minus src alpha sdl blendfactor
-            /// </summary>
-            SdlBlendfactorOneMinusSrcAlpha = 0x6,
-
-            /// <summary>
-            ///     The sdl blendfactor dst color sdl blendfactor
-            /// </summary>
-            SdlBlendfactorDstColor = 0x7,
-
-            /// <summary>
-            ///     The sdl blendfactor one minus dst color sdl blendfactor
-            /// </summary>
-            SdlBlendfactorOneMinusDstColor = 0x8,
-
-            /// <summary>
-            ///     The sdl blendfactor dst alpha sdl blendfactor
-            /// </summary>
-            SdlBlendfactorDstAlpha = 0x9,
-
-            /// <summary>
-            ///     The sdl blendfactor one minus dst alpha sdl blendfactor
-            /// </summary>
-            SdlBlendfactorOneMinusDstAlpha = 0xA
-        }
-
-        
-        /// <summary>
-        ///     Sdls the compose custom blend mode using the specified src color factor
-        /// </summary>
-        /// <param name="srcColorFactor">The src color factor</param>
-        /// <param name="dstColorFactor">The dst color factor</param>
-        /// <param name="colorOperation">The color operation</param>
-        /// <param name="srcAlphaFactor">The src alpha factor</param>
-        /// <param name="dstAlphaFactor">The dst alpha factor</param>
-        /// <param name="alphaOperation">The alpha operation</param>
-        /// <returns>The sdl blend mode</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBlendMode SDL_ComposeCustomBlendMode(
-            SdlBlendFactor srcColorFactor,
-            SdlBlendFactor dstColorFactor,
-            SdlBlendOperation colorOperation,
-            SdlBlendFactor srcAlphaFactor,
-            SdlBlendFactor dstAlphaFactor,
-            SdlBlendOperation alphaOperation
-        );
-        
-        /// <summary>
-        ///     Internals the sdl vulkan load library using the specified path
-        /// </summary>
-        /// <param name="path">The path</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_Vulkan_LoadLibrary", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_SDL_Vulkan_LoadLibrary(
-            byte[] path
-        );
+        public const ushort SdlHapticSpring = 1 << 7;
 
         /// <summary>
-        ///     Sdls the vulkan load library using the specified path
+        ///     The sdl haptic damper
         /// </summary>
-        /// <param name="path">The path</param>
-        /// <returns>The result</returns>
-        public static  int SDL_Vulkan_LoadLibrary(string path)
-        {
-            byte[] utf8Path = Utf8EncodeHeap(path);
-            int result = INTERNAL_SDL_Vulkan_LoadLibrary(
-                utf8Path
-            );
-            return result;
-        }
+        public const ushort SdlHapticDamper = 1 << 8;
 
-        
         /// <summary>
-        ///     Sdls the vulkan get vk get instance proc addr
+        ///     The sdl haptic inertia
         /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_Vulkan_GetVkGetInstanceProcAddr();
+        public const ushort SdlHapticInertia = 1 << 9;
 
-        
         /// <summary>
-        ///     Sdls the vulkan unload library
+        ///     The sdl haptic friction
         /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_Vulkan_UnloadLibrary();
+        public const ushort SdlHapticFriction = 1 << 10;
 
-        
         /// <summary>
-        ///     Sdls the vulkan get instance extensions using the specified window
+        ///     The sdl haptic custom
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="pCount">The count</param>
-        /// <param name="pNames">The names</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_Vulkan_GetInstanceExtensions(
-            IntPtr window,
-            out uint pCount,
-            IntPtr pNames
-        );
-
-        
-        /// <summary>
-        ///     Sdls the vulkan get instance extensions using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="pCount">The count</param>
-        /// <param name="pNames">The names</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_Vulkan_GetInstanceExtensions(
-            IntPtr window,
-            out uint pCount,
-            IntPtr[] pNames
-        );
-
-        
-        /// <summary>
-        ///     Sdls the vulkan create surface using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="instance">The instance</param>
-        /// <param name="surface">The surface</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_Vulkan_CreateSurface(
-            IntPtr window,
-            IntPtr instance,
-            out ulong surface
-        );
+        public const ushort SdlHapticCustom = 1 << 11;
 
-        
-        /// <summary>
-        ///     Sdls the vulkan get drawable size using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_Vulkan_GetDrawableSize(
-            IntPtr window,
-            out int w,
-            out int h
-        );
-
         /// <summary>
-        ///     Sdls the metal create view using the specified window
+        ///     The sdl haptic gain
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_Metal_CreateView(
-            IntPtr window
-        );
+        public const ushort SdlHapticGain = 1 << 12;
 
-        
         /// <summary>
-        ///     Sdls the metal destroy view using the specified view
+        ///     The sdl haptic autocenter
         /// </summary>
-        /// <param name="view">The view</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_Metal_DestroyView(
-            IntPtr view
-        );
+        public const ushort SdlHapticAutocenter = 1 << 13;
 
-        
         /// <summary>
-        ///     Sdls the metal get layer using the specified view
+        ///     The sdl haptic status
         /// </summary>
-        /// <param name="view">The view</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_Metal_GetLayer(
-            IntPtr view
-        );
-
-        
-        /// <summary>
-        ///     Sdls the metal get drawable size using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_Metal_GetDrawableSize(
-            IntPtr window,
-            out int w,
-            out int h
-        );
-
-        /// <summary>
-        ///     The sdl rendererflags enum
-        /// </summary>
-        [Flags]
-        public enum SdlRendererFlags : uint
-        {
-            /// <summary>
-            ///     The sdl renderer software sdl rendererflags
-            /// </summary>
-            SdlRendererSoftware = 0x00000001,
-
-            /// <summary>
-            ///     The sdl renderer accelerated sdl rendererflags
-            /// </summary>
-            SdlRendererAccelerated = 0x00000002,
-
-            /// <summary>
-            ///     The sdl renderer presentvsync sdl rendererflags
-            /// </summary>
-            SdlRendererPresentvsync = 0x00000004,
-
-            /// <summary>
-            ///     The sdl renderer targettexture sdl rendererflags
-            /// </summary>
-            SdlRendererTargettexture = 0x00000008
-        }
-
-        /// <summary>
-        ///     The sdl rendererflip enum
-        /// </summary>
-        [Flags]
-        public enum SdlRendererFlip
-        {
-            /// <summary>
-            ///     The sdl flip none sdl rendererflip
-            /// </summary>
-            SdlFlipNone = 0x00000000,
-
-            /// <summary>
-            ///     The sdl flip horizontal sdl rendererflip
-            /// </summary>
-            SdlFlipHorizontal = 0x00000001,
-
-            /// <summary>
-            ///     The sdl flip vertical sdl rendererflip
-            /// </summary>
-            SdlFlipVertical = 0x00000002
-        }
-
-        /// <summary>
-        ///     The sdl textureaccess enum
-        /// </summary>
-        public enum SdlTextureAccess
-        {
-            /// <summary>
-            ///     The sdl textureaccess static sdl textureaccess
-            /// </summary>
-            SdlTextureaccessStatic,
-
-            /// <summary>
-            ///     The sdl textureaccess streaming sdl textureaccess
-            /// </summary>
-            SdlTextureaccessStreaming,
-
-            /// <summary>
-            ///     The sdl textureaccess target sdl textureaccess
-            /// </summary>
-            SdlTextureaccessTarget
-        }
-
-        /// <summary>
-        ///     The sdl texturemodulate enum
-        /// </summary>
-        [Flags]
-        public enum SdlTextureModulate
-        {
-            /// <summary>
-            ///     The sdl texturemodulate none sdl texturemodulate
-            /// </summary>
-            SdlTexturemodulateNone = 0x00000000,
-
-            /// <summary>
-            ///     The sdl texturemodulate horizontal sdl texturemodulate
-            /// </summary>
-            SdlTexturemodulateHorizontal = 0x00000001,
-
-            /// <summary>
-            ///     The sdl texturemodulate vertical sdl texturemodulate
-            /// </summary>
-            SdlTexturemodulateVertical = 0x00000002
-        }
-
-        
-        /// <summary>
-        ///     The sdl scalemode enum
-        /// </summary>
-        public enum SdlScaleMode
-        {
-            /// <summary>
-            ///     The sdl scalemodenearest sdl scalemode
-            /// </summary>
-            SdlScaleModeNearest,
-
-            /// <summary>
-            ///     The sdl scalemodelinear sdl scalemode
-            /// </summary>
-            SdlScaleModeLinear,
-
-            /// <summary>
-            ///     The sdl scalemodebest sdl scalemode
-            /// </summary>
-            SdlScaleModeBest
-        }
-
-        
-
-        
-        /// <summary>
-        ///     Sdls the create renderer using the specified window
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="index">The index</param>
-        /// <param name="flags">The flags</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_CreateRenderer(
-            IntPtr window,
-            int index,
-            SdlRendererFlags flags
-        );
-
-        
-        /// <summary>
-        ///     Sdls the create software renderer using the specified surface
-        /// </summary>
-        /// <param name="surface">The surface</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_CreateSoftwareRenderer(IntPtr surface);
-
-        
-        /// <summary>
-        ///     Sdls the create texture using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="format">The format</param>
-        /// <param name="access">The access</param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_CreateTexture(
-            IntPtr renderer,
-            uint format,
-            int access,
-            int w,
-            int h
-        );
+        public const ushort SdlHapticStatus = 1 << 14;
 
-        
         /// <summary>
-        ///     Sdls the create texture from surface using the specified renderer
+        ///     The sdl haptic pause
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="surface">The surface</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_CreateTextureFromSurface(
-            IntPtr renderer,
-            IntPtr surface
-        );
+        public const ushort SdlHapticPause = 1 << 15;
 
-        
-        /// <summary>
-        ///     Sdls the destroy renderer using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_DestroyRenderer(IntPtr renderer);
 
-        
         /// <summary>
-        ///     Sdls the destroy texture using the specified texture
+        ///     The sdl haptic polar
         /// </summary>
-        /// <param name="texture">The texture</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_DestroyTexture(IntPtr texture);
+        public const byte SdlHapticPolar = 0;
 
         /// <summary>
-        ///     Sdls the get num render drivers
+        ///     The sdl haptic cartesian
         /// </summary>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetNumRenderDrivers();
+        public const byte SdlHapticCartesian = 1;
 
-        
         /// <summary>
-        ///     Sdls the get render draw blend mode using the specified renderer
+        ///     The sdl haptic spherical
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="blendMode">The blend mode</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetRenderDrawBlendMode(
-            IntPtr renderer,
-            out SdlBlendMode blendMode
-        );
+        public const byte SdlHapticSpherical = 2;
 
-        
         /// <summary>
-        ///     Sdls the set texture scale mode using the specified texture
+        ///     The sdl haptic steering axis
         /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="scaleMode">The scale mode</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetTextureScaleMode(
-            IntPtr texture,
-            SdlScaleMode scaleMode
-        );
+        public const byte SdlHapticSteeringAxis = 3;
 
-        
-        /// <summary>
-        ///     Sdls the get texture scale mode using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="scaleMode">The scale mode</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetTextureScaleMode(
-            IntPtr texture,
-            out SdlScaleMode scaleMode
-        );
 
-        
         /// <summary>
-        ///     Sdls the set texture user data using the specified texture
+        ///     The sdl haptic infinity
         /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="userdata">The userdata</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetTextureUserData(
-            IntPtr texture,
-            IntPtr userdata
-        );
+        public const uint SdlHapticInfinity = 4294967295U;
 
-        
-        /// <summary>
-        ///     Sdls the get texture user data using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GetTextureUserData(IntPtr texture);
-
-        
-        /// <summary>
-        ///     Sdls the get render draw color using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        /// <param name="a">The </param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetRenderDrawColor(
-            IntPtr renderer,
-            out byte r,
-            out byte g,
-            out byte b,
-            out byte a
-        );
-
         /// <summary>
-        ///     Sdls the get render driver info using the specified index
+        ///     The sdl standard gravity
         /// </summary>
-        /// <param name="index">The index</param>
-        /// <param name="info">The info</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetRenderDriverInfo(
-            int index,
-            out SdlRendererInfo info
-        );
+        public const float SdlStandardGravity = 9.80665f;
 
-        
         /// <summary>
-        ///     Sdls the get renderer using the specified window
+        ///     The sdl audio mask bitsize
         /// </summary>
-        /// <param name="window">The window</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GetRenderer(IntPtr window);
+        public const ushort SdlAudioMaskBitsize = 0xFF;
 
-        
         /// <summary>
-        ///     Sdls the get renderer info using the specified renderer
+        ///     The sdl audio mask datatype
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="info">The info</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetRendererInfo(
-            IntPtr renderer,
-            out SdlRendererInfo info
-        );
+        public const ushort SdlAudioMaskDatatype = 1 << 8;
 
-        
-        /// <summary>
-        ///     Sdls the get renderer output size using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetRendererOutputSize(
-            IntPtr renderer,
-            out int w,
-            out int h
-        );
-
-        
         /// <summary>
-        ///     Sdls the get texture alpha mod using the specified texture
+        ///     The sdl audio mask endian
         /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="alpha">The alpha</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetTextureAlphaMod(
-            IntPtr texture,
-            out byte alpha
-        );
+        public const ushort SdlAudioMaskEndian = 1 << 12;
 
-        
         /// <summary>
-        ///     Sdls the get texture blend mode using the specified texture
+        ///     The sdl audio mask signed
         /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="blendMode">The blend mode</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetTextureBlendMode(
-            IntPtr texture,
-            out SdlBlendMode blendMode
-        );
-
-        
-        /// <summary>
-        ///     Sdls the get texture color mod using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetTextureColorMod(
-            IntPtr texture,
-            out byte r,
-            out byte g,
-            out byte b
-        );
-
-        
-        /// <summary>
-        ///     Sdls the lock texture using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="rect">The rect</param>
-        /// <param name="pixels">The pixels</param>
-        /// <param name="pitch">The pitch</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_LockTexture(
-            IntPtr texture,
-            ref SdlRect rect,
-            out IntPtr pixels,
-            out int pitch
-        );
-
-        
-        /// <summary>
-        ///     Sdls the lock texture using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="rect">The rect</param>
-        /// <param name="pixels">The pixels</param>
-        /// <param name="pitch">The pitch</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_LockTexture(
-            IntPtr texture,
-            IntPtr rect,
-            out IntPtr pixels,
-            out int pitch
-        );
-
-        
-        /// <summary>
-        ///     Sdls the lock texture to surface using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="rect">The rect</param>
-        /// <param name="surface">The surface</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_LockTextureToSurface(
-            IntPtr texture,
-            ref SdlRect rect,
-            out IntPtr surface
-        );
-
-        
-        /// <summary>
-        ///     Sdls the lock texture to surface using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="rect">The rect</param>
-        /// <param name="surface">The surface</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_LockTextureToSurface(
-            IntPtr texture,
-            IntPtr rect,
-            out IntPtr surface
-        );
-
-        
-        /// <summary>
-        ///     Sdls the query texture using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="format">The format</param>
-        /// <param name="access">The access</param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_QueryTexture(
-            IntPtr texture,
-            out uint format,
-            out int access,
-            out int w,
-            out int h
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render clear using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderClear(IntPtr renderer);
-
-        
-        /// <summary>
-        ///     Sdls the render copy using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopy(
-            IntPtr renderer,
-            IntPtr texture,
-            ref SdlRect srcrect,
-            ref SdlRect dstrect
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopy(
-            IntPtr renderer,
-            IntPtr texture,
-            IntPtr srcrect,
-            ref SdlRect dstrect
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopy(
-            IntPtr renderer,
-            IntPtr texture,
-            ref SdlRect srcrect,
-            IntPtr dstrect
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopy(
-            IntPtr renderer,
-            IntPtr texture,
-            IntPtr srcrect,
-            IntPtr dstrect
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy ex using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <param name="angle">The angle</param>
-        /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyEx(
-            IntPtr renderer,
-            IntPtr texture,
-            ref SdlRect srcrect,
-            ref SdlRect dstrect,
-            double angle,
-            ref SdlPoint center,
-            SdlRendererFlip flip
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy ex using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <param name="angle">The angle</param>
-        /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyEx(
-            IntPtr renderer,
-            IntPtr texture,
-            IntPtr srcrect,
-            ref SdlRect dstrect,
-            double angle,
-            ref SdlPoint center,
-            SdlRendererFlip flip
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy ex using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <param name="angle">The angle</param>
-        /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyEx(
-            IntPtr renderer,
-            IntPtr texture,
-            ref SdlRect srcrect,
-            IntPtr dstrect,
-            double angle,
-            ref SdlPoint center,
-            SdlRendererFlip flip
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy ex using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <param name="angle">The angle</param>
-        /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyEx(
-            IntPtr renderer,
-            IntPtr texture,
-            ref SdlRect srcrect,
-            ref SdlRect dstrect,
-            double angle,
-            IntPtr center,
-            SdlRendererFlip flip
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy ex using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <param name="angle">The angle</param>
-        /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyEx(
-            IntPtr renderer,
-            IntPtr texture,
-            IntPtr srcrect,
-            IntPtr dstrect,
-            double angle,
-            ref SdlPoint center,
-            SdlRendererFlip flip
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy ex using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <param name="angle">The angle</param>
-        /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyEx(
-            IntPtr renderer,
-            IntPtr texture,
-            IntPtr srcrect,
-            ref SdlRect dstrect,
-            double angle,
-            IntPtr center,
-            SdlRendererFlip flip
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy ex using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <param name="angle">The angle</param>
-        /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyEx(
-            IntPtr renderer,
-            IntPtr texture,
-            ref SdlRect srcrect,
-            IntPtr dstrect,
-            double angle,
-            IntPtr center,
-            SdlRendererFlip flip
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy ex using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <param name="angle">The angle</param>
-        /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyEx(
-            IntPtr renderer,
-            IntPtr texture,
-            IntPtr srcrect,
-            IntPtr dstrect,
-            double angle,
-            IntPtr center,
-            SdlRendererFlip flip
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render draw line using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="x1">The </param>
-        /// <param name="y1">The </param>
-        /// <param name="x2">The </param>
-        /// <param name="y2">The </param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawLine(
-            IntPtr renderer,
-            int x1,
-            int y1,
-            int x2,
-            int y2
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render draw lines using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="points">The points</param>
-        /// <param name="count">The count</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawLines(
-            IntPtr renderer,
-            [In] SdlPoint[] points,
-            int count
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render draw point using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawPoint(
-            IntPtr renderer,
-            int x,
-            int y
-        );
+        public const ushort SdlAudioMaskSigned = 1 << 15;
 
-        
-        /// <summary>
-        ///     Sdls the render draw points using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="points">The points</param>
-        /// <param name="count">The count</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawPoints(
-            IntPtr renderer,
-            [In] SdlPoint[] points,
-            int count
-        );
-
-        
         /// <summary>
-        ///     Sdls the render draw rect using the specified renderer
+        ///     The audio u8
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="rect">The rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawRect(
-            IntPtr renderer,
-            ref SdlRect rect
-        );
+        public const ushort AudioU8 = 0x0008;
 
-        
         /// <summary>
-        ///     Sdls the render draw rect using the specified renderer
+        ///     The audio s8
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="rect">The rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawRect(
-            IntPtr renderer,
-            IntPtr rect
-        );
+        public const ushort AudioS8 = 0x8008;
 
-        
-        /// <summary>
-        ///     Sdls the render draw rects using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="rects">The rects</param>
-        /// <param name="count">The count</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawRects(
-            IntPtr renderer,
-            [In] SdlRect[] rects,
-            int count
-        );
-
-        
         /// <summary>
-        ///     Sdls the render fill rect using the specified renderer
+        ///     The audio u16lsb
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="rect">The rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderFillRect(
-            IntPtr renderer,
-            ref SdlRect rect
-        );
+        public const ushort AudioU16Lsb = 0x0010;
 
-        
         /// <summary>
-        ///     Sdls the render fill rect using the specified renderer
+        ///     The audio s16lsb
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="rect">The rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderFillRect(
-            IntPtr renderer,
-            IntPtr rect
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render fill rects using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="rects">The rects</param>
-        /// <param name="count">The count</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderFillRects(
-            IntPtr renderer,
-            [In] SdlRect[] rects,
-            int count
-        );
-
-        /// <summary>
-        ///     Sdls the render copy f using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyF(
-            IntPtr renderer,
-            IntPtr texture,
-            ref SdlRect srcrect,
-            ref SdlFRect dstrect
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy f using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyF(
-            IntPtr renderer,
-            IntPtr texture,
-            IntPtr srcrect,
-            ref SdlFRect dstrect
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy f using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyF(
-            IntPtr renderer,
-            IntPtr texture,
-            ref SdlRect srcrect,
-            IntPtr dstrect
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy f using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyF(
-            IntPtr renderer,
-            IntPtr texture,
-            IntPtr srcrect,
-            IntPtr dstrect
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy ex using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <param name="angle">The angle</param>
-        /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyEx(
-            IntPtr renderer,
-            IntPtr texture,
-            ref SdlRect srcrect,
-            ref SdlFRect dstrect,
-            double angle,
-            ref SdlFPoint center,
-            SdlRendererFlip flip
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy ex using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <param name="angle">The angle</param>
-        /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyEx(
-            IntPtr renderer,
-            IntPtr texture,
-            IntPtr srcrect,
-            ref SdlFRect dstrect,
-            double angle,
-            ref SdlFPoint center,
-            SdlRendererFlip flip
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy ex f using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <param name="angle">The angle</param>
-        /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyExF(
-            IntPtr renderer,
-            IntPtr texture,
-            ref SdlRect srcrect,
-            IntPtr dstrect,
-            double angle,
-            ref SdlFPoint center,
-            SdlRendererFlip flip
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy ex f using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <param name="angle">The angle</param>
-        /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyExF(
-            IntPtr renderer,
-            IntPtr texture,
-            ref SdlRect srcrect,
-            ref SdlFRect dstrect,
-            double angle,
-            IntPtr center,
-            SdlRendererFlip flip
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy ex f using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <param name="angle">The angle</param>
-        /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyExF(
-            IntPtr renderer,
-            IntPtr texture,
-            IntPtr srcrect,
-            IntPtr dstrect,
-            double angle,
-            ref SdlFPoint center,
-            SdlRendererFlip flip
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy ex f using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <param name="angle">The angle</param>
-        /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyExF(
-            IntPtr renderer,
-            IntPtr texture,
-            IntPtr srcrect,
-            ref SdlFRect dstrect,
-            double angle,
-            IntPtr center,
-            SdlRendererFlip flip
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy ex f using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <param name="angle">The angle</param>
-        /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyExF(
-            IntPtr renderer,
-            IntPtr texture,
-            ref SdlRect srcrect,
-            IntPtr dstrect,
-            double angle,
-            IntPtr center,
-            SdlRendererFlip flip
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render copy ex f using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="srcrect">The srcrect</param>
-        /// <param name="dstrect">The dstrect</param>
-        /// <param name="angle">The angle</param>
-        /// <param name="center">The center</param>
-        /// <param name="flip">The flip</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyExF(
-            IntPtr renderer,
-            IntPtr texture,
-            IntPtr srcrect,
-            IntPtr dstrect,
-            double angle,
-            IntPtr center,
-            SdlRendererFlip flip
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render geometry using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="vertices">The vertices</param>
-        /// <param name="numVertices">The num vertices</param>
-        /// <param name="indices">The indices</param>
-        /// <param name="numIndices">The num indices</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderGeometry(
-            IntPtr renderer,
-            IntPtr texture,
-            [In] SdlVertex[] vertices,
-            int numVertices,
-            [In] int[] indices,
-            int numIndices
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render geometry raw using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="xy">The xy</param>
-        /// <param name="xyStride">The xy stride</param>
-        /// <param name="color">The color</param>
-        /// <param name="colorStride">The color stride</param>
-        /// <param name="uv">The uv</param>
-        /// <param name="uvStride">The uv stride</param>
-        /// <param name="numVertices">The num vertices</param>
-        /// <param name="indices">The indices</param>
-        /// <param name="numIndices">The num indices</param>
-        /// <param name="sizeIndices">The size indices</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderGeometryRaw(
-            IntPtr renderer,
-            IntPtr texture,
-            [In] float[] xy,
-            int xyStride,
-            [In] int[] color,
-            int colorStride,
-            [In] float[] uv,
-            int uvStride,
-            int numVertices,
-            IntPtr indices,
-            int numIndices,
-            int sizeIndices
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render draw point f using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawPointF(
-            IntPtr renderer,
-            float x,
-            float y
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render draw points f using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="points">The points</param>
-        /// <param name="count">The count</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawPointsF(
-            IntPtr renderer,
-            [In] SdlFPoint[] points,
-            int count
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render draw line f using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="x1">The </param>
-        /// <param name="y1">The </param>
-        /// <param name="x2">The </param>
-        /// <param name="y2">The </param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawLineF(
-            IntPtr renderer,
-            float x1,
-            float y1,
-            float x2,
-            float y2
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render draw lines f using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="points">The points</param>
-        /// <param name="count">The count</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawLinesF(
-            IntPtr renderer,
-            [In] SdlFPoint[] points,
-            int count
-        );
+        public const ushort AudioS16Lsb = 0x8010;
 
-        
         /// <summary>
-        ///     Sdls the render draw rect f using the specified renderer
+        ///     The audio u16msb
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="rect">The rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawRectF(
-            IntPtr renderer,
-            ref SdlFRect rect
-        );
+        public const ushort AudioU16Msb = 0x1010;
 
-        
         /// <summary>
-        ///     Sdls the render draw rect f using the specified renderer
+        ///     The audio s16msb
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="rect">The rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawRectF(
-            IntPtr renderer,
-            IntPtr rect
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render draw rects f using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="rects">The rects</param>
-        /// <param name="count">The count</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawRectsF(
-            IntPtr renderer,
-            [In] SdlFRect[] rects,
-            int count
-        );
+        public const ushort AudioS16Msb = 0x9010;
 
-        
         /// <summary>
-        ///     Sdls the render fill rect f using the specified renderer
+        ///     The audio u16lsb
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="rect">The rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderFillRectF(
-            IntPtr renderer,
-            ref SdlFRect rect
-        );
+        public const ushort AudioU16 = AudioU16Lsb;
 
-        
         /// <summary>
-        ///     Sdls the render fill rect f using the specified renderer
+        ///     The audio s16lsb
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="rect">The rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderFillRectF(
-            IntPtr renderer,
-            IntPtr rect
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render fill rects f using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="rects">The rects</param>
-        /// <param name="count">The count</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderFillRectsF(
-            IntPtr renderer,
-            [In] SdlFRect[] rects,
-            int count
-        );
+        public const ushort AudioS16 = AudioS16Lsb;
 
-        
-
-        
         /// <summary>
-        ///     Sdls the render get clip rect using the specified renderer
+        ///     The audio s32lsb
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="rect">The rect</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_RenderGetClipRect(
-            IntPtr renderer,
-            out SdlRect rect
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render get logical size using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_RenderGetLogicalSize(
-            IntPtr renderer,
-            out int w,
-            out int h
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render get scale using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="scaleX">The scale</param>
-        /// <param name="scaleY">The scale</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_RenderGetScale(
-            IntPtr renderer,
-            out float scaleX,
-            out float scaleY
-        );
+        public const ushort AudioS32Lsb = 0x8020;
 
-        
-        /// <summary>
-        ///     Sdls the render window to logical using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="windowX">The window</param>
-        /// <param name="windowY">The window</param>
-        /// <param name="logicalX">The logical</param>
-        /// <param name="logicalY">The logical</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_RenderWindowToLogical(
-            IntPtr renderer,
-            int windowX,
-            int windowY,
-            out float logicalX,
-            out float logicalY
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render logical to window using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="logicalX">The logical</param>
-        /// <param name="logicalY">The logical</param>
-        /// <param name="windowX">The window</param>
-        /// <param name="windowY">The window</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_RenderLogicalToWindow(
-            IntPtr renderer,
-            float logicalX,
-            float logicalY,
-            out int windowX,
-            out int windowY
-        );
-
-        
         /// <summary>
-        ///     Sdls the render get viewport using the specified renderer
+        ///     The audio s32msb
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="rect">The rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderGetViewport(
-            IntPtr renderer,
-            out SdlRect rect
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render present using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_RenderPresent(IntPtr renderer);
-
-        
-        /// <summary>
-        ///     Sdls the render read pixels using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="rect">The rect</param>
-        /// <param name="format">The format</param>
-        /// <param name="pixels">The pixels</param>
-        /// <param name="pitch">The pitch</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderReadPixels(
-            IntPtr renderer,
-            ref SdlRect rect,
-            uint format,
-            IntPtr pixels,
-            int pitch
-        );
+        public const ushort AudioS32Msb = 0x9020;
 
-        
         /// <summary>
-        ///     Sdls the render set clip rect using the specified renderer
+        ///     The audio s32lsb
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="rect">The rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderSetClipRect(
-            IntPtr renderer,
-            ref SdlRect rect
-        );
+        public const ushort AudioS32 = AudioS32Lsb;
 
-        
         /// <summary>
-        ///     Sdls the render set clip rect using the specified renderer
+        ///     The audio f32lsb
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="rect">The rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderSetClipRect(
-            IntPtr renderer,
-            IntPtr rect
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render set logical size using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderSetLogicalSize(
-            IntPtr renderer,
-            int w,
-            int h
-        );
-
-        
-        /// <summary>
-        ///     Sdls the render set scale using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="scaleX">The scale</param>
-        /// <param name="scaleY">The scale</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderSetScale(
-            IntPtr renderer,
-            float scaleX,
-            float scaleY
-        );
+        public const ushort AudioF32Lsb = 0x8120;
 
-        
         /// <summary>
-        ///     Sdls the render set integer scale using the specified renderer
+        ///     The audio f32msb
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="enable">The enable</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderSetIntegerScale(
-            IntPtr renderer,
-            SdlBool enable
-        );
+        public const ushort AudioF32Msb = 0x9120;
 
-        
         /// <summary>
-        ///     Sdls the render set viewport using the specified renderer
+        ///     The audio f32lsb
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="rect">The rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderSetViewport(
-            IntPtr renderer,
-            ref SdlRect rect
-        );
+        public const ushort AudioF32 = AudioF32Lsb;
 
-        
         /// <summary>
-        ///     Sdls the set render draw blend mode using the specified renderer
+        ///     The sdl audio allow frequency change
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="blendMode">The blend mode</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetRenderDrawBlendMode(
-            IntPtr renderer,
-            SdlBlendMode blendMode
-        );
-
-        
-        /// <summary>
-        ///     Sdls the set render draw color using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        /// <param name="a">The </param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetRenderDrawColor(
-            IntPtr renderer,
-            byte r,
-            byte g,
-            byte b,
-            byte a
-        );
+        public const uint SdlAudioAllowFrequencyChange = 0x00000001;
 
-        
         /// <summary>
-        ///     Sdls the set render target using the specified renderer
+        ///     The sdl audio allow format change
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetRenderTarget(
-            IntPtr renderer,
-            IntPtr texture
-        );
+        public const uint SdlAudioAllowFormatChange = 0x00000002;
 
-        
         /// <summary>
-        ///     Sdls the set texture alpha mod using the specified texture
+        ///     The sdl audio allow channels change
         /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="alpha">The alpha</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetTextureAlphaMod(
-            IntPtr texture,
-            byte alpha
-        );
+        public const uint SdlAudioAllowChannelsChange = 0x00000004;
 
-        
         /// <summary>
-        ///     Sdls the set texture blend mode using the specified texture
+        ///     The sdl audio allow samples change
         /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="blendMode">The blend mode</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetTextureBlendMode(
-            IntPtr texture,
-            SdlBlendMode blendMode
-        );
-
-        
-        /// <summary>
-        ///     Sdls the set texture color mod using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetTextureColorMod(
-            IntPtr texture,
-            byte r,
-            byte g,
-            byte b
-        );
+        public const uint SdlAudioAllowSamplesChange = 0x00000008;
 
-        
         /// <summary>
-        ///     Sdls the unlock texture using the specified texture
+        ///     The sdl audio allow samples change
         /// </summary>
-        /// <param name="texture">The texture</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_UnlockTexture(IntPtr texture);
+        public const uint SdlAudioAllowAnyChange = SdlAudioAllowFrequencyChange |
+                                                   SdlAudioAllowFormatChange |
+                                                   SdlAudioAllowChannelsChange |
+                                                   SdlAudioAllowSamplesChange;
 
-        
         /// <summary>
-        ///     Sdls the update texture using the specified texture
+        ///     The sdl mix maxvolume
         /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="rect">The rect</param>
-        /// <param name="pixels">The pixels</param>
-        /// <param name="pitch">The pitch</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_UpdateTexture(
-            IntPtr texture,
-            ref SdlRect rect,
-            IntPtr pixels,
-            int pitch
-        );
-
-        
-        /// <summary>
-        ///     Sdls the update texture using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="rect">The rect</param>
-        /// <param name="pixels">The pixels</param>
-        /// <param name="pitch">The pitch</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_UpdateTexture(
-            IntPtr texture,
-            IntPtr rect,
-            IntPtr pixels,
-            int pitch
-        );
-
-        
-        /// <summary>
-        ///     Sdls the update yuv texture using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="rect">The rect</param>
-        /// <param name="yPlane">The plane</param>
-        /// <param name="yPitch">The pitch</param>
-        /// <param name="uPlane">The plane</param>
-        /// <param name="uPitch">The pitch</param>
-        /// <param name="vPlane">The plane</param>
-        /// <param name="vPitch">The pitch</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_UpdateYUVTexture(
-            IntPtr texture,
-            ref SdlRect rect,
-            IntPtr yPlane,
-            int yPitch,
-            IntPtr uPlane,
-            int uPitch,
-            IntPtr vPlane,
-            int vPitch
-        );
-
-        
-        /// <summary>
-        ///     Sdls the update nv texture using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="rect">The rect</param>
-        /// <param name="yPlane">The plane</param>
-        /// <param name="yPitch">The pitch</param>
-        /// <param name="uvPlane">The uv plane</param>
-        /// <param name="uvPitch">The uv pitch</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_UpdateNVTexture(
-            IntPtr texture,
-            ref SdlRect rect,
-            IntPtr yPlane,
-            int yPitch,
-            IntPtr uvPlane,
-            int uvPitch
-        );
+        public const int SdlMixMaxvolume = 128;
 
-        
-        /// <summary>
-        ///     Sdls the render target supported using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_RenderTargetSupported(
-            IntPtr renderer
-        );
 
-        
         /// <summary>
-        ///     Sdls the get render target using the specified renderer
+        ///     The sdl android external storage read
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GetRenderTarget(IntPtr renderer);
+        public const int SdlAndroidExternalStorageRead = 0x01;
 
-        
         /// <summary>
-        ///     Sdls the render get metal layer using the specified renderer
+        ///     The sdl android external storage write
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_RenderGetMetalLayer(
-            IntPtr renderer
-        );
+        public const int SdlAndroidExternalStorageWrite = 0x02;
 
-        
         /// <summary>
-        ///     Sdls the render get metal command encoder using the specified renderer
+        ///     The sdl patchlevel
         /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_RenderGetMetalCommandEncoder(
-            IntPtr renderer
+        public static readonly int SdlCompiledversion = SDL_VERSIONNUM(
+            SdlMajorVersion,
+            SdlMinorVersion,
+            SdlPatchlevel
         );
-
-        
-        /// <summary>
-        ///     Sdls the render set v sync using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="vsync">The vsync</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderSetVSync(IntPtr renderer, int vsync);
-
-        
-        /// <summary>
-        ///     Sdls the render is clip enabled using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_RenderIsClipEnabled(IntPtr renderer);
-
-        
-        /// <summary>
-        ///     Sdls the render flush using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderFlush(IntPtr renderer);
-
-        /// <summary>
-        ///     Sdls the define pixelfourcc using the specified a
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <param name="c">The </param>
-        /// <param name="d">The </param>
-        /// <returns>The uint</returns>
-        public static uint SDL_DEFINE_PIXELFOURCC(byte a, byte b, byte c, byte d) => SDL_FOURCC(a, b, c, d);
-
-        /// <summary>
-        ///     Sdls the define pixelformat using the specified type
-        /// </summary>
-        /// <param name="type">The type</param>
-        /// <param name="order">The order</param>
-        /// <param name="layout">The layout</param>
-        /// <param name="bits">The bits</param>
-        /// <param name="bytes">The bytes</param>
-        /// <returns>The uint</returns>
-        public static uint SDL_DEFINE_PIXELFORMAT(
-            SdlPixelType type,
-            uint order,
-            SdlPackedLayout layout,
-            byte bits,
-            byte bytes
-        )
-            => (uint) (
-                (1 << 28) |
-                ((byte) type << 24) |
-                ((byte) order << 20) |
-                ((byte) layout << 16) |
-                (bits << 8) |
-                bytes
-            );
-
-        /// <summary>
-        ///     Sdls the pixelflag using the specified x
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <returns>The byte</returns>
-        public static byte SDL_PIXELFLAG(uint x) => (byte) ((x >> 28) & 0x0F);
-
-        /// <summary>
-        ///     Sdls the pixeltype using the specified x
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <returns>The byte</returns>
-        public static byte SDL_PIXELTYPE(uint x) => (byte) ((x >> 24) & 0x0F);
-
-        /// <summary>
-        ///     Sdls the pixelorder using the specified x
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <returns>The byte</returns>
-        public static byte SDL_PIXELORDER(uint x) => (byte) ((x >> 20) & 0x0F);
-
-        /// <summary>
-        ///     Sdls the pixellayout using the specified x
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <returns>The byte</returns>
-        public static byte SDL_PIXELLAYOUT(uint x) => (byte) ((x >> 16) & 0x0F);
-
-        /// <summary>
-        ///     Sdls the bitsperpixel using the specified x
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <returns>The byte</returns>
-        public static byte SDL_BITSPERPIXEL(uint x) => (byte) ((x >> 8) & 0xFF);
-
-        /// <summary>
-        ///     Sdls the bytesperpixel using the specified x
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <returns>The byte</returns>
-        public static byte SDL_BYTESPERPIXEL(uint x)
-        {
-            if (SDL_ISPIXELFORMAT_FOURCC(x))
-            {
-                if (x == SdlPixelformatYuy2 ||
-                    x == SdlPixelformatUyvy ||
-                    x == SdlPixelformatYvyu)
-                {
-                    return 2;
-                }
-
-                return 1;
-            }
-
-            return (byte) (x & 0xFF);
-        }
-
-        /// <summary>
-        ///     Describes whether sdl ispixelformat indexed
-        /// </summary>
-        /// <param name="format">The format</param>
-        /// <returns>The bool</returns>
-        public static bool SDL_ISPIXELFORMAT_INDEXED(uint format)
-        {
-            if (SDL_ISPIXELFORMAT_FOURCC(format))
-            {
-                return false;
-            }
-
-            SdlPixelType pType =
-                (SdlPixelType) SDL_PIXELTYPE(format);
-            return pType == SdlPixelType.SdlPixeltypeIndex1 ||
-                   pType == SdlPixelType.SdlPixeltypeIndex4 ||
-                   pType == SdlPixelType.SdlPixeltypeIndex8;
-        }
-
-        /// <summary>
-        ///     Describes whether sdl ispixelformat packed
-        /// </summary>
-        /// <param name="format">The format</param>
-        /// <returns>The bool</returns>
-        public static bool SDL_ISPIXELFORMAT_PACKED(uint format)
-        {
-            if (SDL_ISPIXELFORMAT_FOURCC(format))
-            {
-                return false;
-            }
-
-            SdlPixelType pType =
-                (SdlPixelType) SDL_PIXELTYPE(format);
-            return pType == SdlPixelType.SdlPixeltypePacked8 ||
-                   pType == SdlPixelType.SdlPixeltypePacked16 ||
-                   pType == SdlPixelType.SdlPixeltypePacked32;
-        }
-
-        /// <summary>
-        ///     Describes whether sdl ispixelformat array
-        /// </summary>
-        /// <param name="format">The format</param>
-        /// <returns>The bool</returns>
-        public static bool SDL_ISPIXELFORMAT_ARRAY(uint format)
-        {
-            if (SDL_ISPIXELFORMAT_FOURCC(format))
-            {
-                return false;
-            }
-
-            SdlPixelType pType =
-                (SdlPixelType) SDL_PIXELTYPE(format);
-            return pType == SdlPixelType.SdlPixeltypeArrayu8 ||
-                   pType == SdlPixelType.SdlPixeltypeArrayu16 ||
-                   pType == SdlPixelType.SdlPixeltypeArrayu32 ||
-                   pType == SdlPixelType.SdlPixeltypeArrayf16 ||
-                   pType == SdlPixelType.SdlPixeltypeArrayf32;
-        }
-
-        /// <summary>
-        ///     Describes whether sdl ispixelformat alpha
-        /// </summary>
-        /// <param name="format">The format</param>
-        /// <returns>The bool</returns>
-        public static bool SDL_ISPIXELFORMAT_ALPHA(uint format)
-        {
-            if (SDL_ISPIXELFORMAT_PACKED(format))
-            {
-                SdlPackedOrder pOrder =
-                    (SdlPackedOrder) SDL_PIXELORDER(format);
-                return pOrder == SdlPackedOrder.SdlPackedorderArgb ||
-                       pOrder == SdlPackedOrder.SdlPackedorderRgba ||
-                       pOrder == SdlPackedOrder.SdlPackedorderAbgr ||
-                       pOrder == SdlPackedOrder.SdlPackedorderBgra;
-            }
-
-            if (SDL_ISPIXELFORMAT_ARRAY(format))
-            {
-                SdlArrayOrder aOrder =
-                    (SdlArrayOrder) SDL_PIXELORDER(format);
-                return aOrder == SdlArrayOrder.SdlArrayorderArgb ||
-                       aOrder == SdlArrayOrder.SdlArrayorderRgba ||
-                       aOrder == SdlArrayOrder.SdlArrayorderAbgr ||
-                       aOrder == SdlArrayOrder.SdlArrayorderBgra;
-            }
-
-            return false;
-        }
-
-        /// <summary>
-        ///     Describes whether sdl ispixelformat fourcc
-        /// </summary>
-        /// <param name="format">The format</param>
-        /// <returns>The bool</returns>
-        public static bool SDL_ISPIXELFORMAT_FOURCC(uint format) => (format == 0) && (SDL_PIXELFLAG(format) != 1);
-
-        /// <summary>
-        ///     The sdl pixeltype enum
-        /// </summary>
-        public enum SdlPixelType
-        {
-            /// <summary>
-            ///     The sdl pixeltype unknown sdl pixeltype
-            /// </summary>
-            SdlPixeltypeUnknown,
-
-            /// <summary>
-            ///     The sdl pixeltype index1 sdl pixeltype
-            /// </summary>
-            SdlPixeltypeIndex1,
-
-            /// <summary>
-            ///     The sdl pixeltype index4 sdl pixeltype
-            /// </summary>
-            SdlPixeltypeIndex4,
-
-            /// <summary>
-            ///     The sdl pixeltype index8 sdl pixeltype
-            /// </summary>
-            SdlPixeltypeIndex8,
-
-            /// <summary>
-            ///     The sdl pixeltype packed8 sdl pixeltype
-            /// </summary>
-            SdlPixeltypePacked8,
-
-            /// <summary>
-            ///     The sdl pixeltype packed16 sdl pixeltype
-            /// </summary>
-            SdlPixeltypePacked16,
-
-            /// <summary>
-            ///     The sdl pixeltype packed32 sdl pixeltype
-            /// </summary>
-            SdlPixeltypePacked32,
-
-            /// <summary>
-            ///     The sdl pixeltype arrayu8 sdl pixeltype
-            /// </summary>
-            SdlPixeltypeArrayu8,
-
-            /// <summary>
-            ///     The sdl pixeltype arrayu16 sdl pixeltype
-            /// </summary>
-            SdlPixeltypeArrayu16,
-
-            /// <summary>
-            ///     The sdl pixeltype arrayu32 sdl pixeltype
-            /// </summary>
-            SdlPixeltypeArrayu32,
-
-            /// <summary>
-            ///     The sdl pixeltype arrayf16 sdl pixeltype
-            /// </summary>
-            SdlPixeltypeArrayf16,
-
-            /// <summary>
-            ///     The sdl pixeltype arrayf32 sdl pixeltype
-            /// </summary>
-            SdlPixeltypeArrayf32
-        }
 
         /// <summary>
         ///     The sdl pixelformat unknown
@@ -6622,7 +1899,4607 @@ namespace Alis.Core.Graphic.SDL
                 (byte) 'Y', (byte) 'V', (byte) 'Y', (byte) 'U'
             );
 
-        
+        /// <summary>
+        ///     The sdl button left
+        /// </summary>
+        public static readonly uint SdlButtonLmask = SDL_BUTTON(SdlButtonLeft);
+
+        /// <summary>
+        ///     The sdl button middle
+        /// </summary>
+        public static readonly uint SdlButtonMmask = SDL_BUTTON(SdlButtonMiddle);
+
+        /// <summary>
+        ///     The sdl button right
+        /// </summary>
+        public static readonly uint SdlButtonRmask = SDL_BUTTON(SdlButtonRight);
+
+        /// <summary>
+        ///     The sdl button x1
+        /// </summary>
+        public static readonly uint SdlButtonX1Mask = SDL_BUTTON(SdlButtonX1);
+
+        /// <summary>
+        ///     The sdl button x2
+        /// </summary>
+        public static readonly uint SdlButtonX2Mask = SDL_BUTTON(SdlButtonX2);
+
+        /// <summary>
+        ///     The audio u16msb
+        /// </summary>
+        public static readonly ushort AudioU16Sys =
+            BitConverter.IsLittleEndian ? AudioU16Lsb : AudioU16Msb;
+
+        /// <summary>
+        ///     The audio s16msb
+        /// </summary>
+        public static readonly ushort AudioS16Sys =
+            BitConverter.IsLittleEndian ? AudioS16Lsb : AudioS16Msb;
+
+        /// <summary>
+        ///     The audio s32msb
+        /// </summary>
+        public static readonly ushort AudioS32Sys =
+            BitConverter.IsLittleEndian ? AudioS32Lsb : AudioS32Msb;
+
+        /// <summary>
+        ///     The audio f32msb
+        /// </summary>
+        public static readonly ushort AudioF32Sys =
+            BitConverter.IsLittleEndian ? AudioF32Lsb : AudioF32Msb;
+
+
+        /// <summary>
+        ///     Utfs the 8 size using the specified str
+        /// </summary>
+        /// <param name="str">The str</param>
+        /// <returns>The int</returns>
+        internal static int Utf8Size(string str)
+        {
+            if (str == null)
+            {
+                return 0;
+            }
+
+            return str.Length * 4 + 1;
+        }
+
+        /// <summary>
+        ///     Utfs the 8 encode using the specified str
+        /// </summary>
+        /// <param name="str">The str</param>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="bufferSize">The buffer size</param>
+        /// <returns>The buffer</returns>
+        internal static byte[] Utf8Encode(string str, byte[] buffer, int bufferSize)
+        {
+            if (str == null)
+            {
+                return null;
+            }
+
+            Encoding.UTF8.GetBytes(str, 0, str.Length, buffer, 0);
+            buffer[str.Length] = 0; // Null-terminate the string
+
+            return buffer;
+        }
+
+
+        /// <summary>
+        ///     Utfs the 8 encode heap using the specified str
+        /// </summary>
+        /// <param name="str">The str</param>
+        /// <returns>The buffer</returns>
+        internal static byte[] Utf8EncodeHeap(string str)
+        {
+            if (str == null)
+            {
+                return null;
+            }
+
+            int bufferSize = Encoding.UTF8.GetByteCount(str) + 1;
+            byte[] buffer = new byte[bufferSize];
+            Encoding.UTF8.GetBytes(str, 0, str.Length, buffer, 0);
+            buffer[bufferSize - 1] = 0; // Null-terminate the string
+
+            return buffer;
+        }
+
+
+        /// <summary>
+        ///     Utfs the 8 to managed using the specified s
+        /// </summary>
+        /// <param name="s">The </param>
+        /// <param name="freePtr">The free ptr</param>
+        /// <returns>The result</returns>
+        public static string UTF8_ToManaged(IntPtr s, bool freePtr = false)
+        {
+            if (s == IntPtr.Zero)
+            {
+                return null;
+            }
+
+            byte[] bytes = new byte[0];
+            int len = 0;
+            while (Marshal.ReadByte(s, len) != 0)
+            {
+                len++;
+            }
+
+            if (len == 0)
+            {
+                return string.Empty;
+            }
+
+            bytes = new byte[len];
+            Marshal.Copy(s, bytes, 0, len);
+            string result = Encoding.UTF8.GetString(bytes);
+
+            if (freePtr)
+            {
+                SDL_free(s);
+            }
+
+            return result;
+        }
+
+
+        /// <summary>
+        ///     Sdls the fourcc using the specified a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <param name="c">The </param>
+        /// <param name="d">The </param>
+        /// <returns>The uint</returns>
+        public static uint SDL_FOURCC(byte a, byte b, byte c, byte d) => (uint) (a | (b << 8) | (c << 16) | (d << 24));
+
+
+        /// <summary>
+        ///     Sdls the malloc using the specified size
+        /// </summary>
+        /// <param name="size">The size</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern IntPtr SDL_malloc(int size);
+
+        /// <summary>
+        ///     Sdls the free using the specified memblock
+        /// </summary>
+        /// <param name="memblock">The memblock</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void SDL_free(IntPtr memblock);
+
+
+        /// <summary>
+        ///     Sdls the memcpy using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
+        /// <param name="src">The src</param>
+        /// <param name="len">The len</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_memcpy(IntPtr dst, IntPtr src, IntPtr len);
+
+
+        /// <summary>
+        ///     Internals the sdl rw from file using the specified file
+        /// </summary>
+        /// <param name="file">The file</param>
+        /// <param name="mode">The mode</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_RWFromFile", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr INTERNAL_SDL_RWFromFile(
+            byte[] file,
+            byte[] mode
+        );
+
+        /// <summary>
+        ///     Sdls the rw from file using the specified file
+        /// </summary>
+        /// <param name="file">The file</param>
+        /// <param name="mode">The mode</param>
+        /// <returns>The rw ops</returns>
+        public static IntPtr SDL_RWFromFile(
+            string file,
+            string mode
+        )
+        {
+            byte[] utf8File = Utf8EncodeHeap(file);
+            byte[] utf8Mode = Utf8EncodeHeap(mode);
+            IntPtr rwOps = INTERNAL_SDL_RWFromFile(
+                utf8File,
+                utf8Mode
+            );
+            return rwOps;
+        }
+
+
+        /// <summary>
+        ///     Sdls the alloc rw
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_AllocRW();
+
+
+        /// <summary>
+        ///     Sdls the free rw using the specified area
+        /// </summary>
+        /// <param name="area">The area</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_FreeRW(IntPtr area);
+
+
+        /// <summary>
+        ///     Sdls the rw from fp using the specified fp
+        /// </summary>
+        /// <param name="fp">The fp</param>
+        /// <param name="autoclose">The autoclose</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_RWFromFP(IntPtr fp, SdlBool autoclose);
+
+
+        /// <summary>
+        ///     Sdls the rw from mem using the specified mem
+        /// </summary>
+        /// <param name="mem">The mem</param>
+        /// <param name="size">The size</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_RWFromMem(IntPtr mem, int size);
+
+
+        /// <summary>
+        ///     Sdls the rw from const mem using the specified mem
+        /// </summary>
+        /// <param name="mem">The mem</param>
+        /// <param name="size">The size</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_RWFromConstMem(IntPtr mem, int size);
+
+
+        /// <summary>
+        ///     Sdls the r wsize using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <returns>The long</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern long SDL_RWsize(IntPtr context);
+
+        /// <summary>
+        ///     Sdls the r wseek using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="whence">The whence</param>
+        /// <returns>The long</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern long SDL_RWseek(
+            IntPtr context,
+            long offset,
+            int whence
+        );
+
+        /// <summary>
+        ///     Sdls the r wtell using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <returns>The long</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern long SDL_RWtell(IntPtr context);
+
+
+        /// <summary>
+        ///     Sdls the r wread using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <param name="ptr">The ptr</param>
+        /// <param name="size">The size</param>
+        /// <param name="maxnum">The maxnum</param>
+        /// <returns>The long</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern long SDL_RWread(
+            IntPtr context,
+            IntPtr ptr,
+            IntPtr size,
+            IntPtr maxnum
+        );
+
+
+        /// <summary>
+        ///     Sdls the r wwrite using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <param name="ptr">The ptr</param>
+        /// <param name="size">The size</param>
+        /// <param name="maxnum">The maxnum</param>
+        /// <returns>The long</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern long SDL_RWwrite(
+            IntPtr context,
+            IntPtr ptr,
+            IntPtr size,
+            IntPtr maxnum
+        );
+
+
+        /// <summary>
+        ///     Sdls the read u 8 using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <returns>The byte</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern byte SDL_ReadU8(IntPtr src);
+
+        /// <summary>
+        ///     Sdls the read le 16 using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <returns>The int 16</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern ushort SDL_ReadLE16(IntPtr src);
+
+        /// <summary>
+        ///     Sdls the read be 16 using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <returns>The int 16</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern ushort SDL_ReadBE16(IntPtr src);
+
+        /// <summary>
+        ///     Sdls the read le 32 using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <returns>The int 32</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint SDL_ReadLE32(IntPtr src);
+
+        /// <summary>
+        ///     Sdls the read be 32 using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <returns>The int 32</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint SDL_ReadBE32(IntPtr src);
+
+        /// <summary>
+        ///     Sdls the read le 64 using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <returns>The int 64</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern ulong SDL_ReadLE64(IntPtr src);
+
+        /// <summary>
+        ///     Sdls the read be 64 using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <returns>The int 64</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern ulong SDL_ReadBE64(IntPtr src);
+
+        /// <summary>
+        ///     Sdls the write u 8 using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
+        /// <param name="value">The value</param>
+        /// <returns>The uint</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint SDL_WriteU8(IntPtr dst, byte value);
+
+        /// <summary>
+        ///     Sdls the write le 16 using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
+        /// <param name="value">The value</param>
+        /// <returns>The uint</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint SDL_WriteLE16(IntPtr dst, ushort value);
+
+        /// <summary>
+        ///     Sdls the write be 16 using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
+        /// <param name="value">The value</param>
+        /// <returns>The uint</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint SDL_WriteBE16(IntPtr dst, ushort value);
+
+        /// <summary>
+        ///     Sdls the write le 32 using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
+        /// <param name="value">The value</param>
+        /// <returns>The uint</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint SDL_WriteLE32(IntPtr dst, uint value);
+
+        /// <summary>
+        ///     Sdls the write be 32 using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
+        /// <param name="value">The value</param>
+        /// <returns>The uint</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint SDL_WriteBE32(IntPtr dst, uint value);
+
+        /// <summary>
+        ///     Sdls the write le 64 using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
+        /// <param name="value">The value</param>
+        /// <returns>The uint</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint SDL_WriteLE64(IntPtr dst, ulong value);
+
+        /// <summary>
+        ///     Sdls the write be 64 using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
+        /// <param name="value">The value</param>
+        /// <returns>The uint</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint SDL_WriteBE64(IntPtr dst, ulong value);
+
+
+        /// <summary>
+        ///     Sdls the r wclose using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <returns>The long</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern long SDL_RWclose(IntPtr context);
+
+        /// <summary>
+        ///     Internals the sdl load file using the specified file
+        /// </summary>
+        /// <param name="file">The file</param>
+        /// <param name="datasize">The datasize</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_LoadFile", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr INTERNAL_SDL_LoadFile(byte[] file, out IntPtr datasize);
+
+        /// <summary>
+        ///     Sdls the load file using the specified file
+        /// </summary>
+        /// <param name="file">The file</param>
+        /// <param name="datasize">The datasize</param>
+        /// <returns>The result</returns>
+        public static IntPtr SDL_LoadFile(string file, out IntPtr datasize)
+        {
+            byte[] utf8File = Utf8EncodeHeap(file);
+            IntPtr result = INTERNAL_SDL_LoadFile(utf8File, out datasize);
+            return result;
+        }
+
+        /// <summary>
+        ///     Sdls the set main ready
+        /// </summary>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_SetMainReady();
+
+
+        /// <summary>
+        ///     Sdls the win rt run app using the specified main function
+        /// </summary>
+        /// <param name="mainFunction">The main function</param>
+        /// <param name="reserved">The reserved</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_WinRTRunApp(
+            SdlMainFunc mainFunction,
+            IntPtr reserved
+        );
+
+        /// <summary>
+        ///     Sdls the ui kit run app using the specified argc
+        /// </summary>
+        /// <param name="argc">The argc</param>
+        /// <param name="argv">The argv</param>
+        /// <param name="mainFunction">The main function</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_UIKitRunApp(
+            int argc,
+            IntPtr argv,
+            SdlMainFunc mainFunction
+        );
+
+        /// <summary>
+        ///     Sdls the init using the specified flags
+        /// </summary>
+        /// <param name="flags">The flags</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_Init(uint flags);
+
+        /// <summary>
+        ///     Sdls the init sub system using the specified flags
+        /// </summary>
+        /// <param name="flags">The flags</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_InitSubSystem(uint flags);
+
+        /// <summary>
+        ///     Sdls the quit
+        /// </summary>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_Quit();
+
+        /// <summary>
+        ///     Sdls the quit sub system using the specified flags
+        /// </summary>
+        /// <param name="flags">The flags</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_QuitSubSystem(uint flags);
+
+        /// <summary>
+        ///     Sdls the was init using the specified flags
+        /// </summary>
+        /// <param name="flags">The flags</param>
+        /// <returns>The uint</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint SDL_WasInit(uint flags);
+
+        /// <summary>
+        ///     Internals the sdl get platform
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetPlatform", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr INTERNAL_SDL_GetPlatform();
+
+        /// <summary>
+        ///     Sdls the get platform
+        /// </summary>
+        /// <returns>The string</returns>
+        public static string SDL_GetPlatform() => UTF8_ToManaged(INTERNAL_SDL_GetPlatform());
+
+        /// <summary>
+        ///     Sdls the clear hints
+        /// </summary>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_ClearHints();
+
+        /// <summary>
+        ///     Internals the sdl get hint using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetHint", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr INTERNAL_SDL_GetHint(byte[] name);
+
+        /// <summary>
+        ///     Sdls the get hint using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The string</returns>
+        public static string SDL_GetHint(string name)
+        {
+            int utf8NameBufSize = Utf8Size(name);
+            byte[] utf8Name = new byte[utf8NameBufSize];
+            return UTF8_ToManaged(
+                INTERNAL_SDL_GetHint(
+                    Utf8Encode(name, utf8Name, utf8NameBufSize)
+                )
+            );
+        }
+
+        /// <summary>
+        ///     Internals the sdl set hint using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="value">The value</param>
+        /// <returns>The sdl bool</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_SetHint", CallingConvention = CallingConvention.Cdecl)]
+        private static extern SdlBool INTERNAL_SDL_SetHint(
+            byte[] name,
+            byte[] value
+        );
+
+        /// <summary>
+        ///     Sdls the set hint using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="value">The value</param>
+        /// <returns>The sdl bool</returns>
+        public static SdlBool SDL_SetHint(string name, string value)
+        {
+            int utf8NameBufSize = Utf8Size(name);
+            byte[] utf8Name = new byte[utf8NameBufSize];
+
+            int utf8ValueBufSize = Utf8Size(value);
+            byte[] utf8Value = new byte[utf8ValueBufSize];
+
+            return INTERNAL_SDL_SetHint(
+                Utf8Encode(name, utf8Name, utf8NameBufSize),
+                Utf8Encode(value, utf8Value, utf8ValueBufSize)
+            );
+        }
+
+        /// <summary>
+        ///     Internals the sdl set hint with priority using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="value">The value</param>
+        /// <param name="priority">The priority</param>
+        /// <returns>The sdl bool</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_SetHintWithPriority", CallingConvention = CallingConvention.Cdecl)]
+        private static extern SdlBool INTERNAL_SDL_SetHintWithPriority(
+            byte[] name,
+            byte[] value,
+            SdlHintPriority priority
+        );
+
+        /// <summary>
+        ///     Sdls the set hint with priority using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="value">The value</param>
+        /// <param name="priority">The priority</param>
+        /// <returns>The sdl bool</returns>
+        public static SdlBool SDL_SetHintWithPriority(
+            string name,
+            string value,
+            SdlHintPriority priority
+        )
+        {
+            int utf8NameBufSize = Utf8Size(name);
+            byte[] utf8Name = new byte[utf8NameBufSize];
+
+            int utf8ValueBufSize = Utf8Size(value);
+            byte[] utf8Value = new byte[utf8ValueBufSize];
+
+            return INTERNAL_SDL_SetHintWithPriority(
+                Utf8Encode(name, utf8Name, utf8NameBufSize),
+                Utf8Encode(value, utf8Value, utf8ValueBufSize),
+                priority
+            );
+        }
+
+
+        /// <summary>
+        ///     Internals the sdl get hint boolean using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="defaultValue">The default value</param>
+        /// <returns>The sdl bool</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetHintBoolean", CallingConvention = CallingConvention.Cdecl)]
+        private static extern SdlBool INTERNAL_SDL_GetHintBoolean(
+            byte[] name,
+            SdlBool defaultValue
+        );
+
+        /// <summary>
+        ///     Sdls the get hint boolean using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="defaultValue">The default value</param>
+        /// <returns>The sdl bool</returns>
+        public static SdlBool SDL_GetHintBoolean(
+            string name,
+            SdlBool defaultValue
+        )
+        {
+            int utf8NameBufSize = Utf8Size(name);
+            byte[] utf8Name = new byte[utf8NameBufSize];
+            return INTERNAL_SDL_GetHintBoolean(
+                Utf8Encode(name, utf8Name, utf8NameBufSize),
+                defaultValue
+            );
+        }
+
+        /// <summary>
+        ///     Sdls the clear error
+        /// </summary>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_ClearError();
+
+        /// <summary>
+        ///     Internals the sdl get error
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetError", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr INTERNAL_SDL_GetError();
+
+        /// <summary>
+        ///     Sdls the get error
+        /// </summary>
+        /// <returns>The string</returns>
+        public static string SDL_GetError() => UTF8_ToManaged(INTERNAL_SDL_GetError());
+
+
+        /// <summary>
+        ///     Internals the sdl set error using the specified fmt and arglist
+        /// </summary>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        [DllImport(NativeLibName, EntryPoint = "SDL_SetError", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void INTERNAL_SDL_SetError(byte[] fmtAndArglist);
+
+        /// <summary>
+        ///     Sdls the set error using the specified fmt and arglist
+        /// </summary>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        public static void SDL_SetError(string fmtAndArglist)
+        {
+            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
+            INTERNAL_SDL_SetError(
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
+            );
+        }
+
+
+        /// <summary>
+        ///     Sdls the get error msg using the specified errstr
+        /// </summary>
+        /// <param name="errstr">The errstr</param>
+        /// <param name="maxlength">The maxlength</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_GetErrorMsg(IntPtr errstr, int maxlength);
+
+
+        /// <summary>
+        ///     Internals the sdl log using the specified fmt and arglist
+        /// </summary>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        [DllImport(NativeLibName, EntryPoint = "SDL_Log", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void INTERNAL_SDL_Log(byte[] fmtAndArglist);
+
+        /// <summary>
+        ///     Sdls the log using the specified fmt and arglist
+        /// </summary>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        public static void SDL_Log(string fmtAndArglist)
+        {
+            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
+            INTERNAL_SDL_Log(
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
+            );
+        }
+
+
+        /// <summary>
+        ///     Internals the sdl log verbose using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        [DllImport(NativeLibName, EntryPoint = "SDL_LogVerbose", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void INTERNAL_SDL_LogVerbose(
+            int category,
+            byte[] fmtAndArglist
+        );
+
+        /// <summary>
+        ///     Sdls the log verbose using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        public static void SDL_LogVerbose(
+            int category,
+            string fmtAndArglist
+        )
+        {
+            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
+            INTERNAL_SDL_LogVerbose(
+                category,
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
+            );
+        }
+
+
+        /// <summary>
+        ///     Internals the sdl log debug using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        [DllImport(NativeLibName, EntryPoint = "SDL_LogDebug", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void INTERNAL_SDL_LogDebug(
+            int category,
+            byte[] fmtAndArglist
+        );
+
+        /// <summary>
+        ///     Sdls the log debug using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        public static void SDL_LogDebug(
+            int category,
+            string fmtAndArglist
+        )
+        {
+            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
+            INTERNAL_SDL_LogDebug(
+                category,
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
+            );
+        }
+
+
+        /// <summary>
+        ///     Internals the sdl log info using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        [DllImport(NativeLibName, EntryPoint = "SDL_LogInfo", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void INTERNAL_SDL_LogInfo(
+            int category,
+            byte[] fmtAndArglist
+        );
+
+        /// <summary>
+        ///     Sdls the log info using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        public static void SDL_LogInfo(
+            int category,
+            string fmtAndArglist
+        )
+        {
+            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
+            INTERNAL_SDL_LogInfo(
+                category,
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
+            );
+        }
+
+
+        /// <summary>
+        ///     Internals the sdl log warn using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        [DllImport(NativeLibName, EntryPoint = "SDL_LogWarn", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void INTERNAL_SDL_LogWarn(
+            int category,
+            byte[] fmtAndArglist
+        );
+
+        /// <summary>
+        ///     Sdls the log warn using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        public static void SDL_LogWarn(
+            int category,
+            string fmtAndArglist
+        )
+        {
+            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
+            INTERNAL_SDL_LogWarn(
+                category,
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
+            );
+        }
+
+
+        /// <summary>
+        ///     Internals the sdl log error using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        [DllImport(NativeLibName, EntryPoint = "SDL_LogError", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void INTERNAL_SDL_LogError(
+            int category,
+            byte[] fmtAndArglist
+        );
+
+        /// <summary>
+        ///     Sdls the log error using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        public static void SDL_LogError(
+            int category,
+            string fmtAndArglist
+        )
+        {
+            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
+            INTERNAL_SDL_LogError(
+                category,
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
+            );
+        }
+
+
+        /// <summary>
+        ///     Internals the sdl log critical using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        [DllImport(NativeLibName, EntryPoint = "SDL_LogCritical", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void INTERNAL_SDL_LogCritical(
+            int category,
+            byte[] fmtAndArglist
+        );
+
+        /// <summary>
+        ///     Sdls the log critical using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        public static void SDL_LogCritical(
+            int category,
+            string fmtAndArglist
+        )
+        {
+            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
+            INTERNAL_SDL_LogCritical(
+                category,
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
+            );
+        }
+
+
+        /// <summary>
+        ///     Internals the sdl log message using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <param name="priority">The priority</param>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        [DllImport(NativeLibName, EntryPoint = "SDL_LogMessage", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void INTERNAL_SDL_LogMessage(
+            int category,
+            SdlLogPriority priority,
+            byte[] fmtAndArglist
+        );
+
+        /// <summary>
+        ///     Sdls the log message using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <param name="priority">The priority</param>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        public static void SDL_LogMessage(
+            int category,
+            SdlLogPriority priority,
+            string fmtAndArglist
+        )
+        {
+            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
+            INTERNAL_SDL_LogMessage(
+                category,
+                priority,
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
+            );
+        }
+
+
+        /// <summary>
+        ///     Internals the sdl log message v using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <param name="priority">The priority</param>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        [DllImport(NativeLibName, EntryPoint = "SDL_LogMessageV", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void INTERNAL_SDL_LogMessageV(
+            int category,
+            SdlLogPriority priority,
+            byte[] fmtAndArglist
+        );
+
+        /// <summary>
+        ///     Sdls the log message v using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <param name="priority">The priority</param>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        public static void SDL_LogMessageV(
+            int category,
+            SdlLogPriority priority,
+            string fmtAndArglist
+        )
+        {
+            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
+            INTERNAL_SDL_LogMessageV(
+                category,
+                priority,
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
+            );
+        }
+
+        /// <summary>
+        ///     Sdls the log get priority using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <returns>The sdl log priority</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern SdlLogPriority SDL_LogGetPriority(
+            int category
+        );
+
+        /// <summary>
+        ///     Sdls the log set priority using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <param name="priority">The priority</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_LogSetPriority(
+            int category,
+            SdlLogPriority priority
+        );
+
+        /// <summary>
+        ///     Sdls the log set all priority using the specified priority
+        /// </summary>
+        /// <param name="priority">The priority</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_LogSetAllPriority(
+            SdlLogPriority priority
+        );
+
+        /// <summary>
+        ///     Sdls the log reset priorities
+        /// </summary>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_LogResetPriorities();
+
+
+        /// <summary>
+        ///     Sdls the log get output function using the specified callback
+        /// </summary>
+        /// <param name="callback">The callback</param>
+        /// <param name="userdata">The userdata</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        private static extern void SDL_LogGetOutputFunction(
+            out IntPtr callback,
+            out IntPtr userdata
+        );
+
+        /// <summary>
+        ///     Sdls the log get output function using the specified callback
+        /// </summary>
+        /// <param name="callback">The callback</param>
+        /// <param name="userdata">The userdata</param>
+        public static void SDL_LogGetOutputFunction(
+            out SdlLogOutputFunction callback,
+            out IntPtr userdata
+        )
+        {
+            IntPtr result = IntPtr.Zero;
+            SDL_LogGetOutputFunction(
+                out result,
+                out userdata
+            );
+            if (result != IntPtr.Zero)
+            {
+                callback = (SdlLogOutputFunction) Marshal.GetDelegateForFunctionPointer(
+                    result,
+                    typeof(SdlLogOutputFunction)
+                );
+            }
+            else
+            {
+                callback = null;
+            }
+        }
+
+
+        /// <summary>
+        ///     Sdls the log set output function using the specified callback
+        /// </summary>
+        /// <param name="callback">The callback</param>
+        /// <param name="userdata">The userdata</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_LogSetOutputFunction(
+            SdlLogOutputFunction callback,
+            IntPtr userdata
+        );
+
+        /// <summary>
+        ///     Internals the sdl show message box using the specified messageboxdata
+        /// </summary>
+        /// <param name="messageboxdata">The messageboxdata</param>
+        /// <param name="buttonid">The buttonid</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_ShowMessageBox", CallingConvention = CallingConvention.Cdecl)]
+        private static extern int INTERNAL_SDL_ShowMessageBox([In] ref InternalSdlMessageBoxData messageboxdata, out int buttonid);
+
+
+        /// <summary>
+        ///     Internals the alloc utf 8 using the specified str
+        /// </summary>
+        /// <param name="str">The str</param>
+        /// <returns>The mem</returns>
+        private static IntPtr INTERNAL_AllocUTF8(string str)
+        {
+            if (string.IsNullOrEmpty(str))
+            {
+                return IntPtr.Zero;
+            }
+
+            byte[] bytes = Encoding.UTF8.GetBytes(str + '\0');
+            IntPtr mem = SDL_malloc(bytes.Length);
+            Marshal.Copy(bytes, 0, mem, bytes.Length);
+            return mem;
+        }
+
+        /// <summary>
+        ///     Sdls the show message box using the specified messageboxdata
+        /// </summary>
+        /// <param name="messageboxdata">The messageboxdata</param>
+        /// <param name="buttonid">The buttonid</param>
+        /// <returns>The result</returns>
+        public static int SDL_ShowMessageBox(ref SdlMessageBoxData messageboxdata, out int buttonid)
+        {
+            InternalSdlMessageBoxData data = new InternalSdlMessageBoxData
+            {
+                flags = messageboxdata.flags,
+                window = messageboxdata.window,
+                title = INTERNAL_AllocUTF8(messageboxdata.title),
+                message = INTERNAL_AllocUTF8(messageboxdata.message),
+                numbuttons = messageboxdata.numbuttons
+            };
+
+            InternalSdlMessageBoxButtonData[] buttons = new InternalSdlMessageBoxButtonData[messageboxdata.numbuttons];
+            IntPtr buttonsPtr = IntPtr.Zero;
+
+            try
+            {
+                for (int i = 0; i < messageboxdata.numbuttons; i++)
+                {
+                    buttons[i] = new InternalSdlMessageBoxButtonData
+                    {
+                        flags = messageboxdata.buttons[i].flags,
+                        buttonid = messageboxdata.buttons[i].buttonid,
+                        text = INTERNAL_AllocUTF8(messageboxdata.buttons[i].text)
+                    };
+                }
+
+                buttonsPtr = Marshal.AllocHGlobal(buttons.Length * Marshal.SizeOf<InternalSdlMessageBoxButtonData>());
+                for (int i = 0; i < buttons.Length; i++)
+                {
+                    IntPtr buttonPtr = buttonsPtr + i * Marshal.SizeOf<InternalSdlMessageBoxButtonData>();
+                    Marshal.StructureToPtr(buttons[i], buttonPtr, false);
+                }
+
+                data.buttons = buttonsPtr;
+
+                IntPtr colorSchemePtr = IntPtr.Zero;
+                if (messageboxdata.colorScheme != null)
+                {
+                    colorSchemePtr = Marshal.AllocHGlobal(Marshal.SizeOf<SdlMessageBoxColorScheme>());
+                    Marshal.StructureToPtr(messageboxdata.colorScheme.Value, colorSchemePtr, false);
+                }
+
+                int result = INTERNAL_SDL_ShowMessageBox(ref data, out buttonid);
+
+                for (int i = 0; i < messageboxdata.numbuttons; i++)
+                {
+                    SDL_free(buttons[i].text);
+                }
+
+                SDL_free(data.message);
+                SDL_free(data.title);
+
+                if (colorSchemePtr != IntPtr.Zero)
+                {
+                    Marshal.DestroyStructure<SdlMessageBoxColorScheme>(colorSchemePtr);
+                    Marshal.FreeHGlobal(colorSchemePtr);
+                }
+
+                return result;
+            }
+            finally
+            {
+                if (buttonsPtr != IntPtr.Zero)
+                {
+                    Marshal.FreeHGlobal(buttonsPtr);
+                }
+            }
+        }
+
+
+        /// <summary>
+        ///     Internals the sdl show simple message box using the specified flags
+        /// </summary>
+        /// <param name="flags">The flags</param>
+        /// <param name="title">The title</param>
+        /// <param name="message">The message</param>
+        /// <param name="window">The window</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_ShowSimpleMessageBox", CallingConvention = CallingConvention.Cdecl)]
+        private static extern int INTERNAL_SDL_ShowSimpleMessageBox(
+            SdlMessageBoxFlags flags,
+            byte[] title,
+            byte[] message,
+            IntPtr window
+        );
+
+        /// <summary>
+        ///     Sdls the show simple message box using the specified flags
+        /// </summary>
+        /// <param name="flags">The flags</param>
+        /// <param name="title">The title</param>
+        /// <param name="message">The message</param>
+        /// <param name="window">The window</param>
+        /// <returns>The int</returns>
+        public static int SDL_ShowSimpleMessageBox(
+            SdlMessageBoxFlags flags,
+            string title,
+            string message,
+            IntPtr window
+        )
+        {
+            int utf8TitleBufSize = Utf8Size(title);
+            byte[] utf8Title = new byte[utf8TitleBufSize];
+
+            int utf8MessageBufSize = Utf8Size(message);
+            byte[] utf8Message = new byte[utf8MessageBufSize];
+
+            return INTERNAL_SDL_ShowSimpleMessageBox(
+                flags,
+                Utf8Encode(title, utf8Title, utf8TitleBufSize),
+                Utf8Encode(message, utf8Message, utf8MessageBufSize),
+                window
+            );
+        }
+
+        /// <summary>
+        ///     Sdls the version using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        public static void SDL_VERSION(out SdlVersion x)
+        {
+            x.major = SdlMajorVersion;
+            x.minor = SdlMinorVersion;
+            x.patch = SdlPatchlevel;
+        }
+
+        /// <summary>
+        ///     Sdls the versionnum using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="z">The </param>
+        /// <returns>The int</returns>
+        public static int SDL_VERSIONNUM(int x, int y, int z) => x * 1000 + y * 100 + z;
+
+        /// <summary>
+        ///     Describes whether sdl version atleast
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="z">The </param>
+        /// <returns>The bool</returns>
+        public static bool SDL_VERSION_ATLEAST(int x, int y, int z) => SdlCompiledversion >= SDL_VERSIONNUM(x, y, z);
+
+        /// <summary>
+        ///     Sdls the get version using the specified ver
+        /// </summary>
+        /// <param name="ver">The ver</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_GetVersion(out SdlVersion ver);
+
+        /// <summary>
+        ///     Internals the sdl get revision
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetRevision", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr INTERNAL_SDL_GetRevision();
+
+        /// <summary>
+        ///     Sdls the get revision
+        /// </summary>
+        /// <returns>The string</returns>
+        public static string SDL_GetRevision() => UTF8_ToManaged(INTERNAL_SDL_GetRevision());
+
+        /// <summary>
+        ///     Sdls the get revision number
+        /// </summary>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetRevisionNumber();
+
+        /// <summary>
+        ///     Sdls the windowpos undefined display using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <returns>The int</returns>
+        public static int SDL_WINDOWPOS_UNDEFINED_DISPLAY(int x) => SdlWindowposUndefinedMask | x;
+
+        /// <summary>
+        ///     Describes whether sdl windowpos isundefined
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <returns>The bool</returns>
+        public static bool SDL_WINDOWPOS_ISUNDEFINED(int x) => (x & 0xFFFF0000) == SdlWindowposUndefinedMask;
+
+        /// <summary>
+        ///     Sdls the windowpos centered display using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <returns>The int</returns>
+        public static int SDL_WINDOWPOS_CENTERED_DISPLAY(int x) => SdlWindowposCenteredMask | x;
+
+        /// <summary>
+        ///     Describes whether sdl windowpos iscentered
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <returns>The bool</returns>
+        public static bool SDL_WINDOWPOS_ISCENTERED(int x) => (x & 0xFFFF0000) == SdlWindowposCenteredMask;
+
+
+        /// <summary>
+        ///     Internals the sdl create window using the specified title
+        /// </summary>
+        /// <param name="title">The title</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="w">The </param>
+        /// <param name="h">The </param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_CreateWindow", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr INTERNAL_SDL_CreateWindow(
+            byte[] title,
+            int x,
+            int y,
+            int w,
+            int h,
+            SdlWindowFlags flags
+        );
+
+        /// <summary>
+        ///     Sdls the create window using the specified title
+        /// </summary>
+        /// <param name="title">The title</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="w">The </param>
+        /// <param name="h">The </param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The int ptr</returns>
+        public static IntPtr SDL_CreateWindow(
+            string title,
+            int x,
+            int y,
+            int w,
+            int h,
+            SdlWindowFlags flags
+        )
+        {
+            int utf8TitleBufSize = Utf8Size(title);
+            byte[] utf8Title = new byte[utf8TitleBufSize];
+            return INTERNAL_SDL_CreateWindow(
+                Utf8Encode(title, utf8Title, utf8TitleBufSize),
+                x, y, w, h,
+                flags
+            );
+        }
+
+
+        /// <summary>
+        ///     Sdls the create window and renderer using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="windowFlags">The window flags</param>
+        /// <param name="window">The window</param>
+        /// <param name="renderer">The renderer</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_CreateWindowAndRenderer(
+            int width,
+            int height,
+            SdlWindowFlags windowFlags,
+            out IntPtr window,
+            out IntPtr renderer
+        );
+
+
+        /// <summary>
+        ///     Sdls the create window from using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_CreateWindowFrom(IntPtr data);
+
+
+        /// <summary>
+        ///     Sdls the destroy window using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_DestroyWindow(IntPtr window);
+
+        /// <summary>
+        ///     Sdls the disable screen saver
+        /// </summary>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_DisableScreenSaver();
+
+        /// <summary>
+        ///     Sdls the enable screen saver
+        /// </summary>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_EnableScreenSaver();
+
+
+        /// <summary>
+        ///     Sdls the get closest display mode using the specified display index
+        /// </summary>
+        /// <param name="displayIndex">The display index</param>
+        /// <param name="mode">The mode</param>
+        /// <param name="closest">The closest</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_GetClosestDisplayMode(
+            int displayIndex,
+            ref SdlDisplayMode mode,
+            out SdlDisplayMode closest
+        );
+
+        /// <summary>
+        ///     Sdls the get current display mode using the specified display index
+        /// </summary>
+        /// <param name="displayIndex">The display index</param>
+        /// <param name="mode">The mode</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetCurrentDisplayMode(
+            int displayIndex,
+            out SdlDisplayMode mode
+        );
+
+        /// <summary>
+        ///     Internals the sdl get current video driver
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetCurrentVideoDriver", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr INTERNAL_SDL_GetCurrentVideoDriver();
+
+        /// <summary>
+        ///     Sdls the get current video driver
+        /// </summary>
+        /// <returns>The string</returns>
+        public static string SDL_GetCurrentVideoDriver() => UTF8_ToManaged(INTERNAL_SDL_GetCurrentVideoDriver());
+
+        /// <summary>
+        ///     Sdls the get desktop display mode using the specified display index
+        /// </summary>
+        /// <param name="displayIndex">The display index</param>
+        /// <param name="mode">The mode</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetDesktopDisplayMode(
+            int displayIndex,
+            out SdlDisplayMode mode
+        );
+
+        /// <summary>
+        ///     Internals the sdl get display name using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetDisplayName", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr INTERNAL_SDL_GetDisplayName(int index);
+
+        /// <summary>
+        ///     Sdls the get display name using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The string</returns>
+        public static string SDL_GetDisplayName(int index) => UTF8_ToManaged(INTERNAL_SDL_GetDisplayName(index));
+
+        /// <summary>
+        ///     Sdls the get display bounds using the specified display index
+        /// </summary>
+        /// <param name="displayIndex">The display index</param>
+        /// <param name="rect">The rect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetDisplayBounds(
+            int displayIndex,
+            out SdlRect rect
+        );
+
+
+        /// <summary>
+        ///     Sdls the get display dpi using the specified display index
+        /// </summary>
+        /// <param name="displayIndex">The display index</param>
+        /// <param name="ddpi">The ddpi</param>
+        /// <param name="hdpi">The hdpi</param>
+        /// <param name="vdpi">The vdpi</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetDisplayDPI(
+            int displayIndex,
+            out float ddpi,
+            out float hdpi,
+            out float vdpi
+        );
+
+
+        /// <summary>
+        ///     Sdls the get display orientation using the specified display index
+        /// </summary>
+        /// <param name="displayIndex">The display index</param>
+        /// <returns>The sdl display orientation</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern SdlDisplayOrientation SDL_GetDisplayOrientation(
+            int displayIndex
+        );
+
+        /// <summary>
+        ///     Sdls the get display mode using the specified display index
+        /// </summary>
+        /// <param name="displayIndex">The display index</param>
+        /// <param name="modeIndex">The mode index</param>
+        /// <param name="mode">The mode</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetDisplayMode(
+            int displayIndex,
+            int modeIndex,
+            out SdlDisplayMode mode
+        );
+
+
+        /// <summary>
+        ///     Sdls the get display usable bounds using the specified display index
+        /// </summary>
+        /// <param name="displayIndex">The display index</param>
+        /// <param name="rect">The rect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetDisplayUsableBounds(
+            int displayIndex,
+            out SdlRect rect
+        );
+
+        /// <summary>
+        ///     Sdls the get num display modes using the specified display index
+        /// </summary>
+        /// <param name="displayIndex">The display index</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetNumDisplayModes(
+            int displayIndex
+        );
+
+        /// <summary>
+        ///     Sdls the get num video displays
+        /// </summary>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetNumVideoDisplays();
+
+        /// <summary>
+        ///     Sdls the get num video drivers
+        /// </summary>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetNumVideoDrivers();
+
+        /// <summary>
+        ///     Internals the sdl get video driver using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetVideoDriver", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr INTERNAL_SDL_GetVideoDriver(
+            int index
+        );
+
+        /// <summary>
+        ///     Sdls the get video driver using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The string</returns>
+        public static string SDL_GetVideoDriver(int index) => UTF8_ToManaged(INTERNAL_SDL_GetVideoDriver(index));
+
+
+        /// <summary>
+        ///     Sdls the get window brightness using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The float</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern float SDL_GetWindowBrightness(
+            IntPtr window
+        );
+
+
+        /// <summary>
+        ///     Sdls the set window opacity using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="opacity">The opacity</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetWindowOpacity(
+            IntPtr window,
+            float opacity
+        );
+
+
+        /// <summary>
+        ///     Sdls the get window opacity using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="outOpacity">The out opacity</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetWindowOpacity(
+            IntPtr window,
+            out float outOpacity
+        );
+
+
+        /// <summary>
+        ///     Sdls the set window modal for using the specified modal window
+        /// </summary>
+        /// <param name="modalWindow">The modal window</param>
+        /// <param name="parentWindow">The parent window</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetWindowModalFor(
+            IntPtr modalWindow,
+            IntPtr parentWindow
+        );
+
+
+        /// <summary>
+        ///     Sdls the set window input focus using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetWindowInputFocus(IntPtr window);
+
+
+        /// <summary>
+        ///     Internals the sdl get window data using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="name">The name</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowData", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr INTERNAL_SDL_GetWindowData(
+            IntPtr window,
+            byte[] name
+        );
+
+        /// <summary>
+        ///     Sdls the get window data using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="name">The name</param>
+        /// <returns>The int ptr</returns>
+        public static IntPtr SDL_GetWindowData(
+            IntPtr window,
+            string name
+        )
+        {
+            int utf8NameBufSize = Utf8Size(name);
+            byte[] utf8Name = new byte[utf8NameBufSize];
+            return INTERNAL_SDL_GetWindowData(
+                window,
+                Utf8Encode(name, utf8Name, utf8NameBufSize)
+            );
+        }
+
+
+        /// <summary>
+        ///     Sdls the get window display index using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetWindowDisplayIndex(
+            IntPtr window
+        );
+
+
+        /// <summary>
+        ///     Sdls the get window display mode using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="mode">The mode</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetWindowDisplayMode(
+            IntPtr window,
+            out SdlDisplayMode mode
+        );
+
+
+        /// <summary>
+        ///     Sdls the get window icc profile using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="mode">The mode</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_GetWindowICCProfile(
+            IntPtr window,
+            out IntPtr mode
+        );
+
+
+        /// <summary>
+        ///     Sdls the get window flags using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The uint</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint SDL_GetWindowFlags(IntPtr window);
+
+
+        /// <summary>
+        ///     Sdls the get window from id using the specified id
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_GetWindowFromID(uint id);
+
+
+        /// <summary>
+        ///     Sdls the get window gamma ramp using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="red">The red</param>
+        /// <param name="green">The green</param>
+        /// <param name="blue">The blue</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetWindowGammaRamp(
+            IntPtr window,
+            [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)]
+            ushort[] red,
+            [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)]
+            ushort[] green,
+            [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)]
+            ushort[] blue
+        );
+
+
+        /// <summary>
+        ///     Sdls the get window grab using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The sdl bool</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern SdlBool SDL_GetWindowGrab(IntPtr window);
+
+
+        /// <summary>
+        ///     Sdls the get window keyboard grab using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The sdl bool</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern SdlBool SDL_GetWindowKeyboardGrab(IntPtr window);
+
+
+        /// <summary>
+        ///     Sdls the get window mouse grab using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The sdl bool</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern SdlBool SDL_GetWindowMouseGrab(IntPtr window);
+
+
+        /// <summary>
+        ///     Sdls the get window id using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The uint</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint SDL_GetWindowID(IntPtr window);
+
+
+        /// <summary>
+        ///     Sdls the get window pixel format using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The uint</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint SDL_GetWindowPixelFormat(
+            IntPtr window
+        );
+
+
+        /// <summary>
+        ///     Sdls the get window maximum size using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="maxW">The max</param>
+        /// <param name="maxH">The max</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_GetWindowMaximumSize(
+            IntPtr window,
+            out int maxW,
+            out int maxH
+        );
+
+
+        /// <summary>
+        ///     Sdls the get window minimum size using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="minW">The min</param>
+        /// <param name="minH">The min</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_GetWindowMinimumSize(
+            IntPtr window,
+            out int minW,
+            out int minH
+        );
+
+
+        /// <summary>
+        ///     Sdls the get window position using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_GetWindowPosition(
+            IntPtr window,
+            out int x,
+            out int y
+        );
+
+
+        /// <summary>
+        ///     Sdls the get window size using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="w">The </param>
+        /// <param name="h">The </param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_GetWindowSize(
+            IntPtr window,
+            out int w,
+            out int h
+        );
+
+
+        /// <summary>
+        ///     Sdls the get window surface using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_GetWindowSurface(IntPtr window);
+
+
+        /// <summary>
+        ///     Internals the sdl get window title using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowTitle", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr INTERNAL_SDL_GetWindowTitle(
+            IntPtr window
+        );
+
+        /// <summary>
+        ///     Sdls the get window title using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The string</returns>
+        public static string SDL_GetWindowTitle(IntPtr window) => UTF8_ToManaged(
+            INTERNAL_SDL_GetWindowTitle(window)
+        );
+
+
+        /// <summary>
+        ///     Sdls the gl bind texture using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="texw">The texw</param>
+        /// <param name="texh">The texh</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GL_BindTexture(
+            IntPtr texture,
+            out float texw,
+            out float texh
+        );
+
+
+        /// <summary>
+        ///     Sdls the gl create context using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_GL_CreateContext(IntPtr window);
+
+
+        /// <summary>
+        ///     Sdls the gl delete context using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_GL_DeleteContext(IntPtr context);
+
+        /// <summary>
+        ///     Internals the sdl gl load library using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_GL_LoadLibrary", CallingConvention = CallingConvention.Cdecl)]
+        private static extern int INTERNAL_SDL_GL_LoadLibrary(byte[] path);
+
+        /// <summary>
+        ///     Sdls the gl load library using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
+        /// <returns>The result</returns>
+        public static int SDL_GL_LoadLibrary(string path)
+        {
+            byte[] utf8Path = Utf8EncodeHeap(path);
+            int result = INTERNAL_SDL_GL_LoadLibrary(
+                utf8Path
+            );
+            return result;
+        }
+
+
+        /// <summary>
+        ///     Sdls the gl get proc address using the specified proc
+        /// </summary>
+        /// <param name="proc">The proc</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_GL_GetProcAddress(byte[] proc);
+
+
+        /// <summary>
+        ///     Sdls the gl get proc address using the specified proc
+        /// </summary>
+        /// <param name="proc">The proc</param>
+        /// <returns>The int ptr</returns>
+        public static IntPtr SDL_GL_GetProcAddress(string proc)
+        {
+            int utf8ProcBufSize = Utf8Size(proc);
+            byte[] utf8Proc = new byte[utf8ProcBufSize];
+            return SDL_GL_GetProcAddress(
+                Utf8Encode(proc, utf8Proc, utf8ProcBufSize)
+            );
+        }
+
+        /// <summary>
+        ///     Sdls the gl unload library
+        /// </summary>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_GL_UnloadLibrary();
+
+        /// <summary>
+        ///     Internals the sdl gl extension supported using the specified extension
+        /// </summary>
+        /// <param name="extension">The extension</param>
+        /// <returns>The sdl bool</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_GL_ExtensionSupported", CallingConvention = CallingConvention.Cdecl)]
+        private static extern SdlBool INTERNAL_SDL_GL_ExtensionSupported(
+            byte[] extension
+        );
+
+        /// <summary>
+        ///     Sdls the gl extension supported using the specified extension
+        /// </summary>
+        /// <param name="extension">The extension</param>
+        /// <returns>The sdl bool</returns>
+        public static SdlBool SDL_GL_ExtensionSupported(string extension)
+        {
+            int utf8ExtensionBufSize = Utf8Size(extension);
+            byte[] utf8Extension = new byte[utf8ExtensionBufSize];
+            return INTERNAL_SDL_GL_ExtensionSupported(
+                Utf8Encode(extension, utf8Extension, utf8ExtensionBufSize)
+            );
+        }
+
+
+        /// <summary>
+        ///     Sdls the gl reset attributes
+        /// </summary>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_GL_ResetAttributes();
+
+        /// <summary>
+        ///     Sdls the gl get attribute using the specified attr
+        /// </summary>
+        /// <param name="attr">The attr</param>
+        /// <param name="value">The value</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GL_GetAttribute(
+            SdlGLattr attr,
+            out int value
+        );
+
+        /// <summary>
+        ///     Sdls the gl get swap interval
+        /// </summary>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GL_GetSwapInterval();
+
+
+        /// <summary>
+        ///     Sdls the gl make current using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="context">The context</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GL_MakeCurrent(
+            IntPtr window,
+            IntPtr context
+        );
+
+
+        /// <summary>
+        ///     Sdls the gl get current window
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_GL_GetCurrentWindow();
+
+
+        /// <summary>
+        ///     Sdls the gl get current context
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_GL_GetCurrentContext();
+
+
+        /// <summary>
+        ///     Sdls the gl get drawable size using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="w">The </param>
+        /// <param name="h">The </param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_GL_GetDrawableSize(
+            IntPtr window,
+            out int w,
+            out int h
+        );
+
+        /// <summary>
+        ///     Sdls the gl set attribute using the specified attr
+        /// </summary>
+        /// <param name="attr">The attr</param>
+        /// <param name="value">The value</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GL_SetAttribute(
+            SdlGLattr attr,
+            int value
+        );
+
+        /// <summary>
+        ///     Sdls the gl set attribute using the specified attr
+        /// </summary>
+        /// <param name="attr">The attr</param>
+        /// <param name="profile">The profile</param>
+        /// <returns>The int</returns>
+        public static int SDL_GL_SetAttribute(
+            SdlGLattr attr,
+            SdlGLprofile profile
+        )
+            => SDL_GL_SetAttribute(attr, (int) profile);
+
+        /// <summary>
+        ///     Sdls the gl set swap interval using the specified interval
+        /// </summary>
+        /// <param name="interval">The interval</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GL_SetSwapInterval(int interval);
+
+
+        /// <summary>
+        ///     Sdls the gl swap window using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_GL_SwapWindow(IntPtr window);
+
+
+        /// <summary>
+        ///     Sdls the gl unbind texture using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GL_UnbindTexture(IntPtr texture);
+
+
+        /// <summary>
+        ///     Sdls the hide window using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_HideWindow(IntPtr window);
+
+        /// <summary>
+        ///     Sdls the is screen saver enabled
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern SdlBool SDL_IsScreenSaverEnabled();
+
+
+        /// <summary>
+        ///     Sdls the maximize window using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_MaximizeWindow(IntPtr window);
+
+
+        /// <summary>
+        ///     Sdls the minimize window using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_MinimizeWindow(IntPtr window);
+
+
+        /// <summary>
+        ///     Sdls the raise window using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_RaiseWindow(IntPtr window);
+
+
+        /// <summary>
+        ///     Sdls the restore window using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_RestoreWindow(IntPtr window);
+
+
+        /// <summary>
+        ///     Sdls the set window brightness using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="brightness">The brightness</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetWindowBrightness(
+            IntPtr window,
+            float brightness
+        );
+
+
+        /// <summary>
+        ///     Internals the sdl set window data using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="name">The name</param>
+        /// <param name="userdata">The userdata</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowData", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr INTERNAL_SDL_SetWindowData(
+            IntPtr window,
+            byte[] name,
+            IntPtr userdata
+        );
+
+        /// <summary>
+        ///     Sdls the set window data using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="name">The name</param>
+        /// <param name="userdata">The userdata</param>
+        /// <returns>The int ptr</returns>
+        public static IntPtr SDL_SetWindowData(
+            IntPtr window,
+            string name,
+            IntPtr userdata
+        )
+        {
+            int utf8NameBufSize = Utf8Size(name);
+            byte[] utf8Name = new byte[utf8NameBufSize];
+            return INTERNAL_SDL_SetWindowData(
+                window,
+                Utf8Encode(name, utf8Name, utf8NameBufSize),
+                userdata
+            );
+        }
+
+
+        /// <summary>
+        ///     Sdls the set window display mode using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="mode">The mode</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetWindowDisplayMode(
+            IntPtr window,
+            ref SdlDisplayMode mode
+        );
+
+
+        /// <summary>
+        ///     Sdls the set window display mode using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="mode">The mode</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetWindowDisplayMode(
+            IntPtr window,
+            IntPtr mode
+        );
+
+
+        /// <summary>
+        ///     Sdls the set window fullscreen using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetWindowFullscreen(
+            IntPtr window,
+            uint flags
+        );
+
+
+        /// <summary>
+        ///     Sdls the set window gamma ramp using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="red">The red</param>
+        /// <param name="green">The green</param>
+        /// <param name="blue">The blue</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetWindowGammaRamp(
+            IntPtr window,
+            [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)]
+            ushort[] red,
+            [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)]
+            ushort[] green,
+            [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)]
+            ushort[] blue
+        );
+
+
+        /// <summary>
+        ///     Sdls the set window grab using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="grabbed">The grabbed</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_SetWindowGrab(
+            IntPtr window,
+            SdlBool grabbed
+        );
+
+
+        /// <summary>
+        ///     Sdls the set window keyboard grab using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="grabbed">The grabbed</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_SetWindowKeyboardGrab(
+            IntPtr window,
+            SdlBool grabbed
+        );
+
+
+        /// <summary>
+        ///     Sdls the set window mouse grab using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="grabbed">The grabbed</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_SetWindowMouseGrab(
+            IntPtr window,
+            SdlBool grabbed
+        );
+
+
+        /// <summary>
+        ///     Sdls the set window icon using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="icon">The icon</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_SetWindowIcon(
+            IntPtr window,
+            IntPtr icon
+        );
+
+
+        /// <summary>
+        ///     Sdls the set window maximum size using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="maxW">The max</param>
+        /// <param name="maxH">The max</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_SetWindowMaximumSize(
+            IntPtr window,
+            int maxW,
+            int maxH
+        );
+
+
+        /// <summary>
+        ///     Sdls the set window minimum size using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="minW">The min</param>
+        /// <param name="minH">The min</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_SetWindowMinimumSize(
+            IntPtr window,
+            int minW,
+            int minH
+        );
+
+
+        /// <summary>
+        ///     Sdls the set window position using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_SetWindowPosition(
+            IntPtr window,
+            int x,
+            int y
+        );
+
+
+        /// <summary>
+        ///     Sdls the set window size using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="w">The </param>
+        /// <param name="h">The </param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_SetWindowSize(
+            IntPtr window,
+            int w,
+            int h
+        );
+
+
+        /// <summary>
+        ///     Sdls the set window bordered using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="bordered">The bordered</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_SetWindowBordered(
+            IntPtr window,
+            SdlBool bordered
+        );
+
+
+        /// <summary>
+        ///     Sdls the get window borders size using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="top">The top</param>
+        /// <param name="left">The left</param>
+        /// <param name="bottom">The bottom</param>
+        /// <param name="right">The right</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetWindowBordersSize(
+            IntPtr window,
+            out int top,
+            out int left,
+            out int bottom,
+            out int right
+        );
+
+
+        /// <summary>
+        ///     Sdls the set window resizable using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="resizable">The resizable</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_SetWindowResizable(
+            IntPtr window,
+            SdlBool resizable
+        );
+
+
+        /// <summary>
+        ///     Sdls the set window always on top using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="onTop">The on top</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_SetWindowAlwaysOnTop(
+            IntPtr window,
+            SdlBool onTop
+        );
+
+
+        /// <summary>
+        ///     Internals the sdl set window title using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="title">The title</param>
+        [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowTitle", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void INTERNAL_SDL_SetWindowTitle(
+            IntPtr window,
+            byte[] title
+        );
+
+        /// <summary>
+        ///     Sdls the set window title using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="title">The title</param>
+        public static void SDL_SetWindowTitle(
+            IntPtr window,
+            string title
+        )
+        {
+            int utf8TitleBufSize = Utf8Size(title);
+            byte[] utf8Title = new byte[utf8TitleBufSize];
+            INTERNAL_SDL_SetWindowTitle(
+                window,
+                Utf8Encode(title, utf8Title, utf8TitleBufSize)
+            );
+        }
+
+
+        /// <summary>
+        ///     Sdls the show window using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_ShowWindow(IntPtr window);
+
+
+        /// <summary>
+        ///     Sdls the update window surface using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_UpdateWindowSurface(IntPtr window);
+
+
+        /// <summary>
+        ///     Sdls the update window surface rects using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="rects">The rects</param>
+        /// <param name="numrects">The numrects</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_UpdateWindowSurfaceRects(
+            IntPtr window,
+            [In] SdlRect[] rects,
+            int numrects
+        );
+
+        /// <summary>
+        ///     Internals the sdl video init using the specified driver name
+        /// </summary>
+        /// <param name="driverName">The driver name</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_VideoInit", CallingConvention = CallingConvention.Cdecl)]
+        private static extern int INTERNAL_SDL_VideoInit(
+            byte[] driverName
+        );
+
+        /// <summary>
+        ///     Sdls the video init using the specified driver name
+        /// </summary>
+        /// <param name="driverName">The driver name</param>
+        /// <returns>The int</returns>
+        public static int SDL_VideoInit(string driverName)
+        {
+            int utf8DriverNameBufSize = Utf8Size(driverName);
+            byte[] utf8DriverName = new byte[utf8DriverNameBufSize];
+            return INTERNAL_SDL_VideoInit(
+                Utf8Encode(driverName, utf8DriverName, utf8DriverNameBufSize)
+            );
+        }
+
+        /// <summary>
+        ///     Sdls the video quit
+        /// </summary>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_VideoQuit();
+
+
+        /// <summary>
+        ///     Sdls the set window hit test using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="callback">The callback</param>
+        /// <param name="callbackData">The callback data</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetWindowHitTest(
+            IntPtr window,
+            SdlHitTest callback,
+            IntPtr callbackData
+        );
+
+
+        /// <summary>
+        ///     Sdls the get grabbed window
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_GetGrabbedWindow();
+
+
+        /// <summary>
+        ///     Sdls the set window mouse rect using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="rect">The rect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetWindowMouseRect(
+            IntPtr window,
+            ref SdlRect rect
+        );
+
+
+        /// <summary>
+        ///     Sdls the set window mouse rect using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="rect">The rect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetWindowMouseRect(
+            IntPtr window,
+            IntPtr rect
+        );
+
+
+        /// <summary>
+        ///     Sdls the get window mouse rect using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_GetWindowMouseRect(
+            IntPtr window
+        );
+
+
+        /// <summary>
+        ///     Sdls the flash window using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="operation">The operation</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_FlashWindow(
+            IntPtr window,
+            SdlFlashOperation operation
+        );
+
+
+        /// <summary>
+        ///     Sdls the compose custom blend mode using the specified src color factor
+        /// </summary>
+        /// <param name="srcColorFactor">The src color factor</param>
+        /// <param name="dstColorFactor">The dst color factor</param>
+        /// <param name="colorOperation">The color operation</param>
+        /// <param name="srcAlphaFactor">The src alpha factor</param>
+        /// <param name="dstAlphaFactor">The dst alpha factor</param>
+        /// <param name="alphaOperation">The alpha operation</param>
+        /// <returns>The sdl blend mode</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern SdlBlendMode SDL_ComposeCustomBlendMode(
+            SdlBlendFactor srcColorFactor,
+            SdlBlendFactor dstColorFactor,
+            SdlBlendOperation colorOperation,
+            SdlBlendFactor srcAlphaFactor,
+            SdlBlendFactor dstAlphaFactor,
+            SdlBlendOperation alphaOperation
+        );
+
+        /// <summary>
+        ///     Internals the sdl vulkan load library using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_Vulkan_LoadLibrary", CallingConvention = CallingConvention.Cdecl)]
+        private static extern int INTERNAL_SDL_Vulkan_LoadLibrary(
+            byte[] path
+        );
+
+        /// <summary>
+        ///     Sdls the vulkan load library using the specified path
+        /// </summary>
+        /// <param name="path">The path</param>
+        /// <returns>The result</returns>
+        public static int SDL_Vulkan_LoadLibrary(string path)
+        {
+            byte[] utf8Path = Utf8EncodeHeap(path);
+            int result = INTERNAL_SDL_Vulkan_LoadLibrary(
+                utf8Path
+            );
+            return result;
+        }
+
+
+        /// <summary>
+        ///     Sdls the vulkan get vk get instance proc addr
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_Vulkan_GetVkGetInstanceProcAddr();
+
+
+        /// <summary>
+        ///     Sdls the vulkan unload library
+        /// </summary>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_Vulkan_UnloadLibrary();
+
+
+        /// <summary>
+        ///     Sdls the vulkan get instance extensions using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="pCount">The count</param>
+        /// <param name="pNames">The names</param>
+        /// <returns>The sdl bool</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern SdlBool SDL_Vulkan_GetInstanceExtensions(
+            IntPtr window,
+            out uint pCount,
+            IntPtr pNames
+        );
+
+
+        /// <summary>
+        ///     Sdls the vulkan get instance extensions using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="pCount">The count</param>
+        /// <param name="pNames">The names</param>
+        /// <returns>The sdl bool</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern SdlBool SDL_Vulkan_GetInstanceExtensions(
+            IntPtr window,
+            out uint pCount,
+            IntPtr[] pNames
+        );
+
+
+        /// <summary>
+        ///     Sdls the vulkan create surface using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="instance">The instance</param>
+        /// <param name="surface">The surface</param>
+        /// <returns>The sdl bool</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern SdlBool SDL_Vulkan_CreateSurface(
+            IntPtr window,
+            IntPtr instance,
+            out ulong surface
+        );
+
+
+        /// <summary>
+        ///     Sdls the vulkan get drawable size using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="w">The </param>
+        /// <param name="h">The </param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_Vulkan_GetDrawableSize(
+            IntPtr window,
+            out int w,
+            out int h
+        );
+
+        /// <summary>
+        ///     Sdls the metal create view using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_Metal_CreateView(
+            IntPtr window
+        );
+
+
+        /// <summary>
+        ///     Sdls the metal destroy view using the specified view
+        /// </summary>
+        /// <param name="view">The view</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_Metal_DestroyView(
+            IntPtr view
+        );
+
+
+        /// <summary>
+        ///     Sdls the metal get layer using the specified view
+        /// </summary>
+        /// <param name="view">The view</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_Metal_GetLayer(
+            IntPtr view
+        );
+
+
+        /// <summary>
+        ///     Sdls the metal get drawable size using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="w">The </param>
+        /// <param name="h">The </param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_Metal_GetDrawableSize(
+            IntPtr window,
+            out int w,
+            out int h
+        );
+
+
+        /// <summary>
+        ///     Sdls the create renderer using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="index">The index</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_CreateRenderer(
+            IntPtr window,
+            int index,
+            SdlRendererFlags flags
+        );
+
+
+        /// <summary>
+        ///     Sdls the create software renderer using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_CreateSoftwareRenderer(IntPtr surface);
+
+
+        /// <summary>
+        ///     Sdls the create texture using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="format">The format</param>
+        /// <param name="access">The access</param>
+        /// <param name="w">The </param>
+        /// <param name="h">The </param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_CreateTexture(
+            IntPtr renderer,
+            uint format,
+            int access,
+            int w,
+            int h
+        );
+
+
+        /// <summary>
+        ///     Sdls the create texture from surface using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="surface">The surface</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_CreateTextureFromSurface(
+            IntPtr renderer,
+            IntPtr surface
+        );
+
+
+        /// <summary>
+        ///     Sdls the destroy renderer using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_DestroyRenderer(IntPtr renderer);
+
+
+        /// <summary>
+        ///     Sdls the destroy texture using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_DestroyTexture(IntPtr texture);
+
+        /// <summary>
+        ///     Sdls the get num render drivers
+        /// </summary>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetNumRenderDrivers();
+
+
+        /// <summary>
+        ///     Sdls the get render draw blend mode using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="blendMode">The blend mode</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetRenderDrawBlendMode(
+            IntPtr renderer,
+            out SdlBlendMode blendMode
+        );
+
+
+        /// <summary>
+        ///     Sdls the set texture scale mode using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="scaleMode">The scale mode</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetTextureScaleMode(
+            IntPtr texture,
+            SdlScaleMode scaleMode
+        );
+
+
+        /// <summary>
+        ///     Sdls the get texture scale mode using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="scaleMode">The scale mode</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetTextureScaleMode(
+            IntPtr texture,
+            out SdlScaleMode scaleMode
+        );
+
+
+        /// <summary>
+        ///     Sdls the set texture user data using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="userdata">The userdata</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetTextureUserData(
+            IntPtr texture,
+            IntPtr userdata
+        );
+
+
+        /// <summary>
+        ///     Sdls the get texture user data using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_GetTextureUserData(IntPtr texture);
+
+
+        /// <summary>
+        ///     Sdls the get render draw color using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="r">The </param>
+        /// <param name="g">The </param>
+        /// <param name="b">The </param>
+        /// <param name="a">The </param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetRenderDrawColor(
+            IntPtr renderer,
+            out byte r,
+            out byte g,
+            out byte b,
+            out byte a
+        );
+
+        /// <summary>
+        ///     Sdls the get render driver info using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <param name="info">The info</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetRenderDriverInfo(
+            int index,
+            out SdlRendererInfo info
+        );
+
+
+        /// <summary>
+        ///     Sdls the get renderer using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_GetRenderer(IntPtr window);
+
+
+        /// <summary>
+        ///     Sdls the get renderer info using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="info">The info</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetRendererInfo(
+            IntPtr renderer,
+            out SdlRendererInfo info
+        );
+
+
+        /// <summary>
+        ///     Sdls the get renderer output size using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="w">The </param>
+        /// <param name="h">The </param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetRendererOutputSize(
+            IntPtr renderer,
+            out int w,
+            out int h
+        );
+
+
+        /// <summary>
+        ///     Sdls the get texture alpha mod using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="alpha">The alpha</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetTextureAlphaMod(
+            IntPtr texture,
+            out byte alpha
+        );
+
+
+        /// <summary>
+        ///     Sdls the get texture blend mode using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="blendMode">The blend mode</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetTextureBlendMode(
+            IntPtr texture,
+            out SdlBlendMode blendMode
+        );
+
+
+        /// <summary>
+        ///     Sdls the get texture color mod using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="r">The </param>
+        /// <param name="g">The </param>
+        /// <param name="b">The </param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_GetTextureColorMod(
+            IntPtr texture,
+            out byte r,
+            out byte g,
+            out byte b
+        );
+
+
+        /// <summary>
+        ///     Sdls the lock texture using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="rect">The rect</param>
+        /// <param name="pixels">The pixels</param>
+        /// <param name="pitch">The pitch</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_LockTexture(
+            IntPtr texture,
+            ref SdlRect rect,
+            out IntPtr pixels,
+            out int pitch
+        );
+
+
+        /// <summary>
+        ///     Sdls the lock texture using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="rect">The rect</param>
+        /// <param name="pixels">The pixels</param>
+        /// <param name="pitch">The pitch</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_LockTexture(
+            IntPtr texture,
+            IntPtr rect,
+            out IntPtr pixels,
+            out int pitch
+        );
+
+
+        /// <summary>
+        ///     Sdls the lock texture to surface using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="rect">The rect</param>
+        /// <param name="surface">The surface</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_LockTextureToSurface(
+            IntPtr texture,
+            ref SdlRect rect,
+            out IntPtr surface
+        );
+
+
+        /// <summary>
+        ///     Sdls the lock texture to surface using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="rect">The rect</param>
+        /// <param name="surface">The surface</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_LockTextureToSurface(
+            IntPtr texture,
+            IntPtr rect,
+            out IntPtr surface
+        );
+
+
+        /// <summary>
+        ///     Sdls the query texture using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="format">The format</param>
+        /// <param name="access">The access</param>
+        /// <param name="w">The </param>
+        /// <param name="h">The </param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_QueryTexture(
+            IntPtr texture,
+            out uint format,
+            out int access,
+            out int w,
+            out int h
+        );
+
+
+        /// <summary>
+        ///     Sdls the render clear using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderClear(IntPtr renderer);
+
+
+        /// <summary>
+        ///     Sdls the render copy using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopy(
+            IntPtr renderer,
+            IntPtr texture,
+            ref SdlRect srcrect,
+            ref SdlRect dstrect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopy(
+            IntPtr renderer,
+            IntPtr texture,
+            IntPtr srcrect,
+            ref SdlRect dstrect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopy(
+            IntPtr renderer,
+            IntPtr texture,
+            ref SdlRect srcrect,
+            IntPtr dstrect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopy(
+            IntPtr renderer,
+            IntPtr texture,
+            IntPtr srcrect,
+            IntPtr dstrect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy ex using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <param name="angle">The angle</param>
+        /// <param name="center">The center</param>
+        /// <param name="flip">The flip</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyEx(
+            IntPtr renderer,
+            IntPtr texture,
+            ref SdlRect srcrect,
+            ref SdlRect dstrect,
+            double angle,
+            ref SdlPoint center,
+            SdlRendererFlip flip
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy ex using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <param name="angle">The angle</param>
+        /// <param name="center">The center</param>
+        /// <param name="flip">The flip</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyEx(
+            IntPtr renderer,
+            IntPtr texture,
+            IntPtr srcrect,
+            ref SdlRect dstrect,
+            double angle,
+            ref SdlPoint center,
+            SdlRendererFlip flip
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy ex using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <param name="angle">The angle</param>
+        /// <param name="center">The center</param>
+        /// <param name="flip">The flip</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyEx(
+            IntPtr renderer,
+            IntPtr texture,
+            ref SdlRect srcrect,
+            IntPtr dstrect,
+            double angle,
+            ref SdlPoint center,
+            SdlRendererFlip flip
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy ex using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <param name="angle">The angle</param>
+        /// <param name="center">The center</param>
+        /// <param name="flip">The flip</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyEx(
+            IntPtr renderer,
+            IntPtr texture,
+            ref SdlRect srcrect,
+            ref SdlRect dstrect,
+            double angle,
+            IntPtr center,
+            SdlRendererFlip flip
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy ex using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <param name="angle">The angle</param>
+        /// <param name="center">The center</param>
+        /// <param name="flip">The flip</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyEx(
+            IntPtr renderer,
+            IntPtr texture,
+            IntPtr srcrect,
+            IntPtr dstrect,
+            double angle,
+            ref SdlPoint center,
+            SdlRendererFlip flip
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy ex using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <param name="angle">The angle</param>
+        /// <param name="center">The center</param>
+        /// <param name="flip">The flip</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyEx(
+            IntPtr renderer,
+            IntPtr texture,
+            IntPtr srcrect,
+            ref SdlRect dstrect,
+            double angle,
+            IntPtr center,
+            SdlRendererFlip flip
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy ex using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <param name="angle">The angle</param>
+        /// <param name="center">The center</param>
+        /// <param name="flip">The flip</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyEx(
+            IntPtr renderer,
+            IntPtr texture,
+            ref SdlRect srcrect,
+            IntPtr dstrect,
+            double angle,
+            IntPtr center,
+            SdlRendererFlip flip
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy ex using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <param name="angle">The angle</param>
+        /// <param name="center">The center</param>
+        /// <param name="flip">The flip</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyEx(
+            IntPtr renderer,
+            IntPtr texture,
+            IntPtr srcrect,
+            IntPtr dstrect,
+            double angle,
+            IntPtr center,
+            SdlRendererFlip flip
+        );
+
+
+        /// <summary>
+        ///     Sdls the render draw line using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="x1">The </param>
+        /// <param name="y1">The </param>
+        /// <param name="x2">The </param>
+        /// <param name="y2">The </param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderDrawLine(
+            IntPtr renderer,
+            int x1,
+            int y1,
+            int x2,
+            int y2
+        );
+
+
+        /// <summary>
+        ///     Sdls the render draw lines using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="points">The points</param>
+        /// <param name="count">The count</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderDrawLines(
+            IntPtr renderer,
+            [In] SdlPoint[] points,
+            int count
+        );
+
+
+        /// <summary>
+        ///     Sdls the render draw point using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderDrawPoint(
+            IntPtr renderer,
+            int x,
+            int y
+        );
+
+
+        /// <summary>
+        ///     Sdls the render draw points using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="points">The points</param>
+        /// <param name="count">The count</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderDrawPoints(
+            IntPtr renderer,
+            [In] SdlPoint[] points,
+            int count
+        );
+
+
+        /// <summary>
+        ///     Sdls the render draw rect using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="rect">The rect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderDrawRect(
+            IntPtr renderer,
+            ref SdlRect rect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render draw rect using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="rect">The rect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderDrawRect(
+            IntPtr renderer,
+            IntPtr rect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render draw rects using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="rects">The rects</param>
+        /// <param name="count">The count</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderDrawRects(
+            IntPtr renderer,
+            [In] SdlRect[] rects,
+            int count
+        );
+
+
+        /// <summary>
+        ///     Sdls the render fill rect using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="rect">The rect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderFillRect(
+            IntPtr renderer,
+            ref SdlRect rect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render fill rect using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="rect">The rect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderFillRect(
+            IntPtr renderer,
+            IntPtr rect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render fill rects using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="rects">The rects</param>
+        /// <param name="count">The count</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderFillRects(
+            IntPtr renderer,
+            [In] SdlRect[] rects,
+            int count
+        );
+
+        /// <summary>
+        ///     Sdls the render copy f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyF(
+            IntPtr renderer,
+            IntPtr texture,
+            ref SdlRect srcrect,
+            ref SdlFRect dstrect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyF(
+            IntPtr renderer,
+            IntPtr texture,
+            IntPtr srcrect,
+            ref SdlFRect dstrect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyF(
+            IntPtr renderer,
+            IntPtr texture,
+            ref SdlRect srcrect,
+            IntPtr dstrect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyF(
+            IntPtr renderer,
+            IntPtr texture,
+            IntPtr srcrect,
+            IntPtr dstrect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy ex using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <param name="angle">The angle</param>
+        /// <param name="center">The center</param>
+        /// <param name="flip">The flip</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyEx(
+            IntPtr renderer,
+            IntPtr texture,
+            ref SdlRect srcrect,
+            ref SdlFRect dstrect,
+            double angle,
+            ref SdlFPoint center,
+            SdlRendererFlip flip
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy ex using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <param name="angle">The angle</param>
+        /// <param name="center">The center</param>
+        /// <param name="flip">The flip</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyEx(
+            IntPtr renderer,
+            IntPtr texture,
+            IntPtr srcrect,
+            ref SdlFRect dstrect,
+            double angle,
+            ref SdlFPoint center,
+            SdlRendererFlip flip
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy ex f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <param name="angle">The angle</param>
+        /// <param name="center">The center</param>
+        /// <param name="flip">The flip</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyExF(
+            IntPtr renderer,
+            IntPtr texture,
+            ref SdlRect srcrect,
+            IntPtr dstrect,
+            double angle,
+            ref SdlFPoint center,
+            SdlRendererFlip flip
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy ex f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <param name="angle">The angle</param>
+        /// <param name="center">The center</param>
+        /// <param name="flip">The flip</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyExF(
+            IntPtr renderer,
+            IntPtr texture,
+            ref SdlRect srcrect,
+            ref SdlFRect dstrect,
+            double angle,
+            IntPtr center,
+            SdlRendererFlip flip
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy ex f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <param name="angle">The angle</param>
+        /// <param name="center">The center</param>
+        /// <param name="flip">The flip</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyExF(
+            IntPtr renderer,
+            IntPtr texture,
+            IntPtr srcrect,
+            IntPtr dstrect,
+            double angle,
+            ref SdlFPoint center,
+            SdlRendererFlip flip
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy ex f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <param name="angle">The angle</param>
+        /// <param name="center">The center</param>
+        /// <param name="flip">The flip</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyExF(
+            IntPtr renderer,
+            IntPtr texture,
+            IntPtr srcrect,
+            ref SdlFRect dstrect,
+            double angle,
+            IntPtr center,
+            SdlRendererFlip flip
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy ex f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <param name="angle">The angle</param>
+        /// <param name="center">The center</param>
+        /// <param name="flip">The flip</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyExF(
+            IntPtr renderer,
+            IntPtr texture,
+            ref SdlRect srcrect,
+            IntPtr dstrect,
+            double angle,
+            IntPtr center,
+            SdlRendererFlip flip
+        );
+
+
+        /// <summary>
+        ///     Sdls the render copy ex f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="srcrect">The srcrect</param>
+        /// <param name="dstrect">The dstrect</param>
+        /// <param name="angle">The angle</param>
+        /// <param name="center">The center</param>
+        /// <param name="flip">The flip</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderCopyExF(
+            IntPtr renderer,
+            IntPtr texture,
+            IntPtr srcrect,
+            IntPtr dstrect,
+            double angle,
+            IntPtr center,
+            SdlRendererFlip flip
+        );
+
+
+        /// <summary>
+        ///     Sdls the render geometry using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="numVertices">The num vertices</param>
+        /// <param name="indices">The indices</param>
+        /// <param name="numIndices">The num indices</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderGeometry(
+            IntPtr renderer,
+            IntPtr texture,
+            [In] SdlVertex[] vertices,
+            int numVertices,
+            [In] int[] indices,
+            int numIndices
+        );
+
+
+        /// <summary>
+        ///     Sdls the render geometry raw using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="xy">The xy</param>
+        /// <param name="xyStride">The xy stride</param>
+        /// <param name="color">The color</param>
+        /// <param name="colorStride">The color stride</param>
+        /// <param name="uv">The uv</param>
+        /// <param name="uvStride">The uv stride</param>
+        /// <param name="numVertices">The num vertices</param>
+        /// <param name="indices">The indices</param>
+        /// <param name="numIndices">The num indices</param>
+        /// <param name="sizeIndices">The size indices</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderGeometryRaw(
+            IntPtr renderer,
+            IntPtr texture,
+            [In] float[] xy,
+            int xyStride,
+            [In] int[] color,
+            int colorStride,
+            [In] float[] uv,
+            int uvStride,
+            int numVertices,
+            IntPtr indices,
+            int numIndices,
+            int sizeIndices
+        );
+
+
+        /// <summary>
+        ///     Sdls the render draw point f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderDrawPointF(
+            IntPtr renderer,
+            float x,
+            float y
+        );
+
+
+        /// <summary>
+        ///     Sdls the render draw points f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="points">The points</param>
+        /// <param name="count">The count</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderDrawPointsF(
+            IntPtr renderer,
+            [In] SdlFPoint[] points,
+            int count
+        );
+
+
+        /// <summary>
+        ///     Sdls the render draw line f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="x1">The </param>
+        /// <param name="y1">The </param>
+        /// <param name="x2">The </param>
+        /// <param name="y2">The </param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderDrawLineF(
+            IntPtr renderer,
+            float x1,
+            float y1,
+            float x2,
+            float y2
+        );
+
+
+        /// <summary>
+        ///     Sdls the render draw lines f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="points">The points</param>
+        /// <param name="count">The count</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderDrawLinesF(
+            IntPtr renderer,
+            [In] SdlFPoint[] points,
+            int count
+        );
+
+
+        /// <summary>
+        ///     Sdls the render draw rect f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="rect">The rect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderDrawRectF(
+            IntPtr renderer,
+            ref SdlFRect rect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render draw rect f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="rect">The rect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderDrawRectF(
+            IntPtr renderer,
+            IntPtr rect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render draw rects f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="rects">The rects</param>
+        /// <param name="count">The count</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderDrawRectsF(
+            IntPtr renderer,
+            [In] SdlFRect[] rects,
+            int count
+        );
+
+
+        /// <summary>
+        ///     Sdls the render fill rect f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="rect">The rect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderFillRectF(
+            IntPtr renderer,
+            ref SdlFRect rect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render fill rect f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="rect">The rect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderFillRectF(
+            IntPtr renderer,
+            IntPtr rect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render fill rects f using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="rects">The rects</param>
+        /// <param name="count">The count</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderFillRectsF(
+            IntPtr renderer,
+            [In] SdlFRect[] rects,
+            int count
+        );
+
+
+        /// <summary>
+        ///     Sdls the render get clip rect using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="rect">The rect</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_RenderGetClipRect(
+            IntPtr renderer,
+            out SdlRect rect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render get logical size using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="w">The </param>
+        /// <param name="h">The </param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_RenderGetLogicalSize(
+            IntPtr renderer,
+            out int w,
+            out int h
+        );
+
+
+        /// <summary>
+        ///     Sdls the render get scale using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="scaleX">The scale</param>
+        /// <param name="scaleY">The scale</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_RenderGetScale(
+            IntPtr renderer,
+            out float scaleX,
+            out float scaleY
+        );
+
+
+        /// <summary>
+        ///     Sdls the render window to logical using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="windowX">The window</param>
+        /// <param name="windowY">The window</param>
+        /// <param name="logicalX">The logical</param>
+        /// <param name="logicalY">The logical</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_RenderWindowToLogical(
+            IntPtr renderer,
+            int windowX,
+            int windowY,
+            out float logicalX,
+            out float logicalY
+        );
+
+
+        /// <summary>
+        ///     Sdls the render logical to window using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="logicalX">The logical</param>
+        /// <param name="logicalY">The logical</param>
+        /// <param name="windowX">The window</param>
+        /// <param name="windowY">The window</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_RenderLogicalToWindow(
+            IntPtr renderer,
+            float logicalX,
+            float logicalY,
+            out int windowX,
+            out int windowY
+        );
+
+
+        /// <summary>
+        ///     Sdls the render get viewport using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="rect">The rect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderGetViewport(
+            IntPtr renderer,
+            out SdlRect rect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render present using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_RenderPresent(IntPtr renderer);
+
+
+        /// <summary>
+        ///     Sdls the render read pixels using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="rect">The rect</param>
+        /// <param name="format">The format</param>
+        /// <param name="pixels">The pixels</param>
+        /// <param name="pitch">The pitch</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderReadPixels(
+            IntPtr renderer,
+            ref SdlRect rect,
+            uint format,
+            IntPtr pixels,
+            int pitch
+        );
+
+
+        /// <summary>
+        ///     Sdls the render set clip rect using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="rect">The rect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderSetClipRect(
+            IntPtr renderer,
+            ref SdlRect rect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render set clip rect using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="rect">The rect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderSetClipRect(
+            IntPtr renderer,
+            IntPtr rect
+        );
+
+
+        /// <summary>
+        ///     Sdls the render set logical size using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="w">The </param>
+        /// <param name="h">The </param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderSetLogicalSize(
+            IntPtr renderer,
+            int w,
+            int h
+        );
+
+
+        /// <summary>
+        ///     Sdls the render set scale using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="scaleX">The scale</param>
+        /// <param name="scaleY">The scale</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderSetScale(
+            IntPtr renderer,
+            float scaleX,
+            float scaleY
+        );
+
+
+        /// <summary>
+        ///     Sdls the render set integer scale using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="enable">The enable</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderSetIntegerScale(
+            IntPtr renderer,
+            SdlBool enable
+        );
+
+
+        /// <summary>
+        ///     Sdls the render set viewport using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="rect">The rect</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderSetViewport(
+            IntPtr renderer,
+            ref SdlRect rect
+        );
+
+
+        /// <summary>
+        ///     Sdls the set render draw blend mode using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="blendMode">The blend mode</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetRenderDrawBlendMode(
+            IntPtr renderer,
+            SdlBlendMode blendMode
+        );
+
+
+        /// <summary>
+        ///     Sdls the set render draw color using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="r">The </param>
+        /// <param name="g">The </param>
+        /// <param name="b">The </param>
+        /// <param name="a">The </param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetRenderDrawColor(
+            IntPtr renderer,
+            byte r,
+            byte g,
+            byte b,
+            byte a
+        );
+
+
+        /// <summary>
+        ///     Sdls the set render target using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="texture">The texture</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetRenderTarget(
+            IntPtr renderer,
+            IntPtr texture
+        );
+
+
+        /// <summary>
+        ///     Sdls the set texture alpha mod using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="alpha">The alpha</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetTextureAlphaMod(
+            IntPtr texture,
+            byte alpha
+        );
+
+
+        /// <summary>
+        ///     Sdls the set texture blend mode using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="blendMode">The blend mode</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetTextureBlendMode(
+            IntPtr texture,
+            SdlBlendMode blendMode
+        );
+
+
+        /// <summary>
+        ///     Sdls the set texture color mod using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="r">The </param>
+        /// <param name="g">The </param>
+        /// <param name="b">The </param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_SetTextureColorMod(
+            IntPtr texture,
+            byte r,
+            byte g,
+            byte b
+        );
+
+
+        /// <summary>
+        ///     Sdls the unlock texture using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_UnlockTexture(IntPtr texture);
+
+
+        /// <summary>
+        ///     Sdls the update texture using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="rect">The rect</param>
+        /// <param name="pixels">The pixels</param>
+        /// <param name="pitch">The pitch</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_UpdateTexture(
+            IntPtr texture,
+            ref SdlRect rect,
+            IntPtr pixels,
+            int pitch
+        );
+
+
+        /// <summary>
+        ///     Sdls the update texture using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="rect">The rect</param>
+        /// <param name="pixels">The pixels</param>
+        /// <param name="pitch">The pitch</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_UpdateTexture(
+            IntPtr texture,
+            IntPtr rect,
+            IntPtr pixels,
+            int pitch
+        );
+
+
+        /// <summary>
+        ///     Sdls the update yuv texture using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="rect">The rect</param>
+        /// <param name="yPlane">The plane</param>
+        /// <param name="yPitch">The pitch</param>
+        /// <param name="uPlane">The plane</param>
+        /// <param name="uPitch">The pitch</param>
+        /// <param name="vPlane">The plane</param>
+        /// <param name="vPitch">The pitch</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_UpdateYUVTexture(
+            IntPtr texture,
+            ref SdlRect rect,
+            IntPtr yPlane,
+            int yPitch,
+            IntPtr uPlane,
+            int uPitch,
+            IntPtr vPlane,
+            int vPitch
+        );
+
+
+        /// <summary>
+        ///     Sdls the update nv texture using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="rect">The rect</param>
+        /// <param name="yPlane">The plane</param>
+        /// <param name="yPitch">The pitch</param>
+        /// <param name="uvPlane">The uv plane</param>
+        /// <param name="uvPitch">The uv pitch</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_UpdateNVTexture(
+            IntPtr texture,
+            ref SdlRect rect,
+            IntPtr yPlane,
+            int yPitch,
+            IntPtr uvPlane,
+            int uvPitch
+        );
+
+
+        /// <summary>
+        ///     Sdls the render target supported using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <returns>The sdl bool</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern SdlBool SDL_RenderTargetSupported(
+            IntPtr renderer
+        );
+
+
+        /// <summary>
+        ///     Sdls the get render target using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_GetRenderTarget(IntPtr renderer);
+
+
+        /// <summary>
+        ///     Sdls the render get metal layer using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_RenderGetMetalLayer(
+            IntPtr renderer
+        );
+
+
+        /// <summary>
+        ///     Sdls the render get metal command encoder using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_RenderGetMetalCommandEncoder(
+            IntPtr renderer
+        );
+
+
+        /// <summary>
+        ///     Sdls the render set v sync using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <param name="vsync">The vsync</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderSetVSync(IntPtr renderer, int vsync);
+
+
+        /// <summary>
+        ///     Sdls the render is clip enabled using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <returns>The sdl bool</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern SdlBool SDL_RenderIsClipEnabled(IntPtr renderer);
+
+
+        /// <summary>
+        ///     Sdls the render flush using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <returns>The int</returns>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_RenderFlush(IntPtr renderer);
+
+        /// <summary>
+        ///     Sdls the define pixelfourcc using the specified a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <param name="c">The </param>
+        /// <param name="d">The </param>
+        /// <returns>The uint</returns>
+        public static uint SDL_DEFINE_PIXELFOURCC(byte a, byte b, byte c, byte d) => SDL_FOURCC(a, b, c, d);
+
+        /// <summary>
+        ///     Sdls the define pixelformat using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="order">The order</param>
+        /// <param name="layout">The layout</param>
+        /// <param name="bits">The bits</param>
+        /// <param name="bytes">The bytes</param>
+        /// <returns>The uint</returns>
+        public static uint SDL_DEFINE_PIXELFORMAT(
+            SdlPixelType type,
+            uint order,
+            SdlPackedLayout layout,
+            byte bits,
+            byte bytes
+        )
+            => (uint) (
+                (1 << 28) |
+                ((byte) type << 24) |
+                ((byte) order << 20) |
+                ((byte) layout << 16) |
+                (bits << 8) |
+                bytes
+            );
+
+        /// <summary>
+        ///     Sdls the pixelflag using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <returns>The byte</returns>
+        public static byte SDL_PIXELFLAG(uint x) => (byte) ((x >> 28) & 0x0F);
+
+        /// <summary>
+        ///     Sdls the pixeltype using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <returns>The byte</returns>
+        public static byte SDL_PIXELTYPE(uint x) => (byte) ((x >> 24) & 0x0F);
+
+        /// <summary>
+        ///     Sdls the pixelorder using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <returns>The byte</returns>
+        public static byte SDL_PIXELORDER(uint x) => (byte) ((x >> 20) & 0x0F);
+
+        /// <summary>
+        ///     Sdls the pixellayout using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <returns>The byte</returns>
+        public static byte SDL_PIXELLAYOUT(uint x) => (byte) ((x >> 16) & 0x0F);
+
+        /// <summary>
+        ///     Sdls the bitsperpixel using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <returns>The byte</returns>
+        public static byte SDL_BITSPERPIXEL(uint x) => (byte) ((x >> 8) & 0xFF);
+
+        /// <summary>
+        ///     Sdls the bytesperpixel using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <returns>The byte</returns>
+        public static byte SDL_BYTESPERPIXEL(uint x)
+        {
+            if (SDL_ISPIXELFORMAT_FOURCC(x))
+            {
+                if (x == SdlPixelformatYuy2 ||
+                    x == SdlPixelformatUyvy ||
+                    x == SdlPixelformatYvyu)
+                {
+                    return 2;
+                }
+
+                return 1;
+            }
+
+            return (byte) (x & 0xFF);
+        }
+
+        /// <summary>
+        ///     Describes whether sdl ispixelformat indexed
+        /// </summary>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
+        public static bool SDL_ISPIXELFORMAT_INDEXED(uint format)
+        {
+            if (SDL_ISPIXELFORMAT_FOURCC(format))
+            {
+                return false;
+            }
+
+            SdlPixelType pType =
+                (SdlPixelType) SDL_PIXELTYPE(format);
+            return pType == SdlPixelType.SdlPixeltypeIndex1 ||
+                   pType == SdlPixelType.SdlPixeltypeIndex4 ||
+                   pType == SdlPixelType.SdlPixeltypeIndex8;
+        }
+
+        /// <summary>
+        ///     Describes whether sdl ispixelformat packed
+        /// </summary>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
+        public static bool SDL_ISPIXELFORMAT_PACKED(uint format)
+        {
+            if (SDL_ISPIXELFORMAT_FOURCC(format))
+            {
+                return false;
+            }
+
+            SdlPixelType pType =
+                (SdlPixelType) SDL_PIXELTYPE(format);
+            return pType == SdlPixelType.SdlPixeltypePacked8 ||
+                   pType == SdlPixelType.SdlPixeltypePacked16 ||
+                   pType == SdlPixelType.SdlPixeltypePacked32;
+        }
+
+        /// <summary>
+        ///     Describes whether sdl ispixelformat array
+        /// </summary>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
+        public static bool SDL_ISPIXELFORMAT_ARRAY(uint format)
+        {
+            if (SDL_ISPIXELFORMAT_FOURCC(format))
+            {
+                return false;
+            }
+
+            SdlPixelType pType =
+                (SdlPixelType) SDL_PIXELTYPE(format);
+            return pType == SdlPixelType.SdlPixeltypeArrayu8 ||
+                   pType == SdlPixelType.SdlPixeltypeArrayu16 ||
+                   pType == SdlPixelType.SdlPixeltypeArrayu32 ||
+                   pType == SdlPixelType.SdlPixeltypeArrayf16 ||
+                   pType == SdlPixelType.SdlPixeltypeArrayf32;
+        }
+
+        /// <summary>
+        ///     Describes whether sdl ispixelformat alpha
+        /// </summary>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
+        public static bool SDL_ISPIXELFORMAT_ALPHA(uint format)
+        {
+            if (SDL_ISPIXELFORMAT_PACKED(format))
+            {
+                SdlPackedOrder pOrder =
+                    (SdlPackedOrder) SDL_PIXELORDER(format);
+                return pOrder == SdlPackedOrder.SdlPackedorderArgb ||
+                       pOrder == SdlPackedOrder.SdlPackedorderRgba ||
+                       pOrder == SdlPackedOrder.SdlPackedorderAbgr ||
+                       pOrder == SdlPackedOrder.SdlPackedorderBgra;
+            }
+
+            if (SDL_ISPIXELFORMAT_ARRAY(format))
+            {
+                SdlArrayOrder aOrder =
+                    (SdlArrayOrder) SDL_PIXELORDER(format);
+                return aOrder == SdlArrayOrder.SdlArrayorderArgb ||
+                       aOrder == SdlArrayOrder.SdlArrayorderRgba ||
+                       aOrder == SdlArrayOrder.SdlArrayorderAbgr ||
+                       aOrder == SdlArrayOrder.SdlArrayorderBgra;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        ///     Describes whether sdl ispixelformat fourcc
+        /// </summary>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
+        public static bool SDL_ISPIXELFORMAT_FOURCC(uint format) => (format == 0) && (SDL_PIXELFLAG(format) != 1);
+
+
         /// <summary>
         ///     Sdls the alloc format using the specified pixel format
         /// </summary>
@@ -6631,7 +6508,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_AllocFormat(uint pixelFormat);
 
-        
+
         /// <summary>
         ///     Sdls the alloc palette using the specified ncolors
         /// </summary>
@@ -6652,7 +6529,7 @@ namespace Alis.Core.Graphic.SDL
             ushort[] ramp
         );
 
-        
+
         /// <summary>
         ///     Sdls the free format using the specified format
         /// </summary>
@@ -6660,7 +6537,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_FreeFormat(IntPtr format);
 
-        
+
         /// <summary>
         ///     Sdls the free palette using the specified palette
         /// </summary>
@@ -6687,7 +6564,7 @@ namespace Alis.Core.Graphic.SDL
             INTERNAL_SDL_GetPixelFormatName(format)
         );
 
-        
+
         /// <summary>
         ///     Sdls the get rgb using the specified pixel
         /// </summary>
@@ -6705,7 +6582,7 @@ namespace Alis.Core.Graphic.SDL
             out byte b
         );
 
-        
+
         /// <summary>
         ///     Sdls the get rgba using the specified pixel
         /// </summary>
@@ -6725,7 +6602,7 @@ namespace Alis.Core.Graphic.SDL
             out byte a
         );
 
-        
+
         /// <summary>
         ///     Sdls the map rgb using the specified format
         /// </summary>
@@ -6742,7 +6619,7 @@ namespace Alis.Core.Graphic.SDL
             byte b
         );
 
-        
+
         /// <summary>
         ///     Sdls the map rgba using the specified format
         /// </summary>
@@ -6799,7 +6676,7 @@ namespace Alis.Core.Graphic.SDL
             out uint amask
         );
 
-        
+
         /// <summary>
         ///     Sdls the set palette colors using the specified palette
         /// </summary>
@@ -6816,7 +6693,7 @@ namespace Alis.Core.Graphic.SDL
             int ncolors
         );
 
-        
+
         /// <summary>
         ///     Sdls the set pixel format palette using the specified format
         /// </summary>
@@ -6939,27 +6816,7 @@ namespace Alis.Core.Graphic.SDL
             out SdlRect result
         );
 
-        /// <summary>
-        ///     The sdl swsurface
-        /// </summary>
-        public const uint SdlSwsurface = 0x00000000;
 
-        /// <summary>
-        ///     The sdl prealloc
-        /// </summary>
-        public const uint SdlPrealloc = 0x00000001;
-
-        /// <summary>
-        ///     The sdl rleaccel
-        /// </summary>
-        public const uint SdlRleaccel = 0x00000002;
-
-        /// <summary>
-        ///     The sdl dontfree
-        /// </summary>
-        public const uint SdlDontfree = 0x00000004;
-
-        
         /// <summary>
         ///     Describes whether sdl mustlock
         /// </summary>
@@ -6975,7 +6832,7 @@ namespace Alis.Core.Graphic.SDL
             return (sur.flags & SdlRleaccel) != 0;
         }
 
-        
+
         /// <summary>
         ///     Sdls the blit surface using the specified src
         /// </summary>
@@ -6992,7 +6849,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        
+
         /// <summary>
         ///     Sdls the blit surface using the specified src
         /// </summary>
@@ -7009,7 +6866,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        
+
         /// <summary>
         ///     Sdls the blit surface using the specified src
         /// </summary>
@@ -7026,7 +6883,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr dstrect
         );
 
-        
+
         /// <summary>
         ///     Sdls the blit surface using the specified src
         /// </summary>
@@ -7043,7 +6900,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr dstrect
         );
 
-        
+
         /// <summary>
         ///     Sdls the blit scaled using the specified src
         /// </summary>
@@ -7060,7 +6917,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        
+
         /// <summary>
         ///     Sdls the blit scaled using the specified src
         /// </summary>
@@ -7077,7 +6934,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        
+
         /// <summary>
         ///     Sdls the blit scaled using the specified src
         /// </summary>
@@ -7094,7 +6951,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr dstrect
         );
 
-        
+
         /// <summary>
         ///     Sdls the blit scaled using the specified src
         /// </summary>
@@ -7111,7 +6968,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr dstrect
         );
 
-        
+
         /// <summary>
         ///     Sdls the convert pixels using the specified width
         /// </summary>
@@ -7136,7 +6993,7 @@ namespace Alis.Core.Graphic.SDL
             int dstPitch
         );
 
-        
+
         /// <summary>
         ///     Sdls the premultiply alpha using the specified width
         /// </summary>
@@ -7161,7 +7018,7 @@ namespace Alis.Core.Graphic.SDL
             int dstPitch
         );
 
-        
+
         /// <summary>
         ///     Sdls the convert surface using the specified src
         /// </summary>
@@ -7176,7 +7033,7 @@ namespace Alis.Core.Graphic.SDL
             uint flags
         );
 
-        
+
         /// <summary>
         ///     Sdls the convert surface format using the specified src
         /// </summary>
@@ -7191,7 +7048,7 @@ namespace Alis.Core.Graphic.SDL
             uint flags
         );
 
-        
+
         /// <summary>
         ///     Sdls the create rgb surface using the specified flags
         /// </summary>
@@ -7216,7 +7073,7 @@ namespace Alis.Core.Graphic.SDL
             uint amask
         );
 
-        
+
         /// <summary>
         ///     Sdls the create rgb surface from using the specified pixels
         /// </summary>
@@ -7243,7 +7100,7 @@ namespace Alis.Core.Graphic.SDL
             uint amask
         );
 
-        
+
         /// <summary>
         ///     Sdls the create rgb surface with format using the specified flags
         /// </summary>
@@ -7262,7 +7119,7 @@ namespace Alis.Core.Graphic.SDL
             uint format
         );
 
-        
+
         /// <summary>
         ///     Sdls the create rgb surface with format from using the specified pixels
         /// </summary>
@@ -7283,7 +7140,7 @@ namespace Alis.Core.Graphic.SDL
             uint format
         );
 
-        
+
         /// <summary>
         ///     Sdls the fill rect using the specified dst
         /// </summary>
@@ -7298,7 +7155,7 @@ namespace Alis.Core.Graphic.SDL
             uint color
         );
 
-        
+
         /// <summary>
         ///     Sdls the fill rect using the specified dst
         /// </summary>
@@ -7313,7 +7170,7 @@ namespace Alis.Core.Graphic.SDL
             uint color
         );
 
-        
+
         /// <summary>
         ///     Sdls the fill rects using the specified dst
         /// </summary>
@@ -7330,7 +7187,7 @@ namespace Alis.Core.Graphic.SDL
             uint color
         );
 
-        
+
         /// <summary>
         ///     Sdls the free surface using the specified surface
         /// </summary>
@@ -7338,7 +7195,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_FreeSurface(IntPtr surface);
 
-        
+
         /// <summary>
         ///     Sdls the get clip rect using the specified surface
         /// </summary>
@@ -7350,7 +7207,7 @@ namespace Alis.Core.Graphic.SDL
             out SdlRect rect
         );
 
-        
+
         /// <summary>
         ///     Sdls the has color key using the specified surface
         /// </summary>
@@ -7359,7 +7216,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_HasColorKey(IntPtr surface);
 
-        
+
         /// <summary>
         ///     Sdls the get color key using the specified surface
         /// </summary>
@@ -7372,7 +7229,7 @@ namespace Alis.Core.Graphic.SDL
             out uint key
         );
 
-        
+
         /// <summary>
         ///     Sdls the get surface alpha mod using the specified surface
         /// </summary>
@@ -7385,7 +7242,7 @@ namespace Alis.Core.Graphic.SDL
             out byte alpha
         );
 
-        
+
         /// <summary>
         ///     Sdls the get surface blend mode using the specified surface
         /// </summary>
@@ -7398,7 +7255,7 @@ namespace Alis.Core.Graphic.SDL
             out SdlBlendMode blendMode
         );
 
-        
+
         /// <summary>
         ///     Sdls the get surface color mod using the specified surface
         /// </summary>
@@ -7415,9 +7272,7 @@ namespace Alis.Core.Graphic.SDL
             out byte b
         );
 
-        
-        
-        
+
         /// <summary>
         ///     Internals the sdl load bmp rw using the specified src
         /// </summary>
@@ -7441,7 +7296,7 @@ namespace Alis.Core.Graphic.SDL
             return INTERNAL_SDL_LoadBMP_RW(rwops, 1);
         }
 
-        
+
         /// <summary>
         ///     Sdls the lock surface using the specified surface
         /// </summary>
@@ -7450,7 +7305,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_LockSurface(IntPtr surface);
 
-        
+
         /// <summary>
         ///     Sdls the lower blit using the specified src
         /// </summary>
@@ -7467,7 +7322,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        
+
         /// <summary>
         ///     Sdls the lower blit scaled using the specified src
         /// </summary>
@@ -7484,9 +7339,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        
-        
-        
+
         /// <summary>
         ///     Internals the sdl save bmp rw using the specified surface
         /// </summary>
@@ -7513,7 +7366,7 @@ namespace Alis.Core.Graphic.SDL
             return INTERNAL_SDL_SaveBMP_RW(surface, rwops, 1);
         }
 
-        
+
         /// <summary>
         ///     Sdls the set clip rect using the specified surface
         /// </summary>
@@ -7526,7 +7379,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect rect
         );
 
-        
+
         /// <summary>
         ///     Sdls the set color key using the specified surface
         /// </summary>
@@ -7541,7 +7394,7 @@ namespace Alis.Core.Graphic.SDL
             uint key
         );
 
-        
+
         /// <summary>
         ///     Sdls the set surface alpha mod using the specified surface
         /// </summary>
@@ -7554,7 +7407,7 @@ namespace Alis.Core.Graphic.SDL
             byte alpha
         );
 
-        
+
         /// <summary>
         ///     Sdls the set surface blend mode using the specified surface
         /// </summary>
@@ -7567,7 +7420,7 @@ namespace Alis.Core.Graphic.SDL
             SdlBlendMode blendMode
         );
 
-        
+
         /// <summary>
         ///     Sdls the set surface color mod using the specified surface
         /// </summary>
@@ -7584,7 +7437,7 @@ namespace Alis.Core.Graphic.SDL
             byte b
         );
 
-        
+
         /// <summary>
         ///     Sdls the set surface palette using the specified surface
         /// </summary>
@@ -7597,7 +7450,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr palette
         );
 
-        
+
         /// <summary>
         ///     Sdls the set surface rle using the specified surface
         /// </summary>
@@ -7610,7 +7463,7 @@ namespace Alis.Core.Graphic.SDL
             int flag
         );
 
-        
+
         /// <summary>
         ///     Sdls the has surface rle using the specified surface
         /// </summary>
@@ -7621,7 +7474,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr surface
         );
 
-        
+
         /// <summary>
         ///     Sdls the soft stretch using the specified src
         /// </summary>
@@ -7638,7 +7491,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        
+
         /// <summary>
         ///     Sdls the soft stretch linear using the specified src
         /// </summary>
@@ -7655,7 +7508,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        
+
         /// <summary>
         ///     Sdls the unlock surface using the specified surface
         /// </summary>
@@ -7663,7 +7516,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_UnlockSurface(IntPtr surface);
 
-        
+
         /// <summary>
         ///     Sdls the upper blit using the specified src
         /// </summary>
@@ -7680,7 +7533,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        
+
         /// <summary>
         ///     Sdls the upper blit scaled using the specified src
         /// </summary>
@@ -7697,7 +7550,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        
+
         /// <summary>
         ///     Sdls the duplicate surface using the specified surface
         /// </summary>
@@ -7705,7 +7558,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_DuplicateSurface(IntPtr surface);
-        
+
         /// <summary>
         ///     Sdls the has clipboard text
         /// </summary>
@@ -7732,7 +7585,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="text">The text</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetClipboardText", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_SDL_SetClipboardText(
+        private static extern int INTERNAL_SDL_SetClipboardText(
             byte[] text
         );
 
@@ -7741,7 +7594,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="text">The text</param>
         /// <returns>The result</returns>
-        public static  int SDL_SetClipboardText(
+        public static int SDL_SetClipboardText(
             string text
         )
         {
@@ -7752,40 +7605,6 @@ namespace Alis.Core.Graphic.SDL
             return result;
         }
 
-        
-        
-        
-        /// <summary>
-        ///     The sdl pressed
-        /// </summary>
-        public const byte SdlPressed = 1;
-
-        /// <summary>
-        ///     The sdl released
-        /// </summary>
-        public const byte SdlReleased = 0;
-
-        
-        /// <summary>
-        ///     The sdl texteditingevent text size
-        /// </summary>
-        public const int SdlTexteditingeventTextSize = 32;
-
-        /// <summary>
-        ///     The sdl textinputevent text size
-        /// </summary>
-        public const int SdlTextinputeventTextSize = 32;
-
-
-        /// <summary>
-        ///     The sdl eventfilter
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int SdlEventFilter(
-            IntPtr userdata, 
-            IntPtr sdlevent 
-        );
-        
         /// <summary>
         ///     Sdls the pump events
         /// </summary>
@@ -7810,7 +7629,7 @@ namespace Alis.Core.Graphic.SDL
             SdlEventType maxType
         );
 
-        
+
         /// <summary>
         ///     Sdls the has event using the specified type
         /// </summary>
@@ -7831,7 +7650,7 @@ namespace Alis.Core.Graphic.SDL
             SdlEventType maxType
         );
 
-        
+
         /// <summary>
         ///     Sdls the flush event using the specified type
         /// </summary>
@@ -7850,7 +7669,7 @@ namespace Alis.Core.Graphic.SDL
             SdlEventType max
         );
 
-        
+
         /// <summary>
         ///     Sdls the poll event using the specified  event
         /// </summary>
@@ -7859,7 +7678,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_PollEvent(out SdlEvent @event);
 
-        
+
         /// <summary>
         ///     Sdls the wait event using the specified  event
         /// </summary>
@@ -7868,7 +7687,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_WaitEvent(out SdlEvent @event);
 
-        
+
         /// <summary>
         ///     Sdls the wait event timeout using the specified  event
         /// </summary>
@@ -7878,7 +7697,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_WaitEventTimeout(out SdlEvent @event, int timeout);
 
-        
+
         /// <summary>
         ///     Sdls the push event using the specified  event
         /// </summary>
@@ -7887,7 +7706,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_PushEvent(ref SdlEvent @event);
 
-        
+
         /// <summary>
         ///     Sdls the set event filter using the specified filter
         /// </summary>
@@ -7899,7 +7718,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr userdata
         );
 
-        
+
         /// <summary>
         ///     Sdls the get event filter using the specified filter
         /// </summary>
@@ -7940,7 +7759,7 @@ namespace Alis.Core.Graphic.SDL
             return retval;
         }
 
-        
+
         /// <summary>
         ///     Sdls the add event watch using the specified filter
         /// </summary>
@@ -7952,7 +7771,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr userdata
         );
 
-        
+
         /// <summary>
         ///     Sdls the del event watch using the specified filter
         /// </summary>
@@ -7964,7 +7783,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr userdata
         );
 
-        
+
         /// <summary>
         ///     Sdls the filter events using the specified filter
         /// </summary>
@@ -7975,27 +7794,7 @@ namespace Alis.Core.Graphic.SDL
             SdlEventFilter filter,
             IntPtr userdata
         );
-        
-        /// <summary>
-        ///     The sdl query
-        /// </summary>
-        public const int SdlQuery = -1;
 
-        /// <summary>
-        ///     The sdl ignore
-        /// </summary>
-        public const int SdlIgnore = 0;
-
-        /// <summary>
-        ///     The sdl disable
-        /// </summary>
-        public const int SdlDisable = 0;
-
-        /// <summary>
-        ///     The sdl enable
-        /// </summary>
-        public const int SdlEnable = 1;
-        
         /// <summary>
         ///     Sdls the event state using the specified type
         /// </summary>
@@ -8004,7 +7803,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The byte</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte SDL_EventState(SdlEventType type, int state);
-        
+
         /// <summary>
         ///     Sdls the get event state using the specified type
         /// </summary>
@@ -8012,7 +7811,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The byte</returns>
         public static byte SDL_GetEventState(SdlEventType type) => SDL_EventState(type, SdlQuery);
 
-        
+
         /// <summary>
         ///     Sdls the register events using the specified numevents
         /// </summary>
@@ -8020,11 +7819,6 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_RegisterEvents(int numevents);
-        
-        /// <summary>
-        ///     The sdlk scancode mask
-        /// </summary>
-        public const int SdlkScancodeMask = 1 << 30;
 
         /// <summary>
         ///     Sdls the scancode to keycode using the specified x
@@ -8032,14 +7826,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="x">The </param>
         /// <returns>The sdl keycode</returns>
         public static SdlKeycode SDL_SCANCODE_TO_KEYCODE(SdlScancode x) => (SdlKeycode) ((int) x | SdlkScancodeMask);
-        
+
         /// <summary>
         ///     Sdls the get keyboard focus
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetKeyboardFocus();
-        
+
         /// <summary>
         ///     Sdls the get keyboard state using the specified numkeys
         /// </summary>
@@ -8047,21 +7841,21 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetKeyboardState(out int numkeys);
-        
+
         /// <summary>
         ///     Sdls the get mod state
         /// </summary>
         /// <returns>The sdl keymod</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlKeymod SDL_GetModState();
-        
+
         /// <summary>
         ///     Sdls the set mod state using the specified modstate
         /// </summary>
         /// <param name="modstate">The modstate</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_SetModState(SdlKeymod modstate);
-        
+
         /// <summary>
         ///     Sdls the get key from scancode using the specified scancode
         /// </summary>
@@ -8069,7 +7863,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl keycode</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlKeycode SDL_GetKeyFromScancode(SdlScancode scancode);
-        
+
         /// <summary>
         ///     Sdls the get scancode from key using the specified key
         /// </summary>
@@ -8077,7 +7871,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl scancode</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlScancode SDL_GetScancodeFromKey(SdlKeycode key);
-        
+
         /// <summary>
         ///     Internals the sdl get scancode name using the specified scancode
         /// </summary>
@@ -8094,14 +7888,14 @@ namespace Alis.Core.Graphic.SDL
         public static string SDL_GetScancodeName(SdlScancode scancode) => UTF8_ToManaged(
             INTERNAL_SDL_GetScancodeName(scancode)
         );
-        
+
         /// <summary>
         ///     Internals the sdl get scancode from name using the specified name
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The sdl scancode</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetScancodeFromName", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  SdlScancode INTERNAL_SDL_GetScancodeFromName(
+        private static extern SdlScancode INTERNAL_SDL_GetScancodeFromName(
             byte[] name
         );
 
@@ -8110,7 +7904,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The sdl scancode</returns>
-        public static  SdlScancode SDL_GetScancodeFromName(string name)
+        public static SdlScancode SDL_GetScancodeFromName(string name)
         {
             int utf8NameBufSize = Utf8Size(name);
             byte[] utf8Name = new byte[utf8NameBufSize];
@@ -8118,7 +7912,7 @@ namespace Alis.Core.Graphic.SDL
                 Utf8Encode(name, utf8Name, utf8NameBufSize)
             );
         }
-        
+
         /// <summary>
         ///     Internals the sdl get key name using the specified key
         /// </summary>
@@ -8133,14 +7927,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="key">The key</param>
         /// <returns>The string</returns>
         public static string SDL_GetKeyName(SdlKeycode key) => UTF8_ToManaged(INTERNAL_SDL_GetKeyName(key));
-        
+
         /// <summary>
         ///     Internals the sdl get key from name using the specified name
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The sdl keycode</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyFromName", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  SdlKeycode INTERNAL_SDL_GetKeyFromName(
+        private static extern SdlKeycode INTERNAL_SDL_GetKeyFromName(
             byte[] name
         );
 
@@ -8149,7 +7943,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The sdl keycode</returns>
-        public static  SdlKeycode SDL_GetKeyFromName(string name)
+        public static SdlKeycode SDL_GetKeyFromName(string name)
         {
             int utf8NameBufSize = Utf8Size(name);
             byte[] utf8Name = new byte[utf8NameBufSize];
@@ -8157,40 +7951,40 @@ namespace Alis.Core.Graphic.SDL
                 Utf8Encode(name, utf8Name, utf8NameBufSize)
             );
         }
-        
+
         /// <summary>
         ///     Sdls the start text input
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_StartTextInput();
-        
+
         /// <summary>
         ///     Sdls the is text input active
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_IsTextInputActive();
-        
+
         /// <summary>
         ///     Sdl the stop text input
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_StopTextInput();
-        
+
         /// <summary>
         ///     Sdl the set text input rect using the specified rect
         /// </summary>
         /// <param name="rect">The rect</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_SetTextInputRect(ref SdlRect rect);
-        
+
         /// <summary>
         ///     Sdl the has screen keyboard support
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_HasScreenKeyboardSupport();
-        
+
         /// <summary>
         ///     Sdl the is screen keyboard shown using the specified window
         /// </summary>
@@ -8198,14 +7992,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_IsScreenKeyboardShown(IntPtr window);
-        
+
         /// <summary>
         ///     Sdl the get mouse focus
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetMouseFocus();
-        
+
         /// <summary>
         ///     Sdl the get mouse state using the specified x
         /// </summary>
@@ -8214,7 +8008,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetMouseState(out int x, out int y);
-        
+
         /// <summary>
         ///     Sdl the get mouse state using the specified x
         /// </summary>
@@ -8223,7 +8017,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetMouseState(IntPtr x, out int y);
-        
+
         /// <summary>
         ///     Sdl the get mouse state using the specified x
         /// </summary>
@@ -8232,7 +8026,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetMouseState(out int x, IntPtr y);
-        
+
         /// <summary>
         ///     Sdl the get mouse state using the specified x
         /// </summary>
@@ -8241,7 +8035,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetMouseState(IntPtr x, IntPtr y);
-        
+
         /// <summary>
         ///     Sdl the get global mouse state using the specified x
         /// </summary>
@@ -8250,7 +8044,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetGlobalMouseState(out int x, out int y);
-        
+
         /// <summary>
         ///     Sdl the get global mouse state using the specified x
         /// </summary>
@@ -8259,7 +8053,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetGlobalMouseState(IntPtr x, out int y);
-        
+
         /// <summary>
         ///     Sdl the get global mouse state using the specified x
         /// </summary>
@@ -8268,7 +8062,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetGlobalMouseState(out int x, IntPtr y);
-        
+
         /// <summary>
         ///     Sdl the get global mouse state using the specified x
         /// </summary>
@@ -8277,7 +8071,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetGlobalMouseState(IntPtr x, IntPtr y);
-        
+
         /// <summary>
         ///     Sdl the get relative mouse state using the specified x
         /// </summary>
@@ -8286,7 +8080,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetRelativeMouseState(out int x, out int y);
-        
+
         /// <summary>
         ///     Sdl the warp mouse in window using the specified window
         /// </summary>
@@ -8295,7 +8089,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="y">The </param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_WarpMouseInWindow(IntPtr window, int x, int y);
-        
+
         /// <summary>
         ///     Sdl the warp mouse global using the specified x
         /// </summary>
@@ -8304,7 +8098,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_WarpMouseGlobal(int x, int y);
-        
+
         /// <summary>
         ///     Sdl the set relative mouse mode using the specified enabled
         /// </summary>
@@ -8312,7 +8106,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_SetRelativeMouseMode(SdlBool enabled);
-        
+
         /// <summary>
         ///     Sdl the capture mouse using the specified enabled
         /// </summary>
@@ -8320,14 +8114,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_CaptureMouse(SdlBool enabled);
-        
+
         /// <summary>
         ///     Sdl the get relative mouse mode
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_GetRelativeMouseMode();
-        
+
         /// <summary>
         ///     Sdl the create cursor using the specified data
         /// </summary>
@@ -8347,7 +8141,7 @@ namespace Alis.Core.Graphic.SDL
             int hotX,
             int hotY
         );
-        
+
         /// <summary>
         ///     Sdls the create color cursor using the specified surface
         /// </summary>
@@ -8361,7 +8155,7 @@ namespace Alis.Core.Graphic.SDL
             int hotX,
             int hotY
         );
-        
+
         /// <summary>
         ///     Sdls the create system cursor using the specified id
         /// </summary>
@@ -8369,28 +8163,28 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_CreateSystemCursor(SdlSystemCursor id);
-        
+
         /// <summary>
         ///     Sdls the set cursor using the specified cursor
         /// </summary>
         /// <param name="cursor">The cursor</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_SetCursor(IntPtr cursor);
-        
+
         /// <summary>
         ///     Sdls the get cursor
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetCursor();
-        
+
         /// <summary>
         ///     Sdls the free cursor using the specified cursor
         /// </summary>
         /// <param name="cursor">The cursor</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_FreeCursor(IntPtr cursor);
-        
+
         /// <summary>
         ///     Sdls the show cursor using the specified toggle
         /// </summary>
@@ -8409,93 +8203,38 @@ namespace Alis.Core.Graphic.SDL
             (uint) (1 << ((int) x - 1));
 
         /// <summary>
-        ///     The sdl button left
-        /// </summary>
-        public const uint SdlButtonLeft = 1;
-
-        /// <summary>
-        ///     The sdl button middle
-        /// </summary>
-        public const uint SdlButtonMiddle = 2;
-
-        /// <summary>
-        ///     The sdl button right
-        /// </summary>
-        public const uint SdlButtonRight = 3;
-
-        /// <summary>
-        ///     The sdl button x1
-        /// </summary>
-        public const uint SdlButtonX1 = 4;
-
-        /// <summary>
-        ///     The sdl button x2
-        /// </summary>
-        public const uint SdlButtonX2 = 5;
-
-        /// <summary>
-        ///     The sdl button left
-        /// </summary>
-        public static readonly uint SdlButtonLmask = SDL_BUTTON(SdlButtonLeft);
-
-        /// <summary>
-        ///     The sdl button middle
-        /// </summary>
-        public static readonly uint SdlButtonMmask = SDL_BUTTON(SdlButtonMiddle);
-
-        /// <summary>
-        ///     The sdl button right
-        /// </summary>
-        public static readonly uint SdlButtonRmask = SDL_BUTTON(SdlButtonRight);
-
-        /// <summary>
-        ///     The sdl button x1
-        /// </summary>
-        public static readonly uint SdlButtonX1Mask = SDL_BUTTON(SdlButtonX1);
-
-        /// <summary>
-        ///     The sdl button x2
-        /// </summary>
-        public static readonly uint SdlButtonX2Mask = SDL_BUTTON(SdlButtonX2);
-        
-        /// <summary>
-        ///     The max value
-        /// </summary>
-        public const uint SdlTouchMouseid = uint.MaxValue;
-        
-        /// <summary>
-        /// Sdl the get num touch devices
+        ///     Sdl the get num touch devices
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GetNumTouchDevices();
 
-        
+
         /// <summary>
-        /// Sdl the get touch device using the specified index
+        ///     Sdl the get touch device using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The long</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern long SDL_GetTouchDevice(int index);
-        
+
         /// <summary>
-        /// Sdl the get num touch fingers using the specified touch id
+        ///     Sdl the get num touch fingers using the specified touch id
         /// </summary>
         /// <param name="touchId">The touch id</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GetNumTouchFingers(long touchId);
-        
+
         /// <summary>
-        /// Sdl the get touch finger using the specified touch id
+        ///     Sdl the get touch finger using the specified touch id
         /// </summary>
         /// <param name="touchId">The touch id</param>
         /// <param name="index">The index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetTouchFinger(long touchId, int index);
-        
+
         /// <summary>
         ///     Sdls the get touch device type using the specified touch id
         /// </summary>
@@ -8504,61 +8243,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlTouchDeviceType SDL_GetTouchDeviceType(long touchId);
 
-        
 
-
-        /// <summary>
-        ///     The sdl hat centered
-        /// </summary>
-        public const byte SdlHatCentered = 0x00;
-
-        /// <summary>
-        ///     The sdl hat up
-        /// </summary>
-        public const byte SdlHatUp = 0x01;
-
-        /// <summary>
-        ///     The sdl hat right
-        /// </summary>
-        public const byte SdlHatRight = 0x02;
-
-        /// <summary>
-        ///     The sdl hat down
-        /// </summary>
-        public const byte SdlHatDown = 0x04;
-
-        /// <summary>
-        ///     The sdl hat left
-        /// </summary>
-        public const byte SdlHatLeft = 0x08;
-
-        /// <summary>
-        ///     The sdl hat up
-        /// </summary>
-        public const byte SdlHatRightup = SdlHatRight | SdlHatUp;
-
-        /// <summary>
-        ///     The sdl hat down
-        /// </summary>
-        public const byte SdlHatRightdown = SdlHatRight | SdlHatDown;
-
-        /// <summary>
-        ///     The sdl hat up
-        /// </summary>
-        public const byte SdlHatLeftup = SdlHatLeft | SdlHatUp;
-
-        /// <summary>
-        ///     The sdl hat down
-        /// </summary>
-        public const byte SdlHatLeftdown = SdlHatLeft | SdlHatDown;
-
-
-        /// <summary>
-        ///     The sdl iphone max gforce
-        /// </summary>
-        public const float SdlIphoneMaxGforce = 5.0f;
-
-        
         /// <summary>
         ///     Sdls the joystick rumble using the specified joystick
         /// </summary>
@@ -8575,7 +8260,7 @@ namespace Alis.Core.Graphic.SDL
             uint durationMs
         );
 
-        
+
         /// <summary>
         ///     Sdls the joystick rumble triggers using the specified joystick
         /// </summary>
@@ -8592,7 +8277,7 @@ namespace Alis.Core.Graphic.SDL
             uint durationMs
         );
 
-        
+
         /// <summary>
         ///     Sdls the joystick close using the specified joystick
         /// </summary>
@@ -8608,7 +8293,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_JoystickEventState(int state);
 
-        
+
         /// <summary>
         ///     Sdls the joystick get axis using the specified joystick
         /// </summary>
@@ -8621,7 +8306,7 @@ namespace Alis.Core.Graphic.SDL
             int axis
         );
 
-        
+
         /// <summary>
         ///     Sdls the joystick get axis initial state using the specified joystick
         /// </summary>
@@ -8636,7 +8321,7 @@ namespace Alis.Core.Graphic.SDL
             out ushort state
         );
 
-        
+
         /// <summary>
         ///     Sdls the joystick get ball using the specified joystick
         /// </summary>
@@ -8653,7 +8338,7 @@ namespace Alis.Core.Graphic.SDL
             out int dy
         );
 
-        
+
         /// <summary>
         ///     Sdls the joystick get button using the specified joystick
         /// </summary>
@@ -8666,7 +8351,7 @@ namespace Alis.Core.Graphic.SDL
             int button
         );
 
-        
+
         /// <summary>
         ///     Sdls the joystick get hat using the specified joystick
         /// </summary>
@@ -8679,7 +8364,7 @@ namespace Alis.Core.Graphic.SDL
             int hat
         );
 
-        
+
         /// <summary>
         ///     Internals the sdl joystick name using the specified joystick
         /// </summary>
@@ -8718,7 +8403,7 @@ namespace Alis.Core.Graphic.SDL
             INTERNAL_SDL_JoystickNameForIndex(deviceIndex)
         );
 
-        
+
         /// <summary>
         ///     Sdls the joystick num axes using the specified joystick
         /// </summary>
@@ -8727,7 +8412,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_JoystickNumAxes(IntPtr joystick);
 
-        
+
         /// <summary>
         ///     Sdls the joystick num balls using the specified joystick
         /// </summary>
@@ -8736,7 +8421,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_JoystickNumBalls(IntPtr joystick);
 
-        
+
         /// <summary>
         ///     Sdls the joystick num buttons using the specified joystick
         /// </summary>
@@ -8745,7 +8430,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_JoystickNumButtons(IntPtr joystick);
 
-        
+
         /// <summary>
         ///     Sdls the joystick num hats using the specified joystick
         /// </summary>
@@ -8754,7 +8439,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_JoystickNumHats(IntPtr joystick);
 
-        
+
         /// <summary>
         ///     Sdls the joystick open using the specified device index
         /// </summary>
@@ -8763,14 +8448,14 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_JoystickOpen(int deviceIndex);
 
-        
+
         /// <summary>
         ///     Sdls the joystick update
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_JoystickUpdate();
 
-        
+
         /// <summary>
         ///     Sdls the num joysticks
         /// </summary>
@@ -8788,7 +8473,7 @@ namespace Alis.Core.Graphic.SDL
             int deviceIndex
         );
 
-        
+
         /// <summary>
         ///     Sdls the joystick get guid using the specified joystick
         /// </summary>
@@ -8818,7 +8503,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pchGuid">The pch guid</param>
         /// <returns>The guid</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetGUIDFromString", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  Guid INTERNAL_SDL_JoystickGetGUIDFromString(
+        private static extern Guid INTERNAL_SDL_JoystickGetGUIDFromString(
             byte[] pchGuid
         );
 
@@ -8827,7 +8512,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="pchGuid">The pch guid</param>
         /// <returns>The guid</returns>
-        public static  Guid SDL_JoystickGetGUIDFromString(string pchGuid)
+        public static Guid SDL_JoystickGetGUIDFromString(string pchGuid)
         {
             int utf8PchGuidBufSize = Utf8Size(pchGuid);
             byte[] utf8PchGuid = new byte[utf8PchGuidBufSize];
@@ -8836,7 +8521,7 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-        
+
         /// <summary>
         ///     Sdls the joystick get device vendor using the specified device index
         /// </summary>
@@ -8845,7 +8530,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort SDL_JoystickGetDeviceVendor(int deviceIndex);
 
-        
+
         /// <summary>
         ///     Sdls the joystick get device product using the specified device index
         /// </summary>
@@ -8854,7 +8539,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort SDL_JoystickGetDeviceProduct(int deviceIndex);
 
-        
+
         /// <summary>
         ///     Sdls the joystick get device product version using the specified device index
         /// </summary>
@@ -8863,7 +8548,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort SDL_JoystickGetDeviceProductVersion(int deviceIndex);
 
-        
+
         /// <summary>
         ///     Sdls the joystick get device type using the specified device index
         /// </summary>
@@ -8872,7 +8557,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlJoystickType SDL_JoystickGetDeviceType(int deviceIndex);
 
-        
+
         /// <summary>
         ///     Sdls the joystick get device instance id using the specified device index
         /// </summary>
@@ -8881,7 +8566,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_JoystickGetDeviceInstanceID(int deviceIndex);
 
-        
+
         /// <summary>
         ///     Sdls the joystick get vendor using the specified joystick
         /// </summary>
@@ -8890,7 +8575,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort SDL_JoystickGetVendor(IntPtr joystick);
 
-        
+
         /// <summary>
         ///     Sdls the joystick get product using the specified joystick
         /// </summary>
@@ -8899,7 +8584,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort SDL_JoystickGetProduct(IntPtr joystick);
 
-        
+
         /// <summary>
         ///     Sdls the joystick get product version using the specified joystick
         /// </summary>
@@ -8908,7 +8593,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort SDL_JoystickGetProductVersion(IntPtr joystick);
 
-        
+
         /// <summary>
         ///     Internals the sdl joystick get serial using the specified joystick
         /// </summary>
@@ -8931,7 +8616,7 @@ namespace Alis.Core.Graphic.SDL
                 INTERNAL_SDL_JoystickGetSerial(joystick)
             );
 
-        
+
         /// <summary>
         ///     Sdls the joystick get type using the specified joystick
         /// </summary>
@@ -8940,7 +8625,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlJoystickType SDL_JoystickGetType(IntPtr joystick);
 
-        
+
         /// <summary>
         ///     Sdls the joystick get attached using the specified joystick
         /// </summary>
@@ -8949,7 +8634,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_JoystickGetAttached(IntPtr joystick);
 
-        
+
         /// <summary>
         ///     Sdls the joystick instance id using the specified joystick
         /// </summary>
@@ -8958,7 +8643,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_JoystickInstanceID(IntPtr joystick);
 
-        
+
         /// <summary>
         ///     Sdls the joystick current power level using the specified joystick
         /// </summary>
@@ -8969,7 +8654,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr joystick
         );
 
-        
+
         /// <summary>
         ///     Sdls the joystick from instance id using the specified instance id
         /// </summary>
@@ -8978,21 +8663,21 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_JoystickFromInstanceID(int instanceId);
 
-        
+
         /// <summary>
         ///     Sdls the lock joysticks
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_LockJoysticks();
 
-        
+
         /// <summary>
         ///     Sdls the unlock joysticks
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_UnlockJoysticks();
 
-        
+
         /// <summary>
         ///     Sdls the joystick from player index using the specified player index
         /// </summary>
@@ -9001,7 +8686,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_JoystickFromPlayerIndex(int playerIndex);
 
-        
+
         /// <summary>
         ///     Sdls the joystick set player index using the specified joystick
         /// </summary>
@@ -9013,7 +8698,7 @@ namespace Alis.Core.Graphic.SDL
             int playerIndex
         );
 
-        
+
         /// <summary>
         ///     Sdls the joystick attach virtual using the specified type
         /// </summary>
@@ -9030,7 +8715,7 @@ namespace Alis.Core.Graphic.SDL
             int nhats
         );
 
-        
+
         /// <summary>
         ///     Sdls the joystick detach virtual using the specified device index
         /// </summary>
@@ -9039,7 +8724,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_JoystickDetachVirtual(int deviceIndex);
 
-        
+
         /// <summary>
         ///     Sdls the joystick is virtual using the specified device index
         /// </summary>
@@ -9048,7 +8733,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_JoystickIsVirtual(int deviceIndex);
 
-        
+
         /// <summary>
         ///     Sdls the joystick set virtual axis using the specified joystick
         /// </summary>
@@ -9063,7 +8748,7 @@ namespace Alis.Core.Graphic.SDL
             short value
         );
 
-        
+
         /// <summary>
         ///     Sdls the joystick set virtual button using the specified joystick
         /// </summary>
@@ -9078,7 +8763,7 @@ namespace Alis.Core.Graphic.SDL
             byte value
         );
 
-        
+
         /// <summary>
         ///     Sdls the joystick set virtual hat using the specified joystick
         /// </summary>
@@ -9093,7 +8778,7 @@ namespace Alis.Core.Graphic.SDL
             byte value
         );
 
-        
+
         /// <summary>
         ///     Sdls the joystick has led using the specified joystick
         /// </summary>
@@ -9102,7 +8787,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_JoystickHasLED(IntPtr joystick);
 
-        
+
         /// <summary>
         ///     Sdls the joystick has rumble using the specified joystick
         /// </summary>
@@ -9111,7 +8796,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_JoystickHasRumble(IntPtr joystick);
 
-        
+
         /// <summary>
         ///     Sdls the joystick has rumble triggers using the specified joystick
         /// </summary>
@@ -9120,7 +8805,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_JoystickHasRumbleTriggers(IntPtr joystick);
 
-        
+
         /// <summary>
         ///     Sdls the joystick set led using the specified joystick
         /// </summary>
@@ -9137,7 +8822,7 @@ namespace Alis.Core.Graphic.SDL
             byte blue
         );
 
-        
+
         /// <summary>
         ///     Sdls the joystick send effect using the specified joystick
         /// </summary>
@@ -9157,7 +8842,6 @@ namespace Alis.Core.Graphic.SDL
 
         // FIXME: I'd rather this somehow be private...
 
-        
 
         /// <summary>
         ///     Internals the sdl game controller add mapping using the specified mapping string
@@ -9165,7 +8849,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="mappingString">The mapping string</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerAddMapping", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_SDL_GameControllerAddMapping(
+        private static extern int INTERNAL_SDL_GameControllerAddMapping(
             byte[] mappingString
         );
 
@@ -9174,7 +8858,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="mappingString">The mapping string</param>
         /// <returns>The result</returns>
-        public static  int SDL_GameControllerAddMapping(
+        public static int SDL_GameControllerAddMapping(
             string mappingString
         )
         {
@@ -9185,7 +8869,7 @@ namespace Alis.Core.Graphic.SDL
             return result;
         }
 
-        
+
         /// <summary>
         ///     Sdls the game controller num mappings
         /// </summary>
@@ -9193,7 +8877,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GameControllerNumMappings();
 
-        
+
         /// <summary>
         ///     Internals the sdl game controller mapping for index using the specified mapping index
         /// </summary>
@@ -9214,7 +8898,7 @@ namespace Alis.Core.Graphic.SDL
             true
         );
 
-        
+
         /// <summary>
         ///     Internals the sdl game controller add mappings from rw using the specified rw
         /// </summary>
@@ -9258,7 +8942,7 @@ namespace Alis.Core.Graphic.SDL
             true
         );
 
-        
+
         /// <summary>
         ///     Internals the sdl game controller mapping using the specified gamecontroller
         /// </summary>
@@ -9314,7 +8998,7 @@ namespace Alis.Core.Graphic.SDL
                 INTERNAL_SDL_GameControllerNameForIndex(joystickIndex)
             );
 
-        
+
         /// <summary>
         ///     Internals the sdl game controller mapping for device index using the specified joystick index
         /// </summary>
@@ -9338,7 +9022,7 @@ namespace Alis.Core.Graphic.SDL
                 true
             );
 
-        
+
         /// <summary>
         ///     Sdls the game controller open using the specified joystick index
         /// </summary>
@@ -9347,7 +9031,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GameControllerOpen(int joystickIndex);
 
-        
+
         /// <summary>
         ///     Internals the sdl game controller name using the specified gamecontroller
         /// </summary>
@@ -9370,7 +9054,7 @@ namespace Alis.Core.Graphic.SDL
                 INTERNAL_SDL_GameControllerName(gamecontroller)
             );
 
-        
+
         /// <summary>
         ///     Sdls the game controller get vendor using the specified gamecontroller
         /// </summary>
@@ -9381,7 +9065,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller
         );
 
-        
+
         /// <summary>
         ///     Sdls the game controller get product using the specified gamecontroller
         /// </summary>
@@ -9392,7 +9076,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller
         );
 
-        
+
         /// <summary>
         ///     Sdls the game controller get product version using the specified gamecontroller
         /// </summary>
@@ -9403,7 +9087,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller
         );
 
-        
+
         /// <summary>
         ///     Internals the sdl game controller get serial using the specified gamecontroller
         /// </summary>
@@ -9426,7 +9110,7 @@ namespace Alis.Core.Graphic.SDL
                 INTERNAL_SDL_GameControllerGetSerial(gamecontroller)
             );
 
-        
+
         /// <summary>
         ///     Sdls the game controller get attached using the specified gamecontroller
         /// </summary>
@@ -9437,7 +9121,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller
         );
 
-        
+
         /// <summary>
         ///     Sdls the game controller get joystick using the specified gamecontroller
         /// </summary>
@@ -9468,7 +9152,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller axis</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetAxisFromString", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  SdlGameControllerAxis INTERNAL_SDL_GameControllerGetAxisFromString(
+        private static extern SdlGameControllerAxis INTERNAL_SDL_GameControllerGetAxisFromString(
             byte[] pchString
         );
 
@@ -9477,7 +9161,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller axis</returns>
-        public static  SdlGameControllerAxis SDL_GameControllerGetAxisFromString(
+        public static SdlGameControllerAxis SDL_GameControllerGetAxisFromString(
             string pchString
         )
         {
@@ -9512,7 +9196,7 @@ namespace Alis.Core.Graphic.SDL
                 )
             );
 
-        
+
         /// <summary>
         ///     Internals the sdl game controller get bind for axis using the specified gamecontroller
         /// </summary>
@@ -9548,7 +9232,7 @@ namespace Alis.Core.Graphic.SDL
             return result;
         }
 
-        
+
         /// <summary>
         ///     Sdls the game controller get axis using the specified gamecontroller
         /// </summary>
@@ -9567,7 +9251,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller button</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetButtonFromString", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  SdlGameControllerButton INTERNAL_SDL_GameControllerGetButtonFromString(
+        private static extern SdlGameControllerButton INTERNAL_SDL_GameControllerGetButtonFromString(
             byte[] pchString
         );
 
@@ -9576,7 +9260,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller button</returns>
-        public static  SdlGameControllerButton SDL_GameControllerGetButtonFromString(
+        public static SdlGameControllerButton SDL_GameControllerGetButtonFromString(
             string pchString
         )
         {
@@ -9609,7 +9293,7 @@ namespace Alis.Core.Graphic.SDL
                 INTERNAL_SDL_GameControllerGetStringForButton(button)
             );
 
-        
+
         /// <summary>
         ///     Internals the sdl game controller get bind for button using the specified gamecontroller
         /// </summary>
@@ -9645,7 +9329,7 @@ namespace Alis.Core.Graphic.SDL
             return result;
         }
 
-        
+
         /// <summary>
         ///     Sdls the game controller get button using the specified gamecontroller
         /// </summary>
@@ -9658,7 +9342,7 @@ namespace Alis.Core.Graphic.SDL
             SdlGameControllerButton button
         );
 
-        
+
         /// <summary>
         ///     Sdls the game controller rumble using the specified gamecontroller
         /// </summary>
@@ -9675,7 +9359,7 @@ namespace Alis.Core.Graphic.SDL
             uint durationMs
         );
 
-        
+
         /// <summary>
         ///     Sdls the game controller rumble triggers using the specified gamecontroller
         /// </summary>
@@ -9692,7 +9376,7 @@ namespace Alis.Core.Graphic.SDL
             uint durationMs
         );
 
-        
+
         /// <summary>
         ///     Sdls the game controller close using the specified gamecontroller
         /// </summary>
@@ -9702,7 +9386,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller
         );
 
-        
+
         /// <summary>
         ///     Internals the sdl game controller get apple sf symbols name for button using the specified gamecontroller
         /// </summary>
@@ -9729,7 +9413,7 @@ namespace Alis.Core.Graphic.SDL
                 INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForButton(gamecontroller, button)
             );
 
-        
+
         /// <summary>
         ///     Internals the sdl game controller get apple sf symbols name for axis using the specified gamecontroller
         /// </summary>
@@ -9756,7 +9440,7 @@ namespace Alis.Core.Graphic.SDL
                 INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForAxis(gamecontroller, axis)
             );
 
-        
+
         /// <summary>
         ///     Sdls the game controller from instance id using the specified joyid
         /// </summary>
@@ -9765,7 +9449,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GameControllerFromInstanceID(int joyid);
 
-        
+
         /// <summary>
         ///     Sdls the game controller type for index using the specified joystick index
         /// </summary>
@@ -9776,7 +9460,7 @@ namespace Alis.Core.Graphic.SDL
             int joystickIndex
         );
 
-        
+
         /// <summary>
         ///     Sdls the game controller get type using the specified gamecontroller
         /// </summary>
@@ -9787,7 +9471,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller
         );
 
-        
+
         /// <summary>
         ///     Sdls the game controller from player index using the specified player index
         /// </summary>
@@ -9798,7 +9482,7 @@ namespace Alis.Core.Graphic.SDL
             int playerIndex
         );
 
-        
+
         /// <summary>
         ///     Sdls the game controller set player index using the specified gamecontroller
         /// </summary>
@@ -9810,7 +9494,7 @@ namespace Alis.Core.Graphic.SDL
             int playerIndex
         );
 
-        
+
         /// <summary>
         ///     Sdls the game controller has led using the specified gamecontroller
         /// </summary>
@@ -9820,7 +9504,7 @@ namespace Alis.Core.Graphic.SDL
         public static extern SdlBool SDL_GameControllerHasLED(
             IntPtr gamecontroller
         );
-        
+
         /// <summary>
         ///     Sdls the game controller has rumble using the specified gamecontroller
         /// </summary>
@@ -9830,7 +9514,7 @@ namespace Alis.Core.Graphic.SDL
         public static extern SdlBool SDL_GameControllerHasRumble(
             IntPtr gamecontroller
         );
-        
+
         /// <summary>
         ///     Sdls the game controller has rumble triggers using the specified gamecontroller
         /// </summary>
@@ -9840,7 +9524,7 @@ namespace Alis.Core.Graphic.SDL
         public static extern SdlBool SDL_GameControllerHasRumbleTriggers(
             IntPtr gamecontroller
         );
-        
+
         /// <summary>
         ///     Sdls the game controller set led using the specified gamecontroller
         /// </summary>
@@ -9856,7 +9540,7 @@ namespace Alis.Core.Graphic.SDL
             byte green,
             byte blue
         );
-        
+
         /// <summary>
         ///     Sdls the game controller has axis using the specified gamecontroller
         /// </summary>
@@ -9868,7 +9552,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller,
             SdlGameControllerAxis axis
         );
-        
+
         /// <summary>
         ///     Sdls the game controller has button using the specified gamecontroller
         /// </summary>
@@ -9880,7 +9564,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller,
             SdlGameControllerButton button
         );
-        
+
         /// <summary>
         ///     Sdls the game controller get num touchpads using the specified gamecontroller
         /// </summary>
@@ -9890,7 +9574,7 @@ namespace Alis.Core.Graphic.SDL
         public static extern int SDL_GameControllerGetNumTouchpads(
             IntPtr gamecontroller
         );
-        
+
         /// <summary>
         ///     Sdls the game controller get num touchpad fingers using the specified gamecontroller
         /// </summary>
@@ -9902,7 +9586,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller,
             int touchpad
         );
-        
+
         /// <summary>
         ///     Sdls the game controller get touchpad finger using the specified gamecontroller
         /// </summary>
@@ -9924,7 +9608,7 @@ namespace Alis.Core.Graphic.SDL
             out float y,
             out float pressure
         );
-        
+
         /// <summary>
         ///     Sdls the game controller has sensor using the specified gamecontroller
         /// </summary>
@@ -9936,7 +9620,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller,
             SdlSensorType type
         );
-        
+
         /// <summary>
         ///     Sdls the game controller set sensor enabled using the specified gamecontroller
         /// </summary>
@@ -9950,7 +9634,7 @@ namespace Alis.Core.Graphic.SDL
             SdlSensorType type,
             SdlBool enabled
         );
-        
+
         /// <summary>
         ///     Sdls the game controller is sensor enabled using the specified gamecontroller
         /// </summary>
@@ -9962,7 +9646,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller,
             SdlSensorType type
         );
-        
+
         /// <summary>
         ///     Sdls the game controller get sensor data using the specified gamecontroller
         /// </summary>
@@ -9978,7 +9662,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr data,
             int numValues
         );
-        
+
         /// <summary>
         ///     Sdls the game controller get sensor data rate using the specified gamecontroller
         /// </summary>
@@ -9990,7 +9674,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller,
             SdlSensorType type
         );
-        
+
         /// <summary>
         ///     Sdls the game controller send effect using the specified gamecontroller
         /// </summary>
@@ -10006,114 +9690,12 @@ namespace Alis.Core.Graphic.SDL
         );
 
         /// <summary>
-        ///     The sdl haptic constant
-        /// </summary>
-        public const ushort SdlHapticConstant = 1 << 0;
-
-        /// <summary>
-        ///     The sdl haptic sine
-        /// </summary>
-        public const ushort SdlHapticSine = 1 << 1;
-
-        /// <summary>
-        ///     The sdl haptic leftright
-        /// </summary>
-        public const ushort SdlHapticLeftright = 1 << 2;
-
-        /// <summary>
-        ///     The sdl haptic triangle
-        /// </summary>
-        public const ushort SdlHapticTriangle = 1 << 3;
-
-        /// <summary>
-        ///     The sdl haptic sawtoothup
-        /// </summary>
-        public const ushort SdlHapticSawtoothup = 1 << 4;
-
-        /// <summary>
-        ///     The sdl haptic sawtoothdown
-        /// </summary>
-        public const ushort SdlHapticSawtoothdown = 1 << 5;
-
-        /// <summary>
-        ///     The sdl haptic spring
-        /// </summary>
-        public const ushort SdlHapticSpring = 1 << 7;
-
-        /// <summary>
-        ///     The sdl haptic damper
-        /// </summary>
-        public const ushort SdlHapticDamper = 1 << 8;
-
-        /// <summary>
-        ///     The sdl haptic inertia
-        /// </summary>
-        public const ushort SdlHapticInertia = 1 << 9;
-
-        /// <summary>
-        ///     The sdl haptic friction
-        /// </summary>
-        public const ushort SdlHapticFriction = 1 << 10;
-
-        /// <summary>
-        ///     The sdl haptic custom
-        /// </summary>
-        public const ushort SdlHapticCustom = 1 << 11;
-
-        /// <summary>
-        ///     The sdl haptic gain
-        /// </summary>
-        public const ushort SdlHapticGain = 1 << 12;
-
-        /// <summary>
-        ///     The sdl haptic autocenter
-        /// </summary>
-        public const ushort SdlHapticAutocenter = 1 << 13;
-
-        /// <summary>
-        ///     The sdl haptic status
-        /// </summary>
-        public const ushort SdlHapticStatus = 1 << 14;
-
-        /// <summary>
-        ///     The sdl haptic pause
-        /// </summary>
-        public const ushort SdlHapticPause = 1 << 15;
-
-        
-        /// <summary>
-        ///     The sdl haptic polar
-        /// </summary>
-        public const byte SdlHapticPolar = 0;
-
-        /// <summary>
-        ///     The sdl haptic cartesian
-        /// </summary>
-        public const byte SdlHapticCartesian = 1;
-
-        /// <summary>
-        ///     The sdl haptic spherical
-        /// </summary>
-        public const byte SdlHapticSpherical = 2;
-
-        /// <summary>
-        ///     The sdl haptic steering axis
-        /// </summary>
-        public const byte SdlHapticSteeringAxis = 3; 
-
-        
-        /// <summary>
-        ///     The sdl haptic infinity
-        /// </summary>
-        public const uint SdlHapticInfinity = 4294967295U;
-
-        /// <summary>
         ///     Sdls the haptic close using the specified haptic
         /// </summary>
         /// <param name="haptic">The haptic</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_HapticClose(IntPtr haptic);
-        
+
         /// <summary>
         ///     Sdls the haptic destroy effect using the specified haptic
         /// </summary>
@@ -10124,7 +9706,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr haptic,
             int effect
         );
-        
+
         /// <summary>
         ///     Sdls the haptic effect supported using the specified haptic
         /// </summary>
@@ -10171,7 +9753,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The string</returns>
         public static string SDL_HapticName(int deviceIndex) => UTF8_ToManaged(INTERNAL_SDL_HapticName(deviceIndex));
-        
+
         /// <summary>
         ///     Sdls the haptic new effect using the specified haptic
         /// </summary>
@@ -10199,7 +9781,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_HapticNumEffects(IntPtr haptic);
-        
+
         /// <summary>
         ///     Sdls the haptic num effects playing using the specified haptic
         /// </summary>
@@ -10248,7 +9830,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_HapticPause(IntPtr haptic);
-        
+
         /// <summary>
         ///     Sdls the haptic query using the specified haptic
         /// </summary>
@@ -10256,7 +9838,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_HapticQuery(IntPtr haptic);
-        
+
         /// <summary>
         ///     Sdls the haptic rumble init using the specified haptic
         /// </summary>
@@ -10286,7 +9868,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_HapticRumbleStop(IntPtr haptic);
-        
+
         /// <summary>
         ///     Sdls the haptic rumble supported using the specified haptic
         /// </summary>
@@ -10341,7 +9923,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_HapticStopAll(IntPtr haptic);
 
-        
+
         /// <summary>
         ///     Sdls the haptic stop effect using the specified haptic
         /// </summary>
@@ -10376,7 +9958,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlHapticEffect data
         );
 
-        
+
         /// <summary>
         ///     Sdls the joystick is haptic using the specified joystick
         /// </summary>
@@ -10398,11 +9980,6 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_NumHaptics();
-
-        /// <summary>
-        ///     The sdl standard gravity
-        /// </summary>
-        public const float SdlStandardGravity = 9.80665f;
 
         /// <summary>
         ///     Sdls the num sensors
@@ -10506,7 +10083,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_SensorGetInstanceID(IntPtr sensor);
-        
+
         /// <summary>
         ///     Sdls the sensor get data using the specified sensor
         /// </summary>
@@ -10520,7 +10097,7 @@ namespace Alis.Core.Graphic.SDL
             float[] data,
             int numValues
         );
-        
+
         /// <summary>
         ///     Sdls the sensor close using the specified sensor
         /// </summary>
@@ -10533,38 +10110,18 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_SensorUpdate();
-        
+
         /// <summary>
         ///     Sdls the lock sensors
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_LockSensors();
-        
+
         /// <summary>
         ///     Sdls the unlock sensors
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_UnlockSensors();
-        
-        /// <summary>
-        ///     The sdl audio mask bitsize
-        /// </summary>
-        public const ushort SdlAudioMaskBitsize = 0xFF;
-
-        /// <summary>
-        ///     The sdl audio mask datatype
-        /// </summary>
-        public const ushort SdlAudioMaskDatatype = 1 << 8;
-
-        /// <summary>
-        ///     The sdl audio mask endian
-        /// </summary>
-        public const ushort SdlAudioMaskEndian = 1 << 12;
-
-        /// <summary>
-        ///     The sdl audio mask signed
-        /// </summary>
-        public const ushort SdlAudioMaskSigned = 1 << 15;
 
         /// <summary>
         ///     Sdls the audio bitsize using the specified x
@@ -10616,150 +10173,12 @@ namespace Alis.Core.Graphic.SDL
         public static bool SDL_AUDIO_ISUNSIGNED(ushort x) => (x & SdlAudioMaskSigned) == 0;
 
         /// <summary>
-        ///     The audio u8
-        /// </summary>
-        public const ushort AudioU8 = 0x0008;
-
-        /// <summary>
-        ///     The audio s8
-        /// </summary>
-        public const ushort AudioS8 = 0x8008;
-
-        /// <summary>
-        ///     The audio u16lsb
-        /// </summary>
-        public const ushort AudioU16Lsb = 0x0010;
-
-        /// <summary>
-        ///     The audio s16lsb
-        /// </summary>
-        public const ushort AudioS16Lsb = 0x8010;
-
-        /// <summary>
-        ///     The audio u16msb
-        /// </summary>
-        public const ushort AudioU16Msb = 0x1010;
-
-        /// <summary>
-        ///     The audio s16msb
-        /// </summary>
-        public const ushort AudioS16Msb = 0x9010;
-
-        /// <summary>
-        ///     The audio u16lsb
-        /// </summary>
-        public const ushort AudioU16 = AudioU16Lsb;
-
-        /// <summary>
-        ///     The audio s16lsb
-        /// </summary>
-        public const ushort AudioS16 = AudioS16Lsb;
-
-        /// <summary>
-        ///     The audio s32lsb
-        /// </summary>
-        public const ushort AudioS32Lsb = 0x8020;
-
-        /// <summary>
-        ///     The audio s32msb
-        /// </summary>
-        public const ushort AudioS32Msb = 0x9020;
-
-        /// <summary>
-        ///     The audio s32lsb
-        /// </summary>
-        public const ushort AudioS32 = AudioS32Lsb;
-
-        /// <summary>
-        ///     The audio f32lsb
-        /// </summary>
-        public const ushort AudioF32Lsb = 0x8120;
-
-        /// <summary>
-        ///     The audio f32msb
-        /// </summary>
-        public const ushort AudioF32Msb = 0x9120;
-
-        /// <summary>
-        ///     The audio f32lsb
-        /// </summary>
-        public const ushort AudioF32 = AudioF32Lsb;
-
-        /// <summary>
-        ///     The audio u16msb
-        /// </summary>
-        public static readonly ushort AudioU16Sys =
-            BitConverter.IsLittleEndian ? AudioU16Lsb : AudioU16Msb;
-
-        /// <summary>
-        ///     The audio s16msb
-        /// </summary>
-        public static readonly ushort AudioS16Sys =
-            BitConverter.IsLittleEndian ? AudioS16Lsb : AudioS16Msb;
-
-        /// <summary>
-        ///     The audio s32msb
-        /// </summary>
-        public static readonly ushort AudioS32Sys =
-            BitConverter.IsLittleEndian ? AudioS32Lsb : AudioS32Msb;
-
-        /// <summary>
-        ///     The audio f32msb
-        /// </summary>
-        public static readonly ushort AudioF32Sys =
-            BitConverter.IsLittleEndian ? AudioF32Lsb : AudioF32Msb;
-
-        /// <summary>
-        ///     The sdl audio allow frequency change
-        /// </summary>
-        public const uint SdlAudioAllowFrequencyChange = 0x00000001;
-
-        /// <summary>
-        ///     The sdl audio allow format change
-        /// </summary>
-        public const uint SdlAudioAllowFormatChange = 0x00000002;
-
-        /// <summary>
-        ///     The sdl audio allow channels change
-        /// </summary>
-        public const uint SdlAudioAllowChannelsChange = 0x00000004;
-
-        /// <summary>
-        ///     The sdl audio allow samples change
-        /// </summary>
-        public const uint SdlAudioAllowSamplesChange = 0x00000008;
-
-        /// <summary>
-        ///     The sdl audio allow samples change
-        /// </summary>
-        public const uint SdlAudioAllowAnyChange = SdlAudioAllowFrequencyChange |
-                                                   SdlAudioAllowFormatChange |
-                                                   SdlAudioAllowChannelsChange |
-                                                   SdlAudioAllowSamplesChange;
-
-        /// <summary>
-        ///     The sdl mix maxvolume
-        /// </summary>
-        public const int SdlMixMaxvolume = 128;
-
-
-        /// <summary>
-        ///     The sdl audiocallback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void SdlAudioCallback(
-            IntPtr userdata,
-            IntPtr stream,
-            int len
-        );
-
-        /// <summary>
         ///     Internals the sdl audio init using the specified driver name
         /// </summary>
         /// <param name="driverName">The driver name</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AudioInit", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_SDL_AudioInit(
+        private static extern int INTERNAL_SDL_AudioInit(
             byte[] driverName
         );
 
@@ -10768,7 +10187,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="driverName">The driver name</param>
         /// <returns>The int</returns>
-        public static  int SDL_AudioInit(string driverName)
+        public static int SDL_AudioInit(string driverName)
         {
             int utf8DriverNameBufSize = Utf8Size(driverName);
             byte[] utf8DriverName = new byte[utf8DriverNameBufSize];
@@ -10789,7 +10208,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_CloseAudio();
 
-        
+
         /// <summary>
         ///     Sdls the close audio device using the specified dev
         /// </summary>
@@ -10797,7 +10216,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_CloseAudioDevice(uint dev);
 
-        
+
         /// <summary>
         ///     Sdls the free wav using the specified audio buf
         /// </summary>
@@ -10830,7 +10249,7 @@ namespace Alis.Core.Graphic.SDL
             => UTF8_ToManaged(
                 INTERNAL_SDL_GetAudioDeviceName(index, iscapture)
             );
-        
+
         /// <summary>
         ///     Sdls the get audio device status using the specified dev
         /// </summary>
@@ -10965,7 +10384,7 @@ namespace Alis.Core.Graphic.SDL
             uint len,
             int volume
         );
-        
+
         /// <summary>
         ///     Sdls the mix audio format using the specified dst
         /// </summary>
@@ -11025,7 +10444,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlAudioSpec desired,
             IntPtr obtained
         );
-        
+
         /// <summary>
         ///     Sdls the open audio device using the specified device
         /// </summary>
@@ -11054,7 +10473,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="allowedChanges">The allowed changes</param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_OpenAudioDevice", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  uint INTERNAL_SDL_OpenAudioDevice(
+        private static extern uint INTERNAL_SDL_OpenAudioDevice(
             byte[] device,
             int iscapture,
             ref SdlAudioSpec desired,
@@ -11071,7 +10490,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="obtained">The obtained</param>
         /// <param name="allowedChanges">The allowed changes</param>
         /// <returns>The uint</returns>
-        public static  uint SDL_OpenAudioDevice(
+        public static uint SDL_OpenAudioDevice(
             string device,
             int iscapture,
             ref SdlAudioSpec desired,
@@ -11096,7 +10515,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pauseOn">The pause on</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_PauseAudio(int pauseOn);
-        
+
         /// <summary>
         ///     Sdls the pause audio device using the specified dev
         /// </summary>
@@ -11113,14 +10532,14 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_UnlockAudio();
-        
+
         /// <summary>
         ///     Sdls the unlock audio device using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_UnlockAudioDevice(uint dev);
-        
+
         /// <summary>
         ///     Sdls the queue audio using the specified dev
         /// </summary>
@@ -11134,7 +10553,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr data,
             uint len
         );
-        
+
         /// <summary>
         ///     Sdls the dequeue audio using the specified dev
         /// </summary>
@@ -11148,7 +10567,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr data,
             uint len
         );
-        
+
         /// <summary>
         ///     Sdls the get queued audio size using the specified dev
         /// </summary>
@@ -11156,14 +10575,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetQueuedAudioSize(uint dev);
-        
+
         /// <summary>
         ///     Sdls the clear queued audio using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_ClearQueuedAudio(uint dev);
-        
+
         /// <summary>
         ///     Sdls the new audio stream using the specified src format
         /// </summary>
@@ -11183,7 +10602,7 @@ namespace Alis.Core.Graphic.SDL
             byte dstChannels,
             int dstRate
         );
-        
+
         /// <summary>
         ///     Sdls the audio stream put using the specified stream
         /// </summary>
@@ -11197,7 +10616,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr buf,
             int len
         );
-        
+
         /// <summary>
         ///     Sdls the audio stream get using the specified stream
         /// </summary>
@@ -11219,14 +10638,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_AudioStreamAvailable(IntPtr stream);
-        
+
         /// <summary>
         ///     Sdls the audio stream clear using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_AudioStreamClear(IntPtr stream);
-        
+
         /// <summary>
         ///     Sdls the free audio stream using the specified stream
         /// </summary>
@@ -11234,7 +10653,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_FreeAudioStream(IntPtr stream);
 
-        
+
         /// <summary>
         ///     Sdls the get audio device spec using the specified index
         /// </summary>
@@ -11248,7 +10667,7 @@ namespace Alis.Core.Graphic.SDL
             int iscapture,
             out SdlAudioSpec spec
         );
-        
+
         /// <summary>
         ///     Describes whether sdl ticks passed
         /// </summary>
@@ -11263,42 +10682,36 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="ms">The ms</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_Delay(uint ms);
-        
+
         /// <summary>
         ///     Sdls the get ticks
         /// </summary>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetTicks();
-        
+
         /// <summary>
         ///     Sdls the get ticks 64
         /// </summary>
         /// <returns>The int 64</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ulong SDL_GetTicks64();
-        
+
         /// <summary>
         ///     Sdls the get performance counter
         /// </summary>
         /// <returns>The int 64</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ulong SDL_GetPerformanceCounter();
-        
+
         /// <summary>
         ///     Sdls the get performance frequency
         /// </summary>
         /// <returns>The int 64</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ulong SDL_GetPerformanceFrequency();
-        
-        /// <summary>
-        ///     The sdl timercallback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate uint SdlTimerCallback(uint interval, IntPtr param);
 
-        
+
         /// <summary>
         ///     Sdls the add timer using the specified interval
         /// </summary>
@@ -11320,18 +10733,6 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_RemoveTimer(int id);
-        
-        /// <summary>
-        ///     The sdl windowsmessagehook
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate IntPtr SdlWindowsMessageHook(
-            IntPtr userdata,
-            IntPtr hWnd,
-            uint message,
-            ulong wParam,
-            long lParam
-        );
 
         /// <summary>
         ///     Sdls the set windows message hook using the specified callback
@@ -11343,7 +10744,7 @@ namespace Alis.Core.Graphic.SDL
             SdlWindowsMessageHook callback,
             IntPtr userdata
         );
-        
+
         /// <summary>
         ///     Sdls the render get d 3 d 9 device using the specified renderer
         /// </summary>
@@ -11351,7 +10752,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_RenderGetD3D9Device(IntPtr renderer);
-        
+
         /// <summary>
         ///     Sdls the render get d 3 d 11 device using the specified renderer
         /// </summary>
@@ -11359,12 +10760,6 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_RenderGetD3D11Device(IntPtr renderer);
-        
-        /// <summary>
-        ///     The sdl iphoneanimationcallback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void SdlIPhoneAnimationCallback(IntPtr p);
 
         /// <summary>
         ///     Sdls the i phone set animation callback using the specified window
@@ -11376,7 +10771,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_iPhoneSetAnimationCallback(
-            IntPtr window, 
+            IntPtr window,
             int interval,
             SdlIPhoneAnimationCallback callback,
             IntPtr callbackParam
@@ -11389,19 +10784,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_iPhoneSetEventPump(SdlBool enabled);
 
-        
 
-        /// <summary>
-        ///     The sdl android external storage read
-        /// </summary>
-        public const int SdlAndroidExternalStorageRead = 0x01;
-
-        /// <summary>
-        ///     The sdl android external storage write
-        /// </summary>
-        public const int SdlAndroidExternalStorageWrite = 0x02;
-
-        
         /// <summary>
         ///     Sdls the android get jni env
         /// </summary>
@@ -11409,7 +10792,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_AndroidGetJNIEnv();
 
-        
+
         /// <summary>
         ///     Sdls the android get activity
         /// </summary>
@@ -11488,14 +10871,14 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GetAndroidSDKVersion();
 
-        
+
         /// <summary>
         ///     Internals the sdl android request permission using the specified permission
         /// </summary>
         /// <param name="permission">The permission</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AndroidRequestPermission", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  SdlBool INTERNAL_SDL_AndroidRequestPermission(
+        private static extern SdlBool INTERNAL_SDL_AndroidRequestPermission(
             byte[] permission
         );
 
@@ -11504,7 +10887,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="permission">The permission</param>
         /// <returns>The result</returns>
-        public static  SdlBool SDL_AndroidRequestPermission(
+        public static SdlBool SDL_AndroidRequestPermission(
             string permission
         )
         {
@@ -11514,7 +10897,7 @@ namespace Alis.Core.Graphic.SDL
             );
             return result;
         }
-        
+
         /// <summary>
         ///     Internals the sdl android show toast using the specified message
         /// </summary>
@@ -11525,7 +10908,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="yOffset">The offset</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AndroidShowToast", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_SDL_AndroidShowToast(
+        private static extern int INTERNAL_SDL_AndroidShowToast(
             byte[] message,
             int duration,
             int gravity,
@@ -11542,7 +10925,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="xOffset">The offset</param>
         /// <param name="yOffset">The offset</param>
         /// <returns>The result</returns>
-        public static  int SDL_AndroidShowToast(
+        public static int SDL_AndroidShowToast(
             string message,
             int duration,
             int gravity,
@@ -11560,7 +10943,7 @@ namespace Alis.Core.Graphic.SDL
             );
             return result;
         }
-        
+
         /// <summary>
         ///     Sdls the win rt get device family
         /// </summary>
@@ -11574,7 +10957,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_IsTablet();
-        
+
         /// <summary>
         ///     Sdls the get window wm info using the specified window
         /// </summary>
@@ -11586,7 +10969,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr window,
             ref SdlSysWMinfo info
         );
-        
+
         /// <summary>
         ///     Internals the sdl get base path
         /// </summary>
@@ -11607,7 +10990,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="app">The app</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetPrefPath", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  IntPtr INTERNAL_SDL_GetPrefPath(
+        private static extern IntPtr INTERNAL_SDL_GetPrefPath(
             byte[] org,
             byte[] app
         );
@@ -11618,7 +11001,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="org">The org</param>
         /// <param name="app">The app</param>
         /// <returns>The string</returns>
-        public static  string SDL_GetPrefPath(string org, string app)
+        public static string SDL_GetPrefPath(string org, string app)
         {
             int utf8OrgBufSize = Utf8Size(org);
             byte[] utf8Org = new byte[utf8OrgBufSize];
@@ -11751,21 +11134,21 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_HasNEON();
-        
+
         /// <summary>
         ///     Sdls the get system ram
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GetSystemRAM();
-        
+
         /// <summary>
         ///     Sdls the simd get alignment
         /// </summary>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_SIMDGetAlignment();
-        
+
         /// <summary>
         ///     Sdls the simd alloc using the specified len
         /// </summary>
@@ -11773,7 +11156,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_SIMDAlloc(uint len);
-        
+
         /// <summary>
         ///     Sdls the simd realloc using the specified ptr
         /// </summary>
@@ -11782,45 +11165,45 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_SIMDRealloc(IntPtr ptr, uint len);
-        
+
         /// <summary>
         ///     Sdls the simd free using the specified ptr
         /// </summary>
         /// <param name="ptr">The ptr</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_SIMDFree(IntPtr ptr);
-        
+
         /// <summary>
         ///     Sdls the has armsimd
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_HasARMSIMD();
-        
+
         /// <summary>
         ///     Sdls the get preferred locales
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetPreferredLocales();
-        
+
         /// <summary>
         ///     Internals the sdl open url using the specified url
         /// </summary>
         /// <param name="url">The url</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_OpenURL", CallingConvention = CallingConvention.Cdecl)]
-        private static extern  int INTERNAL_SDL_OpenURL(byte[] url);
+        private static extern int INTERNAL_SDL_OpenURL(byte[] url);
 
         /// <summary>
         ///     Sdls the open url using the specified url
         /// </summary>
         /// <param name="url">The url</param>
         /// <returns>The result</returns>
-        public static  int SDL_OpenURL(string url)
+        public static int SDL_OpenURL(string url)
         {
             byte[] urlPtr = Utf8EncodeHeap(url);
             int result = INTERNAL_SDL_OpenURL(urlPtr);
-            
+
             return result;
         }
     }

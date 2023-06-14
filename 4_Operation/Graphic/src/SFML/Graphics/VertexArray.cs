@@ -93,7 +93,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// </summary>
         ////////////////////////////////////////////////////////////
         public uint VertexCount => sfVertexArray_getVertexCount(CPointer);
-        
+
 
         ////////////////////////////////////////////////////////////
         /// <summary>

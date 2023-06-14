@@ -67,9 +67,9 @@ namespace Alis.Core.Graphic.SDL
         ///     The length
         /// </summary>
         public int length;
-        
+
         /// <summary>
-        /// Gets or sets the value of the text
+        ///     Gets or sets the value of the text
         /// </summary>
         public byte[] text
         {

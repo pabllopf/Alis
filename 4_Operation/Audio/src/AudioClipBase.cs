@@ -107,7 +107,7 @@ namespace Alis.Core.Audio
                         break;
                 }
             }
-            
+
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 switch (RuntimeInformation.ProcessArchitecture)

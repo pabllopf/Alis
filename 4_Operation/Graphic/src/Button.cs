@@ -30,26 +30,27 @@
 namespace Alis.Core.Graphic
 {
     /// <summary>
-    /// The button class
+    ///     The button class
     /// </summary>
     public enum Button
     {
         /// <summary>
-        /// The  button
+        ///     The  button
         /// </summary>
         A,
+
         /// <summary>
-        /// The  button
+        ///     The  button
         /// </summary>
         B,
-        
+
         /// <summary>
-        /// The  button
+        ///     The  button
         /// </summary>
         Y,
-        
+
         /// <summary>
-        /// The  button
+        ///     The  button
         /// </summary>
         X
     }

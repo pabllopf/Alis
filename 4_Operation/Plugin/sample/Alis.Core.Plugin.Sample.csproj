@@ -4,4 +4,7 @@
     <PropertyGroup>
         <TargetFramework>$(TargetFramework2)</TargetFramework>
     </PropertyGroup>
+    <ItemGroup>
+        <Folder Include="Assets\"/>
+    </ItemGroup>
 </Project>

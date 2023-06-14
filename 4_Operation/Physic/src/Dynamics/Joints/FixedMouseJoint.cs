@@ -285,13 +285,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
             //      = [1/m1+1/m2     0    ] + invI1 * [r1.y*r1.y -r1.x*r1.y] + invI2 * [r1.y*r1.y -r1.x*r1.y]
             //        [    0     1/m1+1/m2]           [-r1.x*r1.y r1.x*r1.x]           [-r1.x*r1.y r1.x*r1.x]
             Matrix2X2F kk = new Matrix2X2F(
-                
                 invMassA + invIa * rA.Y * rA.Y + gamma,
                 -invIa * rA.X * rA.Y,
                 -invIa * rA.X * rA.Y,
                 invMassA + invIa * rA.X * rA.X + gamma
             );
-            
+
             mass = kk.Inverse;
 
             c = cA + rA - targetB;

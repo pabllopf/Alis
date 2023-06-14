@@ -459,7 +459,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="name">Name of the uniform variable in GLSL</param>
         /// <param name="array">array of <c>float</c> values</param>
         ////////////////////////////////////////////////////////////
-        public  void SetUniformArray(string name, float[] array)
+        public void SetUniformArray(string name, float[] array)
         {
             sfShader_setFloatUniformArray(CPointer, name, array, (uint) array.Length);
         }
@@ -471,7 +471,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="name">Name of the uniform variable in GLSL</param>
         /// <param name="array">array of <c>vec2</c> values</param>
         ////////////////////////////////////////////////////////////
-        public  void SetUniformArray(string name, Vector2[] array)
+        public void SetUniformArray(string name, Vector2[] array)
         {
             sfShader_setVec2UniformArray(CPointer, name, array, (uint) array.Length);
         }
@@ -483,7 +483,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="name">Name of the uniform variable in GLSL</param>
         /// <param name="array">array of <c>vec3</c> values</param>
         ////////////////////////////////////////////////////////////
-        public  void SetUniformArray(string name, Vector3F[] array)
+        public void SetUniformArray(string name, Vector3F[] array)
         {
             sfShader_setVec3UniformArray(CPointer, name, array, (uint) array.Length);
         }
@@ -495,7 +495,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="name">Name of the uniform variable in GLSL</param>
         /// <param name="array">array of <c>vec4</c> values</param>
         ////////////////////////////////////////////////////////////
-        public  void SetUniformArray(string name, Vector4F[] array)
+        public void SetUniformArray(string name, Vector4F[] array)
         {
             sfShader_setVec4UniformArray(CPointer, name, array, (uint) array.Length);
         }
@@ -507,9 +507,9 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="name">Name of the uniform variable in GLSL</param>
         /// <param name="array">array of <c>mat3</c> values</param>
         ////////////////////////////////////////////////////////////
-        public  void SetUniformArray(string name, Matrix3X3F array)
+        public void SetUniformArray(string name, Matrix3X3F array)
         {
-            sfShader_setMat3UniformArray(CPointer, name, array, (uint)9);
+            sfShader_setMat3UniformArray(CPointer, name, array, 9);
         }
 
         ////////////////////////////////////////////////////////////
@@ -519,7 +519,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="name">Name of the uniform variable in GLSL</param>
         /// <param name="array">array of <c>mat4</c> values</param>
         ////////////////////////////////////////////////////////////
-        public  void SetUniformArray(string name, Matrix4X4F[] array)
+        public void SetUniformArray(string name, Matrix4X4F[] array)
         {
             sfShader_setMat4UniformArray(CPointer, name, array, (uint) array.Length);
         }
@@ -916,7 +916,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern  void sfShader_setFloatUniformArray(IntPtr shader, string name, float[] data,
+        private static extern void sfShader_setFloatUniformArray(IntPtr shader, string name, float[] data,
             uint length);
 
         /// <summary>
@@ -927,7 +927,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern  void sfShader_setVec2UniformArray(IntPtr shader, string name, Vector2[] data,
+        private static extern void sfShader_setVec2UniformArray(IntPtr shader, string name, Vector2[] data,
             uint length);
 
         /// <summary>
@@ -938,7 +938,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern  void sfShader_setVec3UniformArray(IntPtr shader, string name, Vector3F[] data,
+        private static extern void sfShader_setVec3UniformArray(IntPtr shader, string name, Vector3F[] data,
             uint length);
 
         /// <summary>
@@ -949,7 +949,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern  void sfShader_setVec4UniformArray(IntPtr shader, string name, Vector4F[] data,
+        private static extern void sfShader_setVec4UniformArray(IntPtr shader, string name, Vector4F[] data,
             uint length);
 
         /// <summary>
@@ -971,7 +971,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern  void sfShader_setMat4UniformArray(IntPtr shader, string name, Matrix4X4F[] data,
+        private static extern void sfShader_setMat4UniformArray(IntPtr shader, string name, Matrix4X4F[] data,
             uint length);
 
         /// <summary>

@@ -109,7 +109,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         SdlWindoweventClose,
 
-            
+
         /// <summary>
         ///     The sdl windowevent take focus sdl windoweventid
         /// </summary>
@@ -120,7 +120,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         SdlWindoweventHitTest,
 
-            
+
         /// <summary>
         ///     The sdl windowevent iccprof changed sdl windoweventid
         /// </summary>

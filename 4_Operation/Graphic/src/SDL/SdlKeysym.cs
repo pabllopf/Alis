@@ -50,11 +50,11 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The mod
         /// </summary>
-        public SdlKeymod mod; 
+        public SdlKeymod mod;
 
         /// <summary>
         ///     The unicode
         /// </summary>
-        public uint unicode; 
+        public uint unicode;
     }
 }

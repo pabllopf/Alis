@@ -671,7 +671,6 @@ namespace Alis.Core.Graphic.OpenGL
         }
 
 
-
         /// <summary>
         ///     The get string
         /// </summary>

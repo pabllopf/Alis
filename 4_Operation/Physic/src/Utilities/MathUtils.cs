@@ -164,7 +164,7 @@ namespace Alis.Core.Physic.Utilities
                 a.Ey.X * b.Ex.X + a.Ey.Y * b.Ex.Y,
                 a.Ex.X * b.Ey.X + a.Ex.Y * b.Ey.Y,
                 a.Ey.X * b.Ey.X + a.Ey.Y * b.Ey.Y
-                );
+            );
         }
 
         /// <summary>Multiply a matrix times a vector.</summary>
@@ -544,9 +544,9 @@ namespace Alis.Core.Physic.Utilities
             }
 
             float invLength = 1.0f / length;
-            
-            v = new Vector2F(v.X*invLength, v.Y*invLength);
-            
+
+            v = new Vector2F(v.X * invLength, v.Y * invLength);
+
             return length;
         }
 
