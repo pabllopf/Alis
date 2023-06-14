@@ -15,5 +15,44 @@
             </summary>
             <param name="args">The args</param>
         </member>
+        <member name="T:Alis.Core.Plugin.Sample.SumPlugin">
+            <summary>
+                The sum plugin class
+            </summary>
+            <seealso cref="T:Alis.Core.Plugin.IPlugin" />
+        </member>
+        <member name="M:Alis.Core.Plugin.Sample.SumPlugin.Initialize">
+            <summary>
+                Initializes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Plugin.Sample.SumPlugin.Update">
+            <summary>
+                Updates this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Plugin.Sample.SumPlugin.Render">
+            <summary>
+                Renders this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Plugin.Sample.SumPlugin.Shutdown">
+            <summary>
+                Shutdowns this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Plugin.Sample.SumPlugin.Dispose">
+            <summary>
+                Disposes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Plugin.Sample.SumPlugin.Sum(System.Int32,System.Int32)">
+            <summary>
+                Sums the a
+            </summary>
+            <param name="a">The </param>
+            <param name="b">The </param>
+            <returns>The int</returns>
+        </member>
     </members>
 </doc>
