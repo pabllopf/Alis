@@ -80,7 +80,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="center">Center of the view</param>
         /// <param name="size">Size of the view</param>
         ////////////////////////////////////////////////////////////
-        public View(Vector2F center, Vector2F size) :
+        public View(Vector2 center, Vector2 size) :
             base(sfView_create())
         {
             Center = center;
@@ -113,7 +113,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         ///     Center of the view
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public Vector2F Center
+        public Vector2 Center
         {
             get => sfView_getCenter(CPointer);
             set => sfView_setCenter(CPointer, value);
@@ -124,7 +124,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         ///     Half-size of the view
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public Vector2F Size
+        public Vector2 Size
         {
             get => sfView_getSize(CPointer);
             set => sfView_setSize(CPointer, value);
@@ -170,7 +170,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// </summary>
         /// <param name="offset">Offset to move the view</param>
         ////////////////////////////////////////////////////////////
-        public void Move(Vector2F offset)
+        public void Move(Vector2 offset)
         {
             sfView_move(CPointer, offset);
         }
@@ -259,7 +259,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="view">The view</param>
         /// <param name="center">The center</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfView_setCenter(IntPtr view, Vector2F center);
+        private static extern void sfView_setCenter(IntPtr view, Vector2 center);
 
         /// <summary>
         ///     Sfs the view set size using the specified view
@@ -267,7 +267,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="view">The view</param>
         /// <param name="size">The size</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfView_setSize(IntPtr view, Vector2F size);
+        private static extern void sfView_setSize(IntPtr view, Vector2 size);
 
         /// <summary>
         ///     Sfs the view set rotation using the specified view
@@ -299,7 +299,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="view">The view</param>
         /// <returns>The vector 2f</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2F sfView_getCenter(IntPtr view);
+        private static extern Vector2 sfView_getCenter(IntPtr view);
 
         /// <summary>
         ///     Sfs the view get size using the specified view
@@ -307,7 +307,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="view">The view</param>
         /// <returns>The vector 2f</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2F sfView_getSize(IntPtr view);
+        private static extern Vector2 sfView_getSize(IntPtr view);
 
         /// <summary>
         ///     Sfs the view get rotation using the specified view
@@ -331,7 +331,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="view">The view</param>
         /// <param name="offset">The offset</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfView_move(IntPtr view, Vector2F offset);
+        private static extern void sfView_move(IntPtr view, Vector2 offset);
 
         /// <summary>
         ///     Sfs the view rotate using the specified view

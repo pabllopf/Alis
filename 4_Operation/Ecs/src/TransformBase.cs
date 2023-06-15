@@ -39,7 +39,7 @@ namespace Alis.Core.Entity
         /// <summary>
         ///     The position
         /// </summary>
-        public Vector2F Position { get; set; } = Vector2F.Zero;
+        public Vector2 Position { get; set; } = Vector2.Zero;
 
         /// <summary>
         ///     The rotation
@@ -49,6 +49,6 @@ namespace Alis.Core.Entity
         /// <summary>
         ///     The scale
         /// </summary>
-        public Vector2F Scale { get; set; } = new Vector2F(1, 1);
+        public Vector2 Scale { get; set; } = new Vector2(1, 1);
     }
 }

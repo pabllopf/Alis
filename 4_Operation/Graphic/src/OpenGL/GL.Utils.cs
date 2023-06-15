@@ -28,8 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Numerics;
 using System.Text;
+using Alis.Core.Aspect.Math.Matrix;
 
 namespace Alis.Core.Graphic.OpenGL
 {

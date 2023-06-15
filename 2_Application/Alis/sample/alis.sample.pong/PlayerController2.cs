@@ -27,11 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Component;
 using Alis.Core.Component.Collider;
-using Alis.Core.Graphic;
-using Alis.Core.Graphic.SFML.Windows;
 
 namespace Alis.Sample.Pong
 {
@@ -66,16 +65,16 @@ namespace Alis.Sample.Pong
         /// <param name="key">The key</param>
         public override void OnReleaseKey(Key key)
         {
-            Vector2F velocity = boxCollider.Body.LinearVelocity;
+            Vector2 velocity = boxCollider.Body.LinearVelocity;
 
             switch (key)
             {
                 case Key.Up:
-                    velocity = new Vector2F(velocity.X, 0);
+                    velocity = new Vector2(velocity.X, 0);
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
                 case Key.Down:
-                    velocity = new Vector2F(velocity.X, 0);
+                    velocity = new Vector2(velocity.X, 0);
                     boxCollider.Body.LinearVelocity = velocity;
                     break;
             }
@@ -87,16 +86,16 @@ namespace Alis.Sample.Pong
         /// <param name="key">The key</param>
         public override void OnPressDownKey(Key key)
         {
-            Vector2F velocity = boxCollider.Body.LinearVelocity;
+            Vector2 velocity = boxCollider.Body.LinearVelocity;
 
             switch (key)
             {
                 case Key.Up:
-                    velocity = new Vector2F(velocity.X, -5);
+                    velocity = new Vector2(velocity.X, -5);
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
                 case Key.Down:
-                    velocity = new Vector2F(velocity.X, 5);
+                    velocity = new Vector2(velocity.X, 5);
                     boxCollider.Body.LinearVelocity = velocity;
                     break;
             }
@@ -114,16 +113,16 @@ namespace Alis.Sample.Pong
 
             if (device == 1)
             {
-                Vector2F velocity = boxCollider.Body.LinearVelocity;
+                Vector2 velocity = boxCollider.Body.LinearVelocity;
 
                 switch (button)
                 {
                     case Button.A:
-                        velocity = new Vector2F(velocity.X, 5);
+                        velocity = new Vector2(velocity.X, 5);
                         boxCollider.Body.LinearVelocity = velocity;
                         return;
                     case Button.Y:
-                        velocity = new Vector2F(velocity.X, -5);
+                        velocity = new Vector2(velocity.X, -5);
                         boxCollider.Body.LinearVelocity = velocity;
                         break;
                 }
@@ -141,16 +140,16 @@ namespace Alis.Sample.Pong
 
             if (device == 1)
             {
-                Vector2F velocity = boxCollider.Body.LinearVelocity;
+                Vector2 velocity = boxCollider.Body.LinearVelocity;
 
                 switch (button)
                 {
                     case Button.A:
-                        velocity = new Vector2F(velocity.X, 0);
+                        velocity = new Vector2(velocity.X, 0);
                         boxCollider.Body.LinearVelocity = velocity;
                         return;
                     case Button.Y:
-                        velocity = new Vector2F(velocity.X, 0);
+                        velocity = new Vector2(velocity.X, 0);
                         boxCollider.Body.LinearVelocity = velocity;
                         break;
                 }

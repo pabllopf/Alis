@@ -27,15 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Core.Graphic.SFML.Windows
+namespace Alis.Core.Aspect.Base.Mapping
 {
     /// <summary>
-    ///     Key codes
+    /// The key enum
     /// </summary>
-    ////////////////////////////////////////////////////////////
-    public enum Key
+   public enum Key
     {
         /// <summary>Unhandled key</summary>
         Unknown = -1,
@@ -344,37 +341,6 @@ namespace Alis.Core.Graphic.SFML.Windows
         Pause,
 
         /// <summary>The total number of keyboard keys</summary>
-        KeyCount, // Keep last
-
-        // Deprecated backwards compatible stuff
-        /// <summary>
-        ///     The dash key
-        /// </summary>
-        [Obsolete("Deprecated: Use Hyphen instead.")]
-        Dash = Hyphen,
-
-        /// <summary>
-        ///     The back space key
-        /// </summary>
-        [Obsolete("Deprecated: Use Backspace instead.")]
-        BackSpace = Backspace,
-
-        /// <summary>
-        ///     The return key
-        /// </summary>
-        [Obsolete("Deprecated: Use Enter instead.")]
-        Return = Enter,
-
-        /// <summary>
-        ///     The back slash key
-        /// </summary>
-        [Obsolete("Deprecated: Use Backslash instead.")]
-        BackSlash = Backslash,
-
-        /// <summary>
-        ///     The semi colon key
-        /// </summary>
-        [Obsolete("Deprecated: Use Semicolon instead.")]
-        SemiColon = Semicolon
+        KeyCount,
     }
 }

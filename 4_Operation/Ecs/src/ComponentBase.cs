@@ -27,9 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Entity;
-using Alis.Core.Graphic;
-using Alis.Core.Graphic.SFML.Windows;
 
 namespace Alis.Core.Component
 {

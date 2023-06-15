@@ -51,7 +51,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <param name="point">The point</param>
         /// <param name="separation">The separation</param>
         public static void Initialize(ContactPositionConstraint pc, ref Transform xfA, ref Transform xfB, int index,
-            out Vector2F normal, out Vector2F point, out float separation)
+            out Vector2 normal, out Vector2 point, out float separation)
         {
             Debug.Assert(pc.PointCount > 0);
 
@@ -59,28 +59,28 @@ namespace Alis.Core.Physic.Dynamics.Solver
             {
                 case ManifoldType.Circles:
                 {
-                    Vector2F pointA = MathUtils.Mul(ref xfA, pc.LocalPoint);
-                    Vector2F pointB = MathUtils.Mul(ref xfB, pc.LocalPoints[0]);
+                    Vector2 pointA = MathUtils.Mul(ref xfA, pc.LocalPoint);
+                    Vector2 pointB = MathUtils.Mul(ref xfB, pc.LocalPoints[0]);
                     normal = pointB - pointA;
 
                     //Velcro: Fix to handle zero normalization
-                    if (normal != Vector2F.Zero)
+                    if (normal != Vector2.Zero)
                     {
-                        normal = Vector2F.Normalize(normal);
+                        normal = Vector2.Normalize(normal);
                     }
 
                     point = 0.5f * (pointA + pointB);
-                    separation = Vector2F.Dot(pointB - pointA, normal) - pc.RadiusA - pc.RadiusB;
+                    separation = Vector2.Dot(pointB - pointA, normal) - pc.RadiusA - pc.RadiusB;
                 }
                     break;
 
                 case ManifoldType.FaceA:
                 {
                     normal = MathUtils.Mul(xfA.Rotation, pc.LocalNormal);
-                    Vector2F planePoint = MathUtils.Mul(ref xfA, pc.LocalPoint);
+                    Vector2 planePoint = MathUtils.Mul(ref xfA, pc.LocalPoint);
 
-                    Vector2F clipPoint = MathUtils.Mul(ref xfB, pc.LocalPoints[index]);
-                    separation = Vector2F.Dot(clipPoint - planePoint, normal) - pc.RadiusA - pc.RadiusB;
+                    Vector2 clipPoint = MathUtils.Mul(ref xfB, pc.LocalPoints[index]);
+                    separation = Vector2.Dot(clipPoint - planePoint, normal) - pc.RadiusA - pc.RadiusB;
                     point = clipPoint;
                 }
                     break;
@@ -88,10 +88,10 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 case ManifoldType.FaceB:
                 {
                     normal = MathUtils.Mul(xfB.Rotation, pc.LocalNormal);
-                    Vector2F planePoint = MathUtils.Mul(ref xfB, pc.LocalPoint);
+                    Vector2 planePoint = MathUtils.Mul(ref xfB, pc.LocalPoint);
 
-                    Vector2F clipPoint = MathUtils.Mul(ref xfA, pc.LocalPoints[index]);
-                    separation = Vector2F.Dot(clipPoint - planePoint, normal) - pc.RadiusA - pc.RadiusB;
+                    Vector2 clipPoint = MathUtils.Mul(ref xfA, pc.LocalPoints[index]);
+                    separation = Vector2.Dot(clipPoint - planePoint, normal) - pc.RadiusA - pc.RadiusB;
                     point = clipPoint;
 
                     // Ensure normal points from A to B
@@ -99,8 +99,8 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 }
                     break;
                 default:
-                    normal = Vector2F.Zero;
-                    point = Vector2F.Zero;
+                    normal = Vector2.Zero;
+                    point = Vector2.Zero;
                     separation = 0;
                     break;
             }

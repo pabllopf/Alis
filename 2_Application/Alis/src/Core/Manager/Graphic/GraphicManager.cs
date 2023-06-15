@@ -30,8 +30,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.SFML.Graphics;
@@ -98,17 +98,7 @@ namespace Alis.Core.Manager.Graphic
             styles = Styles.Default;
             InitRenderWindow();
         }
-
-
-        /// <summary>
-        ///     Renders the window on key pressed using the specified sender
-        /// </summary>
-        /// <param name="sender">The sender</param>
-        /// <param name="e">The </param>
-        private void RenderWindowOnKeyPressed(object sender, KeyEventArgs e)
-        {
-        }
-
+        
         /// <summary>
         ///     Renders the window on resized using the specified sender
         /// </summary>
@@ -154,17 +144,9 @@ namespace Alis.Core.Manager.Graphic
             }
 
             RenderWindow.Resized += RenderWindowOnResized;
-            RenderWindow.KeyPressed += RenderWindowOnKeyPressed;
             RenderWindow.Closed += RenderWindowOnClosed;
         }
-
-        /// <summary>
-        ///     Awakes this instance
-        /// </summary>
-        public override void Awake()
-        {
-        }
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -212,28 +194,7 @@ namespace Alis.Core.Manager.Graphic
                 Task.Delay(100).Wait();
             }
         }
-
-        /// <summary>
-        ///     Fixeds the update
-        /// </summary>
-        public override void FixedUpdate()
-        {
-        }
-
-        /// <summary>
-        ///     Resets this instance
-        /// </summary>
-        public override void Reset()
-        {
-        }
-
-        /// <summary>
-        ///     Stops this instance
-        /// </summary>
-        public override void Stop()
-        {
-        }
-
+        
         /// <summary>
         ///     Exits this instance
         /// </summary>
@@ -270,18 +231,12 @@ namespace Alis.Core.Manager.Graphic
         ///     Sets the view using the specified view
         /// </summary>
         /// <param name="view">The view</param>
-        public void SetView(View view)
-        {
-            RenderWindow.SetView(view);
-        }
+        public void SetView(View view) => RenderWindow.SetView(view);
 
         /// <summary>
         ///     Attaches the collider using the specified shape
         /// </summary>
         /// <param name="shape">The shape</param>
-        public void AttachCollider(Shape shape)
-        {
-            Colliders.Add(shape);
-        }
+        public void AttachCollider(Shape shape) => Colliders.Add(shape);
     }
 }

@@ -34,7 +34,7 @@ namespace Alis.Core.Aspect.Math.Matrix
     /// <summary>
     ///     The matrix
     /// </summary>
-    public partial struct Matrix4X4F
+    public partial struct Matrix4x4
     {
         /// <summary>
         ///     The canonical basis
@@ -44,17 +44,17 @@ namespace Alis.Core.Aspect.Math.Matrix
             /// <summary>
             ///     The row
             /// </summary>
-            public Vector3F Row0;
+            public Vector3 Row0;
 
             /// <summary>
             ///     The row
             /// </summary>
-            public Vector3F Row1;
+            public Vector3 Row1;
 
             /// <summary>
             ///     The row
             /// </summary>
-            public Vector3F Row2;
+            public Vector3 Row2;
         }
     }
 }

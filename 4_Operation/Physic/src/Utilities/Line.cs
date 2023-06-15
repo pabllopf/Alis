@@ -47,31 +47,31 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="start">The start</param>
         /// <param name="end">The end</param>
         /// <returns>The float</returns>
-        public static float DistanceBetweenPointAndLineSegment(ref Vector2F point, ref Vector2F start, ref Vector2F end)
+        public static float DistanceBetweenPointAndLineSegment(ref Vector2 point, ref Vector2 start, ref Vector2 end)
         {
             if (start == end)
             {
-                return Vector2F.Distance(point, start);
+                return Vector2.Distance(point, start);
             }
 
-            Vector2F v = Vector2F.Subtract(end, start);
-            Vector2F w = Vector2F.Subtract(point, start);
+            Vector2 v = Vector2.Subtract(end, start);
+            Vector2 w = Vector2.Subtract(point, start);
 
-            float c1 = Vector2F.Dot(w, v);
+            float c1 = Vector2.Dot(w, v);
             if (c1 <= 0)
             {
-                return Vector2F.Distance(point, start);
+                return Vector2.Distance(point, start);
             }
 
-            float c2 = Vector2F.Dot(v, v);
+            float c2 = Vector2.Dot(v, v);
             if (c2 <= c1)
             {
-                return Vector2F.Distance(point, end);
+                return Vector2.Distance(point, end);
             }
 
             float b = c1 / c2;
-            Vector2F pointOnLine = Vector2F.Add(start, Vector2F.Multiply(v, b));
-            return Vector2F.Distance(point, pointOnLine);
+            Vector2 pointOnLine = Vector2.Add(start, Vector2.Multiply(v, b));
+            return Vector2.Distance(point, pointOnLine);
         }
 
         // From Eric Jordan's convex decomposition library
@@ -79,10 +79,10 @@ namespace Alis.Core.Physic.Utilities
         ///     Check if the lines a0->a1 and b0->b1 cross. If they do, intersectionPoint will be filled with the point of
         ///     crossing. Grazing lines should not return true.
         /// </summary>
-        public static bool LineIntersect2(ref Vector2F a0, ref Vector2F a1, ref Vector2F b0, ref Vector2F b1,
-            out Vector2F intersectionPoint)
+        public static bool LineIntersect2(ref Vector2 a0, ref Vector2 a1, ref Vector2 b0, ref Vector2 b1,
+            out Vector2 intersectionPoint)
         {
-            intersectionPoint = Vector2F.Zero;
+            intersectionPoint = Vector2.Zero;
 
             if (a0 == b0 || a0 == b1 || a1 == b0 || a1 == b1)
             {
@@ -123,7 +123,7 @@ namespace Alis.Core.Physic.Utilities
 
             if ((0 < ua) && (ua < 1) && (0 < ub) && (ub < 1))
             {
-                intersectionPoint = new Vector2F(
+                intersectionPoint = new Vector2(
                     x1 + ua * (x2 - x1),
                     y1 + ua * (y2 - y1)
                 );
@@ -142,9 +142,9 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="q1">The </param>
         /// <param name="q2">The </param>
         /// <returns>The </returns>
-        public static Vector2F LineIntersect(Vector2F p1, Vector2F p2, Vector2F q1, Vector2F q2)
+        public static Vector2 LineIntersect(Vector2 p1, Vector2 p2, Vector2 q1, Vector2 q2)
         {
-            Vector2F i = Vector2F.Zero;
+            Vector2 i = Vector2.Zero;
             float a1 = p2.Y - p1.Y;
             float b1 = p1.X - p2.X;
             float c1 = a1 * p1.X + b1 * p1.Y;
@@ -156,7 +156,7 @@ namespace Alis.Core.Physic.Utilities
             if (!MathUtils.FloatEquals(det, 0))
             {
                 // lines are not parallel
-                i = new Vector2F(
+                i = new Vector2(
                     (b2 * c1 - b1 * c2) / det,
                     (a1 * c2 - a2 * c1) / det
                 );
@@ -184,10 +184,10 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="firstIsSegment">Set this to true to require that the intersection point be on the first line segment.</param>
         /// <param name="secondIsSegment">Set this to true to require that the intersection point be on the second line segment.</param>
         /// <returns>True if an intersection is detected, false otherwise.</returns>
-        public static bool LineIntersect(ref Vector2F point1, ref Vector2F point2, ref Vector2F point3, ref Vector2F point4,
-            bool firstIsSegment, bool secondIsSegment, out Vector2F point)
+        public static bool LineIntersect(ref Vector2 point1, ref Vector2 point2, ref Vector2 point3, ref Vector2 point4,
+            bool firstIsSegment, bool secondIsSegment, out Vector2 point)
         {
-            point = new Vector2F();
+            point = new Vector2();
 
             // these are reused later.
             // each lettered sub-calculation is used twice, except
@@ -227,7 +227,7 @@ namespace Alis.Core.Physic.Utilities
                         if (ua != 0f || ub != 0f)
                         {
                             //There is an intersection
-                            point = new Vector2F(
+                            point = new Vector2(
                                 point1.X + ua * b,
                                 point1.Y + ua * d
                             );
@@ -260,8 +260,8 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="firstIsSegment">Set this to true to require that the intersection point be on the first line segment.</param>
         /// <param name="secondIsSegment">Set this to true to require that the intersection point be on the second line segment.</param>
         /// <returns>True if an intersection is detected, false otherwise.</returns>
-        public static bool LineIntersect(Vector2F point1, Vector2F point2, Vector2F point3, Vector2F point4,
-            bool firstIsSegment, bool secondIsSegment, out Vector2F intersectionPoint) =>
+        public static bool LineIntersect(Vector2 point1, Vector2 point2, Vector2 point3, Vector2 point4,
+            bool firstIsSegment, bool secondIsSegment, out Vector2 intersectionPoint) =>
             LineIntersect(ref point1,
                 ref point2, ref point3, ref point4, firstIsSegment, secondIsSegment, out intersectionPoint);
 
@@ -275,8 +275,8 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="point4">The second point of the second line segment.</param>
         /// <param name="intersectionPoint">This is set to the intersection point if an intersection is detected.</param>
         /// <returns>True if an intersection is detected, false otherwise.</returns>
-        public static bool LineIntersect(ref Vector2F point1, ref Vector2F point2, ref Vector2F point3, ref Vector2F point4,
-            out Vector2F intersectionPoint) =>
+        public static bool LineIntersect(ref Vector2 point1, ref Vector2 point2, ref Vector2 point3, ref Vector2 point4,
+            out Vector2 intersectionPoint) =>
             LineIntersect(ref point1, ref point2, ref point3, ref point4, true, true,
                 out intersectionPoint);
 
@@ -290,8 +290,8 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="point4">The second point of the second line segment.</param>
         /// <param name="intersectionPoint">This is set to the intersection point if an intersection is detected.</param>
         /// <returns>True if an intersection is detected, false otherwise.</returns>
-        public static bool LineIntersect(Vector2F point1, Vector2F point2, Vector2F point3, Vector2F point4,
-            out Vector2F intersectionPoint) =>
+        public static bool LineIntersect(Vector2 point1, Vector2 point2, Vector2 point3, Vector2 point4,
+            out Vector2 intersectionPoint) =>
             LineIntersect(ref point1, ref point2, ref point3, ref point4, true, true,
                 out intersectionPoint);
 
@@ -305,14 +305,14 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="point1">The first point of the line segment to test</param>
         /// <param name="point2">The second point of the line segment to test.</param>
         /// <param name="vertices">The vertices, as described above</param>
-        public static Vertices LineSegmentVerticesIntersect(ref Vector2F point1, ref Vector2F point2, Vertices vertices)
+        public static Vertices LineSegmentVerticesIntersect(ref Vector2 point1, ref Vector2 point2, Vertices vertices)
         {
             Vertices intersectionPoints = new Vertices();
 
             for (int i = 0; i < vertices.Count; i++)
             {
                 if (LineIntersect(vertices[i], vertices[vertices.NextIndex(i)], point1, point2, true, true,
-                        out Vector2F point))
+                        out Vector2 point))
                 {
                     intersectionPoints.Add(point);
                 }
@@ -325,7 +325,7 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="point1">The first point of the line segment to test</param>
         /// <param name="point2">The second point of the line segment to test.</param>
         /// <param name="aabb">The AABB that is used for testing intersection.</param>
-        public static Vertices LineSegmentAabbIntersect(ref Vector2F point1, ref Vector2F point2, Aabb aabb) =>
+        public static Vertices LineSegmentAabbIntersect(ref Vector2 point1, ref Vector2 point2, Aabb aabb) =>
             LineSegmentVerticesIntersect(ref point1, ref point2, aabb.Vertices);
     }
 }

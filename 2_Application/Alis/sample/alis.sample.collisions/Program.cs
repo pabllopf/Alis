@@ -76,7 +76,6 @@ namespace Alis.Sample.Collisions
                             .Transform(transform => transform
                                 .Position(16.0f, 16.0f)
                                 .Rotation(30f)
-                                //.Scale(2,2)
                                 .Build())
                             .AddComponent<BoxCollider>(box => box
                                 .Builder()
@@ -92,7 +91,6 @@ namespace Alis.Sample.Collisions
                             .Transform(transform => transform
                                 .Position(0.0f, 0.0f)
                                 .Rotation(0.0f)
-                                //.Scale(2,2)
                                 .Build())
                             .AddComponent<BoxCollider>(box => box
                                 .Builder()
@@ -108,7 +106,6 @@ namespace Alis.Sample.Collisions
                             .Transform(transform => transform
                                 .Position(0.0f, 60.0f)
                                 .Rotation(1.6f)
-                                //.Scale(2,2)
                                 .Build())
                             .AddComponent<BoxCollider>(box => box
                                 .Builder()
@@ -124,7 +121,6 @@ namespace Alis.Sample.Collisions
                             .Transform(transform => transform
                                 .Position(4f, 12.0f)
                                 .Rotation(4.9f)
-                                //.Scale(2,2)
                                 .Build())
                             .AddComponent<BoxCollider>(box => box
                                 .Builder()
@@ -138,13 +134,6 @@ namespace Alis.Sample.Collisions
                         .Build())
                     .Build())
                 .Run();
-        }
-
-        /// <summary>
-        ///     Settings
-        /// </summary>
-        public static void Setting()
-        {
         }
     }
 }

@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Security.Cryptography;
+using Alis.Core.Aspect.Math.Util;
 
 namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Util
 {
@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Util
             List<TriangulationPoint> points = new List<TriangulationPoint>();
             for (int i = 0; i < n; i++)
             {
-                points.Add(new TriangulationPoint(scale * (0.5 - RandomNumberGenerator.GetInt32(1234)), scale * (0.5 - RandomNumberGenerator.GetInt32(1234))));
+                points.Add(new TriangulationPoint(scale * (0.5 - RandomUtils.GetInt32(1234)), scale * (0.5 - RandomUtils.GetInt32(1234))));
             }
 
             return points;

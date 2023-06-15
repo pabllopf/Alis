@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Entity;
 using Alis.Core.Graphic.SFML.Graphics;
 

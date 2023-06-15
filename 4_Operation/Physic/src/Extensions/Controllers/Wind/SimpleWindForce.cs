@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Security.Cryptography;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
@@ -43,7 +42,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Wind
     public class SimpleWindForce : AbstractForceController
     {
         /// <summary>Direction of the windforce</summary>
-        public Vector2F Direction { get; set; }
+        public Vector2 Direction { get; set; }
 
         /// <summary>The amount of Direction randomization. Allowed range is 0-1.</summary>
         public float Divergence { get; set; }
@@ -67,7 +66,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Wind
 
                 if (decayMultiplier != 0)
                 {
-                    Vector2F forceVector;
+                    Vector2 forceVector;
 
                     if (ForceType == ForceTypes.Point)
                     {
@@ -75,26 +74,26 @@ namespace Alis.Core.Physic.Extensions.Controllers.Wind
                     }
                     else
                     {
-                        Direction = Vector2F.Normalize(Direction);
+                        Direction = Vector2.Normalize(Direction);
 
                         forceVector = Direction;
 
                         if (forceVector.Length() == 0)
                         {
-                            forceVector = new Vector2F(0, 1);
+                            forceVector = new Vector2(0, 1);
                         }
                     }
 
                     // Calculate random Variation
                     if (Variation != 0)
                     {
-                        float strengthVariation = RandomNumberGenerator.GetInt32(1234) * Helper.Clamp(Variation, 0, 1);
-                        forceVector = Vector2F.Normalize(forceVector);
+                        float strengthVariation = RandomUtils.GetInt32(1234) * Helper.Clamp(Variation, 0, 1);
+                        forceVector = Vector2.Normalize(forceVector);
                         body.ApplyForce(forceVector * strength * decayMultiplier * strengthVariation);
                     }
                     else
                     {
-                        forceVector = Vector2F.Normalize(forceVector);
+                        forceVector = Vector2.Normalize(forceVector);
                         body.ApplyForce(forceVector * strength * decayMultiplier);
                     }
                 }

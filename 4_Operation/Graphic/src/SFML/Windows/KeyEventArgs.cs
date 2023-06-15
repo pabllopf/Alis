@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Base.Mapping;
 
 namespace Alis.Core.Graphic.SFML.Windows
 {

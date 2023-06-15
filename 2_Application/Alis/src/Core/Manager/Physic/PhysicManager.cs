@@ -52,86 +52,16 @@ namespace Alis.Core.Manager.Physic
             World = new World(VideoGame.Setting.Physic.Gravity);
             Logger.Trace();
         }
-
-        /// <summary>
-        ///     Awakes this instance
-        /// </summary>
-        public override void Awake()
-        {
-        }
-
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        public override void Start()
-        {
-        }
-
-        /// <summary>
-        ///     Befores the update
-        /// </summary>
-        public override void BeforeUpdate()
-        {
-        }
-
+        
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public override void Update()
-        {
-            World.Step((float) GameBase.TimeManager.TimeStep, 6, 2);
-        }
-
-
-        /// <summary>
-        ///     Afters the update
-        /// </summary>
-        public override void AfterUpdate()
-        {
-        }
-
-        /// <summary>
-        ///     Fixeds the update
-        /// </summary>
-        public override void FixedUpdate()
-        {
-        }
-
-        /// <summary>
-        ///     Dispatches the events
-        /// </summary>
-        public override void DispatchEvents()
-        {
-        }
-
-        /// <summary>
-        ///     Resets this instance
-        /// </summary>
-        public override void Reset()
-        {
-        }
-
-        /// <summary>
-        ///     Stops this instance
-        /// </summary>
-        public override void Stop()
-        {
-        }
-
-        /// <summary>
-        ///     Exits this instance
-        /// </summary>
-        public override void Exit()
-        {
-        }
-
+        public override void Update() => World.Step((float) GameBase.TimeManager.TimeStep, 6, 2);
+        
         /// <summary>
         ///     Attaches the body using the specified body
         /// </summary>
         /// <param name="body">The body</param>
-        public void AttachBody(Body body)
-        {
-            World.AddBody(body);
-        }
+        public void AttachBody(Body body) => World.AddBody(body);
     }
 }

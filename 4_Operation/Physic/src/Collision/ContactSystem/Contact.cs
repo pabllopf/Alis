@@ -349,7 +349,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>Gets the world manifold.</summary>
-        public void GetWorldManifold(out Vector2F normal, out FixedArray2<Vector2F> points)
+        public void GetWorldManifold(out Vector2 normal, out FixedArray2<Vector2> points)
         {
             Body bodyA = FixtureA.Body;
             Body bodyB = FixtureB.Body;

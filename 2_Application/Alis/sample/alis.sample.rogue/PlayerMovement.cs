@@ -27,11 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Component;
 using Alis.Core.Component.Collider;
 using Alis.Core.Component.Render;
-using Alis.Core.Graphic.SFML.Windows;
 
 namespace Alis.Sample.Rogue
 {
@@ -89,27 +89,27 @@ namespace Alis.Sample.Rogue
         /// <param name="key">The key</param>
         public override void OnReleaseKey(Key key)
         {
-            Vector2F velocity = boxCollider.Body.LinearVelocity;
+            Vector2 velocity = boxCollider.Body.LinearVelocity;
 
             switch (key)
             {
                 case Key.D:
-                    velocity = new Vector2F(0, velocity.Y);
+                    velocity = new Vector2(0, velocity.Y);
                     walk = false;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
                 case Key.A:
-                    velocity = new Vector2F(0, velocity.Y);
+                    velocity = new Vector2(0, velocity.Y);
                     walk = false;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
                 case Key.W:
-                    velocity = new Vector2F(velocity.X, 0);
+                    velocity = new Vector2(velocity.X, 0);
                     walk = false;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
                 case Key.S:
-                    velocity = new Vector2F(velocity.X, 0);
+                    velocity = new Vector2(velocity.X, 0);
                     walk = false;
                     boxCollider.Body.LinearVelocity = velocity;
                     break;
@@ -122,7 +122,7 @@ namespace Alis.Sample.Rogue
         /// <param name="key">The key</param>
         public override void OnPressDownKey(Key key)
         {
-            Vector2F velocity = boxCollider.Body.LinearVelocity;
+            Vector2 velocity = boxCollider.Body.LinearVelocity;
 
             //Console.WriteLine($"key={key}");
             switch (key)
@@ -130,25 +130,25 @@ namespace Alis.Sample.Rogue
                 case Key.D:
                     walk = true;
                     animator.ChangeAnimationTo("WalkRight");
-                    velocity = new Vector2F(5, velocity.Y);
+                    velocity = new Vector2(5, velocity.Y);
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
                 case Key.A:
                     walk = true;
                     animator.ChangeAnimationTo("WalkLeft");
-                    velocity = new Vector2F(-5, velocity.Y);
+                    velocity = new Vector2(-5, velocity.Y);
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
                 case Key.W:
                     walk = true;
                     animator.ChangeAnimationTo("WalkUp");
-                    velocity = new Vector2F(velocity.X, -5);
+                    velocity = new Vector2(velocity.X, -5);
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
                 case Key.S:
                     walk = true;
                     animator.ChangeAnimationTo("WalkDown");
-                    velocity = new Vector2F(velocity.X, 5);
+                    velocity = new Vector2(velocity.X, 5);
                     boxCollider.Body.LinearVelocity = velocity;
                     break;
             }

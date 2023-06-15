@@ -173,7 +173,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="v">Vector being casted</param>
         /// <returns>Casting result</returns>
         ////////////////////////////////////////////////////////////
-        public static explicit operator Vector2F(Vector2U v) => new Vector2F(v.X, v.Y);
+        public static explicit operator Vector2(Vector2U v) => new Vector2(v.X, v.Y);
 
         /// <summary>X (horizontal) component of the vector</summary>
         public readonly uint X;

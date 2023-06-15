@@ -73,8 +73,8 @@ namespace Alis.Core.Physic.Collision.Narrowphase
                 SimplexVertex v = V[i];
                 v.IndexA = cache.IndexA[i];
                 v.IndexB = cache.IndexB[i];
-                Vector2F wALocal = proxyA.Vertices[v.IndexA];
-                Vector2F wBLocal = proxyB.Vertices[v.IndexB];
+                Vector2 wALocal = proxyA.Vertices[v.IndexA];
+                Vector2 wBLocal = proxyB.Vertices[v.IndexB];
                 v.Wa = MathUtils.Mul(ref transformA, wALocal);
                 v.Wb = MathUtils.Mul(ref transformB, wBLocal);
                 v.W = v.Wb - v.Wa;
@@ -101,8 +101,8 @@ namespace Alis.Core.Physic.Collision.Narrowphase
                 SimplexVertex v = V[0];
                 v.IndexA = 0;
                 v.IndexB = 0;
-                Vector2F wALocal = proxyA.Vertices[0];
-                Vector2F wBLocal = proxyB.Vertices[0];
+                Vector2 wALocal = proxyA.Vertices[0];
+                Vector2 wBLocal = proxyB.Vertices[0];
                 v.Wa = MathUtils.Mul(ref transformA, wALocal);
                 v.Wb = MathUtils.Mul(ref transformB, wBLocal);
                 v.W = v.Wb - v.Wa;
@@ -131,7 +131,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
         ///     Gets the search direction
         /// </summary>
         /// <returns>The vector</returns>
-        internal Vector2F GetSearchDirection()
+        internal Vector2 GetSearchDirection()
         {
             switch (Count)
             {
@@ -140,7 +140,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
 
                 case 2:
                 {
-                    Vector2F e12 = V[1].W - V[0].W;
+                    Vector2 e12 = V[1].W - V[0].W;
                     float sgn = MathUtils.Cross(e12, -V[0].W);
                     if (sgn > 0.0f)
                     {
@@ -154,7 +154,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
 
                 default:
                     Debug.Assert(false);
-                    return Vector2F.Zero;
+                    return Vector2.Zero;
             }
         }
 
@@ -162,13 +162,13 @@ namespace Alis.Core.Physic.Collision.Narrowphase
         ///     Gets the closest point
         /// </summary>
         /// <returns>The vector</returns>
-        internal Vector2F GetClosestPoint()
+        internal Vector2 GetClosestPoint()
         {
             switch (Count)
             {
                 case 0:
                     Debug.Assert(false);
-                    return Vector2F.Zero;
+                    return Vector2.Zero;
 
                 case 1:
                     return V[0].W;
@@ -177,11 +177,11 @@ namespace Alis.Core.Physic.Collision.Narrowphase
                     return V[0].A * V[0].W + V[1].A * V[1].W;
 
                 case 3:
-                    return Vector2F.Zero;
+                    return Vector2.Zero;
 
                 default:
                     Debug.Assert(false);
-                    return Vector2F.Zero;
+                    return Vector2.Zero;
             }
         }
 
@@ -191,13 +191,13 @@ namespace Alis.Core.Physic.Collision.Narrowphase
         /// <param name="pA">The </param>
         /// <param name="pB">The </param>
         /// <exception cref="Exception"></exception>
-        internal void GetWitnessPoints(out Vector2F pA, out Vector2F pB)
+        internal void GetWitnessPoints(out Vector2 pA, out Vector2 pB)
         {
             switch (Count)
             {
                 case 0:
-                    pA = Vector2F.Zero;
-                    pB = Vector2F.Zero;
+                    pA = Vector2.Zero;
+                    pB = Vector2.Zero;
                     Debug.Assert(false);
                     break;
 
@@ -276,12 +276,12 @@ namespace Alis.Core.Physic.Collision.Narrowphase
         /// </summary>
         internal void Solve2()
         {
-            Vector2F w1 = V[0].W;
-            Vector2F w2 = V[1].W;
-            Vector2F e12 = w2 - w1;
+            Vector2 w1 = V[0].W;
+            Vector2 w2 = V[1].W;
+            Vector2 e12 = w2 - w1;
 
             // w1 region
-            float d122 = -Vector2F.Dot(w1, e12);
+            float d122 = -Vector2.Dot(w1, e12);
             if (d122 <= 0.0f)
             {
                 // a2 <= 0, so we clamp it to 0
@@ -291,7 +291,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             }
 
             // w2 region
-            float d121 = Vector2F.Dot(w2, e12);
+            float d121 = Vector2.Dot(w2, e12);
             if (d121 <= 0.0f)
             {
                 // a1 <= 0, so we clamp it to 0
@@ -318,17 +318,17 @@ namespace Alis.Core.Physic.Collision.Narrowphase
         /// </summary>
         internal void Solve3()
         {
-            Vector2F w1 = V[0].W;
-            Vector2F w2 = V[1].W;
-            Vector2F w3 = V[2].W;
+            Vector2 w1 = V[0].W;
+            Vector2 w2 = V[1].W;
+            Vector2 w3 = V[2].W;
 
             // Edge12
             // [1      1     ][a1] = [1]
             // [w1.e12 w2.e12][a2] = [0]
             // a3 = 0
-            Vector2F e12 = w2 - w1;
-            float w1E12 = Vector2F.Dot(w1, e12);
-            float w2E12 = Vector2F.Dot(w2, e12);
+            Vector2 e12 = w2 - w1;
+            float w1E12 = Vector2.Dot(w1, e12);
+            float w2E12 = Vector2.Dot(w2, e12);
             float d121 = w2E12;
             float d122 = -w1E12;
 
@@ -336,9 +336,9 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             // [1      1     ][a1] = [1]
             // [w1.e13 w3.e13][a3] = [0]
             // a2 = 0
-            Vector2F e13 = w3 - w1;
-            float w1E13 = Vector2F.Dot(w1, e13);
-            float w3E13 = Vector2F.Dot(w3, e13);
+            Vector2 e13 = w3 - w1;
+            float w1E13 = Vector2.Dot(w1, e13);
+            float w3E13 = Vector2.Dot(w3, e13);
             float d131 = w3E13;
             float d132 = -w1E13;
 
@@ -346,9 +346,9 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             // [1      1     ][a2] = [1]
             // [w2.e23 w3.e23][a3] = [0]
             // a1 = 0
-            Vector2F e23 = w3 - w2;
-            float w2E23 = Vector2F.Dot(w2, e23);
-            float w3E23 = Vector2F.Dot(w3, e23);
+            Vector2 e23 = w3 - w2;
+            float w2E23 = Vector2.Dot(w2, e23);
+            float w3E23 = Vector2.Dot(w3, e23);
             float d231 = w3E23;
             float d232 = -w2E23;
 

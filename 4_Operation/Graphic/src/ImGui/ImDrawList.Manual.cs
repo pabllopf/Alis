@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
 using System.Text;
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Graphic.ImGui
 {

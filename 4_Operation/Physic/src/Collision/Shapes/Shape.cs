@@ -140,7 +140,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="transform">The shape world transform.</param>
         /// <param name="point">A point in world coordinates.</param>
         /// <returns>True if the point is inside the shape</returns>
-        public abstract bool TestPoint(ref Transform transform, ref Vector2F point);
+        public abstract bool TestPoint(ref Transform transform, ref Vector2 point);
 
         /// <summary>Cast a ray against a child shape.</summary>
         /// <param name="input">The ray-cast input parameters.</param>
