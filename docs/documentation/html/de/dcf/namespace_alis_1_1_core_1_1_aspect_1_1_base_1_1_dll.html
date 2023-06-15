@@ -106,15 +106,7 @@ $(document).ready(function(){initNavTree('de/dcf/namespace_alis_1_1_core_1_1_asp
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/de6/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll_1_1_embedded_dll_class.html">EmbeddedDllClass</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class used by managed classes to managed unmanaged DLLs. This will extract and load DLLs from embedded binary resources. This can be used with pinvoke, as well as manually loading DLLs your own way. If you use pinvoke, you don't need to load the DLLs, just extract them. When the DLLs are extracted, the PATH% environment variable is updated to point to the temporary folder. To Use </p><ul>
-<li>
-Add all of the DLLs as binary file resources to the project Propeties. Double click Properties/Resources.resx, Add Resource, Add Existing File. The resource name will be similar but not exactly the same as the DLL file name.  </li>
-<li>
-<p class="startli">In a static constructor of your application, call EmbeddedDllClass.ExtractEmbeddedDlls() for each DLL that is needed  </p>
-<p class="endli">EmbeddedDllClass.ExtractEmbeddedDlls("libFrontPanel-pinv.dll", Properties.Resources.libFrontPanel_pinv); </p>
-</li>
-</ul>
-<p>Optional: In a static constructor of your application, call EmbeddedDllClass.LoadDll() to load the DLLs you have extracted. This is not necessary for pinvoke  EmbeddedDllClass.LoadDll("myscrewball.dll"); Continue using standard Pinvoke methods for the desired functions in the DLL  <a href="../../d6/de6/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll_1_1_embedded_dll_class.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The embedded dll class  <a href="../../d6/de6/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll_1_1_embedded_dll_class.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
@@ -124,7 +116,7 @@ Add all of the DLLs as binary file resources to the project Propeties. Double cl
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../d2/d40/namespace_alis_1_1_core_1_1_aspect.html">Aspect</a></li><li class="navelem"><a class="el" href="../../d2/d81/namespace_alis_1_1_core_1_1_aspect_1_1_base.html">Base</a></li><li class="navelem"><a class="el" href="../../de/dcf/namespace_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll.html">Dll</a></li>
     <li class="footer">
-      <a>Generated on | Wed Jun 14 2023 |</a>
+      <a>Generated on | Thu Jun 15 2023 |</a>
     </li>
   </ul>
 </div>

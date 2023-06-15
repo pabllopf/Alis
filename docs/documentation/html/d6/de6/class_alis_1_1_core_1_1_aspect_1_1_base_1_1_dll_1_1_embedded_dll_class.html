@@ -99,21 +99,14 @@ $(document).ready(function(){initNavTree('d6/de6/class_alis_1_1_core_1_1_aspect_
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="../../de/d80/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll_1_1_embedded_dll_class-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Alis.Core.Aspect.Base.Dll.EmbeddedDllClass Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>A class used by managed classes to managed unmanaged DLLs. This will extract and load DLLs from embedded binary resources. This can be used with pinvoke, as well as manually loading DLLs your own way. If you use pinvoke, you don't need to load the DLLs, just extract them. When the DLLs are extracted, the PATH% environment variable is updated to point to the temporary folder. To Use </p><ul>
-<li>
-Add all of the DLLs as binary file resources to the project Propeties. Double click Properties/Resources.resx, Add Resource, Add Existing File. The resource name will be similar but not exactly the same as the DLL file name.  </li>
-<li>
-<p class="startli">In a static constructor of your application, call EmbeddedDllClass.ExtractEmbeddedDlls() for each DLL that is needed  </p>
-<p class="endli">EmbeddedDllClass.ExtractEmbeddedDlls("libFrontPanel-pinv.dll", Properties.Resources.libFrontPanel_pinv); </p>
-</li>
-</ul>
-<p>Optional: In a static constructor of your application, call EmbeddedDllClass.LoadDll() to load the DLLs you have extracted. This is not necessary for pinvoke  EmbeddedDllClass.LoadDll("myscrewball.dll"); Continue using standard Pinvoke methods for the desired functions in the DLL  
+<p>The embedded dll class  
  <a href="../../d6/de6/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll_1_1_embedded_dll_class.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
@@ -127,21 +120,20 @@ Properties</h2></td></tr>
 <tr class="memitem:a7b17b76b8dc6d4edef92c1ce994fb225"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/de6/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll_1_1_embedded_dll_class.html#a7b17b76b8dc6d4edef92c1ce994fb225">CurrentDirectory</a> = &quot;&quot;<code> [get, private set]</code></td></tr>
 <tr class="memdesc:a7b17b76b8dc6d4edef92c1ce994fb225"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the value of the current directory  <a href="../../d6/de6/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll_1_1_embedded_dll_class.html#a7b17b76b8dc6d4edef92c1ce994fb225">More...</a><br /></td></tr>
 <tr class="separator:a7b17b76b8dc6d4edef92c1ce994fb225"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a4905ab2bf488e81f55051b823136b408"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/de6/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll_1_1_embedded_dll_class.html#a4905ab2bf488e81f55051b823136b408">IsRunningOniOS</a> ()</td></tr>
+<tr class="memdesc:a4905ab2bf488e81f55051b823136b408"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether this instance is running oni os  <a href="../../d6/de6/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll_1_1_embedded_dll_class.html#a4905ab2bf488e81f55051b823136b408">More...</a><br /></td></tr>
+<tr class="separator:a4905ab2bf488e81f55051b823136b408"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3fd93e894c5c8ed84bc7b35d2f7b651"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/de6/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll_1_1_embedded_dll_class.html#af3fd93e894c5c8ed84bc7b35d2f7b651">IsRunningOnAndroid</a> ()</td></tr>
+<tr class="memdesc:af3fd93e894c5c8ed84bc7b35d2f7b651"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether this instance is running on android  <a href="../../d6/de6/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll_1_1_embedded_dll_class.html#af3fd93e894c5c8ed84bc7b35d2f7b651">More...</a><br /></td></tr>
+<tr class="separator:af3fd93e894c5c8ed84bc7b35d2f7b651"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A class used by managed classes to managed unmanaged DLLs. This will extract and load DLLs from embedded binary resources. This can be used with pinvoke, as well as manually loading DLLs your own way. If you use pinvoke, you don't need to load the DLLs, just extract them. When the DLLs are extracted, the PATH% environment variable is updated to point to the temporary folder. To Use </p><ul>
-<li>
-Add all of the DLLs as binary file resources to the project Propeties. Double click Properties/Resources.resx, Add Resource, Add Existing File. The resource name will be similar but not exactly the same as the DLL file name.  </li>
-<li>
-<p class="startli">In a static constructor of your application, call EmbeddedDllClass.ExtractEmbeddedDlls() for each DLL that is needed  </p>
-<p class="endli">EmbeddedDllClass.ExtractEmbeddedDlls("libFrontPanel-pinv.dll", Properties.Resources.libFrontPanel_pinv); </p>
-</li>
-</ul>
-<p>Optional: In a static constructor of your application, call EmbeddedDllClass.LoadDll() to load the DLLs you have extracted. This is not necessary for pinvoke  </p>
-<p>EmbeddedDllClass.LoadDll("myscrewball.dll"); </p>
-<p>Continue using standard Pinvoke methods for the desired functions in the DLL </p>
+<div class="textblock"><p>The embedded dll class </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d84/_embedded_dll_class_8cs_source.html#l00068">68</a> of file <a class="el" href="../../d8/d84/_embedded_dll_class_8cs_source.html">EmbeddedDllClass.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d84/_embedded_dll_class_8cs_source.html#l00040">40</a> of file <a class="el" href="../../d8/d84/_embedded_dll_class_8cs_source.html">EmbeddedDllClass.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a2a96509dcac7c43bbefa0e689011fb4d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2a96509dcac7c43bbefa0e689011fb4d">&#9670;&nbsp;</a></span>ExtractEmbeddedDlls()</h2>
@@ -186,7 +178,63 @@ Add all of the DLLs as binary file resources to the project Propeties. Double cl
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d84/_embedded_dll_class_8cs_source.html#l00080">80</a> of file <a class="el" href="../../d8/d84/_embedded_dll_class_8cs_source.html">EmbeddedDllClass.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d84/_embedded_dll_class_8cs_source.html#l00052">52</a> of file <a class="el" href="../../d8/d84/_embedded_dll_class_8cs_source.html">EmbeddedDllClass.cs</a>.</p>
+
+</div>
+</div>
+<a id="a4905ab2bf488e81f55051b823136b408"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4905ab2bf488e81f55051b823136b408">&#9670;&nbsp;</a></span>IsRunningOniOS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.IsRunningOniOS </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Describes whether this instance is running oni os </p>
+<dl class="section return"><dt>Returns</dt><dd>The bool</dd></dl>
+
+</div>
+</div>
+<a id="af3fd93e894c5c8ed84bc7b35d2f7b651"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3fd93e894c5c8ed84bc7b35d2f7b651">&#9670;&nbsp;</a></span>IsRunningOnAndroid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.IsRunningOnAndroid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Describes whether this instance is running on android </p>
+<dl class="section return"><dt>Returns</dt><dd>The bool</dd></dl>
 
 </div>
 </div>
@@ -213,7 +261,7 @@ Add all of the DLLs as binary file resources to the project Propeties. Double cl
 
 <p>Gets or sets the value of the current directory </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d84/_embedded_dll_class_8cs_source.html#l00073">73</a> of file <a class="el" href="../../d8/d84/_embedded_dll_class_8cs_source.html">EmbeddedDllClass.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d84/_embedded_dll_class_8cs_source.html#l00045">45</a> of file <a class="el" href="../../d8/d84/_embedded_dll_class_8cs_source.html">EmbeddedDllClass.cs</a>.</p>
 
 </div>
 </div>
@@ -224,7 +272,7 @@ Add all of the DLLs as binary file resources to the project Propeties. Double cl
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../d2/d40/namespace_alis_1_1_core_1_1_aspect.html">Aspect</a></li><li class="navelem"><a class="el" href="../../d2/d81/namespace_alis_1_1_core_1_1_aspect_1_1_base.html">Base</a></li><li class="navelem"><a class="el" href="../../de/dcf/namespace_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll.html">Dll</a></li><li class="navelem"><a class="el" href="../../d6/de6/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll_1_1_embedded_dll_class.html">EmbeddedDllClass</a></li>
     <li class="footer">
-      <a>Generated on | Wed Jun 14 2023 |</a>
+      <a>Generated on | Thu Jun 15 2023 |</a>
     </li>
   </ul>
 </div>

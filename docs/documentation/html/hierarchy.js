@@ -101,8 +101,8 @@ var hierarchy =
     [ "Alis.Core.Physic.Collision.Broadphase.DynamicTree< T >", "d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html", null ],
     [ "Alis.Core.Physic.Collision.Broadphase.DynamicTree< FixtureProxy >", "d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html", null ],
     [ "Alis.Core.Physic.Tools.Triangulation.Earclip.EarclipDecomposer", "d9/d36/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_earclip_1_1_earclip_decomposer.html", null ],
-    [ "Alis.Core.Physic.Tools.Triangulation.Seidel.Edge", "d1/dc3/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_edge.html", null ],
     [ "Alis.Core.Physic.Tools.Cutting.YuPengClipper.Edge", "d2/d85/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper_1_1_edge.html", null ],
+    [ "Alis.Core.Physic.Tools.Triangulation.Seidel.Edge", "d1/dc3/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_edge.html", null ],
     [ "Alis.Core.Aspect.Base.Dll.EmbeddedDllClass", "d6/de6/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll_1_1_embedded_dll_class.html", null ],
     [ "Alis.App.Engine.Engine", "d3/ddb/class_alis_1_1_app_1_1_engine_1_1_engine.html", null ],
     [ "Alis.Core.Physic.Collision.Narrowphase.EpAxis", "d8/d81/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_ep_axis.html", null ],
@@ -440,7 +440,9 @@ var hierarchy =
         ] ]
       ] ],
       [ "Alis.Core.Network.WebSocketClientFactory", "d4/df1/class_alis_1_1_core_1_1_network_1_1_web_socket_client_factory.html", null ],
-      [ "Alis.Core.Physic.Shared.Optimization.IPoolable< T >", "d6/d6b/interface_alis_1_1_core_1_1_physic_1_1_shared_1_1_optimization_1_1_i_poolable.html", null ]
+      [ "Alis.Core.Physic.Shared.Optimization.IPoolable< T >", "d6/d6b/interface_alis_1_1_core_1_1_physic_1_1_shared_1_1_optimization_1_1_i_poolable.html", null ],
+      [ "Alis.Core.Plugin.IPlugin", "dd/df0/interface_alis_1_1_core_1_1_plugin_1_1_i_plugin.html", null ],
+      [ "Alis.Core.Plugin.PluginManager", "d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html", null ]
     ] ],
     [ "Alis.Core.Graphic.SFML.Graphics.IDrawable", "d0/d85/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_drawable.html", [
       [ "Alis.Core.Graphic.SFML.Graphics.Shape", "d5/ddb/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_shape.html", null ],
@@ -938,6 +940,7 @@ var hierarchy =
     [ "Alis.Core.Graphic.SDL.SdlDollarGestureEvent", "df/d11/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_dollar_gesture_event.html", null ],
     [ "Alis.Core.Graphic.SDL.SdlDropEvent", "dc/d4f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event.html", null ],
     [ "Alis.Core.Graphic.SDL.SdlEvent", "d4/d49/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_event.html", null ],
+    [ "Alis.Core.Graphic.SDL.Extern.SdlExtern", "d4/d42/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_extern.html", null ],
     [ "Alis.Core.Graphic.SDL.SdlFinger", "d9/df5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_finger.html", null ],
     [ "Alis.Core.Graphic.SDL.SdlFPoint", "df/da5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_f_point.html", null ],
     [ "Alis.Core.Graphic.SDL.SdlFRect", "df/d38/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_f_rect.html", null ],
@@ -952,6 +955,7 @@ var hierarchy =
     [ "Alis.Core.Graphic.SDL.SdlHapticPeriodic", "de/dd9/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_haptic_periodic.html", null ],
     [ "Alis.Core.Graphic.SDL.SdlHapticRamp", "d6/d20/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_haptic_ramp.html", null ],
     [ "Alis.Core.Graphic.SDL.SdlImage", "d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html", null ],
+    [ "Alis.Core.Graphic.SDL.Extern.SdlImageExtern", "d9/df9/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_image_extern.html", null ],
     [ "Alis.Core.Graphic.SDL.SdlJoyAxisEvent", "d1/dbe/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_joy_axis_event.html", null ],
     [ "Alis.Core.Graphic.SDL.SdlJoyBallEvent", "d4/d33/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_joy_ball_event.html", null ],
     [ "Alis.Core.Graphic.SDL.SdlJoyButtonEvent", "d5/d32/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_joy_button_event.html", null ],
@@ -985,6 +989,7 @@ var hierarchy =
     [ "Alis.Core.Graphic.SDL.SdlTextInputEvent", "d2/db5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_text_input_event.html", null ],
     [ "Alis.Core.Graphic.SDL.SdlTouchFingerEvent", "de/d2d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_touch_finger_event.html", null ],
     [ "Alis.Core.Graphic.SDL.SdlTtf", "da/d00/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_ttf.html", null ],
+    [ "Alis.Core.Graphic.SDL.Extern.SdlTtfExtern", "dd/def/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_ttf_extern.html", null ],
     [ "Alis.Core.Graphic.SDL.SdlUserEvent", "dc/d36/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_user_event.html", null ],
     [ "Alis.Core.Graphic.SDL.SdlVersion", "d1/dec/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_version.html", null ],
     [ "Alis.Core.Audio.SDL.SdlVersion", "d0/d15/struct_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_version.html", null ],

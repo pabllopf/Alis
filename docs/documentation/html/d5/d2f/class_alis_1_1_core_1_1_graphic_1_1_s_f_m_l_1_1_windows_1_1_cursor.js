@@ -16,7 +16,6 @@ var class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor =
       [ "NotAllowed", "d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a97a9584a27329b720b9a4d154cdefc19afa89fcc81e9dcfd52671c968fe4e6ddf", null ]
     ] ],
     [ "Cursor", "d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#aa4360a8e4b48d9207fc9d3c1fe9db04c", null ],
-    [ "Cursor", "d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a15ff22c1e4bd2315948c4b52f9aee26a", null ],
     [ "Destroy", "d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a92c319f1bdb5e8efd55dfeded84efa4a", null ],
     [ "sfCursor_createFromSystem", "d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a88e25edf77ee8f807c4a4554fbd3654c", null ],
     [ "sfCursor_createFromPixels", "d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#aa592e167ebd15aa4558dca1fd9f83649", null ],

@@ -194,7 +194,7 @@ $(document).ready(function(){initNavTree('d8/d1c/_math_utils_8cs_source.html','.
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                a.Ey.X * b.Ex.X + a.Ey.Y * b.Ex.Y,</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                a.Ex.X * b.Ey.X + a.Ex.Y * b.Ey.Y,</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                a.Ey.X * b.Ey.X + a.Ey.Y * b.Ey.Y</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                );</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            );</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        }</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
 <div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="../../d4/de0/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils.html#a800848982bc586aa967934bb1448f4bc">  171</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="../../db/d52/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3_f.html">Vector3F</a> <a class="code" href="../../d4/de0/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils.html#a800848982bc586aa967934bb1448f4bc">Mul</a>(<a class="code" href="../../d2/dda/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix3_x3_f.html">Matrix3X3F</a> a, <a class="code" href="../../db/d52/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3_f.html">Vector3F</a> v) =&gt; v.<a class="code" href="../../db/d52/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3_f.html#a4c62aed89496060e37789214d127c5df">X</a> * a.Ex + v.Y * a.Ey + v.Z * a.Ez;</div>
@@ -399,9 +399,9 @@ $(document).ready(function(){initNavTree('d8/d1c/_math_utils_8cs_source.html','.
 <div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;            }</div>
 <div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160; </div>
 <div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;            <span class="keywordtype">float</span> invLength = 1.0f / length;</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;            </div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;            v = <span class="keyword">new</span> <a class="code" href="../../d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html">Vector2F</a>(v.X*invLength, v.Y*invLength);</div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;            </div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160; </div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;            v = <span class="keyword">new</span> <a class="code" href="../../d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html">Vector2F</a>(v.X * invLength, v.Y * invLength);</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160; </div>
 <div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;            <span class="keywordflow">return</span> length;</div>
 <div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;        }</div>
 <div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160; </div>
@@ -514,7 +514,7 @@ $(document).ready(function(){initNavTree('d8/d1c/_math_utils_8cs_source.html','.
   <ul>
     <li class="navelem"><a class="el" href="../../dir_8272ea2c9ef4a5a450abbc74ffafe4de.html">4_Operation</a></li><li class="navelem"><a class="el" href="../../dir_52bde0543a13a94906a2e677a9f1758f.html">Physic</a></li><li class="navelem"><a class="el" href="../../dir_16bee6912db060554756e46a6c0ce1a1.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cef10556bc32690826b90b7cc64a1a0a.html">Utilities</a></li><li class="navelem"><b>MathUtils.cs</b></li>
     <li class="footer">
-      <a>Generated on | Wed Jun 14 2023 |</a>
+      <a>Generated on | Thu Jun 15 2023 |</a>
     </li>
   </ul>
 </div>

@@ -8,6 +8,7 @@ var namespace_alis_1_1_core =
     [ "Manager", "d5/d13/namespace_alis_1_1_core_1_1_manager.html", "d5/d13/namespace_alis_1_1_core_1_1_manager" ],
     [ "Network", "dd/d38/namespace_alis_1_1_core_1_1_network.html", "dd/d38/namespace_alis_1_1_core_1_1_network" ],
     [ "Physic", "d7/db3/namespace_alis_1_1_core_1_1_physic.html", "d7/db3/namespace_alis_1_1_core_1_1_physic" ],
+    [ "Plugin", "d9/d04/namespace_alis_1_1_core_1_1_plugin.html", "d9/d04/namespace_alis_1_1_core_1_1_plugin" ],
     [ "Setting", "d2/d0f/namespace_alis_1_1_core_1_1_setting.html", "d2/d0f/namespace_alis_1_1_core_1_1_setting" ],
     [ "Systems", "df/d01/namespace_alis_1_1_core_1_1_systems.html", "df/d01/namespace_alis_1_1_core_1_1_systems" ],
     [ "GameBase", "df/dab/class_alis_1_1_core_1_1_game_base.html", "df/dab/class_alis_1_1_core_1_1_game_base" ]

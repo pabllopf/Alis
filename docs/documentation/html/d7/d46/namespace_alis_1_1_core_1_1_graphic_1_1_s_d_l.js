@@ -1,5 +1,6 @@
 var namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l =
 [
+    [ "Extern", "dd/d4c/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern.html", "dd/d4c/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern" ],
     [ "InternalAndroidWminfo", "d2/d17/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_internal_android_wminfo.html", "d2/d17/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_internal_android_wminfo" ],
     [ "InternalCocoaWminfo", "df/d2a/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_internal_cocoa_wminfo.html", "df/d2a/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_internal_cocoa_wminfo" ],
     [ "InternalDirectfbWminfo", "da/dfc/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_internal_directfb_wminfo.html", "da/dfc/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_internal_directfb_wminfo" ],
