@@ -57,82 +57,82 @@ namespace Alis.Core.Graphic.SDL
         ///     The texture formats
         /// </summary>
         public int textureFormats0;
-        
+
         /// <summary>
-        /// The texture formats
+        ///     The texture formats
         /// </summary>
         public int textureFormats1;
-        
+
         /// <summary>
-        /// The texture formats
+        ///     The texture formats
         /// </summary>
         public int textureFormats2;
-        
+
         /// <summary>
-        /// The texture formats
+        ///     The texture formats
         /// </summary>
         public int textureFormats3;
-        
+
         /// <summary>
-        /// The texture formats
+        ///     The texture formats
         /// </summary>
         public int textureFormats4;
-        
+
         /// <summary>
-        /// The texture formats
+        ///     The texture formats
         /// </summary>
         public int textureFormats5;
-        
+
         /// <summary>
-        /// The texture formats
+        ///     The texture formats
         /// </summary>
         public int textureFormats6;
-        
+
         /// <summary>
-        /// The texture formats
+        ///     The texture formats
         /// </summary>
         public int textureFormats7;
-        
+
         /// <summary>
-        /// The texture formats
+        ///     The texture formats
         /// </summary>
         public int textureFormats8;
-        
+
         /// <summary>
-        /// The texture formats
+        ///     The texture formats
         /// </summary>
         public int textureFormats9;
-        
+
         /// <summary>
-        /// The texture formats 10
+        ///     The texture formats 10
         /// </summary>
         public int textureFormats10;
-        
+
         /// <summary>
-        /// The texture formats 11
+        ///     The texture formats 11
         /// </summary>
         public int textureFormats11;
-        
+
         /// <summary>
-        /// The texture formats 12
+        ///     The texture formats 12
         /// </summary>
         public int textureFormats12;
-        
+
         /// <summary>
-        /// The texture formats 13
+        ///     The texture formats 13
         /// </summary>
         public int textureFormats13;
-        
+
         /// <summary>
-        /// The texture formats 14
+        ///     The texture formats 14
         /// </summary>
         public int textureFormats14;
-        
+
         /// <summary>
-        /// The texture formats 15
+        ///     The texture formats 15
         /// </summary>
         public int textureFormats15;
-        
+
         /// <summary>
         ///     The max texture width
         /// </summary>

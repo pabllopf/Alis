@@ -35,6 +35,5 @@ namespace Alis.Core.Manager.Audio
     /// <seealso cref="ManagerBase" />
     public class AudioManager : AudioManagerBase
     {
-        
     }
 }

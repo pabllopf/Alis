@@ -52,12 +52,12 @@ namespace Alis.Core.Manager.Physic
             World = new World(VideoGame.Setting.Physic.Gravity);
             Logger.Trace();
         }
-        
+
         /// <summary>
         ///     Updates this instance
         /// </summary>
         public override void Update() => World.Step((float) GameBase.TimeManager.TimeStep, 6, 2);
-        
+
         /// <summary>
         ///     Attaches the body using the specified body
         /// </summary>

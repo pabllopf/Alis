@@ -30,19 +30,27 @@
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    /// The math class
+    ///     The math class
     /// </summary>
     public static class MathF
     {
         /// <summary>Represents the natural logarithmic base, specified by the constant, <see langword="e" />.</summary>
         public const float E = 2.7182817f;
+
         /// <summary>Represents the ratio of the circumference of a circle to its diameter, specified by the constant, p.</summary>
         public const float PI = 3.1415927f;
+
         /// <summary>Represents the number of radians in one turn, specified by the constant, τ.</summary>
         public const float Tau = 6.2831855f;
-        
+
+
         /// <summary>
-        /// Sqrts the x
+        ///     The max iterations
+        /// </summary>
+        private const int MaxIterations = 10;
+
+        /// <summary>
+        ///     Sqrts the x
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The float</returns>
@@ -52,43 +60,33 @@ namespace Alis.Core.Aspect.Math
             {
                 return float.NaN;
             }
-            else if (x == 0f)
+
+            if (x == 0f)
             {
                 return 0f;
             }
-            else
-            {
-                float current = x;
-                float previous;
-            
-                do
-                {
-                    previous = current;
-                    current = (previous + x / previous) * 0.5f;
-                } while (Abs(current - previous) > 0.0001f);
 
-                return current;
-            }
+            float current = x;
+            float previous;
+
+            do
+            {
+                previous = current;
+                current = (previous + x / previous) * 0.5f;
+            } while (Abs(current - previous) > 0.0001f);
+
+            return current;
         }
-        
+
         /// <summary>
-        /// Abses the value
+        ///     Abses the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The float</returns>
-        public static float Abs(float value)
-        {
-            return (value < 0f) ? -value : value;
-        }
-        
-        
-        /// <summary>
-        /// The max iterations
-        /// </summary>
-        private const int MaxIterations = 10;
+        public static float Abs(float value) => value < 0f ? -value : value;
 
         /// <summary>
-        /// Coses the x
+        ///     Coses the x
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The result</returns>
@@ -113,9 +111,9 @@ namespace Alis.Core.Aspect.Math
 
             return result;
         }
-        
+
         /// <summary>
-        /// Sins the x
+        ///     Sins the x
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The result</returns>
@@ -128,7 +126,7 @@ namespace Alis.Core.Aspect.Math
 
             // Normalize the angle to the range [-π, π]
             x %= 2 * PI;
-        
+
             // Reduce the angle to the range [-π/2, π/2] by using sin(x) = sin(π - x) for x > π/2
             if (x > PI / 2)
             {
@@ -144,15 +142,15 @@ namespace Alis.Core.Aspect.Math
 
             for (int i = 1; i <= MaxIterations; i++)
             {
-                term *= -x * x / ((2 * i) * (2 * i + 1));
+                term *= -x * x / (2 * i * (2 * i + 1));
                 result += term;
             }
 
             return result;
         }
-        
+
         /// <summary>
-        /// Acoses the x
+        ///     Acoses the x
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The angle</returns>
@@ -170,9 +168,9 @@ namespace Alis.Core.Aspect.Math
 
             for (int i = 1; i <= MaxIterations; i++)
             {
-                term *= squared * ((2 * i) - 1) / ((2 * i) * (i * 4));
+                term *= squared * (2 * i - 1) / (2 * i * i * 4);
                 factor *= squared;
-                float currentTerm = term / ((2 * i) + 1);
+                float currentTerm = term / (2 * i + 1);
                 angle -= currentTerm;
 
                 if (Abs(currentTerm) < float.Epsilon)

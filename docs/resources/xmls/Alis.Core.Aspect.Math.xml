@@ -47,7 +47,7 @@
             <param name="width">Width of the rectangle</param>
             <param name="height">Height of the rectangle</param>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleF.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleF.#ctor(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>
                 Construct the rectangle from position and size
             </summary>
@@ -264,7 +264,61 @@
                 The sphere
             </summary>
         </member>
-        <member name="T:Alis.Core.Aspect.Math.Matrix.Matrix4X4F">
+        <member name="T:Alis.Core.Aspect.Math.MathF">
+            <summary>
+            The math class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.MathF.E">
+            <summary>Represents the natural logarithmic base, specified by the constant, <see langword="e" />.</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.MathF.PI">
+            <summary>Represents the ratio of the circumference of a circle to its diameter, specified by the constant, p.</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.MathF.Tau">
+            <summary>Represents the number of radians in one turn, specified by the constant, τ.</summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.MathF.Sqrt(System.Single)">
+            <summary>
+            Sqrts the x
+            </summary>
+            <param name="x">The </param>
+            <returns>The float</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.MathF.Abs(System.Single)">
+            <summary>
+            Abses the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The float</returns>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.MathF.MaxIterations">
+            <summary>
+            The max iterations
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.MathF.Cos(System.Single)">
+            <summary>
+            Coses the x
+            </summary>
+            <param name="x">The </param>
+            <returns>The result</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.MathF.Sin(System.Single)">
+            <summary>
+            Sins the x
+            </summary>
+            <param name="x">The </param>
+            <returns>The result</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.MathF.Acos(System.Single)">
+            <summary>
+            Acoses the x
+            </summary>
+            <param name="x">The </param>
+            <returns>The angle</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Matrix.Matrix4x4">
             <summary>
                 The matrix
             </summary>
@@ -275,90 +329,90 @@
                 The matrix
             </summary>
         </member>
-        <member name="T:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.CanonicalBasis">
+        <member name="T:Alis.Core.Aspect.Math.Matrix.Matrix4x4.CanonicalBasis">
             <summary>
                 The canonical basis
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.CanonicalBasis.Row0">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.CanonicalBasis.Row0">
             <summary>
                 The row
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.CanonicalBasis.Row1">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.CanonicalBasis.Row1">
             <summary>
                 The row
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.CanonicalBasis.Row2">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.CanonicalBasis.Row2">
             <summary>
                 The row
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.BillboardEpsilon">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.BillboardEpsilon">
             <summary>
                 The billboard epsilon
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.BillboardMinAngle">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.BillboardMinAngle">
             <summary>
                 The pi
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.DecomposeEpsilon">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.DecomposeEpsilon">
             <summary>
                 The decompose epsilon
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M11">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M11">
             <summary>The first element of the first row.</summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M12">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M12">
             <summary>The second element of the first row.</summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M13">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M13">
             <summary>The third element of the first row.</summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M14">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M14">
             <summary>The fourth element of the first row.</summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M21">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M21">
             <summary>The first element of the second row.</summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M22">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M22">
             <summary>The second element of the second row.</summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M23">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M23">
             <summary>The third element of the second row.</summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M24">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M24">
             <summary>The fourth element of the second row.</summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M31">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M31">
             <summary>The first element of the third row.</summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M32">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M32">
             <summary>The second element of the third row.</summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M33">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M33">
             <summary>The third element of the third row.</summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M34">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M34">
             <summary>The fourth element of the third row.</summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M41">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M41">
             <summary>The first element of the fourth row.</summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M42">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M42">
             <summary>The second element of the fourth row.</summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M43">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M43">
             <summary>The third element of the fourth row.</summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M44">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M44">
             <summary>The fourth element of the fourth row.</summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4x4.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>Creates a 4x4 matrix from the specified components.</summary>
             <param name="m11">The value to assign to the first element in the first row.</param>
             <param name="m12">The value to assign to the second element in the first row.</param>
@@ -377,39 +431,49 @@
             <param name="m43">The value to assign to the third element in the fourth row.</param>
             <param name="m44">The value to assign to the fourth element in the fourth row.</param>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.#ctor(System.Numerics.Matrix3x2)">
-            <summary>Creates a <see cref="T:Alis.Core.Aspect.Math.Matrix.Matrix4X4F" /> object from a specified <see cref="T:System.Numerics.Matrix3x2" /> object.</summary>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4x4.#ctor(Alis.Core.Aspect.Math.Matrix.Matrix3x2)">
+            <summary>Creates a <see cref="T:Alis.Core.Aspect.Math.Matrix.Matrix4x4" /> object from a specified <see cref="T:Alis.Core.Aspect.Math.Matrix.Matrix3x2" /> object.</summary>
             <param name="value">A 3x2 matrix.</param>
             <remarks>
-                This constructor creates a 4x4 matrix whose <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M13" />, <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M14" />,
-                <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M23" />, <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M24" />, <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M31" />,
-                <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M32" />, <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M34" />, and <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M43" /> components are
-                zero, and whose <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M33" /> and <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M44" /> components are one.
+                This constructor creates a 4x4 matrix whose <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M13" />, <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M14" />,
+                <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M23" />, <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M24" />, <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M31" />,
+                <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M32" />, <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M34" />, and <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M43" /> components are
+                zero, and whose <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M33" /> and <see cref="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.M44" /> components are one.
             </remarks>
         </member>
-        <member name="P:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.Identity">
+        <member name="P:Alis.Core.Aspect.Math.Matrix.Matrix4x4.Identity">
             <summary>Gets the multiplicative identity matrix.</summary>
             <value>Gets the multiplicative identity matrix.</value>
         </member>
-        <member name="P:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.IsIdentity">
+        <member name="P:Alis.Core.Aspect.Math.Matrix.Matrix4x4.IsIdentity">
             <summary>Indicates whether the current matrix is the identity matrix.</summary>
             <value><see langword="true" /> if the current matrix is the identity matrix; otherwise, <see langword="false" />.</value>
         </member>
-        <member name="P:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.Translation">
+        <member name="P:Alis.Core.Aspect.Math.Matrix.Matrix4x4.Translation">
             <summary>Gets or sets the translation component of this matrix.</summary>
             <value>The translation component of the current instance.</value>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.op_Addition(Alis.Core.Aspect.Math.Matrix.Matrix4X4F,Alis.Core.Aspect.Math.Matrix.Matrix4X4F)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4x4.CreateOrthographicOffCenter(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>Creates a customized orthographic projection matrix.</summary>
+            <param name="left">The minimum X-value of the view volume.</param>
+            <param name="right">The maximum X-value of the view volume.</param>
+            <param name="bottom">The minimum Y-value of the view volume.</param>
+            <param name="top">The maximum Y-value of the view volume.</param>
+            <param name="zNearPlane">The minimum Z-value of the view volume.</param>
+            <param name="zFarPlane">The maximum Z-value of the view volume.</param>
+            <returns>The orthographic projection matrix.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4x4.op_Addition(Alis.Core.Aspect.Math.Matrix.Matrix4x4,Alis.Core.Aspect.Math.Matrix.Matrix4x4)">
             <summary>Adds each element in one matrix with its corresponding element in a second matrix.</summary>
             <param name="value1">The first matrix.</param>
             <param name="value2">The second matrix.</param>
             <returns>The matrix that contains the summed values.</returns>
             <remarks>
-                The <see cref="M:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.op_Addition(Alis.Core.Aspect.Math.Matrix.Matrix4X4F,Alis.Core.Aspect.Math.Matrix.Matrix4X4F)" /> method defines the operation of the addition operator for
-                <see cref="T:Alis.Core.Aspect.Math.Matrix.Matrix4X4F" /> objects.
+                The <see cref="M:Alis.Core.Aspect.Math.Matrix.Matrix4x4.op_Addition(Alis.Core.Aspect.Math.Matrix.Matrix4x4,Alis.Core.Aspect.Math.Matrix.Matrix4x4)" /> method defines the operation of the addition operator for
+                <see cref="T:Alis.Core.Aspect.Math.Matrix.Matrix4x4" /> objects.
             </remarks>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.op_Equality(Alis.Core.Aspect.Math.Matrix.Matrix4X4F,Alis.Core.Aspect.Math.Matrix.Matrix4X4F)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4x4.op_Equality(Alis.Core.Aspect.Math.Matrix.Matrix4x4,Alis.Core.Aspect.Math.Matrix.Matrix4x4)">
             <summary>Returns a value that indicates whether the specified matrices are equal.</summary>
             <param name="value1">The first matrix to compare.</param>
             <param name="value2">The second matrix to care</param>
@@ -419,7 +483,7 @@
             </returns>
             <remarks>Two matrices are equal if all their corresponding elements are equal.</remarks>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.op_Inequality(Alis.Core.Aspect.Math.Matrix.Matrix4X4F,Alis.Core.Aspect.Math.Matrix.Matrix4X4F)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4x4.op_Inequality(Alis.Core.Aspect.Math.Matrix.Matrix4x4,Alis.Core.Aspect.Math.Matrix.Matrix4x4)">
             <summary>Returns a value that indicates whether the specified matrices are not equal.</summary>
             <param name="value1">The first matrix to compare.</param>
             <param name="value2">The second matrix to compare.</param>
@@ -428,24 +492,24 @@
                 <see langword="false" />.
             </returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.Add(Alis.Core.Aspect.Math.Matrix.Matrix4X4F,Alis.Core.Aspect.Math.Matrix.Matrix4X4F)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4x4.Add(Alis.Core.Aspect.Math.Matrix.Matrix4x4,Alis.Core.Aspect.Math.Matrix.Matrix4x4)">
             <summary>Adds each element in one matrix with its corresponding element in a second matrix.</summary>
             <param name="value1">The first matrix.</param>
             <param name="value2">The second matrix.</param>
             <returns>The matrix that contains the summed values of <paramref name="value1" /> and <paramref name="value2" />.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.CreateRotationZ(System.Single)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4x4.CreateRotationZ(System.Single)">
             <summary>Creates a matrix for rotating points around the Z axis.</summary>
             <param name="radians">The amount, in radians, by which to rotate around the Z-axis.</param>
             <returns>The rotation matrix.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.Transform(Alis.Core.Aspect.Math.Matrix.Matrix4X4F,System.Numerics.Quaternion)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4x4.Transform(Alis.Core.Aspect.Math.Matrix.Matrix4x4,Alis.Core.Aspect.Math.Util.Quaternion)">
             <summary>Transforms the specified matrix by applying the specified Quaternion rotation.</summary>
             <param name="value">The matrix to transform.</param>
             <param name="rotation">The rotation t apply.</param>
             <returns>The transformed matrix.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.Equals(System.Object)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4x4.Equals(System.Object)">
             <summary>Returns a value that indicates whether this instance and a specified object are equal.</summary>
             <param name="obj">The object to compare with the current instance.</param>
             <returns>
@@ -455,23 +519,23 @@
             </returns>
             <remarks>
                 The current instance and <paramref name="obj" /> are equal if <paramref name="obj" /> is a
-                <see cref="T:Alis.Core.Aspect.Math.Matrix.Matrix4X4F" /> object and the corresponding elements of each matrix are equal.
+                <see cref="T:Alis.Core.Aspect.Math.Matrix.Matrix4x4" /> object and the corresponding elements of each matrix are equal.
             </remarks>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.Equals(Alis.Core.Aspect.Math.Matrix.Matrix4X4F)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4x4.Equals(Alis.Core.Aspect.Math.Matrix.Matrix4x4)">
             <summary>Returns a value that indicates whether this instance and another 4x4 matrix are equal.</summary>
             <param name="other">The other matrix.</param>
             <returns><see langword="true" /> if the two matrices are equal; otherwise, <see langword="false" />.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.GetDeterminant">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4x4.GetDeterminant">
             <summary>Calculates the determinant of the current 4x4 matrix.</summary>
             <returns>The determinant.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.GetHashCode">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4x4.GetHashCode">
             <summary>Returns the hash code for this instance.</summary>
             <returns>The hash code.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.ToString">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix4x4.ToString">
             <summary>Returns a string that represents this matrix.</summary>
             <returns>The string representation of this matrix.</returns>
             <remarks>
@@ -485,22 +549,22 @@
                 .
             </remarks>
         </member>
-        <member name="T:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.VectorBasis">
+        <member name="T:Alis.Core.Aspect.Math.Matrix.Matrix4x4.VectorBasis">
             <summary>
                 The vector basis
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.VectorBasis.Element0">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.VectorBasis.Element0">
             <summary>
                 The element
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.VectorBasis.Element1">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.VectorBasis.Element1">
             <summary>
                 The element
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.VectorBasis.Element2">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4x4.VectorBasis.Element2">
             <summary>
                 The element
             </summary>
@@ -520,7 +584,7 @@
                 The col
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.#ctor(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>
                 Construct this matrix using columns.
             </summary>
@@ -536,7 +600,7 @@
                 This matrix becomes an orthonormal rotation matrix.
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.Set(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.Set(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>
                 Initialize this matrix using columns.
             </summary>
@@ -567,7 +631,7 @@
                 Compute the inverse of this matrix, such that inv(A) * A = identity.
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.Solve(Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.Solve(Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>
                 Solve A * x = b, where b is a column vector. This is more efficient
                 than computing the inverse in one-shot cases.
@@ -590,6 +654,220 @@
                 Gets the value of the inverse
             </summary>
         </member>
+        <member name="T:Alis.Core.Aspect.Math.Matrix.Matrix3x2">
+            <summary>
+            The matrix 3x class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.Equals(Alis.Core.Aspect.Math.Matrix.Matrix3x2)">
+            <summary>
+            Describes whether this instance equals
+            </summary>
+            <param name="other">The other</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.Equals(System.Object)">
+            <summary>
+            Describes whether this instance equals
+            </summary>
+            <param name="obj">The obj</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix3x2.RotationEpsilon">
+            <summary>
+            The pi
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix3x2._identity">
+            <summary>
+            The matrix 3x
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix3x2.M11">
+            <summary>The first element of the first row.</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix3x2.M12">
+            <summary>The second element of the first row.</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix3x2.M21">
+            <summary>The first element of the second row.</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix3x2.M22">
+            <summary>The second element of the second row.</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix3x2.M31">
+            <summary>The first element of the third row.</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix3x2.M32">
+            <summary>The second element of the third row.</summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>Creates a 3x2 matrix from the specified components.</summary>
+            <param name="m11">The value to assign to the first element in the first row.</param>
+            <param name="m12">The value to assign to the second element in the first row.</param>
+            <param name="m21">The value to assign to the first element in the second row.</param>
+            <param name="m22">The value to assign to the second element in the second row.</param>
+            <param name="m31">The value to assign to the first element in the third row.</param>
+            <param name="m32">The value to assign to the second element in the third row.</param>
+        </member>
+        <member name="P:Alis.Core.Aspect.Math.Matrix.Matrix3x2.Identity">
+            <summary>Gets the multiplicative identity matrix.</summary>
+            <value>The multiplicative identify matrix.</value>
+        </member>
+        <member name="P:Alis.Core.Aspect.Math.Matrix.Matrix3x2.IsIdentity">
+            <summary>Gets a value that indicates whether the current matrix is the identity matrix.</summary>
+            <value><see langword="true" /> if the current matrix is the identity matrix; otherwise, <see langword="false" />.</value>
+        </member>
+        <member name="P:Alis.Core.Aspect.Math.Matrix.Matrix3x2.Translation">
+            <summary>Gets or sets the translation component of this matrix.</summary>
+            <value>The translation component of the current instance.</value>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.op_Addition(Alis.Core.Aspect.Math.Matrix.Matrix3x2,Alis.Core.Aspect.Math.Matrix.Matrix3x2)">
+            <summary>Adds each element in one matrix with its corresponding element in a second matrix.</summary>
+            <param name="value1">The first matrix.</param>
+            <param name="value2">The second matrix.</param>
+            <returns>The matrix that contains the summed values.</returns>
+            <remarks>The <see cref="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.op_Addition(Alis.Core.Aspect.Math.Matrix.Matrix3x2,Alis.Core.Aspect.Math.Matrix.Matrix3x2)" /> method defines the operation of the addition operator for <see cref="T:Alis.Core.Aspect.Math.Matrix.Matrix3x2" /> objects.</remarks>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.op_Equality(Alis.Core.Aspect.Math.Matrix.Matrix3x2,Alis.Core.Aspect.Math.Matrix.Matrix3x2)">
+            <summary>Returns a value that indicates whether the specified matrices are equal.</summary>
+            <param name="value1">The first matrix to compare.</param>
+            <param name="value2">The second matrix to compare.</param>
+            <returns><see langword="true" /> if <paramref name="value1" /> and <paramref name="value2" /> are equal; otherwise, <see langword="false" />.</returns>
+            <remarks>Two matrices are equal if all their corresponding elements are equal.</remarks>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.op_Inequality(Alis.Core.Aspect.Math.Matrix.Matrix3x2,Alis.Core.Aspect.Math.Matrix.Matrix3x2)">
+            <summary>Returns a value that indicates whether the specified matrices are not equal.</summary>
+            <param name="value1">The first matrix to compare.</param>
+            <param name="value2">The second matrix to compare.</param>
+            <returns><see langword="true" /> if <paramref name="value1" /> and <paramref name="value2" /> are not equal; otherwise, <see langword="false" />.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.op_Multiply(Alis.Core.Aspect.Math.Matrix.Matrix3x2,Alis.Core.Aspect.Math.Matrix.Matrix3x2)">
+            <summary>Multiplies two matrices together to compute the product.</summary>
+            <param name="value1">The first matrix.</param>
+            <param name="value2">The second matrix.</param>
+            <returns>The product matrix.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.op_Multiply(Alis.Core.Aspect.Math.Matrix.Matrix3x2,System.Single)">
+            <summary>Multiplies a matrix by a float to compute the product.</summary>
+            <param name="value1">The matrix to scale.</param>
+            <param name="value2">The scaling value to use.</param>
+            <returns>The scaled matrix.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.op_Subtraction(Alis.Core.Aspect.Math.Matrix.Matrix3x2,Alis.Core.Aspect.Math.Matrix.Matrix3x2)">
+            <summary>Subtracts each element in a second matrix from its corresponding element in a first matrix.</summary>
+            <param name="value1">The first matrix.</param>
+            <param name="value2">The second matrix.</param>
+            <returns>The matrix containing the values that result from subtracting each element in <paramref name="value2" /> from its corresponding element in <paramref name="value1" />.</returns>
+            <remarks>The <see cref="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.Subtract(Alis.Core.Aspect.Math.Matrix.Matrix3x2,Alis.Core.Aspect.Math.Matrix.Matrix3x2)" /> method defines the operation of the subtraction operator for <see cref="T:Alis.Core.Aspect.Math.Matrix.Matrix3x2" /> objects.</remarks>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.op_UnaryNegation(Alis.Core.Aspect.Math.Matrix.Matrix3x2)">
+            <summary>Negates the specified matrix by multiplying all its values by -1.</summary>
+            <param name="value">The matrix to negate.</param>
+            <returns>The negated matrix.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.Add(Alis.Core.Aspect.Math.Matrix.Matrix3x2,Alis.Core.Aspect.Math.Matrix.Matrix3x2)">
+            <summary>Adds each element in one matrix with its corresponding element in a second matrix.</summary>
+            <param name="value1">The first matrix.</param>
+            <param name="value2">The second matrix.</param>
+            <returns>The matrix that contains the summed values of <paramref name="value1" /> and <paramref name="value2" />.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.CreateScale(Alis.Core.Aspect.Math.Vector.Vector2)">
+            <summary>Creates a scaling matrix from the specified vector scale.</summary>
+            <param name="scales">The scale to use.</param>
+            <returns>The scaling matrix.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.CreateScale(System.Single,System.Single)">
+            <summary>Creates a scaling matrix from the specified X and Y components.</summary>
+            <param name="xScale">The value to scale by on the X axis.</param>
+            <param name="yScale">The value to scale by on the Y axis.</param>
+            <returns>The scaling matrix.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.CreateScale(System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2)">
+            <summary>Creates a scaling matrix that is offset by a given center point.</summary>
+            <param name="xScale">The value to scale by on the X axis.</param>
+            <param name="yScale">The value to scale by on the Y axis.</param>
+            <param name="centerPoint">The center point.</param>
+            <returns>The scaling matrix.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.CreateScale(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
+            <summary>Creates a scaling matrix from the specified vector scale with an offset from the specified center point.</summary>
+            <param name="scales">The scale to use.</param>
+            <param name="centerPoint">The center offset.</param>
+            <returns>The scaling matrix.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.CreateScale(System.Single)">
+            <summary>Creates a scaling matrix that scales uniformly with the given scale.</summary>
+            <param name="scale">The uniform scale to use.</param>
+            <returns>The scaling matrix.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.CreateScale(System.Single,Alis.Core.Aspect.Math.Vector.Vector2)">
+            <summary>Creates a scaling matrix that scales uniformly with the specified scale with an offset from the specified center.</summary>
+            <param name="scale">The uniform scale to use.</param>
+            <param name="centerPoint">The center offset.</param>
+            <returns>The scaling matrix.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.CreateTranslation(Alis.Core.Aspect.Math.Vector.Vector2)">
+            <summary>Creates a translation matrix from the specified 2-dimensional vector.</summary>
+            <param name="position">The translation position.</param>
+            <returns>The translation matrix.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.CreateTranslation(System.Single,System.Single)">
+            <summary>Creates a translation matrix from the specified X and Y components.</summary>
+            <param name="xPosition">The X position.</param>
+            <param name="yPosition">The Y position.</param>
+            <returns>The translation matrix.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.Invert(Alis.Core.Aspect.Math.Matrix.Matrix3x2,Alis.Core.Aspect.Math.Matrix.Matrix3x2@)">
+            <summary>Tries to invert the specified matrix. The return value indicates whether the operation succeeded.</summary>
+            <param name="matrix">The matrix to invert.</param>
+            <param name="result">When this method returns, contains the inverted matrix if the operation succeeded.</param>
+            <returns><see langword="true" /> if <paramref name="matrix" /> was converted successfully; otherwise,  <see langword="false" />.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.Lerp(Alis.Core.Aspect.Math.Matrix.Matrix3x2,Alis.Core.Aspect.Math.Matrix.Matrix3x2,System.Single)">
+            <summary>Performs a linear interpolation from one matrix to a second matrix based on a value that specifies the weighting of the second matrix.</summary>
+            <param name="matrix1">The first matrix.</param>
+            <param name="matrix2">The second matrix.</param>
+            <param name="amount">The relative weighting of <paramref name="matrix2" />.</param>
+            <returns>The interpolated matrix.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.Multiply(Alis.Core.Aspect.Math.Matrix.Matrix3x2,Alis.Core.Aspect.Math.Matrix.Matrix3x2)">
+            <summary>Multiplies two matrices together to compute the product.</summary>
+            <param name="value1">The first matrix.</param>
+            <param name="value2">The second matrix.</param>
+            <returns>The product matrix.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.Multiply(Alis.Core.Aspect.Math.Matrix.Matrix3x2,System.Single)">
+            <summary>Multiplies a matrix by a float to compute the product.</summary>
+            <param name="value1">The matrix to scale.</param>
+            <param name="value2">The scaling value to use.</param>
+            <returns>The scaled matrix.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.Negate(Alis.Core.Aspect.Math.Matrix.Matrix3x2)">
+            <summary>Negates the specified matrix by multiplying all its values by -1.</summary>
+            <param name="value">The matrix to negate.</param>
+            <returns>The negated matrix.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.Subtract(Alis.Core.Aspect.Math.Matrix.Matrix3x2,Alis.Core.Aspect.Math.Matrix.Matrix3x2)">
+            <summary>Subtracts each element in a second matrix from its corresponding element in a first matrix.</summary>
+            <param name="value1">The first matrix.</param>
+            <param name="value2">The second matrix.</param>
+            <returns>The matrix containing the values that result from subtracting each element in <paramref name="value2" /> from its corresponding element in <paramref name="value1" />.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.GetDeterminant">
+            <summary>Calculates the determinant for this matrix.</summary>
+            <returns>The determinant.</returns>
+            <remarks>The determinant is calculated by expanding the matrix with a third column whose values are (0,0,1).</remarks>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.GetHashCode">
+            <summary>Returns the hash code for this instance.</summary>
+            <returns>The hash code.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3x2.ToString">
+            <summary>Returns a string that represents this matrix.</summary>
+            <returns>The string representation of this matrix.</returns>
+            <remarks>The numeric values in the returned string are formatted by using the conventions of the current culture. For example, for the en-US culture, the returned string might appear as <c>{ {M11:1.1 M12:1.2} {M21:2.1 M22:2.2} {M31:3.1 M32:3.2} }</c>.</remarks>
+        </member>
         <member name="T:Alis.Core.Aspect.Math.Matrix.Matrix3X3F">
             <summary>
                 <see cref="T:Alis.Core.Aspect.Math.Matrix.Matrix3X3F" /> is a struct representing a glsl mat3 value
@@ -610,7 +888,7 @@
                 The ez
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3X3F.#ctor(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3X3F.#ctor(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
             <summary>Construct this matrix using columns.</summary>
             <param name="c1">The c1.</param>
             <param name="c2">The c2.</param>
@@ -629,7 +907,7 @@
                 The array
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3X3F.Solve33(Alis.Core.Aspect.Math.Vector.Vector3F)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3X3F.Solve33(Alis.Core.Aspect.Math.Vector.Vector3)">
             <summary>
                 Solve A * x = b, where b is a column vector. This is more efficient than computing the inverse in one-shot
                 cases.
@@ -637,7 +915,7 @@
             <param name="b">The b.</param>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3X3F.Solve22(Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3X3F.Solve22(Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>
                 Solve A * x = b, where b is a column vector. This is more efficient than computing the inverse in one-shot
                 cases. Solve only the upper 2-by-2 matrix equation.
@@ -653,7 +931,7 @@
             Get the symmetric inverse of this matrix as a 3-by-3.
             Returns the zero matrix if singular.
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3X3F.Dot(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3X3F.Dot(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
             <summary>
                 Dots the a
             </summary>
@@ -661,7 +939,7 @@
             <param name="b">The </param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3X3F.Cross(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3X3F.Cross(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
             <summary>
                 Crosses the a
             </summary>
@@ -719,7 +997,7 @@
                 The
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Transform.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Transform.#ctor(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Math.Transform" /> class
             </summary>
@@ -730,7 +1008,7 @@
         <member name="M:Alis.Core.Aspect.Math.Transform.SetIdentity">
             <summary>Set this to the identity transform.</summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Transform.Set(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
+        <member name="M:Alis.Core.Aspect.Math.Transform.Set(Alis.Core.Aspect.Math.Vector.Vector2,System.Single)">
             <summary>Set this based on the position and angle.</summary>
             <param name="position">The position.</param>
             <param name="angle">The angle.</param>
@@ -773,6 +1051,290 @@
         </member>
         <member name="F:Alis.Core.Aspect.Math.Util.Constant.Tau">
             <summary>Represents the value of pi times two(6.28318548). This is an alias of TwoPi.</summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Util.HashCode">
+            <summary>
+            The hash code
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Util.HashCode.s_seed">
+            <summary>
+            The generate global seed
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Util.HashCode.Prime1">
+            <summary>
+            The prime
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Util.HashCode.Prime2">
+            <summary>
+            The prime
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Util.HashCode.Prime3">
+            <summary>
+            The prime
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Util.HashCode.Prime4">
+            <summary>
+            The prime
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Util.HashCode.Prime5">
+            <summary>
+            The prime
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Util.HashCode._v1">
+            <summary>
+            The 
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Util.HashCode._v2">
+            <summary>
+            The 
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Util.HashCode._v3">
+            <summary>
+            The 
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Util.HashCode._v4">
+            <summary>
+            The 
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Util.HashCode._queue1">
+            <summary>
+            The queue
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Util.HashCode._queue2">
+            <summary>
+            The queue
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Util.HashCode._queue3">
+            <summary>
+            The queue
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Util.HashCode._length">
+            <summary>
+            The length
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.GenerateGlobalSeed">
+            <summary>
+            Generates the global seed
+            </summary>
+            <returns>The uint</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.Combine``1(``0)">
+            <summary>
+            Combines the value 1
+            </summary>
+            <typeparam name="T1">The </typeparam>
+            <param name="value1">The value</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.Combine``2(``0,``1)">
+            <summary>
+            Combines the value 1
+            </summary>
+            <typeparam name="T1">The </typeparam>
+            <typeparam name="T2">The </typeparam>
+            <param name="value1">The value</param>
+            <param name="value2">The value</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.Combine``3(``0,``1,``2)">
+            <summary>
+            Combines the value 1
+            </summary>
+            <typeparam name="T1">The </typeparam>
+            <typeparam name="T2">The </typeparam>
+            <typeparam name="T3">The </typeparam>
+            <param name="value1">The value</param>
+            <param name="value2">The value</param>
+            <param name="value3">The value</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.Combine``4(``0,``1,``2,``3)">
+            <summary>
+            Combines the value 1
+            </summary>
+            <typeparam name="T1">The </typeparam>
+            <typeparam name="T2">The </typeparam>
+            <typeparam name="T3">The </typeparam>
+            <typeparam name="T4">The </typeparam>
+            <param name="value1">The value</param>
+            <param name="value2">The value</param>
+            <param name="value3">The value</param>
+            <param name="value4">The value</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.Combine``5(``0,``1,``2,``3,``4)">
+            <summary>
+            Combines the value 1
+            </summary>
+            <typeparam name="T1">The </typeparam>
+            <typeparam name="T2">The </typeparam>
+            <typeparam name="T3">The </typeparam>
+            <typeparam name="T4">The </typeparam>
+            <typeparam name="T5">The </typeparam>
+            <param name="value1">The value</param>
+            <param name="value2">The value</param>
+            <param name="value3">The value</param>
+            <param name="value4">The value</param>
+            <param name="value5">The value</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.Combine``6(``0,``1,``2,``3,``4,``5)">
+            <summary>
+            Combines the value 1
+            </summary>
+            <typeparam name="T1">The </typeparam>
+            <typeparam name="T2">The </typeparam>
+            <typeparam name="T3">The </typeparam>
+            <typeparam name="T4">The </typeparam>
+            <typeparam name="T5">The </typeparam>
+            <typeparam name="T6">The </typeparam>
+            <param name="value1">The value</param>
+            <param name="value2">The value</param>
+            <param name="value3">The value</param>
+            <param name="value4">The value</param>
+            <param name="value5">The value</param>
+            <param name="value6">The value</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.Combine``7(``0,``1,``2,``3,``4,``5,``6)">
+            <summary>
+            Combines the value 1
+            </summary>
+            <typeparam name="T1">The </typeparam>
+            <typeparam name="T2">The </typeparam>
+            <typeparam name="T3">The </typeparam>
+            <typeparam name="T4">The </typeparam>
+            <typeparam name="T5">The </typeparam>
+            <typeparam name="T6">The </typeparam>
+            <typeparam name="T7">The </typeparam>
+            <param name="value1">The value</param>
+            <param name="value2">The value</param>
+            <param name="value3">The value</param>
+            <param name="value4">The value</param>
+            <param name="value5">The value</param>
+            <param name="value6">The value</param>
+            <param name="value7">The value</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.Combine``8(``0,``1,``2,``3,``4,``5,``6,``7)">
+            <summary>
+            Combines the value 1
+            </summary>
+            <typeparam name="T1">The </typeparam>
+            <typeparam name="T2">The </typeparam>
+            <typeparam name="T3">The </typeparam>
+            <typeparam name="T4">The </typeparam>
+            <typeparam name="T5">The </typeparam>
+            <typeparam name="T6">The </typeparam>
+            <typeparam name="T7">The </typeparam>
+            <typeparam name="T8">The </typeparam>
+            <param name="value1">The value</param>
+            <param name="value2">The value</param>
+            <param name="value3">The value</param>
+            <param name="value4">The value</param>
+            <param name="value5">The value</param>
+            <param name="value6">The value</param>
+            <param name="value7">The value</param>
+            <param name="value8">The value</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.Initialize(System.UInt32@,System.UInt32@,System.UInt32@,System.UInt32@)">
+            <summary>
+            Initializes the v 1
+            </summary>
+            <param name="v1">The </param>
+            <param name="v2">The </param>
+            <param name="v3">The </param>
+            <param name="v4">The </param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.Round(System.UInt32,System.UInt32)">
+            <summary>
+            Rounds the hash
+            </summary>
+            <param name="hash">The hash</param>
+            <param name="input">The input</param>
+            <returns>The uint</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.QueueRound(System.UInt32,System.UInt32)">
+            <summary>
+            Queues the round using the specified hash
+            </summary>
+            <param name="hash">The hash</param>
+            <param name="queuedValue">The queued value</param>
+            <returns>The uint</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.MixState(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Mixes the state using the specified v 1
+            </summary>
+            <param name="v1">The </param>
+            <param name="v2">The </param>
+            <param name="v3">The </param>
+            <param name="v4">The </param>
+            <returns>The uint</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.RotateLeft(System.UInt32,System.Int32)">
+            <summary>
+            Rotates the left using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <param name="offset">The offset</param>
+            <returns>The uint</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.MixEmptyState">
+            <summary>
+            Mixes the empty state
+            </summary>
+            <returns>The uint</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.MixFinal(System.UInt32)">
+            <summary>
+            Mixes the final using the specified hash
+            </summary>
+            <param name="hash">The hash</param>
+            <returns>The hash</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.Add``1(``0)">
+            <summary>
+            Adds the value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.Add``1(``0,System.Collections.Generic.IEqualityComparer{``0})">
+            <summary>
+            Adds the value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <param name="comparer">The comparer</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.Add(System.Int32)">
+            <summary>
+            Adds the value
+            </summary>
+            <param name="value">The value</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.HashCode.ToHashCode">
+            <summary>
+            Returns the hash code
+            </summary>
+            <returns>The int</returns>
         </member>
         <member name="T:Alis.Core.Aspect.Math.Util.Helper">
             <summary>Contains commonly used precalculated values and mathematical operations.</summary>
@@ -926,80 +1488,317 @@
             <param name="value">A value.</param>
             <returns><c>true</c> if <c>value</c> is powered by two; otherwise <c>false</c>.</returns>
         </member>
-        <member name="T:Alis.Core.Aspect.Math.Vector.Vector2B">
+        <member name="T:Alis.Core.Aspect.Math.Util.Quaternion">
             <summary>
-                <see cref="T:Alis.Core.Aspect.Math.Vector.Vector2B" /> is a struct represent a glsl bvec2 value
+            The quaternion
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2B.#ctor(System.Boolean,System.Boolean)">
+        <member name="F:Alis.Core.Aspect.Math.Util.Quaternion.SlerpEpsilon">
             <summary>
-                Construct the <see cref="T:Alis.Core.Aspect.Math.Vector.Vector2B" /> from its coordinates
+            The slerp epsilon
             </summary>
-            <param name="x">X coordinate</param>
-            <param name="y">Y coordinate</param>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Vector.Vector2B.X">
-            <summary>Horizontal component of the vector</summary>
+        <member name="F:Alis.Core.Aspect.Math.Util.Quaternion.X">
+            <summary>The X value of the vector component of the quaternion.</summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Vector.Vector2B.Y">
-            <summary>Vertical component of the vector</summary>
+        <member name="F:Alis.Core.Aspect.Math.Util.Quaternion.Y">
+            <summary>The Y value of the vector component of the quaternion.</summary>
         </member>
-        <member name="T:Alis.Core.Aspect.Math.Vector.Vector2F">
+        <member name="F:Alis.Core.Aspect.Math.Util.Quaternion.Z">
+            <summary>The Z value of the vector component of the quaternion.</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Util.Quaternion.W">
+            <summary>The rotation component of the quaternion.</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Util.Quaternion.Count">
+            <summary>
+            The count
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>Constructs a quaternion from the specified components.</summary>
+            <param name="x">The value to assign to the X component of the quaternion.</param>
+            <param name="y">The value to assign to the Y component of the quaternion.</param>
+            <param name="z">The value to assign to the Z component of the quaternion.</param>
+            <param name="w">The value to assign to the W component of the quaternion.</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.#ctor(Alis.Core.Aspect.Math.Vector.Vector3,System.Single)">
+            <summary>Creates a quaternion from the specified vector and rotation parts.</summary>
+            <param name="vectorPart">The vector part of the quaternion.</param>
+            <param name="scalarPart">The rotation part of the quaternion.</param>
+        </member>
+        <member name="P:Alis.Core.Aspect.Math.Util.Quaternion.Zero">
+            <summary>Gets a quaternion that represents a zero.</summary>
+            <value>A quaternion whose values are <c>(0, 0, 0, 0)</c>.</value>
+        </member>
+        <member name="P:Alis.Core.Aspect.Math.Util.Quaternion.Identity">
+            <summary>Gets a quaternion that represents no rotation.</summary>
+            <value>A quaternion whose values are <c>(0, 0, 0, 1)</c>.</value>
+        </member>
+        <member name="P:Alis.Core.Aspect.Math.Util.Quaternion.IsIdentity">
+            <summary>Gets a value that indicates whether the current instance is the identity quaternion.</summary>
+            <value><see langword="true" /> if the current instance is the identity quaternion; otherwise, <see langword="false" />.</value>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.op_Addition(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)">
+            <summary>Adds each element in one quaternion with its corresponding element in a second quaternion.</summary>
+            <param name="value1">The first quaternion.</param>
+            <param name="value2">The second quaternion.</param>
+            <returns>The quaternion that contains the summed values of <paramref name="value1" /> and <paramref name="value2" />.</returns>
+            <remarks>The <see cref="M:Alis.Core.Aspect.Math.Util.Quaternion.op_Addition(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)" /> method defines the operation of the addition operator for <see cref="T:Alis.Core.Aspect.Math.Util.Quaternion" /> objects.</remarks>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.op_Division(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)">
+            <summary>Divides one quaternion by a second quaternion.</summary>
+            <param name="value1">The dividend.</param>
+            <param name="value2">The divisor.</param>
+            <returns>The quaternion that results from dividing <paramref name="value1" /> by <paramref name="value2" />.</returns>
+            <remarks>The <see cref="M:Alis.Core.Aspect.Math.Util.Quaternion.op_Division(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)" /> method defines the division operation for <see cref="T:Alis.Core.Aspect.Math.Util.Quaternion" /> objects.</remarks>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.op_Equality(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)">
+            <summary>Returns a value that indicates whether two quaternions are equal.</summary>
+            <param name="value1">The first quaternion to compare.</param>
+            <param name="value2">The second quaternion to compare.</param>
+            <returns><see langword="true" /> if the two quaternions are equal; otherwise, <see langword="false" />.</returns>
+            <remarks>Two quaternions are equal if each of their corresponding components is equal.
+            The <see cref="M:Alis.Core.Aspect.Math.Util.Quaternion.op_Equality(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)" /> method defines the operation of the equality operator for <see cref="T:Alis.Core.Aspect.Math.Util.Quaternion" /> objects.</remarks>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.op_Inequality(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)">
+            <summary>Returns a value that indicates whether two quaternions are not equal.</summary>
+            <param name="value1">The first quaternion to compare.</param>
+            <param name="value2">The second quaternion to compare.</param>
+            <returns><see langword="true" /> if <paramref name="value1" /> and <paramref name="value2" /> are not equal; otherwise, <see langword="false" />.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.op_Multiply(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)">
+            <summary>Returns the quaternion that results from multiplying two quaternions together.</summary>
+            <param name="value1">The first quaternion.</param>
+            <param name="value2">The second quaternion.</param>
+            <returns>The product quaternion.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.op_Multiply(Alis.Core.Aspect.Math.Util.Quaternion,System.Single)">
+            <summary>Returns the quaternion that results from scaling all the components of a specified quaternion by a scalar factor.</summary>
+            <param name="value1">The source quaternion.</param>
+            <param name="value2">The scalar value.</param>
+            <returns>The scaled quaternion.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.op_Subtraction(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)">
+            <summary>Subtracts each element in a second quaternion from its corresponding element in a first quaternion.</summary>
+            <param name="value1">The first quaternion.</param>
+            <param name="value2">The second quaternion.</param>
+            <returns>The quaternion containing the values that result from subtracting each element in <paramref name="value2" /> from its corresponding element in <paramref name="value1" />.</returns>
+            <remarks>The <see cref="M:Alis.Core.Aspect.Math.Util.Quaternion.op_Subtraction(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)" /> method defines the operation of the subtraction operator for <see cref="T:Alis.Core.Aspect.Math.Util.Quaternion" /> objects.</remarks>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.op_UnaryNegation(Alis.Core.Aspect.Math.Util.Quaternion)">
+            <summary>Reverses the sign of each component of the quaternion.</summary>
+            <param name="value">The quaternion to negate.</param>
+            <returns>The negated quaternion.</returns>
+            <remarks>The <see cref="M:Alis.Core.Aspect.Math.Util.Quaternion.op_UnaryNegation(Alis.Core.Aspect.Math.Util.Quaternion)" /> method defines the operation of the unary negation operator for <see cref="T:Alis.Core.Aspect.Math.Util.Quaternion" /> objects.</remarks>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.Add(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)">
+            <summary>Adds each element in one quaternion with its corresponding element in a second quaternion.</summary>
+            <param name="value1">The first quaternion.</param>
+            <param name="value2">The second quaternion.</param>
+            <returns>The quaternion that contains the summed values of <paramref name="value1" /> and <paramref name="value2" />.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.Concatenate(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)">
+            <summary>Concatenates two quaternions.</summary>
+            <param name="value1">The first quaternion rotation in the series.</param>
+            <param name="value2">The second quaternion rotation in the series.</param>
+            <returns>A new quaternion representing the concatenation of the <paramref name="value1" /> rotation followed by the <paramref name="value2" /> rotation.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.Conjugate(Alis.Core.Aspect.Math.Util.Quaternion)">
+            <summary>Returns the conjugate of a specified quaternion.</summary>
+            <param name="value">The quaternion.</param>
+            <returns>A new quaternion that is the conjugate of <see langword="value" />.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.CreateFromAxisAngle(Alis.Core.Aspect.Math.Vector.Vector3,System.Single)">
+            <summary>Creates a quaternion from a unit vector and an angle to rotate around the vector.</summary>
+            <param name="axis">The unit vector to rotate around.</param>
+            <param name="angle">The angle, in radians, to rotate around the vector.</param>
+            <returns>The newly created quaternion.</returns>
+            <remarks><paramref name="axis" /> vector must be normalized before calling this method or the resulting <see cref="T:Alis.Core.Aspect.Math.Util.Quaternion" /> will be incorrect.</remarks>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.CreateFromRotationMatrix(Alis.Core.Aspect.Math.Matrix.Matrix4x4)">
+            <summary>Creates a quaternion from the specified rotation matrix.</summary>
+            <param name="matrix">The rotation matrix.</param>
+            <returns>The newly created quaternion.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.CreateFromYawPitchRoll(System.Single,System.Single,System.Single)">
+            <summary>Creates a new quaternion from the given yaw, pitch, and roll.</summary>
+            <param name="yaw">The yaw angle, in radians, around the Y axis.</param>
+            <param name="pitch">The pitch angle, in radians, around the X axis.</param>
+            <param name="roll">The roll angle, in radians, around the Z axis.</param>
+            <returns>The resulting quaternion.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.Divide(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)">
+            <summary>Divides one quaternion by a second quaternion.</summary>
+            <param name="value1">The dividend.</param>
+            <param name="value2">The divisor.</param>
+            <returns>The quaternion that results from dividing <paramref name="value1" /> by <paramref name="value2" />.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.Dot(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)">
+            <summary>Calculates the dot product of two quaternions.</summary>
+            <param name="quaternion1">The first quaternion.</param>
+            <param name="quaternion2">The second quaternion.</param>
+            <returns>The dot product.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.Inverse(Alis.Core.Aspect.Math.Util.Quaternion)">
+            <summary>Returns the inverse of a quaternion.</summary>
+            <param name="value">The quaternion.</param>
+            <returns>The inverted quaternion.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.Lerp(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion,System.Single)">
+            <summary>Performs a linear interpolation between two quaternions based on a value that specifies the weighting of the second quaternion.</summary>
+            <param name="quaternion1">The first quaternion.</param>
+            <param name="quaternion2">The second quaternion.</param>
+            <param name="amount">The relative weight of <paramref name="quaternion2" /> in the interpolation.</param>
+            <returns>The interpolated quaternion.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.Multiply(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)">
+            <summary>Returns the quaternion that results from multiplying two quaternions together.</summary>
+            <param name="value1">The first quaternion.</param>
+            <param name="value2">The second quaternion.</param>
+            <returns>The product quaternion.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.Multiply(Alis.Core.Aspect.Math.Util.Quaternion,System.Single)">
+            <summary>Returns the quaternion that results from scaling all the components of a specified quaternion by a scalar factor.</summary>
+            <param name="value1">The source quaternion.</param>
+            <param name="value2">The scalar value.</param>
+            <returns>The scaled quaternion.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.Negate(Alis.Core.Aspect.Math.Util.Quaternion)">
+            <summary>Reverses the sign of each component of the quaternion.</summary>
+            <param name="value">The quaternion to negate.</param>
+            <returns>The negated quaternion.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.Normalize(Alis.Core.Aspect.Math.Util.Quaternion)">
+            <summary>Divides each component of a specified <see cref="T:Alis.Core.Aspect.Math.Util.Quaternion" /> by its length.</summary>
+            <param name="value">The quaternion to normalize.</param>
+            <returns>The normalized quaternion.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.Slerp(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion,System.Single)">
+            <summary>Interpolates between two quaternions, using spherical linear interpolation.</summary>
+            <param name="quaternion1">The first quaternion.</param>
+            <param name="quaternion2">The second quaternion.</param>
+            <param name="amount">The relative weight of the second quaternion in the interpolation.</param>
+            <returns>The interpolated quaternion.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.Subtract(Alis.Core.Aspect.Math.Util.Quaternion,Alis.Core.Aspect.Math.Util.Quaternion)">
+            <summary>Subtracts each element in a second quaternion from its corresponding element in a first quaternion.</summary>
+            <param name="value1">The first quaternion.</param>
+            <param name="value2">The second quaternion.</param>
+            <returns>The quaternion containing the values that result from subtracting each element in <paramref name="value2" /> from its corresponding element in <paramref name="value1" />.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.Equals(System.Object)">
+            <summary>Returns a value that indicates whether this instance and a specified object are equal.</summary>
+            <param name="obj">The object to compare with the current instance.</param>
+            <returns><see langword="true" /> if the current instance and <paramref name="obj" /> are equal; otherwise, <see langword="false" />. If <paramref name="obj" /> is <see langword="null" />, the method returns <see langword="false" />.</returns>
+            <remarks>The current instance and <paramref name="obj" /> are equal if <paramref name="obj" /> is a <see cref="T:Alis.Core.Aspect.Math.Util.Quaternion" /> object and the corresponding components of each matrix are equal.</remarks>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.Equals(Alis.Core.Aspect.Math.Util.Quaternion)">
+            <summary>Returns a value that indicates whether this instance and another quaternion are equal.</summary>
+            <param name="other">The other quaternion.</param>
+            <returns><see langword="true" /> if the two quaternions are equal; otherwise, <see langword="false" />.</returns>
+            <remarks>Two quaternions are equal if each of their corresponding components is equal.</remarks>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.GetHashCode">
+            <summary>Returns the hash code for this instance.</summary>
+            <returns>The hash code.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.Length">
+            <summary>Calculates the length of the quaternion.</summary>
+            <returns>The computed length of the quaternion.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.LengthSquared">
+            <summary>Calculates the squared length of the quaternion.</summary>
+            <returns>The length squared of the quaternion.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.Quaternion.ToString">
+            <summary>Returns a string that represents this quaternion.</summary>
+            <returns>The string representation of this quaternion.</returns>
+            <remarks>The numeric values in the returned string are formatted by using the conventions of the current culture. For example, for the en-US culture, the returned string might appear as <c>{X:1.1 Y:2.2 Z:3.3 W:4.4}</c>.</remarks>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Util.RandomUtils">
+            <summary>
+            The random utils class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Util.RandomUtils.random">
+            <summary>
+            The random
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.RandomUtils.GetInt32(System.Int32,System.Int32)">
+            <summary>
+            Gets the random int using the specified min value
+            </summary>
+            <param name="minValue">The min value</param>
+            <param name="maxValue">The max value</param>
+            <exception cref="T:System.ArgumentException">minValue must be less than or equal to maxValue.</exception>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Util.RandomUtils.GetInt32(System.Int32)">
+            <summary>
+            Gets the random int using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <exception cref="T:System.ArgumentException">value must be greater than or equal to 0.</exception>
+            <returns>The int</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Vector.Vector2">
             <summary>
                 The vector
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Vector.Vector2F.X">
+        <member name="F:Alis.Core.Aspect.Math.Vector.Vector2.X">
             <summary>The X component of the vector.</summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Vector.Vector2F.Y">
+        <member name="F:Alis.Core.Aspect.Math.Vector.Vector2.Y">
             <summary>The Y component of the vector.</summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.#ctor(System.Single)">
-            <summary>Creates a new <see cref="T:Alis.Core.Aspect.Math.Vector.Vector2F" /> object whose two elements have the same value.</summary>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.#ctor(System.Single)">
+            <summary>Creates a new <see cref="T:Alis.Core.Aspect.Math.Vector.Vector2" /> object whose two elements have the same value.</summary>
             <param name="value">The value to assign to both elements.</param>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.#ctor(System.Single,System.Single)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.#ctor(System.Single,System.Single)">
             <summary>Creates a vector whose elements have the specified values.</summary>
-            <param name="x">The value to assign to the <see cref="F:Alis.Core.Aspect.Math.Vector.Vector2F.X" /> field.</param>
-            <param name="y">The value to assign to the <see cref="F:Alis.Core.Aspect.Math.Vector.Vector2F.Y" /> field.</param>
+            <param name="x">The value to assign to the <see cref="F:Alis.Core.Aspect.Math.Vector.Vector2.X" /> field.</param>
+            <param name="y">The value to assign to the <see cref="F:Alis.Core.Aspect.Math.Vector.Vector2.Y" /> field.</param>
         </member>
-        <member name="P:Alis.Core.Aspect.Math.Vector.Vector2F.Zero">
+        <member name="P:Alis.Core.Aspect.Math.Vector.Vector2.Zero">
             <summary>Returns a vector whose 2 elements are equal to zero.</summary>
             <value>A vector whose two elements are equal to zero (that is, it returns the vector <c>(0,0)</c>.</value>
         </member>
-        <member name="P:Alis.Core.Aspect.Math.Vector.Vector2F.One">
+        <member name="P:Alis.Core.Aspect.Math.Vector.Vector2.One">
             <summary>Gets a vector whose 2 elements are equal to one.</summary>
             <value>A vector whose two elements are equal to one (that is, it returns the vector <c>(1,1)</c>.</value>
         </member>
-        <member name="P:Alis.Core.Aspect.Math.Vector.Vector2F.UnitX">
+        <member name="P:Alis.Core.Aspect.Math.Vector.Vector2.UnitX">
             <summary>Gets the vector (1,0).</summary>
             <value>The vector <c>(1,0)</c>.</value>
         </member>
-        <member name="P:Alis.Core.Aspect.Math.Vector.Vector2F.UnitY">
+        <member name="P:Alis.Core.Aspect.Math.Vector.Vector2.UnitY">
             <summary>Gets the vector (0,1).</summary>
             <value>The vector <c>(0,1)</c>.</value>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.op_Addition(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.op_Addition(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Adds two vectors together.</summary>
             <param name="left">The first vector to add.</param>
             <param name="right">The second vector to add.</param>
             <returns>The summed vector.</returns>
-            <remarks>The <see cref="M:Alis.Core.Aspect.Math.Vector.Vector2F.op_Addition(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)" /> method defines the addition operation for <see cref="T:Alis.Core.Aspect.Math.Vector.Vector2F" /> objects.</remarks>
+            <remarks>The <see cref="M:Alis.Core.Aspect.Math.Vector.Vector2.op_Addition(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)" /> method defines the addition operation for <see cref="T:Alis.Core.Aspect.Math.Vector.Vector2" /> objects.</remarks>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.op_Division(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.op_Division(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Divides the first vector by the second.</summary>
             <param name="left">The first vector.</param>
             <param name="right">The second vector.</param>
             <returns>The vector that results from dividing <paramref name="left" /> by <paramref name="right" />.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.op_Division(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.op_Division(Alis.Core.Aspect.Math.Vector.Vector2,System.Single)">
             <summary>Divides the specified vector by a specified scalar value.</summary>
             <param name="value1">The vector.</param>
             <param name="value2">The scalar value.</param>
             <returns>The result of the division.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.op_Equality(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.op_Equality(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Returns a value that indicates whether each pair of elements in two specified vectors is equal.</summary>
             <param name="left">The first vector to compare.</param>
             <param name="right">The second vector to compare.</param>
@@ -1008,11 +1807,11 @@
                 <see langword="false" />.
             </returns>
             <remarks>
-                Two <see cref="T:Alis.Core.Aspect.Math.Vector.Vector2F" /> objects are equal if each value in <paramref name="left" /> is equal to the
+                Two <see cref="T:Alis.Core.Aspect.Math.Vector.Vector2" /> objects are equal if each value in <paramref name="left" /> is equal to the
                 corresponding value in <paramref name="right" />.
             </remarks>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.op_Inequality(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.op_Inequality(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Returns a value that indicates whether two specified vectors are not equal.</summary>
             <param name="left">The first vector to compare.</param>
             <param name="right">The second vector to compare.</param>
@@ -1021,92 +1820,92 @@
                 <see langword="false" />.
             </returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.op_Multiply(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.op_Multiply(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Returns a new vector whose values are the product of each pair of elements in two specified vectors.</summary>
             <param name="left">The first vector.</param>
             <param name="right">The second vector.</param>
             <returns>The element-wise product vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.op_Multiply(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.op_Multiply(Alis.Core.Aspect.Math.Vector.Vector2,System.Single)">
             <summary>Multiplies the specified vector by the specified scalar value.</summary>
             <param name="left">The vector.</param>
             <param name="right">The scalar value.</param>
             <returns>The scaled vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.op_Multiply(System.Single,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.op_Multiply(System.Single,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Multiplies the scalar value by the specified vector.</summary>
             <param name="left">The vector.</param>
             <param name="right">The scalar value.</param>
             <returns>The scaled vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.op_Subtraction(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.op_Subtraction(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Subtracts the second vector from the first.</summary>
             <param name="left">The first vector.</param>
             <param name="right">The second vector.</param>
             <returns>The vector that results from subtracting <paramref name="right" /> from <paramref name="left" />.</returns>
             <remarks>
-                The <see cref="M:Alis.Core.Aspect.Math.Vector.Vector2F.op_Subtraction(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)" /> method defines the subtraction operation for <see cref="T:Alis.Core.Aspect.Math.Vector.Vector2F" />
+                The <see cref="M:Alis.Core.Aspect.Math.Vector.Vector2.op_Subtraction(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)" /> method defines the subtraction operation for <see cref="T:Alis.Core.Aspect.Math.Vector.Vector2" />
                 objects.
             </remarks>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.op_UnaryNegation(Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.op_UnaryNegation(Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Negates the specified vector.</summary>
             <param name="value">The vector to negate.</param>
             <returns>The negated vector.</returns>
             <remarks>
-                The <see cref="M:Alis.Core.Aspect.Math.Vector.Vector2F.op_UnaryNegation(Alis.Core.Aspect.Math.Vector.Vector2F)" /> method defines the unary negation operation for <see cref="T:Alis.Core.Aspect.Math.Vector.Vector2F" />
+                The <see cref="M:Alis.Core.Aspect.Math.Vector.Vector2.op_UnaryNegation(Alis.Core.Aspect.Math.Vector.Vector2)" /> method defines the unary negation operation for <see cref="T:Alis.Core.Aspect.Math.Vector.Vector2" />
                 objects.
             </remarks>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Abs(Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Abs(Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Returns a vector whose elements are the absolute values of each of the specified vector's elements.</summary>
             <param name="value">A vector.</param>
             <returns>The absolute value vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Add(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Add(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Adds two vectors together.</summary>
             <param name="left">The first vector to add.</param>
             <param name="right">The second vector to add.</param>
             <returns>The summed vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Clamp(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Clamp(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Restricts a vector between a minimum and a maximum value.</summary>
             <param name="value1">The vector to restrict.</param>
             <param name="min">The minimum value.</param>
             <param name="max">The maximum value.</param>
             <returns>The restricted vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Distance(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Distance(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Computes the Euclidean distance between the two given points.</summary>
             <param name="value1">The first point.</param>
             <param name="value2">The second point.</param>
             <returns>The distance.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.DistanceSquared(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.DistanceSquared(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Returns the Euclidean distance squared between two specified points.</summary>
             <param name="value1">The first point.</param>
             <param name="value2">The second point.</param>
             <returns>The distance squared.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Divide(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Divide(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Divides the first vector by the second.</summary>
             <param name="left">The first vector.</param>
             <param name="right">The second vector.</param>
             <returns>The vector resulting from the division.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Divide(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Divide(Alis.Core.Aspect.Math.Vector.Vector2,System.Single)">
             <summary>Divides the specified vector by a specified scalar value.</summary>
             <param name="left">The vector.</param>
             <param name="divisor">The scalar value.</param>
             <returns>The vector that results from the division.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Dot(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Dot(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Returns the dot product of two vectors.</summary>
             <param name="value1">The first vector.</param>
             <param name="value2">The second vector.</param>
             <returns>The dot product.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Lerp(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Lerp(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2,System.Single)">
             <summary>Performs a linear interpolation between two vectors based on the given weighting.</summary>
             <param name="value1">The first vector.</param>
             <param name="value2">The second vector.</param>
@@ -1118,94 +1917,94 @@
             ]]></format>
             </remarks>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Max(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Max(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Returns a vector whose elements are the maximum of each of the pairs of elements in two specified vectors.</summary>
             <param name="value1">The first vector.</param>
             <param name="value2">The second vector.</param>
             <returns>The maximized vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Min(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Min(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Returns a vector whose elements are the minimum of each of the pairs of elements in two specified vectors.</summary>
             <param name="value1">The first vector.</param>
             <param name="value2">The second vector.</param>
             <returns>The minimized vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Multiply(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Multiply(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Returns a new vector whose values are the product of each pair of elements in two specified vectors.</summary>
             <param name="left">The first vector.</param>
             <param name="right">The second vector.</param>
             <returns>The element-wise product vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Multiply(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Multiply(Alis.Core.Aspect.Math.Vector.Vector2,System.Single)">
             <summary>Multiplies a vector by a specified scalar.</summary>
             <param name="left">The vector to multiply.</param>
             <param name="right">The scalar value.</param>
             <returns>The scaled vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Multiply(System.Single,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Multiply(System.Single,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Multiplies a scalar value by a specified vector.</summary>
             <param name="left">The scaled value.</param>
             <param name="right">The vector.</param>
             <returns>The scaled vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Negate(Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Negate(Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Negates a specified vector.</summary>
             <param name="value">The vector to negate.</param>
             <returns>The negated vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Normalize(Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Normalize(Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Returns a vector with the same direction as the specified vector, but with a length of one.</summary>
             <param name="value">The vector to normalize.</param>
             <returns>The normalized vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Reflect(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Reflect(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Returns the reflection of a vector off a surface that has the specified normal.</summary>
             <param name="vector">The source vector.</param>
             <param name="normal">The normal of the surface being reflected off.</param>
             <returns>The reflected vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.SquareRoot(Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.SquareRoot(Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Returns a vector whose elements are the square root of each of a specified vector's elements.</summary>
             <param name="value">A vector.</param>
             <returns>The square root vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Subtract(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Subtract(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Subtracts the second vector from the first.</summary>
             <param name="left">The first vector.</param>
             <param name="right">The second vector.</param>
             <returns>The difference vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Transform(Alis.Core.Aspect.Math.Vector.Vector2F,System.Numerics.Matrix3x2)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Transform(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Matrix.Matrix3x2)">
             <summary>Transforms a vector by a specified 3x2 matrix.</summary>
             <param name="position">The vector to transform.</param>
             <param name="matrix">The transformation matrix.</param>
             <returns>The transformed vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Transform(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Matrix.Matrix4X4F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Transform(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Matrix.Matrix4x4)">
             <summary>Transforms a vector by a specified 4x4 matrix.</summary>
             <param name="position">The vector to transform.</param>
             <param name="matrix">The transformation matrix.</param>
             <returns>The transformed vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Transform(Alis.Core.Aspect.Math.Vector.Vector2F,System.Numerics.Quaternion)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Transform(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Util.Quaternion)">
             <summary>Transforms a vector by the specified Quaternion rotation value.</summary>
             <param name="value">The vector to rotate.</param>
             <param name="rotation">The rotation to apply.</param>
             <returns>The transformed vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.TransformNormal(Alis.Core.Aspect.Math.Vector.Vector2F,System.Numerics.Matrix3x2)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.TransformNormal(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Matrix.Matrix3x2)">
             <summary>Transforms a vector normal by the given 3x2 matrix.</summary>
             <param name="normal">The source vector.</param>
             <param name="matrix">The matrix.</param>
             <returns>The transformed vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.TransformNormal(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Matrix.Matrix4X4F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.TransformNormal(Alis.Core.Aspect.Math.Vector.Vector2,Alis.Core.Aspect.Math.Matrix.Matrix4x4)">
             <summary>Transforms a vector normal by the given 4x4 matrix.</summary>
             <param name="normal">The source vector.</param>
             <param name="matrix">The matrix.</param>
             <returns>The transformed vector.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.CopyTo(System.Single[])">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.CopyTo(System.Single[])">
             <summary>Copies the elements of the vector to a specified array.</summary>
             <param name="array">The destination array.</param>
             <remarks>
@@ -1216,7 +2015,7 @@
             <exception cref="T:System.ArgumentException">The number of elements in the current instance is greater than in the array.</exception>
             <exception cref="T:System.RankException"><paramref name="array" /> is multidimensional.</exception>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.CopyTo(System.Single[],System.Int32)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.CopyTo(System.Single[],System.Int32)">
             <summary>Copies the elements of the vector to a specified array starting at a specified index position.</summary>
             <param name="array">The destination array.</param>
             <param name="index">The index at which to copy the first element of the vector.</param>
@@ -1234,7 +2033,7 @@
             </exception>
             <exception cref="T:System.RankException"><paramref name="array" /> is multidimensional.</exception>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Equals(System.Object)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Equals(System.Object)">
             <summary>Returns a value that indicates whether this instance and a specified object are equal.</summary>
             <param name="obj">The object to compare with the current instance.</param>
             <returns>
@@ -1244,31 +2043,31 @@
             </returns>
             <remarks>
                 The current instance and <paramref name="obj" /> are equal if <paramref name="obj" /> is a
-                <see cref="T:Alis.Core.Aspect.Math.Vector.Vector2F" /> object and their <see cref="F:Alis.Core.Aspect.Math.Vector.Vector2F.X" /> and <see cref="F:Alis.Core.Aspect.Math.Vector.Vector2F.Y" /> elements are equal.
+                <see cref="T:Alis.Core.Aspect.Math.Vector.Vector2" /> object and their <see cref="F:Alis.Core.Aspect.Math.Vector.Vector2.X" /> and <see cref="F:Alis.Core.Aspect.Math.Vector.Vector2.Y" /> elements are equal.
             </remarks>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Equals(Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Equals(Alis.Core.Aspect.Math.Vector.Vector2)">
             <summary>Returns a value that indicates whether this instance and another vector are equal.</summary>
             <param name="other">The other vector.</param>
             <returns><see langword="true" /> if the two vectors are equal; otherwise, <see langword="false" />.</returns>
-            <remarks>Two vectors are equal if their <see cref="F:Alis.Core.Aspect.Math.Vector.Vector2F.X" /> and <see cref="F:Alis.Core.Aspect.Math.Vector.Vector2F.Y" /> elements are equal.</remarks>
+            <remarks>Two vectors are equal if their <see cref="F:Alis.Core.Aspect.Math.Vector.Vector2.X" /> and <see cref="F:Alis.Core.Aspect.Math.Vector.Vector2.Y" /> elements are equal.</remarks>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.GetHashCode">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.GetHashCode">
             <summary>Returns the hash code for this instance.</summary>
             <returns>The hash code.</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Length">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.Length">
             <summary>Returns the length of the vector.</summary>
             <returns>The vector's length.</returns>
-            <altmember cref="M:Alis.Core.Aspect.Math.Vector.Vector2F.LengthSquared" />
+            <altmember cref="M:Alis.Core.Aspect.Math.Vector.Vector2.LengthSquared" />
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.LengthSquared">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.LengthSquared">
             <summary>Returns the length of the vector squared.</summary>
             <returns>The vector's length squared.</returns>
-            <remarks>This operation offers better performance than a call to the <see cref="M:Alis.Core.Aspect.Math.Vector.Vector2F.Length" /> method.</remarks>
-            <altmember cref="M:Alis.Core.Aspect.Math.Vector.Vector2F.Length" />
+            <remarks>This operation offers better performance than a call to the <see cref="M:Alis.Core.Aspect.Math.Vector.Vector2.Length" /> method.</remarks>
+            <altmember cref="M:Alis.Core.Aspect.Math.Vector.Vector2.Length" />
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.ToString">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.ToString">
             <summary>Returns the string representation of the current instance using default formatting.</summary>
             <returns>The string representation of the current instance.</returns>
             <remarks>
@@ -1279,7 +2078,7 @@
                 separate each element.
             </remarks>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.ToString(System.String)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.ToString(System.String)">
             <summary>
                 Returns the string representation of the current instance using the specified format string to format
                 individual elements.
@@ -1298,7 +2097,7 @@
             </related>
             <related type="Article" href="/dotnet/standard/base-types/custom-numeric-format-strings">Custom Numeric Format Strings</related>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.ToString(System.String,System.IFormatProvider)">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2.ToString(System.String,System.IFormatProvider)">
             <summary>
                 Returns the string representation of the current instance using the specified format string to format
                 individual elements and the specified format provider to define culture-specific formatting.
@@ -1317,6 +2116,24 @@
                 Standard Numeric Format
                 Strings
             </related>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Vector.Vector2B">
+            <summary>
+                <see cref="T:Alis.Core.Aspect.Math.Vector.Vector2B" /> is a struct represent a glsl bvec2 value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2B.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+                Construct the <see cref="T:Alis.Core.Aspect.Math.Vector.Vector2B" /> from its coordinates
+            </summary>
+            <param name="x">X coordinate</param>
+            <param name="y">Y coordinate</param>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Vector.Vector2B.X">
+            <summary>Horizontal component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Vector.Vector2B.Y">
+            <summary>Vertical component of the vector</summary>
         </member>
         <member name="T:Alis.Core.Aspect.Math.Vector.Vector2I">
             <summary>
@@ -1420,7 +2237,7 @@
             </summary>
             <returns>Integer description of the object</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2I.op_Explicit(Alis.Core.Aspect.Math.Vector.Vector2I)~Alis.Core.Aspect.Math.Vector.Vector2F">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2I.op_Explicit(Alis.Core.Aspect.Math.Vector.Vector2I)~Alis.Core.Aspect.Math.Vector.Vector2">
             <summary>
                 Explicit casting to another vector type
             </summary>
@@ -1542,7 +2359,7 @@
             <param name="v">Vector being casted</param>
             <returns>Casting result</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2U.op_Explicit(Alis.Core.Aspect.Math.Vector.Vector2U)~Alis.Core.Aspect.Math.Vector.Vector2F">
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2U.op_Explicit(Alis.Core.Aspect.Math.Vector.Vector2U)~Alis.Core.Aspect.Math.Vector.Vector2">
             <summary>
                 Explicit casting to another vector type
             </summary>
@@ -1554,6 +2371,390 @@
         </member>
         <member name="F:Alis.Core.Aspect.Math.Vector.Vector2U.Y">
             <summary>Y (vertical) component of the vector</summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Vector.Vector3">
+            <summary>
+                The vector
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Vector.Vector3.X">
+            <summary>The X component of the vector.</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Vector.Vector3.Y">
+            <summary>The Y component of the vector.</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Vector.Vector3.Z">
+            <summary>The Z component of the vector.</summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.#ctor(System.Single)">
+            <summary>Creates a new <see cref="T:Alis.Core.Aspect.Math.Vector.Vector3" /> object whose three elements have the same value.</summary>
+            <param name="value">The value to assign to all three elements.</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.#ctor(Alis.Core.Aspect.Math.Vector.Vector2,System.Single)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Math.Vector.Vector3" /> class
+            </summary>
+            <param name="value">The value</param>
+            <param name="z">The </param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.#ctor(System.Single,System.Single,System.Single)">
+            <summary>Creates a vector whose elements have the specified values.</summary>
+            <param name="x">The value to assign to the <see cref="F:Alis.Core.Aspect.Math.Vector.Vector3.X" /> field.</param>
+            <param name="y">The value to assign to the <see cref="F:Alis.Core.Aspect.Math.Vector.Vector3.Y" /> field.</param>
+            <param name="z">The value to assign to the <see cref="F:Alis.Core.Aspect.Math.Vector.Vector3.Z" /> field.</param>
+        </member>
+        <member name="P:Alis.Core.Aspect.Math.Vector.Vector3.Zero">
+            <summary>Gets a vector whose 3 elements are equal to zero.</summary>
+            <value>A vector whose three elements are equal to zero (that is, it returns the vector <c>(0,0,0)</c>.</value>
+        </member>
+        <member name="P:Alis.Core.Aspect.Math.Vector.Vector3.One">
+            <summary>Gets a vector whose 3 elements are equal to one.</summary>
+            <value>A vector whose three elements are equal to one (that is, it returns the vector <c>(1,1,1)</c>.</value>
+        </member>
+        <member name="P:Alis.Core.Aspect.Math.Vector.Vector3.UnitX">
+            <summary>Gets the vector (1,0,0).</summary>
+            <value>The vector <c>(1,0,0)</c>.</value>
+        </member>
+        <member name="P:Alis.Core.Aspect.Math.Vector.Vector3.UnitY">
+            <summary>Gets the vector (0,1,0).</summary>
+            <value>The vector <c>(0,1,0)</c>.</value>
+        </member>
+        <member name="P:Alis.Core.Aspect.Math.Vector.Vector3.UnitZ">
+            <summary>Gets the vector (0,0,1).</summary>
+            <value>The vector <c>(0,0,1)</c>.</value>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.op_Addition(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Adds two vectors together.</summary>
+            <param name="left">The first vector to add.</param>
+            <param name="right">The second vector to add.</param>
+            <returns>The summed vector.</returns>
+            <remarks>
+                The <see cref="M:Alis.Core.Aspect.Math.Vector.Vector3.op_Addition(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)" /> method defines the addition operation for <see cref="T:Alis.Core.Aspect.Math.Vector.Vector3" />
+                objects.
+            </remarks>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.op_Division(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Divides the first vector by the second.</summary>
+            <param name="left">The first vector.</param>
+            <param name="right">The second vector.</param>
+            <returns>The vector that results from dividing <paramref name="left" /> by <paramref name="right" />.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.op_Division(Alis.Core.Aspect.Math.Vector.Vector3,System.Single)">
+            <summary>Divides the specified vector by a specified scalar value.</summary>
+            <param name="value1">The vector.</param>
+            <param name="value2">The scalar value.</param>
+            <returns>The result of the division.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.op_Equality(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Returns a value that indicates whether each pair of elements in two specified vectors is equal.</summary>
+            <param name="left">The first vector to compare.</param>
+            <param name="right">The second vector to compare.</param>
+            <returns>
+                <see langword="true" /> if <paramref name="left" /> and <paramref name="right" /> are equal; otherwise,
+                <see langword="false" />.
+            </returns>
+            <remarks>
+                Two <see cref="T:Alis.Core.Aspect.Math.Vector.Vector3" /> objects are equal if each element in <paramref name="right" /> is equal to the
+                corresponding element in <paramref name="right" />.
+            </remarks>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.op_Inequality(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Returns a value that indicates whether two specified vectors are not equal.</summary>
+            <param name="left">The first vector to compare.</param>
+            <param name="right">The second vector to compare.</param>
+            <returns>
+                <see langword="true" /> if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise,
+                <see langword="false" />.
+            </returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.op_Multiply(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Returns a new vector whose values are the product of each pair of elements in two specified vectors.</summary>
+            <param name="left">The first vector.</param>
+            <param name="right">The second vector.</param>
+            <returns>The element-wise product vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.op_Multiply(Alis.Core.Aspect.Math.Vector.Vector3,System.Single)">
+            <summary>Multiplies the specified vector by the specified scalar value.</summary>
+            <param name="left">The vector.</param>
+            <param name="right">The scalar value.</param>
+            <returns>The scaled vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.op_Multiply(System.Single,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Multiplies the scalar value by the specified vector.</summary>
+            <param name="left">The vector.</param>
+            <param name="right">The scalar value.</param>
+            <returns>The scaled vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.op_Subtraction(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Subtracts the second vector from the first.</summary>
+            <param name="left">The first vector.</param>
+            <param name="right">The second vector.</param>
+            <returns>The vector that results from subtracting <paramref name="right" /> from <paramref name="left" />.</returns>
+            <remarks>
+                The <see cref="M:Alis.Core.Aspect.Math.Vector.Vector3.op_Subtraction(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)" /> method defines the subtraction operation for
+                <see cref="T:Alis.Core.Aspect.Math.Vector.Vector3" /> objects.
+            </remarks>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.op_UnaryNegation(Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Negates the specified vector.</summary>
+            <param name="value">The vector to negate.</param>
+            <returns>The negated vector.</returns>
+            <remarks>
+                The <see cref="M:Alis.Core.Aspect.Math.Vector.Vector3.op_UnaryNegation(Alis.Core.Aspect.Math.Vector.Vector3)" /> method defines the unary negation operation for
+                <see cref="T:Alis.Core.Aspect.Math.Vector.Vector3" /> objects.
+            </remarks>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Abs(Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Returns a vector whose elements are the absolute values of each of the specified vector's elements.</summary>
+            <param name="value">A vector.</param>
+            <returns>The absolute value vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Add(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Adds two vectors together.</summary>
+            <param name="left">The first vector to add.</param>
+            <param name="right">The second vector to add.</param>
+            <returns>The summed vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Clamp(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Restricts a vector between a minimum and a maximum value.</summary>
+            <param name="value1">The vector to restrict.</param>
+            <param name="min">The minimum value.</param>
+            <param name="max">The maximum value.</param>
+            <returns>The restricted vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Cross(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Computes the cross product of two vectors.</summary>
+            <param name="vector1">The first vector.</param>
+            <param name="vector2">The second vector.</param>
+            <returns>The cross product.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Distance(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Computes the Euclidean distance between the two given points.</summary>
+            <param name="value1">The first point.</param>
+            <param name="value2">The second point.</param>
+            <returns>The distance.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.DistanceSquared(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Returns the Euclidean distance squared between two specified points.</summary>
+            <param name="value1">The first point.</param>
+            <param name="value2">The second point.</param>
+            <returns>The distance squared.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Divide(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Divides the first vector by the second.</summary>
+            <param name="left">The first vector.</param>
+            <param name="right">The second vector.</param>
+            <returns>The vector resulting from the division.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Divide(Alis.Core.Aspect.Math.Vector.Vector3,System.Single)">
+            <summary>Divides the specified vector by a specified scalar value.</summary>
+            <param name="left">The vector.</param>
+            <param name="divisor">The scalar value.</param>
+            <returns>The vector that results from the division.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Dot(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Returns the dot product of two vectors.</summary>
+            <param name="vector1">The first vector.</param>
+            <param name="vector2">The second vector.</param>
+            <returns>The dot product.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Lerp(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3,System.Single)">
+            <summary>Performs a linear interpolation between two vectors based on the given weighting.</summary>
+            <param name="value1">The first vector.</param>
+            <param name="value2">The second vector.</param>
+            <param name="amount">A value between 0 and 1 that indicates the weight of <paramref name="value2" />.</param>
+            <returns>The interpolated vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Max(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Returns a vector whose elements are the maximum of each of the pairs of elements in two specified vectors.</summary>
+            <param name="value1">The first vector.</param>
+            <param name="value2">The second vector.</param>
+            <returns>The maximized vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Min(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Returns a vector whose elements are the minimum of each of the pairs of elements in two specified vectors.</summary>
+            <param name="value1">The first vector.</param>
+            <param name="value2">The second vector.</param>
+            <returns>The minimized vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Multiply(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Returns a new vector whose values are the product of each pair of elements in two specified vectors.</summary>
+            <param name="left">The first vector.</param>
+            <param name="right">The second vector.</param>
+            <returns>The element-wise product vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Multiply(Alis.Core.Aspect.Math.Vector.Vector3,System.Single)">
+            <summary>Multiplies a vector by a specified scalar.</summary>
+            <param name="left">The vector to multiply.</param>
+            <param name="right">The scalar value.</param>
+            <returns>The scaled vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Multiply(System.Single,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Multiplies a scalar value by a specified vector.</summary>
+            <param name="left">The scaled value.</param>
+            <param name="right">The vector.</param>
+            <returns>The scaled vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Negate(Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Negates a specified vector.</summary>
+            <param name="value">The vector to negate.</param>
+            <returns>The negated vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Normalize(Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Returns a vector with the same direction as the specified vector, but with a length of one.</summary>
+            <param name="value">The vector to normalize.</param>
+            <returns>The normalized vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Reflect(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Returns the reflection of a vector off a surface that has the specified normal.</summary>
+            <param name="vector">The source vector.</param>
+            <param name="normal">The normal of the surface being reflected off.</param>
+            <returns>The reflected vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.SquareRoot(Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Returns a vector whose elements are the square root of each of a specified vector's elements.</summary>
+            <param name="value">A vector.</param>
+            <returns>The square root vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Subtract(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Subtracts the second vector from the first.</summary>
+            <param name="left">The first vector.</param>
+            <param name="right">The second vector.</param>
+            <returns>The difference vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Transform(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Matrix.Matrix4x4)">
+            <summary>Transforms a vector by a specified 4x4 matrix.</summary>
+            <param name="position">The vector to transform.</param>
+            <param name="matrix">The transformation matrix.</param>
+            <returns>The transformed vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Transform(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Util.Quaternion)">
+            <summary>Transforms a vector by the specified Quaternion rotation value.</summary>
+            <param name="value">The vector to rotate.</param>
+            <param name="rotation">The rotation to apply.</param>
+            <returns>The transformed vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.TransformNormal(Alis.Core.Aspect.Math.Vector.Vector3,Alis.Core.Aspect.Math.Matrix.Matrix4x4)">
+            <summary>Transforms a vector normal by the given 4x4 matrix.</summary>
+            <param name="normal">The source vector.</param>
+            <param name="matrix">The matrix.</param>
+            <returns>The transformed vector.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.CopyTo(System.Single[])">
+            <summary>Copies the elements of the vector to a specified array.</summary>
+            <param name="array">The destination array.</param>
+            <remarks>
+                <paramref name="array" /> must have at least three elements. The method copies the vector's elements starting
+                at index 0.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="array" /> is <see langword="null" />.</exception>
+            <exception cref="T:System.ArgumentException">The number of elements in the current instance is greater than in the array.</exception>
+            <exception cref="T:System.RankException"><paramref name="array" /> is multidimensional.</exception>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.CopyTo(System.Single[],System.Int32)">
+            <summary>Copies the elements of the vector to a specified array starting at a specified index position.</summary>
+            <param name="array">The destination array.</param>
+            <param name="index">The index at which to copy the first element of the vector.</param>
+            <remarks>
+                <paramref name="array" /> must have a sufficient number of elements to accommodate the three vector elements.
+                In other words, elements <paramref name="index" />, <paramref name="index" /> + 1, and <paramref name="index" /> +
+                2 must already exist in <paramref name="array" />.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="array" /> is <see langword="null" />.</exception>
+            <exception cref="T:System.ArgumentException">The number of elements in the current instance is greater than in the array.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="index" /> is less than zero.
+                -or-
+                <paramref name="index" /> is greater than or equal to the array length.
+            </exception>
+            <exception cref="T:System.RankException"><paramref name="array" /> is multidimensional.</exception>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Equals(System.Object)">
+            <summary>Returns a value that indicates whether this instance and a specified object are equal.</summary>
+            <param name="obj">The object to compare with the current instance.</param>
+            <returns>
+                <see langword="true" /> if the current instance and <paramref name="obj" /> are equal; otherwise,
+                <see langword="false" />. If <paramref name="obj" /> is <see langword="null" />, the method returns
+                <see langword="false" />.
+            </returns>
+            <remarks>
+                The current instance and <paramref name="obj" /> are equal if <paramref name="obj" /> is a
+                <see cref="T:Alis.Core.Aspect.Math.Vector.Vector3" /> object and their corresponding elements are equal.
+            </remarks>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Equals(Alis.Core.Aspect.Math.Vector.Vector3)">
+            <summary>Returns a value that indicates whether this instance and another vector are equal.</summary>
+            <param name="other">The other vector.</param>
+            <returns><see langword="true" /> if the two vectors are equal; otherwise, <see langword="false" />.</returns>
+            <remarks>
+                Two vectors are equal if their <see cref="F:Alis.Core.Aspect.Math.Vector.Vector3.X" />, <see cref="F:Alis.Core.Aspect.Math.Vector.Vector3.Y" />, and
+                <see cref="F:Alis.Core.Aspect.Math.Vector.Vector3.Z" /> elements are equal.
+            </remarks>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.GetHashCode">
+            <summary>Returns the hash code for this instance.</summary>
+            <returns>The hash code.</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.Length">
+            <summary>Returns the length of this vector object.</summary>
+            <returns>The vector's length.</returns>
+            <altmember cref="M:Alis.Core.Aspect.Math.Vector.Vector3.LengthSquared" />
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.LengthSquared">
+            <summary>Returns the length of the vector squared.</summary>
+            <returns>The vector's length squared.</returns>
+            <remarks>This operation offers better performance than a call to the <see cref="M:Alis.Core.Aspect.Math.Vector.Vector3.Length" /> method.</remarks>
+            <altmember cref="M:Alis.Core.Aspect.Math.Vector.Vector3.Length" />
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.ToString">
+            <summary>Returns the string representation of the current instance using default formatting.</summary>
+            <returns>The string representation of the current instance.</returns>
+            <remarks>
+                This method returns a string in which each element of the vector is formatted using the "G" (general) format
+                string and the formatting conventions of the current thread culture. The "&lt;" and "&gt;" characters are used to
+                begin and end the string, and the current culture's
+                <see cref="P:System.Globalization.NumberFormatInfo.NumberGroupSeparator" /> property followed by a space is used to
+                separate each element.
+            </remarks>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.ToString(System.String)">
+            <summary>
+                Returns the string representation of the current instance using the specified format string to format
+                individual elements.
+            </summary>
+            <param name="format">A standard or custom numeric format string that defines the format of individual elements.</param>
+            <returns>The string representation of the current instance.</returns>
+            <remarks>
+                This method returns a string in which each element of the vector is formatted using <paramref name="format" />
+                and the current culture's formatting conventions. The "&lt;" and "&gt;" characters are used to begin and end the
+                string, and the current culture's <see cref="P:System.Globalization.NumberFormatInfo.NumberGroupSeparator" />
+                property followed by a space is used to separate each element.
+            </remarks>
+            <related type="Article" href="/dotnet/standard/base-types/standard-numeric-format-strings">
+                Standard Numeric Format
+                Strings
+            </related>
+            <related type="Article" href="/dotnet/standard/base-types/custom-numeric-format-strings">Custom Numeric Format Strings</related>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3.ToString(System.String,System.IFormatProvider)">
+            <summary>
+                Returns the string representation of the current instance using the specified format string to format
+                individual elements and the specified format provider to define culture-specific formatting.
+            </summary>
+            <param name="format">A standard or custom numeric format string that defines the format of individual elements.</param>
+            <param name="formatProvider">A format provider that supplies culture-specific formatting information.</param>
+            <returns>The string representation of the current instance.</returns>
+            <remarks>
+                This method returns a string in which each element of the vector is formatted using <paramref name="format" />
+                and <paramref name="formatProvider" />. The "&lt;" and "&gt;" characters are used to begin and end the string, and
+                the format provider's <see cref="P:System.Globalization.NumberFormatInfo.NumberGroupSeparator" /> property followed
+                by a space is used to separate each element.
+            </remarks>
+            <related type="Article" href="/dotnet/standard/base-types/standard-numeric-format-strings">
+                Standard Numeric Format
+                Strings
+            </related>
+            <related type="Article" href="/dotnet/standard/base-types/custom-numeric-format-strings">Custom Numeric Format Strings</related>
         </member>
         <member name="T:Alis.Core.Aspect.Math.Vector.Vector3B">
             <summary>
@@ -1577,390 +2778,6 @@
         <member name="F:Alis.Core.Aspect.Math.Vector.Vector3B.Z">
             <summary>Depth component of the vector</summary>
         </member>
-        <member name="T:Alis.Core.Aspect.Math.Vector.Vector3F">
-            <summary>
-                The vector
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.Vector.Vector3F.X">
-            <summary>The X component of the vector.</summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.Vector.Vector3F.Y">
-            <summary>The Y component of the vector.</summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.Vector.Vector3F.Z">
-            <summary>The Z component of the vector.</summary>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.#ctor(System.Single)">
-            <summary>Creates a new <see cref="T:Alis.Core.Aspect.Math.Vector.Vector3F" /> object whose three elements have the same value.</summary>
-            <param name="value">The value to assign to all three elements.</param>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Math.Vector.Vector3F" /> class
-            </summary>
-            <param name="value">The value</param>
-            <param name="z">The </param>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.#ctor(System.Single,System.Single,System.Single)">
-            <summary>Creates a vector whose elements have the specified values.</summary>
-            <param name="x">The value to assign to the <see cref="F:Alis.Core.Aspect.Math.Vector.Vector3F.X" /> field.</param>
-            <param name="y">The value to assign to the <see cref="F:Alis.Core.Aspect.Math.Vector.Vector3F.Y" /> field.</param>
-            <param name="z">The value to assign to the <see cref="F:Alis.Core.Aspect.Math.Vector.Vector3F.Z" /> field.</param>
-        </member>
-        <member name="P:Alis.Core.Aspect.Math.Vector.Vector3F.Zero">
-            <summary>Gets a vector whose 3 elements are equal to zero.</summary>
-            <value>A vector whose three elements are equal to zero (that is, it returns the vector <c>(0,0,0)</c>.</value>
-        </member>
-        <member name="P:Alis.Core.Aspect.Math.Vector.Vector3F.One">
-            <summary>Gets a vector whose 3 elements are equal to one.</summary>
-            <value>A vector whose three elements are equal to one (that is, it returns the vector <c>(1,1,1)</c>.</value>
-        </member>
-        <member name="P:Alis.Core.Aspect.Math.Vector.Vector3F.UnitX">
-            <summary>Gets the vector (1,0,0).</summary>
-            <value>The vector <c>(1,0,0)</c>.</value>
-        </member>
-        <member name="P:Alis.Core.Aspect.Math.Vector.Vector3F.UnitY">
-            <summary>Gets the vector (0,1,0).</summary>
-            <value>The vector <c>(0,1,0)</c>.</value>
-        </member>
-        <member name="P:Alis.Core.Aspect.Math.Vector.Vector3F.UnitZ">
-            <summary>Gets the vector (0,0,1).</summary>
-            <value>The vector <c>(0,0,1)</c>.</value>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.op_Addition(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Adds two vectors together.</summary>
-            <param name="left">The first vector to add.</param>
-            <param name="right">The second vector to add.</param>
-            <returns>The summed vector.</returns>
-            <remarks>
-                The <see cref="M:Alis.Core.Aspect.Math.Vector.Vector3F.op_Addition(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)" /> method defines the addition operation for <see cref="T:Alis.Core.Aspect.Math.Vector.Vector3F" />
-                objects.
-            </remarks>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.op_Division(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Divides the first vector by the second.</summary>
-            <param name="left">The first vector.</param>
-            <param name="right">The second vector.</param>
-            <returns>The vector that results from dividing <paramref name="left" /> by <paramref name="right" />.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.op_Division(Alis.Core.Aspect.Math.Vector.Vector3F,System.Single)">
-            <summary>Divides the specified vector by a specified scalar value.</summary>
-            <param name="value1">The vector.</param>
-            <param name="value2">The scalar value.</param>
-            <returns>The result of the division.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.op_Equality(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Returns a value that indicates whether each pair of elements in two specified vectors is equal.</summary>
-            <param name="left">The first vector to compare.</param>
-            <param name="right">The second vector to compare.</param>
-            <returns>
-                <see langword="true" /> if <paramref name="left" /> and <paramref name="right" /> are equal; otherwise,
-                <see langword="false" />.
-            </returns>
-            <remarks>
-                Two <see cref="T:Alis.Core.Aspect.Math.Vector.Vector3F" /> objects are equal if each element in <paramref name="right" /> is equal to the
-                corresponding element in <paramref name="right" />.
-            </remarks>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.op_Inequality(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Returns a value that indicates whether two specified vectors are not equal.</summary>
-            <param name="left">The first vector to compare.</param>
-            <param name="right">The second vector to compare.</param>
-            <returns>
-                <see langword="true" /> if <paramref name="left" /> and <paramref name="right" /> are not equal; otherwise,
-                <see langword="false" />.
-            </returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.op_Multiply(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Returns a new vector whose values are the product of each pair of elements in two specified vectors.</summary>
-            <param name="left">The first vector.</param>
-            <param name="right">The second vector.</param>
-            <returns>The element-wise product vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.op_Multiply(Alis.Core.Aspect.Math.Vector.Vector3F,System.Single)">
-            <summary>Multiplies the specified vector by the specified scalar value.</summary>
-            <param name="left">The vector.</param>
-            <param name="right">The scalar value.</param>
-            <returns>The scaled vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.op_Multiply(System.Single,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Multiplies the scalar value by the specified vector.</summary>
-            <param name="left">The vector.</param>
-            <param name="right">The scalar value.</param>
-            <returns>The scaled vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.op_Subtraction(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Subtracts the second vector from the first.</summary>
-            <param name="left">The first vector.</param>
-            <param name="right">The second vector.</param>
-            <returns>The vector that results from subtracting <paramref name="right" /> from <paramref name="left" />.</returns>
-            <remarks>
-                The <see cref="M:Alis.Core.Aspect.Math.Vector.Vector3F.op_Subtraction(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)" /> method defines the subtraction operation for
-                <see cref="T:Alis.Core.Aspect.Math.Vector.Vector3F" /> objects.
-            </remarks>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.op_UnaryNegation(Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Negates the specified vector.</summary>
-            <param name="value">The vector to negate.</param>
-            <returns>The negated vector.</returns>
-            <remarks>
-                The <see cref="M:Alis.Core.Aspect.Math.Vector.Vector3F.op_UnaryNegation(Alis.Core.Aspect.Math.Vector.Vector3F)" /> method defines the unary negation operation for
-                <see cref="T:Alis.Core.Aspect.Math.Vector.Vector3F" /> objects.
-            </remarks>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Abs(Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Returns a vector whose elements are the absolute values of each of the specified vector's elements.</summary>
-            <param name="value">A vector.</param>
-            <returns>The absolute value vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Add(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Adds two vectors together.</summary>
-            <param name="left">The first vector to add.</param>
-            <param name="right">The second vector to add.</param>
-            <returns>The summed vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Clamp(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Restricts a vector between a minimum and a maximum value.</summary>
-            <param name="value1">The vector to restrict.</param>
-            <param name="min">The minimum value.</param>
-            <param name="max">The maximum value.</param>
-            <returns>The restricted vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Cross(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Computes the cross product of two vectors.</summary>
-            <param name="vector1">The first vector.</param>
-            <param name="vector2">The second vector.</param>
-            <returns>The cross product.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Distance(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Computes the Euclidean distance between the two given points.</summary>
-            <param name="value1">The first point.</param>
-            <param name="value2">The second point.</param>
-            <returns>The distance.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.DistanceSquared(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Returns the Euclidean distance squared between two specified points.</summary>
-            <param name="value1">The first point.</param>
-            <param name="value2">The second point.</param>
-            <returns>The distance squared.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Divide(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Divides the first vector by the second.</summary>
-            <param name="left">The first vector.</param>
-            <param name="right">The second vector.</param>
-            <returns>The vector resulting from the division.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Divide(Alis.Core.Aspect.Math.Vector.Vector3F,System.Single)">
-            <summary>Divides the specified vector by a specified scalar value.</summary>
-            <param name="left">The vector.</param>
-            <param name="divisor">The scalar value.</param>
-            <returns>The vector that results from the division.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Dot(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Returns the dot product of two vectors.</summary>
-            <param name="vector1">The first vector.</param>
-            <param name="vector2">The second vector.</param>
-            <returns>The dot product.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Lerp(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F,System.Single)">
-            <summary>Performs a linear interpolation between two vectors based on the given weighting.</summary>
-            <param name="value1">The first vector.</param>
-            <param name="value2">The second vector.</param>
-            <param name="amount">A value between 0 and 1 that indicates the weight of <paramref name="value2" />.</param>
-            <returns>The interpolated vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Max(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Returns a vector whose elements are the maximum of each of the pairs of elements in two specified vectors.</summary>
-            <param name="value1">The first vector.</param>
-            <param name="value2">The second vector.</param>
-            <returns>The maximized vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Min(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Returns a vector whose elements are the minimum of each of the pairs of elements in two specified vectors.</summary>
-            <param name="value1">The first vector.</param>
-            <param name="value2">The second vector.</param>
-            <returns>The minimized vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Multiply(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Returns a new vector whose values are the product of each pair of elements in two specified vectors.</summary>
-            <param name="left">The first vector.</param>
-            <param name="right">The second vector.</param>
-            <returns>The element-wise product vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Multiply(Alis.Core.Aspect.Math.Vector.Vector3F,System.Single)">
-            <summary>Multiplies a vector by a specified scalar.</summary>
-            <param name="left">The vector to multiply.</param>
-            <param name="right">The scalar value.</param>
-            <returns>The scaled vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Multiply(System.Single,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Multiplies a scalar value by a specified vector.</summary>
-            <param name="left">The scaled value.</param>
-            <param name="right">The vector.</param>
-            <returns>The scaled vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Negate(Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Negates a specified vector.</summary>
-            <param name="value">The vector to negate.</param>
-            <returns>The negated vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Normalize(Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Returns a vector with the same direction as the specified vector, but with a length of one.</summary>
-            <param name="value">The vector to normalize.</param>
-            <returns>The normalized vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Reflect(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Returns the reflection of a vector off a surface that has the specified normal.</summary>
-            <param name="vector">The source vector.</param>
-            <param name="normal">The normal of the surface being reflected off.</param>
-            <returns>The reflected vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.SquareRoot(Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Returns a vector whose elements are the square root of each of a specified vector's elements.</summary>
-            <param name="value">A vector.</param>
-            <returns>The square root vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Subtract(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Subtracts the second vector from the first.</summary>
-            <param name="left">The first vector.</param>
-            <param name="right">The second vector.</param>
-            <returns>The difference vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Transform(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Matrix.Matrix4X4F)">
-            <summary>Transforms a vector by a specified 4x4 matrix.</summary>
-            <param name="position">The vector to transform.</param>
-            <param name="matrix">The transformation matrix.</param>
-            <returns>The transformed vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Transform(Alis.Core.Aspect.Math.Vector.Vector3F,System.Numerics.Quaternion)">
-            <summary>Transforms a vector by the specified Quaternion rotation value.</summary>
-            <param name="value">The vector to rotate.</param>
-            <param name="rotation">The rotation to apply.</param>
-            <returns>The transformed vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.TransformNormal(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Matrix.Matrix4X4F)">
-            <summary>Transforms a vector normal by the given 4x4 matrix.</summary>
-            <param name="normal">The source vector.</param>
-            <param name="matrix">The matrix.</param>
-            <returns>The transformed vector.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.CopyTo(System.Single[])">
-            <summary>Copies the elements of the vector to a specified array.</summary>
-            <param name="array">The destination array.</param>
-            <remarks>
-                <paramref name="array" /> must have at least three elements. The method copies the vector's elements starting
-                at index 0.
-            </remarks>
-            <exception cref="T:System.ArgumentNullException"><paramref name="array" /> is <see langword="null" />.</exception>
-            <exception cref="T:System.ArgumentException">The number of elements in the current instance is greater than in the array.</exception>
-            <exception cref="T:System.RankException"><paramref name="array" /> is multidimensional.</exception>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.CopyTo(System.Single[],System.Int32)">
-            <summary>Copies the elements of the vector to a specified array starting at a specified index position.</summary>
-            <param name="array">The destination array.</param>
-            <param name="index">The index at which to copy the first element of the vector.</param>
-            <remarks>
-                <paramref name="array" /> must have a sufficient number of elements to accommodate the three vector elements.
-                In other words, elements <paramref name="index" />, <paramref name="index" /> + 1, and <paramref name="index" /> +
-                2 must already exist in <paramref name="array" />.
-            </remarks>
-            <exception cref="T:System.ArgumentNullException"><paramref name="array" /> is <see langword="null" />.</exception>
-            <exception cref="T:System.ArgumentException">The number of elements in the current instance is greater than in the array.</exception>
-            <exception cref="T:System.ArgumentOutOfRangeException">
-                <paramref name="index" /> is less than zero.
-                -or-
-                <paramref name="index" /> is greater than or equal to the array length.
-            </exception>
-            <exception cref="T:System.RankException"><paramref name="array" /> is multidimensional.</exception>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Equals(System.Object)">
-            <summary>Returns a value that indicates whether this instance and a specified object are equal.</summary>
-            <param name="obj">The object to compare with the current instance.</param>
-            <returns>
-                <see langword="true" /> if the current instance and <paramref name="obj" /> are equal; otherwise,
-                <see langword="false" />. If <paramref name="obj" /> is <see langword="null" />, the method returns
-                <see langword="false" />.
-            </returns>
-            <remarks>
-                The current instance and <paramref name="obj" /> are equal if <paramref name="obj" /> is a
-                <see cref="T:Alis.Core.Aspect.Math.Vector.Vector3F" /> object and their corresponding elements are equal.
-            </remarks>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Equals(Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>Returns a value that indicates whether this instance and another vector are equal.</summary>
-            <param name="other">The other vector.</param>
-            <returns><see langword="true" /> if the two vectors are equal; otherwise, <see langword="false" />.</returns>
-            <remarks>
-                Two vectors are equal if their <see cref="F:Alis.Core.Aspect.Math.Vector.Vector3F.X" />, <see cref="F:Alis.Core.Aspect.Math.Vector.Vector3F.Y" />, and
-                <see cref="F:Alis.Core.Aspect.Math.Vector.Vector3F.Z" /> elements are equal.
-            </remarks>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.GetHashCode">
-            <summary>Returns the hash code for this instance.</summary>
-            <returns>The hash code.</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Length">
-            <summary>Returns the length of this vector object.</summary>
-            <returns>The vector's length.</returns>
-            <altmember cref="M:Alis.Core.Aspect.Math.Vector.Vector3F.LengthSquared" />
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.LengthSquared">
-            <summary>Returns the length of the vector squared.</summary>
-            <returns>The vector's length squared.</returns>
-            <remarks>This operation offers better performance than a call to the <see cref="M:Alis.Core.Aspect.Math.Vector.Vector3F.Length" /> method.</remarks>
-            <altmember cref="M:Alis.Core.Aspect.Math.Vector.Vector3F.Length" />
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.ToString">
-            <summary>Returns the string representation of the current instance using default formatting.</summary>
-            <returns>The string representation of the current instance.</returns>
-            <remarks>
-                This method returns a string in which each element of the vector is formatted using the "G" (general) format
-                string and the formatting conventions of the current thread culture. The "&lt;" and "&gt;" characters are used to
-                begin and end the string, and the current culture's
-                <see cref="P:System.Globalization.NumberFormatInfo.NumberGroupSeparator" /> property followed by a space is used to
-                separate each element.
-            </remarks>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.ToString(System.String)">
-            <summary>
-                Returns the string representation of the current instance using the specified format string to format
-                individual elements.
-            </summary>
-            <param name="format">A standard or custom numeric format string that defines the format of individual elements.</param>
-            <returns>The string representation of the current instance.</returns>
-            <remarks>
-                This method returns a string in which each element of the vector is formatted using <paramref name="format" />
-                and the current culture's formatting conventions. The "&lt;" and "&gt;" characters are used to begin and end the
-                string, and the current culture's <see cref="P:System.Globalization.NumberFormatInfo.NumberGroupSeparator" />
-                property followed by a space is used to separate each element.
-            </remarks>
-            <related type="Article" href="/dotnet/standard/base-types/standard-numeric-format-strings">
-                Standard Numeric Format
-                Strings
-            </related>
-            <related type="Article" href="/dotnet/standard/base-types/custom-numeric-format-strings">Custom Numeric Format Strings</related>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.ToString(System.String,System.IFormatProvider)">
-            <summary>
-                Returns the string representation of the current instance using the specified format string to format
-                individual elements and the specified format provider to define culture-specific formatting.
-            </summary>
-            <param name="format">A standard or custom numeric format string that defines the format of individual elements.</param>
-            <param name="formatProvider">A format provider that supplies culture-specific formatting information.</param>
-            <returns>The string representation of the current instance.</returns>
-            <remarks>
-                This method returns a string in which each element of the vector is formatted using <paramref name="format" />
-                and <paramref name="formatProvider" />. The "&lt;" and "&gt;" characters are used to begin and end the string, and
-                the format provider's <see cref="P:System.Globalization.NumberFormatInfo.NumberGroupSeparator" /> property followed
-                by a space is used to separate each element.
-            </remarks>
-            <related type="Article" href="/dotnet/standard/base-types/standard-numeric-format-strings">
-                Standard Numeric Format
-                Strings
-            </related>
-            <related type="Article" href="/dotnet/standard/base-types/custom-numeric-format-strings">Custom Numeric Format Strings</related>
-        </member>
         <member name="T:Alis.Core.Aspect.Math.Vector.Vector3I">
             <summary>
                 <see cref="T:Alis.Core.Aspect.Math.Vector.Vector3I" /> is a struct represent a glsl ivec3 value
@@ -1982,6 +2799,32 @@
         </member>
         <member name="F:Alis.Core.Aspect.Math.Vector.Vector3I.Z">
             <summary>Depth component of the vector</summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Vector.Vector4">
+            <summary>
+                <see cref="T:Alis.Core.Aspect.Math.Vector.Vector4" /> is a struct represent a glsl vec4 value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector4.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+                Construct the <see cref="T:Alis.Core.Aspect.Math.Vector.Vector4" /> from its coordinates
+            </summary>
+            <param name="x">X coordinate</param>
+            <param name="y">Y coordinate</param>
+            <param name="z">Z coordinate</param>
+            <param name="w">W coordinate</param>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Vector.Vector4.X">
+            <summary>Horizontal component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Vector.Vector4.Y">
+            <summary>Vertical component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Vector.Vector4.Z">
+            <summary>Depth component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Vector.Vector4.W">
+            <summary>Projective/Homogenous component of the vector</summary>
         </member>
         <member name="T:Alis.Core.Aspect.Math.Vector.Vector4B">
             <summary>
@@ -2007,32 +2850,6 @@
             <summary>Depth component of the vector</summary>
         </member>
         <member name="F:Alis.Core.Aspect.Math.Vector.Vector4B.W">
-            <summary>Projective/Homogenous component of the vector</summary>
-        </member>
-        <member name="T:Alis.Core.Aspect.Math.Vector.Vector4F">
-            <summary>
-                <see cref="T:Alis.Core.Aspect.Math.Vector.Vector4F" /> is a struct represent a glsl vec4 value
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector4F.#ctor(System.Single,System.Single,System.Single,System.Single)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Aspect.Math.Vector.Vector4F" /> from its coordinates
-            </summary>
-            <param name="x">X coordinate</param>
-            <param name="y">Y coordinate</param>
-            <param name="z">Z coordinate</param>
-            <param name="w">W coordinate</param>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.Vector.Vector4F.X">
-            <summary>Horizontal component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.Vector.Vector4F.Y">
-            <summary>Vertical component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.Vector.Vector4F.Z">
-            <summary>Depth component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.Vector.Vector4F.W">
             <summary>Projective/Homogenous component of the vector</summary>
         </member>
         <member name="T:Alis.Core.Aspect.Math.Vector.Vector4I">

@@ -98,7 +98,7 @@ namespace Alis.Core.Manager.Graphic
             styles = Styles.Default;
             InitRenderWindow();
         }
-        
+
         /// <summary>
         ///     Renders the window on resized using the specified sender
         /// </summary>
@@ -146,7 +146,7 @@ namespace Alis.Core.Manager.Graphic
             RenderWindow.Resized += RenderWindowOnResized;
             RenderWindow.Closed += RenderWindowOnClosed;
         }
-        
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -194,7 +194,7 @@ namespace Alis.Core.Manager.Graphic
                 Task.Delay(100).Wait();
             }
         }
-        
+
         /// <summary>
         ///     Exits this instance
         /// </summary>

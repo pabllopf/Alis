@@ -56,7 +56,7 @@ namespace Alis.Core.Graphic.SDL
         ///     The data
         /// </summary>
         public float float0;
-        
+
         /// <summary>
         ///     The data
         /// </summary>
@@ -71,7 +71,7 @@ namespace Alis.Core.Graphic.SDL
         ///     The data
         /// </summary>
         public float float3;
-        
+
         /// <summary>
         ///     The data
         /// </summary>

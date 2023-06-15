@@ -32,17 +32,17 @@ using System;
 namespace Alis.Core.Aspect.Math.Util
 {
     /// <summary>
-    /// The random utils class
+    ///     The random utils class
     /// </summary>
     public class RandomUtils
     {
         /// <summary>
-        /// The random
+        ///     The random
         /// </summary>
         private static readonly Random random = new Random();
 
         /// <summary>
-        /// Gets the random int using the specified min value
+        ///     Gets the random int using the specified min value
         /// </summary>
         /// <param name="minValue">The min value</param>
         /// <param name="maxValue">The max value</param>
@@ -59,7 +59,7 @@ namespace Alis.Core.Aspect.Math.Util
         }
 
         /// <summary>
-        /// Gets the random int using the specified value
+        ///     Gets the random int using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <exception cref="ArgumentException">value must be greater than or equal to 0.</exception>

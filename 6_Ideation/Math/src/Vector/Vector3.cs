@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Vector3F.cs
+//  File:Vector3.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -146,8 +146,8 @@ namespace Alis.Core.Aspect.Math.Vector
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool operator ==(Vector3 left, Vector3 right) => (left.X == right.X)
-                                                                         && (left.Y == right.Y)
-                                                                         && (left.Z == right.Z);
+                                                                       && (left.Y == right.Y)
+                                                                       && (left.Z == right.Z);
 
         /// <summary>Returns a value that indicates whether two specified vectors are not equal.</summary>
         /// <param name="left">The first vector to compare.</param>
@@ -289,8 +289,8 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <returns>The dot product.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Dot(Vector3 vector1, Vector3 vector2) => vector1.X * vector2.X
-                                                                       + vector1.Y * vector2.Y
-                                                                       + vector1.Z * vector2.Z;
+                                                                     + vector1.Y * vector2.Y
+                                                                     + vector1.Z * vector2.Z;
 
         /// <summary>Performs a linear interpolation between two vectors based on the given weighting.</summary>
         /// <param name="value1">The first vector.</param>
@@ -498,7 +498,7 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     <see cref="Vector3" /> object and their corresponding elements are equal.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public readonly override bool Equals( object obj) => obj is Vector3 other && Equals(other);
+        public readonly override bool Equals(object obj) => obj is Vector3 other && Equals(other);
 
         /// <summary>Returns a value that indicates whether this instance and another vector are equal.</summary>
         /// <param name="other">The other vector.</param>

@@ -81,42 +81,6 @@
             </summary>
             <returns>The bool</returns>
         </member>
-        <member name="T:Alis.Core.Aspect.Base.Exceptions.ComponentDontExits">
-            <summary>
-                The component dont exits class
-            </summary>
-            <seealso cref="T:System.Exception" />
-        </member>
-        <member name="T:Alis.Core.Aspect.Base.Exceptions.ComponentInstancieIsTheSame">
-            <summary>
-                The component instancie is the same class
-            </summary>
-            <seealso cref="T:System.Exception" />
-        </member>
-        <member name="T:Alis.Core.Aspect.Base.Exceptions.ComponentTypeAlredyExist">
-            <summary>
-                The component type alredy exist class
-            </summary>
-            <seealso cref="T:System.Exception" />
-        </member>
-        <member name="T:Alis.Core.Aspect.Base.Exceptions.GameObjectIsFull">
-            <summary>
-                The game object is full class
-            </summary>
-            <seealso cref="T:System.Exception" />
-        </member>
-        <member name="T:Alis.Core.Aspect.Base.Exceptions.IndexOutOfBounds">
-            <summary>
-                The index out of bounds class
-            </summary>
-            <seealso cref="T:System.Exception" />
-        </member>
-        <member name="T:Alis.Core.Aspect.Base.Exceptions.LimitOfComponents">
-            <summary>
-                The limit of components class
-            </summary>
-            <seealso cref="T:System.Exception" />
-        </member>
         <member name="T:Alis.Core.Aspect.Base.Exceptions.LoadingFailedException">
             <summary>
                 Exception thrown by SFML whenever loading a resource fails
@@ -155,17 +119,344 @@
             <param name="filename">Path of the file</param>
             <param name="innerException">Exception which is the cause ofthe current exception</param>
         </member>
-        <member name="T:Alis.Core.Aspect.Base.Exceptions.NullArgumentException">
+        <member name="T:Alis.Core.Aspect.Base.Mapping.Button">
             <summary>
-                The null argument exception class
+                The button enum
             </summary>
-            <seealso cref="T:System.Exception" />
         </member>
-        <member name="T:Alis.Core.Aspect.Base.Exceptions.SceneGame">
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Button.A">
             <summary>
-                The max scene game class
+                The  button
             </summary>
-            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Button.B">
+            <summary>
+                The  button
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Button.Y">
+            <summary>
+                The  button
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Button.X">
+            <summary>
+                The  button
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Base.Mapping.Key">
+            <summary>
+            The key enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Unknown">
+            <summary>Unhandled key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.A">
+            <summary>The A key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.B">
+            <summary>The B key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.C">
+            <summary>The C key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.D">
+            <summary>The D key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.E">
+            <summary>The E key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.F">
+            <summary>The F key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.G">
+            <summary>The G key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.H">
+            <summary>The H key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.I">
+            <summary>The I key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.J">
+            <summary>The J key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.K">
+            <summary>The K key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.L">
+            <summary>The L key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.M">
+            <summary>The M key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.N">
+            <summary>The N key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.O">
+            <summary>The O key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.P">
+            <summary>The P key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Q">
+            <summary>The Q key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.R">
+            <summary>The R key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.S">
+            <summary>The S key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.T">
+            <summary>The T key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.U">
+            <summary>The U key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.V">
+            <summary>The V key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.W">
+            <summary>The W key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.X">
+            <summary>The X key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Y">
+            <summary>The Y key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Z">
+            <summary>The Z key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Num0">
+            <summary>The 0 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Num1">
+            <summary>The 1 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Num2">
+            <summary>The 2 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Num3">
+            <summary>The 3 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Num4">
+            <summary>The 4 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Num5">
+            <summary>The 5 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Num6">
+            <summary>The 6 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Num7">
+            <summary>The 7 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Num8">
+            <summary>The 8 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Num9">
+            <summary>The 9 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Escape">
+            <summary>The Escape key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.LControl">
+            <summary>The left Control key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.LShift">
+            <summary>The left Shift key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.LAlt">
+            <summary>The left Alt key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.LSystem">
+            <summary>The left OS specific key: window (Windows and Linux), apple (MacOS X), ...</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.RControl">
+            <summary>The right Control key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.RShift">
+            <summary>The right Shift key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.RAlt">
+            <summary>The right Alt key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.RSystem">
+            <summary>The right OS specific key: window (Windows and Linux), apple (MacOS X), ...</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Menu">
+            <summary>The Menu key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.LBracket">
+            <summary>The [ key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.RBracket">
+            <summary>The ] key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Semicolon">
+            <summary>The ; key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Comma">
+            <summary>The , key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Period">
+            <summary>The . key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Quote">
+            <summary>The ' key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Slash">
+            <summary>The / key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Backslash">
+            <summary>The \ key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Tilde">
+            <summary>The ~ key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Equal">
+            <summary>The = key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Hyphen">
+            <summary>The - key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Space">
+            <summary>The Space key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Enter">
+            <summary>The Return key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Backspace">
+            <summary>The Backspace key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Tab">
+            <summary>The Tabulation key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.PageUp">
+            <summary>The Page up key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.PageDown">
+            <summary>The Page down key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.End">
+            <summary>The End key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Home">
+            <summary>The Home key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Insert">
+            <summary>The Insert key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Delete">
+            <summary>The Delete key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Add">
+            <summary>The + key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Subtract">
+            <summary>The - key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Multiply">
+            <summary>The * key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Divide">
+            <summary>The / key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Left">
+            <summary>Left arrow</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Right">
+            <summary>Right arrow</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Up">
+            <summary>Up arrow</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Down">
+            <summary>Down arrow</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Numpad0">
+            <summary>The numpad 0 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Numpad1">
+            <summary>The numpad 1 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Numpad2">
+            <summary>The numpad 2 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Numpad3">
+            <summary>The numpad 3 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Numpad4">
+            <summary>The numpad 4 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Numpad5">
+            <summary>The numpad 5 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Numpad6">
+            <summary>The numpad 6 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Numpad7">
+            <summary>The numpad 7 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Numpad8">
+            <summary>The numpad 8 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Numpad9">
+            <summary>The numpad 9 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.F1">
+            <summary>The F1 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.F2">
+            <summary>The F2 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.F3">
+            <summary>The F3 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.F4">
+            <summary>The F4 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.F5">
+            <summary>The F5 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.F6">
+            <summary>The F6 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.F7">
+            <summary>The F7 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.F8">
+            <summary>The F8 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.F9">
+            <summary>The F9 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.F10">
+            <summary>The F10 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.F11">
+            <summary>The F11 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.F12">
+            <summary>The F12 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.F13">
+            <summary>The F13 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.F14">
+            <summary>The F14 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.F15">
+            <summary>The F15 key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Pause">
+            <summary>The Pause key</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Mapping.Key.KeyCount">
+            <summary>The total number of keyboard keys</summary>
         </member>
         <member name="T:Alis.Core.Aspect.Base.Settings.Csfml">
             <summary>

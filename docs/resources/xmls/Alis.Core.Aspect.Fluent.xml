@@ -26,12 +26,6 @@
             </summary>
             <returns>The</returns>
         </member>
-        <member name="M:Alis.Core.Aspect.Fluent.IBuilder`1.Builder``1">
-            <summary>
-                Builder static
-            </summary>
-            <returns></returns>
-        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IAdd`3">
             <summary>
                 The add interface

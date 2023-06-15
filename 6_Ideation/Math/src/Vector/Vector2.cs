@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Vector2F.cs
+//  File:Vector2.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -121,7 +121,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool operator ==(Vector2 left, Vector2 right) => (left.X == right.X)
-                                                                         && (left.Y == right.Y);
+                                                                       && (left.Y == right.Y);
 
         /// <summary>Returns a value that indicates whether two specified vectors are not equal.</summary>
         /// <param name="left">The first vector to compare.</param>
@@ -249,7 +249,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <returns>The dot product.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Dot(Vector2 value1, Vector2 value2) => value1.X * value2.X
-                                                                     + value1.Y * value2.Y;
+                                                                   + value1.Y * value2.Y;
 
         /// <summary>Performs a linear interpolation between two vectors based on the given weighting.</summary>
         /// <param name="value1">The first vector.</param>
@@ -471,7 +471,7 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     <see cref="Vector2" /> object and their <see cref="X" /> and <see cref="Y" /> elements are equal.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public readonly override bool Equals( object obj) => obj is Vector2 other && Equals(other);
+        public readonly override bool Equals(object obj) => obj is Vector2 other && Equals(other);
 
         /// <summary>Returns a value that indicates whether this instance and another vector are equal.</summary>
         /// <param name="other">The other vector.</param>

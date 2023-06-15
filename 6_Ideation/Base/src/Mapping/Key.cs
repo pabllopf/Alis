@@ -30,9 +30,9 @@
 namespace Alis.Core.Aspect.Base.Mapping
 {
     /// <summary>
-    /// The key enum
+    ///     The key enum
     /// </summary>
-   public enum Key
+    public enum Key
     {
         /// <summary>Unhandled key</summary>
         Unknown = -1,
@@ -341,6 +341,6 @@ namespace Alis.Core.Aspect.Base.Mapping
         Pause,
 
         /// <summary>The total number of keyboard keys</summary>
-        KeyCount,
+        KeyCount
     }
 }

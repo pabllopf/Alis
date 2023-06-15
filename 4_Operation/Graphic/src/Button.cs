@@ -29,5 +29,4 @@
 
 namespace Alis.Core.Graphic
 {
-    
 }

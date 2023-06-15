@@ -34,12 +34,12 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Aspect.Math.Util
 {
     /// <summary>
-    /// The quaternion
+    ///     The quaternion
     /// </summary>
     public struct Quaternion
     {
         /// <summary>
-        /// The slerp epsilon
+        ///     The slerp epsilon
         /// </summary>
         private const float SlerpEpsilon = 1e-6f;
 
@@ -56,7 +56,7 @@ namespace Alis.Core.Aspect.Math.Util
         public float W;
 
         /// <summary>
-        /// The count
+        ///     The count
         /// </summary>
         internal const int Count = 4;
 
@@ -86,34 +86,25 @@ namespace Alis.Core.Aspect.Math.Util
 
         /// <summary>Gets a quaternion that represents a zero.</summary>
         /// <value>A quaternion whose values are <c>(0, 0, 0, 0)</c>.</value>
-        public static Quaternion Zero
-        {
-            get => default;
-        }
+        public static Quaternion Zero => default(Quaternion);
 
         /// <summary>Gets a quaternion that represents no rotation.</summary>
         /// <value>A quaternion whose values are <c>(0, 0, 0, 1)</c>.</value>
-        public static Quaternion Identity
-        {
-            get => new Quaternion(0, 0, 0, 1);
-        }
-
-
-
+        public static Quaternion Identity => new Quaternion(0, 0, 0, 1);
 
 
         /// <summary>Gets a value that indicates whether the current instance is the identity quaternion.</summary>
         /// <value><see langword="true" /> if the current instance is the identity quaternion; otherwise, <see langword="false" />.</value>
-        public readonly bool IsIdentity
-        {
-            get => this == Identity;
-        }
+        public readonly bool IsIdentity => this == Identity;
 
         /// <summary>Adds each element in one quaternion with its corresponding element in a second quaternion.</summary>
         /// <param name="value1">The first quaternion.</param>
         /// <param name="value2">The second quaternion.</param>
         /// <returns>The quaternion that contains the summed values of <paramref name="value1" /> and <paramref name="value2" />.</returns>
-        /// <remarks>The <see cref="Quaternion.op_Addition" /> method defines the operation of the addition operator for <see cref="Quaternion" /> objects.</remarks>
+        /// <remarks>
+        ///     The <see cref="Quaternion.op_Addition" /> method defines the operation of the addition operator for
+        ///     <see cref="Quaternion" /> objects.
+        /// </remarks>
         public static Quaternion operator +(Quaternion value1, Quaternion value2)
         {
             Quaternion ans;
@@ -130,7 +121,10 @@ namespace Alis.Core.Aspect.Math.Util
         /// <param name="value1">The dividend.</param>
         /// <param name="value2">The divisor.</param>
         /// <returns>The quaternion that results from dividing <paramref name="value1" /> by <paramref name="value2" />.</returns>
-        /// <remarks>The <see cref="Quaternion.op_Division" /> method defines the division operation for <see cref="Quaternion" /> objects.</remarks>
+        /// <remarks>
+        ///     The <see cref="Quaternion.op_Division" /> method defines the division operation for <see cref="Quaternion" />
+        ///     objects.
+        /// </remarks>
         public static Quaternion operator /(Quaternion value1, Quaternion value2)
         {
             Quaternion ans;
@@ -173,24 +167,24 @@ namespace Alis.Core.Aspect.Math.Util
         /// <param name="value1">The first quaternion to compare.</param>
         /// <param name="value2">The second quaternion to compare.</param>
         /// <returns><see langword="true" /> if the two quaternions are equal; otherwise, <see langword="false" />.</returns>
-        /// <remarks>Two quaternions are equal if each of their corresponding components is equal.
-        /// The <see cref="Quaternion.op_Equality" /> method defines the operation of the equality operator for <see cref="Quaternion" /> objects.</remarks>
-        public static bool operator ==(Quaternion value1, Quaternion value2)
-        {
-            return (value1.X == value2.X)
-                && (value1.Y == value2.Y)
-                && (value1.Z == value2.Z)
-                && (value1.W == value2.W);
-        }
+        /// <remarks>
+        ///     Two quaternions are equal if each of their corresponding components is equal.
+        ///     The <see cref="Quaternion.op_Equality" /> method defines the operation of the equality operator for
+        ///     <see cref="Quaternion" /> objects.
+        /// </remarks>
+        public static bool operator ==(Quaternion value1, Quaternion value2) => (value1.X == value2.X)
+                                                                                && (value1.Y == value2.Y)
+                                                                                && (value1.Z == value2.Z)
+                                                                                && (value1.W == value2.W);
 
         /// <summary>Returns a value that indicates whether two quaternions are not equal.</summary>
         /// <param name="value1">The first quaternion to compare.</param>
         /// <param name="value2">The second quaternion to compare.</param>
-        /// <returns><see langword="true" /> if <paramref name="value1" /> and <paramref name="value2" /> are not equal; otherwise, <see langword="false" />.</returns>
-        public static bool operator !=(Quaternion value1, Quaternion value2)
-        {
-            return !(value1 == value2);
-        }
+        /// <returns>
+        ///     <see langword="true" /> if <paramref name="value1" /> and <paramref name="value2" /> are not equal; otherwise,
+        ///     <see langword="false" />.
+        /// </returns>
+        public static bool operator !=(Quaternion value1, Quaternion value2) => !(value1 == value2);
 
         /// <summary>Returns the quaternion that results from multiplying two quaternions together.</summary>
         /// <param name="value1">The first quaternion.</param>
@@ -225,11 +219,14 @@ namespace Alis.Core.Aspect.Math.Util
             return ans;
         }
 
-        /// <summary>Returns the quaternion that results from scaling all the components of a specified quaternion by a scalar factor.</summary>
+        /// <summary>
+        ///     Returns the quaternion that results from scaling all the components of a specified quaternion by a scalar
+        ///     factor.
+        /// </summary>
         /// <param name="value1">The source quaternion.</param>
         /// <param name="value2">The scalar value.</param>
         /// <returns>The scaled quaternion.</returns>
-          public static Quaternion operator *(Quaternion value1, float value2)
+        public static Quaternion operator *(Quaternion value1, float value2)
         {
             Quaternion ans;
 
@@ -244,8 +241,14 @@ namespace Alis.Core.Aspect.Math.Util
         /// <summary>Subtracts each element in a second quaternion from its corresponding element in a first quaternion.</summary>
         /// <param name="value1">The first quaternion.</param>
         /// <param name="value2">The second quaternion.</param>
-        /// <returns>The quaternion containing the values that result from subtracting each element in <paramref name="value2" /> from its corresponding element in <paramref name="value1" />.</returns>
-        /// <remarks>The <see cref="Quaternion.op_Subtraction" /> method defines the operation of the subtraction operator for <see cref="Quaternion" /> objects.</remarks>
+        /// <returns>
+        ///     The quaternion containing the values that result from subtracting each element in <paramref name="value2" />
+        ///     from its corresponding element in <paramref name="value1" />.
+        /// </returns>
+        /// <remarks>
+        ///     The <see cref="Quaternion.op_Subtraction" /> method defines the operation of the subtraction operator for
+        ///     <see cref="Quaternion" /> objects.
+        /// </remarks>
         public static Quaternion operator -(Quaternion value1, Quaternion value2)
         {
             Quaternion ans;
@@ -261,7 +264,10 @@ namespace Alis.Core.Aspect.Math.Util
         /// <summary>Reverses the sign of each component of the quaternion.</summary>
         /// <param name="value">The quaternion to negate.</param>
         /// <returns>The negated quaternion.</returns>
-        /// <remarks>The <see cref="Quaternion.op_UnaryNegation" /> method defines the operation of the unary negation operator for <see cref="Quaternion" /> objects.</remarks>
+        /// <remarks>
+        ///     The <see cref="Quaternion.op_UnaryNegation" /> method defines the operation of the unary negation operator for
+        ///     <see cref="Quaternion" /> objects.
+        /// </remarks>
         public static Quaternion operator -(Quaternion value)
         {
             Quaternion ans;
@@ -279,15 +285,15 @@ namespace Alis.Core.Aspect.Math.Util
         /// <param name="value2">The second quaternion.</param>
         /// <returns>The quaternion that contains the summed values of <paramref name="value1" /> and <paramref name="value2" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion Add(Quaternion value1, Quaternion value2)
-        {
-            return value1 + value2;
-        }
+        public static Quaternion Add(Quaternion value1, Quaternion value2) => value1 + value2;
 
         /// <summary>Concatenates two quaternions.</summary>
         /// <param name="value1">The first quaternion rotation in the series.</param>
         /// <param name="value2">The second quaternion rotation in the series.</param>
-        /// <returns>A new quaternion representing the concatenation of the <paramref name="value1" /> rotation followed by the <paramref name="value2" /> rotation.</returns>
+        /// <returns>
+        ///     A new quaternion representing the concatenation of the <paramref name="value1" /> rotation followed by the
+        ///     <paramref name="value2" /> rotation.
+        /// </returns>
         public static Quaternion Concatenate(Quaternion value1, Quaternion value2)
         {
             Quaternion ans;
@@ -338,7 +344,10 @@ namespace Alis.Core.Aspect.Math.Util
         /// <param name="axis">The unit vector to rotate around.</param>
         /// <param name="angle">The angle, in radians, to rotate around the vector.</param>
         /// <returns>The newly created quaternion.</returns>
-        /// <remarks><paramref name="axis" /> vector must be normalized before calling this method or the resulting <see cref="Quaternion" /> will be incorrect.</remarks>
+        /// <remarks>
+        ///     <paramref name="axis" /> vector must be normalized before calling this method or the resulting
+        ///     <see cref="Quaternion" /> will be incorrect.
+        /// </remarks>
         public static Quaternion CreateFromAxisAngle(Vector3 axis, float angle)
         {
             Quaternion ans;
@@ -362,7 +371,7 @@ namespace Alis.Core.Aspect.Math.Util
         {
             float trace = matrix.M11 + matrix.M22 + matrix.M33;
 
-            Quaternion q = default;
+            Quaternion q = default(Quaternion);
 
             if (trace > 0.0f)
             {
@@ -375,7 +384,7 @@ namespace Alis.Core.Aspect.Math.Util
             }
             else
             {
-                if (matrix.M11 >= matrix.M22 && matrix.M11 >= matrix.M33)
+                if ((matrix.M11 >= matrix.M22) && (matrix.M11 >= matrix.M33))
                 {
                     float s = MathF.Sqrt(1.0f + matrix.M11 - matrix.M22 - matrix.M33);
                     float invS = 0.5f / s;
@@ -445,22 +454,16 @@ namespace Alis.Core.Aspect.Math.Util
         /// <param name="value2">The divisor.</param>
         /// <returns>The quaternion that results from dividing <paramref name="value1" /> by <paramref name="value2" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion Divide(Quaternion value1, Quaternion value2)
-        {
-            return value1 / value2;
-        }
+        public static Quaternion Divide(Quaternion value1, Quaternion value2) => value1 / value2;
 
         /// <summary>Calculates the dot product of two quaternions.</summary>
         /// <param name="quaternion1">The first quaternion.</param>
         /// <param name="quaternion2">The second quaternion.</param>
         /// <returns>The dot product.</returns>
-        public static float Dot(Quaternion quaternion1, Quaternion quaternion2)
-        {
-            return quaternion1.X * quaternion2.X +
-                   quaternion1.Y * quaternion2.Y +
-                   quaternion1.Z * quaternion2.Z +
-                   quaternion1.W * quaternion2.W;
-        }
+        public static float Dot(Quaternion quaternion1, Quaternion quaternion2) => quaternion1.X * quaternion2.X +
+                                                                                   quaternion1.Y * quaternion2.Y +
+                                                                                   quaternion1.Z * quaternion2.Z +
+                                                                                   quaternion1.W * quaternion2.W;
 
         /// <summary>Returns the inverse of a quaternion.</summary>
         /// <param name="value">The quaternion.</param>
@@ -484,7 +487,10 @@ namespace Alis.Core.Aspect.Math.Util
             return ans;
         }
 
-        /// <summary>Performs a linear interpolation between two quaternions based on a value that specifies the weighting of the second quaternion.</summary>
+        /// <summary>
+        ///     Performs a linear interpolation between two quaternions based on a value that specifies the weighting of the
+        ///     second quaternion.
+        /// </summary>
         /// <param name="quaternion1">The first quaternion.</param>
         /// <param name="quaternion2">The second quaternion.</param>
         /// <param name="amount">The relative weight of <paramref name="quaternion2" /> in the interpolation.</param>
@@ -494,7 +500,7 @@ namespace Alis.Core.Aspect.Math.Util
             float t = amount;
             float t1 = 1.0f - t;
 
-            Quaternion r = default;
+            Quaternion r = default(Quaternion);
 
             float dot = quaternion1.X * quaternion2.X + quaternion1.Y * quaternion2.Y +
                         quaternion1.Z * quaternion2.Z + quaternion1.W * quaternion2.W;
@@ -531,29 +537,23 @@ namespace Alis.Core.Aspect.Math.Util
         /// <param name="value2">The second quaternion.</param>
         /// <returns>The product quaternion.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion Multiply(Quaternion value1, Quaternion value2)
-        {
-            return value1 * value2;
-        }
+        public static Quaternion Multiply(Quaternion value1, Quaternion value2) => value1 * value2;
 
-        /// <summary>Returns the quaternion that results from scaling all the components of a specified quaternion by a scalar factor.</summary>
+        /// <summary>
+        ///     Returns the quaternion that results from scaling all the components of a specified quaternion by a scalar
+        ///     factor.
+        /// </summary>
         /// <param name="value1">The source quaternion.</param>
         /// <param name="value2">The scalar value.</param>
         /// <returns>The scaled quaternion.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion Multiply(Quaternion value1, float value2)
-        {
-            return value1 * value2;
-        }
+        public static Quaternion Multiply(Quaternion value1, float value2) => value1 * value2;
 
         /// <summary>Reverses the sign of each component of the quaternion.</summary>
         /// <param name="value">The quaternion to negate.</param>
         /// <returns>The negated quaternion.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion Negate(Quaternion value)
-        {
-            return -value;
-        }
+        public static Quaternion Negate(Quaternion value) => -value;
 
         /// <summary>Divides each component of a specified <see cref="Quaternion" /> by its length.</summary>
         /// <param name="value">The quaternion to normalize.</param>
@@ -596,11 +596,11 @@ namespace Alis.Core.Aspect.Math.Util
 
             float s1, s2;
 
-            if (cosOmega > (1.0f - SlerpEpsilon))
+            if (cosOmega > 1.0f - SlerpEpsilon)
             {
                 // Too close, do straight linear interpolation.
                 s1 = 1.0f - t;
-                s2 = (flip) ? -t : t;
+                s2 = flip ? -t : t;
             }
             else
             {
@@ -608,7 +608,7 @@ namespace Alis.Core.Aspect.Math.Util
                 float invSinOmega = 1 / MathF.Sin(omega);
 
                 s1 = MathF.Sin((1.0f - t) * omega) * invSinOmega;
-                s2 = (flip)
+                s2 = flip
                     ? -MathF.Sin(t * omega) * invSinOmega
                     : MathF.Sin(t * omega) * invSinOmega;
             }
@@ -626,21 +626,25 @@ namespace Alis.Core.Aspect.Math.Util
         /// <summary>Subtracts each element in a second quaternion from its corresponding element in a first quaternion.</summary>
         /// <param name="value1">The first quaternion.</param>
         /// <param name="value2">The second quaternion.</param>
-        /// <returns>The quaternion containing the values that result from subtracting each element in <paramref name="value2" /> from its corresponding element in <paramref name="value1" />.</returns>
+        /// <returns>
+        ///     The quaternion containing the values that result from subtracting each element in <paramref name="value2" />
+        ///     from its corresponding element in <paramref name="value1" />.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion Subtract(Quaternion value1, Quaternion value2)
-        {
-            return value1 - value2;
-        }
+        public static Quaternion Subtract(Quaternion value1, Quaternion value2) => value1 - value2;
 
         /// <summary>Returns a value that indicates whether this instance and a specified object are equal.</summary>
         /// <param name="obj">The object to compare with the current instance.</param>
-        /// <returns><see langword="true" /> if the current instance and <paramref name="obj" /> are equal; otherwise, <see langword="false" />. If <paramref name="obj" /> is <see langword="null" />, the method returns <see langword="false" />.</returns>
-        /// <remarks>The current instance and <paramref name="obj" /> are equal if <paramref name="obj" /> is a <see cref="Quaternion" /> object and the corresponding components of each matrix are equal.</remarks>
-        public override readonly bool Equals(object obj)
-        {
-            return (obj is Quaternion other) && Equals(other);
-        }
+        /// <returns>
+        ///     <see langword="true" /> if the current instance and <paramref name="obj" /> are equal; otherwise,
+        ///     <see langword="false" />. If <paramref name="obj" /> is <see langword="null" />, the method returns
+        ///     <see langword="false" />.
+        /// </returns>
+        /// <remarks>
+        ///     The current instance and <paramref name="obj" /> are equal if <paramref name="obj" /> is a
+        ///     <see cref="Quaternion" /> object and the corresponding components of each matrix are equal.
+        /// </remarks>
+        public readonly override bool Equals(object obj) => obj is Quaternion other && Equals(other);
 
         /// <summary>Returns a value that indicates whether this instance and another quaternion are equal.</summary>
         /// <param name="other">The other quaternion.</param>
@@ -651,21 +655,15 @@ namespace Alis.Core.Aspect.Math.Util
         {
             return SoftwareFallback(in this, other);
 
-            static bool SoftwareFallback(in Quaternion self, Quaternion other)
-            {
-                return self.X.Equals(other.X)
-                    && self.Y.Equals(other.Y)
-                    && self.Z.Equals(other.Z)
-                    && self.W.Equals(other.W);
-            }
+            static bool SoftwareFallback(in Quaternion self, Quaternion other) => self.X.Equals(other.X)
+                                                                                  && self.Y.Equals(other.Y)
+                                                                                  && self.Z.Equals(other.Z)
+                                                                                  && self.W.Equals(other.W);
         }
 
         /// <summary>Returns the hash code for this instance.</summary>
         /// <returns>The hash code.</returns>
-        public override readonly int GetHashCode()
-        {
-            return HashCode.Combine(X, Y, Z, W);
-        }
+        public readonly override int GetHashCode() => HashCode.Combine(X, Y, Z, W);
 
         /// <summary>Calculates the length of the quaternion.</summary>
         /// <returns>The computed length of the quaternion.</returns>
@@ -677,15 +675,15 @@ namespace Alis.Core.Aspect.Math.Util
 
         /// <summary>Calculates the squared length of the quaternion.</summary>
         /// <returns>The length squared of the quaternion.</returns>
-        public readonly float LengthSquared()
-        {
-            return X * X + Y * Y + Z * Z + W * W;
-        }
+        public readonly float LengthSquared() => X * X + Y * Y + Z * Z + W * W;
 
         /// <summary>Returns a string that represents this quaternion.</summary>
         /// <returns>The string representation of this quaternion.</returns>
-        /// <remarks>The numeric values in the returned string are formatted by using the conventions of the current culture. For example, for the en-US culture, the returned string might appear as <c>{X:1.1 Y:2.2 Z:3.3 W:4.4}</c>.</remarks>
-        public override readonly string ToString() =>
+        /// <remarks>
+        ///     The numeric values in the returned string are formatted by using the conventions of the current culture. For
+        ///     example, for the en-US culture, the returned string might appear as <c>{X:1.1 Y:2.2 Z:3.3 W:4.4}</c>.
+        /// </remarks>
+        public readonly override string ToString() =>
             $"{{X:{X} Y:{Y} Z:{Z} W:{W}}}";
     }
 }

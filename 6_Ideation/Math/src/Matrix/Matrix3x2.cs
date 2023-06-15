@@ -28,61 +28,15 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.CompilerServices;
-using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Aspect.Math.Matrix
 {
     /// <summary>
-    /// The matrix 3x class
+    ///     The matrix 3x class
     /// </summary>
-    public class Matrix3x2 {
-        /// <summary>
-        /// Describes whether this instance equals
-        /// </summary>
-        /// <param name="other">The other</param>
-        /// <returns>The bool</returns>
-        protected bool Equals(Matrix3x2 other) => M11.Equals(other.M11) && M12.Equals(other.M12) && M21.Equals(other.M21) && M22.Equals(other.M22) && M31.Equals(other.M31) && M32.Equals(other.M32);
-
-        /// <summary>
-        /// Describes whether this instance equals
-        /// </summary>
-        /// <param name="obj">The obj</param>
-        /// <returns>The bool</returns>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != this.GetType())
-            {
-                return false;
-            }
-
-            return Equals((Matrix3x2) obj);
-        }
-
-        /// <summary>
-         /// The pi
-         /// </summary>
-         private const float RotationEpsilon = 0.001f * MathF.PI / 180f;     // 0.1% of a degree
-
-        /// <summary>
-        /// The matrix 3x
-        /// </summary>
-        private static readonly Matrix3x2 _identity = new Matrix3x2(
-            1f, 0f,
-            0f, 1f,
-            0f, 0f
-        );
-
+    public class Matrix3x2
+    {
         /// <summary>The first element of the first row.</summary>
         public float M11;
 
@@ -109,8 +63,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="m31">The value to assign to the first element in the third row.</param>
         /// <param name="m32">The value to assign to the second element in the third row.</param>
         public Matrix3x2(float m11, float m12,
-                         float m21, float m22,
-                         float m31, float m32)
+            float m21, float m22,
+            float m31, float m32)
         {
             M11 = m11;
             M12 = m12;
@@ -124,22 +78,16 @@ namespace Alis.Core.Aspect.Math.Matrix
 
         /// <summary>Gets the multiplicative identity matrix.</summary>
         /// <value>The multiplicative identify matrix.</value>
-        public static Matrix3x2 Identity
-        {
-            get => _identity;
-        }
-        
+        public static Matrix3x2 Identity => _identity;
+
         /// <summary>Gets a value that indicates whether the current matrix is the identity matrix.</summary>
         /// <value><see langword="true" /> if the current matrix is the identity matrix; otherwise, <see langword="false" />.</value>
-        public bool IsIdentity
-        {
-            get => this == Identity;
-        }
+        public bool IsIdentity => this == Identity;
 
         /// <summary>Gets or sets the translation component of this matrix.</summary>
         /// <value>The translation component of the current instance.</value>
         public Vector2 Translation
-        { 
+        {
             get => new Vector2(M31, M32);
 
             set
@@ -149,14 +97,69 @@ namespace Alis.Core.Aspect.Math.Matrix
             }
         }
 
+        /// <summary>
+        ///     The pi
+        /// </summary>
+        private const float RotationEpsilon = 0.001f * MathF.PI / 180f; // 0.1% of a degree
+
+        /// <summary>
+        ///     The matrix 3x
+        /// </summary>
+        private static readonly Matrix3x2 _identity = new Matrix3x2(
+            1f, 0f,
+            0f, 1f,
+            0f, 0f
+        );
+
+        /// <summary>
+        ///     Gets the hash code
+        /// </summary>
+        /// <returns>The int</returns>
+        public override int GetHashCode() => base.GetHashCode();
+
+        /// <summary>
+        ///     Describes whether this instance equals
+        /// </summary>
+        /// <param name="other">The other</param>
+        /// <returns>The bool</returns>
+        protected bool Equals(Matrix3x2 other) => M11.Equals(other.M11) && M12.Equals(other.M12) && M21.Equals(other.M21) && M22.Equals(other.M22) && M31.Equals(other.M31) && M32.Equals(other.M32);
+
+        /// <summary>
+        ///     Describes whether this instance equals
+        /// </summary>
+        /// <param name="obj">The obj</param>
+        /// <returns>The bool</returns>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((Matrix3x2) obj);
+        }
+
         /// <summary>Adds each element in one matrix with its corresponding element in a second matrix.</summary>
         /// <param name="value1">The first matrix.</param>
         /// <param name="value2">The second matrix.</param>
         /// <returns>The matrix that contains the summed values.</returns>
-        /// <remarks>The <see cref="Matrix3x2.op_Addition" /> method defines the operation of the addition operator for <see cref="Matrix3x2" /> objects.</remarks>
+        /// <remarks>
+        ///     The <see cref="Matrix3x2.op_Addition" /> method defines the operation of the addition operator for
+        ///     <see cref="Matrix3x2" /> objects.
+        /// </remarks>
         public static Matrix3x2 operator +(Matrix3x2 value1, Matrix3x2 value2)
         {
-            Matrix3x2 m = default;
+            Matrix3x2 m = _identity;
 
             m.M11 = value1.M11 + value2.M11;
             m.M12 = value1.M12 + value2.M12;
@@ -173,35 +176,36 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>Returns a value that indicates whether the specified matrices are equal.</summary>
         /// <param name="value1">The first matrix to compare.</param>
         /// <param name="value2">The second matrix to compare.</param>
-        /// <returns><see langword="true" /> if <paramref name="value1" /> and <paramref name="value2" /> are equal; otherwise, <see langword="false" />.</returns>
+        /// <returns>
+        ///     <see langword="true" /> if <paramref name="value1" /> and <paramref name="value2" /> are equal; otherwise,
+        ///     <see langword="false" />.
+        /// </returns>
         /// <remarks>Two matrices are equal if all their corresponding elements are equal.</remarks>
-        public static bool operator ==(Matrix3x2 value1, Matrix3x2 value2)
-        {
+        public static bool operator ==(Matrix3x2 value1, Matrix3x2 value2) =>
             // Check diagonal element first for early out.
-            return (value1.M11 == value2.M11
-                 && value1.M22 == value2.M22
-                 && value1.M12 == value2.M12
-                 && value1.M21 == value2.M21
-                 && value1.M31 == value2.M31
-                 && value1.M32 == value2.M32);
-        }
+            (value1.M11 == value2.M11)
+            && (value1.M22 == value2.M22)
+            && (value1.M12 == value2.M12)
+            && (value1.M21 == value2.M21)
+            && (value1.M31 == value2.M31)
+            && (value1.M32 == value2.M32);
 
         /// <summary>Returns a value that indicates whether the specified matrices are not equal.</summary>
         /// <param name="value1">The first matrix to compare.</param>
         /// <param name="value2">The second matrix to compare.</param>
-        /// <returns><see langword="true" /> if <paramref name="value1" /> and <paramref name="value2" /> are not equal; otherwise, <see langword="false" />.</returns>
-        public static bool operator !=(Matrix3x2 value1, Matrix3x2 value2)
-        {
-            return !(value1 == value2);
-        }
+        /// <returns>
+        ///     <see langword="true" /> if <paramref name="value1" /> and <paramref name="value2" /> are not equal; otherwise,
+        ///     <see langword="false" />.
+        /// </returns>
+        public static bool operator !=(Matrix3x2 value1, Matrix3x2 value2) => !(value1 == value2);
 
         /// <summary>Multiplies two matrices together to compute the product.</summary>
         /// <param name="value1">The first matrix.</param>
         /// <param name="value2">The second matrix.</param>
         /// <returns>The product matrix.</returns>
-         public static Matrix3x2 operator *(Matrix3x2 value1, Matrix3x2 value2)
+        public static Matrix3x2 operator *(Matrix3x2 value1, Matrix3x2 value2)
         {
-            Matrix3x2 m = default;
+            Matrix3x2 m = _identity;
 
             // First row
             m.M11 = value1.M11 * value2.M11 + value1.M12 * value2.M21;
@@ -224,7 +228,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <returns>The scaled matrix.</returns>
         public static Matrix3x2 operator *(Matrix3x2 value1, float value2)
         {
-            Matrix3x2 m = default;
+            Matrix3x2 m = _identity;
 
             m.M11 = value1.M11 * value2;
             m.M12 = value1.M12 * value2;
@@ -241,11 +245,17 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>Subtracts each element in a second matrix from its corresponding element in a first matrix.</summary>
         /// <param name="value1">The first matrix.</param>
         /// <param name="value2">The second matrix.</param>
-        /// <returns>The matrix containing the values that result from subtracting each element in <paramref name="value2" /> from its corresponding element in <paramref name="value1" />.</returns>
-        /// <remarks>The <see cref="Matrix3x2.Subtract" /> method defines the operation of the subtraction operator for <see cref="Matrix3x2" /> objects.</remarks>
+        /// <returns>
+        ///     The matrix containing the values that result from subtracting each element in <paramref name="value2" /> from
+        ///     its corresponding element in <paramref name="value1" />.
+        /// </returns>
+        /// <remarks>
+        ///     The <see cref="Matrix3x2.Subtract" /> method defines the operation of the subtraction operator for
+        ///     <see cref="Matrix3x2" /> objects.
+        /// </remarks>
         public static Matrix3x2 operator -(Matrix3x2 value1, Matrix3x2 value2)
         {
-            Matrix3x2 m = default;
+            Matrix3x2 m = _identity;
 
             m.M11 = value1.M11 - value2.M11;
             m.M12 = value1.M12 - value2.M12;
@@ -264,7 +274,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <returns>The negated matrix.</returns>
         public static Matrix3x2 operator -(Matrix3x2 value)
         {
-            Matrix3x2 m = default;
+            Matrix3x2 m = _identity;
 
             m.M11 = -value.M11;
             m.M12 = -value.M12;
@@ -283,12 +293,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="value2">The second matrix.</param>
         /// <returns>The matrix that contains the summed values of <paramref name="value1" /> and <paramref name="value2" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Matrix3x2 Add(Matrix3x2 value1, Matrix3x2 value2)
-        {
-            return value1 + value2;
-        }
+        public static Matrix3x2 Add(Matrix3x2 value1, Matrix3x2 value2) => value1 + value2;
 
-        
 
         /// <summary>Creates a scaling matrix from the specified vector scale.</summary>
         /// <param name="scales">The scale to use.</param>
@@ -369,7 +375,10 @@ namespace Alis.Core.Aspect.Math.Matrix
             return result;
         }
 
-        /// <summary>Creates a scaling matrix that scales uniformly with the specified scale with an offset from the specified center.</summary>
+        /// <summary>
+        ///     Creates a scaling matrix that scales uniformly with the specified scale with an offset from the specified
+        ///     center.
+        /// </summary>
         /// <param name="scale">The uniform scale to use.</param>
         /// <param name="centerPoint">The center offset.</param>
         /// <returns>The scaling matrix.</returns>
@@ -418,13 +427,16 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>Tries to invert the specified matrix. The return value indicates whether the operation succeeded.</summary>
         /// <param name="matrix">The matrix to invert.</param>
         /// <param name="result">When this method returns, contains the inverted matrix if the operation succeeded.</param>
-        /// <returns><see langword="true" /> if <paramref name="matrix" /> was converted successfully; otherwise,  <see langword="false" />.</returns>
+        /// <returns>
+        ///     <see langword="true" /> if <paramref name="matrix" /> was converted successfully; otherwise,
+        ///     <see langword="false" />.
+        /// </returns>
         public static bool Invert(Matrix3x2 matrix, out Matrix3x2 result)
         {
-            float det = (matrix.M11 * matrix.M22) - (matrix.M21 * matrix.M12);
+            float det = matrix.M11 * matrix.M22 - matrix.M21 * matrix.M12;
 
             result = Identity;
-            
+
             if (MathF.Abs(det) < float.Epsilon)
             {
                 result = new Matrix3x2(float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN);
@@ -445,7 +457,10 @@ namespace Alis.Core.Aspect.Math.Matrix
             return true;
         }
 
-        /// <summary>Performs a linear interpolation from one matrix to a second matrix based on a value that specifies the weighting of the second matrix.</summary>
+        /// <summary>
+        ///     Performs a linear interpolation from one matrix to a second matrix based on a value that specifies the
+        ///     weighting of the second matrix.
+        /// </summary>
         /// <param name="matrix1">The first matrix.</param>
         /// <param name="matrix2">The second matrix.</param>
         /// <param name="amount">The relative weighting of <paramref name="matrix2" />.</param>
@@ -474,45 +489,35 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="value2">The second matrix.</param>
         /// <returns>The product matrix.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Matrix3x2 Multiply(Matrix3x2 value1, Matrix3x2 value2)
-        {
-            return value1 * value2;
-        }
+        public static Matrix3x2 Multiply(Matrix3x2 value1, Matrix3x2 value2) => value1 * value2;
 
         /// <summary>Multiplies a matrix by a float to compute the product.</summary>
         /// <param name="value1">The matrix to scale.</param>
         /// <param name="value2">The scaling value to use.</param>
         /// <returns>The scaled matrix.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Matrix3x2 Multiply(Matrix3x2 value1, float value2)
-        {
-            return value1 * value2;
-        }
+        public static Matrix3x2 Multiply(Matrix3x2 value1, float value2) => value1 * value2;
 
         /// <summary>Negates the specified matrix by multiplying all its values by -1.</summary>
         /// <param name="value">The matrix to negate.</param>
         /// <returns>The negated matrix.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Matrix3x2 Negate(Matrix3x2 value)
-        {
-            return -value;
-        }
+        public static Matrix3x2 Negate(Matrix3x2 value) => -value;
 
         /// <summary>Subtracts each element in a second matrix from its corresponding element in a first matrix.</summary>
         /// <param name="value1">The first matrix.</param>
         /// <param name="value2">The second matrix.</param>
-        /// <returns>The matrix containing the values that result from subtracting each element in <paramref name="value2" /> from its corresponding element in <paramref name="value1" />.</returns>
+        /// <returns>
+        ///     The matrix containing the values that result from subtracting each element in <paramref name="value2" /> from
+        ///     its corresponding element in <paramref name="value1" />.
+        /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Matrix3x2 Subtract(Matrix3x2 value1, Matrix3x2 value2)
-        {
-            return value1 - value2;
-        }
-        
+        public static Matrix3x2 Subtract(Matrix3x2 value1, Matrix3x2 value2) => value1 - value2;
+
         /// <summary>Calculates the determinant for this matrix.</summary>
         /// <returns>The determinant.</returns>
         /// <remarks>The determinant is calculated by expanding the matrix with a third column whose values are (0,0,1).</remarks>
-        public float GetDeterminant()
-        {
+        public float GetDeterminant() =>
             // There isn't actually any such thing as a determinant for a non-square matrix,
             // but this 3x2 type is really just an optimization of a 3x3 where we happen to
             // know the rightmost column is always (0, 0, 1). So we expand to 3x3 format:
@@ -528,22 +533,17 @@ namespace Alis.Core.Aspect.Math.Matrix
             //  (M31 * M22 * 0) + (M32 * 0 * M11) + (1 * M21 * M12)
             //
             // Collapse out the constants and oh look, this is just a 2x2 determinant!
+            M11 * M22 - M21 * M12;
 
-            return (M11 * M22) - (M21 * M12);
-        }
-
-        /// <summary>Returns the hash code for this instance.</summary>
-        /// <returns>The hash code.</returns>
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(M11, M12, M21, M22, M31, M32);
-        }
 
         /// <summary>Returns a string that represents this matrix.</summary>
         /// <returns>The string representation of this matrix.</returns>
-        /// <remarks>The numeric values in the returned string are formatted by using the conventions of the current culture. For example, for the en-US culture, the returned string might appear as <c>{ {M11:1.1 M12:1.2} {M21:2.1 M22:2.2} {M31:3.1 M32:3.2} }</c>.</remarks>
+        /// <remarks>
+        ///     The numeric values in the returned string are formatted by using the conventions of the current culture. For
+        ///     example, for the en-US culture, the returned string might appear as
+        ///     <c>{ {M11:1.1 M12:1.2} {M21:2.1 M22:2.2} {M31:3.1 M32:3.2} }</c>.
+        /// </remarks>
         public override string ToString() =>
             $"{{ {{M11:{M11} M12:{M12}}} {{M21:{M21} M22:{M22}}} {{M31:{M31} M32:{M32}}} }}";
-        
     }
 }

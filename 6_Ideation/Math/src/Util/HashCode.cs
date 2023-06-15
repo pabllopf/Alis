@@ -35,51 +35,57 @@ using System.Security.Cryptography;
 namespace Alis.Core.Aspect.Math.Util
 {
     /// <summary>
-    /// The hash code
+    ///     The hash code
     /// </summary>
     public struct HashCode
     {
         /// <summary>
-        /// The generate global seed
+        ///     The generate global seed
         /// </summary>
         private static readonly uint s_seed = GenerateGlobalSeed();
 
         /// <summary>
-        /// The prime
+        ///     The prime
         /// </summary>
         private const uint Prime1 = 2654435761U;
+
         /// <summary>
-        /// The prime
+        ///     The prime
         /// </summary>
         private const uint Prime2 = 2246822519U;
+
         /// <summary>
-        /// The prime
+        ///     The prime
         /// </summary>
         private const uint Prime3 = 3266489917U;
+
         /// <summary>
-        /// The prime
+        ///     The prime
         /// </summary>
         private const uint Prime4 = 668265263U;
+
         /// <summary>
-        /// The prime
+        ///     The prime
         /// </summary>
         private const uint Prime5 = 374761393U;
 
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private uint _v1, _v2, _v3, _v4;
+
         /// <summary>
-        /// The queue
+        ///     The queue
         /// </summary>
         private uint _queue1, _queue2, _queue3;
+
         /// <summary>
-        /// The length
+        ///     The length
         /// </summary>
         private uint _length;
 
         /// <summary>
-        /// Generates the global seed
+        ///     Generates the global seed
         /// </summary>
         /// <returns>The uint</returns>
         private static uint GenerateGlobalSeed()
@@ -91,7 +97,7 @@ namespace Alis.Core.Aspect.Math.Util
         }
 
         /// <summary>
-        /// Combines the value 1
+        ///     Combines the value 1
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <param name="value1">The value</param>
@@ -105,7 +111,7 @@ namespace Alis.Core.Aspect.Math.Util
             // over a larger space, so diffusing the bits may help the
             // collection work more efficiently.
 
-            uint hc1 = (uint)(value1?.GetHashCode() ?? 0);
+            uint hc1 = (uint) (value1?.GetHashCode() ?? 0);
 
             uint hash = MixEmptyState();
             hash += 4;
@@ -113,11 +119,11 @@ namespace Alis.Core.Aspect.Math.Util
             hash = QueueRound(hash, hc1);
 
             hash = MixFinal(hash);
-            return (int)hash;
+            return (int) hash;
         }
 
         /// <summary>
-        /// Combines the value 1
+        ///     Combines the value 1
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <typeparam name="T2">The </typeparam>
@@ -126,8 +132,8 @@ namespace Alis.Core.Aspect.Math.Util
         /// <returns>The int</returns>
         public static int Combine<T1, T2>(T1 value1, T2 value2)
         {
-            uint hc1 = (uint)(value1?.GetHashCode() ?? 0);
-            uint hc2 = (uint)(value2?.GetHashCode() ?? 0);
+            uint hc1 = (uint) (value1?.GetHashCode() ?? 0);
+            uint hc2 = (uint) (value2?.GetHashCode() ?? 0);
 
             uint hash = MixEmptyState();
             hash += 8;
@@ -136,11 +142,11 @@ namespace Alis.Core.Aspect.Math.Util
             hash = QueueRound(hash, hc2);
 
             hash = MixFinal(hash);
-            return (int)hash;
+            return (int) hash;
         }
 
         /// <summary>
-        /// Combines the value 1
+        ///     Combines the value 1
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <typeparam name="T2">The </typeparam>
@@ -151,9 +157,9 @@ namespace Alis.Core.Aspect.Math.Util
         /// <returns>The int</returns>
         public static int Combine<T1, T2, T3>(T1 value1, T2 value2, T3 value3)
         {
-            uint hc1 = (uint)(value1?.GetHashCode() ?? 0);
-            uint hc2 = (uint)(value2?.GetHashCode() ?? 0);
-            uint hc3 = (uint)(value3?.GetHashCode() ?? 0);
+            uint hc1 = (uint) (value1?.GetHashCode() ?? 0);
+            uint hc2 = (uint) (value2?.GetHashCode() ?? 0);
+            uint hc3 = (uint) (value3?.GetHashCode() ?? 0);
 
             uint hash = MixEmptyState();
             hash += 12;
@@ -163,11 +169,11 @@ namespace Alis.Core.Aspect.Math.Util
             hash = QueueRound(hash, hc3);
 
             hash = MixFinal(hash);
-            return (int)hash;
+            return (int) hash;
         }
 
         /// <summary>
-        /// Combines the value 1
+        ///     Combines the value 1
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <typeparam name="T2">The </typeparam>
@@ -180,10 +186,10 @@ namespace Alis.Core.Aspect.Math.Util
         /// <returns>The int</returns>
         public static int Combine<T1, T2, T3, T4>(T1 value1, T2 value2, T3 value3, T4 value4)
         {
-            uint hc1 = (uint)(value1?.GetHashCode() ?? 0);
-            uint hc2 = (uint)(value2?.GetHashCode() ?? 0);
-            uint hc3 = (uint)(value3?.GetHashCode() ?? 0);
-            uint hc4 = (uint)(value4?.GetHashCode() ?? 0);
+            uint hc1 = (uint) (value1?.GetHashCode() ?? 0);
+            uint hc2 = (uint) (value2?.GetHashCode() ?? 0);
+            uint hc3 = (uint) (value3?.GetHashCode() ?? 0);
+            uint hc4 = (uint) (value4?.GetHashCode() ?? 0);
 
             Initialize(out uint v1, out uint v2, out uint v3, out uint v4);
 
@@ -196,11 +202,11 @@ namespace Alis.Core.Aspect.Math.Util
             hash += 16;
 
             hash = MixFinal(hash);
-            return (int)hash;
+            return (int) hash;
         }
 
         /// <summary>
-        /// Combines the value 1
+        ///     Combines the value 1
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <typeparam name="T2">The </typeparam>
@@ -215,11 +221,11 @@ namespace Alis.Core.Aspect.Math.Util
         /// <returns>The int</returns>
         public static int Combine<T1, T2, T3, T4, T5>(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5)
         {
-            uint hc1 = (uint)(value1?.GetHashCode() ?? 0);
-            uint hc2 = (uint)(value2?.GetHashCode() ?? 0);
-            uint hc3 = (uint)(value3?.GetHashCode() ?? 0);
-            uint hc4 = (uint)(value4?.GetHashCode() ?? 0);
-            uint hc5 = (uint)(value5?.GetHashCode() ?? 0);
+            uint hc1 = (uint) (value1?.GetHashCode() ?? 0);
+            uint hc2 = (uint) (value2?.GetHashCode() ?? 0);
+            uint hc3 = (uint) (value3?.GetHashCode() ?? 0);
+            uint hc4 = (uint) (value4?.GetHashCode() ?? 0);
+            uint hc5 = (uint) (value5?.GetHashCode() ?? 0);
 
             Initialize(out uint v1, out uint v2, out uint v3, out uint v4);
 
@@ -234,11 +240,11 @@ namespace Alis.Core.Aspect.Math.Util
             hash = QueueRound(hash, hc5);
 
             hash = MixFinal(hash);
-            return (int)hash;
+            return (int) hash;
         }
 
         /// <summary>
-        /// Combines the value 1
+        ///     Combines the value 1
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <typeparam name="T2">The </typeparam>
@@ -255,12 +261,12 @@ namespace Alis.Core.Aspect.Math.Util
         /// <returns>The int</returns>
         public static int Combine<T1, T2, T3, T4, T5, T6>(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6)
         {
-            uint hc1 = (uint)(value1?.GetHashCode() ?? 0);
-            uint hc2 = (uint)(value2?.GetHashCode() ?? 0);
-            uint hc3 = (uint)(value3?.GetHashCode() ?? 0);
-            uint hc4 = (uint)(value4?.GetHashCode() ?? 0);
-            uint hc5 = (uint)(value5?.GetHashCode() ?? 0);
-            uint hc6 = (uint)(value6?.GetHashCode() ?? 0);
+            uint hc1 = (uint) (value1?.GetHashCode() ?? 0);
+            uint hc2 = (uint) (value2?.GetHashCode() ?? 0);
+            uint hc3 = (uint) (value3?.GetHashCode() ?? 0);
+            uint hc4 = (uint) (value4?.GetHashCode() ?? 0);
+            uint hc5 = (uint) (value5?.GetHashCode() ?? 0);
+            uint hc6 = (uint) (value6?.GetHashCode() ?? 0);
 
             Initialize(out uint v1, out uint v2, out uint v3, out uint v4);
 
@@ -276,11 +282,11 @@ namespace Alis.Core.Aspect.Math.Util
             hash = QueueRound(hash, hc6);
 
             hash = MixFinal(hash);
-            return (int)hash;
+            return (int) hash;
         }
 
         /// <summary>
-        /// Combines the value 1
+        ///     Combines the value 1
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <typeparam name="T2">The </typeparam>
@@ -299,13 +305,13 @@ namespace Alis.Core.Aspect.Math.Util
         /// <returns>The int</returns>
         public static int Combine<T1, T2, T3, T4, T5, T6, T7>(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7)
         {
-            uint hc1 = (uint)(value1?.GetHashCode() ?? 0);
-            uint hc2 = (uint)(value2?.GetHashCode() ?? 0);
-            uint hc3 = (uint)(value3?.GetHashCode() ?? 0);
-            uint hc4 = (uint)(value4?.GetHashCode() ?? 0);
-            uint hc5 = (uint)(value5?.GetHashCode() ?? 0);
-            uint hc6 = (uint)(value6?.GetHashCode() ?? 0);
-            uint hc7 = (uint)(value7?.GetHashCode() ?? 0);
+            uint hc1 = (uint) (value1?.GetHashCode() ?? 0);
+            uint hc2 = (uint) (value2?.GetHashCode() ?? 0);
+            uint hc3 = (uint) (value3?.GetHashCode() ?? 0);
+            uint hc4 = (uint) (value4?.GetHashCode() ?? 0);
+            uint hc5 = (uint) (value5?.GetHashCode() ?? 0);
+            uint hc6 = (uint) (value6?.GetHashCode() ?? 0);
+            uint hc7 = (uint) (value7?.GetHashCode() ?? 0);
 
             Initialize(out uint v1, out uint v2, out uint v3, out uint v4);
 
@@ -322,11 +328,11 @@ namespace Alis.Core.Aspect.Math.Util
             hash = QueueRound(hash, hc7);
 
             hash = MixFinal(hash);
-            return (int)hash;
+            return (int) hash;
         }
 
         /// <summary>
-        /// Combines the value 1
+        ///     Combines the value 1
         /// </summary>
         /// <typeparam name="T1">The </typeparam>
         /// <typeparam name="T2">The </typeparam>
@@ -347,14 +353,14 @@ namespace Alis.Core.Aspect.Math.Util
         /// <returns>The int</returns>
         public static int Combine<T1, T2, T3, T4, T5, T6, T7, T8>(T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7, T8 value8)
         {
-            uint hc1 = (uint)(value1?.GetHashCode() ?? 0);
-            uint hc2 = (uint)(value2?.GetHashCode() ?? 0);
-            uint hc3 = (uint)(value3?.GetHashCode() ?? 0);
-            uint hc4 = (uint)(value4?.GetHashCode() ?? 0);
-            uint hc5 = (uint)(value5?.GetHashCode() ?? 0);
-            uint hc6 = (uint)(value6?.GetHashCode() ?? 0);
-            uint hc7 = (uint)(value7?.GetHashCode() ?? 0);
-            uint hc8 = (uint)(value8?.GetHashCode() ?? 0);
+            uint hc1 = (uint) (value1?.GetHashCode() ?? 0);
+            uint hc2 = (uint) (value2?.GetHashCode() ?? 0);
+            uint hc3 = (uint) (value3?.GetHashCode() ?? 0);
+            uint hc4 = (uint) (value4?.GetHashCode() ?? 0);
+            uint hc5 = (uint) (value5?.GetHashCode() ?? 0);
+            uint hc6 = (uint) (value6?.GetHashCode() ?? 0);
+            uint hc7 = (uint) (value7?.GetHashCode() ?? 0);
+            uint hc8 = (uint) (value8?.GetHashCode() ?? 0);
 
             Initialize(out uint v1, out uint v2, out uint v3, out uint v4);
 
@@ -372,11 +378,11 @@ namespace Alis.Core.Aspect.Math.Util
             hash += 32;
 
             hash = MixFinal(hash);
-            return (int)hash;
+            return (int) hash;
         }
 
         /// <summary>
-        /// Initializes the v 1
+        ///     Initializes the v 1
         /// </summary>
         /// <param name="v1">The </param>
         /// <param name="v2">The </param>
@@ -392,31 +398,25 @@ namespace Alis.Core.Aspect.Math.Util
         }
 
         /// <summary>
-        /// Rounds the hash
+        ///     Rounds the hash
         /// </summary>
         /// <param name="hash">The hash</param>
         /// <param name="input">The input</param>
         /// <returns>The uint</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static uint Round(uint hash, uint input)
-        {
-            return RotateLeft(hash + input * Prime2, 13) * Prime1;
-        }
+        private static uint Round(uint hash, uint input) => RotateLeft(hash + input * Prime2, 13) * Prime1;
 
         /// <summary>
-        /// Queues the round using the specified hash
+        ///     Queues the round using the specified hash
         /// </summary>
         /// <param name="hash">The hash</param>
         /// <param name="queuedValue">The queued value</param>
         /// <returns>The uint</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static uint QueueRound(uint hash, uint queuedValue)
-        {
-            return RotateLeft(hash + queuedValue * Prime3, 17) * Prime4;
-        }
+        private static uint QueueRound(uint hash, uint queuedValue) => RotateLeft(hash + queuedValue * Prime3, 17) * Prime4;
 
         /// <summary>
-        /// Mixes the state using the specified v 1
+        ///     Mixes the state using the specified v 1
         /// </summary>
         /// <param name="v1">The </param>
         /// <param name="v2">The </param>
@@ -424,13 +424,10 @@ namespace Alis.Core.Aspect.Math.Util
         /// <param name="v4">The </param>
         /// <returns>The uint</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static uint MixState(uint v1, uint v2, uint v3, uint v4)
-        {
-            return RotateLeft(v1, 1) + RotateLeft(v2, 7) + RotateLeft(v3, 12) + RotateLeft(v4, 18);
-        }
-        
+        private static uint MixState(uint v1, uint v2, uint v3, uint v4) => RotateLeft(v1, 1) + RotateLeft(v2, 7) + RotateLeft(v3, 12) + RotateLeft(v4, 18);
+
         /// <summary>
-        /// Rotates the left using the specified value
+        ///     Rotates the left using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <param name="offset">The offset</param>
@@ -439,16 +436,13 @@ namespace Alis.Core.Aspect.Math.Util
             => (value << offset) | (value >> (32 - offset));
 
         /// <summary>
-        /// Mixes the empty state
+        ///     Mixes the empty state
         /// </summary>
         /// <returns>The uint</returns>
-        private static uint MixEmptyState()
-        {
-            return s_seed + Prime5;
-        }
+        private static uint MixEmptyState() => s_seed + Prime5;
 
         /// <summary>
-        /// Mixes the final using the specified hash
+        ///     Mixes the final using the specified hash
         /// </summary>
         /// <param name="hash">The hash</param>
         /// <returns>The hash</returns>
@@ -464,7 +458,7 @@ namespace Alis.Core.Aspect.Math.Util
         }
 
         /// <summary>
-        /// Adds the value
+        ///     Adds the value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
@@ -474,18 +468,18 @@ namespace Alis.Core.Aspect.Math.Util
         }
 
         /// <summary>
-        /// Adds the value
+        ///     Adds the value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <param name="comparer">The comparer</param>
         public void Add<T>(T value, IEqualityComparer<T> comparer)
         {
-            Add(value is null ? 0 : (comparer?.GetHashCode(value) ?? value.GetHashCode()));
+            Add(value is null ? 0 : comparer?.GetHashCode(value) ?? value.GetHashCode());
         }
-        
+
         /// <summary>
-        /// Adds the value
+        ///     Adds the value
         /// </summary>
         /// <param name="value">The value</param>
         private void Add(int value)
@@ -511,7 +505,7 @@ namespace Alis.Core.Aspect.Math.Util
             // To see what's really going on here, have a look at the Combine
             // methods.
 
-            uint val = (uint)value;
+            uint val = (uint) value;
 
             // Storing the value of _length locally shaves of quite a few bytes
             // in the resulting machine code.
@@ -521,15 +515,23 @@ namespace Alis.Core.Aspect.Math.Util
             // Switch can't be inlined.
 
             if (position == 0)
+            {
                 _queue1 = val;
+            }
             else if (position == 1)
+            {
                 _queue2 = val;
+            }
             else if (position == 2)
+            {
                 _queue3 = val;
+            }
             else // position == 3
             {
                 if (previousLength == 3)
+                {
                     Initialize(out _v1, out _v2, out _v3, out _v4);
+                }
 
                 _v1 = Round(_v1, _queue1);
                 _v2 = Round(_v2, _queue2);
@@ -539,7 +541,7 @@ namespace Alis.Core.Aspect.Math.Util
         }
 
         /// <summary>
-        /// Returns the hash code
+        ///     Returns the hash code
         /// </summary>
         /// <returns>The int</returns>
         public int ToHashCode()
@@ -575,12 +577,14 @@ namespace Alis.Core.Aspect.Math.Util
                 {
                     hash = QueueRound(hash, _queue2);
                     if (position > 2)
+                    {
                         hash = QueueRound(hash, _queue3);
+                    }
                 }
             }
 
             hash = MixFinal(hash);
-            return (int)hash;
+            return (int) hash;
         }
     }
 }

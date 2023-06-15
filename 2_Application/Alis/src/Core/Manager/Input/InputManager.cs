@@ -36,11 +36,10 @@ using Alis.Core.Manager.Scene;
 
 namespace Alis.Core.Manager.Input
 {
-   
     /// <summary>
-    /// The input manager class
+    ///     The input manager class
     /// </summary>
-    /// <seealso cref="InputManagerBase"/>
+    /// <seealso cref="InputManagerBase" />
     public class InputManager : InputManagerBase
     {
         /// <summary>
@@ -52,7 +51,7 @@ namespace Alis.Core.Manager.Input
         ///     Temp list of keys
         /// </summary>
         private List<Key> tempListOfKeys;
-        
+
         /// <summary>
         ///     Inits this instance
         /// </summary>
@@ -61,7 +60,7 @@ namespace Alis.Core.Manager.Input
             keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
             tempListOfKeys = new List<Key>();
         }
-        
+
         /// <summary>
         ///     Dispatches the events
         /// </summary>

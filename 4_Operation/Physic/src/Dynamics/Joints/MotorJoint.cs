@@ -425,7 +425,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // Solve linear friction
             {
                 Vector2 cdot = vB + MathUtils.Cross(wB, rB) - vA - MathUtils.Cross(wA, rA) +
-                                invH * correctionFactor * linearError;
+                               invH * correctionFactor * linearError;
 
                 Vector2 impulse = -MathUtils.Mul(ref linearMass, ref cdot);
                 Vector2 oldImpulse = linearImpulse;

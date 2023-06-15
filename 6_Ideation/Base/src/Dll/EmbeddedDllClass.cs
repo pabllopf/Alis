@@ -35,7 +35,7 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Aspect.Base.Dll
 {
     /// <summary>
-    /// The embedded dll class
+    ///     The embedded dll class
     /// </summary>
     public static class EmbeddedDllClass
     {
@@ -92,7 +92,7 @@ namespace Alis.Core.Aspect.Base.Dll
             //Directory.SetCurrentDirectory(dirTemp);
 
             //string dllPath = Path.Combine(dirTemp, $"{dllName}{extension}");
-            
+
             string dllPath = Path.Combine(dirTemp, $"{dllName}");
 
             if (!File.Exists(dllPath))
@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Base.Dll
 
             Console.WriteLine($"dllPath={dllPath}");
         }
-        
+
         /// <summary>
         ///     Describes whether this instance is running oni os
         /// </summary>
@@ -115,7 +115,5 @@ namespace Alis.Core.Aspect.Base.Dll
         /// </summary>
         /// <returns>The bool</returns>
         private static bool IsRunningOnAndroid() => RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && RuntimeInformation.OSDescription.Contains("Android");
-
-        
     }
 }
