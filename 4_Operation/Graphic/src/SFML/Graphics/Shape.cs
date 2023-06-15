@@ -196,7 +196,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="index">Index of the point to get, in range [0 .. PointCount - 1]</param>
         /// <returns>index-th point of the shape</returns>
         ////////////////////////////////////////////////////////////
-        public abstract Vector2F GetPoint(uint index);
+        public abstract Vector2 GetPoint(uint index);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -263,7 +263,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         ///     Callback passed to the C API
         /// </summary>
         ////////////////////////////////////////////////////////////
-        private Vector2F InternalGetPoint(uint index, IntPtr userData) => GetPoint(index);
+        private Vector2 InternalGetPoint(uint index, IntPtr userData) => GetPoint(index);
 
         /// <summary>
         ///     Sfs the shape create using the specified get point count
@@ -409,6 +409,6 @@ namespace Alis.Core.Graphic.SFML.Graphics
         ///     The get point callback type
         /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        private delegate Vector2F GetPointCallbackType(uint index, IntPtr userData);
+        private delegate Vector2 GetPointCallbackType(uint index, IntPtr userData);
     }
 }

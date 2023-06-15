@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Security.Cryptography;
+using Alis.Core.Aspect.Math.Util;
 
 namespace Alis.Core.Physic.Tools.Triangulation.Seidel
 {
@@ -284,7 +284,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
             while (n > 1)
             {
                 n--;
-                int k = RandomNumberGenerator.GetInt32(n + 1);
+                int k = RandomUtils.GetInt32(n + 1);
                 T value = list[k];
                 list[k] = list[n];
                 list[n] = value;

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IndexOutOfBounds.cs
+//  File:Button.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,15 +27,31 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Core.Aspect.Base.Exceptions
+namespace Alis.Core.Aspect.Base.Mapping
 {
     /// <summary>
-    ///     The index out of bounds class
+    ///     The button enum
     /// </summary>
-    /// <seealso cref="Exception" />
-    public class IndexOutOfBounds : Exception
+    public enum Button
     {
+        /// <summary>
+        ///     The  button
+        /// </summary>
+        A,
+
+        /// <summary>
+        ///     The  button
+        /// </summary>
+        B,
+
+        /// <summary>
+        ///     The  button
+        /// </summary>
+        Y,
+
+        /// <summary>
+        ///     The  button
+        /// </summary>
+        X
     }
 }

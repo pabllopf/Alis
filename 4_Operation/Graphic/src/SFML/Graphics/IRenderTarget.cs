@@ -90,7 +90,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="point">Pixel to convert</param>
         /// <returns>The converted point, in "world" coordinates</returns>
         ////////////////////////////////////////////////////////////
-        Vector2F MapPixelToCoords(Vector2I point);
+        Vector2 MapPixelToCoords(Vector2I point);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -114,7 +114,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="view">The view to use for converting the point</param>
         /// <returns>The converted point, in "world" coordinates</returns>
         ////////////////////////////////////////////////////////////
-        Vector2F MapPixelToCoords(Vector2I point, View view);
+        Vector2 MapPixelToCoords(Vector2I point, View view);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -128,7 +128,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="point">Point to convert</param>
         /// <returns>The converted point, in target coordinates (pixels)</returns>
         ////////////////////////////////////////////////////////////
-        Vector2I MapCoordsToPixel(Vector2F point);
+        Vector2I MapCoordsToPixel(Vector2 point);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -149,7 +149,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="view">The view to use for converting the point</param>
         /// <returns>The converted point, in target coordinates (pixels)</returns>
         ////////////////////////////////////////////////////////////
-        Vector2I MapCoordsToPixel(Vector2F point, View view);
+        Vector2I MapCoordsToPixel(Vector2 point, View view);
 
         ////////////////////////////////////////////////////////////
         /// <summary>

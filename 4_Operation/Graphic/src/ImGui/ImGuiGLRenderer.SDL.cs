@@ -28,8 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Numerics;
 using System.Text;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.SDL;
 using static Alis.Core.Graphic.SDL.Sdl;
 
@@ -167,7 +167,7 @@ namespace Alis.Core.Graphic.ImGui
                 }
                 case SdlEventType.SdlTextinput:
                 {
-                    string str = new string(Encoding.UTF8.GetString(evt.text.text));
+                    string str = Encoding.UTF8.GetString(evt.text.text);
                     io.AddInputCharactersUtf8(str);
                     return;
                 }

@@ -15,10 +15,5 @@
             </summary>
             <param name="args">The args</param>
         </member>
-        <member name="M:Alis.Sample.Collisions.Program.Setting">
-            <summary>
-                Settings
-            </summary>
-        </member>
     </members>
 </doc>

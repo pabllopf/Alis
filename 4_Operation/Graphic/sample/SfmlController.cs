@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Graphic.SFML.Graphics;
 using Alis.Core.Graphic.SFML.Windows;
 

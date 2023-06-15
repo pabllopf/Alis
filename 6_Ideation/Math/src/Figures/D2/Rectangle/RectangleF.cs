@@ -65,7 +65,7 @@ namespace Alis.Core.Aspect.Math.Figures.D2.Rectangle
         /// <param name="position">Position of the top-left corner of the rectangle</param>
         /// <param name="size">Size of the rectangle</param>
         ////////////////////////////////////////////////////////////
-        public RectangleF(Vector2F position, Vector2F size)
+        public RectangleF(Vector2 position, Vector2 size)
             : this(position.X, position.Y, size.X, size.Y)
         {
         }

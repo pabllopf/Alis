@@ -32,22 +32,22 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Aspect.Math.Vector
 {
     /// <summary>
-    ///     <see cref="Vector4F" /> is a struct represent a glsl vec4 value
+    ///     <see cref="Vector4" /> is a struct represent a glsl vec4 value
     /// </summary>
     ////////////////////////////////////////////////////////////
     [StructLayout(LayoutKind.Sequential)]
-    public struct Vector4F
+    public struct Vector4
     {
         ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Construct the <see cref="Vector4F" /> from its coordinates
+        ///     Construct the <see cref="Vector4" /> from its coordinates
         /// </summary>
         /// <param name="x">X coordinate</param>
         /// <param name="y">Y coordinate</param>
         /// <param name="z">Z coordinate</param>
         /// <param name="w">W coordinate</param>
         ////////////////////////////////////////////////////////////
-        public Vector4F(float x, float y, float z, float w)
+        public Vector4(float x, float y, float z, float w)
         {
             X = x;
             Y = y;

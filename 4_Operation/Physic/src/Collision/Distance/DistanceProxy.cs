@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <summary>
         ///     The vertices
         /// </summary>
-        internal readonly Vector2F[] Vertices;
+        internal readonly Vector2[] Vertices;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="DistanceProxy" /> class
@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Collision.Distance
                 case ShapeType.Circle:
                 {
                     CircleShape circle = (CircleShape) shape;
-                    Vertices = new Vector2F[1];
+                    Vertices = new Vector2[1];
                     Vertices[0] = circle.Positionprivate;
                     Radius = circle.RadiusPrivate;
                 }
@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Collision.Distance
                 case ShapeType.Polygon:
                 {
                     PolygonShape polygon = (PolygonShape) shape;
-                    Vertices = new Vector2F[polygon.VerticesPrivate.Count];
+                    Vertices = new Vector2[polygon.VerticesPrivate.Count];
 
                     for (int i = 0; i < polygon.VerticesPrivate.Count; i++)
                     {
@@ -85,7 +85,7 @@ namespace Alis.Core.Physic.Collision.Distance
                     ChainShape chain = (ChainShape) shape;
                     Debug.Assert((0 <= index) && (index < chain.Vertices.Count));
 
-                    Vertices = new Vector2F[2];
+                    Vertices = new Vector2[2];
                     Vertices[0] = chain.Vertices[index];
                     Vertices[1] = index + 1 < chain.Vertices.Count ? chain.Vertices[index + 1] : chain.Vertices[0];
 
@@ -96,7 +96,7 @@ namespace Alis.Core.Physic.Collision.Distance
                 case ShapeType.Edge:
                 {
                     EdgeShape edge = (EdgeShape) shape;
-                    Vertices = new Vector2F[2];
+                    Vertices = new Vector2[2];
                     Vertices[0] = edge.Vertex1;
                     Vertices[1] = edge.Vertex2;
                     Radius = edge.RadiusPrivate;
@@ -113,7 +113,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <param name="radius">The radius</param>
-        public DistanceProxy(Vector2F[] vertices, float radius)
+        public DistanceProxy(Vector2[] vertices, float radius)
         {
             Vertices = vertices;
             Radius = radius;
@@ -121,13 +121,13 @@ namespace Alis.Core.Physic.Collision.Distance
 
         /// <summary>Get the supporting vertex index in the given direction.</summary>
         /// <param name="direction">The direction.</param>
-        public int GetSupport(Vector2F direction)
+        public int GetSupport(Vector2 direction)
         {
             int bestIndex = 0;
-            float bestValue = Vector2F.Dot(Vertices[0], direction);
+            float bestValue = Vector2.Dot(Vertices[0], direction);
             for (int i = 1; i < Vertices.Length; ++i)
             {
-                float value = Vector2F.Dot(Vertices[i], direction);
+                float value = Vector2.Dot(Vertices[i], direction);
                 if (value > bestValue)
                 {
                     bestIndex = i;
@@ -143,7 +143,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The vector</returns>
-        public Vector2F GetVertex(int index)
+        public Vector2 GetVertex(int index)
         {
             Debug.Assert((0 <= index) && (index < Vertices.Length));
             return Vertices[index];

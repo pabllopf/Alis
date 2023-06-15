@@ -29,7 +29,8 @@
 
 using System;
 using System.Diagnostics;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Aspect.Math.Vector;
 using static Alis.Core.Graphic.OpenGL.Gl;
 
 namespace Alis.Core.Graphic.OpenGL.Constructs

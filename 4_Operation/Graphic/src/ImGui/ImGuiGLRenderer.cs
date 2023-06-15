@@ -28,8 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Numerics;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.OpenGL.Constructs;
 using static Alis.Core.Graphic.OpenGL.Gl;
 

@@ -58,6 +58,6 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <summary>
         ///     The translation
         /// </summary>
-        public Vector2F TranslationB;
+        public Vector2 TranslationB;
     }
 }

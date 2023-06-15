@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     The world
         /// </summary>
-        private readonly World _world = new World(new Vector2F(0, 9.18f));
+        private readonly World _world = new World(new Vector2(0, 9.18f));
 
         /// <summary>
         ///     Tests that add body adds a body to the bodies collection.
@@ -53,9 +53,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void AddBody_AddsBodyToBodiesCollection()
         {
-            Vector2F gravity = new Vector2F(0f, 9.18f);
-            Vector2F position = new Vector2F(0f, 0f);
-            Vector2F velocity = new Vector2F(0f, -1f);
+            Vector2 gravity = new Vector2(0f, 9.18f);
+            Vector2 position = new Vector2(0f, 0f);
+            Vector2 velocity = new Vector2(0f, -1f);
 
             // Create a mock body object.
             Mock<Body> mockBody = new Mock<Body>(
@@ -90,9 +90,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ClearForces_ClearsForcesForOneBody()
         {
-            Vector2F gravity = new Vector2F(0f, 9.18f);
-            Vector2F position = new Vector2F(0f, 0f);
-            Vector2F velocity = new Vector2F(0f, -1f);
+            Vector2 gravity = new Vector2(0f, 9.18f);
+            Vector2 position = new Vector2(0f, 0f);
+            Vector2 velocity = new Vector2(0f, -1f);
 
             // Create a world object with the ClearForces method and 9.18f gravity.
             World world = new World(gravity);
@@ -123,7 +123,7 @@ namespace Alis.Core.Physic.Test
             Assert.Single(world.Bodies);
 
             // Assert that the force is zero
-            Assert.Equal(Vector2F.Zero, world.Bodies[0].Force);
+            Assert.Equal(Vector2.Zero, world.Bodies[0].Force);
 
             // Assert that the torque is zero
             Assert.Equal(0, world.Bodies[0].Torque);
@@ -138,9 +138,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ClearForces_ClearsForcesForMultipleBodies()
         {
-            Vector2F gravity = new Vector2F(0f, 9.18f);
-            Vector2F position = new Vector2F(0f, 0f);
-            Vector2F velocity = new Vector2F(0f, -1f);
+            Vector2 gravity = new Vector2(0f, 9.18f);
+            Vector2 position = new Vector2(0f, 0f);
+            Vector2 velocity = new Vector2(0f, -1f);
 
             // Create a world object with the ClearForces method and 9.18f gravity.
             World world = new World(gravity);
@@ -180,7 +180,7 @@ namespace Alis.Core.Physic.Test
             for (int i = 0; i < 10; i++)
             {
                 // Assert that the force is zero
-                Assert.Equal(Vector2F.Zero, world.Bodies[i].Force);
+                Assert.Equal(Vector2.Zero, world.Bodies[i].Force);
 
                 // Assert that the torque is zero
                 Assert.Equal(0, world.Bodies[i].Torque);
@@ -200,7 +200,7 @@ namespace Alis.Core.Physic.Test
         public void ClearForces_DoesNothingWithEmptyList()
         {
             // Set the gravity to 9.18f
-            Vector2F gravity = new Vector2F(0f, 9.18f);
+            Vector2 gravity = new Vector2(0f, 9.18f);
 
             // Create a world object with the ClearForces method and 9.18f gravity.
             World world = new World(gravity);
@@ -218,9 +218,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void AddBody_AddsCorrectly()
         {
-            Vector2F gravity = new Vector2F(0f, 9.18f);
-            Vector2F position = new Vector2F(0f, 0f);
-            Vector2F velocity = new Vector2F(0f, -1f);
+            Vector2 gravity = new Vector2(0f, 9.18f);
+            Vector2 position = new Vector2(0f, 0f);
+            Vector2 velocity = new Vector2(0f, -1f);
 
             Mock<Body> bodyMock = new Mock<Body>(
                 position,
@@ -248,9 +248,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void RemoveBody_RemovesCorrectly()
         {
-            Vector2F gravity = new Vector2F(0f, 9.18f);
-            Vector2F position = new Vector2F(0f, 0f);
-            Vector2F velocity = new Vector2F(0f, -1f);
+            Vector2 gravity = new Vector2(0f, 9.18f);
+            Vector2 position = new Vector2(0f, 0f);
+            Vector2 velocity = new Vector2(0f, -1f);
 
             Mock<Body> bodyMock = new Mock<Body>(
                 position,
@@ -279,9 +279,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void AddJoint_AddsCorrectly()
         {
-            Vector2F gravity = new Vector2F(0f, 9.18f);
-            Vector2F position = new Vector2F(0f, 0f);
-            Vector2F velocity = new Vector2F(0f, -1f);
+            Vector2 gravity = new Vector2(0f, 9.18f);
+            Vector2 position = new Vector2(0f, 0f);
+            Vector2 velocity = new Vector2(0f, -1f);
 
             Mock<Body> bodyMock = new Mock<Body>(
                 position,
@@ -311,9 +311,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void RemoveJoint_RemovesCorrectly()
         {
-            Vector2F gravity = new Vector2F(0f, 9.18f);
-            Vector2F position = new Vector2F(0f, 0f);
-            Vector2F velocity = new Vector2F(0f, -1f);
+            Vector2 gravity = new Vector2(0f, 9.18f);
+            Vector2 position = new Vector2(0f, 0f);
+            Vector2 velocity = new Vector2(0f, -1f);
 
             Mock<Body> bodyMock = new Mock<Body>(
                 position,
@@ -358,8 +358,8 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void AddBody_WhenCalled_ShouldAddBodyToPhysicsWorld()
         {
-            Vector2F position = new Vector2F(0f, 0f);
-            Vector2F velocity = new Vector2F(0f, -1f);
+            Vector2 position = new Vector2(0f, 0f);
+            Vector2 velocity = new Vector2(0f, -1f);
 
             Mock<Body> mockBody = new Mock<Body>(
                 position,
@@ -387,8 +387,8 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void AddJoint_WhenCalled_ShouldAddJointToPhysicsWorld()
         {
-            Vector2F position = new Vector2F(0f, 0f);
-            Vector2F velocity = new Vector2F(0f, -1f);
+            Vector2 position = new Vector2(0f, 0f);
+            Vector2 velocity = new Vector2(0f, -1f);
 
             Mock<Body> bodyMock = new Mock<Body>(
                 position,
@@ -430,8 +430,8 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void RemoveBody_WhenCalled_ShouldRemoveBodyFromPhysicsWorld()
         {
-            Vector2F position = new Vector2F(0f, 0f);
-            Vector2F velocity = new Vector2F(0f, -1f);
+            Vector2 position = new Vector2(0f, 0f);
+            Vector2 velocity = new Vector2(0f, -1f);
 
             Mock<Body> mockBody = new Mock<Body>(
                 position,
@@ -460,8 +460,8 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void RemoveJoint_WhenCalled_ShouldRemoveJointFromPhysicsWorld()
         {
-            Vector2F position = new Vector2F(0f, 0f);
-            Vector2F velocity = new Vector2F(0f, -1f);
+            Vector2 position = new Vector2(0f, 0f);
+            Vector2 velocity = new Vector2(0f, -1f);
 
             Mock<Body> bodyMock = new Mock<Body>(
                 position,

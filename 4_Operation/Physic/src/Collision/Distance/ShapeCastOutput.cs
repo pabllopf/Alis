@@ -37,12 +37,12 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <summary>
         ///     The point
         /// </summary>
-        public Vector2F Point;
+        public Vector2 Point;
 
         /// <summary>
         ///     The normal
         /// </summary>
-        public Vector2F Normal;
+        public Vector2 Normal;
 
         /// <summary>
         ///     The lambda

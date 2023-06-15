@@ -63,8 +63,8 @@ namespace Alis.Core.Physic.Figure
         public Rectangle(
             float width,
             float height,
-            Vector2F position,
-            Vector2F linearVelocity,
+            Vector2 position,
+            Vector2 linearVelocity,
             BodyType bodyType = BodyType.Static,
             float angle = 0,
             float angularVelocity = 0,

@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
 using Alis.Builder.Core.Entity;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.SFML.Graphics;
 
 namespace Alis.Core.Entity

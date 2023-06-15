@@ -26,9 +26,6 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-
-using System;
-
 namespace Alis.Core.Aspect.Fluent
 {
     /// <summary>
@@ -41,11 +38,5 @@ namespace Alis.Core.Aspect.Fluent
         /// </summary>
         /// <returns>The</returns>
         public TOut Builder();
-
-        /// <summary>
-        ///     Builder static
-        /// </summary>
-        /// <returns></returns>
-        public static TOut Builder<T>() => (TOut) Activator.CreateInstance(typeof(TOut));
     }
 }

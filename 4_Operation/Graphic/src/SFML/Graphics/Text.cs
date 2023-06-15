@@ -313,7 +313,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="index">Index of the character</param>
         /// <returns>Position of the Index-th character (end of text if Index is out of range)</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2F FindCharacterPos(uint index) => sfText_findCharacterPos(CPointer, index);
+        public Vector2 FindCharacterPos(uint index) => sfText_findCharacterPos(CPointer, index);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -587,7 +587,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="index">The index</param>
         /// <returns>The vector 2f</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2F sfText_findCharacterPos(IntPtr cPointer, uint index);
+        private static extern Vector2 sfText_findCharacterPos(IntPtr cPointer, uint index);
 
         /// <summary>
         ///     Sfs the text get local bounds using the specified c pointer

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Security.Cryptography;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Physic.Tools.Triangulation.Delaunay.Polygon;
 
@@ -56,15 +55,15 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Util
                 {
                     if (i % 250 == 0)
                     {
-                        radius += scale / 2 * (0.5 - RandomNumberGenerator.GetInt32(1));
+                        radius += scale / 2 * (0.5 - RandomUtils.GetInt32(1));
                     }
                     else if (i % 50 == 0)
                     {
-                        radius += scale / 5 * (0.5 - RandomNumberGenerator.GetInt32(1));
+                        radius += scale / 5 * (0.5 - RandomUtils.GetInt32(1));
                     }
                     else
                     {
-                        radius += 25 * scale / vertexCount * (0.5 - RandomNumberGenerator.GetInt32(1));
+                        radius += 25 * scale / vertexCount * (0.5 - RandomUtils.GetInt32(1));
                     }
 
                     radius = radius > scale / 2 ? scale / 2 : radius;
@@ -93,7 +92,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Util
             {
                 do
                 {
-                    radius += scale / 5 * (0.5 - RandomNumberGenerator.GetInt32(1));
+                    radius += scale / 5 * (0.5 - RandomUtils.GetInt32(1));
                     radius = radius > scale / 2 ? scale / 2 : radius;
                     radius = radius < scale / 10 ? scale / 10 : radius;
                 } while (radius < scale / 10 || radius > scale / 2);

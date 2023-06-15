@@ -1861,61 +1861,6 @@
             </summary>
             <seealso cref="T:Alis.Core.Manager.ManagerBase" />
         </member>
-        <member name="M:Alis.Core.Manager.Audio.AudioManager.AfterUpdate">
-            <summary>
-                Afters the update
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Audio.AudioManager.Init">
-            <summary>
-                Inits this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Audio.AudioManager.Awake">
-            <summary>
-                Awakes this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Audio.AudioManager.BeforeUpdate">
-            <summary>
-                Befores the update
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Audio.AudioManager.DispatchEvents">
-            <summary>
-                Dispatches the events
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Audio.AudioManager.Exit">
-            <summary>
-                Exits this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Audio.AudioManager.FixedUpdate">
-            <summary>
-                Fixeds the update
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Audio.AudioManager.Reset">
-            <summary>
-                Resets this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Audio.AudioManager.Start">
-            <summary>
-                Starts this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Audio.AudioManager.Stop">
-            <summary>
-                Stops this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Audio.AudioManager.Update">
-            <summary>
-                Updates this instance
-            </summary>
-        </member>
         <member name="T:Alis.Core.Manager.Graphic.GraphicManager">
             <summary>
                 The graphic manager class
@@ -1967,13 +1912,6 @@
                 Inits this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Manager.Graphic.GraphicManager.RenderWindowOnKeyPressed(System.Object,Alis.Core.Graphic.SFML.Windows.KeyEventArgs)">
-            <summary>
-                Renders the window on key pressed using the specified sender
-            </summary>
-            <param name="sender">The sender</param>
-            <param name="e">The </param>
-        </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManager.RenderWindowOnResized(System.Object,Alis.Core.Graphic.SFML.Windows.SizeEventArgs)">
             <summary>
                 Renders the window on resized using the specified sender
@@ -1984,11 +1922,6 @@
         <member name="M:Alis.Core.Manager.Graphic.GraphicManager.InitRenderWindow">
             <summary>
                 Inits the render window
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Graphic.GraphicManager.Awake">
-            <summary>
-                Awakes this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManager.Start">
@@ -2014,21 +1947,6 @@
         <member name="M:Alis.Core.Manager.Graphic.GraphicManager.DispatchEvents">
             <summary>
                 Dispatches the events
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Graphic.GraphicManager.FixedUpdate">
-            <summary>
-                Fixeds the update
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Graphic.GraphicManager.Reset">
-            <summary>
-                Resets this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Graphic.GraphicManager.Stop">
-            <summary>
-                Stops this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManager.Exit">
@@ -2069,7 +1987,9 @@
         </member>
         <member name="T:Alis.Core.Manager.Input.InputManager">
             <summary>
+            The input manager class
             </summary>
+            <seealso cref="T:Alis.Core.Manager.Input.InputManagerBase"/>
         </member>
         <member name="F:Alis.Core.Manager.Input.InputManager.keys">
             <summary>
@@ -2086,54 +2006,9 @@
                 Inits this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Manager.Input.InputManager.Awake">
-            <summary>
-                Awakes this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Input.InputManager.Start">
-            <summary>
-                Starts this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Input.InputManager.BeforeUpdate">
-            <summary>
-                Befores the update
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Input.InputManager.Update">
-            <summary>
-                Updates this instance
-            </summary>
-        </member>
         <member name="M:Alis.Core.Manager.Input.InputManager.DispatchEvents">
             <summary>
                 Dispatches the events
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Input.InputManager.AfterUpdate">
-            <summary>
-                Afters the update
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Input.InputManager.FixedUpdate">
-            <summary>
-                Fixeds the update
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Input.InputManager.Reset">
-            <summary>
-                Resets this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Input.InputManager.Stop">
-            <summary>
-                Stops this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Input.InputManager.Exit">
-            <summary>
-                Exits this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Manager.Physic.PhysicManager">
@@ -2152,54 +2027,9 @@
                 Inits this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Manager.Physic.PhysicManager.Awake">
-            <summary>
-                Awakes this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Physic.PhysicManager.Start">
-            <summary>
-                Starts this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Physic.PhysicManager.BeforeUpdate">
-            <summary>
-                Befores the update
-            </summary>
-        </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManager.Update">
             <summary>
                 Updates this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Physic.PhysicManager.AfterUpdate">
-            <summary>
-                Afters the update
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Physic.PhysicManager.FixedUpdate">
-            <summary>
-                Fixeds the update
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Physic.PhysicManager.DispatchEvents">
-            <summary>
-                Dispatches the events
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Physic.PhysicManager.Reset">
-            <summary>
-                Resets this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Physic.PhysicManager.Stop">
-            <summary>
-                Stops this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Physic.PhysicManager.Exit">
-            <summary>
-                Exits this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManager.AttachBody(Alis.Core.Physic.Dynamics.Body)">

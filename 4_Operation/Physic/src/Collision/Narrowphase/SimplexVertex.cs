@@ -46,12 +46,12 @@ namespace Alis.Core.Physic.Collision.Narrowphase
         public int IndexB;
 
         /// <summary>wB - wA</summary>
-        public Vector2F W;
+        public Vector2 W;
 
         /// <summary>Support point in proxyA</summary>
-        public Vector2F Wa;
+        public Vector2 Wa;
 
         /// <summary>Support point in proxyB</summary>
-        public Vector2F Wb;
+        public Vector2 Wb;
     }
 }
