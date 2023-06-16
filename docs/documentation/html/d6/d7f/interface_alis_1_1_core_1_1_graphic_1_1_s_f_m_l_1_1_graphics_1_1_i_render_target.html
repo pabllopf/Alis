@@ -121,18 +121,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4c1020f48a7e8eaf5aac9a632aa995d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/d8c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_figures_1_1_d2_1_1_rectangle_1_1_rectangle_i.html">RectangleI</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a4c1020f48a7e8eaf5aac9a632aa995d9">GetViewport</a> (<a class="el" href="../../df/d48/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_view.html">View</a> view)</td></tr>
 <tr class="memdesc:a4c1020f48a7e8eaf5aac9a632aa995d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the viewport of a view applied to this target  <a href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a4c1020f48a7e8eaf5aac9a632aa995d9">More...</a><br /></td></tr>
 <tr class="separator:a4c1020f48a7e8eaf5aac9a632aa995d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a992f949a13e059ba834b2bb27ea50dca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html">Vector2F</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a992f949a13e059ba834b2bb27ea50dca">MapPixelToCoords</a> (<a class="el" href="../../df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html">Vector2I</a> point)</td></tr>
-<tr class="memdesc:a992f949a13e059ba834b2bb27ea50dca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a point from target coordinates to world coordinates, using the current view This function is an overload of the MapPixelToCoords function that implicitly uses the current view. It is equivalent to: target.MapPixelToCoords(point, target.GetView());  <a href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a992f949a13e059ba834b2bb27ea50dca">More...</a><br /></td></tr>
-<tr class="separator:a992f949a13e059ba834b2bb27ea50dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4dd65a610252a398b7c39c2313e5df4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html">Vector2F</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#af4dd65a610252a398b7c39c2313e5df4">MapPixelToCoords</a> (<a class="el" href="../../df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html">Vector2I</a> point, <a class="el" href="../../df/d48/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_view.html">View</a> view)</td></tr>
-<tr class="memdesc:af4dd65a610252a398b7c39c2313e5df4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a point from target coordinates to world coordinates This function finds the 2D position that matches the given pixel of the render-target. In other words, it does the inverse of what the graphics card does, to find the initial position of a rendered pixel. Initially, both coordinate systems (world units and target pixels) match perfectly. But if you define a custom view or resize your render-target, this assertion is not true anymore, ie. a point located at (10, 50) in your render-target may map to the point (150, 75) in your 2D world &ndash; if the view is translated by (140, 25). For render-windows, this function is typically used to find which point (or object) is located below the mouse cursor. This version uses a custom view for calculations, see the other overload of the function if you want to use the current view of the render-target.  <a href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#af4dd65a610252a398b7c39c2313e5df4">More...</a><br /></td></tr>
-<tr class="separator:af4dd65a610252a398b7c39c2313e5df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ad6c46cc4cf9fd7d0b87c26a5243aa9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html">Vector2I</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a2ad6c46cc4cf9fd7d0b87c26a5243aa9">MapCoordsToPixel</a> (<a class="el" href="../../d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html">Vector2F</a> point)</td></tr>
-<tr class="memdesc:a2ad6c46cc4cf9fd7d0b87c26a5243aa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a point from world coordinates to target coordinates, using the current view This function is an overload of the mapCoordsToPixel function that implicitly uses the current view. It is equivalent to: target.MapCoordsToPixel(point, target.GetView());  <a href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a2ad6c46cc4cf9fd7d0b87c26a5243aa9">More...</a><br /></td></tr>
-<tr class="separator:a2ad6c46cc4cf9fd7d0b87c26a5243aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d94164e589bd6a1d07d999553ab80ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html">Vector2I</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a4d94164e589bd6a1d07d999553ab80ba">MapCoordsToPixel</a> (<a class="el" href="../../d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html">Vector2F</a> point, <a class="el" href="../../df/d48/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_view.html">View</a> view)</td></tr>
-<tr class="memdesc:a4d94164e589bd6a1d07d999553ab80ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a point from world coordinates to target coordinates This function finds the pixel of the render-target that matches the given 2D point. In other words, it goes through the same process as the graphics card, to compute the final position of a rendered point. Initially, both coordinate systems (world units and target pixels) match perfectly. But if you define a custom view or resize your render-target, this assertion is not true anymore, ie. a point located at (150, 75) in your 2D world may map to the pixel (10, 50) of your render-target &ndash; if the view is translated by (140, 25). This version uses a custom view for calculations, see the other overload of the function if you want to use the current view of the render-target.  <a href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a4d94164e589bd6a1d07d999553ab80ba">More...</a><br /></td></tr>
-<tr class="separator:a4d94164e589bd6a1d07d999553ab80ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ff2e7c75bf1c24d5df00997e0489526"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a3ff2e7c75bf1c24d5df00997e0489526">MapPixelToCoords</a> (<a class="el" href="../../df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html">Vector2I</a> point)</td></tr>
+<tr class="memdesc:a3ff2e7c75bf1c24d5df00997e0489526"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a point from target coordinates to world coordinates, using the current view This function is an overload of the MapPixelToCoords function that implicitly uses the current view. It is equivalent to: target.MapPixelToCoords(point, target.GetView());  <a href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a3ff2e7c75bf1c24d5df00997e0489526">More...</a><br /></td></tr>
+<tr class="separator:a3ff2e7c75bf1c24d5df00997e0489526"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dc1e49177121940f40318872e7618de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a3dc1e49177121940f40318872e7618de">MapPixelToCoords</a> (<a class="el" href="../../df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html">Vector2I</a> point, <a class="el" href="../../df/d48/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_view.html">View</a> view)</td></tr>
+<tr class="memdesc:a3dc1e49177121940f40318872e7618de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a point from target coordinates to world coordinates This function finds the 2D position that matches the given pixel of the render-target. In other words, it does the inverse of what the graphics card does, to find the initial position of a rendered pixel. Initially, both coordinate systems (world units and target pixels) match perfectly. But if you define a custom view or resize your render-target, this assertion is not true anymore, ie. a point located at (10, 50) in your render-target may map to the point (150, 75) in your 2D world &ndash; if the view is translated by (140, 25). For render-windows, this function is typically used to find which point (or object) is located below the mouse cursor. This version uses a custom view for calculations, see the other overload of the function if you want to use the current view of the render-target.  <a href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a3dc1e49177121940f40318872e7618de">More...</a><br /></td></tr>
+<tr class="separator:a3dc1e49177121940f40318872e7618de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbcf69d69a4867535e689b7ca2281463"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html">Vector2I</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#afbcf69d69a4867535e689b7ca2281463">MapCoordsToPixel</a> (<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> point)</td></tr>
+<tr class="memdesc:afbcf69d69a4867535e689b7ca2281463"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a point from world coordinates to target coordinates, using the current view This function is an overload of the mapCoordsToPixel function that implicitly uses the current view. It is equivalent to: target.MapCoordsToPixel(point, target.GetView());  <a href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#afbcf69d69a4867535e689b7ca2281463">More...</a><br /></td></tr>
+<tr class="separator:afbcf69d69a4867535e689b7ca2281463"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f8cca53c72e055b339aa445e9e3871d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html">Vector2I</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a5f8cca53c72e055b339aa445e9e3871d">MapCoordsToPixel</a> (<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> point, <a class="el" href="../../df/d48/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_view.html">View</a> view)</td></tr>
+<tr class="memdesc:a5f8cca53c72e055b339aa445e9e3871d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a point from world coordinates to target coordinates This function finds the pixel of the render-target that matches the given 2D point. In other words, it goes through the same process as the graphics card, to compute the final position of a rendered point. Initially, both coordinate systems (world units and target pixels) match perfectly. But if you define a custom view or resize your render-target, this assertion is not true anymore, ie. a point located at (150, 75) in your 2D world may map to the pixel (10, 50) of your render-target &ndash; if the view is translated by (140, 25). This version uses a custom view for calculations, see the other overload of the function if you want to use the current view of the render-target.  <a href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a5f8cca53c72e055b339aa445e9e3871d">More...</a><br /></td></tr>
+<tr class="separator:a5f8cca53c72e055b339aa445e9e3871d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6dd3573ee4b60ce91540453a4c93ecc2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a6dd3573ee4b60ce91540453a4c93ecc2">Clear</a> ()</td></tr>
 <tr class="memdesc:a6dd3573ee4b60ce91540453a4c93ecc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the entire target with black color  <a href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a6dd3573ee4b60ce91540453a4c93ecc2">More...</a><br /></td></tr>
 <tr class="separator:a6dd3573ee4b60ce91540453a4c93ecc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -260,14 +260,14 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a992f949a13e059ba834b2bb27ea50dca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a992f949a13e059ba834b2bb27ea50dca">&#9670;&nbsp;</a></span>MapPixelToCoords() <span class="overload">[1/2]</span></h2>
+<a id="a3ff2e7c75bf1c24d5df00997e0489526"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ff2e7c75bf1c24d5df00997e0489526">&#9670;&nbsp;</a></span>MapPixelToCoords() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html">Vector2F</a> Alis.Core.Graphic.SFML.Graphics.IRenderTarget.MapPixelToCoords </td>
+          <td class="memname"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> Alis.Core.Graphic.SFML.Graphics.IRenderTarget.MapPixelToCoords </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html">Vector2I</a>&#160;</td>
           <td class="paramname"><em>point</em></td><td>)</td>
@@ -285,18 +285,18 @@ Properties</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The converted point, in "world" coordinates</dd></dl>
 
-<p>Implemented in <a class="el" href="../../db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a90d2bd8e98b2c9abc47f143fb64913c6">Alis.Core.Graphic.SFML.Graphics.RenderWindow</a>, and <a class="el" href="../../d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#a25a7dd4d083be5b98eacd54b993ce1c3">Alis.Core.Graphic.SFML.Graphics.RenderTexture</a>.</p>
+<p>Implemented in <a class="el" href="../../db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ad666b793e69081bd2b05498acc70a3a5">Alis.Core.Graphic.SFML.Graphics.RenderWindow</a>, and <a class="el" href="../../d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#ac7c81700d03c14ca8d43f7b8126460e2">Alis.Core.Graphic.SFML.Graphics.RenderTexture</a>.</p>
 
 </div>
 </div>
-<a id="af4dd65a610252a398b7c39c2313e5df4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af4dd65a610252a398b7c39c2313e5df4">&#9670;&nbsp;</a></span>MapPixelToCoords() <span class="overload">[2/2]</span></h2>
+<a id="a3dc1e49177121940f40318872e7618de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dc1e49177121940f40318872e7618de">&#9670;&nbsp;</a></span>MapPixelToCoords() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html">Vector2F</a> Alis.Core.Graphic.SFML.Graphics.IRenderTarget.MapPixelToCoords </td>
+          <td class="memname"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> Alis.Core.Graphic.SFML.Graphics.IRenderTarget.MapPixelToCoords </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html">Vector2I</a>&#160;</td>
           <td class="paramname"><em>point</em>, </td>
@@ -325,12 +325,12 @@ Properties</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The converted point, in "world" coordinates</dd></dl>
 
-<p>Implemented in <a class="el" href="../../db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a16dfe0b0b3ce247f4b640c4b1916766f">Alis.Core.Graphic.SFML.Graphics.RenderWindow</a>, and <a class="el" href="../../d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#a18ab7ca08362335b96105f7d64aa9b3c">Alis.Core.Graphic.SFML.Graphics.RenderTexture</a>.</p>
+<p>Implemented in <a class="el" href="../../db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ac40038127947a7f0da1dc25a0eaf107b">Alis.Core.Graphic.SFML.Graphics.RenderWindow</a>, and <a class="el" href="../../d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#ab2806cc304baa038e222b78bdc60c66f">Alis.Core.Graphic.SFML.Graphics.RenderTexture</a>.</p>
 
 </div>
 </div>
-<a id="a2ad6c46cc4cf9fd7d0b87c26a5243aa9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ad6c46cc4cf9fd7d0b87c26a5243aa9">&#9670;&nbsp;</a></span>MapCoordsToPixel() <span class="overload">[1/2]</span></h2>
+<a id="afbcf69d69a4867535e689b7ca2281463"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbcf69d69a4867535e689b7ca2281463">&#9670;&nbsp;</a></span>MapCoordsToPixel() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -338,7 +338,7 @@ Properties</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="../../df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html">Vector2I</a> Alis.Core.Graphic.SFML.Graphics.IRenderTarget.MapCoordsToPixel </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html">Vector2F</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
           <td class="paramname"><em>point</em></td><td>)</td>
           <td></td>
         </tr>
@@ -354,12 +354,12 @@ Properties</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The converted point, in target coordinates (pixels)</dd></dl>
 
-<p>Implemented in <a class="el" href="../../db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ababf12e6262bf3232af9a85d84ce53e7">Alis.Core.Graphic.SFML.Graphics.RenderWindow</a>, and <a class="el" href="../../d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#ac3b23dd49462842d413d0bae8b96f207">Alis.Core.Graphic.SFML.Graphics.RenderTexture</a>.</p>
+<p>Implemented in <a class="el" href="../../db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ada73d986e7f69a53b8dea78067c3f6e2">Alis.Core.Graphic.SFML.Graphics.RenderWindow</a>, and <a class="el" href="../../d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#a47a99238bcdc026864ef3fcd4906e10a">Alis.Core.Graphic.SFML.Graphics.RenderTexture</a>.</p>
 
 </div>
 </div>
-<a id="a4d94164e589bd6a1d07d999553ab80ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d94164e589bd6a1d07d999553ab80ba">&#9670;&nbsp;</a></span>MapCoordsToPixel() <span class="overload">[2/2]</span></h2>
+<a id="a5f8cca53c72e055b339aa445e9e3871d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f8cca53c72e055b339aa445e9e3871d">&#9670;&nbsp;</a></span>MapCoordsToPixel() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -367,7 +367,7 @@ Properties</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="../../df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html">Vector2I</a> Alis.Core.Graphic.SFML.Graphics.IRenderTarget.MapCoordsToPixel </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html">Vector2F</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
           <td class="paramname"><em>point</em>, </td>
         </tr>
         <tr>
@@ -394,7 +394,7 @@ Properties</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The converted point, in target coordinates (pixels)</dd></dl>
 
-<p>Implemented in <a class="el" href="../../db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a57e59b1b1b19443d6be45eb3103307e9">Alis.Core.Graphic.SFML.Graphics.RenderWindow</a>, and <a class="el" href="../../d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#a0ac47c332071246670ef6c3dd288e3f6">Alis.Core.Graphic.SFML.Graphics.RenderTexture</a>.</p>
+<p>Implemented in <a class="el" href="../../db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a7823178140ba03d635660d7bf4844e53">Alis.Core.Graphic.SFML.Graphics.RenderWindow</a>, and <a class="el" href="../../d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#af2a0de9d51151e5e60d7ad8338e045ad">Alis.Core.Graphic.SFML.Graphics.RenderTexture</a>.</p>
 
 </div>
 </div>
@@ -839,7 +839,7 @@ Properties</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../df/df9/namespace_alis_1_1_core_1_1_graphic.html">Graphic</a></li><li class="navelem"><a class="el" href="../../d5/d27/namespace_alis_1_1_core_1_1_graphic_1_1_s_f_m_l.html">SFML</a></li><li class="navelem"><a class="el" href="../../d8/d22/namespace_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics.html">Graphics</a></li><li class="navelem"><a class="el" href="../../d6/d7f/interface_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html">IRenderTarget</a></li>
     <li class="footer">
-      <a>Generated on | Thu Jun 15 2023 |</a>
+      <a>Generated on | Fri Jun 16 2023 |</a>
     </li>
   </ul>
 </div>

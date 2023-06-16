@@ -23,7 +23,7 @@ var hierarchy =
     [ "Alis.Core.Physic.Dynamics.BodyHelper", "d3/d34/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body_helper.html", null ],
     [ "Alis.Builder.Core.Component.Mesh.BoxMeshBuilder", "d3/d6c/class_alis_1_1_builder_1_1_core_1_1_component_1_1_mesh_1_1_box_mesh_builder.html", null ],
     [ "Alis.Core.Physic.Dynamics.BreakableBody", "dc/d9d/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_breakable_body.html", null ],
-    [ "Alis.Core.Aspect.Math.Matrix.Matrix4X4F.CanonicalBasis", "d1/d9d/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4_x4_f_1_1_canonical_basis.html", null ],
+    [ "Alis.Core.Aspect.Math.Matrix.Matrix4x4.CanonicalBasis", "df/de9/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4x4_1_1_canonical_basis.html", null ],
     [ "Alis.Core.Physic.Tools.Triangulation.Delaunay.CdtDecomposer", "d4/dc2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_cdt_decomposer.html", null ],
     [ "Alis.Core.Physic.Tools.ConvexHull.ChainHull", "d3/d87/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_chain_hull.html", null ],
     [ "Alis.Core.Audio.SFML.Chunk", "d6/d0d/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_chunk.html", null ],
@@ -125,19 +125,10 @@ var hierarchy =
     [ "EventSource", null, [
       [ "Alis.Core.Network.Internal.Events", "de/d69/class_alis_1_1_core_1_1_network_1_1_internal_1_1_events.html", null ]
     ] ],
-    [ "Alis.Core.Aspect.ExampleClass", "dd/dec/class_alis_1_1_core_1_1_aspect_1_1_example_class.html", null ],
     [ "Alis.Core.Aspect.Security.ExampleClass", "d3/db3/class_alis_1_1_core_1_1_aspect_1_1_security_1_1_example_class.html", null ],
     [ "Alis.Core.Aspect.Thread.ExampleClass", "d3/d53/class_alis_1_1_core_1_1_aspect_1_1_thread_1_1_example_class.html", null ],
     [ "Exception", null, [
-      [ "Alis.Core.Aspect.Base.Exceptions.ComponentDontExits", "d5/d9e/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_exceptions_1_1_component_dont_exits.html", null ],
-      [ "Alis.Core.Aspect.Base.Exceptions.ComponentInstancieIsTheSame", "dc/d52/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_exceptions_1_1_component_instancie_is_the_same.html", null ],
-      [ "Alis.Core.Aspect.Base.Exceptions.ComponentTypeAlredyExist", "d5/d6e/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_exceptions_1_1_component_type_alredy_exist.html", null ],
-      [ "Alis.Core.Aspect.Base.Exceptions.GameObjectIsFull", "d0/d27/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_exceptions_1_1_game_object_is_full.html", null ],
-      [ "Alis.Core.Aspect.Base.Exceptions.IndexOutOfBounds", "d2/d2c/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_exceptions_1_1_index_out_of_bounds.html", null ],
-      [ "Alis.Core.Aspect.Base.Exceptions.LimitOfComponents", "d7/dc3/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_exceptions_1_1_limit_of_components.html", null ],
       [ "Alis.Core.Aspect.Base.Exceptions.LoadingFailedException", "d0/d49/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_exceptions_1_1_loading_failed_exception.html", null ],
-      [ "Alis.Core.Aspect.Base.Exceptions.NullArgumentException", "db/d22/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_exceptions_1_1_null_argument_exception.html", null ],
-      [ "Alis.Core.Aspect.Base.Exceptions.SceneGame", "dc/d8f/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_exceptions_1_1_scene_game.html", null ],
       [ "Alis.Core.Aspect.Math.Exceptions.ArgumentExceptionDestinationTooShort", "d1/dc3/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_exceptions_1_1_argument_exception_destination_too_short.html", null ],
       [ "Alis.Core.Aspect.Math.Exceptions.InsufficientNumberOfElementsException", "d6/de7/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_exceptions_1_1_insufficient_number_of_elements_exception.html", null ],
       [ "Alis.Core.Network.Exceptions.EntityTooLargeException", "d7/da7/class_alis_1_1_core_1_1_network_1_1_exceptions_1_1_entity_too_large_exception.html", null ],
@@ -187,6 +178,7 @@ var hierarchy =
     [ "Alis.Core.Graphic.OpenGL.Gl", "db/d86/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_gl.html", null ],
     [ "Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam", "d1/db1/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader_program_param.html", null ],
     [ "Alis.Core.Graphic.SFML.Graphics.Glyph", "d1/d0c/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_glyph.html", null ],
+    [ "Alis.Core.Aspect.Math.Util.HashCode", "d5/d60/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_hash_code.html", null ],
     [ "Alis.Core.Aspect.Math.Util.Helper", "d0/dc0/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_helper.html", null ],
     [ "Alis.Core.Network.HttpHelper", "db/d01/class_alis_1_1_core_1_1_network_1_1_http_helper.html", null ],
     [ "Alis.Core.Aspect.Fluent.Words.IAdd< out out TBuilder, in in TType, in in TArgument >", "d4/dd0/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_add.html", null ],
@@ -458,10 +450,10 @@ var hierarchy =
     [ "IEquatable", null, [
       [ "Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleF", "d1/d0f/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_figures_1_1_d2_1_1_rectangle_1_1_rectangle_f.html", null ],
       [ "Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleI", "df/d8c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_figures_1_1_d2_1_1_rectangle_1_1_rectangle_i.html", null ],
-      [ "Alis.Core.Aspect.Math.Vector.Vector2F", "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html", null ],
+      [ "Alis.Core.Aspect.Math.Vector.Vector2", "db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html", null ],
       [ "Alis.Core.Aspect.Math.Vector.Vector2I", "df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html", null ],
       [ "Alis.Core.Aspect.Math.Vector.Vector2U", "d4/d7e/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_u.html", null ],
-      [ "Alis.Core.Aspect.Math.Vector.Vector3F", "db/d52/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3_f.html", null ],
+      [ "Alis.Core.Aspect.Math.Vector.Vector3", "d3/dac/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3.html", null ],
       [ "Alis.Core.Audio.SFML.Time", "de/ddc/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_time.html", null ],
       [ "Alis.Core.Graphic.SFML.Graphics.BlendMode", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html", null ],
       [ "Alis.Core.Graphic.SFML.Graphics.Color", "d0/df4/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_color.html", null ],
@@ -485,8 +477,8 @@ var hierarchy =
       [ "Alis.Builder.Core.Component.Collider.BoxColliderBuilder", "d7/de4/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_box_collider_builder.html", null ]
     ] ],
     [ "IFormattable", null, [
-      [ "Alis.Core.Aspect.Math.Vector.Vector2F", "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html", null ],
-      [ "Alis.Core.Aspect.Math.Vector.Vector3F", "db/d52/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3_f.html", null ]
+      [ "Alis.Core.Aspect.Math.Vector.Vector2", "db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html", null ],
+      [ "Alis.Core.Aspect.Math.Vector.Vector3", "d3/dac/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3.html", null ]
     ] ],
     [ "Alis.Core.Aspect.Fluent.Words.IFriction< out out TBuilder, in in TArgument >", "dd/d90/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_friction.html", null ],
     [ "Alis.Core.Aspect.Fluent.Words.IFriction< BoxColliderBuilder, float >", "dd/d90/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_friction.html", [
@@ -855,10 +847,12 @@ var hierarchy =
     [ "Alis.Core.Physic.Collision.Narrowphase.Manifold", "de/df7/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_manifold.html", null ],
     [ "Alis.Core.Physic.Collision.Narrowphase.ManifoldPoint", "d5/d45/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_manifold_point.html", null ],
     [ "Alis.Core.Graphic.SFML.Graphics.RenderStates.MarshalData", "d7/d3f/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_states_1_1_marshal_data.html", null ],
+    [ "Alis.Core.Aspect.Math.MathF", "d6/d15/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_math_f.html", null ],
     [ "Alis.Core.Physic.Utilities.MathUtils", "d4/de0/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils.html", null ],
     [ "Alis.Core.Aspect.Math.Matrix.Matrix2X2F", "d9/dbd/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix2_x2_f.html", null ],
+    [ "Alis.Core.Aspect.Math.Matrix.Matrix3x2", "d2/daa/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix3x2.html", null ],
     [ "Alis.Core.Aspect.Math.Matrix.Matrix3X3F", "d2/dda/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix3_x3_f.html", null ],
-    [ "Alis.Core.Aspect.Math.Matrix.Matrix4X4F", "d6/d41/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4_x4_f.html", null ],
+    [ "Alis.Core.Aspect.Math.Matrix.Matrix4x4", "d6/d04/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4x4.html", null ],
     [ "Alis.Core.Physic.Tools.ConvexHull.Melkman", "d9/d3d/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_melkman.html", null ],
     [ "MemoryStream", null, [
       [ "Alis.Core.Network.BufferPool.PublicBufferMemoryStream", "dd/d36/class_alis_1_1_core_1_1_network_1_1_buffer_pool_1_1_public_buffer_memory_stream.html", null ]
@@ -904,7 +898,9 @@ var hierarchy =
     [ "Alis.Core.Physic.Dynamics.Solver.PositionSolverManifold", "d6/d53/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_position_solver_manifold.html", null ],
     [ "Alis.Core.Physic.Dynamics.Profile", "dc/d1d/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_profile.html", null ],
     [ "Alis.App.Installer.Program", "d3/d29/class_alis_1_1_app_1_1_installer_1_1_program.html", null ],
+    [ "Alis.Core.Aspect.Math.Util.Quaternion", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html", null ],
     [ "Alis.Core.Physic.Tools.Triangulation.Seidel.QueryGraph", "d8/d2b/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_query_graph.html", null ],
+    [ "Alis.Core.Aspect.Math.Util.RandomUtils", "de/d00/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_random_utils.html", null ],
     [ "Alis.Core.Graphic.ImGui.RangeAccessor< T >", "dd/d9b/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_range_accessor.html", null ],
     [ "Alis.Core.Graphic.ImGui.RangeAccessor< Alis.Core.Graphic.ImGui.ImGuiKeyData >", "dd/d9b/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_range_accessor.html", null ],
     [ "Alis.Core.Graphic.ImGui.RangeAccessor< Alis.Core.Graphic.ImGui.StbUndoRecord >", "dd/d9b/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_range_accessor.html", null ],
@@ -1046,8 +1042,8 @@ var hierarchy =
     [ "Alis.Core.Physic.Collision.TOI.ToiOutput", "de/d32/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_t_o_i_1_1_toi_output.html", null ],
     [ "Alis.Core.Graphic.SFML.Windows.Touch", "d2/db7/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_touch.html", null ],
     [ "Alis.Core.Graphic.SFML.Windows.TouchEvent", "d0/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_touch_event.html", null ],
-    [ "Alis.Core.Aspect.Math.Transform", "d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html", null ],
     [ "Alis.Core.Graphic.SFML.Graphics.Transform", "d7/d5b/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_transform.html", null ],
+    [ "Alis.Core.Aspect.Math.Transform", "d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html", null ],
     [ "Alis.Core.Entity.TransformBase", "dc/d0c/class_alis_1_1_core_1_1_entity_1_1_transform_base.html", [
       [ "Alis.Core.Entity.Transform", "dc/d65/class_alis_1_1_core_1_1_entity_1_1_transform.html", null ]
     ] ],
@@ -1073,11 +1069,11 @@ var hierarchy =
     [ "Alis.Core.Aspect.Math.Vector.Vector3B", "d0/daa/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3_b.html", null ],
     [ "Alis.Core.Graphic.OpenGL.NumericsExtensions.Vector3Ext", "d6/d63/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_numerics_extensions_1_1_vector3_ext.html", null ],
     [ "Alis.Core.Aspect.Math.Vector.Vector3I", "d3/d84/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3_i.html", null ],
+    [ "Alis.Core.Aspect.Math.Vector.Vector4", "da/d48/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector4.html", null ],
     [ "Alis.Core.Aspect.Math.Vector.Vector4B", "d3/da5/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector4_b.html", null ],
     [ "Alis.Core.Graphic.OpenGL.NumericsExtensions.Vector4Ext", "de/deb/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_numerics_extensions_1_1_vector4_ext.html", null ],
-    [ "Alis.Core.Aspect.Math.Vector.Vector4F", "db/d51/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector4_f.html", null ],
     [ "Alis.Core.Aspect.Math.Vector.Vector4I", "d5/d94/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector4_i.html", null ],
-    [ "Alis.Core.Aspect.Math.Matrix.Matrix4X4F.VectorBasis", "dc/d77/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4_x4_f_1_1_vector_basis.html", null ],
+    [ "Alis.Core.Aspect.Math.Matrix.Matrix4x4.VectorBasis", "d7/d3d/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4x4_1_1_vector_basis.html", null ],
     [ "Alis.Core.Physic.Dynamics.Solver.Velocity", "da/d2d/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_velocity.html", null ],
     [ "Alis.Core.Physic.Dynamics.Solver.VelocityConstraintPoint", "d8/d54/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_velocity_constraint_point.html", null ],
     [ "Alis.Core.Graphic.SFML.Graphics.Vertex", "d2/da1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex.html", null ],

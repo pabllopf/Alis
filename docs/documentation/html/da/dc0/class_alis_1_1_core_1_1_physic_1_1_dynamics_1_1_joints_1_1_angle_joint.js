@@ -1,7 +1,7 @@
 var class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint =
 [
     [ "AngleJoint", "da/dc0/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint.html#a698baad461ef699c3bda76404d4951e6", null ],
-    [ "GetReactionForce", "da/dc0/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint.html#a408a0def093f69adfbba4c90d4b22d01", null ],
+    [ "GetReactionForce", "da/dc0/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint.html#a332d802a1aa5b225810a3780fb866350", null ],
     [ "GetReactionTorque", "da/dc0/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint.html#ac0c34460ee593771d2846b46453341cd", null ],
     [ "InitVelocityConstraints", "da/dc0/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint.html#abf7b47c98d618d9487c2e9142f1a0b18", null ],
     [ "SolveVelocityConstraints", "da/dc0/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint.html#a79e4129d8448df11a350760912aaf2ee", null ],
@@ -13,8 +13,8 @@ var class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint =
     [ "maxImpulse", "da/dc0/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint.html#a29af89de43f0a09d430a114bee5994ad", null ],
     [ "softness", "da/dc0/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint.html#a0ede219efe5507d04f16ce72a9de2ced", null ],
     [ "targetAngle", "da/dc0/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint.html#a941794d25f5aacdeafab129fbfaf0931", null ],
-    [ "WorldAnchorA", "da/dc0/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint.html#ab271854b221f677f359cc950fc22371a", null ],
-    [ "WorldAnchorB", "da/dc0/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint.html#a171bbf222b11a726c17fd16e0311fe29", null ],
+    [ "WorldAnchorA", "da/dc0/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint.html#a439c9a2ace843bc36badd5e9a64df64a", null ],
+    [ "WorldAnchorB", "da/dc0/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint.html#a709451e52e8d9f9ca2358606ce85e684", null ],
     [ "TargetAngle", "da/dc0/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint.html#ad599bf44c52d3498cdd3fa01731d6bf1", null ],
     [ "BiasFactor", "da/dc0/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint.html#a43bd89f8b3d36d0006338b772c96233c", null ],
     [ "Impulse", "da/dc0/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint.html#a1ed53bd2f3f1509ca40ea5f26a905eed", null ],
