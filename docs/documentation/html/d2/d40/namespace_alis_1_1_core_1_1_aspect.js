@@ -8,6 +8,5 @@ var namespace_alis_1_1_core_1_1_aspect =
     [ "Memory", "d1/d15/namespace_alis_1_1_core_1_1_aspect_1_1_memory.html", "d1/d15/namespace_alis_1_1_core_1_1_aspect_1_1_memory" ],
     [ "Security", "d4/dbb/namespace_alis_1_1_core_1_1_aspect_1_1_security.html", "d4/dbb/namespace_alis_1_1_core_1_1_aspect_1_1_security" ],
     [ "Thread", "d2/da7/namespace_alis_1_1_core_1_1_aspect_1_1_thread.html", "d2/da7/namespace_alis_1_1_core_1_1_aspect_1_1_thread" ],
-    [ "Time", "d2/dec/namespace_alis_1_1_core_1_1_aspect_1_1_time.html", "d2/dec/namespace_alis_1_1_core_1_1_aspect_1_1_time" ],
-    [ "ExampleClass", "dd/dec/class_alis_1_1_core_1_1_aspect_1_1_example_class.html", null ]
+    [ "Time", "d2/dec/namespace_alis_1_1_core_1_1_aspect_1_1_time.html", "d2/dec/namespace_alis_1_1_core_1_1_aspect_1_1_time" ]
 ];
