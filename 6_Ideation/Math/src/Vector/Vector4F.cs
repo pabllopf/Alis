@@ -55,22 +55,24 @@ namespace Alis.Core.Aspect.Math.Vector
             W = w;
         }
 
-        /*
+
         /// <summary>
-        ///     Construct the <see cref="Vector4F" /> from a <see cref="Color" />
+        ///     Gets the v
         /// </summary>
-        /// <remarks>
-        ///     The <see cref="Color" />'s values will be normalized from 0..255 to 0..1
-        /// </remarks>
-        /// <param name="color">A SFML <see cref="Color" /> to be translated to a 4D floating-point vector</param>
-        public Vector4F(Color color)
+        /// <param name="v">The </param>
+        /// <param name="index">The index</param>
+        /// <returns>The float</returns>
+        public static float Get(Vector4F v, int index)
         {
-            X = color.R / 255.0f;
-            Y = color.G / 255.0f;
-            Z = color.B / 255.0f;
-            W = color.A / 255.0f;
+            switch (index)
+            {
+                case 0: return v.X;
+                case 1: return v.Y;
+                case 2: return v.Z;
+                case 3: return v.W;
+                default: return 0; // error case
+            }
         }
-        */
 
         /// <summary>Horizontal component of the vector</summary>
         public float X;

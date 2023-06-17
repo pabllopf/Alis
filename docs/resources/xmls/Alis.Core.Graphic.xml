@@ -30183,9 +30183,6 @@
             <summary>
                 The gl class
             </summary>
-            <summary>
-                the methods here are just convenience wrappers for calling the raw gl* method
-            </summary>
         </member>
         <member name="F:Alis.Core.Graphic.OpenGL.Gl._getString">
             <summary>
@@ -30584,61 +30581,6 @@
                 Deletes the texture using the specified texture
             </summary>
             <param name="texture">The texture</param>
-        </member>
-        <member name="T:Alis.Core.Graphic.OpenGL.NumericsExtensions.Vector3Ext">
-            <summary>
-                The vector ext class
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.OpenGL.NumericsExtensions.Vector3Ext.TakeMin(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>
-                Store the minimum values of x, y, and z between the two vectors.
-            </summary>
-            <param name="tv">The Vector3 to perform the TakeMin on.</param>
-            <param name="v">Vector to check against.</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.OpenGL.NumericsExtensions.Vector3Ext.TakeMax(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>
-                Store the maximum values of x, y, and z between the two vectors.
-            </summary>
-            <param name="tv">The Vector3 to perform the TakeMax on.</param>
-            <param name="v">Vector to check against.</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.OpenGL.NumericsExtensions.Vector3Ext.Normalize(Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>
-                Normalizes the Vector3 structure to have a peak value of one.
-            </summary>
-            <param name="v">The Vector3 to perform the Normalize on.</param>
-            <returns>if (Length = 0) return Zero; else return Vector3(x,y,z)/Length.</returns>
-        </member>
-        <member name="M:Alis.Core.Graphic.OpenGL.NumericsExtensions.Vector3Ext.Dot(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
-            <summary>
-                Performs the Vector3 scalar dot product.
-            </summary>
-            <param name="tv">The Vector3 to perform the dot product on.</param>
-            <param name="v">Second dot product term.</param>
-            <returns>Vector3.Dot(this, v).</returns>
-        </member>
-        <member name="M:Alis.Core.Graphic.OpenGL.NumericsExtensions.Vector3Ext.Get(Alis.Core.Aspect.Math.Vector.Vector3F,System.Int32)">
-            <summary>
-                Provide an accessor for each of the elements of the Vector structure.
-            </summary>
-            <param name="v">The Vector3 to access.</param>
-            <param name="index">The element to access (0 = X, 1 = Y, 2 = Z).</param>
-            <returns>The element of the Vector3 as indexed by i.</returns>
-        </member>
-        <member name="T:Alis.Core.Graphic.OpenGL.NumericsExtensions.Vector4Ext">
-            <summary>
-                The vector ext class
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.OpenGL.NumericsExtensions.Vector4Ext.Get(Alis.Core.Aspect.Math.Vector.Vector4F,System.Int32)">
-            <summary>
-                Gets the v
-            </summary>
-            <param name="v">The </param>
-            <param name="index">The index</param>
-            <returns>The float</returns>
         </member>
         <member name="T:Alis.Core.Graphic.Properties.NativeGraphic">
             <summary>

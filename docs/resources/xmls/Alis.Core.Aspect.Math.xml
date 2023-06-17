@@ -2536,6 +2536,28 @@
             <param name="y">The value to assign to the <see cref="F:Alis.Core.Aspect.Math.Vector.Vector3F.Y" /> field.</param>
             <param name="z">The value to assign to the <see cref="F:Alis.Core.Aspect.Math.Vector.Vector3F.Z" /> field.</param>
         </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.TakeMin(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
+            <summary>
+                Store the minimum values of x, y, and z between the two vectors.
+            </summary>
+            <param name="tv">The Vector3 to perform the TakeMin on.</param>
+            <param name="v">Vector to check against.</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.TakeMax(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
+            <summary>
+                Store the maximum values of x, y, and z between the two vectors.
+            </summary>
+            <param name="tv">The Vector3 to perform the TakeMax on.</param>
+            <param name="v">Vector to check against.</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Get(Alis.Core.Aspect.Math.Vector.Vector3F,System.Int32)">
+            <summary>
+                Provide an accessor for each of the elements of the Vector structure.
+            </summary>
+            <param name="v">The Vector3 to access.</param>
+            <param name="index">The element to access (0 = X, 1 = Y, 2 = Z).</param>
+            <returns>The element of the Vector3 as indexed by i.</returns>
+        </member>
         <member name="P:Alis.Core.Aspect.Math.Vector.Vector3F.Zero">
             <summary>Gets a vector whose 3 elements are equal to zero.</summary>
             <value>A vector whose three elements are equal to zero (that is, it returns the vector <c>(0,0,0)</c>.</value>
@@ -2950,6 +2972,14 @@
             <param name="y">Y coordinate</param>
             <param name="z">Z coordinate</param>
             <param name="w">W coordinate</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector.Vector4F.Get(Alis.Core.Aspect.Math.Vector.Vector4F,System.Int32)">
+            <summary>
+                Gets the v
+            </summary>
+            <param name="v">The </param>
+            <param name="index">The index</param>
+            <returns>The float</returns>
         </member>
         <member name="F:Alis.Core.Aspect.Math.Vector.Vector4F.X">
             <summary>Horizontal component of the vector</summary>
