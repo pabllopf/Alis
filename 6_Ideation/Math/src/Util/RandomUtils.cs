@@ -28,21 +28,22 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Security.Cryptography;
 
 namespace Alis.Core.Aspect.Math.Util
 {
     /// <summary>
     ///     The random utils class
     /// </summary>
-    public class RandomUtils
+    public static class RandomUtils
     {
         /// <summary>
-        ///     The random
+        ///     The create
         /// </summary>
-        private static readonly Random random = new Random();
+        private static readonly RandomNumberGenerator Rng = RandomNumberGenerator.Create();
 
         /// <summary>
-        ///     Gets the random int using the specified min value
+        ///     Gets the int 32 using the specified min value
         /// </summary>
         /// <param name="minValue">The min value</param>
         /// <param name="maxValue">The max value</param>
@@ -55,11 +56,15 @@ namespace Alis.Core.Aspect.Math.Util
                 throw new ArgumentException("minValue must be less than or equal to maxValue.");
             }
 
-            return random.Next(minValue, maxValue + 1);
+            byte[] buffer = new byte[4];
+            Rng.GetBytes(buffer);
+            int randomValue = BitConverter.ToInt32(buffer, 0);
+
+            return (int) (MathF.Abs(randomValue % (maxValue - minValue + 1)) + minValue);
         }
 
         /// <summary>
-        ///     Gets the random int using the specified value
+        ///     Gets the int 32 using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <exception cref="ArgumentException">value must be greater than or equal to 0.</exception>
@@ -71,7 +76,11 @@ namespace Alis.Core.Aspect.Math.Util
                 throw new ArgumentException("value must be greater than or equal to 0.");
             }
 
-            return random.Next(value + 1);
+            byte[] buffer = new byte[4];
+            Rng.GetBytes(buffer);
+            int randomValue = BitConverter.ToInt32(buffer, 0);
+
+            return (int) MathF.Abs(randomValue % (value + 1));
         }
     }
 }

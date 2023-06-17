@@ -54,7 +54,7 @@
         </member>
         <member name="T:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass">
             <summary>
-            The embedded dll class
+                The embedded dll class
             </summary>
         </member>
         <member name="P:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.CurrentDirectory">
@@ -146,7 +146,7 @@
         </member>
         <member name="T:Alis.Core.Aspect.Base.Mapping.Key">
             <summary>
-            The key enum
+                The key enum
             </summary>
         </member>
         <member name="F:Alis.Core.Aspect.Base.Mapping.Key.Unknown">
