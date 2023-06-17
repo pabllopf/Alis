@@ -40,21 +40,21 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The
         /// </summary>
-        public float x;
+        public readonly float x;
 
         /// <summary>
         ///     The
         /// </summary>
-        public float y;
+        public readonly float y;
 
         /// <summary>
         ///     The
         /// </summary>
-        public float w;
+        public readonly float w;
 
         /// <summary>
         ///     The
         /// </summary>
-        public float h;
+        public readonly float h;
     }
 }

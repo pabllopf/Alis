@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The ncolors
         /// </summary>
-        public int ncolors;
+        public readonly int ncolors;
 
         /// <summary>
         ///     The colors
@@ -51,11 +51,11 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The version
         /// </summary>
-        public int version;
+        public readonly int version;
 
         /// <summary>
         ///     The refcount
         /// </summary>
-        public int refcount;
+        public readonly int refcount;
     }
 }

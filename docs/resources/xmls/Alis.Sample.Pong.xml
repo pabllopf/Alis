@@ -8,7 +8,7 @@
             <summary>
                 The ball controller class
             </summary>
-            <seealso cref="T:Alis.Core.Component.ComponentBase" />
+            <seealso cref="T:Alis.Core.Ecs.ComponentBase" />
         </member>
         <member name="F:Alis.Sample.Pong.BallController.boxCollider">
             <summary>

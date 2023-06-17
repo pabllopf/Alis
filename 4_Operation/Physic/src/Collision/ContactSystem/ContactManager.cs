@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     The contact list
         /// </summary>
-        internal List<Contact> ContactList = new List<Contact>();
+        internal readonly List<Contact> ContactList = new List<Contact>();
 
         /// <summary>Fires when a contact is deleted</summary>
         public EndContactHandler EndContact;
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         private float lastMinAlpha;
 
         /// <summary>Fires when the broadphase detects that two Fixtures are close to each other.</summary>
-        public BroadphaseHandler OnBroadphaseCollision;
+        public readonly BroadphaseHandler OnBroadphaseCollision;
 
         /// <summary>Fires after the solver has run</summary>
         public PostSolveHandler PostSolve;

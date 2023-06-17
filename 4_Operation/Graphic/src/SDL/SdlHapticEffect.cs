@@ -40,7 +40,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The type
         /// </summary>
-        [FieldOffset(0)] public ushort type;
+        [FieldOffset(0)] public readonly ushort type;
 
         /// <summary>
         ///     The constant

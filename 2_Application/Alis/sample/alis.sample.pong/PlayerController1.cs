@@ -31,6 +31,7 @@ using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Component;
 using Alis.Core.Component.Collider;
+using Alis.Core.Ecs;
 
 namespace Alis.Sample.Pong
 {

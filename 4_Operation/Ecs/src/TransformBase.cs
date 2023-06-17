@@ -29,7 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Entity
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     The transform base class

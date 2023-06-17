@@ -38,10 +38,10 @@ namespace Alis.Core.Graphic.SFML.Windows
     public class MouseMoveEventArgs : EventArgs
     {
         /// <summary>X coordinate of the mouse cursor</summary>
-        public int X;
+        public readonly int X;
 
         /// <summary>Y coordinate of the mouse cursor</summary>
-        public int Y;
+        public readonly int Y;
 
         ////////////////////////////////////////////////////////////
         /// <summary>

@@ -50,12 +50,12 @@ namespace Alis.Core.Physic.Extensions.Controllers.Velocity
         /// <summary>
         ///     The limit angular velocity
         /// </summary>
-        public bool LimitAngularVelocity = true;
+        public readonly bool LimitAngularVelocity = true;
 
         /// <summary>
         ///     The limit linear velocity
         /// </summary>
-        public bool LimitLinearVelocity = true;
+        public readonly bool LimitLinearVelocity = true;
 
         /// <summary>
         ///     The max angular sqared

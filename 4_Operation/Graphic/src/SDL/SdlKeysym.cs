@@ -40,21 +40,21 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The scancode
         /// </summary>
-        public SdlScancode scancode;
+        public readonly SdlScancode scancode;
 
         /// <summary>
         ///     The sym
         /// </summary>
-        public SdlKeycode sym;
+        public readonly SdlKeycode sym;
 
         /// <summary>
         ///     The mod
         /// </summary>
-        public SdlKeymod mod;
+        public readonly SdlKeymod mod;
 
         /// <summary>
         ///     The unicode
         /// </summary>
-        public uint unicode;
+        public readonly uint unicode;
     }
 }

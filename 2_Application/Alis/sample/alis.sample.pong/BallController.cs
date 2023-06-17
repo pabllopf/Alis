@@ -29,6 +29,7 @@
 
 using Alis.Core.Component;
 using Alis.Core.Component.Collider;
+using Alis.Core.Ecs;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Dynamics;
 

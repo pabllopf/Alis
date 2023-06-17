@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay
         /// <summary>
         ///     The epsilon
         /// </summary>
-        public static double Epsilon = 1e-12;
+        public static readonly double Epsilon = 1e-12;
 
         /// <summary>
         ///     Requirements:

@@ -45,7 +45,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The subsystem
         /// </summary>
-        public SdlSyswmType subsystem;
+        public readonly SdlSyswmType subsystem;
 
         /// <summary>
         ///     The info

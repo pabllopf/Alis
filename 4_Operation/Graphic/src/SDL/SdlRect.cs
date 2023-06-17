@@ -40,21 +40,21 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The
         /// </summary>
-        public int x;
+        public readonly int x;
 
         /// <summary>
         ///     The
         /// </summary>
-        public int y;
+        public readonly int y;
 
         /// <summary>
         ///     The
         /// </summary>
-        public int w;
+        public readonly int w;
 
         /// <summary>
         ///     The
         /// </summary>
-        public int h;
+        public readonly int h;
     }
 }

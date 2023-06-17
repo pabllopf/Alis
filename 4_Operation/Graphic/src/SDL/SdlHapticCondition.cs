@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The type
         /// </summary>
-        public ushort type;
+        public readonly ushort type;
 
         /// <summary>
         ///     The direction
@@ -52,59 +52,59 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The length
         /// </summary>
-        public uint length;
+        public readonly uint length;
 
         /// <summary>
         ///     The delay
         /// </summary>
-        public ushort delay;
+        public readonly ushort delay;
 
         // Trigger
         /// <summary>
         ///     The button
         /// </summary>
-        public ushort button;
+        public readonly ushort button;
 
         /// <summary>
         ///     The interval
         /// </summary>
-        public ushort interval;
+        public readonly ushort interval;
 
         // Condition
         /// <summary>
         ///     The right sat
         /// </summary>
         [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
-        public ushort[] right_sat;
+        public readonly ushort[] right_sat;
 
         /// <summary>
         ///     The left sat
         /// </summary>
         [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
-        public ushort[] left_sat;
+        public readonly ushort[] left_sat;
 
         /// <summary>
         ///     The right coeff
         /// </summary>
         [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
-        public short[] right_coeff;
+        public readonly short[] right_coeff;
 
         /// <summary>
         ///     The left coeff
         /// </summary>
         [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
-        public short[] left_coeff;
+        public readonly short[] left_coeff;
 
         /// <summary>
         ///     The deadband
         /// </summary>
         [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
-        public ushort[] deadband;
+        public readonly ushort[] deadband;
 
         /// <summary>
         ///     The center
         /// </summary>
         [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
-        public short[] center;
+        public readonly short[] center;
     }
 }

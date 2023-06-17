@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.Text;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Graphic.OpenGL.Enums;
 using static Alis.Core.Graphic.OpenGL.Gl;
 
 namespace Alis.Core.Graphic.OpenGL.Constructs
@@ -46,12 +47,12 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         ///     Specifies whether this program will dispose of the child
         ///     vertex/fragment programs when the IDisposable method is called.
         /// </summary>
-        public bool DisposeChildren;
+        public readonly bool DisposeChildren;
 
         /// <summary>
         ///     Specifies the fragment shader used in this program.
         /// </summary>
-        public GlShader FragmentShader;
+        public readonly GlShader FragmentShader;
 
         /// <summary>
         ///     Specifies the OpenGL shader program ID.
@@ -66,7 +67,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// <summary>
         ///     Specifies the vertex shader used in this program.
         /// </summary>
-        public GlShader VertexShader;
+        public readonly GlShader VertexShader;
 
         /// <summary>
         ///     Links a vertex and fragment shader together to create a shader program.
@@ -77,12 +78,12 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         {
             VertexShader = vertexShader;
             FragmentShader = fragmentShader;
-            ProgramId = glCreateProgram();
+            ProgramId = GlCreateProgram();
             DisposeChildren = false;
 
-            glAttachShader(ProgramId, vertexShader.ShaderId);
-            glAttachShader(ProgramId, fragmentShader.ShaderId);
-            glLinkProgram(ProgramId);
+            GlAttachShader(ProgramId, vertexShader.ShaderId);
+            GlAttachShader(ProgramId, fragmentShader.ShaderId);
+            GlLinkProgram(ProgramId);
 
             //Check whether the program linked successfully.
             //If not then throw an error with the linking error.
@@ -136,13 +137,13 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
             int[] actualLength = new int[1];
             int[] arraySize = new int[1];
 
-            glGetProgramiv(ProgramId, ProgramParameter.ActiveAttributes, resources);
+            GlGetProgramiv(ProgramId, ProgramParameter.ActiveAttributes, resources);
 
             for (uint i = 0; i < resources[0]; i++)
             {
                 ActiveAttribType[] type = new ActiveAttribType[1];
                 StringBuilder sb = new StringBuilder(256);
-                glGetActiveAttrib(ProgramId, i, 256, actualLength, arraySize, type, sb);
+                GlGetActiveAttrib(ProgramId, i, 256, actualLength, arraySize, type, sb);
 
                 if (!shaderParams.ContainsKey(sb.ToString()))
                 {
@@ -152,13 +153,13 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
                 }
             }
 
-            glGetProgramiv(ProgramId, ProgramParameter.ActiveUniforms, resources);
+            GlGetProgramiv(ProgramId, ProgramParameter.ActiveUniforms, resources);
 
             for (uint i = 0; i < resources[0]; i++)
             {
                 ActiveUniformType[] type = new ActiveUniformType[1];
                 StringBuilder sb = new StringBuilder(256);
-                glGetActiveUniform(ProgramId, i, 256, actualLength, arraySize, type, sb);
+                GlGetActiveUniform(ProgramId, i, 256, actualLength, arraySize, type, sb);
 
                 if (!shaderParams.ContainsKey(sb.ToString()))
                 {
@@ -267,7 +268,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// <summary>
         ///     Uses this instance
         /// </summary>
-        public void Use() => glUseProgram(ProgramId);
+        public void Use() => GlUseProgram(ProgramId);
 
         /// <summary>
         ///     Gets the uniform location using the specified name
@@ -277,7 +278,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public int GetUniformLocation(string name)
         {
             Use();
-            return glGetUniformLocation(ProgramId, name);
+            return GlGetUniformLocation(ProgramId, name);
         }
 
         /// <summary>
@@ -288,7 +289,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public int GetAttributeLocation(string name)
         {
             Use();
-            return glGetAttribLocation(ProgramId, name);
+            return GlGetAttribLocation(ProgramId, name);
         }
 
         /// <summary>
@@ -303,11 +304,11 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         {
             if (ProgramId != 0)
             {
-                glUseProgram(0);
+                GlUseProgram(0);
 
-                glDetachShader(ProgramId, VertexShader.ShaderId);
-                glDetachShader(ProgramId, FragmentShader.ShaderId);
-                glDeleteProgram(ProgramId);
+                GlDetachShader(ProgramId, VertexShader.ShaderId);
+                GlDetachShader(ProgramId, FragmentShader.ShaderId);
+                GlDeleteProgram(ProgramId);
 
                 if (DisposeChildren)
                 {

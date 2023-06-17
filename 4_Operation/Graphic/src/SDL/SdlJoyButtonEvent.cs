@@ -40,27 +40,27 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The type
         /// </summary>
-        public SdlEventType type;
+        public readonly SdlEventType type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public uint timestamp;
+        public readonly uint timestamp;
 
         /// <summary>
         ///     The which
         /// </summary>
-        public int which; /* SDL_JoystickID */
+        public readonly int which; /* SDL_JoystickID */
 
         /// <summary>
         ///     The button
         /// </summary>
-        public byte button;
+        public readonly byte button;
 
         /// <summary>
         ///     The state
         /// </summary>
-        public byte state; /* SDL_PRESSED or SDL_RELEASED */
+        public readonly byte state; /* SDL_PRESSED or SDL_RELEASED */
 
         /// <summary>
         ///     The padding

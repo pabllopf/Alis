@@ -40,17 +40,17 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The type
         /// </summary>
-        public SdlEventType type;
+        public readonly SdlEventType type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public uint timestamp;
+        public readonly uint timestamp;
 
         /// <summary>
         ///     The window id
         /// </summary>
-        public uint windowID;
+        public readonly uint windowID;
 
         /// <summary>
         ///     The byte
@@ -215,7 +215,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     Gets or sets the value of the text
         /// </summary>
-        public byte[] text
+        public byte[] Text
         {
             get
             {

@@ -228,12 +228,12 @@ namespace Alis.Core.Graphic.SFML.Windows
             /// <summary>
             ///     The vendor id
             /// </summary>
-            public uint VendorId;
+            public readonly uint VendorId;
 
             /// <summary>
             ///     The product id
             /// </summary>
-            public uint ProductId;
+            public readonly uint ProductId;
         }
     }
 }

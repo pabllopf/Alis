@@ -41,37 +41,37 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The freq
         /// </summary>
-        public int freq;
+        public readonly int freq;
 
         /// <summary>
         ///     The format
         /// </summary>
-        public ushort format; // SDL_AudioFormat
+        public readonly ushort format; // SDL_AudioFormat
 
         /// <summary>
         ///     The channels
         /// </summary>
-        public byte channels;
+        public readonly byte channels;
 
         /// <summary>
         ///     The silence
         /// </summary>
-        public byte silence;
+        public readonly byte silence;
 
         /// <summary>
         ///     The samples
         /// </summary>
-        public ushort samples;
+        public readonly ushort samples;
 
         /// <summary>
         ///     The size
         /// </summary>
-        public uint size;
+        public readonly uint size;
 
         /// <summary>
         ///     The callback
         /// </summary>
-        public Sdl.SdlAudioCallback callback;
+        public readonly Sdl.SdlAudioCallback callback;
 
         /// <summary>
         ///     The userdata

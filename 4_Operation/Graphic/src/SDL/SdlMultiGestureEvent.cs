@@ -40,46 +40,46 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The type
         /// </summary>
-        public uint type;
+        public readonly uint type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public uint timestamp;
+        public readonly uint timestamp;
 
         /// <summary>
         ///     The touch id
         /// </summary>
-        public long touchId; // SDL_TouchID
+        public readonly long touchId; // SDL_TouchID
 
         /// <summary>
         ///     The theta
         /// </summary>
-        public float dTheta;
+        public readonly float dTheta;
 
         /// <summary>
         ///     The dist
         /// </summary>
-        public float dDist;
+        public readonly float dDist;
 
         /// <summary>
         ///     The
         /// </summary>
-        public float x;
+        public readonly float x;
 
         /// <summary>
         ///     The
         /// </summary>
-        public float y;
+        public readonly float y;
 
         /// <summary>
         ///     The num fingers
         /// </summary>
-        public ushort numFingers;
+        public readonly ushort numFingers;
 
         /// <summary>
         ///     The padding
         /// </summary>
-        public ushort padding;
+        public readonly ushort padding;
     }
 }

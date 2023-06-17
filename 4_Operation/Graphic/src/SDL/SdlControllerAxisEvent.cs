@@ -40,22 +40,22 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The type
         /// </summary>
-        public SdlEventType type;
+        public readonly SdlEventType type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public uint timestamp;
+        public readonly uint timestamp;
 
         /// <summary>
         ///     The which
         /// </summary>
-        public int which; /* SDL_JoystickID */
+        public readonly int which; /* SDL_JoystickID */
 
         /// <summary>
         ///     The axis
         /// </summary>
-        public byte axis;
+        public readonly byte axis;
 
         /// <summary>
         ///     The padding
@@ -75,7 +75,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The axis value
         /// </summary>
-        public short axisValue; /* value, lolC# */
+        public readonly short axisValue; /* value, lolC# */
 
         /// <summary>
         ///     The padding

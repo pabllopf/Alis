@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Polygon
         /// <summary>
         ///     The triangulation point
         /// </summary>
-        protected List<TriangulationPoint> PointsPrivate = new List<TriangulationPoint>();
+        protected readonly List<TriangulationPoint> PointsPrivate = new List<TriangulationPoint>();
 
         /// <summary>
         ///     The steiner points

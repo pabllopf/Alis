@@ -40,22 +40,22 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The type
         /// </summary>
-        public SdlEventType type;
+        public readonly SdlEventType type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public uint timestamp;
+        public readonly uint timestamp;
 
         /// <summary>
         ///     The window id
         /// </summary>
-        public uint windowID;
+        public readonly uint windowID;
 
         /// <summary>
         ///     The window event
         /// </summary>
-        public SdlWindowEventId windowEvent; // event, lolC#
+        public readonly SdlWindowEventId windowEvent; // event, lolC#
 
         /// <summary>
         ///     The padding
@@ -75,11 +75,11 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The data
         /// </summary>
-        public int data1;
+        public readonly int data1;
 
         /// <summary>
         ///     The data
         /// </summary>
-        public int data2;
+        public readonly int data2;
     }
 }

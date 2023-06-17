@@ -122,24 +122,24 @@ namespace Alis.Core.Graphic.SFML.Windows
                                              " AttributeFlags(" + AttributeFlags + ")";
 
         /// <summary>Depth buffer bits (0 is disabled)</summary>
-        public uint DepthBits;
+        public readonly uint DepthBits;
 
         /// <summary>Stencil buffer bits (0 is disabled)</summary>
-        public uint StencilBits;
+        public readonly uint StencilBits;
 
         /// <summary>Antialiasing level (0 is disabled)</summary>
-        public uint AntialiasingLevel;
+        public readonly uint AntialiasingLevel;
 
         /// <summary>Major number of the context version</summary>
-        public uint MajorVersion;
+        public readonly uint MajorVersion;
 
         /// <summary>Minor number of the context version</summary>
-        public uint MinorVersion;
+        public readonly uint MinorVersion;
 
         /// <summary>The attribute flags to create the context with</summary>
-        public Attribute AttributeFlags;
+        public readonly Attribute AttributeFlags;
 
         /// <summary>Whether the context framebuffer is sRGB capable</summary>
-        public bool SRgbCapable;
+        public readonly bool SRgbCapable;
     }
 }

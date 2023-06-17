@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
     public struct Glyph
     {
         /// <summary>Offset to move horizontally to the next character</summary>
-        public float Advance;
+        public readonly float Advance;
 
         /// <summary>Bounding rectangle of the glyph, in coordinates relative to the baseline</summary>
         public RectangleF Bounds;

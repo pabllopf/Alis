@@ -40,12 +40,12 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The type
         /// </summary>
-        [FieldOffset(0)] public SdlEventType type;
+        [FieldOffset(0)] public readonly SdlEventType type;
 
         /// <summary>
         ///     The type sharp
         /// </summary>
-        [FieldOffset(0)] public SdlEventType typeFSharp;
+        [FieldOffset(0)] public readonly SdlEventType typeFSharp;
 
         /// <summary>
         ///     The display
@@ -465,7 +465,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     Gets or sets the value of the padding
         /// </summary>
-        public byte[] padding
+        public byte[] Padding
         {
             get
             {

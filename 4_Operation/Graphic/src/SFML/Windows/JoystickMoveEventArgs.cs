@@ -38,13 +38,13 @@ namespace Alis.Core.Graphic.SFML.Windows
     public class JoystickMoveEventArgs : EventArgs
     {
         /// <summary>Joystick axis (see JoyAxis enum)</summary>
-        public Axis Axis;
+        public readonly Axis Axis;
 
         /// <summary>Index of the joystick which triggered the event</summary>
-        public uint JoystickId;
+        public readonly uint JoystickId;
 
         /// <summary>Current position of the axis</summary>
-        public float Position;
+        public readonly float Position;
 
         ////////////////////////////////////////////////////////////
         /// <summary>

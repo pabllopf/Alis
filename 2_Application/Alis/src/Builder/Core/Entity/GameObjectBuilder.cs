@@ -31,6 +31,7 @@ using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Component;
+using Alis.Core.Ecs;
 using Alis.Core.Entity;
 
 namespace Alis.Builder.Core.Entity

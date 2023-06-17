@@ -4,227 +4,227 @@
         <name>Alis.Core.Ecs</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Component.ComponentBase">
+        <member name="T:Alis.Core.Ecs.ComponentBase">
             <summary>Define a general component.</summary>
         </member>
-        <member name="P:Alis.Core.Component.ComponentBase.GameObject">
+        <member name="P:Alis.Core.Ecs.ComponentBase.GameObject">
             <summary>
                 Game Object.
             </summary>
         </member>
-        <member name="P:Alis.Core.Component.ComponentBase.IsActive">
+        <member name="P:Alis.Core.Ecs.ComponentBase.IsActive">
             <summary>
                 Gets or sets the value of the is active
             </summary>
         </member>
-        <member name="P:Alis.Core.Component.ComponentBase.Tag">
+        <member name="P:Alis.Core.Ecs.ComponentBase.Tag">
             <summary>
                 Gets or sets the value of the tag
             </summary>
         </member>
-        <member name="P:Alis.Core.Component.ComponentBase.Transform">
+        <member name="P:Alis.Core.Ecs.ComponentBase.Transform">
             <summary>
                 Gets or sets the value of the tag
             </summary>
         </member>
-        <member name="P:Alis.Core.Component.ComponentBase.Destroyed">
+        <member name="P:Alis.Core.Ecs.ComponentBase.Destroyed">
             <summary>
                 Gets or sets the value of the destroyed
             </summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.AttachGameObject(Alis.Core.Entity.GameObjectBase)">
+        <member name="M:Alis.Core.Ecs.ComponentBase.AttachGameObject(Alis.Core.Ecs.GameObjectBase)">
             <summary>
                 Attaches the game object using the specified game object
             </summary>
             <param name="gameObject">The game object</param>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.OnDestroy">
+        <member name="M:Alis.Core.Ecs.ComponentBase.OnDestroy">
             <summary>
                 Ons the destroy
             </summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.Enable">
+        <member name="M:Alis.Core.Ecs.ComponentBase.Enable">
             <summary>Enables this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.Disable">
+        <member name="M:Alis.Core.Ecs.ComponentBase.Disable">
             <summary>Disables this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.Draw">
+        <member name="M:Alis.Core.Ecs.ComponentBase.Draw">
             <summary>
                 Draws this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.Init">
+        <member name="M:Alis.Core.Ecs.ComponentBase.Init">
             <summary>
                 Inits this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.Awake">
+        <member name="M:Alis.Core.Ecs.ComponentBase.Awake">
             <summary>Awakes this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.Start">
+        <member name="M:Alis.Core.Ecs.ComponentBase.Start">
             <summary>Starts this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.BeforeUpdate">
+        <member name="M:Alis.Core.Ecs.ComponentBase.BeforeUpdate">
             <summary>Befores the update.</summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.Update">
+        <member name="M:Alis.Core.Ecs.ComponentBase.Update">
             <summary>Updates this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.AfterUpdate">
+        <member name="M:Alis.Core.Ecs.ComponentBase.AfterUpdate">
             <summary>Afters the update.</summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.FixedUpdate">
+        <member name="M:Alis.Core.Ecs.ComponentBase.FixedUpdate">
             <summary>Fixeds the update.</summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.DispatchEvents">
+        <member name="M:Alis.Core.Ecs.ComponentBase.DispatchEvents">
             <summary>
                 Dispatches the events
             </summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.Stop">
+        <member name="M:Alis.Core.Ecs.ComponentBase.Stop">
             <summary>Stops this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.Reset">
+        <member name="M:Alis.Core.Ecs.ComponentBase.Reset">
             <summary>Resets this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.Destroy">
+        <member name="M:Alis.Core.Ecs.ComponentBase.Destroy">
             <summary>
                 Destroys this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.OnPressKey(Alis.Core.Aspect.Base.Mapping.Key)">
+        <member name="M:Alis.Core.Ecs.ComponentBase.OnPressKey(Alis.Core.Aspect.Base.Mapping.Key)">
             <summary>
                 Ons the press key using the specified key
             </summary>
             <param name="key">The key</param>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.OnPressDownKey(Alis.Core.Aspect.Base.Mapping.Key)">
+        <member name="M:Alis.Core.Ecs.ComponentBase.OnPressDownKey(Alis.Core.Aspect.Base.Mapping.Key)">
             <summary>
                 Ons the press down key using the specified key
             </summary>
             <param name="key">The key</param>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.OnReleaseKey(Alis.Core.Aspect.Base.Mapping.Key)">
+        <member name="M:Alis.Core.Ecs.ComponentBase.OnReleaseKey(Alis.Core.Aspect.Base.Mapping.Key)">
             <summary>
                 Ons the release key using the specified key
             </summary>
             <param name="key">The key</param>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.OnPressButton(Alis.Core.Aspect.Base.Mapping.Button,System.Int32)">
+        <member name="M:Alis.Core.Ecs.ComponentBase.OnPressButton(Alis.Core.Aspect.Base.Mapping.Button,System.Int32)">
             <summary>
                 Ons the press button using the specified button
             </summary>
             <param name="button">The button</param>
             <param name="device">The device</param>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.OnPressDownButton(Alis.Core.Aspect.Base.Mapping.Button,System.Int32)">
+        <member name="M:Alis.Core.Ecs.ComponentBase.OnPressDownButton(Alis.Core.Aspect.Base.Mapping.Button,System.Int32)">
             <summary>
                 Ons the press down button using the specified button
             </summary>
             <param name="button">The button</param>
             <param name="device">The device</param>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.OnReleaseButton(Alis.Core.Aspect.Base.Mapping.Button,System.Int32)">
+        <member name="M:Alis.Core.Ecs.ComponentBase.OnReleaseButton(Alis.Core.Aspect.Base.Mapping.Button,System.Int32)">
             <summary>
                 Ons the release button using the specified button
             </summary>
             <param name="button">The button</param>
             <param name="device">The device</param>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.Exit">
+        <member name="M:Alis.Core.Ecs.ComponentBase.Exit">
             <summary>Exits this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.DestroyImmediate">
+        <member name="M:Alis.Core.Ecs.ComponentBase.DestroyImmediate">
             <summary>
                 Destroys the immediate
             </summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.DontDestroyOnLoad">
+        <member name="M:Alis.Core.Ecs.ComponentBase.DontDestroyOnLoad">
             <summary>
                 Donts the destroy on load
             </summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.FindObjectOfType">
+        <member name="M:Alis.Core.Ecs.ComponentBase.FindObjectOfType">
             <summary>
                 Finds the object of type
             </summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.FindObjectsOfType">
+        <member name="M:Alis.Core.Ecs.ComponentBase.FindObjectsOfType">
             <summary>
                 Finds the objects of type
             </summary>
         </member>
-        <member name="T:Alis.Core.Entity.GameObjectBase">
+        <member name="T:Alis.Core.Ecs.GameObjectBase">
             <summary>
                 The game object base class
             </summary>
         </member>
-        <member name="F:Alis.Core.Entity.GameObjectBase.Components">
+        <member name="F:Alis.Core.Ecs.GameObjectBase.Components">
             <summary>
                 The components
             </summary>
         </member>
-        <member name="P:Alis.Core.Entity.GameObjectBase.Transform">
+        <member name="P:Alis.Core.Ecs.GameObjectBase.Transform">
             <summary>
                 The transform
             </summary>
         </member>
-        <member name="M:Alis.Core.Entity.GameObjectBase.AddComponent``1(``0)">
+        <member name="M:Alis.Core.Ecs.GameObjectBase.AddComponent``1(``0)">
             <summary>
                 Adds the component
             </summary>
             <param name="component">The component</param>
         </member>
-        <member name="M:Alis.Core.Entity.GameObjectBase.RemoveComponent``1(``0)">
+        <member name="M:Alis.Core.Ecs.GameObjectBase.RemoveComponent``1(``0)">
             <summary>
                 Removes the component
             </summary>
             <param name="component">The component</param>
         </member>
-        <member name="M:Alis.Core.Entity.GameObjectBase.ContainComponent(Alis.Core.Component.ComponentBase)">
+        <member name="M:Alis.Core.Ecs.GameObjectBase.ContainComponent(Alis.Core.Ecs.ComponentBase)">
             <summary>
                 Describes whether this instance contain component
             </summary>
             <param name="component">The component</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Entity.GameObjectBase.GetComponent``1">
+        <member name="M:Alis.Core.Ecs.GameObjectBase.GetComponent``1">
             <summary>
                 Gets the component
             </summary>
             <typeparam name="T">The </typeparam>
             <returns>The</returns>
         </member>
-        <member name="M:Alis.Core.Entity.GameObjectBase.Contains``1">
+        <member name="M:Alis.Core.Ecs.GameObjectBase.Contains``1">
             <summary>
                 Describes whether this instance contains
             </summary>
             <typeparam name="T">The </typeparam>
             <returns>The bool</returns>
         </member>
-        <member name="T:Alis.Core.Entity.SceneBase">
+        <member name="T:Alis.Core.Ecs.SceneBase">
             <summary>
                 The scene base class
             </summary>
             <seealso cref="T:Alis.Core.Aspect.Base.AlisObject" />
         </member>
-        <member name="T:Alis.Core.Entity.TransformBase">
+        <member name="T:Alis.Core.Ecs.TransformBase">
             <summary>
                 The transform base class
             </summary>
         </member>
-        <member name="P:Alis.Core.Entity.TransformBase.Position">
+        <member name="P:Alis.Core.Ecs.TransformBase.Position">
             <summary>
                 The position
             </summary>
         </member>
-        <member name="P:Alis.Core.Entity.TransformBase.Rotation">
+        <member name="P:Alis.Core.Ecs.TransformBase.Rotation">
             <summary>
                 The rotation
             </summary>
         </member>
-        <member name="P:Alis.Core.Entity.TransformBase.Scale">
+        <member name="P:Alis.Core.Ecs.TransformBase.Scale">
             <summary>
                 The scale
             </summary>

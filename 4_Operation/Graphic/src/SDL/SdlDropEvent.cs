@@ -41,12 +41,12 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The type
         /// </summary>
-        public SdlEventType type;
+        public readonly SdlEventType type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public uint timestamp;
+        public readonly uint timestamp;
 
         /* char* filename, to be freed.
              * Access the variable EXACTLY ONCE like this:
@@ -60,6 +60,6 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The window id
         /// </summary>
-        public uint windowID;
+        public readonly uint windowID;
     }
 }

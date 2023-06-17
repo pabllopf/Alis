@@ -28,9 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Base.Mapping;
-using Alis.Core.Entity;
 
-namespace Alis.Core.Component
+namespace Alis.Core.Ecs
 {
     /// <summary>Define a general component.</summary>
     public abstract class ComponentBase

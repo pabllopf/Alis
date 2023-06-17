@@ -40,27 +40,27 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The type
         /// </summary>
-        public SdlEventType type;
+        public readonly SdlEventType type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public uint timestamp;
+        public readonly uint timestamp;
 
         /// <summary>
         ///     The window id
         /// </summary>
-        public uint windowID;
+        public readonly uint windowID;
 
         /// <summary>
         ///     The which
         /// </summary>
-        public uint which;
+        public readonly uint which;
 
         /// <summary>
         ///     The state
         /// </summary>
-        public byte state; /* bitmask of buttons */
+        public readonly byte state; /* bitmask of buttons */
 
         /// <summary>
         ///     The padding
@@ -80,21 +80,21 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The
         /// </summary>
-        public int x;
+        public readonly int x;
 
         /// <summary>
         ///     The
         /// </summary>
-        public int y;
+        public readonly int y;
 
         /// <summary>
         ///     The xrel
         /// </summary>
-        public int xrel;
+        public readonly int xrel;
 
         /// <summary>
         ///     The yrel
         /// </summary>
-        public int yrel;
+        public readonly int yrel;
     }
 }

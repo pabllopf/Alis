@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Component;
+using Alis.Core.Ecs;
 
 namespace Alis.Builder.Core.Component
 {

@@ -38,10 +38,10 @@ namespace Alis.Core.Graphic.SFML.Windows
     public class SizeEventArgs : EventArgs
     {
         /// <summary>New height of the window</summary>
-        public uint Height;
+        public readonly uint Height;
 
         /// <summary>New width of the window</summary>
-        public uint Width;
+        public readonly uint Width;
 
         ////////////////////////////////////////////////////////////
         /// <summary>

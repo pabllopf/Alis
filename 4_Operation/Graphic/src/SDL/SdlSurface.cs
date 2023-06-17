@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The flags
         /// </summary>
-        public uint flags;
+        public readonly uint flags;
 
         /// <summary>
         ///     The format
@@ -51,17 +51,17 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The
         /// </summary>
-        public int w;
+        public readonly int w;
 
         /// <summary>
         ///     The
         /// </summary>
-        public int h;
+        public readonly int h;
 
         /// <summary>
         ///     The pitch
         /// </summary>
-        public int pitch;
+        public readonly int pitch;
 
         /// <summary>
         ///     The pixels
@@ -76,7 +76,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The locked
         /// </summary>
-        public int locked;
+        public readonly int locked;
 
         /// <summary>
         ///     The list blitmap
@@ -96,6 +96,6 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The refcount
         /// </summary>
-        public int refcount;
+        public readonly int refcount;
     }
 }

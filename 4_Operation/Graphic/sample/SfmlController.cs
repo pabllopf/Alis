@@ -58,12 +58,12 @@ namespace Alis.Core.Graphic.Sample
         /// <summary>
         ///     The axis
         /// </summary>
-        public List<Axis> axis = new List<Axis>((Axis[]) Enum.GetValues(typeof(Axis)));
+        public readonly List<Axis> Axis = new List<Axis>((Axis[]) Enum.GetValues(typeof(Axis)));
 
         /// <summary>
         ///     The key
         /// </summary>
-        public List<Key> keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
+        public readonly List<Key> Keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
 
         /// <summary>
         ///     The width
@@ -107,9 +107,9 @@ namespace Alis.Core.Graphic.Sample
                     break;
                 }
 
-                for (int index = 0; index < keys.Count - 7; index++)
+                for (int index = 0; index < Keys.Count - 7; index++)
                 {
-                    Key key = keys[index];
+                    Key key = Keys[index];
                     if (Keyboard.IsKeyPressed(key))
                     {
                         Console.WriteLine($" {key}");
@@ -271,7 +271,7 @@ namespace Alis.Core.Graphic.Sample
 
 
                     float tolerencie = 50.0f;
-                    foreach (Axis axisId in axis)
+                    foreach (Axis axisId in Axis)
                     {
                         if (Joystick.HasAxis(i, axisId))
                         {

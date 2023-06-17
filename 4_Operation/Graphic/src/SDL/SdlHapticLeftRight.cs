@@ -41,23 +41,23 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The type
         /// </summary>
-        public ushort type;
+        public readonly ushort type;
 
         // Replay
         /// <summary>
         ///     The length
         /// </summary>
-        public uint length;
+        public readonly uint length;
 
         // Rumble
         /// <summary>
         ///     The large magnitude
         /// </summary>
-        public ushort large_magnitude;
+        public readonly ushort large_magnitude;
 
         /// <summary>
         ///     The small magnitude
         /// </summary>
-        public ushort small_magnitude;
+        public readonly ushort small_magnitude;
     }
 }

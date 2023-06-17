@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The max manifold points
         /// </summary>
-        public VelocityConstraintPoint[] Points = new VelocityConstraintPoint[Settings.ManifoldPoints];
+        public readonly VelocityConstraintPoint[] Points = new VelocityConstraintPoint[Settings.ManifoldPoints];
 
         /// <summary>
         ///     The restitution

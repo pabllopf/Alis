@@ -40,22 +40,22 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The type
         /// </summary>
-        public uint type;
+        public readonly uint type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public uint timestamp;
+        public readonly uint timestamp;
 
         /// <summary>
         ///     The which
         /// </summary>
-        public uint which;
+        public readonly uint which;
 
         /// <summary>
         ///     The iscapture
         /// </summary>
-        public byte iscapture;
+        public readonly byte iscapture;
 
         /// <summary>
         ///     The padding

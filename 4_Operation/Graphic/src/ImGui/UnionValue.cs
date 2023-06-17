@@ -41,12 +41,12 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The value 32
         /// </summary>
-        [FieldOffset(0)] public int ValueI32;
+        [FieldOffset(0)] public readonly int ValueI32;
 
         /// <summary>
         ///     The value 32
         /// </summary>
-        [FieldOffset(0)] public float ValueF32;
+        [FieldOffset(0)] public readonly float ValueF32;
 
         /// <summary>
         ///     The value ptr

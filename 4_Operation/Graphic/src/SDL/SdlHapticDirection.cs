@@ -40,12 +40,12 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The type
         /// </summary>
-        public byte type;
+        public readonly byte type;
 
         /// <summary>
         ///     The dir
         /// </summary>
         [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
-        public int[] dir;
+        public readonly int[] dir;
     }
 }

@@ -29,9 +29,8 @@
 
 using System.Collections.Generic;
 using Alis.Core.Aspect.Base;
-using Alis.Core.Component;
 
-namespace Alis.Core.Entity
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     The game object base class

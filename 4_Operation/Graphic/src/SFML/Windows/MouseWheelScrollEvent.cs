@@ -39,15 +39,15 @@ namespace Alis.Core.Graphic.SFML.Windows
     public struct MouseWheelScrollEvent
     {
         /// <summary>Mouse Wheel which triggered the event</summary>
-        public Mouse.Wheel Wheel;
+        public readonly Mouse.Wheel Wheel;
 
         /// <summary>Scroll amount</summary>
-        public float Delta;
+        public readonly float Delta;
 
         /// <summary>X coordinate of the mouse cursor</summary>
-        public int X;
+        public readonly int X;
 
         /// <summary>Y coordinate of the mouse cursor</summary>
-        public int Y;
+        public readonly int Y;
     }
 }

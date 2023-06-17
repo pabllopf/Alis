@@ -40,27 +40,27 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The type
         /// </summary>
-        public SdlEventType type;
+        public readonly SdlEventType type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public uint timestamp;
+        public readonly uint timestamp;
 
         /// <summary>
         ///     The which
         /// </summary>
-        public int which; /* SDL_JoystickID */
+        public readonly int which; /* SDL_JoystickID */
 
         /// <summary>
         ///     The hat
         /// </summary>
-        public byte hat; /* index of the hat */
+        public readonly byte hat; /* index of the hat */
 
         /// <summary>
         ///     The hat value
         /// </summary>
-        public byte hatValue; /* value, lolC# */
+        public readonly byte hatValue; /* value, lolC# */
 
         /// <summary>
         ///     The padding

@@ -41,7 +41,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Wind
     public abstract class AbstractForceController : Controller
     {
         /// <summary>Curve to be used for Decay in Curve mode</summary>
-        public Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve.Curve DecayCurve;
+        public readonly Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve.Curve DecayCurve;
 
         /// <summary>The Forcetype of the instance</summary>
         public ForceTypes ForceType;
@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Wind
         ///     Curve used by Curve Mode as an animated multiplier for the force strength. Only positions between 0 and 1 are
         ///     considered as that range is stretched to have ImpulseLength.
         /// </summary>
-        public Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve.Curve StrengthCurve;
+        public readonly Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve.Curve StrengthCurve;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AbstractForceController" /> class

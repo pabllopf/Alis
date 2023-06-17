@@ -40,52 +40,52 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The type
         /// </summary>
-        public SdlEventType type;
+        public readonly SdlEventType type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public uint timestamp;
+        public readonly uint timestamp;
 
         /// <summary>
         ///     The which
         /// </summary>
-        public int which;
+        public readonly int which;
 
         /// <summary>
         ///     The data
         /// </summary>
-        public float float0;
+        public readonly float float0;
 
         /// <summary>
         ///     The data
         /// </summary>
-        public float float1;
+        public readonly float float1;
 
         /// <summary>
         ///     The data
         /// </summary>
-        public float float2;
+        public readonly float float2;
 
         /// <summary>
         ///     The data
         /// </summary>
-        public float float3;
+        public readonly float float3;
 
         /// <summary>
         ///     The data
         /// </summary>
-        public float float4;
+        public readonly float float4;
 
         /// <summary>
         ///     The data
         /// </summary>
-        public float float5;
+        public readonly float float5;
 
         /// <summary>
         ///     Gets or sets the value of the text
         /// </summary>
-        public float[] data
+        public float[] Data
         {
             get
             {

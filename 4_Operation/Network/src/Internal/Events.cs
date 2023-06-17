@@ -44,7 +44,7 @@ namespace Alis.Core.Network.Internal
         /// <summary>
         ///     The events
         /// </summary>
-        public static Events Log = new Events();
+        public static readonly Events Log = new Events();
 
         /// <summary>
         ///     Clients the connecting to ip address using the specified guid

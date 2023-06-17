@@ -40,36 +40,36 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The type
         /// </summary>
-        public uint type;
+        public readonly uint type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public uint timestamp;
+        public readonly uint timestamp;
 
         /// <summary>
         ///     The which
         /// </summary>
-        public int which; /* SDL_JoystickID */
+        public readonly int which; /* SDL_JoystickID */
 
         /// <summary>
         ///     The sensor
         /// </summary>
-        public int sensor;
+        public readonly int sensor;
 
         /// <summary>
         ///     The data
         /// </summary>
-        public float data1;
+        public readonly float data1;
 
         /// <summary>
         ///     The data
         /// </summary>
-        public float data2;
+        public readonly float data2;
 
         /// <summary>
         ///     The data
         /// </summary>
-        public float data3;
+        public readonly float data3;
     }
 }

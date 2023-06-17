@@ -40,6 +40,16 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The
         /// </summary>
-        public byte r, g, b;
+        public readonly byte r;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public readonly byte g;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public readonly byte b;
     }
 }

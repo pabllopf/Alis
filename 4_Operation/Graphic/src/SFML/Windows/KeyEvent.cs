@@ -40,18 +40,18 @@ namespace Alis.Core.Graphic.SFML.Windows
     public struct KeyEvent
     {
         /// <summary>Code of the key (see KeyCode enum)</summary>
-        public Key Code;
+        public readonly Key Code;
 
         /// <summary>Is the Alt modifier pressed?</summary>
-        public int Alt;
+        public readonly int Alt;
 
         /// <summary>Is the Control modifier pressed?</summary>
-        public int Control;
+        public readonly int Control;
 
         /// <summary>Is the Shift modifier pressed?</summary>
-        public int Shift;
+        public readonly int Shift;
 
         /// <summary>Is the System modifier pressed?</summary>
-        public int System;
+        public readonly int System;
     }
 }

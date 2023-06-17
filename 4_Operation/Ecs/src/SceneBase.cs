@@ -29,7 +29,7 @@
 
 using Alis.Core.Aspect.Base;
 
-namespace Alis.Core.Entity
+namespace Alis.Core.Ecs
 {
     /// <summary>
     ///     The scene base class

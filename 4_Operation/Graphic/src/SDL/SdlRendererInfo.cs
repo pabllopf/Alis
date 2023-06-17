@@ -46,107 +46,107 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The flags
         /// </summary>
-        public uint flags;
+        public readonly uint flags;
 
         /// <summary>
         ///     The num texture formats
         /// </summary>
-        public uint num_texture_formats;
+        public readonly uint num_texture_formats;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public int textureFormats0;
+        public readonly int textureFormats0;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public int textureFormats1;
+        public readonly int textureFormats1;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public int textureFormats2;
+        public readonly int textureFormats2;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public int textureFormats3;
+        public readonly int textureFormats3;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public int textureFormats4;
+        public readonly int textureFormats4;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public int textureFormats5;
+        public readonly int textureFormats5;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public int textureFormats6;
+        public readonly int textureFormats6;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public int textureFormats7;
+        public readonly int textureFormats7;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public int textureFormats8;
+        public readonly int textureFormats8;
 
         /// <summary>
         ///     The texture formats
         /// </summary>
-        public int textureFormats9;
+        public readonly int textureFormats9;
 
         /// <summary>
         ///     The texture formats 10
         /// </summary>
-        public int textureFormats10;
+        public readonly int textureFormats10;
 
         /// <summary>
         ///     The texture formats 11
         /// </summary>
-        public int textureFormats11;
+        public readonly int textureFormats11;
 
         /// <summary>
         ///     The texture formats 12
         /// </summary>
-        public int textureFormats12;
+        public readonly int textureFormats12;
 
         /// <summary>
         ///     The texture formats 13
         /// </summary>
-        public int textureFormats13;
+        public readonly int textureFormats13;
 
         /// <summary>
         ///     The texture formats 14
         /// </summary>
-        public int textureFormats14;
+        public readonly int textureFormats14;
 
         /// <summary>
         ///     The texture formats 15
         /// </summary>
-        public int textureFormats15;
+        public readonly int textureFormats15;
 
         /// <summary>
         ///     The max texture width
         /// </summary>
-        public int max_texture_width;
+        public readonly int max_texture_width;
 
         /// <summary>
         ///     The max texture height
         /// </summary>
-        public int max_texture_height;
+        public readonly int max_texture_height;
 
         /// <summary>
         ///     Gets or sets the value of the text
         /// </summary>
-        public int[] texture_formats
+        public int[] TextureFormats
         {
             get
             {

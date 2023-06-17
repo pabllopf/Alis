@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The type
         /// </summary>
-        public ushort type;
+        public readonly ushort type;
 
         /// <summary>
         ///     The direction
@@ -52,54 +52,54 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The length
         /// </summary>
-        public uint length;
+        public readonly uint length;
 
         /// <summary>
         ///     The delay
         /// </summary>
-        public ushort delay;
+        public readonly ushort delay;
 
         // Trigger
         /// <summary>
         ///     The button
         /// </summary>
-        public ushort button;
+        public readonly ushort button;
 
         /// <summary>
         ///     The interval
         /// </summary>
-        public ushort interval;
+        public readonly ushort interval;
 
         // Ramp
         /// <summary>
         ///     The start
         /// </summary>
-        public short start;
+        public readonly short start;
 
         /// <summary>
         ///     The end
         /// </summary>
-        public short end;
+        public readonly short end;
 
         // Envelope
         /// <summary>
         ///     The attack length
         /// </summary>
-        public ushort attack_length;
+        public readonly ushort attack_length;
 
         /// <summary>
         ///     The attack level
         /// </summary>
-        public ushort attack_level;
+        public readonly ushort attack_level;
 
         /// <summary>
         ///     The fade length
         /// </summary>
-        public ushort fade_length;
+        public readonly ushort fade_length;
 
         /// <summary>
         ///     The fade level
         /// </summary>
-        public ushort fade_level;
+        public readonly ushort fade_level;
     }
 }

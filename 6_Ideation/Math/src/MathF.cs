@@ -38,7 +38,7 @@ namespace Alis.Core.Aspect.Math
         public const float E = 2.7182817f;
 
         /// <summary>Represents the ratio of the circumference of a circle to its diameter, specified by the constant, p.</summary>
-        public const float PI = 3.1415927f;
+        public const float Pi = 3.1415927f;
 
         /// <summary>Represents the number of radians in one turn, specified by the constant, τ.</summary>
         public const float Tau = 6.2831855f;
@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Math
             }
 
             // Normalize the angle to the range [0, 2π]
-            x %= 2 * PI;
+            x %= 2 * Pi;
 
             float result = 1.0f;
             float term = 1.0f;
@@ -125,16 +125,16 @@ namespace Alis.Core.Aspect.Math
             }
 
             // Normalize the angle to the range [-π, π]
-            x %= 2 * PI;
+            x %= 2 * Pi;
 
             // Reduce the angle to the range [-π/2, π/2] by using sin(x) = sin(π - x) for x > π/2
-            if (x > PI / 2)
+            if (x > Pi / 2)
             {
-                x = PI - x;
+                x = Pi - x;
             }
-            else if (x < -PI / 2)
+            else if (x < -Pi / 2)
             {
-                x = -PI - x;
+                x = -Pi - x;
             }
 
             float result = x;
@@ -161,7 +161,7 @@ namespace Alis.Core.Aspect.Math
                 return float.NaN;
             }
 
-            float angle = PI / 2; // Initial guess of pi/2
+            float angle = Pi / 2; // Initial guess of pi/2
             float term = x;
             float factor = x;
             float squared = x * x;

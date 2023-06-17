@@ -67,7 +67,7 @@ namespace Alis.Core.Graphic.SFML.Windows
     public struct Event
     {
         /// <summary>Type of event (see EventType enum)</summary>
-        [FieldOffset(0)] public EventType Type;
+        [FieldOffset(0)] public readonly EventType Type;
 
         /// <summary>Arguments for size events (Resized)</summary>
         [FieldOffset(4)] public SizeEvent Size;

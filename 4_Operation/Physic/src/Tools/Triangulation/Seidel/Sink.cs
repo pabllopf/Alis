@@ -38,7 +38,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// <summary>
         ///     The trapezoid
         /// </summary>
-        public Trapezoid Trapezoid;
+        public readonly Trapezoid Trapezoid;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sink" /> class

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Graphic.OpenGL.Enums;
 using static Alis.Core.Graphic.OpenGL.Gl;
 
 namespace Alis.Core.Graphic.OpenGL.Constructs
@@ -47,10 +48,10 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public GlShader(string source, ShaderType type)
         {
             ShaderType = type;
-            ShaderId = glCreateShader(type);
+            ShaderId = GlCreateShader(type);
 
             ShaderSource(ShaderId, source);
-            glCompileShader(ShaderId);
+            GlCompileShader(ShaderId);
 
             if (!GetShaderCompileStatus(ShaderId))
             {
@@ -98,7 +99,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         {
             if (ShaderId != 0)
             {
-                glDeleteShader(ShaderId);
+                GlDeleteShader(ShaderId);
                 ShaderId = 0;
             }
         }

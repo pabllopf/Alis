@@ -118,13 +118,13 @@ namespace Alis.Core.Graphic.SFML.Windows
                                              " BitsPerPixel(" + BitsPerPixel + ")";
 
         /// <summary>Video mode width, in pixels</summary>
-        public uint Width;
+        public readonly uint Width;
 
         /// <summary>Video mode height, in pixels</summary>
-        public uint Height;
+        public readonly uint Height;
 
         /// <summary>Video mode depth, in bits per pixel</summary>
-        public uint BitsPerPixel;
+        public readonly uint BitsPerPixel;
 
         /// <summary>
         ///     Sfs the video mode get desktop mode

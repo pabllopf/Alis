@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>
         ///     The pi
         /// </summary>
-        private const float BillboardMinAngle = 1.0f - 0.1f * (MathF.PI / 180.0f); // 0.1 degrees
+        private const float BillboardMinAngle = 1.0f - 0.1f * (MathF.Pi / 180.0f); // 0.1 degrees
 
         /// <summary>
         ///     The decompose epsilon
@@ -69,37 +69,37 @@ namespace Alis.Core.Aspect.Math.Matrix
         public float M11;
 
         /// <summary>The second element of the first row.</summary>
-        public float M12;
+        public readonly float M12;
 
         /// <summary>The third element of the first row.</summary>
-        public float M13;
+        public readonly float M13;
 
         /// <summary>The fourth element of the first row.</summary>
-        public float M14;
+        public readonly float M14;
 
         /// <summary>The first element of the second row.</summary>
-        public float M21;
+        public readonly float M21;
 
         /// <summary>The second element of the second row.</summary>
         public float M22;
 
         /// <summary>The third element of the second row.</summary>
-        public float M23;
+        public readonly float M23;
 
         /// <summary>The fourth element of the second row.</summary>
-        public float M24;
+        public readonly float M24;
 
         /// <summary>The first element of the third row.</summary>
-        public float M31;
+        public readonly float M31;
 
         /// <summary>The second element of the third row.</summary>
-        public float M32;
+        public readonly float M32;
 
         /// <summary>The third element of the third row.</summary>
         public float M33;
 
         /// <summary>The fourth element of the third row.</summary>
-        public float M34;
+        public readonly float M34;
 
         /// <summary>The first element of the fourth row.</summary>
         public float M41;
@@ -111,7 +111,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         public float M43;
 
         /// <summary>The fourth element of the fourth row.</summary>
-        public float M44;
+        public readonly float M44;
 
         /// <summary>Creates a 4x4 matrix from the specified components.</summary>
         /// <param name="m11">The value to assign to the first element in the first row.</param>

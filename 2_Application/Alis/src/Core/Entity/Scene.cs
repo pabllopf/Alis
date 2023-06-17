@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Ecs;
 
 namespace Alis.Core.Entity
 {
@@ -40,7 +41,7 @@ namespace Alis.Core.Entity
         /// <summary>
         ///     The game objects
         /// </summary>
-        internal List<GameObject> GameObjects;
+        internal readonly List<GameObject> GameObjects;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Scene" /> class

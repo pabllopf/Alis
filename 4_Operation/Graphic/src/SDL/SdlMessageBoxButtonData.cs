@@ -40,16 +40,16 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The flags
         /// </summary>
-        public SdlMessageBoxButtonFlags flags;
+        public readonly SdlMessageBoxButtonFlags flags;
 
         /// <summary>
         ///     The buttonid
         /// </summary>
-        public int buttonid;
+        public readonly int buttonid;
 
         /// <summary>
         ///     The text
         /// </summary>
-        public string text; /* The UTF-8 button text */
+        public readonly string text; /* The UTF-8 button text */
     }
 }

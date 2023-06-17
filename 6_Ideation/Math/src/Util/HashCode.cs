@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// <summary>
         ///     The generate global seed
         /// </summary>
-        private static readonly uint s_seed = GenerateGlobalSeed();
+        private static readonly uint SSeed = GenerateGlobalSeed();
 
         /// <summary>
         ///     The prime
@@ -391,10 +391,10 @@ namespace Alis.Core.Aspect.Math.Util
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static void Initialize(out uint v1, out uint v2, out uint v3, out uint v4)
         {
-            v1 = s_seed + Prime1 + Prime2;
-            v2 = s_seed + Prime2;
-            v3 = s_seed;
-            v4 = s_seed - Prime1;
+            v1 = SSeed + Prime1 + Prime2;
+            v2 = SSeed + Prime2;
+            v3 = SSeed;
+            v4 = SSeed - Prime1;
         }
 
         /// <summary>
@@ -439,7 +439,7 @@ namespace Alis.Core.Aspect.Math.Util
         ///     Mixes the empty state
         /// </summary>
         /// <returns>The uint</returns>
-        private static uint MixEmptyState() => s_seed + Prime5;
+        private static uint MixEmptyState() => SSeed + Prime5;
 
         /// <summary>
         ///     Mixes the final using the specified hash

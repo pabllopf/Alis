@@ -54,12 +54,12 @@ namespace Alis.Core.Aspect.Math.Vector
         }
 
         /// <summary>Horizontal component of the vector</summary>
-        public int X;
+        public readonly int X;
 
         /// <summary>Vertical component of the vector</summary>
-        public int Y;
+        public readonly int Y;
 
         /// <summary>Depth component of the vector</summary>
-        public int Z;
+        public readonly int Z;
     }
 }

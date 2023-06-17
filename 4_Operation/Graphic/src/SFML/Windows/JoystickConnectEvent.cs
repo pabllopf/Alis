@@ -39,6 +39,6 @@ namespace Alis.Core.Graphic.SFML.Windows
     public struct JoystickConnectEvent
     {
         /// <summary>Index of the joystick which triggered the event</summary>
-        public uint JoystickId;
+        public readonly uint JoystickId;
     }
 }

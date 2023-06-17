@@ -43,7 +43,12 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// <summary>
         ///     The
         /// </summary>
-        public float X, Y;
+        public readonly float X;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public readonly float Y;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Point" /> class

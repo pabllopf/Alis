@@ -110,12 +110,12 @@
                 The blue
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.Sample.SfmlController.axis">
+        <member name="F:Alis.Core.Graphic.Sample.SfmlController.Axis">
             <summary>
                 The axis
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.Sample.SfmlController.keys">
+        <member name="F:Alis.Core.Graphic.Sample.SfmlController.Keys">
             <summary>
                 The key
             </summary>

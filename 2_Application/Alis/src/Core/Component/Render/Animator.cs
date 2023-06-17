@@ -31,6 +31,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Builder.Core.Component.Render;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Ecs;
 
 namespace Alis.Core.Component.Render
 {

@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The format
         /// </summary>
-        public uint format;
+        public readonly uint format;
 
         /// <summary>
         ///     The palette
@@ -51,77 +51,77 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The bits per pixel
         /// </summary>
-        public byte BitsPerPixel;
+        public readonly byte BitsPerPixel;
 
         /// <summary>
         ///     The bytes per pixel
         /// </summary>
-        public byte BytesPerPixel;
+        public readonly byte BytesPerPixel;
 
         /// <summary>
         ///     The rmask
         /// </summary>
-        public uint Rmask;
+        public readonly uint Rmask;
 
         /// <summary>
         ///     The gmask
         /// </summary>
-        public uint Gmask;
+        public readonly uint Gmask;
 
         /// <summary>
         ///     The bmask
         /// </summary>
-        public uint Bmask;
+        public readonly uint Bmask;
 
         /// <summary>
         ///     The amask
         /// </summary>
-        public uint Amask;
+        public readonly uint Amask;
 
         /// <summary>
         ///     The rloss
         /// </summary>
-        public byte Rloss;
+        public readonly byte Rloss;
 
         /// <summary>
         ///     The gloss
         /// </summary>
-        public byte Gloss;
+        public readonly byte Gloss;
 
         /// <summary>
         ///     The bloss
         /// </summary>
-        public byte Bloss;
+        public readonly byte Bloss;
 
         /// <summary>
         ///     The aloss
         /// </summary>
-        public byte Aloss;
+        public readonly byte Aloss;
 
         /// <summary>
         ///     The rshift
         /// </summary>
-        public byte Rshift;
+        public readonly byte Rshift;
 
         /// <summary>
         ///     The gshift
         /// </summary>
-        public byte Gshift;
+        public readonly byte Gshift;
 
         /// <summary>
         ///     The bshift
         /// </summary>
-        public byte Bshift;
+        public readonly byte Bshift;
 
         /// <summary>
         ///     The ashift
         /// </summary>
-        public byte Ashift;
+        public readonly byte Ashift;
 
         /// <summary>
         ///     The refcount
         /// </summary>
-        public int refcount;
+        public readonly int refcount;
 
         /// <summary>
         ///     The next

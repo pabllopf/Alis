@@ -40,19 +40,19 @@ namespace Alis.Core.Graphic.SFML.Windows
     public class KeyEventArgs : EventArgs
     {
         /// <summary>Is the Alt modifier pressed?</summary>
-        public bool Alt;
+        public readonly bool Alt;
 
         /// <summary>Code of the key (see KeyCode enum)</summary>
-        public Key Code;
+        public readonly Key Code;
 
         /// <summary>Is the Control modifier pressed?</summary>
-        public bool Control;
+        public readonly bool Control;
 
         /// <summary>Is the Shift modifier pressed?</summary>
-        public bool Shift;
+        public readonly bool Shift;
 
         /// <summary>Is the System modifier pressed?</summary>
-        public bool System;
+        public readonly bool System;
 
         ////////////////////////////////////////////////////////////
         /// <summary>

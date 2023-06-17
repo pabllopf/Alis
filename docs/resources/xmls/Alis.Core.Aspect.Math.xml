@@ -272,7 +272,7 @@
         <member name="F:Alis.Core.Aspect.Math.MathF.E">
             <summary>Represents the natural logarithmic base, specified by the constant, <see langword="e" />.</summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.MathF.PI">
+        <member name="F:Alis.Core.Aspect.Math.MathF.Pi">
             <summary>Represents the ratio of the circumference of a circle to its diameter, specified by the constant, p.</summary>
         </member>
         <member name="F:Alis.Core.Aspect.Math.MathF.Tau">
@@ -480,11 +480,6 @@
         <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix3X2F.RotationEpsilon">
             <summary>
                 The pi
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix3X2F._identity">
-            <summary>
-                The matrix 3x
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix3X2F.GetHashCode">
@@ -1104,7 +1099,7 @@
                 The hash code
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Util.HashCode.s_seed">
+        <member name="F:Alis.Core.Aspect.Math.Util.HashCode.SSeed">
             <summary>
                 The generate global seed
             </summary>

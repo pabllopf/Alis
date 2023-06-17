@@ -40,22 +40,22 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The type
         /// </summary>
-        public SdlEventType type;
+        public readonly SdlEventType type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public uint timestamp;
+        public readonly uint timestamp;
 
         /// <summary>
         ///     The display
         /// </summary>
-        public uint display;
+        public readonly uint display;
 
         /// <summary>
         ///     The display event
         /// </summary>
-        public SdlDisplayEventId displayEvent;
+        public readonly SdlDisplayEventId displayEvent;
 
         /// <summary>
         ///     The padding
@@ -75,6 +75,6 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The data
         /// </summary>
-        public int data1;
+        public readonly int data1;
     }
 }

@@ -126,10 +126,10 @@ namespace Alis.Core.Graphic.SFML.Graphics
         public Transform Transform;
 
         /// <summary>Texture</summary>
-        public Texture Texture;
+        public readonly Texture Texture;
 
         /// <summary>Shader</summary>
-        public Shader Shader;
+        public readonly Shader Shader;
 
         // Return a marshalled version of the instance, that can directly be passed to the C API
         /// <summary>

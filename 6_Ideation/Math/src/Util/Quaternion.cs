@@ -155,10 +155,10 @@ namespace Alis.Core.Aspect.Math.Util
         {
             Quaternion ans = Zero;
 
-            float q1x = value1.X;
-            float q1y = value1.Y;
-            float q1z = value1.Z;
-            float q1w = value1.W;
+            float q1X = value1.X;
+            float q1Y = value1.Y;
+            float q1Z = value1.Z;
+            float q1W = value1.W;
 
             //-------------------------------------
             // Inverse part.
@@ -166,25 +166,25 @@ namespace Alis.Core.Aspect.Math.Util
                        value2.Z * value2.Z + value2.W * value2.W;
             float invNorm = 1.0f / ls;
 
-            float q2x = -value2.X * invNorm;
-            float q2y = -value2.Y * invNorm;
-            float q2z = -value2.Z * invNorm;
-            float q2w = value2.W * invNorm;
+            float q2X = -value2.X * invNorm;
+            float q2Y = -value2.Y * invNorm;
+            float q2Z = -value2.Z * invNorm;
+            float q2W = value2.W * invNorm;
 
             //-------------------------------------
             // Multiply part.
 
             // cross(av, bv)
-            float cx = q1y * q2z - q1z * q2y;
-            float cy = q1z * q2x - q1x * q2z;
-            float cz = q1x * q2y - q1y * q2x;
+            float cx = q1Y * q2Z - q1Z * q2Y;
+            float cy = q1Z * q2X - q1X * q2Z;
+            float cz = q1X * q2Y - q1Y * q2X;
 
-            float dot = q1x * q2x + q1y * q2y + q1z * q2z;
+            float dot = q1X * q2X + q1Y * q2Y + q1Z * q2Z;
 
-            ans.X = q1x * q2w + q2x * q1w + cx;
-            ans.Y = q1y * q2w + q2y * q1w + cy;
-            ans.Z = q1z * q2w + q2z * q1w + cz;
-            ans.W = q1w * q2w - dot;
+            ans.X = q1X * q2W + q2X * q1W + cx;
+            ans.Y = q1Y * q2W + q2Y * q1W + cy;
+            ans.Z = q1Z * q2W + q2Z * q1W + cz;
+            ans.W = q1W * q2W - dot;
 
             return ans;
         }
@@ -220,27 +220,27 @@ namespace Alis.Core.Aspect.Math.Util
         {
             Quaternion ans = Zero;
 
-            float q1x = value1.X;
-            float q1y = value1.Y;
-            float q1z = value1.Z;
-            float q1w = value1.W;
+            float q1X = value1.X;
+            float q1Y = value1.Y;
+            float q1Z = value1.Z;
+            float q1W = value1.W;
 
-            float q2x = value2.X;
-            float q2y = value2.Y;
-            float q2z = value2.Z;
-            float q2w = value2.W;
+            float q2X = value2.X;
+            float q2Y = value2.Y;
+            float q2Z = value2.Z;
+            float q2W = value2.W;
 
             // cross(av, bv)
-            float cx = q1y * q2z - q1z * q2y;
-            float cy = q1z * q2x - q1x * q2z;
-            float cz = q1x * q2y - q1y * q2x;
+            float cx = q1Y * q2Z - q1Z * q2Y;
+            float cy = q1Z * q2X - q1X * q2Z;
+            float cz = q1X * q2Y - q1Y * q2X;
 
-            float dot = q1x * q2x + q1y * q2y + q1z * q2z;
+            float dot = q1X * q2X + q1Y * q2Y + q1Z * q2Z;
 
-            ans.X = q1x * q2w + q2x * q1w + cx;
-            ans.Y = q1y * q2w + q2y * q1w + cy;
-            ans.Z = q1z * q2w + q2z * q1w + cz;
-            ans.W = q1w * q2w - dot;
+            ans.X = q1X * q2W + q2X * q1W + cx;
+            ans.Y = q1Y * q2W + q2Y * q1W + cy;
+            ans.Z = q1Z * q2W + q2Z * q1W + cz;
+            ans.W = q1W * q2W - dot;
 
             return ans;
         }
@@ -326,27 +326,27 @@ namespace Alis.Core.Aspect.Math.Util
 
             // Concatenate rotation is actually q2 * q1 instead of q1 * q2.
             // So that's why value2 goes q1 and value1 goes q2.
-            float q1x = value2.X;
-            float q1y = value2.Y;
-            float q1z = value2.Z;
-            float q1w = value2.W;
+            float q1X = value2.X;
+            float q1Y = value2.Y;
+            float q1Z = value2.Z;
+            float q1W = value2.W;
 
-            float q2x = value1.X;
-            float q2y = value1.Y;
-            float q2z = value1.Z;
-            float q2w = value1.W;
+            float q2X = value1.X;
+            float q2Y = value1.Y;
+            float q2Z = value1.Z;
+            float q2W = value1.W;
 
             // cross(av, bv)
-            float cx = q1y * q2z - q1z * q2y;
-            float cy = q1z * q2x - q1x * q2z;
-            float cz = q1x * q2y - q1y * q2x;
+            float cx = q1Y * q2Z - q1Z * q2Y;
+            float cy = q1Z * q2X - q1X * q2Z;
+            float cz = q1X * q2Y - q1Y * q2X;
 
-            float dot = q1x * q2x + q1y * q2y + q1z * q2z;
+            float dot = q1X * q2X + q1Y * q2Y + q1Z * q2Z;
 
-            ans.X = q1x * q2w + q2x * q1w + cx;
-            ans.Y = q1y * q2w + q2y * q1w + cy;
-            ans.Z = q1z * q2w + q2z * q1w + cz;
-            ans.W = q1w * q2w - dot;
+            ans.X = q1X * q2W + q2X * q1W + cx;
+            ans.Y = q1Y * q2W + q2Y * q1W + cy;
+            ans.Z = q1Z * q2W + q2Z * q1W + cz;
+            ans.W = q1W * q2W - dot;
 
             return ans;
         }

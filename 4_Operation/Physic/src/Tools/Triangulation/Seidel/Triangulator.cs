@@ -72,12 +72,12 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// <summary>
         ///     The trapezoids
         /// </summary>
-        public List<Trapezoid> Trapezoids;
+        public readonly List<Trapezoid> Trapezoids;
 
         /// <summary>
         ///     The triangles
         /// </summary>
-        public List<List<Point>> Triangles;
+        public readonly List<List<Point>> Triangles;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Triangulator" /> class

@@ -48,12 +48,12 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// <summary>
         ///     Specifies the case-sensitive name of the parameter.
         /// </summary>
-        public string Name;
+        public readonly string Name;
 
         /// <summary>
         ///     Specifies the parameter type (either attribute or uniform).
         /// </summary>
-        public ParamType ParamType;
+        public readonly ParamType ParamType;
 
         /// <summary>
         ///     Specifies the OpenGL program ID.
@@ -68,7 +68,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// <summary>
         ///     Specifies the C# equivalent of the GLSL data type.
         /// </summary>
-        public Type Type;
+        public readonly Type Type;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GlShaderProgramParam" /> class
@@ -118,7 +118,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public void SetValue(bool param)
         {
             EnsureType<bool>();
-            glUniform1I(Location, param ? 1 : 0);
+            GlUniform1I(Location, param ? 1 : 0);
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public void SetValue(int param)
         {
             EnsureType<int>();
-            glUniform1I(Location, param);
+            GlUniform1I(Location, param);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public void SetValue(float param)
         {
             EnsureType<float>();
-            glUniform1F(Location, param);
+            GlUniform1F(Location, param);
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public void SetValue(Vector2F param)
         {
             EnsureType<Vector2F>();
-            glUniform2F(Location, param.X, param.Y);
+            GlUniform2F(Location, param.X, param.Y);
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public void SetValue(Vector3F param)
         {
             EnsureType<Vector3F>();
-            glUniform3F(Location, param.X, param.Y, param.Z);
+            GlUniform3F(Location, param.X, param.Y, param.Z);
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public void SetValue(Vector4F param)
         {
             EnsureType<Vector4F>();
-            glUniform4F(Location, param.X, param.Y, param.Z, param.W);
+            GlUniform4F(Location, param.X, param.Y, param.Z, param.W);
         }
 
         /// <summary>
@@ -191,32 +191,32 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
             if (param.Length == 16)
             {
                 EnsureType<Matrix4X4F>();
-                glUniformMatrix4Fv(Location, 1, false, param);
+                GlUniformMatrix4Fv(Location, 1, false, param);
             }
             else if (param.Length == 9)
             {
                 EnsureType<Exception>();
-                glUniformMatrix3Fv(Location, 1, false, param);
+                GlUniformMatrix3Fv(Location, 1, false, param);
             }
             else if (param.Length == 4)
             {
                 EnsureType<Vector4F>();
-                glUniform4F(Location, param[0], param[1], param[2], param[3]);
+                GlUniform4F(Location, param[0], param[1], param[2], param[3]);
             }
             else if (param.Length == 3)
             {
                 EnsureType<Vector3F>();
-                glUniform3F(Location, param[0], param[1], param[2]);
+                GlUniform3F(Location, param[0], param[1], param[2]);
             }
             else if (param.Length == 2)
             {
                 EnsureType<Vector2F>();
-                glUniform2F(Location, param[0], param[1]);
+                GlUniform2F(Location, param[0], param[1]);
             }
             else if (param.Length == 1)
             {
                 EnsureType<float>();
-                glUniform1F(Location, param[0]);
+                GlUniform1F(Location, param[0]);
             }
             else
             {

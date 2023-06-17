@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs;
+
 namespace Alis.Core.Entity
 {
     /// <summary>Control the object space in the game.</summary>

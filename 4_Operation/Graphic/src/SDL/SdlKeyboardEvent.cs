@@ -40,27 +40,27 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The type
         /// </summary>
-        public SdlEventType type;
+        public readonly SdlEventType type;
 
         /// <summary>
         ///     The timestamp
         /// </summary>
-        public uint timestamp;
+        public readonly uint timestamp;
 
         /// <summary>
         ///     The window id
         /// </summary>
-        public uint windowID;
+        public readonly uint windowID;
 
         /// <summary>
         ///     The state
         /// </summary>
-        public byte state;
+        public readonly byte state;
 
         /// <summary>
         ///     The repeat
         /// </summary>
-        public byte repeat;
+        public readonly byte repeat;
 
         /// <summary>
         ///     The padding

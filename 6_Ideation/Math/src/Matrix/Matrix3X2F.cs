@@ -98,7 +98,11 @@ namespace Alis.Core.Aspect.Math.Matrix
 
         /// <summary>Gets the multiplicative identity matrix.</summary>
         /// <value>The multiplicative identify matrix.</value>
-        public static Matrix3X2F Identity => _identity;
+        public static Matrix3X2F Identity { get; } = new Matrix3X2F(
+            1f, 0f,
+            0f, 1f,
+            0f, 0f
+        );
 
         /// <summary>Gets a value that indicates whether the current matrix is the identity matrix.</summary>
         /// <value><see langword="true" /> if the current matrix is the identity matrix; otherwise, <see langword="false" />.</value>
@@ -120,16 +124,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>
         ///     The pi
         /// </summary>
-        private const float RotationEpsilon = 0.001f * MathF.PI / 180f; // 0.1% of a degree
-
-        /// <summary>
-        ///     The matrix 3x
-        /// </summary>
-        private static readonly Matrix3X2F _identity = new Matrix3X2F(
-            1f, 0f,
-            0f, 1f,
-            0f, 0f
-        );
+        private const float RotationEpsilon = 0.001f * MathF.Pi / 180f; // 0.1% of a degree
 
         /// <summary>
         ///     Gets the hash code
@@ -179,7 +174,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </remarks>
         public static Matrix3X2F operator +(Matrix3X2F value1, Matrix3X2F value2)
         {
-            Matrix3X2F m = _identity;
+            Matrix3X2F m = Identity;
 
             m.M11 = value1.M11 + value2.M11;
             m.M12 = value1.M12 + value2.M12;
@@ -225,7 +220,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <returns>The product matrix.</returns>
         public static Matrix3X2F operator *(Matrix3X2F value1, Matrix3X2F value2)
         {
-            Matrix3X2F m = _identity;
+            Matrix3X2F m = Identity;
 
             // First row
             m.M11 = value1.M11 * value2.M11 + value1.M12 * value2.M21;
@@ -248,7 +243,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <returns>The scaled matrix.</returns>
         public static Matrix3X2F operator *(Matrix3X2F value1, float value2)
         {
-            Matrix3X2F m = _identity;
+            Matrix3X2F m = Identity;
 
             m.M11 = value1.M11 * value2;
             m.M12 = value1.M12 * value2;
@@ -275,7 +270,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </remarks>
         public static Matrix3X2F operator -(Matrix3X2F value1, Matrix3X2F value2)
         {
-            Matrix3X2F m = _identity;
+            Matrix3X2F m = Identity;
 
             m.M11 = value1.M11 - value2.M11;
             m.M12 = value1.M12 - value2.M12;
@@ -294,7 +289,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <returns>The negated matrix.</returns>
         public static Matrix3X2F operator -(Matrix3X2F value)
         {
-            Matrix3X2F m = _identity;
+            Matrix3X2F m = Identity;
 
             m.M11 = -value.M11;
             m.M12 = -value.M12;

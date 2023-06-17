@@ -247,7 +247,7 @@
                 The component base
             </summary>
         </member>
-        <member name="M:Alis.Builder.Core.Component.ComponentBaseBuilder.#ctor(Alis.Core.Component.ComponentBase)">
+        <member name="M:Alis.Builder.Core.Component.ComponentBaseBuilder.#ctor(Alis.Core.Ecs.ComponentBase)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Builder.Core.Component.ComponentBaseBuilder" /> class
             </summary>
@@ -455,7 +455,7 @@
                 Gets or sets the value of the game object
             </summary>
         </member>
-        <member name="M:Alis.Builder.Core.Entity.GameObjectBuilder.AddComponent``1(System.Func{``0,Alis.Core.Component.ComponentBase})">
+        <member name="M:Alis.Builder.Core.Entity.GameObjectBuilder.AddComponent``1(System.Func{``0,Alis.Core.Ecs.ComponentBase})">
             <summary>
                 Adds the component using the specified value
             </summary>
@@ -1053,7 +1053,7 @@
             <summary>
                 The physical body class
             </summary>
-            <seealso cref="T:Alis.Core.Component.ComponentBase" />
+            <seealso cref="T:Alis.Core.Ecs.ComponentBase" />
         </member>
         <member name="M:Alis.Core.Component.Body.BodyBase.Start">
             <summary>
@@ -1219,7 +1219,7 @@
             <summary>
                 The collider class
             </summary>
-            <seealso cref="T:Alis.Core.Component.ComponentBase" />
+            <seealso cref="T:Alis.Core.Ecs.ComponentBase" />
         </member>
         <member name="M:Alis.Core.Component.Collider.ColliderBase.Start">
             <summary>
@@ -1247,7 +1247,7 @@
             <summary>
                 The light class
             </summary>
-            <seealso cref="T:Alis.Core.Component.ComponentBase" />
+            <seealso cref="T:Alis.Core.Ecs.ComponentBase" />
         </member>
         <member name="M:Alis.Core.Component.Light.LightBase.Start">
             <summary>
@@ -1286,7 +1286,7 @@
             <summary>
                 The mesh class
             </summary>
-            <seealso cref="T:Alis.Core.Component.ComponentBase" />
+            <seealso cref="T:Alis.Core.Ecs.ComponentBase" />
         </member>
         <member name="M:Alis.Core.Component.Mesh.MeshBase.Start">
             <summary>
@@ -1314,7 +1314,7 @@
             <summary>
                 The particle class
             </summary>
-            <seealso cref="T:Alis.Core.Component.ComponentBase" />
+            <seealso cref="T:Alis.Core.Ecs.ComponentBase" />
         </member>
         <member name="M:Alis.Core.Component.Particle.ParticleBase.Start">
             <summary>
@@ -1475,7 +1475,7 @@
             <summary>
                 The camera class
             </summary>
-            <seealso cref="T:Alis.Core.Component.ComponentBase" />
+            <seealso cref="T:Alis.Core.Ecs.ComponentBase" />
         </member>
         <member name="F:Alis.Core.Component.Render.Camera.view">
             <summary>
@@ -1550,7 +1550,7 @@
             <summary>
                 The sprite class
             </summary>
-            <seealso cref="T:Alis.Core.Component.ComponentBase" />
+            <seealso cref="T:Alis.Core.Ecs.ComponentBase" />
         </member>
         <member name="F:Alis.Core.Component.Render.Sprite.Image">
             <summary>

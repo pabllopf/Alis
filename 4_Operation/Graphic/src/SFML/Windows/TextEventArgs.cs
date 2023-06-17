@@ -38,7 +38,7 @@ namespace Alis.Core.Graphic.SFML.Windows
     public class TextEventArgs : EventArgs
     {
         /// <summary>UTF-16 value of the character</summary>
-        public string Unicode;
+        public readonly string Unicode;
 
         ////////////////////////////////////////////////////////////
         /// <summary>

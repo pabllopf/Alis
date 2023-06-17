@@ -46,16 +46,16 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The framebuffer
         /// </summary>
-        public uint framebuffer;
+        public readonly uint framebuffer;
 
         /// <summary>
         ///     The colorbuffer
         /// </summary>
-        public uint colorbuffer;
+        public readonly uint colorbuffer;
 
         /// <summary>
         ///     The resolve framebuffer
         /// </summary>
-        public uint resolveFramebuffer;
+        public readonly uint resolveFramebuffer;
     }
 }

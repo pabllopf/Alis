@@ -39,9 +39,9 @@ namespace Alis.Core.Graphic.SFML.Windows
     public struct SizeEvent
     {
         /// <summary>New width of the window</summary>
-        public uint Width;
+        public readonly uint Width;
 
         /// <summary>New height of the window</summary>
-        public uint Height;
+        public readonly uint Height;
     }
 }

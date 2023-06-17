@@ -38,16 +38,16 @@ namespace Alis.Core.Graphic.SFML.Windows
     public class SensorEventArgs : EventArgs
     {
         /// <summary>Type of the sensor</summary>
-        public Sensor.Type Type;
+        public readonly Sensor.Type Type;
 
         /// <summary>Current value of the sensor on X axis</summary>
-        public float X;
+        public readonly float X;
 
         /// <summary>Current value of the sensor on Y axis</summary>
-        public float Y;
+        public readonly float Y;
 
         /// <summary>Current value of the sensor on Z axis</summary>
-        public float Z;
+        public readonly float Z;
 
         ////////////////////////////////////////////////////////////
         /// <summary>

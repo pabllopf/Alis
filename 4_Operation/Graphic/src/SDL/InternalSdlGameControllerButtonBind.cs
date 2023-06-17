@@ -40,17 +40,17 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The bind type
         /// </summary>
-        public int bindType;
+        public readonly int bindType;
 
         /* Largest data type in the union is two ints in size */
         /// <summary>
         ///     The union val
         /// </summary>
-        public int unionVal0;
+        public readonly int unionVal0;
 
         /// <summary>
         ///     The union val
         /// </summary>
-        public int unionVal1;
+        public readonly int unionVal1;
     }
 }

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Ecs;
 
 namespace Alis.Core.Component.Body
 {

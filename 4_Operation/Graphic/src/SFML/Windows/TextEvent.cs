@@ -39,6 +39,6 @@ namespace Alis.Core.Graphic.SFML.Windows
     public struct TextEvent
     {
         /// <summary>UTF-32 value of the character</summary>
-        public uint Unicode;
+        public readonly uint Unicode;
     }
 }
