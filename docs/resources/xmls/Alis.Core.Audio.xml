@@ -2067,7 +2067,7 @@
             </summary>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Core.Audio.SFML.Listener.sfListener_setPosition(Alis.Core.Aspect.Math.Vector.Vector3)">
+        <member name="M:Alis.Core.Audio.SFML.Listener.sfListener_setPosition(Alis.Core.Aspect.Math.Vector.Vector3F)">
             <summary>
                 Sfs the listener set position using the specified position
             </summary>
@@ -2079,7 +2079,7 @@
             </summary>
             <returns>The vector 3f</returns>
         </member>
-        <member name="M:Alis.Core.Audio.SFML.Listener.sfListener_setDirection(Alis.Core.Aspect.Math.Vector.Vector3)">
+        <member name="M:Alis.Core.Audio.SFML.Listener.sfListener_setDirection(Alis.Core.Aspect.Math.Vector.Vector3F)">
             <summary>
                 Sfs the listener set direction using the specified direction
             </summary>
@@ -2091,7 +2091,7 @@
             </summary>
             <returns>The vector 3f</returns>
         </member>
-        <member name="M:Alis.Core.Audio.SFML.Listener.sfListener_setUpVector(Alis.Core.Aspect.Math.Vector.Vector3)">
+        <member name="M:Alis.Core.Audio.SFML.Listener.sfListener_setUpVector(Alis.Core.Aspect.Math.Vector.Vector3F)">
             <summary>
                 Sfs the listener set up vector using the specified up vector
             </summary>
@@ -2387,7 +2387,7 @@
             <param name="music">The music</param>
             <param name="volume">The volume</param>
         </member>
-        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_setPosition(System.IntPtr,Alis.Core.Aspect.Math.Vector.Vector3)">
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_setPosition(System.IntPtr,Alis.Core.Aspect.Math.Vector.Vector3F)">
             <summary>
                 Sfs the music set position using the specified music
             </summary>
@@ -2731,7 +2731,7 @@
             <param name="sound">The sound</param>
             <param name="volume">The volume</param>
         </member>
-        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_setPosition(System.IntPtr,Alis.Core.Aspect.Math.Vector.Vector3)">
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_setPosition(System.IntPtr,Alis.Core.Aspect.Math.Vector.Vector3F)">
             <summary>
                 Sfs the sound set position using the specified sound
             </summary>
@@ -3596,7 +3596,7 @@
             <param name="soundStream">The sound stream</param>
             <param name="volume">The volume</param>
         </member>
-        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_setPosition(System.IntPtr,Alis.Core.Aspect.Math.Vector.Vector3)">
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_setPosition(System.IntPtr,Alis.Core.Aspect.Math.Vector.Vector3F)">
             <summary>
                 Sfs the sound stream set position using the specified sound stream
             </summary>
