@@ -428,6 +428,16 @@
                 The matrix 3x class
             </summary>
         </member>
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix3X2F.hash">
+            <summary>
+                The hash
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix3X2F.hashCode">
+            <summary>
+                The hash code
+            </summary>
+        </member>
         <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix3X2F.M11">
             <summary>The first element of the first row.</summary>
         </member>
@@ -752,6 +762,16 @@
         <member name="T:Alis.Core.Aspect.Math.Matrix.Matrix4X4F">
             <summary>
                 The matrix
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.hash">
+            <summary>
+                The hash
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.hashCode">
+            <summary>
+                The hash code
             </summary>
         </member>
         <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.BillboardEpsilon">
@@ -1518,6 +1538,16 @@
         <member name="T:Alis.Core.Aspect.Math.Util.Quaternion">
             <summary>
                 The quaternion
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Util.Quaternion.hash">
+            <summary>
+                The hash
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Util.Quaternion.hashCode">
+            <summary>
+                The hash code
             </summary>
         </member>
         <member name="F:Alis.Core.Aspect.Math.Util.Quaternion.SlerpEpsilon">
@@ -2473,6 +2503,16 @@
         <member name="T:Alis.Core.Aspect.Math.Vector.Vector3F">
             <summary>
                 The vector
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Vector.Vector3F.hash">
+            <summary>
+                The hash
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Vector.Vector3F.hashCode">
+            <summary>
+                The hash code
             </summary>
         </member>
         <member name="F:Alis.Core.Aspect.Math.Vector.Vector3F.X">

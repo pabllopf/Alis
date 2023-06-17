@@ -36,12 +36,6 @@
             </summary>
             <param name="filePath">The file path</param>
         </member>
-        <member name="T:Alis.Core.Graphic.ImGui.EmbeddedAttribute">
-            <summary>
-                The embedded attribute class
-            </summary>
-            <seealso cref="T:System.Attribute" />
-        </member>
         <member name="T:Alis.Core.Graphic.ImGui.ImColor">
             <summary>
                 The im color
@@ -16441,9 +16435,6 @@
             <summary>
                 The im gui native class
             </summary>
-            <summary>
-                The im gui native class
-            </summary>
         </member>
         <member name="M:Alis.Core.Graphic.ImGui.ImGuiNative.igAcceptDragDropPayload(System.Byte*,Alis.Core.Graphic.ImGui.ImGuiDragDropFlags)">
             <summary>
@@ -16452,6 +16443,20 @@
             <param name="type">The type</param>
             <param name="flags">The flags</param>
             <returns>The im gui payload</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.ImGui.ImGuiNative.ImGuiPlatformIO_Set_Platform_GetWindowPos(Alis.Core.Graphic.ImGui.ImGuiPlatformIo*,System.IntPtr)">
+            <summary>
+                Ims the gui platform io set platform get window pos using the specified platform io
+            </summary>
+            <param name="platformIo">The platform io</param>
+            <param name="funcPtr">The func ptr</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.ImGui.ImGuiNative.ImGuiPlatformIO_Set_Platform_GetWindowSize(Alis.Core.Graphic.ImGui.ImGuiPlatformIo*,System.IntPtr)">
+            <summary>
+                Ims the gui platform io set platform get window size using the specified platform io
+            </summary>
+            <param name="platformIo">The platform io</param>
+            <param name="funcPtr">The func ptr</param>
         </member>
         <member name="M:Alis.Core.Graphic.ImGui.ImGuiNative.igAlignTextToFramePadding">
             <summary>
@@ -21238,20 +21243,6 @@
             <param name="z">The </param>
             <param name="w">The </param>
             <returns>The vector</returns>
-        </member>
-        <member name="M:Alis.Core.Graphic.ImGui.ImGuiNative.ImGuiPlatformIO_Set_Platform_GetWindowPos(Alis.Core.Graphic.ImGui.ImGuiPlatformIo*,System.IntPtr)">
-            <summary>
-                Ims the gui platform io set platform get window pos using the specified platform io
-            </summary>
-            <param name="platformIo">The platform io</param>
-            <param name="funcPtr">The func ptr</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.ImGui.ImGuiNative.ImGuiPlatformIO_Set_Platform_GetWindowSize(Alis.Core.Graphic.ImGui.ImGuiPlatformIo*,System.IntPtr)">
-            <summary>
-                Ims the gui platform io set platform get window size using the specified platform io
-            </summary>
-            <param name="platformIo">The platform io</param>
-            <param name="funcPtr">The func ptr</param>
         </member>
         <member name="T:Alis.Core.Graphic.ImGui.ImGuiNavInput">
             <summary>
