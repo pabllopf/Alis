@@ -85,7 +85,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the window padding
         /// </summary>
-        public ref Vector2 WindowPadding => ref Unsafe.AsRef<Vector2>(&NativePtr->WindowPadding);
+        public ref Vector2F WindowPadding => ref Unsafe.AsRef<Vector2F>(&NativePtr->WindowPadding);
 
         /// <summary>
         ///     Gets the value of the window rounding
@@ -100,12 +100,12 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the window min size
         /// </summary>
-        public ref Vector2 WindowMinSize => ref Unsafe.AsRef<Vector2>(&NativePtr->WindowMinSize);
+        public ref Vector2F WindowMinSize => ref Unsafe.AsRef<Vector2F>(&NativePtr->WindowMinSize);
 
         /// <summary>
         ///     Gets the value of the window title align
         /// </summary>
-        public ref Vector2 WindowTitleAlign => ref Unsafe.AsRef<Vector2>(&NativePtr->WindowTitleAlign);
+        public ref Vector2F WindowTitleAlign => ref Unsafe.AsRef<Vector2F>(&NativePtr->WindowTitleAlign);
 
         /// <summary>
         ///     Gets the value of the window menu button position
@@ -135,7 +135,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the frame padding
         /// </summary>
-        public ref Vector2 FramePadding => ref Unsafe.AsRef<Vector2>(&NativePtr->FramePadding);
+        public ref Vector2F FramePadding => ref Unsafe.AsRef<Vector2F>(&NativePtr->FramePadding);
 
         /// <summary>
         ///     Gets the value of the frame rounding
@@ -150,22 +150,22 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the item spacing
         /// </summary>
-        public ref Vector2 ItemSpacing => ref Unsafe.AsRef<Vector2>(&NativePtr->ItemSpacing);
+        public ref Vector2F ItemSpacing => ref Unsafe.AsRef<Vector2F>(&NativePtr->ItemSpacing);
 
         /// <summary>
         ///     Gets the value of the item inner spacing
         /// </summary>
-        public ref Vector2 ItemInnerSpacing => ref Unsafe.AsRef<Vector2>(&NativePtr->ItemInnerSpacing);
+        public ref Vector2F ItemInnerSpacing => ref Unsafe.AsRef<Vector2F>(&NativePtr->ItemInnerSpacing);
 
         /// <summary>
         ///     Gets the value of the cell padding
         /// </summary>
-        public ref Vector2 CellPadding => ref Unsafe.AsRef<Vector2>(&NativePtr->CellPadding);
+        public ref Vector2F CellPadding => ref Unsafe.AsRef<Vector2F>(&NativePtr->CellPadding);
 
         /// <summary>
         ///     Gets the value of the touch extra padding
         /// </summary>
-        public ref Vector2 TouchExtraPadding => ref Unsafe.AsRef<Vector2>(&NativePtr->TouchExtraPadding);
+        public ref Vector2F TouchExtraPadding => ref Unsafe.AsRef<Vector2F>(&NativePtr->TouchExtraPadding);
 
         /// <summary>
         ///     Gets the value of the indent spacing
@@ -225,12 +225,12 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the button text align
         /// </summary>
-        public ref Vector2 ButtonTextAlign => ref Unsafe.AsRef<Vector2>(&NativePtr->ButtonTextAlign);
+        public ref Vector2F ButtonTextAlign => ref Unsafe.AsRef<Vector2F>(&NativePtr->ButtonTextAlign);
 
         /// <summary>
         ///     Gets the value of the selectable text align
         /// </summary>
-        public ref Vector2 SelectableTextAlign => ref Unsafe.AsRef<Vector2>(&NativePtr->SelectableTextAlign);
+        public ref Vector2F SelectableTextAlign => ref Unsafe.AsRef<Vector2F>(&NativePtr->SelectableTextAlign);
 
         /// <summary>
         ///     Gets the value of the separator text border size
@@ -240,22 +240,22 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the separator text align
         /// </summary>
-        public ref Vector2 SeparatorTextAlign => ref Unsafe.AsRef<Vector2>(&NativePtr->SeparatorTextAlign);
+        public ref Vector2F SeparatorTextAlign => ref Unsafe.AsRef<Vector2F>(&NativePtr->SeparatorTextAlign);
 
         /// <summary>
         ///     Gets the value of the separator text padding
         /// </summary>
-        public ref Vector2 SeparatorTextPadding => ref Unsafe.AsRef<Vector2>(&NativePtr->SeparatorTextPadding);
+        public ref Vector2F SeparatorTextPadding => ref Unsafe.AsRef<Vector2F>(&NativePtr->SeparatorTextPadding);
 
         /// <summary>
         ///     Gets the value of the display window padding
         /// </summary>
-        public ref Vector2 DisplayWindowPadding => ref Unsafe.AsRef<Vector2>(&NativePtr->DisplayWindowPadding);
+        public ref Vector2F DisplayWindowPadding => ref Unsafe.AsRef<Vector2F>(&NativePtr->DisplayWindowPadding);
 
         /// <summary>
         ///     Gets the value of the display safe area padding
         /// </summary>
-        public ref Vector2 DisplaySafeAreaPadding => ref Unsafe.AsRef<Vector2>(&NativePtr->DisplaySafeAreaPadding);
+        public ref Vector2F DisplaySafeAreaPadding => ref Unsafe.AsRef<Vector2F>(&NativePtr->DisplaySafeAreaPadding);
 
         /// <summary>
         ///     Gets the value of the mouse cursor scale
@@ -290,7 +290,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the colors
         /// </summary>
-        public RangeAccessor<Vector4> Colors => new RangeAccessor<Vector4>(&NativePtr->Colors0, 55);
+        public RangeAccessor<Vector4F> Colors => new RangeAccessor<Vector4F>(&NativePtr->Colors0, 55);
 
         /// <summary>
         ///     Destroys this instance

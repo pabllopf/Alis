@@ -145,9 +145,9 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         ///     Sets the value using the specified param
         /// </summary>
         /// <param name="param">The param</param>
-        public void SetValue(Vector2 param)
+        public void SetValue(Vector2F param)
         {
-            EnsureType<Vector2>();
+            EnsureType<Vector2F>();
             glUniform2F(Location, param.X, param.Y);
         }
 
@@ -155,9 +155,9 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         ///     Sets the value using the specified param
         /// </summary>
         /// <param name="param">The param</param>
-        public void SetValue(Vector3 param)
+        public void SetValue(Vector3F param)
         {
-            EnsureType<Vector3>();
+            EnsureType<Vector3F>();
             glUniform3F(Location, param.X, param.Y, param.Z);
         }
 
@@ -165,9 +165,9 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         ///     Sets the value using the specified param
         /// </summary>
         /// <param name="param">The param</param>
-        public void SetValue(Vector4 param)
+        public void SetValue(Vector4F param)
         {
-            EnsureType<Vector4>();
+            EnsureType<Vector4F>();
             glUniform4F(Location, param.X, param.Y, param.Z, param.W);
         }
 
@@ -200,17 +200,17 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
             }
             else if (param.Length == 4)
             {
-                EnsureType<Vector4>();
+                EnsureType<Vector4F>();
                 glUniform4F(Location, param[0], param[1], param[2], param[3]);
             }
             else if (param.Length == 3)
             {
-                EnsureType<Vector3>();
+                EnsureType<Vector3F>();
                 glUniform3F(Location, param[0], param[1], param[2]);
             }
             else if (param.Length == 2)
             {
-                EnsureType<Vector2>();
+                EnsureType<Vector2F>();
                 glUniform2F(Location, param[0], param[1]);
             }
             else if (param.Length == 1)

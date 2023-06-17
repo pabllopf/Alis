@@ -106,7 +106,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <param name="allowSleep">The allow sleep</param>
         /// <param name="contactManager">The contact manager</param>
         /// <param name="bodiesOfWorld">The bodies of world</param>
-        public void Solve(TimeStep step, Vector2 gravity, bool allowSleep, ContactManager contactManager, List<Body> bodiesOfWorld)
+        public void Solve(TimeStep step, Vector2F gravity, bool allowSleep, ContactManager contactManager, List<Body> bodiesOfWorld)
         {
             for (int index = bodiesOfWorld.Count - 1; index >= 0; index--)
             {
@@ -228,9 +228,9 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 // Integrate velocities and apply damping. Initialize the body state.
                 foreach (Body b in Bodies)
                 {
-                    Vector2 c = b.Sweep.C;
+                    Vector2F c = b.Sweep.C;
                     float a = b.Sweep.A;
-                    Vector2 v = b.LinearVelocity;
+                    Vector2F v = b.LinearVelocity;
                     float w = b.AngularVelocity;
 
                     // Store positions for continuous collision.
@@ -328,14 +328,14 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 // Integrate positions
                 for (int i = 0; i < positions.Count; ++i)
                 {
-                    Vector2 c = positions[i].C;
+                    Vector2F c = positions[i].C;
                     float a = positions[i].A;
-                    Vector2 v = velocities[i].V;
+                    Vector2F v = velocities[i].V;
                     float w = velocities[i].W;
 
                     // Check for large velocities
-                    Vector2 translation = h * v;
-                    if (Vector2.Dot(translation, translation) > Settings.Translation * Settings.Translation)
+                    Vector2F translation = h * v;
+                    if (Vector2F.Dot(translation, translation) > Settings.Translation * Settings.Translation)
                     {
                         float ratio = Settings.Translation / translation.Length();
                         v *= ratio;
@@ -416,7 +416,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                         }
 
                         if (!b.SleepingAllowed || b.AngularVelocity * b.AngularVelocity > AngTolSqr ||
-                            Vector2.Dot(b.LinearVelocity, b.LinearVelocity) > LinTolSqr)
+                            Vector2F.Dot(b.LinearVelocity, b.LinearVelocity) > LinTolSqr)
                         {
                             b.SleepTime = 0.0f;
                             minSleepTime = 0.0f;
@@ -535,14 +535,14 @@ namespace Alis.Core.Physic.Dynamics.Solver
             // Integrate positions.
             for (int i = 0; i < Bodies.Count; ++i)
             {
-                Vector2 c = positions[i].C;
+                Vector2F c = positions[i].C;
                 float a = positions[i].A;
-                Vector2 v = velocities[i].V;
+                Vector2F v = velocities[i].V;
                 float w = velocities[i].W;
 
                 // Check for large velocities
-                Vector2 translation = h * v;
-                if (Vector2.Dot(translation, translation) > Settings.Translation * Settings.Translation)
+                Vector2F translation = h * v;
+                if (Vector2F.Dot(translation, translation) > Settings.Translation * Settings.Translation)
                 {
                     float ratio = Settings.Translation / translation.Length();
                     v *= ratio;

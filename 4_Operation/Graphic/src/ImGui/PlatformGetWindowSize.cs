@@ -34,5 +34,5 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The platform getwindowsize
     /// </summary>
-    public unsafe delegate void PlatformGetWindowSize(ImGuiViewportPtr vp, Vector2* outSize);
+    public unsafe delegate void PlatformGetWindowSize(ImGuiViewportPtr vp, Vector2F* outSize);
 }

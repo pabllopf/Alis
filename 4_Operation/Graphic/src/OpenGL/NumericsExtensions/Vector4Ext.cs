@@ -42,7 +42,7 @@ namespace Alis.Core.Graphic.OpenGL.NumericsExtensions
         /// <param name="v">The </param>
         /// <param name="index">The index</param>
         /// <returns>The float</returns>
-        public static float Get(this Vector4 v, int index)
+        public static float Get(this Vector4F v, int index)
         {
             switch (index)
             {

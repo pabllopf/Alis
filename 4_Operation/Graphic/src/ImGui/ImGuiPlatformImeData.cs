@@ -44,7 +44,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The input pos
         /// </summary>
-        public Vector2 InputPos;
+        public Vector2F InputPos;
 
         /// <summary>
         ///     The input line height

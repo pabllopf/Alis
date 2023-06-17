@@ -36,7 +36,7 @@ namespace Alis.Core.Physic.Tools.ConvexHull
     ///     The point comparer class
     /// </summary>
     /// <seealso cref="Comparer{T}" />
-    internal class PointComparer : Comparer<Vector2>
+    internal class PointComparer : Comparer<Vector2F>
     {
         /// <summary>
         ///     Compares the a
@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Tools.ConvexHull
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The int</returns>
-        public override int Compare(Vector2 a, Vector2 b)
+        public override int Compare(Vector2F a, Vector2F b)
         {
             int f = a.X.CompareTo(b.X);
             return f != 0 ? f : a.Y.CompareTo(b.Y);

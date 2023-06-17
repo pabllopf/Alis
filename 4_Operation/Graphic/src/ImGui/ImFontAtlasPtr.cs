@@ -148,12 +148,12 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the tex uv scale
         /// </summary>
-        public ref Vector2 TexUvScale => ref Unsafe.AsRef<Vector2>(&NativePtr->TexUvScale);
+        public ref Vector2F TexUvScale => ref Unsafe.AsRef<Vector2F>(&NativePtr->TexUvScale);
 
         /// <summary>
         ///     Gets the value of the tex uv white pixel
         /// </summary>
-        public ref Vector2 TexUvWhitePixel => ref Unsafe.AsRef<Vector2>(&NativePtr->TexUvWhitePixel);
+        public ref Vector2F TexUvWhitePixel => ref Unsafe.AsRef<Vector2F>(&NativePtr->TexUvWhitePixel);
 
         /// <summary>
         ///     Gets the value of the fonts
@@ -173,7 +173,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the tex uv lines
         /// </summary>
-        public RangeAccessor<Vector4> TexUvLines => new RangeAccessor<Vector4>(&NativePtr->TexUvLines0, 64);
+        public RangeAccessor<Vector4F> TexUvLines => new RangeAccessor<Vector4F>(&NativePtr->TexUvLines0, 64);
 
         /// <summary>
         ///     Gets or sets the value of the font builder io
@@ -211,7 +211,7 @@ namespace Alis.Core.Graphic.ImGui
         public int AddCustomRectFontGlyph(ImFontPtr font, ushort id, int width, int height, float advanceX)
         {
             ImFont* nativeFont = font.NativePtr;
-            Vector2 offset = new Vector2();
+            Vector2F offset = new Vector2F();
             int ret = ImGuiNative.ImFontAtlas_AddCustomRectFontGlyph(NativePtr, nativeFont, id, width, height, advanceX, offset);
             return ret;
         }
@@ -226,7 +226,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="advanceX">The advance</param>
         /// <param name="offset">The offset</param>
         /// <returns>The ret</returns>
-        public int AddCustomRectFontGlyph(ImFontPtr font, ushort id, int width, int height, float advanceX, Vector2 offset)
+        public int AddCustomRectFontGlyph(ImFontPtr font, ushort id, int width, int height, float advanceX, Vector2F offset)
         {
             ImFont* nativeFont = font.NativePtr;
             int ret = ImGuiNative.ImFontAtlas_AddCustomRectFontGlyph(NativePtr, nativeFont, id, width, height, advanceX, offset);
@@ -656,12 +656,12 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="rect">The rect</param>
         /// <param name="outUvMin">The out uv min</param>
         /// <param name="outUvMax">The out uv max</param>
-        public void CalcCustomRectUv(ImFontAtlasCustomRectPtr rect, out Vector2 outUvMin, out Vector2 outUvMax)
+        public void CalcCustomRectUv(ImFontAtlasCustomRectPtr rect, out Vector2F outUvMin, out Vector2F outUvMax)
         {
             ImFontAtlasCustomRect* nativeRect = rect.NativePtr;
-            fixed (Vector2* nativeOutUvMin = &outUvMin)
+            fixed (Vector2F* nativeOutUvMin = &outUvMin)
             {
-                fixed (Vector2* nativeOutUvMax = &outUvMax)
+                fixed (Vector2F* nativeOutUvMax = &outUvMax)
                 {
                     ImGuiNative.ImFontAtlas_CalcCustomRectUV(NativePtr, nativeRect, nativeOutUvMin, nativeOutUvMax);
                 }
@@ -818,15 +818,15 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="outUvBorder">The out uv border</param>
         /// <param name="outUvFill">The out uv fill</param>
         /// <returns>The bool</returns>
-        public bool GetMouseCursorTexData(ImGuiMouseCursor cursor, out Vector2 outOffset, out Vector2 outSize, out Vector2 outUvBorder, out Vector2 outUvFill)
+        public bool GetMouseCursorTexData(ImGuiMouseCursor cursor, out Vector2F outOffset, out Vector2F outSize, out Vector2F outUvBorder, out Vector2F outUvFill)
         {
-            fixed (Vector2* nativeOutOffset = &outOffset)
+            fixed (Vector2F* nativeOutOffset = &outOffset)
             {
-                fixed (Vector2* nativeOutSize = &outSize)
+                fixed (Vector2F* nativeOutSize = &outSize)
                 {
-                    fixed (Vector2* nativeOutUvBorder = &outUvBorder)
+                    fixed (Vector2F* nativeOutUvBorder = &outUvBorder)
                     {
-                        fixed (Vector2* nativeOutUvFill = &outUvFill)
+                        fixed (Vector2F* nativeOutUvFill = &outUvFill)
                         {
                             byte ret = ImGuiNative.ImFontAtlas_GetMouseCursorTexData(NativePtr, cursor, nativeOutOffset, nativeOutSize, nativeOutUvBorder, nativeOutUvFill);
                             return ret != 0;

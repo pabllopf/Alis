@@ -39,12 +39,12 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The pos
         /// </summary>
-        public Vector2 Pos;
+        public Vector2F Pos;
 
         /// <summary>
         ///     The uv
         /// </summary>
-        public Vector2 Uv;
+        public Vector2F Uv;
 
         /// <summary>
         ///     The col

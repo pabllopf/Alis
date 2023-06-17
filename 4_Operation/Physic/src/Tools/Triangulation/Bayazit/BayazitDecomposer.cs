@@ -69,8 +69,8 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         private static List<Vertices> TriangulatePolygon(Vertices vertices)
         {
             List<Vertices> list = new List<Vertices>();
-            Vector2 lowerInt = new Vector2();
-            Vector2 upperInt = new Vector2(); // intersection points
+            Vector2F lowerInt = new Vector2F();
+            Vector2F upperInt = new Vector2F(); // intersection points
             int lowerIndex = 0, upperIndex = 0;
             Vertices lowerPoly, upperPoly;
 
@@ -84,7 +84,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
                     {
                         // if line intersects with an edge
                         float d;
-                        Vector2 p;
+                        Vector2F p;
                         if (Left(At(i - 1, vertices), At(i, vertices), At(j, vertices)) &&
                             RightOn(At(i - 1, vertices), At(i, vertices), At(j - 1, vertices)))
                         {
@@ -128,7 +128,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
                     // if there are no vertices to connect to, choose a point in the middle
                     if (lowerIndex == (upperIndex + 1) % vertices.Count)
                     {
-                        Vector2 p = (lowerInt + upperInt) / 2;
+                        Vector2F p = (lowerInt + upperInt) / 2;
 
                         lowerPoly = Copy(i, upperIndex, vertices);
                         lowerPoly.Add(p);
@@ -205,7 +205,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         /// <param name="i">The </param>
         /// <param name="vertices">The vertices</param>
         /// <returns>The vector</returns>
-        private static Vector2 At(int i, Vertices vertices)
+        private static Vector2F At(int i, Vertices vertices)
         {
             int s = vertices.Count;
             return vertices[i < 0 ? s - 1 - (-i - 1) % s : i % s];
@@ -319,7 +319,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         /// <param name="b">The </param>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private static bool Left(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) > 0;
+        private static bool Left(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) > 0;
 
         /// <summary>
         ///     Describes whether left on
@@ -328,7 +328,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         /// <param name="b">The </param>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private static bool LeftOn(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) >= 0;
+        private static bool LeftOn(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) >= 0;
 
         /// <summary>
         ///     Describes whether right
@@ -337,7 +337,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         /// <param name="b">The </param>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private static bool Right(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) < 0;
+        private static bool Right(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) < 0;
 
         /// <summary>
         ///     Describes whether right on
@@ -346,7 +346,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         /// <param name="b">The </param>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private static bool RightOn(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) <= 0;
+        private static bool RightOn(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) <= 0;
 
         /// <summary>
         ///     Squares the dist using the specified a
@@ -354,7 +354,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The float</returns>
-        private static float SquareDist(Vector2 a, Vector2 b)
+        private static float SquareDist(Vector2F a, Vector2F b)
         {
             float dx = b.X - a.X;
             float dy = b.Y - a.Y;

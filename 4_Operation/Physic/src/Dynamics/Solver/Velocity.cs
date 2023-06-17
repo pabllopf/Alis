@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 V = Vector2.Zero;
+        public Vector2F V = Vector2F.Zero;
 
         /// <summary>
         ///     The
@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// </summary>
         /// <param name="v">The </param>
         /// <param name="w">The </param>
-        public Velocity(Vector2 v, float w)
+        public Velocity(Vector2F v, float w)
         {
             V = v;
             W = w;
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// </summary>
         public Velocity()
         {
-            V = Vector2.Zero;
+            V = Vector2F.Zero;
             W = 0.0f;
         }
     }

@@ -87,7 +87,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the display size
         /// </summary>
-        public ref Vector2 DisplaySize => ref Unsafe.AsRef<Vector2>(&NativePtr->DisplaySize);
+        public ref Vector2F DisplaySize => ref Unsafe.AsRef<Vector2F>(&NativePtr->DisplaySize);
 
         /// <summary>
         ///     Gets the value of the delta time
@@ -176,7 +176,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the display framebuffer scale
         /// </summary>
-        public ref Vector2 DisplayFramebufferScale => ref Unsafe.AsRef<Vector2>(&NativePtr->DisplayFramebufferScale);
+        public ref Vector2F DisplayFramebufferScale => ref Unsafe.AsRef<Vector2F>(&NativePtr->DisplayFramebufferScale);
 
         /// <summary>
         ///     Gets the value of the config docking no split
@@ -411,7 +411,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the mouse delta
         /// </summary>
-        public ref Vector2 MouseDelta => ref Unsafe.AsRef<Vector2>(&NativePtr->MouseDelta);
+        public ref Vector2F MouseDelta => ref Unsafe.AsRef<Vector2F>(&NativePtr->MouseDelta);
 
         /// <summary>
         ///     Gets the value of the key map
@@ -436,7 +436,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the mouse pos
         /// </summary>
-        public ref Vector2 MousePos => ref Unsafe.AsRef<Vector2>(&NativePtr->MousePos);
+        public ref Vector2F MousePos => ref Unsafe.AsRef<Vector2F>(&NativePtr->MousePos);
 
         /// <summary>
         ///     Gets the value of the mouse down
@@ -501,12 +501,12 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the mouse pos prev
         /// </summary>
-        public ref Vector2 MousePosPrev => ref Unsafe.AsRef<Vector2>(&NativePtr->MousePosPrev);
+        public ref Vector2F MousePosPrev => ref Unsafe.AsRef<Vector2F>(&NativePtr->MousePosPrev);
 
         /// <summary>
         ///     Gets the value of the mouse clicked pos
         /// </summary>
-        public RangeAccessor<Vector2> MouseClickedPos => new RangeAccessor<Vector2>(&NativePtr->MouseClickedPos0, 5);
+        public RangeAccessor<Vector2F> MouseClickedPos => new RangeAccessor<Vector2F>(&NativePtr->MouseClickedPos0, 5);
 
         /// <summary>
         ///     Gets the value of the mouse clicked time
@@ -566,7 +566,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the mouse drag max distance abs
         /// </summary>
-        public RangeAccessor<Vector2> MouseDragMaxDistanceAbs => new RangeAccessor<Vector2>(&NativePtr->MouseDragMaxDistanceAbs0, 5);
+        public RangeAccessor<Vector2F> MouseDragMaxDistanceAbs => new RangeAccessor<Vector2F>(&NativePtr->MouseDragMaxDistanceAbs0, 5);
 
         /// <summary>
         ///     Gets the value of the mouse drag max distance sqr

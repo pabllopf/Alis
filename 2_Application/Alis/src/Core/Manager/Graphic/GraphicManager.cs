@@ -49,7 +49,7 @@ namespace Alis.Core.Manager.Graphic
         /// <summary>
         ///     The vector
         /// </summary>
-        private Vector2 defaultSize;
+        private Vector2F defaultSize;
 
         /// <summary>
         ///     The renderWindow
@@ -93,7 +93,7 @@ namespace Alis.Core.Manager.Graphic
         {
             Logger.Log("init::graphic:new");
 
-            defaultSize = new Vector2(VideoGame.Setting.Graphic.Window.Resolution.X, VideoGame.Setting.Graphic.Window.Resolution.Y);
+            defaultSize = new Vector2F(VideoGame.Setting.Graphic.Window.Resolution.X, VideoGame.Setting.Graphic.Window.Resolution.Y);
 
             styles = Styles.Default;
             InitRenderWindow();
@@ -106,7 +106,7 @@ namespace Alis.Core.Manager.Graphic
         /// <param name="e">The </param>
         private void RenderWindowOnResized(object sender, SizeEventArgs e)
         {
-            VideoGame.Setting.Graphic.Window.Resolution = new Vector2(e.Width, e.Height);
+            VideoGame.Setting.Graphic.Window.Resolution = new Vector2F(e.Width, e.Height);
 
             RenderWindow.Size = new Vector2U(
                 (uint) VideoGame.Setting.Graphic.Window.Resolution.X,
@@ -128,7 +128,7 @@ namespace Alis.Core.Manager.Graphic
                 (uint) defaultSize.X,
                 (uint) defaultSize.Y);
 
-            VideoGame.Setting.Graphic.Window.Resolution = new Vector2(defaultSize.X, defaultSize.Y);
+            VideoGame.Setting.Graphic.Window.Resolution = new Vector2F(defaultSize.X, defaultSize.Y);
 
             RenderWindow = new RenderWindow(videoMode,
                 $"{VideoGame.Setting.General.Name} by {VideoGame.Setting.General.Author}", styles);

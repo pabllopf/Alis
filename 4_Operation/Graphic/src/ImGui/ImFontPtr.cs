@@ -309,7 +309,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="pos">The pos</param>
         /// <param name="col">The col</param>
         /// <param name="c">The </param>
-        public void RenderChar(ImDrawListPtr drawList, float size, Vector2 pos, uint col, ushort c)
+        public void RenderChar(ImDrawListPtr drawList, float size, Vector2F pos, uint col, ushort c)
         {
             ImDrawList* nativeDrawList = drawList.NativePtr;
             ImGuiNative.ImFont_RenderChar(NativePtr, nativeDrawList, size, pos, col, c);

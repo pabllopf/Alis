@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The vector
         /// </summary>
-        private Vector2[] velocitiesCache = new Vector2[8];
+        private Vector2F[] velocitiesCache = new Vector2F[8];
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BreakableBody" /> class
@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="density">The density</param>
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
-        public BreakableBody(World world, ICollection<Vertices> parts, float density, Vector2 position = new Vector2(),
+        public BreakableBody(World world, ICollection<Vertices> parts, float density, Vector2F position = new Vector2F(),
             float rotation = 0)
         {
             this.world = world;
@@ -93,7 +93,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="shapes">The shapes</param>
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
-        public BreakableBody(World world, IEnumerable<Shape> shapes, Vector2 position = new Vector2(),
+        public BreakableBody(World world, IEnumerable<Shape> shapes, Vector2F position = new Vector2F(),
             float rotation = 0)
         {
             this.world = world;
@@ -172,7 +172,7 @@ namespace Alis.Core.Physic.Dynamics
                 //Enlarge the cache if needed
                 if (Parts.Count > angularVelocitiesCache.Length)
                 {
-                    velocitiesCache = new Vector2[Parts.Count];
+                    velocitiesCache = new Vector2F[Parts.Count];
                     angularVelocitiesCache = new float[Parts.Count];
                 }
 

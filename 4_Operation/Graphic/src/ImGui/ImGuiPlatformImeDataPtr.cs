@@ -80,7 +80,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the input pos
         /// </summary>
-        public ref Vector2 InputPos => ref Unsafe.AsRef<Vector2>(&NativePtr->InputPos);
+        public ref Vector2F InputPos => ref Unsafe.AsRef<Vector2F>(&NativePtr->InputPos);
 
         /// <summary>
         ///     Gets the value of the input line height

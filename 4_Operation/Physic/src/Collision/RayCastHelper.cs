@@ -53,7 +53,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="transform">The transform</param>
         /// <param name="output">The output</param>
         /// <returns>The bool</returns>
-        public static bool RayCastEdge(ref Vector2 start, ref Vector2 end, bool oneSided, ref RayCastInput input,
+        public static bool RayCastEdge(ref Vector2F start, ref Vector2F end, bool oneSided, ref RayCastInput input,
             ref Transform transform, out RayCastOutput output)
         {
             // p = p1 + t * d
@@ -64,28 +64,28 @@ namespace Alis.Core.Physic.Collision
             output = new RayCastOutput();
 
             // Put the ray into the edge's frame of reference.
-            Vector2 p1 = MathUtils.MulT(transform.Rotation, input.Point1 - transform.Position);
-            Vector2 p2 = MathUtils.MulT(transform.Rotation, input.Point2 - transform.Position);
-            Vector2 d = p2 - p1;
+            Vector2F p1 = MathUtils.MulT(transform.Rotation, input.Point1 - transform.Position);
+            Vector2F p2 = MathUtils.MulT(transform.Rotation, input.Point2 - transform.Position);
+            Vector2F d = p2 - p1;
 
-            Vector2 v1 = start;
-            Vector2 v2 = end;
-            Vector2 e = v2 - v1;
+            Vector2F v1 = start;
+            Vector2F v2 = end;
+            Vector2F e = v2 - v1;
 
             // Normal points to the right, looking from v1 at v2
-            Vector2 normal = new Vector2(e.Y, -e.X);
-            normal = Vector2.Normalize(normal);
+            Vector2F normal = new Vector2F(e.Y, -e.X);
+            normal = Vector2F.Normalize(normal);
 
             // q = p1 + t * d
             // dot(normal, q - v1) = 0
             // dot(normal, p1 - v1) + t * dot(normal, d) = 0
-            float numerator = Vector2.Dot(normal, v1 - p1);
+            float numerator = Vector2F.Dot(normal, v1 - p1);
             if (oneSided && (numerator > 0.0f))
             {
                 return false;
             }
 
-            float denominator = Vector2.Dot(normal, d);
+            float denominator = Vector2F.Dot(normal, d);
 
             if (denominator == 0.0f)
             {
@@ -98,18 +98,18 @@ namespace Alis.Core.Physic.Collision
                 return false;
             }
 
-            Vector2 q = p1 + t * d;
+            Vector2F q = p1 + t * d;
 
             // q = v1 + s * r
             // s = dot(q - v1, r) / dot(r, r)
-            Vector2 r = v2 - v1;
-            float rr = Vector2.Dot(r, r);
+            Vector2F r = v2 - v1;
+            float rr = Vector2F.Dot(r, r);
             if (rr == 0.0f)
             {
                 return false;
             }
 
-            float s = Vector2.Dot(q - v1, r) / rr;
+            float s = Vector2F.Dot(q - v1, r) / rr;
             if (s < 0.0f || 1.0f < s)
             {
                 return false;
@@ -137,7 +137,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="transform">The transform</param>
         /// <param name="output">The output</param>
         /// <returns>The bool</returns>
-        public static bool RayCastCircle(ref Vector2 pos, float radius, ref RayCastInput input, ref Transform transform,
+        public static bool RayCastCircle(ref Vector2F pos, float radius, ref RayCastInput input, ref Transform transform,
             out RayCastOutput output)
         {
             // Collision Detection in Interactive 3D Environments by Gino van den Bergen
@@ -147,14 +147,14 @@ namespace Alis.Core.Physic.Collision
 
             output = new RayCastOutput();
 
-            Vector2 position = transform.Position + MathUtils.Mul(transform.Rotation, pos);
-            Vector2 s = input.Point1 - position;
-            float b = Vector2.Dot(s, s) - radius * radius;
+            Vector2F position = transform.Position + MathUtils.Mul(transform.Rotation, pos);
+            Vector2F s = input.Point1 - position;
+            float b = Vector2F.Dot(s, s) - radius * radius;
 
             // Solve quadratic equation.
-            Vector2 r = input.Point2 - input.Point1;
-            float c = Vector2.Dot(s, r);
-            float rr = Vector2.Dot(r, r);
+            Vector2F r = input.Point2 - input.Point1;
+            float c = Vector2F.Dot(s, r);
+            float rr = Vector2F.Dot(r, r);
             float sigma = c * c - rr * b;
 
             // Check for negative discriminant and short segment.
@@ -172,7 +172,7 @@ namespace Alis.Core.Physic.Collision
                 a /= rr;
                 output.Fraction = a;
                 output.Normal = s + a * r;
-                output.Normal = Vector2.Normalize(output.Normal);
+                output.Normal = Vector2F.Normalize(output.Normal);
                 return true;
             }
 
@@ -194,9 +194,9 @@ namespace Alis.Core.Physic.Collision
             output = new RayCastOutput();
 
             // Put the ray into the polygon's frame of reference.
-            Vector2 p1 = MathUtils.MulT(transform.Rotation, input.Point1 - transform.Position);
-            Vector2 p2 = MathUtils.MulT(transform.Rotation, input.Point2 - transform.Position);
-            Vector2 d = p2 - p1;
+            Vector2F p1 = MathUtils.MulT(transform.Rotation, input.Point1 - transform.Position);
+            Vector2F p2 = MathUtils.MulT(transform.Rotation, input.Point2 - transform.Position);
+            Vector2F d = p2 - p1;
 
             float lower = 0.0f, upper = input.Fraction;
 
@@ -207,8 +207,8 @@ namespace Alis.Core.Physic.Collision
                 // p = p1 + a * d
                 // dot(normal, p - v) = 0
                 // dot(normal, p1 - v) + a * dot(normal, d) = 0
-                float numerator = Vector2.Dot(normals[i], vertices[i] - p1);
-                float denominator = Vector2.Dot(normals[i], d);
+                float numerator = Vector2F.Dot(normals[i], vertices[i] - p1);
+                float denominator = Vector2F.Dot(normals[i], d);
 
                 if (denominator == 0.0f)
                 {

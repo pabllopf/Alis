@@ -57,12 +57,12 @@ namespace Alis.Core.Component.Render
         /// <summary>
         ///     Gets or sets the value of the point of view
         /// </summary>
-        private Vector2 PointOfView { get; set; }
+        private Vector2F PointOfView { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the resolution
         /// </summary>
-        public Vector2 Resolution { get; set; }
+        public Vector2F Resolution { get; set; }
 
         /// <summary>
         ///     Builders this instance
@@ -75,11 +75,11 @@ namespace Alis.Core.Component.Render
         /// </summary>
         public override void Start()
         {
-            PointOfView = new Vector2(0.0f, 0.0f);
-            Resolution = new Vector2(
+            PointOfView = new Vector2F(0.0f, 0.0f);
+            Resolution = new Vector2F(
                 (uint) VideoGame.Setting.Graphic.Window.Resolution.X,
                 (uint) VideoGame.Setting.Graphic.Window.Resolution.Y);
-            view = new View(new Vector2(PointOfView.X, PointOfView.Y), new Vector2(Resolution.X, Resolution.Y));
+            view = new View(new Vector2F(PointOfView.X, PointOfView.Y), new Vector2F(Resolution.X, Resolution.Y));
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Alis.Core.Component.Render
         /// </summary>
         public override void Update()
         {
-            view.Center = new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
+            view.Center = new Vector2F(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
             GraphicManager.Current.RenderWindow.SetView(view);
         }
     }

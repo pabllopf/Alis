@@ -47,17 +47,17 @@ namespace Alis.Core.Physic.Collision.Narrowphase
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 V1, V2;
+        public Vector2F V1, V2;
 
         /// <summary>
         ///     The normal
         /// </summary>
-        public Vector2 Normal;
+        public Vector2F Normal;
 
         /// <summary>
         ///     The side normal
         /// </summary>
-        public Vector2 SideNormal1;
+        public Vector2F SideNormal1;
 
         /// <summary>
         ///     The side offset
@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
         /// <summary>
         ///     The side normal
         /// </summary>
-        public Vector2 SideNormal2;
+        public Vector2F SideNormal2;
 
         /// <summary>
         ///     The side offset

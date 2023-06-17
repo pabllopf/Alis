@@ -49,22 +49,22 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The pos
         /// </summary>
-        public Vector2 Pos;
+        public Vector2F Pos;
 
         /// <summary>
         ///     The size
         /// </summary>
-        public Vector2 Size;
+        public Vector2F Size;
 
         /// <summary>
         ///     The work pos
         /// </summary>
-        public Vector2 WorkPos;
+        public Vector2F WorkPos;
 
         /// <summary>
         ///     The work size
         /// </summary>
-        public Vector2 WorkSize;
+        public Vector2F WorkSize;
 
         /// <summary>
         ///     The dpi scale

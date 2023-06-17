@@ -98,7 +98,7 @@ namespace Alis.Core.Graphic.SFML.Windows
         /// <param name="sensor">Sensor to check</param>
         /// <returns>The current sensor value</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector3 GetValue(Type sensor) => sfSensor_getValue(sensor);
+        public static Vector3F GetValue(Type sensor) => sfSensor_getValue(sensor);
 
         /// <summary>
         ///     Describes whether sf sensor is available
@@ -122,6 +122,6 @@ namespace Alis.Core.Graphic.SFML.Windows
         /// <param name="sensor">The sensor</param>
         /// <returns>The vector 3f</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector3 sfSensor_getValue(Type sensor);
+        private static extern Vector3F sfSensor_getValue(Type sensor);
     }
 }

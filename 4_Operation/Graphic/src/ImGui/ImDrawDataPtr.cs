@@ -109,17 +109,17 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the display pos
         /// </summary>
-        public ref Vector2 DisplayPos => ref Unsafe.AsRef<Vector2>(&NativePtr->DisplayPos);
+        public ref Vector2F DisplayPos => ref Unsafe.AsRef<Vector2F>(&NativePtr->DisplayPos);
 
         /// <summary>
         ///     Gets the value of the display size
         /// </summary>
-        public ref Vector2 DisplaySize => ref Unsafe.AsRef<Vector2>(&NativePtr->DisplaySize);
+        public ref Vector2F DisplaySize => ref Unsafe.AsRef<Vector2F>(&NativePtr->DisplaySize);
 
         /// <summary>
         ///     Gets the value of the framebuffer scale
         /// </summary>
-        public ref Vector2 FramebufferScale => ref Unsafe.AsRef<Vector2>(&NativePtr->FramebufferScale);
+        public ref Vector2F FramebufferScale => ref Unsafe.AsRef<Vector2F>(&NativePtr->FramebufferScale);
 
         /// <summary>
         ///     Gets the value of the owner viewport
@@ -154,7 +154,7 @@ namespace Alis.Core.Graphic.ImGui
         ///     Scales the clip rects using the specified fb scale
         /// </summary>
         /// <param name="fbScale">The fb scale</param>
-        public void ScaleClipRects(Vector2 fbScale)
+        public void ScaleClipRects(Vector2F fbScale)
         {
             ImGuiNative.ImDrawData_ScaleClipRects(NativePtr, fbScale);
         }

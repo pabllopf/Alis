@@ -49,7 +49,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The window padding
         /// </summary>
-        public Vector2 WindowPadding;
+        public Vector2F WindowPadding;
 
         /// <summary>
         ///     The window rounding
@@ -64,12 +64,12 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The window min size
         /// </summary>
-        public Vector2 WindowMinSize;
+        public Vector2F WindowMinSize;
 
         /// <summary>
         ///     The window title align
         /// </summary>
-        public Vector2 WindowTitleAlign;
+        public Vector2F WindowTitleAlign;
 
         /// <summary>
         ///     The window menu button position
@@ -99,7 +99,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The frame padding
         /// </summary>
-        public Vector2 FramePadding;
+        public Vector2F FramePadding;
 
         /// <summary>
         ///     The frame rounding
@@ -114,22 +114,22 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The item spacing
         /// </summary>
-        public Vector2 ItemSpacing;
+        public Vector2F ItemSpacing;
 
         /// <summary>
         ///     The item inner spacing
         /// </summary>
-        public Vector2 ItemInnerSpacing;
+        public Vector2F ItemInnerSpacing;
 
         /// <summary>
         ///     The cell padding
         /// </summary>
-        public Vector2 CellPadding;
+        public Vector2F CellPadding;
 
         /// <summary>
         ///     The touch extra padding
         /// </summary>
-        public Vector2 TouchExtraPadding;
+        public Vector2F TouchExtraPadding;
 
         /// <summary>
         ///     The indent spacing
@@ -189,12 +189,12 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The button text align
         /// </summary>
-        public Vector2 ButtonTextAlign;
+        public Vector2F ButtonTextAlign;
 
         /// <summary>
         ///     The selectable text align
         /// </summary>
-        public Vector2 SelectableTextAlign;
+        public Vector2F SelectableTextAlign;
 
         /// <summary>
         ///     The separator text border size
@@ -204,22 +204,22 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The separator text align
         /// </summary>
-        public Vector2 SeparatorTextAlign;
+        public Vector2F SeparatorTextAlign;
 
         /// <summary>
         ///     The separator text padding
         /// </summary>
-        public Vector2 SeparatorTextPadding;
+        public Vector2F SeparatorTextPadding;
 
         /// <summary>
         ///     The display window padding
         /// </summary>
-        public Vector2 DisplayWindowPadding;
+        public Vector2F DisplayWindowPadding;
 
         /// <summary>
         ///     The display safe area padding
         /// </summary>
-        public Vector2 DisplaySafeAreaPadding;
+        public Vector2F DisplaySafeAreaPadding;
 
         /// <summary>
         ///     The mouse cursor scale
@@ -254,276 +254,276 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors0;
+        public Vector4F Colors0;
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors1;
+        public Vector4F Colors1;
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors2;
+        public Vector4F Colors2;
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors3;
+        public Vector4F Colors3;
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors4;
+        public Vector4F Colors4;
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors5;
+        public Vector4F Colors5;
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors6;
+        public Vector4F Colors6;
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors7;
+        public Vector4F Colors7;
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors8;
+        public Vector4F Colors8;
 
         /// <summary>
         ///     The colors
         /// </summary>
-        public Vector4 Colors9;
+        public Vector4F Colors9;
 
         /// <summary>
         ///     The colors 10
         /// </summary>
-        public Vector4 Colors10;
+        public Vector4F Colors10;
 
         /// <summary>
         ///     The colors 11
         /// </summary>
-        public Vector4 Colors11;
+        public Vector4F Colors11;
 
         /// <summary>
         ///     The colors 12
         /// </summary>
-        public Vector4 Colors12;
+        public Vector4F Colors12;
 
         /// <summary>
         ///     The colors 13
         /// </summary>
-        public Vector4 Colors13;
+        public Vector4F Colors13;
 
         /// <summary>
         ///     The colors 14
         /// </summary>
-        public Vector4 Colors14;
+        public Vector4F Colors14;
 
         /// <summary>
         ///     The colors 15
         /// </summary>
-        public Vector4 Colors15;
+        public Vector4F Colors15;
 
         /// <summary>
         ///     The colors 16
         /// </summary>
-        public Vector4 Colors16;
+        public Vector4F Colors16;
 
         /// <summary>
         ///     The colors 17
         /// </summary>
-        public Vector4 Colors17;
+        public Vector4F Colors17;
 
         /// <summary>
         ///     The colors 18
         /// </summary>
-        public Vector4 Colors18;
+        public Vector4F Colors18;
 
         /// <summary>
         ///     The colors 19
         /// </summary>
-        public Vector4 Colors19;
+        public Vector4F Colors19;
 
         /// <summary>
         ///     The colors 20
         /// </summary>
-        public Vector4 Colors20;
+        public Vector4F Colors20;
 
         /// <summary>
         ///     The colors 21
         /// </summary>
-        public Vector4 Colors21;
+        public Vector4F Colors21;
 
         /// <summary>
         ///     The colors 22
         /// </summary>
-        public Vector4 Colors22;
+        public Vector4F Colors22;
 
         /// <summary>
         ///     The colors 23
         /// </summary>
-        public Vector4 Colors23;
+        public Vector4F Colors23;
 
         /// <summary>
         ///     The colors 24
         /// </summary>
-        public Vector4 Colors24;
+        public Vector4F Colors24;
 
         /// <summary>
         ///     The colors 25
         /// </summary>
-        public Vector4 Colors25;
+        public Vector4F Colors25;
 
         /// <summary>
         ///     The colors 26
         /// </summary>
-        public Vector4 Colors26;
+        public Vector4F Colors26;
 
         /// <summary>
         ///     The colors 27
         /// </summary>
-        public Vector4 Colors27;
+        public Vector4F Colors27;
 
         /// <summary>
         ///     The colors 28
         /// </summary>
-        public Vector4 Colors28;
+        public Vector4F Colors28;
 
         /// <summary>
         ///     The colors 29
         /// </summary>
-        public Vector4 Colors29;
+        public Vector4F Colors29;
 
         /// <summary>
         ///     The colors 30
         /// </summary>
-        public Vector4 Colors30;
+        public Vector4F Colors30;
 
         /// <summary>
         ///     The colors 31
         /// </summary>
-        public Vector4 Colors31;
+        public Vector4F Colors31;
 
         /// <summary>
         ///     The colors 32
         /// </summary>
-        public Vector4 Colors32;
+        public Vector4F Colors32;
 
         /// <summary>
         ///     The colors 33
         /// </summary>
-        public Vector4 Colors33;
+        public Vector4F Colors33;
 
         /// <summary>
         ///     The colors 34
         /// </summary>
-        public Vector4 Colors34;
+        public Vector4F Colors34;
 
         /// <summary>
         ///     The colors 35
         /// </summary>
-        public Vector4 Colors35;
+        public Vector4F Colors35;
 
         /// <summary>
         ///     The colors 36
         /// </summary>
-        public Vector4 Colors36;
+        public Vector4F Colors36;
 
         /// <summary>
         ///     The colors 37
         /// </summary>
-        public Vector4 Colors37;
+        public Vector4F Colors37;
 
         /// <summary>
         ///     The colors 38
         /// </summary>
-        public Vector4 Colors38;
+        public Vector4F Colors38;
 
         /// <summary>
         ///     The colors 39
         /// </summary>
-        public Vector4 Colors39;
+        public Vector4F Colors39;
 
         /// <summary>
         ///     The colors 40
         /// </summary>
-        public Vector4 Colors40;
+        public Vector4F Colors40;
 
         /// <summary>
         ///     The colors 41
         /// </summary>
-        public Vector4 Colors41;
+        public Vector4F Colors41;
 
         /// <summary>
         ///     The colors 42
         /// </summary>
-        public Vector4 Colors42;
+        public Vector4F Colors42;
 
         /// <summary>
         ///     The colors 43
         /// </summary>
-        public Vector4 Colors43;
+        public Vector4F Colors43;
 
         /// <summary>
         ///     The colors 44
         /// </summary>
-        public Vector4 Colors44;
+        public Vector4F Colors44;
 
         /// <summary>
         ///     The colors 45
         /// </summary>
-        public Vector4 Colors45;
+        public Vector4F Colors45;
 
         /// <summary>
         ///     The colors 46
         /// </summary>
-        public Vector4 Colors46;
+        public Vector4F Colors46;
 
         /// <summary>
         ///     The colors 47
         /// </summary>
-        public Vector4 Colors47;
+        public Vector4F Colors47;
 
         /// <summary>
         ///     The colors 48
         /// </summary>
-        public Vector4 Colors48;
+        public Vector4F Colors48;
 
         /// <summary>
         ///     The colors 49
         /// </summary>
-        public Vector4 Colors49;
+        public Vector4F Colors49;
 
         /// <summary>
         ///     The colors 50
         /// </summary>
-        public Vector4 Colors50;
+        public Vector4F Colors50;
 
         /// <summary>
         ///     The colors 51
         /// </summary>
-        public Vector4 Colors51;
+        public Vector4F Colors51;
 
         /// <summary>
         ///     The colors 52
         /// </summary>
-        public Vector4 Colors52;
+        public Vector4F Colors52;
 
         /// <summary>
         ///     The colors 53
         /// </summary>
-        public Vector4 Colors53;
+        public Vector4F Colors53;
 
         /// <summary>
         ///     The colors 54
         /// </summary>
-        public Vector4 Colors54;
+        public Vector4F Colors54;
     }
 }

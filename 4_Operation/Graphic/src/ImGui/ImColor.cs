@@ -39,6 +39,6 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The value
         /// </summary>
-        public Vector4 Value;
+        public Vector4F Value;
     }
 }

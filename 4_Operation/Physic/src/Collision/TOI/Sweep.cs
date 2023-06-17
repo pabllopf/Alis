@@ -56,15 +56,15 @@ namespace Alis.Core.Physic.Collision.TOI
         public float Alpha0;
 
         /// <summary>Center world positions</summary>
-        public Vector2 C;
+        public Vector2F C;
 
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 C0;
+        public Vector2F C0;
 
         /// <summary>Local center of mass position</summary>
-        public Vector2 LocalCenter;
+        public Vector2F LocalCenter;
 
         /// <summary>Get the interpolated transform at a specific time.</summary>
         /// <param name="xfb">The transform.</param>
@@ -72,7 +72,7 @@ namespace Alis.Core.Physic.Collision.TOI
         public void GetTransform(out Transform xfb, float beta)
         {
             xfb = new Transform();
-            xfb.Position = new Vector2(
+            xfb.Position = new Vector2F(
                 (1.0f - beta) * C0.X + beta * C.X,
                 (1.0f - beta) * C0.Y + beta * C.Y
             );

@@ -47,11 +47,11 @@ namespace Alis.Core.Physic.Collision
         /// <param name="point">The point</param>
         /// <param name="transform">The transform</param>
         /// <returns>The bool</returns>
-        public static bool TestPointCircle(ref Vector2 pos, float radius, ref Vector2 point, ref Transform transform)
+        public static bool TestPointCircle(ref Vector2F pos, float radius, ref Vector2F point, ref Transform transform)
         {
-            Vector2 center = transform.Position + MathUtils.Mul(transform.Rotation, pos);
-            Vector2 d = point - center;
-            return Vector2.Dot(d, d) <= radius * radius;
+            Vector2F center = transform.Position + MathUtils.Mul(transform.Rotation, pos);
+            Vector2F d = point - center;
+            return Vector2F.Dot(d, d) <= radius * radius;
         }
 
         /// <summary>
@@ -62,14 +62,14 @@ namespace Alis.Core.Physic.Collision
         /// <param name="point">The point</param>
         /// <param name="transform">The transform</param>
         /// <returns>The bool</returns>
-        public static bool TestPointPolygon(Vertices vertices, Vertices normals, ref Vector2 point,
+        public static bool TestPointPolygon(Vertices vertices, Vertices normals, ref Vector2F point,
             ref Transform transform)
         {
-            Vector2 pLocal = MathUtils.MulT(transform.Rotation, point - transform.Position);
+            Vector2F pLocal = MathUtils.MulT(transform.Rotation, point - transform.Position);
 
             for (int i = 0; i < vertices.Count; ++i)
             {
-                float dot = Vector2.Dot(normals[i], pLocal - vertices[i]);
+                float dot = Vector2F.Dot(normals[i], pLocal - vertices[i]);
                 if (dot > 0.0f)
                 {
                     return false;

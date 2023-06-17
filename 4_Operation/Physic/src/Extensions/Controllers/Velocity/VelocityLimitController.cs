@@ -162,8 +162,8 @@ namespace Alis.Core.Physic.Extensions.Controllers.Velocity
 
                         float ratio = maxLinearVelocity / sq;
 
-                        Vector2 temp = body.LinearVelocity;
-                        temp = new Vector2(
+                        Vector2F temp = body.LinearVelocity;
+                        temp = new Vector2F(
                             temp.X * ratio,
                             temp.Y * ratio
                         );

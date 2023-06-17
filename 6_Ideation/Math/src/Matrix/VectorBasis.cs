@@ -32,29 +32,23 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Aspect.Math.Matrix
 {
     /// <summary>
-    ///     The matrix
+    ///     The vector basis
     /// </summary>
-    public partial struct Matrix4x4
+    public struct VectorBasis
     {
         /// <summary>
-        ///     The vector basis
+        ///     The element
         /// </summary>
-        public struct VectorBasis
-        {
-            /// <summary>
-            ///     The element
-            /// </summary>
-            public Vector3 Element0;
+        public Vector3F Element0;
 
-            /// <summary>
-            ///     The element
-            /// </summary>
-            public Vector3 Element1;
+        /// <summary>
+        ///     The element
+        /// </summary>
+        public Vector3F Element1;
 
-            /// <summary>
-            ///     The element
-            /// </summary>
-            public Vector3 Element2;
-        }
+        /// <summary>
+        ///     The element
+        /// </summary>
+        public Vector3F Element2;
     }
 }

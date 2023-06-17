@@ -77,7 +77,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the value
         /// </summary>
-        public ref Vector4 Value => ref Unsafe.AsRef<Vector4>(&NativePtr->Value);
+        public ref Vector4F Value => ref Unsafe.AsRef<Vector4F>(&NativePtr->Value);
 
         /// <summary>
         ///     Destroys this instance

@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
         /// <summary>
         ///     The normal
         /// </summary>
-        public Vector2 Normal;
+        public Vector2F Normal;
 
         /// <summary>
         ///     The index

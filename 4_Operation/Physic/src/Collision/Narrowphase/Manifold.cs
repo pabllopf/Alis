@@ -53,10 +53,10 @@ namespace Alis.Core.Physic.Collision.Narrowphase
     public struct Manifold
     {
         /// <summary>Not use for Type.SeparationFunction.Points</summary>
-        public Vector2 LocalNormal;
+        public Vector2F LocalNormal;
 
         /// <summary>Usage depends on manifold type</summary>
-        public Vector2 LocalPoint;
+        public Vector2F LocalPoint;
 
         /// <summary>The number of manifold points</summary>
         public int PointCount;

@@ -75,12 +75,12 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the pos
         /// </summary>
-        public ref Vector2 Pos => ref Unsafe.AsRef<Vector2>(&NativePtr->Pos);
+        public ref Vector2F Pos => ref Unsafe.AsRef<Vector2F>(&NativePtr->Pos);
 
         /// <summary>
         ///     Gets the value of the uv
         /// </summary>
-        public ref Vector2 Uv => ref Unsafe.AsRef<Vector2>(&NativePtr->Uv);
+        public ref Vector2F Uv => ref Unsafe.AsRef<Vector2F>(&NativePtr->Uv);
 
         /// <summary>
         ///     Gets the value of the col

@@ -62,9 +62,9 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
 
                 //Check here for degenerate triangles
                 Vertices triangle = triangles[i];
-                Vector2 a = triangle[0];
-                Vector2 b = triangle[1];
-                Vector2 c = triangle[2];
+                Vector2F a = triangle[0];
+                Vector2F b = triangle[1];
+                Vector2F c = triangle[2];
 
                 if (((a.X == b.X) && (a.Y == b.Y)) || ((b.X == c.X) && (b.Y == c.Y)) || ((a.X == c.X) && (a.Y == c.Y)))
                 {

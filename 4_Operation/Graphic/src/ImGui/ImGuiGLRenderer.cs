@@ -241,8 +241,8 @@ namespace Alis.Core.Graphic.ImGui
 
             SetupRenderState(drawData, fbWidth, fbHeight);
 
-            Vector2 clipOffset = drawData.DisplayPos;
-            Vector2 clipScale = drawData.FramebufferScale;
+            Vector2F clipOffset = drawData.DisplayPos;
+            Vector2F clipScale = drawData.FramebufferScale;
 
             drawData.ScaleClipRects(clipScale);
 
@@ -270,7 +270,7 @@ namespace Alis.Core.Graphic.ImGui
                     else
                     {
                         // Project scissor/clipping rectangles into framebuffer space
-                        Vector4 clipRect = pcmd.ClipRect;
+                        Vector4F clipRect = pcmd.ClipRect;
 
                         clipRect.X = pcmd.ClipRect.X - clipOffset.X;
                         clipRect.Y = pcmd.ClipRect.Y - clipOffset.Y;

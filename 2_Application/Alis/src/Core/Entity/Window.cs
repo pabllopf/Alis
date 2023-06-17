@@ -48,7 +48,7 @@ namespace Alis.Core.Entity
         /// <summary>
         ///     Gets or sets the value of the resolution
         /// </summary>
-        public Vector2 Resolution { get; set; } = new Vector2(640, 480);
+        public Vector2F Resolution { get; set; } = new Vector2F(640, 480);
 
         /// <summary>
         ///     Builders this instance

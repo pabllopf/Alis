@@ -69,7 +69,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The glyph offset
         /// </summary>
-        public Vector2 GlyphOffset;
+        public Vector2F GlyphOffset;
 
         /// <summary>
         ///     The font

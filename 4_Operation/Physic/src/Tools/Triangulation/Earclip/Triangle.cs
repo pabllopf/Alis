@@ -53,15 +53,15 @@ namespace Alis.Core.Physic.Tools.Triangulation.Earclip
             float cross = (x2 - x1) * (y3 - y1) - (x3 - x1) * (y2 - y1);
             if (cross > 0)
             {
-                Add(new Vector2(x1, y1));
-                Add(new Vector2(x2, y2));
-                Add(new Vector2(x3, y3));
+                Add(new Vector2F(x1, y1));
+                Add(new Vector2F(x2, y2));
+                Add(new Vector2F(x3, y3));
             }
             else
             {
-                Add(new Vector2(x1, y1));
-                Add(new Vector2(x3, y3));
-                Add(new Vector2(x2, y2));
+                Add(new Vector2F(x1, y1));
+                Add(new Vector2F(x3, y3));
+                Add(new Vector2F(x2, y2));
             }
         }
 
@@ -73,9 +73,9 @@ namespace Alis.Core.Physic.Tools.Triangulation.Earclip
         /// <returns>The bool</returns>
         public bool IsInside(float x, float y)
         {
-            Vector2 a = this[0];
-            Vector2 b = this[1];
-            Vector2 c = this[2];
+            Vector2F a = this[0];
+            Vector2F b = this[1];
+            Vector2F c = this[2];
 
             if ((x < a.X) && (x < b.X) && (x < c.X))
             {

@@ -34,5 +34,5 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The platform setwindowpos
     /// </summary>
-    public delegate void PlatformSetWindowPos(ImGuiViewportPtr vp, Vector2 pos);
+    public delegate void PlatformSetWindowPos(ImGuiViewportPtr vp, Vector2F pos);
 }

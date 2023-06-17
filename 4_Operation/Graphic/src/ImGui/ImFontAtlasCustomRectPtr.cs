@@ -105,7 +105,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the glyph offset
         /// </summary>
-        public ref Vector2 GlyphOffset => ref Unsafe.AsRef<Vector2>(&NativePtr->GlyphOffset);
+        public ref Vector2F GlyphOffset => ref Unsafe.AsRef<Vector2F>(&NativePtr->GlyphOffset);
 
         /// <summary>
         ///     Gets the value of the font

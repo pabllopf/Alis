@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The normal
         /// </summary>
-        public Vector2 Normal;
+        public Vector2F Normal;
 
         /// <summary>
         ///     The normal mass

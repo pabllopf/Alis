@@ -64,17 +64,17 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The display pos
         /// </summary>
-        public Vector2 DisplayPos;
+        public Vector2F DisplayPos;
 
         /// <summary>
         ///     The display size
         /// </summary>
-        public Vector2 DisplaySize;
+        public Vector2F DisplaySize;
 
         /// <summary>
         ///     The framebuffer scale
         /// </summary>
-        public Vector2 FramebufferScale;
+        public Vector2F FramebufferScale;
 
         /// <summary>
         ///     The owner viewport

@@ -85,22 +85,22 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the pos
         /// </summary>
-        public ref Vector2 Pos => ref Unsafe.AsRef<Vector2>(&NativePtr->Pos);
+        public ref Vector2F Pos => ref Unsafe.AsRef<Vector2F>(&NativePtr->Pos);
 
         /// <summary>
         ///     Gets the value of the size
         /// </summary>
-        public ref Vector2 Size => ref Unsafe.AsRef<Vector2>(&NativePtr->Size);
+        public ref Vector2F Size => ref Unsafe.AsRef<Vector2F>(&NativePtr->Size);
 
         /// <summary>
         ///     Gets the value of the work pos
         /// </summary>
-        public ref Vector2 WorkPos => ref Unsafe.AsRef<Vector2>(&NativePtr->WorkPos);
+        public ref Vector2F WorkPos => ref Unsafe.AsRef<Vector2F>(&NativePtr->WorkPos);
 
         /// <summary>
         ///     Gets the value of the work size
         /// </summary>
-        public ref Vector2 WorkSize => ref Unsafe.AsRef<Vector2>(&NativePtr->WorkSize);
+        public ref Vector2F WorkSize => ref Unsafe.AsRef<Vector2F>(&NativePtr->WorkSize);
 
         /// <summary>
         ///     Gets the value of the dpi scale
@@ -185,9 +185,9 @@ namespace Alis.Core.Graphic.ImGui
         ///     Gets the center
         /// </summary>
         /// <returns>The retval</returns>
-        public Vector2 GetCenter()
+        public Vector2F GetCenter()
         {
-            Vector2 retval;
+            Vector2F retval;
             ImGuiNative.ImGuiViewport_GetCenter(&retval, NativePtr);
             return retval;
         }
@@ -196,9 +196,9 @@ namespace Alis.Core.Graphic.ImGui
         ///     Gets the work center
         /// </summary>
         /// <returns>The retval</returns>
-        public Vector2 GetWorkCenter()
+        public Vector2F GetWorkCenter()
         {
-            Vector2 retval;
+            Vector2F retval;
             ImGuiNative.ImGuiViewport_GetWorkCenter(&retval, NativePtr);
             return retval;
         }

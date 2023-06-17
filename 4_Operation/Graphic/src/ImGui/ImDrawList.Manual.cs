@@ -43,7 +43,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="pos">The pos</param>
         /// <param name="col">The col</param>
         /// <param name="textBegin">The text begin</param>
-        public void AddText(Vector2 pos, uint col, string textBegin)
+        public void AddText(Vector2F pos, uint col, string textBegin)
         {
             int textBeginByteCount = Encoding.UTF8.GetByteCount(textBegin);
             byte* nativeTextBegin = stackalloc byte[textBeginByteCount + 1];
@@ -65,7 +65,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="pos">The pos</param>
         /// <param name="col">The col</param>
         /// <param name="textBegin">The text begin</param>
-        public void AddText(ImFontPtr font, float fontSize, Vector2 pos, uint col, string textBegin)
+        public void AddText(ImFontPtr font, float fontSize, Vector2F pos, uint col, string textBegin)
         {
             ImFont* nativeFont = font.NativePtr;
             int textBeginByteCount = Encoding.UTF8.GetByteCount(textBegin);
@@ -78,7 +78,7 @@ namespace Alis.Core.Graphic.ImGui
 
             byte* nativeTextEnd = null;
             float wrapWidth = 0.0f;
-            Vector4* cpuFineClipRect = null;
+            Vector4F* cpuFineClipRect = null;
             ImGuiNative.ImDrawList_AddText_FontPtr(NativePtr, nativeFont, fontSize, pos, col, nativeTextBegin, nativeTextEnd, wrapWidth, cpuFineClipRect);
         }
     }

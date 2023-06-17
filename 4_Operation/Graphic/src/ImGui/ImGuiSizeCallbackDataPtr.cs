@@ -84,16 +84,16 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the pos
         /// </summary>
-        public ref Vector2 Pos => ref Unsafe.AsRef<Vector2>(&NativePtr->Pos);
+        public ref Vector2F Pos => ref Unsafe.AsRef<Vector2F>(&NativePtr->Pos);
 
         /// <summary>
         ///     Gets the value of the current size
         /// </summary>
-        public ref Vector2 CurrentSize => ref Unsafe.AsRef<Vector2>(&NativePtr->CurrentSize);
+        public ref Vector2F CurrentSize => ref Unsafe.AsRef<Vector2F>(&NativePtr->CurrentSize);
 
         /// <summary>
         ///     Gets the value of the desired size
         /// </summary>
-        public ref Vector2 DesiredSize => ref Unsafe.AsRef<Vector2>(&NativePtr->DesiredSize);
+        public ref Vector2F DesiredSize => ref Unsafe.AsRef<Vector2F>(&NativePtr->DesiredSize);
     }
 }

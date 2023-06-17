@@ -43,6 +43,6 @@ namespace Alis.Core.Physic.Collision.Narrowphase
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 V;
+        public Vector2F V;
     }
 }

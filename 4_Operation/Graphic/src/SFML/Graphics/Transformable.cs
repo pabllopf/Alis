@@ -65,12 +65,12 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <summary>
         ///     The vector 2f
         /// </summary>
-        private Vector2 myOrigin = new Vector2(0, 0);
+        private Vector2F myOrigin = new Vector2F(0, 0);
 
         /// <summary>
         ///     The vector 2f
         /// </summary>
-        private Vector2 myPosition = new Vector2(0, 0);
+        private Vector2F myPosition = new Vector2F(0, 0);
 
         /// <summary>
         ///     The my rotation
@@ -80,7 +80,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <summary>
         ///     The vector 2f
         /// </summary>
-        private Vector2 myScale = new Vector2(1, 1);
+        private Vector2F myScale = new Vector2F(1, 1);
 
         /// <summary>
         ///     The my transform
@@ -133,7 +133,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         ///     Position of the object
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public Vector2 Position
+        public Vector2F Position
         {
             get => myPosition;
             set
@@ -165,7 +165,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         ///     Scale of the object
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public Vector2 Scale
+        public Vector2F Scale
         {
             get => myScale;
             set
@@ -185,7 +185,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         ///     transformations (position, scale, rotation).
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public Vector2 Origin
+        public Vector2F Origin
         {
             get => myOrigin;
             set

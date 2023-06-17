@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Shared
     /// </summary>
     /// <seealso cref="List{T}" />
     [DebuggerDisplay("Count = {Count} Vertices = {ToString()}")]
-    public class Vertices : List<Vector2>
+    public class Vertices : List<Vector2F>
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="Vertices" /> class
@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Shared
         ///     Initializes a new instance of the <see cref="Vertices" /> class
         /// </summary>
         /// <param name="vertices">The vertices</param>
-        public Vertices(IEnumerable<Vector2> vertices)
+        public Vertices(IEnumerable<Vector2F> vertices)
         {
             AddRange(vertices);
         }
@@ -86,7 +86,7 @@ namespace Alis.Core.Physic.Shared
 
         /// <summary>Gets the next vertex. Used for iterating all the edges with wrap-around.</summary>
         /// <param name="index">The current index</param>
-        public Vector2 NextVertex(int index) => this[NextIndex(index)];
+        public Vector2F NextVertex(int index) => this[NextIndex(index)];
 
         /// <summary>Gets the previous index. Used for iterating all the edges with wrap-around.</summary>
         /// <param name="index">The current index</param>
@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Shared
 
         /// <summary>Gets the previous vertex. Used for iterating all the edges with wrap-around.</summary>
         /// <param name="index">The current index</param>
-        public Vector2 PreviousVertex(int index) => this[PreviousIndex(index)];
+        public Vector2F PreviousVertex(int index) => this[PreviousIndex(index)];
 
         /// <summary>Gets the signed area. If the area is less than 0, it indicates that the polygon is clockwise winded.</summary>
         /// <returns>The signed area</returns>
@@ -113,8 +113,8 @@ namespace Alis.Core.Physic.Shared
             {
                 int j = (i + 1) % Count;
 
-                Vector2 vi = this[i];
-                Vector2 vj = this[j];
+                Vector2F vi = this[i];
+                Vector2F vj = this[j];
 
                 area += vi.X * vj.Y;
                 area -= vi.Y * vj.X;
@@ -134,24 +134,24 @@ namespace Alis.Core.Physic.Shared
 
         /// <summary>Gets the centroid.</summary>
         /// <returns></returns>
-        public Vector2 GetCentroid()
+        public Vector2F GetCentroid()
         {
             //The simplest polygon which can exist in the Euclidean plane has 3 sides.
             if (Count < 3)
             {
-                return new Vector2(float.NaN, float.NaN);
+                return new Vector2F(float.NaN, float.NaN);
             }
 
             // Same algorithm is used by Box2D
-            Vector2 c = Vector2.Zero;
+            Vector2F c = Vector2F.Zero;
             float area = 0.0f;
             const float inv3 = 1.0f / 3.0f;
 
             for (int i = 0; i < Count; ++i)
             {
                 // Triangle vertices.
-                Vector2 current = this[i];
-                Vector2 next = i + 1 < Count ? this[i + 1] : this[0];
+                Vector2F current = this[i];
+                Vector2F next = i + 1 < Count ? this[i + 1] : this[0];
 
                 float triangleArea = 0.5f * (current.X * next.Y - current.Y * next.X);
                 area += triangleArea;
@@ -169,29 +169,29 @@ namespace Alis.Core.Physic.Shared
         public Aabb GetAabb()
         {
             Aabb aabb;
-            Vector2 lowerBound = new Vector2(float.MaxValue, float.MaxValue);
-            Vector2 upperBound = new Vector2(float.MinValue, float.MinValue);
+            Vector2F lowerBound = new Vector2F(float.MaxValue, float.MaxValue);
+            Vector2F upperBound = new Vector2F(float.MinValue, float.MinValue);
 
             for (int i = 0; i < Count; ++i)
             {
                 if (this[i].X < lowerBound.X)
                 {
-                    lowerBound = new Vector2(this[i].X, lowerBound.Y);
+                    lowerBound = new Vector2F(this[i].X, lowerBound.Y);
                 }
 
                 if (this[i].X > upperBound.X)
                 {
-                    upperBound = new Vector2(this[i].X, upperBound.Y);
+                    upperBound = new Vector2F(this[i].X, upperBound.Y);
                 }
 
                 if (this[i].Y < lowerBound.Y)
                 {
-                    lowerBound = new Vector2(lowerBound.X, this[i].Y);
+                    lowerBound = new Vector2F(lowerBound.X, this[i].Y);
                 }
 
                 if (this[i].Y > upperBound.Y)
                 {
-                    upperBound = new Vector2(upperBound.X, this[i].Y);
+                    upperBound = new Vector2F(upperBound.X, this[i].Y);
                 }
             }
 
@@ -203,21 +203,21 @@ namespace Alis.Core.Physic.Shared
 
         /// <summary>Translates the vertices with the specified vector.</summary>
         /// <param name="value">The value.</param>
-        public void Translate(Vector2 value)
+        public void Translate(Vector2F value)
         {
             Translate(ref value);
         }
 
         /// <summary>Translates the vertices with the specified vector.</summary>
         /// <param name="value">The vector.</param>
-        public void Translate(ref Vector2 value)
+        public void Translate(ref Vector2F value)
         {
             Debug.Assert(!AttachedToBody,
                 "Translating vertices that are used by a Body can result in unstable behavior. Use Body.Position instead.");
 
             for (int i = 0; i < Count; i++)
             {
-                this[i] = Vector2.Add(this[i], value);
+                this[i] = Vector2F.Add(this[i], value);
             }
 
             if ((Holes != null) && (Holes.Count > 0))
@@ -231,20 +231,20 @@ namespace Alis.Core.Physic.Shared
 
         /// <summary>Scales the vertices with the specified vector.</summary>
         /// <param name="value">The Value.</param>
-        public void Scale(Vector2 value)
+        public void Scale(Vector2F value)
         {
             Scale(ref value);
         }
 
         /// <summary>Scales the vertices with the specified vector.</summary>
         /// <param name="value">The Value.</param>
-        public void Scale(ref Vector2 value)
+        public void Scale(ref Vector2F value)
         {
             Debug.Assert(!AttachedToBody, "Scaling vertices that are used by a Body can result in unstable behavior.");
 
             for (int i = 0; i < Count; i++)
             {
-                this[i] = Vector2.Multiply(this[i], value);
+                this[i] = Vector2F.Multiply(this[i], value);
             }
 
             if ((Holes != null) && (Holes.Count > 0))
@@ -270,8 +270,8 @@ namespace Alis.Core.Physic.Shared
 
             for (int i = 0; i < Count; i++)
             {
-                Vector2 position = this[i];
-                this[i] = new Vector2(position.X * num1 + position.Y * -num2, position.X * num2 + position.Y * num1);
+                Vector2F position = this[i];
+                this[i] = new Vector2F(position.X * num1 + position.Y * -num2, position.X * num2 + position.Y * num1);
             }
 
             if ((Holes != null) && (Holes.Count > 0))
@@ -306,7 +306,7 @@ namespace Alis.Core.Physic.Shared
             for (int i = 0; i < Count; ++i)
             {
                 int next = i + 1 < Count ? i + 1 : 0;
-                Vector2 edge = this[next] - this[i];
+                Vector2F edge = this[next] - this[i];
 
                 for (int j = 0; j < Count; ++j)
                 {
@@ -316,7 +316,7 @@ namespace Alis.Core.Physic.Shared
                         continue;
                     }
 
-                    Vector2 r = this[j] - this[i];
+                    Vector2F r = this[j] - this[i];
 
                     float s = edge.X * r.Y - edge.Y * r.X;
 
@@ -371,12 +371,12 @@ namespace Alis.Core.Physic.Shared
 
             for (int i = 0; i < Count; ++i)
             {
-                Vector2 a1 = this[i];
-                Vector2 a2 = NextVertex(i);
+                Vector2F a1 = this[i];
+                Vector2F a2 = NextVertex(i);
                 for (int j = i + 1; j < Count; ++j)
                 {
-                    Vector2 b1 = this[j];
-                    Vector2 b2 = NextVertex(j);
+                    Vector2F b1 = this[j];
+                    Vector2F b2 = NextVertex(j);
 
                     if (Line.LineIntersect2(ref a1, ref a2, ref b1, ref b2, out _))
                     {
@@ -414,7 +414,7 @@ namespace Alis.Core.Physic.Shared
             for (int i = 0; i < Count; ++i)
             {
                 int next = i + 1 < Count ? i + 1 : 0;
-                Vector2 edge = this[next] - this[i];
+                Vector2F edge = this[next] - this[i];
                 if (edge.LengthSquared() <= float.Epsilon * float.Epsilon)
                 {
                     return PolygonError.SideTooSmall;
@@ -433,16 +433,16 @@ namespace Alis.Core.Physic.Shared
         /// <param name="axis">The axis.</param>
         /// <param name="min">The min.</param>
         /// <param name="max">The max.</param>
-        public void ProjectToAxis(ref Vector2 axis, out float min, out float max)
+        public void ProjectToAxis(ref Vector2F axis, out float min, out float max)
         {
             // To project a point on an axis use the dot product
-            float dotProduct = Vector2.Dot(axis, this[0]);
+            float dotProduct = Vector2F.Dot(axis, this[0]);
             min = dotProduct;
             max = dotProduct;
 
             for (int i = 0; i < Count; i++)
             {
-                dotProduct = Vector2.Dot(this[i], axis);
+                dotProduct = Vector2F.Dot(this[i], axis);
                 if (dotProduct < min)
                 {
                     min = dotProduct;
@@ -464,7 +464,7 @@ namespace Alis.Core.Physic.Shared
         ///     -1 if the winding number is zero and the point is outside the polygon, 1 if the point is inside the polygon,
         ///     and 0 if the point is on the polygons edge.
         /// </returns>
-        public int PointInPolygon(ref Vector2 point)
+        public int PointInPolygon(ref Vector2F point)
         {
             // Winding number
             int wn = 0;
@@ -473,13 +473,13 @@ namespace Alis.Core.Physic.Shared
             for (int i = 0; i < Count; i++)
             {
                 // Get points
-                Vector2 p1 = this[i];
-                Vector2 p2 = this[NextIndex(i)];
+                Vector2F p1 = this[i];
+                Vector2F p2 = this[NextIndex(i)];
 
                 // Test if a point is directly on the edge
-                Vector2 edge = p2 - p1;
+                Vector2F edge = p2 - p1;
                 float area = MathUtils.Area(ref p1, ref p2, ref point);
-                if ((area == 0f) && (Vector2.Dot(point - p1, edge) >= 0f) && (Vector2.Dot(point - p2, edge) <= 0f))
+                if ((area == 0f) && (Vector2F.Dot(point - p1, edge) >= 0f) && (Vector2F.Dot(point - p2, edge) <= 0f))
                 {
                     return 0;
                 }
@@ -509,7 +509,7 @@ namespace Alis.Core.Physic.Shared
         ///     this sum is 2pi then the point is an interior point, if 0 then the point is an exterior point. ref:
         ///     http://ozviz.wasp.uwa.edu.au/~pbourke/geometry/insidepoly/  - Solution 2
         /// </summary>
-        public bool PointInPolygonAngle(ref Vector2 point)
+        public bool PointInPolygonAngle(ref Vector2F point)
         {
             double angle = 0;
 
@@ -517,8 +517,8 @@ namespace Alis.Core.Physic.Shared
             for (int i = 0; i < Count; i++)
             {
                 // Get points
-                Vector2 p1 = this[i] - point;
-                Vector2 p2 = this[NextIndex(i)] - point;
+                Vector2F p1 = this[i] - point;
+                Vector2F p2 = this[NextIndex(i)] - point;
 
                 angle += MathUtils.VectorAngle(ref p1, ref p2);
             }
@@ -538,7 +538,7 @@ namespace Alis.Core.Physic.Shared
             // Transform main polygon
             for (int i = 0; i < Count; i++)
             {
-                this[i] = Vector2.Transform(this[i], transform);
+                this[i] = Vector2F.Transform(this[i], transform);
             }
 
             // Transform holes
@@ -546,7 +546,7 @@ namespace Alis.Core.Physic.Shared
             {
                 for (int i = 0; i < Holes.Count; i++)
                 {
-                    Vector2[] temp = Holes[i].ToArray();
+                    Vector2F[] temp = Holes[i].ToArray();
                     //temp = Vector2.Transform(, );
 
                     Transform(temp, ref transform, temp);
@@ -563,9 +563,9 @@ namespace Alis.Core.Physic.Shared
         /// <param name="matrix">The matrix</param>
         /// <param name="destinationArray">The destination array</param>
         public static void Transform(
-            Vector2[] sourceArray,
+            Vector2F[] sourceArray,
             ref Matrix4x4 matrix,
-            Vector2[] destinationArray)
+            Vector2F[] destinationArray)
         {
             Transform(sourceArray, 0, ref matrix, destinationArray, 0, sourceArray.Length);
         }
@@ -584,10 +584,10 @@ namespace Alis.Core.Physic.Shared
         /// <exception cref="ArgumentException">Destination array length is lesser than destinationIndex + length</exception>
         /// <exception cref="ArgumentException">Source array length is lesser than sourceIndex + length</exception>
         public static void Transform(
-            Vector2[] sourceArray,
+            Vector2F[] sourceArray,
             int sourceIndex,
             ref Matrix4x4 matrix,
-            Vector2[] destinationArray,
+            Vector2F[] destinationArray,
             int destinationIndex,
             int length)
         {
@@ -613,9 +613,9 @@ namespace Alis.Core.Physic.Shared
 
             for (int x = 0; x < length; x++)
             {
-                Vector2 position = sourceArray[sourceIndex + x];
-                Vector2 destination = destinationArray[destinationIndex + x];
-                destination = new Vector2(
+                Vector2F position = sourceArray[sourceIndex + x];
+                Vector2F destination = destinationArray[destinationIndex + x];
+                destination = new Vector2F(
                     position.X * matrix.M11 + position.Y * matrix.M21 + matrix.M41,
                     position.X * matrix.M12 + position.Y * matrix.M22 + matrix.M42
                 );
@@ -632,7 +632,7 @@ namespace Alis.Core.Physic.Shared
         {
             for (int i = 0; i < Count; i++)
             {
-                this[i] = new Vector2(-1 * this[i].X, this[i].Y);
+                this[i] = new Vector2F(-1 * this[i].X, this[i].Y);
             }
         }
 
@@ -643,7 +643,7 @@ namespace Alis.Core.Physic.Shared
         {
             for (int i = 0; i < Count; i++)
             {
-                this[i] = new Vector2(this[i].X, -1 * this[i].Y);
+                this[i] = new Vector2F(this[i].X, -1 * this[i].Y);
             }
         }
 

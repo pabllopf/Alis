@@ -196,7 +196,7 @@ namespace Alis.Core.Aspect.Math.Matrix
 
         /// <summary>Gets or sets the translation component of this matrix.</summary>
         /// <value>The translation component of the current instance.</value>
-        public Vector3 Translation => new Vector3(M41, M42, M43);
+        public Vector3F Translation => new Vector3F(M41, M42, M43);
 
         /// <summary>Creates a customized orthographic projection matrix.</summary>
         /// <param name="left">The minimum X-value of the view volume.</param>

@@ -93,10 +93,10 @@ namespace Alis.Core.Graphic.ImGui
             // Setup display size (every frame to accommodate for window resizing)
             SDL_GetWindowSize(_window, out int w, out int h);
             SDL_GL_GetDrawableSize(_window, out int displayW, out int displayH);
-            io.DisplaySize = new Vector2(w, h);
+            io.DisplaySize = new Vector2F(w, h);
             if ((w > 0) && (h > 0))
             {
-                io.DisplayFramebufferScale = new Vector2((float) displayW / w, (float) displayH / h);
+                io.DisplayFramebufferScale = new Vector2F((float) displayW / w, (float) displayH / h);
             }
 
             // Setup time step (we don't use SDL_GetTicks() because it is using millisecond resolution)
@@ -200,7 +200,7 @@ namespace Alis.Core.Graphic.ImGui
             }
             else
             {
-                io.MousePos = new Vector2(float.MinValue, float.MinValue);
+                io.MousePos = new Vector2F(float.MinValue, float.MinValue);
             }
 
             uint mouseButtons = SDL_GetMouseState(out int mx, out int my);
@@ -221,7 +221,7 @@ namespace Alis.Core.Graphic.ImGui
                 SDL_GetGlobalMouseState(out mx, out my);
                 mx -= wx;
                 my -= wy;
-                io.MousePos = new Vector2(mx, my);
+                io.MousePos = new Vector2F(mx, my);
             }
 
             // SDL_CaptureMouse() let the OS know e.g. that our imgui drag outside the SDL window boundaries shouldn't e.g. trigger the OS window resize cursor.

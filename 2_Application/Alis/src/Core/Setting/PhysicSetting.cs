@@ -44,7 +44,7 @@ namespace Alis.Core.Setting
         /// <summary>
         ///     Gets or sets the value of the gravity
         /// </summary>
-        public Vector2 Gravity { get; set; } = new Vector2(0.0f, 9.8f);
+        public Vector2F Gravity { get; set; } = new Vector2F(0.0f, 9.8f);
 
         /// <summary>
         ///     Builders this instance

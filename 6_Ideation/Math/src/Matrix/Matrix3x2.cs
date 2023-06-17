@@ -86,9 +86,9 @@ namespace Alis.Core.Aspect.Math.Matrix
 
         /// <summary>Gets or sets the translation component of this matrix.</summary>
         /// <value>The translation component of the current instance.</value>
-        public Vector2 Translation
+        public Vector2F Translation
         {
-            get => new Vector2(M31, M32);
+            get => new Vector2F(M31, M32);
 
             set
             {
@@ -299,7 +299,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>Creates a scaling matrix from the specified vector scale.</summary>
         /// <param name="scales">The scale to use.</param>
         /// <returns>The scaling matrix.</returns>
-        public static Matrix3x2 CreateScale(Vector2 scales)
+        public static Matrix3x2 CreateScale(Vector2F scales)
         {
             Matrix3x2 result = Identity;
 
@@ -328,7 +328,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="yScale">The value to scale by on the Y axis.</param>
         /// <param name="centerPoint">The center point.</param>
         /// <returns>The scaling matrix.</returns>
-        public static Matrix3x2 CreateScale(float xScale, float yScale, Vector2 centerPoint)
+        public static Matrix3x2 CreateScale(float xScale, float yScale, Vector2F centerPoint)
         {
             Matrix3x2 result = Identity;
 
@@ -347,7 +347,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="scales">The scale to use.</param>
         /// <param name="centerPoint">The center offset.</param>
         /// <returns>The scaling matrix.</returns>
-        public static Matrix3x2 CreateScale(Vector2 scales, Vector2 centerPoint)
+        public static Matrix3x2 CreateScale(Vector2F scales, Vector2F centerPoint)
         {
             Matrix3x2 result = Identity;
 
@@ -382,7 +382,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="scale">The uniform scale to use.</param>
         /// <param name="centerPoint">The center offset.</param>
         /// <returns>The scaling matrix.</returns>
-        public static Matrix3x2 CreateScale(float scale, Vector2 centerPoint)
+        public static Matrix3x2 CreateScale(float scale, Vector2F centerPoint)
         {
             Matrix3x2 result = Identity;
 
@@ -400,7 +400,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>Creates a translation matrix from the specified 2-dimensional vector.</summary>
         /// <param name="position">The translation position.</param>
         /// <returns>The translation matrix.</returns>
-        public static Matrix3x2 CreateTranslation(Vector2 position)
+        public static Matrix3x2 CreateTranslation(Vector2F position)
         {
             Matrix3x2 result = Identity;
 

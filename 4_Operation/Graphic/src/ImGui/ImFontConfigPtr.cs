@@ -119,12 +119,12 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the glyph extra spacing
         /// </summary>
-        public ref Vector2 GlyphExtraSpacing => ref Unsafe.AsRef<Vector2>(&NativePtr->GlyphExtraSpacing);
+        public ref Vector2F GlyphExtraSpacing => ref Unsafe.AsRef<Vector2F>(&NativePtr->GlyphExtraSpacing);
 
         /// <summary>
         ///     Gets the value of the glyph offset
         /// </summary>
-        public ref Vector2 GlyphOffset => ref Unsafe.AsRef<Vector2>(&NativePtr->GlyphOffset);
+        public ref Vector2F GlyphOffset => ref Unsafe.AsRef<Vector2F>(&NativePtr->GlyphOffset);
 
         /// <summary>
         ///     Gets or sets the value of the glyph ranges

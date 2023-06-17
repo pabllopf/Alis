@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.OpenGL.NumericsExtensions
         /// </summary>
         /// <param name="tv">The Vector3 to perform the TakeMin on.</param>
         /// <param name="v">Vector to check against.</param>
-        public static void TakeMin(this Vector3 tv, Vector3 v)
+        public static void TakeMin(this Vector3F tv, Vector3F v)
         {
             if (v.X < tv.X)
             {
@@ -64,7 +64,7 @@ namespace Alis.Core.Graphic.OpenGL.NumericsExtensions
         /// </summary>
         /// <param name="tv">The Vector3 to perform the TakeMax on.</param>
         /// <param name="v">Vector to check against.</param>
-        public static void TakeMax(this Vector3 tv, Vector3 v)
+        public static void TakeMax(this Vector3F tv, Vector3F v)
         {
             if (v.X > tv.X)
             {
@@ -87,14 +87,14 @@ namespace Alis.Core.Graphic.OpenGL.NumericsExtensions
         /// </summary>
         /// <param name="v">The Vector3 to perform the Normalize on.</param>
         /// <returns>if (Length = 0) return Zero; else return Vector3(x,y,z)/Length.</returns>
-        public static Vector3 Normalize(this Vector3 v)
+        public static Vector3F Normalize(this Vector3F v)
         {
             if (v.Length() == 0)
             {
-                return Vector3.Zero;
+                return Vector3F.Zero;
             }
 
-            return new Vector3(v.X, v.Y, v.Z) / v.Length();
+            return new Vector3F(v.X, v.Y, v.Z) / v.Length();
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Alis.Core.Graphic.OpenGL.NumericsExtensions
         /// <param name="tv">The Vector3 to perform the dot product on.</param>
         /// <param name="v">Second dot product term.</param>
         /// <returns>Vector3.Dot(this, v).</returns>
-        public static float Dot(this Vector3 tv, Vector3 v) => Vector3.Dot(tv, v);
+        public static float Dot(this Vector3F tv, Vector3F v) => Vector3F.Dot(tv, v);
 
         /// <summary>
         ///     Provide an accessor for each of the elements of the Vector structure.
@@ -111,6 +111,6 @@ namespace Alis.Core.Graphic.OpenGL.NumericsExtensions
         /// <param name="v">The Vector3 to access.</param>
         /// <param name="index">The element to access (0 = X, 1 = Y, 2 = Z).</param>
         /// <returns>The element of the Vector3 as indexed by i.</returns>
-        public static float Get(this Vector3 v, int index) => index == 0 ? v.X : index == 1 ? v.Y : v.Z;
+        public static float Get(this Vector3F v, int index) => index == 0 ? v.X : index == 1 ? v.Y : v.Z;
     }
 }

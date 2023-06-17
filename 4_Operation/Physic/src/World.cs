@@ -52,7 +52,7 @@ namespace Alis.Core.Physic
         ///     Initializes a new instance of the <see cref="World" /> class
         /// </summary>
         /// <param name="gravity">The gravity</param>
-        public World(Vector2 gravity)
+        public World(Vector2F gravity)
         {
             Gravity = gravity;
             ContactManager = new ContactManager(new DynamicTreeBroadPhase());
@@ -67,7 +67,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Gets the value of the gravity
         /// </summary>
-        private Vector2 Gravity { get; }
+        private Vector2F Gravity { get; }
 
         /// <summary>
         ///     Gets or sets the value of the bodies

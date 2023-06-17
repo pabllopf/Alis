@@ -105,27 +105,27 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             int iv1 = edge1;
             int iv2 = edge1 + 1 < count1 ? edge1 + 1 : 0;
 
-            Vector2 v11 = vertices1[iv1];
-            Vector2 v12 = vertices1[iv2];
+            Vector2F v11 = vertices1[iv1];
+            Vector2F v12 = vertices1[iv2];
 
-            Vector2 localTangent = v12 - v11;
-            localTangent = Vector2.Normalize(localTangent);
+            Vector2F localTangent = v12 - v11;
+            localTangent = Vector2F.Normalize(localTangent);
 
-            Vector2 localNormal = MathUtils.Cross(localTangent, 1.0f);
-            Vector2 planePoint = 0.5f * (v11 + v12);
+            Vector2F localNormal = MathUtils.Cross(localTangent, 1.0f);
+            Vector2F planePoint = 0.5f * (v11 + v12);
 
-            Vector2 tangent = MathUtils.Mul(ref xf1.Rotation, localTangent);
-            Vector2 normal = MathUtils.Cross(tangent, 1.0f);
+            Vector2F tangent = MathUtils.Mul(ref xf1.Rotation, localTangent);
+            Vector2F normal = MathUtils.Cross(tangent, 1.0f);
 
             v11 = MathUtils.Mul(ref xf1, v11);
             v12 = MathUtils.Mul(ref xf1, v12);
 
             // Face offset.
-            float frontOffset = Vector2.Dot(normal, v11);
+            float frontOffset = Vector2F.Dot(normal, v11);
 
             // Side offsets, extended by polytope skin thickness.
-            float sideOffset1 = -Vector2.Dot(tangent, v11) + totalRadius;
-            float sideOffset2 = Vector2.Dot(tangent, v12) + totalRadius;
+            float sideOffset1 = -Vector2F.Dot(tangent, v11) + totalRadius;
+            float sideOffset2 = Vector2F.Dot(tangent, v12) + totalRadius;
 
             // Clip incident edge against extruded edge1 side edges.
 
@@ -154,7 +154,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             int pointCount = 0;
             for (int i = 0; i < Settings.ManifoldPoints; ++i)
             {
-                float separation = Vector2.Dot(normal, clipPoints2[i].V) - frontOffset;
+                float separation = Vector2F.Dot(normal, clipPoints2[i].V) - frontOffset;
 
                 if (separation <= totalRadius)
                 {
@@ -197,14 +197,14 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             for (int i = 0; i < count1; ++i)
             {
                 // Get poly1 normal in frame2.
-                Vector2 n = MathUtils.Mul(ref xf.Rotation, n1S[i]);
-                Vector2 v1 = MathUtils.Mul(ref xf, v1S[i]);
+                Vector2F n = MathUtils.Mul(ref xf.Rotation, n1S[i]);
+                Vector2F v1 = MathUtils.Mul(ref xf, v1S[i]);
 
                 // Find deepest point for normal i.
                 float si = float.MaxValue;
                 for (int j = 0; j < count2; ++j)
                 {
-                    float sij = Vector2.Dot(n, v2S[j] - v1);
+                    float sij = Vector2F.Dot(n, v2S[j] - v1);
                     if (sij < si)
                     {
                         si = sij;
@@ -243,14 +243,14 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             Debug.Assert((0 <= edge1) && (edge1 < poly1.VerticesPrivate.Count));
 
             // Get the normal of the reference edge in poly2's frame.
-            Vector2 normal1 = MathUtils.MulT(ref xf2.Rotation, MathUtils.Mul(ref xf1.Rotation, normals1[edge1]));
+            Vector2F normal1 = MathUtils.MulT(ref xf2.Rotation, MathUtils.Mul(ref xf1.Rotation, normals1[edge1]));
 
             // Find the incident edge on poly2.
             int index = 0;
             float minDot = float.MaxValue;
             for (int i = 0; i < count2; ++i)
             {
-                float dot = Vector2.Dot(normal1, normals2[i]);
+                float dot = Vector2F.Dot(normal1, normals2[i]);
                 if (dot < minDot)
                 {
                     minDot = dot;

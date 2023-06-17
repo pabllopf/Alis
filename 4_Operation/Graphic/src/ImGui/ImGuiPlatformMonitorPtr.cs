@@ -75,22 +75,22 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the main pos
         /// </summary>
-        public ref Vector2 MainPos => ref Unsafe.AsRef<Vector2>(&NativePtr->MainPos);
+        public ref Vector2F MainPos => ref Unsafe.AsRef<Vector2F>(&NativePtr->MainPos);
 
         /// <summary>
         ///     Gets the value of the main size
         /// </summary>
-        public ref Vector2 MainSize => ref Unsafe.AsRef<Vector2>(&NativePtr->MainSize);
+        public ref Vector2F MainSize => ref Unsafe.AsRef<Vector2F>(&NativePtr->MainSize);
 
         /// <summary>
         ///     Gets the value of the work pos
         /// </summary>
-        public ref Vector2 WorkPos => ref Unsafe.AsRef<Vector2>(&NativePtr->WorkPos);
+        public ref Vector2F WorkPos => ref Unsafe.AsRef<Vector2F>(&NativePtr->WorkPos);
 
         /// <summary>
         ///     Gets the value of the work size
         /// </summary>
-        public ref Vector2 WorkSize => ref Unsafe.AsRef<Vector2>(&NativePtr->WorkSize);
+        public ref Vector2F WorkSize => ref Unsafe.AsRef<Vector2F>(&NativePtr->WorkSize);
 
         /// <summary>
         ///     Gets the value of the dpi scale

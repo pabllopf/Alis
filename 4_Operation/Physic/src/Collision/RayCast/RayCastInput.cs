@@ -41,9 +41,9 @@ namespace Alis.Core.Physic.Collision.RayCast
         public float Fraction;
 
         /// <summary>The starting point of the ray.</summary>
-        public Vector2 Point1;
+        public Vector2F Point1;
 
         /// <summary>The ending point of the ray.</summary>
-        public Vector2 Point2;
+        public Vector2F Point2;
     }
 }

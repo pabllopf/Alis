@@ -75,7 +75,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the clip rect
         /// </summary>
-        public ref Vector4 ClipRect => ref Unsafe.AsRef<Vector4>(&NativePtr->ClipRect);
+        public ref Vector4F ClipRect => ref Unsafe.AsRef<Vector4F>(&NativePtr->ClipRect);
 
         /// <summary>
         ///     Gets the value of the texture id
