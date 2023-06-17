@@ -43,6 +43,16 @@ namespace Alis.Core.Aspect.Math.Vector
     [StructLayout(LayoutKind.Sequential)]
     public struct Vector3F : IEquatable<Vector3F>, IFormattable
     {
+        /// <summary>
+        ///     The hash
+        /// </summary>
+        private readonly HashCode hash;
+
+        /// <summary>
+        ///     The hash code
+        /// </summary>
+        private readonly int hashCode;
+        
         /// <summary>The X component of the vector.</summary>
         public float X;
 
@@ -77,6 +87,12 @@ namespace Alis.Core.Aspect.Math.Vector
             X = x;
             Y = y;
             Z = z;
+            
+            hash = new HashCode();
+            hash.Add(x);
+            hash.Add(y);
+            hash.Add(z);
+            hashCode = hash.ToHashCode();
         }
 
 
@@ -511,7 +527,7 @@ namespace Alis.Core.Aspect.Math.Vector
 
         /// <summary>Returns the hash code for this instance.</summary>
         /// <returns>The hash code.</returns>
-        public readonly override int GetHashCode() => HashCode.Combine(X, Y, Z);
+        public readonly override int GetHashCode() => hashCode;
 
         /// <summary>Returns the length of this vector object.</summary>
         /// <returns>The vector's length.</returns>
