@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
     public class Path
     {
         /// <summary>All the points that makes up the curve</summary>
-        public readonly List<Vector2F> ControlPoints;
+        private readonly List<Vector2F> ControlPoints;
 
         /// <summary>
         ///     The delta

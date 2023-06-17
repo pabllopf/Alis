@@ -58,12 +58,12 @@ namespace Alis.Core.Graphic.Sample
         /// <summary>
         ///     The axis
         /// </summary>
-        public readonly List<Axis> Axis = new List<Axis>((Axis[]) Enum.GetValues(typeof(Axis)));
+        private readonly List<Axis> Axis = new List<Axis>((Axis[]) Enum.GetValues(typeof(Axis)));
 
         /// <summary>
         ///     The key
         /// </summary>
-        public readonly List<Key> Keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
+        private readonly List<Key> Keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
 
         /// <summary>
         ///     The width
