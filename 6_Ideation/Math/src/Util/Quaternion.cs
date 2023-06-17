@@ -39,15 +39,15 @@ namespace Alis.Core.Aspect.Math.Util
     public struct Quaternion
     {
         /// <summary>
-        /// The hash
+        ///     The hash
         /// </summary>
         private readonly HashCode hash;
-        
+
         /// <summary>
-        /// The hash code
+        ///     The hash code
         /// </summary>
         private readonly int hashCode;
-        
+
         /// <summary>
         ///     The slerp epsilon
         /// </summary>
@@ -81,13 +81,13 @@ namespace Alis.Core.Aspect.Math.Util
             Y = y;
             Z = z;
             W = w;
-            
+
             hash = new HashCode();
             hash.Add(X);
             hash.Add(Y);
             hash.Add(Z);
             hash.Add(W);
-            
+
             hashCode = hash.ToHashCode();
         }
 
@@ -100,13 +100,13 @@ namespace Alis.Core.Aspect.Math.Util
             Y = vectorPart.Y;
             Z = vectorPart.Z;
             W = scalarPart;
-            
+
             hash = new HashCode();
             hash.Add(X);
             hash.Add(Y);
             hash.Add(Z);
             hash.Add(W);
-            
+
             hashCode = hash.ToHashCode();
         }
 

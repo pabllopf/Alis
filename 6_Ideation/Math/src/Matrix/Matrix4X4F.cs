@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Matrix4x4.cs
+//  File:Matrix4X4F.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -40,16 +40,16 @@ namespace Alis.Core.Aspect.Math.Matrix
     public struct Matrix4X4F : IEquatable<Matrix4X4F>
     {
         /// <summary>
-        /// The hash
+        ///     The hash
         /// </summary>
         private readonly HashCode hash;
-        
+
         /// <summary>
-        /// The hash code
+        ///     The hash code
         /// </summary>
         private readonly int hashCode;
-        
-        
+
+
         /// <summary>
         ///     The billboard epsilon
         /// </summary>
@@ -154,9 +154,9 @@ namespace Alis.Core.Aspect.Math.Matrix
             M42 = m42;
             M43 = m43;
             M44 = m44;
-            
+
             hash = new HashCode();
-            
+
             hash.Add(M11);
             hash.Add(M12);
             hash.Add(M13);
@@ -206,9 +206,9 @@ namespace Alis.Core.Aspect.Math.Matrix
             M42 = value.M32;
             M43 = 0f;
             M44 = 1f;
-            
+
             hash = new HashCode();
-            
+
             hash.Add(M11);
             hash.Add(M12);
             hash.Add(M13);
@@ -317,9 +317,9 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </returns>
         /// <remarks>Two matrices are equal if all their corresponding elements are equal.</remarks>
         public static bool operator ==(Matrix4X4F value1, Matrix4X4F value2) => (value1.M11 == value2.M11) && (value1.M22 == value2.M22) && (value1.M33 == value2.M33) && (value1.M44 == value2.M44) && // Check diagonal element first for early out.
-                                                                              (value1.M12 == value2.M12) && (value1.M13 == value2.M13) && (value1.M14 == value2.M14) && (value1.M21 == value2.M21) &&
-                                                                              (value1.M23 == value2.M23) && (value1.M24 == value2.M24) && (value1.M31 == value2.M31) && (value1.M32 == value2.M32) &&
-                                                                              (value1.M34 == value2.M34) && (value1.M41 == value2.M41) && (value1.M42 == value2.M42) && (value1.M43 == value2.M43);
+                                                                                (value1.M12 == value2.M12) && (value1.M13 == value2.M13) && (value1.M14 == value2.M14) && (value1.M21 == value2.M21) &&
+                                                                                (value1.M23 == value2.M23) && (value1.M24 == value2.M24) && (value1.M31 == value2.M31) && (value1.M32 == value2.M32) &&
+                                                                                (value1.M34 == value2.M34) && (value1.M41 == value2.M41) && (value1.M42 == value2.M42) && (value1.M43 == value2.M43);
 
         /// <summary>Returns a value that indicates whether the specified matrices are not equal.</summary>
         /// <param name="value1">The first matrix to compare.</param>
@@ -329,9 +329,9 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     <see langword="false" />.
         /// </returns>
         public static bool operator !=(Matrix4X4F value1, Matrix4X4F value2) => value1.M11 != value2.M11 || value1.M12 != value2.M12 || value1.M13 != value2.M13 || value1.M14 != value2.M14 ||
-                                                                              value1.M21 != value2.M21 || value1.M22 != value2.M22 || value1.M23 != value2.M23 || value1.M24 != value2.M24 ||
-                                                                              value1.M31 != value2.M31 || value1.M32 != value2.M32 || value1.M33 != value2.M33 || value1.M34 != value2.M34 ||
-                                                                              value1.M41 != value2.M41 || value1.M42 != value2.M42 || value1.M43 != value2.M43 || value1.M44 != value2.M44;
+                                                                                value1.M21 != value2.M21 || value1.M22 != value2.M22 || value1.M23 != value2.M23 || value1.M24 != value2.M24 ||
+                                                                                value1.M31 != value2.M31 || value1.M32 != value2.M32 || value1.M33 != value2.M33 || value1.M34 != value2.M34 ||
+                                                                                value1.M41 != value2.M41 || value1.M42 != value2.M42 || value1.M43 != value2.M43 || value1.M44 != value2.M44;
 
 
         /// <summary>Adds each element in one matrix with its corresponding element in a second matrix.</summary>
@@ -489,8 +489,7 @@ namespace Alis.Core.Aspect.Math.Matrix
                    d * (e * joKn - f * ioKm + g * inJm);
         }
 
-        
-        
+
         /// <summary>Returns the hash code for this instance.</summary>
         /// <returns>The hash code.</returns>
         public override int GetHashCode() => hashCode;

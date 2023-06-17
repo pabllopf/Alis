@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Matrix3x2.cs
+//  File:Matrix3X2F.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -39,15 +39,15 @@ namespace Alis.Core.Aspect.Math.Matrix
     public class Matrix3X2F
     {
         /// <summary>
-        /// The hash
+        ///     The hash
         /// </summary>
         private readonly HashCode hash;
-        
+
         /// <summary>
-        /// The hash code
+        ///     The hash code
         /// </summary>
         private readonly int hashCode;
-        
+
         /// <summary>The first element of the first row.</summary>
         public float M11;
 
@@ -85,7 +85,7 @@ namespace Alis.Core.Aspect.Math.Matrix
 
             M31 = m31;
             M32 = m32;
-            
+
             hash = new HashCode();
             hash.Add(m11);
             hash.Add(m12);

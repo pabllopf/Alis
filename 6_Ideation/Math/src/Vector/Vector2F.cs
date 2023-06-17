@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Vector2.cs
+//  File:Vector2F.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -121,7 +121,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool operator ==(Vector2F left, Vector2F right) => (left.X == right.X)
-                                                                       && (left.Y == right.Y);
+                                                                         && (left.Y == right.Y);
 
         /// <summary>Returns a value that indicates whether two specified vectors are not equal.</summary>
         /// <param name="left">The first vector to compare.</param>
@@ -249,7 +249,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <returns>The dot product.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Dot(Vector2F value1, Vector2F value2) => value1.X * value2.X
-                                                                   + value1.Y * value2.Y;
+                                                                     + value1.Y * value2.Y;
 
         /// <summary>Performs a linear interpolation between two vectors based on the given weighting.</summary>
         /// <param name="value1">The first vector.</param>
