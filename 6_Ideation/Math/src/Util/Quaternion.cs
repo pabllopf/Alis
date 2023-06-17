@@ -39,6 +39,16 @@ namespace Alis.Core.Aspect.Math.Util
     public struct Quaternion
     {
         /// <summary>
+        /// The hash
+        /// </summary>
+        private readonly HashCode hash;
+        
+        /// <summary>
+        /// The hash code
+        /// </summary>
+        private readonly int hashCode;
+        
+        /// <summary>
         ///     The slerp epsilon
         /// </summary>
         private const float SlerpEpsilon = 1e-6f;
@@ -71,6 +81,14 @@ namespace Alis.Core.Aspect.Math.Util
             Y = y;
             Z = z;
             W = w;
+            
+            hash = new HashCode();
+            hash.Add(X);
+            hash.Add(Y);
+            hash.Add(Z);
+            hash.Add(W);
+            
+            hashCode = hash.ToHashCode();
         }
 
         /// <summary>Creates a quaternion from the specified vector and rotation parts.</summary>
@@ -82,6 +100,14 @@ namespace Alis.Core.Aspect.Math.Util
             Y = vectorPart.Y;
             Z = vectorPart.Z;
             W = scalarPart;
+            
+            hash = new HashCode();
+            hash.Add(X);
+            hash.Add(Y);
+            hash.Add(Z);
+            hash.Add(W);
+            
+            hashCode = hash.ToHashCode();
         }
 
         /// <summary>Gets a quaternion that represents a zero.</summary>
@@ -107,7 +133,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// </remarks>
         public static Quaternion operator +(Quaternion value1, Quaternion value2)
         {
-            Quaternion ans;
+            Quaternion ans = Zero;
 
             ans.X = value1.X + value2.X;
             ans.Y = value1.Y + value2.Y;
@@ -127,7 +153,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// </remarks>
         public static Quaternion operator /(Quaternion value1, Quaternion value2)
         {
-            Quaternion ans;
+            Quaternion ans = Zero;
 
             float q1x = value1.X;
             float q1y = value1.Y;
@@ -192,7 +218,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// <returns>The product quaternion.</returns>
         public static Quaternion operator *(Quaternion value1, Quaternion value2)
         {
-            Quaternion ans;
+            Quaternion ans = Zero;
 
             float q1x = value1.X;
             float q1y = value1.Y;
@@ -228,7 +254,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// <returns>The scaled quaternion.</returns>
         public static Quaternion operator *(Quaternion value1, float value2)
         {
-            Quaternion ans;
+            Quaternion ans = Zero;
 
             ans.X = value1.X * value2;
             ans.Y = value1.Y * value2;
@@ -251,7 +277,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// </remarks>
         public static Quaternion operator -(Quaternion value1, Quaternion value2)
         {
-            Quaternion ans;
+            Quaternion ans = Zero;
 
             ans.X = value1.X - value2.X;
             ans.Y = value1.Y - value2.Y;
@@ -270,7 +296,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// </remarks>
         public static Quaternion operator -(Quaternion value)
         {
-            Quaternion ans;
+            Quaternion ans = Zero;
 
             ans.X = -value.X;
             ans.Y = -value.Y;
@@ -296,7 +322,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// </returns>
         public static Quaternion Concatenate(Quaternion value1, Quaternion value2)
         {
-            Quaternion ans;
+            Quaternion ans = Zero;
 
             // Concatenate rotation is actually q2 * q1 instead of q1 * q2.
             // So that's why value2 goes q1 and value1 goes q2.
@@ -330,7 +356,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// <returns>A new quaternion that is the conjugate of <see langword="value" />.</returns>
         public static Quaternion Conjugate(Quaternion value)
         {
-            Quaternion ans;
+            Quaternion ans = Zero;
 
             ans.X = -value.X;
             ans.Y = -value.Y;
@@ -350,7 +376,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// </remarks>
         public static Quaternion CreateFromAxisAngle(Vector3F axis, float angle)
         {
-            Quaternion ans;
+            Quaternion ans = Zero;
 
             float halfAngle = angle * 0.5f;
             float s = MathF.Sin(halfAngle);
@@ -439,7 +465,7 @@ namespace Alis.Core.Aspect.Math.Util
             sy = MathF.Sin(halfYaw);
             cy = MathF.Cos(halfYaw);
 
-            Quaternion result;
+            Quaternion result = Zero;
 
             result.X = cy * sp * cr + sy * cp * sr;
             result.Y = sy * cp * cr - cy * sp * sr;
@@ -474,7 +500,7 @@ namespace Alis.Core.Aspect.Math.Util
             // q   = ( -------------   ------------- )
             //       (  a^2 + |v|^2  ,  a^2 + |v|^2  )
 
-            Quaternion ans;
+            Quaternion ans = Zero;
 
             float ls = value.X * value.X + value.Y * value.Y + value.Z * value.Z + value.W * value.W;
             float invNorm = 1.0f / ls;
@@ -560,7 +586,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// <returns>The normalized quaternion.</returns>
         public static Quaternion Normalize(Quaternion value)
         {
-            Quaternion ans;
+            Quaternion ans = Zero;
 
             float ls = value.X * value.X + value.Y * value.Y + value.Z * value.Z + value.W * value.W;
 
@@ -613,7 +639,7 @@ namespace Alis.Core.Aspect.Math.Util
                     : MathF.Sin(t * omega) * invSinOmega;
             }
 
-            Quaternion ans;
+            Quaternion ans = Zero;
 
             ans.X = s1 * quaternion1.X + s2 * quaternion2.X;
             ans.Y = s1 * quaternion1.Y + s2 * quaternion2.Y;
@@ -663,7 +689,7 @@ namespace Alis.Core.Aspect.Math.Util
 
         /// <summary>Returns the hash code for this instance.</summary>
         /// <returns>The hash code.</returns>
-        public readonly override int GetHashCode() => HashCode.Combine(X, Y, Z, W);
+        public readonly override int GetHashCode() => hashCode;
 
         /// <summary>Calculates the length of the quaternion.</summary>
         /// <returns>The computed length of the quaternion.</returns>

@@ -40,6 +40,17 @@ namespace Alis.Core.Aspect.Math.Matrix
     public struct Matrix4X4F : IEquatable<Matrix4X4F>
     {
         /// <summary>
+        /// The hash
+        /// </summary>
+        private readonly HashCode hash;
+        
+        /// <summary>
+        /// The hash code
+        /// </summary>
+        private readonly int hashCode;
+        
+        
+        /// <summary>
         ///     The billboard epsilon
         /// </summary>
         private const float BillboardEpsilon = 1e-4f;
@@ -143,6 +154,27 @@ namespace Alis.Core.Aspect.Math.Matrix
             M42 = m42;
             M43 = m43;
             M44 = m44;
+            
+            hash = new HashCode();
+            
+            hash.Add(M11);
+            hash.Add(M12);
+            hash.Add(M13);
+            hash.Add(M14);
+            hash.Add(M21);
+            hash.Add(M22);
+            hash.Add(M23);
+            hash.Add(M24);
+            hash.Add(M31);
+            hash.Add(M32);
+            hash.Add(M33);
+            hash.Add(M34);
+            hash.Add(M41);
+            hash.Add(M42);
+            hash.Add(M43);
+            hash.Add(M44);
+
+            hashCode = hash.ToHashCode();
         }
 
         /// <summary>Creates a <see cref="Matrix4X4F" /> object from a specified <see cref="Matrix3X2F" /> object.</summary>
@@ -174,6 +206,27 @@ namespace Alis.Core.Aspect.Math.Matrix
             M42 = value.M32;
             M43 = 0f;
             M44 = 1f;
+            
+            hash = new HashCode();
+            
+            hash.Add(M11);
+            hash.Add(M12);
+            hash.Add(M13);
+            hash.Add(M14);
+            hash.Add(M21);
+            hash.Add(M22);
+            hash.Add(M23);
+            hash.Add(M24);
+            hash.Add(M31);
+            hash.Add(M32);
+            hash.Add(M33);
+            hash.Add(M34);
+            hash.Add(M41);
+            hash.Add(M42);
+            hash.Add(M43);
+            hash.Add(M44);
+
+            hashCode = hash.ToHashCode();
         }
 
         /// <summary>Gets the multiplicative identity matrix.</summary>
@@ -436,34 +489,11 @@ namespace Alis.Core.Aspect.Math.Matrix
                    d * (e * joKn - f * ioKm + g * inJm);
         }
 
+        
+        
         /// <summary>Returns the hash code for this instance.</summary>
         /// <returns>The hash code.</returns>
-        public override int GetHashCode()
-        {
-            HashCode hash = default(HashCode);
-
-            hash.Add(M11);
-            hash.Add(M12);
-            hash.Add(M13);
-            hash.Add(M14);
-
-            hash.Add(M21);
-            hash.Add(M22);
-            hash.Add(M23);
-            hash.Add(M24);
-
-            hash.Add(M31);
-            hash.Add(M32);
-            hash.Add(M33);
-            hash.Add(M34);
-
-            hash.Add(M41);
-            hash.Add(M42);
-            hash.Add(M43);
-            hash.Add(M44);
-
-            return hash.ToHashCode();
-        }
+        public override int GetHashCode() => hashCode;
 
         /// <summary>Returns a string that represents this matrix.</summary>
         /// <returns>The string representation of this matrix.</returns>

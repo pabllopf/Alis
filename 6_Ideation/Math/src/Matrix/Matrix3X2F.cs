@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.CompilerServices;
+using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Aspect.Math.Matrix
@@ -37,6 +38,16 @@ namespace Alis.Core.Aspect.Math.Matrix
     /// </summary>
     public class Matrix3X2F
     {
+        /// <summary>
+        /// The hash
+        /// </summary>
+        private readonly HashCode hash;
+        
+        /// <summary>
+        /// The hash code
+        /// </summary>
+        private readonly int hashCode;
+        
         /// <summary>The first element of the first row.</summary>
         public float M11;
 
@@ -74,6 +85,15 @@ namespace Alis.Core.Aspect.Math.Matrix
 
             M31 = m31;
             M32 = m32;
+            
+            hash = new HashCode();
+            hash.Add(m11);
+            hash.Add(m12);
+            hash.Add(m21);
+            hash.Add(m22);
+            hash.Add(m31);
+            hash.Add(m32);
+            hashCode = hash.ToHashCode();
         }
 
         /// <summary>Gets the multiplicative identity matrix.</summary>
@@ -115,7 +135,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     Gets the hash code
         /// </summary>
         /// <returns>The int</returns>
-        public override int GetHashCode() => base.GetHashCode();
+        public override int GetHashCode() => hashCode;
 
         /// <summary>
         ///     Describes whether this instance equals
