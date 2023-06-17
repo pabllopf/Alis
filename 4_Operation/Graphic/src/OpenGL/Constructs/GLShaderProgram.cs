@@ -182,7 +182,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
                 case ActiveAttribType.Float: return typeof(float);
                 case ActiveAttribType.FloatMat2: return typeof(float[]);
                 case ActiveAttribType.FloatMat3: throw new Exception();
-                case ActiveAttribType.FloatMat4: return typeof(Matrix4x4);
+                case ActiveAttribType.FloatMat4: return typeof(Matrix4X4F);
                 case ActiveAttribType.FloatVec2: return typeof(Vector2F);
                 case ActiveAttribType.FloatVec3: return typeof(Vector3F);
                 case ActiveAttribType.FloatVec4: return typeof(Vector4F);
@@ -214,7 +214,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
                 case ActiveUniformType.BoolVec4: return typeof(bool[]);
                 case ActiveUniformType.FloatMat2: return typeof(float[]);
                 case ActiveUniformType.FloatMat3: throw new Exception();
-                case ActiveUniformType.FloatMat4: return typeof(Matrix4x4);
+                case ActiveUniformType.FloatMat4: return typeof(Matrix4X4F);
                 case ActiveUniformType.Sampler1D:
                 case ActiveUniformType.Sampler2D:
                 case ActiveUniformType.Sampler3D:

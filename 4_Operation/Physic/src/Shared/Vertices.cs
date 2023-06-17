@@ -533,7 +533,7 @@ namespace Alis.Core.Physic.Shared
 
         /// <summary>Transforms the polygon using the defined matrix.</summary>
         /// <param name="transform">The matrix to use as transformation.</param>
-        public void Transform(ref Matrix4x4 transform)
+        public void Transform(ref Matrix4X4F transform)
         {
             // Transform main polygon
             for (int i = 0; i < Count; i++)
@@ -564,7 +564,7 @@ namespace Alis.Core.Physic.Shared
         /// <param name="destinationArray">The destination array</param>
         public static void Transform(
             Vector2F[] sourceArray,
-            ref Matrix4x4 matrix,
+            ref Matrix4X4F matrix,
             Vector2F[] destinationArray)
         {
             Transform(sourceArray, 0, ref matrix, destinationArray, 0, sourceArray.Length);
@@ -586,7 +586,7 @@ namespace Alis.Core.Physic.Shared
         public static void Transform(
             Vector2F[] sourceArray,
             int sourceIndex,
-            ref Matrix4x4 matrix,
+            ref Matrix4X4F matrix,
             Vector2F[] destinationArray,
             int destinationIndex,
             int length)

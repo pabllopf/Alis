@@ -373,7 +373,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="name">Name of the uniform variable in GLSL</param>
         /// <param name="matrix">Value of the mat4 matrix</param>
         ////////////////////////////////////////////////////////////
-        public void SetUniform(string name, Matrix4x4 matrix)
+        public void SetUniform(string name, Matrix4X4F matrix)
         {
             sfShader_setMat4Uniform(CPointer, name, matrix);
         }
@@ -518,7 +518,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="name">Name of the uniform variable in GLSL</param>
         /// <param name="array">array of <c>mat4</c> values</param>
         ////////////////////////////////////////////////////////////
-        public void SetUniformArray(string name, Matrix4x4[] array)
+        public void SetUniformArray(string name, Matrix4X4F[] array)
         {
             sfShader_setMat4UniformArray(CPointer, name, array, (uint) array.Length);
         }
@@ -888,7 +888,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="name">The name</param>
         /// <param name="matrix">The matrix</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfShader_setMat4Uniform(IntPtr shader, string name, Matrix4x4 matrix);
+        private static extern void sfShader_setMat4Uniform(IntPtr shader, string name, Matrix4X4F matrix);
 
         /// <summary>
         ///     Sfs the shader set texture uniform using the specified shader
@@ -970,7 +970,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfShader_setMat4UniformArray(IntPtr shader, string name, Matrix4x4[] data,
+        private static extern void sfShader_setMat4UniformArray(IntPtr shader, string name, Matrix4X4F[] data,
             uint length);
 
         /// <summary>

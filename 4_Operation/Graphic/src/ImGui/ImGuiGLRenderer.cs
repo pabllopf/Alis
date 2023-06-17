@@ -205,7 +205,7 @@ namespace Alis.Core.Graphic.ImGui
             float bottom = drawData.DisplayPos.Y + drawData.DisplaySize.Y;
 
             _shader["Texture"].SetValue(0);
-            _shader["ProjMtx"].SetValue(Matrix4x4.CreateOrthographicOffCenter(left, right, bottom, top, -1, 1));
+            _shader["ProjMtx"].SetValue(Matrix4X4F.CreateOrthographicOffCenter(left, right, bottom, top, -1, 1));
             glBindSampler(0, 0);
 
             glBindVertexArray(_vertexArrayObject);

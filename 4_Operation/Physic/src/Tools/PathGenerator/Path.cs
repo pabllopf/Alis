@@ -133,7 +133,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         /// <param name="value">The amount to rotate by in radians.</param>
         public void Rotate(float value)
         {
-            Matrix4x4 rotationMatrix = Matrix4x4.CreateRotationZ(value);
+            Matrix4X4F rotationMatrix = Matrix4X4F.CreateRotationZ(value);
 
             for (int i = 0; i < ControlPoints.Count; i++)
             {

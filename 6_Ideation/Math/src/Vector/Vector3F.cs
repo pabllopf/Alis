@@ -387,7 +387,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="matrix">The transformation matrix.</param>
         /// <returns>The transformed vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector3F Transform(Vector3F position, Matrix4x4 matrix) => new Vector3F(
+        public static Vector3F Transform(Vector3F position, Matrix4X4F matrix) => new Vector3F(
             position.X * matrix.M11 + position.Y * matrix.M21 + position.Z * matrix.M31 + matrix.M41,
             position.X * matrix.M12 + position.Y * matrix.M22 + position.Z * matrix.M32 + matrix.M42,
             position.X * matrix.M13 + position.Y * matrix.M23 + position.Z * matrix.M33 + matrix.M43
@@ -426,7 +426,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="matrix">The matrix.</param>
         /// <returns>The transformed vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector3F TransformNormal(Vector3F normal, Matrix4x4 matrix) => new Vector3F(
+        public static Vector3F TransformNormal(Vector3F normal, Matrix4X4F matrix) => new Vector3F(
             normal.X * matrix.M11 + normal.Y * matrix.M21 + normal.Z * matrix.M31,
             normal.X * matrix.M12 + normal.Y * matrix.M22 + normal.Z * matrix.M32,
             normal.X * matrix.M13 + normal.Y * matrix.M23 + normal.Z * matrix.M33

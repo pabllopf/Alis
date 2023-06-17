@@ -149,7 +149,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// </summary>
         /// <param name="location">The location</param>
         /// <param name="param">The param</param>
-        public static void UniformMatrix4Fv(int location, Matrix4x4 param)
+        public static void UniformMatrix4Fv(int location, Matrix4X4F param)
         {
             // use the statically allocated float[] for setting the uniform
             Matrix4Float[0] = param.M11;

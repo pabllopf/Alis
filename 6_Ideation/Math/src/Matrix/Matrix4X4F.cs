@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Math.Matrix
     /// <summary>
     ///     The matrix
     /// </summary>
-    public partial struct Matrix4x4 : IEquatable<Matrix4x4>
+    public struct Matrix4X4F : IEquatable<Matrix4X4F>
     {
         /// <summary>
         ///     The billboard epsilon
@@ -119,7 +119,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="m42">The value to assign to the second element in the fourth row.</param>
         /// <param name="m43">The value to assign to the third element in the fourth row.</param>
         /// <param name="m44">The value to assign to the fourth element in the fourth row.</param>
-        public Matrix4x4(float m11, float m12, float m13, float m14,
+        public Matrix4X4F(float m11, float m12, float m13, float m14,
             float m21, float m22, float m23, float m24,
             float m31, float m32, float m33, float m34,
             float m41, float m42, float m43, float m44)
@@ -145,15 +145,15 @@ namespace Alis.Core.Aspect.Math.Matrix
             M44 = m44;
         }
 
-        /// <summary>Creates a <see cref="Matrix4x4" /> object from a specified <see cref="Matrix3x2" /> object.</summary>
+        /// <summary>Creates a <see cref="Matrix4X4F" /> object from a specified <see cref="Matrix3X2F" /> object.</summary>
         /// <param name="value">A 3x2 matrix.</param>
         /// <remarks>
-        ///     This constructor creates a 4x4 matrix whose <see cref="Matrix4x4.M13" />, <see cref="Matrix4x4.M14" />,
-        ///     <see cref="Matrix4x4.M23" />, <see cref="Matrix4x4.M24" />, <see cref="Matrix4x4.M31" />,
-        ///     <see cref="Matrix4x4.M32" />, <see cref="Matrix4x4.M34" />, and <see cref="Matrix4x4.M43" /> components are
-        ///     zero, and whose <see cref="Matrix4x4.M33" /> and <see cref="Matrix4x4.M44" /> components are one.
+        ///     This constructor creates a 4x4 matrix whose <see cref="Matrix4X4F.M13" />, <see cref="Matrix4X4F.M14" />,
+        ///     <see cref="Matrix4X4F.M23" />, <see cref="Matrix4X4F.M24" />, <see cref="Matrix4X4F.M31" />,
+        ///     <see cref="Matrix4X4F.M32" />, <see cref="Matrix4X4F.M34" />, and <see cref="Matrix4X4F.M43" /> components are
+        ///     zero, and whose <see cref="Matrix4X4F.M33" /> and <see cref="Matrix4X4F.M44" /> components are one.
         /// </remarks>
-        public Matrix4x4(Matrix3x2 value)
+        public Matrix4X4F(Matrix3X2F value)
         {
             M11 = value.M11;
             M12 = value.M12;
@@ -178,7 +178,7 @@ namespace Alis.Core.Aspect.Math.Matrix
 
         /// <summary>Gets the multiplicative identity matrix.</summary>
         /// <value>Gets the multiplicative identity matrix.</value>
-        public static Matrix4x4 Identity => new Matrix4x4
+        public static Matrix4X4F Identity => new Matrix4X4F
         (
             1f, 0f, 0f, 0f,
             0f, 1f, 0f, 0f,
@@ -206,9 +206,9 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="zNearPlane">The minimum Z-value of the view volume.</param>
         /// <param name="zFarPlane">The maximum Z-value of the view volume.</param>
         /// <returns>The orthographic projection matrix.</returns>
-        public static Matrix4x4 CreateOrthographicOffCenter(float left, float right, float bottom, float top, float zNearPlane, float zFarPlane)
+        public static Matrix4X4F CreateOrthographicOffCenter(float left, float right, float bottom, float top, float zNearPlane, float zFarPlane)
         {
-            Matrix4x4 result = Identity;
+            Matrix4X4F result = Identity;
 
             result.M11 = 2.0f / (right - left);
 
@@ -229,12 +229,12 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="value2">The second matrix.</param>
         /// <returns>The matrix that contains the summed values.</returns>
         /// <remarks>
-        ///     The <see cref="Matrix4x4.op_Addition" /> method defines the operation of the addition operator for
-        ///     <see cref="Matrix4x4" /> objects.
+        ///     The <see cref="Matrix4X4F.op_Addition" /> method defines the operation of the addition operator for
+        ///     <see cref="Matrix4X4F" /> objects.
         /// </remarks>
-        public static Matrix4x4 operator +(Matrix4x4 value1, Matrix4x4 value2)
+        public static Matrix4X4F operator +(Matrix4X4F value1, Matrix4X4F value2)
         {
-            Matrix4x4 m = new Matrix4x4(
+            Matrix4X4F m = new Matrix4X4F(
                 value1.M11 + value2.M11,
                 value1.M12 + value2.M12,
                 value1.M13 + value2.M13,
@@ -263,7 +263,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     <see langword="false" />.
         /// </returns>
         /// <remarks>Two matrices are equal if all their corresponding elements are equal.</remarks>
-        public static bool operator ==(Matrix4x4 value1, Matrix4x4 value2) => (value1.M11 == value2.M11) && (value1.M22 == value2.M22) && (value1.M33 == value2.M33) && (value1.M44 == value2.M44) && // Check diagonal element first for early out.
+        public static bool operator ==(Matrix4X4F value1, Matrix4X4F value2) => (value1.M11 == value2.M11) && (value1.M22 == value2.M22) && (value1.M33 == value2.M33) && (value1.M44 == value2.M44) && // Check diagonal element first for early out.
                                                                               (value1.M12 == value2.M12) && (value1.M13 == value2.M13) && (value1.M14 == value2.M14) && (value1.M21 == value2.M21) &&
                                                                               (value1.M23 == value2.M23) && (value1.M24 == value2.M24) && (value1.M31 == value2.M31) && (value1.M32 == value2.M32) &&
                                                                               (value1.M34 == value2.M34) && (value1.M41 == value2.M41) && (value1.M42 == value2.M42) && (value1.M43 == value2.M43);
@@ -275,7 +275,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     <see langword="true" /> if <paramref name="value1" /> and <paramref name="value2" /> are not equal; otherwise,
         ///     <see langword="false" />.
         /// </returns>
-        public static bool operator !=(Matrix4x4 value1, Matrix4x4 value2) => value1.M11 != value2.M11 || value1.M12 != value2.M12 || value1.M13 != value2.M13 || value1.M14 != value2.M14 ||
+        public static bool operator !=(Matrix4X4F value1, Matrix4X4F value2) => value1.M11 != value2.M11 || value1.M12 != value2.M12 || value1.M13 != value2.M13 || value1.M14 != value2.M14 ||
                                                                               value1.M21 != value2.M21 || value1.M22 != value2.M22 || value1.M23 != value2.M23 || value1.M24 != value2.M24 ||
                                                                               value1.M31 != value2.M31 || value1.M32 != value2.M32 || value1.M33 != value2.M33 || value1.M34 != value2.M34 ||
                                                                               value1.M41 != value2.M41 || value1.M42 != value2.M42 || value1.M43 != value2.M43 || value1.M44 != value2.M44;
@@ -286,15 +286,15 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="value2">The second matrix.</param>
         /// <returns>The matrix that contains the summed values of <paramref name="value1" /> and <paramref name="value2" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Matrix4x4 Add(Matrix4x4 value1, Matrix4x4 value2) => value1 + value2;
+        public static Matrix4X4F Add(Matrix4X4F value1, Matrix4X4F value2) => value1 + value2;
 
 
         /// <summary>Creates a matrix for rotating points around the Z axis.</summary>
         /// <param name="radians">The amount, in radians, by which to rotate around the Z-axis.</param>
         /// <returns>The rotation matrix.</returns>
-        public static Matrix4x4 CreateRotationZ(float radians)
+        public static Matrix4X4F CreateRotationZ(float radians)
         {
-            Matrix4x4 result = Identity;
+            Matrix4X4F result = Identity;
 
             float c = MathF.Cos(radians);
             float s = MathF.Sin(radians);
@@ -304,7 +304,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             // [  0  0  1  0 ]
             // [  0  0  0  1 ]
 
-            result = new Matrix4x4(
+            result = new Matrix4X4F(
                 c, s, 0, 0,
                 -s, c, 0, 0,
                 0, 0, 1, 0,
@@ -317,7 +317,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="value">The matrix to transform.</param>
         /// <param name="rotation">The rotation t apply.</param>
         /// <returns>The transformed matrix.</returns>
-        public static Matrix4x4 Transform(Matrix4x4 value, Quaternion rotation)
+        public static Matrix4X4F Transform(Matrix4X4F value, Quaternion rotation)
         {
             // Compute rotation matrix.
             float x2 = rotation.X + rotation.X;
@@ -346,7 +346,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             float q23 = yz2 + wx2;
             float q33 = 1.0f - xx2 - yy2;
 
-            Matrix4x4 result = new Matrix4x4(
+            Matrix4X4F result = new Matrix4X4F(
                 value.M11 * q11 + value.M12 * q21 + value.M13 * q31,
                 value.M11 * q12 + value.M12 * q22 + value.M13 * q32,
                 value.M11 * q13 + value.M12 * q23 + value.M13 * q33,
@@ -377,15 +377,15 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </returns>
         /// <remarks>
         ///     The current instance and <paramref name="obj" /> are equal if <paramref name="obj" /> is a
-        ///     <see cref="Matrix4x4" /> object and the corresponding elements of each matrix are equal.
+        ///     <see cref="Matrix4X4F" /> object and the corresponding elements of each matrix are equal.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override bool Equals(object obj) => obj is Matrix4x4 other && Equals(other);
+        public override bool Equals(object obj) => obj is Matrix4X4F other && Equals(other);
 
         /// <summary>Returns a value that indicates whether this instance and another 4x4 matrix are equal.</summary>
         /// <param name="other">The other matrix.</param>
         /// <returns><see langword="true" /> if the two matrices are equal; otherwise, <see langword="false" />.</returns>
-        public bool Equals(Matrix4x4 other) => this == other;
+        public bool Equals(Matrix4X4F other) => this == other;
 
         /// <summary>Calculates the determinant of the current 4x4 matrix.</summary>
         /// <returns>The determinant.</returns>
