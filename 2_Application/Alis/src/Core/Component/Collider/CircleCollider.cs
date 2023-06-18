@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Logging;
+
 namespace Alis.Core.Component.Collider
 {
     /// <summary>
@@ -35,5 +37,12 @@ namespace Alis.Core.Component.Collider
     /// <seealso cref="ColliderBase" />
     public class CircleCollider : ColliderBase
     {
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
+        public override void Start()
+        {
+            Logger.Trace();
+        }
     }
 }

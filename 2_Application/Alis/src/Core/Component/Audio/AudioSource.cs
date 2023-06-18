@@ -131,6 +131,7 @@ namespace Alis.Core.Component.Audio
         /// </summary>
         public override void Awake()
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -146,6 +147,7 @@ namespace Alis.Core.Component.Audio
         /// </summary>
         public override void Update()
         {
+            Logger.Trace();
         }
     }
 }

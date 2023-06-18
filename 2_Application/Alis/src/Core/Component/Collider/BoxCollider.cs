@@ -29,10 +29,12 @@
 
 using Alis.Builder.Core.Component.Collider;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.SFML.Graphics;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Figure;
+using Color = Alis.Core.Graphic.SFML.Graphics.Color;
 using Sprite = Alis.Core.Component.Render.Sprite;
 
 namespace Alis.Core.Component.Collider
@@ -175,33 +177,6 @@ namespace Alis.Core.Component.Collider
 
             VideoGame.GraphicManager.AttachCollider(rectangleShape);
 
-
-            /*
-            Body = BodyFactory.CreateRectangle(
-                VideoGame.PhysicManager.World,
-                Width,
-                Height,
-                Density,
-                new Vector2F(
-                    GameObject.Transform.Position.X + RelativePosition.X,
-                    GameObject.Transform.Position.Y + RelativePosition.Y
-                ),
-                Rotation,
-                BodyType,
-                GameObject
-            );
-
-            Body.Restitution = Restitution;
-            Body.Friction = Friction;
-            Body.FixedRotation = FixedRotation;
-            Body.Mass = Mass;
-            Body.SleepingAllowed = false;
-            Body.IsBullet = true;
-            Body.GravityScale = GravityScale;
-            Body.LinearVelocity = LinearVelocity;
-            Body.Awake = true;
-            Body.IsSensor = IsTrigger;*/
-
             Body = new Rectangle(
                 Width,
                 Height,
@@ -245,7 +220,7 @@ namespace Alis.Core.Component.Collider
         }
 
         /// <summary>
-        ///     Befores the update
+        ///     Before the update
         /// </summary>
         public override void BeforeUpdate()
         {
@@ -258,6 +233,7 @@ namespace Alis.Core.Component.Collider
         /// </summary>
         public override void Update()
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -265,6 +241,7 @@ namespace Alis.Core.Component.Collider
         /// </summary>
         public override void AfterUpdate()
         {
+            Logger.Trace();
         }
 
         /// <summary>

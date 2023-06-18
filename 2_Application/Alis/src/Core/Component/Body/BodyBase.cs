@@ -51,6 +51,7 @@ namespace Alis.Core.Component.Body
         /// </summary>
         public override void Update()
         {
+            Logger.Trace();
         }
     }
 }

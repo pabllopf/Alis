@@ -60,6 +60,7 @@ namespace Alis.Core.Component.Audio
         /// </summary>
         public override void Update()
         {
+            Logger.Trace();
         }
     }
 }
