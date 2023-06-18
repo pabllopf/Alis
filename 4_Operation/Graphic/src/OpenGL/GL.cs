@@ -98,9 +98,9 @@ namespace Alis.Core.Graphic.OpenGL
         public static readonly UseProgram GlUseProgram = _<UseProgram>("glUseProgram");
 
         /// <summary>
-        ///     The get shaderiv
+        ///     The get shader
         /// </summary>
-        private static readonly GetShaderiv GlGetShaderiv = _<GetShaderiv>("glGetShaderiv");
+        private static readonly GetShaderiv GlGetShaderIv = _<GetShaderiv>("glGetShaderiv");
 
         /// <summary>
         ///     The get shader info log del
@@ -399,7 +399,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <returns>The string</returns>
         public static string GetShaderInfoLog(uint shader)
         {
-            GlGetShaderiv(shader, ShaderParameter.InfoLogLength, Int1);
+            GlGetShaderIv(shader, ShaderParameter.InfoLogLength, Int1);
             if (Int1[0] == 0)
             {
                 return string.Empty;
@@ -428,7 +428,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <returns>The bool</returns>
         public static bool GetShaderCompileStatus(uint shader)
         {
-            GlGetShaderiv(shader, ShaderParameter.CompileStatus, Int1);
+            GlGetShaderIv(shader, ShaderParameter.CompileStatus, Int1);
             return Int1[0] == 1;
         }
 
