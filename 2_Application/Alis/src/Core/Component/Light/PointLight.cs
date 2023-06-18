@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Logging;
+
 namespace Alis.Core.Component.Light
 {
     /// <summary>
@@ -35,5 +37,12 @@ namespace Alis.Core.Component.Light
     /// <seealso cref="LightBase" />
     public class PointLight : LightBase
     {
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
+        public override void Init()
+        {
+            Logger.Trace();
+        }
     }
 }

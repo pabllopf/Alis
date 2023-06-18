@@ -110,6 +110,7 @@ namespace Alis.Core.Entity
         /// </summary>
         public static void CreatePrimitive()
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -122,6 +123,7 @@ namespace Alis.Core.Entity
         /// </summary>
         public static void FindGameObjectsWithTag()
         {
+            Logger.Trace();
         }
 
         /// <summary>

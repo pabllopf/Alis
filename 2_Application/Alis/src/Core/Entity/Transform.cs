@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs;
 
 namespace Alis.Core.Entity
@@ -34,5 +35,13 @@ namespace Alis.Core.Entity
     /// <summary>Control the object space in the game.</summary>
     public class Transform : TransformBase
     {
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
+        public void Update()
+        {
+            Logger.Trace();
+        }
+        
     }
 }

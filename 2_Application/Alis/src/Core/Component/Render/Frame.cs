@@ -29,6 +29,7 @@
 
 using Alis.Builder.Core.Component.Render;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Graphic;
 
 namespace Alis.Core.Component.Render
@@ -45,6 +46,7 @@ namespace Alis.Core.Component.Render
         /// </summary>
         public Frame()
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -53,6 +55,7 @@ namespace Alis.Core.Component.Render
         /// <param name="filePath">The file path</param>
         public Frame(string filePath) : base(filePath)
         {
+            Logger.Trace();
         }
 
         /// <summary>

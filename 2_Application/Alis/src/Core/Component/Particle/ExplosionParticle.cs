@@ -29,6 +29,7 @@
 
 using Alis.Builder.Core.Component.Particle;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Component.Particle
 {
@@ -38,6 +39,14 @@ namespace Alis.Core.Component.Particle
     /// <seealso cref="ParticleBase" />
     public class ExplosionParticle : ParticleBase, IBuilder<ExplosionParticleBuilder>
     {
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
+        public override void Init()
+        {
+            Logger.Trace();
+        }
+
         /// <summary>
         ///     Builders this instance
         /// </summary>

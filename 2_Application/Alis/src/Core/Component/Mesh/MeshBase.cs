@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs;
 
 namespace Alis.Core.Component.Mesh
@@ -42,6 +43,7 @@ namespace Alis.Core.Component.Mesh
         /// </summary>
         public override void Start()
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -49,6 +51,7 @@ namespace Alis.Core.Component.Mesh
         /// </summary>
         public override void Update()
         {
+            Logger.Trace();
         }
     }
 }

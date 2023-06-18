@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Logging;
+
 namespace Alis.Core.Component.Mesh
 {
     /// <summary>
@@ -35,5 +37,12 @@ namespace Alis.Core.Component.Mesh
     /// <seealso cref="MeshBase" />
     public class CircleMesh : MeshBase
     {
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
+        public override void Init()
+        {
+            Logger.Trace();
+        }
     }
 }

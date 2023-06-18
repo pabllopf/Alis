@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Logging;
+
 namespace Alis.Core.Component.Mesh
 {
     /// <summary>
@@ -34,5 +36,12 @@ namespace Alis.Core.Component.Mesh
     /// </summary>
     public class BoxMesh : MeshBase
     {
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
+        public override void Init()
+        {
+            Logger.Trace();
+        }
     }
 }

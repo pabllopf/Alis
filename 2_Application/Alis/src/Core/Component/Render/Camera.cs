@@ -29,6 +29,7 @@
 
 using Alis.Builder.Core.Component.Render;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
 using Alis.Core.Graphic.SFML.Graphics;
@@ -53,6 +54,7 @@ namespace Alis.Core.Component.Render
         /// </summary>
         public Camera()
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -88,6 +90,7 @@ namespace Alis.Core.Component.Render
         /// </summary>
         public override void BeforeUpdate()
         {
+            Logger.Trace();
         }
 
         /// <summary>
