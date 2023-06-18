@@ -1,8 +1,8 @@
 var struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_text_input_event =
 [
-    [ "type", "d2/db5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_text_input_event.html#acce075ccae9483be53693ef8d0a050ed", null ],
-    [ "timestamp", "d2/db5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_text_input_event.html#ae12fa1d42fc4bada5f93c8a6bab1365c", null ],
-    [ "windowID", "d2/db5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_text_input_event.html#a94e344c54dcabc599107f1f2895143a1", null ],
+    [ "type", "d2/db5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_text_input_event.html#a1e4195a14d03b84d1af5ebe58ff68c99", null ],
+    [ "timestamp", "d2/db5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_text_input_event.html#a68491a9e42ca020867e77ac705f52098", null ],
+    [ "windowID", "d2/db5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_text_input_event.html#a0654f8ed2bf81125b6e0d35f907d48b6", null ],
     [ "byte0", "d2/db5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_text_input_event.html#a348e39604e75318c93ffd29f9b1cdc86", null ],
     [ "byte1", "d2/db5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_text_input_event.html#af97b0d1efa277600d187a20ce5b8f461", null ],
     [ "byte2", "d2/db5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_text_input_event.html#a1778a75241c41c1b2e991f9afb30492e", null ],
@@ -35,5 +35,5 @@ var struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_text_input_event =
     [ "byte29", "d2/db5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_text_input_event.html#a441621b78855ee3a4a4edeeeffdc3ee5", null ],
     [ "byte30", "d2/db5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_text_input_event.html#a2002690ae7327aa6afd4e0092f91b007", null ],
     [ "byte31", "d2/db5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_text_input_event.html#a6d967810bc26dec3cfcbb45aa6435165", null ],
-    [ "text", "d2/db5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_text_input_event.html#a9c0dcb6960cf990bb30140a1a76d1a4b", null ]
+    [ "Text", "d2/db5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_text_input_event.html#a5965aca089b0a0c45e004829eca08238", null ]
 ];

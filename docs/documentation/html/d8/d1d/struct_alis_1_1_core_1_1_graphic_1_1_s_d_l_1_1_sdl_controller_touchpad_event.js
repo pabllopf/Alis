@@ -1,11 +1,11 @@
 var struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_touchpad_event =
 [
-    [ "type", "d8/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_touchpad_event.html#aa83d0ff79cdeb32cab60b92470301bd9", null ],
-    [ "timestamp", "d8/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_touchpad_event.html#a4b3a7c25484effdc6b055add87acbfe3", null ],
-    [ "which", "d8/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_touchpad_event.html#abd28005c29ef36978771b4e240483722", null ],
-    [ "touchpad", "d8/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_touchpad_event.html#a004772959fdd900393d64b1c66fd15e7", null ],
-    [ "finger", "d8/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_touchpad_event.html#a60bc81f38584a2afe4f3a0e655f669ab", null ],
-    [ "x", "d8/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_touchpad_event.html#a30d250c7df27e7b8c6dc5354359c51f8", null ],
-    [ "y", "d8/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_touchpad_event.html#a6bf955be555024b33085eeb42266018b", null ],
-    [ "pressure", "d8/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_touchpad_event.html#a302b0e9a7f156736371f39eebd1cef6f", null ]
+    [ "type", "d8/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_touchpad_event.html#accedb2c8b65ce979eff9f8609056748b", null ],
+    [ "timestamp", "d8/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_touchpad_event.html#a9b161d03e8a181528b3be85266837647", null ],
+    [ "which", "d8/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_touchpad_event.html#a18dcd23732a104108b8ce9be5e66b097", null ],
+    [ "touchpad", "d8/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_touchpad_event.html#ad3ff33e8fb5a54eff9d3a6e07d1a0938", null ],
+    [ "finger", "d8/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_touchpad_event.html#a2181b621ae99f4baf4b65e4df72b12f2", null ],
+    [ "x", "d8/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_touchpad_event.html#a3ba8a72b0cacb7c125bd60aef81ccb15", null ],
+    [ "y", "d8/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_touchpad_event.html#aa4d8323f77d0c734934747891549bf30", null ],
+    [ "pressure", "d8/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_touchpad_event.html#a655529be77cc77faa40f1b5437f2dc5e", null ]
 ];

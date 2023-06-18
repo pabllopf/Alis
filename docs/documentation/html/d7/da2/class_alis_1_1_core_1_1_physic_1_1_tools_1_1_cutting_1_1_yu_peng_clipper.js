@@ -9,11 +9,11 @@ var class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper =
     [ "CalculateSimplicalChain", "d7/da2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper.html#af06f5eaddf3dcb2db630430073d1d18e", null ],
     [ "CalculateResultChain", "d7/da2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper.html#a6e9e71233ee719a4bab78b261a737811", null ],
     [ "BuildPolygonsFromChain", "d7/da2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper.html#a5bce34e51e6a17660c2be8a3d237e6a9", null ],
-    [ "CalculateBeta", "d7/da2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper.html#a1a866b830d4a8e6b7220d6bf84d21406", null ],
-    [ "GetAlpha", "d7/da2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper.html#a0fb0441da552ca8bc46fad280ace9eec", null ],
-    [ "CalculateSimplexCoefficient", "d7/da2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper.html#ac85b2b0bd912c6ffcfb2a2fe752b94a0", null ],
-    [ "PointInSimplex", "d7/da2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper.html#a66e701b2ba447eadfde53710962142ba", null ],
-    [ "PointOnLineSegment", "d7/da2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper.html#aa5fc9322c3d7d71b0ac5710da0c82268", null ],
-    [ "VectorEqual", "d7/da2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper.html#a849e2fcd3fc8f21d71ae74ee0a61a664", null ],
+    [ "CalculateBeta", "d7/da2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper.html#a464890c410ee6f035faf6377f3efa37f", null ],
+    [ "GetAlpha", "d7/da2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper.html#ac7eb768ed96714d4675fb28371bc85aa", null ],
+    [ "CalculateSimplexCoefficient", "d7/da2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper.html#a8150432bf14d453a40bf8b7ed7b8e93f", null ],
+    [ "PointInSimplex", "d7/da2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper.html#a6debd409656f6477a06554ee267c2766", null ],
+    [ "PointOnLineSegment", "d7/da2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper.html#a6f4d191bc7857eb277850f01f9d36d38", null ],
+    [ "VectorEqual", "d7/da2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper.html#a7e9026615f84a630941f451452b866d2", null ],
     [ "ClipperEpsilonSquared", "d7/da2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper.html#afeca8f7f94c9dfd76442fa93723a68f7", null ]
 ];

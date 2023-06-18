@@ -1,6 +1,5 @@
 var namespace_alis_1_1_core_1_1_graphic_1_1_im_gui =
 [
-    [ "EmbeddedAttribute", "d6/d9a/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_embedded_attribute.html", null ],
     [ "ImColor", "d9/d66/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_color.html", "d9/d66/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_color" ],
     [ "ImColorPtr", "d5/dc9/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_color_ptr.html", "d5/dc9/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_color_ptr" ],
     [ "ImDrawChannel", "d0/da0/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_channel.html", "d0/da0/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_channel" ],

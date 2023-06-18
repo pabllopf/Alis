@@ -17,7 +17,7 @@ var struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_ptr =
     [ "GetDebugName", "d2/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_ptr.html#a3edd77069ca057c08ecfb058ea82c2c8", null ],
     [ "GrowIndex", "d2/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_ptr.html#a287fb1c007085cbc7847e14dbbe1a77e", null ],
     [ "IsLoaded", "d2/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_ptr.html#a9092989533faa87719f7ce4e8a75e7ef", null ],
-    [ "RenderChar", "d2/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_ptr.html#a7d90d83638ec5b93181bcb58d8e535ab", null ],
+    [ "RenderChar", "d2/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_ptr.html#a94aa6233364b4a26ccfad76b59c3b051", null ],
     [ "SetGlyphVisible", "d2/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_ptr.html#a1e08330febb859f9324eb164c11beec9", null ],
     [ "IndexAdvanceX", "d2/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_ptr.html#a90539195c7bae997af80c2b483df66af", null ],
     [ "FallbackAdvanceX", "d2/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_ptr.html#a7ee776bc4d7a46739fd56962a6215fd8", null ],

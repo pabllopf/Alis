@@ -7,7 +7,7 @@ var struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_ime_data_ptr
     [ "operator ImGuiPlatformImeDataPtr", "d4/d20/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_ime_data_ptr.html#a50ab3d953cb93a4664c29768e808ff7f", null ],
     [ "Destroy", "d4/d20/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_ime_data_ptr.html#a0083f7e0f3935069bb254e0d0eadb9c4", null ],
     [ "WantVisible", "d4/d20/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_ime_data_ptr.html#ac0a6561cb32209595e305fba40d8a4e2", null ],
-    [ "InputPos", "d4/d20/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_ime_data_ptr.html#aab38fe2c5cd9c328501de647f77e48b0", null ],
+    [ "InputPos", "d4/d20/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_ime_data_ptr.html#a8393b0cced29f2b7821b6884170771cf", null ],
     [ "InputLineHeight", "d4/d20/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_ime_data_ptr.html#a11858e590c9d767fa05490d70ab62361", null ],
     [ "NativePtr", "d4/d20/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_ime_data_ptr.html#abe41bcd439f6b74a2aae1e7ecbda73fc", null ]
 ];

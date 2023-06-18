@@ -1,12 +1,12 @@
 var struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_mouse_wheel_event =
 [
-    [ "type", "d8/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_mouse_wheel_event.html#a07380f79fe4c48edc16351f42b4e8ffe", null ],
-    [ "timestamp", "d8/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_mouse_wheel_event.html#a1e00ef5ef6ae5acbf03ec7ae5823ce8c", null ],
-    [ "windowID", "d8/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_mouse_wheel_event.html#a7144fa0e21135185586eb7a9e46eec1f", null ],
-    [ "which", "d8/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_mouse_wheel_event.html#af4cdd34619c3a70607b111b1a355a07f", null ],
-    [ "x", "d8/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_mouse_wheel_event.html#af9837b228a3a3e58dfc08d4d48f99dd3", null ],
-    [ "y", "d8/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_mouse_wheel_event.html#af9ded9d73d73b2ed11bbf30e4d5026f0", null ],
-    [ "direction", "d8/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_mouse_wheel_event.html#ae70fff6a3cef9c126d6e70b81244dd6b", null ],
-    [ "preciseX", "d8/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_mouse_wheel_event.html#a496cc9f7ea5100eeaeda4b205bca0414", null ],
-    [ "preciseY", "d8/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_mouse_wheel_event.html#a71e53baee3c14b6129a1bd8ab6080113", null ]
+    [ "type", "d8/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_mouse_wheel_event.html#ae21c4ed0ed836e7cde576b178602f28c", null ],
+    [ "timestamp", "d8/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_mouse_wheel_event.html#ad86c873356b7138777e837f8a6148882", null ],
+    [ "windowID", "d8/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_mouse_wheel_event.html#a48008aeb0a1c67844c7def514626c022", null ],
+    [ "which", "d8/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_mouse_wheel_event.html#a797fcca17e1c1dc12d885fe76632e662", null ],
+    [ "x", "d8/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_mouse_wheel_event.html#acb706f35235b9745a286847fc0403d89", null ],
+    [ "y", "d8/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_mouse_wheel_event.html#ae0afe9618877f24406b3a4b0667702e6", null ],
+    [ "direction", "d8/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_mouse_wheel_event.html#a758db4a59b38996a9342c2a8435e23b5", null ],
+    [ "preciseX", "d8/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_mouse_wheel_event.html#a05e160726e2b7d334f28e7edcd10d593", null ],
+    [ "preciseY", "d8/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_mouse_wheel_event.html#a03b67638aa70f5018255fc8df0c9d905", null ]
 ];

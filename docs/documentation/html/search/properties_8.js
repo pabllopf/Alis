@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['iconfile_19818',['IconFile',['../d1/d7a/class_alis_1_1_core_1_1_setting_1_1_general_setting.html#ac075aca96e095753544f3699e36c4cce',1,'Alis::Core::Setting::GeneralSetting']]],
+  ['iconfile_19817',['IconFile',['../d1/d7a/class_alis_1_1_core_1_1_setting_1_1_general_setting.html#ac075aca96e095753544f3699e36c4cce',1,'Alis::Core::Setting::GeneralSetting']]],
+  ['identity_19818',['Identity',['../d3/d69/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix3_x2_f.html#a5e24027e3d2d6c6210c2ecff8b493814',1,'Alis::Core::Aspect::Math::Matrix::Matrix3X2F']]],
   ['idxwriteptr_19819',['IdxWritePtr',['../d5/d7a/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_list_ptr.html#a77d9b902ae4414ebea7658cb14c9b811',1,'Alis::Core::Graphic::ImGui::ImDrawListPtr']]],
   ['ignoreccd_19820',['IgnoreCcd',['../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#a146bd2e7dd0d0a2bffb7602cc1450686',1,'Alis::Core::Physic::Dynamics::Body']]],
   ['ignoreccdwith_19821',['IgnoreCcdWith',['../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#a7d13d207719478f5e184a089633f3555',1,'Alis.Core.Physic.Dynamics.Body.IgnoreCcdWith()'],['../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a7482d774a9cd10fe3f689988bc469659',1,'Alis.Core.Physic.Dynamics.Fixture.IgnoreCcdWith()']]],
@@ -16,7 +17,7 @@ var searchData=
   ['inversetransform_19831',['InverseTransform',['../d0/d22/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_transformable.html#adb111b635b02911f0cd42fa3565c0bac',1,'Alis::Core::Graphic::SFML::Graphics::Transformable']]],
   ['invi_19832',['InvI',['../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#ad8e10235c8f76f06e08b15d253764afc',1,'Alis::Core::Physic::Dynamics::Body']]],
   ['invmass_19833',['InvMass',['../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#a009a2ced6744464b477e99411410705d',1,'Alis::Core::Physic::Dynamics::Body']]],
-  ['isactive_19834',['IsActive',['../dc/deb/class_alis_1_1_core_1_1_component_1_1_component_base.html#a29858b84786d1ddbba03c084d0a640c9',1,'Alis.Core.Component.ComponentBase.IsActive()'],['../d8/dd9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_alis_object.html#ad38891a0466ac68c12bd12408d17e1bf',1,'Alis.Core.Aspect.Base.AlisObject.IsActive()']]],
+  ['isactive_19834',['IsActive',['../d3/d34/class_alis_1_1_core_1_1_ecs_1_1_component_base.html#ac8117177d9cd7116d08b9a2ce177a344',1,'Alis.Core.Ecs.ComponentBase.IsActive()'],['../d8/dd9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_alis_object.html#ad38891a0466ac68c12bd12408d17e1bf',1,'Alis.Core.Aspect.Base.AlisObject.IsActive()']]],
   ['isbullet_19835',['IsBullet',['../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#aa1e5fa7b7b66027f17b6f2e06a8d6747',1,'Alis::Core::Physic::Dynamics::Body']]],
   ['isdebugenabled_19836',['IsDebugEnabled',['../d3/df5/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_triangulation_context.html#aabbceb92d3e75ed0c07490af4cea0098',1,'Alis::Core::Physic::Tools::Triangulation::Delaunay::TriangulationContext']]],
   ['isfinbitset_19837',['IsFinBitSet',['../d8/dc1/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_frame.html#a4e41f2667dcc65d0ec7454af59be3d4e',1,'Alis::Core::Network::Internal::WebSocketFrame']]],

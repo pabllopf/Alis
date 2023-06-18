@@ -1,7 +1,7 @@
 var struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_event =
 [
-    [ "type", "d4/d49/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_event.html#ab9a52380df8c248e75dff77bc6a1f126", null ],
-    [ "typeFSharp", "d4/d49/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_event.html#a04049bf271e98d5c981ddada1d3b7143", null ],
+    [ "type", "d4/d49/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_event.html#a143477eb98fdc6fce0368dd358e7b220", null ],
+    [ "typeFSharp", "d4/d49/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_event.html#a9347be70a88859f3e93987ebf5cb0f17", null ],
     [ "display", "d4/d49/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_event.html#a79df3edb63db14ad4d871492643279c8", null ],
     [ "window", "d4/d49/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_event.html#a9447fc479b22eab68c3a9c4c57c33457", null ],
     [ "key", "d4/d49/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_event.html#aa883df42b841ca9e25c9c030a0822940", null ],
@@ -85,5 +85,5 @@ var struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_event =
     [ "padding53", "d4/d49/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_event.html#a6ff471b1f5814ff6bdf4005057d52372", null ],
     [ "padding54", "d4/d49/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_event.html#ad2702cfae208b0e693e0557d3c21f222", null ],
     [ "padding55", "d4/d49/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_event.html#a66560b92931b36f3c8d02b21d7906b65", null ],
-    [ "padding", "d4/d49/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_event.html#a629b01480047c7b382205d685db0fc6e", null ]
+    [ "Padding", "d4/d49/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_event.html#a20046b5f2697a8f021db3a6e5422aa7f", null ]
 ];

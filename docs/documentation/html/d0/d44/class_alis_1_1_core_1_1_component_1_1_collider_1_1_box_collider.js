@@ -14,7 +14,7 @@ var class_alis_1_1_core_1_1_component_1_1_collider_1_1_box_collider =
     [ "Height", "d0/d44/class_alis_1_1_core_1_1_component_1_1_collider_1_1_box_collider.html#a04063c6f49cb856d1ddd18c80ff2f374", null ],
     [ "Density", "d0/d44/class_alis_1_1_core_1_1_component_1_1_collider_1_1_box_collider.html#a3295f1a333e12e88c8abfa7043077b89", null ],
     [ "Rotation", "d0/d44/class_alis_1_1_core_1_1_component_1_1_collider_1_1_box_collider.html#ad6855303a5ee241a3b5e3aacdc7a2af9", null ],
-    [ "RelativePosition", "d0/d44/class_alis_1_1_core_1_1_component_1_1_collider_1_1_box_collider.html#aa58b1d7788c16a69c17cffd6b14967d0", null ],
+    [ "RelativePosition", "d0/d44/class_alis_1_1_core_1_1_component_1_1_collider_1_1_box_collider.html#ab482060e459c95c2a63c2d8965f28661", null ],
     [ "Body", "d0/d44/class_alis_1_1_core_1_1_component_1_1_collider_1_1_box_collider.html#ac5e53864207f14127aac8a0654165fe3", null ],
     [ "AutoTilling", "d0/d44/class_alis_1_1_core_1_1_component_1_1_collider_1_1_box_collider.html#a072ed3eaf5251c3fbe93def4a2c2c54b", null ],
     [ "BodyType", "d0/d44/class_alis_1_1_core_1_1_component_1_1_collider_1_1_box_collider.html#a52c4da48477c654cd60b7795eff65c3d", null ],
@@ -23,6 +23,6 @@ var class_alis_1_1_core_1_1_component_1_1_collider_1_1_box_collider =
     [ "FixedRotation", "d0/d44/class_alis_1_1_core_1_1_component_1_1_collider_1_1_box_collider.html#a6955a3c9412fcae6d30acce7cbbd51c1", null ],
     [ "Mass", "d0/d44/class_alis_1_1_core_1_1_component_1_1_collider_1_1_box_collider.html#a67aa976395969a5210e6f251b60eb7e8", null ],
     [ "GravityScale", "d0/d44/class_alis_1_1_core_1_1_component_1_1_collider_1_1_box_collider.html#a21bb3cddc11da81a2a68d59dadee7bfd", null ],
-    [ "LinearVelocity", "d0/d44/class_alis_1_1_core_1_1_component_1_1_collider_1_1_box_collider.html#a15f45e1e98ff7232c744111db1203a04", null ],
+    [ "LinearVelocity", "d0/d44/class_alis_1_1_core_1_1_component_1_1_collider_1_1_box_collider.html#ac251674e84cd5393b1f9858e711d3fb5", null ],
     [ "AngularVelocity", "d0/d44/class_alis_1_1_core_1_1_component_1_1_collider_1_1_box_collider.html#ab765441b7c6d48fe35726edf1f532cca", null ]
 ];

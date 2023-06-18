@@ -11,6 +11,6 @@ var struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_states 
     [ "Default", "d7/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_states.html#a732d2d67c1ba156fbb37e051cc09401b", null ],
     [ "BlendMode", "d7/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_states.html#a3142c7fd592c33b6e1310921a3ef5045", null ],
     [ "Transform", "d7/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_states.html#a4a2d352a53b0a03de7242fcb6c2649c6", null ],
-    [ "Texture", "d7/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_states.html#a4640678e2b73d90d83ef7af458ca7292", null ],
-    [ "Shader", "d7/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_states.html#a54832ff171f6a33e08038122794ed89f", null ]
+    [ "Texture", "d7/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_states.html#acc8a6227fe910ecf5a15045b3c1c028b", null ],
+    [ "Shader", "d7/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_states.html#a0ff3a17421de14f7bf9672a54e883843", null ]
 ];

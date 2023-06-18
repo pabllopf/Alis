@@ -10,10 +10,10 @@ var class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_
     [ "InvMassA", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#aeef06ffc2a6b58472a173bce8314fe23", null ],
     [ "InvMassB", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#a196d9ce7ce39440a1def6efde33e77a1", null ],
     [ "K", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#a187b4c0a87785aaf54d38127639dd598", null ],
-    [ "Normal", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#a3335317b0aa0f564c99104a626baaa6b", null ],
+    [ "Normal", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#ac92573086c2fe79d4d9a3bf9df0edae7", null ],
     [ "NormalMass", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#aaf965b57983ab6e8907700dd4600ae28", null ],
     [ "PointCount", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#aa737c6171ad89a32d2a0a45df23bb645", null ],
-    [ "Points", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#ae759d21e06e28e037759ad11bb0cada9", null ],
+    [ "Points", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#a2d9c59f9c01eff486f112c78738f7262", null ],
     [ "Restitution", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#ad6d09606cd75a84f10016331b1d70d6f", null ],
     [ "TangentSpeed", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#afd9d3810e45114502358f6c9b346e563", null ],
     [ "Threshold", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#ab742730427df0af4801c96b744f8891a", null ]

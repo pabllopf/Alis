@@ -1,11 +1,11 @@
 var struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_audio_spec =
 [
-    [ "freq", "df/d19/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_audio_spec.html#aecc3508ae7dcb05fa641e3f11096a418", null ],
-    [ "format", "df/d19/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_audio_spec.html#a1096df8d9ae8c3fcbd185a30f2759946", null ],
-    [ "channels", "df/d19/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_audio_spec.html#aaee4eb44b7777689e1998ed1a50046c9", null ],
-    [ "silence", "df/d19/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_audio_spec.html#aa3c81feea5d8c65beb080e170a678845", null ],
-    [ "samples", "df/d19/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_audio_spec.html#ae75083e1b6d293d07d9dcbf47c4dd55f", null ],
-    [ "size", "df/d19/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_audio_spec.html#a058d43d516563c1da87e7844ad29a655", null ],
-    [ "callback", "df/d19/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_audio_spec.html#a5ff0c1ea2a0b0c9c3c3326c31931aeb5", null ],
+    [ "freq", "df/d19/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_audio_spec.html#ac5056325adc412f8c356631eba516026", null ],
+    [ "format", "df/d19/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_audio_spec.html#a176b271376d5e5bb6a6486b25905f374", null ],
+    [ "channels", "df/d19/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_audio_spec.html#aef01fb137df7fe5b08b0ce509e4b934e", null ],
+    [ "silence", "df/d19/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_audio_spec.html#a4f43756b4d8ab73e9392824f550f2c60", null ],
+    [ "samples", "df/d19/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_audio_spec.html#a48ad79c7e3e8352cbc7c4658194c926a", null ],
+    [ "size", "df/d19/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_audio_spec.html#affbe6db27dfc404838f001fb81a0b461", null ],
+    [ "callback", "df/d19/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_audio_spec.html#a496b098181bfea28f7c6515457803170", null ],
     [ "userdata", "df/d19/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_audio_spec.html#a69f6cd0a803171a900e02755662a0086", null ]
 ];

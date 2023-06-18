@@ -8,8 +8,8 @@ var struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_video_mode =
     [ "sfVideoMode_getFullscreenModes", "da/da1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_video_mode.html#a0cd9f48366a1a5ec83765150f5e83ed8", null ],
     [ "sfVideoMode_isValid", "da/da1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_video_mode.html#a91c786b0fd8156a9b97203c590bef059", null ],
     [ "DesktopMode", "da/da1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_video_mode.html#ac5c9c6560862ef1a5af28e01c3bb81f3", null ],
-    [ "Width", "da/da1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_video_mode.html#a4e113b2d9c99e7fdb19b3c1d27c508b0", null ],
-    [ "Height", "da/da1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_video_mode.html#a1b8cc292506dfd884100ef1850ae0d0e", null ],
-    [ "BitsPerPixel", "da/da1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_video_mode.html#a52e55949fddc52559f9ce0ad8b3f3b01", null ],
+    [ "Width", "da/da1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_video_mode.html#ae0e16cbb6ec45a5de256185b701841f8", null ],
+    [ "Height", "da/da1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_video_mode.html#aab41fcad63848e337e3a41207287f5f2", null ],
+    [ "BitsPerPixel", "da/da1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_video_mode.html#a1ac9c5568be347a72c41416d76968955", null ],
     [ "FullscreenModes", "da/da1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_video_mode.html#a814fb285a9d4bec9da31bd083db4852c", null ]
 ];

@@ -11,8 +11,8 @@ var class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor =
     ] ],
     [ "IsAvailable", "da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#a1760025c4722e8618bac9ee9f97880f2", null ],
     [ "SetEnabled", "da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#abe3fe1670789c4ab0c793be8bf815db6", null ],
-    [ "GetValue", "da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#a6a665f076bde834dc51de7c1b166a91d", null ],
+    [ "GetValue", "da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#a11e919cf6be3b902790dfd5031950925", null ],
     [ "sfSensor_isAvailable", "da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#a66e0bc60357d579f953592b004afb670", null ],
     [ "sfSensor_setEnabled", "da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#a161d6d2d8bed495910e75bafdd047988", null ],
-    [ "sfSensor_getValue", "da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#a2e836693b5eeda6c113c6bc933eda37f", null ]
+    [ "sfSensor_getValue", "da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#a56e131a6e121d67bcb803e32cba777c8", null ]
 ];

@@ -13,7 +13,7 @@ var struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_atlas_custom_rect_pt
     [ "Y", "d8/deb/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_atlas_custom_rect_ptr.html#a09a9b136c06da85e2707c05949b17284", null ],
     [ "GlyphId", "d8/deb/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_atlas_custom_rect_ptr.html#adb18b531758441d3da66906b80320749", null ],
     [ "GlyphAdvanceX", "d8/deb/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_atlas_custom_rect_ptr.html#a823482db14a60c78de8296853bf933a9", null ],
-    [ "GlyphOffset", "d8/deb/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_atlas_custom_rect_ptr.html#a91f3d0e18c4514814271c60a8f3a80fe", null ],
+    [ "GlyphOffset", "d8/deb/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_atlas_custom_rect_ptr.html#a75447e263def5a3ba1b87f6e95be42d4", null ],
     [ "Font", "d8/deb/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_atlas_custom_rect_ptr.html#aec1541e9ed2664f2fb7526f84eb41f7f", null ],
     [ "NativePtr", "d8/deb/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_atlas_custom_rect_ptr.html#afdc5af342e4019a2b00f6274ecafe71f", null ]
 ];

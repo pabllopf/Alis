@@ -1,7 +1,7 @@
 var struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion =
 [
     [ "Quaternion", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#af9d505c7a5ba20841e36d97c91863e23", null ],
-    [ "Quaternion", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#ae65006387ede5d2556a8de8cde72df73", null ],
+    [ "Quaternion", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#ac954e78b3960acf4127f328b86c26c17", null ],
     [ "operator+", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#a6e2c5bde6e821157c6ed61cf5d4f2b91", null ],
     [ "operator/", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#ac1cc4e919774581b82904f0275061db4", null ],
     [ "operator==", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#a541a78a0e6454e7af4e67c863a5b6b88", null ],
@@ -13,8 +13,8 @@ var struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion =
     [ "Add", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#a2310a8cbecd7c1d17d631271317beba0", null ],
     [ "Concatenate", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#a46ca618d2071f2b1a171d938584caee3", null ],
     [ "Conjugate", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#a12edbf5e17e8f7263bc65d24945eb46b", null ],
-    [ "CreateFromAxisAngle", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#a0b71ffea2a49b266e2cb150650cbb9b1", null ],
-    [ "CreateFromRotationMatrix", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#af75e3816371fd4eea2fa5ef0100b614d", null ],
+    [ "CreateFromAxisAngle", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#a9c8310c7579da6f59798a39a801c9cea", null ],
+    [ "CreateFromRotationMatrix", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#a06a3a4f89e4340b759476ba274b28c98", null ],
     [ "CreateFromYawPitchRoll", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#a3de12cb505f1c0944c365d42ff1845dc", null ],
     [ "Divide", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#a8009d921c22f6e8b92cc577c36077936", null ],
     [ "Dot", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#ad0826ade71bb319370185ba5b00846c0", null ],
@@ -32,6 +32,8 @@ var struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion =
     [ "Length", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#a125151eac16d5ba20d0c896aaa370b61", null ],
     [ "LengthSquared", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#acb434919fbd1b90f28a93d9a2fe3e98b", null ],
     [ "ToString", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#ac46a5f9a8c0c92fa8cf30c6337f789f6", null ],
+    [ "hash", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#a4f5bc062c7ab621c5016ed7a9e7ed0e5", null ],
+    [ "hashCode", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#ac7e80d79c1f570e171c50f887b3df7e2", null ],
     [ "SlerpEpsilon", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#a51a39106d0f22b8c1d7f5f422de546dd", null ],
     [ "X", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#afca9ad2cc973e7096ecbf4c29ee3f410", null ],
     [ "Y", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html#a4a9d866a0a03c8b10684342e84376671", null ],

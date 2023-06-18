@@ -17,7 +17,7 @@ var class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_
     [ "RemovePoint", "d1/de0/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon.html#ad8b068293e687ad4c3127b94a426a79d", null ],
     [ "HolesPrivate", "d1/de0/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon.html#aaf8d0ec5c3337de6d1980ba96a105bb0", null ],
     [ "LastPrivate", "d1/de0/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon.html#a57c60d4e12b55b0d195549b51b2a3c9d", null ],
-    [ "PointsPrivate", "d1/de0/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon.html#a5ffc7c80d7a69a861cb2d28c0c462a0f", null ],
+    [ "PointsPrivate", "d1/de0/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon.html#ad47358e6c8a9e0532b45f946546b26f0", null ],
     [ "SteinerPointsPrivate", "d1/de0/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon.html#a105bc1bb84664af69c0e40d14ac938e7", null ],
     [ "TrianglesPrivate", "d1/de0/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon.html#ae4e6b7a7b628315fa08a3ebcc326fa05", null ],
     [ "Holes", "d1/de0/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon.html#a19bc4923f5557272bfe253956b0537ca", null ],

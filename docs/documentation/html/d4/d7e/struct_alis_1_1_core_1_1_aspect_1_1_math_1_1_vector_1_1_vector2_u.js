@@ -13,7 +13,7 @@ var struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_u =
     [ "Equals", "d4/d7e/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_u.html#ab1199ae3af58368e0209e8761ce09dbc", null ],
     [ "GetHashCode", "d4/d7e/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_u.html#a51ea7a5513ff7210f462f4647310b2bf", null ],
     [ "operator Vector2I", "d4/d7e/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_u.html#ab71a321fd8bd94765dc24806761b982e", null ],
-    [ "operator Vector2", "d4/d7e/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_u.html#a8b2b8ac284a0efd0dac92c22f74da7da", null ],
+    [ "operator Vector2F", "d4/d7e/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_u.html#a26c072eba584b322445d532841c68e69", null ],
     [ "X", "d4/d7e/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_u.html#a7119d271688b6b24fa6e17d483688247", null ],
     [ "Y", "d4/d7e/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_u.html#ac6c731e7f8685079f3708b7c6ad8b8fd", null ]
 ];

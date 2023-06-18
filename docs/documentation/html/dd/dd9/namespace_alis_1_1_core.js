@@ -3,6 +3,7 @@ var namespace_alis_1_1_core =
     [ "Aspect", "d2/d40/namespace_alis_1_1_core_1_1_aspect.html", "d2/d40/namespace_alis_1_1_core_1_1_aspect" ],
     [ "Audio", "da/db0/namespace_alis_1_1_core_1_1_audio.html", "da/db0/namespace_alis_1_1_core_1_1_audio" ],
     [ "Component", "dc/d59/namespace_alis_1_1_core_1_1_component.html", "dc/d59/namespace_alis_1_1_core_1_1_component" ],
+    [ "Ecs", "df/d48/namespace_alis_1_1_core_1_1_ecs.html", "df/d48/namespace_alis_1_1_core_1_1_ecs" ],
     [ "Entity", "dd/d0d/namespace_alis_1_1_core_1_1_entity.html", "dd/d0d/namespace_alis_1_1_core_1_1_entity" ],
     [ "Graphic", "df/df9/namespace_alis_1_1_core_1_1_graphic.html", "df/df9/namespace_alis_1_1_core_1_1_graphic" ],
     [ "Manager", "d5/d13/namespace_alis_1_1_core_1_1_manager.html", "d5/d13/namespace_alis_1_1_core_1_1_manager" ],

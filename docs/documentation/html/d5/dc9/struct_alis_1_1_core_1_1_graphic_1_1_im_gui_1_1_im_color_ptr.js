@@ -10,6 +10,6 @@ var struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_color_ptr =
     [ "Hsv", "d5/dc9/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_color_ptr.html#ac622975676bb0f24cca96b2826aec652", null ],
     [ "SetHsv", "d5/dc9/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_color_ptr.html#a4e66737388c7aafdf7eea9876e1d9d0c", null ],
     [ "SetHsv", "d5/dc9/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_color_ptr.html#aa4911a50f487a6578bbe0d8eb3d50895", null ],
-    [ "Value", "d5/dc9/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_color_ptr.html#ab9bf8cd7cd2fdb3b4e9393826724aa07", null ],
+    [ "Value", "d5/dc9/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_color_ptr.html#a457096196c1f289adec105986b23052f", null ],
     [ "NativePtr", "d5/dc9/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_color_ptr.html#a8b98e770585f020409de37aad0e5f9d4", null ]
 ];

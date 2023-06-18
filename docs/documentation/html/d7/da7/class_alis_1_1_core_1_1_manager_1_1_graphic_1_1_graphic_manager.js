@@ -15,7 +15,7 @@ var class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager =
     [ "UnAttach", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#a976ffea38978b52c16a91f297a23f0c7", null ],
     [ "SetView", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#a704b51c6dc2963af9c103b701de86155", null ],
     [ "AttachCollider", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#a3dba4474512adc6a69f5a2b90c1098f7", null ],
-    [ "defaultSize", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#a020aa0d26f0b36bd20fb5713d8c088c6", null ],
+    [ "defaultSize", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#aec5dd500df8d14965d2602d324d79ffb", null ],
     [ "RenderWindow", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#a60bcccbacc422ba5bf18e89018e90901", null ],
     [ "styles", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#a94a08514d1cefbe106cde2e2bb9ac6d4", null ],
     [ "videoMode", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#ad081dca5b6a4d606fcfbdc044ac18e7d", null ],

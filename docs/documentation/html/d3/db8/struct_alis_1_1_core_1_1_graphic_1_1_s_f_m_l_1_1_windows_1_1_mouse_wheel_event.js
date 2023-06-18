@@ -1,6 +1,6 @@
 var struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_mouse_wheel_event =
 [
-    [ "Delta", "d3/db8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_mouse_wheel_event.html#a01d8d66a40136b77394cc59b0b1fec37", null ],
-    [ "X", "d3/db8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_mouse_wheel_event.html#a16bfe132ca8220f9d96a06c96866832e", null ],
-    [ "Y", "d3/db8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_mouse_wheel_event.html#a75054995bd69ef7afdc3714d4a34261c", null ]
+    [ "Delta", "d3/db8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_mouse_wheel_event.html#a675473fa8bd5e1f5b4c113998cfb26b2", null ],
+    [ "X", "d3/db8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_mouse_wheel_event.html#a063388e59b6e87215bb4580604565cdb", null ],
+    [ "Y", "d3/db8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_mouse_wheel_event.html#a55fb9c55d8faf26925d911b18e5da101", null ]
 ];
