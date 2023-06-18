@@ -31,6 +31,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Builder.Core.Component.Render;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs;
 
 namespace Alis.Core.Component.Render
@@ -149,6 +150,7 @@ namespace Alis.Core.Component.Render
         /// </summary>
         public override void Exit()
         {
+            Logger.Trace();
         }
 
         /// <summary>

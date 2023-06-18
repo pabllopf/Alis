@@ -37,25 +37,6 @@ namespace Alis.Core.Aspect.Logging
     public static class ConsoleController
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ConsoleController" /> class
-        /// </summary>
-        static ConsoleController()
-        {
-            _dirPath = Environment.CurrentDirectory + "/log";
-            _filePath = Environment.CurrentDirectory + $"/log/{DateTime.Now.Day}-{DateTime.Now.Month}-{DateTime.Now.Year}_{DateTime.Now.Hour}-{DateTime.Now.Minute}.log";
-        }
-
-        /// <summary>
-        ///     The file path
-        /// </summary>
-        private static string _filePath;
-
-        /// <summary>
-        ///     The dir path
-        /// </summary>
-        private static string _dirPath;
-
-        /// <summary>
         ///     Prints the to console using the specified message
         /// </summary>
         /// <param name="message">The message</param>

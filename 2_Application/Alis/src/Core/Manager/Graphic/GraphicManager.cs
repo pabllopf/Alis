@@ -37,6 +37,7 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.SFML.Graphics;
 using Alis.Core.Graphic.SFML.Windows;
 using Sprite = Alis.Core.Component.Render.Sprite;
+using Styles = Alis.Core.Graphic.SFML.Windows.Styles;
 
 namespace Alis.Core.Manager.Graphic
 {

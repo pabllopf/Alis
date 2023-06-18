@@ -217,6 +217,7 @@ namespace Alis.Core.Component.Collider
         /// </summary>
         public override void Start()
         {
+            Logger.Trace();
         }
 
         /// <summary>

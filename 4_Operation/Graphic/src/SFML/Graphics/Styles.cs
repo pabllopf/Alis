@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Color.cs
+//  File:Styles.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,52 +27,30 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Logging
+using System;
+
+namespace Alis.Core.Graphic.SFML.Graphics
 {
     /// <summary>
-    ///     Color for debug drawing. Each value has the range [0,1].
+    ///     Enumerate the string drawing styles
     /// </summary>
-    public struct Color
+    ////////////////////////////////////////////////////////////
+    [Flags]
+    public enum Styles
     {
-        /// <summary>
-        ///     The
-        /// </summary>
-        private float r;
+        /// <summary>Regular characters, no style</summary>
+        None = 0,
 
-        /// <summary>
-        ///     The
-        /// </summary>
-        private float g;
+        /// <summary>Bold characters</summary>
+        Bold = 1 << 0,
 
-        /// <summary>
-        ///     The
-        /// </summary>
-        private float b;
+        /// <summary>Italic characters</summary>
+        Italic = 1 << 1,
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Color" /> class
-        /// </summary>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        public Color(float r, float g, float b)
-        {
-            this.r = r;
-            this.g = g;
-            this.b = b;
-        }
+        /// <summary>Underlined characters</summary>
+        Underlined = 1 << 2,
 
-        /// <summary>
-        ///     Sets the r
-        /// </summary>
-        /// <param name="r">The </param>
-        /// <param name="g">The </param>
-        /// <param name="b">The </param>
-        public void Set(float r, float g, float b)
-        {
-            this.r = r;
-            this.g = g;
-            this.b = b;
-        }
+        /// <summary>Strike through characters</summary>
+        StrikeThrough = 1 << 3
     }
 }

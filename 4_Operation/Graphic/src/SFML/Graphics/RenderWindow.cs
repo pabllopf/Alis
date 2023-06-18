@@ -59,7 +59,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="title">Title of the window</param>
         ////////////////////////////////////////////////////////////
         public RenderWindow(VideoMode mode, string title) :
-            this(mode, title, Styles.Default, new ContextSettings(0, 0))
+            this(mode, title, Windows.Styles.Default, new ContextSettings(0, 0))
         {
         }
 
@@ -71,7 +71,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="title">Title of the window</param>
         /// <param name="style">Window style (Resize | Close by default)</param>
         ////////////////////////////////////////////////////////////
-        public RenderWindow(VideoMode mode, string title, Styles style) :
+        public RenderWindow(VideoMode mode, string title, Windows.Styles style) :
             this(mode, title, style, new ContextSettings(0, 0))
         {
         }
@@ -85,7 +85,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="style">Window style (Resize | Close by default)</param>
         /// <param name="settings">Creation parameters</param>
         ////////////////////////////////////////////////////////////
-        public RenderWindow(VideoMode mode, string title, Styles style, ContextSettings settings) :
+        public RenderWindow(VideoMode mode, string title, Windows.Styles style, ContextSettings settings) :
             base(IntPtr.Zero, 0)
         {
             // Copy the string to a null-terminated UTF-32 byte array
@@ -747,7 +747,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="params">The params</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfRenderWindow_create(VideoMode mode, string title, Styles style,
+        private static extern IntPtr sfRenderWindow_create(VideoMode mode, string title, Windows.Styles style,
             ref ContextSettings @params);
 
         /// <summary>
@@ -759,7 +759,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="params">The params</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfRenderWindow_createUnicode(VideoMode mode, byte[] title, Styles style,
+        private static extern IntPtr sfRenderWindow_createUnicode(VideoMode mode, byte[] title, Windows.Styles style,
             ref ContextSettings @params);
 
         /// <summary>

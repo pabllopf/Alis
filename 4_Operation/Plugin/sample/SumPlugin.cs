@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Plugin.Sample
 {
@@ -42,8 +42,7 @@ namespace Alis.Core.Plugin.Sample
         /// </summary>
         public void Initialize()
         {
-            Console.WriteLine("Sum plugin initialized");
-            Console.WriteLine("sample plugin Sum(4, 5)=" + Sum(4, 5));
+            Logger.Trace();
         }
 
         /// <summary>
@@ -51,6 +50,7 @@ namespace Alis.Core.Plugin.Sample
         /// </summary>
         public void Update()
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -58,6 +58,7 @@ namespace Alis.Core.Plugin.Sample
         /// </summary>
         public void Render()
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -65,6 +66,7 @@ namespace Alis.Core.Plugin.Sample
         /// </summary>
         public void Shutdown()
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -72,7 +74,7 @@ namespace Alis.Core.Plugin.Sample
         /// </summary>
         public void Dispose()
         {
-            // No se requiere ninguna operación de liberación de recursos para este plugin
+            Logger.Trace();
         }
 
         /// <summary>

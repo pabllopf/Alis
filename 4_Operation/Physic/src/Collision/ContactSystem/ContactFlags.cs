@@ -40,7 +40,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     The unknown contact flags
         /// </summary>
-        Unknown = 0,
+        None = 0,
 
         /// <summary>Used when crawling contact graph when forming islands.</summary>
         IslandFlag = 1,
