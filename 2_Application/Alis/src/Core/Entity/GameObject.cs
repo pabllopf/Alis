@@ -31,7 +31,6 @@ using System.Collections.Generic;
 using Alis.Builder.Core.Entity;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Component;
 using Alis.Core.Ecs;
 
 namespace Alis.Core.Entity

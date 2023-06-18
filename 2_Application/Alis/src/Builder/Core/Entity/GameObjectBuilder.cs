@@ -30,7 +30,6 @@
 using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Component;
 using Alis.Core.Ecs;
 using Alis.Core.Entity;
 
@@ -74,9 +73,8 @@ namespace Alis.Builder.Core.Entity
         /// <returns>The game object builder</returns>
         public GameObjectBuilder AddComponent<T>(T value) where T : ComponentBase
         {
-            ComponentBase componentBase = (T) Activator.CreateInstance(typeof(T));
-            gameObject.AddComponent(componentBase);
-            componentBase.AttachGameObject(gameObject);
+            gameObject.AddComponent(value);
+            value.AttachGameObject(gameObject);
             return this;
         }
 

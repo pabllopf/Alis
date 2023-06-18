@@ -40,7 +40,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The kmod none sdl keymod
         /// </summary>
-        KmodNone = 0x0000,
+        None = 0x0000,
 
         /// <summary>
         ///     The kmod lshift sdl keymod

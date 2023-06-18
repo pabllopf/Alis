@@ -119,6 +119,18 @@
             <param name="filename">Path of the file</param>
             <param name="innerException">Exception which is the cause ofthe current exception</param>
         </member>
+        <member name="T:Alis.Core.Aspect.Base.Exceptions.PointOnEdgeException">
+            <summary>
+                The point on edge exception class
+            </summary>
+            <seealso cref="T:System.NotImplementedException" />
+        </member>
+        <member name="M:Alis.Core.Aspect.Base.Exceptions.PointOnEdgeException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Base.Exceptions.PointOnEdgeException" /> class
+            </summary>
+            <param name="message">The message</param>
+        </member>
         <member name="T:Alis.Core.Aspect.Base.Mapping.Button">
             <summary>
                 The button enum

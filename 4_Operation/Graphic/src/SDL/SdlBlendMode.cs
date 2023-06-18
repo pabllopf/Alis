@@ -40,7 +40,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl blendmode none sdl blendmode
         /// </summary>
-        SdlBlendmodeNone = 0x00000000,
+        None = 0x00000000,
 
         /// <summary>
         ///     The sdl blendmode blend sdl blendmode

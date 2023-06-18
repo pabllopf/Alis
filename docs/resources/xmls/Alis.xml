@@ -753,6 +753,13 @@
             </summary>
             <returns>The debug setting</returns>
         </member>
+        <member name="M:Alis.Builder.Core.Setting.DebugSettingBuilder.LogLevel(Alis.Core.Aspect.Logging.LogLevel)">
+            <summary>
+            Logs the level using the specified log level
+            </summary>
+            <param name="logLevel">The log level</param>
+            <returns>The debug setting builder</returns>
+        </member>
         <member name="T:Alis.Builder.Core.Setting.GeneralSettingBuilder">
             <summary>
                 The general setting builder class

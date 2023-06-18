@@ -40,7 +40,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl texturemodulate none sdl texturemodulate
         /// </summary>
-        SdlTexturemodulateNone = 0x00000000,
+        None = 0x00000000,
 
         /// <summary>
         ///     The sdl texturemodulate horizontal sdl texturemodulate

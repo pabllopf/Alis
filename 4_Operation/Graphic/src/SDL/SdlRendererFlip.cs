@@ -40,7 +40,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl flip none sdl rendererflip
         /// </summary>
-        SdlFlipNone = 0x00000000,
+        None = 0x00000000,
 
         /// <summary>
         ///     The sdl flip horizontal sdl rendererflip

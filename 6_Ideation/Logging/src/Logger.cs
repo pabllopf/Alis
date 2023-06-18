@@ -37,66 +37,137 @@ namespace Alis.Core.Aspect.Logging
     public static class Logger
     {
         /// <summary>
+        /// The normal
+        /// </summary>
+        public static LogLevel LogLevel { get; set; } = LogLevel.Normal;
+
+        /// <summary>
         ///     Traces the message
         /// </summary>
-        public static void Trace() => ConsoleController.Print(new Message(MessageType.Trace));
+        public static void Trace()
+        {
+            if (LogLevel.Trace >= LogLevel)
+            {
+                ConsoleController.Print(new Message(MessageType.Trace));
+            }
+        }
 
         /// <summary>
         ///     Traces the message
         /// </summary>
         /// <param name="message">The message</param>
-        public static void Trace(string message) => ConsoleController.Print(new Message(MessageType.Trace, message));
+        public static void Trace(string message)
+        {
+            if (LogLevel.Trace >= LogLevel)
+            {
+                ConsoleController.Print(new Message(MessageType.Trace, message));
+            }
+        }
 
         /// <summary>
         ///     Info
         /// </summary>
-        public static void Info() => ConsoleController.Print(new Message(MessageType.Info, "Info method called with no message."));
+        public static void Info()
+        {
+            if (LogLevel.Info >= LogLevel)
+            {
+                ConsoleController.Print(new Message(MessageType.Info, "Info method called with no message."));
+            }
+        }
 
         /// <summary>
         ///     Info the message
         /// </summary>
         /// <param name="message">The message</param>
-        public static void Info(string message) => ConsoleController.Print(new Message(MessageType.Info, message));
+        public static void Info(string message)
+        {
+            if (LogLevel.Info >= LogLevel)
+            {
+                ConsoleController.Print(new Message(MessageType.Info, message));
+            }
+        }
 
         /// <summary>
         ///     Logs the message
         /// </summary>
         /// <param name="message">The message</param>
-        public static void Log(string message) => ConsoleController.Print(new Message(MessageType.Log, message));
+        public static void Log(string message)
+        {
+            if (LogLevel.Log >= LogLevel)
+            {
+                ConsoleController.Print(new Message(MessageType.Log, message));
+            }
+        }
 
         /// <summary>
         ///     Events the message
         /// </summary>
         /// <param name="message">The message</param>
-        public static void Event(string message) => ConsoleController.Print(new Message(MessageType.Event, message));
+        public static void Event(string message)
+        {
+            if (LogLevel.Event >= LogLevel)
+            {
+                ConsoleController.Print(new Message(MessageType.Event, message));
+            }
+        }
 
         /// <summary>
         ///     Events
         /// </summary>
-        public static void Event() => ConsoleController.Print(new Message(MessageType.Event));
+        public static void Event()
+        {
+            if (LogLevel.Event >= LogLevel)
+            {
+                ConsoleController.Print(new Message(MessageType.Event, "Event method called with no message."));
+            }
+        }
 
         /// <summary>
         ///     Warnings the message
         /// </summary>
         /// <param name="message">The message</param>
-        public static void Warning(string message) => ConsoleController.Print(new Message(MessageType.Warning, message));
+        public static void Warning(string message)
+        {
+            if (LogLevel.Warning >= LogLevel)
+            {
+                ConsoleController.Print(new Message(MessageType.Warning, message));
+            }
+        }
 
         /// <summary>
         ///     Errors the message
         /// </summary>
         /// <param name="message">The message</param>
-        public static void Error(string message) => ConsoleController.Print(new Message(MessageType.Error, message));
+        public static void Error(string message)
+        {
+            if (LogLevel.Critical >= LogLevel)
+            {
+                ConsoleController.Print(new Message(MessageType.Error, message));
+            }
+        }
 
         /// <summary>
         ///     Exceptions the message
         /// </summary>
         /// <param name="message">The message</param>
-        public static void Exception(string message) => ConsoleController.Print(new Message(MessageType.Exception, message));
+        public static void Exception(string message)
+        {
+            if (LogLevel.Critical >= LogLevel)
+            {
+                ConsoleController.Print(new Message(MessageType.Exception, message));
+            }
+        }
 
         /// <summary>
         ///     Exceptions the exception
         /// </summary>
         /// <param name="exception">The exception</param>
-        public static void Exception(Exception exception) => ConsoleController.Print(new Message(MessageType.Exception, exception.Message));
+        public static void Exception(Exception exception)
+        {
+            if (LogLevel.Critical >= LogLevel)
+            {
+                ConsoleController.Print(new Message(MessageType.Exception, exception.Message));
+            }
+        }
     }
 }

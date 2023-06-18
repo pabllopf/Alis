@@ -3465,7 +3465,7 @@
                 The body flags enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.BodyFlags.Unknown">
+        <member name="F:Alis.Core.Physic.Dynamics.BodyFlags.None">
             <summary>
                 The unknown body flags
             </summary>
@@ -10524,8 +10524,8 @@
             <param name="eq">The eq</param>
             <param name="triangle">The triangle</param>
             <param name="point">The point</param>
-            <exception cref="T:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.PointOnEdgeException">EdgeEvent - Point on constrained edge not supported yet</exception>
-            <exception cref="T:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.PointOnEdgeException">EdgeEvent - Point on constrained edge not supported yet</exception>
+            <exception cref="T:Alis.Core.Aspect.Base.Exceptions.PointOnEdgeException">EdgeEvent - Point on constrained edge not supported yet</exception>
+            <exception cref="T:Alis.Core.Aspect.Base.Exceptions.PointOnEdgeException">EdgeEvent - Point on constrained edge not supported yet</exception>
         </member>
         <member name="M:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.DtSweep.FlipEdgeEvent(Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.DtSweepContext,Alis.Core.Physic.Tools.Triangulation.Delaunay.TriangulationPoint,Alis.Core.Physic.Tools.Triangulation.Delaunay.TriangulationPoint,Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.DelaunayTriangle,Alis.Core.Physic.Tools.Triangulation.Delaunay.TriangulationPoint)">
             <summary>
@@ -10834,18 +10834,6 @@
             <param name="p1">The </param>
             <param name="p2">The </param>
             <returns>The int</returns>
-        </member>
-        <member name="T:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.PointOnEdgeException">
-            <summary>
-                The point on edge exception class
-            </summary>
-            <seealso cref="T:System.NotImplementedException" />
-        </member>
-        <member name="M:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.PointOnEdgeException.#ctor(System.String)">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.PointOnEdgeException" /> class
-            </summary>
-            <param name="message">The message</param>
         </member>
         <member name="T:Alis.Core.Physic.Tools.Triangulation.Delaunay.ITriangulatable">
             <summary>

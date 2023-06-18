@@ -124,6 +124,11 @@
                 The logger class
             </summary>
         </member>
+        <member name="P:Alis.Core.Aspect.Logging.Logger.LogLevel">
+            <summary>
+            The normal
+            </summary>
+        </member>
         <member name="M:Alis.Core.Aspect.Logging.Logger.Trace">
             <summary>
                 Traces the message
@@ -192,9 +197,19 @@
                 The log level enum
             </summary>
         </member>
+        <member name="F:Alis.Core.Aspect.Logging.LogLevel.Trace">
+            <summary>
+            The trace log level
+            </summary>
+        </member>
         <member name="F:Alis.Core.Aspect.Logging.LogLevel.Info">
             <summary>
                 The info log level
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.LogLevel.Event">
+            <summary>
+            The event log level
             </summary>
         </member>
         <member name="F:Alis.Core.Aspect.Logging.LogLevel.Log">
@@ -205,6 +220,11 @@
         <member name="F:Alis.Core.Aspect.Logging.LogLevel.Normal">
             <summary>
                 The normal log level
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.LogLevel.Warning">
+            <summary>
+            The warning log level
             </summary>
         </member>
         <member name="F:Alis.Core.Aspect.Logging.LogLevel.Critical">

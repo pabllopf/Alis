@@ -28,13 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Data;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Component.Audio;
 using Alis.Core.Component.Collider;
 using Alis.Core.Component.Render;
 using Alis.Core.Entity;
-using Alis.Core.Graphic.SFML.Graphics;
 using Alis.Core.Manager.Scene;
 using Alis.Core.Physic.Dynamics;
+using Color = Alis.Core.Graphic.SFML.Graphics.Color;
 
 namespace Alis.Sample.Pong
 {
@@ -64,6 +65,7 @@ namespace Alis.Sample.Pong
                             .Build())
                         .Build())
                     .Debug(debug => debug
+                        .LogLevel(LogLevel.Normal)
                         .Build())
                     .Audio(audio => audio
                         .Build())
@@ -116,7 +118,7 @@ namespace Alis.Sample.Pong
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
                                 .Build())
-                            .AddComponent(new PlayerController1())
+                            .AddComponent(new PlayerController(1))
                             .Build())
                         .Add<GameObject>(player => player
                             .Name("Player 2")
@@ -141,7 +143,7 @@ namespace Alis.Sample.Pong
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
                                 .Build())
-                            .AddComponent(new PlayerController2())
+                            .AddComponent(new PlayerController(2))
                             .Build())
                         .Add<GameObject>(ball => ball
                             .Name("Ball")
@@ -167,7 +169,6 @@ namespace Alis.Sample.Pong
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
                                 .Build())
-                            .AddComponent(new BallController())
                             .Build())
                         .Add<GameObject>(downWall => downWall
                             .Name("downWall")
