@@ -49,7 +49,7 @@ namespace Alis.Core.Aspect.Data
         /// <summary>
         ///     The application data
         /// </summary>
-        private static string _assetPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? string.Empty, "Assets");
+        private static readonly string _assetPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? string.Empty, "Assets");
 
         /// <summary>
         ///     Finds the asset name

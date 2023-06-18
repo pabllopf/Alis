@@ -56,12 +56,12 @@ namespace Alis.Core.Graphic.Sample
         /// <summary>
         ///     The sdl game controller axis
         /// </summary>
-        private List<SdlGameControllerAxis> axis = new List<SdlGameControllerAxis>((SdlGameControllerAxis[]) Enum.GetValues(typeof(SdlGameControllerAxis)));
+        private readonly List<SdlGameControllerAxis> axis = new List<SdlGameControllerAxis>((SdlGameControllerAxis[]) Enum.GetValues(typeof(SdlGameControllerAxis)));
 
         /// <summary>
         ///     The sdl game controller button
         /// </summary>
-        private List<SdlGameControllerButton> buttons = new List<SdlGameControllerButton>((SdlGameControllerButton[]) Enum.GetValues(typeof(SdlGameControllerButton)));
+        private readonly List<SdlGameControllerButton> buttons = new List<SdlGameControllerButton>((SdlGameControllerButton[]) Enum.GetValues(typeof(SdlGameControllerButton)));
 
         /// <summary>
         ///     The sdl keycode

@@ -45,7 +45,7 @@ namespace Alis.Core.Manager.Scene
         /// <summary>
         ///     Scene list
         /// </summary>
-        private List<Entity.Scene> scenes;
+        private readonly List<Entity.Scene> scenes;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneManager" /> class

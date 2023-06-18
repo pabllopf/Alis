@@ -75,7 +75,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The padding
         /// </summary>
-        private byte padding1;
+        private readonly byte padding1;
 
         /// <summary>
         ///     The

@@ -48,7 +48,7 @@ namespace Alis.Builder.Core.Entity
         /// <summary>
         ///     Gets or sets the value of the game object
         /// </summary>
-        private GameObject gameObject = new GameObject();
+        private readonly GameObject gameObject = new GameObject();
 
 
         /// <summary>

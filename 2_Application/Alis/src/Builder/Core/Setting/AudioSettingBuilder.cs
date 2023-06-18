@@ -41,7 +41,7 @@ namespace Alis.Builder.Core.Setting
         /// <summary>
         ///     The audio setting
         /// </summary>
-        private AudioSetting audioSetting = new AudioSetting();
+        private readonly AudioSetting audioSetting = new AudioSetting();
 
         /// <summary>
         ///     Builds this instance

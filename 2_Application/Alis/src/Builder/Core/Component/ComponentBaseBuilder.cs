@@ -40,7 +40,7 @@ namespace Alis.Builder.Core.Component
         /// <summary>
         ///     The component base
         /// </summary>
-        private ComponentBase componentBase;
+        private readonly ComponentBase componentBase;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ComponentBaseBuilder" /> class

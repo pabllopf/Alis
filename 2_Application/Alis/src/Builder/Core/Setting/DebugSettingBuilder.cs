@@ -42,7 +42,7 @@ namespace Alis.Builder.Core.Setting
         /// <summary>
         ///     The debug setting
         /// </summary>
-        private DebugSetting debugSetting = new DebugSetting();
+        private readonly DebugSetting debugSetting = new DebugSetting();
 
         /// <summary>
         ///     Builds this instance

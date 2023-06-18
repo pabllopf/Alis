@@ -43,7 +43,7 @@ namespace Alis.Builder.Core.Component.Render
         /// <summary>
         ///     The frame
         /// </summary>
-        private Frame frame = new Frame();
+        private readonly Frame frame = new Frame();
 
         /// <summary>
         ///     Builds this instance

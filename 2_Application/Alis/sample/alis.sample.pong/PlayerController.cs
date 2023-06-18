@@ -43,7 +43,7 @@ namespace Alis.Sample.Pong
         /// <summary>
         /// The player id
         /// </summary>
-        private int playerId;
+        private readonly int playerId;
         
         /// <summary>
         ///     The box collider

@@ -59,7 +59,7 @@ namespace Alis.Builder.Core.Component.Collider
         /// <summary>
         ///     The box collider
         /// </summary>
-        private BoxCollider boxCollider = new BoxCollider();
+        private readonly BoxCollider boxCollider = new BoxCollider();
 
         /// <summary>
         ///     Angulars the velocity using the specified value

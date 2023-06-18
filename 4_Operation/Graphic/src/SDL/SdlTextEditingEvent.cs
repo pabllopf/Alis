@@ -56,7 +56,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl texteditingevent text size
         /// </summary>
-        private IntPtr textPtr;
+        private readonly IntPtr textPtr;
 
         /// <summary>
         ///     The start

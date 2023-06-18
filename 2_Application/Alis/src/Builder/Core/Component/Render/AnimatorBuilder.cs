@@ -44,7 +44,7 @@ namespace Alis.Builder.Core.Component.Render
         /// <summary>
         ///     The animator
         /// </summary>
-        private Animator animator = new Animator();
+        private readonly Animator animator = new Animator();
 
         /// <summary>
         ///     Adds the animation using the specified value

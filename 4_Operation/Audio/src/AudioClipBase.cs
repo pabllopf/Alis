@@ -51,12 +51,12 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     The music ptr
         /// </summary>
-        private IntPtr musicPtr;
+        private readonly IntPtr musicPtr;
 
         /// <summary>
         ///     The player
         /// </summary>
-        private Player player;
+        private readonly Player player;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioClipBase" /> class

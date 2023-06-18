@@ -41,7 +41,7 @@ namespace Alis.Builder.Core.Component.Render
         /// <summary>
         ///     The camera
         /// </summary>
-        private Camera camera = new Camera();
+        private readonly Camera camera = new Camera();
 
         /// <summary>
         ///     Builds this instance

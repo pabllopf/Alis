@@ -41,7 +41,7 @@ namespace Alis.Builder.Core.Setting
         /// <summary>
         ///     The setting base
         /// </summary>
-        private SettingBase settingBase = new SettingBase();
+        private readonly SettingBase settingBase = new SettingBase();
 
         /// <summary>
         ///     Build setting

@@ -55,162 +55,162 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The byte
         /// </summary>
-        private byte byte0;
+        private readonly byte byte0;
 
         /// <summary>
         ///     The byte
         /// </summary>
-        private byte byte1;
+        private readonly byte byte1;
 
         /// <summary>
         ///     The byte
         /// </summary>
-        private byte byte2;
+        private readonly byte byte2;
 
         /// <summary>
         ///     The byte
         /// </summary>
-        private byte byte3;
+        private readonly byte byte3;
 
         /// <summary>
         ///     The byte
         /// </summary>
-        private byte byte4;
+        private readonly byte byte4;
 
         /// <summary>
         ///     The byte
         /// </summary>
-        private byte byte5;
+        private readonly byte byte5;
 
         /// <summary>
         ///     The byte
         /// </summary>
-        private byte byte6;
+        private readonly byte byte6;
 
         /// <summary>
         ///     The byte
         /// </summary>
-        private byte byte7;
+        private readonly byte byte7;
 
         /// <summary>
         ///     The byte
         /// </summary>
-        private byte byte8;
+        private readonly byte byte8;
 
         /// <summary>
         ///     The byte
         /// </summary>
-        private byte byte9;
+        private readonly byte byte9;
 
         /// <summary>
         ///     The byte 10
         /// </summary>
-        private byte byte10;
+        private readonly byte byte10;
 
         /// <summary>
         ///     The byte 11
         /// </summary>
-        private byte byte11;
+        private readonly byte byte11;
 
         /// <summary>
         ///     The byte 12
         /// </summary>
-        private byte byte12;
+        private readonly byte byte12;
 
         /// <summary>
         ///     The byte 13
         /// </summary>
-        private byte byte13;
+        private readonly byte byte13;
 
         /// <summary>
         ///     The byte 14
         /// </summary>
-        private byte byte14;
+        private readonly byte byte14;
 
         /// <summary>
         ///     The byte 15
         /// </summary>
-        private byte byte15;
+        private readonly byte byte15;
 
         /// <summary>
         ///     The byte 16
         /// </summary>
-        private byte byte16;
+        private readonly byte byte16;
 
         /// <summary>
         ///     The byte 17
         /// </summary>
-        private byte byte17;
+        private readonly byte byte17;
 
         /// <summary>
         ///     The byte 18
         /// </summary>
-        private byte byte18;
+        private readonly byte byte18;
 
         /// <summary>
         ///     The byte 19
         /// </summary>
-        private byte byte19;
+        private readonly byte byte19;
 
         /// <summary>
         ///     The byte 20
         /// </summary>
-        private byte byte20;
+        private readonly byte byte20;
 
         /// <summary>
         ///     The byte 21
         /// </summary>
-        private byte byte21;
+        private readonly byte byte21;
 
         /// <summary>
         ///     The byte 22
         /// </summary>
-        private byte byte22;
+        private readonly byte byte22;
 
         /// <summary>
         ///     The byte 23
         /// </summary>
-        private byte byte23;
+        private readonly byte byte23;
 
         /// <summary>
         ///     The byte 24
         /// </summary>
-        private byte byte24;
+        private readonly byte byte24;
 
         /// <summary>
         ///     The byte 25
         /// </summary>
-        private byte byte25;
+        private readonly byte byte25;
 
         /// <summary>
         ///     The byte 26
         /// </summary>
-        private byte byte26;
+        private readonly byte byte26;
 
         /// <summary>
         ///     The byte 27
         /// </summary>
-        private byte byte27;
+        private readonly byte byte27;
 
         /// <summary>
         ///     The byte 28
         /// </summary>
-        private byte byte28;
+        private readonly byte byte28;
 
         /// <summary>
         ///     The byte 29
         /// </summary>
-        private byte byte29;
+        private readonly byte byte29;
 
         /// <summary>
         ///     The byte 30
         /// </summary>
-        private byte byte30;
+        private readonly byte byte30;
 
         /// <summary>
         ///     The byte 31
         /// </summary>
-        private byte byte31;
+        private readonly byte byte31;
 
         /// <summary>
         ///     Gets or sets the value of the text

@@ -45,7 +45,7 @@ namespace Alis.Builder.Core.Component.Render
         /// <summary>
         ///     The sprite
         /// </summary>
-        private Sprite sprite = new Sprite();
+        private readonly Sprite sprite = new Sprite();
 
         /// <summary>
         ///     Builds this instance

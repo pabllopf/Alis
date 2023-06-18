@@ -46,7 +46,7 @@ namespace Alis.Builder.Core.Entity
         /// <summary>
         ///     The splash screen
         /// </summary>
-        private SplashScreen splashScreen = new SplashScreen();
+        private readonly SplashScreen splashScreen = new SplashScreen();
 
 
         /// <summary>

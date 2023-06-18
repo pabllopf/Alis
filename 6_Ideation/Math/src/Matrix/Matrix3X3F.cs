@@ -89,7 +89,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>
         ///     The array
         /// </summary>
-        private float[] array;
+        private readonly float[] array;
 
         /// <summary>
         ///     Solve A * x = b, where b is a column vector. This is more efficient than computing the inverse in one-shot

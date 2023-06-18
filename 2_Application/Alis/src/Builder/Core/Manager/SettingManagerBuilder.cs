@@ -51,7 +51,7 @@ namespace Alis.Builder.Core.Manager
         /// <summary>
         ///     The setting manager
         /// </summary>
-        private SettingManager settingManager = new SettingManager();
+        private readonly SettingManager settingManager = new SettingManager();
 
         /// <summary>
         ///     Audioes the value

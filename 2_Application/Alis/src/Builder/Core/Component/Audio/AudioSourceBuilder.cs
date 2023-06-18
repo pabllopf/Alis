@@ -47,7 +47,7 @@ namespace Alis.Builder.Core.Component.Audio
         /// <summary>
         ///     Gets or sets the value of the audio source
         /// </summary>
-        private AudioSource audioSource = new AudioSource();
+        private readonly AudioSource audioSource = new AudioSource();
 
         /// <summary>
         ///     Builds this instance

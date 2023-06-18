@@ -259,7 +259,22 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The font texture id
         /// </summary>
-        private uint _vboHandle, _elementsHandle, _vertexArrayObject, _fontTextureId;
+        private readonly uint _vboHandle;
+
+        /// <summary>
+        ///     The font texture id
+        /// </summary>
+        private readonly uint _elementsHandle;
+
+        /// <summary>
+        ///     The font texture id
+        /// </summary>
+        private readonly uint _vertexArrayObject;
+
+        /// <summary>
+        ///     The font texture id
+        /// </summary>
+        private uint _fontTextureId;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGuiGlRenderer" /> class

@@ -42,7 +42,7 @@ namespace Alis.Builder.Core.Component.Audio
         /// <summary>
         ///     The audio recorder
         /// </summary>
-        private AudioRecorder audioRecorder = new AudioRecorder();
+        private readonly AudioRecorder audioRecorder = new AudioRecorder();
 
         /// <summary>
         ///     Builds this instance

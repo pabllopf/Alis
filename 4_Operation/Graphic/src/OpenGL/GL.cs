@@ -45,7 +45,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     The get string
         /// </summary>
-        private static GetString _getString = _<GetString>("glGetString");
+        private static readonly GetString _getString = _<GetString>("glGetString");
 
         /// <summary>
         ///     The gen buffers

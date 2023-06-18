@@ -47,7 +47,7 @@ namespace Alis.Builder.Core.Entity
         /// <summary>
         ///     The window
         /// </summary>
-        private Window window = new Window();
+        private readonly Window window = new Window();
 
         /// <summary>
         ///     Backgrounds the value

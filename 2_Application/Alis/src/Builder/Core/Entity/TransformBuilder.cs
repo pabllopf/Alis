@@ -47,7 +47,7 @@ namespace Alis.Builder.Core.Entity
         /// <summary>
         ///     The transform
         /// </summary>
-        private Transform transform = new Transform();
+        private readonly Transform transform = new Transform();
 
         /// <summary>
         ///     Builds this instance

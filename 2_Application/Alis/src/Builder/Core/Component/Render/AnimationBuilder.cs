@@ -48,7 +48,7 @@ namespace Alis.Builder.Core.Component.Render
         /// <summary>
         ///     The animation
         /// </summary>
-        private Animation animation = new Animation();
+        private readonly Animation animation = new Animation();
 
 
         /// <summary>

@@ -41,11 +41,11 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The language
         /// </summary>
-        private IntPtr language;
+        private readonly IntPtr language;
 
         /// <summary>
         ///     The country
         /// </summary>
-        private IntPtr country;
+        private readonly IntPtr country;
     }
 }
