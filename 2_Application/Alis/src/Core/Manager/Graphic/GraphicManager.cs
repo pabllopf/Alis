@@ -79,7 +79,7 @@ namespace Alis.Core.Manager.Graphic
         /// <summary>
         ///     Gets or sets the value of the colliders
         /// </summary>
-        public static List<Shape> Colliders { get; set; } = new List<Shape>();
+        public static List<Shape> Colliders { get; } = new List<Shape>();
 
         /// <summary>
         ///     The current

@@ -71,41 +71,41 @@ namespace Alis.Core.Aspect.Logging
         /// <summary>
         ///     Gets or sets the value of the date time
         /// </summary>
-        public DateTime DateTime { get; set; }
+        public DateTime DateTime { get; }
 
         /// <summary>
         ///     Gets or sets the value of the message type
         /// </summary>
-        public MessageType MessageType { get; set; }
+        public MessageType MessageType { get; }
 
         /// <summary>
         ///     Gets or sets the value of the level
         /// </summary>
-        public string Level { get; set; }
+        public string Level { get; }
 
         /// <summary>
         ///     Gets or sets the value of the content
         /// </summary>
-        public string Content { get; set; }
+        public string Content { get; }
 
         /// <summary>
         ///     Gets or sets the value of the stack trace
         /// </summary>
-        public string StackTrace { get; set; }
+        public string StackTrace { get; }
 
         /// <summary>
         ///     Gets or sets the value of the method
         /// </summary>
-        public string Method { get; set; }
+        public string Method { get; }
 
         /// <summary>
         ///     Gets or sets the value of the file
         /// </summary>
-        public string File { get; set; }
+        public string File { get; }
 
         /// <summary>
         ///     Gets or sets the value of the line
         /// </summary>
-        public string Line { get; set; }
+        public string Line { get; }
     }
 }

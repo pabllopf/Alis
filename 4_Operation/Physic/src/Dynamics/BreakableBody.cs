@@ -109,7 +109,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>The force needed to break the body apart. Default: 500</summary>
-        public float Strength { get; set; }
+        public float Strength { get; }
 
         /// <summary>
         ///     Gets or sets the value of the broken

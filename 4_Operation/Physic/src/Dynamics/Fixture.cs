@@ -163,7 +163,7 @@ namespace Alis.Core.Physic.Dynamics
         public int ProxyCount { get; private set; }
 
         /// <summary>Get or set the restitution threshold. This will _not_ change the restitution threshold of existing contacts.</summary>
-        public float RestitutionThreshold { get; set; }
+        public float RestitutionThreshold { get; }
 
         /// <summary>
         ///     Defaults to 0 If Settings.UseFPECollisionCategories is set to false: Collision groups allow a certain group of

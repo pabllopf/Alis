@@ -206,12 +206,12 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Gets or sets the value of the controller filter
         /// </summary>
-        public ControllerFilter ControllerFilter { get; set; }
+        public ControllerFilter ControllerFilter { get; }
 
         /// <summary>
         ///     Gets or sets the value of the physics logic filter
         /// </summary>
-        public PhysicsLogicFilter PhysicsLogicFilter { get; set; }
+        public PhysicsLogicFilter PhysicsLogicFilter { get; }
 
         /// <summary>
         ///     Gets or sets the value of the sleep time
@@ -338,11 +338,11 @@ namespace Alis.Core.Physic.Dynamics
 
         /// <summary>Gets or sets the linear damping.</summary>
         /// <value>The linear damping.</value>
-        public float LinearDamping { get; set; }
+        public float LinearDamping { get; }
 
         /// <summary>Gets or sets the angular damping.</summary>
         /// <value>The angular damping.</value>
-        public float AngularDamping { get; set; }
+        public float AngularDamping { get; }
 
         /// <summary>Gets or sets a value indicating whether this body should be included in the CCD solver.</summary>
         /// <value><c>true</c> if this instance is included in CCD; otherwise, <c>false</c>.</value>
@@ -497,11 +497,11 @@ namespace Alis.Core.Physic.Dynamics
 
         /// <summary>Gets all the fixtures attached to this body.</summary>
         /// <value>The fixture list.</value>
-        public List<Fixture> FixtureList { get; set; }
+        public List<Fixture> FixtureList { get; }
 
         /// <summary>Get the list of all joints attached to this body.</summary>
         /// <value>The joint list.</value>
-        public JointEdge JointList { get; set; }
+        public JointEdge JointList { get; }
 
         /// <summary>
         ///     Get the list of all contacts attached to this body. Warning: this list changes during the time step and you

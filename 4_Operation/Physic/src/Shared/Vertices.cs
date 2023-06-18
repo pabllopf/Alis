@@ -72,7 +72,7 @@ namespace Alis.Core.Physic.Shared
         /// <summary>
         ///     Gets or sets the value of the attached to body
         /// </summary>
-        internal bool AttachedToBody { get; set; }
+        internal bool AttachedToBody { get; }
 
         /// <summary>
         ///     You can add holes to this collection. It will get respected by some of the triangulation algoithms, but

@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay
         /// <summary>
         ///     Gets or sets the value of the is debug enabled
         /// </summary>
-        public bool IsDebugEnabled { get; protected set; }
+        public bool IsDebugEnabled { get; }
 
         /// <summary>
         ///     Dones this instance

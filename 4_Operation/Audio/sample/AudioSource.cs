@@ -43,7 +43,7 @@ namespace Alis.Core.Audio.Sample
         /// <summary>
         ///     Gets or sets the value of the audio clip
         /// </summary>
-        public AudioClip AudioClip { get; set; }
+        public AudioClip AudioClip { get; }
 
         /// <summary>
         ///     Gets the value of the is playing

@@ -45,7 +45,7 @@ namespace Alis.Core.Manager
         /// <summary>Starts this instance.</summary>
         public abstract void Start();
 
-        /// <summary>Befores the update.</summary>
+        /// <summary>Before the update.</summary>
         public abstract void BeforeUpdate();
 
         /// <summary>Updates this instance.</summary>
@@ -54,7 +54,7 @@ namespace Alis.Core.Manager
         /// <summary>Afters the update.</summary>
         public abstract void AfterUpdate();
 
-        /// <summary>Fixeds the update.</summary>
+        /// <summary>Fix the update.</summary>
         public abstract void FixedUpdate();
 
         /// <summary>Dispatches the events.</summary>

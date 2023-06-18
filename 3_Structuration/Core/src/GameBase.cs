@@ -46,7 +46,7 @@ namespace Alis.Core
         /// <summary>
         ///     The time manager base
         /// </summary>
-        public static TimeManagerBase TimeManager { get; set; } = new TimeManagerBase();
+        public static TimeManagerBase TimeManager { get; } = new TimeManagerBase();
 
         /// <summary>
         ///     Active game
@@ -72,7 +72,7 @@ namespace Alis.Core
                 {
                     TimeManager.UpdateTimeStep();
 
-                    for (int i = 0; i < TimeManager.MaximunAllowedTimeStep; i++)
+                    for (int i = 0; i < TimeManager.MaxAllowedTimeStep; i++)
                     {
                         Managers.ForEach(j => j.BeforeUpdate());
                         Managers.ForEach(j => j.Update());

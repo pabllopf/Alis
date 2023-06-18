@@ -244,7 +244,7 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     Gets the value of the audio backend type
         /// </summary>
-        public AudioBackendType AudioBackendType { get; set; }
+        public AudioBackendType AudioBackendType { get; }
 
         /// <summary>
         ///     Gets or sets the value of the is loopping

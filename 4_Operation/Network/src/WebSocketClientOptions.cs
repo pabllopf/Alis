@@ -72,19 +72,19 @@ namespace Alis.Core.Network
         /// <summary>
         ///     Add any additional http headers to this dictionary
         /// </summary>
-        public Dictionary<string, string> AdditionalHttpHeaders { get; set; }
+        public Dictionary<string, string> AdditionalHttpHeaders { get; }
 
         /// <summary>
         ///     Include the full exception (with stack trace) in the close response
         ///     when an exception is encountered and the WebSocket connection is closed
         ///     The default is false
         /// </summary>
-        public bool IncludeExceptionInCloseResponse { get; set; }
+        public bool IncludeExceptionInCloseResponse { get; }
 
         /// <summary>
         ///     WebSocket Extensions as an HTTP header value
         /// </summary>
-        public string SecWebSocketExtensions { get; set; }
+        public string SecWebSocketExtensions { get; }
 
         /// <summary>
         ///     A comma separated list of sub protocols in preference order (first one being the most preferred)

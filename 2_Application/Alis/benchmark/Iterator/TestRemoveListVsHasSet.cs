@@ -52,7 +52,7 @@ namespace Alis.Benchmark.Iterator
         /// </summary>
         [Params(10, 100, 1000)]
         // ReSharper disable once MemberCanBePrivate.Global
-        public int N { get; set; }
+        public int N { get; }
 
         /// <summary>
         ///     Setup this instance

@@ -87,7 +87,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Gets or sets the value of the contact manager
         /// </summary>
-        internal ContactManager ContactManager { get; set; }
+        internal ContactManager ContactManager { get; }
 
         /// <summary>
         ///     Gets or sets the value of the step

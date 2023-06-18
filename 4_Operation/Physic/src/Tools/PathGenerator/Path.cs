@@ -81,7 +81,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
 
         /// <summary>True if the curve is closed.</summary>
         /// <value><c>true</c> if closed; otherwise, <c>false</c>.</value>
-        public bool Closed { get; set; }
+        public bool Closed { get; }
 
         /// <summary>Gets the next index of a controlpoint</summary>
         /// <param name="index">The index.</param>

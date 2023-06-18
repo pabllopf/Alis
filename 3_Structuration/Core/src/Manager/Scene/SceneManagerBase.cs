@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Logging;
+
 namespace Alis.Core.Manager.Scene
 {
     /// <summary>
@@ -38,85 +40,61 @@ namespace Alis.Core.Manager.Scene
         /// <summary>
         ///     Inits this instance
         /// </summary>
-        public override void Init()
-        {
-        }
+        public override void Init() => Logger.Info($"Init {GetType().Name}");
 
         /// <summary>
         ///     Awakes this instance
         /// </summary>
-        public override void Awake()
-        {
-        }
+        public override void Awake() => Logger.Info($"Awake {GetType().Name}");
 
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        public override void Start()
-        {
-        }
+        public override void Start() => Logger.Info($"Start {GetType().Name}");
 
         /// <summary>
-        ///     Befores the update
+        ///     Before the update
         /// </summary>
-        public override void BeforeUpdate()
-        {
-        }
+        public override void BeforeUpdate() => Logger.Info($"BeforeUpdate {GetType().Name}");
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public override void Update()
-        {
-        }
+        public override void Update() => Logger.Info($"Update {GetType().Name}");
 
         /// <summary>
         ///     Afters the update
         /// </summary>
-        public override void AfterUpdate()
-        {
-        }
+        public override void AfterUpdate() => Logger.Info($"AfterUpdate {GetType().Name}");
 
         /// <summary>
-        ///     Fixeds the update
+        ///     Fix the update
         /// </summary>
-        public override void FixedUpdate()
-        {
-        }
+        public override void FixedUpdate() => Logger.Info($"FixedUpdate {GetType().Name}");
 
         /// <summary>
         ///     Dispatches the events
         /// </summary>
-        public override void DispatchEvents()
-        {
-        }
+        public override void DispatchEvents() => Logger.Info($"DispatchEvents {GetType().Name}");
 
         /// <summary>
         ///     Draws this instance
         /// </summary>
-        public override void Draw()
-        {
-        }
+        public override void Draw() => Logger.Info($"Draw {GetType().Name}");
 
         /// <summary>
         ///     Resets this instance
         /// </summary>
-        public override void Reset()
-        {
-        }
+        public override void Reset() => Logger.Info($"Reset {GetType().Name}");
 
         /// <summary>
         ///     Stops this instance
         /// </summary>
-        public override void Stop()
-        {
-        }
+        public override void Stop() => Logger.Info($"Stop {GetType().Name}");
 
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        public override void Exit()
-        {
-        }
+        public override void Exit() => Logger.Info($"Exit {GetType().Name}");
     }
 }

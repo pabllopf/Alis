@@ -82,7 +82,7 @@ namespace Alis.Core.Component.Render
         /// <summary>
         ///     Gets or sets the value of the animations
         /// </summary>
-        public List<Animation> Animations { get; set; }
+        public List<Animation> Animations { get; }
 
         /// <summary>
         ///     Builders this instance

@@ -76,32 +76,32 @@ namespace Alis.Core.Physic.Extensions.Controllers.Gravity
         /// <summary>
         ///     Gets or sets the value of the min radius
         /// </summary>
-        public float MinRadius { get; set; }
+        public float MinRadius { get; }
 
         /// <summary>
         ///     Gets or sets the value of the max radius
         /// </summary>
-        public float Radius { get; set; }
+        public float Radius { get; }
 
         /// <summary>
         ///     Gets or sets the value of the strength
         /// </summary>
-        public float Strength { get; set; }
+        public float Strength { get; }
 
         /// <summary>
         ///     Gets or sets the value of the gravity type
         /// </summary>
-        public GravityType GravityType { get; set; }
+        public GravityType GravityType { get; }
 
         /// <summary>
         ///     Gets or sets the value of the bodies
         /// </summary>
-        public List<Body> Bodies { get; set; }
+        public List<Body> Bodies { get; }
 
         /// <summary>
         ///     Gets or sets the value of the points
         /// </summary>
-        public List<Vector2F> Points { get; set; }
+        public List<Vector2F> Points { get; }
 
         /// <summary>
         ///     Updates the dt
