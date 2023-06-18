@@ -821,7 +821,7 @@
                 The contact flags enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactFlags.Unknown">
+        <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactFlags.None">
             <summary>
                 The unknown contact flags
             </summary>

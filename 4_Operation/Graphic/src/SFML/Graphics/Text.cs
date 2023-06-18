@@ -106,25 +106,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
 
             Font = copy.Font;
         }
-
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Fill color of the object
-        /// </summary>
-        /// <remarks>
-        ///     Deprecated. Use <see cref="FillColor" /> instead.
-        ///     By default, the text's fill color is opaque white.
-        ///     Setting the fill color to a transparent color with an outline
-        ///     will cause the outline to be displayed in the fill area of the text.
-        /// </remarks>
-        ////////////////////////////////////////////////////////////
-        [Obsolete]
-        public Color Color
-        {
-            get => sfText_getFillColor(CPointer);
-            set => sfText_setFillColor(CPointer, value);
-        }
-
+        
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Fill color of the object
@@ -371,14 +353,6 @@ namespace Alis.Core.Graphic.SFML.Graphics
         private static extern void sfText_destroy(IntPtr cPointer);
 
         /// <summary>
-        ///     Sfs the text set color using the specified c pointer
-        /// </summary>
-        /// <param name="cPointer">The pointer</param>
-        /// <param name="color">The color</param>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, Obsolete]
-        private static extern void sfText_setColor(IntPtr cPointer, Color color);
-
-        /// <summary>
         ///     Sfs the text set fill color using the specified c pointer
         /// </summary>
         /// <param name="cPointer">The pointer</param>
@@ -401,15 +375,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="thickness">The thickness</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfText_setOutlineThickness(IntPtr cPointer, float thickness);
-
-        /// <summary>
-        ///     Sfs the text get color using the specified c pointer
-        /// </summary>
-        /// <param name="cPointer">The pointer</param>
-        /// <returns>The color</returns>
-        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, Obsolete]
-        private static extern Color sfText_getColor(IntPtr cPointer);
-
+        
         /// <summary>
         ///     Sfs the text get fill color using the specified c pointer
         /// </summary>

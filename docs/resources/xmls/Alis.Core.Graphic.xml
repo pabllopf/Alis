@@ -27470,16 +27470,6 @@
                 The patches begin mode
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Enums.BeginMode.Quads">
-            <summary>
-                The quads begin mode
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Enums.BeginMode.QuadStrip">
-            <summary>
-                The quad strip begin mode
-            </summary>
-        </member>
         <member name="T:Alis.Core.Graphic.OpenGL.Enums.BlendEquationMode">
             <summary>
                 The blend equation mode enum
@@ -48635,15 +48625,6 @@
         <member name="F:Alis.Core.Graphic.SFML.Graphics.PrimitiveType.Quads">
             List of individual quads
         </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.PrimitiveType.LinesStrip">
-            List of connected lines, a point uses the previous point to form a line
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.PrimitiveType.TrianglesStrip">
-            List of connected triangles, a point uses the two previous points to form a triangle
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.PrimitiveType.TrianglesFan">
-            List of connected triangles, a point uses the common center and the previous point to form a triangle
-        </member>
         <member name="T:Alis.Core.Graphic.SFML.Graphics.RectangleShape">
             <summary>
                 Specialized shape representing a rectangle
@@ -50384,110 +50365,6 @@
             <param name="name">Name of the uniform variable in GLSL</param>
             <param name="array">array of <c>mat4</c> values</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.SetParameter(System.String,System.Single)">
-            <summary>
-                Change a float parameter of the shader
-                "name" is the name of the variable to change in the shader.
-                The corresponding parameter in the shader must be a float
-                (float GLSL type).
-            </summary>
-            <param name="name">Name of the parameter in the shader</param>
-            <param name="x">Value to assign</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.SetParameter(System.String,System.Single,System.Single)">
-            <summary>
-                Change a 2-components vector parameter of the shader
-                "name" is the name of the variable to change in the shader.
-                The corresponding parameter in the shader must be a 2x1 vector
-                (vec2 GLSL type).
-            </summary>
-            <param name="name">Name of the parameter in the shader</param>
-            <param name="x">First component of the value to assign</param>
-            <param name="y">Second component of the value to assign</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.SetParameter(System.String,System.Single,System.Single,System.Single)">
-            <summary>
-                Change a 3-components vector parameter of the shader
-                "name" is the name of the variable to change in the shader.
-                The corresponding parameter in the shader must be a 3x1 vector
-                (vec3 GLSL type).
-            </summary>
-            <param name="name">Name of the parameter in the shader</param>
-            <param name="x">First component of the value to assign</param>
-            <param name="y">Second component of the value to assign</param>
-            <param name="z">Third component of the value to assign</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.SetParameter(System.String,System.Single,System.Single,System.Single,System.Single)">
-            <summary>
-                Change a 4-components vector parameter of the shader
-                "name" is the name of the variable to change in the shader.
-                The corresponding parameter in the shader must be a 4x1 vector
-                (vec4 GLSL type).
-            </summary>
-            <param name="name">Name of the parameter in the shader</param>
-            <param name="x">First component of the value to assign</param>
-            <param name="y">Second component of the value to assign</param>
-            <param name="z">Third component of the value to assign</param>
-            <param name="w">Fourth component of the value to assign</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.SetParameter(System.String,Alis.Core.Aspect.Math.Vector.Vector2F)">
-            <summary>
-                Change a 2-components vector parameter of the shader
-                "name" is the name of the variable to change in the shader.
-                The corresponding parameter in the shader must be a 2x1 vector
-                (vec2 GLSL type).
-            </summary>
-            <param name="name">Name of the parameter in the shader</param>
-            <param name="vector">Vector to assign</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.SetParameter(System.String,Alis.Core.Graphic.SFML.Graphics.Color)">
-            <summary>
-                Change a color parameter of the shader
-                "name" is the name of the variable to change in the shader.
-                The corresponding parameter in the shader must be a 4x1 vector
-                (vec4 GLSL type).
-            </summary>
-            <param name="name">Name of the parameter in the shader</param>
-            <param name="color">Color to assign</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.SetParameter(System.String,Alis.Core.Graphic.SFML.Graphics.Transform)">
-            <summary>
-                Change a matrix parameter of the shader
-                "name" is the name of the variable to change in the shader.
-                The corresponding parameter in the shader must be a 4x4 matrix
-                (mat4 GLSL type).
-            </summary>
-            <param name="name">Name of the parameter in the shader</param>
-            <param name="transform">Transform to assign</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.SetParameter(System.String,Alis.Core.Graphic.SFML.Graphics.Texture)">
-            <summary>
-                Change a texture parameter of the shader
-                "name" is the name of the variable to change in the shader.
-                The corresponding parameter in the shader must be a 2D texture
-                (sampler2D GLSL type).
-                It is important to note that \a texture must remain alive as long
-                as the shader uses it, no copy is made internally.
-                To use the texture of the object being draw, which cannot be
-                known in advance, you can pass the special value
-                Shader.CurrentTexture.
-            </summary>
-            <param name="name">Name of the texture in the shader</param>
-            <param name="texture">Texture to assign</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.SetParameter(System.String,Alis.Core.Graphic.SFML.Graphics.Shader.CurrentTextureType)">
-            <summary>
-                Change a texture parameter of the shader
-                This overload maps a shader texture variable to the
-                texture of the object being drawn, which cannot be
-                known in advance. The second argument must be
-                sf::Shader::CurrentTexture.
-                The corresponding parameter in the shader must be a 2D texture
-                (sampler2D GLSL type).
-            </summary>
-            <param name="name">Name of the texture in the shader</param>
-            <param name="current">Always pass the spacial value Shader.CurrentTexture</param>
-        </member>
         <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.Bind(Alis.Core.Graphic.SFML.Graphics.Shader)">
             <summary>
                 Bind a shader for rendering
@@ -50719,75 +50596,6 @@
             <param name="name">The name</param>
             <param name="data">The data</param>
             <param name="length">The length</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.sfShader_setFloatParameter(System.IntPtr,System.String,System.Single)">
-            <summary>
-                Sfs the shader set float parameter using the specified shader
-            </summary>
-            <param name="shader">The shader</param>
-            <param name="name">The name</param>
-            <param name="x">The </param>
-        </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.sfShader_setFloat2Parameter(System.IntPtr,System.String,System.Single,System.Single)">
-            <summary>
-                Sfs the shader set float 2 parameter using the specified shader
-            </summary>
-            <param name="shader">The shader</param>
-            <param name="name">The name</param>
-            <param name="x">The </param>
-            <param name="y">The </param>
-        </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.sfShader_setFloat3Parameter(System.IntPtr,System.String,System.Single,System.Single,System.Single)">
-            <summary>
-                Sfs the shader set float 3 parameter using the specified shader
-            </summary>
-            <param name="shader">The shader</param>
-            <param name="name">The name</param>
-            <param name="x">The </param>
-            <param name="y">The </param>
-            <param name="z">The </param>
-        </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.sfShader_setFloat4Parameter(System.IntPtr,System.String,System.Single,System.Single,System.Single,System.Single)">
-            <summary>
-                Sfs the shader set float 4 parameter using the specified shader
-            </summary>
-            <param name="shader">The shader</param>
-            <param name="name">The name</param>
-            <param name="x">The </param>
-            <param name="y">The </param>
-            <param name="z">The </param>
-            <param name="w">The </param>
-        </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.sfShader_setColorParameter(System.IntPtr,System.String,Alis.Core.Graphic.SFML.Graphics.Color)">
-            <summary>
-                Sfs the shader set color parameter using the specified shader
-            </summary>
-            <param name="shader">The shader</param>
-            <param name="name">The name</param>
-            <param name="color">The color</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.sfShader_setTransformParameter(System.IntPtr,System.String,Alis.Core.Graphic.SFML.Graphics.Transform)">
-            <summary>
-                Sfs the shader set transform parameter using the specified shader
-            </summary>
-            <param name="shader">The shader</param>
-            <param name="name">The name</param>
-            <param name="transform">The transform</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.sfShader_setTextureParameter(System.IntPtr,System.String,System.IntPtr)">
-            <summary>
-                Sfs the shader set texture parameter using the specified shader
-            </summary>
-            <param name="shader">The shader</param>
-            <param name="name">The name</param>
-            <param name="texture">The texture</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.sfShader_setCurrentTextureParameter(System.IntPtr,System.String)">
-            <summary>
-                Sfs the shader set current texture parameter using the specified shader
-            </summary>
-            <param name="shader">The shader</param>
-            <param name="name">The name</param>
         </member>
         <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.sfShader_getNativeHandle(System.IntPtr)">
             <summary>
@@ -51243,6 +51051,26 @@
             <param name="cPointer">The pointer</param>
             <returns>The float rect</returns>
         </member>
+        <member name="T:Alis.Core.Graphic.SFML.Graphics.Styles">
+            <summary>
+                Enumerate the string drawing styles
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Graphics.Styles.None">
+            <summary>Regular characters, no style</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Graphics.Styles.Bold">
+            <summary>Bold characters</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Graphics.Styles.Italic">
+            <summary>Italic characters</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Graphics.Styles.Underlined">
+            <summary>Underlined characters</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Graphics.Styles.StrikeThrough">
+            <summary>Strike through characters</summary>
+        </member>
         <member name="T:Alis.Core.Graphic.SFML.Graphics.Text">
             <summary>
                 This class defines a graphical 2D text, that can be drawn on screen
@@ -51281,17 +51109,6 @@
                 Construct the text from another text
             </summary>
             <param name="copy">Text to copy</param>
-        </member>
-        <member name="P:Alis.Core.Graphic.SFML.Graphics.Text.Color">
-            <summary>
-                Fill color of the object
-            </summary>
-            <remarks>
-                Deprecated. Use <see cref="P:Alis.Core.Graphic.SFML.Graphics.Text.FillColor" /> instead.
-                By default, the text's fill color is opaque white.
-                Setting the fill color to a transparent color with an outline
-                will cause the outline to be displayed in the fill area of the text.
-            </remarks>
         </member>
         <member name="P:Alis.Core.Graphic.SFML.Graphics.Text.FillColor">
             <summary>
@@ -51352,26 +51169,6 @@
             <summary>
                 Style of the text (see Styles enum)
             </summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.SFML.Graphics.Text.Styles">
-            <summary>
-                Enumerate the string drawing styles
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.Text.Styles.Regular">
-            <summary>Regular characters, no style</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.Text.Styles.Bold">
-            <summary>Bold characters</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.Text.Styles.Italic">
-            <summary>Italic characters</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.Text.Styles.Underlined">
-            <summary>Underlined characters</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.Text.Styles.StrikeThrough">
-            <summary>Strike through characters</summary>
         </member>
         <member name="M:Alis.Core.Graphic.SFML.Graphics.Text.Draw(Alis.Core.Graphic.SFML.Graphics.IRenderTarget,Alis.Core.Graphic.SFML.Graphics.RenderStates)">
             <summary>
@@ -51442,13 +51239,6 @@
             </summary>
             <param name="cPointer">The pointer</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Text.sfText_setColor(System.IntPtr,Alis.Core.Graphic.SFML.Graphics.Color)">
-            <summary>
-                Sfs the text set color using the specified c pointer
-            </summary>
-            <param name="cPointer">The pointer</param>
-            <param name="color">The color</param>
-        </member>
         <member name="M:Alis.Core.Graphic.SFML.Graphics.Text.sfText_setFillColor(System.IntPtr,Alis.Core.Graphic.SFML.Graphics.Color)">
             <summary>
                 Sfs the text set fill color using the specified c pointer
@@ -51469,13 +51259,6 @@
             </summary>
             <param name="cPointer">The pointer</param>
             <param name="thickness">The thickness</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Text.sfText_getColor(System.IntPtr)">
-            <summary>
-                Sfs the text get color using the specified c pointer
-            </summary>
-            <param name="cPointer">The pointer</param>
-            <returns>The color</returns>
         </member>
         <member name="M:Alis.Core.Graphic.SFML.Graphics.Text.sfText_getFillColor(System.IntPtr)">
             <summary>
@@ -51549,7 +51332,7 @@
             <param name="cPointer">The pointer</param>
             <param name="spacingFactor">The spacing factor</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Text.sfText_setStyle(System.IntPtr,Alis.Core.Graphic.SFML.Graphics.Text.Styles)">
+        <member name="M:Alis.Core.Graphic.SFML.Graphics.Text.sfText_setStyle(System.IntPtr,Alis.Core.Graphic.SFML.Graphics.Styles)">
             <summary>
                 Sfs the text set style using the specified c pointer
             </summary>
@@ -53858,7 +53641,7 @@
         </member>
         <member name="T:Alis.Core.Graphic.SFML.Windows.Event">
             <summary>
-                Event defines a system event and its parameters
+            The event
             </summary>
         </member>
         <member name="F:Alis.Core.Graphic.SFML.Windows.Event.Type">
@@ -54511,8 +54294,9 @@
         </member>
         <member name="T:Alis.Core.Graphic.SFML.Windows.MouseWheelEventArgs">
             <summary>
-                Mouse wheel event parameters
+            The mouse wheel event args class
             </summary>
+            <seealso cref="T:System.EventArgs"/>
         </member>
         <member name="F:Alis.Core.Graphic.SFML.Windows.MouseWheelEventArgs.Delta">
             <summary>Scroll amount</summary>

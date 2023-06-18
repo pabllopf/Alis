@@ -36,7 +36,7 @@ namespace Alis.Core.Graphic.SFML.Windows
     ///     Mouse wheel move event parameters
     /// </summary>
     ////////////////////////////////////////////////////////////
-    [StructLayout(LayoutKind.Sequential), Obsolete("MouseWheelEvent is deprecated, please use MouseWheelScrollEvent instead")]
+    [StructLayout(LayoutKind.Sequential)]
     public struct MouseWheelEvent
     {
         /// <summary>Scroll amount</summary>

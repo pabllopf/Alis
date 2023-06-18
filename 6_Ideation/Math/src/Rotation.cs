@@ -60,7 +60,6 @@ namespace Alis.Core.Aspect.Math
             }
             else
             {
-                // TODO_ERIN optimize
                 Sine = (float) System.Math.Sin(angle);
                 Cosine = (float) System.Math.Cos(angle);
             }

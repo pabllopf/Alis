@@ -65,18 +65,6 @@ namespace Alis.Core.Graphic.OpenGL.Enums
         /// <summary>
         ///     The patches begin mode
         /// </summary>
-        Patches = 0xE,
-
-        /// <summary>
-        ///     The quads begin mode
-        /// </summary>
-        [Obsolete("OpenGL 4 Core does not support quads.")]
-        Quads = 0x0007,
-
-        /// <summary>
-        ///     The quad strip begin mode
-        /// </summary>
-        [Obsolete("OpenGL 4 Core does not support quads.")]
-        QuadStrip = 0x0008
+        Patches = 0xE
     }
 }

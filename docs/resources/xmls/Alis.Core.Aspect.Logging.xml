@@ -4,60 +4,9 @@
         <name>Alis.Core.Aspect.Logging</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Aspect.Logging.Color">
-            <summary>
-                Color for debug drawing. Each value has the range [0,1].
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Logging.Color.r">
-            <summary>
-                The
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Logging.Color.g">
-            <summary>
-                The
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Logging.Color.b">
-            <summary>
-                The
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Aspect.Logging.Color.#ctor(System.Single,System.Single,System.Single)">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Logging.Color" /> class
-            </summary>
-            <param name="r">The </param>
-            <param name="g">The </param>
-            <param name="b">The </param>
-        </member>
-        <member name="M:Alis.Core.Aspect.Logging.Color.Set(System.Single,System.Single,System.Single)">
-            <summary>
-                Sets the r
-            </summary>
-            <param name="r">The </param>
-            <param name="g">The </param>
-            <param name="b">The </param>
-        </member>
         <member name="T:Alis.Core.Aspect.Logging.ConsoleController">
             <summary>
                 The console controller class
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Aspect.Logging.ConsoleController.#cctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Logging.ConsoleController" /> class
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Logging.ConsoleController._filePath">
-            <summary>
-                The file path
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Logging.ConsoleController._dirPath">
-            <summary>
-                The dir path
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Logging.ConsoleController.Print(Alis.Core.Aspect.Logging.Message)">

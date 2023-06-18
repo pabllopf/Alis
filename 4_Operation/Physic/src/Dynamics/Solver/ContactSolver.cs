@@ -331,8 +331,6 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     }
                     else
                     {
-                        // The constraints are redundant, just use one.
-                        // TODO_ERIN use deepest?
                         vc.PointCount = 1;
                     }
                 }

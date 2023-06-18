@@ -32,10 +32,9 @@ using System;
 namespace Alis.Core.Graphic.SFML.Windows
 {
     /// <summary>
-    ///     Mouse wheel event parameters
+    /// The mouse wheel event args class
     /// </summary>
-    ////////////////////////////////////////////////////////////
-    [Obsolete("MouseWheelEventArgs is deprecated, please use MouseWheelScrollEventArgs instead")]
+    /// <seealso cref="EventArgs"/>
     public class MouseWheelEventArgs : EventArgs
     {
         /// <summary>Scroll amount</summary>
