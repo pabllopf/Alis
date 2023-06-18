@@ -209,6 +209,12 @@
             </summary>
             <seealso cref="T:Alis.Core.Aspect.Base.AlisObject" />
         </member>
+        <member name="M:Alis.Core.Ecs.SceneBase.ToString">
+            <summary>
+            Returns the string
+            </summary>
+            <returns>The string</returns>
+        </member>
         <member name="T:Alis.Core.Ecs.TransformBase">
             <summary>
                 The transform base class

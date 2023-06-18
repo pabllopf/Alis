@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Graphic.ImGui
+namespace Alis.Core.Graphic.ImGui.Structs
 {
     /// <summary>
     ///     The im gui list clipper

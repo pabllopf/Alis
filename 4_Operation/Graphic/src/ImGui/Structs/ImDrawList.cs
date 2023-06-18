@@ -28,8 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Graphic.ImGui.Enums;
 
-namespace Alis.Core.Graphic.ImGui
+namespace Alis.Core.Graphic.ImGui.Structs
 {
     /// <summary>
     ///     The im draw list

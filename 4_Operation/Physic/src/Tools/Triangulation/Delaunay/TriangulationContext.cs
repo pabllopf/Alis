@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay;
 
 namespace Alis.Core.Physic.Tools.Triangulation.Delaunay
@@ -110,6 +111,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay
         /// <param name="message">The message</param>
         public void Update(string message)
         {
+            Logger.Info($"TriangulationContext {message} ");
         }
 
         /// <summary>

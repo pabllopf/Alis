@@ -28,8 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Graphic.ImGui.Utils;
 
-namespace Alis.Core.Graphic.ImGui
+namespace Alis.Core.Graphic.ImGui.Structs
 {
     /// <summary>
     ///     The im gui table column sort specs ptr

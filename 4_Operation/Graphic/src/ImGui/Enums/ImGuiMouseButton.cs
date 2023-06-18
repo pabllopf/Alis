@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.ImGui
+namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
     ///     The im gui mouse button enum

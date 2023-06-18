@@ -66,7 +66,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.BeforeUpdate">
             <summary>
-                Befores the update
+                Before the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.Update">
@@ -81,7 +81,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.FixedUpdate">
             <summary>
-                Fixeds the update
+                Fix the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.DispatchEvents">
@@ -132,7 +132,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.BeforeUpdate">
             <summary>
-                Befores the update
+                Before the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.Update">
@@ -147,7 +147,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.FixedUpdate">
             <summary>
-                Fixeds the update
+                Fix the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.DispatchEvents">
@@ -198,7 +198,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManagerBase.BeforeUpdate">
             <summary>
-                Befores the update
+                Before the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManagerBase.Update">
@@ -213,7 +213,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManagerBase.FixedUpdate">
             <summary>
-                Fixeds the update
+                Fix the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManagerBase.DispatchEvents">
@@ -258,7 +258,7 @@
             <summary>Starts this instance.</summary>
         </member>
         <member name="M:Alis.Core.Manager.ManagerBase.BeforeUpdate">
-            <summary>Befores the update.</summary>
+            <summary>Before the update.</summary>
         </member>
         <member name="M:Alis.Core.Manager.ManagerBase.Update">
             <summary>Updates this instance.</summary>
@@ -267,7 +267,7 @@
             <summary>Afters the update.</summary>
         </member>
         <member name="M:Alis.Core.Manager.ManagerBase.FixedUpdate">
-            <summary>Fixeds the update.</summary>
+            <summary>Fix the update.</summary>
         </member>
         <member name="M:Alis.Core.Manager.ManagerBase.DispatchEvents">
             <summary>Dispatches the events.</summary>
@@ -309,7 +309,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.BeforeUpdate">
             <summary>
-                Befores the update
+                Before the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.Update">
@@ -324,7 +324,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.FixedUpdate">
             <summary>
-                Fixeds the update
+                Fix the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.DispatchEvents">
@@ -375,7 +375,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManagerBase.BeforeUpdate">
             <summary>
-                Befores the update
+                Before the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManagerBase.Update">
@@ -390,7 +390,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManagerBase.FixedUpdate">
             <summary>
-                Fixeds the update
+                Fix the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManagerBase.DispatchEvents">
@@ -441,7 +441,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.BeforeUpdate">
             <summary>
-                Befores the update
+                Before the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.Update">
@@ -456,7 +456,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.FixedUpdate">
             <summary>
-                Fixeds the update
+                Fix the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.DispatchEvents">
@@ -535,9 +535,9 @@
                 Gets or sets the value of the time step
             </summary>
         </member>
-        <member name="P:Alis.Core.Manager.Time.TimeManagerBase.MaximunAllowedTimeStep">
+        <member name="P:Alis.Core.Manager.Time.TimeManagerBase.MaxAllowedTimeStep">
             <summary>
-                Gets or sets the value of the maximun allowed time step
+                Gets or sets the value of the max allowed time step
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Time.TimeManagerBase.SyncFixedDeltaTime">
@@ -583,7 +583,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Time.TimeManagerBase.BeforeUpdate">
             <summary>
-                Befores the update
+                Before the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Time.TimeManagerBase.Update">
@@ -598,7 +598,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Time.TimeManagerBase.FixedUpdate">
             <summary>
-                Fixeds the update
+                Fix the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Time.TimeManagerBase.DispatchEvents">

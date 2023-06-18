@@ -40,7 +40,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The unknown body flags
         /// </summary>
-        Unknown = 0,
+        None = 0,
 
         /// <summary>
         ///     The island flag body flags

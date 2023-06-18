@@ -30,7 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.ImGui
+namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
     ///     The union value

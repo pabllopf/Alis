@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.ImGui
+using Alis.Core.Graphic.ImGui.Structs;
+
+namespace Alis.Core.Graphic.ImGui.Delegates
 {
     /// <summary>
     ///     The im gui size callback

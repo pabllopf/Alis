@@ -53481,6 +53481,20 @@
             <param name="time">The time</param>
             <returns>The long</returns>
         </member>
+        <member name="T:Alis.Core.Graphic.SFML.Windows.Attribute">
+            <summary>
+                Enumeration of the context attribute flags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Windows.Attribute.None">
+            <summary>Non-debug, compatibility context (this and the core attribute are mutually exclusive)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Windows.Attribute.Core">
+            <summary>Core attribute</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Windows.Attribute.Debug">
+            <summary>Debug attribute</summary>
+        </member>
         <member name="T:Alis.Core.Graphic.SFML.Windows.Axis">
             <summary>
                 Axes supported by SFML joysticks
@@ -53612,20 +53626,6 @@
                 Structure defining the creation settings of OpenGL contexts
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SFML.Windows.ContextSettings.Attribute">
-            <summary>
-                Enumeration of the context attribute flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Windows.ContextSettings.Attribute.Default">
-            <summary>Non-debug, compatibility context (this and the core attribute are mutually exclusive)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Windows.ContextSettings.Attribute.Core">
-            <summary>Core attribute</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Windows.ContextSettings.Attribute.Debug">
-            <summary>Debug attribute</summary>
-        </member>
         <member name="M:Alis.Core.Graphic.SFML.Windows.ContextSettings.#ctor(System.UInt32,System.UInt32)">
             <summary>
                 Construct the settings from depth / stencil bits
@@ -53641,7 +53641,7 @@
             <param name="stencilBits">Stencil buffer bits</param>
             <param name="antialiasingLevel">Antialiasing level</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SFML.Windows.ContextSettings.#ctor(System.UInt32,System.UInt32,System.UInt32,System.UInt32,System.UInt32,Alis.Core.Graphic.SFML.Windows.ContextSettings.Attribute,System.Boolean)">
+        <member name="M:Alis.Core.Graphic.SFML.Windows.ContextSettings.#ctor(System.UInt32,System.UInt32,System.UInt32,System.UInt32,System.UInt32,Alis.Core.Graphic.SFML.Windows.Attribute,System.Boolean)">
             <summary>
                 Construct the settings from depth / stencil bits and antialiasing level
             </summary>

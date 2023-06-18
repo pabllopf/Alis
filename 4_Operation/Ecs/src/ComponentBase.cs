@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Base.Mapping;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Ecs
 {
@@ -83,11 +84,13 @@ namespace Alis.Core.Ecs
         /// <summary>Enables this instance.</summary>
         public virtual void Enable()
         {
+            Logger.Trace();
         }
 
         /// <summary>Disables this instance.</summary>
         public virtual void Disable()
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -95,6 +98,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         public virtual void Draw()
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -102,11 +106,13 @@ namespace Alis.Core.Ecs
         /// </summary>
         public virtual void Init()
         {
+            Logger.Trace();
         }
 
         /// <summary>Awakes this instance.</summary>
         public virtual void Awake()
         {
+            Logger.Trace();
         }
 
         /// <summary>Starts this instance.</summary>
@@ -115,6 +121,7 @@ namespace Alis.Core.Ecs
         /// <summary>Befores the update.</summary>
         public virtual void BeforeUpdate()
         {
+            Logger.Trace();
         }
 
         /// <summary>Updates this instance.</summary>
@@ -123,11 +130,13 @@ namespace Alis.Core.Ecs
         /// <summary>Afters the update.</summary>
         public virtual void AfterUpdate()
         {
+            Logger.Trace();
         }
 
         /// <summary>Fixeds the update.</summary>
         public virtual void FixedUpdate()
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -135,16 +144,19 @@ namespace Alis.Core.Ecs
         /// </summary>
         public virtual void DispatchEvents()
         {
+            Logger.Trace();
         }
 
         /// <summary>Stops this instance.</summary>
         public virtual void Stop()
         {
+            Logger.Trace();
         }
 
         /// <summary>Resets this instance.</summary>
         public virtual void Reset()
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -152,6 +164,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         public virtual void Destroy()
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -160,6 +173,7 @@ namespace Alis.Core.Ecs
         /// <param name="key">The key</param>
         public virtual void OnPressKey(Key key)
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -168,6 +182,7 @@ namespace Alis.Core.Ecs
         /// <param name="key">The key</param>
         public virtual void OnPressDownKey(Key key)
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -176,6 +191,7 @@ namespace Alis.Core.Ecs
         /// <param name="key">The key</param>
         public virtual void OnReleaseKey(Key key)
         {
+            Logger.Trace();
         }
 
 
@@ -186,6 +202,7 @@ namespace Alis.Core.Ecs
         /// <param name="device">The device</param>
         public virtual void OnPressButton(Button button, int device)
         {
+            Logger.Trace();
         }
 
 
@@ -196,6 +213,7 @@ namespace Alis.Core.Ecs
         /// <param name="device">The device</param>
         public virtual void OnPressDownButton(Button button, int device)
         {
+            Logger.Trace();
         }
 
 
@@ -206,11 +224,13 @@ namespace Alis.Core.Ecs
         /// <param name="device">The device</param>
         public virtual void OnReleaseButton(Button button, int device)
         {
+            Logger.Trace();
         }
 
         /// <summary>Exits this instance.</summary>
         public virtual void Exit()
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -218,6 +238,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         public static void DestroyImmediate()
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -225,6 +246,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         public static void DontDestroyOnLoad()
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -232,6 +254,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         public static void FindObjectOfType()
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -239,6 +262,7 @@ namespace Alis.Core.Ecs
         /// </summary>
         public static void FindObjectsOfType()
         {
+            Logger.Trace();
         }
     }
 }

@@ -31,6 +31,10 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Graphic.ImGui.Delegates;
+using Alis.Core.Graphic.ImGui.Enums;
+using Alis.Core.Graphic.ImGui.Structs;
+using Alis.Core.Graphic.ImGui.Utils;
 
 namespace Alis.Core.Graphic.ImGui
 {

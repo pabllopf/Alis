@@ -30,8 +30,10 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Graphic.ImGui.Delegates;
+using Alis.Core.Graphic.ImGui.Enums;
 
-namespace Alis.Core.Graphic.ImGui
+namespace Alis.Core.Graphic.ImGui.Structs
 {
     /// <summary>
     ///     The im gui native class

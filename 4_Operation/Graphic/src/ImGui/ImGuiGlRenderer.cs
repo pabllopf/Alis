@@ -32,6 +32,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Graphic.ImGui.Enums;
+using Alis.Core.Graphic.ImGui.Structs;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Constructs;
 using Alis.Core.Graphic.OpenGL.Enums;

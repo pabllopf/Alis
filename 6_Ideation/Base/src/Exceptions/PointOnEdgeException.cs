@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiButtonFlags.cs
+//  File:PointOnEdgeException.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,42 +29,21 @@
 
 using System;
 
-namespace Alis.Core.Graphic.ImGui.Enums
+namespace Alis.Core.Aspect.Base.Exceptions
 {
     /// <summary>
-    ///     The im gui button flags enum
+    ///     The point on edge exception class
     /// </summary>
-    [Flags]
-    public enum ImGuiButtonFlags
+    /// <seealso cref="NotImplementedException" />
+    public class PointOnEdgeException : Exception
     {
         /// <summary>
-        ///     The none im gui button flags
+        ///     Initializes a new instance of the <see cref="PointOnEdgeException" /> class
         /// </summary>
-        None = 0,
-
-        /// <summary>
-        ///     The mouse button left im gui button flags
-        /// </summary>
-        MouseButtonLeft = 1,
-
-        /// <summary>
-        ///     The mouse button right im gui button flags
-        /// </summary>
-        MouseButtonRight = 2,
-
-        /// <summary>
-        ///     The mouse button middle im gui button flags
-        /// </summary>
-        MouseButtonMiddle = 4,
-
-        /// <summary>
-        ///     The mouse button mask im gui button flags
-        /// </summary>
-        MouseButtonMask = 7,
-
-        /// <summary>
-        ///     The mouse button default im gui button flags
-        /// </summary>
-        MouseButtonDefault = 1
+        /// <param name="message">The message</param>
+        public PointOnEdgeException(string message)
+            : base(message)
+        {
+        }
     }
 }

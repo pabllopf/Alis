@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.SFML.Windows
@@ -41,22 +40,6 @@ namespace Alis.Core.Graphic.SFML.Windows
     public struct ContextSettings
     {
         ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Enumeration of the context attribute flags
-        /// </summary>
-        ////////////////////////////////////////////////////////////
-        [Flags]
-        public enum Attribute
-        {
-            /// <summary>Non-debug, compatibility context (this and the core attribute are mutually exclusive)</summary>
-            Default = 0,
-
-            /// <summary>Core attribute</summary>
-            Core = 1 << 0,
-
-            /// <summary>Debug attribute</summary>
-            Debug = 1 << 2
-        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -79,7 +62,7 @@ namespace Alis.Core.Graphic.SFML.Windows
         /// <param name="antialiasingLevel">Antialiasing level</param>
         ////////////////////////////////////////////////////////////
         public ContextSettings(uint depthBits, uint stencilBits, uint antialiasingLevel) :
-            this(depthBits, stencilBits, antialiasingLevel, 2, 0, Attribute.Default, false)
+            this(depthBits, stencilBits, antialiasingLevel, 2, 0, Attribute.None, false)
         {
         }
 

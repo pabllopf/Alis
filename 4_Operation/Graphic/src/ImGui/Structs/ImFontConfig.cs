@@ -29,7 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Graphic.ImGui
+namespace Alis.Core.Graphic.ImGui.Structs
 {
     /// <summary>
     ///     The im font config

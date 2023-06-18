@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.ImGui
+using Alis.Core.Graphic.ImGui.Enums;
+
+namespace Alis.Core.Graphic.ImGui.Structs
 {
     /// <summary>
     ///     The im gui storage pair

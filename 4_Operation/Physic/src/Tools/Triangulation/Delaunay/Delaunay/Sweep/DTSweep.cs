@@ -46,6 +46,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Alis.Core.Aspect.Base.Exceptions;
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep

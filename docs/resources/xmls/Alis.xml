@@ -1191,7 +1191,7 @@
         </member>
         <member name="M:Alis.Core.Component.Collider.BoxCollider.BeforeUpdate">
             <summary>
-                Befores the update
+                Before the update
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Collider.BoxCollider.Update">
@@ -1215,6 +1215,11 @@
             </summary>
             <seealso cref="T:Alis.Core.Component.Collider.ColliderBase" />
         </member>
+        <member name="M:Alis.Core.Component.Collider.CircleCollider.Start">
+            <summary>
+            Starts this instance
+            </summary>
+        </member>
         <member name="T:Alis.Core.Component.Collider.ColliderBase">
             <summary>
                 The collider class
@@ -1237,11 +1242,21 @@
             </summary>
             <seealso cref="T:Alis.Core.Component.Light.LightBase" />
         </member>
+        <member name="M:Alis.Core.Component.Light.AreaLight.Init">
+            <summary>
+            Inits this instance
+            </summary>
+        </member>
         <member name="T:Alis.Core.Component.Light.DirectionalLight">
             <summary>
                 The directional light class
             </summary>
             <seealso cref="T:Alis.Core.Component.Light.LightBase" />
+        </member>
+        <member name="M:Alis.Core.Component.Light.DirectionalLight.Init">
+            <summary>
+            Inits this instance
+            </summary>
         </member>
         <member name="T:Alis.Core.Component.Light.LightBase">
             <summary>
@@ -1265,15 +1280,30 @@
             </summary>
             <seealso cref="T:Alis.Core.Component.Light.LightBase" />
         </member>
+        <member name="M:Alis.Core.Component.Light.PointLight.Init">
+            <summary>
+            Inits this instance
+            </summary>
+        </member>
         <member name="T:Alis.Core.Component.Light.SpotLight">
             <summary>
                 The spot light class
             </summary>
             <seealso cref="T:Alis.Core.Component.Light.LightBase" />
         </member>
+        <member name="M:Alis.Core.Component.Light.SpotLight.Init">
+            <summary>
+            Inits this instance
+            </summary>
+        </member>
         <member name="T:Alis.Core.Component.Mesh.BoxMesh">
             <summary>
                 The cube mesh class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Mesh.BoxMesh.Init">
+            <summary>
+            Inits this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Component.Mesh.CircleMesh">
@@ -1281,6 +1311,11 @@
                 The sphere mesh class
             </summary>
             <seealso cref="T:Alis.Core.Component.Mesh.MeshBase" />
+        </member>
+        <member name="M:Alis.Core.Component.Mesh.CircleMesh.Init">
+            <summary>
+            Inits this instance
+            </summary>
         </member>
         <member name="T:Alis.Core.Component.Mesh.MeshBase">
             <summary>
@@ -1303,6 +1338,11 @@
                 The explosion particle class
             </summary>
             <seealso cref="T:Alis.Core.Component.Particle.ParticleBase" />
+        </member>
+        <member name="M:Alis.Core.Component.Particle.ExplosionParticle.Init">
+            <summary>
+            Inits this instance
+            </summary>
         </member>
         <member name="M:Alis.Core.Component.Particle.ExplosionParticle.Builder">
             <summary>
@@ -1545,6 +1585,22 @@
             <summary>
                 The image class
             </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Render.Image.Path">
+            <summary>
+            Gets or sets the value of the path
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Image.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Image"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Image.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Image"/> class
+            </summary>
+            <param name="path">The path</param>
         </member>
         <member name="T:Alis.Core.Component.Render.Sprite">
             <summary>
@@ -1833,6 +1889,11 @@
         </member>
         <member name="T:Alis.Core.Entity.Transform">
             <summary>Control the object space in the game.</summary>
+        </member>
+        <member name="M:Alis.Core.Entity.Transform.Update">
+            <summary>
+            Updates this instance
+            </summary>
         </member>
         <member name="T:Alis.Core.Entity.Window">
             <summary>

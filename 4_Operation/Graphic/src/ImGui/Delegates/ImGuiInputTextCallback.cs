@@ -28,8 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
+using Alis.Core.Graphic.ImGui.Structs;
 
-namespace Alis.Core.Graphic.ImGui
+namespace Alis.Core.Graphic.ImGui.Delegates
 {
     /// <summary>
     ///     The im gui input text callback

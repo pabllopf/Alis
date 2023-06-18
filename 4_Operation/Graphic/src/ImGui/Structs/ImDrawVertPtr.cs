@@ -29,8 +29,9 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Graphic.ImGui.Utils;
 
-namespace Alis.Core.Graphic.ImGui
+namespace Alis.Core.Graphic.ImGui.Structs
 {
     /// <summary>
     ///     The im draw vert ptr

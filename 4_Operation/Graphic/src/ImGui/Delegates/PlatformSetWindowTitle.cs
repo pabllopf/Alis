@@ -28,8 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Graphic.ImGui.Structs;
 
-namespace Alis.Core.Graphic.ImGui
+namespace Alis.Core.Graphic.ImGui.Delegates
 {
     /// <summary>
     ///     The platform setwindowtitle

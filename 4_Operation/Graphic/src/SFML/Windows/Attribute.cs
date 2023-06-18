@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PointOnEdgeException.cs
+//  File:Attribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,21 +29,22 @@
 
 using System;
 
-namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
+namespace Alis.Core.Graphic.SFML.Windows
 {
     /// <summary>
-    ///     The point on edge exception class
+    ///     Enumeration of the context attribute flags
     /// </summary>
-    /// <seealso cref="NotImplementedException" />
-    internal class PointOnEdgeException : Exception
+    ////////////////////////////////////////////////////////////
+    [Flags]
+    public enum Attribute
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="PointOnEdgeException" /> class
-        /// </summary>
-        /// <param name="message">The message</param>
-        public PointOnEdgeException(string message)
-            : base(message)
-        {
-        }
+        /// <summary>Non-debug, compatibility context (this and the core attribute are mutually exclusive)</summary>
+        None = 0,
+
+        /// <summary>Core attribute</summary>
+        Core = 1 << 0,
+
+        /// <summary>Debug attribute</summary>
+        Debug = 1 << 2
     }
 }
