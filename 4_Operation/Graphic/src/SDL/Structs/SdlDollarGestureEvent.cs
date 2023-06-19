@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSysWmDriverUnion.cs
+//  File:SdlDollarGestureEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,84 +29,52 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL
 {
     /// <summary>
-    ///     The internal sys wm driver union
+    ///     The sdl dollar gesture event
     /// </summary>
-    [StructLayout(LayoutKind.Explicit)]
-    public struct InternalSysWmDriverUnion
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlDollarGestureEvent
     {
         /// <summary>
-        ///     The win
+        ///     The type
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWindowsWmInfo win;
+        public readonly uint type;
 
         /// <summary>
-        ///     The winrt
+        ///     The timestamp
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWinrtWmInfo winrt;
+        public readonly uint timestamp;
 
         /// <summary>
-        ///     The 11
+        ///     The touch id 
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalX11WmInfo x11;
+        public readonly long touchId; 
 
         /// <summary>
-        ///     The dfb
+        ///     The gesture id 
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalDirectfbWmInfo dfb;
+        public readonly long gestureId; 
 
         /// <summary>
-        ///     The cocoa
+        ///     The num fingers
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalCocoaWmInfo cocoa;
+        public readonly uint numFingers;
 
         /// <summary>
-        ///     The uikit
+        ///     The error
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalUikitWmInfo uikit;
+        public readonly float error;
 
         /// <summary>
-        ///     The wl
+        ///     The
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWaylandWmInfo wl;
+        public readonly float x;
 
         /// <summary>
-        ///     The mir
+        ///     The
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalMirWmInfo mir;
-
-        /// <summary>
-        ///     The android
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalAndroidWminfo android;
-
-        /// <summary>
-        ///     The os
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalOs2WmInfo os2;
-
-        /// <summary>
-        ///     The vivante
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalVivanteWmInfo vivante;
-
-        /// <summary>
-        ///     The ksm
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalKmsWmInfo ksm;
+        public readonly float y;
     }
 }

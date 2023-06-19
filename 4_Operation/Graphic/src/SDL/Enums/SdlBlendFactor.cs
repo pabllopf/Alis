@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSysWmDriverUnion.cs
+//  File:SdlBlendFactor.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,86 +27,61 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL
 {
     /// <summary>
-    ///     The internal sys wm driver union
+    ///     The sdl blend factor enum
     /// </summary>
-    [StructLayout(LayoutKind.Explicit)]
-    public struct InternalSysWmDriverUnion
+    public enum SdlBlendFactor
     {
         /// <summary>
-        ///     The win
+        ///     The sdl blend factor zero sdl blend factor
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWindowsWmInfo win;
+        SdlBlendFactorZero = 0x1,
 
         /// <summary>
-        ///     The winrt
+        ///     The sdl blend factor one sdl blend factor
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWinrtWmInfo winrt;
+        SdlBlendFactorOne = 0x2,
 
         /// <summary>
-        ///     The 11
+        ///     The sdl blend factor src color sdl blend factor
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalX11WmInfo x11;
+        SdlBlendFactorSrcColor = 0x3,
 
         /// <summary>
-        ///     The dfb
+        ///     The sdl blend factor one minus src color sdl blend factor
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalDirectfbWmInfo dfb;
+        SdlBlendFactorOneMinusSrcColor = 0x4,
 
         /// <summary>
-        ///     The cocoa
+        ///     The sdl blend factor src alpha sdl blend factor
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalCocoaWmInfo cocoa;
+        SdlBlendFactorSrcAlpha = 0x5,
 
         /// <summary>
-        ///     The uikit
+        ///     The sdl blend factor one minus src alpha sdl blend factor
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalUikitWmInfo uikit;
+        SdlBlendFactorOneMinusSrcAlpha = 0x6,
 
         /// <summary>
-        ///     The wl
+        ///     The sdl blend factor dst color sdl blend factor
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWaylandWmInfo wl;
+        SdlBlendFactorDstColor = 0x7,
 
         /// <summary>
-        ///     The mir
+        ///     The sdl blend factor one minus dst color sdl blend factor
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalMirWmInfo mir;
+        SdlBlendFactorOneMinusDstColor = 0x8,
 
         /// <summary>
-        ///     The android
+        ///     The sdl blend factor dst alpha sdl blend factor
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalAndroidWminfo android;
+        SdlBlendFactorDstAlpha = 0x9,
 
         /// <summary>
-        ///     The os
+        ///     The sdl blend factor one minus dst alpha sdl blend factor
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalOs2WmInfo os2;
-
-        /// <summary>
-        ///     The vivante
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalVivanteWmInfo vivante;
-
-        /// <summary>
-        ///     The ksm
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalKmsWmInfo ksm;
+        SdlBlendFactorOneMinusDstAlpha = 0xA
     }
 }

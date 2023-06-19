@@ -6,6 +6,5 @@
     </PropertyGroup>
     <ItemGroup>
       <Folder Include="SDL\Delegates\" />
-      <Folder Include="SDL\Enums\" />
     </ItemGroup>
 </Project>

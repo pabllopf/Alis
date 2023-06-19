@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSysWmDriverUnion.cs
+//  File:SdlGameControllerType.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,86 +27,61 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL
 {
     /// <summary>
-    ///     The internal sys wm driver union
+    ///     The sdl game controller type enum
     /// </summary>
-    [StructLayout(LayoutKind.Explicit)]
-    public struct InternalSysWmDriverUnion
+    public enum SdlGameControllerType
     {
         /// <summary>
-        ///     The win
+        ///     The sdl controller type unknown sdl game controller type
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWindowsWmInfo win;
+        SdlControllerTypeUnknown = 0,
 
         /// <summary>
-        ///     The winrt
+        ///     The sdl controller type xbox360 sdl game controller type
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWinrtWmInfo winrt;
+        SdlControllerTypeXbox360,
 
         /// <summary>
-        ///     The 11
+        ///     The sdl controller type xbox one sdl game controller type
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalX11WmInfo x11;
+        SdlControllerTypeXboxOne,
 
         /// <summary>
-        ///     The dfb
+        ///     The sdl controller type ps3 sdl game controller type
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalDirectfbWmInfo dfb;
+        SdlControllerTypePs3,
 
         /// <summary>
-        ///     The cocoa
+        ///     The sdl controller type ps4 sdl game controller type
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalCocoaWmInfo cocoa;
+        SdlControllerTypePs4,
 
         /// <summary>
-        ///     The uikit
+        ///     The sdl controller type nintendo switch pro sdl game controller type
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalUikitWmInfo uikit;
+        SdlControllerTypeNintendoSwitchPro,
 
         /// <summary>
-        ///     The wl
+        ///     The sdl controller type virtual sdl game controller type
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWaylandWmInfo wl;
+        SdlControllerTypeVirtual,
 
         /// <summary>
-        ///     The mir
+        ///     The sdl controller type ps5 sdl game controller type
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalMirWmInfo mir;
+        SdlControllerTypePs5,
 
         /// <summary>
-        ///     The android
+        ///     The sdl controller type amazon luna sdl game controller type
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalAndroidWminfo android;
+        SdlControllerTypeAmazonLuna,
 
         /// <summary>
-        ///     The os
+        ///     The sdl controller type google stadia sdl game controller type
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalOs2WmInfo os2;
-
-        /// <summary>
-        ///     The vivante
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalVivanteWmInfo vivante;
-
-        /// <summary>
-        ///     The ksm
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalKmsWmInfo ksm;
+        SdlControllerTypeGoogleStadia
     }
 }

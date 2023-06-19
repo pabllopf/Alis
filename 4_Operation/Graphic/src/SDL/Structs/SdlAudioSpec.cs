@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSysWmDriverUnion.cs
+//  File:SdlAudioSpec.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,86 +27,55 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL
 {
     /// <summary>
-    ///     The internal sys wm driver union
+    ///     The sdl audio spec
     /// </summary>
-    [StructLayout(LayoutKind.Explicit)]
-    public struct InternalSysWmDriverUnion
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlAudioSpec
     {
         /// <summary>
-        ///     The win
+        ///     The freq
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWindowsWmInfo win;
+        public readonly int freq;
 
         /// <summary>
-        ///     The winrt
+        ///     The SDL_AudioFormat
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWinrtWmInfo winrt;
+        public readonly ushort format; 
 
         /// <summary>
-        ///     The 11
+        ///     The channels
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalX11WmInfo x11;
+        public readonly byte channels;
 
         /// <summary>
-        ///     The dfb
+        ///     The silence
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalDirectfbWmInfo dfb;
+        public readonly byte silence;
 
         /// <summary>
-        ///     The cocoa
+        ///     The samples
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalCocoaWmInfo cocoa;
+        public readonly ushort samples;
 
         /// <summary>
-        ///     The uikit
+        ///     The size
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalUikitWmInfo uikit;
+        public readonly uint size;
 
         /// <summary>
-        ///     The wl
+        ///     The callback
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWaylandWmInfo wl;
+        public readonly Sdl.SdlAudioCallback callback;
 
         /// <summary>
-        ///     The mir
+        ///     The userdata
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalMirWmInfo mir;
-
-        /// <summary>
-        ///     The android
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalAndroidWminfo android;
-
-        /// <summary>
-        ///     The os
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalOs2WmInfo os2;
-
-        /// <summary>
-        ///     The vivante
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalVivanteWmInfo vivante;
-
-        /// <summary>
-        ///     The ksm
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalKmsWmInfo ksm;
+        public IntPtr userdata;
     }
 }

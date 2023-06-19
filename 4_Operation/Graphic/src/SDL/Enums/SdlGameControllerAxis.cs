@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSysWmDriverUnion.cs
+//  File:SdlGameControllerAxis.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,86 +27,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL
 {
     /// <summary>
-    ///     The internal sys wm driver union
+    ///     The sdl game controller axis enum
     /// </summary>
-    [StructLayout(LayoutKind.Explicit)]
-    public struct InternalSysWmDriverUnion
+    public enum SdlGameControllerAxis
     {
         /// <summary>
-        ///     The win
+        ///     The sdl controller axis invalid sdl game controller axis
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWindowsWmInfo win;
+        SdlControllerAxisInvalid = -1,
 
         /// <summary>
-        ///     The winrt
+        ///     The sdl controller axis left x sdl game controller axis
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWinrtWmInfo winrt;
+        SdlControllerAxisLeftX,
 
         /// <summary>
-        ///     The 11
+        ///     The sdl controller axis lefty sdl game controller axis
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalX11WmInfo x11;
+        SdlControllerAxisLeftY,
 
         /// <summary>
-        ///     The dfb
+        ///     The sdl controller axis right X sdl game controller axis
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalDirectfbWmInfo dfb;
+        SdlControllerAxisRightX,
 
         /// <summary>
-        ///     The cocoa
+        ///     The sdl controller axis right Y sdl game controller axis
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalCocoaWmInfo cocoa;
+        SdlControllerAxisRightY,
 
         /// <summary>
-        ///     The uikit
+        ///     The sdl controller axis trigger left sdl game controller axis
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalUikitWmInfo uikit;
+        SdlControllerAxisTriggerLeft,
 
         /// <summary>
-        ///     The wl
+        ///     The sdl controller axis trigger right sdl game controller axis
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWaylandWmInfo wl;
+        SdlControllerAxisTriggerRight,
 
         /// <summary>
-        ///     The mir
+        ///     The sdl controller axis max sdl game controller axis
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalMirWmInfo mir;
-
-        /// <summary>
-        ///     The android
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalAndroidWminfo android;
-
-        /// <summary>
-        ///     The os
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalOs2WmInfo os2;
-
-        /// <summary>
-        ///     The vivante
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalVivanteWmInfo vivante;
-
-        /// <summary>
-        ///     The ksm
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalKmsWmInfo ksm;
+        SdlControllerAxisMax
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSysWmDriverUnion.cs
+//  File:SdlBlendMode.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,86 +27,44 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
+using System;
 
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL
 {
     /// <summary>
-    ///     The internal sys wm driver union
+    ///     The sdl blend mode enum
     /// </summary>
-    [StructLayout(LayoutKind.Explicit)]
-    public struct InternalSysWmDriverUnion
+    [Flags]
+    public enum SdlBlendMode
     {
         /// <summary>
-        ///     The win
+        ///     The sdl blend factor none sdl blend factor
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWindowsWmInfo win;
+        None = 0x00000000,
 
         /// <summary>
-        ///     The winrt
+        ///     The sdl blend factor blend sdl blend factor
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWinrtWmInfo winrt;
+        SdlBlendModeBlend = 0x00000001,
 
         /// <summary>
-        ///     The 11
+        ///     The sdl blend factor add sdl blend factor
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalX11WmInfo x11;
+        SdlBlendModeAdd = 0x00000002,
 
         /// <summary>
-        ///     The dfb
+        ///     The sdl blend factor mod sdl blend factor
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalDirectfbWmInfo dfb;
+        SdlBlendModeMod = 0x00000004,
 
         /// <summary>
-        ///     The cocoa
+        ///     The sdl blend factor mul sdl blend factor
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalCocoaWmInfo cocoa;
+        SdlBlendModeMul = 0x00000008,
 
         /// <summary>
-        ///     The uikit
+        ///     The sdl blend factor invalid sdl blend factor
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalUikitWmInfo uikit;
-
-        /// <summary>
-        ///     The wl
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalWaylandWmInfo wl;
-
-        /// <summary>
-        ///     The mir
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalMirWmInfo mir;
-
-        /// <summary>
-        ///     The android
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalAndroidWminfo android;
-
-        /// <summary>
-        ///     The os
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalOs2WmInfo os2;
-
-        /// <summary>
-        ///     The vivante
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalVivanteWmInfo vivante;
-
-        /// <summary>
-        ///     The ksm
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalKmsWmInfo ksm;
+        SdlBlendModeInvalid = 0x7FFFFFFF
     }
 }

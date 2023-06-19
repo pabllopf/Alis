@@ -1489,7 +1489,7 @@ namespace Alis.Core.Graphic.SDL
         public static readonly uint SdlPixelformatIndex1Lsb =
             SDL_DEFINE_PIXELFORMAT(
                 SdlPixelType.SdlPixeltypeIndex1,
-                (uint) SdlBitmapOrder.SdlBitmaporder4321,
+                (uint) SdlBitmapOrder.SdlBitMapOrder4321,
                 0,
                 1, 0
             );
@@ -1500,7 +1500,7 @@ namespace Alis.Core.Graphic.SDL
         public static readonly uint SdlPixelformatIndex1Msb =
             SDL_DEFINE_PIXELFORMAT(
                 SdlPixelType.SdlPixeltypeIndex1,
-                (uint) SdlBitmapOrder.SdlBitmaporder1234,
+                (uint) SdlBitmapOrder.SdlBitMapOrder1234,
                 0,
                 1, 0
             );
@@ -1511,7 +1511,7 @@ namespace Alis.Core.Graphic.SDL
         public static readonly uint SdlPixelformatIndex4Lsb =
             SDL_DEFINE_PIXELFORMAT(
                 SdlPixelType.SdlPixeltypeIndex4,
-                (uint) SdlBitmapOrder.SdlBitmaporder4321,
+                (uint) SdlBitmapOrder.SdlBitMapOrder4321,
                 0,
                 4, 0
             );
@@ -1522,7 +1522,7 @@ namespace Alis.Core.Graphic.SDL
         public static readonly uint SdlPixelformatIndex4Msb =
             SDL_DEFINE_PIXELFORMAT(
                 SdlPixelType.SdlPixeltypeIndex4,
-                (uint) SdlBitmapOrder.SdlBitmaporder1234,
+                (uint) SdlBitmapOrder.SdlBitMapOrder1234,
                 0,
                 4, 0
             );
@@ -1606,7 +1606,7 @@ namespace Alis.Core.Graphic.SDL
         public static readonly uint SdlPixelformatXbgr1555 =
             SDL_DEFINE_PIXELFORMAT(
                 SdlPixelType.SdlPixeltypeIndex1,
-                (uint) SdlBitmapOrder.SdlBitmaporder4321,
+                (uint) SdlBitmapOrder.SdlBitMapOrder4321,
                 SdlPackedLayout.SdlPackedlayout1555,
                 15, 2
             );
@@ -3929,7 +3929,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GL_GetAttribute(
-            SdlGLattr attr,
+            SdlGlAttr attr,
             out int value
         );
 
@@ -3991,7 +3991,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GL_SetAttribute(
-            SdlGLattr attr,
+            SdlGlAttr attr,
             int value
         );
 
@@ -4002,8 +4002,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="profile">The profile</param>
         /// <returns>The int</returns>
         public static int SDL_GL_SetAttribute(
-            SdlGLattr attr,
-            SdlGLprofile profile
+            SdlGlAttr attr,
+            SdlGlProfile profile
         )
             => SDL_GL_SetAttribute(attr, (int) profile);
 
@@ -7625,7 +7625,7 @@ namespace Alis.Core.Graphic.SDL
         public static extern int SDL_PeepEvents(
             [Out] SdlEvent[] events,
             int numevents,
-            SdlEventaction action,
+            SdlEventAction action,
             SdlEventType minType,
             SdlEventType maxType
         );

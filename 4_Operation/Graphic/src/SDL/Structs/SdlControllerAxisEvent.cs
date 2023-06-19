@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSysWmDriverUnion.cs
+//  File:SdlControllerAxisEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,84 +29,57 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL
 {
     /// <summary>
-    ///     The internal sys wm driver union
+    ///     The sdl controller axis event
     /// </summary>
-    [StructLayout(LayoutKind.Explicit)]
-    public struct InternalSysWmDriverUnion
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlControllerAxisEvent
     {
         /// <summary>
-        ///     The win
+        ///     The type
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWindowsWmInfo win;
+        public readonly SdlEventType type;
 
         /// <summary>
-        ///     The winrt
+        ///     The timestamp
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWinrtWmInfo winrt;
+        public readonly uint timestamp;
 
         /// <summary>
-        ///     The 11
+        ///     The which SDL_JoystickID
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalX11WmInfo x11;
+        public readonly int which;
 
         /// <summary>
-        ///     The dfb
+        ///     The axis
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalDirectfbWmInfo dfb;
+        public readonly byte axis;
 
         /// <summary>
-        ///     The cocoa
+        ///     The padding
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalCocoaWmInfo cocoa;
+        private readonly byte padding1;
 
         /// <summary>
-        ///     The uikit
+        ///     The padding
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalUikitWmInfo uikit;
+        private readonly byte padding2;
 
         /// <summary>
-        ///     The wl
+        ///     The padding
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWaylandWmInfo wl;
+        private readonly byte padding3;
 
         /// <summary>
-        ///     The mir
+        ///     The axis value
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalMirWmInfo mir;
+        public readonly short axisValue; 
 
         /// <summary>
-        ///     The android
+        ///     The padding
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalAndroidWminfo android;
-
-        /// <summary>
-        ///     The os
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalOs2WmInfo os2;
-
-        /// <summary>
-        ///     The vivante
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalVivanteWmInfo vivante;
-
-        /// <summary>
-        ///     The ksm
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalKmsWmInfo ksm;
+        private readonly ushort padding4;
     }
 }

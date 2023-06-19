@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSysWmDriverUnion.cs
+//  File:SdlArrayOrder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,86 +27,46 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL
 {
     /// <summary>
-    ///     The internal sys wm driver union
+    ///     The sdl array order enum
     /// </summary>
-    [StructLayout(LayoutKind.Explicit)]
-    public struct InternalSysWmDriverUnion
+    public enum SdlArrayOrder
     {
         /// <summary>
-        ///     The win
+        ///     The sdl array order none sdl array order
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWindowsWmInfo win;
+        SdlArrayorderNone,
 
         /// <summary>
-        ///     The winrt
+        ///     The sdl array order rgb sdl array order
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWinrtWmInfo winrt;
+        SdlArrayorderRgb,
 
         /// <summary>
-        ///     The 11
+        ///     The sdl array order rgba sdl array order
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalX11WmInfo x11;
+        SdlArrayorderRgba,
 
         /// <summary>
-        ///     The dfb
+        ///     The sdl array order argb sdl array order
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalDirectfbWmInfo dfb;
+        SdlArrayorderArgb,
 
         /// <summary>
-        ///     The cocoa
+        ///     The sdl array order bgr sdl array order
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalCocoaWmInfo cocoa;
+        SdlArrayorderBgr,
 
         /// <summary>
-        ///     The uikit
+        ///     The sdl array order bgr sdl array order
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalUikitWmInfo uikit;
+        SdlArrayorderBgra,
 
         /// <summary>
-        ///     The wl
+        ///     The sdl array order abg sdl array order
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWaylandWmInfo wl;
-
-        /// <summary>
-        ///     The mir
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalMirWmInfo mir;
-
-        /// <summary>
-        ///     The android
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalAndroidWminfo android;
-
-        /// <summary>
-        ///     The os
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalOs2WmInfo os2;
-
-        /// <summary>
-        ///     The vivante
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalVivanteWmInfo vivante;
-
-        /// <summary>
-        ///     The ksm
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalKmsWmInfo ksm;
+        SdlArrayorderAbgr
     }
 }

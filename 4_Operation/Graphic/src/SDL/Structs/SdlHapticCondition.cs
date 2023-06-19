@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSysWmDriverUnion.cs
+//  File:SdlHapticCondition.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,84 +29,82 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL
 {
     /// <summary>
-    ///     The internal sys wm driver union
+    ///     The sdl haptic condition
     /// </summary>
-    [StructLayout(LayoutKind.Explicit)]
-    public struct InternalSysWmDriverUnion
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlHapticCondition
     {
+        // Header
         /// <summary>
-        ///     The win
+        ///     The type
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWindowsWmInfo win;
+        public readonly ushort type;
 
         /// <summary>
-        ///     The winrt
+        ///     The direction
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWinrtWmInfo winrt;
+        public SdlHapticDirection direction;
+
+        // Replay
+        /// <summary>
+        ///     The length
+        /// </summary>
+        public readonly uint length;
 
         /// <summary>
-        ///     The 11
+        ///     The delay
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalX11WmInfo x11;
+        public readonly ushort delay;
+
+        // Trigger
+        /// <summary>
+        ///     The button
+        /// </summary>
+        public readonly ushort button;
 
         /// <summary>
-        ///     The dfb
+        ///     The interval
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalDirectfbWmInfo dfb;
+        public readonly ushort interval;
+
+        // Condition
+        /// <summary>
+        ///     The right sat
+        /// </summary>
+        [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
+        public readonly ushort[] right_sat;
 
         /// <summary>
-        ///     The cocoa
+        ///     The left sat
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalCocoaWmInfo cocoa;
+        [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
+        public readonly ushort[] left_sat;
 
         /// <summary>
-        ///     The uikit
+        ///     The right Coefficient
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalUikitWmInfo uikit;
+        [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
+        public readonly short[] rightCoefficient;
 
         /// <summary>
-        ///     The wl
+        ///     The left Coefficient
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalWaylandWmInfo wl;
+        [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
+        public readonly short[] leftCoefficient;
 
         /// <summary>
-        ///     The mir
+        ///     The dead band
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalMirWmInfo mir;
+        [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
+        public readonly ushort[] deadBand;
 
         /// <summary>
-        ///     The android
+        ///     The center
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalAndroidWminfo android;
-
-        /// <summary>
-        ///     The os
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalOs2WmInfo os2;
-
-        /// <summary>
-        ///     The vivante
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalVivanteWmInfo vivante;
-
-        /// <summary>
-        ///     The ksm
-        /// </summary>
-        [FieldOffset(0)] 
-        public InternalKmsWmInfo ksm;
+        [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
+        public readonly short[] center;
     }
 }

@@ -153,7 +153,7 @@ namespace Alis.Core.Graphic.ImGui
 
                     return;
                 }
-                case SdlEventType.SdlMousebuttondown:
+                case SdlEventType.SdlMouseButtonDown:
                 {
                     if (evt.button.button == SdlButtonLeft)
                     {
@@ -172,7 +172,7 @@ namespace Alis.Core.Graphic.ImGui
 
                     return;
                 }
-                case SdlEventType.SdlTextinput:
+                case SdlEventType.SdlTextInput:
                 {
                     string str = Encoding.UTF8.GetString(evt.text.Text);
                     io.AddInputCharactersUtf8(str);

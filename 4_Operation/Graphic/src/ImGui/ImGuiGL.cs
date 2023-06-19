@@ -105,16 +105,16 @@ namespace Alis.Core.Graphic.ImGui
         {
             // initialize SDL and set a few defaults for the OpenGL context
             SDL_Init(SdlInitVideo);
-            SDL_GL_SetAttribute(SdlGLattr.SdlGlContextFlags, (int) SdlGLcontext.SdlGlContextForwardCompatibleFlag);
-            SDL_GL_SetAttribute(SdlGLattr.SdlGlContextProfileMask, SdlGLprofile.SdlGlContextProfileCore);
-            SDL_GL_SetAttribute(SdlGLattr.SdlGlContextMajorVersion, 3);
-            SDL_GL_SetAttribute(SdlGLattr.SdlGlContextMinorVersion, 2);
+            SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextFlags, (int) SdlGlContext.SdlGlContextForwardCompatibleFlag);
+            SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
+            SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextMajorVersion, 3);
+            SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextMinorVersion, 2);
 
-            SDL_GL_SetAttribute(SdlGLattr.SdlGlContextProfileMask, SdlGLprofile.SdlGlContextProfileCore);
-            SDL_GL_SetAttribute(SdlGLattr.SdlGlDoublebuffer, 1);
-            SDL_GL_SetAttribute(SdlGLattr.SdlGlDepthSize, 24);
-            SDL_GL_SetAttribute(SdlGLattr.SdlGlAlphaSize, 8);
-            SDL_GL_SetAttribute(SdlGLattr.SdlGlStencilSize, 8);
+            SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
+            SDL_GL_SetAttribute(SdlGlAttr.SdlGlDoubleBuffer, 1);
+            SDL_GL_SetAttribute(SdlGlAttr.SdlGlDepthSize, 24);
+            SDL_GL_SetAttribute(SdlGlAttr.SdlGlAlphaSize, 8);
+            SDL_GL_SetAttribute(SdlGlAttr.SdlGlStencilSize, 8);
 
             // create the window which should be able to have a valid OpenGL context and is resizable
             SdlWindowFlags flags = SdlWindowFlags.SdlWindowOpengl | SdlWindowFlags.SdlWindowResizable;
