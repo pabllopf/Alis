@@ -6,5 +6,5 @@ var class_alis_1_1_builder_1_1_core_1_1_manager_1_1_setting_manager_builder =
     [ "General", "d3/d94/class_alis_1_1_builder_1_1_core_1_1_manager_1_1_setting_manager_builder.html#a71411833f01c13a7099de33baf50ecfc", null ],
     [ "Graphic", "d3/d94/class_alis_1_1_builder_1_1_core_1_1_manager_1_1_setting_manager_builder.html#a07f0fc5065ebc67adfb1b7a46b98c544", null ],
     [ "Physic", "d3/d94/class_alis_1_1_builder_1_1_core_1_1_manager_1_1_setting_manager_builder.html#ae432fea99da4564739810e385fc3250e", null ],
-    [ "settingManager", "d3/d94/class_alis_1_1_builder_1_1_core_1_1_manager_1_1_setting_manager_builder.html#ab1d6bae35db68d7184a524ca759b6ae5", null ]
+    [ "settingManager", "d3/d94/class_alis_1_1_builder_1_1_core_1_1_manager_1_1_setting_manager_builder.html#a060ce96c9216467b248d79ea7b3aa54f", null ]
 ];

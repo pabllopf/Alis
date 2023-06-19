@@ -1,6 +1,5 @@
 var namespace_alis_1_1_core_1_1_aspect_1_1_logging =
 [
-    [ "Color", "dd/db5/struct_alis_1_1_core_1_1_aspect_1_1_logging_1_1_color.html", "dd/db5/struct_alis_1_1_core_1_1_aspect_1_1_logging_1_1_color" ],
     [ "ConsoleController", "d8/d37/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_console_controller.html", "d8/d37/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_console_controller" ],
     [ "ConsoleLogConfig", "db/df9/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_console_log_config.html", "db/df9/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_console_log_config" ],
     [ "FileController", "d0/d48/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_file_controller.html", null ],

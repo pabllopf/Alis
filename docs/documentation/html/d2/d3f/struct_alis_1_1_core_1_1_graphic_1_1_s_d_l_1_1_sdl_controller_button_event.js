@@ -5,6 +5,6 @@ var struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_button_event =
     [ "which", "d2/d3f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_button_event.html#a6cc2847c05dcc8d6183abe02f55dcd58", null ],
     [ "button", "d2/d3f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_button_event.html#a338bddb5881408c109faec3bc28c551d", null ],
     [ "state", "d2/d3f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_button_event.html#aa6d4c35ee607a34735c6ad69806bcb46", null ],
-    [ "padding1", "d2/d3f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_button_event.html#ace2aa0ec713e135e565def3c3869b08d", null ],
-    [ "padding2", "d2/d3f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_button_event.html#ac885a98088a37fbda9ef03269950b156", null ]
+    [ "padding1", "d2/d3f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_button_event.html#afaa6ecba818fc8bdddc519792c620c52", null ],
+    [ "padding2", "d2/d3f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_controller_button_event.html#a3d5f20de8641e58e6e3752915e12d1f9", null ]
 ];

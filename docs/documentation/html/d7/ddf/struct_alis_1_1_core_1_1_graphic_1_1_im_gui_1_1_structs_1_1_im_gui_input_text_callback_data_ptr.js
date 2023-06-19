@@ -1,0 +1,28 @@
+var struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr =
+[
+    [ "ImGuiInputTextCallbackDataPtr", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#a37de0cb8835303997fd31d695b834f75", null ],
+    [ "ImGuiInputTextCallbackDataPtr", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#a3264285d748bc15fdae4dc6595ee7922", null ],
+    [ "operator ImGuiInputTextCallbackDataPtr", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#af2a74cccc32f5184273ee4dcdb5bf083", null ],
+    [ "operator ImGuiInputTextCallbackData *", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#af251dd6235b34ee4a24d0453ae106f7d", null ],
+    [ "operator ImGuiInputTextCallbackDataPtr", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#adaeb95de12c775816259ab2a1cf73a3e", null ],
+    [ "ClearSelection", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#ad7b48e93cf86ab3c20e0c5f7b7cdcc73", null ],
+    [ "DeleteChars", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#a79155e1b06b0f1a629bfb84624c1dfb8", null ],
+    [ "Destroy", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#ad872c21e3d37ce10bf4ae6fca1b4e7cf", null ],
+    [ "HasSelection", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#a3b14d908dc47b1c2538c27e52db99cf9", null ],
+    [ "InsertChars", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#a2dd6605962bcad5d49c4ec256bcac0cd", null ],
+    [ "SelectAll", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#a0c637b4a6ab82904ccc966aeeb0030f6", null ],
+    [ "Ctx", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#a2a65d9ea9246f7c1617d9e1aefb8038b", null ],
+    [ "EventFlag", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#a67eaa89d863d742e8d45cde91e31c71e", null ],
+    [ "Flags", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#abe4f1013edfee5bddbb363a275b9e42d", null ],
+    [ "EventChar", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#ae4f5fa7c73c1c60ea9ee416f3de25d31", null ],
+    [ "EventKey", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#add5342a94b265cf65796a198c792cc79", null ],
+    [ "BufTextLen", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#a687c5890e50c07bc5b27ad8cbfd1440c", null ],
+    [ "BufSize", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#a78e8c2656acc944775cc9cb8c31a49bc", null ],
+    [ "BufDirty", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#ab157b8630cf276dbbba8dfd4fc6ff560", null ],
+    [ "CursorPos", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#a350525af934a0115d74961b9761267e9", null ],
+    [ "SelectionStart", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#a9a70d52280d0928d2bc57eeb683d429d", null ],
+    [ "SelectionEnd", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#a4a3b6fe3906d65241682827209a48b98", null ],
+    [ "NativePtr", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#af48192df42d1d81c4d050c99ae91aded", null ],
+    [ "UserData", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#a5a6faa6c34d62252aebb805c0d8ca4d4", null ],
+    [ "Buf", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html#a8c552095ce940f9e470700e76d1b8272", null ]
+];

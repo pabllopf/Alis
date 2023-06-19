@@ -1,12 +1,5 @@
 var class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text =
 [
-    [ "Styles", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a23d285782f1ba46167f46c2b959275cf", [
-      [ "Regular", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a23d285782f1ba46167f46c2b959275cfad2203cb1237cb6460cbad94564e39345", null ],
-      [ "Bold", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a23d285782f1ba46167f46c2b959275cfa114c3050111d8b8ddd830b99ccebd246", null ],
-      [ "Italic", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a23d285782f1ba46167f46c2b959275cfa1d874710ccdcd46b95397049d2e7500c", null ],
-      [ "Underlined", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a23d285782f1ba46167f46c2b959275cfaefbed21c7db81f58e97c79ae9e73c714", null ],
-      [ "StrikeThrough", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a23d285782f1ba46167f46c2b959275cfadbcb83c76437232e6031f915989c7d23", null ]
-    ] ],
     [ "Text", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#ac702bcc8262d75675326fffaf425c303", null ],
     [ "Text", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#ad0c3fc93f7c836f62b5ff216d8ad734a", null ],
     [ "Text", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#ac8e23f9a72fa43b2e068805c3c17a803", null ],
@@ -20,11 +13,9 @@ var class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text =
     [ "sfText_create", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#aaa821e0dca9c0f0e2c156818ed70c187", null ],
     [ "sfText_copy", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a15d0d51a90c1eca0faec473f4d81de99", null ],
     [ "sfText_destroy", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a2a7c0980e67f9eecd528198bfedfb957", null ],
-    [ "sfText_setColor", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#abb10c634826ede5cecbdaa05b06798de", null ],
     [ "sfText_setFillColor", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a41f5f26f8c74b1c28af2e3d0efde8698", null ],
     [ "sfText_setOutlineColor", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#ab93b3b396927910adc8d183ac8055ecb", null ],
     [ "sfText_setOutlineThickness", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a84626dc26a3b17cba81793b0a105355b", null ],
-    [ "sfText_getColor", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a339de934712fc962f2c3068f5b289433", null ],
     [ "sfText_getFillColor", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a473c1106e5e8d552b53d7e9fdd63cb3e", null ],
     [ "sfText_getOutlineColor", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a116a1c312d63cfa4c0b1e5ae540ed577", null ],
     [ "sfText_getOutlineThickness", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a7d58cb77a8d169a28230e402ef6d5c44", null ],
@@ -46,7 +37,6 @@ var class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text =
     [ "sfText_findCharacterPos", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a9e7b40af9d37378637db008f64440502", null ],
     [ "sfText_getLocalBounds", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a32c5521583571dfe7e4e5320d79999b5", null ],
     [ "myFont", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a81cf8427f0d87015625298690a7ee65a", null ],
-    [ "Color", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a59a24dcf97073c1ca82d63ecf1caf8c4", null ],
     [ "FillColor", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#affab8f67440fd19f661e7098521d8a24", null ],
     [ "OutlineColor", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#ae777cefb2573f4ec4c36235ab549006d", null ],
     [ "OutlineThickness", "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#aab75ae76a710dba3d7fc7e5aaefca657", null ],

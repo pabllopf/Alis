@@ -1,8 +1,8 @@
 var class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window =
 [
     [ "RenderWindow", "db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a535ecf7d3ed2be4d21ffa08636ff0f5a", null ],
-    [ "RenderWindow", "db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a7305c19b49ff81e84c0851ebd25705fa", null ],
-    [ "RenderWindow", "db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a8daebe2a96bfb94c5fa6d2edc5c845e9", null ],
+    [ "RenderWindow", "db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#acd15e2a8e45ff725886ae54d640354bb", null ],
+    [ "RenderWindow", "db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#afc45c59857d43e23031aa7ace482af8d", null ],
     [ "RenderWindow", "db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ac44ba58b69de1f293b8de1789b9184cc", null ],
     [ "RenderWindow", "db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a9d53e0d9f1a293ac158a2239ec36d74b", null ],
     [ "Clear", "db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a8a304cebffa2acf4cffffae6ba956dd6", null ],
@@ -47,8 +47,8 @@ var class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window =
     [ "InternalGetTouchPosition", "db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a7389239d530d17c2d9a15f9158293c88", null ],
     [ "Destroy", "db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a2659921f9e4f4cc5a4bee94200ef7a60", null ],
     [ "Initialize", "db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#aca88f2216d1fa34e088311773523f8fb", null ],
-    [ "sfRenderWindow_create", "db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a68705b89d6b6199bf852d1231fba2c21", null ],
-    [ "sfRenderWindow_createUnicode", "db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#aeb2009a4de6f9f1eff4e029441d0b47f", null ],
+    [ "sfRenderWindow_create", "db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#afff3776e0cc9080fe3e7caa10777482b", null ],
+    [ "sfRenderWindow_createUnicode", "db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a233bcbb090e6923bc2502bd61d8e133c", null ],
     [ "sfRenderWindow_createFromHandle", "db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ae2a6f281e131599061c95beba8baa586", null ],
     [ "sfRenderWindow_destroy", "db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#aebb3f211db7d3ccb0ca2d4def894f085", null ],
     [ "sfRenderWindow_close", "db/d05/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a1ff1596e7208164c5c4cdf0e41871192", null ],

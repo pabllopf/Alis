@@ -6,5 +6,5 @@ var class_alis_1_1_builder_1_1_core_1_1_setting_1_1_general_setting_builder =
     [ "Icon", "d8/d8c/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_general_setting_builder.html#afd4383dcef9460c7e3429d97971825cb", null ],
     [ "Name", "d8/d8c/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_general_setting_builder.html#afa27172279ed789a84b214b909d78e78", null ],
     [ "SplashScreen", "d8/d8c/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_general_setting_builder.html#a8297b788c63d5587fe7d3cf40387fcb5", null ],
-    [ "generalSetting", "d8/d8c/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_general_setting_builder.html#a3f796f23c4a8d19700000f0bbfc7cfc4", null ]
+    [ "generalSetting", "d8/d8c/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_general_setting_builder.html#a350f1a29ccf413f7e7778450bd802747", null ]
 ];

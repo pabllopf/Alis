@@ -10,5 +10,6 @@ var class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_logger =
     [ "Warning", "d7/d28/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_logger.html#affad5831e98981a2d52bec7e8a73fa03", null ],
     [ "Error", "d7/d28/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_logger.html#ae99f9e7a10434652b2fb03ddf3743a4b", null ],
     [ "Exception", "d7/d28/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_logger.html#ab0b68969a72640e3a59bb79237123265", null ],
-    [ "Exception", "d7/d28/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_logger.html#a24431a8ce9b66a37489864b3e3bfb93d", null ]
+    [ "Exception", "d7/d28/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_logger.html#a24431a8ce9b66a37489864b3e3bfb93d", null ],
+    [ "LogLevel", "d7/d28/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_logger.html#a1a6828e95a3790e5730f79c1af89946f", null ]
 ];

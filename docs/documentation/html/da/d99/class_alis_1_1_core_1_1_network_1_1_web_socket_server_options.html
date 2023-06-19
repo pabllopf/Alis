@@ -122,13 +122,13 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a1b6c52f344ce3fbd90ded9ff3c7d6c19"><td class="memItemLeft" align="right" valign="top">TimeSpan&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d99/class_alis_1_1_core_1_1_network_1_1_web_socket_server_options.html#a1b6c52f344ce3fbd90ded9ff3c7d6c19">KeepAliveInterval</a><code> [get, set]</code></td></tr>
+<tr class="memitem:a1b6c52f344ce3fbd90ded9ff3c7d6c19"><td class="memItemLeft" align="right" valign="top">TimeSpan&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d99/class_alis_1_1_core_1_1_network_1_1_web_socket_server_options.html#a1b6c52f344ce3fbd90ded9ff3c7d6c19">KeepAliveInterval</a><code> [get]</code></td></tr>
 <tr class="memdesc:a1b6c52f344ce3fbd90ded9ff3c7d6c19"><td class="mdescLeft">&#160;</td><td class="mdescRight">How often to send ping requests to the Client The default is 60 seconds This is done to prevent proxy servers from closing your connection A timespan of zero will disable the automatic ping pong mechanism You can manually control ping pong messages using the PingPongManager class. If you do that it is advisable to set this KeepAliveInterval to zero in the WebSocketServerFactory  <a href="../../da/d99/class_alis_1_1_core_1_1_network_1_1_web_socket_server_options.html#a1b6c52f344ce3fbd90ded9ff3c7d6c19">More...</a><br /></td></tr>
 <tr class="separator:a1b6c52f344ce3fbd90ded9ff3c7d6c19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad879ce9a9599b9542632d1f76a5dd2c4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d99/class_alis_1_1_core_1_1_network_1_1_web_socket_server_options.html#ad879ce9a9599b9542632d1f76a5dd2c4">IncludeExceptionInCloseResponse</a><code> [get, set]</code></td></tr>
+<tr class="memitem:ad879ce9a9599b9542632d1f76a5dd2c4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d99/class_alis_1_1_core_1_1_network_1_1_web_socket_server_options.html#ad879ce9a9599b9542632d1f76a5dd2c4">IncludeExceptionInCloseResponse</a><code> [get]</code></td></tr>
 <tr class="memdesc:ad879ce9a9599b9542632d1f76a5dd2c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Include the full exception (with stack trace) in the close response when an exception is encountered and the WebSocket connection is closed The default is false  <a href="../../da/d99/class_alis_1_1_core_1_1_network_1_1_web_socket_server_options.html#ad879ce9a9599b9542632d1f76a5dd2c4">More...</a><br /></td></tr>
 <tr class="separator:ad879ce9a9599b9542632d1f76a5dd2c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05583b71514034e5f76580c02e0654e1"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d99/class_alis_1_1_core_1_1_network_1_1_web_socket_server_options.html#a05583b71514034e5f76580c02e0654e1">SubProtocol</a><code> [get, set]</code></td></tr>
+<tr class="memitem:a05583b71514034e5f76580c02e0654e1"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d99/class_alis_1_1_core_1_1_network_1_1_web_socket_server_options.html#a05583b71514034e5f76580c02e0654e1">SubProtocol</a><code> [get]</code></td></tr>
 <tr class="memdesc:a05583b71514034e5f76580c02e0654e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specifies the sub protocol to send back to the client in the opening handshake Can be null (the most common use case) The client can specify multiple preferred protocols in the opening handshake header The server should use the first supported one or set this to null if none of the requested sub protocols are supported  <a href="../../da/d99/class_alis_1_1_core_1_1_network_1_1_web_socket_server_options.html#a05583b71514034e5f76580c02e0654e1">More...</a><br /></td></tr>
 <tr class="separator:a05583b71514034e5f76580c02e0654e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -259,7 +259,7 @@ Properties</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -285,7 +285,7 @@ Properties</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -311,7 +311,7 @@ Properties</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -329,7 +329,7 @@ Properties</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../dd/d38/namespace_alis_1_1_core_1_1_network.html">Network</a></li><li class="navelem"><a class="el" href="../../da/d99/class_alis_1_1_core_1_1_network_1_1_web_socket_server_options.html">WebSocketServerOptions</a></li>
     <li class="footer">
-      <a>Generated on | Sun Jun 18 2023 |</a>
+      <a>Generated on | Mon Jun 19 2023 |</a>
     </li>
   </ul>
 </div>

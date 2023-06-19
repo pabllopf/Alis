@@ -1,10 +1,5 @@
 var struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context_settings =
 [
-    [ "Attribute", "d2/de1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context_settings.html#a556abba4ef9391a4c7df2c7c0aa62995", [
-      [ "Default", "d2/de1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context_settings.html#a556abba4ef9391a4c7df2c7c0aa62995a7a1920d61156abc05a60135aefe8bc67", null ],
-      [ "Core", "d2/de1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context_settings.html#a556abba4ef9391a4c7df2c7c0aa62995a83168e6cb289d732cc78427b51f93153", null ],
-      [ "Debug", "d2/de1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context_settings.html#a556abba4ef9391a4c7df2c7c0aa62995aa603905470e2a5b8c13e96b579ef0dba", null ]
-    ] ],
     [ "ContextSettings", "d2/de1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context_settings.html#ade999015653742dd39b8a9a48d5c3295", null ],
     [ "ContextSettings", "d2/de1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context_settings.html#ae5149f8f90492534668858ad5d91559b", null ],
     [ "ContextSettings", "d2/de1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context_settings.html#ac316ea0d555185334aa69a4e435a713e", null ],

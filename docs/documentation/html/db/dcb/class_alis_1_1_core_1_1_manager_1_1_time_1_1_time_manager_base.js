@@ -26,5 +26,5 @@ var class_alis_1_1_core_1_1_manager_1_1_time_1_1_time_manager_base =
     [ "FixedDeltaTime", "db/dcb/class_alis_1_1_core_1_1_manager_1_1_time_1_1_time_manager_base.html#a5946b4fd019b45163b6c3a73f28f8fd6", null ],
     [ "MaximumFramesPerSecond", "db/dcb/class_alis_1_1_core_1_1_manager_1_1_time_1_1_time_manager_base.html#a0c5deafe65b10e1a9059cc6ad5ab406d", null ],
     [ "TimeStep", "db/dcb/class_alis_1_1_core_1_1_manager_1_1_time_1_1_time_manager_base.html#aca4bd5cd9da03e7a760e3cffb677d916", null ],
-    [ "MaximunAllowedTimeStep", "db/dcb/class_alis_1_1_core_1_1_manager_1_1_time_1_1_time_manager_base.html#ac3127b5f12ebaf42505a9f875cc594d9", null ]
+    [ "MaxAllowedTimeStep", "db/dcb/class_alis_1_1_core_1_1_manager_1_1_time_1_1_time_manager_base.html#aac900ad36258301a1bf23831baf02781", null ]
 ];
