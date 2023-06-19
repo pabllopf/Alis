@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalDirectfbWminfo.cs
+//  File:InternalCocoaWminfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,27 +30,17 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal directfb wminfo
+    ///     The internal cocoa wminfo
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct InternalDirectfbWminfo
+    public struct InternalCocoaWmInfo
     {
         /// <summary>
-        ///     The dfb
+        ///    Refers to an NSWindow*
         /// </summary>
-        public IntPtr dfb; // Refers to an IDirectFB*
-
-        /// <summary>
-        ///     The window
-        /// </summary>
-        public IntPtr window; // Refers to an IDirectFBWindow*
-
-        /// <summary>
-        ///     The surface
-        /// </summary>
-        public IntPtr surface; // Refers to an IDirectFBSurface*
+        public IntPtr window; 
     }
 }

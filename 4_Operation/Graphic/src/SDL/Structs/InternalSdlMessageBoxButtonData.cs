@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:InternalSdlMessageBoxButtonData.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,47 +30,27 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl messageboxdata
+    ///     The internal sdl message box button data
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    internal struct InternalSdlMessageBoxButtonData
     {
         /// <summary>
         ///     The flags
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public SdlMessageBoxButtonFlags flags;
 
         /// <summary>
-        ///     The window
+        ///     The button id
         /// </summary>
-        public IntPtr window; /* Parent window, can be NULL */
+        public int buttonId;
 
         /// <summary>
-        ///     The title
+        ///     The UTF-8 button text
         /// </summary>
-        public IntPtr title; /* UTF-8 title */
-
-        /// <summary>
-        ///     The message
-        /// </summary>
-        public IntPtr message; /* UTF-8 message text */
-
-        /// <summary>
-        ///     The numbuttons
-        /// </summary>
-        public int numbuttons;
-
-        /// <summary>
-        ///     The buttons
-        /// </summary>
-        public IntPtr buttons;
-
-        /// <summary>
-        ///     The color scheme
-        /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        public IntPtr text; 
     }
 }

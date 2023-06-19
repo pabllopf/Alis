@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalWaylandWminfo.cs
+//  File:InternalAndroidWminfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,42 +30,22 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal wayland wminfo
+    ///     The internal android wminfo
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct InternalWaylandWminfo
+    public struct InternalAndroidWminfo
     {
         /// <summary>
-        ///     The display
+        ///     Refers to an ANativeWindow
         /// </summary>
-        public IntPtr display; // Refers to a wl_display*
+        public IntPtr window; 
 
         /// <summary>
-        ///     The surface
+        ///     Refers to an EGLSurface
         /// </summary>
-        public IntPtr surface; // Refers to a wl_surface*
-
-        /// <summary>
-        ///     The shell surface
-        /// </summary>
-        public IntPtr shell_surface; // Refers to a wl_shell_surface*
-
-        /// <summary>
-        ///     The egl window
-        /// </summary>
-        public IntPtr egl_window; // Refers to an egl_window*, requires >= 2.0.16
-
-        /// <summary>
-        ///     The xdg surface
-        /// </summary>
-        public IntPtr xdg_surface; // Refers to an xdg_surface*, requires >= 2.0.16
-
-        /// <summary>
-        ///     The xdg toplevel
-        /// </summary>
-        public IntPtr xdg_toplevel; // Referes to an xdg_toplevel*, requires >= 2.0.18
+        public IntPtr surface; 
     }
 }

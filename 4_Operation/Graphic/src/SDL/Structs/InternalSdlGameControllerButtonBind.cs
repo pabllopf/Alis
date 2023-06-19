@@ -29,10 +29,10 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl gamecontrollerbuttonbind
+    ///     The internal sdl game controller button bind
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     internal struct InternalSdlGameControllerButtonBind
@@ -41,8 +41,7 @@ namespace Alis.Core.Graphic.SDL
         ///     The bind type
         /// </summary>
         public readonly int bindType;
-
-        /* Largest data type in the union is two ints in size */
+        
         /// <summary>
         ///     The union val
         /// </summary>

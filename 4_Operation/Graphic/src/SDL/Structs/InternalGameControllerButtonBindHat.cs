@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxButtonData.cs
+//  File:InternalGameControllerButtonBindHat.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,30 +27,24 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl messageboxbuttondata
+    ///     The internal game controller button bind hat
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxButtonData
+    public struct InternalGameControllerButtonBindHat
     {
         /// <summary>
-        ///     The flags
+        ///     The hat
         /// </summary>
-        public SdlMessageBoxButtonFlags flags;
+        public int hat;
 
         /// <summary>
-        ///     The buttonid
+        ///     The hat mask
         /// </summary>
-        public int buttonid;
-
-        /// <summary>
-        ///     The text
-        /// </summary>
-        public IntPtr text; /* The UTF-8 button text */
+        public int hat_mask;
     }
 }

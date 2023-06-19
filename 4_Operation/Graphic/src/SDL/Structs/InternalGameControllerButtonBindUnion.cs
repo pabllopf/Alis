@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalWindowsWminfo.cs
+//  File:InternalGameControllerButtonBindUnion.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,30 +27,32 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal windows wminfo
+    ///     The internal game controller button bind union
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct InternalWindowsWminfo
+    [StructLayout(LayoutKind.Explicit)]
+    public struct InternalGameControllerButtonBindUnion
     {
         /// <summary>
-        ///     The window
+        ///     The button
         /// </summary>
-        public IntPtr window; // Refers to an HWND
+        [FieldOffset(0)] 
+        public readonly int button;
 
         /// <summary>
-        ///     The hdc
+        ///     The axis
         /// </summary>
-        public IntPtr hdc; // Refers to an HDC
+        [FieldOffset(0)] 
+        public readonly int axis;
 
         /// <summary>
-        ///     The hinstance
+        ///     The hat
         /// </summary>
-        public IntPtr hinstance; // Refers to an HINSTANCE
+        [FieldOffset(0)] 
+        public InternalGameControllerButtonBindHat hat;
     }
 }

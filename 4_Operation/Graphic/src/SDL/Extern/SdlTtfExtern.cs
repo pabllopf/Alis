@@ -45,14 +45,14 @@ namespace Alis.Core.Graphic.SDL.Extern
         internal static extern IntPtr INTERNAL_TTF_LinkedVersion();
 
         /// <summary>
-        ///     Ttfs the byte swapped unicode using the specified swapped
+        ///     Ttf the byte swapped unicode using the specified swapped
         /// </summary>
         /// <param name="swapped">The swapped</param>
         [DllImport(SdlTtf.NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void TTF_ByteSwappedUNICODE(int swapped);
 
         /// <summary>
-        ///     Ttfs the init
+        ///     Ttf the init
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(SdlTtf.NativeLibName, CallingConvention = CallingConvention.Cdecl)]
@@ -62,26 +62,26 @@ namespace Alis.Core.Graphic.SDL.Extern
         ///     Internals the ttf open font using the specified file
         /// </summary>
         /// <param name="file">The file</param>
-        /// <param name="ptsize">The ptsize</param>
+        /// <param name="ptSize">The ptSize</param>
         /// <returns>The int ptr</returns>
         [DllImport(SdlTtf.NativeLibName, EntryPoint = "TTF_OpenFont", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr INTERNAL_TTF_OpenFont(
             byte[] file,
-            int ptsize
+            int ptSize
         );
 
         /// <summary>
-        ///     Ttfs the open font rw using the specified src
+        ///     Ttf the open font rw using the specified src
         /// </summary>
         /// <param name="src">The src</param>
-        /// <param name="freesrc">The freesrc</param>
-        /// <param name="ptsize">The ptsize</param>
+        /// <param name="freeSrc">The freeSrc</param>
+        /// <param name="ptSize">The ptSize</param>
         /// <returns>The int ptr</returns>
         [DllImport(SdlTtf.NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr TTF_OpenFontRW(
             IntPtr src,
-            int freesrc,
-            int ptsize
+            int freeSrc,
+            int ptSize
         );
 
         /// <summary>

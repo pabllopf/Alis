@@ -30,22 +30,22 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal mir wminfo
+    ///     The internal mir wm info
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct InternalMirWminfo
+    public struct InternalMirWmInfo
     {
         /// <summary>
-        ///     The connection
+        ///     Refers to a MirConnection*
         /// </summary>
-        public IntPtr connection; // Refers to a MirConnection*
+        public IntPtr connection; 
 
         /// <summary>
-        ///     The surface
+        ///     Refers to a MirSurface*
         /// </summary>
-        public IntPtr surface; // Refers to a MirSurface*
+        public IntPtr surface; 
     }
 }

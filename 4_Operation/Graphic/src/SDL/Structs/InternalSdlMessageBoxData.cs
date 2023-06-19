@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalVivanteWminfo.cs
+//  File:InternalSdlMessageBoxData.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,22 +30,47 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal vivante wminfo
+    ///     The internal sdl message box data
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct InternalVivanteWminfo
+    internal struct InternalSdlMessageBoxData
     {
         /// <summary>
-        ///     The display
+        ///     The flags
         /// </summary>
-        public IntPtr display;
+        public SdlMessageBoxFlags flags;
 
         /// <summary>
-        ///     The window
+        ///     The window, Parent window, can be NULL
         /// </summary>
-        public IntPtr window;
+        public IntPtr window; 
+
+        /// <summary>
+        ///     The title, UTF-8 title
+        /// </summary>
+        public IntPtr title; 
+
+        /// <summary>
+        ///     The message
+        /// </summary>
+        public IntPtr message; /* UTF-8 message text */
+
+        /// <summary>
+        ///     The numbuttons
+        /// </summary>
+        public int numbuttons;
+
+        /// <summary>
+        ///     The buttons
+        /// </summary>
+        public IntPtr buttons;
+
+        /// <summary>
+        ///     The color scheme
+        /// </summary>
+        public IntPtr colorScheme; /* Can be NULL to use system settings */
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSysWmDriverUnion.cs
+//  File:InternalWaylandWminfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,74 +27,45 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal syswmdriverunion
+    ///     The internal wayland wm info
     /// </summary>
-    [StructLayout(LayoutKind.Explicit)]
-    public struct InternalSysWmDriverUnion
+    [StructLayout(LayoutKind.Sequential)]
+    public struct InternalWaylandWmInfo
     {
         /// <summary>
-        ///     The win
+        ///      Refers to a wl_display*
         /// </summary>
-        [FieldOffset(0)] public InternalWindowsWminfo win;
+        public IntPtr display; 
 
         /// <summary>
-        ///     The winrt
+        ///     Refers to a wl_surface*
         /// </summary>
-        [FieldOffset(0)] public InternalWinrtWminfo winrt;
+        public IntPtr surface; 
 
         /// <summary>
-        ///     The 11
+        ///     Refers to a wl_shell_surface*
         /// </summary>
-        [FieldOffset(0)] public InternalX11Wminfo x11;
+        public IntPtr shell_surface; 
 
         /// <summary>
-        ///     The dfb
+        ///     Refers to an egl_window*, requires >= 2.0.16
         /// </summary>
-        [FieldOffset(0)] public InternalDirectfbWminfo dfb;
+        public IntPtr egl_window; 
 
         /// <summary>
-        ///     The cocoa
+        ///     Refers to an xdg_surface*, requires >= 2.0.16
         /// </summary>
-        [FieldOffset(0)] public InternalCocoaWminfo cocoa;
+        public IntPtr xdg_surface;  
 
         /// <summary>
-        ///     The uikit
+        ///     Refers to an xdg_toplevel*, requires >= 2.0.18
         /// </summary>
-        [FieldOffset(0)] public InternalUikitWminfo uikit;
-
-        /// <summary>
-        ///     The wl
-        /// </summary>
-        [FieldOffset(0)] public InternalWaylandWminfo wl;
-
-        /// <summary>
-        ///     The mir
-        /// </summary>
-        [FieldOffset(0)] public InternalMirWminfo mir;
-
-        /// <summary>
-        ///     The android
-        /// </summary>
-        [FieldOffset(0)] public InternalAndroidWminfo android;
-
-        /// <summary>
-        ///     The os
-        /// </summary>
-        [FieldOffset(0)] public InternalOs2Wminfo os2;
-
-        /// <summary>
-        ///     The vivante
-        /// </summary>
-        [FieldOffset(0)] public InternalVivanteWminfo vivante;
-
-        /// <summary>
-        ///     The ksmdrm
-        /// </summary>
-        [FieldOffset(0)] public InternalKmsdrmWminfo ksmdrm;
+        public IntPtr xdg_toplevel; 
     }
 }

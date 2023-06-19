@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalAndroidWminfo.cs
+//  File:InternalWindowsWmInfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,22 +30,27 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal android wminfo
+    ///     The internal windows wm info
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct InternalAndroidWminfo
+    public struct InternalWindowsWmInfo
     {
         /// <summary>
-        ///     The window
+        ///    Refers to an HWND
         /// </summary>
-        public IntPtr window; // Refers to an ANativeWindow
+        public IntPtr window; 
 
         /// <summary>
-        ///     The surface
+        ///     Refers to an HDC
         /// </summary>
-        public IntPtr surface; // Refers to an EGLSurface
+        public IntPtr hdc; 
+
+        /// <summary>
+        ///     Refers to an H INSTANCE
+        /// </summary>
+        public IntPtr hInstance; 
     }
 }

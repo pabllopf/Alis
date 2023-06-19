@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalGameControllerButtonBindHat.cs
+//  File:InternalOs2Wminfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,24 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal gamecontrollerbuttonbind hat
+    ///     The internal os2 wm info
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct InternalGameControllerButtonBindHat
+    public struct InternalOs2WmInfo
     {
         /// <summary>
-        ///     The hat
+        ///     Refers to an HWND
         /// </summary>
-        public int hat;
+        public IntPtr hwnd;  
 
         /// <summary>
-        ///     The hat mask
+        ///     efers to an HWND
         /// </summary>
-        public int hat_mask;
+        public IntPtr hwndFrame; 
     }
 }

@@ -32,6 +32,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Graphic.Properties;
+using Alis.Core.Graphic.SDL.Structs;
 
 namespace Alis.Core.Graphic.SDL
 {
@@ -3057,7 +3058,7 @@ namespace Alis.Core.Graphic.SDL
                     buttons[i] = new InternalSdlMessageBoxButtonData
                     {
                         flags = messageboxdata.buttons[i].flags,
-                        buttonid = messageboxdata.buttons[i].buttonid,
+                        buttonId = messageboxdata.buttons[i].buttonid,
                         text = INTERNAL_AllocUTF8(messageboxdata.buttons[i].text)
                     };
                 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalGameControllerButtonBindUnion.cs
+//  File:InternalDirectfbWminfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,29 +27,30 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal gamecontrollerbuttonbind union
+    ///     The internal directfb info
     /// </summary>
-    [StructLayout(LayoutKind.Explicit)]
-    public struct InternalGameControllerButtonBindUnion
+    [StructLayout(LayoutKind.Sequential)]
+    public struct InternalDirectfbWmInfo
     {
         /// <summary>
-        ///     The button
+        ///     Refers to an IDirectFB*
         /// </summary>
-        [FieldOffset(0)] public readonly int button;
+        public IntPtr dfb; 
 
         /// <summary>
-        ///     The axis
+        ///      Refers to an IDirectFBWindow*
         /// </summary>
-        [FieldOffset(0)] public readonly int axis;
+        public IntPtr window; 
 
         /// <summary>
-        ///     The hat
+        ///      Refers to an IDirectFBSurface*
         /// </summary>
-        [FieldOffset(0)] public InternalGameControllerButtonBindHat hat;
+        public IntPtr surface; 
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalOs2Wminfo.cs
+//  File:InternalUikitWminfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,22 +30,32 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal os2 wminfo
+    ///     The internal uikit wm info
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct InternalOs2Wminfo
+    public struct InternalUikitWmInfo
     {
         /// <summary>
-        ///     The hwnd
+        ///     Refers to a UIWindow*
         /// </summary>
-        public IntPtr hwnd; // Refers to an HWND
+        public IntPtr window; 
 
         /// <summary>
-        ///     The hwnd frame
+        ///     The frame buffer
         /// </summary>
-        public IntPtr hwndFrame; // Refers to an HWND
+        public readonly uint framebuffer;
+
+        /// <summary>
+        ///     The color buffer
+        /// </summary>
+        public readonly uint colorBuffer;
+
+        /// <summary>
+        ///     The resolve frame buffer
+        /// </summary>
+        public readonly uint resolveFramebuffer;
     }
 }

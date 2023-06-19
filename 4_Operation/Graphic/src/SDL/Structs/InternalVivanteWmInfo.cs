@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalCocoaWminfo.cs
+//  File:InternalVivanteWminfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,17 +30,22 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal cocoa wminfo
+    ///     The internal vivante wm info
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct InternalCocoaWminfo
+    public struct InternalVivanteWmInfo
     {
+        /// <summary>
+        ///     The display
+        /// </summary>
+        public IntPtr display;
+
         /// <summary>
         ///     The window
         /// </summary>
-        public IntPtr window; // Refers to an NSWindow*
+        public IntPtr window;
     }
 }

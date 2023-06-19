@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalUikitWminfo.cs
+//  File:InternalKmsdrmWminfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,32 +30,27 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal uikit wminfo
+    ///     The internal kms wm info
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct InternalUikitWminfo
+    public struct InternalKmsWmInfo
     {
         /// <summary>
-        ///     The window
+        ///     The dev index
         /// </summary>
-        public IntPtr window; // Refers to a UIWindow*
+        private readonly int dev_index;
 
         /// <summary>
-        ///     The framebuffer
+        ///     The drm fd
         /// </summary>
-        public readonly uint framebuffer;
+        private readonly int drm_fd;
 
         /// <summary>
-        ///     The colorbuffer
+        ///     Refers to a gbm_device*
         /// </summary>
-        public readonly uint colorbuffer;
-
-        /// <summary>
-        ///     The resolve framebuffer
-        /// </summary>
-        public readonly uint resolveFramebuffer;
+        private readonly IntPtr gbm_dev; 
     }
 }
