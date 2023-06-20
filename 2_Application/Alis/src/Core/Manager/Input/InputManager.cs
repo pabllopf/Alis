@@ -62,39 +62,86 @@ namespace Alis.Core.Manager.Input
         }
 
         /// <summary>
-        ///     Dispatches the events
+        /// Dispatches the events
         /// </summary>
         public override void DispatchEvents()
         {
-            for (int index = 0; index < keys.Count - 7; index++)
+            foreach (Key key in keys)
             {
-                if (Keyboard.IsKeyPressed(keys[index]) && !tempListOfKeys.Contains(keys[index]))
+                if (Keyboard.IsKeyPressed(key))
                 {
-                    tempListOfKeys.Add(keys[index]);
-
-                    foreach (GameObject currentSceneGameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
-                    {
-                        currentSceneGameObject.Components.ForEach(i => i.OnPressKey(keys[index]));
-                    }
+                    HandleKeyPress(key);
                 }
-
-                if (!Keyboard.IsKeyPressed(keys[index]) && tempListOfKeys.Contains(keys[index]))
+                else
                 {
-                    tempListOfKeys.Remove(keys[index]);
-                    foreach (GameObject currentSceneGameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
-                    {
-                        currentSceneGameObject.Components.ForEach(i => i.OnReleaseKey(keys[index]));
-                    }
+                    HandleKeyRelease(key);
                 }
+            }
+        }
 
+        /// <summary>
+        /// Handles the key press using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        private void HandleKeyPress(Key key)
+        {
+            if (!tempListOfKeys.Contains(key))
+            {
+                tempListOfKeys.Add(key);
+                NotifyKeyPress(key);
+            }
+            else
+            {
+                NotifyKeyHold(key);
+            }
+        }
 
-                if (Keyboard.IsKeyPressed(keys[index]) && tempListOfKeys.Contains(keys[index]))
-                {
-                    foreach (GameObject currentSceneGameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
-                    {
-                        currentSceneGameObject.Components.ForEach(i => i.OnPressDownKey(keys[index]));
-                    }
-                }
+        /// <summary>
+        /// Handles the key release using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        private void HandleKeyRelease(Key key)
+        {
+            if (tempListOfKeys.Contains(key))
+            {
+                tempListOfKeys.Remove(key);
+                NotifyKeyRelease(key);
+            }
+        }
+
+        /// <summary>
+        /// Notifies the key press using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        private static void NotifyKeyPress(Key key)
+        {
+            foreach (GameObject gameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
+            {
+                gameObject.Components.ForEach(component => component.OnPressKey(key));
+            }
+        }
+
+        /// <summary>
+        /// Notifies the key hold using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        private static void NotifyKeyHold(Key key)
+        {
+            foreach (GameObject gameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
+            {
+                gameObject.Components.ForEach(component => component.OnPressDownKey(key));
+            }
+        }
+
+        /// <summary>
+        /// Notifies the key release using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        private static void NotifyKeyRelease(Key key)
+        {
+            foreach (GameObject gameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
+            {
+                gameObject.Components.ForEach(component => component.OnReleaseKey(key));
             }
         }
     }

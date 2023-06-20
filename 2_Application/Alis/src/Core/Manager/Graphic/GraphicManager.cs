@@ -85,7 +85,7 @@ namespace Alis.Core.Manager.Graphic
         /// <summary>
         ///     The current
         /// </summary>
-        public static GraphicManager Current;
+        internal static GraphicManager Current;
 
         /// <summary>
         ///     Inits this instance
