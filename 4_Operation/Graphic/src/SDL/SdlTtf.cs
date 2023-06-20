@@ -163,7 +163,7 @@ namespace Alis.Core.Graphic.SDL
         )
         {
             byte[] utf8Text = Sdl.Utf8EncodeHeap(text);
-            IntPtr result = SdlTtfExtern.INTERNAL_TTF_RenderUTF8_Blended_Wrapped(
+            IntPtr result = SdlTtfExtern.InternalTtfRenderUtf8BlendedWrapped(
                 font,
                 utf8Text,
                 fg,
@@ -202,7 +202,7 @@ namespace Alis.Core.Graphic.SDL
         )
         {
             byte[] utf8Text = Sdl.Utf8EncodeHeap(text);
-            IntPtr result = SdlTtfExtern.INTERNAL_TTF_RenderUTF8_Blended(
+            IntPtr result = SdlTtfExtern.InternalTtfRenderUtf8Blended(
                 font,
                 utf8Text,
                 fg
