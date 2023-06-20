@@ -1,5 +1,5 @@
 <Project>
     <PropertyGroup>
-        <DocumentationFile>$(SolutionDir)docs/resources/xmls/$(TargetFramework)/$(AssemblyName).xml</DocumentationFile>
+        <DocumentationFile>$(SolutionDir)docs/resources/xmls/$(Configuration)/$(TargetFramework)/$(AssemblyName).xml</DocumentationFile>
     </PropertyGroup>
 </Project>
