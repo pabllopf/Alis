@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlHapticDirection.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl hapticdirection
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public struct SdlHapticDirection
     {
         /// <summary>
-        ///     The flags
+        ///     The type
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public readonly byte type;
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The dir
         /// </summary>
-        public IntPtr window;
-
-        /// <summary>
-        ///     The title, UTF-8 title
-        /// </summary>
-        public IntPtr title;
-
-        /// <summary>
-        ///     The message
-        /// </summary>
-        public IntPtr message; /* UTF-8 message text */
-
-        /// <summary>
-        ///     The numbuttons
-        /// </summary>
-        public int numbuttons;
-
-        /// <summary>
-        ///     The buttons
-        /// </summary>
-        public IntPtr buttons;
-
-        /// <summary>
-        ///     The color scheme
-        /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        [MarshalAs(UnmanagedType.LPArray, SizeConst = 3)]
+        public readonly int[] dir;
     }
 }

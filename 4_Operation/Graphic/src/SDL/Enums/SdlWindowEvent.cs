@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlWindowEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,59 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
 
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl windowevent
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public struct SdlWindowEvent
     {
         /// <summary>
-        ///     The flags
+        ///     The type
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public readonly SdlEventType type;
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The timestamp
         /// </summary>
-        public IntPtr window;
+        public readonly uint timestamp;
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The window id
         /// </summary>
-        public IntPtr title;
+        public readonly uint windowID;
 
         /// <summary>
-        ///     The message
+        ///     The window event
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        public readonly SdlWindowEventId windowEvent; // event, lolC#
 
         /// <summary>
-        ///     The numbuttons
+        ///     The padding
         /// </summary>
-        public int numbuttons;
+        private readonly byte padding1;
 
         /// <summary>
-        ///     The buttons
+        ///     The padding
         /// </summary>
-        public IntPtr buttons;
+        private readonly byte padding2;
 
         /// <summary>
-        ///     The color scheme
+        ///     The padding
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        private readonly byte padding3;
+
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public readonly int data1;
+
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public readonly int data2;
     }
 }

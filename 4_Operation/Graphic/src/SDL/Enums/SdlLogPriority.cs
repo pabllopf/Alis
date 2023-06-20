@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlLogPriority.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,46 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
-
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl logpriority enum
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public enum SdlLogPriority
     {
         /// <summary>
-        ///     The flags
+        ///     The sdl log priority verbose sdl logpriority
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        SdlLogPriorityVerbose = 1,
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The sdl log priority debug sdl logpriority
         /// </summary>
-        public IntPtr window;
+        SdlLogPriorityDebug,
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The sdl log priority info sdl logpriority
         /// </summary>
-        public IntPtr title;
+        SdlLogPriorityInfo,
 
         /// <summary>
-        ///     The message
+        ///     The sdl log priority warn sdl logpriority
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        SdlLogPriorityWarn,
 
         /// <summary>
-        ///     The numbuttons
+        ///     The sdl log priority error sdl logpriority
         /// </summary>
-        public int numbuttons;
+        SdlLogPriorityError,
 
         /// <summary>
-        ///     The buttons
+        ///     The sdl log priority critical sdl logpriority
         /// </summary>
-        public IntPtr buttons;
+        SdlLogPriorityCritical,
 
         /// <summary>
-        ///     The color scheme
+        ///     The sdl num log priorities sdl logpriority
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        SdlNumLogPriorities
     }
 }

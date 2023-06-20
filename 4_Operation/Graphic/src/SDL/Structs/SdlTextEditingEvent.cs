@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlTextEditingEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -34,44 +34,53 @@ using Alis.Core.Graphic.SDL.Enums;
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl texteditingevent
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public struct SdlTextEditingEvent
     {
         /// <summary>
-        ///     The flags
+        ///     The type
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public readonly SdlEventType type;
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The timestamp
         /// </summary>
-        public IntPtr window;
+        public readonly uint timestamp;
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The window id
         /// </summary>
-        public IntPtr title;
+        public readonly uint windowID;
 
         /// <summary>
-        ///     The message
+        ///     The sdl texteditingevent text size
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        private readonly IntPtr textPtr;
 
         /// <summary>
-        ///     The numbuttons
+        ///     The start
         /// </summary>
-        public int numbuttons;
+        public readonly int start;
 
         /// <summary>
-        ///     The buttons
+        ///     The length
         /// </summary>
-        public IntPtr buttons;
+        public readonly int length;
 
         /// <summary>
-        ///     The color scheme
+        ///     Gets or sets the value of the text
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        public byte[] Text
+        {
+            get
+            {
+                byte[] textBytes = new byte[Sdl.SdlTexteditingeventTextSize];
+                Marshal.Copy(textPtr, textBytes, 0, Sdl.SdlTexteditingeventTextSize);
+                return textBytes;
+            }
+            set => Marshal.Copy(value, 0, textPtr, Sdl.SdlTexteditingeventTextSize);
+        }
     }
 }

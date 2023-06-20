@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlHapticCustom.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,49 +29,88 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl hapticcustom
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public struct SdlHapticCustom
     {
+        // Header
         /// <summary>
-        ///     The flags
+        ///     The type
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public readonly ushort type;
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The direction
         /// </summary>
-        public IntPtr window;
+        public SdlHapticDirection direction;
+
+        // Replay
+        /// <summary>
+        ///     The length
+        /// </summary>
+        public readonly uint length;
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The delay
         /// </summary>
-        public IntPtr title;
+        public readonly ushort delay;
+
+        // Trigger
+        /// <summary>
+        ///     The button
+        /// </summary>
+        public readonly ushort button;
 
         /// <summary>
-        ///     The message
+        ///     The interval
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        public readonly ushort interval;
+
+        // Custom
+        /// <summary>
+        ///     The channels
+        /// </summary>
+        public readonly byte channels;
 
         /// <summary>
-        ///     The numbuttons
+        ///     The period
         /// </summary>
-        public int numbuttons;
+        public readonly ushort period;
 
         /// <summary>
-        ///     The buttons
+        ///     The samples
         /// </summary>
-        public IntPtr buttons;
+        public readonly ushort samples;
 
         /// <summary>
-        ///     The color scheme
+        ///     The data
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        public IntPtr data; // Uint16*
+
+        // Envelope
+        /// <summary>
+        ///     The attack length
+        /// </summary>
+        public readonly ushort attack_length;
+
+        /// <summary>
+        ///     The attack level
+        /// </summary>
+        public readonly ushort attack_level;
+
+        /// <summary>
+        ///     The fade length
+        /// </summary>
+        public readonly ushort fade_length;
+
+        /// <summary>
+        ///     The fade level
+        /// </summary>
+        public readonly ushort fade_level;
     }
 }

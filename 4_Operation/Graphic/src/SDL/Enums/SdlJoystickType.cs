@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlJoystickType.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,56 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
-
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl joysticktype enum
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public enum SdlJoystickType
     {
         /// <summary>
-        ///     The flags
+        ///     The sdl joystick type unknown sdl joysticktype
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        SdlJoystickTypeUnknown,
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The sdl joystick type gamecontroller sdl joysticktype
         /// </summary>
-        public IntPtr window;
+        SdlJoystickTypeGamecontroller,
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The sdl joystick type wheel sdl joysticktype
         /// </summary>
-        public IntPtr title;
+        SdlJoystickTypeWheel,
 
         /// <summary>
-        ///     The message
+        ///     The sdl joystick type arcade stick sdl joysticktype
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        SdlJoystickTypeArcadeStick,
 
         /// <summary>
-        ///     The numbuttons
+        ///     The sdl joystick type flight stick sdl joysticktype
         /// </summary>
-        public int numbuttons;
+        SdlJoystickTypeFlightStick,
 
         /// <summary>
-        ///     The buttons
+        ///     The sdl joystick type dance pad sdl joysticktype
         /// </summary>
-        public IntPtr buttons;
+        SdlJoystickTypeDancePad,
 
         /// <summary>
-        ///     The color scheme
+        ///     The sdl joystick type guitar sdl joysticktype
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        SdlJoystickTypeGuitar,
+
+        /// <summary>
+        ///     The sdl joystick type drum kit sdl joysticktype
+        /// </summary>
+        SdlJoystickTypeDrumKit,
+
+        /// <summary>
+        ///     The sdl joystick type arcade pad sdl joysticktype
+        /// </summary>
+        SdlJoystickTypeArcadePad
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlPalette.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,49 +29,33 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl palette
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public struct SdlPalette
     {
         /// <summary>
-        ///     The flags
+        ///     The ncolors
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public readonly int ncolors;
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The colors
         /// </summary>
-        public IntPtr window;
+        public IntPtr colors;
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The version
         /// </summary>
-        public IntPtr title;
+        public readonly int version;
 
         /// <summary>
-        ///     The message
+        ///     The refcount
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
-
-        /// <summary>
-        ///     The numbuttons
-        /// </summary>
-        public int numbuttons;
-
-        /// <summary>
-        ///     The buttons
-        /// </summary>
-        public IntPtr buttons;
-
-        /// <summary>
-        ///     The color scheme
-        /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        public readonly int refcount;
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlTouchFingerEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,64 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl touchfingerevent
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public struct SdlTouchFingerEvent
     {
         /// <summary>
-        ///     The flags
+        ///     The type
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public readonly uint type;
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The timestamp
         /// </summary>
-        public IntPtr window;
+        public readonly uint timestamp;
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The touch id
         /// </summary>
-        public IntPtr title;
+        public readonly long touchId; // SDL_TouchID
 
         /// <summary>
-        ///     The message
+        ///     The finger id
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        public readonly long fingerId; // SDL_GestureID
 
         /// <summary>
-        ///     The numbuttons
+        ///     The
         /// </summary>
-        public int numbuttons;
+        public readonly float x;
 
         /// <summary>
-        ///     The buttons
+        ///     The
         /// </summary>
-        public IntPtr buttons;
+        public readonly float y;
 
         /// <summary>
-        ///     The color scheme
+        ///     The dx
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        public readonly float dx;
+
+        /// <summary>
+        ///     The dy
+        /// </summary>
+        public readonly float dy;
+
+        /// <summary>
+        ///     The pressure
+        /// </summary>
+        public readonly float pressure;
+
+        /// <summary>
+        ///     The window id
+        /// </summary>
+        public readonly uint windowID;
     }
 }

@@ -3018,7 +3018,7 @@ namespace Alis.Core.Graphic.SDL
                     buttons[i] = new InternalSdlMessageBoxButtonData
                     {
                         flags = messageboxdata.buttons[i].flags,
-                        buttonId = messageboxdata.buttons[i].buttonid,
+                        buttonId = messageboxdata.buttons[i].buttonId,
                         text = INTERNAL_AllocUTF8(messageboxdata.buttons[i].text)
                     };
                 }

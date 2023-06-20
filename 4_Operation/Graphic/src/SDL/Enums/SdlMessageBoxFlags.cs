@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlMessageBoxFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,50 +28,28 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
 
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl messageboxflags enum
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    [Flags]
+    public enum SdlMessageBoxFlags : uint
     {
         /// <summary>
-        ///     The flags
+        ///     The sdl messagebox error sdl messageboxflags
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        SdlMessageboxError = 0x00000010,
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The sdl messagebox warning sdl messageboxflags
         /// </summary>
-        public IntPtr window;
+        SdlMessageboxWarning = 0x00000020,
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The sdl messagebox information sdl messageboxflags
         /// </summary>
-        public IntPtr title;
-
-        /// <summary>
-        ///     The message
-        /// </summary>
-        public IntPtr message; /* UTF-8 message text */
-
-        /// <summary>
-        ///     The numbuttons
-        /// </summary>
-        public int numbuttons;
-
-        /// <summary>
-        ///     The buttons
-        /// </summary>
-        public IntPtr buttons;
-
-        /// <summary>
-        ///     The color scheme
-        /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        SdlMessageboxInformation = 0x00000040
     }
 }

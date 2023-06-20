@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlPackedLayout.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,56 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
-
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl packedlayout enum
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public enum SdlPackedLayout
     {
         /// <summary>
-        ///     The flags
+        ///     The sdl packedlayout none sdl packedlayout
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        SdlPackedlayoutNone,
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The sdl packedlayout 332 sdl packedlayout
         /// </summary>
-        public IntPtr window;
+        SdlPackedlayout332,
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The sdl packedlayout 4444 sdl packedlayout
         /// </summary>
-        public IntPtr title;
+        SdlPackedlayout4444,
 
         /// <summary>
-        ///     The message
+        ///     The sdl packedlayout 1555 sdl packedlayout
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        SdlPackedlayout1555,
 
         /// <summary>
-        ///     The numbuttons
+        ///     The sdl packedlayout 5551 sdl packedlayout
         /// </summary>
-        public int numbuttons;
+        SdlPackedlayout5551,
 
         /// <summary>
-        ///     The buttons
+        ///     The sdl packedlayout 565 sdl packedlayout
         /// </summary>
-        public IntPtr buttons;
+        SdlPackedlayout565,
 
         /// <summary>
-        ///     The color scheme
+        ///     The sdl packedlayout 8888 sdl packedlayout
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        SdlPackedlayout8888,
+
+        /// <summary>
+        ///     The sdl packedlayout 2101010 sdl packedlayout
+        /// </summary>
+        SdlPackedlayout2101010,
+
+        /// <summary>
+        ///     The sdl packedlayout 1010102 sdl packedlayout
+        /// </summary>
+        SdlPackedlayout1010102
     }
 }

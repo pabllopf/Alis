@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlUserEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,49 +29,43 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl userevent
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public struct SdlUserEvent
     {
         /// <summary>
-        ///     The flags
+        ///     The type
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public readonly uint type;
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The timestamp
         /// </summary>
-        public IntPtr window;
+        public readonly uint timestamp;
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The window id
         /// </summary>
-        public IntPtr title;
+        public readonly uint windowID;
 
         /// <summary>
-        ///     The message
+        ///     The code
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        public readonly int code;
 
         /// <summary>
-        ///     The numbuttons
+        ///     The data
         /// </summary>
-        public int numbuttons;
+        public IntPtr data1; /* user-defined */
 
         /// <summary>
-        ///     The buttons
+        ///     The data
         /// </summary>
-        public IntPtr buttons;
-
-        /// <summary>
-        ///     The color scheme
-        /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        public IntPtr data2; /* user-defined */
     }
 }

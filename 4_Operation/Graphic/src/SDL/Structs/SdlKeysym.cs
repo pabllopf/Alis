@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlKeysym.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,35 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl keysym
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public struct SdlKeysym
     {
         /// <summary>
-        ///     The flags
+        ///     The scancode
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public readonly SdlScancode scancode;
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The sym
         /// </summary>
-        public IntPtr window;
+        public readonly SdlKeycode sym;
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The mod
         /// </summary>
-        public IntPtr title;
+        public readonly SdlKeymod mod;
 
         /// <summary>
-        ///     The message
+        ///     The unicode
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
-
-        /// <summary>
-        ///     The numbuttons
-        /// </summary>
-        public int numbuttons;
-
-        /// <summary>
-        ///     The buttons
-        /// </summary>
-        public IntPtr buttons;
-
-        /// <summary>
-        ///     The color scheme
-        /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        public readonly uint unicode;
     }
 }

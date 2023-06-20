@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlMessageBoxData.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -34,44 +34,44 @@ using Alis.Core.Graphic.SDL.Enums;
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl messageboxdata
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public struct SdlMessageBoxData
     {
         /// <summary>
         ///     The flags
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public readonly SdlMessageBoxFlags flags;
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The window
         /// </summary>
-        public IntPtr window;
+        public IntPtr window; /* Parent window, can be NULL */
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The title
         /// </summary>
-        public IntPtr title;
+        public readonly string title; /* UTF-8 title */
 
         /// <summary>
         ///     The message
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        public readonly string message; /* UTF-8 message text */
 
         /// <summary>
         ///     The numbuttons
         /// </summary>
-        public int numbuttons;
+        public readonly int numbuttons;
 
         /// <summary>
         ///     The buttons
         /// </summary>
-        public IntPtr buttons;
+        public readonly SdlMessageBoxButtonData[] buttons;
 
         /// <summary>
         ///     The color scheme
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        public SdlMessageBoxColorScheme? colorScheme; /* Can be NULL to use system settings */
     }
 }

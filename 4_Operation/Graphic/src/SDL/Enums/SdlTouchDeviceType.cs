@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlTouchDeviceType.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,31 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
-
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl touchdevicetype enum
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public enum SdlTouchDeviceType
     {
         /// <summary>
-        ///     The flags
+        ///     The sdl touch device invalid sdl touchdevicetype
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        SdlTouchDeviceInvalid = -1,
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The sdl touch device direct sdl touchdevicetype
         /// </summary>
-        public IntPtr window;
+        SdlTouchDeviceDirect,
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The sdl touch device indirect absolute sdl touchdevicetype
         /// </summary>
-        public IntPtr title;
+        SdlTouchDeviceIndirectAbsolute,
 
         /// <summary>
-        ///     The message
+        ///     The sdl touch device indirect relative sdl touchdevicetype
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
-
-        /// <summary>
-        ///     The numbuttons
-        /// </summary>
-        public int numbuttons;
-
-        /// <summary>
-        ///     The buttons
-        /// </summary>
-        public IntPtr buttons;
-
-        /// <summary>
-        ///     The color scheme
-        /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        SdlTouchDeviceIndirectRelative
     }
 }

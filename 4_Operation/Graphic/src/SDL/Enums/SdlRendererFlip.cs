@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlRendererFlip.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,50 +28,28 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
 
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl rendererflip enum
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    [Flags]
+    public enum SdlRendererFlip
     {
         /// <summary>
-        ///     The flags
+        ///     The sdl flip none sdl rendererflip
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        None = 0x00000000,
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The sdl flip horizontal sdl rendererflip
         /// </summary>
-        public IntPtr window;
+        SdlFlipHorizontal = 0x00000001,
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The sdl flip vertical sdl rendererflip
         /// </summary>
-        public IntPtr title;
-
-        /// <summary>
-        ///     The message
-        /// </summary>
-        public IntPtr message; /* UTF-8 message text */
-
-        /// <summary>
-        ///     The numbuttons
-        /// </summary>
-        public int numbuttons;
-
-        /// <summary>
-        ///     The buttons
-        /// </summary>
-        public IntPtr buttons;
-
-        /// <summary>
-        ///     The color scheme
-        /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        SdlFlipVertical = 0x00000002
     }
 }

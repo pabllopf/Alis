@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlHitTestResult.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,61 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
-
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl hittestresult enum
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public enum SdlHitTestResult
     {
         /// <summary>
-        ///     The flags
+        ///     The sdl hittest normal sdl hittestresult
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        SdlHittestNormal,
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The sdl hittest draggable sdl hittestresult
         /// </summary>
-        public IntPtr window;
+        SdlHittestDraggable,
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The sdl hittest resize topleft sdl hittestresult
         /// </summary>
-        public IntPtr title;
+        SdlHittestResizeTopleft,
 
         /// <summary>
-        ///     The message
+        ///     The sdl hittest resize top sdl hittestresult
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        SdlHittestResizeTop,
 
         /// <summary>
-        ///     The numbuttons
+        ///     The sdl hittest resize topright sdl hittestresult
         /// </summary>
-        public int numbuttons;
+        SdlHittestResizeTopright,
 
         /// <summary>
-        ///     The buttons
+        ///     The sdl hittest resize right sdl hittestresult
         /// </summary>
-        public IntPtr buttons;
+        SdlHittestResizeRight,
 
         /// <summary>
-        ///     The color scheme
+        ///     The sdl hittest resize bottomright sdl hittestresult
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        SdlHittestResizeBottomright,
+
+        /// <summary>
+        ///     The sdl hittest resize bottom sdl hittestresult
+        /// </summary>
+        SdlHittestResizeBottom,
+
+        /// <summary>
+        ///     The sdl hittest resize bottomleft sdl hittestresult
+        /// </summary>
+        SdlHittestResizeBottomleft,
+
+        /// <summary>
+        ///     The sdl hittest resize left sdl hittestresult
+        /// </summary>
+        SdlHittestResizeLeft
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlMessageBoxColorType.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,41 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
-
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl message box color type enum
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public enum SdlMessageBoxColorType
     {
         /// <summary>
-        ///     The flags
+        ///     The sdl messagebox color background sdl message box color type
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        SdlMessageboxColorBackground,
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The sdl messagebox color text sdl message box color type
         /// </summary>
-        public IntPtr window;
+        SdlMessageboxColorText,
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The sdl messagebox color button border sdl message box color type
         /// </summary>
-        public IntPtr title;
+        SdlMessageboxColorButtonBorder,
 
         /// <summary>
-        ///     The message
+        ///     The sdl messagebox color button background sdl message box color type
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        SdlMessageboxColorButtonBackground,
 
         /// <summary>
-        ///     The numbuttons
+        ///     The sdl messagebox color button selected sdl message box color type
         /// </summary>
-        public int numbuttons;
+        SdlMessageboxColorButtonSelected,
 
         /// <summary>
-        ///     The buttons
+        ///     The sdl messagebox color max sdl message box color type
         /// </summary>
-        public IntPtr buttons;
-
-        /// <summary>
-        ///     The color scheme
-        /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        SdlMessageboxColorMax
     }
 }

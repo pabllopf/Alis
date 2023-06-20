@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlSurface.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,49 +29,73 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl surface
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public struct SdlSurface
     {
         /// <summary>
         ///     The flags
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public readonly uint flags;
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The format
         /// </summary>
-        public IntPtr window;
+        public IntPtr format; // SDL_PixelFormat*
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The
         /// </summary>
-        public IntPtr title;
+        public readonly int w;
 
         /// <summary>
-        ///     The message
+        ///     The
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        public readonly int h;
 
         /// <summary>
-        ///     The numbuttons
+        ///     The pitch
         /// </summary>
-        public int numbuttons;
+        public readonly int pitch;
 
         /// <summary>
-        ///     The buttons
+        ///     The pixels
         /// </summary>
-        public IntPtr buttons;
+        public IntPtr pixels; // void*
 
         /// <summary>
-        ///     The color scheme
+        ///     The userdata
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        public IntPtr userdata; // void*
+
+        /// <summary>
+        ///     The locked
+        /// </summary>
+        public readonly int locked;
+
+        /// <summary>
+        ///     The list blitmap
+        /// </summary>
+        public IntPtr list_blitmap; // void*
+
+        /// <summary>
+        ///     The clip rect
+        /// </summary>
+        public SdlRect clip_rect;
+
+        /// <summary>
+        ///     The map
+        /// </summary>
+        public IntPtr map; // SDL_BlitMap*
+
+        /// <summary>
+        ///     The refcount
+        /// </summary>
+        public readonly int refcount;
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlHapticEffect.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,49 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl hapticeffect
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    [StructLayout(LayoutKind.Explicit)]
+    public struct SdlHapticEffect
     {
         /// <summary>
-        ///     The flags
+        ///     The type
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        [FieldOffset(0)] public readonly ushort type;
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The constant
         /// </summary>
-        public IntPtr window;
+        [FieldOffset(0)] public SdlHapticConstant constant;
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The periodic
         /// </summary>
-        public IntPtr title;
+        [FieldOffset(0)] public SdlHapticPeriodic periodic;
 
         /// <summary>
-        ///     The message
+        ///     The condition
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        [FieldOffset(0)] public SdlHapticCondition condition;
 
         /// <summary>
-        ///     The numbuttons
+        ///     The ramp
         /// </summary>
-        public int numbuttons;
+        [FieldOffset(0)] public SdlHapticRamp ramp;
 
         /// <summary>
-        ///     The buttons
+        ///     The leftright
         /// </summary>
-        public IntPtr buttons;
+        [FieldOffset(0)] public SdlHapticLeftRight leftright;
 
         /// <summary>
-        ///     The color scheme
+        ///     The custom
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        [FieldOffset(0)] public SdlHapticCustom custom;
     }
 }

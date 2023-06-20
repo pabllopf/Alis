@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlSensorType.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,31 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
-
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl sensortype enum
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public enum SdlSensorType
     {
         /// <summary>
-        ///     The flags
+        ///     The sdl sensor invalid sdl sensortype
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        SdlSensorInvalid = -1,
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The sdl sensor unknown sdl sensortype
         /// </summary>
-        public IntPtr window;
+        SdlSensorUnknown,
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The sdl sensor accel sdl sensortype
         /// </summary>
-        public IntPtr title;
+        SdlSensorAccel,
 
         /// <summary>
-        ///     The message
+        ///     The sdl sensor gyro sdl sensortype
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
-
-        /// <summary>
-        ///     The numbuttons
-        /// </summary>
-        public int numbuttons;
-
-        /// <summary>
-        ///     The buttons
-        /// </summary>
-        public IntPtr buttons;
-
-        /// <summary>
-        ///     The color scheme
-        /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        SdlSensorGyro
     }
 }

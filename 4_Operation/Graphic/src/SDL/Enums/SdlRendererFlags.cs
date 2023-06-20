@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlRendererFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,50 +28,33 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
 
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl rendererflags enum
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    [Flags]
+    public enum SdlRendererFlags : uint
     {
         /// <summary>
-        ///     The flags
+        ///     The sdl renderer software sdl rendererflags
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        SdlRendererSoftware = 0x00000001,
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The sdl renderer accelerated sdl rendererflags
         /// </summary>
-        public IntPtr window;
+        SdlRendererAccelerated = 0x00000002,
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The sdl renderer presentvsync sdl rendererflags
         /// </summary>
-        public IntPtr title;
+        SdlRendererPresentvsync = 0x00000004,
 
         /// <summary>
-        ///     The message
+        ///     The sdl renderer targettexture sdl rendererflags
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
-
-        /// <summary>
-        ///     The numbuttons
-        /// </summary>
-        public int numbuttons;
-
-        /// <summary>
-        ///     The buttons
-        /// </summary>
-        public IntPtr buttons;
-
-        /// <summary>
-        ///     The color scheme
-        /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        SdlRendererTargettexture = 0x00000008
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlTextureAccess.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
-
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl textureaccess enum
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public enum SdlTextureAccess
     {
         /// <summary>
-        ///     The flags
+        ///     The sdl textureaccess static sdl textureaccess
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        SdlTextureaccessStatic,
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The sdl textureaccess streaming sdl textureaccess
         /// </summary>
-        public IntPtr window;
+        SdlTextureaccessStreaming,
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The sdl textureaccess target sdl textureaccess
         /// </summary>
-        public IntPtr title;
-
-        /// <summary>
-        ///     The message
-        /// </summary>
-        public IntPtr message; /* UTF-8 message text */
-
-        /// <summary>
-        ///     The numbuttons
-        /// </summary>
-        public int numbuttons;
-
-        /// <summary>
-        ///     The buttons
-        /// </summary>
-        public IntPtr buttons;
-
-        /// <summary>
-        ///     The color scheme
-        /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        SdlTextureaccessTarget
     }
 }

@@ -1256,6 +1256,6 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// <param name="previousCh">The previous ch</param>
         /// <param name="ch">The ch</param>
         /// <returns>The int</returns>
-        public static int TtfGetFontKerningSizeGlyphs32(IntPtr font, ushort previousCh, ushort ch) => SDL_GetFontKerningSize(font, previousCh, ch);
+        public static int TtfGetFontKerningSizeGlyphs32(IntPtr font, ushort previousCh, ushort ch) => TTF_GetFontKerningSizeGlyphs32(font, previousCh, ch);
     }
 }

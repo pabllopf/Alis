@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlHapticPeriodic.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,89 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl hapticperiodic
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public struct SdlHapticPeriodic
     {
+        // Header
         /// <summary>
-        ///     The flags
+        ///     The type
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public readonly ushort type;
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The direction
         /// </summary>
-        public IntPtr window;
+        public SdlHapticDirection direction;
+
+        // Replay
+        /// <summary>
+        ///     The length
+        /// </summary>
+        public readonly uint length;
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The delay
         /// </summary>
-        public IntPtr title;
+        public readonly ushort delay;
+
+        // Trigger
+        /// <summary>
+        ///     The button
+        /// </summary>
+        public readonly ushort button;
 
         /// <summary>
-        ///     The message
+        ///     The interval
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        public readonly ushort interval;
+
+        // Periodic
+        /// <summary>
+        ///     The period
+        /// </summary>
+        public readonly ushort period;
 
         /// <summary>
-        ///     The numbuttons
+        ///     The magnitude
         /// </summary>
-        public int numbuttons;
+        public readonly short magnitude;
 
         /// <summary>
-        ///     The buttons
+        ///     The offset
         /// </summary>
-        public IntPtr buttons;
+        public readonly short offset;
 
         /// <summary>
-        ///     The color scheme
+        ///     The phase
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        public readonly ushort phase;
+
+        // Envelope
+        /// <summary>
+        ///     The attack length
+        /// </summary>
+        public readonly ushort attack_length;
+
+        /// <summary>
+        ///     The attack level
+        /// </summary>
+        public readonly ushort attack_level;
+
+        /// <summary>
+        ///     The fade length
+        /// </summary>
+        public readonly ushort fade_length;
+
+        /// <summary>
+        ///     The fade level
+        /// </summary>
+        public readonly ushort fade_level;
     }
 }

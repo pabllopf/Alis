@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlMessageBoxColorScheme.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl messageboxcolorscheme
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public struct SdlMessageBoxColorScheme
     {
         /// <summary>
-        ///     The flags
+        ///     The colors
         /// </summary>
-        public SdlMessageBoxFlags flags;
-
-        /// <summary>
-        ///     The window, Parent window, can be NULL
-        /// </summary>
-        public IntPtr window;
-
-        /// <summary>
-        ///     The title, UTF-8 title
-        /// </summary>
-        public IntPtr title;
-
-        /// <summary>
-        ///     The message
-        /// </summary>
-        public IntPtr message; /* UTF-8 message text */
-
-        /// <summary>
-        ///     The numbuttons
-        /// </summary>
-        public int numbuttons;
-
-        /// <summary>
-        ///     The buttons
-        /// </summary>
-        public IntPtr buttons;
-
-        /// <summary>
-        ///     The color scheme
-        /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int) SdlMessageBoxColorType.SdlMessageboxColorMax)]
+        public readonly SdlMessageBoxColor[] colors;
     }
 }

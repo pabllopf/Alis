@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlPixelType.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,71 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
-
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl pixeltype enum
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public enum SdlPixelType
     {
         /// <summary>
-        ///     The flags
+        ///     The sdl pixeltype unknown sdl pixeltype
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        SdlPixeltypeUnknown,
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The sdl pixeltype index1 sdl pixeltype
         /// </summary>
-        public IntPtr window;
+        SdlPixeltypeIndex1,
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The sdl pixeltype index4 sdl pixeltype
         /// </summary>
-        public IntPtr title;
+        SdlPixeltypeIndex4,
 
         /// <summary>
-        ///     The message
+        ///     The sdl pixeltype index8 sdl pixeltype
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        SdlPixeltypeIndex8,
 
         /// <summary>
-        ///     The numbuttons
+        ///     The sdl pixeltype packed8 sdl pixeltype
         /// </summary>
-        public int numbuttons;
+        SdlPixeltypePacked8,
 
         /// <summary>
-        ///     The buttons
+        ///     The sdl pixeltype packed16 sdl pixeltype
         /// </summary>
-        public IntPtr buttons;
+        SdlPixeltypePacked16,
 
         /// <summary>
-        ///     The color scheme
+        ///     The sdl pixeltype packed32 sdl pixeltype
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        SdlPixeltypePacked32,
+
+        /// <summary>
+        ///     The sdl pixeltype arrayu8 sdl pixeltype
+        /// </summary>
+        SdlPixeltypeArrayu8,
+
+        /// <summary>
+        ///     The sdl pixeltype arrayu16 sdl pixeltype
+        /// </summary>
+        SdlPixeltypeArrayu16,
+
+        /// <summary>
+        ///     The sdl pixeltype arrayu32 sdl pixeltype
+        /// </summary>
+        SdlPixeltypeArrayu32,
+
+        /// <summary>
+        ///     The sdl pixeltype arrayf16 sdl pixeltype
+        /// </summary>
+        SdlPixeltypeArrayf16,
+
+        /// <summary>
+        ///     The sdl pixeltype arrayf32 sdl pixeltype
+        /// </summary>
+        SdlPixeltypeArrayf32
     }
 }

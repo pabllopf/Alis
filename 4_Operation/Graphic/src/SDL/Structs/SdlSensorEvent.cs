@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlSensorEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,79 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl sensorevent
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public struct SdlSensorEvent
     {
         /// <summary>
-        ///     The flags
+        ///     The type
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public readonly SdlEventType type;
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The timestamp
         /// </summary>
-        public IntPtr window;
+        public readonly uint timestamp;
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The which
         /// </summary>
-        public IntPtr title;
+        public readonly int which;
 
         /// <summary>
-        ///     The message
+        ///     The data
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        public readonly float float0;
 
         /// <summary>
-        ///     The numbuttons
+        ///     The data
         /// </summary>
-        public int numbuttons;
+        public readonly float float1;
 
         /// <summary>
-        ///     The buttons
+        ///     The data
         /// </summary>
-        public IntPtr buttons;
+        public readonly float float2;
 
         /// <summary>
-        ///     The color scheme
+        ///     The data
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        public readonly float float3;
+
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public readonly float float4;
+
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public readonly float float5;
+
+        /// <summary>
+        ///     Gets or sets the value of the text
+        /// </summary>
+        public float[] Data
+        {
+            get
+            {
+                return new float[6]
+                {
+                    float0,
+                    float1,
+                    float2,
+                    float3,
+                    float4,
+                    float5
+                };
+            }
+        }
     }
 }

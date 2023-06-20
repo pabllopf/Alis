@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlJoystickPowerLevel.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,46 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
-
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl joystickpowerlevel enum
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public enum SdlJoystickPowerLevel
     {
         /// <summary>
-        ///     The flags
+        ///     The sdl joystick power unknown sdl joystickpowerlevel
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        SdlJoystickPowerUnknown = -1,
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The sdl joystick power empty sdl joystickpowerlevel
         /// </summary>
-        public IntPtr window;
+        SdlJoystickPowerEmpty,
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The sdl joystick power low sdl joystickpowerlevel
         /// </summary>
-        public IntPtr title;
+        SdlJoystickPowerLow,
 
         /// <summary>
-        ///     The message
+        ///     The sdl joystick power medium sdl joystickpowerlevel
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        SdlJoystickPowerMedium,
 
         /// <summary>
-        ///     The numbuttons
+        ///     The sdl joystick power full sdl joystickpowerlevel
         /// </summary>
-        public int numbuttons;
+        SdlJoystickPowerFull,
 
         /// <summary>
-        ///     The buttons
+        ///     The sdl joystick power wired sdl joystickpowerlevel
         /// </summary>
-        public IntPtr buttons;
+        SdlJoystickPowerWired,
 
         /// <summary>
-        ///     The color scheme
+        ///     The sdl joystick power max sdl joystickpowerlevel
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        SdlJoystickPowerMax
     }
 }

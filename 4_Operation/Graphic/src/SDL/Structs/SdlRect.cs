@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlRect.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,34 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl rect
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public struct SdlRect
     {
         /// <summary>
-        ///     The flags
+        ///     The
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public readonly int x;
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The
         /// </summary>
-        public IntPtr window;
+        public readonly int y;
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The
         /// </summary>
-        public IntPtr title;
+        public readonly int w;
 
         /// <summary>
-        ///     The message
+        ///     The
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
-
-        /// <summary>
-        ///     The numbuttons
-        /// </summary>
-        public int numbuttons;
-
-        /// <summary>
-        ///     The buttons
-        /// </summary>
-        public IntPtr buttons;
-
-        /// <summary>
-        ///     The color scheme
-        /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        public readonly int h;
     }
 }

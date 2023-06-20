@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlPixelFormat.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,49 +29,103 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl pixelformat
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public struct SdlPixelFormat
     {
         /// <summary>
-        ///     The flags
+        ///     The format
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public readonly uint format;
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The palette
         /// </summary>
-        public IntPtr window;
+        public IntPtr palette; // SDL_Palette*
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The bits per pixel
         /// </summary>
-        public IntPtr title;
+        public readonly byte BitsPerPixel;
 
         /// <summary>
-        ///     The message
+        ///     The bytes per pixel
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        public readonly byte BytesPerPixel;
 
         /// <summary>
-        ///     The numbuttons
+        ///     The rmask
         /// </summary>
-        public int numbuttons;
+        public readonly uint Rmask;
 
         /// <summary>
-        ///     The buttons
+        ///     The gmask
         /// </summary>
-        public IntPtr buttons;
+        public readonly uint Gmask;
 
         /// <summary>
-        ///     The color scheme
+        ///     The bmask
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        public readonly uint Bmask;
+
+        /// <summary>
+        ///     The amask
+        /// </summary>
+        public readonly uint Amask;
+
+        /// <summary>
+        ///     The rloss
+        /// </summary>
+        public readonly byte Rloss;
+
+        /// <summary>
+        ///     The gloss
+        /// </summary>
+        public readonly byte Gloss;
+
+        /// <summary>
+        ///     The bloss
+        /// </summary>
+        public readonly byte Bloss;
+
+        /// <summary>
+        ///     The aloss
+        /// </summary>
+        public readonly byte Aloss;
+
+        /// <summary>
+        ///     The rshift
+        /// </summary>
+        public readonly byte Rshift;
+
+        /// <summary>
+        ///     The gshift
+        /// </summary>
+        public readonly byte Gshift;
+
+        /// <summary>
+        ///     The bshift
+        /// </summary>
+        public readonly byte Bshift;
+
+        /// <summary>
+        ///     The ashift
+        /// </summary>
+        public readonly byte Ashift;
+
+        /// <summary>
+        ///     The refcount
+        /// </summary>
+        public readonly int refcount;
+
+        /// <summary>
+        ///     The next
+        /// </summary>
+        public IntPtr next; // SDL_PixelFormat*
     }
 }

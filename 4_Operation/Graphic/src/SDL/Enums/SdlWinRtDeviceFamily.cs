@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlWinRtDeviceFamily.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,31 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
-
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl winrt devicefamily enum
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public enum SdlWinRtDeviceFamily
     {
         /// <summary>
-        ///     The flags
+        ///     The sdl winrt devicefamily unknown sdl winrt devicefamily
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        SdlWinrtDevicefamilyUnknown,
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The sdl winrt devicefamily desktop sdl winrt devicefamily
         /// </summary>
-        public IntPtr window;
+        SdlWinrtDevicefamilyDesktop,
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The sdl winrt devicefamily mobile sdl winrt devicefamily
         /// </summary>
-        public IntPtr title;
+        SdlWinrtDevicefamilyMobile,
 
         /// <summary>
-        ///     The message
+        ///     The sdl winrt devicefamily xbox sdl winrt devicefamily
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
-
-        /// <summary>
-        ///     The numbuttons
-        /// </summary>
-        public int numbuttons;
-
-        /// <summary>
-        ///     The buttons
-        /// </summary>
-        public IntPtr buttons;
-
-        /// <summary>
-        ///     The color scheme
-        /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        SdlWinrtDevicefamilyXbox
     }
 }

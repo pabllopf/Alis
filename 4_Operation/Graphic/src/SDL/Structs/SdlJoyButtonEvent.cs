@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlJoyButtonEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,50 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl joybuttonevent
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public struct SdlJoyButtonEvent
     {
         /// <summary>
-        ///     The flags
+        ///     The type
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public readonly SdlEventType type;
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The timestamp
         /// </summary>
-        public IntPtr window;
+        public readonly uint timestamp;
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The which
         /// </summary>
-        public IntPtr title;
+        public readonly int which; /* SDL_JoystickID */
 
         /// <summary>
-        ///     The message
+        ///     The button
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        public readonly byte button;
 
         /// <summary>
-        ///     The numbuttons
+        ///     The state
         /// </summary>
-        public int numbuttons;
+        public readonly byte state; /* SDL_PRESSED or SDL_RELEASED */
 
         /// <summary>
-        ///     The buttons
+        ///     The padding
         /// </summary>
-        public IntPtr buttons;
+        private readonly byte padding1;
 
         /// <summary>
-        ///     The color scheme
+        ///     The padding
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        private readonly byte padding2;
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlPowerState.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,36 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
-
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl powerstate enum
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public enum SdlPowerState
     {
         /// <summary>
-        ///     The flags
+        ///     The sdl powerstate unknown sdl powerstate
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        SdlPowerstateUnknown = 0,
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The sdl powerstate on battery sdl powerstate
         /// </summary>
-        public IntPtr window;
+        SdlPowerstateOnBattery,
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The sdl powerstate no battery sdl powerstate
         /// </summary>
-        public IntPtr title;
+        SdlPowerstateNoBattery,
 
         /// <summary>
-        ///     The message
+        ///     The sdl powerstate charging sdl powerstate
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        SdlPowerstateCharging,
 
         /// <summary>
-        ///     The numbuttons
+        ///     The sdl powerstate charged sdl powerstate
         /// </summary>
-        public int numbuttons;
-
-        /// <summary>
-        ///     The buttons
-        /// </summary>
-        public IntPtr buttons;
-
-        /// <summary>
-        ///     The color scheme
-        /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        SdlPowerstateCharged
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlRWops.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,49 +29,43 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl rwops
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public struct SdlRWops
     {
         /// <summary>
-        ///     The flags
+        ///     The size
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public IntPtr size;
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The seek
         /// </summary>
-        public IntPtr window;
+        public IntPtr seek;
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The read
         /// </summary>
-        public IntPtr title;
+        public IntPtr read;
 
         /// <summary>
-        ///     The message
+        ///     The write
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        public IntPtr write;
 
         /// <summary>
-        ///     The numbuttons
+        ///     The close
         /// </summary>
-        public int numbuttons;
+        public IntPtr close;
 
         /// <summary>
-        ///     The buttons
+        ///     The type
         /// </summary>
-        public IntPtr buttons;
-
-        /// <summary>
-        ///     The color scheme
-        /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        public readonly uint type;
     }
 }

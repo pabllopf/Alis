@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlSyswmType.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,81 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
-
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl syswm type enum
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public enum SdlSyswmType
     {
         /// <summary>
-        ///     The flags
+        ///     The sdl syswm unknown sdl syswm type
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        SdlSyswmUnknown,
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The sdl syswm windows sdl syswm type
         /// </summary>
-        public IntPtr window;
+        SdlSyswmWindows,
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The sdl syswm x11 sdl syswm type
         /// </summary>
-        public IntPtr title;
+        SdlSyswmX11,
 
         /// <summary>
-        ///     The message
+        ///     The sdl syswm directfb sdl syswm type
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        SdlSyswmDirectfb,
 
         /// <summary>
-        ///     The numbuttons
+        ///     The sdl syswm cocoa sdl syswm type
         /// </summary>
-        public int numbuttons;
+        SdlSyswmCocoa,
 
         /// <summary>
-        ///     The buttons
+        ///     The sdl syswm uikit sdl syswm type
         /// </summary>
-        public IntPtr buttons;
+        SdlSyswmUikit,
 
         /// <summary>
-        ///     The color scheme
+        ///     The sdl syswm wayland sdl syswm type
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        SdlSyswmWayland,
+
+        /// <summary>
+        ///     The sdl syswm mir sdl syswm type
+        /// </summary>
+        SdlSyswmMir,
+
+        /// <summary>
+        ///     The sdl syswm winrt sdl syswm type
+        /// </summary>
+        SdlSyswmWinrt,
+
+        /// <summary>
+        ///     The sdl syswm android sdl syswm type
+        /// </summary>
+        SdlSyswmAndroid,
+
+        /// <summary>
+        ///     The sdl syswm vivante sdl syswm type
+        /// </summary>
+        SdlSyswmVivante,
+
+        /// <summary>
+        ///     The sdl syswm os2 sdl syswm type
+        /// </summary>
+        SdlSyswmOs2,
+
+        /// <summary>
+        ///     The sdl syswm haiku sdl syswm type
+        /// </summary>
+        SdlSyswmHaiku,
+
+        /// <summary>
+        ///     The sdl syswm kmsdrm sdl syswm type
+        /// </summary>
+        SdlSyswmKmsdrm /* requires >= 2.0.16 */
     }
 }

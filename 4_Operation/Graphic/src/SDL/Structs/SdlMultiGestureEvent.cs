@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlMultiGestureEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,59 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl multigestureevent
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public struct SdlMultiGestureEvent
     {
         /// <summary>
-        ///     The flags
+        ///     The type
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public readonly uint type;
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The timestamp
         /// </summary>
-        public IntPtr window;
+        public readonly uint timestamp;
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The touch id
         /// </summary>
-        public IntPtr title;
+        public readonly long touchId; // SDL_TouchID
 
         /// <summary>
-        ///     The message
+        ///     The theta
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        public readonly float dTheta;
 
         /// <summary>
-        ///     The numbuttons
+        ///     The dist
         /// </summary>
-        public int numbuttons;
+        public readonly float dDist;
 
         /// <summary>
-        ///     The buttons
+        ///     The
         /// </summary>
-        public IntPtr buttons;
+        public readonly float x;
 
         /// <summary>
-        ///     The color scheme
+        ///     The
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        public readonly float y;
+
+        /// <summary>
+        ///     The num fingers
+        /// </summary>
+        public readonly ushort numFingers;
+
+        /// <summary>
+        ///     The padding
+        /// </summary>
+        public readonly ushort padding;
     }
 }

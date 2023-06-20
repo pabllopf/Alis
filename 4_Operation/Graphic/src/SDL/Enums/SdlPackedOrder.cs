@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlPackedOrder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,56 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
-
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl packedorder enum
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public enum SdlPackedOrder
     {
         /// <summary>
-        ///     The flags
+        ///     The sdl packedorder none sdl packedorder
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        SdlPackedorderNone,
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The sdl packedorder xrgb sdl packedorder
         /// </summary>
-        public IntPtr window;
+        SdlPackedorderXrgb,
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The sdl packedorder rgbx sdl packedorder
         /// </summary>
-        public IntPtr title;
+        SdlPackedorderRgbx,
 
         /// <summary>
-        ///     The message
+        ///     The sdl packedorder argb sdl packedorder
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        SdlPackedorderArgb,
 
         /// <summary>
-        ///     The numbuttons
+        ///     The sdl packedorder rgba sdl packedorder
         /// </summary>
-        public int numbuttons;
+        SdlPackedorderRgba,
 
         /// <summary>
-        ///     The buttons
+        ///     The sdl packedorder xbgr sdl packedorder
         /// </summary>
-        public IntPtr buttons;
+        SdlPackedorderXbgr,
 
         /// <summary>
-        ///     The color scheme
+        ///     The sdl packedorder bgrx sdl packedorder
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        SdlPackedorderBgrx,
+
+        /// <summary>
+        ///     The sdl packedorder abgr sdl packedorder
+        /// </summary>
+        SdlPackedorderAbgr,
+
+        /// <summary>
+        ///     The sdl packedorder bgra sdl packedorder
+        /// </summary>
+        SdlPackedorderBgra
     }
 }

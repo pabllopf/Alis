@@ -30,6 +30,8 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
+using Alis.Core.Graphic.SDL.Enums;
+using Alis.Core.Graphic.SDL.Structs;
 
 namespace Alis.Core.Graphic.SDL
 {

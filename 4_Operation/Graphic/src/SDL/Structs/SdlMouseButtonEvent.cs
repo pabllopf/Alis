@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:SdlMouseButtonEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,65 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The sdl mousebuttonevent
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    public struct SdlMouseButtonEvent
     {
         /// <summary>
-        ///     The flags
+        ///     The type
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        public readonly SdlEventType type;
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The timestamp
         /// </summary>
-        public IntPtr window;
+        public readonly uint timestamp;
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The window id
         /// </summary>
-        public IntPtr title;
+        public readonly uint windowID;
 
         /// <summary>
-        ///     The message
+        ///     The which
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
+        public readonly uint which;
 
         /// <summary>
-        ///     The numbuttons
+        ///     The button
         /// </summary>
-        public int numbuttons;
+        public readonly byte button; /* button id */
 
         /// <summary>
-        ///     The buttons
+        ///     The state
         /// </summary>
-        public IntPtr buttons;
+        public readonly byte state; /* SDL_PRESSED or SDL_RELEASED */
 
         /// <summary>
-        ///     The color scheme
+        ///     The clicks
         /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        public readonly byte clicks; /* 1 for single-click, 2 for double-click, etc. */
+
+        /// <summary>
+        ///     The padding
+        /// </summary>
+        private readonly byte padding1;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public readonly int x;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public readonly int y;
     }
 }

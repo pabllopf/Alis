@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalSdlMessageBoxData.cs
+//  File:ImgInitFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,50 +28,33 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
 
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The internal sdl message box data
+    ///     The img initflags enum
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    internal struct InternalSdlMessageBoxData
+    [Flags]
+    public enum ImgInitFlags
     {
         /// <summary>
-        ///     The flags
+        ///     The img init jpg img initflags
         /// </summary>
-        public SdlMessageBoxFlags flags;
+        ImgInitJpg = 0x00000001,
 
         /// <summary>
-        ///     The window, Parent window, can be NULL
+        ///     The img init png img initflags
         /// </summary>
-        public IntPtr window;
+        ImgInitPng = 0x00000002,
 
         /// <summary>
-        ///     The title, UTF-8 title
+        ///     The img init tif img initflags
         /// </summary>
-        public IntPtr title;
+        ImgInitTif = 0x00000004,
 
         /// <summary>
-        ///     The message
+        ///     The img init webp img initflags
         /// </summary>
-        public IntPtr message; /* UTF-8 message text */
-
-        /// <summary>
-        ///     The numbuttons
-        /// </summary>
-        public int numbuttons;
-
-        /// <summary>
-        ///     The buttons
-        /// </summary>
-        public IntPtr buttons;
-
-        /// <summary>
-        ///     The color scheme
-        /// </summary>
-        public IntPtr colorScheme; /* Can be NULL to use system settings */
+        ImgInitWebp = 0x00000008
     }
 }
