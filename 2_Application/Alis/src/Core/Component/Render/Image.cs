@@ -37,21 +37,16 @@ namespace Alis.Core.Component.Render
     public class Image
     {
         /// <summary>
-        /// Gets or sets the value of the path
-        /// </summary>
-        public string Path { get; set; }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Image"/> class
+        ///     Initializes a new instance of the <see cref="Image" /> class
         /// </summary>
         public Image()
         {
             Logger.Trace();
             Path = "";
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Image"/> class
+        ///     Initializes a new instance of the <see cref="Image" /> class
         /// </summary>
         /// <param name="path">The path</param>
         public Image(string path)
@@ -59,5 +54,10 @@ namespace Alis.Core.Component.Render
             Logger.Trace();
             Path = path;
         }
+
+        /// <summary>
+        ///     Gets or sets the value of the path
+        /// </summary>
+        public string Path { get; set; }
     }
 }

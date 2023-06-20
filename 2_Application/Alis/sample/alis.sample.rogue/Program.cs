@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using Alis.Core.Aspect.Data;
 using Alis.Core.Component.Audio;
 using Alis.Core.Component.Collider;
 using Alis.Core.Component.Render;
@@ -56,11 +56,11 @@ namespace Alis.Sample.Rogue
                         .Name("Rogue Sample")
                         .Author("Pablo Perdomo Falcón")
                         .Description("Simple rogue game")
-                        .Icon(Environment.CurrentDirectory + "/Assets/logo.png")
+                        .Icon(AssetManager.Find("logo.png"))
                         .SplashScreen(screen => screen
                             .IsActive(true)
                             .Style(Style.Dark)
-                            .FilePath(Environment.CurrentDirectory + "/Assets/tile000.png")
+                            .FilePath(AssetManager.Find("tile000.png"))
                             .Build())
                         .Build())
                     .Debug(debug => debug
@@ -86,7 +86,7 @@ namespace Alis.Sample.Rogue
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
-                                .SetTexture(Environment.CurrentDirectory + "/Assets/tile000.png")
+                                .SetTexture(AssetManager.Find("tile000.png"))
                                 .Depth(2)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
@@ -140,7 +140,7 @@ namespace Alis.Sample.Rogue
                             .AddComponent(new Camera())
                             .AddComponent<Sprite>(i => i
                                 .Builder()
-                                .SetTexture(Environment.CurrentDirectory + "/Assets/tile003.png")
+                                .SetTexture(AssetManager.Find("tile003.png"))
                                 .Depth(0)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
@@ -164,7 +164,7 @@ namespace Alis.Sample.Rogue
                                 .IsActive(true)
                                 .PlayOnAwake(true)
                                 .SetAudioClip(audioClip => audioClip
-                                    .FilePath(Environment.CurrentDirectory + "/Assets/menu.wav")
+                                    .FilePath(AssetManager.Find("menu.wav"))
                                     .Volume(100.0f)
                                     .Mute(false)
                                     .Build())
@@ -176,10 +176,10 @@ namespace Alis.Sample.Rogue
                                     .Speed(0.25f)
                                     .Order(0)
                                     .AddFrame(frame => frame
-                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile000.png")
+                                        .FilePath(AssetManager.Find("tile000.png"))
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile002.png")
+                                        .FilePath(AssetManager.Find("tile002.png"))
                                         .Build())
                                     .Build())
                                 .AddAnimation(animation => animation
@@ -187,16 +187,16 @@ namespace Alis.Sample.Rogue
                                     .Speed(0.25f)
                                     .Order(1)
                                     .AddFrame(frame => frame
-                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile000.png")
+                                        .FilePath(AssetManager.Find("tile000.png"))
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile001.png")
+                                        .FilePath(AssetManager.Find("tile001.png"))
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile002.png")
+                                        .FilePath(AssetManager.Find("tile002.png"))
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile003.png")
+                                        .FilePath(AssetManager.Find("tile003.png"))
                                         .Build())
                                     .Build())
                                 .AddAnimation(animation => animation
@@ -204,16 +204,16 @@ namespace Alis.Sample.Rogue
                                     .Speed(0.25f)
                                     .Order(2)
                                     .AddFrame(frame => frame
-                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile034.png")
+                                        .FilePath(AssetManager.Find("tile034.png"))
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile035.png")
+                                        .FilePath(AssetManager.Find("tile035.png"))
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile036.png")
+                                        .FilePath(AssetManager.Find("tile036.png"))
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile037.png")
+                                        .FilePath(AssetManager.Find("tile037.png"))
                                         .Build())
                                     .Build())
                                 .AddAnimation(animation => animation
@@ -221,16 +221,16 @@ namespace Alis.Sample.Rogue
                                     .Speed(0.25f)
                                     .Order(3)
                                     .AddFrame(frame => frame
-                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile017.png")
+                                        .FilePath(AssetManager.Find("tile017.png"))
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile018.png")
+                                        .FilePath(AssetManager.Find("tile018.png"))
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile019.png")
+                                        .FilePath(AssetManager.Find("tile019.png"))
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile020.png")
+                                        .FilePath(AssetManager.Find("tile020.png"))
                                         .Build())
                                     .Build())
                                 .AddAnimation(animation => animation
@@ -238,16 +238,16 @@ namespace Alis.Sample.Rogue
                                     .Speed(0.25f)
                                     .Order(4)
                                     .AddFrame(frame => frame
-                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile051.png")
+                                        .FilePath(AssetManager.Find("tile051.png"))
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile052.png")
+                                        .FilePath(AssetManager.Find("tile052.png"))
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile053.png")
+                                        .FilePath(AssetManager.Find("tile053.png"))
                                         .Build())
                                     .AddFrame(frame => frame
-                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile054.png")
+                                        .FilePath(AssetManager.Find("tile054.png"))
                                         .Build())
                                     .Build())
                                 .Build())

@@ -8975,6 +8975,16 @@
             <param name="enabled">The enabled</param>
             <returns>The bool</returns>
         </member>
+        <member name="T:Alis.Core.Graphic.ImGui.ImGuiDlls">
+            <summary>
+            The im gui dlls class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.ImGui.ImGuiDlls.ImGuiDllBytes">
+            <summary>
+            The osx arm64 cimgui
+            </summary>
+        </member>
         <member name="T:Alis.Core.Graphic.ImGui.ImGuiGl">
             <summary>
                 The im gui gl class
@@ -9041,7 +9051,7 @@
                 News the frame
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.ImGui.ImGuiGlRenderer.ProcessEvent(Alis.Core.Graphic.SDL.SdlEvent)">
+        <member name="M:Alis.Core.Graphic.ImGui.ImGuiGlRenderer.ProcessEvent(Alis.Core.Graphic.SDL.Structs.SdlEvent)">
             <summary>
                 Processes the event using the specified evt
             </summary>
@@ -9677,17 +9687,17 @@
                 The im draw list
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.ImGui.Structs.ImDrawList.CmdBuffer">
+        <member name="P:Alis.Core.Graphic.ImGui.Structs.ImDrawList.CmdBuffer">
             <summary>
                 The cmd buffer
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.ImGui.Structs.ImDrawList.IdxBuffer">
+        <member name="P:Alis.Core.Graphic.ImGui.Structs.ImDrawList.IdxBuffer">
             <summary>
                 The idx buffer
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.ImGui.Structs.ImDrawList.VtxBuffer">
+        <member name="P:Alis.Core.Graphic.ImGui.Structs.ImDrawList.VtxBuffer">
             <summary>
                 The vtx buffer
             </summary>
@@ -30874,977 +30884,977 @@
               Busca un recurso adaptado de tipo System.Byte[].
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlArrayOrder">
+        <member name="T:Alis.Core.Graphic.SDL.Enums.SdlArrayOrder">
             <summary>
                 The sdl array order enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlArrayOrder.SdlArrayorderNone">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlArrayOrder.SdlArrayorderNone">
             <summary>
                 The sdl array order none sdl array order
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlArrayOrder.SdlArrayorderRgb">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlArrayOrder.SdlArrayorderRgb">
             <summary>
                 The sdl array order rgb sdl array order
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlArrayOrder.SdlArrayorderRgba">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlArrayOrder.SdlArrayorderRgba">
             <summary>
                 The sdl array order rgba sdl array order
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlArrayOrder.SdlArrayorderArgb">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlArrayOrder.SdlArrayorderArgb">
             <summary>
                 The sdl array order argb sdl array order
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlArrayOrder.SdlArrayorderBgr">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlArrayOrder.SdlArrayorderBgr">
             <summary>
                 The sdl array order bgr sdl array order
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlArrayOrder.SdlArrayorderBgra">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlArrayOrder.SdlArrayorderBgra">
             <summary>
                 The sdl array order bgr sdl array order
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlArrayOrder.SdlArrayorderAbgr">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlArrayOrder.SdlArrayorderAbgr">
             <summary>
                 The sdl array order abg sdl array order
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlAudioStatus">
+        <member name="T:Alis.Core.Graphic.SDL.Enums.SdlAudioStatus">
             <summary>
                 The sdl audio status enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlAudioStatus.SdlAudioStopped">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlAudioStatus.SdlAudioStopped">
             <summary>
                 The sdl audio stopped sdl audio status
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlAudioStatus.SdlAudioPlaying">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlAudioStatus.SdlAudioPlaying">
             <summary>
                 The sdl audio playing sdl audio status
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlAudioStatus.SdlAudioPaused">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlAudioStatus.SdlAudioPaused">
             <summary>
                 The sdl audio paused sdl audio status
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlBitmapOrder">
+        <member name="T:Alis.Core.Graphic.SDL.Enums.SdlBitmapOrder">
             <summary>
                 The sdl bit map order enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBitmapOrder.SdlBitMapOrderNone">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBitmapOrder.SdlBitMapOrderNone">
             <summary>
                 The sdl bit map order none sdl bit map order
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBitmapOrder.SdlBitMapOrder4321">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBitmapOrder.SdlBitMapOrder4321">
             <summary>
                 The sdl bit map order 4321 sdl bit map order
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBitmapOrder.SdlBitMapOrder1234">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBitmapOrder.SdlBitMapOrder1234">
             <summary>
                 The sdl bit map order 1234 sdl bit map order
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlBlendFactor">
+        <member name="T:Alis.Core.Graphic.SDL.Enums.SdlBlendFactor">
             <summary>
                 The sdl blend factor enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendFactor.SdlBlendFactorZero">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendFactor.SdlBlendFactorZero">
             <summary>
                 The sdl blend factor zero sdl blend factor
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendFactor.SdlBlendFactorOne">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendFactor.SdlBlendFactorOne">
             <summary>
                 The sdl blend factor one sdl blend factor
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendFactor.SdlBlendFactorSrcColor">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendFactor.SdlBlendFactorSrcColor">
             <summary>
                 The sdl blend factor src color sdl blend factor
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendFactor.SdlBlendFactorOneMinusSrcColor">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendFactor.SdlBlendFactorOneMinusSrcColor">
             <summary>
                 The sdl blend factor one minus src color sdl blend factor
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendFactor.SdlBlendFactorSrcAlpha">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendFactor.SdlBlendFactorSrcAlpha">
             <summary>
                 The sdl blend factor src alpha sdl blend factor
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendFactor.SdlBlendFactorOneMinusSrcAlpha">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendFactor.SdlBlendFactorOneMinusSrcAlpha">
             <summary>
                 The sdl blend factor one minus src alpha sdl blend factor
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendFactor.SdlBlendFactorDstColor">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendFactor.SdlBlendFactorDstColor">
             <summary>
                 The sdl blend factor dst color sdl blend factor
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendFactor.SdlBlendFactorOneMinusDstColor">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendFactor.SdlBlendFactorOneMinusDstColor">
             <summary>
                 The sdl blend factor one minus dst color sdl blend factor
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendFactor.SdlBlendFactorDstAlpha">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendFactor.SdlBlendFactorDstAlpha">
             <summary>
                 The sdl blend factor dst alpha sdl blend factor
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendFactor.SdlBlendFactorOneMinusDstAlpha">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendFactor.SdlBlendFactorOneMinusDstAlpha">
             <summary>
                 The sdl blend factor one minus dst alpha sdl blend factor
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlBlendMode">
+        <member name="T:Alis.Core.Graphic.SDL.Enums.SdlBlendMode">
             <summary>
                 The sdl blend mode enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendMode.None">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendMode.None">
             <summary>
                 The sdl blend factor none sdl blend factor
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendMode.SdlBlendModeBlend">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendMode.SdlBlendModeBlend">
             <summary>
                 The sdl blend factor blend sdl blend factor
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendMode.SdlBlendModeAdd">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendMode.SdlBlendModeAdd">
             <summary>
                 The sdl blend factor add sdl blend factor
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendMode.SdlBlendModeMod">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendMode.SdlBlendModeMod">
             <summary>
                 The sdl blend factor mod sdl blend factor
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendMode.SdlBlendModeMul">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendMode.SdlBlendModeMul">
             <summary>
                 The sdl blend factor mul sdl blend factor
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendMode.SdlBlendModeInvalid">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendMode.SdlBlendModeInvalid">
             <summary>
                 The sdl blend factor invalid sdl blend factor
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlBlendOperation">
+        <member name="T:Alis.Core.Graphic.SDL.Enums.SdlBlendOperation">
             <summary>
                 The sdl blend operation enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendOperation.SdlBlendOperationAdd">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendOperation.SdlBlendOperationAdd">
             <summary>
                 The sdl blend operation add sdl blend operation
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendOperation.SdlBlendOperationSubtract">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendOperation.SdlBlendOperationSubtract">
             <summary>
                 The sdl blend operation subtract sdl blend operation
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendOperation.SdlBlendOperationRevSubtract">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendOperation.SdlBlendOperationRevSubtract">
             <summary>
                 The sdl blend operation rev subtract sdl blend operation
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendOperation.SdlBlendOperationMinimum">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendOperation.SdlBlendOperationMinimum">
             <summary>
                 The sdl blend operation minimum sdl blend operation
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBlendOperation.SdlBlendOperationMaximum">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBlendOperation.SdlBlendOperationMaximum">
             <summary>
                 The sdl blend operation maximum sdl blend operation
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlBool">
+        <member name="T:Alis.Core.Graphic.SDL.Enums.SdlBool">
             <summary>
                 The sdl bool enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBool.SdlFalse">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBool.SdlFalse">
             <summary>
                 The sdl false sdl bool
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBool.SdlTrue">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlBool.SdlTrue">
             <summary>
                 The sdl true sdl bool
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlDisplayEventId">
+        <member name="T:Alis.Core.Graphic.SDL.Enums.SdlDisplayEventId">
             <summary>
                 The sdl display event id enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayEventId.SdlDisplayEventNone">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlDisplayEventId.SdlDisplayEventNone">
             <summary>
                 The sdl display event none sdl display event id
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayEventId.SdlDisplayEventOrientation">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlDisplayEventId.SdlDisplayEventOrientation">
             <summary>
                 The sdl display event orientation sdl display event id
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayEventId.SdlDisplayEventConnected">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlDisplayEventId.SdlDisplayEventConnected">
             <summary>
                 The sdl display event connected sdl display event id
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayEventId.SdlDisplayEventDisconnected">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlDisplayEventId.SdlDisplayEventDisconnected">
             <summary>
                 The sdl display event disconnected sdl display event id
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlDisplayOrientation">
+        <member name="T:Alis.Core.Graphic.SDL.Enums.SdlDisplayOrientation">
             <summary>
                 The sdl display orientation enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayOrientation.SdlOrientationUnknown">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlDisplayOrientation.SdlOrientationUnknown">
             <summary>
                 The sdl orientation unknown sdl display orientation
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayOrientation.SdlOrientationLandscape">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlDisplayOrientation.SdlOrientationLandscape">
             <summary>
                 The sdl orientation landscape sdl display orientation
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayOrientation.SdlOrientationLandscapeFlipped">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlDisplayOrientation.SdlOrientationLandscapeFlipped">
             <summary>
                 The sdl orientation landscape flipped sdl display orientation
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayOrientation.SdlOrientationPortrait">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlDisplayOrientation.SdlOrientationPortrait">
             <summary>
                 The sdl orientation portrait sdl display orientation
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayOrientation.SdlOrientationPortraitFlipped">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlDisplayOrientation.SdlOrientationPortraitFlipped">
             <summary>
                 The sdl orientation portrait flipped sdl display orientation
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlEventAction">
+        <member name="T:Alis.Core.Graphic.SDL.Enums.SdlEventAction">
             <summary>
                 The sdl event action enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventAction.SdlAddEvent">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventAction.SdlAddEvent">
             <summary>
                 The sdl add event sdl event action
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventAction.SdlPeekEvent">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventAction.SdlPeekEvent">
             <summary>
                 The sdl peek event sdl event action
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventAction.SdlGetEvent">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventAction.SdlGetEvent">
             <summary>
                 The sdl get event sdl event action
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlEventType">
+        <member name="T:Alis.Core.Graphic.SDL.Enums.SdlEventType">
             <summary>
                 The sdl event type enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlFirstEvent">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlFirstEvent">
             <summary>
                 The sdl first event sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlQuit">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlQuit">
             <summary>
                 The sdl quit sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlAppTerminating">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlAppTerminating">
             <summary>
                 The sdl app terminating sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlAppLowMemory">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlAppLowMemory">
             <summary>
                 The sdl app low memory sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlAppWillEnterBackground">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlAppWillEnterBackground">
             <summary>
                 The sdl app will enter background sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlAppDidEnterBackground">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlAppDidEnterBackground">
             <summary>
                 The sdl app did enter background sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlAppWillEnterForeground">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlAppWillEnterForeground">
             <summary>
                 The sdl app will enter foreground sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlAppDidEnterForeground">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlAppDidEnterForeground">
             <summary>
                 The sdl app did enter foreground sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlLocaleChanged">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlLocaleChanged">
             <summary>
                 The sdl locale changed sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlDisplayEvent">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlDisplayEvent">
             <summary>
                 The sdl display event sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlWindowEvent">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlWindowEvent">
             <summary>
                 The sdl window event sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlSysWmEvent">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlSysWmEvent">
             <summary>
                 The sdl sys wm event sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlKeydown">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlKeydown">
             <summary>
                 The sdl keydown sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlKeyup">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlKeyup">
             <summary>
                 The sdl keyup sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlTextEditing">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlTextEditing">
             <summary>
                 The sdl text editing sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlTextInput">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlTextInput">
             <summary>
                 The sdl text input sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlKeymapChanged">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlKeymapChanged">
             <summary>
                 The sdl keymap changed sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlMouseMotion">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlMouseMotion">
             <summary>
                 The sdl mouse motion sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlMouseButtonDown">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlMouseButtonDown">
             <summary>
                 The sdl mouse button down sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlMouseButtonUp">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlMouseButtonUp">
             <summary>
                 The sdl mouse button up sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlMousewheel">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlMousewheel">
             <summary>
                 The sdl mousewheel sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlJoyAxisMotion">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlJoyAxisMotion">
             <summary>
                 The sdl joy axis motion sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlJoyBallMotion">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlJoyBallMotion">
             <summary>
                 The sdl joy ball motion sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlJoyHatMotion">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlJoyHatMotion">
             <summary>
                 The sdl joy hat motion sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlJoyButtonDown">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlJoyButtonDown">
             <summary>
                 The sdl joy button down sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlJoyButtonUp">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlJoyButtonUp">
             <summary>
                 The sdl joy button up sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlJoyDeviceAdded">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlJoyDeviceAdded">
             <summary>
                 The sdl joy device added sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlJoyDeviceRemoved">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlJoyDeviceRemoved">
             <summary>
                 The sdl joy device removed sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlControllerAxisMotion">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlControllerAxisMotion">
             <summary>
                 The sdl controller axis motion sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlControllerButtonDown">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlControllerButtonDown">
             <summary>
                 The sdl controller button down sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlControllerButtonUp">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlControllerButtonUp">
             <summary>
                 The sdl controller button up sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlControllerDeviceAdded">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlControllerDeviceAdded">
             <summary>
                 The sdl controller device added sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlControllerDeviceRemoved">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlControllerDeviceRemoved">
             <summary>
                 The sdl controller device removed sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlControllerDeviceRemapped">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlControllerDeviceRemapped">
             <summary>
                 The sdl controller device remapped sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlControllerTouchpadDown">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlControllerTouchpadDown">
             <summary>
                 The sdl controller touchpad down sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlControllerTouchpadMotion">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlControllerTouchpadMotion">
             <summary>
                 The sdl controller touchpad motion sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlControllerTouchpadUp">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlControllerTouchpadUp">
             <summary>
                 The sdl controller touchpad up sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlControllerSensorUpdate">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlControllerSensorUpdate">
             <summary>
                 The sdl controller sensor update sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlFingerDown">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlFingerDown">
             <summary>
                 The sdl finger down sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlFingerUp">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlFingerUp">
             <summary>
                 The sdl finger up sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlFingerMotion">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlFingerMotion">
             <summary>
                 The sdl finger motion sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlDollarGesture">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlDollarGesture">
             <summary>
                 The sdl dollar gesture sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlDollarRecord">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlDollarRecord">
             <summary>
                 The sdl dollar record sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlMultiGesture">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlMultiGesture">
             <summary>
                 The sdl multi gesture sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlClipBoardUpdate">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlClipBoardUpdate">
             <summary>
                 The sdl clip board update sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlDropFile">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlDropFile">
             <summary>
                 The sdl drop file sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlDropText">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlDropText">
             <summary>
                 The sdl drop text sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlDropBegin">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlDropBegin">
             <summary>
                 The sdl drop begin sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlDropComplete">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlDropComplete">
             <summary>
                 The sdl drop complete sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlAudioDeviceAdded">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlAudioDeviceAdded">
             <summary>
                 The sdl audio device added sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlAudioDeviceRemoved">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlAudioDeviceRemoved">
             <summary>
                 The sdl audio device removed sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlSensorUpdate">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlSensorUpdate">
             <summary>
                 The sdl sensor update sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlRenderTargetsReset">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlRenderTargetsReset">
             <summary>
                 The sdl render targets reset sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlRenderDeviceReset">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlRenderDeviceReset">
             <summary>
                 The sdl render device reset sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlPollSentinel">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlPollSentinel">
             <summary>
                 The sdl poll sentinel sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlUserEvent">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlUserEvent">
             <summary>
                 The sdl user event sdl event type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEventType.SdlLastEvent">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlEventType.SdlLastEvent">
             <summary>
                 The sdl last event sdl event type
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlFlashOperation">
+        <member name="T:Alis.Core.Graphic.SDL.Enums.SdlFlashOperation">
             <summary>
                 The sdl flash operation enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlFlashOperation.SdlFlashCancel">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlFlashOperation.SdlFlashCancel">
             <summary>
                 The sdl flash cancel sdl flash operation
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlFlashOperation.SdlFlashBriefly">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlFlashOperation.SdlFlashBriefly">
             <summary>
                 The sdl flash briefly sdl flash operation
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlFlashOperation.SdlFlashUntilFocused">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlFlashOperation.SdlFlashUntilFocused">
             <summary>
                 The sdl flash until focused sdl flash operation
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlGameControllerAxis">
+        <member name="T:Alis.Core.Graphic.SDL.Enums.SdlGameControllerAxis">
             <summary>
                 The sdl game controller axis enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerAxis.SdlControllerAxisInvalid">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerAxis.SdlControllerAxisInvalid">
             <summary>
                 The sdl controller axis invalid sdl game controller axis
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerAxis.SdlControllerAxisLeftX">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerAxis.SdlControllerAxisLeftX">
             <summary>
                 The sdl controller axis left x sdl game controller axis
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerAxis.SdlControllerAxisLeftY">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerAxis.SdlControllerAxisLeftY">
             <summary>
                 The sdl controller axis lefty sdl game controller axis
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerAxis.SdlControllerAxisRightX">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerAxis.SdlControllerAxisRightX">
             <summary>
                 The sdl controller axis right X sdl game controller axis
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerAxis.SdlControllerAxisRightY">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerAxis.SdlControllerAxisRightY">
             <summary>
                 The sdl controller axis right Y sdl game controller axis
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerAxis.SdlControllerAxisTriggerLeft">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerAxis.SdlControllerAxisTriggerLeft">
             <summary>
                 The sdl controller axis trigger left sdl game controller axis
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerAxis.SdlControllerAxisTriggerRight">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerAxis.SdlControllerAxisTriggerRight">
             <summary>
                 The sdl controller axis trigger right sdl game controller axis
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerAxis.SdlControllerAxisMax">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerAxis.SdlControllerAxisMax">
             <summary>
                 The sdl controller axis max sdl game controller axis
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlGameControllerBindType">
+        <member name="T:Alis.Core.Graphic.SDL.Enums.SdlGameControllerBindType">
             <summary>
                 The sdl game controller bind type enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerBindType.SdlControllerBindTypeNone">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerBindType.SdlControllerBindTypeNone">
             <summary>
                 The sdl controller bind type none sdl game controller bind type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerBindType.SdlControllerBindTypeButton">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerBindType.SdlControllerBindTypeButton">
             <summary>
                 The sdl controller bind type button sdl game controller bind type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerBindType.SdlControllerBindTypeAxis">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerBindType.SdlControllerBindTypeAxis">
             <summary>
                 The sdl controller bind type axis sdl game controller bind type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerBindType.SdlControllerBindTypeHat">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerBindType.SdlControllerBindTypeHat">
             <summary>
                 The sdl controller bind type hat sdl game controller bind type
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlGameControllerButton">
+        <member name="T:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton">
             <summary>
                 The sdl game controller button enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonInvalid">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonInvalid">
             <summary>
                 The sdl controller button invalid sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonA">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonA">
             <summary>
                 The sdl controller button sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonB">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonB">
             <summary>
                 The sdl controller button sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonX">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonX">
             <summary>
                 The sdl controller button sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonY">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonY">
             <summary>
                 The sdl controller button sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonBack">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonBack">
             <summary>
                 The sdl controller button back sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonGuide">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonGuide">
             <summary>
                 The sdl controller button guide sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonStart">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonStart">
             <summary>
                 The sdl controller button start sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonLeftStick">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonLeftStick">
             <summary>
                 The sdl controller button left stick sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonRightStick">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonRightStick">
             <summary>
                 The sdl controller button right stick sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonLeftShoulder">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonLeftShoulder">
             <summary>
                 The sdl controller button left shoulder sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonRightShoulder">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonRightShoulder">
             <summary>
                 The sdl controller button right shoulder sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonDpadUp">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonDpadUp">
             <summary>
                 The sdl controller button dpad up sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonDpadDown">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonDpadDown">
             <summary>
                 The sdl controller button dpad down sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonDpadLeft">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonDpadLeft">
             <summary>
                 The sdl controller button dpad left sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonDpadRight">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonDpadRight">
             <summary>
                 The sdl controller button dpad right sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonMisc1">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonMisc1">
             <summary>
                 The sdl controller button misc1 sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonPaddle1">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonPaddle1">
             <summary>
                 The sdl controller button paddle1 sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonPaddle2">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonPaddle2">
             <summary>
                 The sdl controller button paddle2 sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonPaddle3">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonPaddle3">
             <summary>
                 The sdl controller button paddle3 sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonPaddle4">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonPaddle4">
             <summary>
                 The sdl controller button paddle4 sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonTouchpad">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonTouchpad">
             <summary>
                 The sdl controller button touchpad sdl game controller button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButton.SdlControllerButtonMax">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton.SdlControllerButtonMax">
             <summary>
                 The sdl controller button max sdl game controller button
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlGlAttr">
+        <member name="T:Alis.Core.Graphic.SDL.Enums.SdlGlAttr">
             <summary>
                 The sdl gl attr enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlRedSize">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlRedSize">
             <summary>
                 The sdl gl red size sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlGreenSize">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlGreenSize">
             <summary>
                 The sdl gl green size sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlBlueSize">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlBlueSize">
             <summary>
                 The sdl gl blue size sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlAlphaSize">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlAlphaSize">
             <summary>
                 The sdl gl alpha size sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlBufferSize">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlBufferSize">
             <summary>
                 The sdl gl buffer size sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlDoubleBuffer">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlDoubleBuffer">
             <summary>
                 The sdl gl double buffer sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlDepthSize">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlDepthSize">
             <summary>
                 The sdl gl depth size sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlStencilSize">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlStencilSize">
             <summary>
                 The sdl gl stencil size sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlAccumRedSize">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlAccumRedSize">
             <summary>
                 The sdl gl accum red size sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlAccumGreenSize">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlAccumGreenSize">
             <summary>
                 The sdl gl accum green size sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlAccumBlueSize">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlAccumBlueSize">
             <summary>
                 The sdl gl accum blue size sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlAccumAlphaSize">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlAccumAlphaSize">
             <summary>
                 The sdl gl accum alpha size sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlStereo">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlStereo">
             <summary>
                 The sdl gl stereo sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlMultiSampleBuffers">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlMultiSampleBuffers">
             <summary>
                 The sdl gl multi sample buffers sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlMultiSampleSamples">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlMultiSampleSamples">
             <summary>
                 The sdl gl multi sample samples sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlAcceleratedVisual">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlAcceleratedVisual">
             <summary>
                 The sdl gl accelerated visual sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlRetainedBacking">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlRetainedBacking">
             <summary>
                 The sdl gl retained backing sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlContextMajorVersion">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlContextMajorVersion">
             <summary>
                 The sdl gl context major version sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlContextMinorVersion">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlContextMinorVersion">
             <summary>
                 The sdl gl context minor version sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlContextEgl">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlContextEgl">
             <summary>
                 The sdl gl context egl sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlContextFlags">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlContextFlags">
             <summary>
                 The sdl gl context flags sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlContextProfileMask">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlContextProfileMask">
             <summary>
                 The sdl gl context profile mask sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlShareWithCurrentContext">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlShareWithCurrentContext">
             <summary>
                 The sdl gl share with current context sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlFramebufferSrgbCapable">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlFramebufferSrgbCapable">
             <summary>
                 The sdl gl framebuffer srgb capable sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlContextReleaseBehavior">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlContextReleaseBehavior">
             <summary>
                 The sdl gl context release behavior sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlContextResetNotification">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlContextResetNotification">
             <summary>
                 The sdl gl context reset notification sdl gl attr
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlAttr.SdlGlContextNoError">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlAttr.SdlGlContextNoError">
             <summary>
                 The sdl gl context no error sdl gl attr
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlGlContext">
+        <member name="T:Alis.Core.Graphic.SDL.Enums.SdlGlContext">
             <summary>
                 The sdl gl context enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlContext.SdlGlContextDebugFlag">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlContext.SdlGlContextDebugFlag">
             <summary>
                 The sdl gl context debug flag sdl gl context
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlContext.SdlGlContextForwardCompatibleFlag">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlContext.SdlGlContextForwardCompatibleFlag">
             <summary>
                 The sdl gl context forward compatible flag sdl gl context
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlContext.SdlGlContextRobustAccessFlag">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlContext.SdlGlContextRobustAccessFlag">
             <summary>
                 The sdl gl context robust access flag sdl gl context
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlContext.SdlGlContextResetIsolationFlag">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlContext.SdlGlContextResetIsolationFlag">
             <summary>
                 The sdl gl context reset isolation flag sdl gl context
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlGlProfile">
+        <member name="T:Alis.Core.Graphic.SDL.Enums.SdlGlProfile">
             <summary>
                 The sdl gl profile enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlProfile.SdlGlContextProfileCore">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlProfile.SdlGlContextProfileCore">
             <summary>
                 The sdl gl context profile core sdl gl profile
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlProfile.SdlGlContextProfileCompatibility">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlProfile.SdlGlContextProfileCompatibility">
             <summary>
                 The sdl gl context profile compatibility sdl gl profile
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGlProfile.SdlGlContextProfileEs">
+        <member name="F:Alis.Core.Graphic.SDL.Enums.SdlGlProfile.SdlGlContextProfileEs">
             <summary>
                 The sdl gl context profile es sdl gl profile
             </summary>
@@ -32150,7 +32160,7 @@
             <param name="count">The count</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderText_Solid(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderText_Solid(System.IntPtr,System.String,Alis.Core.Graphic.SDL.Structs.SdlColor)">
             <summary>
                 Ttfs the render text solid using the specified font
             </summary>
@@ -32159,7 +32169,7 @@
             <param name="fg">The fg</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.INTERNAL_TTF_RenderUTF8_Solid(System.IntPtr,System.Byte[],Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.INTERNAL_TTF_RenderUTF8_Solid(System.IntPtr,System.Byte[],Alis.Core.Graphic.SDL.Structs.SdlColor)">
             <summary>
                 Internals the ttf render utf 8 solid using the specified font
             </summary>
@@ -32168,7 +32178,7 @@
             <param name="fg">The fg</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderUNICODE_Solid(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderUNICODE_Solid(System.IntPtr,System.String,Alis.Core.Graphic.SDL.Structs.SdlColor)">
             <summary>
                 Ttfs the render unicode solid using the specified font
             </summary>
@@ -32177,7 +32187,7 @@
             <param name="fg">The fg</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderText_Solid_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderText_Solid_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.Structs.SdlColor,System.UInt32)">
             <summary>
                 Ttfs the render text solid wrapped using the specified font
             </summary>
@@ -32187,7 +32197,7 @@
             <param name="wrapLength">The wrap length</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.INTERNAL_TTF_RenderUTF8_Solid_Wrapped(System.IntPtr,System.Byte[],Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.INTERNAL_TTF_RenderUTF8_Solid_Wrapped(System.IntPtr,System.Byte[],Alis.Core.Graphic.SDL.Structs.SdlColor,System.UInt32)">
             <summary>
                 Internals the ttf render utf 8 solid wrapped using the specified font
             </summary>
@@ -32197,7 +32207,7 @@
             <param name="wrapLength">The wrap length</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderUNICODE_Solid_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderUNICODE_Solid_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.Structs.SdlColor,System.UInt32)">
             <summary>
                 Ttfs the render unicode solid wrapped using the specified font
             </summary>
@@ -32207,7 +32217,7 @@
             <param name="wrapLength">The wrap length</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderGlyph_Solid(System.IntPtr,System.UInt16,Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderGlyph_Solid(System.IntPtr,System.UInt16,Alis.Core.Graphic.SDL.Structs.SdlColor)">
             <summary>
                 Ttfs the render glyph solid using the specified font
             </summary>
@@ -32216,7 +32226,7 @@
             <param name="fg">The fg</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderGlyph32_Solid(System.IntPtr,System.UInt32,Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderGlyph32_Solid(System.IntPtr,System.UInt32,Alis.Core.Graphic.SDL.Structs.SdlColor)">
             <summary>
                 Ttfs the render glyph 32 solid using the specified font
             </summary>
@@ -32225,7 +32235,7 @@
             <param name="fg">The fg</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderText_Shaded(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderText_Shaded(System.IntPtr,System.String,Alis.Core.Graphic.SDL.Structs.SdlColor,Alis.Core.Graphic.SDL.Structs.SdlColor)">
             <summary>
                 Ttfs the render text shaded using the specified font
             </summary>
@@ -32235,7 +32245,7 @@
             <param name="bg">The bg</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.INTERNAL_TTF_RenderUTF8_Shaded(System.IntPtr,System.Byte[],Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.INTERNAL_TTF_RenderUTF8_Shaded(System.IntPtr,System.Byte[],Alis.Core.Graphic.SDL.Structs.SdlColor,Alis.Core.Graphic.SDL.Structs.SdlColor)">
             <summary>
                 Internals the ttf render utf 8 shaded using the specified font
             </summary>
@@ -32245,7 +32255,7 @@
             <param name="bg">The bg</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderUNICODE_Shaded(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderUNICODE_Shaded(System.IntPtr,System.String,Alis.Core.Graphic.SDL.Structs.SdlColor,Alis.Core.Graphic.SDL.Structs.SdlColor)">
             <summary>
                 Ttfs the render unicode shaded using the specified font
             </summary>
@@ -32255,7 +32265,7 @@
             <param name="bg">The bg</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderText_Shaded_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderText_Shaded_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.Structs.SdlColor,Alis.Core.Graphic.SDL.Structs.SdlColor,System.UInt32)">
             <summary>
                 Ttfs the render text shaded wrapped using the specified font
             </summary>
@@ -32266,7 +32276,7 @@
             <param name="wrapLength">The wrap length</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.INTERNAL_TTF_RenderUTF8_Shaded_Wrapped(System.IntPtr,System.Byte[],Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.INTERNAL_TTF_RenderUTF8_Shaded_Wrapped(System.IntPtr,System.Byte[],Alis.Core.Graphic.SDL.Structs.SdlColor,Alis.Core.Graphic.SDL.Structs.SdlColor,System.UInt32)">
             <summary>
                 Internals the ttf render utf 8 shaded wrapped using the specified font
             </summary>
@@ -32277,7 +32287,7 @@
             <param name="wrapLength">The wrap length</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderUNICODE_Shaded_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderUNICODE_Shaded_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.Structs.SdlColor,Alis.Core.Graphic.SDL.Structs.SdlColor,System.UInt32)">
             <summary>
                 Ttfs the render unicode shaded wrapped using the specified font
             </summary>
@@ -32288,7 +32298,7 @@
             <param name="wrapLength">The wrap length</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderGlyph_Shaded(System.IntPtr,System.UInt16,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderGlyph_Shaded(System.IntPtr,System.UInt16,Alis.Core.Graphic.SDL.Structs.SdlColor,Alis.Core.Graphic.SDL.Structs.SdlColor)">
             <summary>
                 Ttfs the render glyph shaded using the specified font
             </summary>
@@ -32298,7 +32308,7 @@
             <param name="bg">The bg</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderGlyph32_Shaded(System.IntPtr,System.UInt32,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderGlyph32_Shaded(System.IntPtr,System.UInt32,Alis.Core.Graphic.SDL.Structs.SdlColor,Alis.Core.Graphic.SDL.Structs.SdlColor)">
             <summary>
                 Ttfs the render glyph 32 shaded using the specified font
             </summary>
@@ -32308,7 +32318,7 @@
             <param name="bg">The bg</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderText_Blended(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderText_Blended(System.IntPtr,System.String,Alis.Core.Graphic.SDL.Structs.SdlColor)">
             <summary>
                 Ttfs the render text blended using the specified font
             </summary>
@@ -32317,7 +32327,7 @@
             <param name="fg">The fg</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.INTERNAL_TTF_RenderUTF8_Blended(System.IntPtr,System.Byte[],Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.INTERNAL_TTF_RenderUTF8_Blended(System.IntPtr,System.Byte[],Alis.Core.Graphic.SDL.Structs.SdlColor)">
             <summary>
                 Internals the ttf render utf 8 blended using the specified font
             </summary>
@@ -32326,7 +32336,7 @@
             <param name="fg">The fg</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderUNICODE_Blended(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderUNICODE_Blended(System.IntPtr,System.String,Alis.Core.Graphic.SDL.Structs.SdlColor)">
             <summary>
                 Ttfs the render unicode blended using the specified font
             </summary>
@@ -32335,7 +32345,7 @@
             <param name="fg">The fg</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderText_Blended_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderText_Blended_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.Structs.SdlColor,System.UInt32)">
             <summary>
                 Ttfs the render text blended wrapped using the specified font
             </summary>
@@ -32345,7 +32355,7 @@
             <param name="wrapped">The wrapped</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.INTERNAL_TTF_RenderUTF8_Blended_Wrapped(System.IntPtr,System.Byte[],Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.INTERNAL_TTF_RenderUTF8_Blended_Wrapped(System.IntPtr,System.Byte[],Alis.Core.Graphic.SDL.Structs.SdlColor,System.UInt32)">
             <summary>
                 Internals the ttf render utf 8 blended wrapped using the specified font
             </summary>
@@ -32355,7 +32365,7 @@
             <param name="wrapped">The wrapped</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderUNICODE_Blended_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderUNICODE_Blended_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.Structs.SdlColor,System.UInt32)">
             <summary>
                 Ttfs the render unicode blended wrapped using the specified font
             </summary>
@@ -32365,7 +32375,7 @@
             <param name="wrapped">The wrapped</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderGlyph_Blended(System.IntPtr,System.UInt16,Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderGlyph_Blended(System.IntPtr,System.UInt16,Alis.Core.Graphic.SDL.Structs.SdlColor)">
             <summary>
                 Ttfs the render glyph blended using the specified font
             </summary>
@@ -32374,7 +32384,7 @@
             <param name="fg">The fg</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderGlyph32_Blended(System.IntPtr,System.UInt32,Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_RenderGlyph32_Blended(System.IntPtr,System.UInt32,Alis.Core.Graphic.SDL.Structs.SdlColor)">
             <summary>
                 Ttfs the render glyph 32 blended using the specified font
             </summary>
@@ -32440,6 +32450,51 @@
             <param name="previousCh">The previous ch</param>
             <param name="ch">The ch</param>
             <returns>The int</returns>
+        </member>
+        <member name="T:Alis.Core.Graphic.SDL.ImgInitFlags">
+            <summary>
+                The img initflags enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.ImgInitFlags.ImgInitJpg">
+            <summary>
+                The img init jpg img initflags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.ImgInitFlags.ImgInitPng">
+            <summary>
+                The img init png img initflags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.ImgInitFlags.ImgInitTif">
+            <summary>
+                The img init tif img initflags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.ImgInitFlags.ImgInitWebp">
+            <summary>
+                The img init webp img initflags
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlDlls">
+            <summary>
+            The im gui dlls class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlDlls.SdlDllBytes">
+            <summary>
+            The osx arm64 sdl2
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlDlls.SdlImageDllBytes">
+            <summary>
+            The sdl2 image
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlDlls.SdlTtfDllBytes">
+            <summary>
+            The sdl2 ttf
+            </summary>
         </member>
         <member name="T:Alis.Core.Graphic.SDL.Sdl">
             <summary>
@@ -33987,7 +34042,7 @@
             </summary>
             <param name="area">The area</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RWFromFP(System.IntPtr,Alis.Core.Graphic.SDL.SdlBool)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RWFromFP(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlBool)">
             <summary>
                 Sdls the rw from fp using the specified fp
             </summary>
@@ -34301,7 +34356,7 @@
             <param name="priority">The priority</param>
             <returns>The sdl bool</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GetHintBoolean(System.Byte[],Alis.Core.Graphic.SDL.SdlBool)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GetHintBoolean(System.Byte[],Alis.Core.Graphic.SDL.Enums.SdlBool)">
             <summary>
                 Internals the sdl get hint boolean using the specified name
             </summary>
@@ -34309,7 +34364,7 @@
             <param name="defaultValue">The default value</param>
             <returns>The sdl bool</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetHintBoolean(System.String,Alis.Core.Graphic.SDL.SdlBool)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetHintBoolean(System.String,Alis.Core.Graphic.SDL.Enums.SdlBool)">
             <summary>
                 Sdls the get hint boolean using the specified name
             </summary>
@@ -34705,7 +34760,7 @@
                 Sdls the enable screen saver
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetClosestDisplayMode(System.Int32,Alis.Core.Graphic.SDL.SdlDisplayMode@,Alis.Core.Graphic.SDL.SdlDisplayMode@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetClosestDisplayMode(System.Int32,Alis.Core.Graphic.SDL.Structs.SdlDisplayMode@,Alis.Core.Graphic.SDL.Structs.SdlDisplayMode@)">
             <summary>
                 Sdls the get closest display mode using the specified display index
             </summary>
@@ -34714,7 +34769,7 @@
             <param name="closest">The closest</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetCurrentDisplayMode(System.Int32,Alis.Core.Graphic.SDL.SdlDisplayMode@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetCurrentDisplayMode(System.Int32,Alis.Core.Graphic.SDL.Structs.SdlDisplayMode@)">
             <summary>
                 Sdls the get current display mode using the specified display index
             </summary>
@@ -34734,7 +34789,7 @@
             </summary>
             <returns>The string</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetDesktopDisplayMode(System.Int32,Alis.Core.Graphic.SDL.SdlDisplayMode@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetDesktopDisplayMode(System.Int32,Alis.Core.Graphic.SDL.Structs.SdlDisplayMode@)">
             <summary>
                 Sdls the get desktop display mode using the specified display index
             </summary>
@@ -34781,7 +34836,7 @@
             <param name="displayIndex">The display index</param>
             <returns>The sdl display orientation</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetDisplayMode(System.Int32,System.Int32,Alis.Core.Graphic.SDL.SdlDisplayMode@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetDisplayMode(System.Int32,System.Int32,Alis.Core.Graphic.SDL.Structs.SdlDisplayMode@)">
             <summary>
                 Sdls the get display mode using the specified display index
             </summary>
@@ -34892,7 +34947,7 @@
             <param name="window">The window</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetWindowDisplayMode(System.IntPtr,Alis.Core.Graphic.SDL.SdlDisplayMode@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetWindowDisplayMode(System.IntPtr,Alis.Core.Graphic.SDL.Structs.SdlDisplayMode@)">
             <summary>
                 Sdls the get window display mode using the specified window
             </summary>
@@ -35094,7 +35149,7 @@
                 Sdls the gl reset attributes
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GL_GetAttribute(Alis.Core.Graphic.SDL.SdlGlAttr,System.Int32@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GL_GetAttribute(Alis.Core.Graphic.SDL.Enums.SdlGlAttr,System.Int32@)">
             <summary>
                 Sdls the gl get attribute using the specified attr
             </summary>
@@ -35136,7 +35191,7 @@
             <param name="w">The </param>
             <param name="h">The </param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GL_SetAttribute(Alis.Core.Graphic.SDL.SdlGlAttr,System.Int32)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GL_SetAttribute(Alis.Core.Graphic.SDL.Enums.SdlGlAttr,System.Int32)">
             <summary>
                 Sdls the gl set attribute using the specified attr
             </summary>
@@ -35144,7 +35199,7 @@
             <param name="value">The value</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GL_SetAttribute(Alis.Core.Graphic.SDL.SdlGlAttr,Alis.Core.Graphic.SDL.SdlGlProfile)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GL_SetAttribute(Alis.Core.Graphic.SDL.Enums.SdlGlAttr,Alis.Core.Graphic.SDL.Enums.SdlGlProfile)">
             <summary>
                 Sdls the gl set attribute using the specified attr
             </summary>
@@ -35234,7 +35289,7 @@
             <param name="userdata">The userdata</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetWindowDisplayMode(System.IntPtr,Alis.Core.Graphic.SDL.SdlDisplayMode@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetWindowDisplayMode(System.IntPtr,Alis.Core.Graphic.SDL.Structs.SdlDisplayMode@)">
             <summary>
                 Sdls the set window display mode using the specified window
             </summary>
@@ -35268,21 +35323,21 @@
             <param name="blue">The blue</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetWindowGrab(System.IntPtr,Alis.Core.Graphic.SDL.SdlBool)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetWindowGrab(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlBool)">
             <summary>
                 Sdls the set window grab using the specified window
             </summary>
             <param name="window">The window</param>
             <param name="grabbed">The grabbed</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetWindowKeyboardGrab(System.IntPtr,Alis.Core.Graphic.SDL.SdlBool)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetWindowKeyboardGrab(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlBool)">
             <summary>
                 Sdls the set window keyboard grab using the specified window
             </summary>
             <param name="window">The window</param>
             <param name="grabbed">The grabbed</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetWindowMouseGrab(System.IntPtr,Alis.Core.Graphic.SDL.SdlBool)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetWindowMouseGrab(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlBool)">
             <summary>
                 Sdls the set window mouse grab using the specified window
             </summary>
@@ -35328,7 +35383,7 @@
             <param name="w">The </param>
             <param name="h">The </param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetWindowBordered(System.IntPtr,Alis.Core.Graphic.SDL.SdlBool)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetWindowBordered(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlBool)">
             <summary>
                 Sdls the set window bordered using the specified window
             </summary>
@@ -35346,14 +35401,14 @@
             <param name="right">The right</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetWindowResizable(System.IntPtr,Alis.Core.Graphic.SDL.SdlBool)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetWindowResizable(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlBool)">
             <summary>
                 Sdls the set window resizable using the specified window
             </summary>
             <param name="window">The window</param>
             <param name="resizable">The resizable</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetWindowAlwaysOnTop(System.IntPtr,Alis.Core.Graphic.SDL.SdlBool)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetWindowAlwaysOnTop(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlBool)">
             <summary>
                 Sdls the set window always on top using the specified window
             </summary>
@@ -35453,7 +35508,7 @@
             <param name="window">The window</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_FlashWindow(System.IntPtr,Alis.Core.Graphic.SDL.SdlFlashOperation)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_FlashWindow(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlFlashOperation)">
             <summary>
                 Sdls the flash window using the specified window
             </summary>
@@ -35461,7 +35516,7 @@
             <param name="operation">The operation</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_ComposeCustomBlendMode(Alis.Core.Graphic.SDL.SdlBlendFactor,Alis.Core.Graphic.SDL.SdlBlendFactor,Alis.Core.Graphic.SDL.SdlBlendOperation,Alis.Core.Graphic.SDL.SdlBlendFactor,Alis.Core.Graphic.SDL.SdlBlendFactor,Alis.Core.Graphic.SDL.SdlBlendOperation)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_ComposeCustomBlendMode(Alis.Core.Graphic.SDL.Enums.SdlBlendFactor,Alis.Core.Graphic.SDL.Enums.SdlBlendFactor,Alis.Core.Graphic.SDL.Enums.SdlBlendOperation,Alis.Core.Graphic.SDL.Enums.SdlBlendFactor,Alis.Core.Graphic.SDL.Enums.SdlBlendFactor,Alis.Core.Graphic.SDL.Enums.SdlBlendOperation)">
             <summary>
                 Sdls the compose custom blend mode using the specified src color factor
             </summary>
@@ -35614,7 +35669,7 @@
             </summary>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetRenderDrawBlendMode(System.IntPtr,Alis.Core.Graphic.SDL.SdlBlendMode@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetRenderDrawBlendMode(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlBlendMode@)">
             <summary>
                 Sdls the get render draw blend mode using the specified renderer
             </summary>
@@ -35704,7 +35759,7 @@
             <param name="alpha">The alpha</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetTextureBlendMode(System.IntPtr,Alis.Core.Graphic.SDL.SdlBlendMode@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetTextureBlendMode(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlBlendMode@)">
             <summary>
                 Sdls the get texture blend mode using the specified texture
             </summary>
@@ -36010,7 +36065,7 @@
             <param name="count">The count</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderCopyF(System.IntPtr,System.IntPtr,Alis.Core.Graphic.SDL.SdlRect@,Alis.Core.Graphic.SDL.SdlFRect@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderCopyF(System.IntPtr,System.IntPtr,Alis.Core.Graphic.SDL.SdlRect@,Alis.Core.Graphic.SDL.Structs.SdlFRect@)">
             <summary>
                 Sdls the render copy f using the specified renderer
             </summary>
@@ -36020,7 +36075,7 @@
             <param name="dstrect">The dstrect</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderCopyF(System.IntPtr,System.IntPtr,System.IntPtr,Alis.Core.Graphic.SDL.SdlFRect@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderCopyF(System.IntPtr,System.IntPtr,System.IntPtr,Alis.Core.Graphic.SDL.Structs.SdlFRect@)">
             <summary>
                 Sdls the render copy f using the specified renderer
             </summary>
@@ -36050,7 +36105,7 @@
             <param name="dstrect">The dstrect</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderCopyEx(System.IntPtr,System.IntPtr,Alis.Core.Graphic.SDL.SdlRect@,Alis.Core.Graphic.SDL.SdlFRect@,System.Double,Alis.Core.Graphic.SDL.SdlFPoint@,Alis.Core.Graphic.SDL.SdlRendererFlip)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderCopyEx(System.IntPtr,System.IntPtr,Alis.Core.Graphic.SDL.SdlRect@,Alis.Core.Graphic.SDL.Structs.SdlFRect@,System.Double,Alis.Core.Graphic.SDL.Structs.SdlFPoint@,Alis.Core.Graphic.SDL.SdlRendererFlip)">
             <summary>
                 Sdls the render copy ex using the specified renderer
             </summary>
@@ -36063,7 +36118,7 @@
             <param name="flip">The flip</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderCopyEx(System.IntPtr,System.IntPtr,System.IntPtr,Alis.Core.Graphic.SDL.SdlFRect@,System.Double,Alis.Core.Graphic.SDL.SdlFPoint@,Alis.Core.Graphic.SDL.SdlRendererFlip)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderCopyEx(System.IntPtr,System.IntPtr,System.IntPtr,Alis.Core.Graphic.SDL.Structs.SdlFRect@,System.Double,Alis.Core.Graphic.SDL.Structs.SdlFPoint@,Alis.Core.Graphic.SDL.SdlRendererFlip)">
             <summary>
                 Sdls the render copy ex using the specified renderer
             </summary>
@@ -36076,7 +36131,7 @@
             <param name="flip">The flip</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderCopyExF(System.IntPtr,System.IntPtr,Alis.Core.Graphic.SDL.SdlRect@,System.IntPtr,System.Double,Alis.Core.Graphic.SDL.SdlFPoint@,Alis.Core.Graphic.SDL.SdlRendererFlip)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderCopyExF(System.IntPtr,System.IntPtr,Alis.Core.Graphic.SDL.SdlRect@,System.IntPtr,System.Double,Alis.Core.Graphic.SDL.Structs.SdlFPoint@,Alis.Core.Graphic.SDL.SdlRendererFlip)">
             <summary>
                 Sdls the render copy ex f using the specified renderer
             </summary>
@@ -36089,7 +36144,7 @@
             <param name="flip">The flip</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderCopyExF(System.IntPtr,System.IntPtr,Alis.Core.Graphic.SDL.SdlRect@,Alis.Core.Graphic.SDL.SdlFRect@,System.Double,System.IntPtr,Alis.Core.Graphic.SDL.SdlRendererFlip)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderCopyExF(System.IntPtr,System.IntPtr,Alis.Core.Graphic.SDL.SdlRect@,Alis.Core.Graphic.SDL.Structs.SdlFRect@,System.Double,System.IntPtr,Alis.Core.Graphic.SDL.SdlRendererFlip)">
             <summary>
                 Sdls the render copy ex f using the specified renderer
             </summary>
@@ -36102,7 +36157,7 @@
             <param name="flip">The flip</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderCopyExF(System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr,System.Double,Alis.Core.Graphic.SDL.SdlFPoint@,Alis.Core.Graphic.SDL.SdlRendererFlip)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderCopyExF(System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr,System.Double,Alis.Core.Graphic.SDL.Structs.SdlFPoint@,Alis.Core.Graphic.SDL.SdlRendererFlip)">
             <summary>
                 Sdls the render copy ex f using the specified renderer
             </summary>
@@ -36115,7 +36170,7 @@
             <param name="flip">The flip</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderCopyExF(System.IntPtr,System.IntPtr,System.IntPtr,Alis.Core.Graphic.SDL.SdlFRect@,System.Double,System.IntPtr,Alis.Core.Graphic.SDL.SdlRendererFlip)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderCopyExF(System.IntPtr,System.IntPtr,System.IntPtr,Alis.Core.Graphic.SDL.Structs.SdlFRect@,System.Double,System.IntPtr,Alis.Core.Graphic.SDL.SdlRendererFlip)">
             <summary>
                 Sdls the render copy ex f using the specified renderer
             </summary>
@@ -36193,7 +36248,7 @@
             <param name="y">The </param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderDrawPointsF(System.IntPtr,Alis.Core.Graphic.SDL.SdlFPoint[],System.Int32)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderDrawPointsF(System.IntPtr,Alis.Core.Graphic.SDL.Structs.SdlFPoint[],System.Int32)">
             <summary>
                 Sdls the render draw points f using the specified renderer
             </summary>
@@ -36213,7 +36268,7 @@
             <param name="y2">The </param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderDrawLinesF(System.IntPtr,Alis.Core.Graphic.SDL.SdlFPoint[],System.Int32)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderDrawLinesF(System.IntPtr,Alis.Core.Graphic.SDL.Structs.SdlFPoint[],System.Int32)">
             <summary>
                 Sdls the render draw lines f using the specified renderer
             </summary>
@@ -36222,7 +36277,7 @@
             <param name="count">The count</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderDrawRectF(System.IntPtr,Alis.Core.Graphic.SDL.SdlFRect@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderDrawRectF(System.IntPtr,Alis.Core.Graphic.SDL.Structs.SdlFRect@)">
             <summary>
                 Sdls the render draw rect f using the specified renderer
             </summary>
@@ -36238,7 +36293,7 @@
             <param name="rect">The rect</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderDrawRectsF(System.IntPtr,Alis.Core.Graphic.SDL.SdlFRect[],System.Int32)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderDrawRectsF(System.IntPtr,Alis.Core.Graphic.SDL.Structs.SdlFRect[],System.Int32)">
             <summary>
                 Sdls the render draw rects f using the specified renderer
             </summary>
@@ -36247,7 +36302,7 @@
             <param name="count">The count</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderFillRectF(System.IntPtr,Alis.Core.Graphic.SDL.SdlFRect@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderFillRectF(System.IntPtr,Alis.Core.Graphic.SDL.Structs.SdlFRect@)">
             <summary>
                 Sdls the render fill rect f using the specified renderer
             </summary>
@@ -36263,7 +36318,7 @@
             <param name="rect">The rect</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderFillRectsF(System.IntPtr,Alis.Core.Graphic.SDL.SdlFRect[],System.Int32)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderFillRectsF(System.IntPtr,Alis.Core.Graphic.SDL.Structs.SdlFRect[],System.Int32)">
             <summary>
                 Sdls the render fill rects f using the specified renderer
             </summary>
@@ -36374,7 +36429,7 @@
             <param name="scaleY">The scale</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderSetIntegerScale(System.IntPtr,Alis.Core.Graphic.SDL.SdlBool)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_RenderSetIntegerScale(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlBool)">
             <summary>
                 Sdls the render set integer scale using the specified renderer
             </summary>
@@ -36390,7 +36445,7 @@
             <param name="rect">The rect</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetRenderDrawBlendMode(System.IntPtr,Alis.Core.Graphic.SDL.SdlBlendMode)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetRenderDrawBlendMode(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlBlendMode)">
             <summary>
                 Sdls the set render draw blend mode using the specified renderer
             </summary>
@@ -36425,7 +36480,7 @@
             <param name="alpha">The alpha</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetTextureBlendMode(System.IntPtr,Alis.Core.Graphic.SDL.SdlBlendMode)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetTextureBlendMode(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlBlendMode)">
             <summary>
                 Sdls the set texture blend mode using the specified texture
             </summary>
@@ -36755,7 +36810,7 @@
             <param name="amask">The amask</param>
             <returns>The sdl bool</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetPaletteColors(System.IntPtr,Alis.Core.Graphic.SDL.SdlColor[],System.Int32,System.Int32)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetPaletteColors(System.IntPtr,Alis.Core.Graphic.SDL.Structs.SdlColor[],System.Int32,System.Int32)">
             <summary>
                 Sdls the set palette colors using the specified palette
             </summary>
@@ -37091,7 +37146,7 @@
             <param name="alpha">The alpha</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetSurfaceBlendMode(System.IntPtr,Alis.Core.Graphic.SDL.SdlBlendMode@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetSurfaceBlendMode(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlBlendMode@)">
             <summary>
                 Sdls the get surface blend mode using the specified surface
             </summary>
@@ -37193,7 +37248,7 @@
             <param name="alpha">The alpha</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetSurfaceBlendMode(System.IntPtr,Alis.Core.Graphic.SDL.SdlBlendMode)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetSurfaceBlendMode(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlBlendMode)">
             <summary>
                 Sdls the set surface blend mode using the specified surface
             </summary>
@@ -37324,7 +37379,7 @@
                 Sdls the pump events
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_PeepEvents(Alis.Core.Graphic.SDL.SdlEvent[],System.Int32,Alis.Core.Graphic.SDL.SdlEventAction,Alis.Core.Graphic.SDL.SdlEventType,Alis.Core.Graphic.SDL.SdlEventType)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_PeepEvents(Alis.Core.Graphic.SDL.Structs.SdlEvent[],System.Int32,Alis.Core.Graphic.SDL.Enums.SdlEventAction,Alis.Core.Graphic.SDL.Enums.SdlEventType,Alis.Core.Graphic.SDL.Enums.SdlEventType)">
             <summary>
                 Sdls the peep events using the specified events
             </summary>
@@ -37335,14 +37390,14 @@
             <param name="maxType">The max type</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_HasEvent(Alis.Core.Graphic.SDL.SdlEventType)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_HasEvent(Alis.Core.Graphic.SDL.Enums.SdlEventType)">
             <summary>
                 Sdls the has event using the specified type
             </summary>
             <param name="type">The type</param>
             <returns>The sdl bool</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_HasEvents(Alis.Core.Graphic.SDL.SdlEventType,Alis.Core.Graphic.SDL.SdlEventType)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_HasEvents(Alis.Core.Graphic.SDL.Enums.SdlEventType,Alis.Core.Graphic.SDL.Enums.SdlEventType)">
             <summary>
                 Sdls the has events using the specified min type
             </summary>
@@ -37350,34 +37405,34 @@
             <param name="maxType">The max type</param>
             <returns>The sdl bool</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_FlushEvent(Alis.Core.Graphic.SDL.SdlEventType)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_FlushEvent(Alis.Core.Graphic.SDL.Enums.SdlEventType)">
             <summary>
                 Sdls the flush event using the specified type
             </summary>
             <param name="type">The type</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_FlushEvents(Alis.Core.Graphic.SDL.SdlEventType,Alis.Core.Graphic.SDL.SdlEventType)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_FlushEvents(Alis.Core.Graphic.SDL.Enums.SdlEventType,Alis.Core.Graphic.SDL.Enums.SdlEventType)">
             <summary>
                 Sdls the flush events using the specified min
             </summary>
             <param name="min">The min</param>
             <param name="max">The max</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_PollEvent(Alis.Core.Graphic.SDL.SdlEvent@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_PollEvent(Alis.Core.Graphic.SDL.Structs.SdlEvent@)">
             <summary>
                 Sdls the poll event using the specified  event
             </summary>
             <param name="event">The event</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_WaitEvent(Alis.Core.Graphic.SDL.SdlEvent@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_WaitEvent(Alis.Core.Graphic.SDL.Structs.SdlEvent@)">
             <summary>
                 Sdls the wait event using the specified  event
             </summary>
             <param name="event">The event</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_WaitEventTimeout(Alis.Core.Graphic.SDL.SdlEvent@,System.Int32)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_WaitEventTimeout(Alis.Core.Graphic.SDL.Structs.SdlEvent@,System.Int32)">
             <summary>
                 Sdls the wait event timeout using the specified  event
             </summary>
@@ -37385,7 +37440,7 @@
             <param name="timeout">The timeout</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_PushEvent(Alis.Core.Graphic.SDL.SdlEvent@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_PushEvent(Alis.Core.Graphic.SDL.Structs.SdlEvent@)">
             <summary>
                 Sdls the push event using the specified  event
             </summary>
@@ -37436,7 +37491,7 @@
             <param name="filter">The filter</param>
             <param name="userdata">The userdata</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_EventState(Alis.Core.Graphic.SDL.SdlEventType,System.Int32)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_EventState(Alis.Core.Graphic.SDL.Enums.SdlEventType,System.Int32)">
             <summary>
                 Sdls the event state using the specified type
             </summary>
@@ -37444,7 +37499,7 @@
             <param name="state">The state</param>
             <returns>The byte</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetEventState(Alis.Core.Graphic.SDL.SdlEventType)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetEventState(Alis.Core.Graphic.SDL.Enums.SdlEventType)">
             <summary>
                 Sdls the get event state using the specified type
             </summary>
@@ -37689,14 +37744,14 @@
             <param name="y">The </param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetRelativeMouseMode(Alis.Core.Graphic.SDL.SdlBool)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetRelativeMouseMode(Alis.Core.Graphic.SDL.Enums.SdlBool)">
             <summary>
                 Sdl the set relative mouse mode using the specified enabled
             </summary>
             <param name="enabled">The enabled</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_CaptureMouse(Alis.Core.Graphic.SDL.SdlBool)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_CaptureMouse(Alis.Core.Graphic.SDL.Enums.SdlBool)">
             <summary>
                 Sdl the capture mouse using the specified enabled
             </summary>
@@ -38418,21 +38473,21 @@
             <param name="pchString">The pch string</param>
             <returns>The sdl game controller axis</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GameControllerGetStringForAxis(Alis.Core.Graphic.SDL.SdlGameControllerAxis)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GameControllerGetStringForAxis(Alis.Core.Graphic.SDL.Enums.SdlGameControllerAxis)">
             <summary>
                 Internals the sdl game controller get string for axis using the specified axis
             </summary>
             <param name="axis">The axis</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerGetStringForAxis(Alis.Core.Graphic.SDL.SdlGameControllerAxis)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerGetStringForAxis(Alis.Core.Graphic.SDL.Enums.SdlGameControllerAxis)">
             <summary>
                 Sdls the game controller get string for axis using the specified axis
             </summary>
             <param name="axis">The axis</param>
             <returns>The string</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GameControllerGetBindForAxis(System.IntPtr,Alis.Core.Graphic.SDL.SdlGameControllerAxis)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GameControllerGetBindForAxis(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlGameControllerAxis)">
             <summary>
                 Internals the sdl game controller get bind for axis using the specified gamecontroller
             </summary>
@@ -38440,7 +38495,7 @@
             <param name="axis">The axis</param>
             <returns>The internal sdl game controller button bind</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerGetBindForAxis(System.IntPtr,Alis.Core.Graphic.SDL.SdlGameControllerAxis)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerGetBindForAxis(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlGameControllerAxis)">
             <summary>
                 Sdls the game controller get bind for axis using the specified gamecontroller
             </summary>
@@ -38448,7 +38503,7 @@
             <param name="axis">The axis</param>
             <returns>The result</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerGetAxis(System.IntPtr,Alis.Core.Graphic.SDL.SdlGameControllerAxis)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerGetAxis(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlGameControllerAxis)">
             <summary>
                 Sdls the game controller get axis using the specified gamecontroller
             </summary>
@@ -38470,21 +38525,21 @@
             <param name="pchString">The pch string</param>
             <returns>The sdl game controller button</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GameControllerGetStringForButton(Alis.Core.Graphic.SDL.SdlGameControllerButton)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GameControllerGetStringForButton(Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton)">
             <summary>
                 Internals the sdl game controller get string for button using the specified button
             </summary>
             <param name="button">The button</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerGetStringForButton(Alis.Core.Graphic.SDL.SdlGameControllerButton)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerGetStringForButton(Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton)">
             <summary>
                 Sdls the game controller get string for button using the specified button
             </summary>
             <param name="button">The button</param>
             <returns>The string</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GameControllerGetBindForButton(System.IntPtr,Alis.Core.Graphic.SDL.SdlGameControllerButton)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GameControllerGetBindForButton(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton)">
             <summary>
                 Internals the sdl game controller get bind for button using the specified gamecontroller
             </summary>
@@ -38492,7 +38547,7 @@
             <param name="button">The button</param>
             <returns>The internal sdl game controller button bind</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerGetBindForButton(System.IntPtr,Alis.Core.Graphic.SDL.SdlGameControllerButton)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerGetBindForButton(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton)">
             <summary>
                 Sdls the game controller get bind for button using the specified gamecontroller
             </summary>
@@ -38500,7 +38555,7 @@
             <param name="button">The button</param>
             <returns>The result</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerGetButton(System.IntPtr,Alis.Core.Graphic.SDL.SdlGameControllerButton)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerGetButton(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton)">
             <summary>
                 Sdls the game controller get button using the specified gamecontroller
             </summary>
@@ -38534,7 +38589,7 @@
             </summary>
             <param name="gamecontroller">The gamecontroller</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForButton(System.IntPtr,Alis.Core.Graphic.SDL.SdlGameControllerButton)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForButton(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton)">
             <summary>
                 Internals the sdl game controller get apple sf symbols name for button using the specified gamecontroller
             </summary>
@@ -38542,7 +38597,7 @@
             <param name="button">The button</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerGetAppleSFSymbolsNameForButton(System.IntPtr,Alis.Core.Graphic.SDL.SdlGameControllerButton)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerGetAppleSFSymbolsNameForButton(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton)">
             <summary>
                 Sdls the game controller get apple sf symbols name for button using the specified gamecontroller
             </summary>
@@ -38550,7 +38605,7 @@
             <param name="button">The button</param>
             <returns>The string</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForAxis(System.IntPtr,Alis.Core.Graphic.SDL.SdlGameControllerAxis)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForAxis(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlGameControllerAxis)">
             <summary>
                 Internals the sdl game controller get apple sf symbols name for axis using the specified gamecontroller
             </summary>
@@ -38558,7 +38613,7 @@
             <param name="axis">The axis</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerGetAppleSFSymbolsNameForAxis(System.IntPtr,Alis.Core.Graphic.SDL.SdlGameControllerAxis)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerGetAppleSFSymbolsNameForAxis(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlGameControllerAxis)">
             <summary>
                 Sdls the game controller get apple sf symbols name for axis using the specified gamecontroller
             </summary>
@@ -38632,7 +38687,7 @@
             <param name="blue">The blue</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerHasAxis(System.IntPtr,Alis.Core.Graphic.SDL.SdlGameControllerAxis)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerHasAxis(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlGameControllerAxis)">
             <summary>
                 Sdls the game controller has axis using the specified gamecontroller
             </summary>
@@ -38640,7 +38695,7 @@
             <param name="axis">The axis</param>
             <returns>The sdl bool</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerHasButton(System.IntPtr,Alis.Core.Graphic.SDL.SdlGameControllerButton)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerHasButton(System.IntPtr,Alis.Core.Graphic.SDL.Enums.SdlGameControllerButton)">
             <summary>
                 Sdls the game controller has button using the specified gamecontroller
             </summary>
@@ -38684,7 +38739,7 @@
             <param name="type">The type</param>
             <returns>The sdl bool</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerSetSensorEnabled(System.IntPtr,Alis.Core.Graphic.SDL.SdlSensorType,Alis.Core.Graphic.SDL.SdlBool)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GameControllerSetSensorEnabled(System.IntPtr,Alis.Core.Graphic.SDL.SdlSensorType,Alis.Core.Graphic.SDL.Enums.SdlBool)">
             <summary>
                 Sdls the game controller set sensor enabled using the specified gamecontroller
             </summary>
@@ -39226,7 +39281,7 @@
             </summary>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LoadWAV_RW(System.IntPtr,System.Int32,Alis.Core.Graphic.SDL.SdlAudioSpec@,System.IntPtr@,System.UInt32@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LoadWAV_RW(System.IntPtr,System.Int32,Alis.Core.Graphic.SDL.Structs.SdlAudioSpec@,System.IntPtr@,System.UInt32@)">
             <summary>
                 Internals the sdl load wav rw using the specified src
             </summary>
@@ -39237,7 +39292,7 @@
             <param name="audioLen">The audio len</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_LoadWAV(System.String,Alis.Core.Graphic.SDL.SdlAudioSpec@,System.IntPtr@,System.UInt32@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_LoadWAV(System.String,Alis.Core.Graphic.SDL.Structs.SdlAudioSpec@,System.IntPtr@,System.UInt32@)">
             <summary>
                 Sdls the load wav using the specified file
             </summary>
@@ -39287,7 +39342,7 @@
             <param name="len">The len</param>
             <param name="volume">The volume</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_OpenAudio(Alis.Core.Graphic.SDL.SdlAudioSpec@,Alis.Core.Graphic.SDL.SdlAudioSpec@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_OpenAudio(Alis.Core.Graphic.SDL.Structs.SdlAudioSpec@,Alis.Core.Graphic.SDL.Structs.SdlAudioSpec@)">
             <summary>
                 Sdls the open audio using the specified desired
             </summary>
@@ -39295,7 +39350,7 @@
             <param name="obtained">The obtained</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_OpenAudio(Alis.Core.Graphic.SDL.SdlAudioSpec@,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_OpenAudio(Alis.Core.Graphic.SDL.Structs.SdlAudioSpec@,System.IntPtr)">
             <summary>
                 Sdls the open audio using the specified desired
             </summary>
@@ -39303,7 +39358,7 @@
             <param name="obtained">The obtained</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_OpenAudioDevice(System.IntPtr,System.Int32,Alis.Core.Graphic.SDL.SdlAudioSpec@,Alis.Core.Graphic.SDL.SdlAudioSpec@,System.Int32)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_OpenAudioDevice(System.IntPtr,System.Int32,Alis.Core.Graphic.SDL.Structs.SdlAudioSpec@,Alis.Core.Graphic.SDL.Structs.SdlAudioSpec@,System.Int32)">
             <summary>
                 Sdls the open audio device using the specified device
             </summary>
@@ -39314,7 +39369,7 @@
             <param name="allowedChanges">The allowed changes</param>
             <returns>The uint</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_OpenAudioDevice(System.Byte[],System.Int32,Alis.Core.Graphic.SDL.SdlAudioSpec@,Alis.Core.Graphic.SDL.SdlAudioSpec@,System.Int32)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_OpenAudioDevice(System.Byte[],System.Int32,Alis.Core.Graphic.SDL.Structs.SdlAudioSpec@,Alis.Core.Graphic.SDL.Structs.SdlAudioSpec@,System.Int32)">
             <summary>
                 Internals the sdl open audio device using the specified device
             </summary>
@@ -39325,7 +39380,7 @@
             <param name="allowedChanges">The allowed changes</param>
             <returns>The uint</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_OpenAudioDevice(System.String,System.Int32,Alis.Core.Graphic.SDL.SdlAudioSpec@,Alis.Core.Graphic.SDL.SdlAudioSpec@,System.Int32)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_OpenAudioDevice(System.String,System.Int32,Alis.Core.Graphic.SDL.Structs.SdlAudioSpec@,Alis.Core.Graphic.SDL.Structs.SdlAudioSpec@,System.Int32)">
             <summary>
                 Sdls the open audio device using the specified device
             </summary>
@@ -39440,7 +39495,7 @@
             </summary>
             <param name="stream">The stream</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetAudioDeviceSpec(System.Int32,System.Int32,Alis.Core.Graphic.SDL.SdlAudioSpec@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetAudioDeviceSpec(System.Int32,System.Int32,Alis.Core.Graphic.SDL.Structs.SdlAudioSpec@)">
             <summary>
                 Sdls the get audio device spec using the specified index
             </summary>
@@ -39534,7 +39589,7 @@
             <param name="callbackParam">The callback param</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_iPhoneSetEventPump(Alis.Core.Graphic.SDL.SdlBool)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_iPhoneSetEventPump(Alis.Core.Graphic.SDL.Enums.SdlBool)">
             <summary>
                 Sdls the i phone set event pump using the specified enabled
             </summary>
@@ -40291,31 +40346,6 @@
                 Initializes a new instance of the <see cref="T:Alis.Core.Graphic.SDL.SdlImage" /> class
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlImage.ImgInitFlags">
-            <summary>
-                The img initflags enum
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlImage.ImgInitFlags.ImgInitJpg">
-            <summary>
-                The img init jpg img initflags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlImage.ImgInitFlags.ImgInitPng">
-            <summary>
-                The img init png img initflags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlImage.ImgInitFlags.ImgInitTif">
-            <summary>
-                The img init tif img initflags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlImage.ImgInitFlags.ImgInitWebp">
-            <summary>
-                The img init webp img initflags
-            </summary>
-        </member>
         <member name="F:Alis.Core.Graphic.SDL.SdlImage.NativeLibName">
             <summary>
                 The native lib name
@@ -40354,7 +40384,7 @@
             </summary>
             <returns>The result</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_Init(Alis.Core.Graphic.SDL.SdlImage.ImgInitFlags)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.IMG_Init(Alis.Core.Graphic.SDL.ImgInitFlags)">
             <summary>
                 Imgs the init using the specified flags
             </summary>
@@ -45383,7 +45413,7 @@
             <param name="ptsize">The ptsize</param>
             <returns>The handle</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUTF8_Blended_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUTF8_Blended_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.Structs.SdlColor,System.UInt32)">
             <summary>
                 Ttfs the render utf 8 blended wrapped using the specified font
             </summary>
@@ -45405,7 +45435,7 @@
             </summary>
             <param name="fmtAndArglist">The fmt and arglist</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUTF8_Blended(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUTF8_Blended(System.IntPtr,System.String,Alis.Core.Graphic.SDL.Structs.SdlColor)">
             <summary>
                 Ttfs the render utf 8 blended using the specified font
             </summary>
@@ -45414,7 +45444,7 @@
             <param name="fg">The fg</param>
             <returns>The result</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUTF8_Shaded_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUTF8_Shaded_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.Structs.SdlColor,Alis.Core.Graphic.SDL.Structs.SdlColor,System.UInt32)">
             <summary>
                 Ttfs the render utf 8 shaded wrapped using the specified font
             </summary>
@@ -45425,7 +45455,7 @@
             <param name="wrapLength">The wrap length</param>
             <returns>The result</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUTF8_Shaded(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUTF8_Shaded(System.IntPtr,System.String,Alis.Core.Graphic.SDL.Structs.SdlColor,Alis.Core.Graphic.SDL.Structs.SdlColor)">
             <summary>
                 Ttfs the render utf 8 shaded using the specified font
             </summary>
@@ -45435,7 +45465,7 @@
             <param name="bg">The bg</param>
             <returns>The result</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUTF8_Solid_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUTF8_Solid_Wrapped(System.IntPtr,System.String,Alis.Core.Graphic.SDL.Structs.SdlColor,System.UInt32)">
             <summary>
                 Ttfs the render utf 8 solid wrapped using the specified font
             </summary>
@@ -45445,7 +45475,7 @@
             <param name="wrapLength">The wrap length</param>
             <returns>The result</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUTF8_Solid(System.IntPtr,System.String,Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.TTF_RenderUTF8_Solid(System.IntPtr,System.String,Alis.Core.Graphic.SDL.Structs.SdlColor)">
             <summary>
                 Ttfs the render utf 8 solid using the specified font
             </summary>
@@ -46248,1127 +46278,1127 @@
                 Refers to an H INSTANCE
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.InternalWinrtWmInfo">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.InternalWinrtWmInfo">
             <summary>
                 The internal winrt wm info
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.InternalWinrtWmInfo.window">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.InternalWinrtWmInfo.window">
             <summary>
                 Refers to an inspect 
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.InternalX11WmInfo">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.InternalX11WmInfo">
             <summary>
                 The internal x11 wm info
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.InternalX11WmInfo.display">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.InternalX11WmInfo.display">
             <summary>
                 Refers to a Display*
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.InternalX11WmInfo.window">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.InternalX11WmInfo.window">
             <summary>
                 Refers to a Window (XID, use ToInt64!)
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlAudioDeviceEvent">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlAudioDeviceEvent">
             <summary>
                 The sdl audio device event
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlAudioDeviceEvent.type">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlAudioDeviceEvent.type">
             <summary>
                 The type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlAudioDeviceEvent.timestamp">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlAudioDeviceEvent.timestamp">
             <summary>
                 The timestamp
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlAudioDeviceEvent.which">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlAudioDeviceEvent.which">
             <summary>
                 The which
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlAudioDeviceEvent.isCapture">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlAudioDeviceEvent.isCapture">
             <summary>
                 The is capture
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlAudioDeviceEvent.padding1">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlAudioDeviceEvent.padding1">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlAudioDeviceEvent.padding2">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlAudioDeviceEvent.padding2">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlAudioDeviceEvent.padding3">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlAudioDeviceEvent.padding3">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlAudioSpec">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlAudioSpec">
             <summary>
                 The sdl audio spec
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlAudioSpec.freq">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlAudioSpec.freq">
             <summary>
                 The freq
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlAudioSpec.format">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlAudioSpec.format">
             <summary>
                 The SDL_AudioFormat
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlAudioSpec.channels">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlAudioSpec.channels">
             <summary>
                 The channels
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlAudioSpec.silence">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlAudioSpec.silence">
             <summary>
                 The silence
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlAudioSpec.samples">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlAudioSpec.samples">
             <summary>
                 The samples
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlAudioSpec.size">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlAudioSpec.size">
             <summary>
                 The size
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlAudioSpec.callback">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlAudioSpec.callback">
             <summary>
                 The callback
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlAudioSpec.userdata">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlAudioSpec.userdata">
             <summary>
                 The userdata
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlColor">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlColor">
             <summary>
                 The sdl color
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlColor.r">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlColor.r">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlColor.g">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlColor.g">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlColor.b">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlColor.b">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlColor.a">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlColor.a">
             <summary>
                 The
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlControllerAxisEvent">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlControllerAxisEvent">
             <summary>
                 The sdl controller axis event
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerAxisEvent.type">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerAxisEvent.type">
             <summary>
                 The type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerAxisEvent.timestamp">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerAxisEvent.timestamp">
             <summary>
                 The timestamp
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerAxisEvent.which">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerAxisEvent.which">
             <summary>
                 The which SDL_JoystickID
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerAxisEvent.axis">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerAxisEvent.axis">
             <summary>
                 The axis
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerAxisEvent.padding1">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerAxisEvent.padding1">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerAxisEvent.padding2">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerAxisEvent.padding2">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerAxisEvent.padding3">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerAxisEvent.padding3">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerAxisEvent.axisValue">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerAxisEvent.axisValue">
             <summary>
                 The axis value
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerAxisEvent.padding4">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerAxisEvent.padding4">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlControllerButtonEvent">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlControllerButtonEvent">
             <summary>
                 The sdl controller button event
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerButtonEvent.type">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerButtonEvent.type">
             <summary>
                 The type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerButtonEvent.timestamp">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerButtonEvent.timestamp">
             <summary>
                 The timestamp
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerButtonEvent.which">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerButtonEvent.which">
             <summary>
                 The which SDL_JoystickID
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerButtonEvent.button">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerButtonEvent.button">
             <summary>
                 The button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerButtonEvent.state">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerButtonEvent.state">
             <summary>
                 The state
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerButtonEvent.padding1">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerButtonEvent.padding1">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerButtonEvent.padding2">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerButtonEvent.padding2">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlControllerDeviceEvent">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlControllerDeviceEvent">
             <summary>
                 The sdl controller device event
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerDeviceEvent.type">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerDeviceEvent.type">
             <summary>
                 The type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerDeviceEvent.timestamp">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerDeviceEvent.timestamp">
             <summary>
                 The timestamp
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerDeviceEvent.which">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerDeviceEvent.which">
             <summary>
                 The which joystick id 
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlControllerSensorEvent">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlControllerSensorEvent">
             <summary>
                 The sdl controller sensor event
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerSensorEvent.type">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerSensorEvent.type">
             <summary>
                 The type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerSensorEvent.timestamp">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerSensorEvent.timestamp">
             <summary>
                 The timestamp
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerSensorEvent.which">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerSensorEvent.which">
             <summary>
                 The which SDL_JoystickID
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerSensorEvent.sensor">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerSensorEvent.sensor">
             <summary>
                 The sensor
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerSensorEvent.data1">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerSensorEvent.data1">
             <summary>
                 The data
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerSensorEvent.data2">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerSensorEvent.data2">
             <summary>
                 The data
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerSensorEvent.data3">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerSensorEvent.data3">
             <summary>
                 The data
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlControllerTouchpadEvent">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlControllerTouchpadEvent">
             <summary>
                 The sdl controller touch pad event
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerTouchpadEvent.type">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerTouchpadEvent.type">
             <summary>
                 The type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerTouchpadEvent.timestamp">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerTouchpadEvent.timestamp">
             <summary>
                 The timestamp
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerTouchpadEvent.which">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerTouchpadEvent.which">
             <summary>
                 The which SDL_JoystickID
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerTouchpadEvent.touchpad">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerTouchpadEvent.touchpad">
             <summary>
                 The touchpad
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerTouchpadEvent.finger">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerTouchpadEvent.finger">
             <summary>
                 The finger
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerTouchpadEvent.x">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerTouchpadEvent.x">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerTouchpadEvent.y">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerTouchpadEvent.y">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlControllerTouchpadEvent.pressure">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlControllerTouchpadEvent.pressure">
             <summary>
                 The pressure
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlDisplayEvent">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlDisplayEvent">
             <summary>
                 The sdl display event
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayEvent.type">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDisplayEvent.type">
             <summary>
                 The type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayEvent.timestamp">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDisplayEvent.timestamp">
             <summary>
                 The timestamp
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayEvent.display">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDisplayEvent.display">
             <summary>
                 The display
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayEvent.displayEvent">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDisplayEvent.displayEvent">
             <summary>
                 The display event
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayEvent.padding1">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDisplayEvent.padding1">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayEvent.padding2">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDisplayEvent.padding2">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayEvent.padding3">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDisplayEvent.padding3">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayEvent.data1">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDisplayEvent.data1">
             <summary>
                 The data
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlDisplayMode">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlDisplayMode">
             <summary>
                 The sdl display mode
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayMode.format">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDisplayMode.format">
             <summary>
                 The format
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayMode.w">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDisplayMode.w">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayMode.h">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDisplayMode.h">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayMode.refresh_rate">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDisplayMode.refresh_rate">
             <summary>
                 The refresh rate
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDisplayMode.driverData">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDisplayMode.driverData">
             <summary>
                 The driverdata
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlDollarGestureEvent">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlDollarGestureEvent">
             <summary>
                 The sdl dollar gesture event
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDollarGestureEvent.type">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDollarGestureEvent.type">
             <summary>
                 The type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDollarGestureEvent.timestamp">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDollarGestureEvent.timestamp">
             <summary>
                 The timestamp
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDollarGestureEvent.touchId">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDollarGestureEvent.touchId">
             <summary>
                 The touch id 
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDollarGestureEvent.gestureId">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDollarGestureEvent.gestureId">
             <summary>
                 The gesture id 
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDollarGestureEvent.numFingers">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDollarGestureEvent.numFingers">
             <summary>
                 The num fingers
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDollarGestureEvent.error">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDollarGestureEvent.error">
             <summary>
                 The error
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDollarGestureEvent.x">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDollarGestureEvent.x">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDollarGestureEvent.y">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDollarGestureEvent.y">
             <summary>
                 The
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlDropEvent">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlDropEvent">
             <summary>
                 The sdl drop event
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDropEvent.type">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDropEvent.type">
             <summary>
                 The type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDropEvent.timestamp">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDropEvent.timestamp">
             <summary>
                 The timestamp
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDropEvent.file">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDropEvent.file">
             <summary>
                 The file
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlDropEvent.windowID">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlDropEvent.windowID">
             <summary>
                 The window id
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlEvent">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlEvent">
             <summary>
                 The sdl event
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.type">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.type">
             <summary>
                 The type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.typeFSharp">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.typeFSharp">
             <summary>
                 The type sharp
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.display">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.display">
             <summary>
                 The display
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.window">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.window">
             <summary>
                 The window
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.key">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.key">
             <summary>
                 The key
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.edit">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.edit">
             <summary>
                 The edit
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.text">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.text">
             <summary>
                 The text
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.motion">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.motion">
             <summary>
                 The motion
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.button">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.button">
             <summary>
                 The button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.wheel">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.wheel">
             <summary>
                 The wheel
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.jAxis">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.jAxis">
             <summary>
                 The j axis
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.jBall">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.jBall">
             <summary>
                 The j ball
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.jHat">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.jHat">
             <summary>
                 The j hat
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.jButton">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.jButton">
             <summary>
                 The j button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.jDevice">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.jDevice">
             <summary> 
                 The j device
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.cAxis">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.cAxis">
             <summary>
                 The c axis
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.cButton">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.cButton">
             <summary>
                 The c button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.cDevice">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.cDevice">
             <summary>
                 The c device
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.cTouchpad">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.cTouchpad">
             <summary>
                 The c touchpad
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.cSensor">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.cSensor">
             <summary>
                 The c sensor
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.aDevice">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.aDevice">
             <summary>
                 The adevice
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.sensor">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.sensor">
             <summary>
                 The sensor
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.quit">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.quit">
             <summary>
                 The quit
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.user">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.user">
             <summary>
                 The user
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.sysWm">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.sysWm">
             <summary>
                 The sys wm
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.tFinger">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.tFinger">
             <summary>
                 The t finger
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.mGesture">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.mGesture">
             <summary>
                 The m gesture
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.dGesture">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.dGesture">
             <summary>
                 The d gesture
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.drop">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.drop">
             <summary>
                 The drop
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding0">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding0">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding1">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding1">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding2">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding2">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding3">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding3">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding4">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding4">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding5">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding5">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding6">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding6">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding7">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding7">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding8">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding8">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding9">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding9">
             <summary>
                 The padding
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding10">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding10">
             <summary>
                 The padding 10
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding11">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding11">
             <summary>
                 The padding 11
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding12">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding12">
             <summary>
                 The padding 12
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding13">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding13">
             <summary>
                 The padding 13
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding14">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding14">
             <summary>
                 The padding 14
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding15">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding15">
             <summary>
                 The padding 15
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding16">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding16">
             <summary>
                 The padding 16
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding17">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding17">
             <summary>
                 The padding 17
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding18">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding18">
             <summary>
                 The padding 18
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding19">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding19">
             <summary>
                 The padding 19
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding20">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding20">
             <summary>
                 The padding 20
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding21">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding21">
             <summary>
                 The padding 21
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding22">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding22">
             <summary>
                 The padding 22
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding23">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding23">
             <summary>
                 The padding 23
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding24">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding24">
             <summary>
                 The padding 24
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding25">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding25">
             <summary>
                 The padding 25
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding26">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding26">
             <summary>
                 The padding 26
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding27">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding27">
             <summary>
                 The padding 27
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding28">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding28">
             <summary>
                 The padding 28
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding29">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding29">
             <summary>
                 The padding 29
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding30">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding30">
             <summary>
                 The padding 30
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding31">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding31">
             <summary>
                 The padding 31
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding32">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding32">
             <summary>
                 The padding 32
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding33">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding33">
             <summary>
                 The padding 33
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding34">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding34">
             <summary>
                 The padding 34
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding35">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding35">
             <summary>
                 The padding 35
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding36">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding36">
             <summary>
                 The padding 36
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding37">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding37">
             <summary>
                 The padding 37
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding38">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding38">
             <summary>
                 The padding 38
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding39">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding39">
             <summary>
                 The padding 39
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding40">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding40">
             <summary>
                 The padding 40
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding41">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding41">
             <summary>
                 The padding 41
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding42">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding42">
             <summary>
                 The padding 42
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding43">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding43">
             <summary>
                 The padding 43
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding44">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding44">
             <summary>
                 The padding 44
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding45">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding45">
             <summary>
                 The padding 45
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding46">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding46">
             <summary>
                 The padding 46
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding47">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding47">
             <summary>
                 The padding 47
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding48">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding48">
             <summary>
                 The padding 48
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding49">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding49">
             <summary>
                 The padding 49
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding50">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding50">
             <summary>
                 The padding 50
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding51">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding51">
             <summary>
                 The padding 51
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding52">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding52">
             <summary>
                 The padding 52
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding53">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding53">
             <summary>
                 The padding 53
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding54">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding54">
             <summary>
                 The padding 54
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlEvent.padding55">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlEvent.padding55">
             <summary>
                 The padding 55
             </summary>
         </member>
-        <member name="P:Alis.Core.Graphic.SDL.SdlEvent.Padding">
+        <member name="P:Alis.Core.Graphic.SDL.Structs.SdlEvent.Padding">
             <summary>
                 Gets or sets the value of the padding
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlFinger">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlFinger">
             <summary>
                 The sdl finger
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlFinger.Id">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlFinger.Id">
             <summary>
                 The id
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlFinger.X">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlFinger.X">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlFinger.Y">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlFinger.Y">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlFinger.Pressure">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlFinger.Pressure">
             <summary>
                 The pressure
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlFPoint">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlFPoint">
             <summary>
                 The sdl f point
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlFPoint.x">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlFPoint.x">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlFPoint.y">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlFPoint.y">
             <summary>
                 The
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlFRect">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlFRect">
             <summary>
                 The sdl f rect
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlFRect.x">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlFRect.x">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlFRect.y">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlFRect.y">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlFRect.w">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlFRect.w">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlFRect.h">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlFRect.h">
             <summary>
                 The
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlGameControllerButtonBind">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlGameControllerButtonBind">
             <summary>
                 The sdl game controller button bind
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButtonBind.bindType">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlGameControllerButtonBind.bindType">
             <summary>
                 The bind type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerButtonBind.value">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlGameControllerButtonBind.value">
             <summary>
                 The value
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlGameControllerType">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlGameControllerType">
             <summary>
                 The sdl game controller type enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerType.SdlControllerTypeUnknown">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlGameControllerType.SdlControllerTypeUnknown">
             <summary>
                 The sdl controller type unknown sdl game controller type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerType.SdlControllerTypeXbox360">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlGameControllerType.SdlControllerTypeXbox360">
             <summary>
                 The sdl controller type xbox360 sdl game controller type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerType.SdlControllerTypeXboxOne">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlGameControllerType.SdlControllerTypeXboxOne">
             <summary>
                 The sdl controller type xbox one sdl game controller type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerType.SdlControllerTypePs3">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlGameControllerType.SdlControllerTypePs3">
             <summary>
                 The sdl controller type ps3 sdl game controller type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerType.SdlControllerTypePs4">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlGameControllerType.SdlControllerTypePs4">
             <summary>
                 The sdl controller type ps4 sdl game controller type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerType.SdlControllerTypeNintendoSwitchPro">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlGameControllerType.SdlControllerTypeNintendoSwitchPro">
             <summary>
                 The sdl controller type nintendo switch pro sdl game controller type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerType.SdlControllerTypeVirtual">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlGameControllerType.SdlControllerTypeVirtual">
             <summary>
                 The sdl controller type virtual sdl game controller type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerType.SdlControllerTypePs5">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlGameControllerType.SdlControllerTypePs5">
             <summary>
                 The sdl controller type ps5 sdl game controller type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerType.SdlControllerTypeAmazonLuna">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlGameControllerType.SdlControllerTypeAmazonLuna">
             <summary>
                 The sdl controller type amazon luna sdl game controller type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGameControllerType.SdlControllerTypeGoogleStadia">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlGameControllerType.SdlControllerTypeGoogleStadia">
             <summary>
                 The sdl controller type google stadia sdl game controller type
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlGenericEvent">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlGenericEvent">
             <summary>
                 The sdl generic event
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGenericEvent.type">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlGenericEvent.type">
             <summary>
                 The type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlGenericEvent.timestamp">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlGenericEvent.timestamp">
             <summary>
                 The timestamp
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlHapticCondition">
+        <member name="T:Alis.Core.Graphic.SDL.Structs.SdlHapticCondition">
             <summary>
                 The sdl haptic condition
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlHapticCondition.type">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlHapticCondition.type">
             <summary>
                 The type
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlHapticCondition.direction">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlHapticCondition.direction">
             <summary>
                 The direction
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlHapticCondition.length">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlHapticCondition.length">
             <summary>
                 The length
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlHapticCondition.delay">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlHapticCondition.delay">
             <summary>
                 The delay
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlHapticCondition.button">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlHapticCondition.button">
             <summary>
                 The button
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlHapticCondition.interval">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlHapticCondition.interval">
             <summary>
                 The interval
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlHapticCondition.right_sat">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlHapticCondition.right_sat">
             <summary>
                 The right sat
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlHapticCondition.left_sat">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlHapticCondition.left_sat">
             <summary>
                 The left sat
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlHapticCondition.rightCoefficient">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlHapticCondition.rightCoefficient">
             <summary>
                 The right Coefficient
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlHapticCondition.leftCoefficient">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlHapticCondition.leftCoefficient">
             <summary>
                 The left Coefficient
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlHapticCondition.deadBand">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlHapticCondition.deadBand">
             <summary>
                 The dead band
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlHapticCondition.center">
+        <member name="F:Alis.Core.Graphic.SDL.Structs.SdlHapticCondition.center">
             <summary>
                 The center
             </summary>
@@ -49252,6 +49282,11 @@
             <summary>
                 Simple wrapper for Window that allows easy
                 2D rendering
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.SFML.Graphics.RenderWindow.#cctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Graphic.SFML.Graphics.RenderWindow"/> class
             </summary>
         </member>
         <member name="F:Alis.Core.Graphic.SFML.Graphics.RenderWindow.myDefaultView">
@@ -51408,6 +51443,11 @@
                 Image living on the graphics card that can be used for drawing
             </summary>
         </member>
+        <member name="M:Alis.Core.Graphic.SFML.Graphics.Texture.#cctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Graphic.SFML.Graphics.Texture"/> class
+            </summary>
+        </member>
         <member name="F:Alis.Core.Graphic.SFML.Graphics.Texture.myExternal">
             <summary>
                 The my external
@@ -53054,6 +53094,26 @@
                 Destroy the object (implementation is left to each derived class)
             </summary>
             <param name="disposing">Is the GC disposing the object, or is it an explicit call?</param>
+        </member>
+        <member name="T:Alis.Core.Graphic.SFML.SfmlDlls">
+            <summary>
+            The sfml dlls class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.SfmlDlls.SfmlWindowDllBytes">
+            <summary>
+            The osx arm64 sdl2
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.SfmlDlls.SfmlSystemDllBytes">
+            <summary>
+            The osx arm64 csfml system
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.SfmlDlls.SfmlGraphicsDllBytes">
+            <summary>
+            The osx arm64 csfml graphics
+            </summary>
         </member>
         <member name="T:Alis.Core.Graphic.SFML.Time">
             <summary>
@@ -54729,6 +54789,11 @@
             <summary>
                 Window is a rendering window ; it can create a new window
                 or connect to an existing one
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.SFML.Windows.Window.#cctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Graphic.SFML.Windows.Window"/> class
             </summary>
         </member>
         <member name="M:Alis.Core.Graphic.SFML.Windows.Window.#ctor(Alis.Core.Graphic.SFML.Windows.VideoMode,System.String)">

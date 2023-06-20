@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalOs2Wminfo.cs
+//  File:InternalOs2WmInfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -41,11 +41,11 @@ namespace Alis.Core.Graphic.SDL.Structs
         /// <summary>
         ///     Refers to an HWND
         /// </summary>
-        public IntPtr hwnd;  
+        public IntPtr hwnd;
 
         /// <summary>
         ///     efers to an HWND
         /// </summary>
-        public IntPtr hwndFrame; 
+        public IntPtr hwndFrame;
     }
 }

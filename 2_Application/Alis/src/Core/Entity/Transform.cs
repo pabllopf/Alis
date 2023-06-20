@@ -36,12 +36,11 @@ namespace Alis.Core.Entity
     public class Transform : TransformBase
     {
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public void Update()
         {
             Logger.Trace();
         }
-        
     }
 }

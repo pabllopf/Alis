@@ -30,7 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
     ///     The sdl audio spec
@@ -46,7 +46,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The SDL_AudioFormat
         /// </summary>
-        public readonly ushort format; 
+        public readonly ushort format;
 
         /// <summary>
         ///     The channels

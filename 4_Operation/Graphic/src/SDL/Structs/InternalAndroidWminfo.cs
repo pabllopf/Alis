@@ -41,11 +41,11 @@ namespace Alis.Core.Graphic.SDL.Structs
         /// <summary>
         ///     Refers to an ANativeWindow
         /// </summary>
-        public IntPtr window; 
+        public IntPtr window;
 
         /// <summary>
         ///     Refers to an EGLSurface
         /// </summary>
-        public IntPtr surface; 
+        public IntPtr surface;
     }
 }

@@ -51,7 +51,7 @@ namespace Alis.Builder.Core.Setting
         public DebugSetting Build() => debugSetting;
 
         /// <summary>
-        /// Logs the level using the specified log level
+        ///     Logs the level using the specified log level
         /// </summary>
         /// <param name="logLevel">The log level</param>
         /// <returns>The debug setting builder</returns>

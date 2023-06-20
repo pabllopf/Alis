@@ -522,7 +522,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         {
             sfShader_setMat4UniformArray(CPointer, name, array, (uint) array.Length);
         }
-        
+
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Bind a shader for rendering
@@ -812,7 +812,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfShader_setMat4UniformArray(IntPtr shader, string name, Matrix4X4F[] data,
             uint length);
-        
+
         /// <summary>
         ///     Sfs the shader get native handle using the specified shader
         /// </summary>

@@ -38,14 +38,14 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
     internal abstract class Node
     {
         /// <summary>
-        ///     The left child
-        /// </summary>
-        protected Node LeftChild;
-
-        /// <summary>
         ///     The parent list
         /// </summary>
         public readonly List<Node> ParentList;
+
+        /// <summary>
+        ///     The left child
+        /// </summary>
+        protected Node LeftChild;
 
         /// <summary>
         ///     The right child

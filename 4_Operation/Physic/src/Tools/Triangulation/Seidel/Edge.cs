@@ -36,21 +36,10 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
     /// </summary>
     internal class Edge
     {
-        // Pointers used for building trapezoidal map
-        /// <summary>
-        ///     The above
-        /// </summary>
-        public Trapezoid Above;
-
         /// <summary>
         ///     The
         /// </summary>
         public readonly float B;
-
-        /// <summary>
-        ///     The below
-        /// </summary>
-        public Trapezoid Below;
 
         // Montone mountain points
         /// <summary>
@@ -73,6 +62,17 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         ///     The slope
         /// </summary>
         public readonly float Slope;
+
+        // Pointers used for building trapezoidal map
+        /// <summary>
+        ///     The above
+        /// </summary>
+        public Trapezoid Above;
+
+        /// <summary>
+        ///     The below
+        /// </summary>
+        public Trapezoid Below;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Edge" /> class

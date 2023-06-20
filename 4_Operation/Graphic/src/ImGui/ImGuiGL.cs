@@ -28,11 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Core.Graphic.Properties;
 using Alis.Core.Graphic.SDL;
+using Alis.Core.Graphic.SDL.Enums;
 using static Alis.Core.Graphic.SDL.Sdl;
 using static Alis.Core.Graphic.OpenGL.Gl;
 
@@ -49,47 +48,7 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         static ImGuiGl()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("cimgui.dylib", NativeGraphic.osx_arm64_cimgui);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("cimgui.dylib", NativeGraphic.osx_x64_cimgui);
-                        break;
-                }
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("cimgui.dll", NativeGraphic.win_arm64_cimgui);
-                        break;
-                    case Architecture.X86:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("cimgui.dll", NativeGraphic.win_x86_cimgui);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("cimgui.dll", NativeGraphic.win_x64_cimgui);
-                        break;
-                }
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("cimgui.so", NativeGraphic.linux_arm64_cimgui);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("cimgui.so", NativeGraphic.linux_x64_cimgui);
-                        break;
-                }
-            }
+            EmbeddedDllClass.ExtractEmbeddedDlls("cimgui", ImGuiDlls.ImGuiDllBytes);
         }
 
         /// <summary>

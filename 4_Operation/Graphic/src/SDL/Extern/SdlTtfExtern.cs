@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Graphic.SDL.Structs;
 
 namespace Alis.Core.Graphic.SDL.Extern
 {

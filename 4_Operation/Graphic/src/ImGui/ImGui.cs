@@ -21670,8 +21670,8 @@ namespace Alis.Core.Graphic.ImGui
 
             return ret != 0;
         }
-        
-         /// <summary>
+
+        /// <summary>
         ///     Describes whether input text
         /// </summary>
         /// <param name="label">The label</param>

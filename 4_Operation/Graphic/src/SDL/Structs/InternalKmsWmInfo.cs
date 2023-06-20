@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalKmsdrmWminfo.cs
+//  File:InternalKmsWmInfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -51,6 +51,6 @@ namespace Alis.Core.Graphic.SDL.Structs
         /// <summary>
         ///     Refers to a gbm_device*
         /// </summary>
-        private readonly IntPtr gbm_dev; 
+        private readonly IntPtr gbm_dev;
     }
 }

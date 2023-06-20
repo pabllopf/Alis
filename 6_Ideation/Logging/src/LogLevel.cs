@@ -35,17 +35,17 @@ namespace Alis.Core.Aspect.Logging
     public enum LogLevel
     {
         /// <summary>
-        /// The trace log level
+        ///     The trace log level
         /// </summary>
         Trace = 0,
-        
+
         /// <summary>
         ///     The info log level
         /// </summary>
         Info = 1,
-        
+
         /// <summary>
-        /// The event log level
+        ///     The event log level
         /// </summary>
         Event = 2,
 
@@ -58,9 +58,9 @@ namespace Alis.Core.Aspect.Logging
         ///     The normal log level
         /// </summary>
         Normal = 4,
-        
+
         /// <summary>
-        /// The warning log level
+        ///     The warning log level
         /// </summary>
         Warning = 5,
 

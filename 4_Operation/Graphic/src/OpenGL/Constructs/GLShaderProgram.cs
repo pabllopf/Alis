@@ -55,6 +55,11 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public readonly GlShader FragmentShader;
 
         /// <summary>
+        ///     Specifies the vertex shader used in this program.
+        /// </summary>
+        public readonly GlShader VertexShader;
+
+        /// <summary>
         ///     Specifies the OpenGL shader program ID.
         /// </summary>
         public uint ProgramId;
@@ -63,11 +68,6 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         ///     The shader params
         /// </summary>
         private Dictionary<string, GlShaderProgramParam> shaderParams;
-
-        /// <summary>
-        ///     Specifies the vertex shader used in this program.
-        /// </summary>
-        public readonly GlShader VertexShader;
 
         /// <summary>
         ///     Links a vertex and fragment shader together to create a shader program.

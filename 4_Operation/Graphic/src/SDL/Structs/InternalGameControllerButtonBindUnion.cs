@@ -40,19 +40,16 @@ namespace Alis.Core.Graphic.SDL.Structs
         /// <summary>
         ///     The button
         /// </summary>
-        [FieldOffset(0)] 
-        public readonly int button;
+        [FieldOffset(0)] public readonly int button;
 
         /// <summary>
         ///     The axis
         /// </summary>
-        [FieldOffset(0)] 
-        public readonly int axis;
+        [FieldOffset(0)] public readonly int axis;
 
         /// <summary>
         ///     The hat
         /// </summary>
-        [FieldOffset(0)] 
-        public InternalGameControllerButtonBindHat hat;
+        [FieldOffset(0)] public InternalGameControllerButtonBindHat hat;
     }
 }

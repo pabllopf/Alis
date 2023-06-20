@@ -38,7 +38,7 @@ namespace Alis.Core.Component.Light
     public class DirectionalLight : LightBase
     {
         /// <summary>
-        /// Inits this instance
+        ///     Inits this instance
         /// </summary>
         public override void Init()
         {

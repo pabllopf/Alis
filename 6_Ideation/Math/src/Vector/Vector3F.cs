@@ -52,7 +52,7 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     The hash code
         /// </summary>
         private readonly int hashCode;
-        
+
         /// <summary>The X component of the vector.</summary>
         public float X;
 
@@ -87,20 +87,20 @@ namespace Alis.Core.Aspect.Math.Vector
             X = x;
             Y = y;
             Z = z;
-            
+
             hash = new HashCode();
             hash.Add(x);
             hash.Add(y);
             hash.Add(z);
             hashCode = hash.ToHashCode();
         }
-        
+
         /// <summary>
         ///     Store the minimum values of x, y, and z between the two vectors.
         /// </summary>
         /// <param name="tv">The Vector3 to perform the TakeMin on.</param>
         /// <param name="v">Vector to check against.</param>
-        public static void TakeMin( Vector3F tv, Vector3F v)
+        public static void TakeMin(Vector3F tv, Vector3F v)
         {
             if (v.X < tv.X)
             {
@@ -123,7 +123,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// </summary>
         /// <param name="tv">The Vector3 to perform the TakeMax on.</param>
         /// <param name="v">Vector to check against.</param>
-        public static void TakeMax( Vector3F tv, Vector3F v)
+        public static void TakeMax(Vector3F tv, Vector3F v)
         {
             if (v.X > tv.X)
             {
@@ -147,8 +147,8 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="v">The Vector3 to access.</param>
         /// <param name="index">The element to access (0 = X, 1 = Y, 2 = Z).</param>
         /// <returns>The element of the Vector3 as indexed by i.</returns>
-        public static float Get( Vector3F v, int index) => index == 0 ? v.X : index == 1 ? v.Y : v.Z;
-        
+        public static float Get(Vector3F v, int index) => index == 0 ? v.X : index == 1 ? v.Y : v.Z;
+
         /// <summary>Gets a vector whose 3 elements are equal to zero.</summary>
         /// <value>A vector whose three elements are equal to zero (that is, it returns the vector <c>(0,0,0)</c>.</value>
         public static Vector3F Zero => default(Vector3F);

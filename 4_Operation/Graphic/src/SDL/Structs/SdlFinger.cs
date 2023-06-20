@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
     ///     The sdl finger
@@ -37,7 +37,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The id
         /// </summary>
-        public long Id; 
+        public long Id;
 
         /// <summary>
         ///     The

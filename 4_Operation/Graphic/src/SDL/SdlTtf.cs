@@ -30,8 +30,8 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
-using Alis.Core.Graphic.Properties;
 using Alis.Core.Graphic.SDL.Extern;
+using Alis.Core.Graphic.SDL.Structs;
 
 namespace Alis.Core.Graphic.SDL
 {
@@ -45,47 +45,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         static SdlTtf()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf.dylib", NativeGraphic.osx_arm64_sdl2_ttf);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf.dylib", NativeGraphic.osx_x64_sdl2_ttf);
-                        break;
-                }
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf.dll", NativeGraphic.win_arm64_sdl2_ttf);
-                        break;
-                    case Architecture.X86:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf.dll", NativeGraphic.win_x86_sdl2_ttf);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf.dll", NativeGraphic.win_x64_sdl2_ttf);
-                        break;
-                }
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf.so", NativeGraphic.linux_arm64_sdl2_ttf);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf.so", NativeGraphic.linux_x64_sdl2_ttf);
-                        break;
-                }
-            }
+            EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf", SdlDlls.SdlTtfDllBytes);
         }
 
         /// <summary>

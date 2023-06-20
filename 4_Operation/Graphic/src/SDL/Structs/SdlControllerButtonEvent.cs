@@ -28,8 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
+using Alis.Core.Graphic.SDL.Enums;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
     ///     The sdl controller button event
@@ -50,7 +51,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The which SDL_JoystickID
         /// </summary>
-        public readonly int which; 
+        public readonly int which;
 
         /// <summary>
         ///     The button

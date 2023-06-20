@@ -31,7 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Base.Dll;
-using Alis.Core.Graphic.Properties;
+using Alis.Core.Graphic.SDL.Enums;
 using Alis.Core.Graphic.SDL.Structs;
 
 namespace Alis.Core.Graphic.SDL
@@ -46,47 +46,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         static Sdl()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2.dylib", NativeGraphic.osx_arm64_sdl2);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2.dylib", NativeGraphic.osx_x64_sdl2);
-                        break;
-                }
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2.dll", NativeGraphic.win_arm64_sdl2);
-                        break;
-                    case Architecture.X86:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2.dll", NativeGraphic.win_x86_sdl2);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2.dll", NativeGraphic.win_x64_sdl2);
-                        break;
-                }
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2.so", NativeGraphic.linux_arm64_sdl2);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2.so", NativeGraphic.linux_x64_sdl2);
-                        break;
-                }
-            }
+            EmbeddedDllClass.ExtractEmbeddedDlls("sdl2", SdlDlls.SdlDllBytes);
         }
 
 

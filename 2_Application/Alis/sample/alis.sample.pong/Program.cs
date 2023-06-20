@@ -33,9 +33,9 @@ using Alis.Core.Component.Audio;
 using Alis.Core.Component.Collider;
 using Alis.Core.Component.Render;
 using Alis.Core.Entity;
+using Alis.Core.Graphic.SFML.Graphics;
 using Alis.Core.Manager.Scene;
 using Alis.Core.Physic.Dynamics;
-using Color = Alis.Core.Graphic.SFML.Graphics.Color;
 
 namespace Alis.Sample.Pong
 {

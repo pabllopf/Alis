@@ -27,13 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.SFML.Windows
 {
     /// <summary>
-    /// The event
+    ///     The event
     /// </summary>
     [StructLayout(LayoutKind.Explicit, Size = 20)]
     public struct Event
@@ -57,8 +56,7 @@ namespace Alis.Core.Graphic.SFML.Windows
         [FieldOffset(4)] public MouseButtonEvent MouseButton;
 
         /// <summary>Arguments for mouse wheel events (MouseWheelMoved)</summary>
-        [FieldOffset(4)]
-        public MouseWheelEvent MouseWheel;
+        [FieldOffset(4)] public MouseWheelEvent MouseWheel;
 
         /// <summary>Arguments for mouse wheel scroll events (MouseWheelScrolled)</summary>
         [FieldOffset(4)] public MouseWheelScrollEvent MouseWheelScroll;

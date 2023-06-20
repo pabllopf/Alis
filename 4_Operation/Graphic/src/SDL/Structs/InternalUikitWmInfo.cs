@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalUikitWminfo.cs
+//  File:InternalUikitWmInfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.SDL.Structs
         /// <summary>
         ///     Refers to a UIWindow*
         /// </summary>
-        public IntPtr window; 
+        public IntPtr window;
 
         /// <summary>
         ///     The frame buffer

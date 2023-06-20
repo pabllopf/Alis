@@ -38,7 +38,7 @@ namespace Alis.Core.Ecs
     public class SceneBase : AlisObject
     {
         /// <summary>
-        /// Returns the string
+        ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
         public override string ToString() => GetType().Name;

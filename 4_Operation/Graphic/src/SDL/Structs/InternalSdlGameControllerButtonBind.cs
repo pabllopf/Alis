@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.SDL.Structs
         ///     The bind type
         /// </summary>
         public readonly int bindType;
-        
+
         /// <summary>
         ///     The union val
         /// </summary>

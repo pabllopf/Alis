@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
+using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Core.Graphic.SDL
 {

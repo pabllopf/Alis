@@ -31,6 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Base.Attributes;
+using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Base.Settings;
 using Alis.Core.Aspect.Math.Figures.D2.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
@@ -50,6 +51,16 @@ namespace Alis.Core.Graphic.SFML.Graphics
         ///     The my default view
         /// </summary>
         private View myDefaultView;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="RenderWindow" /> class
+        /// </summary>
+        static RenderWindow()
+        {
+            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics", SfmlDlls.SfmlGraphicsDllBytes);
+            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system", SfmlDlls.SfmlSystemDllBytes);
+            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window", SfmlDlls.SfmlWindowDllBytes);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -628,7 +639,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         {
             sfRenderWindow_display(CPointer);
         }
-        
+
         /// <summary>
         ///     Capture the current contents of the window into an image.
         /// </summary>

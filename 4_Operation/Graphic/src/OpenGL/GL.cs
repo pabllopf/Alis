@@ -313,6 +313,21 @@ namespace Alis.Core.Graphic.OpenGL
         private static readonly DeleteTextures GlDeleteTextures = _<DeleteTextures>("glDeleteTextures");
 
         /// <summary>
+        ///     The uint
+        /// </summary>
+        private static readonly uint[] Uint1 = new uint[1];
+
+        /// <summary>
+        ///     The int
+        /// </summary>
+        private static readonly int[] Int1 = new int[1];
+
+        /// <summary>
+        ///     The matrix float
+        /// </summary>
+        private static readonly float[] Matrix4Float = new float[16];
+
+        /// <summary>
         ///     S
         /// </summary>
         /// <param name="command"></param>
@@ -354,21 +369,6 @@ namespace Alis.Core.Graphic.OpenGL
 
             return Encoding.ASCII.GetString(buffer);
         }
-        
-        /// <summary>
-        ///     The uint
-        /// </summary>
-        private static readonly uint[] Uint1 = new uint[1];
-
-        /// <summary>
-        ///     The int
-        /// </summary>
-        private static readonly int[] Int1 = new int[1];
-
-        /// <summary>
-        ///     The matrix float
-        /// </summary>
-        private static readonly float[] Matrix4Float = new float[16];
 
         /// <summary>
         ///     Gens the buffer

@@ -28,8 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
+using Alis.Core.Graphic.SDL.Enums;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
     ///     The sdl controller axis event
@@ -75,7 +76,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The axis value
         /// </summary>
-        public readonly short axisValue; 
+        public readonly short axisValue;
 
         /// <summary>
         ///     The padding

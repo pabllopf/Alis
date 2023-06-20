@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiGLRenderer.cs
+//  File:ImGuiGlRenderer.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -37,6 +37,8 @@ using Alis.Core.Graphic.ImGui.Structs;
 using Alis.Core.Graphic.OpenGL.Constructs;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.SDL;
+using Alis.Core.Graphic.SDL.Enums;
+using Alis.Core.Graphic.SDL.Structs;
 using static Alis.Core.Graphic.OpenGL.Gl;
 using static Alis.Core.Graphic.SDL.Sdl;
 
@@ -49,14 +51,124 @@ namespace Alis.Core.Graphic.ImGui
     public class ImGuiGlRenderer : IDisposable
     {
         /// <summary>
+        ///     The font texture id
+        /// </summary>
+        private readonly uint _elementsHandle;
+
+        /// <summary>
+        ///     The gl context
+        /// </summary>
+        private readonly IntPtr _glContext;
+
+        /// <summary>
         ///     The mouse pressed
         /// </summary>
         private readonly bool[] _mousePressed = {false, false, false};
 
         /// <summary>
+        ///     The font texture id
+        /// </summary>
+        private readonly uint _vboHandle;
+
+        /// <summary>
+        ///     The font texture id
+        /// </summary>
+        private readonly uint _vertexArrayObject;
+
+        /// <summary>
+        ///     The window
+        /// </summary>
+        private readonly IntPtr _window;
+
+        /// <summary>
+        ///     The font texture id
+        /// </summary>
+        private uint _fontTextureId;
+
+        /// <summary>
+        ///     The shader
+        /// </summary>
+        private GlShaderProgram _shader;
+
+        /// <summary>
         ///     The time
         /// </summary>
         private float _time;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ImGuiGlRenderer" /> class
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="glContext">The gl context</param>
+        public ImGuiGlRenderer(IntPtr window, IntPtr glContext)
+        {
+            _window = window;
+            _glContext = glContext;
+
+            // compile the shader program
+            _shader = new GlShaderProgram(VertexShader, FragmentShader);
+
+            ImGui.SetCurrentContext(ImGui.CreateContext());
+            RebuildFontAtlas();
+            InitKeyMap();
+
+            _vboHandle = GenBuffer();
+            _elementsHandle = GenBuffer();
+            _vertexArrayObject = GenVertexArray();
+        }
+
+        /// <summary>
+        ///     The vertex shader
+        /// </summary>
+        public static readonly string VertexShader = @"
+			#version 330
+			
+			precision mediump float;
+			layout (location = 0) in vec2 Position;
+			layout (location = 1) in vec2 UV;
+			layout (location = 2) in vec4 Color;
+			uniform mat4 ProjMtx;
+			out vec2 Frag_UV;
+			out vec4 Frag_Color;
+			void main()
+			{
+			    Frag_UV = UV;
+			    Frag_Color = Color;
+			    gl_Position = ProjMtx * vec4(Position.xy, 0, 1);
+			}";
+
+        /// <summary>
+        ///     The fragment shader
+        /// </summary>
+        public static readonly string FragmentShader = @"
+			#version 330
+			
+			precision mediump float;
+			uniform sampler2D Texture;
+			in vec2 Frag_UV;
+			in vec4 Frag_Color;
+			layout (location = 0) out vec4 Out_Color;
+			
+			void main()
+			{
+			    Out_Color = Frag_Color * texture(Texture, Frag_UV.st);
+			}";
+
+        /// <summary>
+        ///     Disposes this instance
+        /// </summary>
+        public void Dispose()
+        {
+            if (_shader != null)
+            {
+                _shader.Dispose();
+                _shader = null;
+                DeleteBuffer(_vboHandle);
+                DeleteBuffer(_elementsHandle);
+                DeleteVertexArray(_vertexArrayObject);
+                DeleteTexture(_fontTextureId);
+            }
+        }
 
         /// <summary>
         ///     Inits the key map
@@ -240,116 +352,6 @@ namespace Alis.Core.Graphic.ImGui
         ///     Prepares the gl context
         /// </summary>
         private void PrepareGlContext() => SDL_GL_MakeCurrent(_window, _glContext);
-        
-        /// <summary>
-        ///     The gl context
-        /// </summary>
-        private readonly IntPtr _glContext;
-
-        /// <summary>
-        ///     The window
-        /// </summary>
-        private readonly IntPtr _window;
-
-        /// <summary>
-        ///     The shader
-        /// </summary>
-        private GlShaderProgram _shader;
-
-        /// <summary>
-        ///     The font texture id
-        /// </summary>
-        private readonly uint _vboHandle;
-
-        /// <summary>
-        ///     The font texture id
-        /// </summary>
-        private readonly uint _elementsHandle;
-
-        /// <summary>
-        ///     The font texture id
-        /// </summary>
-        private readonly uint _vertexArrayObject;
-
-        /// <summary>
-        ///     The font texture id
-        /// </summary>
-        private uint _fontTextureId;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ImGuiGlRenderer" /> class
-        /// </summary>
-        /// <param name="window">The window</param>
-        /// <param name="glContext">The gl context</param>
-        public ImGuiGlRenderer(IntPtr window, IntPtr glContext)
-        {
-            _window = window;
-            _glContext = glContext;
-
-            // compile the shader program
-            _shader = new GlShaderProgram(VertexShader, FragmentShader);
-
-            ImGui.SetCurrentContext(ImGui.CreateContext());
-            RebuildFontAtlas();
-            InitKeyMap();
-
-            _vboHandle = GenBuffer();
-            _elementsHandle = GenBuffer();
-            _vertexArrayObject = GenVertexArray();
-        }
-
-        /// <summary>
-        ///     The vertex shader
-        /// </summary>
-        public static readonly string VertexShader = @"
-			#version 330
-			
-			precision mediump float;
-			layout (location = 0) in vec2 Position;
-			layout (location = 1) in vec2 UV;
-			layout (location = 2) in vec4 Color;
-			uniform mat4 ProjMtx;
-			out vec2 Frag_UV;
-			out vec4 Frag_Color;
-			void main()
-			{
-			    Frag_UV = UV;
-			    Frag_Color = Color;
-			    gl_Position = ProjMtx * vec4(Position.xy, 0, 1);
-			}";
-
-        /// <summary>
-        ///     The fragment shader
-        /// </summary>
-        public static readonly string FragmentShader = @"
-			#version 330
-			
-			precision mediump float;
-			uniform sampler2D Texture;
-			in vec2 Frag_UV;
-			in vec4 Frag_Color;
-			layout (location = 0) out vec4 Out_Color;
-			
-			void main()
-			{
-			    Out_Color = Frag_Color * texture(Texture, Frag_UV.st);
-			}";
-
-        /// <summary>
-        ///     Disposes this instance
-        /// </summary>
-        public void Dispose()
-        {
-            if (_shader != null)
-            {
-                _shader.Dispose();
-                _shader = null;
-                DeleteBuffer(_vboHandle);
-                DeleteBuffer(_elementsHandle);
-                DeleteVertexArray(_vertexArrayObject);
-                DeleteTexture(_fontTextureId);
-            }
-        }
 
         /// <summary>
         ///     Rebuilds the font atlas

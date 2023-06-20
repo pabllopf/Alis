@@ -29,7 +29,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
     ///     The sdl dollar gesture event
@@ -48,14 +48,14 @@ namespace Alis.Core.Graphic.SDL
         public readonly uint timestamp;
 
         /// <summary>
-        ///     The touch id 
+        ///     The touch id
         /// </summary>
-        public readonly long touchId; 
+        public readonly long touchId;
 
         /// <summary>
-        ///     The gesture id 
+        ///     The gesture id
         /// </summary>
-        public readonly long gestureId; 
+        public readonly long gestureId;
 
         /// <summary>
         ///     The num fingers

@@ -28,9 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
-using Alis.Core.Graphic.Properties;
 
 namespace Alis.Core.Graphic.SFML
 {
@@ -52,61 +50,9 @@ namespace Alis.Core.Graphic.SFML
         /// </summary>
         static ObjectBase()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dylib", NativeGraphic.osx_arm64_csfml_graphics);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dylib", NativeGraphic.osx_arm64_csfml_system);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dylib", NativeGraphic.osx_arm64_csfml_window);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dylib", NativeGraphic.osx_x64_csfml_graphics);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dylib", NativeGraphic.osx_x64_csfml_system);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dylib", NativeGraphic.osx_x64_csfml_window);
-                        break;
-                }
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dll", NativeGraphic.win_arm64_csfml_graphics);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dll", NativeGraphic.win_arm64_csfml_system);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dll", NativeGraphic.win_arm64_csfml_window);
-                        break;
-                    case Architecture.X86:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dll", NativeGraphic.win_x86_csfml_graphics);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dll", NativeGraphic.win_x86_csfml_system);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dll", NativeGraphic.win_x86_csfml_window);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dll", NativeGraphic.win_x64_csfml_graphics);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dll", NativeGraphic.win_x64_csfml_system);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dll", NativeGraphic.win_x64_csfml_window);
-                        break;
-                }
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.so", NativeGraphic.linux_arm64_csfml_graphics);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.so", NativeGraphic.linux_arm64_csfml_system);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.so", NativeGraphic.linux_arm64_csfml_window);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.so", NativeGraphic.linux_x64_csfml_graphics);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.so", NativeGraphic.linux_x64_csfml_system);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.so", NativeGraphic.linux_x64_csfml_window);
-                        break;
-                }
-            }
+            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics", SfmlDlls.SfmlGraphicsDllBytes);
+            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system", SfmlDlls.SfmlSystemDllBytes);
+            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window", SfmlDlls.SfmlWindowDllBytes);
         }
 
         ////////////////////////////////////////////////////////////

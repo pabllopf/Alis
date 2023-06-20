@@ -36,6 +36,12 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
     /// </summary>
     internal class TrapezoidalMap
     {
+        // Trapezoid container
+        /// <summary>
+        ///     The map
+        /// </summary>
+        public readonly HashSet<Trapezoid> Map;
+
         // AABB margin
         /// <summary>
         ///     The margin
@@ -53,12 +59,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         ///     The cross
         /// </summary>
         private Edge cross;
-
-        // Trapezoid container
-        /// <summary>
-        ///     The map
-        /// </summary>
-        public readonly HashSet<Trapezoid> Map;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="TrapezoidalMap" /> class

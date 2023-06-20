@@ -42,14 +42,19 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         public readonly Edge Bottom;
 
         /// <summary>
-        ///     The inside
-        /// </summary>
-        public bool Inside;
-
-        /// <summary>
         ///     The left point
         /// </summary>
         public readonly Point LeftPoint;
+
+        /// <summary>
+        ///     The top
+        /// </summary>
+        public readonly Edge Top;
+
+        /// <summary>
+        ///     The inside
+        /// </summary>
+        public bool Inside;
 
         // Neighbor pointers
         /// <summary>
@@ -71,11 +76,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         ///     The sink
         /// </summary>
         public Sink Sink;
-
-        /// <summary>
-        ///     The top
-        /// </summary>
-        public readonly Edge Top;
 
         /// <summary>
         ///     The upper left

@@ -31,6 +31,7 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Attributes;
+using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Base.Exceptions;
 using Alis.Core.Aspect.Base.Settings;
 using Alis.Core.Aspect.Math.Figures.D2.Rectangle;
@@ -51,6 +52,16 @@ namespace Alis.Core.Graphic.SFML.Graphics
         ///     The my external
         /// </summary>
         private readonly bool myExternal;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Texture" /> class
+        /// </summary>
+        static Texture()
+        {
+            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics", SfmlDlls.SfmlGraphicsDllBytes);
+            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system", SfmlDlls.SfmlSystemDllBytes);
+            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window", SfmlDlls.SfmlWindowDllBytes);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>

@@ -29,8 +29,9 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Graphic.SDL.Enums;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
     ///     The sdl drop event
@@ -47,7 +48,7 @@ namespace Alis.Core.Graphic.SDL
         ///     The timestamp
         /// </summary>
         public readonly uint timestamp;
-        
+
         /// <summary>
         ///     The file
         /// </summary>

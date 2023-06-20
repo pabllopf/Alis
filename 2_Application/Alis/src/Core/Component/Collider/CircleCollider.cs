@@ -38,7 +38,7 @@ namespace Alis.Core.Component.Collider
     public class CircleCollider : ColliderBase
     {
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public override void Start()
         {

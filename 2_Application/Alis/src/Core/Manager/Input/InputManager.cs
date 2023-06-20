@@ -61,87 +61,91 @@ namespace Alis.Core.Manager.Input
             tempListOfKeys = new List<Key>();
         }
 
+
         /// <summary>
-        /// Dispatches the events
+        ///     Dispatches the events
         /// </summary>
         public override void DispatchEvents()
         {
-            foreach (Key key in keys)
+            for (int index = 0; index < keys.Count - 7; index++)
             {
-                if (Keyboard.IsKeyPressed(key))
-                {
-                    HandleKeyPress(key);
-                }
-                else
-                {
-                    HandleKeyRelease(key);
-                }
+                HandleKeyPressEvents(index);
+                HandleKeyReleaseEvents(index);
+                HandleKeyHoldEvents(index);
             }
         }
 
         /// <summary>
-        /// Handles the key press using the specified key
+        ///     Handles the key press events using the specified index
         /// </summary>
-        /// <param name="key">The key</param>
-        private void HandleKeyPress(Key key)
+        /// <param name="index">The index</param>
+        private void HandleKeyPressEvents(int index)
         {
-            if (!tempListOfKeys.Contains(key))
+            if (Keyboard.IsKeyPressed(keys[index]) && !tempListOfKeys.Contains(keys[index]))
             {
-                tempListOfKeys.Add(key);
-                NotifyKeyPress(key);
-            }
-            else
-            {
-                NotifyKeyHold(key);
+                tempListOfKeys.Add(keys[index]);
+                NotifyKeyPress(keys[index]);
             }
         }
 
         /// <summary>
-        /// Handles the key release using the specified key
+        ///     Handles the key release events using the specified index
         /// </summary>
-        /// <param name="key">The key</param>
-        private void HandleKeyRelease(Key key)
+        /// <param name="index">The index</param>
+        private void HandleKeyReleaseEvents(int index)
         {
-            if (tempListOfKeys.Contains(key))
+            if (!Keyboard.IsKeyPressed(keys[index]) && tempListOfKeys.Contains(keys[index]))
             {
-                tempListOfKeys.Remove(key);
-                NotifyKeyRelease(key);
+                tempListOfKeys.Remove(keys[index]);
+                NotifyKeyRelease(keys[index]);
             }
         }
 
         /// <summary>
-        /// Notifies the key press using the specified key
+        ///     Handles the key hold events using the specified index
         /// </summary>
-        /// <param name="key">The key</param>
-        private static void NotifyKeyPress(Key key)
+        /// <param name="index">The index</param>
+        private void HandleKeyHoldEvents(int index)
         {
-            foreach (GameObject gameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
+            if (Keyboard.IsKeyPressed(keys[index]) && tempListOfKeys.Contains(keys[index]))
             {
-                gameObject.Components.ForEach(component => component.OnPressKey(key));
+                NotifyKeyHold(keys[index]);
             }
         }
 
         /// <summary>
-        /// Notifies the key hold using the specified key
+        ///     Notifies the key press using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        private static void NotifyKeyHold(Key key)
+        private void NotifyKeyPress(Key key)
         {
-            foreach (GameObject gameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
+            foreach (GameObject currentSceneGameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
             {
-                gameObject.Components.ForEach(component => component.OnPressDownKey(key));
+                currentSceneGameObject.Components.ForEach(i => i.OnPressKey(key));
             }
         }
 
         /// <summary>
-        /// Notifies the key release using the specified key
+        ///     Notifies the key release using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        private static void NotifyKeyRelease(Key key)
+        private void NotifyKeyRelease(Key key)
         {
-            foreach (GameObject gameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
+            foreach (GameObject currentSceneGameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
             {
-                gameObject.Components.ForEach(component => component.OnReleaseKey(key));
+                currentSceneGameObject.Components.ForEach(i => i.OnReleaseKey(key));
+            }
+        }
+
+        /// <summary>
+        ///     Notifies the key hold using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        private void NotifyKeyHold(Key key)
+        {
+            foreach (GameObject currentSceneGameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
+            {
+                currentSceneGameObject.Components.ForEach(i => i.OnPressDownKey(key));
             }
         }
     }

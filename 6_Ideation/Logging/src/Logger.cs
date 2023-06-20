@@ -37,7 +37,7 @@ namespace Alis.Core.Aspect.Logging
     public static class Logger
     {
         /// <summary>
-        /// The normal
+        ///     The normal
         /// </summary>
         public static LogLevel LogLevel { get; set; } = LogLevel.Normal;
 

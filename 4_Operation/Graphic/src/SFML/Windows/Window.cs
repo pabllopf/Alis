@@ -31,6 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Base.Attributes;
+using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Base.Settings;
 using Alis.Core.Aspect.Math.Vector;
 
@@ -46,6 +47,16 @@ namespace Alis.Core.Graphic.SFML.Windows
     ////////////////////////////////////////////////////////////
     public class Window : ObjectBase
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Window" /> class
+        /// </summary>
+        static Window()
+        {
+            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics", SfmlDlls.SfmlGraphicsDllBytes);
+            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system", SfmlDlls.SfmlSystemDllBytes);
+            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window", SfmlDlls.SfmlWindowDllBytes);
+        }
+
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Create the window with default style and creation settings

@@ -36,36 +36,36 @@ using Alis.Core.Ecs;
 namespace Alis.Sample.Pong
 {
     /// <summary>
-    /// The player controller class
+    ///     The player controller class
     /// </summary>
     public class PlayerController : ComponentBase
     {
         /// <summary>
-        /// The player id
+        ///     The player id
         /// </summary>
         private readonly int playerId;
-        
+
         /// <summary>
         ///     The box collider
         /// </summary>
         private BoxCollider boxCollider;
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="PlayerController"/> class
+        ///     Initializes a new instance of the <see cref="PlayerController" /> class
         /// </summary>
         /// <param name="playerId">The player id</param>
         public PlayerController(int playerId) => this.playerId = playerId;
 
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public override void Start() => boxCollider = GameObject.GetComponent<BoxCollider>();
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update() => Logger.Trace();
-        
+
         /// <summary>
         ///     Ons the press down key using the specified key
         /// </summary>
@@ -103,7 +103,7 @@ namespace Alis.Sample.Pong
                 }
             }
         }
-        
+
         /// <summary>
         ///     Ons the release key using the specified key
         /// </summary>
@@ -124,9 +124,9 @@ namespace Alis.Sample.Pong
                         velocity = new Vector2F(velocity.X, 5);
                         boxCollider.Body.LinearVelocity = velocity;
                         break;
-                } 
+                }
             }
-            
+
             if (playerId == 2)
             {
                 switch (key)
@@ -139,9 +139,8 @@ namespace Alis.Sample.Pong
                         velocity = new Vector2F(velocity.X, 5);
                         boxCollider.Body.LinearVelocity = velocity;
                         break;
-                } 
+                }
             }
-            
         }
     }
 }

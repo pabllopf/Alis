@@ -41,6 +41,16 @@ namespace Alis.Core.Graphic.Sample
     public class SfmlController
     {
         /// <summary>
+        ///     The axis
+        /// </summary>
+        private readonly List<Axis> Axis = new List<Axis>((Axis[]) Enum.GetValues(typeof(Axis)));
+
+        /// <summary>
+        ///     The key
+        /// </summary>
+        private readonly List<Key> Keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
+
+        /// <summary>
         ///     The blue
         /// </summary>
         private byte _blue;
@@ -54,16 +64,6 @@ namespace Alis.Core.Graphic.Sample
         ///     The blue
         /// </summary>
         private byte _red;
-
-        /// <summary>
-        ///     The axis
-        /// </summary>
-        private readonly List<Axis> Axis = new List<Axis>((Axis[]) Enum.GetValues(typeof(Axis)));
-
-        /// <summary>
-        ///     The key
-        /// </summary>
-        private readonly List<Key> Keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
 
         /// <summary>
         ///     The width

@@ -28,8 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
+using Alis.Core.Graphic.SDL.Enums;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
     ///     The sdl event
@@ -107,7 +108,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         [FieldOffset(0)] public SdlJoyButtonEvent jButton;
 
-        /// <summary> 
+        /// <summary>
         ///     The j device
         /// </summary>
         [FieldOffset(0)] public SdlJoyDeviceEvent jDevice;
@@ -469,7 +470,8 @@ namespace Alis.Core.Graphic.SDL
         {
             get
             {
-                byte[] textBytes = {
+                byte[] textBytes =
+                {
                     padding0,
                     padding1,
                     padding2,

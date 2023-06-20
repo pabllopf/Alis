@@ -30,6 +30,8 @@
 using System;
 using Alis.Core.Graphic.ImGui;
 using Alis.Core.Graphic.SDL;
+using Alis.Core.Graphic.SDL.Enums;
+using Alis.Core.Graphic.SDL.Structs;
 
 namespace Alis.App.Engine
 {
@@ -39,9 +41,9 @@ namespace Alis.App.Engine
     public class Engine
     {
         /// <summary>
-        ///     The renderer
+        ///     The gl context
         /// </summary>
-        private ImGuiGlRenderer _renderer;
+        private IntPtr _glContext;
 
         /// <summary>
         ///     The quit
@@ -49,14 +51,14 @@ namespace Alis.App.Engine
         private bool _quit;
 
         /// <summary>
+        ///     The renderer
+        /// </summary>
+        private ImGuiGlRenderer _renderer;
+
+        /// <summary>
         ///     The window
         /// </summary>
         private IntPtr _window;
-
-        /// <summary>
-        ///     The gl context
-        /// </summary>
-        private IntPtr _glContext;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Engine" /> class

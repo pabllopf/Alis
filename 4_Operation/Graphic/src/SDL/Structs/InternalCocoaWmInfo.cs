@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalCocoaWminfo.cs
+//  File:InternalCocoaWmInfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -39,8 +39,8 @@ namespace Alis.Core.Graphic.SDL.Structs
     public struct InternalCocoaWmInfo
     {
         /// <summary>
-        ///    Refers to an NSWindow*
+        ///     Refers to an NSWindow*
         /// </summary>
-        public IntPtr window; 
+        public IntPtr window;
     }
 }

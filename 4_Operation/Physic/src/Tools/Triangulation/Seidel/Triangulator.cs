@@ -63,11 +63,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// </summary>
         private readonly TrapezoidalMap trapezoidalMap;
 
-        /// <summary>
-        ///     The mono poly
-        /// </summary>
-        private readonly List<MonotoneMountain> xMonoPoly;
-
         // Trapezoid decomposition list
         /// <summary>
         ///     The trapezoids
@@ -78,6 +73,11 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         ///     The triangles
         /// </summary>
         public readonly List<List<Point>> Triangles;
+
+        /// <summary>
+        ///     The mono poly
+        /// </summary>
+        private readonly List<MonotoneMountain> xMonoPoly;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Triangulator" /> class

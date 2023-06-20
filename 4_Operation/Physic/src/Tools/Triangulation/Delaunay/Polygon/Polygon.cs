@@ -50,6 +50,11 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Polygon
     internal class Polygon : ITriangulatable
     {
         /// <summary>
+        ///     The triangulation point
+        /// </summary>
+        protected readonly List<TriangulationPoint> PointsPrivate = new List<TriangulationPoint>();
+
+        /// <summary>
         ///     The holes
         /// </summary>
         protected List<Polygon> HolesPrivate;
@@ -58,11 +63,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Polygon
         ///     The last
         /// </summary>
         protected PolygonPoint LastPrivate;
-
-        /// <summary>
-        ///     The triangulation point
-        /// </summary>
-        protected readonly List<TriangulationPoint> PointsPrivate = new List<TriangulationPoint>();
 
         /// <summary>
         ///     The steiner points

@@ -1264,7 +1264,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         {
             ImGuiNative.ImDrawList_PushTextureID(NativePtr, textureId);
         }
-        
+
         /// <summary>
         ///     Adds the text using the specified pos
         /// </summary>

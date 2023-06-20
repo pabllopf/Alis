@@ -41,11 +41,6 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
     public sealed class GlShaderProgramParam
     {
         /// <summary>
-        ///     Specifies the location of the parameter in the OpenGL program.
-        /// </summary>
-        public int Location;
-
-        /// <summary>
         ///     Specifies the case-sensitive name of the parameter.
         /// </summary>
         public readonly string Name;
@@ -56,6 +51,16 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public readonly ParamType ParamType;
 
         /// <summary>
+        ///     Specifies the C# equivalent of the GLSL data type.
+        /// </summary>
+        public readonly Type Type;
+
+        /// <summary>
+        ///     Specifies the location of the parameter in the OpenGL program.
+        /// </summary>
+        public int Location;
+
+        /// <summary>
         ///     Specifies the OpenGL program ID.
         /// </summary>
         public uint Program;
@@ -64,11 +69,6 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         ///     The program id
         /// </summary>
         public uint ProgramId;
-
-        /// <summary>
-        ///     Specifies the C# equivalent of the GLSL data type.
-        /// </summary>
-        public readonly Type Type;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GlShaderProgramParam" /> class

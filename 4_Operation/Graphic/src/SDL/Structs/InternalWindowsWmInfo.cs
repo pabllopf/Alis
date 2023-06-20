@@ -39,18 +39,18 @@ namespace Alis.Core.Graphic.SDL.Structs
     public struct InternalWindowsWmInfo
     {
         /// <summary>
-        ///    Refers to an HWND
+        ///     Refers to an HWND
         /// </summary>
-        public IntPtr window; 
+        public IntPtr window;
 
         /// <summary>
         ///     Refers to an HDC
         /// </summary>
-        public IntPtr hdc; 
+        public IntPtr hdc;
 
         /// <summary>
         ///     Refers to an H INSTANCE
         /// </summary>
-        public IntPtr hInstance; 
+        public IntPtr hInstance;
     }
 }

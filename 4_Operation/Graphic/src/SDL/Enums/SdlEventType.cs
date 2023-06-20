@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
     ///     The sdl event type enum
@@ -38,12 +38,12 @@ namespace Alis.Core.Graphic.SDL
         ///     The sdl first event sdl event type
         /// </summary>
         SdlFirstEvent = 0,
-        
+
         /// <summary>
         ///     The sdl quit sdl event type
         /// </summary>
         SdlQuit = 0x100,
-        
+
         /// <summary>
         ///     The sdl app terminating sdl event type
         /// </summary>
@@ -78,12 +78,12 @@ namespace Alis.Core.Graphic.SDL
         ///     The sdl locale changed sdl event type
         /// </summary>
         SdlLocaleChanged,
-        
+
         /// <summary>
         ///     The sdl display event sdl event type
         /// </summary>
         SdlDisplayEvent = 0x150,
-        
+
         /// <summary>
         ///     The sdl window event sdl event type
         /// </summary>
@@ -93,7 +93,7 @@ namespace Alis.Core.Graphic.SDL
         ///     The sdl sys wm event sdl event type
         /// </summary>
         SdlSysWmEvent,
-        
+
         /// <summary>
         ///     The sdl keydown sdl event type
         /// </summary>
@@ -118,7 +118,7 @@ namespace Alis.Core.Graphic.SDL
         ///     The sdl keymap changed sdl event type
         /// </summary>
         SdlKeymapChanged,
-        
+
         /// <summary>
         ///     The sdl mouse motion sdl event type
         /// </summary>
@@ -138,7 +138,7 @@ namespace Alis.Core.Graphic.SDL
         ///     The sdl mousewheel sdl event type
         /// </summary>
         SdlMousewheel,
-        
+
         /// <summary>
         ///     The sdl joy axis motion sdl event type
         /// </summary>
@@ -173,7 +173,7 @@ namespace Alis.Core.Graphic.SDL
         ///     The sdl joy device removed sdl event type
         /// </summary>
         SdlJoyDeviceRemoved,
-        
+
         /// <summary>
         ///     The sdl controller axis motion sdl event type
         /// </summary>
@@ -207,23 +207,23 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl controller touchpad down sdl event type
         /// </summary>
-        SdlControllerTouchpadDown, 
+        SdlControllerTouchpadDown,
 
         /// <summary>
         ///     The sdl controller touchpad motion sdl event type
         /// </summary>
-        SdlControllerTouchpadMotion, 
+        SdlControllerTouchpadMotion,
 
         /// <summary>
         ///     The sdl controller touchpad up sdl event type
         /// </summary>
-        SdlControllerTouchpadUp, 
+        SdlControllerTouchpadUp,
 
         /// <summary>
         ///     The sdl controller sensor update sdl event type
         /// </summary>
-        SdlControllerSensorUpdate, 
-        
+        SdlControllerSensorUpdate,
+
         /// <summary>
         ///     The sdl finger down sdl event type
         /// </summary>
@@ -258,12 +258,12 @@ namespace Alis.Core.Graphic.SDL
         ///     The sdl clip board update sdl event type
         /// </summary>
         SdlClipBoardUpdate = 0x900,
-        
+
         /// <summary>
         ///     The sdl drop file sdl event type
         /// </summary>
         SdlDropFile = 0x1000,
-        
+
         /// <summary>
         ///     The sdl drop text sdl event type
         /// </summary>
@@ -278,7 +278,7 @@ namespace Alis.Core.Graphic.SDL
         ///     The sdl drop complete sdl event type
         /// </summary>
         SdlDropComplete,
-        
+
         /// <summary>
         ///     The sdl audio device added sdl event type
         /// </summary>
@@ -288,32 +288,32 @@ namespace Alis.Core.Graphic.SDL
         ///     The sdl audio device removed sdl event type
         /// </summary>
         SdlAudioDeviceRemoved,
-        
+
         /// <summary>
         ///     The sdl sensor update sdl event type
         /// </summary>
         SdlSensorUpdate = 0x1200,
-        
+
         /// <summary>
         ///     The sdl render targets reset sdl event type
         /// </summary>
         SdlRenderTargetsReset = 0x2000,
-        
+
         /// <summary>
         ///     The sdl render device reset sdl event type
         /// </summary>
         SdlRenderDeviceReset,
-        
+
         /// <summary>
         ///     The sdl poll sentinel sdl event type
         /// </summary>
         SdlPollSentinel = 0x7F00,
-        
+
         /// <summary>
         ///     The sdl user event sdl event type
         /// </summary>
         SdlUserEvent = 0x8000,
-        
+
         /// <summary>
         ///     The sdl last event sdl event type
         /// </summary>

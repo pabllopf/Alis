@@ -37,7 +37,7 @@ namespace Alis.Core.Component.Mesh
     public class BoxMesh : MeshBase
     {
         /// <summary>
-        /// Inits this instance
+        ///     Inits this instance
         /// </summary>
         public override void Init()
         {

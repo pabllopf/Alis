@@ -30,7 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
     ///     The sdl display mode
@@ -61,6 +61,6 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The driverdata
         /// </summary>
-        public IntPtr driverData; 
+        public IntPtr driverData;
     }
 }

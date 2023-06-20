@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalDirectfbWminfo.cs
+//  File:InternalDirectfbWmInfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -41,16 +41,16 @@ namespace Alis.Core.Graphic.SDL.Structs
         /// <summary>
         ///     Refers to an IDirectFB*
         /// </summary>
-        public IntPtr dfb; 
+        public IntPtr dfb;
 
         /// <summary>
-        ///      Refers to an IDirectFBWindow*
+        ///     Refers to an IDirectFBWindow*
         /// </summary>
-        public IntPtr window; 
+        public IntPtr window;
 
         /// <summary>
-        ///      Refers to an IDirectFBSurface*
+        ///     Refers to an IDirectFBSurface*
         /// </summary>
-        public IntPtr surface; 
+        public IntPtr surface;
     }
 }

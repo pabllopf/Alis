@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalWinrtWminfo.cs
+//  File:InternalWinrtWmInfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,7 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
     ///     The internal winrt wm info
@@ -39,8 +39,8 @@ namespace Alis.Core.Graphic.SDL
     public struct InternalWinrtWmInfo
     {
         /// <summary>
-        ///     Refers to an inspect 
+        ///     Refers to an inspect
         /// </summary>
-        public IntPtr window; 
+        public IntPtr window;
     }
 }

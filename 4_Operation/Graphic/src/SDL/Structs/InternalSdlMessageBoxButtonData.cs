@@ -51,6 +51,6 @@ namespace Alis.Core.Graphic.SDL.Structs
         /// <summary>
         ///     The UTF-8 button text
         /// </summary>
-        public IntPtr text; 
+        public IntPtr text;
     }
 }

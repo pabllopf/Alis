@@ -48,7 +48,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <returns>The im gui payload</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         internal static extern ImGuiPayload* igAcceptDragDropPayload(byte* type, ImGuiDragDropFlags flags);
-        
+
         /// <summary>
         ///     Ims the gui platform io set platform get window pos using the specified platform io
         /// </summary>

@@ -34,7 +34,6 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.SFML.Graphics;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Figure;
-using Color = Alis.Core.Graphic.SFML.Graphics.Color;
 using Sprite = Alis.Core.Component.Render.Sprite;
 
 namespace Alis.Core.Component.Collider

@@ -35,24 +35,24 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
     internal class DtSweepContext : TriangulationContext
     {
         /// <summary>
-        ///     The dt sweep point comparator
-        /// </summary>
-        private readonly DtSweepPointComparator comparator = new DtSweepPointComparator();
-
-        /// <summary>
-        ///     The front
-        /// </summary>
-        public AdvancingFront AFront;
-
-        /// <summary>
         ///     The dt sweep basin
         /// </summary>
         public readonly DtSweepBasin Basin = new DtSweepBasin();
 
         /// <summary>
+        ///     The dt sweep point comparator
+        /// </summary>
+        private readonly DtSweepPointComparator comparator = new DtSweepPointComparator();
+
+        /// <summary>
         ///     The dt sweep edge event
         /// </summary>
         public readonly DtSweepEdgeEvent EdgeEvent = new DtSweepEdgeEvent();
+
+        /// <summary>
+        ///     The front
+        /// </summary>
+        public AdvancingFront AFront;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="DtSweepContext" /> class

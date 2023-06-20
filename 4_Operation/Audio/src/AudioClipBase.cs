@@ -28,11 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Audio.OS;
-using Alis.Core.Audio.Properties;
 using Alis.Core.Audio.SDL;
 using Alis.Core.Audio.SFML;
 
@@ -44,11 +42,6 @@ namespace Alis.Core.Audio
     public abstract class AudioClipBase
     {
         /// <summary>
-        ///     The music
-        /// </summary>
-        private Music music;
-
-        /// <summary>
         ///     The music ptr
         /// </summary>
         private readonly IntPtr musicPtr;
@@ -59,96 +52,18 @@ namespace Alis.Core.Audio
         private readonly Player player;
 
         /// <summary>
+        ///     The music
+        /// </summary>
+        private Music music;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="AudioClipBase" /> class
         /// </summary>
         static AudioClipBase()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", NativeAudio.osx_arm64_csfml_audio);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", NativeAudio.osx_x64_csfml_audio);
-                        break;
-                }
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dll", NativeAudio.win_x64_csfml_audio);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("openal32.dll", NativeAudio.win_x64_openal32);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dll", NativeAudio.win_x64_csfml_audio);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("openal32.dll", NativeAudio.win_x64_openal32);
-                        break;
-                    case Architecture.X86:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dll", NativeAudio.win_x86_csfml_audio);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("openal32.dll", NativeAudio.win_x86_openal32);
-                        break;
-                }
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.so", NativeAudio.linux_arm64_csfml_audio);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.so", NativeAudio.linux_x64_csfml_audio);
-                        break;
-                }
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dylib", NativeAudio.osx_arm64_sdl2_mixer);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dylib", NativeAudio.osx_x64_sdl2_mixer);
-                        break;
-                }
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dll", NativeAudio.win_x64_sdl2_mixer);
-                        break;
-                    case Architecture.X86:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dll", NativeAudio.win_x86_sdl2_mixer);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dll", NativeAudio.win_x64_sdl2_mixer);
-                        break;
-                }
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.so", NativeAudio.linux_arm64_sdl2_mixer);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.so", NativeAudio.linux_x64_sdl2_mixer);
-                        break;
-                }
-            }
+            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio", AudioDlls.CsfmlAudioDllBytes);
+            EmbeddedDllClass.ExtractEmbeddedDlls("openal32", AudioDlls.OpenalAudioDllBytes);
+            EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer", AudioDlls.SdlAudioDllBytes);
         }
 
         /// <summary>

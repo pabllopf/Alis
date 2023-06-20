@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -40,80 +41,113 @@ namespace Alis.Core.Aspect.Base.Dll
     public static class EmbeddedDllClass
     {
         /// <summary>
-        ///     Gets or sets the value of the current directory
+        ///     Extracts the embedded dlls using the specified dll name
         /// </summary>
-        public static string CurrentDirectory { get; private set; } = "";
-
-        /// <summary>
-        ///     Extract DLLs from resources to temporary folder
-        /// </summary>
-        /// <param name="dllName">name of DLL file to create (including dll suffix)</param>
-        /// <param name="resourceBytes">The resource name (fully qualified)</param>
-        public static void ExtractEmbeddedDlls(string dllName, byte[] resourceBytes)
+        /// <param name="dllName">The dll name</param>
+        /// <param name="dllBytes">The dll bytes</param>
+        public static void ExtractEmbeddedDlls(string dllName, Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> dllBytes)
         {
-            /*
-            string extension = String.Empty;
-            
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                extension = $".dll";
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                extension = IsRunningOniOS() ? $".dylib" : ".dylib";
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                extension = IsRunningOnAndroid() ? $".so" : ".so";
-            }
-            else
-            {
-                throw new NotSupportedException("Unsupported platform. Plugins will not be loaded.");
-            }*/
+            string extension = GetDllExtension();
 
-            Assembly assem = Assembly.GetExecutingAssembly();
-            string[] names = assem.GetManifestResourceNames();
-            AssemblyName an = assem.GetName();
-
-            //string dirTemp = Path.Combine(Path.GetTempPath(), $"{an.Name}_{an.ProcessorArchitecture}_{an.Version}");
-
-            string dirTemp = Environment.CurrentDirectory;
-
-            if (!Directory.Exists(dirTemp))
-            {
-                Directory.CreateDirectory(dirTemp);
-            }
-
-            if (CurrentDirectory == "")
-            {
-                CurrentDirectory = Environment.CurrentDirectory;
-            }
-
-            //Directory.SetCurrentDirectory(dirTemp);
-
-            //string dllPath = Path.Combine(dirTemp, $"{dllName}{extension}");
-
-            string dllPath = Path.Combine(dirTemp, $"{dllName}");
+            string dllPath = Path.Combine(Environment.CurrentDirectory, $"{dllName}.{extension}");
 
             if (!File.Exists(dllPath))
             {
-                File.WriteAllBytes(dllPath, resourceBytes);
-            }
+                OSPlatform currentPlatform = GetCurrentPlatform();
+                Architecture currentArchitecture = RuntimeInformation.ProcessArchitecture;
 
-            Console.WriteLine($"dllPath={dllPath}");
+                if (dllBytes.TryGetValue((currentPlatform, currentArchitecture), out byte[] resourceBytes))
+                {
+                    File.WriteAllBytes(dllPath, resourceBytes);
+                    Console.WriteLine($"dllPath={dllPath}");
+                }
+            }
         }
 
         /// <summary>
-        ///     Describes whether this instance is running oni os
+        ///     Gets the dll extension
         /// </summary>
-        /// <returns>The bool</returns>
-        private static bool IsRunningOniOS() => RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && (RuntimeInformation.OSDescription.Contains("iPhone") || RuntimeInformation.OSDescription.Contains("iPad"));
+        /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
+        /// <returns>The string</returns>
+        private static string GetDllExtension()
+        {
+            OSPlatform currentPlatform = GetCurrentPlatform();
 
+            if (currentPlatform == OSPlatform.Windows)
+            {
+                return "dll";
+            }
+
+            if (currentPlatform == OSPlatform.OSX || currentPlatform == OSPlatform.Create("IOS"))
+            {
+                return "dylib";
+            }
+
+            if (currentPlatform == OSPlatform.Linux || currentPlatform == OSPlatform.Create("Android"))
+            {
+                return "so";
+            }
+
+            throw new PlatformNotSupportedException("Unsupported platform.");
+        }
 
         /// <summary>
-        ///     Describes whether this instance is running on android
+        ///     Gets the platform
+        /// </summary>
+        /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
+        /// <returns>The os platform</returns>
+        private static OSPlatform GetCurrentPlatform()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return OSPlatform.Windows;
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                return OSPlatform.OSX;
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                return OSPlatform.Linux;
+            }
+
+            if (IsRunningOniOS())
+            {
+                return OSPlatform.Create("IOS");
+            }
+
+            if (IsRunningOnAndroid())
+            {
+                return OSPlatform.Create("Android");
+            }
+
+            throw new PlatformNotSupportedException("Unsupported platform.");
+        }
+
+        /// <summary>
+        ///     Describes whether is running oni os
         /// </summary>
         /// <returns>The bool</returns>
-        private static bool IsRunningOnAndroid() => RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && RuntimeInformation.OSDescription.Contains("Android");
+        private static bool IsRunningOniOS() => RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && IsiOsSpecificConditionMet();
+
+        /// <summary>
+        ///     Describes whether is running on android
+        /// </summary>
+        /// <returns>The bool</returns>
+        private static bool IsRunningOnAndroid() => IsAndroidSpecificConditionMet();
+
+        /// <summary>
+        ///     Describes whether isi os specific condition met
+        /// </summary>
+        /// <returns>The bool</returns>
+        private static bool IsiOsSpecificConditionMet() => Assembly.Load("Xamarin.iOS") != null;
+
+        /// <summary>
+        ///     Describes whether is android specific condition met
+        /// </summary>
+        /// <returns>The bool</returns>
+        private static bool IsAndroidSpecificConditionMet() => Assembly.Load("Xamarin.Android") != null;
     }
 }

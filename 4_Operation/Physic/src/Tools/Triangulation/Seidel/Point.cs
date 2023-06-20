@@ -34,12 +34,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
     /// </summary>
     internal class Point
     {
-        // Pointers to next and previous points in Monontone Mountain
-        /// <summary>
-        ///     The prev
-        /// </summary>
-        public Point Next, Prev;
-
         /// <summary>
         ///     The
         /// </summary>
@@ -49,6 +43,12 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         ///     The
         /// </summary>
         public readonly float Y;
+
+        // Pointers to next and previous points in Monontone Mountain
+        /// <summary>
+        ///     The prev
+        /// </summary>
+        public Point Next, Prev;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Point" /> class

@@ -30,7 +30,6 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
-using Alis.Core.Graphic.Properties;
 
 namespace Alis.Core.Graphic.SDL
 {
@@ -44,74 +43,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         static SdlImage()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_image.dylib", NativeGraphic.osx_arm64_sdl2_image);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_image.dylib", NativeGraphic.osx_x64_sdl2_image);
-                        break;
-                }
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_image.dll", NativeGraphic.win_arm64_sdl2_image);
-                        break;
-                    case Architecture.X86:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_image.dll", NativeGraphic.win_x86_sdl2_image);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_image.dll", NativeGraphic.win_x64_sdl2_image);
-                        break;
-                }
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_image.so", NativeGraphic.linux_arm64_sdl2_image);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_image.so", NativeGraphic.linux_x64_sdl2_image);
-                        break;
-                }
-            }
-        }
-
-        /// <summary>
-        ///     The img initflags enum
-        /// </summary>
-        [Flags]
-        public enum ImgInitFlags
-        {
-            /// <summary>
-            ///     The img init jpg img initflags
-            /// </summary>
-            ImgInitJpg = 0x00000001,
-
-            /// <summary>
-            ///     The img init png img initflags
-            /// </summary>
-            ImgInitPng = 0x00000002,
-
-            /// <summary>
-            ///     The img init tif img initflags
-            /// </summary>
-            ImgInitTif = 0x00000004,
-
-            /// <summary>
-            ///     The img init webp img initflags
-            /// </summary>
-            ImgInitWebp = 0x00000008
+            EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_image", SdlDlls.SdlImageDllBytes);
         }
 
 

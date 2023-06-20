@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalWaylandWminfo.cs
+//  File:InternalWaylandWmInfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -39,33 +39,33 @@ namespace Alis.Core.Graphic.SDL.Structs
     public struct InternalWaylandWmInfo
     {
         /// <summary>
-        ///      Refers to a wl_display*
+        ///     Refers to a wl_display*
         /// </summary>
-        public IntPtr display; 
+        public IntPtr display;
 
         /// <summary>
         ///     Refers to a wl_surface*
         /// </summary>
-        public IntPtr surface; 
+        public IntPtr surface;
 
         /// <summary>
         ///     Refers to a wl_shell_surface*
         /// </summary>
-        public IntPtr shell_surface; 
+        public IntPtr shell_surface;
 
         /// <summary>
         ///     Refers to an egl_window*, requires >= 2.0.16
         /// </summary>
-        public IntPtr egl_window; 
+        public IntPtr egl_window;
 
         /// <summary>
         ///     Refers to an xdg_surface*, requires >= 2.0.16
         /// </summary>
-        public IntPtr xdg_surface;  
+        public IntPtr xdg_surface;
 
         /// <summary>
         ///     Refers to an xdg_toplevel*, requires >= 2.0.18
         /// </summary>
-        public IntPtr xdg_toplevel; 
+        public IntPtr xdg_toplevel;
     }
 }

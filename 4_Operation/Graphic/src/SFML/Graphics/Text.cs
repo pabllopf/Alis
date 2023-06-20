@@ -106,7 +106,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
 
             Font = copy.Font;
         }
-        
+
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Fill color of the object
@@ -375,7 +375,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="thickness">The thickness</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfText_setOutlineThickness(IntPtr cPointer, float thickness);
-        
+
         /// <summary>
         ///     Sfs the text get fill color using the specified c pointer
         /// </summary>

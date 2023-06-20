@@ -40,17 +40,17 @@ namespace Alis.Core.Component.Particle
     public class ExplosionParticle : ParticleBase, IBuilder<ExplosionParticleBuilder>
     {
         /// <summary>
-        /// Inits this instance
+        ///     Builders this instance
+        /// </summary>
+        /// <returns>The explosion particle builder</returns>
+        public ExplosionParticleBuilder Builder() => new ExplosionParticleBuilder();
+
+        /// <summary>
+        ///     Inits this instance
         /// </summary>
         public override void Init()
         {
             Logger.Trace();
         }
-
-        /// <summary>
-        ///     Builders this instance
-        /// </summary>
-        /// <returns>The explosion particle builder</returns>
-        public ExplosionParticleBuilder Builder() => new ExplosionParticleBuilder();
     }
 }

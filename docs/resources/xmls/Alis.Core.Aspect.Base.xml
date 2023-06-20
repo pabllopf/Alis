@@ -57,27 +57,48 @@
                 The embedded dll class
             </summary>
         </member>
-        <member name="P:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.CurrentDirectory">
+        <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.ExtractEmbeddedDlls(System.String,System.Collections.Generic.Dictionary{System.ValueTuple{System.Runtime.InteropServices.OSPlatform,System.Runtime.InteropServices.Architecture},System.Byte[]})">
             <summary>
-                Gets or sets the value of the current directory
+            Extracts the embedded dlls using the specified dll name
             </summary>
+            <param name="dllName">The dll name</param>
+            <param name="dllBytes">The dll bytes</param>
         </member>
-        <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.ExtractEmbeddedDlls(System.String,System.Byte[])">
+        <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.GetDllExtension">
             <summary>
-                Extract DLLs from resources to temporary folder
+            Gets the dll extension
             </summary>
-            <param name="dllName">name of DLL file to create (including dll suffix)</param>
-            <param name="resourceBytes">The resource name (fully qualified)</param>
+            <exception cref="T:System.PlatformNotSupportedException">Unsupported platform.</exception>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.GetCurrentPlatform">
+            <summary>
+            Gets the platform
+            </summary>
+            <exception cref="T:System.PlatformNotSupportedException">Unsupported platform.</exception>
+            <returns>The os platform</returns>
         </member>
         <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.IsRunningOniOS">
             <summary>
-                Describes whether this instance is running oni os
+            Describes whether is running oni os
             </summary>
             <returns>The bool</returns>
         </member>
         <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.IsRunningOnAndroid">
             <summary>
-                Describes whether this instance is running on android
+            Describes whether is running on android
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.IsiOsSpecificConditionMet">
+            <summary>
+            Describes whether isi os specific condition met
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.IsAndroidSpecificConditionMet">
+            <summary>
+            Describes whether is android specific condition met
             </summary>
             <returns>The bool</returns>
         </member>

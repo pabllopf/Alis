@@ -30,6 +30,8 @@
 using System;
 using System.Collections.Generic;
 using Alis.Core.Graphic.SDL;
+using Alis.Core.Graphic.SDL.Enums;
+using Alis.Core.Graphic.SDL.Structs;
 
 namespace Alis.Core.Graphic.Sample
 {
@@ -38,6 +40,16 @@ namespace Alis.Core.Graphic.Sample
     /// </summary>
     public class SdlController
     {
+        /// <summary>
+        ///     The sdl game controller axis
+        /// </summary>
+        private readonly List<SdlGameControllerAxis> axis = new List<SdlGameControllerAxis>((SdlGameControllerAxis[]) Enum.GetValues(typeof(SdlGameControllerAxis)));
+
+        /// <summary>
+        ///     The sdl game controller button
+        /// </summary>
+        private readonly List<SdlGameControllerButton> buttons = new List<SdlGameControllerButton>((SdlGameControllerButton[]) Enum.GetValues(typeof(SdlGameControllerButton)));
+
         /// <summary>
         ///     The blue
         /// </summary>
@@ -52,16 +64,6 @@ namespace Alis.Core.Graphic.Sample
         ///     The blue
         /// </summary>
         private byte _red;
-
-        /// <summary>
-        ///     The sdl game controller axis
-        /// </summary>
-        private readonly List<SdlGameControllerAxis> axis = new List<SdlGameControllerAxis>((SdlGameControllerAxis[]) Enum.GetValues(typeof(SdlGameControllerAxis)));
-
-        /// <summary>
-        ///     The sdl game controller button
-        /// </summary>
-        private readonly List<SdlGameControllerButton> buttons = new List<SdlGameControllerButton>((SdlGameControllerButton[]) Enum.GetValues(typeof(SdlGameControllerButton)));
 
         /// <summary>
         ///     The sdl keycode
@@ -227,7 +229,7 @@ namespace Alis.Core.Graphic.Sample
 
                         break;
                 }
-                
+
                 foreach (SdlGameControllerButton button in buttons)
                 {
                     if ((sdlEvent.type == SdlEventType.SdlJoyButtonDown)

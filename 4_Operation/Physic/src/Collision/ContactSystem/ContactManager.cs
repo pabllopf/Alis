@@ -46,9 +46,17 @@ namespace Alis.Core.Physic.Collision.ContactSystem
     public class ContactManager
     {
         /// <summary>
+        ///     The contact list
+        /// </summary>
+        internal readonly List<Contact> ContactList = new List<Contact>();
+
+        /// <summary>
         ///     The contact
         /// </summary>
         public readonly Queue<Contact> ContactPool = new Queue<Contact>(256);
+
+        /// <summary>Fires when the broadphase detects that two Fixtures are close to each other.</summary>
+        public readonly BroadphaseHandler OnBroadphaseCollision;
 
         /// <summary>Fires when a contact is created</summary>
         public BeginContactHandler BeginContact;
@@ -61,11 +69,6 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>The filter used by the contact manager.</summary>
         public CollisionFilterHandler ContactFilter;
 
-        /// <summary>
-        ///     The contact list
-        /// </summary>
-        internal readonly List<Contact> ContactList = new List<Contact>();
-
         /// <summary>Fires when a contact is deleted</summary>
         public EndContactHandler EndContact;
 
@@ -73,9 +76,6 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     The last min alpha
         /// </summary>
         private float lastMinAlpha;
-
-        /// <summary>Fires when the broadphase detects that two Fixtures are close to each other.</summary>
-        public readonly BroadphaseHandler OnBroadphaseCollision;
 
         /// <summary>Fires after the solver has run</summary>
         public PostSolveHandler PostSolve;

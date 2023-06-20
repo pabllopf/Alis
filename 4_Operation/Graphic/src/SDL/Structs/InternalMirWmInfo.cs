@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalMirWminfo.cs
+//  File:InternalMirWmInfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -41,11 +41,11 @@ namespace Alis.Core.Graphic.SDL.Structs
         /// <summary>
         ///     Refers to a MirConnection*
         /// </summary>
-        public IntPtr connection; 
+        public IntPtr connection;
 
         /// <summary>
         ///     Refers to a MirSurface*
         /// </summary>
-        public IntPtr surface; 
+        public IntPtr surface;
     }
 }

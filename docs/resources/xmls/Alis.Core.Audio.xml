@@ -136,6 +136,26 @@
             </summary>
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
         </member>
+        <member name="T:Alis.Core.Audio.AudioDlls">
+            <summary>
+            The audio dlls class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.AudioDlls.CsfmlAudioDllBytes">
+            <summary>
+            The osx x64 csfml audio
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.AudioDlls.SdlAudioDllBytes">
+            <summary>
+            The osx arm64 sdl2 mixer
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.AudioDlls.OpenalAudioDllBytes">
+            <summary>
+            The win x64 openal32
+            </summary>
+        </member>
         <member name="T:Alis.Core.Audio.IAudioRecorder">
             <summary>
                 The audio recorder interface

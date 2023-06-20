@@ -41,14 +41,19 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
     internal class AdvancingFrontNode
     {
         /// <summary>
-        ///     The next
-        /// </summary>
-        public AdvancingFrontNode Next;
-
-        /// <summary>
         ///     The point
         /// </summary>
         public readonly TriangulationPoint Point;
+
+        /// <summary>
+        ///     The value
+        /// </summary>
+        public readonly double Value;
+
+        /// <summary>
+        ///     The next
+        /// </summary>
+        public AdvancingFrontNode Next;
 
         /// <summary>
         ///     The prev
@@ -59,11 +64,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         ///     The triangle
         /// </summary>
         public DelaunayTriangle Triangle;
-
-        /// <summary>
-        ///     The value
-        /// </summary>
-        public readonly double Value;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AdvancingFrontNode" /> class

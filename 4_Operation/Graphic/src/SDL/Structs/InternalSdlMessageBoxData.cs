@@ -46,12 +46,12 @@ namespace Alis.Core.Graphic.SDL.Structs
         /// <summary>
         ///     The window, Parent window, can be NULL
         /// </summary>
-        public IntPtr window; 
+        public IntPtr window;
 
         /// <summary>
         ///     The title, UTF-8 title
         /// </summary>
-        public IntPtr title; 
+        public IntPtr title;
 
         /// <summary>
         ///     The message

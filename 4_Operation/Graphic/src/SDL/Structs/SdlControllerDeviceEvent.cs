@@ -28,8 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
+using Alis.Core.Graphic.SDL.Enums;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
     ///     The sdl controller device event
@@ -48,7 +49,7 @@ namespace Alis.Core.Graphic.SDL
         public readonly uint timestamp;
 
         /// <summary>
-        ///     The which joystick id 
+        ///     The which joystick id
         /// </summary>
         public readonly int which;
     }

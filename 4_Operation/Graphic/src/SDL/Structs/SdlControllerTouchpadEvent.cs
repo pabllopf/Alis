@@ -29,7 +29,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
     ///     The sdl controller touch pad event
@@ -50,7 +50,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The which SDL_JoystickID
         /// </summary>
-        public readonly int which; 
+        public readonly int which;
 
         /// <summary>
         ///     The touchpad

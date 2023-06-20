@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InternalX11Wminfo.cs
+//  File:InternalX11WmInfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,7 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
     ///     The internal x11 wm info
@@ -41,11 +41,11 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     Refers to a Display*
         /// </summary>
-        public IntPtr display; 
+        public IntPtr display;
 
         /// <summary>
         ///     Refers to a Window (XID, use ToInt64!)
         /// </summary>
-        public IntPtr window; 
+        public IntPtr window;
     }
 }
