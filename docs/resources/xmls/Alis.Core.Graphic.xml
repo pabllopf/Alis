@@ -31900,6 +31900,14 @@
             <param name="ptSize">The ptSize</param>
             <returns>The int ptr</returns>
         </member>
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TtfOpenFont(System.Byte[],System.Int32)">
+            <summary>
+            Internal ttf the open font using the specified file
+            </summary>
+            <param name="file">The file</param>
+            <param name="ptSize">The pt size</param>
+            <returns>The int ptr</returns>
+        </member>
         <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_OpenFontRW(System.IntPtr,System.Int32,System.Int32)">
             <summary>
                 Ttf the open font rw using the specified src
@@ -32433,9 +32441,27 @@
             <param name="index">The index</param>
             <returns>The int</returns>
         </member>
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.SdlGetFontKerningSize(System.IntPtr,System.Int32,System.Int32)">
+            <summary>
+            Sdl the get font kerning size using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="prevIndex">The prev index</param>
+            <param name="index">The index</param>
+            <returns>The int</returns>
+        </member>
         <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_GetFontKerningSizeGlyphs(System.IntPtr,System.UInt16,System.UInt16)">
             <summary>
-                Ttfs the get font kerning size glyphs using the specified font
+                Ttf the get font kerning size glyphs using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="previousCh">The previous ch</param>
+            <param name="ch">The ch</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TtfGetFontKerningSizeGlyphs(System.IntPtr,System.UInt16,System.UInt16)">
+            <summary>
+            Ttf the get font kerning size glyphs using the specified font
             </summary>
             <param name="font">The font</param>
             <param name="previousCh">The previous ch</param>
@@ -32444,7 +32470,16 @@
         </member>
         <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TTF_GetFontKerningSizeGlyphs32(System.IntPtr,System.UInt16,System.UInt16)">
             <summary>
-                Ttfs the get font kerning size glyphs 32 using the specified font
+                Ttf the get font kerning size glyphs 32 using the specified font
+            </summary>
+            <param name="font">The font</param>
+            <param name="previousCh">The previous ch</param>
+            <param name="ch">The ch</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.Extern.SdlTtfExtern.TtfGetFontKerningSizeGlyphs32(System.IntPtr,System.UInt16,System.UInt16)">
+            <summary>
+            Ttf the get font kerning size glyphs 32 using the specified font
             </summary>
             <param name="font">The font</param>
             <param name="previousCh">The previous ch</param>

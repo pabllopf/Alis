@@ -139,7 +139,7 @@ namespace Alis.Core.Graphic.SDL
         public static IntPtr TTF_OpenFont(string file, int ptsize)
         {
             byte[] utf8File = Sdl.Utf8EncodeHeap(file);
-            IntPtr handle = SdlTtfExtern.INTERNAL_TTF_OpenFont(
+            IntPtr handle = SdlTtfExtern.TtfOpenFont(
                 utf8File,
                 ptsize
             );
