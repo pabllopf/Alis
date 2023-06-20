@@ -30,7 +30,6 @@
 using System;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Core.Graphic.SDL;
 using Alis.Core.Graphic.SDL.Enums;
 using static Alis.Core.Graphic.SDL.Sdl;
 using static Alis.Core.Graphic.OpenGL.Gl;

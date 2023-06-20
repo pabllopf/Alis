@@ -36,7 +36,6 @@ using Alis.Core.Graphic.ImGui.Enums;
 using Alis.Core.Graphic.ImGui.Structs;
 using Alis.Core.Graphic.OpenGL.Constructs;
 using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Core.Graphic.SDL;
 using Alis.Core.Graphic.SDL.Enums;
 using Alis.Core.Graphic.SDL.Structs;
 using static Alis.Core.Graphic.OpenGL.Gl;

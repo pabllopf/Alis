@@ -126,8 +126,8 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The ttf hinting light subpixel
         /// </summary>
-        public const int TtfHintingLightSubpixel = 4; 
-        
+        public const int TtfHintingLightSubpixel = 4;
+
         /// <summary>
         ///     Ttfs the open font using the specified file
         /// </summary>

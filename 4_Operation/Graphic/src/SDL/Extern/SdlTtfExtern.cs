@@ -46,7 +46,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr INTERNAL_TTF_LinkedVersion();
 
         /// <summary>
-        /// Internals the ttf linked version
+        ///     Internals the ttf linked version
         /// </summary>
         /// <returns>The int ptr</returns>
         public static IntPtr InternalTtfLinkedVersion() => INTERNAL_TTF_LinkedVersion();
@@ -59,7 +59,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern void TTF_ByteSwappedUNICODE(int swapped);
 
         /// <summary>
-        /// Ttf the byte swapped unicode using the specified swapped
+        ///     Ttf the byte swapped unicode using the specified swapped
         /// </summary>
         /// <param name="swapped">The swapped</param>
         public static void TtfByteSwappedUnicode(int swapped) => TTF_ByteSwappedUNICODE(swapped);
@@ -72,7 +72,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_Init();
 
         /// <summary>
-        /// Ttf the init
+        ///     Ttf the init
         /// </summary>
         /// <exception cref="Exception">TTF_Init failed</exception>
         /// <returns>The result</returns>
@@ -80,7 +80,10 @@ namespace Alis.Core.Graphic.SDL.Extern
         {
             int result = TTF_Init();
             if (result == -1)
+            {
                 throw new Exception("TTF_Init failed");
+            }
+
             return result;
         }
 
@@ -112,7 +115,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr TTF_OpenFontRW(IntPtr src, int freeSrc, int ptSize);
 
         /// <summary>
-        /// Ttf the open font rw using the specified src
+        ///     Ttf the open font rw using the specified src
         /// </summary>
         /// <param name="src">The src</param>
         /// <param name="freeSrc">The free src</param>
@@ -131,7 +134,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr INTERNAL_TTF_OpenFontIndex(byte[] file, int ptSize, long index);
 
         /// <summary>
-        /// Internals the ttf open font index using the specified file
+        ///     Internals the ttf open font index using the specified file
         /// </summary>
         /// <param name="file">The file</param>
         /// <param name="ptSize">The pt size</param>
@@ -151,7 +154,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr TTF_OpenFontIndexRW(IntPtr src, int freeSrc, int ptSize, long index);
 
         /// <summary>
-        /// Ttf the open font index rw using the specified src
+        ///     Ttf the open font index rw using the specified src
         /// </summary>
         /// <param name="src">The src</param>
         /// <param name="freeSrc">The free src</param>
@@ -170,7 +173,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_SetFontSize(IntPtr font, int ptSize);
 
         /// <summary>
-        /// Ttf the set font size using the specified font
+        ///     Ttf the set font size using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="ptSize">The pt size</param>
@@ -186,7 +189,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_GetFontStyle(IntPtr font);
 
         /// <summary>
-        /// Ttf the get font style using the specified font
+        ///     Ttf the get font style using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
@@ -201,7 +204,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern void TTF_SetFontStyle(IntPtr font, int style);
 
         /// <summary>
-        /// Ttf the set font style using the specified font
+        ///     Ttf the set font style using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="style">The style</param>
@@ -216,7 +219,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_GetFontOutline(IntPtr font);
 
         /// <summary>
-        /// Ttf the get font outline using the specified font
+        ///     Ttf the get font outline using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
@@ -231,7 +234,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern void TTF_SetFontOutline(IntPtr font, int outline);
 
         /// <summary>
-        /// Ttf the set font outline using the specified font
+        ///     Ttf the set font outline using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="outline">The outline</param>
@@ -246,7 +249,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_GetFontHinting(IntPtr font);
 
         /// <summary>
-        /// Ttf the get font hinting using the specified font
+        ///     Ttf the get font hinting using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
@@ -261,7 +264,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern void TTF_SetFontHinting(IntPtr font, int hinting);
 
         /// <summary>
-        /// Ttf the set font hinting using the specified font
+        ///     Ttf the set font hinting using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="hinting">The hinting</param>
@@ -276,7 +279,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_FontHeight(IntPtr font);
 
         /// <summary>
-        /// Ttf the font height using the specified font
+        ///     Ttf the font height using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
@@ -291,7 +294,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_FontAscent(IntPtr font);
 
         /// <summary>
-        /// Ttf the font ascent using the specified font
+        ///     Ttf the font ascent using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
@@ -306,7 +309,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_FontDescent(IntPtr font);
 
         /// <summary>
-        /// Ttf the font descent using the specified font
+        ///     Ttf the font descent using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
@@ -321,7 +324,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_FontLineSkip(IntPtr font);
 
         /// <summary>
-        /// Ttf the font line skip using the specified font
+        ///     Ttf the font line skip using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
@@ -336,7 +339,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_GetFontKerning(IntPtr font);
 
         /// <summary>
-        /// Ttf the get font kerning using the specified font
+        ///     Ttf the get font kerning using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
@@ -351,7 +354,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern void TTF_SetFontKerning(IntPtr font, int allowed);
 
         /// <summary>
-        /// Ttf the set font kerning using the specified font
+        ///     Ttf the set font kerning using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="allowed">The allowed</param>
@@ -366,7 +369,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr TTF_FontFaces(IntPtr font);
 
         /// <summary>
-        /// Ttf the font faces using the specified font
+        ///     Ttf the font faces using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int ptr</returns>
@@ -381,7 +384,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_FontFaceIsFixedWidth(IntPtr font);
 
         /// <summary>
-        /// Ttf the font face is fixed width using the specified font
+        ///     Ttf the font face is fixed width using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
@@ -396,7 +399,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr INTERNAL_TTF_FontFaceFamilyName(IntPtr font);
 
         /// <summary>
-        /// Internals the ttf font face family name using the specified font
+        ///     Internals the ttf font face family name using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int ptr</returns>
@@ -418,7 +421,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr INTERNAL_TTF_FontFaceStyleName(IntPtr font);
 
         /// <summary>
-        /// Internals the ttf font face style name using the specified font
+        ///     Internals the ttf font face style name using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int ptr</returns>
@@ -434,7 +437,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_GlyphIsProvided(IntPtr font, ushort ch);
 
         /// <summary>
-        /// Ttf the glyph is provided using the specified font
+        ///     Ttf the glyph is provided using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="ch">The ch</param>
@@ -451,7 +454,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_GlyphIsProvided32(IntPtr font, uint ch);
 
         /// <summary>
-        /// Ttf the glyph is provided 32 using the specified font
+        ///     Ttf the glyph is provided 32 using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="ch">The ch</param>
@@ -473,7 +476,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_GlyphMetrics(IntPtr font, ushort ch, out int minx, out int max, out int miny, out int maxy, out int advance);
 
         /// <summary>
-        /// Ttf the glyph metrics using the specified font
+        ///     Ttf the glyph metrics using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="ch">The ch</param>
@@ -500,7 +503,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_GlyphMetrics32(IntPtr font, uint ch, out int minx, out int max, out int miny, out int maxy, out int advance);
 
         /// <summary>
-        /// Ttf the glyph metrics 32 using the specified font
+        ///     Ttf the glyph metrics 32 using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="ch">The ch</param>
@@ -524,7 +527,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_SizeText(IntPtr font, [In, MarshalAs(UnmanagedType.LPStr)] string text, out int w, out int h);
 
         /// <summary>
-        /// Ttf the size text using the specified font
+        ///     Ttf the size text using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -532,7 +535,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// <param name="h">The </param>
         /// <returns>The int</returns>
         public static int TtfSizeText(IntPtr font, [In, MarshalAs(UnmanagedType.LPStr)] string text, out int w, out int h) => TTF_SizeText(font, text, out w, out h);
-        
+
         /// <summary>
         ///     Internals the ttf size utf 8 using the specified font
         /// </summary>
@@ -545,7 +548,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int INTERNAL_TTF_SizeUTF8(IntPtr font, byte[] text, out int w, out int h);
 
         /// <summary>
-        /// Internals the ttf size utf 8 using the specified font
+        ///     Internals the ttf size utf 8 using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -566,7 +569,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_SizeUNICODE(IntPtr font, [In, MarshalAs(UnmanagedType.LPWStr)] string text, out int w, out int h);
 
         /// <summary>
-        /// Ttf the size unicode using the specified font
+        ///     Ttf the size unicode using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -588,7 +591,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_MeasureText(IntPtr font, [In, MarshalAs(UnmanagedType.LPStr)] string text, int measureWidth, out int extent, out int count);
 
         /// <summary>
-        /// Ttf the measure text using the specified font
+        ///     Ttf the measure text using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -609,9 +612,9 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// <returns>The int</returns>
         [DllImport(SdlTtf.NativeLibName, EntryPoint = "TTF_MeasureUTF8", CallingConvention = CallingConvention.Cdecl)]
         private static extern int INTERNAL_TTF_MeasureUTF8(IntPtr font, byte[] text, int measureWidth, out int extent, out int count);
-        
+
         /// <summary>
-        /// Internals the ttf measure utf 8 using the specified font
+        ///     Internals the ttf measure utf 8 using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -634,7 +637,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_MeasureUNICODE(IntPtr font, [In, MarshalAs(UnmanagedType.LPWStr)] string text, int measureWidth, out int extent, out int count);
 
         /// <summary>
-        /// Ttf the measure unicode using the specified font
+        ///     Ttf the measure unicode using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -655,7 +658,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr TTF_RenderText_Solid(IntPtr font, [In, MarshalAs(UnmanagedType.LPStr)] string text, SdlColor fg);
 
         /// <summary>
-        /// Ttf the render text solid using the specified font
+        ///     Ttf the render text solid using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -674,7 +677,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr INTERNAL_TTF_RenderUTF8_Solid(IntPtr font, byte[] text, SdlColor fg);
 
         /// <summary>
-        /// Internals the ttf render utf 8 solid using the specified font
+        ///     Internals the ttf render utf 8 solid using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -693,14 +696,14 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr TTF_RenderUNICODE_Solid(IntPtr font, [In, MarshalAs(UnmanagedType.LPWStr)] string text, SdlColor fg);
 
         /// <summary>
-        /// Ttf the render unicode solid using the specified font
+        ///     Ttf the render unicode solid using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
         public static IntPtr TtfRenderUnicodeSolid(IntPtr font, [In, MarshalAs(UnmanagedType.LPWStr)] string text, SdlColor fg) => TTF_RenderUNICODE_Solid(font, text, fg);
-        
+
         /// <summary>
         ///     Ttf the render text solid wrapped using the specified font
         /// </summary>
@@ -713,7 +716,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr TTF_RenderText_Solid_Wrapped(IntPtr font, [In, MarshalAs(UnmanagedType.LPStr)] string text, SdlColor fg, uint wrapLength);
 
         /// <summary>
-        /// Ttf the render text solid wrapped using the specified font
+        ///     Ttf the render text solid wrapped using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -721,7 +724,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The int ptr</returns>
         public static IntPtr TtfRenderTextSolidWrapped(IntPtr font, string text, SdlColor fg, uint wrapLength) => TTF_RenderText_Solid_Wrapped(font, text, fg, wrapLength);
-        
+
         /// <summary>
         ///     Internals the ttf render utf 8 solid wrapped using the specified font
         /// </summary>
@@ -734,7 +737,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr INTERNAL_TTF_RenderUTF8_Solid_Wrapped(IntPtr font, byte[] text, SdlColor fg, uint wrapLength);
 
         /// <summary>
-        /// Internals the ttf render utf 8 solid wrapped using the specified font
+        ///     Internals the ttf render utf 8 solid wrapped using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -755,7 +758,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr TTF_RenderUNICODE_Solid_Wrapped(IntPtr font, [In, MarshalAs(UnmanagedType.LPWStr)] string text, SdlColor fg, uint wrapLength);
 
         /// <summary>
-        /// Ttf the render unicode solid wrapped using the specified font
+        ///     Ttf the render unicode solid wrapped using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -763,7 +766,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The int ptr</returns>
         public static IntPtr TtfRenderUnicodeSolidWrapped(IntPtr font, [In, MarshalAs(UnmanagedType.LPWStr)] string text, SdlColor fg, uint wrapLength) => TTF_RenderUNICODE_Solid_Wrapped(font, text, fg, wrapLength);
-        
+
         /// <summary>
         ///     Ttf the render glyph solid using the specified font
         /// </summary>
@@ -775,7 +778,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr TTF_RenderGlyph_Solid(IntPtr font, ushort ch, SdlColor fg);
 
         /// <summary>
-        /// Ttf the render glyph solid using the specified font
+        ///     Ttf the render glyph solid using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="ch">The ch</param>
@@ -794,7 +797,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr TTF_RenderGlyph32_Solid(IntPtr font, uint ch, SdlColor fg);
 
         /// <summary>
-        /// Ttf the render glyph 32 solid using the specified font
+        ///     Ttf the render glyph 32 solid using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="ch">The ch</param>
@@ -814,7 +817,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr TTF_RenderText_Shaded(IntPtr font, [In, MarshalAs(UnmanagedType.LPStr)] string text, SdlColor fg, SdlColor bg);
 
         /// <summary>
-        /// Ttf the render text shaded using the specified font
+        ///     Ttf the render text shaded using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -835,7 +838,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr INTERNAL_TTF_RenderUTF8_Shaded(IntPtr font, byte[] text, SdlColor fg, SdlColor bg);
 
         /// <summary>
-        /// Internals the ttf render utf 8 shaded using the specified font
+        ///     Internals the ttf render utf 8 shaded using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -856,7 +859,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr TTF_RenderUNICODE_Shaded(IntPtr font, [In, MarshalAs(UnmanagedType.LPWStr)] string text, SdlColor fg, SdlColor bg);
 
         /// <summary>
-        /// Ttf the render unicode shaded using the specified font
+        ///     Ttf the render unicode shaded using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -876,9 +879,9 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// <returns>The int ptr</returns>
         [DllImport(SdlTtf.NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr TTF_RenderText_Shaded_Wrapped(IntPtr font, [In, MarshalAs(UnmanagedType.LPStr)] string text, SdlColor fg, SdlColor bg, uint wrapLength);
-        
+
         /// <summary>
-        /// Ttf the render text shaded wrapped using the specified font
+        ///     Ttf the render text shaded wrapped using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -887,7 +890,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The int ptr</returns>
         public static IntPtr TtfRenderTextShadedWrapped(IntPtr font, [In, MarshalAs(UnmanagedType.LPStr)] string text, SdlColor fg, SdlColor bg, uint wrapLength) => TTF_RenderText_Shaded_Wrapped(font, text, fg, bg, wrapLength);
-        
+
         /// <summary>
         ///     Internals the ttf render utf 8 shaded wrapped using the specified font
         /// </summary>
@@ -901,7 +904,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr INTERNAL_TTF_RenderUTF8_Shaded_Wrapped(IntPtr font, byte[] text, SdlColor fg, SdlColor bg, uint wrapLength);
 
         /// <summary>
-        /// Internals the ttf render utf 8 shaded wrapped using the specified font
+        ///     Internals the ttf render utf 8 shaded wrapped using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -924,7 +927,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr TTF_RenderUNICODE_Shaded_Wrapped(IntPtr font, [In, MarshalAs(UnmanagedType.LPWStr)] string text, SdlColor fg, SdlColor bg, uint wrapLength);
 
         /// <summary>
-        /// Ttf the render unicode shaded wrapped using the specified font
+        ///     Ttf the render unicode shaded wrapped using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -946,7 +949,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr TTF_RenderGlyph_Shaded(IntPtr font, ushort ch, SdlColor fg, SdlColor bg);
 
         /// <summary>
-        /// Ttf the render glyph shaded using the specified font
+        ///     Ttf the render glyph shaded using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="ch">The ch</param>
@@ -965,9 +968,9 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// <returns>The int ptr</returns>
         [DllImport(SdlTtf.NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr TTF_RenderGlyph32_Shaded(IntPtr font, uint ch, SdlColor fg, SdlColor bg);
-        
+
         /// <summary>
-        /// Ttf the render glyph 32 shaded using the specified font
+        ///     Ttf the render glyph 32 shaded using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="ch">The ch</param>
@@ -987,7 +990,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr TTF_RenderText_Blended(IntPtr font, [In, MarshalAs(UnmanagedType.LPStr)] string text, SdlColor fg);
 
         /// <summary>
-        /// Ttf the render text blended using the specified font
+        ///     Ttf the render text blended using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -1006,7 +1009,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr INTERNAL_TTF_RenderUTF8_Blended(IntPtr font, byte[] text, SdlColor fg);
 
         /// <summary>
-        /// Internals the ttf render utf 8 blended using the specified font
+        ///     Internals the ttf render utf 8 blended using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -1025,7 +1028,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr TTF_RenderUNICODE_Blended(IntPtr font, [In, MarshalAs(UnmanagedType.LPWStr)] string text, SdlColor fg);
 
         /// <summary>
-        /// Ttf the render unicode blended using the specified font
+        ///     Ttf the render unicode blended using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -1045,7 +1048,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr TTF_RenderText_Blended_Wrapped(IntPtr font, [In, MarshalAs(UnmanagedType.LPStr)] string text, SdlColor fg, uint wrapped);
 
         /// <summary>
-        /// Ttf the render text blended wrapped using the specified font
+        ///     Ttf the render text blended wrapped using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -1066,7 +1069,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr INTERNAL_TTF_RenderUTF8_Blended_Wrapped(IntPtr font, byte[] text, SdlColor fg, uint wrapped);
 
         /// <summary>
-        /// Internals the ttf render utf 8 blended wrapped using the specified font
+        ///     Internals the ttf render utf 8 blended wrapped using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -1087,7 +1090,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr TTF_RenderUNICODE_Blended_Wrapped(IntPtr font, [In, MarshalAs(UnmanagedType.LPWStr)] string text, SdlColor fg, uint wrapped);
 
         /// <summary>
-        /// Ttf the render unicode blended wrapped using the specified font
+        ///     Ttf the render unicode blended wrapped using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
@@ -1107,7 +1110,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr TTF_RenderGlyph_Blended(IntPtr font, ushort ch, SdlColor fg);
 
         /// <summary>
-        /// Ttf the render glyph blended using the specified font
+        ///     Ttf the render glyph blended using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="ch">The ch</param>
@@ -1126,7 +1129,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern IntPtr TTF_RenderGlyph32_Blended(IntPtr font, uint ch, SdlColor fg);
 
         /// <summary>
-        /// Ttf the render glyph 32 blended using the specified font
+        ///     Ttf the render glyph 32 blended using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="ch">The ch</param>
@@ -1143,7 +1146,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_SetDirection(int direction);
 
         /// <summary>
-        /// Ttf the set direction using the specified direction
+        ///     Ttf the set direction using the specified direction
         /// </summary>
         /// <param name="direction">The direction</param>
         /// <returns>The int</returns>
@@ -1158,7 +1161,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_SetScript(int script);
 
         /// <summary>
-        /// Ttf the set script using the specified script
+        ///     Ttf the set script using the specified script
         /// </summary>
         /// <param name="script">The script</param>
         /// <returns>The int</returns>
@@ -1172,7 +1175,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern void TTF_CloseFont(IntPtr font);
 
         /// <summary>
-        /// Ttf the close font using the specified font
+        ///     Ttf the close font using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         public static void TtfCloseFont(IntPtr font) => TTF_CloseFont(font);
@@ -1184,7 +1187,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern void TTF_Quit();
 
         /// <summary>
-        /// Ttf the quit
+        ///     Ttf the quit
         /// </summary>
         public static void TtfQuit() => TTF_Quit();
 
@@ -1196,7 +1199,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_WasInit();
 
         /// <summary>
-        /// Ttf the was init
+        ///     Ttf the was init
         /// </summary>
         /// <returns>The int</returns>
         public static int TtfWasInit() => TTF_WasInit();

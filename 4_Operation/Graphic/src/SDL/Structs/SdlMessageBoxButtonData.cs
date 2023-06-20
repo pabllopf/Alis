@@ -51,7 +51,6 @@ namespace Alis.Core.Graphic.SDL.Structs
         /// <summary>
         ///     The text
         /// </summary>
-        public readonly string text; 
-        
+        public readonly string text;
     }
 }
