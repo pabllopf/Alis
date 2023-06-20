@@ -360,7 +360,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>The axis in local coordinates relative to BodyA</summary>
-        public Vector2F LocalXAxis { get; private set; }
+        public Vector2F LocalXAxis { get; }
 
         /// <summary>The desired motor speed in radians per second.</summary>
         public float MotorSpeed

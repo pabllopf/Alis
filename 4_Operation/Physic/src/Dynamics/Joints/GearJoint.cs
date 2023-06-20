@@ -218,7 +218,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
 
             float coordinateA, coordinateB;
-            
+
             bodyC = this.jointA.BodyA;
             BodyA = this.jointA.BodyB;
 
@@ -309,7 +309,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             typeB = jointB.JointType;
 
             float coordinateA, coordinateB;
-            
+
             bodyC = JointA.BodyA;
             BodyA = JointA.BodyB;
 
@@ -680,7 +680,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.Positions[indexC].A = aC;
             data.Positions[indexD].C = cD;
             data.Positions[indexD].A = aD;
-            
+
             return linearError < Settings.LinearSlop;
         }
     }

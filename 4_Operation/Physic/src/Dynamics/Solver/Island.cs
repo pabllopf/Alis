@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     Gets or sets the value of the step
         /// </summary>
-        private TimeStep TimeStepSolveToi { get; set; } = new TimeStep();
+        private TimeStep TimeStepSolveToi { get; } = new TimeStep();
 
         /// <summary>
         ///     The angular sleep tolerance

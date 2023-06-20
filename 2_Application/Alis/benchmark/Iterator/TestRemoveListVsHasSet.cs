@@ -109,7 +109,7 @@ namespace Alis.Benchmark.Iterator
             /// <summary>
             ///     Gets or sets the value of the bodies
             /// </summary>
-            public List<Body> Bodies { get; set; }
+            public List<Body> Bodies { get; }
 
             /// <summary>
             ///     Removes the body using the specified body

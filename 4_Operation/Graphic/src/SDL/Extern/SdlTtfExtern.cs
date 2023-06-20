@@ -72,7 +72,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         );
 
         /// <summary>
-        /// Internal ttf the open font using the specified file
+        ///     Internal ttf the open font using the specified file
         /// </summary>
         /// <param name="file">The file</param>
         /// <param name="ptSize">The pt size</param>
@@ -856,7 +856,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int SDL_GetFontKerningSize(IntPtr font, int prevIndex, int index);
 
         /// <summary>
-        /// Sdl the get font kerning size using the specified font
+        ///     Sdl the get font kerning size using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="prevIndex">The prev index</param>
@@ -875,14 +875,14 @@ namespace Alis.Core.Graphic.SDL.Extern
         private static extern int TTF_GetFontKerningSizeGlyphs(IntPtr font, ushort previousCh, ushort ch);
 
         /// <summary>
-        /// Ttf the get font kerning size glyphs using the specified font
+        ///     Ttf the get font kerning size glyphs using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="previousCh">The previous ch</param>
         /// <param name="ch">The ch</param>
         /// <returns>The int</returns>
         public static int TtfGetFontKerningSizeGlyphs(IntPtr font, ushort previousCh, ushort ch) => TTF_GetFontKerningSizeGlyphs(font, previousCh, ch);
-        
+
         /// <summary>
         ///     Ttf the get font kerning size glyphs 32 using the specified font
         /// </summary>
@@ -892,9 +892,9 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// <returns>The int</returns>
         [DllImport(SdlTtf.NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         private static extern int TTF_GetFontKerningSizeGlyphs32(IntPtr font, ushort previousCh, ushort ch);
-        
+
         /// <summary>
-        /// Ttf the get font kerning size glyphs 32 using the specified font
+        ///     Ttf the get font kerning size glyphs 32 using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="previousCh">The previous ch</param>

@@ -92,7 +92,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Gets or sets the value of the step
         /// </summary>
-        private TimeStep TimeStepGlobal { get; set; } = new TimeStep();
+        private TimeStep TimeStepGlobal { get; } = new TimeStep();
 
         /// <summary>
         ///     Adds the body using the specified body

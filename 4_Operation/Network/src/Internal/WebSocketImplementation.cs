@@ -621,19 +621,19 @@ namespace Alis.Core.Network.Internal
             // NET45 does not have a TryGetBuffer function on Stream
             if (_tryGetBufferFailureLogged)
             {
-                return new ArraySegment<byte>(stream.ToArray(), 0, (int)stream.Position);
+                return new ArraySegment<byte>(stream.ToArray(), 0, (int) stream.Position);
             }
 
             // note that a MemoryStream will throw an UnuthorizedAccessException if the internal buffer is not public. Set publiclyVisible = true
             try
             {
-                return new ArraySegment<byte>(stream.GetBuffer(), 0, (int)stream.Position);
+                return new ArraySegment<byte>(stream.GetBuffer(), 0, (int) stream.Position);
             }
             catch (UnauthorizedAccessException)
             {
                 Events.Log.TryGetBufferNotSupported(_guid, stream?.GetType()?.ToString());
                 _tryGetBufferFailureLogged = true;
-                return new ArraySegment<byte>(stream.ToArray(), 0, (int)stream.Position);
+                return new ArraySegment<byte>(stream.ToArray(), 0, (int) stream.Position);
             }
 #else
             // Avoid calling ToArray on the MemoryStream because it allocates a new byte array on tha heap
