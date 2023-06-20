@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImFontAtlasFlags.cs
+//  File:ImGuiSelectableFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,29 +32,39 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im font atlas flags enum
+    ///     The im gui selectable flags enum
     /// </summary>
     [Flags]
-    public enum ImFontAtlasFlags
+    public enum ImGuiSelectableFlag
     {
         /// <summary>
-        ///     The none im font atlas flags
+        ///     The none im gui selectable flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The no power of two height im font atlas flags
+        ///     The dont close popups im gui selectable flags
         /// </summary>
-        NoPowerOfTwoHeight = 1,
+        DontClosePopups = 1,
 
         /// <summary>
-        ///     The no mouse cursors im font atlas flags
+        ///     The span all columns im gui selectable flags
         /// </summary>
-        NoMouseCursors = 2,
+        SpanAllColumns = 2,
 
         /// <summary>
-        ///     The no baked lines im font atlas flags
+        ///     The allow double click im gui selectable flags
         /// </summary>
-        NoBakedLines = 4
+        AllowDoubleClick = 4,
+
+        /// <summary>
+        ///     The disabled im gui selectable flags
+        /// </summary>
+        Disabled = 8,
+
+        /// <summary>
+        ///     The allow item overlap im gui selectable flags
+        /// </summary>
+        AllowItemOverlap = 16
     }
 }

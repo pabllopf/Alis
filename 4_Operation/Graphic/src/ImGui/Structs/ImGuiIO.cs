@@ -41,12 +41,12 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     The config flags
         /// </summary>
-        public ImGuiConfigFlags ConfigFlags;
+        public ImGuiConfigFlag ConfigFlag;
 
         /// <summary>
         ///     The backend flags
         /// </summary>
-        public ImGuiBackendFlags BackendFlags;
+        public ImGuiBackendFlag BackendFlag;
 
         /// <summary>
         ///     The display size

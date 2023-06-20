@@ -55,7 +55,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     The flags
         /// </summary>
-        public ImDrawListFlags Flags;
+        public ImDrawListFlag Flag;
 
         /// <summary>
         ///     The vtx current idx

@@ -79,12 +79,12 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     Gets the value of the config flags
         /// </summary>
-        public ref ImGuiConfigFlags ConfigFlags => ref Unsafe.AsRef<ImGuiConfigFlags>(&NativePtr->ConfigFlags);
+        public ref ImGuiConfigFlag ConfigFlag => ref Unsafe.AsRef<ImGuiConfigFlag>(&NativePtr->ConfigFlag);
 
         /// <summary>
         ///     Gets the value of the backend flags
         /// </summary>
-        public ref ImGuiBackendFlags BackendFlags => ref Unsafe.AsRef<ImGuiBackendFlags>(&NativePtr->BackendFlags);
+        public ref ImGuiBackendFlag BackendFlag => ref Unsafe.AsRef<ImGuiBackendFlag>(&NativePtr->BackendFlag);
 
         /// <summary>
         ///     Gets the value of the display size

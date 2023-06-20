@@ -9,9 +9,9 @@
                 The engine class
             </summary>
         </member>
-        <member name="F:Alis.App.Engine.Engine._renderer">
+        <member name="F:Alis.App.Engine.Engine._glContext">
             <summary>
-                The renderer
+                The gl context
             </summary>
         </member>
         <member name="F:Alis.App.Engine.Engine._quit">
@@ -19,14 +19,14 @@
                 The quit
             </summary>
         </member>
+        <member name="F:Alis.App.Engine.Engine._renderer">
+            <summary>
+                The renderer
+            </summary>
+        </member>
         <member name="F:Alis.App.Engine.Engine._window">
             <summary>
                 The window
-            </summary>
-        </member>
-        <member name="F:Alis.App.Engine.Engine._glContext">
-            <summary>
-                The gl context
             </summary>
         </member>
         <member name="M:Alis.App.Engine.Engine.#ctor(System.String[])">

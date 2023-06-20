@@ -82,7 +82,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     Gets the value of the flags
         /// </summary>
-        public ref ImGuiViewportFlags Flags => ref Unsafe.AsRef<ImGuiViewportFlags>(&NativePtr->Flags);
+        public ref ImGuiViewportFlag Flag => ref Unsafe.AsRef<ImGuiViewportFlag>(&NativePtr->Flag);
 
         /// <summary>
         ///     Gets the value of the pos

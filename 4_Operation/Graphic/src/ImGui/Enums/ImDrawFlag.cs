@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiHoveredFlags.cs
+//  File:ImDrawFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,89 +32,79 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui hovered flags enum
+    ///     The im draw flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiHoveredFlags
+    public enum ImDrawFlag
     {
         /// <summary>
-        ///     The none im gui hovered flags
+        ///     The none im draw flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The child windows im gui hovered flags
+        ///     The closed im draw flags
         /// </summary>
-        ChildWindows = 1,
+        Closed = 1,
 
         /// <summary>
-        ///     The root window im gui hovered flags
+        ///     The round corners top left im draw flags
         /// </summary>
-        RootWindow = 2,
+        RoundCornersTopLeft = 16,
 
         /// <summary>
-        ///     The any window im gui hovered flags
+        ///     The round corners top right im draw flags
         /// </summary>
-        AnyWindow = 4,
+        RoundCornersTopRight = 32,
 
         /// <summary>
-        ///     The no popup hierarchy im gui hovered flags
+        ///     The round corners bottom left im draw flags
         /// </summary>
-        NoPopupHierarchy = 8,
+        RoundCornersBottomLeft = 64,
 
         /// <summary>
-        ///     The dock hierarchy im gui hovered flags
+        ///     The round corners bottom right im draw flags
         /// </summary>
-        DockHierarchy = 16,
+        RoundCornersBottomRight = 128,
 
         /// <summary>
-        ///     The allow when blocked by popup im gui hovered flags
+        ///     The round corners none im draw flags
         /// </summary>
-        AllowWhenBlockedByPopup = 32,
+        RoundCornersNone = 256,
 
         /// <summary>
-        ///     The allow when blocked by active item im gui hovered flags
+        ///     The round corners top im draw flags
         /// </summary>
-        AllowWhenBlockedByActiveItem = 128,
+        RoundCornersTop = 48,
 
         /// <summary>
-        ///     The allow when overlapped im gui hovered flags
+        ///     The round corners bottom im draw flags
         /// </summary>
-        AllowWhenOverlapped = 256,
+        RoundCornersBottom = 192,
 
         /// <summary>
-        ///     The allow when disabled im gui hovered flags
+        ///     The round corners left im draw flags
         /// </summary>
-        AllowWhenDisabled = 512,
+        RoundCornersLeft = 80,
 
         /// <summary>
-        ///     The no nav override im gui hovered flags
+        ///     The round corners right im draw flags
         /// </summary>
-        NoNavOverride = 1024,
+        RoundCornersRight = 160,
 
         /// <summary>
-        ///     The rect only im gui hovered flags
+        ///     The round corners all im draw flags
         /// </summary>
-        RectOnly = 416,
+        RoundCornersAll = 240,
 
         /// <summary>
-        ///     The root and child windows im gui hovered flags
+        ///     The round corners default im draw flags
         /// </summary>
-        RootAndChildWindows = 3,
+        RoundCornersDefault = 240,
 
         /// <summary>
-        ///     The delay normal im gui hovered flags
+        ///     The round corners mask im draw flags
         /// </summary>
-        DelayNormal = 2048,
-
-        /// <summary>
-        ///     The delay short im gui hovered flags
-        /// </summary>
-        DelayShort = 4096,
-
-        /// <summary>
-        ///     The no shared delay im gui hovered flags
-        /// </summary>
-        NoSharedDelay = 8192
+        RoundCornersMask = 496
     }
 }

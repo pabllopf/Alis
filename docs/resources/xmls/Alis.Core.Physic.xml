@@ -858,10 +858,18 @@
                 The contact manager class
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactList">
+            <summary>
+                The contact list
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactPool">
             <summary>
                 The contact
             </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.OnBroadphaseCollision">
+            <summary>Fires when the broadphase detects that two Fixtures are close to each other.</summary>
         </member>
         <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.BeginContact">
             <summary>Fires when a contact is created</summary>
@@ -874,11 +882,6 @@
         <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactFilter">
             <summary>The filter used by the contact manager.</summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactList">
-            <summary>
-                The contact list
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.EndContact">
             <summary>Fires when a contact is deleted</summary>
         </member>
@@ -886,9 +889,6 @@
             <summary>
                 The last min alpha
             </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.OnBroadphaseCollision">
-            <summary>Fires when the broadphase detects that two Fixtures are close to each other.</summary>
         </member>
         <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.PostSolve">
             <summary>Fires after the solver has run</summary>
@@ -6699,6 +6699,11 @@
                 The contact position constraint class
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.LocalPoints">
+            <summary>
+                The max manifold points
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.IndexA">
             <summary>
                 The index
@@ -6747,11 +6752,6 @@
         <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.LocalPoint">
             <summary>
                 The local point
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.LocalPoints">
-            <summary>
-                The max manifold points
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint.PointCount">
@@ -6861,6 +6861,11 @@
                 The contact velocity constraint class
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.Points">
+            <summary>
+                The max manifold points
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.ContactIndex">
             <summary>
                 The contact index
@@ -6919,11 +6924,6 @@
         <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.PointCount">
             <summary>
                 The point count
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.Points">
-            <summary>
-                The max manifold points
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint.Restitution">
@@ -7443,14 +7443,14 @@
         <member name="F:Alis.Core.Physic.Extensions.Controllers.Wind.AbstractForceController.DecayCurve">
             <summary>Curve to be used for Decay in Curve mode</summary>
         </member>
-        <member name="F:Alis.Core.Physic.Extensions.Controllers.Wind.AbstractForceController.ForceType">
-            <summary>The Forcetype of the instance</summary>
-        </member>
         <member name="F:Alis.Core.Physic.Extensions.Controllers.Wind.AbstractForceController.StrengthCurve">
             <summary>
                 Curve used by Curve Mode as an animated multiplier for the force strength. Only positions between 0 and 1 are
                 considered as that range is stretched to have ImpulseLength.
             </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Extensions.Controllers.Wind.AbstractForceController.ForceType">
+            <summary>The Forcetype of the instance</summary>
         </member>
         <member name="M:Alis.Core.Physic.Extensions.Controllers.Wind.AbstractForceController.#ctor">
             <summary>
@@ -10343,14 +10343,19 @@
                 The advancing front node class
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.AdvancingFrontNode.Next">
-            <summary>
-                The next
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.AdvancingFrontNode.Point">
             <summary>
                 The point
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.AdvancingFrontNode.Value">
+            <summary>
+                The value
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.AdvancingFrontNode.Next">
+            <summary>
+                The next
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.AdvancingFrontNode.Prev">
@@ -10361,11 +10366,6 @@
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.AdvancingFrontNode.Triangle">
             <summary>
                 The triangle
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.AdvancingFrontNode.Value">
-            <summary>
-                The value
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.AdvancingFrontNode.#ctor(Alis.Core.Physic.Tools.Triangulation.Delaunay.TriangulationPoint)">
@@ -10667,24 +10667,24 @@
         <member name="T:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.DtSweepContext">
             @author Thomas Åhlén, thahlen@gmail.com
         </member>
-        <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.DtSweepContext.comparator">
-            <summary>
-                The dt sweep point comparator
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.DtSweepContext.AFront">
-            <summary>
-                The front
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.DtSweepContext.Basin">
             <summary>
                 The dt sweep basin
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.DtSweepContext.comparator">
+            <summary>
+                The dt sweep point comparator
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.DtSweepContext.EdgeEvent">
             <summary>
                 The dt sweep edge event
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.DtSweepContext.AFront">
+            <summary>
+                The front
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.DtSweepContext.#ctor">
@@ -10904,6 +10904,11 @@
             </summary>
             <seealso cref="T:Alis.Core.Physic.Tools.Triangulation.Delaunay.ITriangulatable" />
         </member>
+        <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Polygon.Polygon.PointsPrivate">
+            <summary>
+                The triangulation point
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Polygon.Polygon.HolesPrivate">
             <summary>
                 The holes
@@ -10912,11 +10917,6 @@
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Polygon.Polygon.LastPrivate">
             <summary>
                 The last
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Polygon.Polygon.PointsPrivate">
-            <summary>
-                The triangulation point
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Polygon.Polygon.SteinerPointsPrivate">
@@ -11566,19 +11566,9 @@
                 The edge class
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Edge.Above">
-            <summary>
-                The above
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Edge.B">
             <summary>
                 The
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Edge.Below">
-            <summary>
-                The below
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Edge.MPoints">
@@ -11599,6 +11589,16 @@
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Edge.Slope">
             <summary>
                 The slope
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Edge.Above">
+            <summary>
+                The above
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Edge.Below">
+            <summary>
+                The below
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Tools.Triangulation.Seidel.Edge.#ctor(Alis.Core.Physic.Tools.Triangulation.Seidel.Point,Alis.Core.Physic.Tools.Triangulation.Seidel.Point)">
@@ -11643,6 +11643,11 @@
                 The mono poly
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.MonotoneMountain.Triangles">
+            <summary>
+                The triangles
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.MonotoneMountain.head">
             <summary>
                 The head
@@ -11661,11 +11666,6 @@
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.MonotoneMountain.tail">
             <summary>
                 The tail
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.MonotoneMountain.Triangles">
-            <summary>
-                The triangles
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Tools.Triangulation.Seidel.MonotoneMountain.#ctor">
@@ -11737,14 +11737,14 @@
                 The node class
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Node.LeftChild">
-            <summary>
-                The left child
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Node.ParentList">
             <summary>
                 The parent list
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Node.LeftChild">
+            <summary>
+                The left child
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Node.RightChild">
@@ -11777,16 +11777,6 @@
                 The point class
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Point.Next">
-            <summary>
-                The prev
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Point.Prev">
-            <summary>
-                The prev
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Point.X">
             <summary>
                 The
@@ -11795,6 +11785,16 @@
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Point.Y">
             <summary>
                 The
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Point.Next">
+            <summary>
+                The prev
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Point.Prev">
+            <summary>
+                The prev
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Tools.Triangulation.Seidel.Point.#ctor(System.Single,System.Single)">
@@ -11974,14 +11974,19 @@
                 The bottom
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Trapezoid.Inside">
-            <summary>
-                The inside
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Trapezoid.LeftPoint">
             <summary>
                 The left point
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Trapezoid.Top">
+            <summary>
+                The top
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Trapezoid.Inside">
+            <summary>
+                The inside
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Trapezoid.LowerLeft">
@@ -12002,11 +12007,6 @@
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Trapezoid.Sink">
             <summary>
                 The sink
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Trapezoid.Top">
-            <summary>
-                The top
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Trapezoid.UpperLeft">
@@ -12087,6 +12087,11 @@
                 The trapezoidal map class
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.TrapezoidalMap.Map">
+            <summary>
+                The map
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.TrapezoidalMap.margin">
             <summary>
                 The margin
@@ -12100,11 +12105,6 @@
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.TrapezoidalMap.cross">
             <summary>
                 The cross
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.TrapezoidalMap.Map">
-            <summary>
-                The map
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Tools.Triangulation.Seidel.TrapezoidalMap.#ctor">
@@ -12186,11 +12186,6 @@
                 The trapezoidal map
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Triangulator.xMonoPoly">
-            <summary>
-                The mono poly
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Triangulator.Trapezoids">
             <summary>
                 The trapezoids
@@ -12199,6 +12194,11 @@
         <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Triangulator.Triangles">
             <summary>
                 The triangles
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Tools.Triangulation.Seidel.Triangulator.xMonoPoly">
+            <summary>
+                The mono poly
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Tools.Triangulation.Seidel.Triangulator.#ctor(System.Collections.Generic.List{Alis.Core.Physic.Tools.Triangulation.Seidel.Point},System.Single)">

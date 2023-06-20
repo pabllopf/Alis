@@ -59,46 +59,46 @@
         </member>
         <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.ExtractEmbeddedDlls(System.String,System.Collections.Generic.Dictionary{System.ValueTuple{System.Runtime.InteropServices.OSPlatform,System.Runtime.InteropServices.Architecture},System.Byte[]})">
             <summary>
-            Extracts the embedded dlls using the specified dll name
+                Extracts the embedded dlls using the specified dll name
             </summary>
             <param name="dllName">The dll name</param>
             <param name="dllBytes">The dll bytes</param>
         </member>
         <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.GetDllExtension">
             <summary>
-            Gets the dll extension
+                Gets the dll extension
             </summary>
             <exception cref="T:System.PlatformNotSupportedException">Unsupported platform.</exception>
             <returns>The string</returns>
         </member>
         <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.GetCurrentPlatform">
             <summary>
-            Gets the platform
+                Gets the platform
             </summary>
             <exception cref="T:System.PlatformNotSupportedException">Unsupported platform.</exception>
             <returns>The os platform</returns>
         </member>
         <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.IsRunningOniOS">
             <summary>
-            Describes whether is running oni os
+                Describes whether is running oni os
             </summary>
             <returns>The bool</returns>
         </member>
         <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.IsRunningOnAndroid">
             <summary>
-            Describes whether is running on android
+                Describes whether is running on android
             </summary>
             <returns>The bool</returns>
         </member>
         <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.IsiOsSpecificConditionMet">
             <summary>
-            Describes whether isi os specific condition met
+                Describes whether isi os specific condition met
             </summary>
             <returns>The bool</returns>
         </member>
         <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.IsAndroidSpecificConditionMet">
             <summary>
-            Describes whether is android specific condition met
+                Describes whether is android specific condition met
             </summary>
             <returns>The bool</returns>
         </member>

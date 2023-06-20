@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiDragDropFlags.cs
+//  File:ImGuiViewportFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,64 +32,84 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui drag drop flags enum
+    ///     The im gui viewport flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiDragDropFlags
+    public enum ImGuiViewportFlag
     {
         /// <summary>
-        ///     The none im gui drag drop flags
+        ///     The none im gui viewport flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The source no preview tooltip im gui drag drop flags
+        ///     The is platform window im gui viewport flags
         /// </summary>
-        SourceNoPreviewTooltip = 1,
+        IsPlatformWindow = 1,
 
         /// <summary>
-        ///     The source no disable hover im gui drag drop flags
+        ///     The is platform monitor im gui viewport flags
         /// </summary>
-        SourceNoDisableHover = 2,
+        IsPlatformMonitor = 2,
 
         /// <summary>
-        ///     The source no hold to open others im gui drag drop flags
+        ///     The owned by app im gui viewport flags
         /// </summary>
-        SourceNoHoldToOpenOthers = 4,
+        OwnedByApp = 4,
 
         /// <summary>
-        ///     The source allow null id im gui drag drop flags
+        ///     The no decoration im gui viewport flags
         /// </summary>
-        SourceAllowNullId = 8,
+        NoDecoration = 8,
 
         /// <summary>
-        ///     The source extern im gui drag drop flags
+        ///     The no task bar icon im gui viewport flags
         /// </summary>
-        SourceExtern = 16,
+        NoTaskBarIcon = 16,
 
         /// <summary>
-        ///     The source auto expire payload im gui drag drop flags
+        ///     The no focus on appearing im gui viewport flags
         /// </summary>
-        SourceAutoExpirePayload = 32,
+        NoFocusOnAppearing = 32,
 
         /// <summary>
-        ///     The accept before delivery im gui drag drop flags
+        ///     The no focus on click im gui viewport flags
         /// </summary>
-        AcceptBeforeDelivery = 1024,
+        NoFocusOnClick = 64,
 
         /// <summary>
-        ///     The accept no draw default rect im gui drag drop flags
+        ///     The no inputs im gui viewport flags
         /// </summary>
-        AcceptNoDrawDefaultRect = 2048,
+        NoInputs = 128,
 
         /// <summary>
-        ///     The accept no preview tooltip im gui drag drop flags
+        ///     The no renderer clear im gui viewport flags
         /// </summary>
-        AcceptNoPreviewTooltip = 4096,
+        NoRendererClear = 256,
 
         /// <summary>
-        ///     The accept peek only im gui drag drop flags
+        ///     The no auto merge im gui viewport flags
         /// </summary>
-        AcceptPeekOnly = 3072
+        NoAutoMerge = 512,
+
+        /// <summary>
+        ///     The top most im gui viewport flags
+        /// </summary>
+        TopMost = 1024,
+
+        /// <summary>
+        ///     The can host other windows im gui viewport flags
+        /// </summary>
+        CanHostOtherWindows = 2048,
+
+        /// <summary>
+        ///     The is minimized im gui viewport flags
+        /// </summary>
+        IsMinimized = 4096,
+
+        /// <summary>
+        ///     The is focused im gui viewport flags
+        /// </summary>
+        IsFocused = 8192
     }
 }

@@ -45,12 +45,12 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     The event flag
         /// </summary>
-        public ImGuiInputTextFlags EventFlag;
+        public ImGuiInputTextFlag EventFlag;
 
         /// <summary>
         ///     The flags
         /// </summary>
-        public ImGuiInputTextFlags Flags;
+        public ImGuiInputTextFlag Flag;
 
         /// <summary>
         ///     The user data

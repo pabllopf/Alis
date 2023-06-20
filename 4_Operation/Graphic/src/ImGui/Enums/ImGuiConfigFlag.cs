@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiDockNodeFlags.cs
+//  File:ImGuiConfigFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,44 +32,74 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui dock node flags enum
+    ///     The im gui config flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiDockNodeFlags
+    public enum ImGuiConfigFlag
     {
         /// <summary>
-        ///     The none im gui dock node flags
+        ///     The none im gui config flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The keep alive only im gui dock node flags
+        ///     The nav enable keyboard im gui config flags
         /// </summary>
-        KeepAliveOnly = 1,
+        NavEnableKeyboard = 1,
 
         /// <summary>
-        ///     The no docking in central node im gui dock node flags
+        ///     The nav enable gamepad im gui config flags
         /// </summary>
-        NoDockingInCentralNode = 4,
+        NavEnableGamepad = 2,
 
         /// <summary>
-        ///     The passthru central node im gui dock node flags
+        ///     The nav enable set mouse pos im gui config flags
         /// </summary>
-        PassthruCentralNode = 8,
+        NavEnableSetMousePos = 4,
 
         /// <summary>
-        ///     The no split im gui dock node flags
+        ///     The nav no capture keyboard im gui config flags
         /// </summary>
-        NoSplit = 16,
+        NavNoCaptureKeyboard = 8,
 
         /// <summary>
-        ///     The no resize im gui dock node flags
+        ///     The no mouse im gui config flags
         /// </summary>
-        NoResize = 32,
+        NoMouse = 16,
 
         /// <summary>
-        ///     The auto hide tab bar im gui dock node flags
+        ///     The no mouse cursor change im gui config flags
         /// </summary>
-        AutoHideTabBar = 64
+        NoMouseCursorChange = 32,
+
+        /// <summary>
+        ///     The docking enable im gui config flags
+        /// </summary>
+        DockingEnable = 64,
+
+        /// <summary>
+        ///     The viewports enable im gui config flags
+        /// </summary>
+        ViewportsEnable = 1024,
+
+        /// <summary>
+        ///     The dpi enable scale viewports im gui config flags
+        /// </summary>
+        DpiEnableScaleViewports = 16384,
+
+        /// <summary>
+        ///     The dpi enable scale fonts im gui config flags
+        /// </summary>
+        DpiEnableScaleFonts = 32768,
+
+        /// <summary>
+        ///     The is srgb im gui config flags
+        /// </summary>
+        IsSrgb = 1048576,
+
+        /// <summary>
+        ///     The is touch screen im gui config flags
+        /// </summary>
+        IsTouchScreen = 2097152
     }
 }

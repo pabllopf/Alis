@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.ImGui.Enums
     ///     The im draw list flags enum
     /// </summary>
     [Flags]
-    public enum ImDrawListFlags
+    public enum ImDrawListFlag
     {
         /// <summary>
         ///     The none im draw list flags

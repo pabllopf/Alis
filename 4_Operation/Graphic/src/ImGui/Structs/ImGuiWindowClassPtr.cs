@@ -86,22 +86,22 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     Gets the value of the viewport flags override set
         /// </summary>
-        public ref ImGuiViewportFlags ViewportFlagsOverrideSet => ref Unsafe.AsRef<ImGuiViewportFlags>(&NativePtr->ViewportFlagsOverrideSet);
+        public ref ImGuiViewportFlag ViewportFlagOverrideSet => ref Unsafe.AsRef<ImGuiViewportFlag>(&NativePtr->ViewportFlagOverrideSet);
 
         /// <summary>
         ///     Gets the value of the viewport flags override clear
         /// </summary>
-        public ref ImGuiViewportFlags ViewportFlagsOverrideClear => ref Unsafe.AsRef<ImGuiViewportFlags>(&NativePtr->ViewportFlagsOverrideClear);
+        public ref ImGuiViewportFlag ViewportFlagOverrideClear => ref Unsafe.AsRef<ImGuiViewportFlag>(&NativePtr->ViewportFlagOverrideClear);
 
         /// <summary>
         ///     Gets the value of the tab item flags override set
         /// </summary>
-        public ref ImGuiTabItemFlags TabItemFlagsOverrideSet => ref Unsafe.AsRef<ImGuiTabItemFlags>(&NativePtr->TabItemFlagsOverrideSet);
+        public ref ImGuiTabItemFlag TabItemFlagOverrideSet => ref Unsafe.AsRef<ImGuiTabItemFlag>(&NativePtr->TabItemFlagOverrideSet);
 
         /// <summary>
         ///     Gets the value of the dock node flags override set
         /// </summary>
-        public ref ImGuiDockNodeFlags DockNodeFlagsOverrideSet => ref Unsafe.AsRef<ImGuiDockNodeFlags>(&NativePtr->DockNodeFlagsOverrideSet);
+        public ref ImGuiDockNodeFlag DockNodeFlagOverrideSet => ref Unsafe.AsRef<ImGuiDockNodeFlag>(&NativePtr->DockNodeFlagOverrideSet);
 
         /// <summary>
         ///     Gets the value of the docking always tab bar

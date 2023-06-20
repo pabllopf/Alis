@@ -44,10 +44,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         ///     Igs the accept drag drop payload using the specified type
         /// </summary>
         /// <param name="type">The type</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The im gui payload</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern ImGuiPayload* igAcceptDragDropPayload(byte* type, ImGuiDragDropFlags flags);
+        internal static extern ImGuiPayload* igAcceptDragDropPayload(byte* type, ImGuiDragDropFlag flag);
 
         /// <summary>
         ///     Ims the gui platform io set platform get window pos using the specified platform io
@@ -85,10 +85,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="pOpen">The open</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igBegin(byte* name, byte* pOpen, ImGuiWindowFlags flags);
+        internal static extern byte igBegin(byte* name, byte* pOpen, ImGuiWindowFlag flag);
 
         /// <summary>
         ///     Igs the begin child str using the specified str id
@@ -96,10 +96,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="strId">The str id</param>
         /// <param name="size">The size</param>
         /// <param name="border">The border</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igBeginChild_Str(byte* strId, Vector2F size, byte border, ImGuiWindowFlags flags);
+        internal static extern byte igBeginChild_Str(byte* strId, Vector2F size, byte border, ImGuiWindowFlag flag);
 
         /// <summary>
         ///     Igs the begin child id using the specified id
@@ -107,30 +107,30 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="id">The id</param>
         /// <param name="size">The size</param>
         /// <param name="border">The border</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igBeginChild_ID(uint id, Vector2F size, byte border, ImGuiWindowFlags flags);
+        internal static extern byte igBeginChild_ID(uint id, Vector2F size, byte border, ImGuiWindowFlag flag);
 
         /// <summary>
         ///     Igs the begin child frame using the specified id
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="size">The size</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igBeginChildFrame(uint id, Vector2F size, ImGuiWindowFlags flags);
+        internal static extern byte igBeginChildFrame(uint id, Vector2F size, ImGuiWindowFlag flag);
 
         /// <summary>
         ///     Igs the begin combo using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="previewValue">The preview value</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igBeginCombo(byte* label, byte* previewValue, ImGuiComboFlags flags);
+        internal static extern byte igBeginCombo(byte* label, byte* previewValue, ImGuiComboFlag flag);
 
         /// <summary>
         ///     Igs the begin disabled using the specified disabled
@@ -142,10 +142,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     Igs the begin drag drop source using the specified flags
         /// </summary>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igBeginDragDropSource(ImGuiDragDropFlags flags);
+        internal static extern byte igBeginDragDropSource(ImGuiDragDropFlag flag);
 
         /// <summary>
         ///     Igs the begin drag drop target
@@ -196,78 +196,78 @@ namespace Alis.Core.Graphic.ImGui.Structs
         ///     Igs the begin popup using the specified str id
         /// </summary>
         /// <param name="strId">The str id</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igBeginPopup(byte* strId, ImGuiWindowFlags flags);
+        internal static extern byte igBeginPopup(byte* strId, ImGuiWindowFlag flag);
 
         /// <summary>
         ///     Igs the begin popup context item using the specified str id
         /// </summary>
         /// <param name="strId">The str id</param>
-        /// <param name="popupFlags">The popup flags</param>
+        /// <param name="popupFlag">The popup flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igBeginPopupContextItem(byte* strId, ImGuiPopupFlags popupFlags);
+        internal static extern byte igBeginPopupContextItem(byte* strId, ImGuiPopupFlag popupFlag);
 
         /// <summary>
         ///     Igs the begin popup context void using the specified str id
         /// </summary>
         /// <param name="strId">The str id</param>
-        /// <param name="popupFlags">The popup flags</param>
+        /// <param name="popupFlag">The popup flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igBeginPopupContextVoid(byte* strId, ImGuiPopupFlags popupFlags);
+        internal static extern byte igBeginPopupContextVoid(byte* strId, ImGuiPopupFlag popupFlag);
 
         /// <summary>
         ///     Igs the begin popup context window using the specified str id
         /// </summary>
         /// <param name="strId">The str id</param>
-        /// <param name="popupFlags">The popup flags</param>
+        /// <param name="popupFlag">The popup flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igBeginPopupContextWindow(byte* strId, ImGuiPopupFlags popupFlags);
+        internal static extern byte igBeginPopupContextWindow(byte* strId, ImGuiPopupFlag popupFlag);
 
         /// <summary>
         ///     Igs the begin popup modal using the specified name
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="pOpen">The open</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igBeginPopupModal(byte* name, byte* pOpen, ImGuiWindowFlags flags);
+        internal static extern byte igBeginPopupModal(byte* name, byte* pOpen, ImGuiWindowFlag flag);
 
         /// <summary>
         ///     Igs the begin tab bar using the specified str id
         /// </summary>
         /// <param name="strId">The str id</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igBeginTabBar(byte* strId, ImGuiTabBarFlags flags);
+        internal static extern byte igBeginTabBar(byte* strId, ImGuiTabBarFlag flag);
 
         /// <summary>
         ///     Igs the begin tab item using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="pOpen">The open</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igBeginTabItem(byte* label, byte* pOpen, ImGuiTabItemFlags flags);
+        internal static extern byte igBeginTabItem(byte* label, byte* pOpen, ImGuiTabItemFlag flag);
 
         /// <summary>
         ///     Igs the begin table using the specified str id
         /// </summary>
         /// <param name="strId">The str id</param>
         /// <param name="column">The column</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <param name="outerSize">The outer size</param>
         /// <param name="innerWidth">The inner width</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igBeginTable(byte* strId, int column, ImGuiTableFlags flags, Vector2F outerSize, float innerWidth);
+        internal static extern byte igBeginTable(byte* strId, int column, ImGuiTableFlag flag, Vector2F outerSize, float innerWidth);
 
         /// <summary>
         ///     Igs the begin tooltip
@@ -355,31 +355,31 @@ namespace Alis.Core.Graphic.ImGui.Structs
         ///     Igs the collapsing header tree node flags using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igCollapsingHeader_TreeNodeFlags(byte* label, ImGuiTreeNodeFlags flags);
+        internal static extern byte igCollapsingHeader_TreeNodeFlags(byte* label, ImGuiTreeNodeFlag flag);
 
         /// <summary>
         ///     Igs the collapsing header bool ptr using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="pVisible">The visible</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igCollapsingHeader_BoolPtr(byte* label, byte* pVisible, ImGuiTreeNodeFlags flags);
+        internal static extern byte igCollapsingHeader_BoolPtr(byte* label, byte* pVisible, ImGuiTreeNodeFlag flag);
 
         /// <summary>
         ///     Igs the color button using the specified desc id
         /// </summary>
         /// <param name="descId">The desc id</param>
         /// <param name="col">The col</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igColorButton(byte* descId, Vector4F col, ImGuiColorEditFlags flags, Vector2F size);
+        internal static extern byte igColorButton(byte* descId, Vector4F col, ImGuiColorEditFlag flag, Vector2F size);
 
 
         /// <summary>
@@ -425,41 +425,41 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="col">The col</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igColorEdit3(byte* label, Vector3F* col, ImGuiColorEditFlags flags);
+        internal static extern byte igColorEdit3(byte* label, Vector3F* col, ImGuiColorEditFlag flag);
 
         /// <summary>
         ///     Igs the color edit 4 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="col">The col</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igColorEdit4(byte* label, Vector4F* col, ImGuiColorEditFlags flags);
+        internal static extern byte igColorEdit4(byte* label, Vector4F* col, ImGuiColorEditFlag flag);
 
         /// <summary>
         ///     Igs the color picker 3 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="col">The col</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igColorPicker3(byte* label, Vector3F* col, ImGuiColorEditFlags flags);
+        internal static extern byte igColorPicker3(byte* label, Vector3F* col, ImGuiColorEditFlag flag);
 
         /// <summary>
         ///     Igs the color picker 4 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="col">The col</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <param name="refCol">The ref col</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igColorPicker4(byte* label, Vector4F* col, ImGuiColorEditFlags flags, float* refCol);
+        internal static extern byte igColorPicker4(byte* label, Vector4F* col, ImGuiColorEditFlag flag, float* refCol);
 
         /// <summary>
         ///     Igs the columns using the specified count
@@ -540,21 +540,21 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="size">The size</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <param name="windowClass">The window class</param>
         /// <returns>The uint</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern uint igDockSpace(uint id, Vector2F size, ImGuiDockNodeFlags flags, ImGuiWindowClass* windowClass);
+        internal static extern uint igDockSpace(uint id, Vector2F size, ImGuiDockNodeFlag flag, ImGuiWindowClass* windowClass);
 
         /// <summary>
         ///     Igs the dock space over viewport using the specified viewport
         /// </summary>
         /// <param name="viewport">The viewport</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <param name="windowClass">The window class</param>
         /// <returns>The uint</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern uint igDockSpaceOverViewport(ImGuiViewport* viewport, ImGuiDockNodeFlags flags, ImGuiWindowClass* windowClass);
+        internal static extern uint igDockSpaceOverViewport(ImGuiViewport* viewport, ImGuiDockNodeFlag flag, ImGuiWindowClass* windowClass);
 
         /// <summary>
         ///     Igs the drag float using the specified label
@@ -565,10 +565,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igDragFloat(byte* label, float* v, float vSpeed, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igDragFloat(byte* label, float* v, float vSpeed, float vMin, float vMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the drag float 2 using the specified label
@@ -579,10 +579,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igDragFloat2(byte* label, Vector2F* v, float vSpeed, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igDragFloat2(byte* label, Vector2F* v, float vSpeed, float vMin, float vMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the drag float 3 using the specified label
@@ -593,10 +593,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igDragFloat3(byte* label, Vector3F* v, float vSpeed, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igDragFloat3(byte* label, Vector3F* v, float vSpeed, float vMin, float vMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the drag float 4 using the specified label
@@ -607,10 +607,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igDragFloat4(byte* label, Vector4F* v, float vSpeed, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igDragFloat4(byte* label, Vector4F* v, float vSpeed, float vMin, float vMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the drag float range 2 using the specified label
@@ -623,10 +623,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="formatMax">The format max</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igDragFloatRange2(byte* label, float* vCurrentMin, float* vCurrentMax, float vSpeed, float vMin, float vMax, byte* format, byte* formatMax, ImGuiSliderFlags flags);
+        internal static extern byte igDragFloatRange2(byte* label, float* vCurrentMin, float* vCurrentMax, float vSpeed, float vMin, float vMax, byte* format, byte* formatMax, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the drag int using the specified label
@@ -637,10 +637,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igDragInt(byte* label, int* v, float vSpeed, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igDragInt(byte* label, int* v, float vSpeed, int vMin, int vMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the drag int 2 using the specified label
@@ -651,10 +651,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igDragInt2(byte* label, int* v, float vSpeed, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igDragInt2(byte* label, int* v, float vSpeed, int vMin, int vMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the drag int 3 using the specified label
@@ -665,10 +665,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igDragInt3(byte* label, int* v, float vSpeed, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igDragInt3(byte* label, int* v, float vSpeed, int vMin, int vMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the drag int 4 using the specified label
@@ -679,10 +679,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igDragInt4(byte* label, int* v, float vSpeed, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igDragInt4(byte* label, int* v, float vSpeed, int vMin, int vMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the drag int range 2 using the specified label
@@ -695,10 +695,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="formatMax">The format max</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igDragIntRange2(byte* label, int* vCurrentMin, int* vCurrentMax, float vSpeed, int vMin, int vMax, byte* format, byte* formatMax, ImGuiSliderFlags flags);
+        internal static extern byte igDragIntRange2(byte* label, int* vCurrentMin, int* vCurrentMax, float vSpeed, int vMin, int vMax, byte* format, byte* formatMax, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the drag scalar using the specified label
@@ -710,10 +710,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="pMin">The min</param>
         /// <param name="pMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igDragScalar(byte* label, ImGuiDataType dataType, void* pData, float vSpeed, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igDragScalar(byte* label, ImGuiDataType dataType, void* pData, float vSpeed, void* pMin, void* pMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the drag scalar n using the specified label
@@ -726,10 +726,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="pMin">The min</param>
         /// <param name="pMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igDragScalarN(byte* label, ImGuiDataType dataType, void* pData, int components, float vSpeed, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igDragScalarN(byte* label, ImGuiDataType dataType, void* pData, int components, float vSpeed, void* pMin, void* pMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the dummy using the specified size
@@ -1424,10 +1424,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igInputDouble(byte* label, double* v, double step, double stepFast, byte* format, ImGuiInputTextFlags flags);
+        internal static extern byte igInputDouble(byte* label, double* v, double step, double stepFast, byte* format, ImGuiInputTextFlag flag);
 
         /// <summary>
         ///     Igs the input float using the specified label
@@ -1437,10 +1437,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igInputFloat(byte* label, float* v, float step, float stepFast, byte* format, ImGuiInputTextFlags flags);
+        internal static extern byte igInputFloat(byte* label, float* v, float step, float stepFast, byte* format, ImGuiInputTextFlag flag);
 
         /// <summary>
         ///     Igs the input float 2 using the specified label
@@ -1448,10 +1448,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igInputFloat2(byte* label, Vector2F* v, byte* format, ImGuiInputTextFlags flags);
+        internal static extern byte igInputFloat2(byte* label, Vector2F* v, byte* format, ImGuiInputTextFlag flag);
 
         /// <summary>
         ///     Igs the input float 3 using the specified label
@@ -1459,10 +1459,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igInputFloat3(byte* label, Vector3F* v, byte* format, ImGuiInputTextFlags flags);
+        internal static extern byte igInputFloat3(byte* label, Vector3F* v, byte* format, ImGuiInputTextFlag flag);
 
         /// <summary>
         ///     Igs the input float 4 using the specified label
@@ -1470,10 +1470,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igInputFloat4(byte* label, Vector4F* v, byte* format, ImGuiInputTextFlags flags);
+        internal static extern byte igInputFloat4(byte* label, Vector4F* v, byte* format, ImGuiInputTextFlag flag);
 
         /// <summary>
         ///     Igs the input int using the specified label
@@ -1482,40 +1482,40 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="v">The </param>
         /// <param name="step">The step</param>
         /// <param name="stepFast">The step fast</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igInputInt(byte* label, int* v, int step, int stepFast, ImGuiInputTextFlags flags);
+        internal static extern byte igInputInt(byte* label, int* v, int step, int stepFast, ImGuiInputTextFlag flag);
 
         /// <summary>
         ///     Igs the input int 2 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igInputInt2(byte* label, int* v, ImGuiInputTextFlags flags);
+        internal static extern byte igInputInt2(byte* label, int* v, ImGuiInputTextFlag flag);
 
         /// <summary>
         ///     Igs the input int 3 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igInputInt3(byte* label, int* v, ImGuiInputTextFlags flags);
+        internal static extern byte igInputInt3(byte* label, int* v, ImGuiInputTextFlag flag);
 
         /// <summary>
         ///     Igs the input int 4 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igInputInt4(byte* label, int* v, ImGuiInputTextFlags flags);
+        internal static extern byte igInputInt4(byte* label, int* v, ImGuiInputTextFlag flag);
 
         /// <summary>
         ///     Igs the input scalar using the specified label
@@ -1526,10 +1526,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="pStep">The step</param>
         /// <param name="pStepFast">The step fast</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igInputScalar(byte* label, ImGuiDataType dataType, void* pData, void* pStep, void* pStepFast, byte* format, ImGuiInputTextFlags flags);
+        internal static extern byte igInputScalar(byte* label, ImGuiDataType dataType, void* pData, void* pStep, void* pStepFast, byte* format, ImGuiInputTextFlag flag);
 
         /// <summary>
         ///     Igs the input scalar n using the specified label
@@ -1541,10 +1541,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="pStep">The step</param>
         /// <param name="pStepFast">The step fast</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igInputScalarN(byte* label, ImGuiDataType dataType, void* pData, int components, void* pStep, void* pStepFast, byte* format, ImGuiInputTextFlags flags);
+        internal static extern byte igInputScalarN(byte* label, ImGuiDataType dataType, void* pData, int components, void* pStep, void* pStepFast, byte* format, ImGuiInputTextFlag flag);
 
         /// <summary>
         ///     Igs the input text using the specified label
@@ -1552,12 +1552,12 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="label">The label</param>
         /// <param name="buf">The buf</param>
         /// <param name="bufSize">The buf size</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <param name="callback">The callback</param>
         /// <param name="userData">The user data</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igInputText(byte* label, byte* buf, uint bufSize, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, void* userData);
+        internal static extern byte igInputText(byte* label, byte* buf, uint bufSize, ImGuiInputTextFlag flag, ImGuiInputTextCallback callback, void* userData);
 
         /// <summary>
         ///     Igs the input text multiline using the specified label
@@ -1566,12 +1566,12 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="buf">The buf</param>
         /// <param name="bufSize">The buf size</param>
         /// <param name="size">The size</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <param name="callback">The callback</param>
         /// <param name="userData">The user data</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igInputTextMultiline(byte* label, byte* buf, uint bufSize, Vector2F size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, void* userData);
+        internal static extern byte igInputTextMultiline(byte* label, byte* buf, uint bufSize, Vector2F size, ImGuiInputTextFlag flag, ImGuiInputTextCallback callback, void* userData);
 
         /// <summary>
         ///     Igs the input text with hint using the specified label
@@ -1580,22 +1580,22 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="hint">The hint</param>
         /// <param name="buf">The buf</param>
         /// <param name="bufSize">The buf size</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <param name="callback">The callback</param>
         /// <param name="userData">The user data</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igInputTextWithHint(byte* label, byte* hint, byte* buf, uint bufSize, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, void* userData);
+        internal static extern byte igInputTextWithHint(byte* label, byte* hint, byte* buf, uint bufSize, ImGuiInputTextFlag flag, ImGuiInputTextCallback callback, void* userData);
 
         /// <summary>
         ///     Igs the invisible button using the specified str id
         /// </summary>
         /// <param name="strId">The str id</param>
         /// <param name="size">The size</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igInvisibleButton(byte* strId, Vector2F size, ImGuiButtonFlags flags);
+        internal static extern byte igInvisibleButton(byte* strId, Vector2F size, ImGuiButtonFlag flag);
 
         /// <summary>
         ///     Igs the is any item active
@@ -1678,10 +1678,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     Igs the is item hovered using the specified flags
         /// </summary>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igIsItemHovered(ImGuiHoveredFlags flags);
+        internal static extern byte igIsItemHovered(ImGuiHoveredFlag flag);
 
         /// <summary>
         ///     Igs the is item toggled open
@@ -1786,10 +1786,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         ///     Igs the is popup open str using the specified str id
         /// </summary>
         /// <param name="strId">The str id</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igIsPopupOpen_Str(byte* strId, ImGuiPopupFlags flags);
+        internal static extern byte igIsPopupOpen_Str(byte* strId, ImGuiPopupFlag flag);
 
         /// <summary>
         ///     Igs the is rect visible nil using the specified size
@@ -1832,18 +1832,18 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     Igs the is window focused using the specified flags
         /// </summary>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igIsWindowFocused(ImGuiFocusedFlags flags);
+        internal static extern byte igIsWindowFocused(ImGuiFocusedFlag flag);
 
         /// <summary>
         ///     Igs the is window hovered using the specified flags
         /// </summary>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igIsWindowHovered(ImGuiHoveredFlags flags);
+        internal static extern byte igIsWindowHovered(ImGuiHoveredFlag flag);
 
         /// <summary>
         ///     Igs the label text using the specified label
@@ -1980,25 +1980,25 @@ namespace Alis.Core.Graphic.ImGui.Structs
         ///     Igs the open popup str using the specified str id
         /// </summary>
         /// <param name="strId">The str id</param>
-        /// <param name="popupFlags">The popup flags</param>
+        /// <param name="popupFlag">The popup flags</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void igOpenPopup_Str(byte* strId, ImGuiPopupFlags popupFlags);
+        internal static extern void igOpenPopup_Str(byte* strId, ImGuiPopupFlag popupFlag);
 
         /// <summary>
         ///     Igs the open popup id using the specified id
         /// </summary>
         /// <param name="id">The id</param>
-        /// <param name="popupFlags">The popup flags</param>
+        /// <param name="popupFlag">The popup flags</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void igOpenPopup_ID(uint id, ImGuiPopupFlags popupFlags);
+        internal static extern void igOpenPopup_ID(uint id, ImGuiPopupFlag popupFlag);
 
         /// <summary>
         ///     Igs the open popup on item click using the specified str id
         /// </summary>
         /// <param name="strId">The str id</param>
-        /// <param name="popupFlags">The popup flags</param>
+        /// <param name="popupFlag">The popup flags</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void igOpenPopupOnItemClick(byte* strId, ImGuiPopupFlags popupFlags);
+        internal static extern void igOpenPopupOnItemClick(byte* strId, ImGuiPopupFlag popupFlag);
 
         /// <summary>
         ///     Igs the plot histogram float ptr using the specified label
@@ -2268,22 +2268,22 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="selected">The selected</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igSelectable_Bool(byte* label, byte selected, ImGuiSelectableFlags flags, Vector2F size);
+        internal static extern byte igSelectable_Bool(byte* label, byte selected, ImGuiSelectableFlag flag, Vector2F size);
 
         /// <summary>
         ///     Igs the selectable bool ptr using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="pSelected">The selected</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igSelectable_BoolPtr(byte* label, byte* pSelected, ImGuiSelectableFlags flags, Vector2F size);
+        internal static extern byte igSelectable_BoolPtr(byte* label, byte* pSelected, ImGuiSelectableFlag flag, Vector2F size);
 
         /// <summary>
         ///     Igs the separator
@@ -2317,9 +2317,9 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     Igs the set color edit options using the specified flags
         /// </summary>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void igSetColorEditOptions(ImGuiColorEditFlags flags);
+        internal static extern void igSetColorEditOptions(ImGuiColorEditFlag flag);
 
         /// <summary>
         ///     Igs the set column offset using the specified column index
@@ -2728,10 +2728,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vDegreesMin">The degrees min</param>
         /// <param name="vDegreesMax">The degrees max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igSliderAngle(byte* label, float* vRad, float vDegreesMin, float vDegreesMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igSliderAngle(byte* label, float* vRad, float vDegreesMin, float vDegreesMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the slider float using the specified label
@@ -2741,10 +2741,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igSliderFloat(byte* label, float* v, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igSliderFloat(byte* label, float* v, float vMin, float vMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the slider float 2 using the specified label
@@ -2754,10 +2754,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igSliderFloat2(byte* label, Vector2F* v, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igSliderFloat2(byte* label, Vector2F* v, float vMin, float vMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the slider float 3 using the specified label
@@ -2767,10 +2767,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igSliderFloat3(byte* label, Vector3F* v, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igSliderFloat3(byte* label, Vector3F* v, float vMin, float vMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the slider float 4 using the specified label
@@ -2780,10 +2780,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igSliderFloat4(byte* label, Vector4F* v, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igSliderFloat4(byte* label, Vector4F* v, float vMin, float vMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the slider int using the specified label
@@ -2793,10 +2793,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igSliderInt(byte* label, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igSliderInt(byte* label, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the slider int 2 using the specified label
@@ -2806,10 +2806,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igSliderInt2(byte* label, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igSliderInt2(byte* label, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the slider int 3 using the specified label
@@ -2819,10 +2819,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igSliderInt3(byte* label, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igSliderInt3(byte* label, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the slider int 4 using the specified label
@@ -2832,10 +2832,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igSliderInt4(byte* label, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igSliderInt4(byte* label, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the slider scalar using the specified label
@@ -2846,10 +2846,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="pMin">The min</param>
         /// <param name="pMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igSliderScalar(byte* label, ImGuiDataType dataType, void* pData, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igSliderScalar(byte* label, ImGuiDataType dataType, void* pData, void* pMin, void* pMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the slider scalar n using the specified label
@@ -2861,10 +2861,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="pMin">The min</param>
         /// <param name="pMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igSliderScalarN(byte* label, ImGuiDataType dataType, void* pData, int components, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igSliderScalarN(byte* label, ImGuiDataType dataType, void* pData, int components, void* pMin, void* pMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the small button using the specified label
@@ -2905,10 +2905,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         ///     Igs the tab item button using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igTabItemButton(byte* label, ImGuiTabItemFlags flags);
+        internal static extern byte igTabItemButton(byte* label, ImGuiTabItemFlag flag);
 
         /// <summary>
         ///     Igs the table get column count
@@ -2923,7 +2923,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="columnN">The column</param>
         /// <returns>The im gui table column flags</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern ImGuiTableColumnFlags igTableGetColumnFlags(int columnN);
+        internal static extern ImGuiTableColumnFlag igTableGetColumnFlags(int columnN);
 
         /// <summary>
         ///     Igs the table get column index
@@ -2977,10 +2977,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     Igs the table next row using the specified row flags
         /// </summary>
-        /// <param name="rowFlags">The row flags</param>
+        /// <param name="rowFlag">The row flags</param>
         /// <param name="minRowHeight">The min row height</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void igTableNextRow(ImGuiTableRowFlags rowFlags, float minRowHeight);
+        internal static extern void igTableNextRow(ImGuiTableRowFlag rowFlag, float minRowHeight);
 
         /// <summary>
         ///     Igs the table set bg color using the specified target
@@ -3011,11 +3011,11 @@ namespace Alis.Core.Graphic.ImGui.Structs
         ///     Igs the table setup column using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <param name="initWidthOrWeight">The init width or weight</param>
         /// <param name="userId">The user id</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void igTableSetupColumn(byte* label, ImGuiTableColumnFlags flags, float initWidthOrWeight, uint userId);
+        internal static extern void igTableSetupColumn(byte* label, ImGuiTableColumnFlag flag, float initWidthOrWeight, uint userId);
 
         /// <summary>
         ///     Igs the table setup scroll freeze using the specified cols
@@ -3092,30 +3092,30 @@ namespace Alis.Core.Graphic.ImGui.Structs
         ///     Igs the tree node ex str using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igTreeNodeEx_Str(byte* label, ImGuiTreeNodeFlags flags);
+        internal static extern byte igTreeNodeEx_Str(byte* label, ImGuiTreeNodeFlag flag);
 
         /// <summary>
         ///     Igs the tree node ex str str using the specified str id
         /// </summary>
         /// <param name="strId">The str id</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <param name="fmt">The fmt</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igTreeNodeEx_StrStr(byte* strId, ImGuiTreeNodeFlags flags, byte* fmt);
+        internal static extern byte igTreeNodeEx_StrStr(byte* strId, ImGuiTreeNodeFlag flag, byte* fmt);
 
         /// <summary>
         ///     Igs the tree node ex ptr using the specified ptr id
         /// </summary>
         /// <param name="ptrId">The ptr id</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <param name="fmt">The fmt</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igTreeNodeEx_Ptr(void* ptrId, ImGuiTreeNodeFlags flags, byte* fmt);
+        internal static extern byte igTreeNodeEx_Ptr(void* ptrId, ImGuiTreeNodeFlag flag, byte* fmt);
 
         /// <summary>
         ///     Igs the tree pop
@@ -3192,10 +3192,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igVSliderFloat(byte* label, Vector2F size, float* v, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igVSliderFloat(byte* label, Vector2F size, float* v, float vMin, float vMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the v slider int using the specified label
@@ -3206,10 +3206,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="vMin">The min</param>
         /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igVSliderInt(byte* label, Vector2F size, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igVSliderInt(byte* label, Vector2F size, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Igs the v slider scalar using the specified label
@@ -3221,10 +3221,10 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="pMin">The min</param>
         /// <param name="pMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="flags">The flags</param>
+        /// <param name="flag">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern byte igVSliderScalar(byte* label, Vector2F size, ImGuiDataType dataType, void* pData, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
+        internal static extern byte igVSliderScalar(byte* label, Vector2F size, ImGuiDataType dataType, void* pData, void* pMin, void* pMax, byte* format, ImGuiSliderFlag flag);
 
         /// <summary>
         ///     Ims the color destroy using the specified self
@@ -3559,7 +3559,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void ImDrawList_AddImageRounded(ImDrawList* self, IntPtr userTextureId, Vector2F pMin, Vector2F pMax, Vector2F uvMin, Vector2F uvMax, uint col, float rounding, ImDrawFlags flags);
+        internal static extern void ImDrawList_AddImageRounded(ImDrawList* self, IntPtr userTextureId, Vector2F pMin, Vector2F pMax, Vector2F uvMin, Vector2F uvMax, uint col, float rounding, ImDrawFlag flags);
 
         /// <summary>
         ///     Ims the draw list add line using the specified self
@@ -3605,7 +3605,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="flags">The flags</param>
         /// <param name="thickness">The thickness</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void ImDrawList_AddPolyline(ImDrawList* self, Vector2F* points, int numPoints, uint col, ImDrawFlags flags, float thickness);
+        internal static extern void ImDrawList_AddPolyline(ImDrawList* self, Vector2F* points, int numPoints, uint col, ImDrawFlag flags, float thickness);
 
         /// <summary>
         ///     Ims the draw list add quad using the specified self
@@ -3643,7 +3643,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="flags">The flags</param>
         /// <param name="thickness">The thickness</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void ImDrawList_AddRect(ImDrawList* self, Vector2F pMin, Vector2F pMax, uint col, float rounding, ImDrawFlags flags, float thickness);
+        internal static extern void ImDrawList_AddRect(ImDrawList* self, Vector2F pMin, Vector2F pMax, uint col, float rounding, ImDrawFlag flags, float thickness);
 
         /// <summary>
         ///     Ims the draw list add rect filled using the specified self
@@ -3655,7 +3655,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void ImDrawList_AddRectFilled(ImDrawList* self, Vector2F pMin, Vector2F pMax, uint col, float rounding, ImDrawFlags flags);
+        internal static extern void ImDrawList_AddRectFilled(ImDrawList* self, Vector2F pMin, Vector2F pMax, uint col, float rounding, ImDrawFlag flags);
 
         /// <summary>
         ///     Ims the draw list add rect filled multi color using the specified self
@@ -3865,7 +3865,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void ImDrawList_PathRect(ImDrawList* self, Vector2F rectMin, Vector2F rectMax, float rounding, ImDrawFlags flags);
+        internal static extern void ImDrawList_PathRect(ImDrawList* self, Vector2F rectMin, Vector2F rectMax, float rounding, ImDrawFlag flags);
 
         /// <summary>
         ///     Ims the draw list path stroke using the specified self
@@ -3875,7 +3875,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="flags">The flags</param>
         /// <param name="thickness">The thickness</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void ImDrawList_PathStroke(ImDrawList* self, uint col, ImDrawFlags flags, float thickness);
+        internal static extern void ImDrawList_PathStroke(ImDrawList* self, uint col, ImDrawFlag flags, float thickness);
 
         /// <summary>
         ///     Ims the draw list pop clip rect using the specified self

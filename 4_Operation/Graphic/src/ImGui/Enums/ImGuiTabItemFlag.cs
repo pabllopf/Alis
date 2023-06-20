@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImDrawFlags.cs
+//  File:ImGuiTabItemFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,79 +32,54 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im draw flags enum
+    ///     The im gui tab item flags enum
     /// </summary>
     [Flags]
-    public enum ImDrawFlags
+    public enum ImGuiTabItemFlag
     {
         /// <summary>
-        ///     The none im draw flags
+        ///     The none im gui tab item flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The closed im draw flags
+        ///     The unsaved document im gui tab item flags
         /// </summary>
-        Closed = 1,
+        UnsavedDocument = 1,
 
         /// <summary>
-        ///     The round corners top left im draw flags
+        ///     The set selected im gui tab item flags
         /// </summary>
-        RoundCornersTopLeft = 16,
+        SetSelected = 2,
 
         /// <summary>
-        ///     The round corners top right im draw flags
+        ///     The no close with middle mouse button im gui tab item flags
         /// </summary>
-        RoundCornersTopRight = 32,
+        NoCloseWithMiddleMouseButton = 4,
 
         /// <summary>
-        ///     The round corners bottom left im draw flags
+        ///     The no push id im gui tab item flags
         /// </summary>
-        RoundCornersBottomLeft = 64,
+        NoPushId = 8,
 
         /// <summary>
-        ///     The round corners bottom right im draw flags
+        ///     The no tooltip im gui tab item flags
         /// </summary>
-        RoundCornersBottomRight = 128,
+        NoTooltip = 16,
 
         /// <summary>
-        ///     The round corners none im draw flags
+        ///     The no reorder im gui tab item flags
         /// </summary>
-        RoundCornersNone = 256,
+        NoReorder = 32,
 
         /// <summary>
-        ///     The round corners top im draw flags
+        ///     The leading im gui tab item flags
         /// </summary>
-        RoundCornersTop = 48,
+        Leading = 64,
 
         /// <summary>
-        ///     The round corners bottom im draw flags
+        ///     The trailing im gui tab item flags
         /// </summary>
-        RoundCornersBottom = 192,
-
-        /// <summary>
-        ///     The round corners left im draw flags
-        /// </summary>
-        RoundCornersLeft = 80,
-
-        /// <summary>
-        ///     The round corners right im draw flags
-        /// </summary>
-        RoundCornersRight = 160,
-
-        /// <summary>
-        ///     The round corners all im draw flags
-        /// </summary>
-        RoundCornersAll = 240,
-
-        /// <summary>
-        ///     The round corners default im draw flags
-        /// </summary>
-        RoundCornersDefault = 240,
-
-        /// <summary>
-        ///     The round corners mask im draw flags
-        /// </summary>
-        RoundCornersMask = 496
+        Trailing = 128
     }
 }

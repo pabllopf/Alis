@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiConfigFlags.cs
+//  File:ImGuiTreeNodeFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,74 +32,89 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui config flags enum
+    ///     The im gui tree node flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiConfigFlags
+    public enum ImGuiTreeNodeFlag
     {
         /// <summary>
-        ///     The none im gui config flags
+        ///     The none im gui tree node flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The nav enable keyboard im gui config flags
+        ///     The selected im gui tree node flags
         /// </summary>
-        NavEnableKeyboard = 1,
+        Selected = 1,
 
         /// <summary>
-        ///     The nav enable gamepad im gui config flags
+        ///     The framed im gui tree node flags
         /// </summary>
-        NavEnableGamepad = 2,
+        Framed = 2,
 
         /// <summary>
-        ///     The nav enable set mouse pos im gui config flags
+        ///     The allow item overlap im gui tree node flags
         /// </summary>
-        NavEnableSetMousePos = 4,
+        AllowItemOverlap = 4,
 
         /// <summary>
-        ///     The nav no capture keyboard im gui config flags
+        ///     The no tree push on open im gui tree node flags
         /// </summary>
-        NavNoCaptureKeyboard = 8,
+        NoTreePushOnOpen = 8,
 
         /// <summary>
-        ///     The no mouse im gui config flags
+        ///     The no auto open on log im gui tree node flags
         /// </summary>
-        NoMouse = 16,
+        NoAutoOpenOnLog = 16,
 
         /// <summary>
-        ///     The no mouse cursor change im gui config flags
+        ///     The default open im gui tree node flags
         /// </summary>
-        NoMouseCursorChange = 32,
+        DefaultOpen = 32,
 
         /// <summary>
-        ///     The docking enable im gui config flags
+        ///     The open on double click im gui tree node flags
         /// </summary>
-        DockingEnable = 64,
+        OpenOnDoubleClick = 64,
 
         /// <summary>
-        ///     The viewports enable im gui config flags
+        ///     The open on arrow im gui tree node flags
         /// </summary>
-        ViewportsEnable = 1024,
+        OpenOnArrow = 128,
 
         /// <summary>
-        ///     The dpi enable scale viewports im gui config flags
+        ///     The leaf im gui tree node flags
         /// </summary>
-        DpiEnableScaleViewports = 16384,
+        Leaf = 256,
 
         /// <summary>
-        ///     The dpi enable scale fonts im gui config flags
+        ///     The bullet im gui tree node flags
         /// </summary>
-        DpiEnableScaleFonts = 32768,
+        Bullet = 512,
 
         /// <summary>
-        ///     The is srgb im gui config flags
+        ///     The frame padding im gui tree node flags
         /// </summary>
-        IsSrgb = 1048576,
+        FramePadding = 1024,
 
         /// <summary>
-        ///     The is touch screen im gui config flags
+        ///     The span avail width im gui tree node flags
         /// </summary>
-        IsTouchScreen = 2097152
+        SpanAvailWidth = 2048,
+
+        /// <summary>
+        ///     The span full width im gui tree node flags
+        /// </summary>
+        SpanFullWidth = 4096,
+
+        /// <summary>
+        ///     The nav left jumps back here im gui tree node flags
+        /// </summary>
+        NavLeftJumpsBackHere = 8192,
+
+        /// <summary>
+        ///     The collapsing header im gui tree node flags
+        /// </summary>
+        CollapsingHeader = 26
     }
 }

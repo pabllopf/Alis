@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiTreeNodeFlags.cs
+//  File:ImGuiTabBarFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,89 +32,64 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui tree node flags enum
+    ///     The im gui tab bar flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiTreeNodeFlags
+    public enum ImGuiTabBarFlag
     {
         /// <summary>
-        ///     The none im gui tree node flags
+        ///     The none im gui tab bar flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The selected im gui tree node flags
+        ///     The reorderable im gui tab bar flags
         /// </summary>
-        Selected = 1,
+        Reorderable = 1,
 
         /// <summary>
-        ///     The framed im gui tree node flags
+        ///     The auto select new tabs im gui tab bar flags
         /// </summary>
-        Framed = 2,
+        AutoSelectNewTabs = 2,
 
         /// <summary>
-        ///     The allow item overlap im gui tree node flags
+        ///     The tab list popup button im gui tab bar flags
         /// </summary>
-        AllowItemOverlap = 4,
+        TabListPopupButton = 4,
 
         /// <summary>
-        ///     The no tree push on open im gui tree node flags
+        ///     The no close with middle mouse button im gui tab bar flags
         /// </summary>
-        NoTreePushOnOpen = 8,
+        NoCloseWithMiddleMouseButton = 8,
 
         /// <summary>
-        ///     The no auto open on log im gui tree node flags
+        ///     The no tab list scrolling buttons im gui tab bar flags
         /// </summary>
-        NoAutoOpenOnLog = 16,
+        NoTabListScrollingButtons = 16,
 
         /// <summary>
-        ///     The default open im gui tree node flags
+        ///     The no tooltip im gui tab bar flags
         /// </summary>
-        DefaultOpen = 32,
+        NoTooltip = 32,
 
         /// <summary>
-        ///     The open on double click im gui tree node flags
+        ///     The fitting policy resize down im gui tab bar flags
         /// </summary>
-        OpenOnDoubleClick = 64,
+        FittingPolicyResizeDown = 64,
 
         /// <summary>
-        ///     The open on arrow im gui tree node flags
+        ///     The fitting policy scroll im gui tab bar flags
         /// </summary>
-        OpenOnArrow = 128,
+        FittingPolicyScroll = 128,
 
         /// <summary>
-        ///     The leaf im gui tree node flags
+        ///     The fitting policy mask im gui tab bar flags
         /// </summary>
-        Leaf = 256,
+        FittingPolicyMask = 192,
 
         /// <summary>
-        ///     The bullet im gui tree node flags
+        ///     The fitting policy default im gui tab bar flags
         /// </summary>
-        Bullet = 512,
-
-        /// <summary>
-        ///     The frame padding im gui tree node flags
-        /// </summary>
-        FramePadding = 1024,
-
-        /// <summary>
-        ///     The span avail width im gui tree node flags
-        /// </summary>
-        SpanAvailWidth = 2048,
-
-        /// <summary>
-        ///     The span full width im gui tree node flags
-        /// </summary>
-        SpanFullWidth = 4096,
-
-        /// <summary>
-        ///     The nav left jumps back here im gui tree node flags
-        /// </summary>
-        NavLeftJumpsBackHere = 8192,
-
-        /// <summary>
-        ///     The collapsing header im gui tree node flags
-        /// </summary>
-        CollapsingHeader = 26
+        FittingPolicyDefault = 64
     }
 }

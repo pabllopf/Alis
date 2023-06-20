@@ -755,7 +755,7 @@
         </member>
         <member name="M:Alis.Builder.Core.Setting.DebugSettingBuilder.LogLevel(Alis.Core.Aspect.Logging.LogLevel)">
             <summary>
-            Logs the level using the specified log level
+                Logs the level using the specified log level
             </summary>
             <param name="logLevel">The log level</param>
             <returns>The debug setting builder</returns>
@@ -1224,7 +1224,7 @@
         </member>
         <member name="M:Alis.Core.Component.Collider.CircleCollider.Start">
             <summary>
-            Starts this instance
+                Starts this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Component.Collider.ColliderBase">
@@ -1251,7 +1251,7 @@
         </member>
         <member name="M:Alis.Core.Component.Light.AreaLight.Init">
             <summary>
-            Inits this instance
+                Inits this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Component.Light.DirectionalLight">
@@ -1262,7 +1262,7 @@
         </member>
         <member name="M:Alis.Core.Component.Light.DirectionalLight.Init">
             <summary>
-            Inits this instance
+                Inits this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Component.Light.LightBase">
@@ -1289,7 +1289,7 @@
         </member>
         <member name="M:Alis.Core.Component.Light.PointLight.Init">
             <summary>
-            Inits this instance
+                Inits this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Component.Light.SpotLight">
@@ -1300,7 +1300,7 @@
         </member>
         <member name="M:Alis.Core.Component.Light.SpotLight.Init">
             <summary>
-            Inits this instance
+                Inits this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Component.Mesh.BoxMesh">
@@ -1310,7 +1310,7 @@
         </member>
         <member name="M:Alis.Core.Component.Mesh.BoxMesh.Init">
             <summary>
-            Inits this instance
+                Inits this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Component.Mesh.CircleMesh">
@@ -1321,7 +1321,7 @@
         </member>
         <member name="M:Alis.Core.Component.Mesh.CircleMesh.Init">
             <summary>
-            Inits this instance
+                Inits this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Component.Mesh.MeshBase">
@@ -1346,16 +1346,16 @@
             </summary>
             <seealso cref="T:Alis.Core.Component.Particle.ParticleBase" />
         </member>
-        <member name="M:Alis.Core.Component.Particle.ExplosionParticle.Init">
-            <summary>
-            Inits this instance
-            </summary>
-        </member>
         <member name="M:Alis.Core.Component.Particle.ExplosionParticle.Builder">
             <summary>
                 Builders this instance
             </summary>
             <returns>The explosion particle builder</returns>
+        </member>
+        <member name="M:Alis.Core.Component.Particle.ExplosionParticle.Init">
+            <summary>
+                Inits this instance
+            </summary>
         </member>
         <member name="T:Alis.Core.Component.Particle.ParticleBase">
             <summary>
@@ -1593,21 +1593,21 @@
                 The image class
             </summary>
         </member>
-        <member name="P:Alis.Core.Component.Render.Image.Path">
-            <summary>
-            Gets or sets the value of the path
-            </summary>
-        </member>
         <member name="M:Alis.Core.Component.Render.Image.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Image"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Image" /> class
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Render.Image.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Image"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Image" /> class
             </summary>
             <param name="path">The path</param>
+        </member>
+        <member name="P:Alis.Core.Component.Render.Image.Path">
+            <summary>
+                Gets or sets the value of the path
+            </summary>
         </member>
         <member name="T:Alis.Core.Component.Render.Sprite">
             <summary>
@@ -1899,7 +1899,7 @@
         </member>
         <member name="M:Alis.Core.Entity.Transform.Update">
             <summary>
-            Updates this instance
+                Updates this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Entity.Window">
@@ -2076,42 +2076,42 @@
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManager.DispatchEvents">
             <summary>
-            Dispatches the events
+                Dispatches the events
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManager.HandleKeyPressEvents(System.Int32)">
             <summary>
-            Handles the key press events using the specified index
+                Handles the key press events using the specified index
             </summary>
             <param name="index">The index</param>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManager.HandleKeyReleaseEvents(System.Int32)">
             <summary>
-            Handles the key release events using the specified index
+                Handles the key release events using the specified index
             </summary>
             <param name="index">The index</param>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManager.HandleKeyHoldEvents(System.Int32)">
             <summary>
-            Handles the key hold events using the specified index
+                Handles the key hold events using the specified index
             </summary>
             <param name="index">The index</param>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManager.NotifyKeyPress(Alis.Core.Aspect.Base.Mapping.Key)">
             <summary>
-            Notifies the key press using the specified key
+                Notifies the key press using the specified key
             </summary>
             <param name="key">The key</param>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManager.NotifyKeyRelease(Alis.Core.Aspect.Base.Mapping.Key)">
             <summary>
-            Notifies the key release using the specified key
+                Notifies the key release using the specified key
             </summary>
             <param name="key">The key</param>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManager.NotifyKeyHold(Alis.Core.Aspect.Base.Mapping.Key)">
             <summary>
-            Notifies the key hold using the specified key
+                Notifies the key hold using the specified key
             </summary>
             <param name="key">The key</param>
         </member>
@@ -2147,14 +2147,14 @@
                 Scene manager
             </summary>
         </member>
-        <member name="F:Alis.Core.Manager.Scene.SceneManager.CurrentScene">
-            <summary>
-                The current scene
-            </summary>
-        </member>
         <member name="F:Alis.Core.Manager.Scene.SceneManager.scenes">
             <summary>
                 Scene list
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Manager.Scene.SceneManager.CurrentScene">
+            <summary>
+                The current scene
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManager.#ctor">

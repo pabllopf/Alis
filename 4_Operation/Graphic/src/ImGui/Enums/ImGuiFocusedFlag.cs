@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiTabItemFlags.cs
+//  File:ImGuiFocusedFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,54 +32,44 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui tab item flags enum
+    ///     The im gui focused flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiTabItemFlags
+    public enum ImGuiFocusedFlag
     {
         /// <summary>
-        ///     The none im gui tab item flags
+        ///     The none im gui focused flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The unsaved document im gui tab item flags
+        ///     The child windows im gui focused flags
         /// </summary>
-        UnsavedDocument = 1,
+        ChildWindows = 1,
 
         /// <summary>
-        ///     The set selected im gui tab item flags
+        ///     The root window im gui focused flags
         /// </summary>
-        SetSelected = 2,
+        RootWindow = 2,
 
         /// <summary>
-        ///     The no close with middle mouse button im gui tab item flags
+        ///     The any window im gui focused flags
         /// </summary>
-        NoCloseWithMiddleMouseButton = 4,
+        AnyWindow = 4,
 
         /// <summary>
-        ///     The no push id im gui tab item flags
+        ///     The no popup hierarchy im gui focused flags
         /// </summary>
-        NoPushId = 8,
+        NoPopupHierarchy = 8,
 
         /// <summary>
-        ///     The no tooltip im gui tab item flags
+        ///     The dock hierarchy im gui focused flags
         /// </summary>
-        NoTooltip = 16,
+        DockHierarchy = 16,
 
         /// <summary>
-        ///     The no reorder im gui tab item flags
+        ///     The root and child windows im gui focused flags
         /// </summary>
-        NoReorder = 32,
-
-        /// <summary>
-        ///     The leading im gui tab item flags
-        /// </summary>
-        Leading = 64,
-
-        /// <summary>
-        ///     The trailing im gui tab item flags
-        /// </summary>
-        Trailing = 128
+        RootAndChildWindows = 3
     }
 }

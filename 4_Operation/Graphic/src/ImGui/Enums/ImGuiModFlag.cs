@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiBackendFlags.cs
+//  File:ImGuiModFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,49 +32,34 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui backend flags enum
+    ///     The im gui mod flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiBackendFlags
+    public enum ImGuiModFlag
     {
         /// <summary>
-        ///     The none im gui backend flags
+        ///     The none im gui mod flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The has gamepad im gui backend flags
+        ///     The ctrl im gui mod flags
         /// </summary>
-        HasGamepad = 1,
+        Ctrl = 1,
 
         /// <summary>
-        ///     The has mouse cursors im gui backend flags
+        ///     The shift im gui mod flags
         /// </summary>
-        HasMouseCursors = 2,
+        Shift = 2,
 
         /// <summary>
-        ///     The has set mouse pos im gui backend flags
+        ///     The alt im gui mod flags
         /// </summary>
-        HasSetMousePos = 4,
+        Alt = 4,
 
         /// <summary>
-        ///     The renderer has vtx offset im gui backend flags
+        ///     The super im gui mod flags
         /// </summary>
-        RendererHasVtxOffset = 8,
-
-        /// <summary>
-        ///     The platform has viewports im gui backend flags
-        /// </summary>
-        PlatformHasViewports = 1024,
-
-        /// <summary>
-        ///     The has mouse hovered viewport im gui backend flags
-        /// </summary>
-        HasMouseHoveredViewport = 2048,
-
-        /// <summary>
-        ///     The renderer has viewports im gui backend flags
-        /// </summary>
-        RendererHasViewports = 4096
+        Super = 8
     }
 }

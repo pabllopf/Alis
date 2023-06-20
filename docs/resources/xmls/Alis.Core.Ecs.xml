@@ -211,7 +211,7 @@
         </member>
         <member name="M:Alis.Core.Ecs.SceneBase.ToString">
             <summary>
-            Returns the string
+                Returns the string
             </summary>
             <returns>The string</returns>
         </member>

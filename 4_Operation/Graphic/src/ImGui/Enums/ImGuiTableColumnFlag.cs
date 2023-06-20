@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.ImGui.Enums
     ///     The im gui table column flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiTableColumnFlags
+    public enum ImGuiTableColumnFlag
     {
         /// <summary>
         ///     The none im gui table column flags

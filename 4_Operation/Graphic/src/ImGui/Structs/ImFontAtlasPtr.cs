@@ -78,7 +78,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     Gets the value of the flags
         /// </summary>
-        public ref ImFontAtlasFlags Flags => ref Unsafe.AsRef<ImFontAtlasFlags>(&NativePtr->Flags);
+        public ref ImFontAtlasFlag Flag => ref Unsafe.AsRef<ImFontAtlasFlag>(&NativePtr->Flag);
 
         /// <summary>
         ///     Gets the value of the tex id

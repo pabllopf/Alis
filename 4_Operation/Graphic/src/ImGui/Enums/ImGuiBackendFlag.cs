@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiSelectableFlags.cs
+//  File:ImGuiBackendFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,39 +32,49 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui selectable flags enum
+    ///     The im gui backend flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiSelectableFlags
+    public enum ImGuiBackendFlag
     {
         /// <summary>
-        ///     The none im gui selectable flags
+        ///     The none im gui backend flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The dont close popups im gui selectable flags
+        ///     The has gamepad im gui backend flags
         /// </summary>
-        DontClosePopups = 1,
+        HasGamepad = 1,
 
         /// <summary>
-        ///     The span all columns im gui selectable flags
+        ///     The has mouse cursors im gui backend flags
         /// </summary>
-        SpanAllColumns = 2,
+        HasMouseCursors = 2,
 
         /// <summary>
-        ///     The allow double click im gui selectable flags
+        ///     The has set mouse pos im gui backend flags
         /// </summary>
-        AllowDoubleClick = 4,
+        HasSetMousePos = 4,
 
         /// <summary>
-        ///     The disabled im gui selectable flags
+        ///     The renderer has vtx offset im gui backend flags
         /// </summary>
-        Disabled = 8,
+        RendererHasVtxOffset = 8,
 
         /// <summary>
-        ///     The allow item overlap im gui selectable flags
+        ///     The platform has viewports im gui backend flags
         /// </summary>
-        AllowItemOverlap = 16
+        PlatformHasViewports = 1024,
+
+        /// <summary>
+        ///     The has mouse hovered viewport im gui backend flags
+        /// </summary>
+        HasMouseHoveredViewport = 2048,
+
+        /// <summary>
+        ///     The renderer has viewports im gui backend flags
+        /// </summary>
+        RendererHasViewports = 4096
     }
 }

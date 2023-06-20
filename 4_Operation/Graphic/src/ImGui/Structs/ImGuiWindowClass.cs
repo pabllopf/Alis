@@ -49,22 +49,22 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     The viewport flags override set
         /// </summary>
-        public ImGuiViewportFlags ViewportFlagsOverrideSet;
+        public ImGuiViewportFlag ViewportFlagOverrideSet;
 
         /// <summary>
         ///     The viewport flags override clear
         /// </summary>
-        public ImGuiViewportFlags ViewportFlagsOverrideClear;
+        public ImGuiViewportFlag ViewportFlagOverrideClear;
 
         /// <summary>
         ///     The tab item flags override set
         /// </summary>
-        public ImGuiTabItemFlags TabItemFlagsOverrideSet;
+        public ImGuiTabItemFlag TabItemFlagOverrideSet;
 
         /// <summary>
         ///     The dock node flags override set
         /// </summary>
-        public ImGuiDockNodeFlags DockNodeFlagsOverrideSet;
+        public ImGuiDockNodeFlag DockNodeFlagOverrideSet;
 
         /// <summary>
         ///     The docking always tab bar

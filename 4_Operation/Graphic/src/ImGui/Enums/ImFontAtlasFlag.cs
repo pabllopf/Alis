@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiFocusedFlags.cs
+//  File:ImFontAtlasFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,44 +32,29 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui focused flags enum
+    ///     The im font atlas flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiFocusedFlags
+    public enum ImFontAtlasFlag
     {
         /// <summary>
-        ///     The none im gui focused flags
+        ///     The none im font atlas flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The child windows im gui focused flags
+        ///     The no power of two height im font atlas flags
         /// </summary>
-        ChildWindows = 1,
+        NoPowerOfTwoHeight = 1,
 
         /// <summary>
-        ///     The root window im gui focused flags
+        ///     The no mouse cursors im font atlas flags
         /// </summary>
-        RootWindow = 2,
+        NoMouseCursors = 2,
 
         /// <summary>
-        ///     The any window im gui focused flags
+        ///     The no baked lines im font atlas flags
         /// </summary>
-        AnyWindow = 4,
-
-        /// <summary>
-        ///     The no popup hierarchy im gui focused flags
-        /// </summary>
-        NoPopupHierarchy = 8,
-
-        /// <summary>
-        ///     The dock hierarchy im gui focused flags
-        /// </summary>
-        DockHierarchy = 16,
-
-        /// <summary>
-        ///     The root and child windows im gui focused flags
-        /// </summary>
-        RootAndChildWindows = 3
+        NoBakedLines = 4
     }
 }

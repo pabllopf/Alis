@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiComboFlags.cs
+//  File:ImGuiHoveredFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,54 +32,89 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui combo flags enum
+    ///     The im gui hovered flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiComboFlags
+    public enum ImGuiHoveredFlag
     {
         /// <summary>
-        ///     The none im gui combo flags
+        ///     The none im gui hovered flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The popup align left im gui combo flags
+        ///     The child windows im gui hovered flags
         /// </summary>
-        PopupAlignLeft = 1,
+        ChildWindows = 1,
 
         /// <summary>
-        ///     The height small im gui combo flags
+        ///     The root window im gui hovered flags
         /// </summary>
-        HeightSmall = 2,
+        RootWindow = 2,
 
         /// <summary>
-        ///     The height regular im gui combo flags
+        ///     The any window im gui hovered flags
         /// </summary>
-        HeightRegular = 4,
+        AnyWindow = 4,
 
         /// <summary>
-        ///     The height large im gui combo flags
+        ///     The no popup hierarchy im gui hovered flags
         /// </summary>
-        HeightLarge = 8,
+        NoPopupHierarchy = 8,
 
         /// <summary>
-        ///     The height largest im gui combo flags
+        ///     The dock hierarchy im gui hovered flags
         /// </summary>
-        HeightLargest = 16,
+        DockHierarchy = 16,
 
         /// <summary>
-        ///     The no arrow button im gui combo flags
+        ///     The allow when blocked by popup im gui hovered flags
         /// </summary>
-        NoArrowButton = 32,
+        AllowWhenBlockedByPopup = 32,
 
         /// <summary>
-        ///     The no preview im gui combo flags
+        ///     The allow when blocked by active item im gui hovered flags
         /// </summary>
-        NoPreview = 64,
+        AllowWhenBlockedByActiveItem = 128,
 
         /// <summary>
-        ///     The height mask im gui combo flags
+        ///     The allow when overlapped im gui hovered flags
         /// </summary>
-        HeightMask = 30
+        AllowWhenOverlapped = 256,
+
+        /// <summary>
+        ///     The allow when disabled im gui hovered flags
+        /// </summary>
+        AllowWhenDisabled = 512,
+
+        /// <summary>
+        ///     The no nav override im gui hovered flags
+        /// </summary>
+        NoNavOverride = 1024,
+
+        /// <summary>
+        ///     The rect only im gui hovered flags
+        /// </summary>
+        RectOnly = 416,
+
+        /// <summary>
+        ///     The root and child windows im gui hovered flags
+        /// </summary>
+        RootAndChildWindows = 3,
+
+        /// <summary>
+        ///     The delay normal im gui hovered flags
+        /// </summary>
+        DelayNormal = 2048,
+
+        /// <summary>
+        ///     The delay short im gui hovered flags
+        /// </summary>
+        DelayShort = 4096,
+
+        /// <summary>
+        ///     The no shared delay im gui hovered flags
+        /// </summary>
+        NoSharedDelay = 8192
     }
 }

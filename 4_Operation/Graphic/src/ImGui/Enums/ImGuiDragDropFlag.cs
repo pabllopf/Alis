@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiButtonFlags.cs
+//  File:ImGuiDragDropFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,39 +32,64 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui button flags enum
+    ///     The im gui drag drop flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiButtonFlags
+    public enum ImGuiDragDropFlag
     {
         /// <summary>
-        ///     The none im gui button flags
+        ///     The none im gui drag drop flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The mouse button left im gui button flags
+        ///     The source no preview tooltip im gui drag drop flags
         /// </summary>
-        MouseButtonLeft = 1,
+        SourceNoPreviewTooltip = 1,
 
         /// <summary>
-        ///     The mouse button right im gui button flags
+        ///     The source no disable hover im gui drag drop flags
         /// </summary>
-        MouseButtonRight = 2,
+        SourceNoDisableHover = 2,
 
         /// <summary>
-        ///     The mouse button middle im gui button flags
+        ///     The source no hold to open others im gui drag drop flags
         /// </summary>
-        MouseButtonMiddle = 4,
+        SourceNoHoldToOpenOthers = 4,
 
         /// <summary>
-        ///     The mouse button mask im gui button flags
+        ///     The source allow null id im gui drag drop flags
         /// </summary>
-        MouseButtonMask = 7,
+        SourceAllowNullId = 8,
 
         /// <summary>
-        ///     The mouse button default im gui button flags
+        ///     The source extern im gui drag drop flags
         /// </summary>
-        MouseButtonDefault = 1
+        SourceExtern = 16,
+
+        /// <summary>
+        ///     The source auto expire payload im gui drag drop flags
+        /// </summary>
+        SourceAutoExpirePayload = 32,
+
+        /// <summary>
+        ///     The accept before delivery im gui drag drop flags
+        /// </summary>
+        AcceptBeforeDelivery = 1024,
+
+        /// <summary>
+        ///     The accept no draw default rect im gui drag drop flags
+        /// </summary>
+        AcceptNoDrawDefaultRect = 2048,
+
+        /// <summary>
+        ///     The accept no preview tooltip im gui drag drop flags
+        /// </summary>
+        AcceptNoPreviewTooltip = 4096,
+
+        /// <summary>
+        ///     The accept peek only im gui drag drop flags
+        /// </summary>
+        AcceptPeekOnly = 3072
     }
 }

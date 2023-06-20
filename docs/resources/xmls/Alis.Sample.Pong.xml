@@ -6,12 +6,12 @@
     <members>
         <member name="T:Alis.Sample.Pong.PlayerController">
             <summary>
-            The player controller class
+                The player controller class
             </summary>
         </member>
         <member name="F:Alis.Sample.Pong.PlayerController.playerId">
             <summary>
-            The player id
+                The player id
             </summary>
         </member>
         <member name="F:Alis.Sample.Pong.PlayerController.boxCollider">
@@ -21,18 +21,18 @@
         </member>
         <member name="M:Alis.Sample.Pong.PlayerController.#ctor(System.Int32)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Sample.Pong.PlayerController"/> class
+                Initializes a new instance of the <see cref="T:Alis.Sample.Pong.PlayerController" /> class
             </summary>
             <param name="playerId">The player id</param>
         </member>
         <member name="M:Alis.Sample.Pong.PlayerController.Start">
             <summary>
-            Starts this instance
+                Starts this instance
             </summary>
         </member>
         <member name="M:Alis.Sample.Pong.PlayerController.Update">
             <summary>
-            Updates this instance
+                Updates this instance
             </summary>
         </member>
         <member name="M:Alis.Sample.Pong.PlayerController.OnReleaseKey(Alis.Core.Aspect.Base.Mapping.Key)">

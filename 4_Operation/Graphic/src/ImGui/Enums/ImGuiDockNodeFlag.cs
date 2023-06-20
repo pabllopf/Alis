@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiViewportFlags.cs
+//  File:ImGuiDockNodeFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,84 +32,44 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui viewport flags enum
+    ///     The im gui dock node flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiViewportFlags
+    public enum ImGuiDockNodeFlag
     {
         /// <summary>
-        ///     The none im gui viewport flags
+        ///     The none im gui dock node flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The is platform window im gui viewport flags
+        ///     The keep alive only im gui dock node flags
         /// </summary>
-        IsPlatformWindow = 1,
+        KeepAliveOnly = 1,
 
         /// <summary>
-        ///     The is platform monitor im gui viewport flags
+        ///     The no docking in central node im gui dock node flags
         /// </summary>
-        IsPlatformMonitor = 2,
+        NoDockingInCentralNode = 4,
 
         /// <summary>
-        ///     The owned by app im gui viewport flags
+        ///     The passthru central node im gui dock node flags
         /// </summary>
-        OwnedByApp = 4,
+        PassthruCentralNode = 8,
 
         /// <summary>
-        ///     The no decoration im gui viewport flags
+        ///     The no split im gui dock node flags
         /// </summary>
-        NoDecoration = 8,
+        NoSplit = 16,
 
         /// <summary>
-        ///     The no task bar icon im gui viewport flags
+        ///     The no resize im gui dock node flags
         /// </summary>
-        NoTaskBarIcon = 16,
+        NoResize = 32,
 
         /// <summary>
-        ///     The no focus on appearing im gui viewport flags
+        ///     The auto hide tab bar im gui dock node flags
         /// </summary>
-        NoFocusOnAppearing = 32,
-
-        /// <summary>
-        ///     The no focus on click im gui viewport flags
-        /// </summary>
-        NoFocusOnClick = 64,
-
-        /// <summary>
-        ///     The no inputs im gui viewport flags
-        /// </summary>
-        NoInputs = 128,
-
-        /// <summary>
-        ///     The no renderer clear im gui viewport flags
-        /// </summary>
-        NoRendererClear = 256,
-
-        /// <summary>
-        ///     The no auto merge im gui viewport flags
-        /// </summary>
-        NoAutoMerge = 512,
-
-        /// <summary>
-        ///     The top most im gui viewport flags
-        /// </summary>
-        TopMost = 1024,
-
-        /// <summary>
-        ///     The can host other windows im gui viewport flags
-        /// </summary>
-        CanHostOtherWindows = 2048,
-
-        /// <summary>
-        ///     The is minimized im gui viewport flags
-        /// </summary>
-        IsMinimized = 4096,
-
-        /// <summary>
-        ///     The is focused im gui viewport flags
-        /// </summary>
-        IsFocused = 8192
+        AutoHideTabBar = 64
     }
 }

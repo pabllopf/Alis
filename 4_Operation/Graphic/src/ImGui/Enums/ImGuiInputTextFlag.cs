@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.ImGui.Enums
     ///     The im gui input text flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiInputTextFlags
+    public enum ImGuiInputTextFlag
     {
         /// <summary>
         ///     The none im gui input text flags

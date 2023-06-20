@@ -218,9 +218,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
 
             float coordinateA, coordinateB;
-
-            // TODO_ERIN there might be some problem with the joint edges in b2Joint.
-
+            
             bodyC = this.jointA.BodyA;
             BodyA = this.jointA.BodyB;
 
@@ -311,9 +309,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             typeB = jointB.JointType;
 
             float coordinateA, coordinateB;
-
-            // TODO_ERIN there might be some problem with the joint edges in b2Joint.
-
+            
             bodyC = JointA.BodyA;
             BodyA = JointA.BodyB;
 
@@ -684,8 +680,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.Positions[indexC].A = aC;
             data.Positions[indexD].C = cD;
             data.Positions[indexD].A = aD;
-
-            // TODO_ERIN not implemented
+            
             return linearError < Settings.LinearSlop;
         }
     }

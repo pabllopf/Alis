@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiModFlags.cs
+//  File:ImGuiComboFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,34 +32,54 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui mod flags enum
+    ///     The im gui combo flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiModFlags
+    public enum ImGuiComboFlag
     {
         /// <summary>
-        ///     The none im gui mod flags
+        ///     The none im gui combo flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The ctrl im gui mod flags
+        ///     The popup align left im gui combo flags
         /// </summary>
-        Ctrl = 1,
+        PopupAlignLeft = 1,
 
         /// <summary>
-        ///     The shift im gui mod flags
+        ///     The height small im gui combo flags
         /// </summary>
-        Shift = 2,
+        HeightSmall = 2,
 
         /// <summary>
-        ///     The alt im gui mod flags
+        ///     The height regular im gui combo flags
         /// </summary>
-        Alt = 4,
+        HeightRegular = 4,
 
         /// <summary>
-        ///     The super im gui mod flags
+        ///     The height large im gui combo flags
         /// </summary>
-        Super = 8
+        HeightLarge = 8,
+
+        /// <summary>
+        ///     The height largest im gui combo flags
+        /// </summary>
+        HeightLargest = 16,
+
+        /// <summary>
+        ///     The no arrow button im gui combo flags
+        /// </summary>
+        NoArrowButton = 32,
+
+        /// <summary>
+        ///     The no preview im gui combo flags
+        /// </summary>
+        NoPreview = 64,
+
+        /// <summary>
+        ///     The height mask im gui combo flags
+        /// </summary>
+        HeightMask = 30
     }
 }

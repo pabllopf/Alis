@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiSliderFlags.cs
+//  File:ImGuiPopupFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,39 +32,64 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui slider flags enum
+    ///     The im gui popup flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiSliderFlags
+    public enum ImGuiPopupFlag
     {
         /// <summary>
-        ///     The none im gui slider flags
+        ///     The none im gui popup flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The always clamp im gui slider flags
+        ///     The mouse button left im gui popup flags
         /// </summary>
-        AlwaysClamp = 16,
+        MouseButtonLeft = 0,
 
         /// <summary>
-        ///     The logarithmic im gui slider flags
+        ///     The mouse button right im gui popup flags
         /// </summary>
-        Logarithmic = 32,
+        MouseButtonRight = 1,
 
         /// <summary>
-        ///     The no round to format im gui slider flags
+        ///     The mouse button middle im gui popup flags
         /// </summary>
-        NoRoundToFormat = 64,
+        MouseButtonMiddle = 2,
 
         /// <summary>
-        ///     The no input im gui slider flags
+        ///     The mouse button mask im gui popup flags
         /// </summary>
-        NoInput = 128,
+        MouseButtonMask = 31,
 
         /// <summary>
-        ///     The invalid mask im gui slider flags
+        ///     The mouse button default im gui popup flags
         /// </summary>
-        InvalidMask = 1879048207
+        MouseButtonDefault = 1,
+
+        /// <summary>
+        ///     The no open over existing popup im gui popup flags
+        /// </summary>
+        NoOpenOverExistingPopup = 32,
+
+        /// <summary>
+        ///     The no open over items im gui popup flags
+        /// </summary>
+        NoOpenOverItems = 64,
+
+        /// <summary>
+        ///     The any popup id im gui popup flags
+        /// </summary>
+        AnyPopupId = 128,
+
+        /// <summary>
+        ///     The any popup level im gui popup flags
+        /// </summary>
+        AnyPopupLevel = 256,
+
+        /// <summary>
+        ///     The any popup im gui popup flags
+        /// </summary>
+        AnyPopup = 384
     }
 }

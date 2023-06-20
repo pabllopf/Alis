@@ -45,7 +45,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     The flags
         /// </summary>
-        public ImGuiViewportFlags Flags;
+        public ImGuiViewportFlag Flag;
 
         /// <summary>
         ///     The pos

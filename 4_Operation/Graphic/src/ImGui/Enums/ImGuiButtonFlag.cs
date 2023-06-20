@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiTableRowFlags.cs
+//  File:ImGuiButtonFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,19 +32,39 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui table row flags enum
+    ///     The im gui button flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiTableRowFlags
+    public enum ImGuiButtonFlag
     {
         /// <summary>
-        ///     The none im gui table row flags
+        ///     The none im gui button flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The headers im gui table row flags
+        ///     The mouse button left im gui button flags
         /// </summary>
-        Headers = 1
+        MouseButtonLeft = 1,
+
+        /// <summary>
+        ///     The mouse button right im gui button flags
+        /// </summary>
+        MouseButtonRight = 2,
+
+        /// <summary>
+        ///     The mouse button middle im gui button flags
+        /// </summary>
+        MouseButtonMiddle = 4,
+
+        /// <summary>
+        ///     The mouse button mask im gui button flags
+        /// </summary>
+        MouseButtonMask = 7,
+
+        /// <summary>
+        ///     The mouse button default im gui button flags
+        /// </summary>
+        MouseButtonDefault = 1
     }
 }

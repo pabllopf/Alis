@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.ImGui.Enums
     ///     The im gui color edit flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiColorEditFlags
+    public enum ImGuiColorEditFlag
     {
         /// <summary>
         ///     The none im gui color edit flags
