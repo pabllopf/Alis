@@ -98,7 +98,7 @@ var searchData=
   ['solver_10558',['Solver',['../d2/df0/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver.html',1,'Alis::Core::Physic::Dynamics']]],
   ['sphere_10559',['Sphere',['../d5/d7d/namespace_alis_1_1_core_1_1_aspect_1_1_math_1_1_figures_1_1_d3_1_1_sphere.html',1,'Alis::Core::Aspect::Math::Figures::D3']]],
   ['streams_10560',['Streams',['../d6/de5/namespace_alis_1_1_core_1_1_aspect_1_1_memory_1_1_streams.html',1,'Alis::Core::Aspect::Memory']]],
-  ['structs_10561',['Structs',['../d5/de3/namespace_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs.html',1,'Alis::Core::Graphic::ImGui']]],
+  ['structs_10561',['Structs',['../d5/de3/namespace_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs.html',1,'Alis.Core.Graphic.ImGui.Structs'],['../db/d57/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs.html',1,'Alis.Core.Graphic.SDL.Structs']]],
   ['sweep_10562',['Sweep',['../d2/dfa/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep.html',1,'Alis::Core::Physic::Tools::Triangulation::Delaunay::Delaunay']]],
   ['systems_10563',['Systems',['../df/d01/namespace_alis_1_1_core_1_1_systems.html',1,'Alis::Core']]],
   ['texturetools_10564',['TextureTools',['../dd/d3e/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_texture_tools.html',1,'Alis::Core::Physic::Tools']]],

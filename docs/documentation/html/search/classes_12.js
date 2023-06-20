@@ -88,7 +88,7 @@ var searchData=
   ['settingmanagerbuilder_10339',['SettingManagerBuilder',['../d3/d94/class_alis_1_1_builder_1_1_core_1_1_manager_1_1_setting_manager_builder.html',1,'Alis::Builder::Core::Manager']]],
   ['settings_10340',['Settings',['../d2/dcb/class_alis_1_1_core_1_1_physic_1_1_config_1_1_settings.html',1,'Alis::Core::Physic::Config']]],
   ['shader_10341',['Shader',['../df/d95/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_shader.html',1,'Alis::Core::Graphic::SFML::Graphics']]],
-  ['shape_10342',['Shape',['../d5/ddb/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_shape.html',1,'Alis.Core.Graphic.SFML.Graphics.Shape'],['../d5/deb/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_shape.html',1,'Alis.Core.Physic.Collision.Shapes.Shape']]],
+  ['shape_10342',['Shape',['../d5/deb/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_shape.html',1,'Alis.Core.Physic.Collision.Shapes.Shape'],['../d5/ddb/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_shape.html',1,'Alis.Core.Graphic.SFML.Graphics.Shape']]],
   ['shapecastinput_10343',['ShapeCastInput',['../de/d87/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_shape_cast_input.html',1,'Alis::Core::Physic::Collision::Distance']]],
   ['shapecastoutput_10344',['ShapeCastOutput',['../da/dcd/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_shape_cast_output.html',1,'Alis::Core::Physic::Collision::Distance']]],
   ['shapedata_10345',['ShapeData',['../dc/d8e/struct_alis_1_1_core_1_1_physic_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_shape_data.html',1,'Alis::Core::Physic::Extensions::PhysicsLogics::PhysicsLogicBase']]],

@@ -1,5 +1,13 @@
 var NAVTREEINDEX41 =
 {
+"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#aac6b5a71853632f378ce9aee6e751d0b":[1,0,0,2,5,0,2,30,586],
+"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#aac7a5550de6f5f7947a5b8c5fc65e97c":[1,0,0,2,5,0,2,30,201],
+"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#aac7ed01e39fbc5e7e209f9bd12026faa":[1,0,0,2,5,0,2,30,699],
+"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#aac8afad2a9bc06fa32479460b149fc9b":[1,0,0,2,5,0,2,30,439],
+"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#aade573b09d03a76fc5adc2a7ed528c17":[1,0,0,2,5,0,2,30,668],
+"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#aae267a8a0c607ead31ca43b6d7ba3fab":[1,0,0,2,5,0,2,30,150],
+"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#aae36b9e3e140b9c02868741397bb780d":[1,0,0,2,5,0,2,30,484],
+"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#aaf4f073beaba457f395f3c82832538c0":[1,0,0,2,5,0,2,30,218],
 "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#ab051597f24c419596f053ee2c3d6a915":[1,0,0,2,5,0,2,30,39],
 "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#ab146e693fb2faffb5cad1c7b39597fba":[1,0,0,2,5,0,2,30,588],
 "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#ab1bba746aecf0ea0f19917f70f185acf":[1,0,0,2,5,0,2,30,453],
@@ -241,13 +249,5 @@ var NAVTREEINDEX41 =
 "dd/da4/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_collide_edge_1_1_temp_polygon.html":[1,0,0,2,8,0,4,2,0],
 "dd/da4/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_collide_edge_1_1_temp_polygon.html#a0261e8e217d13043bdf858e638d53994":[1,0,0,2,8,0,4,2,0,1],
 "dd/da4/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_collide_edge_1_1_temp_polygon.html#a1dc0399220c4ba09b6c20770edce8a56":[1,0,0,2,8,0,4,2,0,2],
-"dd/da4/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_collide_edge_1_1_temp_polygon.html#a2021f1941c2376e7680b89b70b448fc7":[1,0,0,2,8,0,4,2,0,0],
-"dd/da4/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_collide_edge_1_1_temp_polygon.html#aee7383b816e33e15031ad2d33d673b4a":[1,0,0,2,8,0,4,2,0,3],
-"dd/da5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_multi_gesture_event.html":[1,0,0,2,5,3,62],
-"dd/da5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_multi_gesture_event.html#a71873861d376214a514fb71946eb9b63":[1,0,0,2,5,3,62,7],
-"dd/da5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_multi_gesture_event.html#a7c77bfeac3967928fc6b9b27194d895b":[1,0,0,2,5,3,62,3],
-"dd/da5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_multi_gesture_event.html#a843afe889e36f762299fd15a27dd9ff9":[1,0,0,2,5,3,62,0],
-"dd/da5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_multi_gesture_event.html#a8d8c6a3510f37a5677bc4f21367e08d9":[1,0,0,2,5,3,62,8],
-"dd/da5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_multi_gesture_event.html#a92c0499fb79cd81e09e0e48dc86c85c1":[1,0,0,2,5,3,62,2],
-"dd/da5/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_multi_gesture_event.html#aafbd751d6849c26e2543f3be45796452":[1,0,0,2,5,3,62,6]
+"dd/da4/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_collide_edge_1_1_temp_polygon.html#a2021f1941c2376e7680b89b70b448fc7":[1,0,0,2,8,0,4,2,0,0]
 };
