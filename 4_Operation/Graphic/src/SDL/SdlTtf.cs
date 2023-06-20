@@ -126,10 +126,8 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The ttf hinting light subpixel
         /// </summary>
-        public const int TtfHintingLightSubpixel = 4; /* >= 2.0.16 */
-
-        /* IntPtr refers to a TTF_Font* */
-
+        public const int TtfHintingLightSubpixel = 4; 
+        
         /// <summary>
         ///     Ttfs the open font using the specified file
         /// </summary>
@@ -229,7 +227,7 @@ namespace Alis.Core.Graphic.SDL
         )
         {
             byte[] utf8Text = Sdl.Utf8EncodeHeap(text);
-            IntPtr result = SdlTtfExtern.INTERNAL_TTF_RenderUTF8_Shaded_Wrapped(
+            IntPtr result = SdlTtfExtern.InternalTtfRenderUtf8ShadedWrapped(
                 font,
                 utf8Text,
                 fg,
@@ -256,7 +254,7 @@ namespace Alis.Core.Graphic.SDL
         )
         {
             byte[] utf8Text = Sdl.Utf8EncodeHeap(text);
-            IntPtr result = SdlTtfExtern.INTERNAL_TTF_RenderUTF8_Shaded(
+            IntPtr result = SdlTtfExtern.InternalTtfRenderUtf8Shaded(
                 font,
                 utf8Text,
                 fg,
@@ -282,7 +280,7 @@ namespace Alis.Core.Graphic.SDL
         )
         {
             byte[] utf8Text = Sdl.Utf8EncodeHeap(text);
-            IntPtr result = SdlTtfExtern.INTERNAL_TTF_RenderUTF8_Solid_Wrapped(
+            IntPtr result = SdlTtfExtern.InternalTtfRenderUtf8SolidWrapped(
                 font,
                 utf8Text,
                 fg,
@@ -306,7 +304,7 @@ namespace Alis.Core.Graphic.SDL
         )
         {
             byte[] utf8Text = Sdl.Utf8EncodeHeap(text);
-            IntPtr result = SdlTtfExtern.INTERNAL_TTF_RenderUTF8_Solid(
+            IntPtr result = SdlTtfExtern.InternalTtfRenderUtf8Solid(
                 font,
                 utf8Text,
                 fg
@@ -333,7 +331,7 @@ namespace Alis.Core.Graphic.SDL
         )
         {
             byte[] utf8Text = Sdl.Utf8EncodeHeap(text);
-            int result = SdlTtfExtern.INTERNAL_TTF_MeasureUTF8(
+            int result = SdlTtfExtern.InternalTtfMeasureUtf8(
                 font,
                 utf8Text,
                 measureWidth,
@@ -360,7 +358,7 @@ namespace Alis.Core.Graphic.SDL
         )
         {
             byte[] utf8Text = Sdl.Utf8EncodeHeap(text);
-            int result = SdlTtfExtern.INTERNAL_TTF_SizeUTF8(
+            int result = SdlTtfExtern.InternalTtfSizeUtf8(
                 font,
                 utf8Text,
                 out w,
@@ -375,7 +373,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The string</returns>
-        public static string TTF_FontFaceStyleName(IntPtr font) => Sdl.UTF8_ToManaged(SdlTtfExtern.INTERNAL_TTF_FontFaceStyleName(font));
+        public static string TTF_FontFaceStyleName(IntPtr font) => Sdl.UTF8_ToManaged(SdlTtfExtern.InternalTtfFontFaceStyleName(font));
 
         /// <summary>
         ///     Ttfs the open font index using the specified file
@@ -391,7 +389,7 @@ namespace Alis.Core.Graphic.SDL
         )
         {
             byte[] utf8File = Sdl.Utf8EncodeHeap(file);
-            IntPtr handle = SdlTtfExtern.INTERNAL_TTF_OpenFontIndex(
+            IntPtr handle = SdlTtfExtern.InternalTtfOpenFontIndex(
                 utf8File,
                 ptsize,
                 index
@@ -407,7 +405,7 @@ namespace Alis.Core.Graphic.SDL
         public static SdlVersion TTF_LinkedVersion()
         {
             SdlVersion result;
-            IntPtr resultPtr = SdlTtfExtern.INTERNAL_TTF_LinkedVersion();
+            IntPtr resultPtr = SdlTtfExtern.InternalTtfLinkedVersion();
             result = (SdlVersion) Marshal.PtrToStructure(
                 resultPtr,
                 typeof(SdlVersion)
