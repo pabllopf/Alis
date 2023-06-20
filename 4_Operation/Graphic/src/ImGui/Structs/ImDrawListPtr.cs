@@ -43,7 +43,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImDrawList* NativePtr { get; }
+        public ImDrawList* NativePtr { get; set; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImDrawListPtr" /> class

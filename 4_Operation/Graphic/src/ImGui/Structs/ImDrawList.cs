@@ -40,17 +40,17 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     The cmd buffer
         /// </summary>
-        public ImVector CmdBuffer;
+        public ImVector CmdBuffer { get; set; }
 
         /// <summary>
         ///     The idx buffer
         /// </summary>
-        public ImVector IdxBuffer;
+        public ImVector IdxBuffer { get; set; }
 
         /// <summary>
         ///     The vtx buffer
         /// </summary>
-        public ImVector VtxBuffer;
+        public ImVector VtxBuffer { get; set; }
 
         /// <summary>
         ///     The flags

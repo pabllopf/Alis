@@ -9,6 +9,26 @@
                 The engine class
             </summary>
         </member>
+        <member name="F:Alis.App.Engine.Engine._renderer">
+            <summary>
+                The renderer
+            </summary>
+        </member>
+        <member name="F:Alis.App.Engine.Engine._quit">
+            <summary>
+                The quit
+            </summary>
+        </member>
+        <member name="F:Alis.App.Engine.Engine._window">
+            <summary>
+                The window
+            </summary>
+        </member>
+        <member name="F:Alis.App.Engine.Engine._glContext">
+            <summary>
+                The gl context
+            </summary>
+        </member>
         <member name="M:Alis.App.Engine.Engine.#ctor(System.String[])">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.App.Engine.Engine" /> class
@@ -21,32 +41,12 @@
             </summary>
             <returns>The int</returns>
         </member>
-        <member name="T:Alis.App.Engine.MainClass">
+        <member name="T:Alis.App.Engine.Program">
             <summary>
                 The main class
             </summary>
         </member>
-        <member name="F:Alis.App.Engine.MainClass._renderer">
-            <summary>
-                The renderer
-            </summary>
-        </member>
-        <member name="F:Alis.App.Engine.MainClass._quit">
-            <summary>
-                The quit
-            </summary>
-        </member>
-        <member name="F:Alis.App.Engine.MainClass._window">
-            <summary>
-                The window
-            </summary>
-        </member>
-        <member name="F:Alis.App.Engine.MainClass._glContext">
-            <summary>
-                The gl context
-            </summary>
-        </member>
-        <member name="M:Alis.App.Engine.MainClass.Main(System.String[])">
+        <member name="M:Alis.App.Engine.Program.Main(System.String[])">
             <summary>
                 Main the args
             </summary>
