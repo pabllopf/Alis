@@ -31,7 +31,6 @@ using System.Collections.Generic;
 
 namespace Alis.Core.Physic.Tools.Triangulation.Seidel
 {
-    // Node for a Directed Acyclic graph (DAG)
     /// <summary>
     ///     The node class
     /// </summary>
@@ -77,12 +76,10 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// <summary>
         ///     Locates the s
         /// </summary>
-        /// <param name="s">The </param>
+        /// <param name="edge">The </param>
         /// <returns>The sink</returns>
-        public abstract Sink Locate(Edge s);
-
-        // Replace a node in the graph with this node
-        // Make sure parent pointers are updated
+        public abstract Sink Locate(Edge edge);
+        
         /// <summary>
         ///     Replaces the node
         /// </summary>
@@ -91,7 +88,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         {
             foreach (Node parent in node.ParentList)
             {
-                // Select the correct node to replace (left or right child)
                 if (parent.LeftChild == node)
                 {
                     parent.LeftChild = this;
