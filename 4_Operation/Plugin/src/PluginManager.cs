@@ -70,76 +70,112 @@ namespace Alis.Core.Plugin
         }
 
         /// <summary>
-        ///     Loads the plugins using the specified plugins directory
+        /// Loads the plugins using the specified plugins directory
         /// </summary>
         /// <param name="pluginsDirectory">The plugins directory</param>
         public void LoadPlugins(string pluginsDirectory)
         {
-            string platformFolder;
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                platformFolder = "Windows";
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                platformFolder = IsRunningOniOS() ? "ios" : "osx";
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                platformFolder = IsRunningOnAndroid() ? "android" : "linux";
-            }
-            else
-            {
-                throw new NotSupportedException("Unsupported platform. Plugins will not be loaded.");
-            }
-
+            string platformFolder = GetPlatformFolder();
             Console.WriteLine("os: " + platformFolder);
 
             string platformPluginsDirectory = Path.Combine(pluginsDirectory, platformFolder);
-
             Console.WriteLine("directory: " + platformPluginsDirectory);
 
-            if (!Directory.Exists(platformPluginsDirectory))
-            {
-                throw new DirectoryNotFoundException($"Plugins directory for platform '{platformFolder}' does not exist.");
-            }
+            ValidatePluginsDirectory(platformPluginsDirectory);
 
-            string[] pluginFiles = Directory.GetFiles(platformPluginsDirectory)
-                .Where(file => IsPluginFile(file))
-                .ToArray();
+            IEnumerable<string> pluginFiles = GetPluginFiles(platformPluginsDirectory);
 
             foreach (string pluginFile in pluginFiles)
             {
-                try
-                {
-                    Assembly assembly = Assembly.LoadFrom(pluginFile);
-                    loadedAssemblies.Add(assembly);
-
-                    Type[] types = assembly.GetTypes();
-
-                    foreach (Type type in types)
-                    {
-                        if (typeof(IPlugin).IsAssignableFrom(type))
-                        {
-                            IPlugin plugin = (IPlugin) Activator.CreateInstance(type);
-                            loadedPlugins.Add(plugin);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error loading plugin from file '{pluginFile}': {ex.Message}");
-                }
+                LoadPluginFromFile(pluginFile);
             }
         }
+
+        /// <summary>
+        /// Gets the platform folder
+        /// </summary>
+        /// <exception cref="NotSupportedException">Unsupported platform. Plugins will not be loaded.</exception>
+        /// <returns>The string</returns>
+        private string GetPlatformFolder()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return "Windows";
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                return IsRunningOniOS() ? "ios" : "osx";
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                return IsRunningOnAndroid() ? "android" : "linux";
+            }
+
+            throw new NotSupportedException("Unsupported platform. Plugins will not be loaded.");
+        }
+
+        /// <summary>
+        /// Validates the plugins directory using the specified directory
+        /// </summary>
+        /// <param name="directory">The directory</param>
+        /// <exception cref="DirectoryNotFoundException">Plugins directory '{directory}' does not exist.</exception>
+        private static void ValidatePluginsDirectory(string directory)
+        {
+            if (!Directory.Exists(directory))
+            {
+                throw new DirectoryNotFoundException($"Plugins directory '{directory}' does not exist.");
+            }
+        }
+
+        /// <summary>
+        /// Gets the plugin files using the specified directory
+        /// </summary>
+        /// <param name="directory">The directory</param>
+        /// <returns>The string array</returns>
+        private IEnumerable<string> GetPluginFiles(string directory)
+        {
+            return Directory.GetFiles(directory)
+                .Where(IsPluginFile)
+                .ToArray();
+        }
+
+        /// <summary>
+        /// Loads the plugin from file using the specified plugin file
+        /// </summary>
+        /// <param name="pluginFile">The plugin file</param>
+        private void LoadPluginFromFile(string pluginFile)
+        {
+            try
+            {
+                Assembly assembly = Assembly.LoadFrom(pluginFile);
+                loadedAssemblies.Add(assembly);
+
+                Type[] types = assembly.GetTypes();
+
+                foreach (Type type in types)
+                {
+                    if (typeof(IPlugin).IsAssignableFrom(type))
+                    {
+                        IPlugin plugin = (IPlugin) Activator.CreateInstance(type);
+                        loadedPlugins.Add(plugin);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading plugin from file '{pluginFile}': {ex.Message}");
+            }
+        }
+
 
         /// <summary>
         ///     Describes whether this instance is plugin file
         /// </summary>
         /// <param name="filePath">The file path</param>
         /// <returns>The bool</returns>
-        private bool IsPluginFile(string filePath)
+        private static bool IsPluginFile(string filePath)
         {
             string extension = Path.GetExtension(filePath);
             return extension == ".dll" || extension == ".so" || extension == ".dylib";
@@ -148,7 +184,7 @@ namespace Alis.Core.Plugin
         /// <summary>
         ///     Unloads the plugins
         /// </summary>
-        public void UnloadPlugins()
+        private void UnloadPlugins()
         {
             foreach (IPlugin plugin in loadedPlugins)
             {
@@ -164,45 +200,33 @@ namespace Alis.Core.Plugin
         ///     Describes whether this instance is running oni os
         /// </summary>
         /// <returns>The bool</returns>
-        private bool IsRunningOniOS() => RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && (RuntimeInformation.OSDescription.Contains("iPhone") || RuntimeInformation.OSDescription.Contains("iPad"));
+        private static bool IsRunningOniOS() => RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && (RuntimeInformation.OSDescription.Contains("iPhone") || RuntimeInformation.OSDescription.Contains("iPad"));
 
 
         /// <summary>
         ///     Describes whether this instance is running on android
         /// </summary>
         /// <returns>The bool</returns>
-        private bool IsRunningOnAndroid() => RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && RuntimeInformation.OSDescription.Contains("Android");
+        private static bool IsRunningOnAndroid() => RuntimeInformation.IsOSPlatform(OSPlatform.Linux) && RuntimeInformation.OSDescription.Contains("Android");
 
         /// <summary>
         ///     Initializes this instance
         /// </summary>
-        public void Initialize()
-        {
-            loadedPlugins.ForEach(plugin => plugin.Initialize());
-        }
+        public void Initialize() => loadedPlugins.ForEach(plugin => plugin.Initialize());
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public void Update()
-        {
-            loadedPlugins.ForEach(plugin => plugin.Update());
-        }
+        public void Update() => loadedPlugins.ForEach(plugin => plugin.Update());
 
         /// <summary>
         ///     Renders this instance
         /// </summary>
-        public void Render()
-        {
-            loadedPlugins.ForEach(plugin => plugin.Render());
-        }
+        public void Render() => loadedPlugins.ForEach(plugin => plugin.Render());
 
         /// <summary>
         ///     Shutdowns this instance
         /// </summary>
-        public void Shutdown()
-        {
-            loadedPlugins.ForEach(plugin => plugin.Shutdown());
-        }
+        public void Shutdown() => loadedPlugins.ForEach(plugin => plugin.Shutdown());
     }
 }
