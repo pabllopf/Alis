@@ -51,7 +51,7 @@ var struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas_pt
     [ "GetTexDataAsRgba32", "d2/d03/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas_ptr.html#a20b9576533ff40643bc3d34a886e1708", null ],
     [ "IsBuilt", "d2/d03/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas_ptr.html#aec6953e40053b540ec1099daf122a168", null ],
     [ "SetTexId", "d2/d03/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas_ptr.html#a74809a50ccd5349fd5c7f418b9a14fe3", null ],
-    [ "Flags", "d2/d03/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas_ptr.html#a47043161c849e329c24515fed27aab5b", null ],
+    [ "Flag", "d2/d03/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas_ptr.html#a0dc0d67517d00732c837bb843e831112", null ],
     [ "TexId", "d2/d03/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas_ptr.html#a8d08f55f7189b6852b85e85af7e8d8c3", null ],
     [ "TexDesiredWidth", "d2/d03/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas_ptr.html#a11caf843ca2dcec11d2b10c80894a834", null ],
     [ "TexGlyphPadding", "d2/d03/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas_ptr.html#a342737131a934843338943480eeae166", null ],

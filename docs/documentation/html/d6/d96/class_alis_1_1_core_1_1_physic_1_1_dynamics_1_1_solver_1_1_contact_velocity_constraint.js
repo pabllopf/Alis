@@ -1,6 +1,7 @@
 var class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint =
 [
     [ "ContactVelocityConstraint", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#a62a7984fc6f431c4799544c66ef6a341", null ],
+    [ "Points", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#a2d9c59f9c01eff486f112c78738f7262", null ],
     [ "ContactIndex", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#a22ebf21a6ab19d452a14cba5cd3c8741", null ],
     [ "Friction", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#ac45ef073ab88c9e30da6659863baed0b", null ],
     [ "IndexA", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#ada6b53c9ff6381fccb9a5b12640b1e2d", null ],
@@ -13,7 +14,6 @@ var class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_
     [ "Normal", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#ac92573086c2fe79d4d9a3bf9df0edae7", null ],
     [ "NormalMass", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#aaf965b57983ab6e8907700dd4600ae28", null ],
     [ "PointCount", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#aa737c6171ad89a32d2a0a45df23bb645", null ],
-    [ "Points", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#a2d9c59f9c01eff486f112c78738f7262", null ],
     [ "Restitution", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#ad6d09606cd75a84f10016331b1d70d6f", null ],
     [ "TangentSpeed", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#afd9d3810e45114502358f6c9b346e563", null ],
     [ "Threshold", "d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html#ab742730427df0af4801c96b744f8891a", null ]

@@ -15,10 +15,10 @@ var class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_
     [ "PrepareTriangulation", "d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a03c4b2d9f62cb42533d292fc70fb3f1b", null ],
     [ "FinalizeTriangulation", "d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a054fd09172272698907f5f03f8084c34", null ],
     [ "NewConstraint", "d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a9f943920dc2e088d9db6b84d8b86dc0f", null ],
-    [ "comparator", "d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a68acbf2d95f46ca5279905294a71dffa", null ],
-    [ "AFront", "d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a63f48e8a8589bab2f21a28676ef4dde2", null ],
     [ "Basin", "d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a1d3d60c93a547ba44c08e62108e781d9", null ],
+    [ "comparator", "d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a68acbf2d95f46ca5279905294a71dffa", null ],
     [ "EdgeEvent", "d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#ab863bbe55f301878e0232956cd1731e0", null ],
+    [ "AFront", "d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a63f48e8a8589bab2f21a28676ef4dde2", null ],
     [ "Alpha", "d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a0cd41d4a61e424d9638ccdb38eaa5ef4", null ],
     [ "Head", "d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a1ae51aff349ff83cf18cc12c8ae4f30f", null ],
     [ "Tail", "d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a46c3387893ddde78ebb89a382cd34c59", null ]

@@ -100,40 +100,69 @@ $(document).ready(function(){initNavTree('da/d5d/_buffer_usage_hint_8cs_source.h
 <div class="title">BufferUsageHint.cs</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html">Alis.Core.Graphic.OpenGL.Enums</a></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;{</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="../../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#a9e852ffee8b84825cb1725f8d3d1ca2e">    6</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="../../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#a9e852ffee8b84825cb1725f8d3d1ca2e">BufferUsageHint</a></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        StreamDraw = 0x88E0,</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        StreamRead = 0x88E1,</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        StreamCopy = 0x88E2,</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        StaticDraw = 0x88E4,</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        StaticRead = 0x88E5,</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        StaticCopy = 0x88E6,</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        DynamicDraw = 0x88E8,</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        DynamicRead = 0x88E9,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="../../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#a9e852ffee8b84825cb1725f8d3d1ca2eab831b12d8d415645f1f00e37e0426ca2">DynamicCopy</a> = 0x88EA</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// --------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//  --------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">//  File:BufferUsageHint.cs</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//  Author:Pablo Perdomo Falcón</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">//  Web:https://www.pabllopf.dev/</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//  Copyright (c) 2021 GNU General Public License v3.0</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">//  This program is free software:you can redistribute it and/or modify</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//  it under the terms of the GNU General Public License as published by</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">//  the Free Software Foundation, either version 3 of the License, or</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//  (at your option) any later version.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">//  This program is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">//  but WITHOUT ANY WARRANTY without even the implied warranty of</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">//  GNU General Public License for more details.</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">//  You should have received a copy of the GNU General Public License</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">//  along with this program.If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">//  --------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html">Alis.Core.Graphic.OpenGL.Enums</a></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#a9e852ffee8b84825cb1725f8d3d1ca2e">   35</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="../../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#a9e852ffee8b84825cb1725f8d3d1ca2e">BufferUsageHint</a></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        StreamDraw = 0x88E0,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        StreamRead = 0x88E1,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        StreamCopy = 0x88E2,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        StaticDraw = 0x88E4,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        StaticRead = 0x88E5,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        StaticCopy = 0x88E6,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        DynamicDraw = 0x88E8,</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        DynamicRead = 0x88E9,</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="../../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#a9e852ffee8b84825cb1725f8d3d1ca2eab831b12d8d415645f1f00e37e0426ca2">DynamicCopy</a> = 0x88EA</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums_html"><div class="ttname"><a href="../../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html">Alis.Core.Graphic.OpenGL.Enums</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dc8/_active_attrib_type_8cs_source.html#l00001">ActiveAttribType.cs:2</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums_html"><div class="ttname"><a href="../../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html">Alis.Core.Graphic.OpenGL.Enums</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dc8/_active_attrib_type_8cs_source.html#l00030">ActiveAttribType.cs:31</a></div></div>
 <div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums_html_a9e852ffee8b84825cb1725f8d3d1ca2eab831b12d8d415645f1f00e37e0426ca2"><div class="ttname"><a href="../../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#a9e852ffee8b84825cb1725f8d3d1ca2eab831b12d8d415645f1f00e37e0426ca2">Alis.Core.Graphic.OpenGL.Enums.BufferUsageHint.StreamDraw</a></div><div class="ttdeci">@ StreamDraw</div><div class="ttdoc">The stream draw buffer usage hint</div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums_html_a9e852ffee8b84825cb1725f8d3d1ca2e"><div class="ttname"><a href="../../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#a9e852ffee8b84825cb1725f8d3d1ca2e">Alis.Core.Graphic.OpenGL.Enums.BufferUsageHint</a></div><div class="ttdeci">BufferUsageHint</div><div class="ttdoc">The buffer usage hint enum</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d5d/_buffer_usage_hint_8cs_source.html#l00006">BufferUsageHint.cs:7</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums_html_a9e852ffee8b84825cb1725f8d3d1ca2e"><div class="ttname"><a href="../../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#a9e852ffee8b84825cb1725f8d3d1ca2e">Alis.Core.Graphic.OpenGL.Enums.BufferUsageHint</a></div><div class="ttdeci">BufferUsageHint</div><div class="ttdoc">The buffer usage hint enum</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d5d/_buffer_usage_hint_8cs_source.html#l00035">BufferUsageHint.cs:36</a></div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_8272ea2c9ef4a5a450abbc74ffafe4de.html">4_Operation</a></li><li class="navelem"><a class="el" href="../../dir_430bc0ab51a660a0cbdd8e26a7c3af11.html">Graphic</a></li><li class="navelem"><a class="el" href="../../dir_10daa31737c712bdd2ca762b4eaa2d4b.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3d4360cab6ea73faf28673fc63fdb4e1.html">OpenGL</a></li><li class="navelem"><a class="el" href="../../dir_42f23ee303e55ef5f1fe22f1bdab8eb6.html">Enums</a></li><li class="navelem"><b>BufferUsageHint.cs</b></li>
     <li class="footer">
-      <a>Generated on | Tue Jun 20 2023 |</a>
+      <a>Generated on | Wed Jun 21 2023 |</a>
     </li>
   </ul>
 </div>
