@@ -13,7 +13,7 @@ var class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_tr
     [ "queryGraph", "d1/d1a/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_triangulator.html#ab198fd0b9d11fb717e8abb934c1446f9", null ],
     [ "sheer", "d1/d1a/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_triangulator.html#a4d4420b762ad5e5d19ecfb46a3941540", null ],
     [ "trapezoidalMap", "d1/d1a/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_triangulator.html#aa639a78ac8408152fcf41fdbc7a4fbab", null ],
-    [ "xMonoPoly", "d1/d1a/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_triangulator.html#aa6ec815a28015423bc50ed767c89f8c1", null ],
     [ "Trapezoids", "d1/d1a/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_triangulator.html#aa305040a0385fcb852b440e43c96613c", null ],
-    [ "Triangles", "d1/d1a/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_triangulator.html#a43ed3b316d34b20a6a1a9dd03e0b9d0f", null ]
+    [ "Triangles", "d1/d1a/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_triangulator.html#a43ed3b316d34b20a6a1a9dd03e0b9d0f", null ],
+    [ "xMonoPoly", "d1/d1a/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_triangulator.html#aa6ec815a28015423bc50ed767c89f8c1", null ]
 ];

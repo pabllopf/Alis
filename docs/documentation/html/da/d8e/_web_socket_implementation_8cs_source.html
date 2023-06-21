@@ -589,19 +589,19 @@ $(document).ready(function(){initNavTree('da/d8e/_web_socket_implementation_8cs_
 <div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;            <span class="comment">// NET45 does not have a TryGetBuffer function on Stream</span></div>
 <div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#a32a24a099ce4ac02eab9fe30f21d1c0b">_tryGetBufferFailureLogged</a>)</div>
 <div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;            {</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> ArraySegment&lt;byte&gt;(stream.ToArray(), 0, (<span class="keywordtype">int</span>)stream.Position);</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> ArraySegment&lt;byte&gt;(stream.ToArray(), 0, (<span class="keywordtype">int</span>) stream.Position);</div>
 <div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;            }</div>
 <div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160; </div>
 <div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;            <span class="comment">// note that a MemoryStream will throw an UnuthorizedAccessException if the internal buffer is not public. Set publiclyVisible = true</span></div>
 <div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;            <span class="keywordflow">try</span></div>
 <div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;            {</div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> ArraySegment&lt;byte&gt;(stream.GetBuffer(), 0, (<span class="keywordtype">int</span>)stream.Position);</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> ArraySegment&lt;byte&gt;(stream.GetBuffer(), 0, (<span class="keywordtype">int</span>) stream.Position);</div>
 <div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;            }</div>
 <div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;            <span class="keywordflow">catch</span> (UnauthorizedAccessException)</div>
 <div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;            {</div>
 <div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;                <a class="code" href="../../de/d69/class_alis_1_1_core_1_1_network_1_1_internal_1_1_events.html">Events</a>.<a class="code" href="../../de/d69/class_alis_1_1_core_1_1_network_1_1_internal_1_1_events.html#a8b5827cb5d16b52e2aaf80da1f6e9934">Log</a>.<a class="code" href="../../de/d69/class_alis_1_1_core_1_1_network_1_1_internal_1_1_events.html#a57ca1eb8d26b8263c587e9e264820f39">TryGetBufferNotSupported</a>(<a class="code" href="../../da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#a6b6be9d51bf8d5caf320f24b9093dae4">_guid</a>, stream?.GetType()?.ToString());</div>
 <div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;                <a class="code" href="../../da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#a32a24a099ce4ac02eab9fe30f21d1c0b">_tryGetBufferFailureLogged</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> ArraySegment&lt;byte&gt;(stream.ToArray(), 0, (<span class="keywordtype">int</span>)stream.Position);</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> ArraySegment&lt;byte&gt;(stream.ToArray(), 0, (<span class="keywordtype">int</span>) stream.Position);</div>
 <div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;            }</div>
 <div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;<span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;            <span class="comment">// Avoid calling ToArray on the MemoryStream because it allocates a new byte array on tha heap</span></div>
@@ -780,7 +780,7 @@ $(document).ready(function(){initNavTree('da/d8e/_web_socket_implementation_8cs_
   <ul>
     <li class="navelem"><a class="el" href="../../dir_8272ea2c9ef4a5a450abbc74ffafe4de.html">4_Operation</a></li><li class="navelem"><a class="el" href="../../dir_f2d230172fe1011c12300d92ec0aef26.html">Network</a></li><li class="navelem"><a class="el" href="../../dir_98a892797ab166238a7e6f53fc17c979.html">src</a></li><li class="navelem"><a class="el" href="../../dir_df58ff48fc06b4a346bfd317f3bbb299.html">Internal</a></li><li class="navelem"><b>WebSocketImplementation.cs</b></li>
     <li class="footer">
-      <a>Generated on | Tue Jun 20 2023 |</a>
+      <a>Generated on | Wed Jun 21 2023 |</a>
     </li>
   </ul>
 </div>

@@ -1,0 +1,25 @@
+var struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info =
+[
+    [ "name", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#a324224c1a6b315f3abe6b5728648898c", null ],
+    [ "flags", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#aff6308a8792bef6237bf5268e5647d47", null ],
+    [ "num_texture_formats", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#ad0d8dd1538691c4d34deea841385c352", null ],
+    [ "textureFormats0", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#a7dbd7da2f52ba504018cf53827b7d1c5", null ],
+    [ "textureFormats1", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#aff040b082ed7d80f6b454a16066d8c93", null ],
+    [ "textureFormats2", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#addb10e50f2b6d52cba706e23d5d2c4aa", null ],
+    [ "textureFormats3", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#adf9767d991fea6c421112df04717450f", null ],
+    [ "textureFormats4", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#aa7a3ce60c1fe201b39dc6f278400adad", null ],
+    [ "textureFormats5", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#a420fb72c22b1d4cb8690fb81db885803", null ],
+    [ "textureFormats6", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#a64561393d4c73df187376fdb61ec8e56", null ],
+    [ "textureFormats7", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#a3cecdd4775678e9c92c5ec8519ce70fa", null ],
+    [ "textureFormats8", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#a807a3e737be1184e6819623784f96ab6", null ],
+    [ "textureFormats9", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#abbf8eaebfc6ec7af626ae40c1d0e4e55", null ],
+    [ "textureFormats10", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#ab9f67cbb90b5813b28e33900c1daa1f7", null ],
+    [ "textureFormats11", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#aa9b8ed2112fc8d7ab5d00e8602e38c04", null ],
+    [ "textureFormats12", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#a43b6e0062dbe9e8f50dafbf96ead8d64", null ],
+    [ "textureFormats13", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#ab7c73d1eff348cb6f9e8c44cc3b2db9b", null ],
+    [ "textureFormats14", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#a16ac626d8868f292061909bcf2b20c5a", null ],
+    [ "textureFormats15", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#accd8688c660ff51cb19b43cb2edc11c6", null ],
+    [ "max_texture_width", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#a4727597b1c7e5d5b4e8a6d2905687dc1", null ],
+    [ "max_texture_height", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#a6701a308bd286bf870f881349cc88ef3", null ],
+    [ "TextureFormats", "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#ae3ba4d8cd85223fe14de4410f1ae1454", null ]
+];

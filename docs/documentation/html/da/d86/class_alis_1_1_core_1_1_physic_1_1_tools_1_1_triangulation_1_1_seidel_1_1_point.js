@@ -9,8 +9,8 @@ var class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_po
     [ "Dot", "da/d86/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_point.html#a2b7999e9d0992a64ab8c2831297bad94", null ],
     [ "Neq", "da/d86/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_point.html#a3f447c993fa14220bb707b15e210c00c", null ],
     [ "Orient2D", "da/d86/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_point.html#ad10c7c5395538a748b237377cb463eb0", null ],
-    [ "Next", "da/d86/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_point.html#a6506cf3b60d76759eb32c520c40f27ba", null ],
-    [ "Prev", "da/d86/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_point.html#a981573b69c74d0883ba6026e1e2265ee", null ],
     [ "X", "da/d86/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_point.html#a65f2d5cb960286fbd3c3c9fcab950560", null ],
-    [ "Y", "da/d86/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_point.html#a5a244b318ae10fac118ab52a69992ad4", null ]
+    [ "Y", "da/d86/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_point.html#a5a244b318ae10fac118ab52a69992ad4", null ],
+    [ "Next", "da/d86/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_point.html#a6506cf3b60d76759eb32c520c40f27ba", null ],
+    [ "Prev", "da/d86/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_point.html#a981573b69c74d0883ba6026e1e2265ee", null ]
 ];

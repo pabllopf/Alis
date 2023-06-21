@@ -100,23 +100,52 @@ $(document).ready(function(){initNavTree('de/d9b/_delete_buffers_8cs_source.html
 <div class="title">DeleteBuffers.cs</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> System.Runtime.InteropServices;</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d3/dde/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_delegates.html">Alis.Core.Graphic.OpenGL.Delegates</a></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    [UnmanagedFunctionPointer(CallingConvention.StdCall)]</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="../../d3/dde/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_delegates.html#a14147dcf853662080abcdeb8be491580">    9</a></span>&#160;    <span class="keyword">public</span> delegate <span class="keywordtype">void</span> <a class="code" href="../../d3/dde/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_delegates.html#a14147dcf853662080abcdeb8be491580">DeleteBuffers</a>(<span class="keywordtype">int</span> n, uint[] buffers);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// --------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//  --------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">//  File:DeleteBuffers.cs</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//  Author:Pablo Perdomo Falcón</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">//  Web:https://www.pabllopf.dev/</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//  Copyright (c) 2021 GNU General Public License v3.0</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">//  This program is free software:you can redistribute it and/or modify</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//  it under the terms of the GNU General Public License as published by</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">//  the Free Software Foundation, either version 3 of the License, or</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//  (at your option) any later version.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">//  This program is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">//  but WITHOUT ANY WARRANTY without even the implied warranty of</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">//  GNU General Public License for more details.</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">//  You should have received a copy of the GNU General Public License</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">//  along with this program.If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">//  --------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> System.Runtime.InteropServices;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d3/dde/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_delegates.html">Alis.Core.Graphic.OpenGL.Delegates</a></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    [UnmanagedFunctionPointer(CallingConvention.StdCall)]</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="../../d3/dde/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_delegates.html#a14147dcf853662080abcdeb8be491580">   38</a></span>&#160;    <span class="keyword">public</span> delegate <span class="keywordtype">void</span> <a class="code" href="../../d3/dde/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_delegates.html#a14147dcf853662080abcdeb8be491580">DeleteBuffers</a>(<span class="keywordtype">int</span> n, uint[] buffers);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_delegates_html"><div class="ttname"><a href="../../d3/dde/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_delegates.html">Alis.Core.Graphic.OpenGL.Delegates</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_attach_shader_8cs_source.html#l00003">AttachShader.cs:4</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_delegates_html"><div class="ttname"><a href="../../d3/dde/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_delegates.html">Alis.Core.Graphic.OpenGL.Delegates</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d13/_attach_shader_8cs_source.html#l00032">AttachShader.cs:33</a></div></div>
 <div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_delegates_html_a14147dcf853662080abcdeb8be491580"><div class="ttname"><a href="../../d3/dde/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_delegates.html#a14147dcf853662080abcdeb8be491580">Alis.Core.Graphic.OpenGL.Delegates.DeleteBuffers</a></div><div class="ttdeci">delegate void DeleteBuffers(int n, uint[] buffers)</div><div class="ttdoc">The delete buffers</div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_8272ea2c9ef4a5a450abbc74ffafe4de.html">4_Operation</a></li><li class="navelem"><a class="el" href="../../dir_430bc0ab51a660a0cbdd8e26a7c3af11.html">Graphic</a></li><li class="navelem"><a class="el" href="../../dir_10daa31737c712bdd2ca762b4eaa2d4b.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3d4360cab6ea73faf28673fc63fdb4e1.html">OpenGL</a></li><li class="navelem"><a class="el" href="../../dir_a00442a8337d102253924c6930dea6a7.html">Delegates</a></li><li class="navelem"><b>DeleteBuffers.cs</b></li>
     <li class="footer">
-      <a>Generated on | Tue Jun 20 2023 |</a>
+      <a>Generated on | Wed Jun 21 2023 |</a>
     </li>
   </ul>
 </div>

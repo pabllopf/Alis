@@ -1,8 +1,8 @@
 var struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data =
 [
     [ "Ctx", "d8/dc6/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data.html#af9b7b4eb8103f8ad3942b009d8859c54", null ],
-    [ "EventFlag", "d8/dc6/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data.html#aff300111d426eb3dcbba46eb9095ee8b", null ],
-    [ "Flags", "d8/dc6/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data.html#a0203ef5b6e217ce0b6d5feab8ebae5d8", null ],
+    [ "EventFlag", "d8/dc6/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data.html#afaea43ca92ac97aeae99bcbe059c69d5", null ],
+    [ "Flag", "d8/dc6/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data.html#a3f602f376c5f4c6f77dc4a90a76d5f83", null ],
     [ "UserData", "d8/dc6/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data.html#a77c91a4378b75fec70fa32815219863c", null ],
     [ "EventChar", "d8/dc6/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data.html#a8d8ce62ae00d33c333869fd59971ae3d", null ],
     [ "EventKey", "d8/dc6/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data.html#a5723f3ff89f6476594e00bf6c93b79a5", null ],
