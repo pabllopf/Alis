@@ -1,5 +1,9 @@
 var NAVTREEINDEX32 =
 {
+"db/d49/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_has.html":[1,0,0,2,0,2,0,25],
+"db/d49/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_has.html#a5d9abf1137c98fbe4b5169a71efb2847":[1,0,0,2,0,2,0,25,0],
+"db/d50/namespace_alis_1_1_core_1_1_graphic_1_1_properties.html":[0,0,0,2,5,2],
+"db/d50/namespace_alis_1_1_core_1_1_graphic_1_1_properties.html":[1,0,0,2,5,2],
 "db/d51/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector4_f.html":[1,0,0,2,0,4,4,8],
 "db/d51/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector4_f.html#a4e30211d1b87ab37deb4f8c68d72a53b":[1,0,0,2,0,4,4,8,2],
 "db/d51/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector4_f.html#a7a92823398ca952e9c65270177c60151":[1,0,0,2,0,4,4,8,3],
@@ -245,9 +249,5 @@ var NAVTREEINDEX32 =
 "db/db4/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_contracts_1_1_contract.html#a0e33e75ea24c692855fa0481015f059d":[1,0,0,2,8,6,0,0,2],
 "db/db4/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_contracts_1_1_contract.html#a0e3fcc6d53ce0faee105bd1a135ea862":[1,0,0,2,8,6,0,0,1],
 "db/db4/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_contracts_1_1_contract.html#a4e5e4a13eaa14b12e39302fe4588317e":[1,0,0,2,8,6,0,0,3],
-"db/db4/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_contracts_1_1_contract.html#a6aee2aab7974becc53021355997ffbc9":[1,0,0,2,8,6,0,0,5],
-"db/db4/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_contracts_1_1_contract.html#aecb4d006730b9b668055f2235bddcd73":[1,0,0,2,8,6,0,0,4],
-"db/db4/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_contracts_1_1_contract.html#aefdd598cf116d9645630c5188bc25d03":[1,0,0,2,8,6,0,0,6],
-"db/db4/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_contracts_1_1_contract.html#af2057383b609e1a9212a5ad6f53ca29a":[1,0,0,2,8,6,0,0,0],
-"db/db4/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_with_tag.html":[1,0,0,2,0,2,0,66]
+"db/db4/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_contracts_1_1_contract.html#a6aee2aab7974becc53021355997ffbc9":[1,0,0,2,8,6,0,0,5]
 };

@@ -1,5 +1,9 @@
 var NAVTREEINDEX19 =
 {
+"d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#aa62138685b148a50a08ca601f11ac06f":[1,0,0,2,5,0,2,53,17],
+"d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#aa698ba37740203e4935f48bb2804c6bc":[1,0,0,2,5,0,2,53,74],
+"d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#aac2512c9f76d52921d7da39e702847c1":[1,0,0,2,5,0,2,53,94],
+"d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#ab039059dfef8358cf02f13da779117c8":[1,0,0,2,5,0,2,53,5],
 "d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#ab12c59eb09fa8e85b63f30ffb605aec4":[1,0,0,2,5,0,2,53,89],
 "d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#ab163ad2e04323c8f27436fcaa9aeb9af":[1,0,0,2,5,0,2,53,35],
 "d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#aba6a4c038170dd4f1f5aa45e1f23f8c8":[1,0,0,2,5,0,2,53,21],
@@ -245,9 +249,5 @@ var NAVTREEINDEX19 =
 "d6/dca/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_controller_sensor_event.html#ab0263a98e9f4cf03d55c958f0386c7bc":[1,0,0,2,5,3,2,24,5],
 "d6/dca/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_controller_sensor_event.html#acc498b474c559c46453f0944298c9ab9":[1,0,0,2,5,3,2,24,1],
 "d6/dca/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_controller_sensor_event.html#af8e6690a3f40187432b55cb515c12581":[1,0,0,2,5,3,2,24,6],
-"d6/dce/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui.html":[1,0,0,2,5,0,4],
-"d6/dce/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui.html#a000aa9bad51763c46a25f416a97081b1":[1,0,0,2,5,0,4,614],
-"d6/dce/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui.html#a00233637d6b82d28985f453e7422a4dd":[1,0,0,2,5,0,4,266],
-"d6/dce/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui.html#a00c17eff1b4c6e6ab32125c594a00220":[1,0,0,2,5,0,4,421],
-"d6/dce/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui.html#a01a5acbc8002a8f0005461d2adc513aa":[1,0,0,2,5,0,4,144]
+"d6/dce/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui.html":[1,0,0,2,5,0,4]
 };

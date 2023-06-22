@@ -99,6 +99,7 @@ $(document).ready(function(){initNavTree('d3/d34/class_alis_1_1_core_1_1_plugin_
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../d5/db9/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -122,9 +123,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0b262647f04ff47c90ea12b0fc065457"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a0b262647f04ff47c90ea12b0fc065457">LoadPlugins</a> (string pluginsDirectory)</td></tr>
 <tr class="memdesc:a0b262647f04ff47c90ea12b0fc065457"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the plugins using the specified plugins directory  <a href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a0b262647f04ff47c90ea12b0fc065457">More...</a><br /></td></tr>
 <tr class="separator:a0b262647f04ff47c90ea12b0fc065457"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cc43d96827a6747ea946c3233d679ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a2cc43d96827a6747ea946c3233d679ef">UnloadPlugins</a> ()</td></tr>
-<tr class="memdesc:a2cc43d96827a6747ea946c3233d679ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unloads the plugins  <a href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a2cc43d96827a6747ea946c3233d679ef">More...</a><br /></td></tr>
-<tr class="separator:a2cc43d96827a6747ea946c3233d679ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe07bd97b09586d771f8bff533d9bebe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#afe07bd97b09586d771f8bff533d9bebe">Initialize</a> ()</td></tr>
 <tr class="memdesc:afe07bd97b09586d771f8bff533d9bebe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes this instance  <a href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#afe07bd97b09586d771f8bff533d9bebe">More...</a><br /></td></tr>
 <tr class="separator:afe07bd97b09586d771f8bff533d9bebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,15 +138,33 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:ae85cd814525db119c748380dacc16156"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#ae85cd814525db119c748380dacc16156">IsPluginFile</a> (string filePath)</td></tr>
-<tr class="memdesc:ae85cd814525db119c748380dacc16156"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether this instance is plugin file  <a href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#ae85cd814525db119c748380dacc16156">More...</a><br /></td></tr>
-<tr class="separator:ae85cd814525db119c748380dacc16156"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a966df85ec985f339c3e022273f0833"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a7a966df85ec985f339c3e022273f0833">IsRunningOniOS</a> ()</td></tr>
-<tr class="memdesc:a7a966df85ec985f339c3e022273f0833"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether this instance is running oni os  <a href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a7a966df85ec985f339c3e022273f0833">More...</a><br /></td></tr>
-<tr class="separator:a7a966df85ec985f339c3e022273f0833"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9dc1070c22057592393c1e6bc9e502df"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a9dc1070c22057592393c1e6bc9e502df">IsRunningOnAndroid</a> ()</td></tr>
-<tr class="memdesc:a9dc1070c22057592393c1e6bc9e502df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether this instance is running on android  <a href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a9dc1070c22057592393c1e6bc9e502df">More...</a><br /></td></tr>
-<tr class="separator:a9dc1070c22057592393c1e6bc9e502df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a967bbf44e6c2d1883e009035bdd01f4f"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a967bbf44e6c2d1883e009035bdd01f4f">GetPlatformFolder</a> ()</td></tr>
+<tr class="memdesc:a967bbf44e6c2d1883e009035bdd01f4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the platform folder  <a href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a967bbf44e6c2d1883e009035bdd01f4f">More...</a><br /></td></tr>
+<tr class="separator:a967bbf44e6c2d1883e009035bdd01f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3a72ad8fb026f877ca49725ac48670b"><td class="memItemLeft" align="right" valign="top">IEnumerable&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#ab3a72ad8fb026f877ca49725ac48670b">GetPluginFiles</a> (string directory)</td></tr>
+<tr class="memdesc:ab3a72ad8fb026f877ca49725ac48670b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the plugin files using the specified directory  <a href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#ab3a72ad8fb026f877ca49725ac48670b">More...</a><br /></td></tr>
+<tr class="separator:ab3a72ad8fb026f877ca49725ac48670b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4943ac511ff75781ff1240b1cc02a68a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a4943ac511ff75781ff1240b1cc02a68a">LoadPluginFromFile</a> (string pluginFile)</td></tr>
+<tr class="memdesc:a4943ac511ff75781ff1240b1cc02a68a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the plugin from file using the specified plugin file  <a href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a4943ac511ff75781ff1240b1cc02a68a">More...</a><br /></td></tr>
+<tr class="separator:a4943ac511ff75781ff1240b1cc02a68a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cc43d96827a6747ea946c3233d679ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a2cc43d96827a6747ea946c3233d679ef">UnloadPlugins</a> ()</td></tr>
+<tr class="memdesc:a2cc43d96827a6747ea946c3233d679ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unloads the plugins  <a href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a2cc43d96827a6747ea946c3233d679ef">More...</a><br /></td></tr>
+<tr class="separator:a2cc43d96827a6747ea946c3233d679ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:aff2fac9386cd7128df785319f6786c2a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#aff2fac9386cd7128df785319f6786c2a">ValidatePluginsDirectory</a> (string directory)</td></tr>
+<tr class="memdesc:aff2fac9386cd7128df785319f6786c2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates the plugins directory using the specified directory  <a href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#aff2fac9386cd7128df785319f6786c2a">More...</a><br /></td></tr>
+<tr class="separator:aff2fac9386cd7128df785319f6786c2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cd6ca5d556af3f44fbe47059c07d123"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a8cd6ca5d556af3f44fbe47059c07d123">IsPluginFile</a> (string filePath)</td></tr>
+<tr class="memdesc:a8cd6ca5d556af3f44fbe47059c07d123"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether this instance is plugin file  <a href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a8cd6ca5d556af3f44fbe47059c07d123">More...</a><br /></td></tr>
+<tr class="separator:a8cd6ca5d556af3f44fbe47059c07d123"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a345a412482b4a27e9f5d7288a8d04b54"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a345a412482b4a27e9f5d7288a8d04b54">IsRunningOniOS</a> ()</td></tr>
+<tr class="memdesc:a345a412482b4a27e9f5d7288a8d04b54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether this instance is running oni os  <a href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a345a412482b4a27e9f5d7288a8d04b54">More...</a><br /></td></tr>
+<tr class="separator:a345a412482b4a27e9f5d7288a8d04b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a723fbad24a3d71bdda056d1e0b6793b3"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a723fbad24a3d71bdda056d1e0b6793b3">IsRunningOnAndroid</a> ()</td></tr>
+<tr class="memdesc:a723fbad24a3d71bdda056d1e0b6793b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether this instance is running on android  <a href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html#a723fbad24a3d71bdda056d1e0b6793b3">More...</a><br /></td></tr>
+<tr class="separator:a723fbad24a3d71bdda056d1e0b6793b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -236,8 +252,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae85cd814525db119c748380dacc16156"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae85cd814525db119c748380dacc16156">&#9670;&nbsp;</a></span>IsPluginFile()</h2>
+<a id="a967bbf44e6c2d1883e009035bdd01f4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a967bbf44e6c2d1883e009035bdd01f4f">&#9670;&nbsp;</a></span>GetPlatformFolder()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -246,7 +262,158 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool Alis.Core.Plugin.PluginManager.IsPluginFile </td>
+          <td class="memname">string Alis.Core.Plugin.PluginManager.GetPlatformFolder </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the platform folder </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">NotSupportedException</td><td>Unsupported platform. Plugins will not be loaded.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The string</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html#l00099">99</a> of file <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html">PluginManager.cs</a>.</p>
+
+</div>
+</div>
+<a id="aff2fac9386cd7128df785319f6786c2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff2fac9386cd7128df785319f6786c2a">&#9670;&nbsp;</a></span>ValidatePluginsDirectory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Alis.Core.Plugin.PluginManager.ValidatePluginsDirectory </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>directory</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Validates the plugins directory using the specified directory </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">directory</td><td>The directory</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">DirectoryNotFoundException</td><td>Plugins directory '{directory}' does not exist.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html#l00124">124</a> of file <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html">PluginManager.cs</a>.</p>
+
+</div>
+</div>
+<a id="ab3a72ad8fb026f877ca49725ac48670b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3a72ad8fb026f877ca49725ac48670b">&#9670;&nbsp;</a></span>GetPluginFiles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">IEnumerable&lt;string&gt; Alis.Core.Plugin.PluginManager.GetPluginFiles </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>directory</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the plugin files using the specified directory </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">directory</td><td>The directory</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The string array</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html#l00137">137</a> of file <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html">PluginManager.cs</a>.</p>
+
+</div>
+</div>
+<a id="a4943ac511ff75781ff1240b1cc02a68a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4943ac511ff75781ff1240b1cc02a68a">&#9670;&nbsp;</a></span>LoadPluginFromFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Alis.Core.Plugin.PluginManager.LoadPluginFromFile </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>pluginFile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Loads the plugin from file using the specified plugin file </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pluginFile</td><td>The plugin file</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html#l00148">148</a> of file <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html">PluginManager.cs</a>.</p>
+
+</div>
+</div>
+<a id="a8cd6ca5d556af3f44fbe47059c07d123"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cd6ca5d556af3f44fbe47059c07d123">&#9670;&nbsp;</a></span>IsPluginFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool Alis.Core.Plugin.PluginManager.IsPluginFile </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
           <td class="paramname"><em>filePath</em></td><td>)</td>
@@ -255,7 +422,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -269,7 +436,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The bool</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html#l00142">142</a> of file <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html">PluginManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html#l00178">178</a> of file <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html">PluginManager.cs</a>.</p>
 
 </div>
 </div>
@@ -278,33 +445,12 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Alis.Core.Plugin.PluginManager.UnloadPlugins </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Unloads the plugins </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html#l00151">151</a> of file <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html">PluginManager.cs</a>.</p>
-
-</div>
-</div>
-<a id="a7a966df85ec985f339c3e022273f0833"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a966df85ec985f339c3e022273f0833">&#9670;&nbsp;</a></span>IsRunningOniOS()</h2>
-
-<div class="memitem">
-<div class="memproto">
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool Alis.Core.Plugin.PluginManager.IsRunningOniOS </td>
+          <td class="memname">void Alis.Core.Plugin.PluginManager.UnloadPlugins </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -317,13 +463,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Describes whether this instance is running oni os </p>
-<dl class="section return"><dt>Returns</dt><dd>The bool</dd></dl>
+<p>Unloads the plugins </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html#l00187">187</a> of file <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html">PluginManager.cs</a>.</p>
 
 </div>
 </div>
-<a id="a9dc1070c22057592393c1e6bc9e502df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9dc1070c22057592393c1e6bc9e502df">&#9670;&nbsp;</a></span>IsRunningOnAndroid()</h2>
+<a id="a345a412482b4a27e9f5d7288a8d04b54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a345a412482b4a27e9f5d7288a8d04b54">&#9670;&nbsp;</a></span>IsRunningOniOS()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -332,7 +479,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool Alis.Core.Plugin.PluginManager.IsRunningOnAndroid </td>
+          <td class="memname">static bool Alis.Core.Plugin.PluginManager.IsRunningOniOS </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -340,7 +487,35 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Describes whether this instance is running oni os </p>
+<dl class="section return"><dt>Returns</dt><dd>The bool</dd></dl>
+
+</div>
+</div>
+<a id="a723fbad24a3d71bdda056d1e0b6793b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a723fbad24a3d71bdda056d1e0b6793b3">&#9670;&nbsp;</a></span>IsRunningOnAndroid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool Alis.Core.Plugin.PluginManager.IsRunningOnAndroid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -367,8 +542,6 @@ Private Attributes</h2></td></tr>
 
 <p>Initializes this instance </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html#l00179">179</a> of file <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html">PluginManager.cs</a>.</p>
-
 </div>
 </div>
 <a id="a6279544a1d37f0e0262a484324bb43ef"></a>
@@ -387,8 +560,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Updates this instance </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html#l00187">187</a> of file <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html">PluginManager.cs</a>.</p>
 
 </div>
 </div>
@@ -409,8 +580,6 @@ Private Attributes</h2></td></tr>
 
 <p>Renders this instance </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html#l00195">195</a> of file <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html">PluginManager.cs</a>.</p>
-
 </div>
 </div>
 <a id="a7fde61c8afe6330ad02450fe607ec98b"></a>
@@ -429,8 +598,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Shutdowns this instance </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html#l00203">203</a> of file <a class="el" href="../../d9/dad/_plugin_manager_8cs_source.html">PluginManager.cs</a>.</p>
 
 </div>
 </div>
@@ -494,7 +661,7 @@ Private Attributes</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../d9/d04/namespace_alis_1_1_core_1_1_plugin.html">Plugin</a></li><li class="navelem"><a class="el" href="../../d3/d34/class_alis_1_1_core_1_1_plugin_1_1_plugin_manager.html">PluginManager</a></li>
     <li class="footer">
-      <a>Generated on | Wed Jun 21 2023 |</a>
+      <a>Generated on | Thu Jun 22 2023 |</a>
     </li>
   </ul>
 </div>

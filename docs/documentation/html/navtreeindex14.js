@@ -1,5 +1,9 @@
 var NAVTREEINDEX14 =
 {
+"d4/d11/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io_ptr.html#a05ea234bff247a7ac2da8a2c309dbef3":[1,0,0,2,5,0,2,31,36],
+"d4/d11/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io_ptr.html#a090e71b8aa8847e65893dd5c1d42af86":[1,0,0,2,5,0,2,31,0],
+"d4/d11/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io_ptr.html#a09c7ed3b115e9381cd926a93c1f978d0":[1,0,0,2,5,0,2,31,49],
+"d4/d11/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io_ptr.html#a0b17adefbd6339d86e58985c39e41e8d":[1,0,0,2,5,0,2,31,113],
 "d4/d11/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io_ptr.html#a0b5221f5d78905ba12ce3db1ef5db05e":[1,0,0,2,5,0,2,31,79],
 "d4/d11/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io_ptr.html#a0d152b58f1de2182685dd75003fd88ff":[1,0,0,2,5,0,2,31,45],
 "d4/d11/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io_ptr.html#a0ff08c55e663bc101a641b4c22922d85":[1,0,0,2,5,0,2,31,68],
@@ -245,9 +249,5 @@ var NAVTREEINDEX14 =
 "d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#abb4cecb1f3630d9902d0702eff1c10a8":[1,0,0,2,5,3,2,30,67],
 "d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#abb77650e59ecac02cc738036fbc6c78f":[1,0,0,2,5,3,2,30,4],
 "d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#abbf2b8821d49f1fd4b7f9ee5e42a5ccd":[1,0,0,2,5,3,2,30,30],
-"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#abcb32d77caee5b2615b846d7a5333567":[1,0,0,2,5,3,2,30,80],
-"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#ac01e3486dabd9ddd3aa9e70716ed4198":[1,0,0,2,5,3,2,30,68],
-"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#ac81347023b07e83f0e6586ee9ed17b92":[1,0,0,2,5,3,2,30,17],
-"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#ac825ab091d3e8fe901f061b88536869c":[1,0,0,2,5,3,2,30,25],
-"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#aca6dbd9bfc06775ce93c09e50de73678":[1,0,0,2,5,3,2,30,81]
+"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#abcb32d77caee5b2615b846d7a5333567":[1,0,0,2,5,3,2,30,80]
 };

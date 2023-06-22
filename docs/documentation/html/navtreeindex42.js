@@ -1,5 +1,9 @@
 var NAVTREEINDEX42 =
 {
+"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#afd1c0a990047a886fc43df7b344a6785":[1,0,0,2,5,0,2,30,377],
+"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#afd3b4811e7e6a02ce14449c3a7b5dfa7":[1,0,0,2,5,0,2,30,447],
+"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#afe7c3e9daf918a3e5b241e37a4ca0500":[1,0,0,2,5,0,2,30,209],
+"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#afec137a11a64d84e9d093eecbd42f74c":[1,0,0,2,5,0,2,30,403],
 "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#afecc0f85c1073d566dbe381bfe1bda0d":[1,0,0,2,5,0,2,30,232],
 "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#afee05d4c81c451df793cbeb01e7ab4fb":[1,0,0,2,5,0,2,30,399],
 "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#afef543792fe8737aba5c9e967da1ea02":[1,0,0,2,5,0,2,30,352],
@@ -54,8 +58,8 @@ var NAVTREEINDEX42 =
 "dd/dd9/namespace_alis_1_1_core.html":[0,0,0,2],
 "dd/dd9/namespace_alis_1_1_core.html":[1,0,0,2],
 "dd/dde/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_simple.html":[0,0,0,2,8,7,1,0],
-"dd/de4/namespace_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_utils.html":[1,0,0,2,5,0,3],
 "dd/de4/namespace_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_utils.html":[0,0,0,2,5,0,4],
+"dd/de4/namespace_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_utils.html":[1,0,0,2,5,0,3],
 "dd/deb/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_resolution.html":[1,0,0,2,0,2,0,43],
 "dd/deb/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_resolution.html#ad561946e73ab9db4282a1c471d98102a":[1,0,0,2,0,2,0,43,0],
 "dd/def/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_ttf_extern.html":[1,0,0,2,5,3,1,2],
@@ -225,8 +229,8 @@ var NAVTREEINDEX42 =
 "de/d0b/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_platform_ime_data.html#abe2c2c723d45665dd8a116fbf4af1a35":[1,0,0,2,5,0,2,41,0],
 "de/d0e/namespace_alis_1_1_core_1_1_aspect_1_1_math.html":[1,0,0,2,0,4],
 "de/d0e/namespace_alis_1_1_core_1_1_aspect_1_1_math.html":[0,0,0,2,0,4],
-"de/d0e/namespace_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_controller_base.html":[1,0,0,2,8,3,0,0],
 "de/d0e/namespace_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_controller_base.html":[0,0,0,2,8,3,0,0],
+"de/d0e/namespace_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_controller_base.html":[1,0,0,2,8,3,0,0],
 "de/d0e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_stb_textedit_state.html":[1,0,0,2,5,0,2,77],
 "de/d0e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_stb_textedit_state.html#a09cb58967b913bbd69d5ae7e89146386":[1,0,0,2,5,0,2,77,13],
 "de/d0e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_stb_textedit_state.html#a24a3a70e4a1daf3221d896146e31f28b":[1,0,0,2,5,0,2,77,4],
@@ -245,9 +249,5 @@ var NAVTREEINDEX42 =
 "de/d11/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_config.html":[1,0,0,2,5,0,2,21],
 "de/d11/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_config.html#a07643ed83a03534870dbcf68e102079e":[1,0,0,2,5,0,2,21,2],
 "de/d11/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_config.html#a0ade0b7c615d17352f33a5f9b9ae39ae":[1,0,0,2,5,0,2,21,6],
-"de/d11/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_config.html#a1ed923ee74304d5f62cd9598b5f4695f":[1,0,0,2,5,0,2,21,4],
-"de/d11/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_config.html#a2abe46f552abb5a6c49cdacd7168daf9":[1,0,0,2,5,0,2,21,15],
-"de/d11/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_config.html#a2c2361d3423b36feb236c64e7800412c":[1,0,0,2,5,0,2,21,12],
-"de/d11/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_config.html#a2f5c1a68d1431da8c1d8a6ea155b4b31":[1,0,0,2,5,0,2,21,14],
-"de/d11/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_config.html#a3ea0824e279d9f0ce10f1d0e52235c95":[1,0,0,2,5,0,2,21,1]
+"de/d11/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_config.html#a1ed923ee74304d5f62cd9598b5f4695f":[1,0,0,2,5,0,2,21,4]
 };
