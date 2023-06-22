@@ -93,7 +93,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     Gets the value of the flags
         /// </summary>
-        public ref ImDrawListFlag Flag => ref Unsafe.AsRef<ImDrawListFlag>(&NativePtr->Flag);
+        public ref ImDrawLists Flag => ref Unsafe.AsRef<ImDrawLists>(&NativePtr->Flag);
 
         /// <summary>
         ///     Gets the value of the  vtxcurrentidx
@@ -577,7 +577,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="rounding">The rounding</param>
         public void AddImageRounded(IntPtr userTextureId, Vector2F pMin, Vector2F pMax, Vector2F uvMin, Vector2F uvMax, uint col, float rounding)
         {
-            ImDrawFlag flags = 0;
+            ImDraws flags = 0;
             ImGuiNative.ImDrawList_AddImageRounded(NativePtr, userTextureId, pMin, pMax, uvMin, uvMax, col, rounding, flags);
         }
 
@@ -592,7 +592,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="col">The col</param>
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
-        public void AddImageRounded(IntPtr userTextureId, Vector2F pMin, Vector2F pMax, Vector2F uvMin, Vector2F uvMax, uint col, float rounding, ImDrawFlag flags)
+        public void AddImageRounded(IntPtr userTextureId, Vector2F pMin, Vector2F pMax, Vector2F uvMin, Vector2F uvMax, uint col, float rounding, ImDraws flags)
         {
             ImGuiNative.ImDrawList_AddImageRounded(NativePtr, userTextureId, pMin, pMax, uvMin, uvMax, col, rounding, flags);
         }
@@ -667,7 +667,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="col">The col</param>
         /// <param name="flags">The flags</param>
         /// <param name="thickness">The thickness</param>
-        public void AddPolyline(ref Vector2F points, int numPoints, uint col, ImDrawFlag flags, float thickness)
+        public void AddPolyline(ref Vector2F points, int numPoints, uint col, ImDraws flags, float thickness)
         {
             fixed (Vector2F* nativePoints = &points)
             {
@@ -725,7 +725,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         public void AddRect(Vector2F pMin, Vector2F pMax, uint col)
         {
             float rounding = 0.0f;
-            ImDrawFlag flags = 0;
+            ImDraws flags = 0;
             float thickness = 1.0f;
             ImGuiNative.ImDrawList_AddRect(NativePtr, pMin, pMax, col, rounding, flags, thickness);
         }
@@ -739,7 +739,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="rounding">The rounding</param>
         public void AddRect(Vector2F pMin, Vector2F pMax, uint col, float rounding)
         {
-            ImDrawFlag flags = 0;
+            ImDraws flags = 0;
             float thickness = 1.0f;
             ImGuiNative.ImDrawList_AddRect(NativePtr, pMin, pMax, col, rounding, flags, thickness);
         }
@@ -752,7 +752,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="col">The col</param>
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
-        public void AddRect(Vector2F pMin, Vector2F pMax, uint col, float rounding, ImDrawFlag flags)
+        public void AddRect(Vector2F pMin, Vector2F pMax, uint col, float rounding, ImDraws flags)
         {
             float thickness = 1.0f;
             ImGuiNative.ImDrawList_AddRect(NativePtr, pMin, pMax, col, rounding, flags, thickness);
@@ -767,7 +767,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
         /// <param name="thickness">The thickness</param>
-        public void AddRect(Vector2F pMin, Vector2F pMax, uint col, float rounding, ImDrawFlag flags, float thickness)
+        public void AddRect(Vector2F pMin, Vector2F pMax, uint col, float rounding, ImDraws flags, float thickness)
         {
             ImGuiNative.ImDrawList_AddRect(NativePtr, pMin, pMax, col, rounding, flags, thickness);
         }
@@ -781,7 +781,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         public void AddRectFilled(Vector2F pMin, Vector2F pMax, uint col)
         {
             float rounding = 0.0f;
-            ImDrawFlag flags = 0;
+            ImDraws flags = 0;
             ImGuiNative.ImDrawList_AddRectFilled(NativePtr, pMin, pMax, col, rounding, flags);
         }
 
@@ -794,7 +794,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="rounding">The rounding</param>
         public void AddRectFilled(Vector2F pMin, Vector2F pMax, uint col, float rounding)
         {
-            ImDrawFlag flags = 0;
+            ImDraws flags = 0;
             ImGuiNative.ImDrawList_AddRectFilled(NativePtr, pMin, pMax, col, rounding, flags);
         }
 
@@ -806,7 +806,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="col">The col</param>
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
-        public void AddRectFilled(Vector2F pMin, Vector2F pMax, uint col, float rounding, ImDrawFlag flags)
+        public void AddRectFilled(Vector2F pMin, Vector2F pMax, uint col, float rounding, ImDraws flags)
         {
             ImGuiNative.ImDrawList_AddRectFilled(NativePtr, pMin, pMax, col, rounding, flags);
         }
@@ -1056,7 +1056,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         public void PathRect(Vector2F rectMin, Vector2F rectMax)
         {
             float rounding = 0.0f;
-            ImDrawFlag flags = 0;
+            ImDraws flags = 0;
             ImGuiNative.ImDrawList_PathRect(NativePtr, rectMin, rectMax, rounding, flags);
         }
 
@@ -1068,7 +1068,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="rounding">The rounding</param>
         public void PathRect(Vector2F rectMin, Vector2F rectMax, float rounding)
         {
-            ImDrawFlag flags = 0;
+            ImDraws flags = 0;
             ImGuiNative.ImDrawList_PathRect(NativePtr, rectMin, rectMax, rounding, flags);
         }
 
@@ -1079,7 +1079,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="rectMax">The rect max</param>
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
-        public void PathRect(Vector2F rectMin, Vector2F rectMax, float rounding, ImDrawFlag flags)
+        public void PathRect(Vector2F rectMin, Vector2F rectMax, float rounding, ImDraws flags)
         {
             ImGuiNative.ImDrawList_PathRect(NativePtr, rectMin, rectMax, rounding, flags);
         }
@@ -1090,7 +1090,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="col">The col</param>
         public void PathStroke(uint col)
         {
-            ImDrawFlag flags = 0;
+            ImDraws flags = 0;
             float thickness = 1.0f;
             ImGuiNative.ImDrawList_PathStroke(NativePtr, col, flags, thickness);
         }
@@ -1100,7 +1100,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// </summary>
         /// <param name="col">The col</param>
         /// <param name="flags">The flags</param>
-        public void PathStroke(uint col, ImDrawFlag flags)
+        public void PathStroke(uint col, ImDraws flags)
         {
             float thickness = 1.0f;
             ImGuiNative.ImDrawList_PathStroke(NativePtr, col, flags, thickness);
@@ -1112,7 +1112,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <param name="col">The col</param>
         /// <param name="flags">The flags</param>
         /// <param name="thickness">The thickness</param>
-        public void PathStroke(uint col, ImDrawFlag flags, float thickness)
+        public void PathStroke(uint col, ImDraws flags, float thickness)
         {
             ImGuiNative.ImDrawList_PathStroke(NativePtr, col, flags, thickness);
         }

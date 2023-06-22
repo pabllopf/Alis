@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImDrawFlag.cs
+//  File:ImGuiTreeNodeFlag.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,79 +32,89 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im draw flags enum
+    ///     The im gui tree node flags enum
     /// </summary>
     [Flags]
-    public enum ImDrawFlag
+    public enum ImGuiTreeNodes
     {
         /// <summary>
-        ///     The none im draw flags
+        ///     The none im gui tree node flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The closed im draw flags
+        ///     The selected im gui tree node flags
         /// </summary>
-        Closed = 1,
+        Selected = 1,
 
         /// <summary>
-        ///     The round corners top left im draw flags
+        ///     The framed im gui tree node flags
         /// </summary>
-        RoundCornersTopLeft = 16,
+        Framed = 2,
 
         /// <summary>
-        ///     The round corners top right im draw flags
+        ///     The allow item overlap im gui tree node flags
         /// </summary>
-        RoundCornersTopRight = 32,
+        AllowItemOverlap = 4,
 
         /// <summary>
-        ///     The round corners bottom left im draw flags
+        ///     The no tree push on open im gui tree node flags
         /// </summary>
-        RoundCornersBottomLeft = 64,
+        NoTreePushOnOpen = 8,
 
         /// <summary>
-        ///     The round corners bottom right im draw flags
+        ///     The no auto open on log im gui tree node flags
         /// </summary>
-        RoundCornersBottomRight = 128,
+        NoAutoOpenOnLog = 16,
 
         /// <summary>
-        ///     The round corners none im draw flags
+        ///     The default open im gui tree node flags
         /// </summary>
-        RoundCornersNone = 256,
+        DefaultOpen = 32,
 
         /// <summary>
-        ///     The round corners top im draw flags
+        ///     The open on double click im gui tree node flags
         /// </summary>
-        RoundCornersTop = 48,
+        OpenOnDoubleClick = 64,
 
         /// <summary>
-        ///     The round corners bottom im draw flags
+        ///     The open on arrow im gui tree node flags
         /// </summary>
-        RoundCornersBottom = 192,
+        OpenOnArrow = 128,
 
         /// <summary>
-        ///     The round corners left im draw flags
+        ///     The leaf im gui tree node flags
         /// </summary>
-        RoundCornersLeft = 80,
+        Leaf = 256,
 
         /// <summary>
-        ///     The round corners right im draw flags
+        ///     The bullet im gui tree node flags
         /// </summary>
-        RoundCornersRight = 160,
+        Bullet = 512,
 
         /// <summary>
-        ///     The round corners all im draw flags
+        ///     The frame padding im gui tree node flags
         /// </summary>
-        RoundCornersAll = 240,
+        FramePadding = 1024,
 
         /// <summary>
-        ///     The round corners default im draw flags
+        ///     The span avail width im gui tree node flags
         /// </summary>
-        RoundCornersDefault = 240,
+        SpanAvailWidth = 2048,
 
         /// <summary>
-        ///     The round corners mask im draw flags
+        ///     The span full width im gui tree node flags
         /// </summary>
-        RoundCornersMask = 496
+        SpanFullWidth = 4096,
+
+        /// <summary>
+        ///     The nav left jumps back here im gui tree node flags
+        /// </summary>
+        NavLeftJumpsBackHere = 8192,
+
+        /// <summary>
+        ///     The collapsing header im gui tree node flags
+        /// </summary>
+        CollapsingHeader = 26
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImFontAtlasFlag.cs
+//  File:ImGuiDockNodeFlag.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,29 +32,44 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im font atlas flags enum
+    ///     The im gui dock node flags enum
     /// </summary>
     [Flags]
-    public enum ImFontAtlasFlag
+    public enum ImGuiDockNodes
     {
         /// <summary>
-        ///     The none im font atlas flags
+        ///     The none im gui dock node flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The no power of two height im font atlas flags
+        ///     The keep alive only im gui dock node flags
         /// </summary>
-        NoPowerOfTwoHeight = 1,
+        KeepAliveOnly = 1,
 
         /// <summary>
-        ///     The no mouse cursors im font atlas flags
+        ///     The no docking in central node im gui dock node flags
         /// </summary>
-        NoMouseCursors = 2,
+        NoDockingInCentralNode = 4,
 
         /// <summary>
-        ///     The no baked lines im font atlas flags
+        ///     The passthru central node im gui dock node flags
         /// </summary>
-        NoBakedLines = 4
+        PassthruCentralNode = 8,
+
+        /// <summary>
+        ///     The no split im gui dock node flags
+        /// </summary>
+        NoSplit = 16,
+
+        /// <summary>
+        ///     The no resize im gui dock node flags
+        /// </summary>
+        NoResize = 32,
+
+        /// <summary>
+        ///     The auto hide tab bar im gui dock node flags
+        /// </summary>
+        AutoHideTabBar = 64
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiModFlag.cs
+//  File:ImGuiTabBarFlag.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,34 +32,64 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui mod flags enum
+    ///     The im gui tab bar flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiModFlag
+    public enum ImGuiTabBars
     {
         /// <summary>
-        ///     The none im gui mod flags
+        ///     The none im gui tab bar flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The ctrl im gui mod flags
+        ///     The reorderable im gui tab bar flags
         /// </summary>
-        Ctrl = 1,
+        Reorderable = 1,
 
         /// <summary>
-        ///     The shift im gui mod flags
+        ///     The auto select new tabs im gui tab bar flags
         /// </summary>
-        Shift = 2,
+        AutoSelectNewTabs = 2,
 
         /// <summary>
-        ///     The alt im gui mod flags
+        ///     The tab list popup button im gui tab bar flags
         /// </summary>
-        Alt = 4,
+        TabListPopupButton = 4,
 
         /// <summary>
-        ///     The super im gui mod flags
+        ///     The no close with middle mouse button im gui tab bar flags
         /// </summary>
-        Super = 8
+        NoCloseWithMiddleMouseButton = 8,
+
+        /// <summary>
+        ///     The no tab list scrolling buttons im gui tab bar flags
+        /// </summary>
+        NoTabListScrollingButtons = 16,
+
+        /// <summary>
+        ///     The no tooltip im gui tab bar flags
+        /// </summary>
+        NoTooltip = 32,
+
+        /// <summary>
+        ///     The fitting policy resize down im gui tab bar flags
+        /// </summary>
+        FittingPolicyResizeDown = 64,
+
+        /// <summary>
+        ///     The fitting policy scroll im gui tab bar flags
+        /// </summary>
+        FittingPolicyScroll = 128,
+
+        /// <summary>
+        ///     The fitting policy mask im gui tab bar flags
+        /// </summary>
+        FittingPolicyMask = 192,
+
+        /// <summary>
+        ///     The fitting policy default im gui tab bar flags
+        /// </summary>
+        FittingPolicyDefault = 64
     }
 }

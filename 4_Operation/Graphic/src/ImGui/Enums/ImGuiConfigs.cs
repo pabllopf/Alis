@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiPopupFlag.cs
+//  File:ImGuiConfigFlag.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,64 +32,74 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui popup flags enum
+    ///     The im gui config flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiPopupFlag
+    public enum ImGuiConfigs
     {
         /// <summary>
-        ///     The none im gui popup flags
+        ///     The none im gui config flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The mouse button left im gui popup flags
+        ///     The nav enable keyboard im gui config flags
         /// </summary>
-        MouseButtonLeft = 0,
+        NavEnableKeyboard = 1,
 
         /// <summary>
-        ///     The mouse button right im gui popup flags
+        ///     The nav enable gamepad im gui config flags
         /// </summary>
-        MouseButtonRight = 1,
+        NavEnableGamepad = 2,
 
         /// <summary>
-        ///     The mouse button middle im gui popup flags
+        ///     The nav enable set mouse pos im gui config flags
         /// </summary>
-        MouseButtonMiddle = 2,
+        NavEnableSetMousePos = 4,
 
         /// <summary>
-        ///     The mouse button mask im gui popup flags
+        ///     The nav no capture keyboard im gui config flags
         /// </summary>
-        MouseButtonMask = 31,
+        NavNoCaptureKeyboard = 8,
 
         /// <summary>
-        ///     The mouse button default im gui popup flags
+        ///     The no mouse im gui config flags
         /// </summary>
-        MouseButtonDefault = 1,
+        NoMouse = 16,
 
         /// <summary>
-        ///     The no open over existing popup im gui popup flags
+        ///     The no mouse cursor change im gui config flags
         /// </summary>
-        NoOpenOverExistingPopup = 32,
+        NoMouseCursorChange = 32,
 
         /// <summary>
-        ///     The no open over items im gui popup flags
+        ///     The docking enable im gui config flags
         /// </summary>
-        NoOpenOverItems = 64,
+        DockingEnable = 64,
 
         /// <summary>
-        ///     The any popup id im gui popup flags
+        ///     The viewports enable im gui config flags
         /// </summary>
-        AnyPopupId = 128,
+        ViewportsEnable = 1024,
 
         /// <summary>
-        ///     The any popup level im gui popup flags
+        ///     The dpi enable scale viewports im gui config flags
         /// </summary>
-        AnyPopupLevel = 256,
+        DpiEnableScaleViewports = 16384,
 
         /// <summary>
-        ///     The any popup im gui popup flags
+        ///     The dpi enable scale fonts im gui config flags
         /// </summary>
-        AnyPopup = 384
+        DpiEnableScaleFonts = 32768,
+
+        /// <summary>
+        ///     The is srgb im gui config flags
+        /// </summary>
+        IsSrgb = 1048576,
+
+        /// <summary>
+        ///     The is touch screen im gui config flags
+        /// </summary>
+        IsTouchScreen = 2097152
     }
 }

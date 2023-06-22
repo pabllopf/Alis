@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.ImGui.Enums
     ///     The im gui hovered flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiHoveredFlag
+    public enum ImGuiHovereds
     {
         /// <summary>
         ///     The none im gui hovered flags

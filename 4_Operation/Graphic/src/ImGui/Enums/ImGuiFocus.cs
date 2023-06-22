@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImDrawListFlag.cs
+//  File:ImGuiFocusedFlag.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,34 +32,44 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im draw list flags enum
+    ///     The im gui focused flags enum
     /// </summary>
     [Flags]
-    public enum ImDrawListFlag
+    public enum ImGuiFocus
     {
         /// <summary>
-        ///     The none im draw list flags
+        ///     The none im gui focused flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The anti aliased lines im draw list flags
+        ///     The child windows im gui focused flags
         /// </summary>
-        AntiAliasedLines = 1,
+        ChildWindows = 1,
 
         /// <summary>
-        ///     The anti aliased lines use tex im draw list flags
+        ///     The root window im gui focused flags
         /// </summary>
-        AntiAliasedLinesUseTex = 2,
+        RootWindow = 2,
 
         /// <summary>
-        ///     The anti aliased fill im draw list flags
+        ///     The any window im gui focused flags
         /// </summary>
-        AntiAliasedFill = 4,
+        AnyWindow = 4,
 
         /// <summary>
-        ///     The allow vtx offset im draw list flags
+        ///     The no popup hierarchy im gui focused flags
         /// </summary>
-        AllowVtxOffset = 8
+        NoPopupHierarchy = 8,
+
+        /// <summary>
+        ///     The dock hierarchy im gui focused flags
+        /// </summary>
+        DockHierarchy = 16,
+
+        /// <summary>
+        ///     The root and child windows im gui focused flags
+        /// </summary>
+        RootAndChildWindows = 3
     }
 }

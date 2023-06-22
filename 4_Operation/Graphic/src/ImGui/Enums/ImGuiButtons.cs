@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiDockNodeFlag.cs
+//  File:ImGuiButtonFlag.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,44 +32,39 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui dock node flags enum
+    ///     The im gui button flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiDockNodeFlag
+    public enum ImGuiButtons
     {
         /// <summary>
-        ///     The none im gui dock node flags
+        ///     The none im gui button flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The keep alive only im gui dock node flags
+        ///     The mouse button left im gui button flags
         /// </summary>
-        KeepAliveOnly = 1,
+        MouseButtonLeft = 1,
 
         /// <summary>
-        ///     The no docking in central node im gui dock node flags
+        ///     The mouse button right im gui button flags
         /// </summary>
-        NoDockingInCentralNode = 4,
+        MouseButtonRight = 2,
 
         /// <summary>
-        ///     The passthru central node im gui dock node flags
+        ///     The mouse button middle im gui button flags
         /// </summary>
-        PassthruCentralNode = 8,
+        MouseButtonMiddle = 4,
 
         /// <summary>
-        ///     The no split im gui dock node flags
+        ///     The mouse button mask im gui button flags
         /// </summary>
-        NoSplit = 16,
+        MouseButtonMask = 7,
 
         /// <summary>
-        ///     The no resize im gui dock node flags
+        ///     The mouse button default im gui button flags
         /// </summary>
-        NoResize = 32,
-
-        /// <summary>
-        ///     The auto hide tab bar im gui dock node flags
-        /// </summary>
-        AutoHideTabBar = 64
+        MouseButtonDefault = 1
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiBackendFlag.cs
+//  File:ImGuiComboFlag.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,49 +32,54 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui backend flags enum
+    ///     The im gui combo flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiBackendFlag
+    public enum ImGuiCombos
     {
         /// <summary>
-        ///     The none im gui backend flags
+        ///     The none im gui combo flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The has gamepad im gui backend flags
+        ///     The popup align left im gui combo flags
         /// </summary>
-        HasGamepad = 1,
+        PopupAlignLeft = 1,
 
         /// <summary>
-        ///     The has mouse cursors im gui backend flags
+        ///     The height small im gui combo flags
         /// </summary>
-        HasMouseCursors = 2,
+        HeightSmall = 2,
 
         /// <summary>
-        ///     The has set mouse pos im gui backend flags
+        ///     The height regular im gui combo flags
         /// </summary>
-        HasSetMousePos = 4,
+        HeightRegular = 4,
 
         /// <summary>
-        ///     The renderer has vtx offset im gui backend flags
+        ///     The height large im gui combo flags
         /// </summary>
-        RendererHasVtxOffset = 8,
+        HeightLarge = 8,
 
         /// <summary>
-        ///     The platform has viewports im gui backend flags
+        ///     The height largest im gui combo flags
         /// </summary>
-        PlatformHasViewports = 1024,
+        HeightLargest = 16,
 
         /// <summary>
-        ///     The has mouse hovered viewport im gui backend flags
+        ///     The no arrow button im gui combo flags
         /// </summary>
-        HasMouseHoveredViewport = 2048,
+        NoArrowButton = 32,
 
         /// <summary>
-        ///     The renderer has viewports im gui backend flags
+        ///     The no preview im gui combo flags
         /// </summary>
-        RendererHasViewports = 4096
+        NoPreview = 64,
+
+        /// <summary>
+        ///     The height mask im gui combo flags
+        /// </summary>
+        HeightMask = 30
     }
 }

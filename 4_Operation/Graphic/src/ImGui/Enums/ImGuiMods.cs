@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiTableRowFlag.cs
+//  File:ImGuiModFlag.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,19 +32,34 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui table row flags enum
+    ///     The im gui mod flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiTableRowFlag
+    public enum ImGuiMods
     {
         /// <summary>
-        ///     The none im gui table row flags
+        ///     The none im gui mod flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The headers im gui table row flags
+        ///     The ctrl im gui mod flags
         /// </summary>
-        Headers = 1
+        Ctrl = 1,
+
+        /// <summary>
+        ///     The shift im gui mod flags
+        /// </summary>
+        Shift = 2,
+
+        /// <summary>
+        ///     The alt im gui mod flags
+        /// </summary>
+        Alt = 4,
+
+        /// <summary>
+        ///     The super im gui mod flags
+        /// </summary>
+        Super = 8
     }
 }

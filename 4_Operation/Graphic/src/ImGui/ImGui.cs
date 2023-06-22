@@ -35,6 +35,7 @@ using Alis.Core.Graphic.ImGui.Delegates;
 using Alis.Core.Graphic.ImGui.Enums;
 using Alis.Core.Graphic.ImGui.Structs;
 using Alis.Core.Graphic.ImGui.Utils;
+using ImFontAtlas = Alis.Core.Graphic.ImGui.Structs.ImFontAtlas;
 
 namespace Alis.Core.Graphic.ImGui
 {
@@ -73,7 +74,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeType = null;
             }
 
-            ImGuiDragDropFlag flag = 0;
+            ImGuiDragDrops flag = 0;
             ImGuiPayload* ret = ImGuiNative.igAcceptDragDropPayload(nativeType, flag);
             if (typeByteCount > Util.StackAllocationSizeLimit)
             {
@@ -89,7 +90,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="type">The type</param>
         /// <param name="flag">The flags</param>
         /// <returns>The im gui payload ptr</returns>
-        public static ImGuiPayloadPtr AcceptDragDropPayload(string type, ImGuiDragDropFlag flag)
+        public static ImGuiPayloadPtr AcceptDragDropPayload(string type, ImGuiDragDrops flag)
         {
             byte* nativeType;
             int typeByteCount = 0;
@@ -202,7 +203,7 @@ namespace Alis.Core.Graphic.ImGui
             }
 
             byte* pOpen = null;
-            ImGuiWindowFlag flag = 0;
+            ImGuiWindows flag = 0;
             byte ret = ImGuiNative.igBegin(nativeName, pOpen, flag);
             if (nameByteCount > Util.StackAllocationSizeLimit)
             {
@@ -245,7 +246,7 @@ namespace Alis.Core.Graphic.ImGui
 
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
             byte* nativePOpen = &nativePOpenVal;
-            ImGuiWindowFlag flag = 0;
+            ImGuiWindows flag = 0;
             byte ret = ImGuiNative.igBegin(nativeName, nativePOpen, flag);
             if (nameByteCount > Util.StackAllocationSizeLimit)
             {
@@ -263,7 +264,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="pOpen">The open</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool Begin(string name, ref bool pOpen, ImGuiWindowFlag flag)
+        public static bool Begin(string name, ref bool pOpen, ImGuiWindows flag)
         {
             byte* nativeName;
             int nameByteCount = 0;
@@ -332,7 +333,7 @@ namespace Alis.Core.Graphic.ImGui
 
             Vector2F size = new Vector2F();
             byte border = 0;
-            ImGuiWindowFlag flag = 0;
+            ImGuiWindows flag = 0;
             byte ret = ImGuiNative.igBeginChild_Str(nativeStrId, size, border, flag);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -374,7 +375,7 @@ namespace Alis.Core.Graphic.ImGui
             }
 
             byte border = 0;
-            ImGuiWindowFlag flag = 0;
+            ImGuiWindows flag = 0;
             byte ret = ImGuiNative.igBeginChild_Str(nativeStrId, size, border, flag);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -417,7 +418,7 @@ namespace Alis.Core.Graphic.ImGui
             }
 
             byte nativeBorder = border ? (byte) 1 : (byte) 0;
-            ImGuiWindowFlag flag = 0;
+            ImGuiWindows flag = 0;
             byte ret = ImGuiNative.igBeginChild_Str(nativeStrId, size, nativeBorder, flag);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -435,7 +436,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="border">The border</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool BeginChild(string strId, Vector2F size, bool border, ImGuiWindowFlag flag)
+        public static bool BeginChild(string strId, Vector2F size, bool border, ImGuiWindows flag)
         {
             byte* nativeStrId;
             int strIdByteCount = 0;
@@ -479,7 +480,7 @@ namespace Alis.Core.Graphic.ImGui
         {
             Vector2F size = new Vector2F();
             byte border = 0;
-            ImGuiWindowFlag flag = 0;
+            ImGuiWindows flag = 0;
             byte ret = ImGuiNative.igBeginChild_ID(id, size, border, flag);
             return ret != 0;
         }
@@ -493,7 +494,7 @@ namespace Alis.Core.Graphic.ImGui
         public static bool BeginChild(uint id, Vector2F size)
         {
             byte border = 0;
-            ImGuiWindowFlag flag = 0;
+            ImGuiWindows flag = 0;
             byte ret = ImGuiNative.igBeginChild_ID(id, size, border, flag);
             return ret != 0;
         }
@@ -508,7 +509,7 @@ namespace Alis.Core.Graphic.ImGui
         public static bool BeginChild(uint id, Vector2F size, bool border)
         {
             byte nativeBorder = border ? (byte) 1 : (byte) 0;
-            ImGuiWindowFlag flag = 0;
+            ImGuiWindows flag = 0;
             byte ret = ImGuiNative.igBeginChild_ID(id, size, nativeBorder, flag);
             return ret != 0;
         }
@@ -521,7 +522,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="border">The border</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool BeginChild(uint id, Vector2F size, bool border, ImGuiWindowFlag flag)
+        public static bool BeginChild(uint id, Vector2F size, bool border, ImGuiWindows flag)
         {
             byte nativeBorder = border ? (byte) 1 : (byte) 0;
             byte ret = ImGuiNative.igBeginChild_ID(id, size, nativeBorder, flag);
@@ -536,7 +537,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <returns>The bool</returns>
         public static bool BeginChildFrame(uint id, Vector2F size)
         {
-            ImGuiWindowFlag flag = 0;
+            ImGuiWindows flag = 0;
             byte ret = ImGuiNative.igBeginChildFrame(id, size, flag);
             return ret != 0;
         }
@@ -548,7 +549,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="size">The size</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool BeginChildFrame(uint id, Vector2F size, ImGuiWindowFlag flag)
+        public static bool BeginChildFrame(uint id, Vector2F size, ImGuiWindows flag)
         {
             byte ret = ImGuiNative.igBeginChildFrame(id, size, flag);
             return ret != 0;
@@ -608,7 +609,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativePreviewValue = null;
             }
 
-            ImGuiComboFlag flag = 0;
+            ImGuiCombos flag = 0;
             byte ret = ImGuiNative.igBeginCombo(nativeLabel, nativePreviewValue, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -630,7 +631,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="previewValue">The preview value</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool BeginCombo(string label, string previewValue, ImGuiComboFlag flag)
+        public static bool BeginCombo(string label, string previewValue, ImGuiCombos flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -717,7 +718,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <returns>The bool</returns>
         public static bool BeginDragDropSource()
         {
-            ImGuiDragDropFlag flag = 0;
+            ImGuiDragDrops flag = 0;
             byte ret = ImGuiNative.igBeginDragDropSource(flag);
             return ret != 0;
         }
@@ -727,7 +728,7 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool BeginDragDropSource(ImGuiDragDropFlag flag)
+        public static bool BeginDragDropSource(ImGuiDragDrops flag)
         {
             byte ret = ImGuiNative.igBeginDragDropSource(flag);
             return ret != 0;
@@ -962,7 +963,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeStrId = null;
             }
 
-            ImGuiWindowFlag flag = 0;
+            ImGuiWindows flag = 0;
             byte ret = ImGuiNative.igBeginPopup(nativeStrId, flag);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -978,7 +979,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="strId">The str id</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool BeginPopup(string strId, ImGuiWindowFlag flag)
+        public static bool BeginPopup(string strId, ImGuiWindows flag)
         {
             byte* nativeStrId;
             int strIdByteCount = 0;
@@ -1019,8 +1020,8 @@ namespace Alis.Core.Graphic.ImGui
         public static bool BeginPopupContextItem()
         {
             byte* nativeStrId = null;
-            ImGuiPopupFlag popupFlag = (ImGuiPopupFlag) 1;
-            byte ret = ImGuiNative.igBeginPopupContextItem(nativeStrId, popupFlag);
+            ImGuiPopups popups = (ImGuiPopups) 1;
+            byte ret = ImGuiNative.igBeginPopupContextItem(nativeStrId, popups);
             return ret != 0;
         }
 
@@ -1054,8 +1055,8 @@ namespace Alis.Core.Graphic.ImGui
                 nativeStrId = null;
             }
 
-            ImGuiPopupFlag popupFlag = (ImGuiPopupFlag) 1;
-            byte ret = ImGuiNative.igBeginPopupContextItem(nativeStrId, popupFlag);
+            ImGuiPopups popups = (ImGuiPopups) 1;
+            byte ret = ImGuiNative.igBeginPopupContextItem(nativeStrId, popups);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
@@ -1068,9 +1069,9 @@ namespace Alis.Core.Graphic.ImGui
         ///     Describes whether begin popup context item
         /// </summary>
         /// <param name="strId">The str id</param>
-        /// <param name="popupFlag">The popup flags</param>
+        /// <param name="popups">The popup flags</param>
         /// <returns>The bool</returns>
-        public static bool BeginPopupContextItem(string strId, ImGuiPopupFlag popupFlag)
+        public static bool BeginPopupContextItem(string strId, ImGuiPopups popups)
         {
             byte* nativeStrId;
             int strIdByteCount = 0;
@@ -1095,7 +1096,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeStrId = null;
             }
 
-            byte ret = ImGuiNative.igBeginPopupContextItem(nativeStrId, popupFlag);
+            byte ret = ImGuiNative.igBeginPopupContextItem(nativeStrId, popups);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
@@ -1111,8 +1112,8 @@ namespace Alis.Core.Graphic.ImGui
         public static bool BeginPopupContextVoid()
         {
             byte* nativeStrId = null;
-            ImGuiPopupFlag popupFlag = (ImGuiPopupFlag) 1;
-            byte ret = ImGuiNative.igBeginPopupContextVoid(nativeStrId, popupFlag);
+            ImGuiPopups popups = (ImGuiPopups) 1;
+            byte ret = ImGuiNative.igBeginPopupContextVoid(nativeStrId, popups);
             return ret != 0;
         }
 
@@ -1146,8 +1147,8 @@ namespace Alis.Core.Graphic.ImGui
                 nativeStrId = null;
             }
 
-            ImGuiPopupFlag popupFlag = (ImGuiPopupFlag) 1;
-            byte ret = ImGuiNative.igBeginPopupContextVoid(nativeStrId, popupFlag);
+            ImGuiPopups popups = (ImGuiPopups) 1;
+            byte ret = ImGuiNative.igBeginPopupContextVoid(nativeStrId, popups);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
@@ -1160,9 +1161,9 @@ namespace Alis.Core.Graphic.ImGui
         ///     Describes whether begin popup context void
         /// </summary>
         /// <param name="strId">The str id</param>
-        /// <param name="popupFlag">The popup flags</param>
+        /// <param name="popups">The popup flags</param>
         /// <returns>The bool</returns>
-        public static bool BeginPopupContextVoid(string strId, ImGuiPopupFlag popupFlag)
+        public static bool BeginPopupContextVoid(string strId, ImGuiPopups popups)
         {
             byte* nativeStrId;
             int strIdByteCount = 0;
@@ -1187,7 +1188,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeStrId = null;
             }
 
-            byte ret = ImGuiNative.igBeginPopupContextVoid(nativeStrId, popupFlag);
+            byte ret = ImGuiNative.igBeginPopupContextVoid(nativeStrId, popups);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
@@ -1203,8 +1204,8 @@ namespace Alis.Core.Graphic.ImGui
         public static bool BeginPopupContextWindow()
         {
             byte* nativeStrId = null;
-            ImGuiPopupFlag popupFlag = (ImGuiPopupFlag) 1;
-            byte ret = ImGuiNative.igBeginPopupContextWindow(nativeStrId, popupFlag);
+            ImGuiPopups popups = (ImGuiPopups) 1;
+            byte ret = ImGuiNative.igBeginPopupContextWindow(nativeStrId, popups);
             return ret != 0;
         }
 
@@ -1238,8 +1239,8 @@ namespace Alis.Core.Graphic.ImGui
                 nativeStrId = null;
             }
 
-            ImGuiPopupFlag popupFlag = (ImGuiPopupFlag) 1;
-            byte ret = ImGuiNative.igBeginPopupContextWindow(nativeStrId, popupFlag);
+            ImGuiPopups popups = (ImGuiPopups) 1;
+            byte ret = ImGuiNative.igBeginPopupContextWindow(nativeStrId, popups);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
@@ -1252,9 +1253,9 @@ namespace Alis.Core.Graphic.ImGui
         ///     Describes whether begin popup context window
         /// </summary>
         /// <param name="strId">The str id</param>
-        /// <param name="popupFlag">The popup flags</param>
+        /// <param name="popups">The popup flags</param>
         /// <returns>The bool</returns>
-        public static bool BeginPopupContextWindow(string strId, ImGuiPopupFlag popupFlag)
+        public static bool BeginPopupContextWindow(string strId, ImGuiPopups popups)
         {
             byte* nativeStrId;
             int strIdByteCount = 0;
@@ -1279,7 +1280,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeStrId = null;
             }
 
-            byte ret = ImGuiNative.igBeginPopupContextWindow(nativeStrId, popupFlag);
+            byte ret = ImGuiNative.igBeginPopupContextWindow(nativeStrId, popups);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
@@ -1319,7 +1320,7 @@ namespace Alis.Core.Graphic.ImGui
             }
 
             byte* pOpen = null;
-            ImGuiWindowFlag flag = 0;
+            ImGuiWindows flag = 0;
             byte ret = ImGuiNative.igBeginPopupModal(nativeName, pOpen, flag);
             if (nameByteCount > Util.StackAllocationSizeLimit)
             {
@@ -1362,7 +1363,7 @@ namespace Alis.Core.Graphic.ImGui
 
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
             byte* nativePOpen = &nativePOpenVal;
-            ImGuiWindowFlag flag = 0;
+            ImGuiWindows flag = 0;
             byte ret = ImGuiNative.igBeginPopupModal(nativeName, nativePOpen, flag);
             if (nameByteCount > Util.StackAllocationSizeLimit)
             {
@@ -1380,7 +1381,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="pOpen">The open</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool BeginPopupModal(string name, ref bool pOpen, ImGuiWindowFlag flag)
+        public static bool BeginPopupModal(string name, ref bool pOpen, ImGuiWindows flag)
         {
             byte* nativeName;
             int nameByteCount = 0;
@@ -1447,7 +1448,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeStrId = null;
             }
 
-            ImGuiTabBarFlag flag = 0;
+            ImGuiTabBars flag = 0;
             byte ret = ImGuiNative.igBeginTabBar(nativeStrId, flag);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -1463,7 +1464,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="strId">The str id</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool BeginTabBar(string strId, ImGuiTabBarFlag flag)
+        public static bool BeginTabBar(string strId, ImGuiTabBars flag)
         {
             byte* nativeStrId;
             int strIdByteCount = 0;
@@ -1528,7 +1529,7 @@ namespace Alis.Core.Graphic.ImGui
             }
 
             byte* pOpen = null;
-            ImGuiTabItemFlag flag = 0;
+            ImGuiTabItems flag = 0;
             byte ret = ImGuiNative.igBeginTabItem(nativeLabel, pOpen, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -1571,7 +1572,7 @@ namespace Alis.Core.Graphic.ImGui
 
             byte nativePOpenVal = pOpen ? (byte) 1 : (byte) 0;
             byte* nativePOpen = &nativePOpenVal;
-            ImGuiTabItemFlag flag = 0;
+            ImGuiTabItems flag = 0;
             byte ret = ImGuiNative.igBeginTabItem(nativeLabel, nativePOpen, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -1589,7 +1590,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="pOpen">The open</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool BeginTabItem(string label, ref bool pOpen, ImGuiTabItemFlag flag)
+        public static bool BeginTabItem(string label, ref bool pOpen, ImGuiTabItems flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -1657,7 +1658,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeStrId = null;
             }
 
-            ImGuiTableFlag flag = 0;
+            ImGuiTables flag = 0;
             Vector2F outerSize = new Vector2F();
             float innerWidth = 0.0f;
             byte ret = ImGuiNative.igBeginTable(nativeStrId, column, flag, outerSize, innerWidth);
@@ -1676,7 +1677,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="column">The column</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool BeginTable(string strId, int column, ImGuiTableFlag flag)
+        public static bool BeginTable(string strId, int column, ImGuiTables flag)
         {
             byte* nativeStrId;
             int strIdByteCount = 0;
@@ -1720,7 +1721,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="flag">The flags</param>
         /// <param name="outerSize">The outer size</param>
         /// <returns>The bool</returns>
-        public static bool BeginTable(string strId, int column, ImGuiTableFlag flag, Vector2F outerSize)
+        public static bool BeginTable(string strId, int column, ImGuiTables flag, Vector2F outerSize)
         {
             byte* nativeStrId;
             int strIdByteCount = 0;
@@ -1764,7 +1765,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="outerSize">The outer size</param>
         /// <param name="innerWidth">The inner width</param>
         /// <returns>The bool</returns>
-        public static bool BeginTable(string strId, int column, ImGuiTableFlag flag, Vector2F outerSize, float innerWidth)
+        public static bool BeginTable(string strId, int column, ImGuiTables flag, Vector2F outerSize, float innerWidth)
         {
             byte* nativeStrId;
             int strIdByteCount = 0;
@@ -2111,7 +2112,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            ImGuiTreeNodeFlag flag = 0;
+            ImGuiTreeNodes flag = 0;
             byte ret = ImGuiNative.igCollapsingHeader_TreeNodeFlags(nativeLabel, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -2127,7 +2128,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="label">The label</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool CollapsingHeader(string label, ImGuiTreeNodeFlag flag)
+        public static bool CollapsingHeader(string label, ImGuiTreeNodes flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -2194,7 +2195,7 @@ namespace Alis.Core.Graphic.ImGui
 
             byte nativePVisibleVal = pVisible ? (byte) 1 : (byte) 0;
             byte* nativePVisible = &nativePVisibleVal;
-            ImGuiTreeNodeFlag flag = 0;
+            ImGuiTreeNodes flag = 0;
             byte ret = ImGuiNative.igCollapsingHeader_BoolPtr(nativeLabel, nativePVisible, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -2212,7 +2213,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="pVisible">The visible</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool CollapsingHeader(string label, ref bool pVisible, ImGuiTreeNodeFlag flag)
+        public static bool CollapsingHeader(string label, ref bool pVisible, ImGuiTreeNodes flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -2280,7 +2281,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeDescId = null;
             }
 
-            ImGuiColorEditFlag flag = 0;
+            ImGuiColorEdits flag = 0;
             Vector2F size = new Vector2F();
             byte ret = ImGuiNative.igColorButton(nativeDescId, col, flag, size);
             if (descIdByteCount > Util.StackAllocationSizeLimit)
@@ -2298,7 +2299,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="col">The col</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool ColorButton(string descId, Vector4F col, ImGuiColorEditFlag flag)
+        public static bool ColorButton(string descId, Vector4F col, ImGuiColorEdits flag)
         {
             byte* nativeDescId;
             int descIdByteCount = 0;
@@ -2341,7 +2342,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="flag">The flags</param>
         /// <param name="size">The size</param>
         /// <returns>The bool</returns>
-        public static bool ColorButton(string descId, Vector4F col, ImGuiColorEditFlag flag, Vector2F size)
+        public static bool ColorButton(string descId, Vector4F col, ImGuiColorEdits flag, Vector2F size)
         {
             byte* nativeDescId;
             int descIdByteCount = 0;
@@ -2474,7 +2475,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            ImGuiColorEditFlag flag = 0;
+            ImGuiColorEdits flag = 0;
             fixed (Vector3F* nativeCol = &col)
             {
                 byte ret = ImGuiNative.igColorEdit3(nativeLabel, nativeCol, flag);
@@ -2494,7 +2495,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="col">The col</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool ColorEdit3(string label, ref Vector3F col, ImGuiColorEditFlag flag)
+        public static bool ColorEdit3(string label, ref Vector3F col, ImGuiColorEdits flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -2562,7 +2563,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            ImGuiColorEditFlag flag = 0;
+            ImGuiColorEdits flag = 0;
             fixed (Vector4F* nativeCol = &col)
             {
                 byte ret = ImGuiNative.igColorEdit4(nativeLabel, nativeCol, flag);
@@ -2582,7 +2583,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="col">The col</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool ColorEdit4(string label, ref Vector4F col, ImGuiColorEditFlag flag)
+        public static bool ColorEdit4(string label, ref Vector4F col, ImGuiColorEdits flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -2650,7 +2651,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            ImGuiColorEditFlag flag = 0;
+            ImGuiColorEdits flag = 0;
             fixed (Vector3F* nativeCol = &col)
             {
                 byte ret = ImGuiNative.igColorPicker3(nativeLabel, nativeCol, flag);
@@ -2670,7 +2671,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="col">The col</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool ColorPicker3(string label, ref Vector3F col, ImGuiColorEditFlag flag)
+        public static bool ColorPicker3(string label, ref Vector3F col, ImGuiColorEdits flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -2738,7 +2739,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            ImGuiColorEditFlag flag = 0;
+            ImGuiColorEdits flag = 0;
             float* refCol = null;
             fixed (Vector4F* nativeCol = &col)
             {
@@ -2759,7 +2760,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="col">The col</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool ColorPicker4(string label, ref Vector4F col, ImGuiColorEditFlag flag)
+        public static bool ColorPicker4(string label, ref Vector4F col, ImGuiColorEdits flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -2805,7 +2806,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="flag">The flags</param>
         /// <param name="refCol">The ref col</param>
         /// <returns>The bool</returns>
-        public static bool ColorPicker4(string label, ref Vector4F col, ImGuiColorEditFlag flag, ref float refCol)
+        public static bool ColorPicker4(string label, ref Vector4F col, ImGuiColorEdits flag, ref float refCol)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -3380,7 +3381,7 @@ namespace Alis.Core.Graphic.ImGui
         public static uint DockSpace(uint id)
         {
             Vector2F size = new Vector2F();
-            ImGuiDockNodeFlag flag = 0;
+            ImGuiDockNodes flag = 0;
             ImGuiWindowClass* windowClass = null;
             uint ret = ImGuiNative.igDockSpace(id, size, flag, windowClass);
             return ret;
@@ -3394,7 +3395,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <returns>The ret</returns>
         public static uint DockSpace(uint id, Vector2F size)
         {
-            ImGuiDockNodeFlag flag = 0;
+            ImGuiDockNodes flag = 0;
             ImGuiWindowClass* windowClass = null;
             uint ret = ImGuiNative.igDockSpace(id, size, flag, windowClass);
             return ret;
@@ -3407,7 +3408,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="size">The size</param>
         /// <param name="flag">The flags</param>
         /// <returns>The ret</returns>
-        public static uint DockSpace(uint id, Vector2F size, ImGuiDockNodeFlag flag)
+        public static uint DockSpace(uint id, Vector2F size, ImGuiDockNodes flag)
         {
             ImGuiWindowClass* windowClass = null;
             uint ret = ImGuiNative.igDockSpace(id, size, flag, windowClass);
@@ -3422,7 +3423,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="flag">The flags</param>
         /// <param name="windowClass">The window class</param>
         /// <returns>The ret</returns>
-        public static uint DockSpace(uint id, Vector2F size, ImGuiDockNodeFlag flag, ImGuiWindowClassPtr windowClass)
+        public static uint DockSpace(uint id, Vector2F size, ImGuiDockNodes flag, ImGuiWindowClassPtr windowClass)
         {
             ImGuiWindowClass* nativeWindowClass = windowClass.NativePtr;
             uint ret = ImGuiNative.igDockSpace(id, size, flag, nativeWindowClass);
@@ -3436,7 +3437,7 @@ namespace Alis.Core.Graphic.ImGui
         public static uint DockSpaceOverViewport()
         {
             ImGuiViewport* viewport = null;
-            ImGuiDockNodeFlag flag = 0;
+            ImGuiDockNodes flag = 0;
             ImGuiWindowClass* windowClass = null;
             uint ret = ImGuiNative.igDockSpaceOverViewport(viewport, flag, windowClass);
             return ret;
@@ -3450,7 +3451,7 @@ namespace Alis.Core.Graphic.ImGui
         public static uint DockSpaceOverViewport(ImGuiViewportPtr viewport)
         {
             ImGuiViewport* nativeViewport = viewport.NativePtr;
-            ImGuiDockNodeFlag flag = 0;
+            ImGuiDockNodes flag = 0;
             ImGuiWindowClass* windowClass = null;
             uint ret = ImGuiNative.igDockSpaceOverViewport(nativeViewport, flag, windowClass);
             return ret;
@@ -3462,7 +3463,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="viewport">The viewport</param>
         /// <param name="flag">The flags</param>
         /// <returns>The ret</returns>
-        public static uint DockSpaceOverViewport(ImGuiViewportPtr viewport, ImGuiDockNodeFlag flag)
+        public static uint DockSpaceOverViewport(ImGuiViewportPtr viewport, ImGuiDockNodes flag)
         {
             ImGuiViewport* nativeViewport = viewport.NativePtr;
             ImGuiWindowClass* windowClass = null;
@@ -3477,7 +3478,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="flag">The flags</param>
         /// <param name="windowClass">The window class</param>
         /// <returns>The ret</returns>
-        public static uint DockSpaceOverViewport(ImGuiViewportPtr viewport, ImGuiDockNodeFlag flag, ImGuiWindowClassPtr windowClass)
+        public static uint DockSpaceOverViewport(ImGuiViewportPtr viewport, ImGuiDockNodes flag, ImGuiWindowClassPtr windowClass)
         {
             ImGuiViewport* nativeViewport = viewport.NativePtr;
             ImGuiWindowClass* nativeWindowClass = windowClass.NativePtr;
@@ -3534,7 +3535,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (float* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -3601,7 +3602,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (float* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -3668,7 +3669,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (float* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -3735,7 +3736,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (float* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -3811,7 +3812,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (float* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -3840,7 +3841,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool DragFloat(string label, ref float v, float vSpeed, float vMin, float vMax, string format, ImGuiSliderFlag flag)
+        public static bool DragFloat(string label, ref float v, float vSpeed, float vMin, float vMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -3954,7 +3955,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector2F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat2(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -4021,7 +4022,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector2F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat2(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -4088,7 +4089,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector2F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat2(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -4155,7 +4156,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector2F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat2(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -4231,7 +4232,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector2F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat2(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -4260,7 +4261,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool DragFloat2(string label, ref Vector2F v, float vSpeed, float vMin, float vMax, string format, ImGuiSliderFlag flag)
+        public static bool DragFloat2(string label, ref Vector2F v, float vSpeed, float vMin, float vMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -4374,7 +4375,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector3F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat3(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -4441,7 +4442,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector3F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat3(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -4508,7 +4509,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector3F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat3(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -4575,7 +4576,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector3F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat3(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -4651,7 +4652,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector3F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat3(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -4680,7 +4681,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool DragFloat3(string label, ref Vector3F v, float vSpeed, float vMin, float vMax, string format, ImGuiSliderFlag flag)
+        public static bool DragFloat3(string label, ref Vector3F v, float vSpeed, float vMin, float vMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -4794,7 +4795,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector4F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat4(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -4861,7 +4862,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector4F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat4(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -4928,7 +4929,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector4F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat4(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -4995,7 +4996,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector4F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat4(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -5071,7 +5072,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector4F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragFloat4(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -5100,7 +5101,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool DragFloat4(string label, ref Vector4F v, float vSpeed, float vMin, float vMax, string format, ImGuiSliderFlag flag)
+        public static bool DragFloat4(string label, ref Vector4F v, float vSpeed, float vMin, float vMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -5216,7 +5217,7 @@ namespace Alis.Core.Graphic.ImGui
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             byte* nativeFormatMax = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (float* nativeVCurrentMin = &vCurrentMin)
             {
                 fixed (float* nativeVCurrentMax = &vCurrentMax)
@@ -5288,7 +5289,7 @@ namespace Alis.Core.Graphic.ImGui
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             byte* nativeFormatMax = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (float* nativeVCurrentMin = &vCurrentMin)
             {
                 fixed (float* nativeVCurrentMax = &vCurrentMax)
@@ -5360,7 +5361,7 @@ namespace Alis.Core.Graphic.ImGui
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             byte* nativeFormatMax = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (float* nativeVCurrentMin = &vCurrentMin)
             {
                 fixed (float* nativeVCurrentMax = &vCurrentMax)
@@ -5432,7 +5433,7 @@ namespace Alis.Core.Graphic.ImGui
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             byte* nativeFormatMax = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (float* nativeVCurrentMin = &vCurrentMin)
             {
                 fixed (float* nativeVCurrentMax = &vCurrentMax)
@@ -5513,7 +5514,7 @@ namespace Alis.Core.Graphic.ImGui
             }
 
             byte* nativeFormatMax = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (float* nativeVCurrentMin = &vCurrentMin)
             {
                 fixed (float* nativeVCurrentMax = &vCurrentMax)
@@ -5617,7 +5618,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormatMax = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (float* nativeVCurrentMin = &vCurrentMin)
             {
                 fixed (float* nativeVCurrentMax = &vCurrentMax)
@@ -5656,7 +5657,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="formatMax">The format max</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool DragFloatRange2(string label, ref float vCurrentMin, ref float vCurrentMax, float vSpeed, float vMin, float vMax, string format, string formatMax, ImGuiSliderFlag flag)
+        public static bool DragFloatRange2(string label, ref float vCurrentMin, ref float vCurrentMax, float vSpeed, float vMin, float vMax, string format, string formatMax, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -5801,7 +5802,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -5868,7 +5869,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -5935,7 +5936,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -6002,7 +6003,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -6078,7 +6079,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -6107,7 +6108,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool DragInt(string label, ref int v, float vSpeed, int vMin, int vMax, string format, ImGuiSliderFlag flag)
+        public static bool DragInt(string label, ref int v, float vSpeed, int vMin, int vMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -6221,7 +6222,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt2(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -6288,7 +6289,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt2(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -6355,7 +6356,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt2(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -6422,7 +6423,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt2(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -6498,7 +6499,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt2(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -6527,7 +6528,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool DragInt2(string label, ref int v, float vSpeed, int vMin, int vMax, string format, ImGuiSliderFlag flag)
+        public static bool DragInt2(string label, ref int v, float vSpeed, int vMin, int vMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -6641,7 +6642,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt3(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -6708,7 +6709,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt3(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -6775,7 +6776,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt3(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -6842,7 +6843,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt3(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -6918,7 +6919,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt3(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -6947,7 +6948,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool DragInt3(string label, ref int v, float vSpeed, int vMin, int vMax, string format, ImGuiSliderFlag flag)
+        public static bool DragInt3(string label, ref int v, float vSpeed, int vMin, int vMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -7061,7 +7062,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt4(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -7128,7 +7129,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt4(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -7195,7 +7196,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt4(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -7262,7 +7263,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt4(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -7338,7 +7339,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igDragInt4(nativeLabel, nativeV, vSpeed, vMin, vMax, nativeFormat, flag);
@@ -7367,7 +7368,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool DragInt4(string label, ref int v, float vSpeed, int vMin, int vMax, string format, ImGuiSliderFlag flag)
+        public static bool DragInt4(string label, ref int v, float vSpeed, int vMin, int vMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -7483,7 +7484,7 @@ namespace Alis.Core.Graphic.ImGui
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             byte* nativeFormatMax = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeVCurrentMin = &vCurrentMin)
             {
                 fixed (int* nativeVCurrentMax = &vCurrentMax)
@@ -7555,7 +7556,7 @@ namespace Alis.Core.Graphic.ImGui
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             byte* nativeFormatMax = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeVCurrentMin = &vCurrentMin)
             {
                 fixed (int* nativeVCurrentMax = &vCurrentMax)
@@ -7627,7 +7628,7 @@ namespace Alis.Core.Graphic.ImGui
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             byte* nativeFormatMax = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeVCurrentMin = &vCurrentMin)
             {
                 fixed (int* nativeVCurrentMax = &vCurrentMax)
@@ -7699,7 +7700,7 @@ namespace Alis.Core.Graphic.ImGui
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
             byte* nativeFormatMax = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeVCurrentMin = &vCurrentMin)
             {
                 fixed (int* nativeVCurrentMax = &vCurrentMax)
@@ -7780,7 +7781,7 @@ namespace Alis.Core.Graphic.ImGui
             }
 
             byte* nativeFormatMax = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeVCurrentMin = &vCurrentMin)
             {
                 fixed (int* nativeVCurrentMax = &vCurrentMax)
@@ -7884,7 +7885,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormatMax = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeVCurrentMin = &vCurrentMin)
             {
                 fixed (int* nativeVCurrentMax = &vCurrentMax)
@@ -7923,7 +7924,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="formatMax">The format max</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool DragIntRange2(string label, ref int vCurrentMin, ref int vCurrentMax, float vSpeed, int vMin, int vMax, string format, string formatMax, ImGuiSliderFlag flag)
+        public static bool DragIntRange2(string label, ref int vCurrentMin, ref int vCurrentMax, float vSpeed, int vMin, int vMax, string format, string formatMax, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -8056,7 +8057,7 @@ namespace Alis.Core.Graphic.ImGui
             void* pMin = null;
             void* pMax = null;
             byte* nativeFormat = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             byte ret = ImGuiNative.igDragScalar(nativeLabel, dataType, nativePData, vSpeed, pMin, pMax, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -8103,7 +8104,7 @@ namespace Alis.Core.Graphic.ImGui
             void* pMin = null;
             void* pMax = null;
             byte* nativeFormat = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             byte ret = ImGuiNative.igDragScalar(nativeLabel, dataType, nativePData, vSpeed, pMin, pMax, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -8151,7 +8152,7 @@ namespace Alis.Core.Graphic.ImGui
             void* nativePMin = pMin.ToPointer();
             void* pMax = null;
             byte* nativeFormat = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             byte ret = ImGuiNative.igDragScalar(nativeLabel, dataType, nativePData, vSpeed, nativePMin, pMax, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -8200,7 +8201,7 @@ namespace Alis.Core.Graphic.ImGui
             void* nativePMin = pMin.ToPointer();
             void* nativePMax = pMax.ToPointer();
             byte* nativeFormat = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             byte ret = ImGuiNative.igDragScalar(nativeLabel, dataType, nativePData, vSpeed, nativePMin, nativePMax, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -8272,7 +8273,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             byte ret = ImGuiNative.igDragScalar(nativeLabel, dataType, nativePData, vSpeed, nativePMin, nativePMax, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -8299,7 +8300,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool DragScalar(string label, ImGuiDataType dataType, IntPtr pData, float vSpeed, IntPtr pMin, IntPtr pMax, string format, ImGuiSliderFlag flag)
+        public static bool DragScalar(string label, ImGuiDataType dataType, IntPtr pData, float vSpeed, IntPtr pMin, IntPtr pMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -8402,7 +8403,7 @@ namespace Alis.Core.Graphic.ImGui
             void* pMin = null;
             void* pMax = null;
             byte* nativeFormat = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             byte ret = ImGuiNative.igDragScalarN(nativeLabel, dataType, nativePData, components, vSpeed, pMin, pMax, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -8450,7 +8451,7 @@ namespace Alis.Core.Graphic.ImGui
             void* pMin = null;
             void* pMax = null;
             byte* nativeFormat = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             byte ret = ImGuiNative.igDragScalarN(nativeLabel, dataType, nativePData, components, vSpeed, pMin, pMax, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -8499,7 +8500,7 @@ namespace Alis.Core.Graphic.ImGui
             void* nativePMin = pMin.ToPointer();
             void* pMax = null;
             byte* nativeFormat = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             byte ret = ImGuiNative.igDragScalarN(nativeLabel, dataType, nativePData, components, vSpeed, nativePMin, pMax, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -8549,7 +8550,7 @@ namespace Alis.Core.Graphic.ImGui
             void* nativePMin = pMin.ToPointer();
             void* nativePMax = pMax.ToPointer();
             byte* nativeFormat = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             byte ret = ImGuiNative.igDragScalarN(nativeLabel, dataType, nativePData, components, vSpeed, nativePMin, nativePMax, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -8622,7 +8623,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             byte ret = ImGuiNative.igDragScalarN(nativeLabel, dataType, nativePData, components, vSpeed, nativePMin, nativePMax, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -8650,7 +8651,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool DragScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, float vSpeed, IntPtr pMin, IntPtr pMax, string format, ImGuiSliderFlag flag)
+        public static bool DragScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, float vSpeed, IntPtr pMin, IntPtr pMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -10089,7 +10090,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.6f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (double* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputDouble(nativeLabel, nativeV, step, stepFast, nativeFormat, flag);
@@ -10155,7 +10156,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.6f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (double* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputDouble(nativeLabel, nativeV, step, stepFast, nativeFormat, flag);
@@ -10221,7 +10222,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.6f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (double* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputDouble(nativeLabel, nativeV, step, stepFast, nativeFormat, flag);
@@ -10296,7 +10297,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (double* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputDouble(nativeLabel, nativeV, step, stepFast, nativeFormat, flag);
@@ -10324,7 +10325,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool InputDouble(string label, ref double v, double step, double stepFast, string format, ImGuiInputTextFlag flag)
+        public static bool InputDouble(string label, ref double v, double step, double stepFast, string format, ImGuiInputTexts flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -10437,7 +10438,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (float* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputFloat(nativeLabel, nativeV, step, stepFast, nativeFormat, flag);
@@ -10503,7 +10504,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (float* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputFloat(nativeLabel, nativeV, step, stepFast, nativeFormat, flag);
@@ -10569,7 +10570,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (float* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputFloat(nativeLabel, nativeV, step, stepFast, nativeFormat, flag);
@@ -10644,7 +10645,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (float* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputFloat(nativeLabel, nativeV, step, stepFast, nativeFormat, flag);
@@ -10672,7 +10673,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool InputFloat(string label, ref float v, float step, float stepFast, string format, ImGuiInputTextFlag flag)
+        public static bool InputFloat(string label, ref float v, float step, float stepFast, string format, ImGuiInputTexts flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -10783,7 +10784,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (Vector2F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputFloat2(nativeLabel, nativeV, nativeFormat, flag);
@@ -10856,7 +10857,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (Vector2F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputFloat2(nativeLabel, nativeV, nativeFormat, flag);
@@ -10882,7 +10883,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool InputFloat2(string label, ref Vector2F v, string format, ImGuiInputTextFlag flag)
+        public static bool InputFloat2(string label, ref Vector2F v, string format, ImGuiInputTexts flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -10993,7 +10994,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (Vector3F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputFloat3(nativeLabel, nativeV, nativeFormat, flag);
@@ -11066,7 +11067,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (Vector3F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputFloat3(nativeLabel, nativeV, nativeFormat, flag);
@@ -11092,7 +11093,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool InputFloat3(string label, ref Vector3F v, string format, ImGuiInputTextFlag flag)
+        public static bool InputFloat3(string label, ref Vector3F v, string format, ImGuiInputTexts flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -11203,7 +11204,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (Vector4F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputFloat4(nativeLabel, nativeV, nativeFormat, flag);
@@ -11276,7 +11277,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (Vector4F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputFloat4(nativeLabel, nativeV, nativeFormat, flag);
@@ -11302,7 +11303,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool InputFloat4(string label, ref Vector4F v, string format, ImGuiInputTextFlag flag)
+        public static bool InputFloat4(string label, ref Vector4F v, string format, ImGuiInputTexts flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -11400,7 +11401,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int step = 1;
             int stepFast = 100;
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputInt(nativeLabel, nativeV, step, stepFast, flag);
@@ -11446,7 +11447,7 @@ namespace Alis.Core.Graphic.ImGui
             }
 
             int stepFast = 100;
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputInt(nativeLabel, nativeV, step, stepFast, flag);
@@ -11492,7 +11493,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputInt(nativeLabel, nativeV, step, stepFast, flag);
@@ -11514,7 +11515,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="stepFast">The step fast</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool InputInt(string label, ref int v, int step, int stepFast, ImGuiInputTextFlag flag)
+        public static bool InputInt(string label, ref int v, int step, int stepFast, ImGuiInputTexts flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -11582,7 +11583,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputInt2(nativeLabel, nativeV, flag);
@@ -11602,7 +11603,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="v">The </param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool InputInt2(string label, ref int v, ImGuiInputTextFlag flag)
+        public static bool InputInt2(string label, ref int v, ImGuiInputTexts flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -11670,7 +11671,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputInt3(nativeLabel, nativeV, flag);
@@ -11690,7 +11691,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="v">The </param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool InputInt3(string label, ref int v, ImGuiInputTextFlag flag)
+        public static bool InputInt3(string label, ref int v, ImGuiInputTexts flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -11758,7 +11759,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igInputInt4(nativeLabel, nativeV, flag);
@@ -11778,7 +11779,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="v">The </param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool InputInt4(string label, ref int v, ImGuiInputTextFlag flag)
+        public static bool InputInt4(string label, ref int v, ImGuiInputTexts flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -11851,7 +11852,7 @@ namespace Alis.Core.Graphic.ImGui
             void* pStep = null;
             void* pStepFast = null;
             byte* nativeFormat = null;
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             byte ret = ImGuiNative.igInputScalar(nativeLabel, dataType, nativePData, pStep, pStepFast, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -11898,7 +11899,7 @@ namespace Alis.Core.Graphic.ImGui
             void* nativePStep = pStep.ToPointer();
             void* pStepFast = null;
             byte* nativeFormat = null;
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             byte ret = ImGuiNative.igInputScalar(nativeLabel, dataType, nativePData, nativePStep, pStepFast, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -11946,7 +11947,7 @@ namespace Alis.Core.Graphic.ImGui
             void* nativePStep = pStep.ToPointer();
             void* nativePStepFast = pStepFast.ToPointer();
             byte* nativeFormat = null;
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             byte ret = ImGuiNative.igInputScalar(nativeLabel, dataType, nativePData, nativePStep, nativePStepFast, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -12017,7 +12018,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             byte ret = ImGuiNative.igInputScalar(nativeLabel, dataType, nativePData, nativePStep, nativePStepFast, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -12043,7 +12044,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool InputScalar(string label, ImGuiDataType dataType, IntPtr pData, IntPtr pStep, IntPtr pStepFast, string format, ImGuiInputTextFlag flag)
+        public static bool InputScalar(string label, ImGuiDataType dataType, IntPtr pData, IntPtr pStep, IntPtr pStepFast, string format, ImGuiInputTexts flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -12145,7 +12146,7 @@ namespace Alis.Core.Graphic.ImGui
             void* pStep = null;
             void* pStepFast = null;
             byte* nativeFormat = null;
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             byte ret = ImGuiNative.igInputScalarN(nativeLabel, dataType, nativePData, components, pStep, pStepFast, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -12193,7 +12194,7 @@ namespace Alis.Core.Graphic.ImGui
             void* nativePStep = pStep.ToPointer();
             void* pStepFast = null;
             byte* nativeFormat = null;
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             byte ret = ImGuiNative.igInputScalarN(nativeLabel, dataType, nativePData, components, nativePStep, pStepFast, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -12242,7 +12243,7 @@ namespace Alis.Core.Graphic.ImGui
             void* nativePStep = pStep.ToPointer();
             void* nativePStepFast = pStepFast.ToPointer();
             byte* nativeFormat = null;
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             byte ret = ImGuiNative.igInputScalarN(nativeLabel, dataType, nativePData, components, nativePStep, nativePStepFast, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -12314,7 +12315,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiInputTextFlag flag = 0;
+            ImGuiInputTexts flag = 0;
             byte ret = ImGuiNative.igInputScalarN(nativeLabel, dataType, nativePData, components, nativePStep, nativePStepFast, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -12341,7 +12342,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool InputScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pStep, IntPtr pStepFast, string format, ImGuiInputTextFlag flag)
+        public static bool InputScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pStep, IntPtr pStepFast, string format, ImGuiInputTexts flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -12437,7 +12438,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeStrId = null;
             }
 
-            ImGuiButtonFlag flag = 0;
+            ImGuiButtons flag = 0;
             byte ret = ImGuiNative.igInvisibleButton(nativeStrId, size, flag);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -12454,7 +12455,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="size">The size</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool InvisibleButton(string strId, Vector2F size, ImGuiButtonFlag flag)
+        public static bool InvisibleButton(string strId, Vector2F size, ImGuiButtons flag)
         {
             byte* nativeStrId;
             int strIdByteCount = 0;
@@ -12616,7 +12617,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <returns>The bool</returns>
         public static bool IsItemHovered()
         {
-            ImGuiHoveredFlag flag = 0;
+            ImGuiHovereds flag = 0;
             byte ret = ImGuiNative.igIsItemHovered(flag);
             return ret != 0;
         }
@@ -12626,7 +12627,7 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool IsItemHovered(ImGuiHoveredFlag flag)
+        public static bool IsItemHovered(ImGuiHovereds flag)
         {
             byte ret = ImGuiNative.igIsItemHovered(flag);
             return ret != 0;
@@ -12863,7 +12864,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeStrId = null;
             }
 
-            ImGuiPopupFlag flag = 0;
+            ImGuiPopups flag = 0;
             byte ret = ImGuiNative.igIsPopupOpen_Str(nativeStrId, flag);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -12879,7 +12880,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="strId">The str id</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool IsPopupOpen(string strId, ImGuiPopupFlag flag)
+        public static bool IsPopupOpen(string strId, ImGuiPopups flag)
         {
             byte* nativeStrId;
             int strIdByteCount = 0;
@@ -12972,7 +12973,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <returns>The bool</returns>
         public static bool IsWindowFocused()
         {
-            ImGuiFocusedFlag flag = 0;
+            ImGuiFocus flag = 0;
             byte ret = ImGuiNative.igIsWindowFocused(flag);
             return ret != 0;
         }
@@ -12982,7 +12983,7 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool IsWindowFocused(ImGuiFocusedFlag flag)
+        public static bool IsWindowFocused(ImGuiFocus flag)
         {
             byte ret = ImGuiNative.igIsWindowFocused(flag);
             return ret != 0;
@@ -12994,7 +12995,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <returns>The bool</returns>
         public static bool IsWindowHovered()
         {
-            ImGuiHoveredFlag flag = 0;
+            ImGuiHovereds flag = 0;
             byte ret = ImGuiNative.igIsWindowHovered(flag);
             return ret != 0;
         }
@@ -13004,7 +13005,7 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool IsWindowHovered(ImGuiHoveredFlag flag)
+        public static bool IsWindowHovered(ImGuiHovereds flag)
         {
             byte ret = ImGuiNative.igIsWindowHovered(flag);
             return ret != 0;
@@ -13958,8 +13959,8 @@ namespace Alis.Core.Graphic.ImGui
                 nativeStrId = null;
             }
 
-            ImGuiPopupFlag popupFlag = 0;
-            ImGuiNative.igOpenPopup_Str(nativeStrId, popupFlag);
+            ImGuiPopups popups = 0;
+            ImGuiNative.igOpenPopup_Str(nativeStrId, popups);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
@@ -13970,8 +13971,8 @@ namespace Alis.Core.Graphic.ImGui
         ///     Opens the popup using the specified str id
         /// </summary>
         /// <param name="strId">The str id</param>
-        /// <param name="popupFlag">The popup flags</param>
-        public static void OpenPopup(string strId, ImGuiPopupFlag popupFlag)
+        /// <param name="popups">The popup flags</param>
+        public static void OpenPopup(string strId, ImGuiPopups popups)
         {
             byte* nativeStrId;
             int strIdByteCount = 0;
@@ -13996,7 +13997,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeStrId = null;
             }
 
-            ImGuiNative.igOpenPopup_Str(nativeStrId, popupFlag);
+            ImGuiNative.igOpenPopup_Str(nativeStrId, popups);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
@@ -14009,18 +14010,18 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="id">The id</param>
         public static void OpenPopup(uint id)
         {
-            ImGuiPopupFlag popupFlag = 0;
-            ImGuiNative.igOpenPopup_ID(id, popupFlag);
+            ImGuiPopups popups = 0;
+            ImGuiNative.igOpenPopup_ID(id, popups);
         }
 
         /// <summary>
         ///     Opens the popup using the specified id
         /// </summary>
         /// <param name="id">The id</param>
-        /// <param name="popupFlag">The popup flags</param>
-        public static void OpenPopup(uint id, ImGuiPopupFlag popupFlag)
+        /// <param name="popups">The popup flags</param>
+        public static void OpenPopup(uint id, ImGuiPopups popups)
         {
-            ImGuiNative.igOpenPopup_ID(id, popupFlag);
+            ImGuiNative.igOpenPopup_ID(id, popups);
         }
 
         /// <summary>
@@ -14029,8 +14030,8 @@ namespace Alis.Core.Graphic.ImGui
         public static void OpenPopupOnItemClick()
         {
             byte* nativeStrId = null;
-            ImGuiPopupFlag popupFlag = (ImGuiPopupFlag) 1;
-            ImGuiNative.igOpenPopupOnItemClick(nativeStrId, popupFlag);
+            ImGuiPopups popups = (ImGuiPopups) 1;
+            ImGuiNative.igOpenPopupOnItemClick(nativeStrId, popups);
         }
 
         /// <summary>
@@ -14062,8 +14063,8 @@ namespace Alis.Core.Graphic.ImGui
                 nativeStrId = null;
             }
 
-            ImGuiPopupFlag popupFlag = (ImGuiPopupFlag) 1;
-            ImGuiNative.igOpenPopupOnItemClick(nativeStrId, popupFlag);
+            ImGuiPopups popups = (ImGuiPopups) 1;
+            ImGuiNative.igOpenPopupOnItemClick(nativeStrId, popups);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
@@ -14074,8 +14075,8 @@ namespace Alis.Core.Graphic.ImGui
         ///     Opens the popup on item click using the specified str id
         /// </summary>
         /// <param name="strId">The str id</param>
-        /// <param name="popupFlag">The popup flags</param>
-        public static void OpenPopupOnItemClick(string strId, ImGuiPopupFlag popupFlag)
+        /// <param name="popups">The popup flags</param>
+        public static void OpenPopupOnItemClick(string strId, ImGuiPopups popups)
         {
             byte* nativeStrId;
             int strIdByteCount = 0;
@@ -14100,7 +14101,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeStrId = null;
             }
 
-            ImGuiNative.igOpenPopupOnItemClick(nativeStrId, popupFlag);
+            ImGuiNative.igOpenPopupOnItemClick(nativeStrId, popups);
             if (strIdByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStrId);
@@ -15627,7 +15628,7 @@ namespace Alis.Core.Graphic.ImGui
             }
 
             byte selected = 0;
-            ImGuiSelectableFlag flag = 0;
+            ImGuiSelectables flag = 0;
             Vector2F size = new Vector2F();
             byte ret = ImGuiNative.igSelectable_Bool(nativeLabel, selected, flag, size);
             if (labelByteCount > Util.StackAllocationSizeLimit)
@@ -15670,7 +15671,7 @@ namespace Alis.Core.Graphic.ImGui
             }
 
             byte nativeSelected = selected ? (byte) 1 : (byte) 0;
-            ImGuiSelectableFlag flag = 0;
+            ImGuiSelectables flag = 0;
             Vector2F size = new Vector2F();
             byte ret = ImGuiNative.igSelectable_Bool(nativeLabel, nativeSelected, flag, size);
             if (labelByteCount > Util.StackAllocationSizeLimit)
@@ -15688,7 +15689,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="selected">The selected</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool Selectable(string label, bool selected, ImGuiSelectableFlag flag)
+        public static bool Selectable(string label, bool selected, ImGuiSelectables flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -15732,7 +15733,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="flag">The flags</param>
         /// <param name="size">The size</param>
         /// <returns>The bool</returns>
-        public static bool Selectable(string label, bool selected, ImGuiSelectableFlag flag, Vector2F size)
+        public static bool Selectable(string label, bool selected, ImGuiSelectables flag, Vector2F size)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -15800,7 +15801,7 @@ namespace Alis.Core.Graphic.ImGui
 
             byte nativePSelectedVal = pSelected ? (byte) 1 : (byte) 0;
             byte* nativePSelected = &nativePSelectedVal;
-            ImGuiSelectableFlag flag = 0;
+            ImGuiSelectables flag = 0;
             Vector2F size = new Vector2F();
             byte ret = ImGuiNative.igSelectable_BoolPtr(nativeLabel, nativePSelected, flag, size);
             if (labelByteCount > Util.StackAllocationSizeLimit)
@@ -15819,7 +15820,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="pSelected">The selected</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool Selectable(string label, ref bool pSelected, ImGuiSelectableFlag flag)
+        public static bool Selectable(string label, ref bool pSelected, ImGuiSelectables flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -15865,7 +15866,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="flag">The flags</param>
         /// <param name="size">The size</param>
         /// <returns>The bool</returns>
-        public static bool Selectable(string label, ref bool pSelected, ImGuiSelectableFlag flag, Vector2F size)
+        public static bool Selectable(string label, ref bool pSelected, ImGuiSelectables flag, Vector2F size)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -16009,7 +16010,7 @@ namespace Alis.Core.Graphic.ImGui
         ///     Sets the color edit options using the specified flags
         /// </summary>
         /// <param name="flag">The flags</param>
-        public static void SetColorEditOptions(ImGuiColorEditFlag flag)
+        public static void SetColorEditOptions(ImGuiColorEdits flag)
         {
             ImGuiNative.igSetColorEditOptions(flag);
         }
@@ -17220,7 +17221,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.0f deg", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (float* nativeVRad = &vRad)
             {
                 byte ret = ImGuiNative.igSliderAngle(nativeLabel, nativeVRad, vDegreesMin, vDegreesMax, nativeFormat, flag);
@@ -17286,7 +17287,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.0f deg", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (float* nativeVRad = &vRad)
             {
                 byte ret = ImGuiNative.igSliderAngle(nativeLabel, nativeVRad, vDegreesMin, vDegreesMax, nativeFormat, flag);
@@ -17352,7 +17353,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.0f deg", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (float* nativeVRad = &vRad)
             {
                 byte ret = ImGuiNative.igSliderAngle(nativeLabel, nativeVRad, vDegreesMin, vDegreesMax, nativeFormat, flag);
@@ -17427,7 +17428,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (float* nativeVRad = &vRad)
             {
                 byte ret = ImGuiNative.igSliderAngle(nativeLabel, nativeVRad, vDegreesMin, vDegreesMax, nativeFormat, flag);
@@ -17455,7 +17456,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool SliderAngle(string label, ref float vRad, float vDegreesMin, float vDegreesMax, string format, ImGuiSliderFlag flag)
+        public static bool SliderAngle(string label, ref float vRad, float vDegreesMin, float vDegreesMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -17568,7 +17569,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (float* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderFloat(nativeLabel, nativeV, vMin, vMax, nativeFormat, flag);
@@ -17643,7 +17644,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (float* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderFloat(nativeLabel, nativeV, vMin, vMax, nativeFormat, flag);
@@ -17671,7 +17672,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool SliderFloat(string label, ref float v, float vMin, float vMax, string format, ImGuiSliderFlag flag)
+        public static bool SliderFloat(string label, ref float v, float vMin, float vMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -17784,7 +17785,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector2F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderFloat2(nativeLabel, nativeV, vMin, vMax, nativeFormat, flag);
@@ -17859,7 +17860,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector2F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderFloat2(nativeLabel, nativeV, vMin, vMax, nativeFormat, flag);
@@ -17887,7 +17888,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool SliderFloat2(string label, ref Vector2F v, float vMin, float vMax, string format, ImGuiSliderFlag flag)
+        public static bool SliderFloat2(string label, ref Vector2F v, float vMin, float vMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -18000,7 +18001,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector3F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderFloat3(nativeLabel, nativeV, vMin, vMax, nativeFormat, flag);
@@ -18075,7 +18076,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector3F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderFloat3(nativeLabel, nativeV, vMin, vMax, nativeFormat, flag);
@@ -18103,7 +18104,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool SliderFloat3(string label, ref Vector3F v, float vMin, float vMax, string format, ImGuiSliderFlag flag)
+        public static bool SliderFloat3(string label, ref Vector3F v, float vMin, float vMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -18216,7 +18217,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector4F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderFloat4(nativeLabel, nativeV, vMin, vMax, nativeFormat, flag);
@@ -18291,7 +18292,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (Vector4F* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderFloat4(nativeLabel, nativeV, vMin, vMax, nativeFormat, flag);
@@ -18319,7 +18320,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool SliderFloat4(string label, ref Vector4F v, float vMin, float vMax, string format, ImGuiSliderFlag flag)
+        public static bool SliderFloat4(string label, ref Vector4F v, float vMin, float vMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -18432,7 +18433,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderInt(nativeLabel, nativeV, vMin, vMax, nativeFormat, flag);
@@ -18507,7 +18508,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderInt(nativeLabel, nativeV, vMin, vMax, nativeFormat, flag);
@@ -18535,7 +18536,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool SliderInt(string label, ref int v, int vMin, int vMax, string format, ImGuiSliderFlag flag)
+        public static bool SliderInt(string label, ref int v, int vMin, int vMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -18648,7 +18649,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderInt2(nativeLabel, nativeV, vMin, vMax, nativeFormat, flag);
@@ -18723,7 +18724,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderInt2(nativeLabel, nativeV, vMin, vMax, nativeFormat, flag);
@@ -18751,7 +18752,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool SliderInt2(string label, ref int v, int vMin, int vMax, string format, ImGuiSliderFlag flag)
+        public static bool SliderInt2(string label, ref int v, int vMin, int vMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -18864,7 +18865,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderInt3(nativeLabel, nativeV, vMin, vMax, nativeFormat, flag);
@@ -18939,7 +18940,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderInt3(nativeLabel, nativeV, vMin, vMax, nativeFormat, flag);
@@ -18967,7 +18968,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool SliderInt3(string label, ref int v, int vMin, int vMax, string format, ImGuiSliderFlag flag)
+        public static bool SliderInt3(string label, ref int v, int vMin, int vMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -19080,7 +19081,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderInt4(nativeLabel, nativeV, vMin, vMax, nativeFormat, flag);
@@ -19155,7 +19156,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igSliderInt4(nativeLabel, nativeV, vMin, vMax, nativeFormat, flag);
@@ -19183,7 +19184,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool SliderInt4(string label, ref int v, int vMin, int vMax, string format, ImGuiSliderFlag flag)
+        public static bool SliderInt4(string label, ref int v, int vMin, int vMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -19286,7 +19287,7 @@ namespace Alis.Core.Graphic.ImGui
             void* nativePMin = pMin.ToPointer();
             void* nativePMax = pMax.ToPointer();
             byte* nativeFormat = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             byte ret = ImGuiNative.igSliderScalar(nativeLabel, dataType, nativePData, nativePMin, nativePMax, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -19357,7 +19358,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             byte ret = ImGuiNative.igSliderScalar(nativeLabel, dataType, nativePData, nativePMin, nativePMax, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -19383,7 +19384,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool SliderScalar(string label, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, string format, ImGuiSliderFlag flag)
+        public static bool SliderScalar(string label, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -19487,7 +19488,7 @@ namespace Alis.Core.Graphic.ImGui
             void* nativePMin = pMin.ToPointer();
             void* nativePMax = pMax.ToPointer();
             byte* nativeFormat = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             byte ret = ImGuiNative.igSliderScalarN(nativeLabel, dataType, nativePData, components, nativePMin, nativePMax, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -19559,7 +19560,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             byte ret = ImGuiNative.igSliderScalarN(nativeLabel, dataType, nativePData, components, nativePMin, nativePMax, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -19586,7 +19587,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool SliderScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pMin, IntPtr pMax, string format, ImGuiSliderFlag flag)
+        public static bool SliderScalarN(string label, ImGuiDataType dataType, IntPtr pData, int components, IntPtr pMin, IntPtr pMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -19785,7 +19786,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            ImGuiTabItemFlag flag = 0;
+            ImGuiTabItems flag = 0;
             byte ret = ImGuiNative.igTabItemButton(nativeLabel, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -19801,7 +19802,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="label">The label</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool TabItemButton(string label, ImGuiTabItemFlag flag)
+        public static bool TabItemButton(string label, ImGuiTabItems flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -19849,10 +19850,10 @@ namespace Alis.Core.Graphic.ImGui
         ///     Tables the get column flags
         /// </summary>
         /// <returns>The ret</returns>
-        public static ImGuiTableColumnFlag TableGetColumnFlags()
+        public static ImGuiTableColumns TableGetColumnFlags()
         {
             int columnN = -1;
-            ImGuiTableColumnFlag ret = ImGuiNative.igTableGetColumnFlags(columnN);
+            ImGuiTableColumns ret = ImGuiNative.igTableGetColumnFlags(columnN);
             return ret;
         }
 
@@ -19861,9 +19862,9 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="columnN">The column</param>
         /// <returns>The ret</returns>
-        public static ImGuiTableColumnFlag TableGetColumnFlags(int columnN)
+        public static ImGuiTableColumns TableGetColumnFlags(int columnN)
         {
-            ImGuiTableColumnFlag ret = ImGuiNative.igTableGetColumnFlags(columnN);
+            ImGuiTableColumns ret = ImGuiNative.igTableGetColumnFlags(columnN);
             return ret;
         }
 
@@ -19978,29 +19979,29 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         public static void TableNextRow()
         {
-            ImGuiTableRowFlag rowFlag = 0;
+            ImGuiTableRows rows = 0;
             float minRowHeight = 0.0f;
-            ImGuiNative.igTableNextRow(rowFlag, minRowHeight);
+            ImGuiNative.igTableNextRow(rows, minRowHeight);
         }
 
         /// <summary>
         ///     Tables the next row using the specified row flags
         /// </summary>
-        /// <param name="rowFlag">The row flags</param>
-        public static void TableNextRow(ImGuiTableRowFlag rowFlag)
+        /// <param name="rows">The row flags</param>
+        public static void TableNextRow(ImGuiTableRows rows)
         {
             float minRowHeight = 0.0f;
-            ImGuiNative.igTableNextRow(rowFlag, minRowHeight);
+            ImGuiNative.igTableNextRow(rows, minRowHeight);
         }
 
         /// <summary>
         ///     Tables the next row using the specified row flags
         /// </summary>
-        /// <param name="rowFlag">The row flags</param>
+        /// <param name="rows">The row flags</param>
         /// <param name="minRowHeight">The min row height</param>
-        public static void TableNextRow(ImGuiTableRowFlag rowFlag, float minRowHeight)
+        public static void TableNextRow(ImGuiTableRows rows, float minRowHeight)
         {
-            ImGuiNative.igTableNextRow(rowFlag, minRowHeight);
+            ImGuiNative.igTableNextRow(rows, minRowHeight);
         }
 
         /// <summary>
@@ -20076,7 +20077,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            ImGuiTableColumnFlag flag = 0;
+            ImGuiTableColumns flag = 0;
             float initWidthOrWeight = 0.0f;
             uint userId = 0;
             ImGuiNative.igTableSetupColumn(nativeLabel, flag, initWidthOrWeight, userId);
@@ -20091,7 +20092,7 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="flag">The flags</param>
-        public static void TableSetupColumn(string label, ImGuiTableColumnFlag flag)
+        public static void TableSetupColumn(string label, ImGuiTableColumns flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -20131,7 +20132,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="label">The label</param>
         /// <param name="flag">The flags</param>
         /// <param name="initWidthOrWeight">The init width or weight</param>
-        public static void TableSetupColumn(string label, ImGuiTableColumnFlag flag, float initWidthOrWeight)
+        public static void TableSetupColumn(string label, ImGuiTableColumns flag, float initWidthOrWeight)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -20171,7 +20172,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="flag">The flags</param>
         /// <param name="initWidthOrWeight">The init width or weight</param>
         /// <param name="userId">The user id</param>
-        public static void TableSetupColumn(string label, ImGuiTableColumnFlag flag, float initWidthOrWeight, uint userId)
+        public static void TableSetupColumn(string label, ImGuiTableColumns flag, float initWidthOrWeight, uint userId)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -20573,7 +20574,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeLabel = null;
             }
 
-            ImGuiTreeNodeFlag flag = 0;
+            ImGuiTreeNodes flag = 0;
             byte ret = ImGuiNative.igTreeNodeEx_Str(nativeLabel, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -20589,7 +20590,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="label">The label</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool TreeNodeEx(string label, ImGuiTreeNodeFlag flag)
+        public static bool TreeNodeEx(string label, ImGuiTreeNodes flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -20630,7 +20631,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="flag">The flags</param>
         /// <param name="fmt">The fmt</param>
         /// <returns>The bool</returns>
-        public static bool TreeNodeEx(string strId, ImGuiTreeNodeFlag flag, string fmt)
+        public static bool TreeNodeEx(string strId, ImGuiTreeNodes flag, string fmt)
         {
             byte* nativeStrId;
             int strIdByteCount = 0;
@@ -20699,7 +20700,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="flag">The flags</param>
         /// <param name="fmt">The fmt</param>
         /// <returns>The bool</returns>
-        public static bool TreeNodeEx(IntPtr ptrId, ImGuiTreeNodeFlag flag, string fmt)
+        public static bool TreeNodeEx(IntPtr ptrId, ImGuiTreeNodes flag, string fmt)
         {
             void* nativePtrId = ptrId.ToPointer();
             byte* nativeFmt;
@@ -21079,7 +21080,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%.3f", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (float* nativeV = &v)
             {
                 byte ret = ImGuiNative.igVSliderFloat(nativeLabel, size, nativeV, vMin, vMax, nativeFormat, flag);
@@ -21155,7 +21156,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (float* nativeV = &v)
             {
                 byte ret = ImGuiNative.igVSliderFloat(nativeLabel, size, nativeV, vMin, vMax, nativeFormat, flag);
@@ -21184,7 +21185,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool VSliderFloat(string label, Vector2F size, ref float v, float vMin, float vMax, string format, ImGuiSliderFlag flag)
+        public static bool VSliderFloat(string label, Vector2F size, ref float v, float vMin, float vMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -21298,7 +21299,7 @@ namespace Alis.Core.Graphic.ImGui
 
             int nativeFormatOffset = Util.GetUtf8("%d", nativeFormat, formatByteCount);
             nativeFormat[nativeFormatOffset] = 0;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igVSliderInt(nativeLabel, size, nativeV, vMin, vMax, nativeFormat, flag);
@@ -21374,7 +21375,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             fixed (int* nativeV = &v)
             {
                 byte ret = ImGuiNative.igVSliderInt(nativeLabel, size, nativeV, vMin, vMax, nativeFormat, flag);
@@ -21403,7 +21404,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool VSliderInt(string label, Vector2F size, ref int v, int vMin, int vMax, string format, ImGuiSliderFlag flag)
+        public static bool VSliderInt(string label, Vector2F size, ref int v, int vMin, int vMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -21507,7 +21508,7 @@ namespace Alis.Core.Graphic.ImGui
             void* nativePMin = pMin.ToPointer();
             void* nativePMax = pMax.ToPointer();
             byte* nativeFormat = null;
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             byte ret = ImGuiNative.igVSliderScalar(nativeLabel, size, dataType, nativePData, nativePMin, nativePMax, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -21579,7 +21580,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeFormat = null;
             }
 
-            ImGuiSliderFlag flag = 0;
+            ImGuiSliders flag = 0;
             byte ret = ImGuiNative.igVSliderScalar(nativeLabel, size, dataType, nativePData, nativePMin, nativePMax, nativeFormat, flag);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -21606,7 +21607,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="format">The format</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool VSliderScalar(string label, Vector2F size, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, string format, ImGuiSliderFlag flag)
+        public static bool VSliderScalar(string label, Vector2F size, ImGuiDataType dataType, IntPtr pData, IntPtr pMin, IntPtr pMax, string format, ImGuiSliders flag)
         {
             byte* nativeLabel;
             int labelByteCount = 0;
@@ -21696,7 +21697,7 @@ namespace Alis.Core.Graphic.ImGui
             string label,
             byte[] buf,
             uint bufSize,
-            ImGuiInputTextFlag flag)
+            ImGuiInputTexts flag)
             => InputText(label, buf, bufSize, flag, null, IntPtr.Zero);
 
         /// <summary>
@@ -21712,7 +21713,7 @@ namespace Alis.Core.Graphic.ImGui
             string label,
             byte[] buf,
             uint bufSize,
-            ImGuiInputTextFlag flag,
+            ImGuiInputTexts flag,
             ImGuiInputTextCallback callback)
             => InputText(label, buf, bufSize, flag, callback, IntPtr.Zero);
 
@@ -21730,7 +21731,7 @@ namespace Alis.Core.Graphic.ImGui
             string label,
             byte[] buf,
             uint bufSize,
-            ImGuiInputTextFlag flag,
+            ImGuiInputTexts flag,
             ImGuiInputTextCallback callback,
             IntPtr userData)
         {
@@ -21786,7 +21787,7 @@ namespace Alis.Core.Graphic.ImGui
             string label,
             ref string input,
             uint maxLength,
-            ImGuiInputTextFlag flag) => InputText(label, ref input, maxLength, flag, null, IntPtr.Zero);
+            ImGuiInputTexts flag) => InputText(label, ref input, maxLength, flag, null, IntPtr.Zero);
 
         /// <summary>
         ///     Describes whether input text
@@ -21801,7 +21802,7 @@ namespace Alis.Core.Graphic.ImGui
             string label,
             ref string input,
             uint maxLength,
-            ImGuiInputTextFlag flag,
+            ImGuiInputTexts flag,
             ImGuiInputTextCallback callback) => InputText(label, ref input, maxLength, flag, callback, IntPtr.Zero);
 
         /// <summary>
@@ -21818,7 +21819,7 @@ namespace Alis.Core.Graphic.ImGui
             string label,
             ref string input,
             uint maxLength,
-            ImGuiInputTextFlag flag,
+            ImGuiInputTexts flag,
             ImGuiInputTextCallback callback,
             IntPtr userData)
         {
@@ -21889,7 +21890,7 @@ namespace Alis.Core.Graphic.ImGui
             ref string input,
             uint maxLength,
             Vector2F size,
-            ImGuiInputTextFlag flag) => InputTextMultiline(label, ref input, maxLength, size, flag, null, IntPtr.Zero);
+            ImGuiInputTexts flag) => InputTextMultiline(label, ref input, maxLength, size, flag, null, IntPtr.Zero);
 
         /// <summary>
         ///     Describes whether input text multiline
@@ -21906,7 +21907,7 @@ namespace Alis.Core.Graphic.ImGui
             ref string input,
             uint maxLength,
             Vector2F size,
-            ImGuiInputTextFlag flag,
+            ImGuiInputTexts flag,
             ImGuiInputTextCallback callback) => InputTextMultiline(label, ref input, maxLength, size, flag, callback, IntPtr.Zero);
 
         /// <summary>
@@ -21925,7 +21926,7 @@ namespace Alis.Core.Graphic.ImGui
             ref string input,
             uint maxLength,
             Vector2F size,
-            ImGuiInputTextFlag flag,
+            ImGuiInputTexts flag,
             ImGuiInputTextCallback callback,
             IntPtr userData)
         {
@@ -22027,7 +22028,7 @@ namespace Alis.Core.Graphic.ImGui
             string hint,
             ref string input,
             uint maxLength,
-            ImGuiInputTextFlag flag) => InputTextWithHint(label, hint, ref input, maxLength, flag, null, IntPtr.Zero);
+            ImGuiInputTexts flag) => InputTextWithHint(label, hint, ref input, maxLength, flag, null, IntPtr.Zero);
 
         /// <summary>
         ///     Describes whether input text with hint
@@ -22044,7 +22045,7 @@ namespace Alis.Core.Graphic.ImGui
             string hint,
             ref string input,
             uint maxLength,
-            ImGuiInputTextFlag flag,
+            ImGuiInputTexts flag,
             ImGuiInputTextCallback callback) => InputTextWithHint(label, hint, ref input, maxLength, flag, callback, IntPtr.Zero);
 
         /// <summary>
@@ -22063,7 +22064,7 @@ namespace Alis.Core.Graphic.ImGui
             string hint,
             ref string input,
             uint maxLength,
-            ImGuiInputTextFlag flag,
+            ImGuiInputTexts flag,
             ImGuiInputTextCallback callback,
             IntPtr userData)
         {
@@ -22369,7 +22370,7 @@ namespace Alis.Core.Graphic.ImGui
             string label,
             IntPtr buf,
             uint bufSize,
-            ImGuiInputTextFlag flag)
+            ImGuiInputTexts flag)
             => InputText(label, buf, bufSize, flag, null, IntPtr.Zero);
 
         /// <summary>
@@ -22385,7 +22386,7 @@ namespace Alis.Core.Graphic.ImGui
             string label,
             IntPtr buf,
             uint bufSize,
-            ImGuiInputTextFlag flag,
+            ImGuiInputTexts flag,
             ImGuiInputTextCallback callback)
             => InputText(label, buf, bufSize, flag, callback, IntPtr.Zero);
 
@@ -22403,7 +22404,7 @@ namespace Alis.Core.Graphic.ImGui
             string label,
             IntPtr buf,
             uint bufSize,
-            ImGuiInputTextFlag flag,
+            ImGuiInputTexts flag,
             ImGuiInputTextCallback callback,
             IntPtr userData)
         {
@@ -22437,7 +22438,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="name">The name</param>
         /// <param name="flag">The flags</param>
         /// <returns>The bool</returns>
-        public static bool Begin(string name, ImGuiWindowFlag flag)
+        public static bool Begin(string name, ImGuiWindows flag)
         {
             int utf8NameByteCount = Encoding.UTF8.GetByteCount(name);
             byte* utf8NameBytes;

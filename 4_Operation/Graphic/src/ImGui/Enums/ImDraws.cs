@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiSliderFlag.cs
+//  File:ImDrawFlag.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,39 +32,79 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui slider flags enum
+    ///     The im draw flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiSliderFlag
+    public enum ImDraws
     {
         /// <summary>
-        ///     The none im gui slider flags
+        ///     The none im draw flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The always clamp im gui slider flags
+        ///     The closed im draw flags
         /// </summary>
-        AlwaysClamp = 16,
+        Closed = 1,
 
         /// <summary>
-        ///     The logarithmic im gui slider flags
+        ///     The round corners top left im draw flags
         /// </summary>
-        Logarithmic = 32,
+        RoundCornersTopLeft = 16,
 
         /// <summary>
-        ///     The no round to format im gui slider flags
+        ///     The round corners top right im draw flags
         /// </summary>
-        NoRoundToFormat = 64,
+        RoundCornersTopRight = 32,
 
         /// <summary>
-        ///     The no input im gui slider flags
+        ///     The round corners bottom left im draw flags
         /// </summary>
-        NoInput = 128,
+        RoundCornersBottomLeft = 64,
 
         /// <summary>
-        ///     The invalid mask im gui slider flags
+        ///     The round corners bottom right im draw flags
         /// </summary>
-        InvalidMask = 1879048207
+        RoundCornersBottomRight = 128,
+
+        /// <summary>
+        ///     The round corners none im draw flags
+        /// </summary>
+        RoundCornersNone = 256,
+
+        /// <summary>
+        ///     The round corners top im draw flags
+        /// </summary>
+        RoundCornersTop = 48,
+
+        /// <summary>
+        ///     The round corners bottom im draw flags
+        /// </summary>
+        RoundCornersBottom = 192,
+
+        /// <summary>
+        ///     The round corners left im draw flags
+        /// </summary>
+        RoundCornersLeft = 80,
+
+        /// <summary>
+        ///     The round corners right im draw flags
+        /// </summary>
+        RoundCornersRight = 160,
+
+        /// <summary>
+        ///     The round corners all im draw flags
+        /// </summary>
+        RoundCornersAll = 240,
+
+        /// <summary>
+        ///     The round corners default im draw flags
+        /// </summary>
+        RoundCornersDefault = 240,
+
+        /// <summary>
+        ///     The round corners mask im draw flags
+        /// </summary>
+        RoundCornersMask = 496
     }
 }

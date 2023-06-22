@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiFocusedFlag.cs
+//  File:ImGuiSliderFlag.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,44 +32,39 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui focused flags enum
+    ///     The im gui slider flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiFocusedFlag
+    public enum ImGuiSliders
     {
         /// <summary>
-        ///     The none im gui focused flags
+        ///     The none im gui slider flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The child windows im gui focused flags
+        ///     The always clamp im gui slider flags
         /// </summary>
-        ChildWindows = 1,
+        AlwaysClamp = 16,
 
         /// <summary>
-        ///     The root window im gui focused flags
+        ///     The logarithmic im gui slider flags
         /// </summary>
-        RootWindow = 2,
+        Logarithmic = 32,
 
         /// <summary>
-        ///     The any window im gui focused flags
+        ///     The no round to format im gui slider flags
         /// </summary>
-        AnyWindow = 4,
+        NoRoundToFormat = 64,
 
         /// <summary>
-        ///     The no popup hierarchy im gui focused flags
+        ///     The no input im gui slider flags
         /// </summary>
-        NoPopupHierarchy = 8,
+        NoInput = 128,
 
         /// <summary>
-        ///     The dock hierarchy im gui focused flags
+        ///     The invalid mask im gui slider flags
         /// </summary>
-        DockHierarchy = 16,
-
-        /// <summary>
-        ///     The root and child windows im gui focused flags
-        /// </summary>
-        RootAndChildWindows = 3
+        InvalidMask = 1879048207
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiComboFlag.cs
+//  File:ImGuiViewportFlag.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,54 +32,84 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui combo flags enum
+    ///     The im gui viewport flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiComboFlag
+    public enum ImGuiViewports
     {
         /// <summary>
-        ///     The none im gui combo flags
+        ///     The none im gui viewport flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The popup align left im gui combo flags
+        ///     The is platform window im gui viewport flags
         /// </summary>
-        PopupAlignLeft = 1,
+        IsPlatformWindow = 1,
 
         /// <summary>
-        ///     The height small im gui combo flags
+        ///     The is platform monitor im gui viewport flags
         /// </summary>
-        HeightSmall = 2,
+        IsPlatformMonitor = 2,
 
         /// <summary>
-        ///     The height regular im gui combo flags
+        ///     The owned by app im gui viewport flags
         /// </summary>
-        HeightRegular = 4,
+        OwnedByApp = 4,
 
         /// <summary>
-        ///     The height large im gui combo flags
+        ///     The no decoration im gui viewport flags
         /// </summary>
-        HeightLarge = 8,
+        NoDecoration = 8,
 
         /// <summary>
-        ///     The height largest im gui combo flags
+        ///     The no task bar icon im gui viewport flags
         /// </summary>
-        HeightLargest = 16,
+        NoTaskBarIcon = 16,
 
         /// <summary>
-        ///     The no arrow button im gui combo flags
+        ///     The no focus on appearing im gui viewport flags
         /// </summary>
-        NoArrowButton = 32,
+        NoFocusOnAppearing = 32,
 
         /// <summary>
-        ///     The no preview im gui combo flags
+        ///     The no focus on click im gui viewport flags
         /// </summary>
-        NoPreview = 64,
+        NoFocusOnClick = 64,
 
         /// <summary>
-        ///     The height mask im gui combo flags
+        ///     The no inputs im gui viewport flags
         /// </summary>
-        HeightMask = 30
+        NoInputs = 128,
+
+        /// <summary>
+        ///     The no renderer clear im gui viewport flags
+        /// </summary>
+        NoRendererClear = 256,
+
+        /// <summary>
+        ///     The no auto merge im gui viewport flags
+        /// </summary>
+        NoAutoMerge = 512,
+
+        /// <summary>
+        ///     The top most im gui viewport flags
+        /// </summary>
+        TopMost = 1024,
+
+        /// <summary>
+        ///     The can host other windows im gui viewport flags
+        /// </summary>
+        CanHostOtherWindows = 2048,
+
+        /// <summary>
+        ///     The is minimized im gui viewport flags
+        /// </summary>
+        IsMinimized = 4096,
+
+        /// <summary>
+        ///     The is focused im gui viewport flags
+        /// </summary>
+        IsFocused = 8192
     }
 }

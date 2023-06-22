@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     The flags
         /// </summary>
-        public ImFontAtlasFlag Flag;
+        public Enums.ImFontAtlas Flag;
 
         /// <summary>
         ///     The tex id

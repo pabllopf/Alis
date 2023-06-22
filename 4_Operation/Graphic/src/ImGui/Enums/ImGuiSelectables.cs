@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiConfigFlag.cs
+//  File:ImGuiSelectableFlag.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,74 +32,39 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui config flags enum
+    ///     The im gui selectable flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiConfigFlag
+    public enum ImGuiSelectables
     {
         /// <summary>
-        ///     The none im gui config flags
+        ///     The none im gui selectable flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The nav enable keyboard im gui config flags
+        ///     The dont close popups im gui selectable flags
         /// </summary>
-        NavEnableKeyboard = 1,
+        DontClosePopups = 1,
 
         /// <summary>
-        ///     The nav enable gamepad im gui config flags
+        ///     The span all columns im gui selectable flags
         /// </summary>
-        NavEnableGamepad = 2,
+        SpanAllColumns = 2,
 
         /// <summary>
-        ///     The nav enable set mouse pos im gui config flags
+        ///     The allow double click im gui selectable flags
         /// </summary>
-        NavEnableSetMousePos = 4,
+        AllowDoubleClick = 4,
 
         /// <summary>
-        ///     The nav no capture keyboard im gui config flags
+        ///     The disabled im gui selectable flags
         /// </summary>
-        NavNoCaptureKeyboard = 8,
+        Disabled = 8,
 
         /// <summary>
-        ///     The no mouse im gui config flags
+        ///     The allow item overlap im gui selectable flags
         /// </summary>
-        NoMouse = 16,
-
-        /// <summary>
-        ///     The no mouse cursor change im gui config flags
-        /// </summary>
-        NoMouseCursorChange = 32,
-
-        /// <summary>
-        ///     The docking enable im gui config flags
-        /// </summary>
-        DockingEnable = 64,
-
-        /// <summary>
-        ///     The viewports enable im gui config flags
-        /// </summary>
-        ViewportsEnable = 1024,
-
-        /// <summary>
-        ///     The dpi enable scale viewports im gui config flags
-        /// </summary>
-        DpiEnableScaleViewports = 16384,
-
-        /// <summary>
-        ///     The dpi enable scale fonts im gui config flags
-        /// </summary>
-        DpiEnableScaleFonts = 32768,
-
-        /// <summary>
-        ///     The is srgb im gui config flags
-        /// </summary>
-        IsSrgb = 1048576,
-
-        /// <summary>
-        ///     The is touch screen im gui config flags
-        /// </summary>
-        IsTouchScreen = 2097152
+        AllowItemOverlap = 16
     }
 }

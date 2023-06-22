@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiSelectableFlag.cs
+//  File:ImGuiTableRowFlag.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,39 +32,19 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui selectable flags enum
+    ///     The im gui table row flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiSelectableFlag
+    public enum ImGuiTableRows
     {
         /// <summary>
-        ///     The none im gui selectable flags
+        ///     The none im gui table row flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The dont close popups im gui selectable flags
+        ///     The headers im gui table row flags
         /// </summary>
-        DontClosePopups = 1,
-
-        /// <summary>
-        ///     The span all columns im gui selectable flags
-        /// </summary>
-        SpanAllColumns = 2,
-
-        /// <summary>
-        ///     The allow double click im gui selectable flags
-        /// </summary>
-        AllowDoubleClick = 4,
-
-        /// <summary>
-        ///     The disabled im gui selectable flags
-        /// </summary>
-        Disabled = 8,
-
-        /// <summary>
-        ///     The allow item overlap im gui selectable flags
-        /// </summary>
-        AllowItemOverlap = 16
+        Headers = 1
     }
 }

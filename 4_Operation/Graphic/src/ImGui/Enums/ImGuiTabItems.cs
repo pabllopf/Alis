@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiTabBarFlag.cs
+//  File:ImGuiTabItemFlag.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,64 +32,54 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui tab bar flags enum
+    ///     The im gui tab item flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiTabBarFlag
+    public enum ImGuiTabItems
     {
         /// <summary>
-        ///     The none im gui tab bar flags
+        ///     The none im gui tab item flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The reorderable im gui tab bar flags
+        ///     The unsaved document im gui tab item flags
         /// </summary>
-        Reorderable = 1,
+        UnsavedDocument = 1,
 
         /// <summary>
-        ///     The auto select new tabs im gui tab bar flags
+        ///     The set selected im gui tab item flags
         /// </summary>
-        AutoSelectNewTabs = 2,
+        SetSelected = 2,
 
         /// <summary>
-        ///     The tab list popup button im gui tab bar flags
+        ///     The no close with middle mouse button im gui tab item flags
         /// </summary>
-        TabListPopupButton = 4,
+        NoCloseWithMiddleMouseButton = 4,
 
         /// <summary>
-        ///     The no close with middle mouse button im gui tab bar flags
+        ///     The no push id im gui tab item flags
         /// </summary>
-        NoCloseWithMiddleMouseButton = 8,
+        NoPushId = 8,
 
         /// <summary>
-        ///     The no tab list scrolling buttons im gui tab bar flags
+        ///     The no tooltip im gui tab item flags
         /// </summary>
-        NoTabListScrollingButtons = 16,
+        NoTooltip = 16,
 
         /// <summary>
-        ///     The no tooltip im gui tab bar flags
+        ///     The no reorder im gui tab item flags
         /// </summary>
-        NoTooltip = 32,
+        NoReorder = 32,
 
         /// <summary>
-        ///     The fitting policy resize down im gui tab bar flags
+        ///     The leading im gui tab item flags
         /// </summary>
-        FittingPolicyResizeDown = 64,
+        Leading = 64,
 
         /// <summary>
-        ///     The fitting policy scroll im gui tab bar flags
+        ///     The trailing im gui tab item flags
         /// </summary>
-        FittingPolicyScroll = 128,
-
-        /// <summary>
-        ///     The fitting policy mask im gui tab bar flags
-        /// </summary>
-        FittingPolicyMask = 192,
-
-        /// <summary>
-        ///     The fitting policy default im gui tab bar flags
-        /// </summary>
-        FittingPolicyDefault = 64
+        Trailing = 128
     }
 }

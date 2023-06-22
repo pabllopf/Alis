@@ -82,12 +82,12 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     Gets the value of the event flag
         /// </summary>
-        public ref ImGuiInputTextFlag EventFlag => ref Unsafe.AsRef<ImGuiInputTextFlag>(&NativePtr->EventFlag);
+        public ref ImGuiInputTexts EventFlag => ref Unsafe.AsRef<ImGuiInputTexts>(&NativePtr->EventFlag);
 
         /// <summary>
         ///     Gets the value of the flags
         /// </summary>
-        public ref ImGuiInputTextFlag Flag => ref Unsafe.AsRef<ImGuiInputTextFlag>(&NativePtr->Flag);
+        public ref ImGuiInputTexts Flag => ref Unsafe.AsRef<ImGuiInputTexts>(&NativePtr->Flag);
 
         /// <summary>
         ///     Gets or sets the value of the user data

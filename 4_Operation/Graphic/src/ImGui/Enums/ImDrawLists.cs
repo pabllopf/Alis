@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiTabItemFlag.cs
+//  File:ImDrawListFlag.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,54 +32,34 @@ using System;
 namespace Alis.Core.Graphic.ImGui.Enums
 {
     /// <summary>
-    ///     The im gui tab item flags enum
+    ///     The im draw list flags enum
     /// </summary>
     [Flags]
-    public enum ImGuiTabItemFlag
+    public enum ImDrawLists
     {
         /// <summary>
-        ///     The none im gui tab item flags
+        ///     The none im draw list flags
         /// </summary>
         None = 0,
 
         /// <summary>
-        ///     The unsaved document im gui tab item flags
+        ///     The anti aliased lines im draw list flags
         /// </summary>
-        UnsavedDocument = 1,
+        AntiAliasedLines = 1,
 
         /// <summary>
-        ///     The set selected im gui tab item flags
+        ///     The anti aliased lines use tex im draw list flags
         /// </summary>
-        SetSelected = 2,
+        AntiAliasedLinesUseTex = 2,
 
         /// <summary>
-        ///     The no close with middle mouse button im gui tab item flags
+        ///     The anti aliased fill im draw list flags
         /// </summary>
-        NoCloseWithMiddleMouseButton = 4,
+        AntiAliasedFill = 4,
 
         /// <summary>
-        ///     The no push id im gui tab item flags
+        ///     The allow vtx offset im draw list flags
         /// </summary>
-        NoPushId = 8,
-
-        /// <summary>
-        ///     The no tooltip im gui tab item flags
-        /// </summary>
-        NoTooltip = 16,
-
-        /// <summary>
-        ///     The no reorder im gui tab item flags
-        /// </summary>
-        NoReorder = 32,
-
-        /// <summary>
-        ///     The leading im gui tab item flags
-        /// </summary>
-        Leading = 64,
-
-        /// <summary>
-        ///     The trailing im gui tab item flags
-        /// </summary>
-        Trailing = 128
+        AllowVtxOffset = 8
     }
 }
