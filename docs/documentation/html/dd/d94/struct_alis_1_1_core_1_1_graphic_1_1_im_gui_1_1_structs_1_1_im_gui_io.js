@@ -1,7 +1,7 @@
 var struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io =
 [
-    [ "ConfigFlag", "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a3966863f01ba8d7765748923ee9fb455", null ],
-    [ "BackendFlag", "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#aea510f2ed783878bb27da6a18962a926", null ],
+    [ "Configs", "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#aab0c9e6e64969970e3d69f122a098fdb", null ],
+    [ "Backends", "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a36bfde044f3e702d55d05cbf20bed56c", null ],
     [ "DisplaySize", "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a3243ca69aba5218e0a9b40859e79f87f", null ],
     [ "DeltaTime", "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a1e55110010d62e572f8a71b15830841a", null ],
     [ "IniSavingRate", "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a5a9b0bd675989acbf45ea5c98d9aa667", null ],
