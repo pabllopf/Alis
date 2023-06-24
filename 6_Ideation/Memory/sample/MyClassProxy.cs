@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:dd.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,54 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Aspect.Logging;
-using Alis.Core.Graphic.SDL;
-using Alis.Core.Graphic.SDL.Extern;
-using Alis.Core.Graphic.SDL.Structs;
-
-namespace Alis.Core.Graphic.Sample
+namespace Alis.Core.Aspect.Memory.Sample
 {
     /// <summary>
-    ///     The program class
+    /// The my class proxy class
     /// </summary>
-    public static class Program
+    /// <seealso cref="MyClass"/>
+    public class MyClassProxy : MyClass
     {
         /// <summary>
-        ///     Main the args
+        /// Initializes a new instance of the <see cref="MyClassProxy"/> class
         /// </summary>
-        /// <param name="args">The args</param>
-        private static void Main(string[] args)
+        /// <param name="instance">The instance</param>
+        public MyClassProxy(MyClass instance)
         {
-            SdlTtf.TTF_GetError();
-            
-            SdlTtfExtern.ProcessData(null);
-            
-            int run = 1;
-            while (run == 1)
-            {
-                Console.WriteLine(@"Select backend graphic system ('sfml' | 'sdl')");
-                string os = Console.ReadLine();
-                try
-                {
-                    switch (os)
-                    {
-                        case "sfml":
-                            SfmlController sfmlController = new SfmlController();
-                            run = sfmlController.Run();
-                            break;
-
-                        case "sdl":
-                            SdlController sdlController = new SdlController();
-                            run = sdlController.Run();
-                            break;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Logger.Exception(ex);
-                }
-            }
+            // No es necesario hacer nada en el constructor por ahora
         }
     }
 }

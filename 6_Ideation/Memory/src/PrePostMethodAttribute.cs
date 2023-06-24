@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NotNull.cs
+//  File:ee.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,29 +32,28 @@ using System;
 namespace Alis.Core.Aspect.Memory
 {
     /// <summary>
-    /// The not null class
+    /// The pre post method attribute class
     /// </summary>
-    public class NotNull<T>
+    /// <seealso cref="Attribute"/>
+    [AttributeUsage(AttributeTargets.Method)]
+    public class PrePostMethodAttribute : Attribute
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="value"/> class
+        /// Ons the entry
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <exception cref="ArgumentNullException"></exception>
-        public NotNull(T value)
+        public void OnEntry()
         {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            Value = value;
+            Console.WriteLine("Antes de ejecutar el método.");
         }
 
         /// <summary>
-        /// Gets the value of the value
+        /// Ons the exit
         /// </summary>
-        public T Value { get; }
+        public void OnExit()
+        {
+            Console.WriteLine("Después de ejecutar el método.");
+        }
     }
+
 
 }

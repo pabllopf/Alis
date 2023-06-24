@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:Proxy.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,27 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Reflection;
 
-namespace Alis.Core.Aspect.Memory.Sample
+namespace Alis.Core.Aspect.Memory
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    public static class Program
-    {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            MyClass instance = new MyClass();
-            MyClass proxy = MethodInterceptor.CreateInterceptor(instance);
-            proxy.MyMethod();
-            
-            proxy.MyMethod2();
-        }
-    }
+    
 }

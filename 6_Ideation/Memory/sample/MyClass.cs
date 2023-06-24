@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:MyClass.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,53 +28,41 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Logging;
-using Alis.Core.Graphic.SDL;
-using Alis.Core.Graphic.SDL.Extern;
-using Alis.Core.Graphic.SDL.Structs;
+using System.Reflection;
 
-namespace Alis.Core.Graphic.Sample
+namespace Alis.Core.Aspect.Memory.Sample
 {
     /// <summary>
-    ///     The program class
+    /// The my class
     /// </summary>
-    public static class Program
+    public class MyClass
     {
         /// <summary>
-        ///     Main the args
+        /// Initializes a new instance of the <see cref="MyClass"/> class
         /// </summary>
-        /// <param name="args">The args</param>
-        private static void Main(string[] args)
+        public MyClass()
         {
-            SdlTtf.TTF_GetError();
-            
-            SdlTtfExtern.ProcessData(null);
-            
-            int run = 1;
-            while (run == 1)
-            {
-                Console.WriteLine(@"Select backend graphic system ('sfml' | 'sdl')");
-                string os = Console.ReadLine();
-                try
-                {
-                    switch (os)
-                    {
-                        case "sfml":
-                            SfmlController sfmlController = new SfmlController();
-                            run = sfmlController.Run();
-                            break;
 
-                        case "sdl":
-                            SdlController sdlController = new SdlController();
-                            run = sdlController.Run();
-                            break;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Logger.Exception(ex);
-                }
-            }
+        }
+        
+        /// <summary>
+        /// Mys the method
+        /// </summary>
+        [PrePostMethod]
+        public virtual void MyMethod()
+        {
+            Console.WriteLine("Método ejecutado 1");
+        }
+        
+        /// <summary>
+        /// Mys the method 2
+        /// </summary>
+        [PrePostMethod]
+        public virtual void MyMethod2()
+        {
+            Console.WriteLine("Método ejecutado 2");
         }
     }
+
+
 }

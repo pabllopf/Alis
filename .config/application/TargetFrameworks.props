@@ -16,6 +16,6 @@
         $(AssemblyName.Contains('Sample')) == false AND
         $(AssemblyName.Contains('Benchmark')) == false 
         ">
-        <TargetFramework2>netstandard2.0</TargetFramework2>
+        <TargetFramework2>netstandard2.1</TargetFramework2>
     </PropertyGroup>
 </Project>
