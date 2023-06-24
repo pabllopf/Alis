@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['joint_10226',['Joint',['../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html',1,'Alis::Core::Physic::Dynamics::Joints']]],
-  ['jointedge_10227',['JointEdge',['../df/dc3/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint_edge.html',1,'Alis::Core::Physic::Dynamics::Joints']]],
-  ['jointfactory_10228',['JointFactory',['../d8/d4f/class_alis_1_1_core_1_1_physic_1_1_factories_1_1_joint_factory.html',1,'Alis::Core::Physic::Factories']]],
-  ['joystick_10229',['Joystick',['../dc/db6/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick.html',1,'Alis::Core::Graphic::SFML::Windows']]],
-  ['joystickbuttonevent_10230',['JoystickButtonEvent',['../d0/d45/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_button_event.html',1,'Alis::Core::Graphic::SFML::Windows']]],
-  ['joystickbuttoneventargs_10231',['JoystickButtonEventArgs',['../d9/d86/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_button_event_args.html',1,'Alis::Core::Graphic::SFML::Windows']]],
-  ['joystickconnectevent_10232',['JoystickConnectEvent',['../d4/dc0/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_connect_event.html',1,'Alis::Core::Graphic::SFML::Windows']]],
-  ['joystickconnecteventargs_10233',['JoystickConnectEventArgs',['../dd/d3d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_connect_event_args.html',1,'Alis::Core::Graphic::SFML::Windows']]],
-  ['joystickmoveevent_10234',['JoystickMoveEvent',['../d5/d67/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_move_event.html',1,'Alis::Core::Graphic::SFML::Windows']]],
-  ['joystickmoveeventargs_10235',['JoystickMoveEventArgs',['../d2/d0a/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_move_event_args.html',1,'Alis::Core::Graphic::SFML::Windows']]]
+  ['joint_10225',['Joint',['../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html',1,'Alis::Core::Physic::Dynamics::Joints']]],
+  ['jointedge_10226',['JointEdge',['../df/dc3/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint_edge.html',1,'Alis::Core::Physic::Dynamics::Joints']]],
+  ['jointfactory_10227',['JointFactory',['../d8/d4f/class_alis_1_1_core_1_1_physic_1_1_factories_1_1_joint_factory.html',1,'Alis::Core::Physic::Factories']]],
+  ['joystick_10228',['Joystick',['../dc/db6/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick.html',1,'Alis::Core::Graphic::SFML::Windows']]],
+  ['joystickbuttonevent_10229',['JoystickButtonEvent',['../d0/d45/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_button_event.html',1,'Alis::Core::Graphic::SFML::Windows']]],
+  ['joystickbuttoneventargs_10230',['JoystickButtonEventArgs',['../d9/d86/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_button_event_args.html',1,'Alis::Core::Graphic::SFML::Windows']]],
+  ['joystickconnectevent_10231',['JoystickConnectEvent',['../d4/dc0/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_connect_event.html',1,'Alis::Core::Graphic::SFML::Windows']]],
+  ['joystickconnecteventargs_10232',['JoystickConnectEventArgs',['../dd/d3d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_connect_event_args.html',1,'Alis::Core::Graphic::SFML::Windows']]],
+  ['joystickmoveevent_10233',['JoystickMoveEvent',['../d5/d67/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_move_event.html',1,'Alis::Core::Graphic::SFML::Windows']]],
+  ['joystickmoveeventargs_10234',['JoystickMoveEventArgs',['../d2/d0a/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_move_event_args.html',1,'Alis::Core::Graphic::SFML::Windows']]]
 ];
