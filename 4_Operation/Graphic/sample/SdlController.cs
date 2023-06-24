@@ -120,7 +120,7 @@ namespace Alis.Core.Graphic.Sample
                 window,
                 -1,
                 SdlRendererFlags.SdlRendererAccelerated |
-                SdlRendererFlags.SdlRendererPresentvsync);
+                       SdlRendererFlags.SdlRendererPresentvsync);
 
             if (renderer == IntPtr.Zero)
             {
@@ -196,9 +196,9 @@ namespace Alis.Core.Graphic.Sample
                 else
                 {
                     Console.WriteLine($"[SDL_JoystickName_id = '{i}'] \n" +
-                                      $"SDL_JoystickName={Sdl.SDL_JoystickName(myJoystick)} \n" +
-                                      $"SDL_JoystickNumAxes={Sdl.SDL_JoystickNumAxes(myJoystick)} \n" +
-                                      $"SDL_JoystickNumButtons={Sdl.SDL_JoystickNumButtons(myJoystick)}");
+                                             $"SDL_JoystickName={Sdl.SDL_JoystickName(myJoystick)} \n" +
+                                             $"SDL_JoystickNumAxes={Sdl.SDL_JoystickNumAxes(myJoystick)} \n" +
+                                             $"SDL_JoystickNumButtons={Sdl.SDL_JoystickNumButtons(myJoystick)}");
                 }
             }
         }

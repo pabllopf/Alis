@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Memory;
 using Alis.Core.Graphic.SDL.Structs;
 
 namespace Alis.Core.Graphic.SDL.Extern
@@ -1073,10 +1074,18 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
+        /// <param name="sdlColor">The fg</param>
         /// <param name="wrapped">The wrapped</param>
         /// <returns>The int ptr</returns>
-        public static IntPtr InternalTtfRenderUtf8BlendedWrapped(IntPtr font, byte[] text, SdlColor fg, uint wrapped) => INTERNAL_TTF_RenderUTF8_Blended_Wrapped(font, text, fg, wrapped);
+        public static IntPtr InternalTtfRenderUtf8BlendedWrapped(IntPtr font, byte[] text, SdlColor sdlColor, uint wrapped)
+        {
+            Check.NotNull(font);
+            Check.NotNullAndNotEmpty(text);
+            Check.NotNull(sdlColor);
+            Check.NotNull(wrapped);
+
+            return INTERNAL_TTF_RenderUTF8_Blended_Wrapped(font, text, sdlColor, wrapped);
+        }
 
         /// <summary>
         ///     Ttf the render unicode blended wrapped using the specified font
@@ -1259,6 +1268,9 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// <param name="previousCh">The previous ch</param>
         /// <param name="ch">The ch</param>
         /// <returns>The int</returns>
-        public static int TtfGetFontKerningSizeGlyphs32(IntPtr font, ushort previousCh, ushort ch) => TTF_GetFontKerningSizeGlyphs32(font, previousCh, ch);
+        public static int TtfGetFontKerningSizeGlyphs32(IntPtr font, ushort previousCh, ushort ch)
+        {
+            return TTF_GetFontKerningSizeGlyphs32(font, previousCh, ch);
+        }
     }
 }

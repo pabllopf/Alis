@@ -57,7 +57,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(1, guid, ipAddress, port);
+                WriteEvent(1, new object[] {guid, ipAddress, port});
             }
         }
 
@@ -72,7 +72,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(2, guid, host, port);
+                WriteEvent(2, new object[] {guid, host, port});
             }
         }
 
@@ -138,7 +138,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(7, guid, httpHeader ?? string.Empty);
+                WriteEvent(7, new object[] {guid, httpHeader ?? string.Empty});
             }
         }
 
@@ -165,7 +165,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(9, guid, exception ?? string.Empty);
+                WriteEvent(9, new object[] {guid, exception ?? string.Empty});
             }
         }
 
@@ -179,7 +179,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(10, guid, response ?? string.Empty);
+                WriteEvent(10, new object[] {guid, response ?? string.Empty});
             }
         }
 
@@ -193,7 +193,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(11, guid, message ?? string.Empty);
+                WriteEvent(11, new object[] {guid, message ?? string.Empty});
             }
         }
 
@@ -246,7 +246,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(15, guid, response ?? string.Empty);
+                WriteEvent(15, new object[] {guid, response ?? string.Empty});
             }
         }
 
@@ -260,7 +260,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(16, guid, exception ?? string.Empty);
+                WriteEvent(16, new object[] {guid, exception ?? string.Empty});
             }
         }
 
@@ -274,7 +274,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(17, guid, exception ?? string.Empty);
+                WriteEvent(17, new object[] {guid, exception ?? string.Empty});
             }
         }
 
@@ -327,7 +327,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(21, guid, keepAliveIntervalSeconds);
+                WriteEvent(21, new object[] {guid, keepAliveIntervalSeconds});
             }
         }
 
@@ -354,7 +354,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(23, guid, keepAliveIntervalSeconds);
+                WriteEvent(23, new object[] {guid, keepAliveIntervalSeconds});
             }
         }
 
@@ -371,7 +371,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(24, guid, closeStatus, statusDescription ?? string.Empty, exception ?? string.Empty);
+                WriteEvent(24, new object[] {guid, closeStatus, statusDescription ?? string.Empty, exception ?? string.Empty});
             }
         }
 
@@ -389,8 +389,11 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(25, guid, timeoutSeconds, closeStatus, statusDescription ?? string.Empty,
-                    exception ?? string.Empty);
+                WriteEvent(25, new object[]
+                {
+                    guid, timeoutSeconds, closeStatus, statusDescription ?? string.Empty,
+                    exception ?? string.Empty
+                });
             }
         }
 
@@ -408,8 +411,11 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(26, guid, closeException ?? string.Empty, closeStatus, statusDescription ?? string.Empty,
-                    exception ?? string.Empty);
+                WriteEvent(26, new object[]
+                {
+                    guid, closeException ?? string.Empty, closeStatus, statusDescription ?? string.Empty,
+                    exception ?? string.Empty
+                });
             }
         }
 
@@ -423,7 +429,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(27, guid, streamType ?? string.Empty);
+                WriteEvent(27, new object[] {guid, streamType ?? string.Empty});
             }
         }
 
@@ -441,7 +447,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled(EventLevel.Verbose, EventKeywords.None))
             {
-                WriteEvent(28, guid, webSocketOpCode, isFinBitSet, numBytes, isPayloadCompressed);
+                WriteEvent(28, new object[] {guid, webSocketOpCode, isFinBitSet, numBytes, isPayloadCompressed});
             }
         }
 
@@ -457,7 +463,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled(EventLevel.Verbose, EventKeywords.None))
             {
-                WriteEvent(29, guid, webSocketOpCode, isFinBitSet, numBytes);
+                WriteEvent(29, new object[] {guid, webSocketOpCode, isFinBitSet, numBytes});
             }
         }
 
@@ -473,7 +479,7 @@ namespace Alis.Core.Network.Internal
             if (IsEnabled())
             {
                 string closeStatusDesc = $"{closeStatus}";
-                WriteEvent(30, guid, closeStatusDesc, statusDescription ?? string.Empty);
+                WriteEvent(30, new object[] {guid, closeStatusDesc, statusDescription ?? string.Empty});
             }
         }
 
@@ -489,7 +495,7 @@ namespace Alis.Core.Network.Internal
             if (IsEnabled())
             {
                 string closeStatusDesc = $"{closeStatus}";
-                WriteEvent(31, guid, closeStatusDesc, statusDescription ?? string.Empty);
+                WriteEvent(31, new object[] {guid, closeStatusDesc, statusDescription ?? string.Empty});
             }
         }
 
@@ -505,7 +511,7 @@ namespace Alis.Core.Network.Internal
             if (IsEnabled())
             {
                 string closeStatusDesc = $"{closeStatus}";
-                WriteEvent(32, guid, closeStatusDesc, statusDescription ?? string.Empty);
+                WriteEvent(32, new object[] {guid, closeStatusDesc, statusDescription ?? string.Empty});
             }
         }
 
@@ -536,7 +542,7 @@ namespace Alis.Core.Network.Internal
             if (IsEnabled())
             {
                 string closeStatusDesc = $"{closeStatus}";
-                WriteEvent(34, guid, webSocketState, closeStatusDesc, statusDescription ?? string.Empty);
+                WriteEvent(34, new object[] {guid, webSocketState, closeStatusDesc, statusDescription ?? string.Empty});
             }
         }
 
@@ -550,7 +556,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(35, guid, webSocketState);
+                WriteEvent(35, new object[] {guid, webSocketState});
             }
         }
 
@@ -564,7 +570,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(36, guid, webSocketState);
+                WriteEvent(36, new object[] {guid, webSocketState});
             }
         }
 
@@ -579,7 +585,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(37, guid, webSocketState, exception ?? string.Empty);
+                WriteEvent(37, new object[] {guid, webSocketState, exception ?? string.Empty});
             }
         }
 
@@ -593,7 +599,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(38, guid, webSocketState);
+                WriteEvent(38, new object[] {guid, webSocketState});
             }
         }
 
@@ -607,7 +613,7 @@ namespace Alis.Core.Network.Internal
         {
             if (IsEnabled())
             {
-                WriteEvent(39, guid, webSocketState);
+                WriteEvent(39, new object[] {guid, webSocketState});
             }
         }
     }

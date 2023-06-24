@@ -457,14 +457,14 @@ namespace Alis.Core.Physic.Tools.TextureTools
             {
                 throw new Exception(
                     "'_data' length can't be less then 4. Your texture must be at least 2 x 2 pixels in size. " +
-                    "You have to use SetTextureData(uint[] data, int width) before calling this method.");
+                             "You have to use SetTextureData(uint[] data, int width) before calling this method.");
             }
 
             if (width < 2)
             {
                 throw new Exception(
                     "'_width' can't be less then 2. Your texture must be at least 2 x 2 pixels in size. " +
-                    "You have to use SetTextureData(uint[] data, int width) before calling this method.");
+                             "You have to use SetTextureData(uint[] data, int width) before calling this method.");
             }
 
             if (data.Length % width != 0)
@@ -1048,7 +1048,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                             if (addFind)
                             {
                                 edges.Add((y - vertex1.Y) / slope.Y * slope.X +
-                                          vertex1.X); // Calculate and add the x coord.
+                                                vertex1.X); // Calculate and add the x coord.
                             }
                         }
                     }

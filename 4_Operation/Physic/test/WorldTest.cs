@@ -59,19 +59,22 @@ namespace Alis.Core.Physic.Test
 
             // Create a mock body object.
             Mock<Body> mockBody = new Mock<Body>(
-                position,
-                velocity,
-                BodyType.Dynamic,
-                0.0f,
-                0.0f,
-                0.0f,
-                0.0f,
-                true,
-                true,
-                false,
-                false,
-                true,
-                1.0f);
+                new object[]
+                {
+                    position,
+                    velocity,
+                    BodyType.Dynamic,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    true,
+                    true,
+                    false,
+                    false,
+                    true,
+                    1.0f
+                });
 
             // Create a world object.
             World world = new World(gravity);
@@ -99,19 +102,22 @@ namespace Alis.Core.Physic.Test
 
             // Create a mock body object with the ClearForces method.
             Mock<Body> mockBody = new Mock<Body>(
-                position,
-                velocity,
-                BodyType.Dynamic,
-                0.0f,
-                0.0f,
-                0.0f,
-                0.0f,
-                true,
-                true,
-                false,
-                false,
-                true,
-                1.0f);
+                new object[]
+                {
+                    position,
+                    velocity,
+                    BodyType.Dynamic,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    true,
+                    true,
+                    false,
+                    false,
+                    true,
+                    1.0f
+                });
 
             // Call the ClearForces method on the physics engine.
             world.AddBody(mockBody.Object);
@@ -149,7 +155,9 @@ namespace Alis.Core.Physic.Test
 
             for (int i = 0; i < 10; i++)
             {
-                Mock<Body> mockBody = new Mock<Body>(position,
+                Mock<Body> mockBody = new Mock<Body>(new object[]
+                {
+                    position,
                     velocity,
                     BodyType.Dynamic,
                     0.0f,
@@ -161,7 +169,8 @@ namespace Alis.Core.Physic.Test
                     false,
                     false,
                     true,
-                    1.0f);
+                    1.0f
+                });
 
                 listMocksBodies.Add(mockBody);
                 world.AddBody(mockBody.Object);
@@ -223,19 +232,22 @@ namespace Alis.Core.Physic.Test
             Vector2F velocity = new Vector2F(0f, -1f);
 
             Mock<Body> bodyMock = new Mock<Body>(
-                position,
-                velocity,
-                BodyType.Dynamic,
-                0.0f,
-                0.0f,
-                0.0f,
-                0.0f,
-                true,
-                true,
-                false,
-                false,
-                true,
-                1.0f);
+                new object[]
+                {
+                    position,
+                    velocity,
+                    BodyType.Dynamic,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    true,
+                    true,
+                    false,
+                    false,
+                    true,
+                    1.0f
+                });
 
             _world.AddBody(bodyMock.Object);
 
@@ -253,19 +265,22 @@ namespace Alis.Core.Physic.Test
             Vector2F velocity = new Vector2F(0f, -1f);
 
             Mock<Body> bodyMock = new Mock<Body>(
-                position,
-                velocity,
-                BodyType.Dynamic,
-                0.0f,
-                0.0f,
-                0.0f,
-                0.0f,
-                true,
-                true,
-                false,
-                false,
-                true,
-                1.0f);
+                new object[]
+                {
+                    position,
+                    velocity,
+                    BodyType.Dynamic,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    true,
+                    true,
+                    false,
+                    false,
+                    true,
+                    1.0f
+                });
             _world.AddBody(bodyMock.Object);
 
             _world.RemoveBody(bodyMock.Object);
@@ -284,21 +299,24 @@ namespace Alis.Core.Physic.Test
             Vector2F velocity = new Vector2F(0f, -1f);
 
             Mock<Body> bodyMock = new Mock<Body>(
-                position,
-                velocity,
-                BodyType.Dynamic,
-                0.0f,
-                0.0f,
-                0.0f,
-                0.0f,
-                true,
-                true,
-                false,
-                false,
-                true,
-                1.0f);
+                new object[]
+                {
+                    position,
+                    velocity,
+                    BodyType.Dynamic,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    true,
+                    true,
+                    false,
+                    false,
+                    true,
+                    1.0f
+                });
 
-            Mock<AngleJoint> jointMock = new Mock<AngleJoint>(bodyMock.Object, bodyMock.Object);
+            Mock<AngleJoint> jointMock = new Mock<AngleJoint>(new object[] {bodyMock.Object, bodyMock.Object});
 
             _world.AddJoint(jointMock.Object);
 
@@ -316,21 +334,24 @@ namespace Alis.Core.Physic.Test
             Vector2F velocity = new Vector2F(0f, -1f);
 
             Mock<Body> bodyMock = new Mock<Body>(
-                position,
-                velocity,
-                BodyType.Dynamic,
-                0.0f,
-                0.0f,
-                0.0f,
-                0.0f,
-                true,
-                true,
-                false,
-                false,
-                true,
-                1.0f);
+                new object[]
+                {
+                    position,
+                    velocity,
+                    BodyType.Dynamic,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    true,
+                    true,
+                    false,
+                    false,
+                    true,
+                    1.0f
+                });
 
-            Mock<AngleJoint> jointMock = new Mock<AngleJoint>(bodyMock.Object, bodyMock.Object);
+            Mock<AngleJoint> jointMock = new Mock<AngleJoint>(new object[] {bodyMock.Object, bodyMock.Object});
 
             _world.AddJoint(jointMock.Object);
 
@@ -362,19 +383,22 @@ namespace Alis.Core.Physic.Test
             Vector2F velocity = new Vector2F(0f, -1f);
 
             Mock<Body> mockBody = new Mock<Body>(
-                position,
-                velocity,
-                BodyType.Dynamic,
-                0.0f,
-                0.0f,
-                0.0f,
-                0.0f,
-                true,
-                true,
-                false,
-                false,
-                true,
-                1.0f);
+                new object[]
+                {
+                    position,
+                    velocity,
+                    BodyType.Dynamic,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    true,
+                    true,
+                    false,
+                    false,
+                    true,
+                    1.0f
+                });
 
             _world.AddBody(mockBody.Object);
 
@@ -391,21 +415,24 @@ namespace Alis.Core.Physic.Test
             Vector2F velocity = new Vector2F(0f, -1f);
 
             Mock<Body> bodyMock = new Mock<Body>(
-                position,
-                velocity,
-                BodyType.Dynamic,
-                0.0f,
-                0.0f,
-                0.0f,
-                0.0f,
-                true,
-                true,
-                false,
-                false,
-                true,
-                1.0f);
+                new object[]
+                {
+                    position,
+                    velocity,
+                    BodyType.Dynamic,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    true,
+                    true,
+                    false,
+                    false,
+                    true,
+                    1.0f
+                });
 
-            Mock<AngleJoint> mockJoint = new Mock<AngleJoint>(bodyMock.Object, bodyMock.Object);
+            Mock<AngleJoint> mockJoint = new Mock<AngleJoint>(new object[] {bodyMock.Object, bodyMock.Object});
 
             _world.AddJoint(mockJoint.Object);
 
@@ -434,19 +461,22 @@ namespace Alis.Core.Physic.Test
             Vector2F velocity = new Vector2F(0f, -1f);
 
             Mock<Body> mockBody = new Mock<Body>(
-                position,
-                velocity,
-                BodyType.Dynamic,
-                0.0f,
-                0.0f,
-                0.0f,
-                0.0f,
-                true,
-                true,
-                false,
-                false,
-                true,
-                1.0f);
+                new object[]
+                {
+                    position,
+                    velocity,
+                    BodyType.Dynamic,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    true,
+                    true,
+                    false,
+                    false,
+                    true,
+                    1.0f
+                });
 
             _world.AddBody(mockBody.Object);
             _world.RemoveBody(mockBody.Object);
@@ -464,21 +494,24 @@ namespace Alis.Core.Physic.Test
             Vector2F velocity = new Vector2F(0f, -1f);
 
             Mock<Body> bodyMock = new Mock<Body>(
-                position,
-                velocity,
-                BodyType.Dynamic,
-                0.0f,
-                0.0f,
-                0.0f,
-                0.0f,
-                true,
-                true,
-                false,
-                false,
-                true,
-                1.0f);
+                new object[]
+                {
+                    position,
+                    velocity,
+                    BodyType.Dynamic,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    true,
+                    true,
+                    false,
+                    false,
+                    true,
+                    1.0f
+                });
 
-            Mock<AngleJoint> mockJoint = new Mock<AngleJoint>(bodyMock.Object, bodyMock.Object);
+            Mock<AngleJoint> mockJoint = new Mock<AngleJoint>(new object[] {bodyMock.Object, bodyMock.Object});
             _world.AddJoint(mockJoint.Object);
             _world.RemoveJoint(mockJoint.Object);
 

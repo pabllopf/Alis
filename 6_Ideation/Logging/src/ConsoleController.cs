@@ -44,10 +44,10 @@ namespace Alis.Core.Aspect.Logging
         {
             Console.ForegroundColor = ConsoleLogConfig.GetColorMessageByType(message.MessageType);
             Console.WriteLine($"[{message.DateTime}] {message.Level}: {message.Content} \n" +
-                              $"   method: '{message.Method}' \n" +
-                              $"   line:   '{message.Line}' \n" +
-                              $"   file:   '{message.File}' \n" +
-                              $"   {message.StackTrace} \n");
+                                     $"   method: '{message.Method}' \n" +
+                                     $"   line:   '{message.Line}' \n" +
+                                     $"   file:   '{message.File}' \n" +
+                                     $"   {message.StackTrace} \n");
             Console.ResetColor();
         }
     }

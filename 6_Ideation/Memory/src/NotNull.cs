@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlExtern.cs
+//  File:NotNull.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,12 +27,34 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.SDL.Extern
+using System;
+
+namespace Alis.Core.Aspect.Memory
 {
     /// <summary>
-    ///     The sdl extern class
+    /// The not null class
     /// </summary>
-    public class SdlExtern
+    public class NotNull<T>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="value"/> class
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public NotNull(T value)
+        {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            Value = value;
+        }
+
+        /// <summary>
+        /// Gets the value of the value
+        /// </summary>
+        public T Value { get; }
     }
+
 }
