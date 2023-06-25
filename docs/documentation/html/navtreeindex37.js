@@ -1,5 +1,10 @@
 var NAVTREEINDEX37 =
 {
+"dc/d9e/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_players_1_1_windows_player.html#a66db6929f73a9007ad3348c1b5b46d12":[1,0,0,2,1,0,1,3,14],
+"dc/d9e/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_players_1_1_windows_player.html#a8c81bfdd7ee4d92609cd6d2da5617cd3":[1,0,0,2,1,0,1,3,15],
+"dc/d9e/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_players_1_1_windows_player.html#a97b1abd4c96516c61fc68eb69df52e4b":[1,0,0,2,1,0,1,3,7],
+"dc/d9e/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_players_1_1_windows_player.html#ab7ab4e83034658e57feff84261582354":[1,0,0,2,1,0,1,3,6],
+"dc/d9e/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_players_1_1_windows_player.html#ac903264582a4350c0c1f7ec49ce879df":[1,0,0,2,1,0,1,3,4],
 "dc/d9e/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_players_1_1_windows_player.html#acee33798ee8db7b675fe883c45122b09":[1,0,0,2,1,0,1,3,13],
 "dc/d9e/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_players_1_1_windows_player.html#acf0b762966b55c1f6589ca9763b9be1f":[1,0,0,2,1,0,1,3,9],
 "dc/d9e/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_players_1_1_windows_player.html#ad5a58b9b36b29eae1ddd4ee0ea096e2d":[1,0,0,2,1,0,1,3,1],
@@ -133,8 +138,8 @@ var NAVTREEINDEX37 =
 "dc/de5/class_alis_1_1_core_1_1_component_1_1_render_1_1_animator.html#ad8ee64f6241989a0a66dcdc6b5ff4a65":[1,0,0,2,2,6,1,6],
 "dc/de5/class_alis_1_1_core_1_1_component_1_1_render_1_1_animator.html#af0812b8b24416292c50e037487b46287":[1,0,0,2,2,6,1,12],
 "dc/de5/class_alis_1_1_core_1_1_component_1_1_render_1_1_animator.html#af813dd508baba90d7ee8beda0300c643":[1,0,0,2,2,6,1,4],
-"dc/df0/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_earclip.html":[0,0,0,2,8,7,5,2],
 "dc/df0/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_earclip.html":[1,0,0,2,8,7,5,2],
+"dc/df0/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_earclip.html":[0,0,0,2,8,7,5,2],
 "dc/df1/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_node.html":[1,0,0,2,8,7,5,4,2],
 "dc/df1/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_node.html#a0e97e520d31b0e993081fcccdd96cded":[1,0,0,2,8,7,5,4,2,5],
 "dc/df1/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_node.html#a234dc06f823ce1dc8f814cad39ec234d":[1,0,0,2,8,7,5,4,2,3],
@@ -230,8 +235,8 @@ var NAVTREEINDEX37 =
 "dd/d37/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_locale.html":[1,0,0,2,5,3,2,51],
 "dd/d37/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_locale.html#a4f3658e33864d87fe1387b5c2c5f42ec":[1,0,0,2,5,3,2,51,0],
 "dd/d37/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_locale.html#a5deefb576611e934eaf623139aa84536":[1,0,0,2,5,3,2,51,1],
-"dd/d38/namespace_alis_1_1_core_1_1_network.html":[0,0,0,2,7],
 "dd/d38/namespace_alis_1_1_core_1_1_network.html":[1,0,0,2,7],
+"dd/d38/namespace_alis_1_1_core_1_1_network.html":[0,0,0,2,7],
 "dd/d3c/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context.html":[1,0,0,2,5,4,1,1],
 "dd/d3c/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context.html#a014c57391919f81e006c334546d77742":[1,0,0,2,5,4,1,1,11],
 "dd/d3c/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context.html#a39b766508e728dc5ce39772e29edddf2":[1,0,0,2,5,4,1,1,5],
@@ -244,10 +249,5 @@ var NAVTREEINDEX37 =
 "dd/d3c/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context.html#abccebafef1f11d63ca9ff42da9b42924":[1,0,0,2,5,4,1,1,0],
 "dd/d3c/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context.html#abf661a4cae6866d17feec46fcde47c2e":[1,0,0,2,5,4,1,1,1],
 "dd/d3c/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context.html#acf5dc129516c580726e616b4fd92f3b9":[1,0,0,2,5,4,1,1,6],
-"dd/d3c/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context.html#aec493e8f7a1341d8f6676ca1a040d180":[1,0,0,2,5,4,1,1,9],
-"dd/d3d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_connect_event_args.html":[1,0,0,2,5,4,1,9],
-"dd/d3d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_connect_event_args.html#a56f316c09d64322c6f916753cfacc84d":[1,0,0,2,5,4,1,9,2],
-"dd/d3d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_connect_event_args.html#ab50fac519c4b0ad24f4d149757fc5135":[1,0,0,2,5,4,1,9,1],
-"dd/d3d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_connect_event_args.html#af28a1c0ae5125b041c7f449ac363b68f":[1,0,0,2,5,4,1,9,0],
-"dd/d3e/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_texture_tools.html":[0,0,0,2,8,7,4]
+"dd/d3c/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context.html#aec493e8f7a1341d8f6676ca1a040d180":[1,0,0,2,5,4,1,1,9]
 };

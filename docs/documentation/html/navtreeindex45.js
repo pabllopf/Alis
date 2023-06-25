@@ -1,5 +1,11 @@
 var NAVTREEINDEX45 =
 {
+"df/d32/class_alis_1_1_core_1_1_entity_1_1_splash_screen.html#aaccf18b356b97de7cc2d30c549af0e53":[1,0,0,2,4,2,1],
+"df/d32/class_alis_1_1_core_1_1_entity_1_1_splash_screen.html#abc76384b0bc22fef009d6cd09c9be2ad":[1,0,0,2,4,2,5],
+"df/d32/class_alis_1_1_core_1_1_entity_1_1_splash_screen.html#adfdfcd928b6eee830a8faa9cab73da64":[1,0,0,2,4,2,3],
+"df/d38/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_version.html":[1,0,0,2,5,3,2,75],
+"df/d38/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_version.html#a1d2e2a7c81cc7c7082312f26334f8fa1":[1,0,0,2,5,3,2,75,2],
+"df/d38/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_version.html#a33476cee5369ca92037a32fbffd9cf88":[1,0,0,2,5,3,2,75,0],
 "df/d38/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_version.html#aa8dbc75c03512bb3352b38bb171305ed":[1,0,0,2,5,3,2,75,1],
 "df/d3d/namespace_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_enums.html":[1,0,0,2,5,0,1],
 "df/d3d/namespace_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_enums.html":[0,0,0,2,5,0,2],
@@ -38,8 +44,8 @@ var NAVTREEINDEX45 =
 "df/d48/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_view.html#ae806baa86bbd36771b60c82b8d427cab":[1,0,0,2,5,4,0,24,0],
 "df/d48/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_view.html#aebfb76184dd09b9d848ea680dbc6c148":[1,0,0,2,5,4,0,24,21],
 "df/d48/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_view.html#af0312c6cba211ac681a294d911a9b585":[1,0,0,2,5,4,0,24,26],
-"df/d48/namespace_alis_1_1_core_1_1_ecs.html":[0,0,0,2,3],
 "df/d48/namespace_alis_1_1_core_1_1_ecs.html":[1,0,0,2,3],
+"df/d48/namespace_alis_1_1_core_1_1_ecs.html":[0,0,0,2,3],
 "df/d4f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon_point.html":[1,0,0,2,8,7,5,1,1,1],
 "df/d4f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon_point.html#a6bd84dcb50da552359c809424f82bb28":[1,0,0,2,8,7,5,1,1,1,0],
 "df/d4f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon_point.html#a89ccaafba69eef44037d8fa352ab7c47":[1,0,0,2,8,7,5,1,1,1,1],
@@ -243,11 +249,5 @@ var NAVTREEINDEX45 =
 "df/db2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font.html#a77c03eeb7e725bb98e0f4c0b6529fa14":[1,0,0,2,5,0,2,16,8],
 "df/db2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font.html#a8460bc2926fde92adca589296a2b588b":[1,0,0,2,5,0,2,16,7],
 "df/db2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font.html#a858732b142cbec544a45dd8fe88843a5":[1,0,0,2,5,0,2,16,10],
-"df/db2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font.html#a9b810096f94704ef96b95e29141442f1":[1,0,0,2,5,0,2,16,1],
-"df/db2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font.html#aa6b970c5f2fcecfcc4be605b2315114f":[1,0,0,2,5,0,2,16,15],
-"df/db2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font.html#aa78f6360bac83dbecd05002f7830d777":[1,0,0,2,5,0,2,16,16],
-"df/db2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font.html#aaafbbd973b8f8f37d68a499058553d7e":[1,0,0,2,5,0,2,16,11],
-"df/db2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font.html#abc2e366ed47f8293f0909bdca4967caa":[1,0,0,2,5,0,2,16,4],
-"df/db2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font.html#ad0062ac65f671c6c77f9f39c6ceeb65f":[1,0,0,2,5,0,2,16,12],
-"df/db2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font.html#ad8c34aec5cbfd4cb5395900e2ab6c1ac":[1,0,0,2,5,0,2,16,18]
+"df/db2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font.html#a9b810096f94704ef96b95e29141442f1":[1,0,0,2,5,0,2,16,1]
 };

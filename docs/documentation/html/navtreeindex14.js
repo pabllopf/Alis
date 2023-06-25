@@ -171,7 +171,6 @@ var NAVTREEINDEX14 =
 "d4/d41/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_haptic_custom.html#ad3e6afee1f8e3abf19bf15c79c1f87b6":[1,0,0,2,5,3,2,38,13],
 "d4/d41/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_haptic_custom.html#aee5eda0517ebc5413b8d961dfb567d2d":[1,0,0,2,5,3,2,38,2],
 "d4/d41/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_haptic_custom.html#af411b1f5fac320e9957efc4fffe3f217":[1,0,0,2,5,3,2,38,1],
-"d4/d42/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_extern.html":[1,0,0,2,5,3,1,0],
 "d4/d47/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_figures_1_1_d2_1_1_circle_1_1_circle_i.html":[1,0,0,2,0,4,1,0,0,1],
 "d4/d49/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_polygon_manipulation_1_1_simple_combiner.html":[1,0,0,2,8,7,3,0],
 "d4/d49/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_polygon_manipulation_1_1_simple_combiner.html#a1380e0871d6ccb5a97ac912d36d53c1b":[1,0,0,2,8,7,3,0,1],
@@ -249,5 +248,6 @@ var NAVTREEINDEX14 =
 "d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#abb4cecb1f3630d9902d0702eff1c10a8":[1,0,0,2,5,3,2,30,67],
 "d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#abb77650e59ecac02cc738036fbc6c78f":[1,0,0,2,5,3,2,30,4],
 "d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#abbf2b8821d49f1fd4b7f9ee5e42a5ccd":[1,0,0,2,5,3,2,30,30],
-"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#abcb32d77caee5b2615b846d7a5333567":[1,0,0,2,5,3,2,30,80]
+"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#abcb32d77caee5b2615b846d7a5333567":[1,0,0,2,5,3,2,30,80],
+"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#ac01e3486dabd9ddd3aa9e70716ed4198":[1,0,0,2,5,3,2,30,68]
 };

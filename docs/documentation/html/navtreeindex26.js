@@ -1,8 +1,5 @@
 var NAVTREEINDEX26 =
 {
-"d8/d4f/class_alis_1_1_core_1_1_physic_1_1_factories_1_1_joint_factory.html#a232d6d1560a7b301e70245416b7ca0df":[1,0,0,2,8,4,2,12],
-"d8/d4f/class_alis_1_1_core_1_1_physic_1_1_factories_1_1_joint_factory.html#a3295ad9e31836fed56e9db497a883a58":[1,0,0,2,8,4,2,9],
-"d8/d4f/class_alis_1_1_core_1_1_physic_1_1_factories_1_1_joint_factory.html#a5f15c4b33816ccc8740866460102a2cd":[1,0,0,2,8,4,2,10],
 "d8/d4f/class_alis_1_1_core_1_1_physic_1_1_factories_1_1_joint_factory.html#a67cbf96cf5a22c9c348c3d7506407933":[1,0,0,2,8,4,2,15],
 "d8/d4f/class_alis_1_1_core_1_1_physic_1_1_factories_1_1_joint_factory.html#a6f97abee1fd5a979cec7e0bf8a355fd5":[1,0,0,2,8,4,2,1],
 "d8/d4f/class_alis_1_1_core_1_1_physic_1_1_factories_1_1_joint_factory.html#a71f6b805ba01e05e4b2f35388bf1a8cf":[1,0,0,2,8,4,2,4],
@@ -208,8 +205,8 @@ var NAVTREEINDEX26 =
 "d8/dc6/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data.html#ae883eaa6c578099cb74d80d56e0ce7ac":[1,0,0,2,5,0,2,28,11],
 "d8/dc6/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data.html#af9b7b4eb8103f8ad3942b009d8859c54":[1,0,0,2,5,0,2,28,0],
 "d8/dca/class_alis_1_1_core_1_1_setting_1_1_setting_base.html":[1,0,0,2,10,5],
-"d8/dd1/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay.html":[0,0,0,2,8,7,5,1],
 "d8/dd1/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay.html":[1,0,0,2,8,7,5,1],
+"d8/dd1/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay.html":[0,0,0,2,8,7,5,1],
 "d8/dd9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_alis_object.html":[1,0,0,2,0,0,4],
 "d8/dd9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_alis_object.html#a1e44f78c05ca6da08eb77c0e6292d67d":[1,0,0,2,0,0,4,2],
 "d8/dd9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_alis_object.html#a8b8f290b96b88e393f86190d4b010f37":[1,0,0,2,0,0,4,3],
@@ -249,5 +246,8 @@ var NAVTREEINDEX26 =
 "d8/ded/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_game_controller_button_bind.html#a9e3efc2e824b396463c9533b64b413d9":[1,0,0,2,5,3,2,34,0],
 "d8/df9/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_ray_cast_1_1_ray_cast_output.html":[1,0,0,2,8,0,5,1],
 "d8/df9/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_ray_cast_1_1_ray_cast_output.html#a16f6c50fb7576b222271b72ca69e77cd":[1,0,0,2,8,0,5,1,0],
-"d8/df9/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_ray_cast_1_1_ray_cast_output.html#abddb821ed16e49fb33acdd28c0478e49":[1,0,0,2,8,0,5,1,1]
+"d8/df9/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_ray_cast_1_1_ray_cast_output.html#abddb821ed16e49fb33acdd28c0478e49":[1,0,0,2,8,0,5,1,1],
+"d9/d04/namespace_alis_1_1_core_1_1_plugin.html":[0,0,0,2,9],
+"d9/d04/namespace_alis_1_1_core_1_1_plugin.html":[1,0,0,2,9],
+"d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html":[1,0,0,2,8,6,4]
 };
