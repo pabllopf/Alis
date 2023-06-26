@@ -8,6 +8,7 @@ var hierarchy =
     [ "Alis.Core.Aspect.Data.AssetManager", "da/d9a/class_alis_1_1_core_1_1_aspect_1_1_data_1_1_asset_manager.html", null ],
     [ "Attribute", null, [
       [ "Alis.Core.Aspect.Base.Attributes.SuppressUnmanagedCodeSecurityAttribute", "d0/da9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_attributes_1_1_suppress_unmanaged_code_security_attribute.html", null ],
+      [ "Alis.Core.Aspect.Memory.PrePostMethodAttribute", "db/d30/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_pre_post_method_attribute.html", null ],
       [ "Alis.Core.Graphic.ImGui.Attributes.NonVersionableAttribute", "d1/d81/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_attributes_1_1_non_versionable_attribute.html", null ]
     ] ],
     [ "Alis.Core.Audio.AudioClipBase", "d0/d02/class_alis_1_1_core_1_1_audio_1_1_audio_clip_base.html", [
@@ -26,6 +27,7 @@ var hierarchy =
     [ "Alis.Core.Aspect.Math.Matrix.CanonicalBasis", "db/d80/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_canonical_basis.html", null ],
     [ "Alis.Core.Physic.Tools.Triangulation.Delaunay.CdtDecomposer", "d4/dc2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_cdt_decomposer.html", null ],
     [ "Alis.Core.Physic.Tools.ConvexHull.ChainHull", "d3/d87/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_chain_hull.html", null ],
+    [ "Alis.Core.Aspect.Memory.Check", "d9/df5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_check.html", null ],
     [ "Alis.Core.Audio.SFML.Chunk", "d6/d0d/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_chunk.html", null ],
     [ "Alis.Builder.Core.Component.Collider.CircleColliderBuilder", "d9/d50/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_circle_collider_builder.html", null ],
     [ "Alis.Core.Aspect.Math.Figures.D2.Circle.CircleF", "dc/d2d/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_figures_1_1_d2_1_1_circle_1_1_circle_f.html", null ],
@@ -124,8 +126,6 @@ var hierarchy =
     [ "EventSource", null, [
       [ "Alis.Core.Network.Internal.Events", "de/d69/class_alis_1_1_core_1_1_network_1_1_internal_1_1_events.html", null ]
     ] ],
-    [ "Alis.Core.Aspect.Security.ExampleClass", "d3/db3/class_alis_1_1_core_1_1_aspect_1_1_security_1_1_example_class.html", null ],
-    [ "Alis.Core.Aspect.Thread.ExampleClass", "d3/d53/class_alis_1_1_core_1_1_aspect_1_1_thread_1_1_example_class.html", null ],
     [ "Exception", null, [
       [ "Alis.Core.Aspect.Base.Exceptions.LoadingFailedException", "d0/d49/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_exceptions_1_1_loading_failed_exception.html", null ],
       [ "Alis.Core.Aspect.Base.Exceptions.PointOnEdgeException", "d7/dec/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_exceptions_1_1_point_on_edge_exception.html", null ],
@@ -857,6 +857,7 @@ var hierarchy =
       [ "Alis.Core.Network.BufferPool.PublicBufferMemoryStream", "dd/d36/class_alis_1_1_core_1_1_network_1_1_buffer_pool_1_1_public_buffer_memory_stream.html", null ]
     ] ],
     [ "Alis.Core.Aspect.Logging.Message", "d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html", null ],
+    [ "Alis.Core.Aspect.Memory.MethodInterceptor", "d1/d6f/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_method_interceptor.html", null ],
     [ "Alis.Core.Audio.SDL.MixChunk", "d5/d3f/struct_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_mix_chunk.html", null ],
     [ "Alis.Core.Physic.Tools.Triangulation.Seidel.MonotoneMountain", "d4/dec/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_monotone_mountain.html", null ],
     [ "Alis.Core.Graphic.SFML.Windows.Mouse", "d7/dce/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_mouse.html", null ],
@@ -937,7 +938,6 @@ var hierarchy =
     [ "Alis.Core.Graphic.SDL.Structs.SdlDollarGestureEvent", "db/dbd/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_dollar_gesture_event.html", null ],
     [ "Alis.Core.Graphic.SDL.Structs.SdlDropEvent", "d6/d42/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_drop_event.html", null ],
     [ "Alis.Core.Graphic.SDL.Structs.SdlEvent", "d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html", null ],
-    [ "Alis.Core.Graphic.SDL.Extern.SdlExtern", "d4/d42/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_extern.html", null ],
     [ "Alis.Core.Graphic.SDL.Structs.SdlFinger", "d1/dd7/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_finger.html", null ],
     [ "Alis.Core.Graphic.SDL.Structs.SdlFPoint", "d7/db0/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_f_point.html", null ],
     [ "Alis.Core.Graphic.SDL.Structs.SdlFRect", "d8/d12/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_f_rect.html", null ],

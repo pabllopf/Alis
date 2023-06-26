@@ -1,5 +1,9 @@
 var NAVTREEINDEX9 =
 {
+"d2/d0c/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_mixer_extern.html#a32f14f20d2f72b3ef6b47410f05c3c58":[1,0,0,2,1,2,2,32],
+"d2/d0c/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_mixer_extern.html#a33cf08d53dd2c072edae3733079329a7":[1,0,0,2,1,2,2,87],
+"d2/d0c/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_mixer_extern.html#a36db3066bb15af3d7f4f16f7ff4be2de":[1,0,0,2,1,2,2,43],
+"d2/d0c/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_mixer_extern.html#a36f5b7e4f48412dccdc3722e6ee24ac5":[1,0,0,2,1,2,2,38],
 "d2/d0c/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_mixer_extern.html#a37633d2cc49d51876b6a4ceaa73e2c29":[1,0,0,2,1,2,2,82],
 "d2/d0c/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_mixer_extern.html#a38162f4f90b5ac10895d2cdb6168dcf8":[1,0,0,2,1,2,2,34],
 "d2/d0c/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_mixer_extern.html#a3d848fcbdb540270c14ff47612f8bf25":[1,0,0,2,1,2,2,68],
@@ -73,8 +77,8 @@ var NAVTREEINDEX9 =
 "d2/d0c/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_mixer_extern.html#afffcb1b8c4976f3758cdcf323b0bf626":[1,0,0,2,1,2,2,8],
 "d2/d0e/namespace_alis_1_1_core_1_1_audio_1_1_o_s.html":[1,0,0,2,1,0],
 "d2/d0e/namespace_alis_1_1_core_1_1_audio_1_1_o_s.html":[0,0,0,2,1,0],
-"d2/d0f/namespace_alis_1_1_core_1_1_setting.html":[0,0,0,2,10],
 "d2/d0f/namespace_alis_1_1_core_1_1_setting.html":[1,0,0,2,10],
+"d2/d0f/namespace_alis_1_1_core_1_1_setting.html":[0,0,0,2,10],
 "d2/d12/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_where.html":[1,0,0,2,0,2,0,62],
 "d2/d12/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_where.html#ad526ae572258becbfccb6a6c1be9967d":[1,0,0,2,0,2,0,62,0],
 "d2/d1c/class_alis_1_1_core_1_1_manager_1_1_setting_1_1_setting_manager.html":[1,0,0,2,6,5,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX9 =
 "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#af8d254f2eabc0aef786c9a4b0c888993":[1,0,0,2,5,4,0,12,3],
 "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#afd3d09a8dc8c422829735c4100811556":[1,0,0,2,5,4,0,12,57],
 "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#aff355123682b7d757587ac18ca962cf0":[1,0,0,2,5,4,0,12,33],
-"d2/d3a/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_y_node.html":[1,0,0,2,8,7,5,4,11],
-"d2/d3a/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_y_node.html#a22ed45d4ed02728f112ed5e52883ee51":[1,0,0,2,8,7,5,4,11,0],
-"d2/d3a/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_y_node.html#a91fed379c061ac838a9e4233c16afa96":[1,0,0,2,8,7,5,4,11,1],
-"d2/d3b/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_kms_wm_info.html":[1,0,0,2,5,3,2,5],
-"d2/d3b/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_kms_wm_info.html#a1a5ca879a305a7f399c48168ea7b346c":[1,0,0,2,5,3,2,5,1]
+"d2/d3a/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_y_node.html":[1,0,0,2,8,7,5,4,11]
 };
