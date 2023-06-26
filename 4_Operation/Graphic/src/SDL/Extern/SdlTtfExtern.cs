@@ -1077,22 +1077,11 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// <param name="sdlColor">The fg</param>
         /// <param name="wrapped">The wrapped</param>
         /// <returns>The int ptr</returns>
-        [ValidateParameters]
         public static IntPtr InternalTtfRenderUtf8BlendedWrapped([NotNull] IntPtr font, [NotNull] byte[] text, [NotNull] SdlColor sdlColor, [NotNull] uint wrapped)
         {
             return INTERNAL_TTF_RenderUTF8_Blended_Wrapped(font, text, sdlColor, wrapped);
         }
         
-        /// <summary>
-        /// Processes the data using the specified input
-        /// </summary>
-        /// <param name="input">The input</param>
-        [ExecuteCode]
-        public static void ProcessData([NotNull] string input)
-        {
-            Console.WriteLine($"input {input}");
-        }
-
         /// <summary>
         ///     Ttf the render unicode blended wrapped using the specified font
         /// </summary>

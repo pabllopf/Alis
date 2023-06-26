@@ -46,10 +46,6 @@ namespace Alis.Core.Graphic.Sample
         /// <param name="args">The args</param>
         private static void Main(string[] args)
         {
-            SdlTtf.TTF_GetError();
-            
-            SdlTtfExtern.ProcessData(null);
-            
             int run = 1;
             while (run == 1)
             {

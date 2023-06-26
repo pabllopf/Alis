@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:MyClass.cs
+//  File:NotNull.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,52 +28,15 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 
-namespace Alis.Core.Aspect.Memory.Sample
+namespace Alis.Core.Aspect.Memory
 {
     /// <summary>
-    /// The my class
+    /// The not null attribute class
     /// </summary>
-    public class MyClass
+    /// <seealso cref="Attribute"/>
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter | AttributeTargets.ReturnValue, Inherited = false)]
+    public sealed class NotNullAttribute : Attribute
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MyClass"/> class
-        /// </summary>
-        public MyClass()
-        {
-
-        }
-        
-        /// <summary>
-        /// Mys the method
-        /// </summary>
-        [PrePostMethod]
-        public virtual void MyMethod()
-        {
-            Console.WriteLine("Método ejecutado 1");
-        }
-        
-        /// <summary>
-        /// Mys the method 2
-        /// </summary>
-        [PrePostMethod]
-        public virtual void MyMethod2()
-        {
-            Console.WriteLine("Método ejecutado 2");
-        }
-        
-        
-        /// <summary>
-        /// Samples
-        /// </summary>
-        [PrePostMethod]
-        public static void Sample()
-        {
-            Console.WriteLine("Método ejecutado 3");
-        }
-        
     }
-
-
 }

@@ -48,6 +48,8 @@ namespace Alis.Core.Aspect.Memory.Sample
             proxy.MyMethod();
             
             proxy.MyMethod2();
+            
+            MyClass.Sample();
         }
     }
 }
