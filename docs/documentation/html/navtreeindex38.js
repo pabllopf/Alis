@@ -1,11 +1,12 @@
 var NAVTREEINDEX38 =
 {
+"dd/d3c/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context.html#aec493e8f7a1341d8f6676ca1a040d180":[1,0,0,2,5,4,1,1,9],
 "dd/d3d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_connect_event_args.html":[1,0,0,2,5,4,1,9],
 "dd/d3d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_connect_event_args.html#a56f316c09d64322c6f916753cfacc84d":[1,0,0,2,5,4,1,9,2],
 "dd/d3d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_connect_event_args.html#ab50fac519c4b0ad24f4d149757fc5135":[1,0,0,2,5,4,1,9,1],
 "dd/d3d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_connect_event_args.html#af28a1c0ae5125b041c7f449ac363b68f":[1,0,0,2,5,4,1,9,0],
-"dd/d3e/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_texture_tools.html":[0,0,0,2,8,7,4],
 "dd/d3e/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_texture_tools.html":[1,0,0,2,8,7,4],
+"dd/d3e/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_texture_tools.html":[0,0,0,2,8,7,4],
 "dd/d41/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic.html":[1,0,0,2,5,2,0],
 "dd/d41/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic.html#a054f609ec1ed7bd7956bffe2be791743":[1,0,0,2,5,2,0,42],
 "dd/d41/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic.html#a05aba73e5e0efb888d806a84c880bcba":[1,0,0,2,5,2,0,30],
@@ -78,8 +79,8 @@ var NAVTREEINDEX38 =
 "dd/d44/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_controller_axis_event.html#a88213269026c92c805f6fbc5265cfcbb":[1,0,0,2,5,3,2,21,2],
 "dd/d44/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_controller_axis_event.html#ac876dfa83f23b6c57a6b5f45992aadcc":[1,0,0,2,5,3,2,21,8],
 "dd/d44/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_controller_axis_event.html#afba84847eadd35412193ebd1864a8ba8":[1,0,0,2,5,3,2,21,1],
-"dd/d4c/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern.html":[0,0,0,2,5,3,1],
 "dd/d4c/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern.html":[1,0,0,2,5,3,1],
+"dd/d4c/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern.html":[0,0,0,2,5,3,1],
 "dd/d50/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_platform_io.html":[1,0,0,2,5,0,2,43],
 "dd/d50/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_platform_io.html#a02087d512bfa8875308e073b1615f2af":[1,0,0,2,5,0,2,43,2],
 "dd/d50/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_platform_io.html#a0f5b1a6e5e96d1c3d36e7ca2337cd7ce":[1,0,0,2,5,0,2,43,6],
@@ -147,8 +148,8 @@ var NAVTREEINDEX38 =
 "dd/d61/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_polygon_manipulation_1_1_simplify_tools.html#ab3e8b1eb42c8768fdb996dcd34d28c5e":[1,0,0,2,8,7,3,1,0],
 "dd/d61/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_polygon_manipulation_1_1_simplify_tools.html#ac1325554de303aea5778ca3094ddabf0":[1,0,0,2,8,7,3,1,1],
 "dd/d61/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_polygon_manipulation_1_1_simplify_tools.html#ad54357585102c9f5acbeada9c35637ea":[1,0,0,2,8,7,3,1,6],
-"dd/d66/namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_config_1_1_extensions.html":[1,0,0,2,11,0,0,0],
 "dd/d66/namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_config_1_1_extensions.html":[0,0,0,2,11,0,0,0],
+"dd/d66/namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_config_1_1_extensions.html":[1,0,0,2,11,0,0,0],
 "dd/d6a/namespace_alis_1_1_core_1_1_physic_1_1_dynamics.html":[0,0,0,2,8,2],
 "dd/d6a/namespace_alis_1_1_core_1_1_physic_1_1_dynamics.html":[1,0,0,2,8,2],
 "dd/d6d/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_window_class_ptr.html":[1,0,0,2,5,0,2,68],
@@ -248,6 +249,5 @@ var NAVTREEINDEX38 =
 "dd/d8a/class_alis_1_1_builder_1_1_video_game_builder.html#ae0f209a6b180b4179170b1a10b51812c":[1,0,0,1,1,4],
 "dd/d8a/class_alis_1_1_builder_1_1_video_game_builder.html#afbcd43648449455955f2d8f7012605d6":[1,0,0,1,1,1],
 "dd/d8d/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_rotation.html":[1,0,0,2,0,2,0,45],
-"dd/d8d/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_rotation.html#a714df88d7fa0b7cb14c0468b20215306":[1,0,0,2,0,2,0,45,0],
-"dd/d90/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_friction.html":[1,0,0,2,0,2,0,20]
+"dd/d8d/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_rotation.html#a714df88d7fa0b7cb14c0468b20215306":[1,0,0,2,0,2,0,45,0]
 };
