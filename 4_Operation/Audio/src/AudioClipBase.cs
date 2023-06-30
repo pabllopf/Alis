@@ -112,8 +112,6 @@ namespace Alis.Core.Audio
                     SdlMixerExtern.SDL_Init(SdlMixer.SdlInitAudio);
                     SdlMixerExtern.Mix_OpenAudio(22050, SdlMixer.MixDefaultFormat, 2, 4096);
                     musicPtr = SdlMixer.Mix_LoadMUS(fullPathAudio);
-                    //IntPtr scratch = SDL.SDL_mixer.Mix_LoadWAV( "scratch.wav" );
-
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

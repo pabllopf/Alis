@@ -123,8 +123,6 @@ namespace Alis.Sample.Rogue
         public override void OnPressDownKey(Key key)
         {
             Vector2F velocity = boxCollider.Body.LinearVelocity;
-
-            //Console.WriteLine($"key={key}");
             switch (key)
             {
                 case Key.D:

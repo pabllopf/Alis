@@ -27,28 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-#if RELEASE
 using BenchmarkDotNet.Running;
-#endif
-
-#if DEBUG
-using BenchmarkDotNet.Running;
-#endif
 
 namespace Alis.Benchmark
 {
     /// <summary>
     ///     The program class
     /// </summary>
-    public class Program
+    internal static class Program
     {
         /// <summary>
         ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
-        }
+        public static void Main(string[] args) => BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
     }
 }

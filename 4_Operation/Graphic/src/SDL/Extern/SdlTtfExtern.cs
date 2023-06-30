@@ -63,7 +63,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         ///     Ttf the byte swapped unicode using the specified swapped
         /// </summary>
         /// <param name="swapped">The swapped</param>
-        public static void TtfByteSwappedUnicode(int swapped) => TTF_ByteSwappedUNICODE(swapped);
+        public static void TtfByteSwappedUnicode([NotNull] int swapped) => TTF_ByteSwappedUNICODE(Check.NotNull(swapped, nameof(swapped)));
 
         /// <summary>
         ///     Ttf the init
