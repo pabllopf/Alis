@@ -111,7 +111,6 @@ var class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_ttf_extern =
     [ "TtfRenderTextBlendedWrapped", "dd/def/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_ttf_extern.html#ade64179a4ca7b8898371eb859117a2c5", null ],
     [ "INTERNAL_TTF_RenderUTF8_Blended_Wrapped", "dd/def/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_ttf_extern.html#aaf733f1a1f118122e1701053561b9207", null ],
     [ "InternalTtfRenderUtf8BlendedWrapped", "dd/def/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_ttf_extern.html#a5af79e07e931f62ed2dc0a2b91e489e0", null ],
-    [ "ProcessData", "dd/def/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_ttf_extern.html#aaac664d93339c2d6b6f83dfaee531c64", null ],
     [ "TTF_RenderUNICODE_Blended_Wrapped", "dd/def/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_ttf_extern.html#a539d4a7c036a844c1007b604227b5c63", null ],
     [ "TtfRenderUnicodeBlendedWrapped", "dd/def/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_ttf_extern.html#a347c9e60292290b1d5d0cbbc06798903", null ],
     [ "TTF_RenderGlyph_Blended", "dd/def/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_ttf_extern.html#a070879440facfc55acb572394c87ff5e", null ],

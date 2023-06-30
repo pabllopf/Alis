@@ -4,5 +4,6 @@ var searchData=
   ['nativegraphic_10283',['NativeGraphic',['../dd/d41/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic.html',1,'Alis::Core::Graphic::Properties']]],
   ['node_10284',['Node',['../dc/df1/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_node.html',1,'Alis::Core::Physic::Tools::Triangulation::Seidel']]],
   ['nonversionableattribute_10285',['NonVersionableAttribute',['../d1/d81/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_attributes_1_1_non_versionable_attribute.html',1,'Alis::Core::Graphic::ImGui::Attributes']]],
-  ['nullterminatedstring_10286',['NullTerminatedString',['../dc/d7b/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_null_terminated_string.html',1,'Alis::Core::Graphic::ImGui::Structs']]]
+  ['notnullattribute_10286',['NotNullAttribute',['../d0/d7e/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_not_null_attribute.html',1,'Alis::Core::Aspect::Memory']]],
+  ['nullterminatedstring_10287',['NullTerminatedString',['../dc/d7b/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_null_terminated_string.html',1,'Alis::Core::Graphic::ImGui::Structs']]]
 ];

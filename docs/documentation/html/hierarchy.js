@@ -8,6 +8,7 @@ var hierarchy =
     [ "Alis.Core.Aspect.Data.AssetManager", "da/d9a/class_alis_1_1_core_1_1_aspect_1_1_data_1_1_asset_manager.html", null ],
     [ "Attribute", null, [
       [ "Alis.Core.Aspect.Base.Attributes.SuppressUnmanagedCodeSecurityAttribute", "d0/da9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_attributes_1_1_suppress_unmanaged_code_security_attribute.html", null ],
+      [ "Alis.Core.Aspect.Memory.NotNullAttribute", "d0/d7e/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_not_null_attribute.html", null ],
       [ "Alis.Core.Aspect.Memory.PrePostMethodAttribute", "db/d30/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_pre_post_method_attribute.html", null ],
       [ "Alis.Core.Graphic.ImGui.Attributes.NonVersionableAttribute", "d1/d81/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_attributes_1_1_non_versionable_attribute.html", null ]
     ] ],
