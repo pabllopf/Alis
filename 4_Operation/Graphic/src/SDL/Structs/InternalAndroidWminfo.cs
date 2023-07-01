@@ -33,10 +33,10 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.SDL.Structs
 {
     /// <summary>
-    ///     The internal android wminfo
+    ///     The internal android wm info
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct InternalAndroidWminfo
+    public struct InternalAndroidWmInfo
     {
         /// <summary>
         ///     Refers to an ANativeWindow

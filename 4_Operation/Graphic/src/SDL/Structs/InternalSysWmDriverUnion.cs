@@ -80,7 +80,7 @@ namespace Alis.Core.Graphic.SDL.Structs
         /// <summary>
         ///     The android
         /// </summary>
-        [FieldOffset(0)] public InternalAndroidWminfo android;
+        [FieldOffset(0)] public InternalAndroidWmInfo android;
 
         /// <summary>
         ///     The os

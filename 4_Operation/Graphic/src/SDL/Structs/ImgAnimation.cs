@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlVersion.cs
+//  File:ImgAnimation.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,42 +27,33 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
+using System;
 
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL
 {
     /// <summary>
-    ///     The sdl version
+    ///     The img animation
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct SdlVersion
+    public struct ImgAnimation
     {
         /// <summary>
-        ///     The major
+        ///     The
         /// </summary>
-        public byte major;
+        public int W;
 
         /// <summary>
-        ///     The minor
+        ///     The
         /// </summary>
-        public byte minor;
+        public int H;
 
         /// <summary>
-        ///     The patch
+        ///     The frames
         /// </summary>
-        public byte patch;
+        public IntPtr Frames;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SdlVersion"/> class
+        ///     The delays
         /// </summary>
-        /// <param name="sdlTtfMajorVersion">The sdl ttf major version</param>
-        /// <param name="sdlTtfMinorVersion">The sdl ttf minor version</param>
-        /// <param name="sdlTtfPatchLevel">The sdl ttf patch level</param>
-        public SdlVersion(int sdlTtfMajorVersion, int sdlTtfMinorVersion, int sdlTtfPatchLevel)
-        {
-            major = (byte) sdlTtfMajorVersion;
-            minor = (byte) sdlTtfMinorVersion;
-            patch = (byte) sdlTtfPatchLevel;
-        }
+        public IntPtr Delays;
     }
 }

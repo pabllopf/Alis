@@ -32,10 +32,9 @@ using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Memory;
 using Alis.Core.Aspect.Memory.Attributes;
-using Alis.Core.Graphic.SDL;
 using Alis.Core.Graphic.SDL.Structs;
 
-namespace Alis.Core.Graphic
+namespace Alis.Core.Graphic.SDL
 {
     /// <summary>
     ///     The sdl ttf extern class
