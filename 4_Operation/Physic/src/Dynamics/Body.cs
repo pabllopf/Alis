@@ -240,8 +240,6 @@ namespace Alis.Core.Physic.Dynamics
             get => Type;
             set
             {
-                //Debug.Assert(!World.IsLocked);
-
                 if (Type == value)
                 {
                     return;
@@ -265,8 +263,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 Force = Vector2F.Zero;
                 Torque = 0.0f;
-
-                // Delete the attached contacts.
+                
                 ContactEdge ce = ContactList;
                 while (ce != null)
                 {
@@ -277,7 +274,6 @@ namespace Alis.Core.Physic.Dynamics
 
                 ContactList = null;
 
-                // Touch the proxies so that new contacts will be created (when appropriate)
                 IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
                 foreach (Fixture fixture in FixtureList)
                 {
@@ -297,8 +293,6 @@ namespace Alis.Core.Physic.Dynamics
             get => linearVelc;
             set
             {
-                //Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
-
                 if (Type == BodyType.Static)
                 {
                     return;
@@ -320,8 +314,6 @@ namespace Alis.Core.Physic.Dynamics
             get => angularVelocity;
             set
             {
-                //Debug.Assert(!float.IsNaN(value));
-
                 if (Type == BodyType.Static)
                 {
                     return;
@@ -425,8 +417,6 @@ namespace Alis.Core.Physic.Dynamics
 
             set
             {
-                //Debug.Assert(!World.IsLocked);
-
                 if (value == Enabled)
                 {
                     return;
@@ -436,7 +426,6 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     Flags |= BodyFlags.Enabled;
 
-                    // Create all proxies.
                     IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
                     for (int i = 0; i < FixtureList.Count; i++)
                     {
@@ -447,15 +436,13 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     Flags &= ~BodyFlags.Enabled;
 
-                    // Destroy all proxies.
                     IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
 
                     for (int i = 0; i < FixtureList.Count; i++)
                     {
                         FixtureList[i].DestroyProxies(broadPhase);
                     }
-
-                    // Destroy the attached contacts.
+                    
                     ContactEdge ce = ContactList;
                     while (ce != null)
                     {
@@ -564,15 +551,11 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     return;
                 }
-
-                //Velcro: We support setting the mass independently
-
-                // Move center of mass.
+                
                 Vector2F oldCenter = Sweep.C;
                 Sweep.LocalCenter = value;
                 Sweep.C0 = Sweep.C = MathUtils.Mul(ref Xf, ref Sweep.LocalCenter);
-
-                // Update center of mass velocity.
+                
                 Vector2F a = Sweep.C - oldCenter;
                 LinearVelocity += new Vector2F(-AngularVelocity * a.Y, AngularVelocity * a.X);
             }
@@ -585,14 +568,12 @@ namespace Alis.Core.Physic.Dynamics
             get => mass;
             set
             {
-                //Debug.Assert(!float.IsNaN(value));
 
                 if (Type != BodyType.Dynamic)
                 {
                     return;
                 }
 
-                //Velcro: We support setting the mass independently
                 mass = value;
 
                 if (mass <= 0.0f)
@@ -611,18 +592,17 @@ namespace Alis.Core.Physic.Dynamics
             get => inertia + mass * Vector2F.Dot(Sweep.LocalCenter, Sweep.LocalCenter);
             set
             {
-                //Debug.Assert(!float.IsNaN(value));
-
+                
                 if (Type != BodyType.Dynamic)
                 {
                     return;
                 }
 
-                //Velcro: We support setting the inertia independently
+               
                 if ((value > 0.0f) && !FixedRotation)
                 {
                     inertia = value - mass * Vector2F.Dot(Sweep.LocalCenter, Sweep.LocalCenter);
-                    //Debug.Assert(inertia > 0.0f);
+                   
                     InvI = 1.0f / inertia;
                 }
             }
@@ -778,8 +758,6 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public Fixture AddFixture(Fixture fixture)
         {
-            //Debug.Assert(!World.IsLocked);
-
             if ((Flags & BodyFlags.Enabled) == BodyFlags.Enabled)
             {
                 IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
@@ -789,15 +767,12 @@ namespace Alis.Core.Physic.Dynamics
             FixtureList.Add(fixture);
 
             fixture.Body = this;
-
-            // Adjust mass properties if needed.
+            
             if (fixture.Shape.DensityPrivate > 0.0f)
             {
                 ResetMassData();
             }
-
-            //Velcro: Added this code to raise the FixtureAdded event
-            //World.RaiseNewFixtureEvent(fixture);
+            
 
             return fixture;
         }
@@ -820,22 +795,12 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="fixture">The fixture to be removed.</param>
         public void RemoveFixture(Fixture fixture)
         {
-            //Debug.Assert(!World.IsLocked);
 
             if (fixture == null)
             {
                 return;
             }
-
-            //Debug.Assert(fixture.Body == this);
-
-            // Remove the fixture from this body's singly linked list.
-            //Debug.Assert(FixtureList.Count > 0);
-
-            // You tried to remove a fixture that not present in the fixturelist.
-            //Debug.Assert(FixtureList.Contains(fixture));
-
-            // Destroy any contacts associated with the fixture.
+            
             ContactEdge edge = ContactList;
             while (edge != null)
             {
@@ -847,8 +812,6 @@ namespace Alis.Core.Physic.Dynamics
 
                 if (fixture == fixtureA || fixture == fixtureB)
                 {
-                    // This destroys the contact and removes it from
-                    // this body's contact list.
                     ContactManager.Current.Remove(c);
                 }
             }
@@ -885,8 +848,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="rotation">The world rotation in radians.</param>
         public void SetTransform(ref Vector2F position, float rotation)
         {
-            //Debug.Assert(!World.IsLocked);
-
             Xf.Rotation.Set(rotation);
             Xf.Position = position;
 
@@ -943,17 +904,11 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="point">The world position of the point of application.</param>
         public void ApplyForce(ref Vector2F force, ref Vector2F point)
         {
-            //Debug.Assert(!float.IsNaN(force.X));
-            //Debug.Assert(!float.IsNaN(force.Y));
-            //Debug.Assert(!float.IsNaN(point.X));
-            //Debug.Assert(!float.IsNaN(point.Y));
-
             if (Type != BodyType.Dynamic)
             {
                 return;
             }
-
-            //Velcro: We always wake the body. You told it to move.
+            
             if (!Awake)
             {
                 Awake = true;
@@ -967,14 +922,11 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="torque">The torque about the z-axis (out of the screen), usually in N-m.</param>
         public void ApplyTorque(float torque)
         {
-            //Debug.Assert(!float.IsNaN(torque));
-
             if (Type != BodyType.Dynamic)
             {
                 return;
             }
-
-            //Velcro: We always wake the body. You told it to move.
+            
             if (!Awake)
             {
                 Awake = true;
@@ -1009,8 +961,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 return;
             }
-
-            //Velcro: We always wake the body. You told it to move.
+            
             if (!Awake)
             {
                 Awake = true;
@@ -1031,8 +982,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 return;
             }
-
-            //Velcro: We always wake the body. You told it to move.
+            
             if (!Awake)
             {
                 Awake = true;
@@ -1050,8 +1000,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 return;
             }
-
-            //Velcro: We always wake the body. You told it to move.
+            
             if (!Awake)
             {
                 Awake = true;
@@ -1066,15 +1015,13 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public void ResetMassData()
         {
-            // Compute mass data from shapes. Each shape has its own density.
             mass = 0.0f;
             InvMass = 0.0f;
             inertia = 0.0f;
             InvI = 0.0f;
             Sweep.LocalCenter = Vector2F.Zero;
 
-            //Velcro: We have mass on static bodies to support attaching joints to them
-            // Kinematic bodies have zero mass.
+            
             if (Type == BodyType.Kinematic)
             {
                 Sweep.C0 = Xf.Position;
@@ -1082,10 +1029,7 @@ namespace Alis.Core.Physic.Dynamics
                 Sweep.A0 = Sweep.A;
                 return;
             }
-
-            //Debug.Assert(Type == BodyType.Dynamic || Type == BodyType.Static);
-
-            // Accumulate mass over all fixtures.
+            
             Vector2F localCenter = Vector2F.Zero;
             foreach (Fixture f in FixtureList)
             {
@@ -1100,14 +1044,14 @@ namespace Alis.Core.Physic.Dynamics
                 inertia += massData.Inertia;
             }
 
-            //Velcro: Static bodies only have mass, they don't have other properties. A little hacky tho...
+            
             if (Type == BodyType.Static)
             {
                 Sweep.C0 = Sweep.C = Xf.Position;
                 return;
             }
 
-            // Compute center of mass.
+            
             if (mass > 0.0f)
             {
                 InvMass = 1.0f / mass;
@@ -1116,10 +1060,9 @@ namespace Alis.Core.Physic.Dynamics
 
             if ((inertia > 0.0f) && ((Flags & BodyFlags.FixedRotationFlag) == 0))
             {
-                // Center the inertia about the center of mass.
+                
                 inertia -= mass * Vector2F.Dot(localCenter, localCenter);
-
-                //Debug.Assert(inertia > 0.0f);
+                
                 InvI = 1.0f / inertia;
             }
             else
@@ -1128,12 +1071,11 @@ namespace Alis.Core.Physic.Dynamics
                 InvI = 0.0f;
             }
 
-            // Move center of mass.
+          
             Vector2F oldCenter = Sweep.C;
             Sweep.LocalCenter = localCenter;
             Sweep.C0 = Sweep.C = MathUtils.Mul(ref Xf, ref Sweep.LocalCenter);
-
-            // Update center of mass velocity.
+            
             Vector2F a = Sweep.C - oldCenter;
             LinearVelocity += new Vector2F(-AngularVelocity * a.Y, AngularVelocity * a.X);
         }
@@ -1254,13 +1196,11 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="other">The other body.</param>
         internal bool ShouldCollide(Body other)
         {
-            // At least one body should be dynamic.
             if ((Type != BodyType.Dynamic) && (other.Type != BodyType.Dynamic))
             {
                 return false;
             }
-
-            // Does a joint prevent collision?
+            
             for (JointEdge jn = JointList; jn != null; jn = jn.Next)
             {
                 if (jn.Other == other)
@@ -1286,7 +1226,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="alpha">The alpha</param>
         internal void Advance(float alpha)
         {
-            // Advance to the new safe time. This doesn't sync the broad-phase.
+            
             Sweep.Advance(alpha);
             Sweep.C = Sweep.C0;
             Sweep.A = Sweep.A0;
@@ -1318,8 +1258,6 @@ namespace Alis.Core.Physic.Dynamics
             {
                 return;
             }
-
-            // Update fixtures (for broad-phase).
             SynchronizeFixtures();
         }
 
