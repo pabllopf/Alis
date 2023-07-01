@@ -43,9 +43,6 @@ namespace Alis.Core.Network.Sample
     /// </summary>
     public static class Program
     {
-        //private static ILogger _logger;
-        //private static ILoggerFactory _loggerFactory;
-
         /// <summary>
         ///     The web socket server factory
         /// </summary>
@@ -59,16 +56,10 @@ namespace Alis.Core.Network.Sample
         {
             _webSocketServerFactory = new WebSocketServerFactory();
             Task task = StartWebServer();
-
-            //RunComplexTest(args);
-
+            
             if (args.Length == 0)
             {
                 RunSimpleTest().Wait();
-            }
-            else if (args.Length == 5)
-            {
-                // ws://localhost:27416/echo 5 1000 5000 40000
             }
             else
             {
