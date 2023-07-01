@@ -41,16 +41,16 @@ namespace Alis.Core.Graphic.SDL.Structs
         /// <summary>
         ///     The dev index
         /// </summary>
-        private readonly int dev_index;
+        public readonly int dev_index;
 
         /// <summary>
         ///     The drm fd
         /// </summary>
-        private readonly int drm_fd;
+        public readonly int drm_fd;
 
         /// <summary>
         ///     Refers to a gbm_device*
         /// </summary>
-        private readonly IntPtr gbm_dev;
+        public readonly IntPtr gbm_dev;
     }
 }

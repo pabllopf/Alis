@@ -611,7 +611,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="advance">The advance</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfGlyphMetrics([NotNull]IntPtr font, [NotNull, NotZero] ushort ch, [NotNull, NotZero]out int minx, [NotNull, NotZero]out int max, [NotNull, NotZero]out int miny, [NotNull, NotZero]out int maxy, [NotNull, NotZero]out int advance) => TTF_GlyphMetrics(font, ch, out minx, out max, out miny, out maxy, out advance);
+        public static int TtfGlyphMetrics([NotNull]IntPtr font, [NotNull, NotZero] ushort ch, [NotNull, NotZero]out int minx, [NotNull, NotZero]out int max, [NotNull, NotZero]out int miny, [NotNull, NotZero]out int maxy, [NotNull, NotZero]out int advance) => TTF_GlyphMetrics(font.Validate(), ch.Validate(), out minx, out max, out miny, out maxy, out advance);
 
         /// <summary>
         ///     Ttf the glyph metrics 32 using the specified font
@@ -640,7 +640,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="advance">The advance</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfGlyphMetrics32([NotNull]IntPtr font, [NotNull, NotZero]uint ch, [NotNull, NotZero]out int minx, [NotNull, NotZero]out int max, [NotNull, NotZero]out int miny, [NotNull, NotZero]out int maxy, [NotNull, NotZero]out int advance) => TTF_GlyphMetrics32(font, ch, out minx, out max, out miny, out maxy, out advance);
+        public static int TtfGlyphMetrics32([NotNull]IntPtr font, [NotNull, NotZero]uint ch, [NotNull, NotZero]out int minx, [NotNull, NotZero]out int max, [NotNull, NotZero]out int miny, [NotNull, NotZero]out int maxy, [NotNull, NotZero]out int advance) => TTF_GlyphMetrics32(font.Validate(), ch.Validate(), out minx, out max, out miny, out maxy, out advance);
 
         /// <summary>
         ///     Ttf the size text using the specified font
@@ -709,7 +709,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="h">The </param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfSizeUnicode([NotNull]IntPtr font, [NotNull, NotEmpty]string text, [NotNull, NotZero]out int w, [NotNull, NotZero]out int h) => TTF_SizeUNICODE(font, text, out w, out h);
+        public static int TtfSizeUnicode([NotNull]IntPtr font, [NotNull, NotEmpty]string text, [NotNull, NotZero]out int w, [NotNull, NotZero]out int h) => TTF_SizeUNICODE(font.Validate(), text.Validate(), out w, out h);
 
         /// <summary>
         ///     Ttf the measure text using the specified font
@@ -734,7 +734,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfMeasureText([NotNull]IntPtr font, [NotNull, NotEmpty]string text, [NotNull, NotZero] int measureWidth, [NotNull, NotZero]out int extent, [NotNull, NotZero]out int count) => TTF_MeasureText(font, text, measureWidth, out extent, out count);
+        public static int TtfMeasureText([NotNull]IntPtr font, [NotNull, NotEmpty]string text, [NotNull, NotZero] int measureWidth, [NotNull, NotZero]out int extent, [NotNull, NotZero]out int count) => TTF_MeasureText(font.Validate(), text.Validate(), measureWidth, out extent, out count);
 
         /// <summary>
         ///     Internals the ttf measure utf 8 using the specified font
@@ -759,7 +759,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        private static int InternalTtfMeasureUtf8([NotNull]IntPtr font, [NotNull, NotEmpty]byte[] text, [NotNull, NotZero]int measureWidth, [NotNull, NotZero]out int extent, [NotNull, NotZero]out int count) => INTERNAL_TTF_MeasureUTF8(font, text, measureWidth, out extent, out count);
+        private static int InternalTtfMeasureUtf8([NotNull]IntPtr font, [NotNull, NotEmpty]byte[] text, [NotNull, NotZero]int measureWidth, [NotNull, NotZero]out int extent, [NotNull, NotZero]out int count) => INTERNAL_TTF_MeasureUTF8(font.Validate(), text.Validate(), measureWidth, out extent, out count);
 
         /// <summary>
         ///     Ttf the measure unicode using the specified font
@@ -784,7 +784,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfMeasureUnicode([NotNull]IntPtr font, [NotNull, NotEmpty]string text, [NotNull, NotZero]int measureWidth, [NotNull, NotZero]out int extent, [NotNull, NotZero]out int count) => TTF_MeasureUNICODE(font, text, measureWidth, out extent, out count);
+        public static int TtfMeasureUnicode([NotNull]IntPtr font, [NotNull, NotEmpty]string text, [NotNull, NotZero]int measureWidth, [NotNull, NotZero]out int extent, [NotNull, NotZero]out int count) => TTF_MeasureUNICODE(font.Validate(), text.Validate(), measureWidth, out extent, out count);
 
         /// <summary>
         ///     Ttf the render text solid using the specified font
