@@ -89,8 +89,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
             nodeCapacity = 16;
             nodeCount = 0;
             nodes = new TreeNode<T>[nodeCapacity];
-
-            //Build a linked list for the free list.
+            
             for (int i = 0; i < nodeCapacity - 1; ++i)
             {
                 nodes[i] = new TreeNode<T>
@@ -99,6 +98,8 @@ namespace Alis.Core.Physic.Collision.Broadphase
                     Height = 1
                 };
             }
+            
+           
 
             nodes[nodeCapacity - 1] = new TreeNode<T>
             {
@@ -680,7 +681,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 c.ParentOrNext = a.ParentOrNext;
                 a.ParentOrNext = iC;
 
-                // A's old parent should point to C
+               
                 if (c.ParentOrNext != NullNode)
                 {
                     if (nodes[c.ParentOrNext].Child1 == iA)
@@ -689,7 +690,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                     }
                     else
                     {
-                        //Debug.Assert(nodes[c.ParentOrNext].Child2 == iA);
+                       
                         nodes[c.ParentOrNext].Child2 = iC;
                     }
                 }
@@ -698,7 +699,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                     root = iC;
                 }
 
-                // Rotate
+               
                 if (f.Height > g.Height)
                 {
                     c.Child2 = iF;
@@ -725,22 +726,22 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 return iC;
             }
 
-            // Rotate B up
+           
             if (balance < -1)
             {
                 int iD = b.Child1;
                 int iE = b.Child2;
                 TreeNode<T> d = nodes[iD];
                 TreeNode<T> e = nodes[iE];
-                //Debug.Assert((0 <= iD) && (iD < nodeCapacity));
-                //Debug.Assert((0 <= iE) && (iE < nodeCapacity));
+               
+               
 
-                // Swap A and B
+               
                 b.Child1 = iA;
                 b.ParentOrNext = a.ParentOrNext;
                 a.ParentOrNext = iB;
 
-                // A's old parent should point to B
+               
                 if (b.ParentOrNext != NullNode)
                 {
                     if (nodes[b.ParentOrNext].Child1 == iA)
@@ -749,7 +750,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                     }
                     else
                     {
-                        //Debug.Assert(nodes[b.ParentOrNext].Child2 == iA);
+                       
                         nodes[b.ParentOrNext].Child2 = iB;
                     }
                 }
@@ -758,7 +759,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                     root = iB;
                 }
 
-                // Rotate
+               
                 if (d.Height > e.Height)
                 {
                     b.Child2 = iD;
@@ -793,7 +794,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <returns>The height of the tree.</returns>
         private int ComputeHeight(int nodeId)
         {
-            //Debug.Assert((0 <= nodeId) && (nodeId < nodeCapacity));
+           
             TreeNode<T> node = nodes[nodeId];
 
             if (node.IsLeaf())
@@ -886,12 +887,12 @@ namespace Alis.Core.Physic.Collision.Broadphase
             int[] ints = new int[nodeCount];
             int count = 0;
 
-            // Build array of leaves. Free the rest.
+           
             for (int i = 0; i < nodeCapacity; ++i)
             {
                 if (this.nodes[i].Height < 0)
                 {
-                    // free node in pool
+                   
                     continue;
                 }
 
@@ -960,7 +961,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <param name="newOrigin">The displacement to use.</param>
         public void ShiftOrigin(ref Vector2F newOrigin)
         {
-            // Build array of leaves. Free the rest.
+           
             for (int i = 0; i < nodeCapacity; ++i)
             {
                 nodes[i].Aabb.LowerBound -= newOrigin;
