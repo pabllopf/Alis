@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NotNull.cs
+//  File:dd.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,16 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Core.Aspect.Memory
 {
     /// <summary>
-    /// The not null attribute class
+    /// The not empty attribute class
     /// </summary>
-    /// <seealso cref="Attribute"/>
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter | AttributeTargets.ReturnValue, Inherited = false)]
-    public sealed class NotNullAttribute : Attribute
+    /// <seealso cref="ValidationAttribute"/>
+    public class NotEmptyAttribute : ValidationAttribute
     {
+        /// <summary>
+        /// Validates the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <param name="name">The name</param>
+        public override void Validate(object value, string name)
+        {
+            if (value is string str && string.IsNullOrEmpty(str))
+            {
+                throw new NotEmptyException($"{name} can't be null or empty");
+            }
+        }
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ee.cs
+//  File:NotNull.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,33 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Core.Aspect.Memory
 {
     /// <summary>
-    /// The pre post method attribute class
+    /// The not null attribute class
     /// </summary>
-    /// <seealso cref="Attribute"/>
-    [AttributeUsage(AttributeTargets.Method)]
-    public class PrePostMethodAttribute : Attribute
+    /// <seealso cref="ValidationAttribute"/>
+    public class NotNullAttribute : ValidationAttribute
     {
         /// <summary>
-        /// Ons the entry
+        /// Validates the value
         /// </summary>
-        public void OnEntry()
-        {
-            Console.WriteLine("Antes de ejecutar el método.");
-        }
-
-        /// <summary>
-        /// Ons the exit
-        /// </summary>
-        public void OnExit()
-        {
-            Console.WriteLine("Después de ejecutar el método.");
-        }
+        /// <param name="value">The value</param>
+        /// <param name="name">The name</param>
+        public override void Validate(object value, string name) => _ = value ?? throw new NotNullException($"{name} can't be null");
     }
-
-
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:dd.cs
+//  File:ex.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,21 +27,22 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Memory.Sample
+using System;
+
+namespace Alis.Core.Aspect.Memory
 {
     /// <summary>
-    /// The my class proxy class
+    /// The not zero exception class
     /// </summary>
-    /// <seealso cref="MyClass"/>
-    public class MyClassProxy : MyClass
+    /// <seealso cref="Exception"/>
+    public class NotZeroException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MyClassProxy"/> class
+        /// The constructor
         /// </summary>
-        /// <param name="instance">The instance</param>
-        public MyClassProxy(MyClass instance)
+        /// <param name="message">The message</param>
+        public NotZeroException(string message) : base(message)
         {
-            // No es necesario hacer nada en el constructor por ahora
         }
     }
 }

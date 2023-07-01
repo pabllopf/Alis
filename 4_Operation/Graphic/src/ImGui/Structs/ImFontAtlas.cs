@@ -29,7 +29,6 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic.ImGui.Enums;
 
 namespace Alis.Core.Graphic.ImGui.Structs
 {

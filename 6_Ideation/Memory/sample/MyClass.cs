@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:MyClass.cs
+//  File:dd.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 
 namespace Alis.Core.Aspect.Memory.Sample
 {
@@ -38,42 +37,21 @@ namespace Alis.Core.Aspect.Memory.Sample
     public class MyClass
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MyClass"/> class
+        /// Mys the method using the specified parameter
         /// </summary>
-        public MyClass()
+        /// <param name="parameter">The parameter</param>
+        public void MyMethod([NotNull] [NotEmpty] string parameter)
         {
+            OtherMethod(parameter.Validate());
+        }
 
-        }
-        
         /// <summary>
-        /// Mys the method
+        /// Others the method using the specified parameter
         /// </summary>
-        [PrePostMethod]
-        public virtual void MyMethod()
+        /// <param name="parameter">The parameter</param>
+        private void OtherMethod(string parameter)
         {
-            Console.WriteLine("Método ejecutado 1");
+            Console.WriteLine(parameter);
         }
-        
-        /// <summary>
-        /// Mys the method 2
-        /// </summary>
-        [PrePostMethod]
-        public virtual void MyMethod2()
-        {
-            Console.WriteLine("Método ejecutado 2");
-        }
-        
-        
-        /// <summary>
-        /// Samples
-        /// </summary>
-        [PrePostMethod]
-        public static void Sample()
-        {
-            Console.WriteLine("Método ejecutado 3");
-        }
-        
     }
-
-
 }

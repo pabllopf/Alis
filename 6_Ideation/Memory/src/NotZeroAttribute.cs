@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:NotNull.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Memory.Sample
+namespace Alis.Core.Aspect.Memory
 {
     /// <summary>
-    ///     The program class
+    /// The not null attribute class
     /// </summary>
-    public static class Program
+    /// <seealso cref="ValidationAttribute"/>
+    public class NotZeroAttribute : ValidationAttribute
     {
         /// <summary>
-        ///     Main the args
+        /// Validates the value
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            MyClass instance = new MyClass();
-            instance.MyMethod(""); 
-            //instance.MyMethod(null); 
-        }
+        /// <param name="value">The value</param>
+        /// <param name="name">The name</param>
+        public override void Validate(object value, string name) => _ = value ?? throw new NotNullException($"{name} can't be null");
     }
 }

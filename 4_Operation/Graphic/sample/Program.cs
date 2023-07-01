@@ -29,9 +29,6 @@
 
 using System;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Graphic.SDL;
-using Alis.Core.Graphic.SDL.Extern;
-using Alis.Core.Graphic.SDL.Structs;
 
 namespace Alis.Core.Graphic.Sample
 {

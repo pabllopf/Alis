@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:no.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,22 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Memory.Sample
+using System;
+
+namespace Alis.Core.Aspect.Memory
 {
     /// <summary>
-    ///     The program class
+    /// The not empty exception class
     /// </summary>
-    public static class Program
+    /// <seealso cref="Exception"/>
+    public class NotEmptyException : Exception
     {
         /// <summary>
-        ///     Main the args
+        /// The constructor
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        /// <param name="message">The message</param>
+        public NotEmptyException(string message) : base(message)
         {
-            MyClass instance = new MyClass();
-            instance.MyMethod(""); 
-            //instance.MyMethod(null); 
         }
     }
 }

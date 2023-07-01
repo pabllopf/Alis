@@ -44,12 +44,14 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(SdlTtf.NativeLibName, EntryPoint = "TTF_LinkedVersion", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern IntPtr INTERNAL_TTF_LinkedVersion();
 
         /// <summary>
         ///     Internals the ttf linked version
         /// </summary>
         /// <returns>The int ptr</returns>
+        [return: NotNull]
         public static IntPtr InternalTtfLinkedVersion() => INTERNAL_TTF_LinkedVersion();
 
         /// <summary>
@@ -57,19 +59,22 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// </summary>
         /// <param name="swapped">The swapped</param>
         [DllImport(SdlTtf.NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern void TTF_ByteSwappedUNICODE(int swapped);
 
         /// <summary>
         ///     Ttf the byte swapped unicode using the specified swapped
         /// </summary>
         /// <param name="swapped">The swapped</param>
-        public static void TtfByteSwappedUnicode([NotNull] int swapped) => TTF_ByteSwappedUNICODE(Check.NotNull(swapped, nameof(swapped)));
+        [return: NotNull]
+        public static void TtfByteSwappedUnicode([NotNull] int swapped) => TTF_ByteSwappedUNICODE(swapped.Validate());
 
         /// <summary>
         ///     Ttf the init
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(SdlTtf.NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern int TTF_Init();
 
         /// <summary>
@@ -95,6 +100,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// <param name="ptSize">The ptSize</param>
         /// <returns>The int ptr</returns>
         [DllImport(SdlTtf.NativeLibName, EntryPoint = "TTF_OpenFont", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern IntPtr INTERNAL_TTF_OpenFont(byte[] file, int ptSize);
 
         /// <summary>
@@ -103,7 +109,8 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// <param name="file">The file</param>
         /// <param name="ptSize">The pt size</param>
         /// <returns>The int ptr</returns>
-        public static IntPtr TtfOpenFont(byte[] file, int ptSize) => INTERNAL_TTF_OpenFont(file, ptSize);
+        [return: NotNull]
+        public static IntPtr TtfOpenFont([NotNull] [NotEmpty] byte[] file, [NotNull] [NotZero] int ptSize) => INTERNAL_TTF_OpenFont(file.Validate(), ptSize.Validate());
 
         /// <summary>
         ///     Ttf the open font rw using the specified src
@@ -113,6 +120,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// <param name="ptSize">The ptSize</param>
         /// <returns>The int ptr</returns>
         [DllImport(SdlTtf.NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern IntPtr TTF_OpenFontRW(IntPtr src, int freeSrc, int ptSize);
 
         /// <summary>
@@ -122,7 +130,8 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// <param name="freeSrc">The free src</param>
         /// <param name="ptSize">The pt size</param>
         /// <returns>The int ptr</returns>
-        public static IntPtr TtfOpenFontRw(IntPtr src, int freeSrc, int ptSize) => TTF_OpenFontRW(src, freeSrc, ptSize);
+        [return: NotNull]
+        public static IntPtr TtfOpenFontRw([NotNull] IntPtr src, [NotNull] [NotZero] int freeSrc, [NotNull] [NotZero] int ptSize) => TTF_OpenFontRW(src.Validate(), freeSrc.Validate(), ptSize.Validate());
 
         /// <summary>
         ///     Internals the ttf open font index using the specified file
@@ -132,6 +141,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// <param name="index">The index</param>
         /// <returns>The int ptr</returns>
         [DllImport(SdlTtf.NativeLibName, EntryPoint = "TTF_OpenFontIndex", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern IntPtr INTERNAL_TTF_OpenFontIndex(byte[] file, int ptSize, long index);
 
         /// <summary>
@@ -141,7 +151,8 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// <param name="ptSize">The pt size</param>
         /// <param name="index">The index</param>
         /// <returns>The int ptr</returns>
-        public static IntPtr InternalTtfOpenFontIndex(byte[] file, int ptSize, long index) => INTERNAL_TTF_OpenFontIndex(file, ptSize, index);
+        [return: NotNull]
+        public static IntPtr InternalTtfOpenFontIndex([NotNull] [NotEmpty] byte[] file, [NotNull] [NotZero] int ptSize, [NotNull] [NotZero] long index) => INTERNAL_TTF_OpenFontIndex(file.Validate(), ptSize.Validate(), index.Validate());
 
         /// <summary>
         ///     Ttf the open font index rw using the specified src
@@ -1077,7 +1088,7 @@ namespace Alis.Core.Graphic.SDL.Extern
         /// <param name="sdlColor">The fg</param>
         /// <param name="wrapped">The wrapped</param>
         /// <returns>The int ptr</returns>
-        public static IntPtr InternalTtfRenderUtf8BlendedWrapped([NotNull] IntPtr font, [NotNull] byte[] text, [NotNull] SdlColor sdlColor, [NotNull] uint wrapped)
+        public static IntPtr InternalTtfRenderUtf8BlendedWrapped([Aspect.Memory.NotNull] IntPtr font, [Aspect.Memory.NotNull] byte[] text, [Aspect.Memory.NotNull] SdlColor sdlColor, [Aspect.Memory.NotNull] uint wrapped)
         {
             return INTERNAL_TTF_RenderUTF8_Blended_Wrapped(font, text, sdlColor, wrapped);
         }
