@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Memory
+using Alis.Core.Aspect.Memory.Exceptions;
+
+namespace Alis.Core.Aspect.Memory.Attributes
 {
     /// <summary>
     /// The not empty attribute class

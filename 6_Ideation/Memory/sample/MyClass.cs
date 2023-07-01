@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Memory.Attributes;
 
 namespace Alis.Core.Aspect.Memory.Sample
 {

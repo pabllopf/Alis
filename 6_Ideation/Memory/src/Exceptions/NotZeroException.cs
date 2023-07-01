@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Aspect.Memory
+namespace Alis.Core.Aspect.Memory.Exceptions
 {
     /// <summary>
     /// The not zero exception class

@@ -51,5 +51,28 @@ namespace Alis.Core.Graphic.SDL.Structs
         ///     The patch
         /// </summary>
         public byte patch;
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SdlVersion"/> class
+        /// </summary>
+        public SdlVersion()
+        {
+            major = 0;
+            minor = 0;
+            patch = 0;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SdlVersion"/> class
+        /// </summary>
+        /// <param name="sdlTtfMajorVersion">The sdl ttf major version</param>
+        /// <param name="sdlTtfMinorVersion">The sdl ttf minor version</param>
+        /// <param name="sdlTtfPatchlevel">The sdl ttf patchlevel</param>
+        public SdlVersion(int sdlTtfMajorVersion, int sdlTtfMinorVersion, int sdlTtfPatchlevel)
+        {
+            major = (byte) sdlTtfMajorVersion;
+            minor = (byte) sdlTtfMinorVersion;
+            patch = (byte) sdlTtfPatchlevel;
+        }
     }
 }

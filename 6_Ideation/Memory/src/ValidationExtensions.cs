@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using Alis.Core.Aspect.Memory.Attributes;
 
 namespace Alis.Core.Aspect.Memory
 {
