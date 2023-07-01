@@ -3,7 +3,7 @@ var class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_ttf_extern =
     [ "INTERNAL_TTF_LinkedVersion", "dd/def/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_ttf_extern.html#a460f98259b8dc4cdf672acdad0d6e578", null ],
     [ "InternalTtfLinkedVersion", "dd/def/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_ttf_extern.html#abb3f023ab871de24a509b1cea62dce99", null ],
     [ "TTF_ByteSwappedUNICODE", "dd/def/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_ttf_extern.html#a86219f01d772210d273eba1638947dcf", null ],
-    [ "TtfByteSwappedUnicode", "dd/def/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_ttf_extern.html#a31cf3c42fc84630e079b8a975d6adc20", null ],
+    [ "TtfByteSwappedUnicode", "dd/def/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_ttf_extern.html#a5e7018818f398f0a00b20b108a6021e4", null ],
     [ "TTF_Init", "dd/def/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_ttf_extern.html#a4d316ea1f38c9ce9b5a6bdf6c26a19c4", null ],
     [ "TtfInit", "dd/def/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_ttf_extern.html#abb058936965f01f81749575893d4482b", null ],
     [ "INTERNAL_TTF_OpenFont", "dd/def/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_extern_1_1_sdl_ttf_extern.html#a65f08ab0698d615cbdc85104069aaad6", null ],
