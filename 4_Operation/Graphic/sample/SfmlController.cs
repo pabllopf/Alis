@@ -88,7 +88,7 @@ namespace Alis.Core.Graphic.Sample
 
             window.Closed += (sender, args) => window.Close();
 
-            // Configura los eventos de input
+            
             window.KeyPressed += OnKeyPressed;
             window.MouseButtonPressed += OnMouseButtonPressed;
             window.JoystickButtonPressed += OnJoystickButtonPressed;
@@ -251,21 +251,21 @@ namespace Alis.Core.Graphic.Sample
         }
 
         /// <summary>
-        ///     Updatecontrollerses
+        ///     Update controller
         /// </summary>
-        public void Updatecontrollers()
+        public void UpdateController()
         {
             for (uint i = 0; i < Joystick.Count; i++)
             {
                 if (Joystick.IsConnected(i))
                 {
                     Joystick.Identification identification = Joystick.GetIdentification(i);
-                    //uint maxbutton = Joystick.GetButtonCount(i);
+                    
                     for (uint j = 0; j < 32; j++)
                     {
                         if (Joystick.IsButtonPressed(i, j))
                         {
-                            Console.WriteLine($"    [ButtonPressed] Button = '{j}' | Controller = '{i}' | Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
+                            Console.WriteLine($@"    [ButtonPressed] Button = '{j}' | Controller = '{i}' | Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
                         }
                     }
 
@@ -277,13 +277,12 @@ namespace Alis.Core.Graphic.Sample
                         {
                             if (Joystick.GetAxisPosition(i, axisId) > tolerencie || Joystick.GetAxisPosition(i, axisId) < -tolerencie)
                             {
-                                Console.WriteLine($"    [ButtonPressed] AxisId = '{axisId}' | valueAxi = '{Joystick.GetAxisPosition(i, axisId)}' | Controller = '{i}' | Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
+                                Console.WriteLine($@"    [ButtonPressed] AxisId = '{axisId}' | valueAxi = '{Joystick.GetAxisPosition(i, axisId)}' | Controller = '{i}' | Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
                             }
                         }
                     }
 
 
-                    //Console.WriteLine($"    [ButtonPressed] AxisId = '{Axis.PovX}' | valueAxi = '{Joystick.GetAxisPosition(i, Axis.PovX)}' | Controller = '{i}' | Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
                 }
             }
         }

@@ -663,7 +663,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="h">The </param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfSizeText([NotNull]IntPtr font, [NotNull, NotEmpty]string text, [NotNull, NotZero]out int w, [NotNull, NotZero]out int h) => TTF_SizeText(font, text, out w, out h);
+        public static int TtfSizeText([NotNull]IntPtr font, [NotNull, NotEmpty]string text, [NotNull, NotZero]out int w, [NotNull, NotZero]out int h) => TTF_SizeText(font.Validate(), text.Validate(), out w, out h);
 
         /// <summary>
         ///     Internals the ttf size utf 8 using the specified font
@@ -686,7 +686,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="h">The </param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        private static int InternalTtfSizeUtf8([NotNull]IntPtr font, [NotNull, NotEmpty]byte[] text, [NotNull, NotZero]out int w, [NotNull, NotZero]out int h) => INTERNAL_TTF_SizeUTF8(font, text, out w, out h);
+        private static int InternalTtfSizeUtf8([NotNull]IntPtr font, [NotNull, NotEmpty]byte[] text, [NotNull, NotZero]out int w, [NotNull, NotZero]out int h) => INTERNAL_TTF_SizeUTF8(font.Validate(), text.Validate(), out w, out h);
 
         /// <summary>
         ///     Ttf the size unicode using the specified font
