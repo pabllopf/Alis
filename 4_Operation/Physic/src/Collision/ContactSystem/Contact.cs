@@ -118,15 +118,11 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             Reset(fA, indexA, fB, indexB);
         }
 
-        //private bool _initialized;
-
         /// <summary>
         ///     The flags
         /// </summary>
         internal ContactFlags Flags { get; set; }
-
-        // Nodes for connecting bodies.
-
+        
         /// <summary>
         ///     The contact edge
         /// </summary>
@@ -300,11 +296,10 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 ContactType.EdgeAndCircle,
                 ContactType.NotSupported,
 
-                // 1,1 is invalid (no ContactType.Edge)
+        
                 ContactType.EdgeAndPolygon,
                 ContactType.NotSupported
-
-                // 1,3 is invalid (no ContactType.EdgeAndLoop)
+                
             },
             {
                 ContactType.PolygonAndCircle,
@@ -316,11 +311,10 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 ContactType.ChainAndCircle,
                 ContactType.NotSupported,
 
-                // 3,1 is invalid (no ContactType.EdgeAndLoop)
+              
                 ContactType.ChainAndPolygon,
                 ContactType.NotSupported
 
-                // 3,3 is invalid (no ContactType.Loop)
             }
         };
 
@@ -394,8 +388,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             NodeB.Other = null;
 
             ToiCount = 0;
-
-            //Velcro: We only set the friction and restitution if we are not resetting the contact
+            
             if ((FixtureA != null) && (FixtureB != null))
             {
                 Friction = Settings.MixFriction(FixtureA.Friction, FixtureB.Friction);
@@ -415,15 +408,13 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="contactManager">The contact manager.</param>
         internal void Update(ContactManager contactManager)
         {
-            //Velcro: Do not try and update destroyed contacts
             if (FixtureA == null || FixtureB == null)
             {
                 return;
             }
 
             Manifold oldManifold = Manifold;
-
-            // Re-enable this contact.
+            
             Flags |= ContactFlags.EnabledFlag;
 
             bool touching;
@@ -436,25 +427,21 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
             Transform xfA = bodyA.Xf;
             Transform xfB = bodyB.Xf;
-
-            // Is this contact a sensor?
+            
             if (sensor)
             {
                 Shape shapeA = FixtureA.Shape;
                 Shape shapeB = FixtureB.Shape;
                 touching = Narrowphase.Collision.TestOverlap(shapeA, ChildIndexA, shapeB, ChildIndexB, ref xfA,
                     ref xfB);
-
-                // Sensors don't generate manifolds.
+                
                 manifold.PointCount = 0;
             }
             else
             {
                 Evaluate(ref manifold, ref xfA, ref xfB);
                 touching = Manifold.PointCount > 0;
-
-                // Match old contact ids to new contact ids and copy the
-                // stored impulses to warm start the solver.
+                
                 for (int i = 0; i < Manifold.PointCount; ++i)
                 {
                     ManifoldPoint mp2 = Manifold.Points[i];
@@ -495,20 +482,16 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
             if ((wasTouching == false) && touching)
             {
-                //Velcro: Report the collision to both fixtures:
+             
                 FixtureA.OnCollision?.Invoke(FixtureA, FixtureB, this);
                 FixtureB.OnCollision?.Invoke(FixtureB, FixtureA, this);
 
-                //Velcro: Report the collision to both bodies:
+               
                 bodyA.OnCollision?.Invoke(FixtureA, FixtureB, this);
                 bodyB.OnCollision?.Invoke(FixtureB, FixtureA, this);
-
-                // Call BeginContact. It can disable the contact as well.
+                
                 contactManager.BeginContact?.Invoke(this);
-
-                // Velcro: If the user disabled the contact (needed to exclude it in TOI solver) at any point by
-                // any of the callbacks, we need to mark it as not touching and call any separation
-                // callbacks for fixtures that didn't explicitly disable the collision.
+                
                 if (!Enabled)
                 {
                     touching = false;
@@ -517,11 +500,10 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
             if (wasTouching && !touching)
             {
-                //Report the separation to both fixtures:
+             
                 FixtureA.OnSeparation?.Invoke(FixtureA, FixtureB, this);
                 FixtureB.OnSeparation?.Invoke(FixtureB, FixtureA, this);
-
-                //Report the separation to both bodies:
+                
                 bodyA.OnSeparation?.Invoke(FixtureA, FixtureB, this);
                 bodyB.OnSeparation?.Invoke(FixtureB, FixtureA, this);
 
@@ -591,10 +573,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         {
             ShapeType type1 = fixtureA.Shape.ShapeType;
             ShapeType type2 = fixtureB.Shape.ShapeType;
-
-            //Debug.Assert((ShapeType.Unknown < type1) && (type1 < ShapeType.TypeCount));
-            //Debug.Assert((ShapeType.Unknown < type2) && (type2 < ShapeType.TypeCount));
-
+            
             Contact c;
             Queue<Contact> pool = ContactManager.Current.ContactPool;
             if (pool.Count > 0)
@@ -612,7 +591,6 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             }
             else
             {
-                // Edge+Polygon is non-symmetrical due to the way Erin handles collision type registration.
                 if ((type1 >= type2 || ((type1 == ShapeType.Edge) && (type2 == ShapeType.Polygon))) &&
                     !((type2 == ShapeType.Edge) && (type1 == ShapeType.Polygon)))
                 {
@@ -634,22 +612,12 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         internal void Destroy()
         {
-            ////Debug.Assert(_initialized);
-
-            //Fixture fixtureA = _fixtureA;
-            //Fixture fixtureB = _fixtureB;
 
             if ((Manifold.PointCount > 0) && !FixtureA.IsSensor && !FixtureB.IsSensor)
             {
                 FixtureA.Body.Awake = true;
                 FixtureB.Body.Awake = true;
             }
-
-            //b2Shape::Type typeA = fixtureA->GetType();
-            //b2Shape::Type typeB = fixtureB->GetType();
-
-            ////Debug.Assert(0 <= typeA && typeA < b2Shape::e_typeCount);
-            ////Debug.Assert(0 <= typeB && typeB < b2Shape::e_typeCount);
 
             ContactManager.Current.ContactPool.Enqueue(this);
 
