@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"d0/d81/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl.html#ae330bd2f281610c366b4876f02bd4cc9":[1,0,0,2,5,3,3,603],
 "d0/d81/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl.html#ae38ea010ef4e67966a8d6ce325775dea":[1,0,0,2,5,3,3,932],
 "d0/d81/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl.html#ae3c2ca19afa1ecebc890a6301e42f143":[1,0,0,2,5,3,3,428],
 "d0/d81/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl.html#ae3e7ef8e6941ef735ba4e5db913976ec":[1,0,0,2,5,3,3,124],
@@ -123,6 +124,8 @@ var NAVTREEINDEX5 =
 "d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html#a86abb759c43326bca60127322ffda90f":[1,0,0,2,0,4,7,5],
 "d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html#ad81daac3753379cd7bf7ee903011e1fc":[1,0,0,2,0,4,7,2],
 "d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html#aeba806db1dae8d3eed710d0b29f4d4be":[1,0,0,2,0,4,7,0],
+"d0/d91/namespace_alis_1_1_core_1_1_aspect_1_1_memory_1_1_exceptions.html":[1,0,0,2,0,5,1],
+"d0/d91/namespace_alis_1_1_core_1_1_aspect_1_1_memory_1_1_exceptions.html":[0,0,0,2,0,5,1],
 "d0/d94/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_recorder.html":[1,0,0,2,1,3,6],
 "d0/d94/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_recorder.html#a0026880939e72233d2c64b1774188f16":[1,0,0,2,1,3,6,33],
 "d0/d94/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_recorder.html#a14964c8a08bb02e2daefffba798d5710":[1,0,0,2,1,3,6,11],
@@ -246,8 +249,5 @@ var NAVTREEINDEX5 =
 "d0/da2/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_window.html#a5bc1c81b99c7ffc3482e76a45a74b07c":[1,0,0,2,5,4,1,35,60],
 "d0/da2/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_window.html#a5f4b6f0403774620dbe42df251c444f5":[1,0,0,2,5,4,1,35,53],
 "d0/da2/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_window.html#a62edf164c227b3c0c18369bd7d83ae43":[1,0,0,2,5,4,1,35,79],
-"d0/da2/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_window.html#a64ae5fc78c5529ba2d87fd89f45e356c":[1,0,0,2,5,4,1,35,24],
-"d0/da2/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_window.html#a64bbc51a4470987fd1c2f52b29f68baa":[1,0,0,2,5,4,1,35,86],
-"d0/da2/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_window.html#a64d99df502fa60617cdf6df97a61ebec":[1,0,0,2,5,4,1,35,65],
-"d0/da2/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_window.html#a65ffe395889c8c3090654d8782242025":[1,0,0,2,5,4,1,35,16]
+"d0/da2/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_window.html#a64ae5fc78c5529ba2d87fd89f45e356c":[1,0,0,2,5,4,1,35,24]
 };

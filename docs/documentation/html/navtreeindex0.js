@@ -69,6 +69,8 @@ var NAVTREEINDEX0 =
 "d0/d22/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_transformable.html#ae166fd708630f263be04032ebb2dbb8e":[1,0,0,2,5,4,0,20,7],
 "d0/d22/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_transformable.html#af977ad2201b93b41401710021699e98b":[1,0,0,2,5,4,0,20,8],
 "d0/d22/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_transformable.html#afe910bf71d05729d5a53406c90141edd":[1,0,0,2,5,4,0,20,3],
+"d0/d28/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_exceptions_1_1_not_empty_exception.html":[1,0,0,2,0,5,1,0],
+"d0/d28/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_exceptions_1_1_not_empty_exception.html#a7cf93cf19c4a047adcd8837dac184b56":[1,0,0,2,0,5,1,0,0],
 "d0/d2c/namespace_alis.html":[0,0,0],
 "d0/d2c/namespace_alis.html":[1,0,0],
 "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html":[1,0,0,2,0,4,3,3],
@@ -205,10 +207,10 @@ var NAVTREEINDEX0 =
 "d0/d55/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas_custom_rect_ptr.html#af91c353f9cd3791fa6b2dc195e63dfef":[1,0,0,2,5,0,2,19,9],
 "d0/d62/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_volume.html":[1,0,0,2,0,2,0,61],
 "d0/d62/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_volume.html#a2567cbb624788e4ced9c309986d19bb9":[1,0,0,2,0,2,0,61,0],
-"d0/d66/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_windows_wm_info.html":[1,0,0,2,5,3,2,15],
-"d0/d66/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_windows_wm_info.html#a195f0292e14776af7fc56937e76dc251":[1,0,0,2,5,3,2,15,2],
-"d0/d66/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_windows_wm_info.html#a27a7428ccb06a151086e0c57e4847566":[1,0,0,2,5,3,2,15,0],
-"d0/d66/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_windows_wm_info.html#a53229e6974223ea429b759ef5e1844bf":[1,0,0,2,5,3,2,15,1],
+"d0/d66/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_windows_wm_info.html":[1,0,0,2,5,3,1,15],
+"d0/d66/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_windows_wm_info.html#a195f0292e14776af7fc56937e76dc251":[1,0,0,2,5,3,1,15,2],
+"d0/d66/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_windows_wm_info.html#a27a7428ccb06a151086e0c57e4847566":[1,0,0,2,5,3,1,15,0],
+"d0/d66/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_windows_wm_info.html#a53229e6974223ea429b759ef5e1844bf":[1,0,0,2,5,3,1,15,1],
 "d0/d68/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_vert.html":[1,0,0,2,5,0,2,14],
 "d0/d68/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_vert.html#a2e089c1e651faa39994b75dcdc821870":[1,0,0,2,5,0,2,14,2],
 "d0/d68/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_vert.html#a5468c06ef6f0c4d9744d3340ad7272eb":[1,0,0,2,5,0,2,14,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "d0/d7a/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_wheel_joint.html#a2a11dc980f0322a95d68a9612fa39e9e":[1,0,0,2,8,2,0,12,53],
 "d0/d7a/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_wheel_joint.html#a2ee8f037ccd3dd68b3100d0c85f8358d":[1,0,0,2,8,2,0,12,54],
 "d0/d7a/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_wheel_joint.html#a32fcd2977faa6165be5630f4ca999d80":[1,0,0,2,8,2,0,12,7],
-"d0/d7a/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_wheel_joint.html#a367c3f685576597a6586e9e8d95ea39f":[1,0,0,2,8,2,0,12,25],
-"d0/d7a/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_wheel_joint.html#a3c4d8049273c0d593a97b7bd55414040":[1,0,0,2,8,2,0,12,23],
-"d0/d7a/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_wheel_joint.html#a3cd4d827b383a926eaea1b8a89a3df79":[1,0,0,2,8,2,0,12,49]
+"d0/d7a/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_wheel_joint.html#a367c3f685576597a6586e9e8d95ea39f":[1,0,0,2,8,2,0,12,25]
 };

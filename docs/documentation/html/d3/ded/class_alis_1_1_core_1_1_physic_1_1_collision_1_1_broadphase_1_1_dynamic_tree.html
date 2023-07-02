@@ -123,7 +123,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a804b777034e66816eb056f538c37be24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a proxy. This asserts if the id is invalid.  <a href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a804b777034e66816eb056f538c37be24">More...</a><br /></td></tr>
 <tr class="separator:a804b777034e66816eb056f538c37be24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96a6b9a11208407f29d8809fc020c7b5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a96a6b9a11208407f29d8809fc020c7b5">MoveProxy</a> (int proxyId, ref <a class="el" href="../../d8/deb/struct_alis_1_1_core_1_1_physic_1_1_shared_1_1_aabb.html">Aabb</a> aabb, <a class="el" href="../../d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html">Vector2F</a> displacement)</td></tr>
-<tr class="memdesc:a96a6b9a11208407f29d8809fc020c7b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move a proxy with a swepted AABB. If the proxy has moved outside of its fattened AABB, then the proxy is removed from the tree and re-inserted. Otherwise the function returns immediately.  <a href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a96a6b9a11208407f29d8809fc020c7b5">More...</a><br /></td></tr>
+<tr class="memdesc:a96a6b9a11208407f29d8809fc020c7b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move a proxy with a AABB. If the proxy has moved outside of its fattened AABB, then the proxy is removed from the tree and re-inserted. Otherwise the function returns immediately.  <a href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a96a6b9a11208407f29d8809fc020c7b5">More...</a><br /></td></tr>
 <tr class="separator:a96a6b9a11208407f29d8809fc020c7b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a759e47eedc84ab1f40250b0fe54b5e83"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a759e47eedc84ab1f40250b0fe54b5e83">WasMoved</a> (int proxyId)</td></tr>
 <tr class="memdesc:a759e47eedc84ab1f40250b0fe54b5e83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether this instance was moved  <a href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a759e47eedc84ab1f40250b0fe54b5e83">More...</a><br /></td></tr>
@@ -143,21 +143,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7369aa362134bd38429f7c5d086e80db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a7369aa362134bd38429f7c5d086e80db">RayCast</a> (Func&lt; <a class="el" href="../../de/d2a/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_ray_cast_1_1_ray_cast_input.html">RayCastInput</a>, int, float &gt; callback, ref <a class="el" href="../../de/d2a/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_ray_cast_1_1_ray_cast_input.html">RayCastInput</a> input)</td></tr>
 <tr class="memdesc:a7369aa362134bd38429f7c5d086e80db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ray-cast against the proxies in the tree. This relies on the callback to perform a exact ray-cast in the case were the proxy contains a Shape. The callback also performs the any collision filtering. This has performance roughly equal to k * log(n), where k is the number of collisions and n is the number of proxies in the tree.  <a href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a7369aa362134bd38429f7c5d086e80db">More...</a><br /></td></tr>
 <tr class="separator:a7369aa362134bd38429f7c5d086e80db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fe92af90ec1441103694689c48d65cd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a9fe92af90ec1441103694689c48d65cd">ComputeHeight</a> (int nodeId)</td></tr>
-<tr class="memdesc:a9fe92af90ec1441103694689c48d65cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the height of a sub-tree.  <a href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a9fe92af90ec1441103694689c48d65cd">More...</a><br /></td></tr>
-<tr class="separator:a9fe92af90ec1441103694689c48d65cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6d271c72e698801c9f648571e36c736"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#ad6d271c72e698801c9f648571e36c736">ComputeHeight</a> ()</td></tr>
 <tr class="memdesc:ad6d271c72e698801c9f648571e36c736"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the height of the entire tree.  <a href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#ad6d271c72e698801c9f648571e36c736">More...</a><br /></td></tr>
 <tr class="separator:ad6d271c72e698801c9f648571e36c736"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52fc48cccef8dcded68d08e2388fe75d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a52fc48cccef8dcded68d08e2388fe75d">ValidateStructure</a> (int index)</td></tr>
-<tr class="memdesc:a52fc48cccef8dcded68d08e2388fe75d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates the structure using the specified index  <a href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a52fc48cccef8dcded68d08e2388fe75d">More...</a><br /></td></tr>
-<tr class="separator:a52fc48cccef8dcded68d08e2388fe75d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d20d93cc348784e24578e4bfba9b17c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a1d20d93cc348784e24578e4bfba9b17c">ValidateMetrics</a> (int index)</td></tr>
-<tr class="memdesc:a1d20d93cc348784e24578e4bfba9b17c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates the metrics using the specified index  <a href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a1d20d93cc348784e24578e4bfba9b17c">More...</a><br /></td></tr>
-<tr class="separator:a1d20d93cc348784e24578e4bfba9b17c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab80532b6c761cf9b12f8a9f35698c842"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#ab80532b6c761cf9b12f8a9f35698c842">Validate</a> ()</td></tr>
-<tr class="memdesc:ab80532b6c761cf9b12f8a9f35698c842"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate this tree. For testing.  <a href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#ab80532b6c761cf9b12f8a9f35698c842">More...</a><br /></td></tr>
-<tr class="separator:ab80532b6c761cf9b12f8a9f35698c842"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9605b39ddd87fe5738d5ec17ca88011b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a9605b39ddd87fe5738d5ec17ca88011b">RebuildBottomUp</a> ()</td></tr>
 <tr class="memdesc:a9605b39ddd87fe5738d5ec17ca88011b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build an optimal tree. Very expensive. For testing.  <a href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a9605b39ddd87fe5738d5ec17ca88011b">More...</a><br /></td></tr>
 <tr class="separator:a9605b39ddd87fe5738d5ec17ca88011b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -200,6 +188,18 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a11d77326e1dad9014699bb2696beaeed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a11d77326e1dad9014699bb2696beaeed">BalanceTo</a> (int iA)</td></tr>
 <tr class="memdesc:a11d77326e1dad9014699bb2696beaeed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a left or right rotation if node A is imbalanced.  <a href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a11d77326e1dad9014699bb2696beaeed">More...</a><br /></td></tr>
 <tr class="separator:a11d77326e1dad9014699bb2696beaeed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fe92af90ec1441103694689c48d65cd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a9fe92af90ec1441103694689c48d65cd">ComputeHeight</a> (int nodeId)</td></tr>
+<tr class="memdesc:a9fe92af90ec1441103694689c48d65cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the height of a sub-tree.  <a href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a9fe92af90ec1441103694689c48d65cd">More...</a><br /></td></tr>
+<tr class="separator:a9fe92af90ec1441103694689c48d65cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52fc48cccef8dcded68d08e2388fe75d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a52fc48cccef8dcded68d08e2388fe75d">ValidateStructure</a> (int index)</td></tr>
+<tr class="memdesc:a52fc48cccef8dcded68d08e2388fe75d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates the structure using the specified index  <a href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a52fc48cccef8dcded68d08e2388fe75d">More...</a><br /></td></tr>
+<tr class="separator:a52fc48cccef8dcded68d08e2388fe75d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d20d93cc348784e24578e4bfba9b17c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a1d20d93cc348784e24578e4bfba9b17c">ValidateMetrics</a> (int index)</td></tr>
+<tr class="memdesc:a1d20d93cc348784e24578e4bfba9b17c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates the metrics using the specified index  <a href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a1d20d93cc348784e24578e4bfba9b17c">More...</a><br /></td></tr>
+<tr class="separator:a1d20d93cc348784e24578e4bfba9b17c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab80532b6c761cf9b12f8a9f35698c842"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#ab80532b6c761cf9b12f8a9f35698c842">Validate</a> ()</td></tr>
+<tr class="memdesc:ab80532b6c761cf9b12f8a9f35698c842"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate this tree. For testing.  <a href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#ab80532b6c761cf9b12f8a9f35698c842">More...</a><br /></td></tr>
+<tr class="separator:ab80532b6c761cf9b12f8a9f35698c842"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -288,7 +288,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Index of the created proxy</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00196">196</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00194">194</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -316,7 +316,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00215">215</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00212">212</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -352,7 +352,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Move a proxy with a swepted AABB. If the proxy has moved outside of its fattened AABB, then the proxy is removed from the tree and re-inserted. Otherwise the function returns immediately. </p>
+<p>Move a proxy with a AABB. If the proxy has moved outside of its fattened AABB, then the proxy is removed from the tree and re-inserted. Otherwise the function returns immediately. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">proxyId</td><td>The proxy id.</td></tr>
@@ -363,7 +363,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the proxy was re-inserted.</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00232">232</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00226">226</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -417,8 +417,6 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00311">311</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -484,8 +482,6 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00329">329</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
-
 </div>
 </div>
 <a id="aa768f1898bd7048ff5069ba5f94a3a0e"></a>
@@ -523,7 +519,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00341">341</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00310">310</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -562,7 +558,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00383">383</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00352">352</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -592,7 +588,7 @@ Private Attributes</h2></td></tr>
 <p>Allocates the node </p>
 <dl class="section return"><dt>Returns</dt><dd>The node id</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00471">471</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00430">430</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -628,7 +624,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00520">520</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00473">473</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -664,7 +660,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00534">534</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00485">485</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -700,7 +696,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00676">676</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00605">605</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -737,7 +733,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the new root index.</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00739">739</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00657">657</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -746,6 +742,9 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int <a class="el" href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html">Alis.Core.Physic.Collision.Broadphase.DynamicTree</a>&lt; T &gt;.ComputeHeight </td>
@@ -755,6 +754,11 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Compute the height of a sub-tree. </p>
@@ -766,7 +770,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The height of the tree.</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00885">885</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00795">795</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -788,7 +792,7 @@ Private Attributes</h2></td></tr>
 <p>Compute the height of the entire tree. </p>
 <dl class="section return"><dt>Returns</dt><dd>The height of the tree.</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00902">902</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00812">812</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -797,6 +801,9 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html">Alis.Core.Physic.Collision.Broadphase.DynamicTree</a>&lt; T &gt;.ValidateStructure </td>
@@ -806,6 +813,11 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Validates the structure using the specified index </p>
@@ -816,7 +828,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00912">912</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00822">822</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -825,6 +837,9 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html">Alis.Core.Physic.Collision.Broadphase.DynamicTree</a>&lt; T &gt;.ValidateMetrics </td>
@@ -834,6 +849,11 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Validates the metrics using the specified index </p>
@@ -844,7 +864,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00951">951</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00847">847</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -853,6 +873,9 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html">Alis.Core.Physic.Collision.Broadphase.DynamicTree</a>&lt; T &gt;.Validate </td>
@@ -861,11 +884,16 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Validate this tree. For testing. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00990">990</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00872">872</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -886,7 +914,7 @@ Private Attributes</h2></td></tr>
 
 <p>Build an optimal tree. Very expensive. For testing. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l01010">1010</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00885">885</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -914,7 +942,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l01087">1087</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00962">962</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -1123,7 +1151,7 @@ Private Attributes</h2></td></tr>
 
 <p>The null node </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00187">187</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00185">185</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -1150,7 +1178,7 @@ Private Attributes</h2></td></tr>
 
 <p>Compute the height of the binary tree in O(N) time. Should not be called often. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00112">112</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00113">113</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -1176,7 +1204,7 @@ Private Attributes</h2></td></tr>
 
 <p>Get the ratio of the sum of the node areas to the root area. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00126">126</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html#l00127">127</a> of file <a class="el" href="../../d2/d1d/_dynamic_tree_8cs_source.html">DynamicTree.cs</a>.</p>
 
 </div>
 </div>
@@ -1213,7 +1241,7 @@ Private Attributes</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../d7/db3/namespace_alis_1_1_core_1_1_physic.html">Physic</a></li><li class="navelem"><a class="el" href="../../d3/d49/namespace_alis_1_1_core_1_1_physic_1_1_collision.html">Collision</a></li><li class="navelem"><a class="el" href="../../dd/df7/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase.html">Broadphase</a></li><li class="navelem"><a class="el" href="../../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html">DynamicTree</a></li>
     <li class="footer">
-      <a>Generated on | Sat Jul 1 2023 |</a>
+      <a>Generated on | Sun Jul 2 2023 |</a>
     </li>
   </ul>
 </div>
