@@ -1,6 +1,6 @@
 var namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs =
 [
-    [ "InternalAndroidWminfo", "db/d99/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_android_wminfo.html", "db/d99/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_android_wminfo" ],
+    [ "InternalAndroidWmInfo", "d4/d0f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_android_wm_info.html", "d4/d0f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_android_wm_info" ],
     [ "InternalCocoaWmInfo", "d2/d21/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_cocoa_wm_info.html", "d2/d21/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_cocoa_wm_info" ],
     [ "InternalDirectfbWmInfo", "d4/dd0/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_directfb_wm_info.html", "d4/dd0/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_directfb_wm_info" ],
     [ "InternalGameControllerButtonBindHat", "d2/d03/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_game_controller_button_bind_hat.html", "d2/d03/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_game_controller_button_bind_hat" ],
