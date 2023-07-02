@@ -4,7 +4,4 @@
     <PropertyGroup>
         <TargetFramework>$(TargetFramework2)</TargetFramework>
     </PropertyGroup>
-    <ItemGroup>
-      <Folder Include="SDL\Extern\" />
-    </ItemGroup>
 </Project>
