@@ -104,8 +104,8 @@ namespace Alis.Core.Graphic.Sample
             // Create a new window given a title, size, and passes it a flag indicating it should be shown.
             IntPtr window = Sdl.SDL_CreateWindow(
                 "SDL .NET 6 Tutorial",
-                Sdl.SdlWindowposUndefined,
-                Sdl.SdlWindowposUndefined,
+                Sdl.SdlWindowPosUndefined,
+                Sdl.SdlWindowPosUndefined,
                 Width,
                 Height,
                 SdlWindowFlags.SdlWindowShown);
@@ -181,7 +181,7 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         private void Sdlinput()
         {
-            Sdl.SDL_SetHint(Sdl.SdlHintXinputEnabled, "0");
+            Sdl.SDL_SetHint(Sdl.SdlHintXInputEnabled, "0");
             Sdl.SDL_SetHint(Sdl.SdlHintJoystickThread, "1");
             Sdl.SDL_Init(Sdl.SdlInitEverything);
 

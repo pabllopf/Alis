@@ -76,11 +76,11 @@ namespace Alis.Core.Graphic.SDL.Structs
         {
             get
             {
-                byte[] textBytes = new byte[Sdl.SdlTexteditingeventTextSize];
-                Marshal.Copy(textPtr, textBytes, 0, Sdl.SdlTexteditingeventTextSize);
+                byte[] textBytes = new byte[Sdl.SdlTextEditingEventTextSize];
+                Marshal.Copy(textPtr, textBytes, 0, Sdl.SdlTextEditingEventTextSize);
                 return textBytes;
             }
-            set => Marshal.Copy(value, 0, textPtr, Sdl.SdlTexteditingeventTextSize);
+            set => Marshal.Copy(value, 0, textPtr, Sdl.SdlTextEditingEventTextSize);
         }
     }
 }

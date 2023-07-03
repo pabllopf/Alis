@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Graphic.SDL.Delegates;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
@@ -71,7 +72,7 @@ namespace Alis.Core.Graphic.SDL.Structs
         /// <summary>
         ///     The callback
         /// </summary>
-        public readonly Sdl.SdlAudioCallback callback;
+        public readonly SdlAudioCallback callback;
 
         /// <summary>
         ///     The userdata

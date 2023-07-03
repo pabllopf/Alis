@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImgAnimation.cs
+//  File:SdlAudioCallback.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,32 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.Core.Graphic.SDL.Delegates
 {
     /// <summary>
-    ///     The img animation
+    ///     The sdl audio callback
     /// </summary>
-    public struct ImgAnimation
-    {
-        /// <summary>
-        ///     The
-        /// </summary>
-        public int W;
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        public int H;
-
-        /// <summary>
-        ///     The frames
-        /// </summary>
-        public IntPtr Frames;
-
-        /// <summary>
-        ///     The delays
-        /// </summary>
-        public IntPtr Delays;
-    }
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate void SdlAudioCallback(IntPtr userdata, IntPtr stream, int len);
 }

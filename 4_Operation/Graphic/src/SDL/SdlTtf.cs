@@ -524,7 +524,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="font">The font</param>
         /// <returns>The string</returns>
         [return: NotNull, NotEmpty]
-        public static string TtfFontFaceFamilyName([NotNull] IntPtr font) => Sdl.UTF8_ToManaged(INTERNAL_TTF_FontFaceFamilyName(font.Validate()));
+        public static string TtfFontFaceFamilyName([NotNull] IntPtr font) => Sdl.Utf8ToManaged(INTERNAL_TTF_FontFaceFamilyName(font.Validate()));
 
         /// <summary>
         ///     Internals the ttf font face style name using the specified font
@@ -1576,7 +1576,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="font">The font</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string TtfFontFaceStyleName([NotNull]IntPtr font) => Sdl.UTF8_ToManaged(InternalTtfFontFaceStyleName(font.Validate()));
+        public static string TtfFontFaceStyleName([NotNull]IntPtr font) => Sdl.Utf8ToManaged(InternalTtfFontFaceStyleName(font.Validate()));
 
         /// <summary>
         ///     Ttf the open font index using the specified file

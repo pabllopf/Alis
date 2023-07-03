@@ -86,7 +86,7 @@ namespace Alis.Core.Graphic.ImGui
                 flags |= SdlWindowFlags.SdlWindowAllowHighdpi;
             }
 
-            IntPtr window = SDL_CreateWindow(title, SdlWindowposCentered, SdlWindowposCentered, width, height, flags);
+            IntPtr window = SDL_CreateWindow(title, SdlWindowPosCentered, SdlWindowPosCentered, width, height, flags);
             IntPtr glContext = CreateGlContext(window);
             return (window, glContext);
         }
