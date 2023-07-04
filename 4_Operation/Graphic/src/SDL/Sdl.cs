@@ -907,28 +907,28 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl hat up
         /// </summary>
-        public const byte SdlHatRightup = SdlHatRight | SdlHatUp;
+        public const byte SdlHatRightUp = SdlHatRight | SdlHatUp;
 
         /// <summary>
         ///     The sdl hat down
         /// </summary>
-        public const byte SdlHatRightdown = SdlHatRight | SdlHatDown;
+        public const byte SdlHatRightDown = SdlHatRight | SdlHatDown;
 
         /// <summary>
         ///     The sdl hat up
         /// </summary>
-        public const byte SdlHatLeftup = SdlHatLeft | SdlHatUp;
+        public const byte SdlHatLeftUp = SdlHatLeft | SdlHatUp;
 
         /// <summary>
         ///     The sdl hat down
         /// </summary>
-        public const byte SdlHatLeftdown = SdlHatLeft | SdlHatDown;
+        public const byte SdlHatLeftDown = SdlHatLeft | SdlHatDown;
 
 
         /// <summary>
         ///     The sdl iphone max g force
         /// </summary>
-        public const float SdlIphoneMaxGforce = 5.0f;
+        public const float SdlIphoneMaxGForce = 5.0f;
 
         /// <summary>
         ///     The sdl haptic constant
@@ -943,7 +943,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl haptic left right
         /// </summary>
-        public const ushort SdlHapticLeftright = 1 << 2;
+        public const ushort SdlHapticLeftRight = 1 << 2;
 
         /// <summary>
         ///     The sdl haptic triangle
@@ -953,12 +953,12 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl haptic saw tooth up
         /// </summary>
-        public const ushort SdlHapticSawtoothup = 1 << 4;
+        public const ushort SdlHapticSawToothUp = 1 << 4;
 
         /// <summary>
         ///     The sdl haptic saw tooth down
         /// </summary>
-        public const ushort SdlHapticSawtoothdown = 1 << 5;
+        public const ushort SdlHapticSawToothDown = 1 << 5;
 
         /// <summary>
         ///     The sdl haptic spring
@@ -993,7 +993,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl haptic auto center
         /// </summary>
-        public const ushort SdlHapticAutocenter = 1 << 13;
+        public const ushort SdlHapticAutoCenter = 1 << 13;
 
         /// <summary>
         ///     The sdl haptic status
@@ -1040,7 +1040,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl audio mask bit size
         /// </summary>
-        private const ushort SdlAudioMaskBitsize = 0xFF;
+        private const ushort SdlAudioMaskBitSize = 0xFF;
 
         /// <summary>
         ///     The sdl audio mask datatype
@@ -1158,7 +1158,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl mix max volume
         /// </summary>
-        public const int SdlMixMaxvolume = 128;
+        public const int SdlMixMaxVolume = 128;
 
 
         /// <summary>
@@ -1174,7 +1174,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl patch level
         /// </summary>
-        private static readonly int SdlCompiledversion = SDL_VERSIONNUM(
+        private static readonly int SdlCompiledVersion = SdlVersionNum(
             SdlMajorVersion,
             SdlMinorVersion,
             SdlPatchLevel
@@ -1183,12 +1183,12 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl pixel format unknown
         /// </summary>
-        public static readonly uint SdlPixelformatUnknown = 0;
+        public static readonly uint SdlPixelFormatUnknown = 0;
 
         /// <summary>
         ///     The sdl bit map order 4321
         /// </summary>
-        public static readonly uint SdlPixelformatIndex1Lsb =
+        public static readonly uint SdlPixelFormatIndex1Lsb =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypeIndex1,
                 (uint) SdlBitmapOrder.SdlBitMapOrder4321,
@@ -1199,7 +1199,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl bit map order 1234
         /// </summary>
-        public static readonly uint SdlPixelformatIndex1Msb =
+        public static readonly uint SdlPixelFormatIndex1Msb =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypeIndex1,
                 (uint) SdlBitmapOrder.SdlBitMapOrder1234,
@@ -1210,7 +1210,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl bit map order 4321
         /// </summary>
-        public static readonly uint SdlPixelformatIndex4Lsb =
+        public static readonly uint SdlPixelFormatIndex4Lsb =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypeIndex4,
                 (uint) SdlBitmapOrder.SdlBitMapOrder4321,
@@ -1221,7 +1221,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl bit map order 1234
         /// </summary>
-        public static readonly uint SdlPixelformatIndex4Msb =
+        public static readonly uint SdlPixelFormatIndex4Msb =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypeIndex4,
                 (uint) SdlBitmapOrder.SdlBitMapOrder1234,
@@ -1232,7 +1232,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl pixel type index8
         /// </summary>
-        public static readonly uint SdlPixelformatIndex8 =
+        public static readonly uint SdlPixelFormatIndex8 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypeIndex8,
                 0,
@@ -1243,7 +1243,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 332
         /// </summary>
-        public static readonly uint SdlPixelformatRgb332 =
+        public static readonly uint SdlPixelFormatRgb332 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked8,
                 (uint) SdlPackedOrder.SdlPackedorderXrgb,
@@ -1254,7 +1254,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        private static readonly uint SdlPixelformatXrgb444 =
+        private static readonly uint SdlPixelFormatXRgb444 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked16,
                 (uint) SdlPackedOrder.SdlPackedorderXrgb,
@@ -1265,13 +1265,13 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl pixel format x rgb 444
         /// </summary>
-        public static readonly uint SdlPixelformatRgb444 =
-            SdlPixelformatXrgb444;
+        public static readonly uint SdlPixelFormatRgb444 =
+            SdlPixelFormatXRgb444;
 
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        private static readonly uint SdlPixelformatXbgr444 =
+        private static readonly uint SdlPixelFormatXBgr444 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked16,
                 (uint) SdlPackedOrder.SdlPackedorderXbgr,
@@ -1282,13 +1282,13 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl pixel format x bgr 444
         /// </summary>
-        public static readonly uint SdlPixelformatBgr444 =
-            SdlPixelformatXbgr444;
+        public static readonly uint SdlPixelFormatBgr444 =
+            SdlPixelFormatXBgr444;
 
         /// <summary>
         ///     The sdl packed layout 1555
         /// </summary>
-        private static readonly uint SdlPixelformatXrgb1555 =
+        private static readonly uint SdlPixelFormatXRgb1555 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked16,
                 (uint) SdlPackedOrder.SdlPackedorderXrgb,
@@ -1299,13 +1299,13 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl pixel format xrgb1555
         /// </summary>
-        public static readonly uint SdlPixelformatRgb555 =
-            SdlPixelformatXrgb1555;
+        public static readonly uint SdlPixelFormatRgb555 =
+            SdlPixelFormatXRgb1555;
 
         /// <summary>
         ///     The sdl packed layout 1555
         /// </summary>
-        private static readonly uint SdlPixelformatXbgr1555 =
+        private static readonly uint SdlPixelFormatXBgr1555 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypeIndex1,
                 (uint) SdlBitmapOrder.SdlBitMapOrder4321,
@@ -1316,13 +1316,13 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl pixel format xbgr1555
         /// </summary>
-        public static readonly uint SdlPixelformatBgr555 =
-            SdlPixelformatXbgr1555;
+        public static readonly uint SdlPixelFormatBgr555 =
+            SdlPixelFormatXBgr1555;
 
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        public static readonly uint SdlPixelformatArgb4444 =
+        public static readonly uint SdlPixelFormatArgb4444 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked16,
                 (uint) SdlPackedOrder.SdlPackedorderArgb,
@@ -1333,7 +1333,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        public static readonly uint SdlPixelformatRgba4444 =
+        public static readonly uint SdlPixelFormatRgba4444 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked16,
                 (uint) SdlPackedOrder.SdlPackedorderRgba,
@@ -1344,7 +1344,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        public static readonly uint SdlPixelformatAbgr4444 =
+        public static readonly uint SdlPixelFormatABgr4444 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked16,
                 (uint) SdlPackedOrder.SdlPackedorderAbgr,
@@ -1355,7 +1355,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        public static readonly uint SdlPixelformatBgra4444 =
+        public static readonly uint SdlPixelFormatBGra4444 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked16,
                 (uint) SdlPackedOrder.SdlPackedorderBgra,
@@ -1366,7 +1366,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 1555
         /// </summary>
-        public static readonly uint SdlPixelformatArgb1555 =
+        public static readonly uint SdlPixelFormatArgb1555 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked16,
                 (uint) SdlPackedOrder.SdlPackedorderArgb,
@@ -1377,7 +1377,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 5551
         /// </summary>
-        public static readonly uint SdlPixelformatRgba5551 =
+        public static readonly uint SdlPixelFormatRgba5551 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked16,
                 (uint) SdlPackedOrder.SdlPackedorderRgba,
@@ -1388,7 +1388,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 1555
         /// </summary>
-        public static readonly uint SdlPixelformatAbgr1555 =
+        public static readonly uint SdlPixelFormatABgr1555 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked16,
                 (uint) SdlPackedOrder.SdlPackedorderAbgr,
@@ -1399,7 +1399,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 5551
         /// </summary>
-        public static readonly uint SdlPixelformatBgra5551 =
+        public static readonly uint SdlPixelFormatBGra5551 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked16,
                 (uint) SdlPackedOrder.SdlPackedorderBgra,
@@ -1410,7 +1410,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 565
         /// </summary>
-        public static readonly uint SdlPixelformatRgb565 =
+        public static readonly uint SdlPixelFormatRgb565 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked16,
                 (uint) SdlPackedOrder.SdlPackedorderXrgb,
@@ -1421,7 +1421,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 565
         /// </summary>
-        public static readonly uint SdlPixelformatBgr565 =
+        public static readonly uint SdlPixelFormatBgr565 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked16,
                 (uint) SdlPackedOrder.SdlPackedorderXbgr,
@@ -1432,7 +1432,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl array order rgb
         /// </summary>
-        public static readonly uint SdlPixelformatRgb24 =
+        public static readonly uint SdlPixelFormatRgb24 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypeArrayu8,
                 (uint) SdlArrayOrder.SdlArrayorderRgb,
@@ -1443,7 +1443,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl array order bgr
         /// </summary>
-        public static readonly uint SdlPixelformatBgr24 =
+        public static readonly uint SdlPixelFormatBgr24 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypeArrayu8,
                 (uint) SdlArrayOrder.SdlArrayorderBgr,
@@ -1454,7 +1454,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        private static readonly uint SdlPixelformatXrgb888 =
+        private static readonly uint SdlPixelFormatXRgb888 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked32,
                 (uint) SdlPackedOrder.SdlPackedorderXrgb,
@@ -1465,13 +1465,13 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl pixel format x rgb 888
         /// </summary>
-        public static readonly uint SdlPixelformatRgb888 =
-            SdlPixelformatXrgb888;
+        public static readonly uint SdlPixelFormatRgb888 =
+            SdlPixelFormatXRgb888;
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint SdlPixelformatRgbx8888 =
+        public static readonly uint SdlPixelFormatRgbX8888 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked32,
                 (uint) SdlPackedOrder.SdlPackedorderRgbx,
@@ -1482,7 +1482,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        private static readonly uint SdlPixelformatXbgr888 =
+        private static readonly uint SdlPixelFormatXBgr888 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked32,
                 (uint) SdlPackedOrder.SdlPackedorderXbgr,
@@ -1493,13 +1493,13 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl pixel format x bgr 888
         /// </summary>
-        public static readonly uint SdlPixelformatBgr888 =
-            SdlPixelformatXbgr888;
+        public static readonly uint SdlPixelFormatBgr888 =
+            SdlPixelFormatXBgr888;
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint SdlPixelformatBgrx8888 =
+        public static readonly uint SdlPixelFormatBGrx8888 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked32,
                 (uint) SdlPackedOrder.SdlPackedorderBgrx,
@@ -1510,7 +1510,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint SdlPixelformatArgb8888 =
+        public static readonly uint SdlPixelFormatArgb8888 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked32,
                 (uint) SdlPackedOrder.SdlPackedorderArgb,
@@ -1521,7 +1521,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint SdlPixelformatRgba8888 =
+        public static readonly uint SdlPixelFormatRgba8888 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked32,
                 (uint) SdlPackedOrder.SdlPackedorderRgba,
@@ -1532,7 +1532,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint SdlPixelformatAbgr8888 =
+        public static readonly uint SdlPixelFormatABgr8888 =
             SdlDefinePixelFormat(
                 Enums.SdlPixelType.SdlPixeltypePacked32,
                 (uint) SdlPackedOrder.SdlPackedorderAbgr,
@@ -1728,9 +1728,9 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     Sdl the free using the specified mem block
         /// </summary>
-        /// <param name="memblock">The mem block</param>
+        /// <param name="memBlock">The mem block</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        private static extern void SDL_free(IntPtr memblock);
+        private static extern void SDL_free(IntPtr memBlock);
         
         /// <summary>
         ///     Sdl the mem cpy using the specified dst
@@ -1740,7 +1740,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="len">The len</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_memcpy(IntPtr dst, IntPtr src, IntPtr len);
+        public static extern IntPtr SDL_memCpy(IntPtr dst, IntPtr src, IntPtr len);
 
 
         /// <summary>
@@ -1796,10 +1796,10 @@ namespace Alis.Core.Graphic.SDL
         ///     Sdl the rw from fp using the specified fp
         /// </summary>
         /// <param name="fp">The fp</param>
-        /// <param name="autoclose">The auto close</param>
+        /// <param name="autoClose">The auto close</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_RWFromFP(IntPtr fp, SdlBool autoclose);
+        public static extern IntPtr SDL_RWFromFP(IntPtr fp, SdlBool autoClose);
 
 
         /// <summary>
@@ -1828,7 +1828,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="context">The context</param>
         /// <returns>The long</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern long SDL_RWsize(IntPtr context);
+        public static extern long SDL_RwSize(IntPtr context);
 
         /// <summary>
         ///     Sdl the r w seek using the specified context
@@ -1838,7 +1838,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="whence">The whence</param>
         /// <returns>The long</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern long SDL_RWseek(
+        public static extern long SDL_RwSeek(
             IntPtr context,
             long offset,
             int whence
@@ -1850,7 +1850,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="context">The context</param>
         /// <returns>The long</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern long SDL_RWtell(IntPtr context);
+        public static extern long SDL_RwTell(IntPtr context);
 
 
         /// <summary>
@@ -1859,14 +1859,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="context">The context</param>
         /// <param name="ptr">The ptr</param>
         /// <param name="size">The size</param>
-        /// <param name="maxnum">The max num</param>
+        /// <param name="maxNum">The max num</param>
         /// <returns>The long</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern long SDL_RWread(
+        public static extern long SDL_RwRead(
             IntPtr context,
             IntPtr ptr,
             IntPtr size,
-            IntPtr maxnum
+            IntPtr maxNum
         );
 
 
@@ -1876,14 +1876,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="context">The context</param>
         /// <param name="ptr">The ptr</param>
         /// <param name="size">The size</param>
-        /// <param name="maxnum">The max num</param>
+        /// <param name="maxNum">The max num</param>
         /// <returns>The long</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern long SDL_RWwrite(
+        public static extern long SDL_RwWrite(
             IntPtr context,
             IntPtr ptr,
             IntPtr size,
-            IntPtr maxnum
+            IntPtr maxNum
         );
 
 
@@ -2013,7 +2013,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="context">The context</param>
         /// <returns>The long</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern long SDL_RWclose(IntPtr context);
+        public static extern long SDL_RwClose(IntPtr context);
 
         /// <summary>
         ///     Internals the sdl load file using the specified file
@@ -2343,11 +2343,11 @@ namespace Alis.Core.Graphic.SDL
             string fmtAndArgList
         )
         {
-            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArgList);
-            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
+            int utf8FmtAndArgListBufSize = Utf8Size(fmtAndArgList);
+            byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
             INTERNAL_SDL_LogVerbose(
                 category,
-                Utf8Encode(fmtAndArgList, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
+                Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
 
@@ -2356,28 +2356,28 @@ namespace Alis.Core.Graphic.SDL
         ///     Internals the sdl log debug using the specified category
         /// </summary>
         /// <param name="category">The category</param>
-        /// <param name="fmtAndArglist">The fmt and arg list</param>
+        /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogDebug", CallingConvention = CallingConvention.Cdecl)]
         private static extern void INTERNAL_SDL_LogDebug(
             int category,
-            byte[] fmtAndArglist
+            byte[] fmtAndArgList
         );
 
         /// <summary>
         ///     Sdl the log debug using the specified category
         /// </summary>
         /// <param name="category">The category</param>
-        /// <param name="fmtAndArglist">The fmt and arg list</param>
+        /// <param name="fmtAndArgList">The fmt and arg list</param>
         public static void SDL_LogDebug(
             int category,
-            string fmtAndArglist
+            string fmtAndArgList
         )
         {
-            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
-            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
+            int utf8FmtAndArgListBufSize = Utf8Size(fmtAndArgList);
+            byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
             INTERNAL_SDL_LogDebug(
                 category,
-                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
+                Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
 
@@ -2386,28 +2386,28 @@ namespace Alis.Core.Graphic.SDL
         ///     Internals the sdl log info using the specified category
         /// </summary>
         /// <param name="category">The category</param>
-        /// <param name="fmtAndArglist">The fmt and arg list</param>
+        /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogInfo", CallingConvention = CallingConvention.Cdecl)]
         private static extern void INTERNAL_SDL_LogInfo(
             int category,
-            byte[] fmtAndArglist
+            byte[] fmtAndArgList
         );
 
         /// <summary>
         ///     Sdl the log info using the specified category
         /// </summary>
         /// <param name="category">The category</param>
-        /// <param name="fmtAndArglist">The fmt and arg list</param>
+        /// <param name="fmtAndArgList">The fmt and arg list</param>
         public static void SDL_LogInfo(
             int category,
-            string fmtAndArglist
+            string fmtAndArgList
         )
         {
-            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
-            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
+            int utf8FmtAndArgListBufSize = Utf8Size(fmtAndArgList);
+            byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
             INTERNAL_SDL_LogInfo(
                 category,
-                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
+                Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
 
@@ -2433,11 +2433,11 @@ namespace Alis.Core.Graphic.SDL
             string fmtAndArgList
         )
         {
-            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArgList);
-            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
+            int utf8FmtAndArgListBufSize = Utf8Size(fmtAndArgList);
+            byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
             INTERNAL_SDL_LogWarn(
                 category,
-                Utf8Encode(fmtAndArgList, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
+                Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
 
@@ -2446,28 +2446,28 @@ namespace Alis.Core.Graphic.SDL
         ///     Internals the sdl log error using the specified category
         /// </summary>
         /// <param name="category">The category</param>
-        /// <param name="fmtAndArglist">The fmt and arg list</param>
+        /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogError", CallingConvention = CallingConvention.Cdecl)]
         private static extern void INTERNAL_SDL_LogError(
             int category,
-            byte[] fmtAndArglist
+            byte[] fmtAndArgList
         );
 
         /// <summary>
         ///     Sdl the log error using the specified category
         /// </summary>
         /// <param name="category">The category</param>
-        /// <param name="fmtAndArglist">The fmt and arg list</param>
+        /// <param name="fmtAndArgList">The fmt and arg list</param>
         public static void SDL_LogError(
             int category,
-            string fmtAndArglist
+            string fmtAndArgList
         )
         {
-            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
-            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
+            int utf8FmtAndArgListBufSize = Utf8Size(fmtAndArgList);
+            byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
             INTERNAL_SDL_LogError(
                 category,
-                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
+                Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
 
@@ -2493,11 +2493,11 @@ namespace Alis.Core.Graphic.SDL
             string fmtAndArgList
         )
         {
-            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArgList);
-            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
+            int utf8FmtAndArgListBufSize = Utf8Size(fmtAndArgList);
+            byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
             INTERNAL_SDL_LogCritical(
                 category,
-                Utf8Encode(fmtAndArgList, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
+                Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
 
@@ -2527,12 +2527,12 @@ namespace Alis.Core.Graphic.SDL
             string fmtAndArgList
         )
         {
-            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArgList);
-            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
+            int utf8FmtAndArgListBufSize = Utf8Size(fmtAndArgList);
+            byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
             INTERNAL_SDL_LogMessage(
                 category,
                 priority,
-                Utf8Encode(fmtAndArgList, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
+                Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
 
@@ -2542,12 +2542,12 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="priority">The priority</param>
-        /// <param name="fmtAndArglist">The fmt and arg list</param>
+        /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogMessageV", CallingConvention = CallingConvention.Cdecl)]
         private static extern void INTERNAL_SDL_LogMessageV(
             int category,
             SdlLogPriority priority,
-            byte[] fmtAndArglist
+            byte[] fmtAndArgList
         );
 
         /// <summary>
@@ -2562,12 +2562,12 @@ namespace Alis.Core.Graphic.SDL
             string fmtAndArgList
         )
         {
-            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArgList);
-            byte[] utf8FmtAndArglist = new byte[utf8FmtAndArglistBufSize];
+            int utf8FmtAndArgListBufSize = Utf8Size(fmtAndArgList);
+            byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
             INTERNAL_SDL_LogMessageV(
                 category,
                 priority,
-                Utf8Encode(fmtAndArgList, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
+                Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
 
@@ -2661,11 +2661,11 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     Internals the sdl show message box using the specified message box data
         /// </summary>
-        /// <param name="messageboxdata">The message box data</param>
-        /// <param name="buttonid">The button id</param>
+        /// <param name="messageBoxData">The message box data</param>
+        /// <param name="buttonId">The button id</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_ShowMessageBox", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int INTERNAL_SDL_ShowMessageBox([In] ref InternalSdlMessageBoxData messageboxdata, out int buttonid);
+        private static extern int INTERNAL_SDL_ShowMessageBox([In] ref InternalSdlMessageBoxData messageBoxData, out int buttonId);
 
 
         /// <summary>
@@ -2689,32 +2689,32 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     Sdl the show message box using the specified message box data
         /// </summary>
-        /// <param name="messageboxdata">The message box data</param>
-        /// <param name="buttonid">The button id</param>
+        /// <param name="messageBoxData">The message box data</param>
+        /// <param name="buttonId">The button id</param>
         /// <returns>The result</returns>
-        public static int SDL_ShowMessageBox(ref SdlMessageBoxData messageboxdata, out int buttonid)
+        public static int SDL_ShowMessageBox(ref SdlMessageBoxData messageBoxData, out int buttonId)
         {
             InternalSdlMessageBoxData data = new InternalSdlMessageBoxData
             {
-                flags = messageboxdata.flags,
-                window = messageboxdata.window,
-                title = INTERNAL_AllocUTF8(messageboxdata.title),
-                message = INTERNAL_AllocUTF8(messageboxdata.message),
-                numbuttons = messageboxdata.numbuttons
+                flags = messageBoxData.flags,
+                window = messageBoxData.window,
+                title = INTERNAL_AllocUTF8(messageBoxData.title),
+                message = INTERNAL_AllocUTF8(messageBoxData.message),
+                numbuttons = messageBoxData.numbuttons
             };
 
-            InternalSdlMessageBoxButtonData[] buttons = new InternalSdlMessageBoxButtonData[messageboxdata.numbuttons];
+            InternalSdlMessageBoxButtonData[] buttons = new InternalSdlMessageBoxButtonData[messageBoxData.numbuttons];
             IntPtr buttonsPtr = IntPtr.Zero;
 
             try
             {
-                for (int i = 0; i < messageboxdata.numbuttons; i++)
+                for (int i = 0; i < messageBoxData.numbuttons; i++)
                 {
                     buttons[i] = new InternalSdlMessageBoxButtonData
                     {
-                        flags = messageboxdata.buttons[i].flags,
-                        buttonId = messageboxdata.buttons[i].buttonId,
-                        text = INTERNAL_AllocUTF8(messageboxdata.buttons[i].text)
+                        flags = messageBoxData.buttons[i].flags,
+                        buttonId = messageBoxData.buttons[i].buttonId,
+                        text = INTERNAL_AllocUTF8(messageBoxData.buttons[i].text)
                     };
                 }
 
@@ -2728,15 +2728,15 @@ namespace Alis.Core.Graphic.SDL
                 data.buttons = buttonsPtr;
 
                 IntPtr colorSchemePtr = IntPtr.Zero;
-                if (messageboxdata.colorScheme != null)
+                if (messageBoxData.colorScheme != null)
                 {
                     colorSchemePtr = Marshal.AllocHGlobal(Marshal.SizeOf<SdlMessageBoxColorScheme>());
-                    Marshal.StructureToPtr(messageboxdata.colorScheme.Value, colorSchemePtr, false);
+                    Marshal.StructureToPtr(messageBoxData.colorScheme.Value, colorSchemePtr, false);
                 }
 
-                int result = INTERNAL_SDL_ShowMessageBox(ref data, out buttonid);
+                int result = INTERNAL_SDL_ShowMessageBox(ref data, out buttonId);
 
-                for (int i = 0; i < messageboxdata.numbuttons; i++)
+                for (int i = 0; i < messageBoxData.numbuttons; i++)
                 {
                     SDL_free(buttons[i].text);
                 }
@@ -2825,16 +2825,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="y">The </param>
         /// <param name="z">The </param>
         /// <returns>The int</returns>
-        private static int SDL_VERSIONNUM(int x, int y, int z) => x * 1000 + y * 100 + z;
+        private static int SdlVersionNum(int x, int y, int z) => x * 1000 + y * 100 + z;
 
         /// <summary>
-        ///     Describes whether sdl version atleast
+        ///     Describes whether sdl version at least
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <param name="z">The </param>
         /// <returns>The bool</returns>
-        public static bool SDL_VERSION_ATLEAST(int x, int y, int z) => SdlCompiledversion >= SDL_VERSIONNUM(x, y, z);
+        public static bool SdlVersionAtLeast(int x, int y, int z) => SdlCompiledVersion >= SdlVersionNum(x, y, z);
 
         /// <summary>
         ///     Sdl the get version using the specified ver
@@ -2868,14 +2868,14 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The int</returns>
-        public static int SDL_WINDOWPOS_UNDEFINED_DISPLAY(int x) => SdlWindowPosUndefinedMask | x;
+        public static int SdlWindowPosUndefinedDisplay(int x) => SdlWindowPosUndefinedMask | x;
 
         /// <summary>
         ///     Describes whether sdl window pos is undefined
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SDL_WINDOWPOS_ISUNDEFINED(int x) => (x & 0xFFFF0000) == SdlWindowPosUndefinedMask;
+        public static bool SdlWindowPosIsUndefined(int x) => (x & 0xFFFF0000) == SdlWindowPosUndefinedMask;
 
         /// <summary>
         ///     Sdl the window pos centered display using the specified x
@@ -9766,7 +9766,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The ushort</returns>
-        public static ushort SdlAudioBitSize(ushort x) => (ushort) (x & SdlAudioMaskBitsize);
+        public static ushort SdlAudioBitSize(ushort x) => (ushort) (x & SdlAudioMaskBitSize);
 
         /// <summary>
         ///     Describes whether sdl audio is float
