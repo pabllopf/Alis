@@ -10668,56 +10668,120 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_GetCPUCount();
+        
+        /// <summary>
+        /// Sdl the get cpu count
+        /// </summary>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SdlGetCpuCount() => SDL_GetCPUCount();
 
         /// <summary>
         ///     Sdl the get cpu cache line size
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetCPUCacheLineSize();
+        [return: NotNull]
+        private static extern int SDL_GetCPUCacheLineSize();
+        
+        /// <summary>
+        /// Sdl the get cpu cache line size
+        /// </summary>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SdlGetCpuCacheLineSize() => SDL_GetCPUCacheLineSize();
 
         /// <summary>
         ///     Sdl the has rdtsc
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_HasRDTSC();
+        [return: NotNull]
+        private static extern SdlBool SDL_HasRDTSC();
+        
+        /// <summary>
+        /// Sdl the has rdtsc
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool SdlHasRdtsc() => SDL_HasRDTSC();
 
         /// <summary>
         ///     Sdl the has alti vec
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_HasAltiVec();
+        [return: NotNull]
+        private static extern SdlBool SDL_HasAltiVec();
+        
+        /// <summary>
+        /// Sdl the has alti vec
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool SdlHasAltiVec() => SDL_HasAltiVec();
 
         /// <summary>
         ///     Sdl the has mmx
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_HasMMX();
+        [return: NotNull]
+        private static extern SdlBool SDL_HasMMX();
+        
+        /// <summary>
+        /// Sdl the has mmx
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool SdlHasMmx() => SDL_HasMMX();
 
         /// <summary>
         ///     Sdl the has 3 d now
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_Has3DNow();
+        [return: NotNull]
+        private static extern SdlBool SDL_Has3DNow();
+        
+        /// <summary>
+        /// Sdl the has 3 d now
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool SdlHas3DNow() => SDL_Has3DNow();
 
         /// <summary>
         ///     Sdl the has sse
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_HasSSE();
+        [return: NotNull]
+        private static extern SdlBool SDL_HasSSE();
+        
+        /// <summary>
+        /// Sdl the has sse
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool SdlHasSse() => SDL_HasSSE();
 
         /// <summary>
         ///     Sdl the has sse 2
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_HasSSE2();
+        [return: NotNull]
+        private static extern SdlBool SDL_HasSSE2();
+        
+        /// <summary>
+        /// Sdl the has sse 2
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool SdlHasSse2() => SDL_HasSSE2();
 
         /// <summary>
         ///     Sdl the has sse 3
