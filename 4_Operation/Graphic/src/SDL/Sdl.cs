@@ -10724,63 +10724,135 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_HasSSE3();
+        [return: NotNull]
+        private static extern SdlBool SDL_HasSSE3();
+        
+        /// <summary>
+        /// Sdl the has sse 3
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool SdlHasSse3() => SDL_HasSSE3();
 
         /// <summary>
         ///     Sdl the has sse 41
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_HasSSE41();
+        [return: NotNull]
+        private static extern SdlBool SDL_HasSSE41();
+        
+        /// <summary>
+        /// Sdl the has sse 41
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool SdlHasSse41() => SDL_HasSSE41();
 
         /// <summary>
         ///     Sdl the has sse 42
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_HasSSE42();
+        [return: NotNull]
+        private static extern SdlBool SDL_HasSSE42();
+        
+        /// <summary>
+        /// Sdl the has sse 42
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool SdlHasSse42() => SDL_HasSSE42();
 
         /// <summary>
         ///     Sdl the has avx
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_HasAVX();
+        [return: NotNull]
+        private static extern SdlBool SDL_HasAVX();
+        
+        /// <summary>
+        /// Sdl the has avx
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool SdlHasAvx() => SDL_HasAVX();
 
         /// <summary>
         ///     Sdl the has avx 2
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_HasAVX2();
+        [return: NotNull]
+        private static extern SdlBool SDL_HasAVX2();
+        
+        /// <summary>
+        /// Sdl the has avx 2
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool SdlHasAvX2() => SDL_HasAVX2();
 
         /// <summary>
         ///     Sdl the has avx 512 f
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_HasAVX512F();
+        [return: NotNull]
+        private static extern SdlBool SDL_HasAVX512F();
+        
+        /// <summary>
+        /// Sdl the has avx 512 f
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool SdlHasAvx512F() => SDL_HasAVX512F();
 
         /// <summary>
         ///     Sdl the has neon
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_HasNEON();
+        [return: NotNull]
+        private static extern SdlBool SDL_HasNEON();
+        
+        /// <summary>
+        /// Sdl the has neon
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool SdlHasNeon() => SDL_HasNEON();
 
         /// <summary>
         ///     Sdl the get system ram
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetSystemRAM();
+        [return: NotNull]
+        private static extern int SDL_GetSystemRAM();
+        
+        /// <summary>
+        /// Sdl the get system ram
+        /// </summary>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SdlGetSystemRam() => SDL_GetSystemRAM();
 
         /// <summary>
         ///     Sdl the simd get alignment
         /// </summary>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_SIMDGetAlignment();
+        [return: NotNull]
+        private static extern uint SDL_SIMDGetAlignment();
+        
+        /// <summary>
+        /// Sdl the simd get alignment
+        /// </summary>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint SdlSimdGetAlignment() => SDL_SIMDGetAlignment();
 
         /// <summary>
         ///     Sdl the simd alloc using the specified len
@@ -10788,7 +10860,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="len">The len</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_SIMDAlloc(uint len);
+        private static extern IntPtr SDL_SIMDAlloc([NotNull] uint len);
+        
+        /// <summary>
+        /// Sdl the simd alloc using the specified len
+        /// </summary>
+        /// <param name="len">The len</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr SdlSimdAlloc([NotNull] uint len) => SDL_SIMDAlloc(len.Validate());
 
         /// <summary>
         ///     Sdl the simd realloc using the specified ptr
@@ -10797,27 +10877,55 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="len">The len</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_SIMDRealloc(IntPtr ptr, uint len);
+        [return: NotNull]
+        private static extern IntPtr SDL_SIMDRealloc([NotNull]IntPtr ptr, [NotNull]uint len);
+        
+        /// <summary>
+        /// Sdl the simd realloc using the specified ptr
+        /// </summary>
+        /// <param name="ptr">The ptr</param>
+        /// <param name="len">The len</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr SdlSimdRealloc([NotNull] IntPtr ptr, [NotNull] uint len) => SDL_SIMDRealloc(ptr.Validate(), len.Validate());
 
         /// <summary>
         ///     Sdl the simd free using the specified ptr
         /// </summary>
         /// <param name="ptr">The ptr</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_SIMDFree(IntPtr ptr);
+        private static extern void SDL_SIMDFree(IntPtr ptr);
+        
+        /// <summary>
+        /// Sdl the simd free using the specified ptr
+        /// </summary>
+        /// <param name="ptr">The ptr</param>
+        public static void SdlSimdFree([NotNull] IntPtr ptr) => SDL_SIMDFree(ptr.Validate());
 
         /// <summary>
         ///     Sdl the has arms imd
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_HasARMSIMD();
+        private static extern void SDL_HasARMSIMD();
+        
+        /// <summary>
+        /// Sdl the has armsimd
+        /// </summary>
+        public static void SdlHasArmsimd() => SDL_HasARMSIMD();
 
         /// <summary>
         ///     Sdl the get preferred locales
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GetPreferredLocales();
+        private static extern IntPtr SDL_GetPreferredLocales();
+        
+        /// <summary>
+        /// Sdl the get preferred locales
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr SdlGetPreferredLocales() => SDL_GetPreferredLocales();
 
         /// <summary>
         ///     Internals the sdl open url using the specified url
@@ -10825,19 +10933,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="url">The url</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_OpenURL", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int INTERNAL_SDL_OpenURL(byte[] url);
+        [return: NotNull]
+        private static extern int INTERNAL_SDL_OpenURL([NotNull, NotEmpty] byte[] url);
 
         /// <summary>
         ///     Sdl the open url using the specified url
         /// </summary>
         /// <param name="url">The url</param>
         /// <returns>The result</returns>
-        public static int SDL_OpenURL(string url)
-        {
-            byte[] urlPtr = Utf8EncodeHeap(url);
-            int result = INTERNAL_SDL_OpenURL(urlPtr);
-
-            return result;
-        }
+        [return: NotNull]
+        public static int SDL_OpenURL([NotNull] string url) => INTERNAL_SDL_OpenURL(Utf8EncodeHeap(url.Validate()));
     }
 }
