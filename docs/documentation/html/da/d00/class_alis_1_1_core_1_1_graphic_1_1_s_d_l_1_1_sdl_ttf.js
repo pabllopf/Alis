@@ -145,7 +145,7 @@ var class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_ttf =
     [ "TtfMeasureUtf8", "da/d00/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_ttf.html#a1b291ff7a89bb4e3b8f9066e84c805a3", null ],
     [ "TtfSizeUtf8", "da/d00/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_ttf.html#a004d52b0681cf433070751e2cb4c7313", null ],
     [ "TtfFontFaceStyleName", "da/d00/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_ttf.html#abe543cb3fc4ec42687872a5a6ec52bba", null ],
-    [ "TTF_OpenFontIndex", "da/d00/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_ttf.html#aae464a814ed100d4cc2536fb0bbe1a1b", null ],
+    [ "TtfOpenFontIndex", "da/d00/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_ttf.html#a7579123698eac17ced1348c498fe440e", null ],
     [ "TtfLinkedVersion", "da/d00/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_ttf.html#a008fb1d0e50d76a7d35a93a38d3f9ee9", null ],
     [ "SdlTtfVersion", "da/d00/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_ttf.html#a5f11d2ed5c8a28e969435592268d6c45", null ],
     [ "NativeLibName", "da/d00/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_ttf.html#a4f21f136d3017c31167350754d882dc5", null ],

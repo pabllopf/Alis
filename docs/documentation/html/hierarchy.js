@@ -570,7 +570,7 @@ var hierarchy =
     [ "Alis.Core.Graphic.ImGui.Structs.ImFontGlyphRangesBuilder", "d6/d64/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_glyph_ranges_builder.html", null ],
     [ "Alis.Core.Graphic.ImGui.Structs.ImFontGlyphRangesBuilderPtr", "d6/d04/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_glyph_ranges_builder_ptr.html", null ],
     [ "Alis.Core.Graphic.ImGui.Structs.ImFontPtr", "d0/d96/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_ptr.html", null ],
-    [ "Alis.Core.Graphic.SDL.ImgAnimation", "d9/d65/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_img_animation.html", null ],
+    [ "Alis.Core.Graphic.SDL.Structs.ImgAnimation", "d9/d85/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_img_animation.html", null ],
     [ "Alis.Core.Graphic.ImGui.ImGui", "d6/dce/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui.html", null ],
     [ "Alis.Core.Graphic.ImGui.ImGuiDlls", "d0/d69/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_dlls.html", null ],
     [ "Alis.Core.Graphic.ImGui.ImGuiGl", "da/d61/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_gl.html", null ],
