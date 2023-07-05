@@ -10607,7 +10607,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl win rt device family</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlWinRtDeviceFamily SDL_WinRTGetDeviceFamily();
+        private static extern SdlWinRtDeviceFamily SDL_WinRTGetDeviceFamily();
         
         /// <summary>
         /// Sdl the win rt get device family
@@ -10622,7 +10622,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool SDL_IsTablet();
+        private static extern SdlBool SDL_IsTablet();
         
         /// <summary>
         /// Sdl the is tablet
