@@ -10445,19 +10445,29 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_IsChromebook();
+        [return: NotNull]
+        private static extern SdlBool SDL_IsChromebook();
+        
+        /// <summary>
+        /// Sdl the is chromebook
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool SdlIsChromebook() => SDL_IsChromebook();
 
         /// <summary>
         ///     Sdl the is de x mode
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern SdlBool SDL_IsDeXMode();
 
         /// <summary>
         /// Sdl the is de x mode
         /// </summary>
         /// <returns>The sdl bool</returns>
+        [return: NotNull]
         public static SdlBool SdlIsDeXMode() => SDL_IsDeXMode();
 
         /// <summary>
