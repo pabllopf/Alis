@@ -10431,7 +10431,15 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_AndroidGetActivity();
+        [return: NotNull]
+        private static extern IntPtr SDL_AndroidGetActivity();
+        
+        /// <summary>
+        /// Sdl the android get activity
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr SdlAndroidGetActivity() => SDL_AndroidGetActivity();
 
         /// <summary>
         ///     Sdl the is android tv
