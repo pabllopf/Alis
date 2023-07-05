@@ -10503,33 +10503,23 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GetAndroidSDKVersion();
-
-
+        
         /// <summary>
         ///     Internals the sdl android request permission using the specified permission
         /// </summary>
         /// <param name="permission">The permission</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AndroidRequestPermission", CallingConvention = CallingConvention.Cdecl)]
-        private static extern SdlBool INTERNAL_SDL_AndroidRequestPermission(
-            byte[] permission
-        );
+        [return: NotNull]
+        private static extern SdlBool INTERNAL_SDL_AndroidRequestPermission([NotNull] byte[] permission);
 
         /// <summary>
         ///     Sdl the android request permission using the specified permission
         /// </summary>
         /// <param name="permission">The permission</param>
         /// <returns>The result</returns>
-        public static SdlBool SDL_AndroidRequestPermission(
-            string permission
-        )
-        {
-            byte[] permissionPtr = Utf8EncodeHeap(permission);
-            SdlBool result = INTERNAL_SDL_AndroidRequestPermission(
-                permissionPtr
-            );
-            return result;
-        }
+        [return: NotNull]
+        public static SdlBool SdlAndroidRequestPermission([NotNull] string permission) => INTERNAL_SDL_AndroidRequestPermission(Utf8EncodeHeap(permission.Validate()));
 
         /// <summary>
         ///     Internals the sdl android show toast using the specified message
