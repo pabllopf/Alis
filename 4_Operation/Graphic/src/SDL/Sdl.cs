@@ -10541,13 +10541,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="yOffset">The offset</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AndroidShowToast", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int INTERNAL_SDL_AndroidShowToast(
-            byte[] message,
-            int duration,
-            int gravity,
-            int xOffset,
-            int yOffset
-        );
+        [return: NotNull]
+        private static extern int INTERNAL_SDL_AndroidShowToast([NotNull]byte[] message, [NotNull]int duration, [NotNull]int gravity,[NotNull] int xOffset, [NotNull]int yOffset);
 
         /// <summary>
         ///     Sdl the android show toast using the specified message
@@ -10558,38 +10553,38 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="xOffset">The offset</param>
         /// <param name="yOffset">The offset</param>
         /// <returns>The result</returns>
-        public static int SDL_AndroidShowToast(
-            string message,
-            int duration,
-            int gravity,
-            int xOffset,
-            int yOffset
-        )
-        {
-            byte[] messagePtr = Utf8EncodeHeap(message);
-            int result = INTERNAL_SDL_AndroidShowToast(
-                messagePtr,
-                duration,
-                gravity,
-                xOffset,
-                yOffset
-            );
-            return result;
-        }
+        [return: NotNull]
+        public static int SDL_AndroidShowToast([NotNull]string message, [NotNull]int duration, [NotNull]int gravity, [NotNull]int xOffset, [NotNull]int yOffset) => INTERNAL_SDL_AndroidShowToast(Utf8EncodeHeap(message), duration.Validate(), gravity.Validate(), xOffset.Validate(), yOffset.Validate());
 
         /// <summary>
         ///     Sdl the win rt get device family
         /// </summary>
         /// <returns>The sdl win rt device family</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern SdlWinRtDeviceFamily SDL_WinRTGetDeviceFamily();
+        
+        /// <summary>
+        /// Sdl the win rt get device family
+        /// </summary>
+        /// <returns>The sdl win rt device family</returns>
+        [return: NotNull]
+        public static SdlWinRtDeviceFamily SdlWinRtGetDeviceFamily() => SDL_WinRTGetDeviceFamily();
 
         /// <summary>
         ///     Sdl the is tablet
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern SdlBool SDL_IsTablet();
+        
+        /// <summary>
+        /// Sdl the is tablet
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool SdlIsTablet() => SDL_IsTablet();
 
         /// <summary>
         ///     Sdl the get window wm info using the specified window
@@ -10598,23 +10593,32 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="info">The info</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_GetWindowWMInfo(
-            IntPtr window,
-            ref SdlSysWMinfo info
-        );
+        [return: NotNull]
+        private static extern SdlBool SDL_GetWindowWMInfo([NotNull] IntPtr window, ref SdlSysWMinfo info);
+        
+        /// <summary>
+        /// Sdl the get window wm info using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="info">The info</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool SdlGetWindowWmInfo([NotNull] IntPtr window, ref SdlSysWMinfo info) => SDL_GetWindowWMInfo(window.Validate(), ref info);
 
         /// <summary>
         ///     Internals the sdl get base path
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetBasePath", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern IntPtr INTERNAL_SDL_GetBasePath();
 
         /// <summary>
         ///     Sdl the get base path
         /// </summary>
         /// <returns>The string</returns>
-        public static string SDL_GetBasePath() => Utf8ToManaged(INTERNAL_SDL_GetBasePath(), true);
+        [return: NotNull]
+        public static string SdlGetBasePath() => Utf8ToManaged(INTERNAL_SDL_GetBasePath().Validate(), true);
 
         /// <summary>
         ///     Internals the sdl get pref path using the specified org
@@ -10623,10 +10627,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="app">The app</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetPrefPath", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GetPrefPath(
-            byte[] org,
-            byte[] app
-        );
+        [return: NotNull]
+        private static extern IntPtr INTERNAL_SDL_GetPrefPath([NotNull] byte[] org, [NotNull] byte[] app);
 
         /// <summary>
         ///     Sdl the get pref path using the specified org
@@ -10634,22 +10636,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="org">The org</param>
         /// <param name="app">The app</param>
         /// <returns>The string</returns>
-        public static string SDL_GetPrefPath(string org, string app)
-        {
-            int utf8OrgBufSize = Utf8Size(org);
-            byte[] utf8Org = new byte[utf8OrgBufSize];
-
-            int utf8AppBufSize = Utf8Size(app);
-            byte[] utf8App = new byte[utf8AppBufSize];
-
-            return Utf8ToManaged(
-                INTERNAL_SDL_GetPrefPath(
-                    Utf8Encode(org, utf8Org, utf8OrgBufSize),
-                    Utf8Encode(app, utf8App, utf8AppBufSize)
-                ),
-                true
-            );
-        }
+        [return: NotNull]
+        public static string SdlGetPrefPath([NotNull] string org, [NotNull] string app) => Utf8ToManaged(INTERNAL_SDL_GetPrefPath(Utf8Encode(org.Validate(), new byte[Utf8Size(org.Validate())], Utf8Size(org.Validate())), Utf8Encode(app.Validate(), new byte[Utf8Size(app.Validate())], Utf8Size(app.Validate()))), true);
 
         /// <summary>
         ///     Sdl the get power info using the specified secs
@@ -10658,10 +10646,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pct">The pct</param>
         /// <returns>The sdl power state</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlPowerState SDL_GetPowerInfo(
-            out int secs,
-            out int pct
-        );
+        [return: NotNull]
+        private static extern SdlPowerState SDL_GetPowerInfo(out int secs, out int pct);
+        
+        /// <summary>
+        /// Sdl the get power info using the specified secs
+        /// </summary>
+        /// <param name="secs">The secs</param>
+        /// <param name="pct">The pct</param>
+        /// <returns>The sdl power state</returns>
+        [return: NotNull]
+        public static SdlPowerState SdlGetPowerInfo(out int secs, out int pct) => SDL_GetPowerInfo(out secs, out pct);
 
         /// <summary>
         ///     Sdl the get cpu count
@@ -10669,7 +10664,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int SDL_GetCPUCount();
+        private static extern int SDL_GetCPUCount();
         
         /// <summary>
         /// Sdl the get cpu count
