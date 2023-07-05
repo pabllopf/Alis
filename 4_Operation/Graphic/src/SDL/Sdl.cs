@@ -10438,7 +10438,15 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_IsAndroidTV();
+        [return: NotNull]
+        private static extern SdlBool SDL_IsAndroidTV();
+        
+        /// <summary>
+        /// Sdl the is android tv
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool SdlIsAndroidTv() => SDL_IsAndroidTV();
 
         /// <summary>
         ///     Sdl the is chromebook
