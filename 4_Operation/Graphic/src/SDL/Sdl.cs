@@ -10452,57 +10452,86 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_IsDeXMode();
+        private static extern SdlBool SDL_IsDeXMode();
+
+        /// <summary>
+        /// Sdl the is de x mode
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        public static SdlBool SdlIsDeXMode() => SDL_IsDeXMode();
 
         /// <summary>
         ///     Sdl the android back button
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_AndroidBackButton();
+        [return: NotNull]
+        private static extern void SDL_AndroidBackButton();
+        
+        /// <summary>
+        /// Sdl the android back button
+        /// </summary>
+        [return: NotNull]
+        public static void SdlAndroidBackButton() => SDL_AndroidBackButton();
 
         /// <summary>
         ///     Internals the sdl android get internal storage path
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AndroidGetInternalStoragePath", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern IntPtr INTERNAL_SDL_AndroidGetInternalStoragePath();
 
         /// <summary>
         ///     Sdl the android get internal storage path
         /// </summary>
         /// <returns>The string</returns>
-        public static string SDL_AndroidGetInternalStoragePath() => Utf8ToManaged(
-            INTERNAL_SDL_AndroidGetInternalStoragePath()
-        );
+        [return: NotNull]
+        public static string SdlAndroidGetInternalStoragePath() => Utf8ToManaged(INTERNAL_SDL_AndroidGetInternalStoragePath());
 
         /// <summary>
         ///     Sdl the android get external storage state
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_AndroidGetExternalStorageState();
+        [return: NotNull]
+        private static extern int SDL_AndroidGetExternalStorageState();
+
+        /// <summary>
+        /// Sdl the android get external storage state
+        /// </summary>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SdlAndroidGetExternalStorageState() => SDL_AndroidGetExternalStorageState();
 
         /// <summary>
         ///     Internals the sdl android get external storage path
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AndroidGetExternalStoragePath", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern IntPtr INTERNAL_SDL_AndroidGetExternalStoragePath();
 
         /// <summary>
         ///     Sdl the android get external storage path
         /// </summary>
         /// <returns>The string</returns>
-        public static string SDL_AndroidGetExternalStoragePath() => Utf8ToManaged(
-            INTERNAL_SDL_AndroidGetExternalStoragePath()
-        );
+        [return: NotNull]
+        public static string SdlAndroidGetExternalStoragePath() => Utf8ToManaged(INTERNAL_SDL_AndroidGetExternalStoragePath());
 
         /// <summary>
         ///     Sdl the get android sdk version
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetAndroidSDKVersion();
+        [return: NotNull]
+        private static extern int SDL_GetAndroidSDKVersion();
+        
+        /// <summary>
+        /// Sdl the get android sdk version
+        /// </summary>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SdlGetAndroidSdkVersion() => SDL_GetAndroidSDKVersion();
         
         /// <summary>
         ///     Internals the sdl android request permission using the specified permission
