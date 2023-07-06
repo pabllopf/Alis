@@ -8118,20 +8118,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The guid</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Guid SDL_JoystickGetDeviceGUID(
-            int deviceIndex
-        );
-
-
+        [return: NotNull]
+        public static extern Guid SDL_JoystickGetDeviceGUID(int deviceIndex);
+        
         /// <summary>
         ///     Sdl the joystick get guid using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The guid</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Guid SDL_JoystickGetGUID(
-            IntPtr joystick
-        );
+        [return: NotNull]
+        public static extern Guid SDL_JoystickGetGUID(IntPtr joystick);
 
         /// <summary>
         ///     Sdl the joystick get guid string using the specified guid
@@ -8140,11 +8137,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pszGuid">The psz guid</param>
         /// <param name="cbGuid">The cb guid</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_JoystickGetGUIDString(
-            Guid guid,
-            byte[] pszGuid,
-            int cbGuid
-        );
+        [return: NotNull]
+        public static extern void SDL_JoystickGetGUIDString(Guid guid, byte[] pszGuid, int cbGuid);
 
         /// <summary>
         ///     Internals the sdl joystick get guid from string using the specified pch guid
@@ -8152,24 +8146,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pchGuid">The pch guid</param>
         /// <returns>The guid</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetGUIDFromString", CallingConvention = CallingConvention.Cdecl)]
-        private static extern Guid INTERNAL_SDL_JoystickGetGUIDFromString(
-            byte[] pchGuid
-        );
+        [return: NotNull]
+        private static extern Guid INTERNAL_SDL_JoystickGetGUIDFromString(byte[] pchGuid);
 
         /// <summary>
         ///     Sdl the joystick get guid from string using the specified pch guid
         /// </summary>
         /// <param name="pchGuid">The pch guid</param>
         /// <returns>The guid</returns>
-        public static Guid SDL_JoystickGetGUIDFromString(string pchGuid)
-        {
-            int utf8PchGuidBufSize = Utf8Size(pchGuid);
-            byte[] utf8PchGuid = new byte[utf8PchGuidBufSize];
-            return INTERNAL_SDL_JoystickGetGUIDFromString(
-                Utf8Encode(pchGuid, utf8PchGuid, utf8PchGuidBufSize)
-            );
-        }
-
+        [return: NotNull]
+        public static Guid SDL_JoystickGetGUIDFromString(string pchGuid) => INTERNAL_SDL_JoystickGetGUIDFromString(Utf8Encode(pchGuid, new byte[Utf8Size(pchGuid)], Utf8Size(pchGuid)));
 
         /// <summary>
         ///     Sdl the joystick get device vendor using the specified device index
@@ -8177,17 +8163,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern ushort SDL_JoystickGetDeviceVendor(int deviceIndex);
-
-
+        
         /// <summary>
         ///     Sdl the joystick get device product using the specified device index
         /// </summary>
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern ushort SDL_JoystickGetDeviceProduct(int deviceIndex);
-
 
         /// <summary>
         ///     Sdl the joystick get device product version using the specified device index
@@ -8195,53 +8181,53 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern ushort SDL_JoystickGetDeviceProductVersion(int deviceIndex);
-
-
+        
         /// <summary>
         ///     Sdl the joystick get device type using the specified device index
         /// </summary>
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The sdl joystick type</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern SdlJoystickType SDL_JoystickGetDeviceType(int deviceIndex);
-
-
+        
         /// <summary>
         ///     Sdl the joystick get device instance id using the specified device index
         /// </summary>
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_JoystickGetDeviceInstanceID(int deviceIndex);
-
-
+        
         /// <summary>
         ///     Sdl the joystick get vendor using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern ushort SDL_JoystickGetVendor(IntPtr joystick);
-
-
+        
         /// <summary>
         ///     Sdl the joystick get product using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern ushort SDL_JoystickGetProduct(IntPtr joystick);
-
-
+        
         /// <summary>
         ///     Sdl the joystick get product version using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern ushort SDL_JoystickGetProductVersion(IntPtr joystick);
-
 
         /// <summary>
         ///     Internals the sdl joystick get serial using the specified joystick
@@ -8249,49 +8235,43 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="joystick">The joystick</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetSerial", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_JoystickGetSerial(
-            IntPtr joystick
-        );
+        [return: NotNull]
+        private static extern IntPtr INTERNAL_SDL_JoystickGetSerial(IntPtr joystick);
 
         /// <summary>
         ///     Sdl the joystick get serial using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The string</returns>
-        public static string SDL_JoystickGetSerial(
-            IntPtr joystick
-        )
-            => Utf8ToManaged(
-                INTERNAL_SDL_JoystickGetSerial(joystick)
-            );
-
-
+        [return: NotNull]
+        public static string SDL_JoystickGetSerial(IntPtr joystick) => Utf8ToManaged(INTERNAL_SDL_JoystickGetSerial(joystick));
+        
         /// <summary>
         ///     Sdl the joystick get type using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The sdl joystick type</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern SdlJoystickType SDL_JoystickGetType(IntPtr joystick);
-
-
+        
         /// <summary>
         ///     Sdl the joystick get attached using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern SdlBool SDL_JoystickGetAttached(IntPtr joystick);
-
-
+        
         /// <summary>
         ///     Sdl the joystick instance id using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_JoystickInstanceID(IntPtr joystick);
-
 
         /// <summary>
         ///     Sdl the joystick current power level using the specified joystick
@@ -8299,30 +8279,30 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="joystick">The joystick</param>
         /// <returns>The sdl joystick power level</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlJoystickPowerLevel SDL_JoystickCurrentPowerLevel(
-            IntPtr joystick
-        );
-
-
+        [return: NotNull]
+        public static extern SdlJoystickPowerLevel SDL_JoystickCurrentPowerLevel(IntPtr joystick);
+        
         /// <summary>
         ///     Sdl the joystick from instance id using the specified instance id
         /// </summary>
         /// <param name="instanceId">The instance id</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern IntPtr SDL_JoystickFromInstanceID(int instanceId);
-
-
+        
         /// <summary>
         ///     Sdl the lock joysticks
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern void SDL_LockJoysticks();
         
         /// <summary>
         ///     Sdl the unlock joysticks
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern void SDL_UnlockJoysticks();
         
         /// <summary>
@@ -8331,6 +8311,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="playerIndex">The player index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern IntPtr SDL_JoystickFromPlayerIndex(int playerIndex);
         
         /// <summary>
@@ -8339,6 +8320,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="joystick">The joystick</param>
         /// <param name="playerIndex">The player index</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern void SDL_JoystickSetPlayerIndex(IntPtr joystick, int playerIndex);
         
         /// <summary>
@@ -8350,6 +8332,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="nHats">The n hats</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern int SDL_JoystickAttachVirtual(int type, int nAxes, int nButtons, int nHats);
         
         /// <summary>
@@ -8360,6 +8343,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="nButtons">The buttons</param>
         /// <param name="nHats">The hats</param>
         /// <returns>The int</returns>
+        [return: NotNull]
         public static int SdlJoystickAttachVirtual(int type, int nAxes, int nButtons, int nHats) => SDL_JoystickAttachVirtual(type, nAxes, nButtons, nHats);
         
         /// <summary>
@@ -8368,18 +8352,18 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_JoystickDetachVirtual(int deviceIndex);
-
-
+        
         /// <summary>
         ///     Sdl the joystick is virtual using the specified device index
         /// </summary>
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern SdlBool SDL_JoystickIsVirtual(int deviceIndex);
-
-
+        
         /// <summary>
         ///     Sdl the joystick set virtual axis using the specified joystick
         /// </summary>
@@ -8388,13 +8372,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="value">The value</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_JoystickSetVirtualAxis(
-            IntPtr joystick,
-            int axis,
-            short value
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_JoystickSetVirtualAxis(IntPtr joystick, int axis, short value);
+        
         /// <summary>
         ///     Sdl the joystick set virtual button using the specified joystick
         /// </summary>
@@ -8403,13 +8383,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="value">The value</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_JoystickSetVirtualButton(
-            IntPtr joystick,
-            int button,
-            byte value
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_JoystickSetVirtualButton(IntPtr joystick, int button, byte value);
+        
         /// <summary>
         ///     Sdl the joystick set virtual hat using the specified joystick
         /// </summary>
@@ -8418,40 +8394,36 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="value">The value</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_JoystickSetVirtualHat(
-            IntPtr joystick,
-            int hat,
-            byte value
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_JoystickSetVirtualHat(IntPtr joystick, int hat, byte value);
+        
         /// <summary>
         ///     Sdl the joystick has led using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern SdlBool SDL_JoystickHasLED(IntPtr joystick);
-
-
+        
         /// <summary>
         ///     Sdl the joystick has rumble using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern SdlBool SDL_JoystickHasRumble(IntPtr joystick);
-
-
+        
         /// <summary>
         ///     Sdl the joystick has rumble triggers using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern SdlBool SDL_JoystickHasRumbleTriggers(IntPtr joystick);
-
-
+        
         /// <summary>
         ///     Sdl the joystick set led using the specified joystick
         /// </summary>
@@ -8461,14 +8433,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="blue">The blue</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_JoystickSetLED(
-            IntPtr joystick,
-            byte red,
-            byte green,
-            byte blue
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_JoystickSetLED(IntPtr joystick, byte red, byte green, byte blue);
+        
         /// <summary>
         ///     Sdl the joystick send effect using the specified joystick
         /// </summary>
@@ -8477,59 +8444,41 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="size">The size</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_JoystickSendEffect(
-            IntPtr joystick,
-            IntPtr data,
-            int size
-        );
-
-
-        // FIXME: I'd rather this somehow be private...
-
-        // FIXME: I'd rather this somehow be private...
-
-
+        [return: NotNull]
+        public static extern int SDL_JoystickSendEffect(IntPtr joystick, IntPtr data, int size);
+        
         /// <summary>
         ///     Internals the sdl game controller add mapping using the specified mapping string
         /// </summary>
         /// <param name="mappingString">The mapping string</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerAddMapping", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int INTERNAL_SDL_GameControllerAddMapping(
-            byte[] mappingString
-        );
+        [return: NotNull]
+        private static extern int INTERNAL_SDL_GameControllerAddMapping(byte[] mappingString);
 
         /// <summary>
         ///     Sdl the game controller add mapping using the specified mapping string
         /// </summary>
         /// <param name="mappingString">The mapping string</param>
         /// <returns>The result</returns>
-        public static int SDL_GameControllerAddMapping(
-            string mappingString
-        )
-        {
-            byte[] utf8MappingString = Utf8EncodeHeap(mappingString);
-            int result = INTERNAL_SDL_GameControllerAddMapping(
-                utf8MappingString
-            );
-            return result;
-        }
-
-
+        [return: NotNull]
+        public static int SDL_GameControllerAddMapping(string mappingString) => INTERNAL_SDL_GameControllerAddMapping(Utf8EncodeHeap(mappingString));
+        
         /// <summary>
         ///     Sdl the game controller num mappings
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_GameControllerNumMappings();
-
-
+        
         /// <summary>
         ///     Internals the sdl game controller mapping for index using the specified mapping index
         /// </summary>
         /// <param name="mappingIndex">The mapping index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerMappingForIndex", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern IntPtr INTERNAL_SDL_GameControllerMappingForIndex(int mappingIndex);
 
         /// <summary>
@@ -8537,14 +8486,9 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="mappingIndex">The mapping index</param>
         /// <returns>The string</returns>
-        public static string SDL_GameControllerMappingForIndex(int mappingIndex) => Utf8ToManaged(
-            INTERNAL_SDL_GameControllerMappingForIndex(
-                mappingIndex
-            ),
-            true
-        );
-
-
+        [return: NotNull]
+        public static string SDL_GameControllerMappingForIndex(int mappingIndex) => Utf8ToManaged(INTERNAL_SDL_GameControllerMappingForIndex(mappingIndex), true);
+        
         /// <summary>
         ///     Internals the sdl game controller add mappings from rw using the specified rw
         /// </summary>
@@ -8552,6 +8496,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="freeRw">The free rw</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerAddMappingsFromRW", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern int INTERNAL_SDL_GameControllerAddMappingsFromRW(IntPtr rw, int freeRw);
 
         /// <summary>
@@ -8559,6 +8504,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="file">The file</param>
         /// <returns>The int</returns>
+        [return: NotNull]
         public static int SdlGameControllerAddMappingsFromFile(string file) => INTERNAL_SDL_GameControllerAddMappingsFromRW(SDL_RWFromFile(file, "rb"), 1);
 
         /// <summary>
@@ -8567,45 +8513,33 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="guid">The guid</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerMappingForGUID", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GameControllerMappingForGUID(
-            Guid guid
-        );
+        [return: NotNull]
+        private static extern IntPtr INTERNAL_SDL_GameControllerMappingForGUID(Guid guid);
 
         /// <summary>
         ///     Sdl the game controller mapping for guid using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <returns>The string</returns>
-        public static string SDL_GameControllerMappingForGUID(Guid guid) => Utf8ToManaged(
-            INTERNAL_SDL_GameControllerMappingForGUID(guid),
-            true
-        );
-
-
+        [return: NotNull]
+        public static string SDL_GameControllerMappingForGUID(Guid guid) => Utf8ToManaged(INTERNAL_SDL_GameControllerMappingForGUID(guid), true);
+        
         /// <summary>
         ///     Internals the sdl game controller mapping using the specified game controller
         /// </summary>
         /// <param name="gameController">The game controller</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerMapping", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GameControllerMapping(
-            IntPtr gameController
-        );
+        [return: NotNull]
+        private static extern IntPtr INTERNAL_SDL_GameControllerMapping(IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller mapping using the specified game controller
         /// </summary>
         /// <param name="gameController">The game controller</param>
         /// <returns>The string</returns>
-        public static string SDL_GameControllerMapping(
-            IntPtr gameController
-        )
-            => Utf8ToManaged(
-                INTERNAL_SDL_GameControllerMapping(
-                    gameController
-                ),
-                true
-            );
+        [return: NotNull]
+        public static string SDL_GameControllerMapping(IntPtr gameController) => Utf8ToManaged(INTERNAL_SDL_GameControllerMapping(gameController), true);
 
         /// <summary>
         ///     Sdl the is game controller using the specified joystick index
@@ -8613,6 +8547,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern SdlBool SDL_IsGameController(int joystickIndex);
 
         /// <summary>
@@ -8621,77 +8556,59 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerNameForIndex", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GameControllerNameForIndex(
-            int joystickIndex
-        );
+        [return: NotNull]
+        private static extern IntPtr INTERNAL_SDL_GameControllerNameForIndex(int joystickIndex);
 
         /// <summary>
         ///     Sdl the game controller name for index using the specified joystick index
         /// </summary>
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The string</returns>
-        public static string SDL_GameControllerNameForIndex(
-            int joystickIndex
-        )
-            => Utf8ToManaged(
-                INTERNAL_SDL_GameControllerNameForIndex(joystickIndex)
-            );
-
-
+        [return: NotNull]
+        public static string SDL_GameControllerNameForIndex(int joystickIndex) => Utf8ToManaged(INTERNAL_SDL_GameControllerNameForIndex(joystickIndex));
+        
         /// <summary>
         ///     Internals the sdl game controller mapping for device index using the specified joystick index
         /// </summary>
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerMappingForDeviceIndex", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GameControllerMappingForDeviceIndex(
-            int joystickIndex
-        );
+        [return: NotNull]
+        private static extern IntPtr INTERNAL_SDL_GameControllerMappingForDeviceIndex(int joystickIndex);
 
         /// <summary>
         ///     Sdl the game controller mapping for device index using the specified joystick index
         /// </summary>
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The string</returns>
-        public static string SDL_GameControllerMappingForDeviceIndex(
-            int joystickIndex
-        )
-            => Utf8ToManaged(
-                INTERNAL_SDL_GameControllerMappingForDeviceIndex(joystickIndex),
-                true
-            );
-
-
+        [return: NotNull]
+        public static string SDL_GameControllerMappingForDeviceIndex(int joystickIndex) => Utf8ToManaged(INTERNAL_SDL_GameControllerMappingForDeviceIndex(joystickIndex), true);
+        
         /// <summary>
         ///     Sdl the game controller open using the specified joystick index
         /// </summary>
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern IntPtr SDL_GameControllerOpen(int joystickIndex);
-
-
+        
         /// <summary>
         ///     Internals the sdl game controller name using the specified game controller
         /// </summary>
         /// <param name="gameController">The game controller</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerName", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GameControllerName(
-            IntPtr gameController
-        );
+        [return: NotNull]
+        private static extern IntPtr INTERNAL_SDL_GameControllerName(IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller name using the specified game controller
         /// </summary>
         /// <param name="gameController">The game controller</param>
         /// <returns>The string</returns>
-        public static string SDL_GameControllerName(
-            IntPtr gameController
-        )
-            => Utf8ToManaged(
-                INTERNAL_SDL_GameControllerName(gameController)
-            );
+        [return: NotNull]
+        public static string SDL_GameControllerName(IntPtr gameController) => Utf8ToManaged(INTERNAL_SDL_GameControllerName(gameController));
         
         /// <summary>
         ///     Sdl the game controller get vendor using the specified game controller
@@ -8699,9 +8616,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="gameController">The game controller</param>
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ushort SDL_GameControllerGetVendor(
-            IntPtr gameController
-        );
+        [return: NotNull]
+        public static extern ushort SDL_GameControllerGetVendor(IntPtr gameController);
         
         /// <summary>
         ///     Sdl the game controller get product using the specified game controller
@@ -8709,65 +8625,52 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="gameController">The game controller</param>
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ushort SDL_GameControllerGetProduct(
-            IntPtr gameController
-        );
-
-
+        [return: NotNull]
+        public static extern ushort SDL_GameControllerGetProduct(IntPtr gameController);
+        
         /// <summary>
         ///     Sdl the game controller get product version using the specified game controller
         /// </summary>
         /// <param name="gameController">The game controller</param>
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ushort SDL_GameControllerGetProductVersion(
-            IntPtr gameController
-        );
-
-
+        [return: NotNull]
+        public static extern ushort SDL_GameControllerGetProductVersion(IntPtr gameController);
+        
         /// <summary>
         ///     Internals the sdl game controller get serial using the specified game controller
         /// </summary>
         /// <param name="gameController">The game controller</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetSerial", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GameControllerGetSerial(
-            IntPtr gameController
-        );
+        [return: NotNull]
+        private static extern IntPtr INTERNAL_SDL_GameControllerGetSerial(IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller get serial using the specified game controller
         /// </summary>
         /// <param name="gameController">The game controller</param>
         /// <returns>The string</returns>
-        public static string SDL_GameControllerGetSerial(
-            IntPtr gameController
-        )
-            => Utf8ToManaged(
-                INTERNAL_SDL_GameControllerGetSerial(gameController)
-            );
-
-
+        [return: NotNull]
+        public static string SDL_GameControllerGetSerial(IntPtr gameController) => Utf8ToManaged(INTERNAL_SDL_GameControllerGetSerial(gameController));
+        
         /// <summary>
         ///     Sdl the game controller get attached using the specified game controller
         /// </summary>
         /// <param name="gameController">The game controller</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_GameControllerGetAttached(
-            IntPtr gameController
-        );
-
-
+        [return: NotNull]
+        public static extern SdlBool SDL_GameControllerGetAttached(IntPtr gameController);
+        
         /// <summary>
         ///     Sdl the game controller get joystick using the specified game controller
         /// </summary>
         /// <param name="gameController">The game controller</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GameControllerGetJoystick(
-            IntPtr gameController
-        );
+        [return: NotNull]
+        public static extern IntPtr SDL_GameControllerGetJoystick(IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller event state using the specified state
@@ -8775,12 +8678,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="state">The state</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_GameControllerEventState(int state);
 
         /// <summary>
         ///     Sdl the game controller update
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern void SDL_GameControllerUpdate();
 
         /// <summary>
@@ -8789,25 +8694,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller axis</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetAxisFromString", CallingConvention = CallingConvention.Cdecl)]
-        private static extern SdlGameControllerAxis INTERNAL_SDL_GameControllerGetAxisFromString(
-            byte[] pchString
-        );
+        [return: NotNull]
+        private static extern SdlGameControllerAxis INTERNAL_SDL_GameControllerGetAxisFromString(byte[] pchString);
 
         /// <summary>
         ///     Sdl the game controller get axis from string using the specified pch string
         /// </summary>
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller axis</returns>
-        public static SdlGameControllerAxis SDL_GameControllerGetAxisFromString(
-            string pchString
-        )
-        {
-            int utf8PchStringBufSize = Utf8Size(pchString);
-            byte[] utf8PchString = new byte[utf8PchStringBufSize];
-            return INTERNAL_SDL_GameControllerGetAxisFromString(
-                Utf8Encode(pchString, utf8PchString, utf8PchStringBufSize)
-            );
-        }
+        [return: NotNull]
+        public static SdlGameControllerAxis SDL_GameControllerGetAxisFromString(string pchString) => INTERNAL_SDL_GameControllerGetAxisFromString(Utf8Encode(pchString, new byte[Utf8Size(pchString)], Utf8Size(pchString)));
 
         /// <summary>
         ///     Internals the sdl game controller get string for axis using the specified axis
@@ -8815,25 +8711,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="axis">The axis</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetStringForAxis", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GameControllerGetStringForAxis(
-            SdlGameControllerAxis axis
-        );
+        [return: NotNull]
+        private static extern IntPtr INTERNAL_SDL_GameControllerGetStringForAxis(SdlGameControllerAxis axis);
 
         /// <summary>
         ///     Sdl the game controller get string for axis using the specified axis
         /// </summary>
         /// <param name="axis">The axis</param>
         /// <returns>The string</returns>
-        public static string SDL_GameControllerGetStringForAxis(
-            SdlGameControllerAxis axis
-        )
-            => Utf8ToManaged(
-                INTERNAL_SDL_GameControllerGetStringForAxis(
-                    axis
-                )
-            );
-
-
+        [return: NotNull]
+        public static string SDL_GameControllerGetStringForAxis(SdlGameControllerAxis axis) => Utf8ToManaged(INTERNAL_SDL_GameControllerGetStringForAxis(axis));
+        
         /// <summary>
         ///     Internals the sdl game controller get bind for axis using the specified game controller
         /// </summary>
@@ -8841,10 +8729,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="axis">The axis</param>
         /// <returns>The internal sdl game controller button bind</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetBindForAxis", CallingConvention = CallingConvention.Cdecl)]
-        private static extern InternalSdlGameControllerButtonBind INTERNAL_SDL_GameControllerGetBindForAxis(
-            IntPtr gameController,
-            SdlGameControllerAxis axis
-        );
+        [return: NotNull]
+        private static extern InternalSdlGameControllerButtonBind INTERNAL_SDL_GameControllerGetBindForAxis(IntPtr gameController, SdlGameControllerAxis axis);
 
         /// <summary>
         ///     Sdl the game controller get bind for axis using the specified game controller
@@ -8852,10 +8738,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="gameController">The game controller</param>
         /// <param name="axis">The axis</param>
         /// <returns>The result</returns>
-        public static SdlGameControllerButtonBind SDL_GameControllerGetBindForAxis(
-            IntPtr gameController,
-            SdlGameControllerAxis axis
-        )
+        [return: NotNull]
+        public static SdlGameControllerButtonBind SDL_GameControllerGetBindForAxis(IntPtr gameController, SdlGameControllerAxis axis)
         {
             // This is guaranteed to never be null
             InternalSdlGameControllerButtonBind dumb = INTERNAL_SDL_GameControllerGetBindForAxis(
@@ -8870,8 +8754,7 @@ namespace Alis.Core.Graphic.SDL
             result.value.hat.hat_mask = dumb.unionVal1;
             return result;
         }
-
-
+        
         /// <summary>
         ///     Sdl the game controller get axis using the specified game controller
         /// </summary>
@@ -8879,10 +8762,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="axis">The axis</param>
         /// <returns>The short</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern short SDL_GameControllerGetAxis(
-            IntPtr gameController,
-            SdlGameControllerAxis axis
-        );
+        [return: NotNull]
+        public static extern short SDL_GameControllerGetAxis(IntPtr gameController, SdlGameControllerAxis axis);
 
         /// <summary>
         ///     Internals the sdl game controller get button from string using the specified pch string
@@ -8890,25 +8771,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller button</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetButtonFromString", CallingConvention = CallingConvention.Cdecl)]
-        private static extern SdlGameControllerButton INTERNAL_SDL_GameControllerGetButtonFromString(
-            byte[] pchString
-        );
+        [return: NotNull]
+        private static extern SdlGameControllerButton INTERNAL_SDL_GameControllerGetButtonFromString(byte[] pchString);
 
         /// <summary>
         ///     Sdl the game controller get button from string using the specified pch string
         /// </summary>
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller button</returns>
-        public static SdlGameControllerButton SDL_GameControllerGetButtonFromString(
-            string pchString
-        )
-        {
-            int utf8PchStringBufSize = Utf8Size(pchString);
-            byte[] utf8PchString = new byte[utf8PchStringBufSize];
-            return INTERNAL_SDL_GameControllerGetButtonFromString(
-                Utf8Encode(pchString, utf8PchString, utf8PchStringBufSize)
-            );
-        }
+        [return: NotNull]
+        public static SdlGameControllerButton SDL_GameControllerGetButtonFromString(string pchString) => INTERNAL_SDL_GameControllerGetButtonFromString(Utf8Encode(pchString, new byte[Utf8Size(pchString)], Utf8Size(pchString)));
 
         /// <summary>
         ///     Internals the sdl game controller get string for button using the specified button
@@ -8916,23 +8788,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="button">The button</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetStringForButton", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GameControllerGetStringForButton(
-            SdlGameControllerButton button
-        );
+        [return: NotNull]
+        private static extern IntPtr INTERNAL_SDL_GameControllerGetStringForButton(SdlGameControllerButton button);
 
         /// <summary>
         ///     Sdl the game controller get string for button using the specified button
         /// </summary>
         /// <param name="button">The button</param>
         /// <returns>The string</returns>
-        public static string SDL_GameControllerGetStringForButton(
-            SdlGameControllerButton button
-        )
-            => Utf8ToManaged(
-                INTERNAL_SDL_GameControllerGetStringForButton(button)
-            );
-
-
+        [return: NotNull]
+        public static string SDL_GameControllerGetStringForButton(SdlGameControllerButton button) => Utf8ToManaged(INTERNAL_SDL_GameControllerGetStringForButton(button));
+        
         /// <summary>
         ///     Internals the sdl game controller get bind for button using the specified game controller
         /// </summary>
@@ -8940,10 +8806,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="button">The button</param>
         /// <returns>The internal sdl game controller button bind</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetBindForButton", CallingConvention = CallingConvention.Cdecl)]
-        private static extern InternalSdlGameControllerButtonBind INTERNAL_SDL_GameControllerGetBindForButton(
-            IntPtr gameController,
-            SdlGameControllerButton button
-        );
+        [return: NotNull]
+        private static extern InternalSdlGameControllerButtonBind INTERNAL_SDL_GameControllerGetBindForButton(IntPtr gameController, SdlGameControllerButton button);
 
         /// <summary>
         ///     Sdl the game controller get bind for button using the specified game controller
@@ -8951,6 +8815,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="gameController">The game controller</param>
         /// <param name="button">The button</param>
         /// <returns>The result</returns>
+        [return: NotNull]
         public static SdlGameControllerButtonBind SDL_GameControllerGetBindForButton(
             IntPtr gameController,
             SdlGameControllerButton button
@@ -8970,7 +8835,6 @@ namespace Alis.Core.Graphic.SDL
             return result;
         }
 
-
         /// <summary>
         ///     Sdl the game controller get button using the specified game controller
         /// </summary>
@@ -8978,12 +8842,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="button">The button</param>
         /// <returns>The byte</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte SDL_GameControllerGetButton(
-            IntPtr gameController,
-            SdlGameControllerButton button
-        );
-
-
+        [return: NotNull]
+        public static extern byte SDL_GameControllerGetButton(IntPtr gameController, SdlGameControllerButton button);
+        
         /// <summary>
         ///     Sdl the game controller rumble using the specified game controller
         /// </summary>
@@ -8993,14 +8854,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="durationMs">The duration ms</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GameControllerRumble(
-            IntPtr gameController,
-            ushort lowFrequencyRumble,
-            ushort highFrequencyRumble,
-            uint durationMs
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_GameControllerRumble(IntPtr gameController, ushort lowFrequencyRumble, ushort highFrequencyRumble, uint durationMs);
+        
         /// <summary>
         ///     Sdl the game controller rumble triggers using the specified game controller
         /// </summary>
@@ -9010,24 +8866,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="durationMs">The duration ms</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GameControllerRumbleTriggers(
-            IntPtr gameController,
-            ushort leftRumble,
-            ushort rightRumble,
-            uint durationMs
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_GameControllerRumbleTriggers(IntPtr gameController, ushort leftRumble, ushort rightRumble, uint durationMs);
+        
         /// <summary>
         ///     Sdl the game controller close using the specified game controller
         /// </summary>
         /// <param name="gameController">The game controller</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_GameControllerClose(
-            IntPtr gameController
-        );
-
-
+        [return: NotNull]
+        public static extern void SDL_GameControllerClose(IntPtr gameController);
+        
         /// <summary>
         ///     Internals the sdl game controller get apple sf symbols name for button using the specified game controller
         /// </summary>
@@ -9035,10 +8884,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="button">The button</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetAppleSFSymbolsNameForButton", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForButton(
-            IntPtr gameController,
-            SdlGameControllerButton button
-        );
+        [return: NotNull]
+        private static extern IntPtr INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForButton(IntPtr gameController, SdlGameControllerButton button);
 
         /// <summary>
         ///     Sdl the game controller get apple sf symbols name for button using the specified game controller
@@ -9046,15 +8893,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="gameController">The game controller</param>
         /// <param name="button">The button</param>
         /// <returns>The string</returns>
-        public static string SDL_GameControllerGetAppleSFSymbolsNameForButton(
-            IntPtr gameController,
-            SdlGameControllerButton button
-        )
-            => Utf8ToManaged(
-                INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForButton(gameController, button)
-            );
-
-
+        [return: NotNull]
+        public static string SDL_GameControllerGetAppleSFSymbolsNameForButton(IntPtr gameController, SdlGameControllerButton button) => Utf8ToManaged(INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForButton(gameController, button));
+        
         /// <summary>
         ///     Internals the sdl game controller get apple sf symbols name for axis using the specified game controller
         /// </summary>
@@ -9062,10 +8903,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="axis">The axis</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetAppleSFSymbolsNameForAxis", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForAxis(
-            IntPtr gameController,
-            SdlGameControllerAxis axis
-        );
+        [return: NotNull]
+        private static extern IntPtr INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForAxis(IntPtr gameController, SdlGameControllerAxis axis);
 
         /// <summary>
         ///     Sdl the game controller get apple sf symbols name for axis using the specified game controller
@@ -9073,13 +8912,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="gameController">The game controller</param>
         /// <param name="axis">The axis</param>
         /// <returns>The string</returns>
-        public static string SDL_GameControllerGetAppleSFSymbolsNameForAxis(
-            IntPtr gameController,
-            SdlGameControllerAxis axis
-        )
-            => Utf8ToManaged(
-                INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForAxis(gameController, axis)
-            );
+        [return: NotNull]
+        public static string SDL_GameControllerGetAppleSFSymbolsNameForAxis(IntPtr gameController, SdlGameControllerAxis axis) => Utf8ToManaged(INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForAxis(gameController, axis));
         
         /// <summary>
         ///     Sdl the game controller from instance id using the specified joy id
@@ -9087,6 +8921,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="joyId">The joy id</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern IntPtr SDL_GameControllerFromInstanceID(int joyId);
         
         /// <summary>
@@ -9095,20 +8930,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The sdl game controller type</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlGameControllerType SDL_GameControllerTypeForIndex(
-            int joystickIndex
-        );
-
-
+        [return: NotNull]
+        public static extern SdlGameControllerType SDL_GameControllerTypeForIndex(int joystickIndex);
+        
         /// <summary>
         ///     Sdl the game controller get type using the specified game controller
         /// </summary>
         /// <param name="gameController">The game controller</param>
         /// <returns>The sdl game controller type</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlGameControllerType SDL_GameControllerGetType(
-            IntPtr gameController
-        );
+        [return: NotNull]
+        public static extern SdlGameControllerType SDL_GameControllerGetType(IntPtr gameController);
         
         /// <summary>
         ///     Sdl the game controller from player index using the specified player index
@@ -9116,32 +8948,26 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="playerIndex">The player index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GameControllerFromPlayerIndex(
-            int playerIndex
-        );
-
-
+        [return: NotNull]
+        public static extern IntPtr SDL_GameControllerFromPlayerIndex(int playerIndex);
+        
         /// <summary>
         ///     Sdl the game controller set player index using the specified game controller
         /// </summary>
         /// <param name="gameController">The game controller</param>
         /// <param name="playerIndex">The player index</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_GameControllerSetPlayerIndex(
-            IntPtr gameController,
-            int playerIndex
-        );
-
-
+        [return: NotNull]
+        public static extern void SDL_GameControllerSetPlayerIndex(IntPtr gameController, int playerIndex);
+        
         /// <summary>
         ///     Sdl the game controller has led using the specified game controller
         /// </summary>
         /// <param name="gameController">The game controller</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_GameControllerHasLED(
-            IntPtr gameController
-        );
+        [return: NotNull]
+        public static extern SdlBool SDL_GameControllerHasLED(IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller has rumble using the specified game controller
@@ -9149,9 +8975,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="gameController">The game controller</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_GameControllerHasRumble(
-            IntPtr gameController
-        );
+        [return: NotNull]
+        public static extern SdlBool SDL_GameControllerHasRumble(IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller has rumble triggers using the specified game controller
@@ -9159,9 +8984,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="gameController">The game controller</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_GameControllerHasRumbleTriggers(
-            IntPtr gameController
-        );
+        [return: NotNull]
+        public static extern SdlBool SDL_GameControllerHasRumbleTriggers(IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller set led using the specified game controller
@@ -9172,12 +8996,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="blue">The blue</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GameControllerSetLED(
-            IntPtr gameController,
-            byte red,
-            byte green,
-            byte blue
-        );
+        [return: NotNull]
+        public static extern int SDL_GameControllerSetLED(IntPtr gameController, byte red, byte green, byte blue);
 
         /// <summary>
         ///     Sdl the game controller has axis using the specified game controller
@@ -9186,10 +9006,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="axis">The axis</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_GameControllerHasAxis(
-            IntPtr gameController,
-            SdlGameControllerAxis axis
-        );
+        [return: NotNull]
+        public static extern SdlBool SDL_GameControllerHasAxis(IntPtr gameController, SdlGameControllerAxis axis);
 
         /// <summary>
         ///     Sdl the game controller has button using the specified game controller
@@ -9198,10 +9016,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="button">The button</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_GameControllerHasButton(
-            IntPtr gameController,
-            SdlGameControllerButton button
-        );
+        [return: NotNull]
+        public static extern SdlBool SDL_GameControllerHasButton(IntPtr gameController, SdlGameControllerButton button);
 
         /// <summary>
         ///     Sdl the game controller get num touchpads using the specified game controller
@@ -9209,9 +9025,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="gameController">The game controller</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GameControllerGetNumTouchpads(
-            IntPtr gameController
-        );
+        [return: NotNull]
+        public static extern int SDL_GameControllerGetNumTouchpads(IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller get num touchpad fingers using the specified game controller
@@ -9220,10 +9035,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="touchpad">The touchpad</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GameControllerGetNumTouchpadFingers(
-            IntPtr gameController,
-            int touchpad
-        );
+        [return: NotNull]
+        public static extern int SDL_GameControllerGetNumTouchpadFingers(IntPtr gameController, int touchpad);
 
         /// <summary>
         ///     Sdl the game controller get touchpad finger using the specified game controller
@@ -9237,15 +9050,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pressure">The pressure</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GameControllerGetTouchpadFinger(
-            IntPtr gameController,
-            int touchpad,
-            int finger,
-            out byte state,
-            out float x,
-            out float y,
-            out float pressure
-        );
+        [return: NotNull]
+        public static extern int SDL_GameControllerGetTouchpadFinger(IntPtr gameController, int touchpad, int finger, out byte state, out float x, out float y, out float pressure);
 
         /// <summary>
         ///     Sdl the game controller has sensor using the specified game controller
@@ -9254,10 +9060,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="type">The type</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_GameControllerHasSensor(
-            IntPtr gameController,
-            SdlSensorType type
-        );
+        [return: NotNull]
+        public static extern SdlBool SDL_GameControllerHasSensor(IntPtr gameController, SdlSensorType type);
 
         /// <summary>
         ///     Sdl the game controller set sensor enabled using the specified game controller
@@ -9267,11 +9071,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="enabled">The enabled</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GameControllerSetSensorEnabled(
-            IntPtr gameController,
-            SdlSensorType type,
-            SdlBool enabled
-        );
+        [return: NotNull]
+        public static extern int SDL_GameControllerSetSensorEnabled(IntPtr gameController, SdlSensorType type, SdlBool enabled);
 
         /// <summary>
         ///     Sdl the game controller is sensor enabled using the specified game controller
@@ -9280,10 +9081,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="type">The type</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_GameControllerIsSensorEnabled(
-            IntPtr gameController,
-            SdlSensorType type
-        );
+        [return: NotNull]
+        public static extern SdlBool SDL_GameControllerIsSensorEnabled(IntPtr gameController, SdlSensorType type);
 
         /// <summary>
         ///     Sdl the game controller get sensor data using the specified game controller
@@ -9294,12 +9093,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="numValues">The num values</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GameControllerGetSensorData(
-            IntPtr gameController,
-            SdlSensorType type,
-            IntPtr data,
-            int numValues
-        );
+        [return: NotNull]
+        public static extern int SDL_GameControllerGetSensorData(IntPtr gameController, SdlSensorType type, IntPtr data, int numValues);
 
         /// <summary>
         ///     Sdl the game controller get sensor data rate using the specified game controller
@@ -9308,10 +9103,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="type">The type</param>
         /// <returns>The float</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern float SDL_GameControllerGetSensorDataRate(
-            IntPtr gameController,
-            SdlSensorType type
-        );
+        [return: NotNull]
+        public static extern float SDL_GameControllerGetSensorDataRate(IntPtr gameController, SdlSensorType type);
 
         /// <summary>
         ///     Sdl the game controller send effect using the specified game controller
@@ -9321,17 +9114,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="size">The size</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GameControllerSendEffect(
-            IntPtr gameController,
-            IntPtr data,
-            int size
-        );
+        [return: NotNull]
+        public static extern int SDL_GameControllerSendEffect(IntPtr gameController, IntPtr data, int size);
 
         /// <summary>
         ///     Sdl the haptic close using the specified haptic
         /// </summary>
         /// <param name="haptic">The haptic</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern void SDL_HapticClose(IntPtr haptic);
 
         /// <summary>
@@ -9340,10 +9131,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="haptic">The haptic</param>
         /// <param name="effect">The effect</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_HapticDestroyEffect(
-            IntPtr haptic,
-            int effect
-        );
+        [return: NotNull]
+        public static extern void SDL_HapticDestroyEffect(IntPtr haptic, int effect);
 
         /// <summary>
         ///     Sdl the haptic effect supported using the specified haptic
@@ -9352,10 +9141,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="effect">The effect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_HapticEffectSupported(
-            IntPtr haptic,
-            ref SdlHapticEffect effect
-        );
+        [return: NotNull]
+        public static extern int SDL_HapticEffectSupported(IntPtr haptic, ref SdlHapticEffect effect);
 
         /// <summary>
         ///     Sdl the haptic get effect status using the specified haptic
@@ -9364,10 +9151,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="effect">The effect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_HapticGetEffectStatus(
-            IntPtr haptic,
-            int effect
-        );
+        [return: NotNull]
+        public static extern int SDL_HapticGetEffectStatus(IntPtr haptic, int effect);
 
         /// <summary>
         ///     Sdl the haptic index using the specified haptic
@@ -9375,6 +9160,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="haptic">The haptic</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_HapticIndex(IntPtr haptic);
 
         /// <summary>
@@ -9383,6 +9169,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticName", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern IntPtr INTERNAL_SDL_HapticName(int deviceIndex);
 
         /// <summary>
@@ -9390,6 +9177,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The string</returns>
+        [return: NotNull]
         public static string SDL_HapticName(int deviceIndex) => Utf8ToManaged(INTERNAL_SDL_HapticName(deviceIndex));
 
         /// <summary>
@@ -9399,10 +9187,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="effect">The effect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_HapticNewEffect(
-            IntPtr haptic,
-            ref SdlHapticEffect effect
-        );
+        [return: NotNull]
+        public static extern int SDL_HapticNewEffect(IntPtr haptic, ref SdlHapticEffect effect);
 
         /// <summary>
         ///     Sdl the haptic num axes using the specified haptic
@@ -9410,6 +9196,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="haptic">The haptic</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_HapticNumAxes(IntPtr haptic);
 
         /// <summary>
@@ -9418,6 +9205,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="haptic">The haptic</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_HapticNumEffects(IntPtr haptic);
 
         /// <summary>
@@ -9426,6 +9214,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="haptic">The haptic</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_HapticNumEffectsPlaying(IntPtr haptic);
 
         /// <summary>
@@ -9434,6 +9223,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern IntPtr SDL_HapticOpen(int deviceIndex);
 
         /// <summary>
@@ -9442,6 +9232,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_HapticOpened(int deviceIndex);
 
         /// <summary>
@@ -9450,15 +9241,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="joystick">The joystick</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_HapticOpenFromJoystick(
-            IntPtr joystick
-        );
+        [return: NotNull]
+        public static extern IntPtr SDL_HapticOpenFromJoystick(IntPtr joystick);
 
         /// <summary>
         ///     Sdl the haptic open from mouse
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern IntPtr SDL_HapticOpenFromMouse();
 
         /// <summary>
@@ -9467,6 +9258,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="haptic">The haptic</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_HapticPause(IntPtr haptic);
 
         /// <summary>
@@ -9475,6 +9267,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="haptic">The haptic</param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern uint SDL_HapticQuery(IntPtr haptic);
 
         /// <summary>
@@ -9483,6 +9276,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="haptic">The haptic</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_HapticRumbleInit(IntPtr haptic);
 
         /// <summary>
@@ -9493,11 +9287,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="length">The length</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_HapticRumblePlay(
-            IntPtr haptic,
-            float strength,
-            uint length
-        );
+        [return: NotNull]
+        public static extern int SDL_HapticRumblePlay(IntPtr haptic, float strength, uint length);
 
         /// <summary>
         ///     Sdl the haptic rumble stop using the specified haptic
@@ -9505,6 +9296,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="haptic">The haptic</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_HapticRumbleStop(IntPtr haptic);
 
         /// <summary>
@@ -9513,6 +9305,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="haptic">The haptic</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_HapticRumbleSupported(IntPtr haptic);
 
         /// <summary>
@@ -9523,11 +9316,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="iterations">The iterations</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_HapticRunEffect(
-            IntPtr haptic,
-            int effect,
-            uint iterations
-        );
+        [return: NotNull]
+        public static extern int SDL_HapticRunEffect(IntPtr haptic, int effect, uint iterations);
 
         /// <summary>
         ///     Sdl the haptic set auto center using the specified haptic
@@ -9536,10 +9326,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="autoCenter">The auto center</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_HapticSetAutoCenter(
-            IntPtr haptic,
-            int autoCenter
-        );
+        [return: NotNull]
+        public static extern int SDL_HapticSetAutoCenter(IntPtr haptic, int autoCenter);
 
         /// <summary>
         ///     Sdl the haptic set gain using the specified haptic
@@ -9548,10 +9336,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="gain">The gain</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_HapticSetGain(
-            IntPtr haptic,
-            int gain
-        );
+        [return: NotNull]
+        public static extern int SDL_HapticSetGain(IntPtr haptic, int gain);
 
         /// <summary>
         ///     Sdl the haptic stop all using the specified haptic
@@ -9559,9 +9345,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="haptic">The haptic</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_HapticStopAll(IntPtr haptic);
-
-
+        
         /// <summary>
         ///     Sdl the haptic stop effect using the specified haptic
         /// </summary>
@@ -9569,10 +9355,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="effect">The effect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_HapticStopEffect(
-            IntPtr haptic,
-            int effect
-        );
+        [return: NotNull]
+        public static extern int SDL_HapticStopEffect(IntPtr haptic, int effect);
 
         /// <summary>
         ///     Sdl the haptic unpause using the specified haptic
@@ -9580,6 +9364,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="haptic">The haptic</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_HapticUnpause(IntPtr haptic);
 
         /// <summary>
@@ -9590,19 +9375,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="data">The data</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_HapticUpdateEffect(
-            IntPtr haptic,
-            int effect,
-            ref SdlHapticEffect data
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_HapticUpdateEffect(IntPtr haptic, int effect, ref SdlHapticEffect data);
+        
         /// <summary>
         ///     Sdl the joystick is haptic using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_JoystickIsHaptic(IntPtr joystick);
 
         /// <summary>
@@ -9610,6 +9392,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_MouseIsHaptic();
 
         /// <summary>
@@ -9617,6 +9400,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_NumHaptics();
 
         /// <summary>
@@ -9624,6 +9408,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_NumSensors();
 
         /// <summary>
@@ -9632,6 +9417,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetDeviceName", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern IntPtr INTERNAL_SDL_SensorGetDeviceName(int deviceIndex);
 
         /// <summary>
@@ -9639,6 +9425,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The string</returns>
+        [return: NotNull]
         public static string SDL_SensorGetDeviceName(int deviceIndex) => Utf8ToManaged(INTERNAL_SDL_SensorGetDeviceName(deviceIndex));
 
         /// <summary>
@@ -9647,6 +9434,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The sdl sensor type</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern SdlSensorType SDL_SensorGetDeviceType(int deviceIndex);
 
         /// <summary>
@@ -9655,6 +9443,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_SensorGetDeviceNonPortableType(int deviceIndex);
 
         /// <summary>
@@ -9663,6 +9452,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_SensorGetDeviceInstanceID(int deviceIndex);
 
         /// <summary>
@@ -9671,6 +9461,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern IntPtr SDL_SensorOpen(int deviceIndex);
 
         /// <summary>
@@ -9679,9 +9470,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="instanceId">The instance id</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_SensorFromInstanceID(
-            int instanceId
-        );
+        [return: NotNull]
+        public static extern IntPtr SDL_SensorFromInstanceID(int instanceId);
 
         /// <summary>
         ///     Internals the sdl sensor get name using the specified sensor
@@ -9689,6 +9479,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="sensor">The sensor</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetName", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern IntPtr INTERNAL_SDL_SensorGetName(IntPtr sensor);
 
         /// <summary>
@@ -9696,6 +9487,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="sensor">The sensor</param>
         /// <returns>The string</returns>
+        [return: NotNull]
         public static string SDL_SensorGetName(IntPtr sensor) => Utf8ToManaged(INTERNAL_SDL_SensorGetName(sensor));
 
         /// <summary>
@@ -9704,6 +9496,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="sensor">The sensor</param>
         /// <returns>The sdl sensor type</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern SdlSensorType SDL_SensorGetType(IntPtr sensor);
 
         /// <summary>
@@ -9712,6 +9505,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="sensor">The sensor</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_SensorGetNonPortableType(IntPtr sensor);
 
         /// <summary>
@@ -9720,6 +9514,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="sensor">The sensor</param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_SensorGetInstanceID(IntPtr sensor);
 
         /// <summary>
@@ -9730,29 +9525,29 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="numValues">The num values</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SensorGetData(
-            IntPtr sensor,
-            float[] data,
-            int numValues
-        );
+        [return: NotNull]
+        public static extern int SDL_SensorGetData(IntPtr sensor, float[] data, int numValues);
 
         /// <summary>
         ///     Sdl the sensor close using the specified sensor
         /// </summary>
         /// <param name="sensor">The sensor</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern void SDL_SensorClose(IntPtr sensor);
 
         /// <summary>
         ///     Sdl the sensor update
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern void SDL_SensorUpdate();
 
         /// <summary>
         ///     Sdl the lock sensors
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern void SDL_LockSensors();
 
         /// <summary>
