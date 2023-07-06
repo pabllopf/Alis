@@ -1,5 +1,16 @@
 var NAVTREEINDEX9 =
 {
+"d2/d03/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_game_controller_button_bind_hat.html#a201dec3d5a21e90d61bd3f042d3cc273":[1,0,0,2,5,3,1,4,1],
+"d2/d03/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_game_controller_button_bind_hat.html#a3a586b7d6d94cd0da129dcfe738e6a94":[1,0,0,2,5,3,1,4,0],
+"d2/d0a/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_move_event_args.html":[1,0,0,2,5,4,1,11],
+"d2/d0a/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_move_event_args.html#a9152d534fcf6f89fb919404a428b9217":[1,0,0,2,5,4,1,11,3],
+"d2/d0a/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_move_event_args.html#a91c96195d7ba950f149b7371760941bd":[1,0,0,2,5,4,1,11,1],
+"d2/d0a/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_move_event_args.html#a9953c5da3f2364f8540a834bc9598ad3":[1,0,0,2,5,4,1,11,4],
+"d2/d0a/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_move_event_args.html#ab145c9dcf35cda977e5d06b18453817a":[1,0,0,2,5,4,1,11,2],
+"d2/d0a/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_move_event_args.html#ab5b1d3994d61b1b846eb867096d07017":[1,0,0,2,5,4,1,11,0],
+"d2/d0c/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_mixer_extern.html":[1,0,0,2,1,2,2],
+"d2/d0c/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_mixer_extern.html#a068cc182a98f59088b395fd2a9c58ee8":[1,0,0,2,1,2,2,67],
+"d2/d0c/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_mixer_extern.html#a0fee037656cecbd3fb8c8fc8b4ffe5bf":[1,0,0,2,1,2,2,48],
 "d2/d0c/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_mixer_extern.html#a1096db74a017b67950f8a6389c0e90c4":[1,0,0,2,1,2,2,73],
 "d2/d0c/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_mixer_extern.html#a12133b6728e9d803c34a9012e4397342":[1,0,0,2,1,2,2,21],
 "d2/d0c/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_mixer_extern.html#a12967c756d8ff49e546db19e5161274d":[1,0,0,2,1,2,2,77],
@@ -238,16 +249,5 @@ var NAVTREEINDEX9 =
 "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#a96d930b8778ad3fe1020c5a1cda56ffb":[1,0,0,2,5,4,0,12,35],
 "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#a9b5a04a722c7f7e0c4bc7575ba164321":[1,0,0,2,5,4,0,12,30],
 "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#aa05817afaac99cbd56c46da2a12fe54a":[1,0,0,2,5,4,0,12,1],
-"d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#aa61168e3172c2fc49c100730c3a05f9f":[1,0,0,2,5,4,0,12,48],
-"d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#aa7c7eca43786733e626b65b2d34d8ed7":[1,0,0,2,5,4,0,12,25],
-"d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#aa8b4daa8368202ca0fef76b217e74803":[1,0,0,2,5,4,0,12,44],
-"d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#aa9cd9203daee30296441f013ce35d99b":[1,0,0,2,5,4,0,12,36],
-"d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#ab1f55eab1148aa532d5cffd304267bb8":[1,0,0,2,5,4,0,12,32],
-"d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#abd357873d6284ee829edde102414bf1b":[1,0,0,2,5,4,0,12,20],
-"d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#ac3b23dd49462842d413d0bae8b96f207":[1,0,0,2,5,4,0,12,6],
-"d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#ace3823d3ca81ed4be6a7be8d648d30fa":[1,0,0,2,5,4,0,12,8],
-"d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#acf4100fd15db6d3c33858d3d7c5cf755":[1,0,0,2,5,4,0,12,15],
-"d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#ad02dad13e3dc460f727b8a539e5996d9":[1,0,0,2,5,4,0,12,46],
-"d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#ad12d913f4fee6fe30fadd5de6dc3b741":[1,0,0,2,5,4,0,12,31],
-"d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#ad276530578b3686a55585fb2da5f01df":[1,0,0,2,5,4,0,12,54]
+"d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#aa61168e3172c2fc49c100730c3a05f9f":[1,0,0,2,5,4,0,12,48]
 };

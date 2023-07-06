@@ -1,5 +1,16 @@
 var NAVTREEINDEX15 =
 {
+"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a782d64b9552f5670b67b5723405b9715":[1,0,0,2,5,3,1,31,10],
+"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a7c6ca2c244c9a590178e5b0f94b54f41":[1,0,0,2,5,3,1,31,27],
+"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a84cb85b7251ee3ba8e17e09028a80171":[1,0,0,2,5,3,1,31,13],
+"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a859b8d5d6247dc3f4f71c97e08961486":[1,0,0,2,5,3,1,31,59],
+"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a87fc095a1930053d5be5eb2fcad92306":[1,0,0,2,5,3,1,31,82],
+"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a89e324871331a1539b36b2c61d315780":[1,0,0,2,5,3,1,31,61],
+"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a8dddcbc68dd02af0ca16b1d745311223":[1,0,0,2,5,3,1,31,2],
+"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a8ee41f1031b53f5d47d276a6e9c6ca54":[1,0,0,2,5,3,1,31,29],
+"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a8f79fd2d556442964e3fa559766a2070":[1,0,0,2,5,3,1,31,46],
+"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a969a2217c397852ebf4852ba474f4fbf":[1,0,0,2,5,3,1,31,28],
+"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a9811a7a8ffe6efd2ffbc33cf972da0b0":[1,0,0,2,5,3,1,31,57],
 "d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a9ab1911ff81aa6dd98697ab77fc4f3bb":[1,0,0,2,5,3,1,31,16],
 "d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a9c9b96dd78e698883822ad02c88f3d49":[1,0,0,2,5,3,1,31,78],
 "d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a9caa541d13ab214778b2983a5a01ff8d":[1,0,0,2,5,3,1,31,40],
@@ -238,16 +249,5 @@ var NAVTREEINDEX15 =
 "d4/db6/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_streams_1_1_s_f_m_l_1_1_stream_adaptor.html#a3270f3457b4cb473fdb2e3a4080d54e4":[1,0,0,2,0,5,2,0,1,9],
 "d4/db6/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_streams_1_1_s_f_m_l_1_1_stream_adaptor.html#a565d83f04eaf1a5d78536281e5a512a6":[1,0,0,2,0,5,2,0,1,10],
 "d4/db6/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_streams_1_1_s_f_m_l_1_1_stream_adaptor.html#a65b18356ca80926c611f6f6e88b09001":[1,0,0,2,0,5,2,0,1,6],
-"d4/db6/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_streams_1_1_s_f_m_l_1_1_stream_adaptor.html#a6746f7e5a95c1f80af04179e72363ec4":[1,0,0,2,0,5,2,0,1,5],
-"d4/db6/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_streams_1_1_s_f_m_l_1_1_stream_adaptor.html#a684bfe1f186c270d231ed3532fd350c5":[1,0,0,2,0,5,2,0,1,0],
-"d4/db6/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_streams_1_1_s_f_m_l_1_1_stream_adaptor.html#a829b095bdf52770858ea09c2a7e650ff":[1,0,0,2,0,5,2,0,1,7],
-"d4/db6/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_streams_1_1_s_f_m_l_1_1_stream_adaptor.html#aadd13308397078bd26c08412f6b22ad0":[1,0,0,2,0,5,2,0,1,1],
-"d4/db6/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_streams_1_1_s_f_m_l_1_1_stream_adaptor.html#ae8a47700bb3bbe2ba00ce014061ba262":[1,0,0,2,0,5,2,0,1,2],
-"d4/db6/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_streams_1_1_s_f_m_l_1_1_stream_adaptor.html#af349bb6e302c84bb5dbb7d29a54746ff":[1,0,0,2,0,5,2,0,1,11],
-"d4/db8/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_utils_1_1_unsafe.html":[1,0,0,2,5,0,3,0],
-"d4/db8/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_utils_1_1_unsafe.html#a34393f9acd1e53584d5fe077bc8bd20c":[1,0,0,2,5,0,3,0,3],
-"d4/db8/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_utils_1_1_unsafe.html#a6e035d3af2d8b62485cf18d86c7b0aba":[1,0,0,2,5,0,3,0,1],
-"d4/db8/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_utils_1_1_unsafe.html#a8cf193134e7f86033b622327b153b35e":[1,0,0,2,5,0,3,0,4],
-"d4/db8/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_utils_1_1_unsafe.html#ab2e00e2371f6b8f666035a92091b13c0":[1,0,0,2,5,0,3,0,0],
-"d4/db8/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_utils_1_1_unsafe.html#ab9818528ee60613e06e39f44e10d0287":[1,0,0,2,5,0,3,0,2]
+"d4/db6/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_streams_1_1_s_f_m_l_1_1_stream_adaptor.html#a6746f7e5a95c1f80af04179e72363ec4":[1,0,0,2,0,5,2,0,1,5]
 };

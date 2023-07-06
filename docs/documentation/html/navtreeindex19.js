@@ -1,5 +1,16 @@
 var NAVTREEINDEX19 =
 {
+"d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#a6a9269c601d1442ad38d22c8df32ca31":[1,0,0,2,5,0,2,53,11],
+"d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#a6bdb9d9d7e7dda7662ac977c0155858c":[1,0,0,2,5,0,2,53,78],
+"d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#a6c6f7b2255415d85a43900c31a8a3082":[1,0,0,2,5,0,2,53,67],
+"d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#a6d32cc696009c1fdbdb3ac563ded2436":[1,0,0,2,5,0,2,53,34],
+"d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#a6f2d96aa5ff93cc5f4e7e69c874d53d7":[1,0,0,2,5,0,2,53,38],
+"d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#a705432c8425e09958f8fd19ceb376abe":[1,0,0,2,5,0,2,53,57],
+"d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#a72117cabe4b0fa58482e8923273d3ffd":[1,0,0,2,5,0,2,53,13],
+"d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#a72bc3af17894d89ccbd3a1a23b597178":[1,0,0,2,5,0,2,53,58],
+"d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#a76692b8bc8aab0d797a1ca248ba6eefe":[1,0,0,2,5,0,2,53,40],
+"d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#a7cebe976834a26595cf73f1e8038fd58":[1,0,0,2,5,0,2,53,36],
+"d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#a7fc54ae3d8da4f7986dd81c93f6b0df1":[1,0,0,2,5,0,2,53,92],
 "d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#a8237ed0add4297b7602202ade939ab68":[1,0,0,2,5,0,2,53,29],
 "d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#a82622dd5d68aeb72b0068fb947465040":[1,0,0,2,5,0,2,53,65],
 "d6/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_style.html#a886ff8fb5f23680f83b3428b026a940f":[1,0,0,2,5,0,2,53,25],
@@ -238,16 +249,5 @@ var NAVTREEINDEX19 =
 "d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a3b06cfb36230666e6612abed21514d96":[1,0,0,2,5,3,4,7],
 "d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a4a163dcdd1d0100f87996a10dbe2b17c":[1,0,0,2,5,3,4,39],
 "d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a5738bb4e9fb7678bdcb2d0cc1139fcb9":[1,0,0,2,5,3,4,1],
-"d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a58e76b4a7f31e583ca9dbb6be965060d":[1,0,0,2,5,3,4,45],
-"d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a5fcb189976006ceae8b3152d4d1e5b06":[1,0,0,2,5,3,4,37],
-"d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a682eb5b01eb9afda6b7abfcd4abc5c8b":[1,0,0,2,5,3,4,42],
-"d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a6b26ad6de772f210ee8491e9f22d99d9":[1,0,0,2,5,3,4,38],
-"d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a6d73753d3c7d6eeb8c169586158091bf":[1,0,0,2,5,3,4,44],
-"d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a6fec6058991491e68c2ee0ae6a7940db":[1,0,0,2,5,3,4,23],
-"d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a763dd9b69b089eb41a053f4c21991195":[1,0,0,2,5,3,4,41],
-"d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a79577f921045ba78b3ebebf40f509acd":[1,0,0,2,5,3,4,36],
-"d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a877e142d97e54b9b8b1455ee0d977804":[1,0,0,2,5,3,4,27],
-"d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a8d4a63025fc7dd9ec2f709c73f3f7e99":[1,0,0,2,5,3,4,9],
-"d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a9337dd233aa79f731f66cf204ac8ce71":[1,0,0,2,5,3,4,20],
-"d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a94938b3735d6d22054d88ce6a58c888b":[1,0,0,2,5,3,4,19]
+"d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a58e76b4a7f31e583ca9dbb6be965060d":[1,0,0,2,5,3,4,45]
 };
