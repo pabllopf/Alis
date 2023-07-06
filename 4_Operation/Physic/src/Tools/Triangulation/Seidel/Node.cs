@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         /// <param name="edge">The </param>
         /// <returns>The sink</returns>
         public abstract Sink Locate(Edge edge);
-        
+
         /// <summary>
         ///     Replaces the node
         /// </summary>

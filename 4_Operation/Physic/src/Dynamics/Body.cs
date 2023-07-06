@@ -263,7 +263,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 Force = Vector2F.Zero;
                 Torque = 0.0f;
-                
+
                 ContactEdge ce = ContactList;
                 while (ce != null)
                 {
@@ -442,7 +442,7 @@ namespace Alis.Core.Physic.Dynamics
                     {
                         FixtureList[i].DestroyProxies(broadPhase);
                     }
-                    
+
                     ContactEdge ce = ContactList;
                     while (ce != null)
                     {
@@ -551,11 +551,11 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     return;
                 }
-                
+
                 Vector2F oldCenter = Sweep.C;
                 Sweep.LocalCenter = value;
                 Sweep.C0 = Sweep.C = MathUtils.Mul(ref Xf, ref Sweep.LocalCenter);
-                
+
                 Vector2F a = Sweep.C - oldCenter;
                 LinearVelocity += new Vector2F(-AngularVelocity * a.Y, AngularVelocity * a.X);
             }
@@ -568,7 +568,6 @@ namespace Alis.Core.Physic.Dynamics
             get => mass;
             set
             {
-
                 if (Type != BodyType.Dynamic)
                 {
                     return;
@@ -592,17 +591,16 @@ namespace Alis.Core.Physic.Dynamics
             get => inertia + mass * Vector2F.Dot(Sweep.LocalCenter, Sweep.LocalCenter);
             set
             {
-                
                 if (Type != BodyType.Dynamic)
                 {
                     return;
                 }
 
-               
+
                 if ((value > 0.0f) && !FixedRotation)
                 {
                     inertia = value - mass * Vector2F.Dot(Sweep.LocalCenter, Sweep.LocalCenter);
-                   
+
                     InvI = 1.0f / inertia;
                 }
             }
@@ -767,12 +765,12 @@ namespace Alis.Core.Physic.Dynamics
             FixtureList.Add(fixture);
 
             fixture.Body = this;
-            
+
             if (fixture.Shape.DensityPrivate > 0.0f)
             {
                 ResetMassData();
             }
-            
+
 
             return fixture;
         }
@@ -795,12 +793,11 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="fixture">The fixture to be removed.</param>
         public void RemoveFixture(Fixture fixture)
         {
-
             if (fixture == null)
             {
                 return;
             }
-            
+
             ContactEdge edge = ContactList;
             while (edge != null)
             {
@@ -908,7 +905,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 return;
             }
-            
+
             if (!Awake)
             {
                 Awake = true;
@@ -926,7 +923,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 return;
             }
-            
+
             if (!Awake)
             {
                 Awake = true;
@@ -961,7 +958,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 return;
             }
-            
+
             if (!Awake)
             {
                 Awake = true;
@@ -982,7 +979,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 return;
             }
-            
+
             if (!Awake)
             {
                 Awake = true;
@@ -1000,7 +997,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 return;
             }
-            
+
             if (!Awake)
             {
                 Awake = true;
@@ -1021,7 +1018,7 @@ namespace Alis.Core.Physic.Dynamics
             InvI = 0.0f;
             Sweep.LocalCenter = Vector2F.Zero;
 
-            
+
             if (Type == BodyType.Kinematic)
             {
                 Sweep.C0 = Xf.Position;
@@ -1029,7 +1026,7 @@ namespace Alis.Core.Physic.Dynamics
                 Sweep.A0 = Sweep.A;
                 return;
             }
-            
+
             Vector2F localCenter = Vector2F.Zero;
             foreach (Fixture f in FixtureList)
             {
@@ -1044,14 +1041,14 @@ namespace Alis.Core.Physic.Dynamics
                 inertia += massData.Inertia;
             }
 
-            
+
             if (Type == BodyType.Static)
             {
                 Sweep.C0 = Sweep.C = Xf.Position;
                 return;
             }
 
-            
+
             if (mass > 0.0f)
             {
                 InvMass = 1.0f / mass;
@@ -1060,9 +1057,8 @@ namespace Alis.Core.Physic.Dynamics
 
             if ((inertia > 0.0f) && ((Flags & BodyFlags.FixedRotationFlag) == 0))
             {
-                
                 inertia -= mass * Vector2F.Dot(localCenter, localCenter);
-                
+
                 InvI = 1.0f / inertia;
             }
             else
@@ -1071,11 +1067,11 @@ namespace Alis.Core.Physic.Dynamics
                 InvI = 0.0f;
             }
 
-          
+
             Vector2F oldCenter = Sweep.C;
             Sweep.LocalCenter = localCenter;
             Sweep.C0 = Sweep.C = MathUtils.Mul(ref Xf, ref Sweep.LocalCenter);
-            
+
             Vector2F a = Sweep.C - oldCenter;
             LinearVelocity += new Vector2F(-AngularVelocity * a.Y, AngularVelocity * a.X);
         }
@@ -1200,7 +1196,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 return false;
             }
-            
+
             for (JointEdge jn = JointList; jn != null; jn = jn.Next)
             {
                 if (jn.Other == other)
@@ -1226,7 +1222,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="alpha">The alpha</param>
         internal void Advance(float alpha)
         {
-            
             Sweep.Advance(alpha);
             Sweep.C = Sweep.C0;
             Sweep.A = Sweep.A0;
@@ -1258,6 +1253,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 return;
             }
+
             SynchronizeFixtures();
         }
 

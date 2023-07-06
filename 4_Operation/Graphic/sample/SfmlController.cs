@@ -88,7 +88,7 @@ namespace Alis.Core.Graphic.Sample
 
             window.Closed += (sender, args) => window.Close();
 
-            
+
             window.KeyPressed += OnKeyPressed;
             window.MouseButtonPressed += OnMouseButtonPressed;
             window.JoystickButtonPressed += OnJoystickButtonPressed;
@@ -260,7 +260,7 @@ namespace Alis.Core.Graphic.Sample
                 if (Joystick.IsConnected(i))
                 {
                     Joystick.Identification identification = Joystick.GetIdentification(i);
-                    
+
                     for (uint j = 0; j < 32; j++)
                     {
                         if (Joystick.IsButtonPressed(i, j))
@@ -281,8 +281,6 @@ namespace Alis.Core.Graphic.Sample
                             }
                         }
                     }
-
-
                 }
             }
         }

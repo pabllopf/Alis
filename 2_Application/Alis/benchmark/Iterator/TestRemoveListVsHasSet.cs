@@ -50,7 +50,7 @@ namespace Alis.Benchmark.Iterator
         /// <summary>
         ///     Gets or sets the value of the n
         /// </summary>
-        [Params(new object[] {10, 100, 1000})]
+        [Params(10, 100, 1000)]
         // ReSharper disable once MemberCanBePrivate.Global
         public int N { get; }
 

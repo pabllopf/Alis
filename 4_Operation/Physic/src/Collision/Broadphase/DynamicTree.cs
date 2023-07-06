@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
             nodeCapacity = 16;
             nodeCount = 0;
             nodes = new TreeNode<T>[nodeCapacity];
-            
+
             for (int i = 0; i < nodeCapacity - 1; ++i)
             {
                 nodes[i] = new TreeNode<T>
@@ -98,8 +98,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                     Height = 1
                 };
             }
-            
-           
+
 
             nodes[nodeCapacity - 1] = new TreeNode<T>
             {
@@ -128,12 +127,12 @@ namespace Alis.Core.Physic.Collision.Broadphase
         {
             get
             {
-                if (this.root == NullNode)
+                if (root == NullNode)
                 {
                     return 0.0f;
                 }
 
-                TreeNode<T> treeNode = nodes[this.root];
+                TreeNode<T> treeNode = nodes[root];
                 float rootArea = treeNode.Aabb.Perimeter;
 
                 float totalArea = 0.0f;
@@ -168,7 +167,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                     {
                         continue;
                     }
-                    
+
                     int child1 = node.Child1;
                     int child2 = node.Child2;
                     int balance = Math.Abs(nodes[child2].Height - nodes[child1].Height);
@@ -355,11 +354,11 @@ namespace Alis.Core.Physic.Collision.Broadphase
             Vector2F p2 = input.Point2;
             Vector2F r = p2 - p1;
             r = Vector2F.Normalize(r);
-            
+
             Vector2F absV = MathUtils.Abs(new Vector2F(-r.Y, r.X));
 
             float maxFraction = input.Fraction;
-            
+
             Aabb segmentAabb = new Aabb();
             {
                 Vector2F t = p1 + maxFraction * (p2 - p1);
@@ -384,7 +383,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 {
                     continue;
                 }
-                
+
                 Vector2F c = node.Aabb.Center;
                 Vector2F h = node.Aabb.Extents;
                 float separation = Math.Abs(Vector2F.Dot(new Vector2F(-r.Y, r.X), p1 - c)) - Vector2F.Dot(absV, h);
@@ -429,14 +428,13 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <returns>The node id</returns>
         private int AllocateNode()
         {
-
             if (freeList == NullNode)
             {
                 TreeNode<T>[] oldNodes = nodes;
                 nodeCapacity *= 2;
                 nodes = new TreeNode<T>[nodeCapacity];
                 Array.Copy(oldNodes, nodes, nodeCount);
-                
+
                 for (int i = nodeCount; i < nodeCapacity - 1; ++i)
                 {
                     nodes[i] = new TreeNode<T>
@@ -453,7 +451,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 };
                 freeList = nodeCount;
             }
-            
+
             int nodeId = freeList;
             freeList = nodes[nodeId].ParentOrNext;
             nodes[nodeId].ParentOrNext = NullNode;
@@ -490,7 +488,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 nodes[root].ParentOrNext = NullNode;
                 return;
             }
-            
+
             Aabb leafAabb = nodes[leaf].Aabb;
             int index = root;
             while (!nodes[index].IsLeaf())
@@ -503,11 +501,11 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 Aabb combinedAabb = new Aabb();
                 combinedAabb.Combine(ref nodes[index].Aabb, ref leafAabb);
                 float combinedArea = combinedAabb.Perimeter;
-                
+
                 float cost = 2.0f * combinedArea;
-                
+
                 float inheritanceCost = 2.0f * (combinedArea - area);
-                
+
                 float cost1;
                 if (nodes[child1].IsLeaf())
                 {
@@ -523,7 +521,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                     float newArea = aabb.Perimeter;
                     cost1 = newArea - oldArea + inheritanceCost;
                 }
-                
+
                 float cost2;
                 if (nodes[child2].IsLeaf())
                 {
@@ -539,12 +537,12 @@ namespace Alis.Core.Physic.Collision.Broadphase
                     float newArea = aabb.Perimeter;
                     cost2 = newArea - oldArea + inheritanceCost;
                 }
-                
+
                 if ((cost < cost1) && (cost1 < cost2))
                 {
                     break;
                 }
-                
+
                 index = cost1 < cost2 ? child1 : child2;
             }
 
@@ -595,7 +593,6 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
                 index = nodes[index].ParentOrNext;
             }
-
         }
 
         /// <summary>
@@ -616,7 +613,6 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
             if (grandParent != NullNode)
             {
-               
                 if (nodes[grandParent].Child1 == parent)
                 {
                     nodes[grandParent].Child1 = sibling;
@@ -628,7 +624,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
                 nodes[sibling].ParentOrNext = grandParent;
                 FreeNode(parent);
-                
+
                 int index = grandParent;
                 while (index != NullNode)
                 {
@@ -664,7 +660,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
             int iB = a.Child1;
             int iC = a.Child2;
-            
+
             TreeNode<T> b = nodes[iB];
             TreeNode<T> c = nodes[iC];
 
@@ -681,7 +677,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 c.ParentOrNext = a.ParentOrNext;
                 a.ParentOrNext = iC;
 
-               
+
                 if (c.ParentOrNext != NullNode)
                 {
                     if (nodes[c.ParentOrNext].Child1 == iA)
@@ -690,7 +686,6 @@ namespace Alis.Core.Physic.Collision.Broadphase
                     }
                     else
                     {
-                       
                         nodes[c.ParentOrNext].Child2 = iC;
                     }
                 }
@@ -699,7 +694,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                     root = iC;
                 }
 
-               
+
                 if (f.Height > g.Height)
                 {
                     c.Child2 = iF;
@@ -726,22 +721,20 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 return iC;
             }
 
-           
+
             if (balance < -1)
             {
                 int iD = b.Child1;
                 int iE = b.Child2;
                 TreeNode<T> d = nodes[iD];
                 TreeNode<T> e = nodes[iE];
-               
-               
 
-               
+
                 b.Child1 = iA;
                 b.ParentOrNext = a.ParentOrNext;
                 a.ParentOrNext = iB;
 
-               
+
                 if (b.ParentOrNext != NullNode)
                 {
                     if (nodes[b.ParentOrNext].Child1 == iA)
@@ -750,7 +743,6 @@ namespace Alis.Core.Physic.Collision.Broadphase
                     }
                     else
                     {
-                       
                         nodes[b.ParentOrNext].Child2 = iB;
                     }
                 }
@@ -759,7 +751,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                     root = iB;
                 }
 
-               
+
                 if (d.Height > e.Height)
                 {
                     b.Child2 = iD;
@@ -794,7 +786,6 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <returns>The height of the tree.</returns>
         private int ComputeHeight(int nodeId)
         {
-           
             TreeNode<T> node = nodes[nodeId];
 
             if (node.IsLeaf())
@@ -835,7 +826,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
             {
                 return;
             }
-            
+
             ValidateStructure(child1);
             ValidateStructure(child2);
         }
@@ -863,7 +854,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
             Aabb aabb = new Aabb();
             aabb.Combine(ref nodes[child1].Aabb, ref nodes[child2].Aabb);
-            
+
             ValidateMetrics(child1);
             ValidateMetrics(child2);
         }
@@ -887,18 +878,17 @@ namespace Alis.Core.Physic.Collision.Broadphase
             int[] ints = new int[nodeCount];
             int count = 0;
 
-           
+
             for (int i = 0; i < nodeCapacity; ++i)
             {
-                if (this.nodes[i].Height < 0)
+                if (nodes[i].Height < 0)
                 {
-                   
                     continue;
                 }
 
-                if (this.nodes[i].IsLeaf())
+                if (nodes[i].IsLeaf())
                 {
-                    this.nodes[i].ParentOrNext = NullNode;
+                    nodes[i].ParentOrNext = NullNode;
                     ints[count] = i;
                     ++count;
                 }
@@ -914,11 +904,11 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 int iMin = -1, jMin = -1;
                 for (int i = 0; i < count; ++i)
                 {
-                    Aabb aabBi = this.nodes[ints[i]].Aabb;
+                    Aabb aabBi = nodes[ints[i]].Aabb;
 
                     for (int j = i + 1; j < count; ++j)
                     {
-                        Aabb aabBj = this.nodes[ints[j]].Aabb;
+                        Aabb aabBj = nodes[ints[j]].Aabb;
                         Aabb b = new Aabb();
                         b.Combine(ref aabBi, ref aabBj);
                         float cost = b.Perimeter;
@@ -933,11 +923,11 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
                 int index1 = ints[iMin];
                 int index2 = ints[jMin];
-                TreeNode<T> child1 = this.nodes[index1];
-                TreeNode<T> child2 = this.nodes[index2];
+                TreeNode<T> child1 = nodes[index1];
+                TreeNode<T> child2 = nodes[index2];
 
                 int parentIndex = AllocateNode();
-                TreeNode<T> parent = this.nodes[parentIndex];
+                TreeNode<T> parent = nodes[parentIndex];
                 parent.Child1 = index1;
                 parent.Child2 = index2;
                 parent.Height = 1 + Math.Max(child1.Height, child2.Height);
@@ -961,7 +951,6 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <param name="newOrigin">The displacement to use.</param>
         public void ShiftOrigin(ref Vector2F newOrigin)
         {
-           
             for (int i = 0; i < nodeCapacity; ++i)
             {
                 nodes[i].Aabb.LowerBound -= newOrigin;

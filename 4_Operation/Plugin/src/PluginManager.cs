@@ -70,7 +70,7 @@ namespace Alis.Core.Plugin
         }
 
         /// <summary>
-        /// Loads the plugins using the specified plugins directory
+        ///     Loads the plugins using the specified plugins directory
         /// </summary>
         /// <param name="pluginsDirectory">The plugins directory</param>
         public void LoadPlugins(string pluginsDirectory)
@@ -92,7 +92,7 @@ namespace Alis.Core.Plugin
         }
 
         /// <summary>
-        /// Gets the platform folder
+        ///     Gets the platform folder
         /// </summary>
         /// <exception cref="NotSupportedException">Unsupported platform. Plugins will not be loaded.</exception>
         /// <returns>The string</returns>
@@ -117,7 +117,7 @@ namespace Alis.Core.Plugin
         }
 
         /// <summary>
-        /// Validates the plugins directory using the specified directory
+        ///     Validates the plugins directory using the specified directory
         /// </summary>
         /// <param name="directory">The directory</param>
         /// <exception cref="DirectoryNotFoundException">Plugins directory '{directory}' does not exist.</exception>
@@ -130,19 +130,16 @@ namespace Alis.Core.Plugin
         }
 
         /// <summary>
-        /// Gets the plugin files using the specified directory
+        ///     Gets the plugin files using the specified directory
         /// </summary>
         /// <param name="directory">The directory</param>
         /// <returns>The string array</returns>
-        private IEnumerable<string> GetPluginFiles(string directory)
-        {
-            return Directory.GetFiles(directory)
-                .Where(IsPluginFile)
-                .ToArray();
-        }
+        private IEnumerable<string> GetPluginFiles(string directory) => Directory.GetFiles(directory)
+            .Where(IsPluginFile)
+            .ToArray();
 
         /// <summary>
-        /// Loads the plugin from file using the specified plugin file
+        ///     Loads the plugin from file using the specified plugin file
         /// </summary>
         /// <param name="pluginFile">The plugin file</param>
         private void LoadPluginFromFile(string pluginFile)

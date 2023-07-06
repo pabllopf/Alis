@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:no.cs
+//  File:NotEmptyException.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,13 +32,13 @@ using System;
 namespace Alis.Core.Aspect.Memory.Exceptions
 {
     /// <summary>
-    /// The not empty exception class
+    ///     The not empty exception class
     /// </summary>
-    /// <seealso cref="Exception"/>
+    /// <seealso cref="Exception" />
     public class NotEmptyException : Exception
     {
         /// <summary>
-        /// The constructor
+        ///     The constructor
         /// </summary>
         /// <param name="message">The message</param>
         public NotEmptyException(string message) : base(message)

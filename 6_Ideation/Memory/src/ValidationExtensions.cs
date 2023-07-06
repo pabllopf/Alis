@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:dd.cs
+//  File:ValidationExtensions.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -37,12 +37,12 @@ using Alis.Core.Aspect.Memory.Attributes;
 namespace Alis.Core.Aspect.Memory
 {
     /// <summary>
-    /// The validation extensions class
+    ///     The validation extensions class
     /// </summary>
     public static class ValidationExtensions
     {
         /// <summary>
-        /// Validates the attributes using the specified value
+        ///     Validates the attributes using the specified value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
@@ -61,12 +61,12 @@ namespace Alis.Core.Aspect.Memory
             {
                 attribute.Validate(value, parameterName);
             }
-            
+
             return value;
         }
-        
+
         /// <summary>
-        /// Gets the parameter name using the specified type
+        ///     Gets the parameter name using the specified type
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="methodName">The method name</param>

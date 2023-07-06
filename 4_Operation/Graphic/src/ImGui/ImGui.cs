@@ -22241,7 +22241,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, int start, bool hideTextAfterDoubleHash)
-            => CalcTextSizeImpl(text, start: start, hideTextAfterDoubleHash: hideTextAfterDoubleHash);
+            => CalcTextSizeImpl(text, start, hideTextAfterDoubleHash: hideTextAfterDoubleHash);
 
         /// <summary>
         ///     Calcs the text size using the specified text
@@ -22251,7 +22251,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="wrapWidth">The wrap width</param>
         /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, int start, float wrapWidth)
-            => CalcTextSizeImpl(text, start: start, wrapWidth: wrapWidth);
+            => CalcTextSizeImpl(text, start, wrapWidth: wrapWidth);
 
         /// <summary>
         ///     Calcs the text size using the specified text
@@ -22283,7 +22283,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="wrapWidth">The wrap width</param>
         /// <returns>The vector</returns>
         public static Vector2F CalcTextSize(string text, int start, int length, float wrapWidth)
-            => CalcTextSizeImpl(text, start: start, length: length, wrapWidth: wrapWidth);
+            => CalcTextSizeImpl(text, start, length, wrapWidth: wrapWidth);
 
         /// <summary>
         ///     Calcs the text size using the specified text

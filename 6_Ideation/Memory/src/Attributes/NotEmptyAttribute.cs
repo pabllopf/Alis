@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:dd.cs
+//  File:NotEmptyAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,13 +32,13 @@ using Alis.Core.Aspect.Memory.Exceptions;
 namespace Alis.Core.Aspect.Memory.Attributes
 {
     /// <summary>
-    /// The not empty attribute class
+    ///     The not empty attribute class
     /// </summary>
-    /// <seealso cref="ValidationAttribute"/>
+    /// <seealso cref="ValidationAttribute" />
     public class NotEmptyAttribute : ValidationAttribute
     {
         /// <summary>
-        /// Validates the value
+        ///     Validates the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <param name="name">The name</param>

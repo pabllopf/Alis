@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:atr.cs
+//  File:ValidationAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,14 +32,14 @@ using System;
 namespace Alis.Core.Aspect.Memory.Attributes
 {
     /// <summary>
-    /// The validation attribute class
+    ///     The validation attribute class
     /// </summary>
-    /// <seealso cref="Attribute"/>
+    /// <seealso cref="Attribute" />
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true)]
     public abstract class ValidationAttribute : Attribute
     {
         /// <summary>
-        /// Validates the value
+        ///     Validates the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <param name="name"></param>

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ex.cs
+//  File:NotZeroException.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,13 +32,13 @@ using System;
 namespace Alis.Core.Aspect.Memory.Exceptions
 {
     /// <summary>
-    /// The not zero exception class
+    ///     The not zero exception class
     /// </summary>
-    /// <seealso cref="Exception"/>
+    /// <seealso cref="Exception" />
     public class NotZeroException : Exception
     {
         /// <summary>
-        /// The constructor
+        ///     The constructor
         /// </summary>
         /// <param name="message">The message</param>
         public NotZeroException(string message) : base(message)

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:dd.cs
+//  File:MyClass.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,21 +33,21 @@ using Alis.Core.Aspect.Memory.Attributes;
 namespace Alis.Core.Aspect.Memory.Sample
 {
     /// <summary>
-    /// The my class
+    ///     The my class
     /// </summary>
     public class MyClass
     {
         /// <summary>
-        /// Mys the method using the specified parameter
+        ///     Mys the method using the specified parameter
         /// </summary>
         /// <param name="parameter">The parameter</param>
-        public void MyMethod([NotNull] [NotEmpty] string parameter)
+        public void MyMethod([NotNull, NotEmpty] string parameter)
         {
             OtherMethod(parameter.Validate());
         }
 
         /// <summary>
-        /// Others the method using the specified parameter
+        ///     Others the method using the specified parameter
         /// </summary>
         /// <param name="parameter">The parameter</param>
         private void OtherMethod(string parameter)

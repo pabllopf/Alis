@@ -71,9 +71,9 @@ namespace Alis.Core.Physic.Collision.Shapes
         {
             Debug.Assert((vertices != null) && (vertices.Count >= 3));
             Debug.Assert(vertices[0] !=
-                                    vertices[
-                                        vertices.Count -
-                                               1]); //Velcro. See http://www.box2d.org/forum/viewtopic.php?f=4&t=7973&p=35363
+                         vertices[
+                             vertices.Count -
+                             1]); //Velcro. See http://www.box2d.org/forum/viewtopic.php?f=4&t=7973&p=35363
 
             for (int i = 1; i < vertices.Count; ++i)
             {
@@ -81,7 +81,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 Vector2F current = vertices[i];
                 Vector2F prev = vertices[i - 1];
                 Debug.Assert(MathUtils.DistanceSquared(ref prev, ref current) >
-                                        Settings.LinearSlop * Settings.LinearSlop);
+                             Settings.LinearSlop * Settings.LinearSlop);
             }
 
             Vertices = new Vertices(vertices);

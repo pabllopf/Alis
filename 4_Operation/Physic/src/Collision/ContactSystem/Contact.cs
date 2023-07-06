@@ -122,7 +122,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     The flags
         /// </summary>
         internal ContactFlags Flags { get; set; }
-        
+
         /// <summary>
         ///     The contact edge
         /// </summary>
@@ -296,10 +296,9 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 ContactType.EdgeAndCircle,
                 ContactType.NotSupported,
 
-        
+
                 ContactType.EdgeAndPolygon,
                 ContactType.NotSupported
-                
             },
             {
                 ContactType.PolygonAndCircle,
@@ -311,10 +310,9 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 ContactType.ChainAndCircle,
                 ContactType.NotSupported,
 
-              
+
                 ContactType.ChainAndPolygon,
                 ContactType.NotSupported
-
             }
         };
 
@@ -388,7 +386,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             NodeB.Other = null;
 
             ToiCount = 0;
-            
+
             if ((FixtureA != null) && (FixtureB != null))
             {
                 Friction = Settings.MixFriction(FixtureA.Friction, FixtureB.Friction);
@@ -414,7 +412,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             }
 
             Manifold oldManifold = Manifold;
-            
+
             Flags |= ContactFlags.EnabledFlag;
 
             bool touching;
@@ -427,21 +425,21 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
             Transform xfA = bodyA.Xf;
             Transform xfB = bodyB.Xf;
-            
+
             if (sensor)
             {
                 Shape shapeA = FixtureA.Shape;
                 Shape shapeB = FixtureB.Shape;
                 touching = Narrowphase.Collision.TestOverlap(shapeA, ChildIndexA, shapeB, ChildIndexB, ref xfA,
                     ref xfB);
-                
+
                 manifold.PointCount = 0;
             }
             else
             {
                 Evaluate(ref manifold, ref xfA, ref xfB);
                 touching = Manifold.PointCount > 0;
-                
+
                 for (int i = 0; i < Manifold.PointCount; ++i)
                 {
                     ManifoldPoint mp2 = Manifold.Points[i];
@@ -482,16 +480,15 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
             if ((wasTouching == false) && touching)
             {
-             
                 FixtureA.OnCollision?.Invoke(FixtureA, FixtureB, this);
                 FixtureB.OnCollision?.Invoke(FixtureB, FixtureA, this);
 
-               
+
                 bodyA.OnCollision?.Invoke(FixtureA, FixtureB, this);
                 bodyB.OnCollision?.Invoke(FixtureB, FixtureA, this);
-                
+
                 contactManager.BeginContact?.Invoke(this);
-                
+
                 if (!Enabled)
                 {
                     touching = false;
@@ -500,10 +497,9 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
             if (wasTouching && !touching)
             {
-             
                 FixtureA.OnSeparation?.Invoke(FixtureA, FixtureB, this);
                 FixtureB.OnSeparation?.Invoke(FixtureB, FixtureA, this);
-                
+
                 bodyA.OnSeparation?.Invoke(FixtureA, FixtureB, this);
                 bodyB.OnSeparation?.Invoke(FixtureB, FixtureA, this);
 
@@ -573,7 +569,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         {
             ShapeType type1 = fixtureA.Shape.ShapeType;
             ShapeType type2 = fixtureB.Shape.ShapeType;
-            
+
             Contact c;
             Queue<Contact> pool = ContactManager.Current.ContactPool;
             if (pool.Count > 0)
@@ -612,7 +608,6 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         internal void Destroy()
         {
-
             if ((Manifold.PointCount > 0) && !FixtureA.IsSensor && !FixtureB.IsSensor)
             {
                 FixtureA.Body.Awake = true;
