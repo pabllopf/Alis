@@ -1,5 +1,16 @@
 var NAVTREEINDEX39 =
 {
+"dd/d44/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_controller_axis_event.html#a3ff896584ee50dd00c9d4ae3e2a40213":[1,0,0,2,5,3,1,22,4],
+"dd/d44/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_controller_axis_event.html#a5748ed637bcda4e423287c77b375c1c4":[1,0,0,2,5,3,1,22,0],
+"dd/d44/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_controller_axis_event.html#a5fb8f2695e3429553b7f330a3fa34a9a":[1,0,0,2,5,3,1,22,5],
+"dd/d44/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_controller_axis_event.html#a78bd3bbd5ec3634df2e398701f7d13cf":[1,0,0,2,5,3,1,22,7],
+"dd/d44/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_controller_axis_event.html#a88213269026c92c805f6fbc5265cfcbb":[1,0,0,2,5,3,1,22,2],
+"dd/d44/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_controller_axis_event.html#ac876dfa83f23b6c57a6b5f45992aadcc":[1,0,0,2,5,3,1,22,8],
+"dd/d44/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_controller_axis_event.html#afba84847eadd35412193ebd1864a8ba8":[1,0,0,2,5,3,1,22,1],
+"dd/d50/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_platform_io.html":[1,0,0,2,5,0,2,43],
+"dd/d50/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_platform_io.html#a02087d512bfa8875308e073b1615f2af":[1,0,0,2,5,0,2,43,2],
+"dd/d50/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_platform_io.html#a0f5b1a6e5e96d1c3d36e7ca2337cd7ce":[1,0,0,2,5,0,2,43,6],
+"dd/d50/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_platform_io.html#a1d1e9e9aabd32971667dbf4ebfa3ebef":[1,0,0,2,5,0,2,43,12],
 "dd/d50/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_platform_io.html#a374425917e98dd39238c75e1bc9f6543":[1,0,0,2,5,0,2,43,1],
 "dd/d50/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_platform_io.html#a4363bcf32af6de37040ddcb70178be48":[1,0,0,2,5,0,2,43,16],
 "dd/d50/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_platform_io.html#a4fce94efd09065ba9696dd52bc7de43b":[1,0,0,2,5,0,2,43,18],
@@ -238,16 +249,5 @@ var NAVTREEINDEX39 =
 "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a146a5b69a0a41acdbab0cee3c09df6b0":[1,0,0,2,5,0,2,30,277],
 "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a1504e07249fa3e02a6f630a84cac12d2":[1,0,0,2,5,0,2,30,542],
 "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a1535bbcbca99a89a1850c32f84d93643":[1,0,0,2,5,0,2,30,194],
-"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a16364aaf290c1d3f2023c3fa60c1832e":[1,0,0,2,5,0,2,30,355],
-"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a163e74ac33e258daf6ff6ccda17b0e88":[1,0,0,2,5,0,2,30,692],
-"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a16807fdf0dbbde458c3ea568155d6aa3":[1,0,0,2,5,0,2,30,514],
-"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a16c4c81351a9bde39924788c34a97df1":[1,0,0,2,5,0,2,30,250],
-"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a16dcf73a59382c432f437619fcb0351c":[1,0,0,2,5,0,2,30,583],
-"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a17374d7b34aa6c3f119ae55074b6f1f5":[1,0,0,2,5,0,2,30,427],
-"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a1777f10a7221f7e533d9b11de6a53420":[1,0,0,2,5,0,2,30,412],
-"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a187b358ae7c8b8d14e010e37c2047be9":[1,0,0,2,5,0,2,30,251],
-"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a188f5cfff8b35c4c3dea18cf5028b6af":[1,0,0,2,5,0,2,30,696],
-"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a18b2cc8015a6bded8aa5d0c902aec437":[1,0,0,2,5,0,2,30,175],
-"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a18ca232fc89dff922a8ba941bb07238d":[1,0,0,2,5,0,2,30,107],
-"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a18cb8fbdcc079cd9e4f074fb58ccb35c":[1,0,0,2,5,0,2,30,76]
+"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a16364aaf290c1d3f2023c3fa60c1832e":[1,0,0,2,5,0,2,30,355]
 };

@@ -1,5 +1,16 @@
 var NAVTREEINDEX27 =
 {
+"d8/dd1/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay.html":[0,0,0,2,8,7,5,1],
+"d8/dd1/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay.html":[1,0,0,2,8,7,5,1],
+"d8/dd9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_alis_object.html":[1,0,0,2,0,0,4],
+"d8/dd9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_alis_object.html#a1e44f78c05ca6da08eb77c0e6292d67d":[1,0,0,2,0,0,4,2],
+"d8/dd9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_alis_object.html#a8b8f290b96b88e393f86190d4b010f37":[1,0,0,2,0,0,4,3],
+"d8/dd9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_alis_object.html#a92cddb482ee0b6b54b3fbece0560f2de":[1,0,0,2,0,0,4,4],
+"d8/dd9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_alis_object.html#ab339a99fe009607e768416bfd37dd280":[1,0,0,2,0,0,4,0],
+"d8/dd9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_alis_object.html#ac51a98ed55b4244b7eb69602f63562cd":[1,0,0,2,0,0,4,5],
+"d8/dd9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_alis_object.html#ac8a3efe4d13edb9f90190fd63f2404b3":[1,0,0,2,0,0,4,1],
+"d8/dd9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_alis_object.html#ad38891a0466ac68c12bd12408d17e1bf":[1,0,0,2,0,0,4,6],
+"d8/ddb/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull.html":[0,0,0,2,8,7,0],
 "d8/ddb/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull.html":[1,0,0,2,8,7,0],
 "d8/de6/class_alis_1_1_builder_1_1_core_1_1_component_1_1_light_1_1_area_light_builder.html":[1,0,0,1,0,0,3,0],
 "d8/deb/struct_alis_1_1_core_1_1_physic_1_1_shared_1_1_aabb.html":[1,0,0,2,8,6,2],
@@ -238,16 +249,5 @@ var NAVTREEINDEX27 =
 "d9/d6a/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_stb_textedit_row.html#ab5a07cb0c3789fb48c204e1c6d7fc022":[1,0,0,2,5,0,2,75,2],
 "d9/d6a/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_stb_textedit_row.html#ac65d419bf044db31d8baa91e10ca9d18":[1,0,0,2,5,0,2,75,3],
 "d9/d6d/class_alis_1_1_builder_1_1_core_1_1_component_1_1_light_1_1_directional_light_builder.html":[1,0,0,1,0,0,3,1],
-"d9/d70/class_alis_1_1_core_1_1_network_1_1_pong_event_args.html":[1,0,0,2,7,9],
-"d9/d70/class_alis_1_1_core_1_1_network_1_1_pong_event_args.html#a5aee0db406697572ff56f4dcd4520ae7":[1,0,0,2,7,9,0],
-"d9/d70/class_alis_1_1_core_1_1_network_1_1_pong_event_args.html#a78bda85e6e8f1d5513cee9eedf37ffab":[1,0,0,2,7,9,1],
-"d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html":[1,0,0,2,8,7,5,1,0,0,4],
-"d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a03c4b2d9f62cb42533d292fc70fb3f1b":[1,0,0,2,8,7,5,1,0,0,4,12],
-"d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a054fd09172272698907f5f03f8084c34":[1,0,0,2,8,7,5,1,0,0,4,13],
-"d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a0cd41d4a61e424d9638ccdb38eaa5ef4":[1,0,0,2,8,7,5,1,0,0,4,19],
-"d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a1ae51aff349ff83cf18cc12c8ae4f30f":[1,0,0,2,8,7,5,1,0,0,4,20],
-"d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a1d3d60c93a547ba44c08e62108e781d9":[1,0,0,2,8,7,5,1,0,0,4,15],
-"d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a3338dfb1d494536610b79385f081e9fe":[1,0,0,2,8,7,5,1,0,0,4,11],
-"d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a368792e24398f73b3aa4d24254d5e436":[1,0,0,2,8,7,5,1,0,0,4,8],
-"d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a449ba5e8e49928d014bc7645f05beb80":[1,0,0,2,8,7,5,1,0,0,4,9]
+"d9/d70/class_alis_1_1_core_1_1_network_1_1_pong_event_args.html":[1,0,0,2,7,9]
 };

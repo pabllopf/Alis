@@ -1,5 +1,16 @@
 var NAVTREEINDEX14 =
 {
+"d4/d03/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_display_event.html#ac7abc5c97919b705c96355a157924d8d":[1,0,0,2,5,3,1,27,7],
+"d4/d03/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_display_event.html#af6ae868eea1b01b96806d774541fa64e":[1,0,0,2,5,3,1,27,3],
+"d4/d07/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_is_static.html":[1,0,0,2,0,2,0,30],
+"d4/d07/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_is_static.html#a39e0e8ae361ddcca6efabd2c1c127715":[1,0,0,2,0,2,0,30,1],
+"d4/d07/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_is_static.html#a65082aa8c7c31091c68336da73ebd2e9":[1,0,0,2,0,2,0,30,0],
+"d4/d07/namespace_alis_1_1_core_1_1_manager_1_1_input.html":[1,0,0,2,6,2],
+"d4/d07/namespace_alis_1_1_core_1_1_manager_1_1_input.html":[0,0,0,2,6,2],
+"d4/d0a/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_splitter_ptr.html":[1,0,0,2,5,0,2,13],
+"d4/d0a/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_splitter_ptr.html#a100db01a8c559cc0d4945ed57dc92177":[1,0,0,2,5,0,2,13,10],
+"d4/d0a/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_splitter_ptr.html#a2067647164fb0c680355d358edbb844a":[1,0,0,2,5,0,2,13,3],
+"d4/d0a/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_splitter_ptr.html#a236c8687b46d386800dd612d97bfcd11":[1,0,0,2,5,0,2,13,1],
 "d4/d0a/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_splitter_ptr.html#a3835ce387c42488e1b91da2b1f8906a5":[1,0,0,2,5,0,2,13,7],
 "d4/d0a/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_splitter_ptr.html#a3bd9e9051ed1a77580b0c5ad52caf13b":[1,0,0,2,5,0,2,13,2],
 "d4/d0a/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_splitter_ptr.html#a3d50182c9a003710b0b79e24bc367b5b":[1,0,0,2,5,0,2,13,5],
@@ -238,16 +249,5 @@ var NAVTREEINDEX14 =
 "d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a6ab202b867d79926f9be0bbdf0163f1d":[1,0,0,2,5,3,1,31,22],
 "d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a6c24293a2c24bedee66091805f283dc1":[1,0,0,2,5,3,1,31,51],
 "d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a6ea138473f6635233ab9257a4295889f":[1,0,0,2,5,3,1,31,85],
-"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a7605fd5a339aecd47a3cfa17f43742c8":[1,0,0,2,5,3,1,31,55],
-"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a782d64b9552f5670b67b5723405b9715":[1,0,0,2,5,3,1,31,10],
-"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a7c6ca2c244c9a590178e5b0f94b54f41":[1,0,0,2,5,3,1,31,27],
-"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a84cb85b7251ee3ba8e17e09028a80171":[1,0,0,2,5,3,1,31,13],
-"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a859b8d5d6247dc3f4f71c97e08961486":[1,0,0,2,5,3,1,31,59],
-"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a87fc095a1930053d5be5eb2fcad92306":[1,0,0,2,5,3,1,31,82],
-"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a89e324871331a1539b36b2c61d315780":[1,0,0,2,5,3,1,31,61],
-"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a8dddcbc68dd02af0ca16b1d745311223":[1,0,0,2,5,3,1,31,2],
-"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a8ee41f1031b53f5d47d276a6e9c6ca54":[1,0,0,2,5,3,1,31,29],
-"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a8f79fd2d556442964e3fa559766a2070":[1,0,0,2,5,3,1,31,46],
-"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a969a2217c397852ebf4852ba474f4fbf":[1,0,0,2,5,3,1,31,28],
-"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a9811a7a8ffe6efd2ffbc33cf972da0b0":[1,0,0,2,5,3,1,31,57]
+"d4/d52/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_event.html#a7605fd5a339aecd47a3cfa17f43742c8":[1,0,0,2,5,3,1,31,55]
 };

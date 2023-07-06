@@ -1,5 +1,16 @@
 var NAVTREEINDEX25 =
 {
+"d7/db7/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_stb_undo_record.html#ade17ff3e23900e9fd7b2357a49c28ed9":[1,0,0,2,5,0,2,79,1],
+"d7/db7/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_stb_undo_record.html#afafbb5e3258984a30e5ac401da23389b":[1,0,0,2,5,0,2,79,3],
+"d7/dc0/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas.html":[1,0,0,2,5,0,2,17],
+"d7/dc0/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas.html#a038c57e707c661a8e8a21799ca8a16d1":[1,0,0,2,5,0,2,17,57],
+"d7/dc0/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas.html#a04c7650650026e8ecef3ac69e7342360":[1,0,0,2,5,0,2,17,30],
+"d7/dc0/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas.html#a04f5a0b12c9ebe94fd8cd5a65312ee70":[1,0,0,2,5,0,2,17,15],
+"d7/dc0/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas.html#a0a4939726000df6e442293c7c129449e":[1,0,0,2,5,0,2,17,77],
+"d7/dc0/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas.html#a0ba3532af6cb2ec9874e3f027a9a83b8":[1,0,0,2,5,0,2,17,34],
+"d7/dc0/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas.html#a0d7d5128244fc44ac95c618ef3b687cc":[1,0,0,2,5,0,2,17,23],
+"d7/dc0/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas.html#a0e4a062f7703472cff63a6b113058db4":[1,0,0,2,5,0,2,17,64],
+"d7/dc0/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas.html#a0ee0ced817bd8d82e5df40818520cb1b":[1,0,0,2,5,0,2,17,44],
 "d7/dc0/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas.html#a11989c3c8111fe2ddc48e54755e72394":[1,0,0,2,5,0,2,17,47],
 "d7/dc0/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas.html#a13283a3ac5e5f36f63028cb309c4237b":[1,0,0,2,5,0,2,17,4],
 "d7/dc0/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas.html#a1417fdb4bbdd88a819463f9f0cf3bff0":[1,0,0,2,5,0,2,17,73],
@@ -238,16 +249,5 @@ var NAVTREEINDEX25 =
 "d8/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_text_range_ptr.html#a951660149548ff5af5c7322ac5043182":[1,0,0,2,5,0,2,64,9],
 "d8/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_text_range_ptr.html#ab0330ee7622476f5da8f895a9f7242b7":[1,0,0,2,5,0,2,64,1],
 "d8/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_text_range_ptr.html#aca28831f17217c3a03033d1157c14047":[1,0,0,2,5,0,2,64,4],
-"d8/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_text_range_ptr.html#acb23a101cf1fbb53130e47a547947f4a":[1,0,0,2,5,0,2,64,0],
-"d8/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_text_range_ptr.html#ad0598cc4827d4b328743dee2fc25f0c6":[1,0,0,2,5,0,2,64,5],
-"d8/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_text_range_ptr.html#adf3a2d3f3e4234c59b2c6e6e535cc608":[1,0,0,2,5,0,2,64,6],
-"d8/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_text_range_ptr.html#ae82ad2be8403aeb15173ef9eb0beee6a":[1,0,0,2,5,0,2,64,7],
-"d8/d34/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_general.html":[1,0,0,2,0,2,0,21],
-"d8/d34/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_general.html#a5a50fc067dd489712803e5385ced8b44":[1,0,0,2,0,2,0,21,0],
-"d8/d37/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_console_controller.html":[1,0,0,2,0,3,0],
-"d8/d37/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_console_controller.html#a58950181455c25be5b4c6bcd3044f842":[1,0,0,2,0,3,0,0],
-"d8/d3a/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_circle_shape.html":[1,0,0,2,5,4,0,1],
-"d8/d3a/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_circle_shape.html#a17f04b0c53420cffa07cb90d726d72bf":[1,0,0,2,5,4,0,1,3],
-"d8/d3a/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_circle_shape.html#a1af3101374af65772047c2207148590d":[1,0,0,2,5,4,0,1,6],
-"d8/d3a/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_circle_shape.html#a2cf01104ae015b836171d1e0c3e25483":[1,0,0,2,5,4,0,1,8]
+"d8/d32/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_text_range_ptr.html#acb23a101cf1fbb53130e47a547947f4a":[1,0,0,2,5,0,2,64,0]
 };

@@ -1,5 +1,16 @@
 var NAVTREEINDEX31 =
 {
+"da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#ad9c40fe84df0e82bf70d732a198cd56cab043bc6d611582087d8bf1790d863d69":[1,0,0,2,5,4,1,24,0,0],
+"da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#ad9c40fe84df0e82bf70d732a198cd56cabed99e5db57749f375e738c1c0258047":[1,0,0,2,5,4,1,24,0,1],
+"da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#ad9c40fe84df0e82bf70d732a198cd56cad77bb891b6d90fe3dd2d1a7d2d08ceb7":[1,0,0,2,5,4,1,24,0,4],
+"da/db0/namespace_alis_1_1_core_1_1_audio.html":[1,0,0,2,1],
+"da/db0/namespace_alis_1_1_core_1_1_audio.html":[0,0,0,2,1],
+"da/db4/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_color.html":[1,0,0,2,5,0,2,0],
+"da/db4/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_color.html#a3b43611e963b58a1abb41019358e552f":[1,0,0,2,5,0,2,0,0],
+"da/db8/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_winrt_wm_info.html":[1,0,0,2,5,3,1,17],
+"da/db8/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_winrt_wm_info.html#a3f9ae67b8e508888c385bd57e9884a41":[1,0,0,2,5,3,1,17,0],
+"da/dbd/class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_config_1_1_extensions_1_1_controllers_1_1_wind_1_1_curve_1_1_curve.html":[1,0,0,2,11,0,0,0,0,0,0,0],
+"da/dbd/class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_config_1_1_extensions_1_1_controllers_1_1_wind_1_1_curve_1_1_curve.html#a244f8b76f09a5d51dfa54129a3aaffd1":[1,0,0,2,11,0,0,0,0,0,0,0,11],
 "da/dbd/class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_config_1_1_extensions_1_1_controllers_1_1_wind_1_1_curve_1_1_curve.html#a282fd23ecf343ef362c0959d77397e17":[1,0,0,2,11,0,0,0,0,0,0,0,6],
 "da/dbd/class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_config_1_1_extensions_1_1_controllers_1_1_wind_1_1_curve_1_1_curve.html#a2ba87c13b81b6b59a0605b54c26a4743":[1,0,0,2,11,0,0,0,0,0,0,0,9],
 "da/dbd/class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_config_1_1_extensions_1_1_controllers_1_1_wind_1_1_curve_1_1_curve.html#a31c9e0c13fb569299bae9f5606211d14":[1,0,0,2,11,0,0,0,0,0,0,0,2],
@@ -238,16 +249,5 @@ var NAVTREEINDEX31 =
 "db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#a5cf1889e4165d89b4907af78f093a1d9":[1,0,0,2,8,2,2,53],
 "db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#a64cfae12ea29710774523e2bbc2a34d8":[1,0,0,2,8,2,2,13],
 "db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#a65a3104c84391ec494bd363da8971c39":[1,0,0,2,8,2,2,43],
-"db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#a67c3bc0433da7ef617bbcc7ed8da7ff6":[1,0,0,2,8,2,2,46],
-"db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#a6a5ae1360f2c47e21da6d6d49022565e":[1,0,0,2,8,2,2,11],
-"db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#a6d1e635098a035c28992dea334ac0cff":[1,0,0,2,8,2,2,80],
-"db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#a704bf5261211fce2b0258cb08b4d5975":[1,0,0,2,8,2,2,23],
-"db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#a71daf0da2dd5966285327d0843ec6516":[1,0,0,2,8,2,2,18],
-"db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#a77eb2e8fb30dd0decff02f23d6126863":[1,0,0,2,8,2,2,4],
-"db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#a79bbc939a6cea94e5559c26f943c0cd3":[1,0,0,2,8,2,2,15],
-"db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#a7a9096a4787a7237ccb9d1fb9787f7a3":[1,0,0,2,8,2,2,89],
-"db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#a7d13d207719478f5e184a089633f3555":[1,0,0,2,8,2,2,87],
-"db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#a7d70aaaace80e02c8d3e85f888349d2a":[1,0,0,2,8,2,2,37],
-"db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#a7e0c60579005d1c10b8dda887e31fe83":[1,0,0,2,8,2,2,6],
-"db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#a802508fbc7488d8b1bfa792a7b61e95d":[1,0,0,2,8,2,2,69]
+"db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html#a67c3bc0433da7ef617bbcc7ed8da7ff6":[1,0,0,2,8,2,2,46]
 };
