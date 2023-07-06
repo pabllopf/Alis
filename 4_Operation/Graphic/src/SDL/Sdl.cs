@@ -5801,22 +5801,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="b">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetTextureColorMod(
-            IntPtr texture,
-            byte r,
-            byte g,
-            byte b
-        );
-
-
+        public static extern int SDL_SetTextureColorMod(IntPtr texture, byte r, byte g, byte b);
+        
         /// <summary>
         ///     Sdl the unlock texture using the specified texture
         /// </summary>
         /// <param name="texture">The texture</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern void SDL_UnlockTexture(IntPtr texture);
-
-
+        
         /// <summary>
         ///     Sdl the update texture using the specified texture
         /// </summary>
@@ -5826,14 +5820,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pitch">The pitch</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_UpdateTexture(
-            IntPtr texture,
-            ref SdlRect rect,
-            IntPtr pixels,
-            int pitch
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_UpdateTexture(IntPtr texture, ref SdlRect rect, IntPtr pixels, int pitch);
+        
         /// <summary>
         ///     Sdl the update texture using the specified texture
         /// </summary>
@@ -5843,14 +5832,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pitch">The pitch</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_UpdateTexture(
-            IntPtr texture,
-            IntPtr rect,
-            IntPtr pixels,
-            int pitch
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_UpdateTexture(IntPtr texture, IntPtr rect, IntPtr pixels, int pitch);
+        
         /// <summary>
         ///     Sdl the update yuv texture using the specified texture
         /// </summary>
@@ -5864,18 +5848,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="vPitch">The pitch</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_UpdateYUVTexture(
-            IntPtr texture,
-            ref SdlRect rect,
-            IntPtr yPlane,
-            int yPitch,
-            IntPtr uPlane,
-            int uPitch,
-            IntPtr vPlane,
-            int vPitch
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_UpdateYUVTexture(IntPtr texture, ref SdlRect rect, IntPtr yPlane, int yPitch, IntPtr uPlane, int uPitch, IntPtr vPlane, int vPitch);
+        
         /// <summary>
         ///     Sdl the update nv texture using the specified texture
         /// </summary>
@@ -5887,35 +5862,26 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="uvPitch">The uv pitch</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_UpdateNVTexture(
-            IntPtr texture,
-            ref SdlRect rect,
-            IntPtr yPlane,
-            int yPitch,
-            IntPtr uvPlane,
-            int uvPitch
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_UpdateNVTexture(IntPtr texture, ref SdlRect rect, IntPtr yPlane, int yPitch, IntPtr uvPlane, int uvPitch);
+        
         /// <summary>
         ///     Sdl the render target supported using the specified renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_RenderTargetSupported(
-            IntPtr renderer
-        );
-
-
+        [return: NotNull]
+        public static extern SdlBool SDL_RenderTargetSupported(IntPtr renderer);
+        
         /// <summary>
         ///     Sdl the get render target using the specified renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern IntPtr SDL_GetRenderTarget(IntPtr renderer);
-
 
         /// <summary>
         ///     Sdl the render get metal layer using the specified renderer
@@ -5923,10 +5889,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="renderer">The renderer</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_RenderGetMetalLayer(
-            IntPtr renderer
-        );
-
+        [return: NotNull]
+        public static extern IntPtr SDL_RenderGetMetalLayer(IntPtr renderer);
 
         /// <summary>
         ///     Sdl the render get metal command encoder using the specified renderer
@@ -5934,11 +5898,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="renderer">The renderer</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_RenderGetMetalCommandEncoder(
-            IntPtr renderer
-        );
-
-
+        [return: NotNull]
+        public static extern IntPtr SDL_RenderGetMetalCommandEncoder(IntPtr renderer);
+        
         /// <summary>
         ///     Sdl the render set v sync using the specified renderer
         /// </summary>
@@ -5946,6 +5908,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="vsync">The vsync</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_RenderSetVSync(IntPtr renderer, int vsync);
 
 
@@ -5955,15 +5918,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="renderer">The renderer</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern SdlBool SDL_RenderIsClipEnabled(IntPtr renderer);
-
-
+        
         /// <summary>
         ///     Sdl the render flush using the specified renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_RenderFlush(IntPtr renderer);
 
         /// <summary>
@@ -5974,6 +5938,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="c">The </param>
         /// <param name="d">The </param>
         /// <returns>The uint</returns>
+        [return: NotNull]
         private static uint SdlDefinePixelFourcc(byte a, byte b, byte c, byte d) => SDL_FOURCC(a, b, c, d);
 
         /// <summary>
@@ -5985,6 +5950,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="bits">The bits</param>
         /// <param name="bytes">The bytes</param>
         /// <returns>The uint</returns>
+        [return: NotNull]
         private static uint SdlDefinePixelFormat(
             SdlPixelType type,
             uint order,
@@ -6006,6 +5972,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The byte</returns>
+        [return: NotNull]
         private static byte SdlPixelFlag(uint x) => (byte) ((x >> 28) & 0x0F);
 
         /// <summary>
@@ -6013,6 +5980,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The byte</returns>
+        [return: NotNull]
         private static byte SdlPixelType(uint x) => (byte) ((x >> 24) & 0x0F);
 
         /// <summary>
@@ -6020,6 +5988,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The byte</returns>
+        [return: NotNull]
         private static byte SdlPixelOrder(uint x) => (byte) ((x >> 20) & 0x0F);
 
         /// <summary>
@@ -6027,6 +5996,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The byte</returns>
+        [return: NotNull]
         public static byte SdlPixelLayout(uint x) => (byte) ((x >> 16) & 0x0F);
 
         /// <summary>
@@ -6034,6 +6004,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The byte</returns>
+        [return: NotNull]
         public static byte SdlBitsPerPixel(uint x) => (byte) ((x >> 8) & 0xFF);
 
         /// <summary>
@@ -6041,6 +6012,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The byte</returns>
+        [return: NotNull]
         public static byte SdlBytesPerPixel(uint x)
         {
             if (SdlIsPixelFormatFour(x))
@@ -6063,6 +6035,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
+        [return: NotNull]
         public static bool SdlIsPixelFormatIndexed(uint format)
         {
             if (SdlIsPixelFormatFour(format))
@@ -6082,6 +6055,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
+        [return: NotNull]
         private static bool SdlIsPixelFormatPacked(uint format)
         {
             if (SdlIsPixelFormatFour(format))
@@ -6101,6 +6075,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
+        [return: NotNull]
         private static bool SdlIsPixelFormatArray(uint format)
         {
             if (SdlIsPixelFormatFour(format))
@@ -6122,6 +6097,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
+        [return: NotNull]
         public static bool SdlIsPixelFormatAlpha(uint format)
         {
             if (SdlIsPixelFormatPacked(format))
@@ -6152,6 +6128,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
+        [return: NotNull]
         private static bool SdlIsPixelFormatFour(uint format) => (format == 0) && (SdlPixelFlag(format) != 1);
         
         /// <summary>
@@ -6160,15 +6137,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pixelFormat">The pixel format</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern IntPtr SDL_AllocFormat(uint pixelFormat);
-
-
+        
         /// <summary>
         ///     Sdl the alloc palette using the specified n colors
         /// </summary>
         /// <param name="nColors">The n colors</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern IntPtr SDL_AllocPalette(int nColors);
 
         /// <summary>
@@ -6177,26 +6155,23 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="gamma">The gamma</param>
         /// <param name="ramp">The ramp</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_CalculateGammaRamp(
-            float gamma,
-            [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)]
-            ushort[] ramp
-        );
-
+        [return: NotNull]
+        public static extern void SDL_CalculateGammaRamp(float gamma, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] ramp);
 
         /// <summary>
         ///     Sdl the free format using the specified format
         /// </summary>
         /// <param name="format">The format</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern void SDL_FreeFormat(IntPtr format);
-
-
+        
         /// <summary>
         ///     Sdl the free palette using the specified palette
         /// </summary>
         /// <param name="palette">The palette</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern void SDL_FreePalette(IntPtr palette);
 
         /// <summary>
@@ -6205,20 +6180,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="format">The format</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetPixelFormatName", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GetPixelFormatName(
-            uint format
-        );
+        [return: NotNull]
+        private static extern IntPtr INTERNAL_SDL_GetPixelFormatName(uint format);
 
         /// <summary>
         ///     Sdl the get pixel format name using the specified format
         /// </summary>
         /// <param name="format">The format</param>
         /// <returns>The string</returns>
-        public static string SDL_GetPixelFormatName(uint format) => Utf8ToManaged(
-            INTERNAL_SDL_GetPixelFormatName(format)
-        );
-
-
+        [return: NotNull]
+        public static string SDL_GetPixelFormatName(uint format) => Utf8ToManaged(INTERNAL_SDL_GetPixelFormatName(format));
+        
         /// <summary>
         ///     Sdl the get rgb using the specified pixel
         /// </summary>
@@ -6228,15 +6200,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="g">The </param>
         /// <param name="b">The </param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_GetRGB(
-            uint pixel,
-            IntPtr format,
-            out byte r,
-            out byte g,
-            out byte b
-        );
-
-
+        [return: NotNull]
+        public static extern void SDL_GetRGB(uint pixel, IntPtr format, out byte r, out byte g, out byte b);
+        
         /// <summary>
         ///     Sdl the get rgba using the specified pixel
         /// </summary>
@@ -6247,16 +6213,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="b">The </param>
         /// <param name="a">The </param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_GetRGBA(
-            uint pixel,
-            IntPtr format,
-            out byte r,
-            out byte g,
-            out byte b,
-            out byte a
-        );
-
-
+        [return: NotNull]
+        public static extern void SDL_GetRGBA(uint pixel,IntPtr format, out byte r, out byte g, out byte b, out byte a);
+        
         /// <summary>
         ///     Sdl the map rgb using the specified format
         /// </summary>
@@ -6266,12 +6225,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="b">The </param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_MapRGB(
-            IntPtr format,
-            byte r,
-            byte g,
-            byte b
-        );
+        [return: NotNull]
+        public static extern uint SDL_MapRGB(IntPtr format, byte r, byte g, byte b);
         
         /// <summary>
         ///     Sdl the map rgba using the specified format
