@@ -589,23 +589,5 @@ namespace Alis.Core.Audio.SFML
         /// <returns>The systems time</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Time sfMusic_getPlayingOffset(IntPtr music);
-
-
-        /// <summary>
-        ///     The time span
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct TimeSpan
-        {
-            /// <summary>
-            ///     The offset
-            /// </summary>
-            private readonly Time offset;
-
-            /// <summary>
-            ///     The length
-            /// </summary>
-            private readonly Time length;
-        }
     }
 }
