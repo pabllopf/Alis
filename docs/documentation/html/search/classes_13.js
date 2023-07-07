@@ -11,7 +11,7 @@ var searchData=
   ['timemanager_10534',['TimeManager',['../df/d54/class_alis_1_1_core_1_1_manager_1_1_time_1_1_time_manager.html',1,'Alis::Core::Manager::Time']]],
   ['timemanagerbase_10535',['TimeManagerBase',['../db/dcb/class_alis_1_1_core_1_1_manager_1_1_time_1_1_time_manager_base.html',1,'Alis::Core::Manager::Time']]],
   ['timeofimpact_10536',['TimeOfImpact',['../d1/d54/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_t_o_i_1_1_time_of_impact.html',1,'Alis::Core::Physic::Collision::TOI']]],
-  ['timespan_10537',['TimeSpan',['../df/d42/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_music_1_1_time_span.html',1,'Alis::Core::Audio::SFML::Music']]],
+  ['timespan_10537',['TimeSpan',['../da/d89/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_time_span.html',1,'Alis::Core::Audio::SFML']]],
   ['timestep_10538',['TimeStep',['../d5/d6c/class_alis_1_1_core_1_1_aspect_1_1_time_1_1_time_step.html',1,'Alis::Core::Aspect::Time']]],
   ['toiinput_10539',['ToiInput',['../d9/d13/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_t_o_i_1_1_toi_input.html',1,'Alis::Core::Physic::Collision::TOI']]],
   ['toioutput_10540',['ToiOutput',['../de/d32/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_t_o_i_1_1_toi_output.html',1,'Alis::Core::Physic::Collision::TOI']]],

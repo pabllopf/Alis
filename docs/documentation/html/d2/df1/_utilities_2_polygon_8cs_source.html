@@ -383,21 +383,21 @@ $(document).ready(function(){initNavTree('d2/df1/_utilities_2_polygon_8cs_source
 <div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                {</div>
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                    vertices.Add(</div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                        <span class="keyword">new</span> <a class="code" href="../../d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html">Vector2F</a>(radius *</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                                              (<span class="keywordtype">float</span>) Math.Cos(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize),</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                                     (<span class="keywordtype">float</span>) Math.Cos(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize),</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                            -radius *</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                               (<span class="keywordtype">float</span>) Math.Sin(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize)));</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                            (<span class="keywordtype">float</span>) Math.Sin(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize)));</div>
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                    vertices.Add(</div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                        <span class="keyword">new</span> <a class="code" href="../../d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html">Vector2F</a>((radius + toothHeight) *</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                                              (<span class="keywordtype">float</span>) Math.Cos(stepSize * i + toothAngleStepSize + toothTipStepSize),</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                                     (<span class="keywordtype">float</span>) Math.Cos(stepSize * i + toothAngleStepSize + toothTipStepSize),</div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                            -(radius + toothHeight) *</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                               (<span class="keywordtype">float</span>) Math.Sin(stepSize * i + toothAngleStepSize + toothTipStepSize)));</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                            (<span class="keywordtype">float</span>) Math.Sin(stepSize * i + toothAngleStepSize + toothTipStepSize)));</div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                }</div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                vertices.Add(<span class="keyword">new</span> <a class="code" href="../../d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html">Vector2F</a>((radius + toothHeight) *</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                                                   (<span class="keywordtype">float</span>) Math.Cos(stepSize * i + toothAngleStepSize),</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                                          (<span class="keywordtype">float</span>) Math.Cos(stepSize * i + toothAngleStepSize),</div>
 <div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                    -(radius + toothHeight) *</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                       (<span class="keywordtype">float</span>) Math.Sin(stepSize * i + toothAngleStepSize)));</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                    (<span class="keywordtype">float</span>) Math.Sin(stepSize * i + toothAngleStepSize)));</div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                vertices.Add(<span class="keyword">new</span> <a class="code" href="../../d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html">Vector2F</a>(radius * (<span class="keywordtype">float</span>) Math.Cos(stepSize * i),</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                    -radius * (<span class="keywordtype">float</span>) Math.Sin(stepSize * i)));</div>
@@ -465,7 +465,7 @@ $(document).ready(function(){initNavTree('d2/df1/_utilities_2_polygon_8cs_source
   <ul>
     <li class="navelem"><a class="el" href="../../dir_8272ea2c9ef4a5a450abbc74ffafe4de.html">4_Operation</a></li><li class="navelem"><a class="el" href="../../dir_52bde0543a13a94906a2e677a9f1758f.html">Physic</a></li><li class="navelem"><a class="el" href="../../dir_16bee6912db060554756e46a6c0ce1a1.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cef10556bc32690826b90b7cc64a1a0a.html">Utilities</a></li><li class="navelem"><b>Polygon.cs</b></li>
     <li class="footer">
-      <a>Generated on | Thu Jul 6 2023 |</a>
+      <a>Generated on | Fri Jul 7 2023 |</a>
     </li>
   </ul>
 </div>

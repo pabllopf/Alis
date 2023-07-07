@@ -1,6 +1,5 @@
 var class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_music =
 [
-    [ "TimeSpan", "df/d42/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_music_1_1_time_span.html", "df/d42/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_music_1_1_time_span" ],
     [ "Music", "df/db5/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_music.html#afd59da09b5d21b5fc72e66b6dd760c72", null ],
     [ "Music", "df/db5/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_music.html#aac6a3cb44e6467bc228536465ead66e5", null ],
     [ "Music", "df/db5/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_music.html#aa1c2c4a7b5ef2b544d70e3a084eb4859", null ],

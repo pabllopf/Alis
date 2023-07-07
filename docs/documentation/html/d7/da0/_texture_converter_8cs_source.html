@@ -412,14 +412,14 @@ $(document).ready(function(){initNavTree('d7/da0/_texture_converter_8cs_source.h
 <div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;            {</div>
 <div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(</div>
 <div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;                    <span class="stringliteral">&quot;&#39;_data&#39; length can&#39;t be less then 4. Your texture must be at least 2 x 2 pixels in size. &quot;</span> +</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;                             <span class="stringliteral">&quot;You have to use SetTextureData(uint[] data, int width) before calling this method.&quot;</span>);</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;                    <span class="stringliteral">&quot;You have to use SetTextureData(uint[] data, int width) before calling this method.&quot;</span>);</div>
 <div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;            }</div>
 <div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160; </div>
 <div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../db/d1f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_texture_tools_1_1_texture_converter.html#a8f0b0ced522500b3bc3450c52f7e69e9">width</a> &lt; 2)</div>
 <div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;            {</div>
 <div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception(</div>
 <div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;                    <span class="stringliteral">&quot;&#39;_width&#39; can&#39;t be less then 2. Your texture must be at least 2 x 2 pixels in size. &quot;</span> +</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                             <span class="stringliteral">&quot;You have to use SetTextureData(uint[] data, int width) before calling this method.&quot;</span>);</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                    <span class="stringliteral">&quot;You have to use SetTextureData(uint[] data, int width) before calling this method.&quot;</span>);</div>
 <div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;            }</div>
 <div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160; </div>
 <div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../db/d1f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_texture_tools_1_1_texture_converter.html#aa4bab65d076c4031147845236ab39b85">data</a>.Length % <a class="code" href="../../db/d1f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_texture_tools_1_1_texture_converter.html#a8f0b0ced522500b3bc3450c52f7e69e9">width</a> != 0)</div>
@@ -937,7 +937,7 @@ $(document).ready(function(){initNavTree('d7/da0/_texture_converter_8cs_source.h
 <div class="line"><a name="l01048"></a><span class="lineno"> 1048</span>&#160;                            <span class="keywordflow">if</span> (addFind)</div>
 <div class="line"><a name="l01049"></a><span class="lineno"> 1049</span>&#160;                            {</div>
 <div class="line"><a name="l01050"></a><span class="lineno"> 1050</span>&#160;                                edges.Add((y - vertex1.Y) / slope.<a class="code" href="../../d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html#a93f3b6774496dde5e61089334ee2be42">Y</a> * slope.<a class="code" href="../../d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html#a4628e7cdce93cdef928e2f5e13bcaa4e">X</a> +</div>
-<div class="line"><a name="l01051"></a><span class="lineno"> 1051</span>&#160;                                                vertex1.X); <span class="comment">// Calculate and add the x coord.</span></div>
+<div class="line"><a name="l01051"></a><span class="lineno"> 1051</span>&#160;                                          vertex1.X); <span class="comment">// Calculate and add the x coord.</span></div>
 <div class="line"><a name="l01052"></a><span class="lineno"> 1052</span>&#160;                            }</div>
 <div class="line"><a name="l01053"></a><span class="lineno"> 1053</span>&#160;                        }</div>
 <div class="line"><a name="l01054"></a><span class="lineno"> 1054</span>&#160;                    }</div>
@@ -1503,7 +1503,7 @@ $(document).ready(function(){initNavTree('d7/da0/_texture_converter_8cs_source.h
   <ul>
     <li class="navelem"><a class="el" href="../../dir_8272ea2c9ef4a5a450abbc74ffafe4de.html">4_Operation</a></li><li class="navelem"><a class="el" href="../../dir_52bde0543a13a94906a2e677a9f1758f.html">Physic</a></li><li class="navelem"><a class="el" href="../../dir_16bee6912db060554756e46a6c0ce1a1.html">src</a></li><li class="navelem"><a class="el" href="../../dir_1a405381ab17d9fca57871013692a818.html">Tools</a></li><li class="navelem"><a class="el" href="../../dir_55449687556cfe1327d5c583e7ca27bd.html">TextureTools</a></li><li class="navelem"><b>TextureConverter.cs</b></li>
     <li class="footer">
-      <a>Generated on | Thu Jul 6 2023 |</a>
+      <a>Generated on | Fri Jul 7 2023 |</a>
     </li>
   </ul>
 </div>

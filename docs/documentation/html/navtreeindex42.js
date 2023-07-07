@@ -1,5 +1,8 @@
 var NAVTREEINDEX42 =
 {
+"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#abec52f61c5473d2b64744e5e3fa92948":[1,0,0,2,5,0,2,30,79],
+"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#abf23800f97c9bbd1d68829f527140eab":[1,0,0,2,5,0,2,30,254],
+"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#abf42e3a29a9ad08af07ff5847fc7301e":[1,0,0,2,5,0,2,30,512],
 "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#abfe7c7d855f2544a832081e7d74d19ce":[1,0,0,2,5,0,2,30,299],
 "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#ac00391cf35be97998790b1379cfe0808":[1,0,0,2,5,0,2,30,415],
 "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#ac0489f251113a085b1814bcfbe5f51f8":[1,0,0,2,5,0,2,30,457],
@@ -237,8 +240,8 @@ var NAVTREEINDEX42 =
 "dd/dd8/class_alis_1_1_core_1_1_network_1_1_exceptions_1_1_invalid_http_response_code_exception.html#adcefcc073b76673ae2ab31027e58ab44":[1,0,0,2,7,0,1,2],
 "dd/dd8/class_alis_1_1_core_1_1_network_1_1_exceptions_1_1_invalid_http_response_code_exception.html#ade8b73fac7a5c341dc667223aa5f1d33":[1,0,0,2,7,0,1,1],
 "dd/dd8/class_alis_1_1_core_1_1_network_1_1_exceptions_1_1_invalid_http_response_code_exception.html#ae26bb3b007357b845144e8f89640a5dc":[1,0,0,2,7,0,1,3],
-"dd/dd9/namespace_alis_1_1_core.html":[1,0,0,2],
 "dd/dd9/namespace_alis_1_1_core.html":[0,0,0,2],
+"dd/dd9/namespace_alis_1_1_core.html":[1,0,0,2],
 "dd/dde/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_simple.html":[0,0,0,2,8,7,1,0],
 "dd/de4/namespace_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_utils.html":[0,0,0,2,5,0,4],
 "dd/de4/namespace_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_utils.html":[1,0,0,2,5,0,3],
@@ -246,8 +249,5 @@ var NAVTREEINDEX42 =
 "dd/deb/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_resolution.html#ad561946e73ab9db4282a1c471d98102a":[1,0,0,2,0,2,0,43,0],
 "dd/df0/interface_alis_1_1_core_1_1_plugin_1_1_i_plugin.html":[1,0,0,2,9,0],
 "dd/df0/interface_alis_1_1_core_1_1_plugin_1_1_i_plugin.html#a07724630c096fd0786ed35625acaa26c":[1,0,0,2,9,0,3],
-"dd/df0/interface_alis_1_1_core_1_1_plugin_1_1_i_plugin.html#a8a59acd08ccbf91b433d08928d7d85cb":[1,0,0,2,9,0,2],
-"dd/df0/interface_alis_1_1_core_1_1_plugin_1_1_i_plugin.html#abdc4d5efbe1d01a35a2e6a388d4c0d56":[1,0,0,2,9,0,1],
-"dd/df0/interface_alis_1_1_core_1_1_plugin_1_1_i_plugin.html#ad2d0383c5b85a7ee7104b3a860c7fafc":[1,0,0,2,9,0,0],
-"dd/df6/namespace_alis_1_1_core_1_1_physic_1_1_shared.html":[0,0,0,2,8,6]
+"dd/df0/interface_alis_1_1_core_1_1_plugin_1_1_i_plugin.html#a8a59acd08ccbf91b433d08928d7d85cb":[1,0,0,2,9,0,2]
 };

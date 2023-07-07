@@ -1,5 +1,8 @@
 var NAVTREEINDEX39 =
 {
+"dd/d44/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_controller_axis_event.html":[1,0,0,2,5,3,1,22],
+"dd/d44/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_controller_axis_event.html#a04e04577a2024c777529b2148a25f4c5":[1,0,0,2,5,3,1,22,6],
+"dd/d44/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_controller_axis_event.html#a2d0cebfb9c6e93aba5fd742c65645460":[1,0,0,2,5,3,1,22,3],
 "dd/d44/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_controller_axis_event.html#a3ff896584ee50dd00c9d4ae3e2a40213":[1,0,0,2,5,3,1,22,4],
 "dd/d44/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_controller_axis_event.html#a5748ed637bcda4e423287c77b375c1c4":[1,0,0,2,5,3,1,22,0],
 "dd/d44/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_controller_axis_event.html#a5fb8f2695e3429553b7f330a3fa34a9a":[1,0,0,2,5,3,1,22,5],
@@ -246,8 +249,5 @@ var NAVTREEINDEX39 =
 "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a137e6a3e221d91b9a5a24fba4091c74d":[1,0,0,2,5,0,2,30,22],
 "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a13c1a4182e08c24f92824d254d365c87":[1,0,0,2,5,0,2,30,463],
 "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a141a4ebf00f157ca1fd66d3a8860b1fd":[1,0,0,2,5,0,2,30,473],
-"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a146a5b69a0a41acdbab0cee3c09df6b0":[1,0,0,2,5,0,2,30,277],
-"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a1504e07249fa3e02a6f630a84cac12d2":[1,0,0,2,5,0,2,30,542],
-"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a1535bbcbca99a89a1850c32f84d93643":[1,0,0,2,5,0,2,30,194],
-"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a16364aaf290c1d3f2023c3fa60c1832e":[1,0,0,2,5,0,2,30,355]
+"dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html#a146a5b69a0a41acdbab0cee3c09df6b0":[1,0,0,2,5,0,2,30,277]
 };

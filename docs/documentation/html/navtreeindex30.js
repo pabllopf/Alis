@@ -146,6 +146,9 @@ var NAVTREEINDEX30 =
 "da/d86/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_point.html#ad10c7c5395538a748b237377cb463eb0":[1,0,0,2,8,7,5,4,3,8],
 "da/d86/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_point.html#ad141b1c2e89bba0704a67a6cf2c9fc75":[1,0,0,2,8,7,5,4,3,3],
 "da/d86/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_point.html#ae5d6b0295039bb0ee7e3512481a0f60f":[1,0,0,2,8,7,5,4,3,4],
+"da/d89/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_time_span.html":[1,0,0,2,1,3,9],
+"da/d89/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_time_span.html#a236fc83d3f13c3ec6021e44a26ab84c4":[1,0,0,2,1,3,9,1],
+"da/d89/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_time_span.html#a428535b5174c433f2c56d831b3cde582":[1,0,0,2,1,3,9,0],
 "da/d93/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_pool.html":[1,0,0,2,8,6,3],
 "da/d93/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_pool.html#a014e46be77d673a0c659af09a608eb1f":[1,0,0,2,8,6,3,1],
 "da/d93/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_pool.html#a0750d8cbb7502cfa0f92432b2987b1b8":[1,0,0,2,8,6,3,5],
@@ -246,8 +249,5 @@ var NAVTREEINDEX30 =
 "da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#a66e0bc60357d579f953592b004afb670":[1,0,0,2,5,4,1,24,4],
 "da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#abe3fe1670789c4ab0c793be8bf815db6":[1,0,0,2,5,4,1,24,2],
 "da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#ad9c40fe84df0e82bf70d732a198cd56c":[1,0,0,2,5,4,1,24,0],
-"da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#ad9c40fe84df0e82bf70d732a198cd56ca834c072a52bcf98866ed2eadaaa861a1":[1,0,0,2,5,4,1,24,0,6],
-"da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#ad9c40fe84df0e82bf70d732a198cd56ca8a88c39cef668fb55f188af09665bd40":[1,0,0,2,5,4,1,24,0,3],
-"da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#ad9c40fe84df0e82bf70d732a198cd56ca9e9fa52e0aa4a2b519f8287760d7c3ac":[1,0,0,2,5,4,1,24,0,2],
-"da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#ad9c40fe84df0e82bf70d732a198cd56caabbd64f40c34c537d3a571af068fce29":[1,0,0,2,5,4,1,24,0,5]
+"da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#ad9c40fe84df0e82bf70d732a198cd56ca834c072a52bcf98866ed2eadaaa861a1":[1,0,0,2,5,4,1,24,0,6]
 };

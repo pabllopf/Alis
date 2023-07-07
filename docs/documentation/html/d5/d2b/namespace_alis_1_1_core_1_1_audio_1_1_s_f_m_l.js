@@ -8,5 +8,6 @@ var namespace_alis_1_1_core_1_1_audio_1_1_s_f_m_l =
     [ "SoundBufferRecorder", "dc/d5f/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_buffer_recorder.html", "dc/d5f/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_buffer_recorder" ],
     [ "SoundRecorder", "d0/d94/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_recorder.html", "d0/d94/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_recorder" ],
     [ "SoundStream", "d2/d3d/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream.html", "d2/d3d/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream" ],
-    [ "Time", "de/ddc/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_time.html", "de/ddc/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_time" ]
+    [ "Time", "de/ddc/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_time.html", "de/ddc/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_time" ],
+    [ "TimeSpan", "da/d89/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_time_span.html", "da/d89/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_time_span" ]
 ];

@@ -1,5 +1,8 @@
 var NAVTREEINDEX36 =
 {
+"dc/d0a/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_native.html#a948ac9b7bbf4c9e013ee972966ad5053":[1,0,0,2,5,0,2,36,43],
+"dc/d0a/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_native.html#a9519ad77903aeb8fbac138424f283c38":[1,0,0,2,5,0,2,36,385],
+"dc/d0a/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_native.html#a955d7c4c84984f4cc5147a8c9a3421c3":[1,0,0,2,5,0,2,36,164],
 "dc/d0a/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_native.html#a95b944c87a72bab33f7293cd3399b3ec":[1,0,0,2,5,0,2,36,54],
 "dc/d0a/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_native.html#a95ca82de9a10617369f408d4a29ff10a":[1,0,0,2,5,0,2,36,156],
 "dc/d0a/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_native.html#a961a602ec02f593c3d5175218a65b59c":[1,0,0,2,5,0,2,36,499],
@@ -246,8 +249,5 @@ var NAVTREEINDEX36 =
 "dc/d0a/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_native.html#af9f837d082cd89b327c1061000dec2e5":[1,0,0,2,5,0,2,36,147],
 "dc/d0a/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_native.html#afa6a30c4edd3ae1739975050d0b43f68":[1,0,0,2,5,0,2,36,64],
 "dc/d0a/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_native.html#afb2b5c3906a35773a0b82f062be919dc":[1,0,0,2,5,0,2,36,265],
-"dc/d0a/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_native.html#afb790f2ae7c25e6e82653119c2833ab5":[1,0,0,2,5,0,2,36,298],
-"dc/d0a/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_native.html#afbcb8d1bd68f78065d75bc6c0eb5d367":[1,0,0,2,5,0,2,36,428],
-"dc/d0a/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_native.html#afbdadc6547b54dfa464a936fecf7b483":[1,0,0,2,5,0,2,36,124],
-"dc/d0a/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_native.html#afbf917008a45bc677080bdf4483920c7":[1,0,0,2,5,0,2,36,543]
+"dc/d0a/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_native.html#afb790f2ae7c25e6e82653119c2833ab5":[1,0,0,2,5,0,2,36,298]
 };

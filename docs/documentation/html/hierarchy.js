@@ -1041,7 +1041,7 @@ var hierarchy =
     [ "Alis.Core.Graphic.SFML.Windows.TextEvent", "d8/d72/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_text_event.html", null ],
     [ "Alis.Core.Physic.Tools.TextureTools.TextureConverter", "db/d1f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_texture_tools_1_1_texture_converter.html", null ],
     [ "Alis.Core.Physic.Collision.TOI.TimeOfImpact", "d1/d54/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_t_o_i_1_1_time_of_impact.html", null ],
-    [ "Alis.Core.Audio.SFML.Music.TimeSpan", "df/d42/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_music_1_1_time_span.html", null ],
+    [ "Alis.Core.Audio.SFML.TimeSpan", "da/d89/struct_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_time_span.html", null ],
     [ "Alis.Core.Aspect.Time.TimeStep", "d5/d6c/class_alis_1_1_core_1_1_aspect_1_1_time_1_1_time_step.html", null ],
     [ "Alis.Core.Physic.Collision.TOI.ToiInput", "d9/d13/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_t_o_i_1_1_toi_input.html", null ],
     [ "Alis.Core.Physic.Collision.TOI.ToiOutput", "de/d32/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_t_o_i_1_1_toi_output.html", null ],
