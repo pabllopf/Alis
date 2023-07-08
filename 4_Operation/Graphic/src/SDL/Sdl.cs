@@ -1865,13 +1865,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="maxNum">The max num</param>
         /// <returns>The long</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern long SDL_RwRead(
-            IntPtr context,
-            IntPtr ptr,
-            IntPtr size,
-            IntPtr maxNum
-        );
-
+        public static extern long SDL_RwRead(IntPtr context, IntPtr ptr, IntPtr size, IntPtr maxNum);
 
         /// <summary>
         ///     Sdl the r w write using the specified context
@@ -2905,14 +2899,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="flags">The flags</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateWindow", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_CreateWindow(
-            byte[] title,
-            int x,
-            int y,
-            int w,
-            int h,
-            SdlWindowFlags flags
-        );
+        private static extern IntPtr INTERNAL_SDL_CreateWindow(byte[] title, int x, int y, int w, int h, SdlWindowFlags flags);
 
         /// <summary>
         ///     Sdl the create window using the specified title
@@ -5292,17 +5279,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="flip">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyExF(
-            IntPtr renderer,
-            IntPtr texture,
-            ref SdlRect srcRect,
-            IntPtr dstRect,
-            double angle,
-            IntPtr center,
-            SdlRendererFlip flip
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_RenderCopyExF(IntPtr renderer, IntPtr texture, ref SdlRect srcRect, IntPtr dstRect, double angle, IntPtr center, SdlRendererFlip flip);
+        
         /// <summary>
         ///     Sdl the render copy ex f using the specified renderer
         /// </summary>
@@ -5315,16 +5294,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="flip">The flip</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderCopyExF(
-            IntPtr renderer,
-            IntPtr texture,
-            IntPtr srcRect,
-            IntPtr dstRect,
-            double angle,
-            IntPtr center,
-            SdlRendererFlip flip
-        );
-
+        [return: NotNull]
+        public static extern int SDL_RenderCopyExF(IntPtr renderer, IntPtr texture, IntPtr srcRect, IntPtr dstRect, double angle, IntPtr center, SdlRendererFlip flip);
 
         /// <summary>
         ///     Sdl the render geometry using the specified renderer
@@ -5337,16 +5308,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="numIndices">The num indices</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderGeometry(
-            IntPtr renderer,
-            IntPtr texture,
-            [In] SdlVertex[] vertices,
-            int numVertices,
-            [In] int[] indices,
-            int numIndices
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_RenderGeometry(IntPtr renderer, IntPtr texture, [In] SdlVertex[] vertices, int numVertices, [In] int[] indices, int numIndices);
+        
         /// <summary>
         ///     Sdl the render geometry raw using the specified renderer
         /// </summary>
@@ -5364,22 +5328,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="sizeIndices">The size indices</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderGeometryRaw(
-            IntPtr renderer,
-            IntPtr texture,
-            [In] float[] xy,
-            int xyStride,
-            [In] int[] color,
-            int colorStride,
-            [In] float[] uv,
-            int uvStride,
-            int numVertices,
-            IntPtr indices,
-            int numIndices,
-            int sizeIndices
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_RenderGeometryRaw(IntPtr renderer, IntPtr texture, [In] float[] xy, int xyStride, [In] int[] color, int colorStride, [In] float[] uv, int uvStride, int numVertices, IntPtr indices, int numIndices, int sizeIndices);
+        
         /// <summary>
         ///     Sdl the render draw point f using the specified renderer
         /// </summary>
@@ -5388,13 +5339,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="y">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawPointF(
-            IntPtr renderer,
-            float x,
-            float y
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_RenderDrawPointF(IntPtr renderer, float x, float y);
+        
         /// <summary>
         ///     Sdl the render draw points f using the specified renderer
         /// </summary>
@@ -5403,13 +5350,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawPointsF(
-            IntPtr renderer,
-            [In] SdlFPoint[] points,
-            int count
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_RenderDrawPointsF(IntPtr renderer, [In] SdlFPoint[] points, int count);
+        
         /// <summary>
         ///     Sdl the render draw line f using the specified renderer
         /// </summary>
@@ -5420,15 +5363,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="y2">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawLineF(
-            IntPtr renderer,
-            float x1,
-            float y1,
-            float x2,
-            float y2
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_RenderDrawLineF(IntPtr renderer, float x1, float y1, float x2, float y2);
+        
         /// <summary>
         ///     Sdl the render draw lines f using the specified renderer
         /// </summary>
@@ -5437,13 +5374,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawLinesF(
-            IntPtr renderer,
-            [In] SdlFPoint[] points,
-            int count
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_RenderDrawLinesF(IntPtr renderer, [In] SdlFPoint[] points, int count);
+        
         /// <summary>
         ///     Sdl the render draw rect f using the specified renderer
         /// </summary>
@@ -5451,12 +5384,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawRectF(
-            IntPtr renderer,
-            ref SdlFRect rect
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_RenderDrawRectF(IntPtr renderer, ref SdlFRect rect);
+        
         /// <summary>
         ///     Sdl the render draw rect f using the specified renderer
         /// </summary>
@@ -5464,12 +5394,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawRectF(
-            IntPtr renderer,
-            IntPtr rect
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_RenderDrawRectF(IntPtr renderer, IntPtr rect);
+        
         /// <summary>
         ///     Sdl the render draw rects f using the specified renderer
         /// </summary>
@@ -5478,13 +5405,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderDrawRectsF(
-            IntPtr renderer,
-            [In] SdlFRect[] rects,
-            int count
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_RenderDrawRectsF(IntPtr renderer, [In] SdlFRect[] rects, int count);
+        
         /// <summary>
         ///     Sdl the render fill rect f using the specified renderer
         /// </summary>
@@ -5492,12 +5415,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderFillRectF(
-            IntPtr renderer,
-            ref SdlFRect rect
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_RenderFillRectF(IntPtr renderer, ref SdlFRect rect);
+        
         /// <summary>
         ///     Sdl the render fill rect f using the specified renderer
         /// </summary>
@@ -5505,12 +5425,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderFillRectF(
-            IntPtr renderer,
-            IntPtr rect
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_RenderFillRectF(IntPtr renderer, IntPtr rect);
+        
         /// <summary>
         ///     Sdl the render fill rects f using the specified renderer
         /// </summary>
@@ -5519,25 +5436,18 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderFillRectsF(
-            IntPtr renderer,
-            [In] SdlFRect[] rects,
-            int count
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_RenderFillRectsF(IntPtr renderer, [In] SdlFRect[] rects, int count);
+        
         /// <summary>
         ///     Sdl the render get clip rect using the specified renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <param name="rect">The rect</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_RenderGetClipRect(
-            IntPtr renderer,
-            out SdlRect rect
-        );
-
-
+        [return: NotNull]
+        public static extern void SDL_RenderGetClipRect(IntPtr renderer, out SdlRect rect);
+        
         /// <summary>
         ///     Sdl the render get logical size using the specified renderer
         /// </summary>
@@ -5545,13 +5455,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="w">The </param>
         /// <param name="h">The </param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_RenderGetLogicalSize(
-            IntPtr renderer,
-            out int w,
-            out int h
-        );
-
-
+        [return: NotNull]
+        public static extern void SDL_RenderGetLogicalSize(IntPtr renderer, out int w, out int h);
+        
         /// <summary>
         ///     Sdl the render get scale using the specified renderer
         /// </summary>
@@ -5559,13 +5465,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="scaleX">The scale</param>
         /// <param name="scaleY">The scale</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_RenderGetScale(
-            IntPtr renderer,
-            out float scaleX,
-            out float scaleY
-        );
-
-
+        [return: NotNull]
+        public static extern void SDL_RenderGetScale(IntPtr renderer, out float scaleX, out float scaleY);
+        
         /// <summary>
         ///     Sdl the render window to logical using the specified renderer
         /// </summary>
@@ -5575,15 +5477,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="logicalX">The logical</param>
         /// <param name="logicalY">The logical</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_RenderWindowToLogical(
-            IntPtr renderer,
-            int windowX,
-            int windowY,
-            out float logicalX,
-            out float logicalY
-        );
-
-
+        [return: NotNull]
+        public static extern void SDL_RenderWindowToLogical(IntPtr renderer, int windowX, int windowY, out float logicalX, out float logicalY);
+        
         /// <summary>
         ///     Sdl the render logical to window using the specified renderer
         /// </summary>
@@ -5593,15 +5489,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="windowX">The window</param>
         /// <param name="windowY">The window</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_RenderLogicalToWindow(
-            IntPtr renderer,
-            float logicalX,
-            float logicalY,
-            out int windowX,
-            out int windowY
-        );
-
-
+        [return: NotNull]
+        public static extern void SDL_RenderLogicalToWindow(IntPtr renderer, float logicalX, float logicalY, out int windowX, out int windowY);
+        
         /// <summary>
         ///     Sdl the render get viewport using the specified renderer
         /// </summary>
@@ -5609,20 +5499,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderGetViewport(
-            IntPtr renderer,
-            out SdlRect rect
-        );
-
+        [return: NotNull]
+        public static extern int SDL_RenderGetViewport(IntPtr renderer, out SdlRect rect);
 
         /// <summary>
         ///     Sdl the render present using the specified renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern void SDL_RenderPresent(IntPtr renderer);
-
-
+        
         /// <summary>
         ///     Sdl the render read pixels using the specified renderer
         /// </summary>
@@ -5633,15 +5520,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pitch">The pitch</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderReadPixels(
-            IntPtr renderer,
-            ref SdlRect rect,
-            uint format,
-            IntPtr pixels,
-            int pitch
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_RenderReadPixels(IntPtr renderer, ref SdlRect rect, uint format, IntPtr pixels, int pitch);
+        
         /// <summary>
         ///     Sdl the render set clip rect using the specified renderer
         /// </summary>
@@ -5649,12 +5530,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderSetClipRect(
-            IntPtr renderer,
-            ref SdlRect rect
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_RenderSetClipRect(IntPtr renderer, ref SdlRect rect);
+        
         /// <summary>
         ///     Sdl the render set clip rect using the specified renderer
         /// </summary>
@@ -5662,12 +5540,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderSetClipRect(
-            IntPtr renderer,
-            IntPtr rect
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_RenderSetClipRect(IntPtr renderer, IntPtr rect);
+        
         /// <summary>
         ///     Sdl the render set logical size using the specified renderer
         /// </summary>
@@ -5676,12 +5551,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="h">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderSetLogicalSize(
-            IntPtr renderer,
-            int w,
-            int h
-        );
-
+        [return: NotNull]
+        public static extern int SDL_RenderSetLogicalSize(IntPtr renderer, int w, int h);
 
         /// <summary>
         ///     Sdl the render set scale using the specified renderer
@@ -5691,13 +5562,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="scaleY">The scale</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderSetScale(
-            IntPtr renderer,
-            float scaleX,
-            float scaleY
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_RenderSetScale(IntPtr renderer, float scaleX, float scaleY);
+        
         /// <summary>
         ///     Sdl the render set integer scale using the specified renderer
         /// </summary>
@@ -5705,12 +5572,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="enable">The enable</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderSetIntegerScale(
-            IntPtr renderer,
-            SdlBool enable
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_RenderSetIntegerScale(IntPtr renderer, SdlBool enable);
+        
         /// <summary>
         ///     Sdl the render set viewport using the specified renderer
         /// </summary>
@@ -5718,12 +5582,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_RenderSetViewport(
-            IntPtr renderer,
-            ref SdlRect rect
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_RenderSetViewport(IntPtr renderer, ref SdlRect rect);
+        
         /// <summary>
         ///     Sdl the set render draw blend mode using the specified renderer
         /// </summary>
@@ -5731,11 +5592,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="blendMode">The blend mode</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetRenderDrawBlendMode(
-            IntPtr renderer,
-            SdlBlendMode blendMode
-        );
-
+        [return: NotNull]
+        public static extern int SDL_SetRenderDrawBlendMode(IntPtr renderer, SdlBlendMode blendMode);
 
         /// <summary>
         ///     Sdl the set render draw color using the specified renderer
@@ -5747,15 +5605,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="a">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetRenderDrawColor(
-            IntPtr renderer,
-            byte r,
-            byte g,
-            byte b,
-            byte a
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_SetRenderDrawColor(IntPtr renderer, byte r, byte g, byte b, byte a);
+        
         /// <summary>
         ///     Sdl the set render target using the specified renderer
         /// </summary>
@@ -5763,12 +5615,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="texture">The texture</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetRenderTarget(
-            IntPtr renderer,
-            IntPtr texture
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_SetRenderTarget(IntPtr renderer, IntPtr texture);
+        
         /// <summary>
         ///     Sdl the set texture alpha mod using the specified texture
         /// </summary>
@@ -5776,12 +5625,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="alpha">The alpha</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetTextureAlphaMod(
-            IntPtr texture,
-            byte alpha
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_SetTextureAlphaMod(IntPtr texture, byte alpha);
+        
         /// <summary>
         ///     Sdl the set texture blend mode using the specified texture
         /// </summary>
@@ -5789,12 +5635,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="blendMode">The blend mode</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetTextureBlendMode(
-            IntPtr texture,
-            SdlBlendMode blendMode
-        );
-
-
+        [return: NotNull]
+        public static extern int SDL_SetTextureBlendMode(IntPtr texture, SdlBlendMode blendMode);
+        
         /// <summary>
         ///     Sdl the set texture color mod using the specified texture
         /// </summary>
@@ -5804,6 +5647,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="b">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern int SDL_SetTextureColorMod(IntPtr texture, byte r, byte g, byte b);
 
         /// <summary>
@@ -9649,7 +9493,15 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="dev">The dev</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_UnlockAudioDevice(uint dev);
+        [return: NotNull]
+        private static extern void SDL_UnlockAudioDevice([NotNull] uint dev);
+        
+        /// <summary>
+        /// Sdl the unlock audio device using the specified dev
+        /// </summary>
+        /// <param name="dev">The dev</param>
+        [return: NotNull]
+        public static void SdlUnlockAudioDevice([NotNull] uint dev) => SDL_UnlockAudioDevice(dev.Validate());
 
         /// <summary>
         ///     Sdl the queue audio using the specified dev
@@ -9659,11 +9511,18 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="len">The len</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_QueueAudio(
-            uint dev,
-            IntPtr data,
-            uint len
-        );
+        [return: NotNull]
+        private static extern int SDL_QueueAudio([NotNull]uint dev, [NotNull]IntPtr data, [NotNull]uint len);
+        
+        /// <summary>
+        /// Sdl the queue audio using the specified dev
+        /// </summary>
+        /// <param name="dev">The dev</param>
+        /// <param name="data">The data</param>
+        /// <param name="len">The len</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SdlQueueAudio([NotNull]uint dev, [NotNull]IntPtr data, [NotNull]uint len) => SDL_QueueAudio(dev.Validate(), data.Validate(), len.Validate());
 
         /// <summary>
         ///     Sdl the dequeue audio using the specified dev
@@ -9673,11 +9532,18 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="len">The len</param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_DequeueAudio(
-            uint dev,
-            IntPtr data,
-            uint len
-        );
+        [return: NotNull]
+        private static extern uint SDL_DequeueAudio([NotNull] uint dev, [NotNull] IntPtr data, [NotNull] uint len);
+        
+        /// <summary>
+        /// Sdl the dequeue audio using the specified dev
+        /// </summary>
+        /// <param name="dev">The dev</param>
+        /// <param name="data">The data</param>
+        /// <param name="len">The len</param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint SdlDequeueAudio([NotNull] uint dev,[NotNull]  IntPtr data, [NotNull] uint len) => SDL_DequeueAudio(dev.Validate(), data.Validate(), len.Validate());
 
         /// <summary>
         ///     Sdl the get queued audio size using the specified dev
@@ -9685,14 +9551,31 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="dev">The dev</param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_GetQueuedAudioSize(uint dev);
+        [return: NotNull]
+        private static extern uint SDL_GetQueuedAudioSize([NotNull] uint dev);
+        
+        /// <summary>
+        /// Sdl the get queued audio size using the specified dev
+        /// </summary>
+        /// <param name="dev">The dev</param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint SdlGetQueuedAudioSize([NotNull] uint dev) => SDL_GetQueuedAudioSize(dev.Validate());
 
         /// <summary>
         ///     Sdl the clear queued audio using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_ClearQueuedAudio(uint dev);
+        [return: NotNull]
+        private static extern void SDL_ClearQueuedAudio([NotNull] uint dev);
+        
+        /// <summary>
+        /// Sdl the clear queued audio using the specified dev
+        /// </summary>
+        /// <param name="dev">The dev</param>
+        [return: NotNull]
+        public static void SdlClearQueuedAudio([NotNull] uint dev) => SDL_ClearQueuedAudio(dev.Validate());
 
         /// <summary>
         ///     Sdl the new audio stream using the specified src format
@@ -9705,14 +9588,20 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="dstRate">The dst rate</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_NewAudioStream(
-            ushort srcFormat,
-            byte srcChannels,
-            int srcRate,
-            ushort dstFormat,
-            byte dstChannels,
-            int dstRate
-        );
+        [return: NotNull]
+        public static extern IntPtr SDL_NewAudioStream([NotNull]ushort srcFormat, [NotNull]byte srcChannels, [NotNull]int srcRate, [NotNull]ushort dstFormat, [NotNull]byte dstChannels, [NotNull]int dstRate);
+
+        /// <summary>
+        /// Sdl the new audio stream using the specified src format
+        /// </summary>
+        /// <param name="srcFormat">The src format</param>
+        /// <param name="srcChannels">The src channels</param>
+        /// <param name="srcRate">The src rate</param>
+        /// <param name="dstFormat">The dst format</param>
+        /// <param name="dstChannels">The dst channels</param>
+        /// <param name="dstRate">The dst rate</param>
+        /// <returns>The int ptr</returns>
+        public static  IntPtr SdlNewAudioStream([NotNull] ushort srcFormat, [NotNull]byte srcChannels, [NotNull]int srcRate, [NotNull]ushort dstFormat, [NotNull]byte dstChannels, [NotNull]int dstRate) => SDL_NewAudioStream(srcFormat.Validate(), srcChannels.Validate(), srcRate.Validate(), dstFormat.Validate(), dstChannels.Validate(), dstRate.Validate());
 
         /// <summary>
         ///     Sdl the audio stream put using the specified stream
@@ -9722,11 +9611,18 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="len">The len</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_AudioStreamPut(
-            IntPtr stream,
-            IntPtr buf,
-            int len
-        );
+        [return: NotNull]
+        private static extern int SDL_AudioStreamPut([NotNull]IntPtr stream, [NotNull]IntPtr buf, [NotNull]int len);
+        
+        /// <summary>
+        /// Sdl the audio stream put using the specified stream
+        /// </summary>
+        /// <param name="stream">The stream</param>
+        /// <param name="buf">The buf</param>
+        /// <param name="len">The len</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SdlAudioStreamPut([NotNull]IntPtr stream, [NotNull]IntPtr buf, [NotNull]int len) => SDL_AudioStreamPut(stream.Validate(), buf.Validate(), len.Validate());
 
         /// <summary>
         ///     Sdl the audio stream get using the specified stream
@@ -9736,11 +9632,18 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="len">The len</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_AudioStreamGet(
-            IntPtr stream,
-            IntPtr buf,
-            int len
-        );
+        [return: NotNull]
+        private static extern int SDL_AudioStreamGet([NotNull]IntPtr stream, [NotNull]IntPtr buf, [NotNull]int len);
+        
+        /// <summary>
+        /// Sdl the audio stream get using the specified stream
+        /// </summary>
+        /// <param name="stream">The stream</param>
+        /// <param name="buf">The buf</param>
+        /// <param name="len">The len</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SdlAudioStreamGet([NotNull] IntPtr stream, [NotNull]IntPtr buf, [NotNull]int len) => SDL_AudioStreamGet(stream.Validate(), buf.Validate(), len.Validate());
 
         /// <summary>
         ///     Sdl the audio stream available using the specified stream
@@ -9748,23 +9651,47 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="stream">The stream</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_AudioStreamAvailable(IntPtr stream);
+        [return: NotNull]
+        private static extern int SDL_AudioStreamAvailable(IntPtr stream);
+        
+        /// <summary>
+        /// Sdl the audio stream available using the specified stream
+        /// </summary>
+        /// <param name="stream">The stream</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SdlAudioStreamAvailable([NotNull] IntPtr stream) => SDL_AudioStreamAvailable(stream.Validate());
 
         /// <summary>
         ///     Sdl the audio stream clear using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_AudioStreamClear(IntPtr stream);
+        [return: NotNull]
+        private static extern void SDL_AudioStreamClear([NotNull] IntPtr stream);
+        
+        /// <summary>
+        /// Sdl the audio stream clear using the specified stream
+        /// </summary>
+        /// <param name="stream">The stream</param>
+        [return: NotNull]
+        public static void SdlAudioStreamClear([NotNull] IntPtr stream) => SDL_AudioStreamClear(stream.Validate());
 
         /// <summary>
         ///     Sdl the free audio stream using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_FreeAudioStream(IntPtr stream);
-
-
+        [return: NotNull]
+        private static extern void SDL_FreeAudioStream([NotNull] IntPtr stream);
+        
+        /// <summary>
+        /// Sdl the free audio stream using the specified stream
+        /// </summary>
+        /// <param name="stream">The stream</param>
+        [return: NotNull]
+        public static void SdlFreeAudioStream([NotEmpty] IntPtr stream) => SDL_FreeAudioStream(stream.Validate());
+        
         /// <summary>
         ///     Sdl the get audio device spec using the specified index
         /// </summary>
