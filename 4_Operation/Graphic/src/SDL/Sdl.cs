@@ -1527,7 +1527,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="autoClose">The auto close</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RWFromFP", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr INTERNAL_SDL_RWFromFP(IntPtr fp, SdlBool autoClose);
+        private static extern IntPtr INTERNAL_SDL_RWFromFP(IntPtr fp, SdlBool autoClose);
+        
+        /// <summary>
+        /// Rws the from fp using the specified fp
+        /// </summary>
+        /// <param name="fp">The fp</param>
+        /// <param name="autoClose">The auto close</param>
+        /// <returns>The int ptr</returns>
+        public static IntPtr RwFromFp(IntPtr fp, SdlBool autoClose) => INTERNAL_SDL_RWFromFP(fp, autoClose);
 
         /// <summary>
         ///     Sdl the rw from mem using the specified mem
