@@ -2602,7 +2602,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="flags">The flags</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateWindow", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_CreateWindow(byte[] title, int x, int y, int w, int h, SdlWindowFlags flags);
+        [return: NotNull]
+        private static extern IntPtr INTERNAL_SDL_CreateWindow([NotNull] byte[] title, [NotNull]int x, [NotNull]int y, [NotNull]int w, [NotNull]int h, [NotNull]SdlWindowFlags flags);
 
         /// <summary>
         ///     Sdl the create window using the specified title
@@ -2614,24 +2615,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="h">The </param>
         /// <param name="flags">The flags</param>
         /// <returns>The int ptr</returns>
-        public static IntPtr SDL_CreateWindow(
-            string title,
-            int x,
-            int y,
-            int w,
-            int h,
-            SdlWindowFlags flags
-        )
-        {
-            int utf8TitleBufSize = Utf8Manager.Utf8Size(title);
-            byte[] utf8Title = new byte[utf8TitleBufSize];
-            return INTERNAL_SDL_CreateWindow(Utf8Manager.Utf8Encode(title, utf8Title, utf8TitleBufSize),
-                x, y, w, h,
-                flags
-            );
-        }
-
-
+        [return: NotNull]
+        public static IntPtr SDL_CreateWindow([NotNull]string title, [NotNull]int x, [NotNull]int y, [NotNull]int w, [NotNull]int h, [NotNull]SdlWindowFlags flags) => INTERNAL_SDL_CreateWindow(Utf8Manager.Utf8Encode(title, new byte[Utf8Manager.Utf8Size(title.Validate())], Utf8Manager.Utf8Size(title.Validate())), x, y, w, h, flags);
+        
         /// <summary>
         ///     Sdl the create window and renderer using the specified width
         /// </summary>
@@ -2644,7 +2630,6 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateWindowAndRenderer", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         private static extern int SDL_CreateWindowAndRenderer([NotNull] int width, [NotNull] int height, [NotNull] SdlWindowFlags windowFlags, out IntPtr window, out IntPtr renderer);
-
         
         /// <summary>
         /// Sdl the create window and renderer using the specified width
@@ -2662,22 +2647,45 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_CreateWindowFrom(IntPtr data);
-
-
+        [DllImport(NativeLibName, EntryPoint = "SDL_CreateWindowFrom", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        private static extern IntPtr SDL_CreateWindowFrom([NotNull]IntPtr data);
+        
+        /// <summary>
+        /// Sdl the create window from using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr SdlCreateWindowFrom([NotNull] IntPtr data) => SDL_CreateWindowFrom(data.Validate());
+        
         /// <summary>
         ///     Sdl the destroy window using the specified window
         /// </summary>
         /// <param name="window">The window</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_DestroyWindow(IntPtr window);
+        [DllImport(NativeLibName, EntryPoint = "SDL_DestroyWindow", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        private static extern void SDL_DestroyWindow([NotNull] IntPtr window);
+        
+        /// <summary>
+        /// Sdl the destroy window using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        [return: NotNull]
+        public static void SdlDestroyWindow([NotNull] IntPtr window) => SDL_DestroyWindow(window.Validate());
 
         /// <summary>
         ///     Sdl the disable screen saver
         /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_DisableScreenSaver();
+        [DllImport(NativeLibName, EntryPoint = "SDL_DisableScreenSaver", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        private static extern void INTERNAL_SDL_DisableScreenSaver();
+        
+        /// <summary>
+        /// Sdl the disable screen saver
+        /// </summary>
+        [return: NotNull]
+        public static void SdlDisableScreenSaver() => INTERNAL_SDL_DisableScreenSaver();
 
         /// <summary>
         ///     Sdl the enable screen saver

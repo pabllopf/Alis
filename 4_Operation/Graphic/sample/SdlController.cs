@@ -146,7 +146,7 @@ namespace Alis.Core.Graphic.Sample
             }
 
             Sdl.SDL_DestroyRenderer(renderer);
-            Sdl.SDL_DestroyWindow(window);
+            Sdl.SdlDestroyWindow(window);
             Sdl.SDL_Quit();
             return 0;
         }
