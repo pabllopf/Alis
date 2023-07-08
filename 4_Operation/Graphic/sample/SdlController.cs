@@ -96,23 +96,23 @@ namespace Alis.Core.Graphic.Sample
         public int Run()
         {
             // Initilizes SDL.
-            if (Sdl.SDL_Init(Sdl.SdlInitEverything) < 0)
+            if (Sdl.INTERNAL_SDL_Init(Sdl.InitEverything) < 0)
             {
-                Console.WriteLine($"There was an issue initializing SDL. {Sdl.SDL_GetError()}");
+                Console.WriteLine($"There was an issue initializing SDL. {Sdl.GetError()}");
             }
 
             // Create a new window given a title, size, and passes it a flag indicating it should be shown.
-            IntPtr window = Sdl.SDL_CreateWindow(
+            IntPtr window = Sdl.CreateWindow(
                 "SDL .NET 6 Tutorial",
-                Sdl.SdlWindowPosUndefined,
-                Sdl.SdlWindowPosUndefined,
+                Sdl.WindowPosUndefined,
+                Sdl.WindowPosUndefined,
                 Width,
                 Height,
                 SdlWindowFlags.SdlWindowShown);
 
             if (window == IntPtr.Zero)
             {
-                Console.WriteLine($"There was an issue creating the window. {Sdl.SDL_GetError()}");
+                Console.WriteLine($"There was an issue creating the window. {Sdl.GetError()}");
             }
 
             // Creates a new SDL hardware renderer using the default graphics device with VSYNC enabled.
@@ -124,7 +124,7 @@ namespace Alis.Core.Graphic.Sample
 
             if (renderer == IntPtr.Zero)
             {
-                Console.WriteLine($"There was an issue creating the renderer. {Sdl.SDL_GetError()}");
+                Console.WriteLine($"There was an issue creating the renderer. {Sdl.GetError()}");
             }
 
             Sdlinput();
@@ -146,8 +146,8 @@ namespace Alis.Core.Graphic.Sample
             }
 
             Sdl.SDL_DestroyRenderer(renderer);
-            Sdl.SdlDestroyWindow(window);
-            Sdl.SDL_Quit();
+            Sdl.DestroyWindow(window);
+            Sdl.INTERNAL_SDL_Quit();
             return 0;
         }
 
@@ -181,9 +181,9 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         private void Sdlinput()
         {
-            Sdl.SDL_SetHint(Sdl.SdlHintXInputEnabled, "0");
-            Sdl.SDL_SetHint(Sdl.SdlHintJoystickThread, "1");
-            Sdl.SDL_Init(Sdl.SdlInitEverything);
+            Sdl.SetHint(Sdl.HintXInputEnabled, "0");
+            Sdl.SetHint(Sdl.SdlHintJoystickThread, "1");
+            Sdl.INTERNAL_SDL_Init(Sdl.InitEverything);
 
 
             for (int i = 0; i < Sdl.SDL_NumJoysticks(); i++)
@@ -191,7 +191,7 @@ namespace Alis.Core.Graphic.Sample
                 IntPtr myJoystick = Sdl.SDL_JoystickOpen(i);
                 if (myJoystick == IntPtr.Zero)
                 {
-                    Console.WriteLine("Ooops, something fishy's goin' on here!" + Sdl.SDL_GetError());
+                    Console.WriteLine("Ooops, something fishy's goin' on here!" + Sdl.GetError());
                 }
                 else
                 {

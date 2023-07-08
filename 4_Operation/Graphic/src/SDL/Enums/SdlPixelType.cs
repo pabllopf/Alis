@@ -30,68 +30,68 @@
 namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The sdl pixeltype enum
+    ///     The sdl pixel type enum
     /// </summary>
     public enum SdlPixelType
     {
         /// <summary>
-        ///     The sdl pixeltype unknown sdl pixeltype
+        ///     The sdl pixel type unknown sdl pixel type
         /// </summary>
-        SdlPixeltypeUnknown,
+        PixelTypeUnknown,
 
         /// <summary>
-        ///     The sdl pixeltype index1 sdl pixeltype
+        ///     The sdl pixel type index1 sdl pixel type
         /// </summary>
-        SdlPixeltypeIndex1,
+        PixelTypeIndex1,
 
         /// <summary>
-        ///     The sdl pixeltype index4 sdl pixeltype
+        ///     The sdl pixel type index4 sdl pixel type
         /// </summary>
-        SdlPixeltypeIndex4,
+        PixelTypeIndex4,
 
         /// <summary>
-        ///     The sdl pixeltype index8 sdl pixeltype
+        ///     The sdl pixel type index8 sdl pixel type
         /// </summary>
-        SdlPixeltypeIndex8,
+        PixelTypeIndex8,
 
         /// <summary>
-        ///     The sdl pixeltype packed8 sdl pixeltype
+        ///     The sdl pixel type packed8 sdl pixel type
         /// </summary>
-        SdlPixeltypePacked8,
+        PixelTypePacked8,
 
         /// <summary>
-        ///     The sdl pixeltype packed16 sdl pixeltype
+        ///     The sdl pixel type packed16 sdl pixel type
         /// </summary>
-        SdlPixeltypePacked16,
+        PixelTypePacked16,
 
         /// <summary>
-        ///     The sdl pixeltype packed32 sdl pixeltype
+        ///     The sdl pixel type packed32 sdl pixel type
         /// </summary>
-        SdlPixeltypePacked32,
+        PixelTypePacked32,
 
         /// <summary>
-        ///     The sdl pixeltype arrayu8 sdl pixeltype
+        ///     The sdl pixel type array u8 sdl pixel type
         /// </summary>
-        SdlPixeltypeArrayu8,
+        PixelTypeArrayU8,
 
         /// <summary>
-        ///     The sdl pixeltype arrayu16 sdl pixeltype
+        ///     The sdl pixel type arrayu16 sdl pixel type
         /// </summary>
-        SdlPixeltypeArrayu16,
+        PixelTypeArrayU16,
 
         /// <summary>
-        ///     The sdl pixeltype arrayu32 sdl pixeltype
+        ///     The sdl pixel type arrayu32 sdl pixel type
         /// </summary>
-        SdlPixeltypeArrayu32,
+        PixelTypeArrayU32,
 
         /// <summary>
-        ///     The sdl pixeltype arrayf16 sdl pixeltype
+        ///     The sdl pixel type arrayf16 sdl pixel type
         /// </summary>
-        SdlPixeltypeArrayf16,
+        PixelTypeArrayF16,
 
         /// <summary>
-        ///     The sdl pixeltype arrayf32 sdl pixeltype
+        ///     The sdl pixel type arrayf32 sdl pixel type
         /// </summary>
-        SdlPixeltypeArrayf32
+        PixelTypeArrayF32
     }
 }

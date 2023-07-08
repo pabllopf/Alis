@@ -72,542 +72,542 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl rw ops unknown
         /// </summary>
-        public const uint SdlRwOpsUnknown = 0;
+        public const uint RwOpsUnknown = 0;
 
         /// <summary>
         ///     The sdl rw ops win file
         /// </summary>
-        public const uint SdlRwOpsWinFile = 1;
+        public const uint RwOpsWinFile = 1;
 
         /// <summary>
         ///     The sdl rw ops std file
         /// </summary>
-        public const uint SdlRwOpsStdFile = 2;
+        public const uint RwOpsStdFile = 2;
 
         /// <summary>
         ///     The sdl rw ops jni file
         /// </summary>
-        public const uint SdlRwOpsJniFile = 3;
+        public const uint RwOpsJniFile = 3;
 
         /// <summary>
         ///     The sdl rw ops memory
         /// </summary>
-        public const uint SdlRwOpsMemory = 4;
+        public const uint RwOpsMemory = 4;
 
         /// <summary>
         ///     The sdl rw ops memory ro
         /// </summary>
-        public const uint SdlRwOpsMemoryRo = 5;
+        public const uint RwOpsMemoryRo = 5;
 
         /// <summary>
         ///     The sdl init timer
         /// </summary>
-        private const uint SdlInitTimer = 0x00000001;
+        private const uint InitTimer = 0x00000001;
 
         /// <summary>
         ///     The sdl init audio
         /// </summary>
-        private const uint SdlInitAudio = 0x00000010;
+        private const uint InitAudio = 0x00000010;
 
         /// <summary>
         ///     The sdl init video
         /// </summary>
-        public const uint SdlInitVideo = 0x00000020;
+        public const uint InitVideo = 0x00000020;
 
         /// <summary>
         ///     The sdl init joystick
         /// </summary>
-        private const uint SdlInitJoystick = 0x00000200;
+        private const uint InitJoystick = 0x00000200;
 
         /// <summary>
         ///     The sdl init haptic
         /// </summary>
-        private const uint SdlInitHaptic = 0x00001000;
+        private const uint InitHaptic = 0x00001000;
 
         /// <summary>
         ///     The sdl init game controller
         /// </summary>
-        private const uint SdlInitGameController = 0x00002000;
+        private const uint InitGameController = 0x00002000;
 
         /// <summary>
         ///     The sdl init events
         /// </summary>
-        private const uint SdlInitEvents = 0x00004000;
+        private const uint InitEvents = 0x00004000;
 
         /// <summary>
         ///     The sdl init sensor
         /// </summary>
-        private const uint SdlInitSensor = 0x00008000;
+        private const uint InitSensor = 0x00008000;
 
         /// <summary>
         ///     The sdl init no parachute
         /// </summary>
-        public const uint SdlInitNoParachute = 0x00100000;
+        public const uint InitNoParachute = 0x00100000;
 
         /// <summary>
         ///     The sdl init sensor
         /// </summary>
-        public const uint SdlInitEverything = SdlInitTimer | SdlInitAudio | SdlInitVideo | SdlInitEvents | SdlInitJoystick | SdlInitHaptic | SdlInitGameController | SdlInitSensor;
+        public const uint InitEverything = InitTimer | InitAudio | InitVideo | InitEvents | InitJoystick | InitHaptic | InitGameController | InitSensor;
 
         /// <summary>
         ///     The sdl hint framebuffer acceleration
         /// </summary>
-        public const string SdlHintFramebufferAcceleration = "SDL_FRAMEBUFFER_ACCELERATION";
+        public const string HintFramebufferAcceleration = "SDL_FRAMEBUFFER_ACCELERATION";
 
         /// <summary>
         ///     The sdl hint render driver
         /// </summary>
-        public const string SdlHintRenderDriver = "SDL_RENDER_DRIVER";
+        public const string HintRenderDriver = "SDL_RENDER_DRIVER";
 
         /// <summary>
         ///     The sdl hint render opengl shaders
         /// </summary>
-        public const string SdlHintRenderOpenglShaders = "SDL_RENDER_OPENGL_SHADERS";
+        public const string HintRenderOpenglShaders = "SDL_RENDER_OPENGL_SHADERS";
 
         /// <summary>
         ///     The sdl hint render direct3d threadsafe
         /// </summary>
-        public const string SdlHintRenderDirect3DThreadsafe = "SDL_RENDER_DIRECT3D_THREADSAFE";
+        public const string HintRenderDirect3DThreadsafe = "SDL_RENDER_DIRECT3D_THREADSAFE";
 
         /// <summary>
         ///     The sdl hint render vsync
         /// </summary>
-        public const string SdlHintRenderVsync = "SDL_RENDER_VSYNC";
+        public const string HintRenderVsync = "SDL_RENDER_VSYNC";
 
         /// <summary>
         ///     The sdl hint video x11 x vid mode
         /// </summary>
-        public const string SdlHintVideoX11XVidMode = "SDL_VIDEO_X11_XVIDMODE";
+        public const string HintVideoX11XVidMode = "SDL_VIDEO_X11_XVIDMODE";
 
         /// <summary>
         ///     The sdl hint video x11 x ine rama
         /// </summary>
-        public const string SdlHintVideoX11XIneRama = "SDL_VIDEO_X11_XINERAMA";
+        public const string HintVideoX11XIneRama = "SDL_VIDEO_X11_XINERAMA";
 
         /// <summary>
         ///     The sdl hint video x11 xrandr
         /// </summary>
-        public const string SdlHintVideoX11Xrandr = "SDL_VIDEO_X11_XRANDR";
+        public const string HintVideoX11Xrandr = "SDL_VIDEO_X11_XRANDR";
 
         /// <summary>
         ///     The sdl hint grab keyboard
         /// </summary>
-        public const string SdlHintGrabKeyboard = "SDL_GRAB_KEYBOARD";
+        public const string HintGrabKeyboard = "SDL_GRAB_KEYBOARD";
 
         /// <summary>
         ///     The sdl hint video minimize on focus loss
         /// </summary>
-        public const string SdlHintVideoMinimizeOnFocusLoss = "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS";
+        public const string HintVideoMinimizeOnFocusLoss = "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS";
 
         /// <summary>
         ///     The sdl hint idle timer disabled
         /// </summary>
-        public const string SdlHintIdleTimerDisabled = "SDL_IOS_IDLE_TIMER_DISABLED";
+        public const string HintIdleTimerDisabled = "SDL_IOS_IDLE_TIMER_DISABLED";
 
         /// <summary>
         ///     The sdl hint orientations
         /// </summary>
-        public const string SdlHintOrientations = "SDL_IOS_ORIENTATIONS";
+        public const string HintOrientations = "SDL_IOS_ORIENTATIONS";
 
         /// <summary>
         ///     The sdl hint x input enabled
         /// </summary>
-        public const string SdlHintXInputEnabled = "SDL_XINPUT_ENABLED";
+        public const string HintXInputEnabled = "SDL_XINPUT_ENABLED";
 
         /// <summary>
         ///     The sdl hint game controller config
         /// </summary>
-        public const string SdlHintGameControllerConfig = "SDL_GAMECONTROLLERCONFIG";
+        public const string HintGameControllerConfig = "SDL_GAMECONTROLLERCONFIG";
 
         /// <summary>
         ///     The sdl hint joystick allow background events
         /// </summary>
-        public const string SdlHintJoystickAllowBackgroundEvents = "SDL_JOYSTICK_ALLOW_BACKGROUND_EVENTS";
+        public const string HintJoystickAllowBackgroundEvents = "SDL_JOYSTICK_ALLOW_BACKGROUND_EVENTS";
 
         /// <summary>
         ///     The sdl hint allow topmost
         /// </summary>
-        public const string SdlHintAllowTopmost = "SDL_ALLOW_TOPMOST";
+        public const string HintAllowTopmost = "SDL_ALLOW_TOPMOST";
 
         /// <summary>
         ///     The sdl hint timer resolution
         /// </summary>
-        public const string SdlHintTimerResolution = "SDL_TIMER_RESOLUTION";
+        public const string HintTimerResolution = "SDL_TIMER_RESOLUTION";
 
         /// <summary>
         ///     The sdl hint render scale quality
         /// </summary>
-        public const string SdlHintRenderScaleQuality = "SDL_RENDER_SCALE_QUALITY";
+        public const string HintRenderScaleQuality = "SDL_RENDER_SCALE_QUALITY";
 
         /// <summary>
         ///     The sdl hint video high dpi disabled
         /// </summary>
-        public const string SdlHintVideoHighDpiDisabled = "SDL_VIDEO_HIGHDPI_DISABLED";
+        public const string HintVideoHighDpiDisabled = "SDL_VIDEO_HIGHDPI_DISABLED";
 
         /// <summary>
         ///     The sdl hint ctrl click emulate right click
         /// </summary>
-        public const string SdlHintCtrlClickEmulateRightClick = "SDL_CTRL_CLICK_EMULATE_RIGHT_CLICK";
+        public const string HintCtrlClickEmulateRightClick = "SDL_CTRL_CLICK_EMULATE_RIGHT_CLICK";
 
         /// <summary>
         ///     The sdl hint video win d3d compiler
         /// </summary>
-        public const string SdlHintVideoWinD3DCompiler = "SDL_VIDEO_WIN_D3DCOMPILER";
+        public const string HintVideoWinD3DCompiler = "SDL_VIDEO_WIN_D3DCOMPILER";
 
         /// <summary>
         ///     The sdl hint mouse relative mode warp
         /// </summary>
-        public const string SdlHintMouseRelativeModeWarp = "SDL_MOUSE_RELATIVE_MODE_WARP";
+        public const string HintMouseRelativeModeWarp = "SDL_MOUSE_RELATIVE_MODE_WARP";
 
         /// <summary>
         ///     The sdl hint video window share pixel format
         /// </summary>
-        public const string SdlHintVideoWindowSharePixelFormat = "SDL_VIDEO_WINDOW_SHARE_PIXEL_FORMAT";
+        public const string HintVideoWindowSharePixelFormat = "SDL_VIDEO_WINDOW_SHARE_PIXEL_FORMAT";
 
         /// <summary>
         ///     The sdl hint video allow screensaver
         /// </summary>
-        public const string SdlHintVideoAllowScreensaver = "SDL_VIDEO_ALLOW_SCREENSAVER";
+        public const string HintVideoAllowScreensaver = "SDL_VIDEO_ALLOW_SCREENSAVER";
 
         /// <summary>
         ///     The sdl hint accelerometer as joystick
         /// </summary>
-        public const string SdlHintAccelerometerAsJoystick = "SDL_ACCELEROMETER_AS_JOYSTICK";
+        public const string HintAccelerometerAsJoystick = "SDL_ACCELEROMETER_AS_JOYSTICK";
 
         /// <summary>
         ///     The sdl hint video mac fullscreen spaces
         /// </summary>
-        public const string SdlHintVideoMacFullscreenSpaces = "SDL_VIDEO_MAC_FULLSCREEN_SPACES";
+        public const string HintVideoMacFullscreenSpaces = "SDL_VIDEO_MAC_FULLSCREEN_SPACES";
 
         /// <summary>
         ///     The sdl hint winrt privacy policy url
         /// </summary>
-        public const string SdlHintWinrtPrivacyPolicyUrl = "SDL_WINRT_PRIVACY_POLICY_URL";
+        public const string HintWinrtPrivacyPolicyUrl = "SDL_WINRT_PRIVACY_POLICY_URL";
 
         /// <summary>
         ///     The sdl hint winrt privacy policy label
         /// </summary>
-        public const string SdlHintWinrtPrivacyPolicyLabel = "SDL_WINRT_PRIVACY_POLICY_LABEL";
+        public const string HintWinrtPrivacyPolicyLabel = "SDL_WINRT_PRIVACY_POLICY_LABEL";
 
         /// <summary>
         ///     The sdl hint winrt handle back button
         /// </summary>
-        public const string SdlHintWinrtHandleBackButton = "SDL_WINRT_HANDLE_BACK_BUTTON";
+        public const string HintWinrtHandleBackButton = "SDL_WINRT_HANDLE_BACK_BUTTON";
 
         /// <summary>
         ///     The sdl hint no signal handlers
         /// </summary>
-        public const string SdlHintNoSignalHandlers = "SDL_NO_SIGNAL_HANDLERS";
+        public const string HintNoSignalHandlers = "SDL_NO_SIGNAL_HANDLERS";
 
         /// <summary>
         ///     The sdl hint ime internal editing
         /// </summary>
-        public const string SdlHintImeInternalEditing = "SDL_IME_INTERNAL_EDITING";
+        public const string HintImeInternalEditing = "SDL_IME_INTERNAL_EDITING";
 
         /// <summary>
         ///     The sdl hint android separate mouse and touch
         /// </summary>
-        public const string SdlHintAndroidSeparateMouseAndTouch = "SDL_ANDROID_SEPARATE_MOUSE_AND_TOUCH";
+        public const string HintAndroidSeparateMouseAndTouch = "SDL_ANDROID_SEPARATE_MOUSE_AND_TOUCH";
 
         /// <summary>
         ///     The sdl hint emscripten keyboard element
         /// </summary>
-        public const string SdlHintEmscriptenKeyboardElement = "SDL_EMSCRIPTEN_KEYBOARD_ELEMENT";
+        public const string HintEmscriptenKeyboardElement = "SDL_EMSCRIPTEN_KEYBOARD_ELEMENT";
 
         /// <summary>
         ///     The sdl hint thread stack size
         /// </summary>
-        public const string SdlHintThreadStackSize = "SDL_THREAD_STACK_SIZE";
+        public const string HintThreadStackSize = "SDL_THREAD_STACK_SIZE";
 
         /// <summary>
         ///     The sdl hint window frame usable while cursor hidden
         /// </summary>
-        public const string SdlHintWindowFrameUsableWhileCursorHidden = "SDL_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN";
+        public const string HintWindowFrameUsableWhileCursorHidden = "SDL_WINDOW_FRAME_USABLE_WHILE_CURSOR_HIDDEN";
 
         /// <summary>
         ///     The sdl hint windows enable message loop
         /// </summary>
-        public const string SdlHintWindowsEnableMessageLoop = "SDL_WINDOWS_ENABLE_MESSAGELOOP";
+        public const string HintWindowsEnableMessageLoop = "SDL_WINDOWS_ENABLE_MESSAGELOOP";
 
         /// <summary>
         ///     The sdl hint windows no close on alt f4
         /// </summary>
-        public const string SdlHintWindowsNoCloseOnAltF4 = "SDL_WINDOWS_NO_CLOSE_ON_ALT_F4";
+        public const string HintWindowsNoCloseOnAltF4 = "SDL_WINDOWS_NO_CLOSE_ON_ALT_F4";
 
         /// <summary>
         ///     The sdl hint x input use old joystick mapping
         /// </summary>
-        public const string SdlHintXInputUseOldJoystickMapping = "SDL_XINPUT_USE_OLD_JOYSTICK_MAPPING";
+        public const string HintXInputUseOldJoystickMapping = "SDL_XINPUT_USE_OLD_JOYSTICK_MAPPING";
 
         /// <summary>
         ///     The sdl hint mac background app
         /// </summary>
-        public const string SdlHintMacBackgroundApp = "SDL_MAC_BACKGROUND_APP";
+        public const string HintMacBackgroundApp = "SDL_MAC_BACKGROUND_APP";
 
         /// <summary>
         ///     The sdl hint video x11 net wm ping
         /// </summary>
-        public const string SdlHintVideoX11NetWmPing = "SDL_VIDEO_X11_NET_WM_PING";
+        public const string HintVideoX11NetWmPing = "SDL_VIDEO_X11_NET_WM_PING";
 
         /// <summary>
         ///     The sdl hint android apk expansion main file version
         /// </summary>
-        public const string SdlHintAndroidApkExpansionMainFileVersion = "SDL_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION";
+        public const string HintAndroidApkExpansionMainFileVersion = "SDL_ANDROID_APK_EXPANSION_MAIN_FILE_VERSION";
 
         /// <summary>
         ///     The sdl hint android apk expansion patch file version
         /// </summary>
-        public const string SdlHintAndroidApkExpansionPatchFileVersion = "SDL_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION";
+        public const string HintAndroidApkExpansionPatchFileVersion = "SDL_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION";
 
         /// <summary>
         ///     The sdl hint mouse focus click through
         /// </summary>
-        public const string SdlHintMouseFocusClickThrough = "SDL_MOUSE_FOCUS_CLICKTHROUGH";
+        public const string HintMouseFocusClickThrough = "SDL_MOUSE_FOCUS_CLICKTHROUGH";
 
         /// <summary>
         ///     The sdl hint bmp save legacy format
         /// </summary>
-        public const string SdlHintBmpSaveLegacyFormat = "SDL_BMP_SAVE_LEGACY_FORMAT";
+        public const string HintBmpSaveLegacyFormat = "SDL_BMP_SAVE_LEGACY_FORMAT";
 
         /// <summary>
         ///     The sdl hint windows disable thread naming
         /// </summary>
-        public const string SdlHintWindowsDisableThreadNaming = "SDL_WINDOWS_DISABLE_THREAD_NAMING";
+        public const string HintWindowsDisableThreadNaming = "SDL_WINDOWS_DISABLE_THREAD_NAMING";
 
         /// <summary>
         ///     The sdl hint apple tv remote allow rotation
         /// </summary>
-        public const string SdlHintAppleTvRemoteAllowRotation = "SDL_APPLE_TV_REMOTE_ALLOW_ROTATION";
+        public const string HintAppleTvRemoteAllowRotation = "SDL_APPLE_TV_REMOTE_ALLOW_ROTATION";
 
         /// <summary>
         ///     The sdl hint audio resampling mode
         /// </summary>
-        public const string SdlHintAudioResamplingMode = "SDL_AUDIO_RESAMPLING_MODE";
+        public const string HintAudioResamplingMode = "SDL_AUDIO_RESAMPLING_MODE";
 
         /// <summary>
         ///     The sdl hint render logical size mode
         /// </summary>
-        public const string SdlHintRenderLogicalSizeMode = "SDL_RENDER_LOGICAL_SIZE_MODE";
+        public const string HintRenderLogicalSizeMode = "SDL_RENDER_LOGICAL_SIZE_MODE";
 
         /// <summary>
         ///     The sdl hint mouse normal speed scale
         /// </summary>
-        public const string SdlHintMouseNormalSpeedScale = "SDL_MOUSE_NORMAL_SPEED_SCALE";
+        public const string HintMouseNormalSpeedScale = "SDL_MOUSE_NORMAL_SPEED_SCALE";
 
         /// <summary>
         ///     The sdl hint mouse relative speed scale
         /// </summary>
-        public const string SdlHintMouseRelativeSpeedScale = "SDL_MOUSE_RELATIVE_SPEED_SCALE";
+        public const string HintMouseRelativeSpeedScale = "SDL_MOUSE_RELATIVE_SPEED_SCALE";
 
         /// <summary>
         ///     The sdl hint touch mouse events
         /// </summary>
-        public const string SdlHintTouchMouseEvents = "SDL_TOUCH_MOUSE_EVENTS";
+        public const string HintTouchMouseEvents = "SDL_TOUCH_MOUSE_EVENTS";
 
         /// <summary>
         ///     The sdl hint windows intro source icon
         /// </summary>
-        public const string SdlHintWindowsIntroSourceIcon = "SDL_WINDOWS_INTRESOURCE_ICON";
+        public const string HintWindowsIntroSourceIcon = "SDL_WINDOWS_INTRESOURCE_ICON";
 
         /// <summary>
         ///     The sdl hint windows intro source icon small
         /// </summary>
-        public const string SdlHintWindowsIntroSourceIconSmall = "SDL_WINDOWS_INTRESOURCE_ICON_SMALL";
+        public const string HintWindowsIntroSourceIconSmall = "SDL_WINDOWS_INTRESOURCE_ICON_SMALL";
 
         /// <summary>
         ///     The sdl hint ios hide home indicator
         /// </summary>
-        public const string SdlHintIosHideHomeIndicator = "SDL_IOS_HIDE_HOME_INDICATOR";
+        public const string HintIosHideHomeIndicator = "SDL_IOS_HIDE_HOME_INDICATOR";
 
         /// <summary>
         ///     The sdl hint tv remote as joystick
         /// </summary>
-        public const string SdlHintTvRemoteAsJoystick = "SDL_TV_REMOTE_AS_JOYSTICK";
+        public const string HintTvRemoteAsJoystick = "SDL_TV_REMOTE_AS_JOYSTICK";
 
         /// <summary>
         ///     The sdl video x11 net wm bypass compositor
         /// </summary>
-        public const string SdlVideoX11NetWmBypassCompositor = "SDL_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR";
+        public const string VideoX11NetWmBypassCompositor = "SDL_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR";
 
         /// <summary>
         ///     The sdl hint mouse double click time
         /// </summary>
-        public const string SdlHintMouseDoubleClickTime = "SDL_MOUSE_DOUBLE_CLICK_TIME";
+        public const string HintMouseDoubleClickTime = "SDL_MOUSE_DOUBLE_CLICK_TIME";
 
         /// <summary>
         ///     The sdl hint mouse double click radius
         /// </summary>
-        public const string SdlHintMouseDoubleClickRadius = "SDL_MOUSE_DOUBLE_CLICK_RADIUS";
+        public const string HintMouseDoubleClickRadius = "SDL_MOUSE_DOUBLE_CLICK_RADIUS";
 
         /// <summary>
         ///     The sdl hint joystick hidapi
         /// </summary>
-        public const string SdlHintJoystickHidapi = "SDL_JOYSTICK_HIDAPI";
+        public const string HintJoystickHidapi = "SDL_JOYSTICK_HIDAPI";
 
         /// <summary>
         ///     The sdl hint joystick hidapi ps4
         /// </summary>
-        public const string SdlHintJoystickHidapiPs4 = "SDL_JOYSTICK_HIDAPI_PS4";
+        public const string HintJoystickHidapiPs4 = "SDL_JOYSTICK_HIDAPI_PS4";
 
         /// <summary>
         ///     The sdl hint joystick hidapi ps4 rumble
         /// </summary>
-        public const string SdlHintJoystickHidapiPs4Rumble = "SDL_JOYSTICK_HIDAPI_PS4_RUMBLE";
+        public const string HintJoystickHidapiPs4Rumble = "SDL_JOYSTICK_HIDAPI_PS4_RUMBLE";
 
         /// <summary>
         ///     The sdl hint joystick hidapi steam
         /// </summary>
-        public const string SdlHintJoystickHidapiSteam = "SDL_JOYSTICK_HIDAPI_STEAM";
+        public const string HintJoystickHidapiSteam = "SDL_JOYSTICK_HIDAPI_STEAM";
 
         /// <summary>
         ///     The sdl hint joystick hidapi switch
         /// </summary>
-        public const string SdlHintJoystickHidapiSwitch = "SDL_JOYSTICK_HIDAPI_SWITCH";
+        public const string HintJoystickHidapiSwitch = "SDL_JOYSTICK_HIDAPI_SWITCH";
 
         /// <summary>
         ///     The sdl hint joystick hidapi xbox
         /// </summary>
-        public const string SdlHintJoystickHidapiXbox = "SDL_JOYSTICK_HIDAPI_XBOX";
+        public const string HintJoystickHidapiXbox = "SDL_JOYSTICK_HIDAPI_XBOX";
 
         /// <summary>
         ///     The sdl hint enable steam controllers
         /// </summary>
-        public const string SdlHintEnableSteamControllers = "SDL_ENABLE_STEAM_CONTROLLERS";
+        public const string HintEnableSteamControllers = "SDL_ENABLE_STEAM_CONTROLLERS";
 
         /// <summary>
         ///     The sdl hint android trap back button
         /// </summary>
-        public const string SdlHintAndroidTrapBackButton = "SDL_ANDROID_TRAP_BACK_BUTTON";
+        public const string HintAndroidTrapBackButton = "SDL_ANDROID_TRAP_BACK_BUTTON";
 
         /// <summary>
         ///     The sdl hint mouse touch events
         /// </summary>
-        public const string SdlHintMouseTouchEvents = "SDL_MOUSE_TOUCH_EVENTS";
+        public const string HintMouseTouchEvents = "SDL_MOUSE_TOUCH_EVENTS";
 
         /// <summary>
         ///     The sdl hint game controller config file
         /// </summary>
-        public const string SdlHintGameControllerConfigFile = "SDL_GAMECONTROLLERCONFIG_FILE";
+        public const string HintGameControllerConfigFile = "SDL_GAMECONTROLLERCONFIG_FILE";
 
         /// <summary>
         ///     The sdl hint android block on pause
         /// </summary>
-        public const string SdlHintAndroidBlockOnPause = "SDL_ANDROID_BLOCK_ON_PAUSE";
+        public const string HintAndroidBlockOnPause = "SDL_ANDROID_BLOCK_ON_PAUSE";
 
         /// <summary>
         ///     The sdl hint render batching
         /// </summary>
-        public const string SdlHintRenderBatching = "SDL_RENDER_BATCHING";
+        public const string HintRenderBatching = "SDL_RENDER_BATCHING";
 
         /// <summary>
         ///     The sdl hint event logging
         /// </summary>
-        public const string SdlHintEventLogging = "SDL_EVENT_LOGGING";
+        public const string HintEventLogging = "SDL_EVENT_LOGGING";
 
         /// <summary>
         ///     The sdl hint wave riff chunk size
         /// </summary>
-        public const string SdlHintWaveRiffChunkSize = "SDL_WAVE_RIFF_CHUNK_SIZE";
+        public const string HintWaveRiffChunkSize = "SDL_WAVE_RIFF_CHUNK_SIZE";
 
         /// <summary>
         ///     The sdl hint wave truncation
         /// </summary>
-        public const string SdlHintWaveTruncation = "SDL_WAVE_TRUNCATION";
+        public const string HintWaveTruncation = "SDL_WAVE_TRUNCATION";
 
         /// <summary>
         ///     The sdl hint wave fact chunk
         /// </summary>
-        public const string SdlHintWaveFactChunk = "SDL_WAVE_FACT_CHUNK";
+        public const string HintWaveFactChunk = "SDL_WAVE_FACT_CHUNK";
 
         /// <summary>
         ///     The sdl hint x11 window visual id
         /// </summary>
-        public const string SdlHintVideoX11WindowVisualId = "SDL_VIDEO_X11_WINDOW_VISUALID";
+        public const string HintVideoX11WindowVisualId = "SDL_VIDEO_X11_WINDOW_VISUALID";
 
         /// <summary>
         ///     The sdl hint game controller use button labels
         /// </summary>
-        public const string SdlHintGameControllerUseButtonLabels = "SDL_GAMECONTROLLER_USE_BUTTON_LABELS";
+        public const string HintGameControllerUseButtonLabels = "SDL_GAMECONTROLLER_USE_BUTTON_LABELS";
 
         /// <summary>
         ///     The sdl hint video external context
         /// </summary>
-        public const string SdlHintVideoExternalContext = "SDL_VIDEO_EXTERNAL_CONTEXT";
+        public const string HintVideoExternalContext = "SDL_VIDEO_EXTERNAL_CONTEXT";
 
         /// <summary>
         ///     The sdl hint joystick hidapi game cube
         /// </summary>
-        public const string SdlHintJoystickHidapiGameCube = "SDL_JOYSTICK_HIDAPI_GAMECUBE";
+        public const string HintJoystickHidapiGameCube = "SDL_JOYSTICK_HIDAPI_GAMECUBE";
 
         /// <summary>
         ///     The sdl hint display usable bounds
         /// </summary>
-        public const string SdlHintDisplayUsableBounds = "SDL_DISPLAY_USABLE_BOUNDS";
+        public const string HintDisplayUsableBounds = "SDL_DISPLAY_USABLE_BOUNDS";
 
         /// <summary>
         ///     The sdl hint video x11 force egl
         /// </summary>
-        public const string SdlHintVideoX11ForceEgl = "SDL_VIDEO_X11_FORCE_EGL";
+        public const string HintVideoX11ForceEgl = "SDL_VIDEO_X11_FORCE_EGL";
 
         /// <summary>
         ///     The sdl hint game controller type
         /// </summary>
-        public const string SdlHintGameControllerType = "SDL_GAMECONTROLLERTYPE";
+        public const string HintGameControllerType = "SDL_GAMECONTROLLERTYPE";
 
         /// <summary>
         ///     The sdl hint joystick hidapi correlate x input
         /// </summary>
-        public const string SdlHintJoystickHidapiCorrelateXInput = "SDL_JOYSTICK_HIDAPI_CORRELATE_XINPUT";
+        public const string HintJoystickHidapiCorrelateXInput = "SDL_JOYSTICK_HIDAPI_CORRELATE_XINPUT";
 
         /// <summary>
         ///     The sdl hint joystick raw input
         /// </summary>
-        public const string SdlHintJoystickRawInput = "SDL_JOYSTICK_RAWINPUT";
+        public const string HintJoystickRawInput = "SDL_JOYSTICK_RAWINPUT";
 
         /// <summary>
         ///     The sdl hint audio device app name
         /// </summary>
-        public const string SdlHintAudioDeviceAppName = "SDL_AUDIO_DEVICE_APP_NAME";
+        public const string HintAudioDeviceAppName = "SDL_AUDIO_DEVICE_APP_NAME";
 
         /// <summary>
         ///     The sdl hint audio device stream name
         /// </summary>
-        public const string SdlHintAudioDeviceStreamName = "SDL_AUDIO_DEVICE_STREAM_NAME";
+        public const string HintAudioDeviceStreamName = "SDL_AUDIO_DEVICE_STREAM_NAME";
 
         /// <summary>
         ///     The sdl hint preferred locales
         /// </summary>
-        public const string SdlHintPreferredLocales = "SDL_PREFERRED_LOCALES";
+        public const string HintPreferredLocales = "SDL_PREFERRED_LOCALES";
 
         /// <summary>
         ///     The sdl hint thread priority policy
         /// </summary>
-        public const string SdlHintThreadPriorityPolicy = "SDL_THREAD_PRIORITY_POLICY";
+        public const string HintThreadPriorityPolicy = "SDL_THREAD_PRIORITY_POLICY";
 
         /// <summary>
         ///     The sdl hint emscripten asyncify
         /// </summary>
-        public const string SdlHintEmscriptenAsyncify = "SDL_EMSCRIPTEN_ASYNCIFY";
+        public const string HintEmscriptenAsyncify = "SDL_EMSCRIPTEN_ASYNCIFY";
 
         /// <summary>
         ///     The sdl hint linux joystick dead zones
         /// </summary>
-        public const string SdlHintLinuxJoystickDeadZones = "SDL_LINUX_JOYSTICK_DEADZONES";
+        public const string HintLinuxJoystickDeadZones = "SDL_LINUX_JOYSTICK_DEADZONES";
 
         /// <summary>
         ///     The sdl hint android block on pause pause audio
         /// </summary>
-        public const string SdlHintAndroidBlockOnPausePauseAudio = "SDL_ANDROID_BLOCK_ON_PAUSE_PAUSEAUDIO";
+        public const string HintAndroidBlockOnPausePauseAudio = "SDL_ANDROID_BLOCK_ON_PAUSE_PAUSEAUDIO";
 
         /// <summary>
         ///     The sdl hint joystick hidapi ps5
         /// </summary>
-        public const string SdlHintJoystickHidapiPs5 = "SDL_JOYSTICK_HIDAPI_PS5";
+        public const string HintJoystickHidapiPs5 = "SDL_JOYSTICK_HIDAPI_PS5";
 
         /// <summary>
         ///     The sdl hint thread force realtime time critical
         /// </summary>
-        public const string SdlHintThreadForceRealtimeTimeCritical = "SDL_THREAD_FORCE_REALTIME_TIME_CRITICAL";
+        public const string HintThreadForceRealtimeTimeCritical = "SDL_THREAD_FORCE_REALTIME_TIME_CRITICAL";
 
         /// <summary>
         ///     The sdl hint joystick thread
@@ -617,445 +617,443 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl hint auto update joysticks
         /// </summary>
-        public const string SdlHintAutoUpdateJoysticks = "SDL_AUTO_UPDATE_JOYSTICKS";
+        public const string HintAutoUpdateJoysticks = "SDL_AUTO_UPDATE_JOYSTICKS";
 
         /// <summary>
         ///     The sdl hint auto update sensors
         /// </summary>
-        public const string SdlHintAutoUpdateSensors = "SDL_AUTO_UPDATE_SENSORS";
+        public const string HintAutoUpdateSensors = "SDL_AUTO_UPDATE_SENSORS";
 
         /// <summary>
         ///     The sdl hint mouse relative scaling
         /// </summary>
-        public const string SdlHintMouseRelativeScaling = "SDL_MOUSE_RELATIVE_SCALING";
+        public const string HintMouseRelativeScaling = "SDL_MOUSE_RELATIVE_SCALING";
 
         /// <summary>
         ///     The sdl hint joystick hidapi ps5 rumble
         /// </summary>
-        public const string SdlHintJoystickHidapiPs5Rumble = "SDL_JOYSTICK_HIDAPI_PS5_RUMBLE";
+        public const string HintJoystickHidapiPs5Rumble = "SDL_JOYSTICK_HIDAPI_PS5_RUMBLE";
 
         /// <summary>
         ///     The sdl hint windows force mutex critical sections
         /// </summary>
-        public const string SdlHintWindowsForceMutexCriticalSections = "SDL_WINDOWS_FORCE_MUTEX_CRITICAL_SECTIONS";
+        public const string HintWindowsForceMutexCriticalSections = "SDL_WINDOWS_FORCE_MUTEX_CRITICAL_SECTIONS";
 
         /// <summary>
         ///     The sdl hint windows force semaphore kernel
         /// </summary>
-        public const string SdlHintWindowsForceSemaphoreKernel = "SDL_WINDOWS_FORCE_SEMAPHORE_KERNEL";
+        public const string HintWindowsForceSemaphoreKernel = "SDL_WINDOWS_FORCE_SEMAPHORE_KERNEL";
 
         /// <summary>
         ///     The sdl hint joystick hidapi ps5 player led
         /// </summary>
-        public const string SdlHintJoystickHidapiPs5PlayerLed = "SDL_JOYSTICK_HIDAPI_PS5_PLAYER_LED";
+        public const string HintJoystickHidapiPs5PlayerLed = "SDL_JOYSTICK_HIDAPI_PS5_PLAYER_LED";
 
         /// <summary>
         ///     The sdl hint windows use d3d9ex
         /// </summary>
-        public const string SdlHintWindowsUseD3D9Ex = "SDL_WINDOWS_USE_D3D9EX";
+        public const string HintWindowsUseD3D9Ex = "SDL_WINDOWS_USE_D3D9EX";
 
         /// <summary>
         ///     The sdl hint joystick hidapi joy cons
         /// </summary>
-        public const string SdlHintJoystickHidapiJoyCons = "SDL_JOYSTICK_HIDAPI_JOY_CONS";
+        public const string HintJoystickHidapiJoyCons = "SDL_JOYSTICK_HIDAPI_JOY_CONS";
 
         /// <summary>
         ///     The sdl hint joystick hidapi stadia
         /// </summary>
-        public const string SdlHintJoystickHidapiStadia = "SDL_JOYSTICK_HIDAPI_STADIA";
+        public const string HintJoystickHidapiStadia = "SDL_JOYSTICK_HIDAPI_STADIA";
 
         /// <summary>
         ///     The sdl hint joystick hidapi switch home led
         /// </summary>
-        public const string SdlHintJoystickHidapiSwitchHomeLed = "SDL_JOYSTICK_HIDAPI_SWITCH_HOME_LED";
+        public const string HintJoystickHidapiSwitchHomeLed = "SDL_JOYSTICK_HIDAPI_SWITCH_HOME_LED";
 
         /// <summary>
         ///     The sdl hint allow alt tab while grabbed
         /// </summary>
-        public const string SdlHintAllowAltTabWhileGrabbed = "SDL_ALLOW_ALT_TAB_WHILE_GRABBED";
+        public const string HintAllowAltTabWhileGrabbed = "SDL_ALLOW_ALT_TAB_WHILE_GRABBED";
 
         /// <summary>
         ///     The sdl hint km sd rm require drm master
         /// </summary>
-        public const string SdlHintKmSdFmRequireDrmMaster = "SDL_KMSDRM_REQUIRE_DRM_MASTER";
+        public const string HintKmSdFmRequireDrmMaster = "SDL_KMSDRM_REQUIRE_DRM_MASTER";
 
         /// <summary>
         ///     The sdl hint audio device stream role
         /// </summary>
-        public const string SdlHintAudioDeviceStreamRole = "SDL_AUDIO_DEVICE_STREAM_ROLE";
+        public const string HintAudioDeviceStreamRole = "SDL_AUDIO_DEVICE_STREAM_ROLE";
 
         /// <summary>
         ///     The sdl hint x11 force override redirect
         /// </summary>
-        public const string SdlHintX11ForceOverrideRedirect = "SDL_X11_FORCE_OVERRIDE_REDIRECT";
+        public const string HintX11ForceOverrideRedirect = "SDL_X11_FORCE_OVERRIDE_REDIRECT";
 
         /// <summary>
         ///     The sdl hint joystick hidapi luna
         /// </summary>
-        public const string SdlHintJoystickHidapiLuna = "SDL_JOYSTICK_HIDAPI_LUNA";
+        public const string HintJoystickHidapiLuna = "SDL_JOYSTICK_HIDAPI_LUNA";
 
         /// <summary>
         ///     The sdl hint joystick raw input correlate x input
         /// </summary>
-        public const string SdlHintJoystickRawInputCorrelateXInput = "SDL_JOYSTICK_RAWINPUT_CORRELATE_XINPUT";
+        public const string HintJoystickRawInputCorrelateXInput = "SDL_JOYSTICK_RAWINPUT_CORRELATE_XINPUT";
 
         /// <summary>
         ///     The sdl hint audio include monitors
         /// </summary>
-        public const string SdlHintAudioIncludeMonitors = "SDL_AUDIO_INCLUDE_MONITORS";
+        public const string HintAudioIncludeMonitors = "SDL_AUDIO_INCLUDE_MONITORS";
 
         /// <summary>
         ///     The sdl hint video wayland allow lib decor
         /// </summary>
-        public const string SdlHintVideoWaylandAllowLibDecor = "SDL_VIDEO_WAYLAND_ALLOW_LIBDECOR";
+        public const string HintVideoWaylandAllowLibDecor = "SDL_VIDEO_WAYLAND_ALLOW_LIBDECOR";
 
         /// <summary>
         ///     The sdl hint video egl allow transparency
         /// </summary>
-        public const string SdlHintVideoEglAllowTransparency = "SDL_VIDEO_EGL_ALLOW_TRANSPARENCY";
+        public const string HintVideoEglAllowTransparency = "SDL_VIDEO_EGL_ALLOW_TRANSPARENCY";
 
         /// <summary>
         ///     The sdl hint app name
         /// </summary>
-        public const string SdlHintAppName = "SDL_APP_NAME";
+        public const string HintAppName = "SDL_APP_NAME";
 
         /// <summary>
         ///     The sdl hint screensaver inhibit activity name
         /// </summary>
-        public const string SdlHintScreensaverInhibitActivityName = "SDL_SCREENSAVER_INHIBIT_ACTIVITY_NAME";
+        public const string HintScreensaverInhibitActivityName = "SDL_SCREENSAVER_INHIBIT_ACTIVITY_NAME";
 
         /// <summary>
         ///     The sdl hint ime show ui
         /// </summary>
-        public const string SdlHintImeShowUi = "SDL_IME_SHOW_UI";
+        public const string HintImeShowUi = "SDL_IME_SHOW_UI";
 
         /// <summary>
         ///     The sdl hint window no activation when shown
         /// </summary>
-        public const string SdlHintWindowNoActivationWhenShown = "SDL_WINDOW_NO_ACTIVATION_WHEN_SHOWN";
+        public const string HintWindowNoActivationWhenShown = "SDL_WINDOW_NO_ACTIVATION_WHEN_SHOWN";
 
         /// <summary>
         ///     The sdl hint poll sentinel
         /// </summary>
-        public const string SdlHintPollSentinel = "SDL_POLL_SENTINEL";
+        public const string HintPollSentinel = "SDL_POLL_SENTINEL";
 
         /// <summary>
         ///     The sdl hint joystick device
         /// </summary>
-        public const string SdlHintJoystickDevice = "SDL_JOYSTICK_DEVICE";
+        public const string HintJoystickDevice = "SDL_JOYSTICK_DEVICE";
 
         /// <summary>
         ///     The sdl hint linux joystick classic
         /// </summary>
-        public const string SdlHintLinuxJoystickClassic = "SDL_LINUX_JOYSTICK_CLASSIC";
+        public const string HintLinuxJoystickClassic = "SDL_LINUX_JOYSTICK_CLASSIC";
 
         /// <summary>
         ///     The sdl major version
         /// </summary>
-        private const int SdlMajorVersion = 2;
+        private const int MajorVersion = 2;
 
         /// <summary>
         ///     The sdl minor version
         /// </summary>
-        private const int SdlMinorVersion = 0;
+        private const int MinorVersion = 0;
 
         /// <summary>
         ///     The sdl patch level
         /// </summary>
-        private const int SdlPatchLevel = 18;
+        private const int PatchLevel = 18;
 
         /// <summary>
         ///     The sdl window pos undefined mask
         /// </summary>
-        private const int SdlWindowPosUndefinedMask = 0x1FFF0000;
+        private const int WindowPosUndefinedMask = 0x1FFF0000;
 
         /// <summary>
         ///     The sdl window pos centered mask
         /// </summary>
-        private const int SdlWindowPosCenteredMask = 0x2FFF0000;
+        private const int WindowPosCenteredMask = 0x2FFF0000;
 
         /// <summary>
         ///     The sdl window pos undefined
         /// </summary>
-        public const int SdlWindowPosUndefined = 0x1FFF0000;
+        public const int WindowPosUndefined = 0x1FFF0000;
 
         /// <summary>
         ///     The sdl window pos centered
         /// </summary>
-        public const int SdlWindowPosCentered = 0x2FFF0000;
+        public const int WindowPosCentered = 0x2FFF0000;
 
         /// <summary>
         ///     The sdl sw surface
         /// </summary>
-        public const uint SdlSwSurface = 0x00000000;
+        public const uint SwSurface = 0x00000000;
 
         /// <summary>
         ///     The sdl pre alloc
         /// </summary>
-        public const uint SdlPreAlloc = 0x00000001;
+        public const uint PreAlloc = 0x00000001;
 
         /// <summary>
         ///     The sdl rle accel
         /// </summary>
-        private const uint SdlRleAccel = 0x00000002;
+        private const uint RleAccel = 0x00000002;
 
         /// <summary>
         ///     The sdl dont free
         /// </summary>
-        public const uint SdlDontFree = 0x00000004;
+        public const uint DontFree = 0x00000004;
 
         /// <summary>
         ///     The sdl pressed
         /// </summary>
-        public const byte SdlPressed = 1;
+        public const byte Pressed = 1;
 
         /// <summary>
         ///     The sdl released
         /// </summary>
-        public const byte SdlReleased = 0;
+        public const byte Released = 0;
 
         /// <summary>
         ///     The sdl text editing event text size
         /// </summary>
-        public const int SdlTextEditingEventTextSize = 32;
+        public const int TextEditingEventTextSize = 32;
 
         /// <summary>
         ///     The sdl text input event text size
         /// </summary>
-        public const int SdlTextInputEventTextSize = 32;
+        public const int TextInputEventTextSize = 32;
 
         /// <summary>
         ///     The sdl query
         /// </summary>
-        private const int SdlQuery = -1;
+        private const int Query = -1;
 
         /// <summary>
         ///     The sdl ignore
         /// </summary>
-        public const int SdlIgnore = 0;
+        public const int Ignore = 0;
 
         /// <summary>
         ///     The sdl disable
         /// </summary>
-        public const int SdlDisable = 0;
+        public const int Disable = 0;
 
         /// <summary>
         ///     The sdl enable
         /// </summary>
-        public const int SdlEnable = 1;
+        public const int Enable = 1;
 
         /// <summary>
         ///     The sdl scancode mask
         /// </summary>
-        public const int SdlKScancodeMask = 1 << 30;
+        public const int KScancodeMask = 1 << 30;
 
         /// <summary>
         ///     The sdl button left
         /// </summary>
-        public const uint SdlButtonLeft = 1;
+        public const uint ButtonLeft = 1;
 
         /// <summary>
         ///     The sdl button middle
         /// </summary>
-        public const uint SdlButtonMiddle = 2;
+        public const uint ButtonMiddle = 2;
 
         /// <summary>
         ///     The sdl button right
         /// </summary>
-        public const uint SdlButtonRight = 3;
+        public const uint ButtonRight = 3;
 
         /// <summary>
         ///     The sdl button x1
         /// </summary>
-        private const uint SdlButtonX1 = 4;
+        private const uint ButtonX1 = 4;
 
         /// <summary>
         ///     The sdl button x2
         /// </summary>
-        private const uint SdlButtonX2 = 5;
+        private const uint ButtonX2 = 5;
 
         /// <summary>
         ///     The max value
         /// </summary>
-        public const uint SdlTouchMouseId = uint.MaxValue;
+        public const uint TouchMouseId = uint.MaxValue;
 
         /// <summary>
         ///     The sdl hat centered
         /// </summary>
-        public const byte SdlHatCentered = 0x00;
+        public const byte HatCentered = 0x00;
 
         /// <summary>
         ///     The sdl hat up
         /// </summary>
-        private const byte SdlHatUp = 0x01;
+        private const byte HatUp = 0x01;
 
         /// <summary>
         ///     The sdl hat right
         /// </summary>
-        private const byte SdlHatRight = 0x02;
+        private const byte HatRight = 0x02;
 
         /// <summary>
         ///     The sdl hat down
         /// </summary>
-        private const byte SdlHatDown = 0x04;
+        private const byte HatDown = 0x04;
 
         /// <summary>
         ///     The sdl hat left
         /// </summary>
-        private const byte SdlHatLeft = 0x08;
+        private const byte HatLeft = 0x08;
 
         /// <summary>
         ///     The sdl hat up
         /// </summary>
-        public const byte SdlHatRightUp = SdlHatRight | SdlHatUp;
+        public const byte HatRightUp = HatRight | HatUp;
 
         /// <summary>
         ///     The sdl hat down
         /// </summary>
-        public const byte SdlHatRightDown = SdlHatRight | SdlHatDown;
+        public const byte HatRightDown = HatRight | HatDown;
 
         /// <summary>
         ///     The sdl hat up
         /// </summary>
-        public const byte SdlHatLeftUp = SdlHatLeft | SdlHatUp;
+        public const byte HatLeftUp = HatLeft | HatUp;
 
         /// <summary>
         ///     The sdl hat down
         /// </summary>
-        public const byte SdlHatLeftDown = SdlHatLeft | SdlHatDown;
+        public const byte HatLeftDown = HatLeft | HatDown;
 
 
         /// <summary>
         ///     The sdl iphone max g force
         /// </summary>
-        public const float SdlIphoneMaxGForce = 5.0f;
+        public const float IphoneMaxGForce = 5.0f;
 
         /// <summary>
         ///     The sdl haptic constant
         /// </summary>
-        public const ushort SdlHapticConstant = 1 << 0;
+        public const ushort HapticConstant = 1 << 0;
 
         /// <summary>
         ///     The sdl haptic sine
         /// </summary>
-        public const ushort SdlHapticSine = 1 << 1;
+        public const ushort HapticSine = 1 << 1;
 
         /// <summary>
         ///     The sdl haptic left right
         /// </summary>
-        public const ushort SdlHapticLeftRight = 1 << 2;
+        public const ushort HapticLeftRight = 1 << 2;
 
         /// <summary>
         ///     The sdl haptic triangle
         /// </summary>
-        public const ushort SdlHapticTriangle = 1 << 3;
+        public const ushort HapticTriangle = 1 << 3;
 
         /// <summary>
         ///     The sdl haptic saw tooth up
         /// </summary>
-        public const ushort SdlHapticSawToothUp = 1 << 4;
+        public const ushort HapticSawToothUp = 1 << 4;
 
         /// <summary>
         ///     The sdl haptic saw tooth down
         /// </summary>
-        public const ushort SdlHapticSawToothDown = 1 << 5;
+        public const ushort HapticSawToothDown = 1 << 5;
 
         /// <summary>
         ///     The sdl haptic spring
         /// </summary>
-        public const ushort SdlHapticSpring = 1 << 7;
+        public const ushort HapticSpring = 1 << 7;
 
         /// <summary>
         ///     The sdl haptic damper
         /// </summary>
-        public const ushort SdlHapticDamper = 1 << 8;
+        public const ushort HapticDamper = 1 << 8;
 
         /// <summary>
         ///     The sdl haptic inertia
         /// </summary>
-        public const ushort SdlHapticInertia = 1 << 9;
+        public const ushort HapticInertia = 1 << 9;
 
         /// <summary>
         ///     The sdl haptic friction
         /// </summary>
-        public const ushort SdlHapticFriction = 1 << 10;
+        public const ushort HapticFriction = 1 << 10;
 
         /// <summary>
         ///     The sdl haptic custom
         /// </summary>
-        public const ushort SdlHapticCustom = 1 << 11;
+        public const ushort HapticCustom = 1 << 11;
 
         /// <summary>
         ///     The sdl haptic gain
         /// </summary>
-        public const ushort SdlHapticGain = 1 << 12;
+        public const ushort HapticGain = 1 << 12;
 
         /// <summary>
         ///     The sdl haptic auto center
         /// </summary>
-        public const ushort SdlHapticAutoCenter = 1 << 13;
+        public const ushort HapticAutoCenter = 1 << 13;
 
         /// <summary>
         ///     The sdl haptic status
         /// </summary>
-        public const ushort SdlHapticStatus = 1 << 14;
+        public const ushort HapticStatus = 1 << 14;
 
         /// <summary>
         ///     The sdl haptic pause
         /// </summary>
-        public const ushort SdlHapticPause = 1 << 15;
-
-
+        public const ushort HapticPause = 1 << 15;
+        
         /// <summary>
         ///     The sdl haptic polar
         /// </summary>
-        public const byte SdlHapticPolar = 0;
+        public const byte HapticPolar = 0;
 
         /// <summary>
         ///     The sdl haptic cartesian
         /// </summary>
-        public const byte SdlHapticCartesian = 1;
+        public const byte HapticCartesian = 1;
 
         /// <summary>
         ///     The sdl haptic spherical
         /// </summary>
-        public const byte SdlHapticSpherical = 2;
+        public const byte HapticSpherical = 2;
 
         /// <summary>
         ///     The sdl haptic steering axis
         /// </summary>
-        public const byte SdlHapticSteeringAxis = 3;
-
-
+        public const byte HapticSteeringAxis = 3;
+        
         /// <summary>
         ///     The sdl haptic infinity
         /// </summary>
-        public const uint SdlHapticInfinity = 4294967295U;
+        public const uint HapticInfinity = 4294967295U;
 
         /// <summary>
         ///     The sdl standard gravity
         /// </summary>
-        public const float SdlStandardGravity = 9.80665f;
+        public const float StandardGravity = 9.80665f;
 
         /// <summary>
         ///     The sdl audio mask bit size
         /// </summary>
-        private const ushort SdlAudioMaskBitSize = 0xFF;
+        private const ushort AudioMaskBitSize = 0xFF;
 
         /// <summary>
         ///     The sdl audio mask datatype
         /// </summary>
-        private const ushort SdlAudioMaskDatatype = 1 << 8;
+        private const ushort AudioMaskDatatype = 1 << 8;
 
         /// <summary>
         ///     The sdl audio mask endian
         /// </summary>
-        private const ushort SdlAudioMaskEndian = 1 << 12;
+        private const ushort AudioMaskEndian = 1 << 12;
 
         /// <summary>
         ///     The sdl audio mask signed
         /// </summary>
-        private const ushort SdlAudioMaskSigned = 1 << 15;
+        private const ushort AudioMaskSigned = 1 << 15;
 
         /// <summary>
         ///     The audio u8
@@ -1130,287 +1128,287 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl audio allow frequency change
         /// </summary>
-        private const uint SdlAudioAllowFrequencyChange = 0x00000001;
+        private const uint AudioAllowFrequencyChange = 0x00000001;
 
         /// <summary>
         ///     The sdl audio allow format change
         /// </summary>
-        private const uint SdlAudioAllowFormatChange = 0x00000002;
+        private const uint AudioAllowFormatChange = 0x00000002;
 
         /// <summary>
         ///     The sdl audio allow channels change
         /// </summary>
-        private const uint SdlAudioAllowChannelsChange = 0x00000004;
+        private const uint AudioAllowChannelsChange = 0x00000004;
 
         /// <summary>
         ///     The sdl audio allow samples change
         /// </summary>
-        private const uint SdlAudioAllowSamplesChange = 0x00000008;
+        private const uint AudioAllowSamplesChange = 0x00000008;
 
         /// <summary>
         ///     The sdl audio allow samples change
         /// </summary>
-        public const uint SdlAudioAllowAnyChange = SdlAudioAllowFrequencyChange | SdlAudioAllowFormatChange | SdlAudioAllowChannelsChange | SdlAudioAllowSamplesChange;
+        public const uint AudioAllowAnyChange = AudioAllowFrequencyChange | AudioAllowFormatChange | AudioAllowChannelsChange | AudioAllowSamplesChange;
 
         /// <summary>
         ///     The sdl mix max volume
         /// </summary>
-        public const int SdlMixMaxVolume = 128;
+        public const int MixMaxVolume = 128;
 
         /// <summary>
         ///     The sdl android external storage read
         /// </summary>
-        public const int SdlAndroidExternalStorageRead = 0x01;
+        public const int AndroidExternalStorageRead = 0x01;
 
         /// <summary>
         ///     The sdl android external storage write
         /// </summary>
-        public const int SdlAndroidExternalStorageWrite = 0x02;
+        public const int AndroidExternalStorageWrite = 0x02;
 
         /// <summary>
         ///     The sdl patch level
         /// </summary>
-        private static readonly int SdlCompiledVersion = SdlVersionNum(SdlMajorVersion, SdlMinorVersion, SdlPatchLevel);
+        private static readonly int CompiledVersion = VersionNum(MajorVersion, MinorVersion, PatchLevel);
 
         /// <summary>
         ///     The sdl pixel format unknown
         /// </summary>
-        public static readonly uint SdlPixelFormatUnknown = 0;
+        public static readonly uint PixelFormatUnknown = 0;
 
         /// <summary>
         ///     The sdl bit map order 4321
         /// </summary>
-        public static readonly uint SdlPixelFormatIndex1Lsb = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypeIndex1, (uint) SdlBitmapOrder.SdlBitMapOrder4321, 0, 1, 0);
+        public static readonly uint PixelFormatIndex1Lsb = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypeIndex1, (uint) SdlBitmapOrder.SdlBitMapOrder4321, 0, 1, 0);
 
         /// <summary>
         ///     The sdl bit map order 1234
         /// </summary>
-        public static readonly uint SdlPixelFormatIndex1Msb = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypeIndex1, (uint) SdlBitmapOrder.SdlBitMapOrder1234, 0, 1, 0);
+        public static readonly uint PixelFormatIndex1Msb = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypeIndex1, (uint) SdlBitmapOrder.SdlBitMapOrder1234, 0, 1, 0);
 
         /// <summary>
         ///     The sdl bit map order 4321
         /// </summary>
-        public static readonly uint SdlPixelFormatIndex4Lsb = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypeIndex4, (uint) SdlBitmapOrder.SdlBitMapOrder4321, 0, 4, 0);
+        public static readonly uint PixelFormatIndex4Lsb = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypeIndex4, (uint) SdlBitmapOrder.SdlBitMapOrder4321, 0, 4, 0);
 
         /// <summary>
         ///     The sdl bit map order 1234
         /// </summary>
-        public static readonly uint SdlPixelFormatIndex4Msb = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypeIndex4, (uint) SdlBitmapOrder.SdlBitMapOrder1234, 0, 4, 0);
+        public static readonly uint PixelFormatIndex4Msb = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypeIndex4, (uint) SdlBitmapOrder.SdlBitMapOrder1234, 0, 4, 0);
 
         /// <summary>
         ///     The sdl pixel type index8
         /// </summary>
-        public static readonly uint SdlPixelFormatIndex8 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypeIndex8, 0, 0, 8, 1);
+        public static readonly uint PixelFormatIndex8 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypeIndex8, 0, 0, 8, 1);
 
         /// <summary>
         ///     The sdl packed layout 332
         /// </summary>
-        public static readonly uint SdlPixelFormatRgb332 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked8, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout332, 8, 1);
+        public static readonly uint PixelFormatRgb332 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked8, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout332, 8, 1);
 
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        private static readonly uint SdlPixelFormatXRgb444 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout4444, 12, 2);
+        private static readonly uint PixelFormatXRgb444 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout4444, 12, 2);
         
         /// <summary>
         ///     The sdl pixel format x rgb 444
         /// </summary>
-        public static readonly uint SdlPixelFormatRgb444 = SdlPixelFormatXRgb444;
+        public static readonly uint PixelFormatRgb444 = PixelFormatXRgb444;
 
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        private static readonly uint SdlPixelFormatXBgr444 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderXbgr, SdlPackedLayout.SdlPackedlayout4444, 12, 2);
+        private static readonly uint PixelFormatXBgr444 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderXbgr, SdlPackedLayout.SdlPackedlayout4444, 12, 2);
 
         /// <summary>
         ///     The sdl pixel format x bgr 444
         /// </summary>
-        public static readonly uint SdlPixelFormatBgr444 = SdlPixelFormatXBgr444;
+        public static readonly uint PixelFormatBgr444 = PixelFormatXBgr444;
 
         /// <summary>
         ///     The sdl packed layout 1555
         /// </summary>
-        private static readonly uint SdlPixelFormatXRgb1555 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout1555, 15, 2);
+        private static readonly uint PixelFormatXRgb1555 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout1555, 15, 2);
 
         /// <summary>
         ///     The sdl pixel format xrgb1555
         /// </summary>
-        public static readonly uint SdlPixelFormatRgb555 = SdlPixelFormatXRgb1555;
+        public static readonly uint PixelFormatRgb555 = PixelFormatXRgb1555;
 
         /// <summary>
         ///     The sdl packed layout 1555
         /// </summary>
-        private static readonly uint SdlPixelFormatXBgr1555 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypeIndex1, (uint) SdlBitmapOrder.SdlBitMapOrder4321, SdlPackedLayout.SdlPackedlayout1555, 15, 2);
+        private static readonly uint PixelFormatXBgr1555 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypeIndex1, (uint) SdlBitmapOrder.SdlBitMapOrder4321, SdlPackedLayout.SdlPackedlayout1555, 15, 2);
 
         /// <summary>
         ///     The sdl pixel format xbgr1555
         /// </summary>
-        public static readonly uint SdlPixelFormatBgr555 = SdlPixelFormatXBgr1555;
+        public static readonly uint PixelFormatBgr555 = PixelFormatXBgr1555;
 
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        public static readonly uint SdlPixelFormatArgb4444 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderArgb, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
+        public static readonly uint PixelFormatArgb4444 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderArgb, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
         
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        public static readonly uint SdlPixelFormatRgba4444 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderRgba, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
+        public static readonly uint PixelFormatRgba4444 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderRgba, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        public static readonly uint SdlPixelFormatABgr4444 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderAbgr, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
+        public static readonly uint PixelFormatABgr4444 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderAbgr, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        public static readonly uint SdlPixelFormatBGra4444 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderBgra, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
+        public static readonly uint PixelFormatBGra4444 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderBgra, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 1555
         /// </summary>
-        public static readonly uint SdlPixelFormatArgb1555 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderArgb, SdlPackedLayout.SdlPackedlayout1555, 16, 2);
+        public static readonly uint PixelFormatArgb1555 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderArgb, SdlPackedLayout.SdlPackedlayout1555, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 5551
         /// </summary>
-        public static readonly uint SdlPixelFormatRgba5551 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderRgba, SdlPackedLayout.SdlPackedlayout5551, 16, 2);
+        public static readonly uint PixelFormatRgba5551 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderRgba, SdlPackedLayout.SdlPackedlayout5551, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 1555
         /// </summary>
-        public static readonly uint SdlPixelFormatABgr1555 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderAbgr, SdlPackedLayout.SdlPackedlayout1555, 16, 2);
+        public static readonly uint PixelFormatABgr1555 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderAbgr, SdlPackedLayout.SdlPackedlayout1555, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 5551
         /// </summary>
-        public static readonly uint SdlPixelFormatBGra5551 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderBgra, SdlPackedLayout.SdlPackedlayout5551, 16, 2);
+        public static readonly uint PixelFormatBGra5551 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderBgra, SdlPackedLayout.SdlPackedlayout5551, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 565
         /// </summary>
-        public static readonly uint SdlPixelFormatRgb565 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout565, 16, 2);
+        public static readonly uint PixelFormatRgb565 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout565, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 565
         /// </summary>
-        public static readonly uint SdlPixelFormatBgr565 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderXbgr, SdlPackedLayout.SdlPackedlayout565, 16, 2);
+        public static readonly uint PixelFormatBgr565 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderXbgr, SdlPackedLayout.SdlPackedlayout565, 16, 2);
 
         /// <summary>
         ///     The sdl array order rgb
         /// </summary>
-        public static readonly uint SdlPixelFormatRgb24 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypeArrayu8, (uint) SdlArrayOrder.SdlArrayorderRgb, 0, 24, 3);
+        public static readonly uint PixelFormatRgb24 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypeArrayU8, (uint) SdlArrayOrder.SdlArrayorderRgb, 0, 24, 3);
 
         /// <summary>
         ///     The sdl array order bgr
         /// </summary>
-        public static readonly uint SdlPixelFormatBgr24 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypeArrayu8, (uint) SdlArrayOrder.SdlArrayorderBgr, 0, 24, 3);
+        public static readonly uint PixelFormatBgr24 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypeArrayU8, (uint) SdlArrayOrder.SdlArrayorderBgr, 0, 24, 3);
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        private static readonly uint SdlPixelFormatXRgb888 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked32, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
+        private static readonly uint PixelFormatXRgb888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
 
         /// <summary>
         ///     The sdl pixel format x rgb 888
         /// </summary>
-        public static readonly uint SdlPixelFormatRgb888 = SdlPixelFormatXRgb888;
+        public static readonly uint PixelFormatRgb888 = PixelFormatXRgb888;
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint SdlPixelFormatRgbX8888 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked32, (uint) SdlPackedOrder.SdlPackedorderRgbx, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
+        public static readonly uint PixelFormatRgbX8888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) SdlPackedOrder.SdlPackedorderRgbx, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        private static readonly uint SdlPixelFormatXBgr888 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked32, (uint) SdlPackedOrder.SdlPackedorderXbgr, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
+        private static readonly uint PixelFormatXBgr888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) SdlPackedOrder.SdlPackedorderXbgr, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
 
         /// <summary>
         ///     The sdl pixel format x bgr 888
         /// </summary>
-        public static readonly uint SdlPixelFormatBgr888 = SdlPixelFormatXBgr888;
+        public static readonly uint PixelFormatBgr888 = PixelFormatXBgr888;
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint SdlPixelFormatBGrx8888 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked32, (uint) SdlPackedOrder.SdlPackedorderBgrx, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
+        public static readonly uint PixelFormatBGrx8888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) SdlPackedOrder.SdlPackedorderBgrx, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint SdlPixelFormatArgb8888 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked32, (uint) SdlPackedOrder.SdlPackedorderArgb, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
+        public static readonly uint PixelFormatArgb8888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) SdlPackedOrder.SdlPackedorderArgb, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint SdlPixelFormatRgba8888 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked32, (uint) SdlPackedOrder.SdlPackedorderRgba, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
+        public static readonly uint PixelFormatRgba8888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) SdlPackedOrder.SdlPackedorderRgba, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint SdlPixelFormatABgr8888 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked32, (uint) SdlPackedOrder.SdlPackedorderAbgr, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
+        public static readonly uint PixelFormatABgr8888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) SdlPackedOrder.SdlPackedorderAbgr, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint SdlPixelFormatB8888 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked32, (uint) SdlPackedOrder.SdlPackedorderBgra, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
+        public static readonly uint PixelFormatB8888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) SdlPackedOrder.SdlPackedorderBgra, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
 
         /// <summary>
         ///     The sdl packed layout 2101010
         /// </summary>
-        public static readonly uint SdlPixelFormatArgb2101010 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked32, (uint) SdlPackedOrder.SdlPackedorderArgb, SdlPackedLayout.SdlPackedlayout2101010, 32, 4);
+        public static readonly uint PixelFormatArgb2101010 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) SdlPackedOrder.SdlPackedorderArgb, SdlPackedLayout.SdlPackedlayout2101010, 32, 4);
 
         /// <summary>
         ///     The sdl define pixel four cc
         /// </summary>
-        public static readonly uint SdlPixelFormatYv12 = SdlDefinePixelFourcc((byte) 'Y', (byte) 'V', (byte) '1', (byte) '2');
+        public static readonly uint PixelFormatYv12 = SdlDefinePixelFourcc((byte) 'Y', (byte) 'V', (byte) '1', (byte) '2');
 
         /// <summary>
         ///     The sdl define pixel four cc
         /// </summary>
-        public static readonly uint SdlPixelFormatIy = SdlDefinePixelFourcc((byte) 'I', (byte) 'Y', (byte) 'U', (byte) 'V');
+        public static readonly uint PixelFormatIy = SdlDefinePixelFourcc((byte) 'I', (byte) 'Y', (byte) 'U', (byte) 'V');
 
         /// <summary>
         ///     The sdl define pixel four
         /// </summary>
-        private static readonly uint SdlPixelFormatYuy2 = SdlDefinePixelFourcc((byte) 'Y', (byte) 'U', (byte) 'Y', (byte) '2');
+        private static readonly uint PixelFormatYuy2 = SdlDefinePixelFourcc((byte) 'Y', (byte) 'U', (byte) 'Y', (byte) '2');
 
         /// <summary>
         ///     The sdl define pixel four
         /// </summary>
-        private static readonly uint SdlPixelFormatUy = SdlDefinePixelFourcc((byte) 'U', (byte) 'Y', (byte) 'V', (byte) 'Y');
+        private static readonly uint PixelFormatUy = SdlDefinePixelFourcc((byte) 'U', (byte) 'Y', (byte) 'V', (byte) 'Y');
 
         /// <summary>
         ///     The sdl define pixel four
         /// </summary>
-        private static readonly uint SdlPixelFormatYv = SdlDefinePixelFourcc((byte) 'Y', (byte) 'V', (byte) 'Y', (byte) 'U');
+        private static readonly uint PixelFormatYv = SdlDefinePixelFourcc((byte) 'Y', (byte) 'V', (byte) 'Y', (byte) 'U');
 
         /// <summary>
         ///     The sdl button left
         /// </summary>
-        public static readonly uint SdlButtonLMask = SDL_BUTTON(SdlButtonLeft);
+        public static readonly uint ButtonLMask = SDL_BUTTON(ButtonLeft);
 
         /// <summary>
         ///     The sdl button middle
         /// </summary>
-        public static readonly uint SdlButtonMMask = SDL_BUTTON(SdlButtonMiddle);
+        public static readonly uint ButtonMMask = SDL_BUTTON(ButtonMiddle);
 
         /// <summary>
         ///     The sdl button right
         /// </summary>
-        public static readonly uint SdlButtonRMask = SDL_BUTTON(SdlButtonRight);
+        public static readonly uint ButtonRMask = SDL_BUTTON(ButtonRight);
 
         /// <summary>
         ///     The sdl button x1
         /// </summary>
-        public static readonly uint SdlButtonX1Mask = SDL_BUTTON(SdlButtonX1);
+        public static readonly uint ButtonX1Mask = SDL_BUTTON(ButtonX1);
 
         /// <summary>
         ///     The sdl button x2
         /// </summary>
-        public static readonly uint SdlButtonX2Mask = SDL_BUTTON(SdlButtonX2);
+        public static readonly uint ButtonX2Mask = SDL_BUTTON(ButtonX2);
 
         /// <summary>
         ///     The audio u16msb
@@ -1440,22 +1438,22 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="c">The </param>
         /// <param name="d">The </param>
         /// <returns>The uint</returns>
-        private static uint SDL_FOURCC(byte a, byte b, byte c, byte d) => (uint) (a | (b << 8) | (c << 16) | (d << 24));
+        private static uint Fourcc(byte a, byte b, byte c, byte d) => (uint) (a | (b << 8) | (c << 16) | (d << 24));
 
         /// <summary>
         ///     Sdl the malloc using the specified size
         /// </summary>
         /// <param name="size">The size</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr SDL_malloc(int size);
+        [DllImport(NativeLibName, EntryPoint = "SDL_malloc", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr INTERNAL_SDL_malloc(int size);
 
         /// <summary>
         ///     Sdl the free using the specified mem block
         /// </summary>
         /// <param name="memBlock">The mem block</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        private static extern void SDL_free(IntPtr memBlock);
+        [DllImport(NativeLibName, EntryPoint = "SDL_free", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void INTERNAL_SDL_free(IntPtr memBlock);
 
         /// <summary>
         ///     Sdl the mem cpy using the specified dst
@@ -1464,8 +1462,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="src">The src</param>
         /// <param name="len">The len</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_memCpy(IntPtr dst, IntPtr src, IntPtr len);
+        [DllImport(NativeLibName, EntryPoint = "SDL_memCpy", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr INTERNAL_SDL_memCpy(IntPtr dst, IntPtr src, IntPtr len);
         
         /// <summary>
         ///     Internals the sdl rw from file using the specified file
@@ -1474,10 +1472,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="mode">The mode</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RWFromFile", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_RWFromFile(
-            byte[] file,
-            byte[] mode
-        );
+        private static extern IntPtr INTERNAL_SDL_RWFromFile(byte[] file, byte[] mode);
 
         /// <summary>
         ///     Sdl the rw from file using the specified file
@@ -1485,10 +1480,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <param name="mode">The mode</param>
         /// <returns>The rw ops</returns>
-        private static IntPtr SDL_RWFromFile(
-            string file,
-            string mode
-        )
+        private static IntPtr RwFromFile(string file, string mode)
         {
             byte[] utf8File = Utf8Manager.Utf8EncodeHeap(file);
             byte[] utf8Mode = Utf8Manager.Utf8EncodeHeap(mode);
@@ -1499,32 +1491,28 @@ namespace Alis.Core.Graphic.SDL
             return rwOps;
         }
 
-
         /// <summary>
         ///     Sdl the alloc rw
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_AllocRW();
-
-
+        [DllImport(NativeLibName, EntryPoint = "SDL_AllocRW", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr INTERNAL_SDL_AllocRW();
+        
         /// <summary>
         ///     Sdl the free rw using the specified area
         /// </summary>
         /// <param name="area">The area</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_FreeRW(IntPtr area);
-
-
+        [DllImport(NativeLibName, EntryPoint = "SDL_FreeRW", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void INTERNAL_SDL_FreeRW(IntPtr area);
+        
         /// <summary>
         ///     Sdl the rw from fp using the specified fp
         /// </summary>
         /// <param name="fp">The fp</param>
         /// <param name="autoClose">The auto close</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_RWFromFP(IntPtr fp, SdlBool autoClose);
-
+        [DllImport(NativeLibName, EntryPoint = "SDL_RWFromFP", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr INTERNAL_SDL_RWFromFP(IntPtr fp, SdlBool autoClose);
 
         /// <summary>
         ///     Sdl the rw from mem using the specified mem
@@ -1532,30 +1520,28 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="mem">The mem</param>
         /// <param name="size">The size</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_RWFromMem", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr SDL_RWFromMem(IntPtr mem, int size);
-
-
+        public static extern IntPtr INTERNAL_SDL_RWFromMem(IntPtr mem, int size);
+        
         /// <summary>
         ///     Sdl the rw from const mem using the specified mem
         /// </summary>
         /// <param name="mem">The mem</param>
         /// <param name="size">The size</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_RWFromConstMem", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr SDL_RWFromConstMem(IntPtr mem, int size);
-
-
+        public static extern IntPtr INTERNAL_SDL_RWFromConstMem(IntPtr mem, int size);
+        
         /// <summary>
         ///     Sdl the r w size using the specified context
         /// </summary>
         /// <param name="context">The context</param>
         /// <returns>The long</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_RwSize", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern long SDL_RwSize(IntPtr context);
+        public static extern long INTERNAL_SDL_RwSize(IntPtr context);
 
         /// <summary>
         ///     Sdl the r w seek using the specified context
@@ -1564,22 +1550,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="offset">The offset</param>
         /// <param name="whence">The whence</param>
         /// <returns>The long</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern long SDL_RwSeek(
-            IntPtr context,
-            long offset,
-            int whence
-        );
+        [DllImport(NativeLibName, EntryPoint = "SDL_RwSeek", CallingConvention = CallingConvention.Cdecl)]
+        public static extern long INTERNAL_SDL_RwSeek(IntPtr context, long offset, int whence);
 
         /// <summary>
         ///     Sdl the r w tell using the specified context
         /// </summary>
         /// <param name="context">The context</param>
         /// <returns>The long</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern long SDL_RwTell(IntPtr context);
-
-
+        [DllImport(NativeLibName, EntryPoint = "SDL_RwTell", CallingConvention = CallingConvention.Cdecl)]
+        public static extern long INTERNAL_SDL_RwTell(IntPtr context);
+        
         /// <summary>
         ///     Sdl the r w read using the specified context
         /// </summary>
@@ -1588,8 +1569,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="size">The size</param>
         /// <param name="maxNum">The max num</param>
         /// <returns>The long</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern long SDL_RwRead(IntPtr context, IntPtr ptr, IntPtr size, IntPtr maxNum);
+        [DllImport(NativeLibName, EntryPoint = "SDL_RwRead", CallingConvention = CallingConvention.Cdecl)]
+        public static extern long INTERNAL_SDL_RwRead(IntPtr context, IntPtr ptr, IntPtr size, IntPtr maxNum);
 
         /// <summary>
         ///     Sdl the r w write using the specified context
@@ -1599,70 +1580,64 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="size">The size</param>
         /// <param name="maxNum">The max num</param>
         /// <returns>The long</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern long SDL_RwWrite(
-            IntPtr context,
-            IntPtr ptr,
-            IntPtr size,
-            IntPtr maxNum
-        );
-
-
+        [DllImport(NativeLibName, EntryPoint = "SDL_RwWrite", CallingConvention = CallingConvention.Cdecl)]
+        public static extern long INTERNAL_SDL_RwWrite(IntPtr context, IntPtr ptr, IntPtr size, IntPtr maxNum);
+        
         /// <summary>
         ///     Sdl the read u 8 using the specified src
         /// </summary>
         /// <param name="src">The src</param>
         /// <returns>The byte</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte SDL_ReadU8(IntPtr src);
+        [DllImport(NativeLibName, EntryPoint = "SDL_ReadU8", CallingConvention = CallingConvention.Cdecl)]
+        public static extern byte INTERNAL_SDL_ReadU8(IntPtr src);
 
         /// <summary>
         ///     Sdl the read le 16 using the specified src
         /// </summary>
         /// <param name="src">The src</param>
         /// <returns>The int 16</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ushort SDL_ReadLE16(IntPtr src);
+        [DllImport(NativeLibName, EntryPoint = "SDL_ReadLE16", CallingConvention = CallingConvention.Cdecl)]
+        public static extern ushort INTERNAL_SDL_ReadLE16(IntPtr src);
 
         /// <summary>
         ///     Sdl the read be 16 using the specified src
         /// </summary>
         /// <param name="src">The src</param>
         /// <returns>The int 16</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ushort SDL_ReadBE16(IntPtr src);
+        [DllImport(NativeLibName, EntryPoint = "SDL_ReadBE16", CallingConvention = CallingConvention.Cdecl)]
+        public static extern ushort INTERNAL_SDL_ReadBE16(IntPtr src);
 
         /// <summary>
         ///     Sdl the read le 32 using the specified src
         /// </summary>
         /// <param name="src">The src</param>
         /// <returns>The int 32</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_ReadLE32(IntPtr src);
+        [DllImport(NativeLibName, EntryPoint = "SDL_ReadLE32", CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint INTERNAL_SDL_ReadLE32(IntPtr src);
 
         /// <summary>
         ///     Sdl the read be 32 using the specified src
         /// </summary>
         /// <param name="src">The src</param>
         /// <returns>The int 32</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_ReadBE32(IntPtr src);
+        [DllImport(NativeLibName, EntryPoint = "SDL_ReadBE32", CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint INTERNAL_SDL_ReadBE32(IntPtr src);
 
         /// <summary>
         ///     Sdl the read le 64 using the specified src
         /// </summary>
         /// <param name="src">The src</param>
         /// <returns>The int 64</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ulong SDL_ReadLE64(IntPtr src);
+        [DllImport(NativeLibName, EntryPoint = "SDL_ReadLE64", CallingConvention = CallingConvention.Cdecl)]
+        public static extern ulong INTERNAL_SDL_ReadLE64(IntPtr src);
 
         /// <summary>
         ///     Sdl the read be 64 using the specified src
         /// </summary>
         /// <param name="src">The src</param>
         /// <returns>The int 64</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ulong SDL_ReadBE64(IntPtr src);
+        [DllImport(NativeLibName, EntryPoint = "SDL_ReadBE64", CallingConvention = CallingConvention.Cdecl)]
+        public static extern ulong INTERNAL_SDL_ReadBE64(IntPtr src);
 
         /// <summary>
         ///     Sdl the write u 8 using the specified dst
@@ -1670,8 +1645,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="dst">The dst</param>
         /// <param name="value">The value</param>
         /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_WriteU8(IntPtr dst, byte value);
+        [DllImport(NativeLibName, EntryPoint = "SDL_WriteU8", CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint INTERNAL_SDL_WriteU8(IntPtr dst, byte value);
 
         /// <summary>
         ///     Sdl the write le 16 using the specified dst
@@ -1679,8 +1654,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="dst">The dst</param>
         /// <param name="value">The value</param>
         /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_WriteLE16(IntPtr dst, ushort value);
+        [DllImport(NativeLibName, EntryPoint = "SDL_WriteLE16", CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint INTERNAL_SDL_WriteLE16(IntPtr dst, ushort value);
 
         /// <summary>
         ///     Sdl the write be 16 using the specified dst
@@ -1688,8 +1663,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="dst">The dst</param>
         /// <param name="value">The value</param>
         /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_WriteBE16(IntPtr dst, ushort value);
+        [DllImport(NativeLibName, EntryPoint = "SDL_WriteBE16", CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint INTERNAL_SDL_WriteBE16(IntPtr dst, ushort value);
 
         /// <summary>
         ///     Sdl the write le 32 using the specified dst
@@ -1697,8 +1672,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="dst">The dst</param>
         /// <param name="value">The value</param>
         /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_WriteLE32(IntPtr dst, uint value);
+        [DllImport(NativeLibName, EntryPoint = "SDL_WriteLE32", CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint INTERNAL_SDL_WriteLE32(IntPtr dst, uint value);
 
         /// <summary>
         ///     Sdl the write be 32 using the specified dst
@@ -1706,8 +1681,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="dst">The dst</param>
         /// <param name="value">The value</param>
         /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_WriteBE32(IntPtr dst, uint value);
+        [DllImport(NativeLibName, EntryPoint = "SDL_WriteBE32", CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint INTERNAL_SDL_WriteBE32(IntPtr dst, uint value);
 
         /// <summary>
         ///     Sdl the write le 64 using the specified dst
@@ -1715,8 +1690,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="dst">The dst</param>
         /// <param name="value">The value</param>
         /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_WriteLE64(IntPtr dst, ulong value);
+        [DllImport(NativeLibName, EntryPoint = "SDL_WriteLE64", CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint INTERNAL_SDL_WriteLE64(IntPtr dst, ulong value);
 
         /// <summary>
         ///     Sdl the write be 64 using the specified dst
@@ -1724,17 +1699,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="dst">The dst</param>
         /// <param name="value">The value</param>
         /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_WriteBE64(IntPtr dst, ulong value);
-
-
+        [DllImport(NativeLibName, EntryPoint = "SDL_WriteBE64", CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint INTERNAL_SDL_WriteBE64(IntPtr dst, ulong value);
+        
         /// <summary>
         ///     Sdl the r w close using the specified context
         /// </summary>
         /// <param name="context">The context</param>
         /// <returns>The long</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern long SDL_RwClose(IntPtr context);
+        [DllImport(NativeLibName, EntryPoint = "SDL_RwClose", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        public static extern long INTERNAL_SDL_RwClose(IntPtr context);
 
         /// <summary>
         ///     Internals the sdl load file using the specified file
@@ -1743,6 +1718,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="dataSize">The data size</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_LoadFile", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern IntPtr INTERNAL_SDL_LoadFile(byte[] file, out IntPtr dataSize);
 
         /// <summary>
@@ -1751,31 +1727,25 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <param name="dataSize">The data size</param>
         /// <returns>The result</returns>
-        public static IntPtr SDL_LoadFile(string file, out IntPtr dataSize)
-        {
-            byte[] utf8File = Utf8Manager.Utf8EncodeHeap(file);
-            IntPtr result = INTERNAL_SDL_LoadFile(utf8File, out dataSize);
-            return result;
-        }
+        [return: NotNull]
+        public static IntPtr LoadFile(string file, out IntPtr dataSize) => INTERNAL_SDL_LoadFile(Utf8Manager.Utf8EncodeHeap(file), out dataSize);
 
         /// <summary>
         ///     Sdl the set main ready
         /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_SetMainReady();
-
-
+        [DllImport(NativeLibName, EntryPoint = "SDL_SetMainReady", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        public static extern void INTERNAL_SDL_SetMainReady();
+        
         /// <summary>
         ///     Sdl the win rt run app using the specified main function
         /// </summary>
         /// <param name="mainFunction">The main function</param>
         /// <param name="reserved">The reserved</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_WinRTRunApp(
-            SdlMainFunc mainFunction,
-            IntPtr reserved
-        );
+        [DllImport(NativeLibName, EntryPoint = "SDL_WinRTRunApp", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        public static extern int INTERNAL_SDL_WinRTRunApp(SdlMainFunc mainFunction, IntPtr reserved);
 
         /// <summary>
         ///     Sdl the ui kit run app using the specified argc
@@ -1784,68 +1754,73 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="argv">The argv</param>
         /// <param name="mainFunction">The main function</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_UIKitRunApp(
-            int argc,
-            IntPtr argv,
-            SdlMainFunc mainFunction
-        );
+        [DllImport(NativeLibName,EntryPoint = "SDL_UIKitRunApp", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        public static extern int INTERNAL_SDL_UIKitRunApp(int argc, IntPtr argv, SdlMainFunc mainFunction);
 
         /// <summary>
         ///     Sdl the init using the specified flags
         /// </summary>
         /// <param name="flags">The flags</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_Init(uint flags);
+        [DllImport(NativeLibName, EntryPoint = "SDL_Init", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        public static extern int INTERNAL_SDL_Init(uint flags);
 
         /// <summary>
         ///     Sdl the init sub system using the specified flags
         /// </summary>
         /// <param name="flags">The flags</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_InitSubSystem(uint flags);
+        [DllImport(NativeLibName,EntryPoint = "SDL_InitSubSystem", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        public static extern int INTERNAL_SDL_InitSubSystem(uint flags);
 
         /// <summary>
         ///     Sdl the quit
         /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_Quit();
+        [DllImport(NativeLibName,EntryPoint = "SDL_Quit", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        public static extern void INTERNAL_SDL_Quit();
 
         /// <summary>
         ///     Sdl the quit sub system using the specified flags
         /// </summary>
         /// <param name="flags">The flags</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_QuitSubSystem(uint flags);
+        [DllImport(NativeLibName, EntryPoint = "SDL_QuitSubSystem", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        public static extern void INTERNAL_SDL_QuitSubSystem(uint flags);
 
         /// <summary>
         ///     Sdl the was init using the specified flags
         /// </summary>
         /// <param name="flags">The flags</param>
         /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_WasInit(uint flags);
+        [DllImport(NativeLibName,EntryPoint = "SDL_WasInit", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        public static extern uint INTERNAL_SDL_WasInit(uint flags);
 
         /// <summary>
         ///     Internals the sdl get platform
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetPlatform", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern IntPtr INTERNAL_SDL_GetPlatform();
 
         /// <summary>
         ///     Sdl the get platform
         /// </summary>
         /// <returns>The string</returns>
-        public static string SDL_GetPlatform() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetPlatform());
+        [return: NotNull]
+        public static string GetPlatform() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetPlatform());
 
         /// <summary>
         ///     Sdl the clear hints
         /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_ClearHints();
+        [DllImport(NativeLibName, EntryPoint = "SDL_ClearHints", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        public static extern void INTERNAL_SDL_ClearHints();
 
         /// <summary>
         ///     Internals the sdl get hint using the specified name
@@ -1853,6 +1828,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="name">The name</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetHint", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern IntPtr INTERNAL_SDL_GetHint(byte[] name);
 
         /// <summary>
@@ -1860,7 +1836,8 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The string</returns>
-        public static string SDL_GetHint(string name)
+        [return: NotNull]
+        public static string GetHint(string name)
         {
             int utf8NameBufSize = Utf8Manager.Utf8Size(name);
             byte[] utf8Name = new byte[utf8NameBufSize];
@@ -1877,6 +1854,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="value">The value</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetHint", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern SdlBool INTERNAL_SDL_SetHint(byte[] name, byte[] value);
 
         /// <summary>
@@ -1885,7 +1863,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="name">The name</param>
         /// <param name="value">The value</param>
         /// <returns>The sdl bool</returns>
-        public static SdlBool SDL_SetHint(string name, string value)
+        [return: NotNull]
+        public static SdlBool SetHint(string name, string value)
         {
             int utf8NameBufSize = Utf8Manager.Utf8Size(name);
             byte[] utf8Name = new byte[utf8NameBufSize];
@@ -1905,11 +1884,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="priority">The priority</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetHintWithPriority", CallingConvention = CallingConvention.Cdecl)]
-        private static extern SdlBool INTERNAL_SDL_SetHintWithPriority(
-            byte[] name,
-            byte[] value,
-            SdlHintPriority priority
-        );
+        [return: NotNull]
+        private static extern SdlBool INTERNAL_SDL_SetHintWithPriority(byte[] name, byte[] value, SdlHintPriority priority);
 
         /// <summary>
         ///     Sdl the set hint with priority using the specified name
@@ -1918,11 +1894,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="value">The value</param>
         /// <param name="priority">The priority</param>
         /// <returns>The sdl bool</returns>
-        public static SdlBool SDL_SetHintWithPriority(
-            string name,
-            string value,
-            SdlHintPriority priority
-        )
+        [return: NotNull]
+        public static SdlBool SetHintWithPriority(string name, string value, SdlHintPriority priority)
         {
             int utf8NameBufSize = Utf8Manager.Utf8Size(name);
             byte[] utf8Name = new byte[utf8NameBufSize];
@@ -1943,10 +1916,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="defaultValue">The default value</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetHintBoolean", CallingConvention = CallingConvention.Cdecl)]
-        private static extern SdlBool INTERNAL_SDL_GetHintBoolean(
-            byte[] name,
-            SdlBool defaultValue
-        );
+        [return: NotNull]
+        private static extern SdlBool INTERNAL_SDL_GetHintBoolean(byte[] name, SdlBool defaultValue);
 
         /// <summary>
         ///     Sdl the get hint boolean using the specified name
@@ -1954,55 +1925,51 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="name">The name</param>
         /// <param name="defaultValue">The default value</param>
         /// <returns>The sdl bool</returns>
-        public static SdlBool SDL_GetHintBoolean(
-            string name,
-            SdlBool defaultValue
-        )
-        {
-            int utf8NameBufSize = Utf8Manager.Utf8Size(name);
-            byte[] utf8Name = new byte[utf8NameBufSize];
-            return INTERNAL_SDL_GetHintBoolean(Utf8Manager.Utf8Encode(name, utf8Name, utf8NameBufSize),
-                defaultValue
-            );
-        }
+        [return: NotNull]
+        public static SdlBool GetHintBoolean(string name, SdlBool defaultValue) => INTERNAL_SDL_GetHintBoolean(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)), defaultValue);
 
         /// <summary>
         ///     Sdl the clear error
         /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_ClearError();
+        [DllImport(NativeLibName, EntryPoint = "SDL_ClearError", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        private static extern void INTERNAL_SDL_ClearError();
+        
+        /// <summary>
+        /// Sdl the clear error
+        /// </summary>
+        [return: NotNull]
+        public static void ClearError() => INTERNAL_SDL_ClearError();
 
         /// <summary>
         ///     Internals the sdl get error
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetError", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern IntPtr INTERNAL_SDL_GetError();
 
         /// <summary>
         ///     Sdl the get error
         /// </summary>
         /// <returns>The string</returns>
-        public static string SDL_GetError() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetError());
-
-
+        [return: NotNull]
+        public static string GetError() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetError());
+        
         /// <summary>
         ///     Internals the sdl set error using the specified fmt and arg list
         /// </summary>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetError", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern void INTERNAL_SDL_SetError(byte[] fmtAndArgList);
 
         /// <summary>
         ///     Sdl the set error using the specified fmt and arg list
         /// </summary>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
-        public static void SDL_SetError(string fmtAndArgList)
-        {
-            INTERNAL_SDL_SetError(Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList))
-            );
-        }
-
+        [return: NotNull]
+        public static void SetError(string fmtAndArgList) => INTERNAL_SDL_SetError(Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
 
         /// <summary>
         ///     Sdl the get error msg using the specified err str
@@ -2010,27 +1977,32 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="errStr">The err str</param>
         /// <param name="maxlength">The maxlength</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GetErrorMsg(IntPtr errStr, int maxlength);
-
-
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetErrorMsg", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        private static extern IntPtr INTERNAL_SDL_GetErrorMsg(IntPtr errStr, int maxlength);
+        
+        /// <summary>
+        /// Sdl the get error msg using the specified err str
+        /// </summary>
+        /// <param name="errStr">The err str</param>
+        /// <param name="maxlength">The maxlength</param>
+        /// <returns>The int ptr</returns>
+        public static IntPtr GetErrorMsg(IntPtr errStr, int maxlength) => INTERNAL_SDL_GetErrorMsg(errStr, maxlength);
+        
         /// <summary>
         ///     Internals the sdl log using the specified fmt and arg list
         /// </summary>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_Log", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern void INTERNAL_SDL_Log(byte[] fmtAndArgList);
 
         /// <summary>
         ///     Sdl the log using the specified fmt and arg list
         /// </summary>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
-        public static void SDL_Log(string fmtAndArgList)
-        {
-            INTERNAL_SDL_Log(Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList))
-            );
-        }
-
+        [return: NotNull]
+        public static void Log(string fmtAndArgList) => INTERNAL_SDL_Log(Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
 
         /// <summary>
         ///     Internals the sdl log verbose using the specified category
@@ -2038,20 +2010,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogVerbose", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void INTERNAL_SDL_LogVerbose(
-            int category,
-            byte[] fmtAndArgList
-        );
+        [return: NotNull]
+        private static extern void INTERNAL_SDL_LogVerbose(int category, byte[] fmtAndArgList);
 
         /// <summary>
         ///     Sdl the log verbose using the specified category
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
-        public static void SDL_LogVerbose(
-            int category,
-            string fmtAndArgList
-        )
+        [return: NotNull]
+        public static void LogVerbose(int category, string fmtAndArgList)
         {
             int utf8FmtAndArgListBufSize = Utf8Manager.Utf8Size(fmtAndArgList);
             byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
@@ -2060,27 +2028,21 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-
         /// <summary>
         ///     Internals the sdl log debug using the specified category
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogDebug", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void INTERNAL_SDL_LogDebug(
-            int category,
-            byte[] fmtAndArgList
-        );
+        [return: NotNull]
+        private static extern void INTERNAL_SDL_LogDebug(int category, byte[] fmtAndArgList);
 
         /// <summary>
         ///     Sdl the log debug using the specified category
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
-        public static void SDL_LogDebug(
-            int category,
-            string fmtAndArgList
-        )
+        public static void LogDebug(int category, string fmtAndArgList)
         {
             int utf8FmtAndArgListBufSize = Utf8Manager.Utf8Size(fmtAndArgList);
             byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
@@ -2088,28 +2050,22 @@ namespace Alis.Core.Graphic.SDL
                 category, Utf8Manager.Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
-
-
+        
         /// <summary>
         ///     Internals the sdl log info using the specified category
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogInfo", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void INTERNAL_SDL_LogInfo(
-            int category,
-            byte[] fmtAndArgList
-        );
+        [return: NotNull]
+        private static extern void INTERNAL_SDL_LogInfo(int category, byte[] fmtAndArgList);
 
         /// <summary>
         ///     Sdl the log info using the specified category
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
-        public static void SDL_LogInfo(
-            int category,
-            string fmtAndArgList
-        )
+        public static void LogInfo(int category, string fmtAndArgList)
         {
             int utf8FmtAndArgListBufSize = Utf8Manager.Utf8Size(fmtAndArgList);
             byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
@@ -2117,28 +2073,23 @@ namespace Alis.Core.Graphic.SDL
                 category, Utf8Manager.Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
-
-
+        
         /// <summary>
         ///     Internals the sdl log warn using the specified category
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogWarn", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void INTERNAL_SDL_LogWarn(
-            int category,
-            byte[] fmtAndArgList
-        );
+        [return: NotNull]
+        private static extern void INTERNAL_SDL_LogWarn(int category, byte[] fmtAndArgList);
 
         /// <summary>
         ///     Sdl the log warn using the specified category
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
-        public static void SDL_LogWarn(
-            int category,
-            string fmtAndArgList
-        )
+        [return: NotNull]
+        public static void LogWarning(int category, string fmtAndArgList)
         {
             int utf8FmtAndArgListBufSize = Utf8Manager.Utf8Size(fmtAndArgList);
             byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
@@ -2154,20 +2105,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogError", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void INTERNAL_SDL_LogError(
-            int category,
-            byte[] fmtAndArgList
-        );
+        [return: NotNull]
+        private static extern void INTERNAL_SDL_LogError(int category, byte[] fmtAndArgList);
 
         /// <summary>
         ///     Sdl the log error using the specified category
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
-        public static void SDL_LogError(
-            int category,
-            string fmtAndArgList
-        )
+        [return: NotNull]
+        public static void LogError(int category, string fmtAndArgList)
         {
             int utf8FmtAndArgListBufSize = Utf8Manager.Utf8Size(fmtAndArgList);
             byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
@@ -2175,28 +2122,22 @@ namespace Alis.Core.Graphic.SDL
                 category, Utf8Manager.Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
-
-
+        
         /// <summary>
         ///     Internals the sdl log critical using the specified category
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogCritical", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void INTERNAL_SDL_LogCritical(
-            int category,
-            byte[] fmtAndArgList
-        );
+        private static extern void INTERNAL_SDL_LogCritical(int category, byte[] fmtAndArgList);
 
         /// <summary>
         ///     Sdl the log critical using the specified category
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
-        public static void SDL_LogCritical(
-            int category,
-            string fmtAndArgList
-        )
+        [return: NotNull]
+        public static void LogCritical(int category, string fmtAndArgList)
         {
             int utf8FmtAndArgListBufSize = Utf8Manager.Utf8Size(fmtAndArgList);
             byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
@@ -2205,7 +2146,6 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-
         /// <summary>
         ///     Internals the sdl log message using the specified category
         /// </summary>
@@ -2213,11 +2153,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="priority">The priority</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogMessage", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void INTERNAL_SDL_LogMessage(
-            int category,
-            SdlLogPriority priority,
-            byte[] fmtAndArgList
-        );
+        [return: NotNull]
+        private static extern void INTERNAL_SDL_LogMessage(int category, SdlLogPriority priority, byte[] fmtAndArgList);
 
         /// <summary>
         ///     Sdl the log message using the specified category
@@ -2225,11 +2162,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="category">The category</param>
         /// <param name="priority">The priority</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
-        public static void SDL_LogMessage(
-            int category,
-            SdlLogPriority priority,
-            string fmtAndArgList
-        )
+        [return: NotNull]
+        public static void LogMessage(int category, SdlLogPriority priority, string fmtAndArgList)
         {
             int utf8FmtAndArgListBufSize = Utf8Manager.Utf8Size(fmtAndArgList);
             byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
@@ -2238,8 +2172,7 @@ namespace Alis.Core.Graphic.SDL
                 priority, Utf8Manager.Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
-
-
+        
         /// <summary>
         ///     Internals the sdl log message v using the specified category
         /// </summary>
@@ -2247,11 +2180,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="priority">The priority</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogMessageV", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void INTERNAL_SDL_LogMessageV(
-            int category,
-            SdlLogPriority priority,
-            byte[] fmtAndArgList
-        );
+        [return: NotNull]
+        private static extern void INTERNAL_SDL_LogMessageV(int category, SdlLogPriority priority, byte[] fmtAndArgList);
 
         /// <summary>
         ///     Sdl the log message v using the specified category
@@ -2259,11 +2189,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="category">The category</param>
         /// <param name="priority">The priority</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
-        public static void SDL_LogMessageV(
-            int category,
-            SdlLogPriority priority,
-            string fmtAndArgList
-        )
+        [return: NotNull]
+        public static void LogMessageV(int category, SdlLogPriority priority, string fmtAndArgList)
         {
             int utf8FmtAndArgListBufSize = Utf8Manager.Utf8Size(fmtAndArgList);
             byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
@@ -2278,54 +2205,78 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="category">The category</param>
         /// <returns>The sdl log priority</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlLogPriority SDL_LogGetPriority(
-            int category
-        );
+        [DllImport(NativeLibName, EntryPoint = "SDL_LogGetPriority", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        private static extern SdlLogPriority INTERNAL_SDL_LogGetPriority(int category);
+        
+        /// <summary>
+        /// Sdl the log get priority using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <returns>The sdl log priority</returns>
+        [return: NotNull]
+        public static SdlLogPriority LogGetPriority(int category) => INTERNAL_SDL_LogGetPriority(category);
 
         /// <summary>
         ///     Sdl the log set priority using the specified category
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="priority">The priority</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_LogSetPriority(
-            int category,
-            SdlLogPriority priority
-        );
+        [DllImport(NativeLibName, EntryPoint = "SDL_LogSetPriority", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        private static extern void INTERNAL_SDL_LogSetPriority(int category, SdlLogPriority priority);
+        
+        /// <summary>
+        /// Sdl the log set priority using the specified category
+        /// </summary>
+        /// <param name="category">The category</param>
+        /// <param name="priority">The priority</param>
+        [return: NotNull]
+        public static void LogSetPriority(int category, SdlLogPriority priority) => INTERNAL_SDL_LogSetPriority(category, priority);
 
         /// <summary>
         ///     Sdl the log set all priority using the specified priority
         /// </summary>
         /// <param name="priority">The priority</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_LogSetAllPriority(
-            SdlLogPriority priority
-        );
+        [DllImport(NativeLibName, EntryPoint = "SDL_LogSetAllPriority", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        private static extern void INTERNAL_SDL_LogSetAllPriority(SdlLogPriority priority);
+        
+        /// <summary>
+        /// Sdl the log set all priority using the specified priority
+        /// </summary>
+        /// <param name="priority">The priority</param>
+        [return: NotNull]
+        public static void LogSetAllPriority(SdlLogPriority priority) => INTERNAL_SDL_LogSetAllPriority(priority);
 
         /// <summary>
         ///     Sdl the log reset priorities
         /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_LogResetPriorities();
-
-
+        [DllImport(NativeLibName, EntryPoint = "SDL_LogResetPriorities", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        private static extern void INTERNAL_SDL_LogResetPriorities();
+        
+        /// <summary>
+        /// Sdl the log reset priorities
+        /// </summary>
+        [return: NotNull]
+        public static void LogResetPriorities() => INTERNAL_SDL_LogResetPriorities();
+        
         /// <summary>
         ///     Sdl the log get output function using the specified callback
         /// </summary>
         /// <param name="callback">The callback</param>
         /// <param name="userdata">The userdata</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        private static extern void SDL_LogGetOutputFunction(
-            out IntPtr callback,
-            out IntPtr userdata
-        );
+        [return: NotNull]
+        private static extern void SDL_LogGetOutputFunction(out IntPtr callback, out IntPtr userdata);
 
         /// <summary>
         ///     Sdl the log get output function using the specified callback
         /// </summary>
         /// <param name="callback">The callback</param>
         /// <param name="userdata">The userdata</param>
+        [return: NotNull]
         public static void SDL_LogGetOutputFunction(
             out SdlLogOutputFunction callback,
             out IntPtr userdata
@@ -2347,18 +2298,15 @@ namespace Alis.Core.Graphic.SDL
                 callback = null;
             }
         }
-
-
+        
         /// <summary>
         ///     Sdl the log set output function using the specified callback
         /// </summary>
         /// <param name="callback">The callback</param>
         /// <param name="userdata">The userdata</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_LogSetOutputFunction(
-            SdlLogOutputFunction callback,
-            IntPtr userdata
-        );
+        [return: NotNull]
+        public static extern void SDL_LogSetOutputFunction(SdlLogOutputFunction callback, IntPtr userdata);
 
         /// <summary>
         ///     Internals the sdl show message box using the specified message box data
@@ -2367,14 +2315,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="buttonId">The button id</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_ShowMessageBox", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern int INTERNAL_SDL_ShowMessageBox([In] ref InternalSdlMessageBoxData messageBoxData, out int buttonId);
-
-
+        
         /// <summary>
         ///     Internals the alloc utf 8 using the specified str
         /// </summary>
         /// <param name="str">The str</param>
         /// <returns>The mem</returns>
+        [return: NotNull]
         private static IntPtr INTERNAL_AllocUTF8(string str)
         {
             if (string.IsNullOrEmpty(str))
@@ -2383,7 +2332,7 @@ namespace Alis.Core.Graphic.SDL
             }
 
             byte[] bytes = Encoding.UTF8.GetBytes(str + '\0');
-            IntPtr mem = SDL_malloc(bytes.Length);
+            IntPtr mem = INTERNAL_SDL_malloc(bytes.Length);
             Marshal.Copy(bytes, 0, mem, bytes.Length);
             return mem;
         }
@@ -2394,7 +2343,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="messageBoxData">The message box data</param>
         /// <param name="buttonId">The button id</param>
         /// <returns>The result</returns>
-        public static int SDL_ShowMessageBox(ref SdlMessageBoxData messageBoxData, out int buttonId)
+        public static int ShowMessageBox(ref SdlMessageBoxData messageBoxData, out int buttonId)
         {
             InternalSdlMessageBoxData data = new InternalSdlMessageBoxData
             {
@@ -2440,11 +2389,11 @@ namespace Alis.Core.Graphic.SDL
 
                 for (int i = 0; i < messageBoxData.numbuttons; i++)
                 {
-                    SDL_free(buttons[i].text);
+                    INTERNAL_SDL_free(buttons[i].text);
                 }
 
-                SDL_free(data.message);
-                SDL_free(data.title);
+                INTERNAL_SDL_free(data.message);
+                INTERNAL_SDL_free(data.title);
 
                 if (colorSchemePtr != IntPtr.Zero)
                 {
@@ -2462,8 +2411,7 @@ namespace Alis.Core.Graphic.SDL
                 }
             }
         }
-
-
+        
         /// <summary>
         ///     Internals the sdl show simple message box using the specified flags
         /// </summary>
@@ -2473,12 +2421,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="window">The window</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_ShowSimpleMessageBox", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int INTERNAL_SDL_ShowSimpleMessageBox(
-            SdlMessageBoxFlags flags,
-            byte[] title,
-            byte[] message,
-            IntPtr window
-        );
+        [return: NotNull]
+        private static extern int INTERNAL_SDL_ShowSimpleMessageBox(SdlMessageBoxFlags flags, byte[] title, byte[] message, IntPtr window);
 
         /// <summary>
         ///     Sdl the show simple message box using the specified flags
@@ -2488,12 +2432,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="message">The message</param>
         /// <param name="window">The window</param>
         /// <returns>The int</returns>
-        public static int SDL_ShowSimpleMessageBox(
-            SdlMessageBoxFlags flags,
-            string title,
-            string message,
-            IntPtr window
-        )
+        [return: NotNull]
+        public static int ShowSimpleMessageBox(SdlMessageBoxFlags flags, string title, string message, IntPtr window)
         {
             int utf8TitleBufSize = Utf8Manager.Utf8Size(title);
             byte[] utf8Title = new byte[utf8TitleBufSize];
@@ -2506,17 +2446,13 @@ namespace Alis.Core.Graphic.SDL
                 window
             );
         }
-
+        
         /// <summary>
-        ///     Sdl the version using the specified x
+        /// Sdl the version
         /// </summary>
-        /// <param name="x">The </param>
-        public static void SDL_VERSION(out SdlVersion x)
-        {
-            x.major = SdlMajorVersion;
-            x.minor = SdlMinorVersion;
-            x.patch = SdlPatchLevel;
-        }
+        /// <returns>The sdl version</returns>
+        [return: NotNull]
+        public static SdlVersion Version() => new SdlVersion(MajorVersion, MinorVersion, PatchLevel);
 
         /// <summary>
         ///     Sdl the version num using the specified x
@@ -2525,7 +2461,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="y">The </param>
         /// <param name="z">The </param>
         /// <returns>The int</returns>
-        private static int SdlVersionNum(int x, int y, int z) => x * 1000 + y * 100 + z;
+        private static int VersionNum(int x, int y, int z) => x * 1000 + y * 100 + z;
 
         /// <summary>
         ///     Describes whether sdl version at least
@@ -2534,62 +2470,80 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="y">The </param>
         /// <param name="z">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlVersionAtLeast(int x, int y, int z) => SdlCompiledVersion >= SdlVersionNum(x, y, z);
+        public static bool VersionAtLeast(int x, int y, int z) => CompiledVersion >= VersionNum(x, y, z);
 
         /// <summary>
         ///     Sdl the get version using the specified ver
         /// </summary>
         /// <param name="ver">The ver</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_GetVersion(out SdlVersion ver);
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetVersion", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        private static extern void INTERNAL_SDL_GetVersion(out SdlVersion ver);
+        
+        /// <summary>
+        /// Sdl the get version using the specified ver
+        /// </summary>
+        /// <param name="ver">The ver</param>
+        [return: NotNull]
+        public static void GetVersion(out SdlVersion ver) => INTERNAL_SDL_GetVersion(out ver);
 
         /// <summary>
         ///     Internals the sdl get revision
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetRevision", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern IntPtr INTERNAL_SDL_GetRevision();
 
         /// <summary>
         ///     Sdl the get revision
         /// </summary>
         /// <returns>The string</returns>
-        public static string SDL_GetRevision() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetRevision());
+        [return: NotNull]
+        public static string GetRevision() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetRevision());
 
         /// <summary>
         ///     Sdl the get revision number
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetRevisionNumber();
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetRevisionNumber", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        private static extern int INTERNAL_SDL_GetRevisionNumber();
+        
+        /// <summary>
+        /// Sdl the get revision number
+        /// </summary>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GetRevisionNumber() => INTERNAL_SDL_GetRevisionNumber();
 
         /// <summary>
         ///     Sdl the window pos undefined display using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The int</returns>
-        public static int SdlWindowPosUndefinedDisplay(int x) => SdlWindowPosUndefinedMask | x;
+        public static int WindowPosUndefinedDisplay(int x) => WindowPosUndefinedMask | x;
 
         /// <summary>
         ///     Describes whether sdl window pos is undefined
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlWindowPosIsUndefined(int x) => (x & 0xFFFF0000) == SdlWindowPosUndefinedMask;
+        public static bool WindowPosIsUndefined(int x) => (x & 0xFFFF0000) == WindowPosUndefinedMask;
 
         /// <summary>
         ///     Sdl the window pos centered display using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The int</returns>
-        public static int SdlWindowPosCenteredDisplay(int x) => SdlWindowPosCenteredMask | x;
+        public static int WindowPosCenteredDisplay(int x) => WindowPosCenteredMask | x;
 
         /// <summary>
         ///     Describes whether sdl window pos is centered
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlWindowPosIsCentered(int x) => (x & 0xFFFF0000) == SdlWindowPosCenteredMask;
+        public static bool WindowPosIsCentered(int x) => (x & 0xFFFF0000) == WindowPosCenteredMask;
 
         /// <summary>
         ///     Internals the sdl create window using the specified title
@@ -2616,7 +2570,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="flags">The flags</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr SDL_CreateWindow([NotNull]string title, [NotNull]int x, [NotNull]int y, [NotNull]int w, [NotNull]int h, [NotNull]SdlWindowFlags flags) => INTERNAL_SDL_CreateWindow(Utf8Manager.Utf8Encode(title, new byte[Utf8Manager.Utf8Size(title.Validate())], Utf8Manager.Utf8Size(title.Validate())), x, y, w, h, flags);
+        public static IntPtr CreateWindow([NotNull]string title, [NotNull]int x, [NotNull]int y, [NotNull]int w, [NotNull]int h, [NotNull]SdlWindowFlags flags) => INTERNAL_SDL_CreateWindow(Utf8Manager.Utf8Encode(title, new byte[Utf8Manager.Utf8Size(title.Validate())], Utf8Manager.Utf8Size(title.Validate())), x, y, w, h, flags);
         
         /// <summary>
         ///     Sdl the create window and renderer using the specified width
@@ -2629,7 +2583,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateWindowAndRenderer", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int SDL_CreateWindowAndRenderer([NotNull] int width, [NotNull] int height, [NotNull] SdlWindowFlags windowFlags, out IntPtr window, out IntPtr renderer);
+        private static extern int INTERNAL_SDL_CreateWindowAndRenderer([NotNull] int width, [NotNull] int height, [NotNull] SdlWindowFlags windowFlags, out IntPtr window, out IntPtr renderer);
         
         /// <summary>
         /// Sdl the create window and renderer using the specified width
@@ -2640,7 +2594,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="window">The window</param>
         /// <param name="renderer">The renderer</param>
         /// <returns>The int</returns>
-        public static int SdlCreateWindowAndRenderer([NotNull] int width, [NotNull] int height, [NotNull] SdlWindowFlags windowFlags, out IntPtr window, out IntPtr renderer) => SDL_CreateWindowAndRenderer(width.Validate(), height.Validate(), windowFlags.Validate(), out window, out renderer);
+        public static int CreateWindowAndRenderer([NotNull] int width, [NotNull] int height, [NotNull] SdlWindowFlags windowFlags, out IntPtr window, out IntPtr renderer) => INTERNAL_SDL_CreateWindowAndRenderer(width.Validate(), height.Validate(), windowFlags.Validate(), out window, out renderer);
         
         /// <summary>
         ///     Sdl the create window from using the specified data
@@ -2649,7 +2603,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateWindowFrom", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr SDL_CreateWindowFrom([NotNull]IntPtr data);
+        private static extern IntPtr INTERNAL_SDL_CreateWindowFrom([NotNull]IntPtr data);
         
         /// <summary>
         /// Sdl the create window from using the specified data
@@ -2657,7 +2611,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="data">The data</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr SdlCreateWindowFrom([NotNull] IntPtr data) => SDL_CreateWindowFrom(data.Validate());
+        public static IntPtr CreateWindowFrom([NotNull] IntPtr data) => INTERNAL_SDL_CreateWindowFrom(data.Validate());
         
         /// <summary>
         ///     Sdl the destroy window using the specified window
@@ -2665,14 +2619,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="window">The window</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_DestroyWindow", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void SDL_DestroyWindow([NotNull] IntPtr window);
+        private static extern void INTERNAL_SDL_DestroyWindow([NotNull] IntPtr window);
         
         /// <summary>
         /// Sdl the destroy window using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         [return: NotNull]
-        public static void SdlDestroyWindow([NotNull] IntPtr window) => SDL_DestroyWindow(window.Validate());
+        public static void DestroyWindow([NotNull] IntPtr window) => INTERNAL_SDL_DestroyWindow(window.Validate());
 
         /// <summary>
         ///     Sdl the disable screen saver
@@ -2685,15 +2639,19 @@ namespace Alis.Core.Graphic.SDL
         /// Sdl the disable screen saver
         /// </summary>
         [return: NotNull]
-        public static void SdlDisableScreenSaver() => INTERNAL_SDL_DisableScreenSaver();
+        public static void DisableScreenSaver() => INTERNAL_SDL_DisableScreenSaver();
 
         /// <summary>
         ///     Sdl the enable screen saver
         /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_EnableScreenSaver();
-
-
+        [DllImport(NativeLibName, EntryPoint = "SDL_EnableScreenSaver", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void INTERNAL_SDL_EnableScreenSaver();
+        
+        /// <summary>
+        /// Internals the sdl enable screen saver
+        /// </summary>
+        public static void EnableScreenSaver() => INTERNAL_SDL_EnableScreenSaver();
+        
         /// <summary>
         ///     Sdl the get closest display mode using the specified display index
         /// </summary>
@@ -2701,12 +2659,19 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="mode">The mode</param>
         /// <param name="closest">The closest</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_GetClosestDisplayMode(
-            int displayIndex,
-            ref SdlDisplayMode mode,
-            out SdlDisplayMode closest
-        );
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetClosestDisplayMode", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        private static extern IntPtr INTERNAL_SDL_GetClosestDisplayMode([NotNull] int displayIndex, ref SdlDisplayMode mode, out SdlDisplayMode closest);
+        
+        /// <summary>
+        /// Sdl the get closest display mode using the specified display index
+        /// </summary>
+        /// <param name="displayIndex">The display index</param>
+        /// <param name="mode">The mode</param>
+        /// <param name="closest">The closest</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr GetClosestDisplayMode([NotNull] int displayIndex, ref SdlDisplayMode mode, out SdlDisplayMode closest) => INTERNAL_SDL_GetClosestDisplayMode(displayIndex.Validate(), ref mode, out closest);
 
         /// <summary>
         ///     Sdl the get current display mode using the specified display index
@@ -2714,11 +2679,18 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="displayIndex">The display index</param>
         /// <param name="mode">The mode</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetCurrentDisplayMode(
-            int displayIndex,
-            out SdlDisplayMode mode
-        );
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetCurrentDisplayMode", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        private static extern int INTERNAL_SDL_GetCurrentDisplayMode([NotNull] int displayIndex, out SdlDisplayMode mode);
+        
+        /// <summary>
+        /// Sdl the get current display mode using the specified display index
+        /// </summary>
+        /// <param name="displayIndex">The display index</param>
+        /// <param name="mode">The mode</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GetCurrentDisplayMode([NotNull] int displayIndex, out SdlDisplayMode mode) =>INTERNAL_SDL_GetCurrentDisplayMode(displayIndex.Validate(), out mode);
 
         /// <summary>
         ///     Internals the sdl get current video driver
@@ -5496,7 +5468,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="d">The </param>
         /// <returns>The uint</returns>
         [return: NotNull]
-        private static uint SdlDefinePixelFourcc(byte a, byte b, byte c, byte d) => SDL_FOURCC(a, b, c, d);
+        private static uint SdlDefinePixelFourcc(byte a, byte b, byte c, byte d) => Fourcc(a, b, c, d);
 
         /// <summary>
         ///     Sdl the define pixel format using the specified type
@@ -5574,9 +5546,9 @@ namespace Alis.Core.Graphic.SDL
         {
             if (SdlIsPixelFormatFour(x))
             {
-                if (x == SdlPixelFormatYuy2 ||
-                    x == SdlPixelFormatUy ||
-                    x == SdlPixelFormatYv)
+                if (x == PixelFormatYuy2 ||
+                    x == PixelFormatUy ||
+                    x == PixelFormatYv)
                 {
                     return 2;
                 }
@@ -5602,9 +5574,9 @@ namespace Alis.Core.Graphic.SDL
 
             SdlPixelType pType =
                 (SdlPixelType) SdlPixelType(format);
-            return pType == Enums.SdlPixelType.SdlPixeltypeIndex1 ||
-                   pType == Enums.SdlPixelType.SdlPixeltypeIndex4 ||
-                   pType == Enums.SdlPixelType.SdlPixeltypeIndex8;
+            return pType == Enums.SdlPixelType.PixelTypeIndex1 ||
+                   pType == Enums.SdlPixelType.PixelTypeIndex4 ||
+                   pType == Enums.SdlPixelType.PixelTypeIndex8;
         }
 
         /// <summary>
@@ -5622,9 +5594,9 @@ namespace Alis.Core.Graphic.SDL
 
             SdlPixelType pType =
                 (SdlPixelType) SdlPixelType(format);
-            return pType == Enums.SdlPixelType.SdlPixeltypePacked8 ||
-                   pType == Enums.SdlPixelType.SdlPixeltypePacked16 ||
-                   pType == Enums.SdlPixelType.SdlPixeltypePacked32;
+            return pType == Enums.SdlPixelType.PixelTypePacked8 ||
+                   pType == Enums.SdlPixelType.PixelTypePacked16 ||
+                   pType == Enums.SdlPixelType.PixelTypePacked32;
         }
 
         /// <summary>
@@ -5642,11 +5614,11 @@ namespace Alis.Core.Graphic.SDL
 
             SdlPixelType pType =
                 (SdlPixelType) SdlPixelType(format);
-            return pType == Enums.SdlPixelType.SdlPixeltypeArrayu8 ||
-                   pType == Enums.SdlPixelType.SdlPixeltypeArrayu16 ||
-                   pType == Enums.SdlPixelType.SdlPixeltypeArrayu32 ||
-                   pType == Enums.SdlPixelType.SdlPixeltypeArrayf16 ||
-                   pType == Enums.SdlPixelType.SdlPixeltypeArrayf32;
+            return pType == Enums.SdlPixelType.PixelTypeArrayU8 ||
+                   pType == Enums.SdlPixelType.PixelTypeArrayU16 ||
+                   pType == Enums.SdlPixelType.PixelTypeArrayU32 ||
+                   pType == Enums.SdlPixelType.PixelTypeArrayF16 ||
+                   pType == Enums.SdlPixelType.PixelTypeArrayF32;
         }
 
         /// <summary>
@@ -5954,7 +5926,7 @@ namespace Alis.Core.Graphic.SDL
                 surface,
                 typeof(SdlSurface)
             );
-            return (sur.flags & SdlRleAccel) != 0;
+            return (sur.flags & RleAccel) != 0;
         }
 
         /// <summary>
@@ -6285,7 +6257,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr SDL_LoadBMP(string file) => INTERNAL_SDL_LoadBMP_RW(SDL_RWFromFile(file, "rb"), 1);
+        public static IntPtr SDL_LoadBMP(string file) => INTERNAL_SDL_LoadBMP_RW(RwFromFile(file, "rb"), 1);
 
         /// <summary>
         ///     Sdl the lock surface using the specified surface
@@ -6338,7 +6310,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int SDL_SaveBMP(IntPtr surface, string file) => INTERNAL_SDL_SaveBMP_RW(surface, SDL_RWFromFile(file, "wb"), 1);
+        public static int SDL_SaveBMP(IntPtr surface, string file) => INTERNAL_SDL_SaveBMP_RW(surface, RwFromFile(file, "wb"), 1);
 
         /// <summary>
         ///     Sdl the set clip rect using the specified surface
@@ -6719,7 +6691,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="type">The type</param>
         /// <returns>The byte</returns>
         [return: NotNull]
-        public static byte SDL_GetEventState(SdlEventType type) => SDL_EventState(type, SdlQuery);
+        public static byte SDL_GetEventState(SdlEventType type) => SDL_EventState(type, Query);
 
         /// <summary>
         ///     Sdl the register events using the specified num events
@@ -6736,7 +6708,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="x">The </param>
         /// <returns>The sdl keycode</returns>
         [return: NotNull]
-        public static SdlKeycode SDL_SCANCODE_TO_KEYCODE(SdlScancode x) => (SdlKeycode) ((int) x | SdlKScancodeMask);
+        public static SdlKeycode SDL_SCANCODE_TO_KEYCODE(SdlScancode x) => (SdlKeycode) ((int) x | KScancodeMask);
 
         /// <summary>
         ///     Sdl the get keyboard focus
@@ -7749,7 +7721,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int SdlGameControllerAddMappingsFromFile(string file) => INTERNAL_SDL_GameControllerAddMappingsFromRW(SDL_RWFromFile(file, "rb"), 1);
+        public static int SdlGameControllerAddMappingsFromFile(string file) => INTERNAL_SDL_GameControllerAddMappingsFromRW(RwFromFile(file, "rb"), 1);
 
         /// <summary>
         ///     Internals the sdl game controller mapping for guid using the specified guid
@@ -8805,49 +8777,49 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The ushort</returns>
-        public static ushort SdlAudioBitSize(ushort x) => (ushort) (x & SdlAudioMaskBitSize);
+        public static ushort SdlAudioBitSize(ushort x) => (ushort) (x & AudioMaskBitSize);
 
         /// <summary>
         ///     Describes whether sdl audio is float
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlAudioIsFloat(ushort x) => (x & SdlAudioMaskDatatype) != 0;
+        public static bool SdlAudioIsFloat(ushort x) => (x & AudioMaskDatatype) != 0;
 
         /// <summary>
         ///     Describes whether sdl audio is big endian
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlAudioIsBigEndian(ushort x) => (x & SdlAudioMaskEndian) != 0;
+        public static bool SdlAudioIsBigEndian(ushort x) => (x & AudioMaskEndian) != 0;
 
         /// <summary>
         ///     Describes whether sdl audio is signed
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlAudioIsSigned(ushort x) => (x & SdlAudioMaskSigned) != 0;
+        public static bool SdlAudioIsSigned(ushort x) => (x & AudioMaskSigned) != 0;
 
         /// <summary>
         ///     Describes whether sdl audio is int
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlAudioIsInt(ushort x) => (x & SdlAudioMaskDatatype) == 0;
+        public static bool SdlAudioIsInt(ushort x) => (x & AudioMaskDatatype) == 0;
 
         /// <summary>
         ///     Describes whether sdl audio is little endian
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlAudioIsLittleEndian(ushort x) => (x & SdlAudioMaskEndian) == 0;
+        public static bool SdlAudioIsLittleEndian(ushort x) => (x & AudioMaskEndian) == 0;
 
         /// <summary>
         ///     Describes whether sdl audio is unsigned
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlAudioIsUnsigned(ushort x) => (x & SdlAudioMaskSigned) == 0;
+        public static bool SdlAudioIsUnsigned(ushort x) => (x & AudioMaskSigned) == 0;
 
         /// <summary>
         ///     Internals the sdl audio init using the specified driver name
@@ -9021,7 +8993,7 @@ namespace Alis.Core.Graphic.SDL
             out uint audioLen
         )
         {
-            IntPtr rw = SDL_RWFromFile(file, "rb");
+            IntPtr rw = RwFromFile(file, "rb");
             return INTERNAL_SDL_LoadWAV_RW(
                 rw,
                 1,

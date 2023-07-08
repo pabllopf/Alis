@@ -340,13 +340,13 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <returns>The string</returns>
         [return: NotNull, NotEmpty]
-        public static string ImgGetError() => Sdl.SDL_GetError();
+        public static string ImgGetError() => Sdl.GetError();
 
         /// <summary>
         ///     Img the set error using the specified fmt and arg
         /// </summary>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
-        public static void ImgSetError([NotNull, NotEmpty] string fmtAndArgList) => Sdl.SDL_SetError(fmtAndArgList.Validate());
+        public static void ImgSetError([NotNull, NotEmpty] string fmtAndArgList) => Sdl.SetError(fmtAndArgList.Validate());
 
         /// <summary>
         ///     Img the load animation using the specified file

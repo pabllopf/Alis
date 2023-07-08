@@ -390,97 +390,97 @@ namespace Alis.Core.Graphic.SDL.Enums
         /// <summary>
         ///     The sdlk capslock sdl keycode
         /// </summary>
-        SdlkCapslock = SdlScancode.SdlScancodeCapslock | Sdl.SdlKScancodeMask,
+        SdlkCapslock = SdlScancode.SdlScancodeCapslock | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f1 sdl keycode
         /// </summary>
-        SdlkF1 = SdlScancode.SdlScancodeF1 | Sdl.SdlKScancodeMask,
+        SdlkF1 = SdlScancode.SdlScancodeF1 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f2 sdl keycode
         /// </summary>
-        SdlkF2 = SdlScancode.SdlScancodeF2 | Sdl.SdlKScancodeMask,
+        SdlkF2 = SdlScancode.SdlScancodeF2 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f3 sdl keycode
         /// </summary>
-        SdlkF3 = SdlScancode.SdlScancodeF3 | Sdl.SdlKScancodeMask,
+        SdlkF3 = SdlScancode.SdlScancodeF3 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f4 sdl keycode
         /// </summary>
-        SdlkF4 = SdlScancode.SdlScancodeF4 | Sdl.SdlKScancodeMask,
+        SdlkF4 = SdlScancode.SdlScancodeF4 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f5 sdl keycode
         /// </summary>
-        SdlkF5 = SdlScancode.SdlScancodeF5 | Sdl.SdlKScancodeMask,
+        SdlkF5 = SdlScancode.SdlScancodeF5 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f6 sdl keycode
         /// </summary>
-        SdlkF6 = SdlScancode.SdlScancodeF6 | Sdl.SdlKScancodeMask,
+        SdlkF6 = SdlScancode.SdlScancodeF6 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f7 sdl keycode
         /// </summary>
-        SdlkF7 = SdlScancode.SdlScancodeF7 | Sdl.SdlKScancodeMask,
+        SdlkF7 = SdlScancode.SdlScancodeF7 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f8 sdl keycode
         /// </summary>
-        SdlkF8 = SdlScancode.SdlScancodeF8 | Sdl.SdlKScancodeMask,
+        SdlkF8 = SdlScancode.SdlScancodeF8 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f9 sdl keycode
         /// </summary>
-        SdlkF9 = SdlScancode.SdlScancodeF9 | Sdl.SdlKScancodeMask,
+        SdlkF9 = SdlScancode.SdlScancodeF9 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f10 sdl keycode
         /// </summary>
-        SdlkF10 = SdlScancode.SdlScancodeF10 | Sdl.SdlKScancodeMask,
+        SdlkF10 = SdlScancode.SdlScancodeF10 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f11 sdl keycode
         /// </summary>
-        SdlkF11 = SdlScancode.SdlScancodeF11 | Sdl.SdlKScancodeMask,
+        SdlkF11 = SdlScancode.SdlScancodeF11 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f12 sdl keycode
         /// </summary>
-        SdlkF12 = SdlScancode.SdlScancodeF12 | Sdl.SdlKScancodeMask,
+        SdlkF12 = SdlScancode.SdlScancodeF12 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk printscreen sdl keycode
         /// </summary>
-        SdlkPrintscreen = SdlScancode.SdlScancodePrintscreen | Sdl.SdlKScancodeMask,
+        SdlkPrintscreen = SdlScancode.SdlScancodePrintscreen | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk scrolllock sdl keycode
         /// </summary>
-        SdlkScrolllock = SdlScancode.SdlScancodeScrolllock | Sdl.SdlKScancodeMask,
+        SdlkScrolllock = SdlScancode.SdlScancodeScrolllock | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk pause sdl keycode
         /// </summary>
-        SdlkPause = SdlScancode.SdlScancodePause | Sdl.SdlKScancodeMask,
+        SdlkPause = SdlScancode.SdlScancodePause | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk insert sdl keycode
         /// </summary>
-        SdlkInsert = SdlScancode.SdlScancodeInsert | Sdl.SdlKScancodeMask,
+        SdlkInsert = SdlScancode.SdlScancodeInsert | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk home sdl keycode
         /// </summary>
-        SdlkHome = SdlScancode.SdlScancodeHome | Sdl.SdlKScancodeMask,
+        SdlkHome = SdlScancode.SdlScancodeHome | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk pageup sdl keycode
         /// </summary>
-        SdlkPageup = SdlScancode.SdlScancodePageup | Sdl.SdlKScancodeMask,
+        SdlkPageup = SdlScancode.SdlScancodePageup | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk delete sdl keycode
@@ -490,763 +490,763 @@ namespace Alis.Core.Graphic.SDL.Enums
         /// <summary>
         ///     The sdlk end sdl keycode
         /// </summary>
-        SdlkEnd = SdlScancode.SdlScancodeEnd | Sdl.SdlKScancodeMask,
+        SdlkEnd = SdlScancode.SdlScancodeEnd | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk pagedown sdl keycode
         /// </summary>
-        SdlkPagedown = SdlScancode.SdlScancodePagedown | Sdl.SdlKScancodeMask,
+        SdlkPagedown = SdlScancode.SdlScancodePagedown | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk right sdl keycode
         /// </summary>
-        SdlkRight = SdlScancode.SdlScancodeRight | Sdl.SdlKScancodeMask,
+        SdlkRight = SdlScancode.SdlScancodeRight | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk left sdl keycode
         /// </summary>
-        SdlkLeft = SdlScancode.SdlScancodeLeft | Sdl.SdlKScancodeMask,
+        SdlkLeft = SdlScancode.SdlScancodeLeft | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk down sdl keycode
         /// </summary>
-        SdlkDown = SdlScancode.SdlScancodeDown | Sdl.SdlKScancodeMask,
+        SdlkDown = SdlScancode.SdlScancodeDown | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk up sdl keycode
         /// </summary>
-        SdlkUp = SdlScancode.SdlScancodeUp | Sdl.SdlKScancodeMask,
+        SdlkUp = SdlScancode.SdlScancodeUp | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk numlockclear sdl keycode
         /// </summary>
-        SdlkNumlockclear = SdlScancode.SdlScancodeNumlockclear | Sdl.SdlKScancodeMask,
+        SdlkNumlockclear = SdlScancode.SdlScancodeNumlockclear | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp divide sdl keycode
         /// </summary>
-        SdlkKpDivide = SdlScancode.SdlScancodeKpDivide | Sdl.SdlKScancodeMask,
+        SdlkKpDivide = SdlScancode.SdlScancodeKpDivide | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp multiply sdl keycode
         /// </summary>
-        SdlkKpMultiply = SdlScancode.SdlScancodeKpMultiply | Sdl.SdlKScancodeMask,
+        SdlkKpMultiply = SdlScancode.SdlScancodeKpMultiply | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp minus sdl keycode
         /// </summary>
-        SdlkKpMinus = SdlScancode.SdlScancodeKpMinus | Sdl.SdlKScancodeMask,
+        SdlkKpMinus = SdlScancode.SdlScancodeKpMinus | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp plus sdl keycode
         /// </summary>
-        SdlkKpPlus = SdlScancode.SdlScancodeKpPlus | Sdl.SdlKScancodeMask,
+        SdlkKpPlus = SdlScancode.SdlScancodeKpPlus | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp enter sdl keycode
         /// </summary>
-        SdlkKpEnter = SdlScancode.SdlScancodeKpEnter | Sdl.SdlKScancodeMask,
+        SdlkKpEnter = SdlScancode.SdlScancodeKpEnter | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp sdl keycode
         /// </summary>
-        SdlkKp1 = SdlScancode.SdlScancodeKp1 | Sdl.SdlKScancodeMask,
+        SdlkKp1 = SdlScancode.SdlScancodeKp1 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp sdl keycode
         /// </summary>
-        SdlkKp2 = SdlScancode.SdlScancodeKp2 | Sdl.SdlKScancodeMask,
+        SdlkKp2 = SdlScancode.SdlScancodeKp2 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp sdl keycode
         /// </summary>
-        SdlkKp3 = SdlScancode.SdlScancodeKp3 | Sdl.SdlKScancodeMask,
+        SdlkKp3 = SdlScancode.SdlScancodeKp3 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp sdl keycode
         /// </summary>
-        SdlkKp4 = SdlScancode.SdlScancodeKp4 | Sdl.SdlKScancodeMask,
+        SdlkKp4 = SdlScancode.SdlScancodeKp4 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp sdl keycode
         /// </summary>
-        SdlkKp5 = SdlScancode.SdlScancodeKp5 | Sdl.SdlKScancodeMask,
+        SdlkKp5 = SdlScancode.SdlScancodeKp5 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp sdl keycode
         /// </summary>
-        SdlkKp6 = SdlScancode.SdlScancodeKp6 | Sdl.SdlKScancodeMask,
+        SdlkKp6 = SdlScancode.SdlScancodeKp6 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp sdl keycode
         /// </summary>
-        SdlkKp7 = SdlScancode.SdlScancodeKp7 | Sdl.SdlKScancodeMask,
+        SdlkKp7 = SdlScancode.SdlScancodeKp7 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp sdl keycode
         /// </summary>
-        SdlkKp8 = SdlScancode.SdlScancodeKp8 | Sdl.SdlKScancodeMask,
+        SdlkKp8 = SdlScancode.SdlScancodeKp8 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp sdl keycode
         /// </summary>
-        SdlkKp9 = SdlScancode.SdlScancodeKp9 | Sdl.SdlKScancodeMask,
+        SdlkKp9 = SdlScancode.SdlScancodeKp9 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp sdl keycode
         /// </summary>
-        SdlkKp0 = SdlScancode.SdlScancodeKp0 | Sdl.SdlKScancodeMask,
+        SdlkKp0 = SdlScancode.SdlScancodeKp0 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp period sdl keycode
         /// </summary>
-        SdlkKpPeriod = SdlScancode.SdlScancodeKpPeriod | Sdl.SdlKScancodeMask,
+        SdlkKpPeriod = SdlScancode.SdlScancodeKpPeriod | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk application sdl keycode
         /// </summary>
-        SdlkApplication = SdlScancode.SdlScancodeApplication | Sdl.SdlKScancodeMask,
+        SdlkApplication = SdlScancode.SdlScancodeApplication | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk power sdl keycode
         /// </summary>
-        SdlkPower = SdlScancode.SdlScancodePower | Sdl.SdlKScancodeMask,
+        SdlkPower = SdlScancode.SdlScancodePower | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp equals sdl keycode
         /// </summary>
-        SdlkKpEquals = SdlScancode.SdlScancodeKpEquals | Sdl.SdlKScancodeMask,
+        SdlkKpEquals = SdlScancode.SdlScancodeKpEquals | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f13 sdl keycode
         /// </summary>
-        SdlkF13 = SdlScancode.SdlScancodeF13 | Sdl.SdlKScancodeMask,
+        SdlkF13 = SdlScancode.SdlScancodeF13 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f14 sdl keycode
         /// </summary>
-        SdlkF14 = SdlScancode.SdlScancodeF14 | Sdl.SdlKScancodeMask,
+        SdlkF14 = SdlScancode.SdlScancodeF14 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f15 sdl keycode
         /// </summary>
-        SdlkF15 = SdlScancode.SdlScancodeF15 | Sdl.SdlKScancodeMask,
+        SdlkF15 = SdlScancode.SdlScancodeF15 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f16 sdl keycode
         /// </summary>
-        SdlkF16 = SdlScancode.SdlScancodeF16 | Sdl.SdlKScancodeMask,
+        SdlkF16 = SdlScancode.SdlScancodeF16 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f17 sdl keycode
         /// </summary>
-        SdlkF17 = SdlScancode.SdlScancodeF17 | Sdl.SdlKScancodeMask,
+        SdlkF17 = SdlScancode.SdlScancodeF17 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f18 sdl keycode
         /// </summary>
-        SdlkF18 = SdlScancode.SdlScancodeF18 | Sdl.SdlKScancodeMask,
+        SdlkF18 = SdlScancode.SdlScancodeF18 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f19 sdl keycode
         /// </summary>
-        SdlkF19 = SdlScancode.SdlScancodeF19 | Sdl.SdlKScancodeMask,
+        SdlkF19 = SdlScancode.SdlScancodeF19 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f20 sdl keycode
         /// </summary>
-        SdlkF20 = SdlScancode.SdlScancodeF20 | Sdl.SdlKScancodeMask,
+        SdlkF20 = SdlScancode.SdlScancodeF20 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f21 sdl keycode
         /// </summary>
-        SdlkF21 = SdlScancode.SdlScancodeF21 | Sdl.SdlKScancodeMask,
+        SdlkF21 = SdlScancode.SdlScancodeF21 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f22 sdl keycode
         /// </summary>
-        SdlkF22 = SdlScancode.SdlScancodeF22 | Sdl.SdlKScancodeMask,
+        SdlkF22 = SdlScancode.SdlScancodeF22 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f23 sdl keycode
         /// </summary>
-        SdlkF23 = SdlScancode.SdlScancodeF23 | Sdl.SdlKScancodeMask,
+        SdlkF23 = SdlScancode.SdlScancodeF23 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk f24 sdl keycode
         /// </summary>
-        SdlkF24 = SdlScancode.SdlScancodeF24 | Sdl.SdlKScancodeMask,
+        SdlkF24 = SdlScancode.SdlScancodeF24 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk execute sdl keycode
         /// </summary>
-        SdlkExecute = SdlScancode.SdlScancodeExecute | Sdl.SdlKScancodeMask,
+        SdlkExecute = SdlScancode.SdlScancodeExecute | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk help sdl keycode
         /// </summary>
-        SdlkHelp = SdlScancode.SdlScancodeHelp | Sdl.SdlKScancodeMask,
+        SdlkHelp = SdlScancode.SdlScancodeHelp | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk menu sdl keycode
         /// </summary>
-        SdlkMenu = SdlScancode.SdlScancodeMenu | Sdl.SdlKScancodeMask,
+        SdlkMenu = SdlScancode.SdlScancodeMenu | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk select sdl keycode
         /// </summary>
-        SdlkSelect = SdlScancode.SdlScancodeSelect | Sdl.SdlKScancodeMask,
+        SdlkSelect = SdlScancode.SdlScancodeSelect | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk stop sdl keycode
         /// </summary>
-        SdlkStop = SdlScancode.SdlScancodeStop | Sdl.SdlKScancodeMask,
+        SdlkStop = SdlScancode.SdlScancodeStop | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk again sdl keycode
         /// </summary>
-        SdlkAgain = SdlScancode.SdlScancodeAgain | Sdl.SdlKScancodeMask,
+        SdlkAgain = SdlScancode.SdlScancodeAgain | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk undo sdl keycode
         /// </summary>
-        SdlkUndo = SdlScancode.SdlScancodeUndo | Sdl.SdlKScancodeMask,
+        SdlkUndo = SdlScancode.SdlScancodeUndo | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk cut sdl keycode
         /// </summary>
-        SdlkCut = SdlScancode.SdlScancodeCut | Sdl.SdlKScancodeMask,
+        SdlkCut = SdlScancode.SdlScancodeCut | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk copy sdl keycode
         /// </summary>
-        SdlkCopy = SdlScancode.SdlScancodeCopy | Sdl.SdlKScancodeMask,
+        SdlkCopy = SdlScancode.SdlScancodeCopy | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk paste sdl keycode
         /// </summary>
-        SdlkPaste = SdlScancode.SdlScancodePaste | Sdl.SdlKScancodeMask,
+        SdlkPaste = SdlScancode.SdlScancodePaste | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk find sdl keycode
         /// </summary>
-        SdlkFind = SdlScancode.SdlScancodeFind | Sdl.SdlKScancodeMask,
+        SdlkFind = SdlScancode.SdlScancodeFind | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk mute sdl keycode
         /// </summary>
-        SdlkMute = SdlScancode.SdlScancodeMute | Sdl.SdlKScancodeMask,
+        SdlkMute = SdlScancode.SdlScancodeMute | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk volumeup sdl keycode
         /// </summary>
-        SdlkVolumeup = SdlScancode.SdlScancodeVolumeup | Sdl.SdlKScancodeMask,
+        SdlkVolumeup = SdlScancode.SdlScancodeVolumeup | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk volumedown sdl keycode
         /// </summary>
-        SdlkVolumedown = SdlScancode.SdlScancodeVolumedown | Sdl.SdlKScancodeMask,
+        SdlkVolumedown = SdlScancode.SdlScancodeVolumedown | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp comma sdl keycode
         /// </summary>
-        SdlkKpComma = SdlScancode.SdlScancodeKpComma | Sdl.SdlKScancodeMask,
+        SdlkKpComma = SdlScancode.SdlScancodeKpComma | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp equalsas400 sdl keycode
         /// </summary>
         SdlkKpEqualsas400 =
-            SdlScancode.SdlScancodeKpEqualsas400 | Sdl.SdlKScancodeMask,
+            SdlScancode.SdlScancodeKpEqualsas400 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk alterase sdl keycode
         /// </summary>
-        SdlkAlterase = SdlScancode.SdlScancodeAlterase | Sdl.SdlKScancodeMask,
+        SdlkAlterase = SdlScancode.SdlScancodeAlterase | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk sysreq sdl keycode
         /// </summary>
-        SdlkSysreq = SdlScancode.SdlScancodeSysreq | Sdl.SdlKScancodeMask,
+        SdlkSysreq = SdlScancode.SdlScancodeSysreq | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk cancel sdl keycode
         /// </summary>
-        SdlkCancel = SdlScancode.SdlScancodeCancel | Sdl.SdlKScancodeMask,
+        SdlkCancel = SdlScancode.SdlScancodeCancel | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk clear sdl keycode
         /// </summary>
-        SdlkClear = SdlScancode.SdlScancodeClear | Sdl.SdlKScancodeMask,
+        SdlkClear = SdlScancode.SdlScancodeClear | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk prior sdl keycode
         /// </summary>
-        SdlkPrior = SdlScancode.SdlScancodePrior | Sdl.SdlKScancodeMask,
+        SdlkPrior = SdlScancode.SdlScancodePrior | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk return2 sdl keycode
         /// </summary>
-        SdlkReturn2 = SdlScancode.SdlScancodeReturn2 | Sdl.SdlKScancodeMask,
+        SdlkReturn2 = SdlScancode.SdlScancodeReturn2 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk separator sdl keycode
         /// </summary>
-        SdlkSeparator = SdlScancode.SdlScancodeSeparator | Sdl.SdlKScancodeMask,
+        SdlkSeparator = SdlScancode.SdlScancodeSeparator | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk out sdl keycode
         /// </summary>
-        SdlkOut = SdlScancode.SdlScancodeOut | Sdl.SdlKScancodeMask,
+        SdlkOut = SdlScancode.SdlScancodeOut | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk oper sdl keycode
         /// </summary>
-        SdlkOper = SdlScancode.SdlScancodeOper | Sdl.SdlKScancodeMask,
+        SdlkOper = SdlScancode.SdlScancodeOper | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk clearagain sdl keycode
         /// </summary>
-        SdlkClearagain = SdlScancode.SdlScancodeClearagain | Sdl.SdlKScancodeMask,
+        SdlkClearagain = SdlScancode.SdlScancodeClearagain | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk crsel sdl keycode
         /// </summary>
-        SdlkCrsel = SdlScancode.SdlScancodeCrsel | Sdl.SdlKScancodeMask,
+        SdlkCrsel = SdlScancode.SdlScancodeCrsel | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk exsel sdl keycode
         /// </summary>
-        SdlkExsel = SdlScancode.SdlScancodeExsel | Sdl.SdlKScancodeMask,
+        SdlkExsel = SdlScancode.SdlScancodeExsel | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp 00 sdl keycode
         /// </summary>
-        SdlkKp00 = SdlScancode.SdlScancodeKp00 | Sdl.SdlKScancodeMask,
+        SdlkKp00 = SdlScancode.SdlScancodeKp00 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp 000 sdl keycode
         /// </summary>
-        SdlkKp000 = SdlScancode.SdlScancodeKp000 | Sdl.SdlKScancodeMask,
+        SdlkKp000 = SdlScancode.SdlScancodeKp000 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk thousandsseparator sdl keycode
         /// </summary>
         SdlkThousandsseparator =
-            SdlScancode.SdlScancodeThousandsseparator | Sdl.SdlKScancodeMask,
+            SdlScancode.SdlScancodeThousandsseparator | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk decimalseparator sdl keycode
         /// </summary>
         SdlkDecimalseparator =
-            SdlScancode.SdlScancodeDecimalseparator | Sdl.SdlKScancodeMask,
+            SdlScancode.SdlScancodeDecimalseparator | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk currencyunit sdl keycode
         /// </summary>
-        SdlkCurrencyunit = SdlScancode.SdlScancodeCurrencyunit | Sdl.SdlKScancodeMask,
+        SdlkCurrencyunit = SdlScancode.SdlScancodeCurrencyunit | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk currencysubunit sdl keycode
         /// </summary>
         SdlkCurrencysubunit =
-            SdlScancode.SdlScancodeCurrencysubunit | Sdl.SdlKScancodeMask,
+            SdlScancode.SdlScancodeCurrencysubunit | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp leftparen sdl keycode
         /// </summary>
-        SdlkKpLeftparen = SdlScancode.SdlScancodeKpLeftparen | Sdl.SdlKScancodeMask,
+        SdlkKpLeftparen = SdlScancode.SdlScancodeKpLeftparen | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp rightparen sdl keycode
         /// </summary>
-        SdlkKpRightparen = SdlScancode.SdlScancodeKpRightparen | Sdl.SdlKScancodeMask,
+        SdlkKpRightparen = SdlScancode.SdlScancodeKpRightparen | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp leftbrace sdl keycode
         /// </summary>
-        SdlkKpLeftbrace = SdlScancode.SdlScancodeKpLeftbrace | Sdl.SdlKScancodeMask,
+        SdlkKpLeftbrace = SdlScancode.SdlScancodeKpLeftbrace | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp rightbrace sdl keycode
         /// </summary>
-        SdlkKpRightbrace = SdlScancode.SdlScancodeKpRightbrace | Sdl.SdlKScancodeMask,
+        SdlkKpRightbrace = SdlScancode.SdlScancodeKpRightbrace | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp tab sdl keycode
         /// </summary>
-        SdlkKpTab = SdlScancode.SdlScancodeKpTab | Sdl.SdlKScancodeMask,
+        SdlkKpTab = SdlScancode.SdlScancodeKpTab | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp backspace sdl keycode
         /// </summary>
-        SdlkKpBackspace = SdlScancode.SdlScancodeKpBackspace | Sdl.SdlKScancodeMask,
+        SdlkKpBackspace = SdlScancode.SdlScancodeKpBackspace | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp sdl keycode
         /// </summary>
-        SdlkKpA = SdlScancode.SdlScancodeKpA | Sdl.SdlKScancodeMask,
+        SdlkKpA = SdlScancode.SdlScancodeKpA | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp sdl keycode
         /// </summary>
-        SdlkKpB = SdlScancode.SdlScancodeKpB | Sdl.SdlKScancodeMask,
+        SdlkKpB = SdlScancode.SdlScancodeKpB | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp sdl keycode
         /// </summary>
-        SdlkKpC = SdlScancode.SdlScancodeKpC | Sdl.SdlKScancodeMask,
+        SdlkKpC = SdlScancode.SdlScancodeKpC | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp sdl keycode
         /// </summary>
-        SdlkKpD = SdlScancode.SdlScancodeKpD | Sdl.SdlKScancodeMask,
+        SdlkKpD = SdlScancode.SdlScancodeKpD | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp sdl keycode
         /// </summary>
-        SdlkKpE = SdlScancode.SdlScancodeKpE | Sdl.SdlKScancodeMask,
+        SdlkKpE = SdlScancode.SdlScancodeKpE | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp sdl keycode
         /// </summary>
-        SdlkKpF = SdlScancode.SdlScancodeKpF | Sdl.SdlKScancodeMask,
+        SdlkKpF = SdlScancode.SdlScancodeKpF | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp xor sdl keycode
         /// </summary>
-        SdlkKpXor = SdlScancode.SdlScancodeKpXor | Sdl.SdlKScancodeMask,
+        SdlkKpXor = SdlScancode.SdlScancodeKpXor | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp power sdl keycode
         /// </summary>
-        SdlkKpPower = SdlScancode.SdlScancodeKpPower | Sdl.SdlKScancodeMask,
+        SdlkKpPower = SdlScancode.SdlScancodeKpPower | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp percent sdl keycode
         /// </summary>
-        SdlkKpPercent = SdlScancode.SdlScancodeKpPercent | Sdl.SdlKScancodeMask,
+        SdlkKpPercent = SdlScancode.SdlScancodeKpPercent | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp less sdl keycode
         /// </summary>
-        SdlkKpLess = SdlScancode.SdlScancodeKpLess | Sdl.SdlKScancodeMask,
+        SdlkKpLess = SdlScancode.SdlScancodeKpLess | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp greater sdl keycode
         /// </summary>
-        SdlkKpGreater = SdlScancode.SdlScancodeKpGreater | Sdl.SdlKScancodeMask,
+        SdlkKpGreater = SdlScancode.SdlScancodeKpGreater | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp ampersand sdl keycode
         /// </summary>
-        SdlkKpAmpersand = SdlScancode.SdlScancodeKpAmpersand | Sdl.SdlKScancodeMask,
+        SdlkKpAmpersand = SdlScancode.SdlScancodeKpAmpersand | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp dblampersand sdl keycode
         /// </summary>
         SdlkKpDblampersand =
-            SdlScancode.SdlScancodeKpDblampersand | Sdl.SdlKScancodeMask,
+            SdlScancode.SdlScancodeKpDblampersand | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp verticalbar sdl keycode
         /// </summary>
         SdlkKpVerticalbar =
-            SdlScancode.SdlScancodeKpVerticalbar | Sdl.SdlKScancodeMask,
+            SdlScancode.SdlScancodeKpVerticalbar | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp dblverticalbar sdl keycode
         /// </summary>
         SdlkKpDblverticalbar =
-            SdlScancode.SdlScancodeKpDblverticalbar | Sdl.SdlKScancodeMask,
+            SdlScancode.SdlScancodeKpDblverticalbar | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp colon sdl keycode
         /// </summary>
-        SdlkKpColon = SdlScancode.SdlScancodeKpColon | Sdl.SdlKScancodeMask,
+        SdlkKpColon = SdlScancode.SdlScancodeKpColon | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp hash sdl keycode
         /// </summary>
-        SdlkKpHash = SdlScancode.SdlScancodeKpHash | Sdl.SdlKScancodeMask,
+        SdlkKpHash = SdlScancode.SdlScancodeKpHash | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp space sdl keycode
         /// </summary>
-        SdlkKpSpace = SdlScancode.SdlScancodeKpSpace | Sdl.SdlKScancodeMask,
+        SdlkKpSpace = SdlScancode.SdlScancodeKpSpace | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp at sdl keycode
         /// </summary>
-        SdlkKpAt = SdlScancode.SdlScancodeKpAt | Sdl.SdlKScancodeMask,
+        SdlkKpAt = SdlScancode.SdlScancodeKpAt | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp exclam sdl keycode
         /// </summary>
-        SdlkKpExclam = SdlScancode.SdlScancodeKpExclam | Sdl.SdlKScancodeMask,
+        SdlkKpExclam = SdlScancode.SdlScancodeKpExclam | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp memstore sdl keycode
         /// </summary>
-        SdlkKpMemstore = SdlScancode.SdlScancodeKpMemstore | Sdl.SdlKScancodeMask,
+        SdlkKpMemstore = SdlScancode.SdlScancodeKpMemstore | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp memrecall sdl keycode
         /// </summary>
-        SdlkKpMemrecall = SdlScancode.SdlScancodeKpMemrecall | Sdl.SdlKScancodeMask,
+        SdlkKpMemrecall = SdlScancode.SdlScancodeKpMemrecall | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp memclear sdl keycode
         /// </summary>
-        SdlkKpMemclear = SdlScancode.SdlScancodeKpMemclear | Sdl.SdlKScancodeMask,
+        SdlkKpMemclear = SdlScancode.SdlScancodeKpMemclear | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp memadd sdl keycode
         /// </summary>
-        SdlkKpMemadd = SdlScancode.SdlScancodeKpMemadd | Sdl.SdlKScancodeMask,
+        SdlkKpMemadd = SdlScancode.SdlScancodeKpMemadd | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp memsubtract sdl keycode
         /// </summary>
         SdlkKpMemsubtract =
-            SdlScancode.SdlScancodeKpMemsubtract | Sdl.SdlKScancodeMask,
+            SdlScancode.SdlScancodeKpMemsubtract | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp memmultiply sdl keycode
         /// </summary>
         SdlkKpMemmultiply =
-            SdlScancode.SdlScancodeKpMemmultiply | Sdl.SdlKScancodeMask,
+            SdlScancode.SdlScancodeKpMemmultiply | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp memdivide sdl keycode
         /// </summary>
-        SdlkKpMemdivide = SdlScancode.SdlScancodeKpMemdivide | Sdl.SdlKScancodeMask,
+        SdlkKpMemdivide = SdlScancode.SdlScancodeKpMemdivide | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp plusminus sdl keycode
         /// </summary>
-        SdlkKpPlusminus = SdlScancode.SdlScancodeKpPlusminus | Sdl.SdlKScancodeMask,
+        SdlkKpPlusminus = SdlScancode.SdlScancodeKpPlusminus | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp clear sdl keycode
         /// </summary>
-        SdlkKpClear = SdlScancode.SdlScancodeKpClear | Sdl.SdlKScancodeMask,
+        SdlkKpClear = SdlScancode.SdlScancodeKpClear | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp clearentry sdl keycode
         /// </summary>
-        SdlkKpClearentry = SdlScancode.SdlScancodeKpClearentry | Sdl.SdlKScancodeMask,
+        SdlkKpClearentry = SdlScancode.SdlScancodeKpClearentry | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp binary sdl keycode
         /// </summary>
-        SdlkKpBinary = SdlScancode.SdlScancodeKpBinary | Sdl.SdlKScancodeMask,
+        SdlkKpBinary = SdlScancode.SdlScancodeKpBinary | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp octal sdl keycode
         /// </summary>
-        SdlkKpOctal = SdlScancode.SdlScancodeKpOctal | Sdl.SdlKScancodeMask,
+        SdlkKpOctal = SdlScancode.SdlScancodeKpOctal | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp decimal sdl keycode
         /// </summary>
-        SdlkKpDecimal = SdlScancode.SdlScancodeKpDecimal | Sdl.SdlKScancodeMask,
+        SdlkKpDecimal = SdlScancode.SdlScancodeKpDecimal | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kp hexadecimal sdl keycode
         /// </summary>
         SdlkKpHexadecimal =
-            SdlScancode.SdlScancodeKpHexadecimal | Sdl.SdlKScancodeMask,
+            SdlScancode.SdlScancodeKpHexadecimal | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk lctrl sdl keycode
         /// </summary>
-        SdlkLctrl = SdlScancode.SdlScancodeLctrl | Sdl.SdlKScancodeMask,
+        SdlkLctrl = SdlScancode.SdlScancodeLctrl | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk lshift sdl keycode
         /// </summary>
-        SdlkLshift = SdlScancode.SdlScancodeLshift | Sdl.SdlKScancodeMask,
+        SdlkLshift = SdlScancode.SdlScancodeLshift | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk lalt sdl keycode
         /// </summary>
-        SdlkLalt = SdlScancode.SdlScancodeLalt | Sdl.SdlKScancodeMask,
+        SdlkLalt = SdlScancode.SdlScancodeLalt | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk lgui sdl keycode
         /// </summary>
-        SdlkLgui = SdlScancode.SdlScancodeLgui | Sdl.SdlKScancodeMask,
+        SdlkLgui = SdlScancode.SdlScancodeLgui | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk rctrl sdl keycode
         /// </summary>
-        SdlkRctrl = SdlScancode.SdlScancodeRctrl | Sdl.SdlKScancodeMask,
+        SdlkRctrl = SdlScancode.SdlScancodeRctrl | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk rshift sdl keycode
         /// </summary>
-        SdlkRshift = SdlScancode.SdlScancodeRshift | Sdl.SdlKScancodeMask,
+        SdlkRshift = SdlScancode.SdlScancodeRshift | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk ralt sdl keycode
         /// </summary>
-        SdlkRalt = SdlScancode.SdlScancodeRalt | Sdl.SdlKScancodeMask,
+        SdlkRalt = SdlScancode.SdlScancodeRalt | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk rgui sdl keycode
         /// </summary>
-        SdlkRgui = SdlScancode.SdlScancodeRgui | Sdl.SdlKScancodeMask,
+        SdlkRgui = SdlScancode.SdlScancodeRgui | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk mode sdl keycode
         /// </summary>
-        SdlkMode = SdlScancode.SdlScancodeMode | Sdl.SdlKScancodeMask,
+        SdlkMode = SdlScancode.SdlScancodeMode | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk audionext sdl keycode
         /// </summary>
-        SdlkAudionext = SdlScancode.SdlScancodeAudionext | Sdl.SdlKScancodeMask,
+        SdlkAudionext = SdlScancode.SdlScancodeAudionext | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk audioprev sdl keycode
         /// </summary>
-        SdlkAudioprev = SdlScancode.SdlScancodeAudioprev | Sdl.SdlKScancodeMask,
+        SdlkAudioprev = SdlScancode.SdlScancodeAudioprev | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk audiostop sdl keycode
         /// </summary>
-        SdlkAudiostop = SdlScancode.SdlScancodeAudiostop | Sdl.SdlKScancodeMask,
+        SdlkAudiostop = SdlScancode.SdlScancodeAudiostop | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk audioplay sdl keycode
         /// </summary>
-        SdlkAudioplay = SdlScancode.SdlScancodeAudioplay | Sdl.SdlKScancodeMask,
+        SdlkAudioplay = SdlScancode.SdlScancodeAudioplay | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk audiomute sdl keycode
         /// </summary>
-        SdlkAudiomute = SdlScancode.SdlScancodeAudiomute | Sdl.SdlKScancodeMask,
+        SdlkAudiomute = SdlScancode.SdlScancodeAudiomute | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk mediaselect sdl keycode
         /// </summary>
-        SdlkMediaselect = SdlScancode.SdlScancodeMediaselect | Sdl.SdlKScancodeMask,
+        SdlkMediaselect = SdlScancode.SdlScancodeMediaselect | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk www sdl keycode
         /// </summary>
-        SdlkWww = SdlScancode.SdlScancodeWww | Sdl.SdlKScancodeMask,
+        SdlkWww = SdlScancode.SdlScancodeWww | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk mail sdl keycode
         /// </summary>
-        SdlkMail = SdlScancode.SdlScancodeMail | Sdl.SdlKScancodeMask,
+        SdlkMail = SdlScancode.SdlScancodeMail | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk calculator sdl keycode
         /// </summary>
-        SdlkCalculator = SdlScancode.SdlScancodeCalculator | Sdl.SdlKScancodeMask,
+        SdlkCalculator = SdlScancode.SdlScancodeCalculator | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk computer sdl keycode
         /// </summary>
-        SdlkComputer = SdlScancode.SdlScancodeComputer | Sdl.SdlKScancodeMask,
+        SdlkComputer = SdlScancode.SdlScancodeComputer | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk ac search sdl keycode
         /// </summary>
-        SdlkAcSearch = SdlScancode.SdlScancodeAcSearch | Sdl.SdlKScancodeMask,
+        SdlkAcSearch = SdlScancode.SdlScancodeAcSearch | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk ac home sdl keycode
         /// </summary>
-        SdlkAcHome = SdlScancode.SdlScancodeAcHome | Sdl.SdlKScancodeMask,
+        SdlkAcHome = SdlScancode.SdlScancodeAcHome | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk ac back sdl keycode
         /// </summary>
-        SdlkAcBack = SdlScancode.SdlScancodeAcBack | Sdl.SdlKScancodeMask,
+        SdlkAcBack = SdlScancode.SdlScancodeAcBack | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk ac forward sdl keycode
         /// </summary>
-        SdlkAcForward = SdlScancode.SdlScancodeAcForward | Sdl.SdlKScancodeMask,
+        SdlkAcForward = SdlScancode.SdlScancodeAcForward | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk ac stop sdl keycode
         /// </summary>
-        SdlkAcStop = SdlScancode.SdlScancodeAcStop | Sdl.SdlKScancodeMask,
+        SdlkAcStop = SdlScancode.SdlScancodeAcStop | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk ac refresh sdl keycode
         /// </summary>
-        SdlkAcRefresh = SdlScancode.SdlScancodeAcRefresh | Sdl.SdlKScancodeMask,
+        SdlkAcRefresh = SdlScancode.SdlScancodeAcRefresh | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk ac bookmarks sdl keycode
         /// </summary>
-        SdlkAcBookmarks = SdlScancode.SdlScancodeAcBookmarks | Sdl.SdlKScancodeMask,
+        SdlkAcBookmarks = SdlScancode.SdlScancodeAcBookmarks | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk brightnessdown sdl keycode
         /// </summary>
         SdlkBrightnessdown =
-            SdlScancode.SdlScancodeBrightnessdown | Sdl.SdlKScancodeMask,
+            SdlScancode.SdlScancodeBrightnessdown | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk brightnessup sdl keycode
         /// </summary>
-        SdlkBrightnessup = SdlScancode.SdlScancodeBrightnessup | Sdl.SdlKScancodeMask,
+        SdlkBrightnessup = SdlScancode.SdlScancodeBrightnessup | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk displayswitch sdl keycode
         /// </summary>
-        SdlkDisplayswitch = SdlScancode.SdlScancodeDisplayswitch | Sdl.SdlKScancodeMask,
+        SdlkDisplayswitch = SdlScancode.SdlScancodeDisplayswitch | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kbdillumtoggle sdl keycode
         /// </summary>
         SdlkKbdillumtoggle =
-            SdlScancode.SdlScancodeKbdillumtoggle | Sdl.SdlKScancodeMask,
+            SdlScancode.SdlScancodeKbdillumtoggle | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kbdillumdown sdl keycode
         /// </summary>
-        SdlkKbdillumdown = SdlScancode.SdlScancodeKbdillumdown | Sdl.SdlKScancodeMask,
+        SdlkKbdillumdown = SdlScancode.SdlScancodeKbdillumdown | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk kbdillumup sdl keycode
         /// </summary>
-        SdlkKbdillumup = SdlScancode.SdlScancodeKbdillumup | Sdl.SdlKScancodeMask,
+        SdlkKbdillumup = SdlScancode.SdlScancodeKbdillumup | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk eject sdl keycode
         /// </summary>
-        SdlkEject = SdlScancode.SdlScancodeEject | Sdl.SdlKScancodeMask,
+        SdlkEject = SdlScancode.SdlScancodeEject | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk sleep sdl keycode
         /// </summary>
-        SdlkSleep = SdlScancode.SdlScancodeSleep | Sdl.SdlKScancodeMask,
+        SdlkSleep = SdlScancode.SdlScancodeSleep | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk app1 sdl keycode
         /// </summary>
-        SdlkApp1 = SdlScancode.SdlScancodeApp1 | Sdl.SdlKScancodeMask,
+        SdlkApp1 = SdlScancode.SdlScancodeApp1 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk app2 sdl keycode
         /// </summary>
-        SdlkApp2 = SdlScancode.SdlScancodeApp2 | Sdl.SdlKScancodeMask,
+        SdlkApp2 = SdlScancode.SdlScancodeApp2 | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk audiorewind sdl keycode
         /// </summary>
-        SdlkAudiorewind = SdlScancode.SdlScancodeAudiorewind | Sdl.SdlKScancodeMask,
+        SdlkAudiorewind = SdlScancode.SdlScancodeAudiorewind | Sdl.KScancodeMask,
 
         /// <summary>
         ///     The sdlk audiofastforward sdl keycode
         /// </summary>
-        SdlkAudiofastforward = SdlScancode.SdlScancodeAudiofastforward | Sdl.SdlKScancodeMask
+        SdlkAudiofastforward = SdlScancode.SdlScancodeAudiofastforward | Sdl.KScancodeMask
     }
 }

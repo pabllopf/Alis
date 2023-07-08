@@ -266,17 +266,17 @@ namespace Alis.Core.Graphic.ImGui
                 }
                 case SdlEventType.SdlMouseButtonDown:
                 {
-                    if (evt.button.button == SdlButtonLeft)
+                    if (evt.button.button == ButtonLeft)
                     {
                         _mousePressed[0] = true;
                     }
 
-                    if (evt.button.button == SdlButtonRight)
+                    if (evt.button.button == ButtonRight)
                     {
                         _mousePressed[1] = true;
                     }
 
-                    if (evt.button.button == SdlButtonMiddle)
+                    if (evt.button.button == ButtonMiddle)
                     {
                         _mousePressed[2] = true;
                     }
@@ -324,10 +324,10 @@ namespace Alis.Core.Graphic.ImGui
             uint mouseButtons = SDL_GetMouseState(out int mx, out int my);
             io.MouseDown[0] =
                 _mousePressed[0] ||
-                (mouseButtons & SDL_BUTTON(SdlButtonLeft)) !=
+                (mouseButtons & SDL_BUTTON(ButtonLeft)) !=
                 0; // If a mouse press event came, always pass it as "mouse held this frame", so we don't miss click-release events that are shorter than 1 frame.
-            io.MouseDown[1] = _mousePressed[1] || (mouseButtons & SDL_BUTTON(SdlButtonRight)) != 0;
-            io.MouseDown[2] = _mousePressed[2] || (mouseButtons & SDL_BUTTON(SdlButtonMiddle)) != 0;
+            io.MouseDown[1] = _mousePressed[1] || (mouseButtons & SDL_BUTTON(ButtonRight)) != 0;
+            io.MouseDown[2] = _mousePressed[2] || (mouseButtons & SDL_BUTTON(ButtonMiddle)) != 0;
             _mousePressed[0] = _mousePressed[1] = _mousePressed[2] = false;
 
             IntPtr focusedWindow = SDL_GetKeyboardFocus();

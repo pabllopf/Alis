@@ -1484,14 +1484,14 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <returns>The string</returns>
         [return: NotNull, NotEmpty]
-        public static string TtfGetError() => Sdl.SDL_GetError();
+        public static string TtfGetError() => Sdl.GetError();
 
         /// <summary>
         ///     Ttf the set error using the specified fmt and arg
         /// </summary>
         /// <param name="fmtAndArgList">The fmt and arg</param>
         [return: NotNull]
-        public static void TtfSetError([NotNull, NotEmpty] string fmtAndArgList) => Sdl.SDL_SetError(fmtAndArgList.Validate());
+        public static void TtfSetError([NotNull, NotEmpty] string fmtAndArgList) => Sdl.SetError(fmtAndArgList.Validate());
 
         /// <summary>
         ///     Ttf the render utf 8 blended using the specified font

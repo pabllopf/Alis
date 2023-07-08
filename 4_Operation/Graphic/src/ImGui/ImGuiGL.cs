@@ -62,7 +62,7 @@ namespace Alis.Core.Graphic.ImGui
         public static (IntPtr, IntPtr) CreateWindowAndGlContext(string title, int width, int height, bool fullscreen = false, bool highDpi = false)
         {
             // initialize SDL and set a few defaults for the OpenGL context
-            SDL_Init(SdlInitVideo);
+            INTERNAL_SDL_Init(InitVideo);
             SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextFlags, (int) SdlGlContext.SdlGlContextForwardCompatibleFlag);
             SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
             SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextMajorVersion, 3);
@@ -86,7 +86,7 @@ namespace Alis.Core.Graphic.ImGui
                 flags |= SdlWindowFlags.SdlWindowAllowHighdpi;
             }
 
-            IntPtr window = SDL_CreateWindow(title, SdlWindowPosCentered, SdlWindowPosCentered, width, height, flags);
+            IntPtr window = CreateWindow(title, WindowPosCentered, WindowPosCentered, width, height, flags);
             IntPtr glContext = CreateGlContext(window);
             return (window, glContext);
         }
