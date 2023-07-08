@@ -64,16 +64,16 @@ namespace Alis.Core.Graphic.ImGui
         {
             // initialize SDL and set a few defaults for the OpenGL context
             INTERNAL_SDL_Init(InitVideo);
-            SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextFlags, (int) SdlGlContext.SdlGlContextForwardCompatibleFlag);
+            INTERNAL_SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextFlags, (int) SdlGlContext.SdlGlContextForwardCompatibleFlag);
             SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
-            SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextMajorVersion, 3);
-            SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextMinorVersion, 2);
+            INTERNAL_SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextMajorVersion, 3);
+            INTERNAL_SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextMinorVersion, 2);
 
             SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
-            SDL_GL_SetAttribute(SdlGlAttr.SdlGlDoubleBuffer, 1);
-            SDL_GL_SetAttribute(SdlGlAttr.SdlGlDepthSize, 24);
-            SDL_GL_SetAttribute(SdlGlAttr.SdlGlAlphaSize, 8);
-            SDL_GL_SetAttribute(SdlGlAttr.SdlGlStencilSize, 8);
+            INTERNAL_SDL_GL_SetAttribute(SdlGlAttr.SdlGlDoubleBuffer, 1);
+            INTERNAL_SDL_GL_SetAttribute(SdlGlAttr.SdlGlDepthSize, 24);
+            INTERNAL_SDL_GL_SetAttribute(SdlGlAttr.SdlGlAlphaSize, 8);
+            INTERNAL_SDL_GL_SetAttribute(SdlGlAttr.SdlGlStencilSize, 8);
 
             // create the window which should be able to have a valid OpenGL context and is resizable
             SdlWindowFlags flags = SdlWindowFlags.SdlWindowOpengl | SdlWindowFlags.SdlWindowResizable;
@@ -100,19 +100,19 @@ namespace Alis.Core.Graphic.ImGui
         /// <returns>The gl context</returns>
         private static IntPtr CreateGlContext(IntPtr window)
         {
-            IntPtr glContext = SDL_GL_CreateContext(window);
+            IntPtr glContext = INTERNAL_SDL_GL_CreateContext(window);
             if (glContext == IntPtr.Zero)
             {
                 throw new Exception("CouldNotCreateContext");
             }
 
-            SDL_GL_MakeCurrent(window, glContext);
-            SDL_GL_SetSwapInterval(1);
+            INTERNAL_SDL_GL_MakeCurrent(window, glContext);
+            INTERNAL_SDL_GL_SetSwapInterval(1);
 
             // initialize the screen to black as soon as possible
             GlClearColor(0f, 0f, 0f, 1f);
             GlClear(ClearBufferMask.ColorBufferBit);
-            SDL_GL_SwapWindow(window);
+            INTERNAL_SDL_GL_SwapWindow(window);
 
             Console.WriteLine($"GL Version: {GlGetString(StringName.Version)}");
             return glContext;

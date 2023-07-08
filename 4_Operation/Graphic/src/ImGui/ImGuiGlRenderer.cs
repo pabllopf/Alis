@@ -209,8 +209,8 @@ namespace Alis.Core.Graphic.ImGui
             ImGuiIoPtr io = ImGui.GetIo();
 
             // Setup display size (every frame to accommodate for window resizing)
-            SDL_GetWindowSize(_window, out int w, out int h);
-            SDL_GL_GetDrawableSize(_window, out int displayW, out int displayH);
+            INTERNAL_SDL_GetWindowSize(_window, out int w, out int h);
+            INTERNAL_SDL_GL_GetDrawableSize(_window, out int displayW, out int displayH);
             io.DisplaySize = new Vector2F(w, h);
             if ((w > 0) && (h > 0))
             {
@@ -335,7 +335,7 @@ namespace Alis.Core.Graphic.ImGui
             {
                 // SDL_GetMouseState() gives mouse position seemingly based on the last window entered/focused(?)
                 // The creation of a new windows at runtime and SDL_CaptureMouse both seems to severely mess up with that, so we retrieve that position globally.
-                SDL_GetWindowPosition(focusedWindow, out int wx, out int wy);
+                INTERNAL_SDL_GetWindowPosition(focusedWindow, out int wx, out int wy);
                 SDL_GetGlobalMouseState(out mx, out my);
                 mx -= wx;
                 my -= wy;
@@ -350,7 +350,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Prepares the gl context
         /// </summary>
-        private void PrepareGlContext() => SDL_GL_MakeCurrent(_window, _glContext);
+        private void PrepareGlContext() => INTERNAL_SDL_GL_MakeCurrent(_window, _glContext);
 
         /// <summary>
         ///     Rebuilds the font atlas

@@ -116,7 +116,7 @@ namespace Alis.Core.Graphic.Sample
             }
 
             // Creates a new SDL hardware renderer using the default graphics device with VSYNC enabled.
-            IntPtr renderer = Sdl.SDL_CreateRenderer(
+            IntPtr renderer = Sdl.INTERNAL_SDL_CreateRenderer(
                 window,
                 -1,
                 SdlRendererFlags.SdlRendererAccelerated |
@@ -136,16 +136,16 @@ namespace Alis.Core.Graphic.Sample
                 RenderColors();
 
                 // Sets the color that the screen will be cleared with.
-                Sdl.SDL_SetRenderDrawColor(renderer, _red, _green, _blue, 255);
+                Sdl.INTERNAL_SDL_SetRenderDrawColor(renderer, _red, _green, _blue, 255);
 
                 // Clears the current render surface.
-                Sdl.SDL_RenderClear(renderer);
+                Sdl.INTERNAL_SDL_RenderClear(renderer);
 
                 // Switches out the currently presented render surface with the one we just did work on.
-                Sdl.SDL_RenderPresent(renderer);
+                Sdl.INTERNAL_SDL_RenderPresent(renderer);
             }
 
-            Sdl.SDL_DestroyRenderer(renderer);
+            Sdl.INTERNAL_SDL_DestroyRenderer(renderer);
             Sdl.DestroyWindow(window);
             Sdl.INTERNAL_SDL_Quit();
             return 0;

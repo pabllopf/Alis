@@ -110,10 +110,10 @@ namespace Alis.App.Engine
                 _renderer.NewFrame();
                 ImGui.ShowDemoWindow();
                 _renderer.Render();
-                Sdl.SDL_GL_SwapWindow(_window);
+                Sdl.INTERNAL_SDL_GL_SwapWindow(_window);
             }
 
-            Sdl.SDL_GL_DeleteContext(_glContext);
+            Sdl.INTERNAL_SDL_GL_DeleteContext(_glContext);
             Sdl.DestroyWindow(_window);
             Sdl.INTERNAL_SDL_Quit();
         }
