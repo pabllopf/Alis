@@ -30,53 +30,53 @@
 namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The sdl packedlayout enum
+    ///     The sdl packed layout enum
     /// </summary>
-    public enum SdlPackedLayout
+    public enum PackedLayout
     {
         /// <summary>
-        ///     The sdl packedlayout none sdl packedlayout
+        ///     The sdl packed layout none sdl packed layout
         /// </summary>
-        SdlPackedlayoutNone,
+        PackedLayoutNone,
 
         /// <summary>
-        ///     The sdl packedlayout 332 sdl packedlayout
+        ///     The sdl packed layout 332 sdl packed layout
         /// </summary>
-        SdlPackedlayout332,
+        PackedLayout332,
 
         /// <summary>
-        ///     The sdl packedlayout 4444 sdl packedlayout
+        ///     The sdl packed layout 4444 sdl packed layout
         /// </summary>
-        SdlPackedlayout4444,
+        PackedLayout4444,
 
         /// <summary>
-        ///     The sdl packedlayout 1555 sdl packedlayout
+        ///     The sdl packed layout 1555 sdl packed layout
         /// </summary>
-        SdlPackedlayout1555,
+        PackedLayout1555,
 
         /// <summary>
-        ///     The sdl packedlayout 5551 sdl packedlayout
+        ///     The sdl packed layout 5551 sdl packed layout
         /// </summary>
-        SdlPackedlayout5551,
+        PackedLayout5551,
 
         /// <summary>
-        ///     The sdl packedlayout 565 sdl packedlayout
+        ///     The sdl packed layout 565 sdl packed layout
         /// </summary>
-        SdlPackedlayout565,
+        PackedLayout565,
 
         /// <summary>
-        ///     The sdl packedlayout 8888 sdl packedlayout
+        ///     The sdl packed layout 8888 sdl packed layout
         /// </summary>
-        SdlPackedlayout8888,
+        PackedLayout8888,
 
         /// <summary>
-        ///     The sdl packedlayout 2101010 sdl packedlayout
+        ///     The sdl packed layout 2101010 sdl packed layout
         /// </summary>
-        SdlPackedlayout2101010,
+        PackedLayout2101010,
 
         /// <summary>
-        ///     The sdl packedlayout 1010102 sdl packedlayout
+        ///     The sdl packed layout 1010102 sdl packed layout
         /// </summary>
-        SdlPackedlayout1010102
+        PackedLayout1010102
     }
 }
