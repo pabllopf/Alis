@@ -32,21 +32,21 @@ namespace Alis.Core.Graphic.SDL.Enums
     /// <summary>
     ///     The sdl bit map order enum
     /// </summary>
-    public enum SdlBitmapOrder
+    public enum BitmapOrder
     {
         /// <summary>
         ///     The sdl bit map order none sdl bit map order
         /// </summary>
-        SdlBitMapOrderNone,
+        BitMapOrderNone,
 
         /// <summary>
         ///     The sdl bit map order 4321 sdl bit map order
         /// </summary>
-        SdlBitMapOrder4321,
+        BitMapOrder4321,
 
         /// <summary>
         ///     The sdl bit map order 1234 sdl bit map order
         /// </summary>
-        SdlBitMapOrder1234
+        BitMapOrder1234
     }
 }
