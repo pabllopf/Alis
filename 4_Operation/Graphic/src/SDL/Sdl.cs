@@ -1454,7 +1454,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="size">The size</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr Malloc([NotNull, NotZero] int size) => INTERNAL_SDL_malloc(size.Validate);
+        public static IntPtr Malloc([NotNull, NotZero] int size) => INTERNAL_SDL_malloc(size.Validate());
 
         /// <summary>
         ///     Sdl the free using the specified mem block
@@ -1480,6 +1480,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="mode">The mode</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RWFromFile", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         private static extern IntPtr INTERNAL_SDL_RWFromFile(byte[] file, byte[] mode);
 
         /// <summary>
@@ -1488,30 +1489,36 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <param name="mode">The mode</param>
         /// <returns>The rw ops</returns>
-        private static IntPtr RwFromFile(string file, string mode)
-        {
-            byte[] utf8File = Utf8Manager.Utf8EncodeHeap(file);
-            byte[] utf8Mode = Utf8Manager.Utf8EncodeHeap(mode);
-            IntPtr rwOps = INTERNAL_SDL_RWFromFile(
-                utf8File,
-                utf8Mode
-            );
-            return rwOps;
-        }
+        [return: NotNull]
+        private static IntPtr RwFromFile(string file, string mode) => INTERNAL_SDL_RWFromFile(Utf8Manager.Utf8EncodeHeap(file), Utf8Manager.Utf8EncodeHeap(mode));
 
         /// <summary>
         ///     Sdl the alloc rw
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AllocRW", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr INTERNAL_SDL_AllocRW();
+        [return: NotNull]
+        private static extern IntPtr INTERNAL_SDL_AllocRW();
+        
+        /// <summary>
+        /// Internal the sdl alloc rw
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr AllocRw() => INTERNAL_SDL_AllocRW();
         
         /// <summary>
         ///     Sdl the free rw using the specified area
         /// </summary>
         /// <param name="area">The area</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_FreeRW", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void INTERNAL_SDL_FreeRW(IntPtr area);
+        private static extern void INTERNAL_SDL_FreeRW(IntPtr area);
+        
+        /// <summary>
+        /// Free the rw using the specified area
+        /// </summary>
+        /// <param name="area">The area</param>
+        public static void FreeRw(IntPtr area) => INTERNAL_SDL_FreeRW(area);
         
         /// <summary>
         ///     Sdl the rw from fp using the specified fp
