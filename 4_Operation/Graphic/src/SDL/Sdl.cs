@@ -1178,22 +1178,22 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl bit map order 4321
         /// </summary>
-        public static readonly uint PixelFormatIndex1Lsb = SdlDefinePixelFormat(PixelType.PixelTypeIndex1, (uint) SdlBitmapOrder.SdlBitMapOrder4321, 0, 1, 0);
+        public static readonly uint PixelFormatIndex1Lsb = SdlDefinePixelFormat(PixelType.PixelTypeIndex1, (uint) BitmapOrder.BitMapOrder4321, 0, 1, 0);
 
         /// <summary>
         ///     The sdl bit map order 1234
         /// </summary>
-        public static readonly uint PixelFormatIndex1Msb = SdlDefinePixelFormat(PixelType.PixelTypeIndex1, (uint) SdlBitmapOrder.SdlBitMapOrder1234, 0, 1, 0);
+        public static readonly uint PixelFormatIndex1Msb = SdlDefinePixelFormat(PixelType.PixelTypeIndex1, (uint) BitmapOrder.BitMapOrder1234, 0, 1, 0);
 
         /// <summary>
         ///     The sdl bit map order 4321
         /// </summary>
-        public static readonly uint PixelFormatIndex4Lsb = SdlDefinePixelFormat(PixelType.PixelTypeIndex4, (uint) SdlBitmapOrder.SdlBitMapOrder4321, 0, 4, 0);
+        public static readonly uint PixelFormatIndex4Lsb = SdlDefinePixelFormat(PixelType.PixelTypeIndex4, (uint) BitmapOrder.BitMapOrder4321, 0, 4, 0);
 
         /// <summary>
         ///     The sdl bit map order 1234
         /// </summary>
-        public static readonly uint PixelFormatIndex4Msb = SdlDefinePixelFormat(PixelType.PixelTypeIndex4, (uint) SdlBitmapOrder.SdlBitMapOrder1234, 0, 4, 0);
+        public static readonly uint PixelFormatIndex4Msb = SdlDefinePixelFormat(PixelType.PixelTypeIndex4, (uint) BitmapOrder.BitMapOrder1234, 0, 4, 0);
 
         /// <summary>
         ///     The sdl pixel type index8
@@ -1238,7 +1238,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 1555
         /// </summary>
-        private static readonly uint PixelFormatXBgr1555 = SdlDefinePixelFormat(PixelType.PixelTypeIndex1, (uint) SdlBitmapOrder.SdlBitMapOrder4321, PackedLayout.PackedLayout1555, 15, 2);
+        private static readonly uint PixelFormatXBgr1555 = SdlDefinePixelFormat(PixelType.PixelTypeIndex1, (uint) BitmapOrder.BitMapOrder4321, PackedLayout.PackedLayout1555, 15, 2);
 
         /// <summary>
         ///     The sdl pixel format xbgr1555
