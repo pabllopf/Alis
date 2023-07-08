@@ -33,6 +33,7 @@ using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.SDL.Enums;
 using static Alis.Core.Graphic.SDL.Sdl;
 using static Alis.Core.Graphic.OpenGL.Gl;
+using PixelType = Alis.Core.Graphic.OpenGL.Enums.PixelType;
 
 
 namespace Alis.Core.Graphic.ImGui
