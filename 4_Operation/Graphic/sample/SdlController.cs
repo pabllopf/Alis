@@ -186,9 +186,9 @@ namespace Alis.Core.Graphic.Sample
             Sdl.INTERNAL_SDL_Init(Sdl.InitEverything);
 
 
-            for (int i = 0; i < Sdl.SDL_NumJoysticks(); i++)
+            for (int i = 0; i < Sdl.INTERNAL_SDL_NumJoysticks(); i++)
             {
-                IntPtr myJoystick = Sdl.SDL_JoystickOpen(i);
+                IntPtr myJoystick = Sdl.INTERNAL_SDL_JoystickOpen(i);
                 if (myJoystick == IntPtr.Zero)
                 {
                     Console.WriteLine("Ooops, something fishy's goin' on here!" + Sdl.GetError());
@@ -196,9 +196,9 @@ namespace Alis.Core.Graphic.Sample
                 else
                 {
                     Console.WriteLine($"[SDL_JoystickName_id = '{i}'] \n" +
-                                      $"SDL_JoystickName={Sdl.SDL_JoystickName(myJoystick)} \n" +
-                                      $"SDL_JoystickNumAxes={Sdl.SDL_JoystickNumAxes(myJoystick)} \n" +
-                                      $"SDL_JoystickNumButtons={Sdl.SDL_JoystickNumButtons(myJoystick)}");
+                                      $"SDL_JoystickName={Sdl.JoystickName(myJoystick)} \n" +
+                                      $"SDL_JoystickNumAxes={Sdl.INTERNAL_SDL_JoystickNumAxes(myJoystick)} \n" +
+                                      $"SDL_JoystickNumButtons={Sdl.INTERNAL_SDL_JoystickNumButtons(myJoystick)}");
                 }
             }
         }
@@ -208,9 +208,9 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         public void UpdateInput()
         {
-            Sdl.SDL_JoystickUpdate();
+            Sdl.INTERNAL_SDL_JoystickUpdate();
 
-            while (Sdl.SDL_PollEvent(out sdlEvent) != 0)
+            while (Sdl.INTERNAL_SDL_PollEvent(out sdlEvent) != 0)
             {
                 switch (sdlEvent.type)
                 {
