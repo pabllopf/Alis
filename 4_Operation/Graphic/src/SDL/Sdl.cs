@@ -2267,9 +2267,9 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="callback">The callback</param>
         /// <param name="userdata">The userdata</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_LogGetOutputFunction", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void SDL_LogGetOutputFunction(out IntPtr callback, out IntPtr userdata);
+        private static extern void INTERNAL_SDL_LogGetOutputFunction(out IntPtr callback, out IntPtr userdata);
 
         /// <summary>
         ///     Sdl the log get output function using the specified callback
@@ -2282,7 +2282,7 @@ namespace Alis.Core.Graphic.SDL
             out IntPtr userdata
         )
         {
-            SDL_LogGetOutputFunction(
+            INTERNAL_SDL_LogGetOutputFunction(
                 out IntPtr result,
                 out userdata
             );
@@ -2304,9 +2304,9 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="callback">The callback</param>
         /// <param name="userdata">The userdata</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_LogSetOutputFunction", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void SDL_LogSetOutputFunction(SdlLogOutputFunction callback, IntPtr userdata);
+        public static extern void INTERNAL_SDL_LogSetOutputFunction(SdlLogOutputFunction callback, IntPtr userdata);
 
         /// <summary>
         ///     Internals the sdl show message box using the specified message box data
@@ -2711,11 +2711,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="displayIndex">The display index</param>
         /// <param name="mode">The mode</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetDesktopDisplayMode(
-            int displayIndex,
-            out SdlDisplayMode mode
-        );
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetDesktopDisplayMode", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int INTERNAL_SDL_GetDesktopDisplayMode(int displayIndex, out SdlDisplayMode mode);
 
         /// <summary>
         ///     Internals the sdl get display name using the specified index
@@ -2738,13 +2735,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="displayIndex">The display index</param>
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetDisplayBounds(
-            int displayIndex,
-            out SdlRect rect
-        );
-
-
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetDisplayBounds", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int INTERNAL_SDL_GetDisplayBounds(int displayIndex, out SdlRect rect);
+        
         /// <summary>
         ///     Sdl the get display dpi using the specified display index
         /// </summary>
@@ -2753,24 +2746,18 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="hDpi">The h dpi</param>
         /// <param name="vDpi">The v dpi</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetDisplayDPI(
-            int displayIndex,
-            out float dDpi,
-            out float hDpi,
-            out float vDpi
-        );
-
-
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetDisplayDPI", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        public static extern int INTERNAL_SDL_GetDisplayDPI(int displayIndex, out float dDpi, out float hDpi, out float vDpi);
+        
         /// <summary>
         ///     Sdl the get display orientation using the specified display index
         /// </summary>
         /// <param name="displayIndex">The display index</param>
         /// <returns>The sdl display orientation</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlDisplayOrientation SDL_GetDisplayOrientation(
-            int displayIndex
-        );
+        [DllImport(NativeLibName, EntryPoint = "SdlDisplayOrientation", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        public static extern SdlDisplayOrientation INTERNAL_SDL_GetDisplayOrientation(int displayIndex);
 
         /// <summary>
         ///     Sdl the get display mode using the specified display index
@@ -2779,49 +2766,43 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="modeIndex">The mode index</param>
         /// <param name="mode">The mode</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetDisplayMode(
-            int displayIndex,
-            int modeIndex,
-            out SdlDisplayMode mode
-        );
-
-
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetDisplayMode", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        public static extern int INTERNAL_SDL_GetDisplayMode(int displayIndex, int modeIndex, out SdlDisplayMode mode);
+        
         /// <summary>
         ///     Sdl the get display usable bounds using the specified display index
         /// </summary>
         /// <param name="displayIndex">The display index</param>
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetDisplayUsableBounds(
-            int displayIndex,
-            out SdlRect rect
-        );
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetDisplayUsableBounds", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        public static extern int INTERNAL_SDL_GetDisplayUsableBounds(int displayIndex, out SdlRect rect);
 
         /// <summary>
         ///     Sdl the get num display modes using the specified display index
         /// </summary>
         /// <param name="displayIndex">The display index</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetNumDisplayModes(
-            int displayIndex
-        );
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetNumDisplayModes", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        public static extern int INTERNAL_SDL_GetNumDisplayModes(int displayIndex);
 
         /// <summary>
         ///     Sdl the get num video displays
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetNumVideoDisplays();
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetNumVideoDisplays", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        public static extern int INTERNAL_SDL_GetNumVideoDisplays();
 
         /// <summary>
         ///     Sdl the get num video drivers
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetNumVideoDrivers();
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetNumVideoDrivers", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int INTERNAL_SDL_GetNumVideoDrivers();
 
         /// <summary>
         ///     Internals the sdl get video driver using the specified index
@@ -2829,9 +2810,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="index">The index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetVideoDriver", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GetVideoDriver(
-            int index
-        );
+        private static extern IntPtr INTERNAL_SDL_GetVideoDriver(int index);
 
         /// <summary>
         ///     Sdl the get video driver using the specified index
@@ -2846,25 +2825,18 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The float</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern float SDL_GetWindowBrightness(
-            IntPtr window
-        );
-
-
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowBrightness", CallingConvention = CallingConvention.Cdecl)]
+        public static extern float INTERNAL_SDL_GetWindowBrightness(IntPtr window);
+        
         /// <summary>
         ///     Sdl the set window opacity using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         /// <param name="opacity">The opacity</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_SetWindowOpacity(
-            IntPtr window,
-            float opacity
-        );
-
-
+        [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowOpacity", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int INTERNAL_SDL_SetWindowOpacity(IntPtr window, float opacity);
+        
         /// <summary>
         ///     Sdl the get window opacity using the specified window
         /// </summary>
