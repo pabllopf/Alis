@@ -131,7 +131,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <returns>The handle</returns>
         [return: NotNull]
-        public static IntPtr IMG_Load([NotNull] string file) => INTERNAL_IMG_Load(Sdl.Utf8EncodeHeap(file.Validate()));
+        public static IntPtr IMG_Load([NotNull] string file) => INTERNAL_IMG_Load(Utf8Manager.Utf8EncodeHeap(file.Validate()));
 
         /// <summary>
         ///     Img the load rw using the specified src
@@ -171,7 +171,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="type">The type</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr ImgLoadTypedRw([NotNull] IntPtr src, [NotNull] int free, [NotNull] string type) => INTERNAL_IMG_LoadTyped_RW(src.Validate(), free.Validate(), Sdl.Utf8Encode(type.Validate(), new byte[Sdl.Utf8Size(type)], Sdl.Utf8Size(type)));
+        public static IntPtr ImgLoadTypedRw([NotNull] IntPtr src, [NotNull] int free, [NotNull] string type) => INTERNAL_IMG_LoadTyped_RW(src.Validate(), free.Validate(), Utf8Manager.Utf8Encode(type.Validate(), new byte[Utf8Manager.Utf8Size(type)], Utf8Manager.Utf8Size(type)));
 
         /// <summary>
         ///     Internals the img load texture using the specified renderer
@@ -190,7 +190,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <returns>The handle</returns>
         [return: NotNull]
-        public static IntPtr ImgLoadTexture([NotNull] IntPtr renderer, [NotNull] string file) => INTERNAL_IMG_LoadTexture(renderer.Validate(), Sdl.Utf8EncodeHeap(file.Validate()));
+        public static IntPtr ImgLoadTexture([NotNull] IntPtr renderer, [NotNull] string file) => INTERNAL_IMG_LoadTexture(renderer.Validate(), Utf8Manager.Utf8EncodeHeap(file.Validate()));
 
         /// <summary>
         ///     Img the load texture rw using the specified renderer
@@ -233,7 +233,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="type">The type</param>
         /// <returns>The handle</returns>
         [return: NotNull]
-        public static IntPtr ImgLoadTextureTypedRw([NotNull] IntPtr renderer, [NotNull] IntPtr src, [NotNull] int freeSrc, [NotNull] string type) => INTERNAL_IMG_LoadTextureTyped_RW(renderer, src, freeSrc, Sdl.Utf8EncodeHeap(type));
+        public static IntPtr ImgLoadTextureTypedRw([NotNull] IntPtr renderer, [NotNull] IntPtr src, [NotNull] int freeSrc, [NotNull] string type) => INTERNAL_IMG_LoadTextureTyped_RW(renderer, src, freeSrc, Utf8Manager.Utf8EncodeHeap(type));
 
         /// <summary>
         ///     Img the read xpm from array using the specified xpm
@@ -269,7 +269,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static int ImgSavePng([NotNull] IntPtr surface, [NotNull] string file) => INTERNAL_IMG_SavePNG(surface, Sdl.Utf8EncodeHeap(file));
+        public static int ImgSavePng([NotNull] IntPtr surface, [NotNull] string file) => INTERNAL_IMG_SavePNG(surface, Utf8Manager.Utf8EncodeHeap(file));
 
         /// <summary>
         ///     Img the save png rw using the specified surface
@@ -310,7 +310,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="quality">The quality</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static int ImgSaveJpg([NotNull] IntPtr surface, [NotNull, NotEmpty] string file, [NotNull, NotZero] int quality) => INTERNAL_IMG_SaveJPG(surface.Validate(), Sdl.Utf8EncodeHeap(file.Validate()), quality.Validate());
+        public static int ImgSaveJpg([NotNull] IntPtr surface, [NotNull, NotEmpty] string file, [NotNull, NotZero] int quality) => INTERNAL_IMG_SaveJPG(surface.Validate(), Utf8Manager.Utf8EncodeHeap(file.Validate()), quality.Validate());
 
         /// <summary>
         ///     Img the save jpg rw using the specified surface

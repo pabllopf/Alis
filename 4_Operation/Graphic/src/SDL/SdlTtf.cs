@@ -524,7 +524,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="font">The font</param>
         /// <returns>The string</returns>
         [return: NotNull, NotEmpty]
-        public static string TtfFontFaceFamilyName([NotNull] IntPtr font) => Sdl.Utf8ToManaged(INTERNAL_TTF_FontFaceFamilyName(font.Validate()));
+        public static string TtfFontFaceFamilyName([NotNull] IntPtr font) => Utf8Manager.Utf8ToManaged(INTERNAL_TTF_FontFaceFamilyName(font.Validate()));
 
         /// <summary>
         ///     Internals the ttf font face style name using the specified font
@@ -1466,7 +1466,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="ptSize">The pt size</param>
         /// <returns>The handle</returns>
         [return: NotNull]
-        public static IntPtr TtfOpenFont([NotNull, NotEmpty] string file, [NotNull, NotZero] int ptSize) => TtfOpenFont(Sdl.Utf8EncodeHeap(file.Validate()), ptSize.Validate());
+        public static IntPtr TtfOpenFont([NotNull, NotEmpty] string file, [NotNull, NotZero] int ptSize) => TtfOpenFont(Utf8Manager.Utf8EncodeHeap(file.Validate()), ptSize.Validate());
 
         /// <summary>
         ///     Ttf the render utf 8 blended wrapped using the specified font
@@ -1477,7 +1477,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="wrapped">The wrapped</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static IntPtr TtfRenderUtf8BlendedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapped) => InternalTtfRenderUtf8BlendedWrapped(font.Validate(), Sdl.Utf8EncodeHeap(text.Validate()), fg.Validate(), wrapped.Validate());
+        public static IntPtr TtfRenderUtf8BlendedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapped) => InternalTtfRenderUtf8BlendedWrapped(font.Validate(), Utf8Manager.Utf8EncodeHeap(text.Validate()), fg.Validate(), wrapped.Validate());
 
         /// <summary>
         ///     Ttf the get error
@@ -1501,7 +1501,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="fg">The fg</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static IntPtr TtfRenderUtf8Blended([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg) => InternalTtfRenderUtf8Blended(font.Validate(), Sdl.Utf8EncodeHeap(text.Validate()), fg.Validate());
+        public static IntPtr TtfRenderUtf8Blended([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg) => InternalTtfRenderUtf8Blended(font.Validate(), Utf8Manager.Utf8EncodeHeap(text.Validate()), fg.Validate());
 
         /// <summary>
         ///     Ttf the render utf 8 shaded wrapped using the specified font
@@ -1513,7 +1513,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static IntPtr TtfRenderUtf8ShadedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg, [NotNull] uint wrapLength) => InternalTtfRenderUtf8ShadedWrapped(font.Validate(), Sdl.Utf8EncodeHeap(text.Validate()), fg.Validate(), bg.Validate(), wrapLength.Validate());
+        public static IntPtr TtfRenderUtf8ShadedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg, [NotNull] uint wrapLength) => InternalTtfRenderUtf8ShadedWrapped(font.Validate(), Utf8Manager.Utf8EncodeHeap(text.Validate()), fg.Validate(), bg.Validate(), wrapLength.Validate());
 
         /// <summary>
         ///     Ttf the render utf 8 shaded using the specified font
@@ -1524,7 +1524,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="bg">The bg</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static IntPtr TtfRenderUtf8Shaded([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg) => InternalTtfRenderUtf8Shaded(font.Validate(), Sdl.Utf8EncodeHeap(text.Validate()), fg.Validate(), bg.Validate());
+        public static IntPtr TtfRenderUtf8Shaded([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg) => InternalTtfRenderUtf8Shaded(font.Validate(), Utf8Manager.Utf8EncodeHeap(text.Validate()), fg.Validate(), bg.Validate());
 
         /// <summary>
         ///     Ttf the render utf 8 solid wrapped using the specified font
@@ -1535,7 +1535,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static IntPtr TTF_RenderUTF8_Solid_Wrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapLength) => InternalTtfRenderUtf8SolidWrapped(font.Validate(), Sdl.Utf8EncodeHeap(text.Validate()), fg.Validate(), wrapLength.Validate());
+        public static IntPtr TTF_RenderUTF8_Solid_Wrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapLength) => InternalTtfRenderUtf8SolidWrapped(font.Validate(), Utf8Manager.Utf8EncodeHeap(text.Validate()), fg.Validate(), wrapLength.Validate());
 
         /// <summary>
         ///     Ttf the render utf 8 solid using the specified font
@@ -1545,7 +1545,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="fg">The fg</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static IntPtr TtfRenderUtf8Solid([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg) => InternalTtfRenderUtf8Solid(font.Validate(), Sdl.Utf8EncodeHeap(text.Validate()), fg.Validate());
+        public static IntPtr TtfRenderUtf8Solid([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg) => InternalTtfRenderUtf8Solid(font.Validate(), Utf8Manager.Utf8EncodeHeap(text.Validate()), fg.Validate());
 
         /// <summary>
         ///     Ttf the measure utf 8 using the specified font
@@ -1557,7 +1557,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="count">The count</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static int TtfMeasureUtf8([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] int measureWidth, [NotNull] out int extent, [NotNull] out int count) => InternalTtfMeasureUtf8(font.Validate(), Sdl.Utf8EncodeHeap(text.Validate()), measureWidth.Validate(), out extent, out count);
+        public static int TtfMeasureUtf8([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] int measureWidth, [NotNull] out int extent, [NotNull] out int count) => InternalTtfMeasureUtf8(font.Validate(), Utf8Manager.Utf8EncodeHeap(text.Validate()), measureWidth.Validate(), out extent, out count);
 
         /// <summary>
         ///     Ttf the size utf 8 using the specified font
@@ -1568,7 +1568,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="h">The </param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static int TtfSizeUtf8([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] out int w, [NotNull] out int h) => InternalTtfSizeUtf8(font.Validate(), Sdl.Utf8EncodeHeap(text.Validate()), out w, out h);
+        public static int TtfSizeUtf8([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] out int w, [NotNull] out int h) => InternalTtfSizeUtf8(font.Validate(), Utf8Manager.Utf8EncodeHeap(text.Validate()), out w, out h);
 
         /// <summary>
         ///     Ttf the font face style name using the specified font
@@ -1576,7 +1576,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="font">The font</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string TtfFontFaceStyleName([NotNull] IntPtr font) => Sdl.Utf8ToManaged(InternalTtfFontFaceStyleName(font.Validate()));
+        public static string TtfFontFaceStyleName([NotNull] IntPtr font) => Utf8Manager.Utf8ToManaged(InternalTtfFontFaceStyleName(font.Validate()));
 
         /// <summary>
         ///     Ttf the open font index using the specified file
@@ -1586,7 +1586,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="index">The index</param>
         /// <returns>The handle</returns>
         [return: NotNull]
-        public static IntPtr TtfOpenFontIndex([NotNull, NotEmpty] string file, [NotNull, NotZero] int ptSize, [NotNull] long index) => InternalTtfOpenFontIndex(Sdl.Utf8EncodeHeap(file.Validate()), ptSize.Validate(), index.Validate());
+        public static IntPtr TtfOpenFontIndex([NotNull, NotEmpty] string file, [NotNull, NotZero] int ptSize, [NotNull] long index) => InternalTtfOpenFontIndex(Utf8Manager.Utf8EncodeHeap(file.Validate()), ptSize.Validate(), index.Validate());
 
         /// <summary>
         ///     Ttf the linked version

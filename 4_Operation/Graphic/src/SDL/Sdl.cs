@@ -1150,16 +1150,12 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl audio allow samples change
         /// </summary>
-        public const uint SdlAudioAllowAnyChange = SdlAudioAllowFrequencyChange |
-                                                   SdlAudioAllowFormatChange |
-                                                   SdlAudioAllowChannelsChange |
-                                                   SdlAudioAllowSamplesChange;
+        public const uint SdlAudioAllowAnyChange = SdlAudioAllowFrequencyChange | SdlAudioAllowFormatChange | SdlAudioAllowChannelsChange | SdlAudioAllowSamplesChange;
 
         /// <summary>
         ///     The sdl mix max volume
         /// </summary>
         public const int SdlMixMaxVolume = 128;
-
 
         /// <summary>
         ///     The sdl android external storage read
@@ -1174,11 +1170,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl patch level
         /// </summary>
-        private static readonly int SdlCompiledVersion = SdlVersionNum(
-            SdlMajorVersion,
-            SdlMinorVersion,
-            SdlPatchLevel
-        );
+        private static readonly int SdlCompiledVersion = SdlVersionNum(SdlMajorVersion, SdlMinorVersion, SdlPatchLevel);
 
         /// <summary>
         ///     The sdl pixel format unknown
@@ -1188,368 +1180,182 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl bit map order 4321
         /// </summary>
-        public static readonly uint SdlPixelFormatIndex1Lsb =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypeIndex1,
-                (uint) SdlBitmapOrder.SdlBitMapOrder4321,
-                0,
-                1, 0
-            );
+        public static readonly uint SdlPixelFormatIndex1Lsb = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypeIndex1, (uint) SdlBitmapOrder.SdlBitMapOrder4321, 0, 1, 0);
 
         /// <summary>
         ///     The sdl bit map order 1234
         /// </summary>
-        public static readonly uint SdlPixelFormatIndex1Msb =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypeIndex1,
-                (uint) SdlBitmapOrder.SdlBitMapOrder1234,
-                0,
-                1, 0
-            );
+        public static readonly uint SdlPixelFormatIndex1Msb = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypeIndex1, (uint) SdlBitmapOrder.SdlBitMapOrder1234, 0, 1, 0);
 
         /// <summary>
         ///     The sdl bit map order 4321
         /// </summary>
-        public static readonly uint SdlPixelFormatIndex4Lsb =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypeIndex4,
-                (uint) SdlBitmapOrder.SdlBitMapOrder4321,
-                0,
-                4, 0
-            );
+        public static readonly uint SdlPixelFormatIndex4Lsb = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypeIndex4, (uint) SdlBitmapOrder.SdlBitMapOrder4321, 0, 4, 0);
 
         /// <summary>
         ///     The sdl bit map order 1234
         /// </summary>
-        public static readonly uint SdlPixelFormatIndex4Msb =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypeIndex4,
-                (uint) SdlBitmapOrder.SdlBitMapOrder1234,
-                0,
-                4, 0
-            );
+        public static readonly uint SdlPixelFormatIndex4Msb = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypeIndex4, (uint) SdlBitmapOrder.SdlBitMapOrder1234, 0, 4, 0);
 
         /// <summary>
         ///     The sdl pixel type index8
         /// </summary>
-        public static readonly uint SdlPixelFormatIndex8 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypeIndex8,
-                0,
-                0,
-                8, 1
-            );
+        public static readonly uint SdlPixelFormatIndex8 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypeIndex8, 0, 0, 8, 1);
 
         /// <summary>
         ///     The sdl packed layout 332
         /// </summary>
-        public static readonly uint SdlPixelFormatRgb332 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked8,
-                (uint) SdlPackedOrder.SdlPackedorderXrgb,
-                SdlPackedLayout.SdlPackedlayout332,
-                8, 1
-            );
+        public static readonly uint SdlPixelFormatRgb332 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked8, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout332, 8, 1);
 
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        private static readonly uint SdlPixelFormatXRgb444 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked16,
-                (uint) SdlPackedOrder.SdlPackedorderXrgb,
-                SdlPackedLayout.SdlPackedlayout4444,
-                12, 2
-            );
-
+        private static readonly uint SdlPixelFormatXRgb444 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout4444, 12, 2);
+        
         /// <summary>
         ///     The sdl pixel format x rgb 444
         /// </summary>
-        public static readonly uint SdlPixelFormatRgb444 =
-            SdlPixelFormatXRgb444;
+        public static readonly uint SdlPixelFormatRgb444 = SdlPixelFormatXRgb444;
 
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        private static readonly uint SdlPixelFormatXBgr444 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked16,
-                (uint) SdlPackedOrder.SdlPackedorderXbgr,
-                SdlPackedLayout.SdlPackedlayout4444,
-                12, 2
-            );
+        private static readonly uint SdlPixelFormatXBgr444 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderXbgr, SdlPackedLayout.SdlPackedlayout4444, 12, 2);
 
         /// <summary>
         ///     The sdl pixel format x bgr 444
         /// </summary>
-        public static readonly uint SdlPixelFormatBgr444 =
-            SdlPixelFormatXBgr444;
+        public static readonly uint SdlPixelFormatBgr444 = SdlPixelFormatXBgr444;
 
         /// <summary>
         ///     The sdl packed layout 1555
         /// </summary>
-        private static readonly uint SdlPixelFormatXRgb1555 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked16,
-                (uint) SdlPackedOrder.SdlPackedorderXrgb,
-                SdlPackedLayout.SdlPackedlayout1555,
-                15, 2
-            );
+        private static readonly uint SdlPixelFormatXRgb1555 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout1555, 15, 2);
 
         /// <summary>
         ///     The sdl pixel format xrgb1555
         /// </summary>
-        public static readonly uint SdlPixelFormatRgb555 =
-            SdlPixelFormatXRgb1555;
+        public static readonly uint SdlPixelFormatRgb555 = SdlPixelFormatXRgb1555;
 
         /// <summary>
         ///     The sdl packed layout 1555
         /// </summary>
-        private static readonly uint SdlPixelFormatXBgr1555 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypeIndex1,
-                (uint) SdlBitmapOrder.SdlBitMapOrder4321,
-                SdlPackedLayout.SdlPackedlayout1555,
-                15, 2
-            );
+        private static readonly uint SdlPixelFormatXBgr1555 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypeIndex1, (uint) SdlBitmapOrder.SdlBitMapOrder4321, SdlPackedLayout.SdlPackedlayout1555, 15, 2);
 
         /// <summary>
         ///     The sdl pixel format xbgr1555
         /// </summary>
-        public static readonly uint SdlPixelFormatBgr555 =
-            SdlPixelFormatXBgr1555;
+        public static readonly uint SdlPixelFormatBgr555 = SdlPixelFormatXBgr1555;
 
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        public static readonly uint SdlPixelFormatArgb4444 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked16,
-                (uint) SdlPackedOrder.SdlPackedorderArgb,
-                SdlPackedLayout.SdlPackedlayout4444,
-                16, 2
-            );
+        public static readonly uint SdlPixelFormatArgb4444 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderArgb, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
+        
+        /// <summary>
+        ///     The sdl packed layout 4444
+        /// </summary>
+        public static readonly uint SdlPixelFormatRgba4444 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderRgba, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        public static readonly uint SdlPixelFormatRgba4444 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked16,
-                (uint) SdlPackedOrder.SdlPackedorderRgba,
-                SdlPackedLayout.SdlPackedlayout4444,
-                16, 2
-            );
+        public static readonly uint SdlPixelFormatABgr4444 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderAbgr, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        public static readonly uint SdlPixelFormatABgr4444 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked16,
-                (uint) SdlPackedOrder.SdlPackedorderAbgr,
-                SdlPackedLayout.SdlPackedlayout4444,
-                16, 2
-            );
-
-        /// <summary>
-        ///     The sdl packed layout 4444
-        /// </summary>
-        public static readonly uint SdlPixelFormatBGra4444 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked16,
-                (uint) SdlPackedOrder.SdlPackedorderBgra,
-                SdlPackedLayout.SdlPackedlayout4444,
-                16, 2
-            );
+        public static readonly uint SdlPixelFormatBGra4444 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderBgra, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 1555
         /// </summary>
-        public static readonly uint SdlPixelFormatArgb1555 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked16,
-                (uint) SdlPackedOrder.SdlPackedorderArgb,
-                SdlPackedLayout.SdlPackedlayout1555,
-                16, 2
-            );
+        public static readonly uint SdlPixelFormatArgb1555 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderArgb, SdlPackedLayout.SdlPackedlayout1555, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 5551
         /// </summary>
-        public static readonly uint SdlPixelFormatRgba5551 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked16,
-                (uint) SdlPackedOrder.SdlPackedorderRgba,
-                SdlPackedLayout.SdlPackedlayout5551,
-                16, 2
-            );
+        public static readonly uint SdlPixelFormatRgba5551 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderRgba, SdlPackedLayout.SdlPackedlayout5551, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 1555
         /// </summary>
-        public static readonly uint SdlPixelFormatABgr1555 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked16,
-                (uint) SdlPackedOrder.SdlPackedorderAbgr,
-                SdlPackedLayout.SdlPackedlayout1555,
-                16, 2
-            );
+        public static readonly uint SdlPixelFormatABgr1555 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderAbgr, SdlPackedLayout.SdlPackedlayout1555, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 5551
         /// </summary>
-        public static readonly uint SdlPixelFormatBGra5551 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked16,
-                (uint) SdlPackedOrder.SdlPackedorderBgra,
-                SdlPackedLayout.SdlPackedlayout5551,
-                16, 2
-            );
+        public static readonly uint SdlPixelFormatBGra5551 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderBgra, SdlPackedLayout.SdlPackedlayout5551, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 565
         /// </summary>
-        public static readonly uint SdlPixelFormatRgb565 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked16,
-                (uint) SdlPackedOrder.SdlPackedorderXrgb,
-                SdlPackedLayout.SdlPackedlayout565,
-                16, 2
-            );
+        public static readonly uint SdlPixelFormatRgb565 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout565, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 565
         /// </summary>
-        public static readonly uint SdlPixelFormatBgr565 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked16,
-                (uint) SdlPackedOrder.SdlPackedorderXbgr,
-                SdlPackedLayout.SdlPackedlayout565,
-                16, 2
-            );
+        public static readonly uint SdlPixelFormatBgr565 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked16, (uint) SdlPackedOrder.SdlPackedorderXbgr, SdlPackedLayout.SdlPackedlayout565, 16, 2);
 
         /// <summary>
         ///     The sdl array order rgb
         /// </summary>
-        public static readonly uint SdlPixelFormatRgb24 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypeArrayu8,
-                (uint) SdlArrayOrder.SdlArrayorderRgb,
-                0,
-                24, 3
-            );
+        public static readonly uint SdlPixelFormatRgb24 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypeArrayu8, (uint) SdlArrayOrder.SdlArrayorderRgb, 0, 24, 3);
 
         /// <summary>
         ///     The sdl array order bgr
         /// </summary>
-        public static readonly uint SdlPixelFormatBgr24 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypeArrayu8,
-                (uint) SdlArrayOrder.SdlArrayorderBgr,
-                0,
-                24, 3
-            );
+        public static readonly uint SdlPixelFormatBgr24 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypeArrayu8, (uint) SdlArrayOrder.SdlArrayorderBgr, 0, 24, 3);
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        private static readonly uint SdlPixelFormatXRgb888 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked32,
-                (uint) SdlPackedOrder.SdlPackedorderXrgb,
-                SdlPackedLayout.SdlPackedlayout8888,
-                24, 4
-            );
+        private static readonly uint SdlPixelFormatXRgb888 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked32, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
 
         /// <summary>
         ///     The sdl pixel format x rgb 888
         /// </summary>
-        public static readonly uint SdlPixelFormatRgb888 =
-            SdlPixelFormatXRgb888;
+        public static readonly uint SdlPixelFormatRgb888 = SdlPixelFormatXRgb888;
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint SdlPixelFormatRgbX8888 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked32,
-                (uint) SdlPackedOrder.SdlPackedorderRgbx,
-                SdlPackedLayout.SdlPackedlayout8888,
-                24, 4
-            );
+        public static readonly uint SdlPixelFormatRgbX8888 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked32, (uint) SdlPackedOrder.SdlPackedorderRgbx, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        private static readonly uint SdlPixelFormatXBgr888 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked32,
-                (uint) SdlPackedOrder.SdlPackedorderXbgr,
-                SdlPackedLayout.SdlPackedlayout8888,
-                24, 4
-            );
+        private static readonly uint SdlPixelFormatXBgr888 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked32, (uint) SdlPackedOrder.SdlPackedorderXbgr, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
 
         /// <summary>
         ///     The sdl pixel format x bgr 888
         /// </summary>
-        public static readonly uint SdlPixelFormatBgr888 =
-            SdlPixelFormatXBgr888;
+        public static readonly uint SdlPixelFormatBgr888 = SdlPixelFormatXBgr888;
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint SdlPixelFormatBGrx8888 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked32,
-                (uint) SdlPackedOrder.SdlPackedorderBgrx,
-                SdlPackedLayout.SdlPackedlayout8888,
-                24, 4
-            );
+        public static readonly uint SdlPixelFormatBGrx8888 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked32, (uint) SdlPackedOrder.SdlPackedorderBgrx, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint SdlPixelFormatArgb8888 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked32,
-                (uint) SdlPackedOrder.SdlPackedorderArgb,
-                SdlPackedLayout.SdlPackedlayout8888,
-                32, 4
-            );
+        public static readonly uint SdlPixelFormatArgb8888 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked32, (uint) SdlPackedOrder.SdlPackedorderArgb, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint SdlPixelFormatRgba8888 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked32,
-                (uint) SdlPackedOrder.SdlPackedorderRgba,
-                SdlPackedLayout.SdlPackedlayout8888,
-                32, 4
-            );
+        public static readonly uint SdlPixelFormatRgba8888 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked32, (uint) SdlPackedOrder.SdlPackedorderRgba, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint SdlPixelFormatABgr8888 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked32,
-                (uint) SdlPackedOrder.SdlPackedorderAbgr,
-                SdlPackedLayout.SdlPackedlayout8888,
-                32, 4
-            );
+        public static readonly uint SdlPixelFormatABgr8888 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked32, (uint) SdlPackedOrder.SdlPackedorderAbgr, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint SdlPixelFormatB8888 =
-            SdlDefinePixelFormat(
-                Enums.SdlPixelType.SdlPixeltypePacked32,
-                (uint) SdlPackedOrder.SdlPackedorderBgra,
-                SdlPackedLayout.SdlPackedlayout8888,
-                32, 4
-            );
+        public static readonly uint SdlPixelFormatB8888 = SdlDefinePixelFormat(Enums.SdlPixelType.SdlPixeltypePacked32, (uint) SdlPackedOrder.SdlPackedorderBgra, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
 
         /// <summary>
         ///     The sdl packed layout 2101010
@@ -1627,87 +1433,6 @@ namespace Alis.Core.Graphic.SDL
         public static readonly ushort AudioF32Sys = BitConverter.IsLittleEndian ? AudioF32Lsb : AudioF32Msb;
 
         /// <summary>
-        ///     Utf the 8 size using the specified str
-        /// </summary>
-        /// <param name="str">The str</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        internal static int Utf8Size([NotNull] string str) => str.Validate().Length * 4 + 1;
-
-        /// <summary>
-        ///     Utf the 8 encode using the specified str
-        /// </summary>
-        /// <param name="str">The str</param>
-        /// <param name="buffer">The buffer</param>
-        /// <param name="bufferSize">The buffer size</param>
-        /// <returns>The buffer</returns>
-        [return: NotNull]
-        internal static byte[] Utf8Encode([NotNull] string str, [NotNull] byte[] buffer, [NotNull] int bufferSize)
-        {
-            Encoding.UTF8.GetBytes(str.Validate(), 0, str.Validate().Length, buffer, 0);
-            buffer[str.Length] = 0;
-            return buffer;
-        }
-
-        /// <summary>
-        ///     Utf the 8 encode heap using the specified str
-        /// </summary>
-        /// <param name="str">The str</param>
-        /// <returns>The buffer</returns>
-        internal static byte[] Utf8EncodeHeap(string str)
-        {
-            if (str == null)
-            {
-                return null;
-            }
-
-            int bufferSize = Encoding.UTF8.GetByteCount(str) + 1;
-            byte[] buffer = new byte[bufferSize];
-            Encoding.UTF8.GetBytes(str, 0, str.Length, buffer, 0);
-            buffer[bufferSize - 1] = 0; // Null-terminate the string
-
-            return buffer;
-        }
-
-
-        /// <summary>
-        ///     Utf the 8 to managed using the specified s
-        /// </summary>
-        /// <param name="s">The </param>
-        /// <param name="freePtr">The free ptr</param>
-        /// <returns>The result</returns>
-        public static string Utf8ToManaged(IntPtr s, bool freePtr = false)
-        {
-            if (s == IntPtr.Zero)
-            {
-                return null;
-            }
-
-            int len = 0;
-            while (Marshal.ReadByte(s, len) != 0)
-            {
-                len++;
-            }
-
-            if (len == 0)
-            {
-                return string.Empty;
-            }
-
-            byte[] bytes = new byte[len];
-            Marshal.Copy(s, bytes, 0, len);
-            string result = Encoding.UTF8.GetString(bytes);
-
-            if (freePtr)
-            {
-                SDL_free(s);
-            }
-
-            return result;
-        }
-
-
-        /// <summary>
         ///     Sdl the fourcc using the specified a
         /// </summary>
         /// <param name="a">The </param>
@@ -1730,7 +1455,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="memBlock">The mem block</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        private static extern void SDL_free(IntPtr memBlock);
+        internal static extern void SDL_free(IntPtr memBlock);
 
         /// <summary>
         ///     Sdl the mem cpy using the specified dst
@@ -1766,8 +1491,8 @@ namespace Alis.Core.Graphic.SDL
             string mode
         )
         {
-            byte[] utf8File = Utf8EncodeHeap(file);
-            byte[] utf8Mode = Utf8EncodeHeap(mode);
+            byte[] utf8File = Utf8Manager.Utf8EncodeHeap(file);
+            byte[] utf8Mode = Utf8Manager.Utf8EncodeHeap(mode);
             IntPtr rwOps = INTERNAL_SDL_RWFromFile(
                 utf8File,
                 utf8Mode
@@ -2029,7 +1754,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The result</returns>
         public static IntPtr SDL_LoadFile(string file, out IntPtr dataSize)
         {
-            byte[] utf8File = Utf8EncodeHeap(file);
+            byte[] utf8File = Utf8Manager.Utf8EncodeHeap(file);
             IntPtr result = INTERNAL_SDL_LoadFile(utf8File, out dataSize);
             return result;
         }
@@ -2115,7 +1840,7 @@ namespace Alis.Core.Graphic.SDL
         ///     Sdl the get platform
         /// </summary>
         /// <returns>The string</returns>
-        public static string SDL_GetPlatform() => Utf8ToManaged(INTERNAL_SDL_GetPlatform());
+        public static string SDL_GetPlatform() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetPlatform());
 
         /// <summary>
         ///     Sdl the clear hints
@@ -2138,11 +1863,10 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The string</returns>
         public static string SDL_GetHint(string name)
         {
-            int utf8NameBufSize = Utf8Size(name);
+            int utf8NameBufSize = Utf8Manager.Utf8Size(name);
             byte[] utf8Name = new byte[utf8NameBufSize];
-            return Utf8ToManaged(
-                INTERNAL_SDL_GetHint(
-                    Utf8Encode(name, utf8Name, utf8NameBufSize)
+            return Utf8Manager.Utf8ToManaged(
+                INTERNAL_SDL_GetHint(Utf8Manager.Utf8Encode(name, utf8Name, utf8NameBufSize)
                 )
             );
         }
@@ -2154,10 +1878,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="value">The value</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetHint", CallingConvention = CallingConvention.Cdecl)]
-        private static extern SdlBool INTERNAL_SDL_SetHint(
-            byte[] name,
-            byte[] value
-        );
+        private static extern SdlBool INTERNAL_SDL_SetHint(byte[] name, byte[] value);
 
         /// <summary>
         ///     Sdl the set hint using the specified name
@@ -2167,15 +1888,13 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         public static SdlBool SDL_SetHint(string name, string value)
         {
-            int utf8NameBufSize = Utf8Size(name);
+            int utf8NameBufSize = Utf8Manager.Utf8Size(name);
             byte[] utf8Name = new byte[utf8NameBufSize];
 
-            int utf8ValueBufSize = Utf8Size(value);
+            int utf8ValueBufSize = Utf8Manager.Utf8Size(value);
             byte[] utf8Value = new byte[utf8ValueBufSize];
 
-            return INTERNAL_SDL_SetHint(
-                Utf8Encode(name, utf8Name, utf8NameBufSize),
-                Utf8Encode(value, utf8Value, utf8ValueBufSize)
+            return INTERNAL_SDL_SetHint(Utf8Manager.Utf8Encode(name, utf8Name, utf8NameBufSize), Utf8Manager.Utf8Encode(value, utf8Value, utf8ValueBufSize)
             );
         }
 
@@ -2206,15 +1925,13 @@ namespace Alis.Core.Graphic.SDL
             SdlHintPriority priority
         )
         {
-            int utf8NameBufSize = Utf8Size(name);
+            int utf8NameBufSize = Utf8Manager.Utf8Size(name);
             byte[] utf8Name = new byte[utf8NameBufSize];
 
-            int utf8ValueBufSize = Utf8Size(value);
+            int utf8ValueBufSize = Utf8Manager.Utf8Size(value);
             byte[] utf8Value = new byte[utf8ValueBufSize];
 
-            return INTERNAL_SDL_SetHintWithPriority(
-                Utf8Encode(name, utf8Name, utf8NameBufSize),
-                Utf8Encode(value, utf8Value, utf8ValueBufSize),
+            return INTERNAL_SDL_SetHintWithPriority(Utf8Manager.Utf8Encode(name, utf8Name, utf8NameBufSize), Utf8Manager.Utf8Encode(value, utf8Value, utf8ValueBufSize),
                 priority
             );
         }
@@ -2243,10 +1960,9 @@ namespace Alis.Core.Graphic.SDL
             SdlBool defaultValue
         )
         {
-            int utf8NameBufSize = Utf8Size(name);
+            int utf8NameBufSize = Utf8Manager.Utf8Size(name);
             byte[] utf8Name = new byte[utf8NameBufSize];
-            return INTERNAL_SDL_GetHintBoolean(
-                Utf8Encode(name, utf8Name, utf8NameBufSize),
+            return INTERNAL_SDL_GetHintBoolean(Utf8Manager.Utf8Encode(name, utf8Name, utf8NameBufSize),
                 defaultValue
             );
         }
@@ -2268,7 +1984,7 @@ namespace Alis.Core.Graphic.SDL
         ///     Sdl the get error
         /// </summary>
         /// <returns>The string</returns>
-        public static string SDL_GetError() => Utf8ToManaged(INTERNAL_SDL_GetError());
+        public static string SDL_GetError() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetError());
 
 
         /// <summary>
@@ -2284,8 +2000,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         public static void SDL_SetError(string fmtAndArgList)
         {
-            INTERNAL_SDL_SetError(
-                Utf8Encode(fmtAndArgList, new byte[Utf8Size(fmtAndArgList)], Utf8Size(fmtAndArgList))
+            INTERNAL_SDL_SetError(Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList))
             );
         }
 
@@ -2313,8 +2028,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         public static void SDL_Log(string fmtAndArgList)
         {
-            INTERNAL_SDL_Log(
-                Utf8Encode(fmtAndArgList, new byte[Utf8Size(fmtAndArgList)], Utf8Size(fmtAndArgList))
+            INTERNAL_SDL_Log(Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList))
             );
         }
 
@@ -2340,11 +2054,10 @@ namespace Alis.Core.Graphic.SDL
             string fmtAndArgList
         )
         {
-            int utf8FmtAndArgListBufSize = Utf8Size(fmtAndArgList);
+            int utf8FmtAndArgListBufSize = Utf8Manager.Utf8Size(fmtAndArgList);
             byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
             INTERNAL_SDL_LogVerbose(
-                category,
-                Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
+                category, Utf8Manager.Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
 
@@ -2370,11 +2083,10 @@ namespace Alis.Core.Graphic.SDL
             string fmtAndArgList
         )
         {
-            int utf8FmtAndArgListBufSize = Utf8Size(fmtAndArgList);
+            int utf8FmtAndArgListBufSize = Utf8Manager.Utf8Size(fmtAndArgList);
             byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
             INTERNAL_SDL_LogDebug(
-                category,
-                Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
+                category, Utf8Manager.Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
 
@@ -2400,11 +2112,10 @@ namespace Alis.Core.Graphic.SDL
             string fmtAndArgList
         )
         {
-            int utf8FmtAndArgListBufSize = Utf8Size(fmtAndArgList);
+            int utf8FmtAndArgListBufSize = Utf8Manager.Utf8Size(fmtAndArgList);
             byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
             INTERNAL_SDL_LogInfo(
-                category,
-                Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
+                category, Utf8Manager.Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
 
@@ -2430,11 +2141,10 @@ namespace Alis.Core.Graphic.SDL
             string fmtAndArgList
         )
         {
-            int utf8FmtAndArgListBufSize = Utf8Size(fmtAndArgList);
+            int utf8FmtAndArgListBufSize = Utf8Manager.Utf8Size(fmtAndArgList);
             byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
             INTERNAL_SDL_LogWarn(
-                category,
-                Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
+                category, Utf8Manager.Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
 
@@ -2460,11 +2170,10 @@ namespace Alis.Core.Graphic.SDL
             string fmtAndArgList
         )
         {
-            int utf8FmtAndArgListBufSize = Utf8Size(fmtAndArgList);
+            int utf8FmtAndArgListBufSize = Utf8Manager.Utf8Size(fmtAndArgList);
             byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
             INTERNAL_SDL_LogError(
-                category,
-                Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
+                category, Utf8Manager.Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
 
@@ -2490,11 +2199,10 @@ namespace Alis.Core.Graphic.SDL
             string fmtAndArgList
         )
         {
-            int utf8FmtAndArgListBufSize = Utf8Size(fmtAndArgList);
+            int utf8FmtAndArgListBufSize = Utf8Manager.Utf8Size(fmtAndArgList);
             byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
             INTERNAL_SDL_LogCritical(
-                category,
-                Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
+                category, Utf8Manager.Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
 
@@ -2524,12 +2232,11 @@ namespace Alis.Core.Graphic.SDL
             string fmtAndArgList
         )
         {
-            int utf8FmtAndArgListBufSize = Utf8Size(fmtAndArgList);
+            int utf8FmtAndArgListBufSize = Utf8Manager.Utf8Size(fmtAndArgList);
             byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
             INTERNAL_SDL_LogMessage(
                 category,
-                priority,
-                Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
+                priority, Utf8Manager.Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
 
@@ -2559,12 +2266,11 @@ namespace Alis.Core.Graphic.SDL
             string fmtAndArgList
         )
         {
-            int utf8FmtAndArgListBufSize = Utf8Size(fmtAndArgList);
+            int utf8FmtAndArgListBufSize = Utf8Manager.Utf8Size(fmtAndArgList);
             byte[] utf8FmtAndArgList = new byte[utf8FmtAndArgListBufSize];
             INTERNAL_SDL_LogMessageV(
                 category,
-                priority,
-                Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
+                priority, Utf8Manager.Utf8Encode(fmtAndArgList, utf8FmtAndArgList, utf8FmtAndArgListBufSize)
             );
         }
 
@@ -2790,16 +2496,14 @@ namespace Alis.Core.Graphic.SDL
             IntPtr window
         )
         {
-            int utf8TitleBufSize = Utf8Size(title);
+            int utf8TitleBufSize = Utf8Manager.Utf8Size(title);
             byte[] utf8Title = new byte[utf8TitleBufSize];
 
-            int utf8MessageBufSize = Utf8Size(message);
+            int utf8MessageBufSize = Utf8Manager.Utf8Size(message);
             byte[] utf8Message = new byte[utf8MessageBufSize];
 
             return INTERNAL_SDL_ShowSimpleMessageBox(
-                flags,
-                Utf8Encode(title, utf8Title, utf8TitleBufSize),
-                Utf8Encode(message, utf8Message, utf8MessageBufSize),
+                flags, Utf8Manager.Utf8Encode(title, utf8Title, utf8TitleBufSize), Utf8Manager.Utf8Encode(message, utf8Message, utf8MessageBufSize),
                 window
             );
         }
@@ -2851,7 +2555,7 @@ namespace Alis.Core.Graphic.SDL
         ///     Sdl the get revision
         /// </summary>
         /// <returns>The string</returns>
-        public static string SDL_GetRevision() => Utf8ToManaged(INTERNAL_SDL_GetRevision());
+        public static string SDL_GetRevision() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetRevision());
 
         /// <summary>
         ///     Sdl the get revision number
@@ -2920,10 +2624,9 @@ namespace Alis.Core.Graphic.SDL
             SdlWindowFlags flags
         )
         {
-            int utf8TitleBufSize = Utf8Size(title);
+            int utf8TitleBufSize = Utf8Manager.Utf8Size(title);
             byte[] utf8Title = new byte[utf8TitleBufSize];
-            return INTERNAL_SDL_CreateWindow(
-                Utf8Encode(title, utf8Title, utf8TitleBufSize),
+            return INTERNAL_SDL_CreateWindow(Utf8Manager.Utf8Encode(title, utf8Title, utf8TitleBufSize),
                 x, y, w, h,
                 flags
             );
@@ -3015,7 +2718,7 @@ namespace Alis.Core.Graphic.SDL
         ///     Sdl the get current video driver
         /// </summary>
         /// <returns>The string</returns>
-        public static string SDL_GetCurrentVideoDriver() => Utf8ToManaged(INTERNAL_SDL_GetCurrentVideoDriver());
+        public static string SDL_GetCurrentVideoDriver() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetCurrentVideoDriver());
 
         /// <summary>
         ///     Sdl the get desktop display mode using the specified display index
@@ -3042,7 +2745,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The string</returns>
-        public static string SDL_GetDisplayName(int index) => Utf8ToManaged(INTERNAL_SDL_GetDisplayName(index));
+        public static string SDL_GetDisplayName(int index) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetDisplayName(index));
 
         /// <summary>
         ///     Sdl the get display bounds using the specified display index
@@ -3150,7 +2853,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The string</returns>
-        public static string SDL_GetVideoDriver(int index) => Utf8ToManaged(INTERNAL_SDL_GetVideoDriver(index));
+        public static string SDL_GetVideoDriver(int index) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetVideoDriver(index));
 
 
         /// <summary>
@@ -3235,11 +2938,10 @@ namespace Alis.Core.Graphic.SDL
             string name
         )
         {
-            int utf8NameBufSize = Utf8Size(name);
+            int utf8NameBufSize = Utf8Manager.Utf8Size(name);
             byte[] utf8Name = new byte[utf8NameBufSize];
             return INTERNAL_SDL_GetWindowData(
-                window,
-                Utf8Encode(name, utf8Name, utf8NameBufSize)
+                window, Utf8Manager.Utf8Encode(name, utf8Name, utf8NameBufSize)
             );
         }
 
@@ -3446,7 +3148,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The string</returns>
-        public static string SDL_GetWindowTitle(IntPtr window) => Utf8ToManaged(
+        public static string SDL_GetWindowTitle(IntPtr window) => Utf8Manager.Utf8ToManaged(
             INTERNAL_SDL_GetWindowTitle(window)
         );
 
@@ -3497,7 +3199,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The result</returns>
         public static int SDL_GL_LoadLibrary(string path)
         {
-            byte[] utf8Path = Utf8EncodeHeap(path);
+            byte[] utf8Path = Utf8Manager.Utf8EncodeHeap(path);
             int result = INTERNAL_SDL_GL_LoadLibrary(
                 utf8Path
             );
@@ -3521,10 +3223,9 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         public static IntPtr SDL_GL_GetProcAddress(string proc)
         {
-            int utf8ProcBufSize = Utf8Size(proc);
+            int utf8ProcBufSize = Utf8Manager.Utf8Size(proc);
             byte[] utf8Proc = new byte[utf8ProcBufSize];
-            return SDL_GL_GetProcAddress(
-                Utf8Encode(proc, utf8Proc, utf8ProcBufSize)
+            return SDL_GL_GetProcAddress(Utf8Manager.Utf8Encode(proc, utf8Proc, utf8ProcBufSize)
             );
         }
 
@@ -3551,10 +3252,9 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         public static SdlBool SDL_GL_ExtensionSupported(string extension)
         {
-            int utf8ExtensionBufSize = Utf8Size(extension);
+            int utf8ExtensionBufSize = Utf8Manager.Utf8Size(extension);
             byte[] utf8Extension = new byte[utf8ExtensionBufSize];
-            return INTERNAL_SDL_GL_ExtensionSupported(
-                Utf8Encode(extension, utf8Extension, utf8ExtensionBufSize)
+            return INTERNAL_SDL_GL_ExtensionSupported(Utf8Manager.Utf8Encode(extension, utf8Extension, utf8ExtensionBufSize)
             );
         }
 
@@ -3764,11 +3464,10 @@ namespace Alis.Core.Graphic.SDL
             IntPtr userdata
         )
         {
-            int utf8NameBufSize = Utf8Size(name);
+            int utf8NameBufSize = Utf8Manager.Utf8Size(name);
             byte[] utf8Name = new byte[utf8NameBufSize];
             return INTERNAL_SDL_SetWindowData(
-                window,
-                Utf8Encode(name, utf8Name, utf8NameBufSize),
+                window, Utf8Manager.Utf8Encode(name, utf8Name, utf8NameBufSize),
                 userdata
             );
         }
@@ -4013,11 +3712,10 @@ namespace Alis.Core.Graphic.SDL
             string title
         )
         {
-            int utf8TitleBufSize = Utf8Size(title);
+            int utf8TitleBufSize = Utf8Manager.Utf8Size(title);
             byte[] utf8Title = new byte[utf8TitleBufSize];
             INTERNAL_SDL_SetWindowTitle(
-                window,
-                Utf8Encode(title, utf8Title, utf8TitleBufSize)
+                window, Utf8Manager.Utf8Encode(title, utf8Title, utf8TitleBufSize)
             );
         }
 
@@ -4070,10 +3768,9 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         public static int SDL_VideoInit(string driverName)
         {
-            int utf8DriverNameBufSize = Utf8Size(driverName);
+            int utf8DriverNameBufSize = Utf8Manager.Utf8Size(driverName);
             byte[] utf8DriverName = new byte[utf8DriverNameBufSize];
-            return INTERNAL_SDL_VideoInit(
-                Utf8Encode(driverName, utf8DriverName, utf8DriverNameBufSize)
+            return INTERNAL_SDL_VideoInit(Utf8Manager.Utf8Encode(driverName, utf8DriverName, utf8DriverNameBufSize)
             );
         }
 
@@ -4194,7 +3891,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The result</returns>
         public static int SDL_Vulkan_LoadLibrary(string path)
         {
-            byte[] utf8Path = Utf8EncodeHeap(path);
+            byte[] utf8Path = Utf8Manager.Utf8EncodeHeap(path);
             int result = INTERNAL_SDL_Vulkan_LoadLibrary(
                 utf8Path
             );
@@ -6036,7 +5733,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="format">The format</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GetPixelFormatName(uint format) => Utf8ToManaged(INTERNAL_SDL_GetPixelFormatName(format));
+        public static string SDL_GetPixelFormatName(uint format) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetPixelFormatName(format));
 
         /// <summary>
         ///     Sdl the get rgb using the specified pixel
@@ -6798,7 +6495,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GetClipboardText() => Utf8ToManaged(INTERNAL_SDL_GetClipboardText(), true);
+        public static string SDL_GetClipboardText() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetClipboardText(), true);
 
         /// <summary>
         ///     Internals the sdl set clipboard text using the specified text
@@ -6819,7 +6516,7 @@ namespace Alis.Core.Graphic.SDL
             string text
         )
         {
-            byte[] utf8Text = Utf8EncodeHeap(text);
+            byte[] utf8Text = Utf8Manager.Utf8EncodeHeap(text);
             int result = INTERNAL_SDL_SetClipboardText(
                 utf8Text
             );
@@ -7094,7 +6791,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="scancode">The scancode</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GetScancodeName(SdlScancode scancode) => Utf8ToManaged(INTERNAL_SDL_GetScancodeName(scancode));
+        public static string SDL_GetScancodeName(SdlScancode scancode) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetScancodeName(scancode));
 
         /// <summary>
         ///     Internals the sdl get scancode from name using the specified name
@@ -7111,7 +6808,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="name">The name</param>
         /// <returns>The sdl scancode</returns>
         [return: NotNull]
-        public static SdlScancode SDL_GetScancodeFromName(string name) => INTERNAL_SDL_GetScancodeFromName(Utf8Encode(name, new byte[Utf8Size(name)], Utf8Size(name)));
+        public static SdlScancode SDL_GetScancodeFromName(string name) => INTERNAL_SDL_GetScancodeFromName(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)));
 
         /// <summary>
         ///     Internals the sdl get key name using the specified key
@@ -7128,7 +6825,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="key">The key</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GetKeyName(SdlKeycode key) => Utf8ToManaged(INTERNAL_SDL_GetKeyName(key));
+        public static string SDL_GetKeyName(SdlKeycode key) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetKeyName(key));
 
         /// <summary>
         ///     Internals the sdl get key from name using the specified name
@@ -7145,7 +6842,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="name">The name</param>
         /// <returns>The sdl keycode</returns>
         [return: NotNull]
-        public static SdlKeycode SDL_GetKeyFromName(string name) => INTERNAL_SDL_GetKeyFromName(Utf8Encode(name, new byte[Utf8Size(name)], Utf8Size(name)));
+        public static SdlKeycode SDL_GetKeyFromName(string name) => INTERNAL_SDL_GetKeyFromName(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)));
 
         /// <summary>
         ///     Sdl the start text input
@@ -7567,7 +7264,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="joystick">The joystick</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_JoystickName(IntPtr joystick) => Utf8ToManaged(INTERNAL_SDL_JoystickName(joystick));
+        public static string SDL_JoystickName(IntPtr joystick) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_JoystickName(joystick));
 
         /// <summary>
         ///     Internals the sdl joystick name for index using the specified device index
@@ -7584,7 +7281,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_JoystickNameForIndex(int deviceIndex) => Utf8ToManaged(INTERNAL_SDL_JoystickNameForIndex(deviceIndex));
+        public static string SDL_JoystickNameForIndex(int deviceIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_JoystickNameForIndex(deviceIndex));
 
         /// <summary>
         ///     Sdl the joystick num axes using the specified joystick
@@ -7689,7 +7386,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pchGuid">The pch guid</param>
         /// <returns>The guid</returns>
         [return: NotNull]
-        public static Guid SDL_JoystickGetGUIDFromString(string pchGuid) => INTERNAL_SDL_JoystickGetGUIDFromString(Utf8Encode(pchGuid, new byte[Utf8Size(pchGuid)], Utf8Size(pchGuid)));
+        public static Guid SDL_JoystickGetGUIDFromString(string pchGuid) => INTERNAL_SDL_JoystickGetGUIDFromString(Utf8Manager.Utf8Encode(pchGuid, new byte[Utf8Manager.Utf8Size(pchGuid)], Utf8Manager.Utf8Size(pchGuid)));
 
         /// <summary>
         ///     Sdl the joystick get device vendor using the specified device index
@@ -7778,7 +7475,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="joystick">The joystick</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_JoystickGetSerial(IntPtr joystick) => Utf8ToManaged(INTERNAL_SDL_JoystickGetSerial(joystick));
+        public static string SDL_JoystickGetSerial(IntPtr joystick) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_JoystickGetSerial(joystick));
 
         /// <summary>
         ///     Sdl the joystick get type using the specified joystick
@@ -7996,7 +7693,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="mappingString">The mapping string</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static int SDL_GameControllerAddMapping(string mappingString) => INTERNAL_SDL_GameControllerAddMapping(Utf8EncodeHeap(mappingString));
+        public static int SDL_GameControllerAddMapping(string mappingString) => INTERNAL_SDL_GameControllerAddMapping(Utf8Manager.Utf8EncodeHeap(mappingString));
 
         /// <summary>
         ///     Sdl the game controller num mappings
@@ -8021,7 +7718,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="mappingIndex">The mapping index</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerMappingForIndex(int mappingIndex) => Utf8ToManaged(INTERNAL_SDL_GameControllerMappingForIndex(mappingIndex), true);
+        public static string SDL_GameControllerMappingForIndex(int mappingIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerMappingForIndex(mappingIndex), true);
 
         /// <summary>
         ///     Internals the sdl game controller add mappings from rw using the specified rw
@@ -8056,7 +7753,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="guid">The guid</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerMappingForGUID(Guid guid) => Utf8ToManaged(INTERNAL_SDL_GameControllerMappingForGUID(guid), true);
+        public static string SDL_GameControllerMappingForGUID(Guid guid) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerMappingForGUID(guid), true);
 
         /// <summary>
         ///     Internals the sdl game controller mapping using the specified game controller
@@ -8073,7 +7770,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="gameController">The game controller</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerMapping(IntPtr gameController) => Utf8ToManaged(INTERNAL_SDL_GameControllerMapping(gameController), true);
+        public static string SDL_GameControllerMapping(IntPtr gameController) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerMapping(gameController), true);
 
         /// <summary>
         ///     Sdl the is game controller using the specified joystick index
@@ -8099,7 +7796,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerNameForIndex(int joystickIndex) => Utf8ToManaged(INTERNAL_SDL_GameControllerNameForIndex(joystickIndex));
+        public static string SDL_GameControllerNameForIndex(int joystickIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerNameForIndex(joystickIndex));
 
         /// <summary>
         ///     Internals the sdl game controller mapping for device index using the specified joystick index
@@ -8116,7 +7813,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerMappingForDeviceIndex(int joystickIndex) => Utf8ToManaged(INTERNAL_SDL_GameControllerMappingForDeviceIndex(joystickIndex), true);
+        public static string SDL_GameControllerMappingForDeviceIndex(int joystickIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerMappingForDeviceIndex(joystickIndex), true);
 
         /// <summary>
         ///     Sdl the game controller open using the specified joystick index
@@ -8142,7 +7839,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="gameController">The game controller</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerName(IntPtr gameController) => Utf8ToManaged(INTERNAL_SDL_GameControllerName(gameController));
+        public static string SDL_GameControllerName(IntPtr gameController) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerName(gameController));
 
         /// <summary>
         ///     Sdl the game controller get vendor using the specified game controller
@@ -8186,7 +7883,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="gameController">The game controller</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerGetSerial(IntPtr gameController) => Utf8ToManaged(INTERNAL_SDL_GameControllerGetSerial(gameController));
+        public static string SDL_GameControllerGetSerial(IntPtr gameController) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerGetSerial(gameController));
 
         /// <summary>
         ///     Sdl the game controller get attached using the specified game controller
@@ -8237,7 +7934,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller axis</returns>
         [return: NotNull]
-        public static SdlGameControllerAxis SDL_GameControllerGetAxisFromString(string pchString) => INTERNAL_SDL_GameControllerGetAxisFromString(Utf8Encode(pchString, new byte[Utf8Size(pchString)], Utf8Size(pchString)));
+        public static SdlGameControllerAxis SDL_GameControllerGetAxisFromString(string pchString) => INTERNAL_SDL_GameControllerGetAxisFromString(Utf8Manager.Utf8Encode(pchString, new byte[Utf8Manager.Utf8Size(pchString)], Utf8Manager.Utf8Size(pchString)));
 
         /// <summary>
         ///     Internals the sdl game controller get string for axis using the specified axis
@@ -8254,7 +7951,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="axis">The axis</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerGetStringForAxis(SdlGameControllerAxis axis) => Utf8ToManaged(INTERNAL_SDL_GameControllerGetStringForAxis(axis));
+        public static string SDL_GameControllerGetStringForAxis(SdlGameControllerAxis axis) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerGetStringForAxis(axis));
 
         /// <summary>
         ///     Internals the sdl game controller get bind for axis using the specified game controller
@@ -8314,7 +8011,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller button</returns>
         [return: NotNull]
-        public static SdlGameControllerButton SDL_GameControllerGetButtonFromString(string pchString) => INTERNAL_SDL_GameControllerGetButtonFromString(Utf8Encode(pchString, new byte[Utf8Size(pchString)], Utf8Size(pchString)));
+        public static SdlGameControllerButton SDL_GameControllerGetButtonFromString(string pchString) => INTERNAL_SDL_GameControllerGetButtonFromString(Utf8Manager.Utf8Encode(pchString, new byte[Utf8Manager.Utf8Size(pchString)], Utf8Manager.Utf8Size(pchString)));
 
         /// <summary>
         ///     Internals the sdl game controller get string for button using the specified button
@@ -8331,7 +8028,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="button">The button</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerGetStringForButton(SdlGameControllerButton button) => Utf8ToManaged(INTERNAL_SDL_GameControllerGetStringForButton(button));
+        public static string SDL_GameControllerGetStringForButton(SdlGameControllerButton button) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerGetStringForButton(button));
 
         /// <summary>
         ///     Internals the sdl game controller get bind for button using the specified game controller
@@ -8428,7 +8125,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="button">The button</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerGetAppleSFSymbolsNameForButton(IntPtr gameController, SdlGameControllerButton button) => Utf8ToManaged(INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForButton(gameController, button));
+        public static string SDL_GameControllerGetAppleSFSymbolsNameForButton(IntPtr gameController, SdlGameControllerButton button) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForButton(gameController, button));
 
         /// <summary>
         ///     Internals the sdl game controller get apple sf symbols name for axis using the specified game controller
@@ -8447,7 +8144,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="axis">The axis</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerGetAppleSFSymbolsNameForAxis(IntPtr gameController, SdlGameControllerAxis axis) => Utf8ToManaged(INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForAxis(gameController, axis));
+        public static string SDL_GameControllerGetAppleSFSymbolsNameForAxis(IntPtr gameController, SdlGameControllerAxis axis) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForAxis(gameController, axis));
 
         /// <summary>
         ///     Sdl the game controller from instance id using the specified joy id
@@ -8712,7 +8409,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_HapticName(int deviceIndex) => Utf8ToManaged(INTERNAL_SDL_HapticName(deviceIndex));
+        public static string SDL_HapticName(int deviceIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_HapticName(deviceIndex));
 
         /// <summary>
         ///     Sdl the haptic new effect using the specified haptic
@@ -8960,7 +8657,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_SensorGetDeviceName(int deviceIndex) => Utf8ToManaged(INTERNAL_SDL_SensorGetDeviceName(deviceIndex));
+        public static string SDL_SensorGetDeviceName(int deviceIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_SensorGetDeviceName(deviceIndex));
 
         /// <summary>
         ///     Sdl the sensor get device type using the specified device index
@@ -9022,7 +8719,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="sensor">The sensor</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_SensorGetName(IntPtr sensor) => Utf8ToManaged(INTERNAL_SDL_SensorGetName(sensor));
+        public static string SDL_SensorGetName(IntPtr sensor) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_SensorGetName(sensor));
 
         /// <summary>
         ///     Sdl the sensor get type using the specified sensor
@@ -9156,10 +8853,9 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         public static int SDL_AudioInit(string driverName)
         {
-            int utf8DriverNameBufSize = Utf8Size(driverName);
+            int utf8DriverNameBufSize = Utf8Manager.Utf8Size(driverName);
             byte[] utf8DriverName = new byte[utf8DriverNameBufSize];
-            return INTERNAL_SDL_AudioInit(
-                Utf8Encode(driverName, utf8DriverName, utf8DriverNameBufSize)
+            return INTERNAL_SDL_AudioInit(Utf8Manager.Utf8Encode(driverName, utf8DriverName, utf8DriverNameBufSize)
             );
         }
 
@@ -9213,7 +8909,7 @@ namespace Alis.Core.Graphic.SDL
             int index,
             int isCapture
         )
-            => Utf8ToManaged(
+            => Utf8Manager.Utf8ToManaged(
                 INTERNAL_SDL_GetAudioDeviceName(index, isCapture)
             );
 
@@ -9240,7 +8936,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The string</returns>
-        public static string SDL_GetAudioDriver(int index) => Utf8ToManaged(
+        public static string SDL_GetAudioDriver(int index) => Utf8Manager.Utf8ToManaged(
             INTERNAL_SDL_GetAudioDriver(index)
         );
 
@@ -9262,7 +8958,7 @@ namespace Alis.Core.Graphic.SDL
         ///     Sdl the get current audio driver
         /// </summary>
         /// <returns>The string</returns>
-        public static string SDL_GetCurrentAudioDriver() => Utf8ToManaged(INTERNAL_SDL_GetCurrentAudioDriver());
+        public static string SDL_GetCurrentAudioDriver() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetCurrentAudioDriver());
 
         /// <summary>
         ///     Sdl the get num audio devices using the specified is capture
@@ -9467,7 +9163,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="allowedChanges">The allowed changes</param>
         /// <returns>The uint</returns>
         [return: NotNull]
-        public static uint SdlOpenAudioDevice([NotNull]string device, [NotNull]int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, int allowedChanges) => INTERNAL_SDL_OpenAudioDevice(Utf8Encode(device.Validate(), new byte[Utf8Size(device.Validate())], Utf8Size(device.Validate())), isCapture, ref desired, out obtained, allowedChanges);
+        public static uint SdlOpenAudioDevice([NotNull]string device, [NotNull]int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, int allowedChanges) => INTERNAL_SDL_OpenAudioDevice(Utf8Manager.Utf8Encode(device.Validate(), new byte[Utf8Manager.Utf8Size(device.Validate())], Utf8Manager.Utf8Size(device.Validate())), isCapture, ref desired, out obtained, allowedChanges);
 
         /// <summary>
         ///     Sdl the pause audio using the specified pause on
@@ -9950,7 +9646,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SdlAndroidGetInternalStoragePath() => Utf8ToManaged(INTERNAL_SDL_AndroidGetInternalStoragePath());
+        public static string SdlAndroidGetInternalStoragePath() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_AndroidGetInternalStoragePath());
 
         /// <summary>
         ///     Sdl the android get external storage state
@@ -9980,7 +9676,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SdlAndroidGetExternalStoragePath() => Utf8ToManaged(INTERNAL_SDL_AndroidGetExternalStoragePath());
+        public static string SdlAndroidGetExternalStoragePath() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_AndroidGetExternalStoragePath());
 
         /// <summary>
         ///     Sdl the get android sdk version
@@ -10012,7 +9708,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="permission">The permission</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static SdlBool SdlAndroidRequestPermission([NotNull] string permission) => INTERNAL_SDL_AndroidRequestPermission(Utf8EncodeHeap(permission.Validate()));
+        public static SdlBool SdlAndroidRequestPermission([NotNull] string permission) => INTERNAL_SDL_AndroidRequestPermission(Utf8Manager.Utf8EncodeHeap(permission.Validate()));
 
         /// <summary>
         ///     Internals the sdl android show toast using the specified message
@@ -10037,7 +9733,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="yOffset">The offset</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static int SDL_AndroidShowToast([NotNull] string message, [NotNull] int duration, [NotNull] int gravity, [NotNull] int xOffset, [NotNull] int yOffset) => INTERNAL_SDL_AndroidShowToast(Utf8EncodeHeap(message), duration.Validate(), gravity.Validate(), xOffset.Validate(), yOffset.Validate());
+        public static int SDL_AndroidShowToast([NotNull] string message, [NotNull] int duration, [NotNull] int gravity, [NotNull] int xOffset, [NotNull] int yOffset) => INTERNAL_SDL_AndroidShowToast(Utf8Manager.Utf8EncodeHeap(message), duration.Validate(), gravity.Validate(), xOffset.Validate(), yOffset.Validate());
 
         /// <summary>
         ///     Sdl the win rt get device family
@@ -10101,7 +9797,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SdlGetBasePath() => Utf8ToManaged(INTERNAL_SDL_GetBasePath().Validate(), true);
+        public static string SdlGetBasePath() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetBasePath().Validate(), true);
 
         /// <summary>
         ///     Internals the sdl get pref path using the specified org
@@ -10120,7 +9816,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="app">The app</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SdlGetPrefPath([NotNull] string org, [NotNull] string app) => Utf8ToManaged(INTERNAL_SDL_GetPrefPath(Utf8Encode(org.Validate(), new byte[Utf8Size(org.Validate())], Utf8Size(org.Validate())), Utf8Encode(app.Validate(), new byte[Utf8Size(app.Validate())], Utf8Size(app.Validate()))), true);
+        public static string SdlGetPrefPath([NotNull] string org, [NotNull] string app) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetPrefPath(Utf8Manager.Utf8Encode(org.Validate(), new byte[Utf8Manager.Utf8Size(org.Validate())], Utf8Manager.Utf8Size(org.Validate())), Utf8Manager.Utf8Encode(app.Validate(), new byte[Utf8Manager.Utf8Size(app.Validate())], Utf8Manager.Utf8Size(app.Validate()))), true);
 
         /// <summary>
         ///     Sdl the get power info using the specified secs
@@ -10484,6 +10180,6 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="url">The url</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static int SDL_OpenURL([NotNull] string url) => INTERNAL_SDL_OpenURL(Utf8EncodeHeap(url.Validate()));
+        public static int SDL_OpenURL([NotNull] string url) => INTERNAL_SDL_OpenURL(Utf8Manager.Utf8EncodeHeap(url.Validate()));
     }
 }
