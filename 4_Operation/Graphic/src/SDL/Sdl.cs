@@ -1203,12 +1203,12 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 332
         /// </summary>
-        public static readonly uint PixelFormatRgb332 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked8, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout332, 8, 1);
+        public static readonly uint PixelFormatRgb332 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked8, (uint) PackedOrder.PackedOrderXRgb, SdlPackedLayout.SdlPackedlayout332, 8, 1);
 
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        private static readonly uint PixelFormatXRgb444 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout4444, 12, 2);
+        private static readonly uint PixelFormatXRgb444 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) PackedOrder.PackedOrderXRgb, SdlPackedLayout.SdlPackedlayout4444, 12, 2);
         
         /// <summary>
         ///     The sdl pixel format x rgb 444
@@ -1218,7 +1218,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        private static readonly uint PixelFormatXBgr444 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderXbgr, SdlPackedLayout.SdlPackedlayout4444, 12, 2);
+        private static readonly uint PixelFormatXBgr444 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) PackedOrder.PackedOrderXBgr, SdlPackedLayout.SdlPackedlayout4444, 12, 2);
 
         /// <summary>
         ///     The sdl pixel format x bgr 444
@@ -1228,7 +1228,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 1555
         /// </summary>
-        private static readonly uint PixelFormatXRgb1555 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout1555, 15, 2);
+        private static readonly uint PixelFormatXRgb1555 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) PackedOrder.PackedOrderXRgb, SdlPackedLayout.SdlPackedlayout1555, 15, 2);
 
         /// <summary>
         ///     The sdl pixel format xrgb1555
@@ -1248,52 +1248,52 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        public static readonly uint PixelFormatArgb4444 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderArgb, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
+        public static readonly uint PixelFormatArgb4444 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) PackedOrder.PackedOrderARgb, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
         
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        public static readonly uint PixelFormatRgba4444 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderRgba, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
+        public static readonly uint PixelFormatRgba4444 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) PackedOrder.PackedOrderRGba, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        public static readonly uint PixelFormatABgr4444 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderAbgr, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
+        public static readonly uint PixelFormatABgr4444 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) PackedOrder.PackedOrderABgr, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        public static readonly uint PixelFormatBGra4444 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderBgra, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
+        public static readonly uint PixelFormatBGra4444 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) PackedOrder.PackedOrderBGra, SdlPackedLayout.SdlPackedlayout4444, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 1555
         /// </summary>
-        public static readonly uint PixelFormatArgb1555 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderArgb, SdlPackedLayout.SdlPackedlayout1555, 16, 2);
+        public static readonly uint PixelFormatArgb1555 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) PackedOrder.PackedOrderARgb, SdlPackedLayout.SdlPackedlayout1555, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 5551
         /// </summary>
-        public static readonly uint PixelFormatRgba5551 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderRgba, SdlPackedLayout.SdlPackedlayout5551, 16, 2);
+        public static readonly uint PixelFormatRgba5551 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) PackedOrder.PackedOrderRGba, SdlPackedLayout.SdlPackedlayout5551, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 1555
         /// </summary>
-        public static readonly uint PixelFormatABgr1555 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderAbgr, SdlPackedLayout.SdlPackedlayout1555, 16, 2);
+        public static readonly uint PixelFormatABgr1555 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) PackedOrder.PackedOrderABgr, SdlPackedLayout.SdlPackedlayout1555, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 5551
         /// </summary>
-        public static readonly uint PixelFormatBGra5551 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderBgra, SdlPackedLayout.SdlPackedlayout5551, 16, 2);
+        public static readonly uint PixelFormatBGra5551 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) PackedOrder.PackedOrderBGra, SdlPackedLayout.SdlPackedlayout5551, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 565
         /// </summary>
-        public static readonly uint PixelFormatRgb565 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout565, 16, 2);
+        public static readonly uint PixelFormatRgb565 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) PackedOrder.PackedOrderXRgb, SdlPackedLayout.SdlPackedlayout565, 16, 2);
 
         /// <summary>
         ///     The sdl packed layout 565
         /// </summary>
-        public static readonly uint PixelFormatBgr565 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) SdlPackedOrder.SdlPackedorderXbgr, SdlPackedLayout.SdlPackedlayout565, 16, 2);
+        public static readonly uint PixelFormatBgr565 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked16, (uint) PackedOrder.PackedOrderXBgr, SdlPackedLayout.SdlPackedlayout565, 16, 2);
 
         /// <summary>
         ///     The sdl array order rgb
@@ -1308,7 +1308,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        private static readonly uint PixelFormatXRgb888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) SdlPackedOrder.SdlPackedorderXrgb, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
+        private static readonly uint PixelFormatXRgb888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) PackedOrder.PackedOrderXRgb, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
 
         /// <summary>
         ///     The sdl pixel format x rgb 888
@@ -1318,12 +1318,12 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint PixelFormatRgbX8888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) SdlPackedOrder.SdlPackedorderRgbx, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
+        public static readonly uint PixelFormatRgbX8888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) PackedOrder.PackedOrderRGbx, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        private static readonly uint PixelFormatXBgr888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) SdlPackedOrder.SdlPackedorderXbgr, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
+        private static readonly uint PixelFormatXBgr888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) PackedOrder.PackedOrderXBgr, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
 
         /// <summary>
         ///     The sdl pixel format x bgr 888
@@ -1333,32 +1333,32 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint PixelFormatBGrx8888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) SdlPackedOrder.SdlPackedorderBgrx, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
+        public static readonly uint PixelFormatBGrx8888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) PackedOrder.PackedOrderBGrx, SdlPackedLayout.SdlPackedlayout8888, 24, 4);
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint PixelFormatArgb8888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) SdlPackedOrder.SdlPackedorderArgb, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
+        public static readonly uint PixelFormatArgb8888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) PackedOrder.PackedOrderARgb, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint PixelFormatRgba8888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) SdlPackedOrder.SdlPackedorderRgba, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
+        public static readonly uint PixelFormatRgba8888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) PackedOrder.PackedOrderRGba, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint PixelFormatABgr8888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) SdlPackedOrder.SdlPackedorderAbgr, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
+        public static readonly uint PixelFormatABgr8888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) PackedOrder.PackedOrderABgr, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
 
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        public static readonly uint PixelFormatB8888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) SdlPackedOrder.SdlPackedorderBgra, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
+        public static readonly uint PixelFormatB8888 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) PackedOrder.PackedOrderBGra, SdlPackedLayout.SdlPackedlayout8888, 32, 4);
 
         /// <summary>
         ///     The sdl packed layout 2101010
         /// </summary>
-        public static readonly uint PixelFormatArgb2101010 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) SdlPackedOrder.SdlPackedorderArgb, SdlPackedLayout.SdlPackedlayout2101010, 32, 4);
+        public static readonly uint PixelFormatArgb2101010 = SdlDefinePixelFormat(Enums.SdlPixelType.PixelTypePacked32, (uint) PackedOrder.PackedOrderARgb, SdlPackedLayout.SdlPackedlayout2101010, 32, 4);
 
         /// <summary>
         ///     The sdl define pixel four cc
@@ -5631,12 +5631,12 @@ namespace Alis.Core.Graphic.SDL
         {
             if (SdlIsPixelFormatPacked(format))
             {
-                SdlPackedOrder pOrder =
-                    (SdlPackedOrder) SdlPixelOrder(format);
-                return pOrder == SdlPackedOrder.SdlPackedorderArgb ||
-                       pOrder == SdlPackedOrder.SdlPackedorderRgba ||
-                       pOrder == SdlPackedOrder.SdlPackedorderAbgr ||
-                       pOrder == SdlPackedOrder.SdlPackedorderBgra;
+                PackedOrder pOrder =
+                    (PackedOrder) SdlPixelOrder(format);
+                return pOrder == PackedOrder.PackedOrderARgb ||
+                       pOrder == PackedOrder.PackedOrderRGba ||
+                       pOrder == PackedOrder.PackedOrderABgr ||
+                       pOrder == PackedOrder.PackedOrderBGra;
             }
 
             if (SdlIsPixelFormatArray(format))

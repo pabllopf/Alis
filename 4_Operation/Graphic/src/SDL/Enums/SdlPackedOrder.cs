@@ -30,53 +30,53 @@
 namespace Alis.Core.Graphic.SDL.Enums
 {
     /// <summary>
-    ///     The sdl packedorder enum
+    ///     The sdl packed order enum
     /// </summary>
-    public enum SdlPackedOrder
+    public enum PackedOrder
     {
         /// <summary>
-        ///     The sdl packedorder none sdl packedorder
+        ///     The sdl packed order none sdl packed order
         /// </summary>
-        SdlPackedorderNone,
+        PackedOrderNone,
 
         /// <summary>
-        ///     The sdl packedorder xrgb sdl packedorder
+        ///     The sdl packed order x rgb sdl packed order
         /// </summary>
-        SdlPackedorderXrgb,
+        PackedOrderXRgb,
 
         /// <summary>
-        ///     The sdl packedorder rgbx sdl packedorder
+        ///     The sdl packed order r gbx sdl packed order
         /// </summary>
-        SdlPackedorderRgbx,
+        PackedOrderRGbx,
 
         /// <summary>
-        ///     The sdl packedorder argb sdl packedorder
+        ///     The sdl packed order argb sdl packed order
         /// </summary>
-        SdlPackedorderArgb,
+        PackedOrderARgb,
 
         /// <summary>
-        ///     The sdl packedorder rgba sdl packedorder
+        ///     The sdl packed order rgba sdl packed order
         /// </summary>
-        SdlPackedorderRgba,
+        PackedOrderRGba,
 
         /// <summary>
-        ///     The sdl packedorder xbgr sdl packedorder
+        ///     The sdl packed order x bgr sdl packed order
         /// </summary>
-        SdlPackedorderXbgr,
+        PackedOrderXBgr,
 
         /// <summary>
-        ///     The sdl packedorder bgrx sdl packedorder
+        ///     The sdl packed order b grx sdl packed order
         /// </summary>
-        SdlPackedorderBgrx,
+        PackedOrderBGrx,
 
         /// <summary>
-        ///     The sdl packedorder abgr sdl packedorder
+        ///     The sdl packed order a bgr sdl packed order
         /// </summary>
-        SdlPackedorderAbgr,
+        PackedOrderABgr,
 
         /// <summary>
-        ///     The sdl packedorder bgra sdl packedorder
+        ///     The sdl packed order b gra sdl packed order
         /// </summary>
-        SdlPackedorderBgra
+        PackedOrderBGra
     }
 }
