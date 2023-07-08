@@ -52,39 +52,29 @@ namespace Alis.Core.Aspect.Memory
             StackTrace stackTrace = new StackTrace();
             StackFrame stackFrame = stackTrace.GetFrame(1);
             MethodBase method = stackFrame.GetMethod();
-            string parameterName = GetParameterName(method.DeclaringType, method.Name);
-            IEnumerable<ValidationAttribute> attributes = method.GetParameters()
-                .Where(p => p.Name == parameterName)
-                .SelectMany(p => p.GetCustomAttributes<ValidationAttribute>(true));
-
-            foreach (ValidationAttribute attribute in attributes)
+           
+            
+           if (method.DeclaringType != null)
             {
-                attribute.Validate(value, parameterName);
-            }
-
-            return value;
-        }
-
-        /// <summary>
-        ///     Gets the parameter name using the specified type
-        /// </summary>
-        /// <param name="type">The type</param>
-        /// <param name="methodName">The method name</param>
-        /// <exception cref="ArgumentException">Unable to determine parameter name.</exception>
-        /// <returns>The string</returns>
-        private static string GetParameterName(Type type, string methodName)
-        {
-            MethodInfo methodInfo = type.GetMethod(methodName);
-            if (methodInfo != null)
-            {
-                ParameterInfo[] parameters = methodInfo.GetParameters();
-                if (parameters.Length == 1)
+                MethodInfo methodInfo = method.DeclaringType.GetMethod(method.Name);
+                if (methodInfo != null)
                 {
-                    return parameters[0].Name;
+                    ParameterInfo[] parameters = methodInfo.GetParameters();
+                    foreach (ParameterInfo parameter in parameters)
+                    {
+                        IEnumerable<ValidationAttribute> attributes = method.GetParameters()
+                            .Where(p => p.Name == parameter.Name)
+                            .SelectMany(p => p.GetCustomAttributes<ValidationAttribute>(true));
+                        
+                        foreach (ValidationAttribute attribute in attributes)
+                        {
+                            attribute.Validate(value, parameter.Name);
+                        }
+                    }
                 }
             }
-
-            throw new ArgumentException("Unable to determine parameter name.");
+           
+            return value;
         }
     }
 }

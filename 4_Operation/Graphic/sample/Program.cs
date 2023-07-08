@@ -48,24 +48,17 @@ namespace Alis.Core.Graphic.Sample
             {
                 Console.WriteLine(@"Select backend graphic system ('sfml' | 'sdl')");
                 string os = Console.ReadLine();
-                try
+                switch (os)
                 {
-                    switch (os)
-                    {
-                        case "sfml":
-                            SfmlController sfmlController = new SfmlController();
-                            run = sfmlController.Run();
-                            break;
+                    case "sfml":
+                        SfmlController sfmlController = new SfmlController();
+                        run = sfmlController.Run();
+                        break;
 
-                        case "sdl":
-                            SdlController sdlController = new SdlController();
-                            run = sdlController.Run();
-                            break;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Logger.Exception(ex);
+                    case "sdl":
+                        SdlController sdlController = new SdlController();
+                        run = sdlController.Run();
+                        break;
                 }
             }
         }
