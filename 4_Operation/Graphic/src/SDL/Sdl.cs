@@ -1447,6 +1447,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_malloc", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr INTERNAL_SDL_malloc(int size);
+        
+        /// <summary>
+        /// Malloc the size
+        /// </summary>
+        /// <param name="size">The size</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr Malloc([NotNull, NotZero] int size) => INTERNAL_SDL_malloc(size.Validate);
 
         /// <summary>
         ///     Sdl the free using the specified mem block
