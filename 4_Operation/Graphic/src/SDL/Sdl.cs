@@ -9378,15 +9378,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="len">The len</param>
         /// <param name="volume">The volume</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_MixAudioFormat(
-            [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)]
-            byte[] dst,
-            [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)]
-            byte[] src,
-            ushort format,
-            uint len,
-            int volume
-        );
+        [return: NotNull]
+        public static extern void SDL_MixAudioFormat([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] byte[] src, ushort format, uint len, int volume);
 
         /// <summary>
         ///     Sdl the open audio using the specified desired
@@ -9395,10 +9388,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="obtained">The obtained</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_OpenAudio(
-            ref SdlAudioSpec desired,
-            out SdlAudioSpec obtained
-        );
+        [return: NotNull]
+        private static extern int SDL_OpenAudio(ref SdlAudioSpec desired, out SdlAudioSpec obtained);
+        
+        /// <summary>
+        /// Sdl the open audio using the specified desired
+        /// </summary>
+        /// <param name="desired">The desired</param>
+        /// <param name="obtained">The obtained</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SdlOpenAudio(ref SdlAudioSpec desired, out SdlAudioSpec obtained) => SDL_OpenAudio(ref desired, out obtained);
 
         /// <summary>
         ///     Sdl the open audio using the specified desired
@@ -9407,10 +9407,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="obtained">The obtained</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_OpenAudio(
-            ref SdlAudioSpec desired,
-            IntPtr obtained
-        );
+        [return: NotNull]
+        private static extern int SDL_OpenAudio(ref SdlAudioSpec desired, [NotNull]IntPtr obtained);
+
+        /// <summary>
+        /// Sdl the open audio using the specified desired
+        /// </summary>
+        /// <param name="desired">The desired</param>
+        /// <param name="obtained">The obtained</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SdlOpenAudio(ref SdlAudioSpec desired, [NotNull]IntPtr obtained) => SDL_OpenAudio(ref desired, obtained.Validate());
 
         /// <summary>
         ///     Sdl the open audio device using the specified device
@@ -9422,14 +9429,21 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="allowedChanges">The allowed changes</param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_OpenAudioDevice(
-            IntPtr device,
-            int isCapture,
-            ref SdlAudioSpec desired,
-            out SdlAudioSpec obtained,
-            int allowedChanges
-        );
+        [return: NotNull]
+        private static extern uint SDL_OpenAudioDevice([NotNull]IntPtr device, [NotNull]int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, [NotNull]int allowedChanges);
 
+        /// <summary>
+        /// Sdl the open audio device using the specified device
+        /// </summary>
+        /// <param name="device">The device</param>
+        /// <param name="isCapture">The is capture</param>
+        /// <param name="desired">The desired</param>
+        /// <param name="obtained">The obtained</param>
+        /// <param name="allowedChanges">The allowed changes</param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint SdlOpenAudioDevice([NotNull]IntPtr device, [NotNull]int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, [NotNull]int allowedChanges) => SDL_OpenAudioDevice(device.Validate(), isCapture.Validate(), ref desired, out obtained, allowedChanges.Validate());
+        
         /// <summary>
         ///     Internals the sdl open audio device using the specified device
         /// </summary>
@@ -9440,7 +9454,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="allowedChanges">The allowed changes</param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_OpenAudioDevice", CallingConvention = CallingConvention.Cdecl)]
-        private static extern uint INTERNAL_SDL_OpenAudioDevice(byte[] device, int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, int allowedChanges);
+        [return: NotNull]
+        private static extern uint INTERNAL_SDL_OpenAudioDevice([NotNull]byte[] device, [NotNull]int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, int allowedChanges);
 
         /// <summary>
         ///     Sdl the open audio device using the specified device
@@ -9451,25 +9466,23 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="obtained">The obtained</param>
         /// <param name="allowedChanges">The allowed changes</param>
         /// <returns>The uint</returns>
-        public static uint SdlOpenAudioDevice(string device, int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, int allowedChanges)
-        {
-            int utf8DeviceBufSize = Utf8Size(device);
-            byte[] utf8Device = new byte[utf8DeviceBufSize];
-            return INTERNAL_SDL_OpenAudioDevice(
-                Utf8Encode(device, utf8Device, utf8DeviceBufSize),
-                isCapture,
-                ref desired,
-                out obtained,
-                allowedChanges
-            );
-        }
+        [return: NotNull]
+        public static uint SdlOpenAudioDevice([NotNull]string device, [NotNull]int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, int allowedChanges) => INTERNAL_SDL_OpenAudioDevice(Utf8Encode(device.Validate(), new byte[Utf8Size(device.Validate())], Utf8Size(device.Validate())), isCapture, ref desired, out obtained, allowedChanges);
 
         /// <summary>
         ///     Sdl the pause audio using the specified pause on
         /// </summary>
         /// <param name="pauseOn">The pause on</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_PauseAudio(int pauseOn);
+        [return: NotNull]
+        private static extern void SDL_PauseAudio([NotNull]int pauseOn);
+        
+        /// <summary>
+        /// Sdl the pause audio using the specified pause on
+        /// </summary>
+        /// <param name="pauseOn">The pause on</param>
+        [return: NotNull]
+        public static void SdlPauseAudio([NotNull]int pauseOn) => SDL_PauseAudio(pauseOn.Validate());
 
         /// <summary>
         ///     Sdl the pause audio device using the specified dev
@@ -9477,16 +9490,29 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="dev">The dev</param>
         /// <param name="pauseOn">The pause on</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_PauseAudioDevice(
-            uint dev,
-            int pauseOn
-        );
+        [return: NotNull]
+        private static extern void SDL_PauseAudioDevice([NotNull]uint dev, [NotNull]int pauseOn);
+        
+        /// <summary>
+        /// Sdl the pause audio device using the specified dev
+        /// </summary>
+        /// <param name="dev">The dev</param>
+        /// <param name="pauseOn">The pause on</param>
+        [return: NotNull]
+        public static void SdlPauseAudioDevice([NotNull]uint dev, [NotNull]int pauseOn) => SDL_PauseAudioDevice(dev.Validate(), pauseOn.Validate());
 
         /// <summary>
         ///     Sdl the unlock audio
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_UnlockAudio();
+        [return: NotNull]
+        private static extern void SDL_UnlockAudio();
+        
+        /// <summary>
+        /// Sdl the unlock audio
+        /// </summary>
+        [return: NotNull]
+        public static void SdlUnlockAudio() => SDL_UnlockAudio();
 
         /// <summary>
         ///     Sdl the unlock audio device using the specified dev
