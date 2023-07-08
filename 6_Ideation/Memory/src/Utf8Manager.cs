@@ -30,10 +30,9 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
-using Alis.Core.Aspect.Memory;
 using Alis.Core.Aspect.Memory.Attributes;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Aspect.Memory
 {
     /// <summary>
     /// The utf manager class
@@ -68,12 +67,7 @@ namespace Alis.Core.Graphic.SDL
             byte[] bytes = new byte[len];
             Marshal.Copy(s, bytes, 0, len);
             string result = Encoding.UTF8.GetString(bytes);
-
-            if (freePtr)
-            {
-                Sdl.SDL_free(s);
-            }
-
+            
             return result;
         }
 
@@ -83,7 +77,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="str">The str</param>
         /// <returns>The buffer</returns>
         [return: NotNull]
-        internal static byte[] Utf8EncodeHeap(string str)
+        public static byte[] Utf8EncodeHeap(string str)
         {
             if (str == null)
             {
@@ -106,7 +100,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="bufferSize">The buffer size</param>
         /// <returns>The buffer</returns>
         [return: NotNull]
-        internal static byte[] Utf8Encode([NotNull] string str, [NotNull] byte[] buffer, [NotNull] int bufferSize)
+        public static byte[] Utf8Encode([NotNull] string str, [NotNull] byte[] buffer, [NotNull] int bufferSize)
         {
             Encoding.UTF8.GetBytes(str.Validate(), 0, str.Validate().Length, buffer, 0);
             buffer[str.Length] = 0;
@@ -119,6 +113,6 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="str">The str</param>
         /// <returns>The int</returns>
         [return: NotNull]
-        internal static int Utf8Size([NotNull] string str) => str.Validate().Length * 4 + 1;
+        public static int Utf8Size([NotNull] string str) => str.Validate().Length * 4 + 1;
     }
 }

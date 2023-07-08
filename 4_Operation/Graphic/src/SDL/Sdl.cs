@@ -1455,7 +1455,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="memBlock">The mem block</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern void SDL_free(IntPtr memBlock);
+        private static extern void SDL_free(IntPtr memBlock);
 
         /// <summary>
         ///     Sdl the mem cpy using the specified dst
@@ -1466,8 +1466,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_memCpy(IntPtr dst, IntPtr src, IntPtr len);
-
-
+        
         /// <summary>
         ///     Internals the sdl rw from file using the specified file
         /// </summary>
@@ -9311,7 +9310,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr SDL_NewAudioStream([NotNull]ushort srcFormat, [NotNull]byte srcChannels, [NotNull]int srcRate, [NotNull]ushort dstFormat, [NotNull]byte dstChannels, [NotNull]int dstRate);
+        private static extern IntPtr SDL_NewAudioStream([NotNull]ushort srcFormat, [NotNull]byte srcChannels, [NotNull]int srcRate, [NotNull]ushort dstFormat, [NotNull]byte dstChannels, [NotNull]int dstRate);
 
         /// <summary>
         /// Sdl the new audio stream using the specified src format
