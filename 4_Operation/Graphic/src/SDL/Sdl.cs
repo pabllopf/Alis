@@ -2641,16 +2641,22 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="window">The window</param>
         /// <param name="renderer">The renderer</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_CreateWindowAndRenderer(
-            int width,
-            int height,
-            SdlWindowFlags windowFlags,
-            out IntPtr window,
-            out IntPtr renderer
-        );
+        [DllImport(NativeLibName, EntryPoint = "SDL_CreateWindowAndRenderer", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        private static extern int SDL_CreateWindowAndRenderer([NotNull] int width, [NotNull] int height, [NotNull] SdlWindowFlags windowFlags, out IntPtr window, out IntPtr renderer);
 
-
+        
+        /// <summary>
+        /// Sdl the create window and renderer using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="windowFlags">The window flags</param>
+        /// <param name="window">The window</param>
+        /// <param name="renderer">The renderer</param>
+        /// <returns>The int</returns>
+        public static int SdlCreateWindowAndRenderer([NotNull] int width, [NotNull] int height, [NotNull] SdlWindowFlags windowFlags, out IntPtr window, out IntPtr renderer) => SDL_CreateWindowAndRenderer(width.Validate(), height.Validate(), windowFlags.Validate(), out window, out renderer);
+        
         /// <summary>
         ///     Sdl the create window from using the specified data
         /// </summary>
