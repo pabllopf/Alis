@@ -8182,30 +8182,30 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     Sdl the audio quit
         /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_AudioQuit();
+        [DllImport(NativeLibName, EntryPoint = "SDL_AudioQuit", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void INTERNAL_SDL_AudioQuit();
 
         /// <summary>
         ///     Sdl the close audio
         /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_CloseAudio();
+        [DllImport(NativeLibName, EntryPoint = "SDL_CloseAudio", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void INTERNAL_SDL_CloseAudio();
 
 
         /// <summary>
         ///     Sdl the close audio device using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_CloseAudioDevice(uint dev);
+        [DllImport(NativeLibName, EntryPoint = "SDL_CloseAudioDevice", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void INTERNAL_SDL_CloseAudioDevice(uint dev);
 
 
         /// <summary>
         ///     Sdl the free wav using the specified audio buf
         /// </summary>
         /// <param name="audioBuf">The audio buf</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_FreeWAV([NotNull]IntPtr audioBuf);
+        [DllImport(NativeLibName, EntryPoint = "SDL_FreeWAV", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void INTERNAL_SDL_FreeWAV([NotNull]IntPtr audioBuf);
 
         /// <summary>
         ///     Internals the sdl get audio device name using the specified index
@@ -8214,10 +8214,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="isCapture">The is capture</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetAudioDeviceName", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_GetAudioDeviceName(
-            int index,
-            int isCapture
-        );
+        private static extern IntPtr INTERNAL_SDL_GetAudioDeviceName(int index, int isCapture);
 
         /// <summary>
         ///     Sdl the get audio device name using the specified index
@@ -8225,23 +8222,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="index">The index</param>
         /// <param name="isCapture">The is capture</param>
         /// <returns>The string</returns>
-        public static string SDL_GetAudioDeviceName(
-            int index,
-            int isCapture
-        )
-            => Utf8Manager.Utf8ToManaged(
-                INTERNAL_SDL_GetAudioDeviceName(index, isCapture)
-            );
+        public static string GetAudioDeviceName(int index, int isCapture) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetAudioDeviceName(index, isCapture));
 
         /// <summary>
         ///     Sdl the get audio device status using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
         /// <returns>The sdl audio status</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlAudioStatus SDL_GetAudioDeviceStatus(
-            uint dev
-        );
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetAudioDeviceStatus", CallingConvention = CallingConvention.Cdecl)]
+        public static extern SdlAudioStatus INTERNAL_SDL_GetAudioDeviceStatus(uint dev);
 
         /// <summary>
         ///     Internals the sdl get audio driver using the specified index
@@ -8256,16 +8245,14 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The string</returns>
-        public static string SDL_GetAudioDriver(int index) => Utf8Manager.Utf8ToManaged(
-            INTERNAL_SDL_GetAudioDriver(index)
-        );
+        public static string GetAudioDriver(int index) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetAudioDriver(index));
 
         /// <summary>
         ///     Sdl the get audio status
         /// </summary>
         /// <returns>The sdl audio status</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlAudioStatus SDL_GetAudioStatus();
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetAudioStatus", CallingConvention = CallingConvention.Cdecl)]
+        public static extern SdlAudioStatus INTERNAL_SDL_GetAudioStatus();
 
         /// <summary>
         ///     Internals the sdl get current audio driver
@@ -8278,22 +8265,22 @@ namespace Alis.Core.Graphic.SDL
         ///     Sdl the get current audio driver
         /// </summary>
         /// <returns>The string</returns>
-        public static string SDL_GetCurrentAudioDriver() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetCurrentAudioDriver());
+        public static string GetCurrentAudioDriver() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetCurrentAudioDriver());
 
         /// <summary>
         ///     Sdl the get num audio devices using the specified is capture
         /// </summary>
         /// <param name="isCapture">The is capture</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetNumAudioDevices(int isCapture);
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetNumAudioDevices", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int INTERNAL_SDL_GetNumAudioDevices(int isCapture);
 
         /// <summary>
         ///     Sdl the get num audio drivers
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_GetNumAudioDrivers();
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetNumAudioDrivers", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int INTERNAL_SDL_GetNumAudioDrivers();
 
         /// <summary>
         ///     Internals the sdl load wav rw using the specified src
@@ -8305,13 +8292,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="audioLen">The audio len</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_LoadWAV_RW", CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr INTERNAL_SDL_LoadWAV_RW(
-            [NotNull]IntPtr src,
-            int freeSrc,
-            out SdlAudioSpec spec,
-            out IntPtr audioBuf,
-            out uint audioLen
-        );
+        private static extern IntPtr INTERNAL_SDL_LoadWAV_RW([NotNull]IntPtr src, int freeSrc, out SdlAudioSpec spec, out IntPtr audioBuf, out uint audioLen);
 
         /// <summary>
         ///     Sdl the load wav using the specified file
@@ -8321,35 +8302,20 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="audioBuf">The audio buf</param>
         /// <param name="audioLen">The audio len</param>
         /// <returns>The int ptr</returns>
-        public static IntPtr SDL_LoadWAV(
-            string file,
-            out SdlAudioSpec spec,
-            out IntPtr audioBuf,
-            out uint audioLen
-        )
-        {
-            IntPtr rw = RwFromFile(file, "rb");
-            return INTERNAL_SDL_LoadWAV_RW(
-                rw,
-                1,
-                out spec,
-                out audioBuf,
-                out audioLen
-            );
-        }
+        public static IntPtr LoadWav(string file, out SdlAudioSpec spec, out IntPtr audioBuf, out uint audioLen) => INTERNAL_SDL_LoadWAV_RW(RwFromFile(file, "rb"), 1, out spec, out audioBuf, out audioLen);
 
         /// <summary>
         ///     Sdl the lock audio
         /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_LockAudio();
+        [DllImport(NativeLibName, EntryPoint = "SDL_LockAudio", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void INTERNAL_SDL_LockAudio();
 
         /// <summary>
         ///     Sdl the lock audio device using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_LockAudioDevice(uint dev);
+        [DllImport(NativeLibName, EntryPoint = "SDL_LockAudioDevice", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void INTERNAL_SDL_LockAudioDevice(uint dev);
 
         /// <summary>
         ///     Sdl the mix audio using the specified dst
@@ -8358,15 +8324,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="src">The src</param>
         /// <param name="len">The len</param>
         /// <param name="volume">The volume</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_MixAudio(
-            [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)]
-            byte[] dst,
-            [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)]
-            byte[] src,
-            uint len,
-            int volume
-        );
+        [DllImport(NativeLibName,EntryPoint = "SDL_MixAudio", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void INTERNAL_SDL_MixAudio([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)] byte[] src, uint len, int volume);
 
         /// <summary>
         ///     Sdl the mix audio format using the specified dst
@@ -8376,14 +8335,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="format">The format</param>
         /// <param name="len">The len</param>
         /// <param name="volume">The volume</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_MixAudioFormat(
-            [NotNull]IntPtr dst,
-            [NotNull]IntPtr src,
-            ushort format,
-            uint len,
-            int volume
-        );
+        [DllImport(NativeLibName, EntryPoint = "SDL_MixAudioFormat", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void INTERNAL_SDL_MixAudioFormat([NotNull]IntPtr dst, [NotNull]IntPtr src, ushort format, uint len, int volume);
 
         /// <summary>
         ///     Sdl the mix audio format using the specified dst
@@ -8393,9 +8346,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="format">The format</param>
         /// <param name="len">The len</param>
         /// <param name="volume">The volume</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_MixAudioFormat", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void SDL_MixAudioFormat([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] byte[] src, ushort format, uint len, int volume);
+        public static extern void INTERNAL_SDL_MixAudioFormat([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] byte[] src, ushort format, uint len, int volume);
 
         /// <summary>
         ///     Sdl the open audio using the specified desired
@@ -8403,9 +8356,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="desired">The desired</param>
         /// <param name="obtained">The obtained</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_OpenAudio", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int SDL_OpenAudio(ref SdlAudioSpec desired, out SdlAudioSpec obtained);
+        private static extern int INTERNAL_SDL_OpenAudio(ref SdlAudioSpec desired, out SdlAudioSpec obtained);
         
         /// <summary>
         /// Sdl the open audio using the specified desired
@@ -8414,7 +8367,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="obtained">The obtained</param>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int SdlOpenAudio(ref SdlAudioSpec desired, out SdlAudioSpec obtained) => SDL_OpenAudio(ref desired, out obtained);
+        public static int SdlOpenAudio(ref SdlAudioSpec desired, out SdlAudioSpec obtained) => INTERNAL_SDL_OpenAudio(ref desired, out obtained);
 
         /// <summary>
         ///     Sdl the open audio using the specified desired
@@ -8422,9 +8375,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="desired">The desired</param>
         /// <param name="obtained">The obtained</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_OpenAudio", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int SDL_OpenAudio(ref SdlAudioSpec desired, [NotNull]IntPtr obtained);
+        private static extern int INTERNAL_SDL_OpenAudio(ref SdlAudioSpec desired, [NotNull]IntPtr obtained);
 
         /// <summary>
         /// Sdl the open audio using the specified desired
@@ -8433,7 +8386,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="obtained">The obtained</param>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int SdlOpenAudio(ref SdlAudioSpec desired, [NotNull]IntPtr obtained) => SDL_OpenAudio(ref desired, obtained.Validate());
+        public static int SdlOpenAudio(ref SdlAudioSpec desired, [NotNull]IntPtr obtained) => INTERNAL_SDL_OpenAudio(ref desired, obtained.Validate());
 
         /// <summary>
         ///     Sdl the open audio device using the specified device
@@ -8444,9 +8397,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="obtained">The obtained</param>
         /// <param name="allowedChanges">The allowed changes</param>
         /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_OpenAudioDevice", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern uint SDL_OpenAudioDevice([NotNull]IntPtr device, [NotNull]int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, [NotNull]int allowedChanges);
+        private static extern uint INTERNAL_SDL_OpenAudioDevice([NotNull]IntPtr device, [NotNull]int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, [NotNull]int allowedChanges);
 
         /// <summary>
         /// Sdl the open audio device using the specified device
@@ -8458,7 +8411,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="allowedChanges">The allowed changes</param>
         /// <returns>The uint</returns>
         [return: NotNull]
-        public static uint SdlOpenAudioDevice([NotNull]IntPtr device, [NotNull]int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, [NotNull]int allowedChanges) => SDL_OpenAudioDevice(device.Validate(), isCapture.Validate(), ref desired, out obtained, allowedChanges.Validate());
+        public static uint SdlOpenAudioDevice([NotNull]IntPtr device, [NotNull]int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, [NotNull]int allowedChanges) => INTERNAL_SDL_OpenAudioDevice(device.Validate(), isCapture.Validate(), ref desired, out obtained, allowedChanges.Validate());
         
         /// <summary>
         ///     Internals the sdl open audio device using the specified device
@@ -8489,25 +8442,25 @@ namespace Alis.Core.Graphic.SDL
         ///     Sdl the pause audio using the specified pause on
         /// </summary>
         /// <param name="pauseOn">The pause on</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_PauseAudio", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void SDL_PauseAudio([NotNull]int pauseOn);
+        private static extern void INTERNAL_SDL_PauseAudio([NotNull]int pauseOn);
         
         /// <summary>
         /// Sdl the pause audio using the specified pause on
         /// </summary>
         /// <param name="pauseOn">The pause on</param>
         [return: NotNull]
-        public static void SdlPauseAudio([NotNull]int pauseOn) => SDL_PauseAudio(pauseOn.Validate());
+        public static void SdlPauseAudio([NotNull]int pauseOn) => INTERNAL_SDL_PauseAudio(pauseOn.Validate());
 
         /// <summary>
         ///     Sdl the pause audio device using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
         /// <param name="pauseOn">The pause on</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_PauseAudioDevice", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void SDL_PauseAudioDevice([NotNull]uint dev, [NotNull]int pauseOn);
+        private static extern void INTERNAL_SDL_PauseAudioDevice([NotNull]uint dev, [NotNull]int pauseOn);
         
         /// <summary>
         /// Sdl the pause audio device using the specified dev
@@ -8515,35 +8468,35 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="dev">The dev</param>
         /// <param name="pauseOn">The pause on</param>
         [return: NotNull]
-        public static void SdlPauseAudioDevice([NotNull]uint dev, [NotNull]int pauseOn) => SDL_PauseAudioDevice(dev.Validate(), pauseOn.Validate());
+        public static void SdlPauseAudioDevice([NotNull]uint dev, [NotNull]int pauseOn) => INTERNAL_SDL_PauseAudioDevice(dev.Validate(), pauseOn.Validate());
 
         /// <summary>
         ///     Sdl the unlock audio
         /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_UnlockAudio", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void SDL_UnlockAudio();
+        private static extern void INTERNAL_SDL_UnlockAudio();
         
         /// <summary>
         /// Sdl the unlock audio
         /// </summary>
         [return: NotNull]
-        public static void SdlUnlockAudio() => SDL_UnlockAudio();
+        public static void SdlUnlockAudio() => INTERNAL_SDL_UnlockAudio();
 
         /// <summary>
         ///     Sdl the unlock audio device using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName,EntryPoint = "SDL_UnlockAudioDevice", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void SDL_UnlockAudioDevice([NotNull] uint dev);
+        private static extern void INTERNAL_SDL_UnlockAudioDevice([NotNull] uint dev);
         
         /// <summary>
         /// Sdl the unlock audio device using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
         [return: NotNull]
-        public static void SdlUnlockAudioDevice([NotNull] uint dev) => SDL_UnlockAudioDevice(dev.Validate());
+        public static void SdlUnlockAudioDevice([NotNull] uint dev) => INTERNAL_SDL_UnlockAudioDevice(dev.Validate());
 
         /// <summary>
         ///     Sdl the queue audio using the specified dev
@@ -8552,9 +8505,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="data">The data</param>
         /// <param name="len">The len</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_QueueAudio", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int SDL_QueueAudio([NotNull]uint dev, [NotNull]IntPtr data, [NotNull]uint len);
+        private static extern int INTERNAL_SDL_QueueAudio([NotNull]uint dev, [NotNull]IntPtr data, [NotNull]uint len);
         
         /// <summary>
         /// Sdl the queue audio using the specified dev
@@ -8564,7 +8517,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="len">The len</param>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int SdlQueueAudio([NotNull]uint dev, [NotNull]IntPtr data, [NotNull]uint len) => SDL_QueueAudio(dev.Validate(), data.Validate(), len.Validate());
+        public static int SdlQueueAudio([NotNull]uint dev, [NotNull]IntPtr data, [NotNull]uint len) => INTERNAL_SDL_QueueAudio(dev.Validate(), data.Validate(), len.Validate());
 
         /// <summary>
         ///     Sdl the dequeue audio using the specified dev
@@ -8573,9 +8526,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="data">The data</param>
         /// <param name="len">The len</param>
         /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_DequeueAudio", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern uint SDL_DequeueAudio([NotNull] uint dev, [NotNull] IntPtr data, [NotNull] uint len);
+        private static extern uint INTERNAL_SDL_DequeueAudio([NotNull] uint dev, [NotNull] IntPtr data, [NotNull] uint len);
         
         /// <summary>
         /// Sdl the dequeue audio using the specified dev
@@ -8585,16 +8538,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="len">The len</param>
         /// <returns>The uint</returns>
         [return: NotNull]
-        public static uint SdlDequeueAudio([NotNull] uint dev,[NotNull]  IntPtr data, [NotNull] uint len) => SDL_DequeueAudio(dev.Validate(), data.Validate(), len.Validate());
+        public static uint SdlDequeueAudio([NotNull] uint dev,[NotNull]  IntPtr data, [NotNull] uint len) => INTERNAL_SDL_DequeueAudio(dev.Validate(), data.Validate(), len.Validate());
 
         /// <summary>
         ///     Sdl the get queued audio size using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
         /// <returns>The int 32</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetQueuedAudioSize", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern uint SDL_GetQueuedAudioSize([NotNull] uint dev);
+        private static extern uint INTERNAL_SDL_GetQueuedAudioSize([NotNull] uint dev);
         
         /// <summary>
         /// Sdl the get queued audio size using the specified dev
@@ -8602,22 +8555,22 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="dev">The dev</param>
         /// <returns>The uint</returns>
         [return: NotNull]
-        public static uint SdlGetQueuedAudioSize([NotNull] uint dev) => SDL_GetQueuedAudioSize(dev.Validate());
+        public static uint SdlGetQueuedAudioSize([NotNull] uint dev) => INTERNAL_SDL_GetQueuedAudioSize(dev.Validate());
 
         /// <summary>
         ///     Sdl the clear queued audio using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_ClearQueuedAudio", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void SDL_ClearQueuedAudio([NotNull] uint dev);
+        private static extern void INTERNAL_SDL_ClearQueuedAudio([NotNull] uint dev);
         
         /// <summary>
         /// Sdl the clear queued audio using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
         [return: NotNull]
-        public static void SdlClearQueuedAudio([NotNull] uint dev) => SDL_ClearQueuedAudio(dev.Validate());
+        public static void SdlClearQueuedAudio([NotNull] uint dev) => INTERNAL_SDL_ClearQueuedAudio(dev.Validate());
 
         /// <summary>
         ///     Sdl the new audio stream using the specified src format
@@ -8629,9 +8582,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="dstChannels">The dst channels</param>
         /// <param name="dstRate">The dst rate</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_NewAudioStream", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr SDL_NewAudioStream([NotNull]ushort srcFormat, [NotNull]byte srcChannels, [NotNull]int srcRate, [NotNull]ushort dstFormat, [NotNull]byte dstChannels, [NotNull]int dstRate);
+        private static extern IntPtr INTERNAL_SDL_NewAudioStream([NotNull]ushort srcFormat, [NotNull]byte srcChannels, [NotNull]int srcRate, [NotNull]ushort dstFormat, [NotNull]byte dstChannels, [NotNull]int dstRate);
 
         /// <summary>
         /// Sdl the new audio stream using the specified src format
@@ -8643,7 +8596,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="dstChannels">The dst channels</param>
         /// <param name="dstRate">The dst rate</param>
         /// <returns>The int ptr</returns>
-        public static  IntPtr SdlNewAudioStream([NotNull] ushort srcFormat, [NotNull]byte srcChannels, [NotNull]int srcRate, [NotNull]ushort dstFormat, [NotNull]byte dstChannels, [NotNull]int dstRate) => SDL_NewAudioStream(srcFormat.Validate(), srcChannels.Validate(), srcRate.Validate(), dstFormat.Validate(), dstChannels.Validate(), dstRate.Validate());
+        public static  IntPtr SdlNewAudioStream([NotNull] ushort srcFormat, [NotNull]byte srcChannels, [NotNull]int srcRate, [NotNull]ushort dstFormat, [NotNull]byte dstChannels, [NotNull]int dstRate) => INTERNAL_SDL_NewAudioStream(srcFormat.Validate(), srcChannels.Validate(), srcRate.Validate(), dstFormat.Validate(), dstChannels.Validate(), dstRate.Validate());
 
         /// <summary>
         ///     Sdl the audio stream put using the specified stream
@@ -8652,9 +8605,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="buf">The buf</param>
         /// <param name="len">The len</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_AudioStreamPut", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int SDL_AudioStreamPut([NotNull]IntPtr stream, [NotNull]IntPtr buf, [NotNull]int len);
+        private static extern int INTERNAL_SDL_AudioStreamPut([NotNull]IntPtr stream, [NotNull]IntPtr buf, [NotNull]int len);
         
         /// <summary>
         /// Sdl the audio stream put using the specified stream
@@ -8664,7 +8617,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="len">The len</param>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int SdlAudioStreamPut([NotNull]IntPtr stream, [NotNull]IntPtr buf, [NotNull]int len) => SDL_AudioStreamPut(stream.Validate(), buf.Validate(), len.Validate());
+        public static int SdlAudioStreamPut([NotNull]IntPtr stream, [NotNull]IntPtr buf, [NotNull]int len) => INTERNAL_SDL_AudioStreamPut(stream.Validate(), buf.Validate(), len.Validate());
 
         /// <summary>
         ///     Sdl the audio stream get using the specified stream
@@ -8673,9 +8626,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="buf">The buf</param>
         /// <param name="len">The len</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_AudioStreamGet", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int SDL_AudioStreamGet([NotNull]IntPtr stream, [NotNull]IntPtr buf, [NotNull]int len);
+        private static extern int INTERNAL_SDL_AudioStreamGet([NotNull]IntPtr stream, [NotNull]IntPtr buf, [NotNull]int len);
         
         /// <summary>
         /// Sdl the audio stream get using the specified stream
@@ -8685,16 +8638,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="len">The len</param>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int SdlAudioStreamGet([NotNull] IntPtr stream, [NotNull]IntPtr buf, [NotNull]int len) => SDL_AudioStreamGet(stream.Validate(), buf.Validate(), len.Validate());
+        public static int SdlAudioStreamGet([NotNull] IntPtr stream, [NotNull]IntPtr buf, [NotNull]int len) => INTERNAL_SDL_AudioStreamGet(stream.Validate(), buf.Validate(), len.Validate());
 
         /// <summary>
         ///     Sdl the audio stream available using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_AudioStreamAvailable", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int SDL_AudioStreamAvailable(IntPtr stream);
+        private static extern int INTERNAL_SDL_AudioStreamAvailable(IntPtr stream);
         
         /// <summary>
         /// Sdl the audio stream available using the specified stream
@@ -8702,37 +8655,37 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="stream">The stream</param>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int SdlAudioStreamAvailable([NotNull] IntPtr stream) => SDL_AudioStreamAvailable(stream.Validate());
+        public static int SdlAudioStreamAvailable([NotNull] IntPtr stream) => INTERNAL_SDL_AudioStreamAvailable(stream.Validate());
 
         /// <summary>
         ///     Sdl the audio stream clear using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_AudioStreamClear", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void SDL_AudioStreamClear([NotNull] IntPtr stream);
+        private static extern void INTERNAL_SDL_AudioStreamClear([NotNull] IntPtr stream);
         
         /// <summary>
         /// Sdl the audio stream clear using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         [return: NotNull]
-        public static void SdlAudioStreamClear([NotNull] IntPtr stream) => SDL_AudioStreamClear(stream.Validate());
+        public static void SdlAudioStreamClear([NotNull] IntPtr stream) => INTERNAL_SDL_AudioStreamClear(stream.Validate());
 
         /// <summary>
         ///     Sdl the free audio stream using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_FreeAudioStream", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void SDL_FreeAudioStream([NotNull] IntPtr stream);
+        private static extern void INTERNAL_SDL_FreeAudioStream([NotNull] IntPtr stream);
         
         /// <summary>
         /// Sdl the free audio stream using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         [return: NotNull]
-        public static void SdlFreeAudioStream([NotEmpty] IntPtr stream) => SDL_FreeAudioStream(stream.Validate());
+        public static void SdlFreeAudioStream([NotEmpty] IntPtr stream) => INTERNAL_SDL_FreeAudioStream(stream.Validate());
         
         /// <summary>
         ///     Sdl the get audio device spec using the specified index
@@ -8741,9 +8694,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="isCapture">The is capture</param>
         /// <param name="spec">The spec</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName,EntryPoint = "SDL_GetAudioDeviceSpec", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int SDL_GetAudioDeviceSpec([NotNull] int index, [NotNull] int isCapture, out SdlAudioSpec spec);
+        private static extern int INTERNAL_SDL_GetAudioDeviceSpec([NotNull] int index, [NotNull] int isCapture, out SdlAudioSpec spec);
 
         /// <summary>
         ///     Sdl the get audio device spec using the specified index
@@ -8753,7 +8706,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="spec">The spec</param>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int SdlGetAudioDeviceSpec([NotNull] int index, [NotNull] int isCapture, out SdlAudioSpec spec) => SDL_GetAudioDeviceSpec(index.Validate(), isCapture.Validate(), out spec);
+        public static int SdlGetAudioDeviceSpec([NotNull] int index, [NotNull] int isCapture, out SdlAudioSpec spec) => INTERNAL_SDL_GetAudioDeviceSpec(index.Validate(), isCapture.Validate(), out spec);
 
         /// <summary>
         ///     Describes whether sdl ticks passed
@@ -8767,38 +8720,37 @@ namespace Alis.Core.Graphic.SDL
         ///     Sdl the delay using the specified ms
         /// </summary>
         /// <param name="ms">The ms</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_Delay(uint ms);
+        [DllImport(NativeLibName, EntryPoint = "SDL_Delay", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void INTERNAL_SDL_Delay(uint ms);
 
         /// <summary>
         ///     Sdl the get ticks
         /// </summary>
         /// <returns>The int 32</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint SDL_GetTicks();
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetTicks", CallingConvention = CallingConvention.Cdecl)]
+        public static extern uint INTERNAL_SDL_GetTicks();
 
         /// <summary>
         ///     Sdl the get ticks 64
         /// </summary>
         /// <returns>The int 64</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ulong SDL_GetTicks64();
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetTicks64", CallingConvention = CallingConvention.Cdecl)]
+        public static extern ulong INTERNAL_SDL_GetTicks64();
 
         /// <summary>
         ///     Sdl the get performance counter
         /// </summary>
         /// <returns>The int 64</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ulong SDL_GetPerformanceCounter();
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetPerformanceCounter", CallingConvention = CallingConvention.Cdecl)]
+        public static extern ulong INTERNAL_SDL_GetPerformanceCounter();
 
         /// <summary>
         ///     Sdl the get performance frequency
         /// </summary>
         /// <returns>The int 64</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ulong SDL_GetPerformanceFrequency();
-
-
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetPerformanceFrequency", CallingConvention = CallingConvention.Cdecl)]
+        public static extern ulong INTERNAL_SDL_GetPerformanceFrequency();
+        
         /// <summary>
         ///     Sdl the add timer using the specified interval
         /// </summary>
@@ -8806,47 +8758,40 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="callback">The callback</param>
         /// <param name="param">The param</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_AddTimer(
-            uint interval,
-            SdlTimerCallback callback,
-            IntPtr param
-        );
+        [DllImport(NativeLibName, EntryPoint = "SDL_AddTimer", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int INTERNAL_SDL_AddTimer(uint interval, SdlTimerCallback callback, IntPtr param);
 
         /// <summary>
         ///     Sdl the remove timer using the specified id
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern SdlBool SDL_RemoveTimer(int id);
+        [DllImport(NativeLibName, EntryPoint = "SDL_RemoveTimer", CallingConvention = CallingConvention.Cdecl)]
+        public static extern SdlBool INTERNAL_SDL_RemoveTimer(int id);
 
         /// <summary>
         ///     Sdl the set windows message hook using the specified callback
         /// </summary>
         /// <param name="callback">The callback</param>
         /// <param name="userdata">The userdata</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SDL_SetWindowsMessageHook(
-            SdlWindowsMessageHook callback,
-            IntPtr userdata
-        );
+        [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowsMessageHook", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void INTERNAL_SDL_SetWindowsMessageHook(SdlWindowsMessageHook callback, IntPtr userdata);
 
         /// <summary>
         ///     Sdl the render get d 3 d 9 device using the specified renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_RenderGetD3D9Device(IntPtr renderer);
+        [DllImport(NativeLibName,EntryPoint = "SDL_RenderGetD3D9Device", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr INTERNAL_SDL_RenderGetD3D9Device(IntPtr renderer);
 
         /// <summary>
         ///     Sdl the render get d 3 d 11 device using the specified renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_RenderGetD3D11Device(IntPtr renderer);
+        [DllImport(NativeLibName, EntryPoint = "SDL_RenderGetD3D11Device", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr INTERNAL_SDL_RenderGetD3D11Device(IntPtr renderer);
 
         /// <summary>
         ///     Sdl the i phone set animation callback using the specified window
@@ -8856,19 +8801,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="callback">The callback</param>
         /// <param name="callbackParam">The callback param</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int SDL_iPhoneSetAnimationCallback(
-            IntPtr window,
-            int interval,
-            SdlIPhoneAnimationCallback callback,
-            IntPtr callbackParam
-        );
+        [DllImport(NativeLibName, EntryPoint = "SDL_iPhoneSetAnimationCallback", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int INTERNAL_SDL_iPhoneSetAnimationCallback(IntPtr window, int interval, SdlIPhoneAnimationCallback callback, IntPtr callbackParam);
 
         /// <summary>
         ///     Sdl the i phone set event pump using the specified enabled
         /// </summary>
         /// <param name="enabled">The enabled</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_iPhoneSetEventPump", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_iPhoneSetEventPump(SdlBool enabled);
 
 
@@ -8876,82 +8816,81 @@ namespace Alis.Core.Graphic.SDL
         ///     Sdl the android get jni env
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr SDL_AndroidGetJNIEnv();
-
+        [DllImport(NativeLibName, EntryPoint = "SDL_AndroidGetJNIEnv", CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr INTERNAL_SDL_AndroidGetJNIEnv();
+        
+        /// <summary>
+        ///     Sdl the android get activity
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [DllImport(NativeLibName, EntryPoint = "SDL_AndroidGetActivity", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        private static extern IntPtr INTERNAL_SDL_AndroidGetActivity();
 
         /// <summary>
         ///     Sdl the android get activity
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr SDL_AndroidGetActivity();
-
-        /// <summary>
-        ///     Sdl the android get activity
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        public static IntPtr SdlAndroidGetActivity() => SDL_AndroidGetActivity();
+        public static IntPtr SdlAndroidGetActivity() => INTERNAL_SDL_AndroidGetActivity();
 
         /// <summary>
         ///     Sdl the is android tv
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_IsAndroidTV", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool SDL_IsAndroidTV();
+        private static extern SdlBool INTERNAL_SDL_IsAndroidTV();
 
         /// <summary>
         ///     Sdl the is android tv
         /// </summary>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SdlIsAndroidTv() => SDL_IsAndroidTV();
+        public static SdlBool SdlIsAndroidTv() => INTERNAL_SDL_IsAndroidTV();
 
         /// <summary>
         ///     Sdl the is chromebook
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_IsChromebook", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool SDL_IsChromebook();
+        private static extern SdlBool INTERNAL_SDL_IsChromebook();
 
         /// <summary>
         ///     Sdl the is chromebook
         /// </summary>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SdlIsChromebook() => SDL_IsChromebook();
+        public static SdlBool SdlIsChromebook() => INTERNAL_SDL_IsChromebook();
 
         /// <summary>
         ///     Sdl the is de x mode
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_IsDeXMode", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool SDL_IsDeXMode();
+        private static extern SdlBool INTERNAL_SDL_IsDeXMode();
 
         /// <summary>
         ///     Sdl the is de x mode
         /// </summary>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SdlIsDeXMode() => SDL_IsDeXMode();
+        public static SdlBool SdlIsDeXMode() => INTERNAL_SDL_IsDeXMode();
 
         /// <summary>
         ///     Sdl the android back button
         /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_AndroidBackButton", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void SDL_AndroidBackButton();
+        private static extern void INTERNAL_SDL_AndroidBackButton();
 
         /// <summary>
         ///     Sdl the android back button
         /// </summary>
         [return: NotNull]
-        public static void SdlAndroidBackButton() => SDL_AndroidBackButton();
+        public static void SdlAndroidBackButton() => INTERNAL_SDL_AndroidBackButton();
 
         /// <summary>
         ///     Internals the sdl android get internal storage path
@@ -8972,16 +8911,16 @@ namespace Alis.Core.Graphic.SDL
         ///     Sdl the android get external storage state
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_AndroidGetExternalStorageState", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int SDL_AndroidGetExternalStorageState();
+        private static extern int INTERNAL_SDL_AndroidGetExternalStorageState();
 
         /// <summary>
         ///     Sdl the android get external storage state
         /// </summary>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int SdlAndroidGetExternalStorageState() => SDL_AndroidGetExternalStorageState();
+        public static int SdlAndroidGetExternalStorageState() => INTERNAL_SDL_AndroidGetExternalStorageState();
 
         /// <summary>
         ///     Internals the sdl android get external storage path
@@ -9002,16 +8941,16 @@ namespace Alis.Core.Graphic.SDL
         ///     Sdl the get android sdk version
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetAndroidSDKVersion", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int SDL_GetAndroidSDKVersion();
+        private static extern int INTERNAL_SDL_GetAndroidSDKVersion();
 
         /// <summary>
         ///     Sdl the get android sdk version
         /// </summary>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int SdlGetAndroidSdkVersion() => SDL_GetAndroidSDKVersion();
+        public static int SdlGetAndroidSdkVersion() => INTERNAL_SDL_GetAndroidSDKVersion();
 
         /// <summary>
         ///     Internals the sdl android request permission using the specified permission
@@ -9059,31 +8998,31 @@ namespace Alis.Core.Graphic.SDL
         ///     Sdl the win rt get device family
         /// </summary>
         /// <returns>The sdl win rt device family</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_WinRTGetDeviceFamily", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlWinRtDeviceFamily SDL_WinRTGetDeviceFamily();
+        private static extern SdlWinRtDeviceFamily INTERNAL_SDL_WinRTGetDeviceFamily();
 
         /// <summary>
         ///     Sdl the win rt get device family
         /// </summary>
         /// <returns>The sdl win rt device family</returns>
         [return: NotNull]
-        public static SdlWinRtDeviceFamily SdlWinRtGetDeviceFamily() => SDL_WinRTGetDeviceFamily();
+        public static SdlWinRtDeviceFamily SdlWinRtGetDeviceFamily() => INTERNAL_SDL_WinRTGetDeviceFamily();
 
         /// <summary>
         ///     Sdl the is tablet
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_IsTablet", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool SDL_IsTablet();
+        private static extern SdlBool INTERNAL_SDL_IsTablet();
 
         /// <summary>
         ///     Sdl the is tablet
         /// </summary>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SdlIsTablet() => SDL_IsTablet();
+        public static SdlBool SdlIsTablet() => INTERNAL_SDL_IsTablet();
 
         /// <summary>
         ///     Sdl the get window wm info using the specified window
@@ -9091,9 +9030,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="window">The window</param>
         /// <param name="info">The info</param>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowWMInfo", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool SDL_GetWindowWMInfo([NotNull] IntPtr window, ref SdlSysWMinfo info);
+        private static extern SdlBool INTERNAL_SDL_GetWindowWMInfo([NotNull] IntPtr window, ref SdlSysWMinfo info);
 
         /// <summary>
         ///     Sdl the get window wm info using the specified window
@@ -9102,7 +9041,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="info">The info</param>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SdlGetWindowWmInfo([NotNull] IntPtr window, ref SdlSysWMinfo info) => SDL_GetWindowWMInfo(window.Validate(), ref info);
+        public static SdlBool SdlGetWindowWmInfo([NotNull] IntPtr window, ref SdlSysWMinfo info) => INTERNAL_SDL_GetWindowWMInfo(window.Validate(), ref info);
 
         /// <summary>
         ///     Internals the sdl get base path
@@ -9144,9 +9083,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="secs">The secs</param>
         /// <param name="pct">The pct</param>
         /// <returns>The sdl power state</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetPowerInfo", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlPowerState SDL_GetPowerInfo(out int secs, out int pct);
+        private static extern SdlPowerState INTERNAL_SDL_GetPowerInfo(out int secs, out int pct);
 
         /// <summary>
         ///     Sdl the get power info using the specified secs
@@ -9155,270 +9094,270 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pct">The pct</param>
         /// <returns>The sdl power state</returns>
         [return: NotNull]
-        public static SdlPowerState SdlGetPowerInfo(out int secs, out int pct) => SDL_GetPowerInfo(out secs, out pct);
+        public static SdlPowerState SdlGetPowerInfo(out int secs, out int pct) => INTERNAL_SDL_GetPowerInfo(out secs, out pct);
 
         /// <summary>
         ///     Sdl the get cpu count
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetCPUCount", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int SDL_GetCPUCount();
+        private static extern int INTERNAL_SDL_GetCPUCount();
 
         /// <summary>
         ///     Sdl the get cpu count
         /// </summary>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int SdlGetCpuCount() => SDL_GetCPUCount();
+        public static int SdlGetCpuCount() => INTERNAL_SDL_GetCPUCount();
 
         /// <summary>
         ///     Sdl the get cpu cache line size
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetCPUCacheLineSize", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int SDL_GetCPUCacheLineSize();
+        private static extern int INTERNAL_SDL_GetCPUCacheLineSize();
 
         /// <summary>
         ///     Sdl the get cpu cache line size
         /// </summary>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int SdlGetCpuCacheLineSize() => SDL_GetCPUCacheLineSize();
+        public static int SdlGetCpuCacheLineSize() => INTERNAL_SDL_GetCPUCacheLineSize();
 
         /// <summary>
         ///     Sdl the has rdtsc
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_HasRDTSC", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool SDL_HasRDTSC();
+        private static extern SdlBool INTERNAL_SDL_HasRDTSC();
 
         /// <summary>
         ///     Sdl the has rdtsc
         /// </summary>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SdlHasRdtsc() => SDL_HasRDTSC();
+        public static SdlBool SdlHasRdtsc() => INTERNAL_SDL_HasRDTSC();
 
         /// <summary>
         ///     Sdl the has alti vec
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName,EntryPoint = "SDL_HasAltiVec", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool SDL_HasAltiVec();
+        private static extern SdlBool INTERNAL_SDL_HasAltiVec();
 
         /// <summary>
         ///     Sdl the has alti vec
         /// </summary>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SdlHasAltiVec() => SDL_HasAltiVec();
+        public static SdlBool SdlHasAltiVec() => INTERNAL_SDL_HasAltiVec();
 
         /// <summary>
         ///     Sdl the has mmx
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_HasMMX", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool SDL_HasMMX();
+        private static extern SdlBool INTERNAL_SDL_HasMMX();
 
         /// <summary>
         ///     Sdl the has mmx
         /// </summary>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SdlHasMmx() => SDL_HasMMX();
+        public static SdlBool SdlHasMmx() => INTERNAL_SDL_HasMMX();
 
         /// <summary>
         ///     Sdl the has 3 d now
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_Has3DNow", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool SDL_Has3DNow();
+        private static extern SdlBool INTERNAL_SDL_Has3DNow();
 
         /// <summary>
         ///     Sdl the has 3 d now
         /// </summary>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SdlHas3DNow() => SDL_Has3DNow();
+        public static SdlBool SdlHas3DNow() => INTERNAL_SDL_Has3DNow();
 
         /// <summary>
         ///     Sdl the has sse
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_HasSSE", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool SDL_HasSSE();
+        private static extern SdlBool INTERNAL_SDL_HasSSE();
 
         /// <summary>
         ///     Sdl the has sse
         /// </summary>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SdlHasSse() => SDL_HasSSE();
+        public static SdlBool SdlHasSse() => INTERNAL_SDL_HasSSE();
 
         /// <summary>
         ///     Sdl the has sse 2
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_HasSSE2", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool SDL_HasSSE2();
+        private static extern SdlBool INTERNAL_SDL_HasSSE2();
 
         /// <summary>
         ///     Sdl the has sse 2
         /// </summary>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SdlHasSse2() => SDL_HasSSE2();
+        public static SdlBool SdlHasSse2() => INTERNAL_SDL_HasSSE2();
 
         /// <summary>
         ///     Sdl the has sse 3
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_HasSSE3", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool SDL_HasSSE3();
+        private static extern SdlBool INTERNAL_SDL_HasSSE3();
 
         /// <summary>
         ///     Sdl the has sse 3
         /// </summary>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SdlHasSse3() => SDL_HasSSE3();
+        public static SdlBool SdlHasSse3() => INTERNAL_SDL_HasSSE3();
 
         /// <summary>
         ///     Sdl the has sse 41
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_HasSSE41", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool SDL_HasSSE41();
+        private static extern SdlBool INTERNAL_SDL_HasSSE41();
 
         /// <summary>
         ///     Sdl the has sse 41
         /// </summary>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SdlHasSse41() => SDL_HasSSE41();
+        public static SdlBool SdlHasSse41() => INTERNAL_SDL_HasSSE41();
 
         /// <summary>
         ///     Sdl the has sse 42
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_HasSSE42", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool SDL_HasSSE42();
+        private static extern SdlBool INTERNAL_SDL_HasSSE42();
 
         /// <summary>
         ///     Sdl the has sse 42
         /// </summary>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SdlHasSse42() => SDL_HasSSE42();
+        public static SdlBool SdlHasSse42() => INTERNAL_SDL_HasSSE42();
 
         /// <summary>
         ///     Sdl the has avx
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_HasAVX", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool SDL_HasAVX();
+        private static extern SdlBool INTERNAL_SDL_HasAVX();
 
         /// <summary>
         ///     Sdl the has avx
         /// </summary>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SdlHasAvx() => SDL_HasAVX();
+        public static SdlBool SdlHasAvx() => INTERNAL_SDL_HasAVX();
 
         /// <summary>
         ///     Sdl the has avx 2
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_HasAVX2", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool SDL_HasAVX2();
+        private static extern SdlBool INTERNAL_SDL_HasAVX2();
 
         /// <summary>
         ///     Sdl the has avx 2
         /// </summary>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SdlHasAvX2() => SDL_HasAVX2();
+        public static SdlBool SdlHasAvX2() => INTERNAL_SDL_HasAVX2();
 
         /// <summary>
         ///     Sdl the has avx 512 f
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_HasAVX512F", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool SDL_HasAVX512F();
+        private static extern SdlBool INTERNAL_SDL_HasAVX512F();
 
         /// <summary>
         ///     Sdl the has avx 512 f
         /// </summary>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SdlHasAvx512F() => SDL_HasAVX512F();
+        public static SdlBool SdlHasAvx512F() => INTERNAL_SDL_HasAVX512F();
 
         /// <summary>
         ///     Sdl the has neon
         /// </summary>
         /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_HasNEON", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool SDL_HasNEON();
+        private static extern SdlBool INTERNAL_SDL_HasNEON();
 
         /// <summary>
         ///     Sdl the has neon
         /// </summary>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SdlHasNeon() => SDL_HasNEON();
+        public static SdlBool SdlHasNeon() => INTERNAL_SDL_HasNEON();
 
         /// <summary>
         ///     Sdl the get system ram
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetSystemRAM", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int SDL_GetSystemRAM();
+        private static extern int INTERNAL_SDL_GetSystemRAM();
 
         /// <summary>
         ///     Sdl the get system ram
         /// </summary>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int SdlGetSystemRam() => SDL_GetSystemRAM();
+        public static int SdlGetSystemRam() => INTERNAL_SDL_GetSystemRAM();
 
         /// <summary>
         ///     Sdl the simd get alignment
         /// </summary>
         /// <returns>The uint</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_SIMDGetAlignment", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern uint SDL_SIMDGetAlignment();
+        private static extern uint INTERNAL_SDL_SIMDGetAlignment();
 
         /// <summary>
         ///     Sdl the simd get alignment
         /// </summary>
         /// <returns>The uint</returns>
         [return: NotNull]
-        public static uint SdlSimdGetAlignment() => SDL_SIMDGetAlignment();
+        public static uint SdlSimdGetAlignment() => INTERNAL_SDL_SIMDGetAlignment();
 
         /// <summary>
         ///     Sdl the simd alloc using the specified len
         /// </summary>
         /// <param name="len">The len</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr SDL_SIMDAlloc([NotNull] uint len);
+        [DllImport(NativeLibName, EntryPoint = "SDL_SIMDAlloc", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr INTERNAL_SDL_SIMDAlloc([NotNull] uint len);
 
         /// <summary>
         ///     Sdl the simd alloc using the specified len
@@ -9426,7 +9365,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="len">The len</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr SdlSimdAlloc([NotNull] uint len) => SDL_SIMDAlloc(len.Validate());
+        public static IntPtr SdlSimdAlloc([NotNull] uint len) => INTERNAL_SDL_SIMDAlloc(len.Validate());
 
         /// <summary>
         ///     Sdl the simd realloc using the specified ptr
@@ -9434,9 +9373,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="ptr">The ptr</param>
         /// <param name="len">The len</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_SIMDRealloc", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr SDL_SIMDRealloc([NotNull] IntPtr ptr, [NotNull] uint len);
+        private static extern IntPtr INTERNAL_SDL_SIMDRealloc([NotNull] IntPtr ptr, [NotNull] uint len);
 
         /// <summary>
         ///     Sdl the simd realloc using the specified ptr
@@ -9445,45 +9384,45 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="len">The len</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr SdlSimdRealloc([NotNull] IntPtr ptr, [NotNull] uint len) => SDL_SIMDRealloc(ptr.Validate(), len.Validate());
+        public static IntPtr SdlSimdRealloc([NotNull] IntPtr ptr, [NotNull] uint len) => INTERNAL_SDL_SIMDRealloc(ptr.Validate(), len.Validate());
 
         /// <summary>
         ///     Sdl the simd free using the specified ptr
         /// </summary>
         /// <param name="ptr">The ptr</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        private static extern void SDL_SIMDFree(IntPtr ptr);
+        [DllImport(NativeLibName, EntryPoint = "SDL_SIMDFree", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void INTERNAL_SDL_SIMDFree(IntPtr ptr);
 
         /// <summary>
         ///     Sdl the simd free using the specified ptr
         /// </summary>
         /// <param name="ptr">The ptr</param>
-        public static void SdlSimdFree([NotNull] IntPtr ptr) => SDL_SIMDFree(ptr.Validate());
+        public static void SdlSimdFree([NotNull] IntPtr ptr) => INTERNAL_SDL_SIMDFree(ptr.Validate());
 
         /// <summary>
         ///     Sdl the has arms imd
         /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        private static extern void SDL_HasARMSIMD();
+        [DllImport(NativeLibName, EntryPoint = "SDL_HasARMSIMD", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void INTERNAL_SDL_HasARMSIMD();
 
         /// <summary>
         ///     Sdl the has armsimd
         /// </summary>
-        public static void SdlHasArmsimd() => SDL_HasARMSIMD();
+        public static void SdlHasArmsimd() => INTERNAL_SDL_HasARMSIMD();
 
         /// <summary>
         ///     Sdl the get preferred locales
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        private static extern IntPtr SDL_GetPreferredLocales();
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetPreferredLocales", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr INTERNAL_SDL_GetPreferredLocales();
 
         /// <summary>
         ///     Sdl the get preferred locales
         /// </summary>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr SdlGetPreferredLocales() => SDL_GetPreferredLocales();
+        public static IntPtr SdlGetPreferredLocales() => INTERNAL_SDL_GetPreferredLocales();
 
         /// <summary>
         ///     Internals the sdl open url using the specified url
