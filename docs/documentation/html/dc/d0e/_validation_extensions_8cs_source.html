@@ -145,35 +145,32 @@ $(document).ready(function(){initNavTree('dc/d0e/_validation_extensions_8cs_sour
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            StackTrace stackTrace = <span class="keyword">new</span> StackTrace();</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            StackFrame stackFrame = stackTrace.GetFrame(1);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            MethodBase method = stackFrame.GetMethod();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordtype">string</span> parameterName = <a class="code" href="../../dc/db5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions.html#a6818c9bb2db441493b1606559662b315">GetParameterName</a>(method.DeclaringType, method.Name);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            IEnumerable&lt;ValidationAttribute&gt; attributes = method.GetParameters()</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                .Where(p =&gt; p.Name == parameterName)</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                .SelectMany(p =&gt; p.GetCustomAttributes&lt;<a class="code" href="../../d6/df7/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute.html">ValidationAttribute</a>&gt;(<span class="keyword">true</span>));</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="../../d6/df7/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute.html">ValidationAttribute</a> attribute <span class="keywordflow">in</span> attributes)</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                attribute.<a class="code" href="../../d6/df7/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute.html#a8c8e3a114ceaab6a3d499fc360d7ce3f">Validate</a>(value, parameterName);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">return</span> value;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="../../dc/db5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions.html#a6818c9bb2db441493b1606559662b315">   75</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">string</span> <a class="code" href="../../dc/db5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions.html#a6818c9bb2db441493b1606559662b315">GetParameterName</a>(Type type, <span class="keywordtype">string</span> methodName)</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            MethodInfo methodInfo = type.GetMethod(methodName);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">if</span> (methodInfo != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                ParameterInfo[] parameters = methodInfo.GetParameters();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <span class="keywordflow">if</span> (parameters.Length == 1)</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    <span class="keywordflow">return</span> parameters[0].Name;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentException(<span class="stringliteral">&quot;Unable to determine parameter name.&quot;</span>);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;           </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;           <span class="keywordflow">if</span> (method.DeclaringType != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                MethodInfo methodInfo = method.DeclaringType.GetMethod(method.Name);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keywordflow">if</span> (methodInfo != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                    ParameterInfo[] parameters = methodInfo.GetParameters();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    <span class="keywordflow">foreach</span> (ParameterInfo parameter <span class="keywordflow">in</span> parameters)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                    {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                        IEnumerable&lt;ValidationAttribute&gt; attributes = method.GetParameters()</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                            .Where(p =&gt; p.Name == parameter.Name)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                            .SelectMany(p =&gt; p.GetCustomAttributes&lt;<a class="code" href="../../d6/df7/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute.html">ValidationAttribute</a>&gt;(<span class="keyword">true</span>));</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                        </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                        <span class="keywordflow">foreach</span> (<a class="code" href="../../d6/df7/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute.html">ValidationAttribute</a> attribute <span class="keywordflow">in</span> attributes)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                        {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                            attribute.<a class="code" href="../../d6/df7/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute.html#a8c8e3a114ceaab6a3d499fc360d7ce3f">Validate</a>(value, parameter.Name);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                    }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;           </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">return</span> value;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="anamespace_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_html"><div class="ttname"><a href="../../d1/daf/namespace_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes.html">Alis.Core.Aspect.Memory.Attributes</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/df1/_not_empty_attribute_8cs_source.html#l00032">NotEmptyAttribute.cs:33</a></div></div>
@@ -184,14 +181,13 @@ $(document).ready(function(){initNavTree('dc/d0e/_validation_extensions_8cs_sour
 <div class="ttc" id="aclass_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute_html"><div class="ttname"><a href="../../d6/df7/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute.html">Alis.Core.Aspect.Memory.Attributes.ValidationAttribute</a></div><div class="ttdoc">The validation attribute class</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d3c/_validation_attribute_8cs_source.html#l00039">ValidationAttribute.cs:40</a></div></div>
 <div class="ttc" id="anamespace_alis_html"><div class="ttname"><a href="../../d0/d2c/namespace_alis.html">Alis</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/df1/_engine_8cs_source.html#l00036">Engine.cs:37</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions_html"><div class="ttname"><a href="../../dc/db5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions.html">Alis.Core.Aspect.Memory.ValidationExtensions</a></div><div class="ttdoc">The validation extensions class</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d0e/_validation_extensions_8cs_source.html#l00042">ValidationExtensions.cs:43</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions_html_a6818c9bb2db441493b1606559662b315"><div class="ttname"><a href="../../dc/db5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions.html#a6818c9bb2db441493b1606559662b315">Alis.Core.Aspect.Memory.ValidationExtensions.GetParameterName</a></div><div class="ttdeci">static string GetParameterName(Type type, string methodName)</div><div class="ttdoc">Gets the parameter name using the specified type</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d0e/_validation_extensions_8cs_source.html#l00075">ValidationExtensions.cs:75</a></div></div>
 <div class="ttc" id="anamespace_alis_1_1_core_1_1_aspect_1_1_memory_html"><div class="ttname"><a href="../../d1/d15/namespace_alis_1_1_core_1_1_aspect_1_1_memory.html">Alis.Core.Aspect.Memory</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/df1/_not_empty_attribute_8cs_source.html#l00032">NotEmptyAttribute.cs:33</a></div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_463cc71c0efffe3f069a7466fb151c62.html">6_Ideation</a></li><li class="navelem"><a class="el" href="../../dir_d6ecd8ca5fac2fe6f5aa5b1a56b8d555.html">Memory</a></li><li class="navelem"><a class="el" href="../../dir_fe63dcc3ce4be57d28556cac612fb265.html">src</a></li><li class="navelem"><b>ValidationExtensions.cs</b></li>
     <li class="footer">
-      <a>Generated on | Sat Jul 8 2023 |</a>
+      <a>Generated on | Sun Jul 9 2023 |</a>
     </li>
   </ul>
 </div>
