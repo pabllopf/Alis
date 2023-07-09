@@ -1461,7 +1461,15 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="memBlock">The mem block</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_free", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void INTERNAL_SDL_free(IntPtr memBlock);
+        [return: NotNull]
+        private static extern void INTERNAL_SDL_free([NotNull]IntPtr memBlock);
+        
+        /// <summary>
+        /// Frees the mem block
+        /// </summary>
+        /// <param name="memBlock">The mem block</param>
+        [return: NotNull]
+        public static void Free([NotNull]IntPtr memBlock) => INTERNAL_SDL_free(memBlock.Validate());
 
         /// <summary>
         ///     Sdl the mem cpy using the specified dst
@@ -1471,7 +1479,18 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="len">The len</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_memCpy", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr INTERNAL_SDL_memCpy(IntPtr dst, IntPtr src, IntPtr len);
+        [return: NotNull]
+        private static extern IntPtr INTERNAL_SDL_memCpy([NotNull] IntPtr dst, [NotNull] IntPtr src, [NotNull] IntPtr len);
+        
+        /// <summary>
+        /// Mem the cpy using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
+        /// <param name="src">The src</param>
+        /// <param name="len">The len</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr MemCpy([NotNull] IntPtr dst, [NotNull] IntPtr src, [NotNull] IntPtr len) => INTERNAL_SDL_memCpy(dst.Validate(), src.Validate(), len.Validate());
         
         /// <summary>
         ///     Internals the sdl rw from file using the specified file
@@ -1917,7 +1936,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_WriteBE64", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_WriteBE64([NotNull] IntPtr dst, [NotNull] ulong value);
+        private static extern uint INTERNAL_SDL_WriteBE64([NotNull] IntPtr dst, [NotNull] ulong value);
+        
+        /// <summary>
+        /// Writes the be 64 using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
+        /// <param name="value">The value</param>
+        /// <returns>The uint</returns>
+        public static uint WriteBe64([NotNull] IntPtr dst, [NotNull] ulong value) => INTERNAL_SDL_WriteBE64(dst.Validate(), value.Validate());
         
         /// <summary>
         ///     Sdl the r w close using the specified context
@@ -1926,7 +1953,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The long</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RwClose", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern long INTERNAL_SDL_RwClose([NotNull] IntPtr context);
+        private static extern long INTERNAL_SDL_RwClose([NotNull] IntPtr context);
+        
+        /// <summary>
+        /// Rws the close using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <returns>The long</returns>
+        [return: NotNull]
+        public static long RwClose([NotNull] IntPtr context) => INTERNAL_SDL_RwClose(context.Validate());
 
         /// <summary>
         ///     Internals the sdl load file using the specified file
@@ -1952,7 +1987,13 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetMainReady", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_SetMainReady();
+        private static extern void INTERNAL_SDL_SetMainReady();
+        
+        /// <summary>
+        /// Sets the main ready
+        /// </summary>
+        [return: NotNull]
+        public static void SetMainReady() => INTERNAL_SDL_SetMainReady();
         
         /// <summary>
         ///     Sdl the win rt run app using the specified main function
@@ -1962,7 +2003,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_WinRTRunApp", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_WinRTRunApp(SdlMainFunc mainFunction, [NotNull] IntPtr reserved);
+        private static extern int INTERNAL_SDL_WinRTRunApp(SdlMainFunc mainFunction, [NotNull] IntPtr reserved);
+        
+        /// <summary>
+        /// Wins the rt run app using the specified main function
+        /// </summary>
+        /// <param name="mainFunction">The main function</param>
+        /// <param name="reserved">The reserved</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int WinRtRunApp([NotNull] SdlMainFunc mainFunction, [NotNull] IntPtr reserved) => INTERNAL_SDL_WinRTRunApp(mainFunction.Validate(), reserved.Validate());
 
         /// <summary>
         ///     Sdl the ui kit run app using the specified argc
@@ -1973,8 +2023,18 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName,EntryPoint = "SDL_UIKitRunApp", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_UIKitRunApp([NotNull] int argc, IntPtr argv, SdlMainFunc mainFunction);
+        private static extern int INTERNAL_SDL_UIKitRunApp([NotNull] int argc, IntPtr argv, SdlMainFunc mainFunction);
 
+        /// <summary>
+        /// Uis the kit run app using the specified argc
+        /// </summary>
+        /// <param name="argc">The argc</param>
+        /// <param name="argv">The argv</param>
+        /// <param name="mainFunction">The main function</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int UiKitRunApp([NotNull] int argc, [NotNull] IntPtr argv, [NotNull]SdlMainFunc mainFunction) => INTERNAL_SDL_UIKitRunApp(argc.Validate(), argv.Validate(), mainFunction.Validate());
+        
         /// <summary>
         ///     Sdl the init using the specified flags
         /// </summary>
@@ -1982,7 +2042,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_Init", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_Init([NotNull] uint flags);
+        private static extern int INTERNAL_SDL_Init([NotNull] uint flags);
+        
+        /// <summary>
+        /// Sdl the init using the specified flags
+        /// </summary>
+        /// <param name="flags">The flags</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int Init([NotNull] uint flags) => INTERNAL_SDL_Init(flags.Validate());
 
         /// <summary>
         ///     Sdl the init sub system using the specified flags
