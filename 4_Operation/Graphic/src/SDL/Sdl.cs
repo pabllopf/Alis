@@ -1879,7 +1879,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_WriteBE32", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_WriteBE32([NotNull] IntPtr dst, [NotNull] uint value);
+        private static extern uint INTERNAL_SDL_WriteBE32([NotNull] IntPtr dst, [NotNull] uint value);
+        
+        /// <summary>
+        /// Writes the be 32 using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
+        /// <param name="value">The value</param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint WriteBe32([NotNull] IntPtr dst, [NotNull] uint value) => INTERNAL_SDL_WriteBE32(dst.Validate(), value.Validate());
 
         /// <summary>
         ///     Sdl the write le 64 using the specified dst
@@ -1889,7 +1898,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_WriteLE64", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_WriteLE64([NotNull] IntPtr dst, ulong value);
+        private static extern uint INTERNAL_SDL_WriteLE64([NotNull] IntPtr dst, [NotNull] ulong value);
+        
+        /// <summary>
+        /// Writes the le 64 using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
+        /// <param name="value">The value</param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint WriteLe64([NotNull] IntPtr dst, [NotNull] ulong value) => INTERNAL_SDL_WriteLE64(dst.Validate(), value.Validate());
 
         /// <summary>
         ///     Sdl the write be 64 using the specified dst
@@ -1899,7 +1917,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_WriteBE64", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_WriteBE64([NotNull] IntPtr dst, ulong value);
+        public static extern uint INTERNAL_SDL_WriteBE64([NotNull] IntPtr dst, [NotNull] ulong value);
         
         /// <summary>
         ///     Sdl the r w close using the specified context
