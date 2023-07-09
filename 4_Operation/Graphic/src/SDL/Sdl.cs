@@ -3839,7 +3839,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="window">The window</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_SwapWindow", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_GL_SwapWindow([NotNull] IntPtr window);
+        private static extern void INTERNAL_SDL_GL_SwapWindow([NotNull] IntPtr window);
+        
+        /// <summary>
+        /// Gls the swap window using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        [return: NotNull]
+        public static void GlSwapWindow([NotNull] IntPtr window) => INTERNAL_SDL_GL_SwapWindow(window.Validate());
         
         /// <summary>
         ///     Sdl the gl unbind texture using the specified texture
@@ -3848,7 +3855,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_UnbindTexture", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GL_UnbindTexture([NotNull] IntPtr texture);
+        private static extern int INTERNAL_SDL_GL_UnbindTexture([NotNull] IntPtr texture);
+        
+        /// <summary>
+        /// Gls the unbind texture using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GlUnbindTexture([NotNull] IntPtr texture) => INTERNAL_SDL_GL_UnbindTexture(texture.Validate());
         
         /// <summary>
         ///     Sdl the hide window using the specified window
@@ -3856,7 +3871,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="window">The window</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_HideWindow", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_HideWindow([NotNull] IntPtr window);
+        private static extern void INTERNAL_SDL_HideWindow([NotNull] IntPtr window);
+        
+        /// <summary>
+        /// Hides the window using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        [return: NotNull]
+        public static void HideWindow([NotNull] IntPtr window) => INTERNAL_SDL_HideWindow(window.Validate());
 
         /// <summary>
         ///     Sdl the is screen saver enabled
@@ -3864,7 +3886,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_IsScreenSaverEnabled", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_IsScreenSaverEnabled();
+        private static extern SdlBool INTERNAL_SDL_IsScreenSaverEnabled();
+        
+        /// <summary>
+        /// Is the screen saver enabled
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool IsScreenSaverEnabled() => INTERNAL_SDL_IsScreenSaverEnabled();
         
         /// <summary>
         ///     Sdl the maximize window using the specified window
@@ -3872,7 +3901,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="window">The window</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_MaximizeWindow", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_MaximizeWindow([NotNull] IntPtr window);
+        private static extern void INTERNAL_SDL_MaximizeWindow([NotNull] IntPtr window);
+        
+        /// <summary>
+        /// Maximizes the window using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        [return: NotNull]
+        public static void MaximizeWindow([NotNull] IntPtr window) => INTERNAL_SDL_MaximizeWindow(window.Validate());
         
         /// <summary>
         ///     Sdl the minimize window using the specified window
@@ -3880,7 +3916,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="window">The window</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_MinimizeWindow", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_MinimizeWindow([NotNull] IntPtr window);
+        private static extern void INTERNAL_SDL_MinimizeWindow([NotNull] IntPtr window);
+        
+        /// <summary>
+        /// Minimizes the window using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        [return: NotNull]
+        public static void MinimizeWindow([NotNull] IntPtr window) => INTERNAL_SDL_MinimizeWindow(window.Validate());
         
         /// <summary>
         ///     Sdl the raise window using the specified window
@@ -3888,7 +3931,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="window">The window</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_RaiseWindow", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_RaiseWindow([NotNull] IntPtr window);
+        private static extern void INTERNAL_SDL_RaiseWindow([NotNull] IntPtr window);
+        
+        /// <summary>
+        /// Raises the window using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        [return: NotNull]
+        public static void RaiseWindow([NotNull] IntPtr window) => INTERNAL_SDL_RaiseWindow(window.Validate());
         
         /// <summary>
         ///     Sdl the restore window using the specified window
@@ -3896,7 +3946,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="window">The window</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_RestoreWindow", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_RestoreWindow([NotNull] IntPtr window);
+        private static extern void INTERNAL_SDL_RestoreWindow([NotNull] IntPtr window);
+        
+        /// <summary>
+        /// Restores the window using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        [return: NotNull]
+        public static void RestoreWindow([NotNull] IntPtr window) => INTERNAL_SDL_RestoreWindow(window.Validate());
         
         /// <summary>
         ///     Sdl the set window brightness using the specified window
@@ -3906,7 +3963,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowBrightness", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetWindowBrightness([NotNull] IntPtr window, float brightness);
+        private static extern int INTERNAL_SDL_SetWindowBrightness([NotNull] IntPtr window, float brightness);
+        
+        /// <summary>
+        /// Sets the window brightness using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="brightness">The brightness</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SetWindowBrightness([NotNull] IntPtr window, float brightness) => INTERNAL_SDL_SetWindowBrightness(window.Validate(), brightness.Validate());
         
         /// <summary>
         ///     Internals the sdl set window data using the specified window
@@ -3937,7 +4003,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowDisplayMode", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetWindowDisplayMode([NotNull] IntPtr window, ref SdlDisplayMode mode);
+        private static extern int INTERNAL_SDL_SetWindowDisplayMode([NotNull] IntPtr window, ref SdlDisplayMode mode);
+        
+        /// <summary>
+        /// Sets the window display mode using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="mode">The mode</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SetWindowDisplayMode([NotNull] IntPtr window, ref SdlDisplayMode mode) => INTERNAL_SDL_SetWindowDisplayMode(window.Validate(), ref mode);
         
         /// <summary>
         ///     Sdl the set window display mode using the specified window
@@ -3947,8 +4022,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowDisplayMode", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetWindowDisplayMode([NotNull] IntPtr window, [NotNull] IntPtr mode);
+        private static extern int INTERNAL_SDL_SetWindowDisplayMode([NotNull] IntPtr window, [NotNull] IntPtr mode);
 
+        /// <summary>
+        /// Sets the window display mode using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="mode">The mode</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SetWindowDisplayMode([NotNull] IntPtr window, [NotNull] IntPtr mode) => INTERNAL_SDL_SetWindowDisplayMode(window.Validate(), mode.Validate());
+        
         /// <summary>
         ///     Sdl the set window fullscreen using the specified window
         /// </summary>
@@ -3957,7 +4041,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowFullscreen", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetWindowFullscreen([NotNull] IntPtr window, [NotNull] uint flags);
+        private static extern int INTERNAL_SDL_SetWindowFullscreen([NotNull] IntPtr window, [NotNull] uint flags);
+        
+        /// <summary>
+        /// Sets the window fullscreen using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SetWindowFullscreen([NotNull] IntPtr window, [NotNull] uint flags) => INTERNAL_SDL_SetWindowFullscreen(window.Validate(), flags.Validate());
         
         /// <summary>
         ///     Sdl the set window gamma ramp using the specified window
@@ -3969,7 +4062,18 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowGammaRamp", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetWindowGammaRamp([NotNull] IntPtr window, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] red, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] green, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] blue);
+        private static extern int INTERNAL_SDL_SetWindowGammaRamp([NotNull] IntPtr window, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] red, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] green, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] blue);
+        
+        /// <summary>
+        /// Sets the window gamma ramp using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="red">The red</param>
+        /// <param name="green">The green</param>
+        /// <param name="blue">The blue</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SetWindowGammaRamp([NotNull] IntPtr window, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] red, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] green, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] blue) => INTERNAL_SDL_SetWindowGammaRamp(window.Validate(), red.Validate(), green.Validate(), blue.Validate());
         
         /// <summary>
         ///     Sdl the set window grab using the specified window
@@ -3978,7 +4082,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="grabbed">The grabbed</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowGrab", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_SetWindowGrab([NotNull] IntPtr window, SdlBool grabbed);
+        public static extern void INTERNAL_SDL_SetWindowGrab([NotNull] IntPtr window, [NotNull]SdlBool grabbed);
+        
+        /// <summary>
+        /// Sets the window grab using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="grabbed">The grabbed</param>
+        [return: NotNull]
+        public static void SetWindowGrab([NotNull] IntPtr window, [NotNull]SdlBool grabbed) => INTERNAL_SDL_SetWindowGrab(window.Validate(), grabbed.Validate());
         
         /// <summary>
         ///     Sdl the set window keyboard grab using the specified window
@@ -3987,8 +4099,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="grabbed">The grabbed</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowKeyboardGrab", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_SetWindowKeyboardGrab([NotNull] IntPtr window, SdlBool grabbed);
+        private static extern void INTERNAL_SDL_SetWindowKeyboardGrab([NotNull] IntPtr window, [NotNull]SdlBool grabbed);
 
+        /// <summary>
+        /// Sets the window keyboard grab using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="grabbed">The grabbed</param>
+        [return: NotNull]
+        public static void SetWindowKeyboardGrab([NotNull] IntPtr window,[NotNull] SdlBool grabbed) => INTERNAL_SDL_SetWindowKeyboardGrab(window.Validate(), grabbed);
+        
         /// <summary>
         ///     Sdl the set window mouse grab using the specified window
         /// </summary>
@@ -3996,7 +4116,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="grabbed">The grabbed</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowMouseGrab", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_SetWindowMouseGrab([NotNull] IntPtr window, SdlBool grabbed);
+        private static extern void INTERNAL_SDL_SetWindowMouseGrab([NotNull] IntPtr window, SdlBool grabbed);
+        
+        /// <summary>
+        /// Sets the window mouse grab using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="grabbed">The grabbed</param>
+        [return: NotNull]
+        public static void SetWindowMouseGrab([NotNull] IntPtr window, SdlBool grabbed) => INTERNAL_SDL_SetWindowMouseGrab(window.Validate(), grabbed);
         
         /// <summary>
         ///     Sdl the set window icon using the specified window
@@ -4005,7 +4133,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="icon">The icon</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowIcon", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_SetWindowIcon([NotNull] IntPtr window, [NotNull] IntPtr icon);
+        private static extern void INTERNAL_SDL_SetWindowIcon([NotNull] IntPtr window, [NotNull] IntPtr icon);
+        
+        /// <summary>
+        /// Sets the window icon using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="icon">The icon</param>
+        [return: NotNull]
+        public static void SetWindowIcon([NotNull] IntPtr window, [NotNull] IntPtr icon) => INTERNAL_SDL_SetWindowIcon(window.Validate(), icon.Validate());
         
         /// <summary>
         ///     Sdl the set window maximum size using the specified window
@@ -4015,7 +4151,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="maxH">The max</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowMaximumSize", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_SetWindowMaximumSize([NotNull] IntPtr window, [NotNull] int maxW, [NotNull] int maxH);
+        private static extern void INTERNAL_SDL_SetWindowMaximumSize([NotNull] IntPtr window, [NotNull] int maxW, [NotNull] int maxH);
+        
+        /// <summary>
+        /// Sets the window maximum size using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="maxW">The max</param>
+        /// <param name="maxH">The max</param>
+        [return: NotNull]
+        public static void SetWindowMaximumSize([NotNull] IntPtr window, [NotNull] int maxW, [NotNull] int maxH) => INTERNAL_SDL_SetWindowMaximumSize(window.Validate(), maxW, maxH);
         
         /// <summary>
         ///     Sdl the set window minimum size using the specified window
@@ -4025,7 +4170,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="minH">The min</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowMinimumSize", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_SetWindowMinimumSize([NotNull] IntPtr window, [NotNull] int minW, [NotNull] int minH);
+        private static extern void INTERNAL_SDL_SetWindowMinimumSize([NotNull] IntPtr window, [NotNull] int minW, [NotNull] int minH);
+        
+        /// <summary>
+        /// Sets the window minimum size using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="minW">The min</param>
+        /// <param name="minH">The min</param>
+        [return: NotNull]
+        public static void SetWindowMinimumSize([NotNull] IntPtr window, [NotNull] int minW, [NotNull] int minH) => INTERNAL_SDL_SetWindowMinimumSize(window.Validate(), minW, minH);
         
         /// <summary>
         ///     Sdl the set window position using the specified window
@@ -4035,7 +4189,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="y">The </param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowPosition", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void SDL_SetWindowPosition([NotNull] IntPtr window, [NotNull] int x, [NotNull] int y);
+        private static extern void SDL_SetWindowPosition([NotNull] IntPtr window, [NotNull] int x, [NotNull] int y);
+        
+        /// <summary>
+        /// Sets the window position using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        [return: NotNull]
+        public static void SetWindowPosition([NotNull] IntPtr window, [NotNull] int x, [NotNull] int y) => SDL_SetWindowPosition(window.Validate(), x, y);
         
         /// <summary>
         ///     Sdl the set window size using the specified window
@@ -4045,7 +4208,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="h">The </param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowSize", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_SetWindowSize([NotNull] IntPtr window, [NotNull] int w, [NotNull] int h);
+        private static extern void INTERNAL_SDL_SetWindowSize([NotNull] IntPtr window, [NotNull] int w, [NotNull] int h);
+        
+        /// <summary>
+        /// Sets the window size using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="w">The </param>
+        /// <param name="h">The </param>
+        [return: NotNull]
+        public static void SetWindowSize([NotNull] IntPtr window, [NotNull] int w, [NotNull] int h) => INTERNAL_SDL_SetWindowSize(window.Validate(), w, h);
         
         /// <summary>
         ///     Sdl the set window bordered using the specified window
@@ -4054,8 +4226,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="bordered">The bordered</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowBordered", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_SetWindowBordered([NotNull] IntPtr window, SdlBool bordered);
+        private static extern void INTERNAL_SDL_SetWindowBordered([NotNull] IntPtr window, SdlBool bordered);
 
+        /// <summary>
+        /// Sets the window bordered using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="bordered">The bordered</param>
+        [return: NotNull]
+        public static void SetWindowBordered([NotNull] IntPtr window, SdlBool bordered) => INTERNAL_SDL_SetWindowBordered(window.Validate(), bordered);
+        
         /// <summary>
         ///     Sdl the get window borders size using the specified window
         /// </summary>
@@ -4067,7 +4247,19 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowBordered", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GetWindowBordersSize([NotNull] IntPtr window, out int top, out int left, out int bottom, out int right);
+        private static extern int INTERNAL_SDL_GetWindowBordersSize([NotNull] IntPtr window, out int top, out int left, out int bottom, out int right);
+        
+        /// <summary>
+        /// Gets the window borders size using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="top">The top</param>
+        /// <param name="left">The left</param>
+        /// <param name="bottom">The bottom</param>
+        /// <param name="right">The right</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GetWindowBordersSize([NotNull] IntPtr window, out int top, out int left, out int bottom, out int right) => INTERNAL_SDL_GetWindowBordersSize(window.Validate(), out top, out left, out bottom, out right);
         
         /// <summary>
         ///     Sdl the set window resizable using the specified window
@@ -4076,7 +4268,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="resizable">The resizable</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowResizable", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_SetWindowResizable([NotNull] IntPtr window, SdlBool resizable);
+        private static extern void INTERNAL_SDL_SetWindowResizable([NotNull] IntPtr window, SdlBool resizable);
+        
+        /// <summary>
+        /// Sets the window resizable using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="resizable">The resizable</param>
+        [return: NotNull]
+        public static void SetWindowResizable([NotNull] IntPtr window, SdlBool resizable) => INTERNAL_SDL_SetWindowResizable(window.Validate(), resizable);
         
         /// <summary>
         ///     Sdl the set window always on top using the specified window
@@ -4085,7 +4285,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="onTop">The on top</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowAlwaysOnTop", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_SetWindowAlwaysOnTop([NotNull] IntPtr window, SdlBool onTop);
+        private static extern void INTERNAL_SDL_SetWindowAlwaysOnTop([NotNull] IntPtr window, SdlBool onTop);
+
+        /// <summary>
+        /// Sets the window always on top using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="onTop">The on top</param>
+        [return: NotNull]
+        public static void SetWindowAlwaysOnTop([NotNull] IntPtr window, SdlBool onTop) => INTERNAL_SDL_SetWindowAlwaysOnTop(window.Validate(), onTop);
 
         /// <summary>
         ///     Internals the sdl set window title using the specified window
@@ -4110,7 +4318,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="window">The window</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_ShowWindow", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_ShowWindow([NotNull] IntPtr window);
+        private static extern void INTERNAL_SDL_ShowWindow([NotNull] IntPtr window);
+        
+        /// <summary>
+        /// Shows the window using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        [return: NotNull]
+        public static void ShowWindow([NotNull] IntPtr window) => INTERNAL_SDL_ShowWindow(window.Validate());
         
         /// <summary>
         ///     Sdl the update window surface using the specified window
@@ -4119,8 +4334,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_UpdateWindowSurface", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_UpdateWindowSurface([NotNull] IntPtr window);
+        private static extern int INTERNAL_SDL_UpdateWindowSurface([NotNull] IntPtr window);
 
+        /// <summary>
+        /// Updates the window surface using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int UpdateWindowSurface([NotNull] IntPtr window) => INTERNAL_SDL_UpdateWindowSurface(window.Validate());
+        
         /// <summary>
         ///     Sdl the update window surface rects using the specified window
         /// </summary>
@@ -4130,8 +4353,18 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_UpdateWindowSurfaceRects", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_UpdateWindowSurfaceRects([NotNull] IntPtr window, [In] SdlRect[] rects, [NotNull] int numRects);
+        private static extern int INTERNAL_SDL_UpdateWindowSurfaceRects([NotNull] IntPtr window, [In] SdlRect[] rects, [NotNull] int numRects);
 
+        /// <summary>
+        /// Updates the window surface rects using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="rects">The rects</param>
+        /// <param name="numRects">The num rects</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int UpdateWindowSurfaceRects([NotNull] IntPtr window, [In] SdlRect[] rects, [NotNull] int numRects) => INTERNAL_SDL_UpdateWindowSurfaceRects(window.Validate(), rects, numRects);
+        
         /// <summary>
         ///     Internals the sdl video init using the specified driver name
         /// </summary>
@@ -4154,7 +4387,13 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_VideoQuit", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_VideoQuit();
+        private static extern void INTERNAL_SDL_VideoQuit();
+        
+        /// <summary>
+        /// Video the quit
+        /// </summary>
+        [return: NotNull]
+        public static void VideoQuit() => INTERNAL_SDL_VideoQuit();
         
         /// <summary>
         ///     Sdl the set window hit test using the specified window

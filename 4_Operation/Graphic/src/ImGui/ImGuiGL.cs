@@ -113,7 +113,7 @@ namespace Alis.Core.Graphic.ImGui
             // initialize the screen to black as soon as possible
             GlClearColor(0f, 0f, 0f, 1f);
             GlClear(ClearBufferMask.ColorBufferBit);
-            INTERNAL_SDL_GL_SwapWindow(window);
+            GlSwapWindow(window);
 
             Console.WriteLine($"GL Version: {GlGetString(StringName.Version)}");
             return glContext;
