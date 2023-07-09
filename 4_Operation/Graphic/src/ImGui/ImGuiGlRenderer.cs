@@ -219,8 +219,8 @@ namespace Alis.Core.Graphic.ImGui
             }
 
             // Setup time step (we don't use SDL_GetTicks() because it is using millisecond resolution)
-            ulong frequency = INTERNAL_SDL_GetPerformanceFrequency();
-            ulong currentTime = INTERNAL_SDL_GetPerformanceCounter();
+            ulong frequency = GetPerformanceFrequency();
+            ulong currentTime = GetPerformanceCounter();
             io.DeltaTime = _time > 0 ? (float) ((double) (currentTime - _time) / frequency) : 1.0f / 60.0f;
             if (io.DeltaTime <= 0)
             {

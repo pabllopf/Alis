@@ -1003,7 +1003,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl haptic pause
         /// </summary>
-        public const ushort HapticPause = 1 << 15;
+        public const ushort HapticPauseVar = 1 << 15;
         
         /// <summary>
         ///     The sdl haptic polar
@@ -7560,11 +7560,19 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     Sdl the wait event using the specified  event
         /// </summary>
-        /// <param name="event">The event</param>
+        /// <param name="sdlEvent">The event</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_WaitEvent", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_WaitEvent(out SdlEvent @event);
+        private static extern int INTERNAL_SDL_WaitEvent(out SdlEvent sdlEvent);
+        
+        /// <summary>
+        /// Waits the event using the specified sdl event
+        /// </summary>
+        /// <param name="sdlEvent">The sdl event</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int WaitEvent(out SdlEvent sdlEvent) => INTERNAL_SDL_WaitEvent(out sdlEvent);
 
         /// <summary>
         ///     Sdl the wait event timeout using the specified  event
@@ -9407,8 +9415,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerFromInstanceID", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_GameControllerFromInstanceID([NotNull] int joyId);
+        private static extern IntPtr INTERNAL_SDL_GameControllerFromInstanceID([NotNull] int joyId);
 
+        /// <summary>
+        /// Internals the sdl game controller from instance id using the specified joy id
+        /// </summary>
+        /// <param name="joyId">The joy id</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr GameControllerFromInstanceId([NotNull] int joyId) => INTERNAL_SDL_GameControllerFromInstanceID(joyId.Validate());
+        
         /// <summary>
         ///     Sdl the game controller type for index using the specified joystick index
         /// </summary>
@@ -9416,8 +9432,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl game controller type</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerTypeForIndex", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlGameControllerType INTERNAL_SDL_GameControllerTypeForIndex([NotNull] int joystickIndex);
-
+        private static extern SdlGameControllerType INTERNAL_SDL_GameControllerTypeForIndex([NotNull] int joystickIndex);
+        
+        /// <summary>
+        /// Games the controller type for index using the specified joystick index
+        /// </summary>
+        /// <param name="joystickIndex">The joystick index</param>
+        /// <returns>The sdl game controller type</returns>
+        [return: NotNull]
+        public static SdlGameControllerType GameControllerTypeForIndex([NotNull] int joystickIndex) => INTERNAL_SDL_GameControllerTypeForIndex(joystickIndex.Validate());
+        
         /// <summary>
         ///     Sdl the game controller get type using the specified game controller
         /// </summary>
@@ -9425,8 +9449,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl game controller type</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetType", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlGameControllerType INTERNAL_SDL_GameControllerGetType([NotNull]IntPtr gameController);
-
+        private static extern SdlGameControllerType INTERNAL_SDL_GameControllerGetType([NotNull]IntPtr gameController);
+        
+        /// <summary>
+        /// Games the controller get type using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <returns>The sdl game controller type</returns>
+        [return: NotNull]
+        public static SdlGameControllerType GameControllerGetType([NotNull]IntPtr gameController) => INTERNAL_SDL_GameControllerGetType(gameController.Validate());
+        
         /// <summary>
         ///     Sdl the game controller from player index using the specified player index
         /// </summary>
@@ -9434,8 +9466,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerFromPlayerIndex", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_GameControllerFromPlayerIndex([NotNull] int playerIndex);
+        private static extern IntPtr INTERNAL_SDL_GameControllerFromPlayerIndex([NotNull] int playerIndex);
 
+        /// <summary>
+        /// Games the controller from player index using the specified player index
+        /// </summary>
+        /// <param name="playerIndex">The player index</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr GameControllerFromPlayerIndex([NotNull] int playerIndex) => INTERNAL_SDL_GameControllerFromPlayerIndex(playerIndex.Validate());
+
+        
         /// <summary>
         ///     Sdl the game controller set player index using the specified game controller
         /// </summary>
@@ -9443,8 +9484,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="playerIndex">The player index</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerSetPlayerIndex", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_GameControllerSetPlayerIndex([NotNull]IntPtr gameController, [NotNull] int playerIndex);
+        private static extern void INTERNAL_SDL_GameControllerSetPlayerIndex([NotNull]IntPtr gameController, [NotNull] int playerIndex);
 
+        /// <summary>
+        /// Games the controller set player index using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <param name="playerIndex">The player index</param>
+        [return: NotNull]
+        public static void GameControllerSetPlayerIndex([NotNull]IntPtr gameController, [NotNull] int playerIndex) => INTERNAL_SDL_GameControllerSetPlayerIndex(gameController, playerIndex.Validate());
+
+        
         /// <summary>
         ///     Sdl the game controller has led using the specified game controller
         /// </summary>
@@ -9452,8 +9502,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName,EntryPoint = "SDL_GameControllerHasLED", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_GameControllerHasLED([NotNull]IntPtr gameController);
+        private static extern SdlBool INTERNAL_SDL_GameControllerHasLED([NotNull]IntPtr gameController);
+        
+        /// <summary>
+        /// Games the controller has led using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool GameControllerHasLed([NotNull]IntPtr gameController) => INTERNAL_SDL_GameControllerHasLED(gameController.Validate());
 
+        
         /// <summary>
         ///     Sdl the game controller has rumble using the specified game controller
         /// </summary>
@@ -9461,7 +9520,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName,EntryPoint = "SDL_GameControllerHasRumble", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_GameControllerHasRumble([NotNull]IntPtr gameController);
+        private static extern SdlBool INTERNAL_SDL_GameControllerHasRumble([NotNull]IntPtr gameController);
+
+        /// <summary>
+        /// Games the controller has rumble using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static  SdlBool GameControllerHasRumble([NotNull]IntPtr gameController) => INTERNAL_SDL_GameControllerHasRumble(gameController.Validate());
 
         /// <summary>
         ///     Sdl the game controller has rumble triggers using the specified game controller
@@ -9470,8 +9537,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerHasRumbleTriggers", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_GameControllerHasRumbleTriggers([NotNull]IntPtr gameController);
+        private static extern SdlBool INTERNAL_SDL_GameControllerHasRumbleTriggers([NotNull]IntPtr gameController);
 
+        /// <summary>
+        /// Games the controller has rumble triggers using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool GameControllerHasRumbleTriggers([NotNull]IntPtr gameController) => INTERNAL_SDL_GameControllerHasRumbleTriggers(gameController.Validate());
+        
         /// <summary>
         ///     Sdl the game controller set led using the specified game controller
         /// </summary>
@@ -9482,8 +9557,20 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerSetLED", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GameControllerSetLED([NotNull]IntPtr gameController, [NotNull] byte red, [NotNull] byte green, [NotNull] byte blue);
+        private static extern int INTERNAL_SDL_GameControllerSetLED([NotNull]IntPtr gameController, [NotNull] byte red, [NotNull] byte green, [NotNull] byte blue);
 
+        /// <summary>
+        /// Games the controller set led using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <param name="red">The red</param>
+        /// <param name="green">The green</param>
+        /// <param name="blue">The blue</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GameControllerSetLed([NotNull]IntPtr gameController, [NotNull] byte red, [NotNull] byte green, [NotNull] byte blue) => INTERNAL_SDL_GameControllerSetLED(gameController.Validate(), red, green, blue);
+
+        
         /// <summary>
         ///     Sdl the game controller has axis using the specified game controller
         /// </summary>
@@ -9492,8 +9579,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerHasAxis", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_GameControllerHasAxis([NotNull]IntPtr gameController, SdlGameControllerAxis axis);
-
+        private static extern SdlBool INTERNAL_SDL_GameControllerHasAxis([NotNull]IntPtr gameController, SdlGameControllerAxis axis);
+        
+        /// <summary>
+        /// Games the controller has axis using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <param name="axis">The axis</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool GameControllerHasAxis([NotNull]IntPtr gameController, SdlGameControllerAxis axis) => INTERNAL_SDL_GameControllerHasAxis(gameController.Validate(), axis);
+        
         /// <summary>
         ///     Sdl the game controller has button using the specified game controller
         /// </summary>
@@ -9502,8 +9598,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerHasButton", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_GameControllerHasButton([NotNull]IntPtr gameController, SdlGameControllerButton button);
-
+        private static extern SdlBool INTERNAL_SDL_GameControllerHasButton([NotNull]IntPtr gameController, SdlGameControllerButton button);
+        
+        /// <summary>
+        /// Games the controller has button using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <param name="button">The button</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool GameControllerHasButton([NotNull]IntPtr gameController, SdlGameControllerButton button) => INTERNAL_SDL_GameControllerHasButton(gameController.Validate(), button);
+        
         /// <summary>
         ///     Sdl the game controller get num touchpads using the specified game controller
         /// </summary>
@@ -9511,8 +9616,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetNumTouchpads", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GameControllerGetNumTouchpads([NotNull]IntPtr gameController);
-
+        private static extern int INTERNAL_SDL_GameControllerGetNumTouchpads([NotNull]IntPtr gameController);
+        
+        /// <summary>
+        /// Games the controller get num touchpads using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GameControllerGetNumTouchpads([NotNull]IntPtr gameController) => INTERNAL_SDL_GameControllerGetNumTouchpads(gameController.Validate());
+        
         /// <summary>
         ///     Sdl the game controller get num touchpad fingers using the specified game controller
         /// </summary>
@@ -9521,8 +9634,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetNumTouchpadFingers", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GameControllerGetNumTouchpadFingers([NotNull]IntPtr gameController, [NotNull] int touchpad);
+        private static extern int INTERNAL_SDL_GameControllerGetNumTouchpadFingers([NotNull]IntPtr gameController, [NotNull] int touchpad);
 
+        /// <summary>
+        /// Games the controller get num touchpad fingers using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <param name="touchpad">The touchpad</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GameControllerGetNumTouchpadFingers([NotNull]IntPtr gameController, [NotNull] int touchpad) => INTERNAL_SDL_GameControllerGetNumTouchpadFingers(gameController.Validate(), touchpad);
+        
         /// <summary>
         ///     Sdl the game controller get touchpad finger using the specified game controller
         /// </summary>
@@ -9536,8 +9658,22 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetTouchpadFinger", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GameControllerGetTouchpadFinger([NotNull]IntPtr gameController, [NotNull] int touchpad, [NotNull] int finger, out byte state, out float x, out float y, out float pressure);
+        private static extern int INTERNAL_SDL_GameControllerGetTouchpadFinger([NotNull]IntPtr gameController, [NotNull] int touchpad, [NotNull] int finger, out byte state, out float x, out float y, out float pressure);
 
+        /// <summary>
+        /// Games the controller get touchpad finger using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <param name="touchpad">The touchpad</param>
+        /// <param name="finger">The finger</param>
+        /// <param name="state">The state</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="pressure">The pressure</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GameControllerGetTouchpadFinger([NotNull]IntPtr gameController, [NotNull] int touchpad, [NotNull] int finger, out byte state, out float x, out float y, out float pressure) => INTERNAL_SDL_GameControllerGetTouchpadFinger(gameController.Validate(), touchpad, finger, out state, out x, out y, out pressure);
+        
         /// <summary>
         ///     Sdl the game controller has sensor using the specified game controller
         /// </summary>
@@ -9546,8 +9682,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerHasSensor", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_GameControllerHasSensor([NotNull]IntPtr gameController, SdlSensorType type);
+        private static extern SdlBool INTERNAL_SDL_GameControllerHasSensor([NotNull]IntPtr gameController, SdlSensorType type);
 
+        /// <summary>
+        /// Games the controller has sensor using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <param name="type">The type</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool GameControllerHasSensor([NotNull]IntPtr gameController, SdlSensorType type) => INTERNAL_SDL_GameControllerHasSensor(gameController.Validate(), type);
+        
         /// <summary>
         ///     Sdl the game controller set sensor enabled using the specified game controller
         /// </summary>
@@ -9557,8 +9702,18 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerSetSensorEnabled", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GameControllerSetSensorEnabled([NotNull]IntPtr gameController, SdlSensorType type, SdlBool enabled);
+        private static extern int INTERNAL_SDL_GameControllerSetSensorEnabled([NotNull]IntPtr gameController, SdlSensorType type, SdlBool enabled);
 
+        /// <summary>
+        /// Games the controller set sensor enabled using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <param name="type">The type</param>
+        /// <param name="enabled">The enabled</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GameControllerSetSensorEnabled([NotNull]IntPtr gameController, SdlSensorType type, SdlBool enabled) => INTERNAL_SDL_GameControllerSetSensorEnabled(gameController.Validate(), type, enabled);
+        
         /// <summary>
         ///     Sdl the game controller is sensor enabled using the specified game controller
         /// </summary>
@@ -9567,8 +9722,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerIsSensorEnabled", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_GameControllerIsSensorEnabled([NotNull]IntPtr gameController, SdlSensorType type);
+        private static extern SdlBool INTERNAL_SDL_GameControllerIsSensorEnabled([NotNull]IntPtr gameController, SdlSensorType type);
 
+        /// <summary>
+        /// Games the controller is sensor enabled using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <param name="type">The type</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool GameControllerIsSensorEnabled([NotNull]IntPtr gameController, SdlSensorType type) => INTERNAL_SDL_GameControllerIsSensorEnabled(gameController.Validate(), type);
+        
         /// <summary>
         ///     Sdl the game controller get sensor data using the specified game controller
         /// </summary>
@@ -9579,7 +9743,19 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetSensorData", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GameControllerGetSensorData([NotNull]IntPtr gameController, SdlSensorType type, [NotNull]IntPtr data, [NotNull] int numValues);
+        private static extern int INTERNAL_SDL_GameControllerGetSensorData([NotNull]IntPtr gameController, SdlSensorType type, [NotNull]IntPtr data, [NotNull] int numValues);
+
+        
+        /// <summary>
+        /// Games the controller get sensor data using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <param name="type">The type</param>
+        /// <param name="data">The data</param>
+        /// <param name="numValues">The num values</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GameControllerGetSensorData([NotNull]IntPtr gameController, SdlSensorType type, [NotNull]IntPtr data, [NotNull] int numValues) => INTERNAL_SDL_GameControllerGetSensorData(gameController.Validate(), type, data, numValues);
 
         /// <summary>
         ///     Sdl the game controller get sensor data rate using the specified game controller
@@ -9589,7 +9765,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The float</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetSensorDataRate", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern float INTERNAL_SDL_GameControllerGetSensorDataRate([NotNull]IntPtr gameController, SdlSensorType type);
+        private static extern float INTERNAL_SDL_GameControllerGetSensorDataRate([NotNull]IntPtr gameController, SdlSensorType type);
+        
+        /// <summary>
+        /// Games the controller get sensor data rate using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <param name="type">The type</param>
+        /// <returns>The float</returns>
+        [return: NotNull]
+        public static  float GameControllerGetSensorDataRate([NotNull]IntPtr gameController, SdlSensorType type) => INTERNAL_SDL_GameControllerGetSensorDataRate(gameController.Validate(), type);
+
 
         /// <summary>
         ///     Sdl the game controller send effect using the specified game controller
@@ -9600,15 +9786,33 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerSendEffect", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GameControllerSendEffect([NotNull]IntPtr gameController, [NotNull]IntPtr data, [NotNull] int size);
+        private static extern int INTERNAL_SDL_GameControllerSendEffect([NotNull]IntPtr gameController, [NotNull]IntPtr data, [NotNull] int size);
 
+        /// <summary>
+        /// Games the controller send effect using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <param name="data">The data</param>
+        /// <param name="size">The size</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static  int GameControllerSendEffect([NotNull]IntPtr gameController, [NotNull]IntPtr data, [NotNull] int size) => INTERNAL_SDL_GameControllerSendEffect(gameController.Validate(), data, size);
+        
         /// <summary>
         ///     Sdl the haptic close using the specified haptic
         /// </summary>
         /// <param name="haptic">The haptic</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticClose", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_HapticClose([NotNull]IntPtr haptic);
+        private static extern void INTERNAL_SDL_HapticClose([NotNull]IntPtr haptic);
+        
+        /// <summary>
+        /// Haptics the close using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        [return: NotNull]
+        public static void HapticClose([NotNull]IntPtr haptic) => INTERNAL_SDL_HapticClose(haptic.Validate());
+
 
         /// <summary>
         ///     Sdl the haptic destroy effect using the specified haptic
@@ -9617,7 +9821,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="effect">The effect</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticDestroyEffect", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_HapticDestroyEffect([NotNull]IntPtr haptic, [NotNull] int effect);
+        private static extern void INTERNAL_SDL_HapticDestroyEffect([NotNull]IntPtr haptic, [NotNull] int effect);
+        
+        /// <summary>
+        /// Haptics the destroy effect using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <param name="effect">The effect</param>
+        [return: NotNull]
+        public static void HapticDestroyEffect([NotNull]IntPtr haptic, [NotNull] int effect) => INTERNAL_SDL_HapticDestroyEffect(haptic.Validate(), effect);
+
 
         /// <summary>
         ///     Sdl the haptic effect supported using the specified haptic
@@ -9627,7 +9840,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticEffectSupported", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticEffectSupported([NotNull]IntPtr haptic, ref SdlHapticEffect effect);
+        private static extern int INTERNAL_SDL_HapticEffectSupported([NotNull]IntPtr haptic, ref SdlHapticEffect effect);
+        
+        /// <summary>
+        /// Haptics the effect supported using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <param name="effect">The effect</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int HapticEffectSupported([NotNull]IntPtr haptic, ref SdlHapticEffect effect) => INTERNAL_SDL_HapticEffectSupported(haptic.Validate(), ref effect);
+
 
         /// <summary>
         ///     Sdl the haptic get effect status using the specified haptic
@@ -9637,8 +9860,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticGetEffectStatus", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticGetEffectStatus([NotNull]IntPtr haptic, [NotNull] int effect);
+        private static extern int INTERNAL_SDL_HapticGetEffectStatus([NotNull]IntPtr haptic, [NotNull] int effect);
 
+        /// <summary>
+        /// Haptics the get effect status using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <param name="effect">The effect</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int HapticGetEffectStatus([NotNull]IntPtr haptic, [NotNull] int effect) => INTERNAL_SDL_HapticGetEffectStatus(haptic.Validate(), effect);
+        
         /// <summary>
         ///     Sdl the haptic index using the specified haptic
         /// </summary>
@@ -9646,7 +9878,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticIndex", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticIndex([NotNull]IntPtr haptic);
+        private static extern int INTERNAL_SDL_HapticIndex([NotNull]IntPtr haptic);
+        
+        /// <summary>
+        /// Haptics the index using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int HapticIndex([NotNull]IntPtr haptic) => INTERNAL_SDL_HapticIndex(haptic.Validate());
 
         /// <summary>
         ///     Internals the sdl haptic name using the specified device index
@@ -9663,7 +9903,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_HapticName([NotNull] int deviceIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_HapticName(deviceIndex));
+        public static string HapticName([NotNull] int deviceIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_HapticName(deviceIndex.Validate()));
 
         /// <summary>
         ///     Sdl the haptic new effect using the specified haptic
@@ -9673,8 +9913,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticNewEffect", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticNewEffect([NotNull]IntPtr haptic, ref SdlHapticEffect effect);
+        private static extern int INTERNAL_SDL_HapticNewEffect([NotNull]IntPtr haptic, ref SdlHapticEffect effect);
 
+        /// <summary>
+        /// Haptics the new effect using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <param name="effect">The effect</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int HapticNewEffect([NotNull]IntPtr haptic, ref SdlHapticEffect effect) => INTERNAL_SDL_HapticNewEffect(haptic, ref effect).Validate();
+        
         /// <summary>
         ///     Sdl the haptic num axes using the specified haptic
         /// </summary>
@@ -9682,7 +9931,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticNumAxes", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticNumAxes([NotNull]IntPtr haptic);
+        private static extern int INTERNAL_SDL_HapticNumAxes([NotNull]IntPtr haptic);
+        
+        /// <summary>
+        /// Haptics the num axes using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+         public static int HapticNumAxes([NotNull]IntPtr haptic) => INTERNAL_SDL_HapticNumAxes(haptic).Validate();
 
         /// <summary>
         ///     Sdl the haptic num effects using the specified haptic
@@ -9691,7 +9948,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticNumEffects", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticNumEffects([NotNull]IntPtr haptic);
+        private static extern int INTERNAL_SDL_HapticNumEffects([NotNull]IntPtr haptic);
+        
+        /// <summary>
+        /// Haptics the num effects using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int HapticNumEffects([NotNull]IntPtr haptic) => INTERNAL_SDL_HapticNumEffects(haptic).Validate();
 
         /// <summary>
         ///     Sdl the haptic num effects playing using the specified haptic
@@ -9700,8 +9965,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName,EntryPoint = "SDL_HapticNumEffectsPlaying", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticNumEffectsPlaying([NotNull]IntPtr haptic);
+        private static extern int INTERNAL_SDL_HapticNumEffectsPlaying([NotNull]IntPtr haptic);
 
+        /// <summary>
+        /// Haptics the num effects playing using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int HapticNumEffectsPlaying([NotNull]IntPtr haptic) => INTERNAL_SDL_HapticNumEffectsPlaying(haptic).Validate();
+        
         /// <summary>
         ///     Sdl the haptic open using the specified device index
         /// </summary>
@@ -9709,8 +9982,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticOpen", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_HapticOpen([NotNull] int deviceIndex);
+        private static extern IntPtr INTERNAL_SDL_HapticOpen([NotNull] int deviceIndex);
 
+        /// <summary>
+        /// Haptics the open using the specified device index
+        /// </summary>
+        /// <param name="deviceIndex">The device index</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr HapticOpen([NotNull] int deviceIndex) => INTERNAL_SDL_HapticOpen(deviceIndex).Validate();
+        
         /// <summary>
         ///     Sdl the haptic opened using the specified device index
         /// </summary>
@@ -9718,7 +9999,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticOpened", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticOpened([NotNull] int deviceIndex);
+        private static extern int INTERNAL_SDL_HapticOpened([NotNull] int deviceIndex);
+        
+        /// <summary>
+        /// Haptics the opened using the specified device index
+        /// </summary>
+        /// <param name="deviceIndex">The device index</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int HapticOpened([NotNull] int deviceIndex) => INTERNAL_SDL_HapticOpened(deviceIndex).Validate();
 
         /// <summary>
         ///     Sdl the haptic open from joystick using the specified joystick
@@ -9727,7 +10016,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticOpenFromJoystick", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_HapticOpenFromJoystick([NotNull]IntPtr joystick);
+        private static extern IntPtr INTERNAL_SDL_HapticOpenFromJoystick([NotNull]IntPtr joystick);
+        
+        /// <summary>
+        /// Haptics the open from joystick using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr HapticOpenFromJoystick([NotNull]IntPtr joystick) => INTERNAL_SDL_HapticOpenFromJoystick(joystick).Validate();
 
         /// <summary>
         ///     Sdl the haptic open from mouse
@@ -9735,7 +10032,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticOpenFromMouse", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_HapticOpenFromMouse();
+        private static extern IntPtr INTERNAL_SDL_HapticOpenFromMouse();
+        
+        /// <summary>
+        /// Haptics the open from mouse
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr HapticOpenFromMouse() => INTERNAL_SDL_HapticOpenFromMouse().Validate();
 
         /// <summary>
         ///     Sdl the haptic pause using the specified haptic
@@ -9744,8 +10048,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticPause", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticPause([NotNull]IntPtr haptic);
+        private static extern int INTERNAL_SDL_HapticPause([NotNull]IntPtr haptic);
 
+        /// <summary>
+        /// Haptics the pause using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int HapticPause([NotNull]IntPtr haptic) => INTERNAL_SDL_HapticPause(haptic.Validate()).Validate();
+        
         /// <summary>
         ///     Sdl the haptic query using the specified haptic
         /// </summary>
@@ -9753,8 +10065,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticQuery", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_HapticQuery([NotNull]IntPtr haptic);
-
+        private static extern uint INTERNAL_SDL_HapticQuery([NotNull]IntPtr haptic);
+        
+        /// <summary>
+        /// Haptics the query using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint HapticQuery([NotNull]IntPtr haptic) => INTERNAL_SDL_HapticQuery(haptic.Validate()).Validate();
+        
         /// <summary>
         ///     Sdl the haptic rumble init using the specified haptic
         /// </summary>
@@ -9762,8 +10082,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticRumbleInit", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticRumbleInit([NotNull]IntPtr haptic);
+        private static extern int INTERNAL_SDL_HapticRumbleInit([NotNull]IntPtr haptic);
 
+        /// <summary>
+        /// Haptics the rumble init using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int HapticRumbleInit([NotNull]IntPtr haptic) => INTERNAL_SDL_HapticRumbleInit(haptic.Validate()).Validate();
+        
         /// <summary>
         ///     Sdl the haptic rumble play using the specified haptic
         /// </summary>
@@ -9773,7 +10101,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticRumblePlay", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticRumblePlay([NotNull]IntPtr haptic, float strength, [NotNull] uint length);
+        private static extern int INTERNAL_SDL_HapticRumblePlay([NotNull]IntPtr haptic, float strength, [NotNull] uint length);
+
+        /// <summary>
+        /// Haptics the rumble play using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <param name="strength">The strength</param>
+        /// <param name="length">The length</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int HapticRumblePlay([NotNull]IntPtr haptic, float strength, [NotNull] uint length) => INTERNAL_SDL_HapticRumblePlay(haptic.Validate(), strength, length.Validate()).Validate();
 
         /// <summary>
         ///     Sdl the haptic rumble stop using the specified haptic
@@ -9782,8 +10120,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticRumbleStop", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticRumbleStop([NotNull]IntPtr haptic);
-
+        private static extern int INTERNAL_SDL_HapticRumbleStop([NotNull]IntPtr haptic);
+        
+        /// <summary>
+        /// Haptics the rumble stop using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int HapticRumbleStop([NotNull]IntPtr haptic) => INTERNAL_SDL_HapticRumbleStop(haptic.Validate()).Validate();
+        
         /// <summary>
         ///     Sdl the haptic rumble supported using the specified haptic
         /// </summary>
@@ -9791,8 +10137,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticRumbleSupported", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticRumbleSupported([NotNull]IntPtr haptic);
+        private static extern int INTERNAL_SDL_HapticRumbleSupported([NotNull]IntPtr haptic);
 
+        /// <summary>
+        /// Haptics the rumble supported using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static  int HapticRumbleSupported([NotNull]IntPtr haptic) => INTERNAL_SDL_HapticRumbleSupported(haptic.Validate()).Validate();
+        
         /// <summary>
         ///     Sdl the haptic run effect using the specified haptic
         /// </summary>
@@ -9802,8 +10156,18 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticRunEffect", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticRunEffect([NotNull]IntPtr haptic, [NotNull] int effect, [NotNull] uint iterations);
-
+        private static extern int INTERNAL_SDL_HapticRunEffect([NotNull]IntPtr haptic, [NotNull] int effect, [NotNull] uint iterations);
+        
+        /// <summary>
+        /// Haptics the run effect using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <param name="effect">The effect</param>
+        /// <param name="iterations">The iterations</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int HapticRunEffect([NotNull]IntPtr haptic, [NotNull] int effect, [NotNull] uint iterations) => INTERNAL_SDL_HapticRunEffect(haptic.Validate(), effect, iterations).Validate();
+        
         /// <summary>
         ///     Sdl the haptic set auto center using the specified haptic
         /// </summary>
@@ -9812,8 +10176,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticSetAutoCenter", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticSetAutoCenter([NotNull]IntPtr haptic, [NotNull] int autoCenter);
+        private static extern int INTERNAL_SDL_HapticSetAutoCenter([NotNull]IntPtr haptic, [NotNull] int autoCenter);
 
+        /// <summary>
+        /// Haptics the set auto center using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <param name="autoCenter">The auto center</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int HapticSetAutoCenter([NotNull]IntPtr haptic, [NotNull] int autoCenter) => INTERNAL_SDL_HapticSetAutoCenter(haptic.Validate(), autoCenter).Validate();
+        
         /// <summary>
         ///     Sdl the haptic set gain using the specified haptic
         /// </summary>
@@ -9822,8 +10195,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticSetGain", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticSetGain([NotNull]IntPtr haptic, [NotNull] int gain);
-
+        private static extern int INTERNAL_SDL_HapticSetGain([NotNull]IntPtr haptic, [NotNull] int gain);
+        
+        /// <summary>
+        /// Haptics the set gain using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <param name="gain">The gain</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int HapticSetGain([NotNull]IntPtr haptic, [NotNull] int gain) => INTERNAL_SDL_HapticSetGain(haptic.Validate(), gain).Validate();
+        
         /// <summary>
         ///     Sdl the haptic stop all using the specified haptic
         /// </summary>
@@ -9831,7 +10213,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticStopAll", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticStopAll([NotNull]IntPtr haptic);
+        private static extern int INTERNAL_SDL_HapticStopAll([NotNull]IntPtr haptic);
+        
+        /// <summary>
+        /// Haptics the stop all using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int HapticStopAll([NotNull]IntPtr haptic) => INTERNAL_SDL_HapticStopAll(haptic.Validate()).Validate();
 
         /// <summary>
         ///     Sdl the haptic stop effect using the specified haptic
@@ -9841,7 +10231,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticStopEffect", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticStopEffect([NotNull]IntPtr haptic, [NotNull] int effect);
+        private static extern int INTERNAL_SDL_HapticStopEffect([NotNull]IntPtr haptic, [NotNull] int effect);
+        
+        /// <summary>
+        /// Haptics the stop effect using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <param name="effect">The effect</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int HapticStopEffect([NotNull]IntPtr haptic, [NotNull] int effect) => INTERNAL_SDL_HapticStopEffect(haptic.Validate(), effect).Validate();
 
         /// <summary>
         ///     Sdl the haptic unpause using the specified haptic
@@ -9850,8 +10249,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticUnpause", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticUnpause([NotNull]IntPtr haptic);
-
+        private static extern int INTERNAL_SDL_HapticUnpause([NotNull]IntPtr haptic);
+        
+        /// <summary>
+        /// Haptics the unpause using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int HapticUnpause([NotNull]IntPtr haptic) => INTERNAL_SDL_HapticUnpause(haptic.Validate()).Validate();
+        
         /// <summary>
         ///     Sdl the haptic update effect using the specified haptic
         /// </summary>
@@ -9861,8 +10268,18 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName,EntryPoint = "SDL_HapticUpdateEffect", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_HapticUpdateEffect([NotNull]IntPtr haptic, [NotNull] int effect, ref SdlHapticEffect data);
+        private static extern int INTERNAL_SDL_HapticUpdateEffect([NotNull]IntPtr haptic, [NotNull] int effect, ref SdlHapticEffect data);
 
+        /// <summary>
+        /// Haptics the update effect using the specified haptic
+        /// </summary>
+        /// <param name="haptic">The haptic</param>
+        /// <param name="effect">The effect</param>
+        /// <param name="data">The data</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int HapticUpdateEffect([NotNull]IntPtr haptic, [NotNull] int effect, ref SdlHapticEffect data) => INTERNAL_SDL_HapticUpdateEffect(haptic.Validate(), effect, ref data).Validate();
+        
         /// <summary>
         ///     Sdl the joystick is haptic using the specified joystick
         /// </summary>
@@ -9870,7 +10287,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickIsHaptic", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_JoystickIsHaptic([NotNull]IntPtr joystick);
+        private static extern int INTERNAL_SDL_JoystickIsHaptic([NotNull]IntPtr joystick);
+        
+        /// <summary>
+        /// Joysticks the is haptic using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static  int JoystickIsHaptic([NotNull]IntPtr joystick) => INTERNAL_SDL_JoystickIsHaptic(joystick.Validate()).Validate();
 
         /// <summary>
         ///     Sdl the mouse is haptic
@@ -9878,7 +10303,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_MouseIsHaptic", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_MouseIsHaptic();
+        private static extern int INTERNAL_SDL_MouseIsHaptic();
+        
+        /// <summary>
+        /// Mouses the is haptic
+        /// </summary>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int MouseIsHaptic() => INTERNAL_SDL_MouseIsHaptic().Validate();
 
         /// <summary>
         ///     Sdl the num haptics
@@ -9886,15 +10318,29 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName,EntryPoint = "SDL_NumHaptics", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_NumHaptics();
+        private static extern int INTERNAL_SDL_NumHaptics();
 
+        /// <summary>
+        /// Nums the haptics
+        /// </summary>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int NumHaptics() => INTERNAL_SDL_NumHaptics().Validate();
+        
         /// <summary>
         ///     Sdl the num sensors
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_NumSensors", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_NumSensors();
+        private static extern int INTERNAL_SDL_NumSensors();
+        
+        /// <summary>
+        /// Nums the sensors
+        /// </summary>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int NumSensors() => INTERNAL_SDL_NumSensors().Validate();
 
         /// <summary>
         ///     Internals the sdl sensor get device name using the specified device index
@@ -9911,7 +10357,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_SensorGetDeviceName([NotNull] int deviceIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_SensorGetDeviceName(deviceIndex));
+        public static string SensorGetDeviceName([NotNull] int deviceIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_SensorGetDeviceName(deviceIndex.Validate()));
 
         /// <summary>
         ///     Sdl the sensor get device type using the specified device index
@@ -9920,8 +10366,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl sensor type</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetDeviceType", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlSensorType INTERNAL_SDL_SensorGetDeviceType([NotNull] int deviceIndex);
-
+        private static extern SdlSensorType INTERNAL_SDL_SensorGetDeviceType([NotNull] int deviceIndex);
+        
+        /// <summary>
+        /// Sensors the get device type using the specified device index
+        /// </summary>
+        /// <param name="deviceIndex">The device index</param>
+        /// <returns>The sdl sensor type</returns>
+        [return: NotNull]
+        public static SdlSensorType SensorGetDeviceType([NotNull] int deviceIndex) => INTERNAL_SDL_SensorGetDeviceType(deviceIndex.Validate());
+        
         /// <summary>
         ///     Sdl the sensor get device non portable type using the specified device index
         /// </summary>
@@ -9929,7 +10383,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetDeviceNonPortableType", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SensorGetDeviceNonPortableType([NotNull] int deviceIndex);
+        private static extern int INTERNAL_SDL_SensorGetDeviceNonPortableType([NotNull] int deviceIndex);
+
+        /// <summary>
+        /// Sensors the get device non portable type using the specified device index
+        /// </summary>
+        /// <param name="deviceIndex">The device index</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SensorGetDeviceNonPortableType([NotNull] int deviceIndex) => INTERNAL_SDL_SensorGetDeviceNonPortableType(deviceIndex.Validate());
 
         /// <summary>
         ///     Sdl the sensor get device instance id using the specified device index
@@ -9938,8 +10400,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetDeviceInstanceID", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SensorGetDeviceInstanceID([NotNull] int deviceIndex);
-
+        private static extern int INTERNAL_SDL_SensorGetDeviceInstanceID([NotNull] int deviceIndex);
+        
+        /// <summary>
+        /// Sensors the get device instance id using the specified device index
+        /// </summary>
+        /// <param name="deviceIndex">The device index</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SensorGetDeviceInstanceId([NotNull] int deviceIndex) => INTERNAL_SDL_SensorGetDeviceInstanceID(deviceIndex.Validate());
+        
         /// <summary>
         ///     Sdl the sensor open using the specified device index
         /// </summary>
@@ -9947,7 +10417,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SensorOpen", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_SensorOpen([NotNull] int deviceIndex);
+        private static extern IntPtr INTERNAL_SDL_SensorOpen([NotNull] int deviceIndex);
+        
+        /// <summary>
+        /// Sensors the open using the specified device index
+        /// </summary>
+        /// <param name="deviceIndex">The device index</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr SensorOpen([NotNull] int deviceIndex) => INTERNAL_SDL_SensorOpen(deviceIndex.Validate());
 
         /// <summary>
         ///     Sdl the sensor from instance id using the specified instance id
@@ -9956,7 +10434,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SensorFromInstanceID", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_SensorFromInstanceID([NotNull] int instanceId);
+        private static extern IntPtr INTERNAL_SDL_SensorFromInstanceID([NotNull] int instanceId);
+        
+        /// <summary>
+        /// Sensors the from instance id using the specified instance id
+        /// </summary>
+        /// <param name="instanceId">The instance id</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr SensorFromInstanceId([NotNull] int instanceId) => INTERNAL_SDL_SensorFromInstanceID(instanceId.Validate());
 
         /// <summary>
         ///     Internals the sdl sensor get name using the specified sensor
@@ -9973,7 +10459,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="sensor">The sensor</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_SensorGetName([NotNull]IntPtr sensor) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_SensorGetName(sensor));
+        public static string SensorGetName([NotNull]IntPtr sensor) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_SensorGetName(sensor.Validate()));
 
         /// <summary>
         ///     Sdl the sensor get type using the specified sensor
@@ -9982,8 +10468,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl sensor type</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetType", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlSensorType INTERNAL_SDL_SensorGetType([NotNull]IntPtr sensor);
-
+        private static extern SdlSensorType INTERNAL_SDL_SensorGetType([NotNull]IntPtr sensor);
+        
+        /// <summary>
+        /// Sensors the get type using the specified sensor
+        /// </summary>
+        /// <param name="sensor">The sensor</param>
+        /// <returns>The sdl sensor type</returns>
+        [return: NotNull]
+        public static SdlSensorType SensorGetType([NotNull]IntPtr sensor) => INTERNAL_SDL_SensorGetType(sensor.Validate());
+        
         /// <summary>
         ///     Sdl the sensor get non portable type using the specified sensor
         /// </summary>
@@ -9991,8 +10485,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetNonPortableType", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SensorGetNonPortableType([NotNull]IntPtr sensor);
-
+        private static extern int INTERNAL_SDL_SensorGetNonPortableType([NotNull]IntPtr sensor);
+        
+        /// <summary>
+        /// Sensors the get non portable type using the specified sensor
+        /// </summary>
+        /// <param name="sensor">The sensor</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SensorGetNonPortableType([NotNull]IntPtr sensor) => INTERNAL_SDL_SensorGetNonPortableType(sensor.Validate());
+        
         /// <summary>
         ///     Sdl the sensor get instance id using the specified sensor
         /// </summary>
@@ -10000,8 +10502,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetInstanceID", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SensorGetInstanceID([NotNull]IntPtr sensor);
-
+        private static extern int INTERNAL_SDL_SensorGetInstanceID([NotNull]IntPtr sensor);
+        
+        /// <summary>
+        /// Sensors the get instance id using the specified sensor
+        /// </summary>
+        /// <param name="sensor">The sensor</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SensorGetInstanceId([NotNull]IntPtr sensor) => INTERNAL_SDL_SensorGetInstanceID(sensor.Validate());
+        
         /// <summary>
         ///     Sdl the sensor get data using the specified sensor
         /// </summary>
@@ -10011,36 +10521,71 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetData", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SensorGetData([NotNull]IntPtr sensor, float[] data, [NotNull] int numValues);
+        private static extern int INTERNAL_SDL_SensorGetData([NotNull]IntPtr sensor, float[] data, [NotNull] int numValues);
 
+        /// <summary>
+        /// Sensors the get data using the specified sensor
+        /// </summary>
+        /// <param name="sensor">The sensor</param>
+        /// <param name="data">The data</param>
+        /// <param name="numValues">The num values</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SensorGetData([NotNull]IntPtr sensor, float[] data, [NotNull] int numValues) => INTERNAL_SDL_SensorGetData(sensor.Validate(), data, numValues);
+        
         /// <summary>
         ///     Sdl the sensor close using the specified sensor
         /// </summary>
         /// <param name="sensor">The sensor</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SensorClose", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_SensorClose([NotNull]IntPtr sensor);
+        private static extern void INTERNAL_SDL_SensorClose([NotNull]IntPtr sensor);
+        
+        /// <summary>
+        /// Sensors the close using the specified sensor
+        /// </summary>
+        /// <param name="sensor">The sensor</param>
+        [return: NotNull]
+        public static void SensorClose([NotNull]IntPtr sensor) => INTERNAL_SDL_SensorClose(sensor.Validate());
 
         /// <summary>
         ///     Sdl the sensor update
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_SensorUpdate", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_SensorUpdate();
+        private static extern void INTERNAL_SDL_SensorUpdate();
+        
+        /// <summary>
+        /// Sensors the update
+        /// </summary>
+        [return: NotNull]
+        public static void SensorUpdate() => INTERNAL_SDL_SensorUpdate();
 
         /// <summary>
         ///     Sdl the lock sensors
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_LockSensors", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_LockSensors();
+        private static extern void INTERNAL_SDL_LockSensors();
+        
+        /// <summary>
+        /// Locks the sensors
+        /// </summary>
+        [return: NotNull]
+        public static void LockSensors() => INTERNAL_SDL_LockSensors();
 
         /// <summary>
         ///     Sdl the unlock sensors
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_UnlockSensors", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_UnlockSensors();
+        private static extern void INTERNAL_SDL_UnlockSensors();
+        
+        /// <summary>
+        /// Unlocks the sensors
+        /// </summary>
+        [return: NotNull]
+        public static void UnlockSensors() => INTERNAL_SDL_UnlockSensors();
 
         /// <summary>
         ///     Sdl the audio bit size using the specified x
@@ -10112,33 +10657,57 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_AudioQuit", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_AudioQuit();
+        private static extern void INTERNAL_SDL_AudioQuit();
+        
+        /// <summary>
+        /// Audio the quit
+        /// </summary>
+        [return: NotNull]
+        public static void AudioQuit() => INTERNAL_SDL_AudioQuit();
 
         /// <summary>
         ///     Sdl the close audio
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_CloseAudio", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_CloseAudio();
+        private static extern void INTERNAL_SDL_CloseAudio();
 
-
+        /// <summary>
+        /// Closes the audio
+        /// </summary>
+        [return: NotNull]
+        public static void CloseAudio() => INTERNAL_SDL_CloseAudio();
+        
         /// <summary>
         ///     Sdl the close audio device using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_CloseAudioDevice", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_CloseAudioDevice([NotNull] uint dev);
-
-
+        private static extern void INTERNAL_SDL_CloseAudioDevice([NotNull] uint dev);
+        
+        /// <summary>
+        /// Closes the audio device using the specified dev
+        /// </summary>
+        /// <param name="dev">The dev</param>
+        [return: NotNull]
+        public static void CloseAudioDevice([NotNull] uint dev) => INTERNAL_SDL_CloseAudioDevice(dev.Validate());
+        
         /// <summary>
         ///     Sdl the free wav using the specified audio buf
         /// </summary>
         /// <param name="audioBuf">The audio buf</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_FreeWAV", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_FreeWAV([NotNull]IntPtr audioBuf);
-
+        private static extern void INTERNAL_SDL_FreeWAV([NotNull]IntPtr audioBuf);
+        
+        /// <summary>
+        /// Frees the wav using the specified audio buf
+        /// </summary>
+        /// <param name="audioBuf">The audio buf</param>
+        [return: NotNull]
+        public static void FreeWav([NotNull]IntPtr audioBuf) => INTERNAL_SDL_FreeWAV(audioBuf.Validate());
+        
         /// <summary>
         ///     Internals the sdl get audio device name using the specified index
         /// </summary>
@@ -10164,8 +10733,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl audio status</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetAudioDeviceStatus", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlAudioStatus INTERNAL_SDL_GetAudioDeviceStatus([NotNull] uint dev);
+        private static extern SdlAudioStatus INTERNAL_SDL_GetAudioDeviceStatus([NotNull] uint dev);
 
+        /// <summary>
+        /// Gets the audio device status using the specified dev
+        /// </summary>
+        /// <param name="dev">The dev</param>
+        /// <returns>The sdl audio status</returns>
+        [return: NotNull]
+        public static SdlAudioStatus GetAudioDeviceStatus([NotNull] uint dev) => INTERNAL_SDL_GetAudioDeviceStatus(dev.Validate());
+        
         /// <summary>
         ///     Internals the sdl get audio driver using the specified index
         /// </summary>
@@ -10180,7 +10757,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The string</returns>
-        public static string GetAudioDriver([NotNull] int index) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetAudioDriver(index));
+        public static string GetAudioDriver([NotNull] int index) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetAudioDriver(index.Validate()));
 
         /// <summary>
         ///     Sdl the get audio status
@@ -10188,7 +10765,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl audio status</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetAudioStatus", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlAudioStatus INTERNAL_SDL_GetAudioStatus();
+        private static extern SdlAudioStatus INTERNAL_SDL_GetAudioStatus();
+        
+        /// <summary>
+        /// Gets the audio status
+        /// </summary>
+        /// <returns>The sdl audio status</returns>
+        [return: NotNull]
+        public static SdlAudioStatus GetAudioStatus() => INTERNAL_SDL_GetAudioStatus().Validate();
 
         /// <summary>
         ///     Internals the sdl get current audio driver
@@ -10202,7 +10786,8 @@ namespace Alis.Core.Graphic.SDL
         ///     Sdl the get current audio driver
         /// </summary>
         /// <returns>The string</returns>
-        public static string GetCurrentAudioDriver() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetCurrentAudioDriver());
+        [return: NotNull]
+        public static string GetCurrentAudioDriver() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetCurrentAudioDriver()).Validate();
 
         /// <summary>
         ///     Sdl the get num audio devices using the specified is capture
@@ -10211,16 +10796,31 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetNumAudioDevices", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GetNumAudioDevices([NotNull] int isCapture);
+        private static extern int INTERNAL_SDL_GetNumAudioDevices([NotNull] int isCapture);
 
+        /// <summary>
+        /// Gets the num audio devices using the specified is capture
+        /// </summary>
+        /// <param name="isCapture">The is capture</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GetNumAudioDevices([NotNull] int isCapture) => INTERNAL_SDL_GetNumAudioDevices(isCapture.Validate());
+        
         /// <summary>
         ///     Sdl the get num audio drivers
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetNumAudioDrivers", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GetNumAudioDrivers();
+        private static extern int INTERNAL_SDL_GetNumAudioDrivers();
 
+        /// <summary>
+        /// Gets the num audio drivers
+        /// </summary>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GetNumAudioDrivers() => INTERNAL_SDL_GetNumAudioDrivers();
+        
         /// <summary>
         ///     Internals the sdl load wav rw using the specified src
         /// </summary>
@@ -10250,15 +10850,28 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, EntryPoint = "SDL_LockAudio", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         public static extern void INTERNAL_SDL_LockAudio();
-
+        
+        /// <summary>
+        /// Locks the audio
+        /// </summary>
+        [return: NotNull]
+        public static void LockAudio() => INTERNAL_SDL_LockAudio();
+        
         /// <summary>
         ///     Sdl the lock audio device using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LockAudioDevice", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_LockAudioDevice([NotNull] uint dev);
+        private static extern void INTERNAL_SDL_LockAudioDevice([NotNull] uint dev);
 
+        /// <summary>
+        /// Locks the audio device using the specified dev
+        /// </summary>
+        /// <param name="dev">The dev</param>
+        [return: NotNull]
+        public static void LockAudioDevice([NotNull] uint dev) => INTERNAL_SDL_LockAudioDevice(dev.Validate());
+        
         /// <summary>
         ///     Sdl the mix audio using the specified dst
         /// </summary>
@@ -10268,8 +10881,18 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="volume">The volume</param>
         [DllImport(NativeLibName,EntryPoint = "SDL_MixAudio", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_MixAudio([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)] [NotNull] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)] [NotNull] byte[] src, [NotNull] uint len, [NotNull] int volume);
+        private static extern void INTERNAL_SDL_MixAudio([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)] [NotNull] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)] [NotNull] byte[] src, [NotNull] uint len, [NotNull] int volume);
 
+        /// <summary>
+        /// Mixes the audio using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
+        /// <param name="src">The src</param>
+        /// <param name="len">The len</param>
+        /// <param name="volume">The volume</param>
+        [return: NotNull]
+        public static void MixAudio([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)] [NotNull] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)] [NotNull] byte[] src, [NotNull] uint len, [NotNull] int volume) => INTERNAL_SDL_MixAudio(dst.Validate(), src.Validate(), len, volume);
+        
         /// <summary>
         ///     Sdl the mix audio format using the specified dst
         /// </summary>
@@ -10280,8 +10903,19 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="volume">The volume</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_MixAudioFormat", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_MixAudioFormat([NotNull]IntPtr dst, [NotNull]IntPtr src, [NotNull] ushort format, [NotNull] uint len, [NotNull] int volume);
+        private static extern void INTERNAL_SDL_MixAudioFormat([NotNull]IntPtr dst, [NotNull]IntPtr src, [NotNull] ushort format, [NotNull] uint len, [NotNull] int volume);
 
+        /// <summary>
+        /// Mixes the audio format using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
+        /// <param name="src">The src</param>
+        /// <param name="format">The format</param>
+        /// <param name="len">The len</param>
+        /// <param name="volume">The volume</param>
+        [return: NotNull]
+        public static void MixAudioFormat([NotNull]IntPtr dst, [NotNull]IntPtr src, [NotNull] ushort format, [NotNull] uint len, [NotNull] int volume) => INTERNAL_SDL_MixAudioFormat(dst.Validate(), src.Validate(), format.Validate(), len.Validate(), volume.Validate());
+        
         /// <summary>
         ///     Sdl the mix audio format using the specified dst
         /// </summary>
@@ -10292,8 +10926,19 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="volume">The volume</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_MixAudioFormat", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_MixAudioFormat([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [NotNull] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [NotNull] byte[] src, [NotNull] ushort format, [NotNull] uint len, [NotNull] int volume);
+        private static extern void INTERNAL_SDL_MixAudioFormat([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [NotNull] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [NotNull] byte[] src, [NotNull] ushort format, [NotNull] uint len, [NotNull] int volume);
 
+        /// <summary>
+        /// Mixes the audio format using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
+        /// <param name="src">The src</param>
+        /// <param name="format">The format</param>
+        /// <param name="len">The len</param>
+        /// <param name="volume">The volume</param>
+        [return: NotNull]
+        public static void MixAudioFormat([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [NotNull] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [NotNull] byte[] src, [NotNull] ushort format, [NotNull] uint len, [NotNull] int volume) => INTERNAL_SDL_MixAudioFormat(dst.Validate(), src.Validate(), format.Validate(), len.Validate(), volume.Validate());
+        
         /// <summary>
         ///     Sdl the open audio using the specified desired
         /// </summary>
@@ -10666,7 +11311,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="ms">The ms</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_Delay", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_Delay([NotNull] uint ms);
+        private static extern void INTERNAL_SDL_Delay([NotNull] uint ms);
+        
+        /// <summary>
+        /// Delays the ms
+        /// </summary>
+        /// <param name="ms">The ms</param>
+        [return: NotNull]
+        public static void Delay([NotNull] uint ms) => INTERNAL_SDL_Delay(ms.Validate());
 
         /// <summary>
         ///     Sdl the get ticks
@@ -10674,31 +11326,59 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetTicks", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_GetTicks();
+        private static extern uint INTERNAL_SDL_GetTicks();
 
+        /// <summary>
+        /// Internals the sdl get ticks
+        /// </summary>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint GetTicks() => INTERNAL_SDL_GetTicks().Validate();
+        
         /// <summary>
         ///     Sdl the get ticks 64
         /// </summary>
         /// <returns>The int 64</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetTicks64", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern ulong INTERNAL_SDL_GetTicks64();
+        private static extern ulong INTERNAL_SDL_GetTicks64();
 
+        /// <summary>
+        /// Gets the ticks 64
+        /// </summary>
+        /// <returns>The ulong</returns>
+        [return: NotNull]
+        public static ulong GetTicks64() => INTERNAL_SDL_GetTicks64().Validate();
+        
         /// <summary>
         ///     Sdl the get performance counter
         /// </summary>
         /// <returns>The int 64</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetPerformanceCounter", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern ulong INTERNAL_SDL_GetPerformanceCounter();
-
+        private static extern ulong INTERNAL_SDL_GetPerformanceCounter();
+        
+        /// <summary>
+        /// Gets the performance counter
+        /// </summary>
+        /// <returns>The ulong</returns>
+        [return: NotNull]
+        public static ulong GetPerformanceCounter() => INTERNAL_SDL_GetPerformanceCounter().Validate();
+        
         /// <summary>
         ///     Sdl the get performance frequency
         /// </summary>
         /// <returns>The int 64</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetPerformanceFrequency", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern ulong INTERNAL_SDL_GetPerformanceFrequency();
+        private static extern ulong INTERNAL_SDL_GetPerformanceFrequency();
+        
+        /// <summary>
+        /// Internals the sdl get performance frequency
+        /// </summary>
+        /// <returns>The ulong</returns>
+        [return: NotNull]
+        public static ulong GetPerformanceFrequency() => INTERNAL_SDL_GetPerformanceFrequency().Validate();
         
         /// <summary>
         ///     Sdl the add timer using the specified interval
@@ -10709,8 +11389,18 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AddTimer", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_AddTimer([NotNull] uint interval, SdlTimerCallback callback, IntPtr param);
+        private static extern int INTERNAL_SDL_AddTimer([NotNull] uint interval, SdlTimerCallback callback, IntPtr param);
 
+        /// <summary>
+        /// Adds the timer using the specified interval
+        /// </summary>
+        /// <param name="interval">The interval</param>
+        /// <param name="callback">The callback</param>
+        /// <param name="param">The param</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int AddTimer([NotNull] uint interval, SdlTimerCallback callback, IntPtr param) => INTERNAL_SDL_AddTimer(interval.Validate(), callback, param);
+        
         /// <summary>
         ///     Sdl the remove timer using the specified id
         /// </summary>
@@ -10718,8 +11408,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RemoveTimer", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_RemoveTimer([NotNull] int id);
+        private static extern SdlBool INTERNAL_SDL_RemoveTimer([NotNull] int id);
 
+        /// <summary>
+        /// Removes the timer using the specified id
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool RemoveTimer([NotNull] int id) => INTERNAL_SDL_RemoveTimer(id.Validate());
+        
         /// <summary>
         ///     Sdl the set windows message hook using the specified callback
         /// </summary>
@@ -10727,8 +11425,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="userdata">The userdata</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowsMessageHook", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_SetWindowsMessageHook(SdlWindowsMessageHook callback, IntPtr userdata);
+        private static extern void INTERNAL_SDL_SetWindowsMessageHook([NotNull] SdlWindowsMessageHook callback, [NotNull]IntPtr userdata);
 
+        /// <summary>
+        /// Sets the windows message hook using the specified callback
+        /// </summary>
+        /// <param name="callback">The callback</param>
+        /// <param name="userdata">The userdata</param>
+        [return: NotNull]
+        public static void SetWindowsMessageHook([NotNull] SdlWindowsMessageHook callback, [NotNull]IntPtr userdata) => INTERNAL_SDL_SetWindowsMessageHook(callback, userdata);
+        
         /// <summary>
         ///     Sdl the render get d 3 d 9 device using the specified renderer
         /// </summary>
@@ -10736,8 +11442,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName,EntryPoint = "SDL_RenderGetD3D9Device", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_RenderGetD3D9Device(IntPtr renderer);
-
+        private static extern IntPtr INTERNAL_SDL_RenderGetD3D9Device([NotNull] IntPtr renderer);
+        
+        /// <summary>
+        /// Renders the get d 3 d 9 device using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr RenderGetD3D9Device([NotNull] IntPtr renderer) => INTERNAL_SDL_RenderGetD3D9Device(renderer.Validate());
+        
         /// <summary>
         ///     Sdl the render get d 3 d 11 device using the specified renderer
         /// </summary>
@@ -10745,8 +11459,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderGetD3D11Device", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_RenderGetD3D11Device(IntPtr renderer);
+        private static extern IntPtr INTERNAL_SDL_RenderGetD3D11Device([NotNull]IntPtr renderer);
 
+        /// <summary>
+        /// Renders the get d 3 d 11 device using the specified renderer
+        /// </summary>
+        /// <param name="renderer">The renderer</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr RenderGetD3D11Device([NotNull] IntPtr renderer) => INTERNAL_SDL_RenderGetD3D11Device(renderer.Validate());
+        
         /// <summary>
         ///     Sdl the i phone set animation callback using the specified window
         /// </summary>
@@ -10757,7 +11479,18 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_iPhoneSetAnimationCallback", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_iPhoneSetAnimationCallback(IntPtr window, [NotNull] int interval, SdlIPhoneAnimationCallback callback, IntPtr callbackParam);
+        private static extern int INTERNAL_SDL_iPhoneSetAnimationCallback(IntPtr window, [NotNull] int interval, SdlIPhoneAnimationCallback callback, IntPtr callbackParam);
+
+        /// <summary>
+        /// Is the phone set animation callback using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="interval">The interval</param>
+        /// <param name="callback">The callback</param>
+        /// <param name="callbackParam">The callback param</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int PhoneSetAnimationCallback(IntPtr window, [NotNull] int interval, SdlIPhoneAnimationCallback callback, IntPtr callbackParam) => INTERNAL_SDL_iPhoneSetAnimationCallback(window.Validate(), interval, callback, callbackParam);
 
         /// <summary>
         ///     Sdl the i phone set event pump using the specified enabled
@@ -10765,16 +11498,29 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="enabled">The enabled</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_iPhoneSetEventPump", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void SDL_iPhoneSetEventPump(SdlBool enabled);
+        private static extern void SDL_iPhoneSetEventPump([NotNull] SdlBool enabled);
 
-
+        /// <summary>
+        /// Is the phone set event pump using the specified enabled
+        /// </summary>
+        /// <param name="enabled">The enabled</param>
+        [return: NotNull]
+        public static void PhoneSetEventPump([NotNull] SdlBool enabled) => SDL_iPhoneSetEventPump(enabled.Validate());
+        
         /// <summary>
         ///     Sdl the android get jni env
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AndroidGetJNIEnv", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_AndroidGetJNIEnv();
+        private static extern IntPtr INTERNAL_SDL_AndroidGetJNIEnv();
+        
+        /// <summary>
+        /// Androids the get jni env
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr AndroidGetJniEnv() => INTERNAL_SDL_AndroidGetJNIEnv().Validate();
         
         /// <summary>
         ///     Sdl the android get activity
