@@ -6604,8 +6604,19 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetBall", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_JoystickGetBall([NotNull]IntPtr joystick, [NotNull] int ball, out int dx, out int dy);
-
+        private static extern int INTERNAL_SDL_JoystickGetBall([NotNull]IntPtr joystick, [NotNull] int ball, out int dx, out int dy);
+        
+        /// <summary>
+        /// Joysticks the get ball using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <param name="ball">The ball</param>
+        /// <param name="dx">The dx</param>
+        /// <param name="dy">The dy</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int JoystickGetBall([NotNull]IntPtr joystick, [NotNull] int ball, out int dx, out int dy) => INTERNAL_SDL_JoystickGetBall(joystick.Validate(), ball.Validate(), out dx, out dy);
+        
         /// <summary>
         ///     Sdl the joystick get button using the specified joystick
         /// </summary>
@@ -6614,8 +6625,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The byte</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetButton", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern byte INTERNAL_SDL_JoystickGetButton([NotNull]IntPtr joystick, [NotNull] int button);
-
+        private static extern byte INTERNAL_SDL_JoystickGetButton([NotNull]IntPtr joystick, [NotNull] int button);
+        
+        /// <summary>
+        /// Joysticks the get button using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <param name="button">The button</param>
+        /// <returns>The byte</returns>
+        [return: NotNull]
+        public static byte JoystickGetButton([NotNull]IntPtr joystick, [NotNull] int button) => INTERNAL_SDL_JoystickGetButton(joystick.Validate(), button.Validate());
+        
         /// <summary>
         ///     Sdl the joystick get hat using the specified joystick
         /// </summary>
@@ -6624,7 +6644,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The byte</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetHat", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern byte INTERNAL_SDL_JoystickGetHat([NotNull]IntPtr joystick, [NotNull] int hat);
+        private static extern byte INTERNAL_SDL_JoystickGetHat([NotNull]IntPtr joystick, [NotNull] int hat);
+        
+        /// <summary>
+        /// Joysticks the get hat using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <param name="hat">The hat</param>
+        /// <returns>The byte</returns>
+        [return: NotNull]
+        public static byte JoystickGetHat([NotNull]IntPtr joystick, [NotNull] int hat) => INTERNAL_SDL_JoystickGetHat(joystick.Validate(), hat.Validate());
 
         /// <summary>
         ///     Internals the sdl joystick name using the specified joystick
@@ -6667,7 +6696,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickNumAxes", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_JoystickNumAxes([NotNull]IntPtr joystick);
+        private static extern int INTERNAL_SDL_JoystickNumAxes([NotNull]IntPtr joystick);
+        
+        /// <summary>
+        /// Joysticks the num axes using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int JoystickNumAxes([NotNull]IntPtr joystick) => INTERNAL_SDL_JoystickNumAxes(joystick.Validate());
 
         /// <summary>
         ///     Sdl the joystick num balls using the specified joystick
@@ -6676,7 +6713,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickNumBalls", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_JoystickNumBalls([NotNull]IntPtr joystick);
+        private static extern int INTERNAL_SDL_JoystickNumBalls([NotNull]IntPtr joystick);
+        
+        /// <summary>
+        /// Joysticks the num balls using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int JoystickNumBalls([NotNull]IntPtr joystick) => INTERNAL_SDL_JoystickNumBalls(joystick.Validate());
 
         /// <summary>
         ///     Sdl the joystick num buttons using the specified joystick
@@ -6685,7 +6730,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickNumButtons", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_JoystickNumButtons([NotNull]IntPtr joystick);
+        private static extern int INTERNAL_SDL_JoystickNumButtons([NotNull]IntPtr joystick);
+        
+        /// <summary>
+        /// Joysticks the num buttons using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int JoystickNumButtons([NotNull]IntPtr joystick) => INTERNAL_SDL_JoystickNumButtons(joystick.Validate());
 
         /// <summary>
         ///     Sdl the joystick num hats using the specified joystick
@@ -6694,7 +6747,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickNumHats", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_JoystickNumHats([NotNull]IntPtr joystick);
+        private static extern int INTERNAL_SDL_JoystickNumHats([NotNull]IntPtr joystick);
+        
+        /// <summary>
+        /// Joysticks the num hats using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int JoystickNumHats([NotNull]IntPtr joystick) => INTERNAL_SDL_JoystickNumHats(joystick.Validate());
 
         /// <summary>
         ///     Sdl the joystick open using the specified device index
@@ -6703,14 +6764,28 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickOpen", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_JoystickOpen([NotNull] int deviceIndex);
+        private static extern IntPtr INTERNAL_SDL_JoystickOpen([NotNull] int deviceIndex);
+        
+        /// <summary>
+        /// Joysticks the open using the specified device index
+        /// </summary>
+        /// <param name="deviceIndex">The device index</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr JoystickOpen([NotNull] int deviceIndex) => INTERNAL_SDL_JoystickOpen(deviceIndex.Validate());
 
         /// <summary>
         ///     Sdl the joystick update
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickUpdate", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_JoystickUpdate();
+        private static extern void INTERNAL_SDL_JoystickUpdate();
+        
+        /// <summary>
+        /// Joysticks the update
+        /// </summary>
+        [return: NotNull]
+        public static void JoystickUpdate() => INTERNAL_SDL_JoystickUpdate();
 
         /// <summary>
         ///     Sdl the num joysticks
@@ -6718,7 +6793,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_NumJoysticks", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_NumJoysticks();
+        private static extern int INTERNAL_SDL_NumJoysticks();
+        
+        /// <summary>
+        /// Nums the joysticks
+        /// </summary>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int NumJoysticks() => INTERNAL_SDL_NumJoysticks();
 
         /// <summary>
         ///     Sdl the joystick get device guid using the specified device index
@@ -6727,7 +6809,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The guid</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetDeviceGUID", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern Guid INTERNAL_SDL_JoystickGetDeviceGUID([NotNull] int deviceIndex);
+        private static extern Guid INTERNAL_SDL_JoystickGetDeviceGUID([NotNull] int deviceIndex);
+        
+        /// <summary>
+        /// Joysticks the get device guid using the specified device index
+        /// </summary>
+        /// <param name="deviceIndex">The device index</param>
+        /// <returns>The guid</returns>
+        [return: NotNull]
+        public static Guid JoystickGetDeviceGuid([NotNull] int deviceIndex) => INTERNAL_SDL_JoystickGetDeviceGUID(deviceIndex.Validate());
 
         /// <summary>
         ///     Sdl the joystick get guid using the specified joystick
@@ -6736,7 +6826,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The guid</returns>
         [DllImport(NativeLibName,EntryPoint = "SDL_JoystickGetGUID", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern Guid INTERNAL_SDL_JoystickGetGUID(IntPtr joystick);
+        private static extern Guid INTERNAL_SDL_JoystickGetGUID(IntPtr joystick);
+        
+        /// <summary>
+        /// Joysticks the get guid using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The guid</returns>
+        [return: NotNull]
+        public static Guid JoystickGetGuid(IntPtr joystick) => INTERNAL_SDL_JoystickGetGUID(joystick.Validate());
 
         /// <summary>
         ///     Sdl the joystick get guid string using the specified guid
@@ -6746,8 +6844,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="cbGuid">The cb guid</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetGUIDString", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_JoystickGetGUIDString(Guid guid, [NotNull] byte[] pszGuid, [NotNull] int cbGuid);
+        private static extern void INTERNAL_SDL_JoystickGetGUIDString(Guid guid, [NotNull] byte[] pszGuid, [NotNull] int cbGuid);
 
+        /// <summary>
+        /// Joysticks the get guid string using the specified guid
+        /// </summary>
+        /// <param name="guid">The guid</param>
+        /// <param name="pszGuid">The psz guid</param>
+        /// <param name="cbGuid">The cb guid</param>
+        [return: NotNull]
+        public static void JoystickGetGuidString(Guid guid, [NotNull] byte[] pszGuid, [NotNull] int cbGuid) => INTERNAL_SDL_JoystickGetGUIDString(guid.Validate(), pszGuid.Validate(), cbGuid.Validate());
+        
         /// <summary>
         ///     Internals the sdl joystick get guid from string using the specified pch guid
         /// </summary>
@@ -6763,7 +6870,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pchGuid">The pch guid</param>
         /// <returns>The guid</returns>
         [return: NotNull]
-        public static Guid SDL_JoystickGetGUIDFromString([NotNull] string pchGuid) => INTERNAL_SDL_JoystickGetGUIDFromString(Utf8Manager.Utf8Encode(pchGuid, new byte[Utf8Manager.Utf8Size(pchGuid)], Utf8Manager.Utf8Size(pchGuid)));
+        public static Guid JoystickGetGuidFromString([NotNull] string pchGuid) => INTERNAL_SDL_JoystickGetGUIDFromString(Utf8Manager.Utf8Encode(pchGuid.Validate(), new byte[Utf8Manager.Utf8Size(pchGuid)], Utf8Manager.Utf8Size(pchGuid)));
 
         /// <summary>
         ///     Sdl the joystick get device vendor using the specified device index
@@ -6772,7 +6879,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetDeviceVendor", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern ushort INTERNAL_SDL_JoystickGetDeviceVendor([NotNull] int deviceIndex);
+        private static extern ushort INTERNAL_SDL_JoystickGetDeviceVendor([NotNull] int deviceIndex);
+        
+        /// <summary>
+        /// Joysticks the get device vendor using the specified device index
+        /// </summary>
+        /// <param name="deviceIndex">The device index</param>
+        /// <returns>The ushort</returns>
+        [return: NotNull]
+        public static ushort JoystickGetDeviceVendor([NotNull] int deviceIndex) => INTERNAL_SDL_JoystickGetDeviceVendor(deviceIndex.Validate());
 
         /// <summary>
         ///     Sdl the joystick get device product using the specified device index
@@ -6781,7 +6896,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetDeviceProduct", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern ushort INTERNAL_SDL_JoystickGetDeviceProduct([NotNull] int deviceIndex);
+        private static extern ushort INTERNAL_SDL_JoystickGetDeviceProduct([NotNull] int deviceIndex);
+        
+        /// <summary>
+        /// Joysticks the get device product using the specified device index
+        /// </summary>
+        /// <param name="deviceIndex">The device index</param>
+        /// <returns>The ushort</returns>
+        [return: NotNull]
+        public static ushort JoystickGetDeviceProduct([NotNull] int deviceIndex) => INTERNAL_SDL_JoystickGetDeviceProduct(deviceIndex.Validate());
 
         /// <summary>
         ///     Sdl the joystick get device product version using the specified device index
@@ -6790,8 +6913,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName,EntryPoint = "SDL_JoystickGetDeviceProductVersion", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern ushort INTERNAL_SDL_JoystickGetDeviceProductVersion([NotNull] int deviceIndex);
+        private static extern ushort INTERNAL_SDL_JoystickGetDeviceProductVersion([NotNull] int deviceIndex);
 
+        /// <summary>
+        /// Joysticks the get device product version using the specified device index
+        /// </summary>
+        /// <param name="deviceIndex">The device index</param>
+        /// <returns>The ushort</returns>
+        [return: NotNull]
+        public static ushort JoystickGetDeviceProductVersion([NotNull] int deviceIndex) => INTERNAL_SDL_JoystickGetDeviceProductVersion(deviceIndex.Validate());
+        
         /// <summary>
         ///     Sdl the joystick get device type using the specified device index
         /// </summary>
@@ -6799,7 +6930,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl joystick type</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetDeviceType", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlJoystickType INTERNAL_SDL_JoystickGetDeviceType([NotNull] int deviceIndex);
+        private static extern SdlJoystickType INTERNAL_SDL_JoystickGetDeviceType([NotNull] int deviceIndex);
+        
+        /// <summary>
+        /// Joysticks the get device type using the specified device index
+        /// </summary>
+        /// <param name="deviceIndex">The device index</param>
+        /// <returns>The sdl joystick type</returns>
+        [return: NotNull]
+        public static SdlJoystickType JoystickGetDeviceType([NotNull] int deviceIndex) => INTERNAL_SDL_JoystickGetDeviceType(deviceIndex.Validate());
 
         /// <summary>
         ///     Sdl the joystick get device instance id using the specified device index
@@ -6808,7 +6947,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetDeviceInstanceID", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_JoystickGetDeviceInstanceID([NotNull] int deviceIndex);
+        private static extern int INTERNAL_SDL_JoystickGetDeviceInstanceID([NotNull] int deviceIndex);
+        
+        /// <summary>
+        /// Joysticks the get device instance id using the specified device index
+        /// </summary>
+        /// <param name="deviceIndex">The device index</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static  int JoystickGetDeviceInstanceId([NotNull] int deviceIndex) => INTERNAL_SDL_JoystickGetDeviceInstanceID(deviceIndex.Validate());
 
         /// <summary>
         ///     Sdl the joystick get vendor using the specified joystick
@@ -6817,7 +6964,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetVendor", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern ushort INTERNAL_SDL_JoystickGetVendor([NotNull]IntPtr joystick);
+        private static extern ushort INTERNAL_SDL_JoystickGetVendor([NotNull]IntPtr joystick);
+        
+        /// <summary>
+        /// Joysticks the get vendor using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The ushort</returns>
+        [return: NotNull]
+        public static ushort JoystickGetVendor([NotNull]IntPtr joystick) => INTERNAL_SDL_JoystickGetVendor(joystick.Validate());
 
         /// <summary>
         ///     Sdl the joystick get product using the specified joystick
@@ -6826,7 +6981,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetProduct", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern ushort INTERNAL_SDL_JoystickGetProduct([NotNull]IntPtr joystick);
+        private static extern ushort INTERNAL_SDL_JoystickGetProduct([NotNull]IntPtr joystick);
+        
+        /// <summary>
+        /// Joysticks the get product using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The ushort</returns>
+        [return: NotNull]
+        public static ushort JoystickGetProduct([NotNull]IntPtr joystick) => INTERNAL_SDL_JoystickGetProduct(joystick.Validate());
 
         /// <summary>
         ///     Sdl the joystick get product version using the specified joystick
@@ -6835,7 +6998,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetProductVersion", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern ushort INTERNAL_SDL_JoystickGetProductVersion([NotNull]IntPtr joystick);
+        private static extern ushort INTERNAL_SDL_JoystickGetProductVersion([NotNull]IntPtr joystick);
+        
+        /// <summary>
+        /// Joysticks the get product version using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The ushort</returns>
+        [return: NotNull]
+        public static ushort JoystickGetProductVersion([NotNull]IntPtr joystick) => INTERNAL_SDL_JoystickGetProductVersion(joystick.Validate());
 
         /// <summary>
         ///     Internals the sdl joystick get serial using the specified joystick
@@ -6861,7 +7032,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl joystick type</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetType", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlJoystickType INTERNAL_SDL_JoystickGetType([NotNull]IntPtr joystick);
+        private static extern SdlJoystickType INTERNAL_SDL_JoystickGetType([NotNull]IntPtr joystick);
+        
+        /// <summary>
+        /// Joysticks the get type using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The sdl joystick type</returns>
+        [return: NotNull]
+        public static SdlJoystickType JoystickGetType([NotNull]IntPtr joystick) => INTERNAL_SDL_JoystickGetType(joystick.Validate());
 
         /// <summary>
         ///     Sdl the joystick get attached using the specified joystick
@@ -6870,7 +7049,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetAttached", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_JoystickGetAttached([NotNull]IntPtr joystick);
+        private static extern SdlBool INTERNAL_SDL_JoystickGetAttached([NotNull]IntPtr joystick);
+        
+        /// <summary>
+        /// Joysticks the get attached using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool JoystickGetAttached([NotNull]IntPtr joystick) => INTERNAL_SDL_JoystickGetAttached(joystick.Validate());
 
         /// <summary>
         ///     Sdl the joystick instance id using the specified joystick
@@ -6879,7 +7066,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickInstanceID", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_JoystickInstanceID([NotNull]IntPtr joystick);
+        private static extern int INTERNAL_SDL_JoystickInstanceID([NotNull]IntPtr joystick);
+        
+        /// <summary>
+        /// Joysticks the instance id using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int JoystickInstanceId([NotNull]IntPtr joystick) => INTERNAL_SDL_JoystickInstanceID(joystick.Validate());
 
         /// <summary>
         ///     Sdl the joystick current power level using the specified joystick
@@ -6888,7 +7083,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl joystick power level</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickCurrentPowerLevel", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlJoystickPowerLevel INTERNAL_SDL_JoystickCurrentPowerLevel([NotNull]IntPtr joystick);
+        private static extern SdlJoystickPowerLevel INTERNAL_SDL_JoystickCurrentPowerLevel([NotNull]IntPtr joystick);
+        
+        /// <summary>
+        /// Joysticks the current power level using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The sdl joystick power level</returns>
+        [return: NotNull]
+        public static SdlJoystickPowerLevel JoystickCurrentPowerLevel([NotNull]IntPtr joystick) => INTERNAL_SDL_JoystickCurrentPowerLevel(joystick.Validate());
 
         /// <summary>
         ///     Sdl the joystick from instance id using the specified instance id
@@ -6897,21 +7100,41 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickFromInstanceID", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_JoystickFromInstanceID([NotNull] int instanceId);
+        private static extern IntPtr INTERNAL_SDL_JoystickFromInstanceID([NotNull] int instanceId);
+        
+        /// <summary>
+        /// Joysticks the from instance id using the specified instance id
+        /// </summary>
+        /// <param name="instanceId">The instance id</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr JoystickFromInstanceId([NotNull] int instanceId) => INTERNAL_SDL_JoystickFromInstanceID(instanceId);
 
         /// <summary>
         ///     Sdl the lock joysticks
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_LockJoysticks", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_LockJoysticks();
+        private static extern void INTERNAL_SDL_LockJoysticks();
+        
+        /// <summary>
+        /// Locks the joysticks
+        /// </summary>
+        [return: NotNull]
+        public static void LockJoysticks() => INTERNAL_SDL_LockJoysticks();
 
         /// <summary>
         ///     Sdl the unlock joysticks
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_UnlockJoysticks", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_UnlockJoysticks();
+        private static extern void INTERNAL_SDL_UnlockJoysticks();
+        
+        /// <summary>
+        /// Unlocks the joysticks
+        /// </summary>
+        [return: NotNull]
+        public static void UnlockJoysticks() => INTERNAL_SDL_UnlockJoysticks();
 
         /// <summary>
         ///     Sdl the joystick from player index using the specified player index
@@ -6920,7 +7143,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickFromPlayerIndex", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_JoystickFromPlayerIndex([NotNull] int playerIndex);
+        private static extern IntPtr INTERNAL_SDL_JoystickFromPlayerIndex([NotNull] int playerIndex);
+        
+        /// <summary>
+        /// Joysticks the from player index using the specified player index
+        /// </summary>
+        /// <param name="playerIndex">The player index</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr JoystickFromPlayerIndex([NotNull] int playerIndex) => INTERNAL_SDL_JoystickFromPlayerIndex(playerIndex.Validate());
 
         /// <summary>
         ///     Sdl the joystick set player index using the specified joystick
@@ -6929,7 +7160,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="playerIndex">The player index</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickSetPlayerIndex", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_JoystickSetPlayerIndex([NotNull]IntPtr joystick, [NotNull] int playerIndex);
+        private static extern void INTERNAL_SDL_JoystickSetPlayerIndex([NotNull]IntPtr joystick, [NotNull] int playerIndex);
+        
+        /// <summary>
+        /// Joysticks the set player index using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <param name="playerIndex">The player index</param>
+        [return: NotNull]
+        public static void JoystickSetPlayerIndex([NotNull]IntPtr joystick, [NotNull] int playerIndex) => INTERNAL_SDL_JoystickSetPlayerIndex(joystick.Validate(), playerIndex.Validate());
 
         /// <summary>
         ///     Sdl the joystick attach virtual using the specified type
@@ -6961,7 +7200,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickDetachVirtual", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_JoystickDetachVirtual([NotNull] int deviceIndex);
+        private static extern int INTERNAL_SDL_JoystickDetachVirtual([NotNull] int deviceIndex);
+        
+        /// <summary>
+        /// Joysticks the detach virtual using the specified device index
+        /// </summary>
+        /// <param name="deviceIndex">The device index</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int JoystickDetachVirtual([NotNull] int deviceIndex) => INTERNAL_SDL_JoystickDetachVirtual(deviceIndex.Validate());
 
         /// <summary>
         ///     Sdl the joystick is virtual using the specified device index
@@ -6970,7 +7217,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName,EntryPoint = "SDL_JoystickIsVirtual", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_JoystickIsVirtual([NotNull] int deviceIndex);
+        private static extern SdlBool INTERNAL_SDL_JoystickIsVirtual([NotNull] int deviceIndex);
+        
+        /// <summary>
+        /// Joysticks the is virtual using the specified device index
+        /// </summary>
+        /// <param name="deviceIndex">The device index</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool JoystickIsVirtual([NotNull] int deviceIndex) => INTERNAL_SDL_JoystickIsVirtual(deviceIndex.Validate());
 
         /// <summary>
         ///     Sdl the joystick set virtual axis using the specified joystick
@@ -6981,8 +7236,18 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickSetVirtualAxis", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_JoystickSetVirtualAxis([NotNull]IntPtr joystick, [NotNull] int axis, short value);
+        private static extern int INTERNAL_SDL_JoystickSetVirtualAxis([NotNull]IntPtr joystick, [NotNull] int axis, short value);
 
+        /// <summary>
+        /// Joysticks the set virtual axis using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <param name="axis">The axis</param>
+        /// <param name="value">The value</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int JoystickSetVirtualAxis([NotNull]IntPtr joystick, [NotNull] int axis, short value) => INTERNAL_SDL_JoystickSetVirtualAxis(joystick.Validate(), axis.Validate(), value.Validate());
+        
         /// <summary>
         ///     Sdl the joystick set virtual button using the specified joystick
         /// </summary>
