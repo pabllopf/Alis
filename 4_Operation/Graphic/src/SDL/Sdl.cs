@@ -2449,7 +2449,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="category">The category</param>
         /// <returns>The sdl log priority</returns>
         [return: NotNull]
-        public static SdlLogPriority LogGetPriority([NotNull] int category) => INTERNAL_SDL_LogGetPriority(category);
+        public static SdlLogPriority LogGetPriority([NotNull] int category) => INTERNAL_SDL_LogGetPriority(category.Validate());
 
         /// <summary>
         ///     Sdl the log set priority using the specified category
@@ -2466,7 +2466,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="category">The category</param>
         /// <param name="priority">The priority</param>
         [return: NotNull]
-        public static void LogSetPriority([NotNull] int category, SdlLogPriority priority) => INTERNAL_SDL_LogSetPriority(category, priority);
+        public static void LogSetPriority([NotNull] int category, [NotNull] SdlLogPriority priority) => INTERNAL_SDL_LogSetPriority(category.Validate(), priority.Validate());
 
         /// <summary>
         ///     Sdl the log set all priority using the specified priority
