@@ -296,10 +296,10 @@ namespace Alis.Core.Graphic.ImGui
                     SdlScancode key = evt.key.keysym.scancode;
                     io.KeysDown[(int) key] = evt.type == SdlEventType.SdlKeydown;
                     Console.WriteLine("io.KeysDown[" + key + "] = " + evt.type + io.KeysDown[(int) key]);
-                    io.KeyShift = (INTERNAL_SDL_GetModState() & SdlKeymod.KmodShift) != 0;
-                    io.KeyCtrl = (INTERNAL_SDL_GetModState() & SdlKeymod.KmodCtrl) != 0;
-                    io.KeyAlt = (INTERNAL_SDL_GetModState() & SdlKeymod.KmodAlt) != 0;
-                    io.KeySuper = (INTERNAL_SDL_GetModState() & SdlKeymod.KmodGui) != 0;
+                    io.KeyShift = (GetModState() & SdlKeymod.KmodShift) != 0;
+                    io.KeyCtrl = (GetModState() & SdlKeymod.KmodCtrl) != 0;
+                    io.KeyAlt = (GetModState() & SdlKeymod.KmodAlt) != 0;
+                    io.KeySuper = (GetModState() & SdlKeymod.KmodGui) != 0;
                     break;
                 }
             }
@@ -315,29 +315,29 @@ namespace Alis.Core.Graphic.ImGui
             // Set OS mouse position if requested (rarely used, only when ImGuiConfigFlags_NavEnableSetMousePos is enabled by user)
             if (io.WantSetMousePos)
             {
-                INTERNAL_SDL_WarpMouseInWindow(_window, (int) io.MousePos.X, (int) io.MousePos.Y);
+                WarpMouseInWindow(_window, (int) io.MousePos.X, (int) io.MousePos.Y);
             }
             else
             {
                 io.MousePos = new Vector2F(float.MinValue, float.MinValue);
             }
 
-            uint mouseButtons = INTERNAL_SDL_GetMouseState(out int mx, out int my);
+            uint mouseButtons = GetMouseState(out int mx, out int my);
             io.MouseDown[0] =
                 _mousePressed[0] ||
-                (mouseButtons & SDL_BUTTON(ButtonLeft)) !=
+                (mouseButtons & Button(ButtonLeft)) !=
                 0; // If a mouse press event came, always pass it as "mouse held this frame", so we don't miss click-release events that are shorter than 1 frame.
-            io.MouseDown[1] = _mousePressed[1] || (mouseButtons & SDL_BUTTON(ButtonRight)) != 0;
-            io.MouseDown[2] = _mousePressed[2] || (mouseButtons & SDL_BUTTON(ButtonMiddle)) != 0;
+            io.MouseDown[1] = _mousePressed[1] || (mouseButtons & Button(ButtonRight)) != 0;
+            io.MouseDown[2] = _mousePressed[2] || (mouseButtons & Button(ButtonMiddle)) != 0;
             _mousePressed[0] = _mousePressed[1] = _mousePressed[2] = false;
 
-            IntPtr focusedWindow = INTERNAL_SDL_GetKeyboardFocus();
+            IntPtr focusedWindow = GetKeyboardFocus();
             if (_window == focusedWindow)
             {
                 // SDL_GetMouseState() gives mouse position seemingly based on the last window entered/focused(?)
                 // The creation of a new windows at runtime and SDL_CaptureMouse both seems to severely mess up with that, so we retrieve that position globally.
                 GetWindowPosition(focusedWindow, out int wx, out int wy);
-                INTERNAL_SDL_GetGlobalMouseState(out mx, out my);
+                GetGlobalMouseState(out mx, out my);
                 mx -= wx;
                 my -= wy;
                 io.MousePos = new Vector2F(mx, my);
@@ -345,7 +345,7 @@ namespace Alis.Core.Graphic.ImGui
 
             // SDL_CaptureMouse() let the OS know e.g. that our imgui drag outside the SDL window boundaries shouldn't e.g. trigger the OS window resize cursor.
             bool anyMouseButtonDown = ImGui.IsAnyMouseDown();
-            INTERNAL_SDL_CaptureMouse(anyMouseButtonDown ? SdlBool.SdlTrue : SdlBool.SdlFalse);
+            CaptureMouse(anyMouseButtonDown ? SdlBool.SdlTrue : SdlBool.SdlFalse);
         }
 
         /// <summary>

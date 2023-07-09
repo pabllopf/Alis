@@ -210,7 +210,7 @@ namespace Alis.Core.Graphic.Sample
         {
             Sdl.JoystickUpdate();
 
-            while (Sdl.INTERNAL_SDL_PollEvent(out sdlEvent) != 0)
+            while (Sdl.PollEvent(out sdlEvent) != 0)
             {
                 switch (sdlEvent.type)
                 {

@@ -81,7 +81,7 @@ namespace Alis.App.Engine
 
             while (!_quit)
             {
-                while (Sdl.INTERNAL_SDL_PollEvent(out SdlEvent e) != 0)
+                while (Sdl.PollEvent(out SdlEvent e) != 0)
                 {
                     _renderer.ProcessEvent(e);
                     switch (e.type)

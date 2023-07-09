@@ -1388,27 +1388,27 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl button left
         /// </summary>
-        public static readonly uint ButtonLMask = SDL_BUTTON(ButtonLeft);
+        public static readonly uint ButtonLMask = Button(ButtonLeft);
 
         /// <summary>
         ///     The sdl button middle
         /// </summary>
-        public static readonly uint ButtonMMask = SDL_BUTTON(ButtonMiddle);
+        public static readonly uint ButtonMMask = Button(ButtonMiddle);
 
         /// <summary>
         ///     The sdl button right
         /// </summary>
-        public static readonly uint ButtonRMask = SDL_BUTTON(ButtonRight);
+        public static readonly uint ButtonRMask = Button(ButtonRight);
 
         /// <summary>
         ///     The sdl button x1
         /// </summary>
-        public static readonly uint ButtonX1Mask = SDL_BUTTON(ButtonX1);
+        public static readonly uint ButtonX1Mask = Button(ButtonX1);
 
         /// <summary>
         ///     The sdl button x2
         /// </summary>
-        public static readonly uint ButtonX2Mask = SDL_BUTTON(ButtonX2);
+        public static readonly uint ButtonX2Mask = Button(ButtonX2);
 
         /// <summary>
         ///     The audio u16msb
@@ -7130,8 +7130,22 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateRGBSurfaceWithFormatFrom", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_CreateRGBSurfaceWithFormatFrom([NotNull]IntPtr pixels, [NotNull] int width, [NotNull] int height, [NotNull] int depth, [NotNull] int pitch, [NotNull] uint format);
+        private static extern IntPtr INTERNAL_SDL_CreateRGBSurfaceWithFormatFrom([NotNull]IntPtr pixels, [NotNull] int width, [NotNull] int height, [NotNull] int depth, [NotNull] int pitch, [NotNull] uint format);
 
+        /// <summary>
+        /// Creates the rgb surface with format from using the specified pixels
+        /// </summary>
+        /// <param name="pixels">The pixels</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="depth">The depth</param>
+        /// <param name="pitch">The pitch</param>
+        /// <param name="format">The format</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr CreateRgbSurfaceWithFormatFrom([NotNull]IntPtr pixels, [NotNull] int width, [NotNull] int height, [NotNull] int depth, [NotNull] int pitch, [NotNull] uint format) => INTERNAL_SDL_CreateRGBSurfaceWithFormatFrom(pixels.Validate(), width, height, depth, pitch, format);
+
+        
         /// <summary>
         ///     Sdl the fill rect using the specified dst
         /// </summary>
@@ -7141,8 +7155,18 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_FillRect", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_FillRect([NotNull]IntPtr dst, ref SdlRect rect, [NotNull] uint color);
+        private static extern int INTERNAL_SDL_FillRect([NotNull]IntPtr dst, ref SdlRect rect, [NotNull] uint color);
 
+        /// <summary>
+        /// Fills the rect using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
+        /// <param name="rect">The rect</param>
+        /// <param name="color">The color</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int FillRect([NotNull]IntPtr dst, ref SdlRect rect, [NotNull] uint color) => INTERNAL_SDL_FillRect(dst.Validate(), ref rect, color);
+        
         /// <summary>
         ///     Sdl the fill rect using the specified dst
         /// </summary>
@@ -7152,8 +7176,18 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_FillRect", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_FillRect([NotNull]IntPtr dst, [NotNull]IntPtr rect, [NotNull] uint color);
+        private static extern int INTERNAL_SDL_FillRect([NotNull]IntPtr dst, [NotNull]IntPtr rect, [NotNull] uint color);
 
+        /// <summary>
+        /// Fills the rect using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
+        /// <param name="rect">The rect</param>
+        /// <param name="color">The color</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int FillRect([NotNull]IntPtr dst, [NotNull]IntPtr rect, [NotNull] uint color) => INTERNAL_SDL_FillRect(dst.Validate(), rect.Validate(), color);
+        
         /// <summary>
         ///     Sdl the fill rects using the specified dst
         /// </summary>
@@ -7164,15 +7198,33 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_FillRects", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_FillRects([NotNull]IntPtr dst, [In] SdlRect[] rects, [NotNull] int count, [NotNull] uint color);
+        private static extern int INTERNAL_SDL_FillRects([NotNull]IntPtr dst, [In] SdlRect[] rects, [NotNull] int count, [NotNull] uint color);
 
+        /// <summary>
+        /// Fills the rects using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
+        /// <param name="rects">The rects</param>
+        /// <param name="count">The count</param>
+        /// <param name="color">The color</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int FillRects([NotNull]IntPtr dst, [In] SdlRect[] rects, [NotNull] int count, [NotNull] uint color) => INTERNAL_SDL_FillRects(dst.Validate(), rects, count, color);
+        
         /// <summary>
         ///     Sdl the free surface using the specified surface
         /// </summary>
         /// <param name="surface">The surface</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_FreeSurface", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_FreeSurface([NotNull]IntPtr surface);
+        private static extern void INTERNAL_SDL_FreeSurface([NotNull]IntPtr surface);
+        
+        /// <summary>
+        /// Frees the surface using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        [return: NotNull]
+        public static void FreeSurface([NotNull]IntPtr surface) => INTERNAL_SDL_FreeSurface(surface.Validate());
 
         /// <summary>
         ///     Sdl the get clip rect using the specified surface
@@ -7181,7 +7233,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="rect">The rect</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetClipRect", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_GetClipRect([NotNull]IntPtr surface, out SdlRect rect);
+        private static extern void INTERNAL_SDL_GetClipRect([NotNull]IntPtr surface, out SdlRect rect);
+        
+        /// <summary>
+        /// Gets the clip rect using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        /// <param name="rect">The rect</param>
+        [return: NotNull]
+        public static void GetClipRect([NotNull]IntPtr surface, out SdlRect rect) => INTERNAL_SDL_GetClipRect(surface.Validate(), out rect);
 
         /// <summary>
         ///     Sdl the has color key using the specified surface
@@ -7190,8 +7250,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HasColorKey", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_HasColorKey([NotNull]IntPtr surface);
+        private static extern SdlBool INTERNAL_SDL_HasColorKey([NotNull]IntPtr surface);
 
+        /// <summary>
+        /// Has the color key using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool HasColorKey([NotNull]IntPtr surface) => INTERNAL_SDL_HasColorKey(surface.Validate());
+        
         /// <summary>
         ///     Sdl the get color key using the specified surface
         /// </summary>
@@ -7200,8 +7268,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetColorKey", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GetColorKey([NotNull]IntPtr surface, out uint key);
-
+        private static extern int INTERNAL_SDL_GetColorKey([NotNull]IntPtr surface, out uint key);
+        
+        /// <summary>
+        /// Gets the color key using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        /// <param name="key">The key</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GetColorKey([NotNull]IntPtr surface, out uint key) => INTERNAL_SDL_GetColorKey(surface.Validate(), out key);
+        
         /// <summary>
         ///     Sdl the get surface alpha mod using the specified surface
         /// </summary>
@@ -7210,8 +7287,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetSurfaceAlphaMod", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GetSurfaceAlphaMod([NotNull]IntPtr surface, out byte alpha);
+        private static extern int INTERNAL_SDL_GetSurfaceAlphaMod([NotNull]IntPtr surface, out byte alpha);
 
+        /// <summary>
+        /// Gets the surface alpha mod using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        /// <param name="alpha">The alpha</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static  int GetSurfaceAlphaMod([NotNull]IntPtr surface, out byte alpha) => INTERNAL_SDL_GetSurfaceAlphaMod(surface.Validate(), out alpha);
+        
         /// <summary>
         ///     Sdl the get surface blend mode using the specified surface
         /// </summary>
@@ -7220,7 +7306,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetSurfaceBlendMode", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GetSurfaceBlendMode([NotNull]IntPtr surface, out SdlBlendMode blendMode);
+        private static extern int INTERNAL_SDL_GetSurfaceBlendMode([NotNull]IntPtr surface, out SdlBlendMode blendMode);
+        
+        /// <summary>
+        /// Gets the surface blend mode using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        /// <param name="blendMode">The blend mode</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GetSurfaceBlendMode([NotNull]IntPtr surface, out SdlBlendMode blendMode) => INTERNAL_SDL_GetSurfaceBlendMode(surface.Validate(), out blendMode);
 
         /// <summary>
         ///     Sdl the get surface color mod using the specified surface
@@ -7232,8 +7327,19 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetSurfaceColorMod", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GetSurfaceColorMod([NotNull]IntPtr surface, out byte r, out byte g, out byte b);
+        private static extern int INTERNAL_SDL_GetSurfaceColorMod([NotNull]IntPtr surface, out byte r, out byte g, out byte b);
 
+        /// <summary>
+        /// Gets the surface color mod using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        /// <param name="r">The </param>
+        /// <param name="g">The </param>
+        /// <param name="b">The </param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GetSurfaceColorMod([NotNull]IntPtr surface, out byte r, out byte g, out byte b) => INTERNAL_SDL_GetSurfaceColorMod(surface.Validate(), out r, out g, out b);
+        
         /// <summary>
         ///     Internals the sdl load bmp rw using the specified src
         /// </summary>
@@ -7259,8 +7365,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_LockSurface", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_LockSurface([NotNull]IntPtr surface);
+        private static extern int INTERNAL_SDL_LockSurface([NotNull]IntPtr surface);
 
+        /// <summary>
+        /// Locks the surface using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int LockSurface([NotNull]IntPtr surface) => INTERNAL_SDL_LockSurface(surface.Validate());
+        
         /// <summary>
         ///     Sdl the lower blit using the specified src
         /// </summary>
@@ -7274,6 +7388,17 @@ namespace Alis.Core.Graphic.SDL
         public static extern int INTERNAL_SDL_LowerBlit([NotNull]IntPtr src, ref SdlRect srcRect, [NotNull]IntPtr dst, ref SdlRect dstRect);
 
         /// <summary>
+        /// Lowers the blit using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <param name="srcRect">The src rect</param>
+        /// <param name="dst">The dst</param>
+        /// <param name="dstRect">The dst rect</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int LowerBlit([NotNull]IntPtr src, ref SdlRect srcRect, [NotNull]IntPtr dst, ref SdlRect dstRect) => INTERNAL_SDL_LowerBlit(src.Validate(), ref srcRect, dst, ref dstRect);
+        
+        /// <summary>
         ///     Sdl the lower blit scaled using the specified src
         /// </summary>
         /// <param name="src">The src</param>
@@ -7283,8 +7408,19 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_LowerBlitScaled", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_LowerBlitScaled([NotNull]IntPtr src, ref SdlRect srcRect, [NotNull]IntPtr dst, ref SdlRect dstRect);
+        private static extern int INTERNAL_SDL_LowerBlitScaled([NotNull]IntPtr src, ref SdlRect srcRect, [NotNull]IntPtr dst, ref SdlRect dstRect);
 
+        /// <summary>
+        /// Lowers the blit scaled using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <param name="srcRect">The src rect</param>
+        /// <param name="dst">The dst</param>
+        /// <param name="dstRect">The dst rect</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int LowerBlitScaled([NotNull]IntPtr src, ref SdlRect srcRect, [NotNull]IntPtr dst, ref SdlRect dstRect) => INTERNAL_SDL_LowerBlitScaled(src.Validate(), ref srcRect, dst, ref dstRect);
+        
         /// <summary>
         ///     Internals the sdl save bmp rw using the specified surface
         /// </summary>
@@ -7313,7 +7449,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetClipRect", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_SetClipRect([NotNull]IntPtr surface, ref SdlRect rect);
+        private static extern SdlBool INTERNAL_SDL_SetClipRect([NotNull]IntPtr surface, ref SdlRect rect);
+
+        /// <summary>
+        /// Sets the clip rect using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        /// <param name="rect">The rect</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool SetClipRect([NotNull]IntPtr surface, ref SdlRect rect) => INTERNAL_SDL_SetClipRect(surface.Validate(), ref rect);
 
         /// <summary>
         ///     Sdl the set color key using the specified surface
@@ -7324,8 +7469,18 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetColorKey", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetColorKey([NotNull]IntPtr surface, [NotNull] int flag, [NotNull] uint key);
+        private static extern int INTERNAL_SDL_SetColorKey([NotNull]IntPtr surface, [NotNull] int flag, [NotNull] uint key);
 
+        /// <summary>
+        /// Sets the color key using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        /// <param name="flag">The flag</param>
+        /// <param name="key">The key</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SetColorKey([NotNull]IntPtr surface, [NotNull] int flag, [NotNull] uint key) => INTERNAL_SDL_SetColorKey(surface.Validate(), flag, key);
+        
         /// <summary>
         ///     Sdl the set surface alpha mod using the specified surface
         /// </summary>
@@ -7334,8 +7489,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetSurfaceAlphaMod", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetSurfaceAlphaMod([NotNull]IntPtr surface, [NotNull] byte alpha);
+        private static extern int INTERNAL_SDL_SetSurfaceAlphaMod([NotNull]IntPtr surface, [NotNull] byte alpha);
 
+        /// <summary>
+        /// Sets the surface alpha mod using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        /// <param name="alpha">The alpha</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SetSurfaceAlphaMod([NotNull]IntPtr surface, [NotNull] byte alpha) => INTERNAL_SDL_SetSurfaceAlphaMod(surface.Validate(), alpha);
+        
         /// <summary>
         ///     Sdl the set surface blend mode using the specified surface
         /// </summary>
@@ -7344,7 +7508,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetSurfaceBlendMode", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetSurfaceBlendMode([NotNull]IntPtr surface, SdlBlendMode blendMode);
+        private static extern int INTERNAL_SDL_SetSurfaceBlendMode([NotNull]IntPtr surface, SdlBlendMode blendMode);
+
+        /// <summary>
+        /// Sets the surface blend mode using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        /// <param name="blendMode">The blend mode</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SetSurfaceBlendMode([NotNull]IntPtr surface, SdlBlendMode blendMode) => INTERNAL_SDL_SetSurfaceBlendMode(surface.Validate(), blendMode);
 
         /// <summary>
         ///     Sdl the set surface color mod using the specified surface
@@ -7356,8 +7529,19 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName,EntryPoint = "SDL_SetSurfaceColorMod", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetSurfaceColorMod([NotNull]IntPtr surface, [NotNull] byte r, [NotNull] byte g, [NotNull] byte b);
+        private static extern int INTERNAL_SDL_SetSurfaceColorMod([NotNull]IntPtr surface, [NotNull] byte r, [NotNull] byte g, [NotNull] byte b);
 
+        /// <summary>
+        /// Sets the surface color mod using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        /// <param name="r">The </param>
+        /// <param name="g">The </param>
+        /// <param name="b">The </param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SetSurfaceColorMod([NotNull]IntPtr surface, [NotNull] byte r, [NotNull] byte g, [NotNull] byte b) => INTERNAL_SDL_SetSurfaceColorMod(surface.Validate(), r, g, b);
+        
         /// <summary>
         ///     Sdl the set surface palette using the specified surface
         /// </summary>
@@ -7366,8 +7550,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetSurfacePalette", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetSurfacePalette([NotNull]IntPtr surface, [NotNull]IntPtr palette);
-
+        private static extern int INTERNAL_SDL_SetSurfacePalette([NotNull]IntPtr surface, [NotNull]IntPtr palette);
+        
+        /// <summary>
+        /// Sets the surface palette using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        /// <param name="palette">The palette</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SetSurfacePalette([NotNull]IntPtr surface, [NotNull]IntPtr palette) => INTERNAL_SDL_SetSurfacePalette(surface.Validate(), palette.Validate());
+        
         /// <summary>
         ///     Sdl the set surface rle using the specified surface
         /// </summary>
@@ -7376,7 +7569,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetSurfaceRLE", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetSurfaceRLE([NotNull]IntPtr surface, [NotNull] int flag);
+        private static extern int INTERNAL_SDL_SetSurfaceRLE([NotNull]IntPtr surface, [NotNull] int flag);
+        
+        /// <summary>
+        /// Sets the surface rle using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        /// <param name="flag">The flag</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SetSurfaceRle([NotNull]IntPtr surface, [NotNull] int flag) => INTERNAL_SDL_SetSurfaceRLE(surface.Validate(), flag);
 
         /// <summary>
         ///     Sdl the has surface rle using the specified surface
@@ -7385,8 +7587,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HasSurfaceRLE", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_HasSurfaceRLE([NotNull]IntPtr surface);
-
+        private static extern SdlBool INTERNAL_SDL_HasSurfaceRLE([NotNull]IntPtr surface);
+        
+        /// <summary>
+        /// Has the surface rle using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool HasSurfaceRle([NotNull]IntPtr surface) => INTERNAL_SDL_HasSurfaceRLE(surface.Validate());
+        
         /// <summary>
         ///     Sdl the soft stretch using the specified src
         /// </summary>
@@ -7397,8 +7607,19 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SoftStretch", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SoftStretch([NotNull]IntPtr src, ref SdlRect srcRect, [NotNull]IntPtr dst, ref SdlRect dstRect);
+        private static extern int INTERNAL_SDL_SoftStretch([NotNull]IntPtr src, ref SdlRect srcRect, [NotNull]IntPtr dst, ref SdlRect dstRect);
 
+        /// <summary>
+        /// Soft the stretch using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <param name="srcRect">The src rect</param>
+        /// <param name="dst">The dst</param>
+        /// <param name="dstRect">The dst rect</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SoftStretch([NotNull]IntPtr src, ref SdlRect srcRect, [NotNull]IntPtr dst, ref SdlRect dstRect) => INTERNAL_SDL_SoftStretch(src.Validate(), ref srcRect, dst.Validate(), ref dstRect);
+        
         /// <summary>
         ///     Sdl the soft stretch linear using the specified src
         /// </summary>
@@ -7409,15 +7630,33 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SoftStretchLinear", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SoftStretchLinear([NotNull]IntPtr src, ref SdlRect srcRect, [NotNull]IntPtr dst, ref SdlRect dstRect);
+        private static extern int INTERNAL_SDL_SoftStretchLinear([NotNull]IntPtr src, ref SdlRect srcRect, [NotNull]IntPtr dst, ref SdlRect dstRect);
 
+        /// <summary>
+        /// Soft the stretch linear using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <param name="srcRect">The src rect</param>
+        /// <param name="dst">The dst</param>
+        /// <param name="dstRect">The dst rect</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SoftStretchLinear([NotNull]IntPtr src, ref SdlRect srcRect, [NotNull]IntPtr dst, ref SdlRect dstRect) => INTERNAL_SDL_SoftStretchLinear(src.Validate(), ref srcRect, dst.Validate(), ref dstRect);
+        
         /// <summary>
         ///     Sdl the unlock surface using the specified surface
         /// </summary>
         /// <param name="surface">The surface</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_UnlockSurface", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_UnlockSurface([NotNull]IntPtr surface);
+        private static extern void INTERNAL_SDL_UnlockSurface([NotNull]IntPtr surface);
+        
+        /// <summary>
+        /// Unlocks the surface using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        [return: NotNull]
+        public static void UnlockSurface([NotNull]IntPtr surface) => INTERNAL_SDL_UnlockSurface(surface.Validate());
 
         /// <summary>
         ///     Sdl the upper blit using the specified src
@@ -7429,8 +7668,19 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_UpperBlit", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_UpperBlit([NotNull]IntPtr src, ref SdlRect srcRect, [NotNull]IntPtr dst, ref SdlRect dstRect);
+        private static extern int INTERNAL_SDL_UpperBlit([NotNull]IntPtr src, ref SdlRect srcRect, [NotNull]IntPtr dst, ref SdlRect dstRect);
 
+        /// <summary>
+        /// Uppers the blit using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <param name="srcRect">The src rect</param>
+        /// <param name="dst">The dst</param>
+        /// <param name="dstRect">The dst rect</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int UpperBlit([NotNull]IntPtr src, ref SdlRect srcRect, [NotNull]IntPtr dst, ref SdlRect dstRect) => INTERNAL_SDL_UpperBlit(src.Validate(), ref srcRect, dst.Validate(), ref dstRect);
+        
         /// <summary>
         ///     Sdl the upper blit scaled using the specified src
         /// </summary>
@@ -7441,7 +7691,18 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_UpperBlitScaled", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_UpperBlitScaled([NotNull]IntPtr src, ref SdlRect srcRect, [NotNull]IntPtr dst, ref SdlRect dstRect);
+        private static extern int INTERNAL_SDL_UpperBlitScaled([NotNull]IntPtr src, ref SdlRect srcRect, [NotNull]IntPtr dst, ref SdlRect dstRect);
+        
+        /// <summary>
+        /// Uppers the blit scaled using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <param name="srcRect">The src rect</param>
+        /// <param name="dst">The dst</param>
+        /// <param name="dstRect">The dst rect</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int UpperBlitScaled([NotNull]IntPtr src, ref SdlRect srcRect, [NotNull]IntPtr dst, ref SdlRect dstRect) => INTERNAL_SDL_UpperBlitScaled(src.Validate(), ref srcRect, dst, ref dstRect);
 
         /// <summary>
         ///     Sdl the duplicate surface using the specified surface
@@ -7450,7 +7711,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_DuplicateSurface", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_DuplicateSurface([NotNull]IntPtr surface);
+        private static extern IntPtr INTERNAL_SDL_DuplicateSurface([NotNull]IntPtr surface);
+        
+        /// <summary>
+        /// Duplicates the surface using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr DuplicateSurface([NotNull]IntPtr surface) => INTERNAL_SDL_DuplicateSurface(surface).Validate();
 
         /// <summary>
         ///     Sdl the has clipboard text
@@ -7458,7 +7727,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HasClipboardText", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_HasClipboardText();
+        private static extern SdlBool INTERNAL_SDL_HasClipboardText();
+        
+        /// <summary>
+        /// Has the clipboard text
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool HasClipboardText() => INTERNAL_SDL_HasClipboardText().Validate();
 
         /// <summary>
         ///     Internals the sdl get clipboard text
@@ -7497,8 +7773,14 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_PumpEvents", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_PumpEvents();
+        private static extern void INTERNAL_SDL_PumpEvents();
 
+        /// <summary>
+        /// Pumps the events
+        /// </summary>
+        [return: NotNull]
+        public static void PumpEvents() => INTERNAL_SDL_PumpEvents();
+        
         /// <summary>
         ///     Sdl the peep events using the specified events
         /// </summary>
@@ -7510,8 +7792,21 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_PeepEvents", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_PeepEvents([Out] SdlEvent[] events, [NotNull] int numEvents, SdlEventAction action, SdlEventType minType, SdlEventType maxType);
+        private static extern int INTERNAL_SDL_PeepEvents([Out] SdlEvent[] events, [NotNull] int numEvents, SdlEventAction action, SdlEventType minType, SdlEventType maxType);
 
+        /// <summary>
+        /// Peeps the events using the specified events
+        /// </summary>
+        /// <param name="events">The events</param>
+        /// <param name="numEvents">The num events</param>
+        /// <param name="action">The action</param>
+        /// <param name="minType">The min type</param>
+        /// <param name="maxType">The max type</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int PeepEvents([Out] SdlEvent[] events, [NotNull] int numEvents, SdlEventAction action, SdlEventType minType, SdlEventType maxType) => INTERNAL_SDL_PeepEvents(events, numEvents, action, minType.Validate(), maxType.Validate());
+
+        
         /// <summary>
         ///     Sdl the has event using the specified type
         /// </summary>
@@ -7519,7 +7814,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HasEvent", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_HasEvent(SdlEventType type);
+        private static extern SdlBool INTERNAL_SDL_HasEvent(SdlEventType type);
+        
+        /// <summary>
+        /// Has the event using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool HasEvent(SdlEventType type) => INTERNAL_SDL_HasEvent(type.Validate());
 
         /// <summary>
         ///     Sdl the has events using the specified min type
@@ -7529,7 +7832,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName,EntryPoint = "SDL_HasEvents", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_HasEvents(SdlEventType minType, SdlEventType maxType);
+        private static extern SdlBool INTERNAL_SDL_HasEvents(SdlEventType minType, SdlEventType maxType);
+        
+        /// <summary>
+        /// Has the events using the specified min type
+        /// </summary>
+        /// <param name="minType">The min type</param>
+        /// <param name="maxType">The max type</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool HasEvents(SdlEventType minType, SdlEventType maxType) => INTERNAL_SDL_HasEvents(minType.Validate(), maxType.Validate());
 
         /// <summary>
         ///     Sdl the flush event using the specified type
@@ -7537,7 +7849,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="type">The type</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_FlushEvent", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_FlushEvent(SdlEventType type);
+        private static extern void INTERNAL_SDL_FlushEvent(SdlEventType type);
+        
+        /// <summary>
+        /// Flushes the event using the specified type
+        /// </summary>
+        /// <param name="type">The type</param>
+        [return: NotNull]
+        public static void FlushEvent([NotNull] SdlEventType type) => INTERNAL_SDL_FlushEvent(type.Validate());
 
         /// <summary>
         ///     Sdl the flush events using the specified min
@@ -7546,16 +7865,32 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="max">The max</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_FlushEvents", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_FlushEvents(SdlEventType min, SdlEventType max);
+        private static extern void INTERNAL_SDL_FlushEvents(SdlEventType min, SdlEventType max);
+        
+        /// <summary>
+        /// Flushes the events using the specified min
+        /// </summary>
+        /// <param name="min">The min</param>
+        /// <param name="max">The max</param>
+        [return: NotNull]
+        public static void FlushEvents(SdlEventType min, SdlEventType max) => INTERNAL_SDL_FlushEvents(min.Validate(), max.Validate());
 
         /// <summary>
         ///     Sdl the poll event using the specified  event
         /// </summary>
-        /// <param name="event">The event</param>
+        /// <param name="sdlEvent">The event</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_PollEvent", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_PollEvent(out SdlEvent @event);
+        private static extern int INTERNAL_SDL_PollEvent(out SdlEvent sdlEvent);
+        
+        /// <summary>
+        /// Polls the event using the specified sdl event
+        /// </summary>
+        /// <param name="sdlEvent">The sdl event</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int PollEvent(out SdlEvent sdlEvent) => INTERNAL_SDL_PollEvent(out sdlEvent).Validate();
 
         /// <summary>
         ///     Sdl the wait event using the specified  event
@@ -7577,21 +7912,38 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     Sdl the wait event timeout using the specified  event
         /// </summary>
-        /// <param name="event">The event</param>
+        /// <param name="sdlEvent">The event</param>
         /// <param name="timeout">The timeout</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_WaitEventTimeout", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_WaitEventTimeout(out SdlEvent @event, [NotNull] int timeout);
+        public static extern int INTERNAL_SDL_WaitEventTimeout(out SdlEvent sdlEvent, [NotNull] int timeout);
+        
+        /// <summary>
+        /// Waits the event timeout using the specified sdl event
+        /// </summary>
+        /// <param name="sdlEvent">The sdl event</param>
+        /// <param name="timeout">The timeout</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int WaitEventTimeout(out SdlEvent sdlEvent, [NotNull] int timeout) => INTERNAL_SDL_WaitEventTimeout(out sdlEvent, timeout).Validate();
 
         /// <summary>
         ///     Sdl the push event using the specified  event
         /// </summary>
-        /// <param name="event">The event</param>
+        /// <param name="sdlEvent">The event</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_PushEvent", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_PushEvent(ref SdlEvent @event);
+        public static extern int INTERNAL_SDL_PushEvent(ref SdlEvent sdlEvent);
+        
+        /// <summary>
+        /// Pushes the event using the specified sdl event
+        /// </summary>
+        /// <param name="sdlEvent">The sdl event</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int PushEvent(ref SdlEvent sdlEvent) => INTERNAL_SDL_PushEvent(ref sdlEvent).Validate();
 
         /// <summary>
         ///     Sdl the set event filter using the specified filter
@@ -7600,7 +7952,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="userdata">The userdata</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetEventFilter", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_SetEventFilter(SdlEventFilter filter, [NotNull]IntPtr userdata);
+        private static extern void INTERNAL_SDL_SetEventFilter(SdlEventFilter filter, [NotNull]IntPtr userdata);
+        
+        /// <summary>
+        /// Sets the event filter using the specified filter
+        /// </summary>
+        /// <param name="filter">The filter</param>
+        /// <param name="userdata">The userdata</param>
+        [return: NotNull]
+        public static void SetEventFilter(SdlEventFilter filter, [NotNull]IntPtr userdata) => INTERNAL_SDL_SetEventFilter(filter.Validate(), userdata.Validate());
 
         /// <summary>
         ///     Sdl the get event filter using the specified filter
@@ -7619,10 +7979,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="userdata">The userdata</param>
         /// <returns>The ret val</returns>
         [return: NotNull]
-        public static SdlBool SDL_GetEventFilter(
-            out SdlEventFilter filter,
-            out IntPtr userdata
-        )
+        public static SdlBool GetEventFilter(out SdlEventFilter filter, out IntPtr userdata)
         {
             SdlBool val = INTERNAL_SDL_GetEventFilter(out IntPtr result, out userdata);
             if (result != IntPtr.Zero)
@@ -7647,8 +8004,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="userdata">The userdata</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_AddEventWatch", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_AddEventWatch(SdlEventFilter filter, [NotNull]IntPtr userdata);
-
+        private static extern void INTERNAL_SDL_AddEventWatch(SdlEventFilter filter, [NotNull]IntPtr userdata);
+        
+        /// <summary>
+        /// Adds the event watch using the specified filter
+        /// </summary>
+        /// <param name="filter">The filter</param>
+        /// <param name="userdata">The userdata</param>
+        [return: NotNull]
+        public static void AddEventWatch(SdlEventFilter filter, [NotNull]IntPtr userdata) => INTERNAL_SDL_AddEventWatch(filter.Validate(), userdata.Validate());
+        
         /// <summary>
         ///     Sdl the del event watch using the specified filter
         /// </summary>
@@ -7656,8 +8021,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="userdata">The userdata</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_DelEventWatch", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_DelEventWatch(SdlEventFilter filter, [NotNull]IntPtr userdata);
-
+        private static extern void INTERNAL_SDL_DelEventWatch(SdlEventFilter filter, [NotNull]IntPtr userdata);
+        
+        /// <summary>
+        /// Del the event watch using the specified filter
+        /// </summary>
+        /// <param name="filter">The filter</param>
+        /// <param name="userdata">The userdata</param>
+        [return: NotNull]
+        public static void DelEventWatch(SdlEventFilter filter, [NotNull]IntPtr userdata) => INTERNAL_SDL_DelEventWatch(filter.Validate(), userdata.Validate());
+        
         /// <summary>
         ///     Sdl the filter events using the specified filter
         /// </summary>
@@ -7665,7 +8038,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="userdata">The userdata</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_FilterEvents", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_FilterEvents(SdlEventFilter filter, IntPtr userdata);
+        private static extern void INTERNAL_SDL_FilterEvents(SdlEventFilter filter, IntPtr userdata);
+        
+        /// <summary>
+        /// Filters the events using the specified filter
+        /// </summary>
+        /// <param name="filter">The filter</param>
+        /// <param name="userdata">The userdata</param>
+        [return: NotNull]
+        public static void FilterEvents([NotNull]SdlEventFilter filter, [NotNull] IntPtr userdata) => INTERNAL_SDL_FilterEvents(filter.Validate(), userdata.Validate());
 
         /// <summary>
         ///     Sdl the event state using the specified type
@@ -7692,7 +8073,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RegisterEvents", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_RegisterEvents([NotNull] int numEvents);
+        private static extern uint INTERNAL_SDL_RegisterEvents([NotNull] int numEvents);
+        
+        /// <summary>
+        /// Registers the events using the specified num events
+        /// </summary>
+        /// <param name="numEvents">The num events</param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint RegisterEvents([NotNull] int numEvents) => INTERNAL_SDL_RegisterEvents(numEvents).Validate();
 
         /// <summary>
         ///     Sdl the scancode to keycode using the specified x
@@ -7700,7 +8089,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="x">The </param>
         /// <returns>The sdl keycode</returns>
         [return: NotNull]
-        public static SdlKeycode SCANCODE_TO_KEYCODE(SdlScancode x) => (SdlKeycode) ((int) x | KScancodeMask);
+        public static SdlKeycode ScanCodeToKeyCode(SdlScancode x) => (SdlKeycode) ((int) x | KScancodeMask);
 
         /// <summary>
         ///     Sdl the get keyboard focus
@@ -7708,7 +8097,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyboardFocus", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_GetKeyboardFocus();
+        private static extern IntPtr INTERNAL_SDL_GetKeyboardFocus();
+        
+        /// <summary>
+        /// Gets the keyboard focus
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr GetKeyboardFocus() => INTERNAL_SDL_GetKeyboardFocus().Validate();
 
         /// <summary>
         ///     Sdl the get keyboard state using the specified num keys
@@ -7717,7 +8113,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyboardState", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_GetKeyboardState(out int numKeys);
+        private static extern IntPtr INTERNAL_SDL_GetKeyboardState(out int numKeys);
+        
+        /// <summary>
+        /// Gets the keyboard state using the specified num keys
+        /// </summary>
+        /// <param name="numKeys">The num keys</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr GetKeyboardState(out int numKeys) => INTERNAL_SDL_GetKeyboardState(out numKeys).Validate();
 
         /// <summary>
         ///     Sdl the get mod state
@@ -7725,7 +8129,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl key mod</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetModState", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlKeymod INTERNAL_SDL_GetModState();
+        private static extern SdlKeymod INTERNAL_SDL_GetModState();
+        
+        /// <summary>
+        /// Gets the mod state
+        /// </summary>
+        /// <returns>The sdl key mod</returns>
+        [return: NotNull]
+        public static SdlKeymod GetModState() => INTERNAL_SDL_GetModState().Validate();
 
         /// <summary>
         ///     Sdl the set mod state using the specified mod state
@@ -7733,7 +8144,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="modState">The mod state</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetModState", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_SetModState(SdlKeymod modState);
+        private static extern void INTERNAL_SDL_SetModState(SdlKeymod modState);
+        
+        /// <summary>
+        /// Sets the mod state using the specified mod state
+        /// </summary>
+        /// <param name="modState">The mod state</param>
+        [return: NotNull]
+        public static void SetModState(SdlKeymod modState) => INTERNAL_SDL_SetModState(modState);
 
         /// <summary>
         ///     Sdl the get key from scancode using the specified scancode
@@ -7742,7 +8160,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl keycode</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyFromScancode", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlKeycode INTERNAL_SDL_GetKeyFromScancode(SdlScancode scancode);
+        private static extern SdlKeycode INTERNAL_SDL_GetKeyFromScancode(SdlScancode scancode);
+        
+        /// <summary>
+        /// Gets the key from scancode using the specified scancode
+        /// </summary>
+        /// <param name="scancode">The scancode</param>
+        /// <returns>The sdl keycode</returns>
+        [return: NotNull]
+        public static SdlKeycode GetKeyFromScancode(SdlScancode scancode) => INTERNAL_SDL_GetKeyFromScancode(scancode).Validate();
 
         /// <summary>
         ///     Sdl the get scancode from key using the specified key
@@ -7751,7 +8177,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl scancode</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetScancodeFromKey", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlScancode INTERNAL_SDL_GetScancodeFromKey(SdlKeycode key);
+        private static extern SdlScancode INTERNAL_SDL_GetScancodeFromKey(SdlKeycode key);
+        
+        /// <summary>
+        /// Gets the scancode from key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        /// <returns>The sdl scancode</returns>
+        [return: NotNull]
+        public static SdlScancode GetScancodeFromKey(SdlKeycode key) => INTERNAL_SDL_GetScancodeFromKey(key).Validate();
 
         /// <summary>
         ///     Internals the sdl get scancode name using the specified scancode
@@ -7826,7 +8260,13 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_StartTextInput", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_StartTextInput();
+        private static extern void INTERNAL_SDL_StartTextInput();
+        
+        /// <summary>
+        /// Starts the text input
+        /// </summary>
+        [return: NotNull]
+        public static void StartTextInput() => INTERNAL_SDL_StartTextInput();
 
         /// <summary>
         ///     Sdl the is text input active
@@ -7834,14 +8274,27 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_IsTextInputActive", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_IsTextInputActive();
+        private static extern SdlBool INTERNAL_SDL_IsTextInputActive();
+        
+        /// <summary>
+        /// Is the text input active
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool IsTextInputActive() => INTERNAL_SDL_IsTextInputActive().Validate();
 
         /// <summary>
         ///     Sdl the stop text input
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_StopTextInput", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_StopTextInput();
+        private static extern void INTERNAL_SDL_StopTextInput();
+        
+        /// <summary>
+        /// Stops the text input
+        /// </summary>
+        [return: NotNull]
+        public static void StopTextInput() => INTERNAL_SDL_StopTextInput();
 
         /// <summary>
         ///     Sdl the set text input rect using the specified rect
@@ -7849,7 +8302,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="rect">The rect</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetTextInputRect", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_SetTextInputRect(ref SdlRect rect);
+        private static extern void INTERNAL_SDL_SetTextInputRect(ref SdlRect rect);
+
+        /// <summary>
+        /// Sets the text input rect using the specified rect
+        /// </summary>
+        /// <param name="rect">The rect</param>
+        [return: NotNull]
+        public static void SetTextInputRect(ref SdlRect rect) => INTERNAL_SDL_SetTextInputRect(ref rect);
 
         /// <summary>
         ///     Sdl the has screen keyboard support
@@ -7857,7 +8317,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HasScreenKeyboardSupport", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_HasScreenKeyboardSupport();
+        private static extern SdlBool INTERNAL_SDL_HasScreenKeyboardSupport();
+        
+        /// <summary>
+        /// Has the screen keyboard support
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool HasScreenKeyboardSupport() => INTERNAL_SDL_HasScreenKeyboardSupport().Validate();
 
         /// <summary>
         ///     Sdl the is screen keyboard shown using the specified window
@@ -7866,7 +8333,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_IsScreenKeyboardShown", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_IsScreenKeyboardShown([NotNull]IntPtr window);
+        private static extern SdlBool INTERNAL_SDL_IsScreenKeyboardShown([NotNull]IntPtr window);
+        
+        /// <summary>
+        /// Is the screen keyboard shown using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool IsScreenKeyboardShown([NotNull]IntPtr window) => INTERNAL_SDL_IsScreenKeyboardShown(window.Validate()).Validate();
 
         /// <summary>
         ///     Sdl the get mouse focus
@@ -7874,7 +8349,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetMouseFocus", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_GetMouseFocus();
+        private static extern IntPtr INTERNAL_SDL_GetMouseFocus();
+        
+        /// <summary>
+        /// Gets the mouse focus
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr GetMouseFocus() => INTERNAL_SDL_GetMouseFocus().Validate();
 
         /// <summary>
         ///     Sdl the get mouse state using the specified x
@@ -7884,7 +8366,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetMouseState", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_GetMouseState(out int x, out int y);
+        private static extern uint INTERNAL_SDL_GetMouseState(out int x, out int y);
+        
+        /// <summary>
+        /// Gets the mouse state using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint GetMouseState(out int x, out int y) => INTERNAL_SDL_GetMouseState(out x, out y).Validate();
 
         /// <summary>
         ///     Sdl the get mouse state using the specified x
@@ -7894,7 +8385,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetMouseState", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_GetMouseState([NotNull]IntPtr x, out int y);
+        private static extern uint INTERNAL_SDL_GetMouseState([NotNull]IntPtr x, out int y);
+        
+        /// <summary>
+        /// Gets the mouse state using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint GetMouseState([NotNull]IntPtr x, out int y) => INTERNAL_SDL_GetMouseState(x.Validate(), out y);
 
         /// <summary>
         ///     Sdl the get mouse state using the specified x
@@ -7904,7 +8404,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetMouseState", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_GetMouseState(out int x, [NotNull]IntPtr y);
+        private static extern uint INTERNAL_SDL_GetMouseState(out int x, [NotNull]IntPtr y);
+        
+        /// <summary>
+        /// Gets the mouse state using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint GetMouseState(out int x, [NotNull]IntPtr y) => INTERNAL_SDL_GetMouseState(out x, y.Validate());
 
         /// <summary>
         ///     Sdl the get mouse state using the specified x
@@ -7914,7 +8423,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetMouseState", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_GetMouseState([NotNull]IntPtr x, [NotNull]IntPtr y);
+        private static extern uint INTERNAL_SDL_GetMouseState([NotNull]IntPtr x, [NotNull]IntPtr y);
+        
+        /// <summary>
+        /// Gets the mouse state using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint GetMouseState([NotNull]IntPtr x, [NotNull]IntPtr y) => INTERNAL_SDL_GetMouseState(x.Validate(), y.Validate());
 
         /// <summary>
         ///     Sdl the get global mouse state using the specified x
@@ -7924,7 +8442,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetGlobalMouseState", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_GetGlobalMouseState(out int x, out int y);
+        private static extern uint INTERNAL_SDL_GetGlobalMouseState(out int x, out int y);
+        
+        /// <summary>
+        /// Gets the global mouse state using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint GetGlobalMouseState(out int x, out int y) => INTERNAL_SDL_GetGlobalMouseState(out x, out y).Validate();
 
         /// <summary>
         ///     Sdl the get global mouse state using the specified x
@@ -7934,7 +8461,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetGlobalMouseState", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_GetGlobalMouseState([NotNull]IntPtr x, out int y);
+        private static extern uint INTERNAL_SDL_GetGlobalMouseState([NotNull]IntPtr x, out int y);
+        
+        /// <summary>
+        /// Gets the global mouse state using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint GetGlobalMouseState([NotNull]IntPtr x, out int y) => INTERNAL_SDL_GetGlobalMouseState(x.Validate(), out y).Validate();
 
         /// <summary>
         ///     Sdl the get global mouse state using the specified x
@@ -7944,7 +8480,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetGlobalMouseState", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_GetGlobalMouseState(out int x, [NotNull]IntPtr y);
+        private static extern uint INTERNAL_SDL_GetGlobalMouseState(out int x, [NotNull]IntPtr y);
+        
+        /// <summary>
+        /// Gets the global mouse state using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint GetGlobalMouseState(out int x, [NotNull]IntPtr y) => INTERNAL_SDL_GetGlobalMouseState(out x, y.Validate()).Validate();
 
         /// <summary>
         ///     Sdl the get global mouse state using the specified x
@@ -7955,6 +8500,15 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName,EntryPoint = "SDL_GetGlobalMouseState", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         public static extern uint INTERNAL_SDL_GetGlobalMouseState([NotNull]IntPtr x, [NotNull]IntPtr y);
+        
+        /// <summary>
+        /// Gets the global mouse state using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint GetGlobalMouseState([NotNull]IntPtr x, [NotNull]IntPtr y) => INTERNAL_SDL_GetGlobalMouseState(x.Validate(), y.Validate()).Validate();
 
         /// <summary>
         ///     Sdl the get relative mouse state using the specified x
@@ -7964,8 +8518,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetRelativeMouseState", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_GetRelativeMouseState(out int x, out int y);
+        private static extern uint INTERNAL_SDL_GetRelativeMouseState(out int x, out int y);
 
+        /// <summary>
+        /// Gets the relative mouse state using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint GetRelativeMouseState(out int x, out int y) => INTERNAL_SDL_GetRelativeMouseState(out x, out y).Validate();
+        
         /// <summary>
         ///     Sdl the warp mouse in window using the specified window
         /// </summary>
@@ -7974,8 +8537,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="y">The </param>
         [DllImport(NativeLibName, EntryPoint = "SDL_WarpMouseInWindow", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_WarpMouseInWindow([NotNull]IntPtr window, [NotNull] int x, [NotNull] int y);
+        private static extern void INTERNAL_SDL_WarpMouseInWindow([NotNull]IntPtr window, [NotNull] int x, [NotNull] int y);
 
+        /// <summary>
+        /// Warps the mouse in window using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        [return: NotNull]
+        public static void WarpMouseInWindow([NotNull]IntPtr window, [NotNull] int x, [NotNull] int y) => INTERNAL_SDL_WarpMouseInWindow(window.Validate(), x.Validate(), y.Validate());
+        
         /// <summary>
         ///     Sdl the warp mouse global using the specified x
         /// </summary>
@@ -7984,7 +8556,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_WarpMouseGlobal", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_WarpMouseGlobal([NotNull] int x, [NotNull] int y);
+        private static extern int INTERNAL_SDL_WarpMouseGlobal([NotNull] int x, [NotNull] int y);
+        
+        /// <summary>
+        /// Warps the mouse global using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int WarpMouseGlobal([NotNull] int x, [NotNull] int y) => INTERNAL_SDL_WarpMouseGlobal(x.Validate(), y.Validate());
 
         /// <summary>
         ///     Sdl the set relative mouse mode using the specified enabled
@@ -7993,7 +8574,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetRelativeMouseMode", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetRelativeMouseMode(SdlBool enabled);
+        private static extern int INTERNAL_SDL_SetRelativeMouseMode(SdlBool enabled);
+        
+        /// <summary>
+        /// Sets the relative mouse mode using the specified enabled
+        /// </summary>
+        /// <param name="enabled">The enabled</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SetRelativeMouseMode(SdlBool enabled) => INTERNAL_SDL_SetRelativeMouseMode(enabled.Validate());
 
         /// <summary>
         ///     Sdl the capture mouse using the specified enabled
@@ -8002,7 +8591,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CaptureMouse", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_CaptureMouse(SdlBool enabled);
+        private static extern int INTERNAL_SDL_CaptureMouse(SdlBool enabled);
+        
+        /// <summary>
+        /// Captures the mouse using the specified enabled
+        /// </summary>
+        /// <param name="enabled">The enabled</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int CaptureMouse([NotNull] SdlBool enabled) => INTERNAL_SDL_CaptureMouse(enabled.Validate());
 
         /// <summary>
         ///     Sdl the get relative mouse mode
@@ -8010,7 +8607,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetRelativeMouseMode", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_GetRelativeMouseMode();
+        private static extern SdlBool INTERNAL_SDL_GetRelativeMouseMode();
+        
+        /// <summary>
+        /// Gets the relative mouse mode
+        /// </summary>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool GetRelativeMouseMode() => INTERNAL_SDL_GetRelativeMouseMode().Validate();
 
         /// <summary>
         ///     Sdl the create cursor using the specified data
@@ -8024,8 +8628,21 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateCursor", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_CreateCursor([NotNull]IntPtr data, [NotNull]IntPtr mask, [NotNull] int w, [NotNull] int h, [NotNull] int hotX, [NotNull] int hotY);
+        private static extern IntPtr INTERNAL_SDL_CreateCursor([NotNull]IntPtr data, [NotNull]IntPtr mask, [NotNull] int w, [NotNull] int h, [NotNull] int hotX, [NotNull] int hotY);
 
+        /// <summary>
+        /// Creates the cursor using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
+        /// <param name="mask">The mask</param>
+        /// <param name="w">The </param>
+        /// <param name="h">The </param>
+        /// <param name="hotX">The hot</param>
+        /// <param name="hotY">The hot</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr CreateCursor([NotNull]IntPtr data, [NotNull]IntPtr mask, [NotNull] int w, [NotNull] int h, [NotNull] int hotX, [NotNull] int hotY) => INTERNAL_SDL_CreateCursor(data.Validate(), mask.Validate(), w, h, hotX, hotY);
+        
         /// <summary>
         ///     Sdl the create color cursor using the specified surface
         /// </summary>
@@ -8035,8 +8652,18 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateColorCursor", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_CreateColorCursor([NotNull]IntPtr surface, [NotNull] int hotX, [NotNull] int hotY);
+        private static extern IntPtr INTERNAL_SDL_CreateColorCursor([NotNull]IntPtr surface, [NotNull] int hotX, [NotNull] int hotY);
 
+        /// <summary>
+        /// Creates the color cursor using the specified surface
+        /// </summary>
+        /// <param name="surface">The surface</param>
+        /// <param name="hotX">The hot</param>
+        /// <param name="hotY">The hot</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr CreateColorCursor([NotNull]IntPtr surface, [NotNull] int hotX, [NotNull] int hotY) => INTERNAL_SDL_CreateColorCursor(surface.Validate(), hotX, hotY);
+        
         /// <summary>
         ///     Sdl the create system cursor using the specified id
         /// </summary>
@@ -8044,7 +8671,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateSystemCursor", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_CreateSystemCursor(SdlSystemCursor id);
+        private static extern IntPtr INTERNAL_SDL_CreateSystemCursor(SdlSystemCursor id);
+        
+        /// <summary>
+        /// Creates the system cursor using the specified id
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr CreateSystemCursor(SdlSystemCursor id) => INTERNAL_SDL_CreateSystemCursor(id.Validate());
 
         /// <summary>
         ///     Sdl the set cursor using the specified cursor
@@ -8052,7 +8687,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="cursor">The cursor</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetCursor", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_SetCursor([NotNull]IntPtr cursor);
+        private static extern void INTERNAL_SDL_SetCursor([NotNull]IntPtr cursor);
+        
+        /// <summary>
+        /// Sets the cursor using the specified cursor
+        /// </summary>
+        /// <param name="cursor">The cursor</param>
+        [return: NotNull]
+        public static void SetCursor([NotNull]IntPtr cursor) => INTERNAL_SDL_SetCursor(cursor.Validate());
 
         /// <summary>
         ///     Sdl the get cursor
@@ -8060,7 +8702,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetCursor", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_GetCursor();
+        private static extern IntPtr INTERNAL_SDL_GetCursor();
+        
+        /// <summary>
+        /// Gets the cursor
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr GetCursor() => INTERNAL_SDL_GetCursor().Validate();
 
         /// <summary>
         ///     Sdl the free cursor using the specified cursor
@@ -8068,8 +8717,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="cursor">The cursor</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_FreeCursor", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_FreeCursor([NotNull]IntPtr cursor);
-
+        private static extern void INTERNAL_SDL_FreeCursor([NotNull]IntPtr cursor);
+        
+        /// <summary>
+        /// Frees the cursor using the specified cursor
+        /// </summary>
+        /// <param name="cursor">The cursor</param>
+        [return: NotNull]
+        public static void FreeCursor([NotNull]IntPtr cursor) => INTERNAL_SDL_FreeCursor(cursor.Validate());
+        
         /// <summary>
         ///     Sdl the show cursor using the specified toggle
         /// </summary>
@@ -8077,15 +8733,23 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_ShowCursor", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_ShowCursor([NotNull] int toggle);
+        private static extern int INTERNAL_SDL_ShowCursor([NotNull] int toggle);
 
+        /// <summary>
+        /// Shows the cursor using the specified toggle
+        /// </summary>
+        /// <param name="toggle">The toggle</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int ShowCursor([NotNull] int toggle) => INTERNAL_SDL_ShowCursor(toggle.Validate()).Validate();
+        
         /// <summary>
         ///     Sdl the button using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The uint</returns>
         [return: NotNull]
-        public static uint SDL_BUTTON([NotNull] uint x) => (uint) (1 << ((int) x - 1));
+        public static uint Button([NotNull] uint x) => (uint) (1 << ((int) x - 1));
 
         /// <summary>
         ///     Sdl the get num touch devices
@@ -8093,7 +8757,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetNumTouchDevices", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GetNumTouchDevices();
+        private static extern int INTERNAL_SDL_GetNumTouchDevices();
+        
+        /// <summary>
+        /// Gets the num touch devices
+        /// </summary>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GetNumTouchDevices() => INTERNAL_SDL_GetNumTouchDevices().Validate();
 
         /// <summary>
         ///     Sdl the get touch device using the specified index
@@ -8102,7 +8773,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The long</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetTouchDevice", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern long INTERNAL_SDL_GetTouchDevice([NotNull] int index);
+        private static extern long INTERNAL_SDL_GetTouchDevice([NotNull] int index);
+        
+        /// <summary>
+        /// Gets the touch device using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The long</returns>
+        [return: NotNull]
+        public static long GetTouchDevice([NotNull] int index) => INTERNAL_SDL_GetTouchDevice(index.Validate());
 
         /// <summary>
         ///     Sdl the get num touch fingers using the specified touch id
@@ -8111,8 +8790,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetNumTouchFingers", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GetNumTouchFingers(long touchId);
+        private static extern int INTERNAL_SDL_GetNumTouchFingers(long touchId);
 
+        /// <summary>
+        /// Gets the num touch fingers using the specified touch id
+        /// </summary>
+        /// <param name="touchId">The touch id</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GetNumTouchFingers(long touchId) => INTERNAL_SDL_GetNumTouchFingers(touchId.Validate());
+        
         /// <summary>
         ///     Sdl the get touch finger using the specified touch id
         /// </summary>
@@ -8121,7 +8808,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetTouchFinger", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_GetTouchFinger(long touchId, [NotNull] int index);
+        private static extern IntPtr INTERNAL_SDL_GetTouchFinger([NotNull]long touchId, [NotNull] int index);
+        
+        /// <summary>
+        /// Gets the touch finger using the specified touch id
+        /// </summary>
+        /// <param name="touchId">The touch id</param>
+        /// <param name="index">The index</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr GetTouchFinger([NotNull]long touchId, [NotNull] int index) => INTERNAL_SDL_GetTouchFinger(touchId.Validate(), index.Validate());
 
         /// <summary>
         ///     Sdl the get touch device type using the specified touch id
@@ -8130,7 +8826,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl touch device type</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetTouchDeviceType", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlTouchDeviceType INTERNAL_SDL_GetTouchDeviceType(long touchId);
+        private static extern SdlTouchDeviceType INTERNAL_SDL_GetTouchDeviceType([NotNull]long touchId);
+        
+        /// <summary>
+        /// Gets the touch device type using the specified touch id
+        /// </summary>
+        /// <param name="touchId">The touch id</param>
+        /// <returns>The sdl touch device type</returns>
+        [return: NotNull]
+        public static SdlTouchDeviceType GetTouchDeviceType([NotNull] long touchId) => INTERNAL_SDL_GetTouchDeviceType(touchId.Validate());
+
 
         /// <summary>
         ///     Sdl the joystick rumble using the specified joystick
@@ -8142,8 +8847,19 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickRumble", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_JoystickRumble([NotNull]IntPtr joystick, [NotNull] ushort lowFrequencyRumble, [NotNull] ushort highFrequencyRumble, [NotNull] uint durationMs);
+        private static extern int INTERNAL_SDL_JoystickRumble([NotNull]IntPtr joystick, [NotNull] ushort lowFrequencyRumble, [NotNull] ushort highFrequencyRumble, [NotNull] uint durationMs);
 
+        /// <summary>
+        /// Joysticks the rumble using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <param name="lowFrequencyRumble">The low frequency rumble</param>
+        /// <param name="highFrequencyRumble">The high frequency rumble</param>
+        /// <param name="durationMs">The duration ms</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int JoystickRumble([NotNull]IntPtr joystick, [NotNull] ushort lowFrequencyRumble, [NotNull] ushort highFrequencyRumble, [NotNull] uint durationMs) => INTERNAL_SDL_JoystickRumble(joystick.Validate(), lowFrequencyRumble, highFrequencyRumble, durationMs);
+        
         /// <summary>
         ///     Sdl the joystick rumble triggers using the specified joystick
         /// </summary>
@@ -8154,16 +8870,34 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickRumbleTriggers", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_JoystickRumbleTriggers([NotNull]IntPtr joystick, [NotNull] ushort leftRumble, [NotNull] ushort rightRumble, [NotNull] uint durationMs);
+        private static extern int INTERNAL_SDL_JoystickRumbleTriggers([NotNull]IntPtr joystick, [NotNull] ushort leftRumble, [NotNull] ushort rightRumble, [NotNull] uint durationMs);
 
+        /// <summary>
+        /// Joysticks the rumble triggers using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <param name="leftRumble">The left rumble</param>
+        /// <param name="rightRumble">The right rumble</param>
+        /// <param name="durationMs">The duration ms</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int JoystickRumbleTriggers([NotNull]IntPtr joystick, [NotNull] ushort leftRumble, [NotNull] ushort rightRumble, [NotNull] uint durationMs) => INTERNAL_SDL_JoystickRumbleTriggers(joystick.Validate(), leftRumble, rightRumble, durationMs);
+        
         /// <summary>
         ///     Sdl the joystick close using the specified joystick
         /// </summary>
         /// <param name="joystick">The joystick</param>
         [DllImport(NativeLibName,EntryPoint = "SDL_JoystickClose", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_JoystickClose([NotNull]IntPtr joystick);
-
+        private static extern void INTERNAL_SDL_JoystickClose([NotNull]IntPtr joystick);
+        
+        /// <summary>
+        /// Joysticks the close using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        [return: NotNull]
+        public static void JoystickClose([NotNull]IntPtr joystick) => INTERNAL_SDL_JoystickClose(joystick.Validate());
+        
         /// <summary>
         ///     Sdl the joystick event state using the specified state
         /// </summary>
@@ -8171,8 +8905,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickEventState", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_JoystickEventState([NotNull] int state);
-
+        private static extern int INTERNAL_SDL_JoystickEventState([NotNull] int state);
+        
+        /// <summary>
+        /// Joysticks the event state using the specified state
+        /// </summary>
+        /// <param name="state">The state</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int JoystickEventState([NotNull] int state) => INTERNAL_SDL_JoystickEventState(state.Validate());
+        
         /// <summary>
         ///     Sdl the joystick get axis using the specified joystick
         /// </summary>
@@ -8181,8 +8923,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The short</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetAxis", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern short INTERNAL_SDL_JoystickGetAxis([NotNull]IntPtr joystick, [NotNull] int axis);
+        private static extern short INTERNAL_SDL_JoystickGetAxis([NotNull]IntPtr joystick, [NotNull] int axis);
 
+        /// <summary>
+        /// Joysticks the get axis using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <param name="axis">The axis</param>
+        /// <returns>The short</returns>
+        [return: NotNull]
+        public static short JoystickGetAxis([NotNull]IntPtr joystick, [NotNull] int axis) => INTERNAL_SDL_JoystickGetAxis(joystick.Validate(), axis);
+        
         /// <summary>
         ///     Sdl the joystick get axis initial state using the specified joystick
         /// </summary>
@@ -8192,8 +8943,18 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetAxisInitialState", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_JoystickGetAxisInitialState([NotNull]IntPtr joystick, [NotNull] int axis, out ushort state);
+        private static extern SdlBool INTERNAL_SDL_JoystickGetAxisInitialState([NotNull]IntPtr joystick, [NotNull] int axis, out ushort state);
 
+        /// <summary>
+        /// Joysticks the get axis initial state using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <param name="axis">The axis</param>
+        /// <param name="state">The state</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool JoystickGetAxisInitialState([NotNull]IntPtr joystick, [NotNull] int axis, out ushort state) => INTERNAL_SDL_JoystickGetAxisInitialState(joystick.Validate(), axis, out state);
+        
         /// <summary>
         ///     Sdl the joystick get ball using the specified joystick
         /// </summary>
@@ -8897,8 +9658,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickHasLED", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_JoystickHasLED([NotNull]IntPtr joystick);
-
+        private static extern SdlBool INTERNAL_SDL_JoystickHasLED([NotNull]IntPtr joystick);
+        
+        /// <summary>
+        /// Joysticks the has led using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool JoystickHasLed([NotNull]IntPtr joystick) => INTERNAL_SDL_JoystickHasLED(joystick.Validate());
+        
         /// <summary>
         ///     Sdl the joystick has rumble using the specified joystick
         /// </summary>
@@ -8906,8 +9675,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickHasRumble", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_JoystickHasRumble([NotNull]IntPtr joystick);
-
+        private static extern SdlBool INTERNAL_SDL_JoystickHasRumble([NotNull]IntPtr joystick);
+        
+        /// <summary>
+        /// Joysticks the has rumble using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool JoystickHasRumble([NotNull]IntPtr joystick) => INTERNAL_SDL_JoystickHasRumble(joystick.Validate());
+        
         /// <summary>
         ///     Sdl the joystick has rumble triggers using the specified joystick
         /// </summary>
@@ -8915,7 +9692,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickHasRumbleTriggers", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_JoystickHasRumbleTriggers([NotNull]IntPtr joystick);
+        private static extern SdlBool INTERNAL_SDL_JoystickHasRumbleTriggers([NotNull]IntPtr joystick);
+        
+        /// <summary>
+        /// Joysticks the has rumble triggers using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool JoystickHasRumbleTriggers([NotNull]IntPtr joystick) => INTERNAL_SDL_JoystickHasRumbleTriggers(joystick.Validate());
+
 
         /// <summary>
         ///     Sdl the joystick set led using the specified joystick
@@ -8938,8 +9724,18 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickSendEffect", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_JoystickSendEffect([NotNull]IntPtr joystick, [NotNull]IntPtr data, [NotNull] int size);
+        private static extern int INTERNAL_SDL_JoystickSendEffect([NotNull]IntPtr joystick, [NotNull]IntPtr data, [NotNull] int size);
 
+        /// <summary>
+        /// Joysticks the send effect using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <param name="data">The data</param>
+        /// <param name="size">The size</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int JoystickSendEffect([NotNull]IntPtr joystick, [NotNull]IntPtr data, [NotNull] int size) => INTERNAL_SDL_JoystickSendEffect(joystick.Validate(), data.Validate(), size.Validate());
+        
         /// <summary>
         ///     Internals the sdl game controller add mapping using the specified mapping string
         /// </summary>
@@ -8955,7 +9751,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="mappingString">The mapping string</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static int SDL_GameControllerAddMapping([NotNull] string mappingString) => INTERNAL_SDL_GameControllerAddMapping(Utf8Manager.Utf8EncodeHeap(mappingString));
+        public static int GameControllerAddMapping([NotNull] string mappingString) => INTERNAL_SDL_GameControllerAddMapping(Utf8Manager.Utf8EncodeHeap(mappingString));
 
         /// <summary>
         ///     Sdl the game controller num mappings
@@ -8963,7 +9759,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerNumMappings", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GameControllerNumMappings();
+        private static extern int INTERNAL_SDL_GameControllerNumMappings();
+        
+        /// <summary>
+        /// Games the controller num mappings
+        /// </summary>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GameControllerNumMappings() => INTERNAL_SDL_GameControllerNumMappings().Validate();
 
         /// <summary>
         ///     Internals the sdl game controller mapping for index using the specified mapping index
@@ -8980,7 +9783,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="mappingIndex">The mapping index</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerMappingForIndex([NotNull] int mappingIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerMappingForIndex(mappingIndex), true);
+        public static string GameControllerMappingForIndex([NotNull] int mappingIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerMappingForIndex(mappingIndex), true);
 
         /// <summary>
         ///     Internals the sdl game controller add mappings from rw using the specified rw
@@ -8998,7 +9801,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int SdlGameControllerAddMappingsFromFile([NotNull] string file) => INTERNAL_SDL_GameControllerAddMappingsFromRW(RwFromFile(file, "rb"), 1);
+        public static int GameControllerAddMappingsFromFile([NotNull] string file) => INTERNAL_SDL_GameControllerAddMappingsFromRW(RwFromFile(file, "rb"), 1);
 
         /// <summary>
         ///     Internals the sdl game controller mapping for guid using the specified guid
@@ -9015,7 +9818,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="guid">The guid</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerMappingForGUID(Guid guid) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerMappingForGUID(guid), true);
+        public static string GameControllerMappingForGuid(Guid guid) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerMappingForGUID(guid), true);
 
         /// <summary>
         ///     Internals the sdl game controller mapping using the specified game controller
@@ -9032,7 +9835,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="gameController">The game controller</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerMapping([NotNull]IntPtr gameController) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerMapping(gameController), true);
+        public static string GameControllerMapping([NotNull]IntPtr gameController) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerMapping(gameController), true);
 
         /// <summary>
         ///     Sdl the is game controller using the specified joystick index
@@ -9041,8 +9844,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_IsGameController", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_IsGameController([NotNull] int joystickIndex);
-
+        private static extern SdlBool INTERNAL_SDL_IsGameController([NotNull] int joystickIndex);
+        
+        /// <summary>
+        /// Is the game controller using the specified joystick index
+        /// </summary>
+        /// <param name="joystickIndex">The joystick index</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool IsGameController([NotNull] int joystickIndex) => INTERNAL_SDL_IsGameController(joystickIndex.Validate());
+        
         /// <summary>
         ///     Internals the sdl game controller name for index using the specified joystick index
         /// </summary>
@@ -9058,7 +9869,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerNameForIndex([NotNull] int joystickIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerNameForIndex(joystickIndex));
+        public static string GameControllerNameForIndex([NotNull] int joystickIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerNameForIndex(joystickIndex));
 
         /// <summary>
         ///     Internals the sdl game controller mapping for device index using the specified joystick index
@@ -9075,7 +9886,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerMappingForDeviceIndex([NotNull] int joystickIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerMappingForDeviceIndex(joystickIndex), true);
+        public static string GameControllerMappingForDeviceIndex([NotNull] int joystickIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerMappingForDeviceIndex(joystickIndex), true);
 
         /// <summary>
         ///     Sdl the game controller open using the specified joystick index
@@ -9084,8 +9895,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerOpen", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_GameControllerOpen([NotNull] int joystickIndex);
+        private static extern IntPtr INTERNAL_SDL_GameControllerOpen([NotNull] int joystickIndex);
 
+        /// <summary>
+        /// Games the controller open using the specified joystick index
+        /// </summary>
+        /// <param name="joystickIndex">The joystick index</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr GameControllerOpen([NotNull] int joystickIndex) => INTERNAL_SDL_GameControllerOpen(joystickIndex.Validate());
+        
         /// <summary>
         ///     Internals the sdl game controller name using the specified game controller
         /// </summary>
@@ -9101,7 +9920,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="gameController">The game controller</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerName([NotNull]IntPtr gameController) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerName(gameController));
+        public static string GameControllerName([NotNull]IntPtr gameController) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerName(gameController));
 
         /// <summary>
         ///     Sdl the game controller get vendor using the specified game controller
@@ -9110,7 +9929,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetVendor", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern ushort INTERNAL_SDL_GameControllerGetVendor([NotNull]IntPtr gameController);
+        private static extern ushort INTERNAL_SDL_GameControllerGetVendor([NotNull]IntPtr gameController);
+        
+        /// <summary>
+        /// Games the controller get vendor using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <returns>The ushort</returns>
+        [return: NotNull]
+        public static ushort GameControllerGetVendor([NotNull]IntPtr gameController) => INTERNAL_SDL_GameControllerGetVendor(gameController.Validate());
 
         /// <summary>
         ///     Sdl the game controller get product using the specified game controller
@@ -9119,8 +9946,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetProduct", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern ushort INTERNAL_SDL_GameControllerGetProduct([NotNull]IntPtr gameController);
+        private static extern ushort INTERNAL_SDL_GameControllerGetProduct([NotNull]IntPtr gameController);
 
+        /// <summary>
+        /// Games the controller get product using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <returns>The ushort</returns>
+        [return: NotNull]
+        public static ushort GameControllerGetProduct([NotNull]IntPtr gameController) => INTERNAL_SDL_GameControllerGetProduct(gameController.Validate());
+
+        
         /// <summary>
         ///     Sdl the game controller get product version using the specified game controller
         /// </summary>
@@ -9128,7 +9964,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The ushort</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetProductVersion", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern ushort INTERNAL_SDL_GameControllerGetProductVersion([NotNull]IntPtr gameController);
+        private static extern ushort INTERNAL_SDL_GameControllerGetProductVersion([NotNull]IntPtr gameController);
+        
+        /// <summary>
+        /// Games the controller get product version using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <returns>The ushort</returns>
+        [return: NotNull]
+        public static ushort GameControllerGetProductVersion([NotNull]IntPtr gameController) => INTERNAL_SDL_GameControllerGetProductVersion(gameController.Validate());
+
 
         /// <summary>
         ///     Internals the sdl game controller get serial using the specified game controller
@@ -9154,8 +9999,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetAttached", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_GameControllerGetAttached([NotNull]IntPtr gameController);
+        private static extern SdlBool INTERNAL_SDL_GameControllerGetAttached([NotNull]IntPtr gameController);
 
+        /// <summary>
+        /// Games the controller get attached using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool GameControllerGetAttached([NotNull]IntPtr gameController) => INTERNAL_SDL_GameControllerGetAttached(gameController.Validate());
+        
         /// <summary>
         ///     Sdl the game controller get joystick using the specified game controller
         /// </summary>
