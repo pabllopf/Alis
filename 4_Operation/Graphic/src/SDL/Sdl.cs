@@ -6524,7 +6524,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickRumble", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_JoystickRumble([NotNull]IntPtr joystick, ushort lowFrequencyRumble, ushort highFrequencyRumble, [NotNull] uint durationMs);
+        public static extern int INTERNAL_SDL_JoystickRumble([NotNull]IntPtr joystick, [NotNull] ushort lowFrequencyRumble, [NotNull] ushort highFrequencyRumble, [NotNull] uint durationMs);
 
         /// <summary>
         ///     Sdl the joystick rumble triggers using the specified joystick
@@ -6536,7 +6536,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickRumbleTriggers", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_JoystickRumbleTriggers([NotNull]IntPtr joystick, ushort leftRumble, ushort rightRumble, [NotNull] uint durationMs);
+        public static extern int INTERNAL_SDL_JoystickRumbleTriggers([NotNull]IntPtr joystick, [NotNull] ushort leftRumble, [NotNull] ushort rightRumble, [NotNull] uint durationMs);
 
         /// <summary>
         ///     Sdl the joystick close using the specified joystick
@@ -7445,7 +7445,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerRumble", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GameControllerRumble([NotNull]IntPtr gameController, ushort lowFrequencyRumble, ushort highFrequencyRumble, [NotNull] uint durationMs);
+        public static extern int INTERNAL_SDL_GameControllerRumble([NotNull]IntPtr gameController, [NotNull] ushort lowFrequencyRumble, [NotNull] ushort highFrequencyRumble, [NotNull] uint durationMs);
 
         /// <summary>
         ///     Sdl the game controller rumble triggers using the specified game controller
@@ -7457,7 +7457,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerRumbleTriggers", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GameControllerRumbleTriggers([NotNull]IntPtr gameController, ushort leftRumble, ushort rightRumble, [NotNull] uint durationMs);
+        public static extern int INTERNAL_SDL_GameControllerRumbleTriggers([NotNull]IntPtr gameController, [NotNull] ushort leftRumble, [NotNull] ushort rightRumble, [NotNull] uint durationMs);
 
         /// <summary>
         ///     Sdl the game controller close using the specified game controller
@@ -8151,49 +8151,49 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The ushort</returns>
-        public static ushort SdlAudioBitSize(ushort x) => (ushort) (x & AudioMaskBitSize);
+        public static ushort SdlAudioBitSize([NotNull] ushort x) => (ushort) (x & AudioMaskBitSize);
 
         /// <summary>
         ///     Describes whether sdl audio is float
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlAudioIsFloat(ushort x) => (x & AudioMaskDatatype) != 0;
+        public static bool SdlAudioIsFloat([NotNull] ushort x) => (x & AudioMaskDatatype) != 0;
 
         /// <summary>
         ///     Describes whether sdl audio is big endian
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlAudioIsBigEndian(ushort x) => (x & AudioMaskEndian) != 0;
+        public static bool SdlAudioIsBigEndian([NotNull] ushort x) => (x & AudioMaskEndian) != 0;
 
         /// <summary>
         ///     Describes whether sdl audio is signed
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlAudioIsSigned(ushort x) => (x & AudioMaskSigned) != 0;
+        public static bool SdlAudioIsSigned([NotNull] ushort x) => (x & AudioMaskSigned) != 0;
 
         /// <summary>
         ///     Describes whether sdl audio is int
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlAudioIsInt(ushort x) => (x & AudioMaskDatatype) == 0;
+        public static bool SdlAudioIsInt([NotNull] ushort x) => (x & AudioMaskDatatype) == 0;
 
         /// <summary>
         ///     Describes whether sdl audio is little endian
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlAudioIsLittleEndian(ushort x) => (x & AudioMaskEndian) == 0;
+        public static bool SdlAudioIsLittleEndian([NotNull] ushort x) => (x & AudioMaskEndian) == 0;
 
         /// <summary>
         ///     Describes whether sdl audio is unsigned
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool SdlAudioIsUnsigned(ushort x) => (x & AudioMaskSigned) == 0;
+        public static bool SdlAudioIsUnsigned([NotNull] ushort x) => (x & AudioMaskSigned) == 0;
 
         /// <summary>
         ///     Internals the sdl audio init using the specified driver name
@@ -8367,7 +8367,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="len">The len</param>
         /// <param name="volume">The volume</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_MixAudioFormat", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void INTERNAL_SDL_MixAudioFormat([NotNull]IntPtr dst, [NotNull]IntPtr src, ushort format, [NotNull] uint len, [NotNull] int volume);
+        public static extern void INTERNAL_SDL_MixAudioFormat([NotNull]IntPtr dst, [NotNull]IntPtr src, [NotNull] ushort format, [NotNull] uint len, [NotNull] int volume);
 
         /// <summary>
         ///     Sdl the mix audio format using the specified dst
@@ -8379,7 +8379,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="volume">The volume</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_MixAudioFormat", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_MixAudioFormat([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [NotNull] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [NotNull] byte[] src, ushort format, [NotNull] uint len, [NotNull] int volume);
+        public static extern void INTERNAL_SDL_MixAudioFormat([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [NotNull] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [NotNull] byte[] src, [NotNull] ushort format, [NotNull] uint len, [NotNull] int volume);
 
         /// <summary>
         ///     Sdl the open audio using the specified desired
