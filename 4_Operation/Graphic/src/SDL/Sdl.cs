@@ -1490,7 +1490,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="mode">The mode</param>
         /// <returns>The rw ops</returns>
         [return: NotNull]
-        private static IntPtr RwFromFile(string file, string mode) => INTERNAL_SDL_RWFromFile(Utf8Manager.Utf8EncodeHeap(file), Utf8Manager.Utf8EncodeHeap(mode));
+        private static IntPtr RwFromFile([NotNull] string file, [NotNull] string mode) => INTERNAL_SDL_RWFromFile(Utf8Manager.Utf8EncodeHeap(file), Utf8Manager.Utf8EncodeHeap(mode));
 
         /// <summary>
         ///     Sdl the alloc rw
@@ -1927,7 +1927,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="dataSize">The data size</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static IntPtr LoadFile(string file, out IntPtr dataSize) => INTERNAL_SDL_LoadFile(Utf8Manager.Utf8EncodeHeap(file), out dataSize);
+        public static IntPtr LoadFile([NotNull] string file, out IntPtr dataSize) => INTERNAL_SDL_LoadFile(Utf8Manager.Utf8EncodeHeap(file), out dataSize);
 
         /// <summary>
         ///     Sdl the set main ready
@@ -2036,7 +2036,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="name">The name</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GetHint(string name) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetHint(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name))));
+        public static string GetHint([NotNull] string name) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetHint(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name))));
 
         /// <summary>
         ///     Internals the sdl set hint using the specified name
@@ -2055,7 +2055,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="value">The value</param>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SetHint(string name, string value) => INTERNAL_SDL_SetHint(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)), Utf8Manager.Utf8Encode(value, new byte[Utf8Manager.Utf8Size(value)], Utf8Manager.Utf8Size(value)));
+        public static SdlBool SetHint([NotNull] string name, [NotNull] string value) => INTERNAL_SDL_SetHint(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)), Utf8Manager.Utf8Encode(value, new byte[Utf8Manager.Utf8Size(value)], Utf8Manager.Utf8Size(value)));
 
         /// <summary>
         ///     Internals the sdl set hint with priority using the specified name
@@ -2076,7 +2076,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="priority">The priority</param>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SetHintWithPriority(string name, string value, SdlHintPriority priority) => INTERNAL_SDL_SetHintWithPriority(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)), Utf8Manager.Utf8Encode(value, new byte[Utf8Manager.Utf8Size(value)], Utf8Manager.Utf8Size(value)), priority);
+        public static SdlBool SetHintWithPriority([NotNull] string name, [NotNull] string value, SdlHintPriority priority) => INTERNAL_SDL_SetHintWithPriority(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)), Utf8Manager.Utf8Encode(value, new byte[Utf8Manager.Utf8Size(value)], Utf8Manager.Utf8Size(value)), priority);
         
         /// <summary>
         ///     Internals the sdl get hint boolean using the specified name
@@ -2095,7 +2095,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="defaultValue">The default value</param>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool GetHintBoolean(string name, SdlBool defaultValue) => INTERNAL_SDL_GetHintBoolean(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)), defaultValue);
+        public static SdlBool GetHintBoolean([NotNull] string name, SdlBool defaultValue) => INTERNAL_SDL_GetHintBoolean(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)), defaultValue);
 
         /// <summary>
         ///     Sdl the clear error
@@ -2138,7 +2138,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [return: NotNull]
-        public static void SetError(string fmtAndArgList) => INTERNAL_SDL_SetError(Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void SetError([NotNull] string fmtAndArgList) => INTERNAL_SDL_SetError(Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
 
         /// <summary>
         ///     Sdl the get error msg using the specified err str
@@ -2171,7 +2171,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [return: NotNull]
-        public static void Log(string fmtAndArgList) => INTERNAL_SDL_Log(Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void Log([NotNull] string fmtAndArgList) => INTERNAL_SDL_Log(Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
 
         /// <summary>
         ///     Internals the sdl log verbose using the specified category
@@ -2188,7 +2188,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [return: NotNull]
-        public static void LogVerbose(int category, string fmtAndArgList) => INTERNAL_SDL_LogVerbose(category, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void LogVerbose(int category, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogVerbose(category, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
 
         /// <summary>
         ///     Internals the sdl log debug using the specified category
@@ -2204,7 +2204,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
-        public static void LogDebug(int category, string fmtAndArgList) => INTERNAL_SDL_LogDebug(category, Utf8Manager.Utf8Encode(fmtAndArgList,  new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void LogDebug(int category, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogDebug(category, Utf8Manager.Utf8Encode(fmtAndArgList,  new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
 
         /// <summary>
         ///     Internals the sdl log info using the specified category
@@ -2220,7 +2220,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
-        public static void LogInfo(int category, string fmtAndArgList) => INTERNAL_SDL_LogInfo(category, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void LogInfo(int category, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogInfo(category, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
 
         /// <summary>
         ///     Internals the sdl log warn using the specified category
@@ -2237,7 +2237,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [return: NotNull]
-        public static void LogWarning(int category, string fmtAndArgList) => INTERNAL_SDL_LogWarn(category, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void LogWarning(int category, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogWarn(category, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
 
         /// <summary>
         ///     Internals the sdl log error using the specified category
@@ -2254,7 +2254,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [return: NotNull]
-        public static void LogError(int category, string fmtAndArgList) => INTERNAL_SDL_LogError(category, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void LogError(int category, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogError(category, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
 
         /// <summary>
         ///     Internals the sdl log critical using the specified category
@@ -2270,7 +2270,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [return: NotNull]
-        public static void LogCritical(int category, string fmtAndArgList) => INTERNAL_SDL_LogCritical(category, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void LogCritical(int category, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogCritical(category, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
 
         /// <summary>
         ///     Internals the sdl log message using the specified category
@@ -2289,7 +2289,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="priority">The priority</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [return: NotNull]
-        public static void LogMessage(int category, SdlLogPriority priority, string fmtAndArgList) => INTERNAL_SDL_LogMessage(category, priority, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void LogMessage(int category, SdlLogPriority priority, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogMessage(category, priority, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
 
         /// <summary>
         ///     Internals the sdl log message v using the specified category
@@ -2308,7 +2308,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="priority">The priority</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [return: NotNull]
-        public static void LogMessageV(int category, SdlLogPriority priority, string fmtAndArgList) => INTERNAL_SDL_LogMessageV(category, priority, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void LogMessageV(int category, SdlLogPriority priority, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogMessageV(category, priority, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
 
         /// <summary>
         ///     Sdl the log get priority using the specified category
@@ -2434,7 +2434,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="str">The str</param>
         /// <returns>The mem</returns>
         [return: NotNull]
-        private static IntPtr INTERNAL_AllocUTF8(string str)
+        private static IntPtr INTERNAL_AllocUTF8([NotNull] string str)
         {
             if (string.IsNullOrEmpty(str))
             {
@@ -2542,7 +2542,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="window">The window</param>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int ShowSimpleMessageBox(SdlMessageBoxFlags flags, string title, string message, [NotNull] IntPtr window) => INTERNAL_SDL_ShowSimpleMessageBox(flags, Utf8Manager.Utf8Encode(title, new byte[Utf8Manager.Utf8Size(title)], Utf8Manager.Utf8Size(title)), Utf8Manager.Utf8Encode(message, new byte[Utf8Manager.Utf8Size(message)], Utf8Manager.Utf8Size(message)), window);
+        public static int ShowSimpleMessageBox(SdlMessageBoxFlags flags, [NotNull] string title, [NotNull] string message, [NotNull] IntPtr window) => INTERNAL_SDL_ShowSimpleMessageBox(flags, Utf8Manager.Utf8Encode(title, new byte[Utf8Manager.Utf8Size(title)], Utf8Manager.Utf8Size(title)), Utf8Manager.Utf8Encode(message, new byte[Utf8Manager.Utf8Size(message)], Utf8Manager.Utf8Size(message)), window);
 
         /// <summary>
         /// Sdl the version
@@ -2975,7 +2975,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="window">The window</param>
         /// <param name="name">The name</param>
         /// <returns>The int ptr</returns>
-        public static IntPtr GetWindowData([NotNull] IntPtr window, string name) => INTERNAL_SDL_GetWindowData(window, Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)));
+        public static IntPtr GetWindowData([NotNull] IntPtr window, [NotNull] string name) => INTERNAL_SDL_GetWindowData(window, Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)));
 
         /// <summary>
         ///     Sdl the get window display index using the specified window
@@ -3167,7 +3167,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="path">The path</param>
         /// <returns>The result</returns>
-        public static int SDL_GL_LoadLibrary(string path) => INTERNAL_SDL_GL_LoadLibrary(Utf8Manager.Utf8EncodeHeap(path));
+        public static int SDL_GL_LoadLibrary([NotNull] string path) => INTERNAL_SDL_GL_LoadLibrary(Utf8Manager.Utf8EncodeHeap(path));
         
         /// <summary>
         ///     Sdl the gl get proc address using the specified proc
@@ -3182,7 +3182,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="proc">The proc</param>
         /// <returns>The int ptr</returns>
-        public static IntPtr SDL_GL_GetProcAddress(string proc) => INTERNAL_SDL_GL_GetProcAddress(Utf8Manager.Utf8Encode(proc, new byte[Utf8Manager.Utf8Size(proc)], Utf8Manager.Utf8Size(proc)));
+        public static IntPtr SDL_GL_GetProcAddress([NotNull] string proc) => INTERNAL_SDL_GL_GetProcAddress(Utf8Manager.Utf8Encode(proc, new byte[Utf8Manager.Utf8Size(proc)], Utf8Manager.Utf8Size(proc)));
 
         /// <summary>
         ///     Sdl the gl unload library
@@ -3203,7 +3203,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="extension">The extension</param>
         /// <returns>The sdl bool</returns>
-        public static SdlBool SDL_GL_ExtensionSupported(string extension) => INTERNAL_SDL_GL_ExtensionSupported(Utf8Manager.Utf8Encode(extension, new byte[Utf8Manager.Utf8Size(extension)], Utf8Manager.Utf8Size(extension)));
+        public static SdlBool SDL_GL_ExtensionSupported([NotNull] string extension) => INTERNAL_SDL_GL_ExtensionSupported(Utf8Manager.Utf8Encode(extension, new byte[Utf8Manager.Utf8Size(extension)], Utf8Manager.Utf8Size(extension)));
         
         /// <summary>
         ///     Sdl the gl reset attributes
@@ -3367,7 +3367,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="name">The name</param>
         /// <param name="userdata">The userdata</param>
         /// <returns>The int ptr</returns>
-        public static IntPtr SetWindowData([NotNull] IntPtr window, string name, [NotNull] IntPtr userdata) => INTERNAL_SDL_SetWindowData(window, Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)), userdata);
+        public static IntPtr SetWindowData([NotNull] IntPtr window, [NotNull] string name, [NotNull] IntPtr userdata) => INTERNAL_SDL_SetWindowData(window, Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)), userdata);
         
         /// <summary>
         ///     Sdl the set window display mode using the specified window
@@ -3524,7 +3524,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="window">The window</param>
         /// <param name="title">The title</param>
-        public static void SetWindowTitle([NotNull] IntPtr window, string title) => INTERNAL_SDL_SetWindowTitle(window, Utf8Manager.Utf8Encode(title, new byte[Utf8Manager.Utf8Size(title)], Utf8Manager.Utf8Size(title)));
+        public static void SetWindowTitle([NotNull] IntPtr window, [NotNull] string title) => INTERNAL_SDL_SetWindowTitle(window, Utf8Manager.Utf8Encode(title, new byte[Utf8Manager.Utf8Size(title)], Utf8Manager.Utf8Size(title)));
         
         /// <summary>
         ///     Sdl the show window using the specified window
@@ -3564,7 +3564,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="driverName">The driver name</param>
         /// <returns>The int</returns>
-        public static int VideoInit(string driverName) => INTERNAL_SDL_VideoInit(Utf8Manager.Utf8Encode(driverName, new byte[Utf8Manager.Utf8Size(driverName)], Utf8Manager.Utf8Size(driverName)));
+        public static int VideoInit([NotNull] string driverName) => INTERNAL_SDL_VideoInit(Utf8Manager.Utf8Encode(driverName, new byte[Utf8Manager.Utf8Size(driverName)], Utf8Manager.Utf8Size(driverName)));
 
         /// <summary>
         ///     Sdl the video quit
@@ -3650,7 +3650,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="path">The path</param>
         /// <returns>The result</returns>
-        public static int Vulkan_LoadLibrary(string path) => INTERNAL_SDL_Vulkan_LoadLibrary(Utf8Manager.Utf8EncodeHeap(path));
+        public static int Vulkan_LoadLibrary([NotNull] string path) => INTERNAL_SDL_Vulkan_LoadLibrary(Utf8Manager.Utf8EncodeHeap(path));
         
         /// <summary>
         ///     Sdl the vulkan get vk get instance proc addr
@@ -5640,7 +5640,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr LoadBmp(string file) => INTERNAL_SDL_LoadBMP_RW(RwFromFile(file, "rb"), 1);
+        public static IntPtr LoadBmp([NotNull] string file) => INTERNAL_SDL_LoadBMP_RW(RwFromFile(file, "rb"), 1);
 
         /// <summary>
         ///     Sdl the lock surface using the specified surface
@@ -5693,7 +5693,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int SaveBmp([NotNull]IntPtr surface, string file) => INTERNAL_SDL_SaveBMP_RW(surface, RwFromFile(file, "wb"), 1);
+        public static int SaveBmp([NotNull]IntPtr surface, [NotNull] string file) => INTERNAL_SDL_SaveBMP_RW(surface, RwFromFile(file, "wb"), 1);
 
         /// <summary>
         ///     Sdl the set clip rect using the specified surface
@@ -5880,7 +5880,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="text">The text</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static int SetClipboardText(string text) => INTERNAL_SDL_SetClipboardText(Utf8Manager.Utf8EncodeHeap(text));
+        public static int SetClipboardText([NotNull] string text) => INTERNAL_SDL_SetClipboardText(Utf8Manager.Utf8EncodeHeap(text));
 
         /// <summary>
         ///     Sdl the pump events
@@ -6167,7 +6167,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="name">The name</param>
         /// <returns>The sdl scancode</returns>
         [return: NotNull]
-        public static SdlScancode GetScancodeFromName(string name) => INTERNAL_SDL_GetScancodeFromName(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)));
+        public static SdlScancode GetScancodeFromName([NotNull] string name) => INTERNAL_SDL_GetScancodeFromName(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)));
 
         /// <summary>
         ///     Internals the sdl get key name using the specified key
@@ -6201,7 +6201,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="name">The name</param>
         /// <returns>The sdl keycode</returns>
         [return: NotNull]
-        public static SdlKeycode GetKeyFromName(string name) => INTERNAL_SDL_GetKeyFromName(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)));
+        public static SdlKeycode GetKeyFromName([NotNull] string name) => INTERNAL_SDL_GetKeyFromName(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)));
 
         /// <summary>
         ///     Sdl the start text input
@@ -6745,7 +6745,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pchGuid">The pch guid</param>
         /// <returns>The guid</returns>
         [return: NotNull]
-        public static Guid SDL_JoystickGetGUIDFromString(string pchGuid) => INTERNAL_SDL_JoystickGetGUIDFromString(Utf8Manager.Utf8Encode(pchGuid, new byte[Utf8Manager.Utf8Size(pchGuid)], Utf8Manager.Utf8Size(pchGuid)));
+        public static Guid SDL_JoystickGetGUIDFromString([NotNull] string pchGuid) => INTERNAL_SDL_JoystickGetGUIDFromString(Utf8Manager.Utf8Encode(pchGuid, new byte[Utf8Manager.Utf8Size(pchGuid)], Utf8Manager.Utf8Size(pchGuid)));
 
         /// <summary>
         ///     Sdl the joystick get device vendor using the specified device index
@@ -7052,7 +7052,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="mappingString">The mapping string</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static int SDL_GameControllerAddMapping(string mappingString) => INTERNAL_SDL_GameControllerAddMapping(Utf8Manager.Utf8EncodeHeap(mappingString));
+        public static int SDL_GameControllerAddMapping([NotNull] string mappingString) => INTERNAL_SDL_GameControllerAddMapping(Utf8Manager.Utf8EncodeHeap(mappingString));
 
         /// <summary>
         ///     Sdl the game controller num mappings
@@ -7095,7 +7095,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int SdlGameControllerAddMappingsFromFile(string file) => INTERNAL_SDL_GameControllerAddMappingsFromRW(RwFromFile(file, "rb"), 1);
+        public static int SdlGameControllerAddMappingsFromFile([NotNull] string file) => INTERNAL_SDL_GameControllerAddMappingsFromRW(RwFromFile(file, "rb"), 1);
 
         /// <summary>
         ///     Internals the sdl game controller mapping for guid using the specified guid
@@ -7293,7 +7293,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller axis</returns>
         [return: NotNull]
-        public static SdlGameControllerAxis SDL_GameControllerGetAxisFromString(string pchString) => INTERNAL_SDL_GameControllerGetAxisFromString(Utf8Manager.Utf8Encode(pchString, new byte[Utf8Manager.Utf8Size(pchString)], Utf8Manager.Utf8Size(pchString)));
+        public static SdlGameControllerAxis SDL_GameControllerGetAxisFromString([NotNull] string pchString) => INTERNAL_SDL_GameControllerGetAxisFromString(Utf8Manager.Utf8Encode(pchString, new byte[Utf8Manager.Utf8Size(pchString)], Utf8Manager.Utf8Size(pchString)));
 
         /// <summary>
         ///     Internals the sdl game controller get string for axis using the specified axis
@@ -7370,7 +7370,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller button</returns>
         [return: NotNull]
-        public static SdlGameControllerButton SDL_GameControllerGetButtonFromString(string pchString) => INTERNAL_SDL_GameControllerGetButtonFromString(Utf8Manager.Utf8Encode(pchString, new byte[Utf8Manager.Utf8Size(pchString)], Utf8Manager.Utf8Size(pchString)));
+        public static SdlGameControllerButton SDL_GameControllerGetButtonFromString([NotNull] string pchString) => INTERNAL_SDL_GameControllerGetButtonFromString(Utf8Manager.Utf8Encode(pchString, new byte[Utf8Manager.Utf8Size(pchString)], Utf8Manager.Utf8Size(pchString)));
 
         /// <summary>
         ///     Internals the sdl game controller get string for button using the specified button
@@ -8208,7 +8208,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="driverName">The driver name</param>
         /// <returns>The int</returns>
-        public static int AudioInit(string driverName) => INTERNAL_SDL_AudioInit(Utf8Manager.Utf8Encode(driverName, new byte[Utf8Manager.Utf8Size(driverName)], Utf8Manager.Utf8Size(driverName)));
+        public static int AudioInit([NotNull] string driverName) => INTERNAL_SDL_AudioInit(Utf8Manager.Utf8Encode(driverName, new byte[Utf8Manager.Utf8Size(driverName)], Utf8Manager.Utf8Size(driverName)));
 
         /// <summary>
         ///     Sdl the audio quit
@@ -8333,7 +8333,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="audioBuf">The audio buf</param>
         /// <param name="audioLen">The audio len</param>
         /// <returns>The int ptr</returns>
-        public static IntPtr LoadWav(string file, out SdlAudioSpec spec, out IntPtr audioBuf, out uint audioLen) => INTERNAL_SDL_LoadWAV_RW(RwFromFile(file, "rb"), 1, out spec, out audioBuf, out audioLen);
+        public static IntPtr LoadWav([NotNull] string file, out SdlAudioSpec spec, out IntPtr audioBuf, out uint audioLen) => INTERNAL_SDL_LoadWAV_RW(RwFromFile(file, "rb"), 1, out spec, out audioBuf, out audioLen);
 
         /// <summary>
         ///     Sdl the lock audio
