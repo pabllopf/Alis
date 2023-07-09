@@ -1545,7 +1545,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RWFromMem", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_RWFromMem(IntPtr mem, int size);
+        private static extern IntPtr INTERNAL_SDL_RWFromMem(IntPtr mem, int size);
+        
+        /// <summary>
+        /// Rws the from mem using the specified mem
+        /// </summary>
+        /// <param name="mem">The mem</param>
+        /// <param name="size">The size</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr RwFromMem([NotNull] IntPtr mem, [NotNull]int size) => INTERNAL_SDL_RWFromMem(mem.Validate(), size.Validate());
         
         /// <summary>
         ///     Sdl the rw from const mem using the specified mem
@@ -1555,7 +1564,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RWFromConstMem", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_RWFromConstMem(IntPtr mem, int size);
+        private static extern IntPtr INTERNAL_SDL_RWFromConstMem(IntPtr mem, int size);
+        
+        /// <summary>
+        /// Rws the from const mem using the specified mem
+        /// </summary>
+        /// <param name="mem">The mem</param>
+        /// <param name="size">The size</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr RwFromConstMem([NotNull]IntPtr mem, [NotNull] int size) => INTERNAL_SDL_RWFromConstMem(mem.Validate(), size.Validate());
         
         /// <summary>
         ///     Sdl the r w size using the specified context
@@ -1564,7 +1582,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The long</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RwSize", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern long INTERNAL_SDL_RwSize(IntPtr context);
+        private static extern long INTERNAL_SDL_RwSize([NotNull]IntPtr context);
+        
+        /// <summary>
+        /// Rws the size using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <returns>The long</returns>
+        [return: NotNull]
+        public static long RwSize([NotNull]IntPtr context) => INTERNAL_SDL_RwSize(context.Validate());
 
         /// <summary>
         ///     Sdl the r w seek using the specified context
@@ -1574,7 +1600,18 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="whence">The whence</param>
         /// <returns>The long</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RwSeek", CallingConvention = CallingConvention.Cdecl)]
-        public static extern long INTERNAL_SDL_RwSeek(IntPtr context, long offset, int whence);
+        [return: NotNull]
+        private static extern long INTERNAL_SDL_RwSeek([NotNull]IntPtr context, [NotNull]long offset, [NotNull]int whence);
+        
+        /// <summary>
+        /// Rws the seek using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="whence">The whence</param>
+        /// <returns>The long</returns>
+        [return: NotNull]
+        public static long RwSeek([NotNull]IntPtr context, [NotNull]long offset, [NotNull]int whence) => INTERNAL_SDL_RwSeek(context.Validate(), offset.Validate(), whence.Validate());
 
         /// <summary>
         ///     Sdl the r w tell using the specified context
@@ -1582,8 +1619,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="context">The context</param>
         /// <returns>The long</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RwTell", CallingConvention = CallingConvention.Cdecl)]
-        public static extern long INTERNAL_SDL_RwTell(IntPtr context);
+        [return: NotNull]
+        private static extern long INTERNAL_SDL_RwTell(IntPtr context);
         
+        /// <summary>
+        /// Rws the tell using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <returns>The long</returns>
+        [return: NotNull]
+        public static long RwTell([NotNull]IntPtr context) => INTERNAL_SDL_RwTell(context.Validate());
+
         /// <summary>
         ///     Sdl the r w read using the specified context
         /// </summary>
