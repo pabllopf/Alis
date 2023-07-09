@@ -1734,7 +1734,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_ReadLE32", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_ReadLE32(IntPtr src);
+        private static extern uint INTERNAL_SDL_ReadLE32([NotNull]IntPtr src);
+        
+        /// <summary>
+        /// Reads the le 32 using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint ReadLe32([NotNull]IntPtr src) => INTERNAL_SDL_ReadLE32(src.Validate());
 
         /// <summary>
         ///     Sdl the read be 32 using the specified src
