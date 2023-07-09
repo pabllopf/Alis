@@ -9163,7 +9163,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetJoystick", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_GameControllerGetJoystick([NotNull]IntPtr gameController);
+        private static extern IntPtr INTERNAL_SDL_GameControllerGetJoystick([NotNull]IntPtr gameController);
+        
+        /// <summary>
+        /// Games the controller get joystick using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr GameControllerGetJoystick([NotNull]IntPtr gameController) => INTERNAL_SDL_GameControllerGetJoystick(gameController.Validate());
 
         /// <summary>
         ///     Sdl the game controller event state using the specified state
@@ -9172,14 +9180,28 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName,EntryPoint = "SDL_GameControllerEventState", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GameControllerEventState([NotNull] int state);
+        private static extern int INTERNAL_SDL_GameControllerEventState([NotNull] int state);
+        
+        /// <summary>
+        /// Games the controller event state using the specified state
+        /// </summary>
+        /// <param name="state">The state</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GameControllerEventState([NotNull] int state) => INTERNAL_SDL_GameControllerEventState(state.Validate());
 
         /// <summary>
         ///     Sdl the game controller update
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerUpdate", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_GameControllerUpdate();
+        private static extern void INTERNAL_SDL_GameControllerUpdate();
+        
+        /// <summary>
+        /// Games the controller update
+        /// </summary>
+        [return: NotNull]
+        public static void GameControllerUpdate() => INTERNAL_SDL_GameControllerUpdate();
 
         /// <summary>
         ///     Internals the sdl game controller get axis from string using the specified pch string
@@ -9196,7 +9218,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller axis</returns>
         [return: NotNull]
-        public static SdlGameControllerAxis SDL_GameControllerGetAxisFromString([NotNull] string pchString) => INTERNAL_SDL_GameControllerGetAxisFromString(Utf8Manager.Utf8Encode(pchString, new byte[Utf8Manager.Utf8Size(pchString)], Utf8Manager.Utf8Size(pchString)));
+        public static SdlGameControllerAxis GameControllerGetAxisFromString([NotNull] string pchString) => INTERNAL_SDL_GameControllerGetAxisFromString(Utf8Manager.Utf8Encode(pchString, new byte[Utf8Manager.Utf8Size(pchString)], Utf8Manager.Utf8Size(pchString)));
 
         /// <summary>
         ///     Internals the sdl game controller get string for axis using the specified axis
@@ -9213,7 +9235,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="axis">The axis</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerGetStringForAxis(SdlGameControllerAxis axis) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerGetStringForAxis(axis));
+        public static string GameControllerGetStringForAxis(SdlGameControllerAxis axis) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerGetStringForAxis(axis));
 
         /// <summary>
         ///     Internals the sdl game controller get bind for axis using the specified game controller
@@ -9232,7 +9254,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="axis">The axis</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static SdlGameControllerButtonBind SDL_GameControllerGetBindForAxis([NotNull]IntPtr gameController, SdlGameControllerAxis axis)
+        public static SdlGameControllerButtonBind GameControllerGetBindForAxis([NotNull]IntPtr gameController, SdlGameControllerAxis axis)
         {
             // This is guaranteed to never be null
             InternalSdlGameControllerButtonBind dumb = INTERNAL_SDL_GameControllerGetBindForAxis(
@@ -9256,8 +9278,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The short</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetAxis", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern short INTERNAL_SDL_GameControllerGetAxis([NotNull]IntPtr gameController, SdlGameControllerAxis axis);
-
+        private static extern short INTERNAL_SDL_GameControllerGetAxis([NotNull]IntPtr gameController, SdlGameControllerAxis axis);
+        
+        /// <summary>
+        /// Games the controller get axis using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <param name="axis">The axis</param>
+        /// <returns>The short</returns>
+        [return: NotNull]
+        public static short GameControllerGetAxis([NotNull]IntPtr gameController, SdlGameControllerAxis axis) => INTERNAL_SDL_GameControllerGetAxis(gameController.Validate(), axis);
+        
         /// <summary>
         ///     Internals the sdl game controller get button from string using the specified pch string
         /// </summary>
@@ -9290,7 +9321,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="button">The button</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerGetStringForButton(SdlGameControllerButton button) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerGetStringForButton(button));
+        public static string GameControllerGetStringForButton(SdlGameControllerButton button) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerGetStringForButton(button));
 
         /// <summary>
         ///     Internals the sdl game controller get bind for button using the specified game controller
@@ -9309,7 +9340,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="button">The button</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static SdlGameControllerButtonBind SDL_GameControllerGetBindForButton(
+        public static SdlGameControllerButtonBind GameControllerGetBindForButton(
             IntPtr gameController,
             SdlGameControllerButton button
         )
@@ -9336,8 +9367,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The byte</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetButton", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern byte INTERNAL_SDL_GameControllerGetButton([NotNull]IntPtr gameController, SdlGameControllerButton button);
+        private static extern byte INTERNAL_SDL_GameControllerGetButton([NotNull]IntPtr gameController, SdlGameControllerButton button);
 
+        /// <summary>
+        /// Games the controller get button using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <param name="button">The button</param>
+        /// <returns>The byte</returns>
+        [return: NotNull]
+        public static byte GameControllerGetButton([NotNull]IntPtr gameController, SdlGameControllerButton button) => INTERNAL_SDL_GameControllerGetButton(gameController.Validate(), button.Validate());
+        
         /// <summary>
         ///     Sdl the game controller rumble using the specified game controller
         /// </summary>
@@ -9348,8 +9388,19 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerRumble", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GameControllerRumble([NotNull]IntPtr gameController, [NotNull] ushort lowFrequencyRumble, [NotNull] ushort highFrequencyRumble, [NotNull] uint durationMs);
+        private static extern int INTERNAL_SDL_GameControllerRumble([NotNull]IntPtr gameController, [NotNull] ushort lowFrequencyRumble, [NotNull] ushort highFrequencyRumble, [NotNull] uint durationMs);
 
+        /// <summary>
+        /// Games the controller rumble using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <param name="lowFrequencyRumble">The low frequency rumble</param>
+        /// <param name="highFrequencyRumble">The high frequency rumble</param>
+        /// <param name="durationMs">The duration ms</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GameControllerRumble([NotNull]IntPtr gameController, [NotNull] ushort lowFrequencyRumble, [NotNull] ushort highFrequencyRumble, [NotNull] uint durationMs) => INTERNAL_SDL_GameControllerRumble(gameController.Validate(), lowFrequencyRumble.Validate(), highFrequencyRumble.Validate(), durationMs.Validate());
+        
         /// <summary>
         ///     Sdl the game controller rumble triggers using the specified game controller
         /// </summary>
@@ -9360,16 +9411,34 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerRumbleTriggers", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GameControllerRumbleTriggers([NotNull]IntPtr gameController, [NotNull] ushort leftRumble, [NotNull] ushort rightRumble, [NotNull] uint durationMs);
+        private static extern int INTERNAL_SDL_GameControllerRumbleTriggers([NotNull]IntPtr gameController, [NotNull] ushort leftRumble, [NotNull] ushort rightRumble, [NotNull] uint durationMs);
 
+        /// <summary>
+        /// Games the controller rumble triggers using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        /// <param name="leftRumble">The left rumble</param>
+        /// <param name="rightRumble">The right rumble</param>
+        /// <param name="durationMs">The duration ms</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GameControllerRumbleTriggers([NotNull]IntPtr gameController, [NotNull] ushort leftRumble, [NotNull] ushort rightRumble, [NotNull] uint durationMs) => INTERNAL_SDL_GameControllerRumbleTriggers(gameController.Validate(), leftRumble, rightRumble, durationMs);
+        
         /// <summary>
         ///     Sdl the game controller close using the specified game controller
         /// </summary>
         /// <param name="gameController">The game controller</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerClose", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_GameControllerClose([NotNull]IntPtr gameController);
+        private static extern void INTERNAL_SDL_GameControllerClose([NotNull]IntPtr gameController);
 
+        /// <summary>
+        /// Games the controller close using the specified game controller
+        /// </summary>
+        /// <param name="gameController">The game controller</param>
+        [return: NotNull]
+        public static void GameControllerClose([NotNull]IntPtr gameController) => INTERNAL_SDL_GameControllerClose(gameController.Validate());
+        
         /// <summary>
         ///     Internals the sdl game controller get apple sf symbols name for button using the specified game controller
         /// </summary>
@@ -10849,7 +10918,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_LockAudio", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_LockAudio();
+        private static extern void INTERNAL_SDL_LockAudio();
         
         /// <summary>
         /// Locks the audio
