@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
     public class Path
     {
         /// <summary>All the points that makes up the curve</summary>
-        private readonly List<Vector2F> ControlPoints;
+        private readonly List<Vector2F> controlPoints;
 
         /// <summary>
         ///     The delta
@@ -54,13 +54,13 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         private float deltaT;
 
         /// <summary>Initializes a new instance of the <see cref="Path" /> class.</summary>
-        public Path() => ControlPoints = new List<Vector2F>();
+        public Path() => controlPoints = new List<Vector2F>();
 
         /// <summary>Initializes a new instance of the <see cref="Path" /> class.</summary>
         /// <param name="vertices">The vertices to created the path from.</param>
         public Path(Vector2F[] vertices)
         {
-            ControlPoints = new List<Vector2F>(vertices.Length);
+            controlPoints = new List<Vector2F>(vertices.Length);
 
             for (int i = 0; i < vertices.Length; i++)
             {
@@ -72,7 +72,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         /// <param name="vertices">The vertices to created the path from.</param>
         public Path(IList<Vector2F> vertices)
         {
-            ControlPoints = new List<Vector2F>(vertices.Count);
+            controlPoints = new List<Vector2F>(vertices.Count);
             for (int i = 0; i < vertices.Count; i++)
             {
                 Add(vertices[i]);
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         /// <returns></returns>
         public int NextIndex(int index)
         {
-            if (index == ControlPoints.Count - 1)
+            if (index == controlPoints.Count - 1)
             {
                 return 0;
             }
@@ -103,7 +103,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         {
             if (index == 0)
             {
-                return ControlPoints.Count - 1;
+                return controlPoints.Count - 1;
             }
 
             return index - 1;
@@ -113,9 +113,9 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         /// <param name="vector">The vector.</param>
         public void Translate(ref Vector2F vector)
         {
-            for (int i = 0; i < ControlPoints.Count; i++)
+            for (int i = 0; i < controlPoints.Count; i++)
             {
-                ControlPoints[i] = Vector2F.Add(ControlPoints[i], vector);
+                controlPoints[i] = Vector2F.Add(controlPoints[i], vector);
             }
         }
 
@@ -123,9 +123,9 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         /// <param name="value">The Value.</param>
         public void Scale(ref Vector2F value)
         {
-            for (int i = 0; i < ControlPoints.Count; i++)
+            for (int i = 0; i < controlPoints.Count; i++)
             {
-                ControlPoints[i] = Vector2F.Multiply(ControlPoints[i], value);
+                controlPoints[i] = Vector2F.Multiply(controlPoints[i], value);
             }
         }
 
@@ -135,9 +135,9 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         {
             Matrix4X4F rotationMatrix = Matrix4X4F.CreateRotationZ(value);
 
-            for (int i = 0; i < ControlPoints.Count; i++)
+            for (int i = 0; i < controlPoints.Count; i++)
             {
-                ControlPoints[i] = Vector2F.Transform(ControlPoints[i], rotationMatrix);
+                controlPoints[i] = Vector2F.Transform(controlPoints[i], rotationMatrix);
             }
         }
 
@@ -148,10 +148,10 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < ControlPoints.Count; i++)
+            for (int i = 0; i < controlPoints.Count; i++)
             {
-                builder.Append(ControlPoints[i]);
-                if (i < ControlPoints.Count - 1)
+                builder.Append(controlPoints[i]);
+                if (i < controlPoints.Count - 1)
                 {
                     builder.Append(" ");
                 }
@@ -187,16 +187,16 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         {
             Vector2F temp;
 
-            if (ControlPoints.Count < 2)
+            if (controlPoints.Count < 2)
             {
                 throw new Exception("You need at least 2 control points to calculate a position.");
             }
 
             if (Closed)
             {
-                Add(ControlPoints[0]);
+                Add(controlPoints[0]);
 
-                deltaT = 1f / (ControlPoints.Count - 1);
+                deltaT = 1f / (controlPoints.Count - 1);
 
                 int p = (int) (time / deltaT);
 
@@ -204,50 +204,50 @@ namespace Alis.Core.Physic.Tools.PathGenerator
                 int p0 = p - 1;
                 if (p0 < 0)
                 {
-                    p0 += ControlPoints.Count - 1;
+                    p0 += controlPoints.Count - 1;
                 }
-                else if (p0 >= ControlPoints.Count - 1)
+                else if (p0 >= controlPoints.Count - 1)
                 {
-                    p0 -= ControlPoints.Count - 1;
+                    p0 -= controlPoints.Count - 1;
                 }
 
                 int p1 = p;
                 if (p1 < 0)
                 {
-                    p1 += ControlPoints.Count - 1;
+                    p1 += controlPoints.Count - 1;
                 }
-                else if (p1 >= ControlPoints.Count - 1)
+                else if (p1 >= controlPoints.Count - 1)
                 {
-                    p1 -= ControlPoints.Count - 1;
+                    p1 -= controlPoints.Count - 1;
                 }
 
                 int p2 = p + 1;
                 if (p2 < 0)
                 {
-                    p2 += ControlPoints.Count - 1;
+                    p2 += controlPoints.Count - 1;
                 }
-                else if (p2 >= ControlPoints.Count - 1)
+                else if (p2 >= controlPoints.Count - 1)
                 {
-                    p2 -= ControlPoints.Count - 1;
+                    p2 -= controlPoints.Count - 1;
                 }
 
                 int p3 = p + 2;
                 if (p3 < 0)
                 {
-                    p3 += ControlPoints.Count - 1;
+                    p3 += controlPoints.Count - 1;
                 }
-                else if (p3 >= ControlPoints.Count - 1)
+                else if (p3 >= controlPoints.Count - 1)
                 {
-                    p3 -= ControlPoints.Count - 1;
+                    p3 -= controlPoints.Count - 1;
                 }
 
                 // relative time
                 float lt = (time - deltaT * p) / deltaT;
 
-                temp = CatmullRom(ControlPoints[p0], ControlPoints[p1], ControlPoints[p2], ControlPoints[p3],
+                temp = CatmullRom(controlPoints[p0], controlPoints[p1], controlPoints[p2], controlPoints[p3],
                     lt);
 
-                RemoveAt(ControlPoints.Count - 1);
+                RemoveAt(controlPoints.Count - 1);
             }
             else
             {
@@ -259,9 +259,9 @@ namespace Alis.Core.Physic.Tools.PathGenerator
                 {
                     p0 = 0;
                 }
-                else if (p0 >= ControlPoints.Count - 1)
+                else if (p0 >= controlPoints.Count - 1)
                 {
-                    p0 = ControlPoints.Count - 1;
+                    p0 = controlPoints.Count - 1;
                 }
 
                 int p1 = p;
@@ -269,9 +269,9 @@ namespace Alis.Core.Physic.Tools.PathGenerator
                 {
                     p1 = 0;
                 }
-                else if (p1 >= ControlPoints.Count - 1)
+                else if (p1 >= controlPoints.Count - 1)
                 {
-                    p1 = ControlPoints.Count - 1;
+                    p1 = controlPoints.Count - 1;
                 }
 
                 int p2 = p + 1;
@@ -279,9 +279,9 @@ namespace Alis.Core.Physic.Tools.PathGenerator
                 {
                     p2 = 0;
                 }
-                else if (p2 >= ControlPoints.Count - 1)
+                else if (p2 >= controlPoints.Count - 1)
                 {
-                    p2 = ControlPoints.Count - 1;
+                    p2 = controlPoints.Count - 1;
                 }
 
                 int p3 = p + 2;
@@ -289,15 +289,15 @@ namespace Alis.Core.Physic.Tools.PathGenerator
                 {
                     p3 = 0;
                 }
-                else if (p3 >= ControlPoints.Count - 1)
+                else if (p3 >= controlPoints.Count - 1)
                 {
-                    p3 = ControlPoints.Count - 1;
+                    p3 = controlPoints.Count - 1;
                 }
 
                 // relative time
                 float lt = (time - deltaT * p) / deltaT;
 
-                temp = CatmullRom(ControlPoints[p0], ControlPoints[p1], ControlPoints[p2], ControlPoints[p3],
+                temp = CatmullRom(controlPoints[p0], controlPoints[p1], controlPoints[p2], controlPoints[p3],
                     lt);
             }
 
@@ -349,8 +349,8 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         /// <param name="point">The point</param>
         public void Add(Vector2F point)
         {
-            ControlPoints.Add(point);
-            deltaT = 1f / (ControlPoints.Count - 1);
+            controlPoints.Add(point);
+            deltaT = 1f / (controlPoints.Count - 1);
         }
 
         /// <summary>
@@ -359,8 +359,8 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         /// <param name="point">The point</param>
         public void Remove(Vector2F point)
         {
-            ControlPoints.Remove(point);
-            deltaT = 1f / (ControlPoints.Count - 1);
+            controlPoints.Remove(point);
+            deltaT = 1f / (controlPoints.Count - 1);
         }
 
         /// <summary>
@@ -369,8 +369,8 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         /// <param name="index">The index</param>
         public void RemoveAt(int index)
         {
-            ControlPoints.RemoveAt(index);
-            deltaT = 1f / (ControlPoints.Count - 1);
+            controlPoints.RemoveAt(index);
+            deltaT = 1f / (controlPoints.Count - 1);
         }
 
         /// <summary>
@@ -379,7 +379,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         /// <returns>The length</returns>
         public float GetLength()
         {
-            List<Vector2F> verts = GetVertices(ControlPoints.Count * 25);
+            List<Vector2F> verts = GetVertices(controlPoints.Count * 25);
             float length = 0;
 
             for (int i = 1; i < verts.Count; i++)
@@ -389,7 +389,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
 
             if (Closed)
             {
-                length += Vector2F.Distance(verts[ControlPoints.Count - 1], verts[0]);
+                length += Vector2F.Distance(verts[controlPoints.Count - 1], verts[0]);
             }
 
             return length;
@@ -410,7 +410,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
             float t = 0.000f;
 
             // we always start at the first control point
-            Vector2F start = ControlPoints[0];
+            Vector2F start = controlPoints[0];
             Vector2F end = GetPosition(t);
 
             // increment t until we are at half the distance

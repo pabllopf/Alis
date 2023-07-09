@@ -2082,7 +2082,7 @@ namespace Alis.Core.Graphic.SDL
         /// Sdl the quit
         /// </summary>
         [return: NotNull]
-        public static void SDL_Quit() => INTERNAL_SDL_Quit();
+        public static void Quit() => INTERNAL_SDL_Quit();
 
         /// <summary>
         ///     Sdl the quit sub system using the specified flags
@@ -3112,7 +3112,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetNumVideoDrivers", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GetNumVideoDrivers();
+        private static extern int INTERNAL_SDL_GetNumVideoDrivers();
+        
+        /// <summary>
+        /// Gets the num video drivers
+        /// </summary>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GetNumVideoDrivers() => INTERNAL_SDL_GetNumVideoDrivers().Validate();
 
         /// <summary>
         ///     Internals the sdl get video driver using the specified index
@@ -3130,8 +3137,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The string</returns>
         [return: NotNull]
         public static string GetVideoDriver([NotNull] int index) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetVideoDriver(index));
-
-
+        
         /// <summary>
         ///     Sdl the get window brightness using the specified window
         /// </summary>
@@ -3139,7 +3145,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The float</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowBrightness", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern float INTERNAL_SDL_GetWindowBrightness([NotNull] IntPtr window);
+        private static extern float INTERNAL_SDL_GetWindowBrightness([NotNull] IntPtr window);
+        
+        /// <summary>
+        /// Gets the window brightness using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The float</returns>
+        [return: NotNull]
+        public static float GetWindowBrightness([NotNull] IntPtr window) => INTERNAL_SDL_GetWindowBrightness(window.Validate());
         
         /// <summary>
         ///     Sdl the set window opacity using the specified window
@@ -3149,7 +3163,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowOpacity", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetWindowOpacity([NotNull] IntPtr window, float opacity);
+        private static extern int INTERNAL_SDL_SetWindowOpacity([NotNull] IntPtr window, [NotNull] float opacity);
+        
+        /// <summary>
+        /// Sets the window opacity using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="opacity">The opacity</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SetWindowOpacity([NotNull] IntPtr window, [NotNull] float opacity) => INTERNAL_SDL_SetWindowOpacity(window.Validate(), opacity.Validate());
         
         /// <summary>
         ///     Sdl the get window opacity using the specified window
@@ -3159,7 +3182,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowOpacity", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GetWindowOpacity([NotNull] IntPtr window, out float outOpacity);
+        private static extern int INTERNAL_SDL_GetWindowOpacity([NotNull] IntPtr window, out float outOpacity);
+        
+        /// <summary>
+        /// Gets the window opacity using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="outOpacity">The out opacity</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GetWindowOpacity([NotNull] IntPtr window, out float outOpacity) => INTERNAL_SDL_GetWindowOpacity(window.Validate(), out outOpacity);
         
         /// <summary>
         ///     Sdl the set window modal for using the specified modal window
@@ -3169,7 +3201,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowModalFor", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetWindowModalFor([NotNull] IntPtr modalWindow, [NotNull] IntPtr parentWindow);
+        private static extern int INTERNAL_SDL_SetWindowModalFor([NotNull] IntPtr modalWindow, [NotNull] IntPtr parentWindow);
+        
+        /// <summary>
+        /// Sets the window modal for using the specified modal window
+        /// </summary>
+        /// <param name="modalWindow">The modal window</param>
+        /// <param name="parentWindow">The parent window</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SetWindowModalFor([NotNull] IntPtr modalWindow, [NotNull] IntPtr parentWindow) => INTERNAL_SDL_SetWindowModalFor(modalWindow.Validate(), parentWindow.Validate());
         
         /// <summary>
         ///     Sdl the set window input focus using the specified window
@@ -3178,8 +3219,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowInputFocus", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetWindowInputFocus([NotNull] IntPtr window);
+        private static extern int INTERNAL_SDL_SetWindowInputFocus([NotNull] IntPtr window);
         
+        /// <summary>
+        /// Sets the window input focus using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int SetWindowInputFocus([NotNull] IntPtr window) => INTERNAL_SDL_SetWindowInputFocus(window.Validate());
         /// <summary>
         ///     Internals the sdl get window data using the specified window
         /// </summary>
@@ -3206,7 +3254,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowDisplayIndex", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GetWindowDisplayIndex([NotNull] IntPtr window);
+        private static extern int INTERNAL_SDL_GetWindowDisplayIndex([NotNull] IntPtr window);
+        
+        /// <summary>
+        /// Gets the window display index using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GetWindowDisplayIndex([NotNull] IntPtr window) => INTERNAL_SDL_GetWindowDisplayIndex(window.Validate());
         
         /// <summary>
         ///     Sdl the get window display mode using the specified window
@@ -3216,7 +3272,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowDisplayMode", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GetWindowDisplayMode([NotNull] IntPtr window, out SdlDisplayMode mode);
+        private static extern int INTERNAL_SDL_GetWindowDisplayMode([NotNull] IntPtr window, out SdlDisplayMode mode);
+        
+        /// <summary>
+        /// Gets the window display mode using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="mode">The mode</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GetWindowDisplayMode([NotNull] IntPtr window, out SdlDisplayMode mode) => INTERNAL_SDL_GetWindowDisplayMode(window.Validate(), out mode);
         
         /// <summary>
         ///     Sdl the get window icc profile using the specified window
@@ -3226,8 +3291,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowICCProfile", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_GetWindowICCProfile([NotNull] IntPtr window, out IntPtr mode);
+        private static extern IntPtr INTERNAL_SDL_GetWindowICCProfile([NotNull] IntPtr window, out IntPtr mode);
 
+        /// <summary>
+        /// Gets the window icc profile using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="mode">The mode</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr GetWindowIccProfile([NotNull] IntPtr window, out IntPtr mode) => INTERNAL_SDL_GetWindowICCProfile(window.Validate(), out mode);
+        
         /// <summary>
         ///     Sdl the get window flags using the specified window
         /// </summary>
@@ -3235,7 +3309,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowFlags", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_GetWindowFlags([NotNull] IntPtr window);
+        private static extern uint INTERNAL_SDL_GetWindowFlags([NotNull] IntPtr window);
+        
+        /// <summary>
+        /// Gets the window flags using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint GetWindowFlags([NotNull] IntPtr window) => INTERNAL_SDL_GetWindowFlags(window.Validate());
         
         /// <summary>
         ///     Sdl the get window from id using the specified id
@@ -3244,7 +3326,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowFromID", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_GetWindowFromID([NotNull] uint id);
+        private static extern IntPtr INTERNAL_SDL_GetWindowFromID([NotNull] uint id);
+        
+        /// <summary>
+        /// Gets the window from id using the specified id
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr GetWindowFromId([NotNull] uint id) => INTERNAL_SDL_GetWindowFromID(id);
         
         /// <summary>
         ///     Sdl the get window gamma ramp using the specified window
@@ -3256,7 +3346,18 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowGammaRamp", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GetWindowGammaRamp([NotNull] IntPtr window, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] red, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] green, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] blue);
+        private static extern int INTERNAL_SDL_GetWindowGammaRamp([NotNull] IntPtr window, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] red, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] green, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] blue);
+        
+        /// <summary>
+        /// Gets the window gamma ramp using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="red">The red</param>
+        /// <param name="green">The green</param>
+        /// <param name="blue">The blue</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GetWindowGammaRamp([NotNull] IntPtr window, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] red, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] green, [Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U2, SizeConst = 256)] ushort[] blue) => INTERNAL_SDL_GetWindowGammaRamp(window.Validate(), red, green, blue);
         
         /// <summary>
         ///     Sdl the get window grab using the specified window
@@ -3265,8 +3366,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowGrab", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_GetWindowGrab([NotNull] IntPtr window);
+        private static extern SdlBool INTERNAL_SDL_GetWindowGrab([NotNull] IntPtr window);
         
+        /// <summary>
+        /// Gets the window grab using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool GetWindowGrab([NotNull] IntPtr window) => INTERNAL_SDL_GetWindowGrab(window.Validate());
+
         /// <summary>
         ///     Sdl the get window keyboard grab using the specified window
         /// </summary>
@@ -3274,7 +3383,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowKeyboardGrab", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_GetWindowKeyboardGrab([NotNull] IntPtr window);
+        private static extern SdlBool INTERNAL_SDL_GetWindowKeyboardGrab([NotNull] IntPtr window);
+        
+        /// <summary>
+        /// Gets the window keyboard grab using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool GetWindowKeyboardGrab([NotNull] IntPtr window) => INTERNAL_SDL_GetWindowKeyboardGrab(window.Validate());
         
         /// <summary>
         ///     Sdl the get window mouse grab using the specified window
@@ -3283,7 +3400,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowMouseGrab", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern SdlBool INTERNAL_SDL_GetWindowMouseGrab([NotNull] IntPtr window);
+        private static extern SdlBool INTERNAL_SDL_GetWindowMouseGrab([NotNull] IntPtr window);
+        
+        /// <summary>
+        /// Gets the window mouse grab using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The sdl bool</returns>
+        [return: NotNull]
+        public static SdlBool GetWindowMouseGrab([NotNull] IntPtr window) => INTERNAL_SDL_GetWindowMouseGrab(window.Validate());
         
         /// <summary>
         ///     Sdl the get window id using the specified window
@@ -3292,7 +3417,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowID", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_GetWindowID([NotNull] IntPtr window);
+        private static extern uint INTERNAL_SDL_GetWindowID([NotNull] IntPtr window);
+        
+        /// <summary>
+        /// Gets the window id using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint GetWindowId([NotNull] IntPtr window) => INTERNAL_SDL_GetWindowID(window.Validate());
         
         /// <summary>
         ///     Sdl the get window pixel format using the specified window
@@ -3301,8 +3434,16 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowPixelFormat", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_GetWindowPixelFormat([NotNull] IntPtr window);
+        private static extern uint INTERNAL_SDL_GetWindowPixelFormat([NotNull] IntPtr window);
 
+        /// <summary>
+        /// Gets the window pixel format using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The uint</returns>
+        [return: NotNull]
+        public static uint GetWindowPixelFormat([NotNull] IntPtr window) => INTERNAL_SDL_GetWindowPixelFormat(window.Validate());
+        
         /// <summary>
         ///     Sdl the get window maximum size using the specified window
         /// </summary>
@@ -3311,8 +3452,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="maxH">The max</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowMaximumSize", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_GetWindowMaximumSize([NotNull] IntPtr window, out int maxW, out int maxH);
+        private static extern void INTERNAL_SDL_GetWindowMaximumSize([NotNull] IntPtr window, out int maxW, out int maxH);
         
+        /// <summary>
+        /// Gets the window maximum size using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="maxW">The max</param>
+        /// <param name="maxH">The max</param>
+        [return: NotNull]
+        public static void GetWindowMaximumSize([NotNull] IntPtr window, out int maxW, out int maxH) => INTERNAL_SDL_GetWindowMaximumSize(window.Validate(), out maxW, out maxH);
+
         /// <summary>
         ///     Sdl the get window minimum size using the specified window
         /// </summary>
@@ -3321,7 +3471,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="minH">The min</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowMinimumSize", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_GetWindowMinimumSize([NotNull] IntPtr window, out int minW, out int minH);
+        private static extern void INTERNAL_SDL_GetWindowMinimumSize([NotNull] IntPtr window, out int minW, out int minH);
+        
+        /// <summary>
+        /// Gets the window minimum size using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="minW">The min</param>
+        /// <param name="minH">The min</param>
+        [return: NotNull]
+        public static void GetWindowMinimumSize([NotNull] IntPtr window, out int minW, out int minH) => INTERNAL_SDL_GetWindowMinimumSize(window.Validate(), out minW, out minH);
         
         /// <summary>
         ///     Sdl the get window position using the specified window
@@ -3331,7 +3490,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="y">The </param>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowPosition", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_GetWindowPosition([NotNull] IntPtr window, out int x, out int y);
+        private static extern void INTERNAL_SDL_GetWindowPosition([NotNull] IntPtr window, out int x, out int y);
+        
+        /// <summary>
+        /// Gets the window position using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        [return: NotNull]
+        public static void GetWindowPosition([NotNull] IntPtr window, out int x, out int y) => INTERNAL_SDL_GetWindowPosition(window.Validate(), out x, out y);
+
         
         /// <summary>
         ///     Sdl the get window size using the specified window
@@ -3341,7 +3510,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="h">The </param>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowSize", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_GetWindowSize([NotNull] IntPtr window, out int w, out int h);
+        private static extern void INTERNAL_SDL_GetWindowSize([NotNull] IntPtr window, out int w, out int h);
+        
+        /// <summary>
+        /// Gets the window size using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="w">The </param>
+        /// <param name="h">The </param>
+        [return: NotNull]
+        public static void GetWindowSize([NotNull] IntPtr window, out int w, out int h) => INTERNAL_SDL_GetWindowSize(window.Validate(), out w, out h);
         
         /// <summary>
         ///     Sdl the get window surface using the specified window
@@ -3350,7 +3528,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowSurface", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_GetWindowSurface([NotNull] IntPtr window);
+        private static extern IntPtr INTERNAL_SDL_GetWindowSurface([NotNull] IntPtr window);
+        
+        /// <summary>
+        /// Gets the window surface using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr GetWindowSurface([NotNull] IntPtr window) => INTERNAL_SDL_GetWindowSurface(window.Validate());
         
         /// <summary>
         ///     Internals the sdl get window title using the specified window
@@ -3367,7 +3553,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="window">The window</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GetWindowTitle([NotNull] IntPtr window) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetWindowTitle(window));
+        public static string GetWindowTitle([NotNull] IntPtr window) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetWindowTitle(window));
         
         /// <summary>
         ///     Sdl the gl bind texture using the specified texture
@@ -3378,7 +3564,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_BindTexture", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GL_BindTexture([NotNull] IntPtr texture, out float texW, out float texH);
+        private static extern int INTERNAL_SDL_GL_BindTexture([NotNull] IntPtr texture, out float texW, out float texH);
+        
+        /// <summary>
+        /// Gls the bind texture using the specified texture
+        /// </summary>
+        /// <param name="texture">The texture</param>
+        /// <param name="texW">The tex</param>
+        /// <param name="texH">The tex</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GlBindTexture([NotNull] IntPtr texture, out float texW, out float texH) => INTERNAL_SDL_GL_BindTexture(texture.Validate(), out texW, out texH);
         
         /// <summary>
         ///     Sdl the gl create context using the specified window
@@ -3387,7 +3583,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_CreateContext", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_GL_CreateContext([NotNull] IntPtr window);
+        private static extern IntPtr INTERNAL_SDL_GL_CreateContext([NotNull] IntPtr window);
+        
+        /// <summary>
+        /// Gls the create context using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr GlCreateContext([NotNull] IntPtr window) => INTERNAL_SDL_GL_CreateContext(window.Validate());
         
         /// <summary>
         ///     Sdl the gl delete context using the specified context
@@ -3395,8 +3599,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="context">The context</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_DeleteContext", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_GL_DeleteContext([NotNull] IntPtr context);
+        private static extern void INTERNAL_SDL_GL_DeleteContext([NotNull] IntPtr context);
 
+        /// <summary>
+        /// Gls the delete context using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        [return: NotNull]
+        public static void GlDeleteContext([NotNull] IntPtr context) => INTERNAL_SDL_GL_DeleteContext(context.Validate());
+        
         /// <summary>
         ///     Internals the sdl gl load library using the specified path
         /// </summary>
@@ -3412,7 +3623,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="path">The path</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static int SDL_GL_LoadLibrary([NotNull] string path) => INTERNAL_SDL_GL_LoadLibrary(Utf8Manager.Utf8EncodeHeap(path));
+        public static int GlLoadLibrary([NotNull] string path) => INTERNAL_SDL_GL_LoadLibrary(Utf8Manager.Utf8EncodeHeap(path));
         
         /// <summary>
         ///     Sdl the gl get proc address using the specified proc
@@ -3429,14 +3640,20 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="proc">The proc</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr SDL_GL_GetProcAddress([NotNull] string proc) => INTERNAL_SDL_GL_GetProcAddress(Utf8Manager.Utf8Encode(proc, new byte[Utf8Manager.Utf8Size(proc)], Utf8Manager.Utf8Size(proc)));
+        public static IntPtr GlGetProcAddress([NotNull] string proc) => INTERNAL_SDL_GL_GetProcAddress(Utf8Manager.Utf8Encode(proc, new byte[Utf8Manager.Utf8Size(proc)], Utf8Manager.Utf8Size(proc)));
 
         /// <summary>
         ///     Sdl the gl unload library
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_UnloadLibrary", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_GL_UnloadLibrary();
+        private static extern void INTERNAL_SDL_GL_UnloadLibrary();
+        
+        /// <summary>
+        /// Gls the unload library
+        /// </summary>
+        [return: NotNull]
+        public static void GlUnloadLibrary() => INTERNAL_SDL_GL_UnloadLibrary();
 
         /// <summary>
         ///     Internals the sdl gl extension supported using the specified extension
@@ -3453,15 +3670,21 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="extension">The extension</param>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SDL_GL_ExtensionSupported([NotNull] string extension) => INTERNAL_SDL_GL_ExtensionSupported(Utf8Manager.Utf8Encode(extension, new byte[Utf8Manager.Utf8Size(extension)], Utf8Manager.Utf8Size(extension)));
+        public static SdlBool GlExtensionSupported([NotNull] string extension) => INTERNAL_SDL_GL_ExtensionSupported(Utf8Manager.Utf8Encode(extension, new byte[Utf8Manager.Utf8Size(extension)], Utf8Manager.Utf8Size(extension)));
         
         /// <summary>
         ///     Sdl the gl reset attributes
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_ResetAttributes", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_GL_ResetAttributes();
-
+        private static extern void INTERNAL_SDL_GL_ResetAttributes();
+        
+        /// <summary>
+        /// Gls the reset attributes
+        /// </summary>
+        [return: NotNull]
+        public static void GlResetAttributes() => INTERNAL_SDL_GL_ResetAttributes();
+        
         /// <summary>
         ///     Sdl the gl get attribute using the specified attr
         /// </summary>
@@ -3470,15 +3693,31 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_GetAttribute", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GL_GetAttribute(SdlGlAttr attr, out int value);
+        private static extern int INTERNAL_SDL_GL_GetAttribute([NotNull]SdlGlAttr attr, out int value);
 
+        /// <summary>
+        /// Gls the get attribute using the specified attr
+        /// </summary>
+        /// <param name="attr">The attr</param>
+        /// <param name="value">The value</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GlGetAttribute([NotNull] SdlGlAttr attr, out int value) => INTERNAL_SDL_GL_GetAttribute(attr.Validate(), out value);
+        
         /// <summary>
         ///     Sdl the gl get swap interval
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_GetSwapInterval", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GL_GetSwapInterval();
+        private static extern int INTERNAL_SDL_GL_GetSwapInterval();
+        
+        /// <summary>
+        /// Gls the get swap interval
+        /// </summary>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GlGetSwapInterval() => INTERNAL_SDL_GL_GetSwapInterval();
         
         /// <summary>
         ///     Sdl the gl make current using the specified window
@@ -3488,7 +3727,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_MakeCurrent", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GL_MakeCurrent([NotNull] IntPtr window, [NotNull] IntPtr context);
+        private static extern int INTERNAL_SDL_GL_MakeCurrent([NotNull] IntPtr window, [NotNull] IntPtr context);
+        
+        /// <summary>
+        /// Gls the make current using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="context">The context</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GlMakeCurrent([NotNull] IntPtr window, [NotNull] IntPtr context) => INTERNAL_SDL_GL_MakeCurrent(window.Validate(), context.Validate());
+
         
         /// <summary>
         ///     Sdl the gl get current window
@@ -3496,7 +3745,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_GetCurrentWindow", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_GL_GetCurrentWindow();
+        private static extern IntPtr INTERNAL_SDL_GL_GetCurrentWindow();
+        
+        /// <summary>
+        /// Gls the get current window
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr GlGetCurrentWindow() => INTERNAL_SDL_GL_GetCurrentWindow().Validate();
         
         /// <summary>
         ///     Sdl the gl get current context
@@ -3504,7 +3760,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_GetCurrentContext", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr INTERNAL_SDL_GL_GetCurrentContext();
+        private static extern IntPtr INTERNAL_SDL_GL_GetCurrentContext();
+        
+        /// <summary>
+        /// Gls the get current context
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        public static IntPtr GlGetCurrentContext() => INTERNAL_SDL_GL_GetCurrentContext().Validate();
         
         /// <summary>
         ///     Sdl the gl get drawable size using the specified window
@@ -3514,8 +3777,17 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="h">The </param>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_GetDrawableSize", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_GL_GetDrawableSize([NotNull] IntPtr window, out int w, out int h);
+        private static extern void INTERNAL_SDL_GL_GetDrawableSize([NotNull] IntPtr window, out int w, out int h);
 
+        /// <summary>
+        /// Gls the get drawable size using the specified window
+        /// </summary>
+        /// <param name="window">The window</param>
+        /// <param name="w">The </param>
+        /// <param name="h">The </param>
+        [return: NotNull]
+        public static void GlGetDrawableSize([NotNull] IntPtr window, out int w, out int h) => INTERNAL_SDL_GL_GetDrawableSize(window.Validate(), out w, out h);
+        
         /// <summary>
         ///     Sdl the gl set attribute using the specified attr
         /// </summary>
@@ -3524,8 +3796,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_SetAttribute", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GL_SetAttribute(SdlGlAttr attr, [NotNull] int value);
-
+        private static extern int INTERNAL_SDL_GL_SetAttribute([NotNull] SdlGlAttr attr, [NotNull] int value);
+        
+        /// <summary>
+        /// Gls the set attribute using the specified attr
+        /// </summary>
+        /// <param name="attr">The attr</param>
+        /// <param name="value">The value</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GlSetAttributeByInt([NotNull] SdlGlAttr attr, [NotNull] int value) => INTERNAL_SDL_GL_SetAttribute(attr.Validate(), value.Validate());
+        
         /// <summary>
         ///     Sdl the gl set attribute using the specified attr
         /// </summary>
@@ -3533,7 +3814,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="profile">The profile</param>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int SDL_GL_SetAttribute(SdlGlAttr attr, SdlGlProfile profile) => INTERNAL_SDL_GL_SetAttribute(attr, (int) profile);
+        public static int GlSetAttributeByProfile([NotNull] SdlGlAttr attr, [NotNull] SdlGlProfile profile) => INTERNAL_SDL_GL_SetAttribute(attr.Validate(), (int) profile.Validate());
 
         /// <summary>
         ///     Sdl the gl set swap interval using the specified interval
@@ -3542,7 +3823,15 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_SetSwapInterval", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GL_SetSwapInterval([NotNull] int interval);
+        private static extern int INTERNAL_SDL_GL_SetSwapInterval([NotNull] int interval);
+        
+        /// <summary>
+        /// Gls the set swap interval using the specified interval
+        /// </summary>
+        /// <param name="interval">The interval</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int GlSetSwapInterval([NotNull] int interval) => INTERNAL_SDL_GL_SetSwapInterval(interval.Validate());
         
         /// <summary>
         ///     Sdl the gl swap window using the specified window

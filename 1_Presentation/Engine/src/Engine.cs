@@ -113,9 +113,9 @@ namespace Alis.App.Engine
                 Sdl.INTERNAL_SDL_GL_SwapWindow(_window);
             }
 
-            Sdl.INTERNAL_SDL_GL_DeleteContext(_glContext);
+            Sdl.GlDeleteContext(_glContext);
             Sdl.DestroyWindow(_window);
-            Sdl.INTERNAL_SDL_Quit();
+            Sdl.Quit();
         }
     }
 }

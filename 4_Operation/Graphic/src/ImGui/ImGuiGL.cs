@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Base.Dll;
+using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.SDL.Enums;
 using static Alis.Core.Graphic.SDL.Sdl;
@@ -64,16 +65,16 @@ namespace Alis.Core.Graphic.ImGui
         {
             // initialize SDL and set a few defaults for the OpenGL context
             Init(InitVideo);
-            INTERNAL_SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextFlags, (int) SdlGlContext.SdlGlContextForwardCompatibleFlag);
-            SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
-            INTERNAL_SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextMajorVersion, 3);
-            INTERNAL_SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextMinorVersion, 2);
+            GlSetAttributeByInt(SdlGlAttr.SdlGlContextFlags, (int) SdlGlContext.SdlGlContextForwardCompatibleFlag);
+            GlSetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
+            GlSetAttributeByInt(SdlGlAttr.SdlGlContextMajorVersion, 3);
+            GlSetAttributeByInt(SdlGlAttr.SdlGlContextMinorVersion, 2);
 
-            SDL_GL_SetAttribute(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
-            INTERNAL_SDL_GL_SetAttribute(SdlGlAttr.SdlGlDoubleBuffer, 1);
-            INTERNAL_SDL_GL_SetAttribute(SdlGlAttr.SdlGlDepthSize, 24);
-            INTERNAL_SDL_GL_SetAttribute(SdlGlAttr.SdlGlAlphaSize, 8);
-            INTERNAL_SDL_GL_SetAttribute(SdlGlAttr.SdlGlStencilSize, 8);
+            GlSetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
+            GlSetAttributeByInt(SdlGlAttr.SdlGlDoubleBuffer, 1);
+            GlSetAttributeByInt(SdlGlAttr.SdlGlDepthSize, 24);
+            GlSetAttributeByInt(SdlGlAttr.SdlGlAlphaSize, 8);
+            GlSetAttributeByInt(SdlGlAttr.SdlGlStencilSize, 8);
 
             // create the window which should be able to have a valid OpenGL context and is resizable
             SdlWindowFlags flags = SdlWindowFlags.SdlWindowOpengl | SdlWindowFlags.SdlWindowResizable;
@@ -100,14 +101,14 @@ namespace Alis.Core.Graphic.ImGui
         /// <returns>The gl context</returns>
         private static IntPtr CreateGlContext(IntPtr window)
         {
-            IntPtr glContext = INTERNAL_SDL_GL_CreateContext(window);
+            IntPtr glContext = GlCreateContext(window);
             if (glContext == IntPtr.Zero)
             {
                 throw new Exception("CouldNotCreateContext");
             }
 
-            INTERNAL_SDL_GL_MakeCurrent(window, glContext);
-            INTERNAL_SDL_GL_SetSwapInterval(1);
+            GlMakeCurrent(window, glContext);
+            GlSetSwapInterval(1);
 
             // initialize the screen to black as soon as possible
             GlClearColor(0f, 0f, 0f, 1f);
@@ -131,11 +132,11 @@ namespace Alis.Core.Graphic.ImGui
         {
             uint textureId = GenTexture();
             GlPixelStorei(PixelStoreParameter.UnpackAlignment, 1);
-            GlBindTexture(TextureTarget.Texture2D, textureId);
+            Gl.GlBindTexture(TextureTarget.Texture2D, textureId);
             GlTexImage2D(TextureTarget.Texture2D, 0, internalFormat, width, height, 0, format, PixelType.UnsignedByte, pixelData);
             GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
             GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
-            GlBindTexture(TextureTarget.Texture2D, 0);
+            Gl.GlBindTexture(TextureTarget.Texture2D, 0);
             return textureId;
         }
     }

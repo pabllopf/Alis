@@ -45,7 +45,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     The get string
         /// </summary>
-        private static readonly GetString _getString = _<GetString>("glGetString");
+        private static readonly GetString GetString = _<GetString>("glGetString");
 
         /// <summary>
         ///     The gen buffers
@@ -336,7 +336,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <returns>The</returns>
         private static T _<T>(string command) where T : class
         {
-            IntPtr ptr = Sdl.SDL_GL_GetProcAddress(command);
+            IntPtr ptr = Sdl.GlGetProcAddress(command);
             if (ptr == IntPtr.Zero)
             {
                 throw new ExternalException($"{command} from {typeof(T).Name}");
@@ -352,7 +352,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <returns>The string</returns>
         public static string GlGetString(StringName pname)
         {
-            IntPtr ptr = _getString(pname);
+            IntPtr ptr = GetString(pname);
             if (ptr == IntPtr.Zero)
             {
                 return string.Empty;

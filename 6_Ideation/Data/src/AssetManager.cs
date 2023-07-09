@@ -43,19 +43,19 @@ namespace Alis.Core.Aspect.Data
         /// </summary>
         static AssetManager()
         {
-            Console.WriteLine($"AssetPath={_assetPath}");
+            Console.WriteLine($"AssetPath={AssetPath}");
         }
 
         /// <summary>
         ///     The application data
         /// </summary>
-        private static readonly string _assetPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? string.Empty, "Assets");
+        private static readonly string AssetPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? string.Empty, "Assets");
 
         /// <summary>
         ///     Finds the asset name
         /// </summary>
         /// <param name="assetName">The asset name</param>
         /// <returns>The string</returns>
-        public static string Find(string assetName) => Path.Combine(_assetPath, assetName);
+        public static string Find(string assetName) => Path.Combine(AssetPath, assetName);
     }
 }

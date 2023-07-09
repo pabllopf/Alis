@@ -34,6 +34,7 @@ using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.ImGui.Enums;
 using Alis.Core.Graphic.ImGui.Structs;
+using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Constructs;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.SDL.Enums;
@@ -209,8 +210,8 @@ namespace Alis.Core.Graphic.ImGui
             ImGuiIoPtr io = ImGui.GetIo();
 
             // Setup display size (every frame to accommodate for window resizing)
-            INTERNAL_SDL_GetWindowSize(_window, out int w, out int h);
-            INTERNAL_SDL_GL_GetDrawableSize(_window, out int displayW, out int displayH);
+            GetWindowSize(_window, out int w, out int h);
+            GlGetDrawableSize(_window, out int displayW, out int displayH);
             io.DisplaySize = new Vector2F(w, h);
             if ((w > 0) && (h > 0))
             {
@@ -335,7 +336,7 @@ namespace Alis.Core.Graphic.ImGui
             {
                 // SDL_GetMouseState() gives mouse position seemingly based on the last window entered/focused(?)
                 // The creation of a new windows at runtime and SDL_CaptureMouse both seems to severely mess up with that, so we retrieve that position globally.
-                INTERNAL_SDL_GetWindowPosition(focusedWindow, out int wx, out int wy);
+                GetWindowPosition(focusedWindow, out int wx, out int wy);
                 INTERNAL_SDL_GetGlobalMouseState(out mx, out my);
                 mx -= wx;
                 my -= wy;
@@ -350,7 +351,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Prepares the gl context
         /// </summary>
-        private void PrepareGlContext() => INTERNAL_SDL_GL_MakeCurrent(_window, _glContext);
+        private void PrepareGlContext() => GlMakeCurrent(_window, _glContext);
 
         /// <summary>
         ///     Rebuilds the font atlas
@@ -462,7 +463,7 @@ namespace Alis.Core.Graphic.ImGui
             drawData.ScaleClipRects(clipScale);
 
             IntPtr lastTexId = ImGui.GetIo().Fonts.TexId;
-            GlBindTexture(TextureTarget.Texture2D, (uint) lastTexId);
+            Gl.GlBindTexture(TextureTarget.Texture2D, (uint) lastTexId);
 
             int drawVertSize = Marshal.SizeOf<ImDrawVert>();
             int drawIdxSize = sizeof(ushort);
@@ -500,7 +501,7 @@ namespace Alis.Core.Graphic.ImGui
                             if (pcmd.TextureId != lastTexId)
                             {
                                 lastTexId = pcmd.TextureId;
-                                GlBindTexture(TextureTarget.Texture2D, (uint) pcmd.TextureId);
+                                Gl.GlBindTexture(TextureTarget.Texture2D, (uint) pcmd.TextureId);
                             }
                         }
 
