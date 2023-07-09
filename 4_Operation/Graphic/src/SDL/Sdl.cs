@@ -1639,7 +1639,19 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="maxNum">The max num</param>
         /// <returns>The long</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RwRead", CallingConvention = CallingConvention.Cdecl)]
-        public static extern long INTERNAL_SDL_RwRead(IntPtr context, IntPtr ptr, IntPtr size, IntPtr maxNum);
+        [return: NotNull]
+        private static extern long INTERNAL_SDL_RwRead([NotNull]IntPtr context, [NotNull]IntPtr ptr, [NotNull]IntPtr size, [NotNull]IntPtr maxNum);
+        
+        /// <summary>
+        /// Rws the read using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <param name="ptr">The ptr</param>
+        /// <param name="size">The size</param>
+        /// <param name="maxNum">The max num</param>
+        /// <returns>The long</returns>
+        [return: NotNull]
+        public static long RwRead([NotNull]IntPtr context, [NotNull]IntPtr ptr, [NotNull]IntPtr size, [NotNull]IntPtr maxNum) => INTERNAL_SDL_RwRead(context.Validate(), ptr.Validate(), size.Validate(), maxNum.Validate());
 
         /// <summary>
         ///     Sdl the r w write using the specified context
@@ -1650,7 +1662,19 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="maxNum">The max num</param>
         /// <returns>The long</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RwWrite", CallingConvention = CallingConvention.Cdecl)]
-        public static extern long INTERNAL_SDL_RwWrite(IntPtr context, IntPtr ptr, IntPtr size, IntPtr maxNum);
+        [return: NotNull]
+        private static extern long INTERNAL_SDL_RwWrite([NotNull]IntPtr context, [NotNull]IntPtr ptr, [NotNull]IntPtr size, [NotNull]IntPtr maxNum);
+        
+        /// <summary>
+        /// Rws the write using the specified context
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <param name="ptr">The ptr</param>
+        /// <param name="size">The size</param>
+        /// <param name="maxNum">The max num</param>
+        /// <returns>The long</returns>
+        [return: NotNull]
+        public static long RwWrite([NotNull]IntPtr context, [NotNull]IntPtr ptr, [NotNull]IntPtr size, [NotNull]IntPtr maxNum) => INTERNAL_SDL_RwWrite(context.Validate(), ptr.Validate(), size.Validate(), maxNum.Validate());
         
         /// <summary>
         ///     Sdl the read u 8 using the specified src
@@ -1658,7 +1682,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="src">The src</param>
         /// <returns>The byte</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_ReadU8", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte INTERNAL_SDL_ReadU8(IntPtr src);
+        [return: NotNull]
+        private static extern byte INTERNAL_SDL_ReadU8([NotNull]IntPtr src);
+        
+        /// <summary>
+        /// Reads the u 8 using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <returns>The byte</returns>
+        [return: NotNull]
+        public static byte ReadU8([NotNull]IntPtr src) => INTERNAL_SDL_ReadU8(src.Validate());
 
         /// <summary>
         ///     Sdl the read le 16 using the specified src
@@ -1666,7 +1699,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="src">The src</param>
         /// <returns>The int 16</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_ReadLE16", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ushort INTERNAL_SDL_ReadLE16(IntPtr src);
+        [return: NotNull]
+        private static extern ushort INTERNAL_SDL_ReadLE16([NotNull] IntPtr src);
+        
+        /// <summary>
+        /// Reads the le 16 using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <returns>The ushort</returns>
+        [return: NotNull]
+        public static ushort ReadLe16([NotNull]IntPtr src) => INTERNAL_SDL_ReadLE16(src.Validate());
 
         /// <summary>
         ///     Sdl the read be 16 using the specified src
@@ -1674,7 +1716,16 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="src">The src</param>
         /// <returns>The int 16</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_ReadBE16", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ushort INTERNAL_SDL_ReadBE16(IntPtr src);
+        [return: NotNull]
+        private static extern ushort INTERNAL_SDL_ReadBE16([NotNull] IntPtr src);
+        
+        /// <summary>
+        /// Reads the be 16 using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <returns>The ushort</returns>
+        [return: NotNull]
+        public static ushort ReadBe16([NotNull]IntPtr src) => INTERNAL_SDL_ReadBE16(src.Validate());
 
         /// <summary>
         ///     Sdl the read le 32 using the specified src
@@ -1682,6 +1733,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="src">The src</param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_ReadLE32", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern uint INTERNAL_SDL_ReadLE32(IntPtr src);
 
         /// <summary>
@@ -1690,6 +1742,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="src">The src</param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_ReadBE32", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern uint INTERNAL_SDL_ReadBE32(IntPtr src);
 
         /// <summary>
@@ -1698,6 +1751,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="src">The src</param>
         /// <returns>The int 64</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_ReadLE64", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern ulong INTERNAL_SDL_ReadLE64(IntPtr src);
 
         /// <summary>
@@ -1706,6 +1760,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="src">The src</param>
         /// <returns>The int 64</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_ReadBE64", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern ulong INTERNAL_SDL_ReadBE64(IntPtr src);
 
         /// <summary>
@@ -1715,6 +1770,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="value">The value</param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_WriteU8", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern uint INTERNAL_SDL_WriteU8(IntPtr dst, byte value);
 
         /// <summary>
@@ -1724,6 +1780,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="value">The value</param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_WriteLE16", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern uint INTERNAL_SDL_WriteLE16(IntPtr dst, ushort value);
 
         /// <summary>
@@ -1733,6 +1790,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="value">The value</param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_WriteBE16", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern uint INTERNAL_SDL_WriteBE16(IntPtr dst, ushort value);
 
         /// <summary>
@@ -1742,6 +1800,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="value">The value</param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_WriteLE32", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern uint INTERNAL_SDL_WriteLE32(IntPtr dst, uint value);
 
         /// <summary>
@@ -1751,6 +1810,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="value">The value</param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_WriteBE32", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern uint INTERNAL_SDL_WriteBE32(IntPtr dst, uint value);
 
         /// <summary>
@@ -1760,6 +1820,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="value">The value</param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_WriteLE64", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern uint INTERNAL_SDL_WriteLE64(IntPtr dst, ulong value);
 
         /// <summary>
@@ -1769,6 +1830,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="value">The value</param>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_WriteBE64", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
         public static extern uint INTERNAL_SDL_WriteBE64(IntPtr dst, ulong value);
         
         /// <summary>
