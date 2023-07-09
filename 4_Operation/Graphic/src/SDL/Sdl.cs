@@ -2279,7 +2279,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="errStr">The err str</param>
         /// <param name="maxlength">The maxlength</param>
         /// <returns>The int ptr</returns>
-        public static IntPtr GetErrorMsg([NotNull] IntPtr errStr, [NotNull] int maxlength) => INTERNAL_SDL_GetErrorMsg(errStr, maxlength);
+        public static IntPtr GetErrorMsg([NotNull] IntPtr errStr, [NotNull] int maxlength) => INTERNAL_SDL_GetErrorMsg(errStr.Validate(), maxlength.Validate());
         
         /// <summary>
         ///     Internals the sdl log using the specified fmt and arg list
