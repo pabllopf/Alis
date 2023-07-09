@@ -116,7 +116,7 @@ namespace Alis.Core.Graphic.Sample
             }
 
             // Creates a new SDL hardware renderer using the default graphics device with VSYNC enabled.
-            IntPtr renderer = Sdl.INTERNAL_SDL_CreateRenderer(
+            IntPtr renderer = Sdl.CreateRenderer(
                 window,
                 -1,
                 SdlRendererFlags.SdlRendererAccelerated |
@@ -145,7 +145,7 @@ namespace Alis.Core.Graphic.Sample
                 Sdl.INTERNAL_SDL_RenderPresent(renderer);
             }
 
-            Sdl.INTERNAL_SDL_DestroyRenderer(renderer);
+            Sdl.DestroyRenderer(renderer);
             Sdl.DestroyWindow(window);
             Sdl.Quit();
             return 0;

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:Validator.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,48 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
+using Alis.Core.Aspect.Memory.Attributes;
 
-namespace Alis.Core.Graphic.Sample
+namespace Alis.Core.Aspect.Memory
 {
     /// <summary>
-    ///     The program class
+    /// The validator class
     /// </summary>
-    public static class Program
+    public static class Validator
     {
         /// <summary>
-        ///     Main the args
+        /// Validate the value
         /// </summary>
-        /// <param name="args">The args</param>
-        private static void Main(string[] args)
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        public static void Validate<T>(T value)
         {
-            int run = 1;
-            while (run == 1)
+            StackTrace stackTrace = new StackTrace();
+            StackFrame stackFrame = stackTrace.GetFrame(1);
+            MethodBase method = stackFrame.GetMethod();
+           
+            
+            if (method.DeclaringType != null)
             {
-                Console.WriteLine(@"Select backend graphic system ('sfml' | 'sdl')");
-                string os = Console.ReadLine();
-                switch (os)
+                MethodInfo methodInfo = method.DeclaringType.GetMethod(method.Name);
+                if (methodInfo != null)
                 {
-                    case "sfml":
-                        SfmlController sfmlController = new SfmlController();
-                        run = sfmlController.Run();
-                        break;
-
-                    case "sdl":
-                        SdlController sdlController = new SdlController();
-                        run = sdlController.Run();
-                        break;
+                    ParameterInfo[] parameters = methodInfo.GetParameters();
+                    foreach (ParameterInfo parameter in parameters)
+                    {
+                        IEnumerable<ValidationAttribute> attributes = method.GetParameters()
+                            .Where(p => p.Name == parameter.Name)
+                            .SelectMany(p => p.GetCustomAttributes<ValidationAttribute>(true));
+                        
+                        foreach (ValidationAttribute attribute in attributes)
+                        {
+                            attribute.Validate(value, parameter.Name);
+                        }
+                    }
                 }
             }
         }
