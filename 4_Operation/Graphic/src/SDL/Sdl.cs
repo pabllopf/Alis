@@ -4718,7 +4718,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetRenderDrawColor", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetRenderDrawColor([NotNull] IntPtr renderer, byte r, byte g, byte b, byte a);
+        public static extern int INTERNAL_SDL_SetRenderDrawColor([NotNull] IntPtr renderer, [NotNull] byte r, [NotNull] byte g, [NotNull] byte b, [NotNull] byte a);
         
         /// <summary>
         ///     Sdl the set render target using the specified renderer
@@ -4738,7 +4738,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetTextureAlphaMod", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetTextureAlphaMod([NotNull] IntPtr texture, byte alpha);
+        public static extern int INTERNAL_SDL_SetTextureAlphaMod([NotNull] IntPtr texture, [NotNull] byte alpha);
         
         /// <summary>
         ///     Sdl the set texture blend mode using the specified texture
@@ -4760,7 +4760,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetTextureColorMod", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetTextureColorMod([NotNull] IntPtr texture, byte r, byte g, byte b);
+        public static extern int INTERNAL_SDL_SetTextureColorMod([NotNull] IntPtr texture, [NotNull] byte r, [NotNull] byte g, [NotNull] byte b);
 
         /// <summary>
         ///     Sdl the unlock texture using the specified texture
@@ -4897,7 +4897,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="d">The </param>
         /// <returns>The uint</returns>
         [return: NotNull]
-        private static uint SdlDefinePixelFourcc(byte a, byte b, byte c, byte d) => Fourcc(a, b, c, d);
+        private static uint SdlDefinePixelFourcc([NotNull] byte a, [NotNull] byte b, [NotNull] byte c, [NotNull] byte d) => Fourcc(a, b, c, d);
 
         /// <summary>
         ///     Sdl the define pixel format using the specified type
@@ -4909,7 +4909,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="bytes">The bytes</param>
         /// <returns>The uint</returns>
         [return: NotNull]
-        private static uint SdlDefinePixelFormat(PixelType type, [NotNull] uint order, PackedLayout layout, byte bits, byte bytes) => (uint) ((1 << 28) | ((byte) type << 24) | ((byte) order << 20) | ((byte) layout << 16) | (bits << 8) | bytes);
+        private static uint SdlDefinePixelFormat(PixelType type, [NotNull] uint order, PackedLayout layout, [NotNull] byte bits, [NotNull] byte bytes) => (uint) ((1 << 28) | ((byte) type << 24) | ((byte) order << 20) | ((byte) layout << 16) | (bits << 8) | bytes);
 
         /// <summary>
         ///     Sdl the pixel flag using the specified x
@@ -5170,7 +5170,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_MapRGB", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_MapRGB([NotNull]IntPtr format, byte r, byte g, byte b);
+        public static extern uint INTERNAL_SDL_MapRGB([NotNull]IntPtr format, byte r, [NotNull] byte g, [NotNull] byte b);
 
         /// <summary>
         ///     Sdl the map rgba using the specified format
@@ -5183,7 +5183,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_MapRGBA", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern uint INTERNAL_SDL_MapRGBA([NotNull]IntPtr format, byte r, byte g, byte b, byte a);
+        public static extern uint INTERNAL_SDL_MapRGBA([NotNull]IntPtr format, [NotNull] byte r, [NotNull] byte g, [NotNull] byte b, [NotNull] byte a);
 
         /// <summary>
         ///     Sdl the masks to pixel format enum using the specified bpp
@@ -5742,7 +5742,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetSurfaceAlphaMod", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetSurfaceAlphaMod([NotNull]IntPtr surface, byte alpha);
+        public static extern int INTERNAL_SDL_SetSurfaceAlphaMod([NotNull]IntPtr surface, [NotNull] byte alpha);
 
         /// <summary>
         ///     Sdl the set surface blend mode using the specified surface
@@ -5764,7 +5764,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName,EntryPoint = "SDL_SetSurfaceColorMod", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_SetSurfaceColorMod([NotNull]IntPtr surface, byte r, byte g, byte b);
+        public static extern int INTERNAL_SDL_SetSurfaceColorMod([NotNull]IntPtr surface, [NotNull] byte r, [NotNull] byte g, [NotNull] byte b);
 
         /// <summary>
         ///     Sdl the set surface palette using the specified surface
@@ -7257,7 +7257,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickSetVirtualButton", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_JoystickSetVirtualButton([NotNull]IntPtr joystick, [NotNull] int button, byte value);
+        private static extern int INTERNAL_SDL_JoystickSetVirtualButton([NotNull]IntPtr joystick, [NotNull] int button, [NotNull] byte value);
+        
+        /// <summary>
+        /// Joysticks the set virtual button using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <param name="button">The button</param>
+        /// <param name="value">The value</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int JoystickSetVirtualButton([NotNull]IntPtr joystick, [NotNull] int button, [NotNull] byte value) => INTERNAL_SDL_JoystickSetVirtualButton(joystick.Validate(), button.Validate(), value.Validate());
 
         /// <summary>
         ///     Sdl the joystick set virtual hat using the specified joystick
@@ -7268,7 +7278,17 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickSetVirtualHat", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_JoystickSetVirtualHat([NotNull]IntPtr joystick, [NotNull] int hat, byte value);
+        private static extern int INTERNAL_SDL_JoystickSetVirtualHat([NotNull]IntPtr joystick, [NotNull] int hat, [NotNull] byte value);
+        
+        /// <summary>
+        /// Joysticks the set virtual hat using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <param name="hat">The hat</param>
+        /// <param name="value">The value</param>
+        /// <returns>The int</returns>
+        [return: NotNull]
+        public static int JoystickSetVirtualHat([NotNull]IntPtr joystick, [NotNull] int hat, [NotNull] byte value) => INTERNAL_SDL_JoystickSetVirtualHat(joystick.Validate(), hat.Validate(), value.Validate());
 
         /// <summary>
         ///     Sdl the joystick has led using the specified joystick
@@ -7307,7 +7327,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickSetLED", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_JoystickSetLED([NotNull]IntPtr joystick, byte red, byte green, byte blue);
+        public static extern int INTERNAL_SDL_JoystickSetLED([NotNull]IntPtr joystick, [NotNull] byte red, [NotNull] byte green, [NotNull] byte blue);
 
         /// <summary>
         ///     Sdl the joystick send effect using the specified joystick
@@ -7870,7 +7890,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerSetLED", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern int INTERNAL_SDL_GameControllerSetLED([NotNull]IntPtr gameController, byte red, byte green, byte blue);
+        public static extern int INTERNAL_SDL_GameControllerSetLED([NotNull]IntPtr gameController, [NotNull] byte red, [NotNull] byte green, [NotNull] byte blue);
 
         /// <summary>
         ///     Sdl the game controller has axis using the specified game controller
