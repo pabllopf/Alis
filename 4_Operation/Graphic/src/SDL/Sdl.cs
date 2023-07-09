@@ -1533,13 +1533,13 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="area">The area</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_FreeRW", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void INTERNAL_SDL_FreeRW(IntPtr area);
+        private static extern void INTERNAL_SDL_FreeRW([NotNull]IntPtr area);
         
         /// <summary>
         /// Free the rw using the specified area
         /// </summary>
         /// <param name="area">The area</param>
-        public static void FreeRw(IntPtr area) => INTERNAL_SDL_FreeRW(area);
+        public static void FreeRw([NotNull]IntPtr area) => INTERNAL_SDL_FreeRW(area.Validate());
         
         /// <summary>
         ///     Sdl the rw from fp using the specified fp
@@ -1549,7 +1549,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RWFromFP", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_RWFromFP(IntPtr fp, SdlBool autoClose);
+        private static extern IntPtr INTERNAL_SDL_RWFromFP([NotNull] IntPtr fp, [NotNull]SdlBool autoClose);
         
         /// <summary>
         /// Rws the from fp using the specified fp
@@ -1557,7 +1557,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="fp">The fp</param>
         /// <param name="autoClose">The auto close</param>
         /// <returns>The int ptr</returns>
-        public static IntPtr RwFromFp(IntPtr fp, SdlBool autoClose) => INTERNAL_SDL_RWFromFP(fp, autoClose);
+        public static IntPtr RwFromFp([NotNull]IntPtr fp, [NotNull]SdlBool autoClose) => INTERNAL_SDL_RWFromFP(fp.Validate(), autoClose.Validate());
 
         /// <summary>
         ///     Sdl the rw from mem using the specified mem
@@ -1567,7 +1567,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RWFromMem", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_RWFromMem(IntPtr mem, int size);
+        private static extern IntPtr INTERNAL_SDL_RWFromMem([NotNull]IntPtr mem, [NotNull]int size);
         
         /// <summary>
         /// Rws the from mem using the specified mem
@@ -4082,7 +4082,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="grabbed">The grabbed</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowGrab", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern void INTERNAL_SDL_SetWindowGrab([NotNull] IntPtr window, [NotNull]SdlBool grabbed);
+        private static extern void INTERNAL_SDL_SetWindowGrab([NotNull] IntPtr window, [NotNull]SdlBool grabbed);
         
         /// <summary>
         /// Sets the window grab using the specified window
