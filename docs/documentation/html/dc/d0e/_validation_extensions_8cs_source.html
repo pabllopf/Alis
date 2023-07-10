@@ -129,65 +129,64 @@ $(document).ready(function(){initNavTree('dc/d0e/_validation_extensions_8cs_sour
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// </span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">//  --------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> System;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> System.Collections.Generic;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">using</span> System.Diagnostics;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using</span> System.Linq;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using</span> System.Reflection;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d0/d2c/namespace_alis.html">Alis</a>.<a class="code" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a>.<a class="code" href="../../d2/d40/namespace_alis_1_1_core_1_1_aspect.html">Aspect</a>.<a class="code" href="../../d1/d15/namespace_alis_1_1_core_1_1_aspect_1_1_memory.html">Memory</a>.<a class="code" href="../../d1/daf/namespace_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes.html">Attributes</a>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d15/namespace_alis_1_1_core_1_1_aspect_1_1_memory.html">Alis.Core.Aspect.Memory</a></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../dc/db5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions.html">   42</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span><a class="code" href="../../dc/db5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions.html">ValidationExtensions</a></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../dc/db5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions.html#a2bc770fc2877b3ae75c5aa0bbc31c4e8">   50</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> T <a class="code" href="../../dc/db5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions.html#a2bc770fc2877b3ae75c5aa0bbc31c4e8">Validate&lt;T&gt;</a>(<span class="keyword">this</span> T value)</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            StackTrace stackTrace = <span class="keyword">new</span> StackTrace();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            StackFrame stackFrame = stackTrace.GetFrame(1);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            MethodBase method = stackFrame.GetMethod();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;           </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;           <span class="keywordflow">if</span> (method.DeclaringType != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                MethodInfo methodInfo = method.DeclaringType.GetMethod(method.Name);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keywordflow">if</span> (methodInfo != <span class="keyword">null</span>)</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                    ParameterInfo[] parameters = methodInfo.GetParameters();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    <span class="keywordflow">foreach</span> (ParameterInfo parameter <span class="keywordflow">in</span> parameters)</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                    {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                        IEnumerable&lt;ValidationAttribute&gt; attributes = method.GetParameters()</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                            .Where(p =&gt; p.Name == parameter.Name)</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                            .SelectMany(p =&gt; p.GetCustomAttributes&lt;<a class="code" href="../../d6/df7/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute.html">ValidationAttribute</a>&gt;(<span class="keyword">true</span>));</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                        </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                        <span class="keywordflow">foreach</span> (<a class="code" href="../../d6/df7/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute.html">ValidationAttribute</a> attribute <span class="keywordflow">in</span> attributes)</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                        {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                            attribute.<a class="code" href="../../d6/df7/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute.html#a8c8e3a114ceaab6a3d499fc360d7ce3f">Validate</a>(value, parameter.Name);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                    }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;           </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">return</span> value;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> System.Collections.Generic;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> System.Diagnostics;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">using</span> System.Linq;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using</span> System.Reflection;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d0/d2c/namespace_alis.html">Alis</a>.<a class="code" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a>.<a class="code" href="../../d2/d40/namespace_alis_1_1_core_1_1_aspect.html">Aspect</a>.<a class="code" href="../../d1/d15/namespace_alis_1_1_core_1_1_aspect_1_1_memory.html">Memory</a>.<a class="code" href="../../d1/daf/namespace_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes.html">Attributes</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d15/namespace_alis_1_1_core_1_1_aspect_1_1_memory.html">Alis.Core.Aspect.Memory</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../dc/db5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions.html">   41</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span><a class="code" href="../../dc/db5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions.html">ValidationExtensions</a></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../dc/db5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions.html#a2bc770fc2877b3ae75c5aa0bbc31c4e8">   49</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> T <a class="code" href="../../dc/db5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions.html#a2bc770fc2877b3ae75c5aa0bbc31c4e8">Validate&lt;T&gt;</a>(<span class="keyword">this</span> T value)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            StackTrace stackTrace = <span class="keyword">new</span> StackTrace();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            StackFrame stackFrame = stackTrace.GetFrame(1);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            MethodBase method = stackFrame.GetMethod();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;           </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;           <span class="keywordflow">if</span> (method.DeclaringType != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                MethodInfo methodInfo = method.DeclaringType.GetMethod(method.Name);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <span class="keywordflow">if</span> (methodInfo != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                    ParameterInfo[] parameters = methodInfo.GetParameters();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                    <span class="keywordflow">foreach</span> (ParameterInfo parameter <span class="keywordflow">in</span> parameters)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                        IEnumerable&lt;ValidationAttribute&gt; attributes = method.GetParameters()</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                            .Where(p =&gt; p.Name == parameter.Name)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                            .SelectMany(p =&gt; p.GetCustomAttributes&lt;<a class="code" href="../../d6/df7/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute.html">ValidationAttribute</a>&gt;(<span class="keyword">true</span>));</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                        </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                        <span class="keywordflow">foreach</span> (<a class="code" href="../../d6/df7/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute.html">ValidationAttribute</a> attribute <span class="keywordflow">in</span> attributes)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                        {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                            attribute.<a class="code" href="../../d6/df7/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute.html#a8c8e3a114ceaab6a3d499fc360d7ce3f">Validate</a>(value, parameter.Name);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                        }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                    }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;           </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">return</span> value;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="anamespace_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_html"><div class="ttname"><a href="../../d1/daf/namespace_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes.html">Alis.Core.Aspect.Memory.Attributes</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/df1/_not_empty_attribute_8cs_source.html#l00032">NotEmptyAttribute.cs:33</a></div></div>
 <div class="ttc" id="anamespace_alis_1_1_core_1_1_aspect_html"><div class="ttname"><a href="../../d2/d40/namespace_alis_1_1_core_1_1_aspect.html">Alis.Core.Aspect</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d65/_alis_object_8cs_source.html#l00032">AlisObject.cs:33</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions_html_a2bc770fc2877b3ae75c5aa0bbc31c4e8"><div class="ttname"><a href="../../dc/db5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions.html#a2bc770fc2877b3ae75c5aa0bbc31c4e8">Alis.Core.Aspect.Memory.ValidationExtensions.Validate&lt; T &gt;</a></div><div class="ttdeci">static T Validate&lt; T &gt;(this T value)</div><div class="ttdoc">Validates the attributes using the specified value</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d0e/_validation_extensions_8cs_source.html#l00050">ValidationExtensions.cs:50</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions_html_a2bc770fc2877b3ae75c5aa0bbc31c4e8"><div class="ttname"><a href="../../dc/db5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions.html#a2bc770fc2877b3ae75c5aa0bbc31c4e8">Alis.Core.Aspect.Memory.ValidationExtensions.Validate&lt; T &gt;</a></div><div class="ttdeci">static T Validate&lt; T &gt;(this T value)</div><div class="ttdoc">Validates the attributes using the specified value</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d0e/_validation_extensions_8cs_source.html#l00049">ValidationExtensions.cs:49</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute_html_a8c8e3a114ceaab6a3d499fc360d7ce3f"><div class="ttname"><a href="../../d6/df7/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute.html#a8c8e3a114ceaab6a3d499fc360d7ce3f">Alis.Core.Aspect.Memory.Attributes.ValidationAttribute.Validate</a></div><div class="ttdeci">abstract void Validate(object value, string name)</div><div class="ttdoc">Validates the value</div></div>
 <div class="ttc" id="anamespace_alis_1_1_core_html"><div class="ttname"><a href="../../dd/dd9/namespace_alis_1_1_core.html">Alis.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df7/_audio_clip_8cs_source.html#l00034">AudioClip.cs:35</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute_html"><div class="ttname"><a href="../../d6/df7/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute.html">Alis.Core.Aspect.Memory.Attributes.ValidationAttribute</a></div><div class="ttdoc">The validation attribute class</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d3c/_validation_attribute_8cs_source.html#l00039">ValidationAttribute.cs:40</a></div></div>
 <div class="ttc" id="anamespace_alis_html"><div class="ttname"><a href="../../d0/d2c/namespace_alis.html">Alis</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/df1/_engine_8cs_source.html#l00036">Engine.cs:37</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions_html"><div class="ttname"><a href="../../dc/db5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions.html">Alis.Core.Aspect.Memory.ValidationExtensions</a></div><div class="ttdoc">The validation extensions class</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d0e/_validation_extensions_8cs_source.html#l00042">ValidationExtensions.cs:43</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions_html"><div class="ttname"><a href="../../dc/db5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions.html">Alis.Core.Aspect.Memory.ValidationExtensions</a></div><div class="ttdoc">The validation extensions class</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d0e/_validation_extensions_8cs_source.html#l00041">ValidationExtensions.cs:42</a></div></div>
 <div class="ttc" id="anamespace_alis_1_1_core_1_1_aspect_1_1_memory_html"><div class="ttname"><a href="../../d1/d15/namespace_alis_1_1_core_1_1_aspect_1_1_memory.html">Alis.Core.Aspect.Memory</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/df1/_not_empty_attribute_8cs_source.html#l00032">NotEmptyAttribute.cs:33</a></div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_463cc71c0efffe3f069a7466fb151c62.html">6_Ideation</a></li><li class="navelem"><a class="el" href="../../dir_d6ecd8ca5fac2fe6f5aa5b1a56b8d555.html">Memory</a></li><li class="navelem"><a class="el" href="../../dir_fe63dcc3ce4be57d28556cac612fb265.html">src</a></li><li class="navelem"><b>ValidationExtensions.cs</b></li>
     <li class="footer">
-      <a>Generated on | Sun Jul 9 2023 |</a>
+      <a>Generated on | Mon Jul 10 2023 |</a>
     </li>
   </ul>
 </div>
