@@ -27,29 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-//#define B2_DEBUG_SOLVER
-/*
-* Velcro Physics:
-* Copyright (c) 2017 Ian Qvist
-* 
-* Original source Box2D:
-* Copyright (c) 2006-2011 Erin Catto http://www.box2d.org 
-* 
-* This software is provided 'as-is', without any express or implied 
-* warranty.  In no event will the authors be held liable for any damages 
-* arising from the use of this software. 
-* Permission is granted to anyone to use this software for any purpose, 
-* including commercial applications, and to alter it and redistribute it 
-* freely, subject to the following restrictions: 
-* 1. The origin of this software must not be misrepresented; you must not 
-* claim that you wrote the original software. If you use this software 
-* in a product, an acknowledgment in the product documentation would be 
-* appreciated but is not required. 
-* 2. Altered source versions must be plainly marked as such, and must not be 
-* misrepresented as being the original software. 
-* 3. This notice may not be removed or altered from any source distribution. 
-*/
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -108,24 +85,24 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     Resets the step
         /// </summary>
-        /// <param name="step">The step</param>
-        /// <param name="count">The count</param>
-        /// <param name="contacts">The contacts</param>
-        /// <param name="positions">The positions</param>
-        /// <param name="velocities">The velocities</param>
-        public void Reset(TimeStep step, int count, List<Contact> contacts, List<Position> positions, List<Velocity> velocities)
+        /// <param name="stepParam">The step</param>
+        /// <param name="countParam">The count</param>
+        /// <param name="contactList">The contacts</param>
+        /// <param name="positionList">The positions</param>
+        /// <param name="velocitiesList">The velocities</param>
+        public void Reset(TimeStep stepParam, int countParam, List<Contact> contactList, List<Position> positionList, List<Velocity> velocitiesList)
         {
-            this.step = step;
-            this.count = count;
-            this.positions = positions;
-            this.velocities = velocities;
-            this.contacts = contacts;
+            step = stepParam;
+            count = countParam;
+            positions = positionList;
+            velocities = velocitiesList;
+            contacts = contactList;
 
             // grow the array
-            if (VelocityConstraints == null || VelocityConstraints.Count < count)
+            if (VelocityConstraints == null || VelocityConstraints.Count < countParam)
             {
-                VelocityConstraints = new List<ContactVelocityConstraint>(count * 2);
-                positionConstraints = new List<ContactPositionConstraint>(count * 2);
+                VelocityConstraints = new List<ContactVelocityConstraint>(countParam * 2);
+                positionConstraints = new List<ContactPositionConstraint>(countParam * 2);
 
                 for (int i = 0; i < VelocityConstraints.Count; i++)
                 {
@@ -139,9 +116,9 @@ namespace Alis.Core.Physic.Dynamics.Solver
             }
 
             // Initialize position independent portions of the constraints.
-            for (int i = 0; i < this.count; ++i)
+            for (int i = 0; i < count; ++i)
             {
-                Contact contact = contacts[i];
+                Contact contact = contactList[i];
 
                 Fixture fixtureA = contact.FixtureA;
                 Fixture fixtureB = contact.FixtureB;
@@ -203,10 +180,10 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     ManifoldPoint cp = manifold.Points[j];
                     VelocityConstraintPoint vcp = vc.Points[j];
 
-                    if (step.WarmStarting)
+                    if (stepParam.WarmStarting)
                     {
-                        vcp.NormalImpulse = this.step.DeltaTimeRatio * cp.NormalImpulse;
-                        vcp.TangentImpulse = this.step.DeltaTimeRatio * cp.TangentImpulse;
+                        vcp.NormalImpulse = step.DeltaTimeRatio * cp.NormalImpulse;
+                        vcp.TangentImpulse = step.DeltaTimeRatio * cp.TangentImpulse;
                     }
                     else
                     {
@@ -467,7 +444,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 }
                 else
                 {
-                    // Block solver developed in collaboration with Dirk Gregorius (back in 01/07 on Box2D_Lite).
+                    // Block solver developed in collaboration with Dirk Gregoris (back in 01/07 on Box2D_Lite).
                     // Build the mini LCP for this contact patch
                     //
                     // vn = A * x + b, vn >= 0, x >= 0 and vn_i * x_i = 0 with i = 1..2
@@ -535,132 +512,42 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
                     if ((x.X >= 0.0f) && (x.Y >= 0.0f))
                     {
-                        // Get the incremental impulse
-                        Vector2F d = x - a;
-
-                        // Apply incremental impulse
-                        Vector2F p1 = d.X * normal;
-                        Vector2F p2 = d.Y * normal;
-                        vA -= mA * (p1 + p2);
-                        wA -= iA * (MathUtils.Cross(cp1.Ra, p1) + MathUtils.Cross(cp2.Ra, p2));
-
-                        vB += mB * (p1 + p2);
-                        wB += iB * (MathUtils.Cross(cp1.Rb, p1) + MathUtils.Cross(cp2.Rb, p2));
-
-                        // Accumulate
                         cp1.NormalImpulse = x.X;
                         cp2.NormalImpulse = x.Y;
-
-#if B2_DEBUG_SOLVER
-                        // Postconditions
-                        dv1 = vB + MathUtils.Cross(wB, cp1.rB) - vA - MathUtils.Cross(wA, cp1.rA);
-                        dv2 = vB + MathUtils.Cross(wB, cp2.rB) - vA - MathUtils.Cross(wA, cp2.rA);
-
-                        // Compute normal velocity
-                        vn1 = Vector2.Dot(dv1, normal);
-                        vn2 = Vector2.Dot(dv2, normal);
-
-                        Debug.Assert(Math.Abs(vn1 - cp1.VelocityBias) < k_errorTol);
-                        Debug.Assert(Math.Abs(vn2 - cp2.VelocityBias) < k_errorTol);
-#endif
+                        
                         break;
                     }
-
-                    //
-                    // Case 2: vn1 = 0 and x2 = 0
-                    //
-                    //   0 = a11 * x1 + a12 * 0 + b1' 
-                    // vn2 = a21 * x1 + a22 * 0 + b2'
-                    //
+                    
                     x = new Vector2F(-cp1.NormalMass * b.X, 0.0f);
-                    vn1 = 0.0f;
                     vn2 = vc.K.Ex.Y * x.X + b.Y;
 
                     if ((x.X >= 0.0f) && (vn2 >= 0.0f))
                     {
-                        // Get the incremental impulse
-                        Vector2F d = x - a;
-
-                        // Apply incremental impulse
-                        Vector2F p1 = d.X * normal;
-                        Vector2F p2 = d.Y * normal;
-                        vA -= mA * (p1 + p2);
-                        wA -= iA * (MathUtils.Cross(cp1.Ra, p1) + MathUtils.Cross(cp2.Ra, p2));
-
-                        vB += mB * (p1 + p2);
-                        wB += iB * (MathUtils.Cross(cp1.Rb, p1) + MathUtils.Cross(cp2.Rb, p2));
-
-                        // Accumulate
                         cp1.NormalImpulse = x.X;
                         cp2.NormalImpulse = x.Y;
-
-#if B2_DEBUG_SOLVER
-                        // Postconditions
-                        dv1 = vB + MathUtils.Cross(wB, cp1.rB) - vA - MathUtils.Cross(wA, cp1.rA);
-
-                        // Compute normal velocity
-                        vn1 = Vector2.Dot(dv1, normal);
-
-                        Debug.Assert(Math.Abs(vn1 - cp1.VelocityBias) < k_errorTol);
-#endif
+                        
                         break;
                     }
-
-                    //
-                    // Case 3: vn2 = 0 and x1 = 0
-                    //
-                    // vn1 = a11 * 0 + a12 * x2 + b1' 
-                    //   0 = a21 * 0 + a22 * x2 + b2'
-                    //
+                    
                     x = new Vector2F(0.0f, -cp2.NormalMass * b.Y);
                     vn1 = vc.K.Ey.X * x.Y + b.X;
-                    vn2 = 0.0f;
 
                     if ((x.Y >= 0.0f) && (vn1 >= 0.0f))
                     {
-                        // Resubstitute for the incremental impulse
-                        Vector2F d = x - a;
-
-                        // Apply incremental impulse
-                        Vector2F p1 = d.X * normal;
-                        Vector2F p2 = d.Y * normal;
-                        vA -= mA * (p1 + p2);
-                        wA -= iA * (MathUtils.Cross(cp1.Ra, p1) + MathUtils.Cross(cp2.Ra, p2));
-
-                        vB += mB * (p1 + p2);
-                        wB += iB * (MathUtils.Cross(cp1.Rb, p1) + MathUtils.Cross(cp2.Rb, p2));
-
-                        // Accumulate
                         cp1.NormalImpulse = x.X;
                         cp2.NormalImpulse = x.Y;
-
-#if B2_DEBUG_SOLVER
-                        // Postconditions
-                        dv2 = vB + MathUtils.Cross(wB, cp2.rB) - vA - MathUtils.Cross(wA, cp2.rA);
-
-                        // Compute normal velocity
-                        vn2 = Vector2.Dot(dv2, normal);
-
-                        Debug.Assert(Math.Abs(vn2 - cp2.VelocityBias) < k_errorTol);
-#endif
+                        
                         break;
                     }
-
-                    //
-                    // Case 4: x1 = 0 and x2 = 0
-                    // 
-                    // vn1 = b1
-                    // vn2 = b2;
+                    
                     x = Vector2F.Zero;
                     vn1 = b.X;
                     vn2 = b.Y;
 
                     if ((vn1 >= 0.0f) && (vn2 >= 0.0f))
                     {
-                        // Resubstitute for the incremental impulse
                         Vector2F d = x - a;
-
-                        // Apply incremental impulse
+                        
                         Vector2F p1 = d.X * normal;
                         Vector2F p2 = d.Y * normal;
                         vA -= mA * (p1 + p2);
@@ -668,8 +555,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
                         vB += mB * (p1 + p2);
                         wB += iB * (MathUtils.Cross(cp1.Rb, p1) + MathUtils.Cross(cp2.Rb, p2));
-
-                        // Accumulate
+                        
                         cp1.NormalImpulse = x.X;
                         cp2.NormalImpulse = x.Y;
                     }
@@ -731,8 +617,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
                 Vector2F cB = positions[indexB].C;
                 float aB = positions[indexB].A;
-
-                // Solve normal constraints
+                
                 for (int j = 0; j < pointCount; ++j)
                 {
                     Transform xfA = new Transform();
@@ -747,15 +632,12 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
                     Vector2F rA = point - cA;
                     Vector2F rB = point - cB;
-
-                    // Track max constraint error.
+                    
                     minSeparation = Math.Min(minSeparation, separation);
-
-                    // Prevent large corrections and allow slop.
+                    
                     float c = MathUtils.Clamp(Settings.Baumgarte * (separation + Settings.LinearSlop),
                         -Settings.LinearCorrection, 0.0f);
-
-                    // Compute the effective mass.
+                    
                     float rnA = MathUtils.Cross(rA, normal);
                     float rnB = MathUtils.Cross(rB, normal);
                     float k = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
@@ -779,7 +661,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 positions[indexB].A = aB;
             }
 
-            // We can't expect minSpeparation >= -b2_linearSlop because we don't
+            // We can't expect min separation >= -b2_linearSlop because we don't
             // push the separation above -b2_linearSlop.
             return minSeparation >= -3.0f * Settings.LinearSlop;
         }
@@ -874,7 +756,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 positions[indexB].A = aB;
             }
 
-            // We can't expect minSpeparation >= -b2_linearSlop because we don't
+            // We can't expect min separation >= -b2_linearSlop because we don't
             // push the separation above -b2_linearSlop.
             return minSeparation >= -1.5f * Settings.LinearSlop;
         }
