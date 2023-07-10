@@ -6288,7 +6288,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderFillRectF", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int INTERNAL_SDL_RenderFillRectF([NotNull] IntPtr renderer, ref SdlFRect rect);
+        private static extern int INTERNAL_SDL_RenderFillRectF([NotNull] IntPtr renderer, SdlFRect rect);
         
         /// <summary>
         /// Renders the fill rect f using the specified renderer
@@ -6297,7 +6297,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="rect">The rect</param>
         /// <returns>The int</returns>
         [return: NotNull]
-        private static int RenderFillRectF([NotNull] IntPtr renderer, ref SdlFRect rect) => INTERNAL_SDL_RenderFillRectF(renderer.Validate(), ref rect);
+        public static int RenderFillRectF([NotNull] IntPtr renderer, SdlFRect rect) => INTERNAL_SDL_RenderFillRectF(renderer.Validate(), rect);
         
         /// <summary>
         ///     Sdl the render fill rect f using the specified renderer
