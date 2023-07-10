@@ -36,24 +36,25 @@ using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
-    // 1-D constrained system
-    // m (v2 - v1) = lambda
-    // v2 + (beta/h) * x1 + gamma * lambda = 0, gamma has units of inverse mass.
-    // x2 = x1 + h * v2
-
-    // 1-D mass-damper-spring system
-    // m (v2 - v1) + h * d * v2 + h * k * 
-
-    // C = norm(p2 - p1) - L
-    // u = (p2 - p1) / norm(p2 - p1)
-    // Cdot = dot(u, v2 + cross(w2, r2) - v1 - cross(w1, r1))
-    // J = [-u -cross(r1, u) u cross(r2, u)]
-    // K = J * invM * JT
-    //   = invMass1 + invI1 * cross(r1, u)^2 + invMass2 + invI2 * cross(r2, u)^2
-
     /// <summary>
     ///     A distance joint constrains two points on two bodies to remain at a fixed distance from each other. You can
     ///     view this as a massless, rigid rod.
+    /// 1-D constrained system
+    /// m (v2 - v1) = lambda
+    /// v2 + (beta/h) * x1 + gamma * lambda = 0, gamma has units of inverse mass.
+    /// x2 = x1 + h * v2
+    ///
+    /// 1-D mass-damper-spring system
+    /// m (v2 - v1) + h * d * v2 + h * k * 
+    ///
+    /// C = norm(p2 - p1) - L
+    /// u = (p2 - p1) / norm(p2 - p1)
+    /// dot = dot(u, v2 + cross(w2, r2) - v1 - cross(w1, r1))
+    /// J = [-u -cross(r1, u) u cross(r2, u)]
+    /// K = J * invM * JT
+    ///   = invMass1 + invI1 * cross(r1, u)^2 + invMass2 + invI2 * cross(r2, u)^2
+    ///
+    /// 
     /// </summary>
     public class DistanceJoint : Joint
     {
@@ -81,8 +82,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The impulse
         /// </summary>
         private float impulse;
-
-        // Solver temp
+        
         /// <summary>
         ///     The index
         /// </summary>
@@ -116,7 +116,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The length
         /// </summary>
-        private float lengthPrivate;
+        private readonly float lengthPrivate;
 
         /// <summary>
         ///     The local anchor
@@ -290,24 +290,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             set => throw new ArgumentException(value.ToString());
         }
 
-        /// <summary>The rest length of this joint. Clamped to a stable minimum value.</summary>
-        public float LengthPropertie
-        {
-            get
-            {
-                Vector2F pA = BodyA.GetWorldPoint(localAnchorA);
-                Vector2F pB = BodyB.GetWorldPoint(localAnchorB);
-                Vector2F d = pB - pA;
-                float length = d.Length();
-                return length;
-            }
-            set
-            {
-                impulse = 0.0f;
-                lengthPrivate = MathUtils.Max(Settings.LinearSlop, value);
-            }
-        }
-
         /// <summary>Set/get the linear stiffness in N/m</summary>
         public float Stiffness
         {
@@ -472,15 +454,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 if (stiffness > 0.0f)
                 {
-                    // Cdot = dot(u, v + cross(w, r))
                     Vector2F vpA = vA + MathUtils.Cross(wA, rA);
                     Vector2F vpB = vB + MathUtils.Cross(wB, rB);
-                    float cdot = MathUtils.Dot(u, vpB - vpA);
+                    float dot = MathUtils.Dot(u, vpB - vpA);
 
-                    float impulse = -softMass * (cdot + bias + gamma * this.impulse);
-                    this.impulse += impulse;
+                    float impulseLocal = -softMass * (dot + bias + gamma * impulse);
+                    impulse += impulseLocal;
 
-                    Vector2F p = impulse * u;
+                    Vector2F p = impulseLocal * u;
                     vA -= invMassA * p;
                     wA -= invIa * MathUtils.Cross(rA, p);
                     vB += invMassB * p;
@@ -490,17 +471,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 // lower
                 {
                     float c = currentLength - minLength;
-                    float bias = MathUtils.Max(0.0f, c) * data.Step.InvertedDeltaTime;
+                    float biasLocal = MathUtils.Max(0.0f, c) * data.Step.InvertedDeltaTime;
 
                     Vector2F vpA = vA + MathUtils.Cross(wA, rA);
                     Vector2F vpB = vB + MathUtils.Cross(wB, rB);
-                    float cdot = MathUtils.Dot(u, vpB - vpA);
+                    float dot = MathUtils.Dot(u, vpB - vpA);
 
-                    float impulse = -mass * (cdot + bias);
+                    float impulseLocal = -mass * (dot + biasLocal);
                     float oldImpulse = lowerImpulse;
-                    lowerImpulse = MathUtils.Max(0.0f, lowerImpulse + impulse);
-                    impulse = lowerImpulse - oldImpulse;
-                    Vector2F p = impulse * u;
+                    lowerImpulse = MathUtils.Max(0.0f, lowerImpulse + impulseLocal);
+                    impulseLocal = lowerImpulse - oldImpulse;
+                    Vector2F p = impulseLocal * u;
 
                     vA -= invMassA * p;
                     wA -= invIa * MathUtils.Cross(rA, p);
@@ -511,17 +492,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 // upper
                 {
                     float c = maxLength - currentLength;
-                    float bias = MathUtils.Max(0.0f, c) * data.Step.InvertedDeltaTime;
+                    float biaLocal = MathUtils.Max(0.0f, c) * data.Step.InvertedDeltaTime;
 
                     Vector2F vpA = vA + MathUtils.Cross(wA, rA);
                     Vector2F vpB = vB + MathUtils.Cross(wB, rB);
-                    float cdot = MathUtils.Dot(u, vpA - vpB);
+                    float dot = MathUtils.Dot(u, vpA - vpB);
 
-                    float impulse = -mass * (cdot + bias);
+                    float impulseLocal = -mass * (dot + biaLocal);
                     float oldImpulse = upperImpulse;
-                    upperImpulse = MathUtils.Max(0.0f, upperImpulse + impulse);
-                    impulse = upperImpulse - oldImpulse;
-                    Vector2F p = -impulse * u;
+                    upperImpulse = MathUtils.Max(0.0f, upperImpulse + impulseLocal);
+                    impulseLocal = upperImpulse - oldImpulse;
+                    Vector2F p = -impulseLocal * u;
 
                     vA -= invMassA * p;
                     wA -= invIa * MathUtils.Cross(rA, p);
@@ -531,17 +512,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
             else
             {
-                // Equal limits
-
-                // Cdot = dot(u, v + cross(w, r))
                 Vector2F vpA = vA + MathUtils.Cross(wA, rA);
                 Vector2F vpB = vB + MathUtils.Cross(wB, rB);
-                float cdot = MathUtils.Dot(u, vpB - vpA);
+                float dot = MathUtils.Dot(u, vpB - vpA);
 
-                float impulse = -mass * cdot;
-                this.impulse += impulse;
+                float impulseLocal = -mass * dot;
+                impulse += impulseLocal;
 
-                Vector2F p = impulse * u;
+                Vector2F p = impulseLocal * u;
                 vA -= invMassA * p;
                 wA -= invIa * MathUtils.Cross(rA, p);
                 vB += invMassB * p;
@@ -568,13 +546,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             Rotation qA = new Rotation(aA), qB = new Rotation(aB);
 
-            Vector2F rA = MathUtils.Mul(qA, localAnchorA - localCenterA);
-            Vector2F rB = MathUtils.Mul(qB, localAnchorB - localCenterB);
-            Vector2F u = cB + rB - cA - rA;
+            MathUtils.Mul(qA, localAnchorA - localCenterA);
+            Vector2F rBLocal = MathUtils.Mul(qB, localAnchorB - localCenterB);
+            Vector2F uLocal = cB + rBLocal - cA - rA;
 
-            float length = MathUtils.Normalize(ref u);
+            float length = MathUtils.Normalize(ref uLocal);
             float c;
-            if (minLength == maxLength)
+            if (Math.Abs(minLength - maxLength) < 0.0001f)
             {
                 c = length - minLength;
             }
@@ -591,13 +569,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 return true;
             }
 
-            float impulse = -mass * c;
-            Vector2F p = impulse * u;
+            float impulseLocal = -mass * c;
+            Vector2F p = impulseLocal * uLocal;
 
             cA -= invMassA * p;
             aA -= invIa * MathUtils.Cross(rA, p);
             cB += invMassB * p;
-            aB += invIb * MathUtils.Cross(rB, p);
+            aB += invIb * MathUtils.Cross(rBLocal, p);
 
             data.Positions[indexA].C = cA;
             data.Positions[indexA].A = aA;
