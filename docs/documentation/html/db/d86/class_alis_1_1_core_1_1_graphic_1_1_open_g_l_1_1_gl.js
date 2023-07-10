@@ -16,7 +16,7 @@ var class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_gl =
     [ "DeleteVertexArray", "db/d86/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_gl.html#a9aafd15da7ba5a35ae8d7cf212097eb2", null ],
     [ "GenTexture", "db/d86/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_gl.html#a1586c37be000e7cbaea48e65951a1811", null ],
     [ "DeleteTexture", "db/d86/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_gl.html#ab67cd298535215c4a7c79b4c2957912c", null ],
-    [ "_getString", "db/d86/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_gl.html#abbfbdf01c36135d03a0d7192ab02a08c", null ],
+    [ "GetString", "db/d86/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_gl.html#a5f11483615509dea6cc57bd17550211d", null ],
     [ "GlGenBuffers", "db/d86/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_gl.html#ac9752b84250a8517ce4e696d5c115afa", null ],
     [ "GlDeleteBuffers", "db/d86/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_gl.html#abe5364a4277f75e3407218d8b9f03889", null ],
     [ "GlViewport", "db/d86/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_gl.html#a60ab3dcb89faef27e16ae90aa4e9af36", null ],

@@ -629,8 +629,8 @@ var hierarchy =
     [ "Alis.Core.Aspect.Fluent.Words.IMute< AudioClipBuilder, bool >", "de/d9e/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_mute.html", [
       [ "Alis.Builder.Core.Component.Audio.AudioClipBuilder", "d7/dd4/class_alis_1_1_builder_1_1_core_1_1_component_1_1_audio_1_1_audio_clip_builder.html", null ]
     ] ],
-    [ "Alis.Core.Graphic.ImGui.Structs.ImVector< T >", "d5/da5/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_vector.html", null ],
     [ "Alis.Core.Graphic.ImGui.Structs.ImVector", "d5/da5/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_vector.html", null ],
+    [ "Alis.Core.Graphic.ImGui.Structs.ImVector< T >", "d5/da5/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_vector.html", null ],
     [ "Alis.Core.Graphic.ImGui.Structs.ImVector< Alis.Core.Graphic.ImGui.Structs.ImFontPtr >", "d5/da5/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_vector.html", null ],
     [ "Alis.Core.Graphic.ImGui.Structs.ImVector< Alis.Core.Graphic.ImGui.Structs.ImGuiViewportPtr >", "d5/da5/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_vector.html", null ],
     [ "Alis.Core.Graphic.ImGui.Structs.ImVector< byte >", "d5/da5/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_vector.html", null ],
@@ -1047,8 +1047,8 @@ var hierarchy =
     [ "Alis.Core.Physic.Collision.TOI.ToiOutput", "de/d32/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_t_o_i_1_1_toi_output.html", null ],
     [ "Alis.Core.Graphic.SFML.Windows.Touch", "d2/db7/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_touch.html", null ],
     [ "Alis.Core.Graphic.SFML.Windows.TouchEvent", "d0/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_touch_event.html", null ],
-    [ "Alis.Core.Aspect.Math.Transform", "d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html", null ],
     [ "Alis.Core.Graphic.SFML.Graphics.Transform", "d7/d5b/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_transform.html", null ],
+    [ "Alis.Core.Aspect.Math.Transform", "d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html", null ],
     [ "Alis.Core.Ecs.TransformBase", "dc/dfe/class_alis_1_1_core_1_1_ecs_1_1_transform_base.html", [
       [ "Alis.Core.Entity.Transform", "dc/d65/class_alis_1_1_core_1_1_entity_1_1_transform.html", null ]
     ] ],
@@ -1072,6 +1072,7 @@ var hierarchy =
     [ "Alis.Core.Aspect.Memory.Utf8Manager", "d6/d31/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_utf8_manager.html", null ],
     [ "Alis.Core.Graphic.ImGui.Utils.Util", "dd/d5a/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_utils_1_1_util.html", null ],
     [ "Alis.Core.Aspect.Memory.ValidationExtensions", "dc/db5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions.html", null ],
+    [ "Alis.Core.Aspect.Memory.Validator", "d7/d2d/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validator.html", null ],
     [ "Alis.Core.Aspect.Math.Vector.Vector2B", "d8/dab/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_b.html", null ],
     [ "Alis.Core.Aspect.Math.Vector.Vector3B", "d0/daa/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3_b.html", null ],
     [ "Alis.Core.Aspect.Math.Vector.Vector3I", "d3/d84/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3_i.html", null ],

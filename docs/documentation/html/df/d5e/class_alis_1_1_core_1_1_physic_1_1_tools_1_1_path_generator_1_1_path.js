@@ -18,7 +18,7 @@ var class_alis_1_1_core_1_1_physic_1_1_tools_1_1_path_generator_1_1_path =
     [ "RemoveAt", "df/d5e/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_path_generator_1_1_path.html#a2dc80782c745b3a18e7ca4cd150db5c6", null ],
     [ "GetLength", "df/d5e/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_path_generator_1_1_path.html#a8173209b39faf8c8d7e752fedd95b4eb", null ],
     [ "SubdivideEvenly", "df/d5e/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_path_generator_1_1_path.html#a306513ca609ffb65954ce1f2f83c6840", null ],
-    [ "ControlPoints", "df/d5e/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_path_generator_1_1_path.html#a63f08b8280f9907dce3fcfb1c153b7c1", null ],
+    [ "controlPoints", "df/d5e/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_path_generator_1_1_path.html#af7c7163d1917ad1e0344b588ed79b33a", null ],
     [ "deltaT", "df/d5e/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_path_generator_1_1_path.html#a8e55f3d47f78f9ae20fe2033df4c603b", null ],
     [ "Closed", "df/d5e/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_path_generator_1_1_path.html#af4c2827b45ec72c22dfa378bf44bc5d2", null ]
 ];
