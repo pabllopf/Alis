@@ -136,13 +136,13 @@ namespace Alis.Core.Graphic.Sample
                 RenderColors();
 
                 // Sets the color that the screen will be cleared with.
-                Sdl.INTERNAL_SDL_SetRenderDrawColor(renderer, _red, _green, _blue, 255);
+                Sdl.SetRenderDrawColor(renderer, _red, _green, _blue, 255);
 
                 // Clears the current render surface.
                 Sdl.RenderClear(renderer);
 
                 // Switches out the currently presented render surface with the one we just did work on.
-                Sdl.INTERNAL_SDL_RenderPresent(renderer);
+                Sdl.RenderPresent(renderer);
             }
 
             Sdl.DestroyRenderer(renderer);
