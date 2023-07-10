@@ -9309,7 +9309,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="y">The </param>
         /// <returns>The uint</returns>
         [return: NotNull]
-        public static uint GetMouseState(out int x, out int y) => INTERNAL_SDL_GetMouseState(out x, out y).Validate();
+        public static uint GetMouseStateOutXAndY(out int x, out int y) => INTERNAL_SDL_GetMouseState(out x, out y).Validate();
 
         /// <summary>
         ///     Sdl the get mouse state using the specified x
@@ -9328,7 +9328,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="y">The </param>
         /// <returns>The uint</returns>
         [return: NotNull]
-        public static uint GetMouseState([NotNull]IntPtr x, out int y) => INTERNAL_SDL_GetMouseState(x.Validate(), out y);
+        public static uint GetMouseStateXAndYOut([NotNull]IntPtr x, out int y) => INTERNAL_SDL_GetMouseState(x.Validate(), out y);
 
         /// <summary>
         ///     Sdl the get mouse state using the specified x
@@ -9347,7 +9347,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="y">The </param>
         /// <returns>The uint</returns>
         [return: NotNull]
-        public static uint GetMouseState(out int x, [NotNull]IntPtr y) => INTERNAL_SDL_GetMouseState(out x, y.Validate());
+        public static uint GetMouseStateXOutAndY(out int x, [NotNull]IntPtr y) => INTERNAL_SDL_GetMouseState(out x, y.Validate());
 
         /// <summary>
         ///     Sdl the get mouse state using the specified x
@@ -9366,7 +9366,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="y">The </param>
         /// <returns>The uint</returns>
         [return: NotNull]
-        public static uint GetMouseState([NotNull]IntPtr x, [NotNull]IntPtr y) => INTERNAL_SDL_GetMouseState(x.Validate(), y.Validate());
+        public static uint GetMouseStateToXAndY([NotNull]IntPtr x, [NotNull]IntPtr y) => INTERNAL_SDL_GetMouseState(x.Validate(), y.Validate());
 
         /// <summary>
         ///     Sdl the get global mouse state using the specified x
@@ -9385,7 +9385,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="y">The </param>
         /// <returns>The uint</returns>
         [return: NotNull]
-        public static uint GetGlobalMouseState(out int x, out int y) => INTERNAL_SDL_GetGlobalMouseState(out x, out y).Validate();
+        public static uint GetGlobalMouseStateOutXAndOutY(out int x, out int y) => INTERNAL_SDL_GetGlobalMouseState(out x, out y).Validate();
 
         /// <summary>
         ///     Sdl the get global mouse state using the specified x
@@ -9404,7 +9404,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="y">The </param>
         /// <returns>The uint</returns>
         [return: NotNull]
-        public static uint GetGlobalMouseState([NotNull]IntPtr x, out int y) => INTERNAL_SDL_GetGlobalMouseState(x.Validate(), out y).Validate();
+        public static uint GetGlobalMouseStateXAndYOut([NotNull]IntPtr x, out int y) => INTERNAL_SDL_GetGlobalMouseState(x.Validate(), out y).Validate();
 
         /// <summary>
         ///     Sdl the get global mouse state using the specified x
@@ -9423,7 +9423,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="y">The </param>
         /// <returns>The uint</returns>
         [return: NotNull]
-        public static uint GetGlobalMouseState(out int x, [NotNull]IntPtr y) => INTERNAL_SDL_GetGlobalMouseState(out x, y.Validate()).Validate();
+        public static uint GetGlobalMouseStateOutXAndY(out int x, [NotNull]IntPtr y) => INTERNAL_SDL_GetGlobalMouseState(out x, y.Validate()).Validate();
 
         /// <summary>
         ///     Sdl the get global mouse state using the specified x
@@ -9442,7 +9442,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="y">The </param>
         /// <returns>The uint</returns>
         [return: NotNull]
-        public static uint GetGlobalMouseState([NotNull]IntPtr x, [NotNull]IntPtr y) => INTERNAL_SDL_GetGlobalMouseState(x.Validate(), y.Validate()).Validate();
+        public static uint GetGlobalMouseStateXAndY([NotNull]IntPtr x, [NotNull]IntPtr y) => INTERNAL_SDL_GetGlobalMouseState(x.Validate(), y.Validate()).Validate();
 
         /// <summary>
         ///     Sdl the get relative mouse state using the specified x

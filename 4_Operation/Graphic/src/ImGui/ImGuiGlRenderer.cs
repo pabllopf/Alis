@@ -322,7 +322,7 @@ namespace Alis.Core.Graphic.ImGui
                 io.MousePos = new Vector2F(float.MinValue, float.MinValue);
             }
 
-            uint mouseButtons = GetMouseState(out int mx, out int my);
+            uint mouseButtons = GetMouseStateOutXAndY(out int mx, out int my);
             io.MouseDown[0] =
                 _mousePressed[0] ||
                 (mouseButtons & Button(ButtonLeft)) !=
@@ -337,7 +337,7 @@ namespace Alis.Core.Graphic.ImGui
                 // SDL_GetMouseState() gives mouse position seemingly based on the last window entered/focused(?)
                 // The creation of a new windows at runtime and SDL_CaptureMouse both seems to severely mess up with that, so we retrieve that position globally.
                 GetWindowPosition(focusedWindow, out int wx, out int wy);
-                GetGlobalMouseState(out mx, out my);
+                GetGlobalMouseStateOutXAndOutY(out mx, out my);
                 mx -= wx;
                 my -= wy;
                 io.MousePos = new Vector2F(mx, my);
