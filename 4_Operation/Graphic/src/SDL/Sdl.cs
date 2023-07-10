@@ -7195,7 +7195,7 @@ namespace Alis.Core.Graphic.SDL
         private static extern IntPtr INTERNAL_SDL_AllocFormat([NotNull] uint pixelFormat);
         
         /// <summary>
-        /// Allocs the format using the specified pixel format
+        /// Allow the format using the specified pixel format
         /// </summary>
         /// <param name="pixelFormat">The pixel format</param>
         /// <returns>The int ptr</returns>
@@ -7212,7 +7212,7 @@ namespace Alis.Core.Graphic.SDL
         private static extern IntPtr INTERNAL_SDL_AllocPalette([NotNull] int nColors);
         
         /// <summary>
-        /// Allocs the palette using the specified n colors
+        /// Allow the palette using the specified n colors
         /// </summary>
         /// <param name="nColors">The colors</param>
         /// <returns>The int ptr</returns>
@@ -7396,7 +7396,7 @@ namespace Alis.Core.Graphic.SDL
         private static extern uint INTERNAL_SDL_MasksToPixelFormatEnum([NotNull] int bpp, [NotNull] uint rMask, [NotNull] uint gMask, [NotNull] uint bMask, [NotNull] uint aMask);
 
         /// <summary>
-        /// Maskses the to pixel format enum using the specified bpp
+        /// Mask the to pixel format enum using the specified bpp
         /// </summary>
         /// <param name="bpp">The bpp</param>
         /// <param name="rMask">The mask</param>
@@ -7522,7 +7522,7 @@ namespace Alis.Core.Graphic.SDL
         private static extern SdlBool INTERNAL_SDL_HasIntersection(ref SdlRect a, ref SdlRect b);
 
         /// <summary>
-        /// Hases the intersection using the specified a
+        /// Has the intersection using the specified a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
@@ -7667,7 +7667,7 @@ namespace Alis.Core.Graphic.SDL
         private static extern int INTERNAL_SDL_BlitSurface([NotNull]IntPtr src, [NotNull]IntPtr srcRect, [NotNull]IntPtr dst, [NotNull]IntPtr dstRect);
 
         /// <summary>
-        /// Blits the surface using the specified src
+        /// Blit the surface using the specified src
         /// </summary>
         /// <param name="src">The src</param>
         /// <param name="srcRect">The src rect</param>
@@ -7715,7 +7715,7 @@ namespace Alis.Core.Graphic.SDL
         private static extern int INTERNAL_SDL_BlitScaled([NotNull]IntPtr src, [NotNull]IntPtr srcRect, [NotNull]IntPtr dst, ref SdlRect dstRect);
 
         /// <summary>
-        /// Blits the scaled using the specified src
+        /// Blit the scaled using the specified src
         /// </summary>
         /// <param name="src">The src</param>
         /// <param name="srcRect">The src rect</param>
@@ -7739,7 +7739,7 @@ namespace Alis.Core.Graphic.SDL
         private static extern int INTERNAL_SDL_BlitScaled([NotNull]IntPtr src, ref SdlRect srcRect, [NotNull]IntPtr dst, [NotNull]IntPtr dstRect);
 
         /// <summary>
-        /// Blits the scaled using the specified src
+        /// Blit the scaled using the specified src
         /// </summary>
         /// <param name="src">The src</param>
         /// <param name="srcRect">The src rect</param>
@@ -7748,7 +7748,6 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [return: NotNull]
         public static int BlitScaled([NotNull]IntPtr src, ref SdlRect srcRect, [NotNull]IntPtr dst, [NotNull]IntPtr dstRect) => INTERNAL_SDL_BlitScaled(src.Validate(), ref srcRect, dst, dstRect);
-
         
         /// <summary>
         ///     Sdl the blit scaled using the specified src
@@ -7763,7 +7762,7 @@ namespace Alis.Core.Graphic.SDL
         private static extern int INTERNAL_SDL_BlitScaled([NotNull]IntPtr src, [NotNull]IntPtr srcRect, [NotNull]IntPtr dst, [NotNull]IntPtr dstRect);
 
         /// <summary>
-        /// Blits the scaled using the specified src
+        /// Blit the scaled using the specified src
         /// </summary>
         /// <param name="src">The src</param>
         /// <param name="srcRect">The src rect</param>
@@ -7823,7 +7822,7 @@ namespace Alis.Core.Graphic.SDL
         private static extern int INTERNAL_SDL_PremultiplyAlpha([NotNull] int width, [NotNull] int height, [NotNull] uint srcFormat, [NotNull]IntPtr src, [NotNull] int srcPitch, [NotNull] uint dstFormat, [NotNull]IntPtr dst, [NotNull] int dstPitch);
 
         /// <summary>
-        /// Premultiplies the alpha using the specified width
+        /// Pre the alpha using the specified width
         /// </summary>
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
