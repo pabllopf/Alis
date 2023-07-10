@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     The contact list
         /// </summary>
-        internal readonly List<Contact> ContactList = new List<Contact>();
+        private readonly List<Contact> contactList = new List<Contact>();
 
         /// <summary>
         ///     The contact
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         public readonly Queue<Contact> ContactPool = new Queue<Contact>(256);
 
         /// <summary>Fires when the broadphase detects that two Fixtures are close to each other.</summary>
-        public readonly BroadphaseHandler OnBroadphaseCollision;
+        private readonly BroadphaseHandler onBroadphaseCollision;
 
         /// <summary>Fires when a contact is created</summary>
         public BeginContactHandler BeginContact;
@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     The contact count
         /// </summary>
-        internal int ContactCounter;
+        private int contactCounter;
 
         /// <summary>The filter used by the contact manager.</summary>
         public CollisionFilterHandler ContactFilter;
@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         {
             Current = this;
             BroadPhase = broadPhase;
-            OnBroadphaseCollision = AddPair;
+            onBroadphaseCollision = AddPair;
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     Gets the value of the contact count
         /// </summary>
-        public int ContactCount => ContactCounter;
+        public int ContactCount => contactCounter;
 
         /// <summary>
         ///     The current instance
@@ -196,32 +196,15 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             {
                 return;
             }
-
-            // Contact creation may swap fixtures.
+            
             fixtureA = c.FixtureA;
             fixtureB = c.FixtureB;
-            indexA = c.ChildIndexA;
-            indexB = c.ChildIndexB;
             bodyA = fixtureA.Body;
             bodyB = fixtureB.Body;
+            
 
-            // Insert into the world.
-            /*
-            c.Previous = null;
-            c.Next = ContactList;
-            if (ContactList != null)
-            {
-                ContactList.Previous = c;
-            }
+            contactList.Add(c);
 
-            ContactList = c;*/
-
-            ContactList.Add(c);
-
-
-            // Connect to island graph.
-
-            // Connect to body A
             c.NodeA.Contact = c;
             c.NodeA.Other = bodyB;
 
@@ -246,7 +229,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             }
 
             bodyB.ContactList = c.NodeB;
-            ++ContactCounter;
+            ++contactCounter;
         }
 
         /// <summary>
@@ -254,7 +237,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         internal void FindNewContacts()
         {
-            BroadPhase.UpdatePairs(OnBroadphaseCollision);
+            BroadPhase.UpdatePairs(onBroadphaseCollision);
         }
 
         /// <summary>
@@ -303,7 +286,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             {
                 ContactList = c.Next;
             }*/
-            ContactList.Remove(c);
+            contactList.Remove(c);
 
             // Remove from body 1
             if (c.NodeA.Prev != null)
@@ -339,7 +322,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
             // Call the factory.
             c.Destroy();
-            --ContactCounter;
+            --contactCounter;
         }
 
         /// <summary>
@@ -348,9 +331,9 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         internal void Collide()
         {
-            for (int i = 0; i < ContactList.Count; i++)
+            for (int i = 0; i < contactList.Count; i++)
             {
-                Contact c = ContactList[i];
+                Contact c = contactList[i];
 
                 Fixture fixtureA = c.FixtureA;
                 Fixture fixtureB = c.FixtureB;
@@ -425,13 +408,11 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <returns>The contact</returns>
         internal Contact GetTheMinContact(float minAlpha)
         {
-            foreach (Contact c in ContactList.Where(c => c.Enabled).Where(c => c.ToiCount <= Settings.SubSteps))
+            foreach (Contact c in contactList.Where(c => c.Enabled).Where(c => c.ToiCount <= Settings.SubSteps))
             {
-                float alpha;
                 if (c.ToiFlag)
                 {
                     // This contact has a valid cached TOI.
-                    alpha = c.Toi;
                     continue;
                 }
 
@@ -502,7 +483,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
                 // Beta is the fraction of the remaining portion of the .
                 float beta = output.T;
-                alpha = output.State == ToiOutputState.Touching ? Math.Min(alpha0 + (1.0f - alpha0) * beta, 1.0f) : 1.0f;
+                float alpha = output.State == ToiOutputState.Touching ? Math.Min(alpha0 + (1.0f - alpha0) * beta, 1.0f) : 1.0f;
 
                 c.Toi = alpha;
                 c.Flags &= ~ContactFlags.ToiFlag;
@@ -542,12 +523,12 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     Clears the flags
         /// </summary>
-        internal void ClearFlags() => ContactList.ForEach(c => c.ClearFlags());
+        internal void ClearFlags() => contactList.ForEach(c => c.ClearFlags());
 
         /// <summary>
         ///     Invalidates the toi
         /// </summary>
-        public void InvalidateToi() => ContactList.ForEach(i => i.InvalidateToi());
+        public void InvalidateToi() => contactList.ForEach(i => i.InvalidateToi());
 
         /// <summary>
         ///     Calculates the min alpha
