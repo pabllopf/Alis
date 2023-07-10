@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
@@ -37,56 +38,55 @@ using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
-    // Linear constraint (point-to-line)
-    // d = p2 - p1 = x2 + r2 - x1 - r1
-    // C = dot(perp, d)
-    // Cdot = dot(d, cross(w1, perp)) + dot(perp, v2 + cross(w2, r2) - v1 - cross(w1, r1))
-    //      = -dot(perp, v1) - dot(cross(d + r1, perp), w1) + dot(perp, v2) + dot(cross(r2, perp), v2)
-    // J = [-perp, -cross(d + r1, perp), perp, cross(r2,perp)]
-    //
-    // Angular constraint
-    // C = a2 - a1 + a_initial
-    // Cdot = w2 - w1
-    // J = [0 0 -1 0 0 1]
-    //
-    // K = J * invM * JT
-    //
-    // J = [-a -s1 a s2]
-    //     [0  -1  0  1]
-    // a = perp
-    // s1 = cross(d + r1, a) = cross(p2 - x1, a)
-    // s2 = cross(r2, a) = cross(p2 - x2, a)
-
-    // Motor/Limit linear constraint
-    // C = dot(ax1, d)
-    // Cdot = -dot(ax1, v1) - dot(cross(d + r1, ax1), w1) + dot(ax1, v2) + dot(cross(r2, ax1), v2)
-    // J = [-ax1 -cross(d+r1,ax1) ax1 cross(r2,ax1)]
-
-    // Predictive limit is applied even when the limit is not active.
-    // Prevents a constraint speed that can lead to a constraint error in one time step.
-    // Want C2 = C1 + h * Cdot >= 0
-    // Or:
-    // Cdot + C1/h >= 0
-    // I do not apply a negative constraint error because that is handled in position correction.
-    // So:
-    // Cdot + max(C1, 0)/h >= 0
-
-    // Block Solver
-    // We develop a block solver that includes the angular and linear constraints. This makes the limit stiffer.
-    //
-    // The Jacobian has 2 rows:
-    // J = [-uT -s1 uT s2] // linear
-    //     [0   -1   0  1] // angular
-    //
-    // u = perp
-    // s1 = cross(d + r1, u), s2 = cross(r2, u)
-    // a1 = cross(d + r1, v), a2 = cross(r2, v)
-
     /// <summary>
     ///     A prismatic joint. This joint provides one degree of freedom: translation along an axis fixed in bodyA.
     ///     Relative rotation is prevented. You can use a joint limit to restrict the range of motion and a joint motor to
     ///     drive
     ///     the motion or to model joint friction.
+    /// Linear constraint (point-to-line)
+    /// d = p2 - p1 = x2 + r2 - x1 - r1
+    /// C = dot(perp, d)
+    /// Cdo = dot(d, cross(w1, perp)) + dot(perp, v2 + cross(w2, r2) - v1 - cross(w1, r1))
+    ///      = -dot(perp, v1) - dot(cross(d + r1, perp), w1) + dot(perp, v2) + dot(cross(r2, perp), v2)
+    /// J = [-perp, -cross(d + r1, perp), perp, cross(r2,perp)]
+    ///
+    /// Angular constraint
+    /// C = a2 - a1 + a_initial
+    /// Cdo = w2 - w1
+    /// J = [0 0 -1 0 0 1]
+    ///
+    /// K = J * invM * JT
+    ///
+    /// J = [-a -s1 a s2]
+    ///     [0  -1  0  1]
+    /// a = perp
+    /// s1 = cross(d + r1, a) = cross(p2 - x1, a)
+    /// s2 = cross(r2, a) = cross(p2 - x2, a)
+    ///
+    /// Motor/Limit linear constraint
+    /// C = dot(ax1, d)
+    /// Cdo = -dot(ax1, v1) - dot(cross(d + r1, ax1), w1) + dot(ax1, v2) + dot(cross(r2, ax1), v2)
+    /// J = [-ax1 -cross(d+r1,ax1) ax1 cross(r2,ax1)]
+    /// 
+    /// Predictive limit is applied even when the limit is not active.
+    /// Prevents a constraint speed that can lead to a constraint error in one time step.
+    /// Want C2 = C1 + h * Cdo >= 0
+    /// Or:
+    /// Cdo + C1/h >= 0
+    /// I do not apply a negative constraint error because that is handled in position correction.
+    /// So:
+    /// Cdo + max(C1, 0)/h >= 0
+    ///
+    /// Block Solver
+    /// We develop a block solver that includes the angular and linear constraints. This makes the limit stiffer.
+    ///
+    /// The Jacobin has 2 rows:
+    /// J = [-uT -s1 uT s2] /// linear
+    ///     [0   -1   0  1] /// angular
+    ///
+    /// u = perp
+    /// s1 = cross(d + r1, u), s2 = cross(r2, u)
+    /// a1 = cross(d + r1, v), a2 = cross(r2, v)
     /// </summary>
     public class PrismaticJoint : Joint
     {
@@ -119,8 +119,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The impulse
         /// </summary>
         private Vector2F impulse;
-
-        // Solver temp
+        
         /// <summary>
         ///     The index
         /// </summary>
@@ -157,16 +156,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private Matrix2X2F k;
 
         /// <summary>
-        ///     The local anchor
-        /// </summary>
-        private Vector2F localAnchorA;
-
-        /// <summary>
-        ///     The local anchor
-        /// </summary>
-        private Vector2F localAnchorB;
-
-        /// <summary>
         ///     The local center
         /// </summary>
         private Vector2F localCenterA;
@@ -175,11 +164,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The local center
         /// </summary>
         private Vector2F localCenterB;
-
-        /// <summary>
-        ///     The local axis
-        /// </summary>
-        private Vector2F localXAxisA;
 
         /// <summary>
         ///     The local axis
@@ -210,11 +194,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The motor speed
         /// </summary>
         private float motorSpeed;
-
-        /// <summary>
-        ///     The reference angle
-        /// </summary>
-        private float referenceAngle;
 
         /// <summary>
         ///     The
@@ -332,18 +311,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>The local anchor point on BodyA</summary>
-        public Vector2F LocalAnchorA
-        {
-            get => localAnchorA;
-            set => localAnchorA = value;
-        }
+        public Vector2F LocalAnchorA { get; private set; }
 
         /// <summary>The local anchor point on BodyB</summary>
-        public Vector2F LocalAnchorB
-        {
-            get => localAnchorB;
-            set => localAnchorB = value;
-        }
+        public Vector2F LocalAnchorB { get; private set; }
 
         /// <summary>
         ///     Gets or sets the value of the world anchor a
@@ -371,10 +342,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vector2F pA = BodyA.GetWorldPoint(LocalAnchorA);
                 Vector2F pB = BodyB.GetWorldPoint(LocalAnchorB);
                 Vector2F d = pB - pA;
-                Vector2F axis = BodyA.GetWorldVector(LocalXAxisA);
-
-                float translation = MathUtils.Dot(d, axis);
-                return translation;
+                Vector2F axisLocal = BodyA.GetWorldVector(LocalXAxisA);
+                
+                return MathUtils.Dot(d, axisLocal);
             }
         }
 
@@ -391,15 +361,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vector2F p1 = bA.Sweep.C + rA;
                 Vector2F p2 = bB.Sweep.C + rB;
                 Vector2F d = p2 - p1;
-                Vector2F axis = MathUtils.Mul(bA.Xf.Rotation, LocalXAxisA);
+                Vector2F axisLocal = MathUtils.Mul(bA.Xf.Rotation, LocalXAxisA);
 
                 Vector2F vA = bA.LinearVelocity;
                 Vector2F vB = bB.LinearVelocity;
                 float wA = bA.AngularVelocity;
                 float wB = bB.AngularVelocity;
 
-                float speed = MathUtils.Dot(d, MathUtils.Cross(wA, axis)) +
-                              MathUtils.Dot(axis, vB + MathUtils.Cross(wB, rB) - vA - MathUtils.Cross(wA, rA));
+                float speed = MathUtils.Dot(d, MathUtils.Cross(wA, axisLocal)) +
+                              MathUtils.Dot(axisLocal, vB + MathUtils.Cross(wB, rB) - vA - MathUtils.Cross(wA, rA));
                 return speed;
             }
         }
@@ -427,7 +397,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => lowerTranslation;
             set
             {
-                if (value != lowerTranslation)
+                if (Math.Abs(value - lowerTranslation) > 0.0001f)
                 {
                     WakeBodies();
                     lowerTranslation = value;
@@ -442,7 +412,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => upperTranslation;
             set
             {
-                if (value != upperTranslation)
+                if (Math.Abs(value - upperTranslation) > 0.0001f)
                 {
                     WakeBodies();
                     upperTranslation = value;
@@ -472,7 +442,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             set
             {
-                if (value != motorSpeed)
+                if (Math.Abs(value - motorSpeed) > 0.0001f)
                 {
                     WakeBodies();
                     motorSpeed = value;
@@ -488,7 +458,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => maxMotorForce;
             set
             {
-                if (value != maxMotorForce)
+                if (Math.Abs(value - maxMotorForce) > 0.0001)
                 {
                     WakeBodies();
                     maxMotorForce = value;
@@ -497,11 +467,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>The local joint axis relative to bodyA.</summary>
-        public Vector2F LocalXAxisA
-        {
-            get => localXAxisA;
-            set => localXAxisA = value;
-        }
+        public Vector2F LocalXAxisA { get; private set; }
 
         /// <summary>
         ///     Gets the value of the local y axis a
@@ -509,11 +475,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public Vector2F LocalYAxisA => localYAxisA;
 
         /// <summary>Get the reference angle.</summary>
-        public float ReferenceAngle
-        {
-            get => referenceAngle;
-            set => referenceAngle = value;
-        }
+        public float ReferenceAngle { get; private set; }
 
         /// <summary>Get the current motor force given the inverse time step, usually in N.</summary>
         public float GetMotorForce(float invDt) => invDt * motorImpulse;
@@ -523,7 +485,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="upper">The upper limit</param>
         public void SetLimits(float lower, float upper)
         {
-            if (upper != upperTranslation || lower != lowerTranslation)
+            if (Math.Abs(upper - upperTranslation) > 0.001 || Math.Abs(lower - lowerTranslation) > 0.001)
             {
                 WakeBodies();
                 upperTranslation = upper;
@@ -574,16 +536,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float wB = data.Velocities[indexB].W;
 
             Rotation qA = new Rotation(aA), qB = new Rotation(aB);
-
-            // Compute the effective masses.
+            
             Vector2F rA = MathUtils.Mul(qA, LocalAnchorA - localCenterA);
             Vector2F rB = MathUtils.Mul(qB, LocalAnchorB - localCenterB);
             Vector2F d = cB - cA + rB - rA;
 
             float mA = invMassA, mB = invMassB;
             float iA = invIa, iB = invIb;
-
-            // Compute motor Jacobian and effective mass.
+            
             {
                 axis = MathUtils.Mul(qA, LocalXAxisA);
                 a1 = MathUtils.Cross(d + rA, axis);
@@ -595,8 +555,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     axialMass = 1.0f / axialMass;
                 }
             }
-
-            // Prismatic constraint.
+            
             {
                 perp = MathUtils.Mul(qA, localYAxisA);
 
@@ -608,7 +567,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float k22 = iA + iB;
                 if (k22 == 0.0f)
                 {
-                    // For bodies with fixed rotation.
                     k22 = 1.0f;
                 }
 
@@ -633,7 +591,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (data.Step.WarmStarting)
             {
-                // Account for variable time step.
                 impulse *= data.Step.DeltaTimeRatio;
                 motorImpulse *= data.Step.DeltaTimeRatio;
                 lowerImpulse *= data.Step.DeltaTimeRatio;
@@ -677,20 +634,19 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float mA = invMassA, mB = invMassB;
             float iA = invIa, iB = invIb;
-
-            // Solve linear motor constraint.
+            
             if (enableMotor)
             {
-                float cdot = Vector2F.Dot(axis, vB - vA) + a2 * wB - a1 * wA;
-                float impulse = axialMass * (motorSpeed - cdot);
+                float dot = Vector2F.Dot(axis, vB - vA) + a2 * wB - a1 * wA;
+                float impulseLocal = axialMass * (motorSpeed - dot);
                 float oldImpulse = motorImpulse;
                 float maxImpulse = data.Step.DeltaTime * maxMotorForce;
-                motorImpulse = MathUtils.Clamp(motorImpulse + impulse, -maxImpulse, maxImpulse);
-                impulse = motorImpulse - oldImpulse;
+                motorImpulse = MathUtils.Clamp(motorImpulse + impulseLocal, -maxImpulse, maxImpulse);
+                impulseLocal = motorImpulse - oldImpulse;
 
-                Vector2F p = impulse * axis;
-                float la = impulse * a1;
-                float lb = impulse * a2;
+                Vector2F p = impulseLocal * axis;
+                float la = impulseLocal * a1;
+                float lb = impulseLocal * a2;
 
                 vA -= mA * p;
                 wA -= iA * la;
@@ -700,39 +656,35 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (enableLimit)
             {
-                // Lower limit
                 {
                     float c = translation - lowerTranslation;
-                    float cdot = MathUtils.Dot(axis, vB - vA) + a2 * wB - a1 * wA;
-                    float impulse = -axialMass * (cdot + MathUtils.Max(c, 0.0f) * data.Step.InvertedDeltaTime);
+                    float dot = MathUtils.Dot(axis, vB - vA) + a2 * wB - a1 * wA;
+                    float impulseLocal = -axialMass * (dot + MathUtils.Max(c, 0.0f) * data.Step.InvertedDeltaTime);
                     float oldImpulse = lowerImpulse;
-                    lowerImpulse = MathUtils.Max(lowerImpulse + impulse, 0.0f);
-                    impulse = lowerImpulse - oldImpulse;
+                    lowerImpulse = MathUtils.Max(lowerImpulse + impulseLocal, 0.0f);
+                    impulseLocal = lowerImpulse - oldImpulse;
 
-                    Vector2F p = impulse * axis;
-                    float la = impulse * a1;
-                    float lb = impulse * a2;
+                    Vector2F p = impulseLocal * axis;
+                    float la = impulseLocal * a1;
+                    float lb = impulseLocal * a2;
 
                     vA -= mA * p;
                     wA -= iA * la;
                     vB += mB * p;
                     wB += iB * lb;
                 }
-
-                // Upper limit
-                // Note: signs are flipped to keep C positive when the constraint is satisfied.
-                // This also keeps the impulse positive when the limit is active.
+                
                 {
                     float c = upperTranslation - translation;
-                    float cdot = MathUtils.Dot(axis, vA - vB) + a1 * wA - a2 * wB;
-                    float impulse = -axialMass * (cdot + MathUtils.Max(c, 0.0f) * data.Step.InvertedDeltaTime);
+                    float dot = MathUtils.Dot(axis, vA - vB) + a1 * wA - a2 * wB;
+                    float impulseLocal = -axialMass * (dot + MathUtils.Max(c, 0.0f) * data.Step.InvertedDeltaTime);
                     float oldImpulse = upperImpulse;
-                    upperImpulse = MathUtils.Max(upperImpulse + impulse, 0.0f);
-                    impulse = upperImpulse - oldImpulse;
+                    upperImpulse = MathUtils.Max(upperImpulse + impulseLocal, 0.0f);
+                    impulseLocal = upperImpulse - oldImpulse;
 
-                    Vector2F p = impulse * axis;
-                    float la = impulse * a1;
-                    float lb = impulse * a2;
+                    Vector2F p = impulseLocal * axis;
+                    float la = impulseLocal * a1;
+                    float lb = impulseLocal * a2;
 
                     vA += mA * p;
                     wA += iA * la;
@@ -740,15 +692,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     wB -= iB * lb;
                 }
             }
-
-            // Solve the prismatic constraint in block form.
+            
             {
-                Vector2F cdot = new Vector2F(
+                Vector2F dot = new Vector2F(
                     MathUtils.Dot(perp, vB - vA) + s2 * wB - s1 * wA,
                     wB - wA
                 );
 
-                Vector2F df = k.Solve(-cdot);
+                Vector2F df = k.Solve(-dot);
                 impulse += df;
 
                 Vector2F p = df.X * perp;
@@ -768,15 +719,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.Velocities[indexB].W = wB;
         }
 
-        // A velocity based solver computes reaction forces(impulses) using the velocity constraint solver. Under this context,
-        // the position solver is not there to resolve forces. It is only there to cope with integration error.
-        //
-        // Therefore, the pseudo impulses in the position solver do not have any physical meaning. Thus it is okay if they suck.
-        //
-        // We could take the active state from the velocity solver. However, the joint might push past the limit when the velocity
-        // solver indicates the limit is inactive.
+        
         /// <summary>
         ///     Describes whether this instance solve position constraints
+        /// A velocity based solver computes reaction forces(impulses) using the velocity constraint solver. Under this context,
+        /// the position solver is not there to resolve forces. It is only there to cope with integration error.
+        ///
+        /// Therefore, the pseudo impulses in the position solver do not have any physical meaning. Thus it is okay if they suck.
+        ///
+        /// We could take the active state from the velocity solver. However, the joint might push past the limit when the velocity
+        /// solver indicates the limit is inactive.
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>
@@ -791,23 +743,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float mA = invMassA, mB = invMassB;
             float iA = invIa, iB = invIb;
-
-            // Compute fresh Jacobians
+            
             Vector2F rA = MathUtils.Mul(qA, LocalAnchorA - localCenterA);
             Vector2F rB = MathUtils.Mul(qB, LocalAnchorB - localCenterB);
             Vector2F d = cB + rB - cA - rA;
 
-            Vector2F axis = MathUtils.Mul(qA, LocalXAxisA);
-            float a1 = MathUtils.Cross(d + rA, axis);
-            float a2 = MathUtils.Cross(rB, axis);
-            Vector2F perp = MathUtils.Mul(qA, localYAxisA);
+            Vector2F axisLocal = MathUtils.Mul(qA, LocalXAxisA);
+            float a1Local = MathUtils.Cross(d + rA, axisLocal);
+            float a2Local = MathUtils.Cross(rB, axisLocal);
+            Vector2F perpLocal = MathUtils.Mul(qA, localYAxisA);
 
-            float s1 = MathUtils.Cross(d + rA, perp);
-            float s2 = MathUtils.Cross(rB, perp);
+            float s1Local = MathUtils.Cross(d + rA, perpLocal);
+            float s2Local = MathUtils.Cross(rB, perpLocal);
 
-            Vector3F impulse;
+            Vector3F impulseLocal;
             Vector2F c1 = new Vector2F(
-                Vector2F.Dot(perp, d),
+                Vector2F.Dot(perpLocal, d),
                 aB - aA - ReferenceAngle
             );
 
@@ -818,50 +769,51 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float c2 = 0.0f;
             if (enableLimit)
             {
-                float translation = MathUtils.Dot(axis, d);
+                float translationLocal = MathUtils.Dot(axisLocal, d);
                 if (MathUtils.Abs(upperTranslation - lowerTranslation) < 2.0f * Settings.LinearSlop)
                 {
-                    c2 = translation;
-                    linearError = MathUtils.Max(linearError, MathUtils.Abs(translation));
+                    c2 = translationLocal;
+                    linearError = MathUtils.Max(linearError, MathUtils.Abs(translationLocal));
                     active = true;
                 }
-                else if (translation <= lowerTranslation)
+                else if (translationLocal <= lowerTranslation)
                 {
-                    c2 = MathUtils.Min(translation - lowerTranslation, 0.0f);
-                    linearError = MathUtils.Max(linearError, lowerTranslation - translation);
+                    c2 = MathUtils.Min(translationLocal - lowerTranslation, 0.0f);
+                    linearError = MathUtils.Max(linearError, lowerTranslation - translationLocal);
                     active = true;
                 }
-                else if (translation >= upperTranslation)
+                else if (translationLocal >= upperTranslation)
                 {
-                    c2 = MathUtils.Max(translation - upperTranslation, 0.0f);
-                    linearError = MathUtils.Max(linearError, translation - upperTranslation);
+                    c2 = MathUtils.Max(translationLocal - upperTranslation, 0.0f);
+                    linearError = MathUtils.Max(linearError, translationLocal - upperTranslation);
                     active = true;
                 }
             }
 
             if (active)
             {
-                float k11 = mA + mB + iA * s1 * s1 + iB * s2 * s2;
-                float k12 = iA * s1 + iB * s2;
-                float k13 = iA * s1 * a1 + iB * s2 * a2;
+                float k11 = mA + mB + iA * s1Local * s1Local + iB * s2Local * s2Local;
+                float k12 = iA * s1Local + iB * s2Local;
+                float k13 = iA * s1Local * a1Local + iB * s2Local * a2Local;
                 float k22 = iA + iB;
                 if (k22 == 0.0f)
                 {
-                    // For fixed rotation
                     k22 = 1.0f;
                 }
 
-                float k23 = iA * a1 + iB * a2;
-                float k33 = mA + mB + iA * a1 * a1 + iB * a2 * a2;
+                float k23 = iA * a1Local + iB * a2Local;
+                float k33 = mA + mB + iA * a1Local * a1Local + iB * a2Local * a2Local;
 
-                Matrix3X3F k = new Matrix3X3F(
+                Matrix3X3F matrix3X3F = new Matrix3X3F(
                     new Vector3F(k11, k12, k13),
                     new Vector3F(k12, k22, k23),
                     new Vector3F(k13, k23, k33)
-                );
-                k.Ex = new Vector3F(k11, k12, k13);
-                k.Ey = new Vector3F(k12, k22, k23);
-                k.Ez = new Vector3F(k13, k23, k33);
+                )
+                {
+                    Ex = new Vector3F(k11, k12, k13),
+                    Ey = new Vector3F(k12, k22, k23),
+                    Ez = new Vector3F(k13, k23, k33)
+                };
 
                 Vector3F c = new Vector3F(
                     c1.X,
@@ -869,33 +821,35 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     c2
                 );
 
-                impulse = k.Solve33(-c);
+                impulseLocal = matrix3X3F.Solve33(-c);
             }
             else
             {
-                float k11 = mA + mB + iA * s1 * s1 + iB * s2 * s2;
-                float k12 = iA * s1 + iB * s2;
+                float k11 = mA + mB + iA * s1Local * s1Local + iB * s2Local * s2Local;
+                float k12 = iA * s1Local + iB * s2Local;
                 float k22 = iA + iB;
                 if (k22 == 0.0f)
                 {
                     k22 = 1.0f;
                 }
 
-                Matrix2X2F k;
-                k.Ex = new Vector2F(k11, k12);
-                k.Ey = new Vector2F(k12, k22);
+                Matrix2X2F matrix2X2F = new Matrix2X2F
+                {
+                    Ex = new Vector2F(k11, k12),
+                    Ey = new Vector2F(k12, k22)
+                };
 
-                Vector2F impulse1 = k.Solve(-c1);
-                impulse = new Vector3F(
+                Vector2F impulse1 = matrix2X2F.Solve(-c1);
+                impulseLocal = new Vector3F(
                     impulse1.X,
                     impulse1.Y,
                     0.0f
                 );
             }
 
-            Vector2F p = impulse.X * perp + impulse.Z * axis;
-            float la = impulse.X * s1 + impulse.Y + impulse.Z * a1;
-            float lb = impulse.X * s2 + impulse.Y + impulse.Z * a2;
+            Vector2F p = impulseLocal.X * perpLocal + impulseLocal.Z * axisLocal;
+            float la = impulseLocal.X * s1Local + impulseLocal.Y + impulseLocal.Z * a1Local;
+            float lb = impulseLocal.X * s2Local + impulseLocal.Y + impulseLocal.Z * a2Local;
 
             cA -= mA * p;
             aA -= iA * la;
@@ -909,29 +863,27 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             return (linearError <= Settings.LinearSlop) && (angularError <= Settings.AngularSlop);
         }
-
-        //Velcro: We support initializing without a template
+        
         /// <summary>
         ///     Initializes the local anchor a
         /// </summary>
-        /// <param name="localAnchorA">The local anchor</param>
-        /// <param name="localAnchorB">The local anchor</param>
-        /// <param name="axis">The axis</param>
+        /// <param name="vector2FAnchorA">The local anchor</param>
+        /// <param name="vector2FAnchorB">The local anchor</param>
+        /// <param name="vector2FAxis">The axis</param>
         /// <param name="useWorldCoordinates">The use world coordinates</param>
-        private void Initialize(Vector2F localAnchorA, Vector2F localAnchorB, Vector2F axis, bool useWorldCoordinates)
+        private void Initialize(Vector2F vector2FAnchorA, Vector2F vector2FAnchorB, Vector2F vector2FAxis, bool useWorldCoordinates)
         {
-            //Velcro: We support setting anchors in world coordinates
             if (useWorldCoordinates)
             {
-                LocalAnchorA = BodyA.GetLocalPoint(localAnchorA);
-                LocalAnchorB = BodyB.GetLocalPoint(localAnchorB);
-                LocalXAxisA = BodyA.GetLocalVector(axis);
+                LocalAnchorA = BodyA.GetLocalPoint(vector2FAnchorA);
+                LocalAnchorB = BodyB.GetLocalPoint(vector2FAnchorB);
+                LocalXAxisA = BodyA.GetLocalVector(vector2FAxis);
             }
             else
             {
-                LocalAnchorA = localAnchorA;
-                LocalAnchorB = localAnchorB;
-                LocalXAxisA = axis;
+                LocalAnchorA = vector2FAnchorA;
+                LocalAnchorB = vector2FAnchorB;
+                LocalXAxisA = vector2FAxis;
             }
 
             ReferenceAngle = BodyB.Rotation - BodyA.Rotation;
