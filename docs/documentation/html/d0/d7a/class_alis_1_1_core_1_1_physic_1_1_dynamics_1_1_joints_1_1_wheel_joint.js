@@ -53,7 +53,6 @@ var class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_wheel_joint =
     [ "LocalAnchorB", "d0/d7a/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_wheel_joint.html#a45fbad6eca917a651bc1e8cf4c686232", null ],
     [ "WorldAnchorA", "d0/d7a/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_wheel_joint.html#a4d897cea02dda4aad2b1d7af5bcac2e8", null ],
     [ "WorldAnchorB", "d0/d7a/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_wheel_joint.html#a93e12244694f2397b6d8ba5e9edd77a0", null ],
-    [ "LocalXAxis", "d0/d7a/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_wheel_joint.html#a2a11dc980f0322a95d68a9612fa39e9e", null ],
     [ "MotorSpeed", "d0/d7a/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_wheel_joint.html#a2ee8f037ccd3dd68b3100d0c85f8358d", null ],
     [ "MotorTorque", "d0/d7a/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_wheel_joint.html#a9a8c9806f50858920f9fc4a1369de107", null ],
     [ "JointTranslation", "d0/d7a/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_wheel_joint.html#acff25da962a8ed51b370217085228755", null ],
