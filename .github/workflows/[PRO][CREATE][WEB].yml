@@ -2,6 +2,9 @@
 name: "[PRO][CREATE][WEB]"
 
 on:
+  push:
+    branches: [ master ]
+    
   schedule:
     - cron: '30 1 * * *'
 
