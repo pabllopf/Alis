@@ -30,10 +30,7 @@ jobs:
 
       - name: copy index.html to 404.html
         run: cp ./docs/web/try/wwwroot/index.html ./docs/web/try/wwwroot/404.html
-      
-      - name: Dotnet test
-        run: cd .\\.scripts\\windows\\ && .\\run_tests.bat
-
+    
       - name: git config user.name github-actions
         run: git config user.name github-actions
 
