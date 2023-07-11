@@ -1,6 +1,6 @@
 var class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_solver =
 [
-    [ "Reset", "d5/d16/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_solver.html#ada4fcb023855ce50d327adca3922d055", null ],
+    [ "Reset", "d5/d16/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_solver.html#accbcd5c3440a25daf15946c6cfd9d8f7", null ],
     [ "InitializeVelocityConstraints", "d5/d16/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_solver.html#a9d169c5a2eeb2dd71b23aebeb45fa2f9", null ],
     [ "WarmStart", "d5/d16/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_solver.html#aeef5ef9f863391366599c4469dd66986", null ],
     [ "SolveVelocityConstraints", "d5/d16/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_solver.html#aac7b1c0984dd373a1613d9706d5094aa", null ],
