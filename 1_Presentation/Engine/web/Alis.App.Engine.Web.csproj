@@ -19,4 +19,8 @@
       <_ContentIncludedByDefault Remove="release\wwwroot\_framework\blazor.boot.json" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\2_Application\Alis\src\Alis.csproj" />
+    </ItemGroup>
+
 </Project>
