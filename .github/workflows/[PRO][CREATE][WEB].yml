@@ -22,9 +22,8 @@ jobs:
           dotnet-version: 6.0.x
       
       - name: Delete folder try
-        run: rd /s /q ./docs/web/try 
-      
-      # publishes Blazor project to the release-folder
+        run: rd /s /q docs/web/try 
+        
       - name: Publish .NET Core Project
         run: dotnet publish 1_Presentation/Engine/web/Alis.App.Engine.Web.csproj -c Release -o ./docs/web/try --force
           
