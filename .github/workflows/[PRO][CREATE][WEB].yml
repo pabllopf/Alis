@@ -18,7 +18,20 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x
+      
+      - name: Delete folder try
+        run: rm -rf ./docs/web/try 
+      
+      # publishes Blazor project to the release-folder
+      - name: Publish .NET Core Project
+        run: dotnet publish 1_Presentation/Engine/web/Alis.App.Engine.Web.csproj -c Release -o ./docs/web/try --force
           
+      - name: Change base-tag in index.html from / to /web/try/wwwroot/
+        run: sed -i 's/<base href="\/" \/>/<base href="\/web\/try\/wwwroot\/" \/>/g' ./docs/web/try/index.html
+
+      - name: copy index.html to 404.html
+        run: cp ./docs/web/try/index.html ./docs/web/try/404.html
+      
       - name: Dotnet test
         run: cd .\\.scripts\\windows\\ && .\\run_tests.bat
 

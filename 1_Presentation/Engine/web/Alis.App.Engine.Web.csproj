@@ -12,9 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="wwwroot\.nojekyll"
-              CopyToOutputDirectory="Always"
-              CopyToPublishDirectory="Always"/>
+        <None Include="wwwroot\.nojekyll" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
     </ItemGroup>
 
 </Project>
