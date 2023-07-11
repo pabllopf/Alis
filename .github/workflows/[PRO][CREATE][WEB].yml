@@ -22,7 +22,7 @@ jobs:
           dotnet-version: 6.0.x
       
       - name: Delete folder try
-        run: rm -rf ./docs/web/try 
+        run: rd /s /q ./docs/web/try 
       
       # publishes Blazor project to the release-folder
       - name: Publish .NET Core Project
