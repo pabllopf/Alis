@@ -2,8 +2,6 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,6 +11,12 @@
 
     <ItemGroup>
         <None Include="wwwroot\.nojekyll" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="release\web.config" />
+      <_ContentIncludedByDefault Remove="release\wwwroot\sample-data\weather.json" />
+      <_ContentIncludedByDefault Remove="release\wwwroot\_framework\blazor.boot.json" />
     </ItemGroup>
 
 </Project>
