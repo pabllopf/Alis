@@ -26,10 +26,10 @@ jobs:
         run: dotnet publish 1_Presentation/Engine/web/Alis.App.Engine.Web.csproj -c Release -o ./docs/web/try --force
           
       - name: Change base-tag in index.html from / to /web/try/wwwroot/
-        run: sed -i 's/<base href="\/" \/>/<base href="\/web\/try\/wwwroot\/" \/>/g' ./docs/web/try/index.html
+        run: sed -i 's/<base href="\/" \/>/<base href="\/web\/try\/wwwroot\/" \/>/g' ./docs/web/try/wwwroot/index.html
 
       - name: copy index.html to 404.html
-        run: cp ./docs/web/try/index.html ./docs/web/try/404.html
+        run: cp ./docs/web/try/wwwroot/index.html ./docs/web/try/wwwroot/404.html
       
       - name: Dotnet test
         run: cd .\\.scripts\\windows\\ && .\\run_tests.bat
