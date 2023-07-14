@@ -1,0 +1,70 @@
+{
+  "runtimes": {
+    "freebsd-arm64": {
+      "#import": [],
+      "Microsoft.DotNet.ILCompiler": {
+        "runtime.freebsd-arm64.Microsoft.DotNet.ILCompiler": "[8.0.0-preview.6.23329.7, )"
+      }
+    },
+    "freebsd-x64": {
+      "#import": [],
+      "Microsoft.DotNet.ILCompiler": {
+        "runtime.freebsd-x64.Microsoft.DotNet.ILCompiler": "[8.0.0-preview.6.23329.7, )"
+      }
+    },
+    "linux-arm": {
+      "#import": [],
+      "Microsoft.DotNet.ILCompiler": {
+        "runtime.linux-arm.Microsoft.DotNet.ILCompiler": "[8.0.0-preview.6.23329.7, )"
+      }
+    },
+    "linux-arm64": {
+      "#import": [],
+      "Microsoft.DotNet.ILCompiler": {
+        "runtime.linux-arm64.Microsoft.DotNet.ILCompiler": "[8.0.0-preview.6.23329.7, )"
+      }
+    },
+    "linux-musl-arm64": {
+      "#import": [],
+      "Microsoft.DotNet.ILCompiler": {
+        "runtime.linux-musl-arm64.Microsoft.DotNet.ILCompiler": "[8.0.0-preview.6.23329.7, )"
+      }
+    },
+    "linux-musl-x64": {
+      "#import": [],
+      "Microsoft.DotNet.ILCompiler": {
+        "runtime.linux-musl-x64.Microsoft.DotNet.ILCompiler": "[8.0.0-preview.6.23329.7, )"
+      }
+    },
+    "linux-x64": {
+      "#import": [],
+      "Microsoft.DotNet.ILCompiler": {
+        "runtime.linux-x64.Microsoft.DotNet.ILCompiler": "[8.0.0-preview.6.23329.7, )"
+      }
+    },
+    "osx-arm64": {
+      "#import": [],
+      "Microsoft.DotNet.ILCompiler": {
+        "runtime.osx-arm64.Microsoft.DotNet.ILCompiler": "[8.0.0-preview.6.23329.7, )"
+      }
+    },
+    "osx-x64": {
+      "#import": [],
+      "Microsoft.DotNet.ILCompiler": {
+        "runtime.osx-x64.Microsoft.DotNet.ILCompiler": "[8.0.0-preview.6.23329.7, )"
+      }
+    },
+    "win-arm64": {
+      "#import": [],
+      "Microsoft.DotNet.ILCompiler": {
+        "runtime.win-arm64.Microsoft.DotNet.ILCompiler": "[8.0.0-preview.6.23329.7, )"
+      }
+    },
+    "win-x64": {
+      "#import": [],
+      "Microsoft.DotNet.ILCompiler": {
+        "runtime.win-x64.Microsoft.DotNet.ILCompiler": "[8.0.0-preview.6.23329.7, )"
+      }
+    }
+  }
+}
