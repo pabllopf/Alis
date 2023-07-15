@@ -7,8 +7,8 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "Alis.App.Engine.Web.dll": "sha256-621SunyToO\/P2QN6dS2507vO3Shkgpws6t1xE4jbH7w=",
-      "Alis.dll": "sha256-gn9Z\/GeVdChYlVQaNKE+QWWU1d0aToi0rhi8qNmkVBY=",
+      "Alis.App.Engine.Web.dll": "sha256-1BZD1jLts1\/4\/ftTdyFRUKtcWrlt5kcD2T1692z2vyY=",
+      "Alis.dll": "sha256-43u++\/KuVRJozp1lHbzMYu9fguybyMymmSJ00xTA3Qs=",
       "Microsoft.AspNetCore.Components.dll": "sha256-KVFjA7HzYl2zxYUx\/rghFetRDV8lUOslpaPifQ9mTUQ=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-caNR8uc3kHd5KatmNiLyyqm3h5Wtu\/EItcbHQwY88jQ=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-0bfktv\/EauikcnX11hCkXD1XU1ri1Dt29C86XHKl1UE=",
