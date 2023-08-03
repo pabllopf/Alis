@@ -1,26 +1,33 @@
 <Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.13" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.13" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.9"/>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.9" PrivateAssets="all"/>
     </ItemGroup>
+
 
     <ItemGroup>
         <None Include="wwwroot\.nojekyll" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
     </ItemGroup>
 
     <ItemGroup>
-      <_ContentIncludedByDefault Remove="release\web.config" />
-      <_ContentIncludedByDefault Remove="release\wwwroot\sample-data\weather.json" />
-      <_ContentIncludedByDefault Remove="release\wwwroot\_framework\blazor.boot.json" />
+        <_ContentIncludedByDefault Remove="release\web.config" />
+        <_ContentIncludedByDefault Remove="release\wwwroot\sample-data\weather.json" />
+        <_ContentIncludedByDefault Remove="release\wwwroot\_framework\blazor.boot.json" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\2_Application\Alis\src\Alis.csproj" />
+      <Content Update=".nojekyll">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
     </ItemGroup>
+    
 
 </Project>

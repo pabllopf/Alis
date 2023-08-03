@@ -1,9 +1,71 @@
 ﻿@page "/"
-
+@using System.Runtime.InteropServices
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
+@code {
+    // Inject the IJSRuntime dependency
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; }
 
-Welcome to your new app.
+    // Method to load the main script and handle any errors
+    private async Task LoadMainScriptAsync()
+    {
+        try
+        {
+    // Load the "system.js" script
+            await JSRuntime.InvokeVoidAsync("eval", await GetScriptContentAsync("https://cdn.jsdelivr.net/gh/flyover/system.ts/build/system.js"));
+            
+            Console.WriteLine("system.js loaded");
+        }
+        catch (Exception ex)
+        {
+    // Handle any errors
+            Console.WriteLine($"Error loading 'system.js': {ex.Message}");
+        }
+        
 
-<SurveyPrompt Title="How is Blazor working for you?"/>
+        try
+        {
+    // Load the "system.config.js" script
+            await JSRuntime.InvokeVoidAsync("eval", await GetScriptContentAsync("http://localhost:5080/system.config.js"));
+            
+            Console.WriteLine("system.config.js loaded");
+        }
+        catch (Exception ex)
+        {
+    // Handle any errors
+            Console.WriteLine($"Error loading 'system.config.js': {ex.Message}");
+        }
+
+        try
+        {
+    // Import "main" and execute the default function
+            await JSRuntime.InvokeVoidAsync("eval", "System.import('main').then(function (main) { main.default(); }).catch(console.error);");
+            
+            Console.WriteLine("main imported");
+        }
+        catch (Exception ex)
+        {
+    // Handle any errors
+            Console.WriteLine($"Error importing 'main': {ex.Message}");
+        }
+    }
+
+
+    // Method to get the script content from the provided URL
+    private async Task<string> GetScriptContentAsync(string url)
+    {
+        using (var httpClient = new HttpClient())
+        {
+            return await httpClient.GetStringAsync(url);
+        }
+    }
+
+    // Call the LoadMainScriptAsync method when the component is initialized
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadMainScriptAsync();
+        
+        Console.WriteLine("main script loaded");
+    }
+}
