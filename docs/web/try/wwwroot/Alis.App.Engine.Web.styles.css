@@ -1,3 +1,15 @@
+/* /Pages/Index.razor.rz.scp.css */
+
+body[b-y90sjhvab9] {
+    font-family: arial;
+    margin: 0;
+    padding: 0 0 0 0;
+}
+.emscripten[b-y90sjhvab9] { padding-right: 0; margin-left: auto; margin-right: auto; display: block; }
+div.emscripten[b-y90sjhvab9] { text-align: center; }
+div.emscripten_border[b-y90sjhvab9] { border: none; }
+/* the canvas *must not* have any border or padding, or mouse coords will be wrong */
+canvas.emscripten[b-y90sjhvab9] { border: 0px none; background-color: black; }
 /* /Shared/MainLayout.razor.rz.scp.css */
 .page[b-z9cii2jlyo] {
     position: relative;
@@ -78,68 +90,5 @@ main[b-z9cii2jlyo] {
     .top-row[b-z9cii2jlyo], article[b-z9cii2jlyo] {
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
-    }
-}
-/* /Shared/NavMenu.razor.rz.scp.css */
-.navbar-toggler[b-e7rap8dsot] {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.top-row[b-e7rap8dsot] {
-    height: 3.5rem;
-    background-color: rgba(0,0,0,0.4);
-}
-
-.navbar-brand[b-e7rap8dsot] {
-    font-size: 1.1rem;
-}
-
-.oi[b-e7rap8dsot] {
-    width: 2rem;
-    font-size: 1.1rem;
-    vertical-align: text-top;
-    top: -2px;
-}
-
-.nav-item[b-e7rap8dsot] {
-    font-size: 0.9rem;
-    padding-bottom: 0.5rem;
-}
-
-    .nav-item:first-of-type[b-e7rap8dsot] {
-        padding-top: 1rem;
-    }
-
-    .nav-item:last-of-type[b-e7rap8dsot] {
-        padding-bottom: 1rem;
-    }
-
-    .nav-item[b-e7rap8dsot]  a {
-        color: #d7d7d7;
-        border-radius: 4px;
-        height: 3rem;
-        display: flex;
-        align-items: center;
-        line-height: 3rem;
-    }
-
-.nav-item[b-e7rap8dsot]  a.active {
-    background-color: rgba(255,255,255,0.25);
-    color: white;
-}
-
-.nav-item[b-e7rap8dsot]  a:hover {
-    background-color: rgba(255,255,255,0.1);
-    color: white;
-}
-
-@media (min-width: 641px) {
-    .navbar-toggler[b-e7rap8dsot] {
-        display: none;
-    }
-
-    .collapse[b-e7rap8dsot] {
-        /* Never collapse the sidebar for wide screens */
-        display: block;
     }
 }
