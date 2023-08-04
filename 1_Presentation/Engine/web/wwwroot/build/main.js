@@ -67,7 +67,7 @@ System.register(["imgui-js", "./imgui_impl.js", "./imgui_demo.js", "./imgui_memo
             // - Read 'docs/FONTS.md' for more instructions and details.
             // - Remember that in C/C++ if you want to include a backslash \ in a string literal you need to write a double backslash \\ !
             io.Fonts.AddFontDefault();
-            font = yield AddFontFromFileTTF("../imgui/misc/fonts/Roboto-Medium.ttf", 16.0);
+            font = yield AddFontFromFileTTF("./Roboto-Medium.ttf", 16.0);
             // font = await AddFontFromFileTTF("../imgui/misc/fonts/Cousine-Regular.ttf", 15.0);
             // font = await AddFontFromFileTTF("../imgui/misc/fonts/DroidSans.ttf", 16.0);
             // font = await AddFontFromFileTTF("../imgui/misc/fonts/ProggyTiny.ttf", 10.0);
