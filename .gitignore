@@ -2,9 +2,6 @@
 .vscode/
 .idea/
 
-.build/
-/**/.build/
-
 /**/.vs/
 /**/.nuget/
 /**/.vscode/
@@ -23,9 +20,6 @@
 
 /**/**/[Pp]ublish/**
 /**/[Pp]ublish/**
-
-
-/**/[Bb]uild/**
 
 /**/_/**
 
