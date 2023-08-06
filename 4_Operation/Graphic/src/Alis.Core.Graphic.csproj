@@ -4,4 +4,7 @@
     <PropertyGroup>
         <TargetFramework>$(TargetFramework2)</TargetFramework>
     </PropertyGroup>
+    <ItemGroup>
+      <Content Include="ImNodes\.DS_Store" />
+    </ItemGroup>
 </Project>

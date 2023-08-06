@@ -39,6 +39,9 @@ using Alis.Core.Graphic.OpenGL.Constructs;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Alis.Core.Graphic.SDL.Enums;
 using Alis.Core.Graphic.SDL.Structs;
+using ImGuizmoNET;
+using imnodesNET;
+using ImPlotNET;
 using static Alis.Core.Graphic.OpenGL.Gl;
 using static Alis.Core.Graphic.SDL.Sdl;
 
@@ -108,7 +111,11 @@ namespace Alis.Core.Graphic.ImGui
             // compile the shader program
             _shader = new GlShaderProgram(VertexShader, FragmentShader);
 
-            ImGui.SetCurrentContext(ImGui.CreateContext());
+            var context = ImGui.CreateContext();
+            ImNodes.CreateContext();
+            ImPlot.CreateContext();
+            ImGuizmo.SetImGuiContext(context);
+            ImGui.SetCurrentContext(context);
             RebuildFontAtlas();
             InitKeyMap();
 
@@ -176,6 +183,8 @@ namespace Alis.Core.Graphic.ImGui
         private void InitKeyMap()
         {
             ImGuiIoPtr io = ImGui.GetIo();
+            
+            io.DisplaySize = new Vector2F(800, 600);
 
             io.KeyMap[(int) ImGuiKey.Tab] = (int) SdlScancode.SdlScancodeTab;
             io.KeyMap[(int) ImGuiKey.LeftArrow] = (int) SdlScancode.SdlScancodeLeft;

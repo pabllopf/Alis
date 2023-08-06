@@ -1,0 +1,36 @@
+namespace imnodesNET
+{
+    public enum ImNodesCol
+    {
+        NodeBackground = 0,
+        NodeBackgroundHovered = 1,
+        NodeBackgroundSelected = 2,
+        NodeOutline = 3,
+        TitleBar = 4,
+        TitleBarHovered = 5,
+        TitleBarSelected = 6,
+        Link = 7,
+        LinkHovered = 8,
+        LinkSelected = 9,
+        Pin = 10,
+        PinHovered = 11,
+        BoxSelector = 12,
+        BoxSelectorOutline = 13,
+        GridBackground = 14,
+        GridLine = 15,
+        GridLinePrimary = 16,
+        MiniMapBackground = 17,
+        MiniMapBackgroundHovered = 18,
+        MiniMapOutline = 19,
+        MiniMapOutlineHovered = 20,
+        MiniMapNodeBackground = 21,
+        MiniMapNodeBackgroundHovered = 22,
+        MiniMapNodeBackgroundSelected = 23,
+        MiniMapNodeOutline = 24,
+        MiniMapLink = 25,
+        MiniMapLinkSelected = 26,
+        MiniMapCanvas = 27,
+        MiniMapCanvasOutline = 28,
+        COUNT = 29,
+    }
+}

@@ -32,6 +32,8 @@ using Alis.Core.Graphic.ImGui;
 using Alis.Core.Graphic.SDL;
 using Alis.Core.Graphic.SDL.Enums;
 using Alis.Core.Graphic.SDL.Structs;
+using imnodesNET;
+using ImPlotNET;
 
 namespace Alis.App.Engine
 {
@@ -108,7 +110,37 @@ namespace Alis.App.Engine
 
                 _renderer.ClearColor(0.05f, 0.05f, 0.05f, 1.00f);
                 _renderer.NewFrame();
+                
+                
                 ImGui.ShowDemoWindow();
+                
+                // ImNodes.ShowDemoWindow();
+                ImGui.Begin("simple node editor");
+
+                ImNodes.BeginNodeEditor();
+                ImNodes.BeginNode(1);
+
+                ImNodes.BeginNodeTitleBar();
+                ImGui.TextUnformatted("simple node :)");
+                ImNodes.EndNodeTitleBar();
+
+                ImNodes.BeginInputAttribute(2);
+                ImGui.Text("input");
+                ImNodes.EndInputAttribute();
+
+                ImNodes.BeginOutputAttribute(3);
+                ImGui.Indent(40);
+                ImGui.Text("output");
+                ImNodes.EndOutputAttribute();
+
+                ImNodes.EndNode();
+                ImNodes.EndNodeEditor();
+
+                ImGui.End();
+                
+                ImPlot.ShowDemoWindow();
+                
+                
                 _renderer.Render();
                 Sdl.GlSwapWindow(_window);
             }
