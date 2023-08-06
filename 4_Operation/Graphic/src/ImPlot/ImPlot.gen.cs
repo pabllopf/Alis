@@ -8,8 +8,18 @@ using ImGuiNET;
 
 namespace ImPlotNET
 {
+    /// <summary>
+    /// The im plot class
+    /// </summary>
     public static unsafe partial class ImPlot
     {
+        /// <summary>
+        /// Adds the colormap using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="size">The size</param>
+        /// <returns>The im plot colormap</returns>
         public static ImPlotColormap AddColormap(string name, ref Vector4 cols, int size)
         {
             byte* native_name;
@@ -41,6 +51,14 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Adds the colormap using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="size">The size</param>
+        /// <param name="qual">The qual</param>
+        /// <returns>The im plot colormap</returns>
         public static ImPlotColormap AddColormap(string name, ref Vector4 cols, int size, bool qual)
         {
             byte* native_name;
@@ -72,6 +90,13 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Adds the colormap using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="size">The size</param>
+        /// <returns>The im plot colormap</returns>
         public static ImPlotColormap AddColormap(string name, ref uint cols, int size)
         {
             byte* native_name;
@@ -103,6 +128,14 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Adds the colormap using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="size">The size</param>
+        /// <param name="qual">The qual</param>
+        /// <returns>The im plot colormap</returns>
         public static ImPlotColormap AddColormap(string name, ref uint cols, int size, bool qual)
         {
             byte* native_name;
@@ -134,18 +167,44 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Annotations the x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="col">The col</param>
+        /// <param name="pix_offset">The pix offset</param>
+        /// <param name="clamp">The clamp</param>
         public static void Annotation(double x, double y, Vector4 col, Vector2 pix_offset, bool clamp)
         {
             byte native_clamp = clamp ? (byte)1 : (byte)0;
             byte round = 0;
             ImPlotNative.ImPlot_Annotation_Bool(x, y, col, pix_offset, native_clamp, round);
         }
+        /// <summary>
+        /// Annotations the x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="col">The col</param>
+        /// <param name="pix_offset">The pix offset</param>
+        /// <param name="clamp">The clamp</param>
+        /// <param name="round">The round</param>
         public static void Annotation(double x, double y, Vector4 col, Vector2 pix_offset, bool clamp, bool round)
         {
             byte native_clamp = clamp ? (byte)1 : (byte)0;
             byte native_round = round ? (byte)1 : (byte)0;
             ImPlotNative.ImPlot_Annotation_Bool(x, y, col, pix_offset, native_clamp, native_round);
         }
+        /// <summary>
+        /// Annotations the x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="col">The col</param>
+        /// <param name="pix_offset">The pix offset</param>
+        /// <param name="clamp">The clamp</param>
+        /// <param name="fmt">The fmt</param>
         public static void Annotation(double x, double y, Vector4 col, Vector2 pix_offset, bool clamp, string fmt)
         {
             byte native_clamp = clamp ? (byte)1 : (byte)0;
@@ -173,6 +232,11 @@ namespace ImPlotNET
                 Util.Free(native_fmt);
             }
         }
+        /// <summary>
+        /// Describes whether begin aligned plots
+        /// </summary>
+        /// <param name="group_id">The group id</param>
+        /// <returns>The bool</returns>
         public static bool BeginAlignedPlots(string group_id)
         {
             byte* native_group_id;
@@ -201,6 +265,12 @@ namespace ImPlotNET
             }
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether begin aligned plots
+        /// </summary>
+        /// <param name="group_id">The group id</param>
+        /// <param name="vertical">The vertical</param>
+        /// <returns>The bool</returns>
         public static bool BeginAlignedPlots(string group_id, bool vertical)
         {
             byte* native_group_id;
@@ -229,17 +299,33 @@ namespace ImPlotNET
             }
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether begin drag drop source axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <returns>The bool</returns>
         public static bool BeginDragDropSourceAxis(ImAxis axis)
         {
             ImGuiDragDropFlags flags = 0;
             byte ret = ImPlotNative.ImPlot_BeginDragDropSourceAxis(axis, flags);
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether begin drag drop source axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool BeginDragDropSourceAxis(ImAxis axis, ImGuiDragDropFlags flags)
         {
             byte ret = ImPlotNative.ImPlot_BeginDragDropSourceAxis(axis, flags);
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether begin drag drop source item
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <returns>The bool</returns>
         public static bool BeginDragDropSourceItem(string label_id)
         {
             byte* native_label_id;
@@ -268,6 +354,12 @@ namespace ImPlotNET
             }
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether begin drag drop source item
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool BeginDragDropSourceItem(string label_id, ImGuiDragDropFlags flags)
         {
             byte* native_label_id;
@@ -295,32 +387,59 @@ namespace ImPlotNET
             }
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether begin drag drop source plot
+        /// </summary>
+        /// <returns>The bool</returns>
         public static bool BeginDragDropSourcePlot()
         {
             ImGuiDragDropFlags flags = 0;
             byte ret = ImPlotNative.ImPlot_BeginDragDropSourcePlot(flags);
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether begin drag drop source plot
+        /// </summary>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool BeginDragDropSourcePlot(ImGuiDragDropFlags flags)
         {
             byte ret = ImPlotNative.ImPlot_BeginDragDropSourcePlot(flags);
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether begin drag drop target axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <returns>The bool</returns>
         public static bool BeginDragDropTargetAxis(ImAxis axis)
         {
             byte ret = ImPlotNative.ImPlot_BeginDragDropTargetAxis(axis);
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether begin drag drop target legend
+        /// </summary>
+        /// <returns>The bool</returns>
         public static bool BeginDragDropTargetLegend()
         {
             byte ret = ImPlotNative.ImPlot_BeginDragDropTargetLegend();
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether begin drag drop target plot
+        /// </summary>
+        /// <returns>The bool</returns>
         public static bool BeginDragDropTargetPlot()
         {
             byte ret = ImPlotNative.ImPlot_BeginDragDropTargetPlot();
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether begin legend popup
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <returns>The bool</returns>
         public static bool BeginLegendPopup(string label_id)
         {
             byte* native_label_id;
@@ -349,6 +468,12 @@ namespace ImPlotNET
             }
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether begin legend popup
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="mouse_button">The mouse button</param>
+        /// <returns>The bool</returns>
         public static bool BeginLegendPopup(string label_id, ImGuiMouseButton mouse_button)
         {
             byte* native_label_id;
@@ -376,6 +501,11 @@ namespace ImPlotNET
             }
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether begin plot
+        /// </summary>
+        /// <param name="title_id">The title id</param>
+        /// <returns>The bool</returns>
         public static bool BeginPlot(string title_id)
         {
             byte* native_title_id;
@@ -405,6 +535,12 @@ namespace ImPlotNET
             }
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether begin plot
+        /// </summary>
+        /// <param name="title_id">The title id</param>
+        /// <param name="size">The size</param>
+        /// <returns>The bool</returns>
         public static bool BeginPlot(string title_id, Vector2 size)
         {
             byte* native_title_id;
@@ -433,6 +569,13 @@ namespace ImPlotNET
             }
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether begin plot
+        /// </summary>
+        /// <param name="title_id">The title id</param>
+        /// <param name="size">The size</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool BeginPlot(string title_id, Vector2 size, ImPlotFlags flags)
         {
             byte* native_title_id;
@@ -460,6 +603,14 @@ namespace ImPlotNET
             }
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether begin subplots
+        /// </summary>
+        /// <param name="title_id">The title id</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="size">The size</param>
+        /// <returns>The bool</returns>
         public static bool BeginSubplots(string title_id, int rows, int cols, Vector2 size)
         {
             byte* native_title_id;
@@ -490,6 +641,15 @@ namespace ImPlotNET
             }
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether begin subplots
+        /// </summary>
+        /// <param name="title_id">The title id</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="size">The size</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool BeginSubplots(string title_id, int rows, int cols, Vector2 size, ImPlotSubplotFlags flags)
         {
             byte* native_title_id;
@@ -519,6 +679,16 @@ namespace ImPlotNET
             }
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether begin subplots
+        /// </summary>
+        /// <param name="title_id">The title id</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="size">The size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="row_ratios">The row ratios</param>
+        /// <returns>The bool</returns>
         public static bool BeginSubplots(string title_id, int rows, int cols, Vector2 size, ImPlotSubplotFlags flags, ref float row_ratios)
         {
             byte* native_title_id;
@@ -550,6 +720,17 @@ namespace ImPlotNET
                 return ret != 0;
             }
         }
+        /// <summary>
+        /// Describes whether begin subplots
+        /// </summary>
+        /// <param name="title_id">The title id</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="size">The size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="row_ratios">The row ratios</param>
+        /// <param name="col_ratios">The col ratios</param>
+        /// <returns>The bool</returns>
         public static bool BeginSubplots(string title_id, int rows, int cols, Vector2 size, ImPlotSubplotFlags flags, ref float row_ratios, ref float col_ratios)
         {
             byte* native_title_id;
@@ -583,11 +764,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Busts the color cache
+        /// </summary>
         public static void BustColorCache()
         {
             byte* native_plot_title_id = null;
             ImPlotNative.ImPlot_BustColorCache(native_plot_title_id);
         }
+        /// <summary>
+        /// Busts the color cache using the specified plot title id
+        /// </summary>
+        /// <param name="plot_title_id">The plot title id</param>
         public static void BustColorCache(string plot_title_id)
         {
             byte* native_plot_title_id;
@@ -614,10 +802,18 @@ namespace ImPlotNET
                 Util.Free(native_plot_title_id);
             }
         }
+        /// <summary>
+        /// Cancels the plot selection
+        /// </summary>
         public static void CancelPlotSelection()
         {
             ImPlotNative.ImPlot_CancelPlotSelection();
         }
+        /// <summary>
+        /// Describes whether colormap button
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <returns>The bool</returns>
         public static bool ColormapButton(string label)
         {
             byte* native_label;
@@ -647,6 +843,12 @@ namespace ImPlotNET
             }
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether colormap button
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="size">The size</param>
+        /// <returns>The bool</returns>
         public static bool ColormapButton(string label, Vector2 size)
         {
             byte* native_label;
@@ -675,6 +877,13 @@ namespace ImPlotNET
             }
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether colormap button
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="size">The size</param>
+        /// <param name="cmap">The cmap</param>
+        /// <returns>The bool</returns>
         public static bool ColormapButton(string label, Vector2 size, ImPlotColormap cmap)
         {
             byte* native_label;
@@ -702,10 +911,20 @@ namespace ImPlotNET
             }
             return ret != 0;
         }
+        /// <summary>
+        /// Colormaps the icon using the specified cmap
+        /// </summary>
+        /// <param name="cmap">The cmap</param>
         public static void ColormapIcon(ImPlotColormap cmap)
         {
             ImPlotNative.ImPlot_ColormapIcon(cmap);
         }
+        /// <summary>
+        /// Colormaps the scale using the specified label
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
         public static void ColormapScale(string label, double scale_min, double scale_max)
         {
             byte* native_label;
@@ -753,6 +972,13 @@ namespace ImPlotNET
                 Util.Free(native_format);
             }
         }
+        /// <summary>
+        /// Colormaps the scale using the specified label
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="size">The size</param>
         public static void ColormapScale(string label, double scale_min, double scale_max, Vector2 size)
         {
             byte* native_label;
@@ -799,6 +1025,14 @@ namespace ImPlotNET
                 Util.Free(native_format);
             }
         }
+        /// <summary>
+        /// Colormaps the scale using the specified label
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="size">The size</param>
+        /// <param name="format">The format</param>
         public static void ColormapScale(string label, double scale_min, double scale_max, Vector2 size, string format)
         {
             byte* native_label;
@@ -849,6 +1083,15 @@ namespace ImPlotNET
                 Util.Free(native_format);
             }
         }
+        /// <summary>
+        /// Colormaps the scale using the specified label
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="size">The size</param>
+        /// <param name="format">The format</param>
+        /// <param name="flags">The flags</param>
         public static void ColormapScale(string label, double scale_min, double scale_max, Vector2 size, string format, ImPlotColormapScaleFlags flags)
         {
             byte* native_label;
@@ -898,6 +1141,16 @@ namespace ImPlotNET
                 Util.Free(native_format);
             }
         }
+        /// <summary>
+        /// Colormaps the scale using the specified label
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="size">The size</param>
+        /// <param name="format">The format</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="cmap">The cmap</param>
         public static void ColormapScale(string label, double scale_min, double scale_max, Vector2 size, string format, ImPlotColormapScaleFlags flags, ImPlotColormap cmap)
         {
             byte* native_label;
@@ -946,6 +1199,12 @@ namespace ImPlotNET
                 Util.Free(native_format);
             }
         }
+        /// <summary>
+        /// Describes whether colormap slider
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="t">The </param>
+        /// <returns>The bool</returns>
         public static bool ColormapSlider(string label, ref float t)
         {
             byte* native_label;
@@ -996,6 +1255,13 @@ namespace ImPlotNET
                 return ret != 0;
             }
         }
+        /// <summary>
+        /// Describes whether colormap slider
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="t">The </param>
+        /// <param name="@out">The out</param>
+        /// <returns>The bool</returns>
         public static bool ColormapSlider(string label, ref float t, out Vector4 @out)
         {
             byte* native_label;
@@ -1048,6 +1314,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Describes whether colormap slider
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="t">The </param>
+        /// <param name="@out">The out</param>
+        /// <param name="format">The format</param>
+        /// <returns>The bool</returns>
         public static bool ColormapSlider(string label, ref float t, out Vector4 @out, string format)
         {
             byte* native_label;
@@ -1104,6 +1378,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Describes whether colormap slider
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <param name="t">The </param>
+        /// <param name="@out">The out</param>
+        /// <param name="format">The format</param>
+        /// <param name="cmap">The cmap</param>
+        /// <returns>The bool</returns>
         public static bool ColormapSlider(string label, ref float t, out Vector4 @out, string format, ImPlotColormap cmap)
         {
             byte* native_label;
@@ -1159,20 +1442,38 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Creates the context
+        /// </summary>
+        /// <returns>The ret</returns>
         public static IntPtr CreateContext()
         {
             IntPtr ret = ImPlotNative.ImPlot_CreateContext();
             return ret;
         }
+        /// <summary>
+        /// Destroys the context
+        /// </summary>
         public static void DestroyContext()
         {
             IntPtr ctx = IntPtr.Zero;
             ImPlotNative.ImPlot_DestroyContext(ctx);
         }
+        /// <summary>
+        /// Destroys the context using the specified ctx
+        /// </summary>
+        /// <param name="ctx">The ctx</param>
         public static void DestroyContext(IntPtr ctx)
         {
             ImPlotNative.ImPlot_DestroyContext(ctx);
         }
+        /// <summary>
+        /// Describes whether drag line x
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="x">The </param>
+        /// <param name="col">The col</param>
+        /// <returns>The bool</returns>
         public static bool DragLineX(int id, ref double x, Vector4 col)
         {
             float thickness = 1;
@@ -1183,6 +1484,14 @@ namespace ImPlotNET
                 return ret != 0;
             }
         }
+        /// <summary>
+        /// Describes whether drag line x
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="x">The </param>
+        /// <param name="col">The col</param>
+        /// <param name="thickness">The thickness</param>
+        /// <returns>The bool</returns>
         public static bool DragLineX(int id, ref double x, Vector4 col, float thickness)
         {
             ImPlotDragToolFlags flags = (ImPlotDragToolFlags)0;
@@ -1192,6 +1501,15 @@ namespace ImPlotNET
                 return ret != 0;
             }
         }
+        /// <summary>
+        /// Describes whether drag line x
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="x">The </param>
+        /// <param name="col">The col</param>
+        /// <param name="thickness">The thickness</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool DragLineX(int id, ref double x, Vector4 col, float thickness, ImPlotDragToolFlags flags)
         {
             fixed (double* native_x = &x)
@@ -1200,6 +1518,13 @@ namespace ImPlotNET
                 return ret != 0;
             }
         }
+        /// <summary>
+        /// Describes whether drag line y
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="y">The </param>
+        /// <param name="col">The col</param>
+        /// <returns>The bool</returns>
         public static bool DragLineY(int id, ref double y, Vector4 col)
         {
             float thickness = 1;
@@ -1210,6 +1535,14 @@ namespace ImPlotNET
                 return ret != 0;
             }
         }
+        /// <summary>
+        /// Describes whether drag line y
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="y">The </param>
+        /// <param name="col">The col</param>
+        /// <param name="thickness">The thickness</param>
+        /// <returns>The bool</returns>
         public static bool DragLineY(int id, ref double y, Vector4 col, float thickness)
         {
             ImPlotDragToolFlags flags = (ImPlotDragToolFlags)0;
@@ -1219,6 +1552,15 @@ namespace ImPlotNET
                 return ret != 0;
             }
         }
+        /// <summary>
+        /// Describes whether drag line y
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="y">The </param>
+        /// <param name="col">The col</param>
+        /// <param name="thickness">The thickness</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool DragLineY(int id, ref double y, Vector4 col, float thickness, ImPlotDragToolFlags flags)
         {
             fixed (double* native_y = &y)
@@ -1227,6 +1569,14 @@ namespace ImPlotNET
                 return ret != 0;
             }
         }
+        /// <summary>
+        /// Describes whether drag point
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="col">The col</param>
+        /// <returns>The bool</returns>
         public static bool DragPoint(int id, ref double x, ref double y, Vector4 col)
         {
             float size = 4;
@@ -1240,6 +1590,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Describes whether drag point
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="col">The col</param>
+        /// <param name="size">The size</param>
+        /// <returns>The bool</returns>
         public static bool DragPoint(int id, ref double x, ref double y, Vector4 col, float size)
         {
             ImPlotDragToolFlags flags = (ImPlotDragToolFlags)0;
@@ -1252,6 +1611,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Describes whether drag point
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="col">The col</param>
+        /// <param name="size">The size</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool DragPoint(int id, ref double x, ref double y, Vector4 col, float size, ImPlotDragToolFlags flags)
         {
             fixed (double* native_x = &x)
@@ -1263,6 +1632,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Describes whether drag rect
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="x1">The </param>
+        /// <param name="y1">The </param>
+        /// <param name="x2">The </param>
+        /// <param name="y2">The </param>
+        /// <param name="col">The col</param>
+        /// <returns>The bool</returns>
         public static bool DragRect(int id, ref double x1, ref double y1, ref double x2, ref double y2, Vector4 col)
         {
             ImPlotDragToolFlags flags = (ImPlotDragToolFlags)0;
@@ -1281,6 +1660,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Describes whether drag rect
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="x1">The </param>
+        /// <param name="y1">The </param>
+        /// <param name="x2">The </param>
+        /// <param name="y2">The </param>
+        /// <param name="col">The col</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The bool</returns>
         public static bool DragRect(int id, ref double x1, ref double y1, ref double x2, ref double y2, Vector4 col, ImPlotDragToolFlags flags)
         {
             fixed (double* native_x1 = &x1)
@@ -1298,30 +1688,53 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Ends the aligned plots
+        /// </summary>
         public static void EndAlignedPlots()
         {
             ImPlotNative.ImPlot_EndAlignedPlots();
         }
+        /// <summary>
+        /// Ends the drag drop source
+        /// </summary>
         public static void EndDragDropSource()
         {
             ImPlotNative.ImPlot_EndDragDropSource();
         }
+        /// <summary>
+        /// Ends the drag drop target
+        /// </summary>
         public static void EndDragDropTarget()
         {
             ImPlotNative.ImPlot_EndDragDropTarget();
         }
+        /// <summary>
+        /// Ends the legend popup
+        /// </summary>
         public static void EndLegendPopup()
         {
             ImPlotNative.ImPlot_EndLegendPopup();
         }
+        /// <summary>
+        /// Ends the plot
+        /// </summary>
         public static void EndPlot()
         {
             ImPlotNative.ImPlot_EndPlot();
         }
+        /// <summary>
+        /// Ends the subplots
+        /// </summary>
         public static void EndSubplots()
         {
             ImPlotNative.ImPlot_EndSubplots();
         }
+        /// <summary>
+        /// Gets the colormap color using the specified idx
+        /// </summary>
+        /// <param name="idx">The idx</param>
+        /// <returns>The retval</returns>
         public static Vector4 GetColormapColor(int idx)
         {
             Vector4 __retval;
@@ -1329,17 +1742,32 @@ namespace ImPlotNET
             ImPlotNative.ImPlot_GetColormapColor(&__retval, idx, cmap);
             return __retval;
         }
+        /// <summary>
+        /// Gets the colormap color using the specified idx
+        /// </summary>
+        /// <param name="idx">The idx</param>
+        /// <param name="cmap">The cmap</param>
+        /// <returns>The retval</returns>
         public static Vector4 GetColormapColor(int idx, ImPlotColormap cmap)
         {
             Vector4 __retval;
             ImPlotNative.ImPlot_GetColormapColor(&__retval, idx, cmap);
             return __retval;
         }
+        /// <summary>
+        /// Gets the colormap count
+        /// </summary>
+        /// <returns>The ret</returns>
         public static int GetColormapCount()
         {
             int ret = ImPlotNative.ImPlot_GetColormapCount();
             return ret;
         }
+        /// <summary>
+        /// Gets the colormap index using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The ret</returns>
         public static ImPlotColormap GetColormapIndex(string name)
         {
             byte* native_name;
@@ -1367,48 +1795,87 @@ namespace ImPlotNET
             }
             return ret;
         }
+        /// <summary>
+        /// Gets the colormap name using the specified cmap
+        /// </summary>
+        /// <param name="cmap">The cmap</param>
+        /// <returns>The string</returns>
         public static string GetColormapName(ImPlotColormap cmap)
         {
             byte* ret = ImPlotNative.ImPlot_GetColormapName(cmap);
             return Util.StringFromPtr(ret);
         }
+        /// <summary>
+        /// Gets the colormap size
+        /// </summary>
+        /// <returns>The ret</returns>
         public static int GetColormapSize()
         {
             ImPlotColormap cmap = (ImPlotColormap)(-1);
             int ret = ImPlotNative.ImPlot_GetColormapSize(cmap);
             return ret;
         }
+        /// <summary>
+        /// Gets the colormap size using the specified cmap
+        /// </summary>
+        /// <param name="cmap">The cmap</param>
+        /// <returns>The ret</returns>
         public static int GetColormapSize(ImPlotColormap cmap)
         {
             int ret = ImPlotNative.ImPlot_GetColormapSize(cmap);
             return ret;
         }
+        /// <summary>
+        /// Gets the current context
+        /// </summary>
+        /// <returns>The ret</returns>
         public static IntPtr GetCurrentContext()
         {
             IntPtr ret = ImPlotNative.ImPlot_GetCurrentContext();
             return ret;
         }
+        /// <summary>
+        /// Gets the input map
+        /// </summary>
+        /// <returns>The im plot input map ptr</returns>
         public static ImPlotInputMapPtr GetInputMap()
         {
             ImPlotInputMap* ret = ImPlotNative.ImPlot_GetInputMap();
             return new ImPlotInputMapPtr(ret);
         }
+        /// <summary>
+        /// Gets the last item color
+        /// </summary>
+        /// <returns>The retval</returns>
         public static Vector4 GetLastItemColor()
         {
             Vector4 __retval;
             ImPlotNative.ImPlot_GetLastItemColor(&__retval);
             return __retval;
         }
+        /// <summary>
+        /// Gets the marker name using the specified idx
+        /// </summary>
+        /// <param name="idx">The idx</param>
+        /// <returns>The string</returns>
         public static string GetMarkerName(ImPlotMarker idx)
         {
             byte* ret = ImPlotNative.ImPlot_GetMarkerName(idx);
             return Util.StringFromPtr(ret);
         }
+        /// <summary>
+        /// Gets the plot draw list
+        /// </summary>
+        /// <returns>The im draw list ptr</returns>
         public static ImDrawListPtr GetPlotDrawList()
         {
             ImDrawList* ret = ImPlotNative.ImPlot_GetPlotDrawList();
             return new ImDrawListPtr(ret);
         }
+        /// <summary>
+        /// Gets the plot limits
+        /// </summary>
+        /// <returns>The ret</returns>
         public static ImPlotRect GetPlotLimits()
         {
             ImAxis x_axis = (ImAxis)(-1);
@@ -1416,17 +1883,32 @@ namespace ImPlotNET
             ImPlotRect ret = ImPlotNative.ImPlot_GetPlotLimits(x_axis, y_axis);
             return ret;
         }
+        /// <summary>
+        /// Gets the plot limits using the specified x axis
+        /// </summary>
+        /// <param name="x_axis">The axis</param>
+        /// <returns>The ret</returns>
         public static ImPlotRect GetPlotLimits(ImAxis x_axis)
         {
             ImAxis y_axis = (ImAxis)(-1);
             ImPlotRect ret = ImPlotNative.ImPlot_GetPlotLimits(x_axis, y_axis);
             return ret;
         }
+        /// <summary>
+        /// Gets the plot limits using the specified x axis
+        /// </summary>
+        /// <param name="x_axis">The axis</param>
+        /// <param name="y_axis">The axis</param>
+        /// <returns>The ret</returns>
         public static ImPlotRect GetPlotLimits(ImAxis x_axis, ImAxis y_axis)
         {
             ImPlotRect ret = ImPlotNative.ImPlot_GetPlotLimits(x_axis, y_axis);
             return ret;
         }
+        /// <summary>
+        /// Gets the plot mouse pos
+        /// </summary>
+        /// <returns>The retval</returns>
         public static ImPlotPoint GetPlotMousePos()
         {
             ImPlotPoint __retval;
@@ -1435,6 +1917,11 @@ namespace ImPlotNET
             ImPlotNative.ImPlot_GetPlotMousePos(&__retval, x_axis, y_axis);
             return __retval;
         }
+        /// <summary>
+        /// Gets the plot mouse pos using the specified x axis
+        /// </summary>
+        /// <param name="x_axis">The axis</param>
+        /// <returns>The retval</returns>
         public static ImPlotPoint GetPlotMousePos(ImAxis x_axis)
         {
             ImPlotPoint __retval;
@@ -1442,18 +1929,32 @@ namespace ImPlotNET
             ImPlotNative.ImPlot_GetPlotMousePos(&__retval, x_axis, y_axis);
             return __retval;
         }
+        /// <summary>
+        /// Gets the plot mouse pos using the specified x axis
+        /// </summary>
+        /// <param name="x_axis">The axis</param>
+        /// <param name="y_axis">The axis</param>
+        /// <returns>The retval</returns>
         public static ImPlotPoint GetPlotMousePos(ImAxis x_axis, ImAxis y_axis)
         {
             ImPlotPoint __retval;
             ImPlotNative.ImPlot_GetPlotMousePos(&__retval, x_axis, y_axis);
             return __retval;
         }
+        /// <summary>
+        /// Gets the plot pos
+        /// </summary>
+        /// <returns>The retval</returns>
         public static Vector2 GetPlotPos()
         {
             Vector2 __retval;
             ImPlotNative.ImPlot_GetPlotPos(&__retval);
             return __retval;
         }
+        /// <summary>
+        /// Gets the plot selection
+        /// </summary>
+        /// <returns>The ret</returns>
         public static ImPlotRect GetPlotSelection()
         {
             ImAxis x_axis = (ImAxis)(-1);
@@ -1461,55 +1962,101 @@ namespace ImPlotNET
             ImPlotRect ret = ImPlotNative.ImPlot_GetPlotSelection(x_axis, y_axis);
             return ret;
         }
+        /// <summary>
+        /// Gets the plot selection using the specified x axis
+        /// </summary>
+        /// <param name="x_axis">The axis</param>
+        /// <returns>The ret</returns>
         public static ImPlotRect GetPlotSelection(ImAxis x_axis)
         {
             ImAxis y_axis = (ImAxis)(-1);
             ImPlotRect ret = ImPlotNative.ImPlot_GetPlotSelection(x_axis, y_axis);
             return ret;
         }
+        /// <summary>
+        /// Gets the plot selection using the specified x axis
+        /// </summary>
+        /// <param name="x_axis">The axis</param>
+        /// <param name="y_axis">The axis</param>
+        /// <returns>The ret</returns>
         public static ImPlotRect GetPlotSelection(ImAxis x_axis, ImAxis y_axis)
         {
             ImPlotRect ret = ImPlotNative.ImPlot_GetPlotSelection(x_axis, y_axis);
             return ret;
         }
+        /// <summary>
+        /// Gets the plot size
+        /// </summary>
+        /// <returns>The retval</returns>
         public static Vector2 GetPlotSize()
         {
             Vector2 __retval;
             ImPlotNative.ImPlot_GetPlotSize(&__retval);
             return __retval;
         }
+        /// <summary>
+        /// Gets the style
+        /// </summary>
+        /// <returns>The im plot style ptr</returns>
         public static ImPlotStylePtr GetStyle()
         {
             ImPlotStyle* ret = ImPlotNative.ImPlot_GetStyle();
             return new ImPlotStylePtr(ret);
         }
+        /// <summary>
+        /// Gets the style color name using the specified idx
+        /// </summary>
+        /// <param name="idx">The idx</param>
+        /// <returns>The string</returns>
         public static string GetStyleColorName(ImPlotCol idx)
         {
             byte* ret = ImPlotNative.ImPlot_GetStyleColorName(idx);
             return Util.StringFromPtr(ret);
         }
+        /// <summary>
+        /// Hides the next item
+        /// </summary>
         public static void HideNextItem()
         {
             byte hidden = 1;
             ImPlotCond cond = ImPlotCond.Once;
             ImPlotNative.ImPlot_HideNextItem(hidden, cond);
         }
+        /// <summary>
+        /// Hides the next item using the specified hidden
+        /// </summary>
+        /// <param name="hidden">The hidden</param>
         public static void HideNextItem(bool hidden)
         {
             byte native_hidden = hidden ? (byte)1 : (byte)0;
             ImPlotCond cond = ImPlotCond.Once;
             ImPlotNative.ImPlot_HideNextItem(native_hidden, cond);
         }
+        /// <summary>
+        /// Hides the next item using the specified hidden
+        /// </summary>
+        /// <param name="hidden">The hidden</param>
+        /// <param name="cond">The cond</param>
         public static void HideNextItem(bool hidden, ImPlotCond cond)
         {
             byte native_hidden = hidden ? (byte)1 : (byte)0;
             ImPlotNative.ImPlot_HideNextItem(native_hidden, cond);
         }
+        /// <summary>
+        /// Describes whether is axis hovered
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <returns>The bool</returns>
         public static bool IsAxisHovered(ImAxis axis)
         {
             byte ret = ImPlotNative.ImPlot_IsAxisHovered(axis);
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether is legend entry hovered
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <returns>The bool</returns>
         public static bool IsLegendEntryHovered(string label_id)
         {
             byte* native_label_id;
@@ -1537,55 +2084,98 @@ namespace ImPlotNET
             }
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether is plot hovered
+        /// </summary>
+        /// <returns>The bool</returns>
         public static bool IsPlotHovered()
         {
             byte ret = ImPlotNative.ImPlot_IsPlotHovered();
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether is plot selected
+        /// </summary>
+        /// <returns>The bool</returns>
         public static bool IsPlotSelected()
         {
             byte ret = ImPlotNative.ImPlot_IsPlotSelected();
             return ret != 0;
         }
+        /// <summary>
+        /// Describes whether is subplots hovered
+        /// </summary>
+        /// <returns>The bool</returns>
         public static bool IsSubplotsHovered()
         {
             byte ret = ImPlotNative.ImPlot_IsSubplotsHovered();
             return ret != 0;
         }
+        /// <summary>
+        /// Items the icon using the specified col
+        /// </summary>
+        /// <param name="col">The col</param>
         public static void ItemIcon(Vector4 col)
         {
             ImPlotNative.ImPlot_ItemIcon_Vec4(col);
         }
+        /// <summary>
+        /// Items the icon using the specified col
+        /// </summary>
+        /// <param name="col">The col</param>
         public static void ItemIcon(uint col)
         {
             ImPlotNative.ImPlot_ItemIcon_U32(col);
         }
+        /// <summary>
+        /// Maps the input default
+        /// </summary>
         public static void MapInputDefault()
         {
             ImPlotInputMap* dst = null;
             ImPlotNative.ImPlot_MapInputDefault(dst);
         }
+        /// <summary>
+        /// Maps the input default using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
         public static void MapInputDefault(ImPlotInputMapPtr dst)
         {
             ImPlotInputMap* native_dst = dst.NativePtr;
             ImPlotNative.ImPlot_MapInputDefault(native_dst);
         }
+        /// <summary>
+        /// Maps the input reverse
+        /// </summary>
         public static void MapInputReverse()
         {
             ImPlotInputMap* dst = null;
             ImPlotNative.ImPlot_MapInputReverse(dst);
         }
+        /// <summary>
+        /// Maps the input reverse using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
         public static void MapInputReverse(ImPlotInputMapPtr dst)
         {
             ImPlotInputMap* native_dst = dst.NativePtr;
             ImPlotNative.ImPlot_MapInputReverse(native_dst);
         }
+        /// <summary>
+        /// Nexts the colormap color
+        /// </summary>
+        /// <returns>The retval</returns>
         public static Vector4 NextColormapColor()
         {
             Vector4 __retval;
             ImPlotNative.ImPlot_NextColormapColor(&__retval);
             return __retval;
         }
+        /// <summary>
+        /// Pixelses the to plot using the specified pix
+        /// </summary>
+        /// <param name="pix">The pix</param>
+        /// <returns>The retval</returns>
         public static ImPlotPoint PixelsToPlot(Vector2 pix)
         {
             ImPlotPoint __retval;
@@ -1594,6 +2184,12 @@ namespace ImPlotNET
             ImPlotNative.ImPlot_PixelsToPlot_Vec2(&__retval, pix, x_axis, y_axis);
             return __retval;
         }
+        /// <summary>
+        /// Pixelses the to plot using the specified pix
+        /// </summary>
+        /// <param name="pix">The pix</param>
+        /// <param name="x_axis">The axis</param>
+        /// <returns>The retval</returns>
         public static ImPlotPoint PixelsToPlot(Vector2 pix, ImAxis x_axis)
         {
             ImPlotPoint __retval;
@@ -1601,12 +2197,25 @@ namespace ImPlotNET
             ImPlotNative.ImPlot_PixelsToPlot_Vec2(&__retval, pix, x_axis, y_axis);
             return __retval;
         }
+        /// <summary>
+        /// Pixelses the to plot using the specified pix
+        /// </summary>
+        /// <param name="pix">The pix</param>
+        /// <param name="x_axis">The axis</param>
+        /// <param name="y_axis">The axis</param>
+        /// <returns>The retval</returns>
         public static ImPlotPoint PixelsToPlot(Vector2 pix, ImAxis x_axis, ImAxis y_axis)
         {
             ImPlotPoint __retval;
             ImPlotNative.ImPlot_PixelsToPlot_Vec2(&__retval, pix, x_axis, y_axis);
             return __retval;
         }
+        /// <summary>
+        /// Pixelses the to plot using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The retval</returns>
         public static ImPlotPoint PixelsToPlot(float x, float y)
         {
             ImPlotPoint __retval;
@@ -1615,6 +2224,13 @@ namespace ImPlotNET
             ImPlotNative.ImPlot_PixelsToPlot_Float(&__retval, x, y, x_axis, y_axis);
             return __retval;
         }
+        /// <summary>
+        /// Pixelses the to plot using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="x_axis">The axis</param>
+        /// <returns>The retval</returns>
         public static ImPlotPoint PixelsToPlot(float x, float y, ImAxis x_axis)
         {
             ImPlotPoint __retval;
@@ -1622,12 +2238,27 @@ namespace ImPlotNET
             ImPlotNative.ImPlot_PixelsToPlot_Float(&__retval, x, y, x_axis, y_axis);
             return __retval;
         }
+        /// <summary>
+        /// Pixelses the to plot using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="x_axis">The axis</param>
+        /// <param name="y_axis">The axis</param>
+        /// <returns>The retval</returns>
         public static ImPlotPoint PixelsToPlot(float x, float y, ImAxis x_axis, ImAxis y_axis)
         {
             ImPlotPoint __retval;
             ImPlotNative.ImPlot_PixelsToPlot_Float(&__retval, x, y, x_axis, y_axis);
             return __retval;
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
         public static void PlotBarGroups(string[] label_ids, ref float values, int item_count, int group_count)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -1665,6 +2296,14 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_FloatPtr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
         public static void PlotBarGroups(string[] label_ids, ref float values, int item_count, int group_count, double group_size)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -1701,6 +2340,15 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_FloatPtr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBarGroups(string[] label_ids, ref float values, int item_count, int group_count, double group_size, double shift)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -1736,6 +2384,16 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_FloatPtr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBarGroups(string[] label_ids, ref float values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -1770,6 +2428,13 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_FloatPtr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
         public static void PlotBarGroups(string[] label_ids, ref double values, int item_count, int group_count)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -1807,6 +2472,14 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_doublePtr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
         public static void PlotBarGroups(string[] label_ids, ref double values, int item_count, int group_count, double group_size)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -1843,6 +2516,15 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_doublePtr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBarGroups(string[] label_ids, ref double values, int item_count, int group_count, double group_size, double shift)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -1878,6 +2560,16 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_doublePtr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBarGroups(string[] label_ids, ref double values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -1912,6 +2604,13 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_doublePtr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
         public static void PlotBarGroups(string[] label_ids, ref sbyte values, int item_count, int group_count)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -1949,6 +2648,14 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_S8Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
         public static void PlotBarGroups(string[] label_ids, ref sbyte values, int item_count, int group_count, double group_size)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -1985,6 +2692,15 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_S8Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBarGroups(string[] label_ids, ref sbyte values, int item_count, int group_count, double group_size, double shift)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2020,6 +2736,16 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_S8Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBarGroups(string[] label_ids, ref sbyte values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2054,6 +2780,13 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_S8Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
         public static void PlotBarGroups(string[] label_ids, ref byte values, int item_count, int group_count)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2091,6 +2824,14 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_U8Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
         public static void PlotBarGroups(string[] label_ids, ref byte values, int item_count, int group_count, double group_size)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2127,6 +2868,15 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_U8Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBarGroups(string[] label_ids, ref byte values, int item_count, int group_count, double group_size, double shift)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2162,6 +2912,16 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_U8Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBarGroups(string[] label_ids, ref byte values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2196,6 +2956,13 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_U8Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
         public static void PlotBarGroups(string[] label_ids, ref short values, int item_count, int group_count)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2233,6 +3000,14 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_S16Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
         public static void PlotBarGroups(string[] label_ids, ref short values, int item_count, int group_count, double group_size)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2269,6 +3044,15 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_S16Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBarGroups(string[] label_ids, ref short values, int item_count, int group_count, double group_size, double shift)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2304,6 +3088,16 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_S16Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBarGroups(string[] label_ids, ref short values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2338,6 +3132,13 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_S16Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
         public static void PlotBarGroups(string[] label_ids, ref ushort values, int item_count, int group_count)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2375,6 +3176,14 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_U16Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
         public static void PlotBarGroups(string[] label_ids, ref ushort values, int item_count, int group_count, double group_size)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2411,6 +3220,15 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_U16Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBarGroups(string[] label_ids, ref ushort values, int item_count, int group_count, double group_size, double shift)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2446,6 +3264,16 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_U16Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBarGroups(string[] label_ids, ref ushort values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2480,6 +3308,13 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_U16Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
         public static void PlotBarGroups(string[] label_ids, ref int values, int item_count, int group_count)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2517,6 +3352,14 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_S32Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
         public static void PlotBarGroups(string[] label_ids, ref int values, int item_count, int group_count, double group_size)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2553,6 +3396,15 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_S32Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBarGroups(string[] label_ids, ref int values, int item_count, int group_count, double group_size, double shift)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2588,6 +3440,16 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_S32Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBarGroups(string[] label_ids, ref int values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2622,6 +3484,13 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_S32Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
         public static void PlotBarGroups(string[] label_ids, ref uint values, int item_count, int group_count)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2659,6 +3528,14 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_U32Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
         public static void PlotBarGroups(string[] label_ids, ref uint values, int item_count, int group_count, double group_size)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2695,6 +3572,15 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_U32Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBarGroups(string[] label_ids, ref uint values, int item_count, int group_count, double group_size, double shift)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2730,6 +3616,16 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_U32Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBarGroups(string[] label_ids, ref uint values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2764,6 +3660,13 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_U32Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
         public static void PlotBarGroups(string[] label_ids, ref long values, int item_count, int group_count)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2801,6 +3704,14 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_S64Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
         public static void PlotBarGroups(string[] label_ids, ref long values, int item_count, int group_count, double group_size)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2837,6 +3748,15 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_S64Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBarGroups(string[] label_ids, ref long values, int item_count, int group_count, double group_size, double shift)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2872,6 +3792,16 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_S64Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBarGroups(string[] label_ids, ref long values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2906,6 +3836,13 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_S64Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
         public static void PlotBarGroups(string[] label_ids, ref ulong values, int item_count, int group_count)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2943,6 +3880,14 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_U64Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
         public static void PlotBarGroups(string[] label_ids, ref ulong values, int item_count, int group_count, double group_size)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -2979,6 +3924,15 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_U64Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBarGroups(string[] label_ids, ref ulong values, int item_count, int group_count, double group_size, double shift)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -3014,6 +3968,16 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_U64Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bar groups using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="item_count">The item count</param>
+        /// <param name="group_count">The group count</param>
+        /// <param name="group_size">The group size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBarGroups(string[] label_ids, ref ulong values, int item_count, int group_count, double group_size, double shift, ImPlotBarGroupsFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -3048,6 +4012,12 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_PlotBarGroups_U64Ptr(native_label_ids, native_values, item_count, group_count, group_size, shift, flags);
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotBars(string label_id, ref float values, int count)
         {
             byte* native_label_id;
@@ -3082,6 +4052,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref float values, int count, double bar_size)
         {
             byte* native_label_id;
@@ -3115,6 +4092,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBars(string label_id, ref float values, int count, double bar_size, double shift)
         {
             byte* native_label_id;
@@ -3147,6 +4132,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref float values, int count, double bar_size, double shift, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -3178,6 +4172,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref float values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -3208,6 +4212,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref float values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -3237,6 +4252,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotBars(string label_id, ref double values, int count)
         {
             byte* native_label_id;
@@ -3271,6 +4292,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref double values, int count, double bar_size)
         {
             byte* native_label_id;
@@ -3304,6 +4332,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBars(string label_id, ref double values, int count, double bar_size, double shift)
         {
             byte* native_label_id;
@@ -3336,6 +4372,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref double values, int count, double bar_size, double shift, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -3367,6 +4412,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref double values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -3397,6 +4452,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref double values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -3426,6 +4492,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotBars(string label_id, ref sbyte values, int count)
         {
             byte* native_label_id;
@@ -3460,6 +4532,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref sbyte values, int count, double bar_size)
         {
             byte* native_label_id;
@@ -3493,6 +4572,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBars(string label_id, ref sbyte values, int count, double bar_size, double shift)
         {
             byte* native_label_id;
@@ -3525,6 +4612,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref sbyte values, int count, double bar_size, double shift, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -3556,6 +4652,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref sbyte values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -3586,6 +4692,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref sbyte values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -3615,6 +4732,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotBars(string label_id, ref byte values, int count)
         {
             byte* native_label_id;
@@ -3649,6 +4772,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref byte values, int count, double bar_size)
         {
             byte* native_label_id;
@@ -3682,6 +4812,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBars(string label_id, ref byte values, int count, double bar_size, double shift)
         {
             byte* native_label_id;
@@ -3714,6 +4852,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref byte values, int count, double bar_size, double shift, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -3745,6 +4892,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref byte values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -3775,6 +4932,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref byte values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -3804,6 +4972,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotBars(string label_id, ref short values, int count)
         {
             byte* native_label_id;
@@ -3838,6 +5012,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref short values, int count, double bar_size)
         {
             byte* native_label_id;
@@ -3871,6 +5052,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBars(string label_id, ref short values, int count, double bar_size, double shift)
         {
             byte* native_label_id;
@@ -3903,6 +5092,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref short values, int count, double bar_size, double shift, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -3934,6 +5132,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref short values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -3964,6 +5172,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref short values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -3993,6 +5212,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotBars(string label_id, ref ushort values, int count)
         {
             byte* native_label_id;
@@ -4027,6 +5252,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref ushort values, int count, double bar_size)
         {
             byte* native_label_id;
@@ -4060,6 +5292,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBars(string label_id, ref ushort values, int count, double bar_size, double shift)
         {
             byte* native_label_id;
@@ -4092,6 +5332,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref ushort values, int count, double bar_size, double shift, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -4123,6 +5372,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref ushort values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -4153,6 +5412,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref ushort values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -4182,6 +5452,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotBars(string label_id, ref int values, int count)
         {
             byte* native_label_id;
@@ -4216,6 +5492,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref int values, int count, double bar_size)
         {
             byte* native_label_id;
@@ -4249,6 +5532,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBars(string label_id, ref int values, int count, double bar_size, double shift)
         {
             byte* native_label_id;
@@ -4281,6 +5572,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref int values, int count, double bar_size, double shift, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -4312,6 +5612,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref int values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -4342,6 +5652,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref int values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -4371,6 +5692,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotBars(string label_id, ref uint values, int count)
         {
             byte* native_label_id;
@@ -4405,6 +5732,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref uint values, int count, double bar_size)
         {
             byte* native_label_id;
@@ -4438,6 +5772,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBars(string label_id, ref uint values, int count, double bar_size, double shift)
         {
             byte* native_label_id;
@@ -4470,6 +5812,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref uint values, int count, double bar_size, double shift, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -4501,6 +5852,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref uint values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -4531,6 +5892,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref uint values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -4560,6 +5932,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotBars(string label_id, ref long values, int count)
         {
             byte* native_label_id;
@@ -4594,6 +5972,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref long values, int count, double bar_size)
         {
             byte* native_label_id;
@@ -4627,6 +6012,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBars(string label_id, ref long values, int count, double bar_size, double shift)
         {
             byte* native_label_id;
@@ -4659,6 +6052,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref long values, int count, double bar_size, double shift, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -4690,6 +6092,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref long values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -4720,6 +6132,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref long values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -4749,6 +6172,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotBars(string label_id, ref ulong values, int count)
         {
             byte* native_label_id;
@@ -4783,6 +6212,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref ulong values, int count, double bar_size)
         {
             byte* native_label_id;
@@ -4816,6 +6252,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
         public static void PlotBars(string label_id, ref ulong values, int count, double bar_size, double shift)
         {
             byte* native_label_id;
@@ -4848,6 +6292,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref ulong values, int count, double bar_size, double shift, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -4879,6 +6332,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref ulong values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -4909,6 +6372,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="shift">The shift</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref ulong values, int count, double bar_size, double shift, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -4938,6 +6412,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref float xs, ref float ys, int count, double bar_size)
         {
             byte* native_label_id;
@@ -4973,6 +6455,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref float xs, ref float ys, int count, double bar_size, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -5007,6 +6498,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref float xs, ref float ys, int count, double bar_size, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -5040,6 +6541,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref float xs, ref float ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -5072,6 +6584,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref double xs, ref double ys, int count, double bar_size)
         {
             byte* native_label_id;
@@ -5107,6 +6627,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref double xs, ref double ys, int count, double bar_size, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -5141,6 +6670,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref double xs, ref double ys, int count, double bar_size, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -5174,6 +6713,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref double xs, ref double ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -5206,6 +6756,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref sbyte xs, ref sbyte ys, int count, double bar_size)
         {
             byte* native_label_id;
@@ -5241,6 +6799,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref sbyte xs, ref sbyte ys, int count, double bar_size, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -5275,6 +6842,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref sbyte xs, ref sbyte ys, int count, double bar_size, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -5308,6 +6885,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref sbyte xs, ref sbyte ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -5340,6 +6928,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref byte xs, ref byte ys, int count, double bar_size)
         {
             byte* native_label_id;
@@ -5375,6 +6971,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref byte xs, ref byte ys, int count, double bar_size, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -5409,6 +7014,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref byte xs, ref byte ys, int count, double bar_size, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -5442,6 +7057,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref byte xs, ref byte ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -5474,6 +7100,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref short xs, ref short ys, int count, double bar_size)
         {
             byte* native_label_id;
@@ -5509,6 +7143,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref short xs, ref short ys, int count, double bar_size, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -5543,6 +7186,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref short xs, ref short ys, int count, double bar_size, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -5576,6 +7229,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref short xs, ref short ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -5608,6 +7272,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref ushort xs, ref ushort ys, int count, double bar_size)
         {
             byte* native_label_id;
@@ -5643,6 +7315,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref ushort xs, ref ushort ys, int count, double bar_size, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -5677,6 +7358,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref ushort xs, ref ushort ys, int count, double bar_size, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -5710,6 +7401,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref ushort xs, ref ushort ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -5742,6 +7444,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref int xs, ref int ys, int count, double bar_size)
         {
             byte* native_label_id;
@@ -5777,6 +7487,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref int xs, ref int ys, int count, double bar_size, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -5811,6 +7530,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref int xs, ref int ys, int count, double bar_size, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -5844,6 +7573,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref int xs, ref int ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -5876,6 +7616,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref uint xs, ref uint ys, int count, double bar_size)
         {
             byte* native_label_id;
@@ -5911,6 +7659,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref uint xs, ref uint ys, int count, double bar_size, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -5945,6 +7702,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref uint xs, ref uint ys, int count, double bar_size, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -5978,6 +7745,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref uint xs, ref uint ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -6010,6 +7788,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref long xs, ref long ys, int count, double bar_size)
         {
             byte* native_label_id;
@@ -6045,6 +7831,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref long xs, ref long ys, int count, double bar_size, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -6079,6 +7874,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref long xs, ref long ys, int count, double bar_size, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -6112,6 +7917,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref long xs, ref long ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -6144,6 +7960,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBars(string label_id, ref ulong xs, ref ulong ys, int count, double bar_size)
         {
             byte* native_label_id;
@@ -6179,6 +8003,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBars(string label_id, ref ulong xs, ref ulong ys, int count, double bar_size, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -6213,6 +8046,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotBars(string label_id, ref ulong xs, ref ulong ys, int count, double bar_size, ImPlotBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -6246,6 +8089,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotBars(string label_id, ref ulong xs, ref ulong ys, int count, double bar_size, ImPlotBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -6278,6 +8132,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the bars g using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="getter">The getter</param>
+        /// <param name="data">The data</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
         public static void PlotBarsG(string label_id, IntPtr getter, IntPtr data, int count, double bar_size)
         {
             byte* native_label_id;
@@ -6306,6 +8168,15 @@ namespace ImPlotNET
                 Util.Free(native_label_id);
             }
         }
+        /// <summary>
+        /// Plots the bars g using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="getter">The getter</param>
+        /// <param name="data">The data</param>
+        /// <param name="count">The count</param>
+        /// <param name="bar_size">The bar size</param>
+        /// <param name="flags">The flags</param>
         public static void PlotBarsG(string label_id, IntPtr getter, IntPtr data, int count, double bar_size, ImPlotBarsFlags flags)
         {
             byte* native_label_id;
@@ -6333,6 +8204,13 @@ namespace ImPlotNET
                 Util.Free(native_label_id);
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotDigital(string label_id, ref float xs, ref float ys, int count)
         {
             byte* native_label_id;
@@ -6368,6 +8246,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotDigital(string label_id, ref float xs, ref float ys, int count, ImPlotDigitalFlags flags)
         {
             byte* native_label_id;
@@ -6402,6 +8288,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotDigital(string label_id, ref float xs, ref float ys, int count, ImPlotDigitalFlags flags, int offset)
         {
             byte* native_label_id;
@@ -6435,6 +8330,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotDigital(string label_id, ref float xs, ref float ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -6467,6 +8372,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotDigital(string label_id, ref double xs, ref double ys, int count)
         {
             byte* native_label_id;
@@ -6502,6 +8414,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotDigital(string label_id, ref double xs, ref double ys, int count, ImPlotDigitalFlags flags)
         {
             byte* native_label_id;
@@ -6536,6 +8456,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotDigital(string label_id, ref double xs, ref double ys, int count, ImPlotDigitalFlags flags, int offset)
         {
             byte* native_label_id;
@@ -6569,6 +8498,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotDigital(string label_id, ref double xs, ref double ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -6601,6 +8540,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotDigital(string label_id, ref sbyte xs, ref sbyte ys, int count)
         {
             byte* native_label_id;
@@ -6636,6 +8582,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotDigital(string label_id, ref sbyte xs, ref sbyte ys, int count, ImPlotDigitalFlags flags)
         {
             byte* native_label_id;
@@ -6670,6 +8624,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotDigital(string label_id, ref sbyte xs, ref sbyte ys, int count, ImPlotDigitalFlags flags, int offset)
         {
             byte* native_label_id;
@@ -6703,6 +8666,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotDigital(string label_id, ref sbyte xs, ref sbyte ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -6735,6 +8708,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotDigital(string label_id, ref byte xs, ref byte ys, int count)
         {
             byte* native_label_id;
@@ -6770,6 +8750,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotDigital(string label_id, ref byte xs, ref byte ys, int count, ImPlotDigitalFlags flags)
         {
             byte* native_label_id;
@@ -6804,6 +8792,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotDigital(string label_id, ref byte xs, ref byte ys, int count, ImPlotDigitalFlags flags, int offset)
         {
             byte* native_label_id;
@@ -6837,6 +8834,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotDigital(string label_id, ref byte xs, ref byte ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -6869,6 +8876,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotDigital(string label_id, ref short xs, ref short ys, int count)
         {
             byte* native_label_id;
@@ -6904,6 +8918,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotDigital(string label_id, ref short xs, ref short ys, int count, ImPlotDigitalFlags flags)
         {
             byte* native_label_id;
@@ -6938,6 +8960,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotDigital(string label_id, ref short xs, ref short ys, int count, ImPlotDigitalFlags flags, int offset)
         {
             byte* native_label_id;
@@ -6971,6 +9002,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotDigital(string label_id, ref short xs, ref short ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -7003,6 +9044,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotDigital(string label_id, ref ushort xs, ref ushort ys, int count)
         {
             byte* native_label_id;
@@ -7038,6 +9086,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotDigital(string label_id, ref ushort xs, ref ushort ys, int count, ImPlotDigitalFlags flags)
         {
             byte* native_label_id;
@@ -7072,6 +9128,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotDigital(string label_id, ref ushort xs, ref ushort ys, int count, ImPlotDigitalFlags flags, int offset)
         {
             byte* native_label_id;
@@ -7105,6 +9170,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotDigital(string label_id, ref ushort xs, ref ushort ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -7137,6 +9212,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotDigital(string label_id, ref int xs, ref int ys, int count)
         {
             byte* native_label_id;
@@ -7172,6 +9254,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotDigital(string label_id, ref int xs, ref int ys, int count, ImPlotDigitalFlags flags)
         {
             byte* native_label_id;
@@ -7206,6 +9296,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotDigital(string label_id, ref int xs, ref int ys, int count, ImPlotDigitalFlags flags, int offset)
         {
             byte* native_label_id;
@@ -7239,6 +9338,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotDigital(string label_id, ref int xs, ref int ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -7271,6 +9380,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotDigital(string label_id, ref uint xs, ref uint ys, int count)
         {
             byte* native_label_id;
@@ -7306,6 +9422,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotDigital(string label_id, ref uint xs, ref uint ys, int count, ImPlotDigitalFlags flags)
         {
             byte* native_label_id;
@@ -7340,6 +9464,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotDigital(string label_id, ref uint xs, ref uint ys, int count, ImPlotDigitalFlags flags, int offset)
         {
             byte* native_label_id;
@@ -7373,6 +9506,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotDigital(string label_id, ref uint xs, ref uint ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -7405,6 +9548,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotDigital(string label_id, ref long xs, ref long ys, int count)
         {
             byte* native_label_id;
@@ -7440,6 +9590,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotDigital(string label_id, ref long xs, ref long ys, int count, ImPlotDigitalFlags flags)
         {
             byte* native_label_id;
@@ -7474,6 +9632,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotDigital(string label_id, ref long xs, ref long ys, int count, ImPlotDigitalFlags flags, int offset)
         {
             byte* native_label_id;
@@ -7507,6 +9674,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotDigital(string label_id, ref long xs, ref long ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -7539,6 +9716,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotDigital(string label_id, ref ulong xs, ref ulong ys, int count)
         {
             byte* native_label_id;
@@ -7574,6 +9758,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotDigital(string label_id, ref ulong xs, ref ulong ys, int count, ImPlotDigitalFlags flags)
         {
             byte* native_label_id;
@@ -7608,6 +9800,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotDigital(string label_id, ref ulong xs, ref ulong ys, int count, ImPlotDigitalFlags flags, int offset)
         {
             byte* native_label_id;
@@ -7641,6 +9842,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotDigital(string label_id, ref ulong xs, ref ulong ys, int count, ImPlotDigitalFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -7673,6 +9884,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the digital g using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="getter">The getter</param>
+        /// <param name="data">The data</param>
+        /// <param name="count">The count</param>
         public static void PlotDigitalG(string label_id, IntPtr getter, IntPtr data, int count)
         {
             byte* native_label_id;
@@ -7701,6 +9919,14 @@ namespace ImPlotNET
                 Util.Free(native_label_id);
             }
         }
+        /// <summary>
+        /// Plots the digital g using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="getter">The getter</param>
+        /// <param name="data">The data</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotDigitalG(string label_id, IntPtr getter, IntPtr data, int count, ImPlotDigitalFlags flags)
         {
             byte* native_label_id;
@@ -7728,6 +9954,10 @@ namespace ImPlotNET
                 Util.Free(native_label_id);
             }
         }
+        /// <summary>
+        /// Plots the dummy using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
         public static void PlotDummy(string label_id)
         {
             byte* native_label_id;
@@ -7755,6 +9985,11 @@ namespace ImPlotNET
                 Util.Free(native_label_id);
             }
         }
+        /// <summary>
+        /// Plots the dummy using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="flags">The flags</param>
         public static void PlotDummy(string label_id, ImPlotDummyFlags flags)
         {
             byte* native_label_id;
@@ -7781,6 +10016,14 @@ namespace ImPlotNET
                 Util.Free(native_label_id);
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref float xs, ref float ys, ref float err, int count)
         {
             byte* native_label_id;
@@ -7819,6 +10062,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref float xs, ref float ys, ref float err, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -7856,6 +10108,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref float xs, ref float ys, ref float err, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -7892,6 +10154,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref float xs, ref float ys, ref float err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -7927,6 +10200,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref double xs, ref double ys, ref double err, int count)
         {
             byte* native_label_id;
@@ -7965,6 +10246,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref double xs, ref double ys, ref double err, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -8002,6 +10292,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref double xs, ref double ys, ref double err, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -8038,6 +10338,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref double xs, ref double ys, ref double err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -8073,6 +10384,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref sbyte xs, ref sbyte ys, ref sbyte err, int count)
         {
             byte* native_label_id;
@@ -8111,6 +10430,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref sbyte xs, ref sbyte ys, ref sbyte err, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -8148,6 +10476,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref sbyte xs, ref sbyte ys, ref sbyte err, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -8184,6 +10522,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref sbyte xs, ref sbyte ys, ref sbyte err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -8219,6 +10568,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref byte xs, ref byte ys, ref byte err, int count)
         {
             byte* native_label_id;
@@ -8257,6 +10614,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref byte xs, ref byte ys, ref byte err, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -8294,6 +10660,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref byte xs, ref byte ys, ref byte err, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -8330,6 +10706,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref byte xs, ref byte ys, ref byte err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -8365,6 +10752,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref short xs, ref short ys, ref short err, int count)
         {
             byte* native_label_id;
@@ -8403,6 +10798,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref short xs, ref short ys, ref short err, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -8440,6 +10844,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref short xs, ref short ys, ref short err, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -8476,6 +10890,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref short xs, ref short ys, ref short err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -8511,6 +10936,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref ushort xs, ref ushort ys, ref ushort err, int count)
         {
             byte* native_label_id;
@@ -8549,6 +10982,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref ushort xs, ref ushort ys, ref ushort err, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -8586,6 +11028,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref ushort xs, ref ushort ys, ref ushort err, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -8622,6 +11074,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref ushort xs, ref ushort ys, ref ushort err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -8657,6 +11120,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref int xs, ref int ys, ref int err, int count)
         {
             byte* native_label_id;
@@ -8695,6 +11166,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref int xs, ref int ys, ref int err, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -8732,6 +11212,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref int xs, ref int ys, ref int err, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -8768,6 +11258,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref int xs, ref int ys, ref int err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -8803,6 +11304,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref uint xs, ref uint ys, ref uint err, int count)
         {
             byte* native_label_id;
@@ -8841,6 +11350,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref uint xs, ref uint ys, ref uint err, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -8878,6 +11396,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref uint xs, ref uint ys, ref uint err, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -8914,6 +11442,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref uint xs, ref uint ys, ref uint err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -8949,6 +11488,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref long xs, ref long ys, ref long err, int count)
         {
             byte* native_label_id;
@@ -8987,6 +11534,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref long xs, ref long ys, ref long err, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -9024,6 +11580,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref long xs, ref long ys, ref long err, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -9060,6 +11626,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref long xs, ref long ys, ref long err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -9095,6 +11672,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref ulong xs, ref ulong ys, ref ulong err, int count)
         {
             byte* native_label_id;
@@ -9133,6 +11718,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref ulong xs, ref ulong ys, ref ulong err, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -9170,6 +11764,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref ulong xs, ref ulong ys, ref ulong err, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -9206,6 +11810,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="err">The err</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref ulong xs, ref ulong ys, ref ulong err, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -9241,6 +11856,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref float xs, ref float ys, ref float neg, ref float pos, int count)
         {
             byte* native_label_id;
@@ -9282,6 +11906,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref float xs, ref float ys, ref float neg, ref float pos, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -9322,6 +11956,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref float xs, ref float ys, ref float neg, ref float pos, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -9361,6 +12006,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref float xs, ref float ys, ref float neg, ref float pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -9399,6 +12056,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref double xs, ref double ys, ref double neg, ref double pos, int count)
         {
             byte* native_label_id;
@@ -9440,6 +12106,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref double xs, ref double ys, ref double neg, ref double pos, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -9480,6 +12156,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref double xs, ref double ys, ref double neg, ref double pos, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -9519,6 +12206,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref double xs, ref double ys, ref double neg, ref double pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -9557,6 +12256,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref sbyte xs, ref sbyte ys, ref sbyte neg, ref sbyte pos, int count)
         {
             byte* native_label_id;
@@ -9598,6 +12306,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref sbyte xs, ref sbyte ys, ref sbyte neg, ref sbyte pos, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -9638,6 +12356,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref sbyte xs, ref sbyte ys, ref sbyte neg, ref sbyte pos, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -9677,6 +12406,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref sbyte xs, ref sbyte ys, ref sbyte neg, ref sbyte pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -9715,6 +12456,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref byte xs, ref byte ys, ref byte neg, ref byte pos, int count)
         {
             byte* native_label_id;
@@ -9756,6 +12506,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref byte xs, ref byte ys, ref byte neg, ref byte pos, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -9796,6 +12556,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref byte xs, ref byte ys, ref byte neg, ref byte pos, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -9835,6 +12606,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref byte xs, ref byte ys, ref byte neg, ref byte pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -9873,6 +12656,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref short xs, ref short ys, ref short neg, ref short pos, int count)
         {
             byte* native_label_id;
@@ -9914,6 +12706,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref short xs, ref short ys, ref short neg, ref short pos, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -9954,6 +12756,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref short xs, ref short ys, ref short neg, ref short pos, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -9993,6 +12806,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref short xs, ref short ys, ref short neg, ref short pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -10031,6 +12856,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref ushort xs, ref ushort ys, ref ushort neg, ref ushort pos, int count)
         {
             byte* native_label_id;
@@ -10072,6 +12906,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref ushort xs, ref ushort ys, ref ushort neg, ref ushort pos, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -10112,6 +12956,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref ushort xs, ref ushort ys, ref ushort neg, ref ushort pos, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -10151,6 +13006,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref ushort xs, ref ushort ys, ref ushort neg, ref ushort pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -10189,6 +13056,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref int xs, ref int ys, ref int neg, ref int pos, int count)
         {
             byte* native_label_id;
@@ -10230,6 +13106,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref int xs, ref int ys, ref int neg, ref int pos, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -10270,6 +13156,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref int xs, ref int ys, ref int neg, ref int pos, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -10309,6 +13206,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref int xs, ref int ys, ref int neg, ref int pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -10347,6 +13256,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref uint xs, ref uint ys, ref uint neg, ref uint pos, int count)
         {
             byte* native_label_id;
@@ -10388,6 +13306,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref uint xs, ref uint ys, ref uint neg, ref uint pos, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -10428,6 +13356,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref uint xs, ref uint ys, ref uint neg, ref uint pos, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -10467,6 +13406,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref uint xs, ref uint ys, ref uint neg, ref uint pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -10505,6 +13456,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref long xs, ref long ys, ref long neg, ref long pos, int count)
         {
             byte* native_label_id;
@@ -10546,6 +13506,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref long xs, ref long ys, ref long neg, ref long pos, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -10586,6 +13556,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref long xs, ref long ys, ref long neg, ref long pos, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -10625,6 +13606,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref long xs, ref long ys, ref long neg, ref long pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -10663,6 +13656,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
         public static void PlotErrorBars(string label_id, ref ulong xs, ref ulong ys, ref ulong neg, ref ulong pos, int count)
         {
             byte* native_label_id;
@@ -10704,6 +13706,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotErrorBars(string label_id, ref ulong xs, ref ulong ys, ref ulong neg, ref ulong pos, int count, ImPlotErrorBarsFlags flags)
         {
             byte* native_label_id;
@@ -10744,6 +13756,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotErrorBars(string label_id, ref ulong xs, ref ulong ys, ref ulong neg, ref ulong pos, int count, ImPlotErrorBarsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -10783,6 +13806,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the error bars using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="neg">The neg</param>
+        /// <param name="pos">The pos</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotErrorBars(string label_id, ref ulong xs, ref ulong ys, ref ulong neg, ref ulong pos, int count, ImPlotErrorBarsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -10821,6 +13856,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
         public static void PlotHeatmap(string label_id, ref float values, int rows, int cols)
         {
             byte* native_label_id;
@@ -10873,6 +13915,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
         public static void PlotHeatmap(string label_id, ref float values, int rows, int cols, double scale_min)
         {
             byte* native_label_id;
@@ -10924,6 +13974,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
         public static void PlotHeatmap(string label_id, ref float values, int rows, int cols, double scale_min, double scale_max)
         {
             byte* native_label_id;
@@ -10974,6 +14033,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotHeatmap(string label_id, ref float values, int rows, int cols, double scale_min, double scale_max, string label_fmt)
         {
             byte* native_label_id;
@@ -11028,6 +14097,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
         public static void PlotHeatmap(string label_id, ref float values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             byte* native_label_id;
@@ -11081,6 +14161,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
         public static void PlotHeatmap(string label_id, ref float values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max)
         {
             byte* native_label_id;
@@ -11133,6 +14225,19 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
+        /// <param name="flags">The flags</param>
         public static void PlotHeatmap(string label_id, ref float values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags)
         {
             byte* native_label_id;
@@ -11184,6 +14289,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
         public static void PlotHeatmap(string label_id, ref double values, int rows, int cols)
         {
             byte* native_label_id;
@@ -11236,6 +14348,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
         public static void PlotHeatmap(string label_id, ref double values, int rows, int cols, double scale_min)
         {
             byte* native_label_id;
@@ -11287,6 +14407,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
         public static void PlotHeatmap(string label_id, ref double values, int rows, int cols, double scale_min, double scale_max)
         {
             byte* native_label_id;
@@ -11337,6 +14466,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotHeatmap(string label_id, ref double values, int rows, int cols, double scale_min, double scale_max, string label_fmt)
         {
             byte* native_label_id;
@@ -11391,6 +14530,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
         public static void PlotHeatmap(string label_id, ref double values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             byte* native_label_id;
@@ -11444,6 +14594,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
         public static void PlotHeatmap(string label_id, ref double values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max)
         {
             byte* native_label_id;
@@ -11496,6 +14658,19 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
+        /// <param name="flags">The flags</param>
         public static void PlotHeatmap(string label_id, ref double values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags)
         {
             byte* native_label_id;
@@ -11547,6 +14722,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
         public static void PlotHeatmap(string label_id, ref sbyte values, int rows, int cols)
         {
             byte* native_label_id;
@@ -11599,6 +14781,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
         public static void PlotHeatmap(string label_id, ref sbyte values, int rows, int cols, double scale_min)
         {
             byte* native_label_id;
@@ -11650,6 +14840,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
         public static void PlotHeatmap(string label_id, ref sbyte values, int rows, int cols, double scale_min, double scale_max)
         {
             byte* native_label_id;
@@ -11700,6 +14899,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotHeatmap(string label_id, ref sbyte values, int rows, int cols, double scale_min, double scale_max, string label_fmt)
         {
             byte* native_label_id;
@@ -11754,6 +14963,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
         public static void PlotHeatmap(string label_id, ref sbyte values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             byte* native_label_id;
@@ -11807,6 +15027,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
         public static void PlotHeatmap(string label_id, ref sbyte values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max)
         {
             byte* native_label_id;
@@ -11859,6 +15091,19 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
+        /// <param name="flags">The flags</param>
         public static void PlotHeatmap(string label_id, ref sbyte values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags)
         {
             byte* native_label_id;
@@ -11910,6 +15155,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
         public static void PlotHeatmap(string label_id, ref byte values, int rows, int cols)
         {
             byte* native_label_id;
@@ -11962,6 +15214,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
         public static void PlotHeatmap(string label_id, ref byte values, int rows, int cols, double scale_min)
         {
             byte* native_label_id;
@@ -12013,6 +15273,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
         public static void PlotHeatmap(string label_id, ref byte values, int rows, int cols, double scale_min, double scale_max)
         {
             byte* native_label_id;
@@ -12063,6 +15332,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotHeatmap(string label_id, ref byte values, int rows, int cols, double scale_min, double scale_max, string label_fmt)
         {
             byte* native_label_id;
@@ -12117,6 +15396,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
         public static void PlotHeatmap(string label_id, ref byte values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             byte* native_label_id;
@@ -12170,6 +15460,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
         public static void PlotHeatmap(string label_id, ref byte values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max)
         {
             byte* native_label_id;
@@ -12222,6 +15524,19 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
+        /// <param name="flags">The flags</param>
         public static void PlotHeatmap(string label_id, ref byte values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags)
         {
             byte* native_label_id;
@@ -12273,6 +15588,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
         public static void PlotHeatmap(string label_id, ref short values, int rows, int cols)
         {
             byte* native_label_id;
@@ -12325,6 +15647,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
         public static void PlotHeatmap(string label_id, ref short values, int rows, int cols, double scale_min)
         {
             byte* native_label_id;
@@ -12376,6 +15706,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
         public static void PlotHeatmap(string label_id, ref short values, int rows, int cols, double scale_min, double scale_max)
         {
             byte* native_label_id;
@@ -12426,6 +15765,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotHeatmap(string label_id, ref short values, int rows, int cols, double scale_min, double scale_max, string label_fmt)
         {
             byte* native_label_id;
@@ -12480,6 +15829,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
         public static void PlotHeatmap(string label_id, ref short values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             byte* native_label_id;
@@ -12533,6 +15893,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
         public static void PlotHeatmap(string label_id, ref short values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max)
         {
             byte* native_label_id;
@@ -12585,6 +15957,19 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
+        /// <param name="flags">The flags</param>
         public static void PlotHeatmap(string label_id, ref short values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags)
         {
             byte* native_label_id;
@@ -12636,6 +16021,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
         public static void PlotHeatmap(string label_id, ref ushort values, int rows, int cols)
         {
             byte* native_label_id;
@@ -12688,6 +16080,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
         public static void PlotHeatmap(string label_id, ref ushort values, int rows, int cols, double scale_min)
         {
             byte* native_label_id;
@@ -12739,6 +16139,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
         public static void PlotHeatmap(string label_id, ref ushort values, int rows, int cols, double scale_min, double scale_max)
         {
             byte* native_label_id;
@@ -12789,6 +16198,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotHeatmap(string label_id, ref ushort values, int rows, int cols, double scale_min, double scale_max, string label_fmt)
         {
             byte* native_label_id;
@@ -12843,6 +16262,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
         public static void PlotHeatmap(string label_id, ref ushort values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             byte* native_label_id;
@@ -12896,6 +16326,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
         public static void PlotHeatmap(string label_id, ref ushort values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max)
         {
             byte* native_label_id;
@@ -12948,6 +16390,19 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
+        /// <param name="flags">The flags</param>
         public static void PlotHeatmap(string label_id, ref ushort values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags)
         {
             byte* native_label_id;
@@ -12999,6 +16454,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
         public static void PlotHeatmap(string label_id, ref int values, int rows, int cols)
         {
             byte* native_label_id;
@@ -13051,6 +16513,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
         public static void PlotHeatmap(string label_id, ref int values, int rows, int cols, double scale_min)
         {
             byte* native_label_id;
@@ -13102,6 +16572,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
         public static void PlotHeatmap(string label_id, ref int values, int rows, int cols, double scale_min, double scale_max)
         {
             byte* native_label_id;
@@ -13152,6 +16631,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotHeatmap(string label_id, ref int values, int rows, int cols, double scale_min, double scale_max, string label_fmt)
         {
             byte* native_label_id;
@@ -13206,6 +16695,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
         public static void PlotHeatmap(string label_id, ref int values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             byte* native_label_id;
@@ -13259,6 +16759,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
         public static void PlotHeatmap(string label_id, ref int values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max)
         {
             byte* native_label_id;
@@ -13311,6 +16823,19 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
+        /// <param name="flags">The flags</param>
         public static void PlotHeatmap(string label_id, ref int values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags)
         {
             byte* native_label_id;
@@ -13362,6 +16887,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
         public static void PlotHeatmap(string label_id, ref uint values, int rows, int cols)
         {
             byte* native_label_id;
@@ -13414,6 +16946,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
         public static void PlotHeatmap(string label_id, ref uint values, int rows, int cols, double scale_min)
         {
             byte* native_label_id;
@@ -13465,6 +17005,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
         public static void PlotHeatmap(string label_id, ref uint values, int rows, int cols, double scale_min, double scale_max)
         {
             byte* native_label_id;
@@ -13515,6 +17064,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotHeatmap(string label_id, ref uint values, int rows, int cols, double scale_min, double scale_max, string label_fmt)
         {
             byte* native_label_id;
@@ -13569,6 +17128,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
         public static void PlotHeatmap(string label_id, ref uint values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             byte* native_label_id;
@@ -13622,6 +17192,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
         public static void PlotHeatmap(string label_id, ref uint values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max)
         {
             byte* native_label_id;
@@ -13674,6 +17256,19 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
+        /// <param name="flags">The flags</param>
         public static void PlotHeatmap(string label_id, ref uint values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags)
         {
             byte* native_label_id;
@@ -13725,6 +17320,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
         public static void PlotHeatmap(string label_id, ref long values, int rows, int cols)
         {
             byte* native_label_id;
@@ -13777,6 +17379,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
         public static void PlotHeatmap(string label_id, ref long values, int rows, int cols, double scale_min)
         {
             byte* native_label_id;
@@ -13828,6 +17438,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
         public static void PlotHeatmap(string label_id, ref long values, int rows, int cols, double scale_min, double scale_max)
         {
             byte* native_label_id;
@@ -13878,6 +17497,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotHeatmap(string label_id, ref long values, int rows, int cols, double scale_min, double scale_max, string label_fmt)
         {
             byte* native_label_id;
@@ -13932,6 +17561,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
         public static void PlotHeatmap(string label_id, ref long values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             byte* native_label_id;
@@ -13985,6 +17625,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
         public static void PlotHeatmap(string label_id, ref long values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max)
         {
             byte* native_label_id;
@@ -14037,6 +17689,19 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
+        /// <param name="flags">The flags</param>
         public static void PlotHeatmap(string label_id, ref long values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags)
         {
             byte* native_label_id;
@@ -14088,6 +17753,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
         public static void PlotHeatmap(string label_id, ref ulong values, int rows, int cols)
         {
             byte* native_label_id;
@@ -14140,6 +17812,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
         public static void PlotHeatmap(string label_id, ref ulong values, int rows, int cols, double scale_min)
         {
             byte* native_label_id;
@@ -14191,6 +17871,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
         public static void PlotHeatmap(string label_id, ref ulong values, int rows, int cols, double scale_min, double scale_max)
         {
             byte* native_label_id;
@@ -14241,6 +17930,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotHeatmap(string label_id, ref ulong values, int rows, int cols, double scale_min, double scale_max, string label_fmt)
         {
             byte* native_label_id;
@@ -14295,6 +17994,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
         public static void PlotHeatmap(string label_id, ref ulong values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min)
         {
             byte* native_label_id;
@@ -14348,6 +18058,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
         public static void PlotHeatmap(string label_id, ref ulong values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max)
         {
             byte* native_label_id;
@@ -14400,6 +18122,19 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the heatmap using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="rows">The rows</param>
+        /// <param name="cols">The cols</param>
+        /// <param name="scale_min">The scale min</param>
+        /// <param name="scale_max">The scale max</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
+        /// <param name="flags">The flags</param>
         public static void PlotHeatmap(string label_id, ref ulong values, int rows, int cols, double scale_min, double scale_max, string label_fmt, ImPlotPoint bounds_min, ImPlotPoint bounds_max, ImPlotHeatmapFlags flags)
         {
             byte* native_label_id;
@@ -14451,6 +18186,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref float values, int count)
         {
             byte* native_label_id;
@@ -14485,6 +18227,14 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref float values, int count, int bins)
         {
             byte* native_label_id;
@@ -14518,6 +18268,15 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref float values, int count, int bins, double bar_scale)
         {
             byte* native_label_id;
@@ -14550,6 +18309,16 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref float values, int count, int bins, double bar_scale, ImPlotRange range)
         {
             byte* native_label_id;
@@ -14581,6 +18350,17 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref float values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -14611,6 +18391,13 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref double values, int count)
         {
             byte* native_label_id;
@@ -14645,6 +18432,14 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref double values, int count, int bins)
         {
             byte* native_label_id;
@@ -14678,6 +18473,15 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref double values, int count, int bins, double bar_scale)
         {
             byte* native_label_id;
@@ -14710,6 +18514,16 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref double values, int count, int bins, double bar_scale, ImPlotRange range)
         {
             byte* native_label_id;
@@ -14741,6 +18555,17 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref double values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -14771,6 +18596,13 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref sbyte values, int count)
         {
             byte* native_label_id;
@@ -14805,6 +18637,14 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref sbyte values, int count, int bins)
         {
             byte* native_label_id;
@@ -14838,6 +18678,15 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref sbyte values, int count, int bins, double bar_scale)
         {
             byte* native_label_id;
@@ -14870,6 +18719,16 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref sbyte values, int count, int bins, double bar_scale, ImPlotRange range)
         {
             byte* native_label_id;
@@ -14901,6 +18760,17 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref sbyte values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -14931,6 +18801,13 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref byte values, int count)
         {
             byte* native_label_id;
@@ -14965,6 +18842,14 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref byte values, int count, int bins)
         {
             byte* native_label_id;
@@ -14998,6 +18883,15 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref byte values, int count, int bins, double bar_scale)
         {
             byte* native_label_id;
@@ -15030,6 +18924,16 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref byte values, int count, int bins, double bar_scale, ImPlotRange range)
         {
             byte* native_label_id;
@@ -15061,6 +18965,17 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref byte values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -15091,6 +19006,13 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref short values, int count)
         {
             byte* native_label_id;
@@ -15125,6 +19047,14 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref short values, int count, int bins)
         {
             byte* native_label_id;
@@ -15158,6 +19088,15 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref short values, int count, int bins, double bar_scale)
         {
             byte* native_label_id;
@@ -15190,6 +19129,16 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref short values, int count, int bins, double bar_scale, ImPlotRange range)
         {
             byte* native_label_id;
@@ -15221,6 +19170,17 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref short values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -15251,6 +19211,13 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref ushort values, int count)
         {
             byte* native_label_id;
@@ -15285,6 +19252,14 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref ushort values, int count, int bins)
         {
             byte* native_label_id;
@@ -15318,6 +19293,15 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref ushort values, int count, int bins, double bar_scale)
         {
             byte* native_label_id;
@@ -15350,6 +19334,16 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref ushort values, int count, int bins, double bar_scale, ImPlotRange range)
         {
             byte* native_label_id;
@@ -15381,6 +19375,17 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref ushort values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -15411,6 +19416,13 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref int values, int count)
         {
             byte* native_label_id;
@@ -15445,6 +19457,14 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref int values, int count, int bins)
         {
             byte* native_label_id;
@@ -15478,6 +19498,15 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref int values, int count, int bins, double bar_scale)
         {
             byte* native_label_id;
@@ -15510,6 +19539,16 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref int values, int count, int bins, double bar_scale, ImPlotRange range)
         {
             byte* native_label_id;
@@ -15541,6 +19580,17 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref int values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -15571,6 +19621,13 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref uint values, int count)
         {
             byte* native_label_id;
@@ -15605,6 +19662,14 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref uint values, int count, int bins)
         {
             byte* native_label_id;
@@ -15638,6 +19703,15 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref uint values, int count, int bins, double bar_scale)
         {
             byte* native_label_id;
@@ -15670,6 +19744,16 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref uint values, int count, int bins, double bar_scale, ImPlotRange range)
         {
             byte* native_label_id;
@@ -15701,6 +19785,17 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref uint values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -15731,6 +19826,13 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref long values, int count)
         {
             byte* native_label_id;
@@ -15765,6 +19867,14 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref long values, int count, int bins)
         {
             byte* native_label_id;
@@ -15798,6 +19908,15 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref long values, int count, int bins, double bar_scale)
         {
             byte* native_label_id;
@@ -15830,6 +19949,16 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref long values, int count, int bins, double bar_scale, ImPlotRange range)
         {
             byte* native_label_id;
@@ -15861,6 +19990,17 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref long values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -15891,6 +20031,13 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref ulong values, int count)
         {
             byte* native_label_id;
@@ -15925,6 +20072,14 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref ulong values, int count, int bins)
         {
             byte* native_label_id;
@@ -15958,6 +20113,15 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref ulong values, int count, int bins, double bar_scale)
         {
             byte* native_label_id;
@@ -15990,6 +20154,16 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref ulong values, int count, int bins, double bar_scale, ImPlotRange range)
         {
             byte* native_label_id;
@@ -16021,6 +20195,17 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="bins">The bins</param>
+        /// <param name="bar_scale">The bar scale</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram(string label_id, ref ulong values, int count, int bins, double bar_scale, ImPlotRange range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -16051,6 +20236,14 @@ namespace ImPlotNET
                 return ret;
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref float xs, ref float ys, int count)
         {
             byte* native_label_id;
@@ -16088,6 +20281,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref float xs, ref float ys, int count, int x_bins)
         {
             byte* native_label_id;
@@ -16124,6 +20326,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref float xs, ref float ys, int count, int x_bins, int y_bins)
         {
             byte* native_label_id;
@@ -16159,6 +20371,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref float xs, ref float ys, int count, int x_bins, int y_bins, ImPlotRect range)
         {
             byte* native_label_id;
@@ -16193,6 +20416,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref float xs, ref float ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -16226,6 +20461,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref double xs, ref double ys, int count)
         {
             byte* native_label_id;
@@ -16263,6 +20506,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref double xs, ref double ys, int count, int x_bins)
         {
             byte* native_label_id;
@@ -16299,6 +20551,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref double xs, ref double ys, int count, int x_bins, int y_bins)
         {
             byte* native_label_id;
@@ -16334,6 +20596,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref double xs, ref double ys, int count, int x_bins, int y_bins, ImPlotRect range)
         {
             byte* native_label_id;
@@ -16368,6 +20641,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref double xs, ref double ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -16401,6 +20686,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref sbyte xs, ref sbyte ys, int count)
         {
             byte* native_label_id;
@@ -16438,6 +20731,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref sbyte xs, ref sbyte ys, int count, int x_bins)
         {
             byte* native_label_id;
@@ -16474,6 +20776,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref sbyte xs, ref sbyte ys, int count, int x_bins, int y_bins)
         {
             byte* native_label_id;
@@ -16509,6 +20821,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref sbyte xs, ref sbyte ys, int count, int x_bins, int y_bins, ImPlotRect range)
         {
             byte* native_label_id;
@@ -16543,6 +20866,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref sbyte xs, ref sbyte ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -16576,6 +20911,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref byte xs, ref byte ys, int count)
         {
             byte* native_label_id;
@@ -16613,6 +20956,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref byte xs, ref byte ys, int count, int x_bins)
         {
             byte* native_label_id;
@@ -16649,6 +21001,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref byte xs, ref byte ys, int count, int x_bins, int y_bins)
         {
             byte* native_label_id;
@@ -16684,6 +21046,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref byte xs, ref byte ys, int count, int x_bins, int y_bins, ImPlotRect range)
         {
             byte* native_label_id;
@@ -16718,6 +21091,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref byte xs, ref byte ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -16751,6 +21136,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref short xs, ref short ys, int count)
         {
             byte* native_label_id;
@@ -16788,6 +21181,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref short xs, ref short ys, int count, int x_bins)
         {
             byte* native_label_id;
@@ -16824,6 +21226,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref short xs, ref short ys, int count, int x_bins, int y_bins)
         {
             byte* native_label_id;
@@ -16859,6 +21271,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref short xs, ref short ys, int count, int x_bins, int y_bins, ImPlotRect range)
         {
             byte* native_label_id;
@@ -16893,6 +21316,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref short xs, ref short ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -16926,6 +21361,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref ushort xs, ref ushort ys, int count)
         {
             byte* native_label_id;
@@ -16963,6 +21406,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref ushort xs, ref ushort ys, int count, int x_bins)
         {
             byte* native_label_id;
@@ -16999,6 +21451,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref ushort xs, ref ushort ys, int count, int x_bins, int y_bins)
         {
             byte* native_label_id;
@@ -17034,6 +21496,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref ushort xs, ref ushort ys, int count, int x_bins, int y_bins, ImPlotRect range)
         {
             byte* native_label_id;
@@ -17068,6 +21541,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref ushort xs, ref ushort ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -17101,6 +21586,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref int xs, ref int ys, int count)
         {
             byte* native_label_id;
@@ -17138,6 +21631,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref int xs, ref int ys, int count, int x_bins)
         {
             byte* native_label_id;
@@ -17174,6 +21676,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref int xs, ref int ys, int count, int x_bins, int y_bins)
         {
             byte* native_label_id;
@@ -17209,6 +21721,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref int xs, ref int ys, int count, int x_bins, int y_bins, ImPlotRect range)
         {
             byte* native_label_id;
@@ -17243,6 +21766,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref int xs, ref int ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -17276,6 +21811,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref uint xs, ref uint ys, int count)
         {
             byte* native_label_id;
@@ -17313,6 +21856,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref uint xs, ref uint ys, int count, int x_bins)
         {
             byte* native_label_id;
@@ -17349,6 +21901,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref uint xs, ref uint ys, int count, int x_bins, int y_bins)
         {
             byte* native_label_id;
@@ -17384,6 +21946,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref uint xs, ref uint ys, int count, int x_bins, int y_bins, ImPlotRect range)
         {
             byte* native_label_id;
@@ -17418,6 +21991,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref uint xs, ref uint ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -17451,6 +22036,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref long xs, ref long ys, int count)
         {
             byte* native_label_id;
@@ -17488,6 +22081,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref long xs, ref long ys, int count, int x_bins)
         {
             byte* native_label_id;
@@ -17524,6 +22126,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref long xs, ref long ys, int count, int x_bins, int y_bins)
         {
             byte* native_label_id;
@@ -17559,6 +22171,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref long xs, ref long ys, int count, int x_bins, int y_bins, ImPlotRect range)
         {
             byte* native_label_id;
@@ -17593,6 +22216,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref long xs, ref long ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -17626,6 +22261,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref ulong xs, ref ulong ys, int count)
         {
             byte* native_label_id;
@@ -17663,6 +22306,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref ulong xs, ref ulong ys, int count, int x_bins)
         {
             byte* native_label_id;
@@ -17699,6 +22351,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref ulong xs, ref ulong ys, int count, int x_bins, int y_bins)
         {
             byte* native_label_id;
@@ -17734,6 +22396,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref ulong xs, ref ulong ys, int count, int x_bins, int y_bins, ImPlotRect range)
         {
             byte* native_label_id;
@@ -17768,6 +22441,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the histogram 2 d using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="x_bins">The bins</param>
+        /// <param name="y_bins">The bins</param>
+        /// <param name="range">The range</param>
+        /// <param name="flags">The flags</param>
+        /// <returns>The double</returns>
         public static double PlotHistogram2D(string label_id, ref ulong xs, ref ulong ys, int count, int x_bins, int y_bins, ImPlotRect range, ImPlotHistogramFlags flags)
         {
             byte* native_label_id;
@@ -17801,6 +22486,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the image using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="user_texture_id">The user texture id</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
         public static void PlotImage(string label_id, IntPtr user_texture_id, ImPlotPoint bounds_min, ImPlotPoint bounds_max)
         {
             byte* native_label_id;
@@ -17831,6 +22523,14 @@ namespace ImPlotNET
                 Util.Free(native_label_id);
             }
         }
+        /// <summary>
+        /// Plots the image using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="user_texture_id">The user texture id</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
+        /// <param name="uv0">The uv</param>
         public static void PlotImage(string label_id, IntPtr user_texture_id, ImPlotPoint bounds_min, ImPlotPoint bounds_max, Vector2 uv0)
         {
             byte* native_label_id;
@@ -17860,6 +22560,15 @@ namespace ImPlotNET
                 Util.Free(native_label_id);
             }
         }
+        /// <summary>
+        /// Plots the image using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="user_texture_id">The user texture id</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
+        /// <param name="uv0">The uv</param>
+        /// <param name="uv1">The uv</param>
         public static void PlotImage(string label_id, IntPtr user_texture_id, ImPlotPoint bounds_min, ImPlotPoint bounds_max, Vector2 uv0, Vector2 uv1)
         {
             byte* native_label_id;
@@ -17888,6 +22597,16 @@ namespace ImPlotNET
                 Util.Free(native_label_id);
             }
         }
+        /// <summary>
+        /// Plots the image using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="user_texture_id">The user texture id</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
+        /// <param name="uv0">The uv</param>
+        /// <param name="uv1">The uv</param>
+        /// <param name="tint_col">The tint col</param>
         public static void PlotImage(string label_id, IntPtr user_texture_id, ImPlotPoint bounds_min, ImPlotPoint bounds_max, Vector2 uv0, Vector2 uv1, Vector4 tint_col)
         {
             byte* native_label_id;
@@ -17915,6 +22634,17 @@ namespace ImPlotNET
                 Util.Free(native_label_id);
             }
         }
+        /// <summary>
+        /// Plots the image using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="user_texture_id">The user texture id</param>
+        /// <param name="bounds_min">The bounds min</param>
+        /// <param name="bounds_max">The bounds max</param>
+        /// <param name="uv0">The uv</param>
+        /// <param name="uv1">The uv</param>
+        /// <param name="tint_col">The tint col</param>
+        /// <param name="flags">The flags</param>
         public static void PlotImage(string label_id, IntPtr user_texture_id, ImPlotPoint bounds_min, ImPlotPoint bounds_max, Vector2 uv0, Vector2 uv1, Vector4 tint_col, ImPlotImageFlags flags)
         {
             byte* native_label_id;
@@ -17941,6 +22671,12 @@ namespace ImPlotNET
                 Util.Free(native_label_id);
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotInfLines(string label_id, ref float values, int count)
         {
             byte* native_label_id;
@@ -17973,6 +22709,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotInfLines(string label_id, ref float values, int count, ImPlotInfLinesFlags flags)
         {
             byte* native_label_id;
@@ -18004,6 +22747,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotInfLines(string label_id, ref float values, int count, ImPlotInfLinesFlags flags, int offset)
         {
             byte* native_label_id;
@@ -18034,6 +22785,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotInfLines(string label_id, ref float values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -18063,6 +22823,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotInfLines(string label_id, ref double values, int count)
         {
             byte* native_label_id;
@@ -18095,6 +22861,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotInfLines(string label_id, ref double values, int count, ImPlotInfLinesFlags flags)
         {
             byte* native_label_id;
@@ -18126,6 +22899,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotInfLines(string label_id, ref double values, int count, ImPlotInfLinesFlags flags, int offset)
         {
             byte* native_label_id;
@@ -18156,6 +22937,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotInfLines(string label_id, ref double values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -18185,6 +22975,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotInfLines(string label_id, ref sbyte values, int count)
         {
             byte* native_label_id;
@@ -18217,6 +23013,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotInfLines(string label_id, ref sbyte values, int count, ImPlotInfLinesFlags flags)
         {
             byte* native_label_id;
@@ -18248,6 +23051,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotInfLines(string label_id, ref sbyte values, int count, ImPlotInfLinesFlags flags, int offset)
         {
             byte* native_label_id;
@@ -18278,6 +23089,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotInfLines(string label_id, ref sbyte values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -18307,6 +23127,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotInfLines(string label_id, ref byte values, int count)
         {
             byte* native_label_id;
@@ -18339,6 +23165,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotInfLines(string label_id, ref byte values, int count, ImPlotInfLinesFlags flags)
         {
             byte* native_label_id;
@@ -18370,6 +23203,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotInfLines(string label_id, ref byte values, int count, ImPlotInfLinesFlags flags, int offset)
         {
             byte* native_label_id;
@@ -18400,6 +23241,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotInfLines(string label_id, ref byte values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -18429,6 +23279,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotInfLines(string label_id, ref short values, int count)
         {
             byte* native_label_id;
@@ -18461,6 +23317,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotInfLines(string label_id, ref short values, int count, ImPlotInfLinesFlags flags)
         {
             byte* native_label_id;
@@ -18492,6 +23355,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotInfLines(string label_id, ref short values, int count, ImPlotInfLinesFlags flags, int offset)
         {
             byte* native_label_id;
@@ -18522,6 +23393,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotInfLines(string label_id, ref short values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -18551,6 +23431,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotInfLines(string label_id, ref ushort values, int count)
         {
             byte* native_label_id;
@@ -18583,6 +23469,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotInfLines(string label_id, ref ushort values, int count, ImPlotInfLinesFlags flags)
         {
             byte* native_label_id;
@@ -18614,6 +23507,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotInfLines(string label_id, ref ushort values, int count, ImPlotInfLinesFlags flags, int offset)
         {
             byte* native_label_id;
@@ -18644,6 +23545,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotInfLines(string label_id, ref ushort values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -18673,6 +23583,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotInfLines(string label_id, ref int values, int count)
         {
             byte* native_label_id;
@@ -18705,6 +23621,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotInfLines(string label_id, ref int values, int count, ImPlotInfLinesFlags flags)
         {
             byte* native_label_id;
@@ -18736,6 +23659,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotInfLines(string label_id, ref int values, int count, ImPlotInfLinesFlags flags, int offset)
         {
             byte* native_label_id;
@@ -18766,6 +23697,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotInfLines(string label_id, ref int values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -18795,6 +23735,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotInfLines(string label_id, ref uint values, int count)
         {
             byte* native_label_id;
@@ -18827,6 +23773,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotInfLines(string label_id, ref uint values, int count, ImPlotInfLinesFlags flags)
         {
             byte* native_label_id;
@@ -18858,6 +23811,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotInfLines(string label_id, ref uint values, int count, ImPlotInfLinesFlags flags, int offset)
         {
             byte* native_label_id;
@@ -18888,6 +23849,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotInfLines(string label_id, ref uint values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -18917,6 +23887,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotInfLines(string label_id, ref long values, int count)
         {
             byte* native_label_id;
@@ -18949,6 +23925,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotInfLines(string label_id, ref long values, int count, ImPlotInfLinesFlags flags)
         {
             byte* native_label_id;
@@ -18980,6 +23963,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotInfLines(string label_id, ref long values, int count, ImPlotInfLinesFlags flags, int offset)
         {
             byte* native_label_id;
@@ -19010,6 +24001,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotInfLines(string label_id, ref long values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -19039,6 +24039,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotInfLines(string label_id, ref ulong values, int count)
         {
             byte* native_label_id;
@@ -19071,6 +24077,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotInfLines(string label_id, ref ulong values, int count, ImPlotInfLinesFlags flags)
         {
             byte* native_label_id;
@@ -19102,6 +24115,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotInfLines(string label_id, ref ulong values, int count, ImPlotInfLinesFlags flags, int offset)
         {
             byte* native_label_id;
@@ -19132,6 +24153,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the inf lines using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotInfLines(string label_id, ref ulong values, int count, ImPlotInfLinesFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -19161,6 +24191,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref float values, int count)
         {
             byte* native_label_id;
@@ -19195,6 +24231,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotLine(string label_id, ref float values, int count, double xscale)
         {
             byte* native_label_id;
@@ -19228,6 +24271,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotLine(string label_id, ref float values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -19260,6 +24311,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref float values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -19291,6 +24351,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref float values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -19321,6 +24391,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref float values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -19350,6 +24431,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref double values, int count)
         {
             byte* native_label_id;
@@ -19384,6 +24471,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotLine(string label_id, ref double values, int count, double xscale)
         {
             byte* native_label_id;
@@ -19417,6 +24511,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotLine(string label_id, ref double values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -19449,6 +24551,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref double values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -19480,6 +24591,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref double values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -19510,6 +24631,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref double values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -19539,6 +24671,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref sbyte values, int count)
         {
             byte* native_label_id;
@@ -19573,6 +24711,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotLine(string label_id, ref sbyte values, int count, double xscale)
         {
             byte* native_label_id;
@@ -19606,6 +24751,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotLine(string label_id, ref sbyte values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -19638,6 +24791,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref sbyte values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -19669,6 +24831,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref sbyte values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -19699,6 +24871,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref sbyte values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -19728,6 +24911,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref byte values, int count)
         {
             byte* native_label_id;
@@ -19762,6 +24951,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotLine(string label_id, ref byte values, int count, double xscale)
         {
             byte* native_label_id;
@@ -19795,6 +24991,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotLine(string label_id, ref byte values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -19827,6 +25031,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref byte values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -19858,6 +25071,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref byte values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -19888,6 +25111,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref byte values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -19917,6 +25151,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref short values, int count)
         {
             byte* native_label_id;
@@ -19951,6 +25191,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotLine(string label_id, ref short values, int count, double xscale)
         {
             byte* native_label_id;
@@ -19984,6 +25231,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotLine(string label_id, ref short values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -20016,6 +25271,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref short values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -20047,6 +25311,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref short values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -20077,6 +25351,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref short values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -20106,6 +25391,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref ushort values, int count)
         {
             byte* native_label_id;
@@ -20140,6 +25431,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotLine(string label_id, ref ushort values, int count, double xscale)
         {
             byte* native_label_id;
@@ -20173,6 +25471,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotLine(string label_id, ref ushort values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -20205,6 +25511,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref ushort values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -20236,6 +25551,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref ushort values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -20266,6 +25591,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref ushort values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -20295,6 +25631,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref int values, int count)
         {
             byte* native_label_id;
@@ -20329,6 +25671,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotLine(string label_id, ref int values, int count, double xscale)
         {
             byte* native_label_id;
@@ -20362,6 +25711,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotLine(string label_id, ref int values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -20394,6 +25751,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref int values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -20425,6 +25791,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref int values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -20455,6 +25831,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref int values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -20484,6 +25871,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref uint values, int count)
         {
             byte* native_label_id;
@@ -20518,6 +25911,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotLine(string label_id, ref uint values, int count, double xscale)
         {
             byte* native_label_id;
@@ -20551,6 +25951,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotLine(string label_id, ref uint values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -20583,6 +25991,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref uint values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -20614,6 +26031,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref uint values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -20644,6 +26071,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref uint values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -20673,6 +26111,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref long values, int count)
         {
             byte* native_label_id;
@@ -20707,6 +26151,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotLine(string label_id, ref long values, int count, double xscale)
         {
             byte* native_label_id;
@@ -20740,6 +26191,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotLine(string label_id, ref long values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -20772,6 +26231,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref long values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -20803,6 +26271,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref long values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -20833,6 +26311,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref long values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -20862,6 +26351,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref ulong values, int count)
         {
             byte* native_label_id;
@@ -20896,6 +26391,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotLine(string label_id, ref ulong values, int count, double xscale)
         {
             byte* native_label_id;
@@ -20929,6 +26431,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotLine(string label_id, ref ulong values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -20961,6 +26471,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref ulong values, int count, double xscale, double xstart, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -20992,6 +26511,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref ulong values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -21022,6 +26551,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref ulong values, int count, double xscale, double xstart, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -21051,6 +26591,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref float xs, ref float ys, int count)
         {
             byte* native_label_id;
@@ -21086,6 +26633,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref float xs, ref float ys, int count, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -21120,6 +26675,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref float xs, ref float ys, int count, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -21153,6 +26717,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref float xs, ref float ys, int count, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -21185,6 +26759,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref double xs, ref double ys, int count)
         {
             byte* native_label_id;
@@ -21220,6 +26801,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref double xs, ref double ys, int count, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -21254,6 +26843,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref double xs, ref double ys, int count, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -21287,6 +26885,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref double xs, ref double ys, int count, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -21319,6 +26927,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref sbyte xs, ref sbyte ys, int count)
         {
             byte* native_label_id;
@@ -21354,6 +26969,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref sbyte xs, ref sbyte ys, int count, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -21388,6 +27011,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref sbyte xs, ref sbyte ys, int count, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -21421,6 +27053,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref sbyte xs, ref sbyte ys, int count, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -21453,6 +27095,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref byte xs, ref byte ys, int count)
         {
             byte* native_label_id;
@@ -21488,6 +27137,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref byte xs, ref byte ys, int count, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -21522,6 +27179,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref byte xs, ref byte ys, int count, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -21555,6 +27221,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref byte xs, ref byte ys, int count, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -21587,6 +27263,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref short xs, ref short ys, int count)
         {
             byte* native_label_id;
@@ -21622,6 +27305,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref short xs, ref short ys, int count, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -21656,6 +27347,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref short xs, ref short ys, int count, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -21689,6 +27389,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref short xs, ref short ys, int count, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -21721,6 +27431,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref ushort xs, ref ushort ys, int count)
         {
             byte* native_label_id;
@@ -21756,6 +27473,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref ushort xs, ref ushort ys, int count, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -21790,6 +27515,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref ushort xs, ref ushort ys, int count, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -21823,6 +27557,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref ushort xs, ref ushort ys, int count, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -21855,6 +27599,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref int xs, ref int ys, int count)
         {
             byte* native_label_id;
@@ -21890,6 +27641,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref int xs, ref int ys, int count, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -21924,6 +27683,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref int xs, ref int ys, int count, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -21957,6 +27725,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref int xs, ref int ys, int count, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -21989,6 +27767,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref uint xs, ref uint ys, int count)
         {
             byte* native_label_id;
@@ -22024,6 +27809,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref uint xs, ref uint ys, int count, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -22058,6 +27851,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref uint xs, ref uint ys, int count, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -22091,6 +27893,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref uint xs, ref uint ys, int count, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -22123,6 +27935,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref long xs, ref long ys, int count)
         {
             byte* native_label_id;
@@ -22158,6 +27977,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref long xs, ref long ys, int count, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -22192,6 +28019,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref long xs, ref long ys, int count, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -22225,6 +28061,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref long xs, ref long ys, int count, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -22257,6 +28103,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotLine(string label_id, ref ulong xs, ref ulong ys, int count)
         {
             byte* native_label_id;
@@ -22292,6 +28145,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLine(string label_id, ref ulong xs, ref ulong ys, int count, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -22326,6 +28187,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotLine(string label_id, ref ulong xs, ref ulong ys, int count, ImPlotLineFlags flags, int offset)
         {
             byte* native_label_id;
@@ -22359,6 +28229,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotLine(string label_id, ref ulong xs, ref ulong ys, int count, ImPlotLineFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -22391,6 +28271,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the line g using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="getter">The getter</param>
+        /// <param name="data">The data</param>
+        /// <param name="count">The count</param>
         public static void PlotLineG(string label_id, IntPtr getter, IntPtr data, int count)
         {
             byte* native_label_id;
@@ -22419,6 +28306,14 @@ namespace ImPlotNET
                 Util.Free(native_label_id);
             }
         }
+        /// <summary>
+        /// Plots the line g using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="getter">The getter</param>
+        /// <param name="data">The data</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotLineG(string label_id, IntPtr getter, IntPtr data, int count, ImPlotLineFlags flags)
         {
             byte* native_label_id;
@@ -22446,6 +28341,15 @@ namespace ImPlotNET
                 Util.Free(native_label_id);
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
         public static void PlotPieChart(string[] label_ids, ref float values, int count, double x, double y, double radius)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -22500,6 +28404,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotPieChart(string[] label_ids, ref float values, int count, double x, double y, double radius, string label_fmt)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -22558,6 +28472,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] label_ids, ref float values, int count, double x, double y, double radius, string label_fmt, double angle0)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -22615,6 +28540,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
+        /// <param name="flags">The flags</param>
         public static void PlotPieChart(string[] label_ids, ref float values, int count, double x, double y, double radius, string label_fmt, double angle0, ImPlotPieChartFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -22671,6 +28608,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
         public static void PlotPieChart(string[] label_ids, ref double values, int count, double x, double y, double radius)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -22725,6 +28671,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotPieChart(string[] label_ids, ref double values, int count, double x, double y, double radius, string label_fmt)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -22783,6 +28739,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] label_ids, ref double values, int count, double x, double y, double radius, string label_fmt, double angle0)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -22840,6 +28807,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
+        /// <param name="flags">The flags</param>
         public static void PlotPieChart(string[] label_ids, ref double values, int count, double x, double y, double radius, string label_fmt, double angle0, ImPlotPieChartFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -22896,6 +28875,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
         public static void PlotPieChart(string[] label_ids, ref sbyte values, int count, double x, double y, double radius)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -22950,6 +28938,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotPieChart(string[] label_ids, ref sbyte values, int count, double x, double y, double radius, string label_fmt)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -23008,6 +29006,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] label_ids, ref sbyte values, int count, double x, double y, double radius, string label_fmt, double angle0)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -23065,6 +29074,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
+        /// <param name="flags">The flags</param>
         public static void PlotPieChart(string[] label_ids, ref sbyte values, int count, double x, double y, double radius, string label_fmt, double angle0, ImPlotPieChartFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -23121,6 +29142,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
         public static void PlotPieChart(string[] label_ids, ref byte values, int count, double x, double y, double radius)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -23175,6 +29205,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotPieChart(string[] label_ids, ref byte values, int count, double x, double y, double radius, string label_fmt)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -23233,6 +29273,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] label_ids, ref byte values, int count, double x, double y, double radius, string label_fmt, double angle0)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -23290,6 +29341,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
+        /// <param name="flags">The flags</param>
         public static void PlotPieChart(string[] label_ids, ref byte values, int count, double x, double y, double radius, string label_fmt, double angle0, ImPlotPieChartFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -23346,6 +29409,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
         public static void PlotPieChart(string[] label_ids, ref short values, int count, double x, double y, double radius)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -23400,6 +29472,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotPieChart(string[] label_ids, ref short values, int count, double x, double y, double radius, string label_fmt)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -23458,6 +29540,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] label_ids, ref short values, int count, double x, double y, double radius, string label_fmt, double angle0)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -23515,6 +29608,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
+        /// <param name="flags">The flags</param>
         public static void PlotPieChart(string[] label_ids, ref short values, int count, double x, double y, double radius, string label_fmt, double angle0, ImPlotPieChartFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -23571,6 +29676,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
         public static void PlotPieChart(string[] label_ids, ref ushort values, int count, double x, double y, double radius)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -23625,6 +29739,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotPieChart(string[] label_ids, ref ushort values, int count, double x, double y, double radius, string label_fmt)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -23683,6 +29807,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] label_ids, ref ushort values, int count, double x, double y, double radius, string label_fmt, double angle0)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -23740,6 +29875,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
+        /// <param name="flags">The flags</param>
         public static void PlotPieChart(string[] label_ids, ref ushort values, int count, double x, double y, double radius, string label_fmt, double angle0, ImPlotPieChartFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -23796,6 +29943,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
         public static void PlotPieChart(string[] label_ids, ref int values, int count, double x, double y, double radius)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -23850,6 +30006,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotPieChart(string[] label_ids, ref int values, int count, double x, double y, double radius, string label_fmt)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -23908,6 +30074,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] label_ids, ref int values, int count, double x, double y, double radius, string label_fmt, double angle0)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -23965,6 +30142,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
+        /// <param name="flags">The flags</param>
         public static void PlotPieChart(string[] label_ids, ref int values, int count, double x, double y, double radius, string label_fmt, double angle0, ImPlotPieChartFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -24021,6 +30210,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
         public static void PlotPieChart(string[] label_ids, ref uint values, int count, double x, double y, double radius)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -24075,6 +30273,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotPieChart(string[] label_ids, ref uint values, int count, double x, double y, double radius, string label_fmt)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -24133,6 +30341,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] label_ids, ref uint values, int count, double x, double y, double radius, string label_fmt, double angle0)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -24190,6 +30409,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
+        /// <param name="flags">The flags</param>
         public static void PlotPieChart(string[] label_ids, ref uint values, int count, double x, double y, double radius, string label_fmt, double angle0, ImPlotPieChartFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -24246,6 +30477,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
         public static void PlotPieChart(string[] label_ids, ref long values, int count, double x, double y, double radius)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -24300,6 +30540,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotPieChart(string[] label_ids, ref long values, int count, double x, double y, double radius, string label_fmt)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -24358,6 +30608,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] label_ids, ref long values, int count, double x, double y, double radius, string label_fmt, double angle0)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -24415,6 +30676,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
+        /// <param name="flags">The flags</param>
         public static void PlotPieChart(string[] label_ids, ref long values, int count, double x, double y, double radius, string label_fmt, double angle0, ImPlotPieChartFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -24471,6 +30744,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
         public static void PlotPieChart(string[] label_ids, ref ulong values, int count, double x, double y, double radius)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -24525,6 +30807,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
         public static void PlotPieChart(string[] label_ids, ref ulong values, int count, double x, double y, double radius, string label_fmt)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -24583,6 +30875,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
         public static void PlotPieChart(string[] label_ids, ref ulong values, int count, double x, double y, double radius, string label_fmt, double angle0)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -24640,6 +30943,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the pie chart using the specified label ids
+        /// </summary>
+        /// <param name="label_ids">The label ids</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="label_fmt">The label fmt</param>
+        /// <param name="angle0">The angle</param>
+        /// <param name="flags">The flags</param>
         public static void PlotPieChart(string[] label_ids, ref ulong values, int count, double x, double y, double radius, string label_fmt, double angle0, ImPlotPieChartFlags flags)
         {
             int* label_ids_byteCounts = stackalloc int[label_ids.Length];
@@ -24696,6 +31011,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref float values, int count)
         {
             byte* native_label_id;
@@ -24730,6 +31051,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotScatter(string label_id, ref float values, int count, double xscale)
         {
             byte* native_label_id;
@@ -24763,6 +31091,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotScatter(string label_id, ref float values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -24795,6 +31131,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref float values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -24826,6 +31171,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref float values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -24856,6 +31211,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref float values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -24885,6 +31251,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref double values, int count)
         {
             byte* native_label_id;
@@ -24919,6 +31291,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotScatter(string label_id, ref double values, int count, double xscale)
         {
             byte* native_label_id;
@@ -24952,6 +31331,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotScatter(string label_id, ref double values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -24984,6 +31371,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref double values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -25015,6 +31411,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref double values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -25045,6 +31451,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref double values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -25074,6 +31491,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref sbyte values, int count)
         {
             byte* native_label_id;
@@ -25108,6 +31531,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotScatter(string label_id, ref sbyte values, int count, double xscale)
         {
             byte* native_label_id;
@@ -25141,6 +31571,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotScatter(string label_id, ref sbyte values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -25173,6 +31611,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref sbyte values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -25204,6 +31651,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref sbyte values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -25234,6 +31691,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref sbyte values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -25263,6 +31731,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref byte values, int count)
         {
             byte* native_label_id;
@@ -25297,6 +31771,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotScatter(string label_id, ref byte values, int count, double xscale)
         {
             byte* native_label_id;
@@ -25330,6 +31811,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotScatter(string label_id, ref byte values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -25362,6 +31851,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref byte values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -25393,6 +31891,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref byte values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -25423,6 +31931,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref byte values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -25452,6 +31971,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref short values, int count)
         {
             byte* native_label_id;
@@ -25486,6 +32011,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotScatter(string label_id, ref short values, int count, double xscale)
         {
             byte* native_label_id;
@@ -25519,6 +32051,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotScatter(string label_id, ref short values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -25551,6 +32091,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref short values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -25582,6 +32131,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref short values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -25612,6 +32171,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref short values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -25641,6 +32211,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref ushort values, int count)
         {
             byte* native_label_id;
@@ -25675,6 +32251,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotScatter(string label_id, ref ushort values, int count, double xscale)
         {
             byte* native_label_id;
@@ -25708,6 +32291,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotScatter(string label_id, ref ushort values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -25740,6 +32331,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref ushort values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -25771,6 +32371,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref ushort values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -25801,6 +32411,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref ushort values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -25830,6 +32451,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref int values, int count)
         {
             byte* native_label_id;
@@ -25864,6 +32491,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotScatter(string label_id, ref int values, int count, double xscale)
         {
             byte* native_label_id;
@@ -25897,6 +32531,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotScatter(string label_id, ref int values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -25929,6 +32571,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref int values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -25960,6 +32611,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref int values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -25990,6 +32651,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref int values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -26019,6 +32691,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref uint values, int count)
         {
             byte* native_label_id;
@@ -26053,6 +32731,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotScatter(string label_id, ref uint values, int count, double xscale)
         {
             byte* native_label_id;
@@ -26086,6 +32771,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotScatter(string label_id, ref uint values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -26118,6 +32811,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref uint values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -26149,6 +32851,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref uint values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -26179,6 +32891,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref uint values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -26208,6 +32931,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref long values, int count)
         {
             byte* native_label_id;
@@ -26242,6 +32971,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotScatter(string label_id, ref long values, int count, double xscale)
         {
             byte* native_label_id;
@@ -26275,6 +33011,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotScatter(string label_id, ref long values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -26307,6 +33051,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref long values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -26338,6 +33091,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref long values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -26368,6 +33131,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref long values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -26397,6 +33171,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref ulong values, int count)
         {
             byte* native_label_id;
@@ -26431,6 +33211,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotScatter(string label_id, ref ulong values, int count, double xscale)
         {
             byte* native_label_id;
@@ -26464,6 +33251,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotScatter(string label_id, ref ulong values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -26496,6 +33291,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref ulong values, int count, double xscale, double xstart, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -26527,6 +33331,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref ulong values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -26557,6 +33371,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref ulong values, int count, double xscale, double xstart, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -26586,6 +33411,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref float xs, ref float ys, int count)
         {
             byte* native_label_id;
@@ -26621,6 +33453,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref float xs, ref float ys, int count, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -26655,6 +33495,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref float xs, ref float ys, int count, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -26688,6 +33537,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref float xs, ref float ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -26720,6 +33579,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref double xs, ref double ys, int count)
         {
             byte* native_label_id;
@@ -26755,6 +33621,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref double xs, ref double ys, int count, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -26789,6 +33663,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref double xs, ref double ys, int count, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -26822,6 +33705,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref double xs, ref double ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -26854,6 +33747,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref sbyte xs, ref sbyte ys, int count)
         {
             byte* native_label_id;
@@ -26889,6 +33789,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref sbyte xs, ref sbyte ys, int count, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -26923,6 +33831,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref sbyte xs, ref sbyte ys, int count, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -26956,6 +33873,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref sbyte xs, ref sbyte ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -26988,6 +33915,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref byte xs, ref byte ys, int count)
         {
             byte* native_label_id;
@@ -27023,6 +33957,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref byte xs, ref byte ys, int count, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -27057,6 +33999,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref byte xs, ref byte ys, int count, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -27090,6 +34041,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref byte xs, ref byte ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -27122,6 +34083,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref short xs, ref short ys, int count)
         {
             byte* native_label_id;
@@ -27157,6 +34125,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref short xs, ref short ys, int count, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -27191,6 +34167,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref short xs, ref short ys, int count, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -27224,6 +34209,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref short xs, ref short ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -27256,6 +34251,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref ushort xs, ref ushort ys, int count)
         {
             byte* native_label_id;
@@ -27291,6 +34293,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref ushort xs, ref ushort ys, int count, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -27325,6 +34335,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref ushort xs, ref ushort ys, int count, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -27358,6 +34377,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref ushort xs, ref ushort ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -27390,6 +34419,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref int xs, ref int ys, int count)
         {
             byte* native_label_id;
@@ -27425,6 +34461,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref int xs, ref int ys, int count, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -27459,6 +34503,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref int xs, ref int ys, int count, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -27492,6 +34545,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref int xs, ref int ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -27524,6 +34587,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref uint xs, ref uint ys, int count)
         {
             byte* native_label_id;
@@ -27559,6 +34629,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref uint xs, ref uint ys, int count, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -27593,6 +34671,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref uint xs, ref uint ys, int count, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -27626,6 +34713,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref uint xs, ref uint ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -27658,6 +34755,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref long xs, ref long ys, int count)
         {
             byte* native_label_id;
@@ -27693,6 +34797,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref long xs, ref long ys, int count, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -27727,6 +34839,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref long xs, ref long ys, int count, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -27760,6 +34881,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref long xs, ref long ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -27792,6 +34923,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotScatter(string label_id, ref ulong xs, ref ulong ys, int count)
         {
             byte* native_label_id;
@@ -27827,6 +34965,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatter(string label_id, ref ulong xs, ref ulong ys, int count, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -27861,6 +35007,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotScatter(string label_id, ref ulong xs, ref ulong ys, int count, ImPlotScatterFlags flags, int offset)
         {
             byte* native_label_id;
@@ -27894,6 +35049,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotScatter(string label_id, ref ulong xs, ref ulong ys, int count, ImPlotScatterFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -27926,6 +35091,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the scatter g using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="getter">The getter</param>
+        /// <param name="data">The data</param>
+        /// <param name="count">The count</param>
         public static void PlotScatterG(string label_id, IntPtr getter, IntPtr data, int count)
         {
             byte* native_label_id;
@@ -27954,6 +35126,14 @@ namespace ImPlotNET
                 Util.Free(native_label_id);
             }
         }
+        /// <summary>
+        /// Plots the scatter g using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="getter">The getter</param>
+        /// <param name="data">The data</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotScatterG(string label_id, IntPtr getter, IntPtr data, int count, ImPlotScatterFlags flags)
         {
             byte* native_label_id;
@@ -27981,6 +35161,12 @@ namespace ImPlotNET
                 Util.Free(native_label_id);
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref float values, int count)
         {
             byte* native_label_id;
@@ -28016,6 +35202,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref float values, int count, double yref)
         {
             byte* native_label_id;
@@ -28050,6 +35243,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotShaded(string label_id, ref float values, int count, double yref, double xscale)
         {
             byte* native_label_id;
@@ -28083,6 +35284,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotShaded(string label_id, ref float values, int count, double yref, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -28115,6 +35325,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref float values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -28146,6 +35366,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref float values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -28176,6 +35407,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref float values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -28205,6 +35448,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref double values, int count)
         {
             byte* native_label_id;
@@ -28240,6 +35489,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref double values, int count, double yref)
         {
             byte* native_label_id;
@@ -28274,6 +35530,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotShaded(string label_id, ref double values, int count, double yref, double xscale)
         {
             byte* native_label_id;
@@ -28307,6 +35571,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotShaded(string label_id, ref double values, int count, double yref, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -28339,6 +35612,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref double values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -28370,6 +35653,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref double values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -28400,6 +35694,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref double values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -28429,6 +35735,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref sbyte values, int count)
         {
             byte* native_label_id;
@@ -28464,6 +35776,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref sbyte values, int count, double yref)
         {
             byte* native_label_id;
@@ -28498,6 +35817,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotShaded(string label_id, ref sbyte values, int count, double yref, double xscale)
         {
             byte* native_label_id;
@@ -28531,6 +35858,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotShaded(string label_id, ref sbyte values, int count, double yref, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -28563,6 +35899,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref sbyte values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -28594,6 +35940,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref sbyte values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -28624,6 +35981,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref sbyte values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -28653,6 +36022,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref byte values, int count)
         {
             byte* native_label_id;
@@ -28688,6 +36063,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref byte values, int count, double yref)
         {
             byte* native_label_id;
@@ -28722,6 +36104,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotShaded(string label_id, ref byte values, int count, double yref, double xscale)
         {
             byte* native_label_id;
@@ -28755,6 +36145,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotShaded(string label_id, ref byte values, int count, double yref, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -28787,6 +36186,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref byte values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -28818,6 +36227,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref byte values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -28848,6 +36268,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref byte values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -28877,6 +36309,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref short values, int count)
         {
             byte* native_label_id;
@@ -28912,6 +36350,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref short values, int count, double yref)
         {
             byte* native_label_id;
@@ -28946,6 +36391,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotShaded(string label_id, ref short values, int count, double yref, double xscale)
         {
             byte* native_label_id;
@@ -28979,6 +36432,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotShaded(string label_id, ref short values, int count, double yref, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -29011,6 +36473,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref short values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -29042,6 +36514,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref short values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -29072,6 +36555,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref short values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -29101,6 +36596,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref ushort values, int count)
         {
             byte* native_label_id;
@@ -29136,6 +36637,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref ushort values, int count, double yref)
         {
             byte* native_label_id;
@@ -29170,6 +36678,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotShaded(string label_id, ref ushort values, int count, double yref, double xscale)
         {
             byte* native_label_id;
@@ -29203,6 +36719,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotShaded(string label_id, ref ushort values, int count, double yref, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -29235,6 +36760,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref ushort values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -29266,6 +36801,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref ushort values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -29296,6 +36842,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref ushort values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -29325,6 +36883,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref int values, int count)
         {
             byte* native_label_id;
@@ -29360,6 +36924,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref int values, int count, double yref)
         {
             byte* native_label_id;
@@ -29394,6 +36965,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotShaded(string label_id, ref int values, int count, double yref, double xscale)
         {
             byte* native_label_id;
@@ -29427,6 +37006,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotShaded(string label_id, ref int values, int count, double yref, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -29459,6 +37047,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref int values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -29490,6 +37088,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref int values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -29520,6 +37129,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref int values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -29549,6 +37170,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref uint values, int count)
         {
             byte* native_label_id;
@@ -29584,6 +37211,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref uint values, int count, double yref)
         {
             byte* native_label_id;
@@ -29618,6 +37252,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotShaded(string label_id, ref uint values, int count, double yref, double xscale)
         {
             byte* native_label_id;
@@ -29651,6 +37293,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotShaded(string label_id, ref uint values, int count, double yref, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -29683,6 +37334,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref uint values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -29714,6 +37375,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref uint values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -29744,6 +37416,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref uint values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -29773,6 +37457,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref long values, int count)
         {
             byte* native_label_id;
@@ -29808,6 +37498,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref long values, int count, double yref)
         {
             byte* native_label_id;
@@ -29842,6 +37539,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotShaded(string label_id, ref long values, int count, double yref, double xscale)
         {
             byte* native_label_id;
@@ -29875,6 +37580,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotShaded(string label_id, ref long values, int count, double yref, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -29907,6 +37621,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref long values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -29938,6 +37662,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref long values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -29968,6 +37703,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref long values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -29997,6 +37744,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref ulong values, int count)
         {
             byte* native_label_id;
@@ -30032,6 +37785,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref ulong values, int count, double yref)
         {
             byte* native_label_id;
@@ -30066,6 +37826,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotShaded(string label_id, ref ulong values, int count, double yref, double xscale)
         {
             byte* native_label_id;
@@ -30099,6 +37867,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotShaded(string label_id, ref ulong values, int count, double yref, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -30131,6 +37908,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref ulong values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -30162,6 +37949,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref ulong values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -30192,6 +37990,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref ulong values, int count, double yref, double xscale, double xstart, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -30221,6 +38031,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref float xs, ref float ys, int count)
         {
             byte* native_label_id;
@@ -30257,6 +38074,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref float xs, ref float ys, int count, double yref)
         {
             byte* native_label_id;
@@ -30292,6 +38117,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref float xs, ref float ys, int count, double yref, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -30326,6 +38160,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref float xs, ref float ys, int count, double yref, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -30359,6 +38203,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref float xs, ref float ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -30391,6 +38246,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref double xs, ref double ys, int count)
         {
             byte* native_label_id;
@@ -30427,6 +38289,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref double xs, ref double ys, int count, double yref)
         {
             byte* native_label_id;
@@ -30462,6 +38332,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref double xs, ref double ys, int count, double yref, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -30496,6 +38375,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref double xs, ref double ys, int count, double yref, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -30529,6 +38418,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref double xs, ref double ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -30561,6 +38461,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref sbyte xs, ref sbyte ys, int count)
         {
             byte* native_label_id;
@@ -30597,6 +38504,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref sbyte xs, ref sbyte ys, int count, double yref)
         {
             byte* native_label_id;
@@ -30632,6 +38547,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref sbyte xs, ref sbyte ys, int count, double yref, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -30666,6 +38590,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref sbyte xs, ref sbyte ys, int count, double yref, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -30699,6 +38633,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref sbyte xs, ref sbyte ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -30731,6 +38676,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref byte xs, ref byte ys, int count)
         {
             byte* native_label_id;
@@ -30767,6 +38719,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref byte xs, ref byte ys, int count, double yref)
         {
             byte* native_label_id;
@@ -30802,6 +38762,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref byte xs, ref byte ys, int count, double yref, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -30836,6 +38805,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref byte xs, ref byte ys, int count, double yref, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -30869,6 +38848,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref byte xs, ref byte ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -30901,6 +38891,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref short xs, ref short ys, int count)
         {
             byte* native_label_id;
@@ -30937,6 +38934,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref short xs, ref short ys, int count, double yref)
         {
             byte* native_label_id;
@@ -30972,6 +38977,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref short xs, ref short ys, int count, double yref, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -31006,6 +39020,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref short xs, ref short ys, int count, double yref, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -31039,6 +39063,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref short xs, ref short ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -31071,6 +39106,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref ushort xs, ref ushort ys, int count)
         {
             byte* native_label_id;
@@ -31107,6 +39149,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref ushort xs, ref ushort ys, int count, double yref)
         {
             byte* native_label_id;
@@ -31142,6 +39192,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref ushort xs, ref ushort ys, int count, double yref, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -31176,6 +39235,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref ushort xs, ref ushort ys, int count, double yref, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -31209,6 +39278,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref ushort xs, ref ushort ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -31241,6 +39321,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref int xs, ref int ys, int count)
         {
             byte* native_label_id;
@@ -31277,6 +39364,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref int xs, ref int ys, int count, double yref)
         {
             byte* native_label_id;
@@ -31312,6 +39407,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref int xs, ref int ys, int count, double yref, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -31346,6 +39450,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref int xs, ref int ys, int count, double yref, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -31379,6 +39493,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref int xs, ref int ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -31411,6 +39536,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref uint xs, ref uint ys, int count)
         {
             byte* native_label_id;
@@ -31447,6 +39579,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref uint xs, ref uint ys, int count, double yref)
         {
             byte* native_label_id;
@@ -31482,6 +39622,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref uint xs, ref uint ys, int count, double yref, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -31516,6 +39665,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref uint xs, ref uint ys, int count, double yref, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -31549,6 +39708,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref uint xs, ref uint ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -31581,6 +39751,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref long xs, ref long ys, int count)
         {
             byte* native_label_id;
@@ -31617,6 +39794,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref long xs, ref long ys, int count, double yref)
         {
             byte* native_label_id;
@@ -31652,6 +39837,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref long xs, ref long ys, int count, double yref, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -31686,6 +39880,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref long xs, ref long ys, int count, double yref, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -31719,6 +39923,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref long xs, ref long ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -31751,6 +39966,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref ulong xs, ref ulong ys, int count)
         {
             byte* native_label_id;
@@ -31787,6 +40009,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
         public static void PlotShaded(string label_id, ref ulong xs, ref ulong ys, int count, double yref)
         {
             byte* native_label_id;
@@ -31822,6 +40052,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref ulong xs, ref ulong ys, int count, double yref, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -31856,6 +40095,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref ulong xs, ref ulong ys, int count, double yref, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -31889,6 +40138,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="yref">The yref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref ulong xs, ref ulong ys, int count, double yref, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -31921,6 +40181,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref float xs, ref float ys1, ref float ys2, int count)
         {
             byte* native_label_id;
@@ -31959,6 +40227,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref float xs, ref float ys1, ref float ys2, int count, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -31996,6 +40273,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref float xs, ref float ys1, ref float ys2, int count, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -32032,6 +40319,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref float xs, ref float ys1, ref float ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -32067,6 +40365,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref double xs, ref double ys1, ref double ys2, int count)
         {
             byte* native_label_id;
@@ -32105,6 +40411,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref double xs, ref double ys1, ref double ys2, int count, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -32142,6 +40457,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref double xs, ref double ys1, ref double ys2, int count, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -32178,6 +40503,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref double xs, ref double ys1, ref double ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -32213,6 +40549,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref sbyte xs, ref sbyte ys1, ref sbyte ys2, int count)
         {
             byte* native_label_id;
@@ -32251,6 +40595,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref sbyte xs, ref sbyte ys1, ref sbyte ys2, int count, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -32288,6 +40641,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref sbyte xs, ref sbyte ys1, ref sbyte ys2, int count, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -32324,6 +40687,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref sbyte xs, ref sbyte ys1, ref sbyte ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -32359,6 +40733,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref byte xs, ref byte ys1, ref byte ys2, int count)
         {
             byte* native_label_id;
@@ -32397,6 +40779,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref byte xs, ref byte ys1, ref byte ys2, int count, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -32434,6 +40825,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref byte xs, ref byte ys1, ref byte ys2, int count, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -32470,6 +40871,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref byte xs, ref byte ys1, ref byte ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -32505,6 +40917,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref short xs, ref short ys1, ref short ys2, int count)
         {
             byte* native_label_id;
@@ -32543,6 +40963,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref short xs, ref short ys1, ref short ys2, int count, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -32580,6 +41009,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref short xs, ref short ys1, ref short ys2, int count, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -32616,6 +41055,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref short xs, ref short ys1, ref short ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -32651,6 +41101,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref ushort xs, ref ushort ys1, ref ushort ys2, int count)
         {
             byte* native_label_id;
@@ -32689,6 +41147,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref ushort xs, ref ushort ys1, ref ushort ys2, int count, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -32726,6 +41193,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref ushort xs, ref ushort ys1, ref ushort ys2, int count, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -32762,6 +41239,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref ushort xs, ref ushort ys1, ref ushort ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -32797,6 +41285,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref int xs, ref int ys1, ref int ys2, int count)
         {
             byte* native_label_id;
@@ -32835,6 +41331,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref int xs, ref int ys1, ref int ys2, int count, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -32872,6 +41377,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref int xs, ref int ys1, ref int ys2, int count, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -32908,6 +41423,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref int xs, ref int ys1, ref int ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -32943,6 +41469,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref uint xs, ref uint ys1, ref uint ys2, int count)
         {
             byte* native_label_id;
@@ -32981,6 +41515,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref uint xs, ref uint ys1, ref uint ys2, int count, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -33018,6 +41561,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref uint xs, ref uint ys1, ref uint ys2, int count, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -33054,6 +41607,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref uint xs, ref uint ys1, ref uint ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -33089,6 +41653,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref long xs, ref long ys1, ref long ys2, int count)
         {
             byte* native_label_id;
@@ -33127,6 +41699,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref long xs, ref long ys1, ref long ys2, int count, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -33164,6 +41745,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref long xs, ref long ys1, ref long ys2, int count, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -33200,6 +41791,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref long xs, ref long ys1, ref long ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -33235,6 +41837,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotShaded(string label_id, ref ulong xs, ref ulong ys1, ref ulong ys2, int count)
         {
             byte* native_label_id;
@@ -33273,6 +41883,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShaded(string label_id, ref ulong xs, ref ulong ys1, ref ulong ys2, int count, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -33310,6 +41929,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotShaded(string label_id, ref ulong xs, ref ulong ys1, ref ulong ys2, int count, ImPlotShadedFlags flags, int offset)
         {
             byte* native_label_id;
@@ -33346,6 +41975,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys1">The ys</param>
+        /// <param name="ys2">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotShaded(string label_id, ref ulong xs, ref ulong ys1, ref ulong ys2, int count, ImPlotShadedFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -33381,6 +42021,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the shaded g using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="getter1">The getter</param>
+        /// <param name="data1">The data</param>
+        /// <param name="getter2">The getter</param>
+        /// <param name="data2">The data</param>
+        /// <param name="count">The count</param>
         public static void PlotShadedG(string label_id, IntPtr getter1, IntPtr data1, IntPtr getter2, IntPtr data2, int count)
         {
             byte* native_label_id;
@@ -33410,6 +42059,16 @@ namespace ImPlotNET
                 Util.Free(native_label_id);
             }
         }
+        /// <summary>
+        /// Plots the shaded g using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="getter1">The getter</param>
+        /// <param name="data1">The data</param>
+        /// <param name="getter2">The getter</param>
+        /// <param name="data2">The data</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotShadedG(string label_id, IntPtr getter1, IntPtr data1, IntPtr getter2, IntPtr data2, int count, ImPlotShadedFlags flags)
         {
             byte* native_label_id;
@@ -33438,6 +42097,12 @@ namespace ImPlotNET
                 Util.Free(native_label_id);
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref float values, int count)
         {
             byte* native_label_id;
@@ -33472,6 +42137,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotStairs(string label_id, ref float values, int count, double xscale)
         {
             byte* native_label_id;
@@ -33505,6 +42177,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotStairs(string label_id, ref float values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -33537,6 +42217,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref float values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -33568,6 +42257,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref float values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -33598,6 +42297,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref float values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -33627,6 +42337,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref double values, int count)
         {
             byte* native_label_id;
@@ -33661,6 +42377,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotStairs(string label_id, ref double values, int count, double xscale)
         {
             byte* native_label_id;
@@ -33694,6 +42417,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotStairs(string label_id, ref double values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -33726,6 +42457,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref double values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -33757,6 +42497,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref double values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -33787,6 +42537,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref double values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -33816,6 +42577,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref sbyte values, int count)
         {
             byte* native_label_id;
@@ -33850,6 +42617,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotStairs(string label_id, ref sbyte values, int count, double xscale)
         {
             byte* native_label_id;
@@ -33883,6 +42657,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotStairs(string label_id, ref sbyte values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -33915,6 +42697,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref sbyte values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -33946,6 +42737,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref sbyte values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -33976,6 +42777,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref sbyte values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -34005,6 +42817,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref byte values, int count)
         {
             byte* native_label_id;
@@ -34039,6 +42857,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotStairs(string label_id, ref byte values, int count, double xscale)
         {
             byte* native_label_id;
@@ -34072,6 +42897,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotStairs(string label_id, ref byte values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -34104,6 +42937,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref byte values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -34135,6 +42977,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref byte values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -34165,6 +43017,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref byte values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -34194,6 +43057,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref short values, int count)
         {
             byte* native_label_id;
@@ -34228,6 +43097,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotStairs(string label_id, ref short values, int count, double xscale)
         {
             byte* native_label_id;
@@ -34261,6 +43137,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotStairs(string label_id, ref short values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -34293,6 +43177,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref short values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -34324,6 +43217,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref short values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -34354,6 +43257,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref short values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -34383,6 +43297,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref ushort values, int count)
         {
             byte* native_label_id;
@@ -34417,6 +43337,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotStairs(string label_id, ref ushort values, int count, double xscale)
         {
             byte* native_label_id;
@@ -34450,6 +43377,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotStairs(string label_id, ref ushort values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -34482,6 +43417,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref ushort values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -34513,6 +43457,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref ushort values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -34543,6 +43497,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref ushort values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -34572,6 +43537,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref int values, int count)
         {
             byte* native_label_id;
@@ -34606,6 +43577,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotStairs(string label_id, ref int values, int count, double xscale)
         {
             byte* native_label_id;
@@ -34639,6 +43617,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotStairs(string label_id, ref int values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -34671,6 +43657,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref int values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -34702,6 +43697,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref int values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -34732,6 +43737,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref int values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -34761,6 +43777,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref uint values, int count)
         {
             byte* native_label_id;
@@ -34795,6 +43817,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotStairs(string label_id, ref uint values, int count, double xscale)
         {
             byte* native_label_id;
@@ -34828,6 +43857,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotStairs(string label_id, ref uint values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -34860,6 +43897,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref uint values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -34891,6 +43937,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref uint values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -34921,6 +43977,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref uint values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -34950,6 +44017,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref long values, int count)
         {
             byte* native_label_id;
@@ -34984,6 +44057,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotStairs(string label_id, ref long values, int count, double xscale)
         {
             byte* native_label_id;
@@ -35017,6 +44097,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotStairs(string label_id, ref long values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -35049,6 +44137,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref long values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -35080,6 +44177,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref long values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -35110,6 +44217,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref long values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -35139,6 +44257,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref ulong values, int count)
         {
             byte* native_label_id;
@@ -35173,6 +44297,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
         public static void PlotStairs(string label_id, ref ulong values, int count, double xscale)
         {
             byte* native_label_id;
@@ -35206,6 +44337,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
         public static void PlotStairs(string label_id, ref ulong values, int count, double xscale, double xstart)
         {
             byte* native_label_id;
@@ -35238,6 +44377,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref ulong values, int count, double xscale, double xstart, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -35269,6 +44417,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref ulong values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -35299,6 +44457,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="xscale">The xscale</param>
+        /// <param name="xstart">The xstart</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref ulong values, int count, double xscale, double xstart, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -35328,6 +44497,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref float xs, ref float ys, int count)
         {
             byte* native_label_id;
@@ -35363,6 +44539,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref float xs, ref float ys, int count, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -35397,6 +44581,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref float xs, ref float ys, int count, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -35430,6 +44623,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref float xs, ref float ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -35462,6 +44665,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref double xs, ref double ys, int count)
         {
             byte* native_label_id;
@@ -35497,6 +44707,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref double xs, ref double ys, int count, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -35531,6 +44749,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref double xs, ref double ys, int count, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -35564,6 +44791,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref double xs, ref double ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -35596,6 +44833,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref sbyte xs, ref sbyte ys, int count)
         {
             byte* native_label_id;
@@ -35631,6 +44875,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref sbyte xs, ref sbyte ys, int count, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -35665,6 +44917,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref sbyte xs, ref sbyte ys, int count, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -35698,6 +44959,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref sbyte xs, ref sbyte ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -35730,6 +45001,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref byte xs, ref byte ys, int count)
         {
             byte* native_label_id;
@@ -35765,6 +45043,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref byte xs, ref byte ys, int count, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -35799,6 +45085,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref byte xs, ref byte ys, int count, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -35832,6 +45127,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref byte xs, ref byte ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -35864,6 +45169,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref short xs, ref short ys, int count)
         {
             byte* native_label_id;
@@ -35899,6 +45211,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref short xs, ref short ys, int count, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -35933,6 +45253,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref short xs, ref short ys, int count, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -35966,6 +45295,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref short xs, ref short ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -35998,6 +45337,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref ushort xs, ref ushort ys, int count)
         {
             byte* native_label_id;
@@ -36033,6 +45379,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref ushort xs, ref ushort ys, int count, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -36067,6 +45421,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref ushort xs, ref ushort ys, int count, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -36100,6 +45463,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref ushort xs, ref ushort ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -36132,6 +45505,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref int xs, ref int ys, int count)
         {
             byte* native_label_id;
@@ -36167,6 +45547,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref int xs, ref int ys, int count, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -36201,6 +45589,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref int xs, ref int ys, int count, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -36234,6 +45631,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref int xs, ref int ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -36266,6 +45673,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref uint xs, ref uint ys, int count)
         {
             byte* native_label_id;
@@ -36301,6 +45715,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref uint xs, ref uint ys, int count, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -36335,6 +45757,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref uint xs, ref uint ys, int count, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -36368,6 +45799,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref uint xs, ref uint ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -36400,6 +45841,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref long xs, ref long ys, int count)
         {
             byte* native_label_id;
@@ -36435,6 +45883,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref long xs, ref long ys, int count, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -36469,6 +45925,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref long xs, ref long ys, int count, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -36502,6 +45967,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref long xs, ref long ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -36534,6 +46009,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStairs(string label_id, ref ulong xs, ref ulong ys, int count)
         {
             byte* native_label_id;
@@ -36569,6 +46051,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairs(string label_id, ref ulong xs, ref ulong ys, int count, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -36603,6 +46093,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStairs(string label_id, ref ulong xs, ref ulong ys, int count, ImPlotStairsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -36636,6 +46135,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStairs(string label_id, ref ulong xs, ref ulong ys, int count, ImPlotStairsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -36668,6 +46177,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stairs g using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="getter">The getter</param>
+        /// <param name="data">The data</param>
+        /// <param name="count">The count</param>
         public static void PlotStairsG(string label_id, IntPtr getter, IntPtr data, int count)
         {
             byte* native_label_id;
@@ -36696,6 +46212,14 @@ namespace ImPlotNET
                 Util.Free(native_label_id);
             }
         }
+        /// <summary>
+        /// Plots the stairs g using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="getter">The getter</param>
+        /// <param name="data">The data</param>
+        /// <param name="count">The count</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStairsG(string label_id, IntPtr getter, IntPtr data, int count, ImPlotStairsFlags flags)
         {
             byte* native_label_id;
@@ -36723,6 +46247,12 @@ namespace ImPlotNET
                 Util.Free(native_label_id);
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref float values, int count)
         {
             byte* native_label_id;
@@ -36758,6 +46288,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref float values, int count, double @ref)
         {
             byte* native_label_id;
@@ -36792,6 +46329,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref float values, int count, double @ref, double scale)
         {
             byte* native_label_id;
@@ -36825,6 +46370,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref float values, int count, double @ref, double scale, double start)
         {
             byte* native_label_id;
@@ -36857,6 +46411,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref float values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -36888,6 +46452,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref float values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -36918,6 +46493,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref float values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -36947,6 +46534,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref double values, int count)
         {
             byte* native_label_id;
@@ -36982,6 +46575,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref double values, int count, double @ref)
         {
             byte* native_label_id;
@@ -37016,6 +46616,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref double values, int count, double @ref, double scale)
         {
             byte* native_label_id;
@@ -37049,6 +46657,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref double values, int count, double @ref, double scale, double start)
         {
             byte* native_label_id;
@@ -37081,6 +46698,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref double values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -37112,6 +46739,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref double values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -37142,6 +46780,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref double values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -37171,6 +46821,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref sbyte values, int count)
         {
             byte* native_label_id;
@@ -37206,6 +46862,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref sbyte values, int count, double @ref)
         {
             byte* native_label_id;
@@ -37240,6 +46903,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref sbyte values, int count, double @ref, double scale)
         {
             byte* native_label_id;
@@ -37273,6 +46944,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref sbyte values, int count, double @ref, double scale, double start)
         {
             byte* native_label_id;
@@ -37305,6 +46985,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref sbyte values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -37336,6 +47026,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref sbyte values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -37366,6 +47067,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref sbyte values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -37395,6 +47108,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref byte values, int count)
         {
             byte* native_label_id;
@@ -37430,6 +47149,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref byte values, int count, double @ref)
         {
             byte* native_label_id;
@@ -37464,6 +47190,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref byte values, int count, double @ref, double scale)
         {
             byte* native_label_id;
@@ -37497,6 +47231,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref byte values, int count, double @ref, double scale, double start)
         {
             byte* native_label_id;
@@ -37529,6 +47272,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref byte values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -37560,6 +47313,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref byte values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -37590,6 +47354,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref byte values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -37619,6 +47395,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref short values, int count)
         {
             byte* native_label_id;
@@ -37654,6 +47436,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref short values, int count, double @ref)
         {
             byte* native_label_id;
@@ -37688,6 +47477,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref short values, int count, double @ref, double scale)
         {
             byte* native_label_id;
@@ -37721,6 +47518,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref short values, int count, double @ref, double scale, double start)
         {
             byte* native_label_id;
@@ -37753,6 +47559,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref short values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -37784,6 +47600,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref short values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -37814,6 +47641,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref short values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -37843,6 +47682,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref ushort values, int count)
         {
             byte* native_label_id;
@@ -37878,6 +47723,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref ushort values, int count, double @ref)
         {
             byte* native_label_id;
@@ -37912,6 +47764,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref ushort values, int count, double @ref, double scale)
         {
             byte* native_label_id;
@@ -37945,6 +47805,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref ushort values, int count, double @ref, double scale, double start)
         {
             byte* native_label_id;
@@ -37977,6 +47846,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref ushort values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -38008,6 +47887,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref ushort values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -38038,6 +47928,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref ushort values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -38067,6 +47969,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref int values, int count)
         {
             byte* native_label_id;
@@ -38102,6 +48010,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref int values, int count, double @ref)
         {
             byte* native_label_id;
@@ -38136,6 +48051,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref int values, int count, double @ref, double scale)
         {
             byte* native_label_id;
@@ -38169,6 +48092,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref int values, int count, double @ref, double scale, double start)
         {
             byte* native_label_id;
@@ -38201,6 +48133,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref int values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -38232,6 +48174,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref int values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -38262,6 +48215,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref int values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -38291,6 +48256,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref uint values, int count)
         {
             byte* native_label_id;
@@ -38326,6 +48297,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref uint values, int count, double @ref)
         {
             byte* native_label_id;
@@ -38360,6 +48338,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref uint values, int count, double @ref, double scale)
         {
             byte* native_label_id;
@@ -38393,6 +48379,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref uint values, int count, double @ref, double scale, double start)
         {
             byte* native_label_id;
@@ -38425,6 +48420,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref uint values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -38456,6 +48461,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref uint values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -38486,6 +48502,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref uint values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -38515,6 +48543,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref long values, int count)
         {
             byte* native_label_id;
@@ -38550,6 +48584,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref long values, int count, double @ref)
         {
             byte* native_label_id;
@@ -38584,6 +48625,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref long values, int count, double @ref, double scale)
         {
             byte* native_label_id;
@@ -38617,6 +48666,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref long values, int count, double @ref, double scale, double start)
         {
             byte* native_label_id;
@@ -38649,6 +48707,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref long values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -38680,6 +48748,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref long values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -38710,6 +48789,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref long values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -38739,6 +48830,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref ulong values, int count)
         {
             byte* native_label_id;
@@ -38774,6 +48871,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref ulong values, int count, double @ref)
         {
             byte* native_label_id;
@@ -38808,6 +48912,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref ulong values, int count, double @ref, double scale)
         {
             byte* native_label_id;
@@ -38841,6 +48953,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref ulong values, int count, double @ref, double scale, double start)
         {
             byte* native_label_id;
@@ -38873,6 +48994,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref ulong values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -38904,6 +49035,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref ulong values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -38934,6 +49076,18 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="values">The values</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="scale">The scale</param>
+        /// <param name="start">The start</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref ulong values, int count, double @ref, double scale, double start, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -38963,6 +49117,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref float xs, ref float ys, int count)
         {
             byte* native_label_id;
@@ -38999,6 +49160,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref float xs, ref float ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -39034,6 +49203,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref float xs, ref float ys, int count, double @ref, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -39068,6 +49246,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref float xs, ref float ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -39101,6 +49289,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref float xs, ref float ys, int count, double @ref, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -39133,6 +49332,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref double xs, ref double ys, int count)
         {
             byte* native_label_id;
@@ -39169,6 +49375,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref double xs, ref double ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -39204,6 +49418,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref double xs, ref double ys, int count, double @ref, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -39238,6 +49461,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref double xs, ref double ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -39271,6 +49504,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref double xs, ref double ys, int count, double @ref, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -39303,6 +49547,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref sbyte xs, ref sbyte ys, int count)
         {
             byte* native_label_id;
@@ -39339,6 +49590,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref sbyte xs, ref sbyte ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -39374,6 +49633,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref sbyte xs, ref sbyte ys, int count, double @ref, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -39408,6 +49676,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref sbyte xs, ref sbyte ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -39441,6 +49719,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref sbyte xs, ref sbyte ys, int count, double @ref, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -39473,6 +49762,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref byte xs, ref byte ys, int count)
         {
             byte* native_label_id;
@@ -39509,6 +49805,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref byte xs, ref byte ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -39544,6 +49848,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref byte xs, ref byte ys, int count, double @ref, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -39578,6 +49891,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref byte xs, ref byte ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -39611,6 +49934,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref byte xs, ref byte ys, int count, double @ref, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -39643,6 +49977,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref short xs, ref short ys, int count)
         {
             byte* native_label_id;
@@ -39679,6 +50020,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref short xs, ref short ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -39714,6 +50063,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref short xs, ref short ys, int count, double @ref, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -39748,6 +50106,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref short xs, ref short ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -39781,6 +50149,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref short xs, ref short ys, int count, double @ref, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -39813,6 +50192,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref ushort xs, ref ushort ys, int count)
         {
             byte* native_label_id;
@@ -39849,6 +50235,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref ushort xs, ref ushort ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -39884,6 +50278,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref ushort xs, ref ushort ys, int count, double @ref, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -39918,6 +50321,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref ushort xs, ref ushort ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -39951,6 +50364,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref ushort xs, ref ushort ys, int count, double @ref, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -39983,6 +50407,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref int xs, ref int ys, int count)
         {
             byte* native_label_id;
@@ -40019,6 +50450,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref int xs, ref int ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -40054,6 +50493,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref int xs, ref int ys, int count, double @ref, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -40088,6 +50536,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref int xs, ref int ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -40121,6 +50579,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref int xs, ref int ys, int count, double @ref, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -40153,6 +50622,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref uint xs, ref uint ys, int count)
         {
             byte* native_label_id;
@@ -40189,6 +50665,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref uint xs, ref uint ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -40224,6 +50708,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref uint xs, ref uint ys, int count, double @ref, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -40258,6 +50751,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref uint xs, ref uint ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -40291,6 +50794,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref uint xs, ref uint ys, int count, double @ref, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -40323,6 +50837,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref long xs, ref long ys, int count)
         {
             byte* native_label_id;
@@ -40359,6 +50880,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref long xs, ref long ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -40394,6 +50923,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref long xs, ref long ys, int count, double @ref, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -40428,6 +50966,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref long xs, ref long ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -40461,6 +51009,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref long xs, ref long ys, int count, double @ref, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -40493,6 +51052,13 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
         public static void PlotStems(string label_id, ref ulong xs, ref ulong ys, int count)
         {
             byte* native_label_id;
@@ -40529,6 +51095,14 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
         public static void PlotStems(string label_id, ref ulong xs, ref ulong ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -40564,6 +51138,15 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref ulong xs, ref ulong ys, int count, double @ref, ImPlotStemsFlags flags)
         {
             byte* native_label_id;
@@ -40598,6 +51181,16 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref ulong xs, ref ulong ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
         {
             byte* native_label_id;
@@ -40631,6 +51224,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the stems using the specified label id
+        /// </summary>
+        /// <param name="label_id">The label id</param>
+        /// <param name="xs">The xs</param>
+        /// <param name="ys">The ys</param>
+        /// <param name="count">The count</param>
+        /// <param name="@ref">The ref</param>
+        /// <param name="flags">The flags</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="stride">The stride</param>
         public static void PlotStems(string label_id, ref ulong xs, ref ulong ys, int count, double @ref, ImPlotStemsFlags flags, int offset, int stride)
         {
             byte* native_label_id;
@@ -40663,6 +51267,12 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Plots the text using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
         public static void PlotText(string text, double x, double y)
         {
             byte* native_text;
@@ -40691,6 +51301,13 @@ namespace ImPlotNET
                 Util.Free(native_text);
             }
         }
+        /// <summary>
+        /// Plots the text using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="pix_offset">The pix offset</param>
         public static void PlotText(string text, double x, double y, Vector2 pix_offset)
         {
             byte* native_text;
@@ -40718,6 +51335,14 @@ namespace ImPlotNET
                 Util.Free(native_text);
             }
         }
+        /// <summary>
+        /// Plots the text using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="pix_offset">The pix offset</param>
+        /// <param name="flags">The flags</param>
         public static void PlotText(string text, double x, double y, Vector2 pix_offset, ImPlotTextFlags flags)
         {
             byte* native_text;
@@ -40744,6 +51369,11 @@ namespace ImPlotNET
                 Util.Free(native_text);
             }
         }
+        /// <summary>
+        /// Plots the to pixels using the specified plt
+        /// </summary>
+        /// <param name="plt">The plt</param>
+        /// <returns>The retval</returns>
         public static Vector2 PlotToPixels(ImPlotPoint plt)
         {
             Vector2 __retval;
@@ -40752,6 +51382,12 @@ namespace ImPlotNET
             ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(&__retval, plt, x_axis, y_axis);
             return __retval;
         }
+        /// <summary>
+        /// Plots the to pixels using the specified plt
+        /// </summary>
+        /// <param name="plt">The plt</param>
+        /// <param name="x_axis">The axis</param>
+        /// <returns>The retval</returns>
         public static Vector2 PlotToPixels(ImPlotPoint plt, ImAxis x_axis)
         {
             Vector2 __retval;
@@ -40759,12 +51395,25 @@ namespace ImPlotNET
             ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(&__retval, plt, x_axis, y_axis);
             return __retval;
         }
+        /// <summary>
+        /// Plots the to pixels using the specified plt
+        /// </summary>
+        /// <param name="plt">The plt</param>
+        /// <param name="x_axis">The axis</param>
+        /// <param name="y_axis">The axis</param>
+        /// <returns>The retval</returns>
         public static Vector2 PlotToPixels(ImPlotPoint plt, ImAxis x_axis, ImAxis y_axis)
         {
             Vector2 __retval;
             ImPlotNative.ImPlot_PlotToPixels_PlotPoInt(&__retval, plt, x_axis, y_axis);
             return __retval;
         }
+        /// <summary>
+        /// Plots the to pixels using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The retval</returns>
         public static Vector2 PlotToPixels(double x, double y)
         {
             Vector2 __retval;
@@ -40773,6 +51422,13 @@ namespace ImPlotNET
             ImPlotNative.ImPlot_PlotToPixels_double(&__retval, x, y, x_axis, y_axis);
             return __retval;
         }
+        /// <summary>
+        /// Plots the to pixels using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="x_axis">The axis</param>
+        /// <returns>The retval</returns>
         public static Vector2 PlotToPixels(double x, double y, ImAxis x_axis)
         {
             Vector2 __retval;
@@ -40780,47 +51436,87 @@ namespace ImPlotNET
             ImPlotNative.ImPlot_PlotToPixels_double(&__retval, x, y, x_axis, y_axis);
             return __retval;
         }
+        /// <summary>
+        /// Plots the to pixels using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="x_axis">The axis</param>
+        /// <param name="y_axis">The axis</param>
+        /// <returns>The retval</returns>
         public static Vector2 PlotToPixels(double x, double y, ImAxis x_axis, ImAxis y_axis)
         {
             Vector2 __retval;
             ImPlotNative.ImPlot_PlotToPixels_double(&__retval, x, y, x_axis, y_axis);
             return __retval;
         }
+        /// <summary>
+        /// Pops the colormap
+        /// </summary>
         public static void PopColormap()
         {
             int count = 1;
             ImPlotNative.ImPlot_PopColormap(count);
         }
+        /// <summary>
+        /// Pops the colormap using the specified count
+        /// </summary>
+        /// <param name="count">The count</param>
         public static void PopColormap(int count)
         {
             ImPlotNative.ImPlot_PopColormap(count);
         }
+        /// <summary>
+        /// Pops the plot clip rect
+        /// </summary>
         public static void PopPlotClipRect()
         {
             ImPlotNative.ImPlot_PopPlotClipRect();
         }
+        /// <summary>
+        /// Pops the style color
+        /// </summary>
         public static void PopStyleColor()
         {
             int count = 1;
             ImPlotNative.ImPlot_PopStyleColor(count);
         }
+        /// <summary>
+        /// Pops the style color using the specified count
+        /// </summary>
+        /// <param name="count">The count</param>
         public static void PopStyleColor(int count)
         {
             ImPlotNative.ImPlot_PopStyleColor(count);
         }
+        /// <summary>
+        /// Pops the style var
+        /// </summary>
         public static void PopStyleVar()
         {
             int count = 1;
             ImPlotNative.ImPlot_PopStyleVar(count);
         }
+        /// <summary>
+        /// Pops the style var using the specified count
+        /// </summary>
+        /// <param name="count">The count</param>
         public static void PopStyleVar(int count)
         {
             ImPlotNative.ImPlot_PopStyleVar(count);
         }
+        /// <summary>
+        /// Pushes the colormap using the specified cmap
+        /// </summary>
+        /// <param name="cmap">The cmap</param>
         public static void PushColormap(ImPlotColormap cmap)
         {
             ImPlotNative.ImPlot_PushColormap_PlotColormap(cmap);
         }
+        /// <summary>
+        /// Pushes the colormap using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
         public static void PushColormap(string name)
         {
             byte* native_name;
@@ -40847,35 +51543,72 @@ namespace ImPlotNET
                 Util.Free(native_name);
             }
         }
+        /// <summary>
+        /// Pushes the plot clip rect
+        /// </summary>
         public static void PushPlotClipRect()
         {
             float expand = 0;
             ImPlotNative.ImPlot_PushPlotClipRect(expand);
         }
+        /// <summary>
+        /// Pushes the plot clip rect using the specified expand
+        /// </summary>
+        /// <param name="expand">The expand</param>
         public static void PushPlotClipRect(float expand)
         {
             ImPlotNative.ImPlot_PushPlotClipRect(expand);
         }
+        /// <summary>
+        /// Pushes the style color using the specified idx
+        /// </summary>
+        /// <param name="idx">The idx</param>
+        /// <param name="col">The col</param>
         public static void PushStyleColor(ImPlotCol idx, uint col)
         {
             ImPlotNative.ImPlot_PushStyleColor_U32(idx, col);
         }
+        /// <summary>
+        /// Pushes the style color using the specified idx
+        /// </summary>
+        /// <param name="idx">The idx</param>
+        /// <param name="col">The col</param>
         public static void PushStyleColor(ImPlotCol idx, Vector4 col)
         {
             ImPlotNative.ImPlot_PushStyleColor_Vec4(idx, col);
         }
+        /// <summary>
+        /// Pushes the style var using the specified idx
+        /// </summary>
+        /// <param name="idx">The idx</param>
+        /// <param name="val">The val</param>
         public static void PushStyleVar(ImPlotStyleVar idx, float val)
         {
             ImPlotNative.ImPlot_PushStyleVar_Float(idx, val);
         }
+        /// <summary>
+        /// Pushes the style var using the specified idx
+        /// </summary>
+        /// <param name="idx">The idx</param>
+        /// <param name="val">The val</param>
         public static void PushStyleVar(ImPlotStyleVar idx, int val)
         {
             ImPlotNative.ImPlot_PushStyleVar_Int(idx, val);
         }
+        /// <summary>
+        /// Pushes the style var using the specified idx
+        /// </summary>
+        /// <param name="idx">The idx</param>
+        /// <param name="val">The val</param>
         public static void PushStyleVar(ImPlotStyleVar idx, Vector2 val)
         {
             ImPlotNative.ImPlot_PushStyleVar_Vec2(idx, val);
         }
+        /// <summary>
+        /// Samples the colormap using the specified t
+        /// </summary>
+        /// <param name="t">The </param>
+        /// <returns>The retval</returns>
         public static Vector4 SampleColormap(float t)
         {
             Vector4 __retval;
@@ -40883,50 +51616,110 @@ namespace ImPlotNET
             ImPlotNative.ImPlot_SampleColormap(&__retval, t, cmap);
             return __retval;
         }
+        /// <summary>
+        /// Samples the colormap using the specified t
+        /// </summary>
+        /// <param name="t">The </param>
+        /// <param name="cmap">The cmap</param>
+        /// <returns>The retval</returns>
         public static Vector4 SampleColormap(float t, ImPlotColormap cmap)
         {
             Vector4 __retval;
             ImPlotNative.ImPlot_SampleColormap(&__retval, t, cmap);
             return __retval;
         }
+        /// <summary>
+        /// Sets the axes using the specified x axis
+        /// </summary>
+        /// <param name="x_axis">The axis</param>
+        /// <param name="y_axis">The axis</param>
         public static void SetAxes(ImAxis x_axis, ImAxis y_axis)
         {
             ImPlotNative.ImPlot_SetAxes(x_axis, y_axis);
         }
+        /// <summary>
+        /// Sets the axis using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
         public static void SetAxis(ImAxis axis)
         {
             ImPlotNative.ImPlot_SetAxis(axis);
         }
+        /// <summary>
+        /// Sets the current context using the specified ctx
+        /// </summary>
+        /// <param name="ctx">The ctx</param>
         public static void SetCurrentContext(IntPtr ctx)
         {
             ImPlotNative.ImPlot_SetCurrentContext(ctx);
         }
+        /// <summary>
+        /// Sets the im gui context using the specified ctx
+        /// </summary>
+        /// <param name="ctx">The ctx</param>
         public static void SetImGuiContext(IntPtr ctx)
         {
             ImPlotNative.ImPlot_SetImGuiContext(ctx);
         }
+        /// <summary>
+        /// Sets the next axes limits using the specified x min
+        /// </summary>
+        /// <param name="x_min">The min</param>
+        /// <param name="x_max">The max</param>
+        /// <param name="y_min">The min</param>
+        /// <param name="y_max">The max</param>
         public static void SetNextAxesLimits(double x_min, double x_max, double y_min, double y_max)
         {
             ImPlotCond cond = ImPlotCond.Once;
             ImPlotNative.ImPlot_SetNextAxesLimits(x_min, x_max, y_min, y_max, cond);
         }
+        /// <summary>
+        /// Sets the next axes limits using the specified x min
+        /// </summary>
+        /// <param name="x_min">The min</param>
+        /// <param name="x_max">The max</param>
+        /// <param name="y_min">The min</param>
+        /// <param name="y_max">The max</param>
+        /// <param name="cond">The cond</param>
         public static void SetNextAxesLimits(double x_min, double x_max, double y_min, double y_max, ImPlotCond cond)
         {
             ImPlotNative.ImPlot_SetNextAxesLimits(x_min, x_max, y_min, y_max, cond);
         }
+        /// <summary>
+        /// Sets the next axes to fit
+        /// </summary>
         public static void SetNextAxesToFit()
         {
             ImPlotNative.ImPlot_SetNextAxesToFit();
         }
+        /// <summary>
+        /// Sets the next axis limits using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="v_min">The min</param>
+        /// <param name="v_max">The max</param>
         public static void SetNextAxisLimits(ImAxis axis, double v_min, double v_max)
         {
             ImPlotCond cond = ImPlotCond.Once;
             ImPlotNative.ImPlot_SetNextAxisLimits(axis, v_min, v_max, cond);
         }
+        /// <summary>
+        /// Sets the next axis limits using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="v_min">The min</param>
+        /// <param name="v_max">The max</param>
+        /// <param name="cond">The cond</param>
         public static void SetNextAxisLimits(ImAxis axis, double v_min, double v_max, ImPlotCond cond)
         {
             ImPlotNative.ImPlot_SetNextAxisLimits(axis, v_min, v_max, cond);
         }
+        /// <summary>
+        /// Sets the next axis links using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="link_min">The link min</param>
+        /// <param name="link_max">The link max</param>
         public static void SetNextAxisLinks(ImAxis axis, ref double link_min, ref double link_max)
         {
             fixed (double* native_link_min = &link_min)
@@ -40937,10 +51730,17 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Sets the next axis to fit using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
         public static void SetNextAxisToFit(ImAxis axis)
         {
             ImPlotNative.ImPlot_SetNextAxisToFit(axis);
         }
+        /// <summary>
+        /// Sets the next error bar style
+        /// </summary>
         public static void SetNextErrorBarStyle()
         {
             Vector4 col = new Vector4(0, 0, 0, -1);
@@ -40948,51 +51748,93 @@ namespace ImPlotNET
             float weight = -1;
             ImPlotNative.ImPlot_SetNextErrorBarStyle(col, size, weight);
         }
+        /// <summary>
+        /// Sets the next error bar style using the specified col
+        /// </summary>
+        /// <param name="col">The col</param>
         public static void SetNextErrorBarStyle(Vector4 col)
         {
             float size = -1;
             float weight = -1;
             ImPlotNative.ImPlot_SetNextErrorBarStyle(col, size, weight);
         }
+        /// <summary>
+        /// Sets the next error bar style using the specified col
+        /// </summary>
+        /// <param name="col">The col</param>
+        /// <param name="size">The size</param>
         public static void SetNextErrorBarStyle(Vector4 col, float size)
         {
             float weight = -1;
             ImPlotNative.ImPlot_SetNextErrorBarStyle(col, size, weight);
         }
+        /// <summary>
+        /// Sets the next error bar style using the specified col
+        /// </summary>
+        /// <param name="col">The col</param>
+        /// <param name="size">The size</param>
+        /// <param name="weight">The weight</param>
         public static void SetNextErrorBarStyle(Vector4 col, float size, float weight)
         {
             ImPlotNative.ImPlot_SetNextErrorBarStyle(col, size, weight);
         }
+        /// <summary>
+        /// Sets the next fill style
+        /// </summary>
         public static void SetNextFillStyle()
         {
             Vector4 col = new Vector4(0, 0, 0, -1);
             float alpha_mod = -1;
             ImPlotNative.ImPlot_SetNextFillStyle(col, alpha_mod);
         }
+        /// <summary>
+        /// Sets the next fill style using the specified col
+        /// </summary>
+        /// <param name="col">The col</param>
         public static void SetNextFillStyle(Vector4 col)
         {
             float alpha_mod = -1;
             ImPlotNative.ImPlot_SetNextFillStyle(col, alpha_mod);
         }
+        /// <summary>
+        /// Sets the next fill style using the specified col
+        /// </summary>
+        /// <param name="col">The col</param>
+        /// <param name="alpha_mod">The alpha mod</param>
         public static void SetNextFillStyle(Vector4 col, float alpha_mod)
         {
             ImPlotNative.ImPlot_SetNextFillStyle(col, alpha_mod);
         }
+        /// <summary>
+        /// Sets the next line style
+        /// </summary>
         public static void SetNextLineStyle()
         {
             Vector4 col = new Vector4(0, 0, 0, -1);
             float weight = -1;
             ImPlotNative.ImPlot_SetNextLineStyle(col, weight);
         }
+        /// <summary>
+        /// Sets the next line style using the specified col
+        /// </summary>
+        /// <param name="col">The col</param>
         public static void SetNextLineStyle(Vector4 col)
         {
             float weight = -1;
             ImPlotNative.ImPlot_SetNextLineStyle(col, weight);
         }
+        /// <summary>
+        /// Sets the next line style using the specified col
+        /// </summary>
+        /// <param name="col">The col</param>
+        /// <param name="weight">The weight</param>
         public static void SetNextLineStyle(Vector4 col, float weight)
         {
             ImPlotNative.ImPlot_SetNextLineStyle(col, weight);
         }
+        /// <summary>
+        /// Sets the next marker style
+        /// </summary>
         public static void SetNextMarkerStyle()
         {
             ImPlotMarker marker = (ImPlotMarker)(-1);
@@ -41002,6 +51844,10 @@ namespace ImPlotNET
             Vector4 outline = new Vector4(0, 0, 0, -1);
             ImPlotNative.ImPlot_SetNextMarkerStyle(marker, size, fill, weight, outline);
         }
+        /// <summary>
+        /// Sets the next marker style using the specified marker
+        /// </summary>
+        /// <param name="marker">The marker</param>
         public static void SetNextMarkerStyle(ImPlotMarker marker)
         {
             float size = -1;
@@ -41010,6 +51856,11 @@ namespace ImPlotNET
             Vector4 outline = new Vector4(0, 0, 0, -1);
             ImPlotNative.ImPlot_SetNextMarkerStyle(marker, size, fill, weight, outline);
         }
+        /// <summary>
+        /// Sets the next marker style using the specified marker
+        /// </summary>
+        /// <param name="marker">The marker</param>
+        /// <param name="size">The size</param>
         public static void SetNextMarkerStyle(ImPlotMarker marker, float size)
         {
             Vector4 fill = new Vector4(0, 0, 0, -1);
@@ -41017,21 +51868,47 @@ namespace ImPlotNET
             Vector4 outline = new Vector4(0, 0, 0, -1);
             ImPlotNative.ImPlot_SetNextMarkerStyle(marker, size, fill, weight, outline);
         }
+        /// <summary>
+        /// Sets the next marker style using the specified marker
+        /// </summary>
+        /// <param name="marker">The marker</param>
+        /// <param name="size">The size</param>
+        /// <param name="fill">The fill</param>
         public static void SetNextMarkerStyle(ImPlotMarker marker, float size, Vector4 fill)
         {
             float weight = -1;
             Vector4 outline = new Vector4(0, 0, 0, -1);
             ImPlotNative.ImPlot_SetNextMarkerStyle(marker, size, fill, weight, outline);
         }
+        /// <summary>
+        /// Sets the next marker style using the specified marker
+        /// </summary>
+        /// <param name="marker">The marker</param>
+        /// <param name="size">The size</param>
+        /// <param name="fill">The fill</param>
+        /// <param name="weight">The weight</param>
         public static void SetNextMarkerStyle(ImPlotMarker marker, float size, Vector4 fill, float weight)
         {
             Vector4 outline = new Vector4(0, 0, 0, -1);
             ImPlotNative.ImPlot_SetNextMarkerStyle(marker, size, fill, weight, outline);
         }
+        /// <summary>
+        /// Sets the next marker style using the specified marker
+        /// </summary>
+        /// <param name="marker">The marker</param>
+        /// <param name="size">The size</param>
+        /// <param name="fill">The fill</param>
+        /// <param name="weight">The weight</param>
+        /// <param name="outline">The outline</param>
         public static void SetNextMarkerStyle(ImPlotMarker marker, float size, Vector4 fill, float weight, Vector4 outline)
         {
             ImPlotNative.ImPlot_SetNextMarkerStyle(marker, size, fill, weight, outline);
         }
+        /// <summary>
+        /// Setup the axes using the specified x label
+        /// </summary>
+        /// <param name="x_label">The label</param>
+        /// <param name="y_label">The label</param>
         public static void SetupAxes(string x_label, string y_label)
         {
             byte* native_x_label;
@@ -41082,6 +51959,12 @@ namespace ImPlotNET
                 Util.Free(native_y_label);
             }
         }
+        /// <summary>
+        /// Setup the axes using the specified x label
+        /// </summary>
+        /// <param name="x_label">The label</param>
+        /// <param name="y_label">The label</param>
+        /// <param name="x_flags">The flags</param>
         public static void SetupAxes(string x_label, string y_label, ImPlotAxisFlags x_flags)
         {
             byte* native_x_label;
@@ -41131,6 +52014,13 @@ namespace ImPlotNET
                 Util.Free(native_y_label);
             }
         }
+        /// <summary>
+        /// Setup the axes using the specified x label
+        /// </summary>
+        /// <param name="x_label">The label</param>
+        /// <param name="y_label">The label</param>
+        /// <param name="x_flags">The flags</param>
+        /// <param name="y_flags">The flags</param>
         public static void SetupAxes(string x_label, string y_label, ImPlotAxisFlags x_flags, ImPlotAxisFlags y_flags)
         {
             byte* native_x_label;
@@ -41179,21 +52069,45 @@ namespace ImPlotNET
                 Util.Free(native_y_label);
             }
         }
+        /// <summary>
+        /// Setup the axes limits using the specified x min
+        /// </summary>
+        /// <param name="x_min">The min</param>
+        /// <param name="x_max">The max</param>
+        /// <param name="y_min">The min</param>
+        /// <param name="y_max">The max</param>
         public static void SetupAxesLimits(double x_min, double x_max, double y_min, double y_max)
         {
             ImPlotCond cond = ImPlotCond.Once;
             ImPlotNative.ImPlot_SetupAxesLimits(x_min, x_max, y_min, y_max, cond);
         }
+        /// <summary>
+        /// Setup the axes limits using the specified x min
+        /// </summary>
+        /// <param name="x_min">The min</param>
+        /// <param name="x_max">The max</param>
+        /// <param name="y_min">The min</param>
+        /// <param name="y_max">The max</param>
+        /// <param name="cond">The cond</param>
         public static void SetupAxesLimits(double x_min, double x_max, double y_min, double y_max, ImPlotCond cond)
         {
             ImPlotNative.ImPlot_SetupAxesLimits(x_min, x_max, y_min, y_max, cond);
         }
+        /// <summary>
+        /// Setup the axis using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
         public static void SetupAxis(ImAxis axis)
         {
             byte* native_label = null;
             ImPlotAxisFlags flags = (ImPlotAxisFlags)0;
             ImPlotNative.ImPlot_SetupAxis(axis, native_label, flags);
         }
+        /// <summary>
+        /// Setup the axis using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="label">The label</param>
         public static void SetupAxis(ImAxis axis, string label)
         {
             byte* native_label;
@@ -41221,6 +52135,12 @@ namespace ImPlotNET
                 Util.Free(native_label);
             }
         }
+        /// <summary>
+        /// Setup the axis using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="label">The label</param>
+        /// <param name="flags">The flags</param>
         public static void SetupAxis(ImAxis axis, string label, ImPlotAxisFlags flags)
         {
             byte* native_label;
@@ -41247,6 +52167,11 @@ namespace ImPlotNET
                 Util.Free(native_label);
             }
         }
+        /// <summary>
+        /// Setup the axis format using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="fmt">The fmt</param>
         public static void SetupAxisFormat(ImAxis axis, string fmt)
         {
             byte* native_fmt;
@@ -41273,29 +52198,65 @@ namespace ImPlotNET
                 Util.Free(native_fmt);
             }
         }
+        /// <summary>
+        /// Setup the axis format using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="formatter">The formatter</param>
         public static void SetupAxisFormat(ImAxis axis, IntPtr formatter)
         {
             void* data = null;
             ImPlotNative.ImPlot_SetupAxisFormat_PlotFormatter(axis, formatter, data);
         }
+        /// <summary>
+        /// Setup the axis format using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="formatter">The formatter</param>
+        /// <param name="data">The data</param>
         public static void SetupAxisFormat(ImAxis axis, IntPtr formatter, IntPtr data)
         {
             void* native_data = (void*)data.ToPointer();
             ImPlotNative.ImPlot_SetupAxisFormat_PlotFormatter(axis, formatter, native_data);
         }
+        /// <summary>
+        /// Setup the axis limits using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="v_min">The min</param>
+        /// <param name="v_max">The max</param>
         public static void SetupAxisLimits(ImAxis axis, double v_min, double v_max)
         {
             ImPlotCond cond = ImPlotCond.Once;
             ImPlotNative.ImPlot_SetupAxisLimits(axis, v_min, v_max, cond);
         }
+        /// <summary>
+        /// Setup the axis limits using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="v_min">The min</param>
+        /// <param name="v_max">The max</param>
+        /// <param name="cond">The cond</param>
         public static void SetupAxisLimits(ImAxis axis, double v_min, double v_max, ImPlotCond cond)
         {
             ImPlotNative.ImPlot_SetupAxisLimits(axis, v_min, v_max, cond);
         }
+        /// <summary>
+        /// Setup the axis limits constraints using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="v_min">The min</param>
+        /// <param name="v_max">The max</param>
         public static void SetupAxisLimitsConstraints(ImAxis axis, double v_min, double v_max)
         {
             ImPlotNative.ImPlot_SetupAxisLimitsConstraints(axis, v_min, v_max);
         }
+        /// <summary>
+        /// Setup the axis links using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="link_min">The link min</param>
+        /// <param name="link_max">The link max</param>
         public static void SetupAxisLinks(ImAxis axis, ref double link_min, ref double link_max)
         {
             fixed (double* native_link_min = &link_min)
@@ -41306,20 +52267,44 @@ namespace ImPlotNET
                 }
             }
         }
+        /// <summary>
+        /// Setup the axis scale using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="scale">The scale</param>
         public static void SetupAxisScale(ImAxis axis, ImPlotScale scale)
         {
             ImPlotNative.ImPlot_SetupAxisScale_PlotScale(axis, scale);
         }
+        /// <summary>
+        /// Setup the axis scale using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="forward">The forward</param>
+        /// <param name="inverse">The inverse</param>
         public static void SetupAxisScale(ImAxis axis, IntPtr forward, IntPtr inverse)
         {
             void* data = null;
             ImPlotNative.ImPlot_SetupAxisScale_PlotTransform(axis, forward, inverse, data);
         }
+        /// <summary>
+        /// Setup the axis scale using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="forward">The forward</param>
+        /// <param name="inverse">The inverse</param>
+        /// <param name="data">The data</param>
         public static void SetupAxisScale(ImAxis axis, IntPtr forward, IntPtr inverse, IntPtr data)
         {
             void* native_data = (void*)data.ToPointer();
             ImPlotNative.ImPlot_SetupAxisScale_PlotTransform(axis, forward, inverse, native_data);
         }
+        /// <summary>
+        /// Setup the axis ticks using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="values">The values</param>
+        /// <param name="n_ticks">The ticks</param>
         public static void SetupAxisTicks(ImAxis axis, ref double values, int n_ticks)
         {
             byte** labels = null;
@@ -41329,6 +52314,13 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_SetupAxisTicks_doublePtr(axis, native_values, n_ticks, labels, keep_default);
             }
         }
+        /// <summary>
+        /// Setup the axis ticks using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="values">The values</param>
+        /// <param name="n_ticks">The ticks</param>
+        /// <param name="labels">The labels</param>
         public static void SetupAxisTicks(ImAxis axis, ref double values, int n_ticks, string[] labels)
         {
             int* labels_byteCounts = stackalloc int[labels.Length];
@@ -41364,6 +52356,14 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_SetupAxisTicks_doublePtr(axis, native_values, n_ticks, native_labels, keep_default);
             }
         }
+        /// <summary>
+        /// Setup the axis ticks using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="values">The values</param>
+        /// <param name="n_ticks">The ticks</param>
+        /// <param name="labels">The labels</param>
+        /// <param name="keep_default">The keep default</param>
         public static void SetupAxisTicks(ImAxis axis, ref double values, int n_ticks, string[] labels, bool keep_default)
         {
             int* labels_byteCounts = stackalloc int[labels.Length];
@@ -41399,12 +52399,27 @@ namespace ImPlotNET
                 ImPlotNative.ImPlot_SetupAxisTicks_doublePtr(axis, native_values, n_ticks, native_labels, native_keep_default);
             }
         }
+        /// <summary>
+        /// Setup the axis ticks using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="v_min">The min</param>
+        /// <param name="v_max">The max</param>
+        /// <param name="n_ticks">The ticks</param>
         public static void SetupAxisTicks(ImAxis axis, double v_min, double v_max, int n_ticks)
         {
             byte** labels = null;
             byte keep_default = 0;
             ImPlotNative.ImPlot_SetupAxisTicks_double(axis, v_min, v_max, n_ticks, labels, keep_default);
         }
+        /// <summary>
+        /// Setup the axis ticks using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="v_min">The min</param>
+        /// <param name="v_max">The max</param>
+        /// <param name="n_ticks">The ticks</param>
+        /// <param name="labels">The labels</param>
         public static void SetupAxisTicks(ImAxis axis, double v_min, double v_max, int n_ticks, string[] labels)
         {
             int* labels_byteCounts = stackalloc int[labels.Length];
@@ -41437,6 +52452,15 @@ namespace ImPlotNET
             byte keep_default = 0;
             ImPlotNative.ImPlot_SetupAxisTicks_double(axis, v_min, v_max, n_ticks, native_labels, keep_default);
         }
+        /// <summary>
+        /// Setup the axis ticks using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="v_min">The min</param>
+        /// <param name="v_max">The max</param>
+        /// <param name="n_ticks">The ticks</param>
+        /// <param name="labels">The labels</param>
+        /// <param name="keep_default">The keep default</param>
         public static void SetupAxisTicks(ImAxis axis, double v_min, double v_max, int n_ticks, string[] labels, bool keep_default)
         {
             int* labels_byteCounts = stackalloc int[labels.Length];
@@ -41469,32 +52493,64 @@ namespace ImPlotNET
             byte native_keep_default = keep_default ? (byte)1 : (byte)0;
             ImPlotNative.ImPlot_SetupAxisTicks_double(axis, v_min, v_max, n_ticks, native_labels, native_keep_default);
         }
+        /// <summary>
+        /// Setup the axis zoom constraints using the specified axis
+        /// </summary>
+        /// <param name="axis">The axis</param>
+        /// <param name="z_min">The min</param>
+        /// <param name="z_max">The max</param>
         public static void SetupAxisZoomConstraints(ImAxis axis, double z_min, double z_max)
         {
             ImPlotNative.ImPlot_SetupAxisZoomConstraints(axis, z_min, z_max);
         }
+        /// <summary>
+        /// Setup the finish
+        /// </summary>
         public static void SetupFinish()
         {
             ImPlotNative.ImPlot_SetupFinish();
         }
+        /// <summary>
+        /// Setup the legend using the specified location
+        /// </summary>
+        /// <param name="location">The location</param>
         public static void SetupLegend(ImPlotLocation location)
         {
             ImPlotLegendFlags flags = (ImPlotLegendFlags)0;
             ImPlotNative.ImPlot_SetupLegend(location, flags);
         }
+        /// <summary>
+        /// Setup the legend using the specified location
+        /// </summary>
+        /// <param name="location">The location</param>
+        /// <param name="flags">The flags</param>
         public static void SetupLegend(ImPlotLocation location, ImPlotLegendFlags flags)
         {
             ImPlotNative.ImPlot_SetupLegend(location, flags);
         }
+        /// <summary>
+        /// Setup the mouse text using the specified location
+        /// </summary>
+        /// <param name="location">The location</param>
         public static void SetupMouseText(ImPlotLocation location)
         {
             ImPlotMouseTextFlags flags = (ImPlotMouseTextFlags)0;
             ImPlotNative.ImPlot_SetupMouseText(location, flags);
         }
+        /// <summary>
+        /// Setup the mouse text using the specified location
+        /// </summary>
+        /// <param name="location">The location</param>
+        /// <param name="flags">The flags</param>
         public static void SetupMouseText(ImPlotLocation location, ImPlotMouseTextFlags flags)
         {
             ImPlotNative.ImPlot_SetupMouseText(location, flags);
         }
+        /// <summary>
+        /// Describes whether show colormap selector
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <returns>The bool</returns>
         public static bool ShowColormapSelector(string label)
         {
             byte* native_label;
@@ -41522,11 +52578,18 @@ namespace ImPlotNET
             }
             return ret != 0;
         }
+        /// <summary>
+        /// Shows the demo window
+        /// </summary>
         public static void ShowDemoWindow()
         {
             byte* p_open = null;
             ImPlotNative.ImPlot_ShowDemoWindow(p_open);
         }
+        /// <summary>
+        /// Shows the demo window using the specified p open
+        /// </summary>
+        /// <param name="p_open">The open</param>
         public static void ShowDemoWindow(ref bool p_open)
         {
             byte native_p_open_val = p_open ? (byte)1 : (byte)0;
@@ -41534,6 +52597,11 @@ namespace ImPlotNET
             ImPlotNative.ImPlot_ShowDemoWindow(native_p_open);
             p_open = native_p_open_val != 0;
         }
+        /// <summary>
+        /// Describes whether show input map selector
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <returns>The bool</returns>
         public static bool ShowInputMapSelector(string label)
         {
             byte* native_label;
@@ -41561,11 +52629,18 @@ namespace ImPlotNET
             }
             return ret != 0;
         }
+        /// <summary>
+        /// Shows the metrics window
+        /// </summary>
         public static void ShowMetricsWindow()
         {
             byte* p_popen = null;
             ImPlotNative.ImPlot_ShowMetricsWindow(p_popen);
         }
+        /// <summary>
+        /// Shows the metrics window using the specified p popen
+        /// </summary>
+        /// <param name="p_popen">The popen</param>
         public static void ShowMetricsWindow(ref bool p_popen)
         {
             byte native_p_popen_val = p_popen ? (byte)1 : (byte)0;
@@ -41573,16 +52648,28 @@ namespace ImPlotNET
             ImPlotNative.ImPlot_ShowMetricsWindow(native_p_popen);
             p_popen = native_p_popen_val != 0;
         }
+        /// <summary>
+        /// Shows the style editor
+        /// </summary>
         public static void ShowStyleEditor()
         {
             ImPlotStyle* @ref = null;
             ImPlotNative.ImPlot_ShowStyleEditor(@ref);
         }
+        /// <summary>
+        /// Shows the style editor using the specified ref
+        /// </summary>
+        /// <param name="@ref">The ref</param>
         public static void ShowStyleEditor(ImPlotStylePtr @ref)
         {
             ImPlotStyle* native_ref = @ref.NativePtr;
             ImPlotNative.ImPlot_ShowStyleEditor(native_ref);
         }
+        /// <summary>
+        /// Describes whether show style selector
+        /// </summary>
+        /// <param name="label">The label</param>
+        /// <returns>The bool</returns>
         public static bool ShowStyleSelector(string label)
         {
             byte* native_label;
@@ -41610,60 +52697,108 @@ namespace ImPlotNET
             }
             return ret != 0;
         }
+        /// <summary>
+        /// Shows the user guide
+        /// </summary>
         public static void ShowUserGuide()
         {
             ImPlotNative.ImPlot_ShowUserGuide();
         }
+        /// <summary>
+        /// Styles the colors auto
+        /// </summary>
         public static void StyleColorsAuto()
         {
             ImPlotStyle* dst = null;
             ImPlotNative.ImPlot_StyleColorsAuto(dst);
         }
+        /// <summary>
+        /// Styles the colors auto using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
         public static void StyleColorsAuto(ImPlotStylePtr dst)
         {
             ImPlotStyle* native_dst = dst.NativePtr;
             ImPlotNative.ImPlot_StyleColorsAuto(native_dst);
         }
+        /// <summary>
+        /// Styles the colors classic
+        /// </summary>
         public static void StyleColorsClassic()
         {
             ImPlotStyle* dst = null;
             ImPlotNative.ImPlot_StyleColorsClassic(dst);
         }
+        /// <summary>
+        /// Styles the colors classic using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
         public static void StyleColorsClassic(ImPlotStylePtr dst)
         {
             ImPlotStyle* native_dst = dst.NativePtr;
             ImPlotNative.ImPlot_StyleColorsClassic(native_dst);
         }
+        /// <summary>
+        /// Styles the colors dark
+        /// </summary>
         public static void StyleColorsDark()
         {
             ImPlotStyle* dst = null;
             ImPlotNative.ImPlot_StyleColorsDark(dst);
         }
+        /// <summary>
+        /// Styles the colors dark using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
         public static void StyleColorsDark(ImPlotStylePtr dst)
         {
             ImPlotStyle* native_dst = dst.NativePtr;
             ImPlotNative.ImPlot_StyleColorsDark(native_dst);
         }
+        /// <summary>
+        /// Styles the colors light
+        /// </summary>
         public static void StyleColorsLight()
         {
             ImPlotStyle* dst = null;
             ImPlotNative.ImPlot_StyleColorsLight(dst);
         }
+        /// <summary>
+        /// Styles the colors light using the specified dst
+        /// </summary>
+        /// <param name="dst">The dst</param>
         public static void StyleColorsLight(ImPlotStylePtr dst)
         {
             ImPlotStyle* native_dst = dst.NativePtr;
             ImPlotNative.ImPlot_StyleColorsLight(native_dst);
         }
+        /// <summary>
+        /// Tags the x using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="col">The col</param>
         public static void TagX(double x, Vector4 col)
         {
             byte round = 0;
             ImPlotNative.ImPlot_TagX_Bool(x, col, round);
         }
+        /// <summary>
+        /// Tags the x using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="col">The col</param>
+        /// <param name="round">The round</param>
         public static void TagX(double x, Vector4 col, bool round)
         {
             byte native_round = round ? (byte)1 : (byte)0;
             ImPlotNative.ImPlot_TagX_Bool(x, col, native_round);
         }
+        /// <summary>
+        /// Tags the x using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="col">The col</param>
+        /// <param name="fmt">The fmt</param>
         public static void TagX(double x, Vector4 col, string fmt)
         {
             byte* native_fmt;
@@ -41690,16 +52825,33 @@ namespace ImPlotNET
                 Util.Free(native_fmt);
             }
         }
+        /// <summary>
+        /// Tags the y using the specified y
+        /// </summary>
+        /// <param name="y">The </param>
+        /// <param name="col">The col</param>
         public static void TagY(double y, Vector4 col)
         {
             byte round = 0;
             ImPlotNative.ImPlot_TagY_Bool(y, col, round);
         }
+        /// <summary>
+        /// Tags the y using the specified y
+        /// </summary>
+        /// <param name="y">The </param>
+        /// <param name="col">The col</param>
+        /// <param name="round">The round</param>
         public static void TagY(double y, Vector4 col, bool round)
         {
             byte native_round = round ? (byte)1 : (byte)0;
             ImPlotNative.ImPlot_TagY_Bool(y, col, native_round);
         }
+        /// <summary>
+        /// Tags the y using the specified y
+        /// </summary>
+        /// <param name="y">The </param>
+        /// <param name="col">The col</param>
+        /// <param name="fmt">The fmt</param>
         public static void TagY(double y, Vector4 col, string fmt)
         {
             byte* native_fmt;
