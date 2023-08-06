@@ -1,4 +1,4 @@
-namespace imnodesNET
+namespace Alis.Core.Graphic.ImGui.Extras.ImNodes
 {
     /// <summary>
     /// The color style enum

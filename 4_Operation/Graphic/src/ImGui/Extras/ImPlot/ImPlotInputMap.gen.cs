@@ -1,9 +1,8 @@
 using System;
 using Alis.Core.Graphic.ImGui.Enums;
 using Alis.Core.Graphic.ImGui.Utils;
-using ImGuiNET;
 
-namespace ImPlotNET
+namespace Alis.Core.Graphic.ImGui.Extras.ImPlot
 {
     /// <summary>
     /// The im plot input map

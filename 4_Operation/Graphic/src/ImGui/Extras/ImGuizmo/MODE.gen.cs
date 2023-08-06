@@ -1,4 +1,4 @@
-namespace ImGuizmoNET
+namespace Alis.Core.Graphic.ImGui.Extras.ImGuizmo
 {
     /// <summary>
     /// The mode enum

@@ -3,9 +3,8 @@ using System.Numerics;
 using System.Runtime.InteropServices;
 using Alis.Core.Graphic.ImGui.Enums;
 using Alis.Core.Graphic.ImGui.Structs;
-using ImGuiNET;
 
-namespace ImPlotNET
+namespace Alis.Core.Graphic.ImGui.Extras.ImPlot
 {
     /// <summary>
     /// The im plot native class
@@ -177,7 +176,7 @@ namespace ImPlotNET
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="t">The </param>
-        /// <param name="@out">The out</param>
+        /// <param name="out">The out</param>
         /// <param name="format">The format</param>
         /// <param name="cmap">The cmap</param>
         /// <returns>The byte</returns>
@@ -3154,7 +3153,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -3168,7 +3167,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -3182,7 +3181,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -3196,7 +3195,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -3210,7 +3209,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -3224,7 +3223,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -3238,7 +3237,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -3252,7 +3251,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -3266,7 +3265,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -3280,7 +3279,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -3295,7 +3294,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -3308,7 +3307,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -3321,7 +3320,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -3334,7 +3333,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -3347,7 +3346,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -3360,7 +3359,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -3373,7 +3372,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -3386,7 +3385,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -3399,7 +3398,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -3412,7 +3411,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -3786,7 +3785,7 @@ namespace ImPlotNET
         /// <summary>
         /// Ims the plot show style editor using the specified ref
         /// </summary>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImPlot_ShowStyleEditor(ImPlotStyle* @ref);
         /// <summary>

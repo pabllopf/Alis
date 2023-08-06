@@ -1,7 +1,7 @@
 using System;
 using Alis.Core.Graphic.ImGui.Utils;
 
-namespace imnodesNET
+namespace Alis.Core.Graphic.ImGui.Extras.ImNodes
 {
     /// <summary>
     /// The im nodes io

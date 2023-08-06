@@ -29,11 +29,11 @@
 
 using System;
 using Alis.Core.Graphic.ImGui;
+using Alis.Core.Graphic.ImGui.Extras.ImNodes;
+using Alis.Core.Graphic.ImGui.Extras.ImPlot;
 using Alis.Core.Graphic.SDL;
 using Alis.Core.Graphic.SDL.Enums;
 using Alis.Core.Graphic.SDL.Structs;
-using imnodesNET;
-using ImPlotNET;
 
 namespace Alis.App.Engine
 {

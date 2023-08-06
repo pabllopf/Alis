@@ -1,6 +1,6 @@
 using System;
 
-namespace imnodesNET
+namespace Alis.Core.Graphic.ImGui.Extras.ImNodes
 {
     /// <summary>
     /// The emulate three button mouse

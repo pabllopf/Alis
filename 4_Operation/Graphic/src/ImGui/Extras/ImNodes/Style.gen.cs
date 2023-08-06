@@ -2,7 +2,7 @@ using System;
 using Alis.Core.Graphic.ImGui.Structs;
 using Alis.Core.Graphic.ImGui.Utils;
 
-namespace imnodesNET
+namespace Alis.Core.Graphic.ImGui.Extras.ImNodes
 {
     /// <summary>
     /// The style

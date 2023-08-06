@@ -1,7 +1,7 @@
 using System;
 using Alis.Core.Graphic.ImGui.Utils;
 
-namespace ImPlotNET
+namespace Alis.Core.Graphic.ImGui.Extras.ImPlot
 {
     /// <summary>
     /// The im plot rect

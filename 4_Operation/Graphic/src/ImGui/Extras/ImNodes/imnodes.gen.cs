@@ -3,7 +3,7 @@ using System.Numerics;
 using System.Text;
 using Alis.Core.Graphic.ImGui.Utils;
 
-namespace imnodesNET
+namespace Alis.Core.Graphic.ImGui.Extras.ImNodes
 {
     /// <summary>
     /// The im nodes class

@@ -2,7 +2,7 @@ using System;
 using System.Numerics;
 using Alis.Core.Graphic.ImGui.Structs;
 
-namespace ImGuizmoNET
+namespace Alis.Core.Graphic.ImGui.Extras.ImGuizmo
 {
     /// <summary>
     /// The im guizmo class

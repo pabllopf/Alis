@@ -1,4 +1,4 @@
-namespace ImPlotNET
+namespace Alis.Core.Graphic.ImGui.Extras.ImPlot
 {
     /// <summary>
     /// The im plot cond enum

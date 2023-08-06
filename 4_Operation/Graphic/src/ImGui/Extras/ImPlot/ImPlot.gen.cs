@@ -4,9 +4,8 @@ using System.Text;
 using Alis.Core.Graphic.ImGui.Enums;
 using Alis.Core.Graphic.ImGui.Structs;
 using Alis.Core.Graphic.ImGui.Utils;
-using ImGuiNET;
 
-namespace ImPlotNET
+namespace Alis.Core.Graphic.ImGui.Extras.ImPlot
 {
     /// <summary>
     /// The im plot class
@@ -1260,7 +1259,7 @@ namespace ImPlotNET
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="t">The </param>
-        /// <param name="@out">The out</param>
+        /// <param name="out">The out</param>
         /// <returns>The bool</returns>
         public static bool ColormapSlider(string label, ref float t, out Vector4 @out)
         {
@@ -1319,7 +1318,7 @@ namespace ImPlotNET
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="t">The </param>
-        /// <param name="@out">The out</param>
+        /// <param name="out">The out</param>
         /// <param name="format">The format</param>
         /// <returns>The bool</returns>
         public static bool ColormapSlider(string label, ref float t, out Vector4 @out, string format)
@@ -1383,7 +1382,7 @@ namespace ImPlotNET
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="t">The </param>
-        /// <param name="@out">The out</param>
+        /// <param name="out">The out</param>
         /// <param name="format">The format</param>
         /// <param name="cmap">The cmap</param>
         /// <returns>The bool</returns>
@@ -46294,7 +46293,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref float values, int count, double @ref)
         {
             byte* native_label_id;
@@ -46335,7 +46334,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref float values, int count, double @ref, double scale)
         {
@@ -46376,7 +46375,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref float values, int count, double @ref, double scale, double start)
@@ -46417,7 +46416,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -46458,7 +46457,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -46499,7 +46498,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -46581,7 +46580,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref double values, int count, double @ref)
         {
             byte* native_label_id;
@@ -46622,7 +46621,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref double values, int count, double @ref, double scale)
         {
@@ -46663,7 +46662,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref double values, int count, double @ref, double scale, double start)
@@ -46704,7 +46703,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -46745,7 +46744,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -46786,7 +46785,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -46868,7 +46867,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref sbyte values, int count, double @ref)
         {
             byte* native_label_id;
@@ -46909,7 +46908,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref sbyte values, int count, double @ref, double scale)
         {
@@ -46950,7 +46949,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref sbyte values, int count, double @ref, double scale, double start)
@@ -46991,7 +46990,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -47032,7 +47031,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -47073,7 +47072,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -47155,7 +47154,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref byte values, int count, double @ref)
         {
             byte* native_label_id;
@@ -47196,7 +47195,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref byte values, int count, double @ref, double scale)
         {
@@ -47237,7 +47236,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref byte values, int count, double @ref, double scale, double start)
@@ -47278,7 +47277,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -47319,7 +47318,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -47360,7 +47359,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -47442,7 +47441,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref short values, int count, double @ref)
         {
             byte* native_label_id;
@@ -47483,7 +47482,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref short values, int count, double @ref, double scale)
         {
@@ -47524,7 +47523,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref short values, int count, double @ref, double scale, double start)
@@ -47565,7 +47564,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -47606,7 +47605,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -47647,7 +47646,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -47729,7 +47728,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref ushort values, int count, double @ref)
         {
             byte* native_label_id;
@@ -47770,7 +47769,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref ushort values, int count, double @ref, double scale)
         {
@@ -47811,7 +47810,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref ushort values, int count, double @ref, double scale, double start)
@@ -47852,7 +47851,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -47893,7 +47892,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -47934,7 +47933,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -48016,7 +48015,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref int values, int count, double @ref)
         {
             byte* native_label_id;
@@ -48057,7 +48056,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref int values, int count, double @ref, double scale)
         {
@@ -48098,7 +48097,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref int values, int count, double @ref, double scale, double start)
@@ -48139,7 +48138,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -48180,7 +48179,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -48221,7 +48220,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -48303,7 +48302,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref uint values, int count, double @ref)
         {
             byte* native_label_id;
@@ -48344,7 +48343,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref uint values, int count, double @ref, double scale)
         {
@@ -48385,7 +48384,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref uint values, int count, double @ref, double scale, double start)
@@ -48426,7 +48425,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -48467,7 +48466,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -48508,7 +48507,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -48590,7 +48589,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref long values, int count, double @ref)
         {
             byte* native_label_id;
@@ -48631,7 +48630,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref long values, int count, double @ref, double scale)
         {
@@ -48672,7 +48671,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref long values, int count, double @ref, double scale, double start)
@@ -48713,7 +48712,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -48754,7 +48753,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -48795,7 +48794,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -48877,7 +48876,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref ulong values, int count, double @ref)
         {
             byte* native_label_id;
@@ -48918,7 +48917,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         public static void PlotStems(string label_id, ref ulong values, int count, double @ref, double scale)
         {
@@ -48959,7 +48958,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         public static void PlotStems(string label_id, ref ulong values, int count, double @ref, double scale, double start)
@@ -49000,7 +48999,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -49041,7 +49040,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -49082,7 +49081,7 @@ namespace ImPlotNET
         /// <param name="label_id">The label id</param>
         /// <param name="values">The values</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="scale">The scale</param>
         /// <param name="start">The start</param>
         /// <param name="flags">The flags</param>
@@ -49167,7 +49166,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref float xs, ref float ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -49210,7 +49209,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref float xs, ref float ys, int count, double @ref, ImPlotStemsFlags flags)
         {
@@ -49253,7 +49252,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref float xs, ref float ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
@@ -49296,7 +49295,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -49382,7 +49381,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref double xs, ref double ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -49425,7 +49424,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref double xs, ref double ys, int count, double @ref, ImPlotStemsFlags flags)
         {
@@ -49468,7 +49467,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref double xs, ref double ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
@@ -49511,7 +49510,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -49597,7 +49596,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref sbyte xs, ref sbyte ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -49640,7 +49639,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref sbyte xs, ref sbyte ys, int count, double @ref, ImPlotStemsFlags flags)
         {
@@ -49683,7 +49682,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref sbyte xs, ref sbyte ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
@@ -49726,7 +49725,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -49812,7 +49811,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref byte xs, ref byte ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -49855,7 +49854,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref byte xs, ref byte ys, int count, double @ref, ImPlotStemsFlags flags)
         {
@@ -49898,7 +49897,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref byte xs, ref byte ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
@@ -49941,7 +49940,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -50027,7 +50026,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref short xs, ref short ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -50070,7 +50069,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref short xs, ref short ys, int count, double @ref, ImPlotStemsFlags flags)
         {
@@ -50113,7 +50112,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref short xs, ref short ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
@@ -50156,7 +50155,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -50242,7 +50241,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref ushort xs, ref ushort ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -50285,7 +50284,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref ushort xs, ref ushort ys, int count, double @ref, ImPlotStemsFlags flags)
         {
@@ -50328,7 +50327,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref ushort xs, ref ushort ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
@@ -50371,7 +50370,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -50457,7 +50456,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref int xs, ref int ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -50500,7 +50499,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref int xs, ref int ys, int count, double @ref, ImPlotStemsFlags flags)
         {
@@ -50543,7 +50542,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref int xs, ref int ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
@@ -50586,7 +50585,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -50672,7 +50671,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref uint xs, ref uint ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -50715,7 +50714,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref uint xs, ref uint ys, int count, double @ref, ImPlotStemsFlags flags)
         {
@@ -50758,7 +50757,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref uint xs, ref uint ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
@@ -50801,7 +50800,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -50887,7 +50886,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref long xs, ref long ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -50930,7 +50929,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref long xs, ref long ys, int count, double @ref, ImPlotStemsFlags flags)
         {
@@ -50973,7 +50972,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref long xs, ref long ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
@@ -51016,7 +51015,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -51102,7 +51101,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void PlotStems(string label_id, ref ulong xs, ref ulong ys, int count, double @ref)
         {
             byte* native_label_id;
@@ -51145,7 +51144,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         public static void PlotStems(string label_id, ref ulong xs, ref ulong ys, int count, double @ref, ImPlotStemsFlags flags)
         {
@@ -51188,7 +51187,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         public static void PlotStems(string label_id, ref ulong xs, ref ulong ys, int count, double @ref, ImPlotStemsFlags flags, int offset)
@@ -51231,7 +51230,7 @@ namespace ImPlotNET
         /// <param name="xs">The xs</param>
         /// <param name="ys">The ys</param>
         /// <param name="count">The count</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="flags">The flags</param>
         /// <param name="offset">The offset</param>
         /// <param name="stride">The stride</param>
@@ -52659,7 +52658,7 @@ namespace ImPlotNET
         /// <summary>
         /// Shows the style editor using the specified ref
         /// </summary>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void ShowStyleEditor(ImPlotStylePtr @ref)
         {
             ImPlotStyle* native_ref = @ref.NativePtr;

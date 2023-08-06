@@ -1,4 +1,4 @@
-namespace imnodesNET
+namespace Alis.Core.Graphic.ImGui.Extras.ImNodes
 {
     /// <summary>
     /// The im nodes style flags enum
