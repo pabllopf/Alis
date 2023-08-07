@@ -1,0 +1,25 @@
+var struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr =
+[
+    [ "StylePtr", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#af6bde7ee560d2881b7c4991cb5439c22", null ],
+    [ "StylePtr", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#a2af4df9f79a75c66a8a36bcd03b18dc9", null ],
+    [ "operator StylePtr", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#a0e0755388b3bd370031585de0a1cda57", null ],
+    [ "operator Style *", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#a6a4070587f7db0e3ee1c054f2aff4572", null ],
+    [ "operator StylePtr", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#ae90256fd10d8ef82d9bc1c3fc3ed6b92", null ],
+    [ "grid_spacing", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#a6fb71f864ea92360827214cedaa8bc8b", null ],
+    [ "node_corner_rounding", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#a167cf677c6c91397b62328ace0602352", null ],
+    [ "node_padding_horizontal", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#a0e409ff376318088b48fe6e3c586c273", null ],
+    [ "node_padding_vertical", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#a7a9673a5540c09571b5885d19b54a1f2", null ],
+    [ "node_border_thickness", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#a86ddd48131d043266bc094833291b190", null ],
+    [ "link_thickness", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#ab759f72a6ff71de59ed0dba21942418b", null ],
+    [ "link_line_segments_per_length", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#af1c3737fffffca8b9c6259e33b25f1a7", null ],
+    [ "link_hover_distance", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#a84e34fbb8408b0715045485417d26133", null ],
+    [ "pin_circle_radius", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#abeec8ecd8c39c8777136c90af584d713", null ],
+    [ "pin_quad_side_length", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#aa66dcd5c7671aeac261454deba7fb13a", null ],
+    [ "pin_triangle_side_length", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#ad1fe3a968b32b7cc8ee966aa2631fa29", null ],
+    [ "pin_line_thickness", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#a3bddc2f24691240823d89deb73052c59", null ],
+    [ "pin_hover_radius", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#af852e0189bbc9c71461dff93a6f8c4e4", null ],
+    [ "pin_offset", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#adc55cdadfe940818b9fcf18e75e7fb99", null ],
+    [ "flags", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#ab72b82e7798a634852843e078ddd81ed", null ],
+    [ "colors", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#a9756ecffc136055ca06c832a6fe90e4d", null ],
+    [ "NativePtr", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html#a4fde62bb295168b53c791fedfce005bf", null ]
+];

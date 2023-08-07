@@ -1,0 +1,25 @@
+var namespace_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes =
+[
+    [ "EmulateThreeButtonMouse", "d6/d76/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_emulate_three_button_mouse.html", "d6/d76/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_emulate_three_button_mouse" ],
+    [ "EmulateThreeButtonMousePtr", "de/d73/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_emulate_three_button_mouse_ptr.html", "de/d73/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_emulate_three_button_mouse_ptr" ],
+    [ "ImNodes", "da/d7d/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_im_nodes.html", "da/d7d/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_im_nodes" ],
+    [ "ImNodesContext", "d0/d4e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_im_nodes_context.html", null ],
+    [ "ImNodesContextPtr", "d5/dd8/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_im_nodes_context_ptr.html", "d5/dd8/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_im_nodes_context_ptr" ],
+    [ "ImNodesEditorContext", "de/d85/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_im_nodes_editor_context.html", null ],
+    [ "ImNodesEditorContextPtr", "dc/d20/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_im_nodes_editor_context_ptr.html", "dc/d20/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_im_nodes_editor_context_ptr" ],
+    [ "ImNodesIO", "dc/dac/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_im_nodes_i_o.html", "dc/dac/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_im_nodes_i_o" ],
+    [ "ImNodesIOPtr", "d5/d23/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_im_nodes_i_o_ptr.html", "d5/d23/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_im_nodes_i_o_ptr" ],
+    [ "ImNodesMiniMapNodeHoveringCallback", "d2/df3/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_im_nodes_mini_map_node_hovering_callback.html", null ],
+    [ "ImNodesMiniMapNodeHoveringCallbackUserData", "d7/d0c/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_im_nodes_mini_map_node_hovering_callback_user_data.html", null ],
+    [ "imnodesNative", "da/d80/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1imnodes_native.html", "da/d80/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1imnodes_native" ],
+    [ "ImNodesStyle", "de/dc9/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style.html", "de/dc9/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style" ],
+    [ "ImNodesStylePtr", "da/d42/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html", "da/d42/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr" ],
+    [ "IO", "d4/d80/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_i_o.html", "d4/d80/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_i_o" ],
+    [ "IOPtr", "d4/d66/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_i_o_ptr.html", "d4/d66/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_i_o_ptr" ],
+    [ "LinkDetachWithModifierClick", "d0/d45/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_link_detach_with_modifier_click.html", "d0/d45/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_link_detach_with_modifier_click" ],
+    [ "LinkDetachWithModifierClickPtr", "d2/da9/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_link_detach_with_modifier_click_ptr.html", "d2/da9/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_link_detach_with_modifier_click_ptr" ],
+    [ "MultipleSelectModifier", "d2/d00/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_multiple_select_modifier.html", "d2/d00/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_multiple_select_modifier" ],
+    [ "MultipleSelectModifierPtr", "da/d1c/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_multiple_select_modifier_ptr.html", "da/d1c/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_multiple_select_modifier_ptr" ],
+    [ "Style", "dc/d31/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style.html", "dc/d31/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style" ],
+    [ "StylePtr", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr.html", "d9/d1e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes_1_1_style_ptr" ]
+];
