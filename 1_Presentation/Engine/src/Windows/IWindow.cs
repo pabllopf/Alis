@@ -34,6 +34,9 @@ namespace Alis.App.Engine.Windows
     /// </summary>
     public interface IWindow
     {
-        
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
+        void Render();
     }
 }

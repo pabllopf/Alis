@@ -27,13 +27,28 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Graphic.ImGui;
+
 namespace Alis.App.Engine.Windows
 {
     /// <summary>
     /// The project window class
     /// </summary>
-    public class ProjectWindow
+    public class ProjectWindow : IWindow
     {
+        /// <summary>
+        /// The name window
+        /// </summary>
+        private const string NameWindow = "Inspector"; 
         
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
+        public void Render()
+        {
+            ImGui.Begin(NameWindow);
+            
+            ImGui.End();
+        }
     }
 }

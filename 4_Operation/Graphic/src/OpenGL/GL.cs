@@ -260,22 +260,22 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     The bind texture
         /// </summary>
-        internal static readonly BindTexture GlBindTexture = _<BindTexture>("glBindTexture");
+        public static readonly BindTexture GlBindTexture = _<BindTexture>("glBindTexture");
 
         /// <summary>
         ///     The buffer data
         /// </summary>
-        internal static readonly BufferData GlBufferData = _<BufferData>("glBufferData");
+        public static readonly BufferData GlBufferData = _<BufferData>("glBufferData");
 
         /// <summary>
         ///     The scissor
         /// </summary>
-        internal static readonly Scissor GlScissor = _<Scissor>("glScissor");
+        public static readonly Scissor GlScissor = _<Scissor>("glScissor");
 
         /// <summary>
         ///     The draw elements base vertex
         /// </summary>
-        internal static readonly DrawElementsBaseVertex GlDrawElementsBaseVertex = _<DrawElementsBaseVertex>("glDrawElementsBaseVertex");
+        public static readonly DrawElementsBaseVertex GlDrawElementsBaseVertex = _<DrawElementsBaseVertex>("glDrawElementsBaseVertex");
 
         /// <summary>
         ///     The delete vertex arrays
@@ -295,17 +295,17 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     The pixel storei
         /// </summary>
-        internal static readonly PixelStorei GlPixelStorei = _<PixelStorei>("glPixelStorei");
+        public static readonly PixelStorei GlPixelStorei = _<PixelStorei>("glPixelStorei");
 
         /// <summary>
         ///     The tex image
         /// </summary>
-        internal static readonly TexImage2D GlTexImage2D = _<TexImage2D>("glTexImage2D");
+        public static readonly TexImage2D GlTexImage2D = _<TexImage2D>("glTexImage2D");
 
         /// <summary>
         ///     The tex parameteri
         /// </summary>
-        internal static readonly TexParameteri GlTexParameteri = _<TexParameteri>("glTexParameteri");
+        public static readonly TexParameteri GlTexParameteri = _<TexParameteri>("glTexParameteri");
 
         /// <summary>
         ///     The delete textures

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ConsoleWindow.cs
+//  File:TopMenu.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,28 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Graphic.ImGui;
-
-namespace Alis.App.Engine.Windows
+namespace Alis.App.Engine.Menus.TopMenu
 {
     /// <summary>
-    /// The console window class
+    /// The top menu class
     /// </summary>
-    public class ConsoleWindow : IWindow
+    /// <seealso cref="IMenu"/>
+    public class TopMenu : IMenu
     {
-        /// <summary>
-        /// The name window
-        /// </summary>
-        private const string NameWindow = "Inspector"; 
         
-        /// <summary>
-        /// Renders this instance
-        /// </summary>
-        public void Render()
-        {
-            ImGui.Begin(NameWindow);
-            
-            ImGui.End();
-        }
     }
 }
