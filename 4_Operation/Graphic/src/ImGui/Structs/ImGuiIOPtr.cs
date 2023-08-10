@@ -173,7 +173,11 @@ namespace Alis.Core.Graphic.ImGui.Structs
         /// <summary>
         ///     Gets the value of the font default
         /// </summary>
-        public ImFontPtr FontDefault => new ImFontPtr(NativePtr->FontDefault);
+        public ImFontPtr FontDefault
+        {
+            get => new ImFontPtr(NativePtr->FontDefault);
+            set => FontDefault = value;
+        }
 
         /// <summary>
         ///     Gets the value of the display framebuffer scale

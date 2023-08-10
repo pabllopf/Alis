@@ -40,7 +40,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         /// The name window
         /// </summary>
-        private const string NameWindow = "Inspector"; 
+        private const string NameWindow = "Game"; 
         
         /// <summary>
         /// Renders this instance
