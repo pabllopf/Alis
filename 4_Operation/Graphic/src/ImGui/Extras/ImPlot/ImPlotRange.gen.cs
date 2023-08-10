@@ -36,8 +36,26 @@ namespace Alis.Core.Graphic.ImGui.Extras.ImPlot
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
         public ImPlotRangePtr(IntPtr nativePtr) => NativePtr = (ImPlotRange*)nativePtr;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nativePtr"></param>
+        /// <returns></returns>
         public static implicit operator ImPlotRangePtr(ImPlotRange* nativePtr) => new ImPlotRangePtr(nativePtr);
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="wrappedPtr"></param>
+        /// <returns></returns>
         public static implicit operator ImPlotRange* (ImPlotRangePtr wrappedPtr) => wrappedPtr.NativePtr;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nativePtr"></param>
+        /// <returns></returns>
         public static implicit operator ImPlotRangePtr(IntPtr nativePtr) => new ImPlotRangePtr(nativePtr);
         /// <summary>
         /// Gets the value of the min

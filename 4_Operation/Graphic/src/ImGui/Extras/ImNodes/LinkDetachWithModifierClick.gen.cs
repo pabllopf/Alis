@@ -31,8 +31,26 @@ namespace Alis.Core.Graphic.ImGui.Extras.ImNodes
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
         public LinkDetachWithModifierClickPtr(IntPtr nativePtr) => NativePtr = (LinkDetachWithModifierClick*)nativePtr;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nativePtr"></param>
+        /// <returns></returns>
         public static implicit operator LinkDetachWithModifierClickPtr(LinkDetachWithModifierClick* nativePtr) => new LinkDetachWithModifierClickPtr(nativePtr);
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="wrappedPtr"></param>
+        /// <returns></returns>
         public static implicit operator LinkDetachWithModifierClick* (LinkDetachWithModifierClickPtr wrappedPtr) => wrappedPtr.NativePtr;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nativePtr"></param>
+        /// <returns></returns>
         public static implicit operator LinkDetachWithModifierClickPtr(IntPtr nativePtr) => new LinkDetachWithModifierClickPtr(nativePtr);
         /// <summary>
         /// Gets or sets the value of the modifier

@@ -185,6 +185,7 @@ namespace Alis.Core.Graphic.ImGui
             ImGuiIoPtr io = ImGui.GetIo();
             
             io.DisplaySize = new Vector2F(800, 600);
+            io.Backends |= ImGuiBackends.RendererHasVtxOffset;
 
             io.KeyMap[(int) ImGuiKey.Tab] = (int) SdlScancode.SdlScancodeTab;
             io.KeyMap[(int) ImGuiKey.LeftArrow] = (int) SdlScancode.SdlScancodeLeft;

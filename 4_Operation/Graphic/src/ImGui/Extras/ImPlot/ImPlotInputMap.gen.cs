@@ -77,8 +77,26 @@ namespace Alis.Core.Graphic.ImGui.Extras.ImPlot
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
         public ImPlotInputMapPtr(IntPtr nativePtr) => NativePtr = (ImPlotInputMap*)nativePtr;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nativePtr"></param>
+        /// <returns></returns>
         public static implicit operator ImPlotInputMapPtr(ImPlotInputMap* nativePtr) => new ImPlotInputMapPtr(nativePtr);
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="wrappedPtr"></param>
+        /// <returns></returns>
         public static implicit operator ImPlotInputMap* (ImPlotInputMapPtr wrappedPtr) => wrappedPtr.NativePtr;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nativePtr"></param>
+        /// <returns></returns>
         public static implicit operator ImPlotInputMapPtr(IntPtr nativePtr) => new ImPlotInputMapPtr(nativePtr);
         /// <summary>
         /// Gets the value of the pan

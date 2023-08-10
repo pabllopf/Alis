@@ -4,4 +4,59 @@
     <PropertyGroup>
         <TargetFramework>$(TargetFramework2)</TargetFramework>
     </PropertyGroup>
+    <ItemGroup>
+      <None Update="Assets\Icons\fontawesome-webfont.ttf">
+        <LinkBase>Assets/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="Assets\Icons\Icons.ttf">
+        <LinkBase>Assets/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="Assets\Fonts\Hack\Hack-Bold.ttf">
+        <LinkBase>Assets/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="Assets\Fonts\Hack\Hack-BoldItalic.ttf">
+        <LinkBase>Assets/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="Assets\Fonts\Hack\Hack-Italic.ttf">
+        <LinkBase>Assets/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="Assets\Fonts\Hack\Hack-Regular.ttf">
+        <LinkBase>Assets/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="Assets\Fonts\Segoe\Segoe.ttf">
+        <LinkBase>Assets/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="Assets\Fonts\Segoe\Segoe UI Bold Italic.ttf">
+        <LinkBase>Assets/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="Assets\Fonts\Segoe\Segoe UI Italic.ttf">
+        <LinkBase>Assets/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="Assets\Fonts\Segoe\Segoe_Bold.ttf">
+        <LinkBase>Assets/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Assets\Fonts\Jetbrains\" />
+    </ItemGroup>
 </Project>

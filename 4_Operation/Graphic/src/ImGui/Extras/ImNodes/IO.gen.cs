@@ -36,8 +36,25 @@ namespace Alis.Core.Graphic.ImGui.Extras.ImNodes
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
         public IOPtr(IntPtr nativePtr) => NativePtr = (IO*)nativePtr;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nativePtr"></param>
+        /// <returns></returns>
         public static implicit operator IOPtr(IO* nativePtr) => new IOPtr(nativePtr);
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="wrappedPtr"></param>
+        /// <returns></returns>
         public static implicit operator IO* (IOPtr wrappedPtr) => wrappedPtr.NativePtr;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nativePtr"></param>
+        /// <returns></returns>
         public static implicit operator IOPtr(IntPtr nativePtr) => new IOPtr(nativePtr);
         /// <summary>
         /// Gets the value of the emulate three button mouse

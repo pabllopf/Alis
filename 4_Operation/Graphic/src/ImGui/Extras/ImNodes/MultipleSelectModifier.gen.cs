@@ -31,8 +31,26 @@ namespace Alis.Core.Graphic.ImGui.Extras.ImNodes
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
         public MultipleSelectModifierPtr(IntPtr nativePtr) => NativePtr = (MultipleSelectModifier*)nativePtr;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nativePtr"></param>
+        /// <returns></returns>
         public static implicit operator MultipleSelectModifierPtr(MultipleSelectModifier* nativePtr) => new MultipleSelectModifierPtr(nativePtr);
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="wrappedPtr"></param>
+        /// <returns></returns>
         public static implicit operator MultipleSelectModifier* (MultipleSelectModifierPtr wrappedPtr) => wrappedPtr.NativePtr;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nativePtr"></param>
+        /// <returns></returns>
         public static implicit operator MultipleSelectModifierPtr(IntPtr nativePtr) => new MultipleSelectModifierPtr(nativePtr);
         /// <summary>
         /// Gets or sets the value of the modifier
