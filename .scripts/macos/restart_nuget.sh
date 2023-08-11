@@ -18,7 +18,8 @@ select yn in "Yes" "No"; do
           
           rm -rf ./**/bin/
           echo "./**/bin/"
-                  
+                
+          skip="Template"  
           for i in `find . -name "*.csproj" -type f`; do
               if [[ $i == *$skip* ]] ; then
                   echo "Skip project $i"
