@@ -6,7 +6,5 @@ var namespace_alis_1_1_core_1_1_graphic_1_1_im_gui =
     [ "Structs", "d5/de3/namespace_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs.html", "d5/de3/namespace_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs" ],
     [ "Utils", "dd/de4/namespace_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_utils.html", "dd/de4/namespace_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_utils" ],
     [ "ImGui", "d6/dce/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui.html", "d6/dce/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui" ],
-    [ "ImGuiDlls", "d0/d69/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_dlls.html", "d0/d69/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_dlls" ],
-    [ "ImGuiGl", "da/d61/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_gl.html", "da/d61/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_gl" ],
-    [ "ImGuiGlRenderer", "da/d5d/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_gl_renderer.html", "da/d5d/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_gl_renderer" ]
+    [ "ImGuiDlls", "d0/d69/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_dlls.html", "d0/d69/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_dlls" ]
 ];

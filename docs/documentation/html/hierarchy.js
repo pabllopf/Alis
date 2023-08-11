@@ -185,6 +185,7 @@ var hierarchy =
     [ "Alis.Core.Graphic.OpenGL.Gl", "db/d86/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_gl.html", null ],
     [ "Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgramParam", "d1/db1/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader_program_param.html", null ],
     [ "Alis.Core.Graphic.SFML.Graphics.Glyph", "d1/d0c/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_glyph.html", null ],
+    [ "Alis.App.Engine.Fonts.HackFont", "da/d4b/class_alis_1_1_app_1_1_engine_1_1_fonts_1_1_hack_font.html", null ],
     [ "Alis.Core.Aspect.Math.Util.HashCode", "d5/d60/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_hash_code.html", null ],
     [ "Alis.Core.Aspect.Math.Util.Helper", "d0/dc0/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_helper.html", null ],
     [ "Alis.Core.Network.HttpHelper", "db/d01/class_alis_1_1_core_1_1_network_1_1_http_helper.html", null ],
@@ -380,6 +381,9 @@ var hierarchy =
       [ "Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.DtSweepPointComparator", "da/d98/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_point_comparator.html", null ]
     ] ],
     [ "Alis.Core.Aspect.Fluent.Words.IConfiguration< out out TBuilder, in in TArgument >", "d1/da5/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_configuration.html", null ],
+    [ "Alis.App.Engine.Configuration.IConfiguration", "dd/ded/interface_alis_1_1_app_1_1_engine_1_1_configuration_1_1_i_configuration.html", [
+      [ "Alis.App.Engine.Configuration.LayoutConfiguration", "d3/d11/class_alis_1_1_app_1_1_engine_1_1_configuration_1_1_layout_configuration.html", null ]
+    ] ],
     [ "Alis.Core.Aspect.Fluent.Words.ICreate< out out TBuilder, in in TArgument >", "d6/dea/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_create.html", null ],
     [ "Alis.Core.Aspect.Fluent.Words.IDebug< out out TBuilder, in in TArgument >", "da/d60/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_debug.html", null ],
     [ "IDebug< SettingManagerBuilder, Func< DebugSettingBuilder, DebugSetting >>", null, [
@@ -411,7 +415,6 @@ var hierarchy =
         ] ],
         [ "Alis.Core.Audio.SFML.SoundStream", "d2/d3d/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream.html", null ]
       ] ],
-      [ "Alis.Core.Graphic.ImGui.ImGuiGlRenderer", "da/d5d/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_gl_renderer.html", null ],
       [ "Alis.Core.Graphic.OpenGL.Constructs.GlShader", "d2/df2/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader.html", null ],
       [ "Alis.Core.Graphic.OpenGL.Constructs.GlShaderProgram", "d3/d69/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader_program.html", null ],
       [ "Alis.Core.Graphic.SFML.ObjectBase", "da/d48/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_object_base.html", [
@@ -484,6 +487,7 @@ var hierarchy =
     [ "Alis.Core.Aspect.Fluent.Words.IFixedRotation< BoxColliderBuilder, bool >", "d1/da5/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_fixed_rotation.html", [
       [ "Alis.Builder.Core.Component.Collider.BoxColliderBuilder", "d7/de4/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_box_collider_builder.html", null ]
     ] ],
+    [ "Alis.App.Engine.Fonts.IFont", "db/d2e/interface_alis_1_1_app_1_1_engine_1_1_fonts_1_1_i_font.html", null ],
     [ "IFormattable", null, [
       [ "Alis.Core.Aspect.Math.Vector.Vector2F", "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html", null ],
       [ "Alis.Core.Aspect.Math.Vector.Vector3F", "db/d52/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3_f.html", null ]
@@ -509,6 +513,10 @@ var hierarchy =
       [ "Alis.Builder.Core.Component.Collider.BoxColliderBuilder", "d7/de4/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_box_collider_builder.html", null ]
     ] ],
     [ "Alis.Core.Aspect.Fluent.Words.IHas< out out TBuilder, in in TArgument >", "db/d49/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_has.html", null ],
+    [ "Alis.App.Engine.Icons.IIcon", "da/d24/interface_alis_1_1_app_1_1_engine_1_1_icons_1_1_i_icon.html", [
+      [ "Alis.App.Engine.Fonts.SegoeIcon", "dc/d45/class_alis_1_1_app_1_1_engine_1_1_fonts_1_1_segoe_icon.html", null ],
+      [ "Alis.App.Engine.Icons.FolderIcon", "dd/d29/class_alis_1_1_app_1_1_engine_1_1_icons_1_1_folder_icon.html", null ]
+    ] ],
     [ "Alis.Core.Aspect.Fluent.Words.IIcon< out out TBuilder, in in TArgument >", "df/d55/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_icon.html", null ],
     [ "Alis.Core.Aspect.Fluent.Words.IIcon< GeneralSettingBuilder, string >", "df/d55/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_icon.html", [
       [ "Alis.Builder.Core.Setting.GeneralSettingBuilder", "d8/d8c/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_general_setting_builder.html", null ]
@@ -560,6 +568,10 @@ var hierarchy =
     [ "Alis.Core.Graphic.ImGui.Structs.ImDrawListSplitterPtr", "d4/d0a/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_splitter_ptr.html", null ],
     [ "Alis.Core.Graphic.ImGui.Structs.ImDrawVert", "d0/d68/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_vert.html", null ],
     [ "Alis.Core.Graphic.ImGui.Structs.ImDrawVertPtr", "da/d0e/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_vert_ptr.html", null ],
+    [ "Alis.App.Engine.Menus.TopMenu.IMenu", "d4/d71/interface_alis_1_1_app_1_1_engine_1_1_menus_1_1_top_menu_1_1_i_menu.html", [
+      [ "Alis.App.Engine.Menus.TopMenu.ContextMenu", "d7/d9b/class_alis_1_1_app_1_1_engine_1_1_menus_1_1_top_menu_1_1_context_menu.html", null ],
+      [ "Alis.App.Engine.Menus.TopMenu.TopMenu", "d9/dc7/class_alis_1_1_app_1_1_engine_1_1_menus_1_1_top_menu_1_1_top_menu.html", null ]
+    ] ],
     [ "Alis.Core.Graphic.ImGui.Structs.ImFont", "df/db2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font.html", null ],
     [ "Alis.Core.Graphic.ImGui.Structs.ImFontAtlas", "d7/dc0/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas.html", null ],
     [ "Alis.Core.Graphic.ImGui.Structs.ImFontAtlasCustomRect", "de/d16/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_font_atlas_custom_rect.html", null ],
@@ -575,7 +587,6 @@ var hierarchy =
     [ "Alis.Core.Graphic.SDL.Structs.ImgAnimation", "d9/d85/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_img_animation.html", null ],
     [ "Alis.Core.Graphic.ImGui.ImGui", "d6/dce/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui.html", null ],
     [ "Alis.Core.Graphic.ImGui.ImGuiDlls", "d0/d69/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_dlls.html", null ],
-    [ "Alis.Core.Graphic.ImGui.ImGuiGl", "da/d61/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_gl.html", null ],
     [ "Alis.Core.Graphic.ImGui.Structs.ImGuiInputTextCallbackData", "d8/dc6/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data.html", null ],
     [ "Alis.Core.Graphic.ImGui.Structs.ImGuiInputTextCallbackDataPtr", "d7/ddf/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_input_text_callback_data_ptr.html", null ],
     [ "Alis.Core.Graphic.ImGui.Structs.ImGuiIo", "dd/d94/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_gui_io.html", null ],
@@ -816,6 +827,14 @@ var hierarchy =
       [ "Alis.Core.Network.WebSocketServerFactory", "de/d8c/class_alis_1_1_core_1_1_network_1_1_web_socket_server_factory.html", null ]
     ] ],
     [ "Alis.Core.Aspect.Fluent.Words.IWhere< out out TBuilder, in in TArgument >", "d2/d12/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_where.html", null ],
+    [ "Alis.App.Engine.Windows.IWindow", "da/dc1/interface_alis_1_1_app_1_1_engine_1_1_windows_1_1_i_window.html", [
+      [ "Alis.App.Engine.Windows.ConsoleWindow", "d5/d69/class_alis_1_1_app_1_1_engine_1_1_windows_1_1_console_window.html", null ],
+      [ "Alis.App.Engine.Windows.GameWindow", "d8/dc8/class_alis_1_1_app_1_1_engine_1_1_windows_1_1_game_window.html", null ],
+      [ "Alis.App.Engine.Windows.InspectorWindow", "db/db6/class_alis_1_1_app_1_1_engine_1_1_windows_1_1_inspector_window.html", null ],
+      [ "Alis.App.Engine.Windows.ProjectWindow", "dc/dea/class_alis_1_1_app_1_1_engine_1_1_windows_1_1_project_window.html", null ],
+      [ "Alis.App.Engine.Windows.SceneWindow", "de/d8b/class_alis_1_1_app_1_1_engine_1_1_windows_1_1_scene_window.html", null ],
+      [ "Alis.App.Engine.Windows.SolutionWindow", "d1/db4/class_alis_1_1_app_1_1_engine_1_1_windows_1_1_solution_window.html", null ]
+    ] ],
     [ "Alis.Core.Aspect.Fluent.Words.IWindow< out out TBuilder, in in TArgument >", "d7/d83/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_window.html", null ],
     [ "IWindow< GraphicSettingBuilder, Func< WindowBuilder, Window >>", null, [
       [ "Alis.Builder.Core.Setting.GraphicSettingBuilder", "db/de7/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_graphic_setting_builder.html", null ]
@@ -826,6 +845,7 @@ var hierarchy =
     [ "Alis.Core.Aspect.Fluent.Words.IWithTag< GameObjectBuilder, string >", "db/db4/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_with_tag.html", [
       [ "Alis.Builder.Core.Entity.GameObjectBuilder", "da/d1a/class_alis_1_1_builder_1_1_core_1_1_entity_1_1_game_object_builder.html", null ]
     ] ],
+    [ "Alis.App.Engine.Fonts.JetbrainFont", "d5/d2c/class_alis_1_1_app_1_1_engine_1_1_fonts_1_1_jetbrain_font.html", null ],
     [ "Alis.Core.Physic.Dynamics.Joints.Joint", "d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html", [
       [ "Alis.Core.Physic.Dynamics.Joints.AngleJoint", "da/dc0/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint.html", null ],
       [ "Alis.Core.Physic.Dynamics.Joints.DistanceJoint", "dc/dc2/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_distance_joint.html", null ],
@@ -936,8 +956,8 @@ var hierarchy =
     [ "Alis.Core.Physic.Dynamics.Solver.Position", "da/d34/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_position.html", null ],
     [ "Alis.Core.Physic.Dynamics.Solver.PositionSolverManifold", "d6/d53/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_position_solver_manifold.html", null ],
     [ "Alis.Core.Physic.Dynamics.Profile", "dc/d1d/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_profile.html", null ],
-    [ "Alis.App.Engine.Program", "d5/d6e/class_alis_1_1_app_1_1_engine_1_1_program.html", null ],
     [ "Alis.App.Installer.Program", "d3/d29/class_alis_1_1_app_1_1_installer_1_1_program.html", null ],
+    [ "Alis.App.Engine.Program", "d5/d6e/class_alis_1_1_app_1_1_engine_1_1_program.html", null ],
     [ "Alis.Core.Aspect.Math.Util.Quaternion", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html", null ],
     [ "Alis.Core.Physic.Tools.Triangulation.Seidel.QueryGraph", "d8/d2b/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_query_graph.html", null ],
     [ "Alis.Core.Aspect.Math.Util.RandomUtils", "de/d00/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_random_utils.html", null ],
