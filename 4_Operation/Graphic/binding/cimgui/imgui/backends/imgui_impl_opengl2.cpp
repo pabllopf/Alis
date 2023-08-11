@@ -46,13 +46,6 @@
 #include <stdint.h>     // intptr_t
 #endif
 
-// Clang/GCC warnings with -Weverything
-#if defined(__clang__)
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-macros"                      // warning: macro is not used
-#pragma clang diagnostic ignored "-Wnonportable-system-include-path"
-#endif
-
 // Include OpenGL header (without an OpenGL loader) requires a bit of fiddling
 #if defined(_WIN32) && !defined(APIENTRY)
 #define APIENTRY __stdcall                  // It is customary to use APIENTRY for OpenGL function pointer declarations on all platforms.  Additionally, the Windows OpenGL header needs APIENTRY.
@@ -113,7 +106,6 @@ void    ImGui_ImplOpenGL2_Shutdown()
     ImGui_ImplOpenGL2_DestroyDeviceObjects();
     io.BackendRendererName = nullptr;
     io.BackendRendererUserData = nullptr;
-    io.BackendFlags &= ~ImGuiBackendFlags_RendererHasViewports;
     IM_DELETE(bd);
 }
 
@@ -332,7 +324,3 @@ static void ImGui_ImplOpenGL2_ShutdownPlatformInterface()
 {
     ImGui::DestroyPlatformWindows();
 }
-
-#if defined(__clang__)
-#pragma clang diagnostic pop
-#endif

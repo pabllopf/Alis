@@ -4,59 +4,62 @@
     <PropertyGroup>
         <TargetFramework>$(TargetFramework2)</TargetFramework>
     </PropertyGroup>
+    
     <ItemGroup>
-      <None Update="Assets\Icons\fontawesome-webfont.ttf">
-        <LinkBase>Assets/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="Assets\Icons\Icons.ttf">
-        <LinkBase>Assets/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="Assets\Fonts\Hack\Hack-Bold.ttf">
-        <LinkBase>Assets/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="Assets\Fonts\Hack\Hack-BoldItalic.ttf">
-        <LinkBase>Assets/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="Assets\Fonts\Hack\Hack-Italic.ttf">
-        <LinkBase>Assets/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="Assets\Fonts\Hack\Hack-Regular.ttf">
-        <LinkBase>Assets/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="Assets\Fonts\Segoe\Segoe.ttf">
-        <LinkBase>Assets/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="Assets\Fonts\Segoe\Segoe UI Bold Italic.ttf">
-        <LinkBase>Assets/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="Assets\Fonts\Segoe\Segoe UI Italic.ttf">
-        <LinkBase>Assets/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="Assets\Fonts\Segoe\Segoe_Bold.ttf">
-        <LinkBase>Assets/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
+        <PackageReference Include="NativeLibraryLoader" Version="1.0.13" />
+        <PackageReference Include="Vk" Version="1.0.25" Condition="'$(ExcludeVulkan)' != 'true'" />
+        <PackageReference Include="Vortice.D3DCompiler" Version="2.3.0" Condition="'$(ExcludeD3D11)' != 'true'" />
+        <PackageReference Include="Vortice.Direct3D11" Version="2.3.0" Condition="'$(ExcludeD3D11)' != 'true'" />
     </ItemGroup>
+
     <ItemGroup>
-      <Folder Include="Assets\Fonts\Jetbrains\" />
+        <EmbeddedResource Include="Assets/GLSL/imgui-vertex.glsl">
+            <LogicalName>imgui-vertex.glsl</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Assets/GLSL/imgui-vertex-legacy.glsl">
+            <LogicalName>imgui-vertex-legacy.glsl</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Assets/GLSL/imgui-frag.glsl">
+            <LogicalName>imgui-frag.glsl</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Assets/GLSLES/imgui-vertex.glsles">
+            <LogicalName>imgui-vertex.glsles</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Assets/GLSLES/imgui-vertex-legacy.glsles">
+            <LogicalName>imgui-vertex-legacy.glsles</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Assets/GLSLES/imgui-frag.glsles">
+            <LogicalName>imgui-frag.glsles</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Assets/HLSL/imgui-vertex.hlsl.bytes">
+            <LogicalName>imgui-vertex.hlsl.bytes</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Assets/HLSL/imgui-vertex-legacy.hlsl.bytes">
+            <LogicalName>imgui-vertex-legacy.hlsl.bytes</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Assets/HLSL/imgui-frag.hlsl.bytes">
+            <LogicalName>imgui-frag.hlsl.bytes</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Assets/SPIR-V/imgui-vertex.spv">
+            <LogicalName>imgui-vertex.spv</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Assets/SPIR-V/imgui-frag.spv">
+            <LogicalName>imgui-frag.spv</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Assets/Metal/imgui-vertex.metallib">
+            <LogicalName>imgui-vertex.metallib</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Assets/Metal/imgui-frag.metallib">
+            <LogicalName>imgui-frag.metallib</LogicalName>
+        </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(ExcludeMetal)' != 'true'">
+        <EmbeddedResource Include="Veldrid/MTL/EmbeddedShaders/MTL_UnalignedBufferCopy_macOS.metallib">
+            <LogicalName>MTL_UnalignedBufferCopy_macOS</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Veldrid/MTL/EmbeddedShaders/MTL_UnalignedBufferCopy_iOS.metallib">
+            <LogicalName>MTL_UnalignedBufferCopy_iOS</LogicalName>
+        </EmbeddedResource>
     </ItemGroup>
 </Project>

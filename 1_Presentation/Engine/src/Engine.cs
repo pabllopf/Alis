@@ -27,29 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.Text;
-using Alis.App.Engine.Windows;
-using Alis.Core.Aspect.Math.Matrix;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic.ImGui;
-using Alis.Core.Graphic.ImGui.Enums;
-using Alis.Core.Graphic.ImGui.Extras.ImGuizmo;
-using Alis.Core.Graphic.ImGui.Extras.ImNodes;
-using Alis.Core.Graphic.ImGui.Extras.ImPlot;
-using Alis.Core.Graphic.ImGui.Structs;
-using Alis.Core.Graphic.OpenGL;
-using Alis.Core.Graphic.OpenGL.Constructs;
-using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Core.Graphic.SDL;
-using Alis.Core.Graphic.SDL.Enums;
-using Alis.Core.Graphic.SDL.Structs;
-using PixelType = Alis.Core.Graphic.OpenGL.Enums.PixelType;
-
-namespace Alis.App.Engine
+/*
+namespace ImGuiNET
 {
     /// <summary>
     ///     The engine class
@@ -183,6 +162,9 @@ namespace Alis.App.Engine
         /// </summary>
         private readonly List<IWindow> windows;
 
+        /// <summary>
+        /// The dockspaceflags
+        /// </summary>
         private ImGuiWindows dockspaceflags;
 
         /// <summary>
@@ -783,4 +765,4 @@ namespace Alis.App.Engine
             }
         }
     }
-}
+}*/

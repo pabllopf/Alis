@@ -5,7 +5,6 @@
 
 // Implemented features:
 //  [X] Platform: Mouse cursor shape and visibility. Disable with 'io.ConfigFlags |= ImGuiConfigFlags_NoMouseCursorChange'.
-//  [X] Platform: Mouse support. Can discriminate Mouse/Pen.
 //  [X] Platform: Keyboard support. Since 1.87 we are using the io.AddKeyEvent() function. Pass ImGuiKey values to all key functions e.g. ImGui::IsKeyPressed(ImGuiKey_Space). [Legacy kVK_* values will also be supported unless IMGUI_DISABLE_OBSOLETE_KEYIO is set]
 //  [X] Platform: OSX clipboard is supported within core Dear ImGui (no specific code in this backend).
 //  [X] Platform: Gamepad support. Enabled with 'io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad'.
@@ -27,8 +26,6 @@
 // CHANGELOG
 // (minor and older changes stripped away, please see git history for details)
 //  2023-XX-XX: Added support for multiple windows via the ImGuiPlatformIO interface.
-//  2023-04-09: Inputs: Added support for io.AddMouseSourceEvent() to discriminate ImGuiMouseSource_Mouse/ImGuiMouseSource_Pen.
-//  2023-02-01: Fixed scroll wheel scaling for devices emitting events with hasPreciseScrollingDeltas==false (e.g. non-Apple mices).
 //  2022-11-02: Fixed mouse coordinates before clicking the host window.
 //  2022-10-06: Fixed mouse inputs on flipped views.
 //  2022-09-26: Inputs: Renamed ImGuiKey_ModXXX introduced in 1.87 to ImGuiMod_XXX (old names still supported).
@@ -443,11 +440,11 @@ bool ImGui_ImplOSX_Init(NSView* view)
         NSPasteboard* pasteboard = [NSPasteboard generalPasteboard];
         NSString* available = [pasteboard availableTypeFromArray: [NSArray arrayWithObject:NSPasteboardTypeString]];
         if (![available isEqualToString:NSPasteboardTypeString])
-            return nullptr;
+            return NULL;
 
         NSString* string = [pasteboard stringForType:NSPasteboardTypeString];
         if (string == nil)
-            return nullptr;
+            return NULL;
 
         const char* string_c = (const char*)[string UTF8String];
         size_t string_len = strlen(string_c);
@@ -494,22 +491,8 @@ bool ImGui_ImplOSX_Init(NSView* view)
 
 void ImGui_ImplOSX_Shutdown()
 {
-    ImGui_ImplOSX_Data* bd = ImGui_ImplOSX_GetBackendData();
-    IM_ASSERT(bd != nullptr && "No platform backend to shutdown, or already shutdown?");
-
-    bd->Observer = nullptr;
-    if (bd->Monitor != nullptr)
-    {
-        [NSEvent removeMonitor:bd->Monitor];
-        bd->Monitor = nullptr;
-    }
-
     ImGui_ImplOSX_ShutdownPlatformInterface();
     ImGui_ImplOSX_DestroyBackendData();
-    ImGuiIO& io = ImGui::GetIO();
-    io.BackendPlatformName = nullptr;
-    io.BackendPlatformUserData = nullptr;
-    io.BackendFlags &= ~(ImGuiBackendFlags_HasMouseCursors | ImGuiBackendFlags_HasGamepad | ImGuiBackendFlags_PlatformHasViewports);
 }
 
 static void ImGui_ImplOSX_UpdateMouseCursor()
@@ -638,26 +621,6 @@ void ImGui_ImplOSX_NewFrame(NSView* view)
     ImGui_ImplOSX_UpdateImePosWithView(view);
 }
 
-// Must only be called for a mouse event, otherwise an exception occurs
-// (Note that NSEventTypeScrollWheel is considered "other input". Oddly enough an exception does not occur with it, but the value will sometimes be wrong!)
-static ImGuiMouseSource GetMouseSource(NSEvent* event)
-{
-    switch (event.subtype)
-    {
-        case NSEventSubtypeTabletPoint:
-            return ImGuiMouseSource_Pen;
-        // macOS considers input from relative touch devices (like the trackpad or Apple Magic Mouse) to be touch input.
-        // This doesn't really make sense for Dear ImGui, which expects absolute touch devices only.
-        // There does not seem to be a simple way to disambiguate things here so we consider NSEventSubtypeTouch events to always come from mice.
-        // See https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/EventOverview/HandlingTouchEvents/HandlingTouchEvents.html#//apple_ref/doc/uid/10000060i-CH13-SW24
-        //case NSEventSubtypeTouch:
-        //    return ImGuiMouseSource_TouchScreen;
-        case NSEventSubtypeMouseEvent:
-        default:
-            return ImGuiMouseSource_Mouse;
-    }
-}
-
 static bool ImGui_ImplOSX_HandleEvent(NSEvent* event, NSView* view)
 {
     ImGuiIO& io = ImGui::GetIO();
@@ -666,10 +629,7 @@ static bool ImGui_ImplOSX_HandleEvent(NSEvent* event, NSView* view)
     {
         int button = (int)[event buttonNumber];
         if (button >= 0 && button < ImGuiMouseButton_COUNT)
-        {
-            io.AddMouseSourceEvent(GetMouseSource(event));
             io.AddMouseButtonEvent(button, true);
-        }
         return io.WantCaptureMouse;
     }
 
@@ -677,10 +637,7 @@ static bool ImGui_ImplOSX_HandleEvent(NSEvent* event, NSView* view)
     {
         int button = (int)[event buttonNumber];
         if (button >= 0 && button < ImGuiMouseButton_COUNT)
-        {
-            io.AddMouseSourceEvent(GetMouseSource(event));
             io.AddMouseButtonEvent(button, false);
-        }
         return io.WantCaptureMouse;
     }
 
@@ -703,7 +660,7 @@ static bool ImGui_ImplOSX_HandleEvent(NSEvent* event, NSView* view)
             else
                 mousePoint = NSMakePoint(mousePoint.x, view.bounds.size.height - mousePoint.y);
         }
-        io.AddMouseSourceEvent(GetMouseSource(event));
+
         io.AddMousePosEvent((float)mousePoint.x, (float)mousePoint.y);
         return io.WantCaptureMouse;
     }
@@ -735,18 +692,18 @@ static bool ImGui_ImplOSX_HandleEvent(NSEvent* event, NSView* view)
             wheel_dy = [event scrollingDeltaY];
             if ([event hasPreciseScrollingDeltas])
             {
-                wheel_dx *= 0.01;
-                wheel_dy *= 0.01;
+                wheel_dx *= 0.1;
+                wheel_dy *= 0.1;
             }
         }
         else
         #endif // MAC_OS_X_VERSION_MAX_ALLOWED
         {
-            wheel_dx = [event deltaX] * 0.1;
-            wheel_dy = [event deltaY] * 0.1;
+            wheel_dx = [event deltaX];
+            wheel_dy = [event deltaY];
         }
         if (wheel_dx != 0.0 || wheel_dy != 0.0)
-            io.AddMouseWheelEvent((float)wheel_dx, (float)wheel_dy);
+            io.AddMouseWheelEvent((float)wheel_dx * 0.1f, (float)wheel_dy * 0.1f);
 
         return io.WantCaptureMouse;
     }
@@ -918,7 +875,7 @@ static void ImGui_ImplOSX_DestroyWindow(ImGuiViewport* viewport)
         data->Window = nil;
         IM_DELETE(data);
     }
-    viewport->PlatformUserData = viewport->PlatformHandle = viewport->PlatformHandleRaw = nullptr;
+    viewport->PlatformUserData = viewport->PlatformHandle = viewport->PlatformHandleRaw = NULL;
 }
 
 static void ImGui_ImplOSX_ShowWindow(ImGuiViewport* viewport)
@@ -1048,7 +1005,6 @@ static void ImGui_ImplOSX_UpdateMonitors()
         imgui_monitor.WorkPos = ImVec2(visibleFrame.origin.x, visibleFrame.origin.y);
         imgui_monitor.WorkSize = ImVec2(visibleFrame.size.width, visibleFrame.size.height);
         imgui_monitor.DpiScale = screen.backingScaleFactor;
-        imgui_monitor.PlatformHandle = (__bridge_retained void*)screen;
 
         platform_io.Monitors.push_back(imgui_monitor);
     }
@@ -1095,17 +1051,17 @@ static void ImGui_ImplOSX_ShutdownPlatformInterface()
     [NSNotificationCenter.defaultCenter removeObserver:bd->Observer
                                                   name:NSApplicationDidChangeScreenParametersNotification
                                                 object:nil];
-    bd->Observer = nullptr;
-    bd->Window = nullptr;
-    if (bd->Monitor != nullptr)
+    bd->Observer = NULL;
+    bd->Window = NULL;
+    if (bd->Monitor != NULL)
     {
         [NSEvent removeMonitor:bd->Monitor];
-        bd->Monitor = nullptr;
+        bd->Monitor = NULL;
     }
 
     ImGuiViewport* main_viewport = ImGui::GetMainViewport();
     ImGuiViewportDataOSX* data = (ImGuiViewportDataOSX*)main_viewport->PlatformUserData;
     IM_DELETE(data);
-    main_viewport->PlatformUserData = nullptr;
+    main_viewport->PlatformUserData = NULL;
     ImGui::DestroyPlatformWindows();
 }

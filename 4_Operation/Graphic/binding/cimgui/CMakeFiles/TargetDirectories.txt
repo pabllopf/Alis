@@ -1,0 +1,7 @@
+/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/cimgui/CMakeFiles/cimgui.dir
+/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/cimgui/CMakeFiles/edit_cache.dir
+/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/cimgui/CMakeFiles/rebuild_cache.dir
+/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/cimgui/CMakeFiles/list_install_components.dir
+/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/cimgui/CMakeFiles/install.dir
+/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/cimgui/CMakeFiles/install/local.dir
+/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/cimgui/CMakeFiles/install/strip.dir
