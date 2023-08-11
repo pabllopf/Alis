@@ -1,5 +1,8 @@
 var NAVTREEINDEX12 =
 {
+"d2/d2d/namespace_alis_1_1_core_1_1_audio_1_1_properties.html":[1,0,0,2,1,1],
+"d2/d2d/namespace_alis_1_1_core_1_1_audio_1_1_properties.html":[0,0,0,2,1,1],
+"d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html":[1,0,0,2,5,4,0,12],
 "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#a0005bbc28463ff835aad1a2ebf5e4f55":[1,0,0,2,5,4,0,12,45],
 "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#a012f3f388c26f94a844c5f8cf958a9be":[1,0,0,2,5,4,0,12,47],
 "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#a02774a8afcf5c25a6a396ce0a0adeab1":[1,0,0,2,5,4,0,12,27],
@@ -116,8 +119,8 @@ var NAVTREEINDEX12 =
 "d2/d3d/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream.html#af29e96816d6bd2daf49753b8af2417b6":[1,0,0,2,1,3,7,13],
 "d2/d3d/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream.html#af71b09441a2e7dc279bade6c0a765528":[1,0,0,2,1,3,7,25],
 "d2/d3d/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound_stream.html#afe3b4f3ec539a71d9e7c55d4f3ee0234":[1,0,0,2,1,3,7,23],
-"d2/d40/namespace_alis_1_1_core_1_1_aspect.html":[0,0,0,2,0],
 "d2/d40/namespace_alis_1_1_core_1_1_aspect.html":[1,0,0,2,0],
+"d2/d40/namespace_alis_1_1_core_1_1_aspect.html":[0,0,0,2,0],
 "d2/d4d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_sys_wm_event.html":[1,0,0,2,5,3,1,70],
 "d2/d4d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_sys_wm_event.html#ac8fa4b75bceb9edda9b669d9b91fe345":[1,0,0,2,5,3,1,70,1],
 "d2/d4d/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_sys_wm_event.html#ad79868ec1d8b3c84c7469f32889ffdea":[1,0,0,2,5,3,1,70,2],
@@ -161,8 +164,8 @@ var NAVTREEINDEX12 =
 "d2/d80/class_alis_1_1_core_1_1_manager_1_1_scene_1_1_scene_manager_base.html#a9a563fa04fa2b38d2b81e54c0aff98a2":[1,0,0,2,6,4,1,4],
 "d2/d80/class_alis_1_1_core_1_1_manager_1_1_scene_1_1_scene_manager_base.html#ab44c34c864cccec7faa4f3861aba7d05":[1,0,0,2,6,4,1,1],
 "d2/d80/class_alis_1_1_core_1_1_manager_1_1_scene_1_1_scene_manager_base.html#aeeb392b24825b609924a63345942fcc4":[1,0,0,2,6,4,1,3],
-"d2/d81/namespace_alis_1_1_core_1_1_aspect_1_1_base.html":[0,0,0,2,0,0],
 "d2/d81/namespace_alis_1_1_core_1_1_aspect_1_1_base.html":[1,0,0,2,0,0],
+"d2/d81/namespace_alis_1_1_core_1_1_aspect_1_1_base.html":[0,0,0,2,0,0],
 "d2/d85/class_alis_1_1_core_1_1_audio_1_1_object_base.html":[1,0,0,2,1,8],
 "d2/d85/class_alis_1_1_core_1_1_audio_1_1_object_base.html#a14ffdae6323b79aba93bfc406277f045":[1,0,0,2,1,8,1],
 "d2/d85/class_alis_1_1_core_1_1_audio_1_1_object_base.html#a29d47c89e3aa59720e8366a928fb60f2":[1,0,0,2,1,8,4],
@@ -246,8 +249,5 @@ var NAVTREEINDEX12 =
 "d2/d8d/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_ptr.html#a7fda9062ddc23f4f6fc4d31360d7047f":[1,0,0,2,5,0,3,11,99],
 "d2/d8d/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_ptr.html#a80bba5c61868f89ac20d7000ba0f6472":[1,0,0,2,5,0,3,11,1],
 "d2/d8d/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_ptr.html#a812754438e2d240c86a35ea30d3597ec":[1,0,0,2,5,0,3,11,18],
-"d2/d8d/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_ptr.html#a854a14a275ae4695a2fafb82beed714d":[1,0,0,2,5,0,3,11,61],
-"d2/d8d/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_ptr.html#a882c6535d178f0e77651bb89c0a635af":[1,0,0,2,5,0,3,11,104],
-"d2/d8d/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_ptr.html#a89b3456a03a72073ed5ca7e27285e972":[1,0,0,2,5,0,3,11,79],
-"d2/d8d/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_ptr.html#a8e313dac552b52a439650f520412a8b4":[1,0,0,2,5,0,3,11,111]
+"d2/d8d/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_ptr.html#a854a14a275ae4695a2fafb82beed714d":[1,0,0,2,5,0,3,11,61]
 };

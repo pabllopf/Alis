@@ -1,5 +1,11 @@
 var NAVTREEINDEX15 =
 {
+"d3/d6f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot_style_ptr.html#a5f565bf3bba1244f8eabae1257d1e120":[1,0,0,2,5,0,2,2,11,21],
+"d3/d6f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot_style_ptr.html#a6f002a803183904f15a81a5c2a6ec444":[1,0,0,2,5,0,2,2,11,33],
+"d3/d6f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot_style_ptr.html#a70b32178be42cf8c7007c09501673b31":[1,0,0,2,5,0,2,2,11,20],
+"d3/d6f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot_style_ptr.html#a75eca8f94b1bd46d9740bd595b2da034":[1,0,0,2,5,0,2,2,11,4],
+"d3/d6f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot_style_ptr.html#a96074a8f15fff6969b3299d191323985":[1,0,0,2,5,0,2,2,11,14],
+"d3/d6f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot_style_ptr.html#aa19bb18380d21672cc56728e37a77313":[1,0,0,2,5,0,2,2,11,28],
 "d3/d6f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot_style_ptr.html#aa8de4c40e78103b9ef6f6eb85f8db980":[1,0,0,2,5,0,2,2,11,38],
 "d3/d6f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot_style_ptr.html#ab3861213320e76b020e139d5c0543b09":[1,0,0,2,5,0,2,2,11,35],
 "d3/d6f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot_style_ptr.html#ab6d37290f1114575cdc749f0a12fb0b5":[1,0,0,2,5,0,2,2,11,26],
@@ -24,8 +30,8 @@ var NAVTREEINDEX15 =
 "d3/d78/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_1_1_identification.html#a37eabc0dba58f49d7ae3bae297e26283":[1,0,0,2,5,4,1,5,0,2],
 "d3/d78/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_1_1_identification.html#a3f385d9d07e567039af2a34198c93526":[1,0,0,2,5,4,1,5,0,0],
 "d3/d78/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_1_1_identification.html#afc73e4546894fa7d3af4ebdbbb12fa25":[1,0,0,2,5,4,1,5,0,1],
-"d3/d84/namespace_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words.html":[1,0,0,2,0,2,0],
 "d3/d84/namespace_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words.html":[0,0,0,2,0,2,0],
+"d3/d84/namespace_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words.html":[1,0,0,2,0,2,0],
 "d3/d84/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3_i.html":[1,0,0,2,0,4,4,6],
 "d3/d84/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3_i.html#a44216cb2c8f460e174ed97bf7825df77":[1,0,0,2,0,4,4,6,1],
 "d3/d84/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3_i.html#a6d7a19c327e9bf3287a97c96c973b1f0":[1,0,0,2,0,4,4,6,2],
@@ -243,11 +249,5 @@ var NAVTREEINDEX15 =
 "d3/d9f/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot.html#a1773b773a1bb2d6327d4905549b2f767":[1,0,0,2,5,0,2,2,0,409],
 "d3/d9f/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot.html#a1775b1757367ab6eef7563477e7d5c91":[1,0,0,2,5,0,2,2,0,382],
 "d3/d9f/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot.html#a1776d7de96cc24bc457f6b01e5a73ba1":[1,0,0,2,5,0,2,2,0,1010],
-"d3/d9f/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot.html#a1797b723efef2f5184783163743f52a7":[1,0,0,2,5,0,2,2,0,79],
-"d3/d9f/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot.html#a179b9ff7cf952f2dede7bdd51501cf08":[1,0,0,2,5,0,2,2,0,706],
-"d3/d9f/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot.html#a17af637b40529a2bf3c778e3d890f348":[1,0,0,2,5,0,2,2,0,384],
-"d3/d9f/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot.html#a181aa0848c0380b9dc0a63f0fd6ce06c":[1,0,0,2,5,0,2,2,0,347],
-"d3/d9f/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot.html#a183a5e5476f3759ff8cd0e3148b7d61f":[1,0,0,2,5,0,2,2,0,202],
-"d3/d9f/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot.html#a18cd87e5af3660e7e8cc12080668d0bd":[1,0,0,2,5,0,2,2,0,667],
-"d3/d9f/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot.html#a1907d091550cea4ec52c1afea2d0deac":[1,0,0,2,5,0,2,2,0,647]
+"d3/d9f/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_plot_1_1_im_plot.html#a1797b723efef2f5184783163743f52a7":[1,0,0,2,5,0,2,2,0,79]
 };
