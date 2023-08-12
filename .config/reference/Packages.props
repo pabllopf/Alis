@@ -1,15 +1,13 @@
 <Project>
-    <ItemGroup Condition="
-        $(AssemblyName.Contains('Test')) == true
-        ">
-        <PackageReference Include="Moq" Version="4.18.2"/>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0"/>
-        <PackageReference Include="xunit" Version="2.4.1"/>
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+    <ItemGroup Condition="$(AssemblyName.Contains('Test')) == true">
+        <PackageReference Include="coverlet.collector" Version="6.0.0">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="coverlet.collector" Version="3.1.2">
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.0" />
+        <PackageReference Include="Moq" Version="4.20.69"/>
+        <PackageReference Include="xunit" Version="2.5.0" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.5.0">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
@@ -18,12 +16,19 @@
     <ItemGroup Condition="$(AssemblyName.Contains('Benchmark')) == true">
         <PackageReference Include="BenchmarkDotNet" Version="0.13.2"/>
     </ItemGroup>
-
-
+    
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Core.Graphic')) == true">
-        <PackageReference Include="Vk" Version="1.0.25" Condition="'$(ExcludeVulkan)' != 'true'" />
-        <PackageReference Include="Vortice.D3DCompiler" Version="2.3.0" Condition="'$(ExcludeD3D11)' != 'true'" />
-        <PackageReference Include="Vortice.Direct3D11" Version="2.3.0" Condition="'$(ExcludeD3D11)' != 'true'" />
+        <PackageReference Include="Vk" Version="1.0.25" />
+        <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
+        <PackageReference Condition="$([MSBuild]::IsOSPlatform('windows'))" Include="Vortice.D3DCompiler" Version="3.2.0" />
+        <PackageReference Condition="$([MSBuild]::IsOSPlatform('windows'))" Include="Vortice.Direct3D11" Version="3.2.0" />
+        <Compile Condition="$([MSBuild]::IsOSPlatform('windows')) == false"  Remove="Backends/D3D11/**/*"/>
+        <Compile Condition="$([MSBuild]::IsOSPlatform('osx')) == false" Remove="Backends/MTL/**/*" />
     </ItemGroup>
+    
+    <PropertyGroup Condition="$(AssemblyName.Equals('Alis.Core.Graphic')) == true">
+        <DefineConstants Condition="$([MSBuild]::IsOSPlatform('windows')) == false">$(DefineConstants);EXCLUDE_D3D11_BACKEND</DefineConstants>
+        <DefineConstants Condition="$([MSBuild]::IsOSPlatform('osx')) == false">$(DefineConstants);EXCLUDE_METAL_BACKEND</DefineConstants>
+    </PropertyGroup>
     
 </Project>
