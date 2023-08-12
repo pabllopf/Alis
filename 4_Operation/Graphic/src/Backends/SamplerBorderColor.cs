@@ -1,4 +1,4 @@
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// A constant color that is sampled when <see cref="SamplerAddressMode.Border"/> is used.

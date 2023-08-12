@@ -1,4 +1,4 @@
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// The winding order used to determine the front face of a primitive.

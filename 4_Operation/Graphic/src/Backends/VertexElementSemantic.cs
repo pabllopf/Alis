@@ -1,4 +1,4 @@
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// The type of a vertex element, describing how the element is interpreted.

@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Veldrid.OpenGL.EGL
+namespace Alis.Core.Graphic.Backends.OpenGL.EGL
 {
     /// <summary>
     /// The egl native class

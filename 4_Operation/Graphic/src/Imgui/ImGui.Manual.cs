@@ -3,7 +3,7 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace ImGuiNET
+namespace Alis.Core.Graphic.Imgui
 {
     /// <summary>
     /// The im gui class

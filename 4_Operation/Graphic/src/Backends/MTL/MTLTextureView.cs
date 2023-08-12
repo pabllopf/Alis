@@ -1,6 +1,6 @@
-using Veldrid.MetalBindings;
+using Alis.Core.Graphic.Backends.Metal;
 
-namespace Veldrid.MTL
+namespace Alis.Core.Graphic.Backends.MTL
 {
     /// <summary>
     /// The mtl texture view class
@@ -20,7 +20,7 @@ namespace Veldrid.MTL
         /// <summary>
         /// Gets the value of the target device texture
         /// </summary>
-        public MetalBindings.MTLTexture TargetDeviceTexture { get; }
+        public Metal.MTLTexture TargetDeviceTexture { get; }
 
         /// <summary>
         /// Gets or sets the value of the name

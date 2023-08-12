@@ -1,4 +1,4 @@
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// The data type of a shader constant.

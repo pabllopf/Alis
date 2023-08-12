@@ -1,7 +1,7 @@
 using System;
-using static Veldrid.MetalBindings.ObjectiveCRuntime;
+using static Alis.Core.Graphic.Backends.Metal.ObjectiveCRuntime;
 
-namespace Veldrid.MetalBindings
+namespace Alis.Core.Graphic.Backends.Metal
 {
     /// <summary>
     /// The mtl render pass stencil attachment descriptor

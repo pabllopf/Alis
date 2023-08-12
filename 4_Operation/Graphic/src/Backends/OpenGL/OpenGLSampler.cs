@@ -1,8 +1,7 @@
-using static Veldrid.OpenGLBinding.OpenGLNative;
-using static Veldrid.OpenGL.OpenGLUtil;
-using Veldrid.OpenGLBinding;
+using static Alis.Core.Graphic.Backends.OpenGL.OpenGLNative;
+using static Alis.Core.Graphic.Backends.OpenGL.OpenGLUtil;
 
-namespace Veldrid.OpenGL
+namespace Alis.Core.Graphic.Backends.OpenGL
 {
     /// <summary>
     /// The open gl sampler class

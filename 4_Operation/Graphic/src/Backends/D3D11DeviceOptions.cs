@@ -1,6 +1,6 @@
 using System;
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// A structure describing Direct3D11-specific device creation options.

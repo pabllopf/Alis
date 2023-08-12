@@ -1,4 +1,4 @@
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// An addressing mode for texture coordinates.

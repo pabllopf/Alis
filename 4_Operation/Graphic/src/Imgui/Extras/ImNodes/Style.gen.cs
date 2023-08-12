@@ -1,8 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
-using ImGuiNET;
 
-namespace Alis.Core.Graphic.ImGui.Extras.ImNodes
+namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
 {
     /// <summary>
     /// The style

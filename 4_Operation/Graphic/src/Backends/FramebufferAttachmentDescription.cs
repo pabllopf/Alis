@@ -1,6 +1,6 @@
 using System;
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// Describes a single attachment (color or depth) for a <see cref="Framebuffer"/>.

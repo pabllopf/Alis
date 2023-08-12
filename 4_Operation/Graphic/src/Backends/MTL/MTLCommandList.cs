@@ -1,8 +1,8 @@
 using System;
 using System.Diagnostics;
-using Veldrid.MetalBindings;
+using Alis.Core.Graphic.Backends.Metal;
 
-namespace Veldrid.MTL
+namespace Alis.Core.Graphic.Backends.MTL
 {
     /// <summary>
     /// The mtl command list class
@@ -621,8 +621,8 @@ namespace Veldrid.MTL
             if (srcIsStaging && !dstIsStaging)
             {
                 // Staging -> Normal
-                MetalBindings.MTLBuffer srcBuffer = srcMTLTexture.StagingBuffer;
-                MetalBindings.MTLTexture dstTexture = dstMTLTexture.DeviceTexture;
+                Metal.MTLBuffer srcBuffer = srcMTLTexture.StagingBuffer;
+                Metal.MTLTexture dstTexture = dstMTLTexture.DeviceTexture;
 
                 Util.GetMipDimensions(srcMTLTexture, srcMipLevel, out uint mipWidth, out uint mipHeight, out uint mipDepth);
                 for (uint layer = 0; layer < layerCount; layer++)

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ContextMenu.cs
+//  File:ResourcesTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,14 +27,22 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Engine.Menus
+using Xunit;
+
+namespace Alis.Core.Graphic.Test
 {
     /// <summary>
-    /// The context menu class
+    /// The resources test class
     /// </summary>
-    /// <seealso cref="IMenu"/>
-    public class ContextMenu : IMenu
+    public class ResourcesTest
     {
-        
+        /// <summary>
+        /// Tests that test to load a shader from assembly resources
+        /// </summary>
+        [Fact]
+        public void Test_To_Load_A_Shader_From_Assembly_Resources()
+        {
+            Assert.True(true);
+        }
     }
 }

@@ -1,10 +1,10 @@
 #if !EXCLUDE_METAL_BACKEND
 using System.Collections.ObjectModel;
 using System.Linq;
-using Veldrid.MetalBindings;
-using Veldrid.MTL;
+using Alis.Core.Graphic.Backends.Metal;
+using Alis.Core.Graphic.Backends.MTL;
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// Exposes Metal-specific functionality,

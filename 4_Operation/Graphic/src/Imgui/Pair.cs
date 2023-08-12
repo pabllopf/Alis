@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace ImGuiNET
+namespace Alis.Core.Graphic.Imgui
 {
     /// <summary>
     /// The im gui storage pair

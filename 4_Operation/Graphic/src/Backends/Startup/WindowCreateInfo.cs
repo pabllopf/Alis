@@ -1,4 +1,6 @@
-namespace Veldrid.StartupUtilities
+using Alis.Core.Graphic.Backends.SDL2;
+
+namespace Alis.Core.Graphic.Backends.Startup
 {
     /// <summary>
     /// The window create info

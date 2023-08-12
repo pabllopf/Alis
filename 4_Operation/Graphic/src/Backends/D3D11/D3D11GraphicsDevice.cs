@@ -1,17 +1,17 @@
-using Vortice.Direct3D11;
-using Vortice.DXGI;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using Vortice.Mathematics;
+using Vortice.Direct3D11;
 using Vortice.Direct3D11.Debug;
+using Vortice.DXGI;
+using Vortice.DXGI.Debug;
+using Vortice.Mathematics;
 using VorticeDXGI = Vortice.DXGI.DXGI;
 using VorticeD3D11 = Vortice.Direct3D11.D3D11;
-using Vortice.DXGI.Debug;
 
-namespace Veldrid.D3D11
+namespace Alis.Core.Graphic.Backends.D3D11
 {
     /// <summary>
     /// The 11 graphics device class

@@ -1,4 +1,4 @@
-namespace ImGuiNET
+namespace Alis.Core.Graphic.Imgui
 {
     /// <summary>
     /// The im gui tab bar flags enum

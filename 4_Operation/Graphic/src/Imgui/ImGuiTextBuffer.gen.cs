@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace ImGuiNET
+namespace Alis.Core.Graphic.Imgui
 {
     /// <summary>
     /// The im gui text buffer

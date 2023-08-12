@@ -1,4 +1,4 @@
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// The kind of a <see cref="BindableResource"/> object.
@@ -35,7 +35,7 @@ namespace Veldrid
         /// <see cref="PixelFormat"/>.</remarks>
         TextureReadWrite,
         /// <summary>
-        /// A <see cref="Veldrid.Sampler"/>.
+        /// A <see cref="Backends.Sampler"/>.
         /// </summary>
         Sampler,
     }

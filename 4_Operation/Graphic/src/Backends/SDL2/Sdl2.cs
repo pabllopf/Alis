@@ -2,7 +2,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using NativeLibrary = NativeLibraryLoader.NativeLibrary;
 
-namespace Veldrid.Sdl2
+namespace Alis.Core.Graphic.Backends.SDL2
 {
     /// <summary>
     /// The sdl native class

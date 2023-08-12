@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// A device resource used to control which color and depth textures are rendered to.
@@ -21,7 +21,7 @@ namespace Veldrid
         public virtual IReadOnlyList<FramebufferAttachment> ColorTargets { get; }
 
         /// <summary>
-        /// Gets an <see cref="Veldrid.OutputDescription"/> which describes the number and formats of the depth and color targets
+        /// Gets an <see cref="Backends.OutputDescription"/> which describes the number and formats of the depth and color targets
         /// in this instance.
         /// </summary>
         public virtual OutputDescription OutputDescription { get; }

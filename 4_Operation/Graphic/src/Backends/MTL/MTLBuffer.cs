@@ -1,7 +1,7 @@
 using System;
-using Veldrid.MetalBindings;
+using Alis.Core.Graphic.Backends.Metal;
 
-namespace Veldrid.MTL
+namespace Alis.Core.Graphic.Backends.MTL
 {
     /// <summary>
     /// The mtl buffer class
@@ -55,7 +55,7 @@ namespace Veldrid.MTL
         /// <summary>
         /// Gets or sets the value of the device buffer
         /// </summary>
-        public MetalBindings.MTLBuffer DeviceBuffer { get; private set; }
+        public Metal.MTLBuffer DeviceBuffer { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MTLBuffer"/> class

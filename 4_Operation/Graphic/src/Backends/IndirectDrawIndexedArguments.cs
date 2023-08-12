@@ -1,4 +1,4 @@
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// A structure describing the format expected by indirect, indexed draw commands contained in an indirect

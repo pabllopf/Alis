@@ -1,6 +1,6 @@
 using System;
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// A bindable device resource which controls how texture values are sampled within a shader.

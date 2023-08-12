@@ -1,4 +1,4 @@
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// Represents a single output of a <see cref="Framebuffer"/>. May be a color or depth attachment.

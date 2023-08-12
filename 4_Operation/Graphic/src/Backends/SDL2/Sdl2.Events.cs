@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 
-namespace Veldrid.Sdl2
+namespace Alis.Core.Graphic.Backends.SDL2
 {
     /// <summary>
     /// The sdl native class
@@ -35,7 +35,7 @@ namespace Veldrid.Sdl2
         /// <summary>
         /// Sdls the poll event using the specified event
         /// </summary>
-        /// <param name="@event">The event</param>
+        /// <param name="event">The event</param>
         /// <returns>The int</returns>
         public static int SDL_PollEvent(SDL_Event* @event) => s_sdl_pollEvent(@event);
 

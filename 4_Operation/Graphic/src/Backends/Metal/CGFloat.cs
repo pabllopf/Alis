@@ -1,4 +1,4 @@
-namespace Veldrid.MetalBindings
+namespace Alis.Core.Graphic.Backends.Metal
 {
     // TODO: Technically this should be "pointer-sized",
     // but there are no non-64-bit platforms that anyone cares about.

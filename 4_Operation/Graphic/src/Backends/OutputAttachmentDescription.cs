@@ -1,6 +1,6 @@
 using System;
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// Describes an individual output attachment and its format.

@@ -1,6 +1,6 @@
 using System;
 
-namespace Veldrid.MetalBindings
+namespace Alis.Core.Graphic.Backends.Metal
 {
     /// <summary>
     /// The block literal

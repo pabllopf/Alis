@@ -2,7 +2,7 @@ using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.ImGui.Extras.ImNodes
+namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
 {
     /// <summary>
     /// The imnodes native class

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-namespace Veldrid.Sdl2
+namespace Alis.Core.Graphic.Backends.SDL2
 {
     /// <summary>
     /// The sdl window registry class

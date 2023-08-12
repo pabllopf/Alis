@@ -1,9 +1,8 @@
 using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
-using ImGuiNET;
 
-namespace Alis.Core.Graphic.ImGui.Extras.ImPlot
+namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
 {
     /// <summary>
     /// The im plot native class

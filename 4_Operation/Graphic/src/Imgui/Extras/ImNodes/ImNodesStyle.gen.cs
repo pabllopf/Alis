@@ -1,9 +1,8 @@
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using ImGuiNET;
 
-namespace Alis.Core.Graphic.ImGui.Extras.ImNodes
+namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
 {
     /// <summary>
     /// The im nodes style

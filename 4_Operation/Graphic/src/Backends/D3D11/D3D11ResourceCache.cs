@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Threading;
 using Vortice.Direct3D11;
 
-namespace Veldrid.D3D11
+namespace Alis.Core.Graphic.Backends.D3D11
 {
     /// <summary>
     /// The 11 resource cache class

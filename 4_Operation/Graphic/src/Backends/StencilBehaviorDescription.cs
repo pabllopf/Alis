@@ -1,6 +1,6 @@
 using System;
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// Describes how stencil tests are performed in a <see cref="Pipeline"/>'s depth-stencil state.

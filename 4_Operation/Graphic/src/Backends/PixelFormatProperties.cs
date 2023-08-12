@@ -1,4 +1,4 @@
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// Describes the properties that are supported for a particular combination of <see cref="PixelFormat"/>,

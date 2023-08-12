@@ -1,7 +1,7 @@
 using System;
 using System.Numerics;
 
-namespace ImGuiNET
+namespace Alis.Core.Graphic.Imgui
 {
     /// <summary>
     /// The platform createwindow

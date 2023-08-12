@@ -196,4 +196,17 @@
                 Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
                 Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
     </ItemGroup>
+
+    <ItemGroup>
+        <None Condition="Exists('$(ProjectDir)/Assets/') == True" 
+              Update="$(ProjectDir)/Assets/**"
+              LinkBase="Assets/"
+              CopyToOutputDirectory="Always"
+              CopyToPublishDirectory="Always"/>
+        <EmbeddedResource
+            Condition="Exists('$(ProjectDir)/Shaders/') == True"
+            LogicalName="%(Filename)%(Extension)"
+            Include="$(ProjectDir)/Shaders/**"
+            LinkBase="Shaders/" />
+    </ItemGroup>
 </Project>

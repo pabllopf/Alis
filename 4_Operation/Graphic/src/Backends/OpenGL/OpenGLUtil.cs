@@ -1,10 +1,9 @@
 using System;
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.Text;
-using Veldrid.OpenGLBinding;
-using static Veldrid.OpenGLBinding.OpenGLNative;
+using static Alis.Core.Graphic.Backends.OpenGL.OpenGLNative;
 
-namespace Veldrid.OpenGL
+namespace Alis.Core.Graphic.Backends.OpenGL
 {
     /// <summary>
     /// The open gl util class

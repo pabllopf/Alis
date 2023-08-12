@@ -1,7 +1,7 @@
-using static Veldrid.MetalBindings.ObjectiveCRuntime;
 using System;
+using static Alis.Core.Graphic.Backends.Metal.ObjectiveCRuntime;
 
-namespace Veldrid.MetalBindings
+namespace Alis.Core.Graphic.Backends.Metal
 {
     /// <summary>
     /// The ns object
@@ -22,7 +22,7 @@ namespace Veldrid.MetalBindings
         /// <summary>
         /// Ises the kind of using the specified class
         /// </summary>
-        /// <param name="@class">The class</param>
+        /// <param name="class">The class</param>
         /// <returns>The bool</returns>
         public Bool8 IsKindOfClass(IntPtr @class) => bool8_objc_msgSend(NativePtr, sel_isKindOfClass, @class);
 

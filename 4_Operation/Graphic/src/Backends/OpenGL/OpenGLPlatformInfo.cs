@@ -1,6 +1,6 @@
 using System;
 
-namespace Veldrid.OpenGL
+namespace Alis.Core.Graphic.Backends.OpenGL
 {
     /// <summary>
     /// Encapsulates various pieces of OpenGL context, necessary for creating a <see cref="GraphicsDevice"/> using the OpenGL

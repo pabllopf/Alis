@@ -1,10 +1,8 @@
 using System;
 using System.Numerics;
 using System.Text;
-using ImGuiNET;
-using ImDrawList = ImGuiNET.ImDrawList;
 
-namespace Alis.Core.Graphic.ImGui.Extras.ImPlot
+namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
 {
     /// <summary>
     /// The im plot class

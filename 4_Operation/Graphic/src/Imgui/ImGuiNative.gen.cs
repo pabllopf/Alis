@@ -2,7 +2,7 @@ using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
 
-namespace ImGuiNET
+namespace Alis.Core.Graphic.Imgui
 {
     /// <summary>
     /// The im gui native class
@@ -299,7 +299,7 @@ namespace ImGuiNET
         /// <summary>
         /// Igs the color convert float 4 to u 32 using the specified in
         /// </summary>
-        /// <param name="@in">The in</param>
+        /// <param name="in">The in</param>
         /// <returns>The uint</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern uint igColorConvertFloat4ToU32(Vector4 @in);
@@ -329,7 +329,7 @@ namespace ImGuiNET
         /// Igs the color convert u 32 to float 4 using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        /// <param name="@in">The in</param>
+        /// <param name="in">The in</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern void igColorConvertU32ToFloat4(Vector4* pOut, uint @in);
         /// <summary>
@@ -2323,7 +2323,7 @@ namespace ImGuiNET
         /// <summary>
         /// Igs the show style editor using the specified ref
         /// </summary>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern void igShowStyleEditor(ImGuiStyle* @ref);
         /// <summary>
@@ -4704,7 +4704,7 @@ namespace ImGuiNET
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="separator">The separator</param>
-        /// <param name="@out">The out</param>
+        /// <param name="out">The out</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiTextRange_split(ImGuiTextRange* self, byte separator, ImVector* @out);
         /// <summary>

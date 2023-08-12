@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace Veldrid.MTL
+namespace Alis.Core.Graphic.Backends.MTL
 {
     /// <summary>
     /// The mtl fence class

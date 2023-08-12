@@ -1,18 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Numerics;
 using System.Reflection;
-using System.IO;
-using Veldrid;
 using System.Runtime.CompilerServices;
-using ImGui.NET.SampleProgram;
-using Veldrid.Sdl2;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.ImGui.Extras.ImGuizmo;
-using Alis.Core.Graphic.ImGui.Extras.ImNodes;
-using Alis.Core.Graphic.ImGui.Extras.ImPlot;
+using Alis.Core.Graphic.Backends.SDL2;
+using Alis.Core.Graphic.Imgui;
+using Alis.Core.Graphic.Imgui.Extras.ImGuizmo;
+using Alis.Core.Graphic.Imgui.Extras.ImNodes;
+using Alis.Core.Graphic.Imgui.Extras.ImPlot;
 
-namespace ImGuiNET
+namespace Alis.Core.Graphic.Backends.UI
 {
     /// <summary>
     /// A modified version of Veldrid.ImGui's ImGuiRenderer.

@@ -1,8 +1,7 @@
 using System.Collections.Generic;
+using static Alis.Core.Graphic.Backends.SDL2.Sdl2Native;
 
-using static Veldrid.Sdl2.Sdl2Native;
-
-namespace Veldrid.Sdl2
+namespace Alis.Core.Graphic.Backends.SDL2
 {
     /// <summary>
     /// The sdl events class

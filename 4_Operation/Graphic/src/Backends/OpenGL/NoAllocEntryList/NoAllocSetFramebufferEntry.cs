@@ -1,4 +1,4 @@
-namespace Veldrid.OpenGL.NoAllocEntryList
+namespace Alis.Core.Graphic.Backends.OpenGL.NoAllocEntryList
 {
     /// <summary>
     /// The no alloc set framebuffer entry

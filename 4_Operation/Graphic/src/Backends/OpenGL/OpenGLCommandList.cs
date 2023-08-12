@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Veldrid.OpenGL.NoAllocEntryList;
+using Alis.Core.Graphic.Backends.OpenGL.NoAllocEntryList;
 
-namespace Veldrid.OpenGL
+namespace Alis.Core.Graphic.Backends.OpenGL
 {
     /// <summary>
     /// The open gl command list class

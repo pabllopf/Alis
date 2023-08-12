@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Vulkan;
 
-namespace Veldrid.Vk
+namespace Alis.Core.Graphic.Backends.Vk
 {
     /// <summary>
     /// The vk framebuffer base class

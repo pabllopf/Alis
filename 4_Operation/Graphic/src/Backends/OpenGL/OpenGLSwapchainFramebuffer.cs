@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Veldrid.OpenGL
+namespace Alis.Core.Graphic.Backends.OpenGL
 {
     /// <summary>
     /// The open gl swapchain framebuffer class

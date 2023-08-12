@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace ImGui.NET.SampleProgram
+namespace Alis.Core.Graphic.Backends.UI
 {
     /// <summary>
     /// The fixed ascii string class

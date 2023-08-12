@@ -1,12 +1,11 @@
-using static Veldrid.OpenGLBinding.OpenGLNative;
-using static Veldrid.OpenGL.OpenGLUtil;
-using Veldrid.OpenGLBinding;
-using System.Text;
-using System.Diagnostics;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Text;
+using static Alis.Core.Graphic.Backends.OpenGL.OpenGLNative;
+using static Alis.Core.Graphic.Backends.OpenGL.OpenGLUtil;
 
-namespace Veldrid.OpenGL
+namespace Alis.Core.Graphic.Backends.OpenGL
 {
     /// <summary>
     /// The open gl pipeline class

@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// The format size helpers class

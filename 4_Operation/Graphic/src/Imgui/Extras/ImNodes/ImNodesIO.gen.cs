@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace Alis.Core.Graphic.ImGui.Extras.ImNodes
+namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
 {
     /// <summary>
     /// The im nodes io

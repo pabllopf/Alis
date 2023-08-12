@@ -3,7 +3,7 @@ using System.Diagnostics;
 using Vulkan;
 using static Vulkan.VulkanNative;
 
-namespace Veldrid.Vk
+namespace Alis.Core.Graphic.Backends.Vk
 {
     /// <summary>
     /// The vk descriptor pool manager class

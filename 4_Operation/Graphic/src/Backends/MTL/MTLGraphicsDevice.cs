@@ -5,10 +5,10 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Alis.Core.Graphic.Backends.Metal;
 using NativeLibrary = NativeLibraryLoader.NativeLibrary;
-using Veldrid.MetalBindings;
 
-namespace Veldrid.MTL
+namespace Alis.Core.Graphic.Backends.MTL
 {
     /// <summary>
     /// The mtl graphics device class
@@ -827,7 +827,7 @@ namespace Veldrid.MTL
 
                     Debug.Assert(_unalignedBufferCopyShader == null);
                     string name = MetalFeatures.IsMacOS ? UnalignedBufferCopyPipelineMacOSName : UnalignedBufferCopyPipelineiOSName;
-                    using (Stream resourceStream = typeof(MTLGraphicsDevice).Assembly.GetManifestResourceStream(name))
+                    using (Stream resourceStream = typeof(MTLGraphicsDevice).Assembly.GetManifestResourceStream(name + ".metallib"))
                     {
                         byte[] data = new byte[resourceStream.Length];
                         using (MemoryStream ms = new MemoryStream(data))

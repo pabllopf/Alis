@@ -1,4 +1,4 @@
-namespace ImGuiNET
+namespace Alis.Core.Graphic.Imgui
 {
     /// <summary>
     /// The im gui tree node flags enum

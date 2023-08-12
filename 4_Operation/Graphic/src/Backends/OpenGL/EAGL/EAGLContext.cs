@@ -1,9 +1,9 @@
 using System;
 using System.Runtime.InteropServices;
-using Veldrid.MetalBindings;
-using static Veldrid.MetalBindings.ObjectiveCRuntime;
+using Alis.Core.Graphic.Backends.Metal;
+using static Alis.Core.Graphic.Backends.Metal.ObjectiveCRuntime;
 
-namespace Veldrid.OpenGL.EAGL
+namespace Alis.Core.Graphic.Backends.OpenGL.EAGL
 {
     /// <summary>
     /// The eagl context

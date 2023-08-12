@@ -15,9 +15,16 @@
         </PackageReference>
     </ItemGroup>
 
-    <ItemGroup Condition="
-        $(AssemblyName.Contains('Benchmark')) == true
-    ">
+    <ItemGroup Condition="$(AssemblyName.Contains('Benchmark')) == true">
         <PackageReference Include="BenchmarkDotNet" Version="0.13.2"/>
     </ItemGroup>
+
+
+    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Core.Graphic')) == true">
+        <PackageReference Include="NativeLibraryLoader" Version="1.0.13" />
+        <PackageReference Include="Vk" Version="1.0.25" Condition="'$(ExcludeVulkan)' != 'true'" />
+        <PackageReference Include="Vortice.D3DCompiler" Version="2.3.0" Condition="'$(ExcludeD3D11)' != 'true'" />
+        <PackageReference Include="Vortice.Direct3D11" Version="2.3.0" Condition="'$(ExcludeD3D11)' != 'true'" />
+    </ItemGroup>
+    
 </Project>

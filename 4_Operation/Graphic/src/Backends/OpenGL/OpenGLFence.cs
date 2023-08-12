@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace Veldrid.OpenGL
+namespace Alis.Core.Graphic.Backends.OpenGL
 {
     /// <summary>
     /// The open gl fence class

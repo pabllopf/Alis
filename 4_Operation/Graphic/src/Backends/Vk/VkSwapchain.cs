@@ -1,10 +1,10 @@
+using System;
 using System.Linq;
 using Vulkan;
 using static Vulkan.VulkanNative;
-using static Veldrid.Vk.VulkanUtil;
-using System;
+using static Alis.Core.Graphic.Backends.Vk.VulkanUtil;
 
-namespace Veldrid.Vk
+namespace Alis.Core.Graphic.Backends.Vk
 {
     /// <summary>
     /// The vk swapchain class

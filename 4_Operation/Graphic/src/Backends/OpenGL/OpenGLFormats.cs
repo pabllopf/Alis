@@ -1,7 +1,6 @@
 using System.Diagnostics;
-using Veldrid.OpenGLBinding;
 
-namespace Veldrid.OpenGL
+namespace Alis.Core.Graphic.Backends.OpenGL
 {
     /// <summary>
     /// The open gl formats class

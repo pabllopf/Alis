@@ -1,8 +1,7 @@
 using System;
 using System.Numerics;
-using ImGuiNET;
 
-namespace Alis.Core.Graphic.ImGui.Extras.ImGuizmo
+namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
 {
     /// <summary>
     /// The im guizmo class

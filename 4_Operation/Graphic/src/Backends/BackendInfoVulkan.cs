@@ -1,10 +1,10 @@
 #if !EXCLUDE_VULKAN_BACKEND
 using System;
 using System.Collections.ObjectModel;
-using Veldrid.Vk;
+using Alis.Core.Graphic.Backends.Vk;
 using Vulkan;
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// Exposes Vulkan-specific functionality,

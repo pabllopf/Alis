@@ -1,6 +1,6 @@
 using System;
 
-namespace Veldrid.OpenGLBinding
+namespace Alis.Core.Graphic.Backends.OpenGL
 {
     /// <summary>
     /// A boolean value stored in an unsigned byte.

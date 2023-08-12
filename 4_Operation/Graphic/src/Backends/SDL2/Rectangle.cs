@@ -1,7 +1,7 @@
 using System;
 using System.Numerics;
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends.SDL2
 {
     /// <summary>
     /// The rectangle

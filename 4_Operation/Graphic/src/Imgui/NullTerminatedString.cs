@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace ImGuiNET
+namespace Alis.Core.Graphic.Imgui
 {
     /// <summary>
     /// The null terminated string

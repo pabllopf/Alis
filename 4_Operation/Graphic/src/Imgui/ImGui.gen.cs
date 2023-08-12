@@ -2,7 +2,7 @@ using System;
 using System.Numerics;
 using System.Text;
 
-namespace ImGuiNET
+namespace Alis.Core.Graphic.Imgui
 {
     /// <summary>
     /// The im gui class
@@ -1966,7 +1966,7 @@ namespace ImGuiNET
         /// <summary>
         /// Colors the convert float 4 to u 32 using the specified in
         /// </summary>
-        /// <param name="@in">The in</param>
+        /// <param name="in">The in</param>
         /// <returns>The ret</returns>
         public static uint ColorConvertFloat4ToU32(Vector4 @in)
         {
@@ -2020,7 +2020,7 @@ namespace ImGuiNET
         /// <summary>
         /// Colors the convert u 32 to float 4 using the specified in
         /// </summary>
-        /// <param name="@in">The in</param>
+        /// <param name="in">The in</param>
         /// <returns>The retval</returns>
         public static Vector4 ColorConvertU32ToFloat4(uint @in)
         {
@@ -14560,7 +14560,7 @@ namespace ImGuiNET
         /// <summary>
         /// Shows the style editor using the specified ref
         /// </summary>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         public static void ShowStyleEditor(ImGuiStylePtr @ref)
         {
             ImGuiStyle* native_ref = @ref.NativePtr;

@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Veldrid.Android
+namespace Alis.Core.Graphic.Backends.Android
 {
     /// <summary>
     /// Function imports from the Android runtime library (android.so).

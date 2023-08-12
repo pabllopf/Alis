@@ -1,7 +1,7 @@
 using System;
-using Veldrid.MetalBindings;
+using Alis.Core.Graphic.Backends.Metal;
 
-namespace Veldrid.MTL
+namespace Alis.Core.Graphic.Backends.MTL
 {
     /// <summary>
     /// The mtl texture class
@@ -17,11 +17,11 @@ namespace Veldrid.MTL
         /// <summary>
         /// The native MTLTexture object. This property is only valid for non-staging Textures.
         /// </summary>
-        public MetalBindings.MTLTexture DeviceTexture { get; }
+        public Metal.MTLTexture DeviceTexture { get; }
         /// <summary>
         /// The staging MTLBuffer object. This property is only valid for staging Textures.
         /// </summary>
-        public MetalBindings.MTLBuffer StagingBuffer { get; }
+        public Metal.MTLBuffer StagingBuffer { get; }
 
         /// <summary>
         /// Gets the value of the format
@@ -154,7 +154,7 @@ namespace Veldrid.MTL
         /// <param name="description">The description</param>
         public MTLTexture(ulong nativeTexture, ref TextureDescription description)
         {
-            DeviceTexture = new MetalBindings.MTLTexture((IntPtr)nativeTexture);
+            DeviceTexture = new Metal.MTLTexture((IntPtr)nativeTexture);
             Width = description.Width;
             Height = description.Height;
             Depth = description.Depth;

@@ -1,4 +1,4 @@
-namespace ImGuiNET
+namespace Alis.Core.Graphic.Imgui
 {
     /// <summary>
     /// The im draw flags enum

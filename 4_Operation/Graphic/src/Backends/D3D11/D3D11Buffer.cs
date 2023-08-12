@@ -1,10 +1,10 @@
 using System;
-using Vortice.Direct3D11;
 using System.Collections.Generic;
-using Vortice.DXGI;
 using Vortice.Direct3D;
+using Vortice.Direct3D11;
+using Vortice.DXGI;
 
-namespace Veldrid.D3D11
+namespace Alis.Core.Graphic.Backends.D3D11
 {
     /// <summary>
     /// The 11 buffer class

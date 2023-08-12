@@ -1,4 +1,4 @@
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends.SDL2
 {
     /// <summary>
     /// The window state enum

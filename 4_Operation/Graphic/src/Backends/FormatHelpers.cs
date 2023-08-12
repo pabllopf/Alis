@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// The format helpers class

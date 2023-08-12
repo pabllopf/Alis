@@ -1,18 +1,18 @@
-using static Veldrid.OpenGLBinding.OpenGLNative;
-using static Veldrid.OpenGL.OpenGLUtil;
 using System;
-using Veldrid.OpenGLBinding;
 using System.Collections.Concurrent;
-using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading;
-using Veldrid.OpenGL.EAGL;
-using static Veldrid.OpenGL.EGL.EGLNative;
-using NativeLibrary = NativeLibraryLoader.NativeLibrary;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Threading;
+using Alis.Core.Graphic.Backends.Metal;
+using Alis.Core.Graphic.Backends.OpenGL.EAGL;
+using static Alis.Core.Graphic.Backends.OpenGL.OpenGLNative;
+using static Alis.Core.Graphic.Backends.OpenGL.OpenGLUtil;
+using static Alis.Core.Graphic.Backends.OpenGL.EGL.EGLNative;
+using NativeLibrary = NativeLibraryLoader.NativeLibrary;
 
-namespace Veldrid.OpenGL
+namespace Alis.Core.Graphic.Backends.OpenGL
 {
     /// <summary>
     /// The open gl graphics device class
@@ -642,7 +642,7 @@ namespace Veldrid.OpenGL
                 throw new VeldridException("Unable to make newly-created EAGLContext current.");
             }
 
-            MetalBindings.UIView uiView = new MetalBindings.UIView(uIViewPtr);
+            UIView uiView = new UIView(uIViewPtr);
 
             CAEAGLLayer eaglLayer = CAEAGLLayer.New();
             eaglLayer.opaque = true;

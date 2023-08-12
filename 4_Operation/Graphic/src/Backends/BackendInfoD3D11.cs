@@ -1,8 +1,8 @@
 #if !EXCLUDE_D3D11_BACKEND
 using System;
-using Veldrid.D3D11;
+using Alis.Core.Graphic.Backends.D3D11;
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// Exposes Direct3D 11-specific functionality,

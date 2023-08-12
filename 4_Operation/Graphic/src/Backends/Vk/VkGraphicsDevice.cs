@@ -6,10 +6,10 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using Vulkan;
-using static Veldrid.Vk.VulkanUtil;
+using static Alis.Core.Graphic.Backends.Vk.VulkanUtil;
 using static Vulkan.VulkanNative;
 
-namespace Veldrid.Vk
+namespace Alis.Core.Graphic.Backends.Vk
 {
     /// <summary>
     /// The vk graphics device class
@@ -961,7 +961,7 @@ namespace Veldrid.Vk
         /// </summary>
         /// <param name="flags">The flags</param>
         /// <param name="objectType">The object type</param>
-        /// <param name="@object">The object</param>
+        /// <param name="object">The object</param>
         /// <param name="location">The location</param>
         /// <param name="messageCode">The message code</param>
         /// <param name="pLayerPrefix">The layer prefix</param>

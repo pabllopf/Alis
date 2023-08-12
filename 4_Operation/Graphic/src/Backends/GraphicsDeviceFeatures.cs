@@ -1,4 +1,4 @@
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// Enumerates the optional features supported by a given <see cref="GraphicsDevice"/>.

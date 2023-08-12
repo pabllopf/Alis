@@ -1,8 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
-using static Veldrid.MetalBindings.ObjectiveCRuntime;
+using static Alis.Core.Graphic.Backends.Metal.ObjectiveCRuntime;
 
-namespace Veldrid.MetalBindings
+namespace Alis.Core.Graphic.Backends.Metal
 {
     /// <summary>
     /// The mtl render command encoder
@@ -286,7 +286,7 @@ namespace Veldrid.MetalBindings
         /// <summary>
         /// Pushes the debug group using the specified string
         /// </summary>
-        /// <param name="@string">The string</param>
+        /// <param name="string">The string</param>
         public void pushDebugGroup(NSString @string)
             => objc_msgSend(NativePtr, Selectors.pushDebugGroup, @string.NativePtr);
 
@@ -298,7 +298,7 @@ namespace Veldrid.MetalBindings
         /// <summary>
         /// Inserts the debug signpost using the specified string
         /// </summary>
-        /// <param name="@string">The string</param>
+        /// <param name="string">The string</param>
         public void insertDebugSignpost(NSString @string)
             => objc_msgSend(NativePtr, Selectors.insertDebugSignpost, @string.NativePtr);
 

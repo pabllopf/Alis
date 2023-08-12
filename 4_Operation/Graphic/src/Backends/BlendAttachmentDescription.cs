@@ -1,6 +1,6 @@
 using System;
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// A <see cref="Pipeline"/> component describing the blend behavior for an individual color attachment.
@@ -13,7 +13,7 @@ namespace Veldrid
         public bool BlendEnabled;
         /// <summary>
         /// Controls which components of the color will be written to the framebuffer.
-        /// If <c>null</c>, the mask will be set to <see cref="Veldrid.ColorWriteMask.All"/>.
+        /// If <c>null</c>, the mask will be set to <see cref="Backends.ColorWriteMask.All"/>.
         /// </summary>
         public ColorWriteMask? ColorWriteMask;
         /// <summary>

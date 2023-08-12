@@ -1,5 +1,5 @@
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// The graphics api version

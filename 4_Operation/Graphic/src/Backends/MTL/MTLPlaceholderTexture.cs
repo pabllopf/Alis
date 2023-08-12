@@ -1,4 +1,4 @@
-namespace Veldrid.MTL
+namespace Alis.Core.Graphic.Backends.MTL
 {
     // A fake Texture object representing swapchain Textures.
     /// <summary>

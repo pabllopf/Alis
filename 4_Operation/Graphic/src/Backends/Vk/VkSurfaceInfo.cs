@@ -2,7 +2,7 @@ using System;
 using Vulkan;
 using Vulkan.Xlib;
 
-namespace Veldrid.Vk
+namespace Alis.Core.Graphic.Backends.Vk
 {
     /// <summary>
     /// An object which can be used to create a VkSurfaceKHR.

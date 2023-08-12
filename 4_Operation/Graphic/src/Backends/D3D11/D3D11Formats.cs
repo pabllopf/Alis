@@ -2,7 +2,7 @@ using System.Diagnostics;
 using Vortice.Direct3D11;
 using Vortice.DXGI;
 
-namespace Veldrid.D3D11
+namespace Alis.Core.Graphic.Backends.D3D11
 {
     /// <summary>
     /// The 11 formats class

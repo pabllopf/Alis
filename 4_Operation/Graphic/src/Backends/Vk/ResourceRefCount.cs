@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace Veldrid.Vk
+namespace Alis.Core.Graphic.Backends.Vk
 {
     /// <summary>
     /// The resource ref count class

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Veldrid.OpenGL.NoAllocEntryList
+namespace Alis.Core.Graphic.Backends.OpenGL.NoAllocEntryList
 {
     /// <summary>
     /// The open gl no alloc command entry list class

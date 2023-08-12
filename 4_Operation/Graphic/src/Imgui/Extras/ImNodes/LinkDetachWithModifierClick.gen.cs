@@ -1,6 +1,6 @@
 using System;
 
-namespace Alis.Core.Graphic.ImGui.Extras.ImNodes
+namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
 {
     /// <summary>
     /// The link detach with modifier click

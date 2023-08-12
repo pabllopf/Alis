@@ -1,6 +1,6 @@
 using System;
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// A <see cref="Pipeline"/> component describing a full set of shader stages and vertex layouts.

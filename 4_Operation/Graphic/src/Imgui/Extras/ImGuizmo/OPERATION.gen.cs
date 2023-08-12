@@ -1,4 +1,4 @@
-namespace Alis.Core.Graphic.ImGui.Extras.ImGuizmo
+namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
 {
     /// <summary>
     /// The operation enum

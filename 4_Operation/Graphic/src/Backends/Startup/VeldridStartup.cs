@@ -3,9 +3,10 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
-using Veldrid.Sdl2;
+using Alis.Core.Graphic.Backends.SDL2;
+using Alis.Core.Graphic.Backends.Vk;
 
-namespace Veldrid.StartupUtilities
+namespace Alis.Core.Graphic.Backends.Startup
 {
     /// <summary>
     /// The veldrid startup class
@@ -331,7 +332,7 @@ namespace Veldrid.StartupUtilities
         /// <param name="sysWmInfo">The sys wm info</param>
         /// <exception cref="PlatformNotSupportedException"></exception>
         /// <returns>The veldrid vk vk surface source</returns>
-        private static unsafe Veldrid.Vk.VkSurfaceSource GetSurfaceSource(SDL_SysWMinfo sysWmInfo)
+        private static unsafe VkSurfaceSource GetSurfaceSource(SDL_SysWMinfo sysWmInfo)
         {
             switch (sysWmInfo.subsystem)
             {

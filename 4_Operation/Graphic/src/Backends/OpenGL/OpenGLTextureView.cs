@@ -1,9 +1,8 @@
 using System.Diagnostics;
-using Veldrid.OpenGLBinding;
-using static Veldrid.OpenGL.OpenGLUtil;
-using static Veldrid.OpenGLBinding.OpenGLNative;
+using static Alis.Core.Graphic.Backends.OpenGL.OpenGLUtil;
+using static Alis.Core.Graphic.Backends.OpenGL.OpenGLNative;
 
-namespace Veldrid.OpenGL
+namespace Alis.Core.Graphic.Backends.OpenGL
 {
     /// <summary>
     /// The open gl texture view class

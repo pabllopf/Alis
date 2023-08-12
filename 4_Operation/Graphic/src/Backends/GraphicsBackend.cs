@@ -1,4 +1,4 @@
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// The specific graphics API used by the <see cref="GraphicsDevice"/>.

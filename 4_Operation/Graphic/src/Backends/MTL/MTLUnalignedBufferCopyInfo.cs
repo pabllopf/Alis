@@ -1,4 +1,4 @@
-namespace Veldrid.MTL
+namespace Alis.Core.Graphic.Backends.MTL
 {
     /// <summary>
     /// The mtl unaligned buffer copy info

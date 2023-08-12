@@ -1,6 +1,6 @@
 using System;
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// Describes the layout of vertex data in a single <see cref="DeviceBuffer"/> used as a vertex buffer.

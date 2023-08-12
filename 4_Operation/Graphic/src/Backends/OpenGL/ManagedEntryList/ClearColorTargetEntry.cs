@@ -1,4 +1,4 @@
-namespace Veldrid.OpenGL.ManagedEntryList
+namespace Alis.Core.Graphic.Backends.OpenGL.ManagedEntryList
 {
     /// <summary>
     /// The clear color target entry class

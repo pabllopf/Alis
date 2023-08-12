@@ -1,6 +1,6 @@
 using System;
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// Describes the layout of <see cref="BindableResource"/> objects for a <see cref="Pipeline"/>.

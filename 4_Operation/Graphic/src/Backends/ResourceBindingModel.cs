@@ -1,4 +1,4 @@
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// Identifies a particular binding model used when connecting elements in a <see cref="ResourceLayout"/> with resources

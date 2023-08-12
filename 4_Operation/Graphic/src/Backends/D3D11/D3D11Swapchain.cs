@@ -1,12 +1,12 @@
-using Vortice;
-using Vortice.Direct3D11;
-using Vortice.DXGI;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using SharpGen.Runtime;
+using Vortice;
+using Vortice.Direct3D11;
+using Vortice.DXGI;
 
-namespace Veldrid.D3D11
+namespace Alis.Core.Graphic.Backends.D3D11
 {
     /// <summary>
     /// The 11 swapchain class

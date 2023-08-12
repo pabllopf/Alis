@@ -1,4 +1,4 @@
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// A resource which can be bound in a <see cref="ResourceSet"/> and used in a shader.

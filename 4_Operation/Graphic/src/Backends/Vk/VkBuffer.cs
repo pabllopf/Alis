@@ -1,8 +1,8 @@
 using Vulkan;
-using static Veldrid.Vk.VulkanUtil;
+using static Alis.Core.Graphic.Backends.Vk.VulkanUtil;
 using static Vulkan.VulkanNative;
 
-namespace Veldrid.Vk
+namespace Alis.Core.Graphic.Backends.Vk
 {
     /// <summary>
     /// The vk buffer class

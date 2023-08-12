@@ -1,8 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
-using ImGuiNET;
 
-namespace Alis.Core.Graphic.ImGui.Extras.ImPlot
+namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
 {
     /// <summary>
     /// The im plot input map

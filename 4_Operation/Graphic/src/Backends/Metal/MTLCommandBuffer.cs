@@ -1,8 +1,8 @@
-using static Veldrid.MetalBindings.ObjectiveCRuntime;
 using System;
 using System.Runtime.InteropServices;
+using static Alis.Core.Graphic.Backends.Metal.ObjectiveCRuntime;
 
-namespace Veldrid.MetalBindings
+namespace Alis.Core.Graphic.Backends.Metal
 {
     /// <summary>
     /// The mtl command buffer

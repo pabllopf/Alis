@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace Alis.Core.Graphic.ImGui.Extras.ImPlot
+namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
 {
     /// <summary>
     /// The im plot range

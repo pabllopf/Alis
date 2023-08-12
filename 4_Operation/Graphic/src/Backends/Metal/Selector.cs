@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace Veldrid.MetalBindings
+namespace Alis.Core.Graphic.Backends.Metal
 {
     /// <summary>
     /// The selector

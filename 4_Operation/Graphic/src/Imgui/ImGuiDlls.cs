@@ -31,7 +31,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Alis.Core.Graphic.Properties;
 
-namespace Alis.Core.Graphic.ImGui
+namespace Alis.Core.Graphic.Imgui
 {
     /// <summary>
     ///     The im gui dlls class

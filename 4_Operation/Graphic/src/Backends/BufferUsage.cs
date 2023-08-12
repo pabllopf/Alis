@@ -1,6 +1,6 @@
 using System;
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// A bitmask describing the permitted uses of a <see cref="DeviceBuffer"/> object.

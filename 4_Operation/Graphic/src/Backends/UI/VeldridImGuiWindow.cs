@@ -1,11 +1,10 @@
-using ImGuiNET;
 using System;
 using System.Runtime.InteropServices;
-using Veldrid;
-using Veldrid.Sdl2;
-using Veldrid.StartupUtilities;
+using Alis.Core.Graphic.Backends.SDL2;
+using Alis.Core.Graphic.Backends.Startup;
+using Alis.Core.Graphic.Imgui;
 
-namespace ImGui.NET.SampleProgram
+namespace Alis.Core.Graphic.Backends.UI
 {
     /// <summary>
     /// The veldrid im gui window class

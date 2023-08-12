@@ -1,6 +1,6 @@
 using System;
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// Describes a <see cref="TextureView"/>, for creation using a <see cref="ResourceFactory"/>.

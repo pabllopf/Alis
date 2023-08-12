@@ -1,6 +1,6 @@
 using System;
 
-namespace ImGuiNET
+namespace Alis.Core.Graphic.Imgui
 {
     /// <summary>
     /// The im gui text range
@@ -66,7 +66,7 @@ namespace ImGuiNET
         /// Splits the separator
         /// </summary>
         /// <param name="separator">The separator</param>
-        /// <param name="@out">The out</param>
+        /// <param name="out">The out</param>
         public void split(byte separator, out ImVector @out)
         {
             fixed (ImVector* native_out = &@out)

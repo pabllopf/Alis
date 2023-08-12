@@ -1,9 +1,8 @@
-using static Veldrid.OpenGLBinding.OpenGLNative;
-using static Veldrid.OpenGL.OpenGLUtil;
-using Veldrid.OpenGLBinding;
 using System;
+using static Alis.Core.Graphic.Backends.OpenGL.OpenGLNative;
+using static Alis.Core.Graphic.Backends.OpenGL.OpenGLUtil;
 
-namespace Veldrid.OpenGL
+namespace Alis.Core.Graphic.Backends.OpenGL
 {
     /// <summary>
     /// A utility class managing the relationships between textures, samplers, and their binding locations.

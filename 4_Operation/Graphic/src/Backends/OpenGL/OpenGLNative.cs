@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Veldrid.OpenGLBinding
+namespace Alis.Core.Graphic.Backends.OpenGL
 {
     // uint = uint
     // GLuint = uint
@@ -922,7 +922,7 @@ namespace Veldrid.OpenGLBinding
         /// </summary>
         /// <param name="shader">The shader</param>
         /// <param name="count">The count</param>
-        /// <param name="@string">The string</param>
+        /// <param name="string">The string</param>
         /// <param name="length">The length</param>
         public static void glShaderSource(uint shader, uint count, byte** @string, int* length)
             => p_glShaderSource(shader, count, @string, length);
@@ -972,7 +972,7 @@ namespace Veldrid.OpenGLBinding
         /// </summary>
         /// <param name="shader">The shader</param>
         /// <param name="pname">The pname</param>
-        /// <param name="@params">The params</param>
+        /// <param name="params">The params</param>
         public static void glGetShaderiv(uint shader, ShaderParameter pname, int* @params)
             => p_glGetShaderiv(shader, pname, @params);
 
@@ -1076,7 +1076,7 @@ namespace Veldrid.OpenGLBinding
         /// </summary>
         /// <param name="sampler">The sampler</param>
         /// <param name="pname">The pname</param>
-        /// <param name="@params">The params</param>
+        /// <param name="params">The params</param>
         public static void glSamplerParameterfv(uint sampler, SamplerParameterName pname, float* @params)
             => p_glSamplerParameterfv(sampler, pname, @params);
 
@@ -1477,7 +1477,7 @@ namespace Veldrid.OpenGLBinding
         /// </summary>
         /// <param name="program">The program</param>
         /// <param name="pname">The pname</param>
-        /// <param name="@params">The params</param>
+        /// <param name="params">The params</param>
         public static void glGetProgramiv(uint program, GetProgramParameterName pname, int* @params)
             => p_glGetProgramiv(program, pname, @params);
 
@@ -2253,7 +2253,7 @@ namespace Veldrid.OpenGLBinding
         /// <param name="program">The program</param>
         /// <param name="programInterface">The program interface</param>
         /// <param name="pname">The pname</param>
-        /// <param name="@params">The params</param>
+        /// <param name="params">The params</param>
         /// <returns>The uint</returns>
         public static uint glGetProgramInterfaceiv(uint program, ProgramInterface programInterface, ProgramInterfaceParameterName pname, int* @params)
             => p_glGetProgramInterfaceiv(program, programInterface, pname, @params);
@@ -3388,7 +3388,7 @@ namespace Veldrid.OpenGLBinding
         /// </summary>
         /// <param name="face">The face</param>
         /// <param name="func">The func</param>
-        /// <param name="@ref">The ref</param>
+        /// <param name="ref">The ref</param>
         /// <param name="mask">The mask</param>
         public static void glStencilFuncSeparate(CullFaceMode face, StencilFunction func, int @ref, uint mask)
             => p_glStencilFuncSeparate(face, func, @ref, mask);
@@ -3468,7 +3468,7 @@ namespace Veldrid.OpenGLBinding
         /// <param name="program">The program</param>
         /// <param name="uniformBlockIndex">The uniform block index</param>
         /// <param name="pname">The pname</param>
-        /// <param name="@params">The params</param>
+        /// <param name="params">The params</param>
         public static void glGetActiveUniformBlockiv(
             uint program,
             uint uniformBlockIndex,
@@ -3595,7 +3595,7 @@ namespace Veldrid.OpenGLBinding
         /// <param name="target">The target</param>
         /// <param name="level">The level</param>
         /// <param name="pname">The pname</param>
-        /// <param name="@params">The params</param>
+        /// <param name="params">The params</param>
         public static void glGetTexLevelParameteriv(
             TextureTarget target,
             int level,
@@ -3778,7 +3778,7 @@ namespace Veldrid.OpenGLBinding
         /// <param name="target">The target</param>
         /// <param name="attachment">The attachment</param>
         /// <param name="pname">The pname</param>
-        /// <param name="@params">The params</param>
+        /// <param name="params">The params</param>
         public static void glGetFramebufferAttachmentParameteriv(
             FramebufferTarget target,
             GLFramebufferAttachment attachment,

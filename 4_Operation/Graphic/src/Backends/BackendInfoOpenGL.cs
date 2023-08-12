@@ -2,10 +2,9 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Veldrid.OpenGL;
-using Veldrid.OpenGLBinding;
+using Alis.Core.Graphic.Backends.OpenGL;
 
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// Exposes OpenGL-specific functionality,

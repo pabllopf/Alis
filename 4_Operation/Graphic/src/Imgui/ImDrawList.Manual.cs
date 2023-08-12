@@ -1,7 +1,7 @@
 using System.Numerics;
 using System.Text;
 
-namespace ImGuiNET
+namespace Alis.Core.Graphic.Imgui
 {
     /// <summary>
     /// The im draw list ptr

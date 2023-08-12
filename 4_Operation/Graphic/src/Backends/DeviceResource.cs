@@ -1,4 +1,4 @@
-namespace Veldrid
+namespace Alis.Core.Graphic.Backends
 {
     /// <summary>
     /// A resource owned by a <see cref="GraphicsDevice"/>, which can be given a string identifier for debugging and

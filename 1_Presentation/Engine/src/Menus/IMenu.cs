@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Engine.Menus.TopMenu
+namespace Alis.App.Engine.Menus
 {
     /// <summary>
     /// The menu interface

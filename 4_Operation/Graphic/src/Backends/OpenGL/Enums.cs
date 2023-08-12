@@ -1,6 +1,6 @@
 using System;
 
-namespace Veldrid.OpenGLBinding
+namespace Alis.Core.Graphic.Backends.OpenGL
 {
     /// <summary>
     /// The draw buffer mode enum

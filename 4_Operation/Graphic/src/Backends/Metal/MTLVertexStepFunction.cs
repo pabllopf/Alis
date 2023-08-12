@@ -1,4 +1,4 @@
-namespace Veldrid.MetalBindings
+namespace Alis.Core.Graphic.Backends.Metal
 {
     /// <summary>
     /// The mtl vertex step function enum
