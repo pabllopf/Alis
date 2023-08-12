@@ -53,17 +53,17 @@ namespace Alis.Core.Graphic.Sample
         /// <summary>
         ///     The blue
         /// </summary>
-        private byte _blue;
+        private byte blue;
 
         /// <summary>
         ///     The blue
         /// </summary>
-        private byte _green;
+        private byte green;
 
         /// <summary>
         ///     The blue
         /// </summary>
-        private byte _red;
+        private byte red;
 
         /// <summary>
         ///     The sdl keycode
@@ -136,7 +136,7 @@ namespace Alis.Core.Graphic.Sample
                 RenderColors();
 
                 // Sets the color that the screen will be cleared with.
-                Sdl.SetRenderDrawColor(renderer, _red, _green, _blue, 255);
+                Sdl.SetRenderDrawColor(renderer, red, green, blue, 255);
 
                 // Clears the current render surface.
                 Sdl.RenderClear(renderer);
@@ -156,23 +156,25 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         private void RenderColors()
         {
-            _red += 1;
-            if (_red >= 100)
+            if (red < 255)
             {
-                _red -= 1;
+                red++;
             }
-
-            _green += 2;
-            if (_green >= 100)
+            else if (green < 255)
             {
-                _green -= 1;
+                green++;
             }
-
-            _blue += 3;
-            if (_blue >= 100)
+            else if (blue < 255)
             {
-                _blue -= 1;
+                blue++;
             }
+            else
+            {
+                red = 0;
+                green = 0;
+                blue = 0;
+            }
+            
         }
 
 

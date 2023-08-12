@@ -45,7 +45,7 @@ namespace Alis.Core.Graphic.Sample
             int run = 1;
             while (run == 1)
             {
-                Console.WriteLine(@"Select backend graphic system ('sfml' | 'sdl')");
+                Console.WriteLine(@"Select backend graphic system ('sfml' | 'sdl' | 'veldrid')");
                 string os = Console.ReadLine();
                 switch (os)
                 {
@@ -57,6 +57,11 @@ namespace Alis.Core.Graphic.Sample
                     case "sdl":
                         SdlController sdlController = new SdlController();
                         run = sdlController.Run();
+                        break;
+                    
+                    case "veldrid":
+                        VeldridController veldridController = new VeldridController();
+                        run = veldridController.Run();
                         break;
                 }
             }
