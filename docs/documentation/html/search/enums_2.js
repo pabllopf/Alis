@@ -1,14 +1,19 @@
 var searchData=
 [
-  ['category_20426',['Category',['../d9/d30/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_filtering.html#aeb0683f6991232480f5a051fd0f90a98',1,'Alis::Core::Physic::Collision::Filtering']]],
-  ['clearbuffermask_20427',['ClearBufferMask',['../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#a516e59f979c10a5d2d04e9170c77dcf5',1,'Alis::Core::Graphic::OpenGL::Enums']]],
-  ['colorstyle_20428',['ColorStyle',['../df/d9e/namespace_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes.html#a73f468d844cc913cf9539dcaede2a79e',1,'Alis::Core::Graphic::ImGui::Extras::ImNodes']]],
-  ['contactfeaturetype_20429',['ContactFeatureType',['../d4/db9/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system.html#abe8ef8611220c3672836c2958ff72f5a',1,'Alis::Core::Physic::Collision::ContactSystem']]],
-  ['contactflags_20430',['ContactFlags',['../d4/db9/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system.html#ad90022d9941eb0678bdc61c212b8d3de',1,'Alis::Core::Physic::Collision::ContactSystem']]],
-  ['contacttype_20431',['ContactType',['../d4/db9/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system.html#aead266db31bcac27d2adda2c7b2641cf',1,'Alis::Core::Physic::Collision::ContactSystem']]],
-  ['controllertype_20432',['ControllerType',['../de/d0e/namespace_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_controller_base.html#ab91e525719c827979b3cde5bccdf403d',1,'Alis::Core::Physic::Extensions::Controllers::ControllerBase']]],
-  ['cursortype_20433',['CursorType',['../d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a97a9584a27329b720b9a4d154cdefc19',1,'Alis::Core::Graphic::SFML::Windows::Cursor']]],
-  ['curvecontinuity_20434',['CurveContinuity',['../d7/d41/namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_config_1_1_extensions_1_1_controllers_1_1_wind_1_1_curve.html#ab03133df1d9c5c06969053c2b0b3577d',1,'Alis::Core::Systems::Physics2D::Config::Extensions::Controllers::Wind::Curve']]],
-  ['curvelooptype_20435',['CurveLoopType',['../db/dbd/namespace_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_wind_1_1_curve.html#ad2b7497f7861ee27345a5812794d2931',1,'Alis::Core::Physic::Extensions::Controllers::Wind::Curve']]],
-  ['curvetangent_20436',['CurveTangent',['../db/dbd/namespace_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_wind_1_1_curve.html#a4ca0a35acde4308dc595d63f877300d0',1,'Alis::Core::Physic::Extensions::Controllers::Wind::Curve']]]
+  ['category_28994',['Category',['../d9/d30/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_filtering.html#aeb0683f6991232480f5a051fd0f90a98',1,'Alis::Core::Physic::Collision::Filtering']]],
+  ['clearbuffermask_28995',['ClearBufferMask',['../dd/dbb/namespace_veldrid_1_1_open_g_l_binding.html#a3f569f345308f8e88972c95f37405db0',1,'Veldrid.OpenGLBinding.ClearBufferMask()'],['../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#a516e59f979c10a5d2d04e9170c77dcf5',1,'Alis.Core.Graphic.OpenGL.Enums.ClearBufferMask()']]],
+  ['clipcontroldepthrange_28996',['ClipControlDepthRange',['../dd/dbb/namespace_veldrid_1_1_open_g_l_binding.html#a3ca587e6f8dc6ef25341c415d70eea86',1,'Veldrid::OpenGLBinding']]],
+  ['clipcontrolorigin_28997',['ClipControlOrigin',['../dd/dbb/namespace_veldrid_1_1_open_g_l_binding.html#a3ec7ed3ff00f3eaf7125e064538535df',1,'Veldrid::OpenGLBinding']]],
+  ['colorstyle_28998',['ColorStyle',['../df/d9e/namespace_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_extras_1_1_im_nodes.html#a73f468d844cc913cf9539dcaede2a79e',1,'Alis::Core::Graphic::ImGui::Extras::ImNodes']]],
+  ['colorwritemask_28999',['ColorWriteMask',['../dc/d65/namespace_veldrid.html#a3855302289d7e9983af65d6ead399574',1,'Veldrid']]],
+  ['comparisonkind_29000',['ComparisonKind',['../dc/d65/namespace_veldrid.html#a3aab13c8b132fa40a75dac968e8559a9',1,'Veldrid']]],
+  ['contactfeaturetype_29001',['ContactFeatureType',['../d4/db9/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system.html#abe8ef8611220c3672836c2958ff72f5a',1,'Alis::Core::Physic::Collision::ContactSystem']]],
+  ['contactflags_29002',['ContactFlags',['../d4/db9/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system.html#ad90022d9941eb0678bdc61c212b8d3de',1,'Alis::Core::Physic::Collision::ContactSystem']]],
+  ['contacttype_29003',['ContactType',['../d4/db9/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system.html#aead266db31bcac27d2adda2c7b2641cf',1,'Alis::Core::Physic::Collision::ContactSystem']]],
+  ['controllertype_29004',['ControllerType',['../de/d0e/namespace_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_controller_base.html#ab91e525719c827979b3cde5bccdf403d',1,'Alis::Core::Physic::Extensions::Controllers::ControllerBase']]],
+  ['cullfacemode_29005',['CullFaceMode',['../dd/dbb/namespace_veldrid_1_1_open_g_l_binding.html#a6149583c647ff20862d1769416bbd5ee',1,'Veldrid::OpenGLBinding']]],
+  ['cursortype_29006',['CursorType',['../d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a97a9584a27329b720b9a4d154cdefc19',1,'Alis::Core::Graphic::SFML::Windows::Cursor']]],
+  ['curvecontinuity_29007',['CurveContinuity',['../d7/d41/namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_config_1_1_extensions_1_1_controllers_1_1_wind_1_1_curve.html#ab03133df1d9c5c06969053c2b0b3577d',1,'Alis::Core::Systems::Physics2D::Config::Extensions::Controllers::Wind::Curve']]],
+  ['curvelooptype_29008',['CurveLoopType',['../db/dbd/namespace_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_wind_1_1_curve.html#ad2b7497f7861ee27345a5812794d2931',1,'Alis::Core::Physic::Extensions::Controllers::Wind::Curve']]],
+  ['curvetangent_29009',['CurveTangent',['../db/dbd/namespace_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_wind_1_1_curve.html#a4ca0a35acde4308dc595d63f877300d0',1,'Alis::Core::Physic::Extensions::Controllers::Wind::Curve']]]
 ];

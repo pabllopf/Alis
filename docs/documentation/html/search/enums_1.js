@@ -1,13 +1,21 @@
 var searchData=
 [
-  ['beginmode_20416',['BeginMode',['../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#a64d795ce2bbb9ffefcc33c8a420b37cb',1,'Alis::Core::Graphic::OpenGL::Enums']]],
-  ['bitmaporder_20417',['BitmapOrder',['../df/d2e/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_enums.html#a3178e784bc53062ab36f1e5c0a9deabf',1,'Alis::Core::Graphic::SDL::Enums']]],
-  ['blendequationmode_20418',['BlendEquationMode',['../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#a79304d8dceef730d192aaa823cdb0530',1,'Alis::Core::Graphic::OpenGL::Enums']]],
-  ['blendingfactordest_20419',['BlendingFactorDest',['../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#aa864b0338d85833eb64c2724437ad6f5',1,'Alis::Core::Graphic::OpenGL::Enums']]],
-  ['blendingfactorsrc_20420',['BlendingFactorSrc',['../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#a69f12e29e0234542207f8c955a9e12d4',1,'Alis::Core::Graphic::OpenGL::Enums']]],
-  ['bodyflags_20421',['BodyFlags',['../dd/d6a/namespace_alis_1_1_core_1_1_physic_1_1_dynamics.html#a207340e484bd9dd37b998d421d611c56',1,'Alis::Core::Physic::Dynamics']]],
-  ['bodytype_20422',['BodyType',['../dd/d6a/namespace_alis_1_1_core_1_1_physic_1_1_dynamics.html#a5b2c0df3670ec2d5e1357a36e1d3bf07',1,'Alis::Core::Physic::Dynamics']]],
-  ['buffertarget_20423',['BufferTarget',['../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#aed9c26a2f2d9f95556e57646701a189b',1,'Alis::Core::Graphic::OpenGL::Enums']]],
-  ['bufferusagehint_20424',['BufferUsageHint',['../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#a9e852ffee8b84825cb1725f8d3d1ca2e',1,'Alis::Core::Graphic::OpenGL::Enums']]],
-  ['button_20425',['Button',['../d7/dce/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_mouse.html#a9c20d306419db1c12ef75b89012e94f6',1,'Alis.Core.Graphic.SFML.Windows.Mouse.Button()'],['../d2/d95/namespace_alis_1_1_core_1_1_aspect_1_1_base_1_1_mapping.html#ae5c4991b75fb9c95d4a14bce17d7aa71',1,'Alis.Core.Aspect.Base.Mapping.Button()']]]
+  ['beginmode_28976',['BeginMode',['../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#a64d795ce2bbb9ffefcc33c8a420b37cb',1,'Alis::Core::Graphic::OpenGL::Enums']]],
+  ['bitmaporder_28977',['BitmapOrder',['../df/d2e/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_enums.html#a3178e784bc53062ab36f1e5c0a9deabf',1,'Alis::Core::Graphic::SDL::Enums']]],
+  ['blendequationmode_28978',['BlendEquationMode',['../dd/dbb/namespace_veldrid_1_1_open_g_l_binding.html#a24efe6ae33a397caba5257af22e630b9',1,'Veldrid.OpenGLBinding.BlendEquationMode()'],['../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#a79304d8dceef730d192aaa823cdb0530',1,'Alis.Core.Graphic.OpenGL.Enums.BlendEquationMode()']]],
+  ['blendfactor_28979',['BlendFactor',['../dc/d65/namespace_veldrid.html#a567e878cfee74c1c49cb437a643e2c8e',1,'Veldrid']]],
+  ['blendfunction_28980',['BlendFunction',['../dc/d65/namespace_veldrid.html#a66292ebd24f762fa833120e83304f937',1,'Veldrid']]],
+  ['blendingfactordest_28981',['BlendingFactorDest',['../dd/dbb/namespace_veldrid_1_1_open_g_l_binding.html#a37f8559b1d5a0ff3a34a39a0aab4f931',1,'Veldrid.OpenGLBinding.BlendingFactorDest()'],['../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#aa864b0338d85833eb64c2724437ad6f5',1,'Alis.Core.Graphic.OpenGL.Enums.BlendingFactorDest()']]],
+  ['blendingfactorsrc_28982',['BlendingFactorSrc',['../dd/dbb/namespace_veldrid_1_1_open_g_l_binding.html#a0a14a34e882936a0f62551bc2c821643',1,'Veldrid.OpenGLBinding.BlendingFactorSrc()'],['../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#a69f12e29e0234542207f8c955a9e12d4',1,'Alis.Core.Graphic.OpenGL.Enums.BlendingFactorSrc()']]],
+  ['blitframebufferfilter_28983',['BlitFramebufferFilter',['../dd/dbb/namespace_veldrid_1_1_open_g_l_binding.html#a45f60e2efa05ab27dcd649503c05b142',1,'Veldrid::OpenGLBinding']]],
+  ['bodyflags_28984',['BodyFlags',['../dd/d6a/namespace_alis_1_1_core_1_1_physic_1_1_dynamics.html#a207340e484bd9dd37b998d421d611c56',1,'Alis::Core::Physic::Dynamics']]],
+  ['bodytype_28985',['BodyType',['../dd/d6a/namespace_alis_1_1_core_1_1_physic_1_1_dynamics.html#a5b2c0df3670ec2d5e1357a36e1d3bf07',1,'Alis::Core::Physic::Dynamics']]],
+  ['bufferaccess_28986',['BufferAccess',['../dd/dbb/namespace_veldrid_1_1_open_g_l_binding.html#a7dc743a06bbb4be392d4c5bc404c7de0',1,'Veldrid::OpenGLBinding']]],
+  ['bufferaccessmask_28987',['BufferAccessMask',['../dd/dbb/namespace_veldrid_1_1_open_g_l_binding.html#affddc393fc1ddc4a7dac7ad2c05364c8',1,'Veldrid::OpenGLBinding']]],
+  ['bufferrangetarget_28988',['BufferRangeTarget',['../dd/dbb/namespace_veldrid_1_1_open_g_l_binding.html#af72df79aeced16f311dacdc4f78e2159',1,'Veldrid::OpenGLBinding']]],
+  ['buffertarget_28989',['BufferTarget',['../dd/dbb/namespace_veldrid_1_1_open_g_l_binding.html#a9c9f2156c8aad8f52444b04925274de0',1,'Veldrid.OpenGLBinding.BufferTarget()'],['../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#aed9c26a2f2d9f95556e57646701a189b',1,'Alis.Core.Graphic.OpenGL.Enums.BufferTarget()']]],
+  ['bufferusage_28990',['BufferUsage',['../dc/d65/namespace_veldrid.html#a7cae3de661189f25f044ccf5365b85bd',1,'Veldrid']]],
+  ['bufferusagehint_28991',['BufferUsageHint',['../dd/dbb/namespace_veldrid_1_1_open_g_l_binding.html#a9f4d3a2715bc7d5d44b3220a9b21b4ae',1,'Veldrid.OpenGLBinding.BufferUsageHint()'],['../d9/d8b/namespace_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_enums.html#a9e852ffee8b84825cb1725f8d3d1ca2e',1,'Alis.Core.Graphic.OpenGL.Enums.BufferUsageHint()']]],
+  ['button_28992',['Button',['../d7/dce/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_mouse.html#a9c20d306419db1c12ef75b89012e94f6',1,'Alis.Core.Graphic.SFML.Windows.Mouse.Button()'],['../d2/d95/namespace_alis_1_1_core_1_1_aspect_1_1_base_1_1_mapping.html#ae5c4991b75fb9c95d4a14bce17d7aa71',1,'Alis.Core.Aspect.Base.Mapping.Button()']]],
+  ['buttonstate_28993',['ButtonState',['../d9/d8c/namespace_veldrid_1_1_sdl2.html#aafb994b413c41346fb40e730c8cd8c58',1,'Veldrid::Sdl2']]]
 ];

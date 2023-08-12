@@ -1,0 +1,28 @@
+var struct_veldrid_1_1_rgba_byte =
+[
+    [ "RgbaByte", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a2f6be81d16d4ed707390bad00a356747", null ],
+    [ "Equals", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a32c2664396b6632590347f254d955bc6", null ],
+    [ "Equals", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a236985b983dade9cf03336bdbd739805", null ],
+    [ "GetHashCode", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a1ae15c1e4779a7c495f3ec0bded10b48", null ],
+    [ "ToString", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a3c64e50d59fdaadfaa93aa24e498e9b3", null ],
+    [ "operator==", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a5c2c7257f0c5c2f0bb30b9f19c9aa5cd", null ],
+    [ "operator!=", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#afcaa0f68234be132a46507082c44d691", null ],
+    [ "R", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a1db968eaba60c4bbea6c15832eef56b9", null ],
+    [ "G", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a104652d0bc0e56f42c535cc1255c1865", null ],
+    [ "B", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a65de0809be188b22f4226a41edb3549c", null ],
+    [ "A", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a41f0a54686d0aba36c698bda4c5db99c", null ],
+    [ "Red", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a39285e5f43c7a2a0584b5b169ee0a5b1", null ],
+    [ "DarkRed", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a74c6f4e3bb0309deb9230e2ba6f2fccc", null ],
+    [ "Green", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a63b6918aebffb6735a3fea6085accb20", null ],
+    [ "Blue", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a7ed7ec594846d061212fc9a966b93420", null ],
+    [ "Yellow", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a329fe9fc2cb30c4bfb1bb25632a68456", null ],
+    [ "Grey", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a1a52181e536ee7f38f8030cf48315179", null ],
+    [ "LightGrey", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a57227336b107eb0c62d51794677d21d8", null ],
+    [ "Cyan", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#af66c1a7fe86789c0a5966f959fc26deb", null ],
+    [ "White", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#ada23dfe6c19d7cd3f3563d0fe253627d", null ],
+    [ "CornflowerBlue", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a4762cfec24e500c65139d69022c27ffe", null ],
+    [ "Clear", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a3846914439998699f254da82e46982ba", null ],
+    [ "Black", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#ac4028bfdfb35fbe76855e402614dbd80", null ],
+    [ "Pink", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a4ad2f842df35076787c63d5cec3a285b", null ],
+    [ "Orange", "d4/dd8/struct_veldrid_1_1_rgba_byte.html#a3f44472d83cbba621170232af8e4e913", null ]
+];
