@@ -1,14 +1,14 @@
 var searchData=
 [
-  ['_5f_3c_20t_20_3e_12331',['_&lt; T &gt;',['../db/d86/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_gl.html#a782dc062bb0f267fd924abafd7bfc234',1,'Alis::Core::Graphic::OpenGL::Gl']]],
-  ['_5fcalccircleautosegmentcount_12332',['_CalcCircleAutoSegmentCount',['../d2/d8d/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_ptr.html#aa9e99be1e30562cd1b4e9269bebe5f1a',1,'Alis::Core::Graphic::ImGui::Structs::ImDrawListPtr']]],
-  ['_5fclearfreememory_12333',['_ClearFreeMemory',['../d2/d8d/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_ptr.html#a215b68bd90a1b24972c56ab4f5a59faa',1,'Alis::Core::Graphic::ImGui::Structs::ImDrawListPtr']]],
-  ['_5fonchangedcliprect_12334',['_OnChangedClipRect',['../d2/d8d/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_ptr.html#a5391dbac666527b3f2fc334213e5715a',1,'Alis::Core::Graphic::ImGui::Structs::ImDrawListPtr']]],
-  ['_5fonchangedtextureid_12335',['_OnChangedTextureID',['../d2/d8d/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_ptr.html#a28f9b62f32e616c92e7d9239ab4c9415',1,'Alis::Core::Graphic::ImGui::Structs::ImDrawListPtr']]],
-  ['_5fonchangedvtxoffset_12336',['_OnChangedVtxOffset',['../d2/d8d/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_ptr.html#a5db5e3c3cfd3a1b7e07fb3a1c357d721',1,'Alis::Core::Graphic::ImGui::Structs::ImDrawListPtr']]],
-  ['_5fpatharctofastex_12337',['_PathArcToFastEx',['../d2/d8d/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_ptr.html#a23eed24a43cd4e767160c59a9d174934',1,'Alis::Core::Graphic::ImGui::Structs::ImDrawListPtr']]],
-  ['_5fpatharcton_12338',['_PathArcToN',['../d2/d8d/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_ptr.html#ac305ccf7e7ded1cac26668b12d625f2c',1,'Alis::Core::Graphic::ImGui::Structs::ImDrawListPtr']]],
-  ['_5fpopunuseddrawcmd_12339',['_PopUnusedDrawCmd',['../d2/d8d/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_ptr.html#a1cb324a24b65b8897ddd44fc192ce192',1,'Alis::Core::Graphic::ImGui::Structs::ImDrawListPtr']]],
-  ['_5fresetfornewframe_12340',['_ResetForNewFrame',['../d2/d8d/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_ptr.html#a3179075da613cc0feedaab08c9b1f4da',1,'Alis::Core::Graphic::ImGui::Structs::ImDrawListPtr']]],
-  ['_5ftrymergedrawcmds_12341',['_TryMergeDrawCmds',['../d2/d8d/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_structs_1_1_im_draw_list_ptr.html#a2d6b532ea2428e2365bc61ab1a1b6f38',1,'Alis::Core::Graphic::ImGui::Structs::ImDrawListPtr']]]
+  ['_5f_3c_20t_20_3e_17978',['_&lt; T &gt;',['../db/d86/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_gl.html#a782dc062bb0f267fd924abafd7bfc234',1,'Alis::Core::Graphic::OpenGL::Gl']]],
+  ['_5fcalccircleautosegmentcount_17979',['_CalcCircleAutoSegmentCount',['../dc/d27/struct_im_gui_n_e_t_1_1_im_draw_list_ptr.html#a8dcda34439d4f6f19601855148bda712',1,'ImGuiNET::ImDrawListPtr']]],
+  ['_5fclearfreememory_17980',['_ClearFreeMemory',['../dc/d27/struct_im_gui_n_e_t_1_1_im_draw_list_ptr.html#adab0a473f3be1d9b9a16a65071773b86',1,'ImGuiNET::ImDrawListPtr']]],
+  ['_5fonchangedcliprect_17981',['_OnChangedClipRect',['../dc/d27/struct_im_gui_n_e_t_1_1_im_draw_list_ptr.html#af2471d7fd7383c5f126003dcfc4cdc47',1,'ImGuiNET::ImDrawListPtr']]],
+  ['_5fonchangedtextureid_17982',['_OnChangedTextureID',['../dc/d27/struct_im_gui_n_e_t_1_1_im_draw_list_ptr.html#aadbc9e3548206736cf5c6733606a5dcf',1,'ImGuiNET::ImDrawListPtr']]],
+  ['_5fonchangedvtxoffset_17983',['_OnChangedVtxOffset',['../dc/d27/struct_im_gui_n_e_t_1_1_im_draw_list_ptr.html#a60580940e0001407cb513ac3f73491f4',1,'ImGuiNET::ImDrawListPtr']]],
+  ['_5fpatharctofastex_17984',['_PathArcToFastEx',['../dc/d27/struct_im_gui_n_e_t_1_1_im_draw_list_ptr.html#adb1dc43ab0577b6cfd03ac2f6052ec41',1,'ImGuiNET::ImDrawListPtr']]],
+  ['_5fpatharcton_17985',['_PathArcToN',['../dc/d27/struct_im_gui_n_e_t_1_1_im_draw_list_ptr.html#a15e399401ccbc4636218be897bd540fb',1,'ImGuiNET::ImDrawListPtr']]],
+  ['_5fpopunuseddrawcmd_17986',['_PopUnusedDrawCmd',['../dc/d27/struct_im_gui_n_e_t_1_1_im_draw_list_ptr.html#a9b5e40da0e5ae76905366f3eae4d1f84',1,'ImGuiNET::ImDrawListPtr']]],
+  ['_5fresetfornewframe_17987',['_ResetForNewFrame',['../dc/d27/struct_im_gui_n_e_t_1_1_im_draw_list_ptr.html#a4923cda1899dc008f5f354e75fa443ab',1,'ImGuiNET::ImDrawListPtr']]],
+  ['_5ftrymergedrawcmds_17988',['_TryMergeDrawCmds',['../dc/d27/struct_im_gui_n_e_t_1_1_im_draw_list_ptr.html#afb2c1333a6de0738fcd35b83f0f24117',1,'ImGuiNET::ImDrawListPtr']]]
 ];

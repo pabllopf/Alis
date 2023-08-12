@@ -1,0 +1,26 @@
+var class_veldrid_1_1_m_t_l_1_1_m_t_l_formats =
+[
+    [ "VdToMTLPixelFormat", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#abb657a3df31524d53a0d518311ce0600", null ],
+    [ "IsFormatSupported", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#a51453169bf69e1e341e91b2420135c2c", null ],
+    [ "VdToMTLFillMode", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#a46ceb74577efee91526bbb4177867507", null ],
+    [ "VdVoMTLFrontFace", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#a000159578b9667f66a16e834daa2fb1a", null ],
+    [ "GetMinMagMipFilter", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#a51653381f91b866ef771f747ce3899d2", null ],
+    [ "VdToMTLTextureType", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#ad04e40395db22ffc1c23f83f771a7658", null ],
+    [ "VdToMTLBlendFactor", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#a6543fa78c3cd3dbf4b171ef2edcf8bc1", null ],
+    [ "VdToMTLBlendOp", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#a98fd524d8145e48b99960dabbb75f4dc", null ],
+    [ "VdToMTLColorWriteMask", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#ae9ba62987128ec102e61f2e75483afc2", null ],
+    [ "VdVoMTLShaderConstantType", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#ac233303cc0f7b25b2767a8534c4e1ad4", null ],
+    [ "VdToMTLCompareFunction", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#a530106f3d0f6d2ad935af48a2d86a541", null ],
+    [ "VdToMTLCullMode", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#a702fcde0dc237f1d76585370884ecc0c", null ],
+    [ "VdToMTLBorderColor", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#abdd96b1874c50c9aa3ee0e37b9980c77", null ],
+    [ "VdToMTLAddressMode", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#a8d77b4d45ba925c84fcc4289579e9079", null ],
+    [ "VdToMTLPrimitiveTopology", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#a09d910d4a542374b5ea2111bdc086f50", null ],
+    [ "VdToMTLTextureUsage", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#a0f8aff764bf668ef9d5c6a8bc17437b0", null ],
+    [ "VdToMTLVertexFormat", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#a50850cc8579ab60bee9ccdc75484bfa2", null ],
+    [ "VdToMTLIndexFormat", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#ae25975f0719660e5f69c089598f49258", null ],
+    [ "VdToMTLStencilOperation", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#aa0315480a3def99f62ef17f854c4f25a", null ],
+    [ "GetMaxTexture1DWidth", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#a7bc6db7d13501b175c0ac28851641029", null ],
+    [ "GetMaxTexture2DDimensions", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#a76af43f9c954c49ab945867114aa163d", null ],
+    [ "GetMaxTextureCubeDimensions", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#a9f300baa775afe25189c5ef6f21f5a9d", null ],
+    [ "GetMaxTextureVolume", "df/dc0/class_veldrid_1_1_m_t_l_1_1_m_t_l_formats.html#add8d67abac6de8273661f0bcf38a5305", null ]
+];

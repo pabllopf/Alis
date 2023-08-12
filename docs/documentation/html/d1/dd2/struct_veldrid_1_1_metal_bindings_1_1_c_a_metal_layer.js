@@ -1,0 +1,25 @@
+var struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer =
+[
+    [ "CAMetalLayer", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#a470c95aa53c07bb0db21edc338e493de", null ],
+    [ "New", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#ae791022b737b2f06e150a001624f9e48", null ],
+    [ "TryCast", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#a0ca10390cad8448a3f9ba419f298fb6f", null ],
+    [ "nextDrawable", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#a15153275358f6ad1a4481078c83b7609", null ],
+    [ "NativePtr", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#a9cbf29646cc92fef8a92044ad28204d0", null ],
+    [ "s_class", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#a8e4517a711a490081bc639eb53c1af92", null ],
+    [ "sel_device", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#a3d5bef9ce17c0d30adfc63b0a03a779c", null ],
+    [ "sel_setDevice", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#a4623632c60eb10bcb6009287e8711f05", null ],
+    [ "sel_pixelFormat", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#a8c93e919de9ce5a53ea49f683015e625", null ],
+    [ "sel_setPixelFormat", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#abe436008b27802b87b83d758b1f25df9", null ],
+    [ "sel_framebufferOnly", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#a3cb647601feab000ede7a36d79bc0dbd", null ],
+    [ "sel_setFramebufferOnly", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#a3bf602dc21d0d46d29029258d771b6a2", null ],
+    [ "sel_drawableSize", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#a2d59e753bc17e1408ddc55e855fcee9c", null ],
+    [ "sel_setDrawableSize", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#a752151af68c6e17d1b624706960305cf", null ],
+    [ "sel_nextDrawable", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#a0bd03d2465e7eb72f552427779ab752b", null ],
+    [ "device", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#a7f3ef3934ac27a6abcd143ea4384c40c", null ],
+    [ "pixelFormat", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#ad3acb777c6fa0776964d7da3d6f71bd6", null ],
+    [ "framebufferOnly", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#aae177dcb345e4aa17f1aa95463774f53", null ],
+    [ "drawableSize", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#abb8a685539431a792864524fa3082e17", null ],
+    [ "frame", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#a045e56e104dd4d790d54b6aa847fad27", null ],
+    [ "opaque", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#aa077a466bcf0e211199d531a8406c12d", null ],
+    [ "displaySyncEnabled", "d1/dd2/struct_veldrid_1_1_metal_bindings_1_1_c_a_metal_layer.html#a869d2d09215ebb8d75af2c94c3fe82d1", null ]
+];

@@ -1,0 +1,25 @@
+var class_veldrid_1_1_util =
+[
+    [ "AssertSubtype< TBase, TDerived >", "de/d29/class_veldrid_1_1_util.html#a51211a8c0166454fb1b037250f2bd68f", null ],
+    [ "EnsureArrayMinimumSize< T >", "de/d29/class_veldrid_1_1_util.html#ad5244bf70d8329d5c4c1e57ac1108b45", null ],
+    [ "USizeOf< T >", "de/d29/class_veldrid_1_1_util.html#a2f42425a5f42ea57dcde0b00a7ede1ad", null ],
+    [ "GetString", "de/d29/class_veldrid_1_1_util.html#a13987c1fb79bb987310007617d5fa158", null ],
+    [ "NullableEquals< T >", "de/d29/class_veldrid_1_1_util.html#a2570d9c5e3272e286d216c170d915f51", null ],
+    [ "ArrayEquals< T >", "de/d29/class_veldrid_1_1_util.html#a37301b211a106175f7ad15c5a419c1f5", null ],
+    [ "ArrayEqualsEquatable< T >", "de/d29/class_veldrid_1_1_util.html#a6123b02c352d7b2d8f88ff4a25dc7ebf", null ],
+    [ "ClearArray< T >", "de/d29/class_veldrid_1_1_util.html#a990b6105179806d21e2f898794165408", null ],
+    [ "Clamp", "de/d29/class_veldrid_1_1_util.html#aac1e720f45e26cf59dad2ba20f6dd729", null ],
+    [ "GetMipLevelAndArrayLayer", "de/d29/class_veldrid_1_1_util.html#a307591841b965716389052ea4450c6c9", null ],
+    [ "GetMipDimensions", "de/d29/class_veldrid_1_1_util.html#ad384df2ff832e9d0a41a8743a9a07ffa", null ],
+    [ "GetDimension", "de/d29/class_veldrid_1_1_util.html#acfe4d745204191a42c063985c7279b48", null ],
+    [ "ComputeSubresourceOffset", "de/d29/class_veldrid_1_1_util.html#a2637b29949fae5dea1ad2611dcaf2a4f", null ],
+    [ "ComputeMipOffset", "de/d29/class_veldrid_1_1_util.html#acf6bf3c6be993113461c1854caa35757", null ],
+    [ "ComputeArrayLayerOffset", "de/d29/class_veldrid_1_1_util.html#a350669459124926f547a99161ecf137f", null ],
+    [ "CopyTextureRegion", "de/d29/class_veldrid_1_1_util.html#acb8d37a3c7f9331f17d6f34db03beae8", null ],
+    [ "ShallowClone< T >", "de/d29/class_veldrid_1_1_util.html#ac69ad5d20ab7304b17c1ec5f0b29aa7e", null ],
+    [ "GetBufferRange", "de/d29/class_veldrid_1_1_util.html#ab68cada545b01e7a23104e0cb52bb5b6", null ],
+    [ "GetDeviceBuffer", "de/d29/class_veldrid_1_1_util.html#af86adaee780158f2a4c0fa7fc6f86871", null ],
+    [ "GetTextureView", "de/d29/class_veldrid_1_1_util.html#a144e6687a1985b13422c3236470d4af9", null ],
+    [ "PackIntPtr", "de/d29/class_veldrid_1_1_util.html#a87c8e9d9b09b94304944b45ca7fc5071", null ],
+    [ "UnpackIntPtr", "de/d29/class_veldrid_1_1_util.html#a5619b74755f70ec0c04c80050ac4c55f", null ]
+];

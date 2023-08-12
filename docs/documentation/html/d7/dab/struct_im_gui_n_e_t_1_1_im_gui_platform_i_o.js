@@ -1,0 +1,28 @@
+var struct_im_gui_n_e_t_1_1_im_gui_platform_i_o =
+[
+    [ "Platform_CreateWindow", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#a38f2007e6b93064bf7fc01b0a3a61fb5", null ],
+    [ "Platform_DestroyWindow", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#ae3524367838f64e89d2628e8f438942d", null ],
+    [ "Platform_ShowWindow", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#ae79812e52d82dc33dd338dafecb64d6b", null ],
+    [ "Platform_SetWindowPos", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#abbc973ff8ca763014426bcb31021ca9a", null ],
+    [ "Platform_GetWindowPos", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#a4761cdbf738d69b02a391487ece73d39", null ],
+    [ "Platform_SetWindowSize", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#acd6f43f4ac66ab40a0634018ec50040e", null ],
+    [ "Platform_GetWindowSize", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#a7eaf18dd1f5ff7f0a9cdbfaace996cd7", null ],
+    [ "Platform_SetWindowFocus", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#aa53cffe42effd9d1ef864ec650873f09", null ],
+    [ "Platform_GetWindowFocus", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#ab1294d90c99601134f2a0b5e38ef9e08", null ],
+    [ "Platform_GetWindowMinimized", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#a48aa672340f07f1c741aee9df7417d56", null ],
+    [ "Platform_SetWindowTitle", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#a016115b28055e954276bad909b4f1a72", null ],
+    [ "Platform_SetWindowAlpha", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#af97e0b8560df6590b6c676ea1bc536c9", null ],
+    [ "Platform_UpdateWindow", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#a137ec2fd0deacd611af454e40364b367", null ],
+    [ "Platform_RenderWindow", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#a6c744dd7367586f882af7f1eddf6c08d", null ],
+    [ "Platform_SwapBuffers", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#ae8c0fc6d7f4489d035a5c114c851dfda", null ],
+    [ "Platform_GetWindowDpiScale", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#ad53a98ab07fa3a55fe3cb5df9482b31c", null ],
+    [ "Platform_OnChangedViewport", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#ac4df9734148b4a491fc7bb637c25aa89", null ],
+    [ "Platform_CreateVkSurface", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#a261aba6becec2bad642fdf0f3a7adffb", null ],
+    [ "Renderer_CreateWindow", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#a2393b3c49a5e8dcae2fdc5814f138f88", null ],
+    [ "Renderer_DestroyWindow", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#aa07ff77098b8ca47389acbedd182a00d", null ],
+    [ "Renderer_SetWindowSize", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#a527f29b38a0612fce974fa166ecb53ab", null ],
+    [ "Renderer_RenderWindow", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#a7ed4f026aa408eba54269f2144573099", null ],
+    [ "Renderer_SwapBuffers", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#a9db1847c40aa5c27d051a6237b97ce46", null ],
+    [ "Monitors", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#a49514cad26c5b7246e86f271361ac424", null ],
+    [ "Viewports", "d7/dab/struct_im_gui_n_e_t_1_1_im_gui_platform_i_o.html#a01afeb15d4af6e67a03e0630030acabf", null ]
+];
