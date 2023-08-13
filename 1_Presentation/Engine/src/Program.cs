@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Graphic.Backends;
 using Alis.Core.Graphic.Backends.SDL2;
@@ -93,12 +94,29 @@ namespace Alis.App.Engine
         {
             EmbeddedDllClass.ExtractEmbeddedDlls("sdl2", SdlDlls.SdlDllBytes);
             EmbeddedDllClass.ExtractEmbeddedDlls("cimgui", ImGuiDlls.ImGuiDllBytes);
+
+            GraphicsBackend backend = GraphicsBackend.OpenGL;
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                backend = GraphicsBackend.Direct3D11;
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                backend = GraphicsBackend.Metal;
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                backend = GraphicsBackend.OpenGL;
+            }
             
             // Create window, GraphicsDevice, and all resources necessary for the demo.
             VeldridStartup.CreateWindowAndGraphicsDevice(
                 new WindowCreateInfo(50, 50, 1280, 720, WindowState.Normal, "ImGui.NET Sample Program"),
                 new GraphicsDeviceOptions(true, null, true, ResourceBindingModel.Improved, true, true),
-                GraphicsBackend.Direct3D11,
+                backend,
                 out _window,
                 out _gd);
             _window.Resized += () =>
