@@ -1,0 +1,25 @@
+var struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer =
+[
+    [ "CAMetalLayer", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#ad7600af59af0d9949a1cf546e46414f7", null ],
+    [ "New", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#ae7e8de346f2816cc87a3f2502992224e", null ],
+    [ "TryCast", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#a28cca33d30d6a0a49f6cc57afd064c32", null ],
+    [ "nextDrawable", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#aee6242024d8ebbba04dbc6e32630cbc9", null ],
+    [ "NativePtr", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#a3fd5c76814517049776255a855c13169", null ],
+    [ "s_class", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#ae5fa3292862c1ce800cf9a0e6c4d6900", null ],
+    [ "sel_device", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#ae58bbb26267761235d47a3216ffde477", null ],
+    [ "sel_setDevice", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#aaffba2ae6f10b84f788cb0d13c555b79", null ],
+    [ "sel_pixelFormat", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#a6717fdd417d70fe2cfbd74f8c7be27b7", null ],
+    [ "sel_setPixelFormat", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#a666892d2bb979df5fb60d30e466ee7eb", null ],
+    [ "sel_framebufferOnly", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#afc69fbdd7c635bee957b31ffb8bf9709", null ],
+    [ "sel_setFramebufferOnly", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#a6164b218797ab4de98677f5e85f67d7d", null ],
+    [ "sel_drawableSize", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#a9428e2a33a43400aa45fbff113223711", null ],
+    [ "sel_setDrawableSize", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#a2e34645d2f7e54dd00086713074fc5bf", null ],
+    [ "sel_nextDrawable", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#a1066642652de2642c7a2d737299e8169", null ],
+    [ "device", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#a7a1eda0a3d63527a265937a7da55e75a", null ],
+    [ "pixelFormat", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#acaa7aa31febc113a1d2730b64d9ce1dc", null ],
+    [ "framebufferOnly", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#a38aa9417423976d43f4ae23d4e28b81e", null ],
+    [ "drawableSize", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#a2c492b87b0c0bb2ce249a1f9994499b1", null ],
+    [ "frame", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#ae8cb3f94d2f74678612ba5692c081dcc", null ],
+    [ "opaque", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#ae94f9745f40b6624cd16a2ae47d36532", null ],
+    [ "displaySyncEnabled", "db/dfc/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_metal_layer.html#a6e595bdef331acc9896b0ea0ca697fe0", null ]
+];

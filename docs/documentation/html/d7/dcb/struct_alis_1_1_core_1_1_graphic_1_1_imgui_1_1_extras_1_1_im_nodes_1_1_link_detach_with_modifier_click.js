@@ -1,0 +1,4 @@
+var struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_link_detach_with_modifier_click =
+[
+    [ "Modifier", "d7/dcb/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_link_detach_with_modifier_click.html#a446832d56c19f6978be29c381ca8de78", null ]
+];

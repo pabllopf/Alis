@@ -1,0 +1,5 @@
+var struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_push_debug_group_entry =
+[
+    [ "NoAllocPushDebugGroupEntry", "df/d59/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_push_debug_group_entry.html#aa99ce5806c7ed01c5060255f9a2625c4", null ],
+    [ "Name", "df/d59/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_push_debug_group_entry.html#a5ab0ebd116690a7e3a3fd23e127ee8c0", null ]
+];

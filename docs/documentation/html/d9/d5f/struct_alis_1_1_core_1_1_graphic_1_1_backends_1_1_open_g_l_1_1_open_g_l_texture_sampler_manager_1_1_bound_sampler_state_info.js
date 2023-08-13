@@ -1,0 +1,6 @@
+var struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_open_g_l_texture_sampler_manager_1_1_bound_sampler_state_info =
+[
+    [ "BoundSamplerStateInfo", "d9/d5f/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_open_g_l_texture_sampler_manager_1_1_bound_sampler_state_info.html#a75d3fa28e58c31d2668fc1ffca23a5b9", null ],
+    [ "Sampler", "d9/d5f/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_open_g_l_texture_sampler_manager_1_1_bound_sampler_state_info.html#adbc5d7bf5600dadc12ffd6d4c22bd000", null ],
+    [ "Mipmapped", "d9/d5f/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_open_g_l_texture_sampler_manager_1_1_bound_sampler_state_info.html#a65df6f20079113fd7bc24407cac1e5f6", null ]
+];

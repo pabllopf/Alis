@@ -1,0 +1,6 @@
+var struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_dispatch_indirect_entry =
+[
+    [ "NoAllocDispatchIndirectEntry", "d1/d0b/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_dispatch_indirect_entry.html#aebed8c519e4515e9ddf477a1f35cf25a", null ],
+    [ "IndirectBuffer", "d1/d0b/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_dispatch_indirect_entry.html#ad9b19c2f0fff545f3096ebba1f025ba4", null ],
+    [ "Offset", "d1/d0b/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_dispatch_indirect_entry.html#a358d4c5ba3767acdcc8eb995ea8d3f32", null ]
+];

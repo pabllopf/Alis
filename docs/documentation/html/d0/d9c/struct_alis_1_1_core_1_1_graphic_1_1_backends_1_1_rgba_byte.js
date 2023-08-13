@@ -1,0 +1,28 @@
+var struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte =
+[
+    [ "RgbaByte", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#a66dcc3790f8b42fdbad045920401e709", null ],
+    [ "Equals", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#afab2e5166cf16f7142065ed386910840", null ],
+    [ "Equals", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#acc5f274ce9682d81629bbb91e69d7d02", null ],
+    [ "GetHashCode", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#a1e82044be853c7843663b02f9cd66a84", null ],
+    [ "ToString", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#a8fc33cd2f2cf30468a42af3e6211c11d", null ],
+    [ "operator==", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#a36732d18c51764fc5442697fdb59aa34", null ],
+    [ "operator!=", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#af9f76ec323241aadbf339699661e402f", null ],
+    [ "R", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#aed0a530621ddfc8779ea48f9d913dbf9", null ],
+    [ "G", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#a5e9a9d498330465dcb728587149be47c", null ],
+    [ "B", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#adf4cea8cac0c55303c61f5720551cd58", null ],
+    [ "A", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#aa1abc813c3df2cc67509e8405d94ffe3", null ],
+    [ "Red", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#a3980899dc734d7b3b286dae136e91811", null ],
+    [ "DarkRed", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#ac94addbd518775deaff2e83624d450ae", null ],
+    [ "Green", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#a39a7bf00bfa0844ac59aad8c7794fca3", null ],
+    [ "Blue", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#ada37c144b850a1221b97e6b139023807", null ],
+    [ "Yellow", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#a0d9752aa4e9d593d9d2b5e9b733e12c4", null ],
+    [ "Grey", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#adc7fb31f1ca2a087cc7135a7a7a37954", null ],
+    [ "LightGrey", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#aa07845965715985988d7fb7f2f420723", null ],
+    [ "Cyan", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#ade4c7a6a457acdfbb6c8a9c11dab73ff", null ],
+    [ "White", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#a647e88a0a24e5e5dff268ba51551b33d", null ],
+    [ "CornflowerBlue", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#a867841dc5f1bb0418cce460a9f24aff8", null ],
+    [ "Clear", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#ac1bae9684027cfe3479f49a7d8a7958e", null ],
+    [ "Black", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#a8da6c80600fecd72212e72fe19bcab49", null ],
+    [ "Pink", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#a52dbf76b7e7cca5bcbe6185bcb03403f", null ],
+    [ "Orange", "d0/d9c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_rgba_byte.html#a8d74f2b6c2276fd9c6e5d31c3c5a097a", null ]
+];

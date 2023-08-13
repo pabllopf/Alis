@@ -1,0 +1,4 @@
+var class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_staging_memory_pool_1_1_capacity_comparer =
+[
+    [ "Compare", "d3/d3c/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_staging_memory_pool_1_1_capacity_comparer.html#a758be7029e5f76d518c2cf715ccdefba", null ]
+];
