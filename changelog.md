@@ -5,6 +5,109 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.0.9] - 2023-08-13
+### :sparkles: New Features
+- [`15058b5`](https://github.com/pabllopf/Alis/commit/15058b586800c84472c5ebb0009d06f0dac0be08) - plugin manager and iplugin to control plugins *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1b0f850`](https://github.com/pabllopf/Alis/commit/1b0f850c9f3fae8a147e43059a914c68fb8b3eea) - new plugin module and a simple sample. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1994426`](https://github.com/pabllopf/Alis/commit/19944262ad7241e743a77582bc8ff12484a9a0eb) - the Cloud, ADS and ECS(entity component system) modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b03743a`](https://github.com/pabllopf/Alis/commit/b03743ae77e93cae73999254e5d4b4f07b5c459d) - do compatible with .netstandard 2.0 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8dccfd0`](https://github.com/pabllopf/Alis/commit/8dccfd0209a0ba167cd21ebb1f2c8ee58992abf4) - add null checker on security module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cd0e7a7`](https://github.com/pabllopf/Alis/commit/cd0e7a76e0fe86d1a63bc06d8edb94f1e9c34046) - new proxy config *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fbe189b`](https://github.com/pabllopf/Alis/commit/fbe189b4832552e8a80b77d3c98b099959b77285) - new attributes to check not null, not empty and not zero. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4cfac7e`](https://github.com/pabllopf/Alis/commit/4cfac7e921c1f8ba93a098624fb7ced86406a907) - new utf8 manager *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`963cefd`](https://github.com/pabllopf/Alis/commit/963cefdf4dfe95c554dbd6c4ae1df42ee58a7de4) - add demo to web *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7479d79`](https://github.com/pabllopf/Alis/commit/7479d79d3b789f6baa7588cbcfe64a7d50626fe0) - add the engine to web format *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`314bc68`](https://github.com/pabllopf/Alis/commit/314bc68b03a6af26063f7f41bb789daa62e41c21) - integrate vulkan, opengl, metal and directx backends *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`d79057b`](https://github.com/pabllopf/Alis/commit/d79057b0b73be842705fdcaf53b62bc8bcb58380) - move all extern code to custom class of SdlTtf *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ff20713`](https://github.com/pabllopf/Alis/commit/ff20713249188be98525b53881b66ecb8836d53e) - the dlls extractor *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b808e9d`](https://github.com/pabllopf/Alis/commit/b808e9dbc4f26524f44e74c0cf3d1c8712d1f1ee) - the buf with the buffers and LayoutKind.Sequential *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3f51d96`](https://github.com/pabllopf/Alis/commit/3f51d9682dbcf5b549677dd5fa4a80db3f9c8f41) - random security level issue *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`61ce295`](https://github.com/pabllopf/Alis/commit/61ce295936470d30db906099303c6db15436f7c5) - gethashcode of matrices *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4dd5da4`](https://github.com/pabllopf/Alis/commit/4dd5da43177e4d1494089210f1bb90acd183ab18) - gethashcode of vector3f *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dbc1936`](https://github.com/pabllopf/Alis/commit/dbc1936bf029b04dba73a64ad81465eb76cc168a) - to internal ImGuiNative *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`062665e`](https://github.com/pabllopf/Alis/commit/062665e369b09a2a180a7c88468f19fda087dcf8) - 3 bugs with private and readonly class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`404db67`](https://github.com/pabllopf/Alis/commit/404db67b424d0b4d2a6706fe5aa4b2895f087d21) - resources of core and alis module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9bf7db8`](https://github.com/pabllopf/Alis/commit/9bf7db84c452f5c46eb0668daabb38022751215c) - the default value of methods *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d06880e`](https://github.com/pabllopf/Alis/commit/d06880eab3a6b8ee62cc89d3aa34db2608499f6c) - logger sln format and create new log levels *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`44698af`](https://github.com/pabllopf/Alis/commit/44698af2d33f59832201987a5b6810ba20f8c54c) - some critical issues of logger *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2b0b2a8`](https://github.com/pabllopf/Alis/commit/2b0b2a81a72feffacc36293aaca2a1cee2bfbca4) - readonly values *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3d8b81e`](https://github.com/pabllopf/Alis/commit/3d8b81e8b881e231705c6e4b233256e32f8474f3) - Obsolete code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7a124a0`](https://github.com/pabllopf/Alis/commit/7a124a04b921826f8f2a98f91b9ca468f1980590) - check and refactor names and comments of sdl structs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a7ad1b2`](https://github.com/pabllopf/Alis/commit/a7ad1b28e703654314da1dbf8e597c9bb89c8926) - names and format sdl code of graphic module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`77580cc`](https://github.com/pabllopf/Alis/commit/77580cce0561a411f6a8758e45fb375d321c8a79) - the engine start method *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`afb01f2`](https://github.com/pabllopf/Alis/commit/afb01f29c643b2e4ad908014b339e940cf3d6463) - Refactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a547854`](https://github.com/pabllopf/Alis/commit/a547854e4d8cb4b16f25d98d2d17dfcea204d2ea) - Refactor this constructor to reduce its Cognitive Complexity from 18 to the 15 allowed. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c810bb4`](https://github.com/pabllopf/Alis/commit/c810bb4275ca12c1dedc3263e3ac7700d7bb8fde) - flag name of imgui module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8e2eecf`](https://github.com/pabllopf/Alis/commit/8e2eecfdf13719c1a78d9cc6b250c61137166499) - some methods of extern ttf module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c707092`](https://github.com/pabllopf/Alis/commit/c7070929c009115d9c1e22c8a8abf3a782a9c7e0) - format folder of sdl *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4141153`](https://github.com/pabllopf/Alis/commit/41411535b13c42827da38799a482108cc0704cdd) - enums names *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f0acc23`](https://github.com/pabllopf/Alis/commit/f0acc23986bb707bb3a59ec7b161363151f6aeaf) - NotNull attribute *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f2db666`](https://github.com/pabllopf/Alis/commit/f2db6660f827129498108872df78f73963e7b330) - 'TTF_ByteSwappedUNICODE' less trivial. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dfb7c1c`](https://github.com/pabllopf/Alis/commit/dfb7c1cf213b1fd6bfe6a9b6c0df1642a77dc094) - the wrapper of sdl ttf *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`31ab0c1`](https://github.com/pabllopf/Alis/commit/31ab0c172b68d1e6a012d72eea6363c9e8f075e4) - all sdl ttf *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`092d751`](https://github.com/pabllopf/Alis/commit/092d7511b8c530112c6edbbf326b0c7bae6796c4) - the sdl image *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1a7cc79`](https://github.com/pabllopf/Alis/commit/1a7cc79f3c07143f356cefe38962c073d5b73eb0) - the name *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f0cb2e2`](https://github.com/pabllopf/Alis/commit/f0cb2e24ade0c79009c4d6cce75715961c9bb407) - one line sdl image class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`51020ac`](https://github.com/pabllopf/Alis/commit/51020ac2fe88374d5105367c4d85f2c3f3536242) - sdl main class names and delegates *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`803acd9`](https://github.com/pabllopf/Alis/commit/803acd9b005240e005758c97fd21ff0f8af0314a) - names and sdl vars *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`92dd1b1`](https://github.com/pabllopf/Alis/commit/92dd1b18ba446f9b9958cf05cf6af672703bf69d) - move out struct on music class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`819b1b0`](https://github.com/pabllopf/Alis/commit/819b1b08264c820d96326d7770f3b76925043ed3) - names of sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`471ad17`](https://github.com/pabllopf/Alis/commit/471ad17afa85b41439844c6911b28c6f0af6c27a) - the validator of all entities *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`edf5242`](https://github.com/pabllopf/Alis/commit/edf52428ac95c0f0bda49d6e4103479c54465966) - name entry point *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b6c85ac`](https://github.com/pabllopf/Alis/commit/b6c85acccb6239c2668e3b638a9ec5de89366b7e) - names of SdlPixelType *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6cd01e8`](https://github.com/pabllopf/Alis/commit/6cd01e8af56eb5033fa1798f54f146b31e4c5e8e) - names of PackedOrder *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7cbf05b`](https://github.com/pabllopf/Alis/commit/7cbf05b1078e8b9e5de2a057088676a83c3fc9ad) - PixelType name *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1bb5179`](https://github.com/pabllopf/Alis/commit/1bb5179d0212048684f4a1239767d71e0ac05ca8) - names of PackedLayout *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`de94bc9`](https://github.com/pabllopf/Alis/commit/de94bc966b69dbb40637d97ab0219365a4437efc) - names of sdl *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a44ecbd`](https://github.com/pabllopf/Alis/commit/a44ecbd6e8a042f3ab203c5f77fcce438fa4b3ec) - sdl new changes *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7d53177`](https://github.com/pabllopf/Alis/commit/7d531778208068b0a796a2b1c45b681896165045) - name attributes of sdl class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1b009d8`](https://github.com/pabllopf/Alis/commit/1b009d8a9a0b2e0f289dfdb7b4ad44dcf923f8d4) - sdl warper *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dee9927`](https://github.com/pabllopf/Alis/commit/dee992734b781c48b5c164347e2e2125d3d1475d) - sdl names of init method *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5b34414`](https://github.com/pabllopf/Alis/commit/5b344143dee4fab03f2094b6e913290ec97e085f) - add new wrapers and names corrections *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aa7c0da`](https://github.com/pabllopf/Alis/commit/aa7c0da5c3680176f1a839a8622e0cd7b851a5d1) - sdl names *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`87a8a5d`](https://github.com/pabllopf/Alis/commit/87a8a5d87c9bf8b4e2f33c7c79772fa4970abcc4) - correct 30 names *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`72292a4`](https://github.com/pabllopf/Alis/commit/72292a42b64024c92a478823beb56cc109c31885) - 40 names of sdl *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b63cae0`](https://github.com/pabllopf/Alis/commit/b63cae0c9abbb4a33a6b3e61a3dac382e90de54b) - 100 names of sdl *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`45cfbe4`](https://github.com/pabllopf/Alis/commit/45cfbe4dcc3dc8fecc44ba1fe16db5ee1a99b4cf) - 100 names of sdl *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5fe1e77`](https://github.com/pabllopf/Alis/commit/5fe1e77171844ed0407cc75aad36a05e8daade74) - sdl 79 change names *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d682724`](https://github.com/pabllopf/Alis/commit/d6827248c41a1174d4fb050ef6828366a2592165) - all imgui *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cfa30ea`](https://github.com/pabllopf/Alis/commit/cfa30ea291a8a840566bc4d5a4638a5d23c3ff53) - alis engine web with new main *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f85adb3`](https://github.com/pabllopf/Alis/commit/f85adb32c0d6f9eec4bd4259ae0210668f4f8d10) - web imgui *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`60d7339`](https://github.com/pabllopf/Alis/commit/60d7339de0c31fa288b2716c317b017abf92b2bc) - net version *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cb9a0f7`](https://github.com/pabllopf/Alis/commit/cb9a0f764d86d29dc74400fba7904c6e44d80fc0) - the imgui loader *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`31cd1f1`](https://github.com/pabllopf/Alis/commit/31cd1f16294466cffecb573587c59215395b5195) - build folder *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f816c33`](https://github.com/pabllopf/Alis/commit/f816c33bb7a9515884a76714ceda6f6a27c7c923) - the main js *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d826bfd`](https://github.com/pabllopf/Alis/commit/d826bfd0c46ab4860aca7b437f81a596d9d0ba70) - font *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3fc6f57`](https://github.com/pabllopf/Alis/commit/3fc6f5763002963a06ea5c3bc9c11b84381b20a8) - add new imgui plot, grizmo and nodes extras *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3868813`](https://github.com/pabllopf/Alis/commit/386881315fb6196dbc4e00b06ba749719cb71c78) - warning as errors and new class of engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c98a954`](https://github.com/pabllopf/Alis/commit/c98a9542617d7a4e5ac99042f786bcb9134f1b04) - veldrid config *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ae086b9`](https://github.com/pabllopf/Alis/commit/ae086b94acc69f94699be425384b8450eb0633ef) - osx dlls of sdl2 sfmal and cimgui *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cc9a349`](https://github.com/pabllopf/Alis/commit/cc9a34934d09e83da53e0c77c218d30646d3cd99) - windows loader *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`64fed43`](https://github.com/pabllopf/Alis/commit/64fed43bbc05678277be6395ad42df84116b0523) - config file *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`e84d559`](https://github.com/pabllopf/Alis/commit/e84d559631891320f2ef0901109384ba6d438c42) - update the main xmls folder format *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`918f8fb`](https://github.com/pabllopf/Alis/commit/918f8fbe9541291f3cecc01e21f128c03bd4d3fa) - add new comments to imgui extras *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ae5987f`](https://github.com/pabllopf/Alis/commit/ae5987fbaa29ec723a9e7c0cf7bfa7490a6e61a8) - create new samples of opengl opengles vulkan dx11 and metal *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :art: Code Style Changes
+- [`7e35ed6`](https://github.com/pabllopf/Alis/commit/7e35ed66afe3c40f7d58461a6722f3262df51e3b) - delete comment and regions zones *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1527856`](https://github.com/pabllopf/Alis/commit/15278564af142df690270a99d55987af6d890b3a) - refactor and clean the sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1fa2387`](https://github.com/pabllopf/Alis/commit/1fa2387a3322d83686ef76d360569cebe5fbeb88) - clean and refactor sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1875628`](https://github.com/pabllopf/Alis/commit/1875628308789392d27a1b1b9d959cc8237f0e23) - change name of vector and matrix to include Type float *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9e688f3`](https://github.com/pabllopf/Alis/commit/9e688f3617792089fed376a5b7028a23a3cee5f1) - change name of matrix with new format *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a5fdc1f`](https://github.com/pabllopf/Alis/commit/a5fdc1f571734d4675e0f1716ef9ce523da36947) - refactor style of math module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`db48bd8`](https://github.com/pabllopf/Alis/commit/db48bd8f2386e657e038f339e6c84d0fac7bba9c) - big refactor of opengl module, extract the enums and delegates and change names format. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d8b4e92`](https://github.com/pabllopf/Alis/commit/d8b4e9262afd61938f4e710e057c8f4cd300b5ad) - delete useless class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e106dc3`](https://github.com/pabllopf/Alis/commit/e106dc3571c3bcf94fb79bd18bd24e6f1c8ca1ff) - organize the imgui folder *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`580b27f`](https://github.com/pabllopf/Alis/commit/580b27f89e88ae68d15ee689672cb24a98dd10ca) - refactor sln to include a new namespace *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`02959f3`](https://github.com/pabllopf/Alis/commit/02959f36e6874280b3eb39f75b274079741cd795) - refactor the ImDrawList *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a6ef227`](https://github.com/pabllopf/Alis/commit/a6ef227172923f8da585aadd436b9b2cffc54895) - wrapper sdl ttf *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`66ab6c9`](https://github.com/pabllopf/Alis/commit/66ab6c98986ad1f12a571e546d9ea7b5907a538c) - refactor namespaces to do more simple *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.0.8] - 2023-06-09
 
 ### :sparkles: New Features
@@ -1021,3 +1124,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.0.7]: https://github.com/pabllopf/Alis/compare/v0.0.6...v0.0.7
 
 [v0.0.8]: https://github.com/pabllopf/Alis/compare/v0.0.7...v0.0.8
+[v0.0.9]: https://github.com/pabllopf/Alis/compare/v0.0.8...v0.0.9
