@@ -779,9 +779,9 @@ namespace Alis.Core.Graphic.Backends.Vk
             applicationInfo.engineVersion = new VkVersion(1, 0, 0);
             applicationInfo.pApplicationName = s_name;
             applicationInfo.pEngineName = s_name;
-
+            
             instanceCI.pApplicationInfo = &applicationInfo;
-
+            
             StackList<IntPtr, Size64Bytes> instanceExtensions = new StackList<IntPtr, Size64Bytes>();
             StackList<IntPtr, Size64Bytes> instanceLayers = new StackList<IntPtr, Size64Bytes>();
 
@@ -789,10 +789,16 @@ namespace Alis.Core.Graphic.Backends.Vk
             {
                 _surfaceExtensions.Add(CommonStrings.VK_KHR_portability_subset);
             }
-
+            
             if (availableInstanceExtensions.Contains(CommonStrings.VK_KHR_SURFACE_EXTENSION_NAME))
             {
                 _surfaceExtensions.Add(CommonStrings.VK_KHR_SURFACE_EXTENSION_NAME);
+            }
+            
+            if (availableInstanceExtensions.Contains(CommonStrings.VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR))
+            {
+                _surfaceExtensions.Add(CommonStrings.VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR);
+                Console.WriteLine($"Added {CommonStrings.VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR} to instance extensions");
             }
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -839,18 +845,19 @@ namespace Alis.Core.Graphic.Backends.Vk
                     }
                 }
             }
-
             foreach (var ext in _surfaceExtensions)
             {
                 instanceExtensions.Add(ext);
             }
+            
+            
 
             bool hasDeviceProperties2 = availableInstanceExtensions.Contains(CommonStrings.VK_KHR_get_physical_device_properties2);
             if (hasDeviceProperties2)
             {
                 instanceExtensions.Add(CommonStrings.VK_KHR_get_physical_device_properties2);
             }
-
+            
             string[] requestedInstanceExtensions = options.InstanceExtensions ?? Array.Empty<string>();
             List<FixedUtf8String> tempStrings = new List<FixedUtf8String>();
             foreach (string requiredExt in requestedInstanceExtensions)

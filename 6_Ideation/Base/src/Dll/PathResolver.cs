@@ -1,4 +1,4 @@
-﻿using Microsoft.DotNet.PlatformAbstractions;
+using Microsoft.DotNet.PlatformAbstractions;
 using Microsoft.Extensions.DependencyModel;
 using System;
 using System.Collections.Generic;
@@ -52,6 +52,13 @@ namespace NativeLibraryLoader
             }
         }
 
+        /// <summary>
+        /// Describes whether this instance try locate native asset from deps
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="appLocalNativePath">The app local native path</param>
+        /// <param name="depsResolvedPath">The deps resolved path</param>
+        /// <returns>The bool</returns>
         private bool TryLocateNativeAssetFromDeps(string name, out string appLocalNativePath, out string depsResolvedPath)
         {
             DependencyContext defaultContext = DependencyContext.Default;
@@ -106,6 +113,11 @@ namespace NativeLibraryLoader
             return false;
         }
 
+        /// <summary>
+        /// Guesses the fallback rid using the specified actual runtime identifier
+        /// </summary>
+        /// <param name="actualRuntimeIdentifier">The actual runtime identifier</param>
+        /// <returns>The string</returns>
         private string GuessFallbackRID(string actualRuntimeIdentifier)
         {
             if (actualRuntimeIdentifier == "osx.10.13-x64")
@@ -120,6 +132,13 @@ namespace NativeLibraryLoader
             return null;
         }
 
+        /// <summary>
+        /// Describes whether this instance add fallbacks
+        /// </summary>
+        /// <param name="fallbacks">The fallbacks</param>
+        /// <param name="rid">The rid</param>
+        /// <param name="allFallbacks">The all fallbacks</param>
+        /// <returns>The bool</returns>
         private bool AddFallbacks(List<string> fallbacks, string rid, IReadOnlyList<RuntimeFallbacks> allFallbacks)
         {
             foreach (RuntimeFallbacks fb in allFallbacks)
@@ -134,12 +153,20 @@ namespace NativeLibraryLoader
             return false;
         }
 
+        /// <summary>
+        /// Gets the nuget packages root directory
+        /// </summary>
+        /// <returns>The string</returns>
         private string GetNugetPackagesRootDirectory()
         {
             // TODO: Handle alternative package directories, if they are configured.
             return Path.Combine(GetUserDirectory(), ".nuget", "packages");
         }
 
+        /// <summary>
+        /// Gets the user directory
+        /// </summary>
+        /// <returns>The string</returns>
         private string GetUserDirectory()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))

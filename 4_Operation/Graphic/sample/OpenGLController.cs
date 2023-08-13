@@ -35,17 +35,42 @@ using Alis.Core.Graphic.Backends.Startup;
 
 namespace Alis.Core.Graphic.Sample
 {
-    public class VeldridController
+    /// <summary>
+    /// The open gl controller class
+    /// </summary>
+    public class OpenGLController
     {
 
+        /// <summary>
+        /// The graphics device
+        /// </summary>
         private static GraphicsDevice _graphicsDevice;
+        /// <summary>
+        /// The factory
+        /// </summary>
         private ResourceFactory factory;
+        /// <summary>
+        /// The command list
+        /// </summary>
         private CommandList _commandList;
         
+        /// <summary>
+        /// The red
+        /// </summary>
         int red = 0;
+        /// <summary>
+        /// The green
+        /// </summary>
         int green = 0;
+        /// <summary>
+        /// The blue
+        /// </summary>
         int blue = 0;
 
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
+        /// <returns>The int</returns>
         public int Run()
         {
             WindowCreateInfo windowCI = new WindowCreateInfo()
@@ -65,7 +90,7 @@ namespace Alis.Core.Graphic.Sample
                 PreferDepthRangeZeroToOne = true
             };
 
-            _graphicsDevice = VeldridStartup.CreateGraphicsDevice(window, options, GraphicsBackend.Direct3D11);
+            _graphicsDevice = VeldridStartup.CreateGraphicsDevice(window, options, GraphicsBackend.OpenGL);
             factory = _graphicsDevice.ResourceFactory;
             _commandList = factory.CreateCommandList();
 

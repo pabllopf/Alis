@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 
 namespace NativeLibraryLoader
@@ -9,7 +9,13 @@ namespace NativeLibraryLoader
     /// </summary>
     public class NativeLibrary : IDisposable
     {
+        /// <summary>
+        /// The get platform default loader
+        /// </summary>
         private static readonly LibraryLoader s_platformDefaultLoader = LibraryLoader.GetPlatformDefaultLoader();
+        /// <summary>
+        /// The loader
+        /// </summary>
         private readonly LibraryLoader _loader;
 
         /// <summary>

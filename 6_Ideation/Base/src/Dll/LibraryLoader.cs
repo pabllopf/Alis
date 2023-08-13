@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Runtime.InteropServices;
 
@@ -85,6 +85,12 @@ namespace NativeLibraryLoader
             return ret;
         }
 
+        /// <summary>
+        /// Loads the with resolver using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="pathResolver">The path resolver</param>
+        /// <returns>The int ptr</returns>
         private IntPtr LoadWithResolver(string name, PathResolver pathResolver)
         {
             if (Path.IsPathRooted(name))
@@ -179,36 +185,74 @@ namespace NativeLibraryLoader
             throw new PlatformNotSupportedException("This platform cannot load native libraries.");
         }
 
+        /// <summary>
+        /// The win 32 library loader class
+        /// </summary>
+        /// <seealso cref="LibraryLoader"/>
         private class Win32LibraryLoader : LibraryLoader
         {
+            /// <summary>
+            /// Cores the free native library using the specified handle
+            /// </summary>
+            /// <param name="handle">The handle</param>
             protected override void CoreFreeNativeLibrary(IntPtr handle)
             {
                 Kernel32.FreeLibrary(handle);
             }
 
+            /// <summary>
+            /// Cores the load function pointer using the specified handle
+            /// </summary>
+            /// <param name="handle">The handle</param>
+            /// <param name="functionName">The function name</param>
+            /// <returns>The int ptr</returns>
             protected override IntPtr CoreLoadFunctionPointer(IntPtr handle, string functionName)
             {
                 return Kernel32.GetProcAddress(handle, functionName);
             }
 
+            /// <summary>
+            /// Cores the load native library using the specified name
+            /// </summary>
+            /// <param name="name">The name</param>
+            /// <returns>The int ptr</returns>
             protected override IntPtr CoreLoadNativeLibrary(string name)
             {
                 return Kernel32.LoadLibrary(name);
             }
         }
 
+        /// <summary>
+        /// The unix library loader class
+        /// </summary>
+        /// <seealso cref="LibraryLoader"/>
         private class UnixLibraryLoader : LibraryLoader
         {
+            /// <summary>
+            /// Cores the free native library using the specified handle
+            /// </summary>
+            /// <param name="handle">The handle</param>
             protected override void CoreFreeNativeLibrary(IntPtr handle)
             {
                 Libdl.dlclose(handle);
             }
 
+            /// <summary>
+            /// Cores the load function pointer using the specified handle
+            /// </summary>
+            /// <param name="handle">The handle</param>
+            /// <param name="functionName">The function name</param>
+            /// <returns>The int ptr</returns>
             protected override IntPtr CoreLoadFunctionPointer(IntPtr handle, string functionName)
             {
                 return Libdl.dlsym(handle, functionName);
             }
 
+            /// <summary>
+            /// Cores the load native library using the specified name
+            /// </summary>
+            /// <param name="name">The name</param>
+            /// <returns>The int ptr</returns>
             protected override IntPtr CoreLoadNativeLibrary(string name)
             {
                 return Libdl.dlopen(name, Libdl.RTLD_NOW);

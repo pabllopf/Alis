@@ -1,3 +1,5 @@
+using System;
+
 namespace Alis.Core.Graphic.Backends.Vk
 {
     /// <summary>
@@ -5,6 +7,11 @@ namespace Alis.Core.Graphic.Backends.Vk
     /// </summary>
     internal static class CommonStrings
     {
+        /// <summary>
+        /// The vk instance create enumerate portability bit khr
+        /// </summary>
+        public static FixedUtf8String VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR { get; } = "VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR";
+
         /// <summary>
         /// Gets the value of the vk khr surface extension name
         /// </summary>
@@ -73,5 +80,7 @@ namespace Alis.Core.Graphic.Backends.Vk
         /// Gets the value of the vk khr portability subset
         /// </summary>
         public static FixedUtf8String VK_KHR_portability_subset { get; } = "VK_KHR_portability_subset";
+
+        public static FixedUtf8String VK_KHR_portability_enumeration { get; } = "VK_KHR_portability_enumeration";
     }
 }
