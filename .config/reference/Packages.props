@@ -17,16 +17,25 @@
         <PackageReference Include="BenchmarkDotNet" Version="0.13.2"/>
     </ItemGroup>
     
-    <ItemGroup Condition="$(AssemblyName.Equals('Alis.Core.Graphic')) == true">
+    <ItemGroup Condition="
+        $(AssemblyName.Contains('Test')) == False AND
+        $(AssemblyName.Contains('App.Installer')) == False AND 
+        $(AssemblyName.Contains('Template')) == False AND 
+        $(AssemblyName.Contains('Benchmark')) == False">
         <PackageReference Include="Vk" Version="1.0.25" />
+        <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="2.0.3" />
         <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
         <PackageReference Condition="$([MSBuild]::IsOSPlatform('windows'))" Include="Vortice.D3DCompiler" Version="2.4.2" />
         <PackageReference Condition="$([MSBuild]::IsOSPlatform('windows'))" Include="Vortice.Direct3D11" Version="2.4.2" />
-        <Compile Condition="$([MSBuild]::IsOSPlatform('windows')) == false"  Remove="Backends/D3D11/**/*"/>
-        <Compile Condition="$([MSBuild]::IsOSPlatform('osx')) == false" Remove="Backends/MTL/**/*" />
+        <Compile Condition="$([MSBuild]::IsOSPlatform('windows')) == false" Remove="$(SolutionDir)**/Backends/D3D11/**/*.cs"/>
+        <Compile Condition="$([MSBuild]::IsOSPlatform('osx')) == false" Remove="$(SolutionDir)**/Backends/MTL/**/*.cs" />
     </ItemGroup>
     
-    <PropertyGroup Condition="$(AssemblyName.Equals('Alis.Core.Graphic')) == true">
+    <PropertyGroup Condition="
+        $(AssemblyName.Contains('Test')) == False AND
+        $(AssemblyName.Contains('App.Installer')) == False AND 
+        $(AssemblyName.Contains('Template')) == False AND 
+        $(AssemblyName.Contains('Benchmark')) == False">
         <DefineConstants Condition="$([MSBuild]::IsOSPlatform('windows')) == false">$(DefineConstants);EXCLUDE_D3D11_BACKEND</DefineConstants>
         <DefineConstants Condition="$([MSBuild]::IsOSPlatform('osx')) == false">$(DefineConstants);EXCLUDE_METAL_BACKEND</DefineConstants>
     </PropertyGroup>

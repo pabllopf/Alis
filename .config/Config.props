@@ -43,8 +43,9 @@
     <Import Project="$(SolutionDir).config/nuget/Title.props"/>
     <Import Project="$(SolutionDir).config/nuget/Version.props"/>
 
-    <Import Project="$(SolutionDir).config/reference/Packages.props"/>
     <Import Project="$(SolutionDir).config/reference/Projects.props"/>
+    <Import Project="$(SolutionDir).config/reference/Packages.props"/>
+    
 
     <Import Project="$(SolutionDir).config/target/BeforeBuild.props"/>
     <Import Project="$(SolutionDir).config/target/AfterBuild.props"/>

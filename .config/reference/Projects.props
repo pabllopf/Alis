@@ -29,6 +29,8 @@
                           Exclude="$(SolutionDir)6_Ideation/**/*.Sample.csproj; $(SolutionDir)6_Ideation/**/*.Test.csproj;"/>
 
         <InternalsVisibleTo Include="$(AssemblyName).Test"/>
+
+        
     </ItemGroup>
 
 
@@ -196,9 +198,9 @@
                 Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
                 Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
     </ItemGroup>
-
+    
     <ItemGroup>
-        <None Condition="Exists('$(ProjectDir)/Assets/') == True" 
+        <None Condition="Exists('$(ProjectDir)/Assets/') == True"
               Update="$(ProjectDir)/Assets/**"
               LinkBase="Assets/"
               CopyToOutputDirectory="Always"
