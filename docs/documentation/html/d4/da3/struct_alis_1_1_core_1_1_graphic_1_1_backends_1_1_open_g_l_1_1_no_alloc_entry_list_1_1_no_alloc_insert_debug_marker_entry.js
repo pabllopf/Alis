@@ -1,0 +1,5 @@
+var struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_insert_debug_marker_entry =
+[
+    [ "NoAllocInsertDebugMarkerEntry", "d4/da3/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_insert_debug_marker_entry.html#ab2b6e560ac91ec5f07da56e1616d964f", null ],
+    [ "Name", "d4/da3/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_insert_debug_marker_entry.html#a1dcf82523cc6e6b215ee33ad668ba785", null ]
+];

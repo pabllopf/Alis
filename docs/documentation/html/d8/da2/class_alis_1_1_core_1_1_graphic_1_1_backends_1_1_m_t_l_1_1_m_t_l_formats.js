@@ -1,0 +1,26 @@
+var class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats =
+[
+    [ "VdToMTLPixelFormat", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#af500f255c0d2b70194a3770995ec8635", null ],
+    [ "IsFormatSupported", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#affb4c7c23be751286082d0841119a7aa", null ],
+    [ "VdToMTLFillMode", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#a9593854b565237d3f94e3d1985a03db5", null ],
+    [ "VdVoMTLFrontFace", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#a1fae6a6e11a37278cfcfd3e48c7bd64c", null ],
+    [ "GetMinMagMipFilter", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#a29ad75450a55fab31686eea80f046160", null ],
+    [ "VdToMTLTextureType", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#a28e178a542ea3ec803e3795d794c4906", null ],
+    [ "VdToMTLBlendFactor", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#a3c68d3e18241937ef0953fee615a6767", null ],
+    [ "VdToMTLBlendOp", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#abf47896fbcf8b5468d408b4c18fb1f03", null ],
+    [ "VdToMTLColorWriteMask", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#a20a5a78220d4251f38962c118b1e13f0", null ],
+    [ "VdVoMTLShaderConstantType", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#a470480416b93b42c0a4d7702babf5b14", null ],
+    [ "VdToMTLCompareFunction", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#a5378c3f5784a328634a3128e43a5a057", null ],
+    [ "VdToMTLCullMode", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#a5c463ae306ce1f5fde091788713be4bd", null ],
+    [ "VdToMTLBorderColor", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#a8e54b2c1270a53c66fef57cca36472ad", null ],
+    [ "VdToMTLAddressMode", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#ae400fd72a7ee5f6fc6fc8ac9abd34027", null ],
+    [ "VdToMTLPrimitiveTopology", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#abf5704e24711cd810832464d10e340a1", null ],
+    [ "VdToMTLTextureUsage", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#a5d86fd85608e8b53160b5f8c7fbf5c06", null ],
+    [ "VdToMTLVertexFormat", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#a37e1ba8af75f629ce46da270219c0bdd", null ],
+    [ "VdToMTLIndexFormat", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#a13ad1a90d3b9ba8a0fc945b9ea849821", null ],
+    [ "VdToMTLStencilOperation", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#a87c409471db2d4e83e0da25da5f44e39", null ],
+    [ "GetMaxTexture1DWidth", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#a0711676c3852a3a4af966ec3dd11a0ff", null ],
+    [ "GetMaxTexture2DDimensions", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#a818531e10e99f1459a518db9dff47c7e", null ],
+    [ "GetMaxTextureCubeDimensions", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#ac59eb985b931a7a4cd572fafb18e7cc2", null ],
+    [ "GetMaxTextureVolume", "d8/da2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_formats.html#ab33df62e11aaf56c46112ca207b376cf", null ]
+];

@@ -1,0 +1,25 @@
+var class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util =
+[
+    [ "AssertSubtype< TBase, TDerived >", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#add64247ef64a22afe07f4108785276ca", null ],
+    [ "EnsureArrayMinimumSize< T >", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#a8ba356f2fee1c46fc60b1840d250c012", null ],
+    [ "USizeOf< T >", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#a3c1d7d168cecdb9e0754927a1a3ca021", null ],
+    [ "GetString", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#ac036ac604ba8084c8a26405ce0c8b228", null ],
+    [ "NullableEquals< T >", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#a29c3dc7cf267fa5c538266ee3b1a0297", null ],
+    [ "ArrayEquals< T >", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#a804c66f524881a26f932ff65b46888db", null ],
+    [ "ArrayEqualsEquatable< T >", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#a00da5775e9efbdb322ed7a4fd3ac4d4b", null ],
+    [ "ClearArray< T >", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#a1ed007459cf436d2597d6ee906bdfdc7", null ],
+    [ "Clamp", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#a7f2858fd744326387bde7569c79f9b77", null ],
+    [ "GetMipLevelAndArrayLayer", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#af6875f6f9507d05316336e7d02b3a810", null ],
+    [ "GetMipDimensions", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#aa40ff66a3ab45b6d3f9dbdc7582c0b7d", null ],
+    [ "GetDimension", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#ad93aa34eb6c7cc5a770a354f5ca413a7", null ],
+    [ "ComputeSubresourceOffset", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#a07685e0cfde151576d1391d2099b6b90", null ],
+    [ "ComputeMipOffset", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#a8b13718efe5b7841a247bdb247b38cd8", null ],
+    [ "ComputeArrayLayerOffset", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#a7f06af655c57855b8ce0345d1b58f7d2", null ],
+    [ "CopyTextureRegion", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#a9f644c99838b5b81e457e518f4dd0ef7", null ],
+    [ "ShallowClone< T >", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#a422d8f2d24d6f4a5223a270db48fad37", null ],
+    [ "GetBufferRange", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#ae61fed2d306d71424f2b8f4e07e32a8e", null ],
+    [ "GetDeviceBuffer", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#a6df7fb013d4741e626a40ab26246e3a0", null ],
+    [ "GetTextureView", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#afa48f7c020b508f05858ef624955824c", null ],
+    [ "PackIntPtr", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#a8299a713bff7a9d1dfe45410a9a0eb60", null ],
+    [ "UnpackIntPtr", "df/de1/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_util.html#ada2757f97fa97b04fbf8e971b135488d", null ]
+];

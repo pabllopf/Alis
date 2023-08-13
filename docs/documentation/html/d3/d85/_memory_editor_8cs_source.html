@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('d3/d85/_memory_editor_8cs_source.html'
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#if false</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../dd/dae/namespace_im_gui_n_e_t.html">ImGuiNET</a></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span>ImGuiNET</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="comment">// C# port of ocornut&#39;s imgui_memory_editor.h - https://gist.github.com/ocornut/0673e37e54aff644298b</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
@@ -156,10 +156,10 @@ $(document).ready(function(){initNavTree('d3/d85/_memory_editor_8cs_source.html'
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">public</span> unsafe <span class="keywordtype">void</span> Draw(<span class="keywordtype">string</span> title, <span class="keywordtype">byte</span>[] mem_data, <span class="keywordtype">int</span> mem_size, <span class="keywordtype">int</span> base_display_addr = 0)</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.SetNextWindowSize(<span class="keyword">new</span> Vector2(500, 350), <a class="code" href="../../dd/dae/namespace_im_gui_n_e_t.html#a70679bdd28e7f46fadad3607e707f90a">ImGuiCond</a>.FirstUseEver);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.Begin(title))</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            ImGui.SetNextWindowSize(<span class="keyword">new</span> Vector2(500, 350), <a class="code" href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#ad1c7a9e92b80f4a117e9c212b7c78f68">ImGuiCond</a>.FirstUseEver);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">if</span> (!ImGui.Begin(title))</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.End();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                ImGui.End();</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            }</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
@@ -167,16 +167,16 @@ $(document).ready(function(){initNavTree('d3/d85/_memory_editor_8cs_source.html'
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordtype">int</span> line_total_count = (mem_size + Rows - 1) / Rows;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            ImGuiNative.igSetNextWindowContentSize(<span class="keyword">new</span> Vector2(0.0f, line_total_count * line_height));</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.BeginChild(<span class="stringliteral">&quot;##scrolling&quot;</span>, <span class="keyword">new</span> Vector2(0, -ImGuiNative.igGetFrameHeightWithSpacing()), <span class="keyword">false</span>, 0);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            ImGui.BeginChild(<span class="stringliteral">&quot;##scrolling&quot;</span>, <span class="keyword">new</span> Vector2(0, -ImGuiNative.igGetFrameHeightWithSpacing()), <span class="keyword">false</span>, 0);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.PushStyleVar(<a class="code" href="../../dd/dae/namespace_im_gui_n_e_t.html#ab1364aa3461dac2d11f3b28ef00ae737">ImGuiStyleVar</a>.FramePadding, <span class="keyword">new</span> Vector2(0, 0));</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.PushStyleVar(<a class="code" href="../../dd/dae/namespace_im_gui_n_e_t.html#ab1364aa3461dac2d11f3b28ef00ae737">ImGuiStyleVar</a>.ItemSpacing, <span class="keyword">new</span> Vector2(0, 0));</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            ImGui.PushStyleVar(<a class="code" href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#a0ebe481f8c3d18e124449f1a0eea1d8f">ImGuiStyleVar</a>.FramePadding, <span class="keyword">new</span> Vector2(0, 0));</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            ImGui.PushStyleVar(<a class="code" href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#a0ebe481f8c3d18e124449f1a0eea1d8f">ImGuiStyleVar</a>.ItemSpacing, <span class="keyword">new</span> Vector2(0, 0));</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordtype">int</span> addr_digits_count = 0;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> n = base_display_addr + mem_size - 1; n &gt; 0; n &gt;&gt;= 4)</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                addr_digits_count++;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordtype">float</span> glyph_width = <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.CalcTextSize(<span class="stringliteral">&quot;F&quot;</span>).X;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordtype">float</span> glyph_width = ImGui.CalcTextSize(<span class="stringliteral">&quot;F&quot;</span>).X;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordtype">float</span> cell_width = glyph_width * 3; <span class="comment">// &quot;FF &quot; we include trailing space in the width to easily catch clicks everywhere</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            var clipper = <span class="keyword">new</span> ImGuiListClipper2(line_total_count, line_height);</div>
@@ -192,10 +192,10 @@ $(document).ready(function(){initNavTree('d3/d85/_memory_editor_8cs_source.html'
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">if</span> (DataEditingAddr != -1)</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.IsKeyPressed(<a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.GetKeyIndex(<a class="code" href="../../dd/dae/namespace_im_gui_n_e_t.html#aeca84116e2cc3e94116cfb5a43b66171">ImGuiKey</a>.UpArrow)) &amp;&amp; DataEditingAddr &gt;= Rows) { DataEditingAddr -= Rows; DataEditingTakeFocus = <span class="keyword">true</span>; }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.IsKeyPressed(<a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.GetKeyIndex(<a class="code" href="../../dd/dae/namespace_im_gui_n_e_t.html#aeca84116e2cc3e94116cfb5a43b66171">ImGuiKey</a>.DownArrow)) &amp;&amp; DataEditingAddr &lt; mem_size - Rows) { DataEditingAddr += Rows; DataEditingTakeFocus = <span class="keyword">true</span>; }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.IsKeyPressed(<a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.GetKeyIndex(<a class="code" href="../../dd/dae/namespace_im_gui_n_e_t.html#aeca84116e2cc3e94116cfb5a43b66171">ImGuiKey</a>.LeftArrow)) &amp;&amp; DataEditingAddr &gt; 0) { DataEditingAddr -= 1; DataEditingTakeFocus = <span class="keyword">true</span>; }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.IsKeyPressed(<a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.GetKeyIndex(<a class="code" href="../../dd/dae/namespace_im_gui_n_e_t.html#aeca84116e2cc3e94116cfb5a43b66171">ImGuiKey</a>.RightArrow)) &amp;&amp; DataEditingAddr &lt; mem_size - 1) { DataEditingAddr += 1; DataEditingTakeFocus = <span class="keyword">true</span>; }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="keywordflow">if</span> (ImGui.IsKeyPressed(ImGui.GetKeyIndex(<a class="code" href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#ad021d954d2a1e2bf4f7b72b4d4086487">ImGuiKey</a>.UpArrow)) &amp;&amp; DataEditingAddr &gt;= Rows) { DataEditingAddr -= Rows; DataEditingTakeFocus = <span class="keyword">true</span>; }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ImGui.IsKeyPressed(ImGui.GetKeyIndex(<a class="code" href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#ad021d954d2a1e2bf4f7b72b4d4086487">ImGuiKey</a>.DownArrow)) &amp;&amp; DataEditingAddr &lt; mem_size - Rows) { DataEditingAddr += Rows; DataEditingTakeFocus = <span class="keyword">true</span>; }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ImGui.IsKeyPressed(ImGui.GetKeyIndex(<a class="code" href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#ad021d954d2a1e2bf4f7b72b4d4086487">ImGuiKey</a>.LeftArrow)) &amp;&amp; DataEditingAddr &gt; 0) { DataEditingAddr -= 1; DataEditingTakeFocus = <span class="keyword">true</span>; }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ImGui.IsKeyPressed(ImGui.GetKeyIndex(<a class="code" href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#ad021d954d2a1e2bf4f7b72b4d4086487">ImGuiKey</a>.RightArrow)) &amp;&amp; DataEditingAddr &lt; mem_size - 1) { DataEditingAddr += 1; DataEditingTakeFocus = <span class="keyword">true</span>; }</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            }</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">if</span> ((DataEditingAddr / Rows) != (data_editing_addr_backup / Rows))</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            {</div>
@@ -209,22 +209,22 @@ $(document).ready(function(){initNavTree('d3/d85/_memory_editor_8cs_source.html'
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> line_i = clipper.DisplayStart; line_i &lt; clipper.DisplayEnd; line_i++) <span class="comment">// display only visible items</span></div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            {</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <span class="keywordtype">int</span> addr = line_i * Rows;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.Text(FixedHex(base_display_addr + addr, addr_digits_count) + <span class="stringliteral">&quot;: &quot;</span>);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.SameLine();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                ImGui.Text(FixedHex(base_display_addr + addr, addr_digits_count) + <span class="stringliteral">&quot;: &quot;</span>);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                ImGui.SameLine();</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                <span class="comment">// Draw Hexadecimal</span></div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <span class="keywordtype">float</span> line_start_x = ImGuiNative.igGetCursorPosX();</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> n = 0; n &lt; Rows &amp;&amp; addr &lt; mem_size; n++, addr++)</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                {</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                    <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.SameLine(line_start_x + cell_width * n);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                    ImGui.SameLine(line_start_x + cell_width * n);</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                    <span class="keywordflow">if</span> (DataEditingAddr == addr)</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                    {</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                        <span class="comment">// Display text input on current byte</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                        <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.PushID(addr);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                        ImGui.PushID(addr);</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                        <span class="comment">// FIXME: We should have a way to retrieve the text edit cursor position more easily in the API, this is rather tedious.</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                        <a class="code" href="../../dd/dae/namespace_im_gui_n_e_t.html#a2effba8c98b42182f5b74c3abbb84a69">ImGuiInputTextCallback</a> callback = (data) =&gt;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                        <a class="code" href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#a18833041e52fc7fc15019bcaa06943e2">ImGuiInputTextCallback</a> callback = (data) =&gt;</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                        {</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                            <span class="keywordtype">int</span>* p_cursor_pos = (<span class="keywordtype">int</span>*)data-&gt;UserData;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
@@ -236,21 +236,21 @@ $(document).ready(function(){initNavTree('d3/d85/_memory_editor_8cs_source.html'
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                        <span class="keywordtype">bool</span> data_write = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                        <span class="keywordflow">if</span> (DataEditingTakeFocus)</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                        {</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                            <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.SetKeyboardFocusHere();</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                            ImGui.SetKeyboardFocusHere();</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                            ReplaceChars(DataInput, FixedHex(mem_data[addr], 2));</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                            ReplaceChars(AddrInput, FixedHex(base_display_addr + addr, addr_digits_count));</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                        }</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                        <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.PushItemWidth(<a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.CalcTextSize(<span class="stringliteral">&quot;FF&quot;</span>).X);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                        ImGui.PushItemWidth(ImGui.CalcTextSize(<span class="stringliteral">&quot;FF&quot;</span>).X);</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                        var flags = <a class="code" href="../../dd/dae/namespace_im_gui_n_e_t.html#a07448862d8c8c03f4cc3afdafea2b924">ImGuiInputTextFlags</a>.CharsHexadecimal | <a class="code" href="../../dd/dae/namespace_im_gui_n_e_t.html#a07448862d8c8c03f4cc3afdafea2b924">ImGuiInputTextFlags</a>.EnterReturnsTrue | <a class="code" href="../../dd/dae/namespace_im_gui_n_e_t.html#a07448862d8c8c03f4cc3afdafea2b924">ImGuiInputTextFlags</a>.AutoSelectAll | <a class="code" href="../../dd/dae/namespace_im_gui_n_e_t.html#a07448862d8c8c03f4cc3afdafea2b924">ImGuiInputTextFlags</a>.NoHorizontalScroll | <a class="code" href="../../dd/dae/namespace_im_gui_n_e_t.html#a07448862d8c8c03f4cc3afdafea2b924">ImGuiInputTextFlags</a>.CallbackAlways;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                        var flags = <a class="code" href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#a1bcb9d8c817f240655f016e1a6311fd7">ImGuiInputTextFlags</a>.CharsHexadecimal | <a class="code" href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#a1bcb9d8c817f240655f016e1a6311fd7">ImGuiInputTextFlags</a>.EnterReturnsTrue | <a class="code" href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#a1bcb9d8c817f240655f016e1a6311fd7">ImGuiInputTextFlags</a>.AutoSelectAll | <a class="code" href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#a1bcb9d8c817f240655f016e1a6311fd7">ImGuiInputTextFlags</a>.NoHorizontalScroll | <a class="code" href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#a1bcb9d8c817f240655f016e1a6311fd7">ImGuiInputTextFlags</a>.CallbackAlways;</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.InputText(<span class="stringliteral">&quot;##data&quot;</span>, DataInput, 32, flags, callback, (IntPtr)(&amp;cursor_pos)))</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                        <span class="keywordflow">if</span> (ImGui.InputText(<span class="stringliteral">&quot;##data&quot;</span>, DataInput, 32, flags, callback, (IntPtr)(&amp;cursor_pos)))</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                            data_write = data_next = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!DataEditingTakeFocus &amp;&amp; !<a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.IsItemActive())</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!DataEditingTakeFocus &amp;&amp; !ImGui.IsItemActive())</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                            DataEditingAddr = -1;</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                        DataEditingTakeFocus = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                        <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.PopItemWidth();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                        ImGui.PopItemWidth();</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                        <span class="keywordflow">if</span> (cursor_pos &gt;= 2)</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                            data_write = data_next = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                        <span class="keywordflow">if</span> (data_write)</div>
@@ -259,12 +259,12 @@ $(document).ready(function(){initNavTree('d3/d85/_memory_editor_8cs_source.html'
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                            <span class="keywordflow">if</span> (TryHexParse(DataInput, out data))</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                                mem_data[addr] = (byte)data;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                        }</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                        <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.PopID();</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                        ImGui.PopID();</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                    }</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                    <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                    {</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                        <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.Text(FixedHex(mem_data[addr], 2));</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                        <span class="keywordflow">if</span> (AllowEdits &amp;&amp; <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.IsItemHovered() &amp;&amp; <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.IsMouseClicked(0))</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                        ImGui.Text(FixedHex(mem_data[addr], 2));</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                        <span class="keywordflow">if</span> (AllowEdits &amp;&amp; ImGui.IsItemHovered() &amp;&amp; ImGui.IsMouseClicked(0))</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                        {</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                            DataEditingTakeFocus = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                            DataEditingAddr = addr;</div>
@@ -272,7 +272,7 @@ $(document).ready(function(){initNavTree('d3/d85/_memory_editor_8cs_source.html'
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                    }</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                }</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.SameLine(line_start_x + cell_width * Rows + glyph_width * 2);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                ImGui.SameLine(line_start_x + cell_width * Rows + glyph_width * 2);</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                <span class="comment">//separator line drawing replaced by printing a pipe char</span></div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                <span class="comment">// Draw ASCII values</span></div>
@@ -284,12 +284,12 @@ $(document).ready(function(){initNavTree('d3/d85/_memory_editor_8cs_source.html'
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                    <span class="keywordtype">int</span> c = mem_data[addr];</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                    asciiVal.Append((c &gt;= 32 &amp;&amp; c &lt; 128) ? Convert.ToChar(c) : <span class="charliteral">&#39;.&#39;</span>);</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                }</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.TextUnformatted(asciiVal.ToString());  <span class="comment">//use unformatted, so string can contain the &#39;%&#39; character</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                ImGui.TextUnformatted(asciiVal.ToString());  <span class="comment">//use unformatted, so string can contain the &#39;%&#39; character</span></div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            }</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            <span class="comment">//clipper.End();  //not implemented</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.PopStyleVar(2);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            ImGui.PopStyleVar(2);</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.EndChild();</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            ImGui.EndChild();</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="keywordflow">if</span> (data_next &amp;&amp; DataEditingAddr &lt; mem_size)</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            {</div>
@@ -297,27 +297,27 @@ $(document).ready(function(){initNavTree('d3/d85/_memory_editor_8cs_source.html'
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                DataEditingTakeFocus = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            }</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.Separator();</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            ImGui.Separator();</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            ImGuiNative.igAlignTextToFramePadding();</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.PushItemWidth(50);</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.PushAllowKeyboardFocus(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            ImGui.PushItemWidth(50);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            ImGui.PushAllowKeyboardFocus(<span class="keyword">true</span>);</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <span class="keywordtype">int</span> rows_backup = Rows;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.DragInt(<span class="stringliteral">&quot;##rows&quot;</span>, ref Rows, 0.2f, 4, 32, <span class="stringliteral">&quot;%.0f rows&quot;</span>))</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keywordflow">if</span> (ImGui.DragInt(<span class="stringliteral">&quot;##rows&quot;</span>, ref Rows, 0.2f, 4, 32, <span class="stringliteral">&quot;%.0f rows&quot;</span>))</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            {</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                <span class="keywordflow">if</span> (Rows &lt;= 0) Rows = 4;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                Vector2 new_window_size = <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.GetWindowSize();</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                Vector2 new_window_size = ImGui.GetWindowSize();</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                new_window_size.X += (Rows - rows_backup) * (cell_width + glyph_width);</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.SetWindowSize(new_window_size);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                ImGui.SetWindowSize(new_window_size);</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            }</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.PopAllowKeyboardFocus();</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.PopItemWidth();</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.SameLine();</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.Text(<span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot; Range {0}..{1} &quot;</span>, FixedHex(base_display_addr, addr_digits_count),</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            ImGui.PopAllowKeyboardFocus();</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            ImGui.PopItemWidth();</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            ImGui.SameLine();</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            ImGui.Text(<span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot; Range {0}..{1} &quot;</span>, FixedHex(base_display_addr, addr_digits_count),</div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                FixedHex(base_display_addr + mem_size - 1, addr_digits_count)));</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.SameLine();</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.PushItemWidth(70);</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.InputText(<span class="stringliteral">&quot;##addr&quot;</span>, AddrInput, 32, <a class="code" href="../../dd/dae/namespace_im_gui_n_e_t.html#a07448862d8c8c03f4cc3afdafea2b924">ImGuiInputTextFlags</a>.CharsHexadecimal | <a class="code" href="../../dd/dae/namespace_im_gui_n_e_t.html#a07448862d8c8c03f4cc3afdafea2b924">ImGuiInputTextFlags</a>.EnterReturnsTrue, <span class="keyword">null</span>))</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            ImGui.SameLine();</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            ImGui.PushItemWidth(70);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputText(<span class="stringliteral">&quot;##addr&quot;</span>, AddrInput, 32, <a class="code" href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#a1bcb9d8c817f240655f016e1a6311fd7">ImGuiInputTextFlags</a>.CharsHexadecimal | <a class="code" href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#a1bcb9d8c817f240655f016e1a6311fd7">ImGuiInputTextFlags</a>.EnterReturnsTrue, <span class="keyword">null</span>))</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            {</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                <span class="keywordtype">int</span> goto_addr;</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                <span class="keywordflow">if</span> (TryHexParse(AddrInput, out goto_addr))</div>
@@ -325,17 +325,17 @@ $(document).ready(function(){initNavTree('d3/d85/_memory_editor_8cs_source.html'
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                    goto_addr -= base_display_addr;</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                    <span class="keywordflow">if</span> (goto_addr &gt;= 0 &amp;&amp; goto_addr &lt; mem_size)</div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                    {</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                        <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.BeginChild(<span class="stringliteral">&quot;##scrolling&quot;</span>);</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                        <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.SetScrollFromPosY(<a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.GetCursorStartPos().Y + (goto_addr / Rows) * ImGuiNative.igGetTextLineHeight());</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                        <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.EndChild();</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                        ImGui.BeginChild(<span class="stringliteral">&quot;##scrolling&quot;</span>);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                        ImGui.SetScrollFromPosY(ImGui.GetCursorStartPos().Y + (goto_addr / Rows) * ImGuiNative.igGetTextLineHeight());</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                        ImGui.EndChild();</div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                        DataEditingAddr = goto_addr;</div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                        DataEditingTakeFocus = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                    }</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                }</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            }</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.PopItemWidth();</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            ImGui.PopItemWidth();</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            <a class="code" href="../../df/d13/namespace_im_gui.html">ImGui</a>.End();</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            ImGui.End();</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        }</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    }</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
@@ -377,19 +377,17 @@ $(document).ready(function(){initNavTree('d3/d85/_memory_editor_8cs_source.html'
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anamespace_im_gui_n_e_t_html_aeca84116e2cc3e94116cfb5a43b66171"><div class="ttname"><a href="../../dd/dae/namespace_im_gui_n_e_t.html#aeca84116e2cc3e94116cfb5a43b66171">ImGuiNET.ImGuiKey</a></div><div class="ttdeci">ImGuiKey</div><div class="ttdoc">The im gui key enum</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d55/_im_gui_key_8gen_8cs_source.html#l00006">ImGuiKey.gen.cs:7</a></div></div>
-<div class="ttc" id="anamespace_im_gui_n_e_t_html_a07448862d8c8c03f4cc3afdafea2b924"><div class="ttname"><a href="../../dd/dae/namespace_im_gui_n_e_t.html#a07448862d8c8c03f4cc3afdafea2b924">ImGuiNET.ImGuiInputTextFlags</a></div><div class="ttdeci">ImGuiInputTextFlags</div><div class="ttdoc">The im gui input text flags enum</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d52/_im_gui_input_text_flags_8gen_8cs_source.html#l00007">ImGuiInputTextFlags.gen.cs:8</a></div></div>
-<div class="ttc" id="anamespace_im_gui_n_e_t_html_a70679bdd28e7f46fadad3607e707f90a"><div class="ttname"><a href="../../dd/dae/namespace_im_gui_n_e_t.html#a70679bdd28e7f46fadad3607e707f90a">ImGuiNET.ImGuiCond</a></div><div class="ttdeci">ImGuiCond</div><div class="ttdoc">The im gui cond enum</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d96/_im_gui_cond_8gen_8cs_source.html#l00006">ImGuiCond.gen.cs:7</a></div></div>
-<div class="ttc" id="anamespace_im_gui_n_e_t_html_ab1364aa3461dac2d11f3b28ef00ae737"><div class="ttname"><a href="../../dd/dae/namespace_im_gui_n_e_t.html#ab1364aa3461dac2d11f3b28ef00ae737">ImGuiNET.ImGuiStyleVar</a></div><div class="ttdeci">ImGuiStyleVar</div><div class="ttdoc">The im gui style var enum</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/daf/_im_gui_style_var_8gen_8cs_source.html#l00006">ImGuiStyleVar.gen.cs:7</a></div></div>
-<div class="ttc" id="anamespace_im_gui_n_e_t_html_a2effba8c98b42182f5b74c3abbb84a69"><div class="ttname"><a href="../../dd/dae/namespace_im_gui_n_e_t.html#a2effba8c98b42182f5b74c3abbb84a69">ImGuiNET.ImGuiInputTextCallback</a></div><div class="ttdeci">unsafe delegate int ImGuiInputTextCallback(ImGuiInputTextCallbackData *data)</div><div class="ttdoc">The im gui input text callback</div></div>
-<div class="ttc" id="anamespace_im_gui_n_e_t_html"><div class="ttname"><a href="../../dd/dae/namespace_im_gui_n_e_t.html">ImGuiNET</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d2d/_engine_2src_2_program_8cs_source.html#l00013">Program.cs:14</a></div></div>
-<div class="ttc" id="anamespace_im_gui_html"><div class="ttname"><a href="../../df/d13/namespace_im_gui.html">ImGui</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dc6/_fixed_ascii_string_8cs_source.html#l00005">FixedAsciiString.cs:6</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_imgui_html_a0ebe481f8c3d18e124449f1a0eea1d8f"><div class="ttname"><a href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#a0ebe481f8c3d18e124449f1a0eea1d8f">Alis.Core.Graphic.Imgui.ImGuiStyleVar</a></div><div class="ttdeci">ImGuiStyleVar</div><div class="ttdoc">The im gui style var enum</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/daf/_im_gui_style_var_8gen_8cs_source.html#l00006">ImGuiStyleVar.gen.cs:7</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_imgui_html_ad1c7a9e92b80f4a117e9c212b7c78f68"><div class="ttname"><a href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#ad1c7a9e92b80f4a117e9c212b7c78f68">Alis.Core.Graphic.Imgui.ImGuiCond</a></div><div class="ttdeci">ImGuiCond</div><div class="ttdoc">The im gui cond enum</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d96/_im_gui_cond_8gen_8cs_source.html#l00006">ImGuiCond.gen.cs:7</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_imgui_html_ad021d954d2a1e2bf4f7b72b4d4086487"><div class="ttname"><a href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#ad021d954d2a1e2bf4f7b72b4d4086487">Alis.Core.Graphic.Imgui.ImGuiKey</a></div><div class="ttdeci">ImGuiKey</div><div class="ttdoc">The im gui key enum</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d55/_im_gui_key_8gen_8cs_source.html#l00006">ImGuiKey.gen.cs:7</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_imgui_html_a1bcb9d8c817f240655f016e1a6311fd7"><div class="ttname"><a href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#a1bcb9d8c817f240655f016e1a6311fd7">Alis.Core.Graphic.Imgui.ImGuiInputTextFlags</a></div><div class="ttdeci">ImGuiInputTextFlags</div><div class="ttdoc">The im gui input text flags enum</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d52/_im_gui_input_text_flags_8gen_8cs_source.html#l00007">ImGuiInputTextFlags.gen.cs:8</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_imgui_html_a18833041e52fc7fc15019bcaa06943e2"><div class="ttname"><a href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html#a18833041e52fc7fc15019bcaa06943e2">Alis.Core.Graphic.Imgui.ImGuiInputTextCallback</a></div><div class="ttdeci">unsafe delegate int ImGuiInputTextCallback(ImGuiInputTextCallbackData *data)</div><div class="ttdoc">The im gui input text callback</div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_8272ea2c9ef4a5a450abbc74ffafe4de.html">4_Operation</a></li><li class="navelem"><a class="el" href="../../dir_430bc0ab51a660a0cbdd8e26a7c3af11.html">Graphic</a></li><li class="navelem"><a class="el" href="../../dir_10daa31737c712bdd2ca762b4eaa2d4b.html">src</a></li><li class="navelem"><a class="el" href="../../dir_acd06c2e18c18211693bc4bc9af77068.html">Backends</a></li><li class="navelem"><a class="el" href="../../dir_f9eecc1af64759627f90ad90047946c2.html">UI</a></li><li class="navelem"><b>MemoryEditor.cs</b></li>
     <li class="footer">
-      <a>Generated on | Sat Aug 12 2023 |</a>
+      <a>Generated on | Sun Aug 13 2023 |</a>
     </li>
   </ul>
 </div>

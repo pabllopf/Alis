@@ -1,0 +1,6 @@
+var struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_clear_color_target_entry =
+[
+    [ "NoAllocClearColorTargetEntry", "d7/d9f/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_clear_color_target_entry.html#a0537ff59ef6a3f2eae7bdbadf049e9dd", null ],
+    [ "Index", "d7/d9f/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_clear_color_target_entry.html#a80cf3431e5217e861a93f4e484763405", null ],
+    [ "ClearColor", "d7/d9f/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_clear_color_target_entry.html#a1ddd60a7417e6d35cbd60b24a741269a", null ]
+];

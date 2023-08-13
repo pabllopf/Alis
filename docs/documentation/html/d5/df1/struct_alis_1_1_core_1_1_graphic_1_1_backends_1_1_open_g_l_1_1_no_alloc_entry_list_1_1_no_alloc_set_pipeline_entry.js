@@ -1,0 +1,5 @@
+var struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_set_pipeline_entry =
+[
+    [ "NoAllocSetPipelineEntry", "d5/df1/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_set_pipeline_entry.html#a9c5b9997a182227fc9afbbe8f22c6421", null ],
+    [ "Pipeline", "d5/df1/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_set_pipeline_entry.html#a013cc5b49634f685bcf859aab887d79a", null ]
+];

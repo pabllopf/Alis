@@ -1,0 +1,5 @@
+var struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_generate_mipmaps_entry =
+[
+    [ "NoAllocGenerateMipmapsEntry", "d9/d30/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_generate_mipmaps_entry.html#a501dee2ab49136d7cdb58ecc7a644c10", null ],
+    [ "Texture", "d9/d30/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_generate_mipmaps_entry.html#a193006772b4bd8885e60a9e5b82dc63d", null ]
+];

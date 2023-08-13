@@ -1,0 +1,4 @@
+var class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_managed_entry_list_1_1_open_g_l_command_entry =
+[
+    [ "ClearReferences", "d4/d19/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_managed_entry_list_1_1_open_g_l_command_entry.html#a6fecbb4db7f728c9cdbbb7677cb0265f", null ]
+];

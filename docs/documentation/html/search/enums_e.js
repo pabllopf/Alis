@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['qualityofservicelevel_29186',['QualityOfServiceLevel',['../d6/d53/namespace_veldrid_1_1_metal_bindings.html#ad2233a02efe49275994345818782a8cf',1,'Veldrid::MetalBindings']]]
+  ['qualityofservicelevel_29249',['QualityOfServiceLevel',['../d8/df8/namespace_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal.html#aa2403fbbc6d6c4073986c463ffc01b03',1,'Alis::Core::Graphic::Backends::Metal']]]
 ];

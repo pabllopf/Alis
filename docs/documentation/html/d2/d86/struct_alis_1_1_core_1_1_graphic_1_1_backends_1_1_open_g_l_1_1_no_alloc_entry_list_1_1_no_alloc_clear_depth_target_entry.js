@@ -1,0 +1,6 @@
+var struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_clear_depth_target_entry =
+[
+    [ "NoAllocClearDepthTargetEntry", "d2/d86/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_clear_depth_target_entry.html#aefbaeb0d5770eb004cb48381258f2823", null ],
+    [ "Depth", "d2/d86/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_clear_depth_target_entry.html#a9c839ac3568201b91a16db84f0e7c8db", null ],
+    [ "Stencil", "d2/d86/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_clear_depth_target_entry.html#a6de6e07c8f38c38d5284533c2b0ccc1a", null ]
+];

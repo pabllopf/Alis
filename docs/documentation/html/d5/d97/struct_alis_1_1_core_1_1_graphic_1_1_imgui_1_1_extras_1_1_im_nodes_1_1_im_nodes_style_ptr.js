@@ -1,0 +1,27 @@
+var struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr =
+[
+    [ "ImNodesStylePtr", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#afd21a1a7483b5a12b2486133e16c16dd", null ],
+    [ "ImNodesStylePtr", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#adc5ea4c6ecc361fb895083dc0937a66d", null ],
+    [ "operator ImNodesStylePtr", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#a9adbf6453d408a3bf83c8d5bc3636a9c", null ],
+    [ "operator ImNodesStyle *", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#a5398a5714c5f9cb6f67868d231032403", null ],
+    [ "operator ImNodesStylePtr", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#a97d037a990b9dea2fd469f7512cea4f6", null ],
+    [ "Destroy", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#a86137aec0802b75c8fea65ca91bc3eab", null ],
+    [ "GridSpacing", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#a4db8831d25f7cce2fa8f2877406d511f", null ],
+    [ "NodeCornerRounding", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#a338a367d2511fe6db9a0f19830492ab2", null ],
+    [ "NodePadding", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#a9d70d4f4440b365bbc3976c00b2aaf4f", null ],
+    [ "NodeBorderThickness", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#a0a864d345d1215f033a010c290bd1bc4", null ],
+    [ "LinkThickness", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#ac9678a0aa2e23c808a2bb1d2969484dd", null ],
+    [ "LinkLineSegmentsPerLength", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#a908ff6d48812b9451db1d2fac114e878", null ],
+    [ "LinkHoverDistance", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#ab5eae133a04a08bfdc218ec347656b36", null ],
+    [ "PinCircleRadius", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#a2cdc0d87380f030727d1c6998629e9f0", null ],
+    [ "PinQuadSideLength", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#a2de5797190ed0a2ce05721904fc13385", null ],
+    [ "PinTriangleSideLength", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#ac8582fd0daa416990febd0eafabd2604", null ],
+    [ "PinLineThickness", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#a1afa8890b1b523b1cdbfd2652df5778a", null ],
+    [ "PinHoverRadius", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#aa185802fa5a9c6d79100d58283f44eaf", null ],
+    [ "PinOffset", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#add4227fa019c69fda590cf0ef3a26223", null ],
+    [ "MiniMapPadding", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#a7e78c65a1179bd926844701fc80aedcd", null ],
+    [ "MiniMapOffset", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#a3ef511b6df633084c15e07b1ca3d9ebb", null ],
+    [ "Flags", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#abeb49f32d74079d6ad2b02d07c8cecf7", null ],
+    [ "Colors", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#a68aa3ddc297d7141ed5f33e91a4e1bd2", null ],
+    [ "NativePtr", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#a1305574ef69d51e9cb7fd5ba81823922", null ]
+];

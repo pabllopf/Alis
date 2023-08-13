@@ -1,0 +1,26 @@
+var class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain =
+[
+    [ "D3D11Swapchain", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#ab6faec26d57bd5a8a34d13d4b8775ed5", null ],
+    [ "Resize", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#a6a421ab5f872c51b5990a262f2eed87c", null ],
+    [ "AddCommandListReference", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#ad4769405907ff3171f26f453ae6bd5ef", null ],
+    [ "RemoveCommandListReference", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#a9d7962d6ff89e7fc7b6bde2ccc1ede71", null ],
+    [ "Dispose", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#a0a7368a3d4f35a221d316847a6524069", null ],
+    [ "_gd", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#aae87aec92e0ff5398ff1f967376e695e", null ],
+    [ "_depthFormat", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#a97fba6d788b22c7b33c945214b89853c", null ],
+    [ "_dxgiSwapChain", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#a4b77d1ff282acc02d2e9ae4f3dcf209e", null ],
+    [ "_vsync", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#a57f5de3f97b44620cbeb8e6a8c92dd3a", null ],
+    [ "_syncInterval", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#a525138d0250319cbb1a445ea37152f86", null ],
+    [ "_framebuffer", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#a0c2401357ddd1b486032567bb042b920", null ],
+    [ "_depthTexture", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#af494ff86c4114ec871989dc310bd95cf", null ],
+    [ "_pixelScale", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#aba5c394d4810d8e8f0b7584ca89b6569", null ],
+    [ "_disposed", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#a5014715e7e34c9449b540e29bba46cf8", null ],
+    [ "_referencedCLsLock", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#a8c6c1a26f77f0cb79e2b090540348ef1", null ],
+    [ "_referencedCLs", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#a102f423786b0211644eabe5041405e64", null ],
+    [ "Framebuffer", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#aeffc072b4adf3173382aca39f172ba51", null ],
+    [ "_colorFormat", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#a5d7d1aae3f500197c40c440d0eda71cf", null ],
+    [ "DxgiSwapChain", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#a02798139f08944ccf408c23d422e708e", null ],
+    [ "SyncInterval", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#a52a5950f9e4132c577dddd91a05b0260", null ],
+    [ "IsDisposed", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#a4e0afdf312190ce08ee5dd1b89ce50ee", null ],
+    [ "Name", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#a2b036f2147f5f031194a1947944e8d85", null ],
+    [ "SyncToVerticalBlank", "dc/dc7/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_swapchain.html#a8a026e924147adfa86761d508c9dc388", null ]
+];
