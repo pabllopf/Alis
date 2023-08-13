@@ -65,7 +65,7 @@ namespace Alis.Core.Graphic.Sample
                 PreferDepthRangeZeroToOne = true
             };
 
-            _graphicsDevice = VeldridStartup.CreateGraphicsDevice(window, options, GraphicsBackend.Metal);
+            _graphicsDevice = VeldridStartup.CreateGraphicsDevice(window, options, GraphicsBackend.Direct3D11);
             factory = _graphicsDevice.ResourceFactory;
             _commandList = factory.CreateCommandList();
 

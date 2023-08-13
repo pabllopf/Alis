@@ -20,8 +20,8 @@
     <ItemGroup Condition="$(AssemblyName.Equals('Alis.Core.Graphic')) == true">
         <PackageReference Include="Vk" Version="1.0.25" />
         <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
-        <PackageReference Condition="$([MSBuild]::IsOSPlatform('windows'))" Include="Vortice.D3DCompiler" Version="3.2.0" />
-        <PackageReference Condition="$([MSBuild]::IsOSPlatform('windows'))" Include="Vortice.Direct3D11" Version="3.2.0" />
+        <PackageReference Condition="$([MSBuild]::IsOSPlatform('windows'))" Include="Vortice.D3DCompiler" Version="2.4.2" />
+        <PackageReference Condition="$([MSBuild]::IsOSPlatform('windows'))" Include="Vortice.Direct3D11" Version="2.4.2" />
         <Compile Condition="$([MSBuild]::IsOSPlatform('windows')) == false"  Remove="Backends/D3D11/**/*"/>
         <Compile Condition="$([MSBuild]::IsOSPlatform('osx')) == false" Remove="Backends/MTL/**/*" />
     </ItemGroup>

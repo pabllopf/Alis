@@ -11,7 +11,7 @@
         <DefineConstants>$(DefineConstants);WIN</DefineConstants>
     </PropertyGroup>
 
-    <PropertyGroup Condition="$(NETCoreSdkRuntimeIdentifier.Contains('arm64')) AND $([MSBuild]::IsOSPlatform('windows'))">
+    <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows'))">
         <RuntimeIdentifier>win-x64</RuntimeIdentifier>
         <PlatformTarget>x64</PlatformTarget>
     </PropertyGroup>
