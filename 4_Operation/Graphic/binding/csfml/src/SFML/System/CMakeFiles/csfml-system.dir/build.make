@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pabllopf/Downloads/CSFML-2.5.2
+CMAKE_SOURCE_DIR = /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pabllopf/Downloads/CSFML-2.5.2
+CMAKE_BINARY_DIR = /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml
 
 # Include any dependencies generated for this target.
 include src/SFML/System/CMakeFiles/csfml-system.dir/depend.make
@@ -72,72 +72,72 @@ include src/SFML/System/CMakeFiles/csfml-system.dir/flags.make
 src/SFML/System/CMakeFiles/csfml-system.dir/Clock.cpp.o: src/SFML/System/CMakeFiles/csfml-system.dir/flags.make
 src/SFML/System/CMakeFiles/csfml-system.dir/Clock.cpp.o: src/SFML/System/Clock.cpp
 src/SFML/System/CMakeFiles/csfml-system.dir/Clock.cpp.o: src/SFML/System/CMakeFiles/csfml-system.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/SFML/System/CMakeFiles/csfml-system.dir/Clock.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/System/CMakeFiles/csfml-system.dir/Clock.cpp.o -MF CMakeFiles/csfml-system.dir/Clock.cpp.o.d -o CMakeFiles/csfml-system.dir/Clock.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System/Clock.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/SFML/System/CMakeFiles/csfml-system.dir/Clock.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/System/CMakeFiles/csfml-system.dir/Clock.cpp.o -MF CMakeFiles/csfml-system.dir/Clock.cpp.o.d -o CMakeFiles/csfml-system.dir/Clock.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System/Clock.cpp
 
 src/SFML/System/CMakeFiles/csfml-system.dir/Clock.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-system.dir/Clock.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System/Clock.cpp > CMakeFiles/csfml-system.dir/Clock.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System/Clock.cpp > CMakeFiles/csfml-system.dir/Clock.cpp.i
 
 src/SFML/System/CMakeFiles/csfml-system.dir/Clock.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-system.dir/Clock.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System/Clock.cpp -o CMakeFiles/csfml-system.dir/Clock.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System/Clock.cpp -o CMakeFiles/csfml-system.dir/Clock.cpp.s
 
 src/SFML/System/CMakeFiles/csfml-system.dir/Mutex.cpp.o: src/SFML/System/CMakeFiles/csfml-system.dir/flags.make
 src/SFML/System/CMakeFiles/csfml-system.dir/Mutex.cpp.o: src/SFML/System/Mutex.cpp
 src/SFML/System/CMakeFiles/csfml-system.dir/Mutex.cpp.o: src/SFML/System/CMakeFiles/csfml-system.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/SFML/System/CMakeFiles/csfml-system.dir/Mutex.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/System/CMakeFiles/csfml-system.dir/Mutex.cpp.o -MF CMakeFiles/csfml-system.dir/Mutex.cpp.o.d -o CMakeFiles/csfml-system.dir/Mutex.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System/Mutex.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/SFML/System/CMakeFiles/csfml-system.dir/Mutex.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/System/CMakeFiles/csfml-system.dir/Mutex.cpp.o -MF CMakeFiles/csfml-system.dir/Mutex.cpp.o.d -o CMakeFiles/csfml-system.dir/Mutex.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System/Mutex.cpp
 
 src/SFML/System/CMakeFiles/csfml-system.dir/Mutex.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-system.dir/Mutex.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System/Mutex.cpp > CMakeFiles/csfml-system.dir/Mutex.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System/Mutex.cpp > CMakeFiles/csfml-system.dir/Mutex.cpp.i
 
 src/SFML/System/CMakeFiles/csfml-system.dir/Mutex.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-system.dir/Mutex.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System/Mutex.cpp -o CMakeFiles/csfml-system.dir/Mutex.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System/Mutex.cpp -o CMakeFiles/csfml-system.dir/Mutex.cpp.s
 
 src/SFML/System/CMakeFiles/csfml-system.dir/Sleep.cpp.o: src/SFML/System/CMakeFiles/csfml-system.dir/flags.make
 src/SFML/System/CMakeFiles/csfml-system.dir/Sleep.cpp.o: src/SFML/System/Sleep.cpp
 src/SFML/System/CMakeFiles/csfml-system.dir/Sleep.cpp.o: src/SFML/System/CMakeFiles/csfml-system.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/SFML/System/CMakeFiles/csfml-system.dir/Sleep.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/System/CMakeFiles/csfml-system.dir/Sleep.cpp.o -MF CMakeFiles/csfml-system.dir/Sleep.cpp.o.d -o CMakeFiles/csfml-system.dir/Sleep.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System/Sleep.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/SFML/System/CMakeFiles/csfml-system.dir/Sleep.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/System/CMakeFiles/csfml-system.dir/Sleep.cpp.o -MF CMakeFiles/csfml-system.dir/Sleep.cpp.o.d -o CMakeFiles/csfml-system.dir/Sleep.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System/Sleep.cpp
 
 src/SFML/System/CMakeFiles/csfml-system.dir/Sleep.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-system.dir/Sleep.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System/Sleep.cpp > CMakeFiles/csfml-system.dir/Sleep.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System/Sleep.cpp > CMakeFiles/csfml-system.dir/Sleep.cpp.i
 
 src/SFML/System/CMakeFiles/csfml-system.dir/Sleep.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-system.dir/Sleep.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System/Sleep.cpp -o CMakeFiles/csfml-system.dir/Sleep.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System/Sleep.cpp -o CMakeFiles/csfml-system.dir/Sleep.cpp.s
 
 src/SFML/System/CMakeFiles/csfml-system.dir/Thread.cpp.o: src/SFML/System/CMakeFiles/csfml-system.dir/flags.make
 src/SFML/System/CMakeFiles/csfml-system.dir/Thread.cpp.o: src/SFML/System/Thread.cpp
 src/SFML/System/CMakeFiles/csfml-system.dir/Thread.cpp.o: src/SFML/System/CMakeFiles/csfml-system.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/SFML/System/CMakeFiles/csfml-system.dir/Thread.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/System/CMakeFiles/csfml-system.dir/Thread.cpp.o -MF CMakeFiles/csfml-system.dir/Thread.cpp.o.d -o CMakeFiles/csfml-system.dir/Thread.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System/Thread.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/SFML/System/CMakeFiles/csfml-system.dir/Thread.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/System/CMakeFiles/csfml-system.dir/Thread.cpp.o -MF CMakeFiles/csfml-system.dir/Thread.cpp.o.d -o CMakeFiles/csfml-system.dir/Thread.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System/Thread.cpp
 
 src/SFML/System/CMakeFiles/csfml-system.dir/Thread.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-system.dir/Thread.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System/Thread.cpp > CMakeFiles/csfml-system.dir/Thread.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System/Thread.cpp > CMakeFiles/csfml-system.dir/Thread.cpp.i
 
 src/SFML/System/CMakeFiles/csfml-system.dir/Thread.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-system.dir/Thread.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System/Thread.cpp -o CMakeFiles/csfml-system.dir/Thread.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System/Thread.cpp -o CMakeFiles/csfml-system.dir/Thread.cpp.s
 
 src/SFML/System/CMakeFiles/csfml-system.dir/Time.cpp.o: src/SFML/System/CMakeFiles/csfml-system.dir/flags.make
 src/SFML/System/CMakeFiles/csfml-system.dir/Time.cpp.o: src/SFML/System/Time.cpp
 src/SFML/System/CMakeFiles/csfml-system.dir/Time.cpp.o: src/SFML/System/CMakeFiles/csfml-system.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/SFML/System/CMakeFiles/csfml-system.dir/Time.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/System/CMakeFiles/csfml-system.dir/Time.cpp.o -MF CMakeFiles/csfml-system.dir/Time.cpp.o.d -o CMakeFiles/csfml-system.dir/Time.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System/Time.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/SFML/System/CMakeFiles/csfml-system.dir/Time.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/System/CMakeFiles/csfml-system.dir/Time.cpp.o -MF CMakeFiles/csfml-system.dir/Time.cpp.o.d -o CMakeFiles/csfml-system.dir/Time.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System/Time.cpp
 
 src/SFML/System/CMakeFiles/csfml-system.dir/Time.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-system.dir/Time.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System/Time.cpp > CMakeFiles/csfml-system.dir/Time.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System/Time.cpp > CMakeFiles/csfml-system.dir/Time.cpp.i
 
 src/SFML/System/CMakeFiles/csfml-system.dir/Time.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-system.dir/Time.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System/Time.cpp -o CMakeFiles/csfml-system.dir/Time.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System/Time.cpp -o CMakeFiles/csfml-system.dir/Time.cpp.s
 
 # Object files for target csfml-system
 csfml__system_OBJECTS = \
@@ -158,9 +158,9 @@ lib/libcsfml-system.2.5.2.dylib: src/SFML/System/CMakeFiles/csfml-system.dir/Tim
 lib/libcsfml-system.2.5.2.dylib: src/SFML/System/CMakeFiles/csfml-system.dir/build.make
 lib/libcsfml-system.2.5.2.dylib: /opt/homebrew/lib/libsfml-system.2.6.0.dylib
 lib/libcsfml-system.2.5.2.dylib: src/SFML/System/CMakeFiles/csfml-system.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX shared library ../../../lib/libcsfml-system.dylib"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/csfml-system.dir/link.txt --verbose=$(VERBOSE)
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System && $(CMAKE_COMMAND) -E cmake_symlink_library ../../../lib/libcsfml-system.2.5.2.dylib ../../../lib/libcsfml-system.2.5.dylib ../../../lib/libcsfml-system.dylib
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX shared library ../../../lib/libcsfml-system.dylib"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/csfml-system.dir/link.txt --verbose=$(VERBOSE)
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System && $(CMAKE_COMMAND) -E cmake_symlink_library ../../../lib/libcsfml-system.2.5.2.dylib ../../../lib/libcsfml-system.2.5.dylib ../../../lib/libcsfml-system.dylib
 
 lib/libcsfml-system.2.5.dylib: lib/libcsfml-system.2.5.2.dylib
 	@$(CMAKE_COMMAND) -E touch_nocreate lib/libcsfml-system.2.5.dylib
@@ -173,10 +173,10 @@ src/SFML/System/CMakeFiles/csfml-system.dir/build: lib/libcsfml-system.dylib
 .PHONY : src/SFML/System/CMakeFiles/csfml-system.dir/build
 
 src/SFML/System/CMakeFiles/csfml-system.dir/clean:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System && $(CMAKE_COMMAND) -P CMakeFiles/csfml-system.dir/cmake_clean.cmake
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System && $(CMAKE_COMMAND) -P CMakeFiles/csfml-system.dir/cmake_clean.cmake
 .PHONY : src/SFML/System/CMakeFiles/csfml-system.dir/clean
 
 src/SFML/System/CMakeFiles/csfml-system.dir/depend:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pabllopf/Downloads/CSFML-2.5.2 /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System /Users/pabllopf/Downloads/CSFML-2.5.2 /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System/CMakeFiles/csfml-system.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System/CMakeFiles/csfml-system.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/SFML/System/CMakeFiles/csfml-system.dir/depend
 

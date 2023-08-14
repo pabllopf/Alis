@@ -1,4 +1,4 @@
-# Install script for directory: /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML
+# Install script for directory: /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,11 +39,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System/cmake_install.cmake")
-  include("/Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Window/cmake_install.cmake")
-  include("/Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/cmake_install.cmake")
-  include("/Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/cmake_install.cmake")
-  include("/Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Audio/cmake_install.cmake")
+  include("/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System/cmake_install.cmake")
+  include("/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Window/cmake_install.cmake")
+  include("/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/cmake_install.cmake")
+  include("/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/cmake_install.cmake")
+  include("/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Audio/cmake_install.cmake")
 
 endif()
 

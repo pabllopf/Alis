@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pabllopf/Downloads/CSFML-2.5.2
+CMAKE_SOURCE_DIR = /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pabllopf/Downloads/CSFML-2.5.2
+CMAKE_BINARY_DIR = /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml
 
 # Include any dependencies generated for this target.
 include src/SFML/Network/CMakeFiles/csfml-network.dir/depend.make
@@ -72,114 +72,114 @@ include src/SFML/Network/CMakeFiles/csfml-network.dir/flags.make
 src/SFML/Network/CMakeFiles/csfml-network.dir/Ftp.cpp.o: src/SFML/Network/CMakeFiles/csfml-network.dir/flags.make
 src/SFML/Network/CMakeFiles/csfml-network.dir/Ftp.cpp.o: src/SFML/Network/Ftp.cpp
 src/SFML/Network/CMakeFiles/csfml-network.dir/Ftp.cpp.o: src/SFML/Network/CMakeFiles/csfml-network.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/SFML/Network/CMakeFiles/csfml-network.dir/Ftp.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Network/CMakeFiles/csfml-network.dir/Ftp.cpp.o -MF CMakeFiles/csfml-network.dir/Ftp.cpp.o.d -o CMakeFiles/csfml-network.dir/Ftp.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/Ftp.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/SFML/Network/CMakeFiles/csfml-network.dir/Ftp.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Network/CMakeFiles/csfml-network.dir/Ftp.cpp.o -MF CMakeFiles/csfml-network.dir/Ftp.cpp.o.d -o CMakeFiles/csfml-network.dir/Ftp.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/Ftp.cpp
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/Ftp.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-network.dir/Ftp.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/Ftp.cpp > CMakeFiles/csfml-network.dir/Ftp.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/Ftp.cpp > CMakeFiles/csfml-network.dir/Ftp.cpp.i
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/Ftp.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-network.dir/Ftp.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/Ftp.cpp -o CMakeFiles/csfml-network.dir/Ftp.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/Ftp.cpp -o CMakeFiles/csfml-network.dir/Ftp.cpp.s
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/Http.cpp.o: src/SFML/Network/CMakeFiles/csfml-network.dir/flags.make
 src/SFML/Network/CMakeFiles/csfml-network.dir/Http.cpp.o: src/SFML/Network/Http.cpp
 src/SFML/Network/CMakeFiles/csfml-network.dir/Http.cpp.o: src/SFML/Network/CMakeFiles/csfml-network.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/SFML/Network/CMakeFiles/csfml-network.dir/Http.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Network/CMakeFiles/csfml-network.dir/Http.cpp.o -MF CMakeFiles/csfml-network.dir/Http.cpp.o.d -o CMakeFiles/csfml-network.dir/Http.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/Http.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/SFML/Network/CMakeFiles/csfml-network.dir/Http.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Network/CMakeFiles/csfml-network.dir/Http.cpp.o -MF CMakeFiles/csfml-network.dir/Http.cpp.o.d -o CMakeFiles/csfml-network.dir/Http.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/Http.cpp
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/Http.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-network.dir/Http.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/Http.cpp > CMakeFiles/csfml-network.dir/Http.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/Http.cpp > CMakeFiles/csfml-network.dir/Http.cpp.i
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/Http.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-network.dir/Http.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/Http.cpp -o CMakeFiles/csfml-network.dir/Http.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/Http.cpp -o CMakeFiles/csfml-network.dir/Http.cpp.s
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/IpAddress.cpp.o: src/SFML/Network/CMakeFiles/csfml-network.dir/flags.make
 src/SFML/Network/CMakeFiles/csfml-network.dir/IpAddress.cpp.o: src/SFML/Network/IpAddress.cpp
 src/SFML/Network/CMakeFiles/csfml-network.dir/IpAddress.cpp.o: src/SFML/Network/CMakeFiles/csfml-network.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/SFML/Network/CMakeFiles/csfml-network.dir/IpAddress.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Network/CMakeFiles/csfml-network.dir/IpAddress.cpp.o -MF CMakeFiles/csfml-network.dir/IpAddress.cpp.o.d -o CMakeFiles/csfml-network.dir/IpAddress.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/IpAddress.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/SFML/Network/CMakeFiles/csfml-network.dir/IpAddress.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Network/CMakeFiles/csfml-network.dir/IpAddress.cpp.o -MF CMakeFiles/csfml-network.dir/IpAddress.cpp.o.d -o CMakeFiles/csfml-network.dir/IpAddress.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/IpAddress.cpp
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/IpAddress.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-network.dir/IpAddress.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/IpAddress.cpp > CMakeFiles/csfml-network.dir/IpAddress.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/IpAddress.cpp > CMakeFiles/csfml-network.dir/IpAddress.cpp.i
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/IpAddress.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-network.dir/IpAddress.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/IpAddress.cpp -o CMakeFiles/csfml-network.dir/IpAddress.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/IpAddress.cpp -o CMakeFiles/csfml-network.dir/IpAddress.cpp.s
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/Packet.cpp.o: src/SFML/Network/CMakeFiles/csfml-network.dir/flags.make
 src/SFML/Network/CMakeFiles/csfml-network.dir/Packet.cpp.o: src/SFML/Network/Packet.cpp
 src/SFML/Network/CMakeFiles/csfml-network.dir/Packet.cpp.o: src/SFML/Network/CMakeFiles/csfml-network.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/SFML/Network/CMakeFiles/csfml-network.dir/Packet.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Network/CMakeFiles/csfml-network.dir/Packet.cpp.o -MF CMakeFiles/csfml-network.dir/Packet.cpp.o.d -o CMakeFiles/csfml-network.dir/Packet.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/Packet.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/SFML/Network/CMakeFiles/csfml-network.dir/Packet.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Network/CMakeFiles/csfml-network.dir/Packet.cpp.o -MF CMakeFiles/csfml-network.dir/Packet.cpp.o.d -o CMakeFiles/csfml-network.dir/Packet.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/Packet.cpp
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/Packet.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-network.dir/Packet.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/Packet.cpp > CMakeFiles/csfml-network.dir/Packet.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/Packet.cpp > CMakeFiles/csfml-network.dir/Packet.cpp.i
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/Packet.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-network.dir/Packet.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/Packet.cpp -o CMakeFiles/csfml-network.dir/Packet.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/Packet.cpp -o CMakeFiles/csfml-network.dir/Packet.cpp.s
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/SocketSelector.cpp.o: src/SFML/Network/CMakeFiles/csfml-network.dir/flags.make
 src/SFML/Network/CMakeFiles/csfml-network.dir/SocketSelector.cpp.o: src/SFML/Network/SocketSelector.cpp
 src/SFML/Network/CMakeFiles/csfml-network.dir/SocketSelector.cpp.o: src/SFML/Network/CMakeFiles/csfml-network.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/SFML/Network/CMakeFiles/csfml-network.dir/SocketSelector.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Network/CMakeFiles/csfml-network.dir/SocketSelector.cpp.o -MF CMakeFiles/csfml-network.dir/SocketSelector.cpp.o.d -o CMakeFiles/csfml-network.dir/SocketSelector.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/SocketSelector.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/SFML/Network/CMakeFiles/csfml-network.dir/SocketSelector.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Network/CMakeFiles/csfml-network.dir/SocketSelector.cpp.o -MF CMakeFiles/csfml-network.dir/SocketSelector.cpp.o.d -o CMakeFiles/csfml-network.dir/SocketSelector.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/SocketSelector.cpp
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/SocketSelector.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-network.dir/SocketSelector.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/SocketSelector.cpp > CMakeFiles/csfml-network.dir/SocketSelector.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/SocketSelector.cpp > CMakeFiles/csfml-network.dir/SocketSelector.cpp.i
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/SocketSelector.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-network.dir/SocketSelector.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/SocketSelector.cpp -o CMakeFiles/csfml-network.dir/SocketSelector.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/SocketSelector.cpp -o CMakeFiles/csfml-network.dir/SocketSelector.cpp.s
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/TcpListener.cpp.o: src/SFML/Network/CMakeFiles/csfml-network.dir/flags.make
 src/SFML/Network/CMakeFiles/csfml-network.dir/TcpListener.cpp.o: src/SFML/Network/TcpListener.cpp
 src/SFML/Network/CMakeFiles/csfml-network.dir/TcpListener.cpp.o: src/SFML/Network/CMakeFiles/csfml-network.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/SFML/Network/CMakeFiles/csfml-network.dir/TcpListener.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Network/CMakeFiles/csfml-network.dir/TcpListener.cpp.o -MF CMakeFiles/csfml-network.dir/TcpListener.cpp.o.d -o CMakeFiles/csfml-network.dir/TcpListener.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/TcpListener.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/SFML/Network/CMakeFiles/csfml-network.dir/TcpListener.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Network/CMakeFiles/csfml-network.dir/TcpListener.cpp.o -MF CMakeFiles/csfml-network.dir/TcpListener.cpp.o.d -o CMakeFiles/csfml-network.dir/TcpListener.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/TcpListener.cpp
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/TcpListener.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-network.dir/TcpListener.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/TcpListener.cpp > CMakeFiles/csfml-network.dir/TcpListener.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/TcpListener.cpp > CMakeFiles/csfml-network.dir/TcpListener.cpp.i
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/TcpListener.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-network.dir/TcpListener.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/TcpListener.cpp -o CMakeFiles/csfml-network.dir/TcpListener.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/TcpListener.cpp -o CMakeFiles/csfml-network.dir/TcpListener.cpp.s
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/TcpSocket.cpp.o: src/SFML/Network/CMakeFiles/csfml-network.dir/flags.make
 src/SFML/Network/CMakeFiles/csfml-network.dir/TcpSocket.cpp.o: src/SFML/Network/TcpSocket.cpp
 src/SFML/Network/CMakeFiles/csfml-network.dir/TcpSocket.cpp.o: src/SFML/Network/CMakeFiles/csfml-network.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/SFML/Network/CMakeFiles/csfml-network.dir/TcpSocket.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Network/CMakeFiles/csfml-network.dir/TcpSocket.cpp.o -MF CMakeFiles/csfml-network.dir/TcpSocket.cpp.o.d -o CMakeFiles/csfml-network.dir/TcpSocket.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/TcpSocket.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/SFML/Network/CMakeFiles/csfml-network.dir/TcpSocket.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Network/CMakeFiles/csfml-network.dir/TcpSocket.cpp.o -MF CMakeFiles/csfml-network.dir/TcpSocket.cpp.o.d -o CMakeFiles/csfml-network.dir/TcpSocket.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/TcpSocket.cpp
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/TcpSocket.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-network.dir/TcpSocket.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/TcpSocket.cpp > CMakeFiles/csfml-network.dir/TcpSocket.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/TcpSocket.cpp > CMakeFiles/csfml-network.dir/TcpSocket.cpp.i
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/TcpSocket.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-network.dir/TcpSocket.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/TcpSocket.cpp -o CMakeFiles/csfml-network.dir/TcpSocket.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/TcpSocket.cpp -o CMakeFiles/csfml-network.dir/TcpSocket.cpp.s
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/UdpSocket.cpp.o: src/SFML/Network/CMakeFiles/csfml-network.dir/flags.make
 src/SFML/Network/CMakeFiles/csfml-network.dir/UdpSocket.cpp.o: src/SFML/Network/UdpSocket.cpp
 src/SFML/Network/CMakeFiles/csfml-network.dir/UdpSocket.cpp.o: src/SFML/Network/CMakeFiles/csfml-network.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/SFML/Network/CMakeFiles/csfml-network.dir/UdpSocket.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Network/CMakeFiles/csfml-network.dir/UdpSocket.cpp.o -MF CMakeFiles/csfml-network.dir/UdpSocket.cpp.o.d -o CMakeFiles/csfml-network.dir/UdpSocket.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/UdpSocket.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/SFML/Network/CMakeFiles/csfml-network.dir/UdpSocket.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Network/CMakeFiles/csfml-network.dir/UdpSocket.cpp.o -MF CMakeFiles/csfml-network.dir/UdpSocket.cpp.o.d -o CMakeFiles/csfml-network.dir/UdpSocket.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/UdpSocket.cpp
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/UdpSocket.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-network.dir/UdpSocket.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/UdpSocket.cpp > CMakeFiles/csfml-network.dir/UdpSocket.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/UdpSocket.cpp > CMakeFiles/csfml-network.dir/UdpSocket.cpp.i
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/UdpSocket.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-network.dir/UdpSocket.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/UdpSocket.cpp -o CMakeFiles/csfml-network.dir/UdpSocket.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/UdpSocket.cpp -o CMakeFiles/csfml-network.dir/UdpSocket.cpp.s
 
 # Object files for target csfml-network
 csfml__network_OBJECTS = \
@@ -207,9 +207,9 @@ lib/libcsfml-network.2.5.2.dylib: src/SFML/Network/CMakeFiles/csfml-network.dir/
 lib/libcsfml-network.2.5.2.dylib: /opt/homebrew/lib/libsfml-network.2.6.0.dylib
 lib/libcsfml-network.2.5.2.dylib: /opt/homebrew/lib/libsfml-system.2.6.0.dylib
 lib/libcsfml-network.2.5.2.dylib: src/SFML/Network/CMakeFiles/csfml-network.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX shared library ../../../lib/libcsfml-network.dylib"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/csfml-network.dir/link.txt --verbose=$(VERBOSE)
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && $(CMAKE_COMMAND) -E cmake_symlink_library ../../../lib/libcsfml-network.2.5.2.dylib ../../../lib/libcsfml-network.2.5.dylib ../../../lib/libcsfml-network.dylib
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX shared library ../../../lib/libcsfml-network.dylib"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/csfml-network.dir/link.txt --verbose=$(VERBOSE)
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && $(CMAKE_COMMAND) -E cmake_symlink_library ../../../lib/libcsfml-network.2.5.2.dylib ../../../lib/libcsfml-network.2.5.dylib ../../../lib/libcsfml-network.dylib
 
 lib/libcsfml-network.2.5.dylib: lib/libcsfml-network.2.5.2.dylib
 	@$(CMAKE_COMMAND) -E touch_nocreate lib/libcsfml-network.2.5.dylib
@@ -222,10 +222,10 @@ src/SFML/Network/CMakeFiles/csfml-network.dir/build: lib/libcsfml-network.dylib
 .PHONY : src/SFML/Network/CMakeFiles/csfml-network.dir/build
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/clean:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network && $(CMAKE_COMMAND) -P CMakeFiles/csfml-network.dir/cmake_clean.cmake
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network && $(CMAKE_COMMAND) -P CMakeFiles/csfml-network.dir/cmake_clean.cmake
 .PHONY : src/SFML/Network/CMakeFiles/csfml-network.dir/clean
 
 src/SFML/Network/CMakeFiles/csfml-network.dir/depend:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pabllopf/Downloads/CSFML-2.5.2 /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network /Users/pabllopf/Downloads/CSFML-2.5.2 /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network/CMakeFiles/csfml-network.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network/CMakeFiles/csfml-network.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/SFML/Network/CMakeFiles/csfml-network.dir/depend
 

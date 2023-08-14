@@ -57,10 +57,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pabllopf/Downloads/CSFML-2.5.2
+CMAKE_SOURCE_DIR = /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pabllopf/Downloads/CSFML-2.5.2
+CMAKE_BINARY_DIR = /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/System//CMakeFiles/progress.marks
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/System/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles 0
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/System//CMakeFiles/progress.marks
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/System/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/System/clean
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/System/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/System/preinstall
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/System/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/System/preinstall
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/System/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/SFML/System/CMakeFiles/csfml-system.dir/rule:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/System/CMakeFiles/csfml-system.dir/rule
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/System/CMakeFiles/csfml-system.dir/rule
 .PHONY : src/SFML/System/CMakeFiles/csfml-system.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ csfml-system: src/SFML/System/CMakeFiles/csfml-system.dir/rule
 
 # fast build rule for target.
 csfml-system/fast:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/build
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/build
 .PHONY : csfml-system/fast
 
 Clock.o: Clock.cpp.o
@@ -180,7 +180,7 @@ Clock.o: Clock.cpp.o
 
 # target to build an object file
 Clock.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Clock.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Clock.cpp.o
 .PHONY : Clock.cpp.o
 
 Clock.i: Clock.cpp.i
@@ -188,7 +188,7 @@ Clock.i: Clock.cpp.i
 
 # target to preprocess a source file
 Clock.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Clock.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Clock.cpp.i
 .PHONY : Clock.cpp.i
 
 Clock.s: Clock.cpp.s
@@ -196,7 +196,7 @@ Clock.s: Clock.cpp.s
 
 # target to generate assembly for a file
 Clock.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Clock.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Clock.cpp.s
 .PHONY : Clock.cpp.s
 
 Mutex.o: Mutex.cpp.o
@@ -204,7 +204,7 @@ Mutex.o: Mutex.cpp.o
 
 # target to build an object file
 Mutex.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Mutex.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Mutex.cpp.o
 .PHONY : Mutex.cpp.o
 
 Mutex.i: Mutex.cpp.i
@@ -212,7 +212,7 @@ Mutex.i: Mutex.cpp.i
 
 # target to preprocess a source file
 Mutex.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Mutex.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Mutex.cpp.i
 .PHONY : Mutex.cpp.i
 
 Mutex.s: Mutex.cpp.s
@@ -220,7 +220,7 @@ Mutex.s: Mutex.cpp.s
 
 # target to generate assembly for a file
 Mutex.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Mutex.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Mutex.cpp.s
 .PHONY : Mutex.cpp.s
 
 Sleep.o: Sleep.cpp.o
@@ -228,7 +228,7 @@ Sleep.o: Sleep.cpp.o
 
 # target to build an object file
 Sleep.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Sleep.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Sleep.cpp.o
 .PHONY : Sleep.cpp.o
 
 Sleep.i: Sleep.cpp.i
@@ -236,7 +236,7 @@ Sleep.i: Sleep.cpp.i
 
 # target to preprocess a source file
 Sleep.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Sleep.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Sleep.cpp.i
 .PHONY : Sleep.cpp.i
 
 Sleep.s: Sleep.cpp.s
@@ -244,7 +244,7 @@ Sleep.s: Sleep.cpp.s
 
 # target to generate assembly for a file
 Sleep.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Sleep.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Sleep.cpp.s
 .PHONY : Sleep.cpp.s
 
 Thread.o: Thread.cpp.o
@@ -252,7 +252,7 @@ Thread.o: Thread.cpp.o
 
 # target to build an object file
 Thread.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Thread.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Thread.cpp.o
 .PHONY : Thread.cpp.o
 
 Thread.i: Thread.cpp.i
@@ -260,7 +260,7 @@ Thread.i: Thread.cpp.i
 
 # target to preprocess a source file
 Thread.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Thread.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Thread.cpp.i
 .PHONY : Thread.cpp.i
 
 Thread.s: Thread.cpp.s
@@ -268,7 +268,7 @@ Thread.s: Thread.cpp.s
 
 # target to generate assembly for a file
 Thread.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Thread.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Thread.cpp.s
 .PHONY : Thread.cpp.s
 
 Time.o: Time.cpp.o
@@ -276,7 +276,7 @@ Time.o: Time.cpp.o
 
 # target to build an object file
 Time.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Time.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Time.cpp.o
 .PHONY : Time.cpp.o
 
 Time.i: Time.cpp.i
@@ -284,7 +284,7 @@ Time.i: Time.cpp.i
 
 # target to preprocess a source file
 Time.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Time.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Time.cpp.i
 .PHONY : Time.cpp.i
 
 Time.s: Time.cpp.s
@@ -292,7 +292,7 @@ Time.s: Time.cpp.s
 
 # target to generate assembly for a file
 Time.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Time.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/System/CMakeFiles/csfml-system.dir/build.make src/SFML/System/CMakeFiles/csfml-system.dir/Time.cpp.s
 .PHONY : Time.cpp.s
 
 # Help Target
@@ -334,6 +334,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

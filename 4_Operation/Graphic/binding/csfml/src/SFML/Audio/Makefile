@@ -57,10 +57,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pabllopf/Downloads/CSFML-2.5.2
+CMAKE_SOURCE_DIR = /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pabllopf/Downloads/CSFML-2.5.2
+CMAKE_BINARY_DIR = /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Audio//CMakeFiles/progress.marks
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Audio/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles 0
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Audio//CMakeFiles/progress.marks
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Audio/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Audio/clean
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Audio/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Audio/preinstall
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Audio/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Audio/preinstall
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Audio/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/SFML/Audio/CMakeFiles/csfml-audio.dir/rule:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Audio/CMakeFiles/csfml-audio.dir/rule
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Audio/CMakeFiles/csfml-audio.dir/rule
 .PHONY : src/SFML/Audio/CMakeFiles/csfml-audio.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ csfml-audio: src/SFML/Audio/CMakeFiles/csfml-audio.dir/rule
 
 # fast build rule for target.
 csfml-audio/fast:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/build
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/build
 .PHONY : csfml-audio/fast
 
 Listener.o: Listener.cpp.o
@@ -180,7 +180,7 @@ Listener.o: Listener.cpp.o
 
 # target to build an object file
 Listener.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/Listener.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/Listener.cpp.o
 .PHONY : Listener.cpp.o
 
 Listener.i: Listener.cpp.i
@@ -188,7 +188,7 @@ Listener.i: Listener.cpp.i
 
 # target to preprocess a source file
 Listener.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/Listener.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/Listener.cpp.i
 .PHONY : Listener.cpp.i
 
 Listener.s: Listener.cpp.s
@@ -196,7 +196,7 @@ Listener.s: Listener.cpp.s
 
 # target to generate assembly for a file
 Listener.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/Listener.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/Listener.cpp.s
 .PHONY : Listener.cpp.s
 
 Music.o: Music.cpp.o
@@ -204,7 +204,7 @@ Music.o: Music.cpp.o
 
 # target to build an object file
 Music.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/Music.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/Music.cpp.o
 .PHONY : Music.cpp.o
 
 Music.i: Music.cpp.i
@@ -212,7 +212,7 @@ Music.i: Music.cpp.i
 
 # target to preprocess a source file
 Music.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/Music.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/Music.cpp.i
 .PHONY : Music.cpp.i
 
 Music.s: Music.cpp.s
@@ -220,7 +220,7 @@ Music.s: Music.cpp.s
 
 # target to generate assembly for a file
 Music.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/Music.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/Music.cpp.s
 .PHONY : Music.cpp.s
 
 Sound.o: Sound.cpp.o
@@ -228,7 +228,7 @@ Sound.o: Sound.cpp.o
 
 # target to build an object file
 Sound.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/Sound.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/Sound.cpp.o
 .PHONY : Sound.cpp.o
 
 Sound.i: Sound.cpp.i
@@ -236,7 +236,7 @@ Sound.i: Sound.cpp.i
 
 # target to preprocess a source file
 Sound.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/Sound.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/Sound.cpp.i
 .PHONY : Sound.cpp.i
 
 Sound.s: Sound.cpp.s
@@ -244,7 +244,7 @@ Sound.s: Sound.cpp.s
 
 # target to generate assembly for a file
 Sound.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/Sound.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/Sound.cpp.s
 .PHONY : Sound.cpp.s
 
 SoundBuffer.o: SoundBuffer.cpp.o
@@ -252,7 +252,7 @@ SoundBuffer.o: SoundBuffer.cpp.o
 
 # target to build an object file
 SoundBuffer.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundBuffer.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundBuffer.cpp.o
 .PHONY : SoundBuffer.cpp.o
 
 SoundBuffer.i: SoundBuffer.cpp.i
@@ -260,7 +260,7 @@ SoundBuffer.i: SoundBuffer.cpp.i
 
 # target to preprocess a source file
 SoundBuffer.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundBuffer.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundBuffer.cpp.i
 .PHONY : SoundBuffer.cpp.i
 
 SoundBuffer.s: SoundBuffer.cpp.s
@@ -268,7 +268,7 @@ SoundBuffer.s: SoundBuffer.cpp.s
 
 # target to generate assembly for a file
 SoundBuffer.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundBuffer.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundBuffer.cpp.s
 .PHONY : SoundBuffer.cpp.s
 
 SoundBufferRecorder.o: SoundBufferRecorder.cpp.o
@@ -276,7 +276,7 @@ SoundBufferRecorder.o: SoundBufferRecorder.cpp.o
 
 # target to build an object file
 SoundBufferRecorder.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundBufferRecorder.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundBufferRecorder.cpp.o
 .PHONY : SoundBufferRecorder.cpp.o
 
 SoundBufferRecorder.i: SoundBufferRecorder.cpp.i
@@ -284,7 +284,7 @@ SoundBufferRecorder.i: SoundBufferRecorder.cpp.i
 
 # target to preprocess a source file
 SoundBufferRecorder.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundBufferRecorder.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundBufferRecorder.cpp.i
 .PHONY : SoundBufferRecorder.cpp.i
 
 SoundBufferRecorder.s: SoundBufferRecorder.cpp.s
@@ -292,7 +292,7 @@ SoundBufferRecorder.s: SoundBufferRecorder.cpp.s
 
 # target to generate assembly for a file
 SoundBufferRecorder.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundBufferRecorder.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundBufferRecorder.cpp.s
 .PHONY : SoundBufferRecorder.cpp.s
 
 SoundRecorder.o: SoundRecorder.cpp.o
@@ -300,7 +300,7 @@ SoundRecorder.o: SoundRecorder.cpp.o
 
 # target to build an object file
 SoundRecorder.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundRecorder.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundRecorder.cpp.o
 .PHONY : SoundRecorder.cpp.o
 
 SoundRecorder.i: SoundRecorder.cpp.i
@@ -308,7 +308,7 @@ SoundRecorder.i: SoundRecorder.cpp.i
 
 # target to preprocess a source file
 SoundRecorder.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundRecorder.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundRecorder.cpp.i
 .PHONY : SoundRecorder.cpp.i
 
 SoundRecorder.s: SoundRecorder.cpp.s
@@ -316,7 +316,7 @@ SoundRecorder.s: SoundRecorder.cpp.s
 
 # target to generate assembly for a file
 SoundRecorder.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundRecorder.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundRecorder.cpp.s
 .PHONY : SoundRecorder.cpp.s
 
 SoundStream.o: SoundStream.cpp.o
@@ -324,7 +324,7 @@ SoundStream.o: SoundStream.cpp.o
 
 # target to build an object file
 SoundStream.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundStream.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundStream.cpp.o
 .PHONY : SoundStream.cpp.o
 
 SoundStream.i: SoundStream.cpp.i
@@ -332,7 +332,7 @@ SoundStream.i: SoundStream.cpp.i
 
 # target to preprocess a source file
 SoundStream.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundStream.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundStream.cpp.i
 .PHONY : SoundStream.cpp.i
 
 SoundStream.s: SoundStream.cpp.s
@@ -340,7 +340,7 @@ SoundStream.s: SoundStream.cpp.s
 
 # target to generate assembly for a file
 SoundStream.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundStream.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Audio/CMakeFiles/csfml-audio.dir/build.make src/SFML/Audio/CMakeFiles/csfml-audio.dir/SoundStream.cpp.s
 .PHONY : SoundStream.cpp.s
 
 # Help Target
@@ -388,6 +388,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

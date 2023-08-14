@@ -1,4 +1,4 @@
-# Install script for directory: /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network
+# Install script for directory: /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,8 +39,8 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "bin" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES
-    "/Users/pabllopf/Downloads/CSFML-2.5.2/lib/libcsfml-network.2.5.2.dylib"
-    "/Users/pabllopf/Downloads/CSFML-2.5.2/lib/libcsfml-network.2.5.dylib"
+    "/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/lib/libcsfml-network.2.5.2.dylib"
+    "/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/lib/libcsfml-network.2.5.dylib"
     )
   foreach(file
       "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libcsfml-network.2.5.2.dylib"
@@ -56,7 +56,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "bin" OR NOT CMAKE_INSTALL_COMPONENT)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "bin" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/Users/pabllopf/Downloads/CSFML-2.5.2/lib/libcsfml-network.dylib")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/lib/libcsfml-network.dylib")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libcsfml-network.dylib" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libcsfml-network.dylib")
     if(CMAKE_INSTALL_DO_STRIP)

@@ -1,4 +1,4 @@
-# Install script for directory: /Users/pabllopf/Downloads/CSFML-2.5.2
+# Install script for directory: /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,20 +38,20 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "devel" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/." TYPE DIRECTORY FILES "/Users/pabllopf/Downloads/CSFML-2.5.2/include" REGEX "/\\.svn$" EXCLUDE)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/." TYPE DIRECTORY FILES "/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/include" REGEX "/\\.svn$" EXCLUDE)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/CSFML" TYPE FILE FILES "/Users/pabllopf/Downloads/CSFML-2.5.2/license.md")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/CSFML" TYPE FILE FILES "/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/license.md")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/CSFML" TYPE FILE FILES "/Users/pabllopf/Downloads/CSFML-2.5.2/readme.md")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/CSFML" TYPE FILE FILES "/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/readme.md")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/cmake_install.cmake")
+  include("/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/cmake_install.cmake")
 
 endif()
 
@@ -63,5 +63,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/pabllopf/Downloads/CSFML-2.5.2/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

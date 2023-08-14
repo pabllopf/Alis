@@ -4,7 +4,7 @@
 # compile CXX with /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++
 CXX_DEFINES = -DCSFML_EXPORTS -DCSFML_WINDOW_EXPORTS
 
-CXX_INCLUDES = -I/Users/pabllopf/Downloads/CSFML-2.5.2/src -I/Users/pabllopf/Downloads/CSFML-2.5.2/include -isystem /opt/homebrew/include
+CXX_INCLUDES = -I/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src -I/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/include -isystem /opt/homebrew/include
 
 CXX_FLAGSarm64 = -O3 -DNDEBUG -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -fPIC -fvisibility=hidden
 

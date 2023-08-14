@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pabllopf/Downloads/CSFML-2.5.2
+CMAKE_SOURCE_DIR = /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pabllopf/Downloads/CSFML-2.5.2
+CMAKE_BINARY_DIR = /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml
 
 # Include any dependencies generated for this target.
 include src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/depend.make
@@ -72,296 +72,296 @@ include src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/BlendMode.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/BlendMode.cpp.o: src/SFML/Graphics/BlendMode.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/BlendMode.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/BlendMode.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/BlendMode.cpp.o -MF CMakeFiles/csfml-graphics.dir/BlendMode.cpp.o.d -o CMakeFiles/csfml-graphics.dir/BlendMode.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/BlendMode.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/BlendMode.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/BlendMode.cpp.o -MF CMakeFiles/csfml-graphics.dir/BlendMode.cpp.o.d -o CMakeFiles/csfml-graphics.dir/BlendMode.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/BlendMode.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/BlendMode.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/BlendMode.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/BlendMode.cpp > CMakeFiles/csfml-graphics.dir/BlendMode.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/BlendMode.cpp > CMakeFiles/csfml-graphics.dir/BlendMode.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/BlendMode.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/BlendMode.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/BlendMode.cpp -o CMakeFiles/csfml-graphics.dir/BlendMode.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/BlendMode.cpp -o CMakeFiles/csfml-graphics.dir/BlendMode.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/CircleShape.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/CircleShape.cpp.o: src/SFML/Graphics/CircleShape.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/CircleShape.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/CircleShape.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/CircleShape.cpp.o -MF CMakeFiles/csfml-graphics.dir/CircleShape.cpp.o.d -o CMakeFiles/csfml-graphics.dir/CircleShape.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/CircleShape.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/CircleShape.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/CircleShape.cpp.o -MF CMakeFiles/csfml-graphics.dir/CircleShape.cpp.o.d -o CMakeFiles/csfml-graphics.dir/CircleShape.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/CircleShape.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/CircleShape.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/CircleShape.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/CircleShape.cpp > CMakeFiles/csfml-graphics.dir/CircleShape.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/CircleShape.cpp > CMakeFiles/csfml-graphics.dir/CircleShape.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/CircleShape.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/CircleShape.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/CircleShape.cpp -o CMakeFiles/csfml-graphics.dir/CircleShape.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/CircleShape.cpp -o CMakeFiles/csfml-graphics.dir/CircleShape.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Color.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Color.cpp.o: src/SFML/Graphics/Color.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Color.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Color.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Color.cpp.o -MF CMakeFiles/csfml-graphics.dir/Color.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Color.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Color.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Color.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Color.cpp.o -MF CMakeFiles/csfml-graphics.dir/Color.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Color.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Color.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Color.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/Color.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Color.cpp > CMakeFiles/csfml-graphics.dir/Color.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Color.cpp > CMakeFiles/csfml-graphics.dir/Color.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Color.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/Color.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Color.cpp -o CMakeFiles/csfml-graphics.dir/Color.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Color.cpp -o CMakeFiles/csfml-graphics.dir/Color.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/ConvexShape.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/ConvexShape.cpp.o: src/SFML/Graphics/ConvexShape.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/ConvexShape.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/ConvexShape.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/ConvexShape.cpp.o -MF CMakeFiles/csfml-graphics.dir/ConvexShape.cpp.o.d -o CMakeFiles/csfml-graphics.dir/ConvexShape.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/ConvexShape.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/ConvexShape.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/ConvexShape.cpp.o -MF CMakeFiles/csfml-graphics.dir/ConvexShape.cpp.o.d -o CMakeFiles/csfml-graphics.dir/ConvexShape.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/ConvexShape.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/ConvexShape.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/ConvexShape.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/ConvexShape.cpp > CMakeFiles/csfml-graphics.dir/ConvexShape.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/ConvexShape.cpp > CMakeFiles/csfml-graphics.dir/ConvexShape.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/ConvexShape.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/ConvexShape.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/ConvexShape.cpp -o CMakeFiles/csfml-graphics.dir/ConvexShape.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/ConvexShape.cpp -o CMakeFiles/csfml-graphics.dir/ConvexShape.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Font.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Font.cpp.o: src/SFML/Graphics/Font.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Font.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Font.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Font.cpp.o -MF CMakeFiles/csfml-graphics.dir/Font.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Font.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Font.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Font.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Font.cpp.o -MF CMakeFiles/csfml-graphics.dir/Font.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Font.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Font.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Font.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/Font.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Font.cpp > CMakeFiles/csfml-graphics.dir/Font.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Font.cpp > CMakeFiles/csfml-graphics.dir/Font.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Font.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/Font.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Font.cpp -o CMakeFiles/csfml-graphics.dir/Font.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Font.cpp -o CMakeFiles/csfml-graphics.dir/Font.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Image.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Image.cpp.o: src/SFML/Graphics/Image.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Image.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Image.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Image.cpp.o -MF CMakeFiles/csfml-graphics.dir/Image.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Image.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Image.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Image.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Image.cpp.o -MF CMakeFiles/csfml-graphics.dir/Image.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Image.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Image.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Image.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/Image.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Image.cpp > CMakeFiles/csfml-graphics.dir/Image.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Image.cpp > CMakeFiles/csfml-graphics.dir/Image.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Image.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/Image.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Image.cpp -o CMakeFiles/csfml-graphics.dir/Image.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Image.cpp -o CMakeFiles/csfml-graphics.dir/Image.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Rect.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Rect.cpp.o: src/SFML/Graphics/Rect.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Rect.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Rect.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Rect.cpp.o -MF CMakeFiles/csfml-graphics.dir/Rect.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Rect.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Rect.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Rect.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Rect.cpp.o -MF CMakeFiles/csfml-graphics.dir/Rect.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Rect.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Rect.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Rect.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/Rect.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Rect.cpp > CMakeFiles/csfml-graphics.dir/Rect.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Rect.cpp > CMakeFiles/csfml-graphics.dir/Rect.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Rect.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/Rect.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Rect.cpp -o CMakeFiles/csfml-graphics.dir/Rect.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Rect.cpp -o CMakeFiles/csfml-graphics.dir/Rect.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RectangleShape.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RectangleShape.cpp.o: src/SFML/Graphics/RectangleShape.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RectangleShape.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RectangleShape.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RectangleShape.cpp.o -MF CMakeFiles/csfml-graphics.dir/RectangleShape.cpp.o.d -o CMakeFiles/csfml-graphics.dir/RectangleShape.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/RectangleShape.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RectangleShape.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RectangleShape.cpp.o -MF CMakeFiles/csfml-graphics.dir/RectangleShape.cpp.o.d -o CMakeFiles/csfml-graphics.dir/RectangleShape.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/RectangleShape.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RectangleShape.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/RectangleShape.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/RectangleShape.cpp > CMakeFiles/csfml-graphics.dir/RectangleShape.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/RectangleShape.cpp > CMakeFiles/csfml-graphics.dir/RectangleShape.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RectangleShape.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/RectangleShape.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/RectangleShape.cpp -o CMakeFiles/csfml-graphics.dir/RectangleShape.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/RectangleShape.cpp -o CMakeFiles/csfml-graphics.dir/RectangleShape.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderStates.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderStates.cpp.o: src/SFML/Graphics/RenderStates.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderStates.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderStates.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderStates.cpp.o -MF CMakeFiles/csfml-graphics.dir/RenderStates.cpp.o.d -o CMakeFiles/csfml-graphics.dir/RenderStates.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/RenderStates.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderStates.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderStates.cpp.o -MF CMakeFiles/csfml-graphics.dir/RenderStates.cpp.o.d -o CMakeFiles/csfml-graphics.dir/RenderStates.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/RenderStates.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderStates.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/RenderStates.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/RenderStates.cpp > CMakeFiles/csfml-graphics.dir/RenderStates.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/RenderStates.cpp > CMakeFiles/csfml-graphics.dir/RenderStates.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderStates.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/RenderStates.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/RenderStates.cpp -o CMakeFiles/csfml-graphics.dir/RenderStates.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/RenderStates.cpp -o CMakeFiles/csfml-graphics.dir/RenderStates.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderTexture.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderTexture.cpp.o: src/SFML/Graphics/RenderTexture.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderTexture.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderTexture.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderTexture.cpp.o -MF CMakeFiles/csfml-graphics.dir/RenderTexture.cpp.o.d -o CMakeFiles/csfml-graphics.dir/RenderTexture.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/RenderTexture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderTexture.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderTexture.cpp.o -MF CMakeFiles/csfml-graphics.dir/RenderTexture.cpp.o.d -o CMakeFiles/csfml-graphics.dir/RenderTexture.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/RenderTexture.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderTexture.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/RenderTexture.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/RenderTexture.cpp > CMakeFiles/csfml-graphics.dir/RenderTexture.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/RenderTexture.cpp > CMakeFiles/csfml-graphics.dir/RenderTexture.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderTexture.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/RenderTexture.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/RenderTexture.cpp -o CMakeFiles/csfml-graphics.dir/RenderTexture.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/RenderTexture.cpp -o CMakeFiles/csfml-graphics.dir/RenderTexture.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderWindow.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderWindow.cpp.o: src/SFML/Graphics/RenderWindow.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderWindow.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderWindow.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderWindow.cpp.o -MF CMakeFiles/csfml-graphics.dir/RenderWindow.cpp.o.d -o CMakeFiles/csfml-graphics.dir/RenderWindow.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/RenderWindow.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderWindow.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderWindow.cpp.o -MF CMakeFiles/csfml-graphics.dir/RenderWindow.cpp.o.d -o CMakeFiles/csfml-graphics.dir/RenderWindow.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/RenderWindow.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderWindow.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/RenderWindow.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/RenderWindow.cpp > CMakeFiles/csfml-graphics.dir/RenderWindow.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/RenderWindow.cpp > CMakeFiles/csfml-graphics.dir/RenderWindow.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/RenderWindow.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/RenderWindow.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/RenderWindow.cpp -o CMakeFiles/csfml-graphics.dir/RenderWindow.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/RenderWindow.cpp -o CMakeFiles/csfml-graphics.dir/RenderWindow.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Shader.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Shader.cpp.o: src/SFML/Graphics/Shader.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Shader.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Shader.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Shader.cpp.o -MF CMakeFiles/csfml-graphics.dir/Shader.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Shader.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Shader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Shader.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Shader.cpp.o -MF CMakeFiles/csfml-graphics.dir/Shader.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Shader.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Shader.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Shader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/Shader.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Shader.cpp > CMakeFiles/csfml-graphics.dir/Shader.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Shader.cpp > CMakeFiles/csfml-graphics.dir/Shader.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Shader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/Shader.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Shader.cpp -o CMakeFiles/csfml-graphics.dir/Shader.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Shader.cpp -o CMakeFiles/csfml-graphics.dir/Shader.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Shape.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Shape.cpp.o: src/SFML/Graphics/Shape.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Shape.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Shape.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Shape.cpp.o -MF CMakeFiles/csfml-graphics.dir/Shape.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Shape.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Shape.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Shape.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Shape.cpp.o -MF CMakeFiles/csfml-graphics.dir/Shape.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Shape.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Shape.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Shape.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/Shape.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Shape.cpp > CMakeFiles/csfml-graphics.dir/Shape.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Shape.cpp > CMakeFiles/csfml-graphics.dir/Shape.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Shape.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/Shape.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Shape.cpp -o CMakeFiles/csfml-graphics.dir/Shape.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Shape.cpp -o CMakeFiles/csfml-graphics.dir/Shape.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Sprite.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Sprite.cpp.o: src/SFML/Graphics/Sprite.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Sprite.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Sprite.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Sprite.cpp.o -MF CMakeFiles/csfml-graphics.dir/Sprite.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Sprite.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Sprite.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Sprite.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Sprite.cpp.o -MF CMakeFiles/csfml-graphics.dir/Sprite.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Sprite.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Sprite.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Sprite.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/Sprite.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Sprite.cpp > CMakeFiles/csfml-graphics.dir/Sprite.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Sprite.cpp > CMakeFiles/csfml-graphics.dir/Sprite.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Sprite.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/Sprite.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Sprite.cpp -o CMakeFiles/csfml-graphics.dir/Sprite.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Sprite.cpp -o CMakeFiles/csfml-graphics.dir/Sprite.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Text.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Text.cpp.o: src/SFML/Graphics/Text.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Text.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Text.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Text.cpp.o -MF CMakeFiles/csfml-graphics.dir/Text.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Text.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Text.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Text.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Text.cpp.o -MF CMakeFiles/csfml-graphics.dir/Text.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Text.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Text.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Text.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/Text.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Text.cpp > CMakeFiles/csfml-graphics.dir/Text.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Text.cpp > CMakeFiles/csfml-graphics.dir/Text.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Text.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/Text.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Text.cpp -o CMakeFiles/csfml-graphics.dir/Text.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Text.cpp -o CMakeFiles/csfml-graphics.dir/Text.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Texture.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Texture.cpp.o: src/SFML/Graphics/Texture.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Texture.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Texture.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Texture.cpp.o -MF CMakeFiles/csfml-graphics.dir/Texture.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Texture.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Texture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Texture.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Texture.cpp.o -MF CMakeFiles/csfml-graphics.dir/Texture.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Texture.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Texture.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Texture.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/Texture.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Texture.cpp > CMakeFiles/csfml-graphics.dir/Texture.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Texture.cpp > CMakeFiles/csfml-graphics.dir/Texture.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Texture.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/Texture.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Texture.cpp -o CMakeFiles/csfml-graphics.dir/Texture.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Texture.cpp -o CMakeFiles/csfml-graphics.dir/Texture.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Transform.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Transform.cpp.o: src/SFML/Graphics/Transform.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Transform.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Transform.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Transform.cpp.o -MF CMakeFiles/csfml-graphics.dir/Transform.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Transform.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Transform.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Transform.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Transform.cpp.o -MF CMakeFiles/csfml-graphics.dir/Transform.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Transform.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Transform.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Transform.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/Transform.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Transform.cpp > CMakeFiles/csfml-graphics.dir/Transform.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Transform.cpp > CMakeFiles/csfml-graphics.dir/Transform.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Transform.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/Transform.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Transform.cpp -o CMakeFiles/csfml-graphics.dir/Transform.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Transform.cpp -o CMakeFiles/csfml-graphics.dir/Transform.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Transformable.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Transformable.cpp.o: src/SFML/Graphics/Transformable.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Transformable.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Transformable.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Transformable.cpp.o -MF CMakeFiles/csfml-graphics.dir/Transformable.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Transformable.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Transformable.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Transformable.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Transformable.cpp.o -MF CMakeFiles/csfml-graphics.dir/Transformable.cpp.o.d -o CMakeFiles/csfml-graphics.dir/Transformable.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Transformable.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Transformable.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/Transformable.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Transformable.cpp > CMakeFiles/csfml-graphics.dir/Transformable.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Transformable.cpp > CMakeFiles/csfml-graphics.dir/Transformable.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/Transformable.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/Transformable.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/Transformable.cpp -o CMakeFiles/csfml-graphics.dir/Transformable.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/Transformable.cpp -o CMakeFiles/csfml-graphics.dir/Transformable.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/VertexArray.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/VertexArray.cpp.o: src/SFML/Graphics/VertexArray.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/VertexArray.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/VertexArray.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/VertexArray.cpp.o -MF CMakeFiles/csfml-graphics.dir/VertexArray.cpp.o.d -o CMakeFiles/csfml-graphics.dir/VertexArray.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/VertexArray.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/VertexArray.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/VertexArray.cpp.o -MF CMakeFiles/csfml-graphics.dir/VertexArray.cpp.o.d -o CMakeFiles/csfml-graphics.dir/VertexArray.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/VertexArray.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/VertexArray.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/VertexArray.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/VertexArray.cpp > CMakeFiles/csfml-graphics.dir/VertexArray.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/VertexArray.cpp > CMakeFiles/csfml-graphics.dir/VertexArray.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/VertexArray.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/VertexArray.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/VertexArray.cpp -o CMakeFiles/csfml-graphics.dir/VertexArray.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/VertexArray.cpp -o CMakeFiles/csfml-graphics.dir/VertexArray.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/VertexBuffer.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/VertexBuffer.cpp.o: src/SFML/Graphics/VertexBuffer.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/VertexBuffer.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/VertexBuffer.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/VertexBuffer.cpp.o -MF CMakeFiles/csfml-graphics.dir/VertexBuffer.cpp.o.d -o CMakeFiles/csfml-graphics.dir/VertexBuffer.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/VertexBuffer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/VertexBuffer.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/VertexBuffer.cpp.o -MF CMakeFiles/csfml-graphics.dir/VertexBuffer.cpp.o.d -o CMakeFiles/csfml-graphics.dir/VertexBuffer.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/VertexBuffer.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/VertexBuffer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/VertexBuffer.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/VertexBuffer.cpp > CMakeFiles/csfml-graphics.dir/VertexBuffer.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/VertexBuffer.cpp > CMakeFiles/csfml-graphics.dir/VertexBuffer.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/VertexBuffer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/VertexBuffer.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/VertexBuffer.cpp -o CMakeFiles/csfml-graphics.dir/VertexBuffer.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/VertexBuffer.cpp -o CMakeFiles/csfml-graphics.dir/VertexBuffer.cpp.s
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/View.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/flags.make
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/View.cpp.o: src/SFML/Graphics/View.cpp
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/View.cpp.o: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/View.cpp.o"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/View.cpp.o -MF CMakeFiles/csfml-graphics.dir/View.cpp.o.d -o CMakeFiles/csfml-graphics.dir/View.cpp.o -c /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/View.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/View.cpp.o"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/View.cpp.o -MF CMakeFiles/csfml-graphics.dir/View.cpp.o.d -o CMakeFiles/csfml-graphics.dir/View.cpp.o -c /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/View.cpp
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/View.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/csfml-graphics.dir/View.cpp.i"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/View.cpp > CMakeFiles/csfml-graphics.dir/View.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/View.cpp > CMakeFiles/csfml-graphics.dir/View.cpp.i
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/View.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/csfml-graphics.dir/View.cpp.s"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/View.cpp -o CMakeFiles/csfml-graphics.dir/View.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/View.cpp -o CMakeFiles/csfml-graphics.dir/View.cpp.s
 
 # Object files for target csfml-graphics
 csfml__graphics_OBJECTS = \
@@ -416,9 +416,9 @@ lib/libcsfml-graphics.2.5.2.dylib: /opt/homebrew/lib/libsfml-graphics.2.6.0.dyli
 lib/libcsfml-graphics.2.5.2.dylib: /opt/homebrew/lib/libsfml-window.2.6.0.dylib
 lib/libcsfml-graphics.2.5.2.dylib: /opt/homebrew/lib/libsfml-system.2.6.0.dylib
 lib/libcsfml-graphics.2.5.2.dylib: src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking CXX shared library ../../../lib/libcsfml-graphics.dylib"
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/csfml-graphics.dir/link.txt --verbose=$(VERBOSE)
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && $(CMAKE_COMMAND) -E cmake_symlink_library ../../../lib/libcsfml-graphics.2.5.2.dylib ../../../lib/libcsfml-graphics.2.5.dylib ../../../lib/libcsfml-graphics.dylib
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking CXX shared library ../../../lib/libcsfml-graphics.dylib"
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/csfml-graphics.dir/link.txt --verbose=$(VERBOSE)
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && $(CMAKE_COMMAND) -E cmake_symlink_library ../../../lib/libcsfml-graphics.2.5.2.dylib ../../../lib/libcsfml-graphics.2.5.dylib ../../../lib/libcsfml-graphics.dylib
 
 lib/libcsfml-graphics.2.5.dylib: lib/libcsfml-graphics.2.5.2.dylib
 	@$(CMAKE_COMMAND) -E touch_nocreate lib/libcsfml-graphics.2.5.dylib
@@ -431,10 +431,10 @@ src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/build: lib/libcsfml-graphics.dyl
 .PHONY : src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/build
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/clean:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics && $(CMAKE_COMMAND) -P CMakeFiles/csfml-graphics.dir/cmake_clean.cmake
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics && $(CMAKE_COMMAND) -P CMakeFiles/csfml-graphics.dir/cmake_clean.cmake
 .PHONY : src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/clean
 
 src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/depend:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pabllopf/Downloads/CSFML-2.5.2 /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics /Users/pabllopf/Downloads/CSFML-2.5.2 /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/SFML/Graphics/CMakeFiles/csfml-graphics.dir/depend
 

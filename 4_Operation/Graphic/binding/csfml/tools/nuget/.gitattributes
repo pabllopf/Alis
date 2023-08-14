@@ -1,2 +1,0 @@
-*.sh eol=lf -text
-*.ps1 eol=crlf -text

@@ -57,10 +57,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pabllopf/Downloads/CSFML-2.5.2
+CMAKE_SOURCE_DIR = /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pabllopf/Downloads/CSFML-2.5.2
+CMAKE_BINARY_DIR = /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles /Users/pabllopf/Downloads/CSFML-2.5.2/src/SFML/Network//CMakeFiles/progress.marks
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Network/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pabllopf/Downloads/CSFML-2.5.2/CMakeFiles 0
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(CMAKE_COMMAND) -E cmake_progress_start /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/src/SFML/Network//CMakeFiles/progress.marks
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Network/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Network/clean
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Network/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Network/preinstall
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Network/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Network/preinstall
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Network/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/SFML/Network/CMakeFiles/csfml-network.dir/rule:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Network/CMakeFiles/csfml-network.dir/rule
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/SFML/Network/CMakeFiles/csfml-network.dir/rule
 .PHONY : src/SFML/Network/CMakeFiles/csfml-network.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ csfml-network: src/SFML/Network/CMakeFiles/csfml-network.dir/rule
 
 # fast build rule for target.
 csfml-network/fast:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/build
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/build
 .PHONY : csfml-network/fast
 
 Ftp.o: Ftp.cpp.o
@@ -180,7 +180,7 @@ Ftp.o: Ftp.cpp.o
 
 # target to build an object file
 Ftp.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/Ftp.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/Ftp.cpp.o
 .PHONY : Ftp.cpp.o
 
 Ftp.i: Ftp.cpp.i
@@ -188,7 +188,7 @@ Ftp.i: Ftp.cpp.i
 
 # target to preprocess a source file
 Ftp.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/Ftp.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/Ftp.cpp.i
 .PHONY : Ftp.cpp.i
 
 Ftp.s: Ftp.cpp.s
@@ -196,7 +196,7 @@ Ftp.s: Ftp.cpp.s
 
 # target to generate assembly for a file
 Ftp.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/Ftp.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/Ftp.cpp.s
 .PHONY : Ftp.cpp.s
 
 Http.o: Http.cpp.o
@@ -204,7 +204,7 @@ Http.o: Http.cpp.o
 
 # target to build an object file
 Http.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/Http.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/Http.cpp.o
 .PHONY : Http.cpp.o
 
 Http.i: Http.cpp.i
@@ -212,7 +212,7 @@ Http.i: Http.cpp.i
 
 # target to preprocess a source file
 Http.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/Http.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/Http.cpp.i
 .PHONY : Http.cpp.i
 
 Http.s: Http.cpp.s
@@ -220,7 +220,7 @@ Http.s: Http.cpp.s
 
 # target to generate assembly for a file
 Http.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/Http.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/Http.cpp.s
 .PHONY : Http.cpp.s
 
 IpAddress.o: IpAddress.cpp.o
@@ -228,7 +228,7 @@ IpAddress.o: IpAddress.cpp.o
 
 # target to build an object file
 IpAddress.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/IpAddress.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/IpAddress.cpp.o
 .PHONY : IpAddress.cpp.o
 
 IpAddress.i: IpAddress.cpp.i
@@ -236,7 +236,7 @@ IpAddress.i: IpAddress.cpp.i
 
 # target to preprocess a source file
 IpAddress.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/IpAddress.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/IpAddress.cpp.i
 .PHONY : IpAddress.cpp.i
 
 IpAddress.s: IpAddress.cpp.s
@@ -244,7 +244,7 @@ IpAddress.s: IpAddress.cpp.s
 
 # target to generate assembly for a file
 IpAddress.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/IpAddress.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/IpAddress.cpp.s
 .PHONY : IpAddress.cpp.s
 
 Packet.o: Packet.cpp.o
@@ -252,7 +252,7 @@ Packet.o: Packet.cpp.o
 
 # target to build an object file
 Packet.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/Packet.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/Packet.cpp.o
 .PHONY : Packet.cpp.o
 
 Packet.i: Packet.cpp.i
@@ -260,7 +260,7 @@ Packet.i: Packet.cpp.i
 
 # target to preprocess a source file
 Packet.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/Packet.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/Packet.cpp.i
 .PHONY : Packet.cpp.i
 
 Packet.s: Packet.cpp.s
@@ -268,7 +268,7 @@ Packet.s: Packet.cpp.s
 
 # target to generate assembly for a file
 Packet.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/Packet.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/Packet.cpp.s
 .PHONY : Packet.cpp.s
 
 SocketSelector.o: SocketSelector.cpp.o
@@ -276,7 +276,7 @@ SocketSelector.o: SocketSelector.cpp.o
 
 # target to build an object file
 SocketSelector.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/SocketSelector.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/SocketSelector.cpp.o
 .PHONY : SocketSelector.cpp.o
 
 SocketSelector.i: SocketSelector.cpp.i
@@ -284,7 +284,7 @@ SocketSelector.i: SocketSelector.cpp.i
 
 # target to preprocess a source file
 SocketSelector.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/SocketSelector.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/SocketSelector.cpp.i
 .PHONY : SocketSelector.cpp.i
 
 SocketSelector.s: SocketSelector.cpp.s
@@ -292,7 +292,7 @@ SocketSelector.s: SocketSelector.cpp.s
 
 # target to generate assembly for a file
 SocketSelector.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/SocketSelector.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/SocketSelector.cpp.s
 .PHONY : SocketSelector.cpp.s
 
 TcpListener.o: TcpListener.cpp.o
@@ -300,7 +300,7 @@ TcpListener.o: TcpListener.cpp.o
 
 # target to build an object file
 TcpListener.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/TcpListener.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/TcpListener.cpp.o
 .PHONY : TcpListener.cpp.o
 
 TcpListener.i: TcpListener.cpp.i
@@ -308,7 +308,7 @@ TcpListener.i: TcpListener.cpp.i
 
 # target to preprocess a source file
 TcpListener.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/TcpListener.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/TcpListener.cpp.i
 .PHONY : TcpListener.cpp.i
 
 TcpListener.s: TcpListener.cpp.s
@@ -316,7 +316,7 @@ TcpListener.s: TcpListener.cpp.s
 
 # target to generate assembly for a file
 TcpListener.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/TcpListener.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/TcpListener.cpp.s
 .PHONY : TcpListener.cpp.s
 
 TcpSocket.o: TcpSocket.cpp.o
@@ -324,7 +324,7 @@ TcpSocket.o: TcpSocket.cpp.o
 
 # target to build an object file
 TcpSocket.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/TcpSocket.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/TcpSocket.cpp.o
 .PHONY : TcpSocket.cpp.o
 
 TcpSocket.i: TcpSocket.cpp.i
@@ -332,7 +332,7 @@ TcpSocket.i: TcpSocket.cpp.i
 
 # target to preprocess a source file
 TcpSocket.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/TcpSocket.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/TcpSocket.cpp.i
 .PHONY : TcpSocket.cpp.i
 
 TcpSocket.s: TcpSocket.cpp.s
@@ -340,7 +340,7 @@ TcpSocket.s: TcpSocket.cpp.s
 
 # target to generate assembly for a file
 TcpSocket.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/TcpSocket.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/TcpSocket.cpp.s
 .PHONY : TcpSocket.cpp.s
 
 UdpSocket.o: UdpSocket.cpp.o
@@ -348,7 +348,7 @@ UdpSocket.o: UdpSocket.cpp.o
 
 # target to build an object file
 UdpSocket.cpp.o:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/UdpSocket.cpp.o
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/UdpSocket.cpp.o
 .PHONY : UdpSocket.cpp.o
 
 UdpSocket.i: UdpSocket.cpp.i
@@ -356,7 +356,7 @@ UdpSocket.i: UdpSocket.cpp.i
 
 # target to preprocess a source file
 UdpSocket.cpp.i:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/UdpSocket.cpp.i
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/UdpSocket.cpp.i
 .PHONY : UdpSocket.cpp.i
 
 UdpSocket.s: UdpSocket.cpp.s
@@ -364,7 +364,7 @@ UdpSocket.s: UdpSocket.cpp.s
 
 # target to generate assembly for a file
 UdpSocket.cpp.s:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/UdpSocket.cpp.s
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(MAKE) $(MAKESILENT) -f src/SFML/Network/CMakeFiles/csfml-network.dir/build.make src/SFML/Network/CMakeFiles/csfml-network.dir/UdpSocket.cpp.s
 .PHONY : UdpSocket.cpp.s
 
 # Help Target
@@ -415,6 +415,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/pabllopf/Downloads/CSFML-2.5.2 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/csfml && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
