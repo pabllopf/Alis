@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.1.0] - 2023-08-14
+### :sparkles: New Features
+- [`f62f07e`](https://github.com/pabllopf/Alis/commit/f62f07e5e32011999133283aa0e8d2716aafb83a) - generate automatic binding for csfml *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`60fb38b`](https://github.com/pabllopf/Alis/commit/60fb38b2befb585cf8eeef459a191d809c1c0f57) - add binding sdl2 *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`c7b47e4`](https://github.com/pabllopf/Alis/commit/c7b47e4dbceed68bc164e73ccae7d800362f969f) - delete all csproj of csfml binding *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.0.9] - 2023-08-13
 ### :sparkles: New Features
 - [`15058b5`](https://github.com/pabllopf/Alis/commit/15058b586800c84472c5ebb0009d06f0dac0be08) - plugin manager and iplugin to control plugins *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -1125,3 +1134,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [v0.0.8]: https://github.com/pabllopf/Alis/compare/v0.0.7...v0.0.8
 [v0.0.9]: https://github.com/pabllopf/Alis/compare/v0.0.8...v0.0.9
+[v0.1.0]: https://github.com/pabllopf/Alis/compare/v0.0.9...v0.1.0
