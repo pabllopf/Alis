@@ -1,5 +1,7 @@
 var NAVTREEINDEX71 =
 {
+"de/d1c/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_pixel_format.html#ae9da26eccff06e47e8d89afff928cfb5":[1,0,0,2,5,4,1,62,7],
+"de/d1c/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_pixel_format.html#af2fadd10d106005d0a0a782ab166dc3d":[1,0,0,2,5,4,1,62,5],
 "de/d27/class_alis_1_1_core_1_1_component_1_1_render_1_1_image.html":[1,0,0,2,2,6,4],
 "de/d27/class_alis_1_1_core_1_1_component_1_1_render_1_1_image.html#a2493dacf9c9c46fcb9f8fe2eda9318da":[1,0,0,2,2,6,4,2],
 "de/d27/class_alis_1_1_core_1_1_component_1_1_render_1_1_image.html#a6a4383545605ca8b815e20813441e07a":[1,0,0,2,2,6,4,0],
@@ -79,8 +81,8 @@ var NAVTREEINDEX71 =
 "de/d62/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_vk_resource_layout.html#afb4d643cf3f9798153335477b57738d7":[1,0,0,2,5,0,8,35,6],
 "de/d64/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_auto_tilling.html":[1,0,0,2,0,2,0,7],
 "de/d64/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_auto_tilling.html#a8c6a4e92bb7284ad424ba8cf3ee6cb25":[1,0,0,2,0,2,0,7,0],
-"de/d64/namespace_alis_1_1_core_1_1_manager_1_1_graphic.html":[1,0,0,2,6,1],
 "de/d64/namespace_alis_1_1_core_1_1_manager_1_1_graphic.html":[0,0,0,2,6,1],
+"de/d64/namespace_alis_1_1_core_1_1_manager_1_1_graphic.html":[1,0,0,2,6,1],
 "de/d67/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_blend_attachment_description.html":[1,0,0,2,5,0,15],
 "de/d67/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_blend_attachment_description.html#a05303f0288bcd92724005b36d426bb26":[1,0,0,2,5,0,15,3],
 "de/d67/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_blend_attachment_description.html#a289bab5ed6a6547d5f32b15e5775434c":[1,0,0,2,5,0,15,7],
@@ -139,8 +141,8 @@ var NAVTREEINDEX71 =
 "de/d69/class_alis_1_1_core_1_1_network_1_1_internal_1_1_events.html#aefec756ce081c18c4b25fa77093b8cb6":[1,0,0,2,7,1,1,8],
 "de/d69/class_alis_1_1_core_1_1_network_1_1_internal_1_1_events.html#af8496d6f9d1e89e350d0d9e5042819f5":[1,0,0,2,7,1,1,15],
 "de/d69/class_alis_1_1_core_1_1_network_1_1_internal_1_1_events.html#afc9b1b7606d61f875fc5faadfaf57765":[1,0,0,2,7,1,1,12],
-"de/d6e/namespace_alis_1_1_builder_1_1_core_1_1_setting.html":[0,0,0,1,0,3],
 "de/d6e/namespace_alis_1_1_builder_1_1_core_1_1_setting.html":[1,0,0,1,0,3],
+"de/d6e/namespace_alis_1_1_builder_1_1_core_1_1_setting.html":[0,0,0,1,0,3],
 "de/d6e/namespace_alis_1_1_core_1_1_physic_1_1_utilities.html":[0,0,0,2,8,8],
 "de/d6e/namespace_alis_1_1_core_1_1_physic_1_1_utilities.html":[1,0,0,2,8,8],
 "de/d6f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_audio_device_event.html":[1,0,0,2,5,4,1,19],
@@ -247,7 +249,5 @@ var NAVTREEINDEX71 =
 "de/d77/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_u_i_1_1_im_gui_controller.html#afe11076c3e214c8f73db1d03902a615d":[1,0,0,2,5,0,7,1,7],
 "de/d7c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_s_d_l2_1_1_s_d_l___text_input_event.html":[1,0,0,2,5,0,5,33],
 "de/d7c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_s_d_l2_1_1_s_d_l___text_input_event.html#a459f9712a0b0c10b60da89f2f3e317c1":[1,0,0,2,5,0,5,33,0],
-"de/d7c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_s_d_l2_1_1_s_d_l___text_input_event.html#a5ad3f1de8114e518c8943587c35fa4bd":[1,0,0,2,5,0,5,33,2],
-"de/d7c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_s_d_l2_1_1_s_d_l___text_input_event.html#a5c678ce0a6f4d0a8caddf0317a359159":[1,0,0,2,5,0,5,33,1],
-"de/d7c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_s_d_l2_1_1_s_d_l___text_input_event.html#ae157e5b0522bed6072eae6d1c539593f":[1,0,0,2,5,0,5,33,4]
+"de/d7c/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_s_d_l2_1_1_s_d_l___text_input_event.html#a5ad3f1de8114e518c8943587c35fa4bd":[1,0,0,2,5,0,5,33,2]
 };

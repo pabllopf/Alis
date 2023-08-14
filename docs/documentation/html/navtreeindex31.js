@@ -1,5 +1,7 @@
 var NAVTREEINDEX31 =
 {
+"d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_style_ptr.html#afd21a1a7483b5a12b2486133e16c16dd":[1,0,0,2,5,1,0,1,13,0],
+"d5/d9b/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_message_box_color.html":[1,0,0,2,5,4,1,54],
 "d5/d9b/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_message_box_color.html#a43efee2aac9e1b685d288bd1ce8f22df":[1,0,0,2,5,4,1,54,0],
 "d5/d9b/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_message_box_color.html#aa7b60fac10dfa0dfa99b72726b20213b":[1,0,0,2,5,4,1,54,2],
 "d5/d9b/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_message_box_color.html#af062fba4d0e933cbc07f7bb19a17f31a":[1,0,0,2,5,4,1,54,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX31 =
 "d5/deb/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_shape.html#af78e6b1ec8b464816d9c0d7939e26c4a":[1,0,0,2,8,0,6,5,7],
 "d5/deb/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_shape.html#afd61dd4f64e90d98bc74aedf5f1c5b32":[1,0,0,2,8,0,6,5,10],
 "d5/dec/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_utils_1_1_file_util.html":[1,0,0,2,1,0,2,0],
-"d5/dec/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_utils_1_1_file_util.html#a3535c76c90496ba5fbc40defbdc73f7e":[1,0,0,2,1,0,2,0,2],
-"d5/dec/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_utils_1_1_file_util.html#a83a9ba31bd01abf659514c3f80f94ebf":[1,0,0,2,1,0,2,0,0],
-"d5/dec/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_utils_1_1_file_util.html#ab815e06ca1dd2150f80ee2a26dea6cf6":[1,0,0,2,1,0,2,0,1]
+"d5/dec/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_utils_1_1_file_util.html#a3535c76c90496ba5fbc40defbdc73f7e":[1,0,0,2,1,0,2,0,2]
 };

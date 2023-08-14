@@ -1,5 +1,7 @@
 var NAVTREEINDEX69 =
 {
+"dd/d99/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot.html#ad97b0951481b55cc975b5958de378b2f":[1,0,0,2,5,1,0,2,0,217],
+"dd/d99/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot.html#ad98236642603dce31dd2d47a806bf536":[1,0,0,2,5,1,0,2,0,443],
 "dd/d99/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot.html#ad99409a39d2c10bdfabd1cb3fc791129":[1,0,0,2,5,1,0,2,0,440],
 "dd/d99/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot.html#ad9aeff79cbc008e58e91748921d8f35b":[1,0,0,2,5,1,0,2,0,437],
 "dd/d99/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot.html#ad9c6e58dbd08353d3f29a73488a7b978":[1,0,0,2,5,1,0,2,0,815],
@@ -247,7 +249,5 @@ var NAVTREEINDEX69 =
 "dd/dac/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_m_t_l_depth_stencil_descriptor.html#aa6aff0ccd9cd3d4e801ab1a8083ed92b":[1,0,0,2,5,0,2,23,8],
 "dd/dac/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_m_t_l_depth_stencil_descriptor.html#aaf9f750bea698301d663f57d35573ab6":[1,0,0,2,5,0,2,23,3],
 "dd/dac/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_m_t_l_depth_stencil_descriptor.html#ad77158d773e3584aeb3f4d9146b9714a":[1,0,0,2,5,0,2,23,1],
-"dd/dae/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_stb_undo_record.html":[1,0,0,2,5,1,82],
-"dd/dae/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_stb_undo_record.html#a8be7bff1fb6d5a0af643bb03ae362ece":[1,0,0,2,5,1,82,0],
-"dd/dae/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_stb_undo_record.html#a8f7634cb2478f36e1a082ef0171ad3cf":[1,0,0,2,5,1,82,1]
+"dd/dae/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_stb_undo_record.html":[1,0,0,2,5,1,82]
 };

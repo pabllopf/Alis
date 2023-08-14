@@ -1,5 +1,7 @@
 var NAVTREEINDEX61 =
 {
+"dc/d67/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_input_text_callback_data_ptr.html#a5b95cc1ba9b3babb2b84db3ee73d6148":[1,0,0,2,5,1,32,6],
+"dc/d67/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_input_text_callback_data_ptr.html#a6b849365b1a1479a7208d6442b99cc8f":[1,0,0,2,5,1,32,0],
 "dc/d67/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_input_text_callback_data_ptr.html#a73c8a6d442b2b80f5fdd9945ea70e984":[1,0,0,2,5,1,32,3],
 "dc/d67/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_input_text_callback_data_ptr.html#a79892424806dee7bbea2538403cf3af5":[1,0,0,2,5,1,32,22],
 "dc/d67/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_input_text_callback_data_ptr.html#a847143112850765cc237570e26c543ad":[1,0,0,2,5,1,32,9],
@@ -247,7 +249,5 @@ var NAVTREEINDEX61 =
 "dc/dc2/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_distance_joint.html#a57edb6cda7a2ebd70d266ff11ac4a3a0":[1,0,0,2,8,2,0,1,18],
 "dc/dc2/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_distance_joint.html#a599647041ae545f197ac7b64aace5888":[1,0,0,2,8,2,0,1,15],
 "dc/dc2/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_distance_joint.html#a5bf00d89ea71bdece6a7e772d9c00afa":[1,0,0,2,8,2,0,1,40],
-"dc/dc2/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_distance_joint.html#a64c22ed98f61a551aef206ba55580bb9":[1,0,0,2,8,2,0,1,4],
-"dc/dc2/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_distance_joint.html#a65b1f270d26f1873130d72895f7019af":[1,0,0,2,8,2,0,1,22],
-"dc/dc2/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_distance_joint.html#a67315b9bd7ffc17a4f3dd8e367c08637":[1,0,0,2,8,2,0,1,5]
+"dc/dc2/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_distance_joint.html#a64c22ed98f61a551aef206ba55580bb9":[1,0,0,2,8,2,0,1,4]
 };

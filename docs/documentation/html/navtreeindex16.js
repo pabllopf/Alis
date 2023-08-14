@@ -1,5 +1,7 @@
 var NAVTREEINDEX16 =
 {
+"d2/d85/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper_1_1_edge.html#a6c9ed29d368a54e86c224b37b2464c83":[1,0,0,2,8,7,1,0,0,4],
+"d2/d86/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_clear_depth_target_entry.html":[1,0,0,2,5,0,4,3,2],
 "d2/d86/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_clear_depth_target_entry.html#a6de6e07c8f38c38d5284533c2b0ccc1a":[1,0,0,2,5,0,4,3,2,2],
 "d2/d86/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_clear_depth_target_entry.html#a9c839ac3568201b91a16db84f0e7c8db":[1,0,0,2,5,0,4,3,2,1],
 "d2/d86/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_no_alloc_entry_list_1_1_no_alloc_clear_depth_target_entry.html#aefbaeb0d5770eb004cb48381258f2823":[1,0,0,2,5,0,4,3,2,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX16 =
 "d2/dcb/class_alis_1_1_core_1_1_physic_1_1_config_1_1_settings.html#aa73e06a9b47a10af5ddb243cb0b781c3":[1,0,0,2,8,1,0,10],
 "d2/dcb/class_alis_1_1_core_1_1_physic_1_1_config_1_1_settings.html#ab0f5cd4b0e3111832a6f93c07e62c7e9":[1,0,0,2,8,1,0,12],
 "d2/dcb/class_alis_1_1_core_1_1_physic_1_1_config_1_1_settings.html#aba0aeeb8f8dc04cdaa53469c296a2341":[1,0,0,2,8,1,0,32],
-"d2/dcb/class_alis_1_1_core_1_1_physic_1_1_config_1_1_settings.html#ac4feddc6c099ced0d12ffa5c58aa7cff":[1,0,0,2,8,1,0,17],
-"d2/dcb/class_alis_1_1_core_1_1_physic_1_1_config_1_1_settings.html#ac91c630bce5b80362668e664efed7321":[1,0,0,2,8,1,0,29],
-"d2/dcb/class_alis_1_1_core_1_1_physic_1_1_config_1_1_settings.html#acbf9a5e467375edbe7a889b1260ecf8c":[1,0,0,2,8,1,0,20]
+"d2/dcb/class_alis_1_1_core_1_1_physic_1_1_config_1_1_settings.html#ac4feddc6c099ced0d12ffa5c58aa7cff":[1,0,0,2,8,1,0,17]
 };

@@ -1,5 +1,7 @@
 var NAVTREEINDEX42 =
 {
+"d8/dcc/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_objective_c_runtime.html#a26e2685d3baa147eed51063f723a3030":[1,0,0,2,5,0,2,68,18],
+"d8/dcc/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_objective_c_runtime.html#a27d9cd22d9090d6b774265ebcdbb20ee":[1,0,0,2,5,0,2,68,53],
 "d8/dcc/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_objective_c_runtime.html#a2b141f5b8eac0cb8141643b86705b17e":[1,0,0,2,5,0,2,68,20],
 "d8/dcc/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_objective_c_runtime.html#a2bc1bdeedc140c2264803403a7122894":[1,0,0,2,5,0,2,68,64],
 "d8/dcc/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_objective_c_runtime.html#a310e80a5760487edf1f8970ea1412c70":[1,0,0,2,5,0,2,68,77],
@@ -74,8 +76,8 @@ var NAVTREEINDEX42 =
 "d8/dcc/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_objective_c_runtime.html#afd8a0a633aea81f3d1eafd25dc9891c2":[1,0,0,2,5,0,2,68,36],
 "d8/dcc/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_objective_c_runtime.html#afd94522768e82a7f814222f2795621d8":[1,0,0,2,5,0,2,68,80],
 "d8/dcc/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_objective_c_runtime.html#afdde0b1060e0026f5c3f9e5ef3eb9676":[1,0,0,2,5,0,2,68,15],
-"d8/dd1/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay.html":[1,0,0,2,8,7,5,1],
 "d8/dd1/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay.html":[0,0,0,2,8,7,5,1],
+"d8/dd1/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay.html":[1,0,0,2,8,7,5,1],
 "d8/dd5/interface_alis_1_1_app_1_1_engine_1_1_menus_1_1_i_menu.html":[1,0,0,0,0,3,1],
 "d8/dd9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_alis_object.html":[1,0,0,2,0,0,4],
 "d8/dd9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_alis_object.html#a1e44f78c05ca6da08eb77c0e6292d67d":[1,0,0,2,0,0,4,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX42 =
 "d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#afa7c6ed08ffa13cec02ea77221d73379":[1,0,0,2,8,6,4,17],
 "d9/d0e/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_wayland_wm_info.html":[1,0,0,2,5,4,1,15],
 "d9/d0e/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_wayland_wm_info.html#a0beb8ec12b2578ece2669c136b60fa87":[1,0,0,2,5,4,1,15,5],
-"d9/d0e/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_wayland_wm_info.html#a4267db3a7bd1390196b5e2bf88dbdb9f":[1,0,0,2,5,4,1,15,2],
-"d9/d0e/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_wayland_wm_info.html#a4b600507c183e37363765587c77aac18":[1,0,0,2,5,4,1,15,1],
-"d9/d0e/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_wayland_wm_info.html#a500e1f795bd15834fdea8162cc627487":[1,0,0,2,5,4,1,15,4]
+"d9/d0e/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_wayland_wm_info.html#a4267db3a7bd1390196b5e2bf88dbdb9f":[1,0,0,2,5,4,1,15,2]
 };

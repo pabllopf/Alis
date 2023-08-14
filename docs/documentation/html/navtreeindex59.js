@@ -1,5 +1,7 @@
 var NAVTREEINDEX59 =
 {
+"db/dbf/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_s_d_l2_1_1_s_d_l___joystick.html#a4a16b4b28559d7586fbf193deba0fe62":[1,0,0,2,5,0,5,25,2],
+"db/dbf/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_s_d_l2_1_1_s_d_l___joystick.html#a53d679d83e775b55247cd2f382b42329":[1,0,0,2,5,0,5,25,0],
 "db/dbf/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_s_d_l2_1_1_s_d_l___joystick.html#ab7720b8a3a7cd36378e76305368e9342":[1,0,0,2,5,0,5,25,1],
 "db/dc6/interface_alis_1_1_core_1_1_audio_1_1_i_audio_recorder.html":[1,0,0,2,1,6],
 "db/dcb/class_alis_1_1_core_1_1_manager_1_1_time_1_1_time_manager_base.html":[1,0,0,2,6,6,1],
@@ -114,8 +116,8 @@ var NAVTREEINDEX59 =
 "db/de2/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_storage_pair_ptr.html#af4102cf8dc7fd5832cc8904840dbd4db":[1,0,0,2,5,1,54,3],
 "db/de2/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_storage_pair_ptr.html#af76267222d5dc8e97ed6fe2c3dbce7ca":[1,0,0,2,5,1,54,5],
 "db/de2/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_storage_pair_ptr.html#af8baa68aab7fd30e166692ce2d3c5637":[1,0,0,2,5,1,54,4],
-"db/de4/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_t_o_i.html":[0,0,0,2,8,0,8],
 "db/de4/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_t_o_i.html":[1,0,0,2,8,0,7],
+"db/de4/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_t_o_i.html":[0,0,0,2,8,0,8],
 "db/de7/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_graphic_setting_builder.html":[1,0,0,1,0,3,3],
 "db/de7/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_graphic_setting_builder.html#a4ca298fde579671acdac923bb237b6e3":[1,0,0,1,0,3,3,1],
 "db/de7/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_graphic_setting_builder.html#aa8c97e7dc7fd9ac969736c539198e660":[1,0,0,1,0,3,3,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX59 =
 "dc/d01/class_alis_1_1_core_1_1_physic_1_1_factories_1_1_body_factory.html#a346e2282dcda79d0165c860d16c34aca":[1,0,0,2,8,4,0,17],
 "dc/d01/class_alis_1_1_core_1_1_physic_1_1_factories_1_1_body_factory.html#a3b4a7139ddb5585ccfcb82fadead2091":[1,0,0,2,8,4,0,16],
 "dc/d01/class_alis_1_1_core_1_1_physic_1_1_factories_1_1_body_factory.html#a62ff8ab2a0aef050d0dbd3adaa1732a4":[1,0,0,2,8,4,0,9],
-"dc/d01/class_alis_1_1_core_1_1_physic_1_1_factories_1_1_body_factory.html#a6a249704f89b8efbb3bcde063d0d0c2a":[1,0,0,2,8,4,0,11],
-"dc/d01/class_alis_1_1_core_1_1_physic_1_1_factories_1_1_body_factory.html#a93c098a4adb4e5751d92e76f7aa26780":[1,0,0,2,8,4,0,12],
-"dc/d01/class_alis_1_1_core_1_1_physic_1_1_factories_1_1_body_factory.html#a94347b824b01a21de80269b2297b8ac6":[1,0,0,2,8,4,0,15]
+"dc/d01/class_alis_1_1_core_1_1_physic_1_1_factories_1_1_body_factory.html#a6a249704f89b8efbb3bcde063d0d0c2a":[1,0,0,2,8,4,0,11]
 };

@@ -1,5 +1,7 @@
 var NAVTREEINDEX57 =
 {
+"db/d52/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3_f.html#a98d399742dbddeb7a8940cc95a48b650":[1,0,0,2,0,4,4,5,29],
+"db/d52/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3_f.html#a9cacfe7f61101d1e1985f9e4e1faccd2":[1,0,0,2,0,4,4,5,1],
 "db/d52/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3_f.html#aa54e07a242be2f4a168474ade99976d7":[1,0,0,2,0,4,4,5,26],
 "db/d52/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3_f.html#aa7e525a3bd238a7b80cd4dd2daed68f4":[1,0,0,2,0,4,4,5,32],
 "db/d52/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3_f.html#aaf0c0df7ff77a9410b139d069cf9897f":[1,0,0,2,0,4,4,5,45],
@@ -42,8 +44,8 @@ var NAVTREEINDEX57 =
 "db/d55/class_alis_1_1_core_1_1_component_1_1_particle_1_1_explosion_particle.html":[1,0,0,2,2,5,0],
 "db/d55/class_alis_1_1_core_1_1_component_1_1_particle_1_1_explosion_particle.html#a44b838830f58d2918c98ddb3627c80a0":[1,0,0,2,2,5,0,1],
 "db/d55/class_alis_1_1_core_1_1_component_1_1_particle_1_1_explosion_particle.html#a80e90a0a8eeb7bd12f37eaabe69aa559":[1,0,0,2,2,5,0,0],
-"db/d57/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs.html":[0,0,0,2,5,4,2],
 "db/d57/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs.html":[1,0,0,2,5,4,1],
+"db/d57/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs.html":[0,0,0,2,5,4,2],
 "db/d57/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_n_s_array.html":[1,0,0,2,5,0,2,57],
 "db/d57/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_n_s_array.html#a676cd9a309c9ec4038fabc2c9ae0202c":[1,0,0,2,5,0,2,57,1],
 "db/d57/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_n_s_array.html#a68378bb3f52487e8bf0f5b1160abad3c":[1,0,0,2,5,0,2,57,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX57 =
 "db/d86/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_vk_command_list.html#a7beb8598b7b6e3ebf31cb0916cd63610":[1,0,0,2,5,0,8,20,74],
 "db/d86/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_vk_command_list.html#a7d4e6b7a58bf05791e614f9fbadbaac9":[1,0,0,2,5,0,8,20,42],
 "db/d86/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_vk_command_list.html#a851e4c84da081150d01feb4a46728de9":[1,0,0,2,5,0,8,20,35],
-"db/d86/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_vk_command_list.html#a87d94cf4e1b9a696d87dc15cdfecbb96":[1,0,0,2,5,0,8,20,55],
-"db/d86/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_vk_command_list.html#a8acf3526d49c0a2811109ac397617e23":[1,0,0,2,5,0,8,20,62],
-"db/d86/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_vk_command_list.html#a8c0ca8458473868e8e44999eb1f3ec79":[1,0,0,2,5,0,8,20,47]
+"db/d86/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_vk_command_list.html#a87d94cf4e1b9a696d87dc15cdfecbb96":[1,0,0,2,5,0,8,20,55]
 };

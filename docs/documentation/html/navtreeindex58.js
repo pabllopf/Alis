@@ -1,5 +1,7 @@
 var NAVTREEINDEX58 =
 {
+"db/d86/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_vk_command_list.html#a8acf3526d49c0a2811109ac397617e23":[1,0,0,2,5,0,8,20,62],
+"db/d86/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_vk_command_list.html#a8c0ca8458473868e8e44999eb1f3ec79":[1,0,0,2,5,0,8,20,47],
 "db/d86/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_vk_command_list.html#a8cd58c003846bb7a09434865281b02c3":[1,0,0,2,5,0,8,20,80],
 "db/d86/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_vk_command_list.html#a8f51fe2bc4cc6942040d5ff78b368c5b":[1,0,0,2,5,0,8,20,73],
 "db/d86/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_vk_command_list.html#a8fcf47eadd19267d3c782e3623bd203c":[1,0,0,2,5,0,8,20,36],
@@ -247,7 +249,5 @@ var NAVTREEINDEX58 =
 "db/dbd/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_dollar_gesture_event.html#a8417f3987d523536f4a6ddb31651248f":[1,0,0,2,5,4,1,29,6],
 "db/dbd/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_dollar_gesture_event.html#ae1cf1f2ff6f9b5314928a9bea8feb435":[1,0,0,2,5,4,1,29,2],
 "db/dbf/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_s_d_l2_1_1_s_d_l___joystick.html":[1,0,0,2,5,0,5,25],
-"db/dbf/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_s_d_l2_1_1_s_d_l___joystick.html#a029541377bcf9d5fe52cb1027c7d0f96":[1,0,0,2,5,0,5,25,3],
-"db/dbf/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_s_d_l2_1_1_s_d_l___joystick.html#a4a16b4b28559d7586fbf193deba0fe62":[1,0,0,2,5,0,5,25,2],
-"db/dbf/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_s_d_l2_1_1_s_d_l___joystick.html#a53d679d83e775b55247cd2f382b42329":[1,0,0,2,5,0,5,25,0]
+"db/dbf/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_s_d_l2_1_1_s_d_l___joystick.html#a029541377bcf9d5fe52cb1027c7d0f96":[1,0,0,2,5,0,5,25,3]
 };

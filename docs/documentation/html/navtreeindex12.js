@@ -1,5 +1,7 @@
 var NAVTREEINDEX12 =
 {
+"d1/d94/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_atlas_ptr.html#a8e24c0f3375dbc27ec5d8d14b7e70dcc":[1,0,0,2,5,1,21,18],
+"d1/d94/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_atlas_ptr.html#a8eb6cb0b6e01bbc827c5a8162f9b558c":[1,0,0,2,5,1,21,69],
 "d1/d94/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_atlas_ptr.html#a905eb3f511c0caebcc4ffef2c97f9c06":[1,0,0,2,5,1,21,5],
 "d1/d94/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_atlas_ptr.html#a90bcb3ad28bb58eb18b7d6acca0e8539":[1,0,0,2,5,1,21,27],
 "d1/d94/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_atlas_ptr.html#a97c3943f9e8257d582a22f3dda4ab539":[1,0,0,2,5,1,21,37],
@@ -36,8 +38,8 @@ var NAVTREEINDEX12 =
 "d1/d94/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_atlas_ptr.html#afc37eefbe93e9133dda24db9b3570845":[1,0,0,2,5,1,21,56],
 "d1/d94/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_atlas_ptr.html#afcb37533b2c94a7538ebafa30984cd48":[1,0,0,2,5,1,21,0],
 "d1/d94/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_atlas_ptr.html#afd7bf96bdc3754e15004291123406f78":[1,0,0,2,5,1,21,3],
-"d1/d96/namespace_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l.html":[1,0,0,2,5,0,4],
 "d1/d96/namespace_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l.html":[0,0,0,2,5,0,4],
+"d1/d96/namespace_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l.html":[1,0,0,2,5,0,4],
 "d1/d99/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_open_g_l_fence.html":[1,0,0,2,5,0,4,11],
 "d1/d99/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_open_g_l_fence.html#a01aa049b0748f2bd11016012300a83cb":[1,0,0,2,5,0,4,11,4],
 "d1/d99/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_open_g_l_fence.html#a114d1ebc61de278574a7affcc0cc43a0":[1,0,0,2,5,0,4,11,10],
@@ -93,8 +95,8 @@ var NAVTREEINDEX12 =
 "d1/db5/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_mouse_move_event_args.html#a71205623e602c1881c67a4d17c25a928":[1,0,0,2,5,5,1,19,1],
 "d1/db5/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_mouse_move_event_args.html#a8b8c61ad5d036c6242d708acccd7d5e8":[1,0,0,2,5,5,1,19,2],
 "d1/db5/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_mouse_move_event_args.html#ad60f70a9320f950eebdcf67cbbe63b0e":[1,0,0,2,5,5,1,19,0],
-"d1/db7/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay.html":[1,0,0,2,8,7,5,1,0],
 "d1/db7/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay.html":[0,0,0,2,8,7,5,1,0],
+"d1/db7/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay.html":[1,0,0,2,8,7,5,1,0],
 "d1/dbc/namespace_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_e_g_l.html":[0,0,0,2,5,0,4,1],
 "d1/dbc/namespace_alis_1_1_core_1_1_graphic_1_1_backends_1_1_open_g_l_1_1_e_g_l.html":[1,0,0,2,5,0,4,1],
 "d1/dbe/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_rect.html":[1,0,0,2,5,1,0,2,8],
@@ -247,7 +249,5 @@ var NAVTREEINDEX12 =
 "d1/ddd/namespace_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows.html":[0,0,0,2,5,5,1],
 "d1/dde/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_dispatch_data.html":[1,0,0,2,5,0,2,11],
 "d1/dde/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_dispatch_data.html#a9c35a38b8d1fd213075ea0f445897fd5":[1,0,0,2,5,0,2,11,0],
-"d1/de0/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon.html":[1,0,0,2,8,7,5,1,1,0],
-"d1/de0/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon.html#a0e7869a487dfc7c2f861dbdc40ae6f4d":[1,0,0,2,8,7,5,1,1,0,3],
-"d1/de0/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon.html#a105bc1bb84664af69c0e40d14ac938e7":[1,0,0,2,8,7,5,1,1,0,18]
+"d1/de0/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon.html":[1,0,0,2,8,7,5,1,1,0]
 };
