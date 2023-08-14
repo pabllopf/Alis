@@ -1,5 +1,7 @@
 var NAVTREEINDEX28 =
 {
+"d4/de0/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils.html#ada888ddcd783417e07cf2bd491d48956":[1,0,0,2,8,8,1,2],
+"d4/de0/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils.html#adb95c8c38c02a9f0b2c69d021254da34":[1,0,0,2,8,8,1,7],
 "d4/de0/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils.html#adc65e263fba0d41b6509b5dbd86d0f30":[1,0,0,2,8,8,1,36],
 "d4/de0/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils.html#ade843e59d9e042becd60fccf412df94f":[1,0,0,2,8,8,1,60],
 "d4/de0/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils.html#aee4f35154e179f5b6fb5dbbc31cdb230":[1,0,0,2,8,8,1,47],
@@ -247,7 +249,5 @@ var NAVTREEINDEX28 =
 "d5/d3a/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_indirect_draw_indexed_arguments.html#a1020e6bf376c666c28f54a8c47653f07":[1,0,0,2,5,0,44,4],
 "d5/d3a/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_indirect_draw_indexed_arguments.html#a65745bc5f3c4ec62df05d92a8150cdbd":[1,0,0,2,5,0,44,0],
 "d5/d3a/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_indirect_draw_indexed_arguments.html#adc429e87ff10659ac6157cd9fad68a90":[1,0,0,2,5,0,44,2],
-"d5/d3a/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_indirect_draw_indexed_arguments.html#ae36374b16f97ec774000c278101e042e":[1,0,0,2,5,0,44,3],
-"d5/d3b/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html":[1,0,0,2,5,5,0,23],
-"d5/d3b/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a0141f17b3f79a99d23da4626806349eb":[1,0,0,2,5,5,0,23,13]
+"d5/d3a/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_indirect_draw_indexed_arguments.html#ae36374b16f97ec774000c278101e042e":[1,0,0,2,5,0,44,3]
 };

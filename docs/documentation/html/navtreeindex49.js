@@ -1,5 +1,7 @@
 var NAVTREEINDEX49 =
 {
+"d9/d6a/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_texture.html#ad7c47630cdcceeb5ec49d4972c7ff477":[1,0,0,2,5,0,3,18,0],
+"d9/d6a/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_texture.html#aed5b3d782a5d4ee738230a6282cfbfc8":[1,0,0,2,5,0,3,18,9],
 "d9/d6a/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_texture.html#af08cda0d307aa5a41bb71d74b406e72c":[1,0,0,2,5,0,3,18,4],
 "d9/d6a/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_texture.html#af9ab667aacb422333c70ec5f5e8cb419":[1,0,0,2,5,0,3,18,11],
 "d9/d6d/class_alis_1_1_builder_1_1_core_1_1_component_1_1_light_1_1_directional_light_builder.html":[1,0,0,1,0,0,3,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX49 =
 "d9/def/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_glyph.html#a0a53439a535c7d5008b96ed9aa8ef719":[1,0,0,2,5,1,24,4],
 "d9/def/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_glyph.html#a2509d3529762050906ab78896acdde0b":[1,0,0,2,5,1,24,1],
 "d9/def/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_glyph.html#a4104ef07a2da2eb5b73eca654228895e":[1,0,0,2,5,1,24,2],
-"d9/def/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_glyph.html#a4ce91b6f8a14659ab0610720908999eb":[1,0,0,2,5,1,24,0],
-"d9/def/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_glyph.html#a5529d6cedc0860ee8765f67fc13f0a9a":[1,0,0,2,5,1,24,11],
-"d9/def/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_glyph.html#a904b770baa0fad99e9bdd4aab6d6344b":[1,0,0,2,5,1,24,6]
+"d9/def/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_glyph.html#a4ce91b6f8a14659ab0610720908999eb":[1,0,0,2,5,1,24,0]
 };

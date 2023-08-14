@@ -1,5 +1,6 @@
 var class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_common_strings =
 [
+    [ "VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR", "d1/d92/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_common_strings.html#a328858a16f8d01d3710bf7a43e407dac", null ],
     [ "VK_KHR_SURFACE_EXTENSION_NAME", "d1/d92/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_common_strings.html#a28dfe5e18d55dcb9a08ce231ff608146", null ],
     [ "VK_KHR_WIN32_SURFACE_EXTENSION_NAME", "d1/d92/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_common_strings.html#aa65b810f9bdcf11233b4a35f7ec16cc6", null ],
     [ "VK_KHR_XCB_SURFACE_EXTENSION_NAME", "d1/d92/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_common_strings.html#a0044f5b3af71095289820fe5229c07ce", null ],
@@ -16,5 +17,6 @@ var class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_common_strings =
     [ "KhronosValidationLayerName", "d1/d92/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_common_strings.html#a08da19ba6c56fb5f4c2b45d9616cf75d", null ],
     [ "main", "d1/d92/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_common_strings.html#a25eb08e633fdc6d28fc5522ab1e3a60d", null ],
     [ "VK_KHR_get_physical_device_properties2", "d1/d92/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_common_strings.html#a333a87d535c2ee5a679cf56631d5ebeb", null ],
-    [ "VK_KHR_portability_subset", "d1/d92/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_common_strings.html#a86ff4d85ddfe763fa788925d916683ed", null ]
+    [ "VK_KHR_portability_subset", "d1/d92/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_common_strings.html#a86ff4d85ddfe763fa788925d916683ed", null ],
+    [ "VK_KHR_portability_enumeration", "d1/d92/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_vk_1_1_common_strings.html#a53123021035808c5e77f1351d8c68220", null ]
 ];

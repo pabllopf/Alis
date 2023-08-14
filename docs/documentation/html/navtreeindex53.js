@@ -1,7 +1,9 @@
 var NAVTREEINDEX53 =
 {
-"da/db0/namespace_alis_1_1_core_1_1_audio.html":[0,0,0,2,1],
+"da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#ad9c40fe84df0e82bf70d732a198cd56cabed99e5db57749f375e738c1c0258047":[1,0,0,2,5,5,1,24,0,1],
+"da/dad/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#ad9c40fe84df0e82bf70d732a198cd56cad77bb891b6d90fe3dd2d1a7d2d08ceb7":[1,0,0,2,5,5,1,24,0,4],
 "da/db0/namespace_alis_1_1_core_1_1_audio.html":[1,0,0,2,1],
+"da/db0/namespace_alis_1_1_core_1_1_audio.html":[0,0,0,2,1],
 "da/db8/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_winrt_wm_info.html":[1,0,0,2,5,4,1,17],
 "da/db8/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_winrt_wm_info.html#a3f9ae67b8e508888c385bd57e9884a41":[1,0,0,2,5,4,1,17,0],
 "da/dba/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_m_t_l_1_1_m_t_l_command_list.html":[1,0,0,2,5,0,3,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX53 =
 "da/dc7/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes.html#af29944f11da42a8d3e23c554ab314467":[1,0,0,2,5,1,0,1,2,31],
 "da/dc7/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes.html#af5cc13351e89b2f5d0df04099b88f149":[1,0,0,2,5,1,0,1,2,12],
 "da/dc7/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes.html#af74e34a03f85242ed24996d99797b3d1":[1,0,0,2,5,1,0,1,2,78],
-"da/dc7/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes.html#afd95e3de73ab25bdaa1406498a2b83cd":[1,0,0,2,5,1,0,1,2,55],
-"da/dc7/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes.html#afdaf73a25e8b46352a13446a57251875":[1,0,0,2,5,1,0,1,2,4],
-"da/dc7/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes.html#aff74b54727cc71f4b72d5afd3a93e15e":[1,0,0,2,5,1,0,1,2,65]
+"da/dc7/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes.html#afd95e3de73ab25bdaa1406498a2b83cd":[1,0,0,2,5,1,0,1,2,55]
 };

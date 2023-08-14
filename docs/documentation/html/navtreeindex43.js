@@ -1,5 +1,7 @@
 var NAVTREEINDEX43 =
 {
+"d9/d0e/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_wayland_wm_info.html#a4b600507c183e37363765587c77aac18":[1,0,0,2,5,4,1,15,1],
+"d9/d0e/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_wayland_wm_info.html#a500e1f795bd15834fdea8162cc627487":[1,0,0,2,5,4,1,15,4],
 "d9/d0e/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_wayland_wm_info.html#a85d69511b3665f6c2349ce682748f568":[1,0,0,2,5,4,1,15,3],
 "d9/d0e/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_wayland_wm_info.html#aefa844c5aedccc7d2e92b1791970dd9d":[1,0,0,2,5,4,1,15,0],
 "d9/d10/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_audio_spec.html":[1,0,0,2,5,4,1,20],
@@ -134,8 +136,8 @@ var NAVTREEINDEX43 =
 "d9/d22/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_convex_shape.html#a3fae8e6b41af8c6f6cdc3daad6ce6c3f":[1,0,0,2,5,5,0,4,6],
 "d9/d22/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_convex_shape.html#aae20b590beb43fb553e1c96e368c9642":[1,0,0,2,5,5,0,4,5],
 "d9/d22/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_convex_shape.html#af7f1a21108335e0acdef55542b2c76cd":[1,0,0,2,5,5,0,4,7],
-"d9/d25/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util.html":[1,0,0,2,8,7,5,1,3],
 "d9/d25/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util.html":[0,0,0,2,8,7,5,1,3],
+"d9/d25/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util.html":[1,0,0,2,8,7,5,1,3],
 "d9/d26/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_i_build.html":[1,0,0,2,0,2,1],
 "d9/d26/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_i_build.html#aabb35ee6a77298c81a1308a0ec4b87f1":[1,0,0,2,0,2,1,0],
 "d9/d26/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_touch_finger_event.html":[1,0,0,2,5,4,1,74],
@@ -247,7 +249,5 @@ var NAVTREEINDEX43 =
 "d9/d2a/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_native.html#a1ba321ffa37bad2fd04f3e7535127b24":[1,0,0,2,5,1,39,322],
 "d9/d2a/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_native.html#a1baa7ed3abc8017ee3741da9ce6cdc9a":[1,0,0,2,5,1,39,597],
 "d9/d2a/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_native.html#a1ce52f58781f5e1282bbb3ed12f2a8c1":[1,0,0,2,5,1,39,140],
-"d9/d2a/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_native.html#a1d625c687f8c6c2fd66f4b7a58d4a68a":[1,0,0,2,5,1,39,242],
-"d9/d2a/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_native.html#a1e024499b890c777665cd242f161c819":[1,0,0,2,5,1,39,255],
-"d9/d2a/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_native.html#a1e37744f3c92deecaa8f993bcfaaa0a4":[1,0,0,2,5,1,39,467]
+"d9/d2a/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_native.html#a1d625c687f8c6c2fd66f4b7a58d4a68a":[1,0,0,2,5,1,39,242]
 };

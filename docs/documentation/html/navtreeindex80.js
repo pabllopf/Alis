@@ -1,6 +1,8 @@
 var NAVTREEINDEX80 =
 {
+"df/dd2/class_alis_1_1_core_1_1_component_1_1_light_1_1_area_light.html#a0aa3673e8bb7d6ad75c5725983452cd6":[1,0,0,2,2,3,0,0],
 "df/dd2/namespace_alis_1_1_core_1_1_network_1_1_internal.html":[1,0,0,2,7,1],
+"df/dd2/namespace_alis_1_1_core_1_1_network_1_1_internal.html":[0,0,0,2,7,1],
 "df/dd8/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_s_d_l2_1_1_key_event.html":[1,0,0,2,5,0,5,6],
 "df/dd8/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_s_d_l2_1_1_key_event.html#a2a08a2b7e56ff9e8a8bb2e5da0588866":[1,0,0,2,5,0,5,6,2],
 "df/dd8/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_s_d_l2_1_1_key_event.html#a6c7f5aeb6885903bea383e8b7fb6e7b6":[1,0,0,2,5,0,5,6,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX80 =
 "df/de2/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_native.html#a8024cbaa9e61ac700aca3bae131373bb":[1,0,0,2,5,1,0,2,3,133],
 "df/de2/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_native.html#a814535a414266b66b0dcec56c855ca80":[1,0,0,2,5,1,0,2,3,8],
 "df/de2/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_native.html#a81582743c0b802f96b8c326cd33c4250":[1,0,0,2,5,1,0,2,3,22],
-"df/de2/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_native.html#a823e9e90560e4bcb3433171731147942":[1,0,0,2,5,1,0,2,3,210],
-"df/de2/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_native.html#a838e090adb5b976ad9e3d68f2d419612":[1,0,0,2,5,1,0,2,3,322],
-"df/de2/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_native.html#a83c2abd9f4c50eea479eed33895cead6":[1,0,0,2,5,1,0,2,3,29]
+"df/de2/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_native.html#a823e9e90560e4bcb3433171731147942":[1,0,0,2,5,1,0,2,3,210]
 };

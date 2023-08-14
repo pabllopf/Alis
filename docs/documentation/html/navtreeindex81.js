@@ -1,5 +1,7 @@
 var NAVTREEINDEX81 =
 {
+"df/de2/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_native.html#a838e090adb5b976ad9e3d68f2d419612":[1,0,0,2,5,1,0,2,3,322],
+"df/de2/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_native.html#a83c2abd9f4c50eea479eed33895cead6":[1,0,0,2,5,1,0,2,3,29],
 "df/de2/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_native.html#a83c5f5c471f0e0609978eee8079902b6":[1,0,0,2,5,1,0,2,3,216],
 "df/de2/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_native.html#a83cb3a80acdaa3d0273d83d869edab38":[1,0,0,2,5,1,0,2,3,144],
 "df/de2/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_native.html#a840b5fae2c85a553df670bf67336625c":[1,0,0,2,5,1,0,2,3,129],
@@ -202,8 +204,8 @@ var NAVTREEINDEX81 =
 "df/dfd/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_layer.html#a63c56bb68ce9884be30517f7b84520dc":[1,0,0,2,5,0,2,3,1],
 "df/dfd/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_layer.html#aa0d696c9121ffcd1f9ae468bf0638260":[1,0,0,2,5,0,2,3,3],
 "df/dfd/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_a_layer.html#ac831f7f517eafb6602e7c8be368d9549":[1,0,0,2,5,0,2,3,2],
-"functions.html":[1,3,0],
 "functions.html":[1,3,0,0],
+"functions.html":[1,3,0],
 "functions_a.html":[1,3,0,1],
 "functions_b.html":[1,3,0,2],
 "functions_c.html":[1,3,0,3],
@@ -212,8 +214,8 @@ var NAVTREEINDEX81 =
 "functions_enum.html":[1,3,3],
 "functions_evnt.html":[1,3,5],
 "functions_f.html":[1,3,0,6],
-"functions_func.html":[1,3,1,0],
 "functions_func.html":[1,3,1],
+"functions_func.html":[1,3,1,0],
 "functions_func_a.html":[1,3,1,1],
 "functions_func_b.html":[1,3,1,2],
 "functions_func_c.html":[1,3,1,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX81 =
 "functions_k.html":[1,3,0,11],
 "functions_l.html":[1,3,0,12],
 "functions_m.html":[1,3,0,13],
-"functions_n.html":[1,3,0,14],
-"functions_o.html":[1,3,0,15],
-"functions_p.html":[1,3,0,16]
+"functions_n.html":[1,3,0,14]
 };

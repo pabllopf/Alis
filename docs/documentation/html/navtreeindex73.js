@@ -1,5 +1,7 @@
 var NAVTREEINDEX73 =
 {
+"de/da0/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_i_o_ptr.html#aa37c8ef35424a411799dbe3abccb9d53":[1,0,0,2,5,1,34,18],
+"de/da0/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_i_o_ptr.html#aa54c9b34e63b464ddb5a2f07400e6251":[1,0,0,2,5,1,34,85],
 "de/da0/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_i_o_ptr.html#aa68340cfef5f01c59f50d4ed7154b8fe":[1,0,0,2,5,1,34,113],
 "de/da0/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_i_o_ptr.html#aa72e00d2b08fb615bd1894db6e239e9b":[1,0,0,2,5,1,34,76],
 "de/da0/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_i_o_ptr.html#aac6827656c2a5045a47e8aa17df1a285":[1,0,0,2,5,1,34,41],
@@ -128,8 +130,8 @@ var NAVTREEINDEX73 =
 "de/dc5/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_draw_cmd_header_ptr.html#aec8fe1fd7c526196e7fbd4722110d4d4":[1,0,0,2,5,1,7,4],
 "de/dcc/namespace_alis_1_1_core_1_1_aspect_1_1_math_1_1_util.html":[0,0,0,2,0,4,3],
 "de/dcc/namespace_alis_1_1_core_1_1_aspect_1_1_math_1_1_util.html":[1,0,0,2,0,4,3],
-"de/dcf/namespace_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll.html":[0,0,0,2,0,0,1],
 "de/dcf/namespace_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll.html":[1,0,0,2,0,0,1],
+"de/dcf/namespace_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll.html":[0,0,0,2,0,0,1],
 "de/dd0/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_g_point.html":[1,0,0,2,5,0,2,7],
 "de/dd0/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_g_point.html#a2451ed816335302647127dcb972d07de":[1,0,0,2,5,0,2,7,0],
 "de/dd0/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_metal_1_1_c_g_point.html#a365c33198bf7b9278bf5adae4f0e3538":[1,0,0,2,5,0,2,7,3],
@@ -225,8 +227,8 @@ var NAVTREEINDEX73 =
 "de/ded/interface_alis_1_1_core_1_1_graphic_1_1_backends_1_1_s_d_l2_1_1_input_snapshot.html#af0abe1d3da3f019b2a945d414f17fac7":[1,0,0,2,5,0,5,5,2],
 "de/df1/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_add_frame.html":[1,0,0,2,0,2,0,3],
 "de/df1/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_add_frame.html#a9cc0d56394bd7dbde79ed9a90941563c":[1,0,0,2,0,2,0,3,0],
-"de/df1/namespace_alis_1_1_core_1_1_audio_1_1_o_s_1_1_interfaces.html":[1,0,0,2,1,0,0],
 "de/df1/namespace_alis_1_1_core_1_1_audio_1_1_o_s_1_1_interfaces.html":[0,0,0,2,1,0,0],
+"de/df1/namespace_alis_1_1_core_1_1_audio_1_1_o_s_1_1_interfaces.html":[1,0,0,2,1,0,0],
 "de/df2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_util.html":[1,0,0,2,5,0,1,16],
 "de/df2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_util.html#a077f2122d674a96dc9127b973e81cf4f":[1,0,0,2,5,0,1,16,0],
 "de/df2/class_alis_1_1_core_1_1_graphic_1_1_backends_1_1_d3_d11_1_1_d3_d11_util.html#a368561de6e5adbf7b6159850f27753bb":[1,0,0,2,5,0,1,16,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX73 =
 "df/d00/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_buffer_description.html#a442505caec180faa4c64f8b95837fafa":[1,0,0,2,5,0,19,6],
 "df/d00/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_buffer_description.html#a64de5ee05c168b33af165d03b44e4668":[1,0,0,2,5,0,19,5],
 "df/d00/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_buffer_description.html#a7cbed5063b7ba84d816255c9e1784745":[1,0,0,2,5,0,19,1],
-"df/d00/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_buffer_description.html#aa12f1abb0f5b0f4b3d5e71af939af948":[1,0,0,2,5,0,19,3],
-"df/d00/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_buffer_description.html#ac486085fbc6cadbd0e671d3d4020db42":[1,0,0,2,5,0,19,2],
-"df/d00/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_buffer_description.html#acd8aed8c9b1ab18cd7cc1ca3562f5bfb":[1,0,0,2,5,0,19,7]
+"df/d00/struct_alis_1_1_core_1_1_graphic_1_1_backends_1_1_buffer_description.html#aa12f1abb0f5b0f4b3d5e71af939af948":[1,0,0,2,5,0,19,3]
 };
