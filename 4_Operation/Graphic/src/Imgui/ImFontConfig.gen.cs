@@ -105,8 +105,25 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
         public ImFontConfigPtr(IntPtr nativePtr) => NativePtr = (ImFontConfig*)nativePtr;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nativePtr"></param>
+        /// <returns></returns>
         public static implicit operator ImFontConfigPtr(ImFontConfig* nativePtr) => new ImFontConfigPtr(nativePtr);
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="wrappedPtr"></param>
+       /// <returns></returns>
         public static implicit operator ImFontConfig* (ImFontConfigPtr wrappedPtr) => wrappedPtr.NativePtr;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nativePtr"></param>
+        /// <returns></returns>
         public static implicit operator ImFontConfigPtr(IntPtr nativePtr) => new ImFontConfigPtr(nativePtr);
         /// <summary>
         /// Gets or sets the value of the font data

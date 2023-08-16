@@ -15,6 +15,11 @@ namespace Alis.Core.Graphic.Backends.Metal
         /// </summary>
         public readonly IntPtr NativePtr;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mco"></param>
+        /// <returns></returns>
         public static implicit operator IntPtr(MTLCompileOptions mco) => mco.NativePtr;
 
         /// <summary>

@@ -22,7 +22,18 @@ namespace Alis.Core.Graphic.Backends.SDL2
             NativePointer = pointer;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Sdl2Cursor"></param>
+        /// <returns></returns>
         public static implicit operator IntPtr(SDL_Cursor Sdl2Cursor) => Sdl2Cursor.NativePointer;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pointer"></param>
+        /// <returns></returns>
         public static implicit operator SDL_Cursor(IntPtr pointer) => new SDL_Cursor(pointer);
     }
 

@@ -1108,7 +1108,7 @@ namespace Alis.Core.Graphic.Backends.OpenGL.NoAllocEntryList
         public T Get(List<object> list) => (T)list[_index];
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Tracked"/> class
+        /// Initializes a new instance of the class
         /// </summary>
         /// <param name="list">The list</param>
         /// <param name="item">The item</param>

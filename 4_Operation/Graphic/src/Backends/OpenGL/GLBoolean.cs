@@ -70,12 +70,48 @@ namespace Alis.Core.Graphic.Backends.OpenGL
             return $"{(this ? "True" : "False")} ({Value})";
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static implicit operator bool(GLboolean b) => b.Value != 0;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static implicit operator uint(GLboolean b) => b.Value;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static implicit operator GLboolean(bool b) => b ? True : False;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator GLboolean(byte value) => new GLboolean(value);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static bool operator ==(GLboolean left, GLboolean right) => left.Value == right.Value;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static bool operator !=(GLboolean left, GLboolean right) => left.Value != right.Value;
     }
 }

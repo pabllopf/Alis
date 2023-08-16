@@ -13,6 +13,12 @@ namespace Alis.Core.Graphic.Backends.Metal
         /// The native ptr
         /// </summary>
         public readonly IntPtr NativePtr;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nsView"></param>
+        /// <returns></returns>
         public static implicit operator IntPtr(NSView nsView) => nsView.NativePtr;
 
         /// <summary>

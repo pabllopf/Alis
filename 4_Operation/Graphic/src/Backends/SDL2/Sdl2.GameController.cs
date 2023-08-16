@@ -22,7 +22,18 @@ namespace Alis.Core.Graphic.Backends.SDL2
             NativePointer = pointer;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="controller"></param>
+        /// <returns></returns>
         public static implicit operator IntPtr(SDL_GameController controller) => controller.NativePointer;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pointer"></param>
+        /// <returns></returns>
         public static implicit operator SDL_GameController(IntPtr pointer) => new SDL_GameController(pointer);
     }
 

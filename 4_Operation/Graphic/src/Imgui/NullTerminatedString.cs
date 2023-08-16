@@ -38,6 +38,11 @@ namespace Alis.Core.Graphic.Imgui
             return Encoding.ASCII.GetString(Data, length);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nts"></param>
+        /// <returns></returns>
         public static implicit operator string(NullTerminatedString nts) => nts.ToString();
     }
 }

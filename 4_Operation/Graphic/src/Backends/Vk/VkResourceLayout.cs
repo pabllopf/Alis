@@ -46,7 +46,7 @@ namespace Alis.Core.Graphic.Backends.Vk
         /// <summary>
         /// Gets the value of the dynamic buffer count
         /// </summary>
-        public new int DynamicBufferCount { get; }
+        public int DynamicBufferCount { get; }
 
         /// <summary>
         /// Gets the value of the is disposed

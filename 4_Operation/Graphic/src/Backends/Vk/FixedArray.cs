@@ -18,7 +18,7 @@ namespace Alis.Core.Graphic.Backends.Vk
         public T Second;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FixedArray2"/> class
+        /// Initializes a new instance of the class
         /// </summary>
         /// <param name="first">The first</param>
         /// <param name="second">The second</param>
@@ -49,7 +49,7 @@ namespace Alis.Core.Graphic.Backends.Vk
         public T Third;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FixedArray3"/> class
+        /// Initializes a new instance of the class
         /// </summary>
         /// <param name="first">The first</param>
         /// <param name="second">The second</param>
@@ -85,7 +85,7 @@ namespace Alis.Core.Graphic.Backends.Vk
         public T Fourth;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FixedArray4"/> class
+        /// Initializes a new instance of the class
         /// </summary>
         /// <param name="first">The first</param>
         /// <param name="second">The second</param>
@@ -126,7 +126,7 @@ namespace Alis.Core.Graphic.Backends.Vk
         public T Fifth;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FixedArray5"/> class
+        /// Initializes a new instance of the class
         /// </summary>
         /// <param name="first">The first</param>
         /// <param name="second">The second</param>
@@ -172,7 +172,7 @@ namespace Alis.Core.Graphic.Backends.Vk
         public T Sixth;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FixedArray6"/> class
+        /// Initializes a new instance of the class
         /// </summary>
         /// <param name="first">The first</param>
         /// <param name="second">The second</param>

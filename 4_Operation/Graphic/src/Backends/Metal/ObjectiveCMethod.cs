@@ -16,7 +16,19 @@ namespace Alis.Core.Graphic.Backends.Metal
         /// </summary>
         /// <param name="ptr">The ptr</param>
         public ObjectiveCMethod(IntPtr ptr) => NativePtr = ptr;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="method"></param>
+        /// <returns></returns>
         public static implicit operator IntPtr(ObjectiveCMethod method) => method.NativePtr;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ptr"></param>
+        /// <returns></returns>
         public static implicit operator ObjectiveCMethod(IntPtr ptr) => new ObjectiveCMethod(ptr);
 
         /// <summary>

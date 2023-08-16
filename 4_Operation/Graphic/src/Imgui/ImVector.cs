@@ -128,7 +128,7 @@ namespace Alis.Core.Graphic.Imgui
         private readonly int _stride;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImPtrVector"/> class
+        /// Initializes a new instance of the  class
         /// </summary>
         /// <param name="vector">The vector</param>
         /// <param name="stride">The stride</param>
@@ -137,7 +137,7 @@ namespace Alis.Core.Graphic.Imgui
         { }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImPtrVector"/> class
+        /// Initializes a new instance of the  class
         /// </summary>
         /// <param name="size">The size</param>
         /// <param name="capacity">The capacity</param>

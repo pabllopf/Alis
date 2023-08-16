@@ -168,7 +168,6 @@ namespace Alis.Core.Graphic.Backends.OpenGL
         /// <summary>
         /// The capacity comparer class
         /// </summary>
-        /// <seealso cref="IComparer{uint}"/>
         private class CapacityComparer : IComparer<uint>
         {
             /// <summary>

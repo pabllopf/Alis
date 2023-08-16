@@ -14,7 +14,6 @@ namespace Alis.Core.Graphic.Backends
 
         /// <summary>
         /// Set of device specific flags.
-        /// See <see cref="Vortice.Direct3D11.DeviceCreationFlags"/> for details.
         /// </summary>
         public uint DeviceCreationFlags;
     }

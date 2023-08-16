@@ -28,8 +28,25 @@ namespace Alis.Core.Graphic.Backends.Metal
             Value = value ? (byte)1 : (byte)0;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static implicit operator bool(Bool8 b) => b.Value != 0;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static implicit operator byte(Bool8 b) => b.Value;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static implicit operator Bool8(bool b) => new Bool8(b);
     }
 }

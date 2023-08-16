@@ -14,11 +14,11 @@ namespace Alis.Core.Graphic.Backends.OpenGL
         /// <summary>
         /// Gets the value of the layout
         /// </summary>
-        public new OpenGLResourceLayout Layout { get; }
+        public OpenGLResourceLayout Layout { get; }
         /// <summary>
         /// Gets the value of the resources
         /// </summary>
-        public new BindableResource[] Resources { get; }
+        public BindableResource[] Resources { get; }
         /// <summary>
         /// Gets or sets the value of the name
         /// </summary>

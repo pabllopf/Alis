@@ -52,7 +52,20 @@ namespace Alis.Core.Graphic.Backends.SDL2
         /// <returns>The string</returns>
         public override string ToString() => $"({X}, {Y})";
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static bool operator ==(Point left, Point right) => left.Equals(right);
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static bool operator !=(Point left, Point right) => !left.Equals(right);
 
         /// <summary>

@@ -13,11 +13,11 @@ namespace Alis.Core.Graphic.Backends.MTL
         /// <summary>
         /// Gets the value of the resources
         /// </summary>
-        public new BindableResource[] Resources { get; }
+        public BindableResource[] Resources { get; }
         /// <summary>
         /// Gets the value of the layout
         /// </summary>
-        public new MTLResourceLayout Layout { get; }
+        public MTLResourceLayout Layout { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MTLResourceSet"/> class

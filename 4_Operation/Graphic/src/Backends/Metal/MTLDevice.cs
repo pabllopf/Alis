@@ -18,6 +18,12 @@ namespace Alis.Core.Graphic.Backends.Metal
         /// The native ptr
         /// </summary>
         public readonly IntPtr NativePtr;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="device"></param>
+        /// <returns></returns>
         public static implicit operator IntPtr(MTLDevice device) => device.NativePtr;
         /// <summary>
         /// Initializes a new instance of the <see cref="MTLDevice"/> class

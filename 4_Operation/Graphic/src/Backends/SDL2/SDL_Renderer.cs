@@ -21,7 +21,18 @@ namespace Alis.Core.Graphic.Backends.SDL2
             NativePointer = pointer;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Sdl2Window"></param>
+        /// <returns></returns>
         public static implicit operator IntPtr(SDL_Renderer Sdl2Window) => Sdl2Window.NativePointer;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pointer"></param>
+        /// <returns></returns>
         public static implicit operator SDL_Renderer(IntPtr pointer) => new SDL_Renderer(pointer);
     }
 }

@@ -24,13 +24,13 @@ namespace Alis.Core.Graphic.Imgui
         public readonly int Count;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RangeAccessor"/> class
+        /// Initializes a new instance of the  class
         /// </summary>
         /// <param name="data">The data</param>
         /// <param name="count">The count</param>
         public RangeAccessor(IntPtr data, int count) : this(data.ToPointer(), count) { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RangeAccessor"/> class
+        /// Initializes a new instance of the  class
         /// </summary>
         /// <param name="data">The data</param>
         /// <param name="count">The count</param>
@@ -72,13 +72,13 @@ namespace Alis.Core.Graphic.Imgui
         public readonly int Count;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RangePtrAccessor"/> class
+        /// Initializes a new instance of the  class
         /// </summary>
         /// <param name="data">The data</param>
         /// <param name="count">The count</param>
         public RangePtrAccessor(IntPtr data, int count) : this(data.ToPointer(), count) { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RangePtrAccessor"/> class
+        /// Initializes a new instance of the  class
         /// </summary>
         /// <param name="data">The data</param>
         /// <param name="count">The count</param>

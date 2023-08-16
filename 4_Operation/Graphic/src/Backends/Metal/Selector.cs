@@ -50,6 +50,11 @@ namespace Alis.Core.Graphic.Backends.Metal
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public static implicit operator Selector(string s) => new Selector(s);
     }
 }

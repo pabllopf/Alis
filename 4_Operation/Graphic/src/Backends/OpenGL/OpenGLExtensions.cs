@@ -6,7 +6,6 @@ namespace Alis.Core.Graphic.Backends.OpenGL
     /// <summary>
     /// The open gl extensions class
     /// </summary>
-    /// <seealso cref="IReadOnlyCollection{string}"/>
     internal class OpenGLExtensions : IReadOnlyCollection<string>
     {
         /// <summary>

@@ -17,6 +17,12 @@ namespace Alis.Core.Graphic.Backends.Metal
         /// </summary>
         /// <param name="ptr">The ptr</param>
         public NSString(IntPtr ptr) => NativePtr = ptr;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nss"></param>
+        /// <returns></returns>
         public static implicit operator IntPtr(NSString nss) => nss.NativePtr;
 
         /// <summary>

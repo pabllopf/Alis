@@ -29,7 +29,17 @@ namespace Alis.Core.Graphic.Backends.Metal
             get => _value;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static implicit operator CGFloat(double value) => new CGFloat(value);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cgf"></param>
+        /// <returns></returns>
         public static implicit operator double(CGFloat cgf) => cgf.Value;
 
         /// <summary>

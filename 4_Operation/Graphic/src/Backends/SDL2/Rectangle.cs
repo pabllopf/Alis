@@ -123,7 +123,20 @@ namespace Alis.Core.Graphic.Backends.SDL2
             return HashHelpersdl2.Combine(X.GetHashCode(), HashHelpersdl2.Combine(Y.GetHashCode(), HashHelpersdl2.Combine(Width.GetHashCode(), Height.GetHashCode())));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static bool operator ==(Rectangle left, Rectangle right) => left.Equals(right);
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static bool operator !=(Rectangle left, Rectangle right) => !left.Equals(right);
     }
 }

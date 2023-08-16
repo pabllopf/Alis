@@ -378,23 +378,94 @@ namespace Alis.Core.Graphic.Backends.SDL2
         /// </summary>
         public IntPtr SdlWindowHandle => _window;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public event Action Resized;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public event Action Closing;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public event Action Closed;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public event Action FocusLost;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public event Action FocusGained;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public event Action Shown;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public event Action Hidden;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public event Action MouseEntered;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public event Action MouseLeft;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public event Action Exposed;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public event Action<Point> Moved;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public event Action<MouseWheelEventArgs> MouseWheel;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public event Action<MouseMoveEventArgs> MouseMove;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public event Action<MouseEvent> MouseDown;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public event Action<MouseEvent> MouseUp;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public event Action<KeyEvent> KeyDown;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public event Action<KeyEvent> KeyUp;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public event Action<DragDropEvent> DragDrop;
 
         /// <summary>
@@ -1630,6 +1701,11 @@ namespace Alis.Core.Graphic.Backends.SDL2
         /// </summary>
         private ValueHolder Back = new ValueHolder();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bv"></param>
+        /// <returns></returns>
         public static implicit operator T(BufferedValue<T> bv) => bv.Value;
 
         /// <summary>

@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.Backends.MTL
         /// <summary>
         /// Gets the value of the resource layouts
         /// </summary>
-        public new MTLResourceLayout[] ResourceLayouts { get; }
+        public MTLResourceLayout[] ResourceLayouts { get; }
         /// <summary>
         /// Gets the value of the resource binding model
         /// </summary>
