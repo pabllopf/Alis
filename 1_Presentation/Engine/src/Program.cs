@@ -1,3 +1,5 @@
+
+
 using System;
 using System.Linq;
 using System.Numerics;
@@ -112,6 +114,7 @@ namespace Alis.App.Engine
                 backend = GraphicsBackend.OpenGL;
             }
 
+            backend = GraphicsBackend.OpenGL;
             
             // Create window, GraphicsDevice, and all resources necessary for the demo.
             VeldridStartup.CreateWindowAndGraphicsDevice(

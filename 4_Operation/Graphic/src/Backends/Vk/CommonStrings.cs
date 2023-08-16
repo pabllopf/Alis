@@ -81,6 +81,9 @@ namespace Alis.Core.Graphic.Backends.Vk
         /// </summary>
         public static FixedUtf8String VK_KHR_portability_subset { get; } = "VK_KHR_portability_subset";
 
+        /// <summary>
+        /// Gets the value of the vk khr portability enumeration
+        /// </summary>
         public static FixedUtf8String VK_KHR_portability_enumeration { get; } = "VK_KHR_portability_enumeration";
     }
 }

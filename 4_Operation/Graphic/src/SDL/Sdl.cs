@@ -102,12 +102,12 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl init timer
         /// </summary>
-        private const uint InitTimer = 0x00000001;
+        public const uint InitTimer = 0x00000001;
 
         /// <summary>
         ///     The sdl init audio
         /// </summary>
-        private const uint InitAudio = 0x00000010;
+        public const uint InitAudio = 0x00000010;
 
         /// <summary>
         ///     The sdl init video
@@ -127,7 +127,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl init game controller
         /// </summary>
-        private const uint InitGameController = 0x00002000;
+        public const uint InitGameController = 0x00002000;
 
         /// <summary>
         ///     The sdl init events
@@ -752,17 +752,17 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl major version
         /// </summary>
-        private const int MajorVersion = 2;
+        public const int MajorVersion = 2;
 
         /// <summary>
         ///     The sdl minor version
         /// </summary>
-        private const int MinorVersion = 0;
+        public const int MinorVersion = 0;
 
         /// <summary>
         ///     The sdl patch level
         /// </summary>
-        private const int PatchLevel = 18;
+        public const int PatchLevel = 18;
 
         /// <summary>
         ///     The sdl window pos undefined mask

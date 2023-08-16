@@ -3226,7 +3226,11 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// Gets the value of the backend platform name
         /// </summary>
-        public NullTerminatedString BackendPlatformName => new NullTerminatedString(NativePtr->BackendPlatformName);
+        public NullTerminatedString BackendPlatformName
+        {
+            get => new NullTerminatedString(NativePtr->BackendPlatformName);
+        }
+
         /// <summary>
         /// Gets the value of the backend renderer name
         /// </summary>
