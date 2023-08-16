@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.1)
 
 project(cimgui)
 
-find_package(SDL2 CONFIG REQUIRED)
+#find_package(SDL2 CONFIG REQUIRED)
 
 #general settings
 file(GLOB IMGUI_SOURCES

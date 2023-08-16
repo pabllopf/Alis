@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\pabllopf\Desktop\Alis\4_Operation\Graphic\binding\cimgui\build64\CMakeFiles\c3e7508e2f5097f9fc27df395006fa53\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{5661B9A9-5C34-3940-8D02-1223CA88D76F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
