@@ -1,0 +1,10 @@
+^C:\USERS\PABLLOPF\DESKTOP\ALIS\4_OPERATION\GRAPHIC\BINDING\CIMGUI\BUILD32\CMAKEFILES\05D890F8339C9A4F9D258CD69BAA848C\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/cimgui -BC:/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/cimgui/build32 --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/cimgui/build32/cimgui.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

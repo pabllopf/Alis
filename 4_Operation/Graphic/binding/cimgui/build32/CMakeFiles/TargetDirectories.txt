@@ -1,0 +1,4 @@
+C:/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/cimgui/build32/CMakeFiles/cimgui.dir
+C:/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/cimgui/build32/CMakeFiles/INSTALL.dir
+C:/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/cimgui/build32/CMakeFiles/ALL_BUILD.dir
+C:/Users/pabllopf/Desktop/Alis/4_Operation/Graphic/binding/cimgui/build32/CMakeFiles/ZERO_CHECK.dir
