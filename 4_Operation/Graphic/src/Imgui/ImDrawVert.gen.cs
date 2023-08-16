@@ -1,6 +1,7 @@
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
+using Alis.Core.Graphic.ImGui.Utils;
 
 namespace Alis.Core.Graphic.Imgui
 {
@@ -12,15 +13,15 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The pos
         /// </summary>
-        public Vector2 pos;
+        public Vector2 Pos;
         /// <summary>
         /// The uv
         /// </summary>
-        public Vector2 uv;
+        public Vector2 Uv;
         /// <summary>
         /// The col
         /// </summary>
-        public uint col;
+        public uint Col;
     }
     /// <summary>
     /// The im draw vert ptr
@@ -65,14 +66,14 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// Gets the value of the pos
         /// </summary>
-        public ref Vector2 pos => ref Unsafe.AsRef<Vector2>(&NativePtr->pos);
+        public ref Vector2 Pos => ref Unsafe.AsRef<Vector2>(&NativePtr->Pos);
         /// <summary>
         /// Gets the value of the uv
         /// </summary>
-        public ref Vector2 uv => ref Unsafe.AsRef<Vector2>(&NativePtr->uv);
+        public ref Vector2 Uv => ref Unsafe.AsRef<Vector2>(&NativePtr->Uv);
         /// <summary>
         /// Gets the value of the col
         /// </summary>
-        public ref uint col => ref Unsafe.AsRef<uint>(&NativePtr->col);
+        public ref uint Col => ref Unsafe.AsRef<uint>(&NativePtr->Col);
     }
 }

@@ -1,6 +1,6 @@
 using System;
 using System.Numerics;
-using System.Runtime.CompilerServices;
+using Alis.Core.Graphic.ImGui.Utils;
 
 namespace Alis.Core.Graphic.Imgui
 {

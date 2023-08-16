@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Engine.Menus
+namespace Alis.App.Engine.Menus.TopMenu
 {
     /// <summary>
     /// The top menu class

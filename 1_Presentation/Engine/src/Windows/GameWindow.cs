@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IMenu.cs
+//  File:GameWindow.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,13 +27,29 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Engine.Menus.TopMenu
+using Alis.Core.Graphic.Imgui;
+
+namespace Alis.App.Engine.Windows
 {
     /// <summary>
-    /// The menu interface
+    /// The game window class
     /// </summary>
-    public interface IMenu
+    public class GameWindow : IWindow
     {
         
+        /// <summary>
+        /// The name window
+        /// </summary>
+        private const string NameWindow = "Game"; 
+        
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
+        public void Render()
+        {
+            ImGui.Begin(NameWindow);
+            
+            ImGui.End();
+        }
     }
 }

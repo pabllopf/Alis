@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IMenu.cs
+//  File:IWindow.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,13 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Engine.Menus.TopMenu
+namespace Alis.App.Engine.Windows
 {
     /// <summary>
-    /// The menu interface
+    /// The window interface
     /// </summary>
-    public interface IMenu
+    public interface IWindow
     {
-        
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
+        void Render();
     }
 }

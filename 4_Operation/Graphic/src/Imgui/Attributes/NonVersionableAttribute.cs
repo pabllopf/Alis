@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IMenu.cs
+//  File:NonVersionableAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,13 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Engine.Menus.TopMenu
+using System;
+
+namespace Alis.Core.Graphic.ImGui.Attributes
 {
     /// <summary>
-    /// The menu interface
+    ///     The non versionable attribute class
     /// </summary>
-    public interface IMenu
+    /// <seealso cref="Attribute" />
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Struct, Inherited = false)]
+    internal sealed class NonVersionableAttribute : Attribute
     {
-        
     }
 }

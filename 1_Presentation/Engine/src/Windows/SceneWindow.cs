@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IMenu.cs
+//  File:SceneWindow.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,13 +27,28 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.App.Engine.Menus.TopMenu
+using Alis.Core.Graphic.Imgui;
+
+namespace Alis.App.Engine.Windows
 {
     /// <summary>
-    /// The menu interface
+    /// The scene window class
     /// </summary>
-    public interface IMenu
+    public class SceneWindow : IWindow
     {
+        /// <summary>
+        /// The name window
+        /// </summary>
+        private const string NameWindow = "Scene"; 
         
+        /// <summary>
+        /// Renders this instance
+        /// </summary>
+        public void Render()
+        {
+            ImGui.Begin(NameWindow);
+            
+            ImGui.End();
+        }
     }
 }

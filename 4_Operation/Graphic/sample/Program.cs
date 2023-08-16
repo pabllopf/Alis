@@ -45,7 +45,7 @@ namespace Alis.Core.Graphic.Sample
             int run = 1;
             while (run == 1)
             {
-                Console.WriteLine(@"Select backend graphic system ('sfml' | 'sdl' | 'direct11' | 'metal' | 'opengl' | 'opengles' | 'vulkan')");
+                Console.WriteLine(@"Select backend graphic system ('sfml' | 'sdl')");
                 string os = Console.ReadLine();
                 switch (os)
                 {
@@ -57,31 +57,6 @@ namespace Alis.Core.Graphic.Sample
                     case "sdl":
                         SdlController sdlController = new SdlController();
                         run = sdlController.Run();
-                        break;
-                    
-                    case "direct11":
-                        Direct3D11Controller direct3D11Controller = new Direct3D11Controller();
-                        run = direct3D11Controller.Run();
-                        break;
-                    
-                    case "metal":
-                        MetalController metalController = new MetalController();
-                        run = metalController.Run();
-                        break;
-                    
-                    case "opengl":
-                        OpenGLController openglController = new OpenGLController();
-                        run = openglController.Run();
-                        break;
-                    
-                    case "opengles":
-                        OpenGlesController openglesController = new OpenGlesController();
-                        run = openglesController.Run();
-                        break;
-                    
-                    case "vulkan":
-                        VulkanController vulkanController = new VulkanController();
-                        run = vulkanController.Run();
                         break;
                 }
             }

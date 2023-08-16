@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
+using Alis.Core.Graphic.ImGui.Utils;
 
 namespace Alis.Core.Graphic.Imgui
 {
@@ -40,7 +41,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <typeparam name="T">The </typeparam>
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
-        public ref T Ref<T>(int index)
+        public ref T Ref<T>(int index) where T : unmanaged
         {
             return ref Unsafe.AsRef<T>((byte*)Data + index * Unsafe.SizeOf<T>());
         }
@@ -60,7 +61,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im vector
     /// </summary>
-    public unsafe struct ImVector<T>
+    public unsafe struct ImVector<T> where T : unmanaged
     {
         /// <summary>
         /// The size
@@ -108,7 +109,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im ptr vector
     /// </summary>
-    public unsafe struct ImPtrVector<T>
+    public unsafe struct ImPtrVector<T> where T : unmanaged
     {
         /// <summary>
         /// The size

@@ -1,13 +1,14 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Alis.Core.Graphic.ImGui.Utils;
 
 namespace Alis.Core.Graphic.Imgui
 {
     /// <summary>
     /// The range accessor
     /// </summary>
-    public unsafe struct RangeAccessor<T> where T : struct
+    public unsafe struct RangeAccessor<T> where T : unmanaged
     {
         /// <summary>
         /// The 
@@ -60,7 +61,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The range ptr accessor
     /// </summary>
-    public unsafe struct RangePtrAccessor<T> where T : struct
+    public unsafe struct RangePtrAccessor<T> where T : unmanaged
     {
         /// <summary>
         /// The data

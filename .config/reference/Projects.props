@@ -205,10 +205,5 @@
               LinkBase="Assets/"
               CopyToOutputDirectory="Always"
               CopyToPublishDirectory="Always"/>
-        <EmbeddedResource
-            Condition="Exists('$(ProjectDir)/Shaders/') == True"
-            LogicalName="%(Filename)%(Extension)"
-            Include="$(ProjectDir)/Shaders/**"
-            LinkBase="Shaders/" />
     </ItemGroup>
 </Project>
