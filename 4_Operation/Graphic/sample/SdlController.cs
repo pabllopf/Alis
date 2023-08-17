@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Graphic.SDL;
 using Alis.Core.Graphic.SDL.Enums;
 using Alis.Core.Graphic.SDL.Structs;
@@ -95,6 +96,8 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         public int Run()
         {
+            EmbeddedDllClass.ExtractEmbeddedDlls("sdl2", SdlDlls.SdlDllBytes);
+            
             // Initilizes SDL.
             if (Sdl.Init(Sdl.InitEverything) < 0)
             {

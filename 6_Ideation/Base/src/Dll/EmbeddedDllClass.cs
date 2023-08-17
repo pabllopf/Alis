@@ -56,6 +56,8 @@ namespace Alis.Core.Aspect.Base.Dll
                 OSPlatform currentPlatform = GetCurrentPlatform();
                 Architecture currentArchitecture = RuntimeInformation.ProcessArchitecture;
 
+                Console.WriteLine($"OSPlatform={currentPlatform} | Architecture={currentArchitecture}");
+                
                 if (dllBytes.TryGetValue((currentPlatform, currentArchitecture), out byte[] resourceBytes))
                 {
                     File.WriteAllBytes(dllPath, resourceBytes);

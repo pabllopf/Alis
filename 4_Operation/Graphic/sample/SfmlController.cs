@@ -29,7 +29,10 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Base.Mapping;
+using Alis.Core.Graphic.SDL;
+using Alis.Core.Graphic.SFML;
 using Alis.Core.Graphic.SFML.Graphics;
 using Alis.Core.Graphic.SFML.Windows;
 
@@ -80,6 +83,10 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         public int Run()
         {
+            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window", SfmlDlls.SfmlWindowDllBytes);
+            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system", SfmlDlls.SfmlSystemDllBytes);
+            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics", SfmlDlls.SfmlGraphicsDllBytes);
+            
             VideoMode mode = new VideoMode(Width, Height);
             RenderWindow window = new RenderWindow(mode, "Sample");
 
