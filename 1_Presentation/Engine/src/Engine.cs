@@ -69,7 +69,7 @@ namespace Alis.App.Engine
         /// <summary>
         /// The high dpi
         /// </summary>
-        private bool highDpi = true;
+        private bool highDpi = false;
         
         /// <summary>
         /// The height window
@@ -450,6 +450,8 @@ namespace Alis.App.Engine
                 ShowDemos();
                 
                 ImGui.End();
+                
+                
                 
                 ImGui.PopFont();
                 
