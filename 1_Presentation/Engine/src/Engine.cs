@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Numerics;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using Alis.App.Engine.Windows;
 using Alis.Core.Aspect.Base.Dll;
@@ -192,7 +193,9 @@ namespace Alis.App.Engine
         ///     The quit
         /// </summary>
         private bool _quit;
-        
+
+        private bool menu_down_state = true;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Engine" /> class
         /// </summary>
@@ -326,7 +329,7 @@ namespace Alis.App.Engine
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
             dockspaceflags |= ImGuiWindowFlags.MenuBar;
             dockspaceflags |= ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove;
-            dockspaceflags |= ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus;
+            //dockspaceflags |= ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus;
             
             // config style
             style = ImGui.GetStyle();
@@ -418,10 +421,24 @@ namespace Alis.App.Engine
                 UpdateMousePosAndButtons();
                 
                 ImGui.PushFont(fontLoaded);
+
+                ImGui.BeginMainMenuBar();
+                if (ImGui.BeginMenu("Sample main menu"))
+                {
+                    ImGui.Separator();
+                    ImGui.Text("Sample text");
+                    ImGui.EndMenu();
+                }
+                ImGui.EndMainMenuBar();
+
+                
+                int size_menu_down = 25;
+                Vector2 size_dock = viewport.Size - new Vector2(0, size_menu_down * 2);
+                
                 
                 ImGui.SetNextWindowPos(viewport.WorkPos);
-                ImGui.SetNextWindowSize(viewport.WorkSize);
-                ImGui.SetNextWindowViewport(viewport.ID);
+                ImGui.SetNextWindowSize(size_dock);
+                //ImGui.SetNextWindowViewport(viewport.ID);
                 ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
                 ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
                 ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0.0f, 0.0f));
@@ -433,7 +450,7 @@ namespace Alis.App.Engine
                 ImGui.PopStyleVar(3);
                 
                 uint dockspace_id = ImGui.GetID("MyDockSpace");
-                ImGui.DockSpace(dockspace_id, ImGui.GetMainViewport().Size);
+                ImGui.DockSpace(dockspace_id, size_dock);
                 
                 if (ImGui.BeginMenuBar())
                 {
@@ -449,10 +466,40 @@ namespace Alis.App.Engine
                 windows.ForEach(i => i.Render());
                 ShowDemos();
                 
+                // Add menu bar flag and disable everything else
+                ImGuiWindowFlags style_glags_menu_down =
+                    ImGuiWindowFlags.NoDecoration | ImGuiWindowFlags.NoInputs |
+                    ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoScrollWithMouse |
+                    ImGuiWindowFlags.NoSavedSettings |
+                    ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoBackground |
+                    ImGuiWindowFlags.MenuBar;
+                
+                ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
+                ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
+                ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0.0f, 0.0f));
+                
+                ImGui.SetNextWindowPos(new Vector2(viewport.Pos.X, (viewport.Pos.Y + (viewport.Size.Y - size_menu_down))));
+                ImGui.SetNextWindowSize(new Vector2(viewport.Size.X, size_menu_down));
+                if (ImGui.Begin("##MenuDown", ref menu_down_state, style_glags_menu_down))
+                {
+                    ImGui.PopStyleVar(3);
+                    if (ImGui.BeginMenuBar()) 
+                    {
+                        ImGui.Text("Hello world from menu down");
+                        
+                        ImGui.Button("sample");
+                        
+                        ImGui.EndMenuBar();
+                    }
+                    
+                    
+                    ImGui.End();
+                }
+                
+                
+                
+                
                 ImGui.End();
-                
-                
-                
                 ImGui.PopFont();
                 
                 
