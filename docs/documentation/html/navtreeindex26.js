@@ -1,5 +1,6 @@
 var NAVTREEINDEX26 =
 {
+"d7/d12/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_sound.html#af3b9666a3d9a993009cc690bb04edcb7":[1,0,0,2,1,3,3,34],
 "d7/d15/namespace_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras.html":[1,0,0,2,5,1,0],
 "d7/d15/namespace_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras.html":[0,0,0,2,5,1,0],
 "d7/d18/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_sdl_message_box_data.html":[1,0,0,2,5,4,1,11],
@@ -248,6 +249,5 @@ var NAVTREEINDEX26 =
 "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#a807a3e737be1184e6819623784f96ab6":[1,0,0,2,5,4,1,66,11],
 "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#aa7a3ce60c1fe201b39dc6f278400adad":[1,0,0,2,5,4,1,66,7],
 "d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#aa9b8ed2112fc8d7ab5d00e8602e38c04":[1,0,0,2,5,4,1,66,14],
-"d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#ab7c73d1eff348cb6f9e8c44cc3b2db9b":[1,0,0,2,5,4,1,66,16],
-"d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#ab9f67cbb90b5813b28e33900c1daa1f7":[1,0,0,2,5,4,1,66,13]
+"d7/d86/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_renderer_info.html#ab7c73d1eff348cb6f9e8c44cc3b2db9b":[1,0,0,2,5,4,1,66,16]
 };

@@ -30,5 +30,6 @@ var class_alis_1_1_app_1_1_engine_1_1_engine =
     [ "_time", "d3/ddb/class_alis_1_1_app_1_1_engine_1_1_engine.html#ab56d9566fbb1cfbc784fbcd6864c6c68", null ],
     [ "windows", "d3/ddb/class_alis_1_1_app_1_1_engine_1_1_engine.html#a4b4089d3af40fd7f5c6126ff5c665a23", null ],
     [ "dockspaceflags", "d3/ddb/class_alis_1_1_app_1_1_engine_1_1_engine.html#aafec95913533a9a5366d824ffdf4b6db", null ],
-    [ "_quit", "d3/ddb/class_alis_1_1_app_1_1_engine_1_1_engine.html#abb97e8053b3fa7bab4564cfb96abed68", null ]
+    [ "_quit", "d3/ddb/class_alis_1_1_app_1_1_engine_1_1_engine.html#abb97e8053b3fa7bab4564cfb96abed68", null ],
+    [ "menu_down_state", "d3/ddb/class_alis_1_1_app_1_1_engine_1_1_engine.html#a47250358f26730ef2fa02542fbb0c33a", null ]
 ];
