@@ -8,7 +8,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui style
     /// </summary>
-    public unsafe partial struct ImGuiStyle
+    public unsafe struct ImGuiStyle
     {
         /// <summary>
         /// The alpha
@@ -394,7 +394,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui style ptr
     /// </summary>
-    public unsafe partial struct ImGuiStylePtr
+    public unsafe struct ImGuiStylePtr
     {
         /// <summary>
         /// Gets the value of the native ptr

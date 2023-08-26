@@ -8,7 +8,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui input text callback data
     /// </summary>
-    public unsafe partial struct ImGuiInputTextCallbackData
+    public unsafe struct ImGuiInputTextCallbackData
     {
         /// <summary>
         /// The event flag
@@ -62,7 +62,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui input text callback data ptr
     /// </summary>
-    public unsafe partial struct ImGuiInputTextCallbackDataPtr
+    public unsafe struct ImGuiInputTextCallbackDataPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

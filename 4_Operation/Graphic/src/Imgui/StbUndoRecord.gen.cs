@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The stb undo record
     /// </summary>
-    public unsafe partial struct StbUndoRecord
+    public unsafe struct StbUndoRecord
     {
         /// <summary>
         /// The where
@@ -29,7 +29,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The stb undo record ptr
     /// </summary>
-    public unsafe partial struct StbUndoRecordPtr
+    public unsafe struct StbUndoRecordPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
     /// <summary>
     /// The im guizmo native class
     /// </summary>
-    public static unsafe partial class ImGuizmoNative
+    public static unsafe class ImGuizmoNative
     {
         /// <summary>
         /// Ims the guizmo allow axis flip using the specified value

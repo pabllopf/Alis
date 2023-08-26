@@ -8,7 +8,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im color
     /// </summary>
-    public unsafe partial struct ImColor
+    public unsafe struct ImColor
     {
         /// <summary>
         /// The value
@@ -18,7 +18,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im color ptr
     /// </summary>
-    public unsafe partial struct ImColorPtr
+    public unsafe struct ImColorPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

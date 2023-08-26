@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im draw list splitter
     /// </summary>
-    public unsafe partial struct ImDrawListSplitter
+    public unsafe struct ImDrawListSplitter
     {
         /// <summary>
         /// The current
@@ -25,7 +25,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im draw list splitter ptr
     /// </summary>
-    public unsafe partial struct ImDrawListSplitterPtr
+    public unsafe struct ImDrawListSplitterPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

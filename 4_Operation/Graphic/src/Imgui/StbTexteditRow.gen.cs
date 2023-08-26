@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The stb textedit row
     /// </summary>
-    public unsafe partial struct StbTexteditRow
+    public unsafe struct StbTexteditRow
     {
         /// <summary>
         /// The 
@@ -37,7 +37,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The stb textedit row ptr
     /// </summary>
-    public unsafe partial struct StbTexteditRowPtr
+    public unsafe struct StbTexteditRowPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

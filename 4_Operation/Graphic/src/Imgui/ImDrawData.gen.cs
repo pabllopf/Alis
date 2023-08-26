@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im draw data
     /// </summary>
-    public unsafe partial struct ImDrawData
+    public unsafe struct ImDrawData
     {
         /// <summary>
         /// The valid

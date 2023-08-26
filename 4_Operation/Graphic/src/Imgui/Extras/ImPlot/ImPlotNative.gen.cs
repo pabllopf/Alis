@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
     /// <summary>
     /// The im plot native class
     /// </summary>
-    public static unsafe partial class ImPlotNative
+    public static unsafe class ImPlotNative
     {
         /// <summary>
         /// Ims the plot add colormap vec 4 ptr using the specified name

@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im font glyph
     /// </summary>
-    public unsafe partial struct ImFontGlyph
+    public unsafe struct ImFontGlyph
     {
         /// <summary>
         /// The colored
@@ -61,7 +61,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im font glyph ptr
     /// </summary>
-    public unsafe partial struct ImFontGlyphPtr
+    public unsafe struct ImFontGlyphPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

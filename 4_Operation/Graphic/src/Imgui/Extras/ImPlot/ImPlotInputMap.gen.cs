@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
     /// <summary>
     /// The im plot input map
     /// </summary>
-    public unsafe partial struct ImPlotInputMap
+    public unsafe struct ImPlotInputMap
     {
         /// <summary>
         /// The pan
@@ -61,7 +61,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
     /// <summary>
     /// The im plot input map ptr
     /// </summary>
-    public unsafe partial struct ImPlotInputMapPtr
+    public unsafe struct ImPlotInputMapPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

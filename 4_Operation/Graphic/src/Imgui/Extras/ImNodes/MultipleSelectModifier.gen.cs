@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
     /// <summary>
     /// The multiple select modifier
     /// </summary>
-    public unsafe partial struct MultipleSelectModifier
+    public unsafe struct MultipleSelectModifier
     {
         /// <summary>
         /// The modifier
@@ -15,7 +15,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
     /// <summary>
     /// The multiple select modifier ptr
     /// </summary>
-    public unsafe partial struct MultipleSelectModifierPtr
+    public unsafe struct MultipleSelectModifierPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

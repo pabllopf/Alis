@@ -8,7 +8,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
     /// <summary>
     /// The im nodes style
     /// </summary>
-    public unsafe partial struct ImNodesStyle
+    public unsafe struct ImNodesStyle
     {
         /// <summary>
         /// The grid spacing
@@ -82,7 +82,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
     /// <summary>
     /// The im nodes style ptr
     /// </summary>
-    public unsafe partial struct ImNodesStylePtr
+    public unsafe struct ImNodesStylePtr
     {
         /// <summary>
         /// Gets the value of the native ptr

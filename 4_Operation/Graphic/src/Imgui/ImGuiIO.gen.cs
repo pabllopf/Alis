@@ -9,7 +9,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui io
     /// </summary>
-    public unsafe partial struct ImGuiIO
+    public unsafe struct ImGuiIO
     {
         /// <summary>
         /// The config flags
@@ -3039,7 +3039,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui io ptr
     /// </summary>
-    public unsafe partial struct ImGuiIOPtr
+    public unsafe struct ImGuiIOPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

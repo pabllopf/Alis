@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui window
     /// </summary>
-    public unsafe partial struct ImGuiWindowClass
+    public unsafe struct ImGuiWindowClass
     {
         /// <summary>
         /// The class id
@@ -45,7 +45,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui window class ptr
     /// </summary>
-    public unsafe partial struct ImGuiWindowClassPtr
+    public unsafe struct ImGuiWindowClassPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

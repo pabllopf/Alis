@@ -8,7 +8,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im font config
     /// </summary>
-    public unsafe partial struct ImFontConfig
+    public unsafe struct ImFontConfig
     {
         /// <summary>
         /// The font data
@@ -90,7 +90,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im font config ptr
     /// </summary>
-    public unsafe partial struct ImFontConfigPtr
+    public unsafe struct ImFontConfigPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

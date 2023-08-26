@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
     /// <summary>
     /// The io
     /// </summary>
-    public unsafe partial struct IO
+    public unsafe struct IO
     {
         /// <summary>
         /// The emulate three button mouse
@@ -21,7 +21,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
     /// <summary>
     /// The io ptr
     /// </summary>
-    public unsafe partial struct IOPtr
+    public unsafe struct IOPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

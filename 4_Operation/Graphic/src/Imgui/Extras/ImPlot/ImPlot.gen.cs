@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
     /// <summary>
     /// The im plot class
     /// </summary>
-    public static unsafe partial class ImPlot
+    public static unsafe class ImPlot
     {
         /// <summary>
         /// Adds the colormap using the specified name

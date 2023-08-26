@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui text range
     /// </summary>
-    public unsafe partial struct ImGuiTextRange
+    public unsafe struct ImGuiTextRange
     {
         /// <summary>
         /// The 
@@ -19,7 +19,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui text range ptr
     /// </summary>
-    public unsafe partial struct ImGuiTextRangePtr
+    public unsafe struct ImGuiTextRangePtr
     {
         /// <summary>
         /// Gets the value of the native ptr

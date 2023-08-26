@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui table sort specs
     /// </summary>
-    public unsafe partial struct ImGuiTableSortSpecs
+    public unsafe struct ImGuiTableSortSpecs
     {
         /// <summary>
         /// The specs
@@ -25,7 +25,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui table sort specs ptr
     /// </summary>
-    public unsafe partial struct ImGuiTableSortSpecsPtr
+    public unsafe struct ImGuiTableSortSpecsPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

@@ -8,7 +8,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im draw cmd
     /// </summary>
-    public unsafe partial struct ImDrawCmd
+    public unsafe struct ImDrawCmd
     {
         /// <summary>
         /// The clip rect
@@ -42,7 +42,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im draw cmd ptr
     /// </summary>
-    public unsafe partial struct ImDrawCmdPtr
+    public unsafe struct ImDrawCmdPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

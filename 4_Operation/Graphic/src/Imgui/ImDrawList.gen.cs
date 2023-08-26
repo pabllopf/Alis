@@ -8,7 +8,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im draw list
     /// </summary>
-    public unsafe partial struct ImDrawList
+    public unsafe struct ImDrawList
     {
         /// <summary>
         /// The cmd buffer

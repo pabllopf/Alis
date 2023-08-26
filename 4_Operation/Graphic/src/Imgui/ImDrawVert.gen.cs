@@ -8,7 +8,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im draw vert
     /// </summary>
-    public unsafe partial struct ImDrawVert
+    public unsafe struct ImDrawVert
     {
         /// <summary>
         /// The pos
@@ -26,7 +26,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im draw vert ptr
     /// </summary>
-    public unsafe partial struct ImDrawVertPtr
+    public unsafe struct ImDrawVertPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

@@ -8,7 +8,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui size callback data
     /// </summary>
-    public unsafe partial struct ImGuiSizeCallbackData
+    public unsafe struct ImGuiSizeCallbackData
     {
         /// <summary>
         /// The user data
@@ -30,7 +30,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui size callback data ptr
     /// </summary>
-    public unsafe partial struct ImGuiSizeCallbackDataPtr
+    public unsafe struct ImGuiSizeCallbackDataPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

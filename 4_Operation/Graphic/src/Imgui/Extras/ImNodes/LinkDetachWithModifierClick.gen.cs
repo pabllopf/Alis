@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
     /// <summary>
     /// The link detach with modifier click
     /// </summary>
-    public unsafe partial struct LinkDetachWithModifierClick
+    public unsafe struct LinkDetachWithModifierClick
     {
         /// <summary>
         /// The modifier
@@ -15,7 +15,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
     /// <summary>
     /// The link detach with modifier click ptr
     /// </summary>
-    public unsafe partial struct LinkDetachWithModifierClickPtr
+    public unsafe struct LinkDetachWithModifierClickPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

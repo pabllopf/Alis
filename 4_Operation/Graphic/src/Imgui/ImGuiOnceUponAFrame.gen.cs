@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui once upon frame
     /// </summary>
-    public unsafe partial struct ImGuiOnceUponAFrame
+    public unsafe struct ImGuiOnceUponAFrame
     {
         /// <summary>
         /// The ref frame
@@ -17,7 +17,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui once upon frame ptr
     /// </summary>
-    public unsafe partial struct ImGuiOnceUponAFramePtr
+    public unsafe struct ImGuiOnceUponAFramePtr
     {
         /// <summary>
         /// Gets the value of the native ptr

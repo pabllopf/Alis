@@ -8,7 +8,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui viewport
     /// </summary>
-    public unsafe partial struct ImGuiViewport
+    public unsafe struct ImGuiViewport
     {
         /// <summary>
         /// The id
@@ -82,7 +82,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui viewport ptr
     /// </summary>
-    public unsafe partial struct ImGuiViewportPtr
+    public unsafe struct ImGuiViewportPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

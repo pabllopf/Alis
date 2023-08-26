@@ -8,7 +8,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui payload
     /// </summary>
-    public unsafe partial struct ImGuiPayload
+    public unsafe struct ImGuiPayload
     {
         /// <summary>
         /// The data
@@ -46,7 +46,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui payload ptr
     /// </summary>
-    public unsafe partial struct ImGuiPayloadPtr
+    public unsafe struct ImGuiPayloadPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
     /// <summary>
     /// The im plot range
     /// </summary>
-    public unsafe partial struct ImPlotRange
+    public unsafe struct ImPlotRange
     {
         /// <summary>
         /// The min
@@ -21,7 +21,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
     /// <summary>
     /// The im plot range ptr
     /// </summary>
-    public unsafe partial struct ImPlotRangePtr
+    public unsafe struct ImPlotRangePtr
     {
         /// <summary>
         /// Gets the value of the native ptr

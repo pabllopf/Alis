@@ -8,7 +8,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui text filter
     /// </summary>
-    public unsafe partial struct ImGuiTextFilter
+    public unsafe struct ImGuiTextFilter
     {
         /// <summary>
         /// The input buf
@@ -26,7 +26,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui text filter ptr
     /// </summary>
-    public unsafe partial struct ImGuiTextFilterPtr
+    public unsafe struct ImGuiTextFilterPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

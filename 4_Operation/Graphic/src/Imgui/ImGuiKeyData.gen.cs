@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui key data
     /// </summary>
-    public unsafe partial struct ImGuiKeyData
+    public unsafe struct ImGuiKeyData
     {
         /// <summary>
         /// The down
@@ -29,7 +29,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui key data ptr
     /// </summary>
-    public unsafe partial struct ImGuiKeyDataPtr
+    public unsafe struct ImGuiKeyDataPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

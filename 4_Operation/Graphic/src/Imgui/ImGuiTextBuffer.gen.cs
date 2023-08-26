@@ -6,7 +6,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui text buffer
     /// </summary>
-    public unsafe partial struct ImGuiTextBuffer
+    public unsafe struct ImGuiTextBuffer
     {
         /// <summary>
         /// The buf
@@ -16,7 +16,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui text buffer ptr
     /// </summary>
-    public unsafe partial struct ImGuiTextBufferPtr
+    public unsafe struct ImGuiTextBufferPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

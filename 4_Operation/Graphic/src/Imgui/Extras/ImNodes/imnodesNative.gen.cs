@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
     /// <summary>
     /// The imnodes native class
     /// </summary>
-    public static unsafe partial class imnodesNative
+    public static unsafe class imnodesNative
     {
         /// <summary>
         /// Emulates the three button mouse destroy using the specified self

@@ -8,7 +8,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
     /// <summary>
     /// The im plot style
     /// </summary>
-    public unsafe partial struct ImPlotStyle
+    public unsafe struct ImPlotStyle
     {
         /// <summary>
         /// The line weight
@@ -222,7 +222,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
     /// <summary>
     /// The im plot style ptr
     /// </summary>
-    public unsafe partial struct ImPlotStylePtr
+    public unsafe struct ImPlotStylePtr
     {
         /// <summary>
         /// Gets the value of the native ptr

@@ -8,7 +8,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im font
     /// </summary>
-    public unsafe partial struct ImFont
+    public unsafe struct ImFont
     {
         /// <summary>
         /// The index advance
@@ -86,7 +86,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im font ptr
     /// </summary>
-    public unsafe partial struct ImFontPtr
+    public unsafe struct ImFontPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

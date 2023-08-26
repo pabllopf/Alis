@@ -8,7 +8,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui platform monitor
     /// </summary>
-    public unsafe partial struct ImGuiPlatformMonitor
+    public unsafe struct ImGuiPlatformMonitor
     {
         /// <summary>
         /// The main pos
@@ -34,7 +34,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui platform monitor ptr
     /// </summary>
-    public unsafe partial struct ImGuiPlatformMonitorPtr
+    public unsafe struct ImGuiPlatformMonitorPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

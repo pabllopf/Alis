@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The stb texteditstate
     /// </summary>
-    public unsafe partial struct STB_TexteditState
+    public unsafe struct STB_TexteditState
     {
         /// <summary>
         /// The cursor
@@ -69,7 +69,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The stb texteditstateptr
     /// </summary>
-    public unsafe partial struct STB_TexteditStatePtr
+    public unsafe struct STB_TexteditStatePtr
     {
         /// <summary>
         /// Gets the value of the native ptr

@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui table column sort specs
     /// </summary>
-    public unsafe partial struct ImGuiTableColumnSortSpecs
+    public unsafe struct ImGuiTableColumnSortSpecs
     {
         /// <summary>
         /// The column user id
@@ -29,7 +29,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui table column sort specs ptr
     /// </summary>
-    public unsafe partial struct ImGuiTableColumnSortSpecsPtr
+    public unsafe struct ImGuiTableColumnSortSpecsPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui list clipper
     /// </summary>
-    public unsafe partial struct ImGuiListClipper
+    public unsafe struct ImGuiListClipper
     {
         /// <summary>
         /// The display start
@@ -37,7 +37,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui list clipper ptr
     /// </summary>
-    public unsafe partial struct ImGuiListClipperPtr
+    public unsafe struct ImGuiListClipperPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

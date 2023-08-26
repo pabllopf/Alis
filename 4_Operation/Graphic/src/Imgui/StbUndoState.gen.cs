@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The stb undo state
     /// </summary>
-    public unsafe partial struct StbUndoState
+    public unsafe struct StbUndoState
     {
         /// <summary>
         /// The undo rec
@@ -429,7 +429,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The stb undo state ptr
     /// </summary>
-    public unsafe partial struct StbUndoStatePtr
+    public unsafe struct StbUndoStatePtr
     {
         /// <summary>
         /// Gets the value of the native ptr

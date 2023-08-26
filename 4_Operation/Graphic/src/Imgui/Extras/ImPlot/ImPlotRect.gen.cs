@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
     /// <summary>
     /// The im plot rect
     /// </summary>
-    public unsafe partial struct ImPlotRect
+    public unsafe struct ImPlotRect
     {
         /// <summary>
         /// The 
@@ -21,7 +21,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
     /// <summary>
     /// The im plot rect ptr
     /// </summary>
-    public unsafe partial struct ImPlotRectPtr
+    public unsafe struct ImPlotRectPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

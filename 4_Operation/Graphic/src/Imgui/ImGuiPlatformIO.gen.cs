@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui platform io
     /// </summary>
-    public unsafe partial struct ImGuiPlatformIO
+    public unsafe struct ImGuiPlatformIO
     {
         /// <summary>
         /// The platform createwindow
@@ -113,7 +113,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui platform io ptr
     /// </summary>
-    public unsafe partial struct ImGuiPlatformIOPtr
+    public unsafe struct ImGuiPlatformIOPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

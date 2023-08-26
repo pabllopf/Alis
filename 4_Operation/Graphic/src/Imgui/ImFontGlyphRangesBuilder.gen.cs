@@ -6,7 +6,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im font glyph ranges builder
     /// </summary>
-    public unsafe partial struct ImFontGlyphRangesBuilder
+    public unsafe struct ImFontGlyphRangesBuilder
     {
         /// <summary>
         /// The used chars
@@ -16,7 +16,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im font glyph ranges builder ptr
     /// </summary>
-    public unsafe partial struct ImFontGlyphRangesBuilderPtr
+    public unsafe struct ImFontGlyphRangesBuilderPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

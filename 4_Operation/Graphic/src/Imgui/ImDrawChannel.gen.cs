@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im draw channel
     /// </summary>
-    public unsafe partial struct ImDrawChannel
+    public unsafe struct ImDrawChannel
     {
         /// <summary>
         /// The cmd buffer
@@ -21,7 +21,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im draw channel ptr
     /// </summary>
-    public unsafe partial struct ImDrawChannelPtr
+    public unsafe struct ImDrawChannelPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

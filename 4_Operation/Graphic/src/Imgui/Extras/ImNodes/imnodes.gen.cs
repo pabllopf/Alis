@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
     /// <summary>
     /// The im nodes class
     /// </summary>
-    public static unsafe partial class ImNodes
+    public static unsafe class ImNodes
     {
         /// <summary>
         /// Begins the input attribute using the specified id

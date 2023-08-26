@@ -9,7 +9,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im font atlas
     /// </summary>
-    public unsafe partial struct ImFontAtlas
+    public unsafe struct ImFontAtlas
     {
         /// <summary>
         /// The flags
@@ -351,7 +351,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im font atlas ptr
     /// </summary>
-    public unsafe partial struct ImFontAtlasPtr
+    public unsafe struct ImFontAtlasPtr
     {
         /// <summary>
         /// Gets the value of the native ptr

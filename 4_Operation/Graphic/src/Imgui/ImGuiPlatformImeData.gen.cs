@@ -8,7 +8,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui platform ime data
     /// </summary>
-    public unsafe partial struct ImGuiPlatformImeData
+    public unsafe struct ImGuiPlatformImeData
     {
         /// <summary>
         /// The want visible
@@ -26,7 +26,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui platform ime data ptr
     /// </summary>
-    public unsafe partial struct ImGuiPlatformImeDataPtr
+    public unsafe struct ImGuiPlatformImeDataPtr
     {
         /// <summary>
         /// Gets the value of the native ptr
