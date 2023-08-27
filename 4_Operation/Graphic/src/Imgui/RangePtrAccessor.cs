@@ -1,19 +1,13 @@
 using System;
-using System.Runtime.CompilerServices;
 using Alis.Core.Graphic.ImGui.Utils;
 
 namespace Alis.Core.Graphic.Imgui
 {
     /// <summary>
-    /// The range accessor
+    /// The range ptr accessor
     /// </summary>
-    public unsafe struct RangeAccessor<T> where T : unmanaged
+    public unsafe struct RangePtrAccessor<T> where T : unmanaged
     {
-        /// <summary>
-        /// The 
-        /// </summary>
-        private static readonly int s_sizeOfT = Unsafe.SizeOf<T>();
-
         /// <summary>
         /// The data
         /// </summary>
@@ -28,13 +22,13 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         /// <param name="data">The data</param>
         /// <param name="count">The count</param>
-        public RangeAccessor(IntPtr data, int count) : this(data.ToPointer(), count) { }
+        public RangePtrAccessor(IntPtr data, int count) : this(data.ToPointer(), count) { }
         /// <summary>
         /// Initializes a new instance of the  class
         /// </summary>
         /// <param name="data">The data</param>
         /// <param name="count">The count</param>
-        public RangeAccessor(void* data, int count)
+        public RangePtrAccessor(void* data, int count)
         {
             Data = data;
             Count = count;
@@ -43,7 +37,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The index
         /// </summary>
-        public ref T this[int index]
+        public T this[int index]
         {
             get
             {
@@ -52,7 +46,7 @@ namespace Alis.Core.Graphic.Imgui
                     throw new IndexOutOfRangeException();
                 }
 
-                return ref Unsafe.AsRef<T>((byte*)Data + s_sizeOfT * index);
+                return Unsafe.Read<T>((byte*)Data + sizeof(void*) * index);
             }
         }
     }

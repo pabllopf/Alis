@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:EmulateThreeButtonMousePtr.cs
+//  File:StbUndoStatePtr.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,58 +28,73 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Graphic.ImGui.Utils;
 
-namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
+namespace Alis.Core.Graphic.Imgui
 {
     /// <summary>
-    /// The emulate three button mouse ptr
+    /// The stb undo state ptr
     /// </summary>
-    public unsafe struct EmulateThreeButtonMousePtr
+    public unsafe struct StbUndoStatePtr
     {
         /// <summary>
         /// Gets the value of the native ptr
         /// </summary>
-        public EmulateThreeButtonMouse* NativePtr { get; }
+        public StbUndoState* NativePtr { get; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="EmulateThreeButtonMousePtr"/> class
+        /// Initializes a new instance of the <see cref="StbUndoStatePtr"/> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public EmulateThreeButtonMousePtr(EmulateThreeButtonMouse* nativePtr) => NativePtr = nativePtr;
+        public StbUndoStatePtr(StbUndoState* nativePtr) => NativePtr = nativePtr;
         /// <summary>
-        /// Initializes a new instance of the <see cref="EmulateThreeButtonMousePtr"/> class
+        /// Initializes a new instance of the <see cref="StbUndoStatePtr"/> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public EmulateThreeButtonMousePtr(IntPtr nativePtr) => NativePtr = (EmulateThreeButtonMouse*)nativePtr;
+        public StbUndoStatePtr(IntPtr nativePtr) => NativePtr = (StbUndoState*)nativePtr;
+        
         /// <summary>
         /// 
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
-        public static implicit operator EmulateThreeButtonMousePtr(EmulateThreeButtonMouse* nativePtr) => new EmulateThreeButtonMousePtr(nativePtr);
+        public static implicit operator StbUndoStatePtr(StbUndoState* nativePtr) => new StbUndoStatePtr(nativePtr);
         
         /// <summary>
         /// 
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator EmulateThreeButtonMouse* (EmulateThreeButtonMousePtr wrappedPtr) => wrappedPtr.NativePtr;
+        public static implicit operator StbUndoState* (StbUndoStatePtr wrappedPtr) => wrappedPtr.NativePtr;
         
         /// <summary>
         /// 
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
-        public static implicit operator EmulateThreeButtonMousePtr(IntPtr nativePtr) => new EmulateThreeButtonMousePtr(nativePtr);
+        public static implicit operator StbUndoStatePtr(IntPtr nativePtr) => new StbUndoStatePtr(nativePtr);
         /// <summary>
-        /// Gets or sets the value of the modifier
+        /// Gets the value of the undo rec
         /// </summary>
-        public IntPtr Modifier { get => (IntPtr)NativePtr->Modifier; set => NativePtr->Modifier = (byte*)value; }
+        public RangeAccessor<StbUndoRecord> undo_rec => new RangeAccessor<StbUndoRecord>(&NativePtr->undo_rec_0, 99);
         /// <summary>
-        /// Destroys this instance
+        /// Gets the value of the undo char
         /// </summary>
-        public void Destroy()
-        {
-            ImNodesNative.EmulateThreeButtonMouse_destroy((EmulateThreeButtonMouse*)(NativePtr));
-        }
+        public RangeAccessor<ushort> undo_char => new RangeAccessor<ushort>(NativePtr->undo_char, 999);
+        /// <summary>
+        /// Gets the value of the undo point
+        /// </summary>
+        public ref short undo_point => ref Unsafe.AsRef<short>(&NativePtr->undo_point);
+        /// <summary>
+        /// Gets the value of the redo point
+        /// </summary>
+        public ref short redo_point => ref Unsafe.AsRef<short>(&NativePtr->redo_point);
+        /// <summary>
+        /// Gets the value of the undo char point
+        /// </summary>
+        public ref int undo_char_point => ref Unsafe.AsRef<int>(&NativePtr->undo_char_point);
+        /// <summary>
+        /// Gets the value of the redo char point
+        /// </summary>
+        public ref int redo_char_point => ref Unsafe.AsRef<int>(&NativePtr->redo_char_point);
     }
 }
