@@ -10,18 +10,18 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The where
         /// </summary>
-        public int where;
+        public int Where;
         /// <summary>
         /// The insert length
         /// </summary>
-        public int insert_length;
+        public int InsertLength;
         /// <summary>
         /// The delete length
         /// </summary>
-        public int delete_length;
+        public int DeleteLength;
         /// <summary>
         /// The char storage
         /// </summary>
-        public int char_storage;
+        public int CharStorage;
     }
 }

@@ -10,14 +10,14 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The current
         /// </summary>
-        public int _Current;
+        public int Current;
         /// <summary>
         /// The count
         /// </summary>
-        public int _Count;
+        public int Count;
         /// <summary>
         /// The channels
         /// </summary>
-        public ImVector _Channels;
+        public ImVector Channels;
     }
 }

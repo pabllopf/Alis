@@ -60,7 +60,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// Gets the value of the glyph id
         /// </summary>
-        public ref uint GlyphID => ref Unsafe.AsRef<uint>(&NativePtr->GlyphID);
+        public ref uint GlyphId => ref Unsafe.AsRef<uint>(&NativePtr->GlyphId);
         /// <summary>
         /// Gets the value of the glyph advance x
         /// </summary>

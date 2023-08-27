@@ -47,7 +47,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// Gets the value of the column user id
         /// </summary>
-        public ref uint ColumnUserID => ref Unsafe.AsRef<uint>(&NativePtr->ColumnUserID);
+        public ref uint ColumnUserId => ref Unsafe.AsRef<uint>(&NativePtr->ColumnUserId);
         /// <summary>
         /// Gets the value of the column index
         /// </summary>

@@ -44,15 +44,15 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// Gets the value of the  current
         /// </summary>
-        public ref int _Current => ref Unsafe.AsRef<int>(&NativePtr->_Current);
+        public ref int Current => ref Unsafe.AsRef<int>(&NativePtr->Current);
         /// <summary>
         /// Gets the value of the  count
         /// </summary>
-        public ref int _Count => ref Unsafe.AsRef<int>(&NativePtr->_Count);
+        public ref int Count => ref Unsafe.AsRef<int>(&NativePtr->Count);
         /// <summary>
         /// Gets the value of the  channels
         /// </summary>
-        public ImPtrVector<ImDrawChannelPtr> _Channels => new ImPtrVector<ImDrawChannelPtr>(NativePtr->_Channels, Unsafe.SizeOf<ImDrawChannel>());
+        public ImPtrVector<ImDrawChannelPtr> Channels => new ImPtrVector<ImDrawChannelPtr>(NativePtr->Channels, Unsafe.SizeOf<ImDrawChannel>());
         /// <summary>
         /// Clears this instance
         /// </summary>
@@ -77,31 +77,31 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// Merges the draw list
         /// </summary>
-        /// <param name="draw_list">The draw list</param>
-        public void Merge(ImDrawListPtr draw_list)
+        /// <param name="drawList">The draw list</param>
+        public void Merge(ImDrawListPtr drawList)
         {
-            ImDrawList* native_draw_list = draw_list.NativePtr;
-            ImGuiNative.ImDrawListSplitter_Merge((ImDrawListSplitter*)(NativePtr), native_draw_list);
+            ImDrawList* nativeDrawList = drawList.NativePtr;
+            ImGuiNative.ImDrawListSplitter_Merge((ImDrawListSplitter*)(NativePtr), nativeDrawList);
         }
         /// <summary>
         /// Sets the current channel using the specified draw list
         /// </summary>
-        /// <param name="draw_list">The draw list</param>
-        /// <param name="channel_idx">The channel idx</param>
-        public void SetCurrentChannel(ImDrawListPtr draw_list, int channel_idx)
+        /// <param name="drawList">The draw list</param>
+        /// <param name="channelIdx">The channel idx</param>
+        public void SetCurrentChannel(ImDrawListPtr drawList, int channelIdx)
         {
-            ImDrawList* native_draw_list = draw_list.NativePtr;
-            ImGuiNative.ImDrawListSplitter_SetCurrentChannel((ImDrawListSplitter*)(NativePtr), native_draw_list, channel_idx);
+            ImDrawList* nativeDrawList = drawList.NativePtr;
+            ImGuiNative.ImDrawListSplitter_SetCurrentChannel((ImDrawListSplitter*)(NativePtr), nativeDrawList, channelIdx);
         }
         /// <summary>
         /// Splits the draw list
         /// </summary>
-        /// <param name="draw_list">The draw list</param>
+        /// <param name="drawList">The draw list</param>
         /// <param name="count">The count</param>
-        public void Split(ImDrawListPtr draw_list, int count)
+        public void Split(ImDrawListPtr drawList, int count)
         {
-            ImDrawList* native_draw_list = draw_list.NativePtr;
-            ImGuiNative.ImDrawListSplitter_Split((ImDrawListSplitter*)(NativePtr), native_draw_list, count);
+            ImDrawList* nativeDrawList = drawList.NativePtr;
+            ImGuiNative.ImDrawListSplitter_Split((ImDrawListSplitter*)(NativePtr), nativeDrawList, count);
         }
     }
 }

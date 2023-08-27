@@ -95,7 +95,7 @@ namespace Alis.App.Engine
         /// <summary>
         /// The io
         /// </summary>
-        private ImGuiIOPtr io = null;
+        private ImGuiIoPtr io = null;
 
         /// <summary>
         /// The style
@@ -270,7 +270,7 @@ namespace Alis.App.Engine
 
             _context = ImGui.CreateContext();
             
-            io = ImGui.GetIO();
+            io = ImGui.GetIo();
             
             io.DisplaySize = new Vector2(800, 600);
             
@@ -295,7 +295,7 @@ namespace Alis.App.Engine
             ImGui.SetCurrentContext(_context);
             
             // REBUILD ATLAS
-            ImFontAtlasPtr fonts = ImGui.GetIO().Fonts;
+            ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
 
             string dirFonts = Environment.CurrentDirectory + "/Assets/Fonts/Jetbrains/";
             string fontToLoad = "JetBrainsMono-ExtraBold.ttf";
@@ -313,18 +313,18 @@ namespace Alis.App.Engine
             }
             
             fonts.AddFontDefault();
-            ImFontPtr fontLoaded = fonts.AddFontFromFileTTF(@$"{dirFonts}{fontToLoad}", 14);
+            ImFontPtr fontLoaded = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", 14);
             
-            fonts.GetTexDataAsRGBA32(out byte* pixelData, out int width, out int height, out int _);
+            fonts.GetTexDataAsRgba32(out byte* pixelData, out int width, out int height, out int _);
             _fontTextureId = LoadTexture((IntPtr) pixelData, width, height);
 
-            fonts.TexID = (IntPtr) _fontTextureId;
+            fonts.TexId = (IntPtr) _fontTextureId;
             fonts.ClearTexData();
             
             ImGuiViewportPtr viewport = ImGui.GetMainViewport();
             ImGui.SetNextWindowPos(viewport.WorkPos);
             ImGui.SetNextWindowSize(viewport.WorkSize);
-            ImGui.SetNextWindowViewport(viewport.ID);
+            ImGui.SetNextWindowViewport(viewport.Id);
             ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
             dockspaceflags |= ImGuiWindowFlags.MenuBar;
@@ -449,7 +449,7 @@ namespace Alis.App.Engine
                 
                 ImGui.PopStyleVar(3);
                 
-                uint dockspace_id = ImGui.GetID("MyDockSpace");
+                uint dockspace_id = ImGui.GetId("MyDockSpace");
                 ImGui.DockSpace(dockspace_id, size_dock);
                 
                 if (ImGui.BeginMenuBar())
@@ -576,7 +576,7 @@ namespace Alis.App.Engine
         /// <param name="evt">The evt</param>
         public void ProcessEvent(SdlEvent evt)
         {
-            ImGuiIOPtr io = ImGui.GetIO();
+            ImGuiIoPtr io = ImGui.GetIo();
             switch (evt.type)
             {
                 case SdlEventType.SdlMousewheel:
@@ -625,7 +625,7 @@ namespace Alis.App.Engine
                 case SdlEventType.SdlTextInput:
                 {
                     string str = Encoding.UTF8.GetString(evt.text.Text);
-                    io.AddInputCharactersUTF8(str);
+                    io.AddInputCharactersUtf8(str);
                     return;
                 }
                 case SdlEventType.SdlKeydown:
@@ -648,7 +648,7 @@ namespace Alis.App.Engine
         /// </summary>
         private void UpdateMousePosAndButtons()
         {
-            ImGuiIOPtr io = ImGui.GetIO();
+            ImGuiIoPtr io = ImGui.GetIo();
 
             // Set OS mouse position if requested (rarely used, only when ImGuiConfigFlags_NavEnableSetMousePos is enabled by user)
             if (io.WantSetMousePos)
@@ -798,7 +798,7 @@ namespace Alis.App.Engine
 
             drawData.ScaleClipRects(clipScale);
 
-            IntPtr lastTexId = ImGui.GetIO().Fonts.TexID;
+            IntPtr lastTexId = ImGui.GetIo().Fonts.TexId;
             Gl.GlBindTexture(TextureTarget.Texture2D, (uint) lastTexId);
 
             int drawVertSize = Marshal.SizeOf<ImDrawVert>();

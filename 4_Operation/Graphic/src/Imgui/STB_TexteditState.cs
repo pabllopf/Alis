@@ -5,63 +5,63 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The stb texteditstate
     /// </summary>
-    public struct STB_TexteditState
+    public struct StbTexteditState
     {
         /// <summary>
         /// The cursor
         /// </summary>
-        public int cursor;
+        public int Cursor;
         /// <summary>
         /// The select start
         /// </summary>
-        public int select_start;
+        public int SelectStart;
         /// <summary>
         /// The select end
         /// </summary>
-        public int select_end;
+        public int SelectEnd;
         /// <summary>
         /// The insert mode
         /// </summary>
-        public byte insert_mode;
+        public byte InsertMode;
         /// <summary>
         /// The row count per page
         /// </summary>
-        public int row_count_per_page;
+        public int RowCountPerPage;
         /// <summary>
         /// The cursor at end of line
         /// </summary>
-        public byte cursor_at_end_of_line;
+        public byte CursorAtEndOfLine;
         /// <summary>
         /// The initialized
         /// </summary>
-        public byte initialized;
+        public byte Initialized;
         /// <summary>
         /// The has preferred
         /// </summary>
-        public byte has_preferred_x;
+        public byte HasPreferredX;
         /// <summary>
         /// The single line
         /// </summary>
-        public byte single_line;
+        public byte SingleLine;
         /// <summary>
         /// The padding
         /// </summary>
-        public byte padding1;
+        public byte Padding1;
         /// <summary>
         /// The padding
         /// </summary>
-        public byte padding2;
+        public byte Padding2;
         /// <summary>
         /// The padding
         /// </summary>
-        public byte padding3;
+        public byte Padding3;
         /// <summary>
         /// The preferred
         /// </summary>
-        public float preferred_x;
+        public float PreferredX;
         /// <summary>
         /// The undostate
         /// </summary>
-        public StbUndoState undostate;
+        public StbUndoState Undostate;
     }
 }

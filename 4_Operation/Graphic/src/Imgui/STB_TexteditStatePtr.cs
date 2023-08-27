@@ -6,99 +6,99 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The stb texteditstateptr
     /// </summary>
-    public unsafe struct STB_TexteditStatePtr
+    public unsafe struct StbTexteditStatePtr
     {
         /// <summary>
         /// Gets the value of the native ptr
         /// </summary>
-        public STB_TexteditState* NativePtr { get; }
+        public StbTexteditState* NativePtr { get; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="STB_TexteditStatePtr"/> class
+        /// Initializes a new instance of the <see cref="StbTexteditStatePtr"/> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public STB_TexteditStatePtr(STB_TexteditState* nativePtr) => NativePtr = nativePtr;
+        public StbTexteditStatePtr(StbTexteditState* nativePtr) => NativePtr = nativePtr;
         /// <summary>
-        /// Initializes a new instance of the <see cref="STB_TexteditStatePtr"/> class
+        /// Initializes a new instance of the <see cref="StbTexteditStatePtr"/> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public STB_TexteditStatePtr(IntPtr nativePtr) => NativePtr = (STB_TexteditState*)nativePtr;
+        public StbTexteditStatePtr(IntPtr nativePtr) => NativePtr = (StbTexteditState*)nativePtr;
         
         /// <summary>
         /// 
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
-        public static implicit operator STB_TexteditStatePtr(STB_TexteditState* nativePtr) => new STB_TexteditStatePtr(nativePtr);
+        public static implicit operator StbTexteditStatePtr(StbTexteditState* nativePtr) => new StbTexteditStatePtr(nativePtr);
         
         /// <summary>
         /// 
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator STB_TexteditState* (STB_TexteditStatePtr wrappedPtr) => wrappedPtr.NativePtr;
+        public static implicit operator StbTexteditState* (StbTexteditStatePtr wrappedPtr) => wrappedPtr.NativePtr;
         
         /// <summary>
         /// 
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
-        public static implicit operator STB_TexteditStatePtr(IntPtr nativePtr) => new STB_TexteditStatePtr(nativePtr);
+        public static implicit operator StbTexteditStatePtr(IntPtr nativePtr) => new StbTexteditStatePtr(nativePtr);
         
         /// <summary>
         /// Gets the value of the cursor
         /// </summary>
-        public ref int cursor => ref Unsafe.AsRef<int>(&NativePtr->cursor);
+        public ref int Cursor => ref Unsafe.AsRef<int>(&NativePtr->Cursor);
         /// <summary>
         /// Gets the value of the select start
         /// </summary>
-        public ref int select_start => ref Unsafe.AsRef<int>(&NativePtr->select_start);
+        public ref int SelectStart => ref Unsafe.AsRef<int>(&NativePtr->SelectStart);
         /// <summary>
         /// Gets the value of the select end
         /// </summary>
-        public ref int select_end => ref Unsafe.AsRef<int>(&NativePtr->select_end);
+        public ref int SelectEnd => ref Unsafe.AsRef<int>(&NativePtr->SelectEnd);
         /// <summary>
         /// Gets the value of the insert mode
         /// </summary>
-        public ref byte insert_mode => ref Unsafe.AsRef<byte>(&NativePtr->insert_mode);
+        public ref byte InsertMode => ref Unsafe.AsRef<byte>(&NativePtr->InsertMode);
         /// <summary>
         /// Gets the value of the row count per page
         /// </summary>
-        public ref int row_count_per_page => ref Unsafe.AsRef<int>(&NativePtr->row_count_per_page);
+        public ref int RowCountPerPage => ref Unsafe.AsRef<int>(&NativePtr->RowCountPerPage);
         /// <summary>
         /// Gets the value of the cursor at end of line
         /// </summary>
-        public ref byte cursor_at_end_of_line => ref Unsafe.AsRef<byte>(&NativePtr->cursor_at_end_of_line);
+        public ref byte CursorAtEndOfLine => ref Unsafe.AsRef<byte>(&NativePtr->CursorAtEndOfLine);
         /// <summary>
         /// Gets the value of the initialized
         /// </summary>
-        public ref byte initialized => ref Unsafe.AsRef<byte>(&NativePtr->initialized);
+        public ref byte Initialized => ref Unsafe.AsRef<byte>(&NativePtr->Initialized);
         /// <summary>
         /// Gets the value of the has preferred x
         /// </summary>
-        public ref byte has_preferred_x => ref Unsafe.AsRef<byte>(&NativePtr->has_preferred_x);
+        public ref byte HasPreferredX => ref Unsafe.AsRef<byte>(&NativePtr->HasPreferredX);
         /// <summary>
         /// Gets the value of the single line
         /// </summary>
-        public ref byte single_line => ref Unsafe.AsRef<byte>(&NativePtr->single_line);
+        public ref byte SingleLine => ref Unsafe.AsRef<byte>(&NativePtr->SingleLine);
         /// <summary>
         /// Gets the value of the padding 1
         /// </summary>
-        public ref byte padding1 => ref Unsafe.AsRef<byte>(&NativePtr->padding1);
+        public ref byte Padding1 => ref Unsafe.AsRef<byte>(&NativePtr->Padding1);
         /// <summary>
         /// Gets the value of the padding 2
         /// </summary>
-        public ref byte padding2 => ref Unsafe.AsRef<byte>(&NativePtr->padding2);
+        public ref byte Padding2 => ref Unsafe.AsRef<byte>(&NativePtr->Padding2);
         /// <summary>
         /// Gets the value of the padding 3
         /// </summary>
-        public ref byte padding3 => ref Unsafe.AsRef<byte>(&NativePtr->padding3);
+        public ref byte Padding3 => ref Unsafe.AsRef<byte>(&NativePtr->Padding3);
         /// <summary>
         /// Gets the value of the preferred x
         /// </summary>
-        public ref float preferred_x => ref Unsafe.AsRef<float>(&NativePtr->preferred_x);
+        public ref float PreferredX => ref Unsafe.AsRef<float>(&NativePtr->PreferredX);
         /// <summary>
         /// Gets the value of the undostate
         /// </summary>
-        public ref StbUndoState undostate => ref Unsafe.AsRef<StbUndoState>(&NativePtr->undostate);
+        public ref StbUndoState Undostate => ref Unsafe.AsRef<StbUndoState>(&NativePtr->Undostate);
     }
 }

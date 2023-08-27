@@ -6,100 +6,100 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui platform io
     /// </summary>
-    public struct ImGuiPlatformIO
+    public struct ImGuiPlatformIo
     {
         /// <summary>
         /// The platform createwindow
         /// </summary>
-        public IntPtr Platform_CreateWindow;
+        public IntPtr PlatformCreateWindow;
         /// <summary>
         /// The platform destroywindow
         /// </summary>
-        public IntPtr Platform_DestroyWindow;
+        public IntPtr PlatformDestroyWindow;
         /// <summary>
         /// The platform showwindow
         /// </summary>
-        public IntPtr Platform_ShowWindow;
+        public IntPtr PlatformShowWindow;
         /// <summary>
         /// The platform setwindowpos
         /// </summary>
-        public IntPtr Platform_SetWindowPos;
+        public IntPtr PlatformSetWindowPos;
         /// <summary>
         /// The platform getwindowpos
         /// </summary>
-        public IntPtr Platform_GetWindowPos;
+        public IntPtr PlatformGetWindowPos;
         /// <summary>
         /// The platform setwindowsize
         /// </summary>
-        public IntPtr Platform_SetWindowSize;
+        public IntPtr PlatformSetWindowSize;
         /// <summary>
         /// The platform getwindowsize
         /// </summary>
-        public IntPtr Platform_GetWindowSize;
+        public IntPtr PlatformGetWindowSize;
         /// <summary>
         /// The platform setwindowfocus
         /// </summary>
-        public IntPtr Platform_SetWindowFocus;
+        public IntPtr PlatformSetWindowFocus;
         /// <summary>
         /// The platform getwindowfocus
         /// </summary>
-        public IntPtr Platform_GetWindowFocus;
+        public IntPtr PlatformGetWindowFocus;
         /// <summary>
         /// The platform getwindowminimized
         /// </summary>
-        public IntPtr Platform_GetWindowMinimized;
+        public IntPtr PlatformGetWindowMinimized;
         /// <summary>
         /// The platform setwindowtitle
         /// </summary>
-        public IntPtr Platform_SetWindowTitle;
+        public IntPtr PlatformSetWindowTitle;
         /// <summary>
         /// The platform setwindowalpha
         /// </summary>
-        public IntPtr Platform_SetWindowAlpha;
+        public IntPtr PlatformSetWindowAlpha;
         /// <summary>
         /// The platform updatewindow
         /// </summary>
-        public IntPtr Platform_UpdateWindow;
+        public IntPtr PlatformUpdateWindow;
         /// <summary>
         /// The platform renderwindow
         /// </summary>
-        public IntPtr Platform_RenderWindow;
+        public IntPtr PlatformRenderWindow;
         /// <summary>
         /// The platform swapbuffers
         /// </summary>
-        public IntPtr Platform_SwapBuffers;
+        public IntPtr PlatformSwapBuffers;
         /// <summary>
         /// The platform getwindowdpiscale
         /// </summary>
-        public IntPtr Platform_GetWindowDpiScale;
+        public IntPtr PlatformGetWindowDpiScale;
         /// <summary>
         /// The platform onchangedviewport
         /// </summary>
-        public IntPtr Platform_OnChangedViewport;
+        public IntPtr PlatformOnChangedViewport;
         /// <summary>
         /// The platform createvksurface
         /// </summary>
-        public IntPtr Platform_CreateVkSurface;
+        public IntPtr PlatformCreateVkSurface;
         /// <summary>
         /// The renderer createwindow
         /// </summary>
-        public IntPtr Renderer_CreateWindow;
+        public IntPtr RendererCreateWindow;
         /// <summary>
         /// The renderer destroywindow
         /// </summary>
-        public IntPtr Renderer_DestroyWindow;
+        public IntPtr RendererDestroyWindow;
         /// <summary>
         /// The renderer setwindowsize
         /// </summary>
-        public IntPtr Renderer_SetWindowSize;
+        public IntPtr RendererSetWindowSize;
         /// <summary>
         /// The renderer renderwindow
         /// </summary>
-        public IntPtr Renderer_RenderWindow;
+        public IntPtr RendererRenderWindow;
         /// <summary>
         /// The renderer swapbuffers
         /// </summary>
-        public IntPtr Renderer_SwapBuffers;
+        public IntPtr RendererSwapBuffers;
         /// <summary>
         /// The monitors
         /// </summary>

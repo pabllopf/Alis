@@ -72,6 +72,6 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The count im gui nav input
         /// </summary>
-        COUNT = 16,
+        Count = 16,
     }
 }

@@ -74,7 +74,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// Gets the value of the pixel snap h
         /// </summary>
-        public ref bool PixelSnapH => ref Unsafe.AsRef<bool>(&NativePtr->PixelSnapH);
+        public ref bool SnapH => ref Unsafe.AsRef<bool>(&NativePtr->SnapH);
         /// <summary>
         /// Gets the value of the glyph extra spacing
         /// </summary>

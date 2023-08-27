@@ -82,7 +82,7 @@ namespace Alis.Core.Graphic.Imgui
         /// Gets the tex id
         /// </summary>
         /// <returns>The ret</returns>
-        public IntPtr GetTexID()
+        public IntPtr GetTexId()
         {
             IntPtr ret = ImGuiNative.ImDrawCmd_GetTexID((ImDrawCmd*)(NativePtr));
             return ret;

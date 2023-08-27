@@ -46,26 +46,26 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// Gets the value of the x 0
         /// </summary>
-        public ref float x0 => ref Unsafe.AsRef<float>(&NativePtr->x0);
+        public ref float X0 => ref Unsafe.AsRef<float>(&NativePtr->X0);
         /// <summary>
         /// Gets the value of the x 1
         /// </summary>
-        public ref float x1 => ref Unsafe.AsRef<float>(&NativePtr->x1);
+        public ref float X1 => ref Unsafe.AsRef<float>(&NativePtr->X1);
         /// <summary>
         /// Gets the value of the baseline y delta
         /// </summary>
-        public ref float baseline_y_delta => ref Unsafe.AsRef<float>(&NativePtr->baseline_y_delta);
+        public ref float BaselineYDelta => ref Unsafe.AsRef<float>(&NativePtr->BaselineYDelta);
         /// <summary>
         /// Gets the value of the ymin
         /// </summary>
-        public ref float ymin => ref Unsafe.AsRef<float>(&NativePtr->ymin);
+        public ref float Ymin => ref Unsafe.AsRef<float>(&NativePtr->Ymin);
         /// <summary>
         /// Gets the value of the ymax
         /// </summary>
-        public ref float ymax => ref Unsafe.AsRef<float>(&NativePtr->ymax);
+        public ref float Ymax => ref Unsafe.AsRef<float>(&NativePtr->Ymax);
         /// <summary>
         /// Gets the value of the num chars
         /// </summary>
-        public ref int num_chars => ref Unsafe.AsRef<int>(&NativePtr->num_chars);
+        public ref int NumChars => ref Unsafe.AsRef<int>(&NativePtr->NumChars);
     }
 }

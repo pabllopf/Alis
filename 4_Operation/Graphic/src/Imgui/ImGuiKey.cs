@@ -572,54 +572,54 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The count im gui key
         /// </summary>
-        COUNT = 652,
+        Count = 652,
         /// <summary>
         /// The imguimod none im gui key
         /// </summary>
-        ImGuiMod_None = 0,
+        ImGuiModNone = 0,
         /// <summary>
         /// The imguimod ctrl im gui key
         /// </summary>
-        ImGuiMod_Ctrl = 4096,
+        ImGuiModCtrl = 4096,
         /// <summary>
         /// The imguimod shift im gui key
         /// </summary>
-        ImGuiMod_Shift = 8192,
+        ImGuiModShift = 8192,
         /// <summary>
         /// The imguimod alt im gui key
         /// </summary>
-        ImGuiMod_Alt = 16384,
+        ImGuiModAlt = 16384,
         /// <summary>
         /// The imguimod super im gui key
         /// </summary>
-        ImGuiMod_Super = 32768,
+        ImGuiModSuper = 32768,
         /// <summary>
         /// The imguimod mask im gui key
         /// </summary>
-        ImGuiMod_Mask = 61440,
+        ImGuiModMask = 61440,
         /// <summary>
         /// The imguimod shortcut im gui key
         /// </summary>
-        ImGuiMod_Shortcut = 4096,
+        ImGuiModShortcut = 4096,
         /// <summary>
         /// The namedkey begin im gui key
         /// </summary>
-        NamedKey_BEGIN = 512,
+        NamedKeyBegin = 512,
         /// <summary>
         /// The namedkey end im gui key
         /// </summary>
-        NamedKey_END = 652,
+        NamedKeyEnd = 652,
         /// <summary>
         /// The namedkey count im gui key
         /// </summary>
-        NamedKey_COUNT = 140,
+        NamedKeyCount = 140,
         /// <summary>
         /// The keysdata size im gui key
         /// </summary>
-        KeysData_SIZE = 652,
+        KeysDataSize = 652,
         /// <summary>
         /// The keysdata offset im gui key
         /// </summary>
-        KeysData_OFFSET = 0,
+        KeysDataOffset = 0,
     }
 }

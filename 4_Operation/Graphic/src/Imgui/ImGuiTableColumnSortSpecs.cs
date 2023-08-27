@@ -10,7 +10,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The column user id
         /// </summary>
-        public uint ColumnUserID;
+        public uint ColumnUserId;
         /// <summary>
         /// The column index
         /// </summary>

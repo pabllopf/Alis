@@ -75,26 +75,26 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// Gets the value of the undo rec
         /// </summary>
-        public RangeAccessor<StbUndoRecord> undo_rec => new RangeAccessor<StbUndoRecord>(&NativePtr->undo_rec_0, 99);
+        public RangeAccessor<StbUndoRecord> UndoRec => new RangeAccessor<StbUndoRecord>(&NativePtr->UndoRec0, 99);
         /// <summary>
         /// Gets the value of the undo char
         /// </summary>
-        public RangeAccessor<ushort> undo_char => new RangeAccessor<ushort>(NativePtr->undo_char, 999);
+        public RangeAccessor<ushort> UndoChar => new RangeAccessor<ushort>(NativePtr->UndoChar, 999);
         /// <summary>
         /// Gets the value of the undo point
         /// </summary>
-        public ref short undo_point => ref Unsafe.AsRef<short>(&NativePtr->undo_point);
+        public ref short UndoPoint => ref Unsafe.AsRef<short>(&NativePtr->UndoPoint);
         /// <summary>
         /// Gets the value of the redo point
         /// </summary>
-        public ref short redo_point => ref Unsafe.AsRef<short>(&NativePtr->redo_point);
+        public ref short RedoPoint => ref Unsafe.AsRef<short>(&NativePtr->RedoPoint);
         /// <summary>
         /// Gets the value of the undo char point
         /// </summary>
-        public ref int undo_char_point => ref Unsafe.AsRef<int>(&NativePtr->undo_char_point);
+        public ref int UndoCharPoint => ref Unsafe.AsRef<int>(&NativePtr->UndoCharPoint);
         /// <summary>
         /// Gets the value of the redo char point
         /// </summary>
-        public ref int redo_char_point => ref Unsafe.AsRef<int>(&NativePtr->redo_char_point);
+        public ref int RedoCharPoint => ref Unsafe.AsRef<int>(&NativePtr->RedoCharPoint);
     }
 }

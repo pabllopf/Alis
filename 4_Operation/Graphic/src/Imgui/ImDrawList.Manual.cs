@@ -13,42 +13,42 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         /// <param name="pos">The pos</param>
         /// <param name="col">The col</param>
-        /// <param name="text_begin">The text begin</param>
-        public void AddText(Vector2 pos, uint col, string text_begin)
+        /// <param name="textBegin">The text begin</param>
+        public void AddText(Vector2 pos, uint col, string textBegin)
         {
-            int text_begin_byteCount = Encoding.UTF8.GetByteCount(text_begin);
-            byte* native_text_begin = stackalloc byte[text_begin_byteCount + 1];
-            fixed (char* text_begin_ptr = text_begin)
+            int textBeginByteCount = Encoding.UTF8.GetByteCount(textBegin);
+            byte* nativeTextBegin = stackalloc byte[textBeginByteCount + 1];
+            fixed (char* textBeginPtr = textBegin)
             {
-                int native_text_begin_offset = Encoding.UTF8.GetBytes(text_begin_ptr, text_begin.Length, native_text_begin, text_begin_byteCount);
-                native_text_begin[native_text_begin_offset] = 0;
+                int nativeTextBeginOffset = Encoding.UTF8.GetBytes(textBeginPtr, textBegin.Length, nativeTextBegin, textBeginByteCount);
+                nativeTextBegin[nativeTextBeginOffset] = 0;
             }
-            byte* native_text_end = null;
-            ImGuiNative.ImDrawList_AddText_Vec2(NativePtr, pos, col, native_text_begin, native_text_end);
+            byte* nativeTextEnd = null;
+            ImGuiNative.ImDrawList_AddText_Vec2(NativePtr, pos, col, nativeTextBegin, nativeTextEnd);
         }
 
         /// <summary>
         /// Adds the text using the specified font
         /// </summary>
         /// <param name="font">The font</param>
-        /// <param name="font_size">The font size</param>
+        /// <param name="fontSize">The font size</param>
         /// <param name="pos">The pos</param>
         /// <param name="col">The col</param>
-        /// <param name="text_begin">The text begin</param>
-        public void AddText(ImFontPtr font, float font_size, Vector2 pos, uint col, string text_begin)
+        /// <param name="textBegin">The text begin</param>
+        public void AddText(ImFontPtr font, float fontSize, Vector2 pos, uint col, string textBegin)
         {
-            ImFont* native_font = font.NativePtr;
-            int text_begin_byteCount = Encoding.UTF8.GetByteCount(text_begin);
-            byte* native_text_begin = stackalloc byte[text_begin_byteCount + 1];
-            fixed (char* text_begin_ptr = text_begin)
+            ImFont* nativeFont = font.NativePtr;
+            int textBeginByteCount = Encoding.UTF8.GetByteCount(textBegin);
+            byte* nativeTextBegin = stackalloc byte[textBeginByteCount + 1];
+            fixed (char* textBeginPtr = textBegin)
             {
-                int native_text_begin_offset = Encoding.UTF8.GetBytes(text_begin_ptr, text_begin.Length, native_text_begin, text_begin_byteCount);
-                native_text_begin[native_text_begin_offset] = 0;
+                int nativeTextBeginOffset = Encoding.UTF8.GetBytes(textBeginPtr, textBegin.Length, nativeTextBegin, textBeginByteCount);
+                nativeTextBegin[nativeTextBeginOffset] = 0;
             }
-            byte* native_text_end = null;
-            float wrap_width = 0.0f;
-            Vector4* cpu_fine_clip_rect = null;
-            ImGuiNative.ImDrawList_AddText_FontPtr(NativePtr, native_font, font_size, pos, col, native_text_begin, native_text_end, wrap_width, cpu_fine_clip_rect);
+            byte* nativeTextEnd = null;
+            float wrapWidth = 0.0f;
+            Vector4* cpuFineClipRect = null;
+            ImGuiNative.ImDrawList_AddText_FontPtr(NativePtr, nativeFont, fontSize, pos, col, nativeTextBegin, nativeTextEnd, wrapWidth, cpuFineClipRect);
         }
     }
 }

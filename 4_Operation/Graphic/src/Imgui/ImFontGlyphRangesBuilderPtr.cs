@@ -60,8 +60,8 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="ranges">The ranges</param>
         public void AddRanges(IntPtr ranges)
         {
-            ushort* native_ranges = (ushort*)ranges.ToPointer();
-            ImGuiNative.ImFontGlyphRangesBuilder_AddRanges((ImFontGlyphRangesBuilder*)(NativePtr), native_ranges);
+            ushort* nativeRanges = (ushort*)ranges.ToPointer();
+            ImGuiNative.ImFontGlyphRangesBuilder_AddRanges((ImFontGlyphRangesBuilder*)(NativePtr), nativeRanges);
         }
         /// <summary>
         /// Adds the text using the specified text
@@ -69,40 +69,40 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="text">The text</param>
         public void AddText(string text)
         {
-            byte* native_text;
-            int text_byteCount = 0;
+            byte* nativeText;
+            int textByteCount = 0;
             if (text != null)
             {
-                text_byteCount = Encoding.UTF8.GetByteCount(text);
-                if (text_byteCount > Util.StackAllocationSizeLimit)
+                textByteCount = Encoding.UTF8.GetByteCount(text);
+                if (textByteCount > Util.StackAllocationSizeLimit)
                 {
-                    native_text = Util.Allocate(text_byteCount + 1);
+                    nativeText = Util.Allocate(textByteCount + 1);
                 }
                 else
                 {
-                    byte* native_text_stackBytes = stackalloc byte[text_byteCount + 1];
-                    native_text = native_text_stackBytes;
+                    byte* nativeTextStackBytes = stackalloc byte[textByteCount + 1];
+                    nativeText = nativeTextStackBytes;
                 }
-                int native_text_offset = Util.GetUtf8(text, native_text, text_byteCount);
-                native_text[native_text_offset] = 0;
+                int nativeTextOffset = Util.GetUtf8(text, nativeText, textByteCount);
+                nativeText[nativeTextOffset] = 0;
             }
-            else { native_text = null; }
-            byte* native_text_end = null;
-            ImGuiNative.ImFontGlyphRangesBuilder_AddText((ImFontGlyphRangesBuilder*)(NativePtr), native_text, native_text_end);
-            if (text_byteCount > Util.StackAllocationSizeLimit)
+            else { nativeText = null; }
+            byte* nativeTextEnd = null;
+            ImGuiNative.ImFontGlyphRangesBuilder_AddText((ImFontGlyphRangesBuilder*)(NativePtr), nativeText, nativeTextEnd);
+            if (textByteCount > Util.StackAllocationSizeLimit)
             {
-                Util.Free(native_text);
+                Util.Free(nativeText);
             }
         }
         /// <summary>
         /// Builds the ranges using the specified out ranges
         /// </summary>
-        /// <param name="out_ranges">The out ranges</param>
-        public void BuildRanges(out ImVector out_ranges)
+        /// <param name="outRanges">The out ranges</param>
+        public void BuildRanges(out ImVector outRanges)
         {
-            fixed (ImVector* native_out_ranges = &out_ranges)
+            fixed (ImVector* nativeOutRanges = &outRanges)
             {
-                ImGuiNative.ImFontGlyphRangesBuilder_BuildRanges((ImFontGlyphRangesBuilder*)(NativePtr), native_out_ranges);
+                ImGuiNative.ImFontGlyphRangesBuilder_BuildRanges((ImFontGlyphRangesBuilder*)(NativePtr), nativeOutRanges);
             }
         }
         /// <summary>

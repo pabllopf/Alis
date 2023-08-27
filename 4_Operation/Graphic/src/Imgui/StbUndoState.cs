@@ -10,418 +10,418 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The undo rec
         /// </summary>
-        public StbUndoRecord undo_rec_0;
+        public StbUndoRecord UndoRec0;
         /// <summary>
         /// The undo rec
         /// </summary>
-        public StbUndoRecord undo_rec_1;
+        public StbUndoRecord UndoRec1;
         /// <summary>
         /// The undo rec
         /// </summary>
-        public StbUndoRecord undo_rec_2;
+        public StbUndoRecord UndoRec2;
         /// <summary>
         /// The undo rec
         /// </summary>
-        public StbUndoRecord undo_rec_3;
+        public StbUndoRecord UndoRec3;
         /// <summary>
         /// The undo rec
         /// </summary>
-        public StbUndoRecord undo_rec_4;
+        public StbUndoRecord UndoRec4;
         /// <summary>
         /// The undo rec
         /// </summary>
-        public StbUndoRecord undo_rec_5;
+        public StbUndoRecord UndoRec5;
         /// <summary>
         /// The undo rec
         /// </summary>
-        public StbUndoRecord undo_rec_6;
+        public StbUndoRecord UndoRec6;
         /// <summary>
         /// The undo rec
         /// </summary>
-        public StbUndoRecord undo_rec_7;
+        public StbUndoRecord UndoRec7;
         /// <summary>
         /// The undo rec
         /// </summary>
-        public StbUndoRecord undo_rec_8;
+        public StbUndoRecord UndoRec8;
         /// <summary>
         /// The undo rec
         /// </summary>
-        public StbUndoRecord undo_rec_9;
+        public StbUndoRecord UndoRec9;
         /// <summary>
         /// The undo rec 10
         /// </summary>
-        public StbUndoRecord undo_rec_10;
+        public StbUndoRecord UndoRec10;
         /// <summary>
         /// The undo rec 11
         /// </summary>
-        public StbUndoRecord undo_rec_11;
+        public StbUndoRecord UndoRec11;
         /// <summary>
         /// The undo rec 12
         /// </summary>
-        public StbUndoRecord undo_rec_12;
+        public StbUndoRecord UndoRec12;
         /// <summary>
         /// The undo rec 13
         /// </summary>
-        public StbUndoRecord undo_rec_13;
+        public StbUndoRecord UndoRec13;
         /// <summary>
         /// The undo rec 14
         /// </summary>
-        public StbUndoRecord undo_rec_14;
+        public StbUndoRecord UndoRec14;
         /// <summary>
         /// The undo rec 15
         /// </summary>
-        public StbUndoRecord undo_rec_15;
+        public StbUndoRecord UndoRec15;
         /// <summary>
         /// The undo rec 16
         /// </summary>
-        public StbUndoRecord undo_rec_16;
+        public StbUndoRecord UndoRec16;
         /// <summary>
         /// The undo rec 17
         /// </summary>
-        public StbUndoRecord undo_rec_17;
+        public StbUndoRecord UndoRec17;
         /// <summary>
         /// The undo rec 18
         /// </summary>
-        public StbUndoRecord undo_rec_18;
+        public StbUndoRecord UndoRec18;
         /// <summary>
         /// The undo rec 19
         /// </summary>
-        public StbUndoRecord undo_rec_19;
+        public StbUndoRecord UndoRec19;
         /// <summary>
         /// The undo rec 20
         /// </summary>
-        public StbUndoRecord undo_rec_20;
+        public StbUndoRecord UndoRec20;
         /// <summary>
         /// The undo rec 21
         /// </summary>
-        public StbUndoRecord undo_rec_21;
+        public StbUndoRecord UndoRec21;
         /// <summary>
         /// The undo rec 22
         /// </summary>
-        public StbUndoRecord undo_rec_22;
+        public StbUndoRecord UndoRec22;
         /// <summary>
         /// The undo rec 23
         /// </summary>
-        public StbUndoRecord undo_rec_23;
+        public StbUndoRecord UndoRec23;
         /// <summary>
         /// The undo rec 24
         /// </summary>
-        public StbUndoRecord undo_rec_24;
+        public StbUndoRecord UndoRec24;
         /// <summary>
         /// The undo rec 25
         /// </summary>
-        public StbUndoRecord undo_rec_25;
+        public StbUndoRecord UndoRec25;
         /// <summary>
         /// The undo rec 26
         /// </summary>
-        public StbUndoRecord undo_rec_26;
+        public StbUndoRecord UndoRec26;
         /// <summary>
         /// The undo rec 27
         /// </summary>
-        public StbUndoRecord undo_rec_27;
+        public StbUndoRecord UndoRec27;
         /// <summary>
         /// The undo rec 28
         /// </summary>
-        public StbUndoRecord undo_rec_28;
+        public StbUndoRecord UndoRec28;
         /// <summary>
         /// The undo rec 29
         /// </summary>
-        public StbUndoRecord undo_rec_29;
+        public StbUndoRecord UndoRec29;
         /// <summary>
         /// The undo rec 30
         /// </summary>
-        public StbUndoRecord undo_rec_30;
+        public StbUndoRecord UndoRec30;
         /// <summary>
         /// The undo rec 31
         /// </summary>
-        public StbUndoRecord undo_rec_31;
+        public StbUndoRecord UndoRec31;
         /// <summary>
         /// The undo rec 32
         /// </summary>
-        public StbUndoRecord undo_rec_32;
+        public StbUndoRecord UndoRec32;
         /// <summary>
         /// The undo rec 33
         /// </summary>
-        public StbUndoRecord undo_rec_33;
+        public StbUndoRecord UndoRec33;
         /// <summary>
         /// The undo rec 34
         /// </summary>
-        public StbUndoRecord undo_rec_34;
+        public StbUndoRecord UndoRec34;
         /// <summary>
         /// The undo rec 35
         /// </summary>
-        public StbUndoRecord undo_rec_35;
+        public StbUndoRecord UndoRec35;
         /// <summary>
         /// The undo rec 36
         /// </summary>
-        public StbUndoRecord undo_rec_36;
+        public StbUndoRecord UndoRec36;
         /// <summary>
         /// The undo rec 37
         /// </summary>
-        public StbUndoRecord undo_rec_37;
+        public StbUndoRecord UndoRec37;
         /// <summary>
         /// The undo rec 38
         /// </summary>
-        public StbUndoRecord undo_rec_38;
+        public StbUndoRecord UndoRec38;
         /// <summary>
         /// The undo rec 39
         /// </summary>
-        public StbUndoRecord undo_rec_39;
+        public StbUndoRecord UndoRec39;
         /// <summary>
         /// The undo rec 40
         /// </summary>
-        public StbUndoRecord undo_rec_40;
+        public StbUndoRecord UndoRec40;
         /// <summary>
         /// The undo rec 41
         /// </summary>
-        public StbUndoRecord undo_rec_41;
+        public StbUndoRecord UndoRec41;
         /// <summary>
         /// The undo rec 42
         /// </summary>
-        public StbUndoRecord undo_rec_42;
+        public StbUndoRecord UndoRec42;
         /// <summary>
         /// The undo rec 43
         /// </summary>
-        public StbUndoRecord undo_rec_43;
+        public StbUndoRecord UndoRec43;
         /// <summary>
         /// The undo rec 44
         /// </summary>
-        public StbUndoRecord undo_rec_44;
+        public StbUndoRecord UndoRec44;
         /// <summary>
         /// The undo rec 45
         /// </summary>
-        public StbUndoRecord undo_rec_45;
+        public StbUndoRecord UndoRec45;
         /// <summary>
         /// The undo rec 46
         /// </summary>
-        public StbUndoRecord undo_rec_46;
+        public StbUndoRecord UndoRec46;
         /// <summary>
         /// The undo rec 47
         /// </summary>
-        public StbUndoRecord undo_rec_47;
+        public StbUndoRecord UndoRec47;
         /// <summary>
         /// The undo rec 48
         /// </summary>
-        public StbUndoRecord undo_rec_48;
+        public StbUndoRecord UndoRec48;
         /// <summary>
         /// The undo rec 49
         /// </summary>
-        public StbUndoRecord undo_rec_49;
+        public StbUndoRecord UndoRec49;
         /// <summary>
         /// The undo rec 50
         /// </summary>
-        public StbUndoRecord undo_rec_50;
+        public StbUndoRecord UndoRec50;
         /// <summary>
         /// The undo rec 51
         /// </summary>
-        public StbUndoRecord undo_rec_51;
+        public StbUndoRecord UndoRec51;
         /// <summary>
         /// The undo rec 52
         /// </summary>
-        public StbUndoRecord undo_rec_52;
+        public StbUndoRecord UndoRec52;
         /// <summary>
         /// The undo rec 53
         /// </summary>
-        public StbUndoRecord undo_rec_53;
+        public StbUndoRecord UndoRec53;
         /// <summary>
         /// The undo rec 54
         /// </summary>
-        public StbUndoRecord undo_rec_54;
+        public StbUndoRecord UndoRec54;
         /// <summary>
         /// The undo rec 55
         /// </summary>
-        public StbUndoRecord undo_rec_55;
+        public StbUndoRecord UndoRec55;
         /// <summary>
         /// The undo rec 56
         /// </summary>
-        public StbUndoRecord undo_rec_56;
+        public StbUndoRecord UndoRec56;
         /// <summary>
         /// The undo rec 57
         /// </summary>
-        public StbUndoRecord undo_rec_57;
+        public StbUndoRecord UndoRec57;
         /// <summary>
         /// The undo rec 58
         /// </summary>
-        public StbUndoRecord undo_rec_58;
+        public StbUndoRecord UndoRec58;
         /// <summary>
         /// The undo rec 59
         /// </summary>
-        public StbUndoRecord undo_rec_59;
+        public StbUndoRecord UndoRec59;
         /// <summary>
         /// The undo rec 60
         /// </summary>
-        public StbUndoRecord undo_rec_60;
+        public StbUndoRecord UndoRec60;
         /// <summary>
         /// The undo rec 61
         /// </summary>
-        public StbUndoRecord undo_rec_61;
+        public StbUndoRecord UndoRec61;
         /// <summary>
         /// The undo rec 62
         /// </summary>
-        public StbUndoRecord undo_rec_62;
+        public StbUndoRecord UndoRec62;
         /// <summary>
         /// The undo rec 63
         /// </summary>
-        public StbUndoRecord undo_rec_63;
+        public StbUndoRecord UndoRec63;
         /// <summary>
         /// The undo rec 64
         /// </summary>
-        public StbUndoRecord undo_rec_64;
+        public StbUndoRecord UndoRec64;
         /// <summary>
         /// The undo rec 65
         /// </summary>
-        public StbUndoRecord undo_rec_65;
+        public StbUndoRecord UndoRec65;
         /// <summary>
         /// The undo rec 66
         /// </summary>
-        public StbUndoRecord undo_rec_66;
+        public StbUndoRecord UndoRec66;
         /// <summary>
         /// The undo rec 67
         /// </summary>
-        public StbUndoRecord undo_rec_67;
+        public StbUndoRecord UndoRec67;
         /// <summary>
         /// The undo rec 68
         /// </summary>
-        public StbUndoRecord undo_rec_68;
+        public StbUndoRecord UndoRec68;
         /// <summary>
         /// The undo rec 69
         /// </summary>
-        public StbUndoRecord undo_rec_69;
+        public StbUndoRecord UndoRec69;
         /// <summary>
         /// The undo rec 70
         /// </summary>
-        public StbUndoRecord undo_rec_70;
+        public StbUndoRecord UndoRec70;
         /// <summary>
         /// The undo rec 71
         /// </summary>
-        public StbUndoRecord undo_rec_71;
+        public StbUndoRecord UndoRec71;
         /// <summary>
         /// The undo rec 72
         /// </summary>
-        public StbUndoRecord undo_rec_72;
+        public StbUndoRecord UndoRec72;
         /// <summary>
         /// The undo rec 73
         /// </summary>
-        public StbUndoRecord undo_rec_73;
+        public StbUndoRecord UndoRec73;
         /// <summary>
         /// The undo rec 74
         /// </summary>
-        public StbUndoRecord undo_rec_74;
+        public StbUndoRecord UndoRec74;
         /// <summary>
         /// The undo rec 75
         /// </summary>
-        public StbUndoRecord undo_rec_75;
+        public StbUndoRecord UndoRec75;
         /// <summary>
         /// The undo rec 76
         /// </summary>
-        public StbUndoRecord undo_rec_76;
+        public StbUndoRecord UndoRec76;
         /// <summary>
         /// The undo rec 77
         /// </summary>
-        public StbUndoRecord undo_rec_77;
+        public StbUndoRecord UndoRec77;
         /// <summary>
         /// The undo rec 78
         /// </summary>
-        public StbUndoRecord undo_rec_78;
+        public StbUndoRecord UndoRec78;
         /// <summary>
         /// The undo rec 79
         /// </summary>
-        public StbUndoRecord undo_rec_79;
+        public StbUndoRecord UndoRec79;
         /// <summary>
         /// The undo rec 80
         /// </summary>
-        public StbUndoRecord undo_rec_80;
+        public StbUndoRecord UndoRec80;
         /// <summary>
         /// The undo rec 81
         /// </summary>
-        public StbUndoRecord undo_rec_81;
+        public StbUndoRecord UndoRec81;
         /// <summary>
         /// The undo rec 82
         /// </summary>
-        public StbUndoRecord undo_rec_82;
+        public StbUndoRecord UndoRec82;
         /// <summary>
         /// The undo rec 83
         /// </summary>
-        public StbUndoRecord undo_rec_83;
+        public StbUndoRecord UndoRec83;
         /// <summary>
         /// The undo rec 84
         /// </summary>
-        public StbUndoRecord undo_rec_84;
+        public StbUndoRecord UndoRec84;
         /// <summary>
         /// The undo rec 85
         /// </summary>
-        public StbUndoRecord undo_rec_85;
+        public StbUndoRecord UndoRec85;
         /// <summary>
         /// The undo rec 86
         /// </summary>
-        public StbUndoRecord undo_rec_86;
+        public StbUndoRecord UndoRec86;
         /// <summary>
         /// The undo rec 87
         /// </summary>
-        public StbUndoRecord undo_rec_87;
+        public StbUndoRecord UndoRec87;
         /// <summary>
         /// The undo rec 88
         /// </summary>
-        public StbUndoRecord undo_rec_88;
+        public StbUndoRecord UndoRec88;
         /// <summary>
         /// The undo rec 89
         /// </summary>
-        public StbUndoRecord undo_rec_89;
+        public StbUndoRecord UndoRec89;
         /// <summary>
         /// The undo rec 90
         /// </summary>
-        public StbUndoRecord undo_rec_90;
+        public StbUndoRecord UndoRec90;
         /// <summary>
         /// The undo rec 91
         /// </summary>
-        public StbUndoRecord undo_rec_91;
+        public StbUndoRecord UndoRec91;
         /// <summary>
         /// The undo rec 92
         /// </summary>
-        public StbUndoRecord undo_rec_92;
+        public StbUndoRecord UndoRec92;
         /// <summary>
         /// The undo rec 93
         /// </summary>
-        public StbUndoRecord undo_rec_93;
+        public StbUndoRecord UndoRec93;
         /// <summary>
         /// The undo rec 94
         /// </summary>
-        public StbUndoRecord undo_rec_94;
+        public StbUndoRecord UndoRec94;
         /// <summary>
         /// The undo rec 95
         /// </summary>
-        public StbUndoRecord undo_rec_95;
+        public StbUndoRecord UndoRec95;
         /// <summary>
         /// The undo rec 96
         /// </summary>
-        public StbUndoRecord undo_rec_96;
+        public StbUndoRecord UndoRec96;
         /// <summary>
         /// The undo rec 97
         /// </summary>
-        public StbUndoRecord undo_rec_97;
+        public StbUndoRecord UndoRec97;
         /// <summary>
         /// The undo rec 98
         /// </summary>
-        public StbUndoRecord undo_rec_98;
+        public StbUndoRecord UndoRec98;
         /// <summary>
         /// The undo char
         /// </summary>
-        public fixed ushort undo_char[999];
+        public fixed ushort UndoChar[999];
         /// <summary>
         /// The undo point
         /// </summary>
-        public short undo_point;
+        public short UndoPoint;
         /// <summary>
         /// The redo point
         /// </summary>
-        public short redo_point;
+        public short RedoPoint;
         /// <summary>
         /// The undo char point
         /// </summary>
-        public int undo_char_point;
+        public int UndoCharPoint;
         /// <summary>
         /// The redo char point
         /// </summary>
-        public int redo_char_point;
+        public int RedoCharPoint;
     }
 }

@@ -98,28 +98,28 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The bool</returns>
         public bool IsDataType(string type)
         {
-            byte* native_type;
-            int type_byteCount = 0;
+            byte* nativeType;
+            int typeByteCount = 0;
             if (type != null)
             {
-                type_byteCount = Encoding.UTF8.GetByteCount(type);
-                if (type_byteCount > Util.StackAllocationSizeLimit)
+                typeByteCount = Encoding.UTF8.GetByteCount(type);
+                if (typeByteCount > Util.StackAllocationSizeLimit)
                 {
-                    native_type = Util.Allocate(type_byteCount + 1);
+                    nativeType = Util.Allocate(typeByteCount + 1);
                 }
                 else
                 {
-                    byte* native_type_stackBytes = stackalloc byte[type_byteCount + 1];
-                    native_type = native_type_stackBytes;
+                    byte* nativeTypeStackBytes = stackalloc byte[typeByteCount + 1];
+                    nativeType = nativeTypeStackBytes;
                 }
-                int native_type_offset = Util.GetUtf8(type, native_type, type_byteCount);
-                native_type[native_type_offset] = 0;
+                int nativeTypeOffset = Util.GetUtf8(type, nativeType, typeByteCount);
+                nativeType[nativeTypeOffset] = 0;
             }
-            else { native_type = null; }
-            byte ret = ImGuiNative.ImGuiPayload_IsDataType((ImGuiPayload*)(NativePtr), native_type);
-            if (type_byteCount > Util.StackAllocationSizeLimit)
+            else { nativeType = null; }
+            byte ret = ImGuiNative.ImGuiPayload_IsDataType((ImGuiPayload*)(NativePtr), nativeType);
+            if (typeByteCount > Util.StackAllocationSizeLimit)
             {
-                Util.Free(native_type);
+                Util.Free(nativeType);
             }
             return ret != 0;
         }

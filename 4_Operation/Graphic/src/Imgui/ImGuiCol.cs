@@ -228,6 +228,6 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The count im gui col
         /// </summary>
-        COUNT = 55,
+        Count = 55,
     }
 }

@@ -8,10 +8,10 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The 
         /// </summary>
-        public byte* b;
+        public byte* B;
         /// <summary>
         /// The 
         /// </summary>
-        public byte* e;
+        public byte* E;
     }
 }

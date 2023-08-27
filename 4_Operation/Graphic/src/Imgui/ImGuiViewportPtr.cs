@@ -46,7 +46,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// Gets the value of the id
         /// </summary>
-        public ref uint ID => ref Unsafe.AsRef<uint>(&NativePtr->ID);
+        public ref uint Id => ref Unsafe.AsRef<uint>(&NativePtr->Id);
         /// <summary>
         /// Gets the value of the flags
         /// </summary>
@@ -124,9 +124,9 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The retval</returns>
         public Vector2 GetCenter()
         {
-            Vector2 __retval;
-            ImGuiNative.ImGuiViewport_GetCenter(&__retval, (ImGuiViewport*)(NativePtr));
-            return __retval;
+            Vector2 retval;
+            ImGuiNative.ImGuiViewport_GetCenter(&retval, (ImGuiViewport*)(NativePtr));
+            return retval;
         }
         /// <summary>
         /// Gets the work center
@@ -134,9 +134,9 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The retval</returns>
         public Vector2 GetWorkCenter()
         {
-            Vector2 __retval;
-            ImGuiNative.ImGuiViewport_GetWorkCenter(&__retval, (ImGuiViewport*)(NativePtr));
-            return __retval;
+            Vector2 retval;
+            ImGuiNative.ImGuiViewport_GetWorkCenter(&retval, (ImGuiViewport*)(NativePtr));
+            return retval;
         }
     }
 }

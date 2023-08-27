@@ -171,222 +171,222 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_0;
+        public Vector4 Colors0;
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_1;
+        public Vector4 Colors1;
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_2;
+        public Vector4 Colors2;
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_3;
+        public Vector4 Colors3;
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_4;
+        public Vector4 Colors4;
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_5;
+        public Vector4 Colors5;
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_6;
+        public Vector4 Colors6;
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_7;
+        public Vector4 Colors7;
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_8;
+        public Vector4 Colors8;
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_9;
+        public Vector4 Colors9;
         /// <summary>
         /// The colors 10
         /// </summary>
-        public Vector4 Colors_10;
+        public Vector4 Colors10;
         /// <summary>
         /// The colors 11
         /// </summary>
-        public Vector4 Colors_11;
+        public Vector4 Colors11;
         /// <summary>
         /// The colors 12
         /// </summary>
-        public Vector4 Colors_12;
+        public Vector4 Colors12;
         /// <summary>
         /// The colors 13
         /// </summary>
-        public Vector4 Colors_13;
+        public Vector4 Colors13;
         /// <summary>
         /// The colors 14
         /// </summary>
-        public Vector4 Colors_14;
+        public Vector4 Colors14;
         /// <summary>
         /// The colors 15
         /// </summary>
-        public Vector4 Colors_15;
+        public Vector4 Colors15;
         /// <summary>
         /// The colors 16
         /// </summary>
-        public Vector4 Colors_16;
+        public Vector4 Colors16;
         /// <summary>
         /// The colors 17
         /// </summary>
-        public Vector4 Colors_17;
+        public Vector4 Colors17;
         /// <summary>
         /// The colors 18
         /// </summary>
-        public Vector4 Colors_18;
+        public Vector4 Colors18;
         /// <summary>
         /// The colors 19
         /// </summary>
-        public Vector4 Colors_19;
+        public Vector4 Colors19;
         /// <summary>
         /// The colors 20
         /// </summary>
-        public Vector4 Colors_20;
+        public Vector4 Colors20;
         /// <summary>
         /// The colors 21
         /// </summary>
-        public Vector4 Colors_21;
+        public Vector4 Colors21;
         /// <summary>
         /// The colors 22
         /// </summary>
-        public Vector4 Colors_22;
+        public Vector4 Colors22;
         /// <summary>
         /// The colors 23
         /// </summary>
-        public Vector4 Colors_23;
+        public Vector4 Colors23;
         /// <summary>
         /// The colors 24
         /// </summary>
-        public Vector4 Colors_24;
+        public Vector4 Colors24;
         /// <summary>
         /// The colors 25
         /// </summary>
-        public Vector4 Colors_25;
+        public Vector4 Colors25;
         /// <summary>
         /// The colors 26
         /// </summary>
-        public Vector4 Colors_26;
+        public Vector4 Colors26;
         /// <summary>
         /// The colors 27
         /// </summary>
-        public Vector4 Colors_27;
+        public Vector4 Colors27;
         /// <summary>
         /// The colors 28
         /// </summary>
-        public Vector4 Colors_28;
+        public Vector4 Colors28;
         /// <summary>
         /// The colors 29
         /// </summary>
-        public Vector4 Colors_29;
+        public Vector4 Colors29;
         /// <summary>
         /// The colors 30
         /// </summary>
-        public Vector4 Colors_30;
+        public Vector4 Colors30;
         /// <summary>
         /// The colors 31
         /// </summary>
-        public Vector4 Colors_31;
+        public Vector4 Colors31;
         /// <summary>
         /// The colors 32
         /// </summary>
-        public Vector4 Colors_32;
+        public Vector4 Colors32;
         /// <summary>
         /// The colors 33
         /// </summary>
-        public Vector4 Colors_33;
+        public Vector4 Colors33;
         /// <summary>
         /// The colors 34
         /// </summary>
-        public Vector4 Colors_34;
+        public Vector4 Colors34;
         /// <summary>
         /// The colors 35
         /// </summary>
-        public Vector4 Colors_35;
+        public Vector4 Colors35;
         /// <summary>
         /// The colors 36
         /// </summary>
-        public Vector4 Colors_36;
+        public Vector4 Colors36;
         /// <summary>
         /// The colors 37
         /// </summary>
-        public Vector4 Colors_37;
+        public Vector4 Colors37;
         /// <summary>
         /// The colors 38
         /// </summary>
-        public Vector4 Colors_38;
+        public Vector4 Colors38;
         /// <summary>
         /// The colors 39
         /// </summary>
-        public Vector4 Colors_39;
+        public Vector4 Colors39;
         /// <summary>
         /// The colors 40
         /// </summary>
-        public Vector4 Colors_40;
+        public Vector4 Colors40;
         /// <summary>
         /// The colors 41
         /// </summary>
-        public Vector4 Colors_41;
+        public Vector4 Colors41;
         /// <summary>
         /// The colors 42
         /// </summary>
-        public Vector4 Colors_42;
+        public Vector4 Colors42;
         /// <summary>
         /// The colors 43
         /// </summary>
-        public Vector4 Colors_43;
+        public Vector4 Colors43;
         /// <summary>
         /// The colors 44
         /// </summary>
-        public Vector4 Colors_44;
+        public Vector4 Colors44;
         /// <summary>
         /// The colors 45
         /// </summary>
-        public Vector4 Colors_45;
+        public Vector4 Colors45;
         /// <summary>
         /// The colors 46
         /// </summary>
-        public Vector4 Colors_46;
+        public Vector4 Colors46;
         /// <summary>
         /// The colors 47
         /// </summary>
-        public Vector4 Colors_47;
+        public Vector4 Colors47;
         /// <summary>
         /// The colors 48
         /// </summary>
-        public Vector4 Colors_48;
+        public Vector4 Colors48;
         /// <summary>
         /// The colors 49
         /// </summary>
-        public Vector4 Colors_49;
+        public Vector4 Colors49;
         /// <summary>
         /// The colors 50
         /// </summary>
-        public Vector4 Colors_50;
+        public Vector4 Colors50;
         /// <summary>
         /// The colors 51
         /// </summary>
-        public Vector4 Colors_51;
+        public Vector4 Colors51;
         /// <summary>
         /// The colors 52
         /// </summary>
-        public Vector4 Colors_52;
+        public Vector4 Colors52;
         /// <summary>
         /// The colors 53
         /// </summary>
-        public Vector4 Colors_53;
+        public Vector4 Colors53;
         /// <summary>
         /// The colors 54
         /// </summary>
-        public Vector4 Colors_54;
+        public Vector4 Colors54;
     }
 }

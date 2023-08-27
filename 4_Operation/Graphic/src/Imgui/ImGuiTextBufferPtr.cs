@@ -52,68 +52,68 @@ namespace Alis.Core.Graphic.Imgui
         /// Appends the str
         /// </summary>
         /// <param name="str">The str</param>
-        public void append(string str)
+        public void Append(string str)
         {
-            byte* native_str;
-            int str_byteCount = 0;
+            byte* nativeStr;
+            int strByteCount = 0;
             if (str != null)
             {
-                str_byteCount = Encoding.UTF8.GetByteCount(str);
-                if (str_byteCount > Util.StackAllocationSizeLimit)
+                strByteCount = Encoding.UTF8.GetByteCount(str);
+                if (strByteCount > Util.StackAllocationSizeLimit)
                 {
-                    native_str = Util.Allocate(str_byteCount + 1);
+                    nativeStr = Util.Allocate(strByteCount + 1);
                 }
                 else
                 {
-                    byte* native_str_stackBytes = stackalloc byte[str_byteCount + 1];
-                    native_str = native_str_stackBytes;
+                    byte* nativeStrStackBytes = stackalloc byte[strByteCount + 1];
+                    nativeStr = nativeStrStackBytes;
                 }
-                int native_str_offset = Util.GetUtf8(str, native_str, str_byteCount);
-                native_str[native_str_offset] = 0;
+                int nativeStrOffset = Util.GetUtf8(str, nativeStr, strByteCount);
+                nativeStr[nativeStrOffset] = 0;
             }
-            else { native_str = null; }
-            byte* native_str_end = null;
-            ImGuiNative.ImGuiTextBuffer_append((ImGuiTextBuffer*)(NativePtr), native_str, native_str_end);
-            if (str_byteCount > Util.StackAllocationSizeLimit)
+            else { nativeStr = null; }
+            byte* nativeStrEnd = null;
+            ImGuiNative.ImGuiTextBuffer_append((ImGuiTextBuffer*)(NativePtr), nativeStr, nativeStrEnd);
+            if (strByteCount > Util.StackAllocationSizeLimit)
             {
-                Util.Free(native_str);
+                Util.Free(nativeStr);
             }
         }
         /// <summary>
         /// Appendfs the fmt
         /// </summary>
         /// <param name="fmt">The fmt</param>
-        public void appendf(string fmt)
+        public void Appendf(string fmt)
         {
-            byte* native_fmt;
-            int fmt_byteCount = 0;
+            byte* nativeFmt;
+            int fmtByteCount = 0;
             if (fmt != null)
             {
-                fmt_byteCount = Encoding.UTF8.GetByteCount(fmt);
-                if (fmt_byteCount > Util.StackAllocationSizeLimit)
+                fmtByteCount = Encoding.UTF8.GetByteCount(fmt);
+                if (fmtByteCount > Util.StackAllocationSizeLimit)
                 {
-                    native_fmt = Util.Allocate(fmt_byteCount + 1);
+                    nativeFmt = Util.Allocate(fmtByteCount + 1);
                 }
                 else
                 {
-                    byte* native_fmt_stackBytes = stackalloc byte[fmt_byteCount + 1];
-                    native_fmt = native_fmt_stackBytes;
+                    byte* nativeFmtStackBytes = stackalloc byte[fmtByteCount + 1];
+                    nativeFmt = nativeFmtStackBytes;
                 }
-                int native_fmt_offset = Util.GetUtf8(fmt, native_fmt, fmt_byteCount);
-                native_fmt[native_fmt_offset] = 0;
+                int nativeFmtOffset = Util.GetUtf8(fmt, nativeFmt, fmtByteCount);
+                nativeFmt[nativeFmtOffset] = 0;
             }
-            else { native_fmt = null; }
-            ImGuiNative.ImGuiTextBuffer_appendf((ImGuiTextBuffer*)(NativePtr), native_fmt);
-            if (fmt_byteCount > Util.StackAllocationSizeLimit)
+            else { nativeFmt = null; }
+            ImGuiNative.ImGuiTextBuffer_appendf((ImGuiTextBuffer*)(NativePtr), nativeFmt);
+            if (fmtByteCount > Util.StackAllocationSizeLimit)
             {
-                Util.Free(native_fmt);
+                Util.Free(nativeFmt);
             }
         }
         /// <summary>
         /// Begins this instance
         /// </summary>
         /// <returns>The string</returns>
-        public string begin()
+        public string Begin()
         {
             byte* ret = ImGuiNative.ImGuiTextBuffer_begin((ImGuiTextBuffer*)(NativePtr));
             return Util.StringFromPtr(ret);
@@ -130,7 +130,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// Clears this instance
         /// </summary>
-        public void clear()
+        public void Clear()
         {
             ImGuiNative.ImGuiTextBuffer_clear((ImGuiTextBuffer*)(NativePtr));
         }
@@ -145,7 +145,7 @@ namespace Alis.Core.Graphic.Imgui
         /// Describes whether this instance empty
         /// </summary>
         /// <returns>The bool</returns>
-        public bool empty()
+        public bool Empty()
         {
             byte ret = ImGuiNative.ImGuiTextBuffer_empty((ImGuiTextBuffer*)(NativePtr));
             return ret != 0;
@@ -154,7 +154,7 @@ namespace Alis.Core.Graphic.Imgui
         /// Ends this instance
         /// </summary>
         /// <returns>The string</returns>
-        public string end()
+        public string End()
         {
             byte* ret = ImGuiNative.ImGuiTextBuffer_end((ImGuiTextBuffer*)(NativePtr));
             return Util.StringFromPtr(ret);
@@ -163,7 +163,7 @@ namespace Alis.Core.Graphic.Imgui
         /// Reserves the capacity
         /// </summary>
         /// <param name="capacity">The capacity</param>
-        public void reserve(int capacity)
+        public void Reserve(int capacity)
         {
             ImGuiNative.ImGuiTextBuffer_reserve((ImGuiTextBuffer*)(NativePtr), capacity);
         }
@@ -171,7 +171,7 @@ namespace Alis.Core.Graphic.Imgui
         /// Sizes this instance
         /// </summary>
         /// <returns>The ret</returns>
-        public int size()
+        public int Size()
         {
             int ret = ImGuiNative.ImGuiTextBuffer_size((ImGuiTextBuffer*)(NativePtr));
             return ret;

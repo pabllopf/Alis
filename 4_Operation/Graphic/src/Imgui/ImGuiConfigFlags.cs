@@ -53,7 +53,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The is srgb im gui config flags
         /// </summary>
-        IsSRGB = 1048576,
+        IsSrgb = 1048576,
         /// <summary>
         /// The is touch screen im gui config flags
         /// </summary>

@@ -39,7 +39,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The pixel snap
         /// </summary>
-        public byte PixelSnapH;
+        public byte SnapH;
         /// <summary>
         /// The glyph extra spacing
         /// </summary>

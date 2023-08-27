@@ -48,6 +48,6 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The count im gui data type
         /// </summary>
-        COUNT = 10,
+        Count = 10,
     }
 }

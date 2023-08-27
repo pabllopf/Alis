@@ -24,19 +24,19 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The resize ns im gui mouse cursor
         /// </summary>
-        ResizeNS = 3,
+        ResizeNs = 3,
         /// <summary>
         /// The resize ew im gui mouse cursor
         /// </summary>
-        ResizeEW = 4,
+        ResizeEw = 4,
         /// <summary>
         /// The resize nesw im gui mouse cursor
         /// </summary>
-        ResizeNESW = 5,
+        ResizeNesw = 5,
         /// <summary>
         /// The resize nwse im gui mouse cursor
         /// </summary>
-        ResizeNWSE = 6,
+        ResizeNwse = 6,
         /// <summary>
         /// The hand im gui mouse cursor
         /// </summary>
@@ -48,6 +48,6 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The count im gui mouse cursor
         /// </summary>
-        COUNT = 9,
+        Count = 9,
     }
 }

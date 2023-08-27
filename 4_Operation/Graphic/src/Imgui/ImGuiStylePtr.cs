@@ -207,7 +207,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// Gets the value of the colors
         /// </summary>
-        public RangeAccessor<Vector4> Colors => new RangeAccessor<Vector4>(&NativePtr->Colors_0, 55);
+        public RangeAccessor<Vector4> Colors => new RangeAccessor<Vector4>(&NativePtr->Colors0, 55);
         /// <summary>
         /// Destroys this instance
         /// </summary>
@@ -218,10 +218,10 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// Scales the all sizes using the specified scale factor
         /// </summary>
-        /// <param name="scale_factor">The scale factor</param>
-        public void ScaleAllSizes(float scale_factor)
+        /// <param name="scaleFactor">The scale factor</param>
+        public void ScaleAllSizes(float scaleFactor)
         {
-            ImGuiNative.ImGuiStyle_ScaleAllSizes((ImGuiStyle*)(NativePtr), scale_factor);
+            ImGuiNative.ImGuiStyle_ScaleAllSizes((ImGuiStyle*)(NativePtr), scaleFactor);
         }
     }
 }

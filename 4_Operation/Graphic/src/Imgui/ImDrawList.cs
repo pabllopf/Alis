@@ -27,46 +27,46 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The vtx current idx
         /// </summary>
-        public uint _VtxCurrentIdx;
+        public uint VtxCurrentIdx;
         /// <summary>
         /// The data
         /// </summary>
-        public IntPtr _Data;
+        public IntPtr Data;
         /// <summary>
         /// The owner name
         /// </summary>
-        public byte* _OwnerName;
+        public byte* OwnerName;
         /// <summary>
         /// The vtx write ptr
         /// </summary>
-        public ImDrawVert* _VtxWritePtr;
+        public ImDrawVert* VtxWritePtr;
         /// <summary>
         /// The idx write ptr
         /// </summary>
-        public ushort* _IdxWritePtr;
+        public ushort* IdxWritePtr;
         /// <summary>
         /// The clip rect stack
         /// </summary>
-        public ImVector _ClipRectStack;
+        public ImVector ClipRectStack;
         /// <summary>
         /// The texture id stack
         /// </summary>
-        public ImVector _TextureIdStack;
+        public ImVector TextureIdStack;
         /// <summary>
         /// The path
         /// </summary>
-        public ImVector _Path;
+        public ImVector Path;
         /// <summary>
         /// The cmd header
         /// </summary>
-        public ImDrawCmdHeader _CmdHeader;
+        public ImDrawCmdHeader CmdHeader;
         /// <summary>
         /// The splitter
         /// </summary>
-        public ImDrawListSplitter _Splitter;
+        public ImDrawListSplitter Splitter;
         /// <summary>
         /// The fringe scale
         /// </summary>
-        public float _FringeScale;
+        public float FringeScale;
     }
 }

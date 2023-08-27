@@ -65,15 +65,15 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The hdr im gui color edit flags
         /// </summary>
-        HDR = 524288,
+        Hdr = 524288,
         /// <summary>
         /// The display rgb im gui color edit flags
         /// </summary>
-        DisplayRGB = 1048576,
+        DisplayRgb = 1048576,
         /// <summary>
         /// The display hsv im gui color edit flags
         /// </summary>
-        DisplayHSV = 2097152,
+        DisplayHsv = 2097152,
         /// <summary>
         /// The display hex im gui color edit flags
         /// </summary>
@@ -97,11 +97,11 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The input rgb im gui color edit flags
         /// </summary>
-        InputRGB = 134217728,
+        InputRgb = 134217728,
         /// <summary>
         /// The input hsv im gui color edit flags
         /// </summary>
-        InputHSV = 268435456,
+        InputHsv = 268435456,
         /// <summary>
         /// The default options im gui color edit flags
         /// </summary>

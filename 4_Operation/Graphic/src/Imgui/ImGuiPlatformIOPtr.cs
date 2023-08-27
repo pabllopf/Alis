@@ -6,137 +6,137 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui platform io ptr
     /// </summary>
-    public unsafe struct ImGuiPlatformIOPtr
+    public unsafe struct ImGuiPlatformIoPtr
     {
         /// <summary>
         /// Gets the value of the native ptr
         /// </summary>
-        public ImGuiPlatformIO* NativePtr { get; }
+        public ImGuiPlatformIo* NativePtr { get; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImGuiPlatformIOPtr"/> class
+        /// Initializes a new instance of the <see cref="ImGuiPlatformIoPtr"/> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImGuiPlatformIOPtr(ImGuiPlatformIO* nativePtr) => NativePtr = nativePtr;
+        public ImGuiPlatformIoPtr(ImGuiPlatformIo* nativePtr) => NativePtr = nativePtr;
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImGuiPlatformIOPtr"/> class
+        /// Initializes a new instance of the <see cref="ImGuiPlatformIoPtr"/> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImGuiPlatformIOPtr(IntPtr nativePtr) => NativePtr = (ImGuiPlatformIO*)nativePtr;
+        public ImGuiPlatformIoPtr(IntPtr nativePtr) => NativePtr = (ImGuiPlatformIo*)nativePtr;
         
         /// <summary>
         /// 
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
-        public static implicit operator ImGuiPlatformIOPtr(ImGuiPlatformIO* nativePtr) => new ImGuiPlatformIOPtr(nativePtr);
+        public static implicit operator ImGuiPlatformIoPtr(ImGuiPlatformIo* nativePtr) => new ImGuiPlatformIoPtr(nativePtr);
         
         /// <summary>
         /// 
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator ImGuiPlatformIO* (ImGuiPlatformIOPtr wrappedPtr) => wrappedPtr.NativePtr;
+        public static implicit operator ImGuiPlatformIo* (ImGuiPlatformIoPtr wrappedPtr) => wrappedPtr.NativePtr;
         
         /// <summary>
         /// 
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
-        public static implicit operator ImGuiPlatformIOPtr(IntPtr nativePtr) => new ImGuiPlatformIOPtr(nativePtr);
+        public static implicit operator ImGuiPlatformIoPtr(IntPtr nativePtr) => new ImGuiPlatformIoPtr(nativePtr);
         
         
         /// <summary>
         /// Gets the value of the platform createwindow
         /// </summary>
-        public ref IntPtr Platform_CreateWindow => ref Unsafe.AsRef<IntPtr>(&NativePtr->Platform_CreateWindow);
+        public ref IntPtr PlatformCreateWindow => ref Unsafe.AsRef<IntPtr>(&NativePtr->PlatformCreateWindow);
         /// <summary>
         /// Gets the value of the platform destroywindow
         /// </summary>
-        public ref IntPtr Platform_DestroyWindow => ref Unsafe.AsRef<IntPtr>(&NativePtr->Platform_DestroyWindow);
+        public ref IntPtr PlatformDestroyWindow => ref Unsafe.AsRef<IntPtr>(&NativePtr->PlatformDestroyWindow);
         /// <summary>
         /// Gets the value of the platform showwindow
         /// </summary>
-        public ref IntPtr Platform_ShowWindow => ref Unsafe.AsRef<IntPtr>(&NativePtr->Platform_ShowWindow);
+        public ref IntPtr PlatformShowWindow => ref Unsafe.AsRef<IntPtr>(&NativePtr->PlatformShowWindow);
         /// <summary>
         /// Gets the value of the platform setwindowpos
         /// </summary>
-        public ref IntPtr Platform_SetWindowPos => ref Unsafe.AsRef<IntPtr>(&NativePtr->Platform_SetWindowPos);
+        public ref IntPtr PlatformSetWindowPos => ref Unsafe.AsRef<IntPtr>(&NativePtr->PlatformSetWindowPos);
         /// <summary>
         /// Gets the value of the platform getwindowpos
         /// </summary>
-        public ref IntPtr Platform_GetWindowPos => ref Unsafe.AsRef<IntPtr>(&NativePtr->Platform_GetWindowPos);
+        public ref IntPtr PlatformGetWindowPos => ref Unsafe.AsRef<IntPtr>(&NativePtr->PlatformGetWindowPos);
         /// <summary>
         /// Gets the value of the platform setwindowsize
         /// </summary>
-        public ref IntPtr Platform_SetWindowSize => ref Unsafe.AsRef<IntPtr>(&NativePtr->Platform_SetWindowSize);
+        public ref IntPtr PlatformSetWindowSize => ref Unsafe.AsRef<IntPtr>(&NativePtr->PlatformSetWindowSize);
         /// <summary>
         /// Gets the value of the platform getwindowsize
         /// </summary>
-        public ref IntPtr Platform_GetWindowSize => ref Unsafe.AsRef<IntPtr>(&NativePtr->Platform_GetWindowSize);
+        public ref IntPtr PlatformGetWindowSize => ref Unsafe.AsRef<IntPtr>(&NativePtr->PlatformGetWindowSize);
         /// <summary>
         /// Gets the value of the platform setwindowfocus
         /// </summary>
-        public ref IntPtr Platform_SetWindowFocus => ref Unsafe.AsRef<IntPtr>(&NativePtr->Platform_SetWindowFocus);
+        public ref IntPtr PlatformSetWindowFocus => ref Unsafe.AsRef<IntPtr>(&NativePtr->PlatformSetWindowFocus);
         /// <summary>
         /// Gets the value of the platform getwindowfocus
         /// </summary>
-        public ref IntPtr Platform_GetWindowFocus => ref Unsafe.AsRef<IntPtr>(&NativePtr->Platform_GetWindowFocus);
+        public ref IntPtr PlatformGetWindowFocus => ref Unsafe.AsRef<IntPtr>(&NativePtr->PlatformGetWindowFocus);
         /// <summary>
         /// Gets the value of the platform getwindowminimized
         /// </summary>
-        public ref IntPtr Platform_GetWindowMinimized => ref Unsafe.AsRef<IntPtr>(&NativePtr->Platform_GetWindowMinimized);
+        public ref IntPtr PlatformGetWindowMinimized => ref Unsafe.AsRef<IntPtr>(&NativePtr->PlatformGetWindowMinimized);
         /// <summary>
         /// Gets the value of the platform setwindowtitle
         /// </summary>
-        public ref IntPtr Platform_SetWindowTitle => ref Unsafe.AsRef<IntPtr>(&NativePtr->Platform_SetWindowTitle);
+        public ref IntPtr PlatformSetWindowTitle => ref Unsafe.AsRef<IntPtr>(&NativePtr->PlatformSetWindowTitle);
         /// <summary>
         /// Gets the value of the platform setwindowalpha
         /// </summary>
-        public ref IntPtr Platform_SetWindowAlpha => ref Unsafe.AsRef<IntPtr>(&NativePtr->Platform_SetWindowAlpha);
+        public ref IntPtr PlatformSetWindowAlpha => ref Unsafe.AsRef<IntPtr>(&NativePtr->PlatformSetWindowAlpha);
         /// <summary>
         /// Gets the value of the platform updatewindow
         /// </summary>
-        public ref IntPtr Platform_UpdateWindow => ref Unsafe.AsRef<IntPtr>(&NativePtr->Platform_UpdateWindow);
+        public ref IntPtr PlatformUpdateWindow => ref Unsafe.AsRef<IntPtr>(&NativePtr->PlatformUpdateWindow);
         /// <summary>
         /// Gets the value of the platform renderwindow
         /// </summary>
-        public ref IntPtr Platform_RenderWindow => ref Unsafe.AsRef<IntPtr>(&NativePtr->Platform_RenderWindow);
+        public ref IntPtr PlatformRenderWindow => ref Unsafe.AsRef<IntPtr>(&NativePtr->PlatformRenderWindow);
         /// <summary>
         /// Gets the value of the platform swapbuffers
         /// </summary>
-        public ref IntPtr Platform_SwapBuffers => ref Unsafe.AsRef<IntPtr>(&NativePtr->Platform_SwapBuffers);
+        public ref IntPtr PlatformSwapBuffers => ref Unsafe.AsRef<IntPtr>(&NativePtr->PlatformSwapBuffers);
         /// <summary>
         /// Gets the value of the platform getwindowdpiscale
         /// </summary>
-        public ref IntPtr Platform_GetWindowDpiScale => ref Unsafe.AsRef<IntPtr>(&NativePtr->Platform_GetWindowDpiScale);
+        public ref IntPtr PlatformGetWindowDpiScale => ref Unsafe.AsRef<IntPtr>(&NativePtr->PlatformGetWindowDpiScale);
         /// <summary>
         /// Gets the value of the platform onchangedviewport
         /// </summary>
-        public ref IntPtr Platform_OnChangedViewport => ref Unsafe.AsRef<IntPtr>(&NativePtr->Platform_OnChangedViewport);
+        public ref IntPtr PlatformOnChangedViewport => ref Unsafe.AsRef<IntPtr>(&NativePtr->PlatformOnChangedViewport);
         /// <summary>
         /// Gets the value of the platform createvksurface
         /// </summary>
-        public ref IntPtr Platform_CreateVkSurface => ref Unsafe.AsRef<IntPtr>(&NativePtr->Platform_CreateVkSurface);
+        public ref IntPtr PlatformCreateVkSurface => ref Unsafe.AsRef<IntPtr>(&NativePtr->PlatformCreateVkSurface);
         /// <summary>
         /// Gets the value of the renderer createwindow
         /// </summary>
-        public ref IntPtr Renderer_CreateWindow => ref Unsafe.AsRef<IntPtr>(&NativePtr->Renderer_CreateWindow);
+        public ref IntPtr RendererCreateWindow => ref Unsafe.AsRef<IntPtr>(&NativePtr->RendererCreateWindow);
         /// <summary>
         /// Gets the value of the renderer destroywindow
         /// </summary>
-        public ref IntPtr Renderer_DestroyWindow => ref Unsafe.AsRef<IntPtr>(&NativePtr->Renderer_DestroyWindow);
+        public ref IntPtr RendererDestroyWindow => ref Unsafe.AsRef<IntPtr>(&NativePtr->RendererDestroyWindow);
         /// <summary>
         /// Gets the value of the renderer setwindowsize
         /// </summary>
-        public ref IntPtr Renderer_SetWindowSize => ref Unsafe.AsRef<IntPtr>(&NativePtr->Renderer_SetWindowSize);
+        public ref IntPtr RendererSetWindowSize => ref Unsafe.AsRef<IntPtr>(&NativePtr->RendererSetWindowSize);
         /// <summary>
         /// Gets the value of the renderer renderwindow
         /// </summary>
-        public ref IntPtr Renderer_RenderWindow => ref Unsafe.AsRef<IntPtr>(&NativePtr->Renderer_RenderWindow);
+        public ref IntPtr RendererRenderWindow => ref Unsafe.AsRef<IntPtr>(&NativePtr->RendererRenderWindow);
         /// <summary>
         /// Gets the value of the renderer swapbuffers
         /// </summary>
-        public ref IntPtr Renderer_SwapBuffers => ref Unsafe.AsRef<IntPtr>(&NativePtr->Renderer_SwapBuffers);
+        public ref IntPtr RendererSwapBuffers => ref Unsafe.AsRef<IntPtr>(&NativePtr->RendererSwapBuffers);
         /// <summary>
         /// Gets the value of the monitors
         /// </summary>
@@ -150,7 +150,7 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImGuiPlatformIO_destroy((ImGuiPlatformIO*)(NativePtr));
+            ImGuiNative.ImGuiPlatformIO_destroy((ImGuiPlatformIo*)(NativePtr));
         }
     }
 }

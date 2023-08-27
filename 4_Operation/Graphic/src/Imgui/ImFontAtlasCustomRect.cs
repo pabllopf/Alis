@@ -27,7 +27,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The glyph id
         /// </summary>
-        public uint GlyphID;
+        public uint GlyphId;
         /// <summary>
         /// The glyph advance
         /// </summary>

@@ -11,7 +11,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         /// The id
         /// </summary>
-        public uint ID;
+        public uint Id;
         /// <summary>
         /// The flags
         /// </summary>
