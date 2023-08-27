@@ -643,6 +643,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                                         lastSolid = x;
                                     }
 
+                                    /*
                                     if (foundTransparent)
                                     {
                                         Vector2F? entrance = new Vector2F(lastSolid, y);
@@ -653,7 +654,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                                         }
 
                                         break;
-                                    }
+                                    }*/
                                 }
                                 else
                                 {
