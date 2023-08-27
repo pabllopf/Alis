@@ -57,10 +57,10 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Util
                     {
                         radius += scale / 2 * (0.5 - RandomUtils.GetInt32(1));
                     }
-                    else if (i % 50 == 0)
+                    /*else if (i % 50 == 0)
                     {
                         radius += scale / 5 * (0.5 - RandomUtils.GetInt32(1));
-                    }
+                    }*/
                     else
                     {
                         radius += 25 * scale / vertexCount * (0.5 - RandomUtils.GetInt32(1));
