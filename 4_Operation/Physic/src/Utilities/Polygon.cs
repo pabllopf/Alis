@@ -133,11 +133,11 @@ namespace Alis.Core.Physic.Utilities
                         posOffset = new Vector2F(posOffset.X * -1, posOffset.Y);
                         phase--;
                     }
-                    else if (i - perPhase * 2 == 0)
+                    /*else if (i - perPhase * 2 == 0)
                     {
                         posOffset = new Vector2F(posOffset.X, posOffset.Y * -1);
                         phase--;
-                    }
+                    }*/
 
                     vertices.Add(posOffset + new Vector2F(xRadius * (float) Math.Cos(stepSize * -(i + phase)),
                         -yRadius * (float) Math.Sin(stepSize * -(i + phase))));
