@@ -73,5 +73,10 @@ namespace Alis.Core.Manager
 
         /// <summary>Exits this instance.</summary>
         public abstract void Exit();
+
+        /// <summary>
+        /// Gets or sets the value of the is exit requested
+        /// </summary>
+        public bool IsExitRequested { get; set; } = false;
     }
 }

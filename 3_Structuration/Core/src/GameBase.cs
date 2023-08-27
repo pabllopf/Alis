@@ -88,6 +88,14 @@ namespace Alis.Core
                 }
 
                 TimeManager.UpdateFixedTime();
+                
+                Managers.ForEach(i =>
+                {
+                    if (i.IsExitRequested)
+                    {
+                        IsRunning = false;
+                    }
+                });
             }
 
             Managers.ForEach(i => i.Stop());
