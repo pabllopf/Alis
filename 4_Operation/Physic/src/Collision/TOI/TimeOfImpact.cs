@@ -259,13 +259,14 @@ namespace Alis.Core.Physic.Collision.TOI
                     break;
                 }
 
+                /*
                 if (iter == kMaxIterations)
                 {
                     // Root finder got stuck. Semi-victory.
                     output.State = ToiOutputState.Failed;
                     output.T = t1;
                     break;
-                }
+                }*/
             }
 
             ToiMaxIters = Math.Max(ToiMaxIters, iter);
