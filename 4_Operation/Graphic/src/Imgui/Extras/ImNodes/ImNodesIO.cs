@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
     /// <summary>
     /// The im nodes io
     /// </summary>
-    public struct ImNodesIO
+    public struct ImNodesIo
     {
         /// <summary>
         /// The emulate three button mouse

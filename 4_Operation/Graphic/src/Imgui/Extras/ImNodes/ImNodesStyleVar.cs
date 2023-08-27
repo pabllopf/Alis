@@ -68,6 +68,6 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <summary>
         /// The count im nodes style var
         /// </summary>
-        COUNT = 15,
+        Count = 15,
     }
 }

@@ -6,43 +6,43 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
     /// <summary>
     /// The im nodes io ptr
     /// </summary>
-    public unsafe struct ImNodesIOPtr
+    public unsafe struct ImNodesIoPtr
     {
         /// <summary>
         /// Gets the value of the native ptr
         /// </summary>
-        public ImNodesIO* NativePtr { get; }
+        public ImNodesIo* NativePtr { get; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImNodesIOPtr"/> class
+        /// Initializes a new instance of the <see cref="ImNodesIoPtr"/> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImNodesIOPtr(ImNodesIO* nativePtr) => NativePtr = nativePtr;
+        public ImNodesIoPtr(ImNodesIo* nativePtr) => NativePtr = nativePtr;
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImNodesIOPtr"/> class
+        /// Initializes a new instance of the <see cref="ImNodesIoPtr"/> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImNodesIOPtr(IntPtr nativePtr) => NativePtr = (ImNodesIO*)nativePtr;
+        public ImNodesIoPtr(IntPtr nativePtr) => NativePtr = (ImNodesIo*)nativePtr;
         
         /// <summary>
         /// 
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
-        public static implicit operator ImNodesIOPtr(ImNodesIO* nativePtr) => new ImNodesIOPtr(nativePtr);
+        public static implicit operator ImNodesIoPtr(ImNodesIo* nativePtr) => new ImNodesIoPtr(nativePtr);
         
         /// <summary>
         /// 
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator ImNodesIO* (ImNodesIOPtr wrappedPtr) => wrappedPtr.NativePtr;
+        public static implicit operator ImNodesIo* (ImNodesIoPtr wrappedPtr) => wrappedPtr.NativePtr;
         
         /// <summary>
         /// 
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
-        public static implicit operator ImNodesIOPtr(IntPtr nativePtr) => new ImNodesIOPtr(nativePtr);
+        public static implicit operator ImNodesIoPtr(IntPtr nativePtr) => new ImNodesIoPtr(nativePtr);
         /// <summary>
         /// Gets the value of the emulate three button mouse
         /// </summary>
@@ -68,7 +68,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// </summary>
         public void Destroy()
         {
-            ImNodesNative.ImNodesIO_destroy((ImNodesIO*)(NativePtr));
+            ImNodesNative.ImNodesIO_destroy((ImNodesIo*)(NativePtr));
         }
     }
 }

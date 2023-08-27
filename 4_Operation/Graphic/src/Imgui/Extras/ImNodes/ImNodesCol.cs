@@ -124,6 +124,6 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <summary>
         /// The count im nodes col
         /// </summary>
-        COUNT = 29,
+        Count = 29,
     }
 }

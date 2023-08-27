@@ -6,49 +6,49 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
     /// <summary>
     /// The io ptr
     /// </summary>
-    public unsafe struct IOPtr
+    public unsafe struct IoPtr
     {
         /// <summary>
         /// Gets the value of the native ptr
         /// </summary>
-        public IO* NativePtr { get; }
+        public Io* NativePtr { get; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="IOPtr"/> class
+        /// Initializes a new instance of the <see cref="IoPtr"/> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public IOPtr(IO* nativePtr) => NativePtr = nativePtr;
+        public IoPtr(Io* nativePtr) => NativePtr = nativePtr;
         /// <summary>
-        /// Initializes a new instance of the <see cref="IOPtr"/> class
+        /// Initializes a new instance of the <see cref="IoPtr"/> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public IOPtr(IntPtr nativePtr) => NativePtr = (IO*)nativePtr;
+        public IoPtr(IntPtr nativePtr) => NativePtr = (Io*)nativePtr;
         /// <summary>
         /// 
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
-        public static implicit operator IOPtr(IO* nativePtr) => new IOPtr(nativePtr);
+        public static implicit operator IoPtr(Io* nativePtr) => new IoPtr(nativePtr);
         
         /// <summary>
         /// 
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator IO* (IOPtr wrappedPtr) => wrappedPtr.NativePtr;
+        public static implicit operator Io* (IoPtr wrappedPtr) => wrappedPtr.NativePtr;
         
         /// <summary>
         /// 
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
-        public static implicit operator IOPtr(IntPtr nativePtr) => new IOPtr(nativePtr);
+        public static implicit operator IoPtr(IntPtr nativePtr) => new IoPtr(nativePtr);
         /// <summary>
         /// Gets the value of the emulate three button mouse
         /// </summary>
-        public ref EmulateThreeButtonMouse emulate_three_button_mouse => ref Unsafe.AsRef<EmulateThreeButtonMouse>(&NativePtr->emulate_three_button_mouse);
+        public ref EmulateThreeButtonMouse EmulateThreeButtonMouse => ref Unsafe.AsRef<EmulateThreeButtonMouse>(&NativePtr->EmulateThreeButtonMouse);
         /// <summary>
         /// Gets the value of the link detach with modifier click
         /// </summary>
-        public ref LinkDetachWithModifierClick link_detach_with_modifier_click => ref Unsafe.AsRef<LinkDetachWithModifierClick>(&NativePtr->link_detach_with_modifier_click);
+        public ref LinkDetachWithModifierClick LinkDetachWithModifierClick => ref Unsafe.AsRef<LinkDetachWithModifierClick>(&NativePtr->LinkDetachWithModifierClick);
     }
 }

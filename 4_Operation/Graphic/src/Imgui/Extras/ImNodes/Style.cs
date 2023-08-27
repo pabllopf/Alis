@@ -10,66 +10,66 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <summary>
         /// The grid spacing
         /// </summary>
-        public float grid_spacing;
+        public float GridSpacing;
         /// <summary>
         /// The node corner rounding
         /// </summary>
-        public float node_corner_rounding;
+        public float NodeCornerRounding;
         /// <summary>
         /// The node padding horizontal
         /// </summary>
-        public float node_padding_horizontal;
+        public float NodePaddingHorizontal;
         /// <summary>
         /// The node padding vertical
         /// </summary>
-        public float node_padding_vertical;
+        public float NodePaddingVertical;
         /// <summary>
         /// The node border thickness
         /// </summary>
-        public float node_border_thickness;
+        public float NodeBorderThickness;
         /// <summary>
         /// The link thickness
         /// </summary>
-        public float link_thickness;
+        public float LinkThickness;
         /// <summary>
         /// The link line segments per length
         /// </summary>
-        public float link_line_segments_per_length;
+        public float LinkLineSegmentsPerLength;
         /// <summary>
         /// The link hover distance
         /// </summary>
-        public float link_hover_distance;
+        public float LinkHoverDistance;
         /// <summary>
         /// The pin circle radius
         /// </summary>
-        public float pin_circle_radius;
+        public float PinCircleRadius;
         /// <summary>
         /// The pin quad side length
         /// </summary>
-        public float pin_quad_side_length;
+        public float PinQuadSideLength;
         /// <summary>
         /// The pin triangle side length
         /// </summary>
-        public float pin_triangle_side_length;
+        public float PinTriangleSideLength;
         /// <summary>
         /// The pin line thickness
         /// </summary>
-        public float pin_line_thickness;
+        public float PinLineThickness;
         /// <summary>
         /// The pin hover radius
         /// </summary>
-        public float pin_hover_radius;
+        public float PinHoverRadius;
         /// <summary>
         /// The pin offset
         /// </summary>
-        public float pin_offset;
+        public float PinOffset;
         /// <summary>
         /// The flags
         /// </summary>
-        public StyleFlags flags;
+        public StyleFlags Flags;
         /// <summary>
         /// The colors
         /// </summary>
-        public fixed uint colors[16];
+        public fixed uint Colors[16];
     }
 }

@@ -72,66 +72,66 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <summary>
         /// Gets the value of the grid spacing
         /// </summary>
-        public ref float grid_spacing => ref Unsafe.AsRef<float>(&NativePtr->grid_spacing);
+        public ref float GridSpacing => ref Unsafe.AsRef<float>(&NativePtr->GridSpacing);
         /// <summary>
         /// Gets the value of the node corner rounding
         /// </summary>
-        public ref float node_corner_rounding => ref Unsafe.AsRef<float>(&NativePtr->node_corner_rounding);
+        public ref float NodeCornerRounding => ref Unsafe.AsRef<float>(&NativePtr->NodeCornerRounding);
         /// <summary>
         /// Gets the value of the node padding horizontal
         /// </summary>
-        public ref float node_padding_horizontal => ref Unsafe.AsRef<float>(&NativePtr->node_padding_horizontal);
+        public ref float NodePaddingHorizontal => ref Unsafe.AsRef<float>(&NativePtr->NodePaddingHorizontal);
         /// <summary>
         /// Gets the value of the node padding vertical
         /// </summary>
-        public ref float node_padding_vertical => ref Unsafe.AsRef<float>(&NativePtr->node_padding_vertical);
+        public ref float NodePaddingVertical => ref Unsafe.AsRef<float>(&NativePtr->NodePaddingVertical);
         /// <summary>
         /// Gets the value of the node border thickness
         /// </summary>
-        public ref float node_border_thickness => ref Unsafe.AsRef<float>(&NativePtr->node_border_thickness);
+        public ref float NodeBorderThickness => ref Unsafe.AsRef<float>(&NativePtr->NodeBorderThickness);
         /// <summary>
         /// Gets the value of the link thickness
         /// </summary>
-        public ref float link_thickness => ref Unsafe.AsRef<float>(&NativePtr->link_thickness);
+        public ref float LinkThickness => ref Unsafe.AsRef<float>(&NativePtr->LinkThickness);
         /// <summary>
         /// Gets the value of the link line segments per length
         /// </summary>
-        public ref float link_line_segments_per_length => ref Unsafe.AsRef<float>(&NativePtr->link_line_segments_per_length);
+        public ref float LinkLineSegmentsPerLength => ref Unsafe.AsRef<float>(&NativePtr->LinkLineSegmentsPerLength);
         /// <summary>
         /// Gets the value of the link hover distance
         /// </summary>
-        public ref float link_hover_distance => ref Unsafe.AsRef<float>(&NativePtr->link_hover_distance);
+        public ref float LinkHoverDistance => ref Unsafe.AsRef<float>(&NativePtr->LinkHoverDistance);
         /// <summary>
         /// Gets the value of the pin circle radius
         /// </summary>
-        public ref float pin_circle_radius => ref Unsafe.AsRef<float>(&NativePtr->pin_circle_radius);
+        public ref float PinCircleRadius => ref Unsafe.AsRef<float>(&NativePtr->PinCircleRadius);
         /// <summary>
         /// Gets the value of the pin quad side length
         /// </summary>
-        public ref float pin_quad_side_length => ref Unsafe.AsRef<float>(&NativePtr->pin_quad_side_length);
+        public ref float PinQuadSideLength => ref Unsafe.AsRef<float>(&NativePtr->PinQuadSideLength);
         /// <summary>
         /// Gets the value of the pin triangle side length
         /// </summary>
-        public ref float pin_triangle_side_length => ref Unsafe.AsRef<float>(&NativePtr->pin_triangle_side_length);
+        public ref float PinTriangleSideLength => ref Unsafe.AsRef<float>(&NativePtr->PinTriangleSideLength);
         /// <summary>
         /// Gets the value of the pin line thickness
         /// </summary>
-        public ref float pin_line_thickness => ref Unsafe.AsRef<float>(&NativePtr->pin_line_thickness);
+        public ref float PinLineThickness => ref Unsafe.AsRef<float>(&NativePtr->PinLineThickness);
         /// <summary>
         /// Gets the value of the pin hover radius
         /// </summary>
-        public ref float pin_hover_radius => ref Unsafe.AsRef<float>(&NativePtr->pin_hover_radius);
+        public ref float PinHoverRadius => ref Unsafe.AsRef<float>(&NativePtr->PinHoverRadius);
         /// <summary>
         /// Gets the value of the pin offset
         /// </summary>
-        public ref float pin_offset => ref Unsafe.AsRef<float>(&NativePtr->pin_offset);
+        public ref float PinOffset => ref Unsafe.AsRef<float>(&NativePtr->PinOffset);
         /// <summary>
         /// Gets the value of the flags
         /// </summary>
-        public ref StyleFlags flags => ref Unsafe.AsRef<StyleFlags>(&NativePtr->flags);
+        public ref StyleFlags Flags => ref Unsafe.AsRef<StyleFlags>(&NativePtr->Flags);
         /// <summary>
         /// Gets the value of the colors
         /// </summary>
-        public RangeAccessor<uint> colors => new RangeAccessor<uint>(NativePtr->colors, 16);
+        public RangeAccessor<uint> Colors => new RangeAccessor<uint>(NativePtr->Colors, 16);
     }
 }

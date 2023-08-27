@@ -85,10 +85,10 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <summary>
         /// Clears the link selection using the specified link id
         /// </summary>
-        /// <param name="link_id">The link id</param>
-        public static void ClearLinkSelection(int link_id)
+        /// <param name="linkId">The link id</param>
+        public static void ClearLinkSelection(int linkId)
         {
-            ImNodesNative.ImNodes_ClearLinkSelection_Int(link_id);
+            ImNodesNative.ImNodes_ClearLinkSelection_Int(linkId);
         }
         /// <summary>
         /// Clears the node selection
@@ -100,10 +100,10 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <summary>
         /// Clears the node selection using the specified node id
         /// </summary>
-        /// <param name="node_id">The node id</param>
-        public static void ClearNodeSelection(int node_id)
+        /// <param name="nodeId">The node id</param>
+        public static void ClearNodeSelection(int nodeId)
         {
-            ImNodesNative.ImNodes_ClearNodeSelection_Int(node_id);
+            ImNodesNative.ImNodes_ClearNodeSelection_Int(nodeId);
         }
         /// <summary>
         /// Creates the context
@@ -128,8 +128,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <param name="ctx">The ctx</param>
         public static void DestroyContext(ImNodesContextPtr ctx)
         {
-            ImNodesContext* native_ctx = ctx.NativePtr;
-            ImNodesNative.ImNodes_DestroyContext(native_ctx);
+            ImNodesContext* nativeCtx = ctx.NativePtr;
+            ImNodesNative.ImNodes_DestroyContext(nativeCtx);
         }
         /// <summary>
         /// Editors the context create
@@ -146,8 +146,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <param name="noname1">The noname</param>
         public static void EditorContextFree(ImNodesEditorContextPtr noname1)
         {
-            ImNodesEditorContext* native_noname1 = noname1.NativePtr;
-            ImNodesNative.ImNodes_EditorContextFree(native_noname1);
+            ImNodesEditorContext* nativeNoname1 = noname1.NativePtr;
+            ImNodesNative.ImNodes_EditorContextFree(nativeNoname1);
         }
         /// <summary>
         /// Editors the context get panning
@@ -155,17 +155,17 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <returns>The retval</returns>
         public static Vector2 EditorContextGetPanning()
         {
-            Vector2 __retval;
-            ImNodesNative.ImNodes_EditorContextGetPanning(&__retval);
-            return __retval;
+            Vector2 retval;
+            ImNodesNative.ImNodes_EditorContextGetPanning(&retval);
+            return retval;
         }
         /// <summary>
         /// Editors the context move to node using the specified node id
         /// </summary>
-        /// <param name="node_id">The node id</param>
-        public static void EditorContextMoveToNode(int node_id)
+        /// <param name="nodeId">The node id</param>
+        public static void EditorContextMoveToNode(int nodeId)
         {
-            ImNodesNative.ImNodes_EditorContextMoveToNode(node_id);
+            ImNodesNative.ImNodes_EditorContextMoveToNode(nodeId);
         }
         /// <summary>
         /// Editors the context reset panning using the specified pos
@@ -181,8 +181,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <param name="noname1">The noname</param>
         public static void EditorContextSet(ImNodesEditorContextPtr noname1)
         {
-            ImNodesEditorContext* native_noname1 = noname1.NativePtr;
-            ImNodesNative.ImNodes_EditorContextSet(native_noname1);
+            ImNodesEditorContext* nativeNoname1 = noname1.NativePtr;
+            ImNodesNative.ImNodes_EditorContextSet(nativeNoname1);
         }
         /// <summary>
         /// Ends the input attribute
@@ -239,10 +239,10 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// Gets the io
         /// </summary>
         /// <returns>The im nodes io ptr</returns>
-        public static ImNodesIOPtr GetIO()
+        public static ImNodesIoPtr GetIo()
         {
-            ImNodesIO* ret = ImNodesNative.ImNodes_GetIO();
-            return new ImNodesIOPtr(ret);
+            ImNodesIo* ret = ImNodesNative.ImNodes_GetIO();
+            return new ImNodesIoPtr(ret);
         }
         /// <summary>
         /// Gets the node dimensions using the specified id
@@ -251,63 +251,63 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <returns>The retval</returns>
         public static Vector2 GetNodeDimensions(int id)
         {
-            Vector2 __retval;
-            ImNodesNative.ImNodes_GetNodeDimensions(&__retval, id);
-            return __retval;
+            Vector2 retval;
+            ImNodesNative.ImNodes_GetNodeDimensions(&retval, id);
+            return retval;
         }
         /// <summary>
         /// Gets the node editor space pos using the specified node id
         /// </summary>
-        /// <param name="node_id">The node id</param>
+        /// <param name="nodeId">The node id</param>
         /// <returns>The retval</returns>
-        public static Vector2 GetNodeEditorSpacePos(int node_id)
+        public static Vector2 GetNodeEditorSpacePos(int nodeId)
         {
-            Vector2 __retval;
-            ImNodesNative.ImNodes_GetNodeEditorSpacePos(&__retval, node_id);
-            return __retval;
+            Vector2 retval;
+            ImNodesNative.ImNodes_GetNodeEditorSpacePos(&retval, nodeId);
+            return retval;
         }
         /// <summary>
         /// Gets the node grid space pos using the specified node id
         /// </summary>
-        /// <param name="node_id">The node id</param>
+        /// <param name="nodeId">The node id</param>
         /// <returns>The retval</returns>
-        public static Vector2 GetNodeGridSpacePos(int node_id)
+        public static Vector2 GetNodeGridSpacePos(int nodeId)
         {
-            Vector2 __retval;
-            ImNodesNative.ImNodes_GetNodeGridSpacePos(&__retval, node_id);
-            return __retval;
+            Vector2 retval;
+            ImNodesNative.ImNodes_GetNodeGridSpacePos(&retval, nodeId);
+            return retval;
         }
         /// <summary>
         /// Gets the node screen space pos using the specified node id
         /// </summary>
-        /// <param name="node_id">The node id</param>
+        /// <param name="nodeId">The node id</param>
         /// <returns>The retval</returns>
-        public static Vector2 GetNodeScreenSpacePos(int node_id)
+        public static Vector2 GetNodeScreenSpacePos(int nodeId)
         {
-            Vector2 __retval;
-            ImNodesNative.ImNodes_GetNodeScreenSpacePos(&__retval, node_id);
-            return __retval;
+            Vector2 retval;
+            ImNodesNative.ImNodes_GetNodeScreenSpacePos(&retval, nodeId);
+            return retval;
         }
         /// <summary>
         /// Gets the selected links using the specified link ids
         /// </summary>
-        /// <param name="link_ids">The link ids</param>
-        public static void GetSelectedLinks(ref int link_ids)
+        /// <param name="linkIds">The link ids</param>
+        public static void GetSelectedLinks(ref int linkIds)
         {
-            fixed (int* native_link_ids = &link_ids)
+            fixed (int* nativeLinkIds = &linkIds)
             {
-                ImNodesNative.ImNodes_GetSelectedLinks(native_link_ids);
+                ImNodesNative.ImNodes_GetSelectedLinks(nativeLinkIds);
             }
         }
         /// <summary>
         /// Gets the selected nodes using the specified node ids
         /// </summary>
-        /// <param name="node_ids">The node ids</param>
-        public static void GetSelectedNodes(ref int node_ids)
+        /// <param name="nodeIds">The node ids</param>
+        public static void GetSelectedNodes(ref int nodeIds)
         {
-            fixed (int* native_node_ids = &node_ids)
+            fixed (int* nativeNodeIds = &nodeIds)
             {
-                ImNodesNative.ImNodes_GetSelectedNodes(native_node_ids);
+                ImNodesNative.ImNodes_GetSelectedNodes(nativeNodeIds);
             }
         }
         /// <summary>
@@ -325,20 +325,20 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <returns>The bool</returns>
         public static bool IsAnyAttributeActive()
         {
-            int* attribute_id = null;
-            byte ret = ImNodesNative.ImNodes_IsAnyAttributeActive(attribute_id);
+            int* attributeId = null;
+            byte ret = ImNodesNative.ImNodes_IsAnyAttributeActive(attributeId);
             return ret != 0;
         }
         /// <summary>
         /// Describes whether is any attribute active
         /// </summary>
-        /// <param name="attribute_id">The attribute id</param>
+        /// <param name="attributeId">The attribute id</param>
         /// <returns>The bool</returns>
-        public static bool IsAnyAttributeActive(ref int attribute_id)
+        public static bool IsAnyAttributeActive(ref int attributeId)
         {
-            fixed (int* native_attribute_id = &attribute_id)
+            fixed (int* nativeAttributeId = &attributeId)
             {
-                byte ret = ImNodesNative.ImNodes_IsAnyAttributeActive(native_attribute_id);
+                byte ret = ImNodesNative.ImNodes_IsAnyAttributeActive(nativeAttributeId);
                 return ret != 0;
             }
         }
@@ -363,17 +363,17 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <summary>
         /// Describes whether is link created
         /// </summary>
-        /// <param name="started_at_attribute_id">The started at attribute id</param>
-        /// <param name="ended_at_attribute_id">The ended at attribute id</param>
+        /// <param name="startedAtAttributeId">The started at attribute id</param>
+        /// <param name="endedAtAttributeId">The ended at attribute id</param>
         /// <returns>The bool</returns>
-        public static bool IsLinkCreated(ref int started_at_attribute_id, ref int ended_at_attribute_id)
+        public static bool IsLinkCreated(ref int startedAtAttributeId, ref int endedAtAttributeId)
         {
-            byte* created_from_snap = null;
-            fixed (int* native_started_at_attribute_id = &started_at_attribute_id)
+            byte* createdFromSnap = null;
+            fixed (int* nativeStartedAtAttributeId = &startedAtAttributeId)
             {
-                fixed (int* native_ended_at_attribute_id = &ended_at_attribute_id)
+                fixed (int* nativeEndedAtAttributeId = &endedAtAttributeId)
                 {
-                    byte ret = ImNodesNative.ImNodes_IsLinkCreated_BoolPtr(native_started_at_attribute_id, native_ended_at_attribute_id, created_from_snap);
+                    byte ret = ImNodesNative.ImNodes_IsLinkCreated_BoolPtr(nativeStartedAtAttributeId, nativeEndedAtAttributeId, createdFromSnap);
                     return ret != 0;
                 }
             }
@@ -381,20 +381,20 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <summary>
         /// Describes whether is link created
         /// </summary>
-        /// <param name="started_at_attribute_id">The started at attribute id</param>
-        /// <param name="ended_at_attribute_id">The ended at attribute id</param>
-        /// <param name="created_from_snap">The created from snap</param>
+        /// <param name="startedAtAttributeId">The started at attribute id</param>
+        /// <param name="endedAtAttributeId">The ended at attribute id</param>
+        /// <param name="createdFromSnap">The created from snap</param>
         /// <returns>The bool</returns>
-        public static bool IsLinkCreated(ref int started_at_attribute_id, ref int ended_at_attribute_id, ref bool created_from_snap)
+        public static bool IsLinkCreated(ref int startedAtAttributeId, ref int endedAtAttributeId, ref bool createdFromSnap)
         {
-            byte native_created_from_snap_val = created_from_snap ? (byte)1 : (byte)0;
-            byte* native_created_from_snap = &native_created_from_snap_val;
-            fixed (int* native_started_at_attribute_id = &started_at_attribute_id)
+            byte nativeCreatedFromSnapVal = createdFromSnap ? (byte)1 : (byte)0;
+            byte* nativeCreatedFromSnap = &nativeCreatedFromSnapVal;
+            fixed (int* nativeStartedAtAttributeId = &startedAtAttributeId)
             {
-                fixed (int* native_ended_at_attribute_id = &ended_at_attribute_id)
+                fixed (int* nativeEndedAtAttributeId = &endedAtAttributeId)
                 {
-                    byte ret = ImNodesNative.ImNodes_IsLinkCreated_BoolPtr(native_started_at_attribute_id, native_ended_at_attribute_id, native_created_from_snap);
-                    created_from_snap = native_created_from_snap_val != 0;
+                    byte ret = ImNodesNative.ImNodes_IsLinkCreated_BoolPtr(nativeStartedAtAttributeId, nativeEndedAtAttributeId, nativeCreatedFromSnap);
+                    createdFromSnap = nativeCreatedFromSnapVal != 0;
                     return ret != 0;
                 }
             }
@@ -402,23 +402,23 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <summary>
         /// Describes whether is link created
         /// </summary>
-        /// <param name="started_at_node_id">The started at node id</param>
-        /// <param name="started_at_attribute_id">The started at attribute id</param>
-        /// <param name="ended_at_node_id">The ended at node id</param>
-        /// <param name="ended_at_attribute_id">The ended at attribute id</param>
+        /// <param name="startedAtNodeId">The started at node id</param>
+        /// <param name="startedAtAttributeId">The started at attribute id</param>
+        /// <param name="endedAtNodeId">The ended at node id</param>
+        /// <param name="endedAtAttributeId">The ended at attribute id</param>
         /// <returns>The bool</returns>
-        public static bool IsLinkCreated(ref int started_at_node_id, ref int started_at_attribute_id, ref int ended_at_node_id, ref int ended_at_attribute_id)
+        public static bool IsLinkCreated(ref int startedAtNodeId, ref int startedAtAttributeId, ref int endedAtNodeId, ref int endedAtAttributeId)
         {
-            byte* created_from_snap = null;
-            fixed (int* native_started_at_node_id = &started_at_node_id)
+            byte* createdFromSnap = null;
+            fixed (int* nativeStartedAtNodeId = &startedAtNodeId)
             {
-                fixed (int* native_started_at_attribute_id = &started_at_attribute_id)
+                fixed (int* nativeStartedAtAttributeId = &startedAtAttributeId)
                 {
-                    fixed (int* native_ended_at_node_id = &ended_at_node_id)
+                    fixed (int* nativeEndedAtNodeId = &endedAtNodeId)
                     {
-                        fixed (int* native_ended_at_attribute_id = &ended_at_attribute_id)
+                        fixed (int* nativeEndedAtAttributeId = &endedAtAttributeId)
                         {
-                            byte ret = ImNodesNative.ImNodes_IsLinkCreated_IntPtr(native_started_at_node_id, native_started_at_attribute_id, native_ended_at_node_id, native_ended_at_attribute_id, created_from_snap);
+                            byte ret = ImNodesNative.ImNodes_IsLinkCreated_IntPtr(nativeStartedAtNodeId, nativeStartedAtAttributeId, nativeEndedAtNodeId, nativeEndedAtAttributeId, createdFromSnap);
                             return ret != 0;
                         }
                     }
@@ -428,26 +428,26 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <summary>
         /// Describes whether is link created
         /// </summary>
-        /// <param name="started_at_node_id">The started at node id</param>
-        /// <param name="started_at_attribute_id">The started at attribute id</param>
-        /// <param name="ended_at_node_id">The ended at node id</param>
-        /// <param name="ended_at_attribute_id">The ended at attribute id</param>
-        /// <param name="created_from_snap">The created from snap</param>
+        /// <param name="startedAtNodeId">The started at node id</param>
+        /// <param name="startedAtAttributeId">The started at attribute id</param>
+        /// <param name="endedAtNodeId">The ended at node id</param>
+        /// <param name="endedAtAttributeId">The ended at attribute id</param>
+        /// <param name="createdFromSnap">The created from snap</param>
         /// <returns>The bool</returns>
-        public static bool IsLinkCreated(ref int started_at_node_id, ref int started_at_attribute_id, ref int ended_at_node_id, ref int ended_at_attribute_id, ref bool created_from_snap)
+        public static bool IsLinkCreated(ref int startedAtNodeId, ref int startedAtAttributeId, ref int endedAtNodeId, ref int endedAtAttributeId, ref bool createdFromSnap)
         {
-            byte native_created_from_snap_val = created_from_snap ? (byte)1 : (byte)0;
-            byte* native_created_from_snap = &native_created_from_snap_val;
-            fixed (int* native_started_at_node_id = &started_at_node_id)
+            byte nativeCreatedFromSnapVal = createdFromSnap ? (byte)1 : (byte)0;
+            byte* nativeCreatedFromSnap = &nativeCreatedFromSnapVal;
+            fixed (int* nativeStartedAtNodeId = &startedAtNodeId)
             {
-                fixed (int* native_started_at_attribute_id = &started_at_attribute_id)
+                fixed (int* nativeStartedAtAttributeId = &startedAtAttributeId)
                 {
-                    fixed (int* native_ended_at_node_id = &ended_at_node_id)
+                    fixed (int* nativeEndedAtNodeId = &endedAtNodeId)
                     {
-                        fixed (int* native_ended_at_attribute_id = &ended_at_attribute_id)
+                        fixed (int* nativeEndedAtAttributeId = &endedAtAttributeId)
                         {
-                            byte ret = ImNodesNative.ImNodes_IsLinkCreated_IntPtr(native_started_at_node_id, native_started_at_attribute_id, native_ended_at_node_id, native_ended_at_attribute_id, native_created_from_snap);
-                            created_from_snap = native_created_from_snap_val != 0;
+                            byte ret = ImNodesNative.ImNodes_IsLinkCreated_IntPtr(nativeStartedAtNodeId, nativeStartedAtAttributeId, nativeEndedAtNodeId, nativeEndedAtAttributeId, nativeCreatedFromSnap);
+                            createdFromSnap = nativeCreatedFromSnapVal != 0;
                             return ret != 0;
                         }
                     }
@@ -457,13 +457,13 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <summary>
         /// Describes whether is link destroyed
         /// </summary>
-        /// <param name="link_id">The link id</param>
+        /// <param name="linkId">The link id</param>
         /// <returns>The bool</returns>
-        public static bool IsLinkDestroyed(ref int link_id)
+        public static bool IsLinkDestroyed(ref int linkId)
         {
-            fixed (int* native_link_id = &link_id)
+            fixed (int* nativeLinkId = &linkId)
             {
-                byte ret = ImNodesNative.ImNodes_IsLinkDestroyed(native_link_id);
+                byte ret = ImNodesNative.ImNodes_IsLinkDestroyed(nativeLinkId);
                 return ret != 0;
             }
         }
@@ -473,109 +473,109 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <returns>The bool</returns>
         public static bool IsLinkDropped()
         {
-            int* started_at_attribute_id = null;
-            byte including_detached_links = 1;
-            byte ret = ImNodesNative.ImNodes_IsLinkDropped(started_at_attribute_id, including_detached_links);
+            int* startedAtAttributeId = null;
+            byte includingDetachedLinks = 1;
+            byte ret = ImNodesNative.ImNodes_IsLinkDropped(startedAtAttributeId, includingDetachedLinks);
             return ret != 0;
         }
         /// <summary>
         /// Describes whether is link dropped
         /// </summary>
-        /// <param name="started_at_attribute_id">The started at attribute id</param>
+        /// <param name="startedAtAttributeId">The started at attribute id</param>
         /// <returns>The bool</returns>
-        public static bool IsLinkDropped(ref int started_at_attribute_id)
+        public static bool IsLinkDropped(ref int startedAtAttributeId)
         {
-            byte including_detached_links = 1;
-            fixed (int* native_started_at_attribute_id = &started_at_attribute_id)
+            byte includingDetachedLinks = 1;
+            fixed (int* nativeStartedAtAttributeId = &startedAtAttributeId)
             {
-                byte ret = ImNodesNative.ImNodes_IsLinkDropped(native_started_at_attribute_id, including_detached_links);
+                byte ret = ImNodesNative.ImNodes_IsLinkDropped(nativeStartedAtAttributeId, includingDetachedLinks);
                 return ret != 0;
             }
         }
         /// <summary>
         /// Describes whether is link dropped
         /// </summary>
-        /// <param name="started_at_attribute_id">The started at attribute id</param>
-        /// <param name="including_detached_links">The including detached links</param>
+        /// <param name="startedAtAttributeId">The started at attribute id</param>
+        /// <param name="includingDetachedLinks">The including detached links</param>
         /// <returns>The bool</returns>
-        public static bool IsLinkDropped(ref int started_at_attribute_id, bool including_detached_links)
+        public static bool IsLinkDropped(ref int startedAtAttributeId, bool includingDetachedLinks)
         {
-            byte native_including_detached_links = including_detached_links ? (byte)1 : (byte)0;
-            fixed (int* native_started_at_attribute_id = &started_at_attribute_id)
+            byte nativeIncludingDetachedLinks = includingDetachedLinks ? (byte)1 : (byte)0;
+            fixed (int* nativeStartedAtAttributeId = &startedAtAttributeId)
             {
-                byte ret = ImNodesNative.ImNodes_IsLinkDropped(native_started_at_attribute_id, native_including_detached_links);
+                byte ret = ImNodesNative.ImNodes_IsLinkDropped(nativeStartedAtAttributeId, nativeIncludingDetachedLinks);
                 return ret != 0;
             }
         }
         /// <summary>
         /// Describes whether is link hovered
         /// </summary>
-        /// <param name="link_id">The link id</param>
+        /// <param name="linkId">The link id</param>
         /// <returns>The bool</returns>
-        public static bool IsLinkHovered(ref int link_id)
+        public static bool IsLinkHovered(ref int linkId)
         {
-            fixed (int* native_link_id = &link_id)
+            fixed (int* nativeLinkId = &linkId)
             {
-                byte ret = ImNodesNative.ImNodes_IsLinkHovered(native_link_id);
+                byte ret = ImNodesNative.ImNodes_IsLinkHovered(nativeLinkId);
                 return ret != 0;
             }
         }
         /// <summary>
         /// Describes whether is link selected
         /// </summary>
-        /// <param name="link_id">The link id</param>
+        /// <param name="linkId">The link id</param>
         /// <returns>The bool</returns>
-        public static bool IsLinkSelected(int link_id)
+        public static bool IsLinkSelected(int linkId)
         {
-            byte ret = ImNodesNative.ImNodes_IsLinkSelected(link_id);
+            byte ret = ImNodesNative.ImNodes_IsLinkSelected(linkId);
             return ret != 0;
         }
         /// <summary>
         /// Describes whether is link started
         /// </summary>
-        /// <param name="started_at_attribute_id">The started at attribute id</param>
+        /// <param name="startedAtAttributeId">The started at attribute id</param>
         /// <returns>The bool</returns>
-        public static bool IsLinkStarted(ref int started_at_attribute_id)
+        public static bool IsLinkStarted(ref int startedAtAttributeId)
         {
-            fixed (int* native_started_at_attribute_id = &started_at_attribute_id)
+            fixed (int* nativeStartedAtAttributeId = &startedAtAttributeId)
             {
-                byte ret = ImNodesNative.ImNodes_IsLinkStarted(native_started_at_attribute_id);
+                byte ret = ImNodesNative.ImNodes_IsLinkStarted(nativeStartedAtAttributeId);
                 return ret != 0;
             }
         }
         /// <summary>
         /// Describes whether is node hovered
         /// </summary>
-        /// <param name="node_id">The node id</param>
+        /// <param name="nodeId">The node id</param>
         /// <returns>The bool</returns>
-        public static bool IsNodeHovered(ref int node_id)
+        public static bool IsNodeHovered(ref int nodeId)
         {
-            fixed (int* native_node_id = &node_id)
+            fixed (int* nativeNodeId = &nodeId)
             {
-                byte ret = ImNodesNative.ImNodes_IsNodeHovered(native_node_id);
+                byte ret = ImNodesNative.ImNodes_IsNodeHovered(nativeNodeId);
                 return ret != 0;
             }
         }
         /// <summary>
         /// Describes whether is node selected
         /// </summary>
-        /// <param name="node_id">The node id</param>
+        /// <param name="nodeId">The node id</param>
         /// <returns>The bool</returns>
-        public static bool IsNodeSelected(int node_id)
+        public static bool IsNodeSelected(int nodeId)
         {
-            byte ret = ImNodesNative.ImNodes_IsNodeSelected(node_id);
+            byte ret = ImNodesNative.ImNodes_IsNodeSelected(nodeId);
             return ret != 0;
         }
         /// <summary>
         /// Describes whether is pin hovered
         /// </summary>
-        /// <param name="attribute_id">The attribute id</param>
+        /// <param name="attributeId">The attribute id</param>
         /// <returns>The bool</returns>
-        public static bool IsPinHovered(ref int attribute_id)
+        public static bool IsPinHovered(ref int attributeId)
         {
-            fixed (int* native_attribute_id = &attribute_id)
+            fixed (int* nativeAttributeId = &attributeId)
             {
-                byte ret = ImNodesNative.ImNodes_IsPinHovered(native_attribute_id);
+                byte ret = ImNodesNative.ImNodes_IsPinHovered(nativeAttributeId);
                 return ret != 0;
             }
         }
@@ -583,103 +583,103 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// Links the id
         /// </summary>
         /// <param name="id">The id</param>
-        /// <param name="start_attribute_id">The start attribute id</param>
-        /// <param name="end_attribute_id">The end attribute id</param>
-        public static void Link(int id, int start_attribute_id, int end_attribute_id)
+        /// <param name="startAttributeId">The start attribute id</param>
+        /// <param name="endAttributeId">The end attribute id</param>
+        public static void Link(int id, int startAttributeId, int endAttributeId)
         {
-            ImNodesNative.ImNodes_Link(id, start_attribute_id, end_attribute_id);
+            ImNodesNative.ImNodes_Link(id, startAttributeId, endAttributeId);
         }
         /// <summary>
         /// Loads the current editor state from ini file using the specified file name
         /// </summary>
-        /// <param name="file_name">The file name</param>
-        public static void LoadCurrentEditorStateFromIniFile(string file_name)
+        /// <param name="fileName">The file name</param>
+        public static void LoadCurrentEditorStateFromIniFile(string fileName)
         {
-            byte* native_file_name;
-            int file_name_byteCount = 0;
-            if (file_name != null)
+            byte* nativeFileName;
+            int fileNameByteCount = 0;
+            if (fileName != null)
             {
-                file_name_byteCount = Encoding.UTF8.GetByteCount(file_name);
-                if (file_name_byteCount > Util.StackAllocationSizeLimit)
+                fileNameByteCount = Encoding.UTF8.GetByteCount(fileName);
+                if (fileNameByteCount > Util.StackAllocationSizeLimit)
                 {
-                    native_file_name = Util.Allocate(file_name_byteCount + 1);
+                    nativeFileName = Util.Allocate(fileNameByteCount + 1);
                 }
                 else
                 {
-                    byte* native_file_name_stackBytes = stackalloc byte[file_name_byteCount + 1];
-                    native_file_name = native_file_name_stackBytes;
+                    byte* nativeFileNameStackBytes = stackalloc byte[fileNameByteCount + 1];
+                    nativeFileName = nativeFileNameStackBytes;
                 }
-                int native_file_name_offset = Util.GetUtf8(file_name, native_file_name, file_name_byteCount);
-                native_file_name[native_file_name_offset] = 0;
+                int nativeFileNameOffset = Util.GetUtf8(fileName, nativeFileName, fileNameByteCount);
+                nativeFileName[nativeFileNameOffset] = 0;
             }
-            else { native_file_name = null; }
-            ImNodesNative.ImNodes_LoadCurrentEditorStateFromIniFile(native_file_name);
-            if (file_name_byteCount > Util.StackAllocationSizeLimit)
+            else { nativeFileName = null; }
+            ImNodesNative.ImNodes_LoadCurrentEditorStateFromIniFile(nativeFileName);
+            if (fileNameByteCount > Util.StackAllocationSizeLimit)
             {
-                Util.Free(native_file_name);
+                Util.Free(nativeFileName);
             }
         }
         /// <summary>
         /// Loads the current editor state from ini string using the specified data
         /// </summary>
         /// <param name="data">The data</param>
-        /// <param name="data_size">The data size</param>
-        public static void LoadCurrentEditorStateFromIniString(string data, uint data_size)
+        /// <param name="dataSize">The data size</param>
+        public static void LoadCurrentEditorStateFromIniString(string data, uint dataSize)
         {
-            byte* native_data;
-            int data_byteCount = 0;
+            byte* nativeData;
+            int dataByteCount = 0;
             if (data != null)
             {
-                data_byteCount = Encoding.UTF8.GetByteCount(data);
-                if (data_byteCount > Util.StackAllocationSizeLimit)
+                dataByteCount = Encoding.UTF8.GetByteCount(data);
+                if (dataByteCount > Util.StackAllocationSizeLimit)
                 {
-                    native_data = Util.Allocate(data_byteCount + 1);
+                    nativeData = Util.Allocate(dataByteCount + 1);
                 }
                 else
                 {
-                    byte* native_data_stackBytes = stackalloc byte[data_byteCount + 1];
-                    native_data = native_data_stackBytes;
+                    byte* nativeDataStackBytes = stackalloc byte[dataByteCount + 1];
+                    nativeData = nativeDataStackBytes;
                 }
-                int native_data_offset = Util.GetUtf8(data, native_data, data_byteCount);
-                native_data[native_data_offset] = 0;
+                int nativeDataOffset = Util.GetUtf8(data, nativeData, dataByteCount);
+                nativeData[nativeDataOffset] = 0;
             }
-            else { native_data = null; }
-            ImNodesNative.ImNodes_LoadCurrentEditorStateFromIniString(native_data, data_size);
-            if (data_byteCount > Util.StackAllocationSizeLimit)
+            else { nativeData = null; }
+            ImNodesNative.ImNodes_LoadCurrentEditorStateFromIniString(nativeData, dataSize);
+            if (dataByteCount > Util.StackAllocationSizeLimit)
             {
-                Util.Free(native_data);
+                Util.Free(nativeData);
             }
         }
         /// <summary>
         /// Loads the editor state from ini file using the specified editor
         /// </summary>
         /// <param name="editor">The editor</param>
-        /// <param name="file_name">The file name</param>
-        public static void LoadEditorStateFromIniFile(ImNodesEditorContextPtr editor, string file_name)
+        /// <param name="fileName">The file name</param>
+        public static void LoadEditorStateFromIniFile(ImNodesEditorContextPtr editor, string fileName)
         {
-            ImNodesEditorContext* native_editor = editor.NativePtr;
-            byte* native_file_name;
-            int file_name_byteCount = 0;
-            if (file_name != null)
+            ImNodesEditorContext* nativeEditor = editor.NativePtr;
+            byte* nativeFileName;
+            int fileNameByteCount = 0;
+            if (fileName != null)
             {
-                file_name_byteCount = Encoding.UTF8.GetByteCount(file_name);
-                if (file_name_byteCount > Util.StackAllocationSizeLimit)
+                fileNameByteCount = Encoding.UTF8.GetByteCount(fileName);
+                if (fileNameByteCount > Util.StackAllocationSizeLimit)
                 {
-                    native_file_name = Util.Allocate(file_name_byteCount + 1);
+                    nativeFileName = Util.Allocate(fileNameByteCount + 1);
                 }
                 else
                 {
-                    byte* native_file_name_stackBytes = stackalloc byte[file_name_byteCount + 1];
-                    native_file_name = native_file_name_stackBytes;
+                    byte* nativeFileNameStackBytes = stackalloc byte[fileNameByteCount + 1];
+                    nativeFileName = nativeFileNameStackBytes;
                 }
-                int native_file_name_offset = Util.GetUtf8(file_name, native_file_name, file_name_byteCount);
-                native_file_name[native_file_name_offset] = 0;
+                int nativeFileNameOffset = Util.GetUtf8(fileName, nativeFileName, fileNameByteCount);
+                nativeFileName[nativeFileNameOffset] = 0;
             }
-            else { native_file_name = null; }
-            ImNodesNative.ImNodes_LoadEditorStateFromIniFile(native_editor, native_file_name);
-            if (file_name_byteCount > Util.StackAllocationSizeLimit)
+            else { nativeFileName = null; }
+            ImNodesNative.ImNodes_LoadEditorStateFromIniFile(nativeEditor, nativeFileName);
+            if (fileNameByteCount > Util.StackAllocationSizeLimit)
             {
-                Util.Free(native_file_name);
+                Util.Free(nativeFileName);
             }
         }
         /// <summary>
@@ -687,32 +687,32 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// </summary>
         /// <param name="editor">The editor</param>
         /// <param name="data">The data</param>
-        /// <param name="data_size">The data size</param>
-        public static void LoadEditorStateFromIniString(ImNodesEditorContextPtr editor, string data, uint data_size)
+        /// <param name="dataSize">The data size</param>
+        public static void LoadEditorStateFromIniString(ImNodesEditorContextPtr editor, string data, uint dataSize)
         {
-            ImNodesEditorContext* native_editor = editor.NativePtr;
-            byte* native_data;
-            int data_byteCount = 0;
+            ImNodesEditorContext* nativeEditor = editor.NativePtr;
+            byte* nativeData;
+            int dataByteCount = 0;
             if (data != null)
             {
-                data_byteCount = Encoding.UTF8.GetByteCount(data);
-                if (data_byteCount > Util.StackAllocationSizeLimit)
+                dataByteCount = Encoding.UTF8.GetByteCount(data);
+                if (dataByteCount > Util.StackAllocationSizeLimit)
                 {
-                    native_data = Util.Allocate(data_byteCount + 1);
+                    nativeData = Util.Allocate(dataByteCount + 1);
                 }
                 else
                 {
-                    byte* native_data_stackBytes = stackalloc byte[data_byteCount + 1];
-                    native_data = native_data_stackBytes;
+                    byte* nativeDataStackBytes = stackalloc byte[dataByteCount + 1];
+                    nativeData = nativeDataStackBytes;
                 }
-                int native_data_offset = Util.GetUtf8(data, native_data, data_byteCount);
-                native_data[native_data_offset] = 0;
+                int nativeDataOffset = Util.GetUtf8(data, nativeData, dataByteCount);
+                nativeData[nativeDataOffset] = 0;
             }
-            else { native_data = null; }
-            ImNodesNative.ImNodes_LoadEditorStateFromIniString(native_editor, native_data, data_size);
-            if (data_byteCount > Util.StackAllocationSizeLimit)
+            else { nativeData = null; }
+            ImNodesNative.ImNodes_LoadEditorStateFromIniString(nativeEditor, nativeData, dataSize);
+            if (dataByteCount > Util.StackAllocationSizeLimit)
             {
-                Util.Free(native_data);
+                Util.Free(nativeData);
             }
         }
         /// <summary>
@@ -720,55 +720,55 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// </summary>
         public static void MiniMap()
         {
-            float minimap_size_fraction = 0.2f;
+            float minimapSizeFraction = 0.2f;
             ImNodesMiniMapLocation location = ImNodesMiniMapLocation.TopLeft;
-            ImNodesMiniMapNodeHoveringCallback node_hovering_callback = null;
-            ImNodesMiniMapNodeHoveringCallbackUserData node_hovering_callback_data = null;
-            ImNodesNative.ImNodes_MiniMap(minimap_size_fraction, location, node_hovering_callback, node_hovering_callback_data);
+            ImNodesMiniMapNodeHoveringCallback nodeHoveringCallback = null;
+            ImNodesMiniMapNodeHoveringCallbackUserData nodeHoveringCallbackData = null;
+            ImNodesNative.ImNodes_MiniMap(minimapSizeFraction, location, nodeHoveringCallback, nodeHoveringCallbackData);
         }
         /// <summary>
         /// Minis the map using the specified minimap size fraction
         /// </summary>
-        /// <param name="minimap_size_fraction">The minimap size fraction</param>
-        public static void MiniMap(float minimap_size_fraction)
+        /// <param name="minimapSizeFraction">The minimap size fraction</param>
+        public static void MiniMap(float minimapSizeFraction)
         {
             ImNodesMiniMapLocation location = ImNodesMiniMapLocation.TopLeft;
-            ImNodesMiniMapNodeHoveringCallback node_hovering_callback = null;
-            ImNodesMiniMapNodeHoveringCallbackUserData node_hovering_callback_data = null;
-            ImNodesNative.ImNodes_MiniMap(minimap_size_fraction, location, node_hovering_callback, node_hovering_callback_data);
+            ImNodesMiniMapNodeHoveringCallback nodeHoveringCallback = null;
+            ImNodesMiniMapNodeHoveringCallbackUserData nodeHoveringCallbackData = null;
+            ImNodesNative.ImNodes_MiniMap(minimapSizeFraction, location, nodeHoveringCallback, nodeHoveringCallbackData);
         }
         /// <summary>
         /// Minis the map using the specified minimap size fraction
         /// </summary>
-        /// <param name="minimap_size_fraction">The minimap size fraction</param>
+        /// <param name="minimapSizeFraction">The minimap size fraction</param>
         /// <param name="location">The location</param>
-        public static void MiniMap(float minimap_size_fraction, ImNodesMiniMapLocation location)
+        public static void MiniMap(float minimapSizeFraction, ImNodesMiniMapLocation location)
         {
-            ImNodesMiniMapNodeHoveringCallback node_hovering_callback = null;
-            ImNodesMiniMapNodeHoveringCallbackUserData node_hovering_callback_data = null;
-            ImNodesNative.ImNodes_MiniMap(minimap_size_fraction, location, node_hovering_callback, node_hovering_callback_data);
+            ImNodesMiniMapNodeHoveringCallback nodeHoveringCallback = null;
+            ImNodesMiniMapNodeHoveringCallbackUserData nodeHoveringCallbackData = null;
+            ImNodesNative.ImNodes_MiniMap(minimapSizeFraction, location, nodeHoveringCallback, nodeHoveringCallbackData);
         }
         /// <summary>
         /// Minis the map using the specified minimap size fraction
         /// </summary>
-        /// <param name="minimap_size_fraction">The minimap size fraction</param>
+        /// <param name="minimapSizeFraction">The minimap size fraction</param>
         /// <param name="location">The location</param>
-        /// <param name="node_hovering_callback">The node hovering callback</param>
-        public static void MiniMap(float minimap_size_fraction, ImNodesMiniMapLocation location, ImNodesMiniMapNodeHoveringCallback node_hovering_callback)
+        /// <param name="nodeHoveringCallback">The node hovering callback</param>
+        public static void MiniMap(float minimapSizeFraction, ImNodesMiniMapLocation location, ImNodesMiniMapNodeHoveringCallback nodeHoveringCallback)
         {
-            ImNodesMiniMapNodeHoveringCallbackUserData node_hovering_callback_data = null;
-            ImNodesNative.ImNodes_MiniMap(minimap_size_fraction, location, node_hovering_callback, node_hovering_callback_data);
+            ImNodesMiniMapNodeHoveringCallbackUserData nodeHoveringCallbackData = null;
+            ImNodesNative.ImNodes_MiniMap(minimapSizeFraction, location, nodeHoveringCallback, nodeHoveringCallbackData);
         }
         /// <summary>
         /// Minis the map using the specified minimap size fraction
         /// </summary>
-        /// <param name="minimap_size_fraction">The minimap size fraction</param>
+        /// <param name="minimapSizeFraction">The minimap size fraction</param>
         /// <param name="location">The location</param>
-        /// <param name="node_hovering_callback">The node hovering callback</param>
-        /// <param name="node_hovering_callback_data">The node hovering callback data</param>
-        public static void MiniMap(float minimap_size_fraction, ImNodesMiniMapLocation location, ImNodesMiniMapNodeHoveringCallback node_hovering_callback, ImNodesMiniMapNodeHoveringCallbackUserData node_hovering_callback_data)
+        /// <param name="nodeHoveringCallback">The node hovering callback</param>
+        /// <param name="nodeHoveringCallbackData">The node hovering callback data</param>
+        public static void MiniMap(float minimapSizeFraction, ImNodesMiniMapLocation location, ImNodesMiniMapNodeHoveringCallback nodeHoveringCallback, ImNodesMiniMapNodeHoveringCallbackUserData nodeHoveringCallbackData)
         {
-            ImNodesNative.ImNodes_MiniMap(minimap_size_fraction, location, node_hovering_callback, node_hovering_callback_data);
+            ImNodesNative.ImNodes_MiniMap(minimapSizeFraction, location, nodeHoveringCallback, nodeHoveringCallbackData);
         }
         /// <summary>
         /// Nums the selected links
@@ -838,49 +838,49 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <summary>
         /// Pushes the style var using the specified style item
         /// </summary>
-        /// <param name="style_item">The style item</param>
+        /// <param name="styleItem">The style item</param>
         /// <param name="value">The value</param>
-        public static void PushStyleVar(ImNodesStyleVar style_item, float value)
+        public static void PushStyleVar(ImNodesStyleVar styleItem, float value)
         {
-            ImNodesNative.ImNodes_PushStyleVar_Float(style_item, value);
+            ImNodesNative.ImNodes_PushStyleVar_Float(styleItem, value);
         }
         /// <summary>
         /// Pushes the style var using the specified style item
         /// </summary>
-        /// <param name="style_item">The style item</param>
+        /// <param name="styleItem">The style item</param>
         /// <param name="value">The value</param>
-        public static void PushStyleVar(ImNodesStyleVar style_item, Vector2 value)
+        public static void PushStyleVar(ImNodesStyleVar styleItem, Vector2 value)
         {
-            ImNodesNative.ImNodes_PushStyleVar_Vec2(style_item, value);
+            ImNodesNative.ImNodes_PushStyleVar_Vec2(styleItem, value);
         }
         /// <summary>
         /// Saves the current editor state to ini file using the specified file name
         /// </summary>
-        /// <param name="file_name">The file name</param>
-        public static void SaveCurrentEditorStateToIniFile(string file_name)
+        /// <param name="fileName">The file name</param>
+        public static void SaveCurrentEditorStateToIniFile(string fileName)
         {
-            byte* native_file_name;
-            int file_name_byteCount = 0;
-            if (file_name != null)
+            byte* nativeFileName;
+            int fileNameByteCount = 0;
+            if (fileName != null)
             {
-                file_name_byteCount = Encoding.UTF8.GetByteCount(file_name);
-                if (file_name_byteCount > Util.StackAllocationSizeLimit)
+                fileNameByteCount = Encoding.UTF8.GetByteCount(fileName);
+                if (fileNameByteCount > Util.StackAllocationSizeLimit)
                 {
-                    native_file_name = Util.Allocate(file_name_byteCount + 1);
+                    nativeFileName = Util.Allocate(fileNameByteCount + 1);
                 }
                 else
                 {
-                    byte* native_file_name_stackBytes = stackalloc byte[file_name_byteCount + 1];
-                    native_file_name = native_file_name_stackBytes;
+                    byte* nativeFileNameStackBytes = stackalloc byte[fileNameByteCount + 1];
+                    nativeFileName = nativeFileNameStackBytes;
                 }
-                int native_file_name_offset = Util.GetUtf8(file_name, native_file_name, file_name_byteCount);
-                native_file_name[native_file_name_offset] = 0;
+                int nativeFileNameOffset = Util.GetUtf8(fileName, nativeFileName, fileNameByteCount);
+                nativeFileName[nativeFileNameOffset] = 0;
             }
-            else { native_file_name = null; }
-            ImNodesNative.ImNodes_SaveCurrentEditorStateToIniFile(native_file_name);
-            if (file_name_byteCount > Util.StackAllocationSizeLimit)
+            else { nativeFileName = null; }
+            ImNodesNative.ImNodes_SaveCurrentEditorStateToIniFile(nativeFileName);
+            if (fileNameByteCount > Util.StackAllocationSizeLimit)
             {
-                Util.Free(native_file_name);
+                Util.Free(nativeFileName);
             }
         }
         /// <summary>
@@ -889,20 +889,20 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <returns>The string</returns>
         public static string SaveCurrentEditorStateToIniString()
         {
-            uint* data_size = null;
-            byte* ret = ImNodesNative.ImNodes_SaveCurrentEditorStateToIniString(data_size);
+            uint* dataSize = null;
+            byte* ret = ImNodesNative.ImNodes_SaveCurrentEditorStateToIniString(dataSize);
             return Util.StringFromPtr(ret);
         }
         /// <summary>
         /// Saves the current editor state to ini string using the specified data size
         /// </summary>
-        /// <param name="data_size">The data size</param>
+        /// <param name="dataSize">The data size</param>
         /// <returns>The string</returns>
-        public static string SaveCurrentEditorStateToIniString(ref uint data_size)
+        public static string SaveCurrentEditorStateToIniString(ref uint dataSize)
         {
-            fixed (uint* native_data_size = &data_size)
+            fixed (uint* nativeDataSize = &dataSize)
             {
-                byte* ret = ImNodesNative.ImNodes_SaveCurrentEditorStateToIniString(native_data_size);
+                byte* ret = ImNodesNative.ImNodes_SaveCurrentEditorStateToIniString(nativeDataSize);
                 return Util.StringFromPtr(ret);
             }
         }
@@ -910,32 +910,32 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// Saves the editor state to ini file using the specified editor
         /// </summary>
         /// <param name="editor">The editor</param>
-        /// <param name="file_name">The file name</param>
-        public static void SaveEditorStateToIniFile(ImNodesEditorContextPtr editor, string file_name)
+        /// <param name="fileName">The file name</param>
+        public static void SaveEditorStateToIniFile(ImNodesEditorContextPtr editor, string fileName)
         {
-            ImNodesEditorContext* native_editor = editor.NativePtr;
-            byte* native_file_name;
-            int file_name_byteCount = 0;
-            if (file_name != null)
+            ImNodesEditorContext* nativeEditor = editor.NativePtr;
+            byte* nativeFileName;
+            int fileNameByteCount = 0;
+            if (fileName != null)
             {
-                file_name_byteCount = Encoding.UTF8.GetByteCount(file_name);
-                if (file_name_byteCount > Util.StackAllocationSizeLimit)
+                fileNameByteCount = Encoding.UTF8.GetByteCount(fileName);
+                if (fileNameByteCount > Util.StackAllocationSizeLimit)
                 {
-                    native_file_name = Util.Allocate(file_name_byteCount + 1);
+                    nativeFileName = Util.Allocate(fileNameByteCount + 1);
                 }
                 else
                 {
-                    byte* native_file_name_stackBytes = stackalloc byte[file_name_byteCount + 1];
-                    native_file_name = native_file_name_stackBytes;
+                    byte* nativeFileNameStackBytes = stackalloc byte[fileNameByteCount + 1];
+                    nativeFileName = nativeFileNameStackBytes;
                 }
-                int native_file_name_offset = Util.GetUtf8(file_name, native_file_name, file_name_byteCount);
-                native_file_name[native_file_name_offset] = 0;
+                int nativeFileNameOffset = Util.GetUtf8(fileName, nativeFileName, fileNameByteCount);
+                nativeFileName[nativeFileNameOffset] = 0;
             }
-            else { native_file_name = null; }
-            ImNodesNative.ImNodes_SaveEditorStateToIniFile(native_editor, native_file_name);
-            if (file_name_byteCount > Util.StackAllocationSizeLimit)
+            else { nativeFileName = null; }
+            ImNodesNative.ImNodes_SaveEditorStateToIniFile(nativeEditor, nativeFileName);
+            if (fileNameByteCount > Util.StackAllocationSizeLimit)
             {
-                Util.Free(native_file_name);
+                Util.Free(nativeFileName);
             }
         }
         /// <summary>
@@ -945,41 +945,41 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <returns>The string</returns>
         public static string SaveEditorStateToIniString(ImNodesEditorContextPtr editor)
         {
-            ImNodesEditorContext* native_editor = editor.NativePtr;
-            uint* data_size = null;
-            byte* ret = ImNodesNative.ImNodes_SaveEditorStateToIniString(native_editor, data_size);
+            ImNodesEditorContext* nativeEditor = editor.NativePtr;
+            uint* dataSize = null;
+            byte* ret = ImNodesNative.ImNodes_SaveEditorStateToIniString(nativeEditor, dataSize);
             return Util.StringFromPtr(ret);
         }
         /// <summary>
         /// Saves the editor state to ini string using the specified editor
         /// </summary>
         /// <param name="editor">The editor</param>
-        /// <param name="data_size">The data size</param>
+        /// <param name="dataSize">The data size</param>
         /// <returns>The string</returns>
-        public static string SaveEditorStateToIniString(ImNodesEditorContextPtr editor, ref uint data_size)
+        public static string SaveEditorStateToIniString(ImNodesEditorContextPtr editor, ref uint dataSize)
         {
-            ImNodesEditorContext* native_editor = editor.NativePtr;
-            fixed (uint* native_data_size = &data_size)
+            ImNodesEditorContext* nativeEditor = editor.NativePtr;
+            fixed (uint* nativeDataSize = &dataSize)
             {
-                byte* ret = ImNodesNative.ImNodes_SaveEditorStateToIniString(native_editor, native_data_size);
+                byte* ret = ImNodesNative.ImNodes_SaveEditorStateToIniString(nativeEditor, nativeDataSize);
                 return Util.StringFromPtr(ret);
             }
         }
         /// <summary>
         /// Selects the link using the specified link id
         /// </summary>
-        /// <param name="link_id">The link id</param>
-        public static void SelectLink(int link_id)
+        /// <param name="linkId">The link id</param>
+        public static void SelectLink(int linkId)
         {
-            ImNodesNative.ImNodes_SelectLink(link_id);
+            ImNodesNative.ImNodes_SelectLink(linkId);
         }
         /// <summary>
         /// Selects the node using the specified node id
         /// </summary>
-        /// <param name="node_id">The node id</param>
-        public static void SelectNode(int node_id)
+        /// <param name="nodeId">The node id</param>
+        public static void SelectNode(int nodeId)
         {
-            ImNodesNative.ImNodes_SelectNode(node_id);
+            ImNodesNative.ImNodes_SelectNode(nodeId);
         }
         /// <summary>
         /// Sets the current context using the specified ctx
@@ -987,8 +987,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <param name="ctx">The ctx</param>
         public static void SetCurrentContext(ImNodesContextPtr ctx)
         {
-            ImNodesContext* native_ctx = ctx.NativePtr;
-            ImNodesNative.ImNodes_SetCurrentContext(native_ctx);
+            ImNodesContext* nativeCtx = ctx.NativePtr;
+            ImNodesNative.ImNodes_SetCurrentContext(nativeCtx);
         }
         /// <summary>
         /// Sets the im gui context using the specified ctx
@@ -1001,47 +1001,47 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <summary>
         /// Sets the node draggable using the specified node id
         /// </summary>
-        /// <param name="node_id">The node id</param>
+        /// <param name="nodeId">The node id</param>
         /// <param name="draggable">The draggable</param>
-        public static void SetNodeDraggable(int node_id, bool draggable)
+        public static void SetNodeDraggable(int nodeId, bool draggable)
         {
-            byte native_draggable = draggable ? (byte)1 : (byte)0;
-            ImNodesNative.ImNodes_SetNodeDraggable(node_id, native_draggable);
+            byte nativeDraggable = draggable ? (byte)1 : (byte)0;
+            ImNodesNative.ImNodes_SetNodeDraggable(nodeId, nativeDraggable);
         }
         /// <summary>
         /// Sets the node editor space pos using the specified node id
         /// </summary>
-        /// <param name="node_id">The node id</param>
-        /// <param name="editor_space_pos">The editor space pos</param>
-        public static void SetNodeEditorSpacePos(int node_id, Vector2 editor_space_pos)
+        /// <param name="nodeId">The node id</param>
+        /// <param name="editorSpacePos">The editor space pos</param>
+        public static void SetNodeEditorSpacePos(int nodeId, Vector2 editorSpacePos)
         {
-            ImNodesNative.ImNodes_SetNodeEditorSpacePos(node_id, editor_space_pos);
+            ImNodesNative.ImNodes_SetNodeEditorSpacePos(nodeId, editorSpacePos);
         }
         /// <summary>
         /// Sets the node grid space pos using the specified node id
         /// </summary>
-        /// <param name="node_id">The node id</param>
-        /// <param name="grid_pos">The grid pos</param>
-        public static void SetNodeGridSpacePos(int node_id, Vector2 grid_pos)
+        /// <param name="nodeId">The node id</param>
+        /// <param name="gridPos">The grid pos</param>
+        public static void SetNodeGridSpacePos(int nodeId, Vector2 gridPos)
         {
-            ImNodesNative.ImNodes_SetNodeGridSpacePos(node_id, grid_pos);
+            ImNodesNative.ImNodes_SetNodeGridSpacePos(nodeId, gridPos);
         }
         /// <summary>
         /// Sets the node screen space pos using the specified node id
         /// </summary>
-        /// <param name="node_id">The node id</param>
-        /// <param name="screen_space_pos">The screen space pos</param>
-        public static void SetNodeScreenSpacePos(int node_id, Vector2 screen_space_pos)
+        /// <param name="nodeId">The node id</param>
+        /// <param name="screenSpacePos">The screen space pos</param>
+        public static void SetNodeScreenSpacePos(int nodeId, Vector2 screenSpacePos)
         {
-            ImNodesNative.ImNodes_SetNodeScreenSpacePos(node_id, screen_space_pos);
+            ImNodesNative.ImNodes_SetNodeScreenSpacePos(nodeId, screenSpacePos);
         }
         /// <summary>
         /// Snaps the node to grid using the specified node id
         /// </summary>
-        /// <param name="node_id">The node id</param>
-        public static void SnapNodeToGrid(int node_id)
+        /// <param name="nodeId">The node id</param>
+        public static void SnapNodeToGrid(int nodeId)
         {
-            ImNodesNative.ImNodes_SnapNodeToGrid(node_id);
+            ImNodesNative.ImNodes_SnapNodeToGrid(nodeId);
         }
         /// <summary>
         /// Styles the colors classic
@@ -1057,8 +1057,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <param name="dest">The dest</param>
         public static void StyleColorsClassic(ImNodesStylePtr dest)
         {
-            ImNodesStyle* native_dest = dest.NativePtr;
-            ImNodesNative.ImNodes_StyleColorsClassic(native_dest);
+            ImNodesStyle* nativeDest = dest.NativePtr;
+            ImNodesNative.ImNodes_StyleColorsClassic(nativeDest);
         }
         /// <summary>
         /// Styles the colors dark
@@ -1074,8 +1074,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <param name="dest">The dest</param>
         public static void StyleColorsDark(ImNodesStylePtr dest)
         {
-            ImNodesStyle* native_dest = dest.NativePtr;
-            ImNodesNative.ImNodes_StyleColorsDark(native_dest);
+            ImNodesStyle* nativeDest = dest.NativePtr;
+            ImNodesNative.ImNodes_StyleColorsDark(nativeDest);
         }
         /// <summary>
         /// Styles the colors light
@@ -1091,8 +1091,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <param name="dest">The dest</param>
         public static void StyleColorsLight(ImNodesStylePtr dest)
         {
-            ImNodesStyle* native_dest = dest.NativePtr;
-            ImNodesNative.ImNodes_StyleColorsLight(native_dest);
+            ImNodesStyle* nativeDest = dest.NativePtr;
+            ImNodesNative.ImNodes_StyleColorsLight(nativeDest);
         }
     }
 }
