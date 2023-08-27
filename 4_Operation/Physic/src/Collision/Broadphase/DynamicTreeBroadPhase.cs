@@ -211,9 +211,10 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 tree.Query(queryCallback, ref fatAabb);
             }
 
-            for (int i = 0; i < pairCount; ++i)
+            for (int i = 0; i < pairBuffer.Length; ++i)
             {
                 Pair primaryPair = pairBuffer[i];
+                pairCount++;
                 FixtureProxy userDataA = tree.GetUserData(primaryPair.ProxyIdA);
                 FixtureProxy userDataB = tree.GetUserData(primaryPair.ProxyIdB);
 
