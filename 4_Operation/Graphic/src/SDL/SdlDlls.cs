@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The osx arm64 sdl2
         /// </summary>
-        public static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SdlDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
+        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SdlDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
             {(OSPlatform.Windows, Architecture.X86), NativeGraphic.win_x86_sdl2},
             {(OSPlatform.Windows, Architecture.X64), NativeGraphic.win_x64_sdl2},

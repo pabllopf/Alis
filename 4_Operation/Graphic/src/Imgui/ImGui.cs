@@ -1,6 +1,7 @@
 using System;
 using System.Numerics;
 using System.Text;
+using Alis.Core.Aspect.Base.Dll;
 
 namespace Alis.Core.Graphic.Imgui
 {
@@ -9,6 +10,15 @@ namespace Alis.Core.Graphic.Imgui
     /// </summary>
     public static unsafe partial class ImGui
     {
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImGui"/> class
+        /// </summary>
+        static ImGui()
+        {
+            EmbeddedDllClass.ExtractEmbeddedDlls("cimgui", ImGuiDlls.ImGuiDllBytes);
+        }
+        
         /// <summary>
         /// Accepts the drag drop payload using the specified type
         /// </summary>

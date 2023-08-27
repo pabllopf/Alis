@@ -83,10 +83,6 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         public int Run()
         {
-            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window", SfmlDlls.SfmlWindowDllBytes);
-            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system", SfmlDlls.SfmlSystemDllBytes);
-            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics", SfmlDlls.SfmlGraphicsDllBytes);
-            
             VideoMode mode = new VideoMode(Width, Height);
             RenderWindow window = new RenderWindow(mode, "Sample");
 

@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.SFML
         /// <summary>
         ///     The osx arm64 sdl2
         /// </summary>
-        public static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SfmlWindowDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
+        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SfmlWindowDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
             {(OSPlatform.Windows, Architecture.X86), NativeGraphic.win_x86_csfml_window},
             {(OSPlatform.Windows, Architecture.X64), NativeGraphic.win_x64_csfml_window},
@@ -62,7 +62,7 @@ namespace Alis.Core.Graphic.SFML
         /// <summary>
         ///     The osx arm64 csfml system
         /// </summary>
-        public static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SfmlSystemDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
+        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SfmlSystemDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
             {(OSPlatform.Windows, Architecture.X86), NativeGraphic.win_x86_csfml_system},
             {(OSPlatform.Windows, Architecture.X64), NativeGraphic.win_x64_csfml_system},
@@ -83,7 +83,7 @@ namespace Alis.Core.Graphic.SFML
         /// <summary>
         ///     The osx arm64 csfml graphics
         /// </summary>
-        public static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SfmlGraphicsDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
+        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SfmlGraphicsDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
             {(OSPlatform.Windows, Architecture.X86), NativeGraphic.win_x86_csfml_graphics},
             {(OSPlatform.Windows, Architecture.X64), NativeGraphic.win_x64_csfml_graphics},

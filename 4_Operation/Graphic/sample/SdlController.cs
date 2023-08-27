@@ -96,8 +96,6 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         public int Run()
         {
-            EmbeddedDllClass.ExtractEmbeddedDlls("sdl2", SdlDlls.SdlDllBytes);
-            
             // Initilizes SDL.
             if (Sdl.Init(Sdl.InitEverything) < 0)
             {

@@ -194,6 +194,9 @@ namespace Alis.App.Engine
         /// </summary>
         private bool _quit;
 
+        /// <summary>
+        /// The menu down state
+        /// </summary>
         private bool menu_down_state = true;
 
         /// <summary>
@@ -219,9 +222,6 @@ namespace Alis.App.Engine
         /// <returns>The int</returns>
         public unsafe void Start()
         {
-            EmbeddedDllClass.ExtractEmbeddedDlls("sdl2", SdlDlls.SdlDllBytes);
-            EmbeddedDllClass.ExtractEmbeddedDlls("cimgui", ImGuiDlls.ImGuiDllBytes);
-            
             // initialize SDL and set a few defaults for the OpenGL context
             if (Sdl.Init(Sdl.InitVideo) != 0)
             {

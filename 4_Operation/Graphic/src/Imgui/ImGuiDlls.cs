@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <summary>
         ///     The osx arm64 cimgui
         /// </summary>
-        public static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> ImGuiDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
+        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> ImGuiDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
             {(OSPlatform.Windows, Architecture.X86), NativeGraphic.win_x86_cimgui},
             {(OSPlatform.Windows, Architecture.X64), NativeGraphic.win_x64_cimgui},
