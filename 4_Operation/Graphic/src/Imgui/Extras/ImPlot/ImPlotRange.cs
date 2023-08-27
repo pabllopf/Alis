@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
     /// <summary>
     /// The im plot range
     /// </summary>
-    public unsafe struct ImPlotRange
+    public struct ImPlotRange
     {
         /// <summary>
         /// The min

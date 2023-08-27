@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui once upon frame
     /// </summary>
-    public unsafe struct ImGuiOnceUponAFrame
+    public struct ImGuiOnceUponAFrame
     {
         /// <summary>
         /// The ref frame

@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im font glyph
     /// </summary>
-    public unsafe struct ImFontGlyph
+    public struct ImFontGlyph
     {
         /// <summary>
         /// The colored

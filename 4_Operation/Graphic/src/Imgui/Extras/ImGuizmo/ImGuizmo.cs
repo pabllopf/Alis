@@ -14,8 +14,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="value">The value</param>
         public static void AllowAxisFlip(bool value)
         {
-            byte native_value = value ? (byte)1 : (byte)0;
-            ImGuizmoNative.ImGuizmo_AllowAxisFlip(native_value);
+            byte nativeValue = value ? (byte)1 : (byte)0;
+            ImGuizmoNative.ImGuizmo_AllowAxisFlip(nativeValue);
         }
         /// <summary>
         /// Begins the frame
@@ -33,15 +33,15 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="scale">The scale</param>
         public static void DecomposeMatrixToComponents(ref float matrix, ref float translation, ref float rotation, ref float scale)
         {
-            fixed (float* native_matrix = &matrix)
+            fixed (float* nativeMatrix = &matrix)
             {
-                fixed (float* native_translation = &translation)
+                fixed (float* nativeTranslation = &translation)
                 {
-                    fixed (float* native_rotation = &rotation)
+                    fixed (float* nativeRotation = &rotation)
                     {
-                        fixed (float* native_scale = &scale)
+                        fixed (float* nativeScale = &scale)
                         {
-                            ImGuizmoNative.ImGuizmo_DecomposeMatrixToComponents(native_matrix, native_translation, native_rotation, native_scale);
+                            ImGuizmoNative.ImGuizmo_DecomposeMatrixToComponents(nativeMatrix, nativeTranslation, nativeRotation, nativeScale);
                         }
                     }
                 }
@@ -56,13 +56,13 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="matrixCount">The matrix count</param>
         public static void DrawCubes(ref float view, ref float projection, ref float matrices, int matrixCount)
         {
-            fixed (float* native_view = &view)
+            fixed (float* nativeView = &view)
             {
-                fixed (float* native_projection = &projection)
+                fixed (float* nativeProjection = &projection)
                 {
-                    fixed (float* native_matrices = &matrices)
+                    fixed (float* nativeMatrices = &matrices)
                     {
-                        ImGuizmoNative.ImGuizmo_DrawCubes(native_view, native_projection, native_matrices, matrixCount);
+                        ImGuizmoNative.ImGuizmo_DrawCubes(nativeView, nativeProjection, nativeMatrices, matrixCount);
                     }
                 }
             }
@@ -76,13 +76,13 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="gridSize">The grid size</param>
         public static void DrawGrid(ref float view, ref float projection, ref float matrix, float gridSize)
         {
-            fixed (float* native_view = &view)
+            fixed (float* nativeView = &view)
             {
-                fixed (float* native_projection = &projection)
+                fixed (float* nativeProjection = &projection)
                 {
-                    fixed (float* native_matrix = &matrix)
+                    fixed (float* nativeMatrix = &matrix)
                     {
-                        ImGuizmoNative.ImGuizmo_DrawGrid(native_view, native_projection, native_matrix, gridSize);
+                        ImGuizmoNative.ImGuizmo_DrawGrid(nativeView, nativeProjection, nativeMatrix, gridSize);
                     }
                 }
             }
@@ -93,8 +93,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="enable">The enable</param>
         public static void Enable(bool enable)
         {
-            byte native_enable = enable ? (byte)1 : (byte)0;
-            ImGuizmoNative.ImGuizmo_Enable(native_enable);
+            byte nativeEnable = enable ? (byte)1 : (byte)0;
+            ImGuizmoNative.ImGuizmo_Enable(nativeEnable);
         }
         /// <summary>
         /// Describes whether is over
@@ -110,7 +110,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// </summary>
         /// <param name="op">The op</param>
         /// <returns>The bool</returns>
-        public static bool IsOver(OPERATION op)
+        public static bool IsOver(Operation op)
         {
             byte ret = ImGuizmoNative.ImGuizmo_IsOverOPERATION(op);
             return ret != 0;
@@ -133,19 +133,19 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="mode">The mode</param>
         /// <param name="matrix">The matrix</param>
         /// <returns>The bool</returns>
-        public static bool Manipulate(ref float view, ref float projection, OPERATION operation, MODE mode, ref float matrix)
+        public static bool Manipulate(ref float view, ref float projection, Operation operation, Mode mode, ref float matrix)
         {
             float* deltaMatrix = null;
             float* snap = null;
             float* localBounds = null;
             float* boundsSnap = null;
-            fixed (float* native_view = &view)
+            fixed (float* nativeView = &view)
             {
-                fixed (float* native_projection = &projection)
+                fixed (float* nativeProjection = &projection)
                 {
-                    fixed (float* native_matrix = &matrix)
+                    fixed (float* nativeMatrix = &matrix)
                     {
-                        byte ret = ImGuizmoNative.ImGuizmo_Manipulate(native_view, native_projection, operation, mode, native_matrix, deltaMatrix, snap, localBounds, boundsSnap);
+                        byte ret = ImGuizmoNative.ImGuizmo_Manipulate(nativeView, nativeProjection, operation, mode, nativeMatrix, deltaMatrix, snap, localBounds, boundsSnap);
                         return ret != 0;
                     }
                 }
@@ -161,20 +161,20 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="matrix">The matrix</param>
         /// <param name="deltaMatrix">The delta matrix</param>
         /// <returns>The bool</returns>
-        public static bool Manipulate(ref float view, ref float projection, OPERATION operation, MODE mode, ref float matrix, ref float deltaMatrix)
+        public static bool Manipulate(ref float view, ref float projection, Operation operation, Mode mode, ref float matrix, ref float deltaMatrix)
         {
             float* snap = null;
             float* localBounds = null;
             float* boundsSnap = null;
-            fixed (float* native_view = &view)
+            fixed (float* nativeView = &view)
             {
-                fixed (float* native_projection = &projection)
+                fixed (float* nativeProjection = &projection)
                 {
-                    fixed (float* native_matrix = &matrix)
+                    fixed (float* nativeMatrix = &matrix)
                     {
-                        fixed (float* native_deltaMatrix = &deltaMatrix)
+                        fixed (float* nativeDeltaMatrix = &deltaMatrix)
                         {
-                            byte ret = ImGuizmoNative.ImGuizmo_Manipulate(native_view, native_projection, operation, mode, native_matrix, native_deltaMatrix, snap, localBounds, boundsSnap);
+                            byte ret = ImGuizmoNative.ImGuizmo_Manipulate(nativeView, nativeProjection, operation, mode, nativeMatrix, nativeDeltaMatrix, snap, localBounds, boundsSnap);
                             return ret != 0;
                         }
                     }
@@ -192,21 +192,21 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="deltaMatrix">The delta matrix</param>
         /// <param name="snap">The snap</param>
         /// <returns>The bool</returns>
-        public static bool Manipulate(ref float view, ref float projection, OPERATION operation, MODE mode, ref float matrix, ref float deltaMatrix, ref float snap)
+        public static bool Manipulate(ref float view, ref float projection, Operation operation, Mode mode, ref float matrix, ref float deltaMatrix, ref float snap)
         {
             float* localBounds = null;
             float* boundsSnap = null;
-            fixed (float* native_view = &view)
+            fixed (float* nativeView = &view)
             {
-                fixed (float* native_projection = &projection)
+                fixed (float* nativeProjection = &projection)
                 {
-                    fixed (float* native_matrix = &matrix)
+                    fixed (float* nativeMatrix = &matrix)
                     {
-                        fixed (float* native_deltaMatrix = &deltaMatrix)
+                        fixed (float* nativeDeltaMatrix = &deltaMatrix)
                         {
-                            fixed (float* native_snap = &snap)
+                            fixed (float* nativeSnap = &snap)
                             {
-                                byte ret = ImGuizmoNative.ImGuizmo_Manipulate(native_view, native_projection, operation, mode, native_matrix, native_deltaMatrix, native_snap, localBounds, boundsSnap);
+                                byte ret = ImGuizmoNative.ImGuizmo_Manipulate(nativeView, nativeProjection, operation, mode, nativeMatrix, nativeDeltaMatrix, nativeSnap, localBounds, boundsSnap);
                                 return ret != 0;
                             }
                         }
@@ -226,22 +226,22 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="snap">The snap</param>
         /// <param name="localBounds">The local bounds</param>
         /// <returns>The bool</returns>
-        public static bool Manipulate(ref float view, ref float projection, OPERATION operation, MODE mode, ref float matrix, ref float deltaMatrix, ref float snap, ref float localBounds)
+        public static bool Manipulate(ref float view, ref float projection, Operation operation, Mode mode, ref float matrix, ref float deltaMatrix, ref float snap, ref float localBounds)
         {
             float* boundsSnap = null;
-            fixed (float* native_view = &view)
+            fixed (float* nativeView = &view)
             {
-                fixed (float* native_projection = &projection)
+                fixed (float* nativeProjection = &projection)
                 {
-                    fixed (float* native_matrix = &matrix)
+                    fixed (float* nativeMatrix = &matrix)
                     {
-                        fixed (float* native_deltaMatrix = &deltaMatrix)
+                        fixed (float* nativeDeltaMatrix = &deltaMatrix)
                         {
-                            fixed (float* native_snap = &snap)
+                            fixed (float* nativeSnap = &snap)
                             {
-                                fixed (float* native_localBounds = &localBounds)
+                                fixed (float* nativeLocalBounds = &localBounds)
                                 {
-                                    byte ret = ImGuizmoNative.ImGuizmo_Manipulate(native_view, native_projection, operation, mode, native_matrix, native_deltaMatrix, native_snap, native_localBounds, boundsSnap);
+                                    byte ret = ImGuizmoNative.ImGuizmo_Manipulate(nativeView, nativeProjection, operation, mode, nativeMatrix, nativeDeltaMatrix, nativeSnap, nativeLocalBounds, boundsSnap);
                                     return ret != 0;
                                 }
                             }
@@ -263,23 +263,23 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="localBounds">The local bounds</param>
         /// <param name="boundsSnap">The bounds snap</param>
         /// <returns>The bool</returns>
-        public static bool Manipulate(ref float view, ref float projection, OPERATION operation, MODE mode, ref float matrix, ref float deltaMatrix, ref float snap, ref float localBounds, ref float boundsSnap)
+        public static bool Manipulate(ref float view, ref float projection, Operation operation, Mode mode, ref float matrix, ref float deltaMatrix, ref float snap, ref float localBounds, ref float boundsSnap)
         {
-            fixed (float* native_view = &view)
+            fixed (float* nativeView = &view)
             {
-                fixed (float* native_projection = &projection)
+                fixed (float* nativeProjection = &projection)
                 {
-                    fixed (float* native_matrix = &matrix)
+                    fixed (float* nativeMatrix = &matrix)
                     {
-                        fixed (float* native_deltaMatrix = &deltaMatrix)
+                        fixed (float* nativeDeltaMatrix = &deltaMatrix)
                         {
-                            fixed (float* native_snap = &snap)
+                            fixed (float* nativeSnap = &snap)
                             {
-                                fixed (float* native_localBounds = &localBounds)
+                                fixed (float* nativeLocalBounds = &localBounds)
                                 {
-                                    fixed (float* native_boundsSnap = &boundsSnap)
+                                    fixed (float* nativeBoundsSnap = &boundsSnap)
                                     {
-                                        byte ret = ImGuizmoNative.ImGuizmo_Manipulate(native_view, native_projection, operation, mode, native_matrix, native_deltaMatrix, native_snap, native_localBounds, native_boundsSnap);
+                                        byte ret = ImGuizmoNative.ImGuizmo_Manipulate(nativeView, nativeProjection, operation, mode, nativeMatrix, nativeDeltaMatrix, nativeSnap, nativeLocalBounds, nativeBoundsSnap);
                                         return ret != 0;
                                     }
                                 }
@@ -298,15 +298,15 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="matrix">The matrix</param>
         public static void RecomposeMatrixFromComponents(ref float translation, ref float rotation, ref float scale, ref float matrix)
         {
-            fixed (float* native_translation = &translation)
+            fixed (float* nativeTranslation = &translation)
             {
-                fixed (float* native_rotation = &rotation)
+                fixed (float* nativeRotation = &rotation)
                 {
-                    fixed (float* native_scale = &scale)
+                    fixed (float* nativeScale = &scale)
                     {
-                        fixed (float* native_matrix = &matrix)
+                        fixed (float* nativeMatrix = &matrix)
                         {
-                            ImGuizmoNative.ImGuizmo_RecomposeMatrixFromComponents(native_translation, native_rotation, native_scale, native_matrix);
+                            ImGuizmoNative.ImGuizmo_RecomposeMatrixFromComponents(nativeTranslation, nativeRotation, nativeScale, nativeMatrix);
                         }
                     }
                 }
@@ -326,8 +326,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="drawlist">The drawlist</param>
         public static void SetDrawlist(ImDrawListPtr drawlist)
         {
-            ImDrawList* native_drawlist = drawlist.NativePtr;
-            ImGuizmoNative.ImGuizmo_SetDrawlist(native_drawlist);
+            ImDrawList* nativeDrawlist = drawlist.NativePtr;
+            ImGuizmoNative.ImGuizmo_SetDrawlist(nativeDrawlist);
         }
         /// <summary>
         /// Sets the gizmo size clip space using the specified value
@@ -341,7 +341,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// Sets the id using the specified id
         /// </summary>
         /// <param name="id">The id</param>
-        public static void SetID(int id)
+        public static void SetId(int id)
         {
             ImGuizmoNative.ImGuizmo_SetID(id);
         }
@@ -359,8 +359,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="isOrthographic">The is orthographic</param>
         public static void SetOrthographic(bool isOrthographic)
         {
-            byte native_isOrthographic = isOrthographic ? (byte)1 : (byte)0;
-            ImGuizmoNative.ImGuizmo_SetOrthographic(native_isOrthographic);
+            byte nativeIsOrthographic = isOrthographic ? (byte)1 : (byte)0;
+            ImGuizmoNative.ImGuizmo_SetOrthographic(nativeIsOrthographic);
         }
         /// <summary>
         /// Sets the rect using the specified x
@@ -383,9 +383,9 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="backgroundColor">The background color</param>
         public static void ViewManipulate(ref float view, float length, Vector2 position, Vector2 size, uint backgroundColor)
         {
-            fixed (float* native_view = &view)
+            fixed (float* nativeView = &view)
             {
-                ImGuizmoNative.ImGuizmo_ViewManipulate(native_view, length, position, size, backgroundColor);
+                ImGuizmoNative.ImGuizmo_ViewManipulate(nativeView, length, position, size, backgroundColor);
             }
         }
     }

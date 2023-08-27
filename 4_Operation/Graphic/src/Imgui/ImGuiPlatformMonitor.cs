@@ -6,7 +6,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui platform monitor
     /// </summary>
-    public unsafe struct ImGuiPlatformMonitor
+    public struct ImGuiPlatformMonitor
     {
         /// <summary>
         /// The main pos

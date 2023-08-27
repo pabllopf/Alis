@@ -6,7 +6,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui platform io
     /// </summary>
-    public unsafe struct ImGuiPlatformIO
+    public struct ImGuiPlatformIO
     {
         /// <summary>
         /// The platform createwindow

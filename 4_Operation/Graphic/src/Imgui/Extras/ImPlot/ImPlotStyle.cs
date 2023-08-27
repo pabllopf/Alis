@@ -6,7 +6,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
     /// <summary>
     /// The im plot style
     /// </summary>
-    public unsafe struct ImPlotStyle
+    public struct ImPlotStyle
     {
         /// <summary>
         /// The line weight

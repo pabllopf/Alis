@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The stb undo record
     /// </summary>
-    public unsafe struct StbUndoRecord
+    public struct StbUndoRecord
     {
         /// <summary>
         /// The where

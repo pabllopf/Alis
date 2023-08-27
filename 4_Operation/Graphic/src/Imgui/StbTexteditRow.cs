@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The stb textedit row
     /// </summary>
-    public unsafe struct StbTexteditRow
+    public struct StbTexteditRow
     {
         /// <summary>
         /// The 

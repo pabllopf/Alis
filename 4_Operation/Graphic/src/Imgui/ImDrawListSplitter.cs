@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im draw list splitter
     /// </summary>
-    public unsafe struct ImDrawListSplitter
+    public struct ImDrawListSplitter
     {
         /// <summary>
         /// The current

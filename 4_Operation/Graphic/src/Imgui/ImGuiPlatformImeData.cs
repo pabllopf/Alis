@@ -6,7 +6,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui platform ime data
     /// </summary>
-    public unsafe struct ImGuiPlatformImeData
+    public struct ImGuiPlatformImeData
     {
         /// <summary>
         /// The want visible

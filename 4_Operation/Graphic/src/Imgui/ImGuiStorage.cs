@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui storage
     /// </summary>
-    public unsafe struct ImGuiStorage
+    public struct ImGuiStorage
     {
         /// <summary>
         /// The data

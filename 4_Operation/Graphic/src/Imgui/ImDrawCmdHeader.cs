@@ -7,7 +7,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im draw cmd header
     /// </summary>
-    public unsafe struct ImDrawCmdHeader
+    public struct ImDrawCmdHeader
     {
         /// <summary>
         /// The clip rect

@@ -65,7 +65,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="op">The op</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImGuizmo_IsOverOPERATION(OPERATION op);
+        public static extern byte ImGuizmo_IsOverOPERATION(Operation op);
         /// <summary>
         /// Ims the guizmo is using
         /// </summary>
@@ -86,7 +86,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="boundsSnap">The bounds snap</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImGuizmo_Manipulate(float* view, float* projection, OPERATION operation, MODE mode, float* matrix, float* deltaMatrix, float* snap, float* localBounds, float* boundsSnap);
+        public static extern byte ImGuizmo_Manipulate(float* view, float* projection, Operation operation, Mode mode, float* matrix, float* deltaMatrix, float* snap, float* localBounds, float* boundsSnap);
         /// <summary>
         /// Ims the guizmo recompose matrix from components using the specified translation
         /// </summary>

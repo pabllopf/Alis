@@ -9,7 +9,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// Initializes a new instance of the <see cref="ImNodesContextPtr"/> class
         /// </summary>
         /// <param name="ret">The ret</param>
-        public unsafe ImNodesContextPtr(ImNodesContext* ret)
+        public ImNodesContextPtr(ImNodesContext* ret)
         {
             NativePtr = ret;
         }
@@ -17,6 +17,6 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <summary>
         /// Gets or sets the value of the native ptr
         /// </summary>
-        public unsafe ImNodesContext* NativePtr { get; private set; }
+        public ImNodesContext* NativePtr { get; private set; }
     }
 }

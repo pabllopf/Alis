@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui table column sort specs
     /// </summary>
-    public unsafe struct ImGuiTableColumnSortSpecs
+    public struct ImGuiTableColumnSortSpecs
     {
         /// <summary>
         /// The column user id

@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The stb texteditstate
     /// </summary>
-    public unsafe struct STB_TexteditState
+    public struct STB_TexteditState
     {
         /// <summary>
         /// The cursor

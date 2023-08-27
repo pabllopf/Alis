@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui window
     /// </summary>
-    public unsafe struct ImGuiWindowClass
+    public struct ImGuiWindowClass
     {
         /// <summary>
         /// The class id

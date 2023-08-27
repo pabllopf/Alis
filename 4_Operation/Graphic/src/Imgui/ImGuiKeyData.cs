@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui key data
     /// </summary>
-    public unsafe struct ImGuiKeyData
+    public struct ImGuiKeyData
     {
         /// <summary>
         /// The down

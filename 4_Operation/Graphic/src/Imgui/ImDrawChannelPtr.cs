@@ -40,6 +40,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="nativePtr"></param>
         /// <returns></returns>
         public static implicit operator ImDrawChannelPtr(IntPtr nativePtr) => new ImDrawChannelPtr(nativePtr);
+        
         /// <summary>
         /// Gets the value of the  cmdbuffer
         /// </summary>

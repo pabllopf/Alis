@@ -6,7 +6,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im gui style
     /// </summary>
-    public unsafe struct ImGuiStyle
+    public struct ImGuiStyle
     {
         /// <summary>
         /// The alpha

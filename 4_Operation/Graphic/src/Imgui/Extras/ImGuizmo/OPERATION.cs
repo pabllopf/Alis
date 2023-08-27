@@ -3,63 +3,63 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
     /// <summary>
     /// The operation enum
     /// </summary>
-    public enum OPERATION
+    public enum Operation
     {
         /// <summary>
         /// The translate operation
         /// </summary>
-        TRANSLATE_X = 1,
+        TranslateX = 1,
         /// <summary>
         /// The translate operation
         /// </summary>
-        TRANSLATE_Y = 2,
+        TranslateY = 2,
         /// <summary>
         /// The translate operation
         /// </summary>
-        TRANSLATE_Z = 4,
+        TranslateZ = 4,
         /// <summary>
         /// The rotate operation
         /// </summary>
-        ROTATE_X = 8,
+        RotateX = 8,
         /// <summary>
         /// The rotate operation
         /// </summary>
-        ROTATE_Y = 16,
+        RotateY = 16,
         /// <summary>
         /// The rotate operation
         /// </summary>
-        ROTATE_Z = 32,
+        RotateZ = 32,
         /// <summary>
         /// The rotate screen operation
         /// </summary>
-        ROTATE_SCREEN = 64,
+        RotateScreen = 64,
         /// <summary>
         /// The scale operation
         /// </summary>
-        SCALE_X = 128,
+        ScaleX = 128,
         /// <summary>
         /// The scale operation
         /// </summary>
-        SCALE_Y = 256,
+        ScaleY = 256,
         /// <summary>
         /// The scale operation
         /// </summary>
-        SCALE_Z = 512,
+        ScaleZ = 512,
         /// <summary>
         /// The bounds operation
         /// </summary>
-        BOUNDS = 1024,
+        Bounds = 1024,
         /// <summary>
         /// The translate operation
         /// </summary>
-        TRANSLATE = 7,
+        Translate = 7,
         /// <summary>
         /// The rotate operation
         /// </summary>
-        ROTATE = 120,
+        Rotate = 120,
         /// <summary>
         /// The scale operation
         /// </summary>
-        SCALE = 896,
+        Scale = 896,
     }
 }

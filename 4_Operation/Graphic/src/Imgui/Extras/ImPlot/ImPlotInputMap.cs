@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
     /// <summary>
     /// The im plot input map
     /// </summary>
-    public unsafe struct ImPlotInputMap
+    public struct ImPlotInputMap
     {
         /// <summary>
         /// The pan

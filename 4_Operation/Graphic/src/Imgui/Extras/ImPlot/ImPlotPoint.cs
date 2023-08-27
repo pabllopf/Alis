@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
     /// <summary>
     /// The im plot point
     /// </summary>
-    public unsafe struct ImPlotPoint
+    public struct ImPlotPoint
     {
         /// <summary>
         /// The 

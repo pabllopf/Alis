@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im draw channel
     /// </summary>
-    public unsafe struct ImDrawChannel
+    public struct ImDrawChannel
     {
         /// <summary>
         /// The cmd buffer

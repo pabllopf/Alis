@@ -6,7 +6,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im draw vert
     /// </summary>
-    public unsafe struct ImDrawVert
+    public struct ImDrawVert
     {
         /// <summary>
         /// The pos

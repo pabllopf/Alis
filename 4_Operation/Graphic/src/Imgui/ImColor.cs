@@ -6,7 +6,7 @@ namespace Alis.Core.Graphic.Imgui
     /// <summary>
     /// The im color
     /// </summary>
-    public unsafe struct ImColor
+    public struct ImColor
     {
         /// <summary>
         /// The value
