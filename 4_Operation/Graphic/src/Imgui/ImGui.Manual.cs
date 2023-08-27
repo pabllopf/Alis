@@ -208,6 +208,7 @@ namespace Alis.Core.Graphic.Imgui
         }
 
         
+        
         /// <summary>
         /// Describes whether input text multiline
         /// </summary>
