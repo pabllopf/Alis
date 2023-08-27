@@ -15,9 +15,14 @@ jobs:
         with:
           java-version: 11
           distribution: 'zulu' # Alternative distribution options are available.
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          ref: master
+      - name: Remove unnecessary files
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:
