@@ -45,11 +45,11 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <summary>
         /// Gets the value of the x
         /// </summary>
-        public ref double x => ref Unsafe.AsRef<double>(&NativePtr->x);
+        public ref double X => ref Unsafe.AsRef<double>(&NativePtr->X);
         /// <summary>
         /// Gets the value of the y
         /// </summary>
-        public ref double y => ref Unsafe.AsRef<double>(&NativePtr->y);
+        public ref double Y => ref Unsafe.AsRef<double>(&NativePtr->Y);
         /// <summary>
         /// Destroys this instance
         /// </summary>

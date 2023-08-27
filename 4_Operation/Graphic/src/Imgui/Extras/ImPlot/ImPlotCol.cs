@@ -92,6 +92,6 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <summary>
         /// The count im plot col
         /// </summary>
-        COUNT = 21,
+        Count = 21,
     }
 }

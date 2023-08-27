@@ -56,11 +56,11 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <summary>
         /// The br bg im plot colormap
         /// </summary>
-        BrBG = 12,
+        BrBg = 12,
         /// <summary>
         /// The pi yg im plot colormap
         /// </summary>
-        PiYG = 13,
+        PiYg = 13,
         /// <summary>
         /// The spectral im plot colormap
         /// </summary>

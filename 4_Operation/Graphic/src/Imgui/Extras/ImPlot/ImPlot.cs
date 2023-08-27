@@ -13895,8 +13895,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (float* native_values = &values)
             {
@@ -13954,8 +13954,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (float* native_values = &values)
             {
@@ -14013,8 +14013,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (float* native_values = &values)
             {
@@ -14077,8 +14077,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (float* native_values = &values)
             {
@@ -14142,7 +14142,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (float* native_values = &values)
             {
@@ -14328,8 +14328,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (double* native_values = &values)
             {
@@ -14387,8 +14387,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (double* native_values = &values)
             {
@@ -14446,8 +14446,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (double* native_values = &values)
             {
@@ -14510,8 +14510,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (double* native_values = &values)
             {
@@ -14575,7 +14575,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (double* native_values = &values)
             {
@@ -14761,8 +14761,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (sbyte* native_values = &values)
             {
@@ -14820,8 +14820,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (sbyte* native_values = &values)
             {
@@ -14879,8 +14879,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (sbyte* native_values = &values)
             {
@@ -14943,8 +14943,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (sbyte* native_values = &values)
             {
@@ -15008,7 +15008,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (sbyte* native_values = &values)
             {
@@ -15194,8 +15194,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (byte* native_values = &values)
             {
@@ -15253,8 +15253,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (byte* native_values = &values)
             {
@@ -15312,8 +15312,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (byte* native_values = &values)
             {
@@ -15376,8 +15376,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (byte* native_values = &values)
             {
@@ -15441,7 +15441,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (byte* native_values = &values)
             {
@@ -15627,8 +15627,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (short* native_values = &values)
             {
@@ -15686,8 +15686,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (short* native_values = &values)
             {
@@ -15745,8 +15745,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (short* native_values = &values)
             {
@@ -15809,8 +15809,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (short* native_values = &values)
             {
@@ -15874,7 +15874,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (short* native_values = &values)
             {
@@ -16060,8 +16060,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (ushort* native_values = &values)
             {
@@ -16119,8 +16119,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (ushort* native_values = &values)
             {
@@ -16178,8 +16178,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (ushort* native_values = &values)
             {
@@ -16242,8 +16242,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (ushort* native_values = &values)
             {
@@ -16307,7 +16307,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (ushort* native_values = &values)
             {
@@ -16493,8 +16493,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (int* native_values = &values)
             {
@@ -16552,8 +16552,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (int* native_values = &values)
             {
@@ -16611,8 +16611,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (int* native_values = &values)
             {
@@ -16675,8 +16675,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (int* native_values = &values)
             {
@@ -16740,7 +16740,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (int* native_values = &values)
             {
@@ -16926,8 +16926,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (uint* native_values = &values)
             {
@@ -16985,8 +16985,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (uint* native_values = &values)
             {
@@ -17044,8 +17044,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (uint* native_values = &values)
             {
@@ -17108,8 +17108,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (uint* native_values = &values)
             {
@@ -17173,7 +17173,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (uint* native_values = &values)
             {
@@ -17359,8 +17359,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (long* native_values = &values)
             {
@@ -17418,8 +17418,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (long* native_values = &values)
             {
@@ -17477,8 +17477,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (long* native_values = &values)
             {
@@ -17541,8 +17541,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (long* native_values = &values)
             {
@@ -17606,7 +17606,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (long* native_values = &values)
             {
@@ -17792,8 +17792,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (ulong* native_values = &values)
             {
@@ -17851,8 +17851,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (ulong* native_values = &values)
             {
@@ -17910,8 +17910,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int native_label_fmt_offset = Util.GetUtf8("%.1f", native_label_fmt, label_fmt_byteCount);
                 native_label_fmt[native_label_fmt_offset] = 0;
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (ulong* native_values = &values)
             {
@@ -17974,8 +17974,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_min = new ImPlotPoint { x = 0, y = 0 };
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_min = new ImPlotPoint { X = 0, Y = 0 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (ulong* native_values = &values)
             {
@@ -18039,7 +18039,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 native_label_fmt[native_label_fmt_offset] = 0;
             }
             else { native_label_fmt = null; }
-            ImPlotPoint bounds_max = new ImPlotPoint { x = 1, y = 1 };
+            ImPlotPoint bounds_max = new ImPlotPoint { X = 1, Y = 1 };
             ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
             fixed (ulong* native_values = &values)
             {

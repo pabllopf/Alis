@@ -25,7 +25,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <summary>
         /// The source allow null id im gui drag drop flags
         /// </summary>
-        SourceAllowNullID = 8,
+        SourceAllowNullId = 8,
         /// <summary>
         /// The source extern im gui drag drop flags
         /// </summary>

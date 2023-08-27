@@ -57,9 +57,9 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <returns>The retval</returns>
         public ImPlotPoint Clamp(ImPlotPoint p)
         {
-            ImPlotPoint __retval;
-            ImPlotNative.ImPlotRect_Clamp_PlotPoInt(&__retval, (ImPlotRect*)(NativePtr), p);
-            return __retval;
+            ImPlotPoint retval;
+            ImPlotNative.ImPlotRect_Clamp_PlotPoInt(&retval, (ImPlotRect*)(NativePtr), p);
+            return retval;
         }
         /// <summary>
         /// Clamps the x
@@ -69,9 +69,9 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <returns>The retval</returns>
         public ImPlotPoint Clamp(double x, double y)
         {
-            ImPlotPoint __retval;
-            ImPlotNative.ImPlotRect_Clamp_double(&__retval, (ImPlotRect*)(NativePtr), x, y);
-            return __retval;
+            ImPlotPoint retval;
+            ImPlotNative.ImPlotRect_Clamp_double(&retval, (ImPlotRect*)(NativePtr), x, y);
+            return retval;
         }
         /// <summary>
         /// Describes whether this instance contains
@@ -107,9 +107,9 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <returns>The retval</returns>
         public ImPlotPoint Max()
         {
-            ImPlotPoint __retval;
-            ImPlotNative.ImPlotRect_Max(&__retval, (ImPlotRect*)(NativePtr));
-            return __retval;
+            ImPlotPoint retval;
+            ImPlotNative.ImPlotRect_Max(&retval, (ImPlotRect*)(NativePtr));
+            return retval;
         }
         /// <summary>
         /// Mins this instance
@@ -117,9 +117,9 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <returns>The retval</returns>
         public ImPlotPoint Min()
         {
-            ImPlotPoint __retval;
-            ImPlotNative.ImPlotRect_Min(&__retval, (ImPlotRect*)(NativePtr));
-            return __retval;
+            ImPlotPoint retval;
+            ImPlotNative.ImPlotRect_Min(&retval, (ImPlotRect*)(NativePtr));
+            return retval;
         }
         /// <summary>
         /// Sizes this instance
@@ -127,9 +127,9 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <returns>The retval</returns>
         public ImPlotPoint Size()
         {
-            ImPlotPoint __retval;
-            ImPlotNative.ImPlotRect_Size(&__retval, (ImPlotRect*)(NativePtr));
-            return __retval;
+            ImPlotPoint retval;
+            ImPlotNative.ImPlotRect_Size(&retval, (ImPlotRect*)(NativePtr));
+            return retval;
         }
     }
 }

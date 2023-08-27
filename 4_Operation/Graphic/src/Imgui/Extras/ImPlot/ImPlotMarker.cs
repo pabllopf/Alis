@@ -52,6 +52,6 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <summary>
         /// The count im plot marker
         /// </summary>
-        COUNT = 10,
+        Count = 10,
     }
 }

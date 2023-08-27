@@ -32,6 +32,6 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <summary>
         /// The count im axis
         /// </summary>
-        COUNT = 6,
+        Count = 6,
     }
 }

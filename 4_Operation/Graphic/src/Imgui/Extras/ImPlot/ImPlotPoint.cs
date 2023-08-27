@@ -10,10 +10,10 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <summary>
         /// The 
         /// </summary>
-        public double x;
+        public double X;
         /// <summary>
         /// The 
         /// </summary>
-        public double y;
+        public double Y;
     }
 }

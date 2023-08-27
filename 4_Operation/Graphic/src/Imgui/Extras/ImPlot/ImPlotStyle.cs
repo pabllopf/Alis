@@ -119,87 +119,87 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_0;
+        public Vector4 Colors0;
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_1;
+        public Vector4 Colors1;
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_2;
+        public Vector4 Colors2;
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_3;
+        public Vector4 Colors3;
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_4;
+        public Vector4 Colors4;
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_5;
+        public Vector4 Colors5;
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_6;
+        public Vector4 Colors6;
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_7;
+        public Vector4 Colors7;
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_8;
+        public Vector4 Colors8;
         /// <summary>
         /// The colors
         /// </summary>
-        public Vector4 Colors_9;
+        public Vector4 Colors9;
         /// <summary>
         /// The colors 10
         /// </summary>
-        public Vector4 Colors_10;
+        public Vector4 Colors10;
         /// <summary>
         /// The colors 11
         /// </summary>
-        public Vector4 Colors_11;
+        public Vector4 Colors11;
         /// <summary>
         /// The colors 12
         /// </summary>
-        public Vector4 Colors_12;
+        public Vector4 Colors12;
         /// <summary>
         /// The colors 13
         /// </summary>
-        public Vector4 Colors_13;
+        public Vector4 Colors13;
         /// <summary>
         /// The colors 14
         /// </summary>
-        public Vector4 Colors_14;
+        public Vector4 Colors14;
         /// <summary>
         /// The colors 15
         /// </summary>
-        public Vector4 Colors_15;
+        public Vector4 Colors15;
         /// <summary>
         /// The colors 16
         /// </summary>
-        public Vector4 Colors_16;
+        public Vector4 Colors16;
         /// <summary>
         /// The colors 17
         /// </summary>
-        public Vector4 Colors_17;
+        public Vector4 Colors17;
         /// <summary>
         /// The colors 18
         /// </summary>
-        public Vector4 Colors_18;
+        public Vector4 Colors18;
         /// <summary>
         /// The colors 19
         /// </summary>
-        public Vector4 Colors_19;
+        public Vector4 Colors19;
         /// <summary>
         /// The colors 20
         /// </summary>
-        public Vector4 Colors_20;
+        public Vector4 Colors20;
         /// <summary>
         /// The colormap
         /// </summary>
@@ -211,7 +211,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <summary>
         /// The use iso 8601
         /// </summary>
-        public byte UseISO8601;
+        public byte UseIso8601;
         /// <summary>
         /// The use 24 hour clock
         /// </summary>
