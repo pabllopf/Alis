@@ -45,6 +45,11 @@ namespace Alis.Core.Physic.Collision.Broadphase
     public class DynamicTreeBroadPhase : IBroadPhase
     {
         /// <summary>
+        ///     The null proxy
+        /// </summary>
+        public const int NullProxy = -1;
+
+        /// <summary>
         ///     The query callback
         /// </summary>
         private readonly Func<int, bool> queryCallback;
@@ -114,11 +119,6 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
         /// <summary>Gets the height of the tree.</summary>
         public int TreeHeight => tree.Height;
-
-        /// <summary>
-        ///     The null proxy
-        /// </summary>
-        public const int NullProxy = -1;
 
         /// <summary>Get the number of proxies.</summary>
         /// <value>The proxy count.</value>

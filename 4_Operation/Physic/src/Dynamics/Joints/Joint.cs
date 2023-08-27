@@ -38,6 +38,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
     /// </summary>
     public abstract class Joint
     {
+        /// <summary>
+        ///     The joint type
+        /// </summary>
+        private static JointType _jointType;
+
         /// <summary>Indicate if this join is enabled or not. Disabling a joint means it is still in the simulation, but inactive.</summary>
         private Body bodyA;
 
@@ -194,11 +199,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => breakpoint;
             set => breakpoint = value;
         }
-
-        /// <summary>
-        ///     The joint type
-        /// </summary>
-        private static JointType _jointType;
 
         /// <summary>Fires when the joint is broken.</summary>
         public event Action<Joint, float> Broke;

@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ImGuizmoNative.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
@@ -5,23 +34,25 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
 {
     /// <summary>
-    /// The im guizmo native class
+    ///     The im guizmo native class
     /// </summary>
     public static unsafe class ImGuizmoNative
     {
         /// <summary>
-        /// Ims the guizmo allow axis flip using the specified value
+        ///     Ims the guizmo allow axis flip using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuizmo_AllowAxisFlip(byte value);
+
         /// <summary>
-        /// Ims the guizmo begin frame
+        ///     Ims the guizmo begin frame
         /// </summary>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuizmo_BeginFrame();
+
         /// <summary>
-        /// Ims the guizmo decompose matrix to components using the specified matrix
+        ///     Ims the guizmo decompose matrix to components using the specified matrix
         /// </summary>
         /// <param name="matrix">The matrix</param>
         /// <param name="translation">The translation</param>
@@ -29,8 +60,9 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="scale">The scale</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuizmo_DecomposeMatrixToComponents(float* matrix, float* translation, float* rotation, float* scale);
+
         /// <summary>
-        /// Ims the guizmo draw cubes using the specified view
+        ///     Ims the guizmo draw cubes using the specified view
         /// </summary>
         /// <param name="view">The view</param>
         /// <param name="projection">The projection</param>
@@ -38,8 +70,9 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="matrixCount">The matrix count</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuizmo_DrawCubes(float* view, float* projection, float* matrices, int matrixCount);
+
         /// <summary>
-        /// Ims the guizmo draw grid using the specified view
+        ///     Ims the guizmo draw grid using the specified view
         /// </summary>
         /// <param name="view">The view</param>
         /// <param name="projection">The projection</param>
@@ -47,33 +80,38 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="gridSize">The grid size</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuizmo_DrawGrid(float* view, float* projection, float* matrix, float gridSize);
+
         /// <summary>
-        /// Ims the guizmo enable using the specified enable
+        ///     Ims the guizmo enable using the specified enable
         /// </summary>
         /// <param name="enable">The enable</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuizmo_Enable(byte enable);
+
         /// <summary>
-        /// Ims the guizmo is over nil
+        ///     Ims the guizmo is over nil
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImGuizmo_IsOverNil();
+
         /// <summary>
-        /// Ims the guizmo is over operation using the specified op
+        ///     Ims the guizmo is over operation using the specified op
         /// </summary>
         /// <param name="op">The op</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImGuizmo_IsOverOPERATION(Operation op);
+
         /// <summary>
-        /// Ims the guizmo is using
+        ///     Ims the guizmo is using
         /// </summary>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImGuizmo_IsUsing();
+
         /// <summary>
-        /// Ims the guizmo manipulate using the specified view
+        ///     Ims the guizmo manipulate using the specified view
         /// </summary>
         /// <param name="view">The view</param>
         /// <param name="projection">The projection</param>
@@ -87,8 +125,9 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImGuizmo_Manipulate(float* view, float* projection, Operation operation, Mode mode, float* matrix, float* deltaMatrix, float* snap, float* localBounds, float* boundsSnap);
+
         /// <summary>
-        /// Ims the guizmo recompose matrix from components using the specified translation
+        ///     Ims the guizmo recompose matrix from components using the specified translation
         /// </summary>
         /// <param name="translation">The translation</param>
         /// <param name="rotation">The rotation</param>
@@ -96,38 +135,44 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="matrix">The matrix</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuizmo_RecomposeMatrixFromComponents(float* translation, float* rotation, float* scale, float* matrix);
+
         /// <summary>
-        /// Ims the guizmo set drawlist using the specified drawlist
+        ///     Ims the guizmo set drawlist using the specified drawlist
         /// </summary>
         /// <param name="drawlist">The drawlist</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuizmo_SetDrawlist(ImDrawList* drawlist);
+
         /// <summary>
-        /// Ims the guizmo set gizmo size clip space using the specified value
+        ///     Ims the guizmo set gizmo size clip space using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuizmo_SetGizmoSizeClipSpace(float value);
+
         /// <summary>
-        /// Ims the guizmo set id using the specified id
+        ///     Ims the guizmo set id using the specified id
         /// </summary>
         /// <param name="id">The id</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuizmo_SetID(int id);
+
         /// <summary>
-        /// Ims the guizmo set im gui context using the specified ctx
+        ///     Ims the guizmo set im gui context using the specified ctx
         /// </summary>
         /// <param name="ctx">The ctx</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuizmo_SetImGuiContext(IntPtr ctx);
+
         /// <summary>
-        /// Ims the guizmo set orthographic using the specified is orthographic
+        ///     Ims the guizmo set orthographic using the specified is orthographic
         /// </summary>
         /// <param name="isOrthographic">The is orthographic</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuizmo_SetOrthographic(byte isOrthographic);
+
         /// <summary>
-        /// Ims the guizmo set rect using the specified x
+        ///     Ims the guizmo set rect using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
@@ -135,8 +180,9 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImGuizmo
         /// <param name="height">The height</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuizmo_SetRect(float x, float y, float width, float height);
+
         /// <summary>
-        /// Ims the guizmo view manipulate using the specified view
+        ///     Ims the guizmo view manipulate using the specified view
         /// </summary>
         /// <param name="view">The view</param>
         /// <param name="length">The length</param>

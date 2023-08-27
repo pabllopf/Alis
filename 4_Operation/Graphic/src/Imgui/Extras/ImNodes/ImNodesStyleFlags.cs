@@ -1,30 +1,65 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ImNodesStyleFlags.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
+
 namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
 {
     /// <summary>
-    /// The im nodes style flags enum
+    ///     The im nodes style flags enum
     /// </summary>
-    [System.Flags]
+    [Flags]
     public enum ImNodesStyleFlags
     {
         /// <summary>
-        /// The none im nodes style flags
+        ///     The none im nodes style flags
         /// </summary>
         None = 0,
+
         /// <summary>
-        /// The node outline im nodes style flags
+        ///     The node outline im nodes style flags
         /// </summary>
         NodeOutline = 1,
+
         /// <summary>
-        /// The grid lines im nodes style flags
+        ///     The grid lines im nodes style flags
         /// </summary>
         GridLines = 4,
+
         /// <summary>
-        /// The grid lines primary im nodes style flags
+        ///     The grid lines primary im nodes style flags
         /// </summary>
         GridLinesPrimary = 8,
+
         /// <summary>
-        /// The grid snapping im nodes style flags
+        ///     The grid snapping im nodes style flags
         /// </summary>
-        GridSnapping = 16,
+        GridSnapping = 16
     }
 }

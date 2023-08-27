@@ -30,10 +30,9 @@
 namespace Alis.App.Engine.Menus.TopMenu
 {
     /// <summary>
-    /// The menu interface
+    ///     The menu interface
     /// </summary>
     public interface IMenu
     {
-        
     }
 }

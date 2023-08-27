@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Graphic.SDL;
 using Alis.Core.Graphic.SDL.Enums;
 using Alis.Core.Graphic.SDL.Structs;
@@ -41,6 +40,16 @@ namespace Alis.Core.Graphic.Sample
     /// </summary>
     public class SdlController
     {
+        /// <summary>
+        ///     The width
+        /// </summary>
+        private const int Width = 640;
+
+        /// <summary>
+        ///     The height
+        /// </summary>
+        private const int Height = 480;
+
         /// <summary>
         ///     The sdl game controller axis
         /// </summary>
@@ -62,14 +71,14 @@ namespace Alis.Core.Graphic.Sample
         private byte green;
 
         /// <summary>
-        ///     The blue
-        /// </summary>
-        private byte red;
-
-        /// <summary>
         ///     The sdl keycode
         /// </summary>
         private List<SdlKeycode> keys = new List<SdlKeycode>((SdlKeycode[]) Enum.GetValues(typeof(SdlKeycode)));
+
+        /// <summary>
+        ///     The blue
+        /// </summary>
+        private byte red;
 
         /// <summary>
         ///     The running
@@ -80,16 +89,6 @@ namespace Alis.Core.Graphic.Sample
         ///     The sdl event
         /// </summary>
         private SdlEvent sdlEvent;
-
-        /// <summary>
-        ///     The width
-        /// </summary>
-        private const int Width = 640;
-
-        /// <summary>
-        ///     The height
-        /// </summary>
-        private const int Height = 480;
 
         /// <summary>
         ///     Runs this instance
@@ -175,7 +174,6 @@ namespace Alis.Core.Graphic.Sample
                 green = 0;
                 blue = 0;
             }
-            
         }
 
 

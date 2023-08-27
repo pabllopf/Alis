@@ -45,25 +45,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     then
     ///     the ratio will have units of length or units of 1/length. Warning: You have to manually destroy the gear joint if
     ///     jointA or jointB is destroyed.
-    ///
-    ///   Gear Joint:
-    /// C0 = (coordinate1 + ratio * coordinate2)_initial
-    /// C = (coordinate1 + ratio * coordinate2) - C0 = 0
-    /// J = [J1 ratio * J2]
-    /// K = J * invM * JT
-    ///   = J1 * invM1 * J1T + ratio * ratio * J2 * invM2 * J2T
-    ///
-    /// Revolute:
-    /// coordinate = rotation
-    /// Cdo = angularVelocity
-    /// J = [0 0 1]
-    /// K = J * invM * JT = invI
-    ///
-    /// Prismatic:
-    /// coordinate = dot(p - pg, ug)
-    /// Cdo = dot(v + cross(w, r), ug)
-    /// J = [ug cross(r, ug)]
-    /// K = J * invM * JT = invMass + invI * cross(r, ug)^2
+    ///     Gear Joint:
+    ///     C0 = (coordinate1 + ratio * coordinate2)_initial
+    ///     C = (coordinate1 + ratio * coordinate2) - C0 = 0
+    ///     J = [J1 ratio * J2]
+    ///     K = J * invM * JT
+    ///     = J1 * invM1 * J1T + ratio * ratio * J2 * invM2 * J2T
+    ///     Revolute:
+    ///     coordinate = rotation
+    ///     Cdo = angularVelocity
+    ///     J = [0 0 1]
+    ///     K = J * invM * JT = invI
+    ///     Prismatic:
+    ///     coordinate = dot(p - pg, ug)
+    ///     Cdo = dot(v + cross(w, r), ug)
+    ///     J = [ug cross(r, ug)]
+    ///     K = J * invM * JT = invMass + invI * cross(r, ug)^2
     /// </summary>
     public class GearJoint : Joint
     {
@@ -91,7 +88,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The joint
         /// </summary>
         private readonly Joint jointB;
-        
+
         /// <summary>
         ///     The local anchor
         /// </summary>
@@ -151,6 +148,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The impulse
         /// </summary>
         private float impulse;
+
         /// <summary>
         ///     The index
         /// </summary>
@@ -574,7 +572,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             dot += jwA * wA - jwC * wC + (jwB * wB - jwD * wD);
 
             float impulseLocal = -mass * dot;
-            this.impulse += impulseLocal;
+            impulse += impulseLocal;
 
             vA += mA * impulseLocal * jvAc;
             wA += iA * impulseLocal * jwA;

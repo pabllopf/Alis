@@ -41,22 +41,19 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     A wheel joint. This joint provides two degrees of freedom: translation along an axis fixed in bodyA and
     ///     rotation in the plane. In other words, it is a point to line constraint with a rotational motor and a linear
     ///     spring/damper. The spring/damper is initialized upon creation. This joint is designed for vehicle suspensions.
-    ///
-    /// Linear constraint (point-to-line)
-    /// d = pB - pA = xB + rB - xA - rA
-    /// C = dot(ay, d)
-    /// Cdo = dot(d, cross(wA, ay)) + dot(ay, vB + cross(wB, rB) - vA - cross(wA, rA))
-    ///      = -dot(ay, vA) - dot(cross(d + rA, ay), wA) + dot(ay, vB) + dot(cross(rB, ay), vB)
-    /// J = [-ay, -cross(d + rA, ay), ay, cross(rB, ay)]
-    /// 
-    /// Spring linear constraint
-    /// C = dot(ax, d)
-    /// Cdo = = -dot(ax, vA) - dot(cross(d + rA, ax), wA) + dot(ax, vB) + dot(cross(rB, ax), vB)
-    /// J = [-ax -cross(d+rA, ax) ax cross(rB, ax)]
-    /// 
-    /// Motor rotational constraint
-    /// Cdo = wB - wA
-    /// J = [0 0 -1 0 0 1]
+    ///     Linear constraint (point-to-line)
+    ///     d = pB - pA = xB + rB - xA - rA
+    ///     C = dot(ay, d)
+    ///     Cdo = dot(d, cross(wA, ay)) + dot(ay, vB + cross(wB, rB) - vA - cross(wA, rA))
+    ///     = -dot(ay, vA) - dot(cross(d + rA, ay), wA) + dot(ay, vB) + dot(cross(rB, ay), vB)
+    ///     J = [-ay, -cross(d + rA, ay), ay, cross(rB, ay)]
+    ///     Spring linear constraint
+    ///     C = dot(ax, d)
+    ///     Cdo = = -dot(ax, vA) - dot(cross(d + rA, ax), wA) + dot(ax, vB) + dot(cross(rB, ax), vB)
+    ///     J = [-ax -cross(d+rA, ax) ax cross(rB, ax)]
+    ///     Motor rotational constraint
+    ///     Cdo = wB - wA
+    ///     J = [0 0 -1 0 0 1]
     /// </summary>
     public class WheelJoint : Joint
     {
@@ -400,7 +397,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vector2F pB = bB.GetWorldPoint(localAnchorB);
                 Vector2F d = pB - pA;
                 Vector2F axis = bA.GetWorldVector(localXAxisA);
-                
+
                 return Vector2F.Dot(d, axis);
             }
         }
@@ -607,11 +604,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float wB = data.Velocities[indexB].W;
 
             Rotation qA = new Rotation(aA), qB = new Rotation(aB);
-            
+
             Vector2F rA = MathUtils.Mul(qA, localAnchorA - localCenterA);
             Vector2F rB = MathUtils.Mul(qB, localAnchorB - localCenterB);
             Vector2F d = cB + rB - cA - rA;
-            
+
             {
                 ay = MathUtils.Mul(qA, localYAxisA);
                 sAy = MathUtils.Cross(d + rA, ay);
@@ -648,7 +645,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 springMass = 1.0f / invMass;
 
                 float c = MathUtils.Dot(d, ax);
-                
+
                 float h = data.Step.DeltaTime;
                 gamma = h * (damping + h * stiffness);
                 if (gamma > 0.0f)
@@ -738,7 +735,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float wA = data.Velocities[indexA].W;
             Vector2F vB = data.Velocities[indexB].V;
             float wB = data.Velocities[indexB].W;
-            
+
             {
                 float dot = MathUtils.Dot(ax, vB - vA) + sBx * wB - sAx * wA;
                 float impulseLocal = -springMass * (dot + bias + gamma * springImpulse);
@@ -787,7 +784,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     vB += mB * p;
                     wB += iB * lb;
                 }
-                
+
                 {
                     float c = upperTranslation - translation;
                     float dot = MathUtils.Dot(ax, vA - vB) + sAx * wA - sBx * wB;
@@ -891,7 +888,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     linearError = MathUtils.Abs(c);
                 }
             }
-            
+
             {
                 Rotation qA = new Rotation(aA), qB = new Rotation(aB);
 

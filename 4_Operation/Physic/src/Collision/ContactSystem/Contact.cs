@@ -46,6 +46,46 @@ namespace Alis.Core.Physic.Collision.ContactSystem
     public class Contact
     {
         /// <summary>
+        ///     The edge shape
+        /// </summary>
+        private static readonly EdgeShape Edge = new EdgeShape();
+
+        /// <summary>
+        ///     The not supported
+        /// </summary>
+        private static readonly ContactType[,] Registers =
+        {
+            {
+                ContactType.Circle,
+                ContactType.EdgeAndCircle,
+                ContactType.PolygonAndCircle,
+                ContactType.ChainAndCircle
+            },
+            {
+                ContactType.EdgeAndCircle,
+                ContactType.NotSupported,
+
+
+                ContactType.EdgeAndPolygon,
+                ContactType.NotSupported
+            },
+            {
+                ContactType.PolygonAndCircle,
+                ContactType.EdgeAndPolygon,
+                ContactType.Polygon,
+                ContactType.ChainAndPolygon
+            },
+            {
+                ContactType.ChainAndCircle,
+                ContactType.NotSupported,
+
+
+                ContactType.ChainAndPolygon,
+                ContactType.NotSupported
+            }
+        };
+
+        /// <summary>
         ///     The fixture
         /// </summary>
         private Fixture fixtureA;
@@ -275,46 +315,6 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     Gets the value of the filter flag
         /// </summary>
         internal bool FilterFlag => (Flags & ContactFlags.FilterFlag) == ContactFlags.FilterFlag;
-
-        /// <summary>
-        ///     The edge shape
-        /// </summary>
-        private static readonly EdgeShape Edge = new EdgeShape();
-
-        /// <summary>
-        ///     The not supported
-        /// </summary>
-        private static readonly ContactType[,] Registers =
-        {
-            {
-                ContactType.Circle,
-                ContactType.EdgeAndCircle,
-                ContactType.PolygonAndCircle,
-                ContactType.ChainAndCircle
-            },
-            {
-                ContactType.EdgeAndCircle,
-                ContactType.NotSupported,
-
-
-                ContactType.EdgeAndPolygon,
-                ContactType.NotSupported
-            },
-            {
-                ContactType.PolygonAndCircle,
-                ContactType.EdgeAndPolygon,
-                ContactType.Polygon,
-                ContactType.ChainAndPolygon
-            },
-            {
-                ContactType.ChainAndCircle,
-                ContactType.NotSupported,
-
-
-                ContactType.ChainAndPolygon,
-                ContactType.NotSupported
-            }
-        };
 
         /// <summary>
         ///     Resets the restitution

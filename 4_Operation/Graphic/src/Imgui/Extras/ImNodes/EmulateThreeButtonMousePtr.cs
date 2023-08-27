@@ -32,50 +32,56 @@ using System;
 namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
 {
     /// <summary>
-    /// The emulate three button mouse ptr
+    ///     The emulate three button mouse ptr
     /// </summary>
     public unsafe struct EmulateThreeButtonMousePtr
     {
         /// <summary>
-        /// Gets the value of the native ptr
+        ///     Gets the value of the native ptr
         /// </summary>
         public EmulateThreeButtonMouse* NativePtr { get; }
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="EmulateThreeButtonMousePtr"/> class
+        ///     Initializes a new instance of the <see cref="EmulateThreeButtonMousePtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
         public EmulateThreeButtonMousePtr(EmulateThreeButtonMouse* nativePtr) => NativePtr = nativePtr;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="EmulateThreeButtonMousePtr"/> class
+        ///     Initializes a new instance of the <see cref="EmulateThreeButtonMousePtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public EmulateThreeButtonMousePtr(IntPtr nativePtr) => NativePtr = (EmulateThreeButtonMouse*)nativePtr;
+        public EmulateThreeButtonMousePtr(IntPtr nativePtr) => NativePtr = (EmulateThreeButtonMouse*) nativePtr;
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
         public static implicit operator EmulateThreeButtonMousePtr(EmulateThreeButtonMouse* nativePtr) => new EmulateThreeButtonMousePtr(nativePtr);
-        
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator EmulateThreeButtonMouse* (EmulateThreeButtonMousePtr wrappedPtr) => wrappedPtr.NativePtr;
-        
+        public static implicit operator EmulateThreeButtonMouse*(EmulateThreeButtonMousePtr wrappedPtr) => wrappedPtr.NativePtr;
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
         public static implicit operator EmulateThreeButtonMousePtr(IntPtr nativePtr) => new EmulateThreeButtonMousePtr(nativePtr);
+
         /// <summary>
-        /// Gets or sets the value of the modifier
+        ///     Gets or sets the value of the modifier
         /// </summary>
-        public IntPtr Modifier { get => (IntPtr)NativePtr->Modifier; set => NativePtr->Modifier = (byte*)value; }
+        public IntPtr Modifier
+        {
+            get => (IntPtr) NativePtr->Modifier;
+            set => NativePtr->Modifier = (byte*) value;
+        }
+
         /// <summary>
-        /// Destroys this instance
+        ///     Destroys this instance
         /// </summary>
         public void Destroy()
         {

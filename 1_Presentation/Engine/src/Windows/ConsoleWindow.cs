@@ -32,22 +32,22 @@ using Alis.Core.Graphic.Imgui;
 namespace Alis.App.Engine.Windows
 {
     /// <summary>
-    /// The console window class
+    ///     The console window class
     /// </summary>
     public class ConsoleWindow : IWindow
     {
         /// <summary>
-        /// The name window
+        ///     The name window
         /// </summary>
-        private const string NameWindow = "Console"; 
-        
+        private const string NameWindow = "Console";
+
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render()
         {
             ImGui.Begin(NameWindow);
-            
+
             ImGui.End();
         }
     }

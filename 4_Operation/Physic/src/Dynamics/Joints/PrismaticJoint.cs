@@ -43,50 +43,42 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     Relative rotation is prevented. You can use a joint limit to restrict the range of motion and a joint motor to
     ///     drive
     ///     the motion or to model joint friction.
-    /// Linear constraint (point-to-line)
-    /// d = p2 - p1 = x2 + r2 - x1 - r1
-    /// C = dot(perp, d)
-    /// Cdo = dot(d, cross(w1, perp)) + dot(perp, v2 + cross(w2, r2) - v1 - cross(w1, r1))
-    ///      = -dot(perp, v1) - dot(cross(d + r1, perp), w1) + dot(perp, v2) + dot(cross(r2, perp), v2)
-    /// J = [-perp, -cross(d + r1, perp), perp, cross(r2,perp)]
-    ///
-    /// Angular constraint
-    /// C = a2 - a1 + a_initial
-    /// Cdo = w2 - w1
-    /// J = [0 0 -1 0 0 1]
-    ///
-    /// K = J * invM * JT
-    ///
-    /// J = [-a -s1 a s2]
+    ///     Linear constraint (point-to-line)
+    ///     d = p2 - p1 = x2 + r2 - x1 - r1
+    ///     C = dot(perp, d)
+    ///     Cdo = dot(d, cross(w1, perp)) + dot(perp, v2 + cross(w2, r2) - v1 - cross(w1, r1))
+    ///     = -dot(perp, v1) - dot(cross(d + r1, perp), w1) + dot(perp, v2) + dot(cross(r2, perp), v2)
+    ///     J = [-perp, -cross(d + r1, perp), perp, cross(r2,perp)]
+    ///     Angular constraint
+    ///     C = a2 - a1 + a_initial
+    ///     Cdo = w2 - w1
+    ///     J = [0 0 -1 0 0 1]
+    ///     K = J * invM * JT
+    ///     J = [-a -s1 a s2]
     ///     [0  -1  0  1]
-    /// a = perp
-    /// s1 = cross(d + r1, a) = cross(p2 - x1, a)
-    /// s2 = cross(r2, a) = cross(p2 - x2, a)
-    ///
-    /// Motor/Limit linear constraint
-    /// C = dot(ax1, d)
-    /// Cdo = -dot(ax1, v1) - dot(cross(d + r1, ax1), w1) + dot(ax1, v2) + dot(cross(r2, ax1), v2)
-    /// J = [-ax1 -cross(d+r1,ax1) ax1 cross(r2,ax1)]
-    /// 
-    /// Predictive limit is applied even when the limit is not active.
-    /// Prevents a constraint speed that can lead to a constraint error in one time step.
-    /// Want C2 = C1 + h * Cdo >= 0
-    /// Or:
-    /// Cdo + C1/h >= 0
-    /// I do not apply a negative constraint error because that is handled in position correction.
-    /// So:
-    /// Cdo + max(C1, 0)/h >= 0
-    ///
-    /// Block Solver
-    /// We develop a block solver that includes the angular and linear constraints. This makes the limit stiffer.
-    ///
-    /// The Jacobin has 2 rows:
-    /// J = [-uT -s1 uT s2] /// linear
+    ///     a = perp
+    ///     s1 = cross(d + r1, a) = cross(p2 - x1, a)
+    ///     s2 = cross(r2, a) = cross(p2 - x2, a)
+    ///     Motor/Limit linear constraint
+    ///     C = dot(ax1, d)
+    ///     Cdo = -dot(ax1, v1) - dot(cross(d + r1, ax1), w1) + dot(ax1, v2) + dot(cross(r2, ax1), v2)
+    ///     J = [-ax1 -cross(d+r1,ax1) ax1 cross(r2,ax1)]
+    ///     Predictive limit is applied even when the limit is not active.
+    ///     Prevents a constraint speed that can lead to a constraint error in one time step.
+    ///     Want C2 = C1 + h * Cdo >= 0
+    ///     Or:
+    ///     Cdo + C1/h >= 0
+    ///     I do not apply a negative constraint error because that is handled in position correction.
+    ///     So:
+    ///     Cdo + max(C1, 0)/h >= 0
+    ///     Block Solver
+    ///     We develop a block solver that includes the angular and linear constraints. This makes the limit stiffer.
+    ///     The Jacobin has 2 rows:
+    ///     J = [-uT -s1 uT s2] /// linear
     ///     [0   -1   0  1] /// angular
-    ///
-    /// u = perp
-    /// s1 = cross(d + r1, u), s2 = cross(r2, u)
-    /// a1 = cross(d + r1, v), a2 = cross(r2, v)
+    ///     u = perp
+    ///     s1 = cross(d + r1, u), s2 = cross(r2, u)
+    ///     a1 = cross(d + r1, v), a2 = cross(r2, v)
     /// </summary>
     public class PrismaticJoint : Joint
     {
@@ -119,7 +111,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The impulse
         /// </summary>
         private Vector2F impulse;
-        
+
         /// <summary>
         ///     The index
         /// </summary>
@@ -343,7 +335,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vector2F pB = BodyB.GetWorldPoint(LocalAnchorB);
                 Vector2F d = pB - pA;
                 Vector2F axisLocal = BodyA.GetWorldVector(LocalXAxisA);
-                
+
                 return MathUtils.Dot(d, axisLocal);
             }
         }
@@ -536,14 +528,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float wB = data.Velocities[indexB].W;
 
             Rotation qA = new Rotation(aA), qB = new Rotation(aB);
-            
+
             Vector2F rA = MathUtils.Mul(qA, LocalAnchorA - localCenterA);
             Vector2F rB = MathUtils.Mul(qB, LocalAnchorB - localCenterB);
             Vector2F d = cB - cA + rB - rA;
 
             float mA = invMassA, mB = invMassB;
             float iA = invIa, iB = invIb;
-            
+
             {
                 axis = MathUtils.Mul(qA, LocalXAxisA);
                 a1 = MathUtils.Cross(d + rA, axis);
@@ -555,7 +547,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     axialMass = 1.0f / axialMass;
                 }
             }
-            
+
             {
                 perp = MathUtils.Mul(qA, localYAxisA);
 
@@ -634,7 +626,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float mA = invMassA, mB = invMassB;
             float iA = invIa, iB = invIb;
-            
+
             if (enableMotor)
             {
                 float dot = Vector2F.Dot(axis, vB - vA) + a2 * wB - a1 * wA;
@@ -673,7 +665,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     vB += mB * p;
                     wB += iB * lb;
                 }
-                
+
                 {
                     float c = upperTranslation - translation;
                     float dot = MathUtils.Dot(axis, vA - vB) + a1 * wA - a2 * wB;
@@ -692,7 +684,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     wB -= iB * lb;
                 }
             }
-            
+
             {
                 Vector2F dot = new Vector2F(
                     MathUtils.Dot(perp, vB - vA) + s2 * wB - s1 * wA,
@@ -719,16 +711,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
             data.Velocities[indexB].W = wB;
         }
 
-        
+
         /// <summary>
         ///     Describes whether this instance solve position constraints
-        /// A velocity based solver computes reaction forces(impulses) using the velocity constraint solver. Under this context,
-        /// the position solver is not there to resolve forces. It is only there to cope with integration error.
-        ///
-        /// Therefore, the pseudo impulses in the position solver do not have any physical meaning. Thus it is okay if they suck.
-        ///
-        /// We could take the active state from the velocity solver. However, the joint might push past the limit when the velocity
-        /// solver indicates the limit is inactive.
+        ///     A velocity based solver computes reaction forces(impulses) using the velocity constraint solver. Under this
+        ///     context,
+        ///     the position solver is not there to resolve forces. It is only there to cope with integration error.
+        ///     Therefore, the pseudo impulses in the position solver do not have any physical meaning. Thus it is okay if they
+        ///     suck.
+        ///     We could take the active state from the velocity solver. However, the joint might push past the limit when the
+        ///     velocity
+        ///     solver indicates the limit is inactive.
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>
@@ -743,7 +736,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float mA = invMassA, mB = invMassB;
             float iA = invIa, iB = invIb;
-            
+
             Vector2F rA = MathUtils.Mul(qA, LocalAnchorA - localCenterA);
             Vector2F rB = MathUtils.Mul(qB, LocalAnchorB - localCenterB);
             Vector2F d = cB + rB - cA - rA;
@@ -863,7 +856,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             return (linearError <= Settings.LinearSlop) && (angularError <= Settings.AngularSlop);
         }
-        
+
         /// <summary>
         ///     Initializes the local anchor a
         /// </summary>

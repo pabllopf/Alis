@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Solution.cs
+//  File:SolutionWindow.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,23 +32,23 @@ using Alis.Core.Graphic.Imgui;
 namespace Alis.App.Engine.Windows
 {
     /// <summary>
-    /// The solution window class
+    ///     The solution window class
     /// </summary>
-    /// <seealso cref="IWindow"/>
+    /// <seealso cref="IWindow" />
     public class SolutionWindow : IWindow
     {
         /// <summary>
-        /// The name window
+        ///     The name window
         /// </summary>
-        private const string NameWindow = "Solution"; 
-        
+        private const string NameWindow = "Solution";
+
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render()
         {
             ImGui.Begin(NameWindow);
-            
+
             ImGui.End();
         }
     }

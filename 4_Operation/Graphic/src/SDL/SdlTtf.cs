@@ -42,11 +42,6 @@ namespace Alis.Core.Graphic.SDL
     public static class SdlTtf
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="SdlTtf" /> class
-        /// </summary>
-        static SdlTtf() => EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf", SdlDlls.SdlTtfDllBytes);
-
-        /// <summary>
         ///     The native lib name
         /// </summary>
         private const string NativeLibName = "sdl2_ttf";
@@ -125,6 +120,11 @@ namespace Alis.Core.Graphic.SDL
         ///     The ttf hinting light subpixel
         /// </summary>
         public const int TtfHintingLightSubpixel = 4;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SdlTtf" /> class
+        /// </summary>
+        static SdlTtf() => EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf", SdlDlls.SdlTtfDllBytes);
 
         /// <summary>
         ///     Internals the ttf linked version

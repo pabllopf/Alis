@@ -43,6 +43,15 @@ namespace Alis.Core.Physic.Tools.TextureTools
     public sealed class TextureConverter
     {
         /// <summary>
+        ///     The close pixels length
+        /// </summary>
+        private const int ClosePixelsLength = 8;
+
+        /// <summary>This array is meant to be read-only. It's not because it is accessed very frequently.</summary>
+        private static readonly int[,] ClosePixels =
+            {{-1, -1}, {0, -1}, {1, -1}, {1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}};
+
+        /// <summary>
         ///     The alpha tolerance
         /// </summary>
         private uint alphaTolerance;
@@ -212,15 +221,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
         }
 
         /// <summary>
-        ///     The close pixels length
-        /// </summary>
-        private const int ClosePixelsLength = 8;
-
-        /// <summary>This array is meant to be read-only. It's not because it is accessed very frequently.</summary>
-        private static readonly int[,] ClosePixels =
-            {{-1, -1}, {0, -1}, {1, -1}, {1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}};
-
-        /// <summary>
         ///     Initializes the data
         /// </summary>
         /// <param name="dataLocal">The data</param>
@@ -299,9 +299,9 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 throw new ArgumentException("'width' has an invalid value.");
             }
 
-            this.data = dataLocal;
-            dataLength = this.data.Length;
-            this.width = widthLocal;
+            data = dataLocal;
+            dataLength = data.Length;
+            width = widthLocal;
             height = dataLength / widthLocal;
         }
 
@@ -571,7 +571,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         {
             if (polygon == null)
             {
-                throw new ArgumentNullException($"'polygon' can't be null.");
+                throw new ArgumentNullException("'polygon' can't be null.");
             }
 
             if (polygon.Count < 3)
@@ -915,7 +915,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         private List<float> SearchCrossingEdges(Vertices polygon, int y)
         {
             List<float> edges = new List<float>();
-            
+
             if (polygon.Count > 2)
             {
                 // There is a gap between the last and the first vertex in the vertex list.
@@ -1483,7 +1483,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
             {
                 return data[index] >= alphaTolerance;
             }
-            
+
             return false;
         }
 

@@ -50,6 +50,11 @@ namespace Alis.Core.Network.Internal
     internal class WebSocketImplementation : WebSocket
     {
         /// <summary>
+        ///     The max ping pong payload len
+        /// </summary>
+        private const int PingPongPayloadLen = 125;
+
+        /// <summary>
         ///     The guid
         /// </summary>
         private readonly Guid _guid;
@@ -205,11 +210,6 @@ namespace Alis.Core.Network.Internal
         ///     Gets the value of the keep alive interval
         /// </summary>
         public TimeSpan KeepAliveInterval { get; }
-
-        /// <summary>
-        ///     The max ping pong payload len
-        /// </summary>
-        private const int PingPongPayloadLen = 125;
 
         public event EventHandler<PongEventArgs> Pong;
 

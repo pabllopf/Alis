@@ -36,8 +36,8 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Sets
      * A constraint defines an edge between two points in the set, these edges can not
      * be crossed. They will be enforced triangle edges after a triangulation.
      * <p>
-     * 
-     * 
+     *
+     *
      * @author Thomas Åhlén, thahlen@gmail.com
      */
 

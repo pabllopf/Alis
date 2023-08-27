@@ -36,12 +36,12 @@ using Alis.Core.Aspect.Memory.Attributes;
 namespace Alis.Core.Aspect.Memory
 {
     /// <summary>
-    /// The validator class
+    ///     The validator class
     /// </summary>
     public static class Validator
     {
         /// <summary>
-        /// Validate the value
+        ///     Validate the value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
@@ -50,8 +50,8 @@ namespace Alis.Core.Aspect.Memory
             StackTrace stackTrace = new StackTrace();
             StackFrame stackFrame = stackTrace.GetFrame(1);
             MethodBase method = stackFrame.GetMethod();
-           
-            
+
+
             if (method.DeclaringType != null)
             {
                 MethodInfo methodInfo = method.DeclaringType.GetMethod(method.Name);
@@ -63,7 +63,7 @@ namespace Alis.Core.Aspect.Memory
                         IEnumerable<ValidationAttribute> attributes = method.GetParameters()
                             .Where(p => p.Name == parameter.Name)
                             .SelectMany(p => p.GetCustomAttributes<ValidationAttribute>(true));
-                        
+
                         foreach (ValidationAttribute attribute in attributes)
                         {
                             attribute.Validate(value, parameter.Name);

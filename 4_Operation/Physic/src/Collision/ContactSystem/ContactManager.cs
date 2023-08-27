@@ -46,6 +46,11 @@ namespace Alis.Core.Physic.Collision.ContactSystem
     public class ContactManager
     {
         /// <summary>
+        ///     The current instance
+        /// </summary>
+        public static ContactManager Current;
+
+        /// <summary>
         ///     The contact list
         /// </summary>
         private readonly List<Contact> contactList = new List<Contact>();
@@ -103,11 +108,6 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     Gets the value of the contact count
         /// </summary>
         public int ContactCount => contactCounter;
-
-        /// <summary>
-        ///     The current instance
-        /// </summary>
-        public static ContactManager Current;
 
         // Broad-phase callback.
         /// <summary>
@@ -196,12 +196,12 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             {
                 return;
             }
-            
+
             fixtureA = c.FixtureA;
             fixtureB = c.FixtureB;
             bodyA = fixtureA.Body;
             bodyB = fixtureB.Body;
-            
+
 
             contactList.Add(c);
 

@@ -43,6 +43,16 @@ namespace Alis.Core.Physic.Dynamics.Solver
     internal class Island
     {
         /// <summary>
+        ///     The angular sleep tolerance
+        /// </summary>
+        private const float AngTolSqr = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance;
+
+        /// <summary>
+        ///     The linear sleep tolerance
+        /// </summary>
+        private const float LinTolSqr = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance;
+
+        /// <summary>
         ///     The bodies
         /// </summary>
         internal readonly List<Body> Bodies = new List<Body>(Settings.ToiContacts * 2);
@@ -76,16 +86,6 @@ namespace Alis.Core.Physic.Dynamics.Solver
         ///     Gets or sets the value of the step
         /// </summary>
         private TimeStep TimeStepSolveToi { get; } = new TimeStep();
-
-        /// <summary>
-        ///     The angular sleep tolerance
-        /// </summary>
-        private const float AngTolSqr = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance;
-
-        /// <summary>
-        ///     The linear sleep tolerance
-        /// </summary>
-        private const float LinTolSqr = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance;
 
         /// <summary>
         ///     Clears this instance

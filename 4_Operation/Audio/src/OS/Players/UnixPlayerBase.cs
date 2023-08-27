@@ -41,11 +41,6 @@ namespace Alis.Core.Audio.OS.Players
     internal abstract class UnixPlayerBase : IPlayer
     {
         /// <summary>
-        ///     The process
-        /// </summary>
-        private Process _process;
-
-        /// <summary>
         ///     The pause process command
         /// </summary>
         internal const string PauseProcessCommand = "kill -STOP {0}";
@@ -54,6 +49,11 @@ namespace Alis.Core.Audio.OS.Players
         ///     The resume process command
         /// </summary>
         internal const string ResumeProcessCommand = "kill -CONT {0}";
+
+        /// <summary>
+        ///     The process
+        /// </summary>
+        private Process _process;
 
         public event EventHandler PlaybackFinished;
 

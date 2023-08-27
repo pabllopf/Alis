@@ -33,104 +33,122 @@ using Alis.Core.Graphic.ImGui.Utils;
 namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
 {
     /// <summary>
-    /// The style ptr
+    ///     The style ptr
     /// </summary>
     public unsafe struct StylePtr
     {
         /// <summary>
-        /// Gets the value of the native ptr
+        ///     Gets the value of the native ptr
         /// </summary>
         public Style* NativePtr { get; }
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="StylePtr"/> class
+        ///     Initializes a new instance of the <see cref="StylePtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
         public StylePtr(Style* nativePtr) => NativePtr = nativePtr;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="StylePtr"/> class
+        ///     Initializes a new instance of the <see cref="StylePtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public StylePtr(IntPtr nativePtr) => NativePtr = (Style*)nativePtr;
+        public StylePtr(IntPtr nativePtr) => NativePtr = (Style*) nativePtr;
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
         public static implicit operator StylePtr(Style* nativePtr) => new StylePtr(nativePtr);
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator Style* (StylePtr wrappedPtr) => wrappedPtr.NativePtr;
+        public static implicit operator Style*(StylePtr wrappedPtr) => wrappedPtr.NativePtr;
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
         public static implicit operator StylePtr(IntPtr nativePtr) => new StylePtr(nativePtr);
+
         /// <summary>
-        /// Gets the value of the grid spacing
+        ///     Gets the value of the grid spacing
         /// </summary>
         public ref float GridSpacing => ref Unsafe.AsRef<float>(&NativePtr->GridSpacing);
+
         /// <summary>
-        /// Gets the value of the node corner rounding
+        ///     Gets the value of the node corner rounding
         /// </summary>
         public ref float NodeCornerRounding => ref Unsafe.AsRef<float>(&NativePtr->NodeCornerRounding);
+
         /// <summary>
-        /// Gets the value of the node padding horizontal
+        ///     Gets the value of the node padding horizontal
         /// </summary>
         public ref float NodePaddingHorizontal => ref Unsafe.AsRef<float>(&NativePtr->NodePaddingHorizontal);
+
         /// <summary>
-        /// Gets the value of the node padding vertical
+        ///     Gets the value of the node padding vertical
         /// </summary>
         public ref float NodePaddingVertical => ref Unsafe.AsRef<float>(&NativePtr->NodePaddingVertical);
+
         /// <summary>
-        /// Gets the value of the node border thickness
+        ///     Gets the value of the node border thickness
         /// </summary>
         public ref float NodeBorderThickness => ref Unsafe.AsRef<float>(&NativePtr->NodeBorderThickness);
+
         /// <summary>
-        /// Gets the value of the link thickness
+        ///     Gets the value of the link thickness
         /// </summary>
         public ref float LinkThickness => ref Unsafe.AsRef<float>(&NativePtr->LinkThickness);
+
         /// <summary>
-        /// Gets the value of the link line segments per length
+        ///     Gets the value of the link line segments per length
         /// </summary>
         public ref float LinkLineSegmentsPerLength => ref Unsafe.AsRef<float>(&NativePtr->LinkLineSegmentsPerLength);
+
         /// <summary>
-        /// Gets the value of the link hover distance
+        ///     Gets the value of the link hover distance
         /// </summary>
         public ref float LinkHoverDistance => ref Unsafe.AsRef<float>(&NativePtr->LinkHoverDistance);
+
         /// <summary>
-        /// Gets the value of the pin circle radius
+        ///     Gets the value of the pin circle radius
         /// </summary>
         public ref float PinCircleRadius => ref Unsafe.AsRef<float>(&NativePtr->PinCircleRadius);
+
         /// <summary>
-        /// Gets the value of the pin quad side length
+        ///     Gets the value of the pin quad side length
         /// </summary>
         public ref float PinQuadSideLength => ref Unsafe.AsRef<float>(&NativePtr->PinQuadSideLength);
+
         /// <summary>
-        /// Gets the value of the pin triangle side length
+        ///     Gets the value of the pin triangle side length
         /// </summary>
         public ref float PinTriangleSideLength => ref Unsafe.AsRef<float>(&NativePtr->PinTriangleSideLength);
+
         /// <summary>
-        /// Gets the value of the pin line thickness
+        ///     Gets the value of the pin line thickness
         /// </summary>
         public ref float PinLineThickness => ref Unsafe.AsRef<float>(&NativePtr->PinLineThickness);
+
         /// <summary>
-        /// Gets the value of the pin hover radius
+        ///     Gets the value of the pin hover radius
         /// </summary>
         public ref float PinHoverRadius => ref Unsafe.AsRef<float>(&NativePtr->PinHoverRadius);
+
         /// <summary>
-        /// Gets the value of the pin offset
+        ///     Gets the value of the pin offset
         /// </summary>
         public ref float PinOffset => ref Unsafe.AsRef<float>(&NativePtr->PinOffset);
+
         /// <summary>
-        /// Gets the value of the flags
+        ///     Gets the value of the flags
         /// </summary>
         public ref StyleFlags Flags => ref Unsafe.AsRef<StyleFlags>(&NativePtr->Flags);
+
         /// <summary>
-        /// Gets the value of the colors
+        ///     Gets the value of the colors
         /// </summary>
         public RangeAccessor<uint> Colors => new RangeAccessor<uint>(NativePtr->Colors, 16);
     }

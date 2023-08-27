@@ -48,6 +48,14 @@ namespace Alis.Core.Graphic.SFML.Graphics
     ////////////////////////////////////////////////////////////
     public class Shader : ObjectBase
     {
+        ////////////////////////////////////////////////////////////
+        /// <summary>
+        ///     Special value that can be passed to SetParameter,
+        ///     and that represents the texture of the object being drawn
+        /// </summary>
+        ////////////////////////////////////////////////////////////
+        public static readonly CurrentTextureType CurrentTexture = null;
+
         // Keeps references to used Textures for GC prevention during use
         /// <summary>
         ///     The texture
@@ -171,14 +179,6 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// </remarks>
         ////////////////////////////////////////////////////////////
         public static bool IsGeometryAvailable => sfShader_isGeometryAvailable();
-
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Special value that can be passed to SetParameter,
-        ///     and that represents the texture of the object being drawn
-        /// </summary>
-        ////////////////////////////////////////////////////////////
-        public static readonly CurrentTextureType CurrentTexture = null;
 
         ////////////////////////////////////////////////////////////
         /// <summary>

@@ -39,6 +39,11 @@ namespace Alis.Core.Aspect.Math.Matrix
     public class Matrix3X2F
     {
         /// <summary>
+        ///     The pi
+        /// </summary>
+        private const float RotationEpsilon = 0.001f * MathF.Pi / 180f; // 0.1% of a degree
+
+        /// <summary>
         ///     The hash
         /// </summary>
         private readonly HashCode hash;
@@ -120,11 +125,6 @@ namespace Alis.Core.Aspect.Math.Matrix
                 M32 = value.Y;
             }
         }
-
-        /// <summary>
-        ///     The pi
-        /// </summary>
-        private const float RotationEpsilon = 0.001f * MathF.Pi / 180f; // 0.1% of a degree
 
         /// <summary>
         ///     Gets the hash code

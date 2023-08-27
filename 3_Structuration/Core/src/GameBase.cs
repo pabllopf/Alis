@@ -39,6 +39,11 @@ namespace Alis.Core
     public abstract class GameBase
     {
         /// <summary>
+        ///     Active game
+        /// </summary>
+        public static bool IsRunning;
+
+        /// <summary>
         ///     The manager base
         /// </summary>
         protected List<ManagerBase> Managers = new List<ManagerBase>();
@@ -47,11 +52,6 @@ namespace Alis.Core
         ///     The time manager base
         /// </summary>
         public static TimeManagerBase TimeManager { get; } = new TimeManagerBase();
-
-        /// <summary>
-        ///     Active game
-        /// </summary>
-        public static bool IsRunning;
 
         /// <summary>
         ///     Run program
@@ -88,7 +88,7 @@ namespace Alis.Core
                 }
 
                 TimeManager.UpdateFixedTime();
-                
+
                 Managers.ForEach(i =>
                 {
                     if (i.IsExitRequested)

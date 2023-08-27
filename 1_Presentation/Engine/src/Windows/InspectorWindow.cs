@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Inspector.cs
+//  File:InspectorWindow.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,23 +32,23 @@ using Alis.Core.Graphic.Imgui;
 namespace Alis.App.Engine.Windows
 {
     /// <summary>
-    /// The inspector window class
+    ///     The inspector window class
     /// </summary>
-    /// <seealso cref="IWindow"/>
+    /// <seealso cref="IWindow" />
     public class InspectorWindow : IWindow
     {
         /// <summary>
-        /// The name window
+        ///     The name window
         /// </summary>
-        private const string NameWindow = "Inspector"; 
-        
+        private const string NameWindow = "Inspector";
+
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render()
         {
             ImGui.Begin(NameWindow);
-            
+
             ImGui.End();
         }
     }

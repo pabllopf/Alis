@@ -38,6 +38,12 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
     /// </summary>
     internal class MonotoneMountain
     {
+        // Almost Pi!
+        /// <summary>
+        ///     The pi slop
+        /// </summary>
+        private const float PiSlop = 3.1f;
+
         /// <summary>
         ///     The convex points
         /// </summary>
@@ -89,12 +95,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
             monoPoly = new List<Point>();
             Triangles = new List<List<Point>>();
         }
-
-        // Almost Pi!
-        /// <summary>
-        ///     The pi slop
-        /// </summary>
-        private const float PiSlop = 3.1f;
 
         // Append a point to the list
         /// <summary>

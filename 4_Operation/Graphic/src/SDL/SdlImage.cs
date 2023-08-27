@@ -43,11 +43,6 @@ namespace Alis.Core.Graphic.SDL
     public static class SdlImage
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="SdlImage" /> class
-        /// </summary>
-        static SdlImage() => EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_image", SdlDlls.SdlImageDllBytes);
-
-        /// <summary>
         ///     The native lib name
         /// </summary>
         private const string NativeLibName = "sdl2_image";
@@ -66,6 +61,11 @@ namespace Alis.Core.Graphic.SDL
         ///     The sdl image patch level
         /// </summary>
         private const int SdlImagePatchLevel = 6;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SdlImage" /> class
+        /// </summary>
+        static SdlImage() => EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_image", SdlDlls.SdlImageDllBytes);
 
         /// <summary>
         ///     Sdl the image version

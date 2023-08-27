@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Core.Graphic.Test
 {
     /// <summary>
-    /// The resources test class
+    ///     The resources test class
     /// </summary>
     public class ResourcesTest
     {
         /// <summary>
-        /// Tests that test to load a shader from assembly resources
+        ///     Tests that test to load a shader from assembly resources
         /// </summary>
         [Fact]
         public void Test_To_Load_A_Shader_From_Assembly_Resources()

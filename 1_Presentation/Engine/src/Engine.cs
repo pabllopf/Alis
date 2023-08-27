@@ -32,12 +32,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Numerics;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography;
 using System.Text;
 using Alis.App.Engine.Windows;
-using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Math.Matrix;
-using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.Imgui;
 using Alis.Core.Graphic.Imgui.Extras.ImGuizmo;
 using Alis.Core.Graphic.Imgui.Extras.ImNodes;
@@ -53,80 +50,15 @@ using PixelType = Alis.Core.Graphic.OpenGL.Enums.PixelType;
 namespace Alis.App.Engine
 {
     /// <summary>
-    /// The engine class
+    ///     The engine class
     /// </summary>
     public class Engine
     {
-    /// <summary>
-        /// The name engine
+        /// <summary>
+        ///     The name engine
         /// </summary>
         private const string NameEngine = "Alis";
 
-        /// <summary>
-        /// The fullscreen
-        /// </summary>
-        private bool fullscreen = false;
-        
-        /// <summary>
-        /// The high dpi
-        /// </summary>
-        private bool highDpi = false;
-        
-        /// <summary>
-        /// The height window
-        /// </summary>
-        int heightWindow = 1920;
-        
-        /// <summary>
-        /// The width window
-        /// </summary>
-        int widthWindow = 1080;
-        
-        /// <summary>
-        ///     The font texture id
-        /// </summary>
-        private uint _elementsHandle;
-        
-        /// <summary>
-        ///     The gl context
-        /// </summary>
-        private IntPtr _glContext;
-
-        /// <summary>
-        /// The io
-        /// </summary>
-        private ImGuiIoPtr io = null;
-
-        /// <summary>
-        /// The style
-        /// </summary>
-        private ImGuiStylePtr style;
-
-        /// <summary>
-        ///     The mouse pressed
-        /// </summary>
-        private readonly bool[] _mousePressed = {false, false, false};
-
-        /// <summary>
-        ///     The font texture id
-        /// </summary>
-        private uint _vboHandle;
-
-        /// <summary>
-        ///     The font texture id
-        /// </summary>
-        private uint _vertexArrayObject;
-
-        /// <summary>
-        ///     The window
-        /// </summary>
-        private IntPtr _window;
-
-        /// <summary>
-        /// The context
-        /// </summary>
-        private IntPtr _context;
-        
         /// <summary>
         ///     The vertex shader
         /// </summary>
@@ -165,9 +97,39 @@ namespace Alis.App.Engine
 			}";
 
         /// <summary>
+        ///     The mouse pressed
+        /// </summary>
+        private readonly bool[] _mousePressed = {false, false, false};
+
+        /// <summary>
+        ///     The windows
+        /// </summary>
+        private readonly List<IWindow> windows;
+
+        /// <summary>
+        ///     The context
+        /// </summary>
+        private IntPtr _context;
+
+        /// <summary>
+        ///     The font texture id
+        /// </summary>
+        private uint _elementsHandle;
+
+        /// <summary>
         ///     The font texture id
         /// </summary>
         private uint _fontTextureId;
+
+        /// <summary>
+        ///     The gl context
+        /// </summary>
+        private IntPtr _glContext;
+
+        /// <summary>
+        ///     The quit
+        /// </summary>
+        private bool _quit;
 
         /// <summary>
         ///     The shader
@@ -178,44 +140,76 @@ namespace Alis.App.Engine
         ///     The time
         /// </summary>
         private float _time;
-        
-        /// <summary>
-        /// The windows
-        /// </summary>
-        private readonly List<IWindow> windows;
 
         /// <summary>
-        /// The dockspaceflags
+        ///     The font texture id
+        /// </summary>
+        private uint _vboHandle;
+
+        /// <summary>
+        ///     The font texture id
+        /// </summary>
+        private uint _vertexArrayObject;
+
+        /// <summary>
+        ///     The window
+        /// </summary>
+        private IntPtr _window;
+
+        /// <summary>
+        ///     The dockspaceflags
         /// </summary>
         private ImGuiWindowFlags dockspaceflags;
 
         /// <summary>
-        ///     The quit
+        ///     The fullscreen
         /// </summary>
-        private bool _quit;
+        private readonly bool fullscreen = false;
 
         /// <summary>
-        /// The menu down state
+        ///     The height window
+        /// </summary>
+        private readonly int heightWindow = 1920;
+
+        /// <summary>
+        ///     The high dpi
+        /// </summary>
+        private readonly bool highDpi = false;
+
+        /// <summary>
+        ///     The io
+        /// </summary>
+        private ImGuiIoPtr io = null;
+
+        /// <summary>
+        ///     The menu down state
         /// </summary>
         private bool menu_down_state = true;
+
+        /// <summary>
+        ///     The style
+        /// </summary>
+        private ImGuiStylePtr style;
+
+        /// <summary>
+        ///     The width window
+        /// </summary>
+        private readonly int widthWindow = 1080;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Engine" /> class
         /// </summary>
         /// <param name="args">The args</param>
-        public Engine(string[] args)
+        public Engine(string[] args) => windows = new List<IWindow>
         {
-            windows = new List<IWindow>()
-            {
-                new ConsoleWindow(),
-                new GameWindow(),
-                new InspectorWindow(),
-                new SolutionWindow(),
-                new SceneWindow(),
-                new ProjectWindow()
-            };
-        }
-        
+            new ConsoleWindow(),
+            new GameWindow(),
+            new InspectorWindow(),
+            new SolutionWindow(),
+            new SceneWindow(),
+            new ProjectWindow()
+        };
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -233,8 +227,8 @@ namespace Alis.App.Engine
             SdlVersion version;
             Sdl.GetVersion(out version);
             Console.WriteLine(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
-            
-            
+
+
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
             Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlContextFlags, (int) SdlGlContext.SdlGlContextForwardCompatibleFlag);
             Sdl.GlSetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
@@ -246,9 +240,9 @@ namespace Alis.App.Engine
             Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlDepthSize, 24);
             Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlAlphaSize, 8);
             Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlStencilSize, 8);
-            
+
             // Enable vsync
-            Sdl.GlSetSwapInterval(1); 
+            Sdl.GlSetSwapInterval(1);
 
             // create the window which should be able to have a valid OpenGL context and is resizable
             SdlWindowFlags flags = SdlWindowFlags.SdlWindowOpengl | SdlWindowFlags.SdlWindowResizable | SdlWindowFlags.SdlWindowMaximized;
@@ -261,39 +255,39 @@ namespace Alis.App.Engine
             {
                 flags |= SdlWindowFlags.SdlWindowAllowHighdpi;
             }
-            
+
             _window = Sdl.CreateWindow(NameEngine, Sdl.WindowPosCentered, Sdl.WindowPosCentered, widthWindow, heightWindow, flags);
             _glContext = CreateGlContext(_window);
-            
+
             // compile the shader program
             _shader = new GlShaderProgram(VertexShader, FragmentShader);
 
             _context = ImGui.CreateContext();
-            
+
             io = ImGui.GetIo();
-            
+
             io.DisplaySize = new Vector2(800, 600);
-            
+
             Console.WriteLine($@"IMGUI VERSION {ImGui.GetVersion()}");
-            
+
             // active plot renders
             io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset | ImGuiBackendFlags.PlatformHasViewports | ImGuiBackendFlags.HasGamepad | ImGuiBackendFlags.HasMouseHoveredViewport | ImGuiBackendFlags.HasMouseCursors;
 
-            
+
             // Enable Keyboard Controls
-            io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;     
-            io.ConfigFlags |= ImGuiConfigFlags.NavEnableGamepad;  
-            
+            io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
+            io.ConfigFlags |= ImGuiConfigFlags.NavEnableGamepad;
+
             // CONFIG DOCKSPACE 
-            
+
             io.ConfigFlags |= ImGuiConfigFlags.DockingEnable;
             io.ConfigFlags |= ImGuiConfigFlags.ViewportsEnable;
-            
+
             ImNodes.CreateContext();
             ImPlot.CreateContext();
             ImGuizmo.SetImGuiContext(_context);
             ImGui.SetCurrentContext(_context);
-            
+
             // REBUILD ATLAS
             ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
 
@@ -305,22 +299,22 @@ namespace Alis.App.Engine
                 Console.WriteLine(@$"ERROR, DIR NOT FOUND: {dirFonts}");
                 return;
             }
-            
+
             if (!File.Exists(dirFonts + fontToLoad))
             {
                 Console.WriteLine(@$"ERROR, FONT NOT FOUND: {dirFonts + fontToLoad}");
                 return;
             }
-            
+
             fonts.AddFontDefault();
             ImFontPtr fontLoaded = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", 14);
-            
+
             fonts.GetTexDataAsRgba32(out byte* pixelData, out int width, out int height, out int _);
             _fontTextureId = LoadTexture((IntPtr) pixelData, width, height);
 
             fonts.TexId = (IntPtr) _fontTextureId;
             fonts.ClearTexData();
-            
+
             ImGuiViewportPtr viewport = ImGui.GetMainViewport();
             ImGui.SetNextWindowPos(viewport.WorkPos);
             ImGui.SetNextWindowSize(viewport.WorkSize);
@@ -330,15 +324,15 @@ namespace Alis.App.Engine
             dockspaceflags |= ImGuiWindowFlags.MenuBar;
             dockspaceflags |= ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoMove;
             //dockspaceflags |= ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoNavFocus;
-            
+
             // config style
             style = ImGui.GetStyle();
             ImGui.StyleColorsDark();
             style.WindowRounding = 0.0f;
             style.Colors[(int) ImGuiCol.WindowBg].W = 1.0f;
-            
+
             // config input manager 
-            
+
             io.KeyMap[(int) ImGuiKey.Tab] = (int) SdlScancode.SdlScancodeTab;
             io.KeyMap[(int) ImGuiKey.LeftArrow] = (int) SdlScancode.SdlScancodeLeft;
             io.KeyMap[(int) ImGuiKey.RightArrow] = (int) SdlScancode.SdlScancodeRight;
@@ -365,7 +359,7 @@ namespace Alis.App.Engine
             _vboHandle = Gl.GenBuffer();
             _elementsHandle = Gl.GenBuffer();
             _vertexArrayObject = Gl.GenVertexArray();
-            
+
             while (!_quit)
             {
                 while (Sdl.PollEvent(out SdlEvent e) != 0)
@@ -392,12 +386,12 @@ namespace Alis.App.Engine
                         }
                     }
                 }
-                
-                
+
+
                 Gl.GlClearColor(0.05f, 0.05f, 0.05f, 1.00f);
-                
+
                 ImGui.NewFrame();
-                
+
                 // Setup display size (every frame to accommodate for window resizing)
                 Sdl.GetWindowSize(_window, out int w, out int h);
                 Sdl.GlGetDrawableSize(_window, out int displayW, out int displayH);
@@ -419,7 +413,7 @@ namespace Alis.App.Engine
                 _time = currentTime;
 
                 UpdateMousePosAndButtons();
-                
+
                 ImGui.PushFont(fontLoaded);
 
                 ImGui.BeginMainMenuBar();
@@ -429,13 +423,14 @@ namespace Alis.App.Engine
                     ImGui.Text("Sample text");
                     ImGui.EndMenu();
                 }
+
                 ImGui.EndMainMenuBar();
 
-                
+
                 int size_menu_down = 25;
                 Vector2 size_dock = viewport.Size - new Vector2(0, size_menu_down * 2);
-                
-                
+
+
                 ImGui.SetNextWindowPos(viewport.WorkPos);
                 ImGui.SetNextWindowSize(size_dock);
                 //ImGui.SetNextWindowViewport(viewport.ID);
@@ -443,15 +438,15 @@ namespace Alis.App.Engine
                 ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
                 ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0.0f, 0.0f));
 
-                
+
                 ImGui.Begin("DockSpace Demo", dockspaceflags);
                 // Submit the DockSpace
-                
+
                 ImGui.PopStyleVar(3);
-                
+
                 uint dockspace_id = ImGui.GetId("MyDockSpace");
                 ImGui.DockSpace(dockspace_id, size_dock);
-                
+
                 if (ImGui.BeginMenuBar())
                 {
                     if (ImGui.BeginMenu("Options"))
@@ -460,12 +455,13 @@ namespace Alis.App.Engine
                         ImGui.Text("Sample text");
                         ImGui.EndMenu();
                     }
+
                     ImGui.EndMenuBar();
                 }
-                
+
                 windows.ForEach(i => i.Render());
                 ShowDemos();
-                
+
                 // Add menu bar flag and disable everything else
                 ImGuiWindowFlags style_glags_menu_down =
                     ImGuiWindowFlags.NoDecoration | ImGuiWindowFlags.NoInputs |
@@ -473,39 +469,37 @@ namespace Alis.App.Engine
                     ImGuiWindowFlags.NoSavedSettings |
                     ImGuiWindowFlags.NoBringToFrontOnFocus | ImGuiWindowFlags.NoBackground |
                     ImGuiWindowFlags.MenuBar;
-                
+
                 ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
                 ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
                 ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0.0f, 0.0f));
-                
-                ImGui.SetNextWindowPos(new Vector2(viewport.Pos.X, (viewport.Pos.Y + (viewport.Size.Y - size_menu_down))));
+
+                ImGui.SetNextWindowPos(new Vector2(viewport.Pos.X, viewport.Pos.Y + (viewport.Size.Y - size_menu_down)));
                 ImGui.SetNextWindowSize(new Vector2(viewport.Size.X, size_menu_down));
                 if (ImGui.Begin("##MenuDown", ref menu_down_state, style_glags_menu_down))
                 {
                     ImGui.PopStyleVar(3);
-                    if (ImGui.BeginMenuBar()) 
+                    if (ImGui.BeginMenuBar())
                     {
                         ImGui.Text("Hello world from menu down");
-                        
+
                         ImGui.Button("sample");
-                        
+
                         ImGui.EndMenuBar();
                     }
-                    
-                    
+
+
                     ImGui.End();
                 }
-                
-                
-                
-                
+
+
                 ImGui.End();
                 ImGui.PopFont();
-                
-                
+
+
                 Sdl.GlMakeCurrent(_window, _glContext);
                 ImGui.Render();
-                
+
                 Gl.GlViewport(0, 0, (int) io.DisplaySize.X, (int) io.DisplaySize.Y);
                 Gl.GlClear(ClearBufferMask.ColorBufferBit);
 
@@ -516,12 +510,12 @@ namespace Alis.App.Engine
                 ImGui.UpdatePlatformWindows();
                 ImGui.RenderPlatformWindowsDefault();
                 Sdl.GlMakeCurrent(backupCurrentWindow, backupCurrentContext);
-                
-                
+
+
                 Gl.GlDisable(EnableCap.ScissorTest);
                 Sdl.GlSwapWindow(_window);
             }
-            
+
             if (_shader != null)
             {
                 _shader.Dispose();
@@ -531,19 +525,19 @@ namespace Alis.App.Engine
                 Gl.DeleteVertexArray(_vertexArrayObject);
                 Gl.DeleteTexture(_fontTextureId);
             }
-            
+
             Sdl.GlDeleteContext(_glContext);
             Sdl.DestroyWindow(_window);
             Sdl.Quit();
         }
-        
+
         /// <summary>
-        /// Shows the demos
+        ///     Shows the demos
         /// </summary>
         public void ShowDemos()
         {
             ImGui.ShowDemoWindow();
-                
+
             ImGui.Begin("simple node editor");
 
             ImNodes.BeginNodeEditor();
@@ -566,7 +560,7 @@ namespace Alis.App.Engine
             ImNodes.EndNodeEditor();
 
             ImGui.End();
-                
+
             ImPlot.ShowDemoWindow();
         }
 
@@ -694,11 +688,11 @@ namespace Alis.App.Engine
         /// <param name="fbHeight">The fb height</param>
         private void SetupRenderState(ImDrawDataPtr drawData, int fbWidth, int fbHeight)
         {
-            Gl. GlEnable(EnableCap.Blend);
-            Gl. GlBlendEquation(BlendEquationMode.FuncAdd);
-            Gl. GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
-            Gl.  GlDisable(EnableCap.CullFace);
-            Gl. GlDisable(EnableCap.DepthTest);
+            Gl.GlEnable(EnableCap.Blend);
+            Gl.GlBlendEquation(BlendEquationMode.FuncAdd);
+            Gl.GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+            Gl.GlDisable(EnableCap.CullFace);
+            Gl.GlDisable(EnableCap.DepthTest);
             Gl.GlEnable(EnableCap.ScissorTest);
 
             Gl.GlUseProgram(_shader.ProgramId);
@@ -727,7 +721,7 @@ namespace Alis.App.Engine
             Gl.VertexAttribPointer(_shader["UV"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, Marshal.OffsetOf<ImDrawVert>("Uv"));
             Gl.VertexAttribPointer(_shader["Color"].Location, 4, VertexAttribPointerType.UnsignedByte, true, drawVertSize, Marshal.OffsetOf<ImDrawVert>("Col"));
         }
-        
+
 
         /// <summary>
         ///     Creates the gl context using the specified window

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ICondig.cs
+//  File:IConfiguration.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,10 +30,9 @@
 namespace Alis.App.Engine.Configuration
 {
     /// <summary>
-    /// The configuration interface
+    ///     The configuration interface
     /// </summary>
     public interface IConfiguration
     {
-        
     }
 }

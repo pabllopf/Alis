@@ -39,17 +39,17 @@ namespace Alis.Core.Aspect.Data
     public static class AssetManager
     {
         /// <summary>
+        ///     The application data
+        /// </summary>
+        private static readonly string AssetPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? string.Empty, "Assets");
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="AssetManager" /> class
         /// </summary>
         static AssetManager()
         {
             Console.WriteLine($"AssetPath={AssetPath}");
         }
-
-        /// <summary>
-        ///     The application data
-        /// </summary>
-        private static readonly string AssetPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? string.Empty, "Assets");
 
         /// <summary>
         ///     Finds the asset name

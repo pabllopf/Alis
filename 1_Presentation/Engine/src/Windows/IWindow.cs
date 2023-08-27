@@ -30,12 +30,12 @@
 namespace Alis.App.Engine.Windows
 {
     /// <summary>
-    /// The window interface
+    ///     The window interface
     /// </summary>
     public interface IWindow
     {
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         void Render();
     }

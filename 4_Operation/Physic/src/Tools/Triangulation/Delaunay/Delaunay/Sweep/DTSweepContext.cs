@@ -34,6 +34,13 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
      */
     internal class DtSweepContext : TriangulationContext
     {
+        // Inital triangle factor, seed triangle will extend 30% of 
+        // PointSet width to both left and right.
+        /// <summary>
+        ///     The alpha
+        /// </summary>
+        private const float Alpha = 0.3f;
+
         /// <summary>
         ///     The dt sweep basin
         /// </summary>
@@ -71,13 +78,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         ///     Gets or sets the value of the tail
         /// </summary>
         public TriangulationPoint Tail { get; set; }
-
-        // Inital triangle factor, seed triangle will extend 30% of 
-        // PointSet width to both left and right.
-        /// <summary>
-        ///     The alpha
-        /// </summary>
-        private const float Alpha = 0.3f;
 
         /// <summary>
         ///     Removes the from list using the specified triangle

@@ -42,6 +42,11 @@ namespace Alis.Core.Graphic.SFML.Windows
     public class Context
     {
         /// <summary>
+        ///     The our global context
+        /// </summary>
+        private static Context _ourGlobalContext;
+
+        /// <summary>
         ///     The zero
         /// </summary>
         private readonly IntPtr myThis = IntPtr.Zero;
@@ -77,11 +82,6 @@ namespace Alis.Core.Graphic.SFML.Windows
                 return _ourGlobalContext;
             }
         }
-
-        /// <summary>
-        ///     The our global context
-        /// </summary>
-        private static Context _ourGlobalContext;
 
         ////////////////////////////////////////////////////////////
         /// <summary>

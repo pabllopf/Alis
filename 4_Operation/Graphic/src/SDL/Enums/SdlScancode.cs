@@ -1257,7 +1257,7 @@ namespace Alis.Core.Graphic.SDL.Enums
         SdlScancodeAudiofastforward = 286,
 
         /* This is not a key, simply marks the number of scancodes
-             * so that you know how big to make your arrays. */
+         * so that you know how big to make your arrays. */
         /// <summary>
         ///     The sdl num scancodes sdl scancode
         /// </summary>

@@ -40,16 +40,6 @@ namespace Alis.Core.Audio.SDL
     public static class SdlMixer
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="SdlMixer" /> class
-        /// </summary>
-        static SdlMixer()
-        {
-            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio", AudioDlls.CsfmlAudioDllBytes);
-            EmbeddedDllClass.ExtractEmbeddedDlls("openal32", AudioDlls.OpenalAudioDllBytes);
-            EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer", AudioDlls.SdlAudioDllBytes);
-        }
-
-        /// <summary>
         ///     The native lib name
         /// </summary>
         internal const string NativeLibName = "sdl2_mixer";
@@ -273,6 +263,16 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         public static readonly ushort AudioF32Sys =
             BitConverter.IsLittleEndian ? AudioF32Lsb : AudioF32Msb;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SdlMixer" /> class
+        /// </summary>
+        static SdlMixer()
+        {
+            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio", AudioDlls.CsfmlAudioDllBytes);
+            EmbeddedDllClass.ExtractEmbeddedDlls("openal32", AudioDlls.OpenalAudioDllBytes);
+            EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer", AudioDlls.SdlAudioDllBytes);
+        }
 
 
         /// <summary>

@@ -30,10 +30,9 @@
 namespace Alis.App.Engine.Icons
 {
     /// <summary>
-    /// The icon interface
+    ///     The icon interface
     /// </summary>
     public interface IIcon
     {
-        
     }
 }

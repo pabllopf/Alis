@@ -39,25 +39,26 @@ namespace Alis.Core.Physic.Dynamics.Joints
     /// <summary>
     ///     A distance joint constrains two points on two bodies to remain at a fixed distance from each other. You can
     ///     view this as a massless, rigid rod.
-    /// 1-D constrained system
-    /// m (v2 - v1) = lambda
-    /// v2 + (beta/h) * x1 + gamma * lambda = 0, gamma has units of inverse mass.
-    /// x2 = x1 + h * v2
-    ///
-    /// 1-D mass-damper-spring system
-    /// m (v2 - v1) + h * d * v2 + h * k * 
-    ///
-    /// C = norm(p2 - p1) - L
-    /// u = (p2 - p1) / norm(p2 - p1)
-    /// dot = dot(u, v2 + cross(w2, r2) - v1 - cross(w1, r1))
-    /// J = [-u -cross(r1, u) u cross(r2, u)]
-    /// K = J * invM * JT
-    ///   = invMass1 + invI1 * cross(r1, u)^2 + invMass2 + invI2 * cross(r2, u)^2
-    ///
-    /// 
+    ///     1-D constrained system
+    ///     m (v2 - v1) = lambda
+    ///     v2 + (beta/h) * x1 + gamma * lambda = 0, gamma has units of inverse mass.
+    ///     x2 = x1 + h * v2
+    ///     1-D mass-damper-spring system
+    ///     m (v2 - v1) + h * d * v2 + h * k *
+    ///     C = norm(p2 - p1) - L
+    ///     u = (p2 - p1) / norm(p2 - p1)
+    ///     dot = dot(u, v2 + cross(w2, r2) - v1 - cross(w1, r1))
+    ///     J = [-u -cross(r1, u) u cross(r2, u)]
+    ///     K = J * invM * JT
+    ///     = invMass1 + invI1 * cross(r1, u)^2 + invMass2 + invI2 * cross(r2, u)^2
     /// </summary>
     public class DistanceJoint : Joint
     {
+        /// <summary>
+        ///     The length
+        /// </summary>
+        private readonly float lengthPrivate;
+
         /// <summary>
         ///     The bias
         /// </summary>
@@ -82,7 +83,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The impulse
         /// </summary>
         private float impulse;
-        
+
         /// <summary>
         ///     The index
         /// </summary>
@@ -112,11 +113,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The inv mass
         /// </summary>
         private float invMassB;
-
-        /// <summary>
-        ///     The length
-        /// </summary>
-        private readonly float lengthPrivate;
 
         /// <summary>
         ///     The local anchor

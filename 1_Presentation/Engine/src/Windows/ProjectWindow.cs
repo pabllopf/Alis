@@ -32,22 +32,22 @@ using Alis.Core.Graphic.Imgui;
 namespace Alis.App.Engine.Windows
 {
     /// <summary>
-    /// The project window class
+    ///     The project window class
     /// </summary>
     public class ProjectWindow : IWindow
     {
         /// <summary>
-        /// The name window
+        ///     The name window
         /// </summary>
-        private const string NameWindow = "Project"; 
-        
+        private const string NameWindow = "Project";
+
         /// <summary>
-        /// Renders this instance
+        ///     Renders this instance
         /// </summary>
         public void Render()
         {
             ImGui.Begin(NameWindow);
-            
+
             ImGui.End();
         }
     }

@@ -48,6 +48,11 @@ namespace Alis.Core.Manager.Graphic
     public class GraphicManager : GraphicManagerBase
     {
         /// <summary>
+        ///     The current
+        /// </summary>
+        internal static GraphicManager Current;
+
+        /// <summary>
         ///     The vector
         /// </summary>
         private Vector2F defaultSize;
@@ -81,11 +86,6 @@ namespace Alis.Core.Manager.Graphic
         ///     Gets or sets the value of the colliders
         /// </summary>
         public static List<Shape> Colliders { get; } = new List<Shape>();
-
-        /// <summary>
-        ///     The current
-        /// </summary>
-        internal static GraphicManager Current;
 
         /// <summary>
         ///     Inits this instance

@@ -38,6 +38,11 @@ namespace Alis.Core.Manager.Scene
     public class SceneManager : SceneManagerBase
     {
         /// <summary>
+        ///     Define the current scene manager
+        /// </summary>
+        internal static SceneManager CurrentSceneManager;
+
+        /// <summary>
         ///     Scene list
         /// </summary>
         private readonly List<Entity.Scene> scenes;
@@ -56,11 +61,6 @@ namespace Alis.Core.Manager.Scene
             CurrentScene = new Entity.Scene();
             CurrentSceneManager = this;
         }
-
-        /// <summary>
-        ///     Define the current scene manager
-        /// </summary>
-        internal static SceneManager CurrentSceneManager;
 
         /// <summary>
         ///     Inits this instance

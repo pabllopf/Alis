@@ -51,9 +51,9 @@ namespace Alis.Core.Aspect.Memory
             StackTrace stackTrace = new StackTrace();
             StackFrame stackFrame = stackTrace.GetFrame(1);
             MethodBase method = stackFrame.GetMethod();
-           
-            
-           if (method.DeclaringType != null)
+
+
+            if (method.DeclaringType != null)
             {
                 MethodInfo methodInfo = method.DeclaringType.GetMethod(method.Name);
                 if (methodInfo != null)
@@ -64,7 +64,7 @@ namespace Alis.Core.Aspect.Memory
                         IEnumerable<ValidationAttribute> attributes = method.GetParameters()
                             .Where(p => p.Name == parameter.Name)
                             .SelectMany(p => p.GetCustomAttributes<ValidationAttribute>(true));
-                        
+
                         foreach (ValidationAttribute attribute in attributes)
                         {
                             attribute.Validate(value, parameter.Name);
@@ -72,7 +72,7 @@ namespace Alis.Core.Aspect.Memory
                     }
                 }
             }
-           
+
             return value;
         }
     }

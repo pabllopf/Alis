@@ -35,7 +35,7 @@ using Alis.Core.Aspect.Memory.Attributes;
 namespace Alis.Core.Aspect.Memory
 {
     /// <summary>
-    /// The utf manager class
+    ///     The utf manager class
     /// </summary>
     public static class Utf8Manager
     {
@@ -67,7 +67,7 @@ namespace Alis.Core.Aspect.Memory
             byte[] bytes = new byte[len];
             Marshal.Copy(s, bytes, 0, len);
             string result = Encoding.UTF8.GetString(bytes);
-            
+
             return result;
         }
 

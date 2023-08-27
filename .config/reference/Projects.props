@@ -30,7 +30,7 @@
 
         <InternalsVisibleTo Include="$(AssemblyName).Test"/>
 
-        
+
     </ItemGroup>
 
 
@@ -106,9 +106,9 @@
         </EmbeddedResource>
 
         <Compile
-                Condition="$(ProjectDir.Contains('2_Application'))"
-                Include="$(SolutionDir)4_Operation/**/*.Designer.cs"
-                Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)">
+            Condition="$(ProjectDir.Contains('2_Application'))"
+            Include="$(SolutionDir)4_Operation/**/*.Designer.cs"
+            Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)">
             <DesignTime>True</DesignTime>
             <AutoGen>True</AutoGen>
             <DependentUpon>$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename).resx</DependentUpon>
@@ -135,9 +135,9 @@
         </EmbeddedResource>
 
         <Compile
-                Condition="$(ProjectDir.Contains('3_Structuration'))"
-                Include="$(SolutionDir)4_Operation/**/*.Designer.cs"
-                Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)">
+            Condition="$(ProjectDir.Contains('3_Structuration'))"
+            Include="$(SolutionDir)4_Operation/**/*.Designer.cs"
+            Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)">
             <DesignTime>True</DesignTime>
             <AutoGen>True</AutoGen>
             <DependentUpon>$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename).resx</DependentUpon>
@@ -192,13 +192,13 @@
 
     <ItemGroup Condition="$(AssemblyName.Contains('Sample'))">
         <ProjectReference
-                Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == True"
-                Include="$(ProjectDir)/../src/$(NameTest).csproj"/>
+            Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == True"
+            Include="$(ProjectDir)/../src/$(NameTest).csproj"/>
         <ProjectReference
-                Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
-                Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
+            Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
+            Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
     </ItemGroup>
-    
+
     <ItemGroup>
         <None Condition="Exists('$(ProjectDir)/Assets/') == True"
               Update="$(ProjectDir)/Assets/**"
