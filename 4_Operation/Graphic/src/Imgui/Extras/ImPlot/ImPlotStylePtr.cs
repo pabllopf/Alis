@@ -155,7 +155,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <summary>
         /// Gets the value of the colors
         /// </summary>
-        public RangeAccessor<Vector4> Colors => new RangeAccessor<Vector4>(&NativePtr->Colors_0, 21);
+        public RangeAccessor<Vector4> Colors => new RangeAccessor<Vector4>(&NativePtr->Colors0, 21);
         /// <summary>
         /// Gets the value of the colormap
         /// </summary>
@@ -167,7 +167,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <summary>
         /// Gets the value of the use iso 8601
         /// </summary>
-        public ref bool UseISO8601 => ref Unsafe.AsRef<bool>(&NativePtr->UseISO8601);
+        public ref bool UseIso8601 => ref Unsafe.AsRef<bool>(&NativePtr->UseIso8601);
         /// <summary>
         /// Gets the value of the use 24 hour clock
         /// </summary>

@@ -52765,8 +52765,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <param name="dst">The dst</param>
         public static void StyleColorsLight(ImPlotStylePtr dst)
         {
-            ImPlotStyle* native_dst = dst.NativePtr;
-            ImPlotNative.ImPlot_StyleColorsLight(native_dst);
+            ImPlotStyle* nativeDst = dst.NativePtr;
+            ImPlotNative.ImPlot_StyleColorsLight(nativeDst);
         }
         /// <summary>
         /// Tags the x using the specified x
@@ -52850,28 +52850,28 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <param name="fmt">The fmt</param>
         public static void TagY(double y, Vector4 col, string fmt)
         {
-            byte* native_fmt;
-            int fmt_byteCount = 0;
+            byte* nativeFmt;
+            int fmtByteCount = 0;
             if (fmt != null)
             {
-                fmt_byteCount = Encoding.UTF8.GetByteCount(fmt);
-                if (fmt_byteCount > Util.StackAllocationSizeLimit)
+                fmtByteCount = Encoding.UTF8.GetByteCount(fmt);
+                if (fmtByteCount > Util.StackAllocationSizeLimit)
                 {
-                    native_fmt = Util.Allocate(fmt_byteCount + 1);
+                    nativeFmt = Util.Allocate(fmtByteCount + 1);
                 }
                 else
                 {
-                    byte* native_fmt_stackBytes = stackalloc byte[fmt_byteCount + 1];
-                    native_fmt = native_fmt_stackBytes;
+                    byte* nativeFmtStackBytes = stackalloc byte[fmtByteCount + 1];
+                    nativeFmt = nativeFmtStackBytes;
                 }
-                int native_fmt_offset = Util.GetUtf8(fmt, native_fmt, fmt_byteCount);
-                native_fmt[native_fmt_offset] = 0;
+                int nativeFmtOffset = Util.GetUtf8(fmt, nativeFmt, fmtByteCount);
+                nativeFmt[nativeFmtOffset] = 0;
             }
-            else { native_fmt = null; }
-            ImPlotNative.ImPlot_TagY_Str(y, col, native_fmt);
-            if (fmt_byteCount > Util.StackAllocationSizeLimit)
+            else { nativeFmt = null; }
+            ImPlotNative.ImPlot_TagY_Str(y, col, nativeFmt);
+            if (fmtByteCount > Util.StackAllocationSizeLimit)
             {
-                Util.Free(native_fmt);
+                Util.Free(nativeFmt);
             }
         }
     }
