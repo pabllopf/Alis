@@ -76,7 +76,7 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImDrawCmd_destroy((ImDrawCmd*)(NativePtr));
+            ImGuiNative.ImDrawCmd_destroy(NativePtr);
         }
         /// <summary>
         /// Gets the tex id
@@ -84,7 +84,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The ret</returns>
         public IntPtr GetTexId()
         {
-            IntPtr ret = ImGuiNative.ImDrawCmd_GetTexID((ImDrawCmd*)(NativePtr));
+            IntPtr ret = ImGuiNative.ImDrawCmd_GetTexID(NativePtr);
             return ret;
         }
     }

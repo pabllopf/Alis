@@ -51,7 +51,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// </summary>
         public void Destroy()
         {
-            ImNodesNative.MultipleSelectModifier_destroy((MultipleSelectModifier*)(NativePtr));
+            ImNodesNative.MultipleSelectModifier_destroy(NativePtr);
         }
     }
 }

@@ -444,7 +444,7 @@ namespace Alis.Core.Graphic.Imgui
         public void AddFocusEvent(bool focused)
         {
             byte nativeFocused = focused ? (byte)1 : (byte)0;
-            ImGuiNative.ImGuiIO_AddFocusEvent((ImGuiIo*)(NativePtr), nativeFocused);
+            ImGuiNative.ImGuiIO_AddFocusEvent(NativePtr, nativeFocused);
         }
         /// <summary>
         /// Adds the input character using the specified c
@@ -452,7 +452,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="c">The </param>
         public void AddInputCharacter(uint c)
         {
-            ImGuiNative.ImGuiIO_AddInputCharacter((ImGuiIo*)(NativePtr), c);
+            ImGuiNative.ImGuiIO_AddInputCharacter(NativePtr, c);
         }
         /// <summary>
         /// Adds the input characters utf 8 using the specified str
@@ -478,7 +478,7 @@ namespace Alis.Core.Graphic.Imgui
                 nativeStr[nativeStrOffset] = 0;
             }
             else { nativeStr = null; }
-            ImGuiNative.ImGuiIO_AddInputCharactersUTF8((ImGuiIo*)(NativePtr), nativeStr);
+            ImGuiNative.ImGuiIO_AddInputCharactersUTF8(NativePtr, nativeStr);
             if (strByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStr);
@@ -490,7 +490,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="c">The </param>
         public void AddInputCharacterUtf16(ushort c)
         {
-            ImGuiNative.ImGuiIO_AddInputCharacterUTF16((ImGuiIo*)(NativePtr), c);
+            ImGuiNative.ImGuiIO_AddInputCharacterUTF16(NativePtr, c);
         }
         /// <summary>
         /// Adds the key analog event using the specified key
@@ -501,7 +501,7 @@ namespace Alis.Core.Graphic.Imgui
         public void AddKeyAnalogEvent(ImGuiKey key, bool down, float v)
         {
             byte nativeDown = down ? (byte)1 : (byte)0;
-            ImGuiNative.ImGuiIO_AddKeyAnalogEvent((ImGuiIo*)(NativePtr), key, nativeDown, v);
+            ImGuiNative.ImGuiIO_AddKeyAnalogEvent(NativePtr, key, nativeDown, v);
         }
         /// <summary>
         /// Adds the key event using the specified key
@@ -511,7 +511,7 @@ namespace Alis.Core.Graphic.Imgui
         public void AddKeyEvent(ImGuiKey key, bool down)
         {
             byte nativeDown = down ? (byte)1 : (byte)0;
-            ImGuiNative.ImGuiIO_AddKeyEvent((ImGuiIo*)(NativePtr), key, nativeDown);
+            ImGuiNative.ImGuiIO_AddKeyEvent(NativePtr, key, nativeDown);
         }
         /// <summary>
         /// Adds the mouse button event using the specified button
@@ -521,7 +521,7 @@ namespace Alis.Core.Graphic.Imgui
         public void AddMouseButtonEvent(int button, bool down)
         {
             byte nativeDown = down ? (byte)1 : (byte)0;
-            ImGuiNative.ImGuiIO_AddMouseButtonEvent((ImGuiIo*)(NativePtr), button, nativeDown);
+            ImGuiNative.ImGuiIO_AddMouseButtonEvent(NativePtr, button, nativeDown);
         }
         /// <summary>
         /// Adds the mouse pos event using the specified x
@@ -530,7 +530,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="y">The </param>
         public void AddMousePosEvent(float x, float y)
         {
-            ImGuiNative.ImGuiIO_AddMousePosEvent((ImGuiIo*)(NativePtr), x, y);
+            ImGuiNative.ImGuiIO_AddMousePosEvent(NativePtr, x, y);
         }
         /// <summary>
         /// Adds the mouse viewport event using the specified id
@@ -538,7 +538,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="id">The id</param>
         public void AddMouseViewportEvent(uint id)
         {
-            ImGuiNative.ImGuiIO_AddMouseViewportEvent((ImGuiIo*)(NativePtr), id);
+            ImGuiNative.ImGuiIO_AddMouseViewportEvent(NativePtr, id);
         }
         /// <summary>
         /// Adds the mouse wheel event using the specified wh x
@@ -547,28 +547,28 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="whY">The wh</param>
         public void AddMouseWheelEvent(float whX, float whY)
         {
-            ImGuiNative.ImGuiIO_AddMouseWheelEvent((ImGuiIo*)(NativePtr), whX, whY);
+            ImGuiNative.ImGuiIO_AddMouseWheelEvent(NativePtr, whX, whY);
         }
         /// <summary>
         /// Clears the input characters
         /// </summary>
         public void ClearInputCharacters()
         {
-            ImGuiNative.ImGuiIO_ClearInputCharacters((ImGuiIo*)(NativePtr));
+            ImGuiNative.ImGuiIO_ClearInputCharacters(NativePtr);
         }
         /// <summary>
         /// Clears the input keys
         /// </summary>
         public void ClearInputKeys()
         {
-            ImGuiNative.ImGuiIO_ClearInputKeys((ImGuiIo*)(NativePtr));
+            ImGuiNative.ImGuiIO_ClearInputKeys(NativePtr);
         }
         /// <summary>
         /// Destroys this instance
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImGuiIO_destroy((ImGuiIo*)(NativePtr));
+            ImGuiNative.ImGuiIO_destroy(NativePtr);
         }
         /// <summary>
         /// Sets the app accepting events using the specified accepting events
@@ -577,7 +577,7 @@ namespace Alis.Core.Graphic.Imgui
         public void SetAppAcceptingEvents(bool acceptingEvents)
         {
             byte nativeAcceptingEvents = acceptingEvents ? (byte)1 : (byte)0;
-            ImGuiNative.ImGuiIO_SetAppAcceptingEvents((ImGuiIo*)(NativePtr), nativeAcceptingEvents);
+            ImGuiNative.ImGuiIO_SetAppAcceptingEvents(NativePtr, nativeAcceptingEvents);
         }
         /// <summary>
         /// Sets the key event native data using the specified key
@@ -588,7 +588,7 @@ namespace Alis.Core.Graphic.Imgui
         public void SetKeyEventNativeData(ImGuiKey key, int nativeKeycode, int nativeScancode)
         {
             int nativeLegacyIndex = -1;
-            ImGuiNative.ImGuiIO_SetKeyEventNativeData((ImGuiIo*)(NativePtr), key, nativeKeycode, nativeScancode, nativeLegacyIndex);
+            ImGuiNative.ImGuiIO_SetKeyEventNativeData(NativePtr, key, nativeKeycode, nativeScancode, nativeLegacyIndex);
         }
         /// <summary>
         /// Sets the key event native data using the specified key
@@ -599,7 +599,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="nativeLegacyIndex">The native legacy index</param>
         public void SetKeyEventNativeData(ImGuiKey key, int nativeKeycode, int nativeScancode, int nativeLegacyIndex)
         {
-            ImGuiNative.ImGuiIO_SetKeyEventNativeData((ImGuiIo*)(NativePtr), key, nativeKeycode, nativeScancode, nativeLegacyIndex);
+            ImGuiNative.ImGuiIO_SetKeyEventNativeData(NativePtr, key, nativeKeycode, nativeScancode, nativeLegacyIndex);
         }
     }
 }

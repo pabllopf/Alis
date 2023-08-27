@@ -58,21 +58,21 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Clear()
         {
-            ImGuiNative.ImDrawListSplitter_Clear((ImDrawListSplitter*)(NativePtr));
+            ImGuiNative.ImDrawListSplitter_Clear(NativePtr);
         }
         /// <summary>
         /// Clears the free memory
         /// </summary>
         public void ClearFreeMemory()
         {
-            ImGuiNative.ImDrawListSplitter_ClearFreeMemory((ImDrawListSplitter*)(NativePtr));
+            ImGuiNative.ImDrawListSplitter_ClearFreeMemory(NativePtr);
         }
         /// <summary>
         /// Destroys this instance
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImDrawListSplitter_destroy((ImDrawListSplitter*)(NativePtr));
+            ImGuiNative.ImDrawListSplitter_destroy(NativePtr);
         }
         /// <summary>
         /// Merges the draw list
@@ -81,7 +81,7 @@ namespace Alis.Core.Graphic.Imgui
         public void Merge(ImDrawListPtr drawList)
         {
             ImDrawList* nativeDrawList = drawList.NativePtr;
-            ImGuiNative.ImDrawListSplitter_Merge((ImDrawListSplitter*)(NativePtr), nativeDrawList);
+            ImGuiNative.ImDrawListSplitter_Merge(NativePtr, nativeDrawList);
         }
         /// <summary>
         /// Sets the current channel using the specified draw list
@@ -91,7 +91,7 @@ namespace Alis.Core.Graphic.Imgui
         public void SetCurrentChannel(ImDrawListPtr drawList, int channelIdx)
         {
             ImDrawList* nativeDrawList = drawList.NativePtr;
-            ImGuiNative.ImDrawListSplitter_SetCurrentChannel((ImDrawListSplitter*)(NativePtr), nativeDrawList, channelIdx);
+            ImGuiNative.ImDrawListSplitter_SetCurrentChannel(NativePtr, nativeDrawList, channelIdx);
         }
         /// <summary>
         /// Splits the draw list
@@ -101,7 +101,7 @@ namespace Alis.Core.Graphic.Imgui
         public void Split(ImDrawListPtr drawList, int count)
         {
             ImDrawList* nativeDrawList = drawList.NativePtr;
-            ImGuiNative.ImDrawListSplitter_Split((ImDrawListSplitter*)(NativePtr), nativeDrawList, count);
+            ImGuiNative.ImDrawListSplitter_Split(NativePtr, nativeDrawList, count);
         }
     }
 }

@@ -523,7 +523,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeTitleId = null; }
             Vector2 size = new Vector2(-1, 0);
-            ImPlotFlags flags = (ImPlotFlags)0;
+            ImPlotFlags flags = 0;
             byte ret = ImPlotNative.ImPlot_BeginPlot(nativeTitleId, size, flags);
             if (titleIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -557,7 +557,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeTitleId[nativeTitleIdOffset] = 0;
             }
             else { nativeTitleId = null; }
-            ImPlotFlags flags = (ImPlotFlags)0;
+            ImPlotFlags flags = 0;
             byte ret = ImPlotNative.ImPlot_BeginPlot(nativeTitleId, size, flags);
             if (titleIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -627,7 +627,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeTitleId[nativeTitleIdOffset] = 0;
             }
             else { nativeTitleId = null; }
-            ImPlotSubplotFlags flags = (ImPlotSubplotFlags)0;
+            ImPlotSubplotFlags flags = 0;
             float* rowRatios = null;
             float* colRatios = null;
             byte ret = ImPlotNative.ImPlot_BeginSubplots(nativeTitleId, rows, cols, size, flags, rowRatios, colRatios);
@@ -956,7 +956,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int nativeFormatOffset = Util.GetUtf8("%g", nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
-            ImPlotColormapScaleFlags flags = (ImPlotColormapScaleFlags)0;
+            ImPlotColormapScaleFlags flags = 0;
             ImPlotColormap cmap = (ImPlotColormap)(-1);
             ImPlotNative.ImPlot_ColormapScale(nativeLabel, scaleMin, scaleMax, size, nativeFormat, flags, cmap);
             if (labelByteCount > Util.StackAllocationSizeLimit)
@@ -1009,7 +1009,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 }
                 int nativeFormatOffset = Util.GetUtf8("%g", nativeFormat, formatByteCount);
                 nativeFormat[nativeFormatOffset] = 0;
-            ImPlotColormapScaleFlags flags = (ImPlotColormapScaleFlags)0;
+            ImPlotColormapScaleFlags flags = 0;
             ImPlotColormap cmap = (ImPlotColormap)(-1);
             ImPlotNative.ImPlot_ColormapScale(nativeLabel, scaleMin, scaleMax, size, nativeFormat, flags, cmap);
             if (labelByteCount > Util.StackAllocationSizeLimit)
@@ -1067,7 +1067,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeFormat[nativeFormatOffset] = 0;
             }
             else { nativeFormat = null; }
-            ImPlotColormapScaleFlags flags = (ImPlotColormapScaleFlags)0;
+            ImPlotColormapScaleFlags flags = 0;
             ImPlotColormap cmap = (ImPlotColormap)(-1);
             ImPlotNative.ImPlot_ColormapScale(nativeLabel, scaleMin, scaleMax, size, nativeFormat, flags, cmap);
             if (labelByteCount > Util.StackAllocationSizeLimit)
@@ -1473,7 +1473,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         public static bool DragLineX(int id, ref double x, Vector4 col)
         {
             float thickness = 1;
-            ImPlotDragToolFlags flags = (ImPlotDragToolFlags)0;
+            ImPlotDragToolFlags flags = 0;
             fixed (double* nativeX = &x)
             {
                 byte ret = ImPlotNative.ImPlot_DragLineX(id, nativeX, col, thickness, flags);
@@ -1490,7 +1490,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <returns>The bool</returns>
         public static bool DragLineX(int id, ref double x, Vector4 col, float thickness)
         {
-            ImPlotDragToolFlags flags = (ImPlotDragToolFlags)0;
+            ImPlotDragToolFlags flags = 0;
             fixed (double* nativeX = &x)
             {
                 byte ret = ImPlotNative.ImPlot_DragLineX(id, nativeX, col, thickness, flags);
@@ -1524,7 +1524,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         public static bool DragLineY(int id, ref double y, Vector4 col)
         {
             float thickness = 1;
-            ImPlotDragToolFlags flags = (ImPlotDragToolFlags)0;
+            ImPlotDragToolFlags flags = 0;
             fixed (double* nativeY = &y)
             {
                 byte ret = ImPlotNative.ImPlot_DragLineY(id, nativeY, col, thickness, flags);
@@ -1541,7 +1541,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <returns>The bool</returns>
         public static bool DragLineY(int id, ref double y, Vector4 col, float thickness)
         {
-            ImPlotDragToolFlags flags = (ImPlotDragToolFlags)0;
+            ImPlotDragToolFlags flags = 0;
             fixed (double* nativeY = &y)
             {
                 byte ret = ImPlotNative.ImPlot_DragLineY(id, nativeY, col, thickness, flags);
@@ -1576,7 +1576,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         public static bool DragPoint(int id, ref double x, ref double y, Vector4 col)
         {
             float size = 4;
-            ImPlotDragToolFlags flags = (ImPlotDragToolFlags)0;
+            ImPlotDragToolFlags flags = 0;
             fixed (double* nativeX = &x)
             {
                 fixed (double* nativeY = &y)
@@ -1597,7 +1597,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <returns>The bool</returns>
         public static bool DragPoint(int id, ref double x, ref double y, Vector4 col, float size)
         {
-            ImPlotDragToolFlags flags = (ImPlotDragToolFlags)0;
+            ImPlotDragToolFlags flags = 0;
             fixed (double* nativeX = &x)
             {
                 fixed (double* nativeY = &y)
@@ -1640,7 +1640,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <returns>The bool</returns>
         public static bool DragRect(int id, ref double x1, ref double y1, ref double x2, ref double y2, Vector4 col)
         {
-            ImPlotDragToolFlags flags = (ImPlotDragToolFlags)0;
+            ImPlotDragToolFlags flags = 0;
             fixed (double* nativeX1 = &x1)
             {
                 fixed (double* nativeY1 = &y1)
@@ -2286,7 +2286,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             double groupSize = 0.67;
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (float* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_FloatPtr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -2330,7 +2330,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 offset += labelIdsByteCounts[i] + 1;
             }
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (float* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_FloatPtr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -2374,7 +2374,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelIds[i] = &nativeLabelIdsData[offset];
                 offset += labelIdsByteCounts[i] + 1;
             }
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (float* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_FloatPtr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -2462,7 +2462,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             double groupSize = 0.67;
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (double* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_doublePtr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -2506,7 +2506,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 offset += labelIdsByteCounts[i] + 1;
             }
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (double* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_doublePtr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -2550,7 +2550,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelIds[i] = &nativeLabelIdsData[offset];
                 offset += labelIdsByteCounts[i] + 1;
             }
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (double* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_doublePtr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -2638,7 +2638,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             double groupSize = 0.67;
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (sbyte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_S8Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -2682,7 +2682,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 offset += labelIdsByteCounts[i] + 1;
             }
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (sbyte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_S8Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -2726,7 +2726,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelIds[i] = &nativeLabelIdsData[offset];
                 offset += labelIdsByteCounts[i] + 1;
             }
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (sbyte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_S8Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -2814,7 +2814,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             double groupSize = 0.67;
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (byte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_U8Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -2858,7 +2858,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 offset += labelIdsByteCounts[i] + 1;
             }
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (byte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_U8Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -2902,7 +2902,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelIds[i] = &nativeLabelIdsData[offset];
                 offset += labelIdsByteCounts[i] + 1;
             }
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (byte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_U8Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -2990,7 +2990,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             double groupSize = 0.67;
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (short* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_S16Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -3034,7 +3034,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 offset += labelIdsByteCounts[i] + 1;
             }
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (short* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_S16Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -3078,7 +3078,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelIds[i] = &nativeLabelIdsData[offset];
                 offset += labelIdsByteCounts[i] + 1;
             }
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (short* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_S16Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -3166,7 +3166,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             double groupSize = 0.67;
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (ushort* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_U16Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -3210,7 +3210,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 offset += labelIdsByteCounts[i] + 1;
             }
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (ushort* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_U16Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -3254,7 +3254,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelIds[i] = &nativeLabelIdsData[offset];
                 offset += labelIdsByteCounts[i] + 1;
             }
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (ushort* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_U16Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -3342,7 +3342,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             double groupSize = 0.67;
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (int* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_S32Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -3386,7 +3386,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 offset += labelIdsByteCounts[i] + 1;
             }
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (int* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_S32Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -3430,7 +3430,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelIds[i] = &nativeLabelIdsData[offset];
                 offset += labelIdsByteCounts[i] + 1;
             }
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (int* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_S32Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -3518,7 +3518,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             double groupSize = 0.67;
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (uint* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_U32Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -3562,7 +3562,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 offset += labelIdsByteCounts[i] + 1;
             }
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (uint* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_U32Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -3606,7 +3606,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelIds[i] = &nativeLabelIdsData[offset];
                 offset += labelIdsByteCounts[i] + 1;
             }
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (uint* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_U32Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -3694,7 +3694,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             double groupSize = 0.67;
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (long* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_S64Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -3738,7 +3738,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 offset += labelIdsByteCounts[i] + 1;
             }
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (long* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_S64Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -3782,7 +3782,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelIds[i] = &nativeLabelIdsData[offset];
                 offset += labelIdsByteCounts[i] + 1;
             }
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (long* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_S64Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -3870,7 +3870,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             double groupSize = 0.67;
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (ulong* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_U64Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -3914,7 +3914,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 offset += labelIdsByteCounts[i] + 1;
             }
             double shift = 0;
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (ulong* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_U64Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -3958,7 +3958,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelIds[i] = &nativeLabelIdsData[offset];
                 offset += labelIdsByteCounts[i] + 1;
             }
-            ImPlotBarGroupsFlags flags = (ImPlotBarGroupsFlags)0;
+            ImPlotBarGroupsFlags flags = 0;
             fixed (ulong* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotBarGroups_U64Ptr(nativeLabelIds, nativeValues, itemCount, groupCount, groupSize, shift, flags);
@@ -4036,7 +4036,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barSize = 0.67;
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -4076,7 +4076,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -4116,7 +4116,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -4276,7 +4276,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barSize = 0.67;
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -4316,7 +4316,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -4356,7 +4356,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -4516,7 +4516,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barSize = 0.67;
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -4556,7 +4556,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -4596,7 +4596,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -4756,7 +4756,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barSize = 0.67;
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -4796,7 +4796,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -4836,7 +4836,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -4996,7 +4996,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barSize = 0.67;
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -5036,7 +5036,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -5076,7 +5076,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -5236,7 +5236,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barSize = 0.67;
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -5276,7 +5276,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -5316,7 +5316,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -5476,7 +5476,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barSize = 0.67;
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -5516,7 +5516,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -5556,7 +5556,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -5716,7 +5716,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barSize = 0.67;
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -5756,7 +5756,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -5796,7 +5796,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -5956,7 +5956,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barSize = 0.67;
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -5996,7 +5996,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -6036,7 +6036,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -6196,7 +6196,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barSize = 0.67;
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -6236,7 +6236,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double shift = 0;
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -6276,7 +6276,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -6436,7 +6436,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeXs = &xs)
@@ -6608,7 +6608,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeXs = &xs)
@@ -6780,7 +6780,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeXs = &xs)
@@ -6952,7 +6952,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeXs = &xs)
@@ -7124,7 +7124,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeXs = &xs)
@@ -7296,7 +7296,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeXs = &xs)
@@ -7468,7 +7468,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeXs = &xs)
@@ -7640,7 +7640,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeXs = &xs)
@@ -7812,7 +7812,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeXs = &xs)
@@ -7984,7 +7984,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            ImPlotBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeXs = &xs)
@@ -8156,8 +8156,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            void* nativeData = (void*)data.ToPointer();
-            ImPlotBarsFlags flags = (ImPlotBarsFlags)0;
+            void* nativeData = data.ToPointer();
+            ImPlotBarsFlags flags = 0;
             ImPlotNative.ImPlot_PlotBarsG(nativeLabelId, getter, nativeData, count, barSize, flags);
             if (labelIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -8193,7 +8193,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            void* nativeData = (void*)data.ToPointer();
+            void* nativeData = data.ToPointer();
             ImPlotNative.ImPlot_PlotBarsG(nativeLabelId, getter, nativeData, count, barSize, flags);
             if (labelIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -8227,7 +8227,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotDigitalFlags flags = (ImPlotDigitalFlags)0;
+            ImPlotDigitalFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeXs = &xs)
@@ -8395,7 +8395,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotDigitalFlags flags = (ImPlotDigitalFlags)0;
+            ImPlotDigitalFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeXs = &xs)
@@ -8563,7 +8563,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotDigitalFlags flags = (ImPlotDigitalFlags)0;
+            ImPlotDigitalFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeXs = &xs)
@@ -8731,7 +8731,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotDigitalFlags flags = (ImPlotDigitalFlags)0;
+            ImPlotDigitalFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeXs = &xs)
@@ -8899,7 +8899,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotDigitalFlags flags = (ImPlotDigitalFlags)0;
+            ImPlotDigitalFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeXs = &xs)
@@ -9067,7 +9067,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotDigitalFlags flags = (ImPlotDigitalFlags)0;
+            ImPlotDigitalFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeXs = &xs)
@@ -9235,7 +9235,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotDigitalFlags flags = (ImPlotDigitalFlags)0;
+            ImPlotDigitalFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeXs = &xs)
@@ -9403,7 +9403,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotDigitalFlags flags = (ImPlotDigitalFlags)0;
+            ImPlotDigitalFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeXs = &xs)
@@ -9571,7 +9571,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotDigitalFlags flags = (ImPlotDigitalFlags)0;
+            ImPlotDigitalFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeXs = &xs)
@@ -9739,7 +9739,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotDigitalFlags flags = (ImPlotDigitalFlags)0;
+            ImPlotDigitalFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeXs = &xs)
@@ -9907,8 +9907,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            void* nativeData = (void*)data.ToPointer();
-            ImPlotDigitalFlags flags = (ImPlotDigitalFlags)0;
+            void* nativeData = data.ToPointer();
+            ImPlotDigitalFlags flags = 0;
             ImPlotNative.ImPlot_PlotDigitalG(nativeLabelId, getter, nativeData, count, flags);
             if (labelIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -9943,7 +9943,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            void* nativeData = (void*)data.ToPointer();
+            void* nativeData = data.ToPointer();
             ImPlotNative.ImPlot_PlotDigitalG(nativeLabelId, getter, nativeData, count, flags);
             if (labelIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -9974,7 +9974,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotDummyFlags flags = (ImPlotDummyFlags)0;
+            ImPlotDummyFlags flags = 0;
             ImPlotNative.ImPlot_PlotDummy(nativeLabelId, flags);
             if (labelIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -10040,7 +10040,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeXs = &xs)
@@ -10224,7 +10224,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeXs = &xs)
@@ -10408,7 +10408,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeXs = &xs)
@@ -10592,7 +10592,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeXs = &xs)
@@ -10776,7 +10776,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeXs = &xs)
@@ -10960,7 +10960,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeXs = &xs)
@@ -11144,7 +11144,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeXs = &xs)
@@ -11328,7 +11328,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeXs = &xs)
@@ -11512,7 +11512,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeXs = &xs)
@@ -11696,7 +11696,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeXs = &xs)
@@ -11881,7 +11881,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeXs = &xs)
@@ -12081,7 +12081,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeXs = &xs)
@@ -12281,7 +12281,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeXs = &xs)
@@ -12481,7 +12481,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeXs = &xs)
@@ -12681,7 +12681,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeXs = &xs)
@@ -12881,7 +12881,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeXs = &xs)
@@ -13081,7 +13081,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeXs = &xs)
@@ -13281,7 +13281,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeXs = &xs)
@@ -13481,7 +13481,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeXs = &xs)
@@ -13681,7 +13681,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotErrorBarsFlags flags = (ImPlotErrorBarsFlags)0;
+            ImPlotErrorBarsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeXs = &xs)
@@ -13897,7 +13897,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (float* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -13956,7 +13956,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (float* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -14015,7 +14015,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (float* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -14079,7 +14079,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (float* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -14143,7 +14143,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (float* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -14207,7 +14207,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (float* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_FloatPtr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -14330,7 +14330,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (double* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_doublePtr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -14389,7 +14389,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (double* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_doublePtr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -14448,7 +14448,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (double* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_doublePtr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -14512,7 +14512,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (double* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_doublePtr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -14576,7 +14576,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (double* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_doublePtr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -14640,7 +14640,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (double* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_doublePtr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -14763,7 +14763,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (sbyte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S8Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -14822,7 +14822,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (sbyte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S8Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -14881,7 +14881,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (sbyte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S8Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -14945,7 +14945,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (sbyte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S8Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -15009,7 +15009,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (sbyte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S8Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -15073,7 +15073,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (sbyte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S8Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -15196,7 +15196,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (byte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U8Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -15255,7 +15255,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (byte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U8Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -15314,7 +15314,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (byte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U8Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -15378,7 +15378,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (byte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U8Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -15442,7 +15442,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (byte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U8Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -15506,7 +15506,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (byte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U8Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -15629,7 +15629,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (short* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S16Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -15688,7 +15688,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (short* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S16Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -15747,7 +15747,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (short* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S16Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -15811,7 +15811,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (short* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S16Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -15875,7 +15875,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (short* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S16Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -15939,7 +15939,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (short* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S16Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -16062,7 +16062,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (ushort* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U16Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -16121,7 +16121,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (ushort* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U16Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -16180,7 +16180,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (ushort* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U16Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -16244,7 +16244,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (ushort* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U16Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -16308,7 +16308,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (ushort* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U16Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -16372,7 +16372,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (ushort* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U16Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -16495,7 +16495,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (int* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -16554,7 +16554,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (int* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -16613,7 +16613,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (int* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -16677,7 +16677,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (int* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -16741,7 +16741,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (int* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -16805,7 +16805,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (int* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -16928,7 +16928,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (uint* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -16987,7 +16987,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (uint* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -17046,7 +17046,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (uint* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -17110,7 +17110,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (uint* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -17174,7 +17174,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (uint* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -17238,7 +17238,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (uint* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U32Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -17361,7 +17361,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (long* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -17420,7 +17420,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (long* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -17479,7 +17479,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (long* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -17543,7 +17543,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (long* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -17607,7 +17607,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (long* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -17671,7 +17671,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (long* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_S64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -17794,7 +17794,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (ulong* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -17853,7 +17853,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (ulong* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -17912,7 +17912,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (ulong* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -17976,7 +17976,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMin = new ImPlotPoint { X = 0, Y = 0 };
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (ulong* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -18040,7 +18040,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             ImPlotPoint boundsMax = new ImPlotPoint { X = 1, Y = 1 };
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (ulong* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -18104,7 +18104,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotHeatmapFlags flags = (ImPlotHeatmapFlags)0;
+            ImPlotHeatmapFlags flags = 0;
             fixed (ulong* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotHeatmap_U64Ptr(nativeLabelId, nativeValues, rows, cols, scaleMin, scaleMax, nativeLabelFmt, boundsMin, boundsMax, flags);
@@ -18212,7 +18212,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int bins = (int)ImPlotBin.Sturges;
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (float* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_FloatPtr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -18253,7 +18253,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (float* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_FloatPtr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -18294,7 +18294,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (float* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_FloatPtr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -18335,7 +18335,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (float* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_FloatPtr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -18417,7 +18417,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int bins = (int)ImPlotBin.Sturges;
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (double* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_doublePtr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -18458,7 +18458,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (double* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_doublePtr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -18499,7 +18499,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (double* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_doublePtr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -18540,7 +18540,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (double* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_doublePtr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -18622,7 +18622,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int bins = (int)ImPlotBin.Sturges;
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (sbyte* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_S8Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -18663,7 +18663,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (sbyte* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_S8Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -18704,7 +18704,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (sbyte* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_S8Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -18745,7 +18745,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (sbyte* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_S8Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -18827,7 +18827,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int bins = (int)ImPlotBin.Sturges;
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (byte* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_U8Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -18868,7 +18868,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (byte* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_U8Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -18909,7 +18909,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (byte* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_U8Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -18950,7 +18950,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (byte* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_U8Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19032,7 +19032,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int bins = (int)ImPlotBin.Sturges;
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (short* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19073,7 +19073,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (short* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19114,7 +19114,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (short* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19155,7 +19155,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (short* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_S16Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19237,7 +19237,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int bins = (int)ImPlotBin.Sturges;
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (ushort* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19278,7 +19278,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (ushort* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19319,7 +19319,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (ushort* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19360,7 +19360,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (ushort* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_U16Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19442,7 +19442,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int bins = (int)ImPlotBin.Sturges;
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (int* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19483,7 +19483,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (int* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19524,7 +19524,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (int* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19565,7 +19565,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (int* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_S32Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19647,7 +19647,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int bins = (int)ImPlotBin.Sturges;
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (uint* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19688,7 +19688,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (uint* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19729,7 +19729,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (uint* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19770,7 +19770,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (uint* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_U32Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19852,7 +19852,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int bins = (int)ImPlotBin.Sturges;
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (long* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19893,7 +19893,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (long* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19934,7 +19934,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (long* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -19975,7 +19975,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (long* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_S64Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -20057,7 +20057,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int bins = (int)ImPlotBin.Sturges;
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (ulong* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -20098,7 +20098,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double barScale = 1.0;
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (ulong* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -20139,7 +20139,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRange range = new ImPlotRange();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (ulong* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -20180,7 +20180,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (ulong* nativeValues = &values)
             {
                 double ret = ImPlotNative.ImPlot_PlotHistogram_U64Ptr(nativeLabelId, nativeValues, count, bins, barScale, range, flags);
@@ -20263,7 +20263,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int xBins = (int)ImPlotBin.Sturges;
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (float* nativeXs = &xs)
             {
                 fixed (float* nativeYs = &ys)
@@ -20308,7 +20308,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (float* nativeXs = &xs)
             {
                 fixed (float* nativeYs = &ys)
@@ -20353,7 +20353,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (float* nativeXs = &xs)
             {
                 fixed (float* nativeYs = &ys)
@@ -20398,7 +20398,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (float* nativeXs = &xs)
             {
                 fixed (float* nativeYs = &ys)
@@ -20488,7 +20488,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int xBins = (int)ImPlotBin.Sturges;
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (double* nativeXs = &xs)
             {
                 fixed (double* nativeYs = &ys)
@@ -20533,7 +20533,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (double* nativeXs = &xs)
             {
                 fixed (double* nativeYs = &ys)
@@ -20578,7 +20578,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (double* nativeXs = &xs)
             {
                 fixed (double* nativeYs = &ys)
@@ -20623,7 +20623,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (double* nativeXs = &xs)
             {
                 fixed (double* nativeYs = &ys)
@@ -20713,7 +20713,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int xBins = (int)ImPlotBin.Sturges;
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (sbyte* nativeXs = &xs)
             {
                 fixed (sbyte* nativeYs = &ys)
@@ -20758,7 +20758,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (sbyte* nativeXs = &xs)
             {
                 fixed (sbyte* nativeYs = &ys)
@@ -20803,7 +20803,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (sbyte* nativeXs = &xs)
             {
                 fixed (sbyte* nativeYs = &ys)
@@ -20848,7 +20848,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (sbyte* nativeXs = &xs)
             {
                 fixed (sbyte* nativeYs = &ys)
@@ -20938,7 +20938,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int xBins = (int)ImPlotBin.Sturges;
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (byte* nativeXs = &xs)
             {
                 fixed (byte* nativeYs = &ys)
@@ -20983,7 +20983,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (byte* nativeXs = &xs)
             {
                 fixed (byte* nativeYs = &ys)
@@ -21028,7 +21028,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (byte* nativeXs = &xs)
             {
                 fixed (byte* nativeYs = &ys)
@@ -21073,7 +21073,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (byte* nativeXs = &xs)
             {
                 fixed (byte* nativeYs = &ys)
@@ -21163,7 +21163,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int xBins = (int)ImPlotBin.Sturges;
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (short* nativeXs = &xs)
             {
                 fixed (short* nativeYs = &ys)
@@ -21208,7 +21208,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (short* nativeXs = &xs)
             {
                 fixed (short* nativeYs = &ys)
@@ -21253,7 +21253,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (short* nativeXs = &xs)
             {
                 fixed (short* nativeYs = &ys)
@@ -21298,7 +21298,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (short* nativeXs = &xs)
             {
                 fixed (short* nativeYs = &ys)
@@ -21388,7 +21388,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int xBins = (int)ImPlotBin.Sturges;
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (ushort* nativeXs = &xs)
             {
                 fixed (ushort* nativeYs = &ys)
@@ -21433,7 +21433,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (ushort* nativeXs = &xs)
             {
                 fixed (ushort* nativeYs = &ys)
@@ -21478,7 +21478,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (ushort* nativeXs = &xs)
             {
                 fixed (ushort* nativeYs = &ys)
@@ -21523,7 +21523,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (ushort* nativeXs = &xs)
             {
                 fixed (ushort* nativeYs = &ys)
@@ -21613,7 +21613,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int xBins = (int)ImPlotBin.Sturges;
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (int* nativeXs = &xs)
             {
                 fixed (int* nativeYs = &ys)
@@ -21658,7 +21658,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (int* nativeXs = &xs)
             {
                 fixed (int* nativeYs = &ys)
@@ -21703,7 +21703,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (int* nativeXs = &xs)
             {
                 fixed (int* nativeYs = &ys)
@@ -21748,7 +21748,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (int* nativeXs = &xs)
             {
                 fixed (int* nativeYs = &ys)
@@ -21838,7 +21838,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int xBins = (int)ImPlotBin.Sturges;
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (uint* nativeXs = &xs)
             {
                 fixed (uint* nativeYs = &ys)
@@ -21883,7 +21883,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (uint* nativeXs = &xs)
             {
                 fixed (uint* nativeYs = &ys)
@@ -21928,7 +21928,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (uint* nativeXs = &xs)
             {
                 fixed (uint* nativeYs = &ys)
@@ -21973,7 +21973,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (uint* nativeXs = &xs)
             {
                 fixed (uint* nativeYs = &ys)
@@ -22063,7 +22063,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int xBins = (int)ImPlotBin.Sturges;
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (long* nativeXs = &xs)
             {
                 fixed (long* nativeYs = &ys)
@@ -22108,7 +22108,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (long* nativeXs = &xs)
             {
                 fixed (long* nativeYs = &ys)
@@ -22153,7 +22153,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (long* nativeXs = &xs)
             {
                 fixed (long* nativeYs = &ys)
@@ -22198,7 +22198,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (long* nativeXs = &xs)
             {
                 fixed (long* nativeYs = &ys)
@@ -22288,7 +22288,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             int xBins = (int)ImPlotBin.Sturges;
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (ulong* nativeXs = &xs)
             {
                 fixed (ulong* nativeYs = &ys)
@@ -22333,7 +22333,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             int yBins = (int)ImPlotBin.Sturges;
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (ulong* nativeXs = &xs)
             {
                 fixed (ulong* nativeYs = &ys)
@@ -22378,7 +22378,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             ImPlotRect range = new ImPlotRect();
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (ulong* nativeXs = &xs)
             {
                 fixed (ulong* nativeYs = &ys)
@@ -22423,7 +22423,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotHistogramFlags flags = (ImPlotHistogramFlags)0;
+            ImPlotHistogramFlags flags = 0;
             fixed (ulong* nativeXs = &xs)
             {
                 fixed (ulong* nativeYs = &ys)
@@ -22512,7 +22512,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             Vector2 uv0 = new Vector2();
             Vector2 uv1 = new Vector2(1, 1);
             Vector4 tintCol = new Vector4(1, 1, 1, 1);
-            ImPlotImageFlags flags = (ImPlotImageFlags)0;
+            ImPlotImageFlags flags = 0;
             ImPlotNative.ImPlot_PlotImage(nativeLabelId, userTextureId, boundsMin, boundsMax, uv0, uv1, tintCol, flags);
             if (labelIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -22549,7 +22549,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             Vector2 uv1 = new Vector2(1, 1);
             Vector4 tintCol = new Vector4(1, 1, 1, 1);
-            ImPlotImageFlags flags = (ImPlotImageFlags)0;
+            ImPlotImageFlags flags = 0;
             ImPlotNative.ImPlot_PlotImage(nativeLabelId, userTextureId, boundsMin, boundsMax, uv0, uv1, tintCol, flags);
             if (labelIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -22586,7 +22586,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             Vector4 tintCol = new Vector4(1, 1, 1, 1);
-            ImPlotImageFlags flags = (ImPlotImageFlags)0;
+            ImPlotImageFlags flags = 0;
             ImPlotNative.ImPlot_PlotImage(nativeLabelId, userTextureId, boundsMin, boundsMax, uv0, uv1, tintCol, flags);
             if (labelIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -22623,7 +22623,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotImageFlags flags = (ImPlotImageFlags)0;
+            ImPlotImageFlags flags = 0;
             ImPlotNative.ImPlot_PlotImage(nativeLabelId, userTextureId, boundsMin, boundsMax, uv0, uv1, tintCol, flags);
             if (labelIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -22693,7 +22693,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)0;
+            ImPlotInfLinesFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -22845,7 +22845,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)0;
+            ImPlotInfLinesFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -22997,7 +22997,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)0;
+            ImPlotInfLinesFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -23149,7 +23149,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)0;
+            ImPlotInfLinesFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -23301,7 +23301,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)0;
+            ImPlotInfLinesFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -23453,7 +23453,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)0;
+            ImPlotInfLinesFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -23605,7 +23605,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)0;
+            ImPlotInfLinesFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -23757,7 +23757,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)0;
+            ImPlotInfLinesFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -23909,7 +23909,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)0;
+            ImPlotInfLinesFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -24061,7 +24061,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotInfLinesFlags flags = (ImPlotInfLinesFlags)0;
+            ImPlotInfLinesFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -24215,7 +24215,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -24255,7 +24255,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -24295,7 +24295,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -24455,7 +24455,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -24495,7 +24495,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -24535,7 +24535,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -24695,7 +24695,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -24735,7 +24735,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -24775,7 +24775,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -24935,7 +24935,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -24975,7 +24975,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -25015,7 +25015,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -25175,7 +25175,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -25215,7 +25215,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -25255,7 +25255,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -25415,7 +25415,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -25455,7 +25455,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -25495,7 +25495,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -25655,7 +25655,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -25695,7 +25695,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -25735,7 +25735,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -25895,7 +25895,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -25935,7 +25935,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -25975,7 +25975,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -26135,7 +26135,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -26175,7 +26175,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -26215,7 +26215,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -26375,7 +26375,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -26415,7 +26415,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -26455,7 +26455,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -26614,7 +26614,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeXs = &xs)
@@ -26782,7 +26782,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeXs = &xs)
@@ -26950,7 +26950,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeXs = &xs)
@@ -27118,7 +27118,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeXs = &xs)
@@ -27286,7 +27286,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeXs = &xs)
@@ -27454,7 +27454,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeXs = &xs)
@@ -27622,7 +27622,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeXs = &xs)
@@ -27790,7 +27790,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeXs = &xs)
@@ -27958,7 +27958,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeXs = &xs)
@@ -28126,7 +28126,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            ImPlotLineFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeXs = &xs)
@@ -28294,8 +28294,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            void* nativeData = (void*)data.ToPointer();
-            ImPlotLineFlags flags = (ImPlotLineFlags)0;
+            void* nativeData = data.ToPointer();
+            ImPlotLineFlags flags = 0;
             ImPlotNative.ImPlot_PlotLineG(nativeLabelId, getter, nativeData, count, flags);
             if (labelIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -28330,7 +28330,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            void* nativeData = (void*)data.ToPointer();
+            void* nativeData = data.ToPointer();
             ImPlotNative.ImPlot_PlotLineG(nativeLabelId, getter, nativeData, count, flags);
             if (labelIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -28390,7 +28390,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (float* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -28458,7 +28458,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (float* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -28526,7 +28526,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (float* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_FloatPtr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -28657,7 +28657,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (double* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -28725,7 +28725,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (double* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -28793,7 +28793,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (double* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_doublePtr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -28924,7 +28924,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (sbyte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -28992,7 +28992,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (sbyte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -29060,7 +29060,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (sbyte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_S8Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -29191,7 +29191,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (byte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -29259,7 +29259,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (byte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -29327,7 +29327,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (byte* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_U8Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -29458,7 +29458,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (short* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -29526,7 +29526,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (short* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -29594,7 +29594,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (short* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_S16Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -29725,7 +29725,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (ushort* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_U16Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -29793,7 +29793,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (ushort* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_U16Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -29861,7 +29861,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (ushort* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_U16Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -29992,7 +29992,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (int* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_S32Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -30060,7 +30060,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (int* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_S32Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -30128,7 +30128,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (int* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_S32Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -30259,7 +30259,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (uint* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_U32Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -30327,7 +30327,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (uint* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_U32Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -30395,7 +30395,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (uint* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_U32Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -30526,7 +30526,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (long* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_S64Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -30594,7 +30594,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (long* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_S64Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -30662,7 +30662,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (long* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_S64Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -30793,7 +30793,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 int nativeLabelFmtOffset = Util.GetUtf8("%.1f", nativeLabelFmt, labelFmtByteCount);
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (ulong* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_U64Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -30861,7 +30861,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelFmt = null; }
             double angle0 = 90;
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (ulong* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_U64Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -30929,7 +30929,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelFmt[nativeLabelFmtOffset] = 0;
             }
             else { nativeLabelFmt = null; }
-            ImPlotPieChartFlags flags = (ImPlotPieChartFlags)0;
+            ImPlotPieChartFlags flags = 0;
             fixed (ulong* nativeValues = &values)
             {
                 ImPlotNative.ImPlot_PlotPieChart_U64Ptr(nativeLabelIds, nativeValues, count, x, y, radius, nativeLabelFmt, angle0, flags);
@@ -31035,7 +31035,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -31075,7 +31075,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -31115,7 +31115,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -31275,7 +31275,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -31315,7 +31315,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -31355,7 +31355,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -31515,7 +31515,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -31555,7 +31555,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -31595,7 +31595,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -31755,7 +31755,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -31795,7 +31795,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -31835,7 +31835,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -31995,7 +31995,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -32035,7 +32035,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -32075,7 +32075,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -32235,7 +32235,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -32275,7 +32275,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -32315,7 +32315,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -32475,7 +32475,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -32515,7 +32515,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -32555,7 +32555,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -32715,7 +32715,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -32755,7 +32755,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -32795,7 +32795,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -32955,7 +32955,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -32995,7 +32995,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -33035,7 +33035,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -33195,7 +33195,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -33235,7 +33235,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -33275,7 +33275,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -33434,7 +33434,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeXs = &xs)
@@ -33602,7 +33602,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeXs = &xs)
@@ -33770,7 +33770,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeXs = &xs)
@@ -33938,7 +33938,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeXs = &xs)
@@ -34106,7 +34106,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeXs = &xs)
@@ -34274,7 +34274,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeXs = &xs)
@@ -34442,7 +34442,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeXs = &xs)
@@ -34610,7 +34610,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeXs = &xs)
@@ -34778,7 +34778,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeXs = &xs)
@@ -34946,7 +34946,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            ImPlotScatterFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeXs = &xs)
@@ -35114,8 +35114,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            void* nativeData = (void*)data.ToPointer();
-            ImPlotScatterFlags flags = (ImPlotScatterFlags)0;
+            void* nativeData = data.ToPointer();
+            ImPlotScatterFlags flags = 0;
             ImPlotNative.ImPlot_PlotScatterG(nativeLabelId, getter, nativeData, count, flags);
             if (labelIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -35150,7 +35150,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            void* nativeData = (void*)data.ToPointer();
+            void* nativeData = data.ToPointer();
             ImPlotNative.ImPlot_PlotScatterG(nativeLabelId, getter, nativeData, count, flags);
             if (labelIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -35186,7 +35186,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double yref = 0;
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -35227,7 +35227,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -35268,7 +35268,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -35309,7 +35309,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -35473,7 +35473,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double yref = 0;
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -35514,7 +35514,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -35555,7 +35555,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -35596,7 +35596,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -35760,7 +35760,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double yref = 0;
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -35801,7 +35801,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -35842,7 +35842,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -35883,7 +35883,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -36047,7 +36047,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double yref = 0;
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -36088,7 +36088,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -36129,7 +36129,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -36170,7 +36170,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -36334,7 +36334,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double yref = 0;
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -36375,7 +36375,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -36416,7 +36416,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -36457,7 +36457,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -36621,7 +36621,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double yref = 0;
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -36662,7 +36662,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -36703,7 +36703,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -36744,7 +36744,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -36908,7 +36908,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double yref = 0;
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -36949,7 +36949,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -36990,7 +36990,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -37031,7 +37031,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -37195,7 +37195,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double yref = 0;
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -37236,7 +37236,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -37277,7 +37277,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -37318,7 +37318,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -37482,7 +37482,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double yref = 0;
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -37523,7 +37523,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -37564,7 +37564,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -37605,7 +37605,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -37769,7 +37769,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double yref = 0;
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -37810,7 +37810,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -37851,7 +37851,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -37892,7 +37892,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -38055,7 +38055,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double yref = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeXs = &xs)
@@ -38098,7 +38098,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeXs = &xs)
@@ -38270,7 +38270,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double yref = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeXs = &xs)
@@ -38313,7 +38313,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeXs = &xs)
@@ -38485,7 +38485,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double yref = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeXs = &xs)
@@ -38528,7 +38528,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeXs = &xs)
@@ -38700,7 +38700,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double yref = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeXs = &xs)
@@ -38743,7 +38743,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeXs = &xs)
@@ -38915,7 +38915,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double yref = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeXs = &xs)
@@ -38958,7 +38958,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeXs = &xs)
@@ -39130,7 +39130,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double yref = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeXs = &xs)
@@ -39173,7 +39173,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeXs = &xs)
@@ -39345,7 +39345,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double yref = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeXs = &xs)
@@ -39388,7 +39388,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeXs = &xs)
@@ -39560,7 +39560,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double yref = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeXs = &xs)
@@ -39603,7 +39603,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeXs = &xs)
@@ -39775,7 +39775,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double yref = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeXs = &xs)
@@ -39818,7 +39818,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeXs = &xs)
@@ -39990,7 +39990,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double yref = 0;
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeXs = &xs)
@@ -40033,7 +40033,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeXs = &xs)
@@ -40205,7 +40205,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeXs = &xs)
@@ -40389,7 +40389,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeXs = &xs)
@@ -40573,7 +40573,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeXs = &xs)
@@ -40757,7 +40757,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeXs = &xs)
@@ -40941,7 +40941,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeXs = &xs)
@@ -41125,7 +41125,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeXs = &xs)
@@ -41309,7 +41309,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeXs = &xs)
@@ -41493,7 +41493,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeXs = &xs)
@@ -41677,7 +41677,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeXs = &xs)
@@ -41861,7 +41861,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            ImPlotShadedFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeXs = &xs)
@@ -42046,9 +42046,9 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            void* nativeData1 = (void*)data1.ToPointer();
-            void* nativeData2 = (void*)data2.ToPointer();
-            ImPlotShadedFlags flags = (ImPlotShadedFlags)0;
+            void* nativeData1 = data1.ToPointer();
+            void* nativeData2 = data2.ToPointer();
+            ImPlotShadedFlags flags = 0;
             ImPlotNative.ImPlot_PlotShadedG(nativeLabelId, getter1, nativeData1, getter2, nativeData2, count, flags);
             if (labelIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -42085,8 +42085,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            void* nativeData1 = (void*)data1.ToPointer();
-            void* nativeData2 = (void*)data2.ToPointer();
+            void* nativeData1 = data1.ToPointer();
+            void* nativeData2 = data2.ToPointer();
             ImPlotNative.ImPlot_PlotShadedG(nativeLabelId, getter1, nativeData1, getter2, nativeData2, count, flags);
             if (labelIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -42121,7 +42121,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -42161,7 +42161,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -42201,7 +42201,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -42361,7 +42361,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -42401,7 +42401,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -42441,7 +42441,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -42601,7 +42601,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -42641,7 +42641,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -42681,7 +42681,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -42841,7 +42841,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -42881,7 +42881,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -42921,7 +42921,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -43081,7 +43081,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -43121,7 +43121,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -43161,7 +43161,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -43321,7 +43321,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -43361,7 +43361,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -43401,7 +43401,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -43561,7 +43561,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -43601,7 +43601,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -43641,7 +43641,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -43801,7 +43801,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -43841,7 +43841,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -43881,7 +43881,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -44041,7 +44041,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -44081,7 +44081,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -44121,7 +44121,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -44281,7 +44281,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double xscale = 1;
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -44321,7 +44321,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double xstart = 0;
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -44361,7 +44361,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -44520,7 +44520,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeXs = &xs)
@@ -44688,7 +44688,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeXs = &xs)
@@ -44856,7 +44856,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeXs = &xs)
@@ -45024,7 +45024,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeXs = &xs)
@@ -45192,7 +45192,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeXs = &xs)
@@ -45360,7 +45360,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeXs = &xs)
@@ -45528,7 +45528,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeXs = &xs)
@@ -45696,7 +45696,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeXs = &xs)
@@ -45864,7 +45864,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeXs = &xs)
@@ -46032,7 +46032,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            ImPlotStairsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeXs = &xs)
@@ -46200,8 +46200,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            void* nativeData = (void*)data.ToPointer();
-            ImPlotStairsFlags flags = (ImPlotStairsFlags)0;
+            void* nativeData = data.ToPointer();
+            ImPlotStairsFlags flags = 0;
             ImPlotNative.ImPlot_PlotStairsG(nativeLabelId, getter, nativeData, count, flags);
             if (labelIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -46236,7 +46236,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            void* nativeData = (void*)data.ToPointer();
+            void* nativeData = data.ToPointer();
             ImPlotNative.ImPlot_PlotStairsG(nativeLabelId, getter, nativeData, count, flags);
             if (labelIdByteCount > Util.StackAllocationSizeLimit)
             {
@@ -46272,7 +46272,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double @ref = 0;
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -46313,7 +46313,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -46354,7 +46354,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -46395,7 +46395,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeValues = &values)
@@ -46559,7 +46559,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double @ref = 0;
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -46600,7 +46600,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -46641,7 +46641,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -46682,7 +46682,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeValues = &values)
@@ -46846,7 +46846,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double @ref = 0;
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -46887,7 +46887,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -46928,7 +46928,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -46969,7 +46969,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeValues = &values)
@@ -47133,7 +47133,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double @ref = 0;
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -47174,7 +47174,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -47215,7 +47215,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -47256,7 +47256,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeValues = &values)
@@ -47420,7 +47420,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double @ref = 0;
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -47461,7 +47461,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -47502,7 +47502,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -47543,7 +47543,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeValues = &values)
@@ -47707,7 +47707,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double @ref = 0;
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -47748,7 +47748,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -47789,7 +47789,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -47830,7 +47830,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeValues = &values)
@@ -47994,7 +47994,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double @ref = 0;
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -48035,7 +48035,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -48076,7 +48076,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -48117,7 +48117,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeValues = &values)
@@ -48281,7 +48281,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double @ref = 0;
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -48322,7 +48322,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -48363,7 +48363,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -48404,7 +48404,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeValues = &values)
@@ -48568,7 +48568,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double @ref = 0;
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -48609,7 +48609,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -48650,7 +48650,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -48691,7 +48691,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeValues = &values)
@@ -48855,7 +48855,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             double @ref = 0;
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -48896,7 +48896,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             else { nativeLabelId = null; }
             double scale = 1;
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -48937,7 +48937,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double start = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -48978,7 +48978,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeValues = &values)
@@ -49141,7 +49141,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double @ref = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeXs = &xs)
@@ -49184,7 +49184,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(float);
             fixed (float* nativeXs = &xs)
@@ -49356,7 +49356,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double @ref = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeXs = &xs)
@@ -49399,7 +49399,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(double);
             fixed (double* nativeXs = &xs)
@@ -49571,7 +49571,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double @ref = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeXs = &xs)
@@ -49614,7 +49614,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(sbyte);
             fixed (sbyte* nativeXs = &xs)
@@ -49786,7 +49786,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double @ref = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeXs = &xs)
@@ -49829,7 +49829,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(byte);
             fixed (byte* nativeXs = &xs)
@@ -50001,7 +50001,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double @ref = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeXs = &xs)
@@ -50044,7 +50044,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(short);
             fixed (short* nativeXs = &xs)
@@ -50216,7 +50216,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double @ref = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeXs = &xs)
@@ -50259,7 +50259,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ushort);
             fixed (ushort* nativeXs = &xs)
@@ -50431,7 +50431,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double @ref = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeXs = &xs)
@@ -50474,7 +50474,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(int);
             fixed (int* nativeXs = &xs)
@@ -50646,7 +50646,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double @ref = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeXs = &xs)
@@ -50689,7 +50689,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(uint);
             fixed (uint* nativeXs = &xs)
@@ -50861,7 +50861,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double @ref = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeXs = &xs)
@@ -50904,7 +50904,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(long);
             fixed (long* nativeXs = &xs)
@@ -51076,7 +51076,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeLabelId = null; }
             double @ref = 0;
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeXs = &xs)
@@ -51119,7 +51119,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabelId[nativeLabelIdOffset] = 0;
             }
             else { nativeLabelId = null; }
-            ImPlotStemsFlags flags = (ImPlotStemsFlags)0;
+            ImPlotStemsFlags flags = 0;
             int offset = 0;
             int stride = sizeof(ulong);
             fixed (ulong* nativeXs = &xs)
@@ -51290,7 +51290,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
             }
             else { nativeText = null; }
             Vector2 pixOffset = new Vector2();
-            ImPlotTextFlags flags = (ImPlotTextFlags)0;
+            ImPlotTextFlags flags = 0;
             ImPlotNative.ImPlot_PlotText(nativeText, x, y, pixOffset, flags);
             if (textByteCount > Util.StackAllocationSizeLimit)
             {
@@ -51324,7 +51324,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeText[nativeTextOffset] = 0;
             }
             else { nativeText = null; }
-            ImPlotTextFlags flags = (ImPlotTextFlags)0;
+            ImPlotTextFlags flags = 0;
             ImPlotNative.ImPlot_PlotText(nativeText, x, y, pixOffset, flags);
             if (textByteCount > Util.StackAllocationSizeLimit)
             {
@@ -51943,8 +51943,8 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeYLabel[nativeYLabelOffset] = 0;
             }
             else { nativeYLabel = null; }
-            ImPlotAxisFlags xFlags = (ImPlotAxisFlags)0;
-            ImPlotAxisFlags yFlags = (ImPlotAxisFlags)0;
+            ImPlotAxisFlags xFlags = 0;
+            ImPlotAxisFlags yFlags = 0;
             ImPlotNative.ImPlot_SetupAxes(nativeXLabel, nativeYLabel, xFlags, yFlags);
             if (xLabelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -51999,7 +51999,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeYLabel[nativeYLabelOffset] = 0;
             }
             else { nativeYLabel = null; }
-            ImPlotAxisFlags yFlags = (ImPlotAxisFlags)0;
+            ImPlotAxisFlags yFlags = 0;
             ImPlotNative.ImPlot_SetupAxes(nativeXLabel, nativeYLabel, xFlags, yFlags);
             if (xLabelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -52096,7 +52096,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         public static void SetupAxis(ImAxis axis)
         {
             byte* nativeLabel = null;
-            ImPlotAxisFlags flags = (ImPlotAxisFlags)0;
+            ImPlotAxisFlags flags = 0;
             ImPlotNative.ImPlot_SetupAxis(axis, nativeLabel, flags);
         }
         /// <summary>
@@ -52124,7 +52124,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
                 nativeLabel[nativeLabelOffset] = 0;
             }
             else { nativeLabel = null; }
-            ImPlotAxisFlags flags = (ImPlotAxisFlags)0;
+            ImPlotAxisFlags flags = 0;
             ImPlotNative.ImPlot_SetupAxis(axis, nativeLabel, flags);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -52212,7 +52212,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <param name="data">The data</param>
         public static void SetupAxisFormat(ImAxis axis, IntPtr formatter, IntPtr data)
         {
-            void* nativeData = (void*)data.ToPointer();
+            void* nativeData = data.ToPointer();
             ImPlotNative.ImPlot_SetupAxisFormat_PlotFormatter(axis, formatter, nativeData);
         }
         /// <summary>
@@ -52292,7 +52292,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <param name="data">The data</param>
         public static void SetupAxisScale(ImAxis axis, IntPtr forward, IntPtr inverse, IntPtr data)
         {
-            void* nativeData = (void*)data.ToPointer();
+            void* nativeData = data.ToPointer();
             ImPlotNative.ImPlot_SetupAxisScale_PlotTransform(axis, forward, inverse, nativeData);
         }
         /// <summary>
@@ -52512,7 +52512,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <param name="location">The location</param>
         public static void SetupLegend(ImPlotLocation location)
         {
-            ImPlotLegendFlags flags = (ImPlotLegendFlags)0;
+            ImPlotLegendFlags flags = 0;
             ImPlotNative.ImPlot_SetupLegend(location, flags);
         }
         /// <summary>
@@ -52530,7 +52530,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <param name="location">The location</param>
         public static void SetupMouseText(ImPlotLocation location)
         {
-            ImPlotMouseTextFlags flags = (ImPlotMouseTextFlags)0;
+            ImPlotMouseTextFlags flags = 0;
             ImPlotNative.ImPlot_SetupMouseText(location, flags);
         }
         /// <summary>

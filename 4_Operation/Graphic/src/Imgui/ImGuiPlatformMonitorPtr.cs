@@ -70,7 +70,7 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImGuiPlatformMonitor_destroy((ImGuiPlatformMonitor*)(NativePtr));
+            ImGuiNative.ImGuiPlatformMonitor_destroy(NativePtr);
         }
     }
 }

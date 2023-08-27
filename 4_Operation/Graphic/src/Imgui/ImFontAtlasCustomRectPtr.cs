@@ -78,7 +78,7 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImFontAtlasCustomRect_destroy((ImFontAtlasCustomRect*)(NativePtr));
+            ImGuiNative.ImFontAtlasCustomRect_destroy(NativePtr);
         }
         /// <summary>
         /// Describes whether this instance is packed
@@ -86,7 +86,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The bool</returns>
         public bool IsPacked()
         {
-            byte ret = ImGuiNative.ImFontAtlasCustomRect_IsPacked((ImFontAtlasCustomRect*)(NativePtr));
+            byte ret = ImGuiNative.ImFontAtlasCustomRect_IsPacked(NativePtr);
             return ret != 0;
         }
     }

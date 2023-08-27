@@ -60,7 +60,7 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImGuiTableSortSpecs_destroy((ImGuiTableSortSpecs*)(NativePtr));
+            ImGuiNative.ImGuiTableSortSpecs_destroy(NativePtr);
         }
     }
 }

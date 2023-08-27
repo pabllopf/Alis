@@ -96,7 +96,7 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void ClearSelection()
         {
-            ImGuiNative.ImGuiInputTextCallbackData_ClearSelection((ImGuiInputTextCallbackData*)(NativePtr));
+            ImGuiNative.ImGuiInputTextCallbackData_ClearSelection(NativePtr);
         }
         /// <summary>
         /// Deletes the chars using the specified pos
@@ -105,14 +105,14 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="bytesCount">The bytes count</param>
         public void DeleteChars(int pos, int bytesCount)
         {
-            ImGuiNative.ImGuiInputTextCallbackData_DeleteChars((ImGuiInputTextCallbackData*)(NativePtr), pos, bytesCount);
+            ImGuiNative.ImGuiInputTextCallbackData_DeleteChars(NativePtr, pos, bytesCount);
         }
         /// <summary>
         /// Destroys this instance
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImGuiInputTextCallbackData_destroy((ImGuiInputTextCallbackData*)(NativePtr));
+            ImGuiNative.ImGuiInputTextCallbackData_destroy(NativePtr);
         }
         /// <summary>
         /// Describes whether this instance has selection
@@ -120,7 +120,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The bool</returns>
         public bool HasSelection()
         {
-            byte ret = ImGuiNative.ImGuiInputTextCallbackData_HasSelection((ImGuiInputTextCallbackData*)(NativePtr));
+            byte ret = ImGuiNative.ImGuiInputTextCallbackData_HasSelection(NativePtr);
             return ret != 0;
         }
         /// <summary>
@@ -149,7 +149,7 @@ namespace Alis.Core.Graphic.Imgui
             }
             else { nativeText = null; }
             byte* nativeTextEnd = null;
-            ImGuiNative.ImGuiInputTextCallbackData_InsertChars((ImGuiInputTextCallbackData*)(NativePtr), pos, nativeText, nativeTextEnd);
+            ImGuiNative.ImGuiInputTextCallbackData_InsertChars(NativePtr, pos, nativeText, nativeTextEnd);
             if (textByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeText);
@@ -160,7 +160,7 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void SelectAll()
         {
-            ImGuiNative.ImGuiInputTextCallbackData_SelectAll((ImGuiInputTextCallbackData*)(NativePtr));
+            ImGuiNative.ImGuiInputTextCallbackData_SelectAll(NativePtr);
         }
     }
 }

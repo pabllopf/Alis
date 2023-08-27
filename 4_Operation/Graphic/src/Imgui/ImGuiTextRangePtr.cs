@@ -54,7 +54,7 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImGuiTextRange_destroy((ImGuiTextRange*)(NativePtr));
+            ImGuiNative.ImGuiTextRange_destroy(NativePtr);
         }
         /// <summary>
         /// Describes whether this instance empty
@@ -62,7 +62,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The bool</returns>
         public bool Empty()
         {
-            byte ret = ImGuiNative.ImGuiTextRange_empty((ImGuiTextRange*)(NativePtr));
+            byte ret = ImGuiNative.ImGuiTextRange_empty(NativePtr);
             return ret != 0;
         }
         /// <summary>
@@ -74,7 +74,7 @@ namespace Alis.Core.Graphic.Imgui
         {
             fixed (ImVector* nativeOut = &@out)
             {
-                ImGuiNative.ImGuiTextRange_split((ImGuiTextRange*)(NativePtr), separator, nativeOut);
+                ImGuiNative.ImGuiTextRange_split(NativePtr, separator, nativeOut);
             }
         }
     }

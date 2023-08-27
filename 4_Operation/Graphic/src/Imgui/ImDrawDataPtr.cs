@@ -84,21 +84,21 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Clear()
         {
-            ImGuiNative.ImDrawData_Clear((ImDrawData*)(NativePtr));
+            ImGuiNative.ImDrawData_Clear(NativePtr);
         }
         /// <summary>
         /// Des the index all buffers
         /// </summary>
         public void DeIndexAllBuffers()
         {
-            ImGuiNative.ImDrawData_DeIndexAllBuffers((ImDrawData*)(NativePtr));
+            ImGuiNative.ImDrawData_DeIndexAllBuffers(NativePtr);
         }
         /// <summary>
         /// Destroys this instance
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImDrawData_destroy((ImDrawData*)(NativePtr));
+            ImGuiNative.ImDrawData_destroy(NativePtr);
         }
         /// <summary>
         /// Scales the clip rects using the specified fb scale
@@ -106,7 +106,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="fbScale">The fb scale</param>
         public void ScaleClipRects(Vector2 fbScale)
         {
-            ImGuiNative.ImDrawData_ScaleClipRects((ImDrawData*)(NativePtr), fbScale);
+            ImGuiNative.ImDrawData_ScaleClipRects(NativePtr, fbScale);
         }
     }
 }

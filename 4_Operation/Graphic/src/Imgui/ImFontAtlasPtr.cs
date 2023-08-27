@@ -139,7 +139,7 @@ namespace Alis.Core.Graphic.Imgui
         {
             ImFont* nativeFont = font.NativePtr;
             Vector2 offset = new Vector2();
-            int ret = ImGuiNative.ImFontAtlas_AddCustomRectFontGlyph((ImFontAtlas*)(NativePtr), nativeFont, id, width, height, advanceX, offset);
+            int ret = ImGuiNative.ImFontAtlas_AddCustomRectFontGlyph(NativePtr, nativeFont, id, width, height, advanceX, offset);
             return ret;
         }
         /// <summary>
@@ -155,7 +155,7 @@ namespace Alis.Core.Graphic.Imgui
         public int AddCustomRectFontGlyph(ImFontPtr font, ushort id, int width, int height, float advanceX, Vector2 offset)
         {
             ImFont* nativeFont = font.NativePtr;
-            int ret = ImGuiNative.ImFontAtlas_AddCustomRectFontGlyph((ImFontAtlas*)(NativePtr), nativeFont, id, width, height, advanceX, offset);
+            int ret = ImGuiNative.ImFontAtlas_AddCustomRectFontGlyph(NativePtr, nativeFont, id, width, height, advanceX, offset);
             return ret;
         }
         /// <summary>
@@ -166,7 +166,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The ret</returns>
         public int AddCustomRectRegular(int width, int height)
         {
-            int ret = ImGuiNative.ImFontAtlas_AddCustomRectRegular((ImFontAtlas*)(NativePtr), width, height);
+            int ret = ImGuiNative.ImFontAtlas_AddCustomRectRegular(NativePtr, width, height);
             return ret;
         }
         /// <summary>
@@ -177,7 +177,7 @@ namespace Alis.Core.Graphic.Imgui
         public ImFontPtr AddFont(ImFontConfigPtr fontCfg)
         {
             ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
-            ImFont* ret = ImGuiNative.ImFontAtlas_AddFont((ImFontAtlas*)(NativePtr), nativeFontCfg);
+            ImFont* ret = ImGuiNative.ImFontAtlas_AddFont(NativePtr, nativeFontCfg);
             return new ImFontPtr(ret);
         }
         /// <summary>
@@ -187,7 +187,7 @@ namespace Alis.Core.Graphic.Imgui
         public ImFontPtr AddFontDefault()
         {
             ImFontConfig* fontCfg = null;
-            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontDefault((ImFontAtlas*)(NativePtr), fontCfg);
+            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontDefault(NativePtr, fontCfg);
             return new ImFontPtr(ret);
         }
         /// <summary>
@@ -198,7 +198,7 @@ namespace Alis.Core.Graphic.Imgui
         public ImFontPtr AddFontDefault(ImFontConfigPtr fontCfg)
         {
             ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
-            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontDefault((ImFontAtlas*)(NativePtr), nativeFontCfg);
+            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontDefault(NativePtr, nativeFontCfg);
             return new ImFontPtr(ret);
         }
         /// <summary>
@@ -229,7 +229,7 @@ namespace Alis.Core.Graphic.Imgui
             else { nativeFilename = null; }
             ImFontConfig* fontCfg = null;
             ushort* glyphRanges = null;
-            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF((ImFontAtlas*)(NativePtr), nativeFilename, sizePixels, fontCfg, glyphRanges);
+            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF(NativePtr, nativeFilename, sizePixels, fontCfg, glyphRanges);
             if (filenameByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFilename);
@@ -265,7 +265,7 @@ namespace Alis.Core.Graphic.Imgui
             else { nativeFilename = null; }
             ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
             ushort* glyphRanges = null;
-            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF((ImFontAtlas*)(NativePtr), nativeFilename, sizePixels, nativeFontCfg, glyphRanges);
+            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF(NativePtr, nativeFilename, sizePixels, nativeFontCfg, glyphRanges);
             if (filenameByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFilename);
@@ -302,7 +302,7 @@ namespace Alis.Core.Graphic.Imgui
             else { nativeFilename = null; }
             ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
             ushort* nativeGlyphRanges = (ushort*)glyphRanges.ToPointer();
-            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF((ImFontAtlas*)(NativePtr), nativeFilename, sizePixels, nativeFontCfg, nativeGlyphRanges);
+            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromFileTTF(NativePtr, nativeFilename, sizePixels, nativeFontCfg, nativeGlyphRanges);
             if (filenameByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFilename);
@@ -337,7 +337,7 @@ namespace Alis.Core.Graphic.Imgui
             else { nativeCompressedFontDataBase85 = null; }
             ImFontConfig* fontCfg = null;
             ushort* glyphRanges = null;
-            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF((ImFontAtlas*)(NativePtr), nativeCompressedFontDataBase85, sizePixels, fontCfg, glyphRanges);
+            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF(NativePtr, nativeCompressedFontDataBase85, sizePixels, fontCfg, glyphRanges);
             if (compressedFontDataBase85ByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeCompressedFontDataBase85);
@@ -373,7 +373,7 @@ namespace Alis.Core.Graphic.Imgui
             else { nativeCompressedFontDataBase85 = null; }
             ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
             ushort* glyphRanges = null;
-            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF((ImFontAtlas*)(NativePtr), nativeCompressedFontDataBase85, sizePixels, nativeFontCfg, glyphRanges);
+            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF(NativePtr, nativeCompressedFontDataBase85, sizePixels, nativeFontCfg, glyphRanges);
             if (compressedFontDataBase85ByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeCompressedFontDataBase85);
@@ -410,7 +410,7 @@ namespace Alis.Core.Graphic.Imgui
             else { nativeCompressedFontDataBase85 = null; }
             ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
             ushort* nativeGlyphRanges = (ushort*)glyphRanges.ToPointer();
-            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF((ImFontAtlas*)(NativePtr), nativeCompressedFontDataBase85, sizePixels, nativeFontCfg, nativeGlyphRanges);
+            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedBase85TTF(NativePtr, nativeCompressedFontDataBase85, sizePixels, nativeFontCfg, nativeGlyphRanges);
             if (compressedFontDataBase85ByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeCompressedFontDataBase85);
@@ -426,10 +426,10 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFontFromMemoryCompressedTtf(IntPtr compressedFontData, int compressedFontSize, float sizePixels)
         {
-            void* nativeCompressedFontData = (void*)compressedFontData.ToPointer();
+            void* nativeCompressedFontData = compressedFontData.ToPointer();
             ImFontConfig* fontCfg = null;
             ushort* glyphRanges = null;
-            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF((ImFontAtlas*)(NativePtr), nativeCompressedFontData, compressedFontSize, sizePixels, fontCfg, glyphRanges);
+            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF(NativePtr, nativeCompressedFontData, compressedFontSize, sizePixels, fontCfg, glyphRanges);
             return new ImFontPtr(ret);
         }
         /// <summary>
@@ -442,10 +442,10 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFontFromMemoryCompressedTtf(IntPtr compressedFontData, int compressedFontSize, float sizePixels, ImFontConfigPtr fontCfg)
         {
-            void* nativeCompressedFontData = (void*)compressedFontData.ToPointer();
+            void* nativeCompressedFontData = compressedFontData.ToPointer();
             ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
             ushort* glyphRanges = null;
-            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF((ImFontAtlas*)(NativePtr), nativeCompressedFontData, compressedFontSize, sizePixels, nativeFontCfg, glyphRanges);
+            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF(NativePtr, nativeCompressedFontData, compressedFontSize, sizePixels, nativeFontCfg, glyphRanges);
             return new ImFontPtr(ret);
         }
         /// <summary>
@@ -459,10 +459,10 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFontFromMemoryCompressedTtf(IntPtr compressedFontData, int compressedFontSize, float sizePixels, ImFontConfigPtr fontCfg, IntPtr glyphRanges)
         {
-            void* nativeCompressedFontData = (void*)compressedFontData.ToPointer();
+            void* nativeCompressedFontData = compressedFontData.ToPointer();
             ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
             ushort* nativeGlyphRanges = (ushort*)glyphRanges.ToPointer();
-            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF((ImFontAtlas*)(NativePtr), nativeCompressedFontData, compressedFontSize, sizePixels, nativeFontCfg, nativeGlyphRanges);
+            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryCompressedTTF(NativePtr, nativeCompressedFontData, compressedFontSize, sizePixels, nativeFontCfg, nativeGlyphRanges);
             return new ImFontPtr(ret);
         }
         /// <summary>
@@ -474,10 +474,10 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFontFromMemoryTtf(IntPtr fontData, int fontSize, float sizePixels)
         {
-            void* nativeFontData = (void*)fontData.ToPointer();
+            void* nativeFontData = fontData.ToPointer();
             ImFontConfig* fontCfg = null;
             ushort* glyphRanges = null;
-            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF((ImFontAtlas*)(NativePtr), nativeFontData, fontSize, sizePixels, fontCfg, glyphRanges);
+            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF(NativePtr, nativeFontData, fontSize, sizePixels, fontCfg, glyphRanges);
             return new ImFontPtr(ret);
         }
         /// <summary>
@@ -490,10 +490,10 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFontFromMemoryTtf(IntPtr fontData, int fontSize, float sizePixels, ImFontConfigPtr fontCfg)
         {
-            void* nativeFontData = (void*)fontData.ToPointer();
+            void* nativeFontData = fontData.ToPointer();
             ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
             ushort* glyphRanges = null;
-            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF((ImFontAtlas*)(NativePtr), nativeFontData, fontSize, sizePixels, nativeFontCfg, glyphRanges);
+            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF(NativePtr, nativeFontData, fontSize, sizePixels, nativeFontCfg, glyphRanges);
             return new ImFontPtr(ret);
         }
         /// <summary>
@@ -507,10 +507,10 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The im font ptr</returns>
         public ImFontPtr AddFontFromMemoryTtf(IntPtr fontData, int fontSize, float sizePixels, ImFontConfigPtr fontCfg, IntPtr glyphRanges)
         {
-            void* nativeFontData = (void*)fontData.ToPointer();
+            void* nativeFontData = fontData.ToPointer();
             ImFontConfig* nativeFontCfg = fontCfg.NativePtr;
             ushort* nativeGlyphRanges = (ushort*)glyphRanges.ToPointer();
-            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF((ImFontAtlas*)(NativePtr), nativeFontData, fontSize, sizePixels, nativeFontCfg, nativeGlyphRanges);
+            ImFont* ret = ImGuiNative.ImFontAtlas_AddFontFromMemoryTTF(NativePtr, nativeFontData, fontSize, sizePixels, nativeFontCfg, nativeGlyphRanges);
             return new ImFontPtr(ret);
         }
         /// <summary>
@@ -519,7 +519,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The bool</returns>
         public bool Build()
         {
-            byte ret = ImGuiNative.ImFontAtlas_Build((ImFontAtlas*)(NativePtr));
+            byte ret = ImGuiNative.ImFontAtlas_Build(NativePtr);
             return ret != 0;
         }
         /// <summary>
@@ -535,7 +535,7 @@ namespace Alis.Core.Graphic.Imgui
             {
                 fixed (Vector2* nativeOutUvMax = &outUvMax)
                 {
-                    ImGuiNative.ImFontAtlas_CalcCustomRectUV((ImFontAtlas*)(NativePtr), nativeRect, nativeOutUvMin, nativeOutUvMax);
+                    ImGuiNative.ImFontAtlas_CalcCustomRectUV(NativePtr, nativeRect, nativeOutUvMin, nativeOutUvMax);
                 }
             }
         }
@@ -544,35 +544,35 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Clear()
         {
-            ImGuiNative.ImFontAtlas_Clear((ImFontAtlas*)(NativePtr));
+            ImGuiNative.ImFontAtlas_Clear(NativePtr);
         }
         /// <summary>
         /// Clears the fonts
         /// </summary>
         public void ClearFonts()
         {
-            ImGuiNative.ImFontAtlas_ClearFonts((ImFontAtlas*)(NativePtr));
+            ImGuiNative.ImFontAtlas_ClearFonts(NativePtr);
         }
         /// <summary>
         /// Clears the input data
         /// </summary>
         public void ClearInputData()
         {
-            ImGuiNative.ImFontAtlas_ClearInputData((ImFontAtlas*)(NativePtr));
+            ImGuiNative.ImFontAtlas_ClearInputData(NativePtr);
         }
         /// <summary>
         /// Clears the tex data
         /// </summary>
         public void ClearTexData()
         {
-            ImGuiNative.ImFontAtlas_ClearTexData((ImFontAtlas*)(NativePtr));
+            ImGuiNative.ImFontAtlas_ClearTexData(NativePtr);
         }
         /// <summary>
         /// Destroys this instance
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImFontAtlas_destroy((ImFontAtlas*)(NativePtr));
+            ImGuiNative.ImFontAtlas_destroy(NativePtr);
         }
         /// <summary>
         /// Gets the custom rect by index using the specified index
@@ -581,7 +581,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The im font atlas custom rect ptr</returns>
         public ImFontAtlasCustomRectPtr GetCustomRectByIndex(int index)
         {
-            ImFontAtlasCustomRect* ret = ImGuiNative.ImFontAtlas_GetCustomRectByIndex((ImFontAtlas*)(NativePtr), index);
+            ImFontAtlasCustomRect* ret = ImGuiNative.ImFontAtlas_GetCustomRectByIndex(NativePtr, index);
             return new ImFontAtlasCustomRectPtr(ret);
         }
         /// <summary>
@@ -590,7 +590,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The int ptr</returns>
         public IntPtr GetGlyphRangesChineseFull()
         {
-            ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesChineseFull((ImFontAtlas*)(NativePtr));
+            ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesChineseFull(NativePtr);
             return (IntPtr)ret;
         }
         /// <summary>
@@ -599,7 +599,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The int ptr</returns>
         public IntPtr GetGlyphRangesChineseSimplifiedCommon()
         {
-            ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesChineseSimplifiedCommon((ImFontAtlas*)(NativePtr));
+            ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesChineseSimplifiedCommon(NativePtr);
             return (IntPtr)ret;
         }
         /// <summary>
@@ -608,7 +608,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The int ptr</returns>
         public IntPtr GetGlyphRangesCyrillic()
         {
-            ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesCyrillic((ImFontAtlas*)(NativePtr));
+            ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesCyrillic(NativePtr);
             return (IntPtr)ret;
         }
         /// <summary>
@@ -617,7 +617,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The int ptr</returns>
         public IntPtr GetGlyphRangesDefault()
         {
-            ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesDefault((ImFontAtlas*)(NativePtr));
+            ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesDefault(NativePtr);
             return (IntPtr)ret;
         }
         /// <summary>
@@ -626,7 +626,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The int ptr</returns>
         public IntPtr GetGlyphRangesGreek()
         {
-            ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesGreek((ImFontAtlas*)(NativePtr));
+            ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesGreek(NativePtr);
             return (IntPtr)ret;
         }
         /// <summary>
@@ -635,7 +635,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The int ptr</returns>
         public IntPtr GetGlyphRangesJapanese()
         {
-            ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesJapanese((ImFontAtlas*)(NativePtr));
+            ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesJapanese(NativePtr);
             return (IntPtr)ret;
         }
         /// <summary>
@@ -644,7 +644,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The int ptr</returns>
         public IntPtr GetGlyphRangesKorean()
         {
-            ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesKorean((ImFontAtlas*)(NativePtr));
+            ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesKorean(NativePtr);
             return (IntPtr)ret;
         }
         /// <summary>
@@ -653,7 +653,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The int ptr</returns>
         public IntPtr GetGlyphRangesThai()
         {
-            ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesThai((ImFontAtlas*)(NativePtr));
+            ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesThai(NativePtr);
             return (IntPtr)ret;
         }
         /// <summary>
@@ -662,7 +662,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The int ptr</returns>
         public IntPtr GetGlyphRangesVietnamese()
         {
-            ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesVietnamese((ImFontAtlas*)(NativePtr));
+            ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesVietnamese(NativePtr);
             return (IntPtr)ret;
         }
         /// <summary>
@@ -684,7 +684,7 @@ namespace Alis.Core.Graphic.Imgui
                     {
                         fixed (Vector2* nativeOutUvFill = &outUvFill)
                         {
-                            byte ret = ImGuiNative.ImFontAtlas_GetMouseCursorTexData((ImFontAtlas*)(NativePtr), cursor, nativeOutOffset, nativeOutSize, nativeOutUvBorder, nativeOutUvFill);
+                            byte ret = ImGuiNative.ImFontAtlas_GetMouseCursorTexData(NativePtr, cursor, nativeOutOffset, nativeOutSize, nativeOutUvBorder, nativeOutUvFill);
                             return ret != 0;
                         }
                     }
@@ -706,7 +706,7 @@ namespace Alis.Core.Graphic.Imgui
                 {
                     fixed (int* nativeOutHeight = &outHeight)
                     {
-                        ImGuiNative.ImFontAtlas_GetTexDataAsAlpha8((ImFontAtlas*)(NativePtr), nativeOutPixels, nativeOutWidth, nativeOutHeight, outBytesPerPixel);
+                        ImGuiNative.ImFontAtlas_GetTexDataAsAlpha8(NativePtr, nativeOutPixels, nativeOutWidth, nativeOutHeight, outBytesPerPixel);
                     }
                 }
             }
@@ -728,7 +728,7 @@ namespace Alis.Core.Graphic.Imgui
                     {
                         fixed (int* nativeOutBytesPerPixel = &outBytesPerPixel)
                         {
-                            ImGuiNative.ImFontAtlas_GetTexDataAsAlpha8((ImFontAtlas*)(NativePtr), nativeOutPixels, nativeOutWidth, nativeOutHeight, nativeOutBytesPerPixel);
+                            ImGuiNative.ImFontAtlas_GetTexDataAsAlpha8(NativePtr, nativeOutPixels, nativeOutWidth, nativeOutHeight, nativeOutBytesPerPixel);
                         }
                     }
                 }
@@ -749,7 +749,7 @@ namespace Alis.Core.Graphic.Imgui
                 {
                     fixed (int* nativeOutHeight = &outHeight)
                     {
-                        ImGuiNative.ImFontAtlas_GetTexDataAsAlpha8((ImFontAtlas*)(NativePtr), nativeOutPixels, nativeOutWidth, nativeOutHeight, outBytesPerPixel);
+                        ImGuiNative.ImFontAtlas_GetTexDataAsAlpha8(NativePtr, nativeOutPixels, nativeOutWidth, nativeOutHeight, outBytesPerPixel);
                     }
                 }
             }
@@ -771,7 +771,7 @@ namespace Alis.Core.Graphic.Imgui
                     {
                         fixed (int* nativeOutBytesPerPixel = &outBytesPerPixel)
                         {
-                            ImGuiNative.ImFontAtlas_GetTexDataAsAlpha8((ImFontAtlas*)(NativePtr), nativeOutPixels, nativeOutWidth, nativeOutHeight, nativeOutBytesPerPixel);
+                            ImGuiNative.ImFontAtlas_GetTexDataAsAlpha8(NativePtr, nativeOutPixels, nativeOutWidth, nativeOutHeight, nativeOutBytesPerPixel);
                         }
                     }
                 }
@@ -792,7 +792,7 @@ namespace Alis.Core.Graphic.Imgui
                 {
                     fixed (int* nativeOutHeight = &outHeight)
                     {
-                        ImGuiNative.ImFontAtlas_GetTexDataAsRGBA32((ImFontAtlas*)(NativePtr), nativeOutPixels, nativeOutWidth, nativeOutHeight, outBytesPerPixel);
+                        ImGuiNative.ImFontAtlas_GetTexDataAsRGBA32(NativePtr, nativeOutPixels, nativeOutWidth, nativeOutHeight, outBytesPerPixel);
                     }
                 }
             }
@@ -814,7 +814,7 @@ namespace Alis.Core.Graphic.Imgui
                     {
                         fixed (int* nativeOutBytesPerPixel = &outBytesPerPixel)
                         {
-                            ImGuiNative.ImFontAtlas_GetTexDataAsRGBA32((ImFontAtlas*)(NativePtr), nativeOutPixels, nativeOutWidth, nativeOutHeight, nativeOutBytesPerPixel);
+                            ImGuiNative.ImFontAtlas_GetTexDataAsRGBA32(NativePtr, nativeOutPixels, nativeOutWidth, nativeOutHeight, nativeOutBytesPerPixel);
                         }
                     }
                 }
@@ -835,7 +835,7 @@ namespace Alis.Core.Graphic.Imgui
                 {
                     fixed (int* nativeOutHeight = &outHeight)
                     {
-                        ImGuiNative.ImFontAtlas_GetTexDataAsRGBA32((ImFontAtlas*)(NativePtr), nativeOutPixels, nativeOutWidth, nativeOutHeight, outBytesPerPixel);
+                        ImGuiNative.ImFontAtlas_GetTexDataAsRGBA32(NativePtr, nativeOutPixels, nativeOutWidth, nativeOutHeight, outBytesPerPixel);
                     }
                 }
             }
@@ -857,7 +857,7 @@ namespace Alis.Core.Graphic.Imgui
                     {
                         fixed (int* nativeOutBytesPerPixel = &outBytesPerPixel)
                         {
-                            ImGuiNative.ImFontAtlas_GetTexDataAsRGBA32((ImFontAtlas*)(NativePtr), nativeOutPixels, nativeOutWidth, nativeOutHeight, nativeOutBytesPerPixel);
+                            ImGuiNative.ImFontAtlas_GetTexDataAsRGBA32(NativePtr, nativeOutPixels, nativeOutWidth, nativeOutHeight, nativeOutBytesPerPixel);
                         }
                     }
                 }
@@ -869,7 +869,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The bool</returns>
         public bool IsBuilt()
         {
-            byte ret = ImGuiNative.ImFontAtlas_IsBuilt((ImFontAtlas*)(NativePtr));
+            byte ret = ImGuiNative.ImFontAtlas_IsBuilt(NativePtr);
             return ret != 0;
         }
         /// <summary>
@@ -878,7 +878,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="id">The id</param>
         public void SetTexId(IntPtr id)
         {
-            ImGuiNative.ImFontAtlas_SetTexID((ImFontAtlas*)(NativePtr), id);
+            ImGuiNative.ImFontAtlas_SetTexID(NativePtr, id);
         }
     }
 }

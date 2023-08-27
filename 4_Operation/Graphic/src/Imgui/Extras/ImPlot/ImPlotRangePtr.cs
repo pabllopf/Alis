@@ -58,7 +58,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <returns>The ret</returns>
         public double Clamp(double value)
         {
-            double ret = ImPlotNative.ImPlotRange_Clamp((ImPlotRange*)(NativePtr), value);
+            double ret = ImPlotNative.ImPlotRange_Clamp(NativePtr, value);
             return ret;
         }
         /// <summary>
@@ -68,7 +68,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <returns>The bool</returns>
         public bool Contains(double value)
         {
-            byte ret = ImPlotNative.ImPlotRange_Contains((ImPlotRange*)(NativePtr), value);
+            byte ret = ImPlotNative.ImPlotRange_Contains(NativePtr, value);
             return ret != 0;
         }
         /// <summary>
@@ -76,7 +76,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// </summary>
         public void Destroy()
         {
-            ImPlotNative.ImPlotRange_destroy((ImPlotRange*)(NativePtr));
+            ImPlotNative.ImPlotRange_destroy(NativePtr);
         }
         /// <summary>
         /// Sizes this instance
@@ -84,7 +84,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <returns>The ret</returns>
         public double Size()
         {
-            double ret = ImPlotNative.ImPlotRange_Size((ImPlotRange*)(NativePtr));
+            double ret = ImPlotNative.ImPlotRange_Size(NativePtr);
             return ret;
         }
     }

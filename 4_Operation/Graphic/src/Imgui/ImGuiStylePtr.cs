@@ -213,7 +213,7 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImGuiStyle_destroy((ImGuiStyle*)(NativePtr));
+            ImGuiNative.ImGuiStyle_destroy(NativePtr);
         }
         /// <summary>
         /// Scales the all sizes using the specified scale factor
@@ -221,7 +221,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="scaleFactor">The scale factor</param>
         public void ScaleAllSizes(float scaleFactor)
         {
-            ImGuiNative.ImGuiStyle_ScaleAllSizes((ImGuiStyle*)(NativePtr), scaleFactor);
+            ImGuiNative.ImGuiStyle_ScaleAllSizes(NativePtr, scaleFactor);
         }
     }
 }

@@ -75,7 +75,7 @@ namespace Alis.Core.Graphic.Imgui
         public void Begin(int itemsCount)
         {
             float itemsHeight = -1.0f;
-            ImGuiNative.ImGuiListClipper_Begin((ImGuiListClipper*)(NativePtr), itemsCount, itemsHeight);
+            ImGuiNative.ImGuiListClipper_Begin(NativePtr, itemsCount, itemsHeight);
         }
         /// <summary>
         /// Begins the items count
@@ -84,21 +84,21 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="itemsHeight">The items height</param>
         public void Begin(int itemsCount, float itemsHeight)
         {
-            ImGuiNative.ImGuiListClipper_Begin((ImGuiListClipper*)(NativePtr), itemsCount, itemsHeight);
+            ImGuiNative.ImGuiListClipper_Begin(NativePtr, itemsCount, itemsHeight);
         }
         /// <summary>
         /// Destroys this instance
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImGuiListClipper_destroy((ImGuiListClipper*)(NativePtr));
+            ImGuiNative.ImGuiListClipper_destroy(NativePtr);
         }
         /// <summary>
         /// Ends this instance
         /// </summary>
         public void End()
         {
-            ImGuiNative.ImGuiListClipper_End((ImGuiListClipper*)(NativePtr));
+            ImGuiNative.ImGuiListClipper_End(NativePtr);
         }
         /// <summary>
         /// Forces the display range by indices using the specified item min
@@ -107,7 +107,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="itemMax">The item max</param>
         public void ForceDisplayRangeByIndices(int itemMin, int itemMax)
         {
-            ImGuiNative.ImGuiListClipper_ForceDisplayRangeByIndices((ImGuiListClipper*)(NativePtr), itemMin, itemMax);
+            ImGuiNative.ImGuiListClipper_ForceDisplayRangeByIndices(NativePtr, itemMin, itemMax);
         }
         /// <summary>
         /// Describes whether this instance step
@@ -115,7 +115,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The bool</returns>
         public bool Step()
         {
-            byte ret = ImGuiNative.ImGuiListClipper_Step((ImGuiListClipper*)(NativePtr));
+            byte ret = ImGuiNative.ImGuiListClipper_Step(NativePtr);
             return ret != 0;
         }
     }

@@ -80,7 +80,7 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImGuiWindowClass_destroy((ImGuiWindowClass*)(NativePtr));
+            ImGuiNative.ImGuiWindowClass_destroy(NativePtr);
         }
     }
 }

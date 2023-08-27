@@ -61,21 +61,21 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Build()
         {
-            ImGuiNative.ImGuiTextFilter_Build((ImGuiTextFilter*)(NativePtr));
+            ImGuiNative.ImGuiTextFilter_Build(NativePtr);
         }
         /// <summary>
         /// Clears this instance
         /// </summary>
         public void Clear()
         {
-            ImGuiNative.ImGuiTextFilter_Clear((ImGuiTextFilter*)(NativePtr));
+            ImGuiNative.ImGuiTextFilter_Clear(NativePtr);
         }
         /// <summary>
         /// Destroys this instance
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImGuiTextFilter_destroy((ImGuiTextFilter*)(NativePtr));
+            ImGuiNative.ImGuiTextFilter_destroy(NativePtr);
         }
         /// <summary>
         /// Describes whether this instance draw
@@ -98,7 +98,7 @@ namespace Alis.Core.Graphic.Imgui
             int nativeLabelOffset = Util.GetUtf8("Filter(inc,-exc)", nativeLabel, labelByteCount);
             nativeLabel[nativeLabelOffset] = 0;
             float width = 0.0f;
-            byte ret = ImGuiNative.ImGuiTextFilter_Draw((ImGuiTextFilter*)(NativePtr), nativeLabel, width);
+            byte ret = ImGuiNative.ImGuiTextFilter_Draw(NativePtr, nativeLabel, width);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
@@ -131,7 +131,7 @@ namespace Alis.Core.Graphic.Imgui
             }
             else { nativeLabel = null; }
             float width = 0.0f;
-            byte ret = ImGuiNative.ImGuiTextFilter_Draw((ImGuiTextFilter*)(NativePtr), nativeLabel, width);
+            byte ret = ImGuiNative.ImGuiTextFilter_Draw(NativePtr, nativeLabel, width);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
@@ -164,7 +164,7 @@ namespace Alis.Core.Graphic.Imgui
                 nativeLabel[nativeLabelOffset] = 0;
             }
             else { nativeLabel = null; }
-            byte ret = ImGuiNative.ImGuiTextFilter_Draw((ImGuiTextFilter*)(NativePtr), nativeLabel, width);
+            byte ret = ImGuiNative.ImGuiTextFilter_Draw(NativePtr, nativeLabel, width);
             if (labelByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeLabel);
@@ -177,7 +177,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The bool</returns>
         public bool IsActive()
         {
-            byte ret = ImGuiNative.ImGuiTextFilter_IsActive((ImGuiTextFilter*)(NativePtr));
+            byte ret = ImGuiNative.ImGuiTextFilter_IsActive(NativePtr);
             return ret != 0;
         }
         /// <summary>
@@ -206,7 +206,7 @@ namespace Alis.Core.Graphic.Imgui
             }
             else { nativeText = null; }
             byte* nativeTextEnd = null;
-            byte ret = ImGuiNative.ImGuiTextFilter_PassFilter((ImGuiTextFilter*)(NativePtr), nativeText, nativeTextEnd);
+            byte ret = ImGuiNative.ImGuiTextFilter_PassFilter(NativePtr, nativeText, nativeTextEnd);
             if (textByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeText);

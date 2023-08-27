@@ -96,7 +96,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// </summary>
         public void Destroy()
         {
-            ImPlotNative.ImPlotInputMap_destroy((ImPlotInputMap*)(NativePtr));
+            ImPlotNative.ImPlotInputMap_destroy(NativePtr);
         }
     }
 }

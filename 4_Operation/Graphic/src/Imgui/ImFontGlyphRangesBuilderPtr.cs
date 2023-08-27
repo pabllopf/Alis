@@ -52,7 +52,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="c">The </param>
         public void AddChar(ushort c)
         {
-            ImGuiNative.ImFontGlyphRangesBuilder_AddChar((ImFontGlyphRangesBuilder*)(NativePtr), c);
+            ImGuiNative.ImFontGlyphRangesBuilder_AddChar(NativePtr, c);
         }
         /// <summary>
         /// Adds the ranges using the specified ranges
@@ -61,7 +61,7 @@ namespace Alis.Core.Graphic.Imgui
         public void AddRanges(IntPtr ranges)
         {
             ushort* nativeRanges = (ushort*)ranges.ToPointer();
-            ImGuiNative.ImFontGlyphRangesBuilder_AddRanges((ImFontGlyphRangesBuilder*)(NativePtr), nativeRanges);
+            ImGuiNative.ImFontGlyphRangesBuilder_AddRanges(NativePtr, nativeRanges);
         }
         /// <summary>
         /// Adds the text using the specified text
@@ -88,7 +88,7 @@ namespace Alis.Core.Graphic.Imgui
             }
             else { nativeText = null; }
             byte* nativeTextEnd = null;
-            ImGuiNative.ImFontGlyphRangesBuilder_AddText((ImFontGlyphRangesBuilder*)(NativePtr), nativeText, nativeTextEnd);
+            ImGuiNative.ImFontGlyphRangesBuilder_AddText(NativePtr, nativeText, nativeTextEnd);
             if (textByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeText);
@@ -102,7 +102,7 @@ namespace Alis.Core.Graphic.Imgui
         {
             fixed (ImVector* nativeOutRanges = &outRanges)
             {
-                ImGuiNative.ImFontGlyphRangesBuilder_BuildRanges((ImFontGlyphRangesBuilder*)(NativePtr), nativeOutRanges);
+                ImGuiNative.ImFontGlyphRangesBuilder_BuildRanges(NativePtr, nativeOutRanges);
             }
         }
         /// <summary>
@@ -110,14 +110,14 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Clear()
         {
-            ImGuiNative.ImFontGlyphRangesBuilder_Clear((ImFontGlyphRangesBuilder*)(NativePtr));
+            ImGuiNative.ImFontGlyphRangesBuilder_Clear(NativePtr);
         }
         /// <summary>
         /// Destroys this instance
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImFontGlyphRangesBuilder_destroy((ImFontGlyphRangesBuilder*)(NativePtr));
+            ImGuiNative.ImFontGlyphRangesBuilder_destroy(NativePtr);
         }
         /// <summary>
         /// Describes whether this instance get bit
@@ -126,7 +126,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The bool</returns>
         public bool GetBit(uint n)
         {
-            byte ret = ImGuiNative.ImFontGlyphRangesBuilder_GetBit((ImFontGlyphRangesBuilder*)(NativePtr), n);
+            byte ret = ImGuiNative.ImFontGlyphRangesBuilder_GetBit(NativePtr, n);
             return ret != 0;
         }
         /// <summary>
@@ -135,7 +135,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="n">The </param>
         public void SetBit(uint n)
         {
-            ImGuiNative.ImFontGlyphRangesBuilder_SetBit((ImFontGlyphRangesBuilder*)(NativePtr), n);
+            ImGuiNative.ImFontGlyphRangesBuilder_SetBit(NativePtr, n);
         }
     }
 }

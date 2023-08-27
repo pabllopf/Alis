@@ -133,7 +133,7 @@ namespace Alis.Core.Graphic.Imgui
         public void AddGlyph(ImFontConfigPtr srcCfg, ushort c, float x0, float y0, float x1, float y1, float u0, float v0, float u1, float v1, float advanceX)
         {
             ImFontConfig* nativeSrcCfg = srcCfg.NativePtr;
-            ImGuiNative.ImFont_AddGlyph((ImFont*)(NativePtr), nativeSrcCfg, c, x0, y0, x1, y1, u0, v0, u1, v1, advanceX);
+            ImGuiNative.ImFont_AddGlyph(NativePtr, nativeSrcCfg, c, x0, y0, x1, y1, u0, v0, u1, v1, advanceX);
         }
         /// <summary>
         /// Adds the remap char using the specified dst
@@ -143,7 +143,7 @@ namespace Alis.Core.Graphic.Imgui
         public void AddRemapChar(ushort dst, ushort src)
         {
             byte overwriteDst = 1;
-            ImGuiNative.ImFont_AddRemapChar((ImFont*)(NativePtr), dst, src, overwriteDst);
+            ImGuiNative.ImFont_AddRemapChar(NativePtr, dst, src, overwriteDst);
         }
         /// <summary>
         /// Adds the remap char using the specified dst
@@ -154,28 +154,28 @@ namespace Alis.Core.Graphic.Imgui
         public void AddRemapChar(ushort dst, ushort src, bool overwriteDst)
         {
             byte nativeOverwriteDst = overwriteDst ? (byte)1 : (byte)0;
-            ImGuiNative.ImFont_AddRemapChar((ImFont*)(NativePtr), dst, src, nativeOverwriteDst);
+            ImGuiNative.ImFont_AddRemapChar(NativePtr, dst, src, nativeOverwriteDst);
         }
         /// <summary>
         /// Builds the lookup table
         /// </summary>
         public void BuildLookupTable()
         {
-            ImGuiNative.ImFont_BuildLookupTable((ImFont*)(NativePtr));
+            ImGuiNative.ImFont_BuildLookupTable(NativePtr);
         }
         /// <summary>
         /// Clears the output data
         /// </summary>
         public void ClearOutputData()
         {
-            ImGuiNative.ImFont_ClearOutputData((ImFont*)(NativePtr));
+            ImGuiNative.ImFont_ClearOutputData(NativePtr);
         }
         /// <summary>
         /// Destroys this instance
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImFont_destroy((ImFont*)(NativePtr));
+            ImGuiNative.ImFont_destroy(NativePtr);
         }
         /// <summary>
         /// Finds the glyph using the specified c
@@ -184,7 +184,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The im font glyph ptr</returns>
         public ImFontGlyphPtr FindGlyph(ushort c)
         {
-            ImFontGlyph* ret = ImGuiNative.ImFont_FindGlyph((ImFont*)(NativePtr), c);
+            ImFontGlyph* ret = ImGuiNative.ImFont_FindGlyph(NativePtr, c);
             return new ImFontGlyphPtr(ret);
         }
         /// <summary>
@@ -194,7 +194,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The im font glyph ptr</returns>
         public ImFontGlyphPtr FindGlyphNoFallback(ushort c)
         {
-            ImFontGlyph* ret = ImGuiNative.ImFont_FindGlyphNoFallback((ImFont*)(NativePtr), c);
+            ImFontGlyph* ret = ImGuiNative.ImFont_FindGlyphNoFallback(NativePtr, c);
             return new ImFontGlyphPtr(ret);
         }
         /// <summary>
@@ -204,7 +204,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The ret</returns>
         public float GetCharAdvance(ushort c)
         {
-            float ret = ImGuiNative.ImFont_GetCharAdvance((ImFont*)(NativePtr), c);
+            float ret = ImGuiNative.ImFont_GetCharAdvance(NativePtr, c);
             return ret;
         }
         /// <summary>
@@ -213,7 +213,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The string</returns>
         public string GetDebugName()
         {
-            byte* ret = ImGuiNative.ImFont_GetDebugName((ImFont*)(NativePtr));
+            byte* ret = ImGuiNative.ImFont_GetDebugName(NativePtr);
             return Util.StringFromPtr(ret);
         }
         /// <summary>
@@ -222,7 +222,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="newSize">The new size</param>
         public void GrowIndex(int newSize)
         {
-            ImGuiNative.ImFont_GrowIndex((ImFont*)(NativePtr), newSize);
+            ImGuiNative.ImFont_GrowIndex(NativePtr, newSize);
         }
         /// <summary>
         /// Describes whether this instance is loaded
@@ -230,7 +230,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The bool</returns>
         public bool IsLoaded()
         {
-            byte ret = ImGuiNative.ImFont_IsLoaded((ImFont*)(NativePtr));
+            byte ret = ImGuiNative.ImFont_IsLoaded(NativePtr);
             return ret != 0;
         }
         /// <summary>
@@ -244,7 +244,7 @@ namespace Alis.Core.Graphic.Imgui
         public void RenderChar(ImDrawListPtr drawList, float size, Vector2 pos, uint col, ushort c)
         {
             ImDrawList* nativeDrawList = drawList.NativePtr;
-            ImGuiNative.ImFont_RenderChar((ImFont*)(NativePtr), nativeDrawList, size, pos, col, c);
+            ImGuiNative.ImFont_RenderChar(NativePtr, nativeDrawList, size, pos, col, c);
         }
         /// <summary>
         /// Sets the glyph visible using the specified c
@@ -254,7 +254,7 @@ namespace Alis.Core.Graphic.Imgui
         public void SetGlyphVisible(ushort c, bool visible)
         {
             byte nativeVisible = visible ? (byte)1 : (byte)0;
-            ImGuiNative.ImFont_SetGlyphVisible((ImFont*)(NativePtr), c, nativeVisible);
+            ImGuiNative.ImFont_SetGlyphVisible(NativePtr, c, nativeVisible);
         }
     }
 }

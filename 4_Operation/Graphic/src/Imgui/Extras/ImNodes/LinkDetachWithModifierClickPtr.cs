@@ -51,7 +51,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// </summary>
         public void Destroy()
         {
-            ImNodesNative.LinkDetachWithModifierClick_destroy((LinkDetachWithModifierClick*)(NativePtr));
+            ImNodesNative.LinkDetachWithModifierClick_destroy(NativePtr);
         }
     }
 }

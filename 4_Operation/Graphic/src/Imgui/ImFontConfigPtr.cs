@@ -124,7 +124,7 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImFontConfig_destroy((ImFontConfig*)(NativePtr));
+            ImGuiNative.ImFontConfig_destroy(NativePtr);
         }
     }
 }

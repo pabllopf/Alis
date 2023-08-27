@@ -58,7 +58,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         public ImPlotPoint Clamp(ImPlotPoint p)
         {
             ImPlotPoint retval;
-            ImPlotNative.ImPlotRect_Clamp_PlotPoInt(&retval, (ImPlotRect*)(NativePtr), p);
+            ImPlotNative.ImPlotRect_Clamp_PlotPoInt(&retval, NativePtr, p);
             return retval;
         }
         /// <summary>
@@ -70,7 +70,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         public ImPlotPoint Clamp(double x, double y)
         {
             ImPlotPoint retval;
-            ImPlotNative.ImPlotRect_Clamp_double(&retval, (ImPlotRect*)(NativePtr), x, y);
+            ImPlotNative.ImPlotRect_Clamp_double(&retval, NativePtr, x, y);
             return retval;
         }
         /// <summary>
@@ -80,7 +80,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <returns>The bool</returns>
         public bool Contains(ImPlotPoint p)
         {
-            byte ret = ImPlotNative.ImPlotRect_Contains_PlotPoInt((ImPlotRect*)(NativePtr), p);
+            byte ret = ImPlotNative.ImPlotRect_Contains_PlotPoInt(NativePtr, p);
             return ret != 0;
         }
         /// <summary>
@@ -91,7 +91,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// <returns>The bool</returns>
         public bool Contains(double x, double y)
         {
-            byte ret = ImPlotNative.ImPlotRect_Contains_double((ImPlotRect*)(NativePtr), x, y);
+            byte ret = ImPlotNative.ImPlotRect_Contains_double(NativePtr, x, y);
             return ret != 0;
         }
         /// <summary>
@@ -99,7 +99,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// </summary>
         public void Destroy()
         {
-            ImPlotNative.ImPlotRect_destroy((ImPlotRect*)(NativePtr));
+            ImPlotNative.ImPlotRect_destroy(NativePtr);
         }
         /// <summary>
         /// Maxes this instance
@@ -108,7 +108,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         public ImPlotPoint Max()
         {
             ImPlotPoint retval;
-            ImPlotNative.ImPlotRect_Max(&retval, (ImPlotRect*)(NativePtr));
+            ImPlotNative.ImPlotRect_Max(&retval, NativePtr);
             return retval;
         }
         /// <summary>
@@ -118,7 +118,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         public ImPlotPoint Min()
         {
             ImPlotPoint retval;
-            ImPlotNative.ImPlotRect_Min(&retval, (ImPlotRect*)(NativePtr));
+            ImPlotNative.ImPlotRect_Min(&retval, NativePtr);
             return retval;
         }
         /// <summary>
@@ -128,7 +128,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         public ImPlotPoint Size()
         {
             ImPlotPoint retval;
-            ImPlotNative.ImPlotRect_Size(&retval, (ImPlotRect*)(NativePtr));
+            ImPlotNative.ImPlotRect_Size(&retval, NativePtr);
             return retval;
         }
     }

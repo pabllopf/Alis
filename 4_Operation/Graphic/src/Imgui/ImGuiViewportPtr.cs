@@ -116,7 +116,7 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImGuiViewport_destroy((ImGuiViewport*)(NativePtr));
+            ImGuiNative.ImGuiViewport_destroy(NativePtr);
         }
         /// <summary>
         /// Gets the center
@@ -125,7 +125,7 @@ namespace Alis.Core.Graphic.Imgui
         public Vector2 GetCenter()
         {
             Vector2 retval;
-            ImGuiNative.ImGuiViewport_GetCenter(&retval, (ImGuiViewport*)(NativePtr));
+            ImGuiNative.ImGuiViewport_GetCenter(&retval, NativePtr);
             return retval;
         }
         /// <summary>
@@ -135,7 +135,7 @@ namespace Alis.Core.Graphic.Imgui
         public Vector2 GetWorkCenter()
         {
             Vector2 retval;
-            ImGuiNative.ImGuiViewport_GetWorkCenter(&retval, (ImGuiViewport*)(NativePtr));
+            ImGuiNative.ImGuiViewport_GetWorkCenter(&retval, NativePtr);
             return retval;
         }
     }

@@ -15,7 +15,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <param name="id">The id</param>
         public static void BeginInputAttribute(int id)
         {
-            ImNodesPinShape shape = (ImNodesPinShape)ImNodesPinShape.CircleFilled;
+            ImNodesPinShape shape = ImNodesPinShape.CircleFilled;
             ImNodesNative.ImNodes_BeginInputAttribute(id, shape);
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// <param name="id">The id</param>
         public static void BeginOutputAttribute(int id)
         {
-            ImNodesPinShape shape = (ImNodesPinShape)ImNodesPinShape.CircleFilled;
+            ImNodesPinShape shape = ImNodesPinShape.CircleFilled;
             ImNodesNative.ImNodes_BeginOutputAttribute(id, shape);
         }
         /// <summary>

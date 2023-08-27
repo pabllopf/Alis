@@ -82,14 +82,14 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Clear()
         {
-            ImGuiNative.ImGuiPayload_Clear((ImGuiPayload*)(NativePtr));
+            ImGuiNative.ImGuiPayload_Clear(NativePtr);
         }
         /// <summary>
         /// Destroys this instance
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImGuiPayload_destroy((ImGuiPayload*)(NativePtr));
+            ImGuiNative.ImGuiPayload_destroy(NativePtr);
         }
         /// <summary>
         /// Describes whether this instance is data type
@@ -116,7 +116,7 @@ namespace Alis.Core.Graphic.Imgui
                 nativeType[nativeTypeOffset] = 0;
             }
             else { nativeType = null; }
-            byte ret = ImGuiNative.ImGuiPayload_IsDataType((ImGuiPayload*)(NativePtr), nativeType);
+            byte ret = ImGuiNative.ImGuiPayload_IsDataType(NativePtr, nativeType);
             if (typeByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeType);
@@ -129,7 +129,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The bool</returns>
         public bool IsDelivery()
         {
-            byte ret = ImGuiNative.ImGuiPayload_IsDelivery((ImGuiPayload*)(NativePtr));
+            byte ret = ImGuiNative.ImGuiPayload_IsDelivery(NativePtr);
             return ret != 0;
         }
         /// <summary>
@@ -138,7 +138,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The bool</returns>
         public bool IsPreview()
         {
-            byte ret = ImGuiNative.ImGuiPayload_IsPreview((ImGuiPayload*)(NativePtr));
+            byte ret = ImGuiNative.ImGuiPayload_IsPreview(NativePtr);
             return ret != 0;
         }
     }

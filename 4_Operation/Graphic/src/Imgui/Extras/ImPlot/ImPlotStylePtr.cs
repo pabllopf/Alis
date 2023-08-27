@@ -177,7 +177,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImPlot
         /// </summary>
         public void Destroy()
         {
-            ImPlotNative.ImPlotStyle_destroy((ImPlotStyle*)(NativePtr));
+            ImPlotNative.ImPlotStyle_destroy(NativePtr);
         }
     }
 }

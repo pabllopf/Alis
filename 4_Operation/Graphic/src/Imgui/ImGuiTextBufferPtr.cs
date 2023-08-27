@@ -73,7 +73,7 @@ namespace Alis.Core.Graphic.Imgui
             }
             else { nativeStr = null; }
             byte* nativeStrEnd = null;
-            ImGuiNative.ImGuiTextBuffer_append((ImGuiTextBuffer*)(NativePtr), nativeStr, nativeStrEnd);
+            ImGuiNative.ImGuiTextBuffer_append(NativePtr, nativeStr, nativeStrEnd);
             if (strByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeStr);
@@ -103,7 +103,7 @@ namespace Alis.Core.Graphic.Imgui
                 nativeFmt[nativeFmtOffset] = 0;
             }
             else { nativeFmt = null; }
-            ImGuiNative.ImGuiTextBuffer_appendf((ImGuiTextBuffer*)(NativePtr), nativeFmt);
+            ImGuiNative.ImGuiTextBuffer_appendf(NativePtr, nativeFmt);
             if (fmtByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeFmt);
@@ -115,7 +115,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The string</returns>
         public string Begin()
         {
-            byte* ret = ImGuiNative.ImGuiTextBuffer_begin((ImGuiTextBuffer*)(NativePtr));
+            byte* ret = ImGuiNative.ImGuiTextBuffer_begin(NativePtr);
             return Util.StringFromPtr(ret);
         }
         /// <summary>
@@ -124,7 +124,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The string</returns>
         public string c_str()
         {
-            byte* ret = ImGuiNative.ImGuiTextBuffer_c_str((ImGuiTextBuffer*)(NativePtr));
+            byte* ret = ImGuiNative.ImGuiTextBuffer_c_str(NativePtr);
             return Util.StringFromPtr(ret);
         }
         /// <summary>
@@ -132,14 +132,14 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Clear()
         {
-            ImGuiNative.ImGuiTextBuffer_clear((ImGuiTextBuffer*)(NativePtr));
+            ImGuiNative.ImGuiTextBuffer_clear(NativePtr);
         }
         /// <summary>
         /// Destroys this instance
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImGuiTextBuffer_destroy((ImGuiTextBuffer*)(NativePtr));
+            ImGuiNative.ImGuiTextBuffer_destroy(NativePtr);
         }
         /// <summary>
         /// Describes whether this instance empty
@@ -147,7 +147,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The bool</returns>
         public bool Empty()
         {
-            byte ret = ImGuiNative.ImGuiTextBuffer_empty((ImGuiTextBuffer*)(NativePtr));
+            byte ret = ImGuiNative.ImGuiTextBuffer_empty(NativePtr);
             return ret != 0;
         }
         /// <summary>
@@ -156,7 +156,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The string</returns>
         public string End()
         {
-            byte* ret = ImGuiNative.ImGuiTextBuffer_end((ImGuiTextBuffer*)(NativePtr));
+            byte* ret = ImGuiNative.ImGuiTextBuffer_end(NativePtr);
             return Util.StringFromPtr(ret);
         }
         /// <summary>
@@ -165,7 +165,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="capacity">The capacity</param>
         public void Reserve(int capacity)
         {
-            ImGuiNative.ImGuiTextBuffer_reserve((ImGuiTextBuffer*)(NativePtr), capacity);
+            ImGuiNative.ImGuiTextBuffer_reserve(NativePtr, capacity);
         }
         /// <summary>
         /// Sizes this instance
@@ -173,7 +173,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The ret</returns>
         public int Size()
         {
-            int ret = ImGuiNative.ImGuiTextBuffer_size((ImGuiTextBuffer*)(NativePtr));
+            int ret = ImGuiNative.ImGuiTextBuffer_size(NativePtr);
             return ret;
         }
     }

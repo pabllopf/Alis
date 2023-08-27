@@ -68,7 +68,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// </summary>
         public void Destroy()
         {
-            ImNodesNative.ImNodesIO_destroy((ImNodesIo*)(NativePtr));
+            ImNodesNative.ImNodesIO_destroy(NativePtr);
         }
     }
 }

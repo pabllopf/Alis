@@ -52,7 +52,7 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImColor_destroy((ImColor*)(NativePtr));
+            ImGuiNative.ImColor_destroy(NativePtr);
         }
         /// <summary>
         /// Hsvs the h
@@ -91,7 +91,7 @@ namespace Alis.Core.Graphic.Imgui
         public void SetHsv(float h, float s, float v)
         {
             float a = 1.0f;
-            ImGuiNative.ImColor_SetHSV((ImColor*)(NativePtr), h, s, v, a);
+            ImGuiNative.ImColor_SetHSV(NativePtr, h, s, v, a);
         }
         /// <summary>
         /// Sets the hsv using the specified h
@@ -102,7 +102,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="a">The </param>
         public void SetHsv(float h, float s, float v, float a)
         {
-            ImGuiNative.ImColor_SetHSV((ImColor*)(NativePtr), h, s, v, a);
+            ImGuiNative.ImColor_SetHSV(NativePtr, h, s, v, a);
         }
     }
 }

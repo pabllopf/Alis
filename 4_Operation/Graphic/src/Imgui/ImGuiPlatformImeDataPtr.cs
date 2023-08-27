@@ -61,7 +61,7 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImGuiPlatformImeData_destroy((ImGuiPlatformImeData*)(NativePtr));
+            ImGuiNative.ImGuiPlatformImeData_destroy(NativePtr);
         }
     }
 }

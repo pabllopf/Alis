@@ -109,7 +109,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The ret</returns>
         public int _CalcCircleAutoSegmentCount(float radius)
         {
-            int ret = ImGuiNative.ImDrawList__CalcCircleAutoSegmentCount((ImDrawList*)(NativePtr), radius);
+            int ret = ImGuiNative.ImDrawList__CalcCircleAutoSegmentCount(NativePtr, radius);
             return ret;
         }
         /// <summary>
@@ -117,28 +117,28 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void _ClearFreeMemory()
         {
-            ImGuiNative.ImDrawList__ClearFreeMemory((ImDrawList*)(NativePtr));
+            ImGuiNative.ImDrawList__ClearFreeMemory(NativePtr);
         }
         /// <summary>
         /// Ons the changed clip rect
         /// </summary>
         public void _OnChangedClipRect()
         {
-            ImGuiNative.ImDrawList__OnChangedClipRect((ImDrawList*)(NativePtr));
+            ImGuiNative.ImDrawList__OnChangedClipRect(NativePtr);
         }
         /// <summary>
         /// Ons the changed texture id
         /// </summary>
         public void _OnChangedTextureID()
         {
-            ImGuiNative.ImDrawList__OnChangedTextureID((ImDrawList*)(NativePtr));
+            ImGuiNative.ImDrawList__OnChangedTextureID(NativePtr);
         }
         /// <summary>
         /// Ons the changed vtx offset
         /// </summary>
         public void _OnChangedVtxOffset()
         {
-            ImGuiNative.ImDrawList__OnChangedVtxOffset((ImDrawList*)(NativePtr));
+            ImGuiNative.ImDrawList__OnChangedVtxOffset(NativePtr);
         }
         /// <summary>
         /// Paths the arc to fast ex using the specified center
@@ -150,7 +150,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="aStep">The step</param>
         public void _PathArcToFastEx(Vector2 center, float radius, int aMinSample, int aMaxSample, int aStep)
         {
-            ImGuiNative.ImDrawList__PathArcToFastEx((ImDrawList*)(NativePtr), center, radius, aMinSample, aMaxSample, aStep);
+            ImGuiNative.ImDrawList__PathArcToFastEx(NativePtr, center, radius, aMinSample, aMaxSample, aStep);
         }
         /// <summary>
         /// Paths the arc to n using the specified center
@@ -162,28 +162,28 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="numSegments">The num segments</param>
         public void _PathArcToN(Vector2 center, float radius, float aMin, float aMax, int numSegments)
         {
-            ImGuiNative.ImDrawList__PathArcToN((ImDrawList*)(NativePtr), center, radius, aMin, aMax, numSegments);
+            ImGuiNative.ImDrawList__PathArcToN(NativePtr, center, radius, aMin, aMax, numSegments);
         }
         /// <summary>
         /// Pops the unused draw cmd
         /// </summary>
         public void _PopUnusedDrawCmd()
         {
-            ImGuiNative.ImDrawList__PopUnusedDrawCmd((ImDrawList*)(NativePtr));
+            ImGuiNative.ImDrawList__PopUnusedDrawCmd(NativePtr);
         }
         /// <summary>
         /// Resets the for new frame
         /// </summary>
         public void _ResetForNewFrame()
         {
-            ImGuiNative.ImDrawList__ResetForNewFrame((ImDrawList*)(NativePtr));
+            ImGuiNative.ImDrawList__ResetForNewFrame(NativePtr);
         }
         /// <summary>
         /// Tries the merge draw cmds
         /// </summary>
         public void _TryMergeDrawCmds()
         {
-            ImGuiNative.ImDrawList__TryMergeDrawCmds((ImDrawList*)(NativePtr));
+            ImGuiNative.ImDrawList__TryMergeDrawCmds(NativePtr);
         }
         /// <summary>
         /// Adds the bezier cubic using the specified p 1
@@ -197,7 +197,7 @@ namespace Alis.Core.Graphic.Imgui
         public void AddBezierCubic(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col, float thickness)
         {
             int numSegments = 0;
-            ImGuiNative.ImDrawList_AddBezierCubic((ImDrawList*)(NativePtr), p1, p2, p3, p4, col, thickness, numSegments);
+            ImGuiNative.ImDrawList_AddBezierCubic(NativePtr, p1, p2, p3, p4, col, thickness, numSegments);
         }
         /// <summary>
         /// Adds the bezier cubic using the specified p 1
@@ -211,7 +211,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="numSegments">The num segments</param>
         public void AddBezierCubic(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col, float thickness, int numSegments)
         {
-            ImGuiNative.ImDrawList_AddBezierCubic((ImDrawList*)(NativePtr), p1, p2, p3, p4, col, thickness, numSegments);
+            ImGuiNative.ImDrawList_AddBezierCubic(NativePtr, p1, p2, p3, p4, col, thickness, numSegments);
         }
         /// <summary>
         /// Adds the bezier quadratic using the specified p 1
@@ -224,7 +224,7 @@ namespace Alis.Core.Graphic.Imgui
         public void AddBezierQuadratic(Vector2 p1, Vector2 p2, Vector2 p3, uint col, float thickness)
         {
             int numSegments = 0;
-            ImGuiNative.ImDrawList_AddBezierQuadratic((ImDrawList*)(NativePtr), p1, p2, p3, col, thickness, numSegments);
+            ImGuiNative.ImDrawList_AddBezierQuadratic(NativePtr, p1, p2, p3, col, thickness, numSegments);
         }
         /// <summary>
         /// Adds the bezier quadratic using the specified p 1
@@ -237,7 +237,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="numSegments">The num segments</param>
         public void AddBezierQuadratic(Vector2 p1, Vector2 p2, Vector2 p3, uint col, float thickness, int numSegments)
         {
-            ImGuiNative.ImDrawList_AddBezierQuadratic((ImDrawList*)(NativePtr), p1, p2, p3, col, thickness, numSegments);
+            ImGuiNative.ImDrawList_AddBezierQuadratic(NativePtr, p1, p2, p3, col, thickness, numSegments);
         }
         /// <summary>
         /// Adds the callback using the specified callback
@@ -246,8 +246,8 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="callbackData">The callback data</param>
         public void AddCallback(IntPtr callback, IntPtr callbackData)
         {
-            void* nativeCallbackData = (void*)callbackData.ToPointer();
-            ImGuiNative.ImDrawList_AddCallback((ImDrawList*)(NativePtr), callback, nativeCallbackData);
+            void* nativeCallbackData = callbackData.ToPointer();
+            ImGuiNative.ImDrawList_AddCallback(NativePtr, callback, nativeCallbackData);
         }
         /// <summary>
         /// Adds the circle using the specified center
@@ -259,7 +259,7 @@ namespace Alis.Core.Graphic.Imgui
         {
             int numSegments = 0;
             float thickness = 1.0f;
-            ImGuiNative.ImDrawList_AddCircle((ImDrawList*)(NativePtr), center, radius, col, numSegments, thickness);
+            ImGuiNative.ImDrawList_AddCircle(NativePtr, center, radius, col, numSegments, thickness);
         }
         /// <summary>
         /// Adds the circle using the specified center
@@ -271,7 +271,7 @@ namespace Alis.Core.Graphic.Imgui
         public void AddCircle(Vector2 center, float radius, uint col, int numSegments)
         {
             float thickness = 1.0f;
-            ImGuiNative.ImDrawList_AddCircle((ImDrawList*)(NativePtr), center, radius, col, numSegments, thickness);
+            ImGuiNative.ImDrawList_AddCircle(NativePtr, center, radius, col, numSegments, thickness);
         }
         /// <summary>
         /// Adds the circle using the specified center
@@ -283,7 +283,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="thickness">The thickness</param>
         public void AddCircle(Vector2 center, float radius, uint col, int numSegments, float thickness)
         {
-            ImGuiNative.ImDrawList_AddCircle((ImDrawList*)(NativePtr), center, radius, col, numSegments, thickness);
+            ImGuiNative.ImDrawList_AddCircle(NativePtr, center, radius, col, numSegments, thickness);
         }
         /// <summary>
         /// Adds the circle filled using the specified center
@@ -294,7 +294,7 @@ namespace Alis.Core.Graphic.Imgui
         public void AddCircleFilled(Vector2 center, float radius, uint col)
         {
             int numSegments = 0;
-            ImGuiNative.ImDrawList_AddCircleFilled((ImDrawList*)(NativePtr), center, radius, col, numSegments);
+            ImGuiNative.ImDrawList_AddCircleFilled(NativePtr, center, radius, col, numSegments);
         }
         /// <summary>
         /// Adds the circle filled using the specified center
@@ -305,7 +305,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="numSegments">The num segments</param>
         public void AddCircleFilled(Vector2 center, float radius, uint col, int numSegments)
         {
-            ImGuiNative.ImDrawList_AddCircleFilled((ImDrawList*)(NativePtr), center, radius, col, numSegments);
+            ImGuiNative.ImDrawList_AddCircleFilled(NativePtr, center, radius, col, numSegments);
         }
         /// <summary>
         /// Adds the convex poly filled using the specified points
@@ -317,7 +317,7 @@ namespace Alis.Core.Graphic.Imgui
         {
             fixed (Vector2* nativePoints = &points)
             {
-                ImGuiNative.ImDrawList_AddConvexPolyFilled((ImDrawList*)(NativePtr), nativePoints, numPoints, col);
+                ImGuiNative.ImDrawList_AddConvexPolyFilled(NativePtr, nativePoints, numPoints, col);
             }
         }
         /// <summary>
@@ -325,7 +325,7 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void AddDrawCmd()
         {
-            ImGuiNative.ImDrawList_AddDrawCmd((ImDrawList*)(NativePtr));
+            ImGuiNative.ImDrawList_AddDrawCmd(NativePtr);
         }
         /// <summary>
         /// Adds the image using the specified user texture id
@@ -338,7 +338,7 @@ namespace Alis.Core.Graphic.Imgui
             Vector2 uvMin = new Vector2();
             Vector2 uvMax = new Vector2(1, 1);
             uint col = 4294967295;
-            ImGuiNative.ImDrawList_AddImage((ImDrawList*)(NativePtr), userTextureId, pMin, pMax, uvMin, uvMax, col);
+            ImGuiNative.ImDrawList_AddImage(NativePtr, userTextureId, pMin, pMax, uvMin, uvMax, col);
         }
         /// <summary>
         /// Adds the image using the specified user texture id
@@ -351,7 +351,7 @@ namespace Alis.Core.Graphic.Imgui
         {
             Vector2 uvMax = new Vector2(1, 1);
             uint col = 4294967295;
-            ImGuiNative.ImDrawList_AddImage((ImDrawList*)(NativePtr), userTextureId, pMin, pMax, uvMin, uvMax, col);
+            ImGuiNative.ImDrawList_AddImage(NativePtr, userTextureId, pMin, pMax, uvMin, uvMax, col);
         }
         /// <summary>
         /// Adds the image using the specified user texture id
@@ -364,7 +364,7 @@ namespace Alis.Core.Graphic.Imgui
         public void AddImage(IntPtr userTextureId, Vector2 pMin, Vector2 pMax, Vector2 uvMin, Vector2 uvMax)
         {
             uint col = 4294967295;
-            ImGuiNative.ImDrawList_AddImage((ImDrawList*)(NativePtr), userTextureId, pMin, pMax, uvMin, uvMax, col);
+            ImGuiNative.ImDrawList_AddImage(NativePtr, userTextureId, pMin, pMax, uvMin, uvMax, col);
         }
         /// <summary>
         /// Adds the image using the specified user texture id
@@ -377,7 +377,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="col">The col</param>
         public void AddImage(IntPtr userTextureId, Vector2 pMin, Vector2 pMax, Vector2 uvMin, Vector2 uvMax, uint col)
         {
-            ImGuiNative.ImDrawList_AddImage((ImDrawList*)(NativePtr), userTextureId, pMin, pMax, uvMin, uvMax, col);
+            ImGuiNative.ImDrawList_AddImage(NativePtr, userTextureId, pMin, pMax, uvMin, uvMax, col);
         }
         /// <summary>
         /// Adds the image quad using the specified user texture id
@@ -394,7 +394,7 @@ namespace Alis.Core.Graphic.Imgui
             Vector2 uv3 = new Vector2(1, 1);
             Vector2 uv4 = new Vector2(0, 1);
             uint col = 4294967295;
-            ImGuiNative.ImDrawList_AddImageQuad((ImDrawList*)(NativePtr), userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, col);
+            ImGuiNative.ImDrawList_AddImageQuad(NativePtr, userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, col);
         }
         /// <summary>
         /// Adds the image quad using the specified user texture id
@@ -411,7 +411,7 @@ namespace Alis.Core.Graphic.Imgui
             Vector2 uv3 = new Vector2(1, 1);
             Vector2 uv4 = new Vector2(0, 1);
             uint col = 4294967295;
-            ImGuiNative.ImDrawList_AddImageQuad((ImDrawList*)(NativePtr), userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, col);
+            ImGuiNative.ImDrawList_AddImageQuad(NativePtr, userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, col);
         }
         /// <summary>
         /// Adds the image quad using the specified user texture id
@@ -428,7 +428,7 @@ namespace Alis.Core.Graphic.Imgui
             Vector2 uv3 = new Vector2(1, 1);
             Vector2 uv4 = new Vector2(0, 1);
             uint col = 4294967295;
-            ImGuiNative.ImDrawList_AddImageQuad((ImDrawList*)(NativePtr), userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, col);
+            ImGuiNative.ImDrawList_AddImageQuad(NativePtr, userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, col);
         }
         /// <summary>
         /// Adds the image quad using the specified user texture id
@@ -445,7 +445,7 @@ namespace Alis.Core.Graphic.Imgui
         {
             Vector2 uv4 = new Vector2(0, 1);
             uint col = 4294967295;
-            ImGuiNative.ImDrawList_AddImageQuad((ImDrawList*)(NativePtr), userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, col);
+            ImGuiNative.ImDrawList_AddImageQuad(NativePtr, userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, col);
         }
         /// <summary>
         /// Adds the image quad using the specified user texture id
@@ -462,7 +462,7 @@ namespace Alis.Core.Graphic.Imgui
         public void AddImageQuad(IntPtr userTextureId, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, Vector2 uv1, Vector2 uv2, Vector2 uv3, Vector2 uv4)
         {
             uint col = 4294967295;
-            ImGuiNative.ImDrawList_AddImageQuad((ImDrawList*)(NativePtr), userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, col);
+            ImGuiNative.ImDrawList_AddImageQuad(NativePtr, userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, col);
         }
         /// <summary>
         /// Adds the image quad using the specified user texture id
@@ -479,7 +479,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="col">The col</param>
         public void AddImageQuad(IntPtr userTextureId, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, Vector2 uv1, Vector2 uv2, Vector2 uv3, Vector2 uv4, uint col)
         {
-            ImGuiNative.ImDrawList_AddImageQuad((ImDrawList*)(NativePtr), userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, col);
+            ImGuiNative.ImDrawList_AddImageQuad(NativePtr, userTextureId, p1, p2, p3, p4, uv1, uv2, uv3, uv4, col);
         }
         /// <summary>
         /// Adds the image rounded using the specified user texture id
@@ -493,8 +493,8 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="rounding">The rounding</param>
         public void AddImageRounded(IntPtr userTextureId, Vector2 pMin, Vector2 pMax, Vector2 uvMin, Vector2 uvMax, uint col, float rounding)
         {
-            ImDrawFlags flags = (ImDrawFlags)0;
-            ImGuiNative.ImDrawList_AddImageRounded((ImDrawList*)(NativePtr), userTextureId, pMin, pMax, uvMin, uvMax, col, rounding, flags);
+            ImDrawFlags flags = 0;
+            ImGuiNative.ImDrawList_AddImageRounded(NativePtr, userTextureId, pMin, pMax, uvMin, uvMax, col, rounding, flags);
         }
         /// <summary>
         /// Adds the image rounded using the specified user texture id
@@ -509,7 +509,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="flags">The flags</param>
         public void AddImageRounded(IntPtr userTextureId, Vector2 pMin, Vector2 pMax, Vector2 uvMin, Vector2 uvMax, uint col, float rounding, ImDrawFlags flags)
         {
-            ImGuiNative.ImDrawList_AddImageRounded((ImDrawList*)(NativePtr), userTextureId, pMin, pMax, uvMin, uvMax, col, rounding, flags);
+            ImGuiNative.ImDrawList_AddImageRounded(NativePtr, userTextureId, pMin, pMax, uvMin, uvMax, col, rounding, flags);
         }
         /// <summary>
         /// Adds the line using the specified p 1
@@ -520,7 +520,7 @@ namespace Alis.Core.Graphic.Imgui
         public void AddLine(Vector2 p1, Vector2 p2, uint col)
         {
             float thickness = 1.0f;
-            ImGuiNative.ImDrawList_AddLine((ImDrawList*)(NativePtr), p1, p2, col, thickness);
+            ImGuiNative.ImDrawList_AddLine(NativePtr, p1, p2, col, thickness);
         }
         /// <summary>
         /// Adds the line using the specified p 1
@@ -531,7 +531,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="thickness">The thickness</param>
         public void AddLine(Vector2 p1, Vector2 p2, uint col, float thickness)
         {
-            ImGuiNative.ImDrawList_AddLine((ImDrawList*)(NativePtr), p1, p2, col, thickness);
+            ImGuiNative.ImDrawList_AddLine(NativePtr, p1, p2, col, thickness);
         }
         /// <summary>
         /// Adds the ngon using the specified center
@@ -543,7 +543,7 @@ namespace Alis.Core.Graphic.Imgui
         public void AddNgon(Vector2 center, float radius, uint col, int numSegments)
         {
             float thickness = 1.0f;
-            ImGuiNative.ImDrawList_AddNgon((ImDrawList*)(NativePtr), center, radius, col, numSegments, thickness);
+            ImGuiNative.ImDrawList_AddNgon(NativePtr, center, radius, col, numSegments, thickness);
         }
         /// <summary>
         /// Adds the ngon using the specified center
@@ -555,7 +555,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="thickness">The thickness</param>
         public void AddNgon(Vector2 center, float radius, uint col, int numSegments, float thickness)
         {
-            ImGuiNative.ImDrawList_AddNgon((ImDrawList*)(NativePtr), center, radius, col, numSegments, thickness);
+            ImGuiNative.ImDrawList_AddNgon(NativePtr, center, radius, col, numSegments, thickness);
         }
         /// <summary>
         /// Adds the ngon filled using the specified center
@@ -566,7 +566,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="numSegments">The num segments</param>
         public void AddNgonFilled(Vector2 center, float radius, uint col, int numSegments)
         {
-            ImGuiNative.ImDrawList_AddNgonFilled((ImDrawList*)(NativePtr), center, radius, col, numSegments);
+            ImGuiNative.ImDrawList_AddNgonFilled(NativePtr, center, radius, col, numSegments);
         }
         /// <summary>
         /// Adds the polyline using the specified points
@@ -580,7 +580,7 @@ namespace Alis.Core.Graphic.Imgui
         {
             fixed (Vector2* nativePoints = &points)
             {
-                ImGuiNative.ImDrawList_AddPolyline((ImDrawList*)(NativePtr), nativePoints, numPoints, col, flags, thickness);
+                ImGuiNative.ImDrawList_AddPolyline(NativePtr, nativePoints, numPoints, col, flags, thickness);
             }
         }
         /// <summary>
@@ -594,7 +594,7 @@ namespace Alis.Core.Graphic.Imgui
         public void AddQuad(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col)
         {
             float thickness = 1.0f;
-            ImGuiNative.ImDrawList_AddQuad((ImDrawList*)(NativePtr), p1, p2, p3, p4, col, thickness);
+            ImGuiNative.ImDrawList_AddQuad(NativePtr, p1, p2, p3, p4, col, thickness);
         }
         /// <summary>
         /// Adds the quad using the specified p 1
@@ -607,7 +607,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="thickness">The thickness</param>
         public void AddQuad(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col, float thickness)
         {
-            ImGuiNative.ImDrawList_AddQuad((ImDrawList*)(NativePtr), p1, p2, p3, p4, col, thickness);
+            ImGuiNative.ImDrawList_AddQuad(NativePtr, p1, p2, p3, p4, col, thickness);
         }
         /// <summary>
         /// Adds the quad filled using the specified p 1
@@ -619,7 +619,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="col">The col</param>
         public void AddQuadFilled(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col)
         {
-            ImGuiNative.ImDrawList_AddQuadFilled((ImDrawList*)(NativePtr), p1, p2, p3, p4, col);
+            ImGuiNative.ImDrawList_AddQuadFilled(NativePtr, p1, p2, p3, p4, col);
         }
         /// <summary>
         /// Adds the rect using the specified p min
@@ -630,9 +630,9 @@ namespace Alis.Core.Graphic.Imgui
         public void AddRect(Vector2 pMin, Vector2 pMax, uint col)
         {
             float rounding = 0.0f;
-            ImDrawFlags flags = (ImDrawFlags)0;
+            ImDrawFlags flags = 0;
             float thickness = 1.0f;
-            ImGuiNative.ImDrawList_AddRect((ImDrawList*)(NativePtr), pMin, pMax, col, rounding, flags, thickness);
+            ImGuiNative.ImDrawList_AddRect(NativePtr, pMin, pMax, col, rounding, flags, thickness);
         }
         /// <summary>
         /// Adds the rect using the specified p min
@@ -643,9 +643,9 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="rounding">The rounding</param>
         public void AddRect(Vector2 pMin, Vector2 pMax, uint col, float rounding)
         {
-            ImDrawFlags flags = (ImDrawFlags)0;
+            ImDrawFlags flags = 0;
             float thickness = 1.0f;
-            ImGuiNative.ImDrawList_AddRect((ImDrawList*)(NativePtr), pMin, pMax, col, rounding, flags, thickness);
+            ImGuiNative.ImDrawList_AddRect(NativePtr, pMin, pMax, col, rounding, flags, thickness);
         }
         /// <summary>
         /// Adds the rect using the specified p min
@@ -658,7 +658,7 @@ namespace Alis.Core.Graphic.Imgui
         public void AddRect(Vector2 pMin, Vector2 pMax, uint col, float rounding, ImDrawFlags flags)
         {
             float thickness = 1.0f;
-            ImGuiNative.ImDrawList_AddRect((ImDrawList*)(NativePtr), pMin, pMax, col, rounding, flags, thickness);
+            ImGuiNative.ImDrawList_AddRect(NativePtr, pMin, pMax, col, rounding, flags, thickness);
         }
         /// <summary>
         /// Adds the rect using the specified p min
@@ -671,7 +671,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="thickness">The thickness</param>
         public void AddRect(Vector2 pMin, Vector2 pMax, uint col, float rounding, ImDrawFlags flags, float thickness)
         {
-            ImGuiNative.ImDrawList_AddRect((ImDrawList*)(NativePtr), pMin, pMax, col, rounding, flags, thickness);
+            ImGuiNative.ImDrawList_AddRect(NativePtr, pMin, pMax, col, rounding, flags, thickness);
         }
         /// <summary>
         /// Adds the rect filled using the specified p min
@@ -682,8 +682,8 @@ namespace Alis.Core.Graphic.Imgui
         public void AddRectFilled(Vector2 pMin, Vector2 pMax, uint col)
         {
             float rounding = 0.0f;
-            ImDrawFlags flags = (ImDrawFlags)0;
-            ImGuiNative.ImDrawList_AddRectFilled((ImDrawList*)(NativePtr), pMin, pMax, col, rounding, flags);
+            ImDrawFlags flags = 0;
+            ImGuiNative.ImDrawList_AddRectFilled(NativePtr, pMin, pMax, col, rounding, flags);
         }
         /// <summary>
         /// Adds the rect filled using the specified p min
@@ -694,8 +694,8 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="rounding">The rounding</param>
         public void AddRectFilled(Vector2 pMin, Vector2 pMax, uint col, float rounding)
         {
-            ImDrawFlags flags = (ImDrawFlags)0;
-            ImGuiNative.ImDrawList_AddRectFilled((ImDrawList*)(NativePtr), pMin, pMax, col, rounding, flags);
+            ImDrawFlags flags = 0;
+            ImGuiNative.ImDrawList_AddRectFilled(NativePtr, pMin, pMax, col, rounding, flags);
         }
         /// <summary>
         /// Adds the rect filled using the specified p min
@@ -707,7 +707,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="flags">The flags</param>
         public void AddRectFilled(Vector2 pMin, Vector2 pMax, uint col, float rounding, ImDrawFlags flags)
         {
-            ImGuiNative.ImDrawList_AddRectFilled((ImDrawList*)(NativePtr), pMin, pMax, col, rounding, flags);
+            ImGuiNative.ImDrawList_AddRectFilled(NativePtr, pMin, pMax, col, rounding, flags);
         }
         /// <summary>
         /// Adds the rect filled multi color using the specified p min
@@ -720,7 +720,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="colBotLeft">The col bot left</param>
         public void AddRectFilledMultiColor(Vector2 pMin, Vector2 pMax, uint colUprLeft, uint colUprRight, uint colBotRight, uint colBotLeft)
         {
-            ImGuiNative.ImDrawList_AddRectFilledMultiColor((ImDrawList*)(NativePtr), pMin, pMax, colUprLeft, colUprRight, colBotRight, colBotLeft);
+            ImGuiNative.ImDrawList_AddRectFilledMultiColor(NativePtr, pMin, pMax, colUprLeft, colUprRight, colBotRight, colBotLeft);
         }
         /// <summary>
         /// Adds the triangle using the specified p 1
@@ -732,7 +732,7 @@ namespace Alis.Core.Graphic.Imgui
         public void AddTriangle(Vector2 p1, Vector2 p2, Vector2 p3, uint col)
         {
             float thickness = 1.0f;
-            ImGuiNative.ImDrawList_AddTriangle((ImDrawList*)(NativePtr), p1, p2, p3, col, thickness);
+            ImGuiNative.ImDrawList_AddTriangle(NativePtr, p1, p2, p3, col, thickness);
         }
         /// <summary>
         /// Adds the triangle using the specified p 1
@@ -744,7 +744,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="thickness">The thickness</param>
         public void AddTriangle(Vector2 p1, Vector2 p2, Vector2 p3, uint col, float thickness)
         {
-            ImGuiNative.ImDrawList_AddTriangle((ImDrawList*)(NativePtr), p1, p2, p3, col, thickness);
+            ImGuiNative.ImDrawList_AddTriangle(NativePtr, p1, p2, p3, col, thickness);
         }
         /// <summary>
         /// Adds the triangle filled using the specified p 1
@@ -755,14 +755,14 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="col">The col</param>
         public void AddTriangleFilled(Vector2 p1, Vector2 p2, Vector2 p3, uint col)
         {
-            ImGuiNative.ImDrawList_AddTriangleFilled((ImDrawList*)(NativePtr), p1, p2, p3, col);
+            ImGuiNative.ImDrawList_AddTriangleFilled(NativePtr, p1, p2, p3, col);
         }
         /// <summary>
         /// Channelses the merge
         /// </summary>
         public void ChannelsMerge()
         {
-            ImGuiNative.ImDrawList_ChannelsMerge((ImDrawList*)(NativePtr));
+            ImGuiNative.ImDrawList_ChannelsMerge(NativePtr);
         }
         /// <summary>
         /// Channelses the set current using the specified n
@@ -770,7 +770,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="n">The </param>
         public void ChannelsSetCurrent(int n)
         {
-            ImGuiNative.ImDrawList_ChannelsSetCurrent((ImDrawList*)(NativePtr), n);
+            ImGuiNative.ImDrawList_ChannelsSetCurrent(NativePtr, n);
         }
         /// <summary>
         /// Channelses the split using the specified count
@@ -778,7 +778,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="count">The count</param>
         public void ChannelsSplit(int count)
         {
-            ImGuiNative.ImDrawList_ChannelsSplit((ImDrawList*)(NativePtr), count);
+            ImGuiNative.ImDrawList_ChannelsSplit(NativePtr, count);
         }
         /// <summary>
         /// Clones the output
@@ -786,7 +786,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <returns>The im draw list ptr</returns>
         public ImDrawListPtr CloneOutput()
         {
-            ImDrawList* ret = ImGuiNative.ImDrawList_CloneOutput((ImDrawList*)(NativePtr));
+            ImDrawList* ret = ImGuiNative.ImDrawList_CloneOutput(NativePtr);
             return new ImDrawListPtr(ret);
         }
         /// <summary>
@@ -794,7 +794,7 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImDrawList_destroy((ImDrawList*)(NativePtr));
+            ImGuiNative.ImDrawList_destroy(NativePtr);
         }
         /// <summary>
         /// Gets the clip rect max
@@ -803,7 +803,7 @@ namespace Alis.Core.Graphic.Imgui
         public Vector2 GetClipRectMax()
         {
             Vector2 retval;
-            ImGuiNative.ImDrawList_GetClipRectMax(&retval, (ImDrawList*)(NativePtr));
+            ImGuiNative.ImDrawList_GetClipRectMax(&retval, NativePtr);
             return retval;
         }
         /// <summary>
@@ -813,7 +813,7 @@ namespace Alis.Core.Graphic.Imgui
         public Vector2 GetClipRectMin()
         {
             Vector2 retval;
-            ImGuiNative.ImDrawList_GetClipRectMin(&retval, (ImDrawList*)(NativePtr));
+            ImGuiNative.ImDrawList_GetClipRectMin(&retval, NativePtr);
             return retval;
         }
         /// <summary>
@@ -826,7 +826,7 @@ namespace Alis.Core.Graphic.Imgui
         public void PathArcTo(Vector2 center, float radius, float aMin, float aMax)
         {
             int numSegments = 0;
-            ImGuiNative.ImDrawList_PathArcTo((ImDrawList*)(NativePtr), center, radius, aMin, aMax, numSegments);
+            ImGuiNative.ImDrawList_PathArcTo(NativePtr, center, radius, aMin, aMax, numSegments);
         }
         /// <summary>
         /// Paths the arc to using the specified center
@@ -838,7 +838,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="numSegments">The num segments</param>
         public void PathArcTo(Vector2 center, float radius, float aMin, float aMax, int numSegments)
         {
-            ImGuiNative.ImDrawList_PathArcTo((ImDrawList*)(NativePtr), center, radius, aMin, aMax, numSegments);
+            ImGuiNative.ImDrawList_PathArcTo(NativePtr, center, radius, aMin, aMax, numSegments);
         }
         /// <summary>
         /// Paths the arc to fast using the specified center
@@ -849,7 +849,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="aMaxOf12">The max of 12</param>
         public void PathArcToFast(Vector2 center, float radius, int aMinOf12, int aMaxOf12)
         {
-            ImGuiNative.ImDrawList_PathArcToFast((ImDrawList*)(NativePtr), center, radius, aMinOf12, aMaxOf12);
+            ImGuiNative.ImDrawList_PathArcToFast(NativePtr, center, radius, aMinOf12, aMaxOf12);
         }
         /// <summary>
         /// Paths the bezier cubic curve to using the specified p 2
@@ -860,7 +860,7 @@ namespace Alis.Core.Graphic.Imgui
         public void PathBezierCubicCurveTo(Vector2 p2, Vector2 p3, Vector2 p4)
         {
             int numSegments = 0;
-            ImGuiNative.ImDrawList_PathBezierCubicCurveTo((ImDrawList*)(NativePtr), p2, p3, p4, numSegments);
+            ImGuiNative.ImDrawList_PathBezierCubicCurveTo(NativePtr, p2, p3, p4, numSegments);
         }
         /// <summary>
         /// Paths the bezier cubic curve to using the specified p 2
@@ -871,7 +871,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="numSegments">The num segments</param>
         public void PathBezierCubicCurveTo(Vector2 p2, Vector2 p3, Vector2 p4, int numSegments)
         {
-            ImGuiNative.ImDrawList_PathBezierCubicCurveTo((ImDrawList*)(NativePtr), p2, p3, p4, numSegments);
+            ImGuiNative.ImDrawList_PathBezierCubicCurveTo(NativePtr, p2, p3, p4, numSegments);
         }
         /// <summary>
         /// Paths the bezier quadratic curve to using the specified p 2
@@ -881,7 +881,7 @@ namespace Alis.Core.Graphic.Imgui
         public void PathBezierQuadraticCurveTo(Vector2 p2, Vector2 p3)
         {
             int numSegments = 0;
-            ImGuiNative.ImDrawList_PathBezierQuadraticCurveTo((ImDrawList*)(NativePtr), p2, p3, numSegments);
+            ImGuiNative.ImDrawList_PathBezierQuadraticCurveTo(NativePtr, p2, p3, numSegments);
         }
         /// <summary>
         /// Paths the bezier quadratic curve to using the specified p 2
@@ -891,14 +891,14 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="numSegments">The num segments</param>
         public void PathBezierQuadraticCurveTo(Vector2 p2, Vector2 p3, int numSegments)
         {
-            ImGuiNative.ImDrawList_PathBezierQuadraticCurveTo((ImDrawList*)(NativePtr), p2, p3, numSegments);
+            ImGuiNative.ImDrawList_PathBezierQuadraticCurveTo(NativePtr, p2, p3, numSegments);
         }
         /// <summary>
         /// Paths the clear
         /// </summary>
         public void PathClear()
         {
-            ImGuiNative.ImDrawList_PathClear((ImDrawList*)(NativePtr));
+            ImGuiNative.ImDrawList_PathClear(NativePtr);
         }
         /// <summary>
         /// Paths the fill convex using the specified col
@@ -906,7 +906,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="col">The col</param>
         public void PathFillConvex(uint col)
         {
-            ImGuiNative.ImDrawList_PathFillConvex((ImDrawList*)(NativePtr), col);
+            ImGuiNative.ImDrawList_PathFillConvex(NativePtr, col);
         }
         /// <summary>
         /// Paths the line to using the specified pos
@@ -914,7 +914,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="pos">The pos</param>
         public void PathLineTo(Vector2 pos)
         {
-            ImGuiNative.ImDrawList_PathLineTo((ImDrawList*)(NativePtr), pos);
+            ImGuiNative.ImDrawList_PathLineTo(NativePtr, pos);
         }
         /// <summary>
         /// Paths the line to merge duplicate using the specified pos
@@ -922,7 +922,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="pos">The pos</param>
         public void PathLineToMergeDuplicate(Vector2 pos)
         {
-            ImGuiNative.ImDrawList_PathLineToMergeDuplicate((ImDrawList*)(NativePtr), pos);
+            ImGuiNative.ImDrawList_PathLineToMergeDuplicate(NativePtr, pos);
         }
         /// <summary>
         /// Paths the rect using the specified rect min
@@ -932,8 +932,8 @@ namespace Alis.Core.Graphic.Imgui
         public void PathRect(Vector2 rectMin, Vector2 rectMax)
         {
             float rounding = 0.0f;
-            ImDrawFlags flags = (ImDrawFlags)0;
-            ImGuiNative.ImDrawList_PathRect((ImDrawList*)(NativePtr), rectMin, rectMax, rounding, flags);
+            ImDrawFlags flags = 0;
+            ImGuiNative.ImDrawList_PathRect(NativePtr, rectMin, rectMax, rounding, flags);
         }
         /// <summary>
         /// Paths the rect using the specified rect min
@@ -943,8 +943,8 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="rounding">The rounding</param>
         public void PathRect(Vector2 rectMin, Vector2 rectMax, float rounding)
         {
-            ImDrawFlags flags = (ImDrawFlags)0;
-            ImGuiNative.ImDrawList_PathRect((ImDrawList*)(NativePtr), rectMin, rectMax, rounding, flags);
+            ImDrawFlags flags = 0;
+            ImGuiNative.ImDrawList_PathRect(NativePtr, rectMin, rectMax, rounding, flags);
         }
         /// <summary>
         /// Paths the rect using the specified rect min
@@ -955,7 +955,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="flags">The flags</param>
         public void PathRect(Vector2 rectMin, Vector2 rectMax, float rounding, ImDrawFlags flags)
         {
-            ImGuiNative.ImDrawList_PathRect((ImDrawList*)(NativePtr), rectMin, rectMax, rounding, flags);
+            ImGuiNative.ImDrawList_PathRect(NativePtr, rectMin, rectMax, rounding, flags);
         }
         /// <summary>
         /// Paths the stroke using the specified col
@@ -963,9 +963,9 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="col">The col</param>
         public void PathStroke(uint col)
         {
-            ImDrawFlags flags = (ImDrawFlags)0;
+            ImDrawFlags flags = 0;
             float thickness = 1.0f;
-            ImGuiNative.ImDrawList_PathStroke((ImDrawList*)(NativePtr), col, flags, thickness);
+            ImGuiNative.ImDrawList_PathStroke(NativePtr, col, flags, thickness);
         }
         /// <summary>
         /// Paths the stroke using the specified col
@@ -975,7 +975,7 @@ namespace Alis.Core.Graphic.Imgui
         public void PathStroke(uint col, ImDrawFlags flags)
         {
             float thickness = 1.0f;
-            ImGuiNative.ImDrawList_PathStroke((ImDrawList*)(NativePtr), col, flags, thickness);
+            ImGuiNative.ImDrawList_PathStroke(NativePtr, col, flags, thickness);
         }
         /// <summary>
         /// Paths the stroke using the specified col
@@ -985,21 +985,21 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="thickness">The thickness</param>
         public void PathStroke(uint col, ImDrawFlags flags, float thickness)
         {
-            ImGuiNative.ImDrawList_PathStroke((ImDrawList*)(NativePtr), col, flags, thickness);
+            ImGuiNative.ImDrawList_PathStroke(NativePtr, col, flags, thickness);
         }
         /// <summary>
         /// Pops the clip rect
         /// </summary>
         public void PopClipRect()
         {
-            ImGuiNative.ImDrawList_PopClipRect((ImDrawList*)(NativePtr));
+            ImGuiNative.ImDrawList_PopClipRect(NativePtr);
         }
         /// <summary>
         /// Pops the texture id
         /// </summary>
         public void PopTextureId()
         {
-            ImGuiNative.ImDrawList_PopTextureID((ImDrawList*)(NativePtr));
+            ImGuiNative.ImDrawList_PopTextureID(NativePtr);
         }
         /// <summary>
         /// Prims the quad uv using the specified a
@@ -1015,7 +1015,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="col">The col</param>
         public void PrimQuadUv(Vector2 a, Vector2 b, Vector2 c, Vector2 d, Vector2 uvA, Vector2 uvB, Vector2 uvC, Vector2 uvD, uint col)
         {
-            ImGuiNative.ImDrawList_PrimQuadUV((ImDrawList*)(NativePtr), a, b, c, d, uvA, uvB, uvC, uvD, col);
+            ImGuiNative.ImDrawList_PrimQuadUV(NativePtr, a, b, c, d, uvA, uvB, uvC, uvD, col);
         }
         /// <summary>
         /// Prims the rect using the specified a
@@ -1025,7 +1025,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="col">The col</param>
         public void PrimRect(Vector2 a, Vector2 b, uint col)
         {
-            ImGuiNative.ImDrawList_PrimRect((ImDrawList*)(NativePtr), a, b, col);
+            ImGuiNative.ImDrawList_PrimRect(NativePtr, a, b, col);
         }
         /// <summary>
         /// Prims the rect uv using the specified a
@@ -1037,7 +1037,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="col">The col</param>
         public void PrimRectUv(Vector2 a, Vector2 b, Vector2 uvA, Vector2 uvB, uint col)
         {
-            ImGuiNative.ImDrawList_PrimRectUV((ImDrawList*)(NativePtr), a, b, uvA, uvB, col);
+            ImGuiNative.ImDrawList_PrimRectUV(NativePtr, a, b, uvA, uvB, col);
         }
         /// <summary>
         /// Prims the reserve using the specified idx count
@@ -1046,7 +1046,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="vtxCount">The vtx count</param>
         public void PrimReserve(int idxCount, int vtxCount)
         {
-            ImGuiNative.ImDrawList_PrimReserve((ImDrawList*)(NativePtr), idxCount, vtxCount);
+            ImGuiNative.ImDrawList_PrimReserve(NativePtr, idxCount, vtxCount);
         }
         /// <summary>
         /// Prims the unreserve using the specified idx count
@@ -1055,7 +1055,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="vtxCount">The vtx count</param>
         public void PrimUnreserve(int idxCount, int vtxCount)
         {
-            ImGuiNative.ImDrawList_PrimUnreserve((ImDrawList*)(NativePtr), idxCount, vtxCount);
+            ImGuiNative.ImDrawList_PrimUnreserve(NativePtr, idxCount, vtxCount);
         }
         /// <summary>
         /// Prims the vtx using the specified pos
@@ -1065,7 +1065,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="col">The col</param>
         public void PrimVtx(Vector2 pos, Vector2 uv, uint col)
         {
-            ImGuiNative.ImDrawList_PrimVtx((ImDrawList*)(NativePtr), pos, uv, col);
+            ImGuiNative.ImDrawList_PrimVtx(NativePtr, pos, uv, col);
         }
         /// <summary>
         /// Prims the write idx using the specified idx
@@ -1073,7 +1073,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="idx">The idx</param>
         public void PrimWriteIdx(ushort idx)
         {
-            ImGuiNative.ImDrawList_PrimWriteIdx((ImDrawList*)(NativePtr), idx);
+            ImGuiNative.ImDrawList_PrimWriteIdx(NativePtr, idx);
         }
         /// <summary>
         /// Prims the write vtx using the specified pos
@@ -1083,7 +1083,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="col">The col</param>
         public void PrimWriteVtx(Vector2 pos, Vector2 uv, uint col)
         {
-            ImGuiNative.ImDrawList_PrimWriteVtx((ImDrawList*)(NativePtr), pos, uv, col);
+            ImGuiNative.ImDrawList_PrimWriteVtx(NativePtr, pos, uv, col);
         }
         /// <summary>
         /// Pushes the clip rect using the specified clip rect min
@@ -1093,7 +1093,7 @@ namespace Alis.Core.Graphic.Imgui
         public void PushClipRect(Vector2 clipRectMin, Vector2 clipRectMax)
         {
             byte intersectWithCurrentClipRect = 0;
-            ImGuiNative.ImDrawList_PushClipRect((ImDrawList*)(NativePtr), clipRectMin, clipRectMax, intersectWithCurrentClipRect);
+            ImGuiNative.ImDrawList_PushClipRect(NativePtr, clipRectMin, clipRectMax, intersectWithCurrentClipRect);
         }
         /// <summary>
         /// Pushes the clip rect using the specified clip rect min
@@ -1104,14 +1104,14 @@ namespace Alis.Core.Graphic.Imgui
         public void PushClipRect(Vector2 clipRectMin, Vector2 clipRectMax, bool intersectWithCurrentClipRect)
         {
             byte nativeIntersectWithCurrentClipRect = intersectWithCurrentClipRect ? (byte)1 : (byte)0;
-            ImGuiNative.ImDrawList_PushClipRect((ImDrawList*)(NativePtr), clipRectMin, clipRectMax, nativeIntersectWithCurrentClipRect);
+            ImGuiNative.ImDrawList_PushClipRect(NativePtr, clipRectMin, clipRectMax, nativeIntersectWithCurrentClipRect);
         }
         /// <summary>
         /// Pushes the clip rect full screen
         /// </summary>
         public void PushClipRectFullScreen()
         {
-            ImGuiNative.ImDrawList_PushClipRectFullScreen((ImDrawList*)(NativePtr));
+            ImGuiNative.ImDrawList_PushClipRectFullScreen(NativePtr);
         }
         /// <summary>
         /// Pushes the texture id using the specified texture id
@@ -1119,7 +1119,7 @@ namespace Alis.Core.Graphic.Imgui
         /// <param name="textureId">The texture id</param>
         public void PushTextureId(IntPtr textureId)
         {
-            ImGuiNative.ImDrawList_PushTextureID((ImDrawList*)(NativePtr), textureId);
+            ImGuiNative.ImDrawList_PushTextureID(NativePtr, textureId);
         }
     }
 }

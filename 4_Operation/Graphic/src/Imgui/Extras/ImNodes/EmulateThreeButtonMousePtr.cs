@@ -79,7 +79,7 @@ namespace Alis.Core.Graphic.Imgui.Extras.ImNodes
         /// </summary>
         public void Destroy()
         {
-            ImNodesNative.EmulateThreeButtonMouse_destroy((EmulateThreeButtonMouse*)(NativePtr));
+            ImNodesNative.EmulateThreeButtonMouse_destroy(NativePtr);
         }
     }
 }

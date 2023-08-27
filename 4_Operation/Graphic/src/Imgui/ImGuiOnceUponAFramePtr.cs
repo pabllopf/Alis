@@ -53,7 +53,7 @@ namespace Alis.Core.Graphic.Imgui
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImGuiOnceUponAFrame_destroy((ImGuiOnceUponAFrame*)(NativePtr));
+            ImGuiNative.ImGuiOnceUponAFrame_destroy(NativePtr);
         }
     }
 }
