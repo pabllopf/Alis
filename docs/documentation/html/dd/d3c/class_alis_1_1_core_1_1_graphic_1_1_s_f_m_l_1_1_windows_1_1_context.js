@@ -8,8 +8,8 @@ var class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context =
     [ "sfContext_destroy", "dd/d3c/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context.html#a39b766508e728dc5ce39772e29edddf2", null ],
     [ "sfContext_setActive", "dd/d3c/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context.html#acf5dc129516c580726e616b4fd92f3b9", null ],
     [ "sfContext_getSettings", "dd/d3c/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context.html#a67540a541acca2705194d17d31a52315", null ],
+    [ "_ourGlobalContext", "dd/d3c/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context.html#a465cee1703edfd8fc99b1c7c09b5de8b", null ],
     [ "myThis", "dd/d3c/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context.html#ab4e81cd5cdbef0865d3741fdc9019a08", null ],
     [ "Settings", "dd/d3c/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context.html#aec493e8f7a1341d8f6676ca1a040d180", null ],
-    [ "_ourGlobalContext", "dd/d3c/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context.html#a465cee1703edfd8fc99b1c7c09b5de8b", null ],
     [ "Global", "dd/d3c/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context.html#a014c57391919f81e006c334546d77742", null ]
 ];

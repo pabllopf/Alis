@@ -144,8 +144,8 @@ $(document).ready(function(){initNavTree('db/d47/_validator_8cs_source.html','..
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            StackTrace stackTrace = <span class="keyword">new</span> StackTrace();</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            StackFrame stackFrame = stackTrace.GetFrame(1);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            MethodBase method = stackFrame.GetMethod();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;           </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">if</span> (method.DeclaringType != <span class="keyword">null</span>)</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            {</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                MethodInfo methodInfo = method.DeclaringType.GetMethod(method.Name);</div>
@@ -157,7 +157,7 @@ $(document).ready(function(){initNavTree('db/d47/_validator_8cs_source.html','..
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                        IEnumerable&lt;ValidationAttribute&gt; attributes = method.GetParameters()</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                            .Where(p =&gt; p.Name == parameter.Name)</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                            .SelectMany(p =&gt; p.GetCustomAttributes&lt;<a class="code" href="../../d6/df7/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute.html">ValidationAttribute</a>&gt;(<span class="keyword">true</span>));</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                        </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                        <span class="keywordflow">foreach</span> (<a class="code" href="../../d6/df7/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute.html">ValidationAttribute</a> attribute <span class="keywordflow">in</span> attributes)</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                        {</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                            attribute.<a class="code" href="../../d6/df7/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes_1_1_validation_attribute.html#a8c8e3a114ceaab6a3d499fc360d7ce3f">Validate</a>(value, parameter.Name);</div>
@@ -184,7 +184,7 @@ $(document).ready(function(){initNavTree('db/d47/_validator_8cs_source.html','..
   <ul>
     <li class="navelem"><a class="el" href="../../dir_463cc71c0efffe3f069a7466fb151c62.html">6_Ideation</a></li><li class="navelem"><a class="el" href="../../dir_d6ecd8ca5fac2fe6f5aa5b1a56b8d555.html">Memory</a></li><li class="navelem"><a class="el" href="../../dir_fe63dcc3ce4be57d28556cac612fb265.html">src</a></li><li class="navelem"><b>Validator.cs</b></li>
     <li class="footer">
-      <a>Generated on | Sun Aug 27 2023 |</a>
+      <a>Generated on | Mon Aug 28 2023 |</a>
     </li>
   </ul>
 </div>

@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('de/dbb/class_alis_1_1_core_1_1_physic_
 </div><!--header-->
 <div class="contents">
 
-<p>A gear joint is used to connect two joints together. Either joint can be a revolute or prismatic joint. You specify a gear ratio to bind the motions together: coordinate1 + ratio * coordinate2 = ant The ratio can be negative or positive. If one joint is a revolute joint and the other joint is a prismatic joint, then the ratio will have units of length or units of 1/length. Warning: You have to manually destroy the gear joint if jointA or jointB is destroyed.  
+<p>A gear joint is used to connect two joints together. Either joint can be a revolute or prismatic joint. You specify a gear ratio to bind the motions together: coordinate1 + ratio * coordinate2 = ant The ratio can be negative or positive. If one joint is a revolute joint and the other joint is a prismatic joint, then the ratio will have units of length or units of 1/length. Warning: You have to manually destroy the gear joint if jointA or jointB is destroyed. Gear Joint: C0 = (coordinate1 + ratio * coordinate2)_initial C = (coordinate1 + ratio * coordinate2) - C0 = 0 J = [J1 ratio * J2] K = J * invM * JT = J1 * invM1 * J1T + ratio * ratio * J2 * invM2 * J2T Revolute: coordinate = rotation Cdo = angularVelocity J = [0 0 1] K = J * invM * JT = invI Prismatic: coordinate = dot(p - pg, ug) Cdo = dot(v + cross(w, r), ug) J = [ug cross(r, ug)] K = J * invM * JT = invMass + invI * cross(r, ug)^2  
  <a href="../../de/dbb/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_gear_joint.html#details">More...</a></p>
 
 <p>Inherits <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
@@ -337,12 +337,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a4f74becad11b01831634d76131f93d53 inherit events_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A gear joint is used to connect two joints together. Either joint can be a revolute or prismatic joint. You specify a gear ratio to bind the motions together: coordinate1 + ratio * coordinate2 = ant The ratio can be negative or positive. If one joint is a revolute joint and the other joint is a prismatic joint, then the ratio will have units of length or units of 1/length. Warning: You have to manually destroy the gear joint if jointA or jointB is destroyed. </p>
-<p>Gear Joint: C0 = (coordinate1 + ratio * coordinate2)_initial C = (coordinate1 + ratio * coordinate2) - C0 = 0 J = [J1 ratio * J2] K = J * invM * JT = J1 * invM1 * J1T + ratio * ratio * J2 * invM2 * J2T</p>
-<p>Revolute: coordinate = rotation Cdo = angularVelocity J = [0 0 1] K = J * invM * JT = invI</p>
-<p>Prismatic: coordinate = dot(p - pg, ug) Cdo = dot(v + cross(w, r), ug) J = [ug cross(r, ug)] K = J * invM * JT = invMass + invI * cross(r, ug)^2</p>
+<div class="textblock"><p>A gear joint is used to connect two joints together. Either joint can be a revolute or prismatic joint. You specify a gear ratio to bind the motions together: coordinate1 + ratio * coordinate2 = ant The ratio can be negative or positive. If one joint is a revolute joint and the other joint is a prismatic joint, then the ratio will have units of length or units of 1/length. Warning: You have to manually destroy the gear joint if jointA or jointB is destroyed. Gear Joint: C0 = (coordinate1 + ratio * coordinate2)_initial C = (coordinate1 + ratio * coordinate2) - C0 = 0 J = [J1 ratio * J2] K = J * invM * JT = J1 * invM1 * J1T + ratio * ratio * J2 * invM2 * J2T Revolute: coordinate = rotation Cdo = angularVelocity J = [0 0 1] K = J * invM * JT = invI Prismatic: coordinate = dot(p - pg, ug) Cdo = dot(v + cross(w, r), ug) J = [ug cross(r, ug)] K = J * invM * JT = invMass + invI * cross(r, ug)^2 </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00068">68</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00065">65</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a66d5c824ac01470ca93d0ddd81a45332"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a66d5c824ac01470ca93d0ddd81a45332">&#9670;&nbsp;</a></span>GearJoint() <span class="overload">[1/2]</span></h2>
@@ -414,7 +411,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00200">200</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00198">198</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -474,7 +471,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00316">316</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00314">314</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -514,7 +511,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a6dc6eadc1ab96ca00fef765e9210899b">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00433">433</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00431">431</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -553,7 +550,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a00b1a2e9930b56704275f0e1fe6bac1d">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00444">444</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00442">442</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -591,7 +588,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a3297f04384b0922fe836b6c5411c6c76">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00454">454</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00452">452</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -629,7 +626,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#aebe1afe4c3a223531a9458f68e88a3e5">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00562">562</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00560">560</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -668,7 +665,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#ada9adf4f24660bb6148dee2aa18a2fec">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00603">603</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00601">601</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -695,7 +692,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The body </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00073">73</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00070">70</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -721,7 +718,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The body </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00078">78</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00075">75</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -747,7 +744,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The constant </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00083">83</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00080">80</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -773,7 +770,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The joint </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00088">88</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00085">85</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -799,7 +796,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The joint </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00093">93</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00090">90</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -825,7 +822,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The local anchor </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00098">98</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00095">95</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -851,7 +848,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The local anchor </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00103">103</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00100">100</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -877,7 +874,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The local anchor </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00108">108</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00105">105</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -903,7 +900,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The local anchor </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00113">113</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00110">110</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -929,7 +926,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The local axis </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00118">118</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00115">115</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -955,7 +952,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The local axis </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00123">123</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00120">120</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -981,7 +978,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The reference angle </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00128">128</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00125">125</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1007,7 +1004,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The reference angle </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00133">133</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00130">130</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1033,7 +1030,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The type </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00138">138</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00135">135</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1059,7 +1056,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The type </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00143">143</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00140">140</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1085,7 +1082,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00148">148</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00145">145</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1109,7 +1106,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00148">148</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00145">145</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1133,7 +1130,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00148">148</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00145">145</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1157,7 +1154,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00148">148</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00145">145</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1183,7 +1180,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The impulse </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00153">153</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00150">150</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1209,7 +1206,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The index </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00157">157</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00155">155</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1233,7 +1230,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00157">157</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00155">155</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1257,7 +1254,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00157">157</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00155">155</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1281,7 +1278,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00157">157</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00155">155</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1307,7 +1304,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The jv bd </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00162">162</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00160">160</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1331,7 +1328,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00162">162</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00160">160</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1357,7 +1354,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The jw </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00167">167</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00165">165</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1381,7 +1378,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00167">167</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00165">165</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1405,7 +1402,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00167">167</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00165">165</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1429,7 +1426,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00167">167</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00165">165</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1455,7 +1452,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The lc </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00172">172</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00170">170</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1479,7 +1476,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00172">172</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00170">170</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1503,7 +1500,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00172">172</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00170">170</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1527,7 +1524,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00172">172</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00170">170</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1553,7 +1550,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00177">177</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00175">175</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1577,7 +1574,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00177">177</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00175">175</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1601,7 +1598,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00177">177</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00175">175</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1625,7 +1622,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00177">177</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00175">175</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1651,7 +1648,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The mass </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00182">182</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00180">180</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1677,7 +1674,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The ratio </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00187">187</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00185">185</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1703,7 +1700,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The first revolute/prismatic joint attached to the gear joint. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00423">423</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00421">421</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1729,7 +1726,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The second revolute/prismatic joint attached to the gear joint. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00426">426</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00424">424</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1756,7 +1753,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Gets or sets the value of the world anchor a </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00400">400</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00398">398</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1782,7 +1779,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Gets or sets the value of the world anchor b </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00409">409</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00407">407</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1808,7 +1805,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The gear ratio. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00416">416</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html#l00414">414</a> of file <a class="el" href="../../d9/d06/_gear_joint_8cs_source.html">GearJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1819,7 +1816,7 @@ Additional Inherited Members</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../d7/db3/namespace_alis_1_1_core_1_1_physic.html">Physic</a></li><li class="navelem"><a class="el" href="../../dd/d6a/namespace_alis_1_1_core_1_1_physic_1_1_dynamics.html">Dynamics</a></li><li class="navelem"><a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html">Joints</a></li><li class="navelem"><a class="el" href="../../de/dbb/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_gear_joint.html">GearJoint</a></li>
     <li class="footer">
-      <a>Generated on | Sun Aug 27 2023 |</a>
+      <a>Generated on | Mon Aug 28 2023 |</a>
     </li>
   </ul>
 </div>

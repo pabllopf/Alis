@@ -100,48 +100,74 @@ $(document).ready(function(){initNavTree('d1/d18/_null_terminated_string_8cs_sou
 <div class="title">NullTerminatedString.cs</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> System.Text;</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html">Alis.Core.Graphic.Imgui</a></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html">    8</a></span>&#160;    <span class="keyword">public</span> unsafe <span class="keyword">struct </span><a class="code" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html">NullTerminatedString</a></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#a4f30f1646e35c0f1f63c69898bab404b">   13</a></span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">byte</span>* <a class="code" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#a4f30f1646e35c0f1f63c69898bab404b">Data</a>;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#aa9797a92dec378fc0f44d340b23ef407">   19</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#aa9797a92dec378fc0f44d340b23ef407">NullTerminatedString</a>(<span class="keywordtype">byte</span>* data)</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <a class="code" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#a4f30f1646e35c0f1f63c69898bab404b">Data</a> = data;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#a0def76ff2eb261cca46c93ea622b6d85">   28</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#a0def76ff2eb261cca46c93ea622b6d85">ToString</a>()</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordtype">int</span> length = 0;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordtype">byte</span>* ptr = <a class="code" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#a4f30f1646e35c0f1f63c69898bab404b">Data</a>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keywordflow">while</span> (*ptr != 0)</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                length += 1;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                ptr += 1;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">return</span> Encoding.ASCII.GetString(<a class="code" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#a4f30f1646e35c0f1f63c69898bab404b">Data</a>, length);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#aba90437855e2a939e4b3401aaf7112f6">   46</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> implicit <span class="keyword">operator</span> string(<a class="code" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html">NullTerminatedString</a> nts) =&gt; nts.ToString();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// --------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//  --------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">//  File:NullTerminatedString.cs</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//  Author:Pablo Perdomo Falcón</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">//  Web:https://www.pabllopf.dev/</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//  Copyright (c) 2021 GNU General Public License v3.0</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">//  This program is free software:you can redistribute it and/or modify</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//  it under the terms of the GNU General Public License as published by</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">//  the Free Software Foundation, either version 3 of the License, or</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//  (at your option) any later version.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">//  This program is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">//  but WITHOUT ANY WARRANTY without even the implied warranty of</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">//  GNU General Public License for more details.</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">//  You should have received a copy of the GNU General Public License</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">//  along with this program.If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">//  --------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> System.Text;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html">Alis.Core.Graphic.Imgui</a></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html">   37</a></span>&#160;    <span class="keyword">public</span> unsafe <span class="keyword">struct </span><a class="code" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html">NullTerminatedString</a></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    {</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#a4f30f1646e35c0f1f63c69898bab404b">   42</a></span>&#160;        <span class="keyword">public</span> readonly <span class="keywordtype">byte</span>* <a class="code" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#a4f30f1646e35c0f1f63c69898bab404b">Data</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#aa9797a92dec378fc0f44d340b23ef407">   48</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#aa9797a92dec378fc0f44d340b23ef407">NullTerminatedString</a>(<span class="keywordtype">byte</span>* data) =&gt; <a class="code" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#a4f30f1646e35c0f1f63c69898bab404b">Data</a> = data;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#a0def76ff2eb261cca46c93ea622b6d85">   54</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#a0def76ff2eb261cca46c93ea622b6d85">ToString</a>()</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordtype">int</span> length = 0;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordtype">byte</span>* ptr = <a class="code" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#a4f30f1646e35c0f1f63c69898bab404b">Data</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">while</span> (*ptr != 0)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                length += 1;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                ptr += 1;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordflow">return</span> Encoding.ASCII.GetString(<a class="code" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#a4f30f1646e35c0f1f63c69898bab404b">Data</a>, length);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#aba90437855e2a939e4b3401aaf7112f6">   71</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> implicit <span class="keyword">operator</span> string(<a class="code" href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html">NullTerminatedString</a> nts) =&gt; nts.ToString();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="astruct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string_html_a4f30f1646e35c0f1f63c69898bab404b"><div class="ttname"><a href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#a4f30f1646e35c0f1f63c69898bab404b">Alis.Core.Graphic.Imgui.NullTerminatedString.Data</a></div><div class="ttdeci">readonly byte * Data</div><div class="ttdoc">The data</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d18/_null_terminated_string_8cs_source.html#l00013">NullTerminatedString.cs:13</a></div></div>
-<div class="ttc" id="astruct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string_html_a0def76ff2eb261cca46c93ea622b6d85"><div class="ttname"><a href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#a0def76ff2eb261cca46c93ea622b6d85">Alis.Core.Graphic.Imgui.NullTerminatedString.ToString</a></div><div class="ttdeci">override string ToString()</div><div class="ttdoc">Returns the string</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d18/_null_terminated_string_8cs_source.html#l00028">NullTerminatedString.cs:28</a></div></div>
-<div class="ttc" id="astruct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string_html"><div class="ttname"><a href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html">Alis.Core.Graphic.Imgui.NullTerminatedString</a></div><div class="ttdoc">The null terminated string</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d18/_null_terminated_string_8cs_source.html#l00008">NullTerminatedString.cs:9</a></div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_imgui_html"><div class="ttname"><a href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html">Alis.Core.Graphic.Imgui</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d38/_delegates_8cs_source.html#l00004">Delegates.cs:5</a></div></div>
-<div class="ttc" id="astruct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string_html_aa9797a92dec378fc0f44d340b23ef407"><div class="ttname"><a href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#aa9797a92dec378fc0f44d340b23ef407">Alis.Core.Graphic.Imgui.NullTerminatedString.NullTerminatedString</a></div><div class="ttdeci">NullTerminatedString(byte *data)</div><div class="ttdoc">Initializes a new instance of the NullTerminatedString class</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d18/_null_terminated_string_8cs_source.html#l00019">NullTerminatedString.cs:19</a></div></div>
+<div class="ttc" id="astruct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string_html_a4f30f1646e35c0f1f63c69898bab404b"><div class="ttname"><a href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#a4f30f1646e35c0f1f63c69898bab404b">Alis.Core.Graphic.Imgui.NullTerminatedString.Data</a></div><div class="ttdeci">readonly byte * Data</div><div class="ttdoc">The data</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d18/_null_terminated_string_8cs_source.html#l00042">NullTerminatedString.cs:42</a></div></div>
+<div class="ttc" id="astruct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string_html_a0def76ff2eb261cca46c93ea622b6d85"><div class="ttname"><a href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#a0def76ff2eb261cca46c93ea622b6d85">Alis.Core.Graphic.Imgui.NullTerminatedString.ToString</a></div><div class="ttdeci">override string ToString()</div><div class="ttdoc">Returns the string</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d18/_null_terminated_string_8cs_source.html#l00054">NullTerminatedString.cs:54</a></div></div>
+<div class="ttc" id="astruct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string_html"><div class="ttname"><a href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html">Alis.Core.Graphic.Imgui.NullTerminatedString</a></div><div class="ttdoc">The null terminated string</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d18/_null_terminated_string_8cs_source.html#l00037">NullTerminatedString.cs:38</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_imgui_html"><div class="ttname"><a href="../../d6/d4d/namespace_alis_1_1_core_1_1_graphic_1_1_imgui.html">Alis.Core.Graphic.Imgui</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/da9/_im_guizmo_8cs_source.html#l00033">ImGuizmo.cs:34</a></div></div>
+<div class="ttc" id="astruct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string_html_aa9797a92dec378fc0f44d340b23ef407"><div class="ttname"><a href="../../df/d04/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_null_terminated_string.html#aa9797a92dec378fc0f44d340b23ef407">Alis.Core.Graphic.Imgui.NullTerminatedString.NullTerminatedString</a></div><div class="ttdeci">NullTerminatedString(byte *data)</div><div class="ttdoc">Initializes a new instance of the NullTerminatedString class</div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_8272ea2c9ef4a5a450abbc74ffafe4de.html">4_Operation</a></li><li class="navelem"><a class="el" href="../../dir_430bc0ab51a660a0cbdd8e26a7c3af11.html">Graphic</a></li><li class="navelem"><a class="el" href="../../dir_10daa31737c712bdd2ca762b4eaa2d4b.html">src</a></li><li class="navelem"><a class="el" href="../../dir_02bd1dfc315a5b4a8b6a68e311d5dae2.html">Imgui</a></li><li class="navelem"><b>NullTerminatedString.cs</b></li>
     <li class="footer">
-      <a>Generated on | Sun Aug 27 2023 |</a>
+      <a>Generated on | Mon Aug 28 2023 |</a>
     </li>
   </ul>
 </div>

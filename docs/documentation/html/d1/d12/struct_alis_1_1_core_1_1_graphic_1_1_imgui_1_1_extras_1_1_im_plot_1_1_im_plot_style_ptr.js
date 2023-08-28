@@ -36,7 +36,7 @@ var struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plo
     [ "Colors", "d1/d12/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_style_ptr.html#aab276e6642d1e52b7fb5db1907e1c443", null ],
     [ "Colormap", "d1/d12/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_style_ptr.html#a3af7556afad71eae6582459640020fe2", null ],
     [ "UseLocalTime", "d1/d12/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_style_ptr.html#a24088f921df6a3c093eba76d0a917768", null ],
-    [ "UseISO8601", "d1/d12/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_style_ptr.html#a1e4f06149f995b53783c415fdebc5fd5", null ],
+    [ "UseIso8601", "d1/d12/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_style_ptr.html#aa75b673538ef749a4db51ab11402e01f", null ],
     [ "Use24HourClock", "d1/d12/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_style_ptr.html#a44083986c83accf1f3ff7fd15234ddde", null ],
     [ "NativePtr", "d1/d12/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_plot_1_1_im_plot_style_ptr.html#a66c172af35e1e5b8b31028abe822d85c", null ]
 ];

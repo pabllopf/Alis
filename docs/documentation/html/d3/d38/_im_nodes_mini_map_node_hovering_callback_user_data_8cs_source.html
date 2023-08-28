@@ -100,22 +100,51 @@ $(document).ready(function(){initNavTree('d3/d38/_im_nodes_mini_map_node_hoverin
 <div class="title">ImNodesMiniMapNodeHoveringCallbackUserData.cs</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d7/daf/namespace_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes.html">Alis.Core.Graphic.Imgui.Extras.ImNodes</a></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;{</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="../../d9/d39/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_mini_map_node_hovering_callback_user_data.html">    6</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="../../d9/d39/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_mini_map_node_hovering_callback_user_data.html">ImNodesMiniMapNodeHoveringCallbackUserData</a></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    }</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// --------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//  --------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">//  File:ImNodesMiniMapNodeHoveringCallbackUserData.cs</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//  Author:Pablo Perdomo Falcón</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">//  Web:https://www.pabllopf.dev/</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//  Copyright (c) 2021 GNU General Public License v3.0</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">//  This program is free software:you can redistribute it and/or modify</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//  it under the terms of the GNU General Public License as published by</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">//  the Free Software Foundation, either version 3 of the License, or</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//  (at your option) any later version.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">//  This program is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">//  but WITHOUT ANY WARRANTY without even the implied warranty of</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">//  GNU General Public License for more details.</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">//  You should have received a copy of the GNU General Public License</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">//  along with this program.If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">//  --------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d7/daf/namespace_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes.html">Alis.Core.Graphic.Imgui.Extras.ImNodes</a></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../d9/d39/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_mini_map_node_hovering_callback_user_data.html">   35</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="../../d9/d39/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_mini_map_node_hovering_callback_user_data.html">ImNodesMiniMapNodeHoveringCallbackUserData</a></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclass_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_mini_map_node_hovering_callback_user_data_html"><div class="ttname"><a href="../../d9/d39/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_mini_map_node_hovering_callback_user_data.html">Alis.Core.Graphic.Imgui.Extras.ImNodes.ImNodesMiniMapNodeHoveringCallbackUserData</a></div><div class="ttdoc">The im nodes mini map node hovering callback user data class</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d38/_im_nodes_mini_map_node_hovering_callback_user_data_8cs_source.html#l00006">ImNodesMiniMapNodeHoveringCallbackUserData.cs:7</a></div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_html"><div class="ttname"><a href="../../d7/daf/namespace_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes.html">Alis.Core.Graphic.Imgui.Extras.ImNodes</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dbd/_attribute_flags_8gen_8cs_source.html#l00001">AttributeFlags.gen.cs:2</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_mini_map_node_hovering_callback_user_data_html"><div class="ttname"><a href="../../d9/d39/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_1_1_im_nodes_mini_map_node_hovering_callback_user_data.html">Alis.Core.Graphic.Imgui.Extras.ImNodes.ImNodesMiniMapNodeHoveringCallbackUserData</a></div><div class="ttdoc">The im nodes mini map node hovering callback user data class</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d38/_im_nodes_mini_map_node_hovering_callback_user_data_8cs_source.html#l00035">ImNodesMiniMapNodeHoveringCallbackUserData.cs:36</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes_html"><div class="ttname"><a href="../../d7/daf/namespace_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_extras_1_1_im_nodes.html">Alis.Core.Graphic.Imgui.Extras.ImNodes</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dfe/_attribute_flags_8cs_source.html#l00032">AttributeFlags.cs:33</a></div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_8272ea2c9ef4a5a450abbc74ffafe4de.html">4_Operation</a></li><li class="navelem"><a class="el" href="../../dir_430bc0ab51a660a0cbdd8e26a7c3af11.html">Graphic</a></li><li class="navelem"><a class="el" href="../../dir_10daa31737c712bdd2ca762b4eaa2d4b.html">src</a></li><li class="navelem"><a class="el" href="../../dir_02bd1dfc315a5b4a8b6a68e311d5dae2.html">Imgui</a></li><li class="navelem"><a class="el" href="../../dir_cc0d3b7474d371154047d63e140df73d.html">Extras</a></li><li class="navelem"><a class="el" href="../../dir_5590192f3bbe0ab4113d4b687a0d6b42.html">ImNodes</a></li><li class="navelem"><b>ImNodesMiniMapNodeHoveringCallbackUserData.cs</b></li>
     <li class="footer">
-      <a>Generated on | Sun Aug 27 2023 |</a>
+      <a>Generated on | Mon Aug 28 2023 |</a>
     </li>
   </ul>
 </div>

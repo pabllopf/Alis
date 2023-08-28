@@ -16,6 +16,7 @@ var class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation =
     [ "WriteStreamToNetwork", "da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#a9c62b2c3568e936f02c55159f12c67bf", null ],
     [ "GetOppCode", "da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#a977ee8b322d9590c8b58fbeb1cda70c8", null ],
     [ "CloseOutputAutoTimeoutAsync", "da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#adf2e6e658f53ec1e3605592fe3045597", null ],
+    [ "PingPongPayloadLen", "da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#a3de3c94c47c3263100311c3e1db342c4", null ],
     [ "_guid", "da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#a6b6be9d51bf8d5caf320f24b9093dae4", null ],
     [ "_includeExceptionInCloseResponse", "da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#a4515580f59eff64ada495876ee84a814", null ],
     [ "_internalReadCts", "da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#a185c9c824ff614c93a7f83efe06d3cfc", null ],
@@ -35,7 +36,6 @@ var class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation =
     [ "CloseStatus", "da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#af2c27569ac1004f4e881ef221029b683", null ],
     [ "CloseStatusDescription", "da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#a0ce93552746ddee24e02959d24b01ef7", null ],
     [ "State", "da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#a763109aeafa8f5e6e2b6897ff0eb6b3d", null ],
-    [ "PingPongPayloadLen", "da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#a3de3c94c47c3263100311c3e1db342c4", null ],
     [ "SubProtocol", "da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#a5b6bd28971f5f45e0e08095b37375305", null ],
     [ "KeepAliveInterval", "da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#a9e8b89a2e7e1311f5cae8b8faf118a02", null ],
     [ "Pong", "da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#a309dc585da3b64d0fdca66d21c650093", null ]

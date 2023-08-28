@@ -10,6 +10,7 @@ var class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_
     [ "ClearFlags", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#a62a6501fc8d4d328d6880902c2d67076", null ],
     [ "InvalidateToi", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#a48db420f4f988f72beff56012e5724c4", null ],
     [ "CalculateMinAlpha", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#ae6fc1ecc53d770d5a93c08da428db21f", null ],
+    [ "Current", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#ac6e3b7c398e575b8086be768d74745e1", null ],
     [ "contactList", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#a5bbd05777fcbbc289b4f5d1fd142f8de", null ],
     [ "ContactPool", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#a3e91459deae9ea13684205967db26f9a", null ],
     [ "onBroadphaseCollision", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#ad93e8ee7263594c972f408be41511016", null ],
@@ -21,6 +22,5 @@ var class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_
     [ "PostSolve", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#a1f1b161055ab9bb215f0fc8a50b83385", null ],
     [ "PreSolve", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#a1e61f67fa6ec90df5509d5c503880532", null ],
     [ "ContactCount", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#afa562d53e47b2944ff5c3257ce65444e", null ],
-    [ "Current", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#ac6e3b7c398e575b8086be768d74745e1", null ],
     [ "BroadPhase", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#a2c01b634e779616fcd12407448830934", null ]
 ];

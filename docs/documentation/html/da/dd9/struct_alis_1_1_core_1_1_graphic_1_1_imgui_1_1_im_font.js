@@ -17,5 +17,5 @@ var struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font =
     [ "Ascent", "da/dd9/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font.html#a964109708e46935336b8af5c4e685a73", null ],
     [ "Descent", "da/dd9/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font.html#ab12e378baf7bbcca174277adbd67065d", null ],
     [ "MetricsTotalSurface", "da/dd9/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font.html#a44cbacb784b38ec487421036c5dfd812", null ],
-    [ "Used4kPagesMap", "da/dd9/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font.html#a113f57fef1e673e124160c48ab422e84", null ]
+    [ "Used4KPagesMap", "da/dd9/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font.html#a7322b8958ba5a7cc819e2ea29cf22375", null ]
 ];

@@ -133,7 +133,7 @@ Public Types</h2></td></tr>
 &#160;&#160;<a class="el" href="../../d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a97a9584a27329b720b9a4d154cdefc19afa89fcc81e9dcfd52671c968fe4e6ddf">CursorType.NotAllowed</a>
 <br />
  }</td></tr>
-<tr class="memdesc:a97a9584a27329b720b9a4d154cdefc19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a cursor with the provided image Pixels must be an array of width by height pixels in 32-bit RGBA format. If not, this will cause undefined behavior. If pixels is null or either width or height are 0, the current cursor is left unchanged and the function will return false. In addition to specifying the pixel data, you can also specify the location of the hotspot of the cursor. The hotspot is the pixel coordinate within the cursor image which will be located exactly where the mouse pointer position is. Any mouse actions that are performed will return the window/screen location of the hotspot. Warning: On Unix, the pixels are mapped into a monochrome bitmap: pixels with an alpha channel to 0 are transparent, black if the RGB channel are close to zero, and white otherwise.  <a href="../../d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a97a9584a27329b720b9a4d154cdefc19">More...</a><br /></td></tr>
+<tr class="memdesc:a97a9584a27329b720b9a4d154cdefc19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration of possibly available native system cursor types  <a href="../../d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a97a9584a27329b720b9a4d154cdefc19">More...</a><br /></td></tr>
 <tr class="separator:a97a9584a27329b720b9a4d154cdefc19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -151,9 +151,9 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a92c319f1bdb5e8efd55dfeded84efa4a"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a92c319f1bdb5e8efd55dfeded84efa4a">Destroy</a> (bool disposing)</td></tr>
-<tr class="memdesc:a92c319f1bdb5e8efd55dfeded84efa4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the disposing  <a href="../../d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a92c319f1bdb5e8efd55dfeded84efa4a">More...</a><br /></td></tr>
-<tr class="separator:a92c319f1bdb5e8efd55dfeded84efa4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63bf4f383c3415f0f09b4ff1bd22509e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html">Cursor</a>(byte[] pixels, <a class="el" href="../../d4/d7e/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_u.html">Vector2U</a> size, <a class="el" href="../../d4/d7e/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_u.html">Vector2U</a> hotspot) override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a63bf4f383c3415f0f09b4ff1bd22509e">Destroy</a> (bool disposing)</td></tr>
+<tr class="memdesc:a63bf4f383c3415f0f09b4ff1bd22509e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a cursor with the provided image Pixels must be an array of width by height pixels in 32-bit RGBA format. If not, this will cause undefined behavior. If pixels is null or either width or height are 0, the current cursor is left unchanged and the function will return false. In addition to specifying the pixel data, you can also specify the location of the hotspot of the cursor. The hotspot is the pixel coordinate within the cursor image which will be located exactly where the mouse pointer position is. Any mouse actions that are performed will return the window/screen location of the hotspot. Warning: On Unix, the pixels are mapped into a monochrome bitmap: pixels with an alpha channel to 0 are transparent, black if the RGB channel are close to zero, and white otherwise.  <a href="../../d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a63bf4f383c3415f0f09b4ff1bd22509e">More...</a><br /></td></tr>
+<tr class="separator:a63bf4f383c3415f0f09b4ff1bd22509e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -200,16 +200,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Create a cursor with the provided image Pixels must be an array of width by height pixels in 32-bit RGBA format. If not, this will cause undefined behavior. If pixels is null or either width or height are 0, the current cursor is left unchanged and the function will return false. In addition to specifying the pixel data, you can also specify the location of the hotspot of the cursor. The hotspot is the pixel coordinate within the cursor image which will be located exactly where the mouse pointer position is. Any mouse actions that are performed will return the window/screen location of the hotspot. Warning: On Unix, the pixels are mapped into a monochrome bitmap: pixels with an alpha channel to 0 are transparent, black if the RGB channel are close to zero, and white otherwise. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pixels</td><td>Array of pixels of the image</td></tr>
-    <tr><td class="paramname">size</td><td>Width and height of the image</td></tr>
-    <tr><td class="paramname">hotspot</td><td>(x,y) location of the hotspot</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Enumeration of possibly available native system cursor types</p>
+<p>Enumeration of possibly available native system cursor types </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a97a9584a27329b720b9a4d154cdefc19a0f4e1aaabd074689b7d3ead824d1ee8e"></a>Arrow&#160;</td><td class="fielddoc"><p>Arrow cursor (default) Windows: Yes Mac OS: Yes Linux: Yes </p>
 </td></tr>
@@ -239,7 +230,7 @@ Additional Inherited Members</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d6f/_cursor_8cs_source.html#l00085">85</a> of file <a class="el" href="../../d9/d6f/_cursor_8cs_source.html">Cursor.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d6f/_cursor_8cs_source.html#l00047">47</a> of file <a class="el" href="../../d9/d6f/_cursor_8cs_source.html">Cursor.cs</a>.</p>
 
 </div>
 </div>
@@ -268,13 +259,13 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d9/d6f/_cursor_8cs_source.html#l00052">52</a> of file <a class="el" href="../../d9/d6f/_cursor_8cs_source.html">Cursor.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d9/d6f/_cursor_8cs_source.html#l00162">162</a> of file <a class="el" href="../../d9/d6f/_cursor_8cs_source.html">Cursor.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a92c319f1bdb5e8efd55dfeded84efa4a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92c319f1bdb5e8efd55dfeded84efa4a">&#9670;&nbsp;</a></span>Destroy()</h2>
+<a id="a63bf4f383c3415f0f09b4ff1bd22509e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63bf4f383c3415f0f09b4ff1bd22509e">&#9670;&nbsp;</a></span>Destroy()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -283,7 +274,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override void Alis.Core.Graphic.SFML.Windows.Cursor.Destroy </td>
+          <td class="memname"><a class="el" href="../../d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html">Cursor</a> (byte[] pixels, <a class="el" href="../../d4/d7e/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_u.html">Vector2U</a> size, <a class="el" href="../../d4/d7e/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_u.html">Vector2U</a> hotspot) override void Alis.Core.Graphic.SFML.Windows.Cursor.Destroy </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>disposing</em></td><td>)</td>
@@ -297,7 +288,16 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Destroys the disposing </p>
+<p>Create a cursor with the provided image Pixels must be an array of width by height pixels in 32-bit RGBA format. If not, this will cause undefined behavior. If pixels is null or either width or height are 0, the current cursor is left unchanged and the function will return false. In addition to specifying the pixel data, you can also specify the location of the hotspot of the cursor. The hotspot is the pixel coordinate within the cursor image which will be located exactly where the mouse pointer position is. Any mouse actions that are performed will return the window/screen location of the hotspot. Warning: On Unix, the pixels are mapped into a monochrome bitmap: pixels with an alpha channel to 0 are transparent, black if the RGB channel are close to zero, and white otherwise. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pixels</td><td>Array of pixels of the image</td></tr>
+    <tr><td class="paramname">size</td><td>Width and height of the image</td></tr>
+    <tr><td class="paramname">hotspot</td><td>(x,y) location of the hotspot</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Destroys the disposing</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">disposing</td><td>The disposing</td></tr>
@@ -440,7 +440,7 @@ Additional Inherited Members</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../df/df9/namespace_alis_1_1_core_1_1_graphic.html">Graphic</a></li><li class="navelem"><a class="el" href="../../d5/d27/namespace_alis_1_1_core_1_1_graphic_1_1_s_f_m_l.html">SFML</a></li><li class="navelem"><a class="el" href="../../d1/ddd/namespace_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows.html">Windows</a></li><li class="navelem"><a class="el" href="../../d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html">Cursor</a></li>
     <li class="footer">
-      <a>Generated on | Sun Aug 27 2023 |</a>
+      <a>Generated on | Mon Aug 28 2023 |</a>
     </li>
   </ul>
 </div>

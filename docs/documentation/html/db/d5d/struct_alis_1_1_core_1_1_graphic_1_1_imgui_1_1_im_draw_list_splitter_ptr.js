@@ -8,11 +8,11 @@ var struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_draw_list_splitter_ptr =
     [ "Clear", "db/d5d/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_draw_list_splitter_ptr.html#adf6205db9dab2cf1e89af19ebe799dc2", null ],
     [ "ClearFreeMemory", "db/d5d/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_draw_list_splitter_ptr.html#a4ca4213f74c23b5a449051fcc0dd8a0c", null ],
     [ "Destroy", "db/d5d/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_draw_list_splitter_ptr.html#ac1555f59e50a4a165aa8bd031cc5924e", null ],
-    [ "Merge", "db/d5d/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_draw_list_splitter_ptr.html#ad2bec04d294fb2e06e64973b6dee06a4", null ],
-    [ "SetCurrentChannel", "db/d5d/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_draw_list_splitter_ptr.html#a1f3150d7ddbb84474864556701e4fab3", null ],
-    [ "Split", "db/d5d/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_draw_list_splitter_ptr.html#aa64d4006cad742088d3d7222bfe91407", null ],
-    [ "_Current", "db/d5d/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_draw_list_splitter_ptr.html#a3c9f9cb93283f841fe150d586d0866c4", null ],
-    [ "_Count", "db/d5d/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_draw_list_splitter_ptr.html#a90bc9261532a786a3301792787825e5e", null ],
-    [ "_Channels", "db/d5d/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_draw_list_splitter_ptr.html#a42d79c05ced00bcb6cea113774919b27", null ],
+    [ "Merge", "db/d5d/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_draw_list_splitter_ptr.html#a44eb224d6d1e8fe7813eb6f2a11b4a8f", null ],
+    [ "SetCurrentChannel", "db/d5d/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_draw_list_splitter_ptr.html#af8efb38fbbbbb732d72a35ea8bbc18ad", null ],
+    [ "Split", "db/d5d/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_draw_list_splitter_ptr.html#a55610aba5f2a22af44e151463ca9b642", null ],
+    [ "Current", "db/d5d/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_draw_list_splitter_ptr.html#a367eb296bd659b1e857ee191a0fb7edb", null ],
+    [ "Count", "db/d5d/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_draw_list_splitter_ptr.html#aeffa12b4aa9a6e51e27199db270b8b78", null ],
+    [ "Channels", "db/d5d/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_draw_list_splitter_ptr.html#a5ec47e6a33c700717ae0b649650cddb7", null ],
     [ "NativePtr", "db/d5d/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_draw_list_splitter_ptr.html#a18881796d348b8cb388850b91139e8c4", null ]
 ];

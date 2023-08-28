@@ -6,10 +6,10 @@ var struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_color_ptr =
     [ "operator ImColor *", "d9/db8/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_color_ptr.html#aed6d53fd387350c73933c0dfcc9e9aed", null ],
     [ "operator ImColorPtr", "d9/db8/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_color_ptr.html#a2cfb2e89b4cfe574a7fa134758b521d6", null ],
     [ "Destroy", "d9/db8/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_color_ptr.html#a9018b2bd7ab693875fa4a47310c69946", null ],
-    [ "HSV", "d9/db8/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_color_ptr.html#a7ea13bc98b550db6636fe96665cd164e", null ],
-    [ "HSV", "d9/db8/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_color_ptr.html#a6ac2514e3a9b8f496b9af11686c9c10a", null ],
-    [ "SetHSV", "d9/db8/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_color_ptr.html#a36157cc48b1ab415480dc77fe4beeab5", null ],
-    [ "SetHSV", "d9/db8/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_color_ptr.html#a1e7327d2e6571ec17d74133d5b9cb61e", null ],
+    [ "Hsv", "d9/db8/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_color_ptr.html#aa891f974a6d64f62a1225a7d727c4fe2", null ],
+    [ "Hsv", "d9/db8/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_color_ptr.html#a34eafad7e593af5000f35fdb198d5070", null ],
+    [ "SetHsv", "d9/db8/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_color_ptr.html#ae57d2918394848144ce8322b75af294a", null ],
+    [ "SetHsv", "d9/db8/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_color_ptr.html#ae3e0774801f0e81849a3b6194b91f6be", null ],
     [ "Value", "d9/db8/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_color_ptr.html#ad6bef6a86e42635a492c147ae9c6ed50", null ],
     [ "NativePtr", "d9/db8/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_color_ptr.html#ab533375fe97db947a05fc9c11779899b", null ]
 ];
