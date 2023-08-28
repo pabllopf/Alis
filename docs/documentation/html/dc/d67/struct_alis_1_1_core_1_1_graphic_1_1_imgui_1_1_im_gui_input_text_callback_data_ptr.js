@@ -6,7 +6,7 @@ var struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_input_text_callback_da
     [ "operator ImGuiInputTextCallbackData *", "dc/d67/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_input_text_callback_data_ptr.html#a73c8a6d442b2b80f5fdd9945ea70e984", null ],
     [ "operator ImGuiInputTextCallbackDataPtr", "dc/d67/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_input_text_callback_data_ptr.html#a322a13935185e9d77fec95529c1225d3", null ],
     [ "ClearSelection", "dc/d67/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_input_text_callback_data_ptr.html#a2c703747e80cbf8fa8175c30ef3c75e6", null ],
-    [ "DeleteChars", "dc/d67/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_input_text_callback_data_ptr.html#a5b95cc1ba9b3babb2b84db3ee73d6148", null ],
+    [ "DeleteChars", "dc/d67/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_input_text_callback_data_ptr.html#a41789361773d086b7fc7d63c68665db4", null ],
     [ "Destroy", "dc/d67/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_input_text_callback_data_ptr.html#aff09593474ce27d770e1bb6f728fa839", null ],
     [ "HasSelection", "dc/d67/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_input_text_callback_data_ptr.html#a9a77cd58c26a62142c86a50936ebdb45", null ],
     [ "InsertChars", "dc/d67/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_input_text_callback_data_ptr.html#a847143112850765cc237570e26c543ad", null ],

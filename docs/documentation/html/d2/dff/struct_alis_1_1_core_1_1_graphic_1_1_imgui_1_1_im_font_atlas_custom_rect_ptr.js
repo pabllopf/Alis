@@ -11,7 +11,7 @@ var struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_atlas_custom_rect_ptr
     [ "Height", "d2/dff/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_atlas_custom_rect_ptr.html#a63b15ae4b839db3b8b3e734fac861dc8", null ],
     [ "X", "d2/dff/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_atlas_custom_rect_ptr.html#af9dc4b99e370c9d42f17adc76aff7123", null ],
     [ "Y", "d2/dff/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_atlas_custom_rect_ptr.html#ac0f7151167cb4986629ad354a41b764e", null ],
-    [ "GlyphID", "d2/dff/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_atlas_custom_rect_ptr.html#a196ad1e3f941188ad35de57602d324b0", null ],
+    [ "GlyphId", "d2/dff/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_atlas_custom_rect_ptr.html#a30ba10874bbb0bba016bc16640e26d65", null ],
     [ "GlyphAdvanceX", "d2/dff/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_atlas_custom_rect_ptr.html#a61eaf75cfa29c42ebdb5e4b6cbd3268a", null ],
     [ "GlyphOffset", "d2/dff/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_atlas_custom_rect_ptr.html#aaaa53c185035f995d08c6deceeed891b", null ],
     [ "Font", "d2/dff/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_atlas_custom_rect_ptr.html#a5830712ec4ea3b20293962a0a83e8ba3", null ],

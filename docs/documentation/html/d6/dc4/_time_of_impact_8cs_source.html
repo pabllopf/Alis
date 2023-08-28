@@ -342,19 +342,20 @@ $(document).ready(function(){initNavTree('d6/dc4/_time_of_impact_8cs_source.html
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                    <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                }</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                <span class="keywordflow">if</span> (iter == kMaxIterations)</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                    <span class="comment">// Root finder got stuck. Semi-victory.</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                    output.State = <a class="code" href="../../db/de4/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_t_o_i.html#a14113b96b0075c2a88870e121e6020a8">ToiOutputState</a>.Failed;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                    output.T = t1;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                }</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            }</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            <a class="code" href="../../d1/d54/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_t_o_i_1_1_time_of_impact.html#a00c30b329d35ae18814f936606cc6964">ToiMaxIters</a> = Math.Max(<a class="code" href="../../d1/d54/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_t_o_i_1_1_time_of_impact.html#a00c30b329d35ae18814f936606cc6964">ToiMaxIters</a>, iter);</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        }</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    }</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;}</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                <span class="comment">/*</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment">                if (iter == kMaxIterations)</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment">                {</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment">                    // Root finder got stuck. Semi-victory.</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment">                    output.State = ToiOutputState.Failed;</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment">                    output.T = t1;</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment">                    break;</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">                }*/</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            }</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <a class="code" href="../../d1/d54/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_t_o_i_1_1_time_of_impact.html#a00c30b329d35ae18814f936606cc6964">ToiMaxIters</a> = Math.Max(<a class="code" href="../../d1/d54/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_t_o_i_1_1_time_of_impact.html#a00c30b329d35ae18814f936606cc6964">ToiMaxIters</a>, iter);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        }</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    }</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="anamespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_html"><div class="ttname"><a href="../../d6/d41/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance.html">Alis.Core.Physic.Collision.Distance</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d76/_distance_g_j_k_8cs_source.html#l00040">DistanceGJK.cs:41</a></div></div>
@@ -404,7 +405,7 @@ $(document).ready(function(){initNavTree('d6/dc4/_time_of_impact_8cs_source.html
   <ul>
     <li class="navelem"><a class="el" href="../../dir_8272ea2c9ef4a5a450abbc74ffafe4de.html">4_Operation</a></li><li class="navelem"><a class="el" href="../../dir_52bde0543a13a94906a2e677a9f1758f.html">Physic</a></li><li class="navelem"><a class="el" href="../../dir_16bee6912db060554756e46a6c0ce1a1.html">src</a></li><li class="navelem"><a class="el" href="../../dir_7acf51ea87052da6587cd9eb0170f62c.html">Collision</a></li><li class="navelem"><a class="el" href="../../dir_871157ef0f571083a9862b41e8465859.html">TOI</a></li><li class="navelem"><b>TimeOfImpact.cs</b></li>
     <li class="footer">
-      <a>Generated on | Sun Aug 27 2023 |</a>
+      <a>Generated on | Mon Aug 28 2023 |</a>
     </li>
   </ul>
 </div>

@@ -7,7 +7,7 @@ var struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_config =
     [ "SizePixels", "d6/d16/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_config.html#a69f6f7a1031e5248d78a5974a8c340e3", null ],
     [ "OversampleH", "d6/d16/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_config.html#a8c1f42c61a4f409b33b8a43325ba0d75", null ],
     [ "OversampleV", "d6/d16/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_config.html#a41670b62ad36380a5fcefd15ea53df6f", null ],
-    [ "PixelSnapH", "d6/d16/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_config.html#a82f98924b1f89bb9d4617048bcc148ea", null ],
+    [ "SnapH", "d6/d16/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_config.html#a47aac1626c36b7b348df5a46c6a3dd2f", null ],
     [ "GlyphExtraSpacing", "d6/d16/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_config.html#a1018984fa8c60bd4618f2bc2e227299a", null ],
     [ "GlyphOffset", "d6/d16/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_config.html#ab4182d4db06c7a5767fe81a84023e355", null ],
     [ "GlyphRanges", "d6/d16/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_font_config.html#a7bff488deafb2a5285ce206217b09834", null ],

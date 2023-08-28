@@ -1,0 +1,28 @@
+var struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io =
+[
+    [ "PlatformCreateWindow", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#ae46a435bcfa7bb6ec6330800f1ef94cc", null ],
+    [ "PlatformDestroyWindow", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#af490fbaa62da2bb00f2f55f306142dea", null ],
+    [ "PlatformShowWindow", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#afbc3ef2b385da3611ce0ef670c245be3", null ],
+    [ "PlatformSetWindowPos", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#a332b28046e03cbda4cbb62dd6254404c", null ],
+    [ "PlatformGetWindowPos", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#a77ef4c9d1c4d3113bcb09d14067ac4b4", null ],
+    [ "PlatformSetWindowSize", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#a1cea18d8f39ee4855b214db6bb4bfd61", null ],
+    [ "PlatformGetWindowSize", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#ac05f2382a6f3b56154a939b677c5b92b", null ],
+    [ "PlatformSetWindowFocus", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#a3ac05db2be69fe3994e1c2e210044743", null ],
+    [ "PlatformGetWindowFocus", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#a6a6ec78010de7e579082ee40055ce7ea", null ],
+    [ "PlatformGetWindowMinimized", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#a07116dedf3cdb35a4ed2770f37dec424", null ],
+    [ "PlatformSetWindowTitle", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#ae5a7ec944ac415f53e777585f00fddf9", null ],
+    [ "PlatformSetWindowAlpha", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#af88ffb121315518e55f1cfa3c3a1688e", null ],
+    [ "PlatformUpdateWindow", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#a440ea26656481ecf2443e9e58774f84b", null ],
+    [ "PlatformRenderWindow", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#a3a5487f1514e792d85b1b98cc8e05c9d", null ],
+    [ "PlatformSwapBuffers", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#a7e41c26b08c87d31413070addb5fd3ba", null ],
+    [ "PlatformGetWindowDpiScale", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#a38e3bdd9d2e331a64a09df709b34a3de", null ],
+    [ "PlatformOnChangedViewport", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#a7c61da0234eeb6541b4d5e3b97bf7e9b", null ],
+    [ "PlatformCreateVkSurface", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#a3844d5ddb864b9b878afb5a11871d10e", null ],
+    [ "RendererCreateWindow", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#a5789f71176e728ba8a4af9884842ea40", null ],
+    [ "RendererDestroyWindow", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#af75790b97fb9e0d2965cd37a588485e1", null ],
+    [ "RendererSetWindowSize", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#a1554bfca1782b1775623299cbf031415", null ],
+    [ "RendererRenderWindow", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#a808f0bccb8d8ee1338a1a7228cfdd95a", null ],
+    [ "RendererSwapBuffers", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#a02e5085d35d600eb76ec240964d08f36", null ],
+    [ "Monitors", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#aacc9cf039782f1d9d21f825f4f3a8fac", null ],
+    [ "Viewports", "d5/d97/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_im_gui_platform_io.html#a60bb632c743a480b650c7c04b77e4fda", null ]
+];

@@ -60,9 +60,9 @@ var class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_shader =
     [ "sfShader_bind", "df/d95/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_shader.html#aa89e291f8d464d1984318b4ac8817609", null ],
     [ "sfShader_isAvailable", "df/d95/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_shader.html#ac27f9f0a8e4512ecfa52d5db5edb43af", null ],
     [ "sfShader_isGeometryAvailable", "df/d95/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_shader.html#a0b401bfa4e485a2d147b126afe7e5561", null ],
+    [ "CurrentTexture", "df/d95/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_shader.html#a33dc75acbbe9d654fd019610fc162306", null ],
     [ "myTextures", "df/d95/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_shader.html#a7bfe0c83c7d49be3664e4511930d366f", null ],
     [ "NativeHandle", "df/d95/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_shader.html#a15af88fc66e5eb19481f4ccd39eb9190", null ],
     [ "IsAvailable", "df/d95/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_shader.html#a2a4d53c5197631d0a0e904ac9c43d530", null ],
-    [ "IsGeometryAvailable", "df/d95/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_shader.html#ac69038213399bd3f4e7186cd31f0741b", null ],
-    [ "CurrentTexture", "df/d95/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_shader.html#a33dc75acbbe9d654fd019610fc162306", null ]
+    [ "IsGeometryAvailable", "df/d95/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_shader.html#ac69038213399bd3f4e7186cd31f0741b", null ]
 ];

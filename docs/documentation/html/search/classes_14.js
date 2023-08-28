@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['unionvalue_12112',['UnionValue',['../dc/d30/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_union_value.html',1,'Alis::Core::Graphic::Imgui']]],
-  ['unixplayerbase_12113',['UnixPlayerBase',['../de/d4d/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_players_1_1_unix_player_base.html',1,'Alis::Core::Audio::OS::Players']]],
-  ['unsafe_12114',['Unsafe',['../d4/db8/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_utils_1_1_unsafe.html',1,'Alis::Core::Graphic::ImGui::Utils']]],
-  ['utf8manager_12115',['Utf8Manager',['../d6/d31/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_utf8_manager.html',1,'Alis::Core::Aspect::Memory']]],
-  ['util_12116',['Util',['../d2/d02/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_util.html',1,'Alis.Core.Graphic.Imgui.Util'],['../dd/d5a/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_utils_1_1_util.html',1,'Alis.Core.Graphic.ImGui.Utils.Util']]]
+  ['unionvalue_12095',['UnionValue',['../dc/d30/struct_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_union_value.html',1,'Alis::Core::Graphic::Imgui']]],
+  ['unixplayerbase_12096',['UnixPlayerBase',['../de/d4d/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_players_1_1_unix_player_base.html',1,'Alis::Core::Audio::OS::Players']]],
+  ['unsafe_12097',['Unsafe',['../d4/db8/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_utils_1_1_unsafe.html',1,'Alis::Core::Graphic::ImGui::Utils']]],
+  ['utf8manager_12098',['Utf8Manager',['../d6/d31/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_utf8_manager.html',1,'Alis::Core::Aspect::Memory']]],
+  ['util_12099',['Util',['../dd/d5a/class_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_utils_1_1_util.html',1,'Alis.Core.Graphic.ImGui.Utils.Util'],['../d2/d02/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_util.html',1,'Alis.Core.Graphic.Imgui.Util']]]
 ];

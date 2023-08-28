@@ -1,4 +1,4 @@
 var class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_range_accessor_extensions =
 [
-    [ "GetStringASCII", "de/d58/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_range_accessor_extensions.html#ae3f2c0469cb5f91d100100c436254bec", null ]
+    [ "GetStringAscii", "de/d58/class_alis_1_1_core_1_1_graphic_1_1_imgui_1_1_range_accessor_extensions.html#ace74c2d049e4affa18bbb8cdfd71f385", null ]
 ];

@@ -28,6 +28,7 @@ var class_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix3_x2_f =
     [ "Subtract", "d3/d69/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix3_x2_f.html#a1e812666b42810777a914e49166b6ed2", null ],
     [ "GetDeterminant", "d3/d69/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix3_x2_f.html#a6a9fd9da9df5d491550c21728834e455", null ],
     [ "ToString", "d3/d69/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix3_x2_f.html#a946a82223632b9bce6e1234c9463a864", null ],
+    [ "RotationEpsilon", "d3/d69/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix3_x2_f.html#a48542e303c1f3bd3d5915559424d5878", null ],
     [ "hash", "d3/d69/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix3_x2_f.html#a6cc7f3714eb50b3e7b761ed29323f8a6", null ],
     [ "hashCode", "d3/d69/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix3_x2_f.html#aac1d29cd691f09d2e9120403c37cf749", null ],
     [ "M11", "d3/d69/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix3_x2_f.html#a5155ffb80810f02a63e7c7041762a182", null ],
@@ -37,7 +38,6 @@ var class_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix3_x2_f =
     [ "M31", "d3/d69/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix3_x2_f.html#adb5ebebca5be23cc7c7e41fa683b083a", null ],
     [ "M32", "d3/d69/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix3_x2_f.html#a6c095ff83656d3e77b53a2f3f74d4922", null ],
     [ "IsIdentity", "d3/d69/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix3_x2_f.html#aaba39d845d05491c8ed6a4db4e12f7c1", null ],
-    [ "RotationEpsilon", "d3/d69/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix3_x2_f.html#a48542e303c1f3bd3d5915559424d5878", null ],
     [ "Identity", "d3/d69/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix3_x2_f.html#a5e24027e3d2d6c6210c2ecff8b493814", null ],
     [ "Translation", "d3/d69/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix3_x2_f.html#a7f5073e0eadef998a4586520b1cb0d23", null ]
 ];

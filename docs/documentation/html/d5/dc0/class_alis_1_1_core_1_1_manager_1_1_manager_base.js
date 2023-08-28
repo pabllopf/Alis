@@ -11,5 +11,6 @@ var class_alis_1_1_core_1_1_manager_1_1_manager_base =
     [ "Draw", "d5/dc0/class_alis_1_1_core_1_1_manager_1_1_manager_base.html#ab7f3c6daa5261b43dac22ddc40ff9b7c", null ],
     [ "Reset", "d5/dc0/class_alis_1_1_core_1_1_manager_1_1_manager_base.html#ab89c4fc72e7dff08b39a972b00a25904", null ],
     [ "Stop", "d5/dc0/class_alis_1_1_core_1_1_manager_1_1_manager_base.html#a6fdf26e003bb237619f6367700783d46", null ],
-    [ "Exit", "d5/dc0/class_alis_1_1_core_1_1_manager_1_1_manager_base.html#af1c258eff3ce09710c510004214aedf1", null ]
+    [ "Exit", "d5/dc0/class_alis_1_1_core_1_1_manager_1_1_manager_base.html#af1c258eff3ce09710c510004214aedf1", null ],
+    [ "IsExitRequested", "d5/dc0/class_alis_1_1_core_1_1_manager_1_1_manager_base.html#aa0c9025452d2bf1311430dc162136623", null ]
 ];
