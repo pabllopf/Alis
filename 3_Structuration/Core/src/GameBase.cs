@@ -41,7 +41,7 @@ namespace Alis.Core
         /// <summary>
         ///     Active game
         /// </summary>
-        public static bool IsRunning;
+        public static bool IsRunning { get; set; } = true;
 
         /// <summary>
         ///     The manager base
@@ -58,8 +58,6 @@ namespace Alis.Core
         /// </summary>
         public virtual void Run()
         {
-            IsRunning = true;
-
             Managers.ForEach(i => i.Init());
             Managers.ForEach(i => i.Awake());
             Managers.ForEach(i => i.Start());
