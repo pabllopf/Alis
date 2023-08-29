@@ -94,7 +94,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// <summary>Creates a quaternion from the specified vector and rotation parts.</summary>
         /// <param name="vectorPart">The vector part of the quaternion.</param>
         /// <param name="scalarPart">The rotation part of the quaternion.</param>
-        public Quaternion(Vector3F vectorPart, float scalarPart)
+        public Quaternion(Vector3 vectorPart, float scalarPart)
         {
             X = vectorPart.X;
             Y = vectorPart.Y;
@@ -374,7 +374,7 @@ namespace Alis.Core.Aspect.Math.Util
         ///     <paramref name="axis" /> vector must be normalized before calling this method or the resulting
         ///     <see cref="Quaternion" /> will be incorrect.
         /// </remarks>
-        public static Quaternion CreateFromAxisAngle(Vector3F axis, float angle)
+        public static Quaternion CreateFromAxisAngle(Vector3 axis, float angle)
         {
             Quaternion ans = Zero;
 

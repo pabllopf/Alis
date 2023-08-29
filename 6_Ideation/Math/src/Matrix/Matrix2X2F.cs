@@ -39,17 +39,17 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>
         ///     The col
         /// </summary>
-        public Vector2F Ex;
+        public Vector2 Ex;
 
         /// <summary>
         ///     The col
         /// </summary>
-        public Vector2F Ey;
+        public Vector2 Ey;
 
         /// <summary>
         ///     Construct this matrix using columns.
         /// </summary>
-        public Matrix2X2F(Vector2F c1, Vector2F c2)
+        public Matrix2X2F(Vector2 c1, Vector2 c2)
         {
             Ex = c1;
             Ey = c2;
@@ -60,8 +60,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         public Matrix2X2F(float a11, float a12, float a21, float a22)
         {
-            Ex = new Vector2F(a11, a21);
-            Ey = new Vector2F(a12, a22);
+            Ex = new Vector2(a11, a21);
+            Ey = new Vector2(a12, a22);
         }
 
         /// <summary>
@@ -71,14 +71,14 @@ namespace Alis.Core.Aspect.Math.Matrix
         public Matrix2X2F(float angle)
         {
             float c = (float) System.Math.Cos(angle), s = (float) System.Math.Sin(angle);
-            Ex = new Vector2F(c, -s);
-            Ey = new Vector2F(s, c);
+            Ex = new Vector2(c, -s);
+            Ey = new Vector2(s, c);
         }
 
         /// <summary>
         ///     Initialize this matrix using columns.
         /// </summary>
-        public void Set(Vector2F c1, Vector2F c2)
+        public void Set(Vector2 c1, Vector2 c2)
         {
             Ex = c1;
             Ey = c2;
@@ -91,8 +91,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         public void Set(float angle)
         {
             float c = (float) System.Math.Cos(angle), s = (float) System.Math.Sin(angle);
-            Ex = new Vector2F(c, -s);
-            Ey = new Vector2F(s, c);
+            Ex = new Vector2(c, -s);
+            Ey = new Vector2(s, c);
         }
 
         /// <summary>
@@ -100,8 +100,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         public void SetIdentity()
         {
-            Ex = new Vector2F(1.0f, 0.0f);
-            Ey = new Vector2F(0.0f, 1.0f);
+            Ex = new Vector2(1.0f, 0.0f);
+            Ey = new Vector2(0.0f, 1.0f);
         }
 
         /// <summary>
@@ -109,8 +109,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         public void SetZero()
         {
-            Ex = new Vector2F(0.0f, 0.0f);
-            Ey = new Vector2F(0.0f, 0.0f);
+            Ex = new Vector2(0.0f, 0.0f);
+            Ey = new Vector2(0.0f, 0.0f);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     Solve A * x = b, where b is a column vector. This is more efficient
         ///     than computing the inverse in one-shot cases.
         /// </summary>
-        public Vector2F Solve(Vector2F b)
+        public Vector2 Solve(Vector2 b)
         {
             float col1X = Ex.X;
             float col2X = Ey.X;
@@ -154,7 +154,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             float det = col1X * col2Y - col2X * col1Y;
             //Box2DxDebug.Assert(det != 0.0f);
             det = 1.0f / det;
-            Vector2F x = new Vector2F(
+            Vector2 x = new Vector2(
                 det * (col2Y * b.X - col2X * b.Y),
                 det * (col1X * b.Y - col1Y * b.X)
             );

@@ -52,7 +52,7 @@ namespace Alis.Core.Component.Render
         /// <summary>
         ///     The size
         /// </summary>
-        private Vector2F size;
+        private Vector2 size;
 
         /// <summary>
         ///     The sprite
@@ -81,7 +81,7 @@ namespace Alis.Core.Component.Render
         public override void Init()
         {
             SpriteSfml = new Graphic.SFML.Graphics.Sprite(new Texture(TexturePath));
-            size = new Vector2F(SpriteSfml.TextureRect.Width, SpriteSfml.TextureRect.Height);
+            size = new Vector2(SpriteSfml.TextureRect.Width, SpriteSfml.TextureRect.Height);
             Logger.Log($"Load sprite od '{TexturePath}'");
         }
 
@@ -99,12 +99,12 @@ namespace Alis.Core.Component.Render
         /// <exception cref="NotImplementedException"></exception>
         public override void Start()
         {
-            SpriteSfml.Position = new Vector2F(
+            SpriteSfml.Position = new Vector2(
                 GameObject.Transform.Position.X - size.X * GameObject.Transform.Scale.X / 2,
                 GameObject.Transform.Position.Y - size.Y * GameObject.Transform.Scale.Y / 2
             );
             SpriteSfml.Rotation = GameObject.Transform.Rotation;
-            SpriteSfml.Scale = new Vector2F(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
+            SpriteSfml.Scale = new Vector2(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
         }
 
         /// <summary>
@@ -113,12 +113,12 @@ namespace Alis.Core.Component.Render
         /// <exception cref="NotImplementedException"></exception>
         public override void Update()
         {
-            SpriteSfml.Position = new Vector2F(
+            SpriteSfml.Position = new Vector2(
                 GameObject.Transform.Position.X - size.X * GameObject.Transform.Scale.X / 2,
                 GameObject.Transform.Position.Y - size.Y * GameObject.Transform.Scale.Y / 2
             );
             SpriteSfml.Rotation = GameObject.Transform.Rotation;
-            SpriteSfml.Scale = new Vector2F(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
+            SpriteSfml.Scale = new Vector2(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
         }
 
         /// <summary>

@@ -39,16 +39,16 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>
         ///     The element
         /// </summary>
-        public Vector3F Element0;
+        public Vector3 Element0;
 
         /// <summary>
         ///     The element
         /// </summary>
-        public Vector3F Element1;
+        public Vector3 Element1;
 
         /// <summary>
         ///     The element
         /// </summary>
-        public Vector3F Element2;
+        public Vector3 Element2;
     }
 }

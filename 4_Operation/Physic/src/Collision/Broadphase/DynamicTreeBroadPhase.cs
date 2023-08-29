@@ -148,7 +148,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         ///     Call MoveProxy as many times as you like, then when you are done call UpdatePairs to finalized the proxy pairs
         ///     (for your time step).
         /// </summary>
-        public void MoveProxy(int proxyId, ref Aabb aabb, Vector2F displacement)
+        public void MoveProxy(int proxyId, ref Aabb aabb, Vector2 displacement)
         {
             bool buffer = tree.MoveProxy(proxyId, ref aabb, displacement);
             if (buffer)
@@ -262,7 +262,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         }
 
         /// <summary>Shift the world origin. Useful for large worlds.</summary>
-        public void ShiftOrigin(ref Vector2F newOrigin)
+        public void ShiftOrigin(ref Vector2 newOrigin)
         {
             tree.ShiftOrigin(ref newOrigin);
         }

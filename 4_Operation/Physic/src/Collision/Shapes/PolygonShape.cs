@@ -114,16 +114,16 @@ namespace Alis.Core.Physic.Collision.Shapes
             int n = MathUtils.Min(vertices.Count, Settings.PolygonVertices);
 
             // Perform welding and copy vertices into local buffer.
-            Vector2F[] ps = new Vector2F[n]; //Velcro: The temp buffer is n long instead of Settings.MaxPolygonVertices
+            Vector2[] ps = new Vector2[n]; //Velcro: The temp buffer is n long instead of Settings.MaxPolygonVertices
             int tempCount = 0;
             for (int i = 0; i < n; ++i)
             {
-                Vector2F v = vertices[i];
+                Vector2 v = vertices[i];
 
                 bool unique = true;
                 for (int j = 0; j < tempCount; ++j)
                 {
-                    Vector2F temp = ps[j];
+                    Vector2 temp = ps[j];
                     if (MathUtils.DistanceSquared(ref v, ref temp) <
                         0.5f * Settings.LinearSlop * (0.5f * Settings.LinearSlop))
                     {
@@ -181,8 +181,8 @@ namespace Alis.Core.Physic.Collision.Shapes
                         continue;
                     }
 
-                    Vector2F r = ps[ie] - ps[hull[m]];
-                    Vector2F v = ps[j] - ps[hull[m]];
+                    Vector2 r = ps[ie] - ps[hull[m]];
+                    Vector2 v = ps[j] - ps[hull[m]];
                     float c = MathUtils.Cross(r, v);
                     if (c < 0.0f)
                     {
@@ -228,10 +228,10 @@ namespace Alis.Core.Physic.Collision.Shapes
             {
                 int i1 = i;
                 int i2 = i + 1 < VerticesPrivate.Count ? i + 1 : 0;
-                Vector2F edge = VerticesPrivate[i2] - VerticesPrivate[i1];
+                Vector2 edge = VerticesPrivate[i2] - VerticesPrivate[i1];
                 Debug.Assert(edge.LengthSquared() > Constant.Epsilon * Constant.Epsilon);
-                Vector2F temp = MathUtils.Cross(edge, 1.0f);
-                temp = Vector2F.Normalize(temp);
+                Vector2 temp = MathUtils.Cross(edge, 1.0f);
+                temp = Vector2.Normalize(temp);
                 NormalsPrivate.Add(temp);
             }
 
@@ -250,10 +250,10 @@ namespace Alis.Core.Physic.Collision.Shapes
 
             NormalsPrivate = new Vertices(4)
             {
-                new Vector2F(0.0f, -1.0f),
-                new Vector2F(1.0f, 0.0f),
-                new Vector2F(0.0f, 1.0f),
-                new Vector2F(-1.0f, 0.0f)
+                new Vector2(0.0f, -1.0f),
+                new Vector2(1.0f, 0.0f),
+                new Vector2(0.0f, 1.0f),
+                new Vector2(-1.0f, 0.0f)
             };
 
             ComputeProperties();
@@ -266,16 +266,16 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="hy">The hy</param>
         /// <param name="center">The center</param>
         /// <param name="angle">The angle</param>
-        public void SetAsBox(float hx, float hy, Vector2F center, float angle)
+        public void SetAsBox(float hx, float hy, Vector2 center, float angle)
         {
             VerticesPrivate = Polygon.CreateRectangle(hx, hy);
 
             NormalsPrivate = new Vertices(4)
             {
-                new Vector2F(0.0f, -1.0f),
-                new Vector2F(1.0f, 0.0f),
-                new Vector2F(0.0f, 1.0f),
-                new Vector2F(-1.0f, 0.0f)
+                new Vector2(0.0f, -1.0f),
+                new Vector2(1.0f, 0.0f),
+                new Vector2(0.0f, 1.0f),
+                new Vector2(-1.0f, 0.0f)
             };
 
             MassDataPrivate.Centroid = center;
@@ -334,13 +334,13 @@ namespace Alis.Core.Physic.Collision.Shapes
             }
 
             //Velcro: Consolidated the calculate centroid and mass code to a single method.
-            Vector2F center = Vector2F.Zero;
+            Vector2 center = Vector2.Zero;
             float area = 0.0f;
             float I = 0.0f;
 
             // Get a reference point for forming triangles.
             // Use the first vertex to reduce round-off errors.
-            Vector2F s = VerticesPrivate[0];
+            Vector2 s = VerticesPrivate[0];
 
             const float inv3 = 1.0f / 3.0f;
 
@@ -349,8 +349,8 @@ namespace Alis.Core.Physic.Collision.Shapes
             for (int i = 0; i < count; ++i)
             {
                 // Triangle vertices.
-                Vector2F e1 = VerticesPrivate[i] - s;
-                Vector2F e2 = i + 1 < count ? VerticesPrivate[i + 1] - s : VerticesPrivate[0] - s;
+                Vector2 e1 = VerticesPrivate[i] - s;
+                Vector2 e2 = i + 1 < count ? VerticesPrivate[i + 1] - s : VerticesPrivate[0] - s;
 
                 float d = MathUtils.Cross(e1, e2);
 
@@ -397,7 +397,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="transform">The transform</param>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(ref Transform transform, ref Vector2F point) =>
+        public override bool TestPoint(ref Transform transform, ref Vector2 point) =>
             TestPointHelper.TestPointPolygon(VerticesPrivate, NormalsPrivate, ref point, ref transform);
 
         /// <summary>

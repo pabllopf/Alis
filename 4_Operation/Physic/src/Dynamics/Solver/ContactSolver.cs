@@ -191,8 +191,8 @@ namespace Alis.Core.Physic.Dynamics.Solver
                         vcp.TangentImpulse = 0.0f;
                     }
 
-                    vcp.Ra = Vector2F.Zero;
-                    vcp.Rb = Vector2F.Zero;
+                    vcp.Ra = Vector2.Zero;
+                    vcp.Rb = Vector2.Zero;
                     vcp.NormalMass = 0.0f;
                     vcp.TangentMass = 0.0f;
                     vcp.VelocityBias = 0.0f;
@@ -221,17 +221,17 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 float mB = vc.InvMassB;
                 float iA = vc.InvIa;
                 float iB = vc.InvIb;
-                Vector2F localCenterA = pc.LocalCenterA;
-                Vector2F localCenterB = pc.LocalCenterB;
+                Vector2 localCenterA = pc.LocalCenterA;
+                Vector2 localCenterB = pc.LocalCenterB;
 
-                Vector2F cA = positions[indexA].C;
+                Vector2 cA = positions[indexA].C;
                 float aA = positions[indexA].A;
-                Vector2F vA = velocities[indexA].V;
+                Vector2 vA = velocities[indexA].V;
                 float wA = velocities[indexA].W;
 
-                Vector2F cB = positions[indexB].C;
+                Vector2 cB = positions[indexB].C;
                 float aB = positions[indexB].A;
-                Vector2F vB = velocities[indexB].V;
+                Vector2 vB = velocities[indexB].V;
                 float wB = velocities[indexB].W;
 
                 Debug.Assert(manifold.PointCount > 0);
@@ -243,8 +243,8 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 xfA.Position = cA - MathUtils.Mul(xfA.Rotation, localCenterA);
                 xfB.Position = cB - MathUtils.Mul(xfB.Rotation, localCenterB);
 
-                WorldManifold.Initialize(ref manifold, ref xfA, radiusA, ref xfB, radiusB, out Vector2F normal,
-                    out FixedArray2<Vector2F> points, out _);
+                WorldManifold.Initialize(ref manifold, ref xfA, radiusA, ref xfB, radiusB, out Vector2 normal,
+                    out FixedArray2<Vector2> points, out _);
 
                 vc.Normal = normal;
 
@@ -263,7 +263,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
                     vcp.NormalMass = kNormal > 0.0f ? 1.0f / kNormal : 0.0f;
 
-                    Vector2F tangent = MathUtils.Cross(vc.Normal, 1.0f);
+                    Vector2 tangent = MathUtils.Cross(vc.Normal, 1.0f);
 
                     float rtA = MathUtils.Cross(vcp.Ra, tangent);
                     float rtB = MathUtils.Cross(vcp.Rb, tangent);
@@ -302,8 +302,8 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     if (k11 * k11 < kMaxConditionNumber * (k11 * k22 - k12 * k12))
                     {
                         // K is safe to invert.
-                        vc.K.Ex = new Vector2F(k11, k12);
-                        vc.K.Ey = new Vector2F(k12, k22);
+                        vc.K.Ex = new Vector2(k11, k12);
+                        vc.K.Ey = new Vector2(k12, k22);
                         vc.NormalMass = vc.K.Inverse;
                     }
                     else
@@ -332,18 +332,18 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 float iB = vc.InvIb;
                 int pointCount = vc.PointCount;
 
-                Vector2F vA = velocities[indexA].V;
+                Vector2 vA = velocities[indexA].V;
                 float wA = velocities[indexA].W;
-                Vector2F vB = velocities[indexB].V;
+                Vector2 vB = velocities[indexB].V;
                 float wB = velocities[indexB].W;
 
-                Vector2F normal = vc.Normal;
-                Vector2F tangent = MathUtils.Cross(normal, 1.0f);
+                Vector2 normal = vc.Normal;
+                Vector2 tangent = MathUtils.Cross(normal, 1.0f);
 
                 for (int j = 0; j < pointCount; ++j)
                 {
                     VelocityConstraintPoint vcp = vc.Points[j];
-                    Vector2F p = vcp.NormalImpulse * normal + vcp.TangentImpulse * tangent;
+                    Vector2 p = vcp.NormalImpulse * normal + vcp.TangentImpulse * tangent;
                     wA -= iA * MathUtils.Cross(vcp.Ra, p);
                     vA -= mA * p;
                     wB += iB * MathUtils.Cross(vcp.Rb, p);
@@ -374,13 +374,13 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 float iB = vc.InvIb;
                 int pointCount = vc.PointCount;
 
-                Vector2F vA = velocities[indexA].V;
+                Vector2 vA = velocities[indexA].V;
                 float wA = velocities[indexA].W;
-                Vector2F vB = velocities[indexB].V;
+                Vector2 vB = velocities[indexB].V;
                 float wB = velocities[indexB].W;
 
-                Vector2F normal = vc.Normal;
-                Vector2F tangent = MathUtils.Cross(normal, 1.0f);
+                Vector2 normal = vc.Normal;
+                Vector2 tangent = MathUtils.Cross(normal, 1.0f);
                 float friction = vc.Friction;
 
                 Debug.Assert(pointCount == 1 || pointCount == 2);
@@ -392,10 +392,10 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     VelocityConstraintPoint vcp = vc.Points[j];
 
                     // Relative velocity at contact
-                    Vector2F dv = vB + MathUtils.Cross(wB, vcp.Rb) - vA - MathUtils.Cross(wA, vcp.Ra);
+                    Vector2 dv = vB + MathUtils.Cross(wB, vcp.Rb) - vA - MathUtils.Cross(wA, vcp.Ra);
 
                     // Compute tangent force
-                    float vt = Vector2F.Dot(dv, tangent) - vc.TangentSpeed;
+                    float vt = Vector2.Dot(dv, tangent) - vc.TangentSpeed;
                     float lambda = vcp.TangentMass * -vt;
 
                     // b2Clamp the accumulated force
@@ -405,7 +405,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     vcp.TangentImpulse = newImpulse;
 
                     // Apply contact impulse
-                    Vector2F p = lambda * tangent;
+                    Vector2 p = lambda * tangent;
 
                     vA -= mA * p;
                     wA -= iA * MathUtils.Cross(vcp.Ra, p);
@@ -422,10 +422,10 @@ namespace Alis.Core.Physic.Dynamics.Solver
                         VelocityConstraintPoint vcp = vc.Points[j];
 
                         // Relative velocity at contact
-                        Vector2F dv = vB + MathUtils.Cross(wB, vcp.Rb) - vA - MathUtils.Cross(wA, vcp.Ra);
+                        Vector2 dv = vB + MathUtils.Cross(wB, vcp.Rb) - vA - MathUtils.Cross(wA, vcp.Ra);
 
                         // Compute normal impulse
-                        float vn = Vector2F.Dot(dv, normal);
+                        float vn = Vector2.Dot(dv, normal);
                         float lambda = -vcp.NormalMass * (vn - vcp.VelocityBias);
 
                         // b2Clamp the accumulated impulse
@@ -434,7 +434,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                         vcp.NormalImpulse = newImpulse;
 
                         // Apply contact impulse
-                        Vector2F p = lambda * normal;
+                        Vector2 p = lambda * normal;
                         vA -= mA * p;
                         wA -= iA * MathUtils.Cross(vcp.Ra, p);
 
@@ -480,18 +480,18 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     VelocityConstraintPoint cp1 = vc.Points[0];
                     VelocityConstraintPoint cp2 = vc.Points[1];
 
-                    Vector2F a = new Vector2F(cp1.NormalImpulse, cp2.NormalImpulse);
+                    Vector2 a = new Vector2(cp1.NormalImpulse, cp2.NormalImpulse);
                     Debug.Assert((a.X >= 0.0f) && (a.Y >= 0.0f));
 
                     // Relative velocity at contact
-                    Vector2F dv1 = vB + MathUtils.Cross(wB, cp1.Rb) - vA - MathUtils.Cross(wA, cp1.Ra);
-                    Vector2F dv2 = vB + MathUtils.Cross(wB, cp2.Rb) - vA - MathUtils.Cross(wA, cp2.Ra);
+                    Vector2 dv1 = vB + MathUtils.Cross(wB, cp1.Rb) - vA - MathUtils.Cross(wA, cp1.Ra);
+                    Vector2 dv2 = vB + MathUtils.Cross(wB, cp2.Rb) - vA - MathUtils.Cross(wA, cp2.Ra);
 
                     // Compute normal velocity
-                    float vn1 = Vector2F.Dot(dv1, normal);
-                    float vn2 = Vector2F.Dot(dv2, normal);
+                    float vn1 = Vector2.Dot(dv1, normal);
+                    float vn2 = Vector2.Dot(dv2, normal);
 
-                    Vector2F b = new Vector2F(
+                    Vector2 b = new Vector2(
                         vn1 - cp1.VelocityBias,
                         vn2 - cp2.VelocityBias
                     );
@@ -508,7 +508,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     //
                     // x = - inv(A) * b'
                     //
-                    Vector2F x = -MathUtils.Mul(ref vc.NormalMass, b);
+                    Vector2 x = -MathUtils.Mul(ref vc.NormalMass, b);
 
                     if ((x.X >= 0.0f) && (x.Y >= 0.0f))
                     {
@@ -518,7 +518,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                         break;
                     }
 
-                    x = new Vector2F(-cp1.NormalMass * b.X, 0.0f);
+                    x = new Vector2(-cp1.NormalMass * b.X, 0.0f);
                     vn2 = vc.K.Ex.Y * x.X + b.Y;
 
                     if ((x.X >= 0.0f) && (vn2 >= 0.0f))
@@ -529,7 +529,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                         break;
                     }
 
-                    x = new Vector2F(0.0f, -cp2.NormalMass * b.Y);
+                    x = new Vector2(0.0f, -cp2.NormalMass * b.Y);
                     vn1 = vc.K.Ey.X * x.Y + b.X;
 
                     if ((x.Y >= 0.0f) && (vn1 >= 0.0f))
@@ -540,16 +540,16 @@ namespace Alis.Core.Physic.Dynamics.Solver
                         break;
                     }
 
-                    x = Vector2F.Zero;
+                    x = Vector2.Zero;
                     vn1 = b.X;
                     vn2 = b.Y;
 
                     if ((vn1 >= 0.0f) && (vn2 >= 0.0f))
                     {
-                        Vector2F d = x - a;
+                        Vector2 d = x - a;
 
-                        Vector2F p1 = d.X * normal;
-                        Vector2F p2 = d.Y * normal;
+                        Vector2 p1 = d.X * normal;
+                        Vector2 p2 = d.Y * normal;
                         vA -= mA * (p1 + p2);
                         wA -= iA * (MathUtils.Cross(cp1.Ra, p1) + MathUtils.Cross(cp2.Ra, p2));
 
@@ -604,18 +604,18 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
                 int indexA = pc.IndexA;
                 int indexB = pc.IndexB;
-                Vector2F localCenterA = pc.LocalCenterA;
+                Vector2 localCenterA = pc.LocalCenterA;
                 float mA = pc.InvMassA;
                 float iA = pc.InvIa;
-                Vector2F localCenterB = pc.LocalCenterB;
+                Vector2 localCenterB = pc.LocalCenterB;
                 float mB = pc.InvMassB;
                 float iB = pc.InvIb;
                 int pointCount = pc.PointCount;
 
-                Vector2F cA = positions[indexA].C;
+                Vector2 cA = positions[indexA].C;
                 float aA = positions[indexA].A;
 
-                Vector2F cB = positions[indexB].C;
+                Vector2 cB = positions[indexB].C;
                 float aB = positions[indexB].A;
 
                 for (int j = 0; j < pointCount; ++j)
@@ -627,11 +627,11 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     xfA.Position = cA - MathUtils.Mul(xfA.Rotation, localCenterA);
                     xfB.Position = cB - MathUtils.Mul(xfB.Rotation, localCenterB);
 
-                    PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, j, out Vector2F normal, out Vector2F point,
+                    PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, j, out Vector2 normal, out Vector2 point,
                         out float separation);
 
-                    Vector2F rA = point - cA;
-                    Vector2F rB = point - cB;
+                    Vector2 rA = point - cA;
+                    Vector2 rB = point - cB;
 
                     minSeparation = Math.Min(minSeparation, separation);
 
@@ -645,7 +645,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     // Compute normal impulse
                     float impulse = k > 0.0f ? -c / k : 0.0f;
 
-                    Vector2F p = impulse * normal;
+                    Vector2 p = impulse * normal;
 
                     cA -= mA * p;
                     aA -= iA * MathUtils.Cross(rA, p);
@@ -683,8 +683,8 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
                 int indexA = pc.IndexA;
                 int indexB = pc.IndexB;
-                Vector2F localCenterA = pc.LocalCenterA;
-                Vector2F localCenterB = pc.LocalCenterB;
+                Vector2 localCenterA = pc.LocalCenterA;
+                Vector2 localCenterB = pc.LocalCenterB;
                 int pointCount = pc.PointCount;
 
                 float mA = 0.0f;
@@ -703,10 +703,10 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     iB = pc.InvIb;
                 }
 
-                Vector2F cA = positions[indexA].C;
+                Vector2 cA = positions[indexA].C;
                 float aA = positions[indexA].A;
 
-                Vector2F cB = positions[indexB].C;
+                Vector2 cB = positions[indexB].C;
                 float aB = positions[indexB].A;
 
                 // Solve normal constraints
@@ -719,11 +719,11 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     xfA.Position = cA - MathUtils.Mul(xfA.Rotation, localCenterA);
                     xfB.Position = cB - MathUtils.Mul(xfB.Rotation, localCenterB);
 
-                    PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, j, out Vector2F normal, out Vector2F point,
+                    PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, j, out Vector2 normal, out Vector2 point,
                         out float separation);
 
-                    Vector2F rA = point - cA;
-                    Vector2F rB = point - cB;
+                    Vector2 rA = point - cA;
+                    Vector2 rB = point - cB;
 
                     // Track max constraint error.
                     minSeparation = Math.Min(minSeparation, separation);
@@ -740,7 +740,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     // Compute normal impulse
                     float impulse = k > 0.0f ? -c / k : 0.0f;
 
-                    Vector2F p = impulse * normal;
+                    Vector2 p = impulse * normal;
 
                     cA -= mA * p;
                     aA -= iA * MathUtils.Cross(rA, p);

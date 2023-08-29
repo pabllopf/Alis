@@ -29,6 +29,7 @@
 
 using System;
 using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.UI.Utils;
 
 namespace Alis.Core.Graphic.UI.Extras.Node

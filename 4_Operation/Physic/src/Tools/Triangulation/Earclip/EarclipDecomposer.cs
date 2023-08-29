@@ -133,13 +133,13 @@ namespace Alis.Core.Physic.Tools.Triangulation.Earclip
                     {
                         int lower = Remainder(i - 1, vNum);
                         int upper = Remainder(i + 1, vNum);
-                        Vector2F d1 = new Vector2F(xrem[upper] - xrem[i], yrem[upper] - yrem[i]);
-                        Vector2F d2 = new Vector2F(xrem[i] - xrem[lower], yrem[i] - yrem[lower]);
-                        Vector2F d3 = new Vector2F(xrem[lower] - xrem[upper], yrem[lower] - yrem[upper]);
+                        Vector2 d1 = new Vector2(xrem[upper] - xrem[i], yrem[upper] - yrem[i]);
+                        Vector2 d2 = new Vector2(xrem[i] - xrem[lower], yrem[i] - yrem[lower]);
+                        Vector2 d3 = new Vector2(xrem[lower] - xrem[upper], yrem[lower] - yrem[upper]);
 
-                        d1 = Vector2F.Normalize(d1);
-                        d2 = Vector2F.Normalize(d2);
-                        d3 = Vector2F.Normalize(d3);
+                        d1 = Vector2.Normalize(d1);
+                        d2 = Vector2.Normalize(d2);
+                        d3 = Vector2.Normalize(d3);
                         MathUtils.Cross(ref d1, ref d2, out float cross12);
                         cross12 = Math.Abs(cross12);
 

@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Math.Vector
     ///     The vector
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct Vector2F : IEquatable<Vector2F>, IFormattable
+    public struct Vector2 : IEquatable<Vector2>, IFormattable
     {
         /// <summary>The X component of the vector.</summary>
         public readonly float X;
@@ -50,16 +50,16 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <summary>The Y component of the vector.</summary>
         public readonly float Y;
 
-        /// <summary>Creates a new <see cref="Vector2F" /> object whose two elements have the same value.</summary>
+        /// <summary>Creates a new <see cref="Vector2" /> object whose two elements have the same value.</summary>
         /// <param name="value">The value to assign to both elements.</param>
-        public Vector2F(float value) : this(value, value)
+        public Vector2(float value) : this(value, value)
         {
         }
 
         /// <summary>Creates a vector whose elements have the specified values.</summary>
         /// <param name="x">The value to assign to the <see cref="X" /> field.</param>
         /// <param name="y">The value to assign to the <see cref="Y" /> field.</param>
-        public Vector2F(float x, float y)
+        public Vector2(float x, float y)
         {
             X = x;
             Y = y;
@@ -67,27 +67,27 @@ namespace Alis.Core.Aspect.Math.Vector
 
         /// <summary>Returns a vector whose 2 elements are equal to zero.</summary>
         /// <value>A vector whose two elements are equal to zero (that is, it returns the vector <c>(0,0)</c>.</value>
-        public static Vector2F Zero => default(Vector2F);
+        public static Vector2 Zero => default(Vector2);
 
         /// <summary>Gets a vector whose 2 elements are equal to one.</summary>
         /// <value>A vector whose two elements are equal to one (that is, it returns the vector <c>(1,1)</c>.</value>
-        public static Vector2F One => new Vector2F(1.0f);
+        public static Vector2 One => new Vector2(1.0f);
 
         /// <summary>Gets the vector (1,0).</summary>
         /// <value>The vector <c>(1,0)</c>.</value>
-        public static Vector2F UnitX => new Vector2F(1.0f, 0.0f);
+        public static Vector2 UnitX => new Vector2(1.0f, 0.0f);
 
         /// <summary>Gets the vector (0,1).</summary>
         /// <value>The vector <c>(0,1)</c>.</value>
-        public static Vector2F UnitY => new Vector2F(0.0f, 1.0f);
+        public static Vector2 UnitY => new Vector2(0.0f, 1.0f);
 
         /// <summary>Adds two vectors together.</summary>
         /// <param name="left">The first vector to add.</param>
         /// <param name="right">The second vector to add.</param>
         /// <returns>The summed vector.</returns>
-        /// <remarks>The <see cref="op_Addition" /> method defines the addition operation for <see cref="Vector2F" /> objects.</remarks>
+        /// <remarks>The <see cref="op_Addition" /> method defines the addition operation for <see cref="Vector2" /> objects.</remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F operator +(Vector2F left, Vector2F right) => new Vector2F(
+        public static Vector2 operator +(Vector2 left, Vector2 right) => new Vector2(
             left.X + right.X,
             left.Y + right.Y
         );
@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="right">The second vector.</param>
         /// <returns>The vector that results from dividing <paramref name="left" /> by <paramref name="right" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F operator /(Vector2F left, Vector2F right) => new Vector2F(
+        public static Vector2 operator /(Vector2 left, Vector2 right) => new Vector2(
             left.X / right.X,
             left.Y / right.Y
         );
@@ -107,7 +107,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="value2">The scalar value.</param>
         /// <returns>The result of the division.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F operator /(Vector2F value1, float value2) => value1 / new Vector2F(value2);
+        public static Vector2 operator /(Vector2 value1, float value2) => value1 / new Vector2(value2);
 
         /// <summary>Returns a value that indicates whether each pair of elements in two specified vectors is equal.</summary>
         /// <param name="left">The first vector to compare.</param>
@@ -117,11 +117,11 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     <see langword="false" />.
         /// </returns>
         /// <remarks>
-        ///     Two <see cref="Vector2F" /> objects are equal if each value in <paramref name="left" /> is equal to the
+        ///     Two <see cref="Vector2" /> objects are equal if each value in <paramref name="left" /> is equal to the
         ///     corresponding value in <paramref name="right" />.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool operator ==(Vector2F left, Vector2F right) => (left.X == right.X)
+        public static bool operator ==(Vector2 left, Vector2 right) => (left.X == right.X)
                                                                          && (left.Y == right.Y);
 
         /// <summary>Returns a value that indicates whether two specified vectors are not equal.</summary>
@@ -132,14 +132,14 @@ namespace Alis.Core.Aspect.Math.Vector
         ///     <see langword="false" />.
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool operator !=(Vector2F left, Vector2F right) => !(left == right);
+        public static bool operator !=(Vector2 left, Vector2 right) => !(left == right);
 
         /// <summary>Returns a new vector whose values are the product of each pair of elements in two specified vectors.</summary>
         /// <param name="left">The first vector.</param>
         /// <param name="right">The second vector.</param>
         /// <returns>The element-wise product vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F operator *(Vector2F left, Vector2F right) => new Vector2F(
+        public static Vector2 operator *(Vector2 left, Vector2 right) => new Vector2(
             left.X * right.X,
             left.Y * right.Y
         );
@@ -149,25 +149,25 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="right">The scalar value.</param>
         /// <returns>The scaled vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F operator *(Vector2F left, float right) => left * new Vector2F(right);
+        public static Vector2 operator *(Vector2 left, float right) => left * new Vector2(right);
 
         /// <summary>Multiplies the scalar value by the specified vector.</summary>
         /// <param name="left">The vector.</param>
         /// <param name="right">The scalar value.</param>
         /// <returns>The scaled vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F operator *(float left, Vector2F right) => right * left;
+        public static Vector2 operator *(float left, Vector2 right) => right * left;
 
         /// <summary>Subtracts the second vector from the first.</summary>
         /// <param name="left">The first vector.</param>
         /// <param name="right">The second vector.</param>
         /// <returns>The vector that results from subtracting <paramref name="right" /> from <paramref name="left" />.</returns>
         /// <remarks>
-        ///     The <see cref="op_Subtraction" /> method defines the subtraction operation for <see cref="Vector2F" />
+        ///     The <see cref="op_Subtraction" /> method defines the subtraction operation for <see cref="Vector2" />
         ///     objects.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F operator -(Vector2F left, Vector2F right) => new Vector2F(
+        public static Vector2 operator -(Vector2 left, Vector2 right) => new Vector2(
             left.X - right.X,
             left.Y - right.Y
         );
@@ -176,17 +176,17 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="value">The vector to negate.</param>
         /// <returns>The negated vector.</returns>
         /// <remarks>
-        ///     The <see cref="op_UnaryNegation" /> method defines the unary negation operation for <see cref="Vector2F" />
+        ///     The <see cref="op_UnaryNegation" /> method defines the unary negation operation for <see cref="Vector2" />
         ///     objects.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F operator -(Vector2F value) => Zero - value;
+        public static Vector2 operator -(Vector2 value) => Zero - value;
 
         /// <summary>Returns a vector whose elements are the absolute values of each of the specified vector's elements.</summary>
         /// <param name="value">A vector.</param>
         /// <returns>The absolute value vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F Abs(Vector2F value) => new Vector2F(
+        public static Vector2 Abs(Vector2 value) => new Vector2(
             MathF.Abs(value.X),
             MathF.Abs(value.Y)
         );
@@ -196,7 +196,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="right">The second vector to add.</param>
         /// <returns>The summed vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F Add(Vector2F left, Vector2F right) => left + right;
+        public static Vector2 Add(Vector2 left, Vector2 right) => left + right;
 
         /// <summary>Restricts a vector between a minimum and a maximum value.</summary>
         /// <param name="value1">The vector to restrict.</param>
@@ -204,7 +204,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="max">The maximum value.</param>
         /// <returns>The restricted vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F Clamp(Vector2F value1, Vector2F min, Vector2F max) =>
+        public static Vector2 Clamp(Vector2 value1, Vector2 min, Vector2 max) =>
             // We must follow HLSL behavior in the case user specified min value is bigger than max value.
             Min(Max(value1, min), max);
 
@@ -213,7 +213,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="value2">The second point.</param>
         /// <returns>The distance.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float Distance(Vector2F value1, Vector2F value2)
+        public static float Distance(Vector2 value1, Vector2 value2)
         {
             float distanceSquared = DistanceSquared(value1, value2);
             return MathF.Sqrt(distanceSquared);
@@ -224,9 +224,9 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="value2">The second point.</param>
         /// <returns>The distance squared.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float DistanceSquared(Vector2F value1, Vector2F value2)
+        public static float DistanceSquared(Vector2 value1, Vector2 value2)
         {
-            Vector2F difference = value1 - value2;
+            Vector2 difference = value1 - value2;
             return Dot(difference, difference);
         }
 
@@ -235,21 +235,21 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="right">The second vector.</param>
         /// <returns>The vector resulting from the division.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F Divide(Vector2F left, Vector2F right) => left / right;
+        public static Vector2 Divide(Vector2 left, Vector2 right) => left / right;
 
         /// <summary>Divides the specified vector by a specified scalar value.</summary>
         /// <param name="left">The vector.</param>
         /// <param name="divisor">The scalar value.</param>
         /// <returns>The vector that results from the division.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F Divide(Vector2F left, float divisor) => left / divisor;
+        public static Vector2 Divide(Vector2 left, float divisor) => left / divisor;
 
         /// <summary>Returns the dot product of two vectors.</summary>
         /// <param name="value1">The first vector.</param>
         /// <param name="value2">The second vector.</param>
         /// <returns>The dot product.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float Dot(Vector2F value1, Vector2F value2) => value1.X * value2.X
+        public static float Dot(Vector2 value1, Vector2 value2) => value1.X * value2.X
                                                                      + value1.Y * value2.Y;
 
         /// <summary>Performs a linear interpolation between two vectors based on the given weighting.</summary>
@@ -263,14 +263,14 @@ namespace Alis.Core.Aspect.Math.Vector
         /// ]]></format>
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F Lerp(Vector2F value1, Vector2F value2, float amount) => value1 * (1.0f - amount) + value2 * amount;
+        public static Vector2 Lerp(Vector2 value1, Vector2 value2, float amount) => value1 * (1.0f - amount) + value2 * amount;
 
         /// <summary>Returns a vector whose elements are the maximum of each of the pairs of elements in two specified vectors.</summary>
         /// <param name="value1">The first vector.</param>
         /// <param name="value2">The second vector.</param>
         /// <returns>The maximized vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F Max(Vector2F value1, Vector2F value2) => new Vector2F(
+        public static Vector2 Max(Vector2 value1, Vector2 value2) => new Vector2(
             value1.X > value2.X ? value1.X : value2.X,
             value1.Y > value2.Y ? value1.Y : value2.Y
         );
@@ -280,7 +280,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="value2">The second vector.</param>
         /// <returns>The minimized vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F Min(Vector2F value1, Vector2F value2) => new Vector2F(
+        public static Vector2 Min(Vector2 value1, Vector2 value2) => new Vector2(
             value1.X < value2.X ? value1.X : value2.X,
             value1.Y < value2.Y ? value1.Y : value2.Y
         );
@@ -290,40 +290,40 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="right">The second vector.</param>
         /// <returns>The element-wise product vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F Multiply(Vector2F left, Vector2F right) => left * right;
+        public static Vector2 Multiply(Vector2 left, Vector2 right) => left * right;
 
         /// <summary>Multiplies a vector by a specified scalar.</summary>
         /// <param name="left">The vector to multiply.</param>
         /// <param name="right">The scalar value.</param>
         /// <returns>The scaled vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F Multiply(Vector2F left, float right) => left * right;
+        public static Vector2 Multiply(Vector2 left, float right) => left * right;
 
         /// <summary>Multiplies a scalar value by a specified vector.</summary>
         /// <param name="left">The scaled value.</param>
         /// <param name="right">The vector.</param>
         /// <returns>The scaled vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F Multiply(float left, Vector2F right) => left * right;
+        public static Vector2 Multiply(float left, Vector2 right) => left * right;
 
         /// <summary>Negates a specified vector.</summary>
         /// <param name="value">The vector to negate.</param>
         /// <returns>The negated vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F Negate(Vector2F value) => -value;
+        public static Vector2 Negate(Vector2 value) => -value;
 
         /// <summary>Returns a vector with the same direction as the specified vector, but with a length of one.</summary>
         /// <param name="value">The vector to normalize.</param>
         /// <returns>The normalized vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F Normalize(Vector2F value) => value / value.Length();
+        public static Vector2 Normalize(Vector2 value) => value / value.Length();
 
         /// <summary>Returns the reflection of a vector off a surface that has the specified normal.</summary>
         /// <param name="vector">The source vector.</param>
         /// <param name="normal">The normal of the surface being reflected off.</param>
         /// <returns>The reflected vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F Reflect(Vector2F vector, Vector2F normal)
+        public static Vector2 Reflect(Vector2 vector, Vector2 normal)
         {
             float dot = Dot(vector, normal);
             return vector - 2 * dot * normal;
@@ -333,7 +333,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="value">A vector.</param>
         /// <returns>The square root vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F SquareRoot(Vector2F value) => new Vector2F(
+        public static Vector2 SquareRoot(Vector2 value) => new Vector2(
             MathF.Sqrt(value.X),
             MathF.Sqrt(value.Y)
         );
@@ -343,14 +343,14 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="right">The second vector.</param>
         /// <returns>The difference vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F Subtract(Vector2F left, Vector2F right) => left - right;
+        public static Vector2 Subtract(Vector2 left, Vector2 right) => left - right;
 
         /// <summary>Transforms a vector by a specified 3x2 matrix.</summary>
         /// <param name="position">The vector to transform.</param>
         /// <param name="matrix">The transformation matrix.</param>
         /// <returns>The transformed vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F Transform(Vector2F position, Matrix3X2F matrix) => new Vector2F(
+        public static Vector2 Transform(Vector2 position, Matrix3X2F matrix) => new Vector2(
             position.X * matrix.M11 + position.Y * matrix.M21 + matrix.M31,
             position.X * matrix.M12 + position.Y * matrix.M22 + matrix.M32
         );
@@ -360,7 +360,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="matrix">The transformation matrix.</param>
         /// <returns>The transformed vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F Transform(Vector2F position, Matrix4X4F matrix) => new Vector2F(
+        public static Vector2 Transform(Vector2 position, Matrix4X4F matrix) => new Vector2(
             position.X * matrix.M11 + position.Y * matrix.M21 + matrix.M41,
             position.X * matrix.M12 + position.Y * matrix.M22 + matrix.M42
         );
@@ -370,7 +370,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="rotation">The rotation to apply.</param>
         /// <returns>The transformed vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F Transform(Vector2F value, Quaternion rotation)
+        public static Vector2 Transform(Vector2 value, Quaternion rotation)
         {
             float x2 = rotation.X + rotation.X;
             float y2 = rotation.Y + rotation.Y;
@@ -382,7 +382,7 @@ namespace Alis.Core.Aspect.Math.Vector
             float yy2 = rotation.Y * y2;
             float zz2 = rotation.Z * z2;
 
-            return new Vector2F(
+            return new Vector2(
                 value.X * (1.0f - yy2 - zz2) + value.Y * (xy2 - wz2),
                 value.X * (xy2 + wz2) + value.Y * (1.0f - xx2 - zz2)
             );
@@ -393,7 +393,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="matrix">The matrix.</param>
         /// <returns>The transformed vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F TransformNormal(Vector2F normal, Matrix3X2F matrix) => new Vector2F(
+        public static Vector2 TransformNormal(Vector2 normal, Matrix3X2F matrix) => new Vector2(
             normal.X * matrix.M11 + normal.Y * matrix.M21,
             normal.X * matrix.M12 + normal.Y * matrix.M22
         );
@@ -403,7 +403,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="matrix">The matrix.</param>
         /// <returns>The transformed vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2F TransformNormal(Vector2F normal, Matrix4X4F matrix) => new Vector2F(
+        public static Vector2 TransformNormal(Vector2 normal, Matrix4X4F matrix) => new Vector2(
             normal.X * matrix.M11 + normal.Y * matrix.M21,
             normal.X * matrix.M12 + normal.Y * matrix.M22
         );
@@ -469,16 +469,16 @@ namespace Alis.Core.Aspect.Math.Vector
         /// </returns>
         /// <remarks>
         ///     The current instance and <paramref name="obj" /> are equal if <paramref name="obj" /> is a
-        ///     <see cref="Vector2F" /> object and their <see cref="X" /> and <see cref="Y" /> elements are equal.
+        ///     <see cref="Vector2" /> object and their <see cref="X" /> and <see cref="Y" /> elements are equal.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public readonly override bool Equals(object obj) => obj is Vector2F other && Equals(other);
+        public readonly override bool Equals(object obj) => obj is Vector2 other && Equals(other);
 
         /// <summary>Returns a value that indicates whether this instance and another vector are equal.</summary>
         /// <param name="other">The other vector.</param>
         /// <returns><see langword="true" /> if the two vectors are equal; otherwise, <see langword="false" />.</returns>
         /// <remarks>Two vectors are equal if their <see cref="X" /> and <see cref="Y" /> elements are equal.</remarks>
-        public readonly bool Equals(Vector2F other) => this == other;
+        public readonly bool Equals(Vector2 other) => this == other;
 
         /// <summary>Returns the hash code for this instance.</summary>
         /// <returns>The hash code.</returns>

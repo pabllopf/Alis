@@ -31,6 +31,7 @@ using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.UI.Utils;
 
 namespace Alis.Core.Graphic.UI

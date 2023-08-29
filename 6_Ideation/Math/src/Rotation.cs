@@ -76,9 +76,9 @@ namespace Alis.Core.Aspect.Math
         public float GetAngle() => (float) System.Math.Atan2(Sine, Cosine);
 
         /// <summary>Get the x-axis</summary>
-        public Vector2F GetXAxis() => new Vector2F(Cosine, Sine);
+        public Vector2 GetXAxis() => new Vector2(Cosine, Sine);
 
         /// <summary>Get the y-axis</summary>
-        public Vector2F GetYAxis() => new Vector2F(-Sine, Cosine);
+        public Vector2 GetYAxis() => new Vector2(-Sine, Cosine);
     }
 }

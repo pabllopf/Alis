@@ -61,7 +61,7 @@ namespace Alis.Builder.Core.Setting
         /// <returns>The physic setting builder</returns>
         public PhysicSettingBuilder Gravity(float x, float y)
         {
-            physicSetting.Gravity = new Vector2F(x, y);
+            physicSetting.Gravity = new Vector2(x, y);
             return this;
         }
     }

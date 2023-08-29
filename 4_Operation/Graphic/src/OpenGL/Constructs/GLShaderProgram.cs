@@ -184,9 +184,9 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
                 case ActiveAttribType.FloatMat2: return typeof(float[]);
                 case ActiveAttribType.FloatMat3: throw new Exception();
                 case ActiveAttribType.FloatMat4: return typeof(Matrix4X4F);
-                case ActiveAttribType.FloatVec2: return typeof(Vector2F);
-                case ActiveAttribType.FloatVec3: return typeof(Vector3F);
-                case ActiveAttribType.FloatVec4: return typeof(Vector4F);
+                case ActiveAttribType.FloatVec2: return typeof(Vector2);
+                case ActiveAttribType.FloatVec3: return typeof(Vector3);
+                case ActiveAttribType.FloatVec4: return typeof(Vector4);
                 default: return typeof(object);
             }
         }
@@ -203,9 +203,9 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
             {
                 case ActiveUniformType.Int: return typeof(int);
                 case ActiveUniformType.Float: return typeof(float);
-                case ActiveUniformType.FloatVec2: return typeof(Vector2F);
-                case ActiveUniformType.FloatVec3: return typeof(Vector3F);
-                case ActiveUniformType.FloatVec4: return typeof(Vector4F);
+                case ActiveUniformType.FloatVec2: return typeof(Vector2);
+                case ActiveUniformType.FloatVec3: return typeof(Vector3);
+                case ActiveUniformType.FloatVec4: return typeof(Vector4);
                 case ActiveUniformType.IntVec2: return typeof(int[]);
                 case ActiveUniformType.IntVec3: return typeof(int[]);
                 case ActiveUniformType.IntVec4: return typeof(int[]);

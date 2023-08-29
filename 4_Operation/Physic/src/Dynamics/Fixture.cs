@@ -293,7 +293,7 @@ namespace Alis.Core.Physic.Dynamics
 
         /// <summary>Test a point for containment in this fixture.</summary>
         /// <param name="point">A point in world coordinates.</param>
-        public bool TestPoint(ref Vector2F point) => Shape.TestPoint(ref Body.Xf, ref point);
+        public bool TestPoint(ref Vector2 point) => Shape.TestPoint(ref Body.Xf, ref point);
 
         /// <summary>Cast a ray against this Shape.</summary>
         /// <param name="output">The ray-cast results.</param>
@@ -403,7 +403,7 @@ namespace Alis.Core.Physic.Dynamics
                 proxy.Aabb.Combine(ref aabb1, ref aabb2);
 
 
-                Vector2F displacement = aabb2.Center - aabb1.Center;
+                Vector2 displacement = aabb2.Center - aabb1.Center;
 
                 broadPhase.MoveProxy(proxy.ProxyId, ref proxy.Aabb, displacement);
             }

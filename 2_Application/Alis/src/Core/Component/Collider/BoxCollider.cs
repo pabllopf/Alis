@@ -77,7 +77,7 @@ namespace Alis.Core.Component.Collider
         /// <summary>
         ///     Gets or sets the value of the relative position
         /// </summary>
-        public Vector2F RelativePosition { get; set; } = new Vector2F(0, 0);
+        public Vector2 RelativePosition { get; set; } = new Vector2(0, 0);
 
         /// <summary>
         ///     Gets or sets the value of the body
@@ -122,7 +122,7 @@ namespace Alis.Core.Component.Collider
         /// <summary>
         ///     Gets or sets the value of the linear velocity
         /// </summary>
-        public Vector2F LinearVelocity { get; set; } = Vector2F.Zero;
+        public Vector2 LinearVelocity { get; set; } = Vector2.Zero;
 
         /// <summary>
         ///     Gets or sets the value of the angular velocity
@@ -162,7 +162,7 @@ namespace Alis.Core.Component.Collider
         {
             rectangleShape = new RectangleShape
             {
-                Position = new Vector2F(
+                Position = new Vector2(
                     GameObject.Transform.Position.X + RelativePosition.X - Width / 2,
                     GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2
                 ),
@@ -170,7 +170,7 @@ namespace Alis.Core.Component.Collider
                 OutlineColor = Color.Green,
                 OutlineThickness = 1.0f,
                 Rotation = Rotation,
-                Size = new Vector2F(Width, Height)
+                Size = new Vector2(Width, Height)
             };
 
 
@@ -179,7 +179,7 @@ namespace Alis.Core.Component.Collider
             Body = new Rectangle(
                 Width,
                 Height,
-                new Vector2F(
+                new Vector2(
                     GameObject.Transform.Position.X + RelativePosition.X,
                     GameObject.Transform.Position.Y + RelativePosition.Y
                 ),
@@ -224,7 +224,7 @@ namespace Alis.Core.Component.Collider
         /// </summary>
         public override void BeforeUpdate()
         {
-            GameObject.Transform.Position = new Vector2F(Body.Position.X, Body.Position.Y);
+            GameObject.Transform.Position = new Vector2(Body.Position.X, Body.Position.Y);
             GameObject.Transform.Rotation = Body.Rotation;
         }
 
@@ -249,7 +249,7 @@ namespace Alis.Core.Component.Collider
         /// </summary>
         public override void Draw()
         {
-            rectangleShape.Position = new Vector2F(
+            rectangleShape.Position = new Vector2(
                 GameObject.Transform.Position.X + RelativePosition.X - Width / 2,
                 GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2
             );

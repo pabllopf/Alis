@@ -87,7 +87,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets or sets the value of the world anchor a
         /// </summary>
-        public override Vector2F WorldAnchorA
+        public override Vector2 WorldAnchorA
         {
             get => BodyA.Position;
             set => throw new ArgumentException(value.ToString());
@@ -96,7 +96,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets or sets the value of the world anchor b
         /// </summary>
-        public override Vector2F WorldAnchorB
+        public override Vector2 WorldAnchorB
         {
             get => BodyB.Position;
             set => throw new ArgumentException(value.ToString());
@@ -142,7 +142,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
-        public override Vector2F GetReactionForce(float invDt) => Vector2F.Zero;
+        public override Vector2 GetReactionForce(float invDt) => Vector2.Zero;
 
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt

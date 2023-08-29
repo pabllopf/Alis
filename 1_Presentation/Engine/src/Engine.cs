@@ -30,11 +30,11 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.App.Engine.Windows;
 using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.OpenGL;
 using Alis.Core.Graphic.OpenGL.Constructs;
 using Alis.Core.Graphic.OpenGL.Enums;

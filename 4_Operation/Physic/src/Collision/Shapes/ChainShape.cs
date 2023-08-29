@@ -49,12 +49,12 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     The next vertex
         /// </summary>
-        private Vector2F nextVertex;
+        private Vector2 nextVertex;
 
         /// <summary>
         ///     The next vertex
         /// </summary>
-        private Vector2F prevVertex;
+        private Vector2 prevVertex;
 
         /// <summary>
         ///     The vertices
@@ -78,8 +78,8 @@ namespace Alis.Core.Physic.Collision.Shapes
             for (int i = 1; i < vertices.Count; ++i)
             {
                 // If the code crashes here, it means your vertices are too close together.
-                Vector2F current = vertices[i];
-                Vector2F prev = vertices[i - 1];
+                Vector2 current = vertices[i];
+                Vector2 prev = vertices[i - 1];
                 Debug.Assert(MathUtils.DistanceSquared(ref prev, ref current) >
                              Settings.LinearSlop * Settings.LinearSlop);
             }
@@ -115,14 +115,14 @@ namespace Alis.Core.Physic.Collision.Shapes
         public override int ChildCount => Vertices.Count - 1;
 
         /// <summary>Establish connectivity to a vertex that precedes the first vertex. Don't call this for loops.</summary>
-        public Vector2F PrevVertex
+        public Vector2 PrevVertex
         {
             get => prevVertex;
             set => prevVertex = value;
         }
 
         /// <summary>Establish connectivity to a vertex that follows the last vertex. Don't call this for loops.</summary>
-        public Vector2F NextVertex
+        public Vector2 NextVertex
         {
             get => nextVertex;
             set => nextVertex = value;
@@ -184,7 +184,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="transform">The transform</param>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(ref Transform transform, ref Vector2F point) => false;
+        public override bool TestPoint(ref Transform transform, ref Vector2 point) => false;
 
         /// <summary>
         ///     Describes whether this instance ray cast
@@ -207,8 +207,8 @@ namespace Alis.Core.Physic.Collision.Shapes
                 i2 = 0;
             }
 
-            Vector2F v1 = Vertices[i1];
-            Vector2F v2 = Vertices[i2];
+            Vector2 v1 = Vertices[i1];
+            Vector2 v2 = Vertices[i2];
 
             return RayCastHelper.RayCastEdge(ref v1, ref v2, false, ref input, ref transform, out output);
         }
@@ -231,8 +231,8 @@ namespace Alis.Core.Physic.Collision.Shapes
                 i2 = 0;
             }
 
-            Vector2F v1 = Vertices[i1];
-            Vector2F v2 = Vertices[i2];
+            Vector2 v1 = Vertices[i1];
+            Vector2 v2 = Vertices[i2];
 
             AabbHelper.ComputeEdgeAabb(ref v1, ref v2, ref transform, out aabb);
         }
