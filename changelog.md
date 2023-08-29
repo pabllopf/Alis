@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.1.1] - 2023-08-29
+### :sparkles: New Features
+- [`25ede11`](https://github.com/pabllopf/Alis/commit/25ede11dbd5ecb2d63743e45b72ef91a4d209efb) - include native aot to compile c code *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5d78486`](https://github.com/pabllopf/Alis/commit/5d78486f595a83f2357d184dc2e1f2832279acd8) - add new menus for engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`55ab483`](https://github.com/pabllopf/Alis/commit/55ab48330ababaa3d04be5581ade0c5a38e09c99) - 0 dependencies with nugets *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`41837f3`](https://github.com/pabllopf/Alis/commit/41837f3c48b61d65c485c6378aae7f0cf1d550ea) - add all comments to sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e1b4a39`](https://github.com/pabllopf/Alis/commit/e1b4a39e5a87e2c89b4d510173a44f399a49952d) - names of sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0b5399c`](https://github.com/pabllopf/Alis/commit/0b5399c443e565eb9f835d82548f746df3391cd3) - linux .so files to arm64 systems *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6ad8c61`](https://github.com/pabllopf/Alis/commit/6ad8c61693777e3f05cd40ef033e5025a6935764) - delete unsafe keyword of class and change name of imguizmo *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`04145d9`](https://github.com/pabllopf/Alis/commit/04145d9772d789653db43cdb357f78495097c79b) - implicit conversions *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6e32cb4`](https://github.com/pabllopf/Alis/commit/6e32cb404ba64fb502f0fc6005f8413d7d3db3d0) - private dlls *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c2aa23b`](https://github.com/pabllopf/Alis/commit/c2aa23bfee11b1a3c77c88936a6f69f5e1a51d21) - the infinite loop of gamebase *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5902c65`](https://github.com/pabllopf/Alis/commit/5902c6575c0e224f096efa02af10f2b9c30014ff) - names and refactor sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`db354a7`](https://github.com/pabllopf/Alis/commit/db354a78adbcf64f0ed04a72e2cfa893594605c7) - change namespace from Imgui to UI *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :art: Code Style Changes
+- [`4d44bbd`](https://github.com/pabllopf/Alis/commit/4d44bbdc03c62da2e2c6114371e3d96fb61321cb) - change name of imnodes *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8c78621`](https://github.com/pabllopf/Alis/commit/8c78621c5112b34afc77c6e4c4681e5c280e8f38) - change names of implot *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7e85ac0`](https://github.com/pabllopf/Alis/commit/7e85ac075b08642bff5bb8dfe067e13e36dc268f) - change names of main class of implot *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`69d2317`](https://github.com/pabllopf/Alis/commit/69d2317733527f3200aceaacbebe7a35affe98f3) - refactor implot file to change names *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.1.0] - 2023-08-14
 ### :sparkles: New Features
 - [`f62f07e`](https://github.com/pabllopf/Alis/commit/f62f07e5e32011999133283aa0e8d2716aafb83a) - generate automatic binding for csfml *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -1135,3 +1159,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.0.8]: https://github.com/pabllopf/Alis/compare/v0.0.7...v0.0.8
 [v0.0.9]: https://github.com/pabllopf/Alis/compare/v0.0.8...v0.0.9
 [v0.1.0]: https://github.com/pabllopf/Alis/compare/v0.0.9...v0.1.0
+[v0.1.1]: https://github.com/pabllopf/Alis/compare/v0.1.0...v0.1.1
