@@ -343,6 +343,7 @@ namespace Alis.Core.Physic.Test
             Assert.DoesNotContain(mockJoint.Object, _world.Joints);
         }
 
+        
         /// <summary>
         ///     Tests that remove controller when called should remove controller from physics world
         /// </summary>
