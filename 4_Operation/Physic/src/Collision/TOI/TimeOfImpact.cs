@@ -94,7 +94,6 @@ namespace Alis.Core.Physic.Collision.TOI
             Debug.Assert(target > tolerance);
 
             float t1 = 0.0f;
-            const int kMaxIterations = 20;
             int iter = 0;
 
             // Prepare input for distance query.
