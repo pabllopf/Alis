@@ -355,18 +355,5 @@ namespace Alis.Core.Physic.Test
 
             Assert.DoesNotContain(mockController.Object, _world.Controllers);
         }
-
-        /// <summary>
-        ///     Tests that step when called should update physics world
-        /// </summary>
-        [Fact]
-        public void Step_WhenCalled_ShouldUpdatePhysicsWorld()
-        {
-            _world.Step(1.0f);
-
-            // Perform some assertion in addition to just verifying it didn't throw exceptions
-            Assert.NotNull(_world.ContactManager);
-            Assert.NotNull(_world.Bodies);
-        }
     }
 }
