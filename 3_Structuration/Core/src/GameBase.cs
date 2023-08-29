@@ -84,7 +84,8 @@ namespace Alis.Core
 
                     TimeManager.CounterFrames();
                 }
-
+                
+                
                 TimeManager.UpdateFixedTime();
 
                 Managers.ForEach(i =>
