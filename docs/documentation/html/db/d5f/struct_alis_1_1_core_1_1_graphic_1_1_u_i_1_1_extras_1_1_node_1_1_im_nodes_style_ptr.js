@@ -1,0 +1,27 @@
+var struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr =
+[
+    [ "ImNodesStylePtr", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#a7601a9f0ba2ecb9567d072fb1e26f5e8", null ],
+    [ "ImNodesStylePtr", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#a21035896828811cde0e649c0afd4193d", null ],
+    [ "operator ImNodesStylePtr", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#aed09f2a06a203da0453770b6b76c8b8d", null ],
+    [ "operator ImNodesStyle *", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#aaa3aac7d5d81e1247b769f7c685e10ca", null ],
+    [ "operator ImNodesStylePtr", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#a495645cf41cf930c3c4639d25afbe3fc", null ],
+    [ "Destroy", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#a7d930f06541c23d4546fccc7516ab7f4", null ],
+    [ "GridSpacing", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#af3882610cd212282535d1f245ac2ca63", null ],
+    [ "NodeCornerRounding", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#aa1f08110c2742e097b429516a95f31ac", null ],
+    [ "NodePadding", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#a9b6531944c1a85f4f05fd731fb4f0d68", null ],
+    [ "NodeBorderThickness", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#a8978c17f789b82a09aefc9b1c8c8c74d", null ],
+    [ "LinkThickness", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#a9746a89ee87909a6c68f93486ecf971f", null ],
+    [ "LinkLineSegmentsPerLength", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#a7db9b010ebc6699f5782c5fa791ca9ca", null ],
+    [ "LinkHoverDistance", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#aa72d56ab5cdd1f84bb194aa5c87095b7", null ],
+    [ "PinCircleRadius", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#ac9a2200ab9fa5bd845a173cf0b4db30d", null ],
+    [ "PinQuadSideLength", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#ab322d010807e185dccc1bcbd66765dd2", null ],
+    [ "PinTriangleSideLength", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#abbc0f131957ae631ea661b82b3e8369c", null ],
+    [ "PinLineThickness", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#a6994d1902019b781a7e2edc611975cbd", null ],
+    [ "PinHoverRadius", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#ad0d564e3b9789c2397af42adbb2d5d27", null ],
+    [ "PinOffset", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#a876f98de3a6b26ec9775f0a76521bfdb", null ],
+    [ "MiniMapPadding", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#a49fe3091064c1fa5dbff7346fbc318b6", null ],
+    [ "MiniMapOffset", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#a42e5c8f8a0deaeef95ee3710e83a73cd", null ],
+    [ "Flags", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#a7a033e8915a1b67458eca2a33e37a2bc", null ],
+    [ "Colors", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#aa69dc69d04f7b4d0339614bacc6b9571", null ],
+    [ "NativePtr", "db/d5f/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_style_ptr.html#a1df44b00946ab03bfb94591f7f62bf18", null ]
+];
