@@ -115,7 +115,7 @@ var searchData=
   ['splashscreenbuilder_12042',['SplashScreenBuilder',['../df/d29/class_alis_1_1_builder_1_1_core_1_1_entity_1_1_splash_screen_builder.html',1,'Alis::Builder::Core::Entity']]],
   ['spotlight_12043',['SpotLight',['../d5/da1/class_alis_1_1_core_1_1_component_1_1_light_1_1_spot_light.html',1,'Alis::Core::Component::Light']]],
   ['spotlightbuilder_12044',['SpotLightBuilder',['../d3/d5f/class_alis_1_1_builder_1_1_core_1_1_component_1_1_light_1_1_spot_light_builder.html',1,'Alis::Builder::Core::Component::Light']]],
-  ['sprite_12045',['Sprite',['../d6/d51/class_alis_1_1_core_1_1_component_1_1_render_1_1_sprite.html',1,'Alis.Core.Component.Render.Sprite'],['../d9/d3e/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_sprite.html',1,'Alis.Core.Graphic.SFML.Graphics.Sprite']]],
+  ['sprite_12045',['Sprite',['../d9/d3e/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_sprite.html',1,'Alis.Core.Graphic.SFML.Graphics.Sprite'],['../d6/d51/class_alis_1_1_core_1_1_component_1_1_render_1_1_sprite.html',1,'Alis.Core.Component.Render.Sprite']]],
   ['spritebuilder_12046',['SpriteBuilder',['../de/d91/class_alis_1_1_builder_1_1_core_1_1_component_1_1_render_1_1_sprite_builder.html',1,'Alis::Builder::Core::Component::Render']]],
   ['square_12047',['Square',['../d2/d9c/class_alis_1_1_core_1_1_physic_1_1_figure_1_1_square.html',1,'Alis::Core::Physic::Figure']]],
   ['stbtexteditrow_12048',['StbTexteditRow',['../d8/db0/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_stb_textedit_row.html',1,'Alis::Core::Graphic::UI']]],
