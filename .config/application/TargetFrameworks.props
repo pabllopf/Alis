@@ -19,5 +19,6 @@
         <TargetFramework2>netstandard2.0</TargetFramework2>
         <PublishTrimmed>true</PublishTrimmed>
         <PublishAot>true</PublishAot>
+        <SelfContained>false</SelfContained>
     </PropertyGroup>
 </Project>

@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Utilities
             ua /= denom;
             ub /= denom;
 
-            if (ua is > 0 and < 1 && ub is > 0 and < 1)
+            if (ua > 0 && ua < 1 && ub  > 0 && ub < 1)
             {
                 intersectionPoint = new Vector2(
                     x1 + ua * (x2 - x1),
