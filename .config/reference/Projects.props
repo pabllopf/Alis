@@ -29,6 +29,27 @@
                           Exclude="$(SolutionDir)6_Ideation/**/*.Sample.csproj; $(SolutionDir)6_Ideation/**/*.Test.csproj;"/>
 
         <InternalsVisibleTo Include="$(AssemblyName).Test"/>
+        
+        <EmbeddedResource Remove="$(ProjectDir)/**/Properties/*.resx"/>
+        <Compile Remove="$(ProjectDir)/**/Properties/*.cs"/>
+        
+        <EmbeddedResource Condition="$(IsOSX) == true"
+                          Include="$(ProjectDir)/**/*Osx.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+        </EmbeddedResource>
+        <Compile Condition="$(IsOSX) == true" Include="$(ProjectDir)/**/Properties/*Osx.Designer.cs"/>
+        
+        <EmbeddedResource Condition="$(IsWindows) == true"
+                          Include="$(ProjectDir)/**/*Windows.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+        </EmbeddedResource>
+        <Compile Condition="$(IsWindows) == true" Include="$(ProjectDir)/**/Properties/*Windows.Designer.cs"/>
+        
+        <EmbeddedResource Condition="$(IsLinux) == true"
+                          Include="$(ProjectDir)/**/*Linux.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+        </EmbeddedResource>
+        <Compile Condition="$(IsLinux) == true" Include="$(ProjectDir)/**/Properties/*Linux.Designer.cs"/>
 
 
     </ItemGroup>
@@ -176,6 +197,15 @@
                  Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
 
         <InternalsVisibleTo Include="$(AssemblyName).Test"/>
+
+        <EmbeddedResource Condition="$(IsOSX) != true" Remove="$(SolutionDir)/**/Properties/*Osx.resx"/>
+        <Compile Condition="$(IsOSX) != true" Remove="$(SolutionDir)/**/Properties/*Osx.Designer.cs"/>
+        
+        <EmbeddedResource Condition="$(IsWindows) != true" Remove="$(SolutionDir)/**/Properties/*Windows.resx"/>
+        <Compile Condition="$(IsWindows) != true" Remove="$(SolutionDir)/**/Properties/*Windows.Designer.cs"/>
+        
+        <EmbeddedResource Condition="$(IsLinux) != true" Remove="$(SolutionDir)/**/Properties/*Linux.resx"/>
+        <Compile Condition="$(IsLinux) != true" Remove="$(SolutionDir)/**/Properties/*Linux.Designer.cs"/>
     </ItemGroup>
 
     <ItemGroup Condition="$(AssemblyName.Contains('Test'))">

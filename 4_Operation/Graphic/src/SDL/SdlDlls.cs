@@ -43,20 +43,24 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SdlDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
+#if WIN
             {(OSPlatform.Windows, Architecture.X86), NativeGraphic.win_x86_sdl2},
             {(OSPlatform.Windows, Architecture.X64), NativeGraphic.win_x64_sdl2},
             {(OSPlatform.Windows, Architecture.Arm), NativeGraphic.win_x86_sdl2},
             {(OSPlatform.Windows, Architecture.Arm64), NativeGraphic.win_x64_sdl2},
-
+#endif
+#if LINUX
             {(OSPlatform.Linux, Architecture.X86), NativeGraphic.linux_x86_sdl2},
             {(OSPlatform.Linux, Architecture.X64), NativeGraphic.linux_x64_sdl2},
             {(OSPlatform.Linux, Architecture.Arm), NativeGraphic.linux_arm64_sdl2},
             {(OSPlatform.Linux, Architecture.Arm64), NativeGraphic.linux_arm64_sdl2},
-
-            {(OSPlatform.OSX, Architecture.X86), NativeGraphic.osx_x64_sdl2},
-            {(OSPlatform.OSX, Architecture.X64), NativeGraphic.osx_x64_sdl2},
-            {(OSPlatform.OSX, Architecture.Arm), NativeGraphic.osx_arm64_sdl2},
-            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphic.osx_arm64_sdl2}
+#endif
+#if OSX
+            {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsx.osx_x64_sdl2},
+            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsx.osx_x64_sdl2},
+            {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsx.osx_arm64_sdl2},
+            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsx.osx_arm64_sdl2}
+#endif
         };
 
         /// <summary>
@@ -64,20 +68,24 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SdlImageDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
+#if WIN
             {(OSPlatform.Windows, Architecture.X86), NativeGraphic.win_x86_sdl2_image},
             {(OSPlatform.Windows, Architecture.X64), NativeGraphic.win_x64_sdl2_image},
             {(OSPlatform.Windows, Architecture.Arm), NativeGraphic.win_x86_sdl2_image},
             {(OSPlatform.Windows, Architecture.Arm64), NativeGraphic.win_x64_sdl2_image},
-
+#endif
+#if LINUX
             {(OSPlatform.Linux, Architecture.X86), NativeGraphic.linux_x86_sdl2_image},
             {(OSPlatform.Linux, Architecture.X64), NativeGraphic.linux_x64_sdl2_image},
             {(OSPlatform.Linux, Architecture.Arm), NativeGraphic.linux_arm64_sdl2_image},
             {(OSPlatform.Linux, Architecture.Arm64), NativeGraphic.linux_arm64_sdl2_image},
-
-            {(OSPlatform.OSX, Architecture.X86), NativeGraphic.osx_x64_sdl2_image},
-            {(OSPlatform.OSX, Architecture.X64), NativeGraphic.osx_x64_sdl2_image},
-            {(OSPlatform.OSX, Architecture.Arm), NativeGraphic.osx_arm64_sdl2_image},
-            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphic.osx_arm64_sdl2_image}
+#endif
+#if OSX
+            {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsx.osx_x64_sdl2_image},
+            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsx.osx_x64_sdl2_image},
+            {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsx.osx_arm64_sdl2_image},
+            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsx.osx_arm64_sdl2_image}
+#endif
         };
 
         /// <summary>
@@ -85,20 +93,24 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SdlTtfDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
+#if WIN
             {(OSPlatform.Windows, Architecture.X86), NativeGraphic.win_x86_sdl2_ttf},
             {(OSPlatform.Windows, Architecture.X64), NativeGraphic.win_x64_sdl2_ttf},
             {(OSPlatform.Windows, Architecture.Arm), NativeGraphic.win_x86_sdl2_ttf},
             {(OSPlatform.Windows, Architecture.Arm64), NativeGraphic.win_x64_sdl2_ttf},
-
+#endif
+#if LINUX
             {(OSPlatform.Linux, Architecture.X86), NativeGraphic.linux_x86_sdl2_ttf},
             {(OSPlatform.Linux, Architecture.X64), NativeGraphic.linux_x64_sdl2_ttf},
             {(OSPlatform.Linux, Architecture.Arm), NativeGraphic.linux_arm64_sdl2_ttf},
             {(OSPlatform.Linux, Architecture.Arm64), NativeGraphic.linux_arm64_sdl2_ttf},
-
-            {(OSPlatform.OSX, Architecture.X86), NativeGraphic.osx_x64_sdl2_ttf},
-            {(OSPlatform.OSX, Architecture.X64), NativeGraphic.osx_x64_sdl2_ttf},
-            {(OSPlatform.OSX, Architecture.Arm), NativeGraphic.osx_arm64_sdl2_ttf},
-            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphic.osx_arm64_sdl2_ttf}
+#endif
+#if OSX
+            {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsx.osx_x64_sdl2_ttf},
+            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsx.osx_x64_sdl2_ttf},
+            {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsx.osx_arm64_sdl2_ttf},
+            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsx.osx_arm64_sdl2_ttf}
+#endif
         };
     }
 }

@@ -43,20 +43,24 @@ namespace Alis.Core.Audio
         /// </summary>
         internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> CsfmlAudioDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
+#if WIN
             {(OSPlatform.Windows, Architecture.X86), NativeAudio.win_x86_csfml_audio},
             {(OSPlatform.Windows, Architecture.X64), NativeAudio.win_x64_csfml_audio},
             {(OSPlatform.Windows, Architecture.Arm), NativeAudio.win_x86_csfml_audio},
             {(OSPlatform.Windows, Architecture.Arm64), NativeAudio.win_x64_csfml_audio},
-
+#endif
+#if LINUX
             {(OSPlatform.Linux, Architecture.X86), NativeAudio.linux_x86_csfml_audio},
             {(OSPlatform.Linux, Architecture.X64), NativeAudio.linux_x64_csfml_audio},
             {(OSPlatform.Linux, Architecture.Arm), NativeAudio.linux_arm64_csfml_audio},
             {(OSPlatform.Linux, Architecture.Arm64), NativeAudio.linux_arm64_csfml_audio},
-
-            {(OSPlatform.OSX, Architecture.X86), NativeAudio.osx_x64_csfml_audio},
-            {(OSPlatform.OSX, Architecture.X64), NativeAudio.osx_x64_csfml_audio},
-            {(OSPlatform.OSX, Architecture.Arm), NativeAudio.osx_arm64_csfml_audio},
-            {(OSPlatform.OSX, Architecture.Arm64), NativeAudio.osx_arm64_csfml_audio}
+#endif
+#if OSX
+            {(OSPlatform.OSX, Architecture.X86), NativeAudioOsx.osx_x64_csfml_audio},
+            {(OSPlatform.OSX, Architecture.X64), NativeAudioOsx.osx_x64_csfml_audio},
+            {(OSPlatform.OSX, Architecture.Arm), NativeAudioOsx.osx_arm64_csfml_audio},
+            {(OSPlatform.OSX, Architecture.Arm64), NativeAudioOsx.osx_arm64_csfml_audio}
+#endif
         };
 
         /// <summary>
@@ -64,20 +68,25 @@ namespace Alis.Core.Audio
         /// </summary>
         internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SdlAudioDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
+#if WIN
             {(OSPlatform.Windows, Architecture.X86), NativeAudio.win_x86_sdl2_mixer},
             {(OSPlatform.Windows, Architecture.X64), NativeAudio.win_x64_sdl2_mixer},
             {(OSPlatform.Windows, Architecture.Arm), NativeAudio.win_x86_sdl2_mixer},
             {(OSPlatform.Windows, Architecture.Arm64), NativeAudio.win_x64_sdl2_mixer},
+#endif
 
+#if LINUX
             {(OSPlatform.Linux, Architecture.X86), NativeAudio.linux_x86_sdl2_mixer},
             {(OSPlatform.Linux, Architecture.X64), NativeAudio.linux_x64_sdl2_mixer},
             {(OSPlatform.Linux, Architecture.Arm), NativeAudio.linux_arm64_sdl2_mixer},
             {(OSPlatform.Linux, Architecture.Arm64), NativeAudio.linux_arm64_sdl2_mixer},
-
-            {(OSPlatform.OSX, Architecture.X86), NativeAudio.osx_x64_sdl2_mixer},
-            {(OSPlatform.OSX, Architecture.X64), NativeAudio.osx_x64_sdl2_mixer},
-            {(OSPlatform.OSX, Architecture.Arm), NativeAudio.osx_arm64_sdl2_mixer},
-            {(OSPlatform.OSX, Architecture.Arm64), NativeAudio.osx_arm64_sdl2_mixer}
+#endif
+#if OSX
+            {(OSPlatform.OSX, Architecture.X86), NativeAudioOsx.osx_x64_sdl2_mixer},
+            {(OSPlatform.OSX, Architecture.X64), NativeAudioOsx.osx_x64_sdl2_mixer},
+            {(OSPlatform.OSX, Architecture.Arm), NativeAudioOsx.osx_arm64_sdl2_mixer},
+            {(OSPlatform.OSX, Architecture.Arm64), NativeAudioOsx.osx_arm64_sdl2_mixer}
+#endif
         };
 
         /// <summary>
@@ -85,10 +94,12 @@ namespace Alis.Core.Audio
         /// </summary>
         internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> OpenalAudioDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
+#if WIN
             {(OSPlatform.Windows, Architecture.X86), NativeAudio.win_x86_openal32},
             {(OSPlatform.Windows, Architecture.X64), NativeAudio.win_x64_openal32},
             {(OSPlatform.Windows, Architecture.Arm), NativeAudio.win_x86_openal32},
             {(OSPlatform.Windows, Architecture.Arm64), NativeAudio.win_x64_openal32}
+#endif
         };
     }
 }

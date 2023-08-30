@@ -43,20 +43,24 @@ namespace Alis.Core.Graphic.SFML
         /// </summary>
         internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SfmlWindowDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
+#if WIN
             {(OSPlatform.Windows, Architecture.X86), NativeGraphic.win_x86_csfml_window},
             {(OSPlatform.Windows, Architecture.X64), NativeGraphic.win_x64_csfml_window},
             {(OSPlatform.Windows, Architecture.Arm), NativeGraphic.win_x86_csfml_window},
             {(OSPlatform.Windows, Architecture.Arm64), NativeGraphic.win_x64_csfml_window},
-
+#endif
+#if LINUX
             {(OSPlatform.Linux, Architecture.X86), NativeGraphic.linux_x86_csfml_window},
             {(OSPlatform.Linux, Architecture.X64), NativeGraphic.linux_x64_csfml_window},
             {(OSPlatform.Linux, Architecture.Arm), NativeGraphic.linux_arm64_csfml_window},
             {(OSPlatform.Linux, Architecture.Arm64), NativeGraphic.linux_arm64_csfml_window},
-
-            {(OSPlatform.OSX, Architecture.X86), NativeGraphic.osx_x64_csfml_window},
-            {(OSPlatform.OSX, Architecture.X64), NativeGraphic.osx_x64_csfml_window},
-            {(OSPlatform.OSX, Architecture.Arm), NativeGraphic.osx_arm64_csfml_window},
-            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphic.osx_arm64_csfml_window}
+#endif
+#if OSX
+            {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsx.osx_x64_csfml_window},
+            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsx.osx_x64_csfml_window},
+            {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsx.osx_arm64_csfml_window},
+            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsx.osx_arm64_csfml_window}
+#endif
         };
 
         /// <summary>
@@ -64,20 +68,26 @@ namespace Alis.Core.Graphic.SFML
         /// </summary>
         internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SfmlSystemDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
+#if WIN
             {(OSPlatform.Windows, Architecture.X86), NativeGraphic.win_x86_csfml_system},
             {(OSPlatform.Windows, Architecture.X64), NativeGraphic.win_x64_csfml_system},
             {(OSPlatform.Windows, Architecture.Arm), NativeGraphic.win_x86_csfml_system},
             {(OSPlatform.Windows, Architecture.Arm64), NativeGraphic.win_x64_csfml_system},
+#endif
 
+#if LINUX
             {(OSPlatform.Linux, Architecture.X86), NativeGraphic.linux_x86_csfml_system},
             {(OSPlatform.Linux, Architecture.X64), NativeGraphic.linux_x64_csfml_system},
             {(OSPlatform.Linux, Architecture.Arm), NativeGraphic.linux_arm64_csfml_system},
             {(OSPlatform.Linux, Architecture.Arm64), NativeGraphic.linux_arm64_csfml_system},
-
-            {(OSPlatform.OSX, Architecture.X86), NativeGraphic.osx_x64_csfml_system},
-            {(OSPlatform.OSX, Architecture.X64), NativeGraphic.osx_x64_csfml_system},
-            {(OSPlatform.OSX, Architecture.Arm), NativeGraphic.osx_arm64_csfml_system},
-            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphic.osx_arm64_csfml_system}
+#endif
+            
+#if OSX
+            {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsx.osx_x64_csfml_system},
+            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsx.osx_x64_csfml_system},
+            {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsx.osx_arm64_csfml_system},
+            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsx.osx_arm64_csfml_system}
+#endif
         };
 
         /// <summary>
@@ -85,20 +95,24 @@ namespace Alis.Core.Graphic.SFML
         /// </summary>
         internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SfmlGraphicsDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
+#if WIN
             {(OSPlatform.Windows, Architecture.X86), NativeGraphic.win_x86_csfml_graphics},
             {(OSPlatform.Windows, Architecture.X64), NativeGraphic.win_x64_csfml_graphics},
             {(OSPlatform.Windows, Architecture.Arm), NativeGraphic.win_x86_csfml_graphics},
             {(OSPlatform.Windows, Architecture.Arm64), NativeGraphic.win_x64_csfml_graphics},
-
+#endif
+#if LINUX
             {(OSPlatform.Linux, Architecture.X86), NativeGraphic.linux_x86_csfml_graphics},
             {(OSPlatform.Linux, Architecture.X64), NativeGraphic.linux_x64_csfml_graphics},
             {(OSPlatform.Linux, Architecture.Arm), NativeGraphic.linux_arm64_csfml_graphics},
             {(OSPlatform.Linux, Architecture.Arm64), NativeGraphic.linux_arm64_csfml_graphics},
-
-            {(OSPlatform.OSX, Architecture.X86), NativeGraphic.osx_x64_csfml_graphics},
-            {(OSPlatform.OSX, Architecture.X64), NativeGraphic.osx_x64_csfml_graphics},
-            {(OSPlatform.OSX, Architecture.Arm), NativeGraphic.osx_arm64_csfml_graphics},
-            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphic.osx_arm64_csfml_graphics}
+#endif
+#if OSX
+            {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsx.osx_x64_csfml_graphics},
+            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsx.osx_x64_csfml_graphics},
+            {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsx.osx_arm64_csfml_graphics},
+            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsx.osx_arm64_csfml_graphics}
+#endif
         };
     }
 }
