@@ -56,10 +56,22 @@ namespace Alis.Core.Graphic.UI
             {(OSPlatform.Linux, Architecture.Arm64), NativeGraphic.linux_arm64_cimgui},
 #endif
 #if OSX
-            {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsx.osx_x64_cimgui},
-            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsx.osx_x64_cimgui},
-            {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsx.osx_arm64_cimgui},
-            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsx.osx_arm64_cimgui}
+#if X86
+            {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsxARM64.osx_x64_cimgui},
+#endif
+#if X64
+            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsxARM64.osx_x64_cimgui},
+#endif
+#if ARM
+            {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsxARM64.osx_arm64_cimgui},
+#endif
+#if ARM64
+            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsxARM64.osx_arm64_cimgui}
+#endif
+            
+            
+            
+            
 #endif
         };
     }

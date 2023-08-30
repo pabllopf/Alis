@@ -1,9 +1,22 @@
 <Project>
-    <PropertyGroup>
-        <DefineConstants Condition="'$(RuntimeIdentifier)' == '' AND $(NETCoreSdkRuntimeIdentifier.Contains('arm64'))">$(DefineConstants);ARM64</DefineConstants>
-        <DefineConstants Condition="'$(RuntimeIdentifier)' == '' AND $(NETCoreSdkRuntimeIdentifier.Contains('arm')) AND !$(NETCoreSdkRuntimeIdentifier.Contains('arm64'))">$(DefineConstants);ARM</DefineConstants>
-        <DefineConstants Condition="'$(RuntimeIdentifier)' == '' AND $(NETCoreSdkRuntimeIdentifier.Contains('x64'))">$(DefineConstants);X64</DefineConstants>
-        <DefineConstants Condition="'$(RuntimeIdentifier)' == '' AND $(NETCoreSdkRuntimeIdentifier.Contains('x86'))">$(DefineConstants);X86</DefineConstants>
+    <PropertyGroup Condition="'$(RuntimeIdentifier)' == '' AND $(NETCoreSdkRuntimeIdentifier.Contains('arm64'))">
+        <DefineConstants>$(DefineConstants);ARM64</DefineConstants>
+        <IsARM64>true</IsARM64>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(RuntimeIdentifier)' == '' AND $(NETCoreSdkRuntimeIdentifier.Contains('arm')) AND !$(NETCoreSdkRuntimeIdentifier.Contains('arm64'))">
+        <DefineConstants>$(DefineConstants);ARM</DefineConstants>
+        <IsARM>true</IsARM>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(RuntimeIdentifier)' == '' AND $(NETCoreSdkRuntimeIdentifier.Contains('x64'))">
+        <DefineConstants>$(DefineConstants);X64</DefineConstants>
+        <IsX64>true</IsX64>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(RuntimeIdentifier)' == '' AND $(NETCoreSdkRuntimeIdentifier.Contains('x86'))">
+        <DefineConstants>$(DefineConstants);X86</DefineConstants>
+        <IsX86>true</IsX86>
     </PropertyGroup>
     
     <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('linux'))">
@@ -21,10 +34,23 @@
         <IsWindows>true</IsWindows>
     </PropertyGroup>
     
-    <PropertyGroup>
-        <DefineConstants Condition="$(RuntimeIdentifier.Contains('arm64'))">$(DefineConstants);ARM64</DefineConstants>
-        <DefineConstants Condition="$(RuntimeIdentifier.Contains('arm')) AND !$(RuntimeIdentifier.Contains('arm64'))">$(DefineConstants);ARM</DefineConstants>
-        <DefineConstants Condition="$(RuntimeIdentifier.Contains('x64'))">$(DefineConstants);X64</DefineConstants>
-        <DefineConstants Condition="$(RuntimeIdentifier.Contains('x86'))">$(DefineConstants);X86</DefineConstants>
+    <PropertyGroup Condition="$(RuntimeIdentifier.Contains('arm64'))">
+        <DefineConstants >$(DefineConstants);ARM64</DefineConstants>
+        <IsARM64>true</IsARM64>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="$(RuntimeIdentifier.Contains('arm')) AND !$(RuntimeIdentifier.Contains('arm64'))">
+        <DefineConstants >$(DefineConstants);ARM</DefineConstants>
+        <IsARM>true</IsARM>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="$(RuntimeIdentifier.Contains('x64'))">
+        <DefineConstants >$(DefineConstants);X64</DefineConstants>
+        <IsX64>true</IsX64>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="$(RuntimeIdentifier.Contains('x86'))">
+        <DefineConstants >$(DefineConstants);X86</DefineConstants>
+        <IsX86>true</IsX86>
     </PropertyGroup>
 </Project>

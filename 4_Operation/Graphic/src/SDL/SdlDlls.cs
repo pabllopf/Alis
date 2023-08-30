@@ -56,10 +56,18 @@ namespace Alis.Core.Graphic.SDL
             {(OSPlatform.Linux, Architecture.Arm64), NativeGraphic.linux_arm64_sdl2},
 #endif
 #if OSX
-            {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsx.osx_x64_sdl2},
-            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsx.osx_x64_sdl2},
-            {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsx.osx_arm64_sdl2},
-            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsx.osx_arm64_sdl2}
+#if X86
+            {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsxARM64.osx_x64_sdl2},
+#endif
+#if X64
+            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsxARM64.osx_x64_sdl2},
+#endif
+#if ARM
+          {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsxARM64.osx_arm64_sdl2},  
+#endif
+#if ARM64
+            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsxARM64.osx_arm64_sdl2}
+#endif
 #endif
         };
 
@@ -81,10 +89,18 @@ namespace Alis.Core.Graphic.SDL
             {(OSPlatform.Linux, Architecture.Arm64), NativeGraphic.linux_arm64_sdl2_image},
 #endif
 #if OSX
-            {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsx.osx_x64_sdl2_image},
-            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsx.osx_x64_sdl2_image},
-            {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsx.osx_arm64_sdl2_image},
-            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsx.osx_arm64_sdl2_image}
+#if X86
+            {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsxARM64.osx_x64_sdl2_image},
+#endif
+#if X64
+            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsxARM64.osx_x64_sdl2_image},
+#endif
+#if ARM64
+            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsxARM64.osx_arm64_sdl2_image},
+#endif
+#if ARM
+             {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsxARM64.osx_arm64_sdl2_image},
+#endif
 #endif
         };
 
@@ -106,10 +122,18 @@ namespace Alis.Core.Graphic.SDL
             {(OSPlatform.Linux, Architecture.Arm64), NativeGraphic.linux_arm64_sdl2_ttf},
 #endif
 #if OSX
-            {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsx.osx_x64_sdl2_ttf},
-            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsx.osx_x64_sdl2_ttf},
-            {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsx.osx_arm64_sdl2_ttf},
-            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsx.osx_arm64_sdl2_ttf}
+#if X86
+           {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsxARM64.osx_x64_sdl2_ttf},
+#endif
+#if X64
+           {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsxARM64.osx_x64_sdl2_ttf},  
+#endif
+#if ARM64
+            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsxARM64.osx_arm64_sdl2_ttf},
+#endif
+#if ARM
+            {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsxARM64.osx_arm64_sdl2_ttf},     
+#endif
 #endif
         };
     }

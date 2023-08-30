@@ -56,10 +56,18 @@ namespace Alis.Core.Audio
             {(OSPlatform.Linux, Architecture.Arm64), NativeAudio.linux_arm64_csfml_audio},
 #endif
 #if OSX
-            {(OSPlatform.OSX, Architecture.X86), NativeAudioOsx.osx_x64_csfml_audio},
-            {(OSPlatform.OSX, Architecture.X64), NativeAudioOsx.osx_x64_csfml_audio},
-            {(OSPlatform.OSX, Architecture.Arm), NativeAudioOsx.osx_arm64_csfml_audio},
-            {(OSPlatform.OSX, Architecture.Arm64), NativeAudioOsx.osx_arm64_csfml_audio}
+#if X86
+          {(OSPlatform.OSX, Architecture.X86), NativeAudioOsxARM64.osx_x64_csfml_audio},
+#endif
+#if X64
+           {(OSPlatform.OSX, Architecture.X64), NativeAudioOsxARM64.osx_x64_csfml_audio},
+#endif
+#if ARM
+           {(OSPlatform.OSX, Architecture.Arm), NativeAudioOsxARM64.osx_arm64_csfml_audio},
+#endif
+#if ARM64
+            {(OSPlatform.OSX, Architecture.Arm64), NativeAudioOsxARM64.osx_arm64_csfml_audio}
+#endif
 #endif
         };
 
@@ -82,10 +90,18 @@ namespace Alis.Core.Audio
             {(OSPlatform.Linux, Architecture.Arm64), NativeAudio.linux_arm64_sdl2_mixer},
 #endif
 #if OSX
-            {(OSPlatform.OSX, Architecture.X86), NativeAudioOsx.osx_x64_sdl2_mixer},
-            {(OSPlatform.OSX, Architecture.X64), NativeAudioOsx.osx_x64_sdl2_mixer},
-            {(OSPlatform.OSX, Architecture.Arm), NativeAudioOsx.osx_arm64_sdl2_mixer},
-            {(OSPlatform.OSX, Architecture.Arm64), NativeAudioOsx.osx_arm64_sdl2_mixer}
+#if X86
+          {(OSPlatform.OSX, Architecture.X86), NativeAudioOsxARM64.osx_x64_sdl2_mixer},
+#endif
+#if X64
+           {(OSPlatform.OSX, Architecture.X64), NativeAudioOsxARM64.osx_x64_sdl2_mixer},
+#endif
+#if ARM
+           {(OSPlatform.OSX, Architecture.Arm), NativeAudioOsxARM64.osx_arm64_sdl2_mixer},
+#endif
+#if ARM64
+            {(OSPlatform.OSX, Architecture.Arm64), NativeAudioOsxARM64.osx_arm64_sdl2_mixer}
+#endif
 #endif
         };
 

@@ -56,10 +56,18 @@ namespace Alis.Core.Graphic.SFML
             {(OSPlatform.Linux, Architecture.Arm64), NativeGraphic.linux_arm64_csfml_window},
 #endif
 #if OSX
-            {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsx.osx_x64_csfml_window},
-            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsx.osx_x64_csfml_window},
-            {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsx.osx_arm64_csfml_window},
-            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsx.osx_arm64_csfml_window}
+#if X86
+             {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsxARM64.osx_x64_csfml_window},
+#endif
+#if X64
+            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsxARM64.osx_x64_csfml_window},
+#endif
+#if ARM
+            {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsxARM64.osx_arm64_csfml_window},
+#endif
+#if ARM64
+            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsxARM64.osx_arm64_csfml_window}
+#endif
 #endif
         };
 
@@ -83,10 +91,18 @@ namespace Alis.Core.Graphic.SFML
 #endif
             
 #if OSX
-            {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsx.osx_x64_csfml_system},
-            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsx.osx_x64_csfml_system},
-            {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsx.osx_arm64_csfml_system},
-            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsx.osx_arm64_csfml_system}
+#if X86
+            {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsxARM64.osx_x64_csfml_system},
+#endif
+#if X64
+            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsxARM64.osx_x64_csfml_system},
+#endif
+#if ARM
+            {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsxARM64.osx_arm64_csfml_system},
+#endif
+#if ARM64
+            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsxARM64.osx_arm64_csfml_system}
+#endif
 #endif
         };
 
@@ -108,10 +124,18 @@ namespace Alis.Core.Graphic.SFML
             {(OSPlatform.Linux, Architecture.Arm64), NativeGraphic.linux_arm64_csfml_graphics},
 #endif
 #if OSX
-            {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsx.osx_x64_csfml_graphics},
-            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsx.osx_x64_csfml_graphics},
-            {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsx.osx_arm64_csfml_graphics},
-            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsx.osx_arm64_csfml_graphics}
+#if X86
+             {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsxARM64.osx_x64_csfml_graphics},
+#endif
+#if X64
+            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsxARM64.osx_x64_csfml_graphics},
+#endif
+#if ARM
+            {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsxARM64.osx_arm64_csfml_graphics},
+#endif
+#if ARM64
+            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsxARM64.osx_arm64_csfml_graphics}
+#endif
 #endif
         };
     }

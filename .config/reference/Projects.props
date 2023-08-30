@@ -29,28 +29,27 @@
                           Exclude="$(SolutionDir)6_Ideation/**/*.Sample.csproj; $(SolutionDir)6_Ideation/**/*.Test.csproj;"/>
 
         <InternalsVisibleTo Include="$(AssemblyName).Test"/>
-        
-        <EmbeddedResource Remove="$(ProjectDir)/**/Properties/*.resx"/>
-        <Compile Remove="$(ProjectDir)/**/Properties/*.cs"/>
-        
-        <EmbeddedResource Condition="$(IsOSX) == true"
-                          Include="$(ProjectDir)/**/*Osx.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
-        </EmbeddedResource>
-        <Compile Condition="$(IsOSX) == true" Include="$(ProjectDir)/**/Properties/*Osx.Designer.cs"/>
-        
-        <EmbeddedResource Condition="$(IsWindows) == true"
-                          Include="$(ProjectDir)/**/*Windows.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
-        </EmbeddedResource>
-        <Compile Condition="$(IsWindows) == true" Include="$(ProjectDir)/**/Properties/*Windows.Designer.cs"/>
-        
-        <EmbeddedResource Condition="$(IsLinux) == true"
-                          Include="$(ProjectDir)/**/*Linux.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
-        </EmbeddedResource>
-        <Compile Condition="$(IsLinux) == true" Include="$(ProjectDir)/**/Properties/*Linux.Designer.cs"/>
 
+        <EmbeddedResource Condition="$(IsARM) != true" Remove="$(ProjectDir)/**/Properties/**/*ARM.resx"/>
+        <Compile Condition="$(IsARM) != true" Remove="$(ProjectDir)/**/Properties/**/*ARM.Designer.cs"/>
+        
+        <EmbeddedResource Condition="$(IsARM64) != true" Remove="$(ProjectDir)/**/Properties/**/*ARM64.resx"/>
+        <Compile Condition="$(IsARM64) != true" Remove="$(ProjectDir)/**/Properties/**/*ARM64.Designer.cs"/>
+
+        <EmbeddedResource Condition="$(IsX64) != true" Remove="$(ProjectDir)/**/Properties/**/*X64.resx"/>
+        <Compile Condition="$(IsX64) != true" Remove="$(ProjectDir)/**/Properties/**/*X64.Designer.cs"/>
+
+        <EmbeddedResource Condition="$(IsX86) != true" Remove="$(ProjectDir)/**/Properties/**/*X86.resx"/>
+        <Compile Condition="$(IsX86) != true" Remove="$(ProjectDir)/**/Properties/**/*X86.Designer.cs"/>
+
+        <EmbeddedResource Condition="$(IsOSX) != true" Remove="$(ProjectDir)/**/Properties/**/*Osx*.resx"/>
+        <Compile Condition="$(IsOSX) != true" Remove="$(ProjectDir)/**/Properties/**/*Osx*.Designer.cs"/>
+
+        <EmbeddedResource Condition="$(IsWindows) != true" Remove="$(ProjectDir)/**/Properties/**/*Windows*.resx"/>
+        <Compile Condition="$(IsWindows) != true" Remove="$(ProjectDir)/**/Properties/**/*Windows*.Designer.cs"/>
+
+        <EmbeddedResource Condition="$(IsLinux) != true" Remove="$(ProjectDir)/**/Properties/**/*Linux*.resx"/>
+        <Compile Condition="$(IsLinux) != true" Remove="$(ProjectDir)/**/Properties/**/*Linux*.Designer.cs"/>
 
     </ItemGroup>
 
@@ -197,15 +196,28 @@
                  Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
 
         <InternalsVisibleTo Include="$(AssemblyName).Test"/>
+        
+        <EmbeddedResource Condition="$(IsARM) != true" Remove="$(SolutionDir)/**/Properties/**/*ARM.resx"/>
+        <Compile Condition="$(IsARM) != true" Remove="$(SolutionDir)/**/Properties/**/*ARM.Designer.cs"/>
 
-        <EmbeddedResource Condition="$(IsOSX) != true" Remove="$(SolutionDir)/**/Properties/*Osx.resx"/>
-        <Compile Condition="$(IsOSX) != true" Remove="$(SolutionDir)/**/Properties/*Osx.Designer.cs"/>
+        <EmbeddedResource Condition="$(IsARM64) != true" Remove="$(SolutionDir)/**/Properties/**/*ARM64.resx"/>
+        <Compile Condition="$(IsARM64) != true" Remove="$(SolutionDir)/**/Properties/**/*ARM64.Designer.cs"/>
+
+        <EmbeddedResource Condition="$(IsX64) != true" Remove="$(SolutionDir)/**/Properties/**/*X64.resx"/>
+        <Compile Condition="$(IsX64) != true" Remove="$(SolutionDir)/**/Properties/**/*X64.Designer.cs"/>
+
+        <EmbeddedResource Condition="$(IsX86) != true" Remove="$(SolutionDir)/**/Properties/**/*X86.resx"/>
+        <Compile Condition="$(IsX86) != true" Remove="$(SolutionDir)/**/Properties/**/*X86.Designer.cs"/>
+
+        <EmbeddedResource Condition="$(IsOSX) != true" Remove="$(SolutionDir)/**/Properties/**/*Osx*.resx"/>
+        <Compile Condition="$(IsOSX) != true" Remove="$(SolutionDir)/**/Properties/**/*Osx*.Designer.cs"/>
+
+        <EmbeddedResource Condition="$(IsWindows) != true" Remove="$(SolutionDir)/**/Properties/**/*Windows*.resx"/>
+        <Compile Condition="$(IsWindows) != true" Remove="$(SolutionDir)/**/Properties/**/*Windows*.Designer.cs"/>
+
+        <EmbeddedResource Condition="$(IsLinux) != true" Remove="$(SolutionDir)/**/Properties/**/*Linux*.resx"/>
+        <Compile Condition="$(IsLinux) != true" Remove="$(SolutionDir)/**/Properties/**/*Linux*.Designer.cs"/>
         
-        <EmbeddedResource Condition="$(IsWindows) != true" Remove="$(SolutionDir)/**/Properties/*Windows.resx"/>
-        <Compile Condition="$(IsWindows) != true" Remove="$(SolutionDir)/**/Properties/*Windows.Designer.cs"/>
-        
-        <EmbeddedResource Condition="$(IsLinux) != true" Remove="$(SolutionDir)/**/Properties/*Linux.resx"/>
-        <Compile Condition="$(IsLinux) != true" Remove="$(SolutionDir)/**/Properties/*Linux.Designer.cs"/>
     </ItemGroup>
 
     <ItemGroup Condition="$(AssemblyName.Contains('Test'))">
