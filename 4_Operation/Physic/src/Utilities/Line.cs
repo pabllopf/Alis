@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Utilities
             float x4 = b1.X;
             float y4 = b1.Y;
 
-            //AABB early exit
+            // AABB early exit
             if (Math.Max(x1, x2) < Math.Min(x3, x4) || Math.Max(x3, x4) < Math.Min(x1, x2))
             {
                 return false;
@@ -109,19 +109,20 @@ namespace Alis.Core.Physic.Utilities
                 return false;
             }
 
-            float ua = (x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3);
-            float ub = (x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3);
             float denom = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1);
             if (Math.Abs(denom) < Constant.Epsilon)
             {
-                //Lines are too close to parallel to call
+                // Lines are too close to parallel to call
                 return false;
             }
 
+            float ua = (x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3);
+            float ub = (x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3);
+    
             ua /= denom;
             ub /= denom;
 
-            if ((0 < ua) && (ua < 1) && (0 < ub) && (ub < 1))
+            if (ua >= 0 && ua <= 1 && ub >= 0 && ub <= 1)
             {
                 intersectionPoint = new Vector2(
                     x1 + ua * (x2 - x1),
@@ -132,6 +133,7 @@ namespace Alis.Core.Physic.Utilities
 
             return false;
         }
+
 
         //From Mark Bayazit's convex decomposition algorithm
         /// <summary>
