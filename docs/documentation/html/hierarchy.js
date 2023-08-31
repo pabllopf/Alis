@@ -668,8 +668,8 @@ var hierarchy =
     [ "Alis.Core.Aspect.Fluent.Words.IMute< AudioClipBuilder, bool >", "de/d9e/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_mute.html", [
       [ "Alis.Builder.Core.Component.Audio.AudioClipBuilder", "d7/dd4/class_alis_1_1_builder_1_1_core_1_1_component_1_1_audio_1_1_audio_clip_builder.html", null ]
     ] ],
-    [ "Alis.Core.Graphic.UI.ImVector< T >", "de/dab/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_vector.html", null ],
     [ "Alis.Core.Graphic.UI.ImVector", "de/dab/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_vector.html", null ],
+    [ "Alis.Core.Graphic.UI.ImVector< T >", "de/dab/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_vector.html", null ],
     [ "Alis.Core.Graphic.UI.ImVector< Alis.Core.Graphic.UI.ImFontPtr >", "de/dab/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_vector.html", null ],
     [ "Alis.Core.Graphic.UI.ImVector< Alis.Core.Graphic.UI.ImGuiViewportPtr >", "de/dab/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_vector.html", null ],
     [ "Alis.Core.Graphic.UI.ImVector< byte >", "de/dab/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_vector.html", null ],
@@ -925,7 +925,11 @@ var hierarchy =
     [ "Alis.Core.Graphic.UI.Extras.Node.MultipleSelectModifier", "dc/d18/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_multiple_select_modifier.html", null ],
     [ "Alis.Core.Graphic.UI.Extras.Node.MultipleSelectModifierPtr", "d6/d0a/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_multiple_select_modifier_ptr.html", null ],
     [ "Alis.Core.Audio.Properties.NativeAudio", "db/dcc/class_alis_1_1_core_1_1_audio_1_1_properties_1_1_native_audio.html", null ],
+    [ "Alis.Core.Audio.Properties.NativeAudioOsx", "d0/de4/class_alis_1_1_core_1_1_audio_1_1_properties_1_1_native_audio_osx.html", null ],
+    [ "Alis.Core.Audio.Properties.NativeAudioOsxARM64", "db/d7a/class_alis_1_1_core_1_1_audio_1_1_properties_1_1_native_audio_osx_a_r_m64.html", null ],
     [ "Alis.Core.Graphic.Properties.NativeGraphic", "dd/d41/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic.html", null ],
+    [ "Alis.Core.Graphic.Properties.NativeGraphicOsx", "d7/d80/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx.html", null ],
+    [ "Alis.Core.Graphic.Properties.NativeGraphicOsxARM64", "d8/ddb/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx_a_r_m64.html", null ],
     [ "Alis.Core.Physic.Tools.Triangulation.Seidel.Node", "dc/df1/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_node.html", [
       [ "Alis.Core.Physic.Tools.Triangulation.Seidel.Sink", "d9/d47/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_sink.html", null ],
       [ "Alis.Core.Physic.Tools.Triangulation.Seidel.XNode", "d4/d15/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_x_node.html", null ],
@@ -956,8 +960,8 @@ var hierarchy =
     [ "Alis.Core.Physic.Dynamics.Solver.Position", "da/d34/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_position.html", null ],
     [ "Alis.Core.Physic.Dynamics.Solver.PositionSolverManifold", "d6/d53/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_position_solver_manifold.html", null ],
     [ "Alis.Core.Physic.Dynamics.Profile", "dc/d1d/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_profile.html", null ],
-    [ "Alis.App.Installer.Program", "d3/d29/class_alis_1_1_app_1_1_installer_1_1_program.html", null ],
     [ "Alis.App.Engine.Program", "d5/d6e/class_alis_1_1_app_1_1_engine_1_1_program.html", null ],
+    [ "Alis.App.Installer.Program", "d3/d29/class_alis_1_1_app_1_1_installer_1_1_program.html", null ],
     [ "Alis.Core.Aspect.Math.Util.Quaternion", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html", null ],
     [ "Alis.Core.Physic.Tools.Triangulation.Seidel.QueryGraph", "d8/d2b/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_query_graph.html", null ],
     [ "Alis.Core.Aspect.Math.Util.RandomUtils", "de/d00/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_random_utils.html", null ],
@@ -1104,8 +1108,8 @@ var hierarchy =
     [ "Alis.Core.Physic.Collision.TOI.ToiOutput", "de/d32/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_t_o_i_1_1_toi_output.html", null ],
     [ "Alis.Core.Graphic.SFML.Windows.Touch", "d2/db7/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_touch.html", null ],
     [ "Alis.Core.Graphic.SFML.Windows.TouchEvent", "d0/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_touch_event.html", null ],
-    [ "Alis.Core.Aspect.Math.Transform", "d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html", null ],
     [ "Alis.Core.Graphic.SFML.Graphics.Transform", "d7/d5b/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_transform.html", null ],
+    [ "Alis.Core.Aspect.Math.Transform", "d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html", null ],
     [ "Alis.Core.Ecs.TransformBase", "dc/dfe/class_alis_1_1_core_1_1_ecs_1_1_transform_base.html", [
       [ "Alis.Core.Entity.Transform", "dc/d65/class_alis_1_1_core_1_1_entity_1_1_transform.html", null ]
     ] ],
@@ -1127,8 +1131,8 @@ var hierarchy =
     [ "Alis.Core.Graphic.UI.UnionValue", "d9/dd9/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_union_value.html", null ],
     [ "Alis.Core.Graphic.UI.Utils.Unsafe", "dc/d4b/class_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_utils_1_1_unsafe.html", null ],
     [ "Alis.Core.Aspect.Memory.Utf8Manager", "d6/d31/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_utf8_manager.html", null ],
-    [ "Alis.Core.Graphic.UI.Util", "d9/d54/class_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_util.html", null ],
     [ "Alis.Core.Graphic.UI.Utils.Util", "da/d54/class_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_utils_1_1_util.html", null ],
+    [ "Alis.Core.Graphic.UI.Util", "d9/d54/class_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_util.html", null ],
     [ "Alis.Core.Aspect.Memory.ValidationExtensions", "dc/db5/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validation_extensions.html", null ],
     [ "Alis.Core.Aspect.Memory.Validator", "d7/d2d/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_validator.html", null ],
     [ "Alis.Core.Aspect.Math.Vector.Vector2B", "d8/dab/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_b.html", null ],
