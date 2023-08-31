@@ -217,7 +217,46 @@
 
         <EmbeddedResource Condition="$(IsLinux) != true" Remove="$(SolutionDir)/**/Properties/**/*Linux*.resx"/>
         <Compile Condition="$(IsLinux) != true" Remove="$(SolutionDir)/**/Properties/**/*Linux*.Designer.cs"/>
+    </ItemGroup>
+    
+    <ItemGroup>
+
+        <!-- Graphic -->
+        <Compile Condition="'$(GraphicBackend)' == 'SFML'"
+                 Remove="
+            $(SolutionDir)4_Operation/**/*Graphic*/**/SDL/**; 
+            $(SolutionDir)4_Operation/**/*Graphic*/**/OpenGL/**;
+            $(SolutionDir)4_Operation/**/*Graphic*/**/Properties/**/*SDL.Designer.cs;"/>
+        <EmbeddedResource
+            Condition="'$(GraphicBackend)' == 'SFML'"
+            Remove="$(SolutionDir)4_Operation/**/*Graphic*/**/Properties/**/*SDL*.resx" />
+
+        <Compile Condition="'$(GraphicBackend)' == 'SDL'"
+                 Remove="
+            $(SolutionDir)4_Operation/**/*Graphic*/**/SFML/**;
+            $(SolutionDir)4_Operation/**/*Graphic*/**/Properties/**/*SFML*.Designer.cs" />
+        <EmbeddedResource
+            Condition="'$(GraphicBackend)' == 'SDL'"
+            Remove="$(SolutionDir)4_Operation/**/*Graphic*/**/Properties/**/*SFML*.resx" />
         
+        <!-- audio -->
+        <Compile Condition="'$(AudioBackend)' == 'SFML'"
+                 Remove="
+            $(SolutionDir)4_Operation/**/*Audio*/**/SDL/**; 
+            $(SolutionDir)4_Operation/**/*Audio*/**/OpenGL/**;
+            $(SolutionDir)4_Operation/**/*Audio*/**/Properties/**/*SDL.Designer.cs;"/>
+        <EmbeddedResource
+            Condition="'$(AudioBackend)' == 'SFML'"
+            Remove="$(SolutionDir)4_Operation/**/*Audio*/**/Properties/**/*SDL*.resx" />
+
+        <Compile Condition="'$(AudioBackend)' == 'SDL'"
+                 Remove="
+            $(SolutionDir)4_Operation/**/*Audio*/**/SFML/**;
+            $(SolutionDir)4_Operation/**/*Audio*/**/Properties/**/*SFML*.Designer.cs" />
+        <EmbeddedResource
+            Condition="'$(AudioBackend)' == 'SDL'"
+            Remove="$(SolutionDir)4_Operation/**/*Audio*/**/Properties/**/*SFML*.resx" />
+
     </ItemGroup>
 
     <ItemGroup Condition="$(AssemblyName.Contains('Test'))">

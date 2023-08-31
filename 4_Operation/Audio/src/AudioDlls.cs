@@ -66,7 +66,9 @@ namespace Alis.Core.Audio
            {(OSPlatform.OSX, Architecture.Arm), NativeAudioOsxARM64.osx_arm64_csfml_audio},
 #endif
 #if ARM64
-            {(OSPlatform.OSX, Architecture.Arm64), NativeAudioOsxARM64.osx_arm64_csfml_audio}
+#if AudioBackendSFML || AudioBackendAll
+            {(OSPlatform.OSX, Architecture.Arm64), NativeAudioOsxARM64SFML.osx_arm64_csfml_audio}
+#endif
 #endif
 #endif
         };
@@ -100,7 +102,9 @@ namespace Alis.Core.Audio
            {(OSPlatform.OSX, Architecture.Arm), NativeAudioOsxARM64.osx_arm64_sdl2_mixer},
 #endif
 #if ARM64
-            {(OSPlatform.OSX, Architecture.Arm64), NativeAudioOsxARM64.osx_arm64_sdl2_mixer}
+#if AudioBackendSDL || AudioBackendAll
+            {(OSPlatform.OSX, Architecture.Arm64), NativeAudioOsxARM64SDL.osx_arm64_sdl2_mixer}
+#endif
 #endif
 #endif
         };

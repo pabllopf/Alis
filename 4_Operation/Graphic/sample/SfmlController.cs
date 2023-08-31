@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+#if GraphicBackendSFML || GraphicBackendAll
+
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Base.Mapping;
@@ -286,3 +288,4 @@ namespace Alis.Core.Graphic.Sample
         }
     }
 }
+#endif

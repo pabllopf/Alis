@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+#if GraphicBackendSDL || GraphicBackendAll
+
 using System;
 using System.Collections.Generic;
 using Alis.Core.Graphic.SDL;
@@ -252,3 +254,6 @@ namespace Alis.Core.Graphic.Sample
         }
     }
 }
+
+
+#endif

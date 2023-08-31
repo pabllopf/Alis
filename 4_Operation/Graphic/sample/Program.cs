@@ -49,15 +49,19 @@ namespace Alis.Core.Graphic.Sample
                 string os = Console.ReadLine();
                 switch (os)
                 {
+#if GraphicBackendSFML || GraphicBackendAll
                     case "sfml":
                         SfmlController sfmlController = new SfmlController();
                         run = sfmlController.Run();
                         break;
-
+#endif
+#if GraphicBackendSDL || GraphicBackendAll
                     case "sdl":
                         SdlController sdlController = new SdlController();
                         run = sdlController.Run();
                         break;
+#endif
+                    
                 }
             }
         }

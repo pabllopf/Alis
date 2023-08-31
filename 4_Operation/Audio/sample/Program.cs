@@ -70,7 +70,7 @@ namespace Alis.Core.Audio.Sample
                 }
                 catch (Exception ex)
                 {
-                    Logger.Exception(ex);
+                    throw new Exception("Error in backend audio system", ex);
                 }
 
 
