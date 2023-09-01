@@ -29,9 +29,9 @@
 
 using System;
 using System.Text;
-using Alis.Core.Graphic.UI.Utils;
+using Alis.App.Engine.UI.Utils;
 
-namespace Alis.Core.Graphic.UI
+namespace Alis.App.Engine.UI
 {
     /// <summary>
     ///     The im gui text filter ptr

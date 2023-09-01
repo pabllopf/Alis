@@ -30,7 +30,7 @@
 using System;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Graphic.UI
+namespace Alis.App.Engine.UI
 {
     /// <summary>
     ///     The im gui io

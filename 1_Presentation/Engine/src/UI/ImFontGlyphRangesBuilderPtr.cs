@@ -30,7 +30,7 @@
 using System;
 using System.Text;
 
-namespace Alis.Core.Graphic.UI
+namespace Alis.App.Engine.UI
 {
     /// <summary>
     ///     The im font glyph ranges builder ptr

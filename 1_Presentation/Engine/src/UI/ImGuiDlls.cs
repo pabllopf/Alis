@@ -29,9 +29,9 @@
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.Properties;
+using Alis.App.Engine.Properties.osx.arm64;
 
-namespace Alis.Core.Graphic.UI
+namespace Alis.App.Engine.UI
 {
     /// <summary>
     ///     The im gui dlls class

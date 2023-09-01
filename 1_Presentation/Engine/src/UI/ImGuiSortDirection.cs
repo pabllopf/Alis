@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.UI
+namespace Alis.App.Engine.UI
 {
     /// <summary>
     ///     The im gui sort direction enum

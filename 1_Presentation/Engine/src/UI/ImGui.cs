@@ -32,7 +32,7 @@ using System.Text;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Graphic.UI
+namespace Alis.App.Engine.UI
 {
     /// <summary>
     ///     The im gui class

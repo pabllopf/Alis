@@ -29,7 +29,7 @@
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.Properties;
+using Alis.Core.Graphic.Properties.osx.arm64;
 
 namespace Alis.Core.Graphic.SFML
 {

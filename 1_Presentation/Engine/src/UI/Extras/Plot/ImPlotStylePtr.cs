@@ -28,10 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.App.Engine.UI.Utils;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic.UI.Utils;
 
-namespace Alis.Core.Graphic.UI.Extras.Plot
+namespace Alis.App.Engine.UI.Extras.Plot
 {
     /// <summary>
     ///     The im plot style ptr

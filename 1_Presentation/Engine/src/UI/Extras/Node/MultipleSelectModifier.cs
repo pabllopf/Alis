@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.UI.Extras.Node
+namespace Alis.App.Engine.UI.Extras.Node
 {
     /// <summary>
     ///     The multiple select modifier

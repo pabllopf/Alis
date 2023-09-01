@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Graphic.UI.Attributes
+namespace Alis.App.Engine.UI.Attributes
 {
     /// <summary>
     ///     The non versionable attribute class

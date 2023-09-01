@@ -7,10 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.Properties {
-    using System;
-    
-    
+namespace Alis.Core.Graphic.Properties.osx.arm64 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

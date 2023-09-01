@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Graphic.UI.Utils;
+using Alis.App.Engine.UI.Utils;
 
-namespace Alis.Core.Graphic.UI
+namespace Alis.App.Engine.UI
 {
     /// <summary>
     ///     The im gui table column sort specs ptr

@@ -8,10 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Alis.Core.Audio.Properties {
-    using System;
-    
-    
+namespace Alis.Core.Audio.Properties.osx.arm64 {
     /// <summary>
     ///   Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
     /// </summary>

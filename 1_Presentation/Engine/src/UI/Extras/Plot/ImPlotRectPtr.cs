@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Graphic.UI.Utils;
+using Alis.App.Engine.UI.Utils;
 
-namespace Alis.Core.Graphic.UI.Extras.Plot
+namespace Alis.App.Engine.UI.Extras.Plot
 {
     /// <summary>
     ///     The im plot rect ptr

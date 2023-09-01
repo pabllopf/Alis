@@ -31,7 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Graphic.UI.Extras.Plot
+namespace Alis.App.Engine.UI.Extras.Plot
 {
     /// <summary>
     ///     The im plot native class

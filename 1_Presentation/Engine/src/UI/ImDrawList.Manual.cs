@@ -30,7 +30,7 @@
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Graphic.UI
+namespace Alis.App.Engine.UI
 {
     /// <summary>
     ///     The im draw list ptr

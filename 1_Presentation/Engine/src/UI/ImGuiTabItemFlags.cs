@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Graphic.UI
+namespace Alis.App.Engine.UI
 {
     /// <summary>
     ///     The im gui tab item flags enum

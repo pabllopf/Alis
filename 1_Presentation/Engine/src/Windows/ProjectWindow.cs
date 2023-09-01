@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Graphic.UI;
+using Alis.App.Engine.UI;
 
 namespace Alis.App.Engine.Windows
 {

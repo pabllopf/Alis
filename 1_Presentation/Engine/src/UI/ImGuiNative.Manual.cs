@@ -30,7 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.UI
+namespace Alis.App.Engine.UI
 {
     /// <summary>
     ///     The im gui native class

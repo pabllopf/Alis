@@ -30,6 +30,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Alis.Core.Audio.Properties;
+using Alis.Core.Audio.Properties.osx.arm64;
 
 namespace Alis.Core.Audio
 {

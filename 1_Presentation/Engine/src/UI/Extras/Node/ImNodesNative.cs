@@ -31,7 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Graphic.UI.Extras.Node
+namespace Alis.App.Engine.UI.Extras.Node
 {
     /// <summary>
     ///     The imnodes native class

@@ -29,7 +29,7 @@
 
 using System.Text;
 
-namespace Alis.Core.Graphic.UI
+namespace Alis.App.Engine.UI
 {
     /// <summary>
     ///     The null terminated string

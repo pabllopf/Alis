@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Graphic.UI.Utils;
+using Alis.App.Engine.UI.Utils;
 
-namespace Alis.Core.Graphic.UI.Extras.Node
+namespace Alis.App.Engine.UI.Extras.Node
 {
     /// <summary>
     ///     The style ptr

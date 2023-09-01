@@ -31,7 +31,7 @@ using System;
 using System.Text;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Graphic.UI.Extras.Node
+namespace Alis.App.Engine.UI.Extras.Node
 {
     /// <summary>
     ///     The im nodes class

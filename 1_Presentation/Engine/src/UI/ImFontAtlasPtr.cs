@@ -29,10 +29,10 @@
 
 using System;
 using System.Text;
+using Alis.App.Engine.UI.Utils;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic.UI.Utils;
 
-namespace Alis.Core.Graphic.UI
+namespace Alis.App.Engine.UI
 {
     /// <summary>
     ///     The im font atlas ptr

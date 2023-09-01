@@ -30,10 +30,10 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
+using Alis.App.Engine.UI.Utils;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic.UI.Utils;
 
-namespace Alis.Core.Graphic.UI
+namespace Alis.App.Engine.UI
 {
     /// <summary>
     ///     The im gui class
