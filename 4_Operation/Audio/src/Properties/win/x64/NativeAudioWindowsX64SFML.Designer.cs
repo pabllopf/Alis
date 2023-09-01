@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Alis.Core.Audio.Properties {
+namespace Alis.Core.Audio.Properties.win.x64 {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace Alis.Core.Audio.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class NativeAudio {
+    internal class NativeAudioWindowsX64SFML {
         
         /// <summary>
         /// The resource man
@@ -35,10 +35,10 @@ namespace Alis.Core.Audio.Properties {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="NativeAudio"/> class
+        /// Initializes a new instance of the <see cref="NativeAudioWindowsX64SFML"/> class
         /// </summary>
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal NativeAudio() {
+        internal NativeAudioWindowsX64SFML() {
         }
         
         /// <summary>
@@ -48,7 +48,7 @@ namespace Alis.Core.Audio.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Alis.Core.Audio.Properties.NativeAudio", typeof(NativeAudio).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Alis.Core.Audio.Properties.win.x64.NativeAudioWindowsX64SFML", typeof(NativeAudioWindowsX64SFML).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

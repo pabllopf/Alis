@@ -29,7 +29,7 @@
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Alis.App.Engine.Properties.osx.arm64;
+using Alis.Core.Graphic.Properties;
 
 namespace Alis.App.Engine.UI
 {

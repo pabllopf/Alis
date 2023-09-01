@@ -126,82 +126,82 @@
     <assembly alias="System.Windows.Forms"
               name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
     <data name="linux_arm64_csfml_audio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\linux-arm64\linux-arm64_csfml-audio.so;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\..\..\resources\linux-arm64\linux-arm64_csfml-audio.so;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="linux_arm64_sdl2_mixer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\linux-arm64\linux-arm64_sdl2_mixer.so;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\..\..\resources\linux-arm64\linux-arm64_sdl2_mixer.so;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="linux_x64_csfml_audio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\linux-x64\linux-x64_csfml-audio.so;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\..\..\resources\linux-x64\linux-x64_csfml-audio.so;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="linux_x64_sdl2_mixer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\linux-x64\linux-x64_sdl2_mixer.so;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
+        <value>..\..\..\resources\linux-x64\linux-x64_sdl2_mixer.so;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
             PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="linux_x86_csfml_audio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\linux-x86\linux-x86_csfml-audio.so;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\..\..\resources\linux-x86\linux-x86_csfml-audio.so;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="linux_x86_sdl2_mixer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\linux-x86\linux-x86_sdl2_mixer.so;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
+        <value>..\..\..\resources\linux-x86\linux-x86_sdl2_mixer.so;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
             PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="osx_arm64_csfml_audio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\osx-arm64\osx-arm64_csfml-audio.dylib;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\..\..\resources\osx-arm64\osx-arm64_csfml-audio.dylib;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="osx_arm64_sdl2_mixer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\osx-arm64\osx-arm64_sdl2_mixer.dylib;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\..\..\resources\osx-arm64\osx-arm64_sdl2_mixer.dylib;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="osx_x64_csfml_audio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\osx-x64\osx-x64_csfml-audio.dylib;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
+        <value>..\..\..\resources\osx-x64\osx-x64_csfml-audio.dylib;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
             PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="osx_x64_sdl2_mixer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\osx-x64\osx-x64_sdl2_mixer.dylib;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
+        <value>..\..\..\resources\osx-x64\osx-x64_sdl2_mixer.dylib;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
             PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="win_x64_csfml_audio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\win-x64\win-x64_csfml-audio.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
+        <value>..\..\..\resources\win-x64\win-x64_csfml-audio.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
             PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="win_x64_openal32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\win-x64\win-x64_openal32.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
+        <value>..\..\..\resources\win-x64\win-x64_openal32.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
             PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="win_x64_sdl2_mixer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\win-x64\win-x64_sdl2_mixer.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
+        <value>..\..\..\resources\win-x64\win-x64_sdl2_mixer.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
             PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="win_x86_csfml_audio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\win-x86\win-x86_csfml-audio.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
+        <value>..\..\..\resources\win-x86\win-x86_csfml-audio.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
             PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="win_x86_openal32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\win-x86\win-x86_openal32.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
+        <value>..\..\..\resources\win-x86\win-x86_openal32.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
             PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="win_x86_sdl2_mixer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\win-x86\win-x86_sdl2_mixer.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
+        <value>..\..\..\resources\win-x86\win-x86_sdl2_mixer.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
             PublicKeyToken=b77a5c561934e089
         </value>
     </data>
