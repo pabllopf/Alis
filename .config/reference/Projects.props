@@ -178,17 +178,17 @@
     
     <ItemGroup>
 
-        <EmbeddedResource Condition="$(IsARM) != true" Remove="$(SolutionDir)/**/Properties/**/*ARM.resx"/>
-        <Compile Condition="$(IsARM) != true" Remove="$(SolutionDir)/**/Properties/**/*ARM.Designer.cs"/>
+        <EmbeddedResource Condition="$(IsARM) != true" Remove="$(SolutionDir)/**/Properties/**/arm/*ARM*.resx"/>
+        <Compile Condition="$(IsARM) != true" Remove="$(SolutionDir)/**/Properties/**/arm/*ARM*.Designer.cs"/>
+        
+        <EmbeddedResource Condition="$(IsARM64) != true" Remove="$(SolutionDir)/**/Properties/**/arm64/*ARM64*.resx"/>
+        <Compile Condition="$(IsARM64) != true" Remove="$(SolutionDir)/**/Properties/**/arm64/*ARM64*.Designer.cs"/>
 
-        <EmbeddedResource Condition="$(IsARM64) != true" Remove="$(SolutionDir)/**/Properties/**/*ARM64.resx"/>
-        <Compile Condition="$(IsARM64) != true" Remove="$(SolutionDir)/**/Properties/**/*ARM64.Designer.cs"/>
+        <EmbeddedResource Condition="$(IsX64) != true" Remove="$(SolutionDir)/**/Properties/**/x64/*X64*.resx"/>
+        <Compile Condition="$(IsX64) != true" Remove="$(SolutionDir)/**/Properties/**/x64/*X64*.Designer.cs"/>
 
-        <EmbeddedResource Condition="$(IsX64) != true" Remove="$(SolutionDir)/**/Properties/**/*X64.resx"/>
-        <Compile Condition="$(IsX64) != true" Remove="$(SolutionDir)/**/Properties/**/*X64.Designer.cs"/>
-
-        <EmbeddedResource Condition="$(IsX86) != true" Remove="$(SolutionDir)/**/Properties/**/*X86.resx"/>
-        <Compile Condition="$(IsX86) != true" Remove="$(SolutionDir)/**/Properties/**/*X86.Designer.cs"/>
+        <EmbeddedResource Condition="$(IsX86) != true" Remove="$(SolutionDir)/**/Properties/**/x86/*X86*.resx"/>
+        <Compile Condition="$(IsX86) != true" Remove="$(SolutionDir)/**/Properties/**/x86/*X86*.Designer.cs"/>
 
         <EmbeddedResource Condition="$(IsOSX) != true" Remove="$(SolutionDir)/**/Properties/**/*Osx*.resx"/>
         <Compile Condition="$(IsOSX) != true" Remove="$(SolutionDir)/**/Properties/**/*Osx*.Designer.cs"/>
@@ -198,7 +198,7 @@
 
         <EmbeddedResource Condition="$(IsLinux) != true" Remove="$(SolutionDir)/**/Properties/**/*Linux*.resx"/>
         <Compile Condition="$(IsLinux) != true" Remove="$(SolutionDir)/**/Properties/**/*Linux*.Designer.cs"/>
-
+        
         <!-- Graphic -->
         <Compile Condition="'$(GraphicBackend)' == 'SFML'"
                  Remove="

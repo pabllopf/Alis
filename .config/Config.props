@@ -9,10 +9,14 @@
         <GraphicBackend>SFML</GraphicBackend>-->
         <!--
        <AudioBackend>SDL</AudioBackend>
-       <GraphicBackend>SDL</GraphicBackend>-->
+       <GraphicBackend>SDL</GraphicBackend>
+       <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+       -->
         <AudioBackend>ALL</AudioBackend>
         <GraphicBackend>ALL</GraphicBackend>
         <InputBackend>ALL</InputBackend>
+        
+        
     </PropertyGroup>
 
     <Import Project="$(SolutionDir).config/application/TargetFrameworks.props"/>
