@@ -25,7 +25,7 @@ namespace Alis.App.Engine.Properties.osx.arm64 {
         internal static System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.Equals(null, resourceMan)) {
-                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("Alis.Core.Graphic.Properties.osx.arm64.NativeGraphicOsxARM64", typeof(NativeGraphicOsxARM64).Assembly);
+                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("Alis.App.Engine.Properties.osx.arm64.NativeGraphicOsxARM64", typeof(NativeGraphicOsxARM64).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

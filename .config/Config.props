@@ -7,6 +7,9 @@
         <!--
         <AudioBackend>SFML</AudioBackend>
         <GraphicBackend>SFML</GraphicBackend>-->
+        <!--
+       <AudioBackend>SDL</AudioBackend>
+       <GraphicBackend>SDL</GraphicBackend>-->
         <AudioBackend>ALL</AudioBackend>
         <GraphicBackend>ALL</GraphicBackend>
         <InputBackend>ALL</InputBackend>
