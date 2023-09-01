@@ -827,6 +827,7 @@ var hierarchy =
       [ "Alis.Core.Network.WebSocketServerFactory", "de/d8c/class_alis_1_1_core_1_1_network_1_1_web_socket_server_factory.html", null ]
     ] ],
     [ "Alis.Core.Aspect.Fluent.Words.IWhere< out out TBuilder, in in TArgument >", "d2/d12/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_where.html", null ],
+    [ "Alis.Core.Aspect.Fluent.Words.IWindow< out out TBuilder, in in TArgument >", "d7/d83/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_window.html", null ],
     [ "Alis.App.Engine.Windows.IWindow", "da/dc1/interface_alis_1_1_app_1_1_engine_1_1_windows_1_1_i_window.html", [
       [ "Alis.App.Engine.Windows.ConsoleWindow", "d5/d69/class_alis_1_1_app_1_1_engine_1_1_windows_1_1_console_window.html", null ],
       [ "Alis.App.Engine.Windows.GameWindow", "d8/dc8/class_alis_1_1_app_1_1_engine_1_1_windows_1_1_game_window.html", null ],
@@ -835,7 +836,6 @@ var hierarchy =
       [ "Alis.App.Engine.Windows.SceneWindow", "de/d8b/class_alis_1_1_app_1_1_engine_1_1_windows_1_1_scene_window.html", null ],
       [ "Alis.App.Engine.Windows.SolutionWindow", "d1/db4/class_alis_1_1_app_1_1_engine_1_1_windows_1_1_solution_window.html", null ]
     ] ],
-    [ "Alis.Core.Aspect.Fluent.Words.IWindow< out out TBuilder, in in TArgument >", "d7/d83/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_window.html", null ],
     [ "IWindow< GraphicSettingBuilder, Func< WindowBuilder, Window >>", null, [
       [ "Alis.Builder.Core.Setting.GraphicSettingBuilder", "db/de7/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_graphic_setting_builder.html", null ]
     ] ],
@@ -926,10 +926,13 @@ var hierarchy =
     [ "Alis.Core.Graphic.UI.Extras.Node.MultipleSelectModifierPtr", "d6/d0a/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_extras_1_1_node_1_1_multiple_select_modifier_ptr.html", null ],
     [ "Alis.Core.Audio.Properties.NativeAudio", "db/dcc/class_alis_1_1_core_1_1_audio_1_1_properties_1_1_native_audio.html", null ],
     [ "Alis.Core.Audio.Properties.NativeAudioOsx", "d0/de4/class_alis_1_1_core_1_1_audio_1_1_properties_1_1_native_audio_osx.html", null ],
-    [ "Alis.Core.Audio.Properties.NativeAudioOsxARM64", "db/d7a/class_alis_1_1_core_1_1_audio_1_1_properties_1_1_native_audio_osx_a_r_m64.html", null ],
+    [ "Alis.Core.Audio.Properties.NativeAudioOsxARM64SDL", "df/dce/class_alis_1_1_core_1_1_audio_1_1_properties_1_1_native_audio_osx_a_r_m64_s_d_l.html", null ],
+    [ "Alis.Core.Audio.Properties.NativeAudioOsxARM64SFML", "d4/da5/class_alis_1_1_core_1_1_audio_1_1_properties_1_1_native_audio_osx_a_r_m64_s_f_m_l.html", null ],
     [ "Alis.Core.Graphic.Properties.NativeGraphic", "dd/d41/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic.html", null ],
     [ "Alis.Core.Graphic.Properties.NativeGraphicOsx", "d7/d80/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx.html", null ],
     [ "Alis.Core.Graphic.Properties.NativeGraphicOsxARM64", "d8/ddb/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx_a_r_m64.html", null ],
+    [ "Alis.Core.Graphic.Properties.NativeGraphicOsxARM64SDL", "d8/d02/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx_a_r_m64_s_d_l.html", null ],
+    [ "Alis.Core.Graphic.Properties.NativeGraphicOsxARM64SFML", "d3/de9/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx_a_r_m64_s_f_m_l.html", null ],
     [ "Alis.Core.Physic.Tools.Triangulation.Seidel.Node", "dc/df1/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_node.html", [
       [ "Alis.Core.Physic.Tools.Triangulation.Seidel.Sink", "d9/d47/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_sink.html", null ],
       [ "Alis.Core.Physic.Tools.Triangulation.Seidel.XNode", "d4/d15/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_x_node.html", null ],

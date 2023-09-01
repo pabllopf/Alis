@@ -1,10 +1,11 @@
 var class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx =
 [
     [ "NativeGraphicOsx", "d7/d80/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx.html#aebf90dff2aa3e24a9df52a77e2520de7", null ],
-    [ "resourceMan", "d7/d80/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx.html#aa2df0cb2decbd0b259598b62105ed9f1", null ],
-    [ "resourceCulture", "d7/d80/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx.html#a5f0a77860953078dd709ad9781a5baef", null ],
-    [ "ResourceManager", "d7/d80/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx.html#a55b94ac9d89ed3e59b10e9ce0f74d689", null ],
-    [ "Culture", "d7/d80/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx.html#a9c2af3c44f423b432247201c1aaf7d0e", null ],
+    [ "NativeGraphicOsx", "d7/d80/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx.html#aebf90dff2aa3e24a9df52a77e2520de7", null ],
+    [ "resourceMan", "d7/d80/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx.html#a987496081491d3d4cb5877bf0b574cc9", null ],
+    [ "resourceCulture", "d7/d80/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx.html#aa197f91574b7b10d27951c111841c715", null ],
+    [ "ResourceManager", "d7/d80/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx.html#a9a0c1bdf7d1574c76ac5b9eb1763e409", null ],
+    [ "Culture", "d7/d80/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx.html#ab713edf8fe3defda4e7f0294c6d3ea30", null ],
     [ "osx_arm64_cimgui", "d7/d80/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx.html#af94e66a28b8269ea29ffd8d1b8512e92", null ],
     [ "osx_arm64_csfml_graphics", "d7/d80/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx.html#ac419d5d6cb182baac93520f75857ac75", null ],
     [ "osx_arm64_csfml_system", "d7/d80/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx.html#adb2e5c81890070434c4e969d8c7412d2", null ],

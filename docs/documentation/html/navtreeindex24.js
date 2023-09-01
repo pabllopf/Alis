@@ -1,5 +1,12 @@
 var NAVTREEINDEX24 =
 {
+"d3/df4/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_time.html#abfa7fa18849357765d34b229a39e6e91":[1,0,0,2,5,3,4,11],
+"d3/df4/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_time.html#ac644486d29adeb1d4259de09008e0431":[1,0,0,2,5,3,4,18],
+"d3/df4/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_time.html#aca087335d428801eba4cd7dc29cdc1ae":[1,0,0,2,5,3,4,6],
+"d3/df4/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_time.html#ace56405d049119d15a840111272b149e":[1,0,0,2,5,3,4,0],
+"d3/df4/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_time.html#ad0f7c0b329ffdf52dad47faf59babc35":[1,0,0,2,5,3,4,25],
+"d3/df4/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_time.html#ad79b6bdb217a7a6a07311c2a9aeeb149":[1,0,0,2,5,3,4,19],
+"d3/df4/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_time.html#ae2fd2afabb80796b0f68b5a26e4cde4f":[1,0,0,2,5,3,4,17],
 "d3/df4/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_time.html#af31fe5245000aa41bef6c6c9185a2dbc":[1,0,0,2,5,3,4,13],
 "d3/df4/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_time.html#afa259c50f9797feedefd5fdd1a22a469":[1,0,0,2,5,3,4,16],
 "d3/df5/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_triangulation_context.html":[1,0,0,2,8,7,5,1,7],
@@ -40,8 +47,8 @@ var NAVTREEINDEX24 =
 "d4/d07/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_is_static.html":[1,0,0,2,0,2,0,30],
 "d4/d07/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_is_static.html#a39e0e8ae361ddcca6efabd2c1c127715":[1,0,0,2,0,2,0,30,1],
 "d4/d07/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_is_static.html#a65082aa8c7c31091c68336da73ebd2e9":[1,0,0,2,0,2,0,30,0],
-"d4/d07/namespace_alis_1_1_core_1_1_manager_1_1_input.html":[1,0,0,2,6,2],
 "d4/d07/namespace_alis_1_1_core_1_1_manager_1_1_input.html":[0,0,0,2,6,2],
+"d4/d07/namespace_alis_1_1_core_1_1_manager_1_1_input.html":[1,0,0,2,6,2],
 "d4/d0d/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_gui_storage.html":[1,0,0,2,5,4,54],
 "d4/d0d/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_gui_storage.html#a32d07a7006c917f5e2339e5325636d0e":[1,0,0,2,5,4,54,0],
 "d4/d0f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_internal_android_wm_info.html":[1,0,0,2,5,2,1,1],
@@ -217,8 +224,8 @@ var NAVTREEINDEX24 =
 "d4/d68/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_vertex.html#a2f6dad36c9a23451295390589dbb7ae9":[1,0,0,2,5,2,1,77,2],
 "d4/d68/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_vertex.html#ab0f57245f1063018d8e634deb33b995d":[1,0,0,2,5,2,1,77,1],
 "d4/d68/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_vertex.html#ace08538c9b2e71f329c394e07aa2f8c0":[1,0,0,2,5,2,1,77,0],
-"d4/d6c/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_polygon_manipulation.html":[1,0,0,2,8,7,3],
 "d4/d6c/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_polygon_manipulation.html":[0,0,0,2,8,7,3],
+"d4/d6c/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_polygon_manipulation.html":[1,0,0,2,8,7,3],
 "d4/d75/class_alis_1_1_builder_1_1_core_1_1_component_1_1_render_1_1_frame_builder.html":[1,0,0,1,0,0,6,3],
 "d4/d75/class_alis_1_1_builder_1_1_core_1_1_component_1_1_render_1_1_frame_builder.html#a3ed76b8a5af0dbbef63beee2b6752377":[1,0,0,1,0,0,6,3,0],
 "d4/d75/class_alis_1_1_builder_1_1_core_1_1_component_1_1_render_1_1_frame_builder.html#a86433e2f88b77916ff963568a4d564e7":[1,0,0,1,0,0,6,3,1],
@@ -242,12 +249,5 @@ var NAVTREEINDEX24 =
 "d4/d78/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_gui_storage_ptr.html#a9bb99530b8a51938f3ed342a3f6a4d06":[1,0,0,2,5,4,57,0],
 "d4/d78/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_gui_storage_ptr.html#aa152adeafa5cb5e3b8f11b6e7e34b043":[1,0,0,2,5,4,57,16],
 "d4/d78/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_gui_storage_ptr.html#aa1ee8eb04370be2b7102be75b894fff3":[1,0,0,2,5,4,57,14],
-"d4/d78/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_gui_storage_ptr.html#aafefd6cc613c4ea178667f4ed7b328aa":[1,0,0,2,5,4,57,21],
-"d4/d78/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_gui_storage_ptr.html#abbc9a10587a3d479448810a067a80ba1":[1,0,0,2,5,4,57,7],
-"d4/d78/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_gui_storage_ptr.html#abf96bb61c536e19e950ab315052344f1":[1,0,0,2,5,4,57,9],
-"d4/d78/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_gui_storage_ptr.html#ac95b8c2ab796f4802e29cfb7fd648066":[1,0,0,2,5,4,57,3],
-"d4/d78/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_gui_storage_ptr.html#ad58710dad65f86aadd4c4ec241981640":[1,0,0,2,5,4,57,24],
-"d4/d78/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_gui_storage_ptr.html#adc906c125c00ce58cbf2941c0d59d580":[1,0,0,2,5,4,57,22],
-"d4/d78/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_gui_storage_ptr.html#add30423fd617c218edc12852761943be":[1,0,0,2,5,4,57,5],
-"d4/d78/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_gui_storage_ptr.html#ae7feaf0e9acb7c73f5973b583af5405d":[1,0,0,2,5,4,57,20]
+"d4/d78/struct_alis_1_1_core_1_1_graphic_1_1_u_i_1_1_im_gui_storage_ptr.html#aafefd6cc613c4ea178667f4ed7b328aa":[1,0,0,2,5,4,57,21]
 };
