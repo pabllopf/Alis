@@ -1,7 +1,5 @@
 var NAVTREEINDEX16 =
 {
-"d1/dc5/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_mixer.html#a26cf6e59e150ae273d32db0878f37389":[1,0,0,2,1,2,1,0],
-"d1/dc5/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_mixer.html#a296ef38e15ffc3f7c7c80f07c59dd05f":[1,0,0,2,1,2,1,12],
 "d1/dc5/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_mixer.html#a2a6c3c9d10a4602caab93dfb8783e4ad":[1,0,0,2,1,2,1,24],
 "d1/dc5/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_mixer.html#a360cd176d114cf0fecfa9a2b7f04f517":[1,0,0,2,1,2,1,31],
 "d1/dc5/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_mixer.html#a392247f019846472db4ff6e6f8994d87":[1,0,0,2,1,2,1,28],
@@ -249,5 +247,7 @@ var NAVTREEINDEX16 =
 "d2/d26/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_delaunay_triangle.html#a230b020071ca19f90010346d3ed0d5ed":[1,0,0,2,8,7,5,1,0,1,44],
 "d2/d26/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_delaunay_triangle.html#a328d97b71b2f1634efa7318a81eab337":[1,0,0,2,8,7,5,1,0,1,18],
 "d2/d26/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_delaunay_triangle.html#a3f7e9eabe77a3bf561b50a06af019fea":[1,0,0,2,8,7,5,1,0,1,26],
-"d2/d26/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_delaunay_triangle.html#a4045204fe0674a953219d755ef3bfc80":[1,0,0,2,8,7,5,1,0,1,34]
+"d2/d26/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_delaunay_triangle.html#a4045204fe0674a953219d755ef3bfc80":[1,0,0,2,8,7,5,1,0,1,34],
+"d2/d26/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_delaunay_triangle.html#a48b078084fe09321d64c6e923982c884":[1,0,0,2,8,7,5,1,0,1,33],
+"d2/d26/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_delaunay_triangle.html#a4beff1a1952098dde627a5fcbfd6e8a9":[1,0,0,2,8,7,5,1,0,1,40]
 };
