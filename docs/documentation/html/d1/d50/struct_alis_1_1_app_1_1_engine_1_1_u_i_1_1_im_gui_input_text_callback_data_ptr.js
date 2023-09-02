@@ -1,0 +1,27 @@
+var struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr =
+[
+    [ "ImGuiInputTextCallbackDataPtr", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#a7af6529f1ab0053b318a6395d9759c45", null ],
+    [ "ImGuiInputTextCallbackDataPtr", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#a7c7e24a73d7e5ed06a4c033e25dd935e", null ],
+    [ "operator ImGuiInputTextCallbackDataPtr", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#ab49c0172e1b0150c07c9f59dedfa1ecd", null ],
+    [ "operator ImGuiInputTextCallbackData *", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#a312bf8d78c21ce6b2d15a17299847200", null ],
+    [ "operator ImGuiInputTextCallbackDataPtr", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#a71c6a4817f759a348c024f42b2a258ea", null ],
+    [ "ClearSelection", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#aa14bf4f19c8b3ac3061d5408f03957b6", null ],
+    [ "DeleteChars", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#a310410c52bb6876a3ae2dfa430efdc3c", null ],
+    [ "Destroy", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#a321fa0de80b3ba17d063239a4bfa24aa", null ],
+    [ "HasSelection", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#a558cb583c32a40ac8d4e95f5b76e6e72", null ],
+    [ "InsertChars", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#a3c94c0e325ba9b35d5acba018e93d067", null ],
+    [ "SelectAll", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#a40177e1e69434434e0c629e668342370", null ],
+    [ "EventFlag", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#a4d578fd7f65b6f3e4bc312c91bb2a7d6", null ],
+    [ "Flags", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#a643a5968deb26d8075bb7f02461bfce7", null ],
+    [ "EventChar", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#a96bfea0ca06e71f851c4eac2cd879263", null ],
+    [ "EventKey", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#af3be78655a67ba619211488126159251", null ],
+    [ "BufTextLen", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#ac3adc999421f9b68d53af22f935fc955", null ],
+    [ "BufSize", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#a8ca235c6c91c6562990b8c4e2a4bd0ee", null ],
+    [ "BufDirty", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#a4adc69e487deea37e34dc7c003a44000", null ],
+    [ "CursorPos", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#ad7d20c657d0e4298f2bda0ae4f02cfb3", null ],
+    [ "SelectionStart", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#a09c0825e223adddc66aa3b4c8626710a", null ],
+    [ "SelectionEnd", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#a510bd1228e0f4a39afce40781d830232", null ],
+    [ "NativePtr", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#a3bbbc04243a6a4cf2f55b9be181ad604", null ],
+    [ "UserData", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#a78e27d70fd90610f40faf4d38a7e8574", null ],
+    [ "Buf", "d1/d50/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data_ptr.html#a097899c1b27e7f272e570f6309bb2012", null ]
+];

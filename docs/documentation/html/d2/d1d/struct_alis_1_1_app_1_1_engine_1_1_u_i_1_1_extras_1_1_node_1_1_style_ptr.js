@@ -1,0 +1,25 @@
+var struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr =
+[
+    [ "StylePtr", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#afe4c48200eddc2216166f237191381a5", null ],
+    [ "StylePtr", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#ab4550ebbaa091503742b04dbc78986fa", null ],
+    [ "operator StylePtr", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#a3f3f649bb0712829372e6b53101fddef", null ],
+    [ "operator Style *", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#ac081d40d9f86597cba058a59301695ac", null ],
+    [ "operator StylePtr", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#a5bdb7a7493e2b646c1cf49da3ab521ae", null ],
+    [ "GridSpacing", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#ae0095d352858e2d656ea87dc5a03b25b", null ],
+    [ "NodeCornerRounding", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#ad0e07580ba08db815f2b3be3af8fac89", null ],
+    [ "NodePaddingHorizontal", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#a33462700d62f75fb437f625e6a187610", null ],
+    [ "NodePaddingVertical", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#a36b82c7175f330dfd539819f286dfddb", null ],
+    [ "NodeBorderThickness", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#a971f17f36c58570d4afafcae4f4f8b8b", null ],
+    [ "LinkThickness", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#a87684a55361a6731e213a35e7aa072d5", null ],
+    [ "LinkLineSegmentsPerLength", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#afe87fbf402e30b04fe945a0ba1854efe", null ],
+    [ "LinkHoverDistance", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#a088e1e98c93ad4cdd7562a0392581599", null ],
+    [ "PinCircleRadius", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#a69dc701bcb884842fce27fefd6c37412", null ],
+    [ "PinQuadSideLength", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#aca160731790c29f6d0bbae52c19962d5", null ],
+    [ "PinTriangleSideLength", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#ac92963c18dd04ab83d600df98c9b26b4", null ],
+    [ "PinLineThickness", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#a8040214349c947b5b23a661fc84a747f", null ],
+    [ "PinHoverRadius", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#a9cf657c40c04e5c3224547b853c1b01a", null ],
+    [ "PinOffset", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#a13d62aeeebff3c899eef93b7b34b7487", null ],
+    [ "Flags", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#ad484c8f6717762f399118d7f06f11b47", null ],
+    [ "Colors", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#a4022c911b329ee909e33c1f30c64bd11", null ],
+    [ "NativePtr", "d2/d1d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_style_ptr.html#a6a8320b634aaa41c6f5020516e5fc086", null ]
+];

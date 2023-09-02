@@ -1,0 +1,5 @@
+var namespace_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64 =
+[
+    [ "NativeGraphicWindowsX64SDL", "dd/d35/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_d_l.html", "dd/d35/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_d_l" ],
+    [ "NativeGraphicWindowsX64SFML", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l" ]
+];
