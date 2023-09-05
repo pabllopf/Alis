@@ -16,7 +16,7 @@ jobs:
           java-version: 11
           distribution: 'zulu' # Alternative distribution options are available.
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: master
       - name: Cache SonarCloud packages
