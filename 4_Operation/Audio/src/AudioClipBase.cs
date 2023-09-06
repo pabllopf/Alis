@@ -31,9 +31,6 @@ using System;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Audio.OS;
-#if AudioBackendSDL || AudioBackendAll
-using Alis.Core.Audio.SDL;
-#endif
 #if AudioBackendSFML || AudioBackendAll
 using Alis.Core.Audio.SFML;
 #endif
@@ -45,13 +42,6 @@ namespace Alis.Core.Audio
     /// </summary>
     public abstract class AudioClipBase
     {
-#if AudioBackendSDL || AudioBackendAll
-        /// <summary>
-        ///     The music ptr
-        /// </summary>
-        private readonly IntPtr musicPtr;
-#endif
-
         /// <summary>
         ///     The player
         /// </summary>
@@ -119,15 +109,6 @@ namespace Alis.Core.Audio
                 case AudioBackendType.Os:
                     player = new Player();
                     break;
-                
-#if AudioBackendSDL || AudioBackendAll
-                case AudioBackendType.Sdl:
-                    //Initialize all SDL subsystems
-                    SdlMixerExtern.SDL_Init(SdlMixer.SdlInitAudio);
-                    SdlMixerExtern.Mix_OpenAudio(22050, SdlMixer.MixDefaultFormat, 2, 4096);
-                    musicPtr = SdlMixer.Mix_LoadMUS(fullPathAudio);
-                    break;
-#endif
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -210,11 +191,6 @@ namespace Alis.Core.Audio
                     case AudioBackendType.Os:
                         player.Play(FullPathAudioFile).Wait();
                         break;
-#if AudioBackendSDL || AudioBackendAll
-                    case AudioBackendType.Sdl:
-                        SdlMixerExtern.Mix_PlayMusic(musicPtr, -1);
-                        break;
-#endif
                     default:
                         throw new ArgumentOutOfRangeException();
                 }

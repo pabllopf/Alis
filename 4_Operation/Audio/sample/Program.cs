@@ -48,7 +48,7 @@ namespace Alis.Core.Audio.Sample
 
             while (true)
             {
-                Console.WriteLine("Select backend audio system ('sfml' | 'os' | 'sdl')");
+                Console.WriteLine("Select backend audio system ('os' | 'sdl')");
                 string os = Console.ReadLine();
 
                 try
@@ -57,10 +57,6 @@ namespace Alis.Core.Audio.Sample
                     {
                         case "sfml":
                             audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.Sfml));
-                            break;
-
-                        case "sdl":
-                            audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.Sdl));
                             break;
 
                         case "os":

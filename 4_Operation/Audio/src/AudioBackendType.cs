@@ -42,11 +42,6 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     The sfml audio type
         /// </summary>
-        Sfml = 1,
-
-        /// <summary>
-        ///     The sdl audio backend type
-        /// </summary>
-        Sdl = 2
+        Sfml = 1
     }
 }

@@ -40,30 +40,6 @@ namespace Alis.Core.Graphic.Sample
         ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        private static void Main(string[] args)
-        {
-            int run = 1;
-            while (run == 1)
-            {
-                Console.WriteLine(@"Select backend graphic system ('sfml' | 'sdl')");
-                string os = Console.ReadLine();
-                switch (os)
-                {
-#if GraphicBackendSFML || GraphicBackendAll
-                    case "sfml":
-                        SfmlController sfmlController = new SfmlController();
-                        run = sfmlController.Run();
-                        break;
-#endif
-#if GraphicBackendSDL || GraphicBackendAll
-                    case "sdl":
-                        SdlController sdlController = new SdlController();
-                        run = sdlController.Run();
-                        break;
-#endif
-                    
-                }
-            }
-        }
+        private static void Main(string[] args) => new SfmlController().Run();
     }
 }
