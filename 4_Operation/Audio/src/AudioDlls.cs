@@ -74,7 +74,7 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     The osx x64 csfml audio
         /// </summary>
-        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> CsfmlAudioDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
+        public static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> CsfmlAudioDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
 #if WIN
 #if X86
@@ -117,7 +117,7 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     The osx arm64 sdl2 mixer
         /// </summary>
-        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SdlAudioDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
+        public static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SdlAudioDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
 #if WIN
 #if X86
@@ -161,7 +161,7 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     The win x64 openal32
         /// </summary>
-        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> OpenalAudioDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
+        public static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> OpenalAudioDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
 #if WIN
 #if X86

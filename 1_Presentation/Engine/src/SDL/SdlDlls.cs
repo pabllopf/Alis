@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Alis.Core.Graphic.Properties;
 
 
 #if WIN
@@ -79,7 +80,7 @@ namespace Alis.Core.Graphic.SDL
             {(OSPlatform.Windows, Architecture.X86), NativeGraphicWindowsX64SDL.win_x86_sdl2},
             #endif
             #if X64
-                        {(OSPlatform.Windows, Architecture.X64), NativeGraphicWindowsX64SDL.win_x64_sdl2},
+                        {(OSPlatform.Windows, Architecture.X64), NativeGraphic.win_x64_sdl2},
             #endif
             #if ARM
             {(OSPlatform.Windows, Architecture.Arm), NativeGraphicWindowsX64SDL.win_x86_sdl2},
@@ -121,7 +122,7 @@ namespace Alis.Core.Graphic.SDL
                 {(OSPlatform.Windows, Architecture.X86), NativeGraphicWindowsX64SDL.win_x86_sdl2_image},
                 #endif
                 #if X64
-                            {(OSPlatform.Windows, Architecture.X64), NativeGraphicWindowsX64SDL.win_x64_sdl2_image},
+                            {(OSPlatform.Windows, Architecture.X64), NativeGraphic.win_x64_sdl2_image},
                 #endif
                 #if ARM
                  {(OSPlatform.Windows, Architecture.Arm), NativeGraphicWindowsX64SDL.win_x86_sdl2_image},
@@ -162,7 +163,7 @@ namespace Alis.Core.Graphic.SDL
                  {(OSPlatform.Windows, Architecture.X86), NativeGraphicWindowsX64SDL.win_x86_sdl2_ttf},
                 #endif
                 #if X64
-                            {(OSPlatform.Windows, Architecture.X64), NativeGraphicWindowsX64SDL.win_x64_sdl2_ttf},
+                            {(OSPlatform.Windows, Architecture.X64), NativeGraphic.win_x64_sdl2_ttf},
                 #endif
                 #if ARM
                 {(OSPlatform.Windows, Architecture.Arm), NativeGraphicWindowsX64SDL.win_x86_sdl2_ttf},
