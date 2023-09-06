@@ -30,6 +30,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Alis.Core.Graphic.Properties;
+using Alis.Core.Graphic.Properties.win.x64;
 
 namespace Alis.App.Engine.UI
 {
@@ -44,10 +45,10 @@ namespace Alis.App.Engine.UI
         internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> ImGuiDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
 #if WIN
-            {(OSPlatform.Windows, Architecture.X86), NativeGraphic.win_x86_cimgui},
-            {(OSPlatform.Windows, Architecture.X64), NativeGraphic.win_x64_cimgui},
-            {(OSPlatform.Windows, Architecture.Arm), NativeGraphic.win_x86_cimgui},
-            {(OSPlatform.Windows, Architecture.Arm64), NativeGraphic.win_x64_cimgui},
+            {(OSPlatform.Windows, Architecture.X86), NativeGraphicWindowsX64.win_x86_cimgui},
+            {(OSPlatform.Windows, Architecture.X64), NativeGraphicWindowsX64.win_x64_cimgui},
+            {(OSPlatform.Windows, Architecture.Arm), NativeGraphicWindowsX64.win_x86_cimgui},
+            {(OSPlatform.Windows, Architecture.Arm64), NativeGraphicWindowsX64.win_x64_cimgui},
 #endif
 #if LINUX
             {(OSPlatform.Linux, Architecture.X86), NativeGraphic.linux_x86_cimgui},
