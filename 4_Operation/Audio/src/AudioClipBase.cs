@@ -61,7 +61,6 @@ namespace Alis.Core.Audio
         {
             EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio", AudioDlls.CsfmlAudioDllBytes);
             EmbeddedDllClass.ExtractEmbeddedDlls("openal32", AudioDlls.OpenalAudioDllBytes);
-            EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer", AudioDlls.SdlAudioDllBytes);
         }
 
         /// <summary>

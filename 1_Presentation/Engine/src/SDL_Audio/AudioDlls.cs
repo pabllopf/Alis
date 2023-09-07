@@ -113,7 +113,51 @@ namespace Alis.Core.Audio
 #endif
 #endif
         };
-        
+
+        /// <summary>
+        ///     The osx arm64 sdl2 mixer
+        /// </summary>
+        public static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SdlAudioDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
+        {
+#if WIN
+#if X86
+          {(OSPlatform.Windows, Architecture.X86), NativeAudioWindowsX64SFML.win_x86_sdl2_mixer},
+#endif
+#if X64
+            {(OSPlatform.Windows, Architecture.X64), NativeAudioWindowsX64SFML.win_x64_sdl2_mixer},
+#endif
+#if ARM
+         {(OSPlatform.Windows, Architecture.Arm), NativeAudioWindowsX64SFML.win_x86_sdl2_mixer},
+#endif
+#if ARM64
+            {(OSPlatform.Windows, Architecture.Arm64), NativeAudioWindowsX64SFML.win_x64_sdl2_mixer},
+#endif
+#endif
+
+#if LINUX
+            {(OSPlatform.Linux, Architecture.X86), NativeAudio.linux_x86_sdl2_mixer},
+            {(OSPlatform.Linux, Architecture.X64), NativeAudio.linux_x64_sdl2_mixer},
+            {(OSPlatform.Linux, Architecture.Arm), NativeAudio.linux_arm64_sdl2_mixer},
+            {(OSPlatform.Linux, Architecture.Arm64), NativeAudio.linux_arm64_sdl2_mixer},
+#endif
+#if OSX
+#if X86
+          {(OSPlatform.OSX, Architecture.X86), NativeAudioOsxARM64.osx_x64_sdl2_mixer},
+#endif
+#if X64
+           {(OSPlatform.OSX, Architecture.X64), NativeAudioOsxARM64.osx_x64_sdl2_mixer},
+#endif
+#if ARM
+           {(OSPlatform.OSX, Architecture.Arm), NativeAudioOsxARM64.osx_arm64_sdl2_mixer},
+#endif
+#if ARM64
+#if AudioBackendSDL || AudioBackendAll
+            {(OSPlatform.OSX, Architecture.Arm64), NativeAudioOsxARM64SDL.osx_arm64_sdl2_mixer}
+#endif
+#endif
+#endif
+        };
+
         /// <summary>
         ///     The win x64 openal32
         /// </summary>
