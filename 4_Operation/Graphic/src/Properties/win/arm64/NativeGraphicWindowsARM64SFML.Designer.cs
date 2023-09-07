@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.Properties.win.x64 {
+namespace Alis.Core.Graphic.Properties.win.arm64 {
     using System;
     
     
@@ -48,7 +48,7 @@ namespace Alis.Core.Graphic.Properties.win.x64 {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Alis.Core.Graphic.Properties.win.x64.NativeGraphicWindowsX64SFML", typeof(NativeGraphicWindowsX64SFML).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Alis.Core.Graphic.Properties.win.arm64.NativeGraphicWindowsX64SFML", typeof(NativeGraphicWindowsX64SFML).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

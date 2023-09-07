@@ -30,6 +30,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Alis.Core.Audio.Properties;
+using Alis.Core.Audio.Properties.win.arm64;
 
 
 #if WIN
@@ -87,7 +88,7 @@ namespace Alis.Core.Audio
            {(OSPlatform.Windows, Architecture.Arm), NativeAudioWindowsX64SFML.win_x86_csfml_audio},
 #endif
 #if ARM64
-            {(OSPlatform.Windows, Architecture.Arm64), NativeAudioWindowsX64SFML.win_x64_csfml_audio},
+            {(OSPlatform.Windows, Architecture.Arm64), NativeAudioWindowsARM64SFML.win_arm64_csfml_audio},
 #endif
 #endif
 #if LINUX
@@ -110,27 +111,6 @@ namespace Alis.Core.Audio
 #if AudioBackendSFML || AudioBackendAll
             {(OSPlatform.OSX, Architecture.Arm64), NativeAudioOsxARM64SFML.osx_arm64_csfml_audio}
 #endif
-#endif
-#endif
-        };
-        
-        /// <summary>
-        ///     The win x64 openal32
-        /// </summary>
-        public static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> OpenalAudioDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
-        {
-#if WIN
-#if X86
-           {(OSPlatform.Windows, Architecture.X86), NativeAudioWindowsX64SFML.win_x86_openal32},
-#endif
-#if X64
-            {(OSPlatform.Windows, Architecture.X64), NativeAudioWindowsX64SFML.win_x64_openal32},
-#endif
-#if ARM
-         {(OSPlatform.Windows, Architecture.Arm), NativeAudioWindowsX64SFML.win_x86_openal32},
-#endif
-#if ARM64
-            {(OSPlatform.Windows, Architecture.Arm64), NativeAudioWindowsX64SFML.win_x64_openal32}
 #endif
 #endif
         };

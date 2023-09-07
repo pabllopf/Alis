@@ -30,19 +30,18 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-
 #if WIN
     #if X86
                                                  
     #endif
     #if X64
-        using Alis.Core.Graphic.Properties.win.x64;                
+        using Alis.Core.Graphic.Properties.win.x64;              
     #endif
     #if ARM
                                                
     #endif
     #if ARM64
-                                               
+using Alis.Core.Graphic.Properties.win.arm64;                               
     #endif
 #endif
 

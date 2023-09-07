@@ -60,7 +60,6 @@ namespace Alis.Core.Audio
         static AudioClipBase()
         {
             EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio", AudioDlls.CsfmlAudioDllBytes);
-            EmbeddedDllClass.ExtractEmbeddedDlls("openal32", AudioDlls.OpenalAudioDllBytes);
         }
 
         /// <summary>
