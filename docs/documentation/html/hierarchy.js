@@ -827,6 +827,7 @@ var hierarchy =
       [ "Alis.Core.Network.WebSocketServerFactory", "de/d8c/class_alis_1_1_core_1_1_network_1_1_web_socket_server_factory.html", null ]
     ] ],
     [ "Alis.Core.Aspect.Fluent.Words.IWhere< out out TBuilder, in in TArgument >", "d2/d12/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_where.html", null ],
+    [ "Alis.Core.Aspect.Fluent.Words.IWindow< out out TBuilder, in in TArgument >", "d7/d83/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_window.html", null ],
     [ "Alis.App.Engine.Windows.IWindow", "da/dc1/interface_alis_1_1_app_1_1_engine_1_1_windows_1_1_i_window.html", [
       [ "Alis.App.Engine.Windows.ConsoleWindow", "d5/d69/class_alis_1_1_app_1_1_engine_1_1_windows_1_1_console_window.html", null ],
       [ "Alis.App.Engine.Windows.GameWindow", "d8/dc8/class_alis_1_1_app_1_1_engine_1_1_windows_1_1_game_window.html", null ],
@@ -835,7 +836,6 @@ var hierarchy =
       [ "Alis.App.Engine.Windows.SceneWindow", "de/d8b/class_alis_1_1_app_1_1_engine_1_1_windows_1_1_scene_window.html", null ],
       [ "Alis.App.Engine.Windows.SolutionWindow", "d1/db4/class_alis_1_1_app_1_1_engine_1_1_windows_1_1_solution_window.html", null ]
     ] ],
-    [ "Alis.Core.Aspect.Fluent.Words.IWindow< out out TBuilder, in in TArgument >", "d7/d83/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_window.html", null ],
     [ "IWindow< GraphicSettingBuilder, Func< WindowBuilder, Window >>", null, [
       [ "Alis.Builder.Core.Setting.GraphicSettingBuilder", "db/de7/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_graphic_setting_builder.html", null ]
     ] ],
@@ -927,13 +927,13 @@ var hierarchy =
     [ "Alis.Core.Audio.Properties.NativeAudio", "db/dcc/class_alis_1_1_core_1_1_audio_1_1_properties_1_1_native_audio.html", null ],
     [ "Alis.Core.Audio.Properties.osx.arm64.NativeAudioOsxARM64SDL", "d2/dfa/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_d_l.html", null ],
     [ "Alis.Core.Audio.Properties.osx.arm64.NativeAudioOsxARM64SFML", "d5/d83/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_f_m_l.html", null ],
-    [ "Alis.Core.Audio.Properties.win.x64.NativeAudioWindowsX64SDL", "d6/d44/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_d_l.html", null ],
     [ "Alis.Core.Audio.Properties.win.x64.NativeAudioWindowsX64SFML", "d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html", null ],
     [ "Alis.Core.Graphic.Properties.NativeGraphic", "dd/d41/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic.html", null ],
     [ "Alis.Core.Graphic.Properties.NativeGraphicOsx", "d7/d80/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx.html", null ],
     [ "Alis.App.Engine.Properties.osx.arm64.NativeGraphicOsxARM64", "d0/dc3/class_alis_1_1_app_1_1_engine_1_1_properties_1_1osx_1_1arm64_1_1_native_graphic_osx_a_r_m64.html", null ],
     [ "Alis.Core.Graphic.Properties.osx.arm64.NativeGraphicOsxARM64SDL", "d6/d77/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1osx_1_1arm64_1_1_native_graphic_osx_a_r_m64_s_d_l.html", null ],
     [ "Alis.Core.Graphic.Properties.osx.arm64.NativeGraphicOsxARM64SFML", "d1/d1f/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1osx_1_1arm64_1_1_native_graphic_osx_a_r_m64_s_f_m_l.html", null ],
+    [ "Alis.Core.Graphic.Properties.win.x64.NativeGraphicWindowsX64", "d4/d1f/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64.html", null ],
     [ "Alis.Core.Graphic.Properties.win.x64.NativeGraphicWindowsX64SDL", "dd/d35/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_d_l.html", null ],
     [ "Alis.Core.Graphic.Properties.win.x64.NativeGraphicWindowsX64SFML", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html", null ],
     [ "Alis.Core.Physic.Tools.Triangulation.Seidel.Node", "dc/df1/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_node.html", [
@@ -966,8 +966,8 @@ var hierarchy =
     [ "Alis.Core.Physic.Dynamics.Solver.Position", "da/d34/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_position.html", null ],
     [ "Alis.Core.Physic.Dynamics.Solver.PositionSolverManifold", "d6/d53/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_position_solver_manifold.html", null ],
     [ "Alis.Core.Physic.Dynamics.Profile", "dc/d1d/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_profile.html", null ],
-    [ "Alis.App.Installer.Program", "d3/d29/class_alis_1_1_app_1_1_installer_1_1_program.html", null ],
     [ "Alis.App.Engine.Program", "d5/d6e/class_alis_1_1_app_1_1_engine_1_1_program.html", null ],
+    [ "Alis.App.Installer.Program", "d3/d29/class_alis_1_1_app_1_1_installer_1_1_program.html", null ],
     [ "Alis.Core.Aspect.Math.Util.Quaternion", "d0/d2c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_quaternion.html", null ],
     [ "Alis.Core.Physic.Tools.Triangulation.Seidel.QueryGraph", "d8/d2b/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_query_graph.html", null ],
     [ "Alis.Core.Aspect.Math.Util.RandomUtils", "de/d00/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_util_1_1_random_utils.html", null ],
@@ -1056,8 +1056,8 @@ var hierarchy =
     [ "Alis.Core.Graphic.SDL.Structs.SdlTouchFingerEvent", "d9/d26/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_touch_finger_event.html", null ],
     [ "Alis.Core.Graphic.SDL.SdlTtf", "da/d00/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_ttf.html", null ],
     [ "Alis.Core.Graphic.SDL.Structs.SdlUserEvent", "da/da0/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_user_event.html", null ],
-    [ "Alis.Core.Graphic.SDL.Structs.SdlVersion", "df/d38/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_version.html", null ],
     [ "Alis.Core.Audio.SDL.SdlVersion", "d0/d15/struct_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_sdl_version.html", null ],
+    [ "Alis.Core.Graphic.SDL.Structs.SdlVersion", "df/d38/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_version.html", null ],
     [ "Alis.Core.Graphic.SDL.Structs.SdlVertex", "d4/d68/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_structs_1_1_sdl_vertex.html", null ],
     [ "Alis.Core.Graphic.SDL.Enums.SdlWindowEvent", "d1/dfe/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_enums_1_1_sdl_window_event.html", null ],
     [ "Alis.Core.Physic.Tools.Triangulation.Seidel.SeidelDecomposer", "da/d08/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_seidel_decomposer.html", null ],
@@ -1114,8 +1114,8 @@ var hierarchy =
     [ "Alis.Core.Physic.Collision.TOI.ToiOutput", "de/d32/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_t_o_i_1_1_toi_output.html", null ],
     [ "Alis.Core.Graphic.SFML.Windows.Touch", "d2/db7/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_touch.html", null ],
     [ "Alis.Core.Graphic.SFML.Windows.TouchEvent", "d0/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_touch_event.html", null ],
-    [ "Alis.Core.Graphic.SFML.Graphics.Transform", "d7/d5b/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_transform.html", null ],
     [ "Alis.Core.Aspect.Math.Transform", "d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html", null ],
+    [ "Alis.Core.Graphic.SFML.Graphics.Transform", "d7/d5b/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_transform.html", null ],
     [ "Alis.Core.Ecs.TransformBase", "dc/dfe/class_alis_1_1_core_1_1_ecs_1_1_transform_base.html", [
       [ "Alis.Core.Entity.Transform", "dc/d65/class_alis_1_1_core_1_1_entity_1_1_transform.html", null ]
     ] ],
