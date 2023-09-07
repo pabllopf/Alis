@@ -1,7 +1,7 @@
 var searchData=
 [
   ['sdlarrayorder_20470',['SdlArrayOrder',['../df/d2e/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_enums.html#a988e2c9cd675fcce94a00a89095f87cf',1,'Alis::Core::Graphic::SDL::Enums']]],
-  ['sdlaudiostatus_20471',['SdlAudioStatus',['../d0/dbe/namespace_alis_1_1_core_1_1_audio_1_1_s_d_l.html#a993b12285ac890fb1e3caf77b5506a28',1,'Alis.Core.Audio.SDL.SdlAudioStatus()'],['../df/d2e/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_enums.html#ad0fd2bc33fed56bcc798c933680fc282',1,'Alis.Core.Graphic.SDL.Enums.SdlAudioStatus()']]],
+  ['sdlaudiostatus_20471',['SdlAudioStatus',['../df/d2e/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_enums.html#ad0fd2bc33fed56bcc798c933680fc282',1,'Alis.Core.Graphic.SDL.Enums.SdlAudioStatus()'],['../d0/dbe/namespace_alis_1_1_core_1_1_audio_1_1_s_d_l.html#a993b12285ac890fb1e3caf77b5506a28',1,'Alis.Core.Audio.SDL.SdlAudioStatus()']]],
   ['sdlblendfactor_20472',['SdlBlendFactor',['../df/d2e/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_enums.html#aea343293d04a0ad2f01b91e130c22333',1,'Alis::Core::Graphic::SDL::Enums']]],
   ['sdlblendmode_20473',['SdlBlendMode',['../df/d2e/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_enums.html#a0e0f929d929ee890a60c38d1f365c8ac',1,'Alis::Core::Graphic::SDL::Enums']]],
   ['sdlblendoperation_20474',['SdlBlendOperation',['../df/d2e/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_enums.html#a43d5f0e7069870305e837e6aa8eef045',1,'Alis::Core::Graphic::SDL::Enums']]],
