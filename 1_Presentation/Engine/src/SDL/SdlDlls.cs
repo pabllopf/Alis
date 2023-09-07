@@ -29,7 +29,7 @@
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Alis.App.Engine.Properties.osx.arm64;
+
 using Alis.Core.Graphic.Properties;
 
 
@@ -56,7 +56,7 @@ using Alis.Core.Graphic.Properties;
                 using Alis.Core.Graphic.Properties.osx.arm64;
     #endif
     #if ARM64
-                using Alis.Core.Graphic.Properties.osx.arm64;
+               using Alis.App.Engine.Properties.osx.arm64;
     #endif
     #if ARM
                  using Alis.Core.Graphic.Properties.osx.arm64;

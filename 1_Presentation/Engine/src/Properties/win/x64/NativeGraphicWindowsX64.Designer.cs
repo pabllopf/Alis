@@ -112,6 +112,26 @@ namespace Alis.Core.Graphic.Properties.win.x64 {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
+        internal static byte[] win_x64_openal32 {
+            get {
+                object obj = ResourceManager.GetObject("win_x64_openal32", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] win_x64_sdl2_mixer {
+            get {
+                object obj = ResourceManager.GetObject("win_x64_sdl2_mixer", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
         internal static byte[] linux_arm64_sdl2 {
             get {
                 object obj = ResourceManager.GetObject("linux_arm64_sdl2", resourceCulture);

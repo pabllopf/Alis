@@ -15,6 +15,7 @@
         <AudioBackend>ALL</AudioBackend>
         <GraphicBackend>ALL</GraphicBackend>
         <InputBackend>ALL</InputBackend>
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     </PropertyGroup>
 
     <Import Project="$(SolutionDir).config/application/TargetFrameworks.props"/>
