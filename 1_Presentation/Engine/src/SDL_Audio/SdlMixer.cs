@@ -269,9 +269,9 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         static SdlMixer()
         {
-            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio", AudioDlls.CsfmlAudioDllBytes);
-            EmbeddedDllClass.ExtractEmbeddedDlls("openal32", AudioDlls.OpenalAudioDllBytes);
-            EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer", AudioDlls.SdlAudioDllBytes);
+            EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio", AudioSDLDlls.CsfmlAudioDllBytes);
+            EmbeddedDllClass.ExtractEmbeddedDlls("openal32", AudioSDLDlls.OpenalAudioDllBytes);
+            EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer", AudioSDLDlls.SdlAudioDllBytes);
         }
 
 

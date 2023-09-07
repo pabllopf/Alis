@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Alis.App.Engine.Properties.osx.arm64;
 using Alis.Core.Audio.Properties;
 
 
@@ -69,7 +70,7 @@ namespace Alis.Core.Audio
     /// <summary>
     ///     The audio dlls class
     /// </summary>
-    public static class AudioDlls
+    public static class AudioSDLDlls
     {
         /// <summary>
         ///     The osx x64 csfml audio
@@ -152,7 +153,7 @@ namespace Alis.Core.Audio
 #endif
 #if ARM64
 #if AudioBackendSDL || AudioBackendAll
-            {(OSPlatform.OSX, Architecture.Arm64), NativeAudioOsxARM64SDL.osx_arm64_sdl2_mixer}
+            {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsxARM64.osx_arm64_sdl2_mixer}
 #endif
 #endif
 #endif

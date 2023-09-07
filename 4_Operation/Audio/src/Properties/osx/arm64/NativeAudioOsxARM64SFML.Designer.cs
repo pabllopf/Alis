@@ -19,7 +19,7 @@ namespace Alis.Core.Audio.Properties.osx.arm64 {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class NativeAudioOsxARM64SFML {
+    public class NativeAudioOsxARM64SFML {
         
         /// <summary>
         /// The resource man
@@ -129,7 +129,7 @@ namespace Alis.Core.Audio.Properties.osx.arm64 {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
-        internal static byte[] osx_arm64_csfml_audio {
+        public static byte[] osx_arm64_csfml_audio {
             get {
                 object obj = ResourceManager.GetObject("osx_arm64_csfml_audio", resourceCulture);
                 return ((byte[])(obj));

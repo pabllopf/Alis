@@ -84,6 +84,13 @@ namespace Alis.App.Engine.Properties.osx.arm64 {
             }
         }
         
+        internal static byte[] osx_arm64_sdl2_mixer {
+            get {
+                object obj = ResourceManager.GetObject("osx_arm64_sdl2_mixer", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         internal static byte[] osx_arm64_sdl2_ttf {
             get {
                 object obj = ResourceManager.GetObject("osx_arm64_sdl2_ttf", resourceCulture);

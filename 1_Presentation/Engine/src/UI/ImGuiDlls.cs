@@ -29,8 +29,11 @@
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Alis.App.Engine.Properties.osx.arm64;
 using Alis.Core.Graphic.Properties;
+#if WIN
 using Alis.Core.Graphic.Properties.win.x64;
+#endif
 
 namespace Alis.App.Engine.UI
 {
