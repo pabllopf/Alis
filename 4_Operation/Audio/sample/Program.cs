@@ -48,7 +48,7 @@ namespace Alis.Core.Audio.Sample
 
             while (true)
             {
-                Console.WriteLine("Select backend audio system ('os' | 'sdl')");
+                Console.WriteLine("Select backend audio system ('os' | 'sfml')");
                 string os = Console.ReadLine();
 
                 try
