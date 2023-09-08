@@ -30,22 +30,20 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-using Alis.Core.Audio.Properties;
-using Alis.Core.Graphic.Properties.win.x64;
-
 
 #if WIN
 #if X86
          
 #endif
 #if X64
-using Alis.Core.Audio.Properties.win.x64;
+using Alis.Core.Graphic.Properties.win.x64;
 #endif
 #if ARM
            
 #endif
 #if ARM64
-          
+using Alis.Core.Audio.Properties;
+using Alis.Core.Graphic.Properties.win.arm64;
 #endif
 #endif
 
@@ -90,7 +88,7 @@ namespace Alis.Core.Audio
          {(OSPlatform.Windows, Architecture.Arm), NativeAudioWindowsX64SFML.win_x86_sdl2_mixer},
 #endif
 #if ARM64
-            {(OSPlatform.Windows, Architecture.Arm64), NativeAudioWindowsX64SFML.win_x64_sdl2_mixer},
+            {(OSPlatform.Windows, Architecture.Arm64), NativeGraphicWindowsARM64.win_arm64_sdl2_mixer},
 #endif
 #endif
 
@@ -134,7 +132,7 @@ namespace Alis.Core.Audio
          {(OSPlatform.Windows, Architecture.Arm), NativeAudioWindowsX64SFML.win_x86_openal32},
 #endif
 #if ARM64
-            {(OSPlatform.Windows, Architecture.Arm64), NativeAudioWindowsX64SFML.win_x64_openal32}
+            {(OSPlatform.Windows, Architecture.Arm64), NativeGraphicWindowsARM64.win_arm64_openal32}
 #endif
 #endif
         };

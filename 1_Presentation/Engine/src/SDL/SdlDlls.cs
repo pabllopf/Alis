@@ -44,7 +44,7 @@ using Alis.Core.Graphic.Properties;
 
     #endif
     #if ARM64
-
+        using Alis.Core.Graphic.Properties.win.arm64;
     #endif
 #endif
 
@@ -87,7 +87,7 @@ namespace Alis.Core.Graphic.SDL
             {(OSPlatform.Windows, Architecture.Arm), NativeGraphicWindowsX64SDL.win_x86_sdl2},
             #endif
             #if ARM64
-            {(OSPlatform.Windows, Architecture.Arm64), NativeGraphicWindowsX64SDL.win_x64_sdl2},
+            {(OSPlatform.Windows, Architecture.Arm64), NativeGraphicWindowsARM64.win_arm64_sdl2},
             #endif
         #endif
             
@@ -129,7 +129,7 @@ namespace Alis.Core.Graphic.SDL
                  {(OSPlatform.Windows, Architecture.Arm), NativeGraphicWindowsX64SDL.win_x86_sdl2_image},
                 #endif
                 #if ARM64
-                {(OSPlatform.Windows, Architecture.Arm64), NativeGraphicWindowsX64SDL.win_x64_sdl2_image},
+                {(OSPlatform.Windows, Architecture.Arm64),  NativeGraphicWindowsARM64.win_arm64_sdl2_image},
                 #endif
             #endif
 #if LINUX
@@ -170,7 +170,7 @@ namespace Alis.Core.Graphic.SDL
                 {(OSPlatform.Windows, Architecture.Arm), NativeGraphicWindowsX64SDL.win_x86_sdl2_ttf},
                 #endif
                 #if ARM64
-                {(OSPlatform.Windows, Architecture.Arm64), NativeGraphicWindowsX64SDL.win_x64_sdl2_ttf},
+                {(OSPlatform.Windows, Architecture.Arm64),  NativeGraphicWindowsARM64.win_arm64_sdl2_ttf},
                 #endif
             #endif
             

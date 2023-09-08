@@ -30,7 +30,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Alis.Core.Audio.Properties;
-using Alis.Core.Audio.Properties.win.arm64;
+
 
 
 #if WIN
@@ -44,7 +44,7 @@ using Alis.Core.Audio.Properties.win.x64;
            
 #endif
 #if ARM64
-          
+using Alis.Core.Audio.Properties.win.arm64;
 #endif
 #endif
 

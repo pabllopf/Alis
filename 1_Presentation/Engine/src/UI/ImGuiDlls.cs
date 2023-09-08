@@ -30,13 +30,25 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-using Alis.Core.Graphic.Properties;
+
 #if WIN
-using Alis.Core.Graphic.Properties.win.x64;
+    #if  X64
+    using Alis.Core.Graphic.Properties.win.x64;
+    #endif
+    #if ARM64
+using Alis.Core.Graphic.Properties;
+    using Alis.Core.Graphic.Properties.win.arm64;
+    #endif
+    #if ARM
+                 
+    #endif
+    #if X86
+                 
+    #endif
 #endif
 
 #if OSX
-using Alis.App.Engine.Properties.osx.arm64;
+    using Alis.App.Engine.Properties.osx.arm64;
 #endif
 
 namespace Alis.App.Engine.UI
@@ -52,10 +64,18 @@ namespace Alis.App.Engine.UI
         internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> ImGuiDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
 #if WIN
-            {(OSPlatform.Windows, Architecture.X86), NativeGraphicWindowsX64.win_x86_cimgui},
+#if X64
             {(OSPlatform.Windows, Architecture.X64), NativeGraphicWindowsX64.win_x64_cimgui},
-            {(OSPlatform.Windows, Architecture.Arm), NativeGraphicWindowsX64.win_x86_cimgui},
-            {(OSPlatform.Windows, Architecture.Arm64), NativeGraphicWindowsX64.win_x64_cimgui},
+#endif
+#if X86
+            {(OSPlatform.Windows, Architecture.X86), NativeGraphicWindowsX64.win_x86_cimgui},
+#endif
+#if ARM
+             {(OSPlatform.Windows, Architecture.Arm), NativeGraphicWindowsX64.win_x86_cimgui},
+#endif
+#if ARM64
+            {(OSPlatform.Windows, Architecture.Arm64), NativeGraphicWindowsARM64.win_arm64_cimgui},
+#endif
 #endif
 #if LINUX
             {(OSPlatform.Linux, Architecture.X86), NativeGraphic.linux_x86_cimgui},
