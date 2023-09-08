@@ -9,6 +9,8 @@ var class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_grap
     [ "linux_arm64_csfml_graphics", "d4/d1f/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64.html#a4458bedd4977e35de37fc82cf355603a", null ],
     [ "linux_arm64_csfml_system", "d4/d1f/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64.html#a3c23d9fd7c16bee8e4f9c7722cec98ae", null ],
     [ "linux_arm64_csfml_window", "d4/d1f/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64.html#a516795cff5653e4b14d30aeae54cea00", null ],
+    [ "win_x64_openal32", "d4/d1f/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64.html#a578218e810c0b6700eea414f5944aa8a", null ],
+    [ "win_x64_sdl2_mixer", "d4/d1f/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64.html#a34de2f7916881a82a4ad169fa0cf4974", null ],
     [ "linux_arm64_sdl2", "d4/d1f/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64.html#a122b7c25f5d1da8e5cccc9a45a221585", null ],
     [ "linux_arm64_sdl2_image", "d4/d1f/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64.html#a998023f20a79e4e72529b7f0fcae63aa", null ],
     [ "linux_arm64_sdl2_ttf", "d4/d1f/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64.html#a0e32b6fd70bcd915bf700ee025a2fcab", null ],

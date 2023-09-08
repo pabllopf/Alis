@@ -19,6 +19,7 @@ var hierarchy =
       [ "Alis.Core.Component.Audio.AudioClip", "df/d1b/class_alis_1_1_core_1_1_component_1_1_audio_1_1_audio_clip.html", null ]
     ] ],
     [ "Alis.Core.Audio.AudioDlls", "d3/d6b/class_alis_1_1_core_1_1_audio_1_1_audio_dlls.html", null ],
+    [ "Alis.Core.Audio.AudioSDLDlls", "d0/dc9/class_alis_1_1_core_1_1_audio_1_1_audio_s_d_l_dlls.html", null ],
     [ "Alis.Core.Physic.Tools.Triangulation.Bayazit.BayazitDecomposer", "d3/d2c/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_bayazit_1_1_bayazit_decomposer.html", null ],
     [ "Alis.Core.Network.Internal.BinaryReaderWriter", "d6/dd9/class_alis_1_1_core_1_1_network_1_1_internal_1_1_binary_reader_writer.html", null ],
     [ "Alis.Core.Physic.Dynamics.Body", "db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html", [
@@ -927,6 +928,7 @@ var hierarchy =
     [ "Alis.Core.Audio.Properties.NativeAudio", "db/dcc/class_alis_1_1_core_1_1_audio_1_1_properties_1_1_native_audio.html", null ],
     [ "Alis.Core.Audio.Properties.osx.arm64.NativeAudioOsxARM64SDL", "d2/dfa/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_d_l.html", null ],
     [ "Alis.Core.Audio.Properties.osx.arm64.NativeAudioOsxARM64SFML", "d5/d83/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_f_m_l.html", null ],
+    [ "Alis.Core.Audio.Properties.win.arm64.NativeAudioWindowsARM64SFML", "d7/db4/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1arm64_1_1_native_audio_windows_a_r_m64_s_f_m_l.html", null ],
     [ "Alis.Core.Audio.Properties.win.x64.NativeAudioWindowsX64SFML", "d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html", null ],
     [ "Alis.Core.Graphic.Properties.NativeGraphic", "dd/d41/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic.html", null ],
     [ "Alis.Core.Graphic.Properties.NativeGraphicOsx", "d7/d80/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1_native_graphic_osx.html", null ],
@@ -936,6 +938,7 @@ var hierarchy =
     [ "Alis.Core.Graphic.Properties.win.x64.NativeGraphicWindowsX64", "d4/d1f/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64.html", null ],
     [ "Alis.Core.Graphic.Properties.win.x64.NativeGraphicWindowsX64SDL", "dd/d35/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_d_l.html", null ],
     [ "Alis.Core.Graphic.Properties.win.x64.NativeGraphicWindowsX64SFML", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html", null ],
+    [ "Alis.Core.Graphic.Properties.win.arm64.NativeGraphicWindowsX64SFML", "dc/df3/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1arm64_1_1_native_graphic_windows_x64_s_f_m_l.html", null ],
     [ "Alis.Core.Physic.Tools.Triangulation.Seidel.Node", "dc/df1/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_node.html", [
       [ "Alis.Core.Physic.Tools.Triangulation.Seidel.Sink", "d9/d47/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_sink.html", null ],
       [ "Alis.Core.Physic.Tools.Triangulation.Seidel.XNode", "d4/d15/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_x_node.html", null ],
@@ -1114,8 +1117,8 @@ var hierarchy =
     [ "Alis.Core.Physic.Collision.TOI.ToiOutput", "de/d32/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_t_o_i_1_1_toi_output.html", null ],
     [ "Alis.Core.Graphic.SFML.Windows.Touch", "d2/db7/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_touch.html", null ],
     [ "Alis.Core.Graphic.SFML.Windows.TouchEvent", "d0/d1d/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_touch_event.html", null ],
-    [ "Alis.Core.Aspect.Math.Transform", "d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html", null ],
     [ "Alis.Core.Graphic.SFML.Graphics.Transform", "d7/d5b/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_transform.html", null ],
+    [ "Alis.Core.Aspect.Math.Transform", "d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html", null ],
     [ "Alis.Core.Ecs.TransformBase", "dc/dfe/class_alis_1_1_core_1_1_ecs_1_1_transform_base.html", [
       [ "Alis.Core.Entity.Transform", "dc/d65/class_alis_1_1_core_1_1_entity_1_1_transform.html", null ]
     ] ],

@@ -1,0 +1,4 @@
+var namespace_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1arm64 =
+[
+    [ "NativeAudioWindowsARM64SFML", "d7/db4/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1arm64_1_1_native_audio_windows_a_r_m64_s_f_m_l.html", "d7/db4/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1arm64_1_1_native_audio_windows_a_r_m64_s_f_m_l" ]
+];

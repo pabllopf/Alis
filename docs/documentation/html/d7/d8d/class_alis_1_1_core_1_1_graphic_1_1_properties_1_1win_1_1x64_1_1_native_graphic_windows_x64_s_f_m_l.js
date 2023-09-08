@@ -3,7 +3,6 @@ var class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_grap
     [ "NativeGraphicWindowsX64SFML", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#a576b87ebfe6b21343b3d4f051fc45e53", null ],
     [ "NativeGraphicWindowsX64SFML", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#a576b87ebfe6b21343b3d4f051fc45e53", null ],
     [ "NativeGraphicWindowsX64SFML", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#a576b87ebfe6b21343b3d4f051fc45e53", null ],
-    [ "NativeGraphicWindowsX64SFML", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#a576b87ebfe6b21343b3d4f051fc45e53", null ],
     [ "resourceMan", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#a0b1edc0b7c90c7776a7aa224e4e26590", null ],
     [ "resourceCulture", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#a1278b3442b82064b5cf21aa7b43b39fe", null ],
     [ "ResourceManager", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#a3e7718cbc0713683c3916143428cf761", null ],

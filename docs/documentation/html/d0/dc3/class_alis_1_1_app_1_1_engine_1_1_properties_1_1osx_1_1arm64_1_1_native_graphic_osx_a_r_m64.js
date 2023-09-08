@@ -11,6 +11,7 @@ var class_alis_1_1_app_1_1_engine_1_1_properties_1_1osx_1_1arm64_1_1_native_grap
     [ "osx_arm64_csfml_window", "d0/dc3/class_alis_1_1_app_1_1_engine_1_1_properties_1_1osx_1_1arm64_1_1_native_graphic_osx_a_r_m64.html#a1564fbee25b86a6d07974c1a1aa7cbd0", null ],
     [ "osx_arm64_sdl2", "d0/dc3/class_alis_1_1_app_1_1_engine_1_1_properties_1_1osx_1_1arm64_1_1_native_graphic_osx_a_r_m64.html#a1f4a292b2bee95d2322ac7b12b7ade91", null ],
     [ "osx_arm64_sdl2_image", "d0/dc3/class_alis_1_1_app_1_1_engine_1_1_properties_1_1osx_1_1arm64_1_1_native_graphic_osx_a_r_m64.html#ab6dac518aea46c7e0212f62fea934842", null ],
+    [ "osx_arm64_sdl2_mixer", "d0/dc3/class_alis_1_1_app_1_1_engine_1_1_properties_1_1osx_1_1arm64_1_1_native_graphic_osx_a_r_m64.html#a51b2bb52b023e0777b451ed26ff23bdc", null ],
     [ "osx_arm64_sdl2_ttf", "d0/dc3/class_alis_1_1_app_1_1_engine_1_1_properties_1_1osx_1_1arm64_1_1_native_graphic_osx_a_r_m64.html#af768afa76bde55608c48436a37bf38aa", null ],
     [ "osx_x64_cimgui", "d0/dc3/class_alis_1_1_app_1_1_engine_1_1_properties_1_1osx_1_1arm64_1_1_native_graphic_osx_a_r_m64.html#adc0163ae33bf8037c3f75d9b69f1496a", null ],
     [ "osx_x64_csfml_graphics", "d0/dc3/class_alis_1_1_app_1_1_engine_1_1_properties_1_1osx_1_1arm64_1_1_native_graphic_osx_a_r_m64.html#a457beb94d415e00aec6c5f0b351239fa", null ],
