@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-#if GraphicBackendSFML || GraphicBackendAll
 
 using System;
 using System.Collections.Generic;
@@ -288,4 +287,3 @@ namespace Alis.Core.Graphic.Sample
         }
     }
 }
-#endif

@@ -3,18 +3,7 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-
-        <!--
-        <AudioBackend>SFML</AudioBackend>
-        <GraphicBackend>SFML</GraphicBackend>-->
-        <!--
-       <AudioBackend>SDL</AudioBackend>
-       <GraphicBackend>SDL</GraphicBackend>
-       <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-       -->
-        <AudioBackend>ALL</AudioBackend>
-        <GraphicBackend>ALL</GraphicBackend>
-        <InputBackend>ALL</InputBackend>
+        
         <RuntimeIdentifier>osx-arm64</RuntimeIdentifier>
     </PropertyGroup>
 

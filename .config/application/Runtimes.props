@@ -33,14 +33,4 @@
         <DefineConstants>$(DefineConstants);WIN</DefineConstants>
         <IsWindows>true</IsWindows>
     </PropertyGroup>
-    
-    <PropertyGroup>
-        <DefineConstants Condition="'$(AudioBackend)' == 'ALL'">$(DefineConstants);AudioBackendAll</DefineConstants>
-        <DefineConstants Condition="'$(GraphicBackend)' == 'ALL'">$(DefineConstants);GraphicBackendAll</DefineConstants>
-        <DefineConstants Condition="'$(InputBackend)' == 'ALL'">$(DefineConstants);InputBackendAll</DefineConstants>
-
-        <DefineConstants Condition="'$(AudioBackend)' != 'ALL'">$(DefineConstants);AudioBackend$(AudioBackend)</DefineConstants>
-        <DefineConstants Condition="'$(GraphicBackend)' != 'ALL'">$(DefineConstants);GraphicBackend$(GraphicBackend)</DefineConstants>
-        <DefineConstants Condition="'$(InputBackend)' != 'ALL'">$(DefineConstants);InputBackend$(InputBackend)</DefineConstants>
-    </PropertyGroup>
 </Project>
