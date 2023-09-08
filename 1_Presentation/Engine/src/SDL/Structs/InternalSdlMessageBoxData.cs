@@ -29,9 +29,9 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
+using Alis.App.Engine.SDL.Enums;
 
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.App.Engine.SDL.Structs
 {
     /// <summary>
     ///     The internal sdl message box data

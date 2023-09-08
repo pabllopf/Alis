@@ -31,9 +31,9 @@ using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
-using static Alis.Core.Graphic.OpenGL.Gl;
+using static Alis.App.Engine.OpenGL.Gl;
 
-namespace Alis.Core.Graphic.OpenGL.Constructs
+namespace Alis.App.Engine.OpenGL.Constructs
 {
     /// <summary>
     ///     The gl shader program param class

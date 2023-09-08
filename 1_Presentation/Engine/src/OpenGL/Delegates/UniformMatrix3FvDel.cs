@@ -29,7 +29,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.OpenGL.Delegates
+namespace Alis.App.Engine.OpenGL.Delegates
 {
     /// <summary>
     ///     The uniform matrix 3fv del

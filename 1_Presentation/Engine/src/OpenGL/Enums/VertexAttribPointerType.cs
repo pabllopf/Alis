@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.OpenGL.Enums
+namespace Alis.App.Engine.OpenGL.Enums
 {
     /// <summary>
     ///     The vertex attrib pointer type enum

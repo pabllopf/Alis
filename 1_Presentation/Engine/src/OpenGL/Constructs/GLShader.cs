@@ -28,10 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Graphic.OpenGL.Enums;
-using static Alis.Core.Graphic.OpenGL.Gl;
+using Alis.App.Engine.OpenGL.Enums;
+using static Alis.App.Engine.OpenGL.Gl;
 
-namespace Alis.Core.Graphic.OpenGL.Constructs
+namespace Alis.App.Engine.OpenGL.Constructs
 {
     /// <summary>
     ///     The gl shader class

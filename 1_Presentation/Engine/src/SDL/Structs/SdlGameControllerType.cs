@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.App.Engine.SDL.Structs
 {
     /// <summary>
     ///     The sdl game controller type enum

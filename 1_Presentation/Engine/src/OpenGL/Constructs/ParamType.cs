@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.OpenGL.Constructs
+namespace Alis.App.Engine.OpenGL.Constructs
 {
     /// <summary>
     ///     The param type enum

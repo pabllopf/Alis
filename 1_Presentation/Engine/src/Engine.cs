@@ -32,6 +32,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
+using Alis.App.Engine.OpenGL;
+using Alis.App.Engine.OpenGL.Constructs;
+using Alis.App.Engine.OpenGL.Enums;
+using Alis.App.Engine.SDL;
+using Alis.App.Engine.SDL.Enums;
+using Alis.App.Engine.SDL.Structs;
 using Alis.App.Engine.UI;
 using Alis.App.Engine.UI.Extras.Guizmo;
 using Alis.App.Engine.UI.Extras.Node;
@@ -39,13 +45,7 @@ using Alis.App.Engine.UI.Extras.Plot;
 using Alis.App.Engine.Windows;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic.OpenGL;
-using Alis.Core.Graphic.OpenGL.Constructs;
-using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Core.Graphic.SDL;
-using Alis.Core.Graphic.SDL.Enums;
-using Alis.Core.Graphic.SDL.Structs;
-using PixelType = Alis.Core.Graphic.OpenGL.Enums.PixelType;
+using PixelType = Alis.App.Engine.OpenGL.Enums.PixelType;
 
 namespace Alis.App.Engine
 {

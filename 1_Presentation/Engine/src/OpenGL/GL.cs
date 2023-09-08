@@ -30,12 +30,12 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
+using Alis.App.Engine.OpenGL.Delegates;
+using Alis.App.Engine.OpenGL.Enums;
+using Alis.App.Engine.SDL;
 using Alis.Core.Aspect.Math.Matrix;
-using Alis.Core.Graphic.OpenGL.Delegates;
-using Alis.Core.Graphic.OpenGL.Enums;
-using Alis.Core.Graphic.SDL;
 
-namespace Alis.Core.Graphic.OpenGL
+namespace Alis.App.Engine.OpenGL
 {
     /// <summary>
     ///     The gl class

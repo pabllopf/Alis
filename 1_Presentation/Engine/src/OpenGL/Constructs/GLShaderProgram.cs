@@ -30,12 +30,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Alis.App.Engine.OpenGL.Enums;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic.OpenGL.Enums;
-using static Alis.Core.Graphic.OpenGL.Gl;
+using static Alis.App.Engine.OpenGL.Gl;
 
-namespace Alis.Core.Graphic.OpenGL.Constructs
+namespace Alis.App.Engine.OpenGL.Constructs
 {
     /// <summary>
     ///     The gl shader program class

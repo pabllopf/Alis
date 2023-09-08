@@ -29,9 +29,9 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Delegates;
+using Alis.App.Engine.SDL.Delegates;
 
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.App.Engine.SDL.Structs
 {
     /// <summary>
     ///     The sdl audio spec

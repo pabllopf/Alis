@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.SDL.Enums
+namespace Alis.App.Engine.SDL.Enums
 {
     /// <summary>
     ///     The sdl message box color type enum

@@ -29,9 +29,9 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.SDL.Enums;
+using Alis.App.Engine.SDL.Enums;
 
-namespace Alis.Core.Graphic.SDL.Delegates
+namespace Alis.App.Engine.SDL.Delegates
 {
     /// <summary>
     ///     The sdl log output function

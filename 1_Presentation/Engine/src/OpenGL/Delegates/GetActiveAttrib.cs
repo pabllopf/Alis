@@ -29,9 +29,9 @@
 
 using System.Runtime.InteropServices;
 using System.Text;
-using Alis.Core.Graphic.OpenGL.Enums;
+using Alis.App.Engine.OpenGL.Enums;
 
-namespace Alis.Core.Graphic.OpenGL.Delegates
+namespace Alis.App.Engine.OpenGL.Delegates
 {
     /// <summary>
     ///     The get active attrib

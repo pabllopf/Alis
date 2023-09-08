@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Graphic.SDL.Delegates
+namespace Alis.App.Engine.SDL.Delegates
 {
     /// <summary>
     ///     The sdl main func

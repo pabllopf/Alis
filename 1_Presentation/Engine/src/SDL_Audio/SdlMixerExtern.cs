@@ -30,7 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Audio.SDL
+namespace Alis.App.Engine.SDL_Audio
 {
     /// <summary>
     ///     The sdl mixer extern class

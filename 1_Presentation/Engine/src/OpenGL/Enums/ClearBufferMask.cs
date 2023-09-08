@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Graphic.OpenGL.Enums
+namespace Alis.App.Engine.OpenGL.Enums
 {
     /// <summary>
     ///     The clear buffer mask enum

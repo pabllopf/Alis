@@ -30,14 +30,14 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
+using Alis.App.Engine.SDL.Delegates;
+using Alis.App.Engine.SDL.Enums;
+using Alis.App.Engine.SDL.Structs;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Memory;
 using Alis.Core.Aspect.Memory.Attributes;
-using Alis.Core.Graphic.SDL.Delegates;
-using Alis.Core.Graphic.SDL.Enums;
-using Alis.Core.Graphic.SDL.Structs;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.App.Engine.SDL
 {
     /// <summary>
     ///     The sdl class

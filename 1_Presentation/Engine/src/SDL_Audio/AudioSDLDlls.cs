@@ -27,9 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-
 
 #if WIN
 #if X86
@@ -47,6 +44,8 @@ using Alis.Core.Graphic.Properties.win.arm64;
 #endif
 #endif
 
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 #if OSX
 #if X86
           
@@ -57,14 +56,11 @@ using Alis.Core.Graphic.Properties.win.arm64;
 #if ARM
           
 #endif
-#if ARM64
-using Alis.App.Engine.Properties.osx.arm64;
-#endif
 #endif
 
 
 
-namespace Alis.Core.Audio
+namespace Alis.App.Engine.SDL_Audio
 {
     /// <summary>
     ///     The audio dlls class

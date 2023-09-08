@@ -30,7 +30,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Alis.Core.Graphic.OpenGL.Delegates
+namespace Alis.App.Engine.OpenGL.Delegates
 {
     /// <summary>
     ///     The get shader info log del

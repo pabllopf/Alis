@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Audio.SDL
+namespace Alis.App.Engine.SDL_Audio
 {
     /// <summary>
     ///     The mix chunk

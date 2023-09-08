@@ -27,12 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-
-using Alis.Core.Graphic.Properties;
-
-
 #if WIN
     #if X86
 
@@ -48,6 +42,9 @@ using Alis.Core.Graphic.Properties;
     #endif
 #endif
 
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using Alis.App.Engine.Properties.osx.arm64;
 #if OSX
     #if X86
                 using Alis.Core.Graphic.Properties.osx.arm64;
@@ -55,16 +52,13 @@ using Alis.Core.Graphic.Properties;
     #if X64
                 using Alis.Core.Graphic.Properties.osx.arm64;
     #endif
-    #if ARM64
-               using Alis.App.Engine.Properties.osx.arm64;
-    #endif
-    #if ARM
+#if ARM
                  using Alis.Core.Graphic.Properties.osx.arm64;
     #endif
 #endif
 
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.App.Engine.SDL
 {
     /// <summary>
     ///     The im gui dlls class

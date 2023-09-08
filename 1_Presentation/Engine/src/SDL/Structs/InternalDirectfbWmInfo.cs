@@ -30,7 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SDL.Structs
+namespace Alis.App.Engine.SDL.Structs
 {
     /// <summary>
     ///     The internal directfb info

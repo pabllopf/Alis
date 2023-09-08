@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Base.Dll;
 
-namespace Alis.Core.Audio.SDL
+namespace Alis.App.Engine.SDL_Audio
 {
     /// <summary>
     ///     The sdl mixer class

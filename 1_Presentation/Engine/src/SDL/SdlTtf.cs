@@ -29,12 +29,12 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.App.Engine.SDL.Structs;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Memory;
 using Alis.Core.Aspect.Memory.Attributes;
-using Alis.Core.Graphic.SDL.Structs;
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.App.Engine.SDL
 {
     /// <summary>
     ///     The sdl ttf extern class
