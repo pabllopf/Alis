@@ -1,5 +1,8 @@
 var NAVTREEINDEX19 =
 {
+"d3/d4c/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_draw_data_ptr.html#a0abc15e71153fdd60391a66d5d2f5485":[1,0,0,0,0,5,12,17],
+"d3/d4c/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_draw_data_ptr.html#a0fc1a5a8c8fb666a9566b52dd7ff82f8":[1,0,0,0,0,5,12,5],
+"d3/d4c/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_draw_data_ptr.html#a18fb9d1d111a982368897dc56bffa59e":[1,0,0,0,0,5,12,6],
 "d3/d4c/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_draw_data_ptr.html#a23a13bbac175ad064c8350a7ee96ac15":[1,0,0,0,0,5,12,0],
 "d3/d4c/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_draw_data_ptr.html#a2b8da24d54446be759be84d0aef64c4b":[1,0,0,0,0,5,12,7],
 "d3/d4c/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_draw_data_ptr.html#a379bfa250e299300b9dc85514a2fb955":[1,0,0,0,0,5,12,18],
@@ -77,10 +80,10 @@ var NAVTREEINDEX19 =
 "d3/d69/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader_program.html#ad4a2c6c8ebb7fc9aa9d9b6fea0393f5b":[1,0,0,2,5,0,0,1,14],
 "d3/d69/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader_program.html#ad899944c347786402d6178d3acb017ab":[1,0,0,2,5,0,0,1,2],
 "d3/d69/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader_program.html#aff1ab6ad048b760e4349be4382a9604f":[1,0,0,2,5,0,0,1,0],
+"d3/d6a/namespace_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1arm64.html":[1,0,0,2,5,1,1,0],
+"d3/d6a/namespace_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1arm64.html":[0,0,0,2,5,1,1,0],
 "d3/d6b/class_alis_1_1_core_1_1_audio_1_1_audio_dlls.html":[1,0,0,2,1,5],
 "d3/d6b/class_alis_1_1_core_1_1_audio_1_1_audio_dlls.html#a3aba5792894d9e26cb2dfba530814dd4":[1,0,0,2,1,5,0],
-"d3/d6b/class_alis_1_1_core_1_1_audio_1_1_audio_dlls.html#aa1c3e7acf56e65b4b09adb188f9ab18b":[1,0,0,2,1,5,2],
-"d3/d6b/class_alis_1_1_core_1_1_audio_1_1_audio_dlls.html#aeed6ea139ad9528f198dc07eec18017e":[1,0,0,2,1,5,1],
 "d3/d6c/class_alis_1_1_builder_1_1_core_1_1_component_1_1_mesh_1_1_box_mesh_builder.html":[1,0,0,1,0,0,4,0],
 "d3/d78/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_1_1_identification.html":[1,0,0,2,5,3,1,5,0],
 "d3/d78/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_1_1_identification.html#a37eabc0dba58f49d7ae3bae297e26283":[1,0,0,2,5,3,1,5,0,2],
@@ -246,8 +249,5 @@ var NAVTREEINDEX19 =
 "d3/dac/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3.html#afaea7144cc4021cda936201f0f673440":[1,0,0,2,0,4,4,4,51],
 "d3/dac/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3.html#aff38cdbfbeb91b5c3367256c3a83ccfc":[1,0,0,2,0,4,4,4,46],
 "d3/db8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_mouse_wheel_event.html":[1,0,0,2,5,3,1,20],
-"d3/db8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_mouse_wheel_event.html#a063388e59b6e87215bb4580604565cdb":[1,0,0,2,5,3,1,20,1],
-"d3/db8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_mouse_wheel_event.html#a55fb9c55d8faf26925d911b18e5da101":[1,0,0,2,5,3,1,20,2],
-"d3/db8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_mouse_wheel_event.html#a675473fa8bd5e1f5b4c113998cfb26b2":[1,0,0,2,5,3,1,20,0],
-"d3/db9/class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_config_1_1_extensions_1_1_controllers_1_1_wind_1_1_curve_1_1_curve_key.html":[1,0,0,2,11,0,0,0,0,0,0,1]
+"d3/db8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_mouse_wheel_event.html#a063388e59b6e87215bb4580604565cdb":[1,0,0,2,5,3,1,20,1]
 };

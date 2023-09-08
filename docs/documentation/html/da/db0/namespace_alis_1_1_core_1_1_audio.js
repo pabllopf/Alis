@@ -6,6 +6,7 @@ var namespace_alis_1_1_core_1_1_audio =
     [ "SFML", "d5/d2b/namespace_alis_1_1_core_1_1_audio_1_1_s_f_m_l.html", "d5/d2b/namespace_alis_1_1_core_1_1_audio_1_1_s_f_m_l" ],
     [ "AudioClipBase", "d0/d02/class_alis_1_1_core_1_1_audio_1_1_audio_clip_base.html", "d0/d02/class_alis_1_1_core_1_1_audio_1_1_audio_clip_base" ],
     [ "AudioDlls", "d3/d6b/class_alis_1_1_core_1_1_audio_1_1_audio_dlls.html", "d3/d6b/class_alis_1_1_core_1_1_audio_1_1_audio_dlls" ],
+    [ "AudioSDLDlls", "d0/dc9/class_alis_1_1_core_1_1_audio_1_1_audio_s_d_l_dlls.html", "d0/dc9/class_alis_1_1_core_1_1_audio_1_1_audio_s_d_l_dlls" ],
     [ "IAudioRecorder", "db/dc6/interface_alis_1_1_core_1_1_audio_1_1_i_audio_recorder.html", null ],
     [ "IAudioSource", "d2/d9a/interface_alis_1_1_core_1_1_audio_1_1_i_audio_source.html", "d2/d9a/interface_alis_1_1_core_1_1_audio_1_1_i_audio_source" ],
     [ "ObjectBase", "d2/d85/class_alis_1_1_core_1_1_audio_1_1_object_base.html", "d2/d85/class_alis_1_1_core_1_1_audio_1_1_object_base" ]
