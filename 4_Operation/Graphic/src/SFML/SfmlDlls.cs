@@ -30,6 +30,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
+
 #if WIN
     #if X86
                                                  
@@ -50,7 +51,7 @@ using Alis.Core.Graphic.Properties.win.arm64;
                                                      
     #endif
     #if X64
-                                   
+            using Alis.Core.Graphic.Properties.osx.x64;                    
     #endif
     #if ARM
                                                    
@@ -99,7 +100,7 @@ namespace Alis.Core.Graphic.SFML
              {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsxARM64.osx_x64_csfml_window},
 #endif
 #if X64
-            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsxARM64.osx_x64_csfml_window},
+            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsxX64SFML.osx_x64_csfml_window},
 #endif
 #if ARM
             {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsxARM64.osx_arm64_csfml_window},
@@ -143,7 +144,7 @@ namespace Alis.Core.Graphic.SFML
             {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsxARM64.osx_x64_csfml_system},
 #endif
 #if X64
-            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsxARM64.osx_x64_csfml_system},
+            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsxX64SFML.osx_x64_csfml_system},
 #endif
 #if ARM
             {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsxARM64.osx_arm64_csfml_system},
@@ -185,7 +186,7 @@ namespace Alis.Core.Graphic.SFML
                              {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsxARM64.osx_x64_csfml_graphics},
                 #endif
                 #if X64
-                            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsxARM64.osx_x64_csfml_graphics},
+                            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsxX64SFML.osx_x64_csfml_graphics},
                 #endif
                 #if ARM
                             {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsxARM64.osx_arm64_csfml_graphics},

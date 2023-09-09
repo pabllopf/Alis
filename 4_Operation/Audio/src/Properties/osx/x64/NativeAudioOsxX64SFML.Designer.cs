@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Alis.Core.Audio.Properties.osx.arm64 {
+namespace Alis.Core.Audio.Properties.osx.x64 {
     /// <summary>
     ///   Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
     /// </summary>
@@ -19,7 +19,7 @@ namespace Alis.Core.Audio.Properties.osx.arm64 {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class NativeAudioOsxARM64SFML {
+    internal class NativeAudioOsxX64SFML {
         
         /// <summary>
         /// The resource man
@@ -32,10 +32,10 @@ namespace Alis.Core.Audio.Properties.osx.arm64 {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="NativeAudioOsxARM64SFML"/> class
+        /// Initializes a new instance of the <see cref="NativeAudioOsxX64SFML"/> class
         /// </summary>
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal NativeAudioOsxARM64SFML() {
+        internal NativeAudioOsxX64SFML() {
         }
         
         /// <summary>
@@ -45,7 +45,7 @@ namespace Alis.Core.Audio.Properties.osx.arm64 {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Alis.Core.Audio.Properties.osx.arm64.NativeAudioOsxARM64SFML", typeof(NativeAudioOsxARM64SFML).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Alis.Core.Audio.Properties.osx.x64.NativeAudioOsxX64SFML", typeof(NativeAudioOsxX64SFML).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -69,86 +69,6 @@ namespace Alis.Core.Audio.Properties.osx.arm64 {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
-        internal static byte[] linux_arm64_csfml_audio {
-            get {
-                object obj = ResourceManager.GetObject("linux_arm64_csfml_audio", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] linux_arm64_sdl2_mixer {
-            get {
-                object obj = ResourceManager.GetObject("linux_arm64_sdl2_mixer", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] linux_x64_csfml_audio {
-            get {
-                object obj = ResourceManager.GetObject("linux_x64_csfml_audio", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] linux_x64_sdl2_mixer {
-            get {
-                object obj = ResourceManager.GetObject("linux_x64_sdl2_mixer", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] linux_x86_csfml_audio {
-            get {
-                object obj = ResourceManager.GetObject("linux_x86_csfml_audio", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] linux_x86_sdl2_mixer {
-            get {
-                object obj = ResourceManager.GetObject("linux_x86_sdl2_mixer", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] osx_arm64_csfml_audio {
-            get {
-                object obj = ResourceManager.GetObject("osx_arm64_csfml_audio", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] osx_arm64_sdl2_mixer {
-            get {
-                object obj = ResourceManager.GetObject("osx_arm64_sdl2_mixer", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
         internal static byte[] osx_x64_csfml_audio {
             get {
                 object obj = ResourceManager.GetObject("osx_x64_csfml_audio", resourceCulture);
@@ -156,72 +76,9 @@ namespace Alis.Core.Audio.Properties.osx.arm64 {
             }
         }
         
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] osx_x64_sdl2_mixer {
+        internal static byte[] osx_x64_csfml_system {
             get {
-                object obj = ResourceManager.GetObject("osx_x64_sdl2_mixer", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_x64_csfml_audio {
-            get {
-                object obj = ResourceManager.GetObject("win_x64_csfml_audio", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_x64_openal32 {
-            get {
-                object obj = ResourceManager.GetObject("win_x64_openal32", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_x64_sdl2_mixer {
-            get {
-                object obj = ResourceManager.GetObject("win_x64_sdl2_mixer", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_x86_csfml_audio {
-            get {
-                object obj = ResourceManager.GetObject("win_x86_csfml_audio", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_x86_openal32 {
-            get {
-                object obj = ResourceManager.GetObject("win_x86_openal32", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_x86_sdl2_mixer {
-            get {
-                object obj = ResourceManager.GetObject("win_x86_sdl2_mixer", resourceCulture);
+                object obj = ResourceManager.GetObject("osx_x64_csfml_system", resourceCulture);
                 return ((byte[])(obj));
             }
         }

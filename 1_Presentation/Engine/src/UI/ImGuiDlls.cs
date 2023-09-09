@@ -31,6 +31,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 
+
 #if WIN
     #if  X64
     using Alis.Core.Graphic.Properties.win.x64;
@@ -48,7 +49,13 @@ using Alis.Core.Graphic.Properties;
 #endif
 
 #if OSX
-    using Alis.App.Engine.Properties.osx.arm64;
+#if ARM64
+using Alis.App.Engine.Properties.osx.arm64;
+#endif
+#if X64
+using Alis.Core.Graphic.Properties.osx.x64;
+#endif
+    
 #endif
 
 namespace Alis.App.Engine.UI
@@ -88,7 +95,7 @@ namespace Alis.App.Engine.UI
             {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsxARM64.osx_x64_cimgui},
 #endif
 #if X64
-            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsxARM64.osx_x64_cimgui},
+            {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsxX64.osx_x64_cimgui},
 #endif
 #if ARM
             {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsxARM64.osx_arm64_cimgui},

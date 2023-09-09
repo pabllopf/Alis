@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.Properties {
+namespace Alis.Core.Graphic.Properties.osx.x64 {
     using System;
     
     
@@ -17,7 +17,7 @@ namespace Alis.Core.Graphic.Properties {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class NativeGraphicOsx {
+    internal class NativeGraphicOsxX64 {
         
         /// <summary>
         /// The resource man
@@ -30,10 +30,10 @@ namespace Alis.Core.Graphic.Properties {
         private static System.Globalization.CultureInfo resourceCulture;
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="NativeGraphicOsx"/> class
+        /// Initializes a new instance of the <see cref="NativeGraphicOsxX64"/> class
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal NativeGraphicOsx() {
+        internal NativeGraphicOsxX64() {
         }
         
         /// <summary>
@@ -43,7 +43,7 @@ namespace Alis.Core.Graphic.Properties {
         internal static System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.Equals(null, resourceMan)) {
-                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("Alis.Core.Graphic.Properties.NativeGraphicOsx", typeof(NativeGraphicOsx).Assembly);
+                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("Alis.Core.Graphic.Properties.osx.x64.NativeGraphicOsxX64", typeof(NativeGraphicOsxX64).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -64,111 +64,11 @@ namespace Alis.Core.Graphic.Properties {
         }
         
         /// <summary>
-        /// Gets the value of the osx arm64 cimgui
-        /// </summary>
-        internal static byte[] osx_arm64_cimgui {
-            get {
-                object obj = ResourceManager.GetObject("osx_arm64_cimgui", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        /// Gets the value of the osx arm64 csfml graphics
-        /// </summary>
-        internal static byte[] osx_arm64_csfml_graphics {
-            get {
-                object obj = ResourceManager.GetObject("osx_arm64_csfml_graphics", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        /// Gets the value of the osx arm64 csfml system
-        /// </summary>
-        internal static byte[] osx_arm64_csfml_system {
-            get {
-                object obj = ResourceManager.GetObject("osx_arm64_csfml_system", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        /// Gets the value of the osx arm64 csfml window
-        /// </summary>
-        internal static byte[] osx_arm64_csfml_window {
-            get {
-                object obj = ResourceManager.GetObject("osx_arm64_csfml_window", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        /// Gets the value of the osx arm64 sdl2
-        /// </summary>
-        internal static byte[] osx_arm64_sdl2 {
-            get {
-                object obj = ResourceManager.GetObject("osx_arm64_sdl2", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        /// Gets the value of the osx arm64 sdl2 image
-        /// </summary>
-        internal static byte[] osx_arm64_sdl2_image {
-            get {
-                object obj = ResourceManager.GetObject("osx_arm64_sdl2_image", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        /// Gets the value of the osx arm64 sdl2 ttf
-        /// </summary>
-        internal static byte[] osx_arm64_sdl2_ttf {
-            get {
-                object obj = ResourceManager.GetObject("osx_arm64_sdl2_ttf", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         /// Gets the value of the osx x64 cimgui
         /// </summary>
         internal static byte[] osx_x64_cimgui {
             get {
                 object obj = ResourceManager.GetObject("osx_x64_cimgui", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        /// Gets the value of the osx x64 csfml graphics
-        /// </summary>
-        internal static byte[] osx_x64_csfml_graphics {
-            get {
-                object obj = ResourceManager.GetObject("osx_x64_csfml_graphics", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        /// Gets the value of the osx x64 csfml system
-        /// </summary>
-        internal static byte[] osx_x64_csfml_system {
-            get {
-                object obj = ResourceManager.GetObject("osx_x64_csfml_system", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        /// Gets the value of the osx x64 csfml window
-        /// </summary>
-        internal static byte[] osx_x64_csfml_window {
-            get {
-                object obj = ResourceManager.GetObject("osx_x64_csfml_window", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -199,6 +99,13 @@ namespace Alis.Core.Graphic.Properties {
         internal static byte[] osx_x64_sdl2_ttf {
             get {
                 object obj = ResourceManager.GetObject("osx_x64_sdl2_ttf", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        internal static byte[] osx_x64_sdl2_mixer {
+            get {
+                object obj = ResourceManager.GetObject("osx_x64_sdl2_mixer", resourceCulture);
                 return ((byte[])(obj));
             }
         }

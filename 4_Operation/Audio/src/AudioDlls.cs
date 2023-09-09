@@ -30,6 +30,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
+
 #if WIN
 #if X86
          
@@ -50,7 +51,7 @@ using Alis.Core.Audio.Properties.win.arm64;
           
 #endif
 #if X64
-           
+using Alis.Core.Audio.Properties.osx.x64;    
 #endif
 #if ARM
           
@@ -99,7 +100,7 @@ namespace Alis.Core.Audio
           {(OSPlatform.OSX, Architecture.X86), NativeAudioOsxARM64.osx_x64_csfml_audio},
 #endif
 #if X64
-           {(OSPlatform.OSX, Architecture.X64), NativeAudioOsxARM64.osx_x64_csfml_audio},
+           {(OSPlatform.OSX, Architecture.X64), NativeAudioOsxX64SFML.osx_x64_csfml_audio},
 #endif
 #if ARM
            {(OSPlatform.OSX, Architecture.Arm), NativeAudioOsxARM64.osx_arm64_csfml_audio},
@@ -140,7 +141,7 @@ namespace Alis.Core.Audio
                     {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsxARM64.osx_x64_csfml_system},
         #endif
         #if X64
-                    {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsxARM64.osx_x64_csfml_system},
+                    {(OSPlatform.OSX, Architecture.X64), NativeAudioOsxX64SFML.osx_x64_csfml_system},
         #endif
         #if ARM
                     {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsxARM64.osx_arm64_csfml_system},
