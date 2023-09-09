@@ -65,13 +65,13 @@ namespace Alis.App.Engine.SDL_Audio
     /// <summary>
     ///     The audio dlls class
     /// </summary>
-    public static class AudioSDLDlls
+    public static class AudioSdlDlls
     {
        
         /// <summary>
         ///     The osx arm64 sdl2 mixer
         /// </summary>
-        public static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SdlAudioDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
+        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> SdlAudioDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
 #if WIN
 #if X86
@@ -115,7 +115,7 @@ namespace Alis.App.Engine.SDL_Audio
         /// <summary>
         ///     The win x64 openal32
         /// </summary>
-        public static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> OpenalAudioDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
+        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> OpenalAudioDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
 #if WIN
 #if X86

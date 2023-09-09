@@ -75,7 +75,7 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     The osx x64 csfml audio
         /// </summary>
-        public static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> CsfmlAudioDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
+        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> CsfmlAudioDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
 #if WIN
 #if X86
