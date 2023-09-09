@@ -136,6 +136,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos", "macos", "{CF7DBB5E
 		.scripts\macos\restart_permissions.sh = .scripts\macos\restart_permissions.sh
 		.scripts\macos\restart_sln.sh = .scripts\macos\restart_sln.sh
 		.scripts\macos\run_tests.sh = .scripts\macos\run_tests.sh
+		.scripts\macos\build_all.sh = .scripts\macos\build_all.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{020BC1B3-A88C-4938-AF9C-E35A4BEBDF72}"

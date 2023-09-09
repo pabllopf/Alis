@@ -42,7 +42,7 @@ namespace Alis.Sample.Snake
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            throw new NotImplementedException();
+           Alis.VideoGame.Builder().Run();
         }
     }
 }

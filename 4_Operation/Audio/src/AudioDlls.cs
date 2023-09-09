@@ -111,6 +111,9 @@ namespace Alis.Core.Audio
 #endif
         };
         
+        /// <summary>
+        /// The arch
+        /// </summary>
         internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>  CsfmlSystemDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
         #if WIN

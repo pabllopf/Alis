@@ -76,6 +76,9 @@ namespace Alis.Core.Audio.Properties.osx.x64 {
             }
         }
         
+        /// <summary>
+        /// Gets the value of the osx x64 csfml system
+        /// </summary>
         internal static byte[] osx_x64_csfml_system {
             get {
                 object obj = ResourceManager.GetObject("osx_x64_csfml_system", resourceCulture);

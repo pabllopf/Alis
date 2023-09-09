@@ -103,6 +103,9 @@ namespace Alis.Core.Graphic.Properties.osx.x64 {
             }
         }
         
+        /// <summary>
+        /// Gets the value of the osx x64 sdl2 mixer
+        /// </summary>
         internal static byte[] osx_x64_sdl2_mixer {
             get {
                 object obj = ResourceManager.GetObject("osx_x64_sdl2_mixer", resourceCulture);

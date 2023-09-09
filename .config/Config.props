@@ -49,4 +49,7 @@
 
     <Import Project="$(SolutionDir).config/target/BeforeBuild.props"/>
     <Import Project="$(SolutionDir).config/target/AfterBuild.props"/>
+
+   
+    
 </Project>

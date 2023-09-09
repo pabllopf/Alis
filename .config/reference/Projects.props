@@ -29,6 +29,8 @@
                           Exclude="$(SolutionDir)6_Ideation/**/*.Sample.csproj; $(SolutionDir)6_Ideation/**/*.Test.csproj;"/>
 
         <InternalsVisibleTo Include="$(AssemblyName).Test"/>
+
+        <Content Include="$(ProjectDir)/bin/Debug/**/**/*.dll" PackagePath="runtimes/" />
     </ItemGroup>
 
 
@@ -174,6 +176,7 @@
                  Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
 
         <InternalsVisibleTo Include="$(AssemblyName).Test"/>
+        <Content Include="$(ProjectDir)/bin/Release/**/**/*.dll" PackagePath="runtimes/" />
     </ItemGroup>
     
     <ItemGroup>

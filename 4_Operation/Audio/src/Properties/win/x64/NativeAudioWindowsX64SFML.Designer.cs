@@ -79,6 +79,9 @@ namespace Alis.Core.Audio.Properties.win.x64 {
             }
         }
         
+        /// <summary>
+        /// Gets the value of the win x64 csfml system
+        /// </summary>
         internal static byte[] win_x64_csfml_system {
             get {
                 object obj = ResourceManager.GetObject("win_x64_csfml_system", resourceCulture);
