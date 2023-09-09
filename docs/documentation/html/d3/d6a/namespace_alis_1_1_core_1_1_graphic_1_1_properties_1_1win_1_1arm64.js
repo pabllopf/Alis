@@ -1,4 +1,5 @@
 var namespace_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1arm64 =
 [
+    [ "NativeGraphicWindowsARM64", "d4/d7b/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1arm64_1_1_native_graphic_windows_a_r_m64.html", "d4/d7b/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1arm64_1_1_native_graphic_windows_a_r_m64" ],
     [ "NativeGraphicWindowsX64SFML", "dc/df3/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1arm64_1_1_native_graphic_windows_x64_s_f_m_l.html", "dc/df3/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1arm64_1_1_native_graphic_windows_x64_s_f_m_l" ]
 ];
