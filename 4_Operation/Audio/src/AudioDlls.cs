@@ -29,9 +29,6 @@
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Alis.Core.Audio.Properties;
-
-
 
 #if WIN
 #if X86
@@ -108,11 +105,50 @@ namespace Alis.Core.Audio
            {(OSPlatform.OSX, Architecture.Arm), NativeAudioOsxARM64.osx_arm64_csfml_audio},
 #endif
 #if ARM64
-#if AudioBackendSFML || AudioBackendAll
             {(OSPlatform.OSX, Architecture.Arm64), NativeAudioOsxARM64SFML.osx_arm64_csfml_audio}
 #endif
 #endif
-#endif
         };
+        
+        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>  CsfmlSystemDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
+        {
+        #if WIN
+                        #if X86
+                                   {(OSPlatform.Windows, Architecture.X86), NativeGraphicWindowsX64SFML.win_x86_csfml_system},                                   
+                        #endif
+                        #if X64
+                    {(OSPlatform.Windows, Architecture.X64), NativeGraphicWindowsX64SFML.win_x64_csfml_system},            
+                        #endif
+                        #if ARM
+                                             {(OSPlatform.Windows, Architecture.Arm), NativeGraphicWindowsX64SFML.win_x86_csfml_system},                      
+                        #endif
+                        #if ARM64
+                                 {(OSPlatform.Windows, Architecture.Arm64), NativeGraphicWindowsX64SFML.win_x64_csfml_system},                              
+                        #endif
+
+        #endif
+
+        #if LINUX
+                    {(OSPlatform.Linux, Architecture.X86), NativeGraphic.linux_x86_csfml_system},
+                    {(OSPlatform.Linux, Architecture.X64), NativeGraphic.linux_x64_csfml_system},
+                    {(OSPlatform.Linux, Architecture.Arm), NativeGraphic.linux_arm64_csfml_system},
+                    {(OSPlatform.Linux, Architecture.Arm64), NativeGraphic.linux_arm64_csfml_system},
+        #endif
+                    
+        #if OSX
+        #if X86
+                    {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsxARM64.osx_x64_csfml_system},
+        #endif
+        #if X64
+                    {(OSPlatform.OSX, Architecture.X64), NativeGraphicOsxARM64.osx_x64_csfml_system},
+        #endif
+        #if ARM
+                    {(OSPlatform.OSX, Architecture.Arm), NativeGraphicOsxARM64.osx_arm64_csfml_system},
+        #endif
+        #if ARM64
+                    {(OSPlatform.OSX, Architecture.Arm64), NativeAudioOsxARM64SFML.osx_arm64_csfml_system}
+        #endif
+        #endif
+                };
     }
 }
