@@ -46,16 +46,14 @@ using Alis.Core.Graphic.Properties.win.arm64;
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.Properties.osx.x64;
+
+
 #if OSX
-#if X86
-          
-#endif
 #if X64
-           
+        using Alis.Core.Graphic.Properties.osx.x64;   
 #endif
-#if ARM
-          
+#if ARM64
+using Alis.App.Engine.Properties.osx.arm64;   
 #endif
 #endif
 
@@ -106,9 +104,9 @@ namespace Alis.App.Engine.SDL_Audio
            {(OSPlatform.OSX, Architecture.Arm), NativeAudioOsxARM64.osx_arm64_sdl2_mixer},
 #endif
 #if ARM64
-#if AudioBackendSDL || AudioBackendAll
+
             {(OSPlatform.OSX, Architecture.Arm64), NativeGraphicOsxARM64.osx_arm64_sdl2_mixer}
-#endif
+
 #endif
 #endif
         };
