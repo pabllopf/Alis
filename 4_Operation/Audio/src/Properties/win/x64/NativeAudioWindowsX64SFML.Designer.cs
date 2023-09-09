@@ -79,22 +79,9 @@ namespace Alis.Core.Audio.Properties.win.x64 {
             }
         }
         
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_x64_openal32 {
+        internal static byte[] win_x64_csfml_system {
             get {
-                object obj = ResourceManager.GetObject("win_x64_openal32", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_x64_sdl2_mixer {
-            get {
-                object obj = ResourceManager.GetObject("win_x64_sdl2_mixer", resourceCulture);
+                object obj = ResourceManager.GetObject("win_x64_csfml_system", resourceCulture);
                 return ((byte[])(obj));
             }
         }

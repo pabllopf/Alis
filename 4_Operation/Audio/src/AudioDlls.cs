@@ -118,13 +118,13 @@ namespace Alis.Core.Audio
                                    {(OSPlatform.Windows, Architecture.X86), NativeGraphicWindowsX64SFML.win_x86_csfml_system},                                   
                         #endif
                         #if X64
-                    {(OSPlatform.Windows, Architecture.X64), NativeGraphicWindowsX64SFML.win_x64_csfml_system},            
+                                {(OSPlatform.Windows, Architecture.X64), NativeAudioWindowsX64SFML.win_x64_csfml_system},            
                         #endif
                         #if ARM
                                              {(OSPlatform.Windows, Architecture.Arm), NativeGraphicWindowsX64SFML.win_x86_csfml_system},                      
                         #endif
                         #if ARM64
-                                 {(OSPlatform.Windows, Architecture.Arm64), NativeGraphicWindowsX64SFML.win_x64_csfml_system},                              
+                                 {(OSPlatform.Windows, Architecture.Arm64), NativeAudioWindowsARM64SFML.win_arm64_csfml_audio},                              
                         #endif
 
         #endif
