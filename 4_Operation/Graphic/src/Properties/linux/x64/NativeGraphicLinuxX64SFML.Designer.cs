@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.Properties {
+namespace Alis.Core.Graphic.Properties.linux.x64 {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace Alis.Core.Graphic.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class NativeGraphic {
+    internal class NativeGraphicLinuxX64SFML {
         
         /// <summary>
         /// The resource man
@@ -35,10 +35,10 @@ namespace Alis.Core.Graphic.Properties {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="NativeGraphic"/> class
+        /// Initializes a new instance of the <see cref="NativeGraphicLinuxX64SFML"/> class
         /// </summary>
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal NativeGraphic() {
+        internal NativeGraphicLinuxX64SFML() {
         }
         
         /// <summary>
@@ -48,7 +48,7 @@ namespace Alis.Core.Graphic.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Alis.Core.Graphic.Properties.NativeGraphic", typeof(NativeGraphic).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Alis.Core.Graphic.Properties.linux.x64.NativeGraphicLinuxX64SFML", typeof(NativeGraphicLinuxX64SFML).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

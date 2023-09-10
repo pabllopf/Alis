@@ -31,6 +31,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 
+
 #if WIN
 #if X86
          
@@ -59,6 +60,21 @@ using Alis.Core.Audio.Properties.osx.x64;
 #if ARM64
 using Alis.Core.Audio.Properties.osx.arm64;
 #endif
+#endif
+
+#if LINUX
+    #if X86
+              
+    #endif
+    #if X64
+using Alis.Core.Audio.Properties.linux.x64;
+    #endif
+    #if ARM
+              
+    #endif
+    #if ARM64
+
+    #endif
 #endif
 
 
@@ -90,11 +106,24 @@ namespace Alis.Core.Audio
 #endif
 #endif
 #if LINUX
-            {(OSPlatform.Linux, Architecture.X86), NativeAudio.linux_x86_csfml_audio},
-            {(OSPlatform.Linux, Architecture.X64), NativeAudio.linux_x64_csfml_audio},
-            {(OSPlatform.Linux, Architecture.Arm), NativeAudio.linux_arm64_csfml_audio},
-            {(OSPlatform.Linux, Architecture.Arm64), NativeAudio.linux_arm64_csfml_audio},
+#if X86
+            {(OSPlatform.Linux, Architecture.X86), NativeAudioLinuxX64SFML.linux_x86_csfml_audio}, 
 #endif
+#if X64
+            {(OSPlatform.Linux, Architecture.X64), NativeAudioLinuxX64SFML.linux_x64_csfml_audio},
+#endif
+#if ARM
+            {(OSPlatform.Linux, Architecture.Arm), NativeAudioLinuxX64SFML.linux_arm64_csfml_audio},  
+#endif
+#if ARM64
+            {(OSPlatform.Linux, Architecture.Arm64), NativeAudioLinuxX64SFML.linux_arm64_csfml_audio},
+#endif
+#endif
+            
+            
+            
+          
+
 #if OSX
 #if X86
           {(OSPlatform.OSX, Architecture.X86), NativeAudioOsxARM64.osx_x64_csfml_audio},
@@ -132,13 +161,21 @@ namespace Alis.Core.Audio
 
         #endif
 
-        #if LINUX
-                    {(OSPlatform.Linux, Architecture.X86), NativeGraphic.linux_x86_csfml_system},
-                    {(OSPlatform.Linux, Architecture.X64), NativeGraphic.linux_x64_csfml_system},
-                    {(OSPlatform.Linux, Architecture.Arm), NativeGraphic.linux_arm64_csfml_system},
-                    {(OSPlatform.Linux, Architecture.Arm64), NativeGraphic.linux_arm64_csfml_system},
-        #endif
-                    
+#if LINUX
+#if X86
+           {(OSPlatform.Linux, Architecture.X86), NativeAudioLinuxX64SFML.linux_x86_csfml_system},    
+#endif
+#if X64
+            {(OSPlatform.Linux, Architecture.X64), NativeAudioLinuxX64SFML.linux_x64_csfml_system},
+#endif
+#if ARM
+         {(OSPlatform.Linux, Architecture.Arm), NativeAudioLinuxX64SFML.linux_arm64_csfml_system},     
+#endif
+#if ARM64
+        {(OSPlatform.Linux, Architecture.Arm64), NativeAudioLinuxX64SFML.linux_arm64_csfml_system},
+#endif
+#endif
+            
         #if OSX
         #if X86
                     {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsxARM64.osx_x64_csfml_system},
