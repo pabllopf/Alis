@@ -126,12 +126,12 @@
     <assembly alias="System.Windows.Forms"
               name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
     <data name="linux_x86_csfml_audio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\linux-x86\linux-x86_csfml-audio.so;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\..\..\resources\linux-x86\linux-x86_csfml-audio.zip;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="linux_x86_csfml_system" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\linux-x86\linux-x86_csfml-system.so;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\..\..\resources\linux-x86\linux-x86_csfml-system.zip;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>
