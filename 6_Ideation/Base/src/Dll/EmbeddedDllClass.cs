@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
@@ -51,16 +52,21 @@ namespace Alis.Core.Aspect.Base.Dll
 
             string dllPath = Path.Combine(Environment.CurrentDirectory, $"{dllName}.{extension}");
 
+            if (File.Exists(dllPath))
+            {
+                File.Delete(dllPath);
+            }
+
             if (!File.Exists(dllPath))
             {
                 OSPlatform currentPlatform = GetCurrentPlatform();
                 Architecture currentArchitecture = RuntimeInformation.ProcessArchitecture;
 
-                Console.WriteLine($"OSPlatform={currentPlatform} | Architecture={currentArchitecture}");
-
+                Console.WriteLine($"OSPlatform={currentPlatform} | Architecture={currentArchitecture} -> lib: {dllName}");
+                
                 if (dllBytes.TryGetValue((currentPlatform, currentArchitecture), out byte[] resourceBytes))
                 {
-                    File.WriteAllBytes(dllPath, resourceBytes);
+                    ExtractZipFile(dllPath,$"{dllName}.{extension}" ,resourceBytes);
                     Console.WriteLine($"dllPath={dllPath}");
                 }
             }
@@ -126,6 +132,39 @@ namespace Alis.Core.Aspect.Base.Dll
             }
 
             throw new PlatformNotSupportedException("Unsupported platform.");
+        }
+        
+        
+        /// <summary>
+        /// Extracts the zip file using the specified file path
+        /// </summary>
+        /// <param name="filePath">The file path</param>
+        /// <param name="fileName">The file name</param>
+        /// <param name="zipData">The zip data</param>
+        private static void ExtractZipFile(string filePath, string fileName, byte[] zipData)
+        {
+            using (MemoryStream ms = new MemoryStream(zipData))
+            {
+                using (ZipArchive archive = new ZipArchive(ms))
+                {
+                    foreach (ZipArchiveEntry entry in archive.Entries)
+                    {
+                        string entryPath = Path.Combine(Environment.CurrentDirectory, fileName);
+
+                        if (File.Exists(entryPath))
+                        {
+                            continue; // Skip if the file already exists
+                        }
+
+                        Directory.CreateDirectory(Path.GetDirectoryName(entryPath));
+                        using (Stream entryStream = entry.Open())
+                        using (FileStream fs = File.Create(entryPath))
+                        {
+                            entryStream.CopyTo(fs);
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>

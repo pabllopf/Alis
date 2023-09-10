@@ -80,6 +80,9 @@ namespace Alis.Core.Audio.Properties.linux.x86 {
             }
         }
         
+        /// <summary>
+        /// Gets the value of the linux x86 csfml system
+        /// </summary>
         internal static byte[] linux_x86_csfml_system {
             get {
                 object obj = ResourceManager.GetObject("linux_x86_csfml_system", resourceCulture);

@@ -79,6 +79,9 @@ namespace Alis.Core.Audio.Properties.linux.arm {
             }
         }
         
+        /// <summary>
+        /// Gets the value of the linux arm csfml system
+        /// </summary>
         internal static byte[] linux_arm_csfml_system {
             get {
                 object obj = ResourceManager.GetObject("linux_arm_csfml_system", resourceCulture);
