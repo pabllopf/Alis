@@ -64,16 +64,16 @@ using Alis.Core.Audio.Properties.osx.arm64;
 
 #if LINUX
     #if X86
-              
+using Alis.Core.Audio.Properties.linux.x86; 
     #endif
     #if X64
 using Alis.Core.Audio.Properties.linux.x64;
     #endif
     #if ARM
-              
+              using Alis.Core.Audio.Properties.linux.arm;
     #endif
     #if ARM64
-
+using Alis.Core.Audio.Properties.linux.arm64;
     #endif
 #endif
 
@@ -107,7 +107,7 @@ namespace Alis.Core.Audio
 #endif
 #if LINUX
 #if X86
-            {(OSPlatform.Linux, Architecture.X86), NativeAudioLinuxX64SFML.linux_x86_csfml_audio}, 
+            {(OSPlatform.Linux, Architecture.X86), NativeAudioLinuxX86SFML.linux_x86_csfml_audio}, 
 #endif
 #if X64
             {(OSPlatform.Linux, Architecture.X64), NativeAudioLinuxX64SFML.linux_x64_csfml_audio},
@@ -163,7 +163,7 @@ namespace Alis.Core.Audio
 
 #if LINUX
 #if X86
-           {(OSPlatform.Linux, Architecture.X86), NativeAudioLinuxX64SFML.linux_x86_csfml_system},    
+           {(OSPlatform.Linux, Architecture.X86), NativeAudioLinuxX86SFML.linux_x86_csfml_system},    
 #endif
 #if X64
             {(OSPlatform.Linux, Architecture.X64), NativeAudioLinuxX64SFML.linux_x64_csfml_system},
