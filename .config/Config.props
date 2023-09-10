@@ -3,7 +3,6 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <RuntimeIdentifier>win-arm</RuntimeIdentifier>
     </PropertyGroup>
 
     <Import Project="$(SolutionDir).config/application/TargetFrameworks.props"/>

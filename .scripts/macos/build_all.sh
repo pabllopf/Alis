@@ -3,7 +3,8 @@ cd ../../
 for i in `find . -name "*.csproj" -type f`; 
   do if [[ $i != *".Template."* && $i != *".App."* && $i != *".Test."* && $i != *".Benchmark."* && $i != *".Sample."* ]] ; 
   then 
-    echo "Build project $i" ; 
+    echo "Build project $i" ;
+    dotnet build $i -c Release; 
     dotnet build $i -r win-x64 -c Release;
     dotnet build $i -r win-arm64 -c Release;
     dotnet build $i -r win-x86 -c Release;
