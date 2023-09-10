@@ -126,17 +126,17 @@
     <assembly alias="System.Windows.Forms"
               name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
     <data name="osx_arm64_csfml_graphics" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\osx-arm64\osx-arm64_csfml-graphics.dylib;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\..\..\resources\osx-arm64\osx-arm64_csfml-graphics.zip;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="osx_arm64_csfml_system" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\osx-arm64\osx-arm64_csfml-system.dylib;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\..\..\resources\osx-arm64\osx-arm64_csfml-system.zip;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="osx_arm64_csfml_window" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\osx-arm64\osx-arm64_csfml-window.dylib;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\..\..\resources\osx-arm64\osx-arm64_csfml-window.zip;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>

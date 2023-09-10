@@ -41,7 +41,6 @@
 *.svd
 *.pdb
 *.xml
-*.zip
 *.deb
 *.tar
 *.mdb
