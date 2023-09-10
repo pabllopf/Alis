@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.1.3] - 2023-09-10
+### :sparkles: New Features
+- [`b94beca`](https://github.com/pabllopf/Alis/commit/b94beca23cf79289719bcc6b94845cdf8fdeae44) - compress on zip native dlls *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2e58475`](https://github.com/pabllopf/Alis/commit/2e5847537b4e9f601ee2b70d11c18cea80c7436d) - can compress on .zip all native dlls *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`16e96f7`](https://github.com/pabllopf/Alis/commit/16e96f75833b6739dea0e12887c243a1c975118f) - compress all dlls natives of graphic to less than 1mb *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2f09b09`](https://github.com/pabllopf/Alis/commit/2f09b0950b25e45d6cbe373011dd77c0d21a8b29) - redue size of dlls of native audio than less 1mb *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`4eedcc2`](https://github.com/pabllopf/Alis/commit/4eedcc2c123e97a9a157c01324069ec21e83aae9) - the main loop with simple game *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`18182b3`](https://github.com/pabllopf/Alis/commit/18182b382a0c11a57b56825c7227a51493fb92dc) - default samples of alis games *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`348818d`](https://github.com/pabllopf/Alis/commit/348818d1c72a3aecd26f98a7f13b5e1f5990d43e) - win-x64 zip files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`873bdb1`](https://github.com/pabllopf/Alis/commit/873bdb14acff7e2a065bd9bae75f254dd7e0c8e7) - win-x86 zip *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5f6ba7e`](https://github.com/pabllopf/Alis/commit/5f6ba7e5848e21e9ae91dd1d08a754cf86342ed6) - win-arm zip *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`14a2470`](https://github.com/pabllopf/Alis/commit/14a2470985b6be1bbbf58cd69f97a92c05f16d0b) - win-arm64 zip *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7fd165e`](https://github.com/pabllopf/Alis/commit/7fd165ea123d0ea1a1e8f2e750b506e2d9f5ed73) - osx-x64 zip *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c609c46`](https://github.com/pabllopf/Alis/commit/c609c467b5107d1a774e7296b95141074af4bd15) - linux-x64 zip *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0219f03`](https://github.com/pabllopf/Alis/commit/0219f03884fe789a8e45e353ba11de60308de9b5) - linux-x86 zip *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3cf384c`](https://github.com/pabllopf/Alis/commit/3cf384c30906c15ec9318998293ec348526c52b3) - linux-arm zip *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2d5a36f`](https://github.com/pabllopf/Alis/commit/2d5a36f344a9c810dc148e7d2e1c9fe49e6229c4) - linux arm64 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8592bfb`](https://github.com/pabllopf/Alis/commit/8592bfb1cbdb2646a18de6c73f0cd45a82ba8a45) - physic error when open clean project *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.1.2] - 2023-09-10
 ### :sparkles: New Features
 - [`f63fd4c`](https://github.com/pabllopf/Alis/commit/f63fd4cccc2245e79ec6c0080fad9c4f8d6286c8) - compile depend of platform to reduce size *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -1195,3 +1217,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.1.0]: https://github.com/pabllopf/Alis/compare/v0.0.9...v0.1.0
 [v0.1.1]: https://github.com/pabllopf/Alis/compare/v0.1.0...v0.1.1
 [v0.1.2]: https://github.com/pabllopf/Alis/compare/v0.1.1...v0.1.2
+[v0.1.3]: https://github.com/pabllopf/Alis/compare/v0.1.2...v0.1.3
