@@ -24,7 +24,7 @@ select yn in "Yes" "No"; do
               if [[ $i == *$skip* ]] ; then
                   echo "Skip project $i"
               else
-                  echo "Add csproj = $i"
+                  echo "Restore csproj = $i"
                   dotnet restore $i
               fi
           done

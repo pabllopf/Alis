@@ -100,7 +100,7 @@ namespace Alis.Core.Graphic.SFML
             {(OSPlatform.Windows, Architecture.X64), NativeGraphicWindowsX64SFML.win_x64_csfml_window},        
                 #endif
                 #if ARM
-                             {(OSPlatform.Windows, Architecture.Arm), NativeGraphicWindowsX64SFML.win_x86_csfml_window},                              
+                             {(OSPlatform.Windows, Architecture.Arm), NativeGraphicWindowsARMSFML.win_arm_csfml_window},                              
                 #endif
                 #if ARM64
                       {(OSPlatform.Windows, Architecture.Arm64), NativeGraphicWindowsX64SFML.win_x64_csfml_window},                                      
@@ -151,7 +151,7 @@ namespace Alis.Core.Graphic.SFML
             {(OSPlatform.Windows, Architecture.X64), NativeGraphicWindowsX64SFML.win_x64_csfml_system},            
                 #endif
                 #if ARM
-                                     {(OSPlatform.Windows, Architecture.Arm), NativeGraphicWindowsX64SFML.win_x86_csfml_system},                      
+                                     {(OSPlatform.Windows, Architecture.Arm), NativeGraphicWindowsARMSFML.win_arm_csfml_system},                      
                 #endif
                 #if ARM64
                          {(OSPlatform.Windows, Architecture.Arm64), NativeGraphicWindowsX64SFML.win_x64_csfml_system},                              
@@ -208,7 +208,7 @@ namespace Alis.Core.Graphic.SFML
                             {(OSPlatform.Windows, Architecture.X64), NativeGraphicWindowsX64SFML.win_x64_csfml_graphics},
                 #endif
                 #if ARM
-                            {(OSPlatform.Windows, Architecture.Arm), NativeGraphicWindowsX64SFML.win_x86_csfml_graphics},           
+                            {(OSPlatform.Windows, Architecture.Arm), NativeGraphicWindowsARMSFML.win_arm_csfml_graphics},           
                 #endif
                 #if ARM64
                             {(OSPlatform.Windows, Architecture.Arm64), NativeGraphicWindowsX64SFML.win_x64_csfml_graphics},            
