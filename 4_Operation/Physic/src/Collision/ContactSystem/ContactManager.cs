@@ -123,6 +123,11 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             int indexA = proxyA.ChildIndex;
             int indexB = proxyB.ChildIndex;
 
+            if(fixtureA == null || fixtureB == null)
+            {
+                return;
+            }
+            
             Body bodyA = fixtureA.Body;
             Body bodyB = fixtureB.Body;
 
