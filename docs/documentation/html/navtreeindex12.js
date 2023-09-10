@@ -136,6 +136,7 @@ var NAVTREEINDEX12 =
 "d3/d6a/namespace_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1arm64.html":[0,0,0,2,5,0,1,0],
 "d3/d6b/class_alis_1_1_core_1_1_audio_1_1_audio_dlls.html":[1,0,0,2,1,4],
 "d3/d6b/class_alis_1_1_core_1_1_audio_1_1_audio_dlls.html#a3aba5792894d9e26cb2dfba530814dd4":[1,0,0,2,1,4,0],
+"d3/d6b/class_alis_1_1_core_1_1_audio_1_1_audio_dlls.html#abc71ee6261ba29d5ac8cd634f7815a52":[1,0,0,2,1,4,1],
 "d3/d6c/class_alis_1_1_builder_1_1_core_1_1_component_1_1_mesh_1_1_box_mesh_builder.html":[1,0,0,1,0,0,4,0],
 "d3/d78/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_1_1_identification.html":[1,0,0,2,5,1,1,5,0],
 "d3/d78/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_1_1_identification.html#a37eabc0dba58f49d7ae3bae297e26283":[1,0,0,2,5,1,1,5,0,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX12 =
 "d3/da9/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_sets.html":[0,0,0,2,8,7,5,1,2],
 "d3/da9/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_sets.html":[1,0,0,2,8,7,5,1,2],
 "d3/dac/namespace_alis_1_1_core_1_1_manager_1_1_time.html":[1,0,0,2,6,6],
-"d3/dac/namespace_alis_1_1_core_1_1_manager_1_1_time.html":[0,0,0,2,6,6],
-"d3/dac/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector3.html":[1,0,0,2,0,4,4,4]
+"d3/dac/namespace_alis_1_1_core_1_1_manager_1_1_time.html":[0,0,0,2,6,6]
 };

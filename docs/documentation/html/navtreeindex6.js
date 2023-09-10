@@ -1,5 +1,6 @@
 var NAVTREEINDEX6 =
 {
+"d1/d0f/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_figures_1_1_d2_1_1_rectangle_1_1_rectangle_f.html#afd0f8aca6952101d85b48d872b10afc2":[1,0,0,2,0,4,1,0,1,0,15],
 "d1/d12/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_font.html":[1,0,0,2,5,1,0,5],
 "d1/d12/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_font.html#a044152ad3813fef9d680afebb188e2a0":[1,0,0,2,5,1,0,5,21],
 "d1/d12/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_font.html#a0c8fdc6daf93a2b0d5da1d6fc672245e":[1,0,0,2,5,1,0,5,7],
@@ -248,6 +249,5 @@ var NAVTREEINDEX6 =
 "d1/da6/namespace_alis_1_1_core_1_1_aspect_1_1_base_1_1_settings.html":[0,0,0,2,0,0,4],
 "d1/daf/namespace_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes.html":[0,0,0,2,0,5,0],
 "d1/daf/namespace_alis_1_1_core_1_1_aspect_1_1_memory_1_1_attributes.html":[1,0,0,2,0,5,0],
-"d1/db4/class_alis_1_1_app_1_1_engine_1_1_windows_1_1_solution_window.html":[1,0,0,0,0,9,6],
-"d1/db4/class_alis_1_1_app_1_1_engine_1_1_windows_1_1_solution_window.html#a6547248d74c97a9576784459d92b978d":[1,0,0,0,0,9,6,0]
+"d1/db4/class_alis_1_1_app_1_1_engine_1_1_windows_1_1_solution_window.html":[1,0,0,0,0,9,6]
 };

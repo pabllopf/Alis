@@ -1,5 +1,13 @@
 var NAVTREEINDEX48 =
 {
+"dd/d4b/class_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_plot_1_1_im_plot.html#af044847390b4c0256c1cd754fb323ebc":[1,0,0,0,0,8,1,2,0,388],
+"dd/d4b/class_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_plot_1_1_im_plot.html#af0a37c75f0cf9c3b8ff072e07d27ff4d":[1,0,0,0,0,8,1,2,0,117],
+"dd/d4b/class_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_plot_1_1_im_plot.html#af0b22827df88d34525b4e8e6f3e7aabb":[1,0,0,0,0,8,1,2,0,984],
+"dd/d4b/class_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_plot_1_1_im_plot.html#af0b5004a2ca710c21f35b0e3e437dc37":[1,0,0,0,0,8,1,2,0,726],
+"dd/d4b/class_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_plot_1_1_im_plot.html#af0e2bb1681eb5033715603814e8975a8":[1,0,0,0,0,8,1,2,0,701],
+"dd/d4b/class_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_plot_1_1_im_plot.html#af1164e911f7b36fb99a7cc8fddf91222":[1,0,0,0,0,8,1,2,0,997],
+"dd/d4b/class_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_plot_1_1_im_plot.html#af124d57e78b4d7b5014271fc8e84a7b3":[1,0,0,0,0,8,1,2,0,1070],
+"dd/d4b/class_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_plot_1_1_im_plot.html#af16fa95ef6bb835c0a9c1a1eaf3cb276":[1,0,0,0,0,8,1,2,0,1088],
 "dd/d4b/class_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_plot_1_1_im_plot.html#af172fe40b268ea6e702d98176d7ed45f":[1,0,0,0,0,8,1,2,0,794],
 "dd/d4b/class_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_plot_1_1_im_plot.html#af21c5821ea6b883ef19671c6aed7cc57":[1,0,0,0,0,8,1,2,0,714],
 "dd/d4b/class_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_plot_1_1_im_plot.html#af263640ae46ea4d1f6ecc0bc7b317516":[1,0,0,0,0,8,1,2,0,571],
@@ -241,13 +249,5 @@ var NAVTREEINDEX48 =
 "dd/db3/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_palette.html#aac620268ac003236fe1dcc3bf7db001f":[1,0,0,0,0,6,1,61,3],
 "dd/db3/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_palette.html#ac305605d705db5b4afab51296574d292":[1,0,0,0,0,6,1,61,2],
 "dd/db3/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_palette.html#aef3f47b58a1d0e678686d78c55d52452":[1,0,0,0,0,6,1,61,0],
-"dd/db7/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_multi_gesture_event.html":[1,0,0,0,0,6,1,60],
-"dd/db7/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_multi_gesture_event.html#a10b75e68fc928b576c7d8b6d7a4c33cd":[1,0,0,0,0,6,1,60,0],
-"dd/db7/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_multi_gesture_event.html#a1db082d3e11b160109909b6d30c21c52":[1,0,0,0,0,6,1,60,1],
-"dd/db7/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_multi_gesture_event.html#a37734db74a610b221f33b246e338c3b5":[1,0,0,0,0,6,1,60,5],
-"dd/db7/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_multi_gesture_event.html#a7a91e4f8f65a557ada34ebcd43ec943f":[1,0,0,0,0,6,1,60,6],
-"dd/db7/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_multi_gesture_event.html#a7ccddab3c756f93331e6c10749e5312d":[1,0,0,0,0,6,1,60,7],
-"dd/db7/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_multi_gesture_event.html#a84a518d84554cd9eb7583df40695c6ca":[1,0,0,0,0,6,1,60,4],
-"dd/db7/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_multi_gesture_event.html#ab4cfe8a1b61a0e488921f889c5c82886":[1,0,0,0,0,6,1,60,3],
-"dd/db7/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_multi_gesture_event.html#ab6ca70cc4676fc8ab2796b1a3e85964e":[1,0,0,0,0,6,1,60,2]
+"dd/db7/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_multi_gesture_event.html":[1,0,0,0,0,6,1,60]
 };

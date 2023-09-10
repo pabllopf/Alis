@@ -8,6 +8,7 @@ var class_alis_1_1_core_1_1_audio_1_1_audio_clip_base =
     [ "Stop", "d0/d02/class_alis_1_1_core_1_1_audio_1_1_audio_clip_base.html#ad2f5c90c86003595816e7d222dc6411a", null ],
     [ "Resume", "d0/d02/class_alis_1_1_core_1_1_audio_1_1_audio_clip_base.html#a8b9c7b5d36efc983026d722f1a9077c9", null ],
     [ "player", "d0/d02/class_alis_1_1_core_1_1_audio_1_1_audio_clip_base.html#a28317f9131406d4b0e8b39df2292dc00", null ],
+    [ "music", "d0/d02/class_alis_1_1_core_1_1_audio_1_1_audio_clip_base.html#a1211342a854fdd1b784acc13a610368f", null ],
     [ "SampleRate", "d0/d02/class_alis_1_1_core_1_1_audio_1_1_audio_clip_base.html#a8467663f36f6968c08b9c9304a0b504c", null ],
     [ "ChannelCount", "d0/d02/class_alis_1_1_core_1_1_audio_1_1_audio_clip_base.html#a9989acf691fa7a05473ec602bd17c874", null ],
     [ "Duration", "d0/d02/class_alis_1_1_core_1_1_audio_1_1_audio_clip_base.html#a58449f109a268d70dc0f0384abd20054", null ],

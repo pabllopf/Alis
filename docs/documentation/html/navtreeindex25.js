@@ -1,17 +1,5 @@
 var NAVTREEINDEX25 =
 {
-"d8/d58/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_text_input_event.html#ae249fb98575058fc46a9d12030ede154":[1,0,0,0,0,6,1,73,32],
-"d8/d58/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_text_input_event.html#ae5a254ac9049164d7963000939d4079f":[1,0,0,0,0,6,1,73,30],
-"d8/d5a/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_io_ptr.html":[1,0,0,0,0,8,1,1,8],
-"d8/d5a/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_io_ptr.html#a13e7803efdf13edbfca53ea6c9a9e9cb":[1,0,0,0,0,8,1,1,8,0],
-"d8/d5a/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_io_ptr.html#a17a111a74c84b7eb664d9f96bc4c51dd":[1,0,0,0,0,8,1,1,8,11],
-"d8/d5a/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_io_ptr.html#a38e751da47a6c2f5b3afa21e66f936ae":[1,0,0,0,0,8,1,1,8,6],
-"d8/d5a/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_io_ptr.html#a52746d7ed9a18e4b55848e04b9ef544f":[1,0,0,0,0,8,1,1,8,1],
-"d8/d5a/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_io_ptr.html#a56b8de6b27e4b485e51a37559920033a":[1,0,0,0,0,8,1,1,8,3],
-"d8/d5a/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_io_ptr.html#a681164cb4bb6d60fcfb30199fc409b39":[1,0,0,0,0,8,1,1,8,7],
-"d8/d5a/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_io_ptr.html#a7f0eea03d4afd7f02911aab1ccb8c305":[1,0,0,0,0,8,1,1,8,9],
-"d8/d5a/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_io_ptr.html#a96521a7b452fc19f7452c551f08abbc7":[1,0,0,0,0,8,1,1,8,5],
-"d8/d5a/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_io_ptr.html#ab5813ad6331f27cd62fb81bbf4cd24e4":[1,0,0,0,0,8,1,1,8,4],
 "d8/d5a/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_io_ptr.html#ab84db95052e7b3e3e0d73ef795d8011b":[1,0,0,0,0,8,1,1,8,8],
 "d8/d5a/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_io_ptr.html#ad5f1455dd11b1249740a3f6af0c855ce":[1,0,0,0,0,8,1,1,8,10],
 "d8/d5a/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_io_ptr.html#aee23179422c0fb47108c96426de1b551":[1,0,0,0,0,8,1,1,8,2],
@@ -249,5 +237,17 @@ var NAVTREEINDEX25 =
 "d8/deb/struct_alis_1_1_core_1_1_physic_1_1_shared_1_1_aabb.html#ae228c5a5c71b624ac1f2d154f35ddceb":[1,0,0,2,8,6,2,14],
 "d8/deb/struct_alis_1_1_core_1_1_physic_1_1_shared_1_1_aabb.html#af64fa7fbe6c87a3cf07e084c7944ed85":[1,0,0,2,8,6,2,9],
 "d8/df9/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_ray_cast_1_1_ray_cast_output.html":[1,0,0,2,8,0,5,1],
-"d8/df9/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_ray_cast_1_1_ray_cast_output.html#a08e7923ec19b5c6cd016c8e020d58988":[1,0,0,2,8,0,5,1,1]
+"d8/df9/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_ray_cast_1_1_ray_cast_output.html#a08e7923ec19b5c6cd016c8e020d58988":[1,0,0,2,8,0,5,1,1],
+"d8/df9/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_ray_cast_1_1_ray_cast_output.html#a16f6c50fb7576b222271b72ca69e77cd":[1,0,0,2,8,0,5,1,0],
+"d8/dfc/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_internal_sdl_message_box_data.html":[1,0,0,0,0,6,1,11],
+"d8/dfc/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_internal_sdl_message_box_data.html#a03f617d58bb2b2b752c3c203780112e6":[1,0,0,0,0,6,1,11,6],
+"d8/dfc/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_internal_sdl_message_box_data.html#a1d99ed722e5950fe20cab6c854457bf2":[1,0,0,0,0,6,1,11,5],
+"d8/dfc/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_internal_sdl_message_box_data.html#a2bc73e08338e81881017f6aacf42db64":[1,0,0,0,0,6,1,11,2],
+"d8/dfc/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_internal_sdl_message_box_data.html#a453e5b6b64516579a7099dade22ab3b6":[1,0,0,0,0,6,1,11,0],
+"d8/dfc/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_internal_sdl_message_box_data.html#a4abe0f5562275469006a6ca1fa306ff5":[1,0,0,0,0,6,1,11,4],
+"d8/dfc/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_internal_sdl_message_box_data.html#a4e18153c5c2be87f44f43c50a30e32a9":[1,0,0,0,0,6,1,11,1],
+"d8/dfc/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_internal_sdl_message_box_data.html#abf4d87d656f24d0444b467a31630bd88":[1,0,0,0,0,6,1,11,3],
+"d9/d04/namespace_alis_1_1_core_1_1_plugin.html":[0,0,0,2,9],
+"d9/d04/namespace_alis_1_1_core_1_1_plugin.html":[1,0,0,2,9],
+"d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html":[1,0,0,2,8,6,4]
 };

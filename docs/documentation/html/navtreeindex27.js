@@ -1,8 +1,8 @@
 var NAVTREEINDEX27 =
 {
-"d9/d4b/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_platform_monitor_ptr.html#ad48e48131b5b1955ae25af0ae0c3c1c2":[1,0,0,0,0,8,51,3],
-"d9/d4b/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_platform_monitor_ptr.html#adb442af91e880645a0599d671ac5e976":[1,0,0,0,0,8,51,1],
-"d9/d50/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_circle_collider_builder.html":[1,0,0,1,0,0,2,1],
+"d9/d53/class_alis_1_1_app_1_1_engine_1_1_s_d_l___audio_1_1_audio_sdl_dlls.html":[1,0,0,0,0,7,0],
+"d9/d53/class_alis_1_1_app_1_1_engine_1_1_s_d_l___audio_1_1_audio_sdl_dlls.html#a0b1a15e7aaecf337f4ada3e43dd3b528":[1,0,0,0,0,7,0,1],
+"d9/d53/class_alis_1_1_app_1_1_engine_1_1_s_d_l___audio_1_1_audio_sdl_dlls.html#ae9418f9bfe1587f86a07dddb63b7d7d3":[1,0,0,0,0,7,0,0],
 "d9/d60/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_emulate_three_button_mouse_ptr.html":[1,0,0,0,0,8,1,1,1],
 "d9/d60/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_emulate_three_button_mouse_ptr.html#a094aa4a90132e04bdef9defacc16bbe8":[1,0,0,0,0,8,1,1,1,1],
 "d9/d60/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_emulate_three_button_mouse_ptr.html#a2dbec3769201b57b0dcc5c7cce202429":[1,0,0,0,0,8,1,1,1,3],
@@ -81,12 +81,11 @@ var NAVTREEINDEX27 =
 "d9/d8c/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_restitution.html":[1,0,0,2,0,2,0,44],
 "d9/d8c/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_restitution.html#adfd4df1e00735a4a71a27c4063a1920e":[1,0,0,2,0,2,0,44,0],
 "d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html":[1,0,0,2,1,1,1,1,0],
-"d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html#a0ba40f99df0ee0d107a332911d3dca24":[1,0,0,2,1,1,1,1,0,6],
 "d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html#a26c9fdd7e19bd9a6cd4b716b047cac84":[1,0,0,2,1,1,1,1,0,2],
 "d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html#a32f4dd2ebd0575e51216facfc79a7309":[1,0,0,2,1,1,1,1,0,5],
+"d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html#a3e8e144894a4a4fe836e8dfe9c23abb4":[1,0,0,2,1,1,1,1,0,6],
 "d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html#a67feb6faa35f4aa945a66818bb07829f":[1,0,0,2,1,1,1,1,0,3],
 "d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html#a8b04189a9f399ab8fd12033e200e3196":[1,0,0,2,1,1,1,1,0,1],
-"d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html#ac00239ecb65070d8128fe2789a95f044":[1,0,0,2,1,1,1,1,0,7],
 "d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html#ad3a459fa84ac7269339724479ea50082":[1,0,0,2,1,1,1,1,0,0],
 "d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html#afb3d4debf8b854f77ef0b9de62a76539":[1,0,0,2,1,1,1,1,0,4],
 "d9/d95/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_mouse_motion_event.html":[1,0,0,0,0,6,1,58],
@@ -249,5 +248,6 @@ var NAVTREEINDEX27 =
 "d9/dfe/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_texture.html#ab72d39beb8485bc653ccf1824a4020ab":[1,0,0,2,5,1,0,18,23],
 "d9/dfe/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_texture.html#abe8dfb5e5d05dabc0d8fed5fcacf3846":[1,0,0,2,5,1,0,18,56],
 "d9/dfe/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_texture.html#ac11a7675ec8f699746cea0d56ac897ac":[1,0,0,2,5,1,0,18,46],
-"d9/dfe/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_texture.html#ac8872bb8e6f55f0bc9f81d4e4e9c6d81":[1,0,0,2,5,1,0,18,48]
+"d9/dfe/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_texture.html#ac8872bb8e6f55f0bc9f81d4e4e9c6d81":[1,0,0,2,5,1,0,18,48],
+"d9/dfe/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_texture.html#ac8a05c20fd5d6525d80b83366d3f0fc0":[1,0,0,2,5,1,0,18,40]
 };

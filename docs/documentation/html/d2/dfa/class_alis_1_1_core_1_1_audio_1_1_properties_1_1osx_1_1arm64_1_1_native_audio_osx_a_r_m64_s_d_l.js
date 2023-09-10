@@ -2,7 +2,6 @@ var class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audi
 [
     [ "NativeAudioOsxARM64SDL", "d2/dfa/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_d_l.html#a347bbddcb9d64d08cb6921ee2e7d6b7f", null ],
     [ "NativeAudioOsxARM64SDL", "d2/dfa/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_d_l.html#a347bbddcb9d64d08cb6921ee2e7d6b7f", null ],
-    [ "NativeAudioOsxARM64SDL", "d2/dfa/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_d_l.html#a347bbddcb9d64d08cb6921ee2e7d6b7f", null ],
     [ "resourceMan", "d2/dfa/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_d_l.html#a13fbe237cb8e0ca4b1e3a697c48b826c", null ],
     [ "resourceCulture", "d2/dfa/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_d_l.html#a84194dc3238c60c0e4e49f3dbe1f4c7d", null ],
     [ "ResourceManager", "d2/dfa/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_d_l.html#ae123e23f57b0f27d19d22e3304febe35", null ],

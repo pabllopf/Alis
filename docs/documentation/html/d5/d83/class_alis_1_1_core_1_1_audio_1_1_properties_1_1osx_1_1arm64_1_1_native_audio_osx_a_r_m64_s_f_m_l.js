@@ -3,7 +3,6 @@ var class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audi
     [ "NativeAudioOsxARM64SFML", "d5/d83/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_f_m_l.html#a480abef663feb424fb70b237731cce0c", null ],
     [ "NativeAudioOsxARM64SFML", "d5/d83/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_f_m_l.html#a480abef663feb424fb70b237731cce0c", null ],
     [ "NativeAudioOsxARM64SFML", "d5/d83/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_f_m_l.html#a480abef663feb424fb70b237731cce0c", null ],
-    [ "NativeAudioOsxARM64SFML", "d5/d83/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_f_m_l.html#a480abef663feb424fb70b237731cce0c", null ],
     [ "resourceMan", "d5/d83/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_f_m_l.html#a64f3fc3f1ea8ddd0a37671c95419449d", null ],
     [ "resourceCulture", "d5/d83/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_f_m_l.html#a54449338317d7445d0efff12bca2ff26", null ],
     [ "ResourceManager", "d5/d83/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_f_m_l.html#a480d4097c44fd699adf4d2e3b911d0d5", null ],
@@ -23,5 +22,6 @@ var class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audi
     [ "win_x64_sdl2_mixer", "d5/d83/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_f_m_l.html#af8307198b24f950fc87e4b8b202de2ed", null ],
     [ "win_x86_csfml_audio", "d5/d83/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_f_m_l.html#a39aa9d8359f3a5c66ff90f890d3969c8", null ],
     [ "win_x86_openal32", "d5/d83/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_f_m_l.html#a5692e823e8dfddf164d8d22f633711ee", null ],
-    [ "win_x86_sdl2_mixer", "d5/d83/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_f_m_l.html#a9660e423b5d96dd6741bd2417b262331", null ]
+    [ "win_x86_sdl2_mixer", "d5/d83/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_f_m_l.html#a9660e423b5d96dd6741bd2417b262331", null ],
+    [ "osx_arm64_csfml_system", "d5/d83/class_alis_1_1_core_1_1_audio_1_1_properties_1_1osx_1_1arm64_1_1_native_audio_osx_a_r_m64_s_f_m_l.html#abd7fa10d7e4c324d5a350cc4b62a9832", null ]
 ];

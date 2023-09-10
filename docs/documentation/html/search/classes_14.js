@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['unionvalue_12127',['UnionValue',['../d6/d6e/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_union_value.html',1,'Alis::App::Engine::UI']]],
-  ['unixplayerbase_12128',['UnixPlayerBase',['../de/d4d/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_players_1_1_unix_player_base.html',1,'Alis::Core::Audio::OS::Players']]],
-  ['unsafe_12129',['Unsafe',['../d8/de1/class_alis_1_1_app_1_1_engine_1_1_u_i_1_1_utils_1_1_unsafe.html',1,'Alis::App::Engine::UI::Utils']]],
-  ['utf8manager_12130',['Utf8Manager',['../d6/d31/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_utf8_manager.html',1,'Alis::Core::Aspect::Memory']]],
-  ['util_12131',['Util',['../de/dc2/class_alis_1_1_app_1_1_engine_1_1_u_i_1_1_utils_1_1_util.html',1,'Alis.App.Engine.UI.Utils.Util'],['../db/d2c/class_alis_1_1_app_1_1_engine_1_1_u_i_1_1_util.html',1,'Alis.App.Engine.UI.Util']]]
+  ['unionvalue_12132',['UnionValue',['../d6/d6e/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_union_value.html',1,'Alis::App::Engine::UI']]],
+  ['unixplayerbase_12133',['UnixPlayerBase',['../de/d4d/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_players_1_1_unix_player_base.html',1,'Alis::Core::Audio::OS::Players']]],
+  ['unsafe_12134',['Unsafe',['../d8/de1/class_alis_1_1_app_1_1_engine_1_1_u_i_1_1_utils_1_1_unsafe.html',1,'Alis::App::Engine::UI::Utils']]],
+  ['utf8manager_12135',['Utf8Manager',['../d6/d31/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_utf8_manager.html',1,'Alis::Core::Aspect::Memory']]],
+  ['util_12136',['Util',['../db/d2c/class_alis_1_1_app_1_1_engine_1_1_u_i_1_1_util.html',1,'Alis.App.Engine.UI.Util'],['../de/dc2/class_alis_1_1_app_1_1_engine_1_1_u_i_1_1_utils_1_1_util.html',1,'Alis.App.Engine.UI.Utils.Util']]]
 ];
