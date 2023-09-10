@@ -119,7 +119,7 @@ namespace Alis.Core.Graphic.SFML
          {(OSPlatform.Linux, Architecture.Arm), NativeGraphic.linux_arm64_csfml_window},                                          
 #endif
 #if ARM64
-          {(OSPlatform.Linux, Architecture.Arm64), NativeGraphic.linux_arm64_csfml_window},                                  
+          {(OSPlatform.Linux, Architecture.Arm64), NativeGraphicLinuxARM64SFML.linux_arm64_csfml_window},                                  
 #endif
 #endif
 #if OSX
@@ -170,7 +170,7 @@ namespace Alis.Core.Graphic.SFML
          {(OSPlatform.Linux, Architecture.Arm), NativeGraphic.linux_arm64_csfml_system},                
 #endif
 #if ARM64
-       {(OSPlatform.Linux, Architecture.Arm64), NativeGraphic.linux_arm64_csfml_system},                         
+       {(OSPlatform.Linux, Architecture.Arm64), NativeGraphicLinuxARM64SFML.linux_arm64_csfml_system},                         
 #endif
 #endif
             
@@ -226,7 +226,7 @@ namespace Alis.Core.Graphic.SFML
          {(OSPlatform.Linux, Architecture.Arm), NativeGraphic.linux_arm64_csfml_graphics},                                      
 #endif
 #if ARM64
-        {(OSPlatform.Linux, Architecture.Arm64), NativeGraphic.linux_arm64_csfml_graphics},                     
+        {(OSPlatform.Linux, Architecture.Arm64), NativeGraphicLinuxARM64SFML.linux_arm64_csfml_graphics},                     
 #endif
 #endif
             #if OSX
