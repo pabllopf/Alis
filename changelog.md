@@ -5,6 +5,40 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.1.2] - 2023-09-10
+### :sparkles: New Features
+- [`f63fd4c`](https://github.com/pabllopf/Alis/commit/f63fd4cccc2245e79ec6c0080fad9c4f8d6286c8) - compile depend of platform to reduce size *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ec89d65`](https://github.com/pabllopf/Alis/commit/ec89d658b6320aab1a56b9d3f15ef29a83c8b220) - include new configurations to compile tiny modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1bfc60b`](https://github.com/pabllopf/Alis/commit/1bfc60b42084e436161b2a3eeb148714417302c6) - tiny windows compilation 1MB Alis. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b4030ce`](https://github.com/pabllopf/Alis/commit/b4030ce00ae39ff6d35bfb5c78382d6d13a0926b) - windows arm 64 bits configuration *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e12c670`](https://github.com/pabllopf/Alis/commit/e12c670b9805c4834e7fa0d0c2450cce8d4610c7) - add new win arm64 platform. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5170720`](https://github.com/pabllopf/Alis/commit/51707205254b21d97be9d76ad6fdbe7e7a10fc81) - update namespace of engine module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0f27aaf`](https://github.com/pabllopf/Alis/commit/0f27aaf9b236e0805dbbaca264fe62f928d545a2) - auto pack with diferents platforms *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`439b507`](https://github.com/pabllopf/Alis/commit/439b507a1dcd67e529790123780c3013469ffe36) - add new custom build for linux x64 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`79eca3c`](https://github.com/pabllopf/Alis/commit/79eca3c1d439e65a6addecd86b7cc34c9563bb1c) - add custom build for linux x86 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`654fc26`](https://github.com/pabllopf/Alis/commit/654fc2616bbb2d08c25890d493955efaf9e8f417) - add custom build for linux arm64 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4fca5e2`](https://github.com/pabllopf/Alis/commit/4fca5e236b5f9d03656d28ecad69c9ed870fb54c) - add new custom build for linux arm *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`811ecf7`](https://github.com/pabllopf/Alis/commit/811ecf7831a5a9701cc9e6110dbc5349b2041af7) - add win x86 platform *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1a0b902`](https://github.com/pabllopf/Alis/commit/1a0b90270909c65a9ab1c7135178c4aaad4e6468) - add new platform win arm *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`8923729`](https://github.com/pabllopf/Alis/commit/8923729ecebe04ebe53b42b36baf980a94dff22e) - namespace of engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`451ae90`](https://github.com/pabllopf/Alis/commit/451ae90a88e6048d8f22a1cc0cf63b849d4c1877) - windows platform optimization for x64 bits *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0328fb8`](https://github.com/pabllopf/Alis/commit/0328fb86e542820e4eec40c44211ba0d02f736cb) - the engine module with new bakend with opengl and sdl2 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4d4d914`](https://github.com/pabllopf/Alis/commit/4d4d914291e51c3d363143169f5f72a6ecc55a1d) - the dlls audio of sdl2 on engine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`04b4d76`](https://github.com/pabllopf/Alis/commit/04b4d7664dad1b57469988e8a933694b4de40b4b) - reduce the size of dlls *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`eeb7ad4`](https://github.com/pabllopf/Alis/commit/eeb7ad409c217e431899b81674874931d701718a) - windows x64 build *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0694e4c`](https://github.com/pabllopf/Alis/commit/0694e4cca73704fad32628c17ab4e5a35938ff1a) - dlls of windows arm 64 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`45631a4`](https://github.com/pabllopf/Alis/commit/45631a451d7b87a0a1dc52e011c8d73d85df3db3) - the sfml controller *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`44b8a6c`](https://github.com/pabllopf/Alis/commit/44b8a6c19ce265d7049a9e60b22df0e11b3a7df6) - 3 issues of public to change internal class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7dada55`](https://github.com/pabllopf/Alis/commit/7dada5579edce443edc4bebba3a6b1b9278ab3e3) - add dll system to audio module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`26c40a4`](https://github.com/pabllopf/Alis/commit/26c40a440dd2a235eaf5c6558dcfe3e57ad94f9d) - audio module to include sfml backend *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`adc0b1e`](https://github.com/pabllopf/Alis/commit/adc0b1e606051e8c2e8135470e07d0f1fbe85275) - the osx x64 bilding of engine, audio and graphic modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c7d0c11`](https://github.com/pabllopf/Alis/commit/c7d0c11aef37affeaa2d2a5cb05d36594edc2880) - native engine platform osx-arm64 *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5bcd1d3`](https://github.com/pabllopf/Alis/commit/5bcd1d36c6c8470608c7f429a8662e081b35ee49) - windows platforms *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1e50177`](https://github.com/pabllopf/Alis/commit/1e50177d1a9d8b01b4df5c46ee38b6b14c4f99ba) - add build all platforms *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.1.1] - 2023-08-29
 ### :sparkles: New Features
 - [`25ede11`](https://github.com/pabllopf/Alis/commit/25ede11dbd5ecb2d63743e45b72ef91a4d209efb) - include native aot to compile c code *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -1160,3 +1194,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.0.9]: https://github.com/pabllopf/Alis/compare/v0.0.8...v0.0.9
 [v0.1.0]: https://github.com/pabllopf/Alis/compare/v0.0.9...v0.1.0
 [v0.1.1]: https://github.com/pabllopf/Alis/compare/v0.1.0...v0.1.1
+[v0.1.2]: https://github.com/pabllopf/Alis/compare/v0.1.1...v0.1.2
