@@ -16,4 +16,5 @@ for i in `find . -name "*.csproj" -type f`;
     dotnet build $i -r linux-arm64 -c Release;
 fi;done
 
+
 cd ./.scripts/macos/ || exit 
