@@ -126,17 +126,17 @@
     <assembly alias="System.Windows.Forms"
               name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
     <data name="win_arm_csfml_graphics" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-arm\win-arm_csfml-graphics.dll;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\..\..\resources\win-arm\win-arm_csfml-graphics.zip;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="win_arm_csfml_system" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-arm\win-arm_csfml-system.dll;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\..\..\resources\win-arm\win-arm_csfml-system.zip;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="win_arm_csfml_window" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-arm\win-arm_csfml-window.dll;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\..\..\resources\win-arm\win-arm_csfml-window.zip;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>
