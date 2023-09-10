@@ -125,81 +125,7 @@
     </resheader>
     <assembly alias="System.Windows.Forms"
               name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
-    <data name="win_arm64_cimgui" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-arm64\win-arm64_cimgui.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b77a5c561934e089
-        </value>
-    </data>
-    <data name="win_arm64_csfml_graphics" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-arm64\win-arm64_csfml-graphics.dll;System.Byte[], mscorlib, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b77a5c561934e089
-        </value>
-    </data>
-    <data name="win_arm64_csfml_system" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-arm64\win-arm64_csfml-system.dll;System.Byte[], mscorlib, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b77a5c561934e089
-        </value>
-    </data>
-    <data name="win_arm64_csfml_window" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-arm64\win-arm64_csfml-window.dll;System.Byte[], mscorlib, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b77a5c561934e089
-        </value>
-    </data>
-    <data name="win_arm64_sdl2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-arm64\win-arm64_sdl2.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b77a5c561934e089
-        </value>
-    </data>
-    <data name="win_arm64_sdl2_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-arm64\win-arm64_sdl2_image.dll;System.Byte[], mscorlib, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b77a5c561934e089
-        </value>
-    </data>
-    <data name="win_arm64_sdl2_ttf" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-arm64\win-arm64_sdl2_ttf.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b77a5c561934e089
-        </value>
-    </data>
-    <data name="win_x64_cimgui" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-x64\win-x64_cimgui.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b77a5c561934e089
-        </value>
-    </data>
-    <data name="win_x64_csfml_graphics" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-x64\win-x64_csfml-graphics.dll;System.Byte[], mscorlib, Version=4.0.0.0,
-            Culture=neutral, PublicKeyToken=b77a5c561934e089
-        </value>
-    </data>
-    <data name="win_x64_csfml_system" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-x64\win-x64_csfml-system.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b77a5c561934e089
-        </value>
-    </data>
-    <data name="win_x64_csfml_window" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-x64\win-x64_csfml-window.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b77a5c561934e089
-        </value>
-    </data>
-    <data name="win_x64_sdl2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-x64\win-x64_sdl2.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b77a5c561934e089
-        </value>
-    </data>
-    <data name="win_x64_sdl2_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-x64\win-x64_sdl2_image.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b77a5c561934e089
-        </value>
-    </data>
-    <data name="win_x64_sdl2_ttf" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-x64\win-x64_sdl2_ttf.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b77a5c561934e089
-        </value>
-    </data>
-    <data name="win_x86_cimgui" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-x86\win-x86_cimgui.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b77a5c561934e089
-        </value>
-    </data>
+    
     <data name="win_x86_csfml_graphics" type="System.Resources.ResXFileRef, System.Windows.Forms">
         <value>..\..\..\resources\win-x86\win-x86_csfml-graphics.dll;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
@@ -212,21 +138,6 @@
     </data>
     <data name="win_x86_csfml_window" type="System.Resources.ResXFileRef, System.Windows.Forms">
         <value>..\..\..\resources\win-x86\win-x86_csfml-window.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b77a5c561934e089
-        </value>
-    </data>
-    <data name="win_x86_sdl2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-x86\win-x86_sdl2.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b77a5c561934e089
-        </value>
-    </data>
-    <data name="win_x86_sdl2_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-x86\win-x86_sdl2_image.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
-            PublicKeyToken=b77a5c561934e089
-        </value>
-    </data>
-    <data name="win_x86_sdl2_ttf" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-x86\win-x86_sdl2_ttf.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
             PublicKeyToken=b77a5c561934e089
         </value>
     </data>

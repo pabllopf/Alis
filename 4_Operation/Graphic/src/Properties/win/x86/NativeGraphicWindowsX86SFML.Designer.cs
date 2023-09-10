@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.Properties.win.x64 {
+namespace Alis.Core.Graphic.Properties.win.x86 {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace Alis.Core.Graphic.Properties.win.x64 {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class NativeGraphicWindowsX64SFML {
+    internal class NativeGraphicWindowsX86SFML {
         
         /// <summary>
         /// The resource man
@@ -35,10 +35,10 @@ namespace Alis.Core.Graphic.Properties.win.x64 {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="NativeGraphicWindowsX64SFML"/> class
+        /// Initializes a new instance of the <see cref="NativeGraphicWindowsX86SFML"/> class
         /// </summary>
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal NativeGraphicWindowsX64SFML() {
+        internal NativeGraphicWindowsX86SFML() {
         }
         
         /// <summary>
@@ -48,7 +48,7 @@ namespace Alis.Core.Graphic.Properties.win.x64 {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Alis.Core.Graphic.Properties.win.x64.NativeGraphicWindowsX64SFML", typeof(NativeGraphicWindowsX64SFML).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Alis.Core.Graphic.Properties.win.x86.NativeGraphicWindowsX86SFML", typeof(NativeGraphicWindowsX86SFML).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -66,156 +66,6 @@ namespace Alis.Core.Graphic.Properties.win.x64 {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_arm64_cimgui {
-            get {
-                object obj = ResourceManager.GetObject("win_arm64_cimgui", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_arm64_csfml_graphics {
-            get {
-                object obj = ResourceManager.GetObject("win_arm64_csfml_graphics", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_arm64_csfml_system {
-            get {
-                object obj = ResourceManager.GetObject("win_arm64_csfml_system", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_arm64_csfml_window {
-            get {
-                object obj = ResourceManager.GetObject("win_arm64_csfml_window", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_arm64_sdl2 {
-            get {
-                object obj = ResourceManager.GetObject("win_arm64_sdl2", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_arm64_sdl2_image {
-            get {
-                object obj = ResourceManager.GetObject("win_arm64_sdl2_image", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_arm64_sdl2_ttf {
-            get {
-                object obj = ResourceManager.GetObject("win_arm64_sdl2_ttf", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_x64_cimgui {
-            get {
-                object obj = ResourceManager.GetObject("win_x64_cimgui", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_x64_csfml_graphics {
-            get {
-                object obj = ResourceManager.GetObject("win_x64_csfml_graphics", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_x64_csfml_system {
-            get {
-                object obj = ResourceManager.GetObject("win_x64_csfml_system", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_x64_csfml_window {
-            get {
-                object obj = ResourceManager.GetObject("win_x64_csfml_window", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_x64_sdl2 {
-            get {
-                object obj = ResourceManager.GetObject("win_x64_sdl2", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_x64_sdl2_image {
-            get {
-                object obj = ResourceManager.GetObject("win_x64_sdl2_image", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_x64_sdl2_ttf {
-            get {
-                object obj = ResourceManager.GetObject("win_x64_sdl2_ttf", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_x86_cimgui {
-            get {
-                object obj = ResourceManager.GetObject("win_x86_cimgui", resourceCulture);
-                return ((byte[])(obj));
             }
         }
         
@@ -245,36 +95,6 @@ namespace Alis.Core.Graphic.Properties.win.x64 {
         internal static byte[] win_x86_csfml_window {
             get {
                 object obj = ResourceManager.GetObject("win_x86_csfml_window", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_x86_sdl2 {
-            get {
-                object obj = ResourceManager.GetObject("win_x86_sdl2", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_x86_sdl2_image {
-            get {
-                object obj = ResourceManager.GetObject("win_x86_sdl2_image", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] win_x86_sdl2_ttf {
-            get {
-                object obj = ResourceManager.GetObject("win_x86_sdl2_ttf", resourceCulture);
                 return ((byte[])(obj));
             }
         }

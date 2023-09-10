@@ -30,7 +30,7 @@
 
         <InternalsVisibleTo Include="$(AssemblyName).Test"/>
 
-        <Content Include="$(ProjectDir)/bin/Debug/**/**/*.dll" PackagePath="runtimes/" />
+        <Content Condition="'$(IsPackable)' == 'true'" Include="$(ProjectDir)/bin/Debug/**/**/*.dll" PackagePath="runtimes/" />
     </ItemGroup>
 
 
@@ -51,9 +51,9 @@
                         $(SolutionDir)3_Structuration/**/*.cs;
                         "
                  Exclude="
-                          $(SolutionDir)3_Structuration/**/obj/**/*.cs;
-                          $(SolutionDir)3_Structuration/**/bin/**/*.cs;
-                          $(SolutionDir)3_Structuration/**/*sample/**/*.cs;
+                          $(SolutionDir)3_Structuration/**/obj/**/**;
+                          $(SolutionDir)3_Structuration/**/bin/**/**;
+                          $(SolutionDir)3_Structuration/**/*sample/**/**;
                           $(SolutionDir)3_Structuration/**/*test/**/*.cs;  
                           $(SolutionDir)3_Structuration/**/*.Designer.cs"
                  Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
@@ -64,9 +64,9 @@
                         $(SolutionDir)4_Operation/**/*.cs;
                         "
                  Exclude="
-                          $(SolutionDir)4_Operation/**/obj/**/*.cs;
-                          $(SolutionDir)4_Operation/**/bin/**/*.cs;
-                          $(SolutionDir)4_Operation/**/*sample/**/*.cs;
+                          $(SolutionDir)4_Operation/**/obj/**/**;
+                          $(SolutionDir)4_Operation/**/bin/**/**;
+                          $(SolutionDir)4_Operation/**/*sample/**/**;
                           $(SolutionDir)4_Operation/**/*test/**/*.cs; 
                           $(SolutionDir)4_Operation/**/*.Designer.cs "
                  Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
@@ -77,9 +77,9 @@
                         $(SolutionDir)5_Declaration/**/*.cs;
                         "
                  Exclude="
-                          $(SolutionDir)5_Declaration/**/obj/**/*.cs;
-                          $(SolutionDir)5_Declaration/**/bin/**/*.cs;
-                          $(SolutionDir)5_Declaration/**/*sample/**/*.cs;
+                          $(SolutionDir)5_Declaration/**/obj/**/**;
+                          $(SolutionDir)5_Declaration/**/bin/**/**;
+                          $(SolutionDir)5_Declaration/**/*sample/**/**;
                           $(SolutionDir)5_Declaration/**/*test/**/*.cs; 
                           $(SolutionDir)5_Declaration/**/*.Designer.cs"
                  Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
@@ -90,9 +90,9 @@
                             $(SolutionDir)6_Ideation/**/*.cs;
                             "
                  Exclude="
-                          $(SolutionDir)6_Ideation/**/obj/**/*.cs;
-                          $(SolutionDir)6_Ideation/**/bin/**/*.cs;
-                          $(SolutionDir)6_Ideation/**/*sample/**/*.cs;
+                          $(SolutionDir)6_Ideation/**/obj/**/**;
+                          $(SolutionDir)6_Ideation/**/bin/**/**;
+                          $(SolutionDir)6_Ideation/**/*sample/**/**;
                           $(SolutionDir)6_Ideation/**/*test/**/*.cs;  
                           $(SolutionDir)6_Ideation/**/*.Designer.cs"
                  Link="Core/Aspect/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
@@ -120,9 +120,9 @@
                         $(SolutionDir)4_Operation/**/*.cs;
                         "
                  Exclude="
-                          $(SolutionDir)4_Operation/**/obj/**/*.cs;
-                          $(SolutionDir)4_Operation/**/bin/**/*.cs;
-                          $(SolutionDir)4_Operation/**/*sample/**/*.cs;
+                          $(SolutionDir)4_Operation/**/obj/**/**;
+                          $(SolutionDir)4_Operation/**/bin/**/**;
+                          $(SolutionDir)4_Operation/**/*sample/**/**;
                           $(SolutionDir)4_Operation/**/*test/**/*.cs; 
                           $(SolutionDir)4_Operation/**/*.Designer.cs"
                  Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
@@ -148,9 +148,9 @@
                         
                         $(SolutionDir)5_Declaration/**/*.resx"
                  Exclude="
-                          $(SolutionDir)5_Declaration/**/obj/**/*.cs;
-                          $(SolutionDir)5_Declaration/**/bin/**/*.cs;
-                          $(SolutionDir)5_Declaration/**/*sample/**/*.cs;
+                          $(SolutionDir)5_Declaration/**/obj/**/**;
+                          $(SolutionDir)5_Declaration/**/bin/**/**;
+                          $(SolutionDir)5_Declaration/**/*sample/**/**;
                           $(SolutionDir)5_Declaration/**/*test/**/*.cs; $(SolutionDir)5_Declaration/**/Resources.Designer.cs"
                  Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
 
@@ -158,9 +158,9 @@
                  Include="
                         $(SolutionDir)6_Ideation/**/*.cs;"
                  Exclude="
-                          $(SolutionDir)6_Ideation/**/obj/**/*.cs;
-                          $(SolutionDir)6_Ideation/**/bin/**/*.cs;
-                          $(SolutionDir)6_Ideation/**/*sample/**/*.cs;
+                          $(SolutionDir)6_Ideation/**/obj/**/**;
+                          $(SolutionDir)6_Ideation/**/bin/**/**;
+                          $(SolutionDir)6_Ideation/**/*sample/**/**;
                           $(SolutionDir)6_Ideation/**/*test/**/*.cs; $(SolutionDir)6_Ideation/**/Resources.Designer.cs"
                  Link="Aspect/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
 
@@ -169,9 +169,9 @@
                  Include="
                         $(SolutionDir)6_Ideation/**/*.cs;"
                  Exclude="
-                          $(SolutionDir)6_Ideation/**/obj/**/*.cs;
-                          $(SolutionDir)6_Ideation/**/bin/**/*.cs;
-                          $(SolutionDir)6_Ideation/**/*sample/**/*.cs;
+                          $(SolutionDir)6_Ideation/**/obj/**/**;
+                          $(SolutionDir)6_Ideation/**/bin/**/**;
+                          $(SolutionDir)6_Ideation/**/*sample/**/**;
                           $(SolutionDir)6_Ideation/**/*test/**/*.cs;  $(SolutionDir)6_Ideation/**/Resources.Designer.cs"
                  Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
 

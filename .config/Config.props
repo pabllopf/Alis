@@ -3,7 +3,7 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <RuntimeIdentifier>osx-x64</RuntimeIdentifier>
+        <RuntimeIdentifier>win-x86</RuntimeIdentifier>
     </PropertyGroup>
 
     <Import Project="$(SolutionDir).config/application/TargetFrameworks.props"/>

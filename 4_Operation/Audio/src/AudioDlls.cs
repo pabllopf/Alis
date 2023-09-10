@@ -34,13 +34,13 @@ using System.Runtime.InteropServices;
 
 #if WIN
 #if X86
-         
+using Alis.Core.Audio.Properties.win.x86;
 #endif
 #if X64
 using Alis.Core.Audio.Properties.win.x64;
 #endif
 #if ARM
-           
+           using Alis.Core.Audio.Properties.win.arm;
 #endif
 #if ARM64
 using Alis.Core.Audio.Properties.win.arm64;
@@ -93,7 +93,7 @@ namespace Alis.Core.Audio
         {
 #if WIN
 #if X86
-          {(OSPlatform.Windows, Architecture.X86), NativeAudioWindowsX64SFML.win_x86_csfml_audio},
+          {(OSPlatform.Windows, Architecture.X86), NativeAudioWindowsX86SFML.win_x86_csfml_audio},
 #endif
 #if X64
             {(OSPlatform.Windows, Architecture.X64), NativeAudioWindowsX64SFML.win_x64_csfml_audio},
@@ -147,7 +147,7 @@ namespace Alis.Core.Audio
         {
         #if WIN
                         #if X86
-                                   {(OSPlatform.Windows, Architecture.X86), NativeGraphicWindowsX64SFML.win_x86_csfml_system},                                   
+                                   {(OSPlatform.Windows, Architecture.X86), NativeAudioWindowsX86SFML.win_x86_csfml_system},                                   
                         #endif
                         #if X64
                                 {(OSPlatform.Windows, Architecture.X64), NativeAudioWindowsX64SFML.win_x64_csfml_system},            

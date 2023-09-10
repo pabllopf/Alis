@@ -34,13 +34,13 @@ using System.Runtime.InteropServices;
 
 #if WIN
     #if X86
-                                                 
+        using Alis.Core.Graphic.Properties.win.x86;
     #endif
     #if X64
         using Alis.Core.Graphic.Properties.win.x64;              
     #endif
     #if ARM
-                                               
+         using Alis.Core.Graphic.Properties.win.arm;                                          
     #endif
     #if ARM64
         using Alis.Core.Graphic.Properties.win.arm64;                               
@@ -94,7 +94,7 @@ namespace Alis.Core.Graphic.SFML
         {
             #if WIN
                 #if X86
-                         {(OSPlatform.Windows, Architecture.X86), NativeGraphicWindowsX64SFML.win_x86_csfml_window},                                    
+                         {(OSPlatform.Windows, Architecture.X86), NativeGraphicWindowsX86SFML.win_x86_csfml_window},                                    
                 #endif
                 #if X64
             {(OSPlatform.Windows, Architecture.X64), NativeGraphicWindowsX64SFML.win_x64_csfml_window},        
@@ -145,7 +145,7 @@ namespace Alis.Core.Graphic.SFML
         {
             #if WIN
                 #if X86
-                           {(OSPlatform.Windows, Architecture.X86), NativeGraphicWindowsX64SFML.win_x86_csfml_system},                                   
+                           {(OSPlatform.Windows, Architecture.X86), NativeGraphicWindowsX86SFML.win_x86_csfml_system},                                   
                 #endif
                 #if X64
             {(OSPlatform.Windows, Architecture.X64), NativeGraphicWindowsX64SFML.win_x64_csfml_system},            
@@ -202,7 +202,7 @@ namespace Alis.Core.Graphic.SFML
         {
             #if WIN
                 #if X86
-                            {(OSPlatform.Windows, Architecture.X86), NativeGraphicWindowsX64SFML.win_x86_csfml_graphics},                  
+                            {(OSPlatform.Windows, Architecture.X86), NativeGraphicWindowsX86SFML.win_x86_csfml_graphics},                  
                 #endif
                 #if X64
                             {(OSPlatform.Windows, Architecture.X64), NativeGraphicWindowsX64SFML.win_x64_csfml_graphics},
