@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Sample.Snake
 {
     /// <summary>
@@ -42,7 +40,7 @@ namespace Alis.Sample.Snake
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-           Alis.VideoGame.Builder().Run();
+           VideoGame.Builder().Run();
         }
     }
 }

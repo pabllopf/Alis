@@ -42,7 +42,7 @@ namespace Alis.Sample.Pinball
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            throw new NotImplementedException();
+            VideoGame.Builder().Run();
         }
     }
 }
