@@ -113,7 +113,7 @@ namespace Alis.Core.Audio
             {(OSPlatform.Linux, Architecture.X64), NativeAudioLinuxX64SFML.linux_x64_csfml_audio},
 #endif
 #if ARM
-            {(OSPlatform.Linux, Architecture.Arm), NativeAudioLinuxX64SFML.linux_arm64_csfml_audio},  
+            {(OSPlatform.Linux, Architecture.Arm), NativeAudioLinuxARMSFML.linux_arm_csfml_audio},  
 #endif
 #if ARM64
             {(OSPlatform.Linux, Architecture.Arm64), NativeAudioLinuxARM64SFML.linux_arm64_csfml_audio},
@@ -169,7 +169,7 @@ namespace Alis.Core.Audio
             {(OSPlatform.Linux, Architecture.X64), NativeAudioLinuxX64SFML.linux_x64_csfml_system},
 #endif
 #if ARM
-         {(OSPlatform.Linux, Architecture.Arm), NativeAudioLinuxX64SFML.linux_arm64_csfml_system},     
+         {(OSPlatform.Linux, Architecture.Arm), NativeAudioLinuxARMSFML.linux_arm_csfml_system},     
 #endif
 #if ARM64
         {(OSPlatform.Linux, Architecture.Arm64), NativeAudioLinuxARM64SFML.linux_arm64_csfml_system},

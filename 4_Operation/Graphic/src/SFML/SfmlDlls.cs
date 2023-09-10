@@ -43,7 +43,7 @@ using System.Runtime.InteropServices;
                                                
     #endif
     #if ARM64
-using Alis.Core.Graphic.Properties.win.arm64;                               
+        using Alis.Core.Graphic.Properties.win.arm64;                               
     #endif
 #endif
 
@@ -116,7 +116,7 @@ namespace Alis.Core.Graphic.SFML
             {(OSPlatform.Linux, Architecture.X64), NativeGraphicLinuxX64SFML.linux_x64_csfml_window},             
 #endif
 #if ARM
-         {(OSPlatform.Linux, Architecture.Arm), NativeGraphic.linux_arm64_csfml_window},                                          
+         {(OSPlatform.Linux, Architecture.Arm), NativeGraphicLinuxARMSFML.linux_arm_csfml_window},                                          
 #endif
 #if ARM64
           {(OSPlatform.Linux, Architecture.Arm64), NativeGraphicLinuxARM64SFML.linux_arm64_csfml_window},                                  
@@ -167,7 +167,7 @@ namespace Alis.Core.Graphic.SFML
             {(OSPlatform.Linux, Architecture.X64), NativeGraphicLinuxX64SFML.linux_x64_csfml_system},     
 #endif
 #if ARM
-         {(OSPlatform.Linux, Architecture.Arm), NativeGraphic.linux_arm64_csfml_system},                
+         {(OSPlatform.Linux, Architecture.Arm), NativeGraphicLinuxARMSFML.linux_arm_csfml_system},                
 #endif
 #if ARM64
        {(OSPlatform.Linux, Architecture.Arm64), NativeGraphicLinuxARM64SFML.linux_arm64_csfml_system},                         
@@ -223,7 +223,7 @@ namespace Alis.Core.Graphic.SFML
             {(OSPlatform.Linux, Architecture.X64), NativeGraphicLinuxX64SFML.linux_x64_csfml_graphics},      
 #endif
 #if ARM
-         {(OSPlatform.Linux, Architecture.Arm), NativeGraphic.linux_arm64_csfml_graphics},                                      
+         {(OSPlatform.Linux, Architecture.Arm), NativeGraphicLinuxARMSFML.linux_arm_csfml_graphics},                                      
 #endif
 #if ARM64
         {(OSPlatform.Linux, Architecture.Arm64), NativeGraphicLinuxARM64SFML.linux_arm64_csfml_graphics},                     
