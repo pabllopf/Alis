@@ -156,7 +156,7 @@ namespace Alis.Core.Audio
                                              {(OSPlatform.Windows, Architecture.Arm), NativeAudioWindowsARMSFML.win_arm_csfml_system},                      
                         #endif
                         #if ARM64
-                                 {(OSPlatform.Windows, Architecture.Arm64), NativeAudioWindowsARM64SFML.win_arm64_csfml_audio},                              
+                                 {(OSPlatform.Windows, Architecture.Arm64), NativeAudioWindowsARM64SFML.win_arm64_csfml_system},                              
                         #endif
 
         #endif

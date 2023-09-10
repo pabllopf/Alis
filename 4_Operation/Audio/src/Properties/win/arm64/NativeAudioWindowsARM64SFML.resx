@@ -127,7 +127,12 @@
               name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
     
     <data name="win_arm64_csfml_audio" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\win-arm64\win-arm64_csfml-audio.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
+        <value>..\..\..\resources\win-arm64\win-arm64_csfml-audio.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </data>
+    <data name="win_arm64_csfml_system" type="System.Resources.ResXFileRef, System.Windows.Forms">
+        <value>..\..\..\resources\win-arm64\win-arm64_csfml-system.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
             PublicKeyToken=b77a5c561934e089
         </value>
     </data>

@@ -78,5 +78,12 @@ namespace Alis.Core.Audio.Properties.win.arm64 {
                 return ((byte[])(obj));
             }
         }
+        
+        internal static byte[] win_arm64_csfml_system {
+            get {
+                object obj = ResourceManager.GetObject("win_arm64_csfml_system", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
