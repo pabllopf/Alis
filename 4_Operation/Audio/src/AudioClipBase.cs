@@ -40,6 +40,7 @@ namespace Alis.Core.Audio
     /// </summary>
     public abstract class AudioClipBase
     {
+        
         /// <summary>
         ///     The player
         /// </summary>
