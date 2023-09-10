@@ -126,17 +126,17 @@
     <assembly alias="System.Windows.Forms"
               name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
     <data name="linux_x64_csfml_graphics" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\linux-x64\linux-x64_csfml-graphics.so;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\..\..\resources\linux-x64\linux-x64_csfml-graphics.zip;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="linux_x64_csfml_system" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\linux-x64\linux-x64_csfml-system.so;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\..\..\resources\linux-x64\linux-x64_csfml-system.zip;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>
     <data name="linux_x64_csfml_window" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\..\..\resources\linux-x64\linux-x64_csfml-window.so;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\..\..\resources\linux-x64\linux-x64_csfml-window.zip;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>
