@@ -33,6 +33,20 @@
         <Content Condition="'$(IsPackable)' == 'true'" Include="$(ProjectDir)/bin/Debug/**/**/*.dll" PackagePath="runtimes/" />
     </ItemGroup>
 
+    <PropertyGroup Condition="
+        $(AssemblyName.Contains('Test')) == False AND
+        $(AssemblyName.Contains('App.Installer')) == False AND 
+        $(AssemblyName.Contains('Sample')) == False AND
+        $(AssemblyName.Contains('Template')) == False AND 
+        $(AssemblyName.Contains('Benchmark')) == False AND 
+        $(Configuration) == 'Release'">
+        
+        <Deterministic>true</Deterministic>
+        <ProduceOnlyReferenceAssembly>false</ProduceOnlyReferenceAssembly>
+        <Optimize>true</Optimize>
+        <PublishTrimmed>true</PublishTrimmed>
+        <TrimMode>Link</TrimMode>
+    </PropertyGroup>
 
     <ItemGroup Condition="
         $(AssemblyName.Contains('Test')) == False AND
