@@ -1,0 +1,4 @@
+var namespace_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x86 =
+[
+    [ "NativeAudioWindowsX86SFML", "df/d4a/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x86_1_1_native_audio_windows_x86_s_f_m_l.html", "df/d4a/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x86_1_1_native_audio_windows_x86_s_f_m_l" ]
+];

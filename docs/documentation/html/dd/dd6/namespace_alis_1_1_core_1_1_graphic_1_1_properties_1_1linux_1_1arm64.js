@@ -1,0 +1,4 @@
+var namespace_alis_1_1_core_1_1_graphic_1_1_properties_1_1linux_1_1arm64 =
+[
+    [ "NativeGraphicLinuxARM64SFML", "d5/d04/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1linux_1_1arm64_1_1_native_graphic_linux_a_r_m64_s_f_m_l.html", "d5/d04/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1linux_1_1arm64_1_1_native_graphic_linux_a_r_m64_s_f_m_l" ]
+];

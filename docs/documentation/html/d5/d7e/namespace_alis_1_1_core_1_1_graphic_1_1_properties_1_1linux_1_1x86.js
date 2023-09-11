@@ -1,0 +1,4 @@
+var namespace_alis_1_1_core_1_1_graphic_1_1_properties_1_1linux_1_1x86 =
+[
+    [ "NativeGraphicLinuxX86SFML", "dc/def/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1linux_1_1x86_1_1_native_graphic_linux_x86_s_f_m_l.html", "dc/def/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1linux_1_1x86_1_1_native_graphic_linux_x86_s_f_m_l" ]
+];

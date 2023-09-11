@@ -1,12 +1,10 @@
 var class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l =
 [
     [ "NativeGraphicWindowsX64SFML", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#a576b87ebfe6b21343b3d4f051fc45e53", null ],
-    [ "NativeGraphicWindowsX64SFML", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#a576b87ebfe6b21343b3d4f051fc45e53", null ],
-    [ "NativeGraphicWindowsX64SFML", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#a576b87ebfe6b21343b3d4f051fc45e53", null ],
-    [ "resourceMan", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#a0b1edc0b7c90c7776a7aa224e4e26590", null ],
-    [ "resourceCulture", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#a1278b3442b82064b5cf21aa7b43b39fe", null ],
-    [ "ResourceManager", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#a3e7718cbc0713683c3916143428cf761", null ],
-    [ "Culture", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#ab99942156669e92cdcdd3d43715552b9", null ],
+    [ "resourceMan", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#afe4193df6f3f3ccf5332084a4d288a94", null ],
+    [ "resourceCulture", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#a29eb60cda84bee44d0597d1038974a04", null ],
+    [ "ResourceManager", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#a2fc341f9ae38365525acda2dfaa795aa", null ],
+    [ "Culture", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#a91b1689f158dbcd542da3fe5714d27cd", null ],
     [ "win_arm64_cimgui", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#a9614947a428bce8b60317aee9016236a", null ],
     [ "win_arm64_csfml_graphics", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#ace0e86ba04b198da41a1a22902272bd6", null ],
     [ "win_arm64_csfml_system", "d7/d8d/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x64_1_1_native_graphic_windows_x64_s_f_m_l.html#a927d8a8a208f853bcf2f2aaa1b9e0768", null ],

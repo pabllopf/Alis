@@ -1,0 +1,4 @@
+var namespace_alis_1_1_core_1_1_audio_1_1_properties_1_1linux_1_1x86 =
+[
+    [ "NativeAudioLinuxX86SFML", "d7/d13/class_alis_1_1_core_1_1_audio_1_1_properties_1_1linux_1_1x86_1_1_native_audio_linux_x86_s_f_m_l.html", "d7/d13/class_alis_1_1_core_1_1_audio_1_1_properties_1_1linux_1_1x86_1_1_native_audio_linux_x86_s_f_m_l" ]
+];

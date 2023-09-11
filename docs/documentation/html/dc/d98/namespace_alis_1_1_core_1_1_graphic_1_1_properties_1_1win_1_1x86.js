@@ -1,0 +1,4 @@
+var namespace_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x86 =
+[
+    [ "NativeGraphicWindowsX86SFML", "d2/ddf/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x86_1_1_native_graphic_windows_x86_s_f_m_l.html", "d2/ddf/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1win_1_1x86_1_1_native_graphic_windows_x86_s_f_m_l" ]
+];
