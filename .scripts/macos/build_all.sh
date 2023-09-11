@@ -15,7 +15,6 @@ echo "./**/bin/"
 rm -rf ./**/lib/
 echo "./**/lib/"
 
-
 for i in `find . -name "*.csproj" -type f`; 
   do if [[ $i != *".Template."* && $i != *".App."* && $i != *".Test."* && $i != *".Benchmark."* && $i != *".Sample."* ]] ; 
   then 
