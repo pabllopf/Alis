@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.1.4] - 2023-09-11
+### :sparkles: New Features
+- [`df4a9e5`](https://github.com/pabllopf/Alis/commit/df4a9e58d984e7c6df52389e5d94c25c792ac895) - new config to optimice the release libs *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`158487e`](https://github.com/pabllopf/Alis/commit/158487e52d3b0459f6a4e0aba16c6c1f4e4f179d) - new type of compress dlls *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b9d3273`](https://github.com/pabllopf/Alis/commit/b9d3273c6601c4d66c2565fcd7a9de4ba7c33d09) - compress all dlls of all platforms 8%. The big dll is 1.8mb *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.1.3] - 2023-09-10
 ### :sparkles: New Features
 - [`b94beca`](https://github.com/pabllopf/Alis/commit/b94beca23cf79289719bcc6b94845cdf8fdeae44) - compress on zip native dlls *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -1218,3 +1225,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.1.1]: https://github.com/pabllopf/Alis/compare/v0.1.0...v0.1.1
 [v0.1.2]: https://github.com/pabllopf/Alis/compare/v0.1.1...v0.1.2
 [v0.1.3]: https://github.com/pabllopf/Alis/compare/v0.1.2...v0.1.3
+[v0.1.4]: https://github.com/pabllopf/Alis/compare/v0.1.3...v0.1.4
