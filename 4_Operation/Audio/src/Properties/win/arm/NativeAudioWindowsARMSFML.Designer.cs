@@ -88,5 +88,15 @@ namespace Alis.Core.Audio.Properties.win.arm {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        /// Gets the value of the win arm csfml system
+        /// </summary>
+        internal static byte[] win_arm_openal32 {
+            get {
+                object obj = ResourceManager.GetObject("win_arm_openal32", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

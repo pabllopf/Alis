@@ -8,16 +8,16 @@ select yn in "Yes" "No"; do
           cd ../../
           
           rm -rf ./.build/
-          echo "./.build/"
+          echo "remove ./.build/"
           
           rm -rf ./.nuget/
-          echo "./.nuget/"
+          echo "remove ./.nuget/"
           
           rm -rf ./**/obj/
-          echo "./**/obj/"
+          echo "remove ./**/obj/"
           
           rm -rf ./**/bin/
-          echo "./**/bin/"
+          echo "remove ./**/bin/"
                 
           skip="Template"  
           for i in `find . -name "*.csproj" -type f`; do
