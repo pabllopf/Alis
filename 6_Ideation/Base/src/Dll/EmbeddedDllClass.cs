@@ -52,22 +52,15 @@ namespace Alis.Core.Aspect.Base.Dll
 
             string dllPath = Path.Combine(Environment.CurrentDirectory, $"{dllName}.{extension}");
 
-            if (File.Exists(dllPath))
-            {
-                File.Delete(dllPath);
-            }
-
             if (!File.Exists(dllPath))
             {
                 OSPlatform currentPlatform = GetCurrentPlatform();
                 Architecture currentArchitecture = RuntimeInformation.ProcessArchitecture;
-
-                Console.WriteLine($"OSPlatform={currentPlatform} | Architecture={currentArchitecture} -> lib: {dllName}");
                 
                 if (dllBytes.TryGetValue((currentPlatform, currentArchitecture), out byte[] resourceBytes))
                 {
                     ExtractZipFile(dllPath,$"{dllName}.{extension}" ,resourceBytes);
-                    Console.WriteLine($"dllPath={dllPath}");
+                    Console.WriteLine($"OSPlatform={currentPlatform} | Architecture={currentArchitecture} -> lib: {dllName}");
                 }
             }
         }

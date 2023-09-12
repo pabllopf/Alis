@@ -119,10 +119,10 @@ namespace Alis.Core.Audio
             {(OSPlatform.Linux, Architecture.Arm64), NativeAudioLinuxARM64SFML.linux_arm64_csfml_audio},
 #endif
 #endif
-            
-            
-            
-          
+
+
+
+
 
 #if OSX
 #if X86
@@ -139,27 +139,27 @@ namespace Alis.Core.Audio
 #endif
 #endif
         };
-        
+
         /// <summary>
         /// The arch
         /// </summary>
-        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>  CsfmlSystemDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
+        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> CsfmlSystemDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
-        #if WIN
-                        #if X86
-                                   {(OSPlatform.Windows, Architecture.X86), NativeAudioWindowsX86SFML.win_x86_csfml_system},                                   
-                        #endif
-                        #if X64
-                                {(OSPlatform.Windows, Architecture.X64), NativeAudioWindowsX64SFML.win_x64_csfml_system},            
-                        #endif
-                        #if ARM
-                                             {(OSPlatform.Windows, Architecture.Arm), NativeAudioWindowsARMSFML.win_arm_csfml_system},                      
-                        #endif
-                        #if ARM64
-                                 {(OSPlatform.Windows, Architecture.Arm64), NativeAudioWindowsARM64SFML.win_arm64_csfml_system},                              
-                        #endif
+#if WIN
+#if X86
+                                   {(OSPlatform.Windows, Architecture.X86), NativeAudioWindowsX86SFML.win_x86_csfml_system},
+#endif
+#if X64
+            {(OSPlatform.Windows, Architecture.X64), NativeAudioWindowsX64SFML.win_x64_csfml_system},
+#endif
+#if ARM
+                                             {(OSPlatform.Windows, Architecture.Arm), NativeAudioWindowsARMSFML.win_arm_csfml_system},
+#endif
+#if ARM64
+                                 {(OSPlatform.Windows, Architecture.Arm64), NativeAudioWindowsARM64SFML.win_arm64_csfml_system},
+#endif
 
-        #endif
+#endif
 
 #if LINUX
 #if X86
@@ -175,8 +175,8 @@ namespace Alis.Core.Audio
         {(OSPlatform.Linux, Architecture.Arm64), NativeAudioLinuxARM64SFML.linux_arm64_csfml_system},
 #endif
 #endif
-            
-        #if OSX
+
+#if OSX
         #if X86
                     {(OSPlatform.OSX, Architecture.X86), NativeGraphicOsxARM64.osx_x64_csfml_system},
         #endif
@@ -189,7 +189,28 @@ namespace Alis.Core.Audio
         #if ARM64
                     {(OSPlatform.OSX, Architecture.Arm64), NativeAudioOsxARM64SFML.osx_arm64_csfml_system}
         #endif
-        #endif
-                };
+#endif
+        };
+
+
+
+        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> OpenalDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
+        {
+#if WIN
+#if X86
+                                   {(OSPlatform.Windows, Architecture.X86), NativeAudioWindowsX86SFML.win_x86_openal32},
+#endif
+#if X64
+            {(OSPlatform.Windows, Architecture.X64), NativeAudioWindowsX64SFML.win_x64_openal32},
+#endif
+#if ARM
+                                             {(OSPlatform.Windows, Architecture.Arm), NativeAudioWindowsARMSFML.win_arm_openal32},
+#endif
+#if ARM64
+                                 {(OSPlatform.Windows, Architecture.Arm64), NativeAudioWindowsARM64SFML.win_arm64_openal32},
+#endif
+
+#endif
+        };
     }
 }

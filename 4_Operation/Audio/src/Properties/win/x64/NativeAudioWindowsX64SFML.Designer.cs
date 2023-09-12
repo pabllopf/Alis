@@ -88,5 +88,12 @@ namespace Alis.Core.Audio.Properties.win.x64 {
                 return ((byte[])(obj));
             }
         }
+        
+        internal static byte[] win_x64_openal32 {
+            get {
+                object obj = ResourceManager.GetObject("win_x64_openal32", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
