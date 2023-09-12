@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.1.5] - 2023-09-12
+### :sparkles: New Features
+- [`54ebf53`](https://github.com/pabllopf/Alis/commit/54ebf534cc42cbbab19967e01419a7306b62e4c3) - include a new default demo to render colors, and test if run the game with only one line "VideoGame.Builder().Run();" *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`13b63c9`](https://github.com/pabllopf/Alis/commit/13b63c964bc57dc56c1390d72012cafaecc213c7) - delete zip compress LZMA *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`94df1c4`](https://github.com/pabllopf/Alis/commit/94df1c4e35c439dc7fbd7e0263d34ef8219d4478) - windows systems *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3958a96`](https://github.com/pabllopf/Alis/commit/3958a9602f2795e494418cacad2c23913bbbba97) - compile to windows and linux platforms. And include on windows the openal lib *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.1.4] - 2023-09-11
 ### :sparkles: New Features
 - [`df4a9e5`](https://github.com/pabllopf/Alis/commit/df4a9e58d984e7c6df52389e5d94c25c792ac895) - new config to optimice the release libs *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -1226,3 +1236,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.1.2]: https://github.com/pabllopf/Alis/compare/v0.1.1...v0.1.2
 [v0.1.3]: https://github.com/pabllopf/Alis/compare/v0.1.2...v0.1.3
 [v0.1.4]: https://github.com/pabllopf/Alis/compare/v0.1.3...v0.1.4
+[v0.1.5]: https://github.com/pabllopf/Alis/compare/v0.1.4...v0.1.5

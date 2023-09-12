@@ -3,6 +3,6 @@
         <SolutionDir Condition="'$(SolutionDir)'==''">$(MSBuildThisFileDirectory)</SolutionDir>
     </PropertyGroup>
     <PropertyGroup>
-        <AssemblyVersion>0.1.4</AssemblyVersion>
+        <AssemblyVersion>0.1.5</AssemblyVersion>
     </PropertyGroup>
 </Project>
