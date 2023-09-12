@@ -194,6 +194,9 @@ namespace Alis.Core.Audio
 
 
 
+        /// <summary>
+        /// The arch
+        /// </summary>
         internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), byte[]> OpenalDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), byte[]>
         {
 #if WIN

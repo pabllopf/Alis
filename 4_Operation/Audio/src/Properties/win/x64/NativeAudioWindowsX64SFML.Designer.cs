@@ -89,6 +89,9 @@ namespace Alis.Core.Audio.Properties.win.x64 {
             }
         }
         
+        /// <summary>
+        /// Gets the value of the win x64 openal32
+        /// </summary>
         internal static byte[] win_x64_openal32 {
             get {
                 object obj = ResourceManager.GetObject("win_x64_openal32", resourceCulture);

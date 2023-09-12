@@ -36,6 +36,7 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.SFML.Graphics;
 using Alis.Core.Graphic.SFML.Windows;
+using Alis.Core.Manager.Time;
 using Sprite = Alis.Core.Component.Render.Sprite;
 using Styles = Alis.Core.Graphic.SFML.Windows.Styles;
 
@@ -86,6 +87,26 @@ namespace Alis.Core.Manager.Graphic
         ///     Gets or sets the value of the colliders
         /// </summary>
         public static List<Shape> Colliders { get; } = new List<Shape>();
+        
+        /// <summary>
+        ///     The blue
+        /// </summary>
+        private byte blue;
+
+        /// <summary>
+        ///     The blue
+        /// </summary>
+        private byte green;
+
+        /// <summary>
+        ///     The blue
+        /// </summary>
+        private byte red;
+        
+        /// <summary>
+        /// The counter
+        /// </summary>
+        private int counter = 0;
 
         /// <summary>
         ///     Inits this instance
@@ -163,8 +184,43 @@ namespace Alis.Core.Manager.Graphic
         /// </summary>
         public override void Update()
         {
+            if (Sprites.Count <= 0 && Colliders.Count <= 0)
+            {
+                RenderSampleColor();
+            }
+            
             Sprites.ForEach(i => RenderWindow.Draw(i.SpriteSfml));
             Colliders.ForEach(i => RenderWindow.Draw(i));
+        }
+
+        /// <summary>
+        /// Renders the sample color
+        /// </summary>
+        private void RenderSampleColor()
+        {
+            counter += 1;
+            if (counter >= 100)
+            {
+                red += 1;
+                if (red >= 255)
+                {
+                    red -= 0;
+                }
+
+                green += 2;
+                if (green >= 255)
+                {
+                    green -= 1;
+                }
+
+                blue += 3;
+                if (blue >= 255)
+                {
+                    blue -= 1;
+                }
+                counter = 0;
+            }
+            RenderWindow.Clear(new Color(red, green, blue));
         }
 
         /// <summary>
