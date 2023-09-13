@@ -1,5 +1,13 @@
 var NAVTREEINDEX27 =
 {
+"d9/d0c/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_font_atlas.html#aa07ac6e4ebc831484213db6ad2c16e77":[1,0,0,0,0,8,20,70],
+"d9/d0c/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_font_atlas.html#aa523422466ec9c5779dd49dc53bcb9a4":[1,0,0,0,0,8,20,43],
+"d9/d0c/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_font_atlas.html#aa78278d06c7b8700df6957779011e797":[1,0,0,0,0,8,20,1],
+"d9/d0c/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_font_atlas.html#aa851af2f75681dc44c8bff2ca265b91a":[1,0,0,0,0,8,20,7],
+"d9/d0c/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_font_atlas.html#aab3062c7f1df1375562560ac5f8edf5a":[1,0,0,0,0,8,20,9],
+"d9/d0c/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_font_atlas.html#aafc3049b763b769dff5a362278f93390":[1,0,0,0,0,8,20,26],
+"d9/d0c/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_font_atlas.html#abe3d79821c9c6f6333e671b62f647f58":[1,0,0,0,0,8,20,69],
+"d9/d0c/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_font_atlas.html#abf9adb63b32fc7b9dfeeb8f5f85894f4":[1,0,0,0,0,8,20,17],
 "d9/d0c/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_font_atlas.html#ac6fce2357605626983c32fda66b209ca":[1,0,0,0,0,8,20,5],
 "d9/d0c/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_font_atlas.html#ac7d32426468cc04600686b3e19bfa344":[1,0,0,0,0,8,20,64],
 "d9/d0c/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_font_atlas.html#acb98e8a2993f416d177dbea978640860":[1,0,0,0,0,8,20,13],
@@ -228,6 +236,7 @@ var NAVTREEINDEX27 =
 "d9/d8c/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_restitution.html":[1,0,0,2,0,2,0,44],
 "d9/d8c/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_restitution.html#adfd4df1e00735a4a71a27c4063a1920e":[1,0,0,2,0,2,0,44,0],
 "d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html":[1,0,0,2,1,1,2,2,0],
+"d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html#a0ba40f99df0ee0d107a332911d3dca24":[1,0,0,2,1,1,2,2,0,7],
 "d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html#a26c9fdd7e19bd9a6cd4b716b047cac84":[1,0,0,2,1,1,2,2,0,2],
 "d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html#a32f4dd2ebd0575e51216facfc79a7309":[1,0,0,2,1,1,2,2,0,5],
 "d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html#a3e8e144894a4a4fe836e8dfe9c23abb4":[1,0,0,2,1,1,2,2,0,6],
@@ -240,14 +249,5 @@ var NAVTREEINDEX27 =
 "d9/d95/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_mouse_motion_event.html#a2f8f4264e76233595b3fdc6d2cc8fef6":[1,0,0,0,0,6,1,58,8],
 "d9/d95/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_mouse_motion_event.html#a5d6b3413489a6a5e56889c9992da64ea":[1,0,0,0,0,6,1,58,2],
 "d9/d95/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_mouse_motion_event.html#a670db0764d4a6f4bfaeae9a0f05e8a12":[1,0,0,0,0,6,1,58,1],
-"d9/d95/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_mouse_motion_event.html#a8e380b2755363af136d98c8f80203263":[1,0,0,0,0,6,1,58,5],
-"d9/d95/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_mouse_motion_event.html#a9144a4246d0897d50dd8e7cc583021c5":[1,0,0,0,0,6,1,58,4],
-"d9/d95/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_mouse_motion_event.html#aa6f0e7ad203dbcbb5cf4fef2eecd0234":[1,0,0,0,0,6,1,58,9],
-"d9/d95/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_mouse_motion_event.html#adc0d185716a1680f75ad9501f9201334":[1,0,0,0,0,6,1,58,10],
-"d9/d95/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_mouse_motion_event.html#ae99d8f180c585e32baa8ccf68e39a4bc":[1,0,0,0,0,6,1,58,11],
-"d9/d95/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_mouse_motion_event.html#af587cda2270c1b8c8dffbdf5182b5c2c":[1,0,0,0,0,6,1,58,3],
-"d9/d95/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_mouse_motion_event.html#af5c2a3c6d6ce964c1f117deeb4f60358":[1,0,0,0,0,6,1,58,6],
-"d9/d95/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_mouse_motion_event.html#af94f59bab915f820758cc2be82f86a1e":[1,0,0,0,0,6,1,58,0],
-"d9/d98/namespace_alis_1_1_builder_1_1_core_1_1_entity.html":[1,0,0,1,0,1],
-"d9/d98/namespace_alis_1_1_builder_1_1_core_1_1_entity.html":[0,0,0,1,0,1]
+"d9/d95/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_mouse_motion_event.html#a8e380b2755363af136d98c8f80203263":[1,0,0,0,0,6,1,58,5]
 };

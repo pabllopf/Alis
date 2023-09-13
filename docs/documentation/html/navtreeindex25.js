@@ -1,5 +1,13 @@
 var NAVTREEINDEX25 =
 {
+"d8/d2b/interface_alis_1_1_core_1_1_network_1_1_i_buffer_pool.html#aca2ad14cbee477ae3659c51950eeeafb":[1,0,0,2,7,4,0],
+"d8/d2d/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_debug_setting_builder.html":[1,0,0,1,0,3,1],
+"d8/d2d/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_debug_setting_builder.html#a3c5ffc0f73a8056b2aceee9c3394b00c":[1,0,0,1,0,3,1,0],
+"d8/d2d/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_debug_setting_builder.html#a66fcf045802ffdafedb5a2144f60500a":[1,0,0,1,0,3,1,2],
+"d8/d2d/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_debug_setting_builder.html#a968c9d707e3426c7064c3b4c11b2bade":[1,0,0,1,0,3,1,1],
+"d8/d2d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_plot_1_1_im_plot_rect_ptr.html":[1,0,0,0,0,8,1,2,9],
+"d8/d2d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_plot_1_1_im_plot_rect_ptr.html#a001ac6d16326ad5d1ee7e0268d0b34fc":[1,0,0,0,0,8,1,2,9,8],
+"d8/d2d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_plot_1_1_im_plot_rect_ptr.html#a10c3a73e2cd76ecfa629044646b8f9d5":[1,0,0,0,0,8,1,2,9,9],
 "d8/d2d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_plot_1_1_im_plot_rect_ptr.html#a1eed61c1779c93ab08dfc16d4ee9c66d":[1,0,0,0,0,8,1,2,9,15],
 "d8/d2d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_plot_1_1_im_plot_rect_ptr.html#a34aaf7a238d717935d336424ff640572":[1,0,0,0,0,8,1,2,9,0],
 "d8/d2d/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_plot_1_1_im_plot_rect_ptr.html#a4690bd1ddfaf27db5e7552056c6a5137":[1,0,0,0,0,8,1,2,9,12],
@@ -238,16 +246,8 @@ var NAVTREEINDEX25 =
 "d8/d9a/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_list_clipper_ptr.html#aebe07a03a96bf0231eec886cbcb8cdf5":[1,0,0,0,0,8,40,2],
 "d8/d9a/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_list_clipper_ptr.html#aee10b99917f4c32e28747f0fc69020c1":[1,0,0,0,0,8,40,10],
 "d8/d9a/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_list_clipper_ptr.html#afe2229642324540127a40a011377137d":[1,0,0,0,0,8,40,14],
-"d8/d9f/namespace_alis_1_1_core_1_1_graphic_1_1_properties_1_1linux.html":[1,0,0,2,5,0,0],
 "d8/d9f/namespace_alis_1_1_core_1_1_graphic_1_1_properties_1_1linux.html":[0,0,0,2,5,0,0],
+"d8/d9f/namespace_alis_1_1_core_1_1_graphic_1_1_properties_1_1linux.html":[1,0,0,2,5,0,0],
 "d8/da0/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_payload.html":[1,0,0,0,0,8,44],
-"d8/da0/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_payload.html#a2485ba68e076a84655a4ca4ac07dc146":[1,0,0,0,0,8,44,2],
-"d8/da0/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_payload.html#a5583f308b503b6fc680a22153e4f037d":[1,0,0,0,0,8,44,5],
-"d8/da0/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_payload.html#a5ac9f60e8837748942d67f00c17b2650":[1,0,0,0,0,8,44,7],
-"d8/da0/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_payload.html#a5b177d443472da88f0a1e65bf2296378":[1,0,0,0,0,8,44,3],
-"d8/da0/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_payload.html#a8b20b708def97841c0f4b217e2fddcf4":[1,0,0,0,0,8,44,4],
-"d8/da0/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_payload.html#a8fb98aac36648972206b952b61ed7817":[1,0,0,0,0,8,44,1],
-"d8/da0/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_payload.html#ad28e7d45f4ef9064d8e5701c34675421":[1,0,0,0,0,8,44,0],
-"d8/da0/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_payload.html#ae5fd9154a836de9e57bb33aaacb7b377":[1,0,0,0,0,8,44,6],
-"d8/da2/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_physic_setting_builder.html":[1,0,0,1,0,3,4]
+"d8/da0/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_payload.html#a2485ba68e076a84655a4ca4ac07dc146":[1,0,0,0,0,8,44,2]
 };

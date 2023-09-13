@@ -7,6 +7,7 @@ var class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager =
     [ "Start", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#a3ebf0724a5c63c2891cdae77ba4d387b", null ],
     [ "BeforeUpdate", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#a1f75348e88164e12d5804ff78fcbab89", null ],
     [ "Update", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#a5ba030ec1324973263819c3ac877614e", null ],
+    [ "RenderSampleColor", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#af895f6e8ed247187e365cc96bb66233f", null ],
     [ "AfterUpdate", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#aca8612411bb9cb951dbf3cd5cd2de35d", null ],
     [ "DispatchEvents", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#a5064adff71e37d78fa69640b66072456", null ],
     [ "Exit", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#acbb8c8555ee17910653c695730ec3f17", null ],
@@ -20,6 +21,10 @@ var class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager =
     [ "RenderWindow", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#a60bcccbacc422ba5bf18e89018e90901", null ],
     [ "styles", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#a94a08514d1cefbe106cde2e2bb9ac6d4", null ],
     [ "videoMode", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#ad081dca5b6a4d606fcfbdc044ac18e7d", null ],
+    [ "blue", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#a3762e5b8dd6d135a2a661edb7a127f71", null ],
+    [ "green", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#ad690a8424ed5a22a17e3ca37a22dbb15", null ],
+    [ "red", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#a8ad383184214284ae168121a424d335e", null ],
+    [ "counter", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#ade6bd690b033d49856ce13009815b247", null ],
     [ "Sprites", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#a3ab465a6561125df382d1d6c4bc29dd6", null ],
     [ "Colliders", "d7/da7/class_alis_1_1_core_1_1_manager_1_1_graphic_1_1_graphic_manager.html#a0b9341c7752b1ba16b6dbc70bf5a7530", null ]
 ];

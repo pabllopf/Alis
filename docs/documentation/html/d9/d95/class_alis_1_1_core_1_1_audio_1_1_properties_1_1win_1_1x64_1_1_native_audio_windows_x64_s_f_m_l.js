@@ -6,5 +6,6 @@ var class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_
     [ "ResourceManager", "d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html#a67feb6faa35f4aa945a66818bb07829f", null ],
     [ "Culture", "d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html#afb3d4debf8b854f77ef0b9de62a76539", null ],
     [ "win_x64_csfml_audio", "d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html#a32f4dd2ebd0575e51216facfc79a7309", null ],
-    [ "win_x64_csfml_system", "d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html#a3e8e144894a4a4fe836e8dfe9c23abb4", null ]
+    [ "win_x64_csfml_system", "d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html#a3e8e144894a4a4fe836e8dfe9c23abb4", null ],
+    [ "win_x64_openal32", "d9/d95/class_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1x64_1_1_native_audio_windows_x64_s_f_m_l.html#a0ba40f99df0ee0d107a332911d3dca24", null ]
 ];
