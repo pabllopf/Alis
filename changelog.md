@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.1.6] - 2023-09-13
+### :art: Code Style Changes
+- [`14fd971`](https://github.com/pabllopf/Alis/commit/14fd9716aa0884e5c48fe00138f1761ad20a7037) - delete .personal folder and delete temp files *(commit by @pabllopf)*
+
 ## [v0.1.5] - 2023-09-12
 ### :sparkles: New Features
 - [`54ebf53`](https://github.com/pabllopf/Alis/commit/54ebf534cc42cbbab19967e01419a7306b62e4c3) - include a new default demo to render colors, and test if run the game with only one line "VideoGame.Builder().Run();" *(commit by [@pabllopf](https://github.com/pabllopf))*
