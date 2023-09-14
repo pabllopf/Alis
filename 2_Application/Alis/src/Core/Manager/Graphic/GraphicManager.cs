@@ -61,12 +61,7 @@ namespace Alis.Core.Manager.Graphic
         ///     The default
         /// </summary>
         private Styles styles = Styles.Default;
-
-        /// <summary>
-        ///     The video mode
-        /// </summary>
-        private VideoMode videoMode;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
         /// </summary>
@@ -142,7 +137,7 @@ namespace Alis.Core.Manager.Graphic
                 _renderWindow.Dispose();
             }
 
-            videoMode = new VideoMode(
+            VideoMode videoMode = new VideoMode(
                 (uint) defaultSize.X,
                 (uint) defaultSize.Y);
 
