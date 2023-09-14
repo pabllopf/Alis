@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 
 namespace Alis.Core.Physic.Tools.Triangulation.Seidel
@@ -115,7 +116,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         public Trapezoid[] Case2(Trapezoid t, Edge e)
         {
             Point rp;
-            if (e.Q.X == t.RightPoint.X)
+            if (Math.Abs(e.Q.X - t.RightPoint.X) < 0.01f)
             {
                 rp = e.Q;
             }
@@ -152,7 +153,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         public Trapezoid[] Case3(Trapezoid t, Edge e)
         {
             Point lp;
-            if (e.P.X == t.LeftPoint.X)
+            if (Math.Abs(e.P.X - t.LeftPoint.X) < 0.01f)
             {
                 lp = e.P;
             }
@@ -162,7 +163,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
             }
 
             Point rp;
-            if (e.Q.X == t.RightPoint.X)
+            if (Math.Abs(e.Q.X - t.RightPoint.X) < 0.01f)
             {
                 rp = e.Q;
             }
@@ -217,7 +218,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         public Trapezoid[] Case4(Trapezoid t, Edge e)
         {
             Point lp;
-            if (e.P.X == t.LeftPoint.X)
+            if (Math.Abs(e.P.X - t.LeftPoint.X) < 0.01f)
             {
                 lp = e.P;
             }
@@ -256,59 +257,15 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
             return trapezoids;
         }
 
-        // Create an AABB around segments
         /// <summary>
-        ///     Boundings the box using the specified edges
+        /// Boundings the box using the specified edges
         /// </summary>
         /// <param name="edges">The edges</param>
         /// <returns>The trapezoid</returns>
         public Trapezoid BoundingBox(List<Edge> edges)
         {
-            Point max = edges[0].P + margin;
-            Point min = edges[0].Q - margin;
-
-            foreach (Edge e in edges)
-            {
-                if (e.P.X > max.X)
-                {
-                    max = new Point(e.P.X + margin, max.Y);
-                }
-
-                if (e.P.Y > max.Y)
-                {
-                    max = new Point(max.X, e.P.Y + margin);
-                }
-
-                if (e.Q.X > max.X)
-                {
-                    max = new Point(e.Q.X + margin, max.Y);
-                }
-
-                if (e.Q.Y > max.Y)
-                {
-                    max = new Point(max.X, e.Q.Y + margin);
-                }
-
-                if (e.P.X < min.X)
-                {
-                    min = new Point(e.P.X - margin, min.Y);
-                }
-
-                if (e.P.Y < min.Y)
-                {
-                    min = new Point(min.X, e.P.Y - margin);
-                }
-
-                if (e.Q.X < min.X)
-                {
-                    min = new Point(e.Q.X - margin, min.Y);
-                }
-
-                if (e.Q.Y < min.Y)
-                {
-                    min = new Point(min.X, e.Q.Y - margin);
-                }
-            }
+            Point max = CalculateMaxPoint(edges);
+            Point min = CalculateMinPoint(edges);
 
             Edge top = new Edge(new Point(min.X, max.Y), new Point(max.X, max.Y));
             Edge bottom = new Edge(new Point(min.X, min.Y), new Point(max.X, min.Y));
@@ -317,5 +274,68 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
 
             return new Trapezoid(left, right, top, bottom);
         }
+
+        /// <summary>
+        /// Calculates the max point using the specified edges
+        /// </summary>
+        /// <param name="edges">The edges</param>
+        /// <returns>The max</returns>
+        private Point CalculateMaxPoint(List<Edge> edges)
+        {
+            Point max = edges[0].P + margin;
+
+            foreach (Edge e in edges)
+            {
+                max = UpdateMaxPoint(max, e.P);
+                max = UpdateMaxPoint(max, e.Q);
+            }
+
+            return max;
+        }
+
+        /// <summary>
+        /// Calculates the min point using the specified edges
+        /// </summary>
+        /// <param name="edges">The edges</param>
+        /// <returns>The min</returns>
+        private Point CalculateMinPoint(List<Edge> edges)
+        {
+            Point min = edges[0].Q - margin;
+
+            foreach (Edge e in edges)
+            {
+                min = UpdateMinPoint(min, e.P);
+                min = UpdateMinPoint(min, e.Q);
+            }
+
+            return min;
+        }
+
+        /// <summary>
+        /// Updates the max point using the specified current max
+        /// </summary>
+        /// <param name="currentMax">The current max</param>
+        /// <param name="point">The point</param>
+        /// <returns>The point</returns>
+        private Point UpdateMaxPoint(Point currentMax, Point point)
+        {
+            double newX = Math.Max(currentMax.X, point.X);
+            double newY = Math.Max(currentMax.Y, point.Y);
+            return new Point((float) (newX + margin), (float) newY);
+        }
+
+        /// <summary>
+        /// Updates the min point using the specified current min
+        /// </summary>
+        /// <param name="currentMin">The current min</param>
+        /// <param name="point">The point</param>
+        /// <returns>The point</returns>
+        private Point UpdateMinPoint(Point currentMin, Point point)
+        {
+            double newX = Math.Min(currentMin.X, point.X);
+            double newY = Math.Min(currentMin.Y, point.Y);
+            return new Point((float) (newX - margin), (float) newY);
+        }
+
     }
 }
