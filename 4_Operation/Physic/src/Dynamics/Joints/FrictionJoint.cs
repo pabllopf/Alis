@@ -103,27 +103,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The linear mass
         /// </summary>
         private Matrix2X2F linearMass;
-
-        /// <summary>
-        ///     The local anchor
-        /// </summary>
-        private Vector2 localAnchorA;
-
-        /// <summary>
-        ///     The local anchor
-        /// </summary>
-        private Vector2 localAnchorB;
-
-        /// <summary>
-        ///     The local center
-        /// </summary>
-        private Vector2 localCenterA;
-
-        /// <summary>
-        ///     The local center
-        /// </summary>
-        private Vector2 localCenterB;
-
+        
         /// <summary>
         ///     The
         /// </summary>
@@ -133,8 +113,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The
         /// </summary>
         private Vector2 rB;
-
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="FrictionJoint" /> class
         /// </summary>
@@ -158,8 +137,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         )
             : base(bodyA, bodyB, jointType, collideConnected)
         {
-            this.localAnchorA = localAnchorA;
-            this.localAnchorB = localAnchorB;
+            this.LocalAnchorA = localAnchorA;
+            this.LocalAnchorB = localAnchorB;
             this.Force = maxForce;
             this.Torque = maxTorque;
         }
@@ -185,26 +164,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>The local anchor point on BodyA</summary>
-        public Vector2 LocalAnchorA
-        {
-            get => localAnchorA;
-            set => localAnchorA = value;
-        }
+        private Vector2 LocalAnchorA { get; set; }
 
         /// <summary>The local anchor point on BodyB</summary>
-        public Vector2 LocalAnchorB
-        {
-            get => localAnchorB;
-            set => localAnchorB = value;
-        }
+        private Vector2 LocalAnchorB { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the world anchor a
         /// </summary>
         public override Vector2 WorldAnchorA
         {
-            get => BodyA.GetWorldPoint(localAnchorA);
-            set => localAnchorA = BodyA.GetLocalPoint(value);
+            get => BodyA.GetWorldPoint(LocalAnchorA);
+            set => LocalAnchorA = BodyA.GetLocalPoint(value);
         }
 
         /// <summary>
@@ -212,8 +183,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         public override Vector2 WorldAnchorB
         {
-            get => BodyB.GetWorldPoint(localAnchorB);
-            set => localAnchorB = BodyB.GetLocalPoint(value);
+            get => BodyB.GetWorldPoint(LocalAnchorB);
+            set => LocalAnchorB = BodyB.GetLocalPoint(value);
         }
 
         /// <summary>The maximum friction force in N.</summary>
@@ -244,8 +215,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             indexA = BodyA.IslandIndex;
             indexB = BodyB.IslandIndex;
-            localCenterA = BodyA.Sweep.LocalCenter;
-            localCenterB = BodyB.Sweep.LocalCenter;
+            Vector2 localCenterA = BodyA.Sweep.LocalCenter;
+            Vector2 localCenterB = BodyB.Sweep.LocalCenter;
             invMassA = BodyA.InvMass;
             invMassB = BodyB.InvMass;
             invIa = BodyA.InvI;
@@ -262,8 +233,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Rotation qA = new Rotation(aA), qB = new Rotation(aB);
 
             // Compute the effective mass matrix.
-            rA = MathUtils.Mul(qA, localAnchorA - localCenterA);
-            rB = MathUtils.Mul(qB, localAnchorB - localCenterB);
+            rA = MathUtils.Mul(qA, LocalAnchorA - localCenterA);
+            rB = MathUtils.Mul(qB, LocalAnchorB - localCenterB);
 
             // J = [-I -r1_skew I r2_skew]
             //     [ 0       -1 0       1]
