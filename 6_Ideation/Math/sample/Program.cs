@@ -42,7 +42,8 @@ namespace Alis.Core.Aspect.Math.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
         }
     }
 }

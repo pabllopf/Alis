@@ -42,7 +42,6 @@ namespace Alis.Core.Aspect.Memory.Sample
         {
             MyClass instance = new MyClass();
             instance.MyMethod("");
-            //instance.MyMethod(null); 
         }
     }
 }
