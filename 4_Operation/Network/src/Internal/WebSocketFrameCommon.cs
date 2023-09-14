@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Network.Exceptions;
 
 namespace Alis.Core.Network.Internal
 {
@@ -52,7 +53,7 @@ namespace Alis.Core.Network.Internal
         {
             if (maskKey.Count != MaskKeyLength)
             {
-                throw new Exception($"MaskKey key must be {MaskKeyLength} bytes");
+                throw new MaskKeyLengthException($"MaskKey key must be {MaskKeyLength} bytes");
             }
 
             byte[] buffer = payload.Array;
