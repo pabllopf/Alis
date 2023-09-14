@@ -98,75 +98,109 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
             Process();
         }
 
-        // Build the trapezoidal map and query graph
         /// <summary>
-        ///     Processes this instance
+        /// Processes this instance
         /// </summary>
         private void Process()
         {
+            ProcessEdges();
+            MarkOutsideTrapezoids();
+            CollectInteriorTrapezoids();
+            CreateMountains();
+        }
+
+        /// <summary>
+        /// Processes the edges
+        /// </summary>
+        private void ProcessEdges()
+        {
             foreach (Edge edge in edgeList)
             {
-                List<Trapezoid> traps = queryGraph.FollowEdge(edge);
+                List<Trapezoid> trapezoids = queryGraph.FollowEdge(edge);
 
-                // Remove trapezoids from trapezoidal Map
-                foreach (Trapezoid t in traps)
+                foreach (Trapezoid trapezoid in trapezoids)
                 {
-                    trapezoidalMap.Map.Remove(t);
+                    RemoveTrapezoidFromMap(trapezoid);
 
-                    bool cp = t.Contains(edge.P);
-                    bool cq = t.Contains(edge.Q);
-                    Trapezoid[] tList;
+                    bool containsP = trapezoid.Contains(edge.P);
+                    bool containsQ = trapezoid.Contains(edge.Q);
+                    Trapezoid[] newTrapezoids;
 
-                    if (cp && cq)
+                    if (containsP && containsQ)
                     {
-                        tList = trapezoidalMap.Case1(t, edge);
-                        queryGraph.Case1(t.Sink, edge, tList);
+                        newTrapezoids = trapezoidalMap.Case1(trapezoid, edge);
+                        queryGraph.Case1(trapezoid.Sink, edge, newTrapezoids);
                     }
-                    else if (cp && !cq)
+                    else if (containsP && !containsQ)
                     {
-                        tList = trapezoidalMap.Case2(t, edge);
-                        queryGraph.Case2(t.Sink, edge, tList);
+                        newTrapezoids = trapezoidalMap.Case2(trapezoid, edge);
+                        queryGraph.Case2(trapezoid.Sink, edge, newTrapezoids);
                     }
-                    else if (!cp && !cq)
+                    else if (!containsP && !containsQ)
                     {
-                        tList = trapezoidalMap.Case3(t, edge);
-                        queryGraph.Case3(t.Sink, edge, tList);
+                        newTrapezoids = trapezoidalMap.Case3(trapezoid, edge);
+                        queryGraph.Case3(trapezoid.Sink, edge, newTrapezoids);
                     }
                     else
                     {
-                        tList = trapezoidalMap.Case4(t, edge);
-                        queryGraph.Case4(t.Sink, edge, tList);
+                        newTrapezoids = trapezoidalMap.Case4(trapezoid, edge);
+                        queryGraph.Case4(trapezoid.Sink, edge, newTrapezoids);
                     }
 
-                    // Add new trapezoids to map
-                    foreach (Trapezoid y in tList)
-                    {
-                        trapezoidalMap.Map.Add(y);
-                    }
+                    AddNewTrapezoidsToMap(newTrapezoids);
                 }
 
                 trapezoidalMap.Clear();
             }
+        }
+        
+        /// <summary>
+        /// Removes the trapezoid from map using the specified trapezoid
+        /// </summary>
+        /// <param name="trapezoid">The trapezoid</param>
+        private void RemoveTrapezoidFromMap(Trapezoid trapezoid)
+        {
+            trapezoidalMap.Map.Remove(trapezoid);
+        }
 
-            // Mark outside trapezoids
-            foreach (Trapezoid t in trapezoidalMap.Map)
+        /// <summary>
+        /// Adds the new trapezoids to map using the specified new trapezoids
+        /// </summary>
+        /// <param name="newTrapezoids">The new trapezoids</param>
+        private void AddNewTrapezoidsToMap(Trapezoid[] newTrapezoids)
+        {
+            foreach (Trapezoid trapezoid in newTrapezoids)
             {
-                MarkOutside(t);
+                trapezoidalMap.Map.Add(trapezoid);
             }
+        }
 
-            // Collect interior trapezoids
-            foreach (Trapezoid t in trapezoidalMap.Map)
+        /// <summary>
+        /// Marks the outside trapezoids
+        /// </summary>
+        private void MarkOutsideTrapezoids()
+        {
+            foreach (Trapezoid trapezoid in trapezoidalMap.Map)
             {
-                if (t.Inside)
+                MarkOutside(trapezoid);
+            }
+        }
+
+        /// <summary>
+        /// Collects the interior trapezoids
+        /// </summary>
+        private void CollectInteriorTrapezoids()
+        {
+            foreach (Trapezoid trapezoid in trapezoidalMap.Map)
+            {
+                if (trapezoid.Inside)
                 {
-                    Trapezoids.Add(t);
-                    t.AddPoints();
+                    Trapezoids.Add(trapezoid);
+                    trapezoid.AddPoints();
                 }
             }
-
-            // Generate the triangles
-            CreateMountains();
         }
+
 
         // Build a list of x-monotone mountains
         /// <summary>
