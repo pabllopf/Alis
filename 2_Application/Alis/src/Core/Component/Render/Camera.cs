@@ -99,7 +99,7 @@ namespace Alis.Core.Component.Render
         public override void Update()
         {
             view.Center = new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
-            //GraphicManager.Current.RenderWindow.SetView(view);
+            GraphicManager.SetView(view);
         }
     }
 }

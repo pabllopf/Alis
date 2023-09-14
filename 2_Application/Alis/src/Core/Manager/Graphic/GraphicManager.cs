@@ -36,7 +36,6 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.SFML.Graphics;
 using Alis.Core.Graphic.SFML.Windows;
-using Alis.Core.Manager.Time;
 using Sprite = Alis.Core.Component.Render.Sprite;
 using Styles = Alis.Core.Graphic.SFML.Windows.Styles;
 
@@ -56,7 +55,7 @@ namespace Alis.Core.Manager.Graphic
         /// <summary>
         ///     The renderWindow
         /// </summary>
-        public RenderWindow RenderWindow;
+        private static RenderWindow _renderWindow;
 
         /// <summary>
         ///     The default
@@ -83,7 +82,7 @@ namespace Alis.Core.Manager.Graphic
         /// <summary>
         ///     Gets or sets the value of the colliders
         /// </summary>
-        public static List<Shape> Colliders { get; } = new List<Shape>();
+        private static List<Shape> Colliders { get; } = new List<Shape>();
         
         /// <summary>
         ///     The blue
@@ -103,7 +102,7 @@ namespace Alis.Core.Manager.Graphic
         /// <summary>
         /// The counter
         /// </summary>
-        private int counter = 0;
+        private int counter;
 
         /// <summary>
         ///     Inits this instance
@@ -127,7 +126,7 @@ namespace Alis.Core.Manager.Graphic
         {
             VideoGame.Setting.Graphic.Window.Resolution = new Vector2(e.Width, e.Height);
 
-            RenderWindow.Size = new Vector2U(
+            _renderWindow.Size = new Vector2U(
                 (uint) VideoGame.Setting.Graphic.Window.Resolution.X,
                 (uint) VideoGame.Setting.Graphic.Window.Resolution.Y);
         }
@@ -137,10 +136,10 @@ namespace Alis.Core.Manager.Graphic
         /// </summary>
         private void InitRenderWindow()
         {
-            if (RenderWindow is {IsOpen: true})
+            if (_renderWindow is {IsOpen: true})
             {
-                RenderWindow.Close();
-                RenderWindow.Dispose();
+                _renderWindow.Close();
+                _renderWindow.Dispose();
             }
 
             videoMode = new VideoMode(
@@ -149,21 +148,21 @@ namespace Alis.Core.Manager.Graphic
 
             VideoGame.Setting.Graphic.Window.Resolution = new Vector2(defaultSize.X, defaultSize.Y);
 
-            RenderWindow = new RenderWindow(videoMode,
+            _renderWindow = new RenderWindow(videoMode,
                 $"{VideoGame.Setting.General.Name} by {VideoGame.Setting.General.Author}", styles);
 
-            RenderWindow.RequestFocus();
-            RenderWindow.SetVisible(true);
+            _renderWindow.RequestFocus();
+            _renderWindow.SetVisible(true);
 
 
             if (!VideoGame.Setting.General.IconFile.Equals(""))
             {
                 Image image = new Image(VideoGame.Setting.General.IconFile);
-                RenderWindow.SetIcon(image.Size.X, image.Size.Y, image.Pixels);
+                _renderWindow.SetIcon(image.Size.X, image.Size.Y, image.Pixels);
             }
 
-            RenderWindow.Resized += RenderWindowOnResized;
-            RenderWindow.Closed += RenderWindowOnClosed;
+            _renderWindow.Resized += RenderWindowOnResized;
+            _renderWindow.Closed += RenderWindowOnClosed;
         }
 
         /// <summary>
@@ -172,9 +171,9 @@ namespace Alis.Core.Manager.Graphic
         public override void Start() => Sprites = Sprites.OrderBy(o => o.Depth).ToList();
 
         /// <summary>
-        ///     Befores the update
+        /// Before the update
         /// </summary>
-        public override void BeforeUpdate() => RenderWindow.Clear(VideoGame.Setting.Graphic.Window.Background);
+        public override void BeforeUpdate() => _renderWindow.Clear(VideoGame.Setting.Graphic.Window.Background);
 
         /// <summary>
         ///     Updates this instance
@@ -186,8 +185,8 @@ namespace Alis.Core.Manager.Graphic
                 RenderSampleColor();
             }
             
-            Sprites.ForEach(i => RenderWindow.Draw(i.SpriteSfml));
-            Colliders.ForEach(i => RenderWindow.Draw(i));
+            Sprites.ForEach(i => _renderWindow.Draw(i.SpriteSfml));
+            Colliders.ForEach(i => _renderWindow.Draw(i));
         }
 
         /// <summary>
@@ -217,21 +216,21 @@ namespace Alis.Core.Manager.Graphic
                 }
                 counter = 0;
             }
-            RenderWindow.Clear(new Color(red, green, blue));
+            _renderWindow.Clear(new Color(red, green, blue));
         }
 
         /// <summary>
         ///     Afters the update
         /// </summary>
-        public override void AfterUpdate() => RenderWindow.Display();
+        public override void AfterUpdate() => _renderWindow.Display();
 
         /// <summary>
         ///     Dispatches the events
         /// </summary>
         public override void DispatchEvents()
         {
-            RenderWindow.DispatchEvents();
-            if (Keyboard.IsKeyPressed(Key.LAlt) && Keyboard.IsKeyPressed(Key.Enter) && (Math.Abs(RenderWindow.Size.X - defaultSize.X) > 0.1) && (Math.Abs(RenderWindow.Size.Y - defaultSize.Y) > 0.1))
+            _renderWindow.DispatchEvents();
+            if (Keyboard.IsKeyPressed(Key.LAlt) && Keyboard.IsKeyPressed(Key.Enter) && (Math.Abs(_renderWindow.Size.X - defaultSize.X) > 0.1) && (Math.Abs(_renderWindow.Size.Y - defaultSize.Y) > 0.1))
             {
                 styles = Styles.Default;
                 Logger.Log("Change style to default");
@@ -240,7 +239,7 @@ namespace Alis.Core.Manager.Graphic
                 return;
             }
 
-            if (Keyboard.IsKeyPressed(Key.LAlt) && Keyboard.IsKeyPressed(Key.Enter) && (Math.Abs(RenderWindow.Size.X - defaultSize.X) < 0.1) && (Math.Abs(RenderWindow.Size.Y - defaultSize.Y) < 0.1))
+            if (Keyboard.IsKeyPressed(Key.LAlt) && Keyboard.IsKeyPressed(Key.Enter) && (Math.Abs(_renderWindow.Size.X - defaultSize.X) < 0.1) && (Math.Abs(_renderWindow.Size.Y - defaultSize.Y) < 0.1))
             {
                 styles = Styles.Fullscreen;
                 Logger.Log("Change style to Fullscreen");
@@ -252,7 +251,7 @@ namespace Alis.Core.Manager.Graphic
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        public override void Exit() => RenderWindow.Close();
+        public override void Exit() => _renderWindow.Close();
 
         /// <summary>
         ///     Windows the on closed using the specified sender
@@ -285,7 +284,7 @@ namespace Alis.Core.Manager.Graphic
         ///     Sets the view using the specified view
         /// </summary>
         /// <param name="view">The view</param>
-        public void SetView(View view) => RenderWindow.SetView(view);
+        public static void SetView(View view) => _renderWindow.SetView(view);
 
         /// <summary>
         ///     Attaches the collider using the specified shape
