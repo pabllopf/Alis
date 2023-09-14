@@ -36,18 +36,6 @@ using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
-    // Pulley:
-    // length1 = norm(p1 - s1)
-    // length2 = norm(p2 - s2)
-    // C0 = (length1 + ratio * length2)_initial
-    // C = C0 - (length1 + ratio * length2)
-    // u1 = (p1 - s1) / norm(p1 - s1)
-    // u2 = (p2 - s2) / norm(p2 - s2)
-    // Cdot = -dot(u1, v1 + cross(w1, r1)) - ratio * dot(u2, v2 + cross(w2, r2))
-    // J = -[u1 cross(r1, u1) ratio * u2  ratio * cross(r2, u2)]
-    // K = J * invM * JT
-    //   = invMass1 + invI1 * cross(r1, u1)^2 + ratio^2 * (invMass2 + invI2 * cross(r2, u2)^2)
-
     /// <summary>
     ///     The pulley joint is connected to two bodies and two fixed world points. The pulley supports a ratio such that:
     ///     <![CDATA[length1 + ratio * length2 <= constant]]>
@@ -56,6 +44,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     often work better when combined with prismatic joints. You should also cover the the anchor points with static
     ///     shapes
     ///     to prevent one side from going to zero length.
+    ///
+    ///   Pulley:
+    ///  length1 = norm(p1 - s1)
+    ///  length2 = norm(p2 - s2)
+    ///  C0 = (length1 + ratio * length2)_initial
+    ///  C = C0 - (length1 + ratio * length2)
+    /// u1 = (p1 - s1) / norm(p1 - s1)
+    /// u2 = (p2 - s2) / norm(p2 - s2)
+    /// cDot = -dot(u1, v1 + cross(w1, r1)) - ratio * dot(u2, v2 + cross(w2, r2))
+    /// J = -[u1 cross(r1, u1) ratio * u2  ratio * cross(r2, u2)]
+    ///  K = J * invM * JT
+    ///    = invMass1 + invI1 * cross(r1, u1)^2 + ratio^2 * (invMass2 + invI2 * cross(r2, u2)^2)
     /// </summary>
     public class PulleyJoint : Joint
     {
@@ -228,7 +228,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             this.lengthA = lengthA;
             this.lengthB = lengthB;
 
-            //Debug.Assert(def.Ratio != 0.0f);
             this.ratio = ratio;
 
             constant = lengthA + this.ratio * lengthB;
@@ -270,10 +269,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vector2 dB = anchorB - bodyB.GetLocalPoint(worldAnchorB);
                 lengthB = dB.Length();
             }
-
-            //Debug.Assert(ratio != 0.0f);
-            //Debug.Assert(ratio > MathConstants.Epsilon);
-
+            
             this.ratio = ratio;
             constant = lengthA + ratio * lengthB;
             impulse = 0.0f;
@@ -414,21 +410,21 @@ namespace Alis.Core.Physic.Dynamics.Joints
             uA = cA + rA - worldAnchorA;
             uB = cB + rB - worldAnchorB;
 
-            float lengthA = uA.Length();
-            float lengthB = uB.Length();
+            float lengthALocal = uA.Length();
+            float lengthBLocal = uB.Length();
 
-            if (lengthA > 10.0f * Settings.LinearSlop)
+            if (lengthALocal > 10.0f * Settings.LinearSlop)
             {
-                uA *= 1.0f / lengthA;
+                uA *= 1.0f / lengthALocal;
             }
             else
             {
                 uA = Vector2.Zero;
             }
 
-            if (lengthB > 10.0f * Settings.LinearSlop)
+            if (lengthBLocal > 10.0f * Settings.LinearSlop)
             {
-                uB *= 1.0f / lengthB;
+                uB *= 1.0f / lengthBLocal;
             }
             else
             {
@@ -488,12 +484,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2 vpA = vA + MathUtils.Cross(wA, rA);
             Vector2 vpB = vB + MathUtils.Cross(wB, rB);
 
-            float cdot = -Vector2.Dot(uA, vpA) - ratio * Vector2.Dot(uB, vpB);
-            float impulse = -mass * cdot;
-            this.impulse += impulse;
+            float cDot = -Vector2.Dot(uA, vpA) - ratio * Vector2.Dot(uB, vpB);
+            float impulseLocal = -mass * cDot;
+            this.impulse += impulseLocal;
 
-            Vector2 pa = -impulse * uA;
-            Vector2 pb = -ratio * impulse * uB;
+            Vector2 pa = -impulseLocal * uA;
+            Vector2 pb = -ratio * impulseLocal * uB;
             vA += invMassA * pa;
             wA += invIa * MathUtils.Cross(rA, pa);
             vB += invMassB * pb;
@@ -519,60 +515,60 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             Rotation qA = new Rotation(aA), qB = new Rotation(aB);
 
-            Vector2 rA = MathUtils.Mul(qA, localAnchorA - localCenterA);
-            Vector2 rB = MathUtils.Mul(qB, localAnchorB - localCenterB);
+            Vector2 rALocal = MathUtils.Mul(qA, localAnchorA - localCenterA);
+            Vector2 rBLocal = MathUtils.Mul(qB, localAnchorB - localCenterB);
 
             // Get the pulley axes.
-            Vector2 uA = cA + rA - worldAnchorA;
-            Vector2 uB = cB + rB - worldAnchorB;
+            Vector2 uALocal = cA + rALocal - worldAnchorA;
+            Vector2 uBLocal = cB + rBLocal - worldAnchorB;
 
-            float lengthA = uA.Length();
-            float lengthB = uB.Length();
+            float lengthALocal = uALocal.Length();
+            float lengthBLocal = uBLocal.Length();
 
-            if (lengthA > 10.0f * Settings.LinearSlop)
+            if (lengthALocal > 10.0f * Settings.LinearSlop)
             {
-                uA *= 1.0f / lengthA;
+                uALocal *= 1.0f / lengthALocal;
             }
             else
             {
-                uA = Vector2.Zero;
+                uALocal = Vector2.Zero;
             }
 
-            if (lengthB > 10.0f * Settings.LinearSlop)
+            if (lengthBLocal > 10.0f * Settings.LinearSlop)
             {
-                uB *= 1.0f / lengthB;
+                uBLocal *= 1.0f / lengthBLocal;
             }
             else
             {
-                uB = Vector2.Zero;
+                uBLocal = Vector2.Zero;
             }
 
             // Compute effective mass.
-            float ruA = MathUtils.Cross(rA, uA);
-            float ruB = MathUtils.Cross(rB, uB);
+            float ruA = MathUtils.Cross(rALocal, uALocal);
+            float ruB = MathUtils.Cross(rBLocal, uBLocal);
 
             float mA = invMassA + invIa * ruA * ruA;
             float mB = invMassB + invIb * ruB * ruB;
 
-            float mass = mA + ratio * ratio * mB;
+            float massLocal = mA + ratio * ratio * mB;
 
-            if (mass > 0.0f)
+            if (massLocal > 0.0f)
             {
-                mass = 1.0f / mass;
+                massLocal = 1.0f / massLocal;
             }
 
-            float c = constant - lengthA - ratio * lengthB;
+            float c = constant - lengthALocal - ratio * lengthBLocal;
             float linearError = Math.Abs(c);
 
-            float impulse = -mass * c;
+            float imp = -massLocal * c;
 
-            Vector2 pa = -impulse * uA;
-            Vector2 pb = -ratio * impulse * uB;
+            Vector2 pa = -imp * uALocal;
+            Vector2 pb = -ratio * imp * uBLocal;
 
             cA += invMassA * pa;
-            aA += invIa * MathUtils.Cross(rA, pa);
+            aA += invIa * MathUtils.Cross(rALocal, pa);
             cB += invMassB * pb;
-            aB += invIb * MathUtils.Cross(rB, pb);
+            aB += invIb * MathUtils.Cross(rBLocal, pb);
 
             data.Positions[indexA].C = cA;
             data.Positions[indexA].A = aA;
