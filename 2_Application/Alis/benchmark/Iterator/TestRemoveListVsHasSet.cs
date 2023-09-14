@@ -40,7 +40,7 @@ namespace Alis.Benchmark.Iterator
         /// <summary>
         ///     The body set
         /// </summary>
-        private HashSet<Body> bodySet;
+        private HashSet<BodyTest> bodySet;
 
         /// <summary>
         ///     The world
@@ -61,13 +61,13 @@ namespace Alis.Benchmark.Iterator
         public void Setup()
         {
             world = new World();
-            bodySet = new HashSet<Body>();
+            bodySet = new HashSet<BodyTest>();
 
             for (int i = 0; i < N; i++)
             {
-                Body body = new Body {Id = i};
-                world.Bodies.Add(body);
-                bodySet.Add(body);
+                BodyTest bodyTest = new BodyTest {Id = i};
+                world.Bodies.Add(bodyTest);
+                bodySet.Add(bodyTest);
             }
         }
 
@@ -104,29 +104,18 @@ namespace Alis.Benchmark.Iterator
             /// <summary>
             ///     Initializes a new instance of the <see cref="World" /> class
             /// </summary>
-            public World() => Bodies = new List<Body>();
+            public World() => Bodies = new List<BodyTest>();
 
             /// <summary>
             ///     Gets or sets the value of the bodies
             /// </summary>
-            public List<Body> Bodies { get; }
+            public List<BodyTest> Bodies { get; }
 
             /// <summary>
             ///     Removes the body using the specified body
             /// </summary>
-            /// <param name="body">The body</param>
-            public void RemoveBody(Body body) => Bodies.Remove(body);
-        }
-
-        /// <summary>
-        ///     The body class
-        /// </summary>
-        private class Body
-        {
-            /// <summary>
-            ///     Gets or sets the value of the id
-            /// </summary>
-            public int Id { get; set; }
+            /// <param name="bodyTest">The body</param>
+            public void RemoveBody(BodyTest bodyTest) => Bodies.Remove(bodyTest);
         }
     }
 }

@@ -43,11 +43,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private float bias;
 
         /// <summary>
-        ///     The bias factor
-        /// </summary>
-        private float biasFactor;
-
-        /// <summary>
         ///     The joint error
         /// </summary>
         private float jointError;
@@ -56,16 +51,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The mass factor
         /// </summary>
         private float massFactor;
-
-        /// <summary>
-        ///     The max impulse
-        /// </summary>
-        private float maxImpulse;
-
-        /// <summary>
-        ///     The softness
-        /// </summary>
-        private float softness;
 
         /// <summary>
         ///     The target angle
@@ -80,8 +65,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public AngleJoint(Body bodyA, Body bodyB)
             : base(bodyA, bodyB, JointType.Angle)
         {
-            biasFactor = .2f;
-            maxImpulse = float.MaxValue;
+            BiasFactor = .2f;
+            Impulse = float.MaxValue;
         }
 
         /// <summary>
@@ -108,7 +93,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => targetAngle;
             set
             {
-                if (targetAngle != value)
+                if (Math.Abs(targetAngle - value) > 0.01f)
                 {
                     targetAngle = value;
                     WakeBodies();
@@ -117,25 +102,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>Gets or sets the bias factor. Defaults to 0.2</summary>
-        public float BiasFactor
-        {
-            get => biasFactor;
-            set => biasFactor = value;
-        }
+        private float BiasFactor { get; set; }
 
         /// <summary>Gets or sets the maximum impulse. Defaults to float.MaxValue</summary>
-        public float Impulse
-        {
-            get => maxImpulse;
-            set => maxImpulse = value;
-        }
+        private float Impulse { get; set; }
 
         /// <summary>Gets or sets the softness of the joint. Defaults to 0</summary>
-        public float Softness
-        {
-            get => softness;
-            set => softness = value;
-        }
+        public float Softness { get; set; }
 
         /// <summary>
         ///     Gets the reaction force using the specified inv dt
@@ -164,8 +137,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float bW = data.Positions[indexB].A;
 
             jointError = bW - aW - targetAngle;
-            bias = -biasFactor * data.Step.InvertedDeltaTime * jointError;
-            massFactor = (1 - softness) / (BodyA.InvI + BodyB.InvI);
+            bias = -BiasFactor * data.Step.InvertedDeltaTime * jointError;
+            massFactor = (1 - Softness) / (BodyA.InvI + BodyB.InvI);
         }
 
         /// <summary>
@@ -180,9 +153,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float p = (bias - data.Velocities[indexB].W + data.Velocities[indexA].W) * massFactor;
 
             data.Velocities[indexA].W -=
-                BodyA.InvI * MathUtils.Sign(p) * MathUtils.Min(MathUtils.Abs(p), maxImpulse);
+                BodyA.InvI * MathUtils.Sign(p) * MathUtils.Min(MathUtils.Abs(p), Impulse);
             data.Velocities[indexB].W +=
-                BodyB.InvI * MathUtils.Sign(p) * MathUtils.Min(MathUtils.Abs(p), maxImpulse);
+                BodyB.InvI * MathUtils.Sign(p) * MathUtils.Min(MathUtils.Abs(p), Impulse);
         }
 
         /// <summary>
