@@ -136,10 +136,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             {
                 return;
             }
-
-            // TODO_ERIN use a hash table to remove a potential bottleneck when both
-            // bodies have a lot of contacts.
-            // Does a contact already exist?
+            
             ContactEdge edge = bodyB.ContactList;
             while (edge != null)
             {
@@ -435,8 +432,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
                 BodyType typeA = bA.BodyType;
                 BodyType typeB = bB.BodyType;
-                //Debug.Assert(typeA == BodyType.Dynamic || typeB == BodyType.Dynamic);
-
+                
                 bool activeA = bA.Awake && (typeA != BodyType.Static);
                 bool activeB = bB.Awake && (typeB != BodyType.Static);
 
@@ -471,9 +467,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                     alpha0 = bA.Sweep.Alpha0;
                     bB.Sweep.Advance(alpha0);
                 }
-
-                //Debug.Assert(alpha0 < 1.0f);
-
+                
                 // Compute the time of impact in interval [0, minTOI]
                 ToiInput input = new ToiInput
                 {
