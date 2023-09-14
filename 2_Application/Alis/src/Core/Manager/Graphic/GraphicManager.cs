@@ -49,11 +49,6 @@ namespace Alis.Core.Manager.Graphic
     public class GraphicManager : GraphicManagerBase
     {
         /// <summary>
-        ///     The current
-        /// </summary>
-        internal static GraphicManager Current;
-
-        /// <summary>
         ///     The vector
         /// </summary>
         private Vector2 defaultSize;
@@ -76,7 +71,10 @@ namespace Alis.Core.Manager.Graphic
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
         /// </summary>
-        public GraphicManager() => Current = this;
+        public GraphicManager()
+        {
+            
+        }
 
         /// <summary>
         ///     Gets or sets the value of the sprites
