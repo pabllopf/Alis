@@ -65,7 +65,7 @@ namespace Alis.Core.Audio
         ///     Initializes a new instance of the <see cref="AudioClipBase" /> class
         /// </summary>
         /// <param name="fullPathAudio">The full path audio</param>
-        public AudioClipBase(string fullPathAudio)
+        protected AudioClipBase(string fullPathAudio)
         {
             FullPathAudioFile = fullPathAudio;
             AudioBackendType = AudioBackendType.Sfml;
@@ -77,7 +77,7 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioClipBase" /> class
         /// </summary>
-        public AudioClipBase()
+        protected AudioClipBase()
         {
             AudioBackendType = AudioBackendType.Sfml;
             Logger.Log("Init music: 'null file'");
@@ -136,7 +136,7 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     Gets or sets the value of the is playing
         /// </summary>
-        public bool IsPlaying { get; set; }
+        public bool IsPlaying { get; private set; }
 
         /// <summary>
         ///     Gets or sets the value of the full path audio file
@@ -146,10 +146,10 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     Gets the value of the audio backend type
         /// </summary>
-        public AudioBackendType AudioBackendType { get; }
+        private AudioBackendType AudioBackendType { get; }
 
         /// <summary>
-        ///     Gets or sets the value of the is loopping
+        ///     Gets or sets the value of the is looping
         /// </summary>
         public bool IsLooping { get; set; }
 
@@ -196,7 +196,7 @@ namespace Alis.Core.Audio
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         protected void Stop()
         {
-            if (!FullPathAudioFile.Equals(""))
+            if (!string.IsNullOrEmpty(FullPathAudioFile))
             {
                 switch (AudioBackendType)
                 {
@@ -222,7 +222,7 @@ namespace Alis.Core.Audio
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         protected void Resume()
         {
-            if (!FullPathAudioFile.Equals(""))
+            if (!string.IsNullOrEmpty(FullPathAudioFile))
             {
                 switch (AudioBackendType)
                 {
