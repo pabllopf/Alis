@@ -30,6 +30,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Graphic.SFML.Graphics;
 using Alis.Core.Graphic.SFML.Windows;
@@ -113,7 +114,7 @@ namespace Alis.Core.Graphic.Sample
                     Key key = keys[index];
                     if (Keyboard.IsKeyPressed(key))
                     {
-                        Console.WriteLine($" {key}");
+                        Console.WriteLine($@" {key}");
                     }
                 }
 
@@ -159,7 +160,7 @@ namespace Alis.Core.Graphic.Sample
         /// <param name="e">The </param>
         private static void WindowOnJoystickMoved(object sender, JoystickMoveEventArgs e)
         {
-            Console.WriteLine($"WindowOnJoystickMoved: {e.Axis} {e.JoystickId} {e.Position}");
+            Console.WriteLine($@"WindowOnJoystickMoved: {e.Axis} {e.JoystickId} {e.Position}");
         }
 
         /// <summary>
@@ -167,9 +168,9 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
-        private void WindowOnJoystickDisconnected(object sender, JoystickConnectEventArgs e)
+        private static void WindowOnJoystickDisconnected(object sender, JoystickConnectEventArgs e)
         {
-            Console.WriteLine($"WindowOnJoystickDisconnected: {e.JoystickId}");
+            Console.WriteLine($@"WindowOnJoystickDisconnected: {e.JoystickId}");
         }
 
         /// <summary>
@@ -177,9 +178,9 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
-        private void WindowOnJoystickConnected(object sender, JoystickConnectEventArgs e)
+        private static void WindowOnJoystickConnected(object sender, JoystickConnectEventArgs e)
         {
-            Console.WriteLine($"WindowOnJoystickConnected: {e.JoystickId}");
+            Console.WriteLine($@"WindowOnJoystickConnected: {e.JoystickId}");
         }
 
         /// <summary>
@@ -187,20 +188,19 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
-        private void OnJoystickButtonPressed(object sender, JoystickButtonEventArgs e)
+        private static void OnJoystickButtonPressed(object sender, JoystickButtonEventArgs e)
         {
-            Console.WriteLine($"Tecla mando presionada: {e.Button} {e.JoystickId}");
+            Console.WriteLine($@"OnJoystickButtonPressed: {e.Button} {e.JoystickId}");
         }
-
-
+        
         /// <summary>
         ///     Ons the key pressed using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
-        private void OnKeyPressed(object sender, KeyEventArgs e)
+        private static void OnKeyPressed(object sender, KeyEventArgs e)
         {
-            Console.WriteLine($"Tecla presionada: {e.Code}");
+            Console.WriteLine($@"Key pressed: {e.Code}");
         }
 
         /// <summary>
@@ -208,82 +208,117 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
-        private void OnMouseButtonPressed(object sender, MouseButtonEventArgs e)
+        private static void OnMouseButtonPressed(object sender, MouseButtonEventArgs e)
         {
-            Console.WriteLine($"Botón del mouse presionado: {e.Button}");
+            Console.WriteLine($@"Mouse pressed: {e.Button}");
         }
 
         /// <summary>
         ///     Inits the joystick
         /// </summary>
-        public void InitJoystick()
+        private void InitJoystick()
         {
             Joystick.Update();
             for (uint i = 0; i < Joystick.Count; i++)
             {
                 Joystick.Identification identification = Joystick.GetIdentification(i);
-                Console.Write($"[SPACE {i}] Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
+                Console.Write($@"[SPACE {i}] Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
 
-                if (Joystick.IsConnected(i))
+                Console.Write(Joystick.IsConnected(i) ? @" [CONNECTED] " : @" [DISCONNECTED] ");
+
+                uint maxButton = Joystick.GetButtonCount(i);
+                Console.WriteLine($@"    Max buttons='{maxButton}'");
+
+                for (uint j = 0; j < maxButton; j++)
                 {
-                    Console.Write(" [CONNECTED] ");
-                }
-                else
-                {
-                    Console.Write(" [DISCONNECTED] ");
-                }
-
-                Console.Write("\n");
-
-                uint maxbutton = Joystick.GetButtonCount(i);
-                Console.WriteLine($"    Maxbuttons='{maxbutton}'");
-
-                for (uint j = 0; j < maxbutton; j++)
-                {
-                    Console.WriteLine($"    - [Button {j}]");
+                    Console.WriteLine($@"    - [Button {j}]");
                     if (Joystick.IsButtonPressed(i, j))
                     {
-                        Console.WriteLine($"    [ButtonPressed] Button = '{j}' | Controller = '{i}' | Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
+                        Console.WriteLine($@"    [ButtonPressed] Button = '{j}' | Controller = '{i}' | Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
                     }
                 }
+            }
+        }
+        
+        /// <summary>
+        /// Updates the controller
+        /// </summary>
+        public void UpdateController()
+        {
+            foreach (uint controllerId in Enumerable.Range(0, (int) Joystick.Count))
+            {
+                if (!Joystick.IsConnected(controllerId))
+                {
+                    continue;
+                }
 
-                Console.Write("\n");
+                Joystick.Identification identification = Joystick.GetIdentification(controllerId);
+
+                LogPressedButtons(controllerId, identification);
+                LogMovedAxes(controllerId, identification);
             }
         }
 
         /// <summary>
-        ///     Update controller
+        /// Logs the pressed buttons using the specified controller id
         /// </summary>
-        public void UpdateController()
+        /// <param name="controllerId">The controller id</param>
+        /// <param name="identification">The identification</param>
+        private void LogPressedButtons(uint controllerId, Joystick.Identification identification)
         {
-            for (uint i = 0; i < Joystick.Count; i++)
+            for (uint buttonId = 0; buttonId < 32; buttonId++)
             {
-                if (Joystick.IsConnected(i))
+                if (Joystick.IsButtonPressed(controllerId, buttonId))
                 {
-                    Joystick.Identification identification = Joystick.GetIdentification(i);
+                    LogButtonPressed(controllerId, identification, buttonId);
+                }
+            }
+        }
 
-                    for (uint j = 0; j < 32; j++)
+        /// <summary>
+        /// Logs the moved axes using the specified controller id
+        /// </summary>
+        /// <param name="controllerId">The controller id</param>
+        /// <param name="identification">The identification</param>
+        private void LogMovedAxes(uint controllerId, Joystick.Identification identification)
+        {
+            float tolerance = 50.0f;
+            foreach (Axis axisId in axis)
+            {
+                if (Joystick.HasAxis(controllerId, axisId))
+                {
+                    float axisPosition = Joystick.GetAxisPosition(controllerId, axisId);
+                    if (Math.Abs(axisPosition) > tolerance)
                     {
-                        if (Joystick.IsButtonPressed(i, j))
-                        {
-                            Console.WriteLine($@"    [ButtonPressed] Button = '{j}' | Controller = '{i}' | Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
-                        }
-                    }
-
-
-                    float tolerencie = 50.0f;
-                    foreach (Axis axisId in axis)
-                    {
-                        if (Joystick.HasAxis(i, axisId))
-                        {
-                            if (Joystick.GetAxisPosition(i, axisId) > tolerencie || Joystick.GetAxisPosition(i, axisId) < -tolerencie)
-                            {
-                                Console.WriteLine($@"    [ButtonPressed] AxisId = '{axisId}' | valueAxi = '{Joystick.GetAxisPosition(i, axisId)}' | Controller = '{i}' | Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
-                            }
-                        }
+                        LogAxisMoved(controllerId, identification, axisId, axisPosition);
                     }
                 }
             }
         }
+
+        /// <summary>
+        /// Logs the button pressed using the specified controller id
+        /// </summary>
+        /// <param name="controllerId">The controller id</param>
+        /// <param name="identification">The identification</param>
+        /// <param name="buttonId">The button id</param>
+        private void LogButtonPressed(uint controllerId, Joystick.Identification identification, uint buttonId)
+        {
+            Console.WriteLine($@"[ButtonPressed] Button = '{buttonId}' | Controller = '{controllerId}' | Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
+        }
+
+        /// <summary>
+        /// Logs the axis moved using the specified controller id
+        /// </summary>
+        /// <param name="controllerId">The controller id</param>
+        /// <param name="identification">The identification</param>
+        /// <param name="axisId">The axis id</param>
+        /// <param name="axisPosition">The axis position</param>
+        private void LogAxisMoved(uint controllerId, Joystick.Identification identification, Axis axisId, float axisPosition)
+        {
+            Console.WriteLine($@"[AxisMoved] AxisId = '{axisId}' | valueAxis = '{axisPosition}' | Controller = '{controllerId}' | Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
+        }
+
+
     }
 }

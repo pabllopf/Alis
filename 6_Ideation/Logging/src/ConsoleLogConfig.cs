@@ -44,7 +44,7 @@ namespace Alis.Core.Aspect.Logging
         /// <summary>
         ///     Log text color
         /// </summary>
-        private const ConsoleColor LogMessageColor = ConsoleColor.Black;
+        private const ConsoleColor LogMessageColor = ConsoleColor.White;
 
         /// <summary>
         ///     Trace text color
