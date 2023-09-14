@@ -34,5 +34,9 @@ namespace Alis.Core.Setting
     /// </summary>
     public class SettingBase
     {
+        /// <summary>
+        /// Gets or sets the value of the id
+        /// </summary>
+        public int Id { get; set; }
     }
 }
