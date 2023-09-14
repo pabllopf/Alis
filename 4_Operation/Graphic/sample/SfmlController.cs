@@ -221,7 +221,7 @@ namespace Alis.Core.Graphic.Sample
             Joystick.Update();
             for (uint i = 0; i < Joystick.Count; i++)
             {
-                Joystick.Identification identification = Joystick.GetIdentification(i);
+                Identification identification = Joystick.GetIdentification(i);
                 Console.Write($@"[SPACE {i}] Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
 
                 Console.Write(Joystick.IsConnected(i) ? @" [CONNECTED] " : @" [DISCONNECTED] ");
@@ -252,7 +252,7 @@ namespace Alis.Core.Graphic.Sample
                     continue;
                 }
 
-                Joystick.Identification identification = Joystick.GetIdentification(controllerId);
+                Identification identification = Joystick.GetIdentification(controllerId);
 
                 LogPressedButtons(controllerId, identification);
                 LogMovedAxes(controllerId, identification);
@@ -264,7 +264,7 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         /// <param name="controllerId">The controller id</param>
         /// <param name="identification">The identification</param>
-        private void LogPressedButtons(uint controllerId, Joystick.Identification identification)
+        private void LogPressedButtons(uint controllerId, Identification identification)
         {
             for (uint buttonId = 0; buttonId < 32; buttonId++)
             {
@@ -280,7 +280,7 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         /// <param name="controllerId">The controller id</param>
         /// <param name="identification">The identification</param>
-        private void LogMovedAxes(uint controllerId, Joystick.Identification identification)
+        private void LogMovedAxes(uint controllerId, Identification identification)
         {
             float tolerance = 50.0f;
             foreach (Axis axisId in axis)
@@ -302,7 +302,7 @@ namespace Alis.Core.Graphic.Sample
         /// <param name="controllerId">The controller id</param>
         /// <param name="identification">The identification</param>
         /// <param name="buttonId">The button id</param>
-        private void LogButtonPressed(uint controllerId, Joystick.Identification identification, uint buttonId)
+        private void LogButtonPressed(uint controllerId, Identification identification, uint buttonId)
         {
             Console.WriteLine($@"[ButtonPressed] Button = '{buttonId}' | Controller = '{controllerId}' | Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
         }
@@ -314,7 +314,7 @@ namespace Alis.Core.Graphic.Sample
         /// <param name="identification">The identification</param>
         /// <param name="axisId">The axis id</param>
         /// <param name="axisPosition">The axis position</param>
-        private void LogAxisMoved(uint controllerId, Joystick.Identification identification, Axis axisId, float axisPosition)
+        private void LogAxisMoved(uint controllerId, Identification identification, Axis axisId, float axisPosition)
         {
             Console.WriteLine($@"[AxisMoved] AxisId = '{axisId}' | valueAxis = '{axisPosition}' | Controller = '{controllerId}' | Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
         }
