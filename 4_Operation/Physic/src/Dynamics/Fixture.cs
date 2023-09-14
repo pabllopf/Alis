@@ -310,7 +310,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="childIndex">Index of the child.</param>
         public void GetAabb(out Aabb aabb, int childIndex)
         {
-            //Debug.Assert((0 <= childIndex) && (childIndex < ProxyCount));
             aabb = Proxies[childIndex].Aabb;
         }
 
@@ -319,16 +318,9 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal void Destroy()
         {
-            // The proxies must be destroyed before calling this.
-            //Debug.Assert(ProxyCount == 0);
-
             // Free the proxy array.
             Proxies = null;
             Shape = null;
-
-            //Velcro: We set the userdata to null here to help prevent bugs related to stale references in GC
-            //UserData = null;
-
             BeforeCollision = null;
             OnCollision = null;
             OnSeparation = null;
@@ -343,8 +335,6 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="xf">The xf</param>
         internal void CreateProxies(IBroadPhase broadPhase, ref Transform xf)
         {
-            //Debug.Assert(ProxyCount == 0);
-
             // Create proxies in the broad-phase.
             ProxyCount = Shape.ChildCount;
 
