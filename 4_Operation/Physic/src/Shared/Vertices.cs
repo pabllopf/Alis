@@ -378,7 +378,7 @@ namespace Alis.Core.Physic.Shared
                     Vector2 b1 = this[j];
                     Vector2 b2 = NextVertex(j);
 
-                    if (Line.LineIntersect2(ref a1, ref a2, ref b1, ref b2, out _))
+                    if (Line.LineIntersect2( a1,  a2,  b1,  b2, out _))
                     {
                         return false;
                     }

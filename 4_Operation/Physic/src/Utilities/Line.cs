@@ -1,61 +1,32 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Line.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
-
 using System;
-using Alis.Core.Aspect.Math.Util;
+using System.Numerics;
+using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 
 namespace Alis.Core.Physic.Utilities
 {
     /// <summary>
-    ///     Collection of helper methods for misc collisions. Does float tolerance and line collisions with lines and
-    ///     AABBs.
+    /// The line class
     /// </summary>
     public static class Line
     {
         /// <summary>
-        ///     Distances the between point and line segment using the specified point
+        /// Distances the between point and line segment using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <param name="start">The start</param>
         /// <param name="end">The end</param>
         /// <returns>The float</returns>
-        public static float DistanceBetweenPointAndLineSegment(ref Vector2 point, ref Vector2 start, ref Vector2 end)
+        public static float DistanceBetweenPointAndLineSegment(Vector2 point, Vector2 start, Vector2 end)
         {
             if (start == end)
             {
                 return Vector2.Distance(point, start);
             }
 
-            Vector2 v = Vector2.Subtract(end, start);
-            Vector2 w = Vector2.Subtract(point, start);
+            Vector2 v = end - start;
+            Vector2 w = point - start;
 
             float c1 = Vector2.Dot(w, v);
             if (c1 <= 0)
@@ -70,17 +41,20 @@ namespace Alis.Core.Physic.Utilities
             }
 
             float b = c1 / c2;
-            Vector2 pointOnLine = Vector2.Add(start, Vector2.Multiply(v, b));
+            Vector2 pointOnLine = start + v * b;
             return Vector2.Distance(point, pointOnLine);
         }
 
-        // From Eric Jordan's convex decomposition library
         /// <summary>
-        ///     Check if the lines a0->a1 and b0->b1 cross. If they do, intersectionPoint will be filled with the point of
-        ///     crossing. Grazing lines should not return true.
+        /// Describes whether line intersect 2
         /// </summary>
-        public static bool LineIntersect2(ref Vector2 a0, ref Vector2 a1, ref Vector2 b0, ref Vector2 b1,
-            out Vector2 intersectionPoint)
+        /// <param name="a0">The </param>
+        /// <param name="a1">The </param>
+        /// <param name="b0">The </param>
+        /// <param name="b1">The </param>
+        /// <param name="intersectionPoint">The intersection point</param>
+        /// <returns>The bool</returns>
+        public static bool LineIntersect2(Vector2 a0, Vector2 a1, Vector2 b0, Vector2 b1, out Vector2 intersectionPoint)
         {
             intersectionPoint = Vector2.Zero;
 
@@ -98,7 +72,6 @@ namespace Alis.Core.Physic.Utilities
             float x4 = b1.X;
             float y4 = b1.Y;
 
-            // AABB early exit
             if (Math.Max(x1, x2) < Math.Min(x3, x4) || Math.Max(x3, x4) < Math.Min(x1, x2))
             {
                 return false;
@@ -110,34 +83,28 @@ namespace Alis.Core.Physic.Utilities
             }
 
             float denom = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1);
-            if (Math.Abs(denom) < Constant.Epsilon)
+            if (Math.Abs(denom) < float.Epsilon)
             {
-                // Lines are too close to parallel to call
                 return false;
             }
 
             float ua = (x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3);
             float ub = (x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3);
-    
+
             ua /= denom;
             ub /= denom;
 
             if (ua >= 0 && ua <= 1 && ub >= 0 && ub <= 1)
             {
-                intersectionPoint = new Vector2(
-                    x1 + ua * (x2 - x1),
-                    y1 + ua * (y2 - y1)
-                );
+                intersectionPoint = new Vector2(x1 + ua * (x2 - x1), y1 + ua * (y2 - y1));
                 return true;
             }
 
             return false;
         }
 
-
-        //From Mark Bayazit's convex decomposition algorithm
         /// <summary>
-        ///     Lines the intersect using the specified p 1
+        /// Lines the intersect using the specified p 1
         /// </summary>
         /// <param name="p1">The </param>
         /// <param name="p2">The </param>
@@ -157,7 +124,6 @@ namespace Alis.Core.Physic.Utilities
 
             if (!MathUtils.FloatEquals(det, 0))
             {
-                // lines are not parallel
                 i = new Vector2(
                     (b2 * c1 - b1 * c2) / det,
                     (a1 * c2 - a2 * c1) / det
@@ -168,68 +134,47 @@ namespace Alis.Core.Physic.Utilities
         }
 
         /// <summary>
-        ///     This method detects if two line segments (or lines) intersect, and, if so, the point of intersection. Use the
-        ///     <paramref name="firstIsSegment" /> and <paramref name="secondIsSegment" /> parameters to set whether the
-        ///     intersection
-        ///     point must be on the first and second line segments. Setting these both to true means you are doing a line-segment
-        ///     to
-        ///     line-segment intersection. Setting one of them to true means you are doing a line to line-segment intersection
-        ///     test,
-        ///     and so on. Note: If two line segments are coincident, then no intersection is detected (there are actually infinite
-        ///     intersection points). Author: Jeremy Bell
+        /// Describes whether line intersect
         /// </summary>
-        /// <param name="point1">The first point of the first line segment.</param>
-        /// <param name="point2">The second point of the first line segment.</param>
-        /// <param name="point3">The first point of the second line segment.</param>
-        /// <param name="point4">The second point of the second line segment.</param>
-        /// <param name="point">This is set to the intersection point if an intersection is detected.</param>
-        /// <param name="firstIsSegment">Set this to true to require that the intersection point be on the first line segment.</param>
-        /// <param name="secondIsSegment">Set this to true to require that the intersection point be on the second line segment.</param>
-        /// <returns>True if an intersection is detected, false otherwise.</returns>
-        public static bool LineIntersect(ref Vector2 point1, ref Vector2 point2, ref Vector2 point3, ref Vector2 point4,
-            bool firstIsSegment, bool secondIsSegment, out Vector2 point)
+        /// <param name="point1">The point</param>
+        /// <param name="point2">The point</param>
+        /// <param name="point3">The point</param>
+        /// <param name="point4">The point</param>
+        /// <param name="firstIsSegment">The first is segment</param>
+        /// <param name="secondIsSegment">The second is segment</param>
+        /// <param name="intersectionPoint">The intersection point</param>
+        /// <returns>The bool</returns>
+        public static bool LineIntersect(Vector2 point1, Vector2 point2, Vector2 point3, Vector2 point4,
+            bool firstIsSegment, bool secondIsSegment, out Vector2 intersectionPoint)
         {
-            point = new Vector2();
+            intersectionPoint = Vector2.Zero;
 
-            // these are reused later.
-            // each lettered sub-calculation is used twice, except
-            // for b and d, which are used 3 times
             float a = point4.Y - point3.Y;
             float b = point2.X - point1.X;
             float c = point4.X - point3.X;
             float d = point2.Y - point1.Y;
 
-            // denominator to solution of linear system
             float denom = a * b - c * d;
 
-            // if denominator is 0, then lines are parallel
-            if (!((denom >= -Constant.Epsilon) && (denom <= Constant.Epsilon)))
+            if (!(denom >= -float.Epsilon && denom <= float.Epsilon))
             {
                 float e = point1.Y - point3.Y;
                 float f = point1.X - point3.X;
                 float oneOverDenom = 1.0f / denom;
 
-                // numerator of first equation
                 float ua = c * e - a * f;
                 ua *= oneOverDenom;
 
-                // check if intersection point of the two lines is on line segment 1
-                if (!firstIsSegment || ((ua >= 0.0f) && (ua <= 1.0f)))
+                if (!firstIsSegment || (ua >= 0.0f && ua <= 1.0f))
                 {
-                    // numerator of second equation
                     float ub = b * e - d * f;
                     ub *= oneOverDenom;
 
-                    // check if intersection point of the two lines is on line segment 2
-                    // means the line segments intersect, since we know it is on
-                    // segment 1 as well.
-                    if (!secondIsSegment || ((ub >= 0.0f) && (ub <= 1.0f)))
+                    if (!secondIsSegment || (ub >= 0.0f && ub <= 1.0f))
                     {
-                        // check if they are coincident (no collision in this case)
                         if (ua != 0f || ub != 0f)
                         {
-                            //There is an intersection
-                            point = new Vector2(
+                            intersectionPoint = new Vector2(
                                 point1.X + ua * b,
                                 point1.Y + ua * d
                             );
@@ -244,77 +189,19 @@ namespace Alis.Core.Physic.Utilities
         }
 
         /// <summary>
-        ///     This method detects if two line segments (or lines) intersect, and, if so, the point of intersection. Use the
-        ///     <paramref name="firstIsSegment" /> and <paramref name="secondIsSegment" /> parameters to set whether the
-        ///     intersection
-        ///     point must be on the first and second line segments. Setting these both to true means you are doing a line-segment
-        ///     to
-        ///     line-segment intersection. Setting one of them to true means you are doing a line to line-segment intersection
-        ///     test,
-        ///     and so on. Note: If two line segments are coincident, then no intersection is detected (there are actually infinite
-        ///     intersection points). Author: Jeremy Bell
+        /// Lines the segment vertices intersect using the specified point 1
         /// </summary>
-        /// <param name="point1">The first point of the first line segment.</param>
-        /// <param name="point2">The second point of the first line segment.</param>
-        /// <param name="point3">The first point of the second line segment.</param>
-        /// <param name="point4">The second point of the second line segment.</param>
-        /// <param name="intersectionPoint">This is set to the intersection point if an intersection is detected.</param>
-        /// <param name="firstIsSegment">Set this to true to require that the intersection point be on the first line segment.</param>
-        /// <param name="secondIsSegment">Set this to true to require that the intersection point be on the second line segment.</param>
-        /// <returns>True if an intersection is detected, false otherwise.</returns>
-        public static bool LineIntersect(Vector2 point1, Vector2 point2, Vector2 point3, Vector2 point4,
-            bool firstIsSegment, bool secondIsSegment, out Vector2 intersectionPoint) =>
-            LineIntersect(ref point1,
-                ref point2, ref point3, ref point4, firstIsSegment, secondIsSegment, out intersectionPoint);
-
-        /// <summary>
-        ///     This method detects if two line segments intersect, and, if so, the point of intersection. Note: If two line
-        ///     segments are coincident, then no intersection is detected (there are actually infinite intersection points).
-        /// </summary>
-        /// <param name="point1">The first point of the first line segment.</param>
-        /// <param name="point2">The second point of the first line segment.</param>
-        /// <param name="point3">The first point of the second line segment.</param>
-        /// <param name="point4">The second point of the second line segment.</param>
-        /// <param name="intersectionPoint">This is set to the intersection point if an intersection is detected.</param>
-        /// <returns>True if an intersection is detected, false otherwise.</returns>
-        public static bool LineIntersect(ref Vector2 point1, ref Vector2 point2, ref Vector2 point3, ref Vector2 point4,
-            out Vector2 intersectionPoint) =>
-            LineIntersect(ref point1, ref point2, ref point3, ref point4, true, true,
-                out intersectionPoint);
-
-        /// <summary>
-        ///     This method detects if two line segments intersect, and, if so, the point of intersection. Note: If two line
-        ///     segments are coincident, then no intersection is detected (there are actually infinite intersection points).
-        /// </summary>
-        /// <param name="point1">The first point of the first line segment.</param>
-        /// <param name="point2">The second point of the first line segment.</param>
-        /// <param name="point3">The first point of the second line segment.</param>
-        /// <param name="point4">The second point of the second line segment.</param>
-        /// <param name="intersectionPoint">This is set to the intersection point if an intersection is detected.</param>
-        /// <returns>True if an intersection is detected, false otherwise.</returns>
-        public static bool LineIntersect(Vector2 point1, Vector2 point2, Vector2 point3, Vector2 point4,
-            out Vector2 intersectionPoint) =>
-            LineIntersect(ref point1, ref point2, ref point3, ref point4, true, true,
-                out intersectionPoint);
-
-        /// <summary>
-        ///     Get all intersections between a line segment and a list of vertices representing a polygon. The vertices reuse
-        ///     adjacent points, so for example edges one and two are between the first and second vertices and between the second
-        ///     and
-        ///     third vertices. The last edge is between vertex vertices.Count - 1 and verts0. (ie, vertices from a Geometry or
-        ///     AABB)
-        /// </summary>
-        /// <param name="point1">The first point of the line segment to test</param>
-        /// <param name="point2">The second point of the line segment to test.</param>
-        /// <param name="vertices">The vertices, as described above</param>
-        public static Vertices LineSegmentVerticesIntersect(ref Vector2 point1, ref Vector2 point2, Vertices vertices)
+        /// <param name="point1">The point</param>
+        /// <param name="point2">The point</param>
+        /// <param name="vertices">The vertices</param>
+        /// <returns>The intersection points</returns>
+        public static List<Vector2> LineSegmentVerticesIntersect(Vector2 point1, Vector2 point2, List<Vector2> vertices)
         {
-            Vertices intersectionPoints = new Vertices();
+            List<Vector2> intersectionPoints = new List<Vector2>();
 
             for (int i = 0; i < vertices.Count; i++)
             {
-                if (LineIntersect(vertices[i], vertices[vertices.NextIndex(i)], point1, point2, true, true,
-                        out Vector2 point))
+                if (LineIntersect(vertices[i], vertices[(i + 1) % vertices.Count], point1, point2, true, true, out Vector2 point))
                 {
                     intersectionPoints.Add(point);
                 }
@@ -323,11 +210,14 @@ namespace Alis.Core.Physic.Utilities
             return intersectionPoints;
         }
 
-        /// <summary>Get all intersections between a line segment and an AABB.</summary>
-        /// <param name="point1">The first point of the line segment to test</param>
-        /// <param name="point2">The second point of the line segment to test.</param>
-        /// <param name="aabb">The AABB that is used for testing intersection.</param>
-        public static Vertices LineSegmentAabbIntersect(ref Vector2 point1, ref Vector2 point2, Aabb aabb) =>
-            LineSegmentVerticesIntersect(ref point1, ref point2, aabb.Vertices);
+        /// <summary>
+        /// Lines the segment aabb intersect using the specified point 1
+        /// </summary>
+        /// <param name="point1">The point</param>
+        /// <param name="point2">The point</param>
+        /// <param name="aabb">The aabb</param>
+        /// <returns>A list of vector 2</returns>
+        public static List<Vector2> LineSegmentAabbIntersect(Vector2 point1, Vector2 point2, Aabb aabb) =>
+            LineSegmentVerticesIntersect(point1, point2, aabb.Vertices);
     }
 }

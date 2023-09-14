@@ -285,8 +285,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
                     continue; // ignore incident edges
                 }
 
-                if (Line.LineIntersect(At(i, vertices), At(j, vertices), At(k, vertices), At(k + 1, vertices),
-                        out _))
+                if (Line.LineIntersect(At(i, vertices), At(j, vertices), At(k, vertices), At(k + 1, vertices), true, true, out _))
                 {
                     return false;
                 }

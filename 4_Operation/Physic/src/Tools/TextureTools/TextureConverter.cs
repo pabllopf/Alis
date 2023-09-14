@@ -753,7 +753,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 {
                     edgeVertex1 = polygon[i];
 
-                    if (Line.DistanceBetweenPointAndLineSegment(ref point, ref edgeVertex1, ref edgeVertex2) <=
+                    if (Line.DistanceBetweenPointAndLineSegment( point,  edgeVertex1,  edgeVertex2) <=
                         hullTolerance || Vector2.Distance(point, edgeVertex1) <= hullTolerance)
                     {
                         return false;
@@ -769,7 +769,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
             {
                 edgeVertex1 = polygon[i];
 
-                if (Line.DistanceBetweenPointAndLineSegment(ref point, ref edgeVertex1, ref edgeVertex2) <=
+                if (Line.DistanceBetweenPointAndLineSegment( point,  edgeVertex1,  edgeVertex2) <=
                     hullTolerance)
                 {
                     return false;
@@ -1028,8 +1028,8 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     {
                         Vector2 tempVector1 = polygon[edgeVertex1Index];
                         Vector2 tempVector2 = polygon[edgeVertex2Index];
-                        distance = Line.DistanceBetweenPointAndLineSegment(ref foundEdgeCoord,
-                            ref tempVector1, ref tempVector2);
+                        distance = Line.DistanceBetweenPointAndLineSegment( foundEdgeCoord,
+                             tempVector1,  tempVector2);
                         if (distance < shortestDistance)
                         {
                             shortestDistance = distance;
@@ -1354,8 +1354,8 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     Vector2 tempVector1 = hullArea[i];
 
                     // Check if the distance is over the one that's tolerable.
-                    if (Line.DistanceBetweenPointAndLineSegment(ref tempVector1, ref tempVector2,
-                            ref tempVector3) >= hullTolerance)
+                    if (Line.DistanceBetweenPointAndLineSegment( tempVector1,  tempVector2,
+                             tempVector3) >= hullTolerance)
                     {
                         outstandingResult = hullArea[i];
                         found = true;
