@@ -45,6 +45,11 @@ namespace Alis.Core.Physic.Collision
     {
         /// <summary>
         ///     Describes whether ray cast edge
+        ///
+        ///  p = p1 + t * d
+        ///  v = v1 + s * e
+        ///  p1 + t * d = v1 + s * e
+        ///  s * e - t * d = p1 - v1
         /// </summary>
         /// <param name="start">The start</param>
         /// <param name="end">The end</param>
@@ -56,11 +61,6 @@ namespace Alis.Core.Physic.Collision
         public static bool RayCastEdge(ref Vector2 start, ref Vector2 end, bool oneSided, ref RayCastInput input,
             ref Transform transform, out RayCastOutput output)
         {
-            // p = p1 + t * d
-            // v = v1 + s * e
-            // p1 + t * d = v1 + s * e
-            // s * e - t * d = p1 - v1
-
             output = new RayCastOutput();
 
             // Put the ray into the edge's frame of reference.
@@ -241,7 +241,6 @@ namespace Alis.Core.Physic.Collision
                 // The use of epsilon here causes the assert on lower to trip
                 // in some cases. Apparently the use of epsilon was to make edge
                 // shapes work, but now those are handled separately.
-                //if (upper < lower - b2_epsilon)
                 if (upper < lower)
                 {
                     return false;
