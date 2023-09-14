@@ -62,7 +62,7 @@ namespace Alis.Core.Entity
         /// <summary>
         ///     The file path
         /// </summary>
-        public string FilePath { get; set; } = "";
+        public string FilePath { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the enabled alis logo
