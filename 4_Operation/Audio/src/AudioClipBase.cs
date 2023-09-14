@@ -166,7 +166,7 @@ namespace Alis.Core.Audio
         {
             Logger.Log($"Init Music::play pass here'{FullPathAudioFile}'");
 
-            if (!FullPathAudioFile.Equals(""))
+            if (!string.IsNullOrEmpty(FullPathAudioFile))
             {
                 switch (AudioBackendType)
                 {
