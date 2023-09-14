@@ -124,12 +124,12 @@ namespace Alis.Core.Graphic.SFML.Windows
         public static Identification GetIdentification(uint joystick)
         {
             IdentificationMarshalData identification = sfJoystick_getIdentification(joystick);
-            Identification retIdentification = new Identification();
-
-            retIdentification.Name = Marshal.PtrToStringAnsi(identification.Name);
-            retIdentification.VendorId = identification.VendorId;
-            retIdentification.ProductId = identification.ProductId;
-
+            Identification retIdentification = new Identification
+            {
+                Name = Marshal.PtrToStringAnsi(identification.Name),
+                VendorId = identification.VendorId,
+                ProductId = identification.ProductId
+            };
             return retIdentification;
         }
 
