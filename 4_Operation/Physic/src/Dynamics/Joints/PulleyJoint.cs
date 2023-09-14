@@ -486,7 +486,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float cDot = -Vector2.Dot(uA, vpA) - ratio * Vector2.Dot(uB, vpB);
             float impulseLocal = -mass * cDot;
-            this.impulse += impulseLocal;
+            impulse += impulseLocal;
 
             Vector2 pa = -impulseLocal * uA;
             Vector2 pb = -ratio * impulseLocal * uB;

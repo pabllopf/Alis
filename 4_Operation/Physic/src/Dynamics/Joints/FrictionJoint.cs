@@ -137,10 +137,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
         )
             : base(bodyA, bodyB, jointType, collideConnected)
         {
-            this.LocalAnchorA = localAnchorA;
-            this.LocalAnchorB = localAnchorB;
-            this.Force = maxForce;
-            this.Torque = maxTorque;
+            LocalAnchorA = localAnchorA;
+            LocalAnchorB = localAnchorB;
+            Force = maxForce;
+            Torque = maxTorque;
         }
 
         /// <summary>Constructor for FrictionJoint.</summary>
