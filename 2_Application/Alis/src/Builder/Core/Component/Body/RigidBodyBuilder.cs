@@ -27,12 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Component.Body;
+
 namespace Alis.Builder.Core.Component.Body
 {
     /// <summary>
     ///     The rigid body builder class
     /// </summary>
-    public class RigidBodyBuilder
+    public class RigidBodyBuilder:
+        IBuild<RigidBody>
     {
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The rigid body</returns>
+        public RigidBody Build() => new RigidBody();
     }
 }
