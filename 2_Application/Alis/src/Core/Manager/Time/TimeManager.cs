@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Logging;
+
 namespace Alis.Core.Manager.Time
 {
     /// <summary>
@@ -34,5 +36,64 @@ namespace Alis.Core.Manager.Time
     /// </summary>
     public class TimeManager : TimeManagerBase
     {
+        /// <summary>
+        ///     Inits this instance
+        /// </summary>
+        public override void Init() => Logger.Info($"Init {GetType().Name}");
+
+        /// <summary>
+        ///     Awakes this instance
+        /// </summary>
+        public override void Awake() => Logger.Info($"Awake {GetType().Name}");
+
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        public override void Start() => Logger.Info($"Start {GetType().Name}");
+
+        /// <summary>
+        ///     Before the update
+        /// </summary>
+        public override void BeforeUpdate() => Logger.Info($"BeforeUpdate {GetType().Name}");
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        public override void Update() => Logger.Info($"Update {GetType().Name}");
+
+        /// <summary>
+        ///     Afters the update
+        /// </summary>
+        public override void AfterUpdate() => Logger.Info($"AfterUpdate {GetType().Name}");
+
+        /// <summary>
+        ///     Fix the update
+        /// </summary>
+        public override void FixedUpdate() => Logger.Info($"FixedUpdate {GetType().Name}");
+
+        /// <summary>
+        ///     Dispatches the events
+        /// </summary>
+        public override void DispatchEvents() => Logger.Info($"DispatchEvents {GetType().Name}");
+
+        /// <summary>
+        ///     Draws this instance
+        /// </summary>
+        public override void Draw() => Logger.Info($"Draw {GetType().Name}");
+
+        /// <summary>
+        ///     Resets this instance
+        /// </summary>
+        public override void Reset() => Logger.Info($"Reset {GetType().Name}");
+
+        /// <summary>
+        ///     Stops this instance
+        /// </summary>
+        public override void Stop() => Logger.Info($"Stop {GetType().Name}");
+
+        /// <summary>
+        ///     Exits this instance
+        /// </summary>
+        public override void Exit() => Logger.Info($"Exit {GetType().Name}");
     }
 }
