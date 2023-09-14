@@ -27,12 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Component.Light;
+
 namespace Alis.Builder.Core.Component.Light
 {
     /// <summary>
     ///     The point light builder class
     /// </summary>
-    public class PointLightBuilder
+    public class PointLightBuilder: 
+        IBuild<PointLight>
     {
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The point light</returns>
+        public PointLight Build() => new PointLight();
     }
 }

@@ -27,12 +27,20 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Component.Collider;
+
 namespace Alis.Builder.Core.Component.Mesh
 {
     /// <summary>
     ///     The circle mesh builder class
     /// </summary>
-    public class CircleMeshBuilder
+    public class CircleMeshBuilder: IBuild<CircleCollider>
     {
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The circle collider</returns>
+        public CircleCollider Build() => new CircleCollider();
     }
 }

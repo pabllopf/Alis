@@ -27,12 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Component.Mesh;
+
 namespace Alis.Builder.Core.Component.Mesh
 {
     /// <summary>
     ///     The box mesh builder class
     /// </summary>
-    public class BoxMeshBuilder
+    public class BoxMeshBuilder: 
+        IBuild<BoxMesh>
     {
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The box mesh</returns>
+        public BoxMesh Build() => new BoxMesh();
     }
 }

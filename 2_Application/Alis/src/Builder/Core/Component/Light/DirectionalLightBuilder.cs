@@ -27,12 +27,20 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Fluent;
+
 namespace Alis.Builder.Core.Component.Light
 {
     /// <summary>
     ///     The directional light builder class
     /// </summary>
-    public class DirectionalLightBuilder
+    public class DirectionalLightBuilder: 
+        IBuild<DirectionalLightBuilder>
     {
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The directional light builder</returns>
+        public DirectionalLightBuilder Build() => new DirectionalLightBuilder();
     }
 }
