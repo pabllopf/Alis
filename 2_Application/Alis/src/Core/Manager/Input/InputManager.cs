@@ -119,7 +119,7 @@ namespace Alis.Core.Manager.Input
         /// <param name="key">The key</param>
         private void NotifyKeyPress(Key key)
         {
-            foreach (GameObject currentSceneGameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
+            foreach (GameObject currentSceneGameObject in SceneManager.GetGameObjects())
             {
                 currentSceneGameObject.Components.ForEach(i => i.OnPressKey(key));
             }
@@ -131,7 +131,7 @@ namespace Alis.Core.Manager.Input
         /// <param name="key">The key</param>
         private void NotifyKeyRelease(Key key)
         {
-            foreach (GameObject currentSceneGameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
+            foreach (GameObject currentSceneGameObject in SceneManager.GetGameObjects())
             {
                 currentSceneGameObject.Components.ForEach(i => i.OnReleaseKey(key));
             }
@@ -143,7 +143,7 @@ namespace Alis.Core.Manager.Input
         /// <param name="key">The key</param>
         private void NotifyKeyHold(Key key)
         {
-            foreach (GameObject currentSceneGameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
+            foreach (GameObject currentSceneGameObject in SceneManager.GetGameObjects())
             {
                 currentSceneGameObject.Components.ForEach(i => i.OnPressDownKey(key));
             }

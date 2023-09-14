@@ -73,7 +73,6 @@ namespace Alis.Core.Manager.Graphic
         /// </summary>
         public GraphicManager()
         {
-            
         }
 
         /// <summary>
