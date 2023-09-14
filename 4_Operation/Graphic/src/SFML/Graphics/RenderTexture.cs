@@ -493,17 +493,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
                 Context.Global.SetActive(false);
             }
         }
-
-        /// <summary>
-        ///     Sfs the render texture create using the specified width
-        /// </summary>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="depthBuffer">The depth buffer</param>
-        /// <returns>The int ptr</returns>
-        [Obsolete("sfRenderTexture_create is obselete. Use sfRenderTexture_createWithSettings instead."), DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfRenderTexture_create(uint width, uint height, bool depthBuffer);
-
+        
         /// <summary>
         ///     Sfs the render texture create with settings using the specified width
         /// </summary>
