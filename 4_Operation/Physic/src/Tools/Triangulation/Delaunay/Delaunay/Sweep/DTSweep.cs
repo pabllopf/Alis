@@ -1099,11 +1099,14 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             }
         }
 
-        /// <summary>Returns true if triangle was legalized</summary>
+        /// <summary>
+        /// Determines if a triangle is legalized and legalizes it if needed.
+        /// </summary>
+        /// <param name="tcx">The sweep context.</param>
+        /// <param name="t">The triangle to check and legalize.</param>
+        /// <returns>True if the triangle was legalized, false otherwise.</returns>
         private static bool Legalize(DtSweepContext tcx, DelaunayTriangle t)
         {
-            // To legalize a triangle we start by finding if any of the three edges
-            // violate the Delaunay condition
             for (int i = 0; i < 3; i++)
             {
                 if (t.EdgeIsDelaunay[i])
@@ -1118,33 +1121,20 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                     TriangulationPoint op = ot.OppositePoint(t, p);
                     int oi = ot.IndexOf(op);
 
-                    // If this is a Constrained Edge or a Delaunay Edge(only during recursive legalization)
-                    // then we should not try to legalize
-                    if (ot.EdgeIsConstrained[oi] || ot.EdgeIsDelaunay[oi])
+                    if (ShouldNotLegalize(ot, oi))
                     {
                         t.EdgeIsConstrained[i] = ot.EdgeIsConstrained[oi];
-
-                        // XXX: have no good way of setting this property when creating new triangles so lets set it here
                         continue;
                     }
 
-                    bool inside = TriangulationUtil.SmartIncircle(p, t.PointCcw(p), t.PointCw(p), op);
-
-                    if (inside)
+                    if (IsInsideCirCircle(p, t.PointCcw(p), t.PointCw(p), op))
                     {
-                        // Lets mark this shared edge as Delaunay 
                         t.EdgeIsDelaunay[i] = true;
                         ot.EdgeIsDelaunay[oi] = true;
 
-                        // Lets rotate shared edge one vertex CW to legalize it
                         RotateTrianglePair(t, p, ot, op);
 
-                        // We now got one valid Delaunay Edge shared by two triangles
-                        // This gives us 4 new edges to check for Delaunay
-
-                        // Make sure that triangle to node mapping is done only one time for a specific triangle
                         bool notLegalized = !Legalize(tcx, t);
-
                         if (notLegalized)
                         {
                             tcx.MapTriangleToNodes(t);
@@ -1156,15 +1146,9 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                             tcx.MapTriangleToNodes(ot);
                         }
 
-                        // Reset the Delaunay edges, since they only are valid Delaunay edges
-                        // until we add a new triangle or point.
-                        // XXX: need to think about this. Can these edges be tried after we 
-                        //      return to previous recursive level?
                         t.EdgeIsDelaunay[i] = false;
                         ot.EdgeIsDelaunay[oi] = false;
 
-                        // If triangle have been legalized no need to check the other edges since
-                        // the recursive legalization will handles those so we can end here.
                         return true;
                     }
                 }
@@ -1172,6 +1156,31 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 
             return false;
         }
+
+        /// <summary>
+        /// Checks if an edge should not be legalized.
+        /// </summary>
+        /// <param name="ot">The neighboring triangle.</param>
+        /// <param name="oi">The index of the opposite point.</param>
+        /// <returns>True if the edge should not be legalized, false otherwise.</returns>
+        private static bool ShouldNotLegalize(DelaunayTriangle ot, int oi)
+        {
+            return ot.EdgeIsConstrained[oi] || ot.EdgeIsDelaunay[oi];
+        }
+
+        /// <summary>
+        /// Checks if a point is inside the cir circle of a triangle.
+        /// </summary>
+        /// <param name="p">The point to check.</param>
+        /// <param name="a">The first triangle vertex.</param>
+        /// <param name="b">The second triangle vertex.</param>
+        /// <param name="c">The third triangle vertex.</param>
+        /// <returns>True if the point is inside the cir circle, false otherwise.</returns>
+        private static bool IsInsideCirCircle(TriangulationPoint p, TriangulationPoint a, TriangulationPoint b, TriangulationPoint c)
+        {
+            return TriangulationUtil.SmartIncircle(p, a, b, c);
+        }
+
 
         /// <summary>
         ///     Rotates a triangle pair one vertex CW
