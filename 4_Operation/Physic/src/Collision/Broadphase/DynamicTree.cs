@@ -671,10 +671,10 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 FreeNode(parent);
             }
         }
-
+        
         /// <summary>Perform a left or right rotation if node A is imbalanced.</summary>
         /// <param name="iA"></param>
-        /// <returns>the new root index.</returns>
+        /// <returns>The new root index.</returns>
         private int BalanceTo(int iA)
         {
             TreeNode<T> a = nodes[iA];
@@ -693,119 +693,100 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
             if (balance > 1)
             {
-                int iF = c.Child1;
-                int iG = c.Child2;
-                TreeNode<T> f = nodes[iF];
-                TreeNode<T> g = nodes[iG];
-
-                c.Child1 = iA;
-                c.ParentOrNext = a.ParentOrNext;
-                a.ParentOrNext = iC;
-
-
-                if (c.ParentOrNext != NullNode)
-                {
-                    if (nodes[c.ParentOrNext].Child1 == iA)
-                    {
-                        nodes[c.ParentOrNext].Child1 = iC;
-                    }
-                    else
-                    {
-                        nodes[c.ParentOrNext].Child2 = iC;
-                    }
-                }
-                else
-                {
-                    root = iC;
-                }
-
-
-                if (f.Height > g.Height)
-                {
-                    c.Child2 = iF;
-                    a.Child2 = iG;
-                    g.ParentOrNext = iA;
-                    a.Aabb.Combine(ref b.Aabb, ref g.Aabb);
-                    c.Aabb.Combine(ref a.Aabb, ref f.Aabb);
-
-                    a.Height = 1 + Math.Max(b.Height, g.Height);
-                    c.Height = 1 + Math.Max(a.Height, f.Height);
-                }
-                else
-                {
-                    c.Child2 = iG;
-                    a.Child2 = iF;
-                    f.ParentOrNext = iA;
-                    a.Aabb.Combine(ref b.Aabb, ref f.Aabb);
-                    c.Aabb.Combine(ref a.Aabb, ref g.Aabb);
-
-                    a.Height = 1 + Math.Max(b.Height, f.Height);
-                    c.Height = 1 + Math.Max(a.Height, g.Height);
-                }
-
-                return iC;
+                return RotateRight(iA, a, iB, iC, b, c);
             }
-
 
             if (balance < -1)
             {
-                int iD = b.Child1;
-                int iE = b.Child2;
-                TreeNode<T> d = nodes[iD];
-                TreeNode<T> e = nodes[iE];
-
-
-                b.Child1 = iA;
-                b.ParentOrNext = a.ParentOrNext;
-                a.ParentOrNext = iB;
-
-
-                if (b.ParentOrNext != NullNode)
-                {
-                    if (nodes[b.ParentOrNext].Child1 == iA)
-                    {
-                        nodes[b.ParentOrNext].Child1 = iB;
-                    }
-                    else
-                    {
-                        nodes[b.ParentOrNext].Child2 = iB;
-                    }
-                }
-                else
-                {
-                    root = iB;
-                }
-
-
-                if (d.Height > e.Height)
-                {
-                    b.Child2 = iD;
-                    a.Child1 = iE;
-                    e.ParentOrNext = iA;
-                    a.Aabb.Combine(ref c.Aabb, ref e.Aabb);
-                    b.Aabb.Combine(ref a.Aabb, ref d.Aabb);
-
-                    a.Height = 1 + Math.Max(c.Height, e.Height);
-                    b.Height = 1 + Math.Max(a.Height, d.Height);
-                }
-                else
-                {
-                    b.Child2 = iE;
-                    a.Child1 = iD;
-                    d.ParentOrNext = iA;
-                    a.Aabb.Combine(ref c.Aabb, ref d.Aabb);
-                    b.Aabb.Combine(ref a.Aabb, ref e.Aabb);
-
-                    a.Height = 1 + Math.Max(c.Height, d.Height);
-                    b.Height = 1 + Math.Max(a.Height, e.Height);
-                }
-
-                return iB;
+                return RotateLeft(iA, a, iB, iC, b, c);
             }
 
             return iA;
         }
 
+        private int RotateRight(int iA, TreeNode<T> a, int iB, int iC, TreeNode<T> b, TreeNode<T> c)
+        {
+            int iF = c.Child1;
+            int iG = c.Child2;
+            TreeNode<T> f = nodes[iF];
+            TreeNode<T> g = nodes[iG];
+
+            c.Child1 = iA;
+            c.ParentOrNext = a.ParentOrNext;
+            a.ParentOrNext = iC;
+
+            UpdateParent(iA, iC);
+
+            if (f.Height > g.Height)
+            {
+                c.Child2 = iF;
+                a.Child2 = iG;
+                g.ParentOrNext = iA;
+                UpdateAabbAndHeight(a, b, g, c, f);
+            }
+            else
+            {
+                c.Child2 = iG;
+                a.Child2 = iF;
+                f.ParentOrNext = iA;
+                UpdateAabbAndHeight(a, b, f, c, g);
+            }
+
+            return iC;
+        }
+
+        private int RotateLeft(int iA, TreeNode<T> a, int iB, int iC, TreeNode<T> b, TreeNode<T> c)
+        {
+            int iD = b.Child1;
+            int iE = b.Child2;
+            TreeNode<T> d = nodes[iD];
+            TreeNode<T> e = nodes[iE];
+
+            b.Child1 = iA;
+            b.ParentOrNext = a.ParentOrNext;
+            a.ParentOrNext = iB;
+
+            UpdateParent(iA, iB);
+
+            if (d.Height > e.Height)
+            {
+                b.Child2 = iD;
+                a.Child1 = iE;
+                e.ParentOrNext = iA;
+                UpdateAabbAndHeight(a, c, e, b, d);
+            }
+            else
+            {
+                b.Child2 = iE;
+                a.Child1 = iD;
+                d.ParentOrNext = iA;
+                UpdateAabbAndHeight(a, c, d, b, e);
+            }
+
+            return iB;
+        }
+
+        private void UpdateParent(int childIndex, int parentIndex)
+        {
+            if (nodes[parentIndex].Child1 == childIndex)
+            {
+                nodes[parentIndex].Child1 = parentIndex;
+            }
+            else
+            {
+                nodes[parentIndex].Child2 = parentIndex;
+            }
+        }
+
+        private void UpdateAabbAndHeight(TreeNode<T> a, TreeNode<T> b, TreeNode<T> c, TreeNode<T> d, TreeNode<T> e)
+        {
+            a.Aabb.Combine(ref b.Aabb, ref c.Aabb);
+            d.Aabb.Combine(ref a.Aabb, ref e.Aabb);
+            a.Height = 1 + Math.Max(b.Height, c.Height);
+            d.Height = 1 + Math.Max(a.Height, e.Height);
+        }
+
+       
         /// <summary>Compute the height of a sub-tree.</summary>
         /// <param name="nodeId">The node id to use as parent.</param>
         /// <returns>The height of the tree.</returns>
