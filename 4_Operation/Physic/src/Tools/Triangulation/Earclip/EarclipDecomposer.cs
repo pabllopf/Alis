@@ -42,12 +42,9 @@ namespace Alis.Core.Physic.Tools.Triangulation.Earclip
     ///     - Only works on simple polygons.
     ///     - Does not support holes.
     ///     - Running time is O(n^2), n = number of vertices.
-    ///     Source: http://www.ewjordan.com/earClip/
     /// </summary>
     internal static class EarclipDecomposer
     {
-        //box2D rev 32 - for details, see http://www.box2d.org/forum/viewtopic.php?f=4&t=83&start=50 
-
         /// <summary>
         ///     Decompose the polygon into several smaller non-concave polygon. Each resulting polygon will have no more than
         ///     Settings.MaxPolygonVertices vertices.
@@ -112,12 +109,12 @@ namespace Alis.Core.Physic.Tools.Triangulation.Earclip
 
             Vertices[] buffer = new Vertices[vertices.Count - 2];
             int bufferSize = 0;
-            float[] xrem = new float[vertices.Count];
-            float[] yrem = new float[vertices.Count];
+            float[] xRem = new float[vertices.Count];
+            float[] yRem = new float[vertices.Count];
             for (int i = 0; i < vertices.Count; ++i)
             {
-                xrem[i] = vertices[i].X;
-                yrem[i] = vertices[i].Y;
+                xRem[i] = vertices[i].X;
+                yRem[i] = vertices[i].Y;
             }
 
             int vNum = vertices.Count;
@@ -129,13 +126,13 @@ namespace Alis.Core.Physic.Tools.Triangulation.Earclip
                 float earMaxMinCross = -10.0f;
                 for (int i = 0; i < vNum; ++i)
                 {
-                    if (IsEar(i, xrem, yrem, vNum))
+                    if (IsEar(i, xRem, yRem, vNum))
                     {
                         int lower = Remainder(i - 1, vNum);
                         int upper = Remainder(i + 1, vNum);
-                        Vector2 d1 = new Vector2(xrem[upper] - xrem[i], yrem[upper] - yrem[i]);
-                        Vector2 d2 = new Vector2(xrem[i] - xrem[lower], yrem[i] - yrem[lower]);
-                        Vector2 d3 = new Vector2(xrem[lower] - xrem[upper], yrem[lower] - yrem[upper]);
+                        Vector2 d1 = new Vector2(xRem[upper] - xRem[i], yRem[upper] - yRem[i]);
+                        Vector2 d2 = new Vector2(xRem[i] - xRem[lower], yRem[i] - yRem[lower]);
+                        Vector2 d3 = new Vector2(xRem[lower] - xRem[upper], yRem[lower] - yRem[upper]);
 
                         d1 = Vector2.Normalize(d1);
                         d2 = Vector2.Normalize(d2);
@@ -177,8 +174,8 @@ namespace Alis.Core.Physic.Tools.Triangulation.Earclip
                 // - remove the ear tip from the list
 
                 --vNum;
-                float[] newx = new float[vNum];
-                float[] newy = new float[vNum];
+                float[] newX = new float[vNum];
+                float[] newY = new float[vNum];
                 int currDest = 0;
                 for (int i = 0; i < vNum; ++i)
                 {
@@ -187,25 +184,25 @@ namespace Alis.Core.Physic.Tools.Triangulation.Earclip
                         ++currDest;
                     }
 
-                    newx[i] = xrem[currDest];
-                    newy[i] = yrem[currDest];
+                    newX[i] = xRem[currDest];
+                    newY[i] = yRem[currDest];
                     ++currDest;
                 }
 
                 // - add the clipped triangle to the triangle list
                 int under = earIndex == 0 ? vNum : earIndex - 1;
                 int over = earIndex == vNum ? 0 : earIndex + 1;
-                Triangle toAdd = new Triangle(xrem[earIndex], yrem[earIndex], xrem[over], yrem[over], xrem[under],
-                    yrem[under]);
+                Triangle toAdd = new Triangle(xRem[earIndex], yRem[earIndex], xRem[over], yRem[over], xRem[under],
+                    yRem[under]);
                 buffer[bufferSize] = toAdd;
                 ++bufferSize;
 
                 // - replace the old list with the new one
-                xrem = newx;
-                yrem = newy;
+                xRem = newX;
+                yRem = newY;
             }
 
-            Triangle tooAdd = new Triangle(xrem[1], yrem[1], xrem[2], yrem[2], xrem[0], yrem[0]);
+            Triangle tooAdd = new Triangle(xRem[1], yRem[1], xRem[2], yRem[2], xRem[0], yRem[0]);
             buffer[bufferSize] = tooAdd;
             ++bufferSize;
 
@@ -218,15 +215,13 @@ namespace Alis.Core.Physic.Tools.Triangulation.Earclip
         }
 
         /// <summary>
-        ///     Finds and fixes "pinch points," points where two polygon vertices are at the same point. If a pinch point is
-        ///     found, pin is broken up into poutA and poutB and true is returned; otherwise, returns false. Mostly for internal
-        ///     use.
-        ///     O(N^2) time, which sucks...
+        /// Finds and fixes "pinch points," points where two polygon vertices are at the same point.
         /// </summary>
         /// <param name="pin">The pin.</param>
         /// <param name="poutA">The pout A.</param>
         /// <param name="poutB">The pout B.</param>
-        /// <param name="tolerance"></param>
+        /// <param name="tolerance">The tolerance for point comparison.</param>
+        /// <returns>True if a pinch point is found and resolved, false otherwise.</returns>
         private static bool ResolvePinchPoint(Vertices pin, out Vertices poutA, out Vertices poutB, float tolerance)
         {
             poutA = new Vertices();
@@ -237,55 +232,104 @@ namespace Alis.Core.Physic.Tools.Triangulation.Earclip
                 return false;
             }
 
-            bool hasPinchPoint = false;
-            int pinchIndexA = -1;
-            int pinchIndexB = -1;
-            for (int i = 0; i < pin.Count; ++i)
+            if (FindPinchPoint(pin, tolerance, out int pinchIndexA, out int pinchIndexB))
             {
-                for (int j = i + 1; j < pin.Count; ++j)
+                if (SplitVertices(pin, pinchIndexA, pinchIndexB, poutA, poutB))
                 {
-                    //Don't worry about pinch points where the points
-                    //are actually just dupe neighbors
-                    if ((Math.Abs(pin[i].X - pin[j].X) < tolerance) && (Math.Abs(pin[i].Y - pin[j].Y) < tolerance) &&
-                        (j != i + 1))
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Finds a pinch point in the vertices.
+        /// </summary>
+        /// <param name="vertices">The vertices to search.</param>
+        /// <param name="tolerance">The tolerance for point comparison.</param>
+        /// <param name="pinchIndexA">The index of the first vertex in the pinch point.</param>
+        /// <param name="pinchIndexB">The index of the second vertex in the pinch point.</param>
+        /// <returns>True if a pinch point is found, false otherwise.</returns>
+        private static bool FindPinchPoint(Vertices vertices, float tolerance, out int pinchIndexA, out int pinchIndexB)
+        {
+            pinchIndexA = -1;
+            pinchIndexB = -1;
+
+            for (int i = 0; i < vertices.Count; ++i)
+            {
+                for (int j = i + 1; j < vertices.Count; ++j)
+                {
+                    if (IsPinchPoint(vertices[i], vertices[j], tolerance))
                     {
                         pinchIndexA = i;
                         pinchIndexB = j;
-                        hasPinchPoint = true;
-                        break;
+                        return true;
                     }
                 }
-
-                if (hasPinchPoint)
-                {
-                    break;
-                }
             }
 
-            if (hasPinchPoint)
-            {
-                int sizeA = pinchIndexB - pinchIndexA;
-                if (sizeA == pin.Count)
-                {
-                    return false; //has dupe points at wraparound, not a problem here
-                }
-
-                for (int i = 0; i < sizeA; ++i)
-                {
-                    int ind = Remainder(pinchIndexA + i, pin.Count); // is this right
-                    poutA.Add(pin[ind]);
-                }
-
-                int sizeB = pin.Count - sizeA;
-                for (int i = 0; i < sizeB; ++i)
-                {
-                    int ind = Remainder(pinchIndexB + i, pin.Count); // is this right    
-                    poutB.Add(pin[ind]);
-                }
-            }
-
-            return hasPinchPoint;
+            return false;
         }
+
+        /// <summary>
+        /// Determines if two vertices form a pinch point within the given tolerance.
+        /// </summary>
+        /// <param name="vertexA">The first vertex.</param>
+        /// <param name="vertexB">The second vertex.</param>
+        /// <param name="tolerance">The tolerance for point comparison.</param>
+        /// <returns>True if the vertices form a pinch point, false otherwise.</returns>
+        private static bool IsPinchPoint(Vector2 vertexA, Vector2 vertexB, float tolerance)
+        {
+            return (Math.Abs(vertexA.X - vertexB.X) < tolerance) &&
+                   (Math.Abs(vertexA.Y - vertexB.Y) < tolerance);
+        }
+
+        /// <summary>
+        /// Splits the vertices at the pinch point.
+        /// </summary>
+        /// <param name="pin">The vertices to split.</param>
+        /// <param name="pinchIndexA">The index of the first vertex in the pinch point.</param>
+        /// <param name="pinchIndexB">The index of the second vertex in the pinch point.</param>
+        /// <param name="poutA">The output vertices A.</param>
+        /// <param name="poutB">The output vertices B.</param>
+        /// <returns>True if the vertices are split successfully, false otherwise.</returns>
+        private static bool SplitVertices(Vertices pin, int pinchIndexA, int pinchIndexB, Vertices poutA, Vertices poutB)
+        {
+            int sizeA = pinchIndexB - pinchIndexA;
+
+            if (sizeA == pin.Count)
+            {
+                return false; // Duplicate points at wraparound, not a problem here
+            }
+
+            for (int i = 0; i < sizeA; ++i)
+            {
+                int ind = RemainderLocal(pinchIndexA + i, pin.Count);
+                poutA.Add(pin[ind]);
+            }
+
+            int sizeB = pin.Count - sizeA;
+            for (int i = 0; i < sizeB; ++i)
+            {
+                int ind = RemainderLocal(pinchIndexB + i, pin.Count);
+                poutB.Add(pin[ind]);
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Calculates the remainder of division, handling negative values correctly.
+        /// </summary>
+        /// <param name="dividend">The dividend.</param>
+        /// <param name="divisor">The divisor.</param>
+        /// <returns>The remainder of the division.</returns>
+        private static int RemainderLocal(int dividend, int divisor)
+        {
+            return (dividend % divisor + divisor) % divisor;
+        }
+
 
         /// <summary>Fix for obnoxious behavior for the % operator for negative numbers...</summary>
         /// <param name="x">The x.</param>
