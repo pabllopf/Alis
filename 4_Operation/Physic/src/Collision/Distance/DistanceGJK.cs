@@ -208,11 +208,7 @@ namespace Alis.Core.Physic.Collision.Distance
                 }
             }
         }
-
-        // GJK-raycast
-        // Algorithm by Gino van den Bergen.
-        // "Smooth Mesh Contacts with GJK" in Game Physics Pearls. 2010
-
+        
         /// <summary>
         ///     Perform a linear shape cast of shape B moving and shape A fixed. Determines the hit point, normal, and
         ///     translation fraction.
@@ -220,130 +216,28 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <returns>true if hit, false if there is no hit or an initial overlap</returns>
         public static bool ShapeCast(ref ShapeCastInput input, out ShapeCastOutput output)
         {
-            output = new ShapeCastOutput
-            {
-                Iterations = 0,
-                Lambda = 1.0f,
-                Normal = Vector2.Zero,
-                Point = Vector2.Zero
-            };
+            InitializeOutput(out output);
 
             DistanceProxy proxyA = input.ProxyA;
             DistanceProxy proxyB = input.ProxyB;
 
-            float radiusA = MathUtils.Max(proxyA.Radius, Settings.PolygonRadius);
-            float radiusB = MathUtils.Max(proxyB.Radius, Settings.PolygonRadius);
+            float radiusA = CalculateRadius(proxyA);
+            float radiusB = CalculateRadius(proxyB);
             float radius = radiusA + radiusB;
 
             Transform xfA = input.TransformA;
             Transform xfB = input.TransformB;
 
             Vector2 r = input.TranslationB;
-            Vector2 n = new Vector2(0.0f, 0.0f);
+            Vector2 n = Vector2.Zero;
             float lambda = 0.0f;
 
-            // Initial simplex
-            Simplex simplex = new Simplex
-            {
-                Count = 0
-            };
+            Simplex simplex = InitializeSimplex();
 
-            // Get simplex vertices as an array.
-            //SimplexVertex vertices = simplex.V.Value0; //Velcro: we don't need this as we have an indexer instead
-
-            // Get support point in -r direction
-            int indexA = proxyA.GetSupport(MathUtils.MulT(xfA.Rotation, -r));
-            Vector2 wA = MathUtils.Mul(ref xfA, proxyA.GetVertex(indexA));
-            int indexB = proxyB.GetSupport(MathUtils.MulT(xfB.Rotation, r));
-            Vector2 wB = MathUtils.Mul(ref xfB, proxyB.GetVertex(indexB));
-            Vector2 v = wA - wB;
-
-            // Sigma is the target distance between polygons
-            float sigma = MathUtils.Max(Settings.PolygonRadius, radius - Settings.PolygonRadius);
-            float tolerance = 0.5f * Settings.LinearSlop;
-
-            // Main iteration loop.
             int iter = 0;
 
-            //Velcro: We have moved the max iterations into settings
-            while ((iter < Settings.GjkIterations) && (v.Length() - sigma > tolerance))
+            while (IterateUntilConverged(input, ref output, ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref n, ref lambda, ref simplex, ref iter, radius))
             {
-                Debug.Assert(simplex.Count < 3);
-
-                output.Iterations += 1;
-
-                // Support in direction -v (A - B)
-                indexA = proxyA.GetSupport(MathUtils.MulT(xfA.Rotation, -v));
-                wA = MathUtils.Mul(ref xfA, proxyA.GetVertex(indexA));
-                indexB = proxyB.GetSupport(MathUtils.MulT(xfB.Rotation, v));
-                wB = MathUtils.Mul(ref xfB, proxyB.GetVertex(indexB));
-                Vector2 p = wA - wB;
-
-                // -v is a normal at p
-                v = Vector2.Normalize(v);
-
-                // Intersect ray with plane
-                float vp = MathUtils.Dot(ref v, ref p);
-                float vr = MathUtils.Dot(ref v, ref r);
-                if (vp - sigma > lambda * vr)
-                {
-                    if (vr <= 0.0f)
-                    {
-                        return false;
-                    }
-
-                    lambda = (vp - sigma) / vr;
-                    if (lambda > 1.0f)
-                    {
-                        return false;
-                    }
-
-                    n = -v;
-                    simplex.Count = 0;
-                }
-
-                // Reverse simplex since it works with B - A.
-                // Shift by lambda * r because we want the closest point to the current clip point.
-                // Note that the support point p is not shifted because we want the plane equation
-                // to be formed in unshifted space.
-                SimplexVertex vertex = simplex.V[simplex.Count];
-                vertex.IndexA = indexB;
-                vertex.Wa = wB + lambda * r;
-                vertex.IndexB = indexA;
-                vertex.Wb = wA;
-                vertex.W = vertex.Wb - vertex.Wa;
-                vertex.A = 1.0f;
-                simplex.V[simplex.Count] = vertex; //Velcro: we have to copy the value back
-                simplex.Count += 1;
-
-                switch (simplex.Count)
-                {
-                    case 1:
-                        break;
-
-                    case 2:
-                        simplex.Solve2();
-                        break;
-
-                    case 3:
-                        simplex.Solve3();
-                        break;
-
-                    default:
-                        Debug.Assert(false);
-                        break;
-                }
-
-                // If we have 3 points, then the origin is in the corresponding triangle.
-                if (simplex.Count == 3)
-                {
-                    // Overlap
-                    return false;
-                }
-
-                // Get search direction.
-                v = simplex.GetClosestPoint();
-
                 // Iteration count is equated to the number of support point calls.
                 ++iter;
             }
@@ -354,20 +248,261 @@ namespace Alis.Core.Physic.Collision.Distance
                 return false;
             }
 
-            // Prepare output.
-            simplex.GetWitnessPoints(out _, out Vector2 pointB);
+            CalculateOutput(ref output, ref simplex, ref r, ref lambda, ref n, radius, radiusA);
+            return true;
+        }
 
-            if (v.LengthSquared() > 0.0f)
+        /// <summary>
+        /// Initializes the output using the specified output
+        /// </summary>
+        /// <param name="output">The output</param>
+        private static void InitializeOutput(out ShapeCastOutput output)
+        {
+            output = new ShapeCastOutput
+            {
+                Iterations = 0,
+                Lambda = 1.0f,
+                Normal = Vector2.Zero,
+                Point = Vector2.Zero
+            };
+        }
+
+        /// <summary>
+        /// Calculates the radius using the specified proxy
+        /// </summary>
+        /// <param name="proxy">The proxy</param>
+        /// <returns>The float</returns>
+        private static float CalculateRadius(DistanceProxy proxy)
+        {
+            return MathUtils.Max(proxy.Radius, Settings.PolygonRadius);
+        }
+
+        /// <summary>
+        /// Initializes the simplex
+        /// </summary>
+        /// <returns>The simplex</returns>
+        private static Simplex InitializeSimplex()
+        {
+            return new Simplex
+            {
+                Count = 0
+            };
+        }
+
+        /// <summary>
+        /// Describes whether iterate until converged
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="output">The output</param>
+        /// <param name="proxyA">The proxy</param>
+        /// <param name="proxyB">The proxy</param>
+        /// <param name="xfA">The xf</param>
+        /// <param name="xfB">The xf</param>
+        /// <param name="r">The </param>
+        /// <param name="n">The </param>
+        /// <param name="lambda">The lambda</param>
+        /// <param name="simplex">The simplex</param>
+        /// <param name="iter">The iter</param>
+        /// <param name="radius">The radius</param>
+        /// <returns>The bool</returns>
+        private static bool IterateUntilConverged(ShapeCastInput input, ref ShapeCastOutput output, ref DistanceProxy proxyA, ref DistanceProxy proxyB,
+            ref Transform xfA, ref Transform xfB, ref Vector2 r, ref Vector2 n, ref float lambda, ref Simplex simplex, ref int iter, float radius)
+        {
+            Vector2 v = ComputeV(ref input, ref output, ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref n, ref lambda, ref simplex, radius);
+
+            if (IsConverged(v, ref lambda, radius))
+            {
+                return false;
+            }
+
+            UpdateSimplex(ref input, ref output, ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref v, ref n, ref lambda, ref simplex, radius);
+            return true;
+        }
+
+        /// <summary>
+        /// Computes the v using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="output">The output</param>
+        /// <param name="proxyA">The proxy</param>
+        /// <param name="proxyB">The proxy</param>
+        /// <param name="xfA">The xf</param>
+        /// <param name="xfB">The xf</param>
+        /// <param name="r">The </param>
+        /// <param name="n">The </param>
+        /// <param name="lambda">The lambda</param>
+        /// <param name="simplex">The simplex</param>
+        /// <param name="radius">The radius</param>
+        /// <returns>The </returns>
+        private static Vector2 ComputeV(ref ShapeCastInput input, ref ShapeCastOutput output, ref DistanceProxy proxyA, ref DistanceProxy proxyB,
+            ref Transform xfA, ref Transform xfB, ref Vector2 r, ref Vector2 n, ref float lambda, ref Simplex simplex, float radius)
+        {
+            Vector2 v = ComputeSupport(ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref n, ref lambda);
+
+            if (IsNewDirectionNeeded(ref output, ref n, ref r, ref lambda, radius))
             {
                 n = -v;
+                n = Vector2.Normalize(n);
+                simplex.Count = 0;
+            }
+
+            return v;
+        }
+
+        /// <summary>
+        /// Computes the support using the specified proxy a
+        /// </summary>
+        /// <param name="proxyA">The proxy</param>
+        /// <param name="proxyB">The proxy</param>
+        /// <param name="xfA">The xf</param>
+        /// <param name="xfB">The xf</param>
+        /// <param name="r">The </param>
+        /// <param name="n">The </param>
+        /// <param name="lambda">The lambda</param>
+        /// <returns>The </returns>
+        private static Vector2 ComputeSupport(ref DistanceProxy proxyA, ref DistanceProxy proxyB, ref Transform xfA, ref Transform xfB,
+            ref Vector2 r, ref Vector2 n, ref float lambda)
+        {
+            int indexA = proxyA.GetSupport(MathUtils.MulT(xfA.Rotation, -r));
+            Vector2 wA = MathUtils.Mul(ref xfA, proxyA.GetVertex(indexA));
+            int indexB = proxyB.GetSupport(MathUtils.MulT(xfB.Rotation, r));
+            Vector2 wB = MathUtils.Mul(ref xfB, proxyB.GetVertex(indexB));
+            Vector2 v = wA - wB;
+
+            return v;
+        }
+
+        /// <summary>
+        /// Describes whether is converged
+        /// </summary>
+        /// <param name="v">The </param>
+        /// <param name="lambda">The lambda</param>
+        /// <param name="radius">The radius</param>
+        /// <returns>The bool</returns>
+        private static bool IsConverged(Vector2 v, ref float lambda, float radius)
+        {
+            float sigma = MathUtils.Max(Settings.PolygonRadius, 2 * radius - Settings.PolygonRadius);
+            float tolerance = 0.5f * Settings.LinearSlop;
+
+            return v.Length() - sigma <= tolerance || lambda > 1.0f;
+        }
+
+        /// <summary>
+        /// Describes whether is new direction needed
+        /// </summary>
+        /// <param name="output">The output</param>
+        /// <param name="n">The </param>
+        /// <param name="r">The </param>
+        /// <param name="lambda">The lambda</param>
+        /// <param name="radius">The radius</param>
+        /// <returns>The bool</returns>
+        private static bool IsNewDirectionNeeded(ref ShapeCastOutput output, ref Vector2 n, ref Vector2 r, ref float lambda, float radius)
+        {
+            float vp = MathUtils.Dot(ref n, ref r);
+            return vp - (2 * radius - Settings.PolygonRadius) > lambda * MathUtils.Dot(ref n, ref r);
+        }
+
+        /// <summary>
+        /// Updates the simplex using the specified input
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="output">The output</param>
+        /// <param name="proxyA">The proxy</param>
+        /// <param name="proxyB">The proxy</param>
+        /// <param name="xfA">The xf</param>
+        /// <param name="xfB">The xf</param>
+        /// <param name="r">The </param>
+        /// <param name="v">The </param>
+        /// <param name="n">The </param>
+        /// <param name="lambda">The lambda</param>
+        /// <param name="simplex">The simplex</param>
+        /// <param name="radius">The radius</param>
+        private static void UpdateSimplex(ref ShapeCastInput input, ref ShapeCastOutput output, ref DistanceProxy proxyA, ref DistanceProxy proxyB,
+            ref Transform xfA, ref Transform xfB, ref Vector2 r, ref Vector2 v, ref Vector2 n, ref float lambda, ref Simplex simplex, float radius)
+        {
+            int indexA = proxyA.GetSupport(MathUtils.MulT(xfA.Rotation, -v));
+            Vector2 wA = MathUtils.Mul(ref xfA, proxyA.GetVertex(indexA));
+            int indexB = proxyB.GetSupport(MathUtils.MulT(xfB.Rotation, v));
+            Vector2 wB = MathUtils.Mul(ref xfB, proxyB.GetVertex(indexB));
+            Vector2 p = wA - wB;
+
+            v = Vector2.Normalize(v);
+
+            float vp = MathUtils.Dot(ref v, ref p);
+            float vr = MathUtils.Dot(ref v, ref r);
+
+            if (vp - (2 * radius - Settings.PolygonRadius) > lambda * vr)
+            {
+                if (vr <= 0.0f)
+                {
+                    return;
+                }
+
+                lambda = (vp - (2 * radius - Settings.PolygonRadius)) / vr;
+
+                if (lambda > 1.0f)
+                {
+                    return;
+                }
+
+                n = -v;
+                simplex.Count = 0;
+            }
+
+            SimplexVertex vertex = simplex.V[simplex.Count];
+            vertex.IndexA = indexB;
+            vertex.Wa = wB + lambda * r;
+            vertex.IndexB = indexA;
+            vertex.Wb = wA;
+            vertex.W = vertex.Wb - vertex.Wa;
+            vertex.A = 1.0f;
+            simplex.V[simplex.Count] = vertex;
+            simplex.Count += 1;
+
+            switch (simplex.Count)
+            {
+                case 1:
+                    break;
+
+                case 2:
+                    simplex.Solve2();
+                    break;
+
+                case 3:
+                    simplex.Solve3();
+                    break;
+
+                default:
+                    Debug.Assert(false);
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Calculates the output using the specified output
+        /// </summary>
+        /// <param name="output">The output</param>
+        /// <param name="simplex">The simplex</param>
+        /// <param name="r">The </param>
+        /// <param name="lambda">The lambda</param>
+        /// <param name="n">The </param>
+        /// <param name="radius">The radius</param>
+        /// <param name="radiusA">The radius</param>
+        private static void CalculateOutput(ref ShapeCastOutput output, ref Simplex simplex, ref Vector2 r, ref float lambda, ref Vector2 n, float radius, float radiusA)
+        {
+            simplex.GetWitnessPoints(out _, out Vector2 pointB);
+
+            if (r.LengthSquared() > 0.0f)
+            {
+                n = -r;
                 n = Vector2.Normalize(n);
             }
 
             output.Point = pointB + radiusA * n;
             output.Normal = n;
             output.Lambda = lambda;
-            output.Iterations = iter;
-            return true;
+            output.Iterations = simplex.Count;
         }
+
     }
 }
