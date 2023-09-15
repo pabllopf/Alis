@@ -125,11 +125,7 @@ namespace Alis.Core.Physic.Tools.ConvexHull
         {
             int totalPoints = lowerHull.Length + upperHull.Length - 2; // Subtract 2 to account for duplicate endpoint
             Vertices result = new Vertices(totalPoints);
-
-            for (int i = 0; i < lowerHull.Length; i++)
-            {
-                result.Add(lowerHull[i]);
-            }
+            result.AddRange(lowerHull);
 
             for (int i = 1; i < upperHull.Length - 1; i++) // Skip the duplicate endpoint
             {
