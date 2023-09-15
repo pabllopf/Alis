@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared;
@@ -42,7 +43,9 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
     /// </summary>
     public static class SimpleCombiner
     {
-        /// <summary>Combine a list of triangles into a list of convex polygons. Note: This only works on triangles.</summary>
+        /// <summary>
+        /// Combine a list of triangles into a list of convex polygons. Note: This only works on triangles.
+        /// </summary>
         /// <param name="triangles">The triangles.</param>
         /// <param name="maxPolys">The max number of polygons to return.</param>
         /// <param name="tolerance">The tolerance</param>
@@ -54,111 +57,173 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                 return triangles;
             }
 
+            bool[] covered = InitializeCoveredFlags(triangles);
+            int polyIndex = 0;
             List<Vertices> polys = new List<Vertices>();
 
+            while (HasUncoveredTriangles(covered))
+            {
+                int currTri = FindFirstUncoveredTriangle(covered, triangles.Count);
+                if (currTri == -1)
+                {
+                    break;
+                }
+
+                Vertices poly = CreatePolygonFromTriangle(triangles[currTri]);
+                covered[currTri] = true;
+
+                for (int i = 0; i < 2 * triangles.Count; ++i)
+                {
+                    int index = GetValidTriangleIndex(i, triangles.Count);
+                    if (covered[index])
+                    {
+                        continue;
+                    }
+
+                    Vertices newP = AddTriangle(triangles[index], poly);
+                    if (newP == null || newP.Count > Settings.PolygonVertices)
+                    {
+                        continue;
+                    }
+
+                    if (newP.IsConvex())
+                    {
+                        poly = new Vertices(newP);
+                        covered[index] = true;
+                    }
+                }
+
+                if (polyIndex < maxPolys)
+                {
+                    SimplifyAndAddPolygon(polys, poly, tolerance);
+                }
+
+                polyIndex++;
+            }
+
+            RemoveEmptyCollections(polys);
+            return polys;
+        }
+
+        /// <summary>
+        /// Initializes the covered flags using the specified triangles
+        /// </summary>
+        /// <param name="triangles">The triangles</param>
+        /// <returns>The covered</returns>
+        private static bool[] InitializeCoveredFlags(List<Vertices> triangles)
+        {
             bool[] covered = new bool[triangles.Count];
             for (int i = 0; i < triangles.Count; ++i)
             {
                 covered[i] = false;
 
-                //Check here for degenerate triangles
-                Vertices triangle = triangles[i];
-                Vector2 a = triangle[0];
-                Vector2 b = triangle[1];
-                Vector2 c = triangle[2];
-
-                if (Math.Abs(a.X - b.X) < 0.01f && Math.Abs(a.Y - b.Y) < 0.01f || Math.Abs(b.X - c.X) < 0.01f && Math.Abs(b.Y - c.Y) < 0.01f || Math.Abs(a.X - c.X) < 0.01f && Math.Abs(a.Y - c.Y) < 0.01f)
+                if (IsDegenerateTriangle(triangles[i]))
                 {
                     covered[i] = true;
                 }
             }
+            return covered;
+        }
 
-            int polyIndex = 0;
+        /// <summary>
+        /// Describes whether has uncovered triangles
+        /// </summary>
+        /// <param name="covered">The covered</param>
+        /// <returns>The bool</returns>
+        private static bool HasUncoveredTriangles(bool[] covered)
+        {
+            return covered.Any(c => !c);
+        }
 
-            bool notDone = true;
-            while (notDone)
+        /// <summary>
+        /// Finds the first uncovered triangle using the specified covered
+        /// </summary>
+        /// <param name="covered">The covered</param>
+        /// <param name="triangleCount">The triangle count</param>
+        /// <returns>The int</returns>
+        private static int FindFirstUncoveredTriangle(bool[] covered, int triangleCount)
+        {
+            for (int i = 0; i < triangleCount; ++i)
             {
-                int currTri = -1;
-                for (int i = 0; i < triangles.Count; ++i)
+                if (!covered[i])
                 {
-                    if (covered[i])
-                    {
-                        continue;
-                    }
-
-                    currTri = i;
-                    break;
-                }
-
-                if (currTri == -1)
-                {
-                    notDone = false;
-                }
-                else
-                {
-                    Vertices poly = new Vertices(3);
-
-                    for (int i = 0; i < 3; i++)
-                    {
-                        poly.Add(triangles[currTri][i]);
-                    }
-
-                    covered[currTri] = true;
-                    int index = 0;
-                    for (int i = 0; i < 2 * triangles.Count; ++i, ++index)
-                    {
-                        while (index >= triangles.Count)
-                        {
-                            index -= triangles.Count;
-                        }
-
-                        if (covered[index])
-                        {
-                            continue;
-                        }
-
-                        Vertices newP = AddTriangle(triangles[index], poly);
-                        if (newP == null)
-                        {
-                            continue; // is this right
-                        }
-
-                        if (newP.Count > Settings.PolygonVertices)
-                        {
-                            continue;
-                        }
-
-                        if (newP.IsConvex())
-                        {
-                            //Or should it be IsUsable?  Maybe re-write IsConvex to apply the angle threshold from Box2d
-                            poly = new Vertices(newP);
-                            covered[index] = true;
-                        }
-                    }
-
-                    //We have a maximum of polygons that we need to keep under.
-                    if (polyIndex < maxPolys)
-                    {
-                        SimplifyTools.MergeParallelEdges(poly, tolerance);
-                        
-                        if (poly.Count >= 3)
-                        {
-                            polys.Add(new Vertices(poly));
-                        }
-                        else
-                        {
-                            Debug.WriteLine("Skipping corrupt poly.");
-                        }
-                    }
-
-                    if (poly.Count >= 3)
-                    {
-                        polyIndex++; //Must be outside (polyIndex < polysLength) test
-                    }
+                    return i;
                 }
             }
+            return -1;
+        }
 
-            //Remove empty collections
+        /// <summary>
+        /// Gets the valid triangle index using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <param name="triangleCount">The triangle count</param>
+        /// <returns>The index</returns>
+        private static int GetValidTriangleIndex(int index, int triangleCount)
+        {
+            while (index >= triangleCount)
+            {
+                index -= triangleCount;
+            }
+            return index;
+        }
+
+        /// <summary>
+        /// Creates the polygon from triangle using the specified triangle
+        /// </summary>
+        /// <param name="triangle">The triangle</param>
+        /// <returns>The poly</returns>
+        private static Vertices CreatePolygonFromTriangle(Vertices triangle)
+        {
+            Vertices poly = new Vertices(3);
+            for (int i = 0; i < 3; i++)
+            {
+                poly.Add(triangle[i]);
+            }
+            return poly;
+        }
+
+        /// <summary>
+        /// Describes whether is degenerate triangle
+        /// </summary>
+        /// <param name="triangle">The triangle</param>
+        /// <returns>The bool</returns>
+        private static bool IsDegenerateTriangle(Vertices triangle)
+        {
+            Vector2 a = triangle[0];
+            Vector2 b = triangle[1];
+            Vector2 c = triangle[2];
+            return Math.Abs(a.X - b.X) < 0.01f && Math.Abs(a.Y - b.Y) < 0.01f ||
+                   Math.Abs(b.X - c.X) < 0.01f && Math.Abs(b.Y - c.Y) < 0.01f ||
+                   Math.Abs(a.X - c.X) < 0.01f && Math.Abs(a.Y - c.Y) < 0.01f;
+        }
+
+        /// <summary>
+        /// Simplifies the and add polygon using the specified polys
+        /// </summary>
+        /// <param name="polys">The polys</param>
+        /// <param name="poly">The poly</param>
+        /// <param name="tolerance">The tolerance</param>
+        private static void SimplifyAndAddPolygon(List<Vertices> polys, Vertices poly, float tolerance)
+        {
+            SimplifyTools.MergeParallelEdges(poly, tolerance);
+
+            if (poly.Count >= 3)
+            {
+                polys.Add(new Vertices(poly));
+            }
+            else
+            {
+                Debug.WriteLine("Skipping corrupt poly.");
+            }
+        }
+
+        /// <summary>
+        /// Removes the empty collections using the specified polys
+        /// </summary>
+        /// <param name="polys">The polys</param>
+        private static void RemoveEmptyCollections(List<Vertices> polys)
+        {
             for (int i = polys.Count - 1; i >= 0; i--)
             {
                 if (polys[i].Count == 0)
@@ -166,9 +231,8 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                     polys.RemoveAt(i);
                 }
             }
-
-            return polys;
         }
+
 
         /// <summary>
         /// Adds the triangle using the specified t
