@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:EarclipDecomposer.cs
+//  File:EarClipDecomposer.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -73,14 +73,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.EarClip
             List<Vertices> results = new List<Vertices>();
 
             List<Vertices> pinchedPolygon = TriangulatePinchedPolygon(vertices, tolerance);
-            if (pinchedPolygon != null)
-            {
-                results.AddRange(pinchedPolygon);
-            }
-            else
-            {
-                results.AddRange(TriangulateRegularPolygon(vertices));
-            }
+            results.AddRange(pinchedPolygon ?? TriangulateRegularPolygon(vertices));
 
             return results;
         }
