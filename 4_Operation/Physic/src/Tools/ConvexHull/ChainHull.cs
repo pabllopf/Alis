@@ -44,7 +44,9 @@ namespace Alis.Core.Physic.Tools.ConvexHull
         /// </summary>
         private static readonly PointComparer PointComparerPrivate = new PointComparer();
 
-        /// <summary>Returns the convex hull from the given vertices..</summary>
+        /// <summary>
+        /// Returns the convex hull from the given vertices.
+        /// </summary>
         public static Vertices GetConvexHull(Vertices vertices)
         {
             if (vertices.Count <= 3)
@@ -52,133 +54,90 @@ namespace Alis.Core.Physic.Tools.ConvexHull
                 return vertices;
             }
 
-            Vertices pointSet = new Vertices(vertices);
-
-            //Sort by X-axis
-            pointSet.Sort(PointComparerPrivate);
-
-            Vector2[] h = new Vector2[pointSet.Count];
-            Vertices res;
-
-            int top = -1; // indices for bottom and top of the stack
-            int i; // array scan index
-
-            // Get the indices of points with min x-coord and min|max y-coord
-            const int minMin = 0;
-            float xMin = pointSet[0].X;
-            for (i = 1; i < pointSet.Count; i++)
-            {
-                if (Math.Abs(pointSet[i].X - xMin) > 0.01f)
-                {
-                    break;
-                }
-            }
-
-            // degenerate case: all x-coords == x min
-            int minmax = i - 1;
-            if (minmax == pointSet.Count - 1)
-            {
-                h[++top] = pointSet[minMin];
-
-                if (Math.Abs(pointSet[minmax].Y - pointSet[minMin].Y) > 0.01f) // a nontrivial segment
-                {
-                    h[++top] = pointSet[minmax];
-                }
-
-                h[++top] = pointSet[minMin]; // add polygon endpoint
-
-                res = new Vertices(top + 1);
-                for (int j = 0; j < top + 1; j++)
-                {
-                    res.Add(h[j]);
-                }
-
-                return res;
-            }
-
-            top = -1;
-
-            // Get the indices of points with max x-coord and min|max y-coord
-            int maxMax = pointSet.Count - 1;
-            float xMax = pointSet[pointSet.Count - 1].X;
-            for (i = pointSet.Count - 2; i >= 0; i--)
-            {
-                if (Math.Abs(pointSet[i].X - xMax) > 0.01f)
-                {
-                    break;
-                }
-            }
-
-            int maxMin = i + 1;
-
-            // Compute the lower hull on the stack H
-            h[++top] = pointSet[minMin]; // push min min point onto stack
-            i = minmax;
-            while (++i <= maxMin)
-            {
-                // the lower line joins Position[min, min] with Position[min, max]
-                if ((MathUtils.Area(pointSet[minMin], pointSet[maxMin], pointSet[i]) >= 0) && (i < maxMin))
-                {
-                    continue; // ignore Position[i] above or on the lower line
-                }
-
-                while (top > 0) // there are at least 2 points on the stack
-                {
-                    // test if Position[i] is left of the line at the stack top
-                    if (MathUtils.Area(h[top - 1], h[top], pointSet[i]) > 0)
-                    {
-                        break; // Position[i] is a new hull vertex
-                    }
-
-                    top--; // pop top point off stack
-                }
-
-                h[++top] = pointSet[i]; // push Position[i] onto stack
-            }
-
-            // GetNext, compute the upper hull on the stack H above the bottom hull
-            if (maxMax != maxMin) // if distinct max points
-            {
-                h[++top] = pointSet[maxMax]; 
-            }
-
-            int bot = top;
-            i = maxMin;
-            while (--i >= minmax)
-            {
-                // the upper line joins Position [max] with Position[min]
-                if ((MathUtils.Area(pointSet[maxMax], pointSet[minmax], pointSet[i]) >= 0) && (i > minmax))
-                {
-                    continue; // ignore Position[i] below or on the upper line
-                }
-
-                while (top > bot) // at least 2 points on the upper stack
-                {
-                    // test if Position[i] is left of the line at the stack top
-                    if (MathUtils.Area(h[top - 1], h[top], pointSet[i]) > 0)
-                    {
-                        break; // Position[i] is a new hull vertex
-                    }
-
-                    top--; // pop top point off stack
-                }
-
-                h[++top] = pointSet[i]; // push Position[i] onto stack
-            }
-
-            if (minmax != minMin)
-            {
-                h[++top] = pointSet[minMin]; // push joining endpoint onto stack
-            }
-
-            res = new Vertices(top + 1);
-
-            for (int j = 0; j < top + 1; j++)
-            {
-                res.Add(h[j]);
-            }
-
-            return res;
+            Vertices sortedVertices = SortVerticesByX(vertices);
+            Vector2[] lowerHull = ComputeHull(sortedVertices, true);
+            Vector2[] upperHull = ComputeHull(sortedVertices, false);
+    
+            return CombineHulls(lowerHull, upperHull);
         }
+
+        /// <summary>
+        /// Sorts the vertices by x using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <returns>The sorted</returns>
+        private static Vertices SortVerticesByX(Vertices vertices)
+        {
+            Vertices sorted = new Vertices(vertices);
+            sorted.Sort(PointComparerPrivate);
+            return sorted;
+        }
+
+        /// <summary>
+        /// Computes the hull using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="lowerHull">The lower hull</param>
+        /// <returns>The hull</returns>
+        private static Vector2[] ComputeHull(Vertices vertices, bool lowerHull)
+        {
+            int count = vertices.Count;
+            Vector2[] hull = new Vector2[count];
+            int top = -1;
+            int startIndex = lowerHull ? 0 : count - 1;
+            int endIndex = lowerHull ? count : -1;
+            int step = lowerHull ? 1 : -1;
+    
+            for (int i = startIndex; i != endIndex; i += step)
+            {
+                while (top >= 1 && !IsLeftOfLine(hull[top - 1], hull[top], vertices[i]))
+                {
+                    top--;
+                }
+
+                top++;
+                hull[top] = vertices[i];
+            }
+
+            Array.Resize(ref hull, top + 1);
+            return hull;
+        }
+
+        /// <summary>
+        /// Describes whether is left of line
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <param name="point">The point</param>
+        /// <returns>The bool</returns>
+        private static bool IsLeftOfLine(Vector2 a, Vector2 b, Vector2 point)
+        {
+            return MathUtils.Area(a, b, point) > 0;
+        }
+
+        /// <summary>
+        /// Combines the hulls using the specified lower hull
+        /// </summary>
+        /// <param name="lowerHull">The lower hull</param>
+        /// <param name="upperHull">The upper hull</param>
+        /// <returns>The result</returns>
+        private static Vertices CombineHulls(Vector2[] lowerHull, Vector2[] upperHull)
+        {
+            int totalPoints = lowerHull.Length + upperHull.Length - 2; // Subtract 2 to account for duplicate endpoint
+            Vertices result = new Vertices(totalPoints);
+
+            for (int i = 0; i < lowerHull.Length; i++)
+            {
+                result.Add(lowerHull[i]);
+            }
+
+            for (int i = 1; i < upperHull.Length - 1; i++) // Skip the duplicate endpoint
+            {
+                result.Add(upperHull[i]);
+            }
+
+            return result;
+        }
+
     }
 }
