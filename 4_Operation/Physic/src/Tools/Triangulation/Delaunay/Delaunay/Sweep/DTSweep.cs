@@ -627,7 +627,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         }
 
         /// <summary>
-        ///     Flips the edge event using the specified tcx
+        /// Flips the edge event using the specified tcx
         /// </summary>
         /// <param name="tcx">The tcx</param>
         /// <param name="ep">The ep</param>
@@ -640,56 +640,17 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         {
             DelaunayTriangle ot = t.NeighborAcross(p);
 
-
             if (t.GetConstrainedEdgeAcross(p))
             {
                 throw new Exception("Intersecting Constraints");
             }
 
             TriangulationPoint op = ot.OppositePoint(t, p);
-
             bool inScanArea = TriangulationUtil.InScanArea(p, t.PointCcw(p), t.PointCw(p), op);
+
             if (inScanArea)
             {
-                // Lets rotate shared edge one vertex CW
-                RotateTrianglePair(t, p, ot, op);
-                tcx.MapTriangleToNodes(t);
-                tcx.MapTriangleToNodes(ot);
-
-                if ((p == eq) && (op == ep))
-                {
-                    if ((eq == tcx.EdgeEvent.ConstrainedEdge.Q)
-                        && (ep == tcx.EdgeEvent.ConstrainedEdge.P))
-                    {
-                        if (tcx.IsDebugEnabled)
-                        {
-                            Logger.Log("[FLIP] - constrained edge done");
-                        }
-
-                        t.MarkConstrainedEdge(ep, eq);
-                        ot.MarkConstrainedEdge(ep, eq);
-                        Legalize(tcx, t);
-                        Legalize(tcx, ot);
-                    }
-                    else
-                    {
-                        if (tcx.IsDebugEnabled)
-                        {
-                            Logger.Log("[FLIP] - sub edge done");
-                        }
-                    }
-                }
-                else
-                {
-                    if (tcx.IsDebugEnabled)
-                    {
-                        Logger.Log("[FLIP] - flipping and continuing with triangle still crossing edge");
-                    }
-                    
-                    Orientation o = TriangulationUtil.Orient2d(eq, op, ep);
-                    t = NextFlipTriangle(tcx, o, t, ot, p, op);
-                    FlipEdgeEvent(tcx, ep, eq, t, p);
-                }
+                RotateSharedEdge(tcx, t, p, ot, op, ep, eq);
             }
             else
             {
@@ -699,6 +660,49 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             }
         }
 
+        private static void RotateSharedEdge(DtSweepContext tcx, DelaunayTriangle t, TriangulationPoint p,
+            DelaunayTriangle ot, TriangulationPoint op, TriangulationPoint ep, TriangulationPoint eq)
+        {
+            // Rotate shared edge one vertex CW
+            RotateTrianglePair(t, p, ot, op);
+            tcx.MapTriangleToNodes(t);
+            tcx.MapTriangleToNodes(ot);
+
+            if ((p == eq) && (op == ep))
+            {
+                if ((eq == tcx.EdgeEvent.ConstrainedEdge.Q) && (ep == tcx.EdgeEvent.ConstrainedEdge.P))
+                {
+                    if (tcx.IsDebugEnabled)
+                    {
+                        Logger.Log("[FLIP] - constrained edge done");
+                    }
+
+                    t.MarkConstrainedEdge(ep, eq);
+                    ot.MarkConstrainedEdge(ep, eq);
+                    Legalize(tcx, t);
+                    Legalize(tcx, ot);
+                }
+                else
+                {
+                    if (tcx.IsDebugEnabled)
+                    {
+                        Logger.Log("[FLIP] - sub edge done");
+                    }
+                }
+            }
+            else
+            {
+                if (tcx.IsDebugEnabled)
+                {
+                    Logger.Log("[FLIP] - flipping and continuing with triangle still crossing edge");
+                }
+
+                Orientation o = TriangulationUtil.Orient2d(eq, op, ep);
+                t = NextFlipTriangle(tcx, o, t, ot, p, op);
+                FlipEdgeEvent(tcx, ep, eq, t, p);
+            }
+        }
+        
         /// <summary>
         ///     When we need to traverse from one triangle to the next we need the point in current triangle that is the
         ///     opposite point to the next triangle.
