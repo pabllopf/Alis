@@ -32,7 +32,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
-using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Tools.Triangulation.EarClip
 {
@@ -58,23 +57,14 @@ namespace Alis.Core.Physic.Tools.Triangulation.EarClip
 
             return TriangulatePolygon(vertices, tolerance);
         }
-
+        
         /// <summary>
-        ///     Triangulates a polygon using simple ear-clipping algorithm. Returns size of Triangle array unless the polygon
-        ///     can't be triangulated. This should only happen if the polygon self-intersects, though it will not _always_ return
-        ///     null
-        ///     for a bad polygon - it is the caller's responsibility to check for self-intersection, and if it doesn't, it should
-        ///     at
-        ///     least check that the return value is non-null before using. You're warned! Triangles may be degenerate, especially
-        ///     if
-        ///     you have identical points in the input to the algorithm.  Check this before you use them. This is totally
-        ///     unoptimized,
-        ///     so for large polygons it should not be part of the simulation loop.
+        /// Triangulates a polygon using the ear-clipping algorithm.
+        /// Returns a list of triangles.
         /// </summary>
         /// <remarks>Only works on simple polygons.</remarks>
         private static List<Vertices> TriangulatePolygon(Vertices vertices, float tolerance)
         {
-            //Velcro note: Check is needed as invalid triangles can be returned in recursive calls.
             if (vertices.Count < 3)
             {
                 return new List<Vertices>();
@@ -82,7 +72,29 @@ namespace Alis.Core.Physic.Tools.Triangulation.EarClip
 
             List<Vertices> results = new List<Vertices>();
 
-            //Recurse and split on pinch points
+            List<Vertices> pinchedPolygon = TriangulatePinchedPolygon(vertices, tolerance);
+            if (pinchedPolygon != null)
+            {
+                results.AddRange(pinchedPolygon);
+            }
+            else
+            {
+                results.AddRange(TriangulateRegularPolygon(vertices));
+            }
+
+            return results;
+        }
+
+        // Helper method to triangulate a pinched polygon
+        /// <summary>
+        /// Triangulates the pinched polygon using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="tolerance">The tolerance</param>
+        /// <exception cref="TriangulateException">Can't triangulate your polygon.</exception>
+        /// <returns>A list of vertices</returns>
+        private static List<Vertices> TriangulatePinchedPolygon(Vertices vertices, float tolerance)
+        {
             Vertices pin = new Vertices(vertices);
             if (ResolvePinchPoint(pin, out Vertices pA, out Vertices pB, tolerance))
             {
@@ -91,24 +103,28 @@ namespace Alis.Core.Physic.Tools.Triangulation.EarClip
 
                 if (mergeA.Count == 0 || mergeB.Count == 0)
                 {
-                    throw new Exception("Can't triangulate your polygon.");
+                    throw new TriangulateException("Can't triangulate your polygon.");
                 }
 
-                for (int i = 0; i < mergeA.Count; ++i)
-                {
-                    results.Add(new Vertices(mergeA[i]));
-                }
-
-                for (int i = 0; i < mergeB.Count; ++i)
-                {
-                    results.Add(new Vertices(mergeB[i]));
-                }
-
-                return results;
+                List<Vertices> result = new List<Vertices>();
+                result.AddRange(mergeA);
+                result.AddRange(mergeB);
+                return result;
             }
 
-            Vertices[] buffer = new Vertices[vertices.Count - 2];
-            int bufferSize = 0;
+            return null;
+        }
+
+        // Helper method to triangulate a regular polygon
+        /// <summary>
+        /// Triangulates the regular polygon using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <returns>The results</returns>
+        private static List<Vertices> TriangulateRegularPolygon(Vertices vertices)
+        {
+            List<Vertices> results = new List<Vertices>();
+
             float[] xRem = new float[vertices.Count];
             float[] yRem = new float[vertices.Count];
             for (int i = 0; i < vertices.Count; ++i)
@@ -121,99 +137,99 @@ namespace Alis.Core.Physic.Tools.Triangulation.EarClip
 
             while (vNum > 3)
             {
-                // Find an ear
-                int earIndex = -1;
-                float earMaxMinCross = -10.0f;
-                for (int i = 0; i < vNum; ++i)
-                {
-                    if (IsEar(i, xRem, yRem, vNum))
-                    {
-                        int lower = Remainder(i - 1, vNum);
-                        int upper = Remainder(i + 1, vNum);
-                        Vector2 d1 = new Vector2(xRem[upper] - xRem[i], yRem[upper] - yRem[i]);
-                        Vector2 d2 = new Vector2(xRem[i] - xRem[lower], yRem[i] - yRem[lower]);
-                        Vector2 d3 = new Vector2(xRem[lower] - xRem[upper], yRem[lower] - yRem[upper]);
-
-                        d1 = Vector2.Normalize(d1);
-                        d2 = Vector2.Normalize(d2);
-                        d3 = Vector2.Normalize(d3);
-                        MathUtils.Cross(ref d1, ref d2, out float cross12);
-                        cross12 = Math.Abs(cross12);
-
-                        MathUtils.Cross(ref d2, ref d3, out float cross23);
-                        cross23 = Math.Abs(cross23);
-
-                        MathUtils.Cross(ref d3, ref d1, out float cross31);
-                        cross31 = Math.Abs(cross31);
-
-                        //Find the maximum minimum angle
-                        float minCross = Math.Min(cross12, Math.Min(cross23, cross31));
-                        if (minCross > earMaxMinCross)
-                        {
-                            earIndex = i;
-                            earMaxMinCross = minCross;
-                        }
-                    }
-                }
-
-                // If we still haven't found an ear, we're screwed.
-                // Note: sometimes this is happening because the
-                // remaining points are collinear.  Really these
-                // should just be thrown out without halting triangulation.
+                int earIndex = FindEar(xRem, yRem, vNum);
                 if (earIndex == -1)
                 {
-                    for (int i = 0; i < bufferSize; i++)
-                    {
-                        results.Add(buffer[i]);
-                    }
-
+                    results.AddRange(GenerateTrianglesFromBuffer(xRem, yRem, vNum));
                     return results;
                 }
 
-                // Clip off the ear:
-                // - remove the ear tip from the list
+                vNum = ClipEar(earIndex, ref xRem, ref yRem, vNum, results);
+            }
 
-                --vNum;
-                float[] newX = new float[vNum];
-                float[] newY = new float[vNum];
-                int currDest = 0;
-                for (int i = 0; i < vNum; ++i)
+            results.AddRange(GenerateTrianglesFromBuffer(xRem, yRem, vNum));
+            return results;
+        }
+        
+        /// <summary>
+        /// Finds the ear using the specified x rem
+        /// </summary>
+        /// <param name="xRem">The rem</param>
+        /// <param name="yRem">The rem</param>
+        /// <param name="vNum">The num</param>
+        /// <returns>The int</returns>
+        private static int FindEar(float[] xRem, float[] yRem, int vNum)
+        {
+            for (int i = 0; i < vNum; ++i)
+            {
+                if (IsEar(i, xRem, yRem, vNum))
                 {
-                    if (currDest == earIndex)
-                    {
-                        ++currDest;
-                    }
+                    return i;
+                }
+            }
 
-                    newX[i] = xRem[currDest];
-                    newY[i] = yRem[currDest];
+            return -1; // No ear found
+        }
+
+        /// <summary>
+        /// Clips the ear using the specified ear index
+        /// </summary>
+        /// <param name="earIndex">The ear index</param>
+        /// <param name="xRem">The rem</param>
+        /// <param name="yRem">The rem</param>
+        /// <param name="vNum">The num</param>
+        /// <param name="results">The results</param>
+        /// <returns>The int</returns>
+        private static int ClipEar(int earIndex, ref float[] xRem, ref float[] yRem, int vNum, List<Vertices> results)
+        {
+            int under = earIndex == 0 ? vNum - 1 : earIndex - 1;
+            int over = earIndex == vNum - 1 ? 0 : earIndex + 1;
+
+            // Add the clipped triangle to the results
+            results.Add(new Vertices(new Triangle(xRem[earIndex], yRem[earIndex], xRem[over], yRem[over], xRem[under], yRem[under])));
+
+            // Remove the ear tip from the lists
+            float[] newX = new float[vNum - 1];
+            float[] newY = new float[vNum - 1];
+            int currDest = 0;
+            for (int i = 0; i < vNum - 1; ++i)
+            {
+                if (currDest == earIndex)
+                {
                     ++currDest;
                 }
 
-                // - add the clipped triangle to the triangle list
-                int under = earIndex == 0 ? vNum : earIndex - 1;
-                int over = earIndex == vNum ? 0 : earIndex + 1;
-                Triangle toAdd = new Triangle(xRem[earIndex], yRem[earIndex], xRem[over], yRem[over], xRem[under],
-                    yRem[under]);
-                buffer[bufferSize] = toAdd;
-                ++bufferSize;
-
-                // - replace the old list with the new one
-                xRem = newX;
-                yRem = newY;
+                newX[i] = xRem[currDest];
+                newY[i] = yRem[currDest];
+                ++currDest;
             }
 
-            Triangle tooAdd = new Triangle(xRem[1], yRem[1], xRem[2], yRem[2], xRem[0], yRem[0]);
-            buffer[bufferSize] = tooAdd;
-            ++bufferSize;
+            // Update arrays
+            xRem = newX;
+            yRem = newY;
 
-            for (int i = 0; i < bufferSize; i++)
-            {
-                results.Add(new Vertices(buffer[i]));
-            }
-
-            return results;
+            return vNum - 1;
         }
+        
+        /// <summary>
+        /// Generates the triangles from buffer using the specified x rem
+        /// </summary>
+        /// <param name="xRem">The rem</param>
+        /// <param name="yRem">The rem</param>
+        /// <param name="vNum">The num</param>
+        /// <returns>The triangles</returns>
+        private static List<Vertices> GenerateTrianglesFromBuffer(float[] xRem, float[] yRem, int vNum)
+        {
+            List<Vertices> triangles = new List<Vertices>();
 
+            for (int i = 1; i < vNum - 1; ++i)
+            {
+                triangles.Add(new Vertices(new Triangle(xRem[0], yRem[0], xRem[i], yRem[i], xRem[i + 1], yRem[i + 1])));
+            }
+
+            return triangles;
+        }
+        
         /// <summary>
         /// Finds and fixes "pinch points," points where two polygon vertices are at the same point.
         /// </summary>
@@ -329,23 +345,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.EarClip
         {
             return (dividend % divisor + divisor) % divisor;
         }
-
-
-        /// <summary>Fix for obnoxious behavior for the % operator for negative numbers...</summary>
-        /// <param name="x">The x.</param>
-        /// <param name="modulus">The modulus.</param>
-        /// <returns></returns>
-        private static int Remainder(int x, int modulus)
-        {
-            int rem = x % modulus;
-            while (rem < 0)
-            {
-                rem += modulus;
-            }
-
-            return rem;
-        }
-
+        
         /// <summary>Checks if vertex i is the tip of an ear in polygon defined by xv[] and  yv[].</summary>
         /// <param name="i">The i.</param>
         /// <param name="xv">The xv.</param>
