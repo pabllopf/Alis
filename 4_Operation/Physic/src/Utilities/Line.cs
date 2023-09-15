@@ -155,37 +155,104 @@ namespace Alis.Core.Physic.Utilities
 
             float denom = a * b - c * d;
 
-            if (!(denom >= -float.Epsilon && denom <= float.Epsilon))
+            if (IsDenominatorZero(denom))
             {
-                float e = point1.Y - point3.Y;
-                float f = point1.X - point3.X;
-                float oneOverDenom = 1.0f / denom;
+                return false;
+            }
 
-                float ua = c * e - a * f;
-                ua *= oneOverDenom;
+            float ua = CalculateUa(a, c, d, point1, point3, denom);
+            if (!IsInRange(ua, firstIsSegment))
+            {
+                return false;
+            }
 
-                if (!firstIsSegment || (ua >= 0.0f && ua <= 1.0f))
-                {
-                    float ub = b * e - d * f;
-                    ub *= oneOverDenom;
+            float ub = CalculateUb(b, d, a, point1, point3, denom);
+            if (!IsInRange(ub, secondIsSegment))
+            {
+                return false;
+            }
 
-                    if (!secondIsSegment || (ub >= 0.0f && ub <= 1.0f))
-                    {
-                        if (ua != 0f || ub != 0f)
-                        {
-                            intersectionPoint = new Vector2(
-                                point1.X + ua * b,
-                                point1.Y + ua * d
-                            );
-
-                            return true;
-                        }
-                    }
-                }
+            if (ua != 0f || ub != 0f)
+            {
+                intersectionPoint = CalculateIntersectionPoint(point1, ua, b, d);
+                return true;
             }
 
             return false;
         }
+
+        /// <summary>
+        /// Describes whether is denominator zero
+        /// </summary>
+        /// <param name="denom">The denom</param>
+        /// <returns>The bool</returns>
+        private static bool IsDenominatorZero(float denom)
+        {
+            return denom >= -float.Epsilon && denom <= float.Epsilon;
+        }
+
+        /// <summary>
+        /// Calculates the ua using the specified a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="c">The </param>
+        /// <param name="d">The </param>
+        /// <param name="point1">The point</param>
+        /// <param name="point3">The point</param>
+        /// <param name="denom">The denom</param>
+        /// <returns>The float</returns>
+        private static float CalculateUa(float a, float c, float d, Vector2 point1, Vector2 point3, float denom)
+        {
+            float e = point1.Y - point3.Y;
+            float f = point1.X - point3.X;
+            float oneOverDenom = 1.0f / denom;
+
+            return c * e - a * f * oneOverDenom;
+        }
+
+        /// <summary>
+        /// Calculates the ub using the specified b
+        /// </summary>
+        /// <param name="b">The </param>
+        /// <param name="d">The </param>
+        /// <param name="a">The </param>
+        /// <param name="point1">The point</param>
+        /// <param name="point3">The point</param>
+        /// <param name="denom">The denom</param>
+        /// <returns>The float</returns>
+        private static float CalculateUb(float b, float d, float a, Vector2 point1, Vector2 point3, float denom)
+        {
+            float e = point1.Y - point3.Y;
+            float f = point1.X - point3.X;
+            float oneOverDenom = 1.0f / denom;
+
+            return b * e - d * f * oneOverDenom;
+        }
+
+        /// <summary>
+        /// Describes whether is in range
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <param name="isSegment">The is segment</param>
+        /// <returns>The bool</returns>
+        private static bool IsInRange(float value, bool isSegment)
+        {
+            return !isSegment || (value >= 0.0f && value <= 1.0f);
+        }
+
+        /// <summary>
+        /// Calculates the intersection point using the specified point 1
+        /// </summary>
+        /// <param name="point1">The point</param>
+        /// <param name="ua">The ua</param>
+        /// <param name="b">The </param>
+        /// <param name="d">The </param>
+        /// <returns>The vector</returns>
+        private static Vector2 CalculateIntersectionPoint(Vector2 point1, float ua, float b, float d)
+        {
+            return new Vector2(point1.X + ua * b, point1.Y + ua * d);
+        }
+
 
         /// <summary>
         /// Lines the segment vertices intersect using the specified point 1
