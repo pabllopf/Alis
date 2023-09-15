@@ -1137,7 +1137,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 
                     if (ShouldNotLegalize(ot, oi))
                     {
-                        t.EdgeIsConstrained[i] = ot.EdgeIsConstrained[oi];
+                        HandleEdgeIsConstrained(t, i, ot, oi);
                         continue;
                     }
 
@@ -1146,17 +1146,9 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                         t.EdgeIsDelaunay[i] = true;
                         ot.EdgeIsDelaunay[oi] = true;
 
-                        RotateTrianglePair(t, p, ot, op);
-
-                        bool notLegalized = !Legalize(tcx, t);
-                        if (notLegalized)
+                        if (!TryLegalizeTriangle(tcx, t, ot, p, op))
                         {
                             tcx.MapTriangleToNodes(t);
-                        }
-
-                        notLegalized = !Legalize(tcx, ot);
-                        if (notLegalized)
-                        {
                             tcx.MapTriangleToNodes(ot);
                         }
 
@@ -1170,6 +1162,47 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 
             return false;
         }
+
+        /// <summary>
+        /// Handles the edge is constrained using the specified t
+        /// </summary>
+        /// <param name="t">The </param>
+        /// <param name="edgeIndex">The edge index</param>
+        /// <param name="ot">The ot</param>
+        /// <param name="oppositeIndex">The opposite index</param>
+        private static void HandleEdgeIsConstrained(DelaunayTriangle t, int edgeIndex, DelaunayTriangle ot, int oppositeIndex)
+        {
+            t.EdgeIsConstrained[edgeIndex] = ot.EdgeIsConstrained[oppositeIndex];
+        }
+
+        /// <summary>
+        /// Describes whether try legalize triangle
+        /// </summary>
+        /// <param name="tcx">The tcx</param>
+        /// <param name="t">The </param>
+        /// <param name="ot">The ot</param>
+        /// <param name="p">The </param>
+        /// <param name="op">The op</param>
+        /// <returns>The bool</returns>
+        private static bool TryLegalizeTriangle(DtSweepContext tcx, DelaunayTriangle t, DelaunayTriangle ot, TriangulationPoint p, TriangulationPoint op)
+        {
+            RotateTrianglePair(t, p, ot, op);
+
+            bool notLegalized = !Legalize(tcx, t);
+            if (notLegalized)
+            {
+                tcx.MapTriangleToNodes(t);
+            }
+
+            notLegalized = !Legalize(tcx, ot);
+            if (notLegalized)
+            {
+                tcx.MapTriangleToNodes(ot);
+            }
+
+            return true;
+        }
+
 
         /// <summary>
         /// Checks if an edge should not be legalized.
