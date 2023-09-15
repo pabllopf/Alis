@@ -28,7 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -94,150 +96,139 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         public override int ChildCount => 1;
 
-        /// <summary>
-        ///     Sets the vertices using the specified vertices
+       /// <summary>
+        /// Sets the vertices using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
-        /// <exception cref="InvalidOperationException">Polygon is degenerate</exception>
-        /// <exception cref="InvalidOperationException">Polygon is degenerate</exception>
-        /// <exception cref="InvalidOperationException">You can't create a polygon with less than 3 vertices</exception>
+        /// <exception cref="InvalidOperationException">Thrown when polygon is degenerate or has less than 3 vertices</exception>
         private void SetVertices(Vertices vertices)
         {
-            Debug.Assert((vertices.Count >= 3) && (vertices.Count <= Settings.PolygonVertices));
+            CheckVerticesValidity(vertices);
 
-            //Velcro: We throw an exception instead of setting the polygon to a box for safety reasons
+            Vector2[] cleanedVertices = RemoveDuplicateVertices(vertices);
+            int numberOfVertices = cleanedVertices.Length;
+
+            int rightmostVertexIndex = FindRightmostVertex(cleanedVertices, numberOfVertices);
+
+            int[] hull = ComputeConvexHull(cleanedVertices, numberOfVertices, rightmostVertexIndex);
+
+            if (hull.Length < 3)
+            {
+                throw new InvalidOperationException("Polygon is degenerate");
+            }
+
+            CopyVerticesAndComputeNormals(cleanedVertices, hull);
+            ComputeProperties();
+        }
+
+        private void CheckVerticesValidity(Vertices vertices)
+        {
             if (vertices.Count < 3)
             {
                 throw new InvalidOperationException("You can't create a polygon with less than 3 vertices");
             }
+        }
 
-            int n = MathUtils.Min(vertices.Count, Settings.PolygonVertices);
-
-            // Perform welding and copy vertices into local buffer.
-            Vector2[] ps = new Vector2[n]; //Velcro: The temp buffer is n long instead of Settings.MaxPolygonVertices
-            int tempCount = 0;
-            for (int i = 0; i < n; ++i)
+        private Vector2[] RemoveDuplicateVertices(Vertices vertices)
+        {
+            List<Vector2> cleanedVertices = new List<Vector2>();
+            for (int i =0; i < vertices.Count; i++)
             {
-                Vector2 v = vertices[i];
-
-                bool unique = true;
-                for (int j = 0; j < tempCount; ++j)
-                {
-                    Vector2 temp = ps[j];
-                    if (MathUtils.DistanceSquared(ref v, ref temp) <
-                        0.5f * Settings.LinearSlop * (0.5f * Settings.LinearSlop))
-                    {
-                        unique = false;
-                        break;
-                    }
-                }
+                Vector2 vector2 = vertices[i];
+                bool unique = !cleanedVertices.Any(v => MathUtils.DistanceSquared(ref vector2, ref v) <
+                                                        0.5f * Settings.LinearSlop * (0.5f * Settings.LinearSlop));
 
                 if (unique)
                 {
-                    ps[tempCount++] = v;
+                    cleanedVertices.Add(vector2);
                 }
             }
 
-            n = tempCount;
-            if (n < 3)
-            {
-                // Polygon is degenerate.
-                throw
-                    new InvalidOperationException(
-                        "Polygon is degenerate"); //Velcro: We throw exception here because we had invalid input
-            }
+            return cleanedVertices.ToArray();
+        }
 
-            // Create the convex hull using the Gift wrapping algorithm
-            // http://en.wikipedia.org/wiki/Gift_wrapping_algorithm
+        private int FindRightmostVertex(Vector2[] vertices, int numberOfVertices)
+        {
+            int rightmostVertexIndex = 0;
+            float maxX = vertices[0].X;
 
-            // Find the right most point on the hull
-            int i0 = 0;
-            float x0 = ps[0].X;
-            for (int i = 1; i < n; ++i)
+            for (int i = 1; i < numberOfVertices; ++i)
             {
-                float x = ps[i].X;
-                if (x > x0 || ((x == x0) && (ps[i].Y < ps[i0].Y)))
+                float x = vertices[i].X;
+                if (x > maxX || ((x == maxX) && (vertices[i].Y < vertices[rightmostVertexIndex].Y)))
                 {
-                    i0 = i;
-                    x0 = x;
+                    rightmostVertexIndex = i;
+                    maxX = x;
                 }
             }
 
-            int[] hull = new int[Settings.PolygonVertices];
-            int m = 0;
-            int ih = i0;
+            return rightmostVertexIndex;
+        }
 
-            for (;;)
+        private int[] ComputeConvexHull(Vector2[] vertices, int numberOfVertices, int rightmostVertexIndex)
+        {
+            List<int> hull = new List<int>();
+            int currentIndex = rightmostVertexIndex;
+
+            do
             {
-                Debug.Assert(m < Settings.PolygonVertices);
-                hull[m] = ih;
+                hull.Add(currentIndex);
 
-                int ie = 0;
-                for (int j = 1; j < n; ++j)
+                int nextIndex = 0;
+                for (int j = 1; j < numberOfVertices; ++j)
                 {
-                    if (ie == ih)
+                    if (nextIndex == currentIndex)
                     {
-                        ie = j;
+                        nextIndex = j;
                         continue;
                     }
 
-                    Vector2 r = ps[ie] - ps[hull[m]];
-                    Vector2 v = ps[j] - ps[hull[m]];
+                    Vector2 r = vertices[nextIndex] - vertices[hull.Last()];
+                    Vector2 v = vertices[j] - vertices[hull.Last()];
                     float c = MathUtils.Cross(r, v);
+
                     if (c < 0.0f)
                     {
-                        ie = j;
+                        nextIndex = j;
                     }
 
-                    // Collinearity check
                     if ((c == 0.0f) && (v.LengthSquared() > r.LengthSquared()))
                     {
-                        ie = j;
+                        nextIndex = j;
                     }
                 }
 
-                ++m;
-                ih = ie;
+                currentIndex = nextIndex;
 
-                if (ie == i0)
-                {
-                    break;
-                }
-            }
+            } while (currentIndex != rightmostVertexIndex);
 
-            if (m < 3)
+            return hull.ToArray();
+        }
+
+        private void CopyVerticesAndComputeNormals(Vector2[] vertices, int[] hull)
+        {
+            int numberOfVertices = hull.Length;
+
+            VerticesPrivate = new Vertices(numberOfVertices);
+            NormalsPrivate = new Vertices(numberOfVertices);
+
+            for (int i = 0; i < numberOfVertices; ++i)
             {
-                // Polygon is degenerate.
-                throw
-                    new InvalidOperationException(
-                        "Polygon is degenerate"); //Velcro: We throw exception here because we had invalid input
+                VerticesPrivate.Add(vertices[hull[i]]);
             }
 
-            VerticesPrivate = new Vertices(m);
-
-            // Copy vertices.
-            for (int i = 0; i < m; ++i)
-            {
-                VerticesPrivate.Add(ps[hull[i]]);
-            }
-
-            NormalsPrivate = new Vertices(m);
-
-            // Compute normals. Ensure the edges have non-zero length.
-            for (int i = 0; i < m; ++i)
+            for (int i = 0; i < numberOfVertices; ++i)
             {
                 int i1 = i;
-                int i2 = i + 1 < VerticesPrivate.Count ? i + 1 : 0;
+                int i2 = i + 1 < numberOfVertices ? i + 1 : 0;
                 Vector2 edge = VerticesPrivate[i2] - VerticesPrivate[i1];
                 Debug.Assert(edge.LengthSquared() > Constant.Epsilon * Constant.Epsilon);
                 Vector2 temp = MathUtils.Cross(edge, 1.0f);
                 temp = Vector2.Normalize(temp);
                 NormalsPrivate.Add(temp);
             }
-
-            //Velcro: We compute all the mass data properties up front
-            ComputeProperties();
         }
+
 
         /// <summary>
         ///     Sets the as box using the specified hx
