@@ -57,11 +57,6 @@ namespace Alis.Core.Network
         private readonly TimeSpan _keepAliveInterval;
 
         /// <summary>
-        ///     The ping task
-        /// </summary>
-        private readonly Task _pingTask;
-
-        /// <summary>
         ///     The stopwatch
         /// </summary>
         private readonly Stopwatch _stopwatch;
@@ -106,11 +101,11 @@ namespace Alis.Core.Network
 
             if (keepAliveInterval == TimeSpan.Zero)
             {
-                _pingTask = Task.FromResult(0);
+                Task.FromResult(0);
             }
             else
             {
-                _pingTask = Task.Run(PingForever, cancellationToken);
+                Task.Run(PingForever, cancellationToken);
             }
         }
 
