@@ -164,13 +164,10 @@ namespace Alis.Core.Network.Internal
                 throw new InvalidOperationException("KeepAliveInterval must be Zero or positive");
             }
 
+            
             if (keepAliveInterval == TimeSpan.Zero)
             {
                 Events.Log.KeepAliveIntervalZero(guid);
-            }
-            else
-            {
-                new PingPongManager(guid, this, keepAliveInterval, _internalReadCts.Token);
             }
         }
 
