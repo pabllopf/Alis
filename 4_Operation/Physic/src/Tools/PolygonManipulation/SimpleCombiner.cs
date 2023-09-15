@@ -171,75 +171,75 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
         }
 
         /// <summary>
-        ///     Adds the triangle using the specified t
+        /// Adds the triangle using the specified t
         /// </summary>
-        /// <param name="t">The </param>
+        /// <param name="t">The triangle to add</param>
         /// <param name="vertices">The vertices</param>
         /// <returns>The result</returns>
         private static Vertices AddTriangle(Vertices t, Vertices vertices)
         {
-            // First, find vertices that connect
-            int firstP = -1;
-            int firstT = -1;
-            int secondP = -1;
-            int secondT = -1;
-            for (int i = 0; i < vertices.Count; i++)
-            {
-                if (Math.Abs(t[0].X - vertices[i].X) < 0.01f && Math.Abs(t[0].Y - vertices[i].Y) < 0.01f)
-                {
-                    if (firstP == -1)
-                    {
-                        firstP = i;
-                        firstT = 0;
-                    }
-                    else
-                    {
-                        secondP = i;
-                        secondT = 0;
-                    }
-                }
-                else if (Math.Abs(t[1].X - vertices[i].X) < 0.01f && Math.Abs(t[1].Y - vertices[i].Y) < 0.01f)
-                {
-                    if (firstP == -1)
-                    {
-                        firstP = i;
-                        firstT = 1;
-                    }
-                    else
-                    {
-                        secondP = i;
-                        secondT = 1;
-                    }
-                }
-                else if (Math.Abs(t[2].X - vertices[i].X) < 0.01f && Math.Abs(t[2].Y - vertices[i].Y) < 0.01f)
-                {
-                    if (firstP == -1)
-                    {
-                        firstP = i;
-                        firstT = 2;
-                    }
-                    else
-                    {
-                        secondP = i;
-                        secondT = 2;
-                    }
-                }
-            }
+            FindFirstAndSecondVertices(t, vertices, out int firstP, out int firstT, out int secondP, out int secondT);
 
-            // Fix ordering if first should be last vertex of poly
             if (firstP == 0 && secondP == vertices.Count - 1)
             {
                 firstP = vertices.Count - 1;
                 secondP = 0;
             }
 
-            // Didn't find it
             if (secondP == -1)
             {
                 return null;
             }
 
-            // Find tip index on triangle
+            int tipT = FindTipIndex(firstT, secondT);
+
+            Vertices result = CreateResultVertices(vertices, firstP, tipT, t);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Finds the first and second vertices using the specified t
+        /// </summary>
+        /// <param name="t">The </param>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="firstP">The first</param>
+        /// <param name="firstT">The first</param>
+        /// <param name="secondP">The second</param>
+        /// <param name="secondT">The second</param>
+        private static void FindFirstAndSecondVertices(Vertices t, Vertices vertices, out int firstP, out int firstT, out int secondP, out int secondT)
+        {
+            firstP = firstT = secondP = secondT = -1;
+
+            for (int i = 0; i < vertices.Count; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (Math.Abs(t[j].X - vertices[i].X) < 0.01f && Math.Abs(t[j].Y - vertices[i].Y) < 0.01f)
+                    {
+                        if (firstP == -1)
+                        {
+                            firstP = i;
+                            firstT = j;
+                        }
+                        else
+                        {
+                            secondP = i;
+                            secondT = j;
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Finds the tip index using the specified first t
+        /// </summary>
+        /// <param name="firstT">The first</param>
+        /// <param name="secondT">The second</param>
+        /// <returns>The tip</returns>
+        private static int FindTipIndex(int firstT, int secondT)
+        {
             int tipT = 0;
             if (tipT == firstT || tipT == secondT)
             {
@@ -251,6 +251,19 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                 tipT = 2;
             }
 
+            return tipT;
+        }
+
+        /// <summary>
+        /// Creates the result vertices using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="firstP">The first</param>
+        /// <param name="tipT">The tip</param>
+        /// <param name="t">The </param>
+        /// <returns>The result</returns>
+        private static Vertices CreateResultVertices(Vertices vertices, int firstP, int tipT, Vertices t)
+        {
             Vertices result = new Vertices(vertices.Count + 1);
             for (int i = 0; i < vertices.Count; i++)
             {
@@ -261,8 +274,8 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                     result.Add(t[tipT]);
                 }
             }
-
             return result;
         }
+
     }
 }
