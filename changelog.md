@@ -5,6 +5,81 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.1.7] - 2023-09-15
+### :sparkles: New Features
+- [`47437e2`](https://github.com/pabllopf/Alis/commit/47437e23dcfbed35cc7fec47a587bf03356b7878) - new network module with cross-platform code and native full on c# *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f3b4ca3`](https://github.com/pabllopf/Alis/commit/f3b4ca3f1d2396597efa3dc11548db95cd1043f6) - add new defaults builders for main components of Alis *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ea550df`](https://github.com/pabllopf/Alis/commit/ea550df9509abf305e772f36c6fdcd4a5ddb4e71) - add id for settings of Alis *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`a07668d`](https://github.com/pabllopf/Alis/commit/a07668d7fe6853b9ce2e1fb6882cae95e96fc0a0) - delete static reference on GraphicManager *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`05d81f0`](https://github.com/pabllopf/Alis/commit/05d81f01ae877683a4767f0e1d097b62950212cc) - delete static reference on singleton on SceneManager *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bf6edc5`](https://github.com/pabllopf/Alis/commit/bf6edc57e5e4907ba3151c8ffd8cadf159dc0ebd) - create new method for setview on GraphicManager *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b73f2aa`](https://github.com/pabllopf/Alis/commit/b73f2aa6397d59f3c84d1ba62a6fa9174552c93f) - delete all module network because is only for windows. And start to creating a cross-platform network. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`382ba19`](https://github.com/pabllopf/Alis/commit/382ba1936aafc7968217a58e4c9aa8d77397ddc5) - add static program on samples of alis *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d50e485`](https://github.com/pabllopf/Alis/commit/d50e485ae14de99c29467eb2acf9804c54bf5f73) - delete comments of Fixture *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bff4998`](https://github.com/pabllopf/Alis/commit/bff4998c9c46782795905bcb27301c813cb0a246) - delete comments of RayCastHelper *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a46d8f0`](https://github.com/pabllopf/Alis/commit/a46d8f0428afff8c6914410448587859ce6b5434) - add new type MaskKeyLengthException *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`713ba41`](https://github.com/pabllopf/Alis/commit/713ba4138875a4ed96bd4ad7c45753ed46477832) - extract Identification struct and IdentificationMarshalData struct *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`94360ee`](https://github.com/pabllopf/Alis/commit/94360eee6422be50658c103bc4874471f8235c18) - Remove the field 'localCenterB' and declare it as a local variable in the relevant methods. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d748ea6`](https://github.com/pabllopf/Alis/commit/d748ea6d30bd8e23e6345bff7cfb879e5c15d70c) - default build for  IBuild<RigidBody> *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a3743d5`](https://github.com/pabllopf/Alis/commit/a3743d5a6b247356c357a8f7eab7aa772b8e8f93) - Remove the member initializer, all constructors set an initial value for the member of SplashScreen class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4339f8e`](https://github.com/pabllopf/Alis/commit/4339f8e91d39a94a2e505ea61d01d7961c820af9) - Remove the field 'videoMode' and declare it as a local variable in the relevant methods on videogame class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2812248`](https://github.com/pabllopf/Alis/commit/281224879d83f288acc21e27fa8f56edad3b7e2c) - implement default methods of TimeManager *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`710d2ba`](https://github.com/pabllopf/Alis/commit/710d2ba2c0393042d2c28986f8af3168fd8b5084) - Use 'string.IsNullOrEmpty()' instead of comparing to empty string on AudioClipBase *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e7e0ccd`](https://github.com/pabllopf/Alis/commit/e7e0ccd0f004fffa2648649f996aecbc4647dec8) - Use 'string.IsNullOrEmpty()' instead of comparing to empty string on AudioClipBase *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a78747d`](https://github.com/pabllopf/Alis/commit/a78747d22b93f94cc073151615f350dfb3369fa8) - delete deprecated code sfRenderTexture_create *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2aea21c`](https://github.com/pabllopf/Alis/commit/2aea21ced72626ba408275e18457b0e32c31dab8) - delete using that dont use *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a19dfcf`](https://github.com/pabllopf/Alis/commit/a19dfcf415eb532e2bf8d139a0acad488514b4cd) - Refactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f0c6913`](https://github.com/pabllopf/Alis/commit/f0c6913309918d7065e7447b4c3123f64470be4f) - Refactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7f30297`](https://github.com/pabllopf/Alis/commit/7f30297d6a7b78fa4f1eb2aff9f13aed434042fa) - Refactor this method to reduce its Cognitive Complexity from 36 to the 15 allowed. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a93fa01`](https://github.com/pabllopf/Alis/commit/a93fa019c5ea8f819c4544d468c486acd6b2039b) - Refactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c5c638d`](https://github.com/pabllopf/Alis/commit/c5c638d2aeed8dfcc869cb24f5551493be3d4dff) - Refactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed of DTSweep *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`66e2e1a`](https://github.com/pabllopf/Alis/commit/66e2e1ad8dc6d684624c9fe85c577a2805235885) - Refactor this method to reduce its Cognitive Complexity from 69 to the 15 allowed of TextureConverter *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`996fff7`](https://github.com/pabllopf/Alis/commit/996fff729691e462b8b904ab43feedacd20b5531) - Refactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed of SimplifyTools *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6d6dbbe`](https://github.com/pabllopf/Alis/commit/6d6dbbe42df6e4563b12618b14ad085495e1216e) - Refactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed of SimpleCombiner *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3ecb9d8`](https://github.com/pabllopf/Alis/commit/3ecb9d853094efdcf6eeb41dcfcb7d06738b5bd6) - Refactor this method to reduce its Cognitive Complexity from SimpleCombiner 57 to the 15 allowed of *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f93f75b`](https://github.com/pabllopf/Alis/commit/f93f75b18f2fe75bbf5644820c97089e96ea966d) - Refactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed of DTSweep *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`20354d2`](https://github.com/pabllopf/Alis/commit/20354d26a0107eb6b597a43cf8316c0abd587e65) - Remove this unread private field '_pingPongManager' or refactor the code to use its value. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5138fb3`](https://github.com/pabllopf/Alis/commit/5138fb3db97eb09b24ff55f0cff1eba8c8bf7db0) - remove _pingTask *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`af6c320`](https://github.com/pabllopf/Alis/commit/af6c3200edb473951d54fa515f7f82fdc85d8d31) - Refactor this method to reduce its Cognitive Complexity from DynamicTree 16 to the 15 allowed of *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`163a482`](https://github.com/pabllopf/Alis/commit/163a48219f6a3e56a45cd0d8494c87dd8fc6fb2d) - Refactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed of DynamicTree *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6a92f12`](https://github.com/pabllopf/Alis/commit/6a92f12bf328ad6c968d6842c7131167325b87b4) - Refactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed of  DynamicTree *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`289f51d`](https://github.com/pabllopf/Alis/commit/289f51d360a7059df5f8158b5d733c39b535cca5) - Refactor this method to reduce its Cognitive Complexity from 36 to the 15 allowed of PolygonShape *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`cb91d69`](https://github.com/pabllopf/Alis/commit/cb91d696bf468d7604783430ad58499f9cad0211) - Either remove this useless object instantiation of class 'PingPongManager' or use it. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9a7c6ef`](https://github.com/pabllopf/Alis/commit/9a7c6efd47b3dc8cf2eddcfaa7334f01a619782e) - Refactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed of DistanceGJK *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b77ca4c`](https://github.com/pabllopf/Alis/commit/b77ca4ca25f17e3942b5162140cd5e8b0ffc2106) - Refactor this method to reduce its Cognitive Complexity from 33 to the 15 allowed of ChainHull *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b059f58`](https://github.com/pabllopf/Alis/commit/b059f5820f963fb3411306acca98c75a62bf1b70) - Refactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed of Vertices *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`22f5ff5`](https://github.com/pabllopf/Alis/commit/22f5ff59affc65544e73791e1e6d7c74ccc02993) - Refactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed of Curve *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`cc4bb30`](https://github.com/pabllopf/Alis/commit/cc4bb302d9f737cf5e1905451eaf3fa285ff5a84) - add default samples for modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`579ebf2`](https://github.com/pabllopf/Alis/commit/579ebf2ac555aa6b2d1713075de885f998a12523) - delete some comments of ContactManager *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :art: Code Style Changes
+- [`1eb8b1d`](https://github.com/pabllopf/Alis/commit/1eb8b1d1e05f5190ccc1bef3b5d3e07cb28cb098) - delete Test_To_Load_A_Shader_From_Assembly_Resources test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d20def4`](https://github.com/pabllopf/Alis/commit/d20def4e547cdba61cd23042f26d06c7cfbe8951) - refactor the main class line to reduce Complexity *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`936ed78`](https://github.com/pabllopf/Alis/commit/936ed78100cd6c521471f36205b9c5fd21572275) - reduce Complexity of Triangulate *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`434bc66`](https://github.com/pabllopf/Alis/commit/434bc669f24fce17c1fd9551852bebac1ef1142c) - refactor Triangulator *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`655891e`](https://github.com/pabllopf/Alis/commit/655891e4999ea2563b45a69c066742edd7fa08fc) - reduce size of BoundingBox *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d7605f9`](https://github.com/pabllopf/Alis/commit/d7605f9f943021825d67f4656205b0d525a4d462) - refactor names of vars on PulleyJoint class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`83364d2`](https://github.com/pabllopf/Alis/commit/83364d224c8318c031ceb3ff44c441c07b47a16e) - new Identification condtructor *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6d0dfb9`](https://github.com/pabllopf/Alis/commit/6d0dfb91870412e9783b08f9a2c4d1b4a8caa46c) - reduce complexity FrictionJoint *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fe93237`](https://github.com/pabllopf/Alis/commit/fe93237a97c3b76e2f053fa69874b89d742d5350) - delete key "this" from sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ec10d61`](https://github.com/pabllopf/Alis/commit/ec10d610ebfee55ff347f0feb40ea835166100e2) - extract body test class of benchmarks *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5ea4252`](https://github.com/pabllopf/Alis/commit/5ea425286d21814eaae4590ac19d94b28f02fd29) - add default AudioManager methods *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`91c9222`](https://github.com/pabllopf/Alis/commit/91c922244a9eb93e96f74f6c7000304739a57572) - delete useless button class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7b85f74`](https://github.com/pabllopf/Alis/commit/7b85f74f6ad34aa212bd13e4cabfe0b749a0ff3c) - change the name EarClip *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5a57e19`](https://github.com/pabllopf/Alis/commit/5a57e19b753690c6c005709ec10ff7d3dac46343) - EarClipDecomposer names *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`986927d`](https://github.com/pabllopf/Alis/commit/986927d3b7f75a490d0ede2503d6db9754cc6c4f) - DTSweep conventions names *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`040b215`](https://github.com/pabllopf/Alis/commit/040b215aa1b9fa498629aa4b5ecff77e3da36e7e) - name conventions of vars SimplifyTools *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8e58e94`](https://github.com/pabllopf/Alis/commit/8e58e9464e2131a77ca2327aae6b2683b1a4dcd5) - refactor SimpleCombiner with name conventions *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0cb9b09`](https://github.com/pabllopf/Alis/commit/0cb9b09966bf72cc3a66ef572bdad02d83ac9b25) - name vars of DistanceGJK *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0cad471`](https://github.com/pabllopf/Alis/commit/0cad47149336317201dd28c5ba92c5877e7d5495) - refactor names of ChainHull *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`64259b7`](https://github.com/pabllopf/Alis/commit/64259b7171918d896bf0c1fc8014953b52e042de) - refactor names of Vertices *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dffe188`](https://github.com/pabllopf/Alis/commit/dffe1888a9e9b7ec1e9a141ca819fe49627ed69e) - refactor names of Curve *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.1.6] - 2023-09-13
 ### :art: Code Style Changes
 - [`14fd971`](https://github.com/pabllopf/Alis/commit/14fd9716aa0884e5c48fe00138f1761ad20a7037) - delete .personal folder and delete temp files *(commit by @pabllopf)*
@@ -1242,3 +1317,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.1.4]: https://github.com/pabllopf/Alis/compare/v0.1.3...v0.1.4
 [v0.1.5]: https://github.com/pabllopf/Alis/compare/v0.1.4...v0.1.5
 [v0.1.6]: https://github.com/pabllopf/Alis/compare/v0.1.5...v0.1.6
+
+[v0.1.7]: https://github.com/pabllopf/Alis/compare/v0.1.6...v0.1.7
