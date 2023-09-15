@@ -5,6 +5,8 @@ var namespace_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows =
     [ "ContextSettings", "d2/de1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context_settings.html", "d2/de1/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_context_settings" ],
     [ "Cursor", "d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html", "d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor" ],
     [ "Event", "d6/d0b/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_event.html", "d6/d0b/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_event" ],
+    [ "Identification", "df/d17/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_identification.html", "df/d17/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_identification" ],
+    [ "IdentificationMarshalData", "da/d36/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_identification_marshal_data.html", "da/d36/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_identification_marshal_data" ],
     [ "Joystick", "dc/db6/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick.html", "dc/db6/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick" ],
     [ "JoystickButtonEvent", "d0/d45/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_button_event.html", "d0/d45/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_button_event" ],
     [ "JoystickButtonEventArgs", "d9/d86/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_button_event_args.html", "d9/d86/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_button_event_args" ],

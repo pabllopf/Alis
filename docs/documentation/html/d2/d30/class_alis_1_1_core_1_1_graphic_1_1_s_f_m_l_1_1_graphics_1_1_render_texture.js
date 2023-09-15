@@ -24,7 +24,6 @@ var class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture 
     [ "Display", "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#a1c160e5d65669e4b4935049b34eccbdb", null ],
     [ "ToString", "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#ad9cf5387004a24d5027845b00410221e", null ],
     [ "Destroy", "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#a91a31f678373b374521eac48c826cad2", null ],
-    [ "sfRenderTexture_create", "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#ad85e49239be243c947f2462a8a95e278", null ],
     [ "sfRenderTexture_createWithSettings", "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#aa7c7eca43786733e626b65b2d34d8ed7", null ],
     [ "sfRenderTexture_destroy", "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#a5809027471552f63c56fa8dec3ad3aca", null ],
     [ "sfRenderTexture_clear", "d2/d30/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_render_texture.html#a02774a8afcf5c25a6a396ce0a0adeab1", null ],
