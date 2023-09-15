@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
@@ -43,9 +44,9 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
     {
         /// <summary>Combine a list of triangles into a list of convex polygons. Note: This only works on triangles.</summary>
         /// <param name="triangles">The triangles.</param>
-        /// <param name="maxPolys">The maximun number of polygons to return.</param>
+        /// <param name="maxPolys">The max number of polygons to return.</param>
         /// <param name="tolerance">The tolerance</param>
-        public static List<Vertices> PolygonizeTriangles(List<Vertices> triangles, int maxPolys = int.MaxValue,
+        public static List<Vertices> PolygonTriangles(List<Vertices> triangles, int maxPolys = int.MaxValue,
             float tolerance = 0.001f)
         {
             if (triangles.Count <= 0)
@@ -66,7 +67,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                 Vector2 b = triangle[1];
                 Vector2 c = triangle[2];
 
-                if (((a.X == b.X) && (a.Y == b.Y)) || ((b.X == c.X) && (b.Y == c.Y)) || ((a.X == c.X) && (a.Y == c.Y)))
+                if (Math.Abs(a.X - b.X) < 0.01f && Math.Abs(a.Y - b.Y) < 0.01f || Math.Abs(b.X - c.X) < 0.01f && Math.Abs(b.Y - c.Y) < 0.01f || Math.Abs(a.X - c.X) < 0.01f && Math.Abs(a.Y - c.Y) < 0.01f)
                 {
                     covered[i] = true;
                 }
@@ -139,10 +140,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                     if (polyIndex < maxPolys)
                     {
                         SimplifyTools.MergeParallelEdges(poly, tolerance);
-
-                        //If identical points are present, a triangle gets
-                        //borked by the MergeParallelEdges function, hence
-                        //the vertex number check
+                        
                         if (poly.Count >= 3)
                         {
                             polys.Add(new Vertices(poly));
@@ -160,7 +158,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                 }
             }
 
-            //Remove empty vertice collections
+            //Remove empty collections
             for (int i = polys.Count - 1; i >= 0; i--)
             {
                 if (polys[i].Count == 0)
@@ -187,7 +185,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
             int secondT = -1;
             for (int i = 0; i < vertices.Count; i++)
             {
-                if ((t[0].X == vertices[i].X) && (t[0].Y == vertices[i].Y))
+                if (Math.Abs(t[0].X - vertices[i].X) < 0.01f && Math.Abs(t[0].Y - vertices[i].Y) < 0.01f)
                 {
                     if (firstP == -1)
                     {
@@ -200,7 +198,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                         secondT = 0;
                     }
                 }
-                else if ((t[1].X == vertices[i].X) && (t[1].Y == vertices[i].Y))
+                else if (Math.Abs(t[1].X - vertices[i].X) < 0.01f && Math.Abs(t[1].Y - vertices[i].Y) < 0.01f)
                 {
                     if (firstP == -1)
                     {
@@ -213,7 +211,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                         secondT = 1;
                     }
                 }
-                else if ((t[2].X == vertices[i].X) && (t[2].Y == vertices[i].Y))
+                else if (Math.Abs(t[2].X - vertices[i].X) < 0.01f && Math.Abs(t[2].Y - vertices[i].Y) < 0.01f)
                 {
                     if (firstP == -1)
                     {
@@ -229,7 +227,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
             }
 
             // Fix ordering if first should be last vertex of poly
-            if ((firstP == 0) && (secondP == vertices.Count - 1))
+            if (firstP == 0 && secondP == vertices.Count - 1)
             {
                 firstP = vertices.Count - 1;
                 secondP = 0;
