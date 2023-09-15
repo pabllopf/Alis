@@ -466,44 +466,91 @@ namespace Alis.Core.Physic.Shared
         /// </returns>
         public int PointInPolygon(ref Vector2 point)
         {
-            // Winding number
-            int wn = 0;
+            int windingNumber = CalculateWindingNumber(point);
 
-            // Iterate through polygon's edges
+            return windingNumber == 0 ? -1 : 1;
+        }
+
+        /// <summary>
+        /// Calculates the winding number using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <returns>The winding number</returns>
+        private int CalculateWindingNumber(Vector2 point)
+        {
+            int windingNumber = 0;
+
             for (int i = 0; i < Count; i++)
             {
-                // Get points
                 Vector2 p1 = this[i];
                 Vector2 p2 = this[NextIndex(i)];
 
-                // Test if a point is directly on the edge
-                Vector2 edge = p2 - p1;
-                float area = MathUtils.Area(ref p1, ref p2, ref point);
-                if ((area == 0f) && (Vector2.Dot(point - p1, edge) >= 0f) && (Vector2.Dot(point - p2, edge) <= 0f))
+                if (IsPointOnEdge(point, p1, p2))
                 {
                     return 0;
                 }
 
-                // Test edge for intersection with ray from point
-                if (p1.Y <= point.Y)
+                if (IsEdgeIntersectingRay(point, p1, p2))
                 {
-                    if ((p2.Y > point.Y) && (area > 0f))
-                    {
-                        ++wn;
-                    }
-                }
-                else
-                {
-                    if ((p2.Y <= point.Y) && (area < 0f))
-                    {
-                        --wn;
-                    }
+                    windingNumber += DetermineWindingDirection(point, p1, p2);
                 }
             }
 
-            return wn == 0 ? -1 : 1;
+            return windingNumber;
         }
 
+        /// <summary>
+        /// Describes whether this instance is point on edge
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <param name="p1">The </param>
+        /// <param name="p2">The </param>
+        /// <returns>The bool</returns>
+        private bool IsPointOnEdge(Vector2 point, Vector2 p1, Vector2 p2)
+        {
+            Vector2 edge = p2 - p1;
+            float area = MathUtils.Area(ref p1, ref p2, ref point);
+            return (area == 0f) && (Vector2.Dot(point - p1, edge) >= 0f) && (Vector2.Dot(point - p2, edge) <= 0f);
+        }
+
+        /// <summary>
+        /// Describes whether this instance is edge intersecting ray
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <param name="p1">The </param>
+        /// <param name="p2">The </param>
+        /// <returns>The bool</returns>
+        private bool IsEdgeIntersectingRay(Vector2 point, Vector2 p1, Vector2 p2)
+        {
+            if (p1.Y <= point.Y)
+            {
+                return (p2.Y > point.Y) && (MathUtils.Area(ref p1, ref p2, ref point) > 0f);
+            }
+            else
+            {
+                return (p2.Y <= point.Y) && (MathUtils.Area(ref p1, ref p2, ref point) < 0f);
+            }
+        }
+
+        /// <summary>
+        /// Determines the winding direction using the specified point
+        /// </summary>
+        /// <param name="point">The point</param>
+        /// <param name="p1">The </param>
+        /// <param name="p2">The </param>
+        /// <returns>The int</returns>
+        private int DetermineWindingDirection(Vector2 point, Vector2 p1, Vector2 p2)
+        {
+            if (p1.Y <= point.Y)
+            {
+                return (p2.Y > point.Y) ? 1 : 0;
+            }
+            else
+            {
+                return (p2.Y <= point.Y) ? -1 : 0;
+            }
+        }
+        
         /// <summary>
         ///     Compute the sum of the angles made between the test point and each pair of points making up the polygon. If
         ///     this sum is 2pi then the point is an interior point, if 0 then the point is an exterior point. ref:
