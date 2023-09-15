@@ -660,6 +660,16 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             }
         }
 
+        /// <summary>
+        /// Rotates the shared edge using the specified tcx
+        /// </summary>
+        /// <param name="tcx">The tcx</param>
+        /// <param name="t">The </param>
+        /// <param name="p">The </param>
+        /// <param name="ot">The ot</param>
+        /// <param name="op">The op</param>
+        /// <param name="ep">The ep</param>
+        /// <param name="eq">The eq</param>
         private static void RotateSharedEdge(DtSweepContext tcx, DelaunayTriangle t, TriangulationPoint p,
             DelaunayTriangle ot, TriangulationPoint op, TriangulationPoint ep, TriangulationPoint eq)
         {

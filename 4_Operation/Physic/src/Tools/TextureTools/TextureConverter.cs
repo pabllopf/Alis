@@ -367,167 +367,188 @@ namespace Alis.Core.Physic.Tools.TextureTools
         }
 
         /// <summary>
-        ///     Detects the vertices
-        /// </summary>
-        /// <exception cref="Exception"></exception>
-        /// <exception cref="Exception"></exception>
-        /// <exception cref="Exception">
-        ///     '_data' can't be null. You have to use SetTextureData(uint[] data, int width) before
-        ///     calling this method.
-        /// </exception>
-        /// <exception cref="Exception">
-        ///     '_width' has an invalid value. You have to use SetTextureData(uint[] data, int width)
-        ///     before calling this method.
-        /// </exception>
-        /// <exception cref="Exception">Couldn't detect any vertices.</exception>
-        /// <returns>The detected polygons</returns>
-        private List<Vertices> DetectVertices()
-        {
-            if (data == null)
+            /// Detects the vertices of the texture.
+            /// </summary>
+            /// <returns>The detected polygons.</returns>
+            private List<Vertices> DetectVertices()
             {
-                throw new Exception(
-                    "'_data' can't be null. You have to use SetTextureData(uint[] data, int width) before calling this method.");
-            }
+                ValidateInput();
 
-            if (data.Length < 4)
-            {
-                throw new Exception(
-                    "'_data' length can't be less then 4. Your texture must be at least 2 x 2 pixels in size. " +
-                    "You have to use SetTextureData(uint[] data, int width) before calling this method.");
-            }
+                List<Vertices> detectedPolygons = new List<Vertices>();
+                Vector2? holeEntrance = null;
+                Vector2? polygonEntrance = null;
+                List<Vector2> blackList = new List<Vector2>();
 
-            if (width < 2)
-            {
-                throw new Exception(
-                    "'_width' can't be less then 2. Your texture must be at least 2 x 2 pixels in size. " +
-                    "You have to use SetTextureData(uint[] data, int width) before calling this method.");
-            }
+                bool searchOn;
 
-            if (data.Length % width != 0)
-            {
-                throw new Exception(
-                    "'_width' has an invalid value. You have to use SetTextureData(uint[] data, int width) before calling this method.");
-            }
-
-            List<Vertices> detectedPolygons = new List<Vertices>();
-
-            Vector2? holeEntrance = null;
-            Vector2? polygonEntrance = null;
-
-            List<Vector2> blackList = new List<Vector2>();
-
-            bool searchOn;
-            do
-            {
-                Vertices polygon;
-                if (detectedPolygons.Count == 0)
+                do
                 {
-                    // First pass / single polygon
-                    polygon = new Vertices(CreateSimplePolygon(Vector2.Zero, Vector2.Zero));
+                    Vertices polygon;
+
+                    if (detectedPolygons.Count == 0)
+                    {
+                        // First pass / single polygon
+                        polygon = CreateInitialPolygon(ref polygonEntrance);
+                    }
+                    else if (polygonEntrance.HasValue)
+                    {
+                        // Multi pass / multiple polygons
+                        polygon = CreateNextPolygon(polygonEntrance.Value);
+                    }
+                    else
+                    {
+                        break;
+                    }
+
+                    searchOn = false;
 
                     if (polygon.Count > 2)
                     {
-                        polygonEntrance = GetTopMostVertex(polygon);
-                    }
-                }
-                else if (polygonEntrance.HasValue)
-                {
-                    // Multi pass / multiple polygons
-                    polygon = new Vertices(CreateSimplePolygon(polygonEntrance.Value,
-                        new Vector2(polygonEntrance.Value.X - 1f, polygonEntrance.Value.Y)));
-                }
-                else
-                {
-                    break;
-                }
-
-                searchOn = false;
-
-                if (polygon.Count > 2)
-                {
-                    if (holeDetection)
-                    {
-                        do
+                        if (holeDetection)
                         {
-                            holeEntrance = SearchHoleEntrance(polygon, holeEntrance);
-
-                            if (holeEntrance.HasValue)
+                            do
                             {
-                                if (!blackList.Contains(holeEntrance.Value))
+                                holeEntrance = SearchHoleEntrance(polygon, holeEntrance);
+
+                                if (holeEntrance.HasValue && !blackList.Contains(holeEntrance.Value))
                                 {
                                     blackList.Add(holeEntrance.Value);
                                     Vertices holePolygon = CreateSimplePolygon(holeEntrance.Value,
                                         new Vector2(holeEntrance.Value.X + 1, holeEntrance.Value.Y));
 
-                                    if ((holePolygon != null) && (holePolygon.Count > 2))
+                                    if (holePolygon != null && holePolygon.Count > 2)
                                     {
-                                        switch (polygonDetectionType)
-                                        {
-                                            case VerticesDetectionType.Integrated:
-
-                                                // Add first hole polygon vertex to close the hole polygon.
-                                                holePolygon.Add(holePolygon[0]);
-
-                                                if (SplitPolygonEdge(polygon, holeEntrance.Value,
-                                                        out int vertex2Index))
-                                                {
-                                                    polygon.InsertRange(vertex2Index, holePolygon);
-                                                }
-
-                                                break;
-
-                                            case VerticesDetectionType.Separated:
-                                                polygon.Holes ??= new List<Vertices>();
-
-                                                polygon.Holes.Add(holePolygon);
-                                                break;
-                                        }
+                                        ProcessHolePolygon(polygon, holeEntrance.Value, holePolygon);
                                     }
                                 }
                                 else
                                 {
                                     break;
                                 }
-                            }
-                            else
-                            {
-                                break;
-                            }
-                        } while (true);
+                            } while (true);
+                        }
+
+                        detectedPolygons.Add(polygon);
                     }
 
-                    detectedPolygons.Add(polygon);
-                }
-
-                if (multipartDetection || polygon.Count <= 2)
-                {
-                    if ((polygonEntrance != null) && SearchNextHullEntrance(detectedPolygons, polygonEntrance.Value, out polygonEntrance))
+                    if (multipartDetection || polygon.Count <= 2)
                     {
-                        searchOn = true;
+                        if (polygonEntrance != null && SearchNextHullEntrance(detectedPolygons, polygonEntrance.Value, out polygonEntrance))
+                        {
+                            searchOn = true;
+                        }
+                    }
+                } while (searchOn);
+
+                if (detectedPolygons.Count == 0)
+                {
+                    throw new Exception("Couldn't detect any vertices.");
+                }
+
+                PostProcessPolygons(ref detectedPolygons);
+
+                return detectedPolygons;
+            }
+
+            /// <summary>
+            /// Creates the initial polygon using the specified polygon entrance
+            /// </summary>
+            /// <param name="polygonEntrance">The polygon entrance</param>
+            /// <returns>The polygon</returns>
+            private Vertices CreateInitialPolygon(ref Vector2? polygonEntrance)
+            {
+                Vertices polygon = new Vertices(CreateSimplePolygon(Vector2.Zero, Vector2.Zero));
+
+                if (polygon.Count > 2)
+                {
+                    polygonEntrance = GetTopMostVertex(polygon);
+                }
+
+                return polygon;
+            }
+
+            /// <summary>
+            /// Creates the next polygon using the specified entrance
+            /// </summary>
+            /// <param name="entrance">The entrance</param>
+            /// <returns>The vertices</returns>
+            private Vertices CreateNextPolygon(Vector2 entrance)
+            {
+                return new Vertices(CreateSimplePolygon(entrance, new Vector2(entrance.X - 1f, entrance.Y)));
+            }
+
+            /// <summary>
+            /// Processes the hole polygon using the specified polygon
+            /// </summary>
+            /// <param name="polygon">The polygon</param>
+            /// <param name="holeEntrance">The hole entrance</param>
+            /// <param name="holePolygon">The hole polygon</param>
+            private void ProcessHolePolygon(Vertices polygon, Vector2 holeEntrance, Vertices holePolygon)
+            {
+                if (polygonDetectionType == VerticesDetectionType.Integrated)
+                {
+                    holePolygon.Add(holePolygon[0]);
+
+                    if (SplitPolygonEdge(polygon, holeEntrance, out int vertex2Index))
+                    {
+                        polygon.InsertRange(vertex2Index, holePolygon);
                     }
                 }
-            } while (searchOn);
-
-            if (detectedPolygons.Count == 0)
-            {
-                throw new Exception("Couldn't detect any vertices.");
+                else if (polygonDetectionType == VerticesDetectionType.Separated)
+                {
+                    polygon.Holes ??= new List<Vertices>();
+                    polygon.Holes.Add(holePolygon);
+                }
             }
 
-            // Post processing.
-            if (PolygonDetectionType ==
-                VerticesDetectionType.Separated) // Only when VerticesDetectionType.Separated? -> Recheck.
+            /// <summary>
+            /// Posts the process polygons using the specified detected polygons
+            /// </summary>
+            /// <param name="detectedPolygons">The detected polygons</param>
+            private void PostProcessPolygons(ref List<Vertices> detectedPolygons)
             {
-                ApplyTriangulationCompatibleWinding(ref detectedPolygons);
+                if (polygonDetectionType == VerticesDetectionType.Separated)
+                {
+                    ApplyTriangulationCompatibleWinding(ref detectedPolygons);
+                }
+
+                if (transform != Matrix4X4F.Identity)
+                {
+                    ApplyTransform(ref detectedPolygons);
+                }
+            }
+            
+           /// <summary>
+           /// Validates the input
+           /// </summary>
+           /// <exception cref="DataSizeException">'data' can't be null. You have to use SetTextureData(uint[] data, int width) before calling this method.</exception>
+           /// <exception cref="DataSizeException">'data' length can't be less than 4. Your texture must be at least 2 x 2 pixels in size. You have to use SetTextureData(uint[] data, int width) before calling this method.</exception>
+           /// <exception cref="DataSizeException">'width' can't be less than 2. Your texture must be at least 2 x 2 pixels in size. You have to use SetTextureData(uint[] data, int width) before calling this method.</exception>
+           /// <exception cref="DataSizeException">'width' has an invalid value. You have to use SetTextureData(uint[] data, int width) before calling this method.</exception>
+           private void ValidateInput()
+            {
+                if (data == null)
+                {
+                    throw new DataSizeException("'data' can't be null. You have to use SetTextureData(uint[] data, int width) before calling this method.");
+                }
+
+                if (data.Length < 4)
+                {
+                    throw new DataSizeException("'data' length can't be less than 4. Your texture must be at least 2 x 2 pixels in size. You have to use SetTextureData(uint[] data, int width) before calling this method.");
+                }
+
+                if (width < 2)
+                {
+                    throw new DataSizeException("'width' can't be less than 2. Your texture must be at least 2 x 2 pixels in size. You have to use SetTextureData(uint[] data, int width) before calling this method.");
+                }
+
+                if (data.Length % width != 0)
+                {
+                    throw new DataSizeException("'width' has an invalid value. You have to use SetTextureData(uint[] data, int width) before calling this method.");
+                }
             }
 
-            if (transform != Matrix4X4F.Identity)
-            {
-                ApplyTransform(ref detectedPolygons);
-            }
-
-            return detectedPolygons;
-        }
-
+        
         /// <summary>
         ///     Applies the triangulation compatible winding using the specified detected polygons
         /// </summary>
@@ -571,7 +592,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         {
             if (polygon == null)
             {
-                throw new ArgumentNullException("'polygon' can't be null.");
+                throw new ArgumentNullException($"polygon");
             }
 
             if (polygon.Count < 3)
@@ -580,8 +601,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
             }
 
             int startY;
-
-            int lastSolid = 0;
 
             // Set start y coordinate.
             if (lastHoleEntrance.HasValue)
@@ -640,7 +659,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
                                     if (!foundTransparent)
                                     {
                                         foundSolid = true;
-                                        lastSolid = x;
                                     }
 
                                     /*
