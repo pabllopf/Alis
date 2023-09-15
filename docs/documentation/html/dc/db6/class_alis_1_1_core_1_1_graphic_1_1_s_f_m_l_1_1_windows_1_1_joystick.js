@@ -1,7 +1,5 @@
 var class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick =
 [
-    [ "Identification", "d3/d78/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_1_1_identification.html", "d3/d78/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_1_1_identification" ],
-    [ "IdentificationMarshalData", "dd/d99/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_1_1_identification_marshal_data.html", "dd/d99/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_1_1_identification_marshal_data" ],
     [ "IsConnected", "dc/db6/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick.html#ae402782ae5e95e389fe0ef4d0b525534", null ],
     [ "GetButtonCount", "dc/db6/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick.html#a9577f8d9a972590c3727892c4cf05e52", null ],
     [ "HasAxis", "dc/db6/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick.html#a68aa51a508f64f0079875f4dfa6eaff1", null ],

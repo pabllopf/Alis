@@ -5,5 +5,5 @@ var namespace_alis_1_1_core_1_1_setting =
     [ "GeneralSetting", "d1/d7a/class_alis_1_1_core_1_1_setting_1_1_general_setting.html", "d1/d7a/class_alis_1_1_core_1_1_setting_1_1_general_setting" ],
     [ "GraphicSetting", "dc/d57/class_alis_1_1_core_1_1_setting_1_1_graphic_setting.html", "dc/d57/class_alis_1_1_core_1_1_setting_1_1_graphic_setting" ],
     [ "PhysicSetting", "dd/d89/class_alis_1_1_core_1_1_setting_1_1_physic_setting.html", "dd/d89/class_alis_1_1_core_1_1_setting_1_1_physic_setting" ],
-    [ "SettingBase", "d8/dca/class_alis_1_1_core_1_1_setting_1_1_setting_base.html", null ]
+    [ "SettingBase", "d8/dca/class_alis_1_1_core_1_1_setting_1_1_setting_base.html", "d8/dca/class_alis_1_1_core_1_1_setting_1_1_setting_base" ]
 ];

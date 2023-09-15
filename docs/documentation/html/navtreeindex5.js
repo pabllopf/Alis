@@ -1,5 +1,9 @@
 var NAVTREEINDEX5 =
 {
+"d0/da6/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1linux_1_1x64_1_1_native_graphic_linux_x64_s_f_m_l.html#a8e4cdd71e0047946416056b9edcb897b":[1,0,0,2,5,0,0,2,0,19],
+"d0/da6/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1linux_1_1x64_1_1_native_graphic_linux_x64_s_f_m_l.html#a8f610a06931d3c13b38c16559fd7a4be":[1,0,0,2,5,0,0,2,0,17],
+"d0/da6/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1linux_1_1x64_1_1_native_graphic_linux_x64_s_f_m_l.html#a96aa5ce9656e1a4559c84be62d41e225":[1,0,0,2,5,0,0,2,0,36],
+"d0/da6/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1linux_1_1x64_1_1_native_graphic_linux_x64_s_f_m_l.html#a99f43aa41fc9247c3868a6b7b897d0b6":[1,0,0,2,5,0,0,2,0,55],
 "d0/da6/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1linux_1_1x64_1_1_native_graphic_linux_x64_s_f_m_l.html#a9dac66cb031e5fced81039cb9f0eedf7":[1,0,0,2,5,0,0,2,0,33],
 "d0/da6/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1linux_1_1x64_1_1_native_graphic_linux_x64_s_f_m_l.html#a9f6d99cb4d572a2bed83ac9370c639b6":[1,0,0,2,5,0,0,2,0,39],
 "d0/da6/class_alis_1_1_core_1_1_graphic_1_1_properties_1_1linux_1_1x64_1_1_native_graphic_linux_x64_s_f_m_l.html#aa06b0160cc0ae1fdaae28c3e61d29f4b":[1,0,0,2,5,0,0,2,0,4],
@@ -245,9 +249,5 @@ var NAVTREEINDEX5 =
 "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a0527de15d224e65bda42c65e4b0d4f11":[1,0,0,2,5,1,0,17,29],
 "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a0d2ce294fe6eb566040bafd41980c0e9":[1,0,0,2,5,1,0,17,20],
 "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a116a1c312d63cfa4c0b1e5ae540ed577":[1,0,0,2,5,1,0,17,17],
-"d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a14b5603473553e3bffccc1ab16547d9f":[1,0,0,2,5,1,0,17,43],
-"d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a15d0d51a90c1eca0faec473f4d81de99":[1,0,0,2,5,1,0,17,11],
-"d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a2904ea91310e3b21c817fd7da184f65b":[1,0,0,2,5,1,0,17,33],
-"d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a2a7c0980e67f9eecd528198bfedfb957":[1,0,0,2,5,1,0,17,12],
-"d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a2ccb46a546d8199c07dbe00784ef1893":[1,0,0,2,5,1,0,17,40]
+"d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a14b5603473553e3bffccc1ab16547d9f":[1,0,0,2,5,1,0,17,43]
 };

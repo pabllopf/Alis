@@ -1,5 +1,16 @@
 var NAVTREEINDEX51 =
 {
+"de/dcd/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_haptic_custom.html#a48f725f386a7a521d557e918b083fb18":[1,0,0,0,0,6,1,39,0],
+"de/dcd/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_haptic_custom.html#a492d44d2a0cde20b35aeb4a590775d03":[1,0,0,0,0,6,1,39,11],
+"de/dcd/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_haptic_custom.html#a49866e58c67c16df9f80547b67025558":[1,0,0,0,0,6,1,39,10],
+"de/dcd/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_haptic_custom.html#a5a61a09702425fb008654d0903c185d9":[1,0,0,0,0,6,1,39,5],
+"de/dcd/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_haptic_custom.html#a67b29d57223a164ea74f220c04e9db31":[1,0,0,0,0,6,1,39,13],
+"de/dcd/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_haptic_custom.html#a89353d51ffcc84a990ad95350b5e0510":[1,0,0,0,0,6,1,39,12],
+"de/dcd/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_haptic_custom.html#abbc4319111a9e06e3cf425b24c277037":[1,0,0,0,0,6,1,39,7],
+"de/dcd/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_haptic_custom.html#ae5b2504aea9b72ee9248140ab52ffe6f":[1,0,0,0,0,6,1,39,3],
+"de/dcd/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_haptic_custom.html#af1b2e02284f845a4a6316c0755c3be09":[1,0,0,0,0,6,1,39,6],
+"de/dcd/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_haptic_custom.html#afd9a1b7c24c699e1889f9aa1610f33a2":[1,0,0,0,0,6,1,39,8],
+"de/dcf/namespace_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll.html":[1,0,0,2,0,0,1],
 "de/dcf/namespace_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll.html":[0,0,0,2,0,0,1],
 "de/dd8/namespace_alis_1_1_core_1_1_aspect_1_1_logging.html":[0,0,0,2,0,3],
 "de/dd8/namespace_alis_1_1_core_1_1_aspect_1_1_logging.html":[1,0,0,2,0,3],
@@ -238,16 +249,5 @@ var NAVTREEINDEX51 =
 "de/de9/class_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_sdl.html#a1cb65d3deba71ba0b4bd88304e230505":[1,0,0,0,0,6,2,740],
 "de/de9/class_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_sdl.html#a1d0ff24821979e91eaa469e01abfd9df":[1,0,0,0,0,6,2,1062],
 "de/de9/class_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_sdl.html#a1d1b2694170f24fbd06f065121889c3a":[1,0,0,0,0,6,2,677],
-"de/de9/class_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_sdl.html#a1d292e8f5696f071530da56842451a31":[1,0,0,0,0,6,2,1372],
-"de/de9/class_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_sdl.html#a1d7215b76096aa723d4aac9ddef38007":[1,0,0,0,0,6,2,1541],
-"de/de9/class_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_sdl.html#a1d8056f9fbf481b7b17d4e33f8f2f81a":[1,0,0,0,0,6,2,1358],
-"de/de9/class_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_sdl.html#a1dba30b377f9bc70417a1415a8245d61":[1,0,0,0,0,6,2,63],
-"de/de9/class_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_sdl.html#a1e067da30cb0c5aee5f60f5326bbf241":[1,0,0,0,0,6,2,1299],
-"de/de9/class_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_sdl.html#a1e2d6d42f4270828f723a84e4a880eb2":[1,0,0,0,0,6,2,1525],
-"de/de9/class_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_sdl.html#a1e4578eeba5daa321197e3bcd2acf938":[1,0,0,0,0,6,2,1251],
-"de/de9/class_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_sdl.html#a1e4b19d8b9c37d962742763a1706e03c":[1,0,0,0,0,6,2,338],
-"de/de9/class_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_sdl.html#a1e7b43da649ab940b646926fe0b6ecbf":[1,0,0,0,0,6,2,1495],
-"de/de9/class_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_sdl.html#a1ea2b735d939050da3ac7ee422d7aecf":[1,0,0,0,0,6,2,957],
-"de/de9/class_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_sdl.html#a1f123a0b164ce5d738a40d963b3ea9e1":[1,0,0,0,0,6,2,709],
-"de/de9/class_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_sdl.html#a1f1d0a980c774a620d82cb27b6e6f1a3":[1,0,0,0,0,6,2,75]
+"de/de9/class_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_sdl.html#a1d292e8f5696f071530da56842451a31":[1,0,0,0,0,6,2,1372]
 };

@@ -100,6 +100,7 @@ $(document).ready(function(){initNavTree('d5/dc1/class_alis_1_1_core_1_1_physic_
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pac-methods">Package Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../d7/dcd/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -107,14 +108,14 @@ $(document).ready(function(){initNavTree('d5/dc1/class_alis_1_1_core_1_1_physic_
 </div><!--header-->
 <div class="contents">
 
-<p>Friction joint. This is used for top-down friction. It provides 2D translational friction and angular friction.  
+<p>Friction joint. This is used for top-down friction. It provides 2D translational friction and angular friction. Point-to-point constraint cDot = v2 - v1 = v2 + cross(w2, r2) - v1 - cross(w1, r1) J = [-I -r1_skew I r2_skew ] Identity used: w k % (rx i + ry j) = w * (-ry i + rx j)  
  <a href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#details">More...</a></p>
 
 <p>Inherits <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aaee532ebf7c1de7a87ea760d33961a96"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#aaee532ebf7c1de7a87ea760d33961a96">FrictionJoint</a> (<a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a86463be88b1d7f97f1923187817b3418">bodyA</a>=null, <a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a73e831ad81173e3e609f9b7cd25fb382">bodyB</a>=null, <a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6f">JointType</a> jointType=default(<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6f">JointType</a>), bool <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a87043031d326bac530ca9b408a34c66d">collideConnected</a>=false, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> <a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a7ebbca5fe1b3ea2c3b62558753b50996">localAnchorA</a>=default(<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>), <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> <a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#ae64eb543f99c3df1d45986abc39f2b76">localAnchorB</a>=default(<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>), float <a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a29434bab4914b188f8d1dfb3c799684c">maxForce</a>=0.0f, float <a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a87484121d80c602ee91f38f02a658169">maxTorque</a>=0.0f)</td></tr>
+<tr class="memitem:aaee532ebf7c1de7a87ea760d33961a96"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#aaee532ebf7c1de7a87ea760d33961a96">FrictionJoint</a> (<a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a86463be88b1d7f97f1923187817b3418">bodyA</a>=null, <a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a73e831ad81173e3e609f9b7cd25fb382">bodyB</a>=null, <a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6f">JointType</a> jointType=default(<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6f">JointType</a>), bool <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a87043031d326bac530ca9b408a34c66d">collideConnected</a>=false, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> localAnchorA=default(<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>), <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> localAnchorB=default(<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>), float maxForce=0.0f, float maxTorque=0.0f)</td></tr>
 <tr class="memdesc:aaee532ebf7c1de7a87ea760d33961a96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html" title="Friction joint. This is used for top-down friction. It provides 2D translational friction and angular...">FrictionJoint</a> class  <a href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#aaee532ebf7c1de7a87ea760d33961a96">More...</a><br /></td></tr>
 <tr class="separator:aaee532ebf7c1de7a87ea760d33961a96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8b4b2ff64e2a3140c952eab4ed2a8ab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#ac8b4b2ff64e2a3140c952eab4ed2a8ab">FrictionJoint</a> (<a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a86463be88b1d7f97f1923187817b3418">bodyA</a>, <a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a73e831ad81173e3e609f9b7cd25fb382">bodyB</a>, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> anchor, bool useWorldCoordinates=false)</td></tr>
@@ -143,7 +144,7 @@ Package Functions</h2></td></tr>
 <tr class="memdesc:a2eb9c035b04a2abdd7c39364f1ffaa1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inits the velocity constraints using the specified data  <a href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a2eb9c035b04a2abdd7c39364f1ffaa1c">More...</a><br /></td></tr>
 <tr class="separator:a2eb9c035b04a2abdd7c39364f1ffaa1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f2ecff4cea3e6ce9ab752495c1a1061"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a8f2ecff4cea3e6ce9ab752495c1a1061">SolveVelocityConstraints</a> (ref <a class="el" href="../../d0/da2/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_solver_data.html">SolverData</a> data)</td></tr>
-<tr class="memdesc:a8f2ecff4cea3e6ce9ab752495c1a1061"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the velocity constraints using the specified data  <a href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a8f2ecff4cea3e6ce9ab752495c1a1061">More...</a><br /></td></tr>
+<tr class="memdesc:a8f2ecff4cea3e6ce9ab752495c1a1061"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the velocity constraints using the specified data.  <a href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a8f2ecff4cea3e6ce9ab752495c1a1061">More...</a><br /></td></tr>
 <tr class="separator:a8f2ecff4cea3e6ce9ab752495c1a1061"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebdbdb0ec05ea33ff0a9b6e56722ba34"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#aebdbdb0ec05ea33ff0a9b6e56722ba34">SolvePositionConstraints</a> (ref <a class="el" href="../../d0/da2/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_solver_data.html">SolverData</a> data)</td></tr>
 <tr class="memdesc:aebdbdb0ec05ea33ff0a9b6e56722ba34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether this instance solve position constraints  <a href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#aebdbdb0ec05ea33ff0a9b6e56722ba34">More...</a><br /></td></tr>
@@ -208,6 +209,15 @@ Properties</h2></td></tr>
 <tr class="memdesc:abc25434b963381f799ead790c90a88d2 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Breakpoint simply indicates the maximum Value the JointError can be before it breaks. The default value is float.MaxValue, which means it never breaks.  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#abc25434b963381f799ead790c90a88d2">More...</a><br /></td></tr>
 <tr class="separator:abc25434b963381f799ead790c90a88d2 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a7ed858710c1111f6ee780f942eda3196"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a7ed858710c1111f6ee780f942eda3196">SolveAngularFriction</a> (ref float wA, ref float wB, float iA, float iB, float h)</td></tr>
+<tr class="memdesc:a7ed858710c1111f6ee780f942eda3196"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the angular friction using the specified v a  <a href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a7ed858710c1111f6ee780f942eda3196">More...</a><br /></td></tr>
+<tr class="separator:a7ed858710c1111f6ee780f942eda3196"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6907c6b14bea994a640e91ad075b1ce1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a6907c6b14bea994a640e91ad075b1ce1">SolveLinearFriction</a> (ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> vA, ref float wA, ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> vB, ref float wB, float mA, float mB, float iA, float iB, float h)</td></tr>
+<tr class="memdesc:a6907c6b14bea994a640e91ad075b1ce1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the linear friction using the specified v a  <a href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a6907c6b14bea994a640e91ad075b1ce1">More...</a><br /></td></tr>
+<tr class="separator:a6907c6b14bea994a640e91ad075b1ce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a9000d8484ae7260ba01541df7d70c8ae"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a9000d8484ae7260ba01541df7d70c8ae">angularImpulse</a></td></tr>
@@ -240,24 +250,6 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:afebf83e4231ec710600c9e7a392031cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/dbd/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix2_x2_f.html">Matrix2X2F</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#afebf83e4231ec710600c9e7a392031cd">linearMass</a></td></tr>
 <tr class="memdesc:afebf83e4231ec710600c9e7a392031cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The linear mass  <a href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#afebf83e4231ec710600c9e7a392031cd">More...</a><br /></td></tr>
 <tr class="separator:afebf83e4231ec710600c9e7a392031cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ebbca5fe1b3ea2c3b62558753b50996"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a7ebbca5fe1b3ea2c3b62558753b50996">localAnchorA</a></td></tr>
-<tr class="memdesc:a7ebbca5fe1b3ea2c3b62558753b50996"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local anchor  <a href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a7ebbca5fe1b3ea2c3b62558753b50996">More...</a><br /></td></tr>
-<tr class="separator:a7ebbca5fe1b3ea2c3b62558753b50996"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae64eb543f99c3df1d45986abc39f2b76"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#ae64eb543f99c3df1d45986abc39f2b76">localAnchorB</a></td></tr>
-<tr class="memdesc:ae64eb543f99c3df1d45986abc39f2b76"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local anchor  <a href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#ae64eb543f99c3df1d45986abc39f2b76">More...</a><br /></td></tr>
-<tr class="separator:ae64eb543f99c3df1d45986abc39f2b76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d90a72a7320fa3432768da14474dc1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a0d90a72a7320fa3432768da14474dc1f">localCenterA</a></td></tr>
-<tr class="memdesc:a0d90a72a7320fa3432768da14474dc1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local center  <a href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a0d90a72a7320fa3432768da14474dc1f">More...</a><br /></td></tr>
-<tr class="separator:a0d90a72a7320fa3432768da14474dc1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5eae92b1bd90a05ba229d97a661a84ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a5eae92b1bd90a05ba229d97a661a84ca">localCenterB</a></td></tr>
-<tr class="memdesc:a5eae92b1bd90a05ba229d97a661a84ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local center  <a href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a5eae92b1bd90a05ba229d97a661a84ca">More...</a><br /></td></tr>
-<tr class="separator:a5eae92b1bd90a05ba229d97a661a84ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29434bab4914b188f8d1dfb3c799684c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a29434bab4914b188f8d1dfb3c799684c">maxForce</a></td></tr>
-<tr class="memdesc:a29434bab4914b188f8d1dfb3c799684c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The max force  <a href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a29434bab4914b188f8d1dfb3c799684c">More...</a><br /></td></tr>
-<tr class="separator:a29434bab4914b188f8d1dfb3c799684c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87484121d80c602ee91f38f02a658169"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a87484121d80c602ee91f38f02a658169">maxTorque</a></td></tr>
-<tr class="memdesc:a87484121d80c602ee91f38f02a658169"><td class="mdescLeft">&#160;</td><td class="mdescRight">The max torque  <a href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a87484121d80c602ee91f38f02a658169">More...</a><br /></td></tr>
-<tr class="separator:a87484121d80c602ee91f38f02a658169"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95f2190f62b8a0c25975d6a7805eb2f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a95f2190f62b8a0c25975d6a7805eb2f3">rA</a></td></tr>
 <tr class="memdesc:a95f2190f62b8a0c25975d6a7805eb2f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The  <a href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html#a95f2190f62b8a0c25975d6a7805eb2f3">More...</a><br /></td></tr>
 <tr class="separator:a95f2190f62b8a0c25975d6a7805eb2f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -290,9 +282,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a4f74becad11b01831634d76131f93d53 inherit events_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Friction joint. This is used for top-down friction. It provides 2D translational friction and angular friction. </p>
+<div class="textblock"><p>Friction joint. This is used for top-down friction. It provides 2D translational friction and angular friction. Point-to-point constraint cDot = v2 - v1 = v2 + cross(w2, r2) - v1 - cross(w1, r1) J = [-I -r1_skew I r2_skew ] Identity used: w k % (rx i + ry j) = w * (-ry i + rx j) </p>
+<p>Angle constraint cDot = w2 - w1 J = [0 0 -1 0 0 1] K = invI1 + invI2</p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00054">54</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00053">53</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aaee532ebf7c1de7a87ea760d33961a96"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaee532ebf7c1de7a87ea760d33961a96">&#9670;&nbsp;</a></span>FrictionJoint() <span class="overload">[1/2]</span></h2>
@@ -371,7 +364,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00160">160</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00128">128</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -424,7 +417,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00183">183</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00151">151</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -537,7 +530,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a3297f04384b0922fe836b6c5411c6c76">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00262">262</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00214">214</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -565,7 +558,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Solves the velocity constraints using the specified data </p>
+<p>Solves the velocity constraints using the specified data. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>The data</td></tr>
@@ -575,7 +568,171 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#aebe1afe4c3a223531a9458f68e88a3e5">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00342">342</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00294">294</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="a7ed858710c1111f6ee780f942eda3196"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ed858710c1111f6ee780f942eda3196">&#9670;&nbsp;</a></span>SolveAngularFriction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Alis.Core.Physic.Dynamics.Joints.FrictionJoint.SolveAngularFriction </td>
+          <td>(</td>
+          <td class="paramtype">ref float&#160;</td>
+          <td class="paramname"><em>wA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref float&#160;</td>
+          <td class="paramname"><em>wB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>iA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>iB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>h</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Solves the angular friction using the specified v a </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wA</td><td>The </td></tr>
+    <tr><td class="paramname">wB</td><td>The </td></tr>
+    <tr><td class="paramname">iA</td><td>The </td></tr>
+    <tr><td class="paramname">iB</td><td>The </td></tr>
+    <tr><td class="paramname">h</td><td>The </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00323">323</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="a6907c6b14bea994a640e91ad075b1ce1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6907c6b14bea994a640e91ad075b1ce1">&#9670;&nbsp;</a></span>SolveLinearFriction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Alis.Core.Physic.Dynamics.Joints.FrictionJoint.SolveLinearFriction </td>
+          <td>(</td>
+          <td class="paramtype">ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>vA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref float&#160;</td>
+          <td class="paramname"><em>wA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>vB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref float&#160;</td>
+          <td class="paramname"><em>wB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>mA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>mB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>iA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>iB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>h</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Solves the linear friction using the specified v a </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vA</td><td>The </td></tr>
+    <tr><td class="paramname">wA</td><td>The </td></tr>
+    <tr><td class="paramname">vB</td><td>The </td></tr>
+    <tr><td class="paramname">wB</td><td>The </td></tr>
+    <tr><td class="paramname">mA</td><td>The </td></tr>
+    <tr><td class="paramname">mB</td><td>The </td></tr>
+    <tr><td class="paramname">iA</td><td>The </td></tr>
+    <tr><td class="paramname">iB</td><td>The </td></tr>
+    <tr><td class="paramname">h</td><td>The </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00349">349</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -639,7 +796,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The angular impulse </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00059">59</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00058">58</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -665,7 +822,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The angular mass </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00064">64</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00063">63</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -691,7 +848,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The index </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00070">70</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00069">69</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -717,7 +874,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The index </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00075">75</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00074">74</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -743,7 +900,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The inv ia </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00080">80</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00079">79</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -769,7 +926,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The inv ib </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00085">85</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00084">84</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -795,7 +952,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The inv mass </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00090">90</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00089">89</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -821,7 +978,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The inv mass </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00095">95</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00094">94</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -847,7 +1004,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The linear impulse </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00101">101</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00100">100</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -873,163 +1030,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The linear mass </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00106">106</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a7ebbca5fe1b3ea2c3b62558753b50996"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ebbca5fe1b3ea2c3b62558753b50996">&#9670;&nbsp;</a></span>localAnchorA</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Dynamics.Joints.FrictionJoint.localAnchorA</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The local anchor </p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00111">111</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="ae64eb543f99c3df1d45986abc39f2b76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae64eb543f99c3df1d45986abc39f2b76">&#9670;&nbsp;</a></span>localAnchorB</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Dynamics.Joints.FrictionJoint.localAnchorB</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The local anchor </p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00116">116</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a0d90a72a7320fa3432768da14474dc1f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d90a72a7320fa3432768da14474dc1f">&#9670;&nbsp;</a></span>localCenterA</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Dynamics.Joints.FrictionJoint.localCenterA</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The local center </p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00121">121</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a5eae92b1bd90a05ba229d97a661a84ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5eae92b1bd90a05ba229d97a661a84ca">&#9670;&nbsp;</a></span>localCenterB</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Dynamics.Joints.FrictionJoint.localCenterB</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The local center </p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00126">126</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a29434bab4914b188f8d1dfb3c799684c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a29434bab4914b188f8d1dfb3c799684c">&#9670;&nbsp;</a></span>maxForce</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.FrictionJoint.maxForce</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The max force </p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00131">131</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a87484121d80c602ee91f38f02a658169"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a87484121d80c602ee91f38f02a658169">&#9670;&nbsp;</a></span>maxTorque</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.FrictionJoint.maxTorque</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The max torque </p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00136">136</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00105">105</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1055,7 +1056,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00141">141</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00110">110</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1081,7 +1082,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00146">146</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00115">115</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1101,14 +1102,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>The local anchor point on BodyA </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00199">199</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00167">167</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1127,14 +1128,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>The local anchor point on BodyB </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00206">206</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00170">170</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1160,7 +1161,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Gets or sets the value of the world anchor a </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00215">215</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00175">175</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1186,7 +1187,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Gets or sets the value of the world anchor b </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00224">224</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00184">184</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1205,14 +1206,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>The maximum friction force in N. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00231">231</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00191">191</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1231,14 +1232,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>The maximum friction torque in N-m. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00238">238</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/de2/_friction_joint_8cs_source.html#l00194">194</a> of file <a class="el" href="../../db/de2/_friction_joint_8cs_source.html">FrictionJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1249,7 +1250,7 @@ Additional Inherited Members</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../d7/db3/namespace_alis_1_1_core_1_1_physic.html">Physic</a></li><li class="navelem"><a class="el" href="../../dd/d6a/namespace_alis_1_1_core_1_1_physic_1_1_dynamics.html">Dynamics</a></li><li class="navelem"><a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html">Joints</a></li><li class="navelem"><a class="el" href="../../d5/dc1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_friction_joint.html">FrictionJoint</a></li>
     <li class="footer">
-      <a>Generated on | Thu Sep 14 2023 |</a>
+      <a>Generated on | Fri Sep 15 2023 |</a>
     </li>
   </ul>
 </div>
