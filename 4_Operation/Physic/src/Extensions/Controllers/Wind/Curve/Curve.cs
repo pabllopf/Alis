@@ -75,6 +75,7 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
             return curve;
         }
 
+        
         /// <summary>
         /// Evaluate the value at a position of this <see cref="Curve" />.
         /// </summary>
