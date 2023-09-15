@@ -27,22 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-/*
- * Sweep-line, Constrained Delauney Triangulation (CDT) See: Domiter, V. and
- * Zalik, B.(2008)'Sweep-line algorithm for constrained Delaunay triangulation',
- * International Journal of Geographical Information Science
- *
- * "FlipScan" Constrained Edge Algorithm invented by author of this code.
- *
- * Author: Thomas Åhlén, thahlen@gmail.com
- */
-
-// Changes from the Java version
-//   Turned DTSweep into a static class
-//   Lots of deindentation via early bailout
-// Future possibilities
-//   Comments!
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -109,7 +93,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             }
         }
 
-        /// <summary>If this is a Delaunay Triangulation of a pointset we need to fill so the triangle mesh gets a ConvexHull</summary>
+        /// <summary>If this is a Delaunay Triangulation of a point set we need to fill so the triangle mesh gets a ConvexHull</summary>
         private static void FinalizationConvexHull(DtSweepContext tcx)
         {
             DelaunayTriangle t1, t2;
@@ -214,7 +198,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         }
 
         /// <summary>
-        ///     Finalizations the polygon using the specified tcx
+        ///     Finalization the polygon using the specified tcx
         /// </summary>
         /// <param name="tcx">The tcx</param>
         private static void FinalizationPolygon(DtSweepContext tcx)
@@ -631,20 +615,13 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             {
                 // Need to decide if we are rotating CW or CCW to get to a triangle
                 // that will cross edge
-                if (o1 == Orientation.Cw)
-                {
-                    triangle = triangle.NeighborCcw(point);
-                }
-                else
-                {
-                    triangle = triangle.NeighborCw(point);
-                }
+                triangle = o1 == Orientation.Cw ? triangle.NeighborCcw(point) : triangle.NeighborCw(point);
 
                 EdgeEvent(tcx, ep, eq, triangle, point);
             }
             else
             {
-                // This triangle crosses constraint so lets flippin start!
+                // This triangle crosses constraint so lets flip start!
                 FlipEdgeEvent(tcx, ep, eq, triangle, point);
             }
         }
@@ -698,7 +675,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                     {
                         if (tcx.IsDebugEnabled)
                         {
-                            Logger.Log("[FLIP] - subedge done");
+                            Logger.Log("[FLIP] - sub edge done");
                         }
                     }
                 }
@@ -708,8 +685,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                     {
                         Logger.Log("[FLIP] - flipping and continuing with triangle still crossing edge");
                     }
-
-
+                    
                     Orientation o = TriangulationUtil.Orient2d(eq, op, ep);
                     t = NextFlipTriangle(tcx, o, t, ot, p, op);
                     FlipEdgeEvent(tcx, ep, eq, t, p);
@@ -748,7 +724,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 
         /// <summary>
         ///     After a flip we have two triangles and know that only one will still be intersecting the edge. So decide which
-        ///     to contiune with and legalize the other
+        ///     to continue with and legalize the other
         /// </summary>
         /// <param name="tcx"></param>
         /// <param name="o">should be the result of an TriangulationUtil.orient2d( eq, op, ep )</param>
@@ -957,21 +933,14 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 
         /// <summary>
         ///     Fills a basin that has formed on the Advancing Front to the right of given node. First we decide a left,bottom
-        ///     and right node that forms the boundaries of the basin. Then we do a reqursive fill.
+        ///     and right node that forms the boundaries of the basin. Then we do a fill.
         /// </summary>
         /// <param name="tcx"></param>
         /// <param name="node">starting node, this or next node will be left node</param>
         private static void FillBasin(DtSweepContext tcx, AdvancingFrontNode node)
         {
-            if (TriangulationUtil.Orient2d(node.Point, node.Next.Point, node.Next.Next.Point) == Orientation.Ccw)
-            {
-                // tcx.basin.leftNode = node.next.next;
-                tcx.Basin.LeftNode = node;
-            }
-            else
-            {
-                tcx.Basin.LeftNode = node.Next;
-            }
+            // tcx.basin.leftNode = node.next.next;
+            tcx.Basin.LeftNode = TriangulationUtil.Orient2d(node.Point, node.Next.Point, node.Next.Next.Point) == Orientation.Ccw ? node : node.Next;
 
             // Find the bottom and right node
             tcx.Basin.BottomNode = tcx.Basin.LeftNode;
@@ -1042,14 +1011,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             else
             {
                 // Continue with the neighbor node with lowest Y value
-                if (node.Prev.Point.Y < node.Next.Point.Y)
-                {
-                    node = node.Prev;
-                }
-                else
-                {
-                    node = node.Next;
-                }
+                node = node.Prev.Point.Y < node.Next.Point.Y ? node.Prev : node.Next;
             }
 
             FillBasinReq(tcx, node);
