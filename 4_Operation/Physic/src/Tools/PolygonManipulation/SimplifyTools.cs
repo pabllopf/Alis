@@ -41,9 +41,9 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
     {
         /// <summary>Removes all collinear points on the polygon.</summary>
         /// <param name="vertices">The polygon that needs simplification.</param>
-        /// <param name="collinearityTolerance">The collinearity tolerance.</param>
+        /// <param name="tolerance">The tolerance.</param>
         /// <returns>A simplified polygon.</returns>
-        public static Vertices CollinearSimplify(Vertices vertices, float collinearityTolerance = 0)
+        public static Vertices CollinearSimplify(Vertices vertices, float tolerance = 0)
         {
             if (vertices.Count <= 3)
             {
@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                 Vector2 next = vertices.NextVertex(i);
 
                 //If they collinear, continue
-                if (MathUtils.IsCollinear(ref prev, ref current, ref next, collinearityTolerance))
+                if (MathUtils.IsCollinear(ref prev, ref current, ref next, tolerance))
                 {
                     continue;
                 }
@@ -71,8 +71,8 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
         }
 
         /// <summary>
-        ///     Ramer-Douglas-Peucker polygon simplification algorithm. This is the general recursive version that does not
-        ///     use the speed-up technique by using the Melkman convex hull. If you pass in 0, it will remove all collinear points.
+        ///     Douglas Peucker polygon simplification algorithm. This is the general recursive version that does not
+        ///     use the speed-up technique by using the man convex hull. If you pass in 0, it will remove all collinear points.
         /// </summary>
         /// <returns>The simplified polygon</returns>
         public static Vertices DouglasPeuckerSimplify(Vertices vertices, float distanceTolerance)
