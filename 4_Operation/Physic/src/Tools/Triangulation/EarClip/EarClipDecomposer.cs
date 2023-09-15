@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Physic.Tools.Triangulation.Earclip
+namespace Alis.Core.Physic.Tools.Triangulation.EarClip
 {
     /// <summary>
     ///     Convex decomposition algorithm using ear clipping
@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Earclip
     ///     - Does not support holes.
     ///     - Running time is O(n^2), n = number of vertices.
     /// </summary>
-    internal static class EarclipDecomposer
+    internal static class EarClipDecomposer
     {
         /// <summary>
         ///     Decompose the polygon into several smaller non-concave polygon. Each resulting polygon will have no more than

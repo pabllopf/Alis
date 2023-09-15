@@ -5,7 +5,7 @@ using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Tools.ConvexHull;
 using Alis.Core.Physic.Tools.Triangulation.Bayazit;
 using Alis.Core.Physic.Tools.Triangulation.Delaunay;
-using Alis.Core.Physic.Tools.Triangulation.Earclip;
+using Alis.Core.Physic.Tools.Triangulation.EarClip;
 using Alis.Core.Physic.Tools.Triangulation.FlipCode;
 using Alis.Core.Physic.Tools.Triangulation.Seidel;
 
@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.TriangulationBase
         {
             return algorithm switch
             {
-                TriangulationAlgorithm.Earclip => EarclipDecomposer.ConvexPartition(vertices, tolerance),
+                TriangulationAlgorithm.Earclip => EarClipDecomposer.ConvexPartition(vertices, tolerance),
                 TriangulationAlgorithm.Bayazit => BayazitDecomposer.ConvexPartition(vertices),
                 TriangulationAlgorithm.Flipcode => FlipcodeDecomposer.ConvexPartition(vertices),
                 TriangulationAlgorithm.Seidel => SeidelDecomposer.ConvexPartition(vertices, tolerance),

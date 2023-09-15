@@ -30,7 +30,7 @@
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 
-namespace Alis.Core.Physic.Tools.Triangulation.Earclip
+namespace Alis.Core.Physic.Tools.Triangulation.EarClip
 {
     /// <summary>
     ///     The triangle class
