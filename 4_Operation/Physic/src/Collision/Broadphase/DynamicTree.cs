@@ -352,7 +352,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
             Vector2 p1 = input.Point1;
             Vector2 p2 = input.Point2;
             Vector2 r = CalculateNormalizedRayDirection(p1, p2);
-            Vector2 absV = CalculateAbsVector(r);
+            CalculateAbsVector(r);
             float maxFraction = input.Fraction;
             Aabb segmentAabb = CalculateSegmentAabb(p1, p2, maxFraction);
 
@@ -393,35 +393,17 @@ namespace Alis.Core.Physic.Collision.Broadphase
             }
         }
 
-        /// <summary>
-        /// Calculates the normalized ray direction using the specified p 1
-        /// </summary>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <returns>The vector</returns>
         private Vector2 CalculateNormalizedRayDirection(Vector2 p1, Vector2 p2)
         {
             Vector2 r = p2 - p1;
             return Vector2.Normalize(r);
         }
 
-        /// <summary>
-        /// Calculates the abs vector using the specified vector
-        /// </summary>
-        /// <param name="vector">The vector</param>
-        /// <returns>The vector</returns>
         private Vector2 CalculateAbsVector(Vector2 vector)
         {
             return new Vector2(MathUtils.Abs(-vector.Y), MathUtils.Abs(vector.X));
         }
 
-        /// <summary>
-        /// Calculates the segment aabb using the specified p 1
-        /// </summary>
-        /// <param name="p1">The </param>
-        /// <param name="p2">The </param>
-        /// <param name="maxFraction">The max fraction</param>
-        /// <returns>The aabb</returns>
         private Aabb CalculateSegmentAabb(Vector2 p1, Vector2 p2, float maxFraction)
         {
             Vector2 t = p1 + maxFraction * (p2 - p1);
@@ -432,24 +414,11 @@ namespace Alis.Core.Physic.Collision.Broadphase
             };
         }
 
-        /// <summary>
-        /// Describes whether this instance is aabb overlap
-        /// </summary>
-        /// <param name="aabb1">The aabb</param>
-        /// <param name="aabb2">The aabb</param>
-        /// <returns>The bool</returns>
         private bool IsAabbOverlap(Aabb aabb1, Aabb aabb2)
         {
             return Aabb.TestOverlap(ref aabb1, ref aabb2);
         }
 
-        /// <summary>
-        /// Describes whether this instance is separation valid
-        /// </summary>
-        /// <param name="r">The </param>
-        /// <param name="p1">The </param>
-        /// <param name="aabb">The aabb</param>
-        /// <returns>The bool</returns>
         private bool IsSeparationValid(Vector2 r, Vector2 p1, Aabb aabb)
         {
             Vector2 c = aabb.Center;
@@ -458,14 +427,6 @@ namespace Alis.Core.Physic.Collision.Broadphase
             return separation <= 0.0f;
         }
 
-        /// <summary>
-        /// Handles the leaf node using the specified callback
-        /// </summary>
-        /// <param name="callback">The callback</param>
-        /// <param name="input">The input</param>
-        /// <param name="maxFraction">The max fraction</param>
-        /// <param name="nodeId">The node id</param>
-        /// <returns>The max fraction</returns>
         private float HandleLeafNode(Func<RayCastInput, int, float> callback, RayCastInput input, float maxFraction, int nodeId)
         {
             RayCastInput subInput = new RayCastInput
@@ -710,10 +671,10 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 FreeNode(parent);
             }
         }
-        
+
         /// <summary>Perform a left or right rotation if node A is imbalanced.</summary>
         /// <param name="iA"></param>
-        /// <returns>The new root index.</returns>
+        /// <returns>the new root index.</returns>
         private int BalanceTo(int iA)
         {
             TreeNode<T> a = nodes[iA];
@@ -732,133 +693,119 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
             if (balance > 1)
             {
-                return RotateRight(iA, a, iB, iC, b, c);
+                int iF = c.Child1;
+                int iG = c.Child2;
+                TreeNode<T> f = nodes[iF];
+                TreeNode<T> g = nodes[iG];
+
+                c.Child1 = iA;
+                c.ParentOrNext = a.ParentOrNext;
+                a.ParentOrNext = iC;
+
+
+                if (c.ParentOrNext != NullNode)
+                {
+                    if (nodes[c.ParentOrNext].Child1 == iA)
+                    {
+                        nodes[c.ParentOrNext].Child1 = iC;
+                    }
+                    else
+                    {
+                        nodes[c.ParentOrNext].Child2 = iC;
+                    }
+                }
+                else
+                {
+                    root = iC;
+                }
+
+
+                if (f.Height > g.Height)
+                {
+                    c.Child2 = iF;
+                    a.Child2 = iG;
+                    g.ParentOrNext = iA;
+                    a.Aabb.Combine(ref b.Aabb, ref g.Aabb);
+                    c.Aabb.Combine(ref a.Aabb, ref f.Aabb);
+
+                    a.Height = 1 + Math.Max(b.Height, g.Height);
+                    c.Height = 1 + Math.Max(a.Height, f.Height);
+                }
+                else
+                {
+                    c.Child2 = iG;
+                    a.Child2 = iF;
+                    f.ParentOrNext = iA;
+                    a.Aabb.Combine(ref b.Aabb, ref f.Aabb);
+                    c.Aabb.Combine(ref a.Aabb, ref g.Aabb);
+
+                    a.Height = 1 + Math.Max(b.Height, f.Height);
+                    c.Height = 1 + Math.Max(a.Height, g.Height);
+                }
+
+                return iC;
             }
+
 
             if (balance < -1)
             {
-                return RotateLeft(iA, a, iB, iC, b, c);
+                int iD = b.Child1;
+                int iE = b.Child2;
+                TreeNode<T> d = nodes[iD];
+                TreeNode<T> e = nodes[iE];
+
+
+                b.Child1 = iA;
+                b.ParentOrNext = a.ParentOrNext;
+                a.ParentOrNext = iB;
+
+
+                if (b.ParentOrNext != NullNode)
+                {
+                    if (nodes[b.ParentOrNext].Child1 == iA)
+                    {
+                        nodes[b.ParentOrNext].Child1 = iB;
+                    }
+                    else
+                    {
+                        nodes[b.ParentOrNext].Child2 = iB;
+                    }
+                }
+                else
+                {
+                    root = iB;
+                }
+
+
+                if (d.Height > e.Height)
+                {
+                    b.Child2 = iD;
+                    a.Child1 = iE;
+                    e.ParentOrNext = iA;
+                    a.Aabb.Combine(ref c.Aabb, ref e.Aabb);
+                    b.Aabb.Combine(ref a.Aabb, ref d.Aabb);
+
+                    a.Height = 1 + Math.Max(c.Height, e.Height);
+                    b.Height = 1 + Math.Max(a.Height, d.Height);
+                }
+                else
+                {
+                    b.Child2 = iE;
+                    a.Child1 = iD;
+                    d.ParentOrNext = iA;
+                    a.Aabb.Combine(ref c.Aabb, ref d.Aabb);
+                    b.Aabb.Combine(ref a.Aabb, ref e.Aabb);
+
+                    a.Height = 1 + Math.Max(c.Height, d.Height);
+                    b.Height = 1 + Math.Max(a.Height, e.Height);
+                }
+
+                return iB;
             }
 
             return iA;
         }
 
-        /// <summary>
-        /// Rotates the right using the specified i a
-        /// </summary>
-        /// <param name="iA">The </param>
-        /// <param name="a">The </param>
-        /// <param name="iB">The </param>
-        /// <param name="iC">The </param>
-        /// <param name="b">The </param>
-        /// <param name="c">The </param>
-        /// <returns>The </returns>
-        private int RotateRight(int iA, TreeNode<T> a, int iB, int iC, TreeNode<T> b, TreeNode<T> c)
-        {
-            int iF = c.Child1;
-            int iG = c.Child2;
-            TreeNode<T> f = nodes[iF];
-            TreeNode<T> g = nodes[iG];
-
-            c.Child1 = iA;
-            c.ParentOrNext = a.ParentOrNext;
-            a.ParentOrNext = iC;
-
-            UpdateParent(iA, iC);
-
-            if (f.Height > g.Height)
-            {
-                c.Child2 = iF;
-                a.Child2 = iG;
-                g.ParentOrNext = iA;
-                UpdateAabbAndHeight(a, b, g, c, f);
-            }
-            else
-            {
-                c.Child2 = iG;
-                a.Child2 = iF;
-                f.ParentOrNext = iA;
-                UpdateAabbAndHeight(a, b, f, c, g);
-            }
-
-            return iC;
-        }
-
-        /// <summary>
-        /// Rotates the left using the specified i a
-        /// </summary>
-        /// <param name="iA">The </param>
-        /// <param name="a">The </param>
-        /// <param name="iB">The </param>
-        /// <param name="iC">The </param>
-        /// <param name="b">The </param>
-        /// <param name="c">The </param>
-        /// <returns>The </returns>
-        private int RotateLeft(int iA, TreeNode<T> a, int iB, int iC, TreeNode<T> b, TreeNode<T> c)
-        {
-            int iD = b.Child1;
-            int iE = b.Child2;
-            TreeNode<T> d = nodes[iD];
-            TreeNode<T> e = nodes[iE];
-
-            b.Child1 = iA;
-            b.ParentOrNext = a.ParentOrNext;
-            a.ParentOrNext = iB;
-
-            UpdateParent(iA, iB);
-
-            if (d.Height > e.Height)
-            {
-                b.Child2 = iD;
-                a.Child1 = iE;
-                e.ParentOrNext = iA;
-                UpdateAabbAndHeight(a, c, e, b, d);
-            }
-            else
-            {
-                b.Child2 = iE;
-                a.Child1 = iD;
-                d.ParentOrNext = iA;
-                UpdateAabbAndHeight(a, c, d, b, e);
-            }
-
-            return iB;
-        }
-
-        /// <summary>
-        /// Updates the parent using the specified child index
-        /// </summary>
-        /// <param name="childIndex">The child index</param>
-        /// <param name="parentIndex">The parent index</param>
-        private void UpdateParent(int childIndex, int parentIndex)
-        {
-            if (nodes[parentIndex].Child1 == childIndex)
-            {
-                nodes[parentIndex].Child1 = parentIndex;
-            }
-            else
-            {
-                nodes[parentIndex].Child2 = parentIndex;
-            }
-        }
-
-        /// <summary>
-        /// Updates the aabb and height using the specified a
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <param name="c">The </param>
-        /// <param name="d">The </param>
-        /// <param name="e">The </param>
-        private void UpdateAabbAndHeight(TreeNode<T> a, TreeNode<T> b, TreeNode<T> c, TreeNode<T> d, TreeNode<T> e)
-        {
-            a.Aabb.Combine(ref b.Aabb, ref c.Aabb);
-            d.Aabb.Combine(ref a.Aabb, ref e.Aabb);
-            a.Height = 1 + Math.Max(b.Height, c.Height);
-            d.Height = 1 + Math.Max(a.Height, e.Height);
-        }
-
-       
         /// <summary>Compute the height of a sub-tree.</summary>
         /// <param name="nodeId">The node id to use as parent.</param>
         /// <returns>The height of the tree.</returns>
@@ -950,35 +897,25 @@ namespace Alis.Core.Physic.Collision.Broadphase
             }
         }
 
-        /// <summary>
-        /// Rebuilds the tree using a bottom-up approach. This method is resource-intensive and should be used for testing purposes only.
-        /// </summary>
+        /// <summary>Build an optimal tree. Very expensive. For testing.</summary>
         public void RebuildBottomUp()
         {
-            int[] leafNodeIndices = CollectLeafNodeIndices();
-            BuildOptimalTree(leafNodeIndices);
-            Validate();
-        }
+            int[] ints = new int[nodeCount];
+            int count = 0;
 
-        /// <summary>
-        /// Collects the leaf node indices
-        /// </summary>
-        /// <returns>The leaf node indices</returns>
-        private int[] CollectLeafNodeIndices()
-        {
-            int[] leafNodeIndices = new int[nodeCount];
-            int leafNodeCount = 0;
 
             for (int i = 0; i < nodeCapacity; ++i)
             {
                 if (nodes[i].Height < 0)
+                {
                     continue;
+                }
 
                 if (nodes[i].IsLeaf())
                 {
                     nodes[i].ParentOrNext = NullNode;
-                    leafNodeIndices[leafNodeCount] = i;
-                    ++leafNodeCount;
+                    ints[count] = i;
+                    ++count;
                 }
                 else
                 {
@@ -986,31 +923,20 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 }
             }
 
-            return leafNodeIndices;
-        }
-
-        /// <summary>
-        /// Builds the optimal tree using the specified leaf node indices
-        /// </summary>
-        /// <param name="leafNodeIndices">The leaf node indices</param>
-        private void BuildOptimalTree(int[] leafNodeIndices)
-        {
-            while (leafNodeIndices.Length > 1)
+            while (count > 1)
             {
                 float minCost = float.MaxValue;
                 int iMin = -1, jMin = -1;
-
-                for (int i = 0; i < leafNodeIndices.Length; ++i)
+                for (int i = 0; i < count; ++i)
                 {
-                    Aabb aabBi = nodes[leafNodeIndices[i]].Aabb;
+                    Aabb aabBi = nodes[ints[i]].Aabb;
 
-                    for (int j = i + 1; j < leafNodeIndices.Length; ++j)
+                    for (int j = i + 1; j < count; ++j)
                     {
-                        Aabb aabBj = nodes[leafNodeIndices[j]].Aabb;
+                        Aabb aabBj = nodes[ints[j]].Aabb;
                         Aabb b = new Aabb();
                         b.Combine(ref aabBi, ref aabBj);
                         float cost = b.Perimeter;
-
                         if (cost < minCost)
                         {
                             iMin = i;
@@ -1020,8 +946,8 @@ namespace Alis.Core.Physic.Collision.Broadphase
                     }
                 }
 
-                int index1 = leafNodeIndices[iMin];
-                int index2 = leafNodeIndices[jMin];
+                int index1 = ints[iMin];
+                int index2 = ints[jMin];
                 TreeNode<T> child1 = nodes[index1];
                 TreeNode<T> child2 = nodes[index2];
 
@@ -1036,14 +962,15 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 child1.ParentOrNext = parentIndex;
                 child2.ParentOrNext = parentIndex;
 
-                leafNodeIndices[jMin] = leafNodeIndices[leafNodeIndices.Length - 1];
-                leafNodeIndices[iMin] = parentIndex;
-                Array.Resize(ref leafNodeIndices, leafNodeIndices.Length - 1);
+                ints[jMin] = ints[count - 1];
+                ints[iMin] = parentIndex;
+                --count;
             }
 
-            root = leafNodeIndices[0];
-        }
+            root = ints[0];
 
+            Validate();
+        }
 
         /// <summary>Shift the origin of the nodes</summary>
         /// <param name="newOrigin">The displacement to use.</param>
