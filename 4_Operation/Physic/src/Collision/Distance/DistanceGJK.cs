@@ -40,8 +40,8 @@ using Alis.Core.Physic.Utilities;
 namespace Alis.Core.Physic.Collision.Distance
 {
     /// <summary>
-    ///     The Gilbert–Johnson–Keerthi distance algorithm that provides the distance between shapes. Using Voronoi
-    ///     regions (Christer Ericson) and Barycentric coordinates.
+    ///     The Gilbert distance algorithm that provides the distance between shapes. Using Voronoi
+    ///     regions and Barycentric coordinates.
     /// </summary>
     public static class DistanceGjk
     {
@@ -55,13 +55,13 @@ namespace Alis.Core.Physic.Collision.Distance
         ///     The number of iterations that was made on the last call to ComputeDistance(). Note: This is only activated
         ///     when Settings.EnableDiagnostics = true
         /// </summary>
-        [ThreadStatic] public static int GjkIters;
+        [ThreadStatic] public static int GjkIter;
 
         /// <summary>
-        ///     The maximum number of iterations calls to the CompteDistance() function. Note: This is only activated when
+        ///     The maximum number of iterations calls to the Distance() function. Note: This is only activated when
         ///     Settings.EnableDiagnostics = true
         /// </summary>
-        [ThreadStatic] public static int GjkMaxIters;
+        [ThreadStatic] private static int _gjkMaxIter;
 
         /// <summary>
         ///     Computes the distance using the specified input
@@ -148,7 +148,7 @@ namespace Alis.Core.Physic.Collision.Distance
                 // Iteration count is equated to the number of support point calls.
                 ++iter;
 
-                ++GjkIters;
+                ++GjkIter;
 
                 // Check for duplicate support points. This is the main termination criteria.
                 bool duplicate = false;
@@ -171,7 +171,7 @@ namespace Alis.Core.Physic.Collision.Distance
                 ++simplex.Count;
             }
 
-            GjkMaxIters = Math.Max(GjkMaxIters, iter);
+            _gjkMaxIter = Math.Max(_gjkMaxIter, iter);
 
             // Prepare output.
             simplex.GetWitnessPoints(out output.PointA, out output.PointB);
@@ -236,7 +236,7 @@ namespace Alis.Core.Physic.Collision.Distance
 
             int iter = 0;
 
-            while (IterateUntilConverged(input, ref output, ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref n, ref lambda, ref simplex, ref iter, radius))
+            while (IterateUntilConverged(ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref n, ref lambda, ref simplex, radius))
             {
                 // Iteration count is equated to the number of support point calls.
                 ++iter;
@@ -248,7 +248,7 @@ namespace Alis.Core.Physic.Collision.Distance
                 return false;
             }
 
-            CalculateOutput(ref output, ref simplex, ref r, ref lambda, ref n, radius, radiusA);
+            CalculateOutput(ref output, ref simplex, ref r, ref lambda, ref n, radiusA);
             return true;
         }
 
@@ -292,8 +292,6 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <summary>
         /// Describes whether iterate until converged
         /// </summary>
-        /// <param name="input">The input</param>
-        /// <param name="output">The output</param>
         /// <param name="proxyA">The proxy</param>
         /// <param name="proxyB">The proxy</param>
         /// <param name="xfA">The xf</param>
@@ -302,28 +300,25 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="n">The </param>
         /// <param name="lambda">The lambda</param>
         /// <param name="simplex">The simplex</param>
-        /// <param name="iter">The iter</param>
         /// <param name="radius">The radius</param>
         /// <returns>The bool</returns>
-        private static bool IterateUntilConverged(ShapeCastInput input, ref ShapeCastOutput output, ref DistanceProxy proxyA, ref DistanceProxy proxyB,
-            ref Transform xfA, ref Transform xfB, ref Vector2 r, ref Vector2 n, ref float lambda, ref Simplex simplex, ref int iter, float radius)
+        private static bool IterateUntilConverged(ref DistanceProxy proxyA, ref DistanceProxy proxyB,
+            ref Transform xfA, ref Transform xfB, ref Vector2 r, ref Vector2 n, ref float lambda, ref Simplex simplex, float radius)
         {
-            Vector2 v = ComputeV(ref input, ref output, ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref n, ref lambda, ref simplex, radius);
+            Vector2 v = ComputeV(ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref n, ref lambda, ref simplex, radius);
 
             if (IsConverged(v, ref lambda, radius))
             {
                 return false;
             }
 
-            UpdateSimplex(ref input, ref output, ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref v, ref n, ref lambda, ref simplex, radius);
+            UpdateSimplex(ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref v, ref n, ref lambda, ref simplex, radius);
             return true;
         }
 
         /// <summary>
         /// Computes the v using the specified input
         /// </summary>
-        /// <param name="input">The input</param>
-        /// <param name="output">The output</param>
         /// <param name="proxyA">The proxy</param>
         /// <param name="proxyB">The proxy</param>
         /// <param name="xfA">The xf</param>
@@ -334,12 +329,12 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="simplex">The simplex</param>
         /// <param name="radius">The radius</param>
         /// <returns>The </returns>
-        private static Vector2 ComputeV(ref ShapeCastInput input, ref ShapeCastOutput output, ref DistanceProxy proxyA, ref DistanceProxy proxyB,
+        private static Vector2 ComputeV(ref DistanceProxy proxyA, ref DistanceProxy proxyB,
             ref Transform xfA, ref Transform xfB, ref Vector2 r, ref Vector2 n, ref float lambda, ref Simplex simplex, float radius)
         {
-            Vector2 v = ComputeSupport(ref proxyA, ref proxyB, ref xfA, ref xfB, ref r, ref n, ref lambda);
+            Vector2 v = ComputeSupport(ref proxyA, ref proxyB, ref xfA, ref xfB, ref r);
 
-            if (IsNewDirectionNeeded(ref output, ref n, ref r, ref lambda, radius))
+            if (IsNewDirectionNeeded(ref n, ref r, ref lambda, radius))
             {
                 n = -v;
                 n = Vector2.Normalize(n);
@@ -357,11 +352,9 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="xfA">The xf</param>
         /// <param name="xfB">The xf</param>
         /// <param name="r">The </param>
-        /// <param name="n">The </param>
-        /// <param name="lambda">The lambda</param>
         /// <returns>The </returns>
         private static Vector2 ComputeSupport(ref DistanceProxy proxyA, ref DistanceProxy proxyB, ref Transform xfA, ref Transform xfB,
-            ref Vector2 r, ref Vector2 n, ref float lambda)
+            ref Vector2 r)
         {
             int indexA = proxyA.GetSupport(MathUtils.MulT(xfA.Rotation, -r));
             Vector2 wA = MathUtils.Mul(ref xfA, proxyA.GetVertex(indexA));
@@ -390,13 +383,12 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <summary>
         /// Describes whether is new direction needed
         /// </summary>
-        /// <param name="output">The output</param>
         /// <param name="n">The </param>
         /// <param name="r">The </param>
         /// <param name="lambda">The lambda</param>
         /// <param name="radius">The radius</param>
         /// <returns>The bool</returns>
-        private static bool IsNewDirectionNeeded(ref ShapeCastOutput output, ref Vector2 n, ref Vector2 r, ref float lambda, float radius)
+        private static bool IsNewDirectionNeeded(ref Vector2 n, ref Vector2 r, ref float lambda, float radius)
         {
             float vp = MathUtils.Dot(ref n, ref r);
             return vp - (2 * radius - Settings.PolygonRadius) > lambda * MathUtils.Dot(ref n, ref r);
@@ -405,8 +397,6 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <summary>
         /// Updates the simplex using the specified input
         /// </summary>
-        /// <param name="input">The input</param>
-        /// <param name="output">The output</param>
         /// <param name="proxyA">The proxy</param>
         /// <param name="proxyB">The proxy</param>
         /// <param name="xfA">The xf</param>
@@ -417,7 +407,7 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="lambda">The lambda</param>
         /// <param name="simplex">The simplex</param>
         /// <param name="radius">The radius</param>
-        private static void UpdateSimplex(ref ShapeCastInput input, ref ShapeCastOutput output, ref DistanceProxy proxyA, ref DistanceProxy proxyB,
+        private static void UpdateSimplex(ref DistanceProxy proxyA, ref DistanceProxy proxyB,
             ref Transform xfA, ref Transform xfB, ref Vector2 r, ref Vector2 v, ref Vector2 n, ref float lambda, ref Simplex simplex, float radius)
         {
             int indexA = proxyA.GetSupport(MathUtils.MulT(xfA.Rotation, -v));
@@ -486,9 +476,8 @@ namespace Alis.Core.Physic.Collision.Distance
         /// <param name="r">The </param>
         /// <param name="lambda">The lambda</param>
         /// <param name="n">The </param>
-        /// <param name="radius">The radius</param>
         /// <param name="radiusA">The radius</param>
-        private static void CalculateOutput(ref ShapeCastOutput output, ref Simplex simplex, ref Vector2 r, ref float lambda, ref Vector2 n, float radius, float radiusA)
+        private static void CalculateOutput(ref ShapeCastOutput output, ref Simplex simplex, ref Vector2 r, ref float lambda, ref Vector2 n, float radiusA)
         {
             simplex.GetWitnessPoints(out _, out Vector2 pointB);
 
