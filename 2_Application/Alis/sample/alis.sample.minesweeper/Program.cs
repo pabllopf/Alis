@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Sample.Minesweeper
 {
     /// <summary>

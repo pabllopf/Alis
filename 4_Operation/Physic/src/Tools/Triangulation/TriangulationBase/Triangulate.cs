@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Tools.ConvexHull;

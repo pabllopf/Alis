@@ -1,5 +1,4 @@
 using System;
-using System.Numerics;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
