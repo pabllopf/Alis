@@ -341,10 +341,9 @@ namespace Alis.Core.Physic.Collision.Broadphase
         }
 
         /// <summary>
-        ///     Ray-cast against the proxies in the tree. This relies on the callback to perform a exact ray-cast in the case
-        ///     were the proxy contains a Shape. The callback also performs the any collision filtering. This has performance
-        ///     roughly
-        ///     equal to k * log(n), where k is the number of collisions and n is the number of proxies in the tree.
+        /// Ray-cast against the proxies in the tree. This relies on the callback to perform an exact ray-cast in the case
+        /// where the proxy contains a Shape. The callback also performs any collision filtering. This has performance
+        /// roughly equal to k * log(n), where k is the number of collisions and n is the number of proxies in the tree.
         /// </summary>
         /// <param name="callback">A callback class that is called for each proxy that is hit by the ray.</param>
         /// <param name="input">The ray-cast input data. The ray extends from p1 to p1 + maxFraction * (p2 - p1).</param>
@@ -352,19 +351,10 @@ namespace Alis.Core.Physic.Collision.Broadphase
         {
             Vector2 p1 = input.Point1;
             Vector2 p2 = input.Point2;
-            Vector2 r = p2 - p1;
-            r = Vector2.Normalize(r);
-
-            Vector2 absV = MathUtils.Abs(new Vector2(-r.Y, r.X));
-
+            Vector2 r = CalculateNormalizedRayDirection(p1, p2);
+            Vector2 absV = CalculateAbsVector(r);
             float maxFraction = input.Fraction;
-
-            Aabb segmentAabb = new Aabb();
-            {
-                Vector2 t = p1 + maxFraction * (p2 - p1);
-                segmentAabb.LowerBound = Vector2.Min(p1, t);
-                segmentAabb.UpperBound = Vector2.Max(p1, t);
-            }
+            Aabb segmentAabb = CalculateSegmentAabb(p1, p2, maxFraction);
 
             raycastStack.Clear();
             raycastStack.Push(root);
@@ -379,48 +369,83 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
                 TreeNode<T> node = nodes[nodeId];
 
-                if (!Aabb.TestOverlap(ref node.Aabb, ref segmentAabb))
+                if (!IsAabbOverlap(node.Aabb, segmentAabb))
                 {
                     continue;
                 }
 
-                Vector2 c = node.Aabb.Center;
-                Vector2 h = node.Aabb.Extents;
-                float separation = Math.Abs(Vector2.Dot(new Vector2(-r.Y, r.X), p1 - c)) - Vector2.Dot(absV, h);
-                if (separation > 0.0f)
+                if (IsSeparationValid(r, p1, node.Aabb))
                 {
-                    continue;
-                }
-
-                if (node.IsLeaf())
-                {
-                    RayCastInput subInput;
-                    subInput.Point1 = input.Point1;
-                    subInput.Point2 = input.Point2;
-                    subInput.Fraction = maxFraction;
-
-                    float value = callback(subInput, nodeId);
-
-                    if (value == 0.0f)
+                    if (node.IsLeaf())
                     {
-                        return;
+                        maxFraction = HandleLeafNode(callback, input, maxFraction, nodeId);
+                        if (maxFraction == 0.0f)
+                        {
+                            return;
+                        }
                     }
-
-                    if (value > 0.0f)
+                    else
                     {
-                        maxFraction = value;
-                        Vector2 t = p1 + maxFraction * (p2 - p1);
-                        segmentAabb.LowerBound = Vector2.Min(p1, t);
-                        segmentAabb.UpperBound = Vector2.Max(p1, t);
+                        raycastStack.Push(node.Child1);
+                        raycastStack.Push(node.Child2);
                     }
-                }
-                else
-                {
-                    raycastStack.Push(node.Child1);
-                    raycastStack.Push(node.Child2);
                 }
             }
         }
+
+        private Vector2 CalculateNormalizedRayDirection(Vector2 p1, Vector2 p2)
+        {
+            Vector2 r = p2 - p1;
+            return Vector2.Normalize(r);
+        }
+
+        private Vector2 CalculateAbsVector(Vector2 vector)
+        {
+            return new Vector2(MathUtils.Abs(-vector.Y), MathUtils.Abs(vector.X));
+        }
+
+        private Aabb CalculateSegmentAabb(Vector2 p1, Vector2 p2, float maxFraction)
+        {
+            Vector2 t = p1 + maxFraction * (p2 - p1);
+            return new Aabb
+            {
+                LowerBound = Vector2.Min(p1, t),
+                UpperBound = Vector2.Max(p1, t)
+            };
+        }
+
+        private bool IsAabbOverlap(Aabb aabb1, Aabb aabb2)
+        {
+            return Aabb.TestOverlap(ref aabb1, ref aabb2);
+        }
+
+        private bool IsSeparationValid(Vector2 r, Vector2 p1, Aabb aabb)
+        {
+            Vector2 c = aabb.Center;
+            Vector2 h = aabb.Extents;
+            float separation = Math.Abs(Vector2.Dot(new Vector2(-r.Y, r.X), p1 - c)) - Vector2.Dot(CalculateAbsVector(r), h);
+            return separation <= 0.0f;
+        }
+
+        private float HandleLeafNode(Func<RayCastInput, int, float> callback, RayCastInput input, float maxFraction, int nodeId)
+        {
+            RayCastInput subInput = new RayCastInput
+            {
+                Point1 = input.Point1,
+                Point2 = input.Point2,
+                Fraction = maxFraction
+            };
+
+            float value = callback(subInput, nodeId);
+
+            if (value > 0.0f)
+            {
+                maxFraction = value;
+            }
+
+            return maxFraction;
+        }
+
 
         /// <summary>
         ///     Allocates the node
