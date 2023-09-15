@@ -102,7 +102,7 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
                         return first.Value;
 
                     case CurveLoopType.Linear:
-                        // linear y = a*x +b with a tangeant of last point
+                        // linear y = a*x +b with a target of last point
                         return first.Value - first.TangentIn * (first.Position - position);
 
                     case CurveLoopType.Cycle:
@@ -144,7 +144,7 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
                         return last.Value;
 
                     case CurveLoopType.Linear:
-                        // linear y = a*x +b with a tangeant of last point
+                        // linear y = a*x +b with a target of last point
                         return last.Value + first.TangentOut * (position - last.Position);
 
                     case CurveLoopType.Cycle:
@@ -163,7 +163,6 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
                         //go back on curve from end and target start 
                         // start-> end / end -> start
                         cycle = GetNumberOfCycle(position);
-                        virtualPos = position - cycle * (last.Position - first.Position);
                         if (0 == cycle % 2f) //if pair
                         {
                             virtualPos = position - cycle * (last.Position - first.Position);
@@ -192,7 +191,7 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
         /// <summary>Computes tangents for all keys in the collection.</summary>
         /// <param name="tangentInType">The tangent in-type. <see cref="CurveKey.TangentIn" /> for more details.</param>
         /// <param name="tangentOutType">The tangent out-type. <see cref="CurveKey.TangentOut" /> for more details.</param>
-        public void ComputeTangents(CurveTangent tangentInType, CurveTangent tangentOutType)
+        private void ComputeTangents(CurveTangent tangentInType, CurveTangent tangentOutType)
         {
             for (int i = 0; i < Keys.Count; ++i)
             {
@@ -212,17 +211,17 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
         /// <param name="keyIndex">The index of key in the collection.</param>
         /// <param name="tangentInType">The tangent in-type. <see cref="CurveKey.TangentIn" /> for more details.</param>
         /// <param name="tangentOutType">The tangent out-type. <see cref="CurveKey.TangentOut" /> for more details.</param>
-        public void ComputeTangent(int keyIndex, CurveTangent tangentInType, CurveTangent tangentOutType)
+        private void ComputeTangent(int keyIndex, CurveTangent tangentInType, CurveTangent tangentOutType)
         {
             // See http://msdn.microsoft.com/en-us/library/microsoft.xna.framework.curvetangent.aspx
 
             CurveKey key = Keys[keyIndex];
 
-            float p0, p, p1;
-            p0 = p = p1 = key.Position;
+            float p, p1;
+            float p0 = p = p1 = key.Position;
 
-            float v0, v, v1;
-            v0 = v = v1 = key.Value;
+            float v, v1;
+            float v0 = v = v1 = key.Value;
 
             if (keyIndex > 0)
             {
@@ -306,10 +305,9 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
         {
             //only for position in curve
             CurveKey prev = Keys[0];
-            CurveKey next;
             for (int i = 1; i < Keys.Count; ++i)
             {
-                next = Keys[i];
+                CurveKey next = Keys[i];
                 if (next.Position >= position)
                 {
                     if (prev.Continuity == CurveContinuity.Step)
@@ -327,8 +325,7 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
                     float tss = ts * t;
 
                     //After a lot of search on internet I have found all about spline function
-                    // and bezier (phi'sss ancien) but finaly use hermite curve 
-                    //http://en.wikipedia.org/wiki/Cubic_Hermite_spline
+                    // and bezier but finally use hermite curve 
                     //Position(t) = (2*t^3 - 3t^2 + 1)*P0 + (t^3 - 2t^2 + t)m0 + (-2t^3 + 3t^2)P1 + (t^3-t^2)m1
                     //with P0.value = prev.value , m0 = prev.tangentOut, P1= next.value, m1 = next.TangentIn
                     return (2 * tss - 3 * ts + 1f) * prev.Value + (tss - 2 * ts + t) * prev.TangentOut +
