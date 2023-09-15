@@ -72,10 +72,10 @@ namespace Alis.Core.Physic.Shared
         /// <summary>
         ///     Gets or sets the value of the attached to body
         /// </summary>
-        internal bool AttachedToBody { get; }
+        private bool AttachedToBody { get; } = true;
 
         /// <summary>
-        ///     You can add holes to this collection. It will get respected by some of the triangulation algoithms, but
+        ///     You can add holes to this collection. It will get respected by some of the triangulation algorithm, but
         ///     otherwise not used.
         /// </summary>
         public List<Vertices> Holes { get; set; }
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Shared
 
         /// <summary>Gets the previous index. Used for iterating all the edges with wrap-around.</summary>
         /// <param name="index">The current index</param>
-        public int PreviousIndex(int index) => index - 1 < 0 ? Count - 1 : index - 1;
+        private int PreviousIndex(int index) => index - 1 < 0 ? Count - 1 : index - 1;
 
         /// <summary>Gets the previous vertex. Used for iterating all the edges with wrap-around.</summary>
         /// <param name="index">The current index</param>
@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Shared
 
         /// <summary>Gets the signed area. If the area is less than 0, it indicates that the polygon is clockwise winded.</summary>
         /// <returns>The signed area</returns>
-        public float GetSignedArea()
+        private float GetSignedArea()
         {
             //The simplest polygon which can exist in the Euclidean plane has 3 sides.
             if (Count < 3)
@@ -126,7 +126,7 @@ namespace Alis.Core.Physic.Shared
 
         /// <summary>Gets the area.</summary>
         /// <returns></returns>
-        public float GetArea()
+        private float GetArea()
         {
             float area = GetSignedArea();
             return area < 0 ? -area : area;
@@ -236,9 +236,9 @@ namespace Alis.Core.Physic.Shared
             Scale(ref value);
         }
 
-        /// <summary>Scales the vertices with the specified vector.</summary>
+        /// <summary>Scale the vertices with the specified vector.</summary>
         /// <param name="value">The Value.</param>
-        public void Scale(ref Vector2 value)
+        private void Scale(ref Vector2 value)
         {
             Debug.Assert(!AttachedToBody, "Scaling vertices that are used by a Body can result in unstable behavior.");
 
@@ -562,7 +562,7 @@ namespace Alis.Core.Physic.Shared
         /// <param name="sourceArray">The source array</param>
         /// <param name="matrix">The matrix</param>
         /// <param name="destinationArray">The destination array</param>
-        public static void Transform(
+        private static void Transform(
             Vector2[] sourceArray,
             ref Matrix4X4F matrix,
             Vector2[] destinationArray)
@@ -583,7 +583,7 @@ namespace Alis.Core.Physic.Shared
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException">Destination array length is lesser than destinationIndex + length</exception>
         /// <exception cref="ArgumentException">Source array length is lesser than sourceIndex + length</exception>
-        public static void Transform(
+        private static void Transform(
             Vector2[] sourceArray,
             int sourceIndex,
             ref Matrix4X4F matrix,
@@ -614,8 +614,7 @@ namespace Alis.Core.Physic.Shared
             for (int x = 0; x < length; x++)
             {
                 Vector2 position = sourceArray[sourceIndex + x];
-                Vector2 destination = destinationArray[destinationIndex + x];
-                destination = new Vector2(
+                Vector2 destination = new Vector2(
                     position.X * matrix.M11 + position.Y * matrix.M21 + matrix.M41,
                     position.X * matrix.M12 + position.Y * matrix.M22 + matrix.M42
                 );
