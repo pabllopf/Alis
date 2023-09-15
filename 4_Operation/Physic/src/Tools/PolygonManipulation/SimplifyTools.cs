@@ -156,17 +156,33 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
         /// <param name="tolerance">The tolerance.</param>
         public static Vertices MergeParallelEdges(Vertices vertices, float tolerance)
         {
-            //From Eric Jordan's convex decomposition library
-
             if (vertices.Count <= 3)
             {
-                return vertices; //Can't do anything useful here to a triangle
+                return vertices; // Can't do anything useful here to a triangle
             }
 
             bool[] mergeMe = new bool[vertices.Count];
             int newNVertices = vertices.Count;
 
-            //Gather points to process
+            CalculateEdgesToMerge(vertices, tolerance, mergeMe, ref newNVertices);
+
+            if (newNVertices == vertices.Count || newNVertices == 0)
+            {
+                return vertices;
+            }
+
+            return CreateNewVerticesList(vertices, mergeMe, newNVertices);
+        }
+
+        /// <summary>
+        /// Calculates the edges to merge using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="tolerance">The tolerance</param>
+        /// <param name="mergeMe">The merge me</param>
+        /// <param name="newNVertices">The new vertices</param>
+        private static void CalculateEdgesToMerge(Vertices vertices, float tolerance, bool[] mergeMe, ref int newNVertices)
+        {
             for (int i = 0; i < vertices.Count; ++i)
             {
                 int lower = i == 0 ? vertices.Count - 1 : i - 1;
@@ -177,12 +193,12 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                 float dy0 = vertices[middle].Y - vertices[lower].Y;
                 float dx1 = vertices[upper].X - vertices[middle].X;
                 float dy1 = vertices[upper].Y - vertices[middle].Y;
-                float norm0 = (float) Math.Sqrt(dx0 * dx0 + dy0 * dy0);
-                float norm1 = (float) Math.Sqrt(dx1 * dx1 + dy1 * dy1);
+                float norm0 = (float)Math.Sqrt(dx0 * dx0 + dy0 * dy0);
+                float norm1 = (float)Math.Sqrt(dx1 * dx1 + dy1 * dy1);
 
                 if (!((norm0 > 0.0f) && (norm1 > 0.0f)) && (newNVertices > 3))
                 {
-                    //Merge identical points
+                    // Merge identical points
                     mergeMe[i] = true;
                     --newNVertices;
                 }
@@ -204,15 +220,18 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                     mergeMe[i] = false;
                 }
             }
+        }
 
-            if (newNVertices == vertices.Count || newNVertices == 0)
-            {
-                return vertices;
-            }
-
+        /// <summary>
+        /// Creates the new vertices list using the specified vertices
+        /// </summary>
+        /// <param name="vertices">The vertices</param>
+        /// <param name="mergeMe">The merge me</param>
+        /// <param name="newNVertices">The new vertices</param>
+        /// <returns>The new vertices</returns>
+        private static Vertices CreateNewVerticesList(Vertices vertices, bool[] mergeMe, int newNVertices)
+        {
             int currIndex = 0;
-
-            //Copy the vertices to a new list and clear the old
             Vertices newVertices = new Vertices(newNVertices);
 
             for (int i = 0; i < vertices.Count; ++i)
@@ -230,6 +249,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
 
             return newVertices;
         }
+
 
         /// <summary>Merges the identical points in the polygon.</summary>
         /// <param name="vertices">The vertices.</param>
