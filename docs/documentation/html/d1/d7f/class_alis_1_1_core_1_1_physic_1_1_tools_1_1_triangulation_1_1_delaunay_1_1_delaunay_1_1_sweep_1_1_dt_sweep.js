@@ -20,6 +20,7 @@ var class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_
     [ "IsEdgeSideOfTriangle", "d1/d7f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep.html#ae8408d5ddfefcfb646c8f9ac3b3b6d75", null ],
     [ "EdgeEvent", "d1/d7f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep.html#af32520eb26000cd328421b9d650e1ff0", null ],
     [ "FlipEdgeEvent", "d1/d7f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep.html#a73e937360f629cab3a62466b81b9bee0", null ],
+    [ "RotateSharedEdge", "d1/d7f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep.html#a29dff7e702cd1d38070d67748ccfb9d2", null ],
     [ "NextFlipPoint", "d1/d7f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep.html#a19f5e076bd882f262120150d74d834a5", null ],
     [ "NextFlipTriangle", "d1/d7f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep.html#a41742cc65eb205ed475875d3def62f07", null ],
     [ "FlipScanEdgeEvent", "d1/d7f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep.html#ab6ee01f4892a8f9bc6013594018a04ef", null ],
@@ -35,6 +36,10 @@ var class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_
     [ "BasinAngle", "d1/d7f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep.html#a59ef5ed9375845154b4c79d803d4c445", null ],
     [ "Fill", "d1/d7f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep.html#af2463526530cc90649cff55b3d6907d9", null ],
     [ "Legalize", "d1/d7f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep.html#a3b1d2c20b20459f293be5216ec7b355b", null ],
+    [ "HandleEdgeIsConstrained", "d1/d7f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep.html#a1df8016d9577a2ad74985e837b6ab2f0", null ],
+    [ "TryLegalizeTriangle", "d1/d7f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep.html#a3e728132bb9730e0eccf2723984b1de8", null ],
+    [ "ShouldNotLegalize", "d1/d7f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep.html#ae7d3b495449e08996f61129694289b39", null ],
+    [ "IsInsideCirCircle", "d1/d7f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep.html#a14babc39157d9a2100cbf421f2ba0d87", null ],
     [ "RotateTrianglePair", "d1/d7f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep.html#a80fb8ceb04fbebaabfb0d652a5789ec9", null ],
     [ "PiDiv2", "d1/d7f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep.html#a7dea1b75a5ef3844a8a2f2c44c383f69", null ],
     [ "Pi3Div4", "d1/d7f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep.html#a2af0619d9edba5a6b72ac3caca7adb40", null ]

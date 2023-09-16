@@ -99,13 +99,15 @@ $(document).ready(function(){initNavTree('d1/dd3/class_alis_1_1_core_1_1_physic_
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="../../df/d24/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Alis.Core.Physic.Collision.Distance.DistanceGjk Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>The Gilbert–Johnson–Keerthi distance algorithm that provides the distance between shapes. Using Voronoi regions (Christer Ericson) and Barycentric coordinates.  
+<p>The Gilbert distance algorithm that provides the distance between shapes. Using Voronoi regions and Barycentric coordinates.  
  <a href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
@@ -122,15 +124,51 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:a7d7853734e1b52e86258ab609f7678d7"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#a7d7853734e1b52e86258ab609f7678d7">GjkCalls</a></td></tr>
 <tr class="memdesc:a7d7853734e1b52e86258ab609f7678d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of calls made to the ComputeDistance() function. Note: This is only activated when Settings.EnableDiagnostics = true  <a href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#a7d7853734e1b52e86258ab609f7678d7">More...</a><br /></td></tr>
 <tr class="separator:a7d7853734e1b52e86258ab609f7678d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab96059e1d7411fccf10bd53fc541fd38"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#ab96059e1d7411fccf10bd53fc541fd38">GjkIters</a></td></tr>
-<tr class="memdesc:ab96059e1d7411fccf10bd53fc541fd38"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of iterations that was made on the last call to ComputeDistance(). Note: This is only activated when Settings.EnableDiagnostics = true  <a href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#ab96059e1d7411fccf10bd53fc541fd38">More...</a><br /></td></tr>
-<tr class="separator:ab96059e1d7411fccf10bd53fc541fd38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb732bc163fc939cb5ea3acd1c33d93f"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#abb732bc163fc939cb5ea3acd1c33d93f">GjkMaxIters</a></td></tr>
-<tr class="memdesc:abb732bc163fc939cb5ea3acd1c33d93f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum number of iterations calls to the CompteDistance() function. Note: This is only activated when Settings.EnableDiagnostics = true  <a href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#abb732bc163fc939cb5ea3acd1c33d93f">More...</a><br /></td></tr>
-<tr class="separator:abb732bc163fc939cb5ea3acd1c33d93f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42b366e5e7d349dd472c10cf6a05dd4a"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#a42b366e5e7d349dd472c10cf6a05dd4a">GjkIter</a></td></tr>
+<tr class="memdesc:a42b366e5e7d349dd472c10cf6a05dd4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of iterations that was made on the last call to ComputeDistance(). Note: This is only activated when Settings.EnableDiagnostics = true  <a href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#a42b366e5e7d349dd472c10cf6a05dd4a">More...</a><br /></td></tr>
+<tr class="separator:a42b366e5e7d349dd472c10cf6a05dd4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a27179d134b2d57a83fe2bf0fc07f8fc4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#a27179d134b2d57a83fe2bf0fc07f8fc4">InitializeOutput</a> (out <a class="el" href="../../da/dcd/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_shape_cast_output.html">ShapeCastOutput</a> output)</td></tr>
+<tr class="memdesc:a27179d134b2d57a83fe2bf0fc07f8fc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the output using the specified output  <a href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#a27179d134b2d57a83fe2bf0fc07f8fc4">More...</a><br /></td></tr>
+<tr class="separator:a27179d134b2d57a83fe2bf0fc07f8fc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24bb0112613418a292bde4307613a485"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#a24bb0112613418a292bde4307613a485">CalculateRadius</a> (<a class="el" href="../../d0/d11/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_proxy.html">DistanceProxy</a> proxy)</td></tr>
+<tr class="memdesc:a24bb0112613418a292bde4307613a485"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the radius using the specified proxy  <a href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#a24bb0112613418a292bde4307613a485">More...</a><br /></td></tr>
+<tr class="separator:a24bb0112613418a292bde4307613a485"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46c9fc119392207b21f5ab10eff8082a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d4/df6/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_simplex.html">Simplex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#a46c9fc119392207b21f5ab10eff8082a">InitializeSimplex</a> ()</td></tr>
+<tr class="memdesc:a46c9fc119392207b21f5ab10eff8082a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the simplex  <a href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#a46c9fc119392207b21f5ab10eff8082a">More...</a><br /></td></tr>
+<tr class="separator:a46c9fc119392207b21f5ab10eff8082a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a853700f8ee3d991398b6fedbf18f1481"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#a853700f8ee3d991398b6fedbf18f1481">IterateUntilConverged</a> (ref <a class="el" href="../../d0/d11/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_proxy.html">DistanceProxy</a> proxyA, ref <a class="el" href="../../d0/d11/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_proxy.html">DistanceProxy</a> proxyB, ref <a class="el" href="../../d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html">Transform</a> xfA, ref <a class="el" href="../../d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html">Transform</a> xfB, ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> r, ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> n, ref float lambda, ref <a class="el" href="../../d4/df6/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_simplex.html">Simplex</a> simplex, float radius)</td></tr>
+<tr class="memdesc:a853700f8ee3d991398b6fedbf18f1481"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether iterate until converged  <a href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#a853700f8ee3d991398b6fedbf18f1481">More...</a><br /></td></tr>
+<tr class="separator:a853700f8ee3d991398b6fedbf18f1481"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5876c8f737f12f5b89f3003a644afcc4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#a5876c8f737f12f5b89f3003a644afcc4">ComputeV</a> (ref <a class="el" href="../../d0/d11/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_proxy.html">DistanceProxy</a> proxyA, ref <a class="el" href="../../d0/d11/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_proxy.html">DistanceProxy</a> proxyB, ref <a class="el" href="../../d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html">Transform</a> xfA, ref <a class="el" href="../../d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html">Transform</a> xfB, ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> r, ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> n, ref float lambda, ref <a class="el" href="../../d4/df6/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_simplex.html">Simplex</a> simplex, float radius)</td></tr>
+<tr class="memdesc:a5876c8f737f12f5b89f3003a644afcc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the v using the specified input  <a href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#a5876c8f737f12f5b89f3003a644afcc4">More...</a><br /></td></tr>
+<tr class="separator:a5876c8f737f12f5b89f3003a644afcc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaba21be7a85aea44cf6ed787df756df0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#aaba21be7a85aea44cf6ed787df756df0">ComputeSupport</a> (ref <a class="el" href="../../d0/d11/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_proxy.html">DistanceProxy</a> proxyA, ref <a class="el" href="../../d0/d11/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_proxy.html">DistanceProxy</a> proxyB, ref <a class="el" href="../../d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html">Transform</a> xfA, ref <a class="el" href="../../d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html">Transform</a> xfB, ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> r)</td></tr>
+<tr class="memdesc:aaba21be7a85aea44cf6ed787df756df0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the support using the specified proxy a  <a href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#aaba21be7a85aea44cf6ed787df756df0">More...</a><br /></td></tr>
+<tr class="separator:aaba21be7a85aea44cf6ed787df756df0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6fc94179a70435300538c4d94a9de98"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#af6fc94179a70435300538c4d94a9de98">IsConverged</a> (<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> v, ref float lambda, float radius)</td></tr>
+<tr class="memdesc:af6fc94179a70435300538c4d94a9de98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether is converged  <a href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#af6fc94179a70435300538c4d94a9de98">More...</a><br /></td></tr>
+<tr class="separator:af6fc94179a70435300538c4d94a9de98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d1c887cfb8e25494f2647f1c84f6684"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#a2d1c887cfb8e25494f2647f1c84f6684">IsNewDirectionNeeded</a> (ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> n, ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> r, ref float lambda, float radius)</td></tr>
+<tr class="memdesc:a2d1c887cfb8e25494f2647f1c84f6684"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether is new direction needed  <a href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#a2d1c887cfb8e25494f2647f1c84f6684">More...</a><br /></td></tr>
+<tr class="separator:a2d1c887cfb8e25494f2647f1c84f6684"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3b58d07e4988ffdab887f181599285b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#ac3b58d07e4988ffdab887f181599285b">UpdateSimplex</a> (ref <a class="el" href="../../d0/d11/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_proxy.html">DistanceProxy</a> proxyA, ref <a class="el" href="../../d0/d11/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_proxy.html">DistanceProxy</a> proxyB, ref <a class="el" href="../../d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html">Transform</a> xfA, ref <a class="el" href="../../d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html">Transform</a> xfB, ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> r, ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> v, ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> n, ref float lambda, ref <a class="el" href="../../d4/df6/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_simplex.html">Simplex</a> simplex, float radius)</td></tr>
+<tr class="memdesc:ac3b58d07e4988ffdab887f181599285b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the simplex using the specified input  <a href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#ac3b58d07e4988ffdab887f181599285b">More...</a><br /></td></tr>
+<tr class="separator:ac3b58d07e4988ffdab887f181599285b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7b1249766a5ba5692c252e64c7e6a22"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#ac7b1249766a5ba5692c252e64c7e6a22">CalculateOutput</a> (ref <a class="el" href="../../da/dcd/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_shape_cast_output.html">ShapeCastOutput</a> output, ref <a class="el" href="../../d4/df6/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_simplex.html">Simplex</a> simplex, ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> r, ref float lambda, ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> n, float radiusA)</td></tr>
+<tr class="memdesc:ac7b1249766a5ba5692c252e64c7e6a22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the output using the specified output  <a href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#ac7b1249766a5ba5692c252e64c7e6a22">More...</a><br /></td></tr>
+<tr class="separator:ac7b1249766a5ba5692c252e64c7e6a22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a05847f500dedee80f15b9176f0ed9706"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#a05847f500dedee80f15b9176f0ed9706">_gjkMaxIter</a></td></tr>
+<tr class="memdesc:a05847f500dedee80f15b9176f0ed9706"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum number of iterations calls to the Distance() function. Note: This is only activated when Settings.EnableDiagnostics = true  <a href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html#a05847f500dedee80f15b9176f0ed9706">More...</a><br /></td></tr>
+<tr class="separator:a05847f500dedee80f15b9176f0ed9706"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The Gilbert–Johnson–Keerthi distance algorithm that provides the distance between shapes. Using Voronoi regions (Christer Ericson) and Barycentric coordinates. </p>
+<div class="textblock"><p>The Gilbert distance algorithm that provides the distance between shapes. Using Voronoi regions and Barycentric coordinates. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html#l00046">46</a> of file <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html">DistanceGJK.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
@@ -225,7 +263,668 @@ Static Public Attributes</h2></td></tr>
 <p>Perform a linear shape cast of shape B moving and shape A fixed. Determines the hit point, normal, and translation fraction. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if hit, false if there is no hit or an initial overlap</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html#l00221">221</a> of file <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html">DistanceGJK.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html#l00217">217</a> of file <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html">DistanceGJK.cs</a>.</p>
+
+</div>
+</div>
+<a id="a27179d134b2d57a83fe2bf0fc07f8fc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27179d134b2d57a83fe2bf0fc07f8fc4">&#9670;&nbsp;</a></span>InitializeOutput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Alis.Core.Physic.Collision.Distance.DistanceGjk.InitializeOutput </td>
+          <td>(</td>
+          <td class="paramtype">out <a class="el" href="../../da/dcd/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_shape_cast_output.html">ShapeCastOutput</a>&#160;</td>
+          <td class="paramname"><em>output</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initializes the output using the specified output </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">output</td><td>The output</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html#l00259">259</a> of file <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html">DistanceGJK.cs</a>.</p>
+
+</div>
+</div>
+<a id="a24bb0112613418a292bde4307613a485"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24bb0112613418a292bde4307613a485">&#9670;&nbsp;</a></span>CalculateRadius()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static float Alis.Core.Physic.Collision.Distance.DistanceGjk.CalculateRadius </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d0/d11/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_proxy.html">DistanceProxy</a>&#160;</td>
+          <td class="paramname"><em>proxy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculates the radius using the specified proxy </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">proxy</td><td>The proxy</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The float</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html#l00275">275</a> of file <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html">DistanceGJK.cs</a>.</p>
+
+</div>
+</div>
+<a id="a46c9fc119392207b21f5ab10eff8082a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46c9fc119392207b21f5ab10eff8082a">&#9670;&nbsp;</a></span>InitializeSimplex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="../../d4/df6/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_simplex.html">Simplex</a> Alis.Core.Physic.Collision.Distance.DistanceGjk.InitializeSimplex </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initializes the simplex </p>
+<dl class="section return"><dt>Returns</dt><dd>The simplex</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html#l00284">284</a> of file <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html">DistanceGJK.cs</a>.</p>
+
+</div>
+</div>
+<a id="a853700f8ee3d991398b6fedbf18f1481"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a853700f8ee3d991398b6fedbf18f1481">&#9670;&nbsp;</a></span>IterateUntilConverged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool Alis.Core.Physic.Collision.Distance.DistanceGjk.IterateUntilConverged </td>
+          <td>(</td>
+          <td class="paramtype">ref <a class="el" href="../../d0/d11/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_proxy.html">DistanceProxy</a>&#160;</td>
+          <td class="paramname"><em>proxyA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../d0/d11/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_proxy.html">DistanceProxy</a>&#160;</td>
+          <td class="paramname"><em>proxyB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html">Transform</a>&#160;</td>
+          <td class="paramname"><em>xfA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html">Transform</a>&#160;</td>
+          <td class="paramname"><em>xfB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref float&#160;</td>
+          <td class="paramname"><em>lambda</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../d4/df6/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_simplex.html">Simplex</a>&#160;</td>
+          <td class="paramname"><em>simplex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radius</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Describes whether iterate until converged </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">proxyA</td><td>The proxy</td></tr>
+    <tr><td class="paramname">proxyB</td><td>The proxy</td></tr>
+    <tr><td class="paramname">xfA</td><td>The xf</td></tr>
+    <tr><td class="paramname">xfB</td><td>The xf</td></tr>
+    <tr><td class="paramname">r</td><td>The </td></tr>
+    <tr><td class="paramname">n</td><td>The </td></tr>
+    <tr><td class="paramname">lambda</td><td>The lambda</td></tr>
+    <tr><td class="paramname">simplex</td><td>The simplex</td></tr>
+    <tr><td class="paramname">radius</td><td>The radius</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The bool</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html#l00305">305</a> of file <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html">DistanceGJK.cs</a>.</p>
+
+</div>
+</div>
+<a id="a5876c8f737f12f5b89f3003a644afcc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5876c8f737f12f5b89f3003a644afcc4">&#9670;&nbsp;</a></span>ComputeV()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Collision.Distance.DistanceGjk.ComputeV </td>
+          <td>(</td>
+          <td class="paramtype">ref <a class="el" href="../../d0/d11/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_proxy.html">DistanceProxy</a>&#160;</td>
+          <td class="paramname"><em>proxyA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../d0/d11/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_proxy.html">DistanceProxy</a>&#160;</td>
+          <td class="paramname"><em>proxyB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html">Transform</a>&#160;</td>
+          <td class="paramname"><em>xfA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html">Transform</a>&#160;</td>
+          <td class="paramname"><em>xfB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref float&#160;</td>
+          <td class="paramname"><em>lambda</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../d4/df6/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_simplex.html">Simplex</a>&#160;</td>
+          <td class="paramname"><em>simplex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radius</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the v using the specified input </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">proxyA</td><td>The proxy</td></tr>
+    <tr><td class="paramname">proxyB</td><td>The proxy</td></tr>
+    <tr><td class="paramname">xfA</td><td>The xf</td></tr>
+    <tr><td class="paramname">xfB</td><td>The xf</td></tr>
+    <tr><td class="paramname">r</td><td>The </td></tr>
+    <tr><td class="paramname">n</td><td>The </td></tr>
+    <tr><td class="paramname">lambda</td><td>The lambda</td></tr>
+    <tr><td class="paramname">simplex</td><td>The simplex</td></tr>
+    <tr><td class="paramname">radius</td><td>The radius</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html#l00332">332</a> of file <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html">DistanceGJK.cs</a>.</p>
+
+</div>
+</div>
+<a id="aaba21be7a85aea44cf6ed787df756df0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaba21be7a85aea44cf6ed787df756df0">&#9670;&nbsp;</a></span>ComputeSupport()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Collision.Distance.DistanceGjk.ComputeSupport </td>
+          <td>(</td>
+          <td class="paramtype">ref <a class="el" href="../../d0/d11/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_proxy.html">DistanceProxy</a>&#160;</td>
+          <td class="paramname"><em>proxyA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../d0/d11/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_proxy.html">DistanceProxy</a>&#160;</td>
+          <td class="paramname"><em>proxyB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html">Transform</a>&#160;</td>
+          <td class="paramname"><em>xfA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html">Transform</a>&#160;</td>
+          <td class="paramname"><em>xfB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>r</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Computes the support using the specified proxy a </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">proxyA</td><td>The proxy</td></tr>
+    <tr><td class="paramname">proxyB</td><td>The proxy</td></tr>
+    <tr><td class="paramname">xfA</td><td>The xf</td></tr>
+    <tr><td class="paramname">xfB</td><td>The xf</td></tr>
+    <tr><td class="paramname">r</td><td>The </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html#l00356">356</a> of file <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html">DistanceGJK.cs</a>.</p>
+
+</div>
+</div>
+<a id="af6fc94179a70435300538c4d94a9de98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6fc94179a70435300538c4d94a9de98">&#9670;&nbsp;</a></span>IsConverged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool Alis.Core.Physic.Collision.Distance.DistanceGjk.IsConverged </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref float&#160;</td>
+          <td class="paramname"><em>lambda</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radius</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Describes whether is converged </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>The </td></tr>
+    <tr><td class="paramname">lambda</td><td>The lambda</td></tr>
+    <tr><td class="paramname">radius</td><td>The radius</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The bool</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html#l00375">375</a> of file <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html">DistanceGJK.cs</a>.</p>
+
+</div>
+</div>
+<a id="a2d1c887cfb8e25494f2647f1c84f6684"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d1c887cfb8e25494f2647f1c84f6684">&#9670;&nbsp;</a></span>IsNewDirectionNeeded()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool Alis.Core.Physic.Collision.Distance.DistanceGjk.IsNewDirectionNeeded </td>
+          <td>(</td>
+          <td class="paramtype">ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref float&#160;</td>
+          <td class="paramname"><em>lambda</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radius</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Describes whether is new direction needed </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>The </td></tr>
+    <tr><td class="paramname">r</td><td>The </td></tr>
+    <tr><td class="paramname">lambda</td><td>The lambda</td></tr>
+    <tr><td class="paramname">radius</td><td>The radius</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The bool</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html#l00391">391</a> of file <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html">DistanceGJK.cs</a>.</p>
+
+</div>
+</div>
+<a id="ac3b58d07e4988ffdab887f181599285b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3b58d07e4988ffdab887f181599285b">&#9670;&nbsp;</a></span>UpdateSimplex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Alis.Core.Physic.Collision.Distance.DistanceGjk.UpdateSimplex </td>
+          <td>(</td>
+          <td class="paramtype">ref <a class="el" href="../../d0/d11/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_proxy.html">DistanceProxy</a>&#160;</td>
+          <td class="paramname"><em>proxyA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../d0/d11/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_proxy.html">DistanceProxy</a>&#160;</td>
+          <td class="paramname"><em>proxyB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html">Transform</a>&#160;</td>
+          <td class="paramname"><em>xfA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../d0/d85/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_transform.html">Transform</a>&#160;</td>
+          <td class="paramname"><em>xfB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref float&#160;</td>
+          <td class="paramname"><em>lambda</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../d4/df6/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_simplex.html">Simplex</a>&#160;</td>
+          <td class="paramname"><em>simplex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radius</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Updates the simplex using the specified input </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">proxyA</td><td>The proxy</td></tr>
+    <tr><td class="paramname">proxyB</td><td>The proxy</td></tr>
+    <tr><td class="paramname">xfA</td><td>The xf</td></tr>
+    <tr><td class="paramname">xfB</td><td>The xf</td></tr>
+    <tr><td class="paramname">r</td><td>The </td></tr>
+    <tr><td class="paramname">v</td><td>The </td></tr>
+    <tr><td class="paramname">n</td><td>The </td></tr>
+    <tr><td class="paramname">lambda</td><td>The lambda</td></tr>
+    <tr><td class="paramname">simplex</td><td>The simplex</td></tr>
+    <tr><td class="paramname">radius</td><td>The radius</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html#l00410">410</a> of file <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html">DistanceGJK.cs</a>.</p>
+
+</div>
+</div>
+<a id="ac7b1249766a5ba5692c252e64c7e6a22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7b1249766a5ba5692c252e64c7e6a22">&#9670;&nbsp;</a></span>CalculateOutput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Alis.Core.Physic.Collision.Distance.DistanceGjk.CalculateOutput </td>
+          <td>(</td>
+          <td class="paramtype">ref <a class="el" href="../../da/dcd/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_shape_cast_output.html">ShapeCastOutput</a>&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../d4/df6/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_simplex.html">Simplex</a>&#160;</td>
+          <td class="paramname"><em>simplex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref float&#160;</td>
+          <td class="paramname"><em>lambda</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radiusA</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculates the output using the specified output </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">output</td><td>The output</td></tr>
+    <tr><td class="paramname">simplex</td><td>The simplex</td></tr>
+    <tr><td class="paramname">r</td><td>The </td></tr>
+    <tr><td class="paramname">lambda</td><td>The lambda</td></tr>
+    <tr><td class="paramname">n</td><td>The </td></tr>
+    <tr><td class="paramname">radiusA</td><td>The radius</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html#l00480">480</a> of file <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html">DistanceGJK.cs</a>.</p>
 
 </div>
 </div>
@@ -256,8 +955,8 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ab96059e1d7411fccf10bd53fc541fd38"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab96059e1d7411fccf10bd53fc541fd38">&#9670;&nbsp;</a></span>GjkIters</h2>
+<a id="a42b366e5e7d349dd472c10cf6a05dd4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42b366e5e7d349dd472c10cf6a05dd4a">&#9670;&nbsp;</a></span>GjkIter</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -266,7 +965,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int Alis.Core.Physic.Collision.Distance.DistanceGjk.GjkIters</td>
+          <td class="memname">int Alis.Core.Physic.Collision.Distance.DistanceGjk.GjkIter</td>
         </tr>
       </table>
   </td>
@@ -282,8 +981,8 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="abb732bc163fc939cb5ea3acd1c33d93f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb732bc163fc939cb5ea3acd1c33d93f">&#9670;&nbsp;</a></span>GjkMaxIters</h2>
+<a id="a05847f500dedee80f15b9176f0ed9706"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05847f500dedee80f15b9176f0ed9706">&#9670;&nbsp;</a></span>_gjkMaxIter</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -292,17 +991,17 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int Alis.Core.Physic.Collision.Distance.DistanceGjk.GjkMaxIters</td>
+          <td class="memname">int Alis.Core.Physic.Collision.Distance.DistanceGjk._gjkMaxIter</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>The maximum number of iterations calls to the CompteDistance() function. Note: This is only activated when Settings.EnableDiagnostics = true </p>
+<p>The maximum number of iterations calls to the Distance() function. Note: This is only activated when Settings.EnableDiagnostics = true </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html#l00064">64</a> of file <a class="el" href="../../d2/d76/_distance_g_j_k_8cs_source.html">DistanceGJK.cs</a>.</p>
 
@@ -315,7 +1014,7 @@ Static Public Attributes</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../d7/db3/namespace_alis_1_1_core_1_1_physic.html">Physic</a></li><li class="navelem"><a class="el" href="../../d3/d49/namespace_alis_1_1_core_1_1_physic_1_1_collision.html">Collision</a></li><li class="navelem"><a class="el" href="../../d6/d41/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance.html">Distance</a></li><li class="navelem"><a class="el" href="../../d1/dd3/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_gjk.html">DistanceGjk</a></li>
     <li class="footer">
-      <a>Generated on | Fri Sep 15 2023 |</a>
+      <a>Generated on | Sat Sep 16 2023 |</a>
     </li>
   </ul>
 </div>

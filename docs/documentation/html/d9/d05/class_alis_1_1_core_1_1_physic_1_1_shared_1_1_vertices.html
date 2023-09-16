@@ -98,8 +98,9 @@ $(document).ready(function(){initNavTree('d9/d05/class_alis_1_1_core_1_1_physic_
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="../../df/dc8/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Alis.Core.Physic.Shared.Vertices Class Reference</div>  </div>
@@ -111,7 +112,7 @@ $(document).ready(function(){initNavTree('d9/d05/class_alis_1_1_core_1_1_physic_
 
 <p>Inherits List&lt; Vector2 &gt;.</p>
 
-<p>Inherited by <a class="el" href="../../db/de9/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_earclip_1_1_triangle.html">Alis.Core.Physic.Tools.Triangulation.Earclip.Triangle</a>.</p>
+<p>Inherited by <a class="el" href="../../d3/d35/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_ear_clip_1_1_triangle.html">Alis.Core.Physic.Tools.Triangulation.EarClip.Triangle</a>.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -130,18 +131,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a93f0222aa940e508f5568bd1fbe500c6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a93f0222aa940e508f5568bd1fbe500c6">NextVertex</a> (int index)</td></tr>
 <tr class="memdesc:a93f0222aa940e508f5568bd1fbe500c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the next vertex. Used for iterating all the edges with wrap-around.  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a93f0222aa940e508f5568bd1fbe500c6">More...</a><br /></td></tr>
 <tr class="separator:a93f0222aa940e508f5568bd1fbe500c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ba72d219b7cb0eb05484c1773df0ab9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a3ba72d219b7cb0eb05484c1773df0ab9">PreviousIndex</a> (int index)</td></tr>
-<tr class="memdesc:a3ba72d219b7cb0eb05484c1773df0ab9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the previous index. Used for iterating all the edges with wrap-around.  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a3ba72d219b7cb0eb05484c1773df0ab9">More...</a><br /></td></tr>
-<tr class="separator:a3ba72d219b7cb0eb05484c1773df0ab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1748e192991851e13e9c6bbc8a65d6ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a1748e192991851e13e9c6bbc8a65d6ca">PreviousVertex</a> (int index)</td></tr>
 <tr class="memdesc:a1748e192991851e13e9c6bbc8a65d6ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the previous vertex. Used for iterating all the edges with wrap-around.  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a1748e192991851e13e9c6bbc8a65d6ca">More...</a><br /></td></tr>
 <tr class="separator:a1748e192991851e13e9c6bbc8a65d6ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9a3e19339a98bf312d0197bc05de216"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#ae9a3e19339a98bf312d0197bc05de216">GetSignedArea</a> ()</td></tr>
-<tr class="memdesc:ae9a3e19339a98bf312d0197bc05de216"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the signed area. If the area is less than 0, it indicates that the polygon is clockwise winded.  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#ae9a3e19339a98bf312d0197bc05de216">More...</a><br /></td></tr>
-<tr class="separator:ae9a3e19339a98bf312d0197bc05de216"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac259835da598e39c321e55112e052f14"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#ac259835da598e39c321e55112e052f14">GetArea</a> ()</td></tr>
-<tr class="memdesc:ac259835da598e39c321e55112e052f14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the area.  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#ac259835da598e39c321e55112e052f14">More...</a><br /></td></tr>
-<tr class="separator:ac259835da598e39c321e55112e052f14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13c5ecf1d7e97738f0c880ca7bdac583"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a13c5ecf1d7e97738f0c880ca7bdac583">GetCentroid</a> ()</td></tr>
 <tr class="memdesc:a13c5ecf1d7e97738f0c880ca7bdac583"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the centroid.  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a13c5ecf1d7e97738f0c880ca7bdac583">More...</a><br /></td></tr>
 <tr class="separator:a13c5ecf1d7e97738f0c880ca7bdac583"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -157,9 +149,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a650c1ea65705c0a482181ae7e7a17f55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a650c1ea65705c0a482181ae7e7a17f55">Scale</a> (<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> value)</td></tr>
 <tr class="memdesc:a650c1ea65705c0a482181ae7e7a17f55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scales the vertices with the specified vector.  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a650c1ea65705c0a482181ae7e7a17f55">More...</a><br /></td></tr>
 <tr class="separator:a650c1ea65705c0a482181ae7e7a17f55"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1b98d121c692e1f03a3de5b7db3ea48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#aa1b98d121c692e1f03a3de5b7db3ea48">Scale</a> (ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> value)</td></tr>
-<tr class="memdesc:aa1b98d121c692e1f03a3de5b7db3ea48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scales the vertices with the specified vector.  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#aa1b98d121c692e1f03a3de5b7db3ea48">More...</a><br /></td></tr>
-<tr class="separator:aa1b98d121c692e1f03a3de5b7db3ea48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c7d2b03fd55c8ede48d4692a55973a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a9c7d2b03fd55c8ede48d4692a55973a1">Rotate</a> (float value)</td></tr>
 <tr class="memdesc:a9c7d2b03fd55c8ede48d4692a55973a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate the vertices with the defined value in radians. Warning: Using this method on an active set of vertices of a Body, will cause problems with collisions. Use Body.Rotation instead.  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a9c7d2b03fd55c8ede48d4692a55973a1">More...</a><br /></td></tr>
 <tr class="separator:a9c7d2b03fd55c8ede48d4692a55973a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -200,23 +189,50 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a377bf298e93a03ab56c6df3e9aebf7b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the string  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a377bf298e93a03ab56c6df3e9aebf7b0">More...</a><br /></td></tr>
 <tr class="separator:a377bf298e93a03ab56c6df3e9aebf7b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:a58805418b61380d6d377a0f159c54b97"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a58805418b61380d6d377a0f159c54b97">AttachedToBody</a> = true<code> [get]</code></td></tr>
+<tr class="memdesc:a58805418b61380d6d377a0f159c54b97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the value of the attached to body  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a58805418b61380d6d377a0f159c54b97">More...</a><br /></td></tr>
+<tr class="separator:a58805418b61380d6d377a0f159c54b97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40e92d7facc08050f0ce9cbe914e8dd8"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html">Vertices</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a40e92d7facc08050f0ce9cbe914e8dd8">Holes</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a40e92d7facc08050f0ce9cbe914e8dd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">You can add holes to this collection. It will get respected by some of the triangulation algorithm, but otherwise not used.  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a40e92d7facc08050f0ce9cbe914e8dd8">More...</a><br /></td></tr>
+<tr class="separator:a40e92d7facc08050f0ce9cbe914e8dd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a3ba72d219b7cb0eb05484c1773df0ab9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a3ba72d219b7cb0eb05484c1773df0ab9">PreviousIndex</a> (int index)</td></tr>
+<tr class="memdesc:a3ba72d219b7cb0eb05484c1773df0ab9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the previous index. Used for iterating all the edges with wrap-around.  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a3ba72d219b7cb0eb05484c1773df0ab9">More...</a><br /></td></tr>
+<tr class="separator:a3ba72d219b7cb0eb05484c1773df0ab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9a3e19339a98bf312d0197bc05de216"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#ae9a3e19339a98bf312d0197bc05de216">GetSignedArea</a> ()</td></tr>
+<tr class="memdesc:ae9a3e19339a98bf312d0197bc05de216"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the signed area. If the area is less than 0, it indicates that the polygon is clockwise winded.  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#ae9a3e19339a98bf312d0197bc05de216">More...</a><br /></td></tr>
+<tr class="separator:ae9a3e19339a98bf312d0197bc05de216"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac259835da598e39c321e55112e052f14"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#ac259835da598e39c321e55112e052f14">GetArea</a> ()</td></tr>
+<tr class="memdesc:ac259835da598e39c321e55112e052f14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the area.  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#ac259835da598e39c321e55112e052f14">More...</a><br /></td></tr>
+<tr class="separator:ac259835da598e39c321e55112e052f14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1b98d121c692e1f03a3de5b7db3ea48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#aa1b98d121c692e1f03a3de5b7db3ea48">Scale</a> (ref <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> value)</td></tr>
+<tr class="memdesc:aa1b98d121c692e1f03a3de5b7db3ea48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scale the vertices with the specified vector.  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#aa1b98d121c692e1f03a3de5b7db3ea48">More...</a><br /></td></tr>
+<tr class="separator:aa1b98d121c692e1f03a3de5b7db3ea48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadb4aeaf0c2a17124cd84d5486159e0a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#aadb4aeaf0c2a17124cd84d5486159e0a">CalculateWindingNumber</a> (<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> point)</td></tr>
+<tr class="memdesc:aadb4aeaf0c2a17124cd84d5486159e0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the winding number using the specified point  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#aadb4aeaf0c2a17124cd84d5486159e0a">More...</a><br /></td></tr>
+<tr class="separator:aadb4aeaf0c2a17124cd84d5486159e0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59accfa22aef551951058809232809cd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a59accfa22aef551951058809232809cd">IsPointOnEdge</a> (<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> point, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> p1, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> p2)</td></tr>
+<tr class="memdesc:a59accfa22aef551951058809232809cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether this instance is point on edge  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a59accfa22aef551951058809232809cd">More...</a><br /></td></tr>
+<tr class="separator:a59accfa22aef551951058809232809cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7636e3d912e056bc9bb3acdd245529c1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a7636e3d912e056bc9bb3acdd245529c1">IsEdgeIntersectingRay</a> (<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> point, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> p1, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> p2)</td></tr>
+<tr class="memdesc:a7636e3d912e056bc9bb3acdd245529c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether this instance is edge intersecting ray  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a7636e3d912e056bc9bb3acdd245529c1">More...</a><br /></td></tr>
+<tr class="separator:a7636e3d912e056bc9bb3acdd245529c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8aa42ea580eebf2a01e3e652596c37a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#ac8aa42ea580eebf2a01e3e652596c37a">DetermineWindingDirection</a> (<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> point, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> p1, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> p2)</td></tr>
+<tr class="memdesc:ac8aa42ea580eebf2a01e3e652596c37a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the winding direction using the specified point  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#ac8aa42ea580eebf2a01e3e652596c37a">More...</a><br /></td></tr>
+<tr class="separator:ac8aa42ea580eebf2a01e3e652596c37a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
 <tr class="memitem:af1a9a0b487ad205a9c884ba5f7b79655"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#af1a9a0b487ad205a9c884ba5f7b79655">Transform</a> (<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>[] sourceArray, ref <a class="el" href="../../d6/d41/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4_x4_f.html">Matrix4X4F</a> matrix, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>[] destinationArray)</td></tr>
 <tr class="memdesc:af1a9a0b487ad205a9c884ba5f7b79655"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transforms the source array  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#af1a9a0b487ad205a9c884ba5f7b79655">More...</a><br /></td></tr>
 <tr class="separator:af1a9a0b487ad205a9c884ba5f7b79655"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae829a8f8c9aab1d72b178b481ae993d0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#ae829a8f8c9aab1d72b178b481ae993d0">Transform</a> (<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>[] sourceArray, int sourceIndex, ref <a class="el" href="../../d6/d41/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4_x4_f.html">Matrix4X4F</a> matrix, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>[] destinationArray, int destinationIndex, int length)</td></tr>
 <tr class="memdesc:ae829a8f8c9aab1d72b178b481ae993d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transforms the source array  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#ae829a8f8c9aab1d72b178b481ae993d0">More...</a><br /></td></tr>
 <tr class="separator:ae829a8f8c9aab1d72b178b481ae993d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
-Properties</h2></td></tr>
-<tr class="memitem:a58805418b61380d6d377a0f159c54b97"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a58805418b61380d6d377a0f159c54b97">AttachedToBody</a><code> [get]</code></td></tr>
-<tr class="memdesc:a58805418b61380d6d377a0f159c54b97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the value of the attached to body  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a58805418b61380d6d377a0f159c54b97">More...</a><br /></td></tr>
-<tr class="separator:a58805418b61380d6d377a0f159c54b97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40e92d7facc08050f0ce9cbe914e8dd8"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html">Vertices</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a40e92d7facc08050f0ce9cbe914e8dd8">Holes</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a40e92d7facc08050f0ce9cbe914e8dd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">You can add holes to this collection. It will get respected by some of the triangulation algoithms, but otherwise not used.  <a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a40e92d7facc08050f0ce9cbe914e8dd8">More...</a><br /></td></tr>
-<tr class="separator:a40e92d7facc08050f0ce9cbe914e8dd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The vertices class </p>
@@ -359,6 +375,9 @@ Properties</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">int Alis.Core.Physic.Shared.Vertices.PreviousIndex </td>
@@ -368,6 +387,11 @@ Properties</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Gets the previous index. Used for iterating all the edges with wrap-around. </p>
@@ -411,6 +435,9 @@ Properties</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">float Alis.Core.Physic.Shared.Vertices.GetSignedArea </td>
@@ -419,6 +446,11 @@ Properties</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Gets the signed area. If the area is less than 0, it indicates that the polygon is clockwise winded. </p>
@@ -433,6 +465,9 @@ Properties</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">float Alis.Core.Physic.Shared.Vertices.GetArea </td>
@@ -441,6 +476,11 @@ Properties</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Gets the area. </p>
@@ -582,6 +622,9 @@ Properties</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void Alis.Core.Physic.Shared.Vertices.Scale </td>
@@ -591,9 +634,14 @@ Properties</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Scales the vertices with the specified vector. </p>
+<p>Scale the vertices with the specified vector. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">value</td><td>The Value.</td></tr>
@@ -815,6 +863,208 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="aadb4aeaf0c2a17124cd84d5486159e0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadb4aeaf0c2a17124cd84d5486159e0a">&#9670;&nbsp;</a></span>CalculateWindingNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Alis.Core.Physic.Shared.Vertices.CalculateWindingNumber </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>point</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculates the winding number using the specified point </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">point</td><td>The point</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The winding number</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d80/_vertices_8cs_source.html#l00479">479</a> of file <a class="el" href="../../d1/d80/_vertices_8cs_source.html">Vertices.cs</a>.</p>
+
+</div>
+</div>
+<a id="a59accfa22aef551951058809232809cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59accfa22aef551951058809232809cd">&#9670;&nbsp;</a></span>IsPointOnEdge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Alis.Core.Physic.Shared.Vertices.IsPointOnEdge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>point</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>p1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>p2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Describes whether this instance is point on edge </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">point</td><td>The point</td></tr>
+    <tr><td class="paramname">p1</td><td>The </td></tr>
+    <tr><td class="paramname">p2</td><td>The </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The bool</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d80/_vertices_8cs_source.html#l00509">509</a> of file <a class="el" href="../../d1/d80/_vertices_8cs_source.html">Vertices.cs</a>.</p>
+
+</div>
+</div>
+<a id="a7636e3d912e056bc9bb3acdd245529c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7636e3d912e056bc9bb3acdd245529c1">&#9670;&nbsp;</a></span>IsEdgeIntersectingRay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Alis.Core.Physic.Shared.Vertices.IsEdgeIntersectingRay </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>point</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>p1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>p2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Describes whether this instance is edge intersecting ray </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">point</td><td>The point</td></tr>
+    <tr><td class="paramname">p1</td><td>The </td></tr>
+    <tr><td class="paramname">p2</td><td>The </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The bool</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d80/_vertices_8cs_source.html#l00523">523</a> of file <a class="el" href="../../d1/d80/_vertices_8cs_source.html">Vertices.cs</a>.</p>
+
+</div>
+</div>
+<a id="ac8aa42ea580eebf2a01e3e652596c37a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8aa42ea580eebf2a01e3e652596c37a">&#9670;&nbsp;</a></span>DetermineWindingDirection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Alis.Core.Physic.Shared.Vertices.DetermineWindingDirection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>point</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>p1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>p2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Determines the winding direction using the specified point </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">point</td><td>The point</td></tr>
+    <tr><td class="paramname">p1</td><td>The </td></tr>
+    <tr><td class="paramname">p2</td><td>The </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The int</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d80/_vertices_8cs_source.html#l00542">542</a> of file <a class="el" href="../../d1/d80/_vertices_8cs_source.html">Vertices.cs</a>.</p>
+
+</div>
+</div>
 <a id="a099ceeb3028111e079eaa07468e26837"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a099ceeb3028111e079eaa07468e26837">&#9670;&nbsp;</a></span>PointInPolygonAngle()</h2>
 
@@ -833,7 +1083,7 @@ Properties</h2></td></tr>
 
 <p>Compute the sum of the angles made between the test point and each pair of points making up the polygon. If this sum is 2pi then the point is an interior point, if 0 then the point is an exterior point. ref: <a href="http://ozviz.wasp.uwa.edu.au/~pbourke/geometry/insidepoly/">http://ozviz.wasp.uwa.edu.au/~pbourke/geometry/insidepoly/</a> - Solution 2 </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d80/_vertices_8cs_source.html#l00512">512</a> of file <a class="el" href="../../d1/d80/_vertices_8cs_source.html">Vertices.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d80/_vertices_8cs_source.html#l00559">559</a> of file <a class="el" href="../../d1/d80/_vertices_8cs_source.html">Vertices.cs</a>.</p>
 
 </div>
 </div>
@@ -861,7 +1111,7 @@ Properties</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d80/_vertices_8cs_source.html#l00536">536</a> of file <a class="el" href="../../d1/d80/_vertices_8cs_source.html">Vertices.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d80/_vertices_8cs_source.html#l00583">583</a> of file <a class="el" href="../../d1/d80/_vertices_8cs_source.html">Vertices.cs</a>.</p>
 
 </div>
 </div>
@@ -900,7 +1150,7 @@ Properties</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -915,7 +1165,7 @@ Properties</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d80/_vertices_8cs_source.html#l00565">565</a> of file <a class="el" href="../../d1/d80/_vertices_8cs_source.html">Vertices.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d80/_vertices_8cs_source.html#l00612">612</a> of file <a class="el" href="../../d1/d80/_vertices_8cs_source.html">Vertices.cs</a>.</p>
 
 </div>
 </div>
@@ -972,7 +1222,7 @@ Properties</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -999,7 +1249,7 @@ Properties</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d80/_vertices_8cs_source.html#l00586">586</a> of file <a class="el" href="../../d1/d80/_vertices_8cs_source.html">Vertices.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d80/_vertices_8cs_source.html#l00633">633</a> of file <a class="el" href="../../d1/d80/_vertices_8cs_source.html">Vertices.cs</a>.</p>
 
 </div>
 </div>
@@ -1020,7 +1270,7 @@ Properties</h2></td></tr>
 
 <p>Flips the horizontally </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d80/_vertices_8cs_source.html#l00631">631</a> of file <a class="el" href="../../d1/d80/_vertices_8cs_source.html">Vertices.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d80/_vertices_8cs_source.html#l00677">677</a> of file <a class="el" href="../../d1/d80/_vertices_8cs_source.html">Vertices.cs</a>.</p>
 
 </div>
 </div>
@@ -1041,7 +1291,7 @@ Properties</h2></td></tr>
 
 <p>Flips the vertically </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d80/_vertices_8cs_source.html#l00642">642</a> of file <a class="el" href="../../d1/d80/_vertices_8cs_source.html">Vertices.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d80/_vertices_8cs_source.html#l00688">688</a> of file <a class="el" href="../../d1/d80/_vertices_8cs_source.html">Vertices.cs</a>.</p>
 
 </div>
 </div>
@@ -1063,7 +1313,7 @@ Properties</h2></td></tr>
 <p>Returns the string </p>
 <dl class="section return"><dt>Returns</dt><dd>The string</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d80/_vertices_8cs_source.html#l00654">654</a> of file <a class="el" href="../../d1/d80/_vertices_8cs_source.html">Vertices.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d80/_vertices_8cs_source.html#l00700">700</a> of file <a class="el" href="../../d1/d80/_vertices_8cs_source.html">Vertices.cs</a>.</p>
 
 </div>
 </div>
@@ -1078,12 +1328,12 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool Alis.Core.Physic.Shared.Vertices.AttachedToBody</td>
+          <td class="memname">bool Alis.Core.Physic.Shared.Vertices.AttachedToBody = true</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">package</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1114,7 +1364,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>You can add holes to this collection. It will get respected by some of the triangulation algoithms, but otherwise not used. </p>
+<p>You can add holes to this collection. It will get respected by some of the triangulation algorithm, but otherwise not used. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d1/d80/_vertices_8cs_source.html#l00081">81</a> of file <a class="el" href="../../d1/d80/_vertices_8cs_source.html">Vertices.cs</a>.</p>
 
@@ -1127,7 +1377,7 @@ Properties</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../d7/db3/namespace_alis_1_1_core_1_1_physic.html">Physic</a></li><li class="navelem"><a class="el" href="../../dd/df6/namespace_alis_1_1_core_1_1_physic_1_1_shared.html">Shared</a></li><li class="navelem"><a class="el" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html">Vertices</a></li>
     <li class="footer">
-      <a>Generated on | Fri Sep 15 2023 |</a>
+      <a>Generated on | Sat Sep 16 2023 |</a>
     </li>
   </ul>
 </div>

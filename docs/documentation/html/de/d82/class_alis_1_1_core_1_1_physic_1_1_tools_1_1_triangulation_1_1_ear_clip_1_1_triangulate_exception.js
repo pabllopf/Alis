@@ -1,0 +1,4 @@
+var class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_ear_clip_1_1_triangulate_exception =
+[
+    [ "TriangulateException", "de/d82/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_ear_clip_1_1_triangulate_exception.html#abd7e6ac0cc3e154ed6ceaec032f73606", null ]
+];

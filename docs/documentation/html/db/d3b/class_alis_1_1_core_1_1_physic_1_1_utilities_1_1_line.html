@@ -98,6 +98,7 @@ $(document).ready(function(){initNavTree('db/d3b/class_alis_1_1_core_1_1_physic_
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="../../de/d3c/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_line-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Alis.Core.Physic.Utilities.Line Class Reference</div>  </div>
@@ -127,11 +128,29 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aee4acfd3ca7825941555ab635936820b"><td class="memItemLeft" align="right" valign="top">static List&lt; <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d3b/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_line.html#aee4acfd3ca7825941555ab635936820b">LineSegmentAabbIntersect</a> (<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> point1, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> point2, <a class="el" href="../../d8/deb/struct_alis_1_1_core_1_1_physic_1_1_shared_1_1_aabb.html">Aabb</a> aabb)</td></tr>
 <tr class="memdesc:aee4acfd3ca7825941555ab635936820b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lines the segment aabb intersect using the specified point 1  <a href="../../db/d3b/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_line.html#aee4acfd3ca7825941555ab635936820b">More...</a><br /></td></tr>
 <tr class="separator:aee4acfd3ca7825941555ab635936820b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a07ecccd2a352062524a5dd8bd093695c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d3b/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_line.html#a07ecccd2a352062524a5dd8bd093695c">IsDenominatorZero</a> (float denom)</td></tr>
+<tr class="memdesc:a07ecccd2a352062524a5dd8bd093695c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether is denominator zero  <a href="../../db/d3b/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_line.html#a07ecccd2a352062524a5dd8bd093695c">More...</a><br /></td></tr>
+<tr class="separator:a07ecccd2a352062524a5dd8bd093695c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e7bbab7fdfab46a48dd4c78cc5fff80"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d3b/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_line.html#a5e7bbab7fdfab46a48dd4c78cc5fff80">CalculateUa</a> (float a, float c, float d, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> point1, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> point3, float denom)</td></tr>
+<tr class="memdesc:a5e7bbab7fdfab46a48dd4c78cc5fff80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the ua using the specified a  <a href="../../db/d3b/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_line.html#a5e7bbab7fdfab46a48dd4c78cc5fff80">More...</a><br /></td></tr>
+<tr class="separator:a5e7bbab7fdfab46a48dd4c78cc5fff80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f6ac98b374bcaa6cdb2b3f997a246f9"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d3b/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_line.html#a7f6ac98b374bcaa6cdb2b3f997a246f9">CalculateUb</a> (float b, float d, float a, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> point1, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> point3, float denom)</td></tr>
+<tr class="memdesc:a7f6ac98b374bcaa6cdb2b3f997a246f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the ub using the specified b  <a href="../../db/d3b/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_line.html#a7f6ac98b374bcaa6cdb2b3f997a246f9">More...</a><br /></td></tr>
+<tr class="separator:a7f6ac98b374bcaa6cdb2b3f997a246f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27648e0fb69f4011f66bf2359dca561f"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d3b/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_line.html#a27648e0fb69f4011f66bf2359dca561f">IsInRange</a> (float value, bool isSegment)</td></tr>
+<tr class="memdesc:a27648e0fb69f4011f66bf2359dca561f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether is in range  <a href="../../db/d3b/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_line.html#a27648e0fb69f4011f66bf2359dca561f">More...</a><br /></td></tr>
+<tr class="separator:a27648e0fb69f4011f66bf2359dca561f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a715297598b65885955c295f34d546896"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d3b/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_line.html#a715297598b65885955c295f34d546896">CalculateIntersectionPoint</a> (<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> point1, float ua, float b, float d)</td></tr>
+<tr class="memdesc:a715297598b65885955c295f34d546896"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the intersection point using the specified point 1  <a href="../../db/d3b/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_line.html#a715297598b65885955c295f34d546896">More...</a><br /></td></tr>
+<tr class="separator:a715297598b65885955c295f34d546896"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The line class </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d69/_line_8cs_source.html#l00012">12</a> of file <a class="el" href="../../db/d69/_line_8cs_source.html">Line.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d69/_line_8cs_source.html#l00011">11</a> of file <a class="el" href="../../db/d69/_line_8cs_source.html">Line.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a1400eb20308aa907c13fd30070c52d48"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1400eb20308aa907c13fd30070c52d48">&#9670;&nbsp;</a></span>DistanceBetweenPointAndLineSegment()</h2>
@@ -184,7 +203,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The float</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d69/_line_8cs_source.html#l00021">21</a> of file <a class="el" href="../../db/d69/_line_8cs_source.html">Line.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d69/_line_8cs_source.html#l00020">20</a> of file <a class="el" href="../../db/d69/_line_8cs_source.html">Line.cs</a>.</p>
 
 </div>
 </div>
@@ -253,7 +272,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The bool</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d69/_line_8cs_source.html#l00057">57</a> of file <a class="el" href="../../db/d69/_line_8cs_source.html">Line.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d69/_line_8cs_source.html#l00056">56</a> of file <a class="el" href="../../db/d69/_line_8cs_source.html">Line.cs</a>.</p>
 
 </div>
 </div>
@@ -315,7 +334,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d69/_line_8cs_source.html#l00114">114</a> of file <a class="el" href="../../db/d69/_line_8cs_source.html">Line.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d69/_line_8cs_source.html#l00113">113</a> of file <a class="el" href="../../db/d69/_line_8cs_source.html">Line.cs</a>.</p>
 
 </div>
 </div>
@@ -398,7 +417,306 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The bool</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d69/_line_8cs_source.html#l00147">147</a> of file <a class="el" href="../../db/d69/_line_8cs_source.html">Line.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d69/_line_8cs_source.html#l00146">146</a> of file <a class="el" href="../../db/d69/_line_8cs_source.html">Line.cs</a>.</p>
+
+</div>
+</div>
+<a id="a07ecccd2a352062524a5dd8bd093695c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07ecccd2a352062524a5dd8bd093695c">&#9670;&nbsp;</a></span>IsDenominatorZero()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool Alis.Core.Physic.Utilities.Line.IsDenominatorZero </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>denom</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Describes whether is denominator zero </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">denom</td><td>The denom</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The bool</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../db/d69/_line_8cs_source.html#l00189">189</a> of file <a class="el" href="../../db/d69/_line_8cs_source.html">Line.cs</a>.</p>
+
+</div>
+</div>
+<a id="a5e7bbab7fdfab46a48dd4c78cc5fff80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e7bbab7fdfab46a48dd4c78cc5fff80">&#9670;&nbsp;</a></span>CalculateUa()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static float Alis.Core.Physic.Utilities.Line.CalculateUa </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>point1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>point3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>denom</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculates the ua using the specified a </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>The </td></tr>
+    <tr><td class="paramname">c</td><td>The </td></tr>
+    <tr><td class="paramname">d</td><td>The </td></tr>
+    <tr><td class="paramname">point1</td><td>The point</td></tr>
+    <tr><td class="paramname">point3</td><td>The point</td></tr>
+    <tr><td class="paramname">denom</td><td>The denom</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The float</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../db/d69/_line_8cs_source.html#l00204">204</a> of file <a class="el" href="../../db/d69/_line_8cs_source.html">Line.cs</a>.</p>
+
+</div>
+</div>
+<a id="a7f6ac98b374bcaa6cdb2b3f997a246f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f6ac98b374bcaa6cdb2b3f997a246f9">&#9670;&nbsp;</a></span>CalculateUb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static float Alis.Core.Physic.Utilities.Line.CalculateUb </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>point1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>point3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>denom</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculates the ub using the specified b </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">b</td><td>The </td></tr>
+    <tr><td class="paramname">d</td><td>The </td></tr>
+    <tr><td class="paramname">a</td><td>The </td></tr>
+    <tr><td class="paramname">point1</td><td>The point</td></tr>
+    <tr><td class="paramname">point3</td><td>The point</td></tr>
+    <tr><td class="paramname">denom</td><td>The denom</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The float</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../db/d69/_line_8cs_source.html#l00223">223</a> of file <a class="el" href="../../db/d69/_line_8cs_source.html">Line.cs</a>.</p>
+
+</div>
+</div>
+<a id="a27648e0fb69f4011f66bf2359dca561f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27648e0fb69f4011f66bf2359dca561f">&#9670;&nbsp;</a></span>IsInRange()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool Alis.Core.Physic.Utilities.Line.IsInRange </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isSegment</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Describes whether is in range </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value</td></tr>
+    <tr><td class="paramname">isSegment</td><td>The is segment</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The bool</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../db/d69/_line_8cs_source.html#l00238">238</a> of file <a class="el" href="../../db/d69/_line_8cs_source.html">Line.cs</a>.</p>
+
+</div>
+</div>
+<a id="a715297598b65885955c295f34d546896"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a715297598b65885955c295f34d546896">&#9670;&nbsp;</a></span>CalculateIntersectionPoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Utilities.Line.CalculateIntersectionPoint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>point1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>ua</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculates the intersection point using the specified point 1 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">point1</td><td>The point</td></tr>
+    <tr><td class="paramname">ua</td><td>The ua</td></tr>
+    <tr><td class="paramname">b</td><td>The </td></tr>
+    <tr><td class="paramname">d</td><td>The </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The vector</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../db/d69/_line_8cs_source.html#l00251">251</a> of file <a class="el" href="../../db/d69/_line_8cs_source.html">Line.cs</a>.</p>
 
 </div>
 </div>
@@ -453,7 +771,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The intersection points</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d69/_line_8cs_source.html#l00198">198</a> of file <a class="el" href="../../db/d69/_line_8cs_source.html">Line.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d69/_line_8cs_source.html#l00264">264</a> of file <a class="el" href="../../db/d69/_line_8cs_source.html">Line.cs</a>.</p>
 
 </div>
 </div>
@@ -517,7 +835,7 @@ Static Public Member Functions</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../d7/db3/namespace_alis_1_1_core_1_1_physic.html">Physic</a></li><li class="navelem"><a class="el" href="../../de/d6e/namespace_alis_1_1_core_1_1_physic_1_1_utilities.html">Utilities</a></li><li class="navelem"><a class="el" href="../../db/d3b/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_line.html">Line</a></li>
     <li class="footer">
-      <a>Generated on | Fri Sep 15 2023 |</a>
+      <a>Generated on | Sat Sep 16 2023 |</a>
     </li>
   </ul>
 </div>

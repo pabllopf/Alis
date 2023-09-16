@@ -202,6 +202,8 @@ var NAVTREEINDEX5 =
 "d0/dda/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_flip_code_1_1_flipcode_decomposer.html#a6d922161d2df04fe10c163e66c3c548b":[1,0,0,2,8,7,5,3,0,3],
 "d0/dda/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_flip_code_1_1_flipcode_decomposer.html#a751c36b4d4630eecb9307de1c11f2a60":[1,0,0,2,8,7,5,3,0,2],
 "d0/dda/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_flip_code_1_1_flipcode_decomposer.html#ad14b5e1924d88e6decff20911dbbfb23":[1,0,0,2,8,7,5,3,0,5],
+"d0/de2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_texture_tools_1_1_data_size_exception.html":[1,0,0,2,8,7,4,0],
+"d0/de2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_texture_tools_1_1_data_size_exception.html#ad9d64fb13dbc4e28fcce42f4e4c5fefa":[1,0,0,2,8,7,4,0,0],
 "d0/de7/namespace_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1arm.html":[1,0,0,2,1,1,2,0],
 "d0/de7/namespace_alis_1_1_core_1_1_audio_1_1_properties_1_1win_1_1arm.html":[0,0,0,2,1,1,2,0],
 "d0/df2/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase_1_1_clip_vertex.html":[1,0,0,2,8,0,4,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX5 =
 "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html":[1,0,0,2,5,1,0,17],
 "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a016c221419d0eb0ead029a274687c3a8":[1,0,0,2,5,1,0,17,41],
 "d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a0527de15d224e65bda42c65e4b0d4f11":[1,0,0,2,5,1,0,17,29],
-"d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a0d2ce294fe6eb566040bafd41980c0e9":[1,0,0,2,5,1,0,17,20],
-"d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a116a1c312d63cfa4c0b1e5ae540ed577":[1,0,0,2,5,1,0,17,17],
-"d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a14b5603473553e3bffccc1ab16547d9f":[1,0,0,2,5,1,0,17,43]
+"d1/d0d/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_text.html#a0d2ce294fe6eb566040bafd41980c0e9":[1,0,0,2,5,1,0,17,20]
 };
