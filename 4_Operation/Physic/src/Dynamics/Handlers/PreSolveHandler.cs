@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Physic.Collision.ContactSystem;
-using Alis.Core.Physic.Collision.Narrowphase;
+using Alis.Core.Physic.Collision.NarrowPhase;
 
 namespace Alis.Core.Physic.Dynamics.Handlers
 {

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ManifoldPoint.cs
+//  File:PointState.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,35 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collision.ContactSystem;
-
-namespace Alis.Core.Physic.Collision.Narrowphase
+namespace Alis.Core.Physic.Collision.NarrowPhase
 {
-    /// <summary>
-    ///     A manifold point is a contact point belonging to a contact
-    ///     manifold. It holds details related to the geometry and dynamics
-    ///     of the contact points.
-    ///     The local point usage depends on the manifold type:
-    ///     -ShapeType.Circles: the local center of circleB
-    ///     -SeparationFunction.FaceA: the local center of cirlceB or the clip point of polygonB
-    ///     -SeparationFunction.FaceB: the clip point of polygonA
-    ///     This structure is stored across time steps, so we keep it small.
-    ///     Note: the impulses are used for internal caching and may not
-    ///     provide reliable contact forces, especially for high speed collisions.
-    /// </summary>
-    public struct ManifoldPoint
+    /// <summary>This is used for determining the state of contact points.</summary>
+    public enum PointState
     {
-        /// <summary>Uniquely identifies a contact point between two Shapes</summary>
-        public ContactId Id;
+        /// <summary>Point does not exist</summary>
+        Null,
 
-        /// <summary>Usage depends on manifold type</summary>
-        public Vector2 LocalPoint;
+        /// <summary>Point was added in the update</summary>
+        Add,
 
-        /// <summary>The non-penetration impulse</summary>
-        public float NormalImpulse;
+        /// <summary>Point persisted across the update</summary>
+        Persist,
 
-        /// <summary>The friction impulse</summary>
-        public float TangentImpulse;
+        /// <summary>Point was removed in the update</summary>
+        Remove
     }
 }

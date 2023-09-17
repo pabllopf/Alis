@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ClipVertex.cs
+//  File:EPAxis.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,21 +28,30 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collision.ContactSystem;
 
-namespace Alis.Core.Physic.Collision.Narrowphase
+namespace Alis.Core.Physic.Collision.NarrowPhase
 {
-    /// <summary>Used for computing contact manifolds.</summary>
-    internal struct ClipVertex
+    /// <summary>This structure is used to keep track of the best separating axis.</summary>
+    public struct EpAxis
     {
         /// <summary>
-        ///     The id
+        ///     The normal
         /// </summary>
-        public ContactId Id;
+        public Vector2 Normal;
 
         /// <summary>
-        ///     The
+        ///     The index
         /// </summary>
-        public Vector2 V;
+        public int Index;
+
+        /// <summary>
+        ///     The separation
+        /// </summary>
+        public float Separation;
+
+        /// <summary>
+        ///     The type
+        /// </summary>
+        public EpAxisType Type;
     }
 }

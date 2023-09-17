@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ManifoldType.cs
+//  File:ClipVertex.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,26 +27,22 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physic.Collision.Narrowphase
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collision.ContactSystem;
+
+namespace Alis.Core.Physic.Collision.NarrowPhase
 {
-    /// <summary>
-    ///     The manifold type enum
-    /// </summary>
-    public enum ManifoldType
+    /// <summary>Used for computing contact manifolds.</summary>
+    internal struct ClipVertex
     {
         /// <summary>
-        ///     The circles manifold type
+        ///     The id
         /// </summary>
-        Circles,
+        public ContactId Id;
 
         /// <summary>
-        ///     The face manifold type
+        ///     The
         /// </summary>
-        FaceA,
-
-        /// <summary>
-        ///     The face manifold type
-        /// </summary>
-        FaceB
+        public Vector2 V;
     }
 }

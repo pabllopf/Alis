@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PointState.cs
+//  File:SimplexCache.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,21 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physic.Collision.Narrowphase
+using Alis.Core.Physic.Shared.Optimization;
+
+namespace Alis.Core.Physic.Collision.NarrowPhase
 {
-    /// <summary>This is used for determining the state of contact points.</summary>
-    public enum PointState
+    /// <summary>Used to warm start ComputeDistance. Set count to zero on first call.</summary>
+    public struct SimplexCache
     {
-        /// <summary>Point does not exist</summary>
-        Null,
+        /// <summary>Length or area</summary>
+        public ushort Count;
 
-        /// <summary>Point was added in the update</summary>
-        Add,
+        /// <summary>Vertices on shape A</summary>
+        public FixedArray3<byte> IndexA;
 
-        /// <summary>Point persisted across the update</summary>
-        Persist,
+        /// <summary>Vertices on shape B</summary>
+        public FixedArray3<byte> IndexB;
 
-        /// <summary>Point was removed in the update</summary>
-        Remove
+        /// <summary>
+        ///     The metric
+        /// </summary>
+        public float Metric;
     }
 }

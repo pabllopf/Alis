@@ -30,7 +30,7 @@
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared.Optimization;
 
-namespace Alis.Core.Physic.Collision.Narrowphase
+namespace Alis.Core.Physic.Collision.NarrowPhase
 {
     /// <summary>
     ///     A manifold for two touching convex Shapes.

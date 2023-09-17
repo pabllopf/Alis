@@ -36,7 +36,7 @@ using Alis.Core.Physic.Collision.Distance;
 using Alis.Core.Physic.Shared.Optimization;
 using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Physic.Collision.Narrowphase
+namespace Alis.Core.Physic.Collision.NarrowPhase
 {
     /// <summary>
     ///     The simplex

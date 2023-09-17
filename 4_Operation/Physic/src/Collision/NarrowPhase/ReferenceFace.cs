@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SimplexCache.cs
+//  File:ReferenceFace.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,25 +27,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Shared.Optimization;
+using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Physic.Collision.Narrowphase
+namespace Alis.Core.Physic.Collision.NarrowPhase
 {
-    /// <summary>Used to warm start ComputeDistance. Set count to zero on first call.</summary>
-    public struct SimplexCache
+    /// <summary>Reference face used for clipping</summary>
+    public struct ReferenceFace
     {
-        /// <summary>Length or area</summary>
-        public ushort Count;
-
-        /// <summary>Vertices on shape A</summary>
-        public FixedArray3<byte> IndexA;
-
-        /// <summary>Vertices on shape B</summary>
-        public FixedArray3<byte> IndexB;
+        /// <summary>
+        ///     The
+        /// </summary>
+        public int I1;
 
         /// <summary>
-        ///     The metric
+        ///     The
         /// </summary>
-        public float Metric;
+        public int I2;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public Vector2 V1, V2;
+
+        /// <summary>
+        ///     The normal
+        /// </summary>
+        public Vector2 Normal;
+
+        /// <summary>
+        ///     The side normal
+        /// </summary>
+        public Vector2 SideNormal1;
+
+        /// <summary>
+        ///     The side offset
+        /// </summary>
+        public float SideOffset1;
+
+        /// <summary>
+        ///     The side normal
+        /// </summary>
+        public Vector2 SideNormal2;
+
+        /// <summary>
+        ///     The side offset
+        /// </summary>
+        public float SideOffset2;
     }
 }

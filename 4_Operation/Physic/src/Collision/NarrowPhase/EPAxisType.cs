@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ReferenceFace.cs
+//  File:EPAxisType.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Vector;
-
-namespace Alis.Core.Physic.Collision.Narrowphase
+namespace Alis.Core.Physic.Collision.NarrowPhase
 {
-    /// <summary>Reference face used for clipping</summary>
-    public struct ReferenceFace
+    /// <summary>
+    ///     The ep axis type enum
+    /// </summary>
+    public enum EpAxisType
     {
         /// <summary>
-        ///     The
+        ///     The unknown ep axis type
         /// </summary>
-        public int I1;
+        Unknown,
 
         /// <summary>
-        ///     The
+        ///     The edge ep axis type
         /// </summary>
-        public int I2;
+        EdgeA,
 
         /// <summary>
-        ///     The
+        ///     The edge ep axis type
         /// </summary>
-        public Vector2 V1, V2;
-
-        /// <summary>
-        ///     The normal
-        /// </summary>
-        public Vector2 Normal;
-
-        /// <summary>
-        ///     The side normal
-        /// </summary>
-        public Vector2 SideNormal1;
-
-        /// <summary>
-        ///     The side offset
-        /// </summary>
-        public float SideOffset1;
-
-        /// <summary>
-        ///     The side normal
-        /// </summary>
-        public Vector2 SideNormal2;
-
-        /// <summary>
-        ///     The side offset
-        /// </summary>
-        public float SideOffset2;
+        EdgeB
     }
 }

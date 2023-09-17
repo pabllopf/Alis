@@ -34,7 +34,7 @@ using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Physic.Collision.Narrowphase
+namespace Alis.Core.Physic.Collision.NarrowPhase
 {
     /// <summary>
     ///     The collide circle class

@@ -33,7 +33,7 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared.Optimization;
 using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Physic.Collision.Narrowphase
+namespace Alis.Core.Physic.Collision.NarrowPhase
 {
     /// <summary>
     ///     The world manifold class

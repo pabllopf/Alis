@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:EPAxis.cs
+//  File:SimplexVertex.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,29 +29,29 @@
 
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Physic.Collision.Narrowphase
+namespace Alis.Core.Physic.Collision.NarrowPhase
 {
-    /// <summary>This structure is used to keep track of the best separating axis.</summary>
-    public struct EpAxis
+    /// <summary>
+    ///     The simplex vertex
+    /// </summary>
+    internal struct SimplexVertex
     {
-        /// <summary>
-        ///     The normal
-        /// </summary>
-        public Vector2 Normal;
+        /// <summary>Barycentric coordinate for closest point</summary>
+        public float A;
 
-        /// <summary>
-        ///     The index
-        /// </summary>
-        public int Index;
+        /// <summary>wA index</summary>
+        public int IndexA;
 
-        /// <summary>
-        ///     The separation
-        /// </summary>
-        public float Separation;
+        /// <summary>wB index</summary>
+        public int IndexB;
 
-        /// <summary>
-        ///     The type
-        /// </summary>
-        public EpAxisType Type;
+        /// <summary>wB - wA</summary>
+        public Vector2 W;
+
+        /// <summary>Support point in proxyA</summary>
+        public Vector2 Wa;
+
+        /// <summary>Support point in proxyB</summary>
+        public Vector2 Wb;
     }
 }

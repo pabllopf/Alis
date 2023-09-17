@@ -58,6 +58,9 @@ namespace Alis.Core.Graphic.SFML.Windows
             EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window", SfmlDlls.SfmlWindowDllBytes);
         }
         
+        /// <summary>
+        /// The sensor
+        /// </summary>
         private readonly Dictionary<EventType, Action<Event>> eventHandlers = new Dictionary<EventType, Action<Event>>
         {
             { EventType.Closed, e => DispatchEvent(Closed, EventArgs.Empty) },
@@ -84,6 +87,10 @@ namespace Alis.Core.Graphic.SFML.Windows
             { EventType.SensorChanged, e => DispatchEvent(SensorChanged, new SensorEventArgs(e.Sensor)) }
         };
 
+        /// <summary>
+        /// Calls the event handler using the specified e
+        /// </summary>
+        /// <param name="e">The </param>
         private void CallEventHandler(Event e)
         {
             if (eventHandlers.TryGetValue(e.Type, out var handler))
@@ -92,11 +99,22 @@ namespace Alis.Core.Graphic.SFML.Windows
             }
         }
         
+        /// <summary>
+        /// Dispatches the event using the specified handler
+        /// </summary>
+        /// <param name="handler">The handler</param>
+        /// <param name="args">The args</param>
         private static void DispatchEvent(EventHandler handler, EventArgs args)
         {
             handler?.Invoke(null, args);
         }
 
+        /// <summary>
+        /// Dispatches the event using the specified handler
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="handler">The handler</param>
+        /// <param name="eventArgs">The event args</param>
         private static void DispatchEvent<T>(EventHandler<T> handler, T eventArgs)
             where T : EventArgs
         {

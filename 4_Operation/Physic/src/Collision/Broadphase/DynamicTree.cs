@@ -393,17 +393,35 @@ namespace Alis.Core.Physic.Collision.Broadphase
             }
         }
 
+        /// <summary>
+        /// Calculates the normalized ray direction using the specified p 1
+        /// </summary>
+        /// <param name="p1">The </param>
+        /// <param name="p2">The </param>
+        /// <returns>The vector</returns>
         private Vector2 CalculateNormalizedRayDirection(Vector2 p1, Vector2 p2)
         {
             Vector2 r = p2 - p1;
             return Vector2.Normalize(r);
         }
 
+        /// <summary>
+        /// Calculates the abs vector using the specified vector
+        /// </summary>
+        /// <param name="vector">The vector</param>
+        /// <returns>The vector</returns>
         private Vector2 CalculateAbsVector(Vector2 vector)
         {
             return new Vector2(MathUtils.Abs(-vector.Y), MathUtils.Abs(vector.X));
         }
 
+        /// <summary>
+        /// Calculates the segment aabb using the specified p 1
+        /// </summary>
+        /// <param name="p1">The </param>
+        /// <param name="p2">The </param>
+        /// <param name="maxFraction">The max fraction</param>
+        /// <returns>The aabb</returns>
         private Aabb CalculateSegmentAabb(Vector2 p1, Vector2 p2, float maxFraction)
         {
             Vector2 t = p1 + maxFraction * (p2 - p1);
@@ -414,11 +432,24 @@ namespace Alis.Core.Physic.Collision.Broadphase
             };
         }
 
+        /// <summary>
+        /// Describes whether this instance is aabb overlap
+        /// </summary>
+        /// <param name="aabb1">The aabb</param>
+        /// <param name="aabb2">The aabb</param>
+        /// <returns>The bool</returns>
         private bool IsAabbOverlap(Aabb aabb1, Aabb aabb2)
         {
             return Aabb.TestOverlap(ref aabb1, ref aabb2);
         }
 
+        /// <summary>
+        /// Describes whether this instance is separation valid
+        /// </summary>
+        /// <param name="r">The </param>
+        /// <param name="p1">The </param>
+        /// <param name="aabb">The aabb</param>
+        /// <returns>The bool</returns>
         private bool IsSeparationValid(Vector2 r, Vector2 p1, Aabb aabb)
         {
             Vector2 c = aabb.Center;
@@ -427,6 +458,14 @@ namespace Alis.Core.Physic.Collision.Broadphase
             return separation <= 0.0f;
         }
 
+        /// <summary>
+        /// Handles the leaf node using the specified callback
+        /// </summary>
+        /// <param name="callback">The callback</param>
+        /// <param name="input">The input</param>
+        /// <param name="maxFraction">The max fraction</param>
+        /// <param name="nodeId">The node id</param>
+        /// <returns>The max fraction</returns>
         private float HandleLeafNode(Func<RayCastInput, int, float> callback, RayCastInput input, float maxFraction, int nodeId)
         {
             RayCastInput subInput = new RayCastInput

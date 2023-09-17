@@ -36,155 +36,223 @@ using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared.Optimization;
 using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Physic.Collision.Narrowphase
+namespace Alis.Core.Physic.Collision.NarrowPhase
 {
     /// <summary>
     ///     The collide edge class
     /// </summary>
     public static class CollideEdge
     {
-        /// <summary>Compute contact points for edge versus circle. This accounts for edge connectivity.</summary>
-        /// <param name="manifold">The manifold.</param>
-        /// <param name="edgeA">The edge A.</param>
-        /// <param name="transformA">The transform A.</param>
-        /// <param name="circleB">The circle B.</param>
-        /// <param name="transformB">The transform B.</param>
+        /// <summary>
+        /// Collides the edge and circle using the specified manifold
+        /// </summary>
+        /// <param name="manifold">The manifold</param>
+        /// <param name="edgeA">The edge</param>
+        /// <param name="transformA">The transform</param>
+        /// <param name="circleB">The circle</param>
+        /// <param name="transformB">The transform</param>
         public static void CollideEdgeAndCircle(ref Manifold manifold, EdgeShape edgeA, ref Transform transformA,
-            CircleShape circleB, ref Transform transformB)
+                                        CircleShape circleB, ref Transform transformB)
         {
             manifold.PointCount = 0;
 
-            // Compute circle in frame of edge
-            Vector2 q = MathUtils.MulT(ref transformA, MathUtils.Mul(ref transformB, ref circleB.Positionprivate));
+            Vector2 circleBPosition = circleB.Position;
+            Vector2 q = ComputeCirclePositionInEdgeFrame(ref transformA, ref transformB, ref circleBPosition);
 
-            Vector2 a = edgeA.Vertex1, b = edgeA.Vertex2;
-            Vector2 e = b - a;
+            Vector2 edgeStart = edgeA.Vertex1;
+            Vector2 edgeEnd = edgeA.Vertex2;
+            Vector2 edgeDirection = edgeEnd - edgeStart;
+            Vector2 edgeNormal = new Vector2(edgeDirection.Y, -edgeDirection.X);
+            float offset = MathUtils.Dot(edgeNormal, q - edgeStart);
 
-            // Normal points to the right for a CCW winding
-            Vector2 n = new Vector2(e.Y, -e.X);
-            float offset = MathUtils.Dot(n, q - a);
-
-            bool oneSided = edgeA.OneSided;
-            if (oneSided && (offset < 0.0f))
+            if (edgeA.OneSided && offset < 0.0f)
             {
                 return;
             }
 
-            // Barycentric coordinates
-            float u = Vector2.Dot(e, b - q);
-            float v = Vector2.Dot(e, q - a);
+            float u = Vector2.Dot(edgeDirection, edgeEnd - q);
+            float v = Vector2.Dot(edgeDirection, q - edgeStart);
 
-            float radius = edgeA.RadiusPrivate + circleB.RadiusPrivate;
+            float radiusSum = edgeA.RadiusPrivate + circleB.RadiusPrivate;
 
-            ContactFeature cf;
-            cf.IndexB = 0;
-            cf.TypeB = ContactFeatureType.Vertex;
-
-            // Region A
             if (v <= 0.0f)
             {
-                Vector2 p1 = a;
-                Vector2 d1 = q - p1;
-                float dd1 = Vector2.Dot(d1, d1);
-                if (dd1 > radius * radius)
-                {
-                    return;
-                }
-
-                // Is there an edge connected to A?
-                if (edgeA.OneSided)
-                {
-                    Vector2 a1 = edgeA.Vertex0;
-                    Vector2 b1 = a;
-                    Vector2 e1 = b1 - a1;
-                    float u1 = Vector2.Dot(e1, b1 - q);
-
-                    // Is the circle in Region AB of the previous edge?
-                    if (u1 > 0.0f)
-                    {
-                        return;
-                    }
-                }
-
-                cf.IndexA = 0;
-                cf.TypeA = ContactFeatureType.Vertex;
-                manifold.PointCount = 1;
-                manifold.Type = ManifoldType.Circles;
-                manifold.LocalNormal = Vector2.Zero;
-                manifold.LocalPoint = p1;
-                manifold.Points.Value0.Id.Key = 0;
-                manifold.Points.Value0.Id.ContactFeature = cf;
-                manifold.Points.Value0.LocalPoint = circleB.Position;
-                return;
+                HandleRegionA(ref manifold, edgeA, edgeStart, q, radiusSum, circleBPosition);
             }
-
-            // Region B
-            if (u <= 0.0f)
+            else if (u <= 0.0f)
             {
-                Vector2 p2 = b;
-                Vector2 d2 = q - p2;
-                float dd2 = Vector2.Dot(d2, d2);
-                if (dd2 > radius * radius)
-                {
-                    return;
-                }
-
-                // Is there an edge connected to B?
-                if (edgeA.OneSided)
-                {
-                    Vector2 b2 = edgeA.Vertex3;
-                    Vector2 a2 = b;
-                    Vector2 e2 = b2 - a2;
-                    float v2 = Vector2.Dot(e2, q - a2);
-
-                    // Is the circle in Region AB of the next edge?
-                    if (v2 > 0.0f)
-                    {
-                        return;
-                    }
-                }
-
-                cf.IndexA = 1;
-                cf.TypeA = (byte) ContactFeatureType.Vertex;
-                manifold.PointCount = 1;
-                manifold.Type = ManifoldType.Circles;
-                manifold.LocalNormal = Vector2.Zero;
-                manifold.LocalPoint = p2;
-                manifold.Points.Value0.Id.Key = 0;
-                manifold.Points.Value0.Id.ContactFeature = cf;
-                manifold.Points.Value0.LocalPoint = circleB.Position;
-                return;
+                HandleRegionB(ref manifold, edgeA, edgeEnd, q, radiusSum, circleBPosition);
             }
+            else
+            {
+                HandleRegionAB(ref manifold, edgeA, edgeStart, edgeEnd, q, radiusSum, offset, circleBPosition, edgeNormal);
+            }
+        }
 
-            // Region AB
-            float den = Vector2.Dot(e, e);
+        /// <summary>
+        /// Handles the region ab using the specified manifold
+        /// </summary>
+        /// <param name="manifold">The manifold</param>
+        /// <param name="edgeA">The edge</param>
+        /// <param name="edgeStart">The edge start</param>
+        /// <param name="edgeEnd">The edge end</param>
+        /// <param name="q">The </param>
+        /// <param name="radiusSum">The radius sum</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="circlePosition">The circle position</param>
+        /// <param name="edgeNormal">The edge normal</param>
+        private static void HandleRegionAB(ref Manifold manifold, EdgeShape edgeA, Vector2 edgeStart, Vector2 edgeEnd, Vector2 q, float radiusSum, float offset, Vector2 circlePosition, Vector2 edgeNormal)
+        {
+            float den = Vector2.Dot(edgeEnd - edgeStart, edgeEnd - edgeStart);
             Debug.Assert(den > 0.0f);
-            Vector2 p = 1.0f / den * (u * a + v * b);
+
+            Vector2 p = (1.0f / den) * (Vector2.Dot(q - edgeStart, edgeEnd - edgeStart) * edgeStart + Vector2.Dot(q - edgeEnd, edgeStart - edgeEnd) * edgeEnd);
             Vector2 d = q - p;
             float dd = Vector2.Dot(d, d);
-            if (dd > radius * radius)
+
+            if (dd > radiusSum * radiusSum)
             {
                 return;
             }
 
             if (offset < 0.0f)
             {
-                n = new Vector2(-n.X, -n.Y);
+                edgeNormal = new Vector2(-edgeNormal.X, -edgeNormal.Y);
             }
 
-            n = Vector2.Normalize(n);
+            edgeNormal = Vector2.Normalize(edgeNormal);
+            SetManifoldForEdge(ref manifold, edgeA, edgeStart, edgeNormal, circlePosition);
+        }
 
+        /// <summary>
+        /// Computes the circle position in edge frame using the specified transform a
+        /// </summary>
+        /// <param name="transformA">The transform</param>
+        /// <param name="transformB">The transform</param>
+        /// <param name="circlePosition">The circle position</param>
+        /// <returns>The vector</returns>
+        private static Vector2 ComputeCirclePositionInEdgeFrame(ref Transform transformA, ref Transform transformB, ref Vector2 circlePosition)
+        {
+            return MathUtils.MulT(ref transformA, MathUtils.Mul(ref transformB, ref circlePosition));
+        }
+
+        /// <summary>
+        /// Handles the region a using the specified manifold
+        /// </summary>
+        /// <param name="manifold">The manifold</param>
+        /// <param name="edgeA">The edge</param>
+        /// <param name="edgeStart">The edge start</param>
+        /// <param name="q">The </param>
+        /// <param name="radiusSum">The radius sum</param>
+        /// <param name="circlePosition">The circle position</param>
+        private static void HandleRegionA(ref Manifold manifold, EdgeShape edgeA, Vector2 edgeStart, Vector2 q, float radiusSum, Vector2 circlePosition)
+        {
+            Vector2 p1 = edgeStart;
+            Vector2 d1 = q - p1;
+            float dd1 = Vector2.Dot(d1, d1);
+
+            if (dd1 > radiusSum * radiusSum)
+            {
+                return;
+            }
+
+            if (edgeA.OneSided)
+            {
+                Vector2 a1 = edgeA.Vertex0;
+                Vector2 b1 = edgeStart;
+                Vector2 e1 = b1 - a1;
+                float u1 = Vector2.Dot(e1, b1 - q);
+
+                if (u1 > 0.0f)
+                {
+                    return;
+                }
+            }
+
+            SetManifoldForCircle(ref manifold, p1, circlePosition);
+        }
+
+        /// <summary>
+        /// Handles the region b using the specified manifold
+        /// </summary>
+        /// <param name="manifold">The manifold</param>
+        /// <param name="edgeA">The edge</param>
+        /// <param name="edgeEnd">The edge end</param>
+        /// <param name="q">The </param>
+        /// <param name="radiusSum">The radius sum</param>
+        /// <param name="circlePosition">The circle position</param>
+        private static void HandleRegionB(ref Manifold manifold, EdgeShape edgeA, Vector2 edgeEnd, Vector2 q, float radiusSum, Vector2 circlePosition)
+        {
+            Vector2 p2 = edgeEnd;
+            Vector2 d2 = q - p2;
+            float dd2 = Vector2.Dot(d2, d2);
+
+            if (dd2 > radiusSum * radiusSum)
+            {
+                return;
+            }
+
+            if (edgeA.OneSided)
+            {
+                Vector2 b2 = edgeA.Vertex3;
+                Vector2 a2 = edgeEnd;
+                Vector2 e2 = b2 - a2;
+                float v2 = Vector2.Dot(e2, q - a2);
+
+                if (v2 > 0.0f)
+                {
+                    return;
+                }
+            }
+
+            SetManifoldForCircle(ref manifold, p2, circlePosition);
+        }
+
+        /// <summary>
+        /// Sets the manifold for circle using the specified manifold
+        /// </summary>
+        /// <param name="manifold">The manifold</param>
+        /// <param name="contactPoint">The contact point</param>
+        /// <param name="circlePosition">The circle position</param>
+        private static void SetManifoldForCircle(ref Manifold manifold, Vector2 contactPoint, Vector2 circlePosition)
+        {
+            ContactFeature cf = default;
+            cf.IndexA = 0;
+            cf.TypeA = ContactFeatureType.Vertex;
+            manifold.PointCount = 1;
+            manifold.Type = ManifoldType.Circles;
+            manifold.LocalNormal = Vector2.Zero;
+            manifold.LocalPoint = contactPoint;
+            manifold.Points.Value0.Id.Key = 0;
+            manifold.Points.Value0.Id.ContactFeature = cf;
+            manifold.Points.Value0.LocalPoint = circlePosition;
+        }
+
+        /// <summary>
+        /// Sets the manifold for edge using the specified manifold
+        /// </summary>
+        /// <param name="manifold">The manifold</param>
+        /// <param name="edgeA">The edge</param>
+        /// <param name="edgeStart">The edge start</param>
+        /// <param name="edgeNormal">The edge normal</param>
+        /// <param name="circlePosition">The circle position</param>
+        private static void SetManifoldForEdge(ref Manifold manifold, EdgeShape edgeA, Vector2 edgeStart, Vector2 edgeNormal, Vector2 circlePosition)
+        {
+            ContactFeature cf;
             cf.IndexA = 0;
             cf.TypeA = ContactFeatureType.Face;
             manifold.PointCount = 1;
             manifold.Type = ManifoldType.FaceA;
-            manifold.LocalNormal = n;
-            manifold.LocalPoint = a;
+            manifold.LocalNormal = edgeNormal;
+            manifold.LocalPoint = edgeStart;
             manifold.Points.Value0.Id.Key = 0;
+            cf.IndexB = 0;
+            cf.TypeB = ContactFeatureType.Vertex;
             manifold.Points.Value0.Id.ContactFeature = cf;
-            manifold.Points.Value0.LocalPoint = circleB.Position;
+            manifold.Points.Value0.LocalPoint = circlePosition;
         }
 
+        
         /// <summary>
         ///     Collides the edge and polygon using the specified manifold
         /// </summary>

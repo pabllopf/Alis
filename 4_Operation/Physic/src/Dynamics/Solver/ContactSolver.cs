@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Physic.Collision.ContactSystem;
-using Alis.Core.Physic.Collision.Narrowphase;
+using Alis.Core.Physic.Collision.NarrowPhase;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared.Optimization;

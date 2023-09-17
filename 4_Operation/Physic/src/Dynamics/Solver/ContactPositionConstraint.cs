@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collision.Narrowphase;
+using Alis.Core.Physic.Collision.NarrowPhase;
 using Alis.Core.Physic.Config;
 
 namespace Alis.Core.Physic.Dynamics.Solver

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SimplexVertex.cs
+//  File:ManifoldType.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,31 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Vector;
-
-namespace Alis.Core.Physic.Collision.Narrowphase
+namespace Alis.Core.Physic.Collision.NarrowPhase
 {
     /// <summary>
-    ///     The simplex vertex
+    ///     The manifold type enum
     /// </summary>
-    internal struct SimplexVertex
+    public enum ManifoldType
     {
-        /// <summary>Barycentric coordinate for closest point</summary>
-        public float A;
+        /// <summary>
+        ///     The circles manifold type
+        /// </summary>
+        Circles,
 
-        /// <summary>wA index</summary>
-        public int IndexA;
+        /// <summary>
+        ///     The face manifold type
+        /// </summary>
+        FaceA,
 
-        /// <summary>wB index</summary>
-        public int IndexB;
-
-        /// <summary>wB - wA</summary>
-        public Vector2 W;
-
-        /// <summary>Support point in proxyA</summary>
-        public Vector2 Wa;
-
-        /// <summary>Support point in proxyB</summary>
-        public Vector2 Wb;
+        /// <summary>
+        ///     The face manifold type
+        /// </summary>
+        FaceB
     }
 }

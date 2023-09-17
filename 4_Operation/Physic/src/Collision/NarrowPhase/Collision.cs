@@ -36,7 +36,7 @@ using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared.Optimization;
 
-namespace Alis.Core.Physic.Collision.Narrowphase
+namespace Alis.Core.Physic.Collision.NarrowPhase
 {
     /// <summary>Collision methods</summary>
     public static class Collision
