@@ -88,15 +88,13 @@ namespace Alis.Core.Graphic.Sample
             window.SetVerticalSyncEnabled(true);
             window.SetFramerateLimit(60);
 
-            window.Closed += (sender, args) => window.Close();
-
-
-            window.KeyPressed += OnKeyPressed;
-            window.MouseButtonPressed += OnMouseButtonPressed;
-            window.JoystickButtonPressed += OnJoystickButtonPressed;
-            window.JoystickConnected += WindowOnJoystickConnected;
-            window.JoystickDisconnected += WindowOnJoystickDisconnected;
-            window.JoystickMoved += WindowOnJoystickMoved;
+            Window.Closed += (sender, args) => window.Close();
+            Window.KeyPressed += OnKeyPressed;
+            Window.MouseButtonPressed += OnMouseButtonPressed;
+            Window.JoystickButtonPressed += OnJoystickButtonPressed;
+            Window.JoystickConnected += WindowOnJoystickConnected;
+            Window.JoystickDisconnected += WindowOnJoystickDisconnected;
+            Window.JoystickMoved += WindowOnJoystickMoved;
 
             InitJoystick();
 

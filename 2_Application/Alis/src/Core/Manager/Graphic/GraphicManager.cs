@@ -156,8 +156,8 @@ namespace Alis.Core.Manager.Graphic
                 _renderWindow.SetIcon(image.Size.X, image.Size.Y, image.Pixels);
             }
 
-            _renderWindow.Resized += RenderWindowOnResized;
-            _renderWindow.Closed += RenderWindowOnClosed;
+            Window.Resized += RenderWindowOnResized;
+            Window.Closed += RenderWindowOnClosed;
         }
 
         /// <summary>

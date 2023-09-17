@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Base.Attributes;
@@ -56,7 +57,52 @@ namespace Alis.Core.Graphic.SFML.Windows
             EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system", SfmlDlls.SfmlSystemDllBytes);
             EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window", SfmlDlls.SfmlWindowDllBytes);
         }
+        
+        private readonly Dictionary<EventType, Action<Event>> eventHandlers = new Dictionary<EventType, Action<Event>>
+        {
+            { EventType.Closed, e => DispatchEvent(Closed, EventArgs.Empty) },
+            { EventType.GainedFocus, e => DispatchEvent(GainedFocus, EventArgs.Empty) },
+            { EventType.JoystickButtonPressed, e => DispatchEvent(JoystickButtonPressed, new JoystickButtonEventArgs(e.JoystickButton)) },
+            { EventType.JoystickButtonReleased, e => DispatchEvent(JoystickButtonReleased, new JoystickButtonEventArgs(e.JoystickButton)) },
+            { EventType.JoystickMoved, e => DispatchEvent(JoystickMoved, new JoystickMoveEventArgs(e.JoystickMove)) },
+            { EventType.JoystickConnected, e => DispatchEvent(JoystickConnected, new JoystickConnectEventArgs(e.JoystickConnect)) },
+            { EventType.JoystickDisconnected, e => DispatchEvent(JoystickDisconnected, new JoystickConnectEventArgs(e.JoystickConnect)) },
+            { EventType.KeyPressed, e => DispatchEvent(KeyPressed, new KeyEventArgs(e.Key)) },
+            { EventType.KeyReleased, e => DispatchEvent(KeyReleased, new KeyEventArgs(e.Key)) },
+            { EventType.LostFocus, e => DispatchEvent(LostFocus, EventArgs.Empty) },
+            { EventType.MouseButtonPressed, e => DispatchEvent(MouseButtonPressed, new MouseButtonEventArgs(e.MouseButton)) },
+            { EventType.MouseButtonReleased, e => DispatchEvent(MouseButtonReleased, new MouseButtonEventArgs(e.MouseButton)) },
+            { EventType.MouseEntered, e => DispatchEvent(MouseEntered, EventArgs.Empty) },
+            { EventType.MouseLeft, e => DispatchEvent(MouseLeft, EventArgs.Empty) },
+            { EventType.MouseMoved, e => DispatchEvent(MouseMoved, new MouseMoveEventArgs(e.MouseMove)) },
+            { EventType.MouseWheelScrolled, e => DispatchEvent(MouseWheelScrolled, new MouseWheelScrollEventArgs(e.MouseWheelScroll)) },
+            { EventType.Resized, e => DispatchEvent(Resized, new SizeEventArgs(e.Size)) },
+            { EventType.TextEntered, e => DispatchEvent(TextEntered, new TextEventArgs(e.Text)) },
+            { EventType.TouchBegan, e => DispatchEvent(TouchBegan, new TouchEventArgs(e.Touch)) },
+            { EventType.TouchMoved, e => DispatchEvent(TouchMoved, new TouchEventArgs(e.Touch)) },
+            { EventType.TouchEnded, e => DispatchEvent(TouchEnded, new TouchEventArgs(e.Touch)) },
+            { EventType.SensorChanged, e => DispatchEvent(SensorChanged, new SensorEventArgs(e.Sensor)) }
+        };
 
+        private void CallEventHandler(Event e)
+        {
+            if (eventHandlers.TryGetValue(e.Type, out var handler))
+            {
+                handler(e);
+            }
+        }
+        
+        private static void DispatchEvent(EventHandler handler, EventArgs args)
+        {
+            handler?.Invoke(null, args);
+        }
+
+        private static void DispatchEvent<T>(EventHandler<T> handler, T eventArgs)
+            where T : EventArgs
+        {
+            handler?.Invoke(null, eventArgs);
+        }
+        
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Create the window with default style and creation settings
@@ -468,259 +514,71 @@ namespace Alis.Core.Graphic.SFML.Windows
             sfWindow_destroy(CPointer);
         }
 
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Call the event handler for the given event
-        /// </summary>
-        /// <param name="e">Event to dispatch</param>
-        ////////////////////////////////////////////////////////////
-        private void CallEventHandler(Event e)
-        {
-            switch (e.Type)
-            {
-                case EventType.Closed:
-                    if (Closed != null)
-                    {
-                        Closed(this, EventArgs.Empty);
-                    }
-
-                    break;
-
-                case EventType.GainedFocus:
-                    if (GainedFocus != null)
-                    {
-                        GainedFocus(this, EventArgs.Empty);
-                    }
-
-                    break;
-
-                case EventType.JoystickButtonPressed:
-                    if (JoystickButtonPressed != null)
-                    {
-                        JoystickButtonPressed(this, new JoystickButtonEventArgs(e.JoystickButton));
-                    }
-
-                    break;
-
-                case EventType.JoystickButtonReleased:
-                    if (JoystickButtonReleased != null)
-                    {
-                        JoystickButtonReleased(this, new JoystickButtonEventArgs(e.JoystickButton));
-                    }
-
-                    break;
-
-                case EventType.JoystickMoved:
-                    if (JoystickMoved != null)
-                    {
-                        JoystickMoved(this, new JoystickMoveEventArgs(e.JoystickMove));
-                    }
-
-                    break;
-
-                case EventType.JoystickConnected:
-                    if (JoystickConnected != null)
-                    {
-                        JoystickConnected(this, new JoystickConnectEventArgs(e.JoystickConnect));
-                    }
-
-                    break;
-
-                case EventType.JoystickDisconnected:
-                    if (JoystickDisconnected != null)
-                    {
-                        JoystickDisconnected(this, new JoystickConnectEventArgs(e.JoystickConnect));
-                    }
-
-                    break;
-
-                case EventType.KeyPressed:
-                    if (KeyPressed != null)
-                    {
-                        KeyPressed(this, new KeyEventArgs(e.Key));
-                    }
-
-                    break;
-
-                case EventType.KeyReleased:
-                    if (KeyReleased != null)
-                    {
-                        KeyReleased(this, new KeyEventArgs(e.Key));
-                    }
-
-                    break;
-
-                case EventType.LostFocus:
-                    if (LostFocus != null)
-                    {
-                        LostFocus(this, EventArgs.Empty);
-                    }
-
-                    break;
-
-                case EventType.MouseButtonPressed:
-                    if (MouseButtonPressed != null)
-                    {
-                        MouseButtonPressed(this, new MouseButtonEventArgs(e.MouseButton));
-                    }
-
-                    break;
-
-                case EventType.MouseButtonReleased:
-                    if (MouseButtonReleased != null)
-                    {
-                        MouseButtonReleased(this, new MouseButtonEventArgs(e.MouseButton));
-                    }
-
-                    break;
-
-                case EventType.MouseEntered:
-                    if (MouseEntered != null)
-                    {
-                        MouseEntered(this, EventArgs.Empty);
-                    }
-
-                    break;
-
-                case EventType.MouseLeft:
-                    if (MouseLeft != null)
-                    {
-                        MouseLeft(this, EventArgs.Empty);
-                    }
-
-                    break;
-
-                case EventType.MouseMoved:
-                    if (MouseMoved != null)
-                    {
-                        MouseMoved(this, new MouseMoveEventArgs(e.MouseMove));
-                    }
-
-                    break;
-
-                case EventType.MouseWheelScrolled:
-                    if (MouseWheelScrolled != null)
-                    {
-                        MouseWheelScrolled(this, new MouseWheelScrollEventArgs(e.MouseWheelScroll));
-                    }
-
-                    break;
-
-                case EventType.Resized:
-                    if (Resized != null)
-                    {
-                        Resized(this, new SizeEventArgs(e.Size));
-                    }
-
-                    break;
-
-                case EventType.TextEntered:
-                    if (TextEntered != null)
-                    {
-                        TextEntered(this, new TextEventArgs(e.Text));
-                    }
-
-                    break;
-
-                case EventType.TouchBegan:
-                    if (TouchBegan != null)
-                    {
-                        TouchBegan(this, new TouchEventArgs(e.Touch));
-                    }
-
-                    break;
-
-                case EventType.TouchMoved:
-                    if (TouchMoved != null)
-                    {
-                        TouchMoved(this, new TouchEventArgs(e.Touch));
-                    }
-
-                    break;
-
-                case EventType.TouchEnded:
-                    if (TouchEnded != null)
-                    {
-                        TouchEnded(this, new TouchEventArgs(e.Touch));
-                    }
-
-                    break;
-
-                case EventType.SensorChanged:
-                    if (SensorChanged != null)
-                    {
-                        SensorChanged(this, new SensorEventArgs(e.Sensor));
-                    }
-
-                    break;
-            }
-        }
-
         /// <summary>Event handler for the Closed event</summary>
-        public event EventHandler Closed;
+        public static event EventHandler Closed;
 
         /// <summary>Event handler for the Resized event</summary>
-        public event EventHandler<SizeEventArgs> Resized;
+        public static event EventHandler<SizeEventArgs> Resized;
 
         /// <summary>Event handler for the LostFocus event</summary>
-        public event EventHandler LostFocus;
+        public static event EventHandler LostFocus;
 
         /// <summary>Event handler for the GainedFocus event</summary>
-        public event EventHandler GainedFocus;
+        public static event EventHandler GainedFocus;
 
         /// <summary>Event handler for the TextEntered event</summary>
-        public event EventHandler<TextEventArgs> TextEntered;
+        public static event EventHandler<TextEventArgs> TextEntered;
 
         /// <summary>Event handler for the KeyPressed event</summary>
-        public event EventHandler<KeyEventArgs> KeyPressed;
+        public static event EventHandler<KeyEventArgs> KeyPressed;
 
         /// <summary>Event handler for the KeyReleased event</summary>
-        public event EventHandler<KeyEventArgs> KeyReleased;
+        public static event EventHandler<KeyEventArgs> KeyReleased;
 
         /// <summary>Event handler for the MouseWheelScrolled event</summary>
-        public event EventHandler<MouseWheelScrollEventArgs> MouseWheelScrolled;
+        public static event EventHandler<MouseWheelScrollEventArgs> MouseWheelScrolled;
 
         /// <summary>Event handler for the MouseButtonPressed event</summary>
-        public event EventHandler<MouseButtonEventArgs> MouseButtonPressed;
+        public static event EventHandler<MouseButtonEventArgs> MouseButtonPressed;
 
         /// <summary>Event handler for the MouseButtonReleased event</summary>
-        public event EventHandler<MouseButtonEventArgs> MouseButtonReleased;
+        public static event EventHandler<MouseButtonEventArgs> MouseButtonReleased;
 
         /// <summary>Event handler for the MouseMoved event</summary>
-        public event EventHandler<MouseMoveEventArgs> MouseMoved;
+        public static event EventHandler<MouseMoveEventArgs> MouseMoved;
 
         /// <summary>Event handler for the MouseEntered event</summary>
-        public event EventHandler MouseEntered;
+        public static event EventHandler MouseEntered;
 
         /// <summary>Event handler for the MouseLeft event</summary>
-        public event EventHandler MouseLeft;
+        public static event EventHandler MouseLeft;
 
         /// <summary>Event handler for the JoystickButtonPressed event</summary>
-        public event EventHandler<JoystickButtonEventArgs> JoystickButtonPressed;
+        public static event EventHandler<JoystickButtonEventArgs> JoystickButtonPressed;
 
         /// <summary>Event handler for the JoystickButtonReleased event</summary>
-        public event EventHandler<JoystickButtonEventArgs> JoystickButtonReleased;
+        public static event EventHandler<JoystickButtonEventArgs> JoystickButtonReleased;
 
         /// <summary>Event handler for the JoystickMoved event</summary>
-        public event EventHandler<JoystickMoveEventArgs> JoystickMoved;
+        public static event EventHandler<JoystickMoveEventArgs> JoystickMoved;
 
         /// <summary>Event handler for the JoystickConnected event</summary>
-        public event EventHandler<JoystickConnectEventArgs> JoystickConnected;
+        public static event EventHandler<JoystickConnectEventArgs> JoystickConnected;
 
         /// <summary>Event handler for the JoystickDisconnected event</summary>
-        public event EventHandler<JoystickConnectEventArgs> JoystickDisconnected;
+        public static event EventHandler<JoystickConnectEventArgs> JoystickDisconnected;
 
         /// <summary>Event handler for the TouchBegan event</summary>
-        public event EventHandler<TouchEventArgs> TouchBegan;
+        public static event EventHandler<TouchEventArgs> TouchBegan;
 
         /// <summary>Event handler for the TouchMoved event</summary>
-        public event EventHandler<TouchEventArgs> TouchMoved;
+        public static event EventHandler<TouchEventArgs> TouchMoved;
 
         /// <summary>Event handler for the TouchEnded event</summary>
-        public event EventHandler<TouchEventArgs> TouchEnded;
+        public static event EventHandler<TouchEventArgs> TouchEnded;
 
         /// <summary>Event handler for the SensorChanged event</summary>
-        public event EventHandler<SensorEventArgs> SensorChanged;
+        public static event EventHandler<SensorEventArgs> SensorChanged;
 
         /// <summary>
         ///     Sfs the window create using the specified mode
