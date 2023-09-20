@@ -39,12 +39,12 @@ using Alis.Core.Graphic.SFML.Windows;
 
 namespace Alis.Core.Graphic.SFML.Graphics
 {
-    ////////////////////////////////////////////////////////////
+    
     /// <summary>
     ///     Simple wrapper for Window that allows easy
     ///     2D rendering
     /// </summary>
-    ////////////////////////////////////////////////////////////
+    
     public class RenderWindow : Window, IRenderTarget
     {
         /// <summary>
@@ -62,32 +62,32 @@ namespace Alis.Core.Graphic.SFML.Graphics
             EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window", SfmlDlls.SfmlWindowDllBytes);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Create the window with default style and creation settings
         /// </summary>
         /// <param name="mode">Video mode to use</param>
         /// <param name="title">Title of the window</param>
-        ////////////////////////////////////////////////////////////
+        
         public RenderWindow(VideoMode mode, string title) :
             this(mode, title, Windows.Styles.Default, new ContextSettings(0, 0))
         {
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Create the window with default creation settings
         /// </summary>
         /// <param name="mode">Video mode to use</param>
         /// <param name="title">Title of the window</param>
         /// <param name="style">Window style (Resize | Close by default)</param>
-        ////////////////////////////////////////////////////////////
+        
         public RenderWindow(VideoMode mode, string title, Windows.Styles style) :
             this(mode, title, style, new ContextSettings(0, 0))
         {
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Create the window
         /// </summary>
@@ -95,7 +95,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="title">Title of the window</param>
         /// <param name="style">Window style (Resize | Close by default)</param>
         /// <param name="settings">Creation parameters</param>
-        ////////////////////////////////////////////////////////////
+        
         public RenderWindow(VideoMode mode, string title, Windows.Styles style, ContextSettings settings) :
             base(IntPtr.Zero, 0)
         {
@@ -107,133 +107,133 @@ namespace Alis.Core.Graphic.SFML.Graphics
             Initialize();
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Create the window from an existing control with default creation settings
         /// </summary>
         /// <param name="handle">Platform-specific handle of the control</param>
-        ////////////////////////////////////////////////////////////
+        
         public RenderWindow(IntPtr handle) :
             this(handle, new ContextSettings(0, 0))
         {
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Create the window from an existing control
         /// </summary>
         /// <param name="handle">Platform-specific handle of the control</param>
         /// <param name="settings">Creation parameters</param>
-        ////////////////////////////////////////////////////////////
+        
         public RenderWindow(IntPtr handle, ContextSettings settings) :
             base(sfRenderWindow_createFromHandle(handle, ref settings), 0)
         {
             Initialize();
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Tell whether or not the window is opened (ie. has been created).
         ///     Note that a hidden window (Show(false))
         ///     will still return true
         /// </summary>
         /// <returns>True if the window is opened</returns>
-        ////////////////////////////////////////////////////////////
+        
         public override bool IsOpen => sfRenderWindow_isOpen(CPointer);
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Creation settings of the window
         /// </summary>
-        ////////////////////////////////////////////////////////////
+        
         public override ContextSettings Settings => sfRenderWindow_getSettings(CPointer);
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Position of the window
         /// </summary>
-        ////////////////////////////////////////////////////////////
+        
         public override Vector2I Position
         {
             get => sfRenderWindow_getPosition(CPointer);
             set => sfRenderWindow_setPosition(CPointer, value);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     OS-specific handle of the window
         /// </summary>
-        ////////////////////////////////////////////////////////////
+        
         public override IntPtr SystemHandle => sfRenderWindow_getSystemHandle(CPointer);
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Size of the rendering region of the window
         /// </summary>
-        ////////////////////////////////////////////////////////////
+        
         public override Vector2U Size
         {
             get => sfRenderWindow_getSize(CPointer);
             set => sfRenderWindow_setSize(CPointer, value);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Clear the entire window with black color
         /// </summary>
-        ////////////////////////////////////////////////////////////
+        
         public void Clear()
         {
             sfRenderWindow_clear(CPointer, Color.Black);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Clear the entire window with a single color
         /// </summary>
         /// <param name="color">Color to use to clear the window</param>
-        ////////////////////////////////////////////////////////////
+        
         public void Clear(Color color)
         {
             sfRenderWindow_clear(CPointer, color);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Change the current active view
         /// </summary>
         /// <param name="view">New view</param>
-        ////////////////////////////////////////////////////////////
+        
         public void SetView(View view)
         {
             sfRenderWindow_setView(CPointer, view.CPointer);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Return the current active view
         /// </summary>
         /// <returns>The current view</returns>
-        ////////////////////////////////////////////////////////////
+        
         public View GetView() => new View(sfRenderWindow_getView(CPointer));
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Default view of the window
         /// </summary>
-        ////////////////////////////////////////////////////////////
+        
         public View DefaultView => new View(myDefaultView);
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Get the viewport of a view applied to this target
         /// </summary>
         /// <param name="view">Target view</param>
         /// <returns>Viewport rectangle, expressed in pixels in the current target</returns>
-        ////////////////////////////////////////////////////////////
+        
         public RectangleI GetViewport(View view) => sfRenderWindow_getViewport(CPointer, view.CPointer);
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Convert a point from target coordinates to world
         ///     coordinates, using the current view
@@ -244,10 +244,10 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// </summary>
         /// <param name="point">Pixel to convert</param>
         /// <returns>The converted point, in "world" coordinates</returns>
-        ////////////////////////////////////////////////////////////
+        
         public Vector2 MapPixelToCoords(Vector2I point) => MapPixelToCoords(point, GetView());
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Convert a point from target coordinates to world coordinates
         ///     This function finds the 2D position that matches the
@@ -268,10 +268,10 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="point">Pixel to convert</param>
         /// <param name="view">The view to use for converting the point</param>
         /// <returns>The converted point, in "world" coordinates</returns>
-        ////////////////////////////////////////////////////////////
+        
         public Vector2 MapPixelToCoords(Vector2I point, View view) => sfRenderWindow_mapPixelToCoords(CPointer, point, view != null ? view.CPointer : IntPtr.Zero);
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Convert a point from world coordinates to target
         ///     coordinates, using the current view
@@ -282,10 +282,10 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// </summary>
         /// <param name="point">Point to convert</param>
         /// <returns>The converted point, in target coordinates (pixels)</returns>
-        ////////////////////////////////////////////////////////////
+        
         public Vector2I MapCoordsToPixel(Vector2 point) => MapCoordsToPixel(point, GetView());
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Convert a point from world coordinates to target coordinates
         ///     This function finds the pixel of the render-target that matches
@@ -303,58 +303,58 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="point">Point to convert</param>
         /// <param name="view">The view to use for converting the point</param>
         /// <returns>The converted point, in target coordinates (pixels)</returns>
-        ////////////////////////////////////////////////////////////
+        
         public Vector2I MapCoordsToPixel(Vector2 point, View view) => sfRenderWindow_mapCoordsToPixel(CPointer, point, view != null ? view.CPointer : IntPtr.Zero);
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Draw a drawable object to the render-target, with default render states
         /// </summary>
         /// <param name="drawable">Object to draw</param>
-        ////////////////////////////////////////////////////////////
+        
         public void Draw(IDrawable drawable)
         {
             Draw(drawable, RenderStates.Default);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Draw a drawable object to the render-target
         /// </summary>
         /// <param name="drawable">Object to draw</param>
         /// <param name="states">Render states to use for drawing</param>
-        ////////////////////////////////////////////////////////////
+        
         public void Draw(IDrawable drawable, RenderStates states)
         {
             drawable.Draw(this, states);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Draw primitives defined by an array of vertices, with default render states
         /// </summary>
         /// <param name="vertices">Pointer to the vertices</param>
         /// <param name="type">Type of primitives to draw</param>
-        ////////////////////////////////////////////////////////////
+        
         public void Draw(Vertex[] vertices, PrimitiveType type)
         {
             Draw(vertices, type, RenderStates.Default);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Draw primitives defined by an array of vertices
         /// </summary>
         /// <param name="vertices">Pointer to the vertices</param>
         /// <param name="type">Type of primitives to draw</param>
         /// <param name="states">Render states to use for drawing</param>
-        ////////////////////////////////////////////////////////////
+        
         public void Draw(Vertex[] vertices, PrimitiveType type, RenderStates states)
         {
             Draw(vertices, 0, (uint) vertices.Length, type, states);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Draw primitives defined by a sub-array of vertices, with default render states
         /// </summary>
@@ -362,13 +362,13 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="start">Index of the first vertex to draw in the array</param>
         /// <param name="count">Number of vertices to draw</param>
         /// <param name="type">Type of primitives to draw</param>
-        ////////////////////////////////////////////////////////////
+        
         public void Draw(Vertex[] vertices, uint start, uint count, PrimitiveType type)
         {
             Draw(vertices, start, count, type, RenderStates.Default);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Draw primitives defined by a sub-array of vertices
         /// </summary>
@@ -377,7 +377,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="count">Number of vertices to draw</param>
         /// <param name="type">Type of primitives to draw</param>
         /// <param name="states">Render states to use for drawing</param>
-        ////////////////////////////////////////////////////////////
+        
         public void Draw(Vertex[] vertices, uint start, uint count, PrimitiveType type, RenderStates states)
         {
             RenderStates.MarshalData marshaledStates = states.Marshal();
@@ -385,7 +385,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
             sfRenderWindow_drawPrimitives(CPointer, vertices, count, type, ref marshaledStates);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Save the current OpenGL render states and matrices.
         /// </summary>
@@ -420,25 +420,25 @@ namespace Alis.Core.Graphic.SFML.Graphics
         ///         function if you do so.
         ///     </para>
         /// </remarks>
-        ////////////////////////////////////////////////////////////
+        
         public void PushGlStates()
         {
             sfRenderWindow_pushGLStates(CPointer);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Restore the previously saved OpenGL render states and matrices.
         ///     See the description of <seealso cref="PushGlStates" /> to get a detailed
         ///     description of these functions.
         /// </summary>
-        ////////////////////////////////////////////////////////////
+        
         public void PopGlStates()
         {
             sfRenderWindow_popGLStates(CPointer);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Reset the internal OpenGL states so that the target is ready for drawing.
         /// </summary>
@@ -458,30 +458,30 @@ namespace Alis.Core.Graphic.SFML.Graphics
         ///     glPopAttrib(...);
         ///     // OpenGL code here...
         /// </example>
-        ////////////////////////////////////////////////////////////
+        
         public void ResetGlStates()
         {
             sfRenderWindow_resetGLStates(CPointer);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Close (destroy) the window.
         ///     The Window instance remains valid and you can call
         ///     Create to recreate the window
         /// </summary>
-        ////////////////////////////////////////////////////////////
+        
         public override void Close()
         {
             sfRenderWindow_close(CPointer);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Change the title of the window
         /// </summary>
         /// <param name="title">New title</param>
-        ////////////////////////////////////////////////////////////
+        
         public override void SetTitle(string title)
         {
             // Copy the title to a null-terminated UTF-32 byte array
@@ -490,53 +490,53 @@ namespace Alis.Core.Graphic.SFML.Graphics
             sfRenderWindow_setUnicodeTitle(CPointer, titleAsUtf32);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Change the window's icon
         /// </summary>
         /// <param name="width">Icon's width, in pixels</param>
         /// <param name="height">Icon's height, in pixels</param>
         /// <param name="pixels">Array of pixels, format must be RGBA 32 bits</param>
-        ////////////////////////////////////////////////////////////
+        
         public override void SetIcon(uint width, uint height, byte[] pixels)
         {
             sfRenderWindow_setIcon(CPointer, width, height, pixels);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Show or hide the window
         /// </summary>
         /// <param name="visible">True to show the window, false to hide it</param>
-        ////////////////////////////////////////////////////////////
+        
         public override void SetVisible(bool visible)
         {
             sfRenderWindow_setVisible(CPointer, visible);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Enable / disable vertical synchronization
         /// </summary>
         /// <param name="enable">True to enable v-sync, false to deactivate</param>
-        ////////////////////////////////////////////////////////////
+        
         public override void SetVerticalSyncEnabled(bool enable)
         {
             sfRenderWindow_setVerticalSyncEnabled(CPointer, enable);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Show or hide the mouse cursor
         /// </summary>
         /// <param name="visible">True to show, false to hide</param>
-        ////////////////////////////////////////////////////////////
+        
         public override void SetMouseCursorVisible(bool visible)
         {
             sfRenderWindow_setMouseCursorVisible(CPointer, visible);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Grab or release the mouse cursor
         /// </summary>
@@ -549,92 +549,92 @@ namespace Alis.Core.Graphic.SFML.Graphics
         ///     won't have any effect (fullscreen windows always grab the
         ///     cursor).
         /// </remarks>
-        ////////////////////////////////////////////////////////////
+        
         public override void SetMouseCursorGrabbed(bool grabbed)
         {
             sfRenderWindow_setMouseCursorGrabbed(CPointer, grabbed);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Set the displayed cursor to a native system cursor
         /// </summary>
         /// <param name="cursor">Native system cursor type to display</param>
-        ////////////////////////////////////////////////////////////
+        
         public override void SetMouseCursor(Cursor cursor)
         {
             sfRenderWindow_setMouseCursor(CPointer, cursor.CPointer);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Enable or disable automatic key-repeat.
         ///     Automatic key-repeat is enabled by default
         /// </summary>
         /// <param name="enable">True to enable, false to disable</param>
-        ////////////////////////////////////////////////////////////
+        
         public override void SetKeyRepeatEnabled(bool enable)
         {
             sfRenderWindow_setKeyRepeatEnabled(CPointer, enable);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Limit the framerate to a maximum fixed frequency
         /// </summary>
         /// <param name="limit">Framerate limit, in frames per seconds (use 0 to disable limit)</param>
-        ////////////////////////////////////////////////////////////
+        
         public override void SetFramerateLimit(uint limit)
         {
             sfRenderWindow_setFramerateLimit(CPointer, limit);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Change the joystick threshold, ie. the value below which
         ///     no move event will be generated
         /// </summary>
         /// <param name="threshold">New threshold, in range [0, 100]</param>
-        ////////////////////////////////////////////////////////////
+        
         public override void SetJoystickThreshold(float threshold)
         {
             sfRenderWindow_setJoystickThreshold(CPointer, threshold);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Activate of deactivate the window as the current target
         ///     for rendering
         /// </summary>
         /// <param name="active">True to activate, false to deactivate (true by default)</param>
         /// <returns>True if operation was successful, false otherwise</returns>
-        ////////////////////////////////////////////////////////////
+        
         public override bool SetActive(bool active) => sfRenderWindow_setActive(CPointer, active);
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Request the current window to be made the active
         ///     foreground window
         /// </summary>
-        ////////////////////////////////////////////////////////////
+        
         public override void RequestFocus()
         {
             sfRenderWindow_requestFocus(CPointer);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Check whether the window has the input focus
         /// </summary>
         /// <returns>True if the window has focus, false otherwise</returns>
-        ////////////////////////////////////////////////////////////
+        
         public override bool HasFocus() => sfRenderWindow_hasFocus(CPointer);
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Display the window on screen
         /// </summary>
-        ////////////////////////////////////////////////////////////
+        
         public override void Display()
         {
             sfRenderWindow_display(CPointer);
@@ -654,12 +654,12 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// </remarks>
         public Image Capture() => new Image(sfRenderWindow_capture(CPointer));
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Provide a string describing the object
         /// </summary>
         /// <returns>String description of the object</returns>
-        ////////////////////////////////////////////////////////////
+        
         public override string ToString() => "[RenderWindow]" +
                                              " Size(" + Size + ")" +
                                              " Position(" + Position + ")" +
@@ -667,48 +667,48 @@ namespace Alis.Core.Graphic.SFML.Graphics
                                              " DefaultView(" + DefaultView + ")" +
                                              " View(" + GetView() + ")";
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Internal function to get the next event
         /// </summary>
         /// <param name="eventToFill">Variable to fill with the raw pointer to the event structure</param>
         /// <returns>True if there was an event, false otherwise</returns>
-        ////////////////////////////////////////////////////////////
+        
         protected override bool PollEvent(out Event eventToFill) => sfRenderWindow_pollEvent(CPointer, out eventToFill);
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Internal function to get the next event (blocking)
         /// </summary>
         /// <param name="eventToFill">Variable to fill with the raw pointer to the event structure</param>
         /// <returns>False if any error occured</returns>
-        ////////////////////////////////////////////////////////////
+        
         protected override bool WaitEvent(out Event eventToFill) => sfRenderWindow_waitEvent(CPointer, out eventToFill);
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Internal function to get the mouse position relative to the window.
         ///     This function is protected because it is called by another class,
         ///     it is not meant to be called by users.
         /// </summary>
         /// <returns>Relative mouse position</returns>
-        ////////////////////////////////////////////////////////////
+        
         public override Vector2I InternalGetMousePosition() => sfMouse_getPositionRenderWindow(CPointer);
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Internal function to set the mouse position relative to the window.
         ///     This function is protected because it is called by another class,
         ///     it is not meant to be called by users.
         /// </summary>
         /// <param name="position">Relative mouse position</param>
-        ////////////////////////////////////////////////////////////
+        
         protected internal override void InternalSetMousePosition(Vector2I position)
         {
             sfMouse_setPositionRenderWindow(position, CPointer);
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Internal function to get the touch position relative to the window.
         ///     This function is protected because it is called by another class of
@@ -716,15 +716,15 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// </summary>
         /// <param name="finger">Finger index</param>
         /// <returns>Relative touch position</returns>
-        ////////////////////////////////////////////////////////////
+        
         protected internal override Vector2I InternalGetTouchPosition(uint finger) => sfTouch_getPositionRenderWindow(finger, CPointer);
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Handle the destruction of the object
         /// </summary>
         /// <param name="disposing">Is the GC disposing the object, or is it an explicit call ?</param>
-        ////////////////////////////////////////////////////////////
+        
         protected override void Destroy(bool disposing)
         {
             sfRenderWindow_destroy(CPointer);
@@ -735,15 +735,14 @@ namespace Alis.Core.Graphic.SFML.Graphics
             }
         }
 
-        ////////////////////////////////////////////////////////////
+        
         /// <summary>
         ///     Do common initializations
         /// </summary>
-        ////////////////////////////////////////////////////////////
+        
         private void Initialize()
         {
             myDefaultView = new View(sfRenderWindow_getDefaultView(CPointer));
-            GC.SuppressFinalize(myDefaultView);
         }
 
         /// <summary>
