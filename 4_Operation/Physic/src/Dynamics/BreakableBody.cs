@@ -109,12 +109,12 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>The force needed to break the body apart. Default: 500</summary>
-        public float Strength { get; }
+        private float Strength { get; }
 
         /// <summary>
         ///     Gets or sets the value of the broken
         /// </summary>
-        public bool Broken { get; private set; }
+        private bool Broken { get; set; }
 
         /// <summary>
         ///     Gets the value of the main body
@@ -124,7 +124,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Gets the value of the parts
         /// </summary>
-        public List<Fixture> Parts { get; }
+        private List<Fixture> Parts { get; }
 
         /// <summary>
         ///     Posts the solve using the specified contact
@@ -190,7 +190,6 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         private void Decompose()
         {
-            //Unsubsribe from the PostSolve delegate
             world.ContactManager.PostSolve -= PostSolve;
 
             for (int i = 0; i < Parts.Count; i++)
@@ -198,14 +197,12 @@ namespace Alis.Core.Physic.Dynamics
                 Fixture oldFixture = Parts[i];
 
                 Shape shape = oldFixture.Shape.Clone();
-                //object userData = oldFixture.UserData;
-
+                
                 MainBody.RemoveFixture(oldFixture);
 
                 Body body = BodyFactory.CreateBody(world, MainBody.Position, MainBody.Rotation, BodyType.Dynamic);
 
                 Fixture newFixture = body.AddFixture(shape);
-                //newFixture.UserData = userData;
                 Parts[i] = newFixture;
 
                 body.AngularVelocity = angularVelocitiesCache[i];
