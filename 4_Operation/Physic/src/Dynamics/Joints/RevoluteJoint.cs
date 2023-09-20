@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
@@ -36,19 +37,6 @@ using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
-    // Point-to-point constraint
-    // C = p2 - p1
-    // Cdot = v2 - v1
-    //      = v2 + cross(w2, r2) - v1 - cross(w1, r1)
-    // J = [-I -r1_skew I r2_skew ]
-    // Identity used:
-    // w k % (rx i + ry j) = w * (-ry i + rx j)
-
-    // Motor constraint
-    // Cdot = w2 - w1
-    // J = [0 0 -1 0 0 1]
-    // K = invI1 + invI2
-
     /// <summary>
     ///     A revolute joint constrains to bodies to share a common point while they are free to rotate about the point.
     ///     The relative rotation about the shared point is the joint angle. You can limit the relative rotation with a joint
@@ -56,6 +44,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     that specifies a lower and upper angle. You can use a motor to drive the relative rotation about the shared point.
     ///     A
     ///     maximum motor torque is provided so that infinite forces are not generated.
+    ///  Point-to-point constraint
+    ///  C = p2 - p1
+    ///  dot = v2 - v1
+    ///       = v2 + cross(w2, r2) - v1 - cross(w1, r1)
+    ///  J = [-I -r1_skew I r2_skew ]
+    ///  Identity used:
+    ///  w k % (rx i + ry j) = w * (-ry i + rx j)
+    /// 
+    ///  Motor constraint
+    ///  dot = w2 - w1
+    ///  J = [0 0 -1 0 0 1]
+    ///  K = invI1 + invI2
     /// </summary>
     public class RevoluteJoint : Joint
     {
@@ -121,15 +121,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private Matrix2X2F k;
 
         // Solver shared
-        /// <summary>
-        ///     The local anchor
-        /// </summary>
-        private Vector2 localAnchorA;
-
-        /// <summary>
-        ///     The local anchor
-        /// </summary>
-        private Vector2 localAnchorB;
 
         /// <summary>
         ///     The local center
@@ -177,11 +168,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private Vector2 rB;
 
         /// <summary>
-        ///     The reference angle
-        /// </summary>
-        private float referenceAngle;
-
-        /// <summary>
         ///     The upper angle
         /// </summary>
         private float upperAngle;
@@ -224,9 +210,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         )
             : base(bodyA, bodyB, jointType, collideConnected)
         {
-            this.localAnchorA = localAnchorA;
-            this.localAnchorB = localAnchorB;
-            this.referenceAngle = referenceAngle;
+            this.LocalAnchorA = localAnchorA;
+            this.LocalAnchorB = localAnchorB;
+            this.ReferenceAngle = referenceAngle;
             this.lowerAngle = lowerAngle;
             this.upperAngle = upperAngle;
             maxMotorTorque = motorTorque;
@@ -282,18 +268,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public float UpperAngle { get; set; }
 
         /// <summary>The local anchor point on BodyA</summary>
-        public Vector2 LocalAnchorA
-        {
-            get => localAnchorA;
-            set => localAnchorA = value;
-        }
+        public Vector2 LocalAnchorA { get; private set; }
 
         /// <summary>The local anchor point on BodyB</summary>
-        public Vector2 LocalAnchorB
-        {
-            get => localAnchorB;
-            set => localAnchorB = value;
-        }
+        public Vector2 LocalAnchorB { get; private set; }
 
         /// <summary>
         ///     Gets or sets the value of the world anchor a
@@ -313,12 +291,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             set => LocalAnchorB = BodyB.GetLocalPoint(value);
         }
 
-        /// <summary>The referance angle computed as BodyB angle minus BodyA angle.</summary>
-        public float ReferenceAngle
-        {
-            get => referenceAngle;
-            set => referenceAngle = value;
-        }
+        /// <summary>The reference angle computed as BodyB angle minus BodyA angle.</summary>
+        public float ReferenceAngle { get; private set; }
 
         /// <summary>Get the current joint angle in radians.</summary>
         public float JointAngle => BodyB.Sweep.A - BodyA.Sweep.A - ReferenceAngle;
@@ -349,7 +323,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => lowerAngle;
             set
             {
-                if (lowerAngle != value)
+                if (Math.Abs(lowerAngle - value) > 0.01f)
                 {
                     WakeBodies();
                     lowerAngle = value;
@@ -364,7 +338,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => upperAngle;
             set
             {
-                if (upperAngle != value)
+                if (Math.Abs(upperAngle - value) > 0.01f)
                 {
                     WakeBodies();
                     upperAngle = value;
@@ -393,7 +367,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             set
             {
-                if (value != motorSpeed)
+                if (Math.Abs(value - motorSpeed) > 0.01f)
                 {
                     WakeBodies();
                     motorSpeed = value;
@@ -407,7 +381,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             set
             {
-                if (value != maxMotorTorque)
+                if (Math.Abs(value - maxMotorTorque) > 0.01f)
                 {
                     WakeBodies();
                     maxMotorTorque = value;
@@ -421,7 +395,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="upper">The upper limit</param>
         public void SetLimits(float lower, float upper)
         {
-            if (lower != lowerAngle || upper != upperAngle)
+            if (Math.Abs(lower - lowerAngle) > 0.01f || Math.Abs(upper - upperAngle) > 0.01f)
             {
                 WakeBodies();
                 lowerImpulse = 0.0f;
@@ -572,60 +546,56 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // Solve motor constraint.
             if (enableMotor && (fixedRotation == false))
             {
-                float cdot = wB - wA - motorSpeed;
-                float impulse = -axialMass * cdot;
+                float cDot = wB - wA - motorSpeed;
+                float impulseLocal = -axialMass * cDot;
                 float oldImpulse = motorImpulse;
                 float maxImpulse = data.Step.DeltaTime * maxMotorTorque;
-                motorImpulse = MathUtils.Clamp(motorImpulse + impulse, -maxImpulse, maxImpulse);
-                impulse = motorImpulse - oldImpulse;
+                motorImpulse = MathUtils.Clamp(motorImpulse + impulseLocal, -maxImpulse, maxImpulse);
+                impulseLocal = motorImpulse - oldImpulse;
 
-                wA -= iA * impulse;
-                wB += iB * impulse;
+                wA -= iA * impulseLocal;
+                wB += iB * impulseLocal;
             }
 
             if (enableLimit && (fixedRotation == false))
             {
-                // Lower limit
                 {
                     float c = angle - lowerAngle;
-                    float cdot = wB - wA;
-                    float impulse = -axialMass * (cdot + MathUtils.Max(c, 0.0f) * data.Step.InvertedDeltaTime);
+                    float cDot = wB - wA;
+                    float impulseLocal = -axialMass * (cDot + MathUtils.Max(c, 0.0f) * data.Step.InvertedDeltaTime);
                     float oldImpulse = lowerImpulse;
-                    lowerImpulse = MathUtils.Max(lowerImpulse + impulse, 0.0f);
-                    impulse = lowerImpulse - oldImpulse;
+                    lowerImpulse = MathUtils.Max(lowerImpulse + impulseLocal, 0.0f);
+                    impulseLocal = lowerImpulse - oldImpulse;
 
-                    wA -= iA * impulse;
-                    wB += iB * impulse;
+                    wA -= iA * impulseLocal;
+                    wB += iB * impulseLocal;
                 }
-
-                // Upper limit
-                // Note: signs are flipped to keep C positive when the constraint is satisfied.
-                // This also keeps the impulse positive when the limit is active.
+                
                 {
                     float c = upperAngle - angle;
-                    float cdot = wA - wB;
-                    float impulse = -axialMass * (cdot + MathUtils.Max(c, 0.0f) * data.Step.InvertedDeltaTime);
+                    float dot = wA - wB;
+                    float impulseLocal = -axialMass * (dot + MathUtils.Max(c, 0.0f) * data.Step.InvertedDeltaTime);
                     float oldImpulse = upperImpulse;
-                    upperImpulse = MathUtils.Max(upperImpulse + impulse, 0.0f);
-                    impulse = upperImpulse - oldImpulse;
+                    upperImpulse = MathUtils.Max(upperImpulse + impulseLocal, 0.0f);
+                    impulseLocal = upperImpulse - oldImpulse;
 
-                    wA += iA * impulse;
-                    wB -= iB * impulse;
+                    wA += iA * impulseLocal;
+                    wB -= iB * impulseLocal;
                 }
             }
 
             // Solve point-to-point constraint
             {
-                Vector2 cdot = vB + MathUtils.Cross(wB, rB) - vA - MathUtils.Cross(wA, rA);
-                Vector2 impulse = k.Solve(-cdot);
+                Vector2 cDot = vB + MathUtils.Cross(wB, rB) - vA - MathUtils.Cross(wA, rA);
+                Vector2 impulseLocal = k.Solve(-cDot);
 
-                this.impulse = new Vector2(impulse.X, impulse.Y);
+                this.impulse = new Vector2(impulseLocal.X, impulseLocal.Y);
 
-                vA -= mA * impulse;
-                wA -= iA * MathUtils.Cross(rA, impulse);
+                vA -= mA * impulseLocal;
+                wA -= iA * MathUtils.Cross(rA, impulseLocal);
 
-                vB += mB * impulse;
-                wB += iB * MathUtils.Cross(rB, impulse);
+                vB += mB * impulseLocal;
+                wB += iB * MathUtils.Cross(rB, impulseLocal);
             }
 
             data.Velocities[indexA].V = vA;
@@ -649,32 +619,32 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Rotation qA = new Rotation(aA), qB = new Rotation(aB);
 
             float angularError = 0.0f;
-            float positionError = 0.0f;
+            float positionError;
 
             bool fixedRotation = invIa + invIb == 0.0f;
 
             // Solve angular limit constraint
             if (enableLimit && (fixedRotation == false))
             {
-                float angle = aB - aA - ReferenceAngle;
+                float angleLocal = aB - aA - ReferenceAngle;
                 float c = 0.0f;
 
                 if (MathUtils.Abs(upperAngle - lowerAngle) < 2.0f * Settings.AngularSlop)
                 {
                     // Prevent large angular corrections
-                    c = MathUtils.Clamp(angle - lowerAngle, -Settings.AngularCorrection,
+                    c = MathUtils.Clamp(angleLocal - lowerAngle, -Settings.AngularCorrection,
                         Settings.AngularCorrection);
                 }
-                else if (angle <= lowerAngle)
+                else if (angleLocal <= lowerAngle)
                 {
                     // Prevent large angular corrections and allow some slop.
-                    c = MathUtils.Clamp(angle - lowerAngle + Settings.AngularSlop, -Settings.AngularCorrection,
+                    c = MathUtils.Clamp(angleLocal - lowerAngle + Settings.AngularSlop, -Settings.AngularCorrection,
                         0.0f);
                 }
-                else if (angle >= upperAngle)
+                else if (angleLocal >= upperAngle)
                 {
                     // Prevent large angular corrections and allow some slop.
-                    c = MathUtils.Clamp(angle - upperAngle - Settings.AngularSlop, 0.0f,
+                    c = MathUtils.Clamp(angleLocal - upperAngle - Settings.AngularSlop, 0.0f,
                         Settings.AngularCorrection);
                 }
 
@@ -688,29 +658,29 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 qA.Set(aA);
                 qB.Set(aB);
-                Vector2 rA = MathUtils.Mul(qA, LocalAnchorA - localCenterA);
-                Vector2 rB = MathUtils.Mul(qB, LocalAnchorB - localCenterB);
+                Vector2 rALocal = MathUtils.Mul(qA, LocalAnchorA - localCenterA);
+                Vector2 rBLocal = MathUtils.Mul(qB, LocalAnchorB - localCenterB);
 
-                Vector2 c = cB + rB - cA - rA;
+                Vector2 c = cB + rBLocal - cA - rALocal;
                 positionError = c.Length();
 
                 float mA = invMassA, mB = invMassB;
                 float iA = invIa, iB = invIb;
 
-                Matrix2X2F k = new Matrix2X2F(
-                    mA + mB + iA * rA.Y * rA.Y + iB * rB.Y * rB.Y,
-                    -iA * rA.X * rA.Y - iB * rB.X * rB.Y,
-                    -iA * rA.X * rA.Y - iB * rB.X * rB.Y,
-                    mA + mB + iA * rA.X * rA.X + iB * rB.X * rB.X
+                Matrix2X2F kLocal = new Matrix2X2F(
+                    mA + mB + iA * rALocal.Y * rALocal.Y + iB * rBLocal.Y * rBLocal.Y,
+                    -iA * rALocal.X * rALocal.Y - iB * rBLocal.X * rBLocal.Y,
+                    -iA * rALocal.X * rALocal.Y - iB * rBLocal.X * rBLocal.Y,
+                    mA + mB + iA * rALocal.X * rALocal.X + iB * rBLocal.X * rBLocal.X
                 );
 
-                Vector2 impulse = -k.Solve(c);
+                Vector2 impulseLocal = -kLocal.Solve(c);
 
-                cA -= mA * impulse;
-                aA -= iA * MathUtils.Cross(rA, impulse);
+                cA -= mA * impulseLocal;
+                aA -= iA * MathUtils.Cross(rALocal, impulseLocal);
 
-                cB += mB * impulse;
-                aB += iB * MathUtils.Cross(rB, impulse);
+                cB += mB * impulseLocal;
+                aB += iB * MathUtils.Cross(rBLocal, impulseLocal);
             }
 
             data.Positions[indexA].C = cA;
