@@ -1,8 +1,5 @@
 var NAVTREEINDEX27 =
 {
-"d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a7fb6a50854505e49e04657419eb4e4b4":[1,0,0,2,8,6,4,12],
-"d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a93f0222aa940e508f5568bd1fbe500c6":[1,0,0,2,8,6,4,4],
-"d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a96d59d01f22da2c9e8aad10619213282":[1,0,0,2,8,6,4,21],
 "d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a9995c11fe6e2c66260c99e061f55b100":[1,0,0,2,8,6,4,18],
 "d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a9c7d2b03fd55c8ede48d4692a55973a1":[1,0,0,2,8,6,4,15],
 "d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#aa1b98d121c692e1f03a3de5b7db3ea48":[1,0,0,2,8,6,4,14],
@@ -249,5 +246,8 @@ var NAVTREEINDEX27 =
 "d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a1ae51aff349ff83cf18cc12c8ae4f30f":[1,0,0,2,8,7,5,1,0,0,4,20],
 "d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a1d3d60c93a547ba44c08e62108e781d9":[1,0,0,2,8,7,5,1,0,0,4,16],
 "d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a3338dfb1d494536610b79385f081e9fe":[1,0,0,2,8,7,5,1,0,0,4,11],
-"d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a368792e24398f73b3aa4d24254d5e436":[1,0,0,2,8,7,5,1,0,0,4,8]
+"d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a368792e24398f73b3aa4d24254d5e436":[1,0,0,2,8,7,5,1,0,0,4,8],
+"d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a449ba5e8e49928d014bc7645f05beb80":[1,0,0,2,8,7,5,1,0,0,4,9],
+"d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a46c3387893ddde78ebb89a382cd34c59":[1,0,0,2,8,7,5,1,0,0,4,21],
+"d9/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_context.html#a63f48e8a8589bab2f21a28676ef4dde2":[1,0,0,2,8,7,5,1,0,0,4,19]
 };

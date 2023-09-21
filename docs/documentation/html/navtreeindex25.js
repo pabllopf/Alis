@@ -1,8 +1,5 @@
 var NAVTREEINDEX25 =
 {
-"d7/de4/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_box_collider_builder.html#a4d9ef8c41b5421ec6e232abfbaea2eef":[1,0,0,1,0,0,2,0,7],
-"d7/de4/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_box_collider_builder.html#a6d6d2a82a57ba84e2d51fdbaa995a430":[1,0,0,1,0,0,2,0,14],
-"d7/de4/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_box_collider_builder.html#a6f82c795baeca28e33fe5142760d8b84":[1,0,0,1,0,0,2,0,2],
 "d7/de4/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_box_collider_builder.html#a704d8eb6bedaec8eb69267e43a57bf22":[1,0,0,1,0,0,2,0,8],
 "d7/de4/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_box_collider_builder.html#a7d7a531c3f1d4f54275ae53e323de35d":[1,0,0,1,0,0,2,0,3],
 "d7/de4/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_box_collider_builder.html#a8786a9b101ba70941ef2009f80548e5d":[1,0,0,1,0,0,2,0,15],
@@ -249,5 +246,8 @@ var NAVTREEINDEX25 =
 "d8/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_sets_1_1_point_set.html#af1db62ae55c976500002897efa842f54":[1,0,0,2,8,7,5,1,2,1,7],
 "d8/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_sets_1_1_point_set.html#af98fb5de3090f1dc1bfd7b4d4e2864c3":[1,0,0,2,8,7,5,1,2,1,6],
 "d8/d81/namespace_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_enums.html":[0,0,0,0,0,6,1],
-"d8/d81/namespace_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_enums.html":[1,0,0,0,0,6,0]
+"d8/d81/namespace_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_enums.html":[1,0,0,0,0,6,0],
+"d8/d85/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_handlers.html":[0,0,0,2,8,0,4],
+"d8/d8c/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_general_setting_builder.html":[1,0,0,1,0,3,2],
+"d8/d8c/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_general_setting_builder.html#a08b8188e4e81962c4085e3386f3da2a9":[1,0,0,1,0,3,2,1]
 };

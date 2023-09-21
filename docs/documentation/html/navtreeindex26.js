@@ -1,8 +1,5 @@
 var NAVTREEINDEX26 =
 {
-"d8/d85/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_handlers.html":[0,0,0,2,8,0,4],
-"d8/d8c/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_general_setting_builder.html":[1,0,0,1,0,3,2],
-"d8/d8c/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_general_setting_builder.html#a08b8188e4e81962c4085e3386f3da2a9":[1,0,0,1,0,3,2,1],
 "d8/d8c/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_general_setting_builder.html#a350f1a29ccf413f7e7778450bd802747":[1,0,0,1,0,3,2,6],
 "d8/d8c/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_general_setting_builder.html#a3ca25b51a0dc57d097160ba0c5d0df91":[1,0,0,1,0,3,2,2],
 "d8/d8c/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_general_setting_builder.html#a8297b788c63d5587fe7d3cf40387fcb5":[1,0,0,1,0,3,2,5],
@@ -182,8 +179,8 @@ var NAVTREEINDEX26 =
 "d8/dd9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_alis_object.html#ac51a98ed55b4244b7eb69602f63562cd":[1,0,0,2,0,0,4,5],
 "d8/dd9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_alis_object.html#ac8a3efe4d13edb9f90190fd63f2404b3":[1,0,0,2,0,0,4,1],
 "d8/dd9/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_alis_object.html#ad38891a0466ac68c12bd12408d17e1bf":[1,0,0,2,0,0,4,6],
-"d8/ddb/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull.html":[1,0,0,2,8,7,0],
 "d8/ddb/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull.html":[0,0,0,2,8,7,0],
+"d8/ddb/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull.html":[1,0,0,2,8,7,0],
 "d8/de0/namespace_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_delegates.html":[0,0,0,0,0,6,0],
 "d8/de1/class_alis_1_1_app_1_1_engine_1_1_u_i_1_1_utils_1_1_unsafe.html":[1,0,0,0,0,8,2,0],
 "d8/de1/class_alis_1_1_app_1_1_engine_1_1_u_i_1_1_utils_1_1_unsafe.html#a3287931a3cc3600f230259ed917ed2a2":[1,0,0,0,0,8,2,0,4],
@@ -249,5 +246,8 @@ var NAVTREEINDEX26 =
 "d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a654ed78a88fd11480497f28b5a52e6af":[1,0,0,2,8,6,4,0],
 "d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a727242e6da1c976f1e5d841682ef1ca8":[1,0,0,2,8,6,4,31],
 "d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a7636e3d912e056bc9bb3acdd245529c1":[1,0,0,2,8,6,4,25],
-"d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a792b4e1ed999141fb422f42da8a7a675":[1,0,0,2,8,6,4,20]
+"d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a792b4e1ed999141fb422f42da8a7a675":[1,0,0,2,8,6,4,20],
+"d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a7fb6a50854505e49e04657419eb4e4b4":[1,0,0,2,8,6,4,12],
+"d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a93f0222aa940e508f5568bd1fbe500c6":[1,0,0,2,8,6,4,4],
+"d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html#a96d59d01f22da2c9e8aad10619213282":[1,0,0,2,8,6,4,21]
 };

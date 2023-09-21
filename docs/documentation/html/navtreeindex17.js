@@ -1,8 +1,5 @@
 var NAVTREEINDEX17 =
 {
-"d4/dc2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_cdt_decomposer.html#a7c85bbaf78400f674791c8040b2a6505":[1,0,0,2,8,7,5,1,4,0],
-"d4/dcb/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_rotation.html":[1,0,0,2,0,4,6],
-"d4/dcb/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_rotation.html#a1d7f25a4484ddde5a83ef64ff4f8bd9a":[1,0,0,2,0,4,6,1],
 "d4/dcb/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_rotation.html#a401f47935a07eaceab4cb1e1994ccef1":[1,0,0,2,0,4,6,4],
 "d4/dcb/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_rotation.html#a58a40fb6f61015c1a7032bfe22519c53":[1,0,0,2,0,4,6,0],
 "d4/dcb/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_rotation.html#a5b7f7a6100e8601bb5627ef70a1577df":[1,0,0,2,0,4,6,5],
@@ -249,5 +246,8 @@ var NAVTREEINDEX17 =
 "d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a97a9584a27329b720b9a4d154cdefc19a0081a84c822d1216a7fb598b28580a63":[1,0,0,2,5,1,1,3,0,6],
 "d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a97a9584a27329b720b9a4d154cdefc19a0f4e1aaabd074689b7d3ead824d1ee8e":[1,0,0,2,5,1,1,3,0,0],
 "d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a97a9584a27329b720b9a4d154cdefc19a0f68101772bd5397ef8eb1b632798652":[1,0,0,2,5,1,1,3,0,2],
-"d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a97a9584a27329b720b9a4d154cdefc19a1cbeed37b677868f070099b978e38188":[1,0,0,2,5,1,1,3,0,5]
+"d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a97a9584a27329b720b9a4d154cdefc19a1cbeed37b677868f070099b978e38188":[1,0,0,2,5,1,1,3,0,5],
+"d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a97a9584a27329b720b9a4d154cdefc19a29fa98d79e5d4fbcd58f51c289932856":[1,0,0,2,5,1,1,3,0,7],
+"d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a97a9584a27329b720b9a4d154cdefc19a6a26f548831e6a8c26bfbbd9f6ec61e0":[1,0,0,2,5,1,1,3,0,11],
+"d5/d2f/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a97a9584a27329b720b9a4d154cdefc19a6ba8042ceea48823ba6c4c72b9354cea":[1,0,0,2,5,1,1,3,0,9]
 };

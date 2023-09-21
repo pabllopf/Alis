@@ -1,8 +1,5 @@
 var NAVTREEINDEX16 =
 {
-"d4/d3a/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_font_1_1_info_marshal_data.html#a99e33aca5f36abdd99c3a03c440d93cb":[1,0,0,2,5,1,0,5,1,0],
-"d4/d40/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_multiple_select_modifier.html":[1,0,0,0,0,8,1,1,18],
-"d4/d40/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_multiple_select_modifier.html#a21b2d9bd9b2e454df80610ae73f7db7a":[1,0,0,0,0,8,1,1,18,0],
 "d4/d47/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_figures_1_1_d2_1_1_circle_1_1_circle_i.html":[1,0,0,2,0,4,1,0,0,1],
 "d4/d49/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_polygon_manipulation_1_1_simple_combiner.html":[1,0,0,2,8,7,3,0],
 "d4/d49/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_polygon_manipulation_1_1_simple_combiner.html#a10d02be32ab8d793926874864ef3abd6":[1,0,0,2,8,7,3,0,6],
@@ -249,5 +246,8 @@ var NAVTREEINDEX16 =
 "d4/dbd/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_key_data_ptr.html#afa1fd03b4171b4568841e164fb617579":[1,0,0,0,0,8,38,3],
 "d4/dc0/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_connect_event.html":[1,0,0,2,5,1,1,10],
 "d4/dc0/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows_1_1_joystick_connect_event.html#a45b866508c479d110034f071e68e1234":[1,0,0,2,5,1,1,10,0],
-"d4/dc2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_cdt_decomposer.html":[1,0,0,2,8,7,5,1,4]
+"d4/dc2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_cdt_decomposer.html":[1,0,0,2,8,7,5,1,4],
+"d4/dc2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_cdt_decomposer.html#a7c85bbaf78400f674791c8040b2a6505":[1,0,0,2,8,7,5,1,4,0],
+"d4/dcb/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_rotation.html":[1,0,0,2,0,4,6],
+"d4/dcb/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_rotation.html#a1d7f25a4484ddde5a83ef64ff4f8bd9a":[1,0,0,2,0,4,6,1]
 };

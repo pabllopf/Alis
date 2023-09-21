@@ -1,8 +1,5 @@
 var NAVTREEINDEX20 =
 {
-"d5/de5/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_haptic_effect.html#a26362675409b032d311016b0592dfdc7":[1,0,0,0,0,6,1,41,0],
-"d5/de5/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_haptic_effect.html#a4a9f9fbe34ee4a12d785206fbf7fdca5":[1,0,0,0,0,6,1,41,1],
-"d5/de5/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_haptic_effect.html#a838fc31c5c098a0a8c22ff957a5d30c9":[1,0,0,0,0,6,1,41,6],
 "d5/de5/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_haptic_effect.html#a8fbb0605bcda6a41087a6038b9a24c99":[1,0,0,0,0,6,1,41,2],
 "d5/de5/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_haptic_effect.html#ab9c1933c966542f92383fe0a704812c7":[1,0,0,0,0,6,1,41,5],
 "d5/de6/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_stb_textedit_row_ptr.html":[1,0,0,0,0,8,81],
@@ -249,5 +246,8 @@ var NAVTREEINDEX20 =
 "d6/d41/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4_x4_f.html#a6dfaa443c9af179d03d2a1c7855d8e3f":[1,0,0,2,0,4,2,4,20],
 "d6/d41/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4_x4_f.html#a74f46f7162690134ef15940b2ab46558":[1,0,0,2,0,4,2,4,6],
 "d6/d41/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4_x4_f.html#a8033c2503682535d099f4de77845d2ef":[1,0,0,2,0,4,2,4,4],
-"d6/d41/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4_x4_f.html#a8eaba7df5406543c4a30b2263c480941":[1,0,0,2,0,4,2,4,12]
+"d6/d41/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4_x4_f.html#a8eaba7df5406543c4a30b2263c480941":[1,0,0,2,0,4,2,4,12],
+"d6/d41/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4_x4_f.html#aa2e2603a1e0f3afefcd0b61cd6d10616":[1,0,0,2,0,4,2,4,19],
+"d6/d41/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4_x4_f.html#aabee8d3e9b1741a2e43d1254d38fddfa":[1,0,0,2,0,4,2,4,1],
+"d6/d41/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4_x4_f.html#ab231810769e6dd556c70e624d8c1d1c3":[1,0,0,2,0,4,2,4,10]
 };

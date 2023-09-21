@@ -108,14 +108,14 @@ $(document).ready(function(){initNavTree('d3/d9b/class_alis_1_1_core_1_1_physic_
 </div><!--header-->
 <div class="contents">
 
-<p>A revolute joint constrains to bodies to share a common point while they are free to rotate about the point. The relative rotation about the shared point is the joint angle. You can limit the relative rotation with a joint limit that specifies a lower and upper angle. You can use a motor to drive the relative rotation about the shared point. A maximum motor torque is provided so that infinite forces are not generated.  
+<p>A revolute joint constrains to bodies to share a common point while they are free to rotate about the point. The relative rotation about the shared point is the joint angle. You can limit the relative rotation with a joint limit that specifies a lower and upper angle. You can use a motor to drive the relative rotation about the shared point. A maximum motor torque is provided so that infinite forces are not generated. Point-to-point constraint C = p2 - p1 dot = v2 - v1 = v2 + cross(w2, r2) - v1 - cross(w1, r1) J = [-I -r1_skew I r2_skew ] Identity used: w k % (rx i + ry j) = w * (-ry i + rx j)  
  <a href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#details">More...</a></p>
 
 <p>Inherits <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9448b473fcfc67a382ffc54f3c4b8080"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a9448b473fcfc67a382ffc54f3c4b8080">RevoluteJoint</a> (<a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a86463be88b1d7f97f1923187817b3418">bodyA</a>=null, <a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a73e831ad81173e3e609f9b7cd25fb382">bodyB</a>=null, <a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6f">JointType</a> jointType=default(<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6f">JointType</a>), bool <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a87043031d326bac530ca9b408a34c66d">collideConnected</a>=false, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> <a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a842aae9ad3082ef24e069a86d98ebdc0">localAnchorA</a>=default(<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>), <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> <a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a13eb298e9e12e81b808ef10487fe2718">localAnchorB</a>=default(<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>), float <a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a7915442ff71b592212d4d137932e9b92">referenceAngle</a>=0.0f, float <a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a7d9b88c23895ada460c65c708900e09a">lowerAngle</a>=0.0f, float <a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#af0765c4a1fa719d845c17758d973c3a1">upperAngle</a>=0.0f, float motorTorque=0.0f, float <a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#ad46a1834098cef88b126ca8779f062fa">motorSpeed</a>=0.0f, bool <a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#add9ab7321afba152a42c05e4ffc290b8">enableLimit</a>=false, bool <a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#ade4d9985e2dbe4cd43ac5bf5bbd99815">enableMotor</a>=false)</td></tr>
+<tr class="memitem:a9448b473fcfc67a382ffc54f3c4b8080"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a9448b473fcfc67a382ffc54f3c4b8080">RevoluteJoint</a> (<a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a86463be88b1d7f97f1923187817b3418">bodyA</a>=null, <a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a73e831ad81173e3e609f9b7cd25fb382">bodyB</a>=null, <a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6f">JointType</a> jointType=default(<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6f">JointType</a>), bool <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a87043031d326bac530ca9b408a34c66d">collideConnected</a>=false, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> localAnchorA=default(<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>), <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> localAnchorB=default(<a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>), float referenceAngle=0.0f, float <a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a7d9b88c23895ada460c65c708900e09a">lowerAngle</a>=0.0f, float <a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#af0765c4a1fa719d845c17758d973c3a1">upperAngle</a>=0.0f, float motorTorque=0.0f, float <a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#ad46a1834098cef88b126ca8779f062fa">motorSpeed</a>=0.0f, bool <a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#add9ab7321afba152a42c05e4ffc290b8">enableLimit</a>=false, bool <a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#ade4d9985e2dbe4cd43ac5bf5bbd99815">enableMotor</a>=false)</td></tr>
 <tr class="memdesc:a9448b473fcfc67a382ffc54f3c4b8080"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html" title="A revolute joint constrains to bodies to share a common point while they are free to rotate about the...">RevoluteJoint</a> class  <a href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a9448b473fcfc67a382ffc54f3c4b8080">More...</a><br /></td></tr>
 <tr class="separator:a9448b473fcfc67a382ffc54f3c4b8080"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98305dfe22182da769886591e2ca88a5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a98305dfe22182da769886591e2ca88a5">RevoluteJoint</a> (<a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a86463be88b1d7f97f1923187817b3418">bodyA</a>, <a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a73e831ad81173e3e609f9b7cd25fb382">bodyB</a>, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> anchorA, <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> anchorB, bool useWorldCoordinates=false)</td></tr>
@@ -190,10 +190,10 @@ Properties</h2></td></tr>
 <tr class="memitem:a71d3faa6a5edf17025adbc8543d55066"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a71d3faa6a5edf17025adbc8543d55066">UpperAngle</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a71d3faa6a5edf17025adbc8543d55066"><td class="mdescLeft">&#160;</td><td class="mdescRight">The upper angle for the joint limit (radians).  <a href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a71d3faa6a5edf17025adbc8543d55066">More...</a><br /></td></tr>
 <tr class="separator:a71d3faa6a5edf17025adbc8543d55066"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91672acf6994c190a28b04a030b6d55a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a91672acf6994c190a28b04a030b6d55a">LocalAnchorA</a><code> [get, set]</code></td></tr>
+<tr class="memitem:a91672acf6994c190a28b04a030b6d55a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a91672acf6994c190a28b04a030b6d55a">LocalAnchorA</a><code> [get, private set]</code></td></tr>
 <tr class="memdesc:a91672acf6994c190a28b04a030b6d55a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local anchor point on BodyA  <a href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a91672acf6994c190a28b04a030b6d55a">More...</a><br /></td></tr>
 <tr class="separator:a91672acf6994c190a28b04a030b6d55a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77c9f13a65d12d39899bb700b7ea6cfc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a77c9f13a65d12d39899bb700b7ea6cfc">LocalAnchorB</a><code> [get, set]</code></td></tr>
+<tr class="memitem:a77c9f13a65d12d39899bb700b7ea6cfc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a77c9f13a65d12d39899bb700b7ea6cfc">LocalAnchorB</a><code> [get, private set]</code></td></tr>
 <tr class="memdesc:a77c9f13a65d12d39899bb700b7ea6cfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local anchor point on BodyB  <a href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a77c9f13a65d12d39899bb700b7ea6cfc">More...</a><br /></td></tr>
 <tr class="separator:a77c9f13a65d12d39899bb700b7ea6cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ea5cd2ed3a26e5d40d20c00e0a3a5c0"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a1ea5cd2ed3a26e5d40d20c00e0a3a5c0">WorldAnchorA</a><code> [get, set]</code></td></tr>
@@ -202,8 +202,8 @@ Properties</h2></td></tr>
 <tr class="memitem:a5316387123ce0b06ccec0ad2f04a6154"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a5316387123ce0b06ccec0ad2f04a6154">WorldAnchorB</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a5316387123ce0b06ccec0ad2f04a6154"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the value of the world anchor b  <a href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a5316387123ce0b06ccec0ad2f04a6154">More...</a><br /></td></tr>
 <tr class="separator:a5316387123ce0b06ccec0ad2f04a6154"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c09ae79e1c374cedda138451b0f51fc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a3c09ae79e1c374cedda138451b0f51fc">ReferenceAngle</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a3c09ae79e1c374cedda138451b0f51fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The referance angle computed as BodyB angle minus BodyA angle.  <a href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a3c09ae79e1c374cedda138451b0f51fc">More...</a><br /></td></tr>
+<tr class="memitem:a3c09ae79e1c374cedda138451b0f51fc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a3c09ae79e1c374cedda138451b0f51fc">ReferenceAngle</a><code> [get, private set]</code></td></tr>
+<tr class="memdesc:a3c09ae79e1c374cedda138451b0f51fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The reference angle computed as BodyB angle minus BodyA angle.  <a href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a3c09ae79e1c374cedda138451b0f51fc">More...</a><br /></td></tr>
 <tr class="separator:a3c09ae79e1c374cedda138451b0f51fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa2c23177424e2c3f6faf12a3e4b21cc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#afa2c23177424e2c3f6faf12a3e4b21cc">LimitEnabled</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:afa2c23177424e2c3f6faf12a3e4b21cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the joint limit enabled?  <a href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#afa2c23177424e2c3f6faf12a3e4b21cc">More...</a><br /></td></tr>
@@ -296,12 +296,6 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a1fa4295cf2679fccb4fa752b72d1ac00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/dbd/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix2_x2_f.html">Matrix2X2F</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a1fa4295cf2679fccb4fa752b72d1ac00">k</a></td></tr>
 <tr class="memdesc:a1fa4295cf2679fccb4fa752b72d1ac00"><td class="mdescLeft">&#160;</td><td class="mdescRight">The  <a href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a1fa4295cf2679fccb4fa752b72d1ac00">More...</a><br /></td></tr>
 <tr class="separator:a1fa4295cf2679fccb4fa752b72d1ac00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a842aae9ad3082ef24e069a86d98ebdc0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a842aae9ad3082ef24e069a86d98ebdc0">localAnchorA</a></td></tr>
-<tr class="memdesc:a842aae9ad3082ef24e069a86d98ebdc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local anchor  <a href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a842aae9ad3082ef24e069a86d98ebdc0">More...</a><br /></td></tr>
-<tr class="separator:a842aae9ad3082ef24e069a86d98ebdc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13eb298e9e12e81b808ef10487fe2718"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a13eb298e9e12e81b808ef10487fe2718">localAnchorB</a></td></tr>
-<tr class="memdesc:a13eb298e9e12e81b808ef10487fe2718"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local anchor  <a href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a13eb298e9e12e81b808ef10487fe2718">More...</a><br /></td></tr>
-<tr class="separator:a13eb298e9e12e81b808ef10487fe2718"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d8de5bcad035086fd7393a8398a8f3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a3d8de5bcad035086fd7393a8398a8f3f">localCenterA</a></td></tr>
 <tr class="memdesc:a3d8de5bcad035086fd7393a8398a8f3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local center  <a href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a3d8de5bcad035086fd7393a8398a8f3f">More...</a><br /></td></tr>
 <tr class="separator:a3d8de5bcad035086fd7393a8398a8f3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -329,9 +323,6 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a135dab72fb0542abc6a717577d5d6b1d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a135dab72fb0542abc6a717577d5d6b1d">rB</a></td></tr>
 <tr class="memdesc:a135dab72fb0542abc6a717577d5d6b1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The  <a href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a135dab72fb0542abc6a717577d5d6b1d">More...</a><br /></td></tr>
 <tr class="separator:a135dab72fb0542abc6a717577d5d6b1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7915442ff71b592212d4d137932e9b92"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a7915442ff71b592212d4d137932e9b92">referenceAngle</a></td></tr>
-<tr class="memdesc:a7915442ff71b592212d4d137932e9b92"><td class="mdescLeft">&#160;</td><td class="mdescRight">The reference angle  <a href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#a7915442ff71b592212d4d137932e9b92">More...</a><br /></td></tr>
-<tr class="separator:a7915442ff71b592212d4d137932e9b92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0765c4a1fa719d845c17758d973c3a1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#af0765c4a1fa719d845c17758d973c3a1">upperAngle</a></td></tr>
 <tr class="memdesc:af0765c4a1fa719d845c17758d973c3a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The upper angle  <a href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html#af0765c4a1fa719d845c17758d973c3a1">More...</a><br /></td></tr>
 <tr class="separator:af0765c4a1fa719d845c17758d973c3a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -360,7 +351,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a4f74becad11b01831634d76131f93d53 inherit events_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A revolute joint constrains to bodies to share a common point while they are free to rotate about the point. The relative rotation about the shared point is the joint angle. You can limit the relative rotation with a joint limit that specifies a lower and upper angle. You can use a motor to drive the relative rotation about the shared point. A maximum motor torque is provided so that infinite forces are not generated. </p>
+<div class="textblock"><p>A revolute joint constrains to bodies to share a common point while they are free to rotate about the point. The relative rotation about the shared point is the joint angle. You can limit the relative rotation with a joint limit that specifies a lower and upper angle. You can use a motor to drive the relative rotation about the shared point. A maximum motor torque is provided so that infinite forces are not generated. Point-to-point constraint C = p2 - p1 dot = v2 - v1 = v2 + cross(w2, r2) - v1 - cross(w1, r1) J = [-I -r1_skew I r2_skew ] Identity used: w k % (rx i + ry j) = w * (-ry i + rx j) </p>
+<p>Motor constraint dot = w2 - w1 J = [0 0 -1 0 0 1] K = invI1 + invI2</p>
 
 <p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00060">60</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -476,7 +468,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00210">210</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00196">196</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -536,7 +528,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00245">245</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00231">231</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -589,7 +581,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00267">267</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00253">253</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -629,7 +621,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00422">422</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00396">396</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -694,7 +686,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a27d99104198652c7ab6d0908d8fb7777">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00443">443</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00417">417</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -769,7 +761,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a3297f04384b0922fe836b6c5411c6c76">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00460">460</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00434">434</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -807,7 +799,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#aebe1afe4c3a223531a9458f68e88a3e5">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00560">560</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00534">534</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -846,7 +838,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#ada9adf4f24660bb6148dee2aa18a2fec">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00642">642</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00612">612</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1163,58 +1155,6 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a842aae9ad3082ef24e069a86d98ebdc0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a842aae9ad3082ef24e069a86d98ebdc0">&#9670;&nbsp;</a></span>localAnchorA</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.localAnchorA</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The local anchor </p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00127">127</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a13eb298e9e12e81b808ef10487fe2718"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a13eb298e9e12e81b808ef10487fe2718">&#9670;&nbsp;</a></span>localAnchorB</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../db/dde/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.localAnchorB</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The local anchor </p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00132">132</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
-
-</div>
-</div>
 <a id="a3d8de5bcad035086fd7393a8398a8f3f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3d8de5bcad035086fd7393a8398a8f3f">&#9670;&nbsp;</a></span>localCenterA</h2>
 
@@ -1237,7 +1177,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The local center </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00137">137</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00128">128</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1263,7 +1203,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The local center </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00142">142</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00133">133</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1289,7 +1229,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The lower angle </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00147">147</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00138">138</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1315,7 +1255,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The lower impulse </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00152">152</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00143">143</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1341,7 +1281,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The max motor torque </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00157">157</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00148">148</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1367,7 +1307,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The motor impulse </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00162">162</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00153">153</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1393,7 +1333,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The motor speed </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00167">167</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00158">158</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1419,7 +1359,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00172">172</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00163">163</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1445,33 +1385,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00177">177</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a7915442ff71b592212d4d137932e9b92"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7915442ff71b592212d4d137932e9b92">&#9670;&nbsp;</a></span>referenceAngle</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.referenceAngle</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The reference angle </p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00182">182</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00168">168</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1497,7 +1411,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The upper angle </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00187">187</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00173">173</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1523,7 +1437,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The upper impulse </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00192">192</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00178">178</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1541,7 +1455,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Get the current joint angle in radians. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00324">324</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00298">298</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1559,7 +1473,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Get the current joint angle speed in radians per second. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00327">327</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00301">301</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1586,7 +1500,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>A flag to enable joint limits. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00273">273</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00259">259</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1612,7 +1526,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>A flag to enable the joint motor. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00276">276</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00262">262</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1638,7 +1552,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The lower angle for the joint limit (radians). </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00279">279</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00265">265</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1664,7 +1578,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The upper angle for the joint limit (radians). </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00282">282</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00268">268</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1683,14 +1597,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>The local anchor point on BodyA </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00285">285</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00271">271</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1709,14 +1623,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>The local anchor point on BodyB </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00292">292</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00274">274</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1742,7 +1656,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Gets or sets the value of the world anchor a </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00301">301</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00279">279</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1768,7 +1682,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Gets or sets the value of the world anchor b </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00310">310</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00288">288</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1787,14 +1701,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">private set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>The referance angle computed as BodyB angle minus BodyA angle. </p>
+<p>The reference angle computed as BodyB angle minus BodyA angle. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00317">317</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00295">295</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1821,7 +1735,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Is the joint limit enabled? </p>
 <p><code>true</code> if [limit enabled]; otherwise, <code>false</code>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00331">331</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00305">305</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1847,7 +1761,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Get the lower joint limit in radians. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00347">347</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00321">321</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1873,7 +1787,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Get the upper joint limit in radians. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00362">362</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00336">336</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1900,7 +1814,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Is the joint motor enabled? </p>
 <p><code>true</code> if [motor enabled]; otherwise, <code>false</code>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00378">378</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00352">352</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1926,7 +1840,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Get or set the motor speed in radians per second. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00392">392</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00366">366</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1952,7 +1866,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Get or set the maximum motor torque, usually in N-m. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00406">406</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html#l00380">380</a> of file <a class="el" href="../../db/d3e/_revolute_joint_8cs_source.html">RevoluteJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1963,7 +1877,7 @@ Additional Inherited Members</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../d7/db3/namespace_alis_1_1_core_1_1_physic.html">Physic</a></li><li class="navelem"><a class="el" href="../../dd/d6a/namespace_alis_1_1_core_1_1_physic_1_1_dynamics.html">Dynamics</a></li><li class="navelem"><a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html">Joints</a></li><li class="navelem"><a class="el" href="../../d3/d9b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_revolute_joint.html">RevoluteJoint</a></li>
     <li class="footer">
-      <a>Generated on | Wed Sep 20 2023 |</a>
+      <a>Generated on | Thu Sep 21 2023 |</a>
     </li>
   </ul>
 </div>

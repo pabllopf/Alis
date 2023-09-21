@@ -1,12 +1,9 @@
 var NAVTREEINDEX50 =
 {
-"dd/df0/interface_alis_1_1_core_1_1_plugin_1_1_i_plugin.html":[1,0,0,2,9,0],
-"dd/df0/interface_alis_1_1_core_1_1_plugin_1_1_i_plugin.html#a07724630c096fd0786ed35625acaa26c":[1,0,0,2,9,0,3],
-"dd/df0/interface_alis_1_1_core_1_1_plugin_1_1_i_plugin.html#a8a59acd08ccbf91b433d08928d7d85cb":[1,0,0,2,9,0,2],
 "dd/df0/interface_alis_1_1_core_1_1_plugin_1_1_i_plugin.html#abdc4d5efbe1d01a35a2e6a388d4c0d56":[1,0,0,2,9,0,1],
 "dd/df0/interface_alis_1_1_core_1_1_plugin_1_1_i_plugin.html#ad2d0383c5b85a7ee7104b3a860c7fafc":[1,0,0,2,9,0,0],
-"dd/df6/namespace_alis_1_1_core_1_1_physic_1_1_shared.html":[1,0,0,2,8,6],
 "dd/df6/namespace_alis_1_1_core_1_1_physic_1_1_shared.html":[0,0,0,2,8,6],
+"dd/df6/namespace_alis_1_1_core_1_1_physic_1_1_shared.html":[1,0,0,2,8,6],
 "dd/df7/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase.html":[0,0,0,2,8,0,0],
 "dd/df7/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase.html":[1,0,0,2,8,0,0],
 "dd/df8/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_read_cursor.html":[1,0,0,2,7,1,7],
@@ -35,8 +32,8 @@ var NAVTREEINDEX50 =
 "de/d07/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_extras_1_1_node_1_1_im_nodes_io.html#abdedc9cc372942bb73e9f6f504566ac6":[1,0,0,0,0,8,1,1,7,4],
 "de/d0e/namespace_alis_1_1_core_1_1_aspect_1_1_math.html":[1,0,0,2,0,4],
 "de/d0e/namespace_alis_1_1_core_1_1_aspect_1_1_math.html":[0,0,0,2,0,4],
-"de/d0e/namespace_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_controller_base.html":[0,0,0,2,8,3,0,0],
 "de/d0e/namespace_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_controller_base.html":[1,0,0,2,8,3,0,0],
+"de/d0e/namespace_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_controller_base.html":[0,0,0,2,8,3,0,0],
 "de/d0e/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_generic_event.html":[1,0,0,0,0,6,1,36],
 "de/d0e/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_generic_event.html#a0f6487fed88340d86b84301d0883ae44":[1,0,0,0,0,6,1,36,1],
 "de/d0e/struct_alis_1_1_app_1_1_engine_1_1_s_d_l_1_1_structs_1_1_sdl_generic_event.html#a3d4c27a6909ff8375cd0054c5158ef34":[1,0,0,0,0,6,1,36,0],
@@ -214,8 +211,8 @@ var NAVTREEINDEX50 =
 "de/d8c/class_alis_1_1_core_1_1_network_1_1_web_socket_server_factory.html#a93b41e8c05ee67d72a1fa30f23269b88":[1,0,0,2,7,13,3],
 "de/d8c/class_alis_1_1_core_1_1_network_1_1_web_socket_server_factory.html#ad8495651c82bbbe58f1b5b9804ce9e7d":[1,0,0,2,7,13,8],
 "de/d8c/class_alis_1_1_core_1_1_network_1_1_web_socket_server_factory.html#adde512b08ab8f45d7b8e3e9783f79d5c":[1,0,0,2,7,13,6],
-"de/d90/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_flip_code.html":[0,0,0,2,8,7,5,3],
 "de/d90/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_flip_code.html":[1,0,0,2,8,7,5,3],
+"de/d90/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_flip_code.html":[0,0,0,2,8,7,5,3],
 "de/d91/class_alis_1_1_builder_1_1_core_1_1_component_1_1_render_1_1_sprite_builder.html":[1,0,0,1,0,0,6,4],
 "de/d91/class_alis_1_1_builder_1_1_core_1_1_component_1_1_render_1_1_sprite_builder.html#a404331438511e8694f8960817811bbf0":[1,0,0,1,0,0,6,4,0],
 "de/d91/class_alis_1_1_builder_1_1_core_1_1_component_1_1_render_1_1_sprite_builder.html#a5439ac5eb5943fc00949be14709638fb":[1,0,0,1,0,0,6,4,1],
@@ -249,5 +246,8 @@ var NAVTREEINDEX50 =
 "de/da6/struct_alis_1_1_app_1_1_engine_1_1_u_i_1_1_im_gui_input_text_callback_data.html#ae11046a747585d91aee2649dac69704d":[1,0,0,0,0,8,33,2],
 "de/db4/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_figures_1_1_d3_1_1_sphere_1_1_sphere_f.html":[1,0,0,2,0,4,1,1,1,0],
 "de/db6/interface_alis_1_1_core_1_1_audio_1_1_o_s_1_1_interfaces_1_1_i_player.html":[1,0,0,2,1,0,0,0],
-"de/db6/interface_alis_1_1_core_1_1_audio_1_1_o_s_1_1_interfaces_1_1_i_player.html#a013be3e1dac3e2f4d281584664effee7":[1,0,0,2,1,0,0,0,0]
+"de/db6/interface_alis_1_1_core_1_1_audio_1_1_o_s_1_1_interfaces_1_1_i_player.html#a013be3e1dac3e2f4d281584664effee7":[1,0,0,2,1,0,0,0,0],
+"de/db6/interface_alis_1_1_core_1_1_audio_1_1_o_s_1_1_interfaces_1_1_i_player.html#a36fd032ebd57dded2e92fb86f6a6a335":[1,0,0,2,1,0,0,0,3],
+"de/db6/interface_alis_1_1_core_1_1_audio_1_1_o_s_1_1_interfaces_1_1_i_player.html#a81f8aae2adf228d2e9cf463470131051":[1,0,0,2,1,0,0,0,7],
+"de/db6/interface_alis_1_1_core_1_1_audio_1_1_o_s_1_1_interfaces_1_1_i_player.html#a8a76d202c128adb186173d94acc9f2d8":[1,0,0,2,1,0,0,0,5]
 };
