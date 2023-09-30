@@ -1,0 +1,36 @@
+<Project>
+    <PropertyGroup Condition="('$(RuntimeIdentifier)' == '' AND $(NETCoreSdkRuntimeIdentifier.Contains('arm64'))) OR $(RuntimeIdentifier.Contains('arm64'))">
+        <DefineConstants>$(DefineConstants);ARM64</DefineConstants>
+        <IsARM64>true</IsARM64>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="('$(RuntimeIdentifier)' == '' AND $(NETCoreSdkRuntimeIdentifier.Contains('arm')) AND !$(NETCoreSdkRuntimeIdentifier.Contains('arm64'))) OR ($(RuntimeIdentifier.Contains('arm')) AND !$(RuntimeIdentifier.Contains('arm64')))">
+        <DefineConstants>$(DefineConstants);ARM</DefineConstants>
+        <IsARM>true</IsARM>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="('$(RuntimeIdentifier)' == '' AND $(NETCoreSdkRuntimeIdentifier.Contains('x64'))) OR $(RuntimeIdentifier.Contains('x64'))">
+        <DefineConstants>$(DefineConstants);X64</DefineConstants>
+        <IsX64>true</IsX64>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="('$(RuntimeIdentifier)' == '' AND $(NETCoreSdkRuntimeIdentifier.Contains('x86'))) OR $(RuntimeIdentifier.Contains('x86'))">
+        <DefineConstants>$(DefineConstants);X86</DefineConstants>
+        <IsX86>true</IsX86>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="($([MSBuild]::IsOSPlatform('linux')) AND '$(RuntimeIdentifier)' == '') OR $(RuntimeIdentifier.Contains('linux'))">
+        <DefineConstants>$(DefineConstants);LINUX</DefineConstants>
+        <IsLinux>true</IsLinux>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="($([MSBuild]::IsOSPlatform('osx')) AND '$(RuntimeIdentifier)' == '')  OR $(RuntimeIdentifier.Contains('osx'))">
+        <DefineConstants>$(DefineConstants);OSX</DefineConstants>
+        <IsOSX>true</IsOSX>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="($([MSBuild]::IsOSPlatform('windows')) AND '$(RuntimeIdentifier)' == '') OR $(RuntimeIdentifier.Contains('win'))">
+        <DefineConstants>$(DefineConstants);WIN</DefineConstants>
+        <IsWindows>true</IsWindows>
+    </PropertyGroup>
+</Project>

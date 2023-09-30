@@ -1,0 +1,5 @@
+<Project>
+    <PropertyGroup>
+        <Title>$(AssemblyName)</Title>
+    </PropertyGroup>
+</Project>
