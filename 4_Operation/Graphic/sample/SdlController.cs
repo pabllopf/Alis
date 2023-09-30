@@ -1,0 +1,348 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SdlController.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Math.Definition;
+using Alis.Core.Aspect.Math.Figure.Rectangle;
+using Alis.Core.Graphic.SDL;
+using Alis.Core.Graphic.SDL.Enums;
+using Alis.Core.Graphic.SDL.Structs;
+
+namespace Alis.Core.Graphic.Sample
+{
+    /// <summary>
+    /// The sdl controller class
+    /// </summary>
+    public static class SdlController
+    {
+        
+        /// <summary>
+        ///     The width
+        /// </summary>
+        private const int Width = 640;
+
+        /// <summary>
+        ///     The height
+        /// </summary>
+        private const int Height = 480;
+
+        /// <summary>
+        ///     The sdl game controller axis
+        /// </summary>
+        private static readonly List<SdlGameControllerAxis> Axis = new List<SdlGameControllerAxis>((SdlGameControllerAxis[]) Enum.GetValues(typeof(SdlGameControllerAxis)));
+
+        /// <summary>
+        ///     The sdl game controller button
+        /// </summary>
+        private static readonly List<SdlGameControllerButton> Buttons = new List<SdlGameControllerButton>((SdlGameControllerButton[]) Enum.GetValues(typeof(SdlGameControllerButton)));
+
+        /// <summary>
+        ///     The blue
+        /// </summary>
+        private static byte _blue;
+
+        /// <summary>
+        ///     The blue
+        /// </summary>
+        private static byte _green;
+
+        /// <summary>
+        ///     The sdl keycode
+        /// </summary>
+        private static List<SdlKeycode> _keys = new List<SdlKeycode>((SdlKeycode[]) Enum.GetValues(typeof(SdlKeycode)));
+
+        /// <summary>
+        ///     The blue
+        /// </summary>
+        private static byte _red;
+
+        /// <summary>
+        ///     The running
+        /// </summary>
+        private static bool _running = true;
+
+        /// <summary>
+        ///     The sdl event
+        /// </summary>
+        private static SdlEvent _sdlEvent;
+        
+        /// <summary>
+        /// Runs
+        /// </summary>
+        public static void Run()
+        {
+            if (Sdl.Init(Sdl.InitEverything) < 0)
+            {
+                Logger.Exception($@"There was an issue initializing SDL. {Sdl.GetError()}");
+            }
+            else
+            {
+                Logger.Info("Init all");
+            }
+
+            // GET VERSION SDL2
+            Sdl.GetVersion(out SdlVersion version);
+            Logger.Log(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
+            
+            // CONFIG THE SDL2 AN OPENGL CONFIGURATION
+            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlContextFlags, (int) SdlGlContext.SdlGlContextForwardCompatibleFlag);
+            Sdl.GlSetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
+            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlContextMajorVersion, 3);
+            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlContextMinorVersion, 2);
+
+            Sdl.GlSetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
+            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlDoubleBuffer, 1);
+            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlDepthSize, 24);
+            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlAlphaSize, 8);
+            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlStencilSize, 8);
+
+            // Enable vsync
+            Sdl.GlSetSwapInterval(1);
+
+            // create the window which should be able to have a valid OpenGL context and is resizable
+            SdlWindowFlags flags = SdlWindowFlags.SdlWindowOpengl | SdlWindowFlags.SdlWindowResizable | SdlWindowFlags.SdlWindowShown;
+            
+            // Creates a new SDL window at the center of the screen with the given width and height.
+            IntPtr window = Sdl.CreateWindow("Sample", Sdl.WindowPosCentered, Sdl.WindowPosCentered, Width, Height, flags);
+            
+            // Check if the window was created successfully.
+            if (window == IntPtr.Zero)
+            {
+                Logger.Exception($"There was an issue creating the renderer. {Sdl.GetError()}");
+            }
+            else
+            {
+                Logger.Info("Window created");
+            }
+
+            // Creates a new SDL hardware renderer using the default graphics device with VSYNC enabled.
+            IntPtr renderer = Sdl.CreateRenderer(
+                window,
+                -1,
+                SdlRendererFlags.SdlRendererAccelerated |
+                SdlRendererFlags.SdlRendererPresentvsync);
+            
+            if (renderer == IntPtr.Zero)
+            {
+                Logger.Exception($"There was an issue creating the renderer. {Sdl.GetError()}");
+            }
+            else
+            {
+                Logger.Info("Renderer created");
+            }
+            
+            // INIT SDL_IMAGE FLAGS
+            ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
+            
+            // INIT SDL_IMAGE
+            Console.WriteLine(SdlImage.ImgInit(flagImage) < 0 ? $"There was an issue initializing SDL_Image. {Sdl.GetError()}" : $"SDL_Image Initialized");
+            
+            // GET VERSION SDL_IMAGE
+            Console.WriteLine($"SDL_Image Version: {SdlImage.SdlImageVersion().major}.{SdlImage.SdlImageVersion().minor}.{SdlImage.SdlImageVersion().patch}");
+            
+            Sdlinput();
+
+            // Rectangle to be drawn outline.
+            RectangleI rectBorder = new RectangleI
+            {
+                x = 0,
+                y = 0,
+                w = 50,
+                h = 50
+            };
+            
+            // Rectangle to be drawn filled.
+            RectangleI rectFilled = new RectangleI
+            {
+                x = 200,
+                y = 200,
+                w = 100,
+                h = 100
+            };
+            
+            RectangleI tileRectangleI = new RectangleI
+            {
+                x = 0,
+                y = 0,
+                w = 32,
+                h = 64
+            };
+            
+            // Load the image from the specified path.
+            Image imageTile = new Image("Assets/tile000.png");
+            
+            // Create a new texture from the image.
+            Texture textureTile = new Texture(renderer, imageTile, tileRectangleI);
+            
+            Sprite sprite = new Sprite(textureTile, new Depth(1));
+            
+            while (_running)
+            {
+                UpdateInput();
+
+                RenderColors();
+                
+                // Sets the color that the screen will be cleared with.
+                Sdl.SetRenderDrawColor(renderer, _red, _green, _blue, 255);
+                
+                // Clears the current render surface.
+                Sdl.RenderClear(renderer);
+                
+                // Sets the color that the rectangle will be drawn with.
+                Sdl.SetRenderDrawColor(renderer, 255, 255, 255, 255);
+                // Draws a rectangle outline.
+                Sdl.RenderDrawRect(renderer, ref rectBorder);
+                
+                // Sets the color that the rectangle will be drawn with.
+                Sdl.SetRenderDrawColor(renderer, 0, 0, 0, 255);
+                
+                // Draws a filled rectangle.
+                Sdl.RenderFillRect(renderer, ref rectFilled);
+                
+                sprite.Draw(renderer);
+                
+                // draw a line
+                Sdl.SetRenderDrawColor(renderer, 255, 0, 0, 255);
+                Sdl.RenderDrawLine(renderer, 0, 0, 100, 100);
+                
+                // Switches out the currently presented render surface with the one we just did work on.
+                Sdl.RenderPresent(renderer);
+            }
+
+            Sdl.DestroyRenderer(renderer);
+            Sdl.DestroyWindow(window);
+            //Sdl.FreeSurface(imageTile);
+            //Sdl.DestroyTexture(textureTile);
+            SdlImage.ImgQuit();
+            Sdl.Quit();
+        }
+
+        /// <summary>
+        ///     Renders the colors
+        /// </summary>
+        private static void RenderColors()
+        {
+            if (_red < 255)
+            {
+                _red++;
+            }
+            else if (_green < 255)
+            {
+                _green++;
+            }
+            else if (_blue < 255)
+            {
+                _blue++;
+            }
+            else
+            {
+                _red = 0;
+                _green = 0;
+                _blue = 0;
+            }
+        }
+
+
+        /// <summary>
+        ///     Sdlinputs
+        /// </summary>
+        private static void Sdlinput()
+        {
+            Sdl.SetHint(Sdl.HintXInputEnabled, "0");
+            Sdl.SetHint(Sdl.SdlHintJoystickThread, "1");
+            Sdl.Init(Sdl.InitEverything);
+
+
+            for (int i = 0; i < Sdl.NumJoysticks(); i++)
+            {
+                IntPtr myJoystick = Sdl.JoystickOpen(i);
+                if (myJoystick == IntPtr.Zero)
+                {
+                    Console.WriteLine(@"Ooops, something fishy's goin' on here!" + Sdl.GetError());
+                }
+                else
+                {
+                    Console.WriteLine($"[SDL_JoystickName_id = '{i}'] \n" +
+                                      $"SDL_JoystickName={Sdl.JoystickName(myJoystick)} \n" +
+                                      $"SDL_JoystickNumAxes={Sdl.JoystickNumAxes(myJoystick)} \n" +
+                                      $"SDL_JoystickNumButtons={Sdl.JoystickNumButtons(myJoystick)}");
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Updates the input
+        /// </summary>
+        public static void UpdateInput()
+        {
+            Sdl.JoystickUpdate();
+
+            while (Sdl.PollEvent(out _sdlEvent) != 0)
+            {
+                switch (_sdlEvent.type)
+                {
+                    case SdlEventType.SdlQuit:
+                        _running = false;
+                        break;
+                    case SdlEventType.SdlKeydown:
+                        if (_sdlEvent.key.keysym.sym == SdlKeycode.SdlkEscape)
+                        {
+                            _running = false;
+                        }
+                        else
+                        {
+                            Console.WriteLine(_sdlEvent.key.keysym.sym + " was pressed");
+                        }
+
+                        break;
+                }
+
+                foreach (SdlGameControllerButton button in Buttons)
+                {
+                    if ((_sdlEvent.type == SdlEventType.SdlJoyButtonDown)
+                        && (button == (SdlGameControllerButton) _sdlEvent.cButton.button))
+                    {
+                        Console.WriteLine($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed button={button}");
+                    }
+                }
+
+                foreach (SdlGameControllerAxis axi in Axis)
+                {
+                    if ((_sdlEvent.type == SdlEventType.SdlJoyAxisMotion)
+                        && (axi == (SdlGameControllerAxis) _sdlEvent.cAxis.axis))
+                    {
+                        Console.WriteLine($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed axi={axi}");
+                    }
+                }
+            }
+        }
+    }
+}
