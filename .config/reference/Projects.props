@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+    <ItemGroup Condition="
+        $(AssemblyName.Contains('Test')) == False AND
+        $(AssemblyName.Contains('App.Installer')) == False AND 
+        $(AssemblyName.Contains('Sample')) == False AND
+        $(AssemblyName.Contains('Template')) == False AND 
+        $(AssemblyName.Contains('Benchmark')) == False AND 
+        $(Configuration) == 'Debug'">
+
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
+                          Include="$(SolutionDir)2_Application/**/Alis.csproj"/>
+
+        <ProjectReference Condition="$(ProjectDir.Contains('2_Application'))"
+                          Include="$(SolutionDir)3_Structuration/**/*.csproj"
+                          Exclude="$(SolutionDir)3_Structuration/**/*.Sample.csproj; $(SolutionDir)3_Structuration/**/*.Test.csproj;"/>
+
+        <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
+                          Include="$(SolutionDir)4_Operation/**/*.csproj"
+                          Exclude="$(SolutionDir)4_Operation/**/*.Sample.csproj; $(SolutionDir)4_Operation/**/*.Test.csproj;"/>
+
+        <ProjectReference Condition="$(ProjectDir.Contains('4_Operation'))"
+                          Include="$(SolutionDir)5_Declaration/**/*.csproj"
+                          Exclude="$(SolutionDir)5_Declaration/**/*.Sample.csproj; $(SolutionDir)5_Declaration/**/*.Test.csproj;"/>
+
+        <ProjectReference Condition="$(ProjectDir.Contains('5_Declaration'))"
+                          Include="$(SolutionDir)6_Ideation/**/*.csproj"
+                          Exclude="$(SolutionDir)6_Ideation/**/*.Sample.csproj; $(SolutionDir)6_Ideation/**/*.Test.csproj;"/>
+
+        <InternalsVisibleTo Include="$(AssemblyName).Test"/>
+
+        <Content Condition="'$(IsPackable)' == 'true'" Include="$(ProjectDir)/bin/Debug/**/**/*.dll" Visible="false" PackagePath="runtimes/" />
+
+        <EmbeddedResource Condition="Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' == ''"
+                          Include="$(ProjectDir)/resources/**/*.zip"/>
+        
+    </ItemGroup>
+
+    <ItemGroup Condition="
+        Exists('$(ProjectDir)/resources/') == True AND
+        $(AssemblyName.Contains('Test')) == False AND
+        $(AssemblyName.Contains('App.Installer')) == False AND 
+        $(AssemblyName.Contains('Sample')) == False AND
+        $(AssemblyName.Contains('Template')) == False AND 
+        $(AssemblyName.Contains('Benchmark')) == False AND 
+        '$(RuntimeIdentifier)' != '' AND
+        $(Configuration) == 'Debug'">
+        
+        <None Remove="$(ProjectDir)/resources/**/*.zip" />
+
+        <EmbeddedResource Condition="$(IsARM) == true AND $(IsWindows) == true" Include="$(ProjectDir)/resources/**/win-arm/*win-arm*.zip"/>
+        <EmbeddedResource Condition="$(IsARM64) == true AND $(IsWindows) == true" Include="$(ProjectDir)/resources/**/win-arm64/*win-arm64*.zip"/>
+        <EmbeddedResource Condition="$(IsX64) == true AND $(IsWindows) == true" Include="$(ProjectDir)/resources/**/win-x64/*win-x64*.zip"/>
+        <EmbeddedResource Condition="$(IsX86) == true AND $(IsWindows) == true" Include="$(ProjectDir)/resources/**/win-x86/*win-x86*.zip"/>
+
+        <EmbeddedResource Condition="$(IsARM64) == true AND $(IsOSX) == true" Include="$(ProjectDir)/resources/**/osx-arm64/*osx-arm64*.zip"/>
+        <EmbeddedResource Condition="$(IsX64) == true AND $(IsOSX) == true" Include="$(ProjectDir)/resources/**/osx-x64/*osx-x64*.zip"/>
+
+        <EmbeddedResource Condition="$(IsARM) == true AND $(IsLinux) == true" Include="$(ProjectDir)/resources/**/linux-arm/*linux-arm*.zip"/>
+        <EmbeddedResource Condition="$(IsARM64) == true AND $(IsLinux) == true" Include="$(ProjectDir)/resources/**/*linux-arm64*.zip"/>
+        <EmbeddedResource Condition="$(IsX64) == true AND $(IsLinux) == true" Include="$(ProjectDir)/resources/**/linux-x64/*linux-x64*.zip"/>
+        <EmbeddedResource Condition="$(IsX86) == true AND $(IsLinux) == true" Include="$(ProjectDir)/resources/**/linux-x86/*linux-x86*.zip"/>
+    </ItemGroup>
+    
+
+    <PropertyGroup Condition="
+        $(AssemblyName.Contains('Test')) == False AND
+        $(AssemblyName.Contains('App.Installer')) == False AND 
+        $(AssemblyName.Contains('Sample')) == False AND
+        $(AssemblyName.Contains('Template')) == False AND 
+        $(AssemblyName.Contains('Benchmark')) == False AND 
+        $(Configuration) == 'Release'">
+        
+        <Deterministic>true</Deterministic>
+        <ProduceOnlyReferenceAssembly>false</ProduceOnlyReferenceAssembly>
+        <Optimize>true</Optimize>
+        <PublishTrimmed>true</PublishTrimmed>
+        <TrimMode>Link</TrimMode>
+    </PropertyGroup>
+
+    <ItemGroup Condition="
+        $(AssemblyName.Contains('Test')) == False AND
+        $(AssemblyName.Contains('App.Installer')) == False AND 
+        $(AssemblyName.Contains('Sample')) == False AND
+        $(AssemblyName.Contains('Template')) == False AND 
+        $(AssemblyName.Contains('Benchmark')) == False AND 
+        $(Configuration) == 'Release'">
+
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
+                          Include="$(SolutionDir)2_Application/**/Alis.csproj"/>
+        
+        <Compile Condition="$(ProjectDir.Contains('2_Application'))"
+                 Include="
+                        
+                        $(SolutionDir)3_Structuration/**/*.cs;
+                        "
+                 Exclude="
+                          $(SolutionDir)3_Structuration/**/obj/**/**;
+                          $(SolutionDir)3_Structuration/**/bin/**/**;
+                          $(SolutionDir)3_Structuration/**/*sample/**/**;
+                          $(SolutionDir)3_Structuration/**/*test/**/*.cs;  
+                          $(SolutionDir)3_Structuration/**/*.Designer.cs"
+                 Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+
+        <Compile Condition="$(ProjectDir.Contains('2_Application'))"
+                 Include="
+                        
+                        $(SolutionDir)4_Operation/**/*.cs;
+                        "
+                 Exclude="
+                          $(SolutionDir)4_Operation/**/obj/**/**;
+                          $(SolutionDir)4_Operation/**/bin/**/**;
+                          $(SolutionDir)4_Operation/**/*sample/**/**;
+                          $(SolutionDir)4_Operation/**/*test/**/*.cs; 
+                          $(SolutionDir)4_Operation/**/*.Designer.cs "
+                 Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+
+        <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND '$(RuntimeIdentifier)' == ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/*.zip;"
+                          Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+
+        <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND $(ProjectDir.Contains('2_Application')) AND $(IsARM) == true AND $(IsWindows) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/win-arm/*win-arm*.zip"
+                          Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+        <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND $(IsARM64) == true AND $(IsWindows) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/win-arm64/*win-arm64*.zip"
+                          Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+        <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND $(IsX64) == true AND $(IsWindows) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/win-x64/*win-x64*.zip"
+                          Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+        <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND $(IsX86) == true AND $(IsWindows) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/win-x86/*win-x86*.zip"
+                          Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+
+        <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND $(IsARM64) == true AND $(IsOSX) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/osx-arm64/*osx-arm64*.zip"
+                          Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+        <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND $(IsX64) == true AND $(IsOSX) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/osx-x64/*osx-x64*.zip"
+                          Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+
+        <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND $(IsARM) == true AND $(IsLinux) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/linux-arm/*linux-arm*.zip"
+                          Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+        <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND $(IsARM64) == true AND $(IsLinux) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/*linux-arm64*.zip"
+                          Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+        <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND $(IsX64) == true AND $(IsLinux) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/linux-x64/*linux-x64*.zip"
+                          Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+        <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application')) AND $(IsX86) == true AND $(IsLinux) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/linux-x86/*linux-x86*.zip"
+                          Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+
+        <Compile Condition="$(ProjectDir.Contains('2_Application'))"
+                 Include="
+                        
+                        $(SolutionDir)5_Declaration/**/*.cs;
+                        "
+                 Exclude="
+                          $(SolutionDir)5_Declaration/**/obj/**/**;
+                          $(SolutionDir)5_Declaration/**/bin/**/**;
+                          $(SolutionDir)5_Declaration/**/*sample/**/**;
+                          $(SolutionDir)5_Declaration/**/*test/**/*.cs; 
+                          $(SolutionDir)5_Declaration/**/*.Designer.cs"
+                 Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+        
+        <Compile Condition="$(ProjectDir.Contains('2_Application'))"
+                 Include="
+                            
+                            $(SolutionDir)6_Ideation/**/*.cs;
+                            "
+                 Exclude="
+                          $(SolutionDir)6_Ideation/**/obj/**/**;
+                          $(SolutionDir)6_Ideation/**/bin/**/**;
+                          $(SolutionDir)6_Ideation/**/*sample/**/**;
+                          $(SolutionDir)6_Ideation/**/*test/**/*.cs;  
+                          $(SolutionDir)6_Ideation/**/*.Designer.cs"
+                 Link="Core/Aspect/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+        
+        <Compile Condition="$(ProjectDir.Contains('3_Structuration'))"
+                 Include="
+                        $(SolutionDir)4_Operation/**/*.cs;
+                        "
+                 Exclude="
+                          $(SolutionDir)4_Operation/**/obj/**/**;
+                          $(SolutionDir)4_Operation/**/bin/**/**;
+                          $(SolutionDir)4_Operation/**/*sample/**/**;
+                          $(SolutionDir)4_Operation/**/*test/**/*.cs; 
+                          $(SolutionDir)4_Operation/**/*.Designer.cs"
+                 Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+
+
+        <EmbeddedResource Condition="$(ProjectDir.Contains('3_Structuration')) AND '$(RuntimeIdentifier)' == ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/*.zip;"
+                          Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+
+        <EmbeddedResource Condition="$(ProjectDir.Contains('3_Structuration')) AND $(IsARM) == true AND $(IsWindows) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/win-arm/*win-arm*.zip"
+                          Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+        <EmbeddedResource Condition="$(ProjectDir.Contains('3_Structuration')) AND $(IsARM64) == true AND $(IsWindows) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/win-arm64/*win-arm64*.zip"
+                          Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+        <EmbeddedResource Condition="$(ProjectDir.Contains('3_Structuration')) AND $(IsX64) == true AND $(IsWindows) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/win-x64/*win-x64*.zip"
+                          Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+        <EmbeddedResource Condition="$(ProjectDir.Contains('3_Structuration')) AND $(IsX86) == true AND $(IsWindows) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/win-x86/*win-x86*.zip"
+                          Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+
+        <EmbeddedResource Condition="$(ProjectDir.Contains('3_Structuration')) AND $(IsARM64) == true AND $(IsOSX) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/osx-arm64/*osx-arm64*.zip"
+                          Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+        <EmbeddedResource Condition="$(ProjectDir.Contains('3_Structuration')) AND $(IsX64) == true AND $(IsOSX) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/osx-x64/*osx-x64*.zip"
+                          Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+
+        <EmbeddedResource Condition="$(ProjectDir.Contains('3_Structuration')) AND $(IsARM) == true AND $(IsLinux) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/linux-arm/*linux-arm*.zip"
+                          Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+        <EmbeddedResource Condition="$(ProjectDir.Contains('3_Structuration')) AND $(IsARM64) == true AND $(IsLinux) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/*linux-arm64*.zip"
+                          Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+        <EmbeddedResource Condition="$(ProjectDir.Contains('3_Structuration')) AND $(IsX64) == true AND $(IsLinux) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/linux-x64/*linux-x64*.zip"
+                          Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+        <EmbeddedResource Condition="$(ProjectDir.Contains('3_Structuration')) AND $(IsX86) == true AND $(IsLinux) == true AND '$(RuntimeIdentifier)' != ''"
+                          Include="$(SolutionDir)4_Operation/**/resources/**/linux-x86/*linux-x86*.zip"
+                          Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+        
+        <Compile Condition="$(ProjectDir.Contains('3_Structuration')) OR $(ProjectDir.Contains('4_Operation'))"
+                 Include="
+                        
+                        $(SolutionDir)5_Declaration/**/*.resx"
+                 Exclude="
+                          $(SolutionDir)5_Declaration/**/obj/**/**;
+                          $(SolutionDir)5_Declaration/**/bin/**/**;
+                          $(SolutionDir)5_Declaration/**/*sample/**/**;
+                          $(SolutionDir)5_Declaration/**/*test/**/*.cs; $(SolutionDir)5_Declaration/**/Resources.Designer.cs"
+                 Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+        
+        <Compile Condition="$(ProjectDir.Contains('3_Structuration')) OR $(ProjectDir.Contains('4_Operation'))"
+                 Include="
+                        $(SolutionDir)6_Ideation/**/*.cs;"
+                 Exclude="
+                          $(SolutionDir)6_Ideation/**/obj/**/**;
+                          $(SolutionDir)6_Ideation/**/bin/**/**;
+                          $(SolutionDir)6_Ideation/**/*sample/**/**;
+                          $(SolutionDir)6_Ideation/**/*test/**/*.cs; $(SolutionDir)6_Ideation/**/Resources.Designer.cs"
+                 Link="Aspect/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+
+        
+        
+        <Compile Condition="
+        $(ProjectDir.Contains('5_Declaration'))"
+                 Include="
+                        $(SolutionDir)6_Ideation/**/*.cs;"
+                 Exclude="
+                          $(SolutionDir)6_Ideation/**/obj/**/**;
+                          $(SolutionDir)6_Ideation/**/bin/**/**;
+                          $(SolutionDir)6_Ideation/**/*sample/**/**;
+                          $(SolutionDir)6_Ideation/**/*test/**/*.cs;  $(SolutionDir)6_Ideation/**/Resources.Designer.cs"
+                 Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+
+        <EmbeddedResource Condition="Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' == ''"
+                          Include="$(ProjectDir)/resources/**/*.zip;"/>
+
+        <None Condition="Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''"
+                          Remove="$(ProjectDir)/resources/**/*.zip;"/>
+        
+        <EmbeddedResource Condition="$(IsARM) == true AND $(IsWindows) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/win-arm/*win-arm*.zip"/>
+        <EmbeddedResource Condition="$(IsARM64) == true AND $(IsWindows) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/win-arm64/*win-arm64*.zip"/>
+        <EmbeddedResource Condition="$(IsX64) == true AND $(IsWindows) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/win-x64/*win-x64*.zip"/>
+        <EmbeddedResource Condition="$(IsX86) == true AND $(IsWindows) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/win-x86/*win-x86*.zip"/>
+
+        <EmbeddedResource Condition="$(IsARM64) == true AND $(IsOSX) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/osx-arm64/*osx-arm64*.zip"/>
+        <EmbeddedResource Condition="$(IsX64) == true AND $(IsOSX) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/osx-x64/*osx-x64*.zip"/>
+
+        <EmbeddedResource Condition="$(IsARM) == true AND $(IsLinux) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/linux-arm/*linux-arm*.zip"/>
+        <EmbeddedResource Condition="$(IsARM64) == true AND $(IsLinux) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/linux-arm64/*linux-arm64*.zip"/>
+        <EmbeddedResource Condition="$(IsX64) == true AND $(IsLinux) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/linux-x64/*linux-x64*.zip"/>
+        <EmbeddedResource Condition="$(IsX86) == true AND $(IsLinux) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/linux-x86/*linux-x86*.zip"/>
+        
+        <InternalsVisibleTo Include="$(AssemblyName).Test"/>
+        <Content Condition="'$(IsPackable)' == 'true'" Include="$(ProjectDir)/bin/Release/**/**/*.dll" Visible="false" PackagePath="runtimes/" />
+    </ItemGroup>
+    
+    <ItemGroup Condition="$(AssemblyName.Contains('Test'))">
+        <ProjectReference Include="$(ProjectDir)/../src/$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.Test', '')).csproj"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="$(AssemblyName.Contains('Benchmark'))">
+        <ProjectReference Include="$(ProjectDir)/../src/$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.Benchmark', '')).csproj"/>
+    </ItemGroup>
+
+    <PropertyGroup Condition="$(AssemblyName.Contains('Sample'))">
+        <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.[^.]*Sample[^*]*', ''))</NameTest>
+    </PropertyGroup>
+
+    <ItemGroup Condition="$(AssemblyName.Contains('Sample'))">
+        <ProjectReference
+            Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == True"
+            Include="$(ProjectDir)/../src/$(NameTest).csproj"/>
+        <ProjectReference
+            Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
+            Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Condition="Exists('$(ProjectDir)/Assets/') == True"
+              Update="$(ProjectDir)/Assets/**"
+              LinkBase="Assets/"
+              CopyToOutputDirectory="Always"
+              CopyToPublishDirectory="Always"/>
+    </ItemGroup>
+</Project>

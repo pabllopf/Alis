@@ -1,0 +1,50 @@
+# Run test of the framework.
+name: "[PRO][DEPLOY][DEMO]"
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  Create_Web:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: master
+          
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+      
+      - name: Delete folder try
+        run: rm -rf ./docs/web/try/
+        
+      - name: Publish .NET Core Project
+        run: dotnet publish 1_Presentation/Engine/web/Alis.App.Engine.Web.csproj -c Release -o ./docs/web/try --force
+          
+      - name: Change base-tag in index.html from / to /web/try/wwwroot/
+        run: sed -i 's/<base href="\/" \/>/<base href="\/web\/try\/wwwroot\/" \/>/g' ./docs/web/try/wwwroot/index.html
+
+      - name: copy index.html to 404.html
+        run: cp ./docs/web/try/wwwroot/index.html ./docs/web/try/wwwroot/404.html
+    
+      - name: git config user.name github-actions
+        run: git config user.name github-actions
+
+      - name: git config user.email github-actions@github.com
+        run: git config user.email github-actions@github.com
+
+      - name: git config core.autocrlf false
+        run: git config core.autocrlf false
+
+      - name: git add .
+        run: git add .
+
+      - name: commit
+        run: "git commit -m 'deploy last demo web'"
+
+      - name: git push
+        run: git push 
