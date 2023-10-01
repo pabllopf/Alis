@@ -79,6 +79,7 @@ namespace Alis.App.Engine
 			    gl_Position = ProjMtx * vec4(Position.xy, 0, 1);
 			}";
 
+        
         /// <summary>
         ///     The fragment shader
         /// </summary>
