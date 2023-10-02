@@ -111,9 +111,7 @@ jobs:
       #  run: git config core.autocrlf false
 
       - name: Find common ancestor
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-        run: git merge-base --fork-point origin/$BASE_BRANCH
+        run: git merge-base --fork-point origin/master
         
       - name: Bump version and push tag
         id: tag_version
