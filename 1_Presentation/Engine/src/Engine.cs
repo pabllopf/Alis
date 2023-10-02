@@ -306,7 +306,6 @@ namespace Alis.App.Engine
                 Console.WriteLine(@$"ERROR, FONT NOT FOUND: {dirFonts + fontToLoad}");
                 return;
             }
-
             
             fonts.AddFontDefault();
             ImFontPtr fontLoaded = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", 14);
