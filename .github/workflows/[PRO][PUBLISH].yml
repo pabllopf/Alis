@@ -107,19 +107,20 @@ jobs:
       - name: git config user.email github-actions@github.com
         run: git config user.email "${{ secrets.USER_EMAIL }}"
 
-      - name: git config core.autocrlf false
-        run: git config core.autocrlf false
-      
-      #- name: git sign
-      #  run: git config --global user.signingkey "${{ secrets.SIGN }}"
+      #- name: git config core.autocrlf false
+      #  run: git config core.autocrlf false
+
+      - name: active sign
+        run: git config --global commit.gpgsign true
+        
+      - name: git sign
+        run: git config --global user.signingkey "${{ secrets.SIGN }}"
 
       - name: Find common ancestor
         run: git merge-base --fork-point origin/master
         
-      #
       - name: git tag -a 
-      #  run: git tag -s -a v${{ env.VERSIONFINAL }} HEAD -m "v${{ env.VERSIONFINAL }}"
-        run: git tag -a v${{ env.VERSIONFINAL }} HEAD -m "v${{ env.VERSIONFINAL }}"
+        run: git tag -s -a v${{ env.VERSIONFINAL }} HEAD -m "v${{ env.VERSIONFINAL }}"
 
       - name: git push --tags
         run: git push --tags
@@ -164,12 +165,3 @@ jobs:
             changelog.md
           commit-message: "Updated changelog ${{ env.VERSIONFINAL }}"
           ref: refs/heads/master
-
-      - name: git add .
-        run: git add .
-
-      - name: git commit -m "Create the packages of version '$VERSIONFINAL'."
-        run: git commit -m "Create the packages of version '$VERSIONFINAL'."
-
-      - name: git push
-        run: git push
