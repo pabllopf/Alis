@@ -83,6 +83,13 @@ jobs:
       - name: Write in filename the next version
         run: sed "s/$VERSION/$VERSIONFINAL/" ./Directory.Build.props
 
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          custom_tag: "v${{ env.VERSIONFINAL }}"
+
       - name: Get the current version
         run: echo "CURRENTVERSION=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ${{ env.FILENAME }} )" >> $GITHUB_ENV
 
@@ -113,18 +120,13 @@ jobs:
       - name: Find common ancestor
         run: git merge-base --fork-point origin/master
         
-      - name: Bump version and push tag
-        id: tag_version
-        uses: mathieudutour/github-tag-action@v6.1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          custom_tag: "v${{ env.VERSIONFINAL }}"
+      
 
       #- name: git tag -a <tag_name> HEAD -m "my version 1.4"
       #  run: git tag -a v${{ env.VERSIONFINAL }} HEAD -m "v${{ env.VERSIONFINAL }}"
 
-      - name: git push --tags
-        run: git push --tags
+      #- name: git push --tags
+      #  run: git push --tags
 
       - name: Update CHANGELOG
         id: changelog
