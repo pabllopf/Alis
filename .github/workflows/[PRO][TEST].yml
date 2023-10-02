@@ -18,9 +18,12 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
-      - name: Dotnet test
-        run: cd ./docs/scripts/macos/ && sudo chmod 777 ./run_tests.sh && ./run_tests.sh
-
+      - name: Dotnet test Debug
+        run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet test $i --configuration Debug ; fi;done
+            
+      - name: Dotnet test Release
+        run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet test $i --configuration Release ; fi;done
+    
   Run_Test_On_Windows_Latest:
     runs-on: windows-latest
     steps:
@@ -34,8 +37,11 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
-      - name: Dotnet test
-        run: cd .\\docs\\scripts\\windows\\ && .\\run_tests.bat
+      - name: Dotnet test debug
+        run: for /r %%i in (*.Test.csproj) do dotnet test %%i --configuration Debug
+      
+      - name: Dotnet test release
+        run: for /r %%i in (*.Test.csproj) do dotnet test %%i --configuration Release
   
   Run_Test_On_Ubuntu_Latest:
     runs-on: ubuntu-latest
@@ -50,8 +56,12 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
-      - name: Dotnet test
-        run: cd ./docs/scripts/linux/ && sudo chmod 777 ./run_tests.sh && ./run_tests.sh
+      - name: Dotnet test debug
+        run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet test $i --configuration Debug ; fi;done
+
+      - name: Dotnet test release
+        run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet test $i --configuration Release ; fi;done
+
         
         
     
