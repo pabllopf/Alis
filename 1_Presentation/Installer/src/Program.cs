@@ -42,7 +42,7 @@ namespace Alis.App.Installer
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(" Hello World!");
         }
     }
 }
