@@ -51,17 +51,13 @@ namespace Alis.Core.Audio.Sample
 
             while (true)
             {
-                Console.WriteLine("Select backend audio system ('os' | 'sdl')");
+                Console.WriteLine("Select backend audio system ('os')");
                 string os = Console.ReadLine();
 
                 try
                 {
                     switch (os)
                     {
-                        case "sdl":
-                            audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.Sdl));
-                            break;
-
                         case "os":
                             audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.Os));
                             break;

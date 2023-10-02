@@ -84,17 +84,17 @@ namespace Alis.Sample.Pong
                                 .Builder()
                                 .Build())
                             .Build())
-                        /*.Add<GameObject>(soundTrack => soundTrack
+                        .Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
                             .AddComponent<AudioSource>(audioSource => audioSource
                                 .Builder()
                                 .PlayOnAwake(true)
                                 .SetAudioClip(audioClip => audioClip
-                                    .FilePath(AssetManager.Find("ping.wav"))
+                                    .FilePath(AssetManager.Find("soundtrack.wav"))
                                     .Volume(100.0f)
                                     .Build())
                                 .Build())
-                            .Build())*/
+                            .Build())
                         .Add<GameObject>(player => player
                             .Name("Player 1")
                             .Transform(transform => transform

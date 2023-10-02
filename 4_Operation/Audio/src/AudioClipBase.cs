@@ -51,7 +51,15 @@ namespace Alis.Core.Audio
         protected AudioClipBase(string fullPathAudio)
         {
             FullPathAudioFile = fullPathAudio;
-            AudioBackendType = AudioBackendType.Sdl;
+            AudioBackendType = AudioBackendType.Os;
+            switch (AudioBackendType)
+            {
+                case AudioBackendType.Os:
+                    player = new Player();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
             IsPlaying = false;
             Logger.Log($"Init music: '{fullPathAudio}'");
         }
@@ -61,7 +69,15 @@ namespace Alis.Core.Audio
         /// </summary>
         protected AudioClipBase()
         {
-            AudioBackendType = AudioBackendType.Sdl;
+            AudioBackendType = AudioBackendType.Os;
+            switch (AudioBackendType)
+            {
+                case AudioBackendType.Os:
+                    player = new Player();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
             Logger.Log("Init music: 'null file'");
         }
 

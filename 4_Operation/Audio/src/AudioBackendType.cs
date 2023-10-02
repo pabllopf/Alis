@@ -35,13 +35,13 @@ namespace Alis.Core.Audio
     public enum AudioBackendType
     {
         /// <summary>
+        /// The none audio backend type
+        /// </summary>
+        None = 0,
+        
+        /// <summary>
         ///     The os audio type
         /// </summary>
-        Os = 0,
-
-        /// <summary>
-        ///     The sfml audio type
-        /// </summary>
-        Sdl = 1
+        Os = 1
     }
 }
