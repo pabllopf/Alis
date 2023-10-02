@@ -315,7 +315,7 @@ namespace Alis.App.Engine
 
             fonts.TexId = (IntPtr) _fontTextureId;
             fonts.ClearTexData();
-
+            
             // CONFIG DOCKSPACE
             ImGuiViewportPtr viewport = ImGui.GetMainViewport();
             ImGui.SetNextWindowPos(viewport.WorkPos);
