@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [v0.1.7] - 2023-09-15
+## [v0.1.7]
 ### :sparkles: New Features
 - [`47437e2`](https://github.com/pabllopf/Alis/commit/47437e23dcfbed35cc7fec47a587bf03356b7878) - new network module with cross-platform code and native full on c# *(commit by [@pabllopf](https://github.com/pabllopf))*
 - [`f3b4ca3`](https://github.com/pabllopf/Alis/commit/f3b4ca3f1d2396597efa3dc11548db95cd1043f6) - add new defaults builders for main components of Alis *(commit by [@pabllopf](https://github.com/pabllopf))*
