@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.1.8] - 2023-10-02
+### :sparkles: New Features
+- [`d7ba807`](https://github.com/pabllopf/Alis/commit/d7ba807112d788c4119cab6ee2cfae9231848f5f) - fix all repository and the workflows *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4aa5585`](https://github.com/pabllopf/Alis/commit/4aa55857142e40d213ad481ba0538f48c9cc4d81) - refactor the main publish workflow *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`d7bf530`](https://github.com/pabllopf/Alis/commit/d7bf5301900fd0563d4202b85a7bb86d9f274599) - the version to publish *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.1.7]
 ### :sparkles: New Features
 - [`47437e2`](https://github.com/pabllopf/Alis/commit/47437e23dcfbed35cc7fec47a587bf03356b7878) - new network module with cross-platform code and native full on c# *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -1322,3 +1331,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.1.5]: https://github.com/pabllopf/Alis/compare/v0.1.4...v0.1.5
 [v0.1.6]: https://github.com/pabllopf/Alis/compare/v0.1.5...v0.1.6
 [v0.1.7]: https://github.com/pabllopf/Alis/compare/v0.1.6...v0.1.7
+
+[v0.1.8]: https://github.com/pabllopf/Alis/compare/v0.1.7...v0.1.8
