@@ -124,7 +124,13 @@ jobs:
           git_commit_gpgsign: true
           
       - name: git tag 
-        run: git tag -a "v${{ env.VERSIONFINAL }}" -m "v${{ env.VERSIONFINAL }}"
+        run: git tag -s "v${{ env.VERSIONFINAL }}" -m "v${{ env.VERSIONFINAL }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.OSLASH_BOT_GITHUB_TOKEN }}
+          GIT_AUTHOR_NAME: ${{ steps.import-gpg.outputs.name }}
+          GIT_AUTHOR_EMAIL: ${{ steps.import-gpg.outputs.email }}
+          GIT_COMMITTER_NAME: ${{ steps.import-gpg.outputs.name }}
+          GIT_COMMITTER_EMAIL: ${{ steps.import-gpg.outputs.email }}
 
       - name: git push --tags
         run: git push --tags
