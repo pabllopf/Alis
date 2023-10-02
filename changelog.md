@@ -5,28 +5,6 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [v0.1.9] - 2023-10-02
-### :bug: Bug Fixes
-- [`0217b55`](https://github.com/pabllopf/Alis/commit/0217b55551c599fc4696c0d126f6b98392dd6fc7) - the workflow of tests *(commit by [@pabllopf](https://github.com/pabllopf))*
-
-
-## [v0.1.8] - 2023-10-01
-### :sparkles: New Features
-- [`03131c2`](https://github.com/pabllopf/Alis/commit/03131c2d2f5c71fae7daa51bf84eb9dcb97cdbf7) - 2 new scripts to clean and check size of repository *(commit by [@pabllopf](https://github.com/pabllopf))*
-
-### :bug: Bug Fixes
-- [`9386884`](https://github.com/pabllopf/Alis/commit/938688419dc783efabaf7aaf431ac63f8ca372cc) - the main sln items *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`caf3294`](https://github.com/pabllopf/Alis/commit/caf329402a52e32b572641bf5a8ba3be8435a7a6) - delete temp files on .nuget repo to reduce size *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`1d374d6`](https://github.com/pabllopf/Alis/commit/1d374d6471c3f06ee3c837eb42c95037b661afec) - space of samples modules to reduce to -1MB *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`58232f2`](https://github.com/pabllopf/Alis/commit/58232f2fbcfef02ff30eef9693d1c31cd717057d) - the sln struct *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`236a05c`](https://github.com/pabllopf/Alis/commit/236a05c728075e7f0696157af6b08bba700724ce) - the workflows and delete wiki and web deploy. *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`d004ff4`](https://github.com/pabllopf/Alis/commit/d004ff4eebf09fb35d48a1687da0740abc18e41e) - fetch and pull before to push on publish *(commit by [@pabllopf](https://github.com/pabllopf))*
-- [`f079a95`](https://github.com/pabllopf/Alis/commit/f079a95eee4da21c9ea1540304eeb2d7fa43e955) - delete empty static constructor *(commit by [@pabllopf](https://github.com/pabllopf))*
-
-### :art: Code Style Changes
-- [`56c7783`](https://github.com/pabllopf/Alis/commit/56c7783c5e3122a9dad41aaf24bb025c68833b48) - move scripts to docs folder *(commit by [@pabllopf](https://github.com/pabllopf))*
-
-
 ## [v0.1.7] - 2023-09-15
 ### :sparkles: New Features
 - [`47437e2`](https://github.com/pabllopf/Alis/commit/47437e23dcfbed35cc7fec47a587bf03356b7878) - new network module with cross-platform code and native full on c# *(commit by [@pabllopf](https://github.com/pabllopf))*
