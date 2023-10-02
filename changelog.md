@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.1.9] - 2023-10-02
+### :bug: Bug Fixes
+- [`0217b55`](https://github.com/pabllopf/Alis/commit/0217b55551c599fc4696c0d126f6b98392dd6fc7) - the workflow of tests *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.1.8] - 2023-10-01
 ### :sparkles: New Features
 - [`03131c2`](https://github.com/pabllopf/Alis/commit/03131c2d2f5c71fae7daa51bf84eb9dcb97cdbf7) - 2 new scripts to clean and check size of repository *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -1348,3 +1353,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.1.7]: https://github.com/pabllopf/Alis/compare/v0.1.6...v0.1.7
 
 [v0.1.8]: https://github.com/pabllopf/Alis/compare/v0.1.7...v0.1.8
+[v0.1.9]: https://github.com/pabllopf/Alis/compare/v0.0.0...v0.1.9
