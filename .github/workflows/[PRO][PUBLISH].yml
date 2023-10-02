@@ -114,11 +114,11 @@ jobs:
         run: git merge-base --fork-point origin/master
         
       - name: Bump version and push tag
-        id: tag_version
-        uses: mathieudutour/github-tag-action@v6.1
-        with:
-          custom_tag: "v${{ env.VERSIONFINAL }}"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        uses: ChloePlanet/github-tag-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CUSTOM_TAG: "v${{ env.VERSIONFINAL }}"
+          WITH_V: true
 
       #- name: git tag -a <tag_name> HEAD -m "my version 1.4"
       #  run: git tag -a v${{ env.VERSIONFINAL }} HEAD -m "v${{ env.VERSIONFINAL }}"
