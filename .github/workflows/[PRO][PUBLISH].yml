@@ -120,7 +120,7 @@ jobs:
         run: git merge-base --fork-point origin/master
         
       - name: git tag -a 
-        run: git tag -s "v${{ env.VERSIONFINAL }}"
+        run: git tag -s "v${{ env.VERSIONFINAL }}" -m "v${{ env.VERSIONFINAL }}"
 
       - name: git push --tags
         run: git push --tags
