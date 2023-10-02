@@ -105,5 +105,6 @@ namespace Alis
         /// </summary>
         /// <returns>The video game builder</returns>
         public static VideoGameBuilder Builder() => new VideoGameBuilder();
+        
     }
 }
