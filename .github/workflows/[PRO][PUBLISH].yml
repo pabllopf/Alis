@@ -101,14 +101,19 @@ jobs:
       - name: Publish nugets TO github
         run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg --source "https://nuget.pkg.github.com/pabllopf/index.json" -k ${{secrets.GITHUB_TOKEN}} --skip-duplicate
 
-      - name: git config user.name github-actions
-        run: git config user.name "${{ secrets.USER_NAME }}"
+      #- name: git config user.name github-actions
+      #  run: git config user.name "${{ secrets.USER_NAME }}"
 
-      - name: git config user.email github-actions@github.com
-        run: git config user.email "${{ secrets.USER_EMAIL }}"
+      #- name: git config user.email github-actions@github.com
+      #  run: git config user.email "${{ secrets.USER_EMAIL }}"
 
-      - name: git config core.autocrlf false
-        run: git config core.autocrlf false
+      #- name: git config core.autocrlf false
+      #  run: git config core.autocrlf false
+
+      - name: Find common ancestor
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+        run: git merge-base --fork-point origin/$BASE_BRANCH
         
       - name: Bump version and push tag
         id: tag_version
