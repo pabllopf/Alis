@@ -166,11 +166,21 @@ jobs:
       - name: git pull
         run: git pull
 
-      - name: git add .
-        run: git add .
+      - name: Commit changelog
+        uses: swinton/commit@v2.x
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          files: |
+            changelog.md
+          commit-message: "Updated changelog ${{ env.VERSIONFINAL }}"
+          ref: refs/heads/master
 
-      - name: git commit -m "Create the packages of version '$VERSIONFINAL'."
-        run: git commit -m "Create the packages of version '$VERSIONFINAL'."
+      #- name: git add .
+      #  run: git add .
 
-      - name: git push
-        run: git push
+      #- name: git commit -m "Create the packages of version '$VERSIONFINAL'."
+      #  run: git commit -m "Create the packages of version '$VERSIONFINAL'."
+
+      #- name: git push
+      #  run: git push
