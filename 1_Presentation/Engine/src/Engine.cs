@@ -307,8 +307,6 @@ namespace Alis.App.Engine
                 return;
             }
             
-            
-            
             fonts.AddFontDefault();
             ImFontPtr fontLoaded = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", 14);
 
