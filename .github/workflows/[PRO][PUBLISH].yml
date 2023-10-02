@@ -95,11 +95,11 @@ jobs:
       #- name: Create packages
       #  run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet pack -c Release $i -o ./.publish/$VERSIONFINAL/ ; fi;done
 
-      - name: Publish nugets TO nuget
-        run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate
+      #- name: Publish nugets TO nuget
+      #  run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate
 
-      - name: Publish nugets TO github
-        run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg --source "https://nuget.pkg.github.com/pabllopf/index.json" -k ${{secrets.GITHUB_TOKEN}} --skip-duplicate
+      #- name: Publish nugets TO github
+      #  run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg --source "https://nuget.pkg.github.com/pabllopf/index.json" -k ${{secrets.GITHUB_TOKEN}} --skip-duplicate
 
       #- name: git config user.name github-actions
       #  run: git config user.name "${{ secrets.USER_NAME }}"
