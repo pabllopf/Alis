@@ -116,12 +116,13 @@ jobs:
       - name: Find common ancestor
         run: git merge-base --fork-point origin/master
         
-      #- name: git tag -a 
+      #
+      - name: git tag -a 
       #  run: git tag -s -a v${{ env.VERSIONFINAL }} HEAD -m "v${{ env.VERSIONFINAL }}"
-      #  run: git tag -a v${{ env.VERSIONFINAL }} HEAD -m "v${{ env.VERSIONFINAL }}"
+        run: git tag -a v${{ env.VERSIONFINAL }} HEAD -m "v${{ env.VERSIONFINAL }}"
 
-      #- name: git push --tags
-      #  run: git push --tags
+      - name: git push --tags
+        run: git push --tags
 
       - name: Update CHANGELOG
         id: changelog
@@ -138,7 +139,7 @@ jobs:
           token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           name: "v${{ env.VERSIONFINAL }} has arrived !!!"
-          #tag_name: "v${{ env.VERSIONFINAL }}"
+          tag_name: "v${{ env.VERSIONFINAL }}"
           generate_release_notes: true
           append_body: true
           files: |
