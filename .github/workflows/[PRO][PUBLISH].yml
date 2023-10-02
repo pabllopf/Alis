@@ -110,20 +110,21 @@ jobs:
       #- name: git config core.autocrlf false
       #  run: git config core.autocrlf false
 
-      - name: active sign
-        run: git config --global commit.gpgsign true
-        
-      - name: git sign
-        run: git config --global user.signingkey "${{ secrets.SIGN }}"
-
       - name: Find common ancestor
         run: git merge-base --fork-point origin/master
-        
-      - name: git tag -a 
-        run: git tag -s "v${{ env.VERSIONFINAL }}" -m "v${{ env.VERSIONFINAL }}"
 
-      - name: git push --tags
-        run: git push --tags
+      - name: Create Tag
+        id: create_tag
+        uses: jaywcjlove/create-tag-action@v1.2.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}        
+          version: "v${{ env.VERSIONFINAL }}"
+          
+      #- name: git tag -a 
+      #  run: git tag -s "v${{ env.VERSIONFINAL }}" -m "v${{ env.VERSIONFINAL }}"
+
+      #- name: git push --tags
+      #  run: git push --tags
 
       - name: Update CHANGELOG
         id: changelog
