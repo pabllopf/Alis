@@ -118,13 +118,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CUSTOM_TAG: "v${{ env.VERSIONFINAL }}"
-          WITH_V: true
 
       #- name: git tag -a <tag_name> HEAD -m "my version 1.4"
       #  run: git tag -a v${{ env.VERSIONFINAL }} HEAD -m "v${{ env.VERSIONFINAL }}"
 
-      #- name: git push --tags
-      #  run: git push --tags
+      - name: git push --tags
+        run: git push --tags
 
       - name: Update CHANGELOG
         id: changelog
