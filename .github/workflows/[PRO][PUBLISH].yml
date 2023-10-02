@@ -83,13 +83,6 @@ jobs:
       - name: Write in filename the next version
         run: sed "s/$VERSION/$VERSIONFINAL/" ./Directory.Build.props
 
-      - name: Bump version and push tag
-        id: tag_version
-        uses: mathieudutour/github-tag-action@v6.1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          custom_tag: "v${{ env.VERSIONFINAL }}"
-
       - name: Get the current version
         run: echo "CURRENTVERSION=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ${{ env.FILENAME }} )" >> $GITHUB_ENV
 
@@ -108,25 +101,24 @@ jobs:
       #- name: Publish nugets TO github
       #  run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg --source "https://nuget.pkg.github.com/pabllopf/index.json" -k ${{secrets.GITHUB_TOKEN}} --skip-duplicate
 
-      #- name: git config user.name github-actions
-      #  run: git config user.name "${{ secrets.USER_NAME }}"
+      - name: git config user.name github-actions
+        run: git config user.name "${{ secrets.USER_NAME }}"
 
-      #- name: git config user.email github-actions@github.com
-      #  run: git config user.email "${{ secrets.USER_EMAIL }}"
+      - name: git config user.email github-actions@github.com
+        run: git config user.email "${{ secrets.USER_EMAIL }}"
 
-      #- name: git config core.autocrlf false
-      #  run: git config core.autocrlf false
+      - name: git config core.autocrlf false
+        run: git config core.autocrlf false
 
       - name: Find common ancestor
         run: git merge-base --fork-point origin/master
         
-      
-
-      #- name: git tag -a <tag_name> HEAD -m "my version 1.4"
+      - name: git tag -a 
+        run: git tag -s -a v${{ env.VERSIONFINAL }} HEAD -m "v${{ env.VERSIONFINAL }}"
       #  run: git tag -a v${{ env.VERSIONFINAL }} HEAD -m "v${{ env.VERSIONFINAL }}"
 
-      #- name: git push --tags
-      #  run: git push --tags
+      - name: git push --tags
+        run: git push --tags
 
       - name: Update CHANGELOG
         id: changelog
