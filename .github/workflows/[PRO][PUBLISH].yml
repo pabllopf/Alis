@@ -145,18 +145,6 @@ jobs:
           files: |
             licence.md
             ./.publish/${{ env.VERSIONFINAL }}/*.nupkg
-
-      - name: create a file to save the log
-        run: date > ./.publish/generated.txt
-
-      - name: git config user.name github-actions
-        run: git config user.name "${{ secrets.USER_NAME }}"
-
-      - name: git config user.email github-actions@github.com
-        run: git config user.email "${{ secrets.USER_EMAIL }}"
-
-      - name: git config core.autocrlf false
-        run: git config core.autocrlf false
         
       - name: git fetch
         run: git fetch
@@ -177,11 +165,11 @@ jobs:
           commit-message: "Updated changelog ${{ env.VERSIONFINAL }}"
           ref: refs/heads/master
 
-      #- name: git add .
-      #  run: git add .
+      - name: git add .
+        run: git add .
 
-      #- name: git commit -m "Create the packages of version '$VERSIONFINAL'."
-      #  run: git commit -m "Create the packages of version '$VERSIONFINAL'."
+      - name: git commit -m "Create the packages of version '$VERSIONFINAL'."
+        run: git commit -m "Create the packages of version '$VERSIONFINAL'."
 
-      #- name: git push
-      #  run: git push
+      - name: git push
+        run: git push
