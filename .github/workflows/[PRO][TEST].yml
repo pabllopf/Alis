@@ -45,10 +45,10 @@ jobs:
           dotnet-version: 6.0.x
 
       - name: Dotnet test debug
-        run: for /r %i in (*.Test.csproj) do dotnet test %i --configuration Debug
-      
+        run: Get-ChildItem -Recurse -Filter *.Test.csproj | ForEach-Object { dotnet test $_.FullName --configuration Debug }
+        
       - name: Dotnet test release
-        run:  for /r %i in (*.Test.csproj) do dotnet test %i --configuration Release
+        run:  Get-ChildItem -Recurse -Filter *.Test.csproj | ForEach-Object { dotnet test $_.FullName --configuration Release }
   
   Run_Test_On_Ubuntu_Latest:
     runs-on: ubuntu-latest
