@@ -62,22 +62,6 @@ namespace Alis.Core.Manager.Graphic
         private Vector2 defaultSize; 
         
         /// <summary>
-        /// The sdl event
-        /// </summary>
-        private static SdlEvent _sdlEvent;
-        
-        /// <summary>
-        ///     The sdl game controller axis
-        /// </summary>
-        private static readonly List<SdlGameControllerAxis> Axis = new List<SdlGameControllerAxis>((SdlGameControllerAxis[]) Enum.GetValues(typeof(SdlGameControllerAxis)));
-
-        /// <summary>
-        ///     The sdl game controller button
-        /// </summary>
-        private static readonly List<SdlGameControllerButton> Buttons = new List<SdlGameControllerButton>((SdlGameControllerButton[]) Enum.GetValues(typeof(SdlGameControllerButton)));
-
-        
-        /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
         /// </summary>
         public GraphicManager()
@@ -275,46 +259,7 @@ namespace Alis.Core.Manager.Graphic
         /// </summary>
         public override void DispatchEvents()
         {
-            Sdl.JoystickUpdate();
-            
-            while (Sdl.PollEvent(out _sdlEvent) != 0)
-            {
-                switch (_sdlEvent.type)
-                {
-                    case SdlEventType.SdlQuit:
-                        
-                        break;
-                    case SdlEventType.SdlKeydown:
-                        if (_sdlEvent.key.keysym.sym == SdlKeycode.SdlkEscape)
-                        {
-                            
-                        }
-                        else
-                        {
-                            Console.WriteLine(_sdlEvent.key.keysym.sym + " was pressed");
-                        }
-
-                        break;
-                }
-
-                foreach (SdlGameControllerButton button in Buttons)
-                {
-                    if ((_sdlEvent.type == SdlEventType.SdlJoyButtonDown)
-                        && (button == (SdlGameControllerButton) _sdlEvent.cButton.button))
-                    {
-                        Console.WriteLine($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed button={button}");
-                    }
-                }
-
-                foreach (SdlGameControllerAxis axi in Axis)
-                {
-                    if ((_sdlEvent.type == SdlEventType.SdlJoyAxisMotion)
-                        && (axi == (SdlGameControllerAxis) _sdlEvent.cAxis.axis))
-                    {
-                        Console.WriteLine($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed axi={axi}");
-                    }
-                }
-            }
+           
             
             
             

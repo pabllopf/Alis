@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Core.Ecs
 {
@@ -171,7 +172,7 @@ namespace Alis.Core.Ecs
         ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public virtual void OnPressKey(Key key)
+        public virtual void OnPressKey(SdlKeycode key)
         {
             Logger.Trace();
         }
@@ -180,7 +181,7 @@ namespace Alis.Core.Ecs
         ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public virtual void OnPressDownKey(Key key)
+        public virtual void OnPressDownKey(SdlKeycode key)
         {
             Logger.Trace();
         }
@@ -189,7 +190,7 @@ namespace Alis.Core.Ecs
         ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public virtual void OnReleaseKey(Key key)
+        public virtual void OnReleaseKey(SdlKeycode key)
         {
             Logger.Trace();
         }

@@ -32,6 +32,7 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Component.Collider;
 using Alis.Core.Ecs;
+using Alis.Core.Graphic.SDL.Enums;
 
 namespace Alis.Sample.Pong
 {
@@ -70,18 +71,18 @@ namespace Alis.Sample.Pong
         ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnReleaseKey(Key key)
+        public override void OnReleaseKey(SdlKeycode key)
         {
             Vector2 velocity = boxCollider.Body.LinearVelocity;
             if (playerId == 1)
             {
                 switch (key)
                 {
-                    case Key.W:
+                    case SdlKeycode.SdlkW:
                         velocity = new Vector2(velocity.X, 0);
                         boxCollider.Body.LinearVelocity = velocity;
                         return;
-                    case Key.S:
+                    case SdlKeycode.SdlkS:
                         velocity = new Vector2(velocity.X, 0);
                         boxCollider.Body.LinearVelocity = velocity;
                         break;
@@ -92,11 +93,11 @@ namespace Alis.Sample.Pong
             {
                 switch (key)
                 {
-                    case Key.Up:
+                    case SdlKeycode.SdlkUp:
                         velocity = new Vector2(velocity.X, 0);
                         boxCollider.Body.LinearVelocity = velocity;
                         return;
-                    case Key.Down:
+                    case SdlKeycode.SdlkDown:
                         velocity = new Vector2(velocity.X, 0);
                         boxCollider.Body.LinearVelocity = velocity;
                         break;
@@ -108,7 +109,7 @@ namespace Alis.Sample.Pong
         ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnPressDownKey(Key key)
+        public override void OnPressDownKey(SdlKeycode key)
         {
             Vector2 velocity = boxCollider.Body.LinearVelocity;
 
@@ -116,11 +117,11 @@ namespace Alis.Sample.Pong
             {
                 switch (key)
                 {
-                    case Key.W:
+                    case SdlKeycode.SdlkW:
                         velocity = new Vector2(velocity.X, -5);
                         boxCollider.Body.LinearVelocity = velocity;
                         return;
-                    case Key.S:
+                    case SdlKeycode.SdlkS:
                         velocity = new Vector2(velocity.X, 5);
                         boxCollider.Body.LinearVelocity = velocity;
                         break;
@@ -131,11 +132,11 @@ namespace Alis.Sample.Pong
             {
                 switch (key)
                 {
-                    case Key.Up:
+                    case SdlKeycode.SdlkUp:
                         velocity = new Vector2(velocity.X, -5);
                         boxCollider.Body.LinearVelocity = velocity;
                         return;
-                    case Key.Down:
+                    case SdlKeycode.SdlkDown:
                         velocity = new Vector2(velocity.X, 5);
                         boxCollider.Body.LinearVelocity = velocity;
                         break;
