@@ -109,6 +109,7 @@ namespace Alis.Core.Manager.Input
                             NotifyKeyRelease(indexUp);
                         }
                         
+                        
                         break;
                     case SdlEventType.SdlKeydown:
                         SdlKeycode indexDown = _sdlEvent.key.keysym.sym;
