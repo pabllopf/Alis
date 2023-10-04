@@ -31,6 +31,9 @@ using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Entity;
+using Alis.Core.Graphic.SDL;
+using Alis.Core.Graphic.SDL.Enums;
+using Alis.Core.Graphic.SDL.Structs;
 using Alis.Core.Manager.Scene;
 
 namespace Alis.Core.Manager.Input
@@ -44,20 +47,35 @@ namespace Alis.Core.Manager.Input
         /// <summary>
         ///     Array of key of keyboard
         /// </summary>
-        private List<Key> keys;
+        private List<SdlKeycode> keys;
 
         /// <summary>
         ///     Temp list of keys
         /// </summary>
-        private List<Key> tempListOfKeys;
+        private List<SdlKeycode> tempListOfKeys;
+        
+        /// <summary>
+        /// The sdl event
+        /// </summary>
+        private static SdlEvent _sdlEvent;
+        
+        /// <summary>
+        ///     The sdl game controller axis
+        /// </summary>
+        private static readonly List<SdlGameControllerAxis> Axis = new List<SdlGameControllerAxis>((SdlGameControllerAxis[]) Enum.GetValues(typeof(SdlGameControllerAxis)));
 
+        /// <summary>
+        ///     The sdl game controller button
+        /// </summary>
+        private static readonly List<SdlGameControllerButton> Buttons = new List<SdlGameControllerButton>((SdlGameControllerButton[]) Enum.GetValues(typeof(SdlGameControllerButton)));
+        
         /// <summary>
         ///     Inits this instance
         /// </summary>
         public override void Init()
         {
-            keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
-            tempListOfKeys = new List<Key>();
+            keys = new List<SdlKeycode>((SdlKeycode[]) Enum.GetValues(typeof(SdlKeycode)));
+            tempListOfKeys = new List<SdlKeycode>();
         }
 
 
@@ -66,6 +84,71 @@ namespace Alis.Core.Manager.Input
         /// </summary>
         public override void DispatchEvents()
         {
+            Sdl.JoystickUpdate();
+            
+            while (Sdl.PollEvent(out _sdlEvent) != 0)
+            {
+                switch (_sdlEvent.type)
+                {
+                    case SdlEventType.SdlQuit:
+                        Console.WriteLine(" Quit was pressed ");
+                        VideoGame.Exit();
+                        break;
+                    case SdlEventType.SdlAudioDeviceAdded:
+                        Console.WriteLine($" Audio device was added");
+                        Console.WriteLine($" Audio device name: {_sdlEvent.aDevice.ToString()}");
+                        break;
+                    
+                    case SdlEventType.SdlKeyup:
+                        SdlKeycode indexUp = _sdlEvent.key.keysym.sym;
+                        
+                        if (tempListOfKeys.Contains(indexUp))
+                        {
+                            Console.WriteLine(indexUp + " was released");
+                            tempListOfKeys.Remove(indexUp);
+                            NotifyKeyRelease(indexUp);
+                        }
+                        
+                        break;
+                    case SdlEventType.SdlKeydown:
+                        SdlKeycode indexDown = _sdlEvent.key.keysym.sym;
+                        if (!tempListOfKeys.Contains(indexDown))
+                        {
+                            Console.WriteLine(indexDown + " was pressed");
+                            tempListOfKeys.Add(indexDown);
+                            NotifyKeyPress(indexDown);
+                        }
+                        
+                        if (tempListOfKeys.Contains(indexDown))
+                        {
+                            Console.WriteLine(indexDown + " holding");
+                            NotifyKeyHold(indexDown);
+                        }
+                        
+                        break;
+                }
+
+                foreach (SdlGameControllerButton button in Buttons)
+                {
+                    if ((_sdlEvent.type == SdlEventType.SdlJoyButtonDown)
+                        && (button == (SdlGameControllerButton) _sdlEvent.cButton.button))
+                    {
+                        Console.WriteLine($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed button={button}");
+                    }
+                }
+
+                foreach (SdlGameControllerAxis axi in Axis)
+                {
+                    if ((_sdlEvent.type == SdlEventType.SdlJoyAxisMotion)
+                        && (axi == (SdlGameControllerAxis) _sdlEvent.cAxis.axis))
+                    {
+                        Console.WriteLine($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed axi={axi}");
+                    }
+                }
+            }
+            
+            
+            
             for (int index = 0; index < keys.Count - 7; index++)
             {
                 HandleKeyPressEvents(index);
@@ -119,7 +202,7 @@ namespace Alis.Core.Manager.Input
         ///     Notifies the key press using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        private void NotifyKeyPress(Key key)
+        private void NotifyKeyPress(SdlKeycode key)
         {
             foreach (GameObject currentSceneGameObject in SceneManager.GetGameObjects())
             {
@@ -131,7 +214,7 @@ namespace Alis.Core.Manager.Input
         ///     Notifies the key release using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        private void NotifyKeyRelease(Key key)
+        private void NotifyKeyRelease(SdlKeycode key)
         {
             foreach (GameObject currentSceneGameObject in SceneManager.GetGameObjects())
             {
@@ -143,7 +226,7 @@ namespace Alis.Core.Manager.Input
         ///     Notifies the key hold using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        private void NotifyKeyHold(Key key)
+        private void NotifyKeyHold(SdlKeycode key)
         {
             foreach (GameObject currentSceneGameObject in SceneManager.GetGameObjects())
             {
