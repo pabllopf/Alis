@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.2.0] - 2023-10-04
+### :sparkles: New Features
+- [`9c877c3`](https://github.com/pabllopf/Alis/commit/9c877c3d5438ef71437959aac622b0d0b0234067) - run windows, macos and linux test on deploy version to master branch *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`453ef15`](https://github.com/pabllopf/Alis/commit/453ef15609f5d8792bfdf46110a670073b19ef6d) - add new input manager with specific controls *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`286bfd6`](https://github.com/pabllopf/Alis/commit/286bfd6529b5f8084bbfe5f38a2d70e2f8883894) - the ecs system *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.1.9] - 2023-10-02
 ### :bug: Bug Fixes
 - [`6dce735`](https://github.com/pabllopf/Alis/commit/6dce73589d39c674ee4ec83acc30eafec5628a2c) - the main audio module with native backend *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -1339,3 +1348,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [v0.1.8]: https://github.com/pabllopf/Alis/compare/v0.1.7...v0.1.8
 [v0.1.9]: https://github.com/pabllopf/Alis/compare/v0.1.8...v0.1.9
+[v0.2.0]: https://github.com/pabllopf/Alis/compare/v0.1.9...v0.2.0
