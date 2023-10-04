@@ -3,6 +3,14 @@ name: "[PRO][TEST]"
 on:
   schedule:
     - cron: '30 1 * * *'
+  push:
+    branches: [ master ]
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+      - '.github/**'
+      - '.git/**'
+      - '.config/**'
 
 jobs:
   Run_Test_On_MacOs_Latest:
