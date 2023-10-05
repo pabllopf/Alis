@@ -178,6 +178,13 @@ socio-economic status, nationality, personal appearance, race, religion, or sexu
             <br />
             <sub><b>github-actions[bot]</b></sub>
         </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/dependabot[bot]">
+            <img src="https://avatars.githubusercontent.com/in/29110?v=4" width="75;" alt="dependabot[bot]"/>
+            <br />
+            <sub><b>dependabot[bot]</b></sub>
+        </a>
     </td></tr>
 </table>
 <!-- readme: bots -end -->
