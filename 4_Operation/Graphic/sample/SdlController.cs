@@ -206,7 +206,59 @@ namespace Alis.Core.Graphic.Sample
             
             while (_running)
             {
-                UpdateInput();
+                Sdl.JoystickUpdate();
+
+                while (Sdl.PollEvent(out _sdlEvent) != 0)
+                {
+                    switch (_sdlEvent.type)
+                    {
+                        case SdlEventType.SdlQuit:
+                            _running = false;
+                            break;
+                        case SdlEventType.SdlKeydown:
+                            if (_sdlEvent.key.keysym.sym == SdlKeycode.SdlkEscape)
+                            {
+                                _running = false;
+                            }
+                            if(_sdlEvent.key.keysym.sym == SdlKeycode.SdlkUp)
+                            {
+                                rectBorder.y -= 10;
+                            }
+                            if(_sdlEvent.key.keysym.sym == SdlKeycode.SdlkDown)
+                            {
+                                rectBorder.y += 10;
+                            }
+                            if(_sdlEvent.key.keysym.sym == SdlKeycode.SdlkLeft)
+                            {
+                                rectBorder.x -= 10;
+                            }
+                            if(_sdlEvent.key.keysym.sym == SdlKeycode.SdlkRight)
+                            {
+                                rectBorder.x += 10;
+                            }
+                            
+                            Console.WriteLine(_sdlEvent.key.keysym.sym + " was pressed");
+                            break;
+                    }
+
+                    foreach (SdlGameControllerButton button in Buttons)
+                    {
+                        if ((_sdlEvent.type == SdlEventType.SdlJoyButtonDown)
+                            && (button == (SdlGameControllerButton) _sdlEvent.cButton.button))
+                        {
+                            Console.WriteLine($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed button={button}");
+                        }
+                    }
+
+                    foreach (SdlGameControllerAxis axi in Axis)
+                    {
+                        if ((_sdlEvent.type == SdlEventType.SdlJoyAxisMotion)
+                            && (axi == (SdlGameControllerAxis) _sdlEvent.cAxis.axis))
+                        {
+                            Console.WriteLine($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed axi={axi}");
+                        }
+                    }
+                }
 
                 RenderColors();
                 
@@ -219,15 +271,18 @@ namespace Alis.Core.Graphic.Sample
                 // Sets the color that the rectangle will be drawn with.
                 Sdl.SetRenderDrawColor(renderer, 255, 255, 255, 255);
                 // Draws a rectangle outline.
-                Sdl.RenderDrawRect(renderer, ref rectBorder);
+                //Sdl.RenderDrawRect(renderer, ref rectBorder);
                 
                 // Sets the color that the rectangle will be drawn with.
                 Sdl.SetRenderDrawColor(renderer, 0, 0, 0, 255);
                 
                 // Draws a filled rectangle.
-                Sdl.RenderFillRect(renderer, ref rectFilled);
+                //Sdl.RenderFillRect(renderer, ref rectFilled);
                 
                 sprite.Draw(renderer);
+
+                Sdl.RenderDrawRects(renderer, new[] {rectBorder, rectFilled}, 2);
+                
                 
                 // draw a line
                 Sdl.SetRenderDrawColor(renderer, 255, 0, 0, 255);
@@ -297,52 +352,6 @@ namespace Alis.Core.Graphic.Sample
                 }
             }
         }
-
-        /// <summary>
-        ///     Updates the input
-        /// </summary>
-        public static void UpdateInput()
-        {
-            Sdl.JoystickUpdate();
-
-            while (Sdl.PollEvent(out _sdlEvent) != 0)
-            {
-                switch (_sdlEvent.type)
-                {
-                    case SdlEventType.SdlQuit:
-                        _running = false;
-                        break;
-                    case SdlEventType.SdlKeydown:
-                        if (_sdlEvent.key.keysym.sym == SdlKeycode.SdlkEscape)
-                        {
-                            _running = false;
-                        }
-                        else
-                        {
-                            Console.WriteLine(_sdlEvent.key.keysym.sym + " was pressed");
-                        }
-
-                        break;
-                }
-
-                foreach (SdlGameControllerButton button in Buttons)
-                {
-                    if ((_sdlEvent.type == SdlEventType.SdlJoyButtonDown)
-                        && (button == (SdlGameControllerButton) _sdlEvent.cButton.button))
-                    {
-                        Console.WriteLine($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed button={button}");
-                    }
-                }
-
-                foreach (SdlGameControllerAxis axi in Axis)
-                {
-                    if ((_sdlEvent.type == SdlEventType.SdlJoyAxisMotion)
-                        && (axi == (SdlGameControllerAxis) _sdlEvent.cAxis.axis))
-                    {
-                        Console.WriteLine($"[SDL_JoystickName_id = '{_sdlEvent.cDevice.which}'] Pressed axi={axi}");
-                    }
-                }
-            }
-        }
+        
     }
 }

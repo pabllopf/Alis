@@ -86,7 +86,7 @@ namespace Alis.Core.Manager.Time
         /// <summary>
         ///     Gets or sets the value of the max allowed time step
         /// </summary>
-        public double MaxAllowedTimeStep { get; set; } = 30.0f;
+        public double MaxAllowedTimeStep { get; set; } = 1.0f;
 
         /// <summary>
         ///     Syncs the fixed delta time

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Base.Mapping;
+using System;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Component.Collider;
@@ -120,10 +120,12 @@ namespace Alis.Sample.Pong
                     case SdlKeycode.SdlkW:
                         velocity = new Vector2(velocity.X, -5);
                         boxCollider.Body.LinearVelocity = velocity;
+                        //Console.WriteLine($" {boxCollider.Body.LinearVelocity} ");
                         return;
                     case SdlKeycode.SdlkS:
                         velocity = new Vector2(velocity.X, 5);
                         boxCollider.Body.LinearVelocity = velocity;
+                        //Console.WriteLine($" {boxCollider.Body.LinearVelocity} ");
                         break;
                 }
             }

@@ -75,6 +75,9 @@ namespace Alis.Sample.Pong
                             .Background(Color.Black)
                             .Build())
                         .Build())
+                    .Physic(physic => physic
+                        .Gravity(0.0f, 9.8f)
+                        .Build())
                     .Build())
                 .Manager<SceneManager>(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
@@ -98,7 +101,7 @@ namespace Alis.Sample.Pong
                         .Add<GameObject>(player => player
                             .Name("Player 1")
                             .Transform(transform => transform
-                                .Position(-500, 0)
+                                .Position(10, 320)
                                 .Scale(1, 1)
                                 .Rotation(0)
                                 .Build())
@@ -123,7 +126,7 @@ namespace Alis.Sample.Pong
                         .Add<GameObject>(player => player
                             .Name("Player 2")
                             .Transform(transform => transform
-                                .Position(500, 0)
+                                .Position(1000, 320)
                                 .Scale(1, 1)
                                 .Rotation(0)
                                 .Build())
@@ -148,7 +151,7 @@ namespace Alis.Sample.Pong
                         .Add<GameObject>(ball => ball
                             .Name("Ball")
                             .Transform(transform => transform
-                                .Position(0, 0)
+                                .Position(512, 320)
                                 .Scale(1, 1)
                                 .Rotation(0)
                                 .Build())
@@ -161,7 +164,7 @@ namespace Alis.Sample.Pong
                                 .Size(35, 35)
                                 .Rotation(0.0f)
                                 .RelativePosition(0, 0)
-                                .LinearVelocity(-10, 3)
+                                .LinearVelocity(-10, -5)
                                 .Mass(10.0f)
                                 .Restitution(1.0f)
                                 .Friction(0f)
@@ -173,7 +176,7 @@ namespace Alis.Sample.Pong
                         .Add<GameObject>(downWall => downWall
                             .Name("downWall")
                             .Transform(transform => transform
-                                .Position(0, 324)
+                                .Position(512, 635)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
@@ -195,7 +198,7 @@ namespace Alis.Sample.Pong
                         .Add<GameObject>(upWall => upWall
                             .Name("upWall")
                             .Transform(transform => transform
-                                .Position(0, -324)
+                                .Position(512, 0)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
@@ -217,7 +220,7 @@ namespace Alis.Sample.Pong
                         .Add<GameObject>(leftWall => leftWall
                             .Name("leftWall")
                             .Transform(transform => transform
-                                .Position(-517, 0)
+                                .Position(0, 320)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
@@ -239,7 +242,7 @@ namespace Alis.Sample.Pong
                         .Add<GameObject>(rightWall => rightWall
                             .Name("rightWall")
                             .Transform(transform => transform
-                                .Position(517, 0)
+                                .Position(1024, 320)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()

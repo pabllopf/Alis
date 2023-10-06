@@ -31,12 +31,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Figure.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Component.Render;
 using Alis.Core.Graphic.SDL;
 using Alis.Core.Graphic.SDL.Enums;
 using Alis.Core.Graphic.SDL.Structs;
+using Alis.Core.Aspect.Math.Figure.Rectangle;
+using Alis.Core.Component.Collider;
+
 
 namespace Alis.Core.Manager.Graphic
 {
@@ -61,6 +63,10 @@ namespace Alis.Core.Manager.Graphic
         /// </summary>
         private Vector2 defaultSize; 
         
+        private static readonly BoxCollider[] colliderBases = new BoxCollider[128];
+        
+        private RectangleF[] rectangles = new RectangleF[colliderBases.Length];
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
         /// </summary>
@@ -76,7 +82,7 @@ namespace Alis.Core.Manager.Graphic
         /// <summary>
         ///     Gets or sets the value of the colliders
         /// </summary>
-        private static List<RectangleF> Colliders { get; } = new List<RectangleF>();
+        private static List<RectangleI> Colliders { get; } = new List<RectangleI>();
         
         /// <summary>
         ///     The blue
@@ -206,17 +212,27 @@ namespace Alis.Core.Manager.Graphic
         /// </summary>
         public override void Update()
         {
-            if (Sprites.Count <= 0 && Colliders.Count <= 0)
+            /*if (Sprites.Count <= 0 && Colliders.Count <= 0)
             {
                 RenderSampleColor();
-            }
+            }*/
             
             // Sets color to green (0, 255, 0, 255).
             Sdl.SetRenderDrawColor(_renderer, 0, 255, 0, 255);
             
-            // Draws a rectangle outline.
-            RectangleF[] rectangleFs = Colliders.ToArray();
-            Sdl.RenderDrawRectsF(_renderer, rectangleFs, Colliders.Count);
+            // Draws a rectangle outline
+            
+            for (int i=0;i < colliderBases.Length; i++) 
+            {
+                if (colliderBases[i] != null)
+                {
+                    rectangles[i] = colliderBases[i].RectangleF;
+                }
+            }
+
+            Sdl.RenderDrawRectsF(_renderer, rectangles, rectangles.Length);
+            
+            Sdl.RenderPresent(_renderer);
         }
 
         /// <summary>
@@ -252,7 +268,11 @@ namespace Alis.Core.Manager.Graphic
         /// <summary>
         ///     Afters the update
         /// </summary>
-        public override void AfterUpdate() => Sdl.RenderPresent(_renderer);
+        public override void AfterUpdate()
+        {
+            
+            //Sdl.RenderPresent(_renderer);
+        }
 
         /// <summary>
         ///     Dispatches the events
@@ -315,7 +335,17 @@ namespace Alis.Core.Manager.Graphic
         /// <summary>
         ///     Attaches the collider using the specified shape
         /// </summary>
-        /// <param name="rectangleF">The shape</param>
-        public static void AttachCollider(RectangleF rectangleF) => Colliders.Add(rectangleF);
+        /// <param name="colliderBase">The shape</param>
+        public static void AttachCollider(BoxCollider colliderBase)
+        {
+            for (int i = 0; i < colliderBases.Length; i++)
+            {
+                if(colliderBases[i] == null)
+                {
+                    colliderBases[i] = colliderBase;
+                    return;
+                }
+            }
+        }
     }
 }

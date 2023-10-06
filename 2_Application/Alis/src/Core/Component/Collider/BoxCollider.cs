@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Builder.Core.Component.Collider;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
@@ -48,7 +49,7 @@ namespace Alis.Core.Component.Collider
         /// <summary>
         ///     The rectangle shape
         /// </summary>
-        private RectangleF rectangleF;
+        public RectangleF RectangleF;
 
         /// <summary>
         ///     Gets or sets the value of the is trigger
@@ -145,7 +146,7 @@ namespace Alis.Core.Component.Collider
             {
                 if (GameObject.Contains<Sprite>())
                 {
-                    //Width = GameObject.GetComponent<Sprite>().SpriteSfml.Texture.Size.X * GameObject.Transform.Scale.X;
+                    //Width = GameObject.GetComponent<Sprite>()..Texture.Size.X * GameObject.Transform.Scale.X;
                     //Height = GameObject.GetComponent<Sprite>().SpriteSfml.Texture.Size.Y * GameObject.Transform.Scale.Y;
                 }
             }
@@ -161,15 +162,15 @@ namespace Alis.Core.Component.Collider
         /// </summary>
         public override void Awake()
         {
-            rectangleF = new RectangleF()
+            RectangleF = new RectangleF
             {
-                x = GameObject.Transform.Position.X + RelativePosition.X - Width / 2,
-                y = GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2,
-                w = Width,
-                h = Height
+                x =  (GameObject.Transform.Position.X + RelativePosition.X - Width / 2),
+                y = (GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2),
+                w =  Width,
+                h =  Height
             };
             
-            GraphicManager.AttachCollider(rectangleF);
+            
 
             Body = new Rectangle(
                 Width,
@@ -203,6 +204,7 @@ namespace Alis.Core.Component.Collider
             Body.Awake = true;
             Body.IsSensor = IsTrigger;
 
+            GraphicManager.AttachCollider(this);
             VideoGame.PhysicManager.AttachBody(Body);
         }
 
@@ -244,9 +246,8 @@ namespace Alis.Core.Component.Collider
         /// </summary>
         public override void Draw()
         {
-            rectangleF.x = GameObject.Transform.Position.X + RelativePosition.X - Width / 2;
-            rectangleF.y = GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2;
-            //rectangleF.Rotation = GameObject.Transform.Rotation;
+            RectangleF.x =  (GameObject.Transform.Position.X + RelativePosition.X - Width / 2);
+            RectangleF.y =  (GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2);
         }
     }
 }
