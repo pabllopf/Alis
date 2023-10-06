@@ -5720,7 +5720,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int RenderDrawRects([NotNull] IntPtr renderer, [In] RectangleI[] rects, [NotNull] int count) => INTERNAL_SDL_RenderDrawRects(renderer.Validate(), rects, count);
+        public static int RenderDrawRects([NotNull] IntPtr renderer, [In] RectangleI[] rects, [NotNull] int count) => INTERNAL_SDL_RenderDrawRects(renderer, rects, count);
 
         /// <summary>
         ///     Sdl the render fill rect using the specified renderer

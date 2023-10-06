@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Alis.Core.Manager;
 using Alis.Core.Manager.Time;
@@ -83,6 +84,7 @@ namespace Alis.Core
                     Managers.ForEach(i => i.DispatchEvents());
 
                     TimeManager.CounterFrames();
+                    Console.WriteLine($" {TimeManager.CurrentFrame} {TimeManager.FrameCount} {TimeManager.FixedTime} {TimeManager.FixedDeltaTime} {TimeManager.TimeStep}");
                 }
                 
                 

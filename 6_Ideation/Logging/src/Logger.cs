@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Logging
         /// <summary>
         ///     The normal
         /// </summary>
-        public static LogLevel LogLevel { get; set; } = LogLevel.Info;
+        public static LogLevel LogLevel { get; set; } = LogLevel.Normal;
         
         /// <summary>
         /// Gets or sets the value of the detail level
