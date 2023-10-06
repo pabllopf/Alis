@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.2.1] - 2023-10-06
+### :bug: Bug Fixes
+- [`aa5137f`](https://github.com/pabllopf/Alis/commit/aa5137f7e8c487b3f78628ed5b77d3f944ff96c1) - simple pong game collisions *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.2.0] - 2023-10-04
 ### :sparkles: New Features
 - [`9c877c3`](https://github.com/pabllopf/Alis/commit/9c877c3d5438ef71437959aac622b0d0b0234067) - run windows, macos and linux test on deploy version to master branch *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -1349,3 +1354,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.1.8]: https://github.com/pabllopf/Alis/compare/v0.1.7...v0.1.8
 [v0.1.9]: https://github.com/pabllopf/Alis/compare/v0.1.8...v0.1.9
 [v0.2.0]: https://github.com/pabllopf/Alis/compare/v0.1.9...v0.2.0
+[v0.2.1]: https://github.com/pabllopf/Alis/compare/v0.2.0...v0.2.1
