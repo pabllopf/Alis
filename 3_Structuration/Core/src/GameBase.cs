@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Core.Graphic.SDL;
 using Alis.Core.Manager;
 using Alis.Core.Manager.Time;
 

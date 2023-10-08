@@ -76,7 +76,7 @@ namespace Alis.Sample.Pong
                             .Build())
                         .Build())
                     .Physic(physic => physic
-                        .Gravity(0.0f, 9.8f)
+                        .Gravity(0.0f, -9.8f)
                         .Build())
                     .Build())
                 .Manager<SceneManager>(sceneManager => sceneManager
