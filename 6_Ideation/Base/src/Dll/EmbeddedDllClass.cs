@@ -101,7 +101,7 @@ namespace Alis.Core.Aspect.Base.Dll
         /// </summary>
         /// <exception cref="PlatformNotSupportedException">Unsupported platform.</exception>
         /// <returns>The os platform</returns>
-        private static OSPlatform GetCurrentPlatform()
+        public static OSPlatform GetCurrentPlatform()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {

@@ -30,6 +30,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Component.Render;
@@ -141,11 +143,22 @@ namespace Alis.Core.Manager.Graphic
             // Enable vsync
             Sdl.GlSetSwapInterval(1);*/
 
-            Sdl.SetHint(Sdl.HintRenderDriver, "opengl");
+            if(EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Windows)
+            {
+                Sdl.SetHint(Sdl.HintRenderDriver, "direct3d");
+            }
+            if(EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.OSX)
+            {
+                Sdl.SetHint(Sdl.HintRenderDriver, "opengl");
+            }
+            if(EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Linux)
+            {
+                Sdl.SetHint(Sdl.HintRenderDriver, "opengl");
+            }
             
             // Create the window
             // create the window which should be able to have a valid OpenGL context and is resizable
-            SdlWindowFlags flags = SdlWindowFlags.SdlWindowOpengl | SdlWindowFlags.SdlWindowResizable | SdlWindowFlags.SdlWindowShown;
+            SdlWindowFlags flags = SdlWindowFlags.SdlWindowResizable | SdlWindowFlags.SdlWindowShown;
             
             // Creates a new SDL window at the center of the screen with the given width and height.
             _window = Sdl.CreateWindow("Sample", Sdl.WindowPosCentered, Sdl.WindowPosCentered, (int) defaultSize.X, (int) defaultSize.Y, flags);
