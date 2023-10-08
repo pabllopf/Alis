@@ -29,6 +29,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Figure.Rectangle;
@@ -112,6 +114,7 @@ namespace Alis.Core.Graphic.Sample
             Sdl.GetVersion(out SdlVersion version);
             Logger.Log(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
             
+            /*
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
             Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlContextFlags, (int) SdlGlContext.SdlGlContextForwardCompatibleFlag);
             Sdl.GlSetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
@@ -125,10 +128,23 @@ namespace Alis.Core.Graphic.Sample
             Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlStencilSize, 8);
 
             // Enable vsync
-            Sdl.GlSetSwapInterval(1);
+            Sdl.GlSetSwapInterval(1);*/
+            
+            if(EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Windows)
+            {
+                Sdl.SetHint(Sdl.HintRenderDriver, "direct3d");
+            }
+            if(EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.OSX)
+            {
+                Sdl.SetHint(Sdl.HintRenderDriver, "opengl");
+            }
+            if(EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Linux)
+            {
+                Sdl.SetHint(Sdl.HintRenderDriver, "opengl");
+            }
 
             // create the window which should be able to have a valid OpenGL context and is resizable
-            SdlWindowFlags flags = SdlWindowFlags.SdlWindowOpengl | SdlWindowFlags.SdlWindowResizable | SdlWindowFlags.SdlWindowShown;
+            SdlWindowFlags flags = SdlWindowFlags.SdlWindowResizable | SdlWindowFlags.SdlWindowShown;
             
             // Creates a new SDL window at the center of the screen with the given width and height.
             IntPtr window = Sdl.CreateWindow("Sample", Sdl.WindowPosCentered, Sdl.WindowPosCentered, Width, Height, flags);
@@ -147,8 +163,7 @@ namespace Alis.Core.Graphic.Sample
             IntPtr renderer = Sdl.CreateRenderer(
                 window,
                 -1,
-                SdlRendererFlags.SdlRendererAccelerated |
-                SdlRendererFlags.SdlRendererPresentvsync);
+                SdlRendererFlags.SdlRendererAccelerated);
             
             if (renderer == IntPtr.Zero)
             {
