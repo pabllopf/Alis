@@ -104,7 +104,7 @@ namespace Alis.Sample.Pong
                 }
             }
         }
-
+        
         /// <summary>
         ///     Ons the release key using the specified key
         /// </summary>

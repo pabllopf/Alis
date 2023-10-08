@@ -94,10 +94,6 @@ namespace Alis.Core.Manager.Input
                         Console.WriteLine(" Quit was pressed ");
                         VideoGame.Exit();
                         break;
-                    case SdlEventType.SdlAudioDeviceAdded:
-                        Console.WriteLine($" Audio device was added");
-                        Console.WriteLine($" Audio device name: {_sdlEvent.aDevice.ToString()}");
-                        break;
                     
                     case SdlEventType.SdlKeyup:
                         SdlKeycode indexUp = _sdlEvent.key.keysym.sym;

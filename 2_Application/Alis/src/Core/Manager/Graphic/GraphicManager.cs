@@ -140,6 +140,8 @@ namespace Alis.Core.Manager.Graphic
 
             // Enable vsync
             Sdl.GlSetSwapInterval(1);*/
+
+            Sdl.SetHint(Sdl.HintRenderDriver, "opengl");
             
             // Create the window
             // create the window which should be able to have a valid OpenGL context and is resizable
@@ -155,11 +157,78 @@ namespace Alis.Core.Manager.Graphic
             _renderer = Sdl.CreateRenderer(
                 _window,
                 -1,
-                SdlRendererFlags.SdlRendererAccelerated);
+                SdlRendererFlags.SdlRendererAccelerated  );
             
             
             // Check if the renderer was created successfully.
             Console.WriteLine(_renderer == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : $"Renderer created");
+            
+            int totalDisplays = Sdl.GetNumVideoDisplays();
+            Console.WriteLine($"Total Displays: {totalDisplays}");
+            
+            for (int i = 0; i < totalDisplays; ++i)
+            {
+                Console.WriteLine($"Display {i}: {Sdl.GetDisplayName(i)}");
+                
+                // GET DISPLAY BOUNDS
+                Sdl.GetDisplayBounds(i, out RectangleI displayBounds);
+                Console.WriteLine($"Display [{i}] Bounds: {displayBounds.x}, {displayBounds.y}, {displayBounds.w}, {displayBounds.h}");
+            }
+            
+            int totalDrivers = Sdl.GetNumRenderDrivers();
+            Console.WriteLine($"Total Render Drivers: {totalDrivers}");
+            
+            for (int i = 0; i < totalDrivers; ++i)
+            {
+                Console.WriteLine($"Driver {i}: {Sdl.GetVideoDriver(i)}");
+            }
+            
+            // GET RENDERER INFO
+            Sdl.GetRendererInfo(_renderer, out SdlRendererInfo rendererInfo);
+            Console.WriteLine($"Renderer Name: {rendererInfo.name} \n" +
+                              $"Renderer Flags: {rendererInfo.flags} \n" +
+                              $"Max Texture Width: {rendererInfo.max_texture_width} \n" +
+                              $"Max Texture Height: {rendererInfo.max_texture_height} + \n" +
+                              $"Max Texture Width: {rendererInfo.max_texture_width} \n" +
+                              $"Max Texture Height: {rendererInfo.max_texture_height}");
+            
+            // GET RENDERER OUTPUT SIZE
+            Sdl.GetRendererOutputSize(_renderer, out int w, out int h);
+            Console.WriteLine($"Renderer Output Size: {w}, {h}");
+            
+            // GET RENDERER LOGICAL SIZE
+            Sdl.RenderGetLogicalSize(_renderer, out int w2, out int h2);
+            Console.WriteLine($"Renderer Logical Size: {w2}, {h2}");
+            
+            // GET RENDERER SCALE
+            Sdl.RenderGetScale(_renderer, out float scaleX, out float scaleY);
+            Console.WriteLine($"Renderer Scale: {scaleX}, {scaleY}");
+            
+            
+            uint windowHandle = Sdl.GetWindowId(_window);
+            Console.WriteLine($"Window Handle: {windowHandle}");
+            
+            int numberOfDisplays = Sdl.GetNumVideoDisplays();
+            Console.WriteLine($"Number of Displays: {numberOfDisplays}");
+            
+            int displayIndex = Sdl.GetWindowDisplayIndex(_window);
+            Console.WriteLine($"Display Index: {displayIndex}");
+            
+            int numOfTypeDisplaysModes = Sdl.GetNumDisplayModes(displayIndex);
+            Console.WriteLine($"Number of Type Displays Modes: {numOfTypeDisplaysModes}");
+            
+            for (int i = 0; i < numOfTypeDisplaysModes; ++i)
+            {
+                Sdl.GetDisplayMode(displayIndex, i, out SdlDisplayMode displayMode);
+                Console.WriteLine($"Display {displayIndex} Mode [{i}]: {displayMode.format}, {displayMode.w}, {displayMode.h}, {displayMode.refresh_rate}");
+            }
+            
+            // SET DISPLAY MODE
+            Sdl.GetDisplayMode(displayIndex, 0, out SdlDisplayMode displayMode2);
+            Console.WriteLine($"Display {displayIndex} SELECTED Mode: {displayMode2.format}, {displayMode2.w}, {displayMode2.h}, {displayMode2.refresh_rate}");
+            Sdl.SetWindowDisplayMode(_window, ref displayMode2);
+            
+            
             
             /*
             // INIT SDL_IMAGE FLAGS

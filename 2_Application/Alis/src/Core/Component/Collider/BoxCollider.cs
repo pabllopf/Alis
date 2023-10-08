@@ -197,6 +197,7 @@ namespace Alis.Core.Component.Collider
             Body.Friction = Friction;
             Body.FixedRotation = FixedRotation;
             Body.Mass = Mass;
+            //Body.InvMass = 1 / Mass;
             Body.SleepingAllowed = false;
             Body.IsBullet = true;
             Body.GravityScale = GravityScale;
