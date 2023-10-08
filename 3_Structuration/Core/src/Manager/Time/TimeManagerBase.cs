@@ -81,12 +81,12 @@ namespace Alis.Core.Manager.Time
         /// <summary>
         ///     Gets or sets the value of the time step
         /// </summary>
-        public double TimeStep { get; set; }
+        public double TimeStep => 1 / 60.0f;
 
         /// <summary>
         ///     Gets or sets the value of the max allowed time step
         /// </summary>
-        public double MaxAllowedTimeStep { get; set; } = 1.0f;
+        public double MaxAllowedTimeStep { get; set; } = 30.0f;
 
         /// <summary>
         ///     Syncs the fixed delta time
@@ -98,12 +98,7 @@ namespace Alis.Core.Manager.Time
         /// </summary>
         /// <returns>The bool</returns>
         internal bool IsNewFrame() => FixedTime * TimeScale / FrameCount > FixedDeltaTime;
-
-        /// <summary>
-        ///     Updates the time step
-        /// </summary>
-        internal void UpdateTimeStep() => TimeStep = MaxAllowedTimeStep <= 0 ? 1 : 1 / MaxAllowedTimeStep;
-
+        
         /// <summary>
         ///     Counters the frames
         /// </summary>
