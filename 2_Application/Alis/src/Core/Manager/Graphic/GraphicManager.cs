@@ -125,6 +125,7 @@ namespace Alis.Core.Manager.Graphic
             Sdl.GetVersion(out SdlVersion version);
             Console.WriteLine(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
             
+            /*
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
             Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlContextFlags, (int) SdlGlContext.SdlGlContextForwardCompatibleFlag);
             Sdl.GlSetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
@@ -138,7 +139,7 @@ namespace Alis.Core.Manager.Graphic
             Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlStencilSize, 8);
 
             // Enable vsync
-            Sdl.GlSetSwapInterval(1);
+            Sdl.GlSetSwapInterval(1);*/
             
             // Create the window
             // create the window which should be able to have a valid OpenGL context and is resizable
@@ -154,12 +155,13 @@ namespace Alis.Core.Manager.Graphic
             _renderer = Sdl.CreateRenderer(
                 _window,
                 -1,
-                SdlRendererFlags.SdlRendererAccelerated |
-                SdlRendererFlags.SdlRendererPresentvsync);
+                SdlRendererFlags.SdlRendererAccelerated);
+            
             
             // Check if the renderer was created successfully.
             Console.WriteLine(_renderer == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : $"Renderer created");
             
+            /*
             // INIT SDL_IMAGE FLAGS
             ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
             
@@ -187,7 +189,7 @@ namespace Alis.Core.Manager.Graphic
                                       $"SDL_JoystickNumAxes={Sdl.JoystickNumAxes(myJoystick)} \n" +
                                       $"SDL_JoystickNumButtons={Sdl.JoystickNumButtons(myJoystick)}");
                 }
-            }
+            }*/
         }
 
         /// <summary>
@@ -212,11 +214,6 @@ namespace Alis.Core.Manager.Graphic
         /// </summary>
         public override void Update()
         {
-            /*if (Sprites.Count <= 0 && Colliders.Count <= 0)
-            {
-                RenderSampleColor();
-            }*/
-            
             // Sets color to green (0, 255, 0, 255).
             Sdl.SetRenderDrawColor(_renderer, 0, 255, 0, 255);
             

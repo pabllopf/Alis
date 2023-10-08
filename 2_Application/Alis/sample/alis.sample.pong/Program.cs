@@ -101,14 +101,14 @@ namespace Alis.Sample.Pong
                         .Add<GameObject>(player => player
                             .Name("Player 1")
                             .Transform(transform => transform
-                                .Position(10, 320)
+                                .Position(20, 320)
                                 .Scale(1, 1)
                                 .Rotation(0)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .BodyType(BodyType.Dynamic)
+                                .BodyType(BodyType.Kinematic)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
                                 .Size(10, 100)
@@ -117,7 +117,7 @@ namespace Alis.Sample.Pong
                                 .Mass(10.0f)
                                 .Restitution(1.0f)
                                 .Friction(0f)
-                                .Density(1.0f)
+                                .Density(0.5f)
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
                                 .Build())
@@ -133,7 +133,7 @@ namespace Alis.Sample.Pong
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .BodyType(BodyType.Dynamic)
+                                .BodyType(BodyType.Kinematic)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
                                 .Size(10, 100)

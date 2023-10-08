@@ -69,22 +69,22 @@ namespace Alis.Core
 
                 if (TimeManager.IsNewFrame())
                 {
-                    TimeManager.UpdateTimeStep();
+                    //TimeManager.UpdateTimeStep();
 
                     for (int i = 0; i < TimeManager.MaxAllowedTimeStep; i++)
                     {
                         Managers.ForEach(j => j.BeforeUpdate());
                         Managers.ForEach(j => j.Update());
                         Managers.ForEach(j => j.AfterUpdate());
-
+                        
                         Managers.ForEach(j => j.Draw());
                     }
-
+                    
                     Managers.ForEach(i => i.FixedUpdate());
                     Managers.ForEach(i => i.DispatchEvents());
 
                     TimeManager.CounterFrames();
-                    Console.WriteLine($" {TimeManager.CurrentFrame} {TimeManager.FrameCount} {TimeManager.FixedTime} {TimeManager.FixedDeltaTime} {TimeManager.TimeStep}");
+                    //Console.WriteLine($" {TimeManager.CurrentFrame} {TimeManager.FrameCount} {TimeManager.FixedTime} {TimeManager.FixedDeltaTime} {TimeManager.TimeStep}");
                 }
                 
                 

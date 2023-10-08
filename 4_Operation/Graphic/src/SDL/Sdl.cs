@@ -6520,16 +6520,15 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="renderer">The renderer</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_RenderPresent", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void INTERNAL_SDL_RenderPresent([NotNull] IntPtr renderer);
+        private static extern void INTERNAL_SDL_RenderPresent(IntPtr renderer);
 
         /// <summary>
         ///     Renders the present using the specified renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         [return: NotNull]
-        public static void RenderPresent([NotNull] IntPtr renderer) => INTERNAL_SDL_RenderPresent(renderer.Validate());
-
-
+        public static void RenderPresent(IntPtr renderer) => INTERNAL_SDL_RenderPresent(renderer);
+        
         /// <summary>
         ///     Sdl the render read pixels using the specified renderer
         /// </summary>
