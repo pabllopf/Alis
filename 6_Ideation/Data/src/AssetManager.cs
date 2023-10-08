@@ -57,5 +57,6 @@ namespace Alis.Core.Aspect.Data
         /// <param name="assetName">The asset name</param>
         /// <returns>The string</returns>
         public static string Find(string assetName) => Path.Combine(AssetPath, assetName);
+        
     }
 }
