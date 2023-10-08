@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.2.2] - 2023-10-08
+### :sparkles: New Features
+- [`d81e0c0`](https://github.com/pabllopf/Alis/commit/d81e0c0b83385b00f5a56838bff4e5059e001b73) - automatic detect backend render *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`7aa1521`](https://github.com/pabllopf/Alis/commit/7aa152140c6437141a4aa53e77a7cd8fc1855b53) - the physics and graphic modules to render with clock *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a4b9a93`](https://github.com/pabllopf/Alis/commit/a4b9a93cb57626657574756395a386fe7b67e144) - collisions and velocity on osx systems *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0abaabe`](https://github.com/pabllopf/Alis/commit/0abaabe21bf14547161ba0b1cd6fe41cf865db22) - select backend api graphic to get hight performance *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fc08524`](https://github.com/pabllopf/Alis/commit/fc08524f9ccc6caeff17980400f7d82d1f93f395) - libs of linux arm *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.2.1] - 2023-10-06
 ### :bug: Bug Fixes
 - [`aa5137f`](https://github.com/pabllopf/Alis/commit/aa5137f7e8c487b3f78628ed5b77d3f944ff96c1) - simple pong game collisions *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -1355,3 +1366,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.1.9]: https://github.com/pabllopf/Alis/compare/v0.1.8...v0.1.9
 [v0.2.0]: https://github.com/pabllopf/Alis/compare/v0.1.9...v0.2.0
 [v0.2.1]: https://github.com/pabllopf/Alis/compare/v0.2.0...v0.2.1
+[v0.2.2]: https://github.com/pabllopf/Alis/compare/v0.2.1...v0.2.2
