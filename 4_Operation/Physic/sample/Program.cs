@@ -42,7 +42,11 @@ namespace Alis.Core.Physic.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Run {nameof(Alis)}.{nameof(Core)}.{nameof(Physic)}.{nameof(Sample)}");
+            
+            
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
         }
     }
 }
