@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Sample
 {
@@ -44,6 +46,15 @@ namespace Alis.Core.Physic.Sample
         {
             Console.WriteLine($"Run {nameof(Alis)}.{nameof(Core)}.{nameof(Physic)}.{nameof(Sample)}");
             
+            Vector2 gravity = new Vector2(0.0f, -9.8f);
+            
+            World world = new World(gravity);
+
+            for (int i = 0; i < 100; i++)
+            {
+                world.Step(1.0f / 60.0f, 6, 2);
+                Console.WriteLine($"Step {i}");
+            }
             
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
