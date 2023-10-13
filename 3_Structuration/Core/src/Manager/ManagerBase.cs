@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Logging;
+
 namespace Alis.Core.Manager
 {
     /// <summary>
@@ -42,41 +44,39 @@ namespace Alis.Core.Manager
         /// <summary>
         ///     Inits this instance
         /// </summary>
-        public abstract void Init();
+        public virtual void Init() => Logger.Info($"{GetType().Name} is initializing...");
 
         /// <summary>Awakes this instance.</summary>
-        public abstract void Awake();
+        public virtual void Awake() => Logger.Info($"{GetType().Name} is awaking...");
 
         /// <summary>Starts this instance.</summary>
-        public abstract void Start();
+        public virtual void Start() => Logger.Info($"{GetType().Name} is starting...");
 
         /// <summary>Before the update.</summary>
-        public abstract void BeforeUpdate();
+        public virtual void BeforeUpdate() => Logger.Info($"{GetType().Name} is before updating...");
 
         /// <summary>Updates this instance.</summary>
-        public abstract void Update();
+        public virtual void Update() => Logger.Info($"{GetType().Name} is updating...");
 
         /// <summary>Afters the update.</summary>
-        public abstract void AfterUpdate();
+        public virtual void AfterUpdate() => Logger.Info($"{GetType().Name} is after updating...");
 
         /// <summary>Fix the update.</summary>
-        public abstract void FixedUpdate();
+        public virtual void FixedUpdate() => Logger.Info($"{GetType().Name} is fixed updating...");
 
         /// <summary>Dispatches the events.</summary>
-        public abstract void DispatchEvents();
+        public virtual void DispatchEvents() => Logger.Info($"{GetType().Name} is dispatching events...");
 
-        /// <summary>
-        ///     Draws this instance
-        /// </summary>
-        public abstract void Draw();
+        /// <summary>Draws this instance </summary>
+        public virtual void Draw() => Logger.Info($"{GetType().Name} is drawing...");
 
         /// <summary>Resets this instance.</summary>
-        public abstract void Reset();
+        public virtual void Reset() => Logger.Info($"{GetType().Name} is resetting...");
 
         /// <summary>Stops this instance.</summary>
-        public abstract void Stop();
+        public virtual void Stop() => Logger.Info($"{GetType().Name} is stopping...");
 
         /// <summary>Exits this instance.</summary>
-        public abstract void Exit();
+        public virtual void Exit() => Logger.Info($"{GetType().Name} is exiting...");
     }
 }
