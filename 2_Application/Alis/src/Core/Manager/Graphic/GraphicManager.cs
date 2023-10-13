@@ -153,10 +153,6 @@ namespace Alis.Core.Manager.Graphic
             {
                 Sdl.SetHint(Sdl.HintRenderDriver, "opengl");
             }
-            if(EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Linux)
-            {
-                Sdl.SetHint(Sdl.HintRenderDriver, "opengl");
-            }
             
             // Create the window
             // create the window which should be able to have a valid OpenGL context and is resizable
