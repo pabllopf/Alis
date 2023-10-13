@@ -56,7 +56,7 @@ namespace Alis.Core.Manager.Physic
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public override void Update() => World.Step((float) (1f / GameBase.TimeManager.MaximumFramesPerSecond));
+        public override void Update() => World.Step( 1.0f / (float) (GameBase.TimeManager.MaximumFramesPerSecond));
 
         /// <summary>
         ///     Attaches the body using the specified body

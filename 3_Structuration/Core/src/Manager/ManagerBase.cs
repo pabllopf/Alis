@@ -69,6 +69,11 @@ namespace Alis.Core.Manager
 
         /// <summary>Draws this instance </summary>
         public virtual void Draw() => Logger.Info($"{GetType().Name} is drawing...");
+        
+        /// <summary>
+        /// Calculates this instance
+        /// </summary>
+        public virtual void Calculate() => Logger.Info($"{GetType().Name} is calculating...");
 
         /// <summary>Resets this instance.</summary>
         public virtual void Reset() => Logger.Info($"{GetType().Name} is resetting...");
