@@ -63,7 +63,7 @@ namespace Alis.Core
             Managers.ForEach(i => i.Init());
             Managers.ForEach(i => i.Awake());
             Managers.ForEach(i => i.Start());
-
+            
             while (IsRunning)
             {
                 TimeManager.SyncFixedDeltaTime();
@@ -81,6 +81,7 @@ namespace Alis.Core
                 Managers.ForEach(j => j.Update());
                 Managers.ForEach(j => j.AfterUpdate());
                 Managers.ForEach(i => i.DispatchEvents());
+                Managers.ForEach(i => i.Calculate());
                 Managers.ForEach(j => j.Draw());
                 
                 Managers.ForEach(i =>
@@ -90,6 +91,12 @@ namespace Alis.Core
                         IsRunning = false;
                     }
                 });
+                
+                // Ajusta este tiempo de espera para aproximarte a la tasa de FPS deseada
+                //int sleepTime = (int)(TimeManager.FixedDeltaTime * 1000);
+
+                // Si el tiempo de espera es negativo o cero, podría ser útil introducir un pequeño retraso.
+                //Thread.Sleep(sleepTime > 0 ? sleepTime : 1);
             }
 
             Managers.ForEach(i => i.Stop());

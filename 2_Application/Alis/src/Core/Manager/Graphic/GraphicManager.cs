@@ -65,8 +65,14 @@ namespace Alis.Core.Manager.Graphic
         /// </summary>
         private Vector2 defaultSize; 
         
+        /// <summary>
+        /// The box collider
+        /// </summary>
         private static readonly BoxCollider[] colliderBases = new BoxCollider[128];
         
+        /// <summary>
+        /// The length
+        /// </summary>
         private RectangleF[] rectangles = new RectangleF[colliderBases.Length];
         
         /// <summary>
