@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using Alis.Core.Graphic.SDL;
+using System.Threading;
 using Alis.Core.Manager;
 using Alis.Core.Manager.Time;
 
@@ -53,7 +53,7 @@ namespace Alis.Core
         /// <summary>
         ///     The time manager base
         /// </summary>
-        public static TimeManagerBase TimeManager { get; } = new TimeManagerBase();
+        public static TimeManager TimeManager { get; } = new TimeManager(60);
 
         /// <summary>
         ///     Run program
@@ -67,30 +67,22 @@ namespace Alis.Core
             while (IsRunning)
             {
                 TimeManager.SyncFixedDeltaTime();
-
+                
                 if (TimeManager.IsNewFrame())
                 {
-                    //TimeManager.UpdateTimeStep();
-
-                    for (int i = 0; i < TimeManager.MaxAllowedTimeStep; i++)
-                    {
-                        Managers.ForEach(j => j.BeforeUpdate());
-                        Managers.ForEach(j => j.Update());
-                        Managers.ForEach(j => j.AfterUpdate());
-                        
-                        Managers.ForEach(j => j.Draw());
-                    }
-                    
+                    TimeManager.UpdateTimeStep();
                     Managers.ForEach(i => i.FixedUpdate());
-                    Managers.ForEach(i => i.DispatchEvents());
-
                     TimeManager.CounterFrames();
-                    //Console.WriteLine($" {TimeManager.CurrentFrame} {TimeManager.FrameCount} {TimeManager.FixedTime} {TimeManager.FixedDeltaTime} {TimeManager.TimeStep}");
                 }
-                
-                
-                TimeManager.UpdateFixedTime();
 
+                TimeManager.UpdateFixedTime();
+                
+                Managers.ForEach(j => j.BeforeUpdate());
+                Managers.ForEach(j => j.Update());
+                Managers.ForEach(j => j.AfterUpdate());
+                Managers.ForEach(i => i.DispatchEvents());
+                Managers.ForEach(j => j.Draw());
+                
                 Managers.ForEach(i =>
                 {
                     if (i.IsExitRequested)
