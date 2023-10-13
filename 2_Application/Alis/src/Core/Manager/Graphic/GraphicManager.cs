@@ -148,11 +148,7 @@ namespace Alis.Core.Manager.Graphic
 
             // Enable vsync
             Sdl.GlSetSwapInterval(1);*/
-
-            if(EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.Windows)
-            {
-                Sdl.SetHint(Sdl.HintRenderDriver, "direct3d");
-            }
+            
             if(EmbeddedDllClass.GetCurrentPlatform() == OSPlatform.OSX)
             {
                 Sdl.SetHint(Sdl.HintRenderDriver, "opengl");
