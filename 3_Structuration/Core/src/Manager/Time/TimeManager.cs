@@ -95,9 +95,7 @@ namespace Alis.Core.Manager.Time
             stopwatch.Start();
 
             fixedDeltaTime = 1.0 / maxFps;
-            TimeStep = 1.0 / 60.0; // Valor inicial arbitrario
-
-            // Ajustar el TimeStep según tus necesidades
+            TimeStep = 1.0 / 60.0; 
             UpdateTimeStep();
         }
 
