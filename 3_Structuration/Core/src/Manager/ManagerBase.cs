@@ -61,19 +61,35 @@ namespace Alis.Core.Manager
         /// <summary>Afters the update.</summary>
         public virtual void AfterUpdate() => Logger.Info($"{GetType().Name} is after updating...");
 
+        /// <summary>
+        /// Befores the fixed update
+        /// </summary>
+        public virtual void BeforeFixedUpdate() => Logger.Info($"{GetType().Name} is before fixed updating...");
+        
         /// <summary>Fix the update.</summary>
         public virtual void FixedUpdate() => Logger.Info($"{GetType().Name} is fixed updating...");
+        
+        /// <summary>
+        /// Afters the fixed update
+        /// </summary>
+        public virtual void AfterFixedUpdate() => Logger.Info($"{GetType().Name} is after fixed updating...");
 
         /// <summary>Dispatches the events.</summary>
         public virtual void DispatchEvents() => Logger.Info($"{GetType().Name} is dispatching events...");
 
         /// <summary>Draws this instance </summary>
         public virtual void Draw() => Logger.Info($"{GetType().Name} is drawing...");
+
+        /// <summary>
+        /// Calculates this instance
+        /// </summary>
+        /// <param name="deltaTime"></param>
+        public virtual void Synchronize(float deltaTime) => Logger.Info($"{GetType().Name} is calculating with deltaTime={deltaTime} ...");
         
         /// <summary>
         /// Calculates this instance
         /// </summary>
-        public virtual void Calculate() => Logger.Info($"{GetType().Name} is calculating...");
+        public virtual void Calculate() => Logger.Info($"{GetType().Name} is calculating  ...");
 
         /// <summary>Resets this instance.</summary>
         public virtual void Reset() => Logger.Info($"{GetType().Name} is resetting...");

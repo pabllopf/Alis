@@ -65,7 +65,7 @@ namespace Alis.Sample.Pong
                             .Build())
                         .Build())
                     .Debug(debug => debug
-                        .LogLevel(LogLevel.Normal)
+                        .LogLevel(LogLevel.Log)
                         .Build())
                     .Audio(audio => audio
                         .Build())

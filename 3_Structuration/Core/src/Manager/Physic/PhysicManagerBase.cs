@@ -93,6 +93,12 @@ namespace Alis.Core.Manager.Physic
         public override void Stop() => Logger.Info($"Stop {GetType().Name}");
 
         /// <summary>
+        /// Synchronizes the delta time
+        /// </summary>
+        /// <param name="deltaTime">The delta time</param>
+        public override void Synchronize(float deltaTime) => Logger.Info($"Synchronize {GetType().Name}");
+
+        /// <summary>
         ///     Exits this instance
         /// </summary>
         public override void Exit() => Logger.Info($"Exit {GetType().Name}");

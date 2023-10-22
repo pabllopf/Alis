@@ -26,12 +26,9 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-
-using System;
 using System.Collections.Generic;
-using System.Threading;
+using Alis.Core.Aspect.Time;
 using Alis.Core.Manager;
-using Alis.Core.Manager.Time;
 
 namespace Alis.Core
 {
@@ -53,7 +50,7 @@ namespace Alis.Core
         /// <summary>
         ///     The time manager base
         /// </summary>
-        public static TimeManager TimeManager { get; } = new TimeManager(60);
+        public static TimeManager TimeManager { get; } = new TimeManager();
 
         /// <summary>
         ///     Run program
@@ -64,39 +61,39 @@ namespace Alis.Core
             Managers.ForEach(i => i.Awake());
             Managers.ForEach(i => i.Start());
             
+            double currentTime = TimeManager.Clock.Elapsed.TotalSeconds;
+            double accumulator = 0;
+            
             while (IsRunning)
             {
-                TimeManager.SyncFixedDeltaTime();
+                double newTime = TimeManager.Clock.Elapsed.TotalSeconds;
+                TimeManager.DeltaTime = (float) (newTime - currentTime);
+                currentTime = newTime;
+                accumulator += TimeManager.DeltaTime;
+                    
+                // Dispatch Events
+                Managers.ForEach(i => i.DispatchEvents());
                 
-                if (TimeManager.IsNewFrame())
-                {
-                    TimeManager.UpdateTimeStep();
-                    Managers.ForEach(i => i.FixedUpdate());
-                    TimeManager.CounterFrames();
-                }
-
-                TimeManager.UpdateFixedTime();
-                
+                // Update Scripts
                 Managers.ForEach(j => j.BeforeUpdate());
                 Managers.ForEach(j => j.Update());
                 Managers.ForEach(j => j.AfterUpdate());
-                Managers.ForEach(i => i.DispatchEvents());
-                Managers.ForEach(i => i.Calculate());
-                Managers.ForEach(j => j.Draw());
                 
-                Managers.ForEach(i =>
+                // Run methods fixed
+                while ( accumulator >= TimeManager.Configuration.FixedTimeStep )
                 {
-                    if (i.IsExitRequested)
-                    {
-                        IsRunning = false;
-                    }
-                });
+                    Managers.ForEach(i => i.FixedUpdate());
+                    accumulator -= TimeManager.Configuration.FixedTimeStep;
+                }
                 
-                // Ajusta este tiempo de espera para aproximarte a la tasa de FPS deseada
-                //int sleepTime = (int)(TimeManager.FixedDeltaTime * 1000);
-
-                // Si el tiempo de espera es negativo o cero, podría ser útil introducir un pequeño retraso.
-                //Thread.Sleep(sleepTime > 0 ? sleepTime : 1);
+                // Run methods synchronized
+                Managers.ForEach(i => i.Synchronize(TimeManager.DeltaTime));
+                
+                // Calculate method to calculate math
+                Managers.ForEach(i => i.Calculate());
+                
+                // Render Game
+                Managers.ForEach(j => j.Draw());
             }
 
             Managers.ForEach(i => i.Stop());
