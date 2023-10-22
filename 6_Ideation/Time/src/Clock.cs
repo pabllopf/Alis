@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PhysicManager.cs
+//  File:Clock.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -26,50 +26,54 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
+using System;
+using System.Diagnostics;
 
-using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Time;
-using Alis.Core.Physic;
-using Alis.Core.Physic.Dynamics;
-
-namespace Alis.Core.Manager.Physic
+namespace Alis.Core.Aspect.Time
 {
     /// <summary>
-    ///     The physic manager class
+    /// The clock class
     /// </summary>
-    /// <seealso cref="ManagerBase" />
-    public class PhysicManager : PhysicManagerBase
+    public class Clock
     {
         /// <summary>
-        ///     Gets or sets the value of the world
+        /// The stopwatch
         /// </summary>
-        public World World { get; set; }
+        private readonly Stopwatch stopwatch = new Stopwatch();
+        
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
+        public void Start() => stopwatch.Start();
 
         /// <summary>
-        ///     Inits this instance
+        /// Stops this instance
         /// </summary>
-        public override void Init()
-        {
-            World = new World(VideoGame.Setting.Physic.Gravity);
-            Logger.Trace();
-        }
+        public void Stop() => stopwatch.Stop();
 
         /// <summary>
-        /// Synchronizes the delta time
+        /// Resets this instance
         /// </summary>
-        /// <param name="deltaTime">The delta time</param>
-        public override void Calculate() => World.Step(GameBase.TimeManager.Configuration.FixedTimeStep);
+        public void Reset() => stopwatch.Reset();
 
         /// <summary>
-        /// Synchronizes the delta time
+        /// Gets the value of the elapsed
         /// </summary>
-        /// <param name="deltaTime">The delta time</param>
-        public override void Synchronize(float deltaTime) => Logger.Info($" {GetType().Name} is synchronizing with deltaTime={deltaTime} ...");
+        public TimeSpan Elapsed => stopwatch.Elapsed;
 
         /// <summary>
-        ///     Attaches the body using the specified body
+        /// Gets the value of the elapsed milliseconds
         /// </summary>
-        /// <param name="body">The body</param>
-        public void AttachBody(Body body) => World.AddBody(body);
+        public long ElapsedMilliseconds => stopwatch.ElapsedMilliseconds;
+
+        /// <summary>
+        /// Gets the value of the elapsed ticks
+        /// </summary>
+        public long ElapsedTicks => stopwatch.ElapsedTicks;
+
+        /// <summary>
+        /// Gets the value of the elapsed seconds
+        /// </summary>
+        public double ElapsedSeconds => stopwatch.Elapsed.TotalSeconds;
     }
 }
