@@ -284,6 +284,8 @@
         
         <InternalsVisibleTo Include="$(AssemblyName).Test"/>
         <Content Condition="'$(IsPackable)' == 'true'" Include="$(ProjectDir)/bin/Release/**/**/*.dll" Visible="false" PackagePath="runtimes/" />
+        <None Condition="'$(IsPackable)' == 'true'" Remove="$(ProjectDir)/**/*.md" />
+        <None Condition="'$(IsPackable)' == 'true'" Remove="$(ProjectDir)/**/*.cd" />
     </ItemGroup>
     
     <ItemGroup Condition="$(AssemblyName.Contains('Test'))">
