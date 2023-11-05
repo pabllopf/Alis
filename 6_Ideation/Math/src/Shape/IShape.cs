@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Math.Figure
+namespace Alis.Core.Aspect.Math.Shape
 {
     /// <summary>
     /// The figure interface

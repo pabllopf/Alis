@@ -29,7 +29,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math.Figure.Circle
+namespace Alis.Core.Aspect.Math.Shape.Circle
 {
     /// <summary>
     ///     The circle

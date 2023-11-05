@@ -29,7 +29,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math.Figure.Rectangle
+namespace Alis.Core.Aspect.Math.Shape.Rectangle
 {
     /// <summary>
     ///     The sdl rect
