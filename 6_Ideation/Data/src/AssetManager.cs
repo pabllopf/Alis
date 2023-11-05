@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.IO;
 using System.Reflection;
 
@@ -42,15 +41,7 @@ namespace Alis.Core.Aspect.Data
         ///     The application data
         /// </summary>
         private static readonly string AssetPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? string.Empty, "Assets");
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="AssetManager" /> class
-        /// </summary>
-        static AssetManager()
-        {
-            Console.WriteLine($"AssetPath={AssetPath}");
-        }
-
+        
         /// <summary>
         ///     Finds the asset name
         /// </summary>
