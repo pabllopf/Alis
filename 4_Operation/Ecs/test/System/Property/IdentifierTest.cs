@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Ecs.Test.System.Property
 {
+    /// <summary>
+    /// The identifier test class
+    /// </summary>
     public class IdentifierTest
     {
         

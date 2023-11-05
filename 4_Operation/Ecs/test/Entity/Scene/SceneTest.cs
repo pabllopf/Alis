@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Ecs.Test.Entity.Scene
 {
+    /// <summary>
+    /// The scene test class
+    /// </summary>
     public class SceneTest 
     {
     }

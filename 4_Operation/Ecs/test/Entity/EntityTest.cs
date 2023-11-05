@@ -31,6 +31,9 @@
 namespace Alis.Core.Ecs.Test.Entity
 {
 
+    /// <summary>
+    /// The entity test class
+    /// </summary>
     public class EntityTest 
     {
         

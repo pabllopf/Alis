@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Ecs.Test.System.Property
 {
+    /// <summary>
+    /// The runtime test class
+    /// </summary>
     public class RuntimeTest
     {
       

@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Ecs.Test.System.Manager
 {
+    /// <summary>
+    /// The manager test class
+    /// </summary>
     public class ManagerTest 
     {
     }

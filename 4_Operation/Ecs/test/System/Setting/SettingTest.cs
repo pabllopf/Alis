@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Ecs.Test.System.Setting
 {
+    /// <summary>
+    /// The setting test class
+    /// </summary>
     public class SettingTest
     {
         

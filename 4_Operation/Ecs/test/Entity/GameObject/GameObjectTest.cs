@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Ecs.Test.Entity.GameObject
 {
+    /// <summary>
+    /// The game object test class
+    /// </summary>
     public class GameObjectTest
     {
     }
