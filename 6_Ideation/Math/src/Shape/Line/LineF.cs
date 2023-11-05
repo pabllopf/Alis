@@ -29,7 +29,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math.Figure.Line
+namespace Alis.Core.Aspect.Math.Shape.Line
 {
     /// <summary>
     /// The line

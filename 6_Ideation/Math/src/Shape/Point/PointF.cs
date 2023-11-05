@@ -29,7 +29,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math.Figure.Point
+namespace Alis.Core.Aspect.Math.Shape.Point
 {
     /// <summary>
     ///     The f point

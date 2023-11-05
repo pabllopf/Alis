@@ -29,7 +29,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math.Figure.Square
+namespace Alis.Core.Aspect.Math.Shape.Square
 {
     /// <summary>
     ///     The sdl rect
