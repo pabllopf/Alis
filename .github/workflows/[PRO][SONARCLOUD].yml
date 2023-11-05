@@ -5,6 +5,7 @@ on:
       - master
   pull_request:
     types: [ opened, synchronize, reopened ]
+    
 jobs:
   build:
     name: Build and analyze
@@ -15,10 +16,9 @@ jobs:
         with:
           java-version: 17
           distribution: 'zulu' # Alternative distribution options are available.
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
-          ref: master
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:
@@ -32,15 +32,6 @@ jobs:
           path: .\.sonar\scanner
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
-
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: 6.0.x
-
-      - name: dotnet tool
-        run: dotnet tool install --global JetBrains.dotCover.GlobalTool
-
       - name: Install SonarCloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
@@ -53,9 +44,12 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html
+          dotnet tool install --global dotnet-coverage
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=/**/coverage.xml
           dotnet build ./alis.sln --configuration Release --nologo -v q --property WarningLevel=0 /clp:ErrorsOnly
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          dotnet test ./alis.sln --configuration Release --nologo -v q --property WarningLevel=0 /clp:ErrorsOnly
+          dotnet-coverage collect "dotnet test" -f xml -o "coverage.xml"
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
 
 
