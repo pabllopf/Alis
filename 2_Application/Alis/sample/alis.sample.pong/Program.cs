@@ -28,13 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Data;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Component.Audio;
-using Alis.Core.Component.Collider;
-using Alis.Core.Component.Render;
-using Alis.Core.Entity;
-using Alis.Core.Manager.Scene;
+using Alis.Core.Ecs.Component.Audio;
+using Alis.Core.Ecs.Component.Collider;
+using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Ecs.Entity.GameObject;
+using Alis.Core.Ecs.Entity.Scene;
+using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Pong
@@ -56,16 +56,9 @@ namespace Alis.Sample.Pong
                     .General(general => general
                         .Name("Pong")
                         .Author("Pablo Perdomo Falcón")
-                        .Description("Pong clasic game")
+                        .Description("Pong game")
+                        .License("GNU General Public License v3.0")
                         .Icon(AssetManager.Find("logo.png"))
-                        .SplashScreen(screen => screen
-                            .IsActive(true)
-                            .Style(Style.Dark)
-                            .FilePath(AssetManager.Find("tile000.png"))
-                            .Build())
-                        .Build())
-                    .Debug(debug => debug
-                        .LogLevel(LogLevel.Log)
                         .Build())
                     .Audio(audio => audio
                         .Build())
@@ -79,7 +72,7 @@ namespace Alis.Sample.Pong
                         .Gravity(0.0f, -9.8f)
                         .Build())
                     .Build())
-                .Manager<SceneManager>(sceneManager => sceneManager
+                .World(sceneManager => sceneManager
                     .Add<Scene>(gameScene => gameScene
                         .Add<GameObject>(cameraObj => cameraObj
                             .Name("Camera")
@@ -105,7 +98,7 @@ namespace Alis.Sample.Pong
                                 .Scale(1, 1)
                                 .Rotation(0)
                                 .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                            /*.AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
                                 .BodyType(BodyType.Kinematic)
@@ -120,7 +113,7 @@ namespace Alis.Sample.Pong
                                 .Density(0.5f)
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
-                                .Build())
+                                .Build())*/
                             .AddComponent(new PlayerController(1))
                             .Build())
                         .Add<GameObject>(player => player
@@ -130,7 +123,7 @@ namespace Alis.Sample.Pong
                                 .Scale(1, 1)
                                 .Rotation(0)
                                 .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                            /*.AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
                                 .BodyType(BodyType.Kinematic)
@@ -145,7 +138,7 @@ namespace Alis.Sample.Pong
                                 .Density(1.0f)
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
-                                .Build())
+                                .Build())*/
                             .AddComponent(new PlayerController(2))
                             .Build())
                         .Add<GameObject>(ball => ball
@@ -155,7 +148,7 @@ namespace Alis.Sample.Pong
                                 .Scale(1, 1)
                                 .Rotation(0)
                                 .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                            /*.AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
                                 .BodyType(BodyType.Dynamic)
@@ -171,14 +164,14 @@ namespace Alis.Sample.Pong
                                 .Density(0.5f)
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
-                                .Build())
+                                .Build())*/
                             .Build())
                         .Add<GameObject>(downWall => downWall
                             .Name("downWall")
                             .Transform(transform => transform
                                 .Position(512, 635)
                                 .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                            /*.AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
                                 .BodyType(BodyType.Static)
@@ -193,14 +186,14 @@ namespace Alis.Sample.Pong
                                 .Density(0.5f)
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
-                                .Build())
+                                .Build())*/
                             .Build())
                         .Add<GameObject>(upWall => upWall
                             .Name("upWall")
                             .Transform(transform => transform
                                 .Position(512, 0)
                                 .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                            /*.AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
                                 .BodyType(BodyType.Static)
@@ -215,14 +208,14 @@ namespace Alis.Sample.Pong
                                 .Density(0.5f)
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
-                                .Build())
+                                .Build())*/
                             .Build())
                         .Add<GameObject>(leftWall => leftWall
                             .Name("leftWall")
                             .Transform(transform => transform
                                 .Position(0, 320)
                                 .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                            /*.AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
                                 .BodyType(BodyType.Static)
@@ -237,14 +230,14 @@ namespace Alis.Sample.Pong
                                 .Density(0.5f)
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
-                                .Build())
+                                .Build())*/
                             .Build())
                         .Add<GameObject>(rightWall => rightWall
                             .Name("rightWall")
                             .Transform(transform => transform
                                 .Position(1024, 320)
                                 .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                            /*.AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
                                 .BodyType(BodyType.Static)
@@ -259,7 +252,7 @@ namespace Alis.Sample.Pong
                                 .Density(0.5f)
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
-                                .Build())
+                                .Build())*/
                             .Build())
                         .Build())
                     .Build())
