@@ -28,8 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math.Figure;
-using Alis.Core.Aspect.Math.Figure.Rectangle;
+using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Graphic.SDL;
 
 namespace Alis.Core.Graphic

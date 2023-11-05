@@ -29,7 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Math.Figure.Rectangle;
+using Alis.Core.Aspect.Math.Shape.Rectangle;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
