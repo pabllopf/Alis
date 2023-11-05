@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Ecs.Test.System.Property
 {
+    /// <summary>
+    /// The enabled test class
+    /// </summary>
     public class EnabledTest
     {
     }
