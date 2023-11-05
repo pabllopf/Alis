@@ -27,19 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Component.Collider;
-using Alis.Core.Ecs;
-using Alis.Core.Graphic.SDL.Enums;
+using Alis.Core.Ecs.Component;
+using Alis.Core.Ecs.Component.Collider;
 
 namespace Alis.Sample.Pong
 {
     /// <summary>
     ///     The player controller class
     /// </summary>
-    public class PlayerController : ComponentBase
+    public class PlayerController : Component
     {
         /// <summary>
         ///     The player id
@@ -60,18 +57,19 @@ namespace Alis.Sample.Pong
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        public override void Start() => boxCollider = GameObject.GetComponent<BoxCollider>();
+        public override void OnStart() => boxCollider = GameObject.Get<BoxCollider>();
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public override void Update() => Logger.Trace();
+        public override void OnUpdate() => Logger.Trace();
 
+        /*
         /// <summary>
         ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnReleaseKey(SdlKeycode key)
+        public override void OnReleaseButton(IButton key)
         {
             Vector2 velocity = boxCollider.Body.LinearVelocity;
             if (playerId == 1)
@@ -109,7 +107,7 @@ namespace Alis.Sample.Pong
         ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnPressDownKey(SdlKeycode key)
+        public override void OnPressDownButton(IButton key)
         {
             Vector2 velocity = boxCollider.Body.LinearVelocity;
 
@@ -144,6 +142,6 @@ namespace Alis.Sample.Pong
                         break;
                 }
             }
-        }
+        }*/
     }
 }
