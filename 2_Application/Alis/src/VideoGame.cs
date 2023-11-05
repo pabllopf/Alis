@@ -28,87 +28,118 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Alis.Builder;
-using Alis.Core;
+using Alis.Builder.Core.Ecs.System;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Manager;
-using Alis.Core.Manager.Audio;
-using Alis.Core.Manager.Graphic;
-using Alis.Core.Manager.Input;
-using Alis.Core.Manager.Physic;
-using Alis.Core.Manager.Scene;
-using Alis.Core.Manager.Setting;
+using Alis.Core.Ecs.System;
+using Alis.Core.Ecs.System.Manager;
+using Alis.Core.Ecs.System.Manager.Ads;
+using Alis.Core.Ecs.System.Manager.Audio;
+using Alis.Core.Ecs.System.Manager.Graphic;
+using Alis.Core.Ecs.System.Manager.Input;
+using Alis.Core.Ecs.System.Manager.Network;
+using Alis.Core.Ecs.System.Manager.Physic;
+using Alis.Core.Ecs.System.Manager.Plugin;
+using Alis.Core.Ecs.System.Manager.Profile;
+using Alis.Core.Ecs.System.Manager.Scene;
+using Alis.Core.Ecs.System.Manager.Script;
+using Alis.Core.Ecs.System.Manager.Store;
+using Alis.Core.Ecs.System.Setting;
 
 namespace Alis
 {
     /// <summary>
     ///     The video game class
     /// </summary>
-    /// <seealso cref="GameBase" />
-    public class VideoGame : GameBase
+    /// <seealso cref="Game" />
+    public class VideoGame : Game
     {
         /// <summary>
         ///     Video game
         /// </summary>
         public VideoGame()
         {
-            PhysicManager = new PhysicManager();
-            GraphicManager = new GraphicManager();
-            SceneManager = new SceneManager();
-            AudioManager = new AudioManager();
-            InputManager = new InputManager();
-
-            Managers = new List<ManagerBase>
+            Managers = new List<IManager>(new List<Manager>
             {
-                AudioManager,
-                PhysicManager,
-                GraphicManager,
-                SceneManager,
-                InputManager
-            };
+                new AdsManager(),
+                new AudioManager(),
+                new PhysicManager(),
+                new GraphicManager(),
+                new SceneManager(),
+                new InputManager(),
+                new NetworkManager(),
+                new PluginManager(),
+                new ScriptManager(),
+                new StoreManager(),
+                new ProfileManager()
+            });
 
             Logger.Trace();
         }
         
         /// <summary>
-        ///     Gets or sets the value of the input manager
+        /// Gets or sets the value of the ads setting
         /// </summary>
-        public static InputManager InputManager { get; set; } = new InputManager();
+        public  AdsManager AdsManager => Get<AdsManager>();
+        
+        /// <summary>
+        /// Gets or sets the value of the audio manager
+        /// </summary>
+        public  AudioManager AudioManager => Get<AudioManager>();
+        
+        /// <summary>
+        /// Gets or sets the value of the graphic manager
+        /// </summary>
+        public  GraphicManager GraphicManager => Get<GraphicManager>();
+        
+        /// <summary>
+        /// Gets or sets the value of the input manager
+        /// </summary>
+        public  InputManager InputManager => Get<InputManager>();
+        
+        /// <summary>
+        /// Gets or sets the value of the network manager
+        /// </summary>
+        public  NetworkManager NetworkManager => Get<NetworkManager>();
+        
+        /// <summary>
+        /// Gets or sets the value of the physic manager
+        /// </summary>
+        public  PhysicManager PhysicManager => Get<PhysicManager>();
+        
+        /// <summary>
+        /// Gets or sets the value of the plugin manager
+        /// </summary>
+        public  PluginManager PluginManager => Get<PluginManager>();
+        
+        /// <summary>
+        /// Gets or sets the value of the profile manager
+        /// </summary>
+        public  ProfileManager ProfileManager => Get<ProfileManager>();
+        
+        /// <summary>
+        /// Gets or sets the value of the scene manager
+        /// </summary>
+        public  SceneManager SceneManager => Get<SceneManager>();
+        
+        /// <summary>
+        /// Gets or sets the value of the script manager
+        /// </summary>
+        public  ScriptManager ScriptManager => Get<ScriptManager>();
+        
+        /// <summary>
+        /// Gets or sets the value of the store manager
+        /// </summary>
+        public  StoreManager StoreManager => Get<StoreManager>();
 
         /// <summary>
-        ///     Gets or sets the value of the graphic manager
+        /// Gets or sets the value of the setting
         /// </summary>
-        public static GraphicManager GraphicManager { get; set; } = new GraphicManager();
-
-        /// <summary>
-        ///     Gets or sets the value of the scene manager
-        /// </summary>
-        public static SceneManager SceneManager { get; set; } = new SceneManager();
-
-        /// <summary>
-        ///     Gets the value of the audio manager
-        /// </summary>
-        public static AudioManager AudioManager { get; set; } = new AudioManager();
-
-        /// <summary>
-        ///     Gets or sets the value of the physic manager
-        /// </summary>
-        public static PhysicManager PhysicManager { get; set; } = new PhysicManager();
-
-        /// <summary>
-        ///     Gets or sets the value of the setting manager
-        /// </summary>
-        public static SettingManager Setting { get; set; } = new SettingManager();
-
+        public Settings Settings { get; set; } = new Settings();
+        
         /// <summary>
         ///     Builders
         /// </summary>
         /// <returns>The video game builder</returns>
         public static VideoGameBuilder Builder() => new VideoGameBuilder();
-        
-        /// <summary>
-        /// Exits
-        /// </summary>
-        public static void Exit() => IsRunning = false;
     }
 }

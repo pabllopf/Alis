@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Math.Figure.Point;
+using Alis.Core.Aspect.Math.Shape.Point;
 
 namespace Alis.Core.Graphic.SDL.Structs
 {
