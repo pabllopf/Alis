@@ -47,6 +47,7 @@ jobs:
           dotnet tool install --global JetBrains.dotCover.GlobalTool
           dotnet tool install --global dotnet-sonarscanner
           dotnet tool install --global dotnet-coverage
+          dotnet tool install --global coverlet.console
 
       - name: Install SonarCloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
@@ -61,9 +62,9 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html
-          dotnet build –no-incremental
-          dotnet dotcover test --dcReportType=HTML
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"pabllopf_Alis" /o:"pabllopf" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=**/file.xml
+          dotnet build ./alis.sln --configuration Release --nologo -v q --property WarningLevel=0 /clp:ErrorsOnly
+          dotnet-coverage collect "dotnet test --results-directory --logger trx" -f xml -o file.xml
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
         
         #run: |
