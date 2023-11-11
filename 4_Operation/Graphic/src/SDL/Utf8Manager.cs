@@ -30,9 +30,10 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
+using Alis.Core.Aspect.Memory;
 using Alis.Core.Aspect.Memory.Attributes;
 
-namespace Alis.Core.Aspect.Memory
+namespace Alis.Core.Graphic.SDL
 {
     /// <summary>
     ///     The utf manager class
