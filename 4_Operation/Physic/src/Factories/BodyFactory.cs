@@ -418,8 +418,13 @@ namespace Alis.Core.Physic.Factories
         {
             List<Vertices> triangles = Triangulate.ConvexPartition(vertices, TriangulationAlgorithm.Earclip);
 
-            BreakableBody breakableBody = new BreakableBody(world, triangles, density, position, rotation);
-            breakableBody.MainBody.Position = position;
+            BreakableBody breakableBody = new BreakableBody(world, triangles, density, position, rotation)
+            {
+                MainBody =
+                {
+                    Position = position
+                }
+            };
             world.AddBreakableBody(breakableBody);
             return breakableBody;
         }
@@ -435,8 +440,13 @@ namespace Alis.Core.Physic.Factories
         public static BreakableBody CreateBreakableBody(World world, IEnumerable<Shape> shapes,
             Vector2 position = new Vector2(), float rotation = 0)
         {
-            BreakableBody breakableBody = new BreakableBody(world, shapes, position, rotation);
-            breakableBody.MainBody.Position = position;
+            BreakableBody breakableBody = new BreakableBody(world, shapes, position, rotation)
+            {
+                MainBody =
+                {
+                    Position = position
+                }
+            };
             world.AddBreakableBody(breakableBody);
             return breakableBody;
         }
