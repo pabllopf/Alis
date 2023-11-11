@@ -33,32 +33,46 @@ namespace Alis.Core.Aspect.Time
     public class TimeStep
     {
         /// <summary>Time step (Delta time)</summary>
-        public float DeltaTime;
+        public float DeltaTime { get; set; }
 
         /// <summary>dt * inv_dt0</summary>
-        public float DeltaTimeRatio;
+        public float DeltaTimeRatio { get; set; }
 
         /// <summary>Inverse time step (0 if dt == 0).</summary>
-        public float InvertedDeltaTime;
+        public float InvertedDeltaTime { get; set; }
 
         /// <summary>
         ///     The inverted delta time
         /// </summary>
-        public float InvertedDeltaTimeZero;
+        public float InvertedDeltaTimeZero { get; set; }
 
         /// <summary>
         ///     The position iterations
         /// </summary>
-        public int PositionIterations;
+        public int PositionIterations { get; set; }
 
         /// <summary>
         ///     The velocity iterations
         /// </summary>
-        public int VelocityIterations;
+        public int VelocityIterations { get; set; }
 
         /// <summary>
         ///     The warm starting
         /// </summary>
-        public bool WarmStarting;
+        public bool WarmStarting { get; set; }
+
+        /// <summary>
+        /// Resets this instance
+        /// </summary>
+        public void Reset()
+        {
+            DeltaTime = 0.0f;
+            DeltaTimeRatio = 0.0f;
+            InvertedDeltaTime = 0.0f;
+            InvertedDeltaTimeZero = 0.0f;
+            PositionIterations = 0;
+            VelocityIterations = 0;
+            WarmStarting = false;
+        }
     }
 }

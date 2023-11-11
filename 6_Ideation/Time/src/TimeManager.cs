@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Time
         /// <summary>
         /// Gets the value of the clock
         /// </summary>
-        public  Clock Clock { get; } = new Clock();
+        public  Clock Clock { get; set; } 
         
         /// <summary>
         /// The interval in seconds from the last frame to the current one (Read Only).
@@ -129,7 +129,7 @@ namespace Alis.Core.Aspect.Time
         /// <summary>
         /// The scale at which time passes.
         /// </summary>
-        public  float TimeScale { get; set; }
+        public  float TimeScale { get; set; } = 1f;
         
         /// <summary>
         /// The timeScale-independent interval in seconds from the last frame to the current one (Read Only).
@@ -151,6 +151,10 @@ namespace Alis.Core.Aspect.Time
         /// <summary>
         /// Initializes a new instance of the <see cref="TimeManager"/> class
         /// </summary>
-        public TimeManager() => Clock.Start();
+        public TimeManager()
+        {
+            Clock = new Clock();
+            Clock.Start();
+        }
     }
 }
