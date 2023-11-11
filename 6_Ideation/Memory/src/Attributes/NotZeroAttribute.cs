@@ -42,6 +42,6 @@ namespace Alis.Core.Aspect.Memory.Attributes
         /// </summary>
         /// <param name="value">The value</param>
         /// <param name="name">The name</param>
-        public override void Validate(object value, string name) => _ = value ?? throw new NotNullException($"{name} can't be null");
+        public override void Validate(object value, string name) => _ = value ?? throw new NotZeroException($"{name} can't be zero");
     }
 }
