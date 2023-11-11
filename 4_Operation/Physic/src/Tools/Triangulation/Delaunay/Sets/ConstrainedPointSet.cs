@@ -94,15 +94,13 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Sets
             if (constrainedPointList != null)
             {
                 TriangulationPoint p1, p2;
-                using (List<TriangulationPoint>.Enumerator iterator = constrainedPointList.GetEnumerator())
+                using List<TriangulationPoint>.Enumerator iterator = constrainedPointList.GetEnumerator();
+                while (iterator.MoveNext())
                 {
-                    while (iterator.MoveNext())
-                    {
-                        p1 = iterator.Current;
-                        iterator.MoveNext();
-                        p2 = iterator.Current;
-                        tcx.NewConstraint(p1, p2);
-                    }
+                    p1 = iterator.Current;
+                    iterator.MoveNext();
+                    p2 = iterator.Current;
+                    tcx.NewConstraint(p1, p2);
                 }
             }
             else

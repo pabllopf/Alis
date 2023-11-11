@@ -31,8 +31,14 @@ using Xunit;
 
 namespace Alis.Test
 {
+    /// <summary>
+    /// The video game test class
+    /// </summary>
     public class VideoGameTest
     {
+        /// <summary>
+        /// Tests that test 1
+        /// </summary>
         [Fact]
         public void Test1()
         {

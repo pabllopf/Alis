@@ -213,102 +213,100 @@ namespace Alis.Core.Network.Internal
                 while (true)
                 {
                     // allow this operation to be cancelled from iniside OR outside this instance
-                    using (CancellationTokenSource linkedCts =
-                           CancellationTokenSource.CreateLinkedTokenSource(_internalReadCts.Token, cancellationToken))
+                    using CancellationTokenSource linkedCts =
+                        CancellationTokenSource.CreateLinkedTokenSource(_internalReadCts.Token, cancellationToken);
+                    WebSocketFrame frame;
+
+                    try
                     {
-                        WebSocketFrame frame;
-
-                        try
+                        if (_readCursor.NumBytesLeftToRead > 0)
                         {
-                            if (_readCursor.NumBytesLeftToRead > 0)
+                            // If the buffer used to read the frame was too small to fit the whole frame then we need to "remember" this frame
+                            // and return what we have. Subsequent calls to the read function will simply continue reading off the stream without 
+                            // decoding the first few bytes as a websocket header.
+                            _readCursor =
+                                await WebSocketFrameReader.ReadFromCursorAsync(_stream, buffer, _readCursor,
+                                    linkedCts.Token);
+                            frame = _readCursor.WebSocketFrame;
+                        }
+                        else
+                        {
+                            _readCursor = await WebSocketFrameReader.ReadAsync(_stream, buffer, linkedCts.Token);
+                            frame = _readCursor.WebSocketFrame;
+                            Events.Log.ReceivedFrame(_guid, frame.OpCode, frame.IsFinBitSet, frame.Count);
+                        }
+                    }
+                    catch (InternalBufferOverflowException ex)
+                    {
+                        await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.MessageTooBig,
+                            "Frame too large to fit in buffer. Use message fragmentation", ex);
+                        throw;
+                    }
+                    catch (ArgumentOutOfRangeException ex)
+                    {
+                        await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.ProtocolError,
+                            "Payload length out of range", ex);
+                        throw;
+                    }
+                    catch (EndOfStreamException ex)
+                    {
+                        await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.InvalidPayloadData,
+                            "Unexpected end of stream encountered", ex);
+                        throw;
+                    }
+                    catch (OperationCanceledException ex)
+                    {
+                        await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.EndpointUnavailable,
+                            "Operation cancelled", ex);
+                        throw;
+                    }
+                    catch (Exception ex)
+                    {
+                        await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.InternalServerError,
+                            "Error reading WebSocket frame", ex);
+                        throw;
+                    }
+
+                    bool endOfMessage = frame.IsFinBitSet && (_readCursor.NumBytesLeftToRead == 0);
+                    switch (frame.OpCode)
+                    {
+                        case WebSocketOpCode.ConnectionClose:
+                            return await RespondToCloseFrame(frame, buffer, linkedCts.Token);
+                        case WebSocketOpCode.Ping:
+                            ArraySegment<byte> pingPayload = new ArraySegment<byte>(buffer.Array, buffer.Offset,
+                                _readCursor.NumBytesRead);
+                            await SendPongAsync(pingPayload, linkedCts.Token);
+                            break;
+                        case WebSocketOpCode.Pong:
+                            ArraySegment<byte> pongBuffer = new ArraySegment<byte>(buffer.Array,
+                                _readCursor.NumBytesRead, buffer.Offset);
+                            Pong?.Invoke(this, new PongEventArgs(pongBuffer));
+                            break;
+                        case WebSocketOpCode.TextFrame:
+                            if (!frame.IsFinBitSet)
                             {
-                                // If the buffer used to read the frame was too small to fit the whole frame then we need to "remember" this frame
-                                // and return what we have. Subsequent calls to the read function will simply continue reading off the stream without 
-                                // decoding the first few bytes as a websocket header.
-                                _readCursor =
-                                    await WebSocketFrameReader.ReadFromCursorAsync(_stream, buffer, _readCursor,
-                                        linkedCts.Token);
-                                frame = _readCursor.WebSocketFrame;
+                                // continuation frames will follow, record the message type Text
+                                _continuationFrameMessageType = WebSocketMessageType.Text;
                             }
-                            else
+
+                            return new WebSocketReceiveResult(_readCursor.NumBytesRead, WebSocketMessageType.Text,
+                                endOfMessage);
+                        case WebSocketOpCode.BinaryFrame:
+                            if (!frame.IsFinBitSet)
                             {
-                                _readCursor = await WebSocketFrameReader.ReadAsync(_stream, buffer, linkedCts.Token);
-                                frame = _readCursor.WebSocketFrame;
-                                Events.Log.ReceivedFrame(_guid, frame.OpCode, frame.IsFinBitSet, frame.Count);
+                                // continuation frames will follow, record the message type Binary
+                                _continuationFrameMessageType = WebSocketMessageType.Binary;
                             }
-                        }
-                        catch (InternalBufferOverflowException ex)
-                        {
-                            await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.MessageTooBig,
-                                "Frame too large to fit in buffer. Use message fragmentation", ex);
-                            throw;
-                        }
-                        catch (ArgumentOutOfRangeException ex)
-                        {
-                            await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.ProtocolError,
-                                "Payload length out of range", ex);
-                            throw;
-                        }
-                        catch (EndOfStreamException ex)
-                        {
-                            await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.InvalidPayloadData,
-                                "Unexpected end of stream encountered", ex);
-                            throw;
-                        }
-                        catch (OperationCanceledException ex)
-                        {
-                            await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.EndpointUnavailable,
-                                "Operation cancelled", ex);
-                            throw;
-                        }
-                        catch (Exception ex)
-                        {
-                            await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.InternalServerError,
-                                "Error reading WebSocket frame", ex);
-                            throw;
-                        }
 
-                        bool endOfMessage = frame.IsFinBitSet && (_readCursor.NumBytesLeftToRead == 0);
-                        switch (frame.OpCode)
-                        {
-                            case WebSocketOpCode.ConnectionClose:
-                                return await RespondToCloseFrame(frame, buffer, linkedCts.Token);
-                            case WebSocketOpCode.Ping:
-                                ArraySegment<byte> pingPayload = new ArraySegment<byte>(buffer.Array, buffer.Offset,
-                                    _readCursor.NumBytesRead);
-                                await SendPongAsync(pingPayload, linkedCts.Token);
-                                break;
-                            case WebSocketOpCode.Pong:
-                                ArraySegment<byte> pongBuffer = new ArraySegment<byte>(buffer.Array,
-                                    _readCursor.NumBytesRead, buffer.Offset);
-                                Pong?.Invoke(this, new PongEventArgs(pongBuffer));
-                                break;
-                            case WebSocketOpCode.TextFrame:
-                                if (!frame.IsFinBitSet)
-                                {
-                                    // continuation frames will follow, record the message type Text
-                                    _continuationFrameMessageType = WebSocketMessageType.Text;
-                                }
-
-                                return new WebSocketReceiveResult(_readCursor.NumBytesRead, WebSocketMessageType.Text,
-                                    endOfMessage);
-                            case WebSocketOpCode.BinaryFrame:
-                                if (!frame.IsFinBitSet)
-                                {
-                                    // continuation frames will follow, record the message type Binary
-                                    _continuationFrameMessageType = WebSocketMessageType.Binary;
-                                }
-
-                                return new WebSocketReceiveResult(_readCursor.NumBytesRead, WebSocketMessageType.Binary,
-                                    endOfMessage);
-                            case WebSocketOpCode.ContinuationFrame:
-                                return new WebSocketReceiveResult(_readCursor.NumBytesRead,
-                                    _continuationFrameMessageType, endOfMessage);
-                            default:
-                                Exception ex = new NotSupportedException($"Unknown WebSocket opcode {frame.OpCode}");
-                                await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.ProtocolError, ex.Message, ex);
-                                throw ex;
-                        }
+                            return new WebSocketReceiveResult(_readCursor.NumBytesRead, WebSocketMessageType.Binary,
+                                endOfMessage);
+                        case WebSocketOpCode.ContinuationFrame:
+                            return new WebSocketReceiveResult(_readCursor.NumBytesRead,
+                                _continuationFrameMessageType, endOfMessage);
+                        default:
+                            Exception ex = new NotSupportedException($"Unknown WebSocket opcode {frame.OpCode}");
+                            await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.ProtocolError, ex.Message, ex);
+                            throw ex;
                     }
                 }
             }
@@ -339,34 +337,30 @@ namespace Alis.Core.Network.Internal
         public override async Task SendAsync(ArraySegment<byte> buffer, WebSocketMessageType messageType,
             bool endOfMessage, CancellationToken cancellationToken)
         {
-            using (MemoryStream stream = _recycledStreamFactory())
+            using MemoryStream stream = _recycledStreamFactory();
+            WebSocketOpCode opCode = GetOppCode(messageType);
+
+            if (_usePerMessageDeflate)
             {
-                WebSocketOpCode opCode = GetOppCode(messageType);
-
-                if (_usePerMessageDeflate)
-                {
-                    // NOTE: Compression is currently work in progress and should NOT be used in this library.
-                    // The code below is very inefficient for small messages. Ideally we would like to have some sort of moving window
-                    // of data to get the best compression. And we don't want to create new buffers which is bad for GC.
-                    using (MemoryStream temp = new MemoryStream())
-                    {
-                        DeflateStream deflateStream = new DeflateStream(temp, CompressionMode.Compress);
-                        deflateStream.Write(buffer.Array, buffer.Offset, buffer.Count);
-                        deflateStream.Flush();
-                        ArraySegment<byte> compressedBuffer = new ArraySegment<byte>(temp.ToArray());
-                        WebSocketFrameWriter.Write(opCode, compressedBuffer, stream, endOfMessage, _isClient);
-                        Events.Log.SendingFrame(_guid, opCode, endOfMessage, compressedBuffer.Count, true);
-                    }
-                }
-                else
-                {
-                    WebSocketFrameWriter.Write(opCode, buffer, stream, endOfMessage, _isClient);
-                    Events.Log.SendingFrame(_guid, opCode, endOfMessage, buffer.Count, false);
-                }
-
-                await WriteStreamToNetwork(stream, cancellationToken);
-                _isContinuationFrame = !endOfMessage;
+                // NOTE: Compression is currently work in progress and should NOT be used in this library.
+                // The code below is very inefficient for small messages. Ideally we would like to have some sort of moving window
+                // of data to get the best compression. And we don't want to create new buffers which is bad for GC.
+                using MemoryStream temp = new MemoryStream();
+                DeflateStream deflateStream = new DeflateStream(temp, CompressionMode.Compress);
+                deflateStream.Write(buffer.Array, buffer.Offset, buffer.Count);
+                deflateStream.Flush();
+                ArraySegment<byte> compressedBuffer = new ArraySegment<byte>(temp.ToArray());
+                WebSocketFrameWriter.Write(opCode, compressedBuffer, stream, endOfMessage, _isClient);
+                Events.Log.SendingFrame(_guid, opCode, endOfMessage, compressedBuffer.Count, true);
             }
+            else
+            {
+                WebSocketFrameWriter.Write(opCode, buffer, stream, endOfMessage, _isClient);
+                Events.Log.SendingFrame(_guid, opCode, endOfMessage, buffer.Count, false);
+            }
+
+            await WriteStreamToNetwork(stream, cancellationToken);
+            _isContinuationFrame = !endOfMessage;
         }
 
         /// <summary>
@@ -383,12 +377,10 @@ namespace Alis.Core.Network.Internal
 
             if (_state == WebSocketState.Open)
             {
-                using (MemoryStream stream = _recycledStreamFactory())
-                {
-                    WebSocketFrameWriter.Write(WebSocketOpCode.Ping, payload, stream, true, _isClient);
-                    Events.Log.SendingFrame(_guid, WebSocketOpCode.Ping, true, payload.Count, false);
-                    await WriteStreamToNetwork(stream, cancellationToken);
-                }
+                using MemoryStream stream = _recycledStreamFactory();
+                WebSocketFrameWriter.Write(WebSocketOpCode.Ping, payload, stream, true, _isClient);
+                Events.Log.SendingFrame(_guid, WebSocketOpCode.Ping, true, payload.Count, false);
+                await WriteStreamToNetwork(stream, cancellationToken);
             }
         }
 
@@ -409,15 +401,13 @@ namespace Alis.Core.Network.Internal
         {
             if (_state == WebSocketState.Open)
             {
-                using (MemoryStream stream = _recycledStreamFactory())
-                {
-                    ArraySegment<byte> buffer = BuildClosePayload(closeStatus, statusDescription);
-                    WebSocketFrameWriter.Write(WebSocketOpCode.ConnectionClose, buffer, stream, true, _isClient);
-                    Events.Log.CloseHandshakeStarted(_guid, closeStatus, statusDescription);
-                    Events.Log.SendingFrame(_guid, WebSocketOpCode.ConnectionClose, true, buffer.Count, true);
-                    await WriteStreamToNetwork(stream, cancellationToken);
-                    _state = WebSocketState.CloseSent;
-                }
+                using MemoryStream stream = _recycledStreamFactory();
+                ArraySegment<byte> buffer = BuildClosePayload(closeStatus, statusDescription);
+                WebSocketFrameWriter.Write(WebSocketOpCode.ConnectionClose, buffer, stream, true, _isClient);
+                Events.Log.CloseHandshakeStarted(_guid, closeStatus, statusDescription);
+                Events.Log.SendingFrame(_guid, WebSocketOpCode.ConnectionClose, true, buffer.Count, true);
+                await WriteStreamToNetwork(stream, cancellationToken);
+                _state = WebSocketState.CloseSent;
             }
             else
             {
@@ -435,14 +425,12 @@ namespace Alis.Core.Network.Internal
             {
                 _state = WebSocketState.Closed; // set this before we write to the network because the write may fail
 
-                using (MemoryStream stream = _recycledStreamFactory())
-                {
-                    ArraySegment<byte> buffer = BuildClosePayload(closeStatus, statusDescription);
-                    WebSocketFrameWriter.Write(WebSocketOpCode.ConnectionClose, buffer, stream, true, _isClient);
-                    Events.Log.CloseOutputNoHandshake(_guid, closeStatus, statusDescription);
-                    Events.Log.SendingFrame(_guid, WebSocketOpCode.ConnectionClose, true, buffer.Count, true);
-                    await WriteStreamToNetwork(stream, cancellationToken);
-                }
+                using MemoryStream stream = _recycledStreamFactory();
+                ArraySegment<byte> buffer = BuildClosePayload(closeStatus, statusDescription);
+                WebSocketFrameWriter.Write(WebSocketOpCode.ConnectionClose, buffer, stream, true, _isClient);
+                Events.Log.CloseOutputNoHandshake(_guid, closeStatus, statusDescription);
+                Events.Log.SendingFrame(_guid, WebSocketOpCode.ConnectionClose, true, buffer.Count, true);
+                await WriteStreamToNetwork(stream, cancellationToken);
             }
             else
             {
@@ -538,12 +526,10 @@ namespace Alis.Core.Network.Internal
             {
                 if (_state == WebSocketState.Open)
                 {
-                    using (MemoryStream stream = _recycledStreamFactory())
-                    {
-                        WebSocketFrameWriter.Write(WebSocketOpCode.Pong, payload, stream, true, _isClient);
-                        Events.Log.SendingFrame(_guid, WebSocketOpCode.Pong, true, payload.Count, false);
-                        await WriteStreamToNetwork(stream, cancellationToken);
-                    }
+                    using MemoryStream stream = _recycledStreamFactory();
+                    WebSocketFrameWriter.Write(WebSocketOpCode.Pong, payload, stream, true, _isClient);
+                    Events.Log.SendingFrame(_guid, WebSocketOpCode.Pong, true, payload.Count, false);
+                    await WriteStreamToNetwork(stream, cancellationToken);
                 }
             }
             catch (Exception ex)
@@ -578,12 +564,10 @@ namespace Alis.Core.Network.Internal
                 _state = WebSocketState.CloseReceived;
                 Events.Log.CloseHandshakeRespond(_guid, frame.CloseStatus, frame.CloseStatusDescription);
 
-                using (MemoryStream stream = _recycledStreamFactory())
-                {
-                    WebSocketFrameWriter.Write(WebSocketOpCode.ConnectionClose, closePayload, stream, true, _isClient);
-                    Events.Log.SendingFrame(_guid, WebSocketOpCode.ConnectionClose, true, closePayload.Count, false);
-                    await WriteStreamToNetwork(stream, token);
-                }
+                using MemoryStream stream = _recycledStreamFactory();
+                WebSocketFrameWriter.Write(WebSocketOpCode.ConnectionClose, closePayload, stream, true, _isClient);
+                Events.Log.SendingFrame(_guid, WebSocketOpCode.ConnectionClose, true, closePayload.Count, false);
+                await WriteStreamToNetwork(stream, token);
             }
             else
             {

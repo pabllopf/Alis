@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.CompilerServices;
 
 namespace Alis.Core.Aspect.Logging
 {
@@ -174,5 +175,11 @@ namespace Alis.Core.Aspect.Logging
                 ConsoleController.Print(new Message(MessageType.Exception, exception.Message), DetailLevel);
             }
         }
+
+        /// <summary>
+        /// Sets the detail level using the specified detail level
+        /// </summary>
+        /// <param name="detailLevel">The detail level</param>
+        public static void SetDetailLevel(DetailLevel detailLevel) => DetailLevel = detailLevel;
     }
 }

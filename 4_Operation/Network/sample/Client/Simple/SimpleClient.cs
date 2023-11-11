@@ -47,20 +47,18 @@ namespace Alis.Core.Network.Sample.Client.Simple
         {
             WebSocketClientFactory factory = new WebSocketClientFactory();
             Uri uri = new Uri("ws://localhost:27416/chat");
-            using (WebSocket webSocket = await factory.ConnectAsync(uri))
-            {
-                // receive loop
-                Task readTask = Receive(webSocket);
+            using WebSocket webSocket = await factory.ConnectAsync(uri);
+            // receive loop
+            Task readTask = Receive(webSocket);
 
-                // send a message
-                await Send(webSocket);
+            // send a message
+            await Send(webSocket);
 
-                // initiate the close handshake
-                await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, null, CancellationToken.None);
+            // initiate the close handshake
+            await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, null, CancellationToken.None);
 
-                // wait for server to respond with a close frame
-                await readTask;
-            }
+            // wait for server to respond with a close frame
+            await readTask;
         }
 
         /// <summary>

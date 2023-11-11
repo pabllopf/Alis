@@ -45,7 +45,7 @@ namespace Alis.Core.Aspect.Logging
         public static void Print(Message message, DetailLevel detailLevel)
         {
             Console.ForegroundColor = ConsoleLogConfig.GetColorMessageByType(message.MessageType);
-            if (detailLevel == DetailLevel.Simple)
+            if (detailLevel == DetailLevel.Minimal)
             {
                 Console.WriteLine($"[{message.DateTime}] {message.Level}: {message.Content}");
             }

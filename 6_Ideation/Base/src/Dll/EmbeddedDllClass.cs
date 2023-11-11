@@ -140,27 +140,21 @@ namespace Alis.Core.Aspect.Base.Dll
         /// <param name="zipData">The zip data</param>
         private static void ExtractZipFile(string filePath, string fileName, MemoryStream zipData)
         {
-            using (MemoryStream ms = zipData)
+            using MemoryStream ms = zipData;
+            using ZipArchive archive = new ZipArchive(ms);
+            foreach (ZipArchiveEntry entry in archive.Entries)
             {
-                using (ZipArchive archive = new ZipArchive(ms))
+                string entryPath = Path.Combine(Environment.CurrentDirectory, fileName);
+
+                if (File.Exists(entryPath))
                 {
-                    foreach (ZipArchiveEntry entry in archive.Entries)
-                    {
-                        string entryPath = Path.Combine(Environment.CurrentDirectory, fileName);
-
-                        if (File.Exists(entryPath))
-                        {
-                            continue; // Skip if the file already exists
-                        }
-
-                        Directory.CreateDirectory(Path.GetDirectoryName(entryPath));
-                        using (Stream entryStream = entry.Open())
-                        using (FileStream fs = File.Create(entryPath))
-                        {
-                            entryStream.CopyTo(fs);
-                        }
-                    }
+                    continue; // Skip if the file already exists
                 }
+
+                Directory.CreateDirectory(Path.GetDirectoryName(entryPath));
+                using Stream entryStream = entry.Open();
+                using FileStream fs = File.Create(entryPath);
+                entryStream.CopyTo(fs);
             }
         }
         

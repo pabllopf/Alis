@@ -121,12 +121,10 @@ namespace Alis.Core.Network.Sample
             {
                 int port = 27416;
                 IList<string> supportedSubProtocols = new[] {"chatV1", "chatV2", "chatV3"};
-                using (WebServer server = new WebServer(_webSocketServerFactory, supportedSubProtocols))
-                {
-                    Console.WriteLine($"Listening on port {port}");
-                    Console.WriteLine("Press any key to quit");
-                    await server.Listen(port);
-                }
+                using WebServer server = new WebServer(_webSocketServerFactory, supportedSubProtocols);
+                Console.WriteLine($"Listening on port {port}");
+                Console.WriteLine("Press any key to quit");
+                await server.Listen(port);
             }
             catch (Exception ex)
             {

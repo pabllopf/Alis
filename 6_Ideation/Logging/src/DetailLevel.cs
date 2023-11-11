@@ -35,9 +35,9 @@ namespace Alis.Core.Aspect.Logging
     public enum DetailLevel
     {
         /// <summary>
-        /// The simple detail level
+        /// The minimal detail level
         /// </summary>
-        Simple, 
+        Minimal, 
         
         /// <summary>
         /// The full detail level
