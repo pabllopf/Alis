@@ -183,35 +183,33 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         {
             while (convexPoints.Count != 0)
             {
-                using (IEnumerator<Point> e = convexPoints.GetEnumerator())
+                using IEnumerator<Point> e = convexPoints.GetEnumerator();
+                e.MoveNext();
+                Point ear = e.Current;
+
+                convexPoints.Remove(ear);
+                Point a = ear.Prev;
+                Point b = ear;
+                Point c = ear.Next;
+                List<Point> triangle = new List<Point>(3)
                 {
-                    e.MoveNext();
-                    Point ear = e.Current;
+                    a,
+                    b,
+                    c
+                };
 
-                    convexPoints.Remove(ear);
-                    Point a = ear.Prev;
-                    Point b = ear;
-                    Point c = ear.Next;
-                    List<Point> triangle = new List<Point>(3)
-                    {
-                        a,
-                        b,
-                        c
-                    };
+                Triangles.Add(triangle);
 
-                    Triangles.Add(triangle);
+                // Remove ear, update angles and convex list
+                Remove(ear);
+                if (Valid(a))
+                {
+                    convexPoints.Add(a);
+                }
 
-                    // Remove ear, update angles and convex list
-                    Remove(ear);
-                    if (Valid(a))
-                    {
-                        convexPoints.Add(a);
-                    }
-
-                    if (Valid(c))
-                    {
-                        convexPoints.Add(c);
-                    }
+                if (Valid(c))
+                {
+                    convexPoints.Add(c);
                 }
             }
 

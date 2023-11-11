@@ -42,7 +42,11 @@ namespace Alis.Core.Aspect.Logging.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
+            Logger.LogLevel = LogLevel.Trace;
             Logger.Trace();
+            Logger.Info();
+            
+            Logger.Trace("Sample");
 
             Logger.Log("Sample");
             Logger.Info("Sample");
