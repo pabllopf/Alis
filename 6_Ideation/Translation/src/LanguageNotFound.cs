@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:LanguageNotFound.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,35 +29,20 @@
 
 using System;
 
-namespace Alis.Core.Aspect.Translation.Sample
+namespace Alis.Core.Aspect.Translation
 {
     /// <summary>
-    ///     The program class
+    /// The language not found class
     /// </summary>
-    public static class Program
+    /// <seealso cref="Exception"/>
+    public class LanguageNotFound : Exception
     {
         /// <summary>
-        ///     Main the args
+        /// Initializes a new instance of the <see cref="LanguageNotFound"/> class
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        /// <param name="message">The message</param>
+        public LanguageNotFound(string message) : base(message)
         {
-            TranslationManager manager = new TranslationManager();
-            
-            manager.AddLanguage(new Language { Name = "English", Code = "en" });
-            manager.AddLanguage(new Language { Name = "Spanish", Code = "es" });
-            
-            manager.AddTranslation("en", "hello", "Hello");
-            manager.AddTranslation("es", "hello", "Hola");
-            manager.AddTranslation("en", "world", "World");
-            manager.AddTranslation("es", "world", "Mundo");
-            
-            manager.SetLanguage("Spanish","es");
-            Console.WriteLine($"Current language: {manager.Language.Name} - Language.Code:{manager.Language.Code} Translate result: {manager.Translate("hello")}");
-            
-            manager.SetLanguage("English","en");
-            Console.WriteLine($"Current language: {manager.Language.Name} - Language.Code:{manager.Language.Code} Translate result: {manager.Translate("hello")}");
-            
         }
     }
 }

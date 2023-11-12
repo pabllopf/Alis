@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:TranslationNotFound.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,35 +29,20 @@
 
 using System;
 
-namespace Alis.Core.Aspect.Translation.Sample
+namespace Alis.Core.Aspect.Translation
 {
     /// <summary>
-    ///     The program class
+    /// The translation not found class
     /// </summary>
-    public static class Program
+    /// <seealso cref="Exception"/>
+    public class TranslationNotFound : Exception
     {
         /// <summary>
-        ///     Main the args
+        /// Initializes a new instance of the <see cref="TranslationNotFound"/> class
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        /// <param name="key">The key</param>
+        public TranslationNotFound(string key) : base($"Translation not found for key: {key}")
         {
-            TranslationManager manager = new TranslationManager();
-            
-            manager.AddLanguage(new Language { Name = "English", Code = "en" });
-            manager.AddLanguage(new Language { Name = "Spanish", Code = "es" });
-            
-            manager.AddTranslation("en", "hello", "Hello");
-            manager.AddTranslation("es", "hello", "Hola");
-            manager.AddTranslation("en", "world", "World");
-            manager.AddTranslation("es", "world", "Mundo");
-            
-            manager.SetLanguage("Spanish","es");
-            Console.WriteLine($"Current language: {manager.Language.Name} - Language.Code:{manager.Language.Code} Translate result: {manager.Translate("hello")}");
-            
-            manager.SetLanguage("English","en");
-            Console.WriteLine($"Current language: {manager.Language.Name} - Language.Code:{manager.Language.Code} Translate result: {manager.Translate("hello")}");
-            
         }
     }
 }
