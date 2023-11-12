@@ -40,6 +40,7 @@ using Alis.App.Engine.UI.Extras.Guizmo;
 using Alis.App.Engine.UI.Extras.Node;
 using Alis.App.Engine.UI.Extras.Plot;
 using Alis.App.Engine.Windows;
+using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.SDL;
