@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PointOnEdgeException.cs
+//  File:EmbeddedDllClassTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,22 +28,17 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Base.Dll;
+using Xunit;
 
-namespace Alis.Core.Aspect.Base.Exceptions
+namespace Alis.Core.Aspect.Base.Test.Dll
 {
-    /// <summary>
-    ///     The point on edge exception class
-    /// </summary>
-    /// <seealso cref="NotImplementedException" />
-    public class PointOnEdgeException : Exception
+    public class EmbeddedDllClassTest
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="PointOnEdgeException" /> class
-        /// </summary>
-        /// <param name="message">The message</param>
-        public PointOnEdgeException(string message)
-            : base(message)
-        {
-        }
+        
     }
 }

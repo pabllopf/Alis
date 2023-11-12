@@ -41,7 +41,6 @@ namespace Alis.Core.Aspect.Base.Dll
     /// </summary>
     public static class EmbeddedDllClass
     {
-      
         /// <summary>
         /// Extracts the embedded dlls using the specified dll name
         /// </summary>

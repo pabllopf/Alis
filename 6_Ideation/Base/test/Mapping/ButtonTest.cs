@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ValidationAttributeTest.cs
+//  File:ButtonTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,12 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Memory.Test.Attributes
+namespace Alis.Core.Aspect.Base.Test.Mapping
 {
-    /// <summary>
-    /// The validation attribute test class
-    /// </summary>
-    public class ValidationAttributeTest
+    public class ButtonTest
     {
         
     }
