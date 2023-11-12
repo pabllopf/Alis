@@ -28,12 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Aspect.Logging.Sample
 {
     /// <summary>
     ///     The program class
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class Program
     {
         /// <summary>
