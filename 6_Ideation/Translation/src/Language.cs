@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:Language.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,37 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Core.Aspect.Translation.Sample
+namespace Alis.Core.Aspect.Translation
 {
     /// <summary>
-    ///     The program class
+    /// The language class
     /// </summary>
-    public static class Program
+    public class Language
     {
         /// <summary>
-        ///     Main the args
+        /// Gets or sets the value of the name
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            TranslationManager manager = new TranslationManager();
-            
-            manager.AddLanguage(new Language { Name = "English", Code = "en" });
-            manager.AddLanguage(new Language { Name = "Spanish", Code = "es" });
-            
-            manager.AddTranslation("en", "hello", "Hello");
-            manager.AddTranslation("es", "hello", "Hola");
-            manager.AddTranslation("en", "world", "World");
-            manager.AddTranslation("es", "world", "Mundo");
-            
-            manager.SetLanguage("Spanish","es");
-            Console.WriteLine($"Current language: {manager.Language.Name} - Language.Code:{manager.Language.Code} Translate result: {manager.Translate("hello")}");
-            
-            manager.SetLanguage("English","en");
-            Console.WriteLine($"Current language: {manager.Language.Name} - Language.Code:{manager.Language.Code} Translate result: {manager.Translate("hello")}");
-            
-        }
+        public string Name { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the code
+        /// </summary>
+        public string Code { get; set; }
     }
 }
