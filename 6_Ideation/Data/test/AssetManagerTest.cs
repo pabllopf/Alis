@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AssetManager.cs
+//  File:AssetManagerTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,25 +30,31 @@
 using System;
 using System.IO;
 using System.Reflection;
+using Xunit;
 
-namespace Alis.Core.Aspect.Data
+namespace Alis.Core.Aspect.Data.Test
 {
-    /// <summary>
-    ///     The example class
-    /// </summary>
-    public static class AssetManager
+    public class AssetManagerTest
     {
-        /// <summary>
-        ///     The application data
-        /// </summary>
-        private static readonly string AssetPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? string.Empty, "Assets");
-        
-        /// <summary>
-        ///     Finds the asset name
-        /// </summary>
-        /// <param name="assetName">The asset name</param>
-        /// <returns>The string</returns>
-        public static string Find(string assetName) => Path.Combine(AssetPath, (assetName ?? throw new ArgumentNullException()));
-        
+        [Fact]
+        public void Find_ValidAssetName_ShouldReturnCorrectPath()
+        {
+            // Arrange
+            const string assetName = "example.txt";
+            string expectedPath = Path.Combine(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? throw new InvalidOperationException()) + "/Assets", assetName);
+
+            // Act
+            string result = AssetManager.Find(assetName);
+
+            // Assert
+            Assert.Equal(expectedPath, result);
+        }
+
+        [Fact]
+        public void Find_NullAssetName_ShouldThrowArgumentNullException()
+        {
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(() => AssetManager.Find(null));
+        }
     }
 }
