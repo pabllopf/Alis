@@ -35,7 +35,7 @@ namespace Alis.Core.Aspect.Math
     ///     A transform contains translation and rotation. It is used to represent the position and orientation of rigid
     ///     frames.
     /// </summary>
-    public class Transform
+    public struct Transform
     {
         /// <summary>
         ///     The
@@ -65,16 +65,6 @@ namespace Alis.Core.Aspect.Math
             Scale = scale;
         }
         
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Transform"/> class
-        /// </summary>
-        public Transform()
-        {
-            Position = new Vector2(0, 0);
-            Rotation = new Rotation(0);
-            Scale = new Vector2(1, 1);
-        }
-
         /// <summary>Set this to the identity transform.</summary>
         public void SetIdentity()
         {

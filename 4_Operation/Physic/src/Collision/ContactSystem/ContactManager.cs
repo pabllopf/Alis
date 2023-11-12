@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     Gets the value of the broad phase
         /// </summary>
-        public IBroadPhase BroadPhase { get; }
+        public IBroadPhase BroadPhase { get; } 
 
         /// <summary>
         ///     Gets the value of the contact count

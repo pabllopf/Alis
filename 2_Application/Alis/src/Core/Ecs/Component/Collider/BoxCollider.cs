@@ -30,6 +30,7 @@
 using Alis.Builder.Core.Ecs.Component.Collider;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.System.Manager.Graphic;
@@ -221,8 +222,13 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         public override void OnBeforeUpdate()
         {
-            GameObject.Transform.Position = new Vector2(Body.Position.X, Body.Position.Y);
-            GameObject.Transform.Rotation.Set(Body.Rotation); 
+            Transform transform = new Transform()
+            {
+                Position = new Vector2(Body.Position.X, Body.Position.Y),
+                Rotation = new Rotation(Body.Rotation)
+            };
+            
+            GameObject.Transform = transform;
         }
 
         /// <summary>
