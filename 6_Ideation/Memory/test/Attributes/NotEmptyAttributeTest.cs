@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Memory.Test.vaL
+namespace Alis.Core.Aspect.Memory.Test.Attributes
 {
     /// <summary>
     /// The not empty attribute test class

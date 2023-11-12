@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SuppressUnmanagedCodeSecurityAttribute.cs
+//  File:PointOnEdgeException.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,13 +29,21 @@
 
 using System;
 
-namespace Alis.Core.Aspect.Base.Attributes
+namespace Alis.Core.Physic.Exceptions
 {
-    /// <summary>Allows managed code to call into unmanaged code without a stack walk. This class cannot be inherited.</summary>
-    [AttributeUsage(
-        AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Interface | AttributeTargets.Delegate,
-        AllowMultiple = true, Inherited = false)]
-    public sealed class SuppressUnmanagedCodeSecurityAttribute : Attribute
+    /// <summary>
+    ///     The point on edge exception class
+    /// </summary>
+    /// <seealso cref="NotImplementedException" />
+    public class PointOnEdgeException : Exception
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="PointOnEdgeException" /> class
+        /// </summary>
+        /// <param name="message">The message</param>
+        public PointOnEdgeException(string message)
+            : base(message)
+        {
+        }
     }
 }
