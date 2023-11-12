@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.SDL.Enums
+namespace Alis.Core.Aspect.Base.Mapping
 {
     /// <summary>
     ///     The sdl scancode enum

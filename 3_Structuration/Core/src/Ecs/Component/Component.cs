@@ -31,6 +31,8 @@ using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Ecs.Entity.GameObject;
+using Alis.Core.Graphic.SDL.Enums;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.Component
 {
@@ -206,5 +208,22 @@ namespace Alis.Core.Ecs.Component
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public void Attach(IGameObject gameObject) => GameObject = gameObject;
+
+        /// <summary>
+        /// Ons the press down key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        public virtual void OnPressDownKey(SdlKeycode key) => Logger.Trace();
+        /// <summary>
+        /// Ons the release key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        public virtual void OnReleaseKey(SdlKeycode key) => Logger.Trace();
+
+        /// <summary>
+        /// Ons the press key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        public virtual void OnPressKey(SdlKeycode key) => Logger.Trace();
     }
 }

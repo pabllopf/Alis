@@ -32,6 +32,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Reflection;
 using Alis.Core.Aspect.Base.Dll;
+using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Math.Shape.Point;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Memory;

@@ -41,13 +41,13 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         /// <summary>
         /// Gets or sets the value of the current scene
         /// </summary>
-        public IScene CurrentScene { get; set; }
-        
+        public IScene CurrentScene { get; set; } = new Entity.Scene.Scene();
+
         /// <summary>
         /// Gets or sets the value of the scenes
         /// </summary>
-        public List<IScene> Scenes { get; set; }
-        
+        public List<IScene> Scenes { get; set; } = new List<IScene>();
+
         /// <summary>
         /// Ons the enable
         /// </summary>

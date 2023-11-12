@@ -37,6 +37,9 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Base.Test.Dll
 {
+    /// <summary>
+    /// The embedded dll class test class
+    /// </summary>
     public class EmbeddedDllClassTest
     {
         

@@ -34,8 +34,15 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Data.Test
 {
+    /// <summary>
+    /// The asset manager test class
+    /// </summary>
     public class AssetManagerTest
     {
+        /// <summary>
+        /// Tests that find valid asset name should return correct path
+        /// </summary>
+        /// <exception cref="InvalidOperationException"></exception>
         [Fact]
         public void Find_ValidAssetName_ShouldReturnCorrectPath()
         {
@@ -50,6 +57,9 @@ namespace Alis.Core.Aspect.Data.Test
             Assert.Equal(expectedPath, result);
         }
 
+        /// <summary>
+        /// Tests that find null asset name should throw argument null exception
+        /// </summary>
         [Fact]
         public void Find_NullAssetName_ShouldThrowArgumentNullException()
         {
