@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 
 namespace Alis.Core.Aspect.Translation
@@ -52,7 +53,7 @@ namespace Alis.Core.Aspect.Translation
         /// <param name="language">The language</param>
         public void SetLanguage(Language language)
         {
-            Language = language;
+            Language = language ?? throw new ArgumentNullException($"[Language cannot be null]");
             if (!languages.Contains(language))
             {
                 languages.Add(language);
@@ -66,14 +67,26 @@ namespace Alis.Core.Aspect.Translation
         /// <param name="localCode">The local code</param>
         public void SetLanguage(string name, string localCode)
         {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException($"[Name cannot be null or empty]");
+            }
+            
+            if (string.IsNullOrEmpty(localCode))
+            {
+                throw new ArgumentNullException($"[Local code cannot be null or empty]");
+            }
+            
             Language language = languages.Find(l => l.Code == localCode);
             if (language is null)
             {
-                languages.Add(new Language()
+                Language languageNew =  new Language()
                 {
                     Name = name,
                     Code = localCode
-                });
+                };
+                languages.Add(languageNew);
+                Language = languageNew;
             }
             else
             {
@@ -91,6 +104,8 @@ namespace Alis.Core.Aspect.Translation
             {
                 languages.Add(language);
             }
+
+            Language ??= language;
         }
 
         /// <summary>
@@ -134,6 +149,22 @@ namespace Alis.Core.Aspect.Translation
         /// <exception cref="LanguageNotFound">[Language not found for code: {localCode}]</exception>
         public void AddTranslation(string localCode, string key, string value)
         {
+            if (string.IsNullOrEmpty(localCode))
+            {
+                throw new ArgumentNullException($"[localCode cannot be null or empty]");
+            }
+            
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentNullException($"[key cannot be null or empty]");
+            }
+            
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentNullException($"[value code cannot be null or empty]");
+            }
+
+            
             Language language = languages.Find(l => l.Code == localCode);
 
             if (language is null)
