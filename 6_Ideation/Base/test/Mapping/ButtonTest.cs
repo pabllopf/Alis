@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Aspect.Base.Test.Mapping
 {
+    /// <summary>
+    /// The button test class
+    /// </summary>
     public class ButtonTest
     {
         

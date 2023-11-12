@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Ecs.Entity.GameObject;
 using Alis.Core.Ecs.System.Property;
@@ -53,5 +54,23 @@ namespace Alis.Core.Ecs.Component
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public void Attach(IGameObject gameObject);
+        
+        /// <summary>
+        /// Ons the press down key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        public void OnPressDownKey(SdlKeycode key);
+        
+        /// <summary>
+        /// Ons the release key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        public void OnReleaseKey(SdlKeycode key);
+        
+        /// <summary>
+        /// Ons the press key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        public void OnPressKey(SdlKeycode key);
     }
 }

@@ -54,6 +54,11 @@ namespace Alis
     public class VideoGame : Game
     {
         /// <summary>
+        /// Gets or sets the value of the instance
+        /// </summary>
+        public static VideoGame Instance { get; private set; }
+        
+        /// <summary>
         ///     Video game
         /// </summary>
         public VideoGame()
@@ -74,6 +79,8 @@ namespace Alis
             });
 
             Logger.Trace();
+            
+            Instance = this;
         }
         
         /// <summary>
@@ -129,7 +136,7 @@ namespace Alis
         /// <summary>
         /// Gets or sets the value of the store manager
         /// </summary>
-        public  StoreManager StoreManager => Get<StoreManager>();
+        public StoreManager StoreManager => Get<StoreManager>();
 
         /// <summary>
         /// Gets or sets the value of the setting

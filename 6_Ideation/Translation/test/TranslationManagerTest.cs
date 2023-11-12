@@ -450,6 +450,9 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         
+        /// <summary>
+        /// Tests that add translation with valid data should add translation
+        /// </summary>
         [Fact]
         public void AddTranslation_WithValidData_ShouldAddTranslation()
         {
@@ -470,6 +473,9 @@ namespace Alis.Core.Aspect.Translation.Test
             Assert.Equal(value, translationManager.Translate(key));
         }
 
+        /// <summary>
+        /// Tests that add translation with invalid local code strings should throw exception
+        /// </summary>
         [Fact]
         public void AddTranslation_WithInvalidLocalCode_Strings_ShouldThrowException()
         {
@@ -484,6 +490,12 @@ namespace Alis.Core.Aspect.Translation.Test
             Assert.Equal($"[Language not found for code: {localCode}]", exception.Message);
         }
 
+        /// <summary>
+        /// Tests that add translation with null or empty parameter should throw exception
+        /// </summary>
+        /// <param name="localCode">The local code</param>
+        /// <param name="key">The key</param>
+        /// <param name="value">The value</param>
         [Theory]
         [InlineData("", "greeting", "Hello")] 
         [InlineData("fr", "", "Bonjour")]
