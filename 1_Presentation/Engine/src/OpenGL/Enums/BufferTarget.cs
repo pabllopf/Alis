@@ -47,12 +47,12 @@ namespace Alis.App.Engine.OpenGL.Enums
         /// <summary>
         ///     The pixel pack buffer buffer target
         /// </summary>
-        PixelPackBuffer = 0x88EB,
+        PackBuffer = 0x88EB,
 
         /// <summary>
         ///     The pixel unpack buffer buffer target
         /// </summary>
-        PixelUnpackBuffer = 0x88EC,
+        UnpackBuffer = 0x88EC,
 
         /// <summary>
         ///     The uniform buffer buffer target

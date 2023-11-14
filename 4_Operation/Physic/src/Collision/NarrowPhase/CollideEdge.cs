@@ -85,7 +85,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             }
             else
             {
-                HandleRegionAB(ref manifold, edgeA, edgeStart, edgeEnd, q, radiusSum, offset, circleBPosition, edgeNormal);
+                HandleRegionAb(ref manifold, edgeA, edgeStart, edgeEnd, q, radiusSum, offset, circleBPosition, edgeNormal);
             }
         }
 
@@ -101,7 +101,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="offset">The offset</param>
         /// <param name="circlePosition">The circle position</param>
         /// <param name="edgeNormal">The edge normal</param>
-        private static void HandleRegionAB(ref Manifold manifold, EdgeShape edgeA, Vector2 edgeStart, Vector2 edgeEnd, Vector2 q, float radiusSum, float offset, Vector2 circlePosition, Vector2 edgeNormal)
+        private static void HandleRegionAb(ref Manifold manifold, EdgeShape edgeA, Vector2 edgeStart, Vector2 edgeEnd, Vector2 q, float radiusSum, float offset, Vector2 circlePosition, Vector2 edgeNormal)
         {
             float den = Vector2.Dot(edgeEnd - edgeStart, edgeEnd - edgeStart);
             Debug.Assert(den > 0.0f);

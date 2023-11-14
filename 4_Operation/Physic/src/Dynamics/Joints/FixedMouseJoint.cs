@@ -97,7 +97,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The mass
         /// </summary>
-        private Matrix2X2F mass;
+        private Matrix2X2 mass;
 
         /// <summary>
         ///     The
@@ -248,7 +248,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // K    = [(1/m1 + 1/m2) * eye(2) - skew(r1) * invI1 * skew(r1) - skew(r2) * invI2 * skew(r2)]
             //      = [1/m1+1/m2     0    ] + invI1 * [r1.y*r1.y -r1.x*r1.y] + invI2 * [r1.y*r1.y -r1.x*r1.y]
             //        [    0     1/m1+1/m2]           [-r1.x*r1.y r1.x*r1.x]           [-r1.x*r1.y r1.x*r1.x]
-            Matrix2X2F kk = new Matrix2X2F(
+            Matrix2X2 kk = new Matrix2X2(
                 invMassA + invIa * rA.Y * rA.Y + gamma,
                 -invIa * rA.X * rA.Y,
                 -invIa * rA.X * rA.Y,

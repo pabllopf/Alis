@@ -36,5 +36,5 @@ namespace Alis.App.Engine.OpenGL.Delegates
     ///     The pixel storei
     /// </summary>
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void PixelStorei(PixelStoreParameter pname, int param);
+    public delegate void Storei(StoreParameter pname, int param);
 }

@@ -32,7 +32,7 @@ namespace Alis.App.Engine.OpenGL.Enums
     /// <summary>
     ///     The pixel format enum
     /// </summary>
-    public enum PixelFormat
+    public enum Format
     {
         /// <summary>
         ///     The color index pixel format

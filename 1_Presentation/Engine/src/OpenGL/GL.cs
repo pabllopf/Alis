@@ -295,7 +295,7 @@ namespace Alis.App.Engine.OpenGL
         /// <summary>
         ///     The pixel storei
         /// </summary>
-        public static readonly PixelStorei GlPixelStorei = _<PixelStorei>("glPixelStorei");
+        public static readonly Storei GlPixelStorei = _<Storei>("glPixelStorei");
 
         /// <summary>
         ///     The tex image
@@ -466,7 +466,7 @@ namespace Alis.App.Engine.OpenGL
         /// </summary>
         /// <param name="location">The location</param>
         /// <param name="param">The param</param>
-        public static void UniformMatrix4Fv(int location, Matrix4X4F param)
+        public static void UniformMatrix4Fv(int location, Matrix4X4 param)
         {
             Matrix4Float[0] = param.M11;
             Matrix4Float[1] = param.M12;

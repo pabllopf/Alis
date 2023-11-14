@@ -175,9 +175,9 @@ namespace Alis.App.Engine.OpenGL.Constructs
         ///     Sets the value using the specified param
         /// </summary>
         /// <param name="param">The param</param>
-        public void SetValue(Matrix4X4F param)
+        public void SetValue(Matrix4X4 param)
         {
-            EnsureType<Matrix4X4F>();
+            EnsureType<Matrix4X4>();
             UniformMatrix4Fv(Location, param);
         }
 
@@ -190,7 +190,7 @@ namespace Alis.App.Engine.OpenGL.Constructs
         {
             if (param.Length == 16)
             {
-                EnsureType<Matrix4X4F>();
+                EnsureType<Matrix4X4>();
                 GlUniformMatrix4Fv(Location, 1, false, param);
             }
             else if (param.Length == 9)

@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Aspect.Base.Mapping
 {
+    /// <summary>
+    /// The sdl input const class
+    /// </summary>
     public class SdlInputConst
     {
         /// <summary>

@@ -39,11 +39,6 @@ namespace Alis.Core.Aspect.Math.Util
     public struct Quaternion
     {
         /// <summary>
-        ///     The hash
-        /// </summary>
-        private readonly HashCode hash;
-
-        /// <summary>
         ///     The hash code
         /// </summary>
         private readonly int hashCode;
@@ -82,7 +77,7 @@ namespace Alis.Core.Aspect.Math.Util
             Z = z;
             W = w;
 
-            hash = new HashCode();
+            HashCode hash = new HashCode();
             hash.Add(X);
             hash.Add(Y);
             hash.Add(Z);
@@ -101,7 +96,7 @@ namespace Alis.Core.Aspect.Math.Util
             Z = vectorPart.Z;
             W = scalarPart;
 
-            hash = new HashCode();
+            HashCode hash = new HashCode();
             hash.Add(X);
             hash.Add(Y);
             hash.Add(Z);
@@ -393,7 +388,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// <summary>Creates a quaternion from the specified rotation matrix.</summary>
         /// <param name="matrix">The rotation matrix.</param>
         /// <returns>The newly created quaternion.</returns>
-        public static Quaternion CreateFromRotationMatrix(Matrix4X4F matrix)
+        public static Quaternion CreateFromRotationMatrix(Matrix4X4 matrix)
         {
             float trace = matrix.M11 + matrix.M22 + matrix.M33;
 

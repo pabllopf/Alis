@@ -34,7 +34,7 @@ namespace Alis.Core.Aspect.Math.Matrix
     /// <summary>
     ///     A 2-by-2 matrix. Stored in column-major order.
     /// </summary>
-    public struct Matrix2X2F
+    public struct Matrix2X2
     {
         /// <summary>
         ///     The col
@@ -49,7 +49,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>
         ///     Construct this matrix using columns.
         /// </summary>
-        public Matrix2X2F(Vector2 c1, Vector2 c2)
+        public Matrix2X2(Vector2 c1, Vector2 c2)
         {
             Ex = c1;
             Ey = c2;
@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>
         ///     Construct this matrix using scalars.
         /// </summary>
-        public Matrix2X2F(float a11, float a12, float a21, float a22)
+        public Matrix2X2(float a11, float a12, float a21, float a22)
         {
             Ex = new Vector2(a11, a21);
             Ey = new Vector2(a12, a22);
@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     Construct this matrix using an angle.
         ///     This matrix becomes an orthonormal rotation matrix.
         /// </summary>
-        public Matrix2X2F(float angle)
+        public Matrix2X2(float angle)
         {
             float c = (float) System.Math.Cos(angle), s = (float) System.Math.Sin(angle);
             Ex = new Vector2(c, -s);
@@ -121,7 +121,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>
         ///     Compute the inverse of this matrix, such that inv(A) * A = identity.
         /// </summary>
-        public Matrix2X2F GetInverse()
+        public Matrix2X2 GetInverse()
         {
             float col1X = Ex.X;
             float col2X = Ey.X;
@@ -132,13 +132,13 @@ namespace Alis.Core.Aspect.Math.Matrix
             //Box2DxDebug.Assert(det != 0.0f);
             det = 1.0f / det;
 
-            Matrix2X2F matrix2X2F = new Matrix2X2F(
+            Matrix2X2 matrix2X2 = new Matrix2X2(
                 det * col2Y,
                 -det * col2X,
                 -det * col1Y,
                 det * col1X
             );
-            return matrix2X2F;
+            return matrix2X2;
         }
 
         /// <summary>
@@ -164,16 +164,16 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>
         ///     Gets the value of the identity
         /// </summary>
-        public static Matrix2X2F Identity => new Matrix2X2F(1, 0, 0, 1);
+        public static Matrix2X2 Identity => new Matrix2X2(1, 0, 0, 1);
 
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static Matrix2X2F operator +(Matrix2X2F a, Matrix2X2F b)
+        public static Matrix2X2 operator +(Matrix2X2 a, Matrix2X2 b)
         {
-            Matrix2X2F c = new Matrix2X2F();
+            Matrix2X2 c = new Matrix2X2();
             c.Set(a.Ex + b.Ex, a.Ey + b.Ey);
             return c;
         }
@@ -181,7 +181,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>
         ///     Gets the value of the inverse
         /// </summary>
-        public Matrix2X2F Inverse
+        public Matrix2X2 Inverse
         {
             get
             {
@@ -192,7 +192,7 @@ namespace Alis.Core.Aspect.Math.Matrix
                     det = 1.0f / det;
                 }
 
-                Matrix2X2F result = new Matrix2X2F(
+                Matrix2X2 result = new Matrix2X2(
                     det * d,
                     -det * c,
                     -det * b,
