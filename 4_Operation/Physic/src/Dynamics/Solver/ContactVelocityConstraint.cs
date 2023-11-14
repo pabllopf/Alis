@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The
         /// </summary>
-        public Matrix2X2F K;
+        public Matrix2X2 K;
 
         /// <summary>
         ///     The normal
@@ -86,7 +86,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The normal mass
         /// </summary>
-        public Matrix2X2F NormalMass;
+        public Matrix2X2 NormalMass;
 
         /// <summary>
         ///     The point count

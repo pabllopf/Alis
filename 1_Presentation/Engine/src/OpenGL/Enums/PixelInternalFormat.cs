@@ -32,7 +32,7 @@ namespace Alis.App.Engine.OpenGL.Enums
     /// <summary>
     ///     The pixel internal format enum
     /// </summary>
-    public enum PixelInternalFormat
+    public enum InternalFormat
     {
         /// <summary>
         ///     The depth component pixel internal format

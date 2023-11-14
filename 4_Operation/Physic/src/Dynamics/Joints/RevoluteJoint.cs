@@ -118,7 +118,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        private Matrix2X2F k;
+        private Matrix2X2 k;
 
         // Solver shared
 
@@ -465,7 +465,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float mA = invMassA, mB = invMassB;
             float iA = invIa, iB = invIb;
 
-            k = new Matrix2X2F(
+            k = new Matrix2X2(
                 mA + mB + rA.Y * rA.Y * iA + rB.Y * rB.Y * iB,
                 -rA.Y * rA.X * iA - rB.Y * rB.X * iB,
                 -rA.Y * rA.X * iA - rB.Y * rB.X * iB,
@@ -667,7 +667,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float mA = invMassA, mB = invMassB;
                 float iA = invIa, iB = invIb;
 
-                Matrix2X2F kLocal = new Matrix2X2F(
+                Matrix2X2 kLocal = new Matrix2X2(
                     mA + mB + iA * rALocal.Y * rALocal.Y + iB * rBLocal.Y * rBLocal.Y,
                     -iA * rALocal.X * rALocal.Y - iB * rBLocal.X * rBLocal.Y,
                     -iA * rALocal.X * rALocal.Y - iB * rBLocal.X * rBLocal.Y,

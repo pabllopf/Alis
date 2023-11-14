@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Aspect.Math.Sample
 {
@@ -42,6 +43,10 @@ namespace Alis.Core.Aspect.Math.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
+            Console.WriteLine(new Vector2(3.0f, 2.0f).ToString());
+            Console.WriteLine(new Vector3(3.0f, 2.0f, 1.0f).ToString("F2"));
+            Console.WriteLine(new Vector2(3.0f, 2.0f).ToString("F2", System.Globalization.CultureInfo.InvariantCulture));
+            
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }

@@ -350,7 +350,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="matrix">The transformation matrix.</param>
         /// <returns>The transformed vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2 Transform(Vector2 position, Matrix3X2F matrix) => new Vector2(
+        public static Vector2 Transform(Vector2 position, Matrix3X2 matrix) => new Vector2(
             position.X * matrix.M11 + position.Y * matrix.M21 + matrix.M31,
             position.X * matrix.M12 + position.Y * matrix.M22 + matrix.M32
         );
@@ -360,7 +360,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="matrix">The transformation matrix.</param>
         /// <returns>The transformed vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2 Transform(Vector2 position, Matrix4X4F matrix) => new Vector2(
+        public static Vector2 Transform(Vector2 position, Matrix4X4 matrix) => new Vector2(
             position.X * matrix.M11 + position.Y * matrix.M21 + matrix.M41,
             position.X * matrix.M12 + position.Y * matrix.M22 + matrix.M42
         );
@@ -393,7 +393,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="matrix">The matrix.</param>
         /// <returns>The transformed vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2 TransformNormal(Vector2 normal, Matrix3X2F matrix) => new Vector2(
+        public static Vector2 TransformNormal(Vector2 normal, Matrix3X2 matrix) => new Vector2(
             normal.X * matrix.M11 + normal.Y * matrix.M21,
             normal.X * matrix.M12 + normal.Y * matrix.M22
         );
@@ -403,7 +403,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <param name="matrix">The matrix.</param>
         /// <returns>The transformed vector.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector2 TransformNormal(Vector2 normal, Matrix4X4F matrix) => new Vector2(
+        public static Vector2 TransformNormal(Vector2 normal, Matrix4X4 matrix) => new Vector2(
             normal.X * matrix.M11 + normal.Y * matrix.M21,
             normal.X * matrix.M12 + normal.Y * matrix.M22
         );

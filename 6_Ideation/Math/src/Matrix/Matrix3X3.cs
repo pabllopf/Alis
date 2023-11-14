@@ -33,11 +33,11 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Aspect.Math.Matrix
 {
     /// <summary>
-    ///     <see cref="Matrix3X3F" /> is a struct representing a glsl mat3 value
+    ///     <see cref="Matrix3X3" /> is a struct representing a glsl mat3 value
     /// </summary>
     ////////////////////////////////////////////////////////////
     [StructLayout(LayoutKind.Sequential)]
-    public struct Matrix3X3F
+    public struct Matrix3X3
     {
         /// <summary>
         ///     The ez
@@ -48,7 +48,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <param name="c1">The c1.</param>
         /// <param name="c2">The c2.</param>
         /// <param name="c3">The c3.</param>
-        public Matrix3X3F(Vector3 c1, Vector3 c2, Vector3 c3)
+        public Matrix3X3(Vector3 c1, Vector3 c2, Vector3 c3)
         {
             array = new float[9];
             Ex = c1;
@@ -58,13 +58,13 @@ namespace Alis.Core.Aspect.Math.Matrix
 
         ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Construct the <see cref="Matrix3X3F" /> from its components
+        ///     Construct the <see cref="Matrix3X3" /> from its components
         /// </summary>
         /// <remarks>
         ///     Arguments are in row-major order
         /// </remarks>
         ////////////////////////////////////////////////////////////
-        public Matrix3X3F(float a00, float a01, float a02,
+        public Matrix3X3(float a00, float a01, float a02,
             float a10, float a11, float a12,
             float a20, float a21, float a22)
         {
@@ -130,7 +130,7 @@ namespace Alis.Core.Aspect.Math.Matrix
 
         /// Get the inverse of this matrix as a 2-by-2.
         /// Returns the zero matrix if singular.
-        public void GetInverse22(ref Matrix3X3F m)
+        public void GetInverse22(ref Matrix3X3 m)
         {
             float a = Ex.X, b = Ey.X, c = Ex.Y, d = Ey.Y;
             float det = a * d - b * c;
@@ -160,7 +160,7 @@ namespace Alis.Core.Aspect.Math.Matrix
 
         /// Get the symmetric inverse of this matrix as a 3-by-3.
         /// Returns the zero matrix if singular.
-        public void GetSymInverse33(ref Matrix3X3F m)
+        public void GetSymInverse33(ref Matrix3X3 m)
         {
             float det = Dot(Ex, Cross(Ey, Ez));
             if (det != 0.0f)

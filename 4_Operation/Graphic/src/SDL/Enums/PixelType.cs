@@ -32,66 +32,66 @@ namespace Alis.Core.Graphic.SDL.Enums
     /// <summary>
     ///     The sdl pixel type enum
     /// </summary>
-    public enum PixelType
+    public enum Type
     {
         /// <summary>
         ///     The sdl pixel type unknown sdl pixel type
         /// </summary>
-        PixelTypeUnknown,
+        TypeUnknown,
 
         /// <summary>
         ///     The sdl pixel type index1 sdl pixel type
         /// </summary>
-        PixelTypeIndex1,
+        TypeIndex1,
 
         /// <summary>
         ///     The sdl pixel type index4 sdl pixel type
         /// </summary>
-        PixelTypeIndex4,
+        TypeIndex4,
 
         /// <summary>
         ///     The sdl pixel type index8 sdl pixel type
         /// </summary>
-        PixelTypeIndex8,
+        TypeIndex8,
 
         /// <summary>
         ///     The sdl pixel type packed8 sdl pixel type
         /// </summary>
-        PixelTypePacked8,
+        TypePacked8,
 
         /// <summary>
         ///     The sdl pixel type packed16 sdl pixel type
         /// </summary>
-        PixelTypePacked16,
+        TypePacked16,
 
         /// <summary>
         ///     The sdl pixel type packed32 sdl pixel type
         /// </summary>
-        PixelTypePacked32,
+        TypePacked32,
 
         /// <summary>
         ///     The sdl pixel type array u8 sdl pixel type
         /// </summary>
-        PixelTypeArrayU8,
+        TypeArrayU8,
 
         /// <summary>
         ///     The sdl pixel type arrayu16 sdl pixel type
         /// </summary>
-        PixelTypeArrayU16,
+        TypeArrayU16,
 
         /// <summary>
         ///     The sdl pixel type arrayu32 sdl pixel type
         /// </summary>
-        PixelTypeArrayU32,
+        TypeArrayU32,
 
         /// <summary>
         ///     The sdl pixel type arrayf16 sdl pixel type
         /// </summary>
-        PixelTypeArrayF16,
+        TypeArrayF16,
 
         /// <summary>
         ///     The sdl pixel type arrayf32 sdl pixel type
         /// </summary>
-        PixelTypeArrayF32
+        TypeArrayF32
     }
 }

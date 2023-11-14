@@ -32,7 +32,7 @@ namespace Alis.App.Engine.OpenGL.Enums
     /// <summary>
     ///     The pixel store parameter enum
     /// </summary>
-    public enum PixelStoreParameter
+    public enum StoreParameter
     {
         /// <summary>
         ///     The unpack swap bytes pixel store parameter
@@ -157,32 +157,32 @@ namespace Alis.App.Engine.OpenGL.Enums
         /// <summary>
         ///     The pixel tile width sgix pixel store parameter
         /// </summary>
-        PixelTileWidthSgix = 0x8140,
+        TileWidthSgix = 0x8140,
 
         /// <summary>
         ///     The pixel tile height sgix pixel store parameter
         /// </summary>
-        PixelTileHeightSgix = 0x8141,
+        TileHeightSgix = 0x8141,
 
         /// <summary>
         ///     The pixel tile grid width sgix pixel store parameter
         /// </summary>
-        PixelTileGridWidthSgix = 0x8142,
+        TileGridWidthSgix = 0x8142,
 
         /// <summary>
         ///     The pixel tile grid height sgix pixel store parameter
         /// </summary>
-        PixelTileGridHeightSgix = 0x8143,
+        TileGridHeightSgix = 0x8143,
 
         /// <summary>
         ///     The pixel tile grid depth sgix pixel store parameter
         /// </summary>
-        PixelTileGridDepthSgix = 0x8144,
+        TileGridDepthSgix = 0x8144,
 
         /// <summary>
         ///     The pixel tile cache size sgix pixel store parameter
         /// </summary>
-        PixelTileCacheSizeSgix = 0x8145,
+        TileCacheSizeSgix = 0x8145,
 
         /// <summary>
         ///     The pack resample sgix pixel store parameter

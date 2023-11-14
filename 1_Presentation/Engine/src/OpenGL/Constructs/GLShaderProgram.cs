@@ -34,6 +34,7 @@ using Alis.App.Engine.OpenGL.Enums;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using static Alis.App.Engine.OpenGL.Gl;
+using Type = System.Type;
 
 namespace Alis.App.Engine.OpenGL.Constructs
 {
@@ -183,7 +184,7 @@ namespace Alis.App.Engine.OpenGL.Constructs
                 case ActiveAttribType.Float: return typeof(float);
                 case ActiveAttribType.FloatMat2: return typeof(float[]);
                 case ActiveAttribType.FloatMat3: throw new Exception();
-                case ActiveAttribType.FloatMat4: return typeof(Matrix4X4F);
+                case ActiveAttribType.FloatMat4: return typeof(Matrix4X4);
                 case ActiveAttribType.FloatVec2: return typeof(Vector2);
                 case ActiveAttribType.FloatVec3: return typeof(Vector3);
                 case ActiveAttribType.FloatVec4: return typeof(Vector4);
@@ -215,7 +216,7 @@ namespace Alis.App.Engine.OpenGL.Constructs
                 case ActiveUniformType.BoolVec4: return typeof(bool[]);
                 case ActiveUniformType.FloatMat2: return typeof(float[]);
                 case ActiveUniformType.FloatMat3: throw new Exception();
-                case ActiveUniformType.FloatMat4: return typeof(Matrix4X4F);
+                case ActiveUniformType.FloatMat4: return typeof(Matrix4X4);
                 case ActiveUniformType.Sampler1D:
                 case ActiveUniformType.Sampler2D:
                 case ActiveUniformType.Sampler3D:

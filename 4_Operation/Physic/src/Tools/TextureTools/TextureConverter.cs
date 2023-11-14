@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <summary>
         ///     The identity
         /// </summary>
-        private Matrix4X4F transform = Matrix4X4F.Identity;
+        private Matrix4X4 transform = Matrix4X4.Identity;
 
         /// <summary>
         ///     The width
@@ -128,7 +128,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="multipartDetection">The multipart detection</param>
         /// <param name="transform">The transform</param>
         public TextureConverter(byte? alphaTolerance, float? hullTolerance,
-            bool? holeDetection, bool? multipartDetection, Matrix4X4F? transform)
+            bool? holeDetection, bool? multipartDetection, Matrix4X4? transform)
         {
             Initialize(null, null, alphaTolerance, hullTolerance, holeDetection,
                 multipartDetection, transform);
@@ -155,7 +155,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="multipartDetection">The multipart detection</param>
         /// <param name="transform">The transform</param>
         public TextureConverter(uint[] data, int width, byte? alphaTolerance,
-            float? hullTolerance, bool? holeDetection, bool? multipartDetection, Matrix4X4F? transform)
+            float? hullTolerance, bool? holeDetection, bool? multipartDetection, Matrix4X4? transform)
         {
             Initialize(data, width, alphaTolerance, hullTolerance, holeDetection,
                 multipartDetection, transform);
@@ -183,7 +183,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         }
 
         /// <summary>Can be used for scaling.</summary>
-        public Matrix4X4F Transform
+        public Matrix4X4 Transform
         {
             get => transform;
             set => transform = value;
@@ -232,7 +232,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="transformLocal">The transform</param>
         /// <exception cref="ArgumentNullException">'data' can't be null if 'width' is set.</exception>
         /// <exception cref="ArgumentNullException">'width' can't be null if 'data' is set.</exception>
-        private void Initialize(uint[] dataLocal, int? widthLocal, byte? alphaToleranceLocal, float? hullToleranceLocal, bool? holeDetectionLocal, bool? multipartDetectionLocal, Matrix4X4F? transformLocal)
+        private void Initialize(uint[] dataLocal, int? widthLocal, byte? alphaToleranceLocal, float? hullToleranceLocal, bool? holeDetectionLocal, bool? multipartDetectionLocal, Matrix4X4? transformLocal)
         {
             if ((dataLocal != null) && !widthLocal.HasValue)
             {
@@ -257,7 +257,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             MultipartDetection = multipartDetectionLocal.HasValue && multipartDetectionLocal.Value;
 
-            Transform = transformLocal ?? Matrix4X4F.Identity;
+            Transform = transformLocal ?? Matrix4X4.Identity;
         }
 
         /// <summary>
@@ -512,7 +512,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     ApplyTriangulationCompatibleWinding(ref detectedPolygons);
                 }
 
-                if (transform != Matrix4X4F.Identity)
+                if (transform != Matrix4X4.Identity)
                 {
                     ApplyTransform(ref detectedPolygons);
                 }

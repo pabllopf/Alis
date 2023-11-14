@@ -145,7 +145,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        private Matrix2X2F k;
+        private Matrix2X2 k;
 
         /// <summary>
         ///     The local center
@@ -797,7 +797,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float k23 = iA * a1Local + iB * a2Local;
                 float k33 = mA + mB + iA * a1Local * a1Local + iB * a2Local * a2Local;
 
-                Matrix3X3F matrix3X3F = new Matrix3X3F(
+                Matrix3X3 matrix3X3 = new Matrix3X3(
                     new Vector3(k11, k12, k13),
                     new Vector3(k12, k22, k23),
                     new Vector3(k13, k23, k33)
@@ -814,7 +814,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     c2
                 );
 
-                impulseLocal = matrix3X3F.Solve33(-c);
+                impulseLocal = matrix3X3.Solve33(-c);
             }
             else
             {
@@ -826,13 +826,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     k22 = 1.0f;
                 }
 
-                Matrix2X2F matrix2X2F = new Matrix2X2F
+                Matrix2X2 matrix2X2 = new Matrix2X2
                 {
                     Ex = new Vector2(k11, k12),
                     Ey = new Vector2(k12, k22)
                 };
 
-                Vector2 impulse1 = matrix2X2F.Solve(-c1);
+                Vector2 impulse1 = matrix2X2.Solve(-c1);
                 impulseLocal = new Vector3(
                     impulse1.X,
                     impulse1.Y,

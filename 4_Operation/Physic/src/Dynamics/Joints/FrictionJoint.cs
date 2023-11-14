@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The linear mass
         /// </summary>
-        private Matrix2X2F linearMass;
+        private Matrix2X2 linearMass;
         
         /// <summary>
         ///     The
@@ -248,7 +248,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float mA = invMassA, mB = invMassB;
             float iA = invIa, iB = invIb;
 
-            Matrix2X2F k = new Matrix2X2F(
+            Matrix2X2 k = new Matrix2X2(
                 mA + mB + iA * rA.Y * rA.Y + iB * rB.Y * rB.Y,
                 -iA * rA.X * rA.Y - iB * rB.X * rB.Y,
                 -iA * rA.X * rA.Y - iB * rB.X * rB.Y,

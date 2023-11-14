@@ -32,7 +32,7 @@ namespace Alis.Core.Aspect.Math.Definition
     /// <summary>
     /// The depth
     /// </summary>
-    public struct Depth : IDefinition
+    public struct Depth
     {
         /// <summary>
         /// The value

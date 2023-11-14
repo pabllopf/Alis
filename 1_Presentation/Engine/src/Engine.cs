@@ -46,7 +46,7 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.SDL;
 using Alis.Core.Graphic.SDL.Enums;
 using Alis.Core.Graphic.SDL.Structs;
-using PixelType = Alis.App.Engine.OpenGL.Enums.PixelType;
+using Type = Alis.App.Engine.OpenGL.Enums.Type;
 
 namespace Alis.App.Engine
 {
@@ -186,7 +186,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The menu down state
         /// </summary>
-        private bool menu_down_state = true;
+        private bool menuDownState = true;
 
         /// <summary>
         ///     The style
@@ -430,12 +430,12 @@ namespace Alis.App.Engine
                 ImGui.EndMainMenuBar();
 
 
-                int size_menu_down = 25;
-                Vector2 size_dock = viewport.Size - new Vector2(0, size_menu_down * 2);
+                int sizeMenuDown = 25;
+                Vector2 sizeDock = viewport.Size - new Vector2(0, sizeMenuDown * 2);
 
 
                 ImGui.SetNextWindowPos(viewport.WorkPos);
-                ImGui.SetNextWindowSize(size_dock);
+                ImGui.SetNextWindowSize(sizeDock);
                 //ImGui.SetNextWindowViewport(viewport.ID);
                 ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
                 ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
@@ -447,8 +447,8 @@ namespace Alis.App.Engine
 
                 ImGui.PopStyleVar(3);
 
-                uint dockspace_id = ImGui.GetId("MyDockSpace");
-                ImGui.DockSpace(dockspace_id, size_dock);
+                uint dockspaceId = ImGui.GetId("MyDockSpace");
+                ImGui.DockSpace(dockspaceId, sizeDock);
 
                 if (ImGui.BeginMenuBar())
                 {
@@ -466,7 +466,7 @@ namespace Alis.App.Engine
                 ShowDemos();
 
                 // Add menu bar flag and disable everything else
-                ImGuiWindowFlags style_glags_menu_down =
+                ImGuiWindowFlags styleGlagsMenuDown =
                     ImGuiWindowFlags.NoDecoration | ImGuiWindowFlags.NoInputs |
                     ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoScrollWithMouse |
                     ImGuiWindowFlags.NoSavedSettings |
@@ -477,9 +477,9 @@ namespace Alis.App.Engine
                 ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
                 ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0.0f, 0.0f));
 
-                ImGui.SetNextWindowPos(new Vector2(viewport.Pos.X, viewport.Pos.Y + (viewport.Size.Y - size_menu_down)));
-                ImGui.SetNextWindowSize(new Vector2(viewport.Size.X, size_menu_down));
-                if (ImGui.Begin("##MenuDown", ref menu_down_state, style_glags_menu_down))
+                ImGui.SetNextWindowPos(new Vector2(viewport.Pos.X, viewport.Pos.Y + (viewport.Size.Y - sizeMenuDown)));
+                ImGui.SetNextWindowSize(new Vector2(viewport.Size.X, sizeMenuDown));
+                if (ImGui.Begin("##MenuDown", ref menuDownState, styleGlagsMenuDown))
                 {
                     ImGui.PopStyleVar(3);
                     if (ImGui.BeginMenuBar())
@@ -706,7 +706,7 @@ namespace Alis.App.Engine
             float bottom = drawData.DisplayPos.Y + drawData.DisplaySize.Y;
 
             _shader["Texture"].SetValue(0);
-            _shader["ProjMtx"].SetValue(Matrix4X4F.CreateOrthographicOffCenter(left, right, bottom, top, -1, 1));
+            _shader["ProjMtx"].SetValue(Matrix4X4.CreateOrthographicOffCenter(left, right, bottom, top, -1, 1));
             Gl.GlBindSampler(0, 0);
 
             Gl.GlBindVertexArray(_vertexArrayObject);
@@ -761,12 +761,12 @@ namespace Alis.App.Engine
         /// <param name="format">The format</param>
         /// <param name="internalFormat">The internal format</param>
         /// <returns>The texture id</returns>
-        public static uint LoadTexture(IntPtr pixelData, int width, int height, PixelFormat format = PixelFormat.Rgba, PixelInternalFormat internalFormat = PixelInternalFormat.Rgba)
+        public static uint LoadTexture(IntPtr pixelData, int width, int height, Format format = Format.Rgba, InternalFormat internalFormat = InternalFormat.Rgba)
         {
             uint textureId = Gl.GenTexture();
-            Gl.GlPixelStorei(PixelStoreParameter.UnpackAlignment, 1);
+            Gl.GlPixelStorei(StoreParameter.UnpackAlignment, 1);
             Gl.GlBindTexture(TextureTarget.Texture2D, textureId);
-            Gl.GlTexImage2D(TextureTarget.Texture2D, 0, internalFormat, width, height, 0, format, PixelType.UnsignedByte, pixelData);
+            Gl.GlTexImage2D(TextureTarget.Texture2D, 0, internalFormat, width, height, 0, format, Type.UnsignedByte, pixelData);
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
             Gl.GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
             Gl.GlBindTexture(TextureTarget.Texture2D, 0);

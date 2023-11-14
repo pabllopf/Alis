@@ -402,7 +402,7 @@ namespace Alis.App.Engine.OpenGL.Enums
         /// <summary>
         ///     The pixel tex gen sgix enable cap
         /// </summary>
-        PixelTexGenSgix = 0x8139,
+        TexGenSgix = 0x8139,
 
         /// <summary>
         ///     The sprite sgix enable cap
@@ -447,7 +447,7 @@ namespace Alis.App.Engine.OpenGL.Enums
         /// <summary>
         ///     The pixel texture sgis enable cap
         /// </summary>
-        PixelTextureSgis = 0x8353,
+        TextureSgis = 0x8353,
 
         /// <summary>
         ///     The async tex image sgix enable cap
