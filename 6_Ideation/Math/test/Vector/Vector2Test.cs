@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -193,7 +194,15 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             string result = vector.ToString();
 
             // Assert
-            Assert.Equal("<7. 8>", result);
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                Assert.Equal("<7, 8>", result);
+            }
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                Assert.Equal("<7. 8>", result);
+            }
         }
 
         /// <summary>
