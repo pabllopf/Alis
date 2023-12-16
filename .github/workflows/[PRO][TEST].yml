@@ -26,10 +26,10 @@ jobs:
           dotnet-version: 6.0.x
 
       - name: Dotnet test Debug
-        run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet test $i --configuration Debug ; fi;done
+        run: dotnet test alis.sln --configuration Debug
             
       - name: Dotnet test Release
-        run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet test $i --configuration Release ; fi;done
+        run: dotnet test alis.sln --configuration Release
     
   Run_Test_On_Windows_Latest:
     runs-on: windows-latest
@@ -44,11 +44,11 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
-      - name: Dotnet test debug
-        run: Get-ChildItem -Recurse -Filter *.Test.csproj | ForEach-Object { dotnet test $_.FullName --configuration Debug }
-        
-      - name: Dotnet test release
-        run:  Get-ChildItem -Recurse -Filter *.Test.csproj | ForEach-Object { dotnet test $_.FullName --configuration Release }
+      - name: Dotnet test Debug
+        run: dotnet test alis.sln --configuration Debug
+            
+      - name: Dotnet test Release
+        run: dotnet test alis.sln --configuration Release
   
   Run_Test_On_Ubuntu_Latest:
     runs-on: ubuntu-latest
@@ -64,10 +64,8 @@ jobs:
           dotnet-version: 6.0.x
 
       - name: Dotnet test Debug
-        run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet test $i --configuration Debug ; fi;done
-
+        run: dotnet test alis.sln --configuration Debug
+            
       - name: Dotnet test Release
-        run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet test $i --configuration Release ; fi;done
-    
-        
+        run: dotnet test alis.sln --configuration Release
     
