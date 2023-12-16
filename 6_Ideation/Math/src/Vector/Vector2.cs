@@ -500,17 +500,6 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <altmember cref="Length" />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public readonly float LengthSquared() => Dot(this, this);
-
-        /// <summary>Returns the string representation of the current instance using default formatting.</summary>
-        /// <returns>The string representation of the current instance.</returns>
-        /// <remarks>
-        ///     This method returns a string in which each element of the vector is formatted using the "G" (general) format
-        ///     string and the formatting conventions of the current thread culture. The "&lt;" and "&gt;" characters are used to
-        ///     begin and end the string, and the current culture's
-        ///     <see cref="System.Globalization.NumberFormatInfo.NumberGroupSeparator" /> property followed by a space is used to
-        ///     separate each element.
-        /// </remarks>
-        public readonly override string ToString() => ToString("G", CultureInfo.CurrentCulture);
         
         /// <summary>
         ///     Returns the string representation of the current instance using the specified format string to format
