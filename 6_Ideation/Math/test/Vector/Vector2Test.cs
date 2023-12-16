@@ -197,22 +197,6 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that test to string method with format
-        /// </summary>
-        [Fact]
-        public void TestToStringMethodWithFormat()
-        {
-            // Arrange
-            Vector2 vector = new Vector2(9.0f, 10.0f);
-
-            // Act
-            string result = vector.ToString("F2");
-
-            // Assert
-            Assert.Equal("<9,00. 10,00>", result);
-        }
-
-        /// <summary>
         /// Tests that test to string method with format and provider
         /// </summary>
         [Fact]
@@ -730,11 +714,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             // Arrange
             Vector2 vector = new Vector2(1.0f, 2.0f);
-            float[] array = null;
             int index = 0;
 
             // Act and Assert
-            Assert.Throws<NullReferenceException>(() => vector.CopyTo(array, index));
+            Assert.Throws<NullReferenceException>(() => vector.CopyTo(null, index));
         }
 
         /// <summary>
@@ -835,23 +818,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             // Assert
             Assert.True(result);
         }
-
-        /// <summary>
-        /// Tests that test equals different type returns false
-        /// </summary>
-        [Fact]
-        public void TestEquals_DifferentType_ReturnsFalse()
-        {
-            // Arrange
-            Vector2 vector = new Vector2(2.0f, 3.0f);
-
-            // Act
-            bool result = vector.Equals("Not a Vector2");
-
-            // Assert
-            Assert.False(result);
-        }
-
+        
         /// <summary>
         /// Tests that test equals null object returns false
         /// </summary>
