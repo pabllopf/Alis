@@ -17,5 +17,8 @@
         $(AssemblyName.Contains('Benchmark')) == false 
         ">
         <TargetFramework2>netstandard2.0</TargetFramework2>
+        <PublishTrimmed>false</PublishTrimmed>
+        <PublishAot>false</PublishAot>
+        <SelfContained>false</SelfContained>
     </PropertyGroup>
 </Project>
