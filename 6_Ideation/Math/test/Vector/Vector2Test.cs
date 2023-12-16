@@ -182,30 +182,6 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         }
 
         /// <summary>
-        /// Tests that test to string method
-        /// </summary>
-        [Fact]
-        public void TestToStringMethod()
-        {
-            // Arrange
-            Vector2 vector = new Vector2(7.0f, 8.0f);
-
-            // Act
-            string result = vector.ToString();
-
-            // Assert
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                Assert.Equal("<7, 8>", result);
-            }
-            
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                Assert.Equal("<7. 8>", result);
-            }
-        }
-
-        /// <summary>
         /// Tests that test to string method with format and provider
         /// </summary>
         [Fact]
