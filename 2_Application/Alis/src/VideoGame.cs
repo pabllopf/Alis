@@ -53,7 +53,6 @@ namespace Alis
     /// <seealso cref="Game" />
     public class VideoGame : Game
     {
-        
         /// <summary>
         /// Gets or sets the value of the instance
         /// </summary>
