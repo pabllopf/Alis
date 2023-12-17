@@ -30,6 +30,7 @@
 using System.Collections.Generic;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
 
 namespace Alis.Core.Ecs.Entity.GameObject
@@ -62,7 +63,7 @@ namespace Alis.Core.Ecs.Entity.GameObject
         /// <summary>
         /// Gets or sets the value of the transform
         /// </summary>
-        public Transform Transform { get; set; } = new Transform();
+        public Transform Transform { get; set; } = new Transform(new Vector2(0, 0), new Rotation(0), new Vector2(1, 1));
         
         /// <summary>
         /// Adds the component
@@ -97,10 +98,6 @@ namespace Alis.Core.Ecs.Entity.GameObject
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         public void Clear<T>() where T : IComponent => Components.Clear();
-
-       
-        
-        
         
         /// <summary>
         /// Ons the enable

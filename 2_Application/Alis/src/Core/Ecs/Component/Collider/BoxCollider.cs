@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Builder.Core.Ecs.Component.Collider;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
@@ -205,8 +206,8 @@ namespace Alis.Core.Ecs.Component.Collider
             Body.Awake = true;
             Body.IsSensor = IsTrigger;
 
-            GraphicManager.Attach(this);
-            PhysicManager.Attach(Body);
+            VideoGame.Instance.GraphicManager.Attach(this);
+            VideoGame.Instance.PhysicManager.Attach(Body);
         }
 
         /// <summary>
@@ -229,6 +230,11 @@ namespace Alis.Core.Ecs.Component.Collider
             };
             
             GameObject.Transform = transform;
+            if (GameObject.Name == "Ball")
+            {
+                Console.WriteLine("Name:" + GameObject.Name +  " GameObject.Transform.Position.X: " + GameObject.Transform.Position.X + " GameObject.Transform.Position.Y: " + GameObject.Transform.Position.Y);
+            }
+            
         }
 
         /// <summary>

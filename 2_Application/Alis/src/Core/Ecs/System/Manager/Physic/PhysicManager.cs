@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Ecs.System.Manager.Physic
@@ -38,6 +40,8 @@ namespace Alis.Core.Ecs.System.Manager.Physic
     /// <seealso cref="Manager" />
     public class PhysicManager : Manager, IPhysicManager
     {
+        private readonly World world = new World(new Vector2(0, 9.8f));
+        
         /// <summary>
         /// Ons the enable
         /// </summary>
@@ -84,6 +88,7 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         public override void OnUpdate()
         {
             Logger.Trace();
+            world.Step(Game.TimeManager.Configuration.FixedTimeStep);
         }
 
         /// <summary>
@@ -194,9 +199,9 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         /// Attaches the body
         /// </summary>
         /// <param name="body">The body</param>
-        public static void Attach(Body body)
+        public void Attach(Body body)
         {
-            
+            world.AddBody(body);
         }
     }
 }

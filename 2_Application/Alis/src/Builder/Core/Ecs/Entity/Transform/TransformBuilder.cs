@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Builder.Core.Ecs.Entity.Transform
@@ -46,7 +47,7 @@ namespace Alis.Builder.Core.Ecs.Entity.Transform
         /// <summary>
         ///     The transform
         /// </summary>
-        private Alis.Core.Aspect.Math.Transform transform = new Alis.Core.Aspect.Math.Transform();
+        private Alis.Core.Aspect.Math.Transform transform = new Alis.Core.Aspect.Math.Transform(new Vector2(0,0), new Rotation(0), new Vector2(1, 1));
 
         /// <summary>
         ///     Builds this instance

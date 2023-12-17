@@ -455,7 +455,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// Attaches the collider
         /// </summary>
         /// <param name="collider">The collider</param>
-        public static void Attach(BoxCollider collider)
+        public void Attach(BoxCollider collider)
         {
             for (int i = 0; i < ColliderBases.Length; i++)
             {
