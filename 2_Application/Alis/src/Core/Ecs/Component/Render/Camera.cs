@@ -77,15 +77,7 @@ namespace Alis.Core.Ecs.Component.Render
              //   (uint) VideoGame.GraphicManager.Setting.Window.Y);
            // view = new View(new Vector2(PointOfView.X, PointOfView.Y), new Vector2(Resolution.X, Resolution.Y));
         }
-
-        /// <summary>
-        ///     Befores the update
-        /// </summary>
-        public override void OnBeforeUpdate()
-        {
-            Logger.Trace();
-        }
-
+        
         /// <summary>
         ///     Updates this instance
         /// </summary>

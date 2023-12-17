@@ -758,8 +758,11 @@ namespace Alis.Core.Physic.Dynamics
         {
             if ((Flags & BodyFlags.Enabled) == BodyFlags.Enabled)
             {
-                IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
-                fixture.CreateProxies(broadPhase, ref Xf);
+                if (ContactManager.Current != null)
+                {
+                    IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
+                    fixture.CreateProxies(broadPhase, ref Xf);
+                }
             }
 
             FixtureList.Add(fixture);

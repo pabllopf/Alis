@@ -60,11 +60,6 @@ namespace Alis.Core.Ecs.Component
         public string Tag { get; set; }
         
         /// <summary>
-        /// Gets or sets the value of the transform
-        /// </summary>
-        public Transform Transform { get; set; }
-        
-        /// <summary>
         /// Gets or sets the value of the game object
         /// </summary>
         public IGameObject GameObject { get; set; }

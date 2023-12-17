@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs.System
         /// <summary>
         ///     The time manager base
         /// </summary>
-        private static TimeManager TimeManager { get; } = new TimeManager();
+        public static TimeManager TimeManager { get; } = new TimeManager();
         
         /// <summary>
         ///     Run program

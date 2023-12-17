@@ -65,6 +65,20 @@ namespace Alis.Core.Aspect.Math
             Scale = scale;
         }
         
+        public Transform(Vector2 position, Rotation rotation)
+        {
+            Position = position;
+            Rotation = rotation;
+            Scale = Vector2.One;
+        }
+        
+        public Transform(Vector2 position)
+        {
+            Position = position;
+            Rotation = new Rotation(0);
+            Scale = Vector2.One;
+        }
+        
         /// <summary>Set this to the identity transform.</summary>
         public void SetIdentity()
         {
