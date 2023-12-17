@@ -60,7 +60,7 @@ namespace Alis.Core.Network.Internal
         /// <summary>
         ///     The internal read cts
         /// </summary>
-        private readonly CancellationTokenSource _internalReadCts;
+        private readonly CancellationTokenSource _internalReadCts = new CancellationTokenSource();
 
         /// <summary>
         ///     The is client
@@ -143,7 +143,6 @@ namespace Alis.Core.Network.Internal
             _stream = stream;
             _isClient = isClient;
             SubProtocol = subProtocol;
-            _internalReadCts = new CancellationTokenSource();
             _state = WebSocketState.Open;
             _readCursor = new WebSocketReadCursor(null, 0, 0);
 
@@ -452,7 +451,7 @@ namespace Alis.Core.Network.Internal
             {
                 if (_state == WebSocketState.Open)
                 {
-                    CancellationTokenSource cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+                    using CancellationTokenSource cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
                     try
                     {
                         CloseOutputAsync(WebSocketCloseStatus.EndpointUnavailable, "Service is Disposed", cts.Token)
@@ -468,6 +467,7 @@ namespace Alis.Core.Network.Internal
                 // cancel pending reads - usually does nothing
                 _internalReadCts.Cancel();
                 _stream.Close();
+                _internalReadCts.Dispose();
             }
             catch (Exception ex)
             {
@@ -586,25 +586,6 @@ namespace Alis.Core.Network.Internal
         /// </summary>
         private ArraySegment<byte> GetBuffer(MemoryStream stream)
         {
-#if NET45
-            // NET45 does not have a TryGetBuffer function on Stream
-            if (_tryGetBufferFailureLogged)
-            {
-                return new ArraySegment<byte>(stream.ToArray(), 0, (int) stream.Position);
-            }
-
-            // note that a MemoryStream will throw an UnuthorizedAccessException if the internal buffer is not public. Set publiclyVisible = true
-            try
-            {
-                return new ArraySegment<byte>(stream.GetBuffer(), 0, (int) stream.Position);
-            }
-            catch (UnauthorizedAccessException)
-            {
-                Events.Log.TryGetBufferNotSupported(_guid, stream?.GetType()?.ToString());
-                _tryGetBufferFailureLogged = true;
-                return new ArraySegment<byte>(stream.ToArray(), 0, (int) stream.Position);
-            }
-#else
             // Avoid calling ToArray on the MemoryStream because it allocates a new byte array on tha heap
             // We avaoid this by attempting to access the internal memory stream buffer
             // This works with supported streams like the recyclable memory stream and writable memory streams
@@ -622,7 +603,6 @@ namespace Alis.Core.Network.Internal
             }
 
             return new ArraySegment<byte>(buffer.Array, buffer.Offset, (int) stream.Position);
-#endif
         }
 
         /// <summary>
@@ -668,6 +648,7 @@ namespace Alis.Core.Network.Internal
                     throw new NotSupportedException($"MessageType {messageType} not supported");
             }
         }
+        
 
         /// <summary>
         ///     Automatic WebSocket close in response to some invalid data from the remote websocket host
@@ -689,7 +670,7 @@ namespace Alis.Core.Network.Internal
                     statusDescription = statusDescription + "\r\n\r\n" + ex;
                 }
 
-                CancellationTokenSource autoCancel = new CancellationTokenSource(timeSpan);
+                using CancellationTokenSource autoCancel = new CancellationTokenSource(timeSpan);
                 await CloseOutputAsync(closeStatus, statusDescription, autoCancel.Token);
             }
             catch (OperationCanceledException)
