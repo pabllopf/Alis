@@ -109,6 +109,57 @@ namespace Alis.Sample.Flappy.Bird
                             .Build())
                         
                         ////////////////////////////////////////
+                        // MAIN MENU SCENE: MESSAGE MENU
+                        ////////////////////////////////////////
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Message Menu")
+                            .Transform(transform => transform
+                                .Position(52, 82.0f)
+                                .Rotation(0)
+                                .Scale(1f, 1.0f)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite
+                                .Builder()
+                                .SetTexture(AssetManager.Find("message.png"))
+                                .Depth(2)
+                                .Build())
+                            .Build())
+                        
+                        ////////////////////////////////////////
+                        // MAIN MENU SCENE: BIRD
+                        ////////////////////////////////////////
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Bird")
+                            .Transform(transform => transform
+                                .Position(72, 270.0f)
+                                .Rotation(0)
+                                .Scale(1f, 1.0f)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite
+                                .Builder()
+                                .SetTexture(AssetManager.Find("bluebird-down_flap.png"))
+                                .Depth(2)
+                                .Build())
+                            .Build())
+                        
+                        ////////////////////////////////////////
+                        // MAIN MENU SCENE: COUNTER
+                        ////////////////////////////////////////
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Counter")
+                            .Transform(transform => transform
+                                .Position(132, 28f)
+                                .Rotation(0)
+                                .Scale(1f, 1.0f)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite
+                                .Builder()
+                                .SetTexture(AssetManager.Find("0.png"))
+                                .Depth(3)
+                                .Build())
+                            .Build())
+                        
+                        ////////////////////////////////////////
                         // MAIN MENU SCENE: SOUNDTRACK
                         ////////////////////////////////////////
                         .Add<GameObject>(gameObject => gameObject

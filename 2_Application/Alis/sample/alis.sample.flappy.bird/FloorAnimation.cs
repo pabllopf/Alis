@@ -42,6 +42,9 @@ namespace Alis.Sample.Flappy.Bird
     /// <seealso cref="Component"/>
     public class FloorAnimation : Component
     {
+        /// <summary>
+        /// Ons the update
+        /// </summary>
         public override void OnUpdate()
         {   
             // get the x position of game object:
