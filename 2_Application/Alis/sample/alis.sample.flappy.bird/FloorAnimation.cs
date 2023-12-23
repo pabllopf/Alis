@@ -53,6 +53,7 @@ namespace Alis.Sample.Flappy.Bird
             // get the y position of game object:
             float y = GameObject.Transform.Position.Y;
 
+            // if the x position is less than -50.0f, then reset the x position to 0.0f
             Vector2 newPosition = x < -50.0f ? new Vector2(0, y) : new Vector2(x - 0.05f, y);
             
             Transform transform = new Transform()
