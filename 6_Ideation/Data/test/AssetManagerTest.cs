@@ -48,8 +48,19 @@ namespace Alis.Core.Aspect.Data.Test
         {
             // Arrange
             const string assetName = "example.txt";
-            string expectedPath = Path.Combine(Path.Combine(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? throw new InvalidOperationException()),"Assets"), assetName);
+            string directory = Path.Combine(Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory) ?? throw new InvalidOperationException()),"Assets");
+            string expectedPath = Path.Combine(directory, assetName);
 
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+            
+            if (!File.Exists(expectedPath))
+            {
+                File.Create(expectedPath);
+            }
+            
             // Act
             string result = AssetManager.Find(assetName);
 
