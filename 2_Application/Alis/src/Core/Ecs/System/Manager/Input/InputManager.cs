@@ -33,7 +33,6 @@ using System.Linq;
 using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Entity.GameObject;
-using Alis.Core.Ecs.System.Manager.Scene;
 using Alis.Core.Graphic.SDL.Enums;
 using Alis.Core.Graphic.SDL.Structs;
 using Sdl = Alis.Core.Graphic.SDL.Sdl;

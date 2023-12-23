@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Math.Definition;
+using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity.GameObject;
 using Alis.Core.Ecs.Entity.Scene;
@@ -69,11 +70,26 @@ namespace Alis.Sample.Flappy.Bird
                         .Build())
                     .Build())
                 .World(sceneManager => sceneManager
+                    
+                    ////////////////////////////////////////
+                    // MAIN MENU SCENE:
+                    ////////////////////////////////////////
                     .Add<Scene>(gameScene => gameScene
+                        .Name("Main Menu")
                         .Add<GameObject>(gameObject => gameObject
+                            .Name("Background")
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
                                 .SetTexture(AssetManager.Find("background-day.png"))
+                                .Build())
+                            .Build())
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Soundtrack")
+                            .AddComponent<AudioSource>( audioSource => audioSource
+                                .Builder()
+                                .SetAudioClip(audioClip => audioClip
+                                    .FilePath(AssetManager.Find("main_theme.mp3"))
+                                    .Build())
                                 .Build())
                             .Build())
                         .Build())
