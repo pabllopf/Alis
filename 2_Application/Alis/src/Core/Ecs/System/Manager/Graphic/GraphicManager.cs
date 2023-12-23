@@ -29,9 +29,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
+using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
@@ -58,7 +60,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <summary>
         ///     The renderWindow
         /// </summary>
-        private static IntPtr _renderer;
+        public IntPtr Renderer;
         
         /// <summary>
         /// The default size
@@ -94,8 +96,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         public override void OnInit()
         {
             Logger.Log("init::graphic:new");
-
-            defaultSize = new Vector2(1024, 640);
+            
+            defaultSize = new Vector2(VideoGame.Instance.Settings.Graphic.Window.Resolution.X, VideoGame.Instance.Settings.Graphic.Window.Resolution.Y);
             
             InitRenderWindow();
         }
@@ -154,14 +156,14 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Console.WriteLine(_window == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : $"Window created");
             
             // Create the renderer
-            _renderer = Sdl.CreateRenderer(
+            Renderer = Sdl.CreateRenderer(
                 _window,
                 -1,
                 SdlRendererFlags.SdlRendererAccelerated  );
             
             
             // Check if the renderer was created successfully.
-            Console.WriteLine(_renderer == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : $"Renderer created");
+            Console.WriteLine(Renderer == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : $"Renderer created");
             
             int totalDisplays = Sdl.GetNumVideoDisplays();
             Console.WriteLine($"Total Displays: {totalDisplays}");
@@ -184,7 +186,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             }
             
             // GET RENDERER INFO
-            Sdl.GetRendererInfo(_renderer, out SdlRendererInfo rendererInfo);
+            Sdl.GetRendererInfo(Renderer, out SdlRendererInfo rendererInfo);
             Console.WriteLine($"Renderer Name: {rendererInfo.name} \n" +
                               $"Renderer Flags: {rendererInfo.flags} \n" +
                               $"Max Texture Width: {rendererInfo.max_texture_width} \n" +
@@ -193,15 +195,15 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                               $"Max Texture Height: {rendererInfo.max_texture_height}");
             
             // GET RENDERER OUTPUT SIZE
-            Sdl.GetRendererOutputSize(_renderer, out int w, out int h);
+            Sdl.GetRendererOutputSize(Renderer, out int w, out int h);
             Console.WriteLine($"Renderer Output Size: {w}, {h}");
             
             // GET RENDERER LOGICAL SIZE
-            Sdl.RenderGetLogicalSize(_renderer, out int w2, out int h2);
+            Sdl.RenderGetLogicalSize(Renderer, out int w2, out int h2);
             Console.WriteLine($"Renderer Logical Size: {w2}, {h2}");
             
             // GET RENDERER SCALE
-            Sdl.RenderGetScale(_renderer, out float scaleX, out float scaleY);
+            Sdl.RenderGetScale(Renderer, out float scaleX, out float scaleY);
             Console.WriteLine($"Renderer Scale: {scaleX}, {scaleY}");
             
             
@@ -228,9 +230,13 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Console.WriteLine($"Display {displayIndex} SELECTED Mode: {displayMode2.format}, {displayMode2.w}, {displayMode2.h}, {displayMode2.refresh_rate}");
             Sdl.SetWindowDisplayMode(_window, ref displayMode2);
             
+            if (string.IsNullOrEmpty(VideoGame.Instance.Settings.General.Icon) == false && File.Exists(VideoGame.Instance.Settings.General.Icon))
+            {
+                IntPtr icon = SdlImage.Img_Load(VideoGame.Instance.Settings.General.Icon);
+                Sdl.SetWindowIcon(_window, icon);
+            }
             
             
-            /*
             // INIT SDL_IMAGE FLAGS
             ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
             
@@ -240,6 +246,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             // GET VERSION SDL_IMAGE
             Console.WriteLine($"SDL_Image Version: {SdlImage.SdlImageVersion().major}.{SdlImage.SdlImageVersion().minor}.{SdlImage.SdlImageVersion().patch}");
             
+            /*
             Sdl.SetHint(Sdl.HintXInputEnabled, "0");
             Sdl.SetHint(Sdl.SdlHintJoystickThread, "1");
             Sdl.Init(Sdl.InitEverything);
@@ -286,10 +293,10 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Logger.Trace();
             
             // Sets color to black (0, 0, 0, 255).
-            Sdl.SetRenderDrawColor(_renderer, 0, 0, 0, 255);
+            Sdl.SetRenderDrawColor(Renderer, 0, 0, 0, 255);
             
             // Clears the current render surface.
-            Sdl.RenderClear(_renderer);
+            Sdl.RenderClear(Renderer);
         }
 
         /// <summary>
@@ -300,7 +307,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Logger.Trace();
             
             // Sets color to green (0, 255, 0, 255).
-            Sdl.SetRenderDrawColor(_renderer, 0, 255, 0, 255);
+            Sdl.SetRenderDrawColor(Renderer, 0, 255, 0, 255);
             
             // Draws a rectangle outline
             
@@ -311,10 +318,20 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     rectangles[i] = ColliderBases[i].RectangleF;
                 }
             }
-
-            Sdl.RenderDrawRectsF(_renderer, rectangles, rectangles.Length);
             
-            Sdl.RenderPresent(_renderer);
+            // Draws sprites:
+            foreach (Sprite sprite in Sprites)
+            {
+                if (sprite.Image != null)
+                {
+                    // render the texture to the screen
+                    Sdl.RenderCopy(Renderer, sprite.Image.Texture, IntPtr.Zero, IntPtr.Zero);
+                }
+            }
+
+            Sdl.RenderDrawRectsF(Renderer, rectangles, rectangles.Length);
+            
+            Sdl.RenderPresent(Renderer);
         }
 
         /// <summary>
@@ -412,7 +429,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         {
             Logger.Trace();
             
-            Sdl.DestroyRenderer(_renderer);
+            Sdl.DestroyRenderer(Renderer);
             Sdl.DestroyWindow(_window);
             SdlImage.ImgQuit();
             Sdl.Quit();

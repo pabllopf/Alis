@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Graphic.SDL;
 
 namespace Alis.Core.Ecs.Component.Render
 {
@@ -53,11 +55,15 @@ namespace Alis.Core.Ecs.Component.Render
         {
             Logger.Trace();
             Path = path;
+            //Load Texture:
+            Texture = SdlImage.ImgLoadTexture(VideoGame.Instance.GraphicManager.Renderer, path);
         }
 
         /// <summary>
         ///     Gets or sets the value of the path
         /// </summary>
         public string Path { get; set; }
+
+        public IntPtr Texture { get; set; }
     }
 }
