@@ -79,6 +79,7 @@ namespace Alis.Sample.Flappy.Bird
             // get the y position of game object:
             float y = GameObject.Transform.Position.Y;
 
+            // create a new position:
             Vector2 newPosition;
             
             if (goUp && !goDown)
