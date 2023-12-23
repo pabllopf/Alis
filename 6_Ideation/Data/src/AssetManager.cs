@@ -44,11 +44,40 @@ namespace Alis.Core.Aspect.Data
         private static readonly string AssetPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? string.Empty, "Assets");
         
         /// <summary>
-        ///     Finds the asset name
+        /// Finds the asset name in the "assets" folder and its subdirectories.
         /// </summary>
-        /// <param name="assetName">The asset name</param>
-        /// <returns>The string</returns>
-        public static string Find(string assetName) => Path.Combine(AssetPath, (assetName ?? throw new ArgumentNullException()));
+        /// <param name="assetName">The asset name.</param>
+        /// <returns>The full path of the asset if found; otherwise, an empty string.</returns>
+        public static string Find(string assetName)
+        {
+            // Get the base directory of the project (where the executable is located)
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Construct the full path of the "assets" folder
+            string assetsDirectory = Path.Combine(baseDirectory, "assets");
+
+            // Search for the file in the "assets" folder and its subdirectories
+            string[] files = Directory.GetFiles(assetsDirectory, assetName, SearchOption.AllDirectories);
+
+            // Check if there is more than one file with the same name
+            if (files.Length > 1)
+            {
+                // Throw a custom exception
+                throw new InvalidOperationException($"Multiple files with the name '{assetName}' were found. Unable to determine the correct file.");
+            }
+
+            // Check if the file was found
+            if (files.Length == 1)
+            {
+                // Return the only found file
+                return files[0];
+            }
+
+            // You can handle the case where the asset is not found in a specific way
+            // For example, throwing an exception, logging a message, etc.
+            Console.WriteLine($"The asset '{assetName}' was not found in the 'assets' folder or its subdirectories.");
+            return string.Empty;
+        }
         
     }
 }
