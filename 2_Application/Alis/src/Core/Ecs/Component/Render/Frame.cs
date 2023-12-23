@@ -57,6 +57,11 @@ namespace Alis.Core.Ecs.Component.Render
         }
 
         /// <summary>
+        /// Gets or sets the value of the file path
+        /// </summary>
+        public string FilePath { get; set; }
+
+        /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The frame builder</returns>
