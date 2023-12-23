@@ -30,6 +30,7 @@
 using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs.Component.Audio;
+using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity.GameObject;
 using Alis.Core.Ecs.Entity.Scene;
@@ -76,13 +77,40 @@ namespace Alis.Sample.Flappy.Bird
                     ////////////////////////////////////////
                     .Add<Scene>(gameScene => gameScene
                         .Name("Main Menu")
+                        
+                        ////////////////////////////////////////
+                        // MAIN MENU SCENE: BACKGROUND
+                        ////////////////////////////////////////
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Background")
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
                                 .SetTexture(AssetManager.Find("background-day.png"))
+                                .Depth(0)
                                 .Build())
                             .Build())
+                        
+                        ////////////////////////////////////////
+                        // MAIN MENU SCENE: FLOOR
+                        ////////////////////////////////////////
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Floor")
+                            .Transform(transform => transform
+                                .Position(0, 400)
+                                .Rotation(0)
+                                .Scale(2f, 1.0f)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite
+                                .Builder()
+                                .SetTexture(AssetManager.Find("base.png"))
+                                .Depth(1)
+                                .Build())
+                            .AddComponent(new FloorAnimation())
+                            .Build())
+                        
+                        ////////////////////////////////////////
+                        // MAIN MENU SCENE: SOUNDTRACK
+                        ////////////////////////////////////////
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Soundtrack")
                             .AddComponent<AudioSource>( audioSource => audioSource

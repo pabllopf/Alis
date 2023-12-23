@@ -56,5 +56,20 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
         ///     The
         /// </summary>
         public float h;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RectangleF"/> class
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="w">The </param>
+        /// <param name="h">The </param>
+        public RectangleF(float x, float y, float w, float h)
+        {
+            this.x = x;
+            this.y = y;
+            this.w = w;
+            this.h = h;
+        }
     }
 }

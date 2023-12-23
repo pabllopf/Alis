@@ -40,6 +40,9 @@ namespace Alis.Core.Ecs.System.Manager.Physic
     /// <seealso cref="Manager" />
     public class PhysicManager : Manager, IPhysicManager
     {
+        /// <summary>
+        /// The vector
+        /// </summary>
         private readonly World world = new World(new Vector2(0, 9.8f));
         
         /// <summary>

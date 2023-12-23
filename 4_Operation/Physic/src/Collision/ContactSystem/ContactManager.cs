@@ -50,6 +50,9 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         public static ContactManager Current;
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ContactManager"/> class
+        /// </summary>
         static ContactManager()
         {
             Current = new ContactManager(new DynamicTreeBroadPhase());

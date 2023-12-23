@@ -65,6 +65,11 @@ namespace Alis.Core.Aspect.Math
             Scale = scale;
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Transform"/> class
+        /// </summary>
+        /// <param name="position">The position</param>
+        /// <param name="rotation">The rotation</param>
         public Transform(Vector2 position, Rotation rotation)
         {
             Position = position;
@@ -72,6 +77,10 @@ namespace Alis.Core.Aspect.Math
             Scale = Vector2.One;
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Transform"/> class
+        /// </summary>
+        /// <param name="position">The position</param>
         public Transform(Vector2 position)
         {
             Position = position;
