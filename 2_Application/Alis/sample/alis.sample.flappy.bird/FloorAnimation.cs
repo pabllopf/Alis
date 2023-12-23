@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlRect.cs
+//  File:$FILENAME$
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,49 +27,39 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
+using System;
+using System.Numerics;
+using Alis.Core.Aspect.Math;
+using Alis.Core.Ecs.Component;
+using Alis.Core.Ecs.System;
+using Vector2 = Alis.Core.Aspect.Math.Vector.Vector2;
 
-namespace Alis.Core.Aspect.Math.Shape.Rectangle
+namespace Alis.Sample.Flappy.Bird
 {
     /// <summary>
-    ///     The sdl rect
+    /// The floor animation class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct RectangleI: IShape
+    /// <seealso cref="Component"/>
+    public class FloorAnimation : Component
     {
-        /// <summary>
-        ///     The
-        /// </summary>
-        public int x;
+        public override void OnUpdate()
+        {   
+            // get the x position of game object:
+            float x = GameObject.Transform.Position.X;
+            
+            // get the y position of game object:
+            float y = GameObject.Transform.Position.Y;
 
-        /// <summary>
-        ///     The
-        /// </summary>
-        public int y;
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        public int w;
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        public int h;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RectangleI"/> class
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        public RectangleI(int x, int y, int w, int h)
-        {
-            this.x = x;
-            this.y = y;
-            this.h = h;
-            this.w = w;
+            Vector2 newPosition = x < -50.0f ? new Vector2(0, y) : new Vector2(x - 0.05f, y);
+            
+            Transform transform = new Transform()
+            {
+                Position = newPosition,
+                Rotation = GameObject.Transform.Rotation,
+                Scale = GameObject.Transform.Scale
+            };
+            
+            GameObject.Transform = transform;
         }
     }
 }

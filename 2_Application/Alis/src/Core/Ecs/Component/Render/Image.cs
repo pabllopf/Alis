@@ -64,6 +64,9 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public string Path { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the texture
+        /// </summary>
         public IntPtr Texture { get; set; }
     }
 }
