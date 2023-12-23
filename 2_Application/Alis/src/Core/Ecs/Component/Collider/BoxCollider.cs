@@ -146,8 +146,8 @@ namespace Alis.Core.Ecs.Component.Collider
             {
                 if (GameObject.Contains<Sprite>())
                 {
-                    //Width = GameObject.GetComponent<Sprite>()..Texture.Size.X * GameObject.Transform.Scale.X;
-                    //Height = GameObject.GetComponent<Sprite>().SpriteSfml.Texture.Size.Y * GameObject.Transform.Scale.Y;
+                    Width = GameObject.Get<Sprite>().Image.Size.X * GameObject.Transform.Scale.X;
+                    Height = GameObject.Get<Sprite>().Image.Size.Y * GameObject.Transform.Scale.Y;
                 }
             }
             else
@@ -221,18 +221,32 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         public override void OnBeforeUpdate()
         {
-            Transform transform = new Transform()
-            {
-                Position = new Vector2(Body.Position.X, Body.Position.Y),
-                Rotation = new Rotation(Body.Rotation)
-            };
+            float xOdl = GameObject.Transform.Position.X;
+            float yOld = GameObject.Transform.Position.Y;
             
-            GameObject.Transform = transform;
-            if (GameObject.Name == "Ball")
+            float xNew = Body.Position.X;
+            float yNew = Body.Position.Y;
+            
+            if (Math.Abs(xOdl - xNew) >= 1f)
             {
-                Console.WriteLine("Name:" + GameObject.Name +  " GameObject.Transform.Position.X: " + GameObject.Transform.Position.X + " GameObject.Transform.Position.Y: " + GameObject.Transform.Position.Y);
+                Transform transform = new Transform()
+                {
+                    Position = new Vector2(Body.Position.X, GameObject.Transform.Position.Y),
+                    Rotation = new Rotation(Body.Rotation)
+                };
+                
+                GameObject.Transform = transform;
             }
-            
+            if (Math.Abs(yOld - yNew) >= 1f)
+            {
+                Transform transform = new Transform()
+                {
+                    Position = new Vector2(GameObject.Transform.Position.X, Body.Position.Y),
+                    Rotation = new Rotation(Body.Rotation)
+                };
+                
+                GameObject.Transform = transform;
+            }
         }
 
         /// <summary>

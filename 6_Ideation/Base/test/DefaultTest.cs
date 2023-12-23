@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Image.cs
+//  File:$FILENAME$
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,53 +27,23 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic.SDL;
+using Xunit;
 
-namespace Alis.Core.Ecs.Component.Render
+namespace Alis.Core.Aspect.Base.Test
 {
     /// <summary>
-    ///     The image class
+    /// The default test class
     /// </summary>
-    public class Image
+    public class DefaultTest
     {
+        
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Image" /> class
+        /// Tests that test
         /// </summary>
-        public Image()
+        [Fact]
+        public void Test()
         {
-            Logger.Trace();
-            Path = "";
+            Assert.True(true);
         }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Image" /> class
-        /// </summary>
-        /// <param name="path">The path</param>
-        public Image(string path)
-        {
-            Logger.Trace();
-            Path = path;
-            //Load Texture:
-            Texture = SdlImage.ImgLoadTexture(VideoGame.Instance.GraphicManager.Renderer, path);
-            
-            // get the size of sprite.Image.Texture
-            Sdl.QueryTexture(Texture, out _, out _, out int w, out int h);
-            Size = new Vector2(w, h);
-        }
-
-        /// <summary>
-        ///     Gets or sets the value of the path
-        /// </summary>
-        public string Path { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value of the texture
-        /// </summary>
-        public IntPtr Texture { get; set; }
-
-        public Vector2 Size { get; set; }
     }
 }
