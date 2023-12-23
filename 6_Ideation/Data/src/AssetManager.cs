@@ -54,7 +54,7 @@ namespace Alis.Core.Aspect.Data
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
             // Construct the full path of the "assets" folder
-            string assetsDirectory = Path.Combine(baseDirectory, "assets");
+            string assetsDirectory = Path.Combine(baseDirectory, "Assets");
 
             // Search for the file in the "assets" folder and its subdirectories
             string[] files = Directory.GetFiles(assetsDirectory, assetName, SearchOption.AllDirectories);
