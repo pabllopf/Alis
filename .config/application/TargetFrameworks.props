@@ -19,7 +19,7 @@
         $(AssemblyName.Contains('Benchmark')) == false 
         ">
         <TargetFramework2>netstandard2.0</TargetFramework2>
-        <EnableTrimAnalyzer Condition=" '$(TargetFramework)' == 'net8.0'">true</EnableTrimAnalyzer>
-        <IsTrimmable Condition=" '$(TargetFramework)' == 'net8.0'">true</IsTrimmable>
+        <EnableTrimAnalyzer>false</EnableTrimAnalyzer>
+        <IsTrimmable>false</IsTrimmable>
     </PropertyGroup>
 </Project>
