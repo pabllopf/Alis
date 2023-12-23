@@ -9,7 +9,8 @@ on:
       - 'docs/**'
       - '**.md'
       - '.git/**'
-      
+      - '.config/**'
+
 jobs:
   Run_Test_On_MacOs_Latest:
     runs-on: macos-latest
