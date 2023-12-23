@@ -126,23 +126,6 @@ namespace Alis.Sample.Flappy.Bird
                             .Build())
                         
                         ////////////////////////////////////////
-                        // MAIN MENU SCENE: BIRD
-                        ////////////////////////////////////////
-                        .Add<GameObject>(gameObject => gameObject
-                            .Name("Bird")
-                            .Transform(transform => transform
-                                .Position(72, 270.0f)
-                                .Rotation(0)
-                                .Scale(1f, 1.0f)
-                                .Build())
-                            .AddComponent<Sprite>(sprite => sprite
-                                .Builder()
-                                .SetTexture(AssetManager.Find("bluebird-down_flap.png"))
-                                .Depth(2)
-                                .Build())
-                            .Build())
-                        
-                        ////////////////////////////////////////
                         // MAIN MENU SCENE: COUNTER
                         ////////////////////////////////////////
                         .Add<GameObject>(gameObject => gameObject
@@ -157,6 +140,40 @@ namespace Alis.Sample.Flappy.Bird
                                 .SetTexture(AssetManager.Find("0.png"))
                                 .Depth(3)
                                 .Build())
+                            .Build())
+                        
+                        ////////////////////////////////////////
+                        // MAIN MENU SCENE: BIRD
+                        ////////////////////////////////////////
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Bird")
+                            .Transform(transform => transform
+                                .Position(72, 270.0f)
+                                .Rotation(0)
+                                .Scale(1f, 1.0f)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite
+                                .Builder()
+                                .SetTexture(AssetManager.Find("bluebird-down_flap.png"))
+                                .Depth(4)
+                                .Build())
+                            .AddComponent<Animator>(animator => animator
+                                .Builder()
+                                .AddAnimation(animation => animation
+                                    .Name("Fly")
+                                    .Speed(0.2f)
+                                    .AddFrame(frame1 => frame1
+                                        .FilePath(AssetManager.Find("bluebird-down_flap.png"))
+                                        .Build())
+                                    .AddFrame(frame2 => frame2
+                                        .FilePath(AssetManager.Find("bluebird-mid_flap.png"))
+                                        .Build())
+                                    .AddFrame(frame3 => frame3
+                                        .FilePath(AssetManager.Find("bluebird-up_flap.png"))
+                                        .Build())
+                                    .Build())
+                                .Build())
+                            .AddComponent(new BirdIdle())
                             .Build())
                         
                         ////////////////////////////////////////

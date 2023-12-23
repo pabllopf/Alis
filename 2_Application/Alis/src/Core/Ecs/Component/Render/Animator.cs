@@ -137,7 +137,7 @@ namespace Alis.Core.Ecs.Component.Render
             {
                 if (currentAnimation.HasNext())
                 {
-                    //Sprite.SpriteSfml.Texture = currentAnimation.NextTexture().Texture;
+                    Sprite.Image = new Image(currentAnimation.NextTexture().FilePath);
                 }
 
                 Timer.Restart();
