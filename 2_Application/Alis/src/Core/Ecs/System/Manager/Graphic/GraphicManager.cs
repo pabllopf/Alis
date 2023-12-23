@@ -33,7 +33,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
-using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
@@ -147,10 +146,10 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             
             // Create the window
             // create the window which should be able to have a valid OpenGL context and is resizable
-            SdlWindowFlags flags = SdlWindowFlags.SdlWindowResizable | SdlWindowFlags.SdlWindowShown;
+            const SdlWindowFlags flags = SdlWindowFlags.SdlWindowResizable | SdlWindowFlags.SdlWindowShown;
             
             // Creates a new SDL window at the center of the screen with the given width and height.
-            _window = Sdl.CreateWindow("Sample", Sdl.WindowPosCentered, Sdl.WindowPosCentered, (int) defaultSize.X, (int) defaultSize.Y, flags);
+            _window = Sdl.CreateWindow(VideoGame.Instance.Settings.General.Name, Sdl.WindowPosCentered, Sdl.WindowPosCentered, (int) defaultSize.X, (int) defaultSize.Y, flags);
             
             // Check if the window was created successfully.
             Console.WriteLine(_window == IntPtr.Zero ? $"There was an issue creating the renderer. {Sdl.GetError()}" : $"Window created");
@@ -309,23 +308,19 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             // Sets color to green (0, 255, 0, 255).
             Sdl.SetRenderDrawColor(Renderer, 0, 255, 0, 255);
             
-            // Draws a rectangle outline
+            // Draws sprites:
+            foreach (Sprite sprite in Sprites.Where(sprite => sprite.Image != null))
+            {
+                // render the texture to the screen
+                Sdl.RenderCopy(Renderer, sprite.Image.Texture, IntPtr.Zero, IntPtr.Zero);
+            }
             
+            // Draws rectangles:
             for (int i=0;i < ColliderBases.Length; i++) 
             {
                 if (ColliderBases[i] != null)
                 {
                     rectangles[i] = ColliderBases[i].RectangleF;
-                }
-            }
-            
-            // Draws sprites:
-            foreach (Sprite sprite in Sprites)
-            {
-                if (sprite.Image != null)
-                {
-                    // render the texture to the screen
-                    Sdl.RenderCopy(Renderer, sprite.Image.Texture, IntPtr.Zero, IntPtr.Zero);
                 }
             }
 

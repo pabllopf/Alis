@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.CompilerServices;
 
 namespace Alis.Core.Aspect.Logging
 {

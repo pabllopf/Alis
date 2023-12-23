@@ -29,10 +29,7 @@
 
 using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Ecs.Entity.GameObject;
-using Alis.Core.Graphic.SDL.Enums;
-using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.Component
 {

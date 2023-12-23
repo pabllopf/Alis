@@ -34,8 +34,6 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.System.Manager.Graphic;
-using Alis.Core.Ecs.System.Manager.Physic;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Figure;
 using Sprite = Alis.Core.Ecs.Component.Render.Sprite;

@@ -27,14 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Base.Dll;
-using Xunit;
-
 namespace Alis.Core.Aspect.Base.Test.Dll
 {
     /// <summary>
