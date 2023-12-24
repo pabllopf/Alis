@@ -67,7 +67,7 @@ namespace Alis.Sample.Flappy.Bird
             {
                 if (GameObject.Contains<BoxCollider>())
                 {
-                    GameObject.Get<BoxCollider>().Body.LinearVelocity = new Vector2(0, -20f);
+                    GameObject.Get<BoxCollider>().Body.LinearVelocity = new Vector2(0, -17f);
                     Console.WriteLine("Go up!");
                     audioSource.Play();
                 }

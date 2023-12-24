@@ -57,7 +57,7 @@ namespace Alis.Sample.Pong
                         .Author("Pablo Perdomo Falcón")
                         .Description("Pong game")
                         .License("GNU General Public License v3.0")
-                        .Icon(AssetManager.Find("logo.png"))
+                        .Icon(AssetManager.Find("app.png"))
                         .Build())
                     .Audio(audio => audio
                         .Build())

@@ -167,8 +167,8 @@ namespace Alis.Core.Ecs.System.Manager.Input
                 switch (_sdlEvent.type)
                 {
                     case SdlEventType.SdlQuit:
-                        Console.WriteLine(" Quit was pressed ");
-                        //VideoGame.Exit();
+                        //Console.WriteLine(" Quit was pressed ");
+                        VideoGame.Instance.Exit();
                         break;
                     
                     case SdlEventType.SdlKeyup:
@@ -176,7 +176,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                         
                         if (tempListOfKeys.Contains(indexUp))
                         {
-                            Console.WriteLine(indexUp + " was released");
+                            //Console.WriteLine(indexUp + " was released");
                             tempListOfKeys.Remove(indexUp);
                             NotifyKeyRelease(indexUp);
                         }
@@ -186,14 +186,14 @@ namespace Alis.Core.Ecs.System.Manager.Input
                         SdlKeycode indexDown = _sdlEvent.key.keysym.sym;
                         if (!tempListOfKeys.Contains(indexDown))
                         {
-                            Console.WriteLine(indexDown + " was pressed");
+                            //Console.WriteLine(indexDown + " was pressed");
                             tempListOfKeys.Add(indexDown);
                             NotifyKeyPress(indexDown);
                         }
                         
                         if (tempListOfKeys.Contains(indexDown))
                         {
-                            Console.WriteLine(indexDown + " holding");
+                            //Console.WriteLine(indexDown + " holding");
                             NotifyKeyHold(indexDown);
                         }
                         

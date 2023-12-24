@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Collider;
 
@@ -63,85 +65,79 @@ namespace Alis.Sample.Pong
         ///     Updates this instance
         /// </summary>
         public override void OnUpdate() => Logger.Trace();
-
-        /*
-        /// <summary>
-        ///     Ons the press down key using the specified key
-        /// </summary>
-        /// <param name="key">The key</param>
-        public override void OnReleaseButton(IButton key)
+        
+        public override void OnReleaseKey(SdlKeycode key)
         {
             Vector2 velocity = boxCollider.Body.LinearVelocity;
-            if (playerId == 1)
+            switch (playerId)
             {
-                switch (key)
-                {
-                    case SdlKeycode.SdlkW:
-                        velocity = new Vector2(velocity.X, 0);
-                        boxCollider.Body.LinearVelocity = velocity;
-                        return;
-                    case SdlKeycode.SdlkS:
-                        velocity = new Vector2(velocity.X, 0);
-                        boxCollider.Body.LinearVelocity = velocity;
-                        break;
-                }
-            }
+                case 1:
+                    switch (key)
+                    {
+                        case SdlKeycode.SdlkW:
+                            velocity = new Vector2(velocity.X, 0);
+                            boxCollider.Body.LinearVelocity = velocity;
+                            return;
+                        case SdlKeycode.SdlkS:
+                            velocity = new Vector2(velocity.X, 0);
+                            boxCollider.Body.LinearVelocity = velocity;
+                            break;
+                    }
 
-            if (playerId == 2)
-            {
-                switch (key)
-                {
-                    case SdlKeycode.SdlkUp:
-                        velocity = new Vector2(velocity.X, 0);
-                        boxCollider.Body.LinearVelocity = velocity;
-                        return;
-                    case SdlKeycode.SdlkDown:
-                        velocity = new Vector2(velocity.X, 0);
-                        boxCollider.Body.LinearVelocity = velocity;
-                        break;
-                }
+                    break;
+                case 2:
+                    switch (key)
+                    {
+                        case SdlKeycode.SdlkUp:
+                            velocity = new Vector2(velocity.X, 0);
+                            boxCollider.Body.LinearVelocity = velocity;
+                            return;
+                        case SdlKeycode.SdlkDown:
+                            velocity = new Vector2(velocity.X, 0);
+                            boxCollider.Body.LinearVelocity = velocity;
+                            break;
+                    }
+
+                    break;
             }
         }
         
-        /// <summary>
-        ///     Ons the release key using the specified key
-        /// </summary>
-        /// <param name="key">The key</param>
-        public override void OnPressDownButton(IButton key)
+       
+        public override void OnPressDownKey(SdlKeycode key)
         {
             Vector2 velocity = boxCollider.Body.LinearVelocity;
 
-            if (playerId == 1)
+            switch (playerId)
             {
-                switch (key)
-                {
-                    case SdlKeycode.SdlkW:
-                        velocity = new Vector2(velocity.X, -5);
-                        boxCollider.Body.LinearVelocity = velocity;
-                        //Console.WriteLine($" {boxCollider.Body.LinearVelocity} ");
-                        return;
-                    case SdlKeycode.SdlkS:
-                        velocity = new Vector2(velocity.X, 5);
-                        boxCollider.Body.LinearVelocity = velocity;
-                        //Console.WriteLine($" {boxCollider.Body.LinearVelocity} ");
-                        break;
-                }
-            }
+                case 1:
+                    switch (key)
+                    {
+                        case SdlKeycode.SdlkW:
+                            velocity = new Vector2(velocity.X, -5);
+                            boxCollider.Body.LinearVelocity = velocity;
+                            return;
+                        case SdlKeycode.SdlkS:
+                            velocity = new Vector2(velocity.X, 5);
+                            boxCollider.Body.LinearVelocity = velocity;
+                            break;
+                    }
 
-            if (playerId == 2)
-            {
-                switch (key)
-                {
-                    case SdlKeycode.SdlkUp:
-                        velocity = new Vector2(velocity.X, -5);
-                        boxCollider.Body.LinearVelocity = velocity;
-                        return;
-                    case SdlKeycode.SdlkDown:
-                        velocity = new Vector2(velocity.X, 5);
-                        boxCollider.Body.LinearVelocity = velocity;
-                        break;
-                }
+                    break;
+                case 2:
+                    switch (key)
+                    {
+                        case SdlKeycode.SdlkUp:
+                            velocity = new Vector2(velocity.X, -5);
+                            boxCollider.Body.LinearVelocity = velocity;
+                            return;
+                        case SdlKeycode.SdlkDown:
+                            velocity = new Vector2(velocity.X, 5);
+                            boxCollider.Body.LinearVelocity = velocity;
+                            break;
+                    }
+
+                    break;
             }
-        }*/
+        }
     }
 }
