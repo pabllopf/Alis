@@ -189,6 +189,7 @@ namespace Alis.Sample.Flappy.Bird
                             .Name("Soundtrack")
                             .AddComponent<AudioSource>( audioSource => audioSource
                                 .Builder()
+                                .PlayOnAwake(true)
                                 .SetAudioClip(audioClip => audioClip
                                     .FilePath(AssetManager.Find("main_theme.mp3"))
                                     .Build())
