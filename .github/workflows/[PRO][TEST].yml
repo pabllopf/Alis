@@ -23,13 +23,14 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: 8.0.x
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln --configuration Debug
             
       - name: Dotnet test Release
         run: dotnet test alis.sln --configuration Release
+
     
   Run_Test_On_Windows_Latest:
     runs-on: windows-latest
@@ -42,7 +43,7 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: 8.0.x
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln --configuration Debug
@@ -61,7 +62,7 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: 8.0.x
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln --configuration Debug
