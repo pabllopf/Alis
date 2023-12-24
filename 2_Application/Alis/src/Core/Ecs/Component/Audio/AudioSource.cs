@@ -130,9 +130,15 @@ namespace Alis.Core.Ecs.Component.Audio
         /// </summary>
         public override void OnStart()
         {
-            Play();
+            if (PlayOnAwake)
+            {
+                Play(); 
+            }
         }
 
+        /// <summary>
+        /// Ons the exit
+        /// </summary>
         public override void OnExit()
         {
             Stop();
