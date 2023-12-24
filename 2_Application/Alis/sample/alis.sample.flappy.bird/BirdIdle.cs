@@ -78,6 +78,10 @@ namespace Alis.Sample.Flappy.Bird
             
             // get the y position of game object:
             float y = GameObject.Transform.Position.Y;
+            
+            Vector2 scale = GameObject.Transform.Scale;
+            
+            Rotation rotation = GameObject.Transform.Rotation;
 
             // create a new position:
             Vector2 newPosition;
@@ -88,8 +92,8 @@ namespace Alis.Sample.Flappy.Bird
                 Transform transform = new Transform()
                 {
                     Position = newPosition,
-                    Rotation = GameObject.Transform.Rotation,
-                    Scale = GameObject.Transform.Scale
+                    Rotation = rotation,
+                    Scale = scale
                 };
             
                 GameObject.Transform = transform;
@@ -100,8 +104,8 @@ namespace Alis.Sample.Flappy.Bird
                 Transform transform = new Transform()
                 {
                     Position = newPosition,
-                    Rotation = GameObject.Transform.Rotation,
-                    Scale = GameObject.Transform.Scale
+                    Rotation = rotation,
+                    Scale = scale
                 };
             
                 GameObject.Transform = transform;

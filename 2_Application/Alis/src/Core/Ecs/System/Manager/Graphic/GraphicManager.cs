@@ -308,6 +308,17 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             // Sets color to green (0, 255, 0, 255).
             Sdl.SetRenderDrawColor(Renderer, 0, 255, 0, 255);
             
+            // Draws rectangles:
+            for (int i=0;i < ColliderBases.Length; i++) 
+            {
+                if (ColliderBases[i] != null)
+                {
+                    rectangles[i] = ColliderBases[i].RectangleF;
+                }
+            }
+
+            Sprites = Sprites.OrderBy(o => o.Depth).ToList();
+            
             // Draws sprites:
             foreach (Sprite sprite in Sprites.Where(sprite => sprite.Image != null))
             {
@@ -319,21 +330,14 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 Sdl.QueryTexture(sprite.Image.Texture, out _, out _, out int w, out int h);
                 
                 // create a destination intPtr dstRect
-                RectangleI dstRect = new RectangleI(x  - (w / 2), y  - (h / 2), w, h);
+                RectangleI dstRect = new RectangleI(x  - (w / 2), y  - (h / 2), 
+                    (int) (w * sprite.GameObject.Transform.Scale.X), 
+                    (int) (h *  sprite.GameObject.Transform.Scale.Y));
                 
                 // render the texture to the screen
                 Sdl.RenderCopy(Renderer, sprite.Image.Texture, IntPtr.Zero, ref dstRect);
             }
             
-            // Draws rectangles:
-            for (int i=0;i < ColliderBases.Length; i++) 
-            {
-                if (ColliderBases[i] != null)
-                {
-                    rectangles[i] = ColliderBases[i].RectangleF;
-                }
-            }
-
             Sdl.RenderDrawRectsF(Renderer, rectangles, rectangles.Length);
             
             Sdl.RenderPresent(Renderer);

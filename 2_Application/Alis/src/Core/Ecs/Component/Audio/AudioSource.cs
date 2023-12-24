@@ -132,5 +132,10 @@ namespace Alis.Core.Ecs.Component.Audio
         {
             Play();
         }
+
+        public override void OnExit()
+        {
+            Stop();
+        }
     }
 }
