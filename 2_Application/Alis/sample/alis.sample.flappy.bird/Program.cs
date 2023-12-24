@@ -73,7 +73,7 @@ namespace Alis.Sample.Flappy.Bird
                     .Build())
                 .World(sceneManager => sceneManager
                     
-                        /*
+                        
                     ////////////////////////////////////////
                     // MAIN MENU SCENE:
                     ////////////////////////////////////////
@@ -85,6 +85,9 @@ namespace Alis.Sample.Flappy.Bird
                         ////////////////////////////////////////
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Background")
+                            .Transform(transform => transform
+                                .Position(144, 256)
+                                .Build())
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
                                 .SetTexture(AssetManager.Find("background-day.png"))
@@ -98,7 +101,7 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Floor")
                             .Transform(transform => transform
-                                .Position(0, 400)
+                                .Position(168, 456)
                                 .Rotation(0)
                                 .Scale(2f, 1.0f)
                                 .Build())
@@ -116,7 +119,7 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Message Menu")
                             .Transform(transform => transform
-                                .Position(52, 82.0f)
+                                .Position(144, 216.0f)
                                 .Rotation(0)
                                 .Scale(1f, 1.0f)
                                 .Build())
@@ -190,7 +193,7 @@ namespace Alis.Sample.Flappy.Bird
                                     .Build())
                                 .Build())
                             .Build())
-                        .Build())*/
+                        .Build())
                     
                     ////////////////////////////////////////
                     // GAME SCENE:
@@ -199,10 +202,13 @@ namespace Alis.Sample.Flappy.Bird
                         .Name("Game Scene")
                         
                         ////////////////////////////////////////
-                        // MAIN MENU SCENE: BACKGROUND
+                        // GAME SCENE: BACKGROUND
                         ////////////////////////////////////////
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Background")
+                            .Transform(transform => transform
+                                .Position(144, 256)
+                                .Build())
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
                                 .SetTexture(AssetManager.Find("background-day.png"))
@@ -211,12 +217,12 @@ namespace Alis.Sample.Flappy.Bird
                             .Build())
                         
                         ////////////////////////////////////////
-                        // MAIN MENU SCENE: FLOOR
+                        // GAME SCENE: FLOOR
                         ////////////////////////////////////////
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Floor")
                             .Transform(transform => transform
-                                .Position(0, 400)
+                                .Position(252, 456)
                                 .Rotation(0)
                                 .Scale(2f, 1.0f)
                                 .Build())
@@ -240,11 +246,11 @@ namespace Alis.Sample.Flappy.Bird
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
                                 .Build())
-                            .AddComponent(new FloorAnimation())
+                            //.AddComponent(new FloorAnimation())
                             .Build())
                         
                         ////////////////////////////////////////
-                        // MAIN MENU SCENE: COUNTER
+                        // GAME SCENE: COUNTER
                         ////////////////////////////////////////
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Counter")
@@ -261,7 +267,7 @@ namespace Alis.Sample.Flappy.Bird
                             .Build())
                         
                         ////////////////////////////////////////
-                        // MAIN MENU SCENE: BIRD
+                        // GAME SCENE: BIRD
                         ////////////////////////////////////////
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Bird")
@@ -299,13 +305,14 @@ namespace Alis.Sample.Flappy.Bird
                                 .AutoTilling(true)
                                 .Rotation(0.0f)
                                 .RelativePosition(0, 0)
-                                .Mass(10.0f)
+                                .Mass(5.0f)
                                 .Restitution(0f)
                                 .Friction(0f)
                                 .Density(0f)
                                 .FixedRotation(true)
-                                .GravityScale(1.0f)
+                                .GravityScale(0.8f)
                                 .Build())
+                            .AddComponent(new BirdController())
                             .Build()) // end bird
 
                         .Build()) // end scene manager

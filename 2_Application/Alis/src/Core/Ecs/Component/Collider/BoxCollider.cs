@@ -227,7 +227,7 @@ namespace Alis.Core.Ecs.Component.Collider
             float xNew = Body.Position.X;
             float yNew = Body.Position.Y;
             
-            if (Math.Abs(xOdl - xNew) >= 1f)
+            if (Math.Abs(xOdl - xNew) >= 1.1f)
             {
                 Transform transform = new Transform()
                 {
@@ -237,7 +237,7 @@ namespace Alis.Core.Ecs.Component.Collider
                 
                 GameObject.Transform = transform;
             }
-            if (Math.Abs(yOld - yNew) >= 1f)
+            if (Math.Abs(yOld - yNew) >= 1.1f)
             {
                 Transform transform = new Transform()
                 {

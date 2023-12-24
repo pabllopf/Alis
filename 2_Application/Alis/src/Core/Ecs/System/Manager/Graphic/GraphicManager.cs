@@ -319,7 +319,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 Sdl.QueryTexture(sprite.Image.Texture, out _, out _, out int w, out int h);
                 
                 // create a destination intPtr dstRect
-                RectangleI dstRect = new RectangleI(x, y, w, h);
+                RectangleI dstRect = new RectangleI(x  - (w / 2), y  - (h / 2), w, h);
                 
                 // render the texture to the screen
                 Sdl.RenderCopy(Renderer, sprite.Image.Texture, IntPtr.Zero, ref dstRect);

@@ -7,10 +7,8 @@
         $(AssemblyName.Contains('Benchmark')) == true 
         ">
         <TargetFramework2>net6.0</TargetFramework2>
-        <EnableTrimAnalyzer>false</EnableTrimAnalyzer>
-        <IsTrimmable>false</IsTrimmable>
-        <PublishTrimmed>false</PublishTrimmed>
-        <PublishAot>false</PublishAot>
+        <IsTrimmable Condition="'$(TargetFramework)' == 'net8.0'">true</IsTrimmable>
+        <PublishTrimmed>true</PublishTrimmed>
     </PropertyGroup>
 
     <PropertyGroup Condition="
@@ -21,9 +19,7 @@
         $(AssemblyName.Contains('Benchmark')) == false 
         ">
         <TargetFramework2>netstandard2.0</TargetFramework2>
-        <EnableTrimAnalyzer>false</EnableTrimAnalyzer>
-        <IsTrimmable>false</IsTrimmable>
-        <PublishTrimmed>false</PublishTrimmed>
-        <PublishAot>false</PublishAot>
+        <IsTrimmable Condition="'$(TargetFramework)' == 'net8.0'">true</IsTrimmable>
+        <PublishTrimmed>true</PublishTrimmed>
     </PropertyGroup>
 </Project>
