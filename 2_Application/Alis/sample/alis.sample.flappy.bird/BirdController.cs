@@ -36,8 +36,16 @@ using Alis.Core.Ecs.Component.Collider;
 
 namespace Alis.Sample.Flappy.Bird
 {
+    /// <summary>
+    /// The bird controller class
+    /// </summary>
+    /// <seealso cref="Component"/>
     public class BirdController : Component
     {
+        /// <summary>
+        /// Ons the press key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
         public override void OnPressKey(SdlKeycode key)
         {
             if (key == SdlKeycode.SdlkSpace)

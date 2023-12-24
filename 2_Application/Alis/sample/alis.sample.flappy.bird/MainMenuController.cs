@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Image.cs
+//  File:$FILENAME$
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,56 +27,27 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic.SDL;
+using Alis.Core.Aspect.Base.Mapping;
+using Alis.Core.Ecs.Component;
 
-namespace Alis.Core.Ecs.Component.Render
+namespace Alis.Sample.Flappy.Bird
 {
     /// <summary>
-    ///     The image class
+    /// The main menu controller class
     /// </summary>
-    public class Image
+    /// <seealso cref="Component"/>
+    public class MainMenuController : Component
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Image" /> class
+        /// Ons the press key using the specified key
         /// </summary>
-        public Image()
+        /// <param name="key">The key</param>
+        public override void OnPressKey(SdlKeycode key)
         {
-            Logger.Trace();
-            Path = "";
+            if (key == SdlKeycode.SdlkSpace)
+            {
+                VideoGame.Instance.SceneManager.LoadScene("Game Scene");
+            }
         }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Image" /> class
-        /// </summary>
-        /// <param name="path">The path</param>
-        public Image(string path)
-        {
-            Logger.Trace();
-            Path = path;
-            //Load Texture:
-            Texture = SdlImage.ImgLoadTexture(VideoGame.Instance.GraphicManager.Renderer, path);
-            
-            // get the size of sprite.Image.Texture
-            Sdl.QueryTexture(Texture, out _, out _, out int w, out int h);
-            Size = new Vector2(w, h);
-        }
-
-        /// <summary>
-        ///     Gets or sets the value of the path
-        /// </summary>
-        public string Path { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value of the texture
-        /// </summary>
-        public IntPtr Texture { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value of the size
-        /// </summary>
-        public Vector2 Size { get; set; }
     }
 }

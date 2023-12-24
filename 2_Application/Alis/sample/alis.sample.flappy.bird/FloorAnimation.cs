@@ -43,6 +43,19 @@ namespace Alis.Sample.Flappy.Bird
     public class FloorAnimation : Component
     {
         /// <summary>
+        /// The old
+        /// </summary>
+        private float xOld = 0.0f;
+
+        /// <summary>
+        /// Ons the init
+        /// </summary>
+        public override void OnInit()
+        {
+            xOld = GameObject.Transform.Position.X;
+        }
+
+        /// <summary>
         /// Ons the update
         /// </summary>
         public override void OnUpdate()
@@ -54,7 +67,7 @@ namespace Alis.Sample.Flappy.Bird
             float y = GameObject.Transform.Position.Y;
 
             // if the x position is less than -50.0f, then reset the x position to 0.0f
-            Vector2 newPosition = x < -50.0f ? new Vector2(0, y) : new Vector2(x - 0.05f, y);
+            Vector2 newPosition = x < -50.0f ? new Vector2(xOld, y) : new Vector2(x - 0.05f, y);
             
             Transform transform = new Transform()
             {

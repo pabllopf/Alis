@@ -103,7 +103,7 @@ namespace Alis.Sample.Flappy.Bird
                             .Transform(transform => transform
                                 .Position(168, 456)
                                 .Rotation(0)
-                                .Scale(2f, 1.0f)
+                                .Scale(1.5f, 1.0f)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
@@ -119,7 +119,7 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Message Menu")
                             .Transform(transform => transform
-                                .Position(144, 216.0f)
+                                .Position(140, 216.0f)
                                 .Rotation(0)
                                 .Scale(1f, 1.0f)
                                 .Build())
@@ -128,6 +128,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .SetTexture(AssetManager.Find("message.png"))
                                 .Depth(2)
                                 .Build())
+                            .AddComponent(new MainMenuController())
                             .Build())
                         
                         ////////////////////////////////////////
@@ -222,21 +223,31 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Floor")
                             .Transform(transform => transform
-                                .Position(252, 456)
+                                .Position(168, 456)
                                 .Rotation(0)
-                                .Scale(2f, 1.0f)
+                                .Scale(1.5f, 1.0f)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
                                 .SetTexture(AssetManager.Find("base.png"))
                                 .Depth(1)
                                 .Build())
+                            .AddComponent(new FloorAnimation())
+                            .Build())
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Floor Collision")
+                            .Transform(transform => transform
+                                .Position(100, 450)
+                                .Rotation(0)
+                                .Scale(1.5f, 1.0f)
+                                .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
                                 .BodyType(BodyType.Kinematic)
                                 .IsTrigger(false)
-                                .AutoTilling(true)
+                                .AutoTilling(false)
+                                .Size(290, 100)
                                 .Rotation(0.0f)
                                 .RelativePosition(0, 0)
                                 .Mass(10.0f)
@@ -246,7 +257,6 @@ namespace Alis.Sample.Flappy.Bird
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
                                 .Build())
-                            //.AddComponent(new FloorAnimation())
                             .Build())
                         
                         ////////////////////////////////////////
@@ -313,8 +323,8 @@ namespace Alis.Sample.Flappy.Bird
                                 .GravityScale(0.8f)
                                 .Build())
                             .AddComponent(new BirdController())
-                            .Build()) // end bird
-
+                            .Build()) // end bird 
+                            
                         .Build()) // end scene manager
                     .Build()) // end video game
                 .Run();

@@ -254,6 +254,34 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
         
         /// <summary>
+        /// Loads the scene using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        public void LoadScene(string name)
+        {
+            CurrentScene.OnStop();
+            CurrentScene.OnExit();  
+            CurrentScene = Scenes.Find(i => i.Name == name);
+            CurrentScene.OnInit();
+            CurrentScene.OnAwake();
+            CurrentScene.OnStart();
+        }
+        
+        /// <summary>
+        /// Loads the scene using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        public void LoadScene(int index)
+        {
+            CurrentScene.OnStop();
+            CurrentScene.OnExit();  
+            CurrentScene = Scenes[index];
+            CurrentScene.OnInit();
+            CurrentScene.OnAwake();
+            CurrentScene.OnStart();
+        }
+        
+        /// <summary>
         /// Reloads the scene using the specified scene
         /// </summary>
         /// <param name="scene">The scene</param>

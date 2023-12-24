@@ -232,7 +232,8 @@ namespace Alis.Core.Ecs.Component.Collider
                 Transform transform = new Transform()
                 {
                     Position = new Vector2(Body.Position.X, GameObject.Transform.Position.Y),
-                    Rotation = new Rotation(Body.Rotation)
+                    Rotation = new Rotation(Body.Rotation),
+                    Scale = GameObject.Transform.Scale
                 };
                 
                 GameObject.Transform = transform;
@@ -242,7 +243,8 @@ namespace Alis.Core.Ecs.Component.Collider
                 Transform transform = new Transform()
                 {
                     Position = new Vector2(GameObject.Transform.Position.X, Body.Position.Y),
-                    Rotation = new Rotation(Body.Rotation)
+                    Rotation = new Rotation(Body.Rotation),
+                    Scale = GameObject.Transform.Scale
                 };
                 
                 GameObject.Transform = transform;
