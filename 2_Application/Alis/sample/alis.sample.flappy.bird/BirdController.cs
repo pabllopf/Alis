@@ -32,7 +32,9 @@ using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
+using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Collider;
+using Alis.Core.Ecs.System;
 
 namespace Alis.Sample.Flappy.Bird
 {
@@ -43,6 +45,19 @@ namespace Alis.Sample.Flappy.Bird
     public class BirdController : Component
     {
         /// <summary>
+        /// The audio source
+        /// </summary>
+        private AudioSource audioSource;
+
+        /// <summary>
+        /// Ons the init
+        /// </summary>
+        public override void OnInit()
+        {
+            audioSource = GameObject.Get<AudioSource>();
+        }
+
+        /// <summary>
         /// Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
@@ -52,8 +67,9 @@ namespace Alis.Sample.Flappy.Bird
             {
                 if (GameObject.Contains<BoxCollider>())
                 {
-                    GameObject.Get<BoxCollider>().Body.LinearVelocity = new Vector2(0, -30f);
+                    GameObject.Get<BoxCollider>().Body.LinearVelocity = new Vector2(0, -20f);
                     Console.WriteLine("Go up!");
+                    audioSource.Play();
                 }
             }
         }

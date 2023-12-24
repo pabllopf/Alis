@@ -291,6 +291,13 @@ namespace Alis.Sample.Flappy.Bird
                                 .SetTexture(AssetManager.Find("bluebird-down_flap.png"))
                                 .Depth(4)
                                 .Build())
+                            .AddComponent<AudioSource>(audioSource => audioSource
+                                .Builder()
+                                .PlayOnAwake(false)
+                                .SetAudioClip(audioClip => audioClip
+                                    .FilePath(AssetManager.Find("wing.wav"))
+                                    .Build())
+                                .Build())
                             .AddComponent<Animator>(animator => animator
                                 .Builder()
                                 .AddAnimation(animation => animation
@@ -320,7 +327,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .Friction(0f)
                                 .Density(0f)
                                 .FixedRotation(true)
-                                .GravityScale(0.8f)
+                                .GravityScale(0.2f)
                                 .Build())
                             .AddComponent(new BirdController())
                             .Build()) // end bird 
