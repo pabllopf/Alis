@@ -27,49 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Aspect.Base.Mapping;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.Component.Audio;
-using Alis.Core.Ecs.Component.Collider;
-
-namespace Alis.Sample.Flappy.Bird
+namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The bird controller class
+    /// The is resizable interface
     /// </summary>
-    /// <seealso cref="Component"/>
-    public class BirdController : Component
+    public interface IIsResizable<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// The audio source
+        /// Ises the resizable
         /// </summary>
-        private AudioSource audioSource;
+        /// <returns>The builder</returns>
+        TBuilder IsResizable();
+
 
         /// <summary>
-        /// Ons the init
+        /// Ises the resizable using the specified value
         /// </summary>
-        public override void OnInit()
-        {
-            audioSource = GameObject.Get<AudioSource>();
-        }
-
-        /// <summary>
-        /// Ons the press key using the specified key
-        /// </summary>
-        /// <param name="key">The key</param>
-        public override void OnPressKey(SdlKeycode key)
-        {
-            if (key == SdlKeycode.SdlkSpace)
-            {
-                if (GameObject.Contains<BoxCollider>())
-                {
-                    GameObject.Get<BoxCollider>().Body.LinearVelocity = new Vector2(0, -17f);
-                    Console.WriteLine("Go up!");
-                    audioSource.Play();
-                }
-            }
-        }
+        /// <param name="value">The value</param>
+        /// <returns>The builder</returns>
+        TBuilder IsResizable(TArgument value);
     }
 }

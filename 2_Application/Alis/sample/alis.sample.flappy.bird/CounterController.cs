@@ -27,49 +27,54 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using System;
 using Alis.Core.Aspect.Base.Mapping;
-using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Aspect.Data;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Audio;
-using Alis.Core.Ecs.Component.Collider;
+using Alis.Core.Ecs.Component.Render;
 
 namespace Alis.Sample.Flappy.Bird
 {
-    /// <summary>
-    /// The bird controller class
-    /// </summary>
-    /// <seealso cref="Component"/>
-    public class BirdController : Component
+    public class CounterController : Component
     {
-        /// <summary>
-        /// The audio source
-        /// </summary>
-        private AudioSource audioSource;
-
-        /// <summary>
-        /// Ons the init
-        /// </summary>
-        public override void OnInit()
+        public int Counter { get; set; }
+        
+        public void Increment()
         {
-            audioSource = GameObject.Get<AudioSource>();
+            Counter++;
+        }
+        
+        public void Reset()
+        {
+            Counter = 0;
+        }
+        
+        public override string ToString()
+        {
+            return Counter.ToString();
         }
 
-        /// <summary>
-        /// Ons the press key using the specified key
-        /// </summary>
-        /// <param name="key">The key</param>
         public override void OnPressKey(SdlKeycode key)
         {
-            if (key == SdlKeycode.SdlkSpace)
+            if (key == SdlKeycode.SdlkUp)
             {
-                if (GameObject.Contains<BoxCollider>())
-                {
-                    GameObject.Get<BoxCollider>().Body.LinearVelocity = new Vector2(0, -17f);
-                    Console.WriteLine("Go up!");
-                    audioSource.Play();
-                }
+                Increment();
+                GameObject.Get<Sprite>().Image = GetNumberSprite(Counter);
+                GameObject.Get<AudioSource>().Play();
+                Console.WriteLine("Value: " + Counter);
             }
         }
+        
+        public Image GetNumberSprite(int number)
+        {
+            if (number > 9)
+            {
+                number = 0;
+                Counter = 0;
+            }
+            return new Image(AssetManager.Find($"{number}.png"));
+        } 
     }
 }
