@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:$FILENAME$
+//  File: BirdController.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -37,18 +37,18 @@ using Alis.Core.Ecs.Component.Collider;
 namespace Alis.Sample.Flappy.Bird
 {
     /// <summary>
-    /// The bird controller class
+    ///     The bird controller class
     /// </summary>
-    /// <seealso cref="Component"/>
+    /// <seealso cref="Component" />
     public class BirdController : Component
     {
         /// <summary>
-        /// The audio source
+        ///     The audio source
         /// </summary>
         private AudioSource audioSource;
 
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
@@ -56,7 +56,7 @@ namespace Alis.Sample.Flappy.Bird
         }
 
         /// <summary>
-        /// Ons the press key using the specified key
+        ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnPressKey(SdlKeycode key)

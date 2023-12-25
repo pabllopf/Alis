@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PhysicSettingBuilder.cs
+//  File: PhysicSettingBuilder.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -55,6 +55,17 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Physic
         public PhysicSetting Build() => physicSetting;
 
         /// <summary>
+        ///     Debugs the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The physic setting builder</returns>
+        public PhysicSettingBuilder Debug(bool value)
+        {
+            physicSetting.DebugMode = value;
+            return this;
+        }
+
+        /// <summary>
         ///     Gravities the x
         /// </summary>
         /// <param name="x">The </param>
@@ -63,17 +74,6 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Physic
         public PhysicSettingBuilder Gravity(float x, float y)
         {
             physicSetting.Gravity = new Vector2(x, y);
-            return this;
-        }
-
-        /// <summary>
-        /// Debugs the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The physic setting builder</returns>
-        public PhysicSettingBuilder Debug(bool value)
-        {
-            physicSetting.DebugMode = value;
             return this;
         }
     }

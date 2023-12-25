@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GeneralSetting.cs
+//  File: GeneralSetting.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -33,48 +33,48 @@ using Alis.Core.Aspect.Fluent;
 namespace Alis.Core.Ecs.System.Setting.General
 {
     /// <summary>
-    /// The general setting class
+    ///     The general setting class
     /// </summary>
-    /// <seealso cref="IGeneralSetting"/>
-    /// <seealso cref="IBuilder{TOut}"/>
-    public class GeneralSetting: 
-        IGeneralSetting, 
+    /// <seealso cref="IGeneralSetting" />
+    /// <seealso cref="IBuilder{TOut}" />
+    public class GeneralSetting :
+        IGeneralSetting,
         IBuilder<GeneralSettingBuilder>
     {
-        /// <summary>
-        /// Gets or sets the value of the name
-        /// </summary>
-        public string Name { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the description
-        /// </summary>
-        public string Description { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the version
-        /// </summary>
-        public string Version { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the author
-        /// </summary>
-        public string Author { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the license
-        /// </summary>
-        public string License { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the icon
-        /// </summary>
-        public string Icon { get; set; }
-        
         /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The graphic setting builder</returns>
         public GeneralSettingBuilder Builder() => new GeneralSettingBuilder();
+
+        /// <summary>
+        ///     Gets or sets the value of the name
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the description
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the version
+        /// </summary>
+        public string Version { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the author
+        /// </summary>
+        public string Author { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the license
+        /// </summary>
+        public string License { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the icon
+        /// </summary>
+        public string Icon { get; set; }
     }
 }

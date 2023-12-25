@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AssetManager.cs
+//  File: AssetManager.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -42,9 +42,9 @@ namespace Alis.Core.Aspect.Data
         ///     The application data
         /// </summary>
         private static readonly string AssetPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? string.Empty, "Assets");
-        
+
         /// <summary>
-        /// Finds the asset name in the "assets" folder and its subdirectories.
+        ///     Finds the asset name in the "assets" folder and its subdirectories.
         /// </summary>
         /// <param name="assetName">The asset name.</param>
         /// <returns>The full path of the asset if found; otherwise, an empty string.</returns>
@@ -78,6 +78,5 @@ namespace Alis.Core.Aspect.Data
             Console.WriteLine($"The asset '{assetName}' was not found in the 'assets' folder or its subdirectories.");
             return string.Empty;
         }
-        
     }
 }

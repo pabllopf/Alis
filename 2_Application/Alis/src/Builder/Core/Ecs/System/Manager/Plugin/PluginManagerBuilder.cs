@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SceneManagerBuilder.cs
+//  File: PluginManagerBuilder.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -39,7 +39,7 @@ namespace Alis.Builder.Core.Ecs.System.Manager.Plugin
         IBuild<PluginManager>
     {
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The plugin manager</returns>
         public PluginManager Build() => new PluginManager();

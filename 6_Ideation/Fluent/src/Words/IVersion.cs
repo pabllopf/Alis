@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IVersion.cs
+//  File: IVersion.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,13 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The version interface
+    ///     The version interface
     /// </summary>
     public interface IVersion<out TBuilder, in TArgument>
     {
-
         /// <summary>
-        /// Versions the value
+        ///     Versions the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

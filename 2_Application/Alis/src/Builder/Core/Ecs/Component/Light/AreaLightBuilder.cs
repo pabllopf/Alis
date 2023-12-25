@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AreaLightBuilder.cs
+//  File: AreaLightBuilder.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -35,11 +35,11 @@ namespace Alis.Builder.Core.Ecs.Component.Light
     /// <summary>
     ///     The area light builder class
     /// </summary>
-    public class AreaLightBuilder: 
+    public class AreaLightBuilder :
         IBuild<AreaLight>
     {
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The area light</returns>
         public AreaLight Build() => new AreaLight();

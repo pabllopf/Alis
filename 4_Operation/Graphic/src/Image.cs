@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Image.cs
+//  File: Image.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -34,27 +34,27 @@ using Alis.Core.Graphic.SDL;
 namespace Alis.Core.Graphic
 {
     /// <summary>
-    /// The image class
+    ///     The image class
     /// </summary>
     public class Image
     {
         /// <summary>
-        /// The native pointer
-        /// </summary>
-        private IntPtr nativePointer;
-
-        /// <summary>
-        /// The path
+        ///     The path
         /// </summary>
         private readonly string path;
-        
+
         /// <summary>
-        /// The is loaded
+        ///     The is loaded
         /// </summary>
         private bool isLoaded;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Image"/> class
+        ///     The native pointer
+        /// </summary>
+        private IntPtr nativePointer;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Image" /> class
         /// </summary>
         /// <param name="path">The path</param>
         public Image(string path)
@@ -64,7 +64,7 @@ namespace Alis.Core.Graphic
         }
 
         /// <summary>
-        /// Loads this instance
+        ///     Loads this instance
         /// </summary>
         /// <exception cref="FileNotFoundException">The image file does not exist</exception>
         private void Load()
@@ -73,7 +73,7 @@ namespace Alis.Core.Graphic
             {
                 return;
             }
-            
+
             if (!File.Exists(path))
             {
                 throw new FileNotFoundException("The image file does not exist");
@@ -84,7 +84,7 @@ namespace Alis.Core.Graphic
         }
 
         /// <summary>
-        /// Gets the native pointer
+        ///     Gets the native pointer
         /// </summary>
         /// <returns>The native pointer</returns>
         public IntPtr GetNativePointer()
@@ -93,6 +93,7 @@ namespace Alis.Core.Graphic
             {
                 Load();
             }
+
             return nativePointer;
         }
     }

@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PolygonShape.cs
+//  File: PolygonShape.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -96,8 +96,8 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         public override int ChildCount => 1;
 
-       /// <summary>
-        /// Sets the vertices using the specified vertices
+        /// <summary>
+        ///     Sets the vertices using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <exception cref="InvalidOperationException">Thrown when polygon is degenerate or has less than 3 vertices</exception>
@@ -122,7 +122,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Checks the vertices validity using the specified vertices
+        ///     Checks the vertices validity using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <exception cref="InvalidOperationException">You can't create a polygon with less than 3 vertices</exception>
@@ -135,14 +135,14 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Removes the duplicate vertices using the specified vertices
+        ///     Removes the duplicate vertices using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <returns>The vector array</returns>
         private Vector2[] RemoveDuplicateVertices(Vertices vertices)
         {
             List<Vector2> cleanedVertices = new List<Vector2>();
-            for (int i =0; i < vertices.Count; i++)
+            for (int i = 0; i < vertices.Count; i++)
             {
                 Vector2 vector2 = vertices[i];
                 bool unique = !cleanedVertices.Any(v => MathUtils.DistanceSquared(ref vector2, ref v) <
@@ -158,7 +158,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Finds the rightmost vertex using the specified vertices
+        ///     Finds the rightmost vertex using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <param name="numberOfVertices">The number of vertices</param>
@@ -182,7 +182,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>
-        /// Computes the convex hull using the specified vertices
+        ///     Computes the convex hull using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <param name="numberOfVertices">The number of vertices</param>
@@ -222,14 +222,13 @@ namespace Alis.Core.Physic.Collision.Shapes
                 }
 
                 currentIndex = nextIndex;
-
             } while (currentIndex != rightmostVertexIndex);
 
             return hull.ToArray();
         }
 
         /// <summary>
-        /// Copies the vertices and compute normals using the specified vertices
+        ///     Copies the vertices and compute normals using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <param name="hull">The hull</param>

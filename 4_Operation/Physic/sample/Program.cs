@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File: Program.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -44,9 +44,9 @@ namespace Alis.Core.Physic.Sample
         public static void Main(string[] args)
         {
             Console.WriteLine($"Run {nameof(Alis)}.{nameof(Core)}.{nameof(Physic)}.{nameof(Sample)}");
-            
+
             Vector2 gravity = new Vector2(0.0f, -9.8f);
-            
+
             World world = new World(gravity);
 
             for (int i = 0; i < 100; i++)
@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Sample
                 world.Step(1.0f / 60.0f, 6, 2);
                 Console.WriteLine($"Step {i}");
             }
-            
+
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
         }

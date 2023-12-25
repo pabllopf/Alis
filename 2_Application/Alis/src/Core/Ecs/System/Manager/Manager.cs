@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Manager.cs
+//  File: Manager.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,127 +30,125 @@
 namespace Alis.Core.Ecs.System.Manager
 {
     /// <summary>
-    /// The manager class
+    ///     The manager class
     /// </summary>
-    /// <seealso cref="IManager"/>
+    /// <seealso cref="IManager" />
     public abstract class Manager : IManager
     {
         /// <summary>
-        /// Gets or sets the value of the is enable
+        ///     Gets or sets the value of the is enable
         /// </summary>
         public bool IsEnable { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the name
+        ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the id
+        ///     Gets or sets the value of the id
         /// </summary>
         public string Id { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the tag
+        ///     Gets or sets the value of the tag
         /// </summary>
         public string Tag { get; set; }
 
         /// <summary>
-        /// Ons the enable
+        ///     Ons the enable
         /// </summary>
         public abstract void OnEnable();
 
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public abstract void OnInit();
 
         /// <summary>
-        /// Ons the awake
+        ///     Ons the awake
         /// </summary>
         public abstract void OnAwake();
-        
+
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public abstract void OnStart();
-        
+
         /// <summary>
-        /// Ons the before update
+        ///     Ons the before update
         /// </summary>
         public abstract void OnBeforeUpdate();
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public abstract void OnUpdate();
-        
+
         /// <summary>
-        /// Ons the after update
+        ///     Ons the after update
         /// </summary>
         public abstract void OnAfterUpdate();
-        
+
         /// <summary>
-        /// Ons the before fixed update
+        ///     Ons the before fixed update
         /// </summary>
         public abstract void OnBeforeFixedUpdate();
-        
+
         /// <summary>
-        /// Ons the fixed update
+        ///     Ons the fixed update
         /// </summary>
         public abstract void OnFixedUpdate();
-        
+
         /// <summary>
-        /// Ons the after fixed update
+        ///     Ons the after fixed update
         /// </summary>
         public abstract void OnAfterFixedUpdate();
-        
+
         /// <summary>
-        /// Ons the dispatch events
+        ///     Ons the dispatch events
         /// </summary>
         public abstract void OnDispatchEvents();
 
         /// <summary>
-        /// Ons the calculate
+        ///     Ons the calculate
         /// </summary>
         public abstract void OnCalculate();
-        
+
         /// <summary>
-        /// Ons the draw
+        ///     Ons the draw
         /// </summary>
         public abstract void OnDraw();
-        
+
         /// <summary>
-        /// Ons the gui
+        ///     Ons the gui
         /// </summary>
         public abstract void OnGui();
 
         /// <summary>
-        /// Ons the disable
+        ///     Ons the disable
         /// </summary>
         public abstract void OnDisable();
 
         /// <summary>
-        /// Ons the reset
+        ///     Ons the reset
         /// </summary>
         public abstract void OnReset();
-        
+
         /// <summary>
-        /// Ons the stop
+        ///     Ons the stop
         /// </summary>
         public abstract void OnStop();
 
         /// <summary>
-        /// Ons the exit
+        ///     Ons the exit
         /// </summary>
         public abstract void OnExit();
-        
+
 
         /// <summary>
-        /// Ons the destroy
+        ///     Ons the destroy
         /// </summary>
         public abstract void OnDestroy();
-
-        
     }
 }

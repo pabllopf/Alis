@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File: Line.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
@@ -6,12 +35,12 @@ using Alis.Core.Physic.Shared;
 namespace Alis.Core.Physic.Utilities
 {
     /// <summary>
-    /// The line class
+    ///     The line class
     /// </summary>
     public static class Line
     {
         /// <summary>
-        /// Distances the between point and line segment using the specified point
+        ///     Distances the between point and line segment using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <param name="start">The start</param>
@@ -45,7 +74,7 @@ namespace Alis.Core.Physic.Utilities
         }
 
         /// <summary>
-        /// Describes whether line intersect 2
+        ///     Describes whether line intersect 2
         /// </summary>
         /// <param name="a0">The </param>
         /// <param name="a1">The </param>
@@ -93,7 +122,7 @@ namespace Alis.Core.Physic.Utilities
             ua /= denom;
             ub /= denom;
 
-            if (ua >= 0 && ua <= 1 && ub >= 0 && ub <= 1)
+            if ((ua >= 0) && (ua <= 1) && (ub >= 0) && (ub <= 1))
             {
                 intersectionPoint = new Vector2(x1 + ua * (x2 - x1), y1 + ua * (y2 - y1));
                 return true;
@@ -103,7 +132,7 @@ namespace Alis.Core.Physic.Utilities
         }
 
         /// <summary>
-        /// Lines the intersect using the specified p 1
+        ///     Lines the intersect using the specified p 1
         /// </summary>
         /// <param name="p1">The </param>
         /// <param name="p2">The </param>
@@ -133,7 +162,7 @@ namespace Alis.Core.Physic.Utilities
         }
 
         /// <summary>
-        /// Describes whether line intersect
+        ///     Describes whether line intersect
         /// </summary>
         /// <param name="point1">The point</param>
         /// <param name="point2">The point</param>
@@ -182,17 +211,14 @@ namespace Alis.Core.Physic.Utilities
         }
 
         /// <summary>
-        /// Describes whether is denominator zero
+        ///     Describes whether is denominator zero
         /// </summary>
         /// <param name="denom">The denom</param>
         /// <returns>The bool</returns>
-        private static bool IsDenominatorZero(float denom)
-        {
-            return denom >= -float.Epsilon && denom <= float.Epsilon;
-        }
+        private static bool IsDenominatorZero(float denom) => (denom >= -float.Epsilon) && (denom <= float.Epsilon);
 
         /// <summary>
-        /// Calculates the ua using the specified a
+        ///     Calculates the ua using the specified a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="c">The </param>
@@ -211,7 +237,7 @@ namespace Alis.Core.Physic.Utilities
         }
 
         /// <summary>
-        /// Calculates the ub using the specified b
+        ///     Calculates the ub using the specified b
         /// </summary>
         /// <param name="b">The </param>
         /// <param name="d">The </param>
@@ -230,32 +256,26 @@ namespace Alis.Core.Physic.Utilities
         }
 
         /// <summary>
-        /// Describes whether is in range
+        ///     Describes whether is in range
         /// </summary>
         /// <param name="value">The value</param>
         /// <param name="isSegment">The is segment</param>
         /// <returns>The bool</returns>
-        private static bool IsInRange(float value, bool isSegment)
-        {
-            return !isSegment || (value >= 0.0f && value <= 1.0f);
-        }
+        private static bool IsInRange(float value, bool isSegment) => !isSegment || ((value >= 0.0f) && (value <= 1.0f));
 
         /// <summary>
-        /// Calculates the intersection point using the specified point 1
+        ///     Calculates the intersection point using the specified point 1
         /// </summary>
         /// <param name="point1">The point</param>
         /// <param name="ua">The ua</param>
         /// <param name="b">The </param>
         /// <param name="d">The </param>
         /// <returns>The vector</returns>
-        private static Vector2 CalculateIntersectionPoint(Vector2 point1, float ua, float b, float d)
-        {
-            return new Vector2(point1.X + ua * b, point1.Y + ua * d);
-        }
+        private static Vector2 CalculateIntersectionPoint(Vector2 point1, float ua, float b, float d) => new Vector2(point1.X + ua * b, point1.Y + ua * d);
 
 
         /// <summary>
-        /// Lines the segment vertices intersect using the specified point 1
+        ///     Lines the segment vertices intersect using the specified point 1
         /// </summary>
         /// <param name="point1">The point</param>
         /// <param name="point2">The point</param>
@@ -277,7 +297,7 @@ namespace Alis.Core.Physic.Utilities
         }
 
         /// <summary>
-        /// Lines the segment aabb intersect using the specified point 1
+        ///     Lines the segment aabb intersect using the specified point 1
         /// </summary>
         /// <param name="point1">The point</param>
         /// <param name="point2">The point</param>

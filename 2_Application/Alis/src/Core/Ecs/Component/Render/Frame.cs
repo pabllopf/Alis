@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Frame.cs
+//  File: Frame.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -51,13 +51,13 @@ namespace Alis.Core.Ecs.Component.Render
         ///     Initializes a new instance of the <see cref="Frame" /> class
         /// </summary>
         /// <param name="filePath">The file path</param>
-        public Frame(string filePath) 
+        public Frame(string filePath)
         {
             Logger.Trace();
         }
 
         /// <summary>
-        /// Gets or sets the value of the file path
+        ///     Gets or sets the value of the file path
         /// </summary>
         public string FilePath { get; set; }
 

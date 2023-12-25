@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:$FILENAME$
+//  File: FloorAnimation.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -34,18 +34,18 @@ using Vector2 = Alis.Core.Aspect.Math.Vector.Vector2;
 namespace Alis.Sample.Flappy.Bird
 {
     /// <summary>
-    /// The floor animation class
+    ///     The floor animation class
     /// </summary>
-    /// <seealso cref="Component"/>
+    /// <seealso cref="Component" />
     public class FloorAnimation : Component
     {
         /// <summary>
-        /// The old
+        ///     The old
         /// </summary>
-        private float xOld = 0.0f;
+        private float xOld;
 
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
@@ -53,26 +53,26 @@ namespace Alis.Sample.Flappy.Bird
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
-        {   
+        {
             // get the x position of game object:
             float x = GameObject.Transform.Position.X;
-            
+
             // get the y position of game object:
             float y = GameObject.Transform.Position.Y;
 
             // if the x position is less than -50.0f, then reset the x position to 0.0f
             Vector2 newPosition = x < -50.0f ? new Vector2(xOld, y) : new Vector2(x - 0.05f, y);
-            
-            Transform transform = new Transform()
+
+            Transform transform = new Transform
             {
                 Position = newPosition,
                 Rotation = GameObject.Transform.Rotation,
                 Scale = GameObject.Transform.Scale
             };
-            
+
             GameObject.Transform = transform;
         }
     }

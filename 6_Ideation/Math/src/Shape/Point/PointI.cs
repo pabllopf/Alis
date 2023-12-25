@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlPoint.cs
+//  File: PointI.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -35,7 +35,7 @@ namespace Alis.Core.Aspect.Math.Shape.Point
     ///     The sdl point
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct PointI: IShape
+    public struct PointI : IShape
     {
         /// <summary>
         ///     The

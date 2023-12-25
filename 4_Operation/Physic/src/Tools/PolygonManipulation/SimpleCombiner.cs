@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SimpleCombiner.cs
+//  File: SimpleCombiner.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
     public static class SimpleCombiner
     {
         /// <summary>
-        /// Combine a list of triangles into a list of convex polygons. Note: This only works on triangles.
+        ///     Combine a list of triangles into a list of convex polygons. Note: This only works on triangles.
         /// </summary>
         /// <param name="triangles">The triangles.</param>
         /// <param name="maxPolys">The max number of polygons to return.</param>
@@ -106,7 +106,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
         }
 
         /// <summary>
-        /// Initializes the covered flags using the specified triangles
+        ///     Initializes the covered flags using the specified triangles
         /// </summary>
         /// <param name="triangles">The triangles</param>
         /// <returns>The covered</returns>
@@ -122,11 +122,12 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                     covered[i] = true;
                 }
             }
+
             return covered;
         }
 
         /// <summary>
-        /// Describes whether has uncovered triangles
+        ///     Describes whether has uncovered triangles
         /// </summary>
         /// <param name="covered">The covered</param>
         /// <returns>The bool</returns>
@@ -136,7 +137,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
         }
 
         /// <summary>
-        /// Finds the first uncovered triangle using the specified covered
+        ///     Finds the first uncovered triangle using the specified covered
         /// </summary>
         /// <param name="covered">The covered</param>
         /// <param name="triangleCount">The triangle count</param>
@@ -150,11 +151,12 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                     return i;
                 }
             }
+
             return -1;
         }
 
         /// <summary>
-        /// Gets the valid triangle index using the specified index
+        ///     Gets the valid triangle index using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <param name="triangleCount">The triangle count</param>
@@ -165,11 +167,12 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
             {
                 index -= triangleCount;
             }
+
             return index;
         }
 
         /// <summary>
-        /// Creates the polygon from triangle using the specified triangle
+        ///     Creates the polygon from triangle using the specified triangle
         /// </summary>
         /// <param name="triangle">The triangle</param>
         /// <returns>The poly</returns>
@@ -180,11 +183,12 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
             {
                 poly.Add(triangle[i]);
             }
+
             return poly;
         }
 
         /// <summary>
-        /// Describes whether is degenerate triangle
+        ///     Describes whether is degenerate triangle
         /// </summary>
         /// <param name="triangle">The triangle</param>
         /// <returns>The bool</returns>
@@ -193,13 +197,13 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
             Vector2 a = triangle[0];
             Vector2 b = triangle[1];
             Vector2 c = triangle[2];
-            return Math.Abs(a.X - b.X) < 0.01f && Math.Abs(a.Y - b.Y) < 0.01f ||
-                   Math.Abs(b.X - c.X) < 0.01f && Math.Abs(b.Y - c.Y) < 0.01f ||
-                   Math.Abs(a.X - c.X) < 0.01f && Math.Abs(a.Y - c.Y) < 0.01f;
+            return ((Math.Abs(a.X - b.X) < 0.01f) && (Math.Abs(a.Y - b.Y) < 0.01f)) ||
+                   ((Math.Abs(b.X - c.X) < 0.01f) && (Math.Abs(b.Y - c.Y) < 0.01f)) ||
+                   ((Math.Abs(a.X - c.X) < 0.01f) && (Math.Abs(a.Y - c.Y) < 0.01f));
         }
 
         /// <summary>
-        /// Simplifies the and add polygon using the specified polys
+        ///     Simplifies the and add polygon using the specified polys
         /// </summary>
         /// <param name="polys">The polys</param>
         /// <param name="poly">The poly</param>
@@ -219,7 +223,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
         }
 
         /// <summary>
-        /// Removes the empty collections using the specified polys
+        ///     Removes the empty collections using the specified polys
         /// </summary>
         /// <param name="polys">The polys</param>
         private static void RemoveEmptyCollections(List<Vertices> polys)
@@ -235,7 +239,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
 
 
         /// <summary>
-        /// Adds the triangle using the specified t
+        ///     Adds the triangle using the specified t
         /// </summary>
         /// <param name="t">The triangle to add</param>
         /// <param name="vertices">The vertices</param>
@@ -244,7 +248,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
         {
             FindFirstAndSecondVertices(t, vertices, out int firstP, out int firstT, out int secondP, out int secondT);
 
-            if (firstP == 0 && secondP == vertices.Count - 1)
+            if ((firstP == 0) && (secondP == vertices.Count - 1))
             {
                 firstP = vertices.Count - 1;
                 secondP = 0;
@@ -263,7 +267,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
         }
 
         /// <summary>
-        /// Finds the first and second vertices using the specified t
+        ///     Finds the first and second vertices using the specified t
         /// </summary>
         /// <param name="t">The </param>
         /// <param name="vertices">The vertices</param>
@@ -279,7 +283,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    if (Math.Abs(t[j].X - vertices[i].X) < 0.01f && Math.Abs(t[j].Y - vertices[i].Y) < 0.01f)
+                    if ((Math.Abs(t[j].X - vertices[i].X) < 0.01f) && (Math.Abs(t[j].Y - vertices[i].Y) < 0.01f))
                     {
                         if (firstP == -1)
                         {
@@ -297,7 +301,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
         }
 
         /// <summary>
-        /// Finds the tip index using the specified first t
+        ///     Finds the tip index using the specified first t
         /// </summary>
         /// <param name="firstT">The first</param>
         /// <param name="secondT">The second</param>
@@ -319,7 +323,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
         }
 
         /// <summary>
-        /// Creates the result vertices using the specified vertices
+        ///     Creates the result vertices using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <param name="firstP">The first</param>
@@ -338,8 +342,8 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                     result.Add(t[tipT]);
                 }
             }
+
             return result;
         }
-
     }
 }

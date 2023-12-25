@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Image.cs
+//  File: Image.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -58,7 +58,7 @@ namespace Alis.Core.Ecs.Component.Render
             Path = path;
             //Load Texture:
             Texture = SdlImage.ImgLoadTexture(VideoGame.Instance.GraphicManager.Renderer, path);
-            
+
             // get the size of sprite.Image.Texture
             Sdl.QueryTexture(Texture, out _, out _, out int w, out int h);
             Size = new Vector2(w, h);
@@ -70,12 +70,12 @@ namespace Alis.Core.Ecs.Component.Render
         public string Path { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the texture
+        ///     Gets or sets the value of the texture
         /// </summary>
         public IntPtr Texture { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the size
+        ///     Gets or sets the value of the size
         /// </summary>
         public Vector2 Size { get; set; }
     }

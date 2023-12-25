@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:INetwork.cs
+//  File: INetwork.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The network interface
+    ///     The network interface
     /// </summary>
-    public interface INetwork <out TBuilder, in TArgument>
+    public interface INetwork<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Networks the value
+        ///     Networks the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

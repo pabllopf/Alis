@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IGraphicManager.cs
+//  File: IGraphicManager.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,11 +30,10 @@
 namespace Alis.Core.Ecs.System.Manager.Graphic
 {
     /// <summary>
-    /// The graphic manager interface
+    ///     The graphic manager interface
     /// </summary>
-    /// <seealso cref="IManager"/>
-    public interface IGraphicManager : IManager 
+    /// <seealso cref="IManager" />
+    public interface IGraphicManager : IManager
     {
-
     }
 }

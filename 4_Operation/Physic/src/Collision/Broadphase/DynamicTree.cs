@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DynamicTree.cs
+//  File: DynamicTree.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -341,9 +341,9 @@ namespace Alis.Core.Physic.Collision.Broadphase
         }
 
         /// <summary>
-        /// Ray-cast against the proxies in the tree. This relies on the callback to perform an exact ray-cast in the case
-        /// where the proxy contains a Shape. The callback also performs any collision filtering. This has performance
-        /// roughly equal to k * log(n), where k is the number of collisions and n is the number of proxies in the tree.
+        ///     Ray-cast against the proxies in the tree. This relies on the callback to perform an exact ray-cast in the case
+        ///     where the proxy contains a Shape. The callback also performs any collision filtering. This has performance
+        ///     roughly equal to k * log(n), where k is the number of collisions and n is the number of proxies in the tree.
         /// </summary>
         /// <param name="callback">A callback class that is called for each proxy that is hit by the ray.</param>
         /// <param name="input">The ray-cast input data. The ray extends from p1 to p1 + maxFraction * (p2 - p1).</param>
@@ -394,7 +394,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         }
 
         /// <summary>
-        /// Calculates the normalized ray direction using the specified p 1
+        ///     Calculates the normalized ray direction using the specified p 1
         /// </summary>
         /// <param name="p1">The </param>
         /// <param name="p2">The </param>
@@ -406,17 +406,14 @@ namespace Alis.Core.Physic.Collision.Broadphase
         }
 
         /// <summary>
-        /// Calculates the abs vector using the specified vector
+        ///     Calculates the abs vector using the specified vector
         /// </summary>
         /// <param name="vector">The vector</param>
         /// <returns>The vector</returns>
-        private Vector2 CalculateAbsVector(Vector2 vector)
-        {
-            return new Vector2(MathUtils.Abs(-vector.Y), MathUtils.Abs(vector.X));
-        }
+        private Vector2 CalculateAbsVector(Vector2 vector) => new Vector2(MathUtils.Abs(-vector.Y), MathUtils.Abs(vector.X));
 
         /// <summary>
-        /// Calculates the segment aabb using the specified p 1
+        ///     Calculates the segment aabb using the specified p 1
         /// </summary>
         /// <param name="p1">The </param>
         /// <param name="p2">The </param>
@@ -433,18 +430,15 @@ namespace Alis.Core.Physic.Collision.Broadphase
         }
 
         /// <summary>
-        /// Describes whether this instance is aabb overlap
+        ///     Describes whether this instance is aabb overlap
         /// </summary>
         /// <param name="aabb1">The aabb</param>
         /// <param name="aabb2">The aabb</param>
         /// <returns>The bool</returns>
-        private bool IsAabbOverlap(Aabb aabb1, Aabb aabb2)
-        {
-            return Aabb.TestOverlap(ref aabb1, ref aabb2);
-        }
+        private bool IsAabbOverlap(Aabb aabb1, Aabb aabb2) => Aabb.TestOverlap(ref aabb1, ref aabb2);
 
         /// <summary>
-        /// Describes whether this instance is separation valid
+        ///     Describes whether this instance is separation valid
         /// </summary>
         /// <param name="r">The </param>
         /// <param name="p1">The </param>
@@ -459,7 +453,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         }
 
         /// <summary>
-        /// Handles the leaf node using the specified callback
+        ///     Handles the leaf node using the specified callback
         /// </summary>
         /// <param name="callback">The callback</param>
         /// <param name="input">The input</param>

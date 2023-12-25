@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ISceneManager.cs
+//  File: ISceneSetting.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -33,12 +33,11 @@ using Alis.Core.Ecs.System.Property;
 namespace Alis.Core.Ecs.System.Setting.Scene
 {
     /// <summary>
-    /// The scene manager interface
+    ///     The scene manager interface
     /// </summary>
-    /// <seealso cref="IManager"/>
-    /// <seealso cref="ICrud{IScene}"/>
+    /// <seealso cref="IManager" />
+    /// <seealso cref="ICrud{IScene}" />
     public interface ISceneSetting : ISetting
     {
-        
     }
 }

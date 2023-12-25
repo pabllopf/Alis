@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlFRect.cs
+//  File: SquareF.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -35,7 +35,7 @@ namespace Alis.Core.Aspect.Math.Shape.Square
     ///     The sdl f rect
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct SquareF: IShape
+    public struct SquareF : IShape
     {
         /// <summary>
         ///     The

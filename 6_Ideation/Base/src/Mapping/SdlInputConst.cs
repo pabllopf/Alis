@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.cs
+//  File: SdlInputConst.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,7 +30,7 @@
 namespace Alis.Core.Aspect.Base.Mapping
 {
     /// <summary>
-    /// The sdl input const class
+    ///     The sdl input const class
     /// </summary>
     public class SdlInputConst
     {

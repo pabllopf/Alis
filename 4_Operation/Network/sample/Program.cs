@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File: Program.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -63,10 +63,10 @@ namespace Alis.Core.Network.Sample
             }
             else
             {
-               Console.WriteLine("Wrong number of arguments. 0 for simple test. 5 for complex test.");
-               Console.WriteLine(
+                Console.WriteLine("Wrong number of arguments. 0 for simple test. 5 for complex test.");
+                Console.WriteLine(
                     "Complex Test: uri numThreads numItemsPerThread minNumBytesPerMessage maxNumBytesPerMessage");
-               Console.WriteLine("e.g: ws://localhost:27416/chat/echo 5 100 4 4");
+                Console.WriteLine("e.g: ws://localhost:27416/chat/echo 5 100 4 4");
             }
 
             Console.WriteLine("Press any key to quit");
@@ -94,7 +94,7 @@ namespace Alis.Core.Network.Sample
             int.TryParse("256", out int minNumBytesPerMessage);
             int.TryParse("1024", out int maxNumBytesPerMessage);
 
-           Console.WriteLine(
+            Console.WriteLine(
                 $"Started DemoClient with Uri '{uri}' numThreads '{numThreads}' numItemsPerThread '{numItemsPerThread}' minNumBytesPerMessage '{minNumBytesPerMessage}' maxNumBytesPerMessage '{maxNumBytesPerMessage}'");
 
             TestRunner runner = new TestRunner(uri, numThreads, numItemsPerThread, minNumBytesPerMessage,

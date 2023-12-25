@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Color.cs
+//  File: Color.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,32 +30,32 @@
 namespace Alis.Core.Aspect.Math.Definition
 {
     /// <summary>
-    /// The color
+    ///     The color
     /// </summary>
     public struct Color
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public int R;
-        
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public int G;
-        
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public int B;
-        
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public int A;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Color"/> class
+        ///     Initializes a new instance of the <see cref="Color" /> class
         /// </summary>
         /// <param name="r">The </param>
         /// <param name="g">The </param>
@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Math.Definition
         }
 
         /// <summary>
-        /// Gets the value of the black
+        ///     Gets the value of the black
         /// </summary>
         public static Color Black => new Color(0, 0, 0, 255);
     }

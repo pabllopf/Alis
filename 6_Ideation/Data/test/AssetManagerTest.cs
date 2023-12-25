@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AssetManagerTest.cs
+//  File: AssetManagerTest.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Data.Test
 {
     /// <summary>
-    /// The asset manager test class
+    ///     The asset manager test class
     /// </summary>
     public class AssetManagerTest
     {
         /// <summary>
-        /// Tests that find valid asset name should return correct path
+        ///     Tests that find valid asset name should return correct path
         /// </summary>
         /// <exception cref="InvalidOperationException"></exception>
         [Fact]
@@ -47,19 +47,19 @@ namespace Alis.Core.Aspect.Data.Test
         {
             // Arrange
             const string assetName = "example.txt";
-            string directory = Path.Combine(Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory) ?? throw new InvalidOperationException()),"Assets");
+            string directory = Path.Combine(Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory) ?? throw new InvalidOperationException()), "Assets");
             string expectedPath = Path.Combine(directory, assetName);
 
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
             }
-            
+
             if (!File.Exists(expectedPath))
             {
                 File.Create(expectedPath);
             }
-            
+
             // Act
             string result = AssetManager.Find(assetName);
 
@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Data.Test
         }
 
         /// <summary>
-        /// Tests that find null asset name should throw argument null exception
+        ///     Tests that find null asset name should throw argument null exception
         /// </summary>
         [Fact]
         public void Find_NullAssetName_ShouldThrowArgumentNullException()

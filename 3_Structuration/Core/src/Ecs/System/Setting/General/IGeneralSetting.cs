@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IGeneralSetting.cs
+//  File: IGeneralSetting.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,38 +30,38 @@
 namespace Alis.Core.Ecs.System.Setting.General
 {
     /// <summary>
-    /// The general setting interface
+    ///     The general setting interface
     /// </summary>
-    /// <seealso cref="ISetting"/>
+    /// <seealso cref="ISetting" />
     public interface IGeneralSetting : ISetting
     {
         /// <summary>
-        /// Gets or sets the value of the name
+        ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the version
+        ///     Gets or sets the value of the version
         /// </summary>
         public string Version { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the description
+        ///     Gets or sets the value of the description
         /// </summary>
         public string Description { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the author
+        ///     Gets or sets the value of the author
         /// </summary>
         public string Author { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the license
+        ///     Gets or sets the value of the license
         /// </summary>
         public string License { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the icon
+        ///     Gets or sets the value of the icon
         /// </summary>
         public string Icon { get; set; }
     }

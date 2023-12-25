@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GeneralSettingBuilder.cs
+//  File: GeneralSettingBuilder.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -35,10 +35,10 @@ using Alis.Core.Ecs.System.Setting.General;
 namespace Alis.Builder.Core.Ecs.System.Setting.General
 {
     /// <summary>
-    /// The general setting builder class
+    ///     The general setting builder class
     /// </summary>
-    /// <seealso cref="IBuild{GeneralSetting}"/>
-    public class GeneralSettingBuilder : 
+    /// <seealso cref="IBuild{GeneralSetting}" />
+    public class GeneralSettingBuilder :
         IBuild<GeneralSetting>,
         IName<GeneralSettingBuilder, string>,
         IVersion<GeneralSettingBuilder, string>,
@@ -47,59 +47,58 @@ namespace Alis.Builder.Core.Ecs.System.Setting.General
         IDescription<GeneralSettingBuilder, string>,
         IIcon<GeneralSettingBuilder, string>
     {
-    
-    /// <summary>
-    /// The general setting
-    /// </summary>
-    private readonly GeneralSetting generalSetting = new GeneralSetting();
-    
-    /// <summary>
-    /// Builds this instance
-    /// </summary>
-    /// <returns>The general setting</returns>
-    public GeneralSetting Build() => generalSetting;
+        /// <summary>
+        ///     The general setting
+        /// </summary>
+        private readonly GeneralSetting generalSetting = new GeneralSetting();
 
-    /// <summary>
-    /// Names the value
-    /// </summary>
-    /// <param name="value">The value</param>
-    /// <returns>The general setting builder</returns>
-    public GeneralSettingBuilder Name(string value) => (generalSetting.Name = value) != null ? this : throw new ArgumentNullException(nameof(value));
+        /// <summary>
+        ///     Authors the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The general setting builder</returns>
+        public GeneralSettingBuilder Author(string value) => (generalSetting.Author = value) != null ? this : throw new ArgumentNullException(nameof(value));
 
-    /// <summary>
-    /// Versions the value
-    /// </summary>
-    /// <param name="value">The value</param>
-    /// <returns>The general setting builder</returns>
-    public GeneralSettingBuilder Version(string value) => (generalSetting.Version = value) != null ? this : throw new ArgumentNullException(nameof(value));
-    
-    /// <summary>
-    /// Authors the value
-    /// </summary>
-    /// <param name="value">The value</param>
-    /// <returns>The general setting builder</returns>
-    public GeneralSettingBuilder Author(string value) => (generalSetting.Author = value) != null ? this : throw new ArgumentNullException(nameof(value));
+        /// <summary>
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The general setting</returns>
+        public GeneralSetting Build() => generalSetting;
 
-    /// <summary>
-    /// Descriptions the value
-    /// </summary>
-    /// <param name="value">The value</param>
-    /// <returns>The general setting builder</returns>
-    public GeneralSettingBuilder Description(string value) => (generalSetting.Description = value) != null ? this : throw new ArgumentNullException(nameof(value));
+        /// <summary>
+        ///     Descriptions the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The general setting builder</returns>
+        public GeneralSettingBuilder Description(string value) => (generalSetting.Description = value) != null ? this : throw new ArgumentNullException(nameof(value));
 
-    /// <summary>
-    /// Icons the value
-    /// </summary>
-    /// <param name="value">The value</param>
-    /// <returns>The general setting builder</returns>
-    public GeneralSettingBuilder Icon(string value) => (generalSetting.Icon = value) != null ? this : throw new ArgumentNullException(nameof(value));
+        /// <summary>
+        ///     Icons the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The general setting builder</returns>
+        public GeneralSettingBuilder Icon(string value) => (generalSetting.Icon = value) != null ? this : throw new ArgumentNullException(nameof(value));
 
-    
-    /// <summary>
-    /// Licences the value
-    /// </summary>
-    /// <param name="value">The value</param>
-    /// <returns>The general setting builder</returns>
-    public GeneralSettingBuilder License(string value) => (generalSetting.License = value) != null ? this : throw new ArgumentNullException(nameof(value));
+
+        /// <summary>
+        ///     Licences the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The general setting builder</returns>
+        public GeneralSettingBuilder License(string value) => (generalSetting.License = value) != null ? this : throw new ArgumentNullException(nameof(value));
+
+        /// <summary>
+        ///     Names the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The general setting builder</returns>
+        public GeneralSettingBuilder Name(string value) => (generalSetting.Name = value) != null ? this : throw new ArgumentNullException(nameof(value));
+
+        /// <summary>
+        ///     Versions the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The general setting builder</returns>
+        public GeneralSettingBuilder Version(string value) => (generalSetting.Version = value) != null ? this : throw new ArgumentNullException(nameof(value));
     }
 }

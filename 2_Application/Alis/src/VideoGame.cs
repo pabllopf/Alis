@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:VideoGame.cs
+//  File: VideoGame.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -54,11 +54,6 @@ namespace Alis
     public class VideoGame : Game
     {
         /// <summary>
-        /// Gets or sets the value of the instance
-        /// </summary>
-        public static VideoGame Instance { get; private set; }
-        
-        /// <summary>
         ///     Video game
         /// </summary>
         public VideoGame()
@@ -79,70 +74,75 @@ namespace Alis
             });
 
             Logger.Trace();
-            
+
             Instance = this;
         }
-        
+
         /// <summary>
-        /// Gets or sets the value of the ads setting
+        ///     Gets or sets the value of the instance
         /// </summary>
-        public  AdsManager AdsManager => Get<AdsManager>();
-        
+        public static VideoGame Instance { get; private set; }
+
         /// <summary>
-        /// Gets or sets the value of the audio manager
+        ///     Gets or sets the value of the ads setting
         /// </summary>
-        public  AudioManager AudioManager => Get<AudioManager>();
-        
+        public AdsManager AdsManager => Get<AdsManager>();
+
         /// <summary>
-        /// Gets or sets the value of the graphic manager
+        ///     Gets or sets the value of the audio manager
         /// </summary>
-        public  GraphicManager GraphicManager => Get<GraphicManager>();
-        
+        public AudioManager AudioManager => Get<AudioManager>();
+
         /// <summary>
-        /// Gets or sets the value of the input manager
+        ///     Gets or sets the value of the graphic manager
         /// </summary>
-        public  InputManager InputManager => Get<InputManager>();
-        
+        public GraphicManager GraphicManager => Get<GraphicManager>();
+
         /// <summary>
-        /// Gets or sets the value of the network manager
+        ///     Gets or sets the value of the input manager
         /// </summary>
-        public  NetworkManager NetworkManager => Get<NetworkManager>();
-        
+        public InputManager InputManager => Get<InputManager>();
+
         /// <summary>
-        /// Gets or sets the value of the physic manager
+        ///     Gets or sets the value of the network manager
         /// </summary>
-        public  PhysicManager PhysicManager => Get<PhysicManager>();
-        
+        public NetworkManager NetworkManager => Get<NetworkManager>();
+
         /// <summary>
-        /// Gets or sets the value of the plugin manager
+        ///     Gets or sets the value of the physic manager
         /// </summary>
-        public  PluginManager PluginManager => Get<PluginManager>();
-        
+        public PhysicManager PhysicManager => Get<PhysicManager>();
+
         /// <summary>
-        /// Gets or sets the value of the profile manager
+        ///     Gets or sets the value of the plugin manager
         /// </summary>
-        public  ProfileManager ProfileManager => Get<ProfileManager>();
-        
+        public PluginManager PluginManager => Get<PluginManager>();
+
         /// <summary>
-        /// Gets or sets the value of the scene manager
+        ///     Gets or sets the value of the profile manager
         /// </summary>
-        public  SceneManager SceneManager => Get<SceneManager>();
-        
+        public ProfileManager ProfileManager => Get<ProfileManager>();
+
         /// <summary>
-        /// Gets or sets the value of the script manager
+        ///     Gets or sets the value of the scene manager
         /// </summary>
-        public  ScriptManager ScriptManager => Get<ScriptManager>();
-        
+        public SceneManager SceneManager => Get<SceneManager>();
+
         /// <summary>
-        /// Gets or sets the value of the store manager
+        ///     Gets or sets the value of the script manager
+        /// </summary>
+        public ScriptManager ScriptManager => Get<ScriptManager>();
+
+        /// <summary>
+        ///     Gets or sets the value of the store manager
         /// </summary>
         public StoreManager StoreManager => Get<StoreManager>();
 
         /// <summary>
-        /// Gets or sets the value of the setting
+        ///     Gets or sets the value of the setting
         /// </summary>
         public Settings Settings { get; set; } = new Settings();
-        
+
         /// <summary>
         ///     Builders
         /// </summary>
@@ -150,7 +150,7 @@ namespace Alis
         public static VideoGameBuilder Builder() => new VideoGameBuilder();
 
         /// <summary>
-        /// Exits this instance
+        ///     Exits this instance
         /// </summary>
         public void Exit() => IsRunning = false;
     }

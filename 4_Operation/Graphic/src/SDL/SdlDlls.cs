@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlDlls.cs
+//  File: SdlDlls.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -42,62 +42,62 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), string> SdlDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), string>
         {
-            {(OSPlatform.Windows, Architecture.X86),   "Alis.Core.Graphic.resources.win_x86.win-x86_sdl2.zip"},
-            {(OSPlatform.Windows, Architecture.X64),   "Alis.Core.Graphic.resources.win_x64.win-x64_sdl2.zip"},
-            {(OSPlatform.Windows, Architecture.Arm),   "Alis.Core.Graphic.resources.win_arm.win-arm_sdl2.zip"},
+            {(OSPlatform.Windows, Architecture.X86), "Alis.Core.Graphic.resources.win_x86.win-x86_sdl2.zip"},
+            {(OSPlatform.Windows, Architecture.X64), "Alis.Core.Graphic.resources.win_x64.win-x64_sdl2.zip"},
+            {(OSPlatform.Windows, Architecture.Arm), "Alis.Core.Graphic.resources.win_arm.win-arm_sdl2.zip"},
             {(OSPlatform.Windows, Architecture.Arm64), "Alis.Core.Graphic.resources.win_arm64.win-arm64_sdl2.zip"},
-            
-            {(OSPlatform.Linux, Architecture.X86),     "Alis.Core.Graphic.resources.linux_x86.linux-x86_sdl2.zip"},
-            {(OSPlatform.Linux, Architecture.X64),     "Alis.Core.Graphic.resources.linux_x64.linux-x64_sdl2.zip"},
-            {(OSPlatform.Linux, Architecture.Arm),     "Alis.Core.Graphic.resources.linux_arm.linux-arm_sdl2.zip"},
-            {(OSPlatform.Linux, Architecture.Arm64),   "Alis.Core.Graphic.resources.linux_arm64.linux-arm64_sdl2.zip"},
-            
-            {(OSPlatform.OSX, Architecture.X86),       "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2.zip"},
-            {(OSPlatform.OSX, Architecture.X64),       "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2.zip"},
-            {(OSPlatform.OSX, Architecture.Arm64),     "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2.zip"},
-            {(OSPlatform.OSX, Architecture.Arm),       "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2.zip"},
+
+            {(OSPlatform.Linux, Architecture.X86), "Alis.Core.Graphic.resources.linux_x86.linux-x86_sdl2.zip"},
+            {(OSPlatform.Linux, Architecture.X64), "Alis.Core.Graphic.resources.linux_x64.linux-x64_sdl2.zip"},
+            {(OSPlatform.Linux, Architecture.Arm), "Alis.Core.Graphic.resources.linux_arm.linux-arm_sdl2.zip"},
+            {(OSPlatform.Linux, Architecture.Arm64), "Alis.Core.Graphic.resources.linux_arm64.linux-arm64_sdl2.zip"},
+
+            {(OSPlatform.OSX, Architecture.X86), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2.zip"},
+            {(OSPlatform.OSX, Architecture.X64), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2.zip"},
+            {(OSPlatform.OSX, Architecture.Arm64), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2.zip"},
+            {(OSPlatform.OSX, Architecture.Arm), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2.zip"}
         };
-        
+
         /// <summary>
         ///     The sdl2 image
         /// </summary>
         internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), string> SdlImageDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), string>
         {
-            {(OSPlatform.Windows, Architecture.X86),   "Alis.Core.Graphic.resources.win_x86.win-x86_sdl2_image.zip"},
-            {(OSPlatform.Windows, Architecture.X64),   "Alis.Core.Graphic.resources.win_x64.win-x64_sdl2_image.zip"},
-            {(OSPlatform.Windows, Architecture.Arm),   "Alis.Core.Graphic.resources.win_arm.win-arm_sdl2_image.zip"},
+            {(OSPlatform.Windows, Architecture.X86), "Alis.Core.Graphic.resources.win_x86.win-x86_sdl2_image.zip"},
+            {(OSPlatform.Windows, Architecture.X64), "Alis.Core.Graphic.resources.win_x64.win-x64_sdl2_image.zip"},
+            {(OSPlatform.Windows, Architecture.Arm), "Alis.Core.Graphic.resources.win_arm.win-arm_sdl2_image.zip"},
             {(OSPlatform.Windows, Architecture.Arm64), "Alis.Core.Graphic.resources.win_arm64.win-arm64_sdl2_image.zip"},
-            
-            {(OSPlatform.Linux, Architecture.X86),     "Alis.Core.Graphic.resources.linux_x86.linux-x86_sdl2_image.zip"},
-            {(OSPlatform.Linux, Architecture.X64),     "Alis.Core.Graphic.resources.linux_x64.linux-x64_sdl2_image.zip"},
-            {(OSPlatform.Linux, Architecture.Arm),     "Alis.Core.Graphic.resources.linux_arm.linux-arm_sdl2_image.zip"},
-            {(OSPlatform.Linux, Architecture.Arm64),   "Alis.Core.Graphic.resources.linux_arm64.linux-arm64_sdl2_image.zip"},
-            
-            {(OSPlatform.OSX, Architecture.X86),       "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_image.zip"},
-            {(OSPlatform.OSX, Architecture.X64),       "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_image.zip"},
-            {(OSPlatform.OSX, Architecture.Arm64),     "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_image.zip"},
-            {(OSPlatform.OSX, Architecture.Arm),       "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_image.zip"},
+
+            {(OSPlatform.Linux, Architecture.X86), "Alis.Core.Graphic.resources.linux_x86.linux-x86_sdl2_image.zip"},
+            {(OSPlatform.Linux, Architecture.X64), "Alis.Core.Graphic.resources.linux_x64.linux-x64_sdl2_image.zip"},
+            {(OSPlatform.Linux, Architecture.Arm), "Alis.Core.Graphic.resources.linux_arm.linux-arm_sdl2_image.zip"},
+            {(OSPlatform.Linux, Architecture.Arm64), "Alis.Core.Graphic.resources.linux_arm64.linux-arm64_sdl2_image.zip"},
+
+            {(OSPlatform.OSX, Architecture.X86), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_image.zip"},
+            {(OSPlatform.OSX, Architecture.X64), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_image.zip"},
+            {(OSPlatform.OSX, Architecture.Arm64), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_image.zip"},
+            {(OSPlatform.OSX, Architecture.Arm), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_image.zip"}
         };
-        
+
         /// <summary>
         ///     The sdl2 ttf
         /// </summary>
         internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), string> SdlTtfDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), string>
         {
-            {(OSPlatform.Windows, Architecture.X86),   "Alis.Core.Graphic.resources.win_x86.win-x86_sdl2_ttf.zip"},
-            {(OSPlatform.Windows, Architecture.X64),   "Alis.Core.Graphic.resources.win_x64.win-x64_sdl2_ttf.zip"},
-            {(OSPlatform.Windows, Architecture.Arm),   "Alis.Core.Graphic.resources.win_arm.win-arm_sdl2_ttf.zip"},
+            {(OSPlatform.Windows, Architecture.X86), "Alis.Core.Graphic.resources.win_x86.win-x86_sdl2_ttf.zip"},
+            {(OSPlatform.Windows, Architecture.X64), "Alis.Core.Graphic.resources.win_x64.win-x64_sdl2_ttf.zip"},
+            {(OSPlatform.Windows, Architecture.Arm), "Alis.Core.Graphic.resources.win_arm.win-arm_sdl2_ttf.zip"},
             {(OSPlatform.Windows, Architecture.Arm64), "Alis.Core.Graphic.resources.win_arm64.win-arm64_sdl2_ttf.zip"},
-            
-            {(OSPlatform.Linux, Architecture.X86),     "Alis.Core.Graphic.resources.linux_x86.linux-x86_sdl2_ttf.zip"},
-            {(OSPlatform.Linux, Architecture.X64),     "Alis.Core.Graphic.resources.linux_x64.linux-x64_sdl2_ttf.zip"},
-            {(OSPlatform.Linux, Architecture.Arm),     "Alis.Core.Graphic.resources.linux_arm.linux-arm_sdl2_ttf.zip"},
-            {(OSPlatform.Linux, Architecture.Arm64),   "Alis.Core.Graphic.resources.linux_arm64.linux-arm64_sdl2_ttf.zip"},
-            
-            {(OSPlatform.OSX, Architecture.X86),       "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_ttf.zip"},
-            {(OSPlatform.OSX, Architecture.X64),       "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_ttf.zip"},
-            {(OSPlatform.OSX, Architecture.Arm64),     "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_ttf.zip"},
-            {(OSPlatform.OSX, Architecture.Arm),       "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_ttf.zip"},
+
+            {(OSPlatform.Linux, Architecture.X86), "Alis.Core.Graphic.resources.linux_x86.linux-x86_sdl2_ttf.zip"},
+            {(OSPlatform.Linux, Architecture.X64), "Alis.Core.Graphic.resources.linux_x64.linux-x64_sdl2_ttf.zip"},
+            {(OSPlatform.Linux, Architecture.Arm), "Alis.Core.Graphic.resources.linux_arm.linux-arm_sdl2_ttf.zip"},
+            {(OSPlatform.Linux, Architecture.Arm64), "Alis.Core.Graphic.resources.linux_arm64.linux-arm64_sdl2_ttf.zip"},
+
+            {(OSPlatform.OSX, Architecture.X86), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_ttf.zip"},
+            {(OSPlatform.OSX, Architecture.X64), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_ttf.zip"},
+            {(OSPlatform.OSX, Architecture.Arm64), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_ttf.zip"},
+            {(OSPlatform.OSX, Architecture.Arm), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_ttf.zip"}
         };
     }
 }

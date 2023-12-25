@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sprite.cs
+//  File: Sprite.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -44,11 +44,24 @@ namespace Alis.Core.Ecs.Component.Render
         ///     The image
         /// </summary>
         public Image Image;
-        
+
         /// <summary>
         ///     The texture path
         /// </summary>
         public string TexturePath;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Sprite" /> class
+        /// </summary>
+        public Sprite()
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Sprite" /> class
+        /// </summary>
+        /// <param name="texturePath">The texture path</param>
+        public Sprite(string texturePath) => TexturePath = texturePath;
 
         /// <summary>
         ///     The level
@@ -71,8 +84,8 @@ namespace Alis.Core.Ecs.Component.Render
                 Image = new Image(TexturePath);
                 Console.WriteLine($"Load sprite od '{TexturePath}'");
             }
-            
-            
+
+
             /*
             SpriteSfml = new Graphic.SFML.Graphics.Sprite(new Texture(TexturePath));
             size = new Vector2(SpriteSfml.TextureRect.Width, SpriteSfml.TextureRect.Height);
@@ -123,23 +136,6 @@ namespace Alis.Core.Ecs.Component.Render
         public override void OnExit()
         {
             GraphicManager.UnAttach(this);
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Sprite"/> class
-        /// </summary>
-        public Sprite()
-        {
-            
-        } 
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Sprite"/> class
-        /// </summary>
-        /// <param name="texturePath">The texture path</param>
-        public Sprite(string texturePath)
-        {
-            TexturePath = texturePath;
         }
     }
 }

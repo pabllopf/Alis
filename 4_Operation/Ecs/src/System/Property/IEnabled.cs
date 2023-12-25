@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IEnabled.cs
+//  File: IEnabled.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,12 +30,12 @@
 namespace Alis.Core.Ecs.System.Property
 {
     /// <summary>
-    /// The enabled interface
+    ///     The enabled interface
     /// </summary>
     public interface IEnabled
     {
         /// <summary>
-        /// Gets or sets the value of the is enable
+        ///     Gets or sets the value of the is enable
         /// </summary>
         public bool IsEnable { get; set; }
     }

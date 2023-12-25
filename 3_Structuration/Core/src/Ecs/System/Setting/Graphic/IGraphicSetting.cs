@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IGraphicSetting.cs
+//  File: IGraphicSetting.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -32,13 +32,13 @@ using Alis.Core.Graphic;
 namespace Alis.Core.Ecs.System.Setting.Graphic
 {
     /// <summary>
-    /// The graphic setting interface
+    ///     The graphic setting interface
     /// </summary>
-    /// <seealso cref="ISetting"/>
+    /// <seealso cref="ISetting" />
     public interface IGraphicSetting : ISetting
     {
         /// <summary>
-        /// Gets or sets the value of the window
+        ///     Gets or sets the value of the window
         /// </summary>
         public IWindow Window { get; set; }
     }

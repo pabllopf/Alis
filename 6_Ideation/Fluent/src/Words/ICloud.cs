@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ICloud.cs
+//  File: ICloud.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The cloud interface
+    ///     The cloud interface
     /// </summary>
-    public interface ICloud <out TBuilder, in TArgument>
+    public interface ICloud<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Clouds the value
+        ///     Clouds the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

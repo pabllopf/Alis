@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TranslationNotFound.cs
+//  File: TranslationNotFound.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -32,13 +32,13 @@ using System;
 namespace Alis.Core.Aspect.Translation
 {
     /// <summary>
-    /// The translation not found class
+    ///     The translation not found class
     /// </summary>
-    /// <seealso cref="Exception"/>
+    /// <seealso cref="Exception" />
     public class TranslationNotFound : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TranslationNotFound"/> class
+        ///     Initializes a new instance of the <see cref="TranslationNotFound" /> class
         /// </summary>
         /// <param name="key">The key</param>
         public TranslationNotFound(string key) : base($"Translation not found for key: {key}")

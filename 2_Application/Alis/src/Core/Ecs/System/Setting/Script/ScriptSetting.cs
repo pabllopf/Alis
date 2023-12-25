@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ScriptSetting.cs
+//  File: ScriptSetting.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,11 +30,10 @@
 namespace Alis.Core.Ecs.System.Setting.Script
 {
     /// <summary>
-    /// The script setting class
+    ///     The script setting class
     /// </summary>
-    /// <seealso cref="IScriptSetting"/>
+    /// <seealso cref="IScriptSetting" />
     public class ScriptSetting : IScriptSetting
     {
-        
     }
 }

@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IWindow.cs
+//  File: IWindow.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -33,22 +33,22 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Graphic
 {
     /// <summary>
-    /// The window interface
+    ///     The window interface
     /// </summary>
     public interface IWindow
     {
         /// <summary>
-        /// Gets or sets the value of the background
+        ///     Gets or sets the value of the background
         /// </summary>
         public Color Background { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the resolution
+        ///     Gets or sets the value of the resolution
         /// </summary>
         public Vector2 Resolution { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the is window resizable
+        ///     Gets or sets the value of the is window resizable
         /// </summary>
         bool IsWindowResizable { get; set; }
     }

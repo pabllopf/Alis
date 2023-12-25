@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:VideoGameTest.cs
+//  File: VideoGameTest.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Test
 {
     /// <summary>
-    /// The video game test class
+    ///     The video game test class
     /// </summary>
     public class VideoGameTest
     {
         /// <summary>
-        /// Tests that test 1
+        ///     Tests that test 1
         /// </summary>
         [Fact]
         public void Test1()

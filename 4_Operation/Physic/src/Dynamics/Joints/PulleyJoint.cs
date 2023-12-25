@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PulleyJoint.cs
+//  File: PulleyJoint.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -44,18 +44,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     often work better when combined with prismatic joints. You should also cover the the anchor points with static
     ///     shapes
     ///     to prevent one side from going to zero length.
-    ///
-    ///   Pulley:
-    ///  length1 = norm(p1 - s1)
-    ///  length2 = norm(p2 - s2)
-    ///  C0 = (length1 + ratio * length2)_initial
-    ///  C = C0 - (length1 + ratio * length2)
-    /// u1 = (p1 - s1) / norm(p1 - s1)
-    /// u2 = (p2 - s2) / norm(p2 - s2)
-    /// cDot = -dot(u1, v1 + cross(w1, r1)) - ratio * dot(u2, v2 + cross(w2, r2))
-    /// J = -[u1 cross(r1, u1) ratio * u2  ratio * cross(r2, u2)]
-    ///  K = J * invM * JT
-    ///    = invMass1 + invI1 * cross(r1, u1)^2 + ratio^2 * (invMass2 + invI2 * cross(r2, u2)^2)
+    ///     Pulley:
+    ///     length1 = norm(p1 - s1)
+    ///     length2 = norm(p2 - s2)
+    ///     C0 = (length1 + ratio * length2)_initial
+    ///     C = C0 - (length1 + ratio * length2)
+    ///     u1 = (p1 - s1) / norm(p1 - s1)
+    ///     u2 = (p2 - s2) / norm(p2 - s2)
+    ///     cDot = -dot(u1, v1 + cross(w1, r1)) - ratio * dot(u2, v2 + cross(w2, r2))
+    ///     J = -[u1 cross(r1, u1) ratio * u2  ratio * cross(r2, u2)]
+    ///     K = J * invM * JT
+    ///     = invMass1 + invI1 * cross(r1, u1)^2 + ratio^2 * (invMass2 + invI2 * cross(r2, u2)^2)
     /// </summary>
     public class PulleyJoint : Joint
     {
@@ -269,7 +268,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vector2 dB = anchorB - bodyB.GetLocalPoint(worldAnchorB);
                 lengthB = dB.Length();
             }
-            
+
             this.ratio = ratio;
             constant = lengthA + ratio * lengthB;
             impulse = 0.0f;

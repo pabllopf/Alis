@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IPhysicManager.cs
+//  File: IPhysicManager.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,11 +30,10 @@
 namespace Alis.Core.Ecs.System.Manager.Physic
 {
     /// <summary>
-    /// The physic manager interface
+    ///     The physic manager interface
     /// </summary>
-    /// <seealso cref="IManager"/>
+    /// <seealso cref="IManager" />
     public interface IPhysicManager : IManager
     {
-
     }
 }

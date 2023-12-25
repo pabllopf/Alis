@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PluginSetting.cs
+//  File: PluginSetting.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,10 +30,9 @@
 namespace Alis.Core.Ecs.System.Setting.Plugin
 {
     /// <summary>
-    /// The plugin setting class
+    ///     The plugin setting class
     /// </summary>
     public class PluginSetting
     {
-        
     }
 }

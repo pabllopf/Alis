@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sprite.cs
+//  File: Sprite.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -34,22 +34,22 @@ using Alis.Core.Graphic.SDL;
 namespace Alis.Core.Graphic
 {
     /// <summary>
-    /// The sprite class
+    ///     The sprite class
     /// </summary>
     public class Sprite
     {
         /// <summary>
-        /// The texture
+        ///     The texture
         /// </summary>
-        private Texture texture;
+        private readonly Texture texture;
 
         /// <summary>
-        /// The depth
+        ///     The depth
         /// </summary>
         private Depth depth;
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Sprite"/> class
+        ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
         /// <param name="texture">The texture</param>
         /// <param name="depth">The depth</param>
@@ -58,14 +58,14 @@ namespace Alis.Core.Graphic
             this.texture = texture;
             this.depth = depth;
         }
-        
+
         /// <summary>
-        /// Draws the renderer
+        ///     Draws the renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         public void Draw(IntPtr renderer)
         {
-            Sdl.RenderCopy(renderer, texture.GetNativePointer(), IntPtr.Zero,  ref texture.Figure);
+            Sdl.RenderCopy(renderer, texture.GetNativePointer(), IntPtr.Zero, ref texture.Figure);
         }
     }
 }

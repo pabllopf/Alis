@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IComponent.cs
+//  File: IComponent.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -34,35 +34,35 @@ using Alis.Core.Ecs.System.Property;
 namespace Alis.Core.Ecs.Component
 {
     /// <summary>
-    /// The component interface
+    ///     The component interface
     /// </summary>
     public interface IComponent : IEnabled, IIdentifier, IRuntime
     {
         /// <summary>
-        /// Gets or sets the value of the game object
+        ///     Gets or sets the value of the game object
         /// </summary>
         public IGameObject GameObject { get; set; }
-        
+
         /// <summary>
-        /// Attaches the game object
+        ///     Attaches the game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public void Attach(IGameObject gameObject);
-        
+
         /// <summary>
-        /// Ons the press down key using the specified key
+        ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public void OnPressDownKey(SdlKeycode key);
-        
+
         /// <summary>
-        /// Ons the release key using the specified key
+        ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public void OnReleaseKey(SdlKeycode key);
-        
+
         /// <summary>
-        /// Ons the press key using the specified key
+        ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public void OnPressKey(SdlKeycode key);

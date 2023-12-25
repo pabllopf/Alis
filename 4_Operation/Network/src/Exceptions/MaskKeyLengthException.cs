@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:MaskKeyLengthException.cs
+//  File: MaskKeyLengthException.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -32,18 +32,17 @@ using System;
 namespace Alis.Core.Network.Exceptions
 {
     /// <summary>
-    /// The mask key length exception class
+    ///     The mask key length exception class
     /// </summary>
-    /// <seealso cref="Exception"/>
+    /// <seealso cref="Exception" />
     public class MaskKeyLengthException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MaskKeyLengthException"/> class
+        ///     Initializes a new instance of the <see cref="MaskKeyLengthException" /> class
         /// </summary>
         /// <param name="message">The message</param>
         public MaskKeyLengthException(string message) : base(message)
         {
-            
         }
     }
 }

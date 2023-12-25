@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Depth.cs
+//  File: Depth.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,22 +30,19 @@
 namespace Alis.Core.Aspect.Math.Definition
 {
     /// <summary>
-    /// The depth
+    ///     The depth
     /// </summary>
     public struct Depth
     {
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
-        public int Value; 
-        
+        public int Value;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Depth"/> class
+        ///     Initializes a new instance of the <see cref="Depth" /> class
         /// </summary>
         /// <param name="value">The value</param>
-        public Depth(int value)
-        {
-            Value = value;
-        }
+        public Depth(int value) => Value = value;
     }
 }

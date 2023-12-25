@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IFigure.cs
+//  File: IShape.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,7 +30,7 @@
 namespace Alis.Core.Aspect.Math.Shape
 {
     /// <summary>
-    /// The figure interface
+    ///     The figure interface
     /// </summary>
     public interface IShape
     {

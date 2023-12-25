@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IGraphicManager.cs
+//  File: INetworkSetting.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -32,11 +32,10 @@ using Alis.Core.Ecs.System.Manager;
 namespace Alis.Core.Ecs.System.Setting.Network
 {
     /// <summary>
-    /// The network manager interface
+    ///     The network manager interface
     /// </summary>
-    /// <seealso cref="IManager"/>
+    /// <seealso cref="IManager" />
     public interface INetworkSetting : ISetting
     {
-        
     }
 }

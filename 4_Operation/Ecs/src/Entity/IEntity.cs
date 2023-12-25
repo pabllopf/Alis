@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IEntity.cs
+//  File: IEntity.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -32,13 +32,12 @@ using Alis.Core.Ecs.System.Property;
 namespace Alis.Core.Ecs.Entity
 {
     /// <summary>
-    /// The entity interface
+    ///     The entity interface
     /// </summary>
-    /// <seealso cref="IEnabled"/>
-    /// <seealso cref="IIdentifier"/>
-    /// <seealso cref="IRuntime"/>
-    public interface IEntity :  IEnabled, IIdentifier, IRuntime
+    /// <seealso cref="IEnabled" />
+    /// <seealso cref="IIdentifier" />
+    /// <seealso cref="IRuntime" />
+    public interface IEntity : IEnabled, IIdentifier, IRuntime
     {
-        
     }
 }

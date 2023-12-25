@@ -88,7 +88,7 @@ jobs:
 
       - name: Print the next version
         run: echo $CURRENTVERSION
-      
+
       - name: Build all platforms
         run: for i in `find . -name "*.csproj" -type f`;do if [[ $i != *".Template."* && $i != *".App."* && $i != *".Test."* && $i != *".Benchmark."* && $i != *".Sample."* ]] ;then echo "Build project $i" ;dotnet build $i -c Release;dotnet build $i -r win-x64 -c Release;dotnet build $i -r win-arm64 -c Release;dotnet build $i -r win-x86 -c Release;dotnet build $i -r win-arm -c Release;dotnet build $i -r osx-x64 -c Release;dotnet build $i -r osx-arm64 -c Release;dotnet build $i -r linux-x64 -c Release;dotnet build $i -r linux-x86 -c Release;dotnet build $i -r linux-arm64 -c Release;fi;done
 
@@ -119,8 +119,8 @@ jobs:
           git_config_global: true
           git_user_signingkey: true
           git_commit_gpgsign: true
-          
-      - name: git tag 
+
+      - name: git tag
         run: git tag -s "v${{ env.VERSIONFINAL }}" -m "v${{ env.VERSIONFINAL }}"
         env:
           GITHUB_TOKEN: ${{ secrets.OSLASH_BOT_GITHUB_TOKEN }}
@@ -159,13 +159,13 @@ jobs:
           files: |
             licence.md
             ./.publish/${{ env.VERSIONFINAL }}/*.nupkg
-        
+
       - name: git fetch
         run: git fetch
-        
+
       - name: git checkout master
         run: git checkout master
-      
+
       - name: git pull
         run: git pull
 

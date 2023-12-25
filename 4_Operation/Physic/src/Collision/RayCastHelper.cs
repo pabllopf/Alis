@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RayCastHelper.cs
+//  File: RayCastHelper.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -45,11 +45,10 @@ namespace Alis.Core.Physic.Collision
     {
         /// <summary>
         ///     Describes whether ray cast edge
-        ///
-        ///  p = p1 + t * d
-        ///  v = v1 + s * e
-        ///  p1 + t * d = v1 + s * e
-        ///  s * e - t * d = p1 - v1
+        ///     p = p1 + t * d
+        ///     v = v1 + s * e
+        ///     p1 + t * d = v1 + s * e
+        ///     s * e - t * d = p1 - v1
         /// </summary>
         /// <param name="start">The start</param>
         /// <param name="end">The end</param>

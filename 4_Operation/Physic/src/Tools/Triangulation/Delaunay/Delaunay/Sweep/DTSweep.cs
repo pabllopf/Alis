@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DTSweep.cs
+//  File: DTSweep.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -627,7 +627,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Flips the edge event using the specified tcx
+        ///     Flips the edge event using the specified tcx
         /// </summary>
         /// <param name="tcx">The tcx</param>
         /// <param name="ep">The ep</param>
@@ -661,7 +661,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Rotates the shared edge using the specified tcx
+        ///     Rotates the shared edge using the specified tcx
         /// </summary>
         /// <param name="tcx">The tcx</param>
         /// <param name="t">The </param>
@@ -712,7 +712,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                 FlipEdgeEvent(tcx, ep, eq, t, p);
             }
         }
-        
+
         /// <summary>
         ///     When we need to traverse from one triangle to the next we need the point in current triangle that is the
         ///     opposite point to the next triangle.
@@ -1114,7 +1114,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Determines if a triangle is legalized and legalizes it if needed.
+        ///     Determines if a triangle is legalized and legalizes it if needed.
         /// </summary>
         /// <param name="tcx">The sweep context.</param>
         /// <param name="t">The triangle to check and legalize.</param>
@@ -1164,7 +1164,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Handles the edge is constrained using the specified t
+        ///     Handles the edge is constrained using the specified t
         /// </summary>
         /// <param name="t">The </param>
         /// <param name="edgeIndex">The edge index</param>
@@ -1176,7 +1176,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         }
 
         /// <summary>
-        /// Describes whether try legalize triangle
+        ///     Describes whether try legalize triangle
         /// </summary>
         /// <param name="tcx">The tcx</param>
         /// <param name="t">The </param>
@@ -1205,28 +1205,22 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 
 
         /// <summary>
-        /// Checks if an edge should not be legalized.
+        ///     Checks if an edge should not be legalized.
         /// </summary>
         /// <param name="ot">The neighboring triangle.</param>
         /// <param name="oi">The index of the opposite point.</param>
         /// <returns>True if the edge should not be legalized, false otherwise.</returns>
-        private static bool ShouldNotLegalize(DelaunayTriangle ot, int oi)
-        {
-            return ot.EdgeIsConstrained[oi] || ot.EdgeIsDelaunay[oi];
-        }
+        private static bool ShouldNotLegalize(DelaunayTriangle ot, int oi) => ot.EdgeIsConstrained[oi] || ot.EdgeIsDelaunay[oi];
 
         /// <summary>
-        /// Checks if a point is inside the cir circle of a triangle.
+        ///     Checks if a point is inside the cir circle of a triangle.
         /// </summary>
         /// <param name="p">The point to check.</param>
         /// <param name="a">The first triangle vertex.</param>
         /// <param name="b">The second triangle vertex.</param>
         /// <param name="c">The third triangle vertex.</param>
         /// <returns>True if the point is inside the cir circle, false otherwise.</returns>
-        private static bool IsInsideCirCircle(TriangulationPoint p, TriangulationPoint a, TriangulationPoint b, TriangulationPoint c)
-        {
-            return TriangulationUtil.SmartIncircle(p, a, b, c);
-        }
+        private static bool IsInsideCirCircle(TriangulationPoint p, TriangulationPoint a, TriangulationPoint b, TriangulationPoint c) => TriangulationUtil.SmartIncircle(p, a, b, c);
 
 
         /// <summary>

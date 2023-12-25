@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Polygon.cs
+//  File: Polygon.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -341,19 +341,19 @@ namespace Alis.Core.Physic.Utilities
                 {
                     vertices.Add(
                         new Vector2(radius *
-                                     (float) Math.Cos(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize),
+                                    (float) Math.Cos(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize),
                             -radius *
                             (float) Math.Sin(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize)));
 
                     vertices.Add(
                         new Vector2((radius + toothHeight) *
-                                     (float) Math.Cos(stepSize * i + toothAngleStepSize + toothTipStepSize),
+                                    (float) Math.Cos(stepSize * i + toothAngleStepSize + toothTipStepSize),
                             -(radius + toothHeight) *
                             (float) Math.Sin(stepSize * i + toothAngleStepSize + toothTipStepSize)));
                 }
 
                 vertices.Add(new Vector2((radius + toothHeight) *
-                                          (float) Math.Cos(stepSize * i + toothAngleStepSize),
+                                         (float) Math.Cos(stepSize * i + toothAngleStepSize),
                     -(radius + toothHeight) *
                     (float) Math.Sin(stepSize * i + toothAngleStepSize)));
 

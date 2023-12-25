@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IIdentifier.cs
+//  File: IIdentifier.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,22 +30,22 @@
 namespace Alis.Core.Ecs.System.Property
 {
     /// <summary>
-    /// The identifier interface
+    ///     The identifier interface
     /// </summary>
     public interface IIdentifier
     {
         /// <summary>
-        /// Gets or sets the value of the name
+        ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the id
+        ///     Gets or sets the value of the id
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the tag
+        ///     Gets or sets the value of the tag
         /// </summary>
         public string Tag { get; set; }
     }

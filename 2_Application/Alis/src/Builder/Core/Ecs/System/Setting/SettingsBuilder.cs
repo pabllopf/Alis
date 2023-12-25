@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SettingBuilder.cs
+//  File: SettingsBuilder.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -88,108 +88,108 @@ namespace Alis.Builder.Core.Ecs.System.Setting
         private readonly Settings settingBase = new Settings();
 
         /// <summary>
+        ///     Adses the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The settings builder</returns>
+        public SettingsBuilder Ads(Func<AdsSettingBuilder, AdsSetting> value) => (settingBase.Ads = value.Invoke(new AdsSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
+
+        /// <summary>
+        ///     Ais the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The settings builder</returns>
+        public SettingsBuilder Ai(Func<AiSettingBuilder, AiSetting> value) => (settingBase.Ai = value.Invoke(new AiSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
+
+        /// <summary>
+        ///     Audioes the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The settings builder</returns>
+        public SettingsBuilder Audio(Func<AudioSettingBuilder, AudioSetting> value) => (settingBase.Audio = value.Invoke(new AudioSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
+
+        /// <summary>
         ///     Build setting
         /// </summary>
         /// <returns></returns>
         public Settings Build() => settingBase;
 
         /// <summary>
-        /// Generals the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The settings builder</returns>
-        public SettingsBuilder General(Func<GeneralSettingBuilder, GeneralSetting> value) => (settingBase.General = value.Invoke(new GeneralSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value)); 
-        
-        /// <summary>
-        /// Audioes the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The settings builder</returns>
-        public SettingsBuilder Audio(Func<AudioSettingBuilder, AudioSetting> value) => (settingBase.Audio = value.Invoke(new AudioSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
-        
-        /// <summary>
-        /// Graphics the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The settings builder</returns>
-        public SettingsBuilder Graphic(Func<GraphicSettingBuilder, GraphicSetting> value)  => (settingBase.Graphic = value.Invoke(new GraphicSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
-        
-        /// <summary>
-        /// Physics the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The settings builder</returns>
-        public SettingsBuilder Physic(Func<PhysicSettingBuilder, PhysicSetting> value) => (settingBase.Physic = value.Invoke(new PhysicSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
-        
-        /// <summary>
-        /// Adses the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The settings builder</returns>
-        public SettingsBuilder Ads(Func<AdsSettingBuilder, AdsSetting> value)  => (settingBase.Ads = value.Invoke(new AdsSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
-        
-        /// <summary>
-        /// Clouds the value
+        ///     Clouds the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The settings builder</returns>
         public SettingsBuilder Cloud(Func<CloudSettingBuilder, CloudSetting> value) => (settingBase.Cloud = value.Invoke(new CloudSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
-        
 
         /// <summary>
-        /// Inputs the value
+        ///     Generals the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The settings builder</returns>
-        public SettingsBuilder Input(Func<InputSettingBuilder, InputSetting> value) =>  (settingBase.Input = value.Invoke(new InputSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
+        public SettingsBuilder General(Func<GeneralSettingBuilder, GeneralSetting> value) => (settingBase.General = value.Invoke(new GeneralSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
 
         /// <summary>
-        /// Networks the value
+        ///     Graphics the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The settings builder</returns>
+        public SettingsBuilder Graphic(Func<GraphicSettingBuilder, GraphicSetting> value) => (settingBase.Graphic = value.Invoke(new GraphicSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
+
+
+        /// <summary>
+        ///     Inputs the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The settings builder</returns>
+        public SettingsBuilder Input(Func<InputSettingBuilder, InputSetting> value) => (settingBase.Input = value.Invoke(new InputSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
+
+        /// <summary>
+        ///     Networks the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The settings builder</returns>
         public SettingsBuilder Network(Func<NetworkSettingBuilder, NetworkSetting> value) => (settingBase.Network = value.Invoke(new NetworkSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
-        
+
         /// <summary>
-        /// Plugins the value
+        ///     Physics the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The settings builder</returns>
+        public SettingsBuilder Physic(Func<PhysicSettingBuilder, PhysicSetting> value) => (settingBase.Physic = value.Invoke(new PhysicSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
+
+        /// <summary>
+        ///     Plugins the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The settings builder</returns>
         public SettingsBuilder Plugin(Func<PluginSettingBuilder, PluginSetting> value) => (settingBase.Plugin = value.Invoke(new PluginSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
-        
+
         /// <summary>
-        /// Profiles the value
+        ///     Profiles the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The settings builder</returns>
         public SettingsBuilder Profile(Func<ProfileSettingBuilder, ProfileSetting> value) => (settingBase.Profile = value.Invoke(new ProfileSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
-        
+
         /// <summary>
-        /// Scenes the value
+        ///     Scenes the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The settings builder</returns>
         public SettingsBuilder Scene(Func<SceneSettingBuilder, SceneSetting> value) => (settingBase.Scene = value.Invoke(new SceneSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
-        
+
         /// <summary>
-        /// Scripts the value
+        ///     Scripts the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The settings builder</returns>
         public SettingsBuilder Script(Func<ScriptSettingBuilder, ScriptSetting> value) => (settingBase.Script = value.Invoke(new ScriptSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
-        
+
         /// <summary>
-        /// Stores the value
+        ///     Stores the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The settings builder</returns>
         public SettingsBuilder Store(Func<StoreSettingBuilder, StoreSetting> value) => (settingBase.Store = value.Invoke(new StoreSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
-
-        /// <summary>
-        /// Ais the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The settings builder</returns>
-        public SettingsBuilder Ai(Func<AiSettingBuilder, AiSetting> value) => (settingBase.Ai = value.Invoke(new AiSettingBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
     }
 }

@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:$FILENAME$
+//  File: IIsResizable.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,19 +30,19 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The is resizable interface
+    ///     The is resizable interface
     /// </summary>
     public interface IIsResizable<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Ises the resizable
+        ///     Ises the resizable
         /// </summary>
         /// <returns>The builder</returns>
         TBuilder IsResizable();
 
 
         /// <summary>
-        /// Ises the resizable using the specified value
+        ///     Ises the resizable using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

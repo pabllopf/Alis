@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IGameObject.cs
+//  File: GameObjectTest.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,7 +30,7 @@
 namespace Alis.Core.Ecs.Test.Entity.GameObject
 {
     /// <summary>
-    /// The game object test class
+    ///     The game object test class
     /// </summary>
     public class GameObjectTest
     {

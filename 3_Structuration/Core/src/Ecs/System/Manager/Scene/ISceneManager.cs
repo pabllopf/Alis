@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ISceneManager.cs
+//  File: ISceneManager.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -34,30 +34,30 @@ using Alis.Core.Ecs.System.Property;
 namespace Alis.Core.Ecs.System.Manager.Scene
 {
     /// <summary>
-    /// The scene manager interface
+    ///     The scene manager interface
     /// </summary>
-    /// <seealso cref="IManager"/>
-    /// <seealso cref="ICrud{IScene}"/>
+    /// <seealso cref="IManager" />
+    /// <seealso cref="ICrud{IScene}" />
     public interface ISceneManager : IManager, ICrud<IScene>
     {
         /// <summary>
-        /// Gets or sets the value of the current scene
+        ///     Gets or sets the value of the current scene
         /// </summary>
         public IScene CurrentScene { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the scenes
+        ///     Gets or sets the value of the scenes
         /// </summary>
         public List<IScene> Scenes { get; set; }
-        
+
         /// <summary>
-        /// Loads the scene using the specified scene
+        ///     Loads the scene using the specified scene
         /// </summary>
         /// <param name="scene">The scene</param>
         public void LoadScene(IScene scene);
-        
+
         /// <summary>
-        /// Reloads the scene using the specified scene
+        ///     Reloads the scene using the specified scene
         /// </summary>
         /// <param name="scene">The scene</param>
         public void ReloadScene(IScene scene);

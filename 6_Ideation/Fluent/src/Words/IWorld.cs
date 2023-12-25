@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IWorld.cs
+//  File: IWorld.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The world interface
+    ///     The world interface
     /// </summary>
-    public interface IWorld <out TBuilder, in TArgument>
+    public interface IWorld<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Worlds the value
+        ///     Worlds the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

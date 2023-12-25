@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TimeStep.cs
+//  File: TimeStep.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -62,7 +62,7 @@ namespace Alis.Core.Aspect.Time
         public bool WarmStarting { get; set; }
 
         /// <summary>
-        /// Resets this instance
+        ///     Resets this instance
         /// </summary>
         public void Reset()
         {

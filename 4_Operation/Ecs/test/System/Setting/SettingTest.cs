@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ISetting.cs
+//  File: SettingTest.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,10 +30,9 @@
 namespace Alis.Core.Ecs.Test.System.Setting
 {
     /// <summary>
-    /// The setting test class
+    ///     The setting test class
     /// </summary>
     public class SettingTest
     {
-        
     }
 }

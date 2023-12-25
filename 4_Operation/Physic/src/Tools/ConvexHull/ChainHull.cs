@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ChainHull.cs
+//  File: ChainHull.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Tools.ConvexHull
         private static readonly PointComparer PointComparerPrivate = new PointComparer();
 
         /// <summary>
-        /// Returns the convex hull from the given vertices.
+        ///     Returns the convex hull from the given vertices.
         /// </summary>
         public static Vertices GetConvexHull(Vertices vertices)
         {
@@ -57,12 +57,12 @@ namespace Alis.Core.Physic.Tools.ConvexHull
             Vertices sortedVertices = SortVerticesByX(vertices);
             Vector2[] lowerHull = ComputeHull(sortedVertices, true);
             Vector2[] upperHull = ComputeHull(sortedVertices, false);
-    
+
             return CombineHulls(lowerHull, upperHull);
         }
 
         /// <summary>
-        /// Sorts the vertices by x using the specified vertices
+        ///     Sorts the vertices by x using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <returns>The sorted</returns>
@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Tools.ConvexHull
         }
 
         /// <summary>
-        /// Computes the hull using the specified vertices
+        ///     Computes the hull using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <param name="lowerHull">The lower hull</param>
@@ -87,10 +87,10 @@ namespace Alis.Core.Physic.Tools.ConvexHull
             int startIndex = lowerHull ? 0 : count - 1;
             int endIndex = lowerHull ? count : -1;
             int step = lowerHull ? 1 : -1;
-    
+
             for (int i = startIndex; i != endIndex; i += step)
             {
-                while (top >= 1 && !IsLeftOfLine(hull[top - 1], hull[top], vertices[i]))
+                while ((top >= 1) && !IsLeftOfLine(hull[top - 1], hull[top], vertices[i]))
                 {
                     top--;
                 }
@@ -104,19 +104,16 @@ namespace Alis.Core.Physic.Tools.ConvexHull
         }
 
         /// <summary>
-        /// Describes whether is left of line
+        ///     Describes whether is left of line
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        private static bool IsLeftOfLine(Vector2 a, Vector2 b, Vector2 point)
-        {
-            return MathUtils.Area(a, b, point) > 0;
-        }
+        private static bool IsLeftOfLine(Vector2 a, Vector2 b, Vector2 point) => MathUtils.Area(a, b, point) > 0;
 
         /// <summary>
-        /// Combines the hulls using the specified lower hull
+        ///     Combines the hulls using the specified lower hull
         /// </summary>
         /// <param name="lowerHull">The lower hull</param>
         /// <param name="upperHull">The upper hull</param>
@@ -134,6 +131,5 @@ namespace Alis.Core.Physic.Tools.ConvexHull
 
             return result;
         }
-
     }
 }

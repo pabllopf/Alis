@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IStore.cs
+//  File: IStore.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The store interface
+    ///     The store interface
     /// </summary>
-    public interface IStore <out TBuilder, in TArgument>
+    public interface IStore<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Stores the value
+        ///     Stores the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

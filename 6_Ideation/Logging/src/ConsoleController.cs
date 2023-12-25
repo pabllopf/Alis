@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ConsoleController.cs
+//  File: ConsoleController.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -36,9 +36,8 @@ namespace Alis.Core.Aspect.Logging
     /// </summary>
     public static class ConsoleController
     {
-       
         /// <summary>
-        /// Prints the message
+        ///     Prints the message
         /// </summary>
         /// <param name="message">The message</param>
         /// <param name="detailLevel">The detail level</param>

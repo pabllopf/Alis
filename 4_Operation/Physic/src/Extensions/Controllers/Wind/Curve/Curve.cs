@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Curve.cs
+//  File: Curve.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -75,9 +75,9 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
             return curve;
         }
 
-        
+
         /// <summary>
-        /// Evaluate the value at a position of this <see cref="Curve" />.
+        ///     Evaluate the value at a position of this <see cref="Curve" />.
         /// </summary>
         /// <param name="position">The position on this <see cref="Curve" />.</param>
         /// <returns>Value at the position on this <see cref="Curve" />.</returns>
@@ -100,7 +100,8 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
             {
                 return HandlePositionBeforeCurve(position, first, last);
             }
-            else if (position > last.Position)
+
+            if (position > last.Position)
             {
                 return HandlePositionAfterCurve(position, first, last);
             }
@@ -110,7 +111,7 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
         }
 
         /// <summary>
-        /// Handles the position before curve using the specified position
+        ///     Handles the position before curve using the specified position
         /// </summary>
         /// <param name="position">The position</param>
         /// <param name="first">The first</param>
@@ -138,7 +139,7 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
         }
 
         /// <summary>
-        /// Handles the position after curve using the specified position
+        ///     Handles the position after curve using the specified position
         /// </summary>
         /// <param name="position">The position</param>
         /// <param name="first">The first</param>
@@ -166,7 +167,7 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
         }
 
         /// <summary>
-        /// Handles the looping using the specified virtual pos
+        ///     Handles the looping using the specified virtual pos
         /// </summary>
         /// <param name="virtualPos">The virtual pos</param>
         /// <param name="first">The first</param>

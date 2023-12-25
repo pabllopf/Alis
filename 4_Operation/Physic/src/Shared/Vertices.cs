@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Vertices.cs
+//  File: Vertices.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -378,7 +378,7 @@ namespace Alis.Core.Physic.Shared
                     Vector2 b1 = this[j];
                     Vector2 b2 = NextVertex(j);
 
-                    if (Line.LineIntersect2( a1,  a2,  b1,  b2, out _))
+                    if (Line.LineIntersect2(a1, a2, b1, b2, out _))
                     {
                         return false;
                     }
@@ -472,7 +472,7 @@ namespace Alis.Core.Physic.Shared
         }
 
         /// <summary>
-        /// Calculates the winding number using the specified point
+        ///     Calculates the winding number using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The winding number</returns>
@@ -500,7 +500,7 @@ namespace Alis.Core.Physic.Shared
         }
 
         /// <summary>
-        /// Describes whether this instance is point on edge
+        ///     Describes whether this instance is point on edge
         /// </summary>
         /// <param name="point">The point</param>
         /// <param name="p1">The </param>
@@ -514,7 +514,7 @@ namespace Alis.Core.Physic.Shared
         }
 
         /// <summary>
-        /// Describes whether this instance is edge intersecting ray
+        ///     Describes whether this instance is edge intersecting ray
         /// </summary>
         /// <param name="point">The point</param>
         /// <param name="p1">The </param>
@@ -526,14 +526,12 @@ namespace Alis.Core.Physic.Shared
             {
                 return (p2.Y > point.Y) && (MathUtils.Area(ref p1, ref p2, ref point) > 0f);
             }
-            else
-            {
-                return (p2.Y <= point.Y) && (MathUtils.Area(ref p1, ref p2, ref point) < 0f);
-            }
+
+            return (p2.Y <= point.Y) && (MathUtils.Area(ref p1, ref p2, ref point) < 0f);
         }
 
         /// <summary>
-        /// Determines the winding direction using the specified point
+        ///     Determines the winding direction using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <param name="p1">The </param>
@@ -543,14 +541,12 @@ namespace Alis.Core.Physic.Shared
         {
             if (p1.Y <= point.Y)
             {
-                return (p2.Y > point.Y) ? 1 : 0;
+                return p2.Y > point.Y ? 1 : 0;
             }
-            else
-            {
-                return (p2.Y <= point.Y) ? -1 : 0;
-            }
+
+            return p2.Y <= point.Y ? -1 : 0;
         }
-        
+
         /// <summary>
         ///     Compute the sum of the angles made between the test point and each pair of points making up the polygon. If
         ///     this sum is 2pi then the point is an interior point, if 0 then the point is an exterior point. ref:

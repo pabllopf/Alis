@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:$FILENAME$
+//  File: DefaultTest.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -32,13 +32,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Security.Test
 {
     /// <summary>
-    /// The default test class
+    ///     The default test class
     /// </summary>
     public class DefaultTest
     {
-        
         /// <summary>
-        /// Tests that test
+        ///     Tests that test
         /// </summary>
         [Fact]
         public void Test()

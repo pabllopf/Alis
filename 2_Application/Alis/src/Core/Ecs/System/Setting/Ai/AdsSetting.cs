@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AdsSetting.cs
+//  File: AdsSetting.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,11 +30,10 @@
 namespace Alis.Core.Ecs.System.Setting.Ai
 {
     /// <summary>
-    /// The ai setting class
+    ///     The ai setting class
     /// </summary>
-    /// <seealso cref="IAiSetting"/>
+    /// <seealso cref="IAiSetting" />
     public class AiSetting : IAiSetting
     {
-        
     }
 }

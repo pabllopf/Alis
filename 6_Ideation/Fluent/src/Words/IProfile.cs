@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IPlofile.cs
+//  File: IProfile.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The profile interface
+    ///     The profile interface
     /// </summary>
-    public interface IProfile <out TBuilder, in TArgument>
+    public interface IProfile<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Profiles the value
+        ///     Profiles the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IPhysicManager.cs
+//  File: IPluginSetting.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -32,11 +32,10 @@ using Alis.Core.Ecs.System.Manager;
 namespace Alis.Core.Ecs.System.Setting.Plugin
 {
     /// <summary>
-    /// The plugin manager interface
+    ///     The plugin manager interface
     /// </summary>
-    /// <seealso cref="IManager"/>
+    /// <seealso cref="IManager" />
     public interface IPluginSetting : ISetting
     {
-        
     }
 }

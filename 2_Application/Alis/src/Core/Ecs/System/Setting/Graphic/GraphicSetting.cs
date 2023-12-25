@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GraphicSetting.cs
+//  File: GraphicSetting.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -33,12 +33,11 @@ using Alis.Core.Graphic;
 
 namespace Alis.Core.Ecs.System.Setting.Graphic
 {
-
     /// <summary>
-    /// The graphic setting class
+    ///     The graphic setting class
     /// </summary>
-    /// <seealso cref="IGraphicSetting"/>
-    /// <seealso cref="IBuilder{GraphicSettingBuilder}"/>
+    /// <seealso cref="IGraphicSetting" />
+    /// <seealso cref="IBuilder{GraphicSettingBuilder}" />
     public class GraphicSetting : IGraphicSetting,
         IBuilder<GraphicSettingBuilder>
     {
@@ -47,9 +46,9 @@ namespace Alis.Core.Ecs.System.Setting.Graphic
         /// </summary>
         /// <returns>The graphic setting builder</returns>
         public GraphicSettingBuilder Builder() => new GraphicSettingBuilder();
-        
+
         /// <summary>
-        /// Gets or sets the value of the window
+        ///     Gets or sets the value of the window
         /// </summary>
         public IWindow Window { get; set; }
     }

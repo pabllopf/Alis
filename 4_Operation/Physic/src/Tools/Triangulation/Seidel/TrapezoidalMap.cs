@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TrapezoidalMap.cs
+//  File: TrapezoidalMap.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -258,7 +258,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         }
 
         /// <summary>
-        /// Boundings the box using the specified edges
+        ///     Boundings the box using the specified edges
         /// </summary>
         /// <param name="edges">The edges</param>
         /// <returns>The trapezoid</returns>
@@ -276,7 +276,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         }
 
         /// <summary>
-        /// Calculates the max point using the specified edges
+        ///     Calculates the max point using the specified edges
         /// </summary>
         /// <param name="edges">The edges</param>
         /// <returns>The max</returns>
@@ -294,7 +294,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         }
 
         /// <summary>
-        /// Calculates the min point using the specified edges
+        ///     Calculates the min point using the specified edges
         /// </summary>
         /// <param name="edges">The edges</param>
         /// <returns>The min</returns>
@@ -312,7 +312,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         }
 
         /// <summary>
-        /// Updates the max point using the specified current max
+        ///     Updates the max point using the specified current max
         /// </summary>
         /// <param name="currentMax">The current max</param>
         /// <param name="point">The point</param>
@@ -325,7 +325,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         }
 
         /// <summary>
-        /// Updates the min point using the specified current min
+        ///     Updates the min point using the specified current min
         /// </summary>
         /// <param name="currentMin">The current min</param>
         /// <param name="point">The point</param>
@@ -336,6 +336,5 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
             double newY = Math.Min(currentMin.Y, point.Y);
             return new Point((float) (newX - margin), (float) newY);
         }
-
     }
 }

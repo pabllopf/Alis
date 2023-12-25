@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IGraphicManager.cs
+//  File: IInputManager.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,10 +30,10 @@
 namespace Alis.Core.Ecs.System.Manager.Input
 {
     /// <summary>
-    /// The input manager interface
+    ///     The input manager interface
     /// </summary>
-    /// <seealso cref="IManager"/>
-    public interface IInputManager : IManager 
+    /// <seealso cref="IManager" />
+    public interface IInputManager : IManager
     {
     }
 }

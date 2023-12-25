@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:BoxCollider.cs
+//  File: BoxCollider.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -164,13 +164,12 @@ namespace Alis.Core.Ecs.Component.Collider
         {
             RectangleF = new RectangleF
             {
-                x =  (GameObject.Transform.Position.X + RelativePosition.X - Width / 2),
-                y = (GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2),
-                w =  Width,
-                h =  Height
+                x = GameObject.Transform.Position.X + RelativePosition.X - Width / 2,
+                y = GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2,
+                w = Width,
+                h = Height
             };
-            
-            
+
 
             Body = new Rectangle(
                 Width,
@@ -223,30 +222,31 @@ namespace Alis.Core.Ecs.Component.Collider
         {
             float xOdl = GameObject.Transform.Position.X;
             float yOld = GameObject.Transform.Position.Y;
-            
+
             float xNew = Body.Position.X;
             float yNew = Body.Position.Y;
-            
+
             if (Math.Abs(xOdl - xNew) >= 1.1f)
             {
-                Transform transform = new Transform()
+                Transform transform = new Transform
                 {
                     Position = new Vector2(Body.Position.X, GameObject.Transform.Position.Y),
                     Rotation = new Rotation(Body.Rotation),
                     Scale = GameObject.Transform.Scale
                 };
-                
+
                 GameObject.Transform = transform;
             }
+
             if (Math.Abs(yOld - yNew) >= 1.1f)
             {
-                Transform transform = new Transform()
+                Transform transform = new Transform
                 {
                     Position = new Vector2(GameObject.Transform.Position.X, Body.Position.Y),
                     Rotation = new Rotation(Body.Rotation),
                     Scale = GameObject.Transform.Scale
                 };
-                
+
                 GameObject.Transform = transform;
             }
         }
@@ -272,8 +272,8 @@ namespace Alis.Core.Ecs.Component.Collider
         /// </summary>
         public override void OnDraw()
         {
-            RectangleF.x =  (GameObject.Transform.Position.X + RelativePosition.X - Width / 2);
-            RectangleF.y =  (GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2);
+            RectangleF.x = GameObject.Transform.Position.X + RelativePosition.X - Width / 2;
+            RectangleF.y = GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2;
         }
     }
 }

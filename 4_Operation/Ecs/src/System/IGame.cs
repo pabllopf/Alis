@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IGame.cs
+//  File: IGame.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -34,22 +34,22 @@ using Alis.Core.Ecs.System.Property;
 namespace Alis.Core.Ecs.System
 {
     /// <summary>
-    /// The game interface
+    ///     The game interface
     /// </summary>
-    public interface IGame : ICrud<IManager> 
+    public interface IGame : ICrud<IManager>
     {
         /// <summary>
-        /// Gets or sets the value of the managers
+        ///     Gets or sets the value of the managers
         /// </summary>
         public List<IManager> Managers { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the is running
+        ///     Gets or sets the value of the is running
         /// </summary>
         public bool IsRunning { get; set; }
 
         /// <summary>
-        /// Runs this instance
+        ///     Runs this instance
         /// </summary>
         public void Run();
     }

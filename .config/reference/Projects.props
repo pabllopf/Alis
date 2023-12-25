@@ -30,11 +30,11 @@
 
         <InternalsVisibleTo Include="$(AssemblyName).Test"/>
 
-        <Content Condition="'$(IsPackable)' == 'true'" Include="$(ProjectDir)/bin/Debug/**/**/*.dll" Visible="false" PackagePath="runtimes/" />
+        <Content Condition="'$(IsPackable)' == 'true'" Include="$(ProjectDir)/bin/Debug/**/**/*.dll" Visible="false" PackagePath="runtimes/"/>
 
         <EmbeddedResource Condition="Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' == ''"
                           Include="$(ProjectDir)/resources/**/*.zip"/>
-        
+
     </ItemGroup>
 
     <ItemGroup Condition="
@@ -46,8 +46,8 @@
         $(AssemblyName.Contains('Benchmark')) == False AND 
         '$(RuntimeIdentifier)' != '' AND
         $(Configuration) == 'Debug'">
-        
-        <None Remove="$(ProjectDir)/resources/**/*.zip" />
+
+        <None Remove="$(ProjectDir)/resources/**/*.zip"/>
 
         <EmbeddedResource Condition="$(IsARM) == true AND $(IsWindows) == true" Include="$(ProjectDir)/resources/**/win-arm/*win-arm*.zip"/>
         <EmbeddedResource Condition="$(IsARM64) == true AND $(IsWindows) == true" Include="$(ProjectDir)/resources/**/win-arm64/*win-arm64*.zip"/>
@@ -62,7 +62,7 @@
         <EmbeddedResource Condition="$(IsX64) == true AND $(IsLinux) == true" Include="$(ProjectDir)/resources/**/linux-x64/*linux-x64*.zip"/>
         <EmbeddedResource Condition="$(IsX86) == true AND $(IsLinux) == true" Include="$(ProjectDir)/resources/**/linux-x86/*linux-x86*.zip"/>
     </ItemGroup>
-    
+
 
     <PropertyGroup Condition="
         $(AssemblyName.Contains('Test')) == False AND
@@ -71,7 +71,7 @@
         $(AssemblyName.Contains('Template')) == False AND 
         $(AssemblyName.Contains('Benchmark')) == False AND 
         $(Configuration) == 'Release'">
-        
+
         <Deterministic>true</Deterministic>
         <ProduceOnlyReferenceAssembly>false</ProduceOnlyReferenceAssembly>
         <Optimize>true</Optimize>
@@ -89,7 +89,7 @@
 
         <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
                           Include="$(SolutionDir)2_Application/**/Alis.csproj"/>
-        
+
         <Compile Condition="$(ProjectDir.Contains('2_Application'))"
                  Include="
                         
@@ -165,7 +165,7 @@
                           $(SolutionDir)5_Declaration/**/*test/**/*.cs; 
                           $(SolutionDir)5_Declaration/**/*.Designer.cs"
                  Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
-        
+
         <Compile Condition="$(ProjectDir.Contains('2_Application'))"
                  Include="
                             
@@ -178,7 +178,7 @@
                           $(SolutionDir)6_Ideation/**/*test/**/*.cs;  
                           $(SolutionDir)6_Ideation/**/*.Designer.cs"
                  Link="Core/Aspect/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
-        
+
         <Compile Condition="$(ProjectDir.Contains('3_Structuration'))"
                  Include="
                         $(SolutionDir)4_Operation/**/*.cs;
@@ -228,7 +228,7 @@
         <EmbeddedResource Condition="$(ProjectDir.Contains('3_Structuration')) AND $(IsX86) == true AND $(IsLinux) == true AND '$(RuntimeIdentifier)' != ''"
                           Include="$(SolutionDir)4_Operation/**/resources/**/linux-x86/*linux-x86*.zip"
                           Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
-        
+
         <Compile Condition="$(ProjectDir.Contains('3_Structuration')) OR $(ProjectDir.Contains('4_Operation'))"
                  Include="
                         
@@ -239,7 +239,7 @@
                           $(SolutionDir)5_Declaration/**/*sample/**/**;
                           $(SolutionDir)5_Declaration/**/*test/**/*.cs; $(SolutionDir)5_Declaration/**/Resources.Designer.cs"
                  Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
-        
+
         <Compile Condition="$(ProjectDir.Contains('3_Structuration')) OR $(ProjectDir.Contains('4_Operation'))"
                  Include="
                         $(SolutionDir)6_Ideation/**/*.cs;"
@@ -250,8 +250,7 @@
                           $(SolutionDir)6_Ideation/**/*test/**/*.cs; $(SolutionDir)6_Ideation/**/Resources.Designer.cs"
                  Link="Aspect/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
 
-        
-        
+
         <Compile Condition="
         $(ProjectDir.Contains('5_Declaration'))"
                  Include="
@@ -267,8 +266,8 @@
                           Include="$(ProjectDir)/resources/**/*.zip;"/>
 
         <None Condition="Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''"
-                          Remove="$(ProjectDir)/resources/**/*.zip;"/>
-        
+              Remove="$(ProjectDir)/resources/**/*.zip;"/>
+
         <EmbeddedResource Condition="$(IsARM) == true AND $(IsWindows) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/win-arm/*win-arm*.zip"/>
         <EmbeddedResource Condition="$(IsARM64) == true AND $(IsWindows) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/win-arm64/*win-arm64*.zip"/>
         <EmbeddedResource Condition="$(IsX64) == true AND $(IsWindows) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/win-x64/*win-x64*.zip"/>
@@ -281,21 +280,21 @@
         <EmbeddedResource Condition="$(IsARM64) == true AND $(IsLinux) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/linux-arm64/*linux-arm64*.zip"/>
         <EmbeddedResource Condition="$(IsX64) == true AND $(IsLinux) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/linux-x64/*linux-x64*.zip"/>
         <EmbeddedResource Condition="$(IsX86) == true AND $(IsLinux) == true AND Exists('$(ProjectDir)/resources/') == True AND '$(RuntimeIdentifier)' != ''" Include="$(ProjectDir)/resources/**/linux-x86/*linux-x86*.zip"/>
-        
+
         <InternalsVisibleTo Include="$(AssemblyName).Test"/>
-        <Content Condition="'$(IsPackable)' == 'true'" Include="$(ProjectDir)/bin/Release/**/**/*.dll" Visible="false" PackagePath="runtimes/" />
-        <None Condition="'$(IsPackable)' == 'true'" Remove="$(ProjectDir)/**/*.md" />
-        <None Condition="'$(IsPackable)' == 'true'" Remove="$(ProjectDir)/**/*.cd" />
+        <Content Condition="'$(IsPackable)' == 'true'" Include="$(ProjectDir)/bin/Release/**/**/*.dll" Visible="false" PackagePath="runtimes/"/>
+        <None Condition="'$(IsPackable)' == 'true'" Remove="$(ProjectDir)/**/*.md"/>
+        <None Condition="'$(IsPackable)' == 'true'" Remove="$(ProjectDir)/**/*.cd"/>
     </ItemGroup>
-    
+
     <ItemGroup Condition="$(AssemblyName.Contains('Test'))">
         <ProjectReference Include="$(ProjectDir)/../src/$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.Test', '')).csproj"/>
-        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
+        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
 
     <ItemGroup Condition="$(AssemblyName.Contains('Benchmark'))">
         <ProjectReference Include="$(ProjectDir)/../src/$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.Benchmark', '')).csproj"/>
-        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
+        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
 
     <PropertyGroup Condition="$(AssemblyName.Contains('Sample'))">
@@ -310,7 +309,7 @@
             Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
             Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
 
-        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
+        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
     </ItemGroup>
 
     <ItemGroup>

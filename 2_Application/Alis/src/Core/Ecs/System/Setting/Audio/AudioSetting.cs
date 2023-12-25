@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioSetting.cs
+//  File: AudioSetting.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -32,12 +32,11 @@ using Alis.Core.Aspect.Fluent;
 
 namespace Alis.Core.Ecs.System.Setting.Audio
 {
-
     /// <summary>
-    /// The audio setting class
+    ///     The audio setting class
     /// </summary>
-    /// <seealso cref="IAudioSetting"/>
-    /// <seealso cref="IBuilder{AudioSettingBuilder}"/>
+    /// <seealso cref="IAudioSetting" />
+    /// <seealso cref="IBuilder{AudioSettingBuilder}" />
     public class AudioSetting : IAudioSetting,
         IBuilder<AudioSettingBuilder>
     {

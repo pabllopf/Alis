@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:WindowBuilder.cs
+//  File: WindowBuilder.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -36,28 +36,22 @@ using Alis.Core.Graphic;
 namespace Alis.Builder.Core.Graphic
 {
     /// <summary>
-    /// The window builder class
+    ///     The window builder class
     /// </summary>
-    /// <seealso cref="IBuild{Window}"/>
-    public class WindowBuilder:
+    /// <seealso cref="IBuild{Window}" />
+    public class WindowBuilder :
         IBuild<Window>,
         IBackground<WindowBuilder, Color>,
         IResolution<WindowBuilder, float, float>,
         IIsResizable<WindowBuilder, bool>
     {
         /// <summary>
-        /// The window
+        ///     The window
         /// </summary>
         private readonly Window window = new Window();
 
         /// <summary>
-        /// Builds this instance
-        /// </summary>
-        /// <returns>The window</returns>
-        public Window Build() => window;
-
-        /// <summary>
-        /// Backgrounds the value
+        ///     Backgrounds the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The window builder</returns>
@@ -68,19 +62,13 @@ namespace Alis.Builder.Core.Graphic
         }
 
         /// <summary>
-        /// Resolutions the x
+        ///     Builds this instance
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <returns>The window builder</returns>
-        public WindowBuilder Resolution(float x, float y)
-        {
-            window.Resolution = new Vector2(x, y);
-            return this;
-        }
+        /// <returns>The window</returns>
+        public Window Build() => window;
 
         /// <summary>
-        /// Ises the resizable
+        ///     Ises the resizable
         /// </summary>
         /// <returns>The window builder</returns>
         public WindowBuilder IsResizable()
@@ -90,13 +78,25 @@ namespace Alis.Builder.Core.Graphic
         }
 
         /// <summary>
-        /// Ises the resizable using the specified value
+        ///     Ises the resizable using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The window builder</returns>
         public WindowBuilder IsResizable(bool value)
-        { 
+        {
             window.IsWindowResizable = value;
+            return this;
+        }
+
+        /// <summary>
+        ///     Resolutions the x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The window builder</returns>
+        public WindowBuilder Resolution(float x, float y)
+        {
+            window.Resolution = new Vector2(x, y);
             return this;
         }
     }

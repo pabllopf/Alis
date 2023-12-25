@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlRect.cs
+//  File: RectangleI.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -35,7 +35,7 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
     ///     The sdl rect
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct RectangleI: IShape
+    public struct RectangleI : IShape
     {
         /// <summary>
         ///     The
@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Math.Shape.Rectangle
         public int h;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RectangleI"/> class
+        ///     Initializes a new instance of the <see cref="RectangleI" /> class
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>

@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IPhysicManager.cs
+//  File: IPluginManager.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,9 +30,9 @@
 namespace Alis.Core.Ecs.System.Manager.Plugin
 {
     /// <summary>
-    /// The plugin manager interface
+    ///     The plugin manager interface
     /// </summary>
-    /// <seealso cref="IManager"/>
+    /// <seealso cref="IManager" />
     public interface IPluginManager : IManager
     {
     }

@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IAds.cs
+//  File: IAds.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The ads interface
+    ///     The ads interface
     /// </summary>
-    public interface IAds <out TBuilder, in TArgument>
+    public interface IAds<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Adses the value
+        ///     Adses the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

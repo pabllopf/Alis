@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:BoxMeshBuilder.cs
+//  File: BoxMeshBuilder.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -35,11 +35,11 @@ namespace Alis.Builder.Core.Ecs.Component.Mesh
     /// <summary>
     ///     The box mesh builder class
     /// </summary>
-    public class BoxMeshBuilder: 
+    public class BoxMeshBuilder :
         IBuild<BoxMesh>
     {
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The box mesh</returns>
         public BoxMesh Build() => new BoxMesh();

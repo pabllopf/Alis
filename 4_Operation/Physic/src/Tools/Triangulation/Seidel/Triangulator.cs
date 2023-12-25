@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Triangulator.cs
+//  File: Triangulator.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         }
 
         /// <summary>
-        /// Processes this instance
+        ///     Processes this instance
         /// </summary>
         private void Process()
         {
@@ -110,7 +110,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         }
 
         /// <summary>
-        /// Processes the edges
+        ///     Processes the edges
         /// </summary>
         private void ProcessEdges()
         {
@@ -153,9 +153,9 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
                 trapezoidalMap.Clear();
             }
         }
-        
+
         /// <summary>
-        /// Removes the trapezoid from map using the specified trapezoid
+        ///     Removes the trapezoid from map using the specified trapezoid
         /// </summary>
         /// <param name="trapezoid">The trapezoid</param>
         private void RemoveTrapezoidFromMap(Trapezoid trapezoid)
@@ -164,7 +164,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         }
 
         /// <summary>
-        /// Adds the new trapezoids to map using the specified new trapezoids
+        ///     Adds the new trapezoids to map using the specified new trapezoids
         /// </summary>
         /// <param name="newTrapezoids">The new trapezoids</param>
         private void AddNewTrapezoidsToMap(Trapezoid[] newTrapezoids)
@@ -176,7 +176,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         }
 
         /// <summary>
-        /// Marks the outside trapezoids
+        ///     Marks the outside trapezoids
         /// </summary>
         private void MarkOutsideTrapezoids()
         {
@@ -187,7 +187,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         }
 
         /// <summary>
-        /// Collects the interior trapezoids
+        ///     Collects the interior trapezoids
         /// </summary>
         private void CollectInteriorTrapezoids()
         {

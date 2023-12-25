@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NetworkSetting.cs
+//  File: NetworkSetting.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,11 +30,10 @@
 namespace Alis.Core.Ecs.System.Setting.Network
 {
     /// <summary>
-    /// The network setting class
+    ///     The network setting class
     /// </summary>
-    /// <seealso cref="INetworkSetting"/>
+    /// <seealso cref="INetworkSetting" />
     public class NetworkSetting : INetworkSetting
     {
-        
     }
 }

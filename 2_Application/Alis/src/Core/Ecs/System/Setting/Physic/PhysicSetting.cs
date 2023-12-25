@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PhysicSetting.cs
+//  File: PhysicSetting.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -33,22 +33,16 @@ using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Ecs.System.Setting.Physic
 {
-
     /// <summary>
-    /// The physic setting class
+    ///     The physic setting class
     /// </summary>
-    /// <seealso cref="IPhysicSetting"/>
-    /// <seealso cref="IBuilder{PhysicSettingBuilder}"/>
+    /// <seealso cref="IPhysicSetting" />
+    /// <seealso cref="IBuilder{PhysicSettingBuilder}" />
     public class PhysicSetting : IPhysicSetting,
         IBuilder<PhysicSettingBuilder>
     {
         /// <summary>
-        ///     Gets or sets the value of the gravity
-        /// </summary>
-        public Vector2 Gravity { get; set; } = new Vector2(0.0f, 9.8f);
-
-        /// <summary>
-        /// Gets or sets the value of the debug mode
+        ///     Gets or sets the value of the debug mode
         /// </summary>
         public bool DebugMode { get; set; } = false;
 
@@ -57,5 +51,10 @@ namespace Alis.Core.Ecs.System.Setting.Physic
         /// </summary>
         /// <returns>The physic setting builder</returns>
         public PhysicSettingBuilder Builder() => new PhysicSettingBuilder();
+
+        /// <summary>
+        ///     Gets or sets the value of the gravity
+        /// </summary>
+        public Vector2 Gravity { get; set; } = new Vector2(0.0f, 9.8f);
     }
 }

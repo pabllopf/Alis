@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File: Program.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -44,9 +44,9 @@ namespace Alis.Core.Audio.Sample
         private static void Main(string[] args)
         {
             Console.WriteLine($" Alis.Core.Audio.Sample {Assembly.GetExecutingAssembly()} with {args.Length} args");
-            
+
             string fileName = Environment.CurrentDirectory + "/Assets/menu.wav";
-            
+
             AudioSource audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.Os));
 
             while (true)

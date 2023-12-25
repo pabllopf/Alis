@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CircleI.cs
+//  File: CircleI.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -38,17 +38,17 @@ namespace Alis.Core.Aspect.Math.Shape.Circle
     public struct CircleI : IShape
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public int x;
-        
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public int y;
-        
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public int r;
     }

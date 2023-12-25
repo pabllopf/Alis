@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GraphicSettingBuilder.cs
+//  File: GraphicSettingBuilder.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -53,12 +53,12 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Graphic
         /// </summary>
         /// <returns>The graphic setting</returns>
         public GraphicSetting Build() => graphicSetting;
-        
+
         /// <summary>
-        /// Windows the value
+        ///     Windows the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The graphic setting builder</returns>
-        public GraphicSettingBuilder Window(Func<WindowBuilder, Window> value) => (graphicSetting.Window = value(new WindowBuilder())) != null ? this : throw new ArgumentNullException(nameof(value)) ;
+        public GraphicSettingBuilder Window(Func<WindowBuilder, Window> value) => (graphicSetting.Window = value(new WindowBuilder())) != null ? this : throw new ArgumentNullException(nameof(value));
     }
 }

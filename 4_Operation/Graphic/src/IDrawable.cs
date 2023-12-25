@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IRenderable.cs
+//  File: IDrawable.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,10 +30,9 @@
 namespace Alis.Core.Graphic
 {
     /// <summary>
-    /// The drawable interface
+    ///     The drawable interface
     /// </summary>
     public interface IDrawable
     {
-        
     }
 }

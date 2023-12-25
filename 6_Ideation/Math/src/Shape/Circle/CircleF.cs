@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CircleF.cs
+//  File: CircleF.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -38,17 +38,17 @@ namespace Alis.Core.Aspect.Math.Shape.Circle
     public struct CircleF : IShape
     {
         /// <summary>
-        /// The x
+        ///     The x
         /// </summary>
         public float x;
-        
+
         /// <summary>
-        /// The y
+        ///     The y
         /// </summary>
         public float y;
-        
+
         /// <summary>
-        /// The r
+        ///     The r
         /// </summary>
         public float r;
     }

@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ValidationExtensions.cs
+//  File: ValidationExtensions.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -51,10 +51,10 @@ namespace Alis.Core.Aspect.Memory
             StackTrace stackTrace = new StackTrace();
             StackFrame stackFrame = stackTrace.GetFrame(1);
             MethodBase method = stackFrame.GetMethod();
-            
+
             // get the MethodInfo of the method that called the current method
             ParameterInfo[] parameters = method.GetParameters();
-            
+
             if (method.DeclaringType != null)
             {
                 foreach (ParameterInfo parameter in parameters)

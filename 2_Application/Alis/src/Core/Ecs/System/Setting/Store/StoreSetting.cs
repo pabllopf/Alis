@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:StoreSetting.cs
+//  File: StoreSetting.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,11 +30,10 @@
 namespace Alis.Core.Ecs.System.Setting.Store
 {
     /// <summary>
-    /// The store setting class
+    ///     The store setting class
     /// </summary>
-    /// <seealso cref="IStoreSetting"/>
+    /// <seealso cref="IStoreSetting" />
     public class StoreSetting : IStoreSetting
     {
-        
     }
 }

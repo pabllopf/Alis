@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DistanceGJK.cs
+//  File: DistanceGJK.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -208,7 +208,7 @@ namespace Alis.Core.Physic.Collision.Distance
                 }
             }
         }
-        
+
         /// <summary>
         ///     Perform a linear shape cast of shape B moving and shape A fixed. Determines the hit point, normal, and
         ///     translation fraction.
@@ -253,7 +253,7 @@ namespace Alis.Core.Physic.Collision.Distance
         }
 
         /// <summary>
-        /// Initializes the output using the specified output
+        ///     Initializes the output using the specified output
         /// </summary>
         /// <param name="output">The output</param>
         private static void InitializeOutput(out ShapeCastOutput output)
@@ -268,29 +268,23 @@ namespace Alis.Core.Physic.Collision.Distance
         }
 
         /// <summary>
-        /// Calculates the radius using the specified proxy
+        ///     Calculates the radius using the specified proxy
         /// </summary>
         /// <param name="proxy">The proxy</param>
         /// <returns>The float</returns>
-        private static float CalculateRadius(DistanceProxy proxy)
-        {
-            return MathUtils.Max(proxy.Radius, Settings.PolygonRadius);
-        }
+        private static float CalculateRadius(DistanceProxy proxy) => MathUtils.Max(proxy.Radius, Settings.PolygonRadius);
 
         /// <summary>
-        /// Initializes the simplex
+        ///     Initializes the simplex
         /// </summary>
         /// <returns>The simplex</returns>
-        private static Simplex InitializeSimplex()
+        private static Simplex InitializeSimplex() => new Simplex
         {
-            return new Simplex
-            {
-                Count = 0
-            };
-        }
+            Count = 0
+        };
 
         /// <summary>
-        /// Describes whether iterate until converged
+        ///     Describes whether iterate until converged
         /// </summary>
         /// <param name="proxyA">The proxy</param>
         /// <param name="proxyB">The proxy</param>
@@ -317,7 +311,7 @@ namespace Alis.Core.Physic.Collision.Distance
         }
 
         /// <summary>
-        /// Computes the v using the specified input
+        ///     Computes the v using the specified input
         /// </summary>
         /// <param name="proxyA">The proxy</param>
         /// <param name="proxyB">The proxy</param>
@@ -345,7 +339,7 @@ namespace Alis.Core.Physic.Collision.Distance
         }
 
         /// <summary>
-        /// Computes the support using the specified proxy a
+        ///     Computes the support using the specified proxy a
         /// </summary>
         /// <param name="proxyA">The proxy</param>
         /// <param name="proxyB">The proxy</param>
@@ -366,7 +360,7 @@ namespace Alis.Core.Physic.Collision.Distance
         }
 
         /// <summary>
-        /// Describes whether is converged
+        ///     Describes whether is converged
         /// </summary>
         /// <param name="v">The </param>
         /// <param name="lambda">The lambda</param>
@@ -381,7 +375,7 @@ namespace Alis.Core.Physic.Collision.Distance
         }
 
         /// <summary>
-        /// Describes whether is new direction needed
+        ///     Describes whether is new direction needed
         /// </summary>
         /// <param name="n">The </param>
         /// <param name="r">The </param>
@@ -395,7 +389,7 @@ namespace Alis.Core.Physic.Collision.Distance
         }
 
         /// <summary>
-        /// Updates the simplex using the specified input
+        ///     Updates the simplex using the specified input
         /// </summary>
         /// <param name="proxyA">The proxy</param>
         /// <param name="proxyB">The proxy</param>
@@ -469,7 +463,7 @@ namespace Alis.Core.Physic.Collision.Distance
         }
 
         /// <summary>
-        /// Calculates the output using the specified output
+        ///     Calculates the output using the specified output
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="simplex">The simplex</param>
@@ -492,6 +486,5 @@ namespace Alis.Core.Physic.Collision.Distance
             output.Lambda = lambda;
             output.Iterations = simplex.Count;
         }
-
     }
 }

@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IScene.cs
+//  File: IScene.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The scene interface
+    ///     The scene interface
     /// </summary>
-    public interface IScene <out TBuilder, in TArgument>
+    public interface IScene<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Scenes the value
+        ///     Scenes the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

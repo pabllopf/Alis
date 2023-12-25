@@ -3,7 +3,6 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <RuntimeIdentifier>osx-arm64</RuntimeIdentifier>
     </PropertyGroup>
 
     <Import Project="$(SolutionDir).config/application/TargetFrameworks.props"/>
@@ -51,6 +50,5 @@
     <Import Project="$(SolutionDir).config/target/BeforeBuild.props"/>
     <Import Project="$(SolutionDir).config/target/AfterBuild.props"/>
 
-   
-    
+
 </Project>

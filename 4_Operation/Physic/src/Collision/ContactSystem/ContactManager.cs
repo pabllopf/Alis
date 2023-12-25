@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ContactManager.cs
+//  File: ContactManager.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -49,14 +49,6 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     The current instance
         /// </summary>
         public static ContactManager Current;
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ContactManager"/> class
-        /// </summary>
-        static ContactManager()
-        {
-            Current = new ContactManager(new DynamicTreeBroadPhase());
-        }
 
         /// <summary>
         ///     The contact list
@@ -99,6 +91,11 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     Initializes a new instance of the <see cref="ContactManager" /> class
         /// </summary>
+        static ContactManager() => Current = new ContactManager(new DynamicTreeBroadPhase());
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ContactManager" /> class
+        /// </summary>
         /// <param name="broadPhase">The broad phase</param>
         internal ContactManager(IBroadPhase broadPhase)
         {
@@ -110,7 +107,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     Gets the value of the broad phase
         /// </summary>
-        public IBroadPhase BroadPhase { get; } 
+        public IBroadPhase BroadPhase { get; }
 
         /// <summary>
         ///     Gets the value of the contact count
@@ -131,11 +128,11 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             int indexA = proxyA.ChildIndex;
             int indexB = proxyB.ChildIndex;
 
-            if(fixtureA == null || fixtureB == null)
+            if (fixtureA == null || fixtureB == null)
             {
                 return;
             }
-            
+
             Body bodyA = fixtureA.Body;
             Body bodyB = fixtureB.Body;
 
@@ -144,7 +141,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             {
                 return;
             }
-            
+
             ContactEdge edge = bodyB.ContactList;
             while (edge != null)
             {
@@ -440,7 +437,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
                 BodyType typeA = bA.BodyType;
                 BodyType typeB = bB.BodyType;
-                
+
                 bool activeA = bA.Awake && (typeA != BodyType.Static);
                 bool activeB = bB.Awake && (typeB != BodyType.Static);
 
@@ -475,7 +472,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                     alpha0 = bA.Sweep.Alpha0;
                     bB.Sweep.Advance(alpha0);
                 }
-                
+
                 // Compute the time of impact in interval [0, minTOI]
                 ToiInput input = new ToiInput
                 {

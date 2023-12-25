@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Vector2F.cs
+//  File: Vector2.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -122,7 +122,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool operator ==(Vector2 left, Vector2 right) => (left.X == right.X)
-                                                                         && (left.Y == right.Y);
+                                                                       && (left.Y == right.Y);
 
         /// <summary>Returns a value that indicates whether two specified vectors are not equal.</summary>
         /// <param name="left">The first vector to compare.</param>
@@ -250,7 +250,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <returns>The dot product.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Dot(Vector2 value1, Vector2 value2) => value1.X * value2.X
-                                                                     + value1.Y * value2.Y;
+                                                                   + value1.Y * value2.Y;
 
         /// <summary>Performs a linear interpolation between two vectors based on the given weighting.</summary>
         /// <param name="value1">The first vector.</param>
@@ -500,7 +500,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <altmember cref="Length" />
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public readonly float LengthSquared() => Dot(this, this);
-        
+
         /// <summary>
         ///     Returns the string representation of the current instance using the specified format string to format
         ///     individual elements and the specified format provider to define culture-specific formatting.

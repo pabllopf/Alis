@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DirectionalLightBuilder.cs
+//  File: DirectionalLightBuilder.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -34,11 +34,11 @@ namespace Alis.Builder.Core.Ecs.Component.Light
     /// <summary>
     ///     The directional light builder class
     /// </summary>
-    public class DirectionalLightBuilder: 
+    public class DirectionalLightBuilder :
         IBuild<DirectionalLightBuilder>
     {
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The directional light builder</returns>
         public DirectionalLightBuilder Build() => new DirectionalLightBuilder();

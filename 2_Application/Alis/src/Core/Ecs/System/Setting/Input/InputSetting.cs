@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GraphicSetting.cs
+//  File: InputSetting.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,9 +30,9 @@
 namespace Alis.Core.Ecs.System.Setting.Input
 {
     /// <summary>
-    /// The input setting class
+    ///     The input setting class
     /// </summary>
-    /// <seealso cref="IInputSetting"/>
+    /// <seealso cref="IInputSetting" />
     public class InputSetting : IInputSetting
     {
     }

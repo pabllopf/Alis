@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IGameObject.cs
+//  File: IGameObject.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -35,17 +35,17 @@ using Alis.Core.Ecs.System.Property;
 namespace Alis.Core.Ecs.Entity.GameObject
 {
     /// <summary>
-    /// The game object interface
+    ///     The game object interface
     /// </summary>
     public interface IGameObject : IEntity, ICrud<IComponent>
     {
         /// <summary>
-        /// Gets or sets the value of the components
+        ///     Gets or sets the value of the components
         /// </summary>
         public List<IComponent> Components { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the transform
+        ///     Gets or sets the value of the transform
         /// </summary>
         public Transform Transform { get; set; }
     }

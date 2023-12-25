@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RigidBodyBuilder.cs
+//  File: RigidBodyBuilder.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -35,11 +35,11 @@ namespace Alis.Builder.Core.Ecs.Component.Body
     /// <summary>
     ///     The rigid body builder class
     /// </summary>
-    public class RigidBodyBuilder:
+    public class RigidBodyBuilder :
         IBuild<RigidBody>
     {
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The rigid body</returns>
         public RigidBody Build() => new RigidBody();
