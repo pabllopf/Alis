@@ -125,11 +125,18 @@ namespace Alis.Core.Ecs.Component.Render
             GraphicManager.UnAttach(this);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Sprite"/> class
+        /// </summary>
         public Sprite()
         {
             
         } 
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Sprite"/> class
+        /// </summary>
+        /// <param name="texturePath">The texture path</param>
         public Sprite(string texturePath)
         {
             TexturePath = texturePath;

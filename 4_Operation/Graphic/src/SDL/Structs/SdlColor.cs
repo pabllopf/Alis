@@ -56,5 +56,35 @@ namespace Alis.Core.Graphic.SDL.Structs
         ///     The
         /// </summary>
         public readonly byte a;
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SdlColor"/> class
+        /// </summary>
+        /// <param name="r">The </param>
+        /// <param name="g">The </param>
+        /// <param name="b">The </param>
+        /// <param name="a">The </param>
+        public SdlColor(byte r, byte g, byte b, byte a)
+        {
+            this.r = r;
+            this.g = g;
+            this.b = b;
+            this.a = a;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SdlColor"/> class
+        /// </summary>
+        /// <param name="r">The </param>
+        /// <param name="g">The </param>
+        /// <param name="b">The </param>
+        public SdlColor(byte r, byte g, byte b)
+        {
+            this.r = r;
+            this.g = g;
+            this.b = b;
+            a = 255;
+        }
+        
     }
 }
