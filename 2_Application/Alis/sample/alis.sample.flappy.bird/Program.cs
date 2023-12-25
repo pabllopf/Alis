@@ -259,6 +259,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
                                 .Build())
+                            .AddComponent(new DeathZone())
                             .Build())
                         
                         ////////////////////////////////////////

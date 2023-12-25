@@ -30,6 +30,7 @@
 using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Entity.GameObject;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Ecs.Component
 {
@@ -194,6 +195,42 @@ namespace Alis.Core.Ecs.Component
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>
         public virtual void OnReleaseButton(Button button, int device) => Logger.Trace();
+        
+        /// <summary>
+        /// Ons the collision enter using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
+        public virtual void OnCollisionEnter(GameObject gameObject) => Logger.Trace();
+        
+        /// <summary>
+        /// Ons the collision exit using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
+        public virtual void OnCollisionExit(GameObject gameObject) => Logger.Trace();
+        
+        /// <summary>
+        /// Ons the collision stay using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
+        public virtual void OnCollisionStay(GameObject gameObject) => Logger.Trace();
+        
+        /// <summary>
+        /// Ons the trigger enter using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
+        public virtual void OnTriggerEnter(GameObject gameObject) => Logger.Trace();
+        
+        /// <summary>
+        /// Ons the trigger exit using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
+        public virtual void OnTriggerExit(GameObject gameObject) => Logger.Trace();
+        
+        /// <summary>
+        /// Ons the trigger stay using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
+        public virtual void OnTriggerStay(GameObject gameObject) => Logger.Trace();
 
         /// <summary>
         /// Attaches the game object
