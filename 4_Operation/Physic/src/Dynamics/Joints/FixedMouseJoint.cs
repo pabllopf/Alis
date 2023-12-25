@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:FixedMouseJoint.cs
+//  File: FixedMouseJoint.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -41,14 +41,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     documented in the manual because it was developed to be used in the testbed. If you want to learn how to use the
     ///     mouse
     ///     joint, look at the testbed.
-    ///
-    ///  p = attached point, m = mouse point
-    ///  C = p - m
-    ///  cDot = v
-    ///       = v + cross(w, r)
-    ///  J = [I r_skew]
-    ///  Identity used:
-    ///  w k % (rx i + ry j) = w * (-ry i + rx j)
+    ///     p = attached point, m = mouse point
+    ///     C = p - m
+    ///     cDot = v
+    ///     = v + cross(w, r)
+    ///     J = [I r_skew]
+    ///     Identity used:
+    ///     w k % (rx i + ry j) = w * (-ry i + rx j)
     /// </summary>
     public class FixedMouseJoint : Joint
     {
@@ -178,13 +177,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The maximum constraint force that can be exerted to move the candidate body. Usually you will express as some
         ///     multiple of the weight (multiplier * mass * gravity). Set/get the maximum force in Newtons.
         /// </summary>
-        private float Force { get; set; }
+        private float Force { get; }
 
         /// <summary>Set/get the linear stiffness in N/m</summary>
-        private float Stiffness { get; set; }
+        private float Stiffness { get; }
 
         /// <summary>Set/get linear damping in N*s/m</summary>
-        private float Damping { get; set; }
+        private float Damping { get; }
 
         /// <summary>
         ///     Shifts the origin using the specified new origin

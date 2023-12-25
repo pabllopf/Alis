@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ICRUD.cs
+//  File: ICrud.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,40 +30,40 @@
 namespace Alis.Core.Ecs.System.Property
 {
     /// <summary>
-    /// The crud interface
+    ///     The crud interface
     /// </summary>
     public interface ICrud<in TItem>
     {
         /// <summary>
-        /// Adds the component
+        ///     Adds the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
         public void Add<T>(T component) where T : TItem;
 
         /// <summary>
-        /// Removes the component
+        ///     Removes the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
         public void Remove<T>(T component) where T : TItem;
-        
+
         /// <summary>
-        /// Gets this instance
+        ///     Gets this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
         public T Get<T>() where T : TItem;
 
         /// <summary>
-        /// Describes whether this instance contains
+        ///     Describes whether this instance contains
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
         public bool Contains<T>() where T : TItem;
-        
+
         /// <summary>
-        /// Cleans this instance
+        ///     Cleans this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         public void Clear<T>() where T : TItem;

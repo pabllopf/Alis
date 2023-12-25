@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioClipBase.cs
+//  File: AudioClipBase.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -38,12 +38,11 @@ namespace Alis.Core.Audio
     /// </summary>
     public abstract class AudioClipBase
     {
-        
         /// <summary>
         ///     The player
         /// </summary>
         private readonly Player player;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioClipBase" /> class
         /// </summary>
@@ -60,6 +59,7 @@ namespace Alis.Core.Audio
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
             IsPlaying = false;
             Logger.Log($"Init music: '{fullPathAudio}'");
         }
@@ -78,6 +78,7 @@ namespace Alis.Core.Audio
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
             Logger.Log("Init music: 'null file'");
         }
 

@@ -3,9 +3,9 @@
     <PropertyGroup>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
     </PropertyGroup>
-    
+
     <Import Project="$(SolutionDir).config/Config.props"/>
-    
+
     <PropertyGroup>
         <TargetFramework>$(TargetFramework2)</TargetFramework>
     </PropertyGroup>

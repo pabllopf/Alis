@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Language.cs
+//  File: Language.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,17 +30,17 @@
 namespace Alis.Core.Aspect.Translation
 {
     /// <summary>
-    /// The language class
+    ///     The language class
     /// </summary>
     public class Language
     {
         /// <summary>
-        /// Gets or sets the value of the name
+        ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the code
+        ///     Gets or sets the value of the code
         /// </summary>
         public string Code { get; set; }
     }

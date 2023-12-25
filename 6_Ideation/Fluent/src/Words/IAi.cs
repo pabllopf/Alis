@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IAi.cs
+//  File: IAi.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The ai interface
+    ///     The ai interface
     /// </summary>
-    public interface IAi <out TBuilder, in TArgument>
+    public interface IAi<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Ais the value
+        ///     Ais the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ProfileSetting.cs
+//  File: ProfileSetting.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,11 +30,10 @@
 namespace Alis.Core.Ecs.System.Setting.Profile
 {
     /// <summary>
-    /// The profile setting class
+    ///     The profile setting class
     /// </summary>
-    /// <seealso cref="IProfileSetting"/>
+    /// <seealso cref="IProfileSetting" />
     public class ProfileSetting : IProfileSetting
     {
-        
     }
 }

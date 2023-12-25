@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:VideoGameBuilder.cs
+//  File: VideoGameBuilder.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -65,11 +65,8 @@ namespace Alis.Builder.Core.Ecs.System
             return this;
         }
 
-        /// <summary>Runs this instance.</summary>
-        public void Run() => videoGame.Run();
-
         /// <summary>
-        /// Worlds the value
+        ///     Worlds the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The video game builder</returns>
@@ -78,5 +75,8 @@ namespace Alis.Builder.Core.Ecs.System
             videoGame.Set(value.Invoke(new SceneManagerBuilder()));
             return this;
         }
+
+        /// <summary>Runs this instance.</summary>
+        public void Run() => videoGame.Run();
     }
 }

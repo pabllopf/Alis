@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioBackendType.cs
+//  File: AudioBackendType.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -35,10 +35,10 @@ namespace Alis.Core.Audio
     public enum AudioBackendType
     {
         /// <summary>
-        /// The none audio backend type
+        ///     The none audio backend type
         /// </summary>
         None = 0,
-        
+
         /// <summary>
         ///     The os audio type
         /// </summary>

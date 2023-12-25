@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Transform.cs
+//  File: Transform.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -64,9 +64,9 @@ namespace Alis.Core.Aspect.Math
             Rotation = rotation;
             Scale = scale;
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Transform"/> class
+        ///     Initializes a new instance of the <see cref="Transform" /> class
         /// </summary>
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
@@ -76,9 +76,9 @@ namespace Alis.Core.Aspect.Math
             Rotation = rotation;
             Scale = Vector2.One;
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Transform"/> class
+        ///     Initializes a new instance of the <see cref="Transform" /> class
         /// </summary>
         /// <param name="position">The position</param>
         public Transform(Vector2 position)
@@ -87,7 +87,7 @@ namespace Alis.Core.Aspect.Math
             Rotation = new Rotation(0);
             Scale = Vector2.One;
         }
-        
+
         /// <summary>Set this to the identity transform.</summary>
         public void SetIdentity()
         {

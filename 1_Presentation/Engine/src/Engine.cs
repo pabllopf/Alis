@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Engine.cs
+//  File: Engine.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -80,7 +80,7 @@ namespace Alis.App.Engine
 			    gl_Position = ProjMtx * vec4(Position.xy, 0, 1);
 			}";
 
-        
+
         /// <summary>
         ///     The fragment shader
         /// </summary>
@@ -102,6 +102,26 @@ namespace Alis.App.Engine
         ///     The mouse pressed
         /// </summary>
         private readonly bool[] _mousePressed = {false, false, false};
+
+        /// <summary>
+        ///     The fullscreen
+        /// </summary>
+        private readonly bool fullscreen = false;
+
+        /// <summary>
+        ///     The height window
+        /// </summary>
+        private readonly int heightWindow = 1920;
+
+        /// <summary>
+        ///     The high dpi
+        /// </summary>
+        private readonly bool highDpi = false;
+
+        /// <summary>
+        ///     The width window
+        /// </summary>
+        private readonly int widthWindow = 1080;
 
         /// <summary>
         ///     The windows
@@ -164,21 +184,6 @@ namespace Alis.App.Engine
         private ImGuiWindowFlags dockspaceflags;
 
         /// <summary>
-        ///     The fullscreen
-        /// </summary>
-        private readonly bool fullscreen = false;
-
-        /// <summary>
-        ///     The height window
-        /// </summary>
-        private readonly int heightWindow = 1920;
-
-        /// <summary>
-        ///     The high dpi
-        /// </summary>
-        private readonly bool highDpi = false;
-
-        /// <summary>
         ///     The io
         /// </summary>
         private ImGuiIoPtr io = null;
@@ -192,11 +197,6 @@ namespace Alis.App.Engine
         ///     The style
         /// </summary>
         private ImGuiStylePtr style;
-
-        /// <summary>
-        ///     The width window
-        /// </summary>
-        private readonly int widthWindow = 1080;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Engine" /> class
@@ -307,7 +307,7 @@ namespace Alis.App.Engine
                 Console.WriteLine(@$"ERROR, FONT NOT FOUND: {dirFonts + fontToLoad}");
                 return;
             }
-            
+
             fonts.AddFontDefault();
             ImFontPtr fontLoaded = fonts.AddFontFromFileTtf(@$"{dirFonts}{fontToLoad}", 14);
 
@@ -316,7 +316,7 @@ namespace Alis.App.Engine
 
             fonts.TexId = (IntPtr) _fontTextureId;
             fonts.ClearTexData();
-            
+
             // CONFIG DOCKSPACE
             ImGuiViewportPtr viewport = ImGui.GetMainViewport();
             ImGui.SetNextWindowPos(viewport.WorkPos);

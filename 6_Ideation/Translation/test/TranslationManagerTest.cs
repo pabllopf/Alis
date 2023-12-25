@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TranslationManagerTest.cs
+//  File: TranslationManagerTest.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -35,12 +35,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Translation.Test
 {
     /// <summary>
-    /// The translation manager test class
+    ///     The translation manager test class
     /// </summary>
     public class TranslationManagerTest
     {
         /// <summary>
-        /// Tests that set language with valid language should set current language
+        ///     Tests that set language with valid language should set current language
         /// </summary>
         [Fact]
         public void SetLanguage_WithValidLanguage_ShouldSetCurrentLanguage()
@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that set language with valid language not in list should add language to list
+        ///     Tests that set language with valid language not in list should add language to list
         /// </summary>
         [Fact]
         public void SetLanguage_WithValidLanguageNotInList_ShouldAddLanguageToList()
@@ -74,7 +74,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that set language with duplicate language should not add duplicate
+        ///     Tests that set language with duplicate language should not add duplicate
         /// </summary>
         [Fact]
         public void SetLanguage_WithDuplicateLanguage_ShouldNotAddDuplicate()
@@ -92,7 +92,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that set language with invalid language should throw exception
+        ///     Tests that set language with invalid language should throw exception
         /// </summary>
         [Fact]
         public void SetLanguage_WithInvalidLanguage_ShouldThrowException()
@@ -105,7 +105,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that set language with string name and code should add language to list
+        ///     Tests that set language with string name and code should add language to list
         /// </summary>
         [Fact]
         public void SetLanguage_WithStringNameAndCode_ShouldAddLanguageToList()
@@ -125,7 +125,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that translate with valid translation should return translated string
+        ///     Tests that translate with valid translation should return translated string
         /// </summary>
         [Fact]
         public void Translate_WithValidTranslation_ShouldReturnTranslatedString()
@@ -146,7 +146,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that translate with invalid language should throw exception
+        ///     Tests that translate with invalid language should throw exception
         /// </summary>
         [Fact]
         public void Translate_WithInvalidLanguage_ShouldThrowException()
@@ -163,7 +163,7 @@ namespace Alis.Core.Aspect.Translation.Test
 
 
         /// <summary>
-        /// Tests that add translation with valid parameters should add translation
+        ///     Tests that add translation with valid parameters should add translation
         /// </summary>
         [Fact]
         public void AddTranslation_WithValidParameters_ShouldAddTranslation()
@@ -184,7 +184,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that add translation with invalid language should throw exception
+        ///     Tests that add translation with invalid language should throw exception
         /// </summary>
         [Fact]
         public void AddTranslation_WithInvalidLanguage_ShouldThrowException()
@@ -199,7 +199,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that get available languages with no languages should return empty list
+        ///     Tests that get available languages with no languages should return empty list
         /// </summary>
         [Fact]
         public void GetAvailableLanguages_WithNoLanguages_ShouldReturnEmptyList()
@@ -215,7 +215,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that get available languages after adding languages should return correct list
+        ///     Tests that get available languages after adding languages should return correct list
         /// </summary>
         [Fact]
         public void GetAvailableLanguages_AfterAddingLanguages_ShouldReturnCorrectList()
@@ -236,7 +236,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that set language with null language should throw exception
+        ///     Tests that set language with null language should throw exception
         /// </summary>
         [Fact]
         public void SetLanguage_WithNullLanguage_ShouldThrowException()
@@ -249,7 +249,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that set language with null name and code should throw exception
+        ///     Tests that set language with null name and code should throw exception
         /// </summary>
         [Fact]
         public void SetLanguage_WithNullNameAndCode_ShouldThrowException()
@@ -262,7 +262,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that set language with valid name and code should set language
+        ///     Tests that set language with valid name and code should set language
         /// </summary>
         [Fact]
         public void SetLanguage_WithValidNameAndCode_ShouldSetLanguage()
@@ -283,7 +283,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that set language with existing language should set existing language
+        ///     Tests that set language with existing language should set existing language
         /// </summary>
         [Fact]
         public void SetLanguage_WithExistingLanguage_ShouldSetExistingLanguage()
@@ -302,7 +302,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that set language with null or empty name should throw exception
+        ///     Tests that set language with null or empty name should throw exception
         /// </summary>
         [Fact]
         public void SetLanguage_WithNullOrEmptyName_ShouldThrowException()
@@ -317,7 +317,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that set language with null or empty code should throw exception
+        ///     Tests that set language with null or empty code should throw exception
         /// </summary>
         [Fact]
         public void SetLanguage_WithNullOrEmptyCode_ShouldThrowException()
@@ -332,7 +332,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that add translation with non existing local code should throw exception
+        ///     Tests that add translation with non existing local code should throw exception
         /// </summary>
         [Fact]
         public void AddTranslation_WithNonExistingLocalCode_ShouldThrowException()
@@ -349,7 +349,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that add translation with null or empty key should throw exception
+        ///     Tests that add translation with null or empty key should throw exception
         /// </summary>
         [Fact]
         public void AddTranslation_WithNullOrEmptyKey_ShouldThrowException()
@@ -363,10 +363,10 @@ namespace Alis.Core.Aspect.Translation.Test
             Assert.Throws<ArgumentNullException>(() => translationManager.AddTranslation(localCode, null, value));
             Assert.Throws<ArgumentNullException>(() => translationManager.AddTranslation(localCode, "", value));
         }
-        
-        
+
+
         /// <summary>
-        /// Tests that set language with valid name and local code should set language
+        ///     Tests that set language with valid name and local code should set language
         /// </summary>
         [Fact]
         public void SetLanguage_WithValidNameAndLocalCode_ShouldSetLanguage()
@@ -387,7 +387,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that set language with null or empty name 2 params should throw exception
+        ///     Tests that set language with null or empty name 2 params should throw exception
         /// </summary>
         [Fact]
         public void SetLanguage_WithNullOrEmptyName_2_Params_ShouldThrowException()
@@ -402,7 +402,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that set language with null or empty local code should throw exception
+        ///     Tests that set language with null or empty local code should throw exception
         /// </summary>
         [Fact]
         public void SetLanguage_WithNullOrEmptyLocalCode_ShouldThrowException()
@@ -417,7 +417,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that add translation with invalid local code should throw exception
+        ///     Tests that add translation with invalid local code should throw exception
         /// </summary>
         [Fact]
         public void AddTranslation_WithInvalidLocalCode_ShouldThrowException()
@@ -434,7 +434,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that add translation with null or empty key 3 strings should throw exception
+        ///     Tests that add translation with null or empty key 3 strings should throw exception
         /// </summary>
         [Fact]
         public void AddTranslation_WithNullOrEmptyKey_Strings_ShouldThrowException()
@@ -449,9 +449,9 @@ namespace Alis.Core.Aspect.Translation.Test
             Assert.Throws<ArgumentNullException>(() => translationManager.AddTranslation(localCode, key, value));
         }
 
-        
+
         /// <summary>
-        /// Tests that add translation with valid data should add translation
+        ///     Tests that add translation with valid data should add translation
         /// </summary>
         [Fact]
         public void AddTranslation_WithValidData_ShouldAddTranslation()
@@ -460,7 +460,7 @@ namespace Alis.Core.Aspect.Translation.Test
             TranslationManager translationManager = new TranslationManager();
             Language language = new Language {Name = "French", Code = "fr"};
             translationManager.AddLanguage(language);
-            
+
             const string localCode = "fr";
             const string key = "greeting";
             const string value = "Bonjour";
@@ -474,7 +474,7 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that add translation with invalid local code strings should throw exception
+        ///     Tests that add translation with invalid local code strings should throw exception
         /// </summary>
         [Fact]
         public void AddTranslation_WithInvalidLocalCode_Strings_ShouldThrowException()
@@ -491,15 +491,15 @@ namespace Alis.Core.Aspect.Translation.Test
         }
 
         /// <summary>
-        /// Tests that add translation with null or empty parameter should throw exception
+        ///     Tests that add translation with null or empty parameter should throw exception
         /// </summary>
         /// <param name="localCode">The local code</param>
         /// <param name="key">The key</param>
         /// <param name="value">The value</param>
         [Theory]
-        [InlineData("", "greeting", "Hello")] 
+        [InlineData("", "greeting", "Hello")]
         [InlineData("fr", "", "Bonjour")]
-        [InlineData("fr", "greeting", "")] 
+        [InlineData("fr", "greeting", "")]
         public void AddTranslation_WithNullOrEmptyParameter_ShouldThrowException(string localCode, string key, string value)
         {
             // Arrange

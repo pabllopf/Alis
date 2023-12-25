@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IAudioManager.cs
+//  File: IAudioManager.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,11 +30,10 @@
 namespace Alis.Core.Ecs.System.Manager.Audio
 {
     /// <summary>
-    /// The audio manager interface
+    ///     The audio manager interface
     /// </summary>
-    /// <seealso cref="IManager"/>
+    /// <seealso cref="IManager" />
     public interface IAudioManager : IManager
     {
-  
     }
 }

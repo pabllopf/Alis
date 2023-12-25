@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RevoluteJoint.cs
+//  File: RevoluteJoint.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -44,18 +44,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     that specifies a lower and upper angle. You can use a motor to drive the relative rotation about the shared point.
     ///     A
     ///     maximum motor torque is provided so that infinite forces are not generated.
-    ///  Point-to-point constraint
-    ///  C = p2 - p1
-    ///  dot = v2 - v1
-    ///       = v2 + cross(w2, r2) - v1 - cross(w1, r1)
-    ///  J = [-I -r1_skew I r2_skew ]
-    ///  Identity used:
-    ///  w k % (rx i + ry j) = w * (-ry i + rx j)
-    /// 
-    ///  Motor constraint
-    ///  dot = w2 - w1
-    ///  J = [0 0 -1 0 0 1]
-    ///  K = invI1 + invI2
+    ///     Point-to-point constraint
+    ///     C = p2 - p1
+    ///     dot = v2 - v1
+    ///     = v2 + cross(w2, r2) - v1 - cross(w1, r1)
+    ///     J = [-I -r1_skew I r2_skew ]
+    ///     Identity used:
+    ///     w k % (rx i + ry j) = w * (-ry i + rx j)
+    ///     Motor constraint
+    ///     dot = w2 - w1
+    ///     J = [0 0 -1 0 0 1]
+    ///     K = invI1 + invI2
     /// </summary>
     public class RevoluteJoint : Joint
     {
@@ -210,9 +209,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         )
             : base(bodyA, bodyB, jointType, collideConnected)
         {
-            this.LocalAnchorA = localAnchorA;
-            this.LocalAnchorB = localAnchorB;
-            this.ReferenceAngle = referenceAngle;
+            LocalAnchorA = localAnchorA;
+            LocalAnchorB = localAnchorB;
+            ReferenceAngle = referenceAngle;
             this.lowerAngle = lowerAngle;
             this.upperAngle = upperAngle;
             maxMotorTorque = motorTorque;
@@ -292,7 +291,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>The reference angle computed as BodyB angle minus BodyA angle.</summary>
-        public float ReferenceAngle { get; private set; }
+        public float ReferenceAngle { get; }
 
         /// <summary>Get the current joint angle in radians.</summary>
         public float JointAngle => BodyB.Sweep.A - BodyA.Sweep.A - ReferenceAngle;
@@ -570,7 +569,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     wA -= iA * impulseLocal;
                     wB += iB * impulseLocal;
                 }
-                
+
                 {
                     float c = upperAngle - angle;
                     float dot = wA - wB;
@@ -589,7 +588,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vector2 cDot = vB + MathUtils.Cross(wB, rB) - vA - MathUtils.Cross(wA, rA);
                 Vector2 impulseLocal = k.Solve(-cDot);
 
-                this.impulse = new Vector2(impulseLocal.X, impulseLocal.Y);
+                impulse = new Vector2(impulseLocal.X, impulseLocal.Y);
 
                 vA -= mA * impulseLocal;
                 wA -= iA * MathUtils.Cross(rA, impulseLocal);

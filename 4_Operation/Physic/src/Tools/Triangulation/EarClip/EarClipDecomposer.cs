@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:EarClipDecomposer.cs
+//  File: EarClipDecomposer.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -57,10 +57,10 @@ namespace Alis.Core.Physic.Tools.Triangulation.EarClip
 
             return TriangulatePolygon(vertices, tolerance);
         }
-        
+
         /// <summary>
-        /// Triangulates a polygon using the ear-clipping algorithm.
-        /// Returns a list of triangles.
+        ///     Triangulates a polygon using the ear-clipping algorithm.
+        ///     Returns a list of triangles.
         /// </summary>
         /// <remarks>Only works on simple polygons.</remarks>
         private static List<Vertices> TriangulatePolygon(Vertices vertices, float tolerance)
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.EarClip
 
         // Helper method to triangulate a pinched polygon
         /// <summary>
-        /// Triangulates the pinched polygon using the specified vertices
+        ///     Triangulates the pinched polygon using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <param name="tolerance">The tolerance</param>
@@ -110,7 +110,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.EarClip
 
         // Helper method to triangulate a regular polygon
         /// <summary>
-        /// Triangulates the regular polygon using the specified vertices
+        ///     Triangulates the regular polygon using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <returns>The results</returns>
@@ -143,9 +143,9 @@ namespace Alis.Core.Physic.Tools.Triangulation.EarClip
             results.AddRange(GenerateTrianglesFromBuffer(xRem, yRem, vNum));
             return results;
         }
-        
+
         /// <summary>
-        /// Finds the ear using the specified x rem
+        ///     Finds the ear using the specified x rem
         /// </summary>
         /// <param name="xRem">The rem</param>
         /// <param name="yRem">The rem</param>
@@ -165,7 +165,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.EarClip
         }
 
         /// <summary>
-        /// Clips the ear using the specified ear index
+        ///     Clips the ear using the specified ear index
         /// </summary>
         /// <param name="earIndex">The ear index</param>
         /// <param name="xRem">The rem</param>
@@ -203,9 +203,9 @@ namespace Alis.Core.Physic.Tools.Triangulation.EarClip
 
             return vNum - 1;
         }
-        
+
         /// <summary>
-        /// Generates the triangles from buffer using the specified x rem
+        ///     Generates the triangles from buffer using the specified x rem
         /// </summary>
         /// <param name="xRem">The rem</param>
         /// <param name="yRem">The rem</param>
@@ -222,9 +222,9 @@ namespace Alis.Core.Physic.Tools.Triangulation.EarClip
 
             return triangles;
         }
-        
+
         /// <summary>
-        /// Finds and fixes "pinch points," points where two polygon vertices are at the same point.
+        ///     Finds and fixes "pinch points," points where two polygon vertices are at the same point.
         /// </summary>
         /// <param name="pin">The pin.</param>
         /// <param name="poutA">The pout A.</param>
@@ -253,7 +253,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.EarClip
         }
 
         /// <summary>
-        /// Finds a pinch point in the vertices.
+        ///     Finds a pinch point in the vertices.
         /// </summary>
         /// <param name="vertices">The vertices to search.</param>
         /// <param name="tolerance">The tolerance for point comparison.</param>
@@ -282,20 +282,17 @@ namespace Alis.Core.Physic.Tools.Triangulation.EarClip
         }
 
         /// <summary>
-        /// Determines if two vertices form a pinch point within the given tolerance.
+        ///     Determines if two vertices form a pinch point within the given tolerance.
         /// </summary>
         /// <param name="vertexA">The first vertex.</param>
         /// <param name="vertexB">The second vertex.</param>
         /// <param name="tolerance">The tolerance for point comparison.</param>
         /// <returns>True if the vertices form a pinch point, false otherwise.</returns>
-        private static bool IsPinchPoint(Vector2 vertexA, Vector2 vertexB, float tolerance)
-        {
-            return (Math.Abs(vertexA.X - vertexB.X) < tolerance) &&
-                   (Math.Abs(vertexA.Y - vertexB.Y) < tolerance);
-        }
+        private static bool IsPinchPoint(Vector2 vertexA, Vector2 vertexB, float tolerance) => (Math.Abs(vertexA.X - vertexB.X) < tolerance) &&
+                                                                                               (Math.Abs(vertexA.Y - vertexB.Y) < tolerance);
 
         /// <summary>
-        /// Splits the vertices at the pinch point.
+        ///     Splits the vertices at the pinch point.
         /// </summary>
         /// <param name="pin">The vertices to split.</param>
         /// <param name="pinchIndexA">The index of the first vertex in the pinch point.</param>
@@ -329,16 +326,13 @@ namespace Alis.Core.Physic.Tools.Triangulation.EarClip
         }
 
         /// <summary>
-        /// Calculates the remainder of division, handling negative values correctly.
+        ///     Calculates the remainder of division, handling negative values correctly.
         /// </summary>
         /// <param name="dividend">The dividend.</param>
         /// <param name="divisor">The divisor.</param>
         /// <returns>The remainder of the division.</returns>
-        private static int RemainderLocal(int dividend, int divisor)
-        {
-            return (dividend % divisor + divisor) % divisor;
-        }
-        
+        private static int RemainderLocal(int dividend, int divisor) => (dividend % divisor + divisor) % divisor;
+
         /// <summary>Checks if vertex i is the tip of an ear in polygon defined by xv[] and  yv[].</summary>
         /// <param name="i">The i.</param>
         /// <param name="xv">The xv.</param>

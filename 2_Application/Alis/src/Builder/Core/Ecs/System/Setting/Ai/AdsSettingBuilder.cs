@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioSettingBuilder.cs
+//  File: AdsSettingBuilder.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -38,15 +38,14 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Ai
     public class AiSettingBuilder :
         IBuild<AiSetting>
     {
-
         /// <summary>
-        /// The ai setting
+        ///     The ai setting
         /// </summary>
         private readonly AiSetting aiSetting = new AiSetting();
 
 
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The ai setting</returns>
         public AiSetting Build() => aiSetting;

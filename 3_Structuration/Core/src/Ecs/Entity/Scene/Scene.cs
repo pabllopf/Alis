@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Scene.cs
+//  File: Scene.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -38,155 +38,155 @@ namespace Alis.Core.Ecs.Entity.Scene
     public class Scene : IScene
     {
         /// <summary>
-        /// Gets or sets the value of the is enable
+        ///     Gets or sets the value of the is enable
         /// </summary>
         public bool IsEnable { get; set; } = true;
-        
+
         /// <summary>
-        /// Gets or sets the value of the name
+        ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; } = "Scene";
-        
+
         /// <summary>
-        /// Gets or sets the value of the id
+        ///     Gets or sets the value of the id
         /// </summary>
         public string Id { get; set; } = "0";
-        
+
         /// <summary>
-        /// Gets or sets the value of the tag
+        ///     Gets or sets the value of the tag
         /// </summary>
         public string Tag { get; set; } = "Untagged";
-         
+
         /// <summary>
-        /// Gets or sets the value of the game objects
+        ///     Gets or sets the value of the game objects
         /// </summary>
         public List<IGameObject> GameObjects { get; set; } = new List<IGameObject>();
-        
+
         /// <summary>
-        /// Ons the enable
+        ///     Ons the enable
         /// </summary>
         public void OnEnable() => GameObjects.ForEach(i => i.OnEnable());
 
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public void OnInit() => GameObjects.ForEach(i => i.OnInit());
 
         /// <summary>
-        /// Ons the awake
+        ///     Ons the awake
         /// </summary>
         public void OnAwake() => GameObjects.ForEach(i => i.OnAwake());
 
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public void OnStart() => GameObjects.ForEach(i => i.OnStart());
 
         /// <summary>
-        /// Ons the before update
+        ///     Ons the before update
         /// </summary>
         public void OnBeforeUpdate() => GameObjects.ForEach(i => i.OnBeforeUpdate());
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public void OnUpdate() => GameObjects.ForEach(i => i.OnUpdate());
 
         /// <summary>
-        /// Ons the after update
+        ///     Ons the after update
         /// </summary>
         public void OnAfterUpdate() => GameObjects.ForEach(i => i.OnAfterUpdate());
 
         /// <summary>
-        /// Ons the before fixed update
+        ///     Ons the before fixed update
         /// </summary>
         public void OnBeforeFixedUpdate() => GameObjects.ForEach(i => i.OnBeforeFixedUpdate());
 
         /// <summary>
-        /// Ons the fixed update
+        ///     Ons the fixed update
         /// </summary>
         public void OnFixedUpdate() => GameObjects.ForEach(i => i.OnFixedUpdate());
 
         /// <summary>
-        /// Ons the after fixed update
+        ///     Ons the after fixed update
         /// </summary>
         public void OnAfterFixedUpdate() => GameObjects.ForEach(i => i.OnAfterFixedUpdate());
 
         /// <summary>
-        /// Ons the dispatch events
+        ///     Ons the dispatch events
         /// </summary>
         public void OnDispatchEvents() => GameObjects.ForEach(i => i.OnDispatchEvents());
 
         /// <summary>
-        /// Ons the calculate
+        ///     Ons the calculate
         /// </summary>
         public void OnCalculate() => GameObjects.ForEach(i => i.OnCalculate());
 
         /// <summary>
-        /// Ons the draw
+        ///     Ons the draw
         /// </summary>
         public void OnDraw() => GameObjects.ForEach(i => i.OnDraw());
 
         /// <summary>
-        /// Ons the gui
+        ///     Ons the gui
         /// </summary>
         public void OnGui() => GameObjects.ForEach(i => i.OnGui());
 
         /// <summary>
-        /// Ons the disable
+        ///     Ons the disable
         /// </summary>
         public void OnDisable() => GameObjects.ForEach(i => i.OnDisable());
 
         /// <summary>
-        /// Ons the reset
+        ///     Ons the reset
         /// </summary>
         public void OnReset() => GameObjects.ForEach(i => i.OnReset());
 
         /// <summary>
-        /// Ons the stop
+        ///     Ons the stop
         /// </summary>
         public void OnStop() => GameObjects.ForEach(i => i.OnStop());
 
         /// <summary>
-        /// Ons the exit
+        ///     Ons the exit
         /// </summary>
         public void OnExit() => GameObjects.ForEach(i => i.OnExit());
 
         /// <summary>
-        /// Ons the destroy
+        ///     Ons the destroy
         /// </summary>
         public void OnDestroy() => GameObjects.ForEach(i => i.OnDestroy());
 
         /// <summary>
-        /// Adds the component
+        ///     Adds the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
         public void Add<T>(T component) where T : IGameObject => GameObjects.Add(component);
-        
+
         /// <summary>
-        /// Removes the component
+        ///     Removes the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
         public void Remove<T>(T component) where T : IGameObject => GameObjects.Remove(component);
 
         /// <summary>
-        /// Gets this instance
+        ///     Gets this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
         public T Get<T>() where T : IGameObject => (T) GameObjects.Find(i => i.GetType() == typeof(T));
 
         /// <summary>
-        /// Describes whether this instance contains
+        ///     Describes whether this instance contains
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
         public bool Contains<T>() where T : IGameObject => Get<T>() != null;
 
         /// <summary>
-        /// Clears this instance
+        ///     Clears this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         public void Clear<T>() where T : IGameObject => GameObjects.Clear();

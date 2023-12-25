@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IComponent.cs
+//  File: ComponentTest.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,10 +30,9 @@
 namespace Alis.Core.Ecs.Test.Component
 {
     /// <summary>
-    /// The component interface
+    ///     The component interface
     /// </summary>
-    public class ComponentTest 
+    public class ComponentTest
     {
-
     }
 }

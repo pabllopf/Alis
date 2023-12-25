@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PointLightBuilder.cs
+//  File: PointLightBuilder.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -35,11 +35,11 @@ namespace Alis.Builder.Core.Ecs.Component.Light
     /// <summary>
     ///     The point light builder class
     /// </summary>
-    public class PointLightBuilder: 
+    public class PointLightBuilder :
         IBuild<PointLight>
     {
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The point light</returns>
         public PointLight Build() => new PointLight();

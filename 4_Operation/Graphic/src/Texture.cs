@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Texture.cs
+//  File: Texture.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -34,33 +34,33 @@ using Alis.Core.Graphic.SDL;
 namespace Alis.Core.Graphic
 {
     /// <summary>
-    /// The texture class
+    ///     The texture class
     /// </summary>
-    /// <seealso cref="IDrawable"/>
+    /// <seealso cref="IDrawable" />
     public class Texture : IDrawable
     {
         /// <summary>
-        /// The native pointer
-        /// </summary>
-        private IntPtr nativePointer;
-        
-        /// <summary>
-        /// The renderer
-        /// </summary>
-        private readonly IntPtr renderer;
-        
-        /// <summary>
-        /// The image
+        ///     The image
         /// </summary>
         private readonly Image image;
 
         /// <summary>
-        /// The figure
+        ///     The renderer
+        /// </summary>
+        private readonly IntPtr renderer;
+
+        /// <summary>
+        ///     The figure
         /// </summary>
         public RectangleI Figure;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Texture"/> class
+        ///     The native pointer
+        /// </summary>
+        private IntPtr nativePointer;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Texture" /> class
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <param name="image">The image</param>
@@ -69,11 +69,11 @@ namespace Alis.Core.Graphic
         {
             this.renderer = renderer;
             this.image = image;
-            this.Figure = figure;
+            Figure = figure;
         }
 
         /// <summary>
-        /// Loads this instance
+        ///     Loads this instance
         /// </summary>
         private void Load()
         {
@@ -81,12 +81,12 @@ namespace Alis.Core.Graphic
             {
                 return;
             }
-            
+
             nativePointer = Sdl.CreateTextureFromSurface(renderer, image.GetNativePointer());
         }
-        
+
         /// <summary>
-        /// Gets the native pointer
+        ///     Gets the native pointer
         /// </summary>
         /// <returns>The int ptr</returns>
         public IntPtr GetNativePointer()

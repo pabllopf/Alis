@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TimeManagerTest.cs
+//  File: TimeManagerTest.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -27,17 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Threading;
 using Xunit;
 
 namespace Alis.Core.Aspect.Time.Test
 {
     /// <summary>
-    /// The time manager test class
+    ///     The time manager test class
     /// </summary>
     public class TimeManagerTest
     {
         /// <summary>
-        /// Tests that constructor should initialize properties
+        ///     Tests that constructor should initialize properties
         /// </summary>
         [Fact]
         public void Constructor_ShouldInitializeProperties()
@@ -63,14 +64,14 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.Equal(0f, timeManager.SmoothDeltaTime);
             Assert.Equal(0f, timeManager.Time);
             Assert.Equal(0d, timeManager.TimeAsDouble);
-            Assert.Equal(1f, timeManager.TimeScale); 
+            Assert.Equal(1f, timeManager.TimeScale);
             Assert.Equal(0f, timeManager.UnscaledDeltaTime);
             Assert.Equal(0f, timeManager.UnscaledTime);
             Assert.Equal(0d, timeManager.UnscaledTimeAsDouble);
         }
 
         /// <summary>
-        /// Tests that time scale should be set correctly
+        ///     Tests that time scale should be set correctly
         /// </summary>
         [Fact]
         public void TimeScale_ShouldBeSetCorrectly()
@@ -87,22 +88,22 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that clock should be started
+        ///     Tests that clock should be started
         /// </summary>
         [Fact]
         public void Clock_ShouldBeStarted()
         {
             // Arrange & Act
             TimeManager timeManager = new TimeManager();
-            
-            System.Threading.Thread.Sleep(1000); // Sleep for 1 second
-            
+
+            Thread.Sleep(1000); // Sleep for 1 second
+
             // Assert
             Assert.True(timeManager.Clock.ElapsedMilliseconds > 0);
         }
 
         /// <summary>
-        /// Tests that delta time set value should update delta time
+        ///     Tests that delta time set value should update delta time
         /// </summary>
         [Fact]
         public void DeltaTime_SetValue_ShouldUpdateDeltaTime()
@@ -119,7 +120,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that fixed delta time set value should update fixed delta time
+        ///     Tests that fixed delta time set value should update fixed delta time
         /// </summary>
         [Fact]
         public void FixedDeltaTime_SetValue_ShouldUpdateFixedDeltaTime()
@@ -136,7 +137,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that clock set value should update clock
+        ///     Tests that clock set value should update clock
         /// </summary>
         [Fact]
         public void Clock_SetValue_ShouldUpdateClock()
@@ -153,7 +154,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that fixed time set value should update fixed time
+        ///     Tests that fixed time set value should update fixed time
         /// </summary>
         [Fact]
         public void FixedTime_SetValue_ShouldUpdateFixedTime()
@@ -172,7 +173,7 @@ namespace Alis.Core.Aspect.Time.Test
         // Repeat similar tests for the other properties...
 
         /// <summary>
-        /// Tests that maximum delta time set value should update maximum delta time
+        ///     Tests that maximum delta time set value should update maximum delta time
         /// </summary>
         [Fact]
         public void MaximumDeltaTime_SetValue_ShouldUpdateMaximumDeltaTime()
@@ -189,7 +190,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that time set value should update time
+        ///     Tests that time set value should update time
         /// </summary>
         [Fact]
         public void Time_SetValue_ShouldUpdateTime()
@@ -205,9 +206,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.Equal(10f, timeManager.Time);
         }
 
-        
+
         /// <summary>
-        /// Tests that frame count set value should update frame count
+        ///     Tests that frame count set value should update frame count
         /// </summary>
         [Fact]
         public void FrameCount_SetValue_ShouldUpdateFrameCount()
@@ -224,7 +225,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that in fixed time step set value should update in fixed time step
+        ///     Tests that in fixed time step set value should update in fixed time step
         /// </summary>
         [Fact]
         public void InFixedTimeStep_SetValue_ShouldUpdateInFixedTimeStep()
@@ -241,7 +242,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that smooth delta time set value should update smooth delta time
+        ///     Tests that smooth delta time set value should update smooth delta time
         /// </summary>
         [Fact]
         public void SmoothDeltaTime_SetValue_ShouldUpdateSmoothDeltaTime()
@@ -258,7 +259,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that time scale set value should update time scale
+        ///     Tests that time scale set value should update time scale
         /// </summary>
         [Fact]
         public void TimeScale_SetValue_ShouldUpdateTimeScale()
@@ -275,7 +276,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that unscaled delta time set value should update unscaled delta time
+        ///     Tests that unscaled delta time set value should update unscaled delta time
         /// </summary>
         [Fact]
         public void UnscaledDeltaTime_SetValue_ShouldUpdateUnscaledDeltaTime()
@@ -292,7 +293,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that realtime since startup set value should update realtime since startup
+        ///     Tests that realtime since startup set value should update realtime since startup
         /// </summary>
         [Fact]
         public void RealtimeSinceStartup_SetValue_ShouldUpdateRealtimeSinceStartup()
@@ -309,7 +310,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that realtime since startup as double set value should update realtime since startup as double
+        ///     Tests that realtime since startup as double set value should update realtime since startup as double
         /// </summary>
         [Fact]
         public void RealtimeSinceStartupAsDouble_SetValue_ShouldUpdateRealtimeSinceStartupAsDouble()
@@ -324,9 +325,9 @@ namespace Alis.Core.Aspect.Time.Test
             // Assert
             Assert.Equal(20.5, timeManager.RealtimeSinceStartupAsDouble);
         }
-        
+
         /// <summary>
-        /// Tests that fixed time as double set value should update fixed time as double
+        ///     Tests that fixed time as double set value should update fixed time as double
         /// </summary>
         [Fact]
         public void FixedTimeAsDouble_SetValue_ShouldUpdateFixedTimeAsDouble()
@@ -343,7 +344,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that fixed unscaled delta time set value should update fixed unscaled delta time
+        ///     Tests that fixed unscaled delta time set value should update fixed unscaled delta time
         /// </summary>
         [Fact]
         public void FixedUnscaledDeltaTime_SetValue_ShouldUpdateFixedUnscaledDeltaTime()
@@ -360,7 +361,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that fixed unscaled time set value should update fixed unscaled time
+        ///     Tests that fixed unscaled time set value should update fixed unscaled time
         /// </summary>
         [Fact]
         public void FixedUnscaledTime_SetValue_ShouldUpdateFixedUnscaledTime()
@@ -377,7 +378,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that fixed unscaled time as double set value should update fixed unscaled time as double
+        ///     Tests that fixed unscaled time as double set value should update fixed unscaled time as double
         /// </summary>
         [Fact]
         public void FixedUnscaledTimeAsDouble_SetValue_ShouldUpdateFixedUnscaledTimeAsDouble()
@@ -392,9 +393,9 @@ namespace Alis.Core.Aspect.Time.Test
             // Assert
             Assert.Equal(25.5, timeManager.FixedUnscaledTimeAsDouble);
         }
-        
+
         /// <summary>
-        /// Tests that unscaled time set value should update unscaled time
+        ///     Tests that unscaled time set value should update unscaled time
         /// </summary>
         [Fact]
         public void UnscaledTime_SetValue_ShouldUpdateUnscaledTime()
@@ -411,7 +412,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that unscaled time as double set value should update unscaled time as double
+        ///     Tests that unscaled time as double set value should update unscaled time as double
         /// </summary>
         [Fact]
         public void UnscaledTimeAsDouble_SetValue_ShouldUpdateUnscaledTimeAsDouble()
@@ -426,9 +427,9 @@ namespace Alis.Core.Aspect.Time.Test
             // Assert
             Assert.Equal(20.5, timeManager.UnscaledTimeAsDouble);
         }
-        
+
         /// <summary>
-        /// Tests that time as double set value should update time as double
+        ///     Tests that time as double set value should update time as double
         /// </summary>
         [Fact]
         public void TimeAsDouble_SetValue_ShouldUpdateTimeAsDouble()
@@ -443,6 +444,5 @@ namespace Alis.Core.Aspect.Time.Test
             // Assert
             Assert.Equal(30.75, timeManager.TimeAsDouble);
         }
-
     }
 }

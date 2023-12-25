@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CollideEdge.cs
+//  File: CollideEdge.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
     public static class CollideEdge
     {
         /// <summary>
-        /// Collides the edge and circle using the specified manifold
+        ///     Collides the edge and circle using the specified manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="edgeA">The edge</param>
@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         /// <param name="circleB">The circle</param>
         /// <param name="transformB">The transform</param>
         public static void CollideEdgeAndCircle(ref Manifold manifold, EdgeShape edgeA, ref Transform transformA,
-                                        CircleShape circleB, ref Transform transformB)
+            CircleShape circleB, ref Transform transformB)
         {
             manifold.PointCount = 0;
 
@@ -65,7 +65,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             Vector2 edgeNormal = new Vector2(edgeDirection.Y, -edgeDirection.X);
             float offset = MathUtils.Dot(edgeNormal, q - edgeStart);
 
-            if (edgeA.OneSided && offset < 0.0f)
+            if (edgeA.OneSided && (offset < 0.0f))
             {
                 return;
             }
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         }
 
         /// <summary>
-        /// Handles the region ab using the specified manifold
+        ///     Handles the region ab using the specified manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="edgeA">The edge</param>
@@ -106,7 +106,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             float den = Vector2.Dot(edgeEnd - edgeStart, edgeEnd - edgeStart);
             Debug.Assert(den > 0.0f);
 
-            Vector2 p = (1.0f / den) * (Vector2.Dot(q - edgeStart, edgeEnd - edgeStart) * edgeStart + Vector2.Dot(q - edgeEnd, edgeStart - edgeEnd) * edgeEnd);
+            Vector2 p = 1.0f / den * (Vector2.Dot(q - edgeStart, edgeEnd - edgeStart) * edgeStart + Vector2.Dot(q - edgeEnd, edgeStart - edgeEnd) * edgeEnd);
             Vector2 d = q - p;
             float dd = Vector2.Dot(d, d);
 
@@ -125,19 +125,16 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         }
 
         /// <summary>
-        /// Computes the circle position in edge frame using the specified transform a
+        ///     Computes the circle position in edge frame using the specified transform a
         /// </summary>
         /// <param name="transformA">The transform</param>
         /// <param name="transformB">The transform</param>
         /// <param name="circlePosition">The circle position</param>
         /// <returns>The vector</returns>
-        private static Vector2 ComputeCirclePositionInEdgeFrame(ref Transform transformA, ref Transform transformB, ref Vector2 circlePosition)
-        {
-            return MathUtils.MulT(ref transformA, MathUtils.Mul(ref transformB, ref circlePosition));
-        }
+        private static Vector2 ComputeCirclePositionInEdgeFrame(ref Transform transformA, ref Transform transformB, ref Vector2 circlePosition) => MathUtils.MulT(ref transformA, MathUtils.Mul(ref transformB, ref circlePosition));
 
         /// <summary>
-        /// Handles the region a using the specified manifold
+        ///     Handles the region a using the specified manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="edgeA">The edge</param>
@@ -173,7 +170,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         }
 
         /// <summary>
-        /// Handles the region b using the specified manifold
+        ///     Handles the region b using the specified manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="edgeA">The edge</param>
@@ -209,14 +206,14 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         }
 
         /// <summary>
-        /// Sets the manifold for circle using the specified manifold
+        ///     Sets the manifold for circle using the specified manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="contactPoint">The contact point</param>
         /// <param name="circlePosition">The circle position</param>
         private static void SetManifoldForCircle(ref Manifold manifold, Vector2 contactPoint, Vector2 circlePosition)
         {
-            ContactFeature cf = default;
+            ContactFeature cf = default(ContactFeature);
             cf.IndexA = 0;
             cf.TypeA = ContactFeatureType.Vertex;
             manifold.PointCount = 1;
@@ -229,7 +226,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
         }
 
         /// <summary>
-        /// Sets the manifold for edge using the specified manifold
+        ///     Sets the manifold for edge using the specified manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="edgeA">The edge</param>
@@ -252,7 +249,7 @@ namespace Alis.Core.Physic.Collision.NarrowPhase
             manifold.Points.Value0.LocalPoint = circlePosition;
         }
 
-        
+
         /// <summary>
         ///     Collides the edge and polygon using the specified manifold
         /// </summary>

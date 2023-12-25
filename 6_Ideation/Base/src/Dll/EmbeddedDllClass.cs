@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:EmbeddedDllClass.cs
+//  File: EmbeddedDllClass.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Base.Dll
     public static class EmbeddedDllClass
     {
         /// <summary>
-        /// Extracts the embedded dlls using the specified dll name
+        ///     Extracts the embedded dlls using the specified dll name
         /// </summary>
         /// <param name="dllName">The dll name</param>
         /// <param name="dllBytes">The dll bytes</param>
@@ -57,15 +57,14 @@ namespace Alis.Core.Aspect.Base.Dll
             {
                 OSPlatform currentPlatform = GetCurrentPlatform();
                 Architecture currentArchitecture = RuntimeInformation.ProcessArchitecture;
-                
+
                 if (dllBytes.TryGetValue((currentPlatform, currentArchitecture), out string resourceName))
                 {
-                    ExtractZipFile(dllPath,$"{dllName}.{extension}" , LoadResource(resourceName, assembly));
+                    ExtractZipFile(dllPath, $"{dllName}.{extension}", LoadResource(resourceName, assembly));
                     Console.WriteLine($"OSPlatform={currentPlatform} | Architecture={currentArchitecture} -> lib: {dllName}");
                 }
             }
         }
-        
 
 
         /// <summary>
@@ -129,10 +128,10 @@ namespace Alis.Core.Aspect.Base.Dll
 
             throw new PlatformNotSupportedException("Unsupported platform.");
         }
-        
-        
+
+
         /// <summary>
-        /// Extracts the zip file using the specified file path
+        ///     Extracts the zip file using the specified file path
         /// </summary>
         /// <param name="filePath">The file path</param>
         /// <param name="fileName">The file name</param>
@@ -156,9 +155,9 @@ namespace Alis.Core.Aspect.Base.Dll
                 entryStream.CopyTo(fs);
             }
         }
-        
+
         /// <summary>
-        /// Loads the resource using the specified resource name
+        ///     Loads the resource using the specified resource name
         /// </summary>
         /// <param name="resourceName">The resource name</param>
         /// <param name="assembly">The assembly</param>
@@ -174,7 +173,7 @@ namespace Alis.Core.Aspect.Base.Dll
                     Console.WriteLine(@"Exits resource: " + aResourceName);
                 }
             }
-                
+
             using Stream stream = assembly.GetManifestResourceStream(resourceName);
             MemoryStream memoryStream = new MemoryStream();
             stream?.CopyTo(memoryStream);

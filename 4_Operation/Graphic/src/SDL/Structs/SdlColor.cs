@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlColor.cs
+//  File: SdlColor.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -56,9 +56,9 @@ namespace Alis.Core.Graphic.SDL.Structs
         ///     The
         /// </summary>
         public readonly byte a;
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="SdlColor"/> class
+        ///     Initializes a new instance of the <see cref="SdlColor" /> class
         /// </summary>
         /// <param name="r">The </param>
         /// <param name="g">The </param>
@@ -73,7 +73,7 @@ namespace Alis.Core.Graphic.SDL.Structs
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SdlColor"/> class
+        ///     Initializes a new instance of the <see cref="SdlColor" /> class
         /// </summary>
         /// <param name="r">The </param>
         /// <param name="g">The </param>
@@ -85,6 +85,5 @@ namespace Alis.Core.Graphic.SDL.Structs
             this.b = b;
             a = 255;
         }
-        
     }
 }

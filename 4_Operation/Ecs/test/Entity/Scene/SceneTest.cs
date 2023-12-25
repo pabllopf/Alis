@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IScene.cs
+//  File: SceneTest.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,9 +30,9 @@
 namespace Alis.Core.Ecs.Test.Entity.Scene
 {
     /// <summary>
-    /// The scene test class
+    ///     The scene test class
     /// </summary>
-    public class SceneTest 
+    public class SceneTest
     {
     }
 }

@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Window.cs
+//  File: Window.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -35,32 +35,32 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Graphic
 {
     /// <summary>
-    /// The window class
+    ///     The window class
     /// </summary>
-    /// <seealso cref="IBuilder{WindowBuilder}"/>
+    /// <seealso cref="IBuilder{WindowBuilder}" />
     public class Window :
         IWindow,
         IBuilder<WindowBuilder>
     {
         /// <summary>
+        ///     Builders this instance
+        /// </summary>
+        /// <returns>The window builder</returns>
+        public WindowBuilder Builder() => new WindowBuilder();
+
+        /// <summary>
         ///     Gets or sets the value of the background
         /// </summary>
         public Color Background { get; set; } = Color.Black;
-        
+
         /// <summary>
         ///     Gets or sets the value of the resolution
         /// </summary>
         public Vector2 Resolution { get; set; } = new Vector2(640, 480);
 
         /// <summary>
-        /// Gets or sets the value of the is window resizable
+        ///     Gets or sets the value of the is window resizable
         /// </summary>
         public bool IsWindowResizable { get; set; } = true;
-
-        /// <summary>
-        ///     Builders this instance
-        /// </summary>
-        /// <returns>The window builder</returns>
-        public WindowBuilder Builder() => new WindowBuilder();
     }
 }

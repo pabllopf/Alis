@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SceneManagerBase.cs
+//  File: SceneManager.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -39,17 +39,17 @@ namespace Alis.Core.Ecs.System.Manager.Scene
     public class SceneManager : Manager, ISceneManager
     {
         /// <summary>
-        /// Gets or sets the value of the current scene
+        ///     Gets or sets the value of the current scene
         /// </summary>
         public IScene CurrentScene { get; set; } = new Entity.Scene.Scene();
 
         /// <summary>
-        /// Gets or sets the value of the scenes
+        ///     Gets or sets the value of the scenes
         /// </summary>
         public List<IScene> Scenes { get; set; } = new List<IScene>();
 
         /// <summary>
-        /// Ons the enable
+        ///     Ons the enable
         /// </summary>
         public override void OnEnable()
         {
@@ -57,7 +57,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
@@ -65,7 +65,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Ons the awake
+        ///     Ons the awake
         /// </summary>
         public override void OnAwake()
         {
@@ -73,7 +73,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
@@ -81,7 +81,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Ons the before update
+        ///     Ons the before update
         /// </summary>
         public override void OnBeforeUpdate()
         {
@@ -89,7 +89,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
@@ -97,7 +97,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Ons the after update
+        ///     Ons the after update
         /// </summary>
         public override void OnAfterUpdate()
         {
@@ -105,7 +105,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Ons the before fixed update
+        ///     Ons the before fixed update
         /// </summary>
         public override void OnBeforeFixedUpdate()
         {
@@ -113,7 +113,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Ons the fixed update
+        ///     Ons the fixed update
         /// </summary>
         public override void OnFixedUpdate()
         {
@@ -121,7 +121,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Ons the after fixed update
+        ///     Ons the after fixed update
         /// </summary>
         public override void OnAfterFixedUpdate()
         {
@@ -129,7 +129,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Ons the dispatch events
+        ///     Ons the dispatch events
         /// </summary>
         public override void OnDispatchEvents()
         {
@@ -137,7 +137,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Ons the calculate
+        ///     Ons the calculate
         /// </summary>
         public override void OnCalculate()
         {
@@ -145,7 +145,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Ons the draw
+        ///     Ons the draw
         /// </summary>
         public override void OnDraw()
         {
@@ -153,7 +153,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Ons the gui
+        ///     Ons the gui
         /// </summary>
         public override void OnGui()
         {
@@ -161,7 +161,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Ons the disable
+        ///     Ons the disable
         /// </summary>
         public override void OnDisable()
         {
@@ -169,7 +169,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Ons the reset
+        ///     Ons the reset
         /// </summary>
         public override void OnReset()
         {
@@ -177,7 +177,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Ons the stop
+        ///     Ons the stop
         /// </summary>
         public override void OnStop()
         {
@@ -185,7 +185,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Ons the exit
+        ///     Ons the exit
         /// </summary>
         public override void OnExit()
         {
@@ -193,7 +193,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Ons the destroy
+        ///     Ons the destroy
         /// </summary>
         public override void OnDestroy()
         {
@@ -201,7 +201,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Adds the component
+        ///     Adds the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
@@ -212,7 +212,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Removes the component
+        ///     Removes the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="component">The component</param>
@@ -222,72 +222,72 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         }
 
         /// <summary>
-        /// Gets this instance
+        ///     Gets this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
-        public T Get<T>() where T : IScene =>  (T) Scenes.Find(i => i.GetType() == typeof(T));
+        public T Get<T>() where T : IScene => (T) Scenes.Find(i => i.GetType() == typeof(T));
 
         /// <summary>
-        /// Describes whether this instance contains
+        ///     Describes whether this instance contains
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
         public bool Contains<T>() where T : IScene => Get<T>() != null;
 
         /// <summary>
-        /// Clears this instance
+        ///     Clears this instance
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         public void Clear<T>() where T : IScene
-        { 
+        {
             Scenes.Clear();
         }
-        
+
         /// <summary>
-        /// Loads the scene using the specified scene
+        ///     Loads the scene using the specified scene
         /// </summary>
         /// <param name="scene">The scene</param>
         public void LoadScene(IScene scene)
         {
             CurrentScene = scene;
         }
-        
+
         /// <summary>
-        /// Loads the scene using the specified name
+        ///     Reloads the scene using the specified scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        public void ReloadScene(IScene scene)
+        {
+            CurrentScene = scene;
+        }
+
+        /// <summary>
+        ///     Loads the scene using the specified name
         /// </summary>
         /// <param name="name">The name</param>
         public void LoadScene(string name)
         {
             CurrentScene.OnStop();
-            CurrentScene.OnExit();  
+            CurrentScene.OnExit();
             CurrentScene = Scenes.Find(i => i.Name == name);
             CurrentScene.OnInit();
             CurrentScene.OnAwake();
             CurrentScene.OnStart();
         }
-        
+
         /// <summary>
-        /// Loads the scene using the specified index
+        ///     Loads the scene using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         public void LoadScene(int index)
         {
             CurrentScene.OnStop();
-            CurrentScene.OnExit();  
+            CurrentScene.OnExit();
             CurrentScene = Scenes[index];
             CurrentScene.OnInit();
             CurrentScene.OnAwake();
             CurrentScene.OnStart();
-        }
-        
-        /// <summary>
-        /// Reloads the scene using the specified scene
-        /// </summary>
-        /// <param name="scene">The scene</param>
-        public void ReloadScene(IScene scene)
-        {
-             CurrentScene = scene;
         }
     }
 }

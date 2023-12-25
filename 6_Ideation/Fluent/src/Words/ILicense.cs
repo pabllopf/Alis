@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ILicense.cs
+//  File: ILicense.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The license interface
+    ///     The license interface
     /// </summary>
-    public interface ILicense <out TBuilder, in TArgument>
+    public interface ILicense<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Licenses the value
+        ///     Licenses the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

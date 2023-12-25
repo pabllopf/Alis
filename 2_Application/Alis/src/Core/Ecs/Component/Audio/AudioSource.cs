@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioSource.cs
+//  File: AudioSource.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -124,7 +124,7 @@ namespace Alis.Core.Ecs.Component.Audio
         /// </summary>
         /// <returns>The audio source builder</returns>
         public AudioSourceBuilder Builder() => new AudioSourceBuilder();
-        
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -132,12 +132,12 @@ namespace Alis.Core.Ecs.Component.Audio
         {
             if (PlayOnAwake)
             {
-                Play(); 
+                Play();
             }
         }
 
         /// <summary>
-        /// Ons the exit
+        ///     Ons the exit
         /// </summary>
         public override void OnExit()
         {

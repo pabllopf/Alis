@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TimeConfigurationTest.cs
+//  File: TimeConfigurationTest.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Time.Test
 {
     /// <summary>
-    /// The time configuration test class
+    ///     The time configuration test class
     /// </summary>
     public class TimeConfigurationTest
     {
         /// <summary>
-        /// Tests that constructor should set properties correctly
+        ///     Tests that constructor should set properties correctly
         /// </summary>
         [Fact]
         public void Constructor_ShouldSetPropertiesCorrectly()
@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that constructor should set properties correctly with custom values
+        ///     Tests that constructor should set properties correctly with custom values
         /// </summary>
         [Fact]
         public void Constructor_ShouldSetPropertiesCorrectlyWithCustomValues()

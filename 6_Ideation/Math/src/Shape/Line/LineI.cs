@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:LineI.cs
+//  File: LineI.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -32,28 +32,28 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Aspect.Math.Shape.Line
 {
     /// <summary>
-    /// The line
+    ///     The line
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct LineI : IShape
     {
         /// <summary>
-        /// The x1
+        ///     The x1
         /// </summary>
         public int x1;
-        
+
         /// <summary>
-        /// The y1
+        ///     The y1
         /// </summary>
         public int y1;
-        
+
         /// <summary>
-        /// The x2
+        ///     The x2
         /// </summary>
         public int x2;
-        
+
         /// <summary>
-        /// The y2
+        ///     The y2
         /// </summary>
         public int y2;
     }

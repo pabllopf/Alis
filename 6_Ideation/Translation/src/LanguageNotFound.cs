@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:LanguageNotFound.cs
+//  File: LanguageNotFound.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -32,13 +32,13 @@ using System;
 namespace Alis.Core.Aspect.Translation
 {
     /// <summary>
-    /// The language not found class
+    ///     The language not found class
     /// </summary>
-    /// <seealso cref="Exception"/>
+    /// <seealso cref="Exception" />
     public class LanguageNotFound : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LanguageNotFound"/> class
+        ///     Initializes a new instance of the <see cref="LanguageNotFound" /> class
         /// </summary>
         /// <param name="message">The message</param>
         public LanguageNotFound(string message) : base(message)

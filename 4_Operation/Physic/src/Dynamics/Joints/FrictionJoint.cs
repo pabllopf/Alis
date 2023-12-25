@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:FrictionJoint.cs
+//  File: FrictionJoint.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -38,17 +38,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
     /// <summary>
     ///     Friction joint. This is used for top-down friction. It provides 2D translational friction and angular
     ///     friction.
-    ///  Point-to-point constraint
-    ///  cDot = v2 - v1
-    ///       = v2 + cross(w2, r2) - v1 - cross(w1, r1)
-    ///  J = [-I -r1_skew I r2_skew ]
-    ///  Identity used:
-    ///  w k % (rx i + ry j) = w * (-ry i + rx j)
-    /// 
-    ///  Angle constraint
-    ///  cDot = w2 - w1
-    ///  J = [0 0 -1 0 0 1]
-    ///  K = invI1 + invI2
+    ///     Point-to-point constraint
+    ///     cDot = v2 - v1
+    ///     = v2 + cross(w2, r2) - v1 - cross(w1, r1)
+    ///     J = [-I -r1_skew I r2_skew ]
+    ///     Identity used:
+    ///     w k % (rx i + ry j) = w * (-ry i + rx j)
+    ///     Angle constraint
+    ///     cDot = w2 - w1
+    ///     J = [0 0 -1 0 0 1]
+    ///     K = invI1 + invI2
     /// </summary>
     public class FrictionJoint : Joint
     {
@@ -103,7 +102,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The linear mass
         /// </summary>
         private Matrix2X2 linearMass;
-        
+
         /// <summary>
         ///     The
         /// </summary>
@@ -113,7 +112,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The
         /// </summary>
         private Vector2 rB;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="FrictionJoint" /> class
         /// </summary>
@@ -188,10 +187,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>The maximum friction force in N.</summary>
-        private float Force { get; set; }
+        private float Force { get; }
 
         /// <summary>The maximum friction torque in N-m.</summary>
-        private float Torque { get; set; }
+        private float Torque { get; }
 
         /// <summary>
         ///     Gets the reaction force using the specified inv dt
@@ -288,7 +287,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified data.
+        ///     Solves the velocity constraints using the specified data.
         /// </summary>
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
@@ -313,7 +312,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Solves the angular friction using the specified v a
+        ///     Solves the angular friction using the specified v a
         /// </summary>
         /// <param name="wA">The </param>
         /// <param name="wB">The </param>
@@ -335,7 +334,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// Solves the linear friction using the specified v a
+        ///     Solves the linear friction using the specified v a
         /// </summary>
         /// <param name="vA">The </param>
         /// <param name="wA">The </param>

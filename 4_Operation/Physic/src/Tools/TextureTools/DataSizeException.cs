@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DataSize.cs
+//  File: DataSizeException.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -32,13 +32,13 @@ using System;
 namespace Alis.Core.Physic.Tools.TextureTools
 {
     /// <summary>
-    /// The data size exception class
+    ///     The data size exception class
     /// </summary>
-    /// <seealso cref="Exception"/>
+    /// <seealso cref="Exception" />
     public class DataSizeException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DataSizeException"/> class
+        ///     Initializes a new instance of the <see cref="DataSizeException" /> class
         /// </summary>
         /// <param name="message">The message</param>
         public DataSizeException(string message) : base(message)

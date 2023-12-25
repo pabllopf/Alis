@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IPlugin.cs
+//  File: IPlugin.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The plugin interface
+    ///     The plugin interface
     /// </summary>
-    public interface IPlugin <out TBuilder, in TArgument>
+    public interface IPlugin<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Plugins the value
+        ///     Plugins the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

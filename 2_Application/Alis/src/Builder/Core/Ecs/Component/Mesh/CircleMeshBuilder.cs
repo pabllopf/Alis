@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CircleMeshBuilder.cs
+//  File: CircleMeshBuilder.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -35,10 +35,10 @@ namespace Alis.Builder.Core.Ecs.Component.Mesh
     /// <summary>
     ///     The circle mesh builder class
     /// </summary>
-    public class CircleMeshBuilder: IBuild<CircleCollider>
+    public class CircleMeshBuilder : IBuild<CircleCollider>
     {
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The circle collider</returns>
         public CircleCollider Build() => new CircleCollider();

@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:triangulateExecption.cs
+//  File: TriangulateException.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -32,17 +32,17 @@ using System;
 namespace Alis.Core.Physic.Tools.Triangulation.EarClip
 {
     /// <summary>
-    /// The triangulate exception class
+    ///     The triangulate exception class
     /// </summary>
-    /// <seealso cref="Exception"/>
-    public class TriangulateException: Exception
+    /// <seealso cref="Exception" />
+    public class TriangulateException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TriangulateException"/> class
+        ///     Initializes a new instance of the <see cref="TriangulateException" /> class
         /// </summary>
         /// <param name="message">The message</param>
         public TriangulateException(string message) : base(message)
         {
-        }   
+        }
     }
 }

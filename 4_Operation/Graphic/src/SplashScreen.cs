@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SplashScreen.cs
+//  File: SplashScreen.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -32,7 +32,7 @@ namespace Alis.Core.Graphic
     /// <summary>
     ///     The splash screen class
     /// </summary>
-    public class SplashScreen 
+    public class SplashScreen
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="SplashScreen" /> class

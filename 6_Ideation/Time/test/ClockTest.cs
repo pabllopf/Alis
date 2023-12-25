@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ClockTest.cs
+//  File: ClockTest.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -28,17 +28,18 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Threading;
 using Xunit;
 
 namespace Alis.Core.Aspect.Time.Test
 {
     /// <summary>
-    /// The clock test class
+    ///     The clock test class
     /// </summary>
     public class ClockTest
     {
         /// <summary>
-        /// Tests that start should start stopwatch
+        ///     Tests that start should start stopwatch
         /// </summary>
         [Fact]
         public void Start_ShouldStartStopwatch()
@@ -54,7 +55,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that stop should stop stopwatch
+        ///     Tests that stop should stop stopwatch
         /// </summary>
         [Fact]
         public void Stop_ShouldStopStopwatch()
@@ -71,7 +72,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that reset should reset stopwatch
+        ///     Tests that reset should reset stopwatch
         /// </summary>
         [Fact]
         public void Reset_ShouldResetStopwatch()
@@ -88,7 +89,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that elapsed should return elapsed time
+        ///     Tests that elapsed should return elapsed time
         /// </summary>
         [Fact]
         public void Elapsed_ShouldReturnElapsedTime()
@@ -98,7 +99,7 @@ namespace Alis.Core.Aspect.Time.Test
 
             // Act
             clock.Start();
-            System.Threading.Thread.Sleep(1000); // Sleep for 1 second
+            Thread.Sleep(1000); // Sleep for 1 second
             clock.Stop();
 
             // Assert
@@ -106,7 +107,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that elapsed milliseconds should return elapsed milliseconds
+        ///     Tests that elapsed milliseconds should return elapsed milliseconds
         /// </summary>
         [Fact]
         public void ElapsedMilliseconds_ShouldReturnElapsedMilliseconds()
@@ -116,7 +117,7 @@ namespace Alis.Core.Aspect.Time.Test
 
             // Act
             clock.Start();
-            System.Threading.Thread.Sleep(1000); // Sleep for 1 second
+            Thread.Sleep(1000); // Sleep for 1 second
             clock.Stop();
 
             // Assert
@@ -124,7 +125,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that elapsed ticks should return elapsed ticks
+        ///     Tests that elapsed ticks should return elapsed ticks
         /// </summary>
         [Fact]
         public void ElapsedTicks_ShouldReturnElapsedTicks()
@@ -134,7 +135,7 @@ namespace Alis.Core.Aspect.Time.Test
 
             // Act
             clock.Start();
-            System.Threading.Thread.Sleep(1000); // Sleep for 1 second
+            Thread.Sleep(1000); // Sleep for 1 second
             clock.Stop();
 
             // Assert
@@ -142,7 +143,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that elapsed seconds should return elapsed seconds
+        ///     Tests that elapsed seconds should return elapsed seconds
         /// </summary>
         [Fact]
         public void ElapsedSeconds_ShouldReturnElapsedSeconds()
@@ -152,7 +153,7 @@ namespace Alis.Core.Aspect.Time.Test
 
             // Act
             clock.Start();
-            System.Threading.Thread.Sleep(1000); // Sleep for 1 second
+            Thread.Sleep(1000); // Sleep for 1 second
             clock.Stop();
 
             // Assert

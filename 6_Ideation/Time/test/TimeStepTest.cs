@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TimeStepTest.cs
+//  File: TimeStepTest.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Time.Test
 {
     /// <summary>
-    /// The time step test class
+    ///     The time step test class
     /// </summary>
     public class TimeStepTest
     {
         /// <summary>
-        /// Tests that delta time get set should get and set correctly
+        ///     Tests that delta time get set should get and set correctly
         /// </summary>
         [Fact]
         public void DeltaTime_GetSet_ShouldGetAndSetCorrectly()
@@ -54,7 +54,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that delta time ratio get set should get and set correctly
+        ///     Tests that delta time ratio get set should get and set correctly
         /// </summary>
         [Fact]
         public void DeltaTimeRatio_GetSet_ShouldGetAndSetCorrectly()
@@ -71,7 +71,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that inverted delta time get set should get and set correctly
+        ///     Tests that inverted delta time get set should get and set correctly
         /// </summary>
         [Fact]
         public void InvertedDeltaTime_GetSet_ShouldGetAndSetCorrectly()
@@ -88,7 +88,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that inverted delta time zero get set should get and set correctly
+        ///     Tests that inverted delta time zero get set should get and set correctly
         /// </summary>
         [Fact]
         public void InvertedDeltaTimeZero_GetSet_ShouldGetAndSetCorrectly()
@@ -105,7 +105,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that position iterations get set should get and set correctly
+        ///     Tests that position iterations get set should get and set correctly
         /// </summary>
         [Fact]
         public void PositionIterations_GetSet_ShouldGetAndSetCorrectly()
@@ -122,7 +122,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that velocity iterations get set should get and set correctly
+        ///     Tests that velocity iterations get set should get and set correctly
         /// </summary>
         [Fact]
         public void VelocityIterations_GetSet_ShouldGetAndSetCorrectly()
@@ -139,7 +139,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that warm starting get set should get and set correctly
+        ///     Tests that warm starting get set should get and set correctly
         /// </summary>
         [Fact]
         public void WarmStarting_GetSet_ShouldGetAndSetCorrectly()
@@ -156,7 +156,7 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
         /// <summary>
-        /// Tests that reset default values should reset to default
+        ///     Tests that reset default values should reset to default
         /// </summary>
         [Fact]
         public void Reset_DefaultValues_ShouldResetToDefault()

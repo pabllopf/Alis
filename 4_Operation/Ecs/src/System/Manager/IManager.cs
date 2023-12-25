@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IManager.cs
+//  File: IManager.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -32,9 +32,9 @@ using Alis.Core.Ecs.System.Property;
 namespace Alis.Core.Ecs.System.Manager
 {
     /// <summary>
-    /// The manager interface
+    ///     The manager interface
     /// </summary>
-    public interface IManager : IEnabled, IIdentifier, IRuntime 
+    public interface IManager : IEnabled, IIdentifier, IRuntime
     {
     }
 }

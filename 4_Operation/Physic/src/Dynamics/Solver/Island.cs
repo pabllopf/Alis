@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Island.cs
+//  File: Island.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -130,7 +130,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 Clear();
 
                 body.Flags |= BodyFlags.IslandFlag;
-                
+
                 Add(body);
 
                 // To keep islands as small as possible, we don't
@@ -178,7 +178,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     {
                         continue;
                     }
-                    
+
                     other.Flags |= BodyFlags.IslandFlag;
                 }
 
@@ -463,7 +463,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
             TimeStepSolveToi.PositionIterations = 20;
             TimeStepSolveToi.VelocityIterations = subStep.VelocityIterations;
             TimeStepSolveToi.WarmStarting = false;
-            
+
             // Initialize the body state.
             for (int i = 0; i < bodies.Count; ++i)
             {
@@ -589,7 +589,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// </summary>
         /// <param name="joint">The joint</param>
         private void Add(Joint joint) => joints.Add(joint);
-        
+
         /// <summary>
         ///     Reports the constraints
         /// </summary>

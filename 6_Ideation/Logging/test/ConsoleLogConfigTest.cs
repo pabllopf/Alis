@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ConsoleLogConfigTest.cs
+//  File: ConsoleLogConfigTest.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -33,12 +33,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Logging.Test
 {
     /// <summary>
-    /// The console log config test class
+    ///     The console log config test class
     /// </summary>
     public class ConsoleLogConfigTest
     {
         /// <summary>
-        /// Tests that get color message by type should return trace color
+        ///     Tests that get color message by type should return trace color
         /// </summary>
         [Fact]
         public void GetColorMessageByType_ShouldReturnTraceColor()
@@ -48,7 +48,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that get color message by type should return info color
+        ///     Tests that get color message by type should return info color
         /// </summary>
         [Fact]
         public void GetColorMessageByType_ShouldReturnInfoColor()
@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that get color message by type should return log color
+        ///     Tests that get color message by type should return log color
         /// </summary>
         [Fact]
         public void GetColorMessageByType_ShouldReturnLogColor()
@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that get color message by type should return event color
+        ///     Tests that get color message by type should return event color
         /// </summary>
         [Fact]
         public void GetColorMessageByType_ShouldReturnEventColor()
@@ -78,7 +78,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that get color message by type should return warning color
+        ///     Tests that get color message by type should return warning color
         /// </summary>
         [Fact]
         public void GetColorMessageByType_ShouldReturnWarningColor()
@@ -88,7 +88,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that get color message by type should return error color
+        ///     Tests that get color message by type should return error color
         /// </summary>
         [Fact]
         public void GetColorMessageByType_ShouldReturnErrorColor()
@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that get color message by type should return exception color
+        ///     Tests that get color message by type should return exception color
         /// </summary>
         [Fact]
         public void GetColorMessageByType_ShouldReturnExceptionColor()
@@ -108,13 +108,13 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that get color message by type should throw exception when invalid message type
+        ///     Tests that get color message by type should throw exception when invalid message type
         /// </summary>
         [Fact]
         public void GetColorMessageByType_ShouldThrowException_WhenInvalidMessageType()
         {
             Assert.Throws<ArgumentOutOfRangeException>(() =>
-                ConsoleLogConfig.GetColorMessageByType((MessageType)100));
+                ConsoleLogConfig.GetColorMessageByType((MessageType) 100));
         }
     }
 }

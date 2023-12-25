@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GameTests.cs
+//  File: GameTests.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -36,34 +36,34 @@ using Xunit;
 namespace Alis.Core.Test.Ecs.System
 {
     /// <summary>
-    /// The game tests class
+    ///     The game tests class
     /// </summary>
     public class GameTests
     {
         /// <summary>
-        /// Tests that run should set is running to true
+        ///     Tests that run should set is running to true
         /// </summary>
         [Fact]
         public void Run_ShouldSetIsRunningToTrue()
         {
-            IGame game = new GameTest(); 
+            IGame game = new GameTest();
             Assert.True(game.IsRunning);
         }
-        
+
         /// <summary>
-        /// Tests that managers should be initialized empty
+        ///     Tests that managers should be initialized empty
         /// </summary>
         [Fact]
         public void Managers_ShouldBeInitialized_Empty() => Assert.Empty(new GameTest().Managers);
-        
+
         /// <summary>
-        /// Tests that managers should be initialized not null
+        ///     Tests that managers should be initialized not null
         /// </summary>
         [Fact]
         public void Managers_ShouldBeInitialized_NotNull() => Assert.NotNull(new GameTest().Managers);
-        
+
         /// <summary>
-        /// Tests that add should add manager
+        ///     Tests that add should add manager
         /// </summary>
         [Fact]
         public void Add_ShouldAddManager()
@@ -73,9 +73,9 @@ namespace Alis.Core.Test.Ecs.System
             game.Add(manager);
             Assert.Contains(manager, game.Managers);
         }
-        
+
         /// <summary>
-        /// Tests that remove should remove manager
+        ///     Tests that remove should remove manager
         /// </summary>
         [Fact]
         public void Remove_ShouldRemoveManager()
@@ -86,9 +86,9 @@ namespace Alis.Core.Test.Ecs.System
             game.Remove(manager);
             Assert.DoesNotContain(manager, game.Managers);
         }
-        
+
         /// <summary>
-        /// Tests that get should get manager
+        ///     Tests that get should get manager
         /// </summary>
         [Fact]
         public void Get_ShouldGetManager()
@@ -98,9 +98,9 @@ namespace Alis.Core.Test.Ecs.System
             game.Add(manager);
             Assert.Equal(manager, game.Get<ManagerTest>());
         }
-        
+
         /// <summary>
-        /// Tests that contains should contains manager
+        ///     Tests that contains should contains manager
         /// </summary>
         [Fact]
         public void Contains_ShouldContainsManager()
@@ -110,9 +110,9 @@ namespace Alis.Core.Test.Ecs.System
             game.Add(manager);
             Assert.True(game.Contains<ManagerTest>());
         }
-        
+
         /// <summary>
-        /// Tests that clear should clear manager
+        ///     Tests that clear should clear manager
         /// </summary>
         [Fact]
         public void Clear_ShouldClearManager()
@@ -123,31 +123,35 @@ namespace Alis.Core.Test.Ecs.System
             game.Clear<ManagerTest>();
             Assert.DoesNotContain(manager, game.Managers);
         }
-        
+
         /// <summary>
-        /// The manager test class
+        ///     The manager test class
         /// </summary>
-        /// <seealso cref="IManager"/>
+        /// <seealso cref="IManager" />
         private class ManagerTest : IManager
         {
             /// <summary>
-            /// Gets or sets the value of the is enable
+            ///     Gets or sets the value of the is enable
             /// </summary>
             public bool IsEnable { get; set; }
+
             /// <summary>
-            /// Gets or sets the value of the name
+            ///     Gets or sets the value of the name
             /// </summary>
             public string Name { get; set; }
+
             /// <summary>
-            /// Gets or sets the value of the id
+            ///     Gets or sets the value of the id
             /// </summary>
             public string Id { get; set; }
+
             /// <summary>
-            /// Gets or sets the value of the tag
+            ///     Gets or sets the value of the tag
             /// </summary>
             public string Tag { get; set; }
+
             /// <summary>
-            /// Ons the enable
+            ///     Ons the enable
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnEnable()
@@ -156,7 +160,7 @@ namespace Alis.Core.Test.Ecs.System
             }
 
             /// <summary>
-            /// Ons the init
+            ///     Ons the init
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnInit()
@@ -165,7 +169,7 @@ namespace Alis.Core.Test.Ecs.System
             }
 
             /// <summary>
-            /// Ons the awake
+            ///     Ons the awake
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnAwake()
@@ -174,7 +178,7 @@ namespace Alis.Core.Test.Ecs.System
             }
 
             /// <summary>
-            /// Ons the start
+            ///     Ons the start
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnStart()
@@ -183,7 +187,7 @@ namespace Alis.Core.Test.Ecs.System
             }
 
             /// <summary>
-            /// Ons the before update
+            ///     Ons the before update
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnBeforeUpdate()
@@ -192,7 +196,7 @@ namespace Alis.Core.Test.Ecs.System
             }
 
             /// <summary>
-            /// Ons the update
+            ///     Ons the update
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnUpdate()
@@ -201,7 +205,7 @@ namespace Alis.Core.Test.Ecs.System
             }
 
             /// <summary>
-            /// Ons the after update
+            ///     Ons the after update
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnAfterUpdate()
@@ -210,7 +214,7 @@ namespace Alis.Core.Test.Ecs.System
             }
 
             /// <summary>
-            /// Ons the before fixed update
+            ///     Ons the before fixed update
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnBeforeFixedUpdate()
@@ -219,7 +223,7 @@ namespace Alis.Core.Test.Ecs.System
             }
 
             /// <summary>
-            /// Ons the fixed update
+            ///     Ons the fixed update
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnFixedUpdate()
@@ -228,7 +232,7 @@ namespace Alis.Core.Test.Ecs.System
             }
 
             /// <summary>
-            /// Ons the after fixed update
+            ///     Ons the after fixed update
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnAfterFixedUpdate()
@@ -237,7 +241,7 @@ namespace Alis.Core.Test.Ecs.System
             }
 
             /// <summary>
-            /// Ons the dispatch events
+            ///     Ons the dispatch events
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnDispatchEvents()
@@ -246,7 +250,7 @@ namespace Alis.Core.Test.Ecs.System
             }
 
             /// <summary>
-            /// Ons the calculate
+            ///     Ons the calculate
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnCalculate()
@@ -255,7 +259,7 @@ namespace Alis.Core.Test.Ecs.System
             }
 
             /// <summary>
-            /// Ons the draw
+            ///     Ons the draw
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnDraw()
@@ -264,7 +268,7 @@ namespace Alis.Core.Test.Ecs.System
             }
 
             /// <summary>
-            /// Ons the gui
+            ///     Ons the gui
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnGui()
@@ -273,7 +277,7 @@ namespace Alis.Core.Test.Ecs.System
             }
 
             /// <summary>
-            /// Ons the disable
+            ///     Ons the disable
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnDisable()
@@ -282,7 +286,7 @@ namespace Alis.Core.Test.Ecs.System
             }
 
             /// <summary>
-            /// Ons the reset
+            ///     Ons the reset
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnReset()
@@ -291,7 +295,7 @@ namespace Alis.Core.Test.Ecs.System
             }
 
             /// <summary>
-            /// Ons the stop
+            ///     Ons the stop
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnStop()
@@ -300,7 +304,7 @@ namespace Alis.Core.Test.Ecs.System
             }
 
             /// <summary>
-            /// Ons the exit
+            ///     Ons the exit
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnExit()
@@ -309,7 +313,7 @@ namespace Alis.Core.Test.Ecs.System
             }
 
             /// <summary>
-            /// Ons the destroy
+            ///     Ons the destroy
             /// </summary>
             /// <exception cref="NotImplementedException"></exception>
             public void OnDestroy()
@@ -317,23 +321,21 @@ namespace Alis.Core.Test.Ecs.System
                 throw new NotImplementedException();
             }
         }
-        
+
         /// <summary>
-        /// The game test class
+        ///     The game test class
         /// </summary>
-        /// <seealso cref="Game"/>
+        /// <seealso cref="Game" />
         private class GameTest : Game
         {
             /// <summary>
-            /// Initializes a new instance of the <see cref="GameTest"/> class
+            ///     Initializes a new instance of the <see cref="GameTest" /> class
             /// </summary>
-            public GameTest() : base()
+            public GameTest()
             {
                 Managers = new List<IManager>();
                 IsRunning = true;
             }
-            
-            
         }
     }
 }

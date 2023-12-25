@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ScriptManager.cs
+//  File: ScriptManager.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -29,19 +29,17 @@
 
 using Alis.Core.Aspect.Logging;
 
-
 namespace Alis.Core.Ecs.System.Manager.Script
 {
     /// <summary>
-    /// The script manager class
+    ///     The script manager class
     /// </summary>
-    /// <seealso cref="Manager"/>
-    /// <seealso cref="IScriptManager"/>
+    /// <seealso cref="Manager" />
+    /// <seealso cref="IScriptManager" />
     public class ScriptManager : Manager, IScriptManager
     {
-        
         /// <summary>
-        /// Ons the enable
+        ///     Ons the enable
         /// </summary>
         public override void OnEnable()
         {
@@ -49,7 +47,7 @@ namespace Alis.Core.Ecs.System.Manager.Script
         }
 
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
@@ -57,7 +55,7 @@ namespace Alis.Core.Ecs.System.Manager.Script
         }
 
         /// <summary>
-        /// Ons the awake
+        ///     Ons the awake
         /// </summary>
         public override void OnAwake()
         {
@@ -65,7 +63,7 @@ namespace Alis.Core.Ecs.System.Manager.Script
         }
 
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
@@ -73,7 +71,7 @@ namespace Alis.Core.Ecs.System.Manager.Script
         }
 
         /// <summary>
-        /// Ons the before update
+        ///     Ons the before update
         /// </summary>
         public override void OnBeforeUpdate()
         {
@@ -81,7 +79,7 @@ namespace Alis.Core.Ecs.System.Manager.Script
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
@@ -89,7 +87,7 @@ namespace Alis.Core.Ecs.System.Manager.Script
         }
 
         /// <summary>
-        /// Ons the after update
+        ///     Ons the after update
         /// </summary>
         public override void OnAfterUpdate()
         {
@@ -97,7 +95,7 @@ namespace Alis.Core.Ecs.System.Manager.Script
         }
 
         /// <summary>
-        /// Ons the before fixed update
+        ///     Ons the before fixed update
         /// </summary>
         public override void OnBeforeFixedUpdate()
         {
@@ -105,7 +103,7 @@ namespace Alis.Core.Ecs.System.Manager.Script
         }
 
         /// <summary>
-        /// Ons the fixed update
+        ///     Ons the fixed update
         /// </summary>
         public override void OnFixedUpdate()
         {
@@ -113,7 +111,7 @@ namespace Alis.Core.Ecs.System.Manager.Script
         }
 
         /// <summary>
-        /// Ons the after fixed update
+        ///     Ons the after fixed update
         /// </summary>
         public override void OnAfterFixedUpdate()
         {
@@ -121,7 +119,7 @@ namespace Alis.Core.Ecs.System.Manager.Script
         }
 
         /// <summary>
-        /// Ons the dispatch events
+        ///     Ons the dispatch events
         /// </summary>
         public override void OnDispatchEvents()
         {
@@ -129,7 +127,7 @@ namespace Alis.Core.Ecs.System.Manager.Script
         }
 
         /// <summary>
-        /// Ons the calculate
+        ///     Ons the calculate
         /// </summary>
         public override void OnCalculate()
         {
@@ -137,7 +135,7 @@ namespace Alis.Core.Ecs.System.Manager.Script
         }
 
         /// <summary>
-        /// Ons the draw
+        ///     Ons the draw
         /// </summary>
         public override void OnDraw()
         {
@@ -145,7 +143,7 @@ namespace Alis.Core.Ecs.System.Manager.Script
         }
 
         /// <summary>
-        /// Ons the gui
+        ///     Ons the gui
         /// </summary>
         public override void OnGui()
         {
@@ -153,7 +151,7 @@ namespace Alis.Core.Ecs.System.Manager.Script
         }
 
         /// <summary>
-        /// Ons the disable
+        ///     Ons the disable
         /// </summary>
         public override void OnDisable()
         {
@@ -161,7 +159,7 @@ namespace Alis.Core.Ecs.System.Manager.Script
         }
 
         /// <summary>
-        /// Ons the reset
+        ///     Ons the reset
         /// </summary>
         public override void OnReset()
         {
@@ -169,7 +167,7 @@ namespace Alis.Core.Ecs.System.Manager.Script
         }
 
         /// <summary>
-        /// Ons the stop
+        ///     Ons the stop
         /// </summary>
         public override void OnStop()
         {
@@ -177,7 +175,7 @@ namespace Alis.Core.Ecs.System.Manager.Script
         }
 
         /// <summary>
-        /// Ons the exit
+        ///     Ons the exit
         /// </summary>
         public override void OnExit()
         {
@@ -185,12 +183,11 @@ namespace Alis.Core.Ecs.System.Manager.Script
         }
 
         /// <summary>
-        /// Ons the destroy
+        ///     Ons the destroy
         /// </summary>
         public override void OnDestroy()
         {
             Logger.Trace();
         }
-        
     }
 }

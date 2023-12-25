@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SimplifyTools.cs
+//  File: SimplifyTools.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -128,7 +128,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
             {
                 Vector2 point = vertices[k];
 
-                double distance = Line.DistanceBetweenPointAndLineSegment( point,  a,  b);
+                double distance = Line.DistanceBetweenPointAndLineSegment(point, a, b);
 
                 if (distance > maxDistance)
                 {
@@ -175,7 +175,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
         }
 
         /// <summary>
-        /// Calculates the edges to merge using the specified vertices
+        ///     Calculates the edges to merge using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <param name="tolerance">The tolerance</param>
@@ -193,8 +193,8 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                 float dy0 = vertices[middle].Y - vertices[lower].Y;
                 float dx1 = vertices[upper].X - vertices[middle].X;
                 float dy1 = vertices[upper].Y - vertices[middle].Y;
-                float norm0 = (float)Math.Sqrt(dx0 * dx0 + dy0 * dy0);
-                float norm1 = (float)Math.Sqrt(dx1 * dx1 + dy1 * dy1);
+                float norm0 = (float) Math.Sqrt(dx0 * dx0 + dy0 * dy0);
+                float norm1 = (float) Math.Sqrt(dx1 * dx1 + dy1 * dy1);
 
                 if (!((norm0 > 0.0f) && (norm1 > 0.0f)) && (newNVertices > 3))
                 {
@@ -223,7 +223,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
         }
 
         /// <summary>
-        /// Creates the new vertices list using the specified vertices
+        ///     Creates the new vertices list using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <param name="mergeMe">The merge me</param>

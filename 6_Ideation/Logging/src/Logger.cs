@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Logger.cs
+//  File: Logger.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -40,9 +40,9 @@ namespace Alis.Core.Aspect.Logging
         ///     The normal
         /// </summary>
         public static LogLevel LogLevel { get; set; } = LogLevel.Info;
-        
+
         /// <summary>
-        /// Gets or sets the value of the detail level
+        ///     Gets or sets the value of the detail level
         /// </summary>
         public static DetailLevel DetailLevel { get; set; } = DetailLevel.Full;
 
@@ -176,7 +176,7 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        /// Sets the detail level using the specified detail level
+        ///     Sets the detail level using the specified detail level
         /// </summary>
         /// <param name="detailLevel">The detail level</param>
         public static void SetDetailLevel(DetailLevel detailLevel) => DetailLevel = detailLevel;

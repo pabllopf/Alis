@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:MathF.cs
+//  File: MathF.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Math
 
         /// <summary>Represents the number of radians in one turn, specified by the constant, τ.</summary>
         public const float Tau = 6.2831855f;
-        
+
         /// <summary>
         ///     The max iterations
         /// </summary>

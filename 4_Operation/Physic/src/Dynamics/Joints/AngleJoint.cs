@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AngleJoint.cs
+//  File: AngleJoint.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -102,10 +102,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>Gets or sets the bias factor. Defaults to 0.2</summary>
-        private float BiasFactor { get; set; }
+        private float BiasFactor { get; }
 
         /// <summary>Gets or sets the maximum impulse. Defaults to float.MaxValue</summary>
-        private float Impulse { get; set; }
+        private float Impulse { get; }
 
         /// <summary>Gets or sets the softness of the joint. Defaults to 0</summary>
         public float Softness { get; set; }

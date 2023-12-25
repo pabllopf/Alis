@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GraphicManagerBase.cs
+//  File: InputManager.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -46,20 +46,10 @@ namespace Alis.Core.Ecs.System.Manager.Input
     public class InputManager : Manager, IInputManager
     {
         /// <summary>
-        ///     Array of key of keyboard
-        /// </summary>
-        private List<SdlKeycode> keys;
-
-        /// <summary>
-        ///     Temp list of keys
-        /// </summary>
-        private List<SdlKeycode> tempListOfKeys;
-        
-        /// <summary>
-        /// The sdl event
+        ///     The sdl event
         /// </summary>
         private static SdlEvent _sdlEvent;
-        
+
         /// <summary>
         ///     The sdl game controller axis
         /// </summary>
@@ -69,9 +59,19 @@ namespace Alis.Core.Ecs.System.Manager.Input
         ///     The sdl game controller button
         /// </summary>
         private static readonly List<SdlGameControllerButton> Buttons = new List<SdlGameControllerButton>((SdlGameControllerButton[]) Enum.GetValues(typeof(SdlGameControllerButton)));
-        
+
         /// <summary>
-        /// Ons the enable
+        ///     Array of key of keyboard
+        /// </summary>
+        private List<SdlKeycode> keys;
+
+        /// <summary>
+        ///     Temp list of keys
+        /// </summary>
+        private List<SdlKeycode> tempListOfKeys;
+
+        /// <summary>
+        ///     Ons the enable
         /// </summary>
         public override void OnEnable()
         {
@@ -79,18 +79,18 @@ namespace Alis.Core.Ecs.System.Manager.Input
         }
 
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
             Logger.Trace();
-            
+
             keys = new List<SdlKeycode>((SdlKeycode[]) Enum.GetValues(typeof(SdlKeycode)));
             tempListOfKeys = new List<SdlKeycode>();
         }
 
         /// <summary>
-        /// Ons the awake
+        ///     Ons the awake
         /// </summary>
         public override void OnAwake()
         {
@@ -98,7 +98,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         }
 
         /// <summary>
-        /// Ons the start
+        ///     Ons the start
         /// </summary>
         public override void OnStart()
         {
@@ -106,7 +106,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         }
 
         /// <summary>
-        /// Ons the before update
+        ///     Ons the before update
         /// </summary>
         public override void OnBeforeUpdate()
         {
@@ -114,7 +114,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
@@ -122,7 +122,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         }
 
         /// <summary>
-        /// Ons the after update
+        ///     Ons the after update
         /// </summary>
         public override void OnAfterUpdate()
         {
@@ -130,7 +130,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         }
 
         /// <summary>
-        /// Ons the before fixed update
+        ///     Ons the before fixed update
         /// </summary>
         public override void OnBeforeFixedUpdate()
         {
@@ -138,7 +138,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         }
 
         /// <summary>
-        /// Ons the fixed update
+        ///     Ons the fixed update
         /// </summary>
         public override void OnFixedUpdate()
         {
@@ -146,7 +146,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         }
 
         /// <summary>
-        /// Ons the after fixed update
+        ///     Ons the after fixed update
         /// </summary>
         public override void OnAfterFixedUpdate()
         {
@@ -154,14 +154,14 @@ namespace Alis.Core.Ecs.System.Manager.Input
         }
 
         /// <summary>
-        /// Ons the dispatch events
+        ///     Ons the dispatch events
         /// </summary>
         public override void OnDispatchEvents()
         {
             Logger.Trace();
-            
+
             Sdl.JoystickUpdate();
-            
+
             while (Sdl.PollEvent(out _sdlEvent) != 0)
             {
                 switch (_sdlEvent.type)
@@ -170,17 +170,17 @@ namespace Alis.Core.Ecs.System.Manager.Input
                         //Console.WriteLine(" Quit was pressed ");
                         VideoGame.Instance.Exit();
                         break;
-                    
+
                     case SdlEventType.SdlKeyup:
                         SdlKeycode indexUp = _sdlEvent.key.keysym.sym;
-                        
+
                         if (tempListOfKeys.Contains(indexUp))
                         {
                             //Console.WriteLine(indexUp + " was released");
                             tempListOfKeys.Remove(indexUp);
                             NotifyKeyRelease(indexUp);
                         }
-                        
+
                         break;
                     case SdlEventType.SdlKeydown:
                         SdlKeycode indexDown = _sdlEvent.key.keysym.sym;
@@ -190,13 +190,13 @@ namespace Alis.Core.Ecs.System.Manager.Input
                             tempListOfKeys.Add(indexDown);
                             NotifyKeyPress(indexDown);
                         }
-                        
+
                         if (tempListOfKeys.Contains(indexDown))
                         {
                             //Console.WriteLine(indexDown + " holding");
                             NotifyKeyHold(indexDown);
                         }
-                        
+
                         break;
                 }
 
@@ -221,7 +221,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         }
 
         /// <summary>
-        /// Ons the calculate
+        ///     Ons the calculate
         /// </summary>
         public override void OnCalculate()
         {
@@ -229,7 +229,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         }
 
         /// <summary>
-        /// Ons the draw
+        ///     Ons the draw
         /// </summary>
         public override void OnDraw()
         {
@@ -237,7 +237,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         }
 
         /// <summary>
-        /// Ons the gui
+        ///     Ons the gui
         /// </summary>
         public override void OnGui()
         {
@@ -245,7 +245,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         }
 
         /// <summary>
-        /// Ons the disable
+        ///     Ons the disable
         /// </summary>
         public override void OnDisable()
         {
@@ -253,7 +253,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         }
 
         /// <summary>
-        /// Ons the reset
+        ///     Ons the reset
         /// </summary>
         public override void OnReset()
         {
@@ -261,7 +261,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         }
 
         /// <summary>
-        /// Ons the stop
+        ///     Ons the stop
         /// </summary>
         public override void OnStop()
         {
@@ -269,7 +269,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
         }
 
         /// <summary>
-        /// Ons the exit
+        ///     Ons the exit
         /// </summary>
         public override void OnExit()
         {
@@ -277,13 +277,13 @@ namespace Alis.Core.Ecs.System.Manager.Input
         }
 
         /// <summary>
-        /// Ons the destroy
+        ///     Ons the destroy
         /// </summary>
         public override void OnDestroy()
         {
             Logger.Trace();
         }
-        
+
         /// <summary>
         ///     Notifies the key press using the specified key
         /// </summary>

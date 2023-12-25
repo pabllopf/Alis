@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File: Program.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -43,21 +43,20 @@ namespace Alis.Core.Aspect.Translation.Sample
         public static void Main(string[] args)
         {
             TranslationManager manager = new TranslationManager();
-            
-            manager.AddLanguage(new Language { Name = "English", Code = "en" });
-            manager.AddLanguage(new Language { Name = "Spanish", Code = "es" });
-            
+
+            manager.AddLanguage(new Language {Name = "English", Code = "en"});
+            manager.AddLanguage(new Language {Name = "Spanish", Code = "es"});
+
             manager.AddTranslation("en", "hello", "Hello");
             manager.AddTranslation("es", "hello", "Hola");
             manager.AddTranslation("en", "world", "World");
             manager.AddTranslation("es", "world", "Mundo");
-            
-            manager.SetLanguage("Spanish","es");
+
+            manager.SetLanguage("Spanish", "es");
             Console.WriteLine($"Current language: {manager.Language.Name} - Language.Code:{manager.Language.Code} Translate result: {manager.Translate("hello")}");
-            
-            manager.SetLanguage("English","en");
+
+            manager.SetLanguage("English", "en");
             Console.WriteLine($"Current language: {manager.Language.Name} - Language.Code:{manager.Language.Code} Translate result: {manager.Translate("hello")}");
-            
         }
     }
 }

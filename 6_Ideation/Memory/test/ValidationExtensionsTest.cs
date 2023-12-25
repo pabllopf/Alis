@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ValidationExtensionsTest.cs
+//  File: ValidationExtensionsTest.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -32,12 +32,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Memory.Test
 {
     /// <summary>
-    /// The validation extensions test class
+    ///     The validation extensions test class
     /// </summary>
     public class ValidationExtensionsTest
     {
         /// <summary>
-        /// Tests that validate with multiple valid values should return same values
+        ///     Tests that validate with multiple valid values should return same values
         /// </summary>
         [Fact]
         public void Validate_WithMultipleValidValues_ShouldReturnSameValues()
@@ -54,9 +54,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Equal(validString, resultString);
             Assert.Equal(validInt, resultInt);
         }
-        
+
         /// <summary>
-        /// Tests that validate with valid value should return same value
+        ///     Tests that validate with valid value should return same value
         /// </summary>
         [Fact]
         public void Validate_WithValidValue_ShouldReturnSameValue()

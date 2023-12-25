@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:$FILENAME$
+//  File: DeathZone.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -34,13 +34,13 @@ using Alis.Core.Ecs.Entity.GameObject;
 namespace Alis.Sample.Flappy.Bird
 {
     /// <summary>
-    /// The death zone class
+    ///     The death zone class
     /// </summary>
-    /// <seealso cref="Component"/>
+    /// <seealso cref="Component" />
     public class DeathZone : Component
     {
         /// <summary>
-        /// Ons the collision enter using the specified game object
+        ///     Ons the collision enter using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public override void OnCollisionEnter(GameObject gameObject)

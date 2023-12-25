@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:trans.cs
+//  File: TranslationManager.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -33,35 +33,40 @@ using System.Collections.Generic;
 namespace Alis.Core.Aspect.Translation
 {
     /// <summary>
-    /// The translation manager class
+    ///     The translation manager class
     /// </summary>
     public class TranslationManager
     {
         /// <summary>
-        /// The dictionary
-        /// </summary>
-        private readonly Dictionary<Language, Dictionary<string, string>> translations = new Dictionary<Language, Dictionary<string, string>>();
-     
-        /// <summary>
-        /// The language
+        ///     The language
         /// </summary>
         private readonly List<Language> languages = new List<Language>();
 
         /// <summary>
-        /// Sets the language using the specified language
+        ///     The dictionary
+        /// </summary>
+        private readonly Dictionary<Language, Dictionary<string, string>> translations = new Dictionary<Language, Dictionary<string, string>>();
+
+        /// <summary>
+        ///     The current language
+        /// </summary>
+        public Language Language { get; private set; }
+
+        /// <summary>
+        ///     Sets the language using the specified language
         /// </summary>
         /// <param name="language">The language</param>
         public void SetLanguage(Language language)
         {
-            Language = language ?? throw new ArgumentNullException($"[Language cannot be null]");
+            Language = language ?? throw new ArgumentNullException("[Language cannot be null]");
             if (!languages.Contains(language))
             {
                 languages.Add(language);
             }
         }
-        
+
         /// <summary>
-        /// Sets the language using the specified name
+        ///     Sets the language using the specified name
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="localCode">The local code</param>
@@ -69,18 +74,18 @@ namespace Alis.Core.Aspect.Translation
         {
             if (string.IsNullOrEmpty(name))
             {
-                throw new ArgumentNullException($"[Name cannot be null or empty]");
+                throw new ArgumentNullException("[Name cannot be null or empty]");
             }
-            
+
             if (string.IsNullOrEmpty(localCode))
             {
-                throw new ArgumentNullException($"[Local code cannot be null or empty]");
+                throw new ArgumentNullException("[Local code cannot be null or empty]");
             }
-            
+
             Language language = languages.Find(l => l.Code == localCode);
             if (language is null)
             {
-                Language languageNew =  new Language()
+                Language languageNew = new Language
                 {
                     Name = name,
                     Code = localCode
@@ -93,9 +98,9 @@ namespace Alis.Core.Aspect.Translation
                 Language = language;
             }
         }
-        
+
         /// <summary>
-        /// Adds the language using the specified language
+        ///     Adds the language using the specified language
         /// </summary>
         /// <param name="language">The language</param>
         public void AddLanguage(Language language)
@@ -109,7 +114,7 @@ namespace Alis.Core.Aspect.Translation
         }
 
         /// <summary>
-        /// Translates the key
+        ///     Translates the key
         /// </summary>
         /// <param name="key">The key</param>
         /// <returns>The string</returns>
@@ -125,7 +130,7 @@ namespace Alis.Core.Aspect.Translation
 
 
         /// <summary>
-        /// Adds the translation using the specified language
+        ///     Adds the translation using the specified language
         /// </summary>
         /// <param name="language">The language</param>
         /// <param name="key">The key</param>
@@ -139,9 +144,9 @@ namespace Alis.Core.Aspect.Translation
 
             translations[language][key] = value;
         }
-        
+
         /// <summary>
-        /// Adds the translation using the specified local code
+        ///     Adds the translation using the specified local code
         /// </summary>
         /// <param name="localCode">The local code</param>
         /// <param name="key">The key</param>
@@ -151,27 +156,27 @@ namespace Alis.Core.Aspect.Translation
         {
             if (string.IsNullOrEmpty(localCode))
             {
-                throw new ArgumentNullException($"[localCode cannot be null or empty]");
-            }
-            
-            if (string.IsNullOrEmpty(key))
-            {
-                throw new ArgumentNullException($"[key cannot be null or empty]");
-            }
-            
-            if (string.IsNullOrEmpty(value))
-            {
-                throw new ArgumentNullException($"[value code cannot be null or empty]");
+                throw new ArgumentNullException("[localCode cannot be null or empty]");
             }
 
-            
+            if (string.IsNullOrEmpty(key))
+            {
+                throw new ArgumentNullException("[key cannot be null or empty]");
+            }
+
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentNullException("[value code cannot be null or empty]");
+            }
+
+
             Language language = languages.Find(l => l.Code == localCode);
 
             if (language is null)
             {
                 throw new LanguageNotFound($"[Language not found for code: {localCode}]");
             }
-            
+
             if (!translations.ContainsKey(language))
             {
                 translations[language] = new Dictionary<string, string>();
@@ -179,17 +184,12 @@ namespace Alis.Core.Aspect.Translation
 
             translations[language][key] = value;
         }
-        
+
 
         /// <summary>
-        /// Gets the available languages
+        ///     Gets the available languages
         /// </summary>
         /// <returns>A list of language</returns>
         public List<Language> GetAvailableLanguages() => languages;
-
-        /// <summary>
-        /// The current language
-        /// </summary>
-        public Language Language { get; private set; }
     }
 }

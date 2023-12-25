@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Vector3F.cs
+//  File: Vector3.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -216,8 +216,8 @@ namespace Alis.Core.Aspect.Math.Vector
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool operator ==(Vector3 left, Vector3 right) => (left.X == right.X)
-                                                                         && (left.Y == right.Y)
-                                                                         && (left.Z == right.Z);
+                                                                       && (left.Y == right.Y)
+                                                                       && (left.Z == right.Z);
 
         /// <summary>Returns a value that indicates whether two specified vectors are not equal.</summary>
         /// <param name="left">The first vector to compare.</param>
@@ -359,8 +359,8 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <returns>The dot product.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Dot(Vector3 vector1, Vector3 vector2) => vector1.X * vector2.X
-                                                                       + vector1.Y * vector2.Y
-                                                                       + vector1.Z * vector2.Z;
+                                                                     + vector1.Y * vector2.Y
+                                                                     + vector1.Z * vector2.Z;
 
         /// <summary>Performs a linear interpolation between two vectors based on the given weighting.</summary>
         /// <param name="value1">The first vector.</param>

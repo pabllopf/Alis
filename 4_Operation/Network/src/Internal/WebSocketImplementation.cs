@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:WebSocketImplementation.cs
+//  File: WebSocketImplementation.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -163,7 +163,7 @@ namespace Alis.Core.Network.Internal
                 throw new InvalidOperationException("KeepAliveInterval must be Zero or positive");
             }
 
-            
+
             if (keepAliveInterval == TimeSpan.Zero)
             {
                 Events.Log.KeepAliveIntervalZero(guid);
@@ -648,7 +648,7 @@ namespace Alis.Core.Network.Internal
                     throw new NotSupportedException($"MessageType {messageType} not supported");
             }
         }
-        
+
 
         /// <summary>
         ///     Automatic WebSocket close in response to some invalid data from the remote websocket host

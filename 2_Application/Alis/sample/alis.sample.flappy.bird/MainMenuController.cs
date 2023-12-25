@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:$FILENAME$
+//  File: MainMenuController.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -33,13 +33,13 @@ using Alis.Core.Ecs.Component;
 namespace Alis.Sample.Flappy.Bird
 {
     /// <summary>
-    /// The main menu controller class
+    ///     The main menu controller class
     /// </summary>
-    /// <seealso cref="Component"/>
+    /// <seealso cref="Component" />
     public class MainMenuController : Component
     {
         /// <summary>
-        /// Ons the press key using the specified key
+        ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnPressKey(SdlKeycode key)

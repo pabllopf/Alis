@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Setting.cs
+//  File: Settings.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -45,78 +45,78 @@ using Alis.Core.Ecs.System.Setting.Store;
 namespace Alis.Core.Ecs.System.Setting
 {
     /// <summary>
-    /// The setting class
+    ///     The setting class
     /// </summary>
-    /// <seealso cref="ISetting"/>
+    /// <seealso cref="ISetting" />
     public class Settings : ISetting
     {
         /// <summary>
-        /// Gets or sets the value of the general
+        ///     Gets or sets the value of the general
         /// </summary>
         public GeneralSetting General { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the ads
+        ///     Gets or sets the value of the ads
         /// </summary>
         public AdsSetting Ads { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the ai
+        ///     Gets or sets the value of the ai
         /// </summary>
         public AiSetting Ai { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the audio
+        ///     Gets or sets the value of the audio
         /// </summary>
         public AudioSetting Audio { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the cloud
+        ///     Gets or sets the value of the cloud
         /// </summary>
         public CloudSetting Cloud { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the graphic
+        ///     Gets or sets the value of the graphic
         /// </summary>
         public GraphicSetting Graphic { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the input
+        ///     Gets or sets the value of the input
         /// </summary>
         public InputSetting Input { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the network
+        ///     Gets or sets the value of the network
         /// </summary>
         public NetworkSetting Network { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the physic
+        ///     Gets or sets the value of the physic
         /// </summary>
         public PhysicSetting Physic { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the plugin
+        ///     Gets or sets the value of the plugin
         /// </summary>
         public PluginSetting Plugin { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the profile
+        ///     Gets or sets the value of the profile
         /// </summary>
         public ProfileSetting Profile { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the scene
+        ///     Gets or sets the value of the scene
         /// </summary>
         public SceneSetting Scene { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the script
+        ///     Gets or sets the value of the script
         /// </summary>
         public ScriptSetting Script { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the store
+        ///     Gets or sets the value of the store
         /// </summary>
         public StoreSetting Store { get; set; }
     }

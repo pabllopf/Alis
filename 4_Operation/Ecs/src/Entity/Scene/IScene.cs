@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IScene.cs
+//  File: IScene.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -34,12 +34,12 @@ using Alis.Core.Ecs.System.Property;
 namespace Alis.Core.Ecs.Entity.Scene
 {
     /// <summary>
-    /// The scene interface
+    ///     The scene interface
     /// </summary>
     public interface IScene : IEntity, ICrud<IGameObject>
     {
         /// <summary>
-        /// Gets or sets the value of the game objects
+        ///     Gets or sets the value of the game objects
         /// </summary>
         public List<IGameObject> GameObjects { get; set; }
     }

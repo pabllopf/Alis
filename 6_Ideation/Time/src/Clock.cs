@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Clock.cs
+//  File: Clock.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -26,54 +26,55 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
+
 using System;
 using System.Diagnostics;
 
 namespace Alis.Core.Aspect.Time
 {
     /// <summary>
-    /// The clock class
+    ///     The clock class
     /// </summary>
     public class Clock
     {
         /// <summary>
-        /// The stopwatch
+        ///     The stopwatch
         /// </summary>
         private readonly Stopwatch stopwatch = new Stopwatch();
-        
-        /// <summary>
-        /// Starts this instance
-        /// </summary>
-        public void Start() => stopwatch.Start();
 
         /// <summary>
-        /// Stops this instance
-        /// </summary>
-        public void Stop() => stopwatch.Stop();
-
-        /// <summary>
-        /// Resets this instance
-        /// </summary>
-        public void Reset() => stopwatch.Reset();
-
-        /// <summary>
-        /// Gets the value of the elapsed
+        ///     Gets the value of the elapsed
         /// </summary>
         public TimeSpan Elapsed => stopwatch.Elapsed;
 
         /// <summary>
-        /// Gets the value of the elapsed milliseconds
+        ///     Gets the value of the elapsed milliseconds
         /// </summary>
         public long ElapsedMilliseconds => stopwatch.ElapsedMilliseconds;
 
         /// <summary>
-        /// Gets the value of the elapsed ticks
+        ///     Gets the value of the elapsed ticks
         /// </summary>
         public long ElapsedTicks => stopwatch.ElapsedTicks;
 
         /// <summary>
-        /// Gets the value of the elapsed seconds
+        ///     Gets the value of the elapsed seconds
         /// </summary>
         public double ElapsedSeconds => stopwatch.Elapsed.TotalSeconds;
+
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        public void Start() => stopwatch.Start();
+
+        /// <summary>
+        ///     Stops this instance
+        /// </summary>
+        public void Stop() => stopwatch.Stop();
+
+        /// <summary>
+        ///     Resets this instance
+        /// </summary>
+        public void Reset() => stopwatch.Reset();
     }
 }

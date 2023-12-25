@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File: Program.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Globalization;
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Aspect.Math.Sample
@@ -45,8 +46,8 @@ namespace Alis.Core.Aspect.Math.Sample
         {
             Console.WriteLine(new Vector2(3.0f, 2.0f).ToString());
             Console.WriteLine(new Vector3(3.0f, 2.0f, 1.0f).ToString("F2"));
-            Console.WriteLine(new Vector2(3.0f, 2.0f).ToString("F2", System.Globalization.CultureInfo.InvariantCulture));
-            
+            Console.WriteLine(new Vector2(3.0f, 2.0f).ToString("F2", CultureInfo.InvariantCulture));
+
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }

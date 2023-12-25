@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IRuntime.cs
+//  File: IRuntime.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,15 +30,15 @@
 namespace Alis.Core.Ecs.System.Property
 {
     /// <summary>
-    /// The runtime interface
+    ///     The runtime interface
     /// </summary>
     public interface IRuntime
     {
         /// <summary>
-        /// Ons the enable
+        ///     Ons the enable
         /// </summary>
         public void OnEnable();
-        
+
         /// <summary>
         ///     Inits this instance
         /// </summary>
@@ -70,17 +70,17 @@ namespace Alis.Core.Ecs.System.Property
         public void OnAfterUpdate();
 
         /// <summary>
-        /// Ons the before fixed update
+        ///     Ons the before fixed update
         /// </summary>
         public void OnBeforeFixedUpdate();
-        
+
         /// <summary>
         ///     Update every frame.
         /// </summary>
         public void OnFixedUpdate();
-        
+
         /// <summary>
-        /// Ons the after fixed update
+        ///     Ons the after fixed update
         /// </summary>
         public void OnAfterFixedUpdate();
 
@@ -90,7 +90,7 @@ namespace Alis.Core.Ecs.System.Property
         public void OnDispatchEvents();
 
         /// <summary>
-        /// Ons the calculate
+        ///     Ons the calculate
         /// </summary>
         public void OnCalculate();
 
@@ -100,12 +100,12 @@ namespace Alis.Core.Ecs.System.Property
         public void OnDraw();
 
         /// <summary>
-        /// Ons the gui
+        ///     Ons the gui
         /// </summary>
         public void OnGui();
-        
+
         /// <summary>
-        /// Ons the disable
+        ///     Ons the disable
         /// </summary>
         public void OnDisable();
 
@@ -125,7 +125,7 @@ namespace Alis.Core.Ecs.System.Property
         public void OnExit();
 
         /// <summary>
-        /// Ons the destroy
+        ///     Ons the destroy
         /// </summary>
         public void OnDestroy();
     }

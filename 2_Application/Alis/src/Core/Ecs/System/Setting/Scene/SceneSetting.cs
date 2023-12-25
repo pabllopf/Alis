@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SceneSetting.cs
+//  File: SceneSetting.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,11 +30,10 @@
 namespace Alis.Core.Ecs.System.Setting.Scene
 {
     /// <summary>
-    /// The scene setting class
+    ///     The scene setting class
     /// </summary>
-    /// <seealso cref="ISceneSetting"/>
+    /// <seealso cref="ISceneSetting" />
     public class SceneSetting : ISceneSetting
     {
-        
     }
 }

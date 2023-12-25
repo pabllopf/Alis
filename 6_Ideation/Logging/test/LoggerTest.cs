@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:LoggerTest.cs
+//  File: LoggerTest.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -34,12 +34,12 @@ using Xunit;
 namespace Alis.Core.Aspect.Logging.Test
 {
     /// <summary>
-    /// The logger test class
+    ///     The logger test class
     /// </summary>
     public class LoggerTest
     {
         /// <summary>
-        /// Tests that trace should print trace message
+        ///     Tests that trace should print trace message
         /// </summary>
         [Fact]
         public void Trace_ShouldPrintTraceMessage()
@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that set log level should change log level
+        ///     Tests that set log level should change log level
         /// </summary>
         [Fact]
         public void SetLogLevel_ShouldChangeLogLevel()
@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that set detail level should change detail level
+        ///     Tests that set detail level should change detail level
         /// </summary>
         [Fact]
         public void SetDetailLevel_ShouldChangeDetailLevel()
@@ -81,7 +81,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that set log level should print log message when log level is set to log
+        ///     Tests that set log level should print log message when log level is set to log
         /// </summary>
         [Fact]
         public void SetLogLevel_ShouldPrintLogMessage_WhenLogLevelIsSetToLog()
@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that exception should print exception message when log level is critical
+        ///     Tests that exception should print exception message when log level is critical
         /// </summary>
         [Fact]
         public void Exception_ShouldPrintExceptionMessage_WhenLogLevelIsCritical()
@@ -115,7 +115,7 @@ namespace Alis.Core.Aspect.Logging.Test
 
 
         /// <summary>
-        /// Tests that trace with log level trace should print trace message
+        ///     Tests that trace with log level trace should print trace message
         /// </summary>
         [Fact]
         public void Trace_WithLogLevelTrace_ShouldPrintTraceMessage()
@@ -131,7 +131,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that trace with log level info should not print trace message
+        ///     Tests that trace with log level info should not print trace message
         /// </summary>
         [Fact]
         public void Trace_WithLogLevelInfo_ShouldNotPrintTraceMessage()
@@ -147,7 +147,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that info with log level info should print info message
+        ///     Tests that info with log level info should print info message
         /// </summary>
         [Fact]
         public void Info_WithLogLevelInfo_ShouldPrintInfoMessage()
@@ -163,7 +163,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that info with log level event should not print info message
+        ///     Tests that info with log level event should not print info message
         /// </summary>
         [Fact]
         public void Info_WithLogLevelEvent_ShouldNotPrintInfoMessage()
@@ -179,7 +179,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that warning should print warning message
+        ///     Tests that warning should print warning message
         /// </summary>
         [Fact]
         public void Warning_ShouldPrintWarningMessage()
@@ -194,7 +194,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that error should print error message
+        ///     Tests that error should print error message
         /// </summary>
         [Fact]
         public void Error_ShouldPrintErrorMessage()
@@ -209,7 +209,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that exception with exception should print exception message
+        ///     Tests that exception with exception should print exception message
         /// </summary>
         [Fact]
         public void Exception_WithException_ShouldPrintExceptionMessage()
@@ -224,7 +224,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that set detail level should change detail level when calling different methods
+        ///     Tests that set detail level should change detail level when calling different methods
         /// </summary>
         [Fact]
         public void SetDetailLevel_ShouldChangeDetailLevel_WhenCallingDifferentMethods()
@@ -237,7 +237,7 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that exception should not print exception message when log level is info
+        ///     Tests that exception should not print exception message when log level is info
         /// </summary>
         [Fact]
         public void Exception_ShouldNotPrintExceptionMessage_WhenLogLevelIsInfo()
@@ -249,11 +249,11 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Exception("Test Exception Message Exception_ShouldNotPrintExceptionMessage_WhenLogLevelIsInfo");
 
             string output = consoleOutput.ToString();
-            Assert.Contains($"Exception: Test Exception Message Exception_ShouldNotPrintExceptionMessage_WhenLogLevelIsInfo", output);
+            Assert.Contains("Exception: Test Exception Message Exception_ShouldNotPrintExceptionMessage_WhenLogLevelIsInfo", output);
         }
 
         /// <summary>
-        /// Tests that exception should not print exception message when log level is trace
+        ///     Tests that exception should not print exception message when log level is trace
         /// </summary>
         [Fact]
         public void Exception_ShouldNotPrintExceptionMessage_WhenLogLevelIsTrace()
@@ -265,11 +265,11 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Exception("Test Exception Message Exception_ShouldNotPrintExceptionMessage_WhenLogLevelIsTrace");
 
             string output = consoleOutput.ToString();
-            Assert.Contains($"Exception: Test Exception Message Exception_ShouldNotPrintExceptionMessage_WhenLogLevelIsTrace", output);
+            Assert.Contains("Exception: Test Exception Message Exception_ShouldNotPrintExceptionMessage_WhenLogLevelIsTrace", output);
         }
-        
+
         /// <summary>
-        /// Tests that trace should print trace message when log level is trace
+        ///     Tests that trace should print trace message when log level is trace
         /// </summary>
         [Fact]
         public void Trace_ShouldPrintTraceMessage_WhenLogLevelIsTrace()
@@ -281,11 +281,11 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Trace();
 
             string output = consoleOutput.ToString();
-            Assert.Contains($"Trace:", output);
+            Assert.Contains("Trace:", output);
         }
 
         /// <summary>
-        /// Tests that trace should not print trace message when log level is info
+        ///     Tests that trace should not print trace message when log level is info
         /// </summary>
         [Fact]
         public void Trace_ShouldNotPrintTraceMessage_WhenLogLevelIsInfo()
@@ -297,11 +297,11 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Trace();
 
             string output = consoleOutput.ToString();
-            Assert.DoesNotContain($"Trace:", output);
+            Assert.DoesNotContain("Trace:", output);
         }
 
         /// <summary>
-        /// Tests that trace should not print trace message when log level is event
+        ///     Tests that trace should not print trace message when log level is event
         /// </summary>
         [Fact]
         public void Trace_ShouldNotPrintTraceMessage_WhenLogLevelIsEvent()
@@ -313,11 +313,11 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Trace();
 
             string output = consoleOutput.ToString();
-            Assert.DoesNotContain($"Trace:", output);
+            Assert.DoesNotContain("Trace:", output);
         }
-        
+
         /// <summary>
-        /// Tests that info should print info message when log level is info
+        ///     Tests that info should print info message when log level is info
         /// </summary>
         [Fact]
         public void Info_ShouldPrintInfoMessage_WhenLogLevelIsInfo()
@@ -329,11 +329,11 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Info();
 
             string output = consoleOutput.ToString();
-            Assert.Contains($"Info: Info method called with no message.", output);
+            Assert.Contains("Info: Info method called with no message.", output);
         }
 
         /// <summary>
-        /// Tests that info should not print info message when log level is event
+        ///     Tests that info should not print info message when log level is event
         /// </summary>
         [Fact]
         public void Info_ShouldNotPrintInfoMessage_WhenLogLevelIsEvent()
@@ -345,11 +345,11 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Info();
 
             string output = consoleOutput.ToString();
-            Assert.DoesNotContain($"Info: Info method called with no message of Info_ShouldNotPrintInfoMessage_WhenLogLevelIsEvent", output);
+            Assert.DoesNotContain("Info: Info method called with no message of Info_ShouldNotPrintInfoMessage_WhenLogLevelIsEvent", output);
         }
 
         /// <summary>
-        /// Tests that info should not print info message when log level is trace
+        ///     Tests that info should not print info message when log level is trace
         /// </summary>
         [Fact]
         public void Info_ShouldNotPrintInfoMessage_WhenLogLevelIsTrace()
@@ -361,11 +361,11 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Info();
 
             string output = consoleOutput.ToString();
-            Assert.DoesNotContain($"Info: Info method called with no message of Info_ShouldNotPrintInfoMessage_WhenLogLevelIsTrace", output);
+            Assert.DoesNotContain("Info: Info method called with no message of Info_ShouldNotPrintInfoMessage_WhenLogLevelIsTrace", output);
         }
-        
+
         /// <summary>
-        /// Tests that event should print event message when log level is event
+        ///     Tests that event should print event message when log level is event
         /// </summary>
         [Fact]
         public void Event_ShouldPrintEventMessage_WhenLogLevelIsEvent()
@@ -377,11 +377,11 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Event("Test Event Message");
 
             string output = consoleOutput.ToString();
-            Assert.Contains($"Event: Test Event Message", output);
+            Assert.Contains("Event: Test Event Message", output);
         }
 
         /// <summary>
-        /// Tests that event should not print event message when log level is info
+        ///     Tests that event should not print event message when log level is info
         /// </summary>
         [Fact]
         public void Event_ShouldNotPrintEventMessage_WhenLogLevelIsInfo()
@@ -393,11 +393,11 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Event("Test Event Message");
 
             string output = consoleOutput.ToString();
-            Assert.Contains($"Event: Test Event Message", output);
+            Assert.Contains("Event: Test Event Message", output);
         }
 
         /// <summary>
-        /// Tests that event should not print event message when log level is trace
+        ///     Tests that event should not print event message when log level is trace
         /// </summary>
         [Fact]
         public void Event_ShouldNotPrintEventMessage_WhenLogLevelIsTrace()
@@ -409,12 +409,12 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Event("Test Event Message");
 
             string output = consoleOutput.ToString();
-            Assert.Contains($"Event: Test Event Message", output);
+            Assert.Contains("Event: Test Event Message", output);
         }
 
-        
+
         /// <summary>
-        /// Tests that event no message should print event message when log level is event
+        ///     Tests that event no message should print event message when log level is event
         /// </summary>
         [Fact]
         public void Event_NoMessage_ShouldPrintEventMessage_WhenLogLevelIsEvent()
@@ -426,11 +426,11 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Event();
 
             string output = consoleOutput.ToString();
-            Assert.Contains($"Event: Event method called with no message.", output);
+            Assert.Contains("Event: Event method called with no message.", output);
         }
 
         /// <summary>
-        /// Tests that event no message should not print event message when log level is info
+        ///     Tests that event no message should not print event message when log level is info
         /// </summary>
         [Fact]
         public void Event_NoMessage_ShouldNotPrintEventMessage_WhenLogLevelIsInfo()
@@ -442,11 +442,11 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Event();
 
             string output = consoleOutput.ToString();
-            Assert.Contains($"Event: Event method called with no message.", output);
+            Assert.Contains("Event: Event method called with no message.", output);
         }
 
         /// <summary>
-        /// Tests that event no message should not print event message when log level is trace
+        ///     Tests that event no message should not print event message when log level is trace
         /// </summary>
         [Fact]
         public void Event_NoMessage_ShouldNotPrintEventMessage_WhenLogLevelIsTrace()
@@ -458,7 +458,7 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.Event();
 
             string output = consoleOutput.ToString();
-            Assert.Contains($"Event: Event method called with no message.", output);
+            Assert.Contains("Event: Event method called with no message.", output);
         }
     }
 }

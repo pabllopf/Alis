@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DetailLevel.cs
+//  File: DetailLevel.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,17 +30,17 @@
 namespace Alis.Core.Aspect.Logging
 {
     /// <summary>
-    /// The detail level enum
+    ///     The detail level enum
     /// </summary>
     public enum DetailLevel
     {
         /// <summary>
-        /// The minimal detail level
+        ///     The minimal detail level
         /// </summary>
-        Minimal, 
-        
+        Minimal,
+
         /// <summary>
-        /// The full detail level
+        ///     The full detail level
         /// </summary>
         Full
     }

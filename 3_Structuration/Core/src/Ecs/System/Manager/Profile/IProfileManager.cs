@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IPhysicManager.cs
+//  File: IProfileManager.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,9 +30,9 @@
 namespace Alis.Core.Ecs.System.Manager.Profile
 {
     /// <summary>
-    /// The profile manager interface
+    ///     The profile manager interface
     /// </summary>
-    /// <seealso cref="IManager"/>
+    /// <seealso cref="IManager" />
     public interface IProfileManager : IManager
     {
     }

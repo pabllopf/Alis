@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CloudSetting.cs
+//  File: CloudSetting.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,11 +30,10 @@
 namespace Alis.Core.Ecs.System.Setting.Cloud
 {
     /// <summary>
-    /// The cloud setting class
+    ///     The cloud setting class
     /// </summary>
-    /// <seealso cref="ICloudSetting"/>
-    public class CloudSetting: ICloudSetting
+    /// <seealso cref="ICloudSetting" />
+    public class CloudSetting : ICloudSetting
     {
-        
     }
 }

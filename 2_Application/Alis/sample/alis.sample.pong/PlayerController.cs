@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PlayerController.cs
+//  File: PlayerController.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -65,9 +65,9 @@ namespace Alis.Sample.Pong
         ///     Updates this instance
         /// </summary>
         public override void OnUpdate() => Logger.Trace();
-        
+
         /// <summary>
-        /// Ons the release key using the specified key
+        ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnReleaseKey(SdlKeycode key)
@@ -105,10 +105,10 @@ namespace Alis.Sample.Pong
                     break;
             }
         }
-        
-       
+
+
         /// <summary>
-        /// Ons the press down key using the specified key
+        ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnPressDownKey(SdlKeycode key)

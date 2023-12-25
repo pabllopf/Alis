@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IInput.cs
+//  File: IInput.cs
 // 
-//  Author:Pablo Perdomo Falcón
+//  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The input interface
+    ///     The input interface
     /// </summary>
-    public interface IInput <out TBuilder, in TArgument>
+    public interface IInput<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Inputs the value
+        ///     Inputs the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
