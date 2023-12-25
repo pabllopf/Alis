@@ -29,7 +29,6 @@
 
 using System;
 using System.IO;
-using System.Reflection;
 using Xunit;
 
 namespace Alis.Core.Aspect.Data.Test

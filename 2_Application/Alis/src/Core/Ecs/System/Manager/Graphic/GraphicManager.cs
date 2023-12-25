@@ -144,9 +144,16 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 Sdl.SetHint(Sdl.HintRenderDriver, "opengl");
             }
             
+            
+            
             // Create the window
             // create the window which should be able to have a valid OpenGL context and is resizable
-            const SdlWindowFlags flags = SdlWindowFlags.SdlWindowResizable | SdlWindowFlags.SdlWindowShown;
+            SdlWindowFlags flags =  SdlWindowFlags.SdlWindowShown;
+
+            if (VideoGame.Instance.Settings.Graphic.Window.IsWindowResizable)
+            {
+                flags |= SdlWindowFlags.SdlWindowResizable;
+            }
             
             // Creates a new SDL window at the center of the screen with the given width and height.
             _window = Sdl.CreateWindow(VideoGame.Instance.Settings.General.Name, Sdl.WindowPosCentered, Sdl.WindowPosCentered, (int) defaultSize.X, (int) defaultSize.Y, flags);
@@ -303,20 +310,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// </summary>
         public override void OnUpdate()
         {
-            Logger.Trace();
-            
-            // Sets color to green (0, 255, 0, 255).
-            Sdl.SetRenderDrawColor(Renderer, 0, 255, 0, 255);
-            
-            // Draws rectangles:
-            for (int i=0;i < ColliderBases.Length; i++) 
-            {
-                if (ColliderBases[i] != null)
-                {
-                    rectangles[i] = ColliderBases[i].RectangleF;
-                }
-            }
-
             Sprites = Sprites.OrderBy(o => o.Depth).ToList();
             
             // Draws sprites:
@@ -338,7 +331,22 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 Sdl.RenderCopy(Renderer, sprite.Image.Texture, IntPtr.Zero, ref dstRect);
             }
             
-            Sdl.RenderDrawRectsF(Renderer, rectangles, rectangles.Length);
+            if (VideoGame.Instance.Settings.Physic.DebugMode)
+            {
+                // Sets color to green (0, 255, 0, 255).
+                Sdl.SetRenderDrawColor(Renderer, 0, 255, 0, 255);
+            
+                // Draws rectangles:
+                for (int i=0;i < ColliderBases.Length; i++) 
+                {
+                    if (ColliderBases[i] != null)
+                    {
+                        rectangles[i] = ColliderBases[i].RectangleF;
+                    }
+                }
+            
+                Sdl.RenderDrawRectsF(Renderer, rectangles, rectangles.Length);
+            }
             
             Sdl.RenderPresent(Renderer);
         }

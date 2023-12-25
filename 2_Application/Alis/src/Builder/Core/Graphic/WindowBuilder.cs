@@ -42,7 +42,8 @@ namespace Alis.Builder.Core.Graphic
     public class WindowBuilder:
         IBuild<Window>,
         IBackground<WindowBuilder, Color>,
-        IResolution<WindowBuilder, float, float>
+        IResolution<WindowBuilder, float, float>,
+        IIsResizable<WindowBuilder, bool>
     {
         /// <summary>
         /// The window
@@ -75,6 +76,27 @@ namespace Alis.Builder.Core.Graphic
         public WindowBuilder Resolution(float x, float y)
         {
             window.Resolution = new Vector2(x, y);
+            return this;
+        }
+
+        /// <summary>
+        /// Ises the resizable
+        /// </summary>
+        /// <returns>The window builder</returns>
+        public WindowBuilder IsResizable()
+        {
+            window.IsWindowResizable = true;
+            return this;
+        }
+
+        /// <summary>
+        /// Ises the resizable using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The window builder</returns>
+        public WindowBuilder IsResizable(bool value)
+        { 
+            window.IsWindowResizable = value;
             return this;
         }
     }

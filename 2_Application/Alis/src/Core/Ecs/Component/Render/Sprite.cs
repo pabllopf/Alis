@@ -66,8 +66,12 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnInit()
         {
-            Image = new Image(TexturePath);
-            Console.WriteLine($"Load sprite od '{TexturePath}'");
+            if (!string.IsNullOrEmpty(TexturePath))
+            {
+                Image = new Image(TexturePath);
+                Console.WriteLine($"Load sprite od '{TexturePath}'");
+            }
+            
             
             /*
             SpriteSfml = new Graphic.SFML.Graphics.Sprite(new Texture(TexturePath));
@@ -119,6 +123,16 @@ namespace Alis.Core.Ecs.Component.Render
         public override void OnExit()
         {
             GraphicManager.UnAttach(this);
+        }
+
+        public Sprite()
+        {
+            
+        } 
+        
+        public Sprite(string texturePath)
+        {
+            TexturePath = texturePath;
         }
     }
 }

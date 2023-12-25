@@ -48,6 +48,11 @@ namespace Alis.Core.Ecs.System.Setting.Physic
         public Vector2 Gravity { get; set; } = new Vector2(0.0f, 9.8f);
 
         /// <summary>
+        /// Gets or sets the value of the debug mode
+        /// </summary>
+        public bool DebugMode { get; set; } = false;
+
+        /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The physic setting builder</returns>

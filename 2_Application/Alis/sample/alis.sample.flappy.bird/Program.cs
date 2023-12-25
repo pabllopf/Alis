@@ -65,9 +65,11 @@ namespace Alis.Sample.Flappy.Bird
                         .Window(window => window
                             .Resolution(288,512)
                             .Background(Color.Black)
+                            .IsResizable(false)
                             .Build())
                         .Build())
                     .Physic(physic => physic
+                        .Debug(true)
                         .Gravity(0.0f, -9.8f)
                         .Build())
                     .Build())
@@ -275,6 +277,14 @@ namespace Alis.Sample.Flappy.Bird
                                 .SetTexture(AssetManager.Find("0.png"))
                                 .Depth(3)
                                 .Build())
+                            .AddComponent<AudioSource>(audioSource => audioSource
+                                .Builder()
+                                .PlayOnAwake(false)
+                                .SetAudioClip(audioClip => audioClip
+                                    .FilePath(AssetManager.Find("point.wav"))
+                                    .Build())
+                                .Build())
+                            .AddComponent(new CounterController())
                             .Build())
                         
                         ////////////////////////////////////////

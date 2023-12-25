@@ -66,6 +66,10 @@ namespace Alis.Sample.Pong
         /// </summary>
         public override void OnUpdate() => Logger.Trace();
         
+        /// <summary>
+        /// Ons the release key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
         public override void OnReleaseKey(SdlKeycode key)
         {
             Vector2 velocity = boxCollider.Body.LinearVelocity;
@@ -103,6 +107,10 @@ namespace Alis.Sample.Pong
         }
         
        
+        /// <summary>
+        /// Ons the press down key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
         public override void OnPressDownKey(SdlKeycode key)
         {
             Vector2 velocity = boxCollider.Body.LinearVelocity;

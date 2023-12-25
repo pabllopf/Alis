@@ -40,7 +40,8 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Physic
     /// <seealso cref="IBuild{PhysicSetting}" />
     public class PhysicSettingBuilder :
         IBuild<PhysicSetting>,
-        IGravity<PhysicSettingBuilder, float, float>
+        IGravity<PhysicSettingBuilder, float, float>,
+        IDebug<PhysicSettingBuilder, bool>
     {
         /// <summary>
         ///     The physic setting
@@ -62,6 +63,17 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Physic
         public PhysicSettingBuilder Gravity(float x, float y)
         {
             physicSetting.Gravity = new Vector2(x, y);
+            return this;
+        }
+
+        /// <summary>
+        /// Debugs the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The physic setting builder</returns>
+        public PhysicSettingBuilder Debug(bool value)
+        {
+            physicSetting.DebugMode = value;
             return this;
         }
     }
