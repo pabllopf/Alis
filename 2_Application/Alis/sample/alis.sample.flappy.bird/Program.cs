@@ -32,6 +32,7 @@ using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Collider;
 using Alis.Core.Ecs.Component.Render;
+using Alis.Core.Ecs.Component.Ui;
 using Alis.Core.Ecs.Entity.GameObject;
 using Alis.Core.Ecs.Entity.Scene;
 using Alis.Core.Physic.Dynamics;
@@ -93,6 +94,13 @@ namespace Alis.Sample.Flappy.Bird
                                 .Builder()
                                 .SetTexture(AssetManager.Find("background-day.png"))
                                 .Depth(0)
+                                .Build())
+                            .Build())
+                        
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("UI")
+                            .AddComponent<Canvas>(canvas => canvas
+                                .Builder()
                                 .Build())
                             .Build())
 
