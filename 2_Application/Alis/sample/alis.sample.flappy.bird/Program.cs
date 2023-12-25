@@ -143,11 +143,6 @@ namespace Alis.Sample.Flappy.Bird
                                 .Rotation(0)
                                 .Scale(1f, 1.0f)
                                 .Build())
-                            .AddComponent<Sprite>(sprite => sprite
-                                .Builder()
-                                .SetTexture(AssetManager.Find("0.png"))
-                                .Depth(3)
-                                .Build())
                             .Build())
                         
                         ////////////////////////////////////////
@@ -237,6 +232,10 @@ namespace Alis.Sample.Flappy.Bird
                                 .Build())
                             .AddComponent(new FloorAnimation())
                             .Build())
+                        
+                        ////////////////////////////////////////
+                        // GAME SCENE: FLOOR COLLISION
+                        ////////////////////////////////////////
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Floor Collision")
                             .Transform(transform => transform
@@ -263,6 +262,34 @@ namespace Alis.Sample.Flappy.Bird
                             .Build())
                         
                         ////////////////////////////////////////
+                        // GAME SCENE: SKY COLLISION
+                        ////////////////////////////////////////
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Sky Collision")
+                            .Transform(transform => transform
+                                .Position(100, -25)
+                                .Rotation(0)
+                                .Scale(1.5f, 1.0f)
+                                .Build())
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .BodyType(BodyType.Kinematic)
+                                .IsTrigger(false)
+                                .AutoTilling(false)
+                                .Size(290, 50)
+                                .Rotation(0.0f)
+                                .RelativePosition(0, 0)
+                                .Mass(10.0f)
+                                .Restitution(0.0f)
+                                .Friction(0f)
+                                .Density(0f)
+                                .FixedRotation(true)
+                                .GravityScale(0.0f)
+                                .Build())
+                            .Build())
+                        
+                        ////////////////////////////////////////
                         // GAME SCENE: COUNTER
                         ////////////////////////////////////////
                         .Add<GameObject>(gameObject => gameObject
@@ -271,11 +298,6 @@ namespace Alis.Sample.Flappy.Bird
                                 .Position(132, 28f)
                                 .Rotation(0)
                                 .Scale(1f, 1.0f)
-                                .Build())
-                            .AddComponent<Sprite>(sprite => sprite
-                                .Builder()
-                                .SetTexture(AssetManager.Find("0.png"))
-                                .Depth(3)
                                 .Build())
                             .AddComponent<AudioSource>(audioSource => audioSource
                                 .Builder()

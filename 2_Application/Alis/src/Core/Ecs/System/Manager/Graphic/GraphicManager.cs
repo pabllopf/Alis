@@ -33,6 +33,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
+using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
@@ -75,7 +76,16 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// The length
         /// </summary>
         private readonly RectangleF[] rectangles = new RectangleF[ColliderBases.Length];
-        
+
+        /// <summary>
+        /// The dst rect font
+        /// </summary>
+        private RectangleI dstRectFont1;
+        /// <summary>
+        /// The texture font
+        /// </summary>
+        private IntPtr textureFont1;
+
         /// <summary>
         ///     Gets or sets the value of the sprites
         /// </summary>
@@ -252,6 +262,71 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             // GET VERSION SDL_IMAGE
             Console.WriteLine($"SDL_Image Version: {SdlImage.SdlImageVersion().major}.{SdlImage.SdlImageVersion().minor}.{SdlImage.SdlImageVersion().patch}");
             
+            // INIT SDL_TTF
+            Console.WriteLine(SdlTtf.TtfInit() < 0 ? $"There was an issue initializing SDL_TTF. {Sdl.GetError()}" : $"SDL_TTF Initialized");
+            
+            // GET VERSION SDL_TTF
+            Console.WriteLine($"SDL_TTF Version: {SdlTtf.SdlTtfVersion().major}.{SdlTtf.SdlTtfVersion().minor}.{SdlTtf.SdlTtfVersion().patch}");
+            
+            int outlineSize = 1;
+            
+            // Load the font
+            IntPtr font = SdlTtf.TtfOpenFont(AssetManager.Find("Crackman Front.otf"), 55);
+            
+            // Load the font
+            IntPtr font_outline = SdlTtf.TtfOpenFont(AssetManager.Find("Crackman Front.otf"), 55);
+            
+            // define outline font
+            SdlTtf.TtfSetFontOutline(font, outlineSize);
+            
+            // define style font
+            SdlTtf.TtfSetFontStyle(font, SdlTtf.TtfStyleNormal);
+            
+            // Pixels to render the text
+            IntPtr bg_surface = SdlTtf.TtfRenderTextBlended(
+                font_outline, 
+                "0123456789", 
+                new SdlColor(255,255,255, 255));
+            
+            IntPtr fg_surface = SdlTtf.TtfRenderTextBlended(
+                font, 
+                "0123456789", 
+                new SdlColor(84,52,68, 255));
+            
+            // get size fg_surface
+            //SDL_QueryTexture(fg_surface, NULL, NULL, &w, &h); :
+            Sdl.QueryTexture(fg_surface, out _, out _, out int wOut, out int hOut);
+            
+            //SDL_Rect rect = {OUTLINE_SIZE, OUTLINE_SIZE, fg_surface->w, fg_surface->h};
+            RectangleI rect = new RectangleI(0, 0, wOut, hOut);
+            
+            //SDL_SetSurfaceBlendMode(fg_surface, SDL_BLENDMODE_BLEND); :
+            Sdl.SetSurfaceBlendMode(fg_surface, SdlBlendMode.SdlBlendModeBlend);
+            
+            //SDL_BlitSurface(fg_surface, NULL, bg_surface, &rect); 
+            Sdl.BlitSurface(fg_surface, IntPtr.Zero, bg_surface, ref rect);
+            
+            //SDL_FreeSurface(fg_surface); 
+            Sdl.FreeSurface(fg_surface);
+            
+            
+            // surface without alpha
+            //Sdl.SetSurfaceBlendMode(surface, SdlBlendMode.SdlBlendModeBlend);
+            
+            // Create a texture from the surface
+            textureFont1 = Sdl.CreateTextureFromSurface(Renderer, bg_surface);
+            
+            // define alpha of the texture
+            //Sdl.SetTextureAlphaMod(textureFont1, 255);
+            
+            // Get the width and height of the texture
+            Sdl.QueryTexture(textureFont1, out _, out _, out int textureWidth, out int textureHeight);
+            
+            // Create a destination intPtr dstRect
+            dstRectFont1 = new RectangleI(0, 0, textureWidth, textureHeight);
+            
+            
+            
             /*
             Sdl.SetHint(Sdl.HintXInputEnabled, "0");
             Sdl.SetHint(Sdl.SdlHintJoystickThread, "1");
@@ -344,6 +419,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                         rectangles[i] = ColliderBases[i].RectangleF;
                     }
                 }
+                
+                // Render the font to the screen
+                Sdl.RenderCopy(Renderer, textureFont1, IntPtr.Zero, ref dstRectFont1);
             
                 Sdl.RenderDrawRectsF(Renderer, rectangles, rectangles.Length);
             }
