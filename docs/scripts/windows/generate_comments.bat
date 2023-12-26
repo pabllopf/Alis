@@ -1,5 +1,2 @@
-cd ..\\..\\..\\
 
-.\\docs\\.tools\\windows\\document\\dotnet-document.exe apply .\\alis.sln
-
-cd .\\docs\\.scripts\\windows\\
+dotnet document apply ..\\..\\..\\alis.sln

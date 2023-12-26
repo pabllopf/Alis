@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Data;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Component.Collider;
@@ -59,6 +60,9 @@ namespace Alis.Sample.Pong
                         .License("GNU General Public License v3.0")
                         .Icon(AssetManager.Find("app.png"))
                         .Build())
+                    .Profile(profile=> profile
+                        .LogLevel(LogLevel.Critical)
+                        .Build())
                     .Audio(audio => audio
                         .Build())
                     .Graphic(graphic => graphic
@@ -69,6 +73,7 @@ namespace Alis.Sample.Pong
                         .Build())
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
+                        .Debug(true)
                         .Build())
                     .Build())
                 .World(sceneManager => sceneManager

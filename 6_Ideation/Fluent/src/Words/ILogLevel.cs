@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ProfileSettingBuilder.cs
+//  File: ${File.FileName}
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,54 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Aspect.Logging;
-using Alis.Core.Ecs.System.Setting.Profile;
-using NotImplementedException = System.NotImplementedException;
-
-namespace Alis.Builder.Core.Ecs.System.Setting.Profile
+namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The audio setting builder class
+    /// The log level interface
     /// </summary>
-    public class ProfileSettingBuilder :
-        IBuild<ProfileSetting>,
-        ILogLevel<ProfileSettingBuilder, LogLevel>
+    public interface ILogLevel<out TBuilder, in TArgument>
     {
-        /// <summary>
-        ///     The audio setting
-        /// </summary>
-        private readonly ProfileSetting profileSetting = new ProfileSetting();
-
-        /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The audio setting</returns>
-        public ProfileSetting Build() => profileSetting;
-
         /// <summary>
         /// Logs the level using the specified value
         /// </summary>
         /// <param name="value">The value</param>
-        /// <returns>The profile setting builder</returns>
-        public ProfileSettingBuilder LogLevel(LogLevel value)
-        {
-            profileSetting.LogLevel = value;
-            Logger.LogLevel = value;
-            return this;
-        }
-
-        /// <summary>
-        /// Logs the detail using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The profile setting builder</returns>
-        public ProfileSettingBuilder LogDetail(DetailLevel value)
-        {
-            profileSetting.DetailLevel = value;
-            Logger.DetailLevel = value;
-            return this;
-        }
+        /// <returns>The builder</returns>
+        TBuilder LogLevel(TArgument value);
     }
 }

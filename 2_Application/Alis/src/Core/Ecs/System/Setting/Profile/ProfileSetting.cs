@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Logging;
+
 namespace Alis.Core.Ecs.System.Setting.Profile
 {
     /// <summary>
@@ -35,5 +37,14 @@ namespace Alis.Core.Ecs.System.Setting.Profile
     /// <seealso cref="IProfileSetting" />
     public class ProfileSetting : IProfileSetting
     {
+        /// <summary>
+        /// Gets or sets the value of the log level
+        /// </summary>
+        public LogLevel LogLevel { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the detail level
+        /// </summary>
+        public DetailLevel DetailLevel { get; set; }
     }
 }
