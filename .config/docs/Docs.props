@@ -5,7 +5,6 @@
         $(AssemblyName.Contains('Sample')) == false AND
         $(AssemblyName.Contains('Template')) == false">
 
-        <None Include="$(SolutionDir)licence.md" LinkBase="Docs" Pack="true" Visible="false" PackagePath="Docs/" CopyToOutputDirectory="Always"/>
-        <None Include="$(SolutionDir)docs/logo/logo.png" LinkBase="Docs" Visible="false" Pack="true" PackagePath="Docs/" CopyToOutputDirectory="Always"/>
+        <None Include="$(SolutionDir)licence.md" Pack="true" Visible="false" CopyToOutputDirectory="Always"/>
     </ItemGroup>
 </Project>
