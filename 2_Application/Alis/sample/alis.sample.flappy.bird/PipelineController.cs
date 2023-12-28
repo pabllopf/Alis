@@ -69,7 +69,7 @@ namespace Alis.Sample.Flappy.Bird
         /// <summary>
         /// The velocity
         /// </summary>
-        private float velocity = 15;
+        private float velocity = 10;
         
         /// <summary>
         /// Ons the init
