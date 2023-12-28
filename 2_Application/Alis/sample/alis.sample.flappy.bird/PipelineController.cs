@@ -69,8 +69,10 @@ namespace Alis.Sample.Flappy.Bird
         /// <summary>
         /// The velocity
         /// </summary>
-        private float velocity = 10;
-        
+        private static float velocity = 10;
+
+        private float factorVelocity = 1.1f;
+
         /// <summary>
         /// Ons the init
         /// </summary>
@@ -98,7 +100,7 @@ namespace Alis.Sample.Flappy.Bird
                     generated = true;
                     randomHeight = new Random().Next(10, 75);
                     randomDirection = new Random().Next(0, 2);
-                    Console.WriteLine($"{GameObject.Name} NUM={randomHeight} Direction={randomDirection}");
+                    Console.WriteLine($"{GameObject.Name} NUM={randomHeight} Direction={randomDirection} velocity={velocity}");
                 }
 
                 switch (randomDirection)
@@ -107,12 +109,14 @@ namespace Alis.Sample.Flappy.Bird
                     {
                         Vector2 newPos = new Vector2(posOrigin.Position.X, posOrigin.Position.Y + randomHeight);
                         boxCollider.Body.Position = newPos;
+                        boxCollider.LinearVelocity = new Vector2(-velocity, 0);
                         break;
                     }
                     case 1:
                     {
                         Vector2 newPos = new Vector2(posOrigin.Position.X, posOrigin.Position.Y - randomHeight);
                         boxCollider.Body.Position = newPos;
+                        boxCollider.LinearVelocity = new Vector2(-velocity, 0);
                         break;
                     }
                 }
@@ -126,6 +130,7 @@ namespace Alis.Sample.Flappy.Bird
         {
             if (generated)
             {
+                velocity *= factorVelocity;
                 generated = false;
             }
         }
