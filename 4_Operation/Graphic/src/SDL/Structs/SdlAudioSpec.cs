@@ -72,7 +72,7 @@ namespace Alis.Core.Graphic.SDL.Structs
         /// <summary>
         ///     The callback
         /// </summary>
-        public readonly SdlAudioCallback callback;
+        public SdlAudioCallback callback;
 
         /// <summary>
         ///     The userdata

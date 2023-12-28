@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Threading.Tasks;
+using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Audio.OS;
 
@@ -59,8 +61,6 @@ namespace Alis.Core.Audio
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-
-            IsPlaying = false;
             Logger.Log($"Init music: '{fullPathAudio}'");
         }
 
@@ -92,7 +92,6 @@ namespace Alis.Core.Audio
         {
             FullPathAudioFile = fullPathAudio;
             AudioBackendType = audioBackendType;
-            IsPlaying = false;
             switch (AudioBackendType)
             {
                 case AudioBackendType.Os:
@@ -132,7 +131,7 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     Gets or sets the value of the is playing
         /// </summary>
-        public bool IsPlaying { get; private set; }
+        public bool IsPlaying { get => player.Playing; }
 
         /// <summary>
         ///     Gets or sets the value of the full path audio file
@@ -167,13 +166,15 @@ namespace Alis.Core.Audio
                 switch (AudioBackendType)
                 {
                     case AudioBackendType.Os:
-                        player.Play(FullPathAudioFile).Wait();
+                        if (!player.Playing)
+                        {
+                            Task.Run(() => player.Play(FullPathAudioFile).Wait());
+                        }
                         break;
+                    case AudioBackendType.Sld:
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
-
-                IsPlaying = true;
             }
         }
 
@@ -188,13 +189,11 @@ namespace Alis.Core.Audio
                 switch (AudioBackendType)
                 {
                     case AudioBackendType.Os:
-                        player.Stop().Wait();
+                        Task.Run(() => player.Stop().Wait());
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
-
-                IsPlaying = false;
             }
         }
 
@@ -209,13 +208,11 @@ namespace Alis.Core.Audio
                 switch (AudioBackendType)
                 {
                     case AudioBackendType.Os:
-                        player.Play(FullPathAudioFile).Wait();
+                        Task.Run(() => player.Resume().Wait());
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
-
-                IsPlaying = true;
             }
         }
     }

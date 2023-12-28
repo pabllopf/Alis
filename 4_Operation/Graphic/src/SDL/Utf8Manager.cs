@@ -114,6 +114,6 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="str">The str</param>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int Utf8Size([NotNull] string str) => str.Validate().Length * 4 + 1;
+        public static int Utf8Size(string str) => str.Length * 4 + 1;
     }
 }

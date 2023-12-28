@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.System.Setting.Physic;
 
@@ -41,7 +42,8 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Physic
     public class PhysicSettingBuilder :
         IBuild<PhysicSetting>,
         IGravity<PhysicSettingBuilder, float, float>,
-        IDebug<PhysicSettingBuilder, bool>
+        IDebug<PhysicSettingBuilder, bool>,
+        IDebugColor<PhysicSettingBuilder, Color>
     {
         /// <summary>
         ///     The physic setting
@@ -74,6 +76,17 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Physic
         public PhysicSettingBuilder Gravity(float x, float y)
         {
             physicSetting.Gravity = new Vector2(x, y);
+            return this;
+        }
+
+        /// <summary>
+        /// Debugs the color using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The physic setting builder</returns>
+        public PhysicSettingBuilder DebugColor(Color value)
+        {
+            physicSetting.DebugColor = value;
             return this;
         }
     }

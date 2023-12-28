@@ -48,11 +48,17 @@ namespace Alis.Sample.Flappy.Bird
         private AudioSource audioSource;
 
         /// <summary>
+        /// The box collider
+        /// </summary>
+        private BoxCollider boxCollider;
+
+        /// <summary>
         ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
             audioSource = GameObject.Get<AudioSource>();
+            boxCollider = GameObject.Get<BoxCollider>();
         }
 
         /// <summary>
@@ -61,14 +67,11 @@ namespace Alis.Sample.Flappy.Bird
         /// <param name="key">The key</param>
         public override void OnPressKey(SdlKeycode key)
         {
-            if (key == SdlKeycode.SdlkSpace)
+            if (key == SdlKeycode.SdlkSpace && !audioSource.IsPlaying)
             {
-                if (GameObject.Contains<BoxCollider>())
-                {
-                    GameObject.Get<BoxCollider>().Body.LinearVelocity = new Vector2(0, -17f);
-                    Console.WriteLine("Go up!");
-                    audioSource.Play();
-                }
+                boxCollider.Body.LinearVelocity = new Vector2(0, -17f);
+                Console.WriteLine("Go up!");
+                audioSource.Play();
             }
         }
     }
