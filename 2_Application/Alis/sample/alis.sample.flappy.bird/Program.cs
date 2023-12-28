@@ -71,6 +71,7 @@ namespace Alis.Sample.Flappy.Bird
                         .Build())
                     .Physic(physic => physic
                         .Debug(true)
+                        .DebugColor(Color.Red)
                         .Gravity(0.0f, -9.8f)
                         .Build())
                     .Build())

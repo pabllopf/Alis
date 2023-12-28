@@ -46,6 +46,11 @@ namespace Alis.Sample.Flappy.Bird
         public int Counter { get; set; }
 
         /// <summary>
+        /// The audio source
+        /// </summary>
+        private AudioSource audioSource;
+
+        /// <summary>
         ///     Increments this instance
         /// </summary>
         public void Increment()
@@ -68,6 +73,14 @@ namespace Alis.Sample.Flappy.Bird
         public override string ToString() => Counter.ToString();
 
         /// <summary>
+        /// Ons the init
+        /// </summary>
+        public override void OnInit()
+        {
+           audioSource = GameObject.Get<AudioSource>();
+        }
+
+        /// <summary>
         ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
@@ -76,7 +89,7 @@ namespace Alis.Sample.Flappy.Bird
             if (key == SdlKeycode.SdlkUp)
             {
                 Increment();
-                GameObject.Get<AudioSource>().Play();
+                audioSource.Play();
                 Console.WriteLine("Value: " + Counter);
             }
         }

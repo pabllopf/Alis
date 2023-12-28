@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: PhysicSetting.cs
+//  File: ${File.FileName}
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,40 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.System.Setting.Physic;
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Math.Definition;
-using Alis.Core.Aspect.Math.Vector;
-
-namespace Alis.Core.Ecs.System.Setting.Physic
+namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The physic setting class
+    /// The debug color interface
     /// </summary>
-    /// <seealso cref="IPhysicSetting" />
-    /// <seealso cref="IBuilder{PhysicSettingBuilder}" />
-    public class PhysicSetting : IPhysicSetting,
-        IBuilder<PhysicSettingBuilder>
+    public interface IDebugColor<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Gets or sets the value of the debug mode
+        /// Debugs the color using the specified value
         /// </summary>
-        public bool DebugMode { get; set; } = false;
-
-        /// <summary>
-        ///     Builders this instance
-        /// </summary>
-        /// <returns>The physic setting builder</returns>
-        public PhysicSettingBuilder Builder() => new PhysicSettingBuilder();
-
-        /// <summary>
-        ///     Gets or sets the value of the gravity
-        /// </summary>
-        public Vector2 Gravity { get; set; } = new Vector2(0.0f, 9.8f);
-
-        /// <summary>
-        /// Gets or sets the value of the debug color
-        /// </summary>
-        public Color DebugColor { get; set; }
+        /// <param name="value">The value</param>
+        /// <returns>The builder</returns>
+        TBuilder DebugColor(TArgument value);
     }
 }

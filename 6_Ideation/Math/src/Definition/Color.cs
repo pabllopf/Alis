@@ -37,22 +37,22 @@ namespace Alis.Core.Aspect.Math.Definition
         /// <summary>
         ///     The
         /// </summary>
-        public int R;
+        public byte R;
 
         /// <summary>
         ///     The
         /// </summary>
-        public int G;
+        public byte G;
 
         /// <summary>
         ///     The
         /// </summary>
-        public int B;
+        public byte B;
 
         /// <summary>
         ///     The
         /// </summary>
-        public int A;
+        public byte A;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Color" /> class
@@ -61,7 +61,7 @@ namespace Alis.Core.Aspect.Math.Definition
         /// <param name="g">The </param>
         /// <param name="b">The </param>
         /// <param name="a">The </param>
-        private Color(int r, int g, int b, int a)
+        private Color(byte r, byte g, byte b, byte a)
         {
             R = r;
             G = g;
@@ -73,5 +73,10 @@ namespace Alis.Core.Aspect.Math.Definition
         ///     Gets the value of the black
         /// </summary>
         public static Color Black => new Color(0, 0, 0, 255);
+
+        /// <summary>
+        /// Gets the value of the red
+        /// </summary>
+        public static Color Red => new Color(255, 0,0, 255);
     }
 }

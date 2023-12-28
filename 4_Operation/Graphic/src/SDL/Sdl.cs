@@ -12907,8 +12907,8 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="allowedChanges">The allowed changes</param>
         /// <returns>The uint</returns>
         [return: NotNull]
-        public static uint SdlOpenAudioDevice([NotNull] string device, [NotNull] int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, [NotNull] int allowedChanges)
-            => INTERNAL_SDL_OpenAudioDevice(Utf8Manager.Utf8Encode(device.Validate(), new byte[Utf8Manager.Utf8Size(device.Validate())], Utf8Manager.Utf8Size(device.Validate())), isCapture, ref desired, out obtained, allowedChanges);
+        public static uint SdlOpenAudioDevice(string device, int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, int allowedChanges)
+            => INTERNAL_SDL_OpenAudioDevice(Utf8Manager.Utf8Encode(device, new byte[Utf8Manager.Utf8Size(device)], Utf8Manager.Utf8Size(device)), isCapture, ref desired, out obtained, allowedChanges);
 
         /// <summary>
         ///     Sdl the pause audio using the specified pause on

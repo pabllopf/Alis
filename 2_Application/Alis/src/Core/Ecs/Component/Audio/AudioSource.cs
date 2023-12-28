@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Threading;
 using Alis.Builder.Core.Ecs.Component.Audio;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
@@ -126,6 +127,14 @@ namespace Alis.Core.Ecs.Component.Audio
         public AudioSourceBuilder Builder() => new AudioSourceBuilder();
 
         /// <summary>
+        /// Ons the init
+        /// </summary>
+        public override void OnInit()
+        {
+            ThreadPool.SetMinThreads(200, 200);
+        }
+
+        /// <summary>
         ///     Starts this instance
         /// </summary>
         public override void OnStart()
@@ -134,6 +143,16 @@ namespace Alis.Core.Ecs.Component.Audio
             {
                 Play();
             }
+        }
+        
+        
+
+        /// <summary>
+        /// Ons the stop
+        /// </summary>
+        public override void OnStop()
+        {
+            Stop();
         }
 
         /// <summary>

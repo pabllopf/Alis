@@ -32,9 +32,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component.Collider;
@@ -183,8 +185,11 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             if (VideoGame.Instance.Settings.Physic.DebugMode)
             {
-                // Sets color to green (0, 255, 0, 255).
-                Sdl.SetRenderDrawColor(Renderer, 0, 255, 0, 255);
+                // Sets color
+                Color color = VideoGame.Instance.Settings.Physic.DebugColor;
+                
+                // render color
+                Sdl.SetRenderDrawColor(Renderer, color.R, color.G, color.B, color.A);
 
                 // Draws rectangles:
                 for (int i = 0; i < ColliderBases.Length; i++)
@@ -528,7 +533,45 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             // Create a destination intPtr dstRect
             dstRectFont1 = new RectangleI(0, 0, textureWidth, textureHeight);
 
+            
+            
+            /*
+            Console.WriteLine(Sdl.Init(Sdl.InitAudio) < 0 ? $@"There was an issue initializing SDL AUDIO. {Sdl.GetError()}" : "SDL2 AUDIO INIT OK");
 
+
+            SdlAudioSpec spec;
+            IntPtr audiobuf;
+            uint audioLen;
+
+            IntPtr audio_loaded = Sdl.LoadWav(
+                AssetManager.Find("main_theme.wav"), 
+                out spec, 
+                out audiobuf, 
+                out audioLen);
+            
+            // open audio device
+
+
+
+            string audioDevice = "";
+            
+            int count = Sdl.GetNumAudioDevices(0);
+            for (int i = 0; i < count; i++)
+            {
+                audioDevice = Sdl.GetAudioDeviceName(0, 0);
+                Console.WriteLine($"Device id={i} name={audioDevice}");
+            }
+            
+            uint device = Sdl.SdlOpenAudioDevice(audioDevice, 0, ref spec, out SdlAudioSpec specOut ,0);
+            
+            int success = Sdl.SdlQueueAudio(device, audiobuf, audioLen);
+            Sdl.SdlPauseAudioDevice(device, 0);
+
+            Sdl.Delay(4000);
+            
+            Sdl.CloseAudioDevice(device);
+            Sdl.FreeWav(audiobuf);*/
+            
             /*
             Sdl.SetHint(Sdl.HintXInputEnabled, "0");
             Sdl.SetHint(Sdl.SdlHintJoystickThread, "1");
@@ -549,6 +592,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                                       $"SDL_JoystickNumButtons={Sdl.JoystickNumButtons(myJoystick)}");
                 }
             }*/
+            
+            Console.WriteLine("End config SDL2");
         }
 
         /// <summary>

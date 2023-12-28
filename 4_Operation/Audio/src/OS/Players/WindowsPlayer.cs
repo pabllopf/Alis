@@ -84,7 +84,7 @@ namespace Alis.Core.Audio.OS.Players
                 AutoReset = false
             };
             _playStopwatch = new Stopwatch();
-            ExecuteMsiCommand("Close All");
+            //ExecuteMsiCommand("Close All");
             ExecuteMsiCommand($"Status {_fileName} Length");
             ExecuteMsiCommand($"Play {_fileName}");
             Paused = false;
