@@ -180,7 +180,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                     (int) (h * sprite.GameObject.Transform.Scale.Y));
 
                 // render the texture to the screen
-                Sdl.RenderCopy(Renderer, sprite.Image.Texture, IntPtr.Zero, ref dstRect);
+                Sdl.RenderCopyEx(Renderer, sprite.Image.Texture, IntPtr.Zero, ref dstRect, sprite.GameObject.Transform.Rotation.angle, IntPtr.Zero, SdlRendererFlip.None);
             }
 
             if (VideoGame.Instance.Settings.Physic.DebugMode)

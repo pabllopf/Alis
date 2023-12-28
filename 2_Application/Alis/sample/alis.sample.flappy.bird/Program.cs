@@ -236,7 +236,7 @@ namespace Alis.Sample.Flappy.Bird
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
                                 .SetTexture(AssetManager.Find("base.png"))
-                                .Depth(1)
+                                .Depth(2)
                                 .Build())
                             .AddComponent(new FloorAnimation())
                             .Build())
@@ -247,7 +247,7 @@ namespace Alis.Sample.Flappy.Bird
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Floor Collision")
                             .Transform(transform => transform
-                                .Position(100, 450)
+                                .Position(100, 475)
                                 .Rotation(0)
                                 .Scale(1.5f, 1.0f)
                                 .Build())
@@ -257,7 +257,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .BodyType(BodyType.Kinematic)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
-                                .Size(290, 100)
+                                .Size(290, 150)
                                 .Rotation(0.0f)
                                 .RelativePosition(0, 0)
                                 .Mass(10.0f)
@@ -317,6 +317,102 @@ namespace Alis.Sample.Flappy.Bird
                                 .Build())
                             .AddComponent(new CounterController())
                             .Build())
+                        
+                        ////////////////////////////////////////
+                        // GAME SCENE: PIPELINE UP
+                        ////////////////////////////////////////
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Pipeline UP")
+                            .Transform(transform => transform
+                                .Position(330, 0.0f)
+                                .Rotation(180)
+                                .Scale(1f, 1.0f)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite
+                                .Builder()
+                                .SetTexture(AssetManager.Find("pipe-green.png"))
+                                .Depth(1)
+                                .Build())
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .BodyType(BodyType.Kinematic)
+                                .IsTrigger(true)
+                                .AutoTilling(true)
+                                .Rotation(180)
+                                .RelativePosition(0, 0)
+                                .Mass(10.0f)
+                                .Restitution(0f)
+                                .Friction(0f)
+                                .Density(0.5f)
+                                .FixedRotation(true)
+                                .GravityScale(0f)
+                                .Build())
+                            .AddComponent(new PipelineController())
+                            .Build())
+                        
+                        ////////////////////////////////////////
+                        // GAME SCENE: PIPELINE MIDDLE
+                        ////////////////////////////////////////
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Pipeline Middle")
+                            .Transform(transform => transform
+                                .Position(330, 225)
+                                .Rotation(0)
+                                .Scale(1f, 1.0f)
+                                .Build())
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .BodyType(BodyType.Kinematic)
+                                .IsTrigger(true)
+                                .AutoTilling(false)
+                                .Size(50, 100)
+                                .Rotation(0.0f)
+                                .RelativePosition(0, 0)
+                                .Mass(10.0f)
+                                .Restitution(0f)
+                                .Friction(0f)
+                                .Density(0.5f)
+                                .FixedRotation(true)
+                                .GravityScale(0f)
+                                .Build())
+                            .AddComponent(new PipelineController())
+                            .Build())
+                        
+                        ////////////////////////////////////////
+                        // GAME SCENE: PIPELINE DOWN
+                        ////////////////////////////////////////
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Pipeline Down")
+                            .Transform(transform => transform
+                                .Position(330, 450)
+                                .Rotation(0)
+                                .Scale(1f, 1.0f)
+                                .Build())
+                            .AddComponent<Sprite>(sprite => sprite
+                                .Builder()
+                                .SetTexture(AssetManager.Find("pipe-green.png"))
+                                .Depth(1)
+                                .Build())
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .BodyType(BodyType.Kinematic)
+                                .IsTrigger(true)
+                                .AutoTilling(true)
+                                .Rotation(0.0f)
+                                .RelativePosition(0, 0)
+                                .Mass(10.0f)
+                                .Restitution(0f)
+                                .Friction(0f)
+                                .Density(0.5f)
+                                .FixedRotation(true)
+                                .GravityScale(0f)
+                                .Build())
+                            .AddComponent(new PipelineController())
+                            .Build())
+                        
 
                         ////////////////////////////////////////
                         // GAME SCENE: BIRD
