@@ -196,7 +196,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .Builder()
                                 .PlayOnAwake(true)
                                 .SetAudioClip(audioClip => audioClip
-                                    .FilePath(AssetManager.Find("main_theme.mp3"))
+                                    .FilePath(AssetManager.Find("main_theme.wav"))
                                     .Build())
                                 .Build())
                             .Build())
