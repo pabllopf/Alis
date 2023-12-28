@@ -231,7 +231,7 @@ namespace Alis.Core.Physic.Utilities
             // [qs  qc]   [rs  rc]   [qs*rc+qc*rs -qs*rs+qc*rc]
             // s = qs * rc + qc * rs
             // c = qc * rc - qs * rs
-            Rotation qr;
+            Rotation qr = new Rotation(0);
             qr.Sine = q.Sine * r.Cosine + q.Cosine * r.Sine;
             qr.Cosine = q.Cosine * r.Cosine - q.Sine * r.Sine;
             return qr;
@@ -260,7 +260,7 @@ namespace Alis.Core.Physic.Utilities
             // [-qs qc]   [rs  rc]   [-qs*rc+qc*rs qs*rs+qc*rc]
             // s = qc * rs - qs * rc
             // c = qc * rc + qs * rs
-            Rotation qr;
+            Rotation qr = new Rotation(0);
             qr.Sine = q.Cosine * r.Sine - q.Sine * r.Cosine;
             qr.Cosine = q.Cosine * r.Cosine + q.Sine * r.Sine;
             return qr;
