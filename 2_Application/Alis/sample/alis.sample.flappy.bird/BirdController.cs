@@ -52,6 +52,8 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         private BoxCollider boxCollider;
 
+        public bool IsDead { get; set; } = false;
+
         /// <summary>
         ///     Ons the init
         /// </summary>
