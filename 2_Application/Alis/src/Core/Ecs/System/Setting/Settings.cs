@@ -53,71 +53,71 @@ namespace Alis.Core.Ecs.System.Setting
         /// <summary>
         ///     Gets or sets the value of the general
         /// </summary>
-        public GeneralSetting General { get; set; }
+        public GeneralSetting General { get; set; } = new GeneralSetting();
 
         /// <summary>
         ///     Gets or sets the value of the ads
         /// </summary>
-        public AdsSetting Ads { get; set; }
+        public AdsSetting Ads { get; set; } = new AdsSetting();
 
         /// <summary>
         ///     Gets or sets the value of the ai
         /// </summary>
-        public AiSetting Ai { get; set; }
+        public AiSetting Ai { get; set; } = new AiSetting();
 
         /// <summary>
         ///     Gets or sets the value of the audio
         /// </summary>
-        public AudioSetting Audio { get; set; }
+        public AudioSetting Audio { get; set; } = new AudioSetting();
 
         /// <summary>
         ///     Gets or sets the value of the cloud
         /// </summary>
-        public CloudSetting Cloud { get; set; }
+        public CloudSetting Cloud { get; set; } = new CloudSetting();
 
         /// <summary>
         ///     Gets or sets the value of the graphic
         /// </summary>
-        public GraphicSetting Graphic { get; set; }
+        public GraphicSetting Graphic { get; set; } = new GraphicSetting();
 
         /// <summary>
         ///     Gets or sets the value of the input
         /// </summary>
-        public InputSetting Input { get; set; }
+        public InputSetting Input { get; set; } = new InputSetting();
 
         /// <summary>
         ///     Gets or sets the value of the network
         /// </summary>
-        public NetworkSetting Network { get; set; }
+        public NetworkSetting Network { get; set; } = new NetworkSetting();
 
         /// <summary>
         ///     Gets or sets the value of the physic
         /// </summary>
-        public PhysicSetting Physic { get; set; }
+        public PhysicSetting Physic { get; set; } = new PhysicSetting();
 
         /// <summary>
         ///     Gets or sets the value of the plugin
         /// </summary>
-        public PluginSetting Plugin { get; set; }
+        public PluginSetting Plugin { get; set; } = new PluginSetting();
 
         /// <summary>
         ///     Gets or sets the value of the profile
         /// </summary>
-        public ProfileSetting Profile { get; set; }
+        public ProfileSetting Profile { get; set; } = new ProfileSetting();
 
         /// <summary>
         ///     Gets or sets the value of the scene
         /// </summary>
-        public SceneSetting Scene { get; set; }
+        public SceneSetting Scene { get; set; } = new SceneSetting();
 
         /// <summary>
         ///     Gets or sets the value of the script
         /// </summary>
-        public ScriptSetting Script { get; set; }
+        public ScriptSetting Script { get; set; } = new ScriptSetting();
 
         /// <summary>
         ///     Gets or sets the value of the store
         /// </summary>
-        public StoreSetting Store { get; set; }
+        public StoreSetting Store { get; set; } = new StoreSetting();
     }
 }

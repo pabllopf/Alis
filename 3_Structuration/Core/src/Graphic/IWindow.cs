@@ -45,7 +45,7 @@ namespace Alis.Core.Graphic
         /// <summary>
         ///     Gets or sets the value of the resolution
         /// </summary>
-        public Vector2 Resolution { get; set; }
+        public Vector2 Resolution { get; set; }  
 
         /// <summary>
         ///     Gets or sets the value of the is window resizable

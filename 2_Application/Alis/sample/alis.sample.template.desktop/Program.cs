@@ -1,14 +1,14 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: GraphicSetting.cs
+//  File:Program.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web: https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,29 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Ecs.System.Setting.Graphic;
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Graphic;
-
-namespace Alis.Core.Ecs.System.Setting.Graphic
+namespace Alis.Sample.Template.Desktop
 {
     /// <summary>
-    ///     The graphic setting class
+    ///     The program class
     /// </summary>
-    /// <seealso cref="IGraphicSetting" />
-    /// <seealso cref="IBuilder{GraphicSettingBuilder}" />
-    public class GraphicSetting : IGraphicSetting,
-        IBuilder<GraphicSettingBuilder>
+    public static class Program
     {
+        
         /// <summary>
-        ///     Builders this instance
+        ///     Main the args
         /// </summary>
-        /// <returns>The graphic setting builder</returns>
-        public GraphicSettingBuilder Builder() => new GraphicSettingBuilder();
-
-        /// <summary>
-        ///     Gets or sets the value of the window
-        /// </summary>
-        public IWindow Window { get; set; } = new Window();
+        /// <param name="args">The args</param>
+        public static void Main(string[] args) => VideoGame.Builder().Run();
     }
 }

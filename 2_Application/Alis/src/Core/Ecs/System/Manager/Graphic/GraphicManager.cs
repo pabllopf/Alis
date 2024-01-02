@@ -73,22 +73,12 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         ///     The default size
         /// </summary>
         private Vector2 defaultSize;
-
-        /// <summary>
-        ///     The dst rect font
-        /// </summary>
-        private RectangleI dstRectFont1;
-
+        
         /// <summary>
         ///     The renderWindow
         /// </summary>
         public IntPtr Renderer;
-
-        /// <summary>
-        ///     The texture font
-        /// </summary>
-        private IntPtr textureFont1;
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
         /// </summary>
@@ -201,7 +191,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 }
 
                 // Render the font to the screen
-                Sdl.RenderCopy(Renderer, textureFont1, IntPtr.Zero, ref dstRectFont1);
+                //Sdl.RenderCopy(Renderer, textureFont1, IntPtr.Zero, ref dstRectFont1);
 
                 Sdl.RenderDrawRectsF(Renderer, rectangles, rectangles.Length);
             }
@@ -476,6 +466,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             // GET VERSION SDL_TTF
             Console.WriteLine($"SDL_TTF Version: {SdlTtf.SdlTtfVersion().major}.{SdlTtf.SdlTtfVersion().minor}.{SdlTtf.SdlTtfVersion().patch}");
 
+            /*
+            
             int outlineSize = 1;
 
             // Load the font
@@ -533,7 +525,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             // Create a destination intPtr dstRect
             dstRectFont1 = new RectangleI(0, 0, textureWidth, textureHeight);
 
-            
+            */
             
             /*
             Console.WriteLine(Sdl.Init(Sdl.InitAudio) < 0 ? $@"There was an issue initializing SDL AUDIO. {Sdl.GetError()}" : "SDL2 AUDIO INIT OK");
