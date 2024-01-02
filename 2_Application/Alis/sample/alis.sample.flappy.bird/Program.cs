@@ -296,6 +296,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
                                 .Build())
+                            .AddComponent(new DeathZone())
                             .Build())
 
                         ////////////////////////////////////////
@@ -308,14 +309,6 @@ namespace Alis.Sample.Flappy.Bird
                                 .Rotation(0)
                                 .Scale(1f, 1.0f)
                                 .Build())
-                            .AddComponent<AudioSource>(audioSource => audioSource
-                                .Builder()
-                                .PlayOnAwake(false)
-                                .SetAudioClip(audioClip => audioClip
-                                    .FilePath(AssetManager.Find("point.wav"))
-                                    .Build())
-                                .Build())
-                            .AddComponent(new CounterController())
                             .Build())
                         
                         ////////////////////////////////////////
@@ -349,6 +342,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .GravityScale(0f)
                                 .Build())
                             .AddComponent(new PipelineController())
+                            .AddComponent(new DeathZone())
                             .Build())
                         
                         ////////////////////////////////////////
@@ -377,7 +371,15 @@ namespace Alis.Sample.Flappy.Bird
                                 .FixedRotation(true)
                                 .GravityScale(0f)
                                 .Build())
+                            .AddComponent<AudioSource>(audioSource => audioSource
+                                .Builder()
+                                .PlayOnAwake(false)
+                                .SetAudioClip(audioClip => audioClip
+                                    .FilePath(AssetManager.Find("point.wav"))
+                                    .Build())
+                                .Build())
                             .AddComponent(new PipelineController())
+                            .AddComponent(new CounterController())
                             .Build())
                         
                         ////////////////////////////////////////
@@ -411,6 +413,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .GravityScale(0f)
                                 .Build())
                             .AddComponent(new PipelineController())
+                            .AddComponent(new DeathZone())
                             .Build())
                         
 
@@ -419,6 +422,7 @@ namespace Alis.Sample.Flappy.Bird
                         ////////////////////////////////////////
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Bird")
+                            .WithTag("Player")
                             .Transform(transform => transform
                                 .Position(72, 270.0f)
                                 .Rotation(0)

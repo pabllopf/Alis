@@ -189,7 +189,11 @@ namespace Alis.Core.Audio
                 switch (AudioBackendType)
                 {
                     case AudioBackendType.Os:
-                        Task.Run(() => player.Stop().Wait());
+                        if (player.Playing)
+                        {
+                            Task.Run(() => player.Stop());
+                        }
+                        
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

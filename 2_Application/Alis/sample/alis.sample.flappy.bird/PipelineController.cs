@@ -71,6 +71,9 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         private static float velocity = 10;
 
+        /// <summary>
+        /// The factor velocity
+        /// </summary>
         private float factorVelocity = 1.1f;
 
         /// <summary>

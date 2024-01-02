@@ -31,6 +31,7 @@ using System;
 using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Audio;
+using Alis.Core.Ecs.Entity.GameObject;
 
 namespace Alis.Sample.Flappy.Bird
 {
@@ -45,6 +46,8 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         public int Counter { get; set; }
 
+        private bool isEnter = false;
+        
         /// <summary>
         /// The audio source
         /// </summary>
@@ -80,17 +83,22 @@ namespace Alis.Sample.Flappy.Bird
            audioSource = GameObject.Get<AudioSource>();
         }
 
-        /// <summary>
-        ///     Ons the press key using the specified key
-        /// </summary>
-        /// <param name="key">The key</param>
-        public override void OnPressKey(SdlKeycode key)
+        public override void OnCollisionEnter(IGameObject gameObject)
         {
-            if (key == SdlKeycode.SdlkUp)
+            if (gameObject.Tag == "Player" && !isEnter)
             {
                 Increment();
                 audioSource.Play();
                 Console.WriteLine("Value: " + Counter);
+                isEnter = true;
+            }
+        }
+
+        public override void OnCollisionExit(IGameObject gameObject)
+        {
+            if (gameObject.Tag == "Player" && isEnter)
+            {
+                isEnter = false;
             }
         }
     }
