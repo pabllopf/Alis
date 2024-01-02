@@ -78,6 +78,7 @@ namespace Alis
             Instance = this;
         }
 
+        
         /// <summary>
         ///     Gets or sets the value of the instance
         /// </summary>
