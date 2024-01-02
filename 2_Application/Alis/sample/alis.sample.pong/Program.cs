@@ -74,6 +74,7 @@ namespace Alis.Sample.Pong
                     .Physic(physic => physic
                         .Gravity(0.0f, -9.8f)
                         .Debug(true)
+                        .DebugColor(Color.Red)
                         .Build())
                     .Build())
                 .World(sceneManager => sceneManager
