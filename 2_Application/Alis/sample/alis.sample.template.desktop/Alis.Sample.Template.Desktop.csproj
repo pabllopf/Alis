@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
+    </PropertyGroup>
+
+    <Import Project="$(SolutionDir).config/Config.props"/>
+
+    <PropertyGroup>
+        <TargetFramework>$(TargetFramework2)</TargetFramework>
+    </PropertyGroup>
+</Project>
