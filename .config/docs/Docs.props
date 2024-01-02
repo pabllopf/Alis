@@ -6,5 +6,6 @@
         $(AssemblyName.Contains('Template')) == false">
 
         <None Include="$(SolutionDir)licence.md" LinkBase="." Pack="true" Visible="false" PackagePath="." CopyToOutputDirectory="Always"/>
+        <None Include="$(SolutionDir)docs/logo/logo.png" LinkBase="." Pack="true" Visible="false" PackagePath="." CopyToOutputDirectory="Always"/>
     </ItemGroup>
 </Project>

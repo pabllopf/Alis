@@ -1,5 +1,5 @@
 <Project>
     <PropertyGroup>
-        <PackageIcon>Docs/logo.png</PackageIcon>
+        <PackageIcon>logo.png</PackageIcon>
     </PropertyGroup>
 </Project>

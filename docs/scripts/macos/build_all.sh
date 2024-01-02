@@ -25,7 +25,10 @@ select yn in "Yes" "No"; do
     find ./ -name "*.mdb" -exec rm -f {} \; 
     find ./ -name "*.xml" -exec rm -f {} \; 
     
-    # shellcheck disable=SC2044
+    dotnet test alis.sln --configuration Debug;
+    
+    dotnet test alis.sln --configuration Release;
+    
     for i in `find . -name "*.csproj" -type f`; 
       do if [[ $i != *".Template."* && $i != *".App."* && $i != *".Test."* && $i != *".Benchmark."* && $i != *".Sample."* ]] ; 
       then 
@@ -65,6 +68,16 @@ select yn in "Yes" "No"; do
               echo "Skip project $i";
               dotnet restore $i;
         fi;done
+        
+        
+    for i in `find . -name "*.csproj" -type f`; 
+      do if [[ $i == *".Template."* || $i == *".App."* || $i == *".Test."* || $i == *".Benchmark."* || $i == *".Sample."* ]] ; 
+      then 
+        echo "Skip project $i"; 
+      else 
+        dotnet pack -c Release $i -o ./.publish/test/ ; 
+      fi;done
+    
     
     
     cd ./docs/scripts/macos/ || exit 
