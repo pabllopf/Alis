@@ -6,6 +6,118 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.2.4] - 2024-01-02
+### :sparkles: New Features
+- [`ef57c8f`](https://github.com/pabllopf/Alis/commit/ef57c8fd0646d73f348d2f58cabf6a9dd3d14c39) - new method on managers to "calculate" things *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5684521`](https://github.com/pabllopf/Alis/commit/568452133d13b440b1c5d1ce0c49f7661da1674d) - add class diagrams for modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c72d5bc`](https://github.com/pabllopf/Alis/commit/c72d5bcafd1fba7cbd2ffe7a49189b6d52f29dff) - add new clock, time manager and default configuration of Time module. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`866e9dd`](https://github.com/pabllopf/Alis/commit/866e9dd14a212c714fc6178a48116e9f36a2556b) - add new word "add" to language *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`11b52af`](https://github.com/pabllopf/Alis/commit/11b52afbdbfa1d9fc9b2915b09e1b5448c1e8c18) - add new word "Ai" to language *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bac65a2`](https://github.com/pabllopf/Alis/commit/bac65a2573e132270c2b35effb54615985c9e465) - add new word "Cloud" to language *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9c1a51d`](https://github.com/pabllopf/Alis/commit/9c1a51d9971be9317f7f3322b542cea1643d1a8e) - add new word "Input" to language *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`35266dc`](https://github.com/pabllopf/Alis/commit/35266dca8f84a3761ce1e2451f8480c921c1a012) - add new word "License" to language *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aa17756`](https://github.com/pabllopf/Alis/commit/aa1775637d78847ff28910e751dd5bdcd3181784) - add new word "Network" to language *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3e18598`](https://github.com/pabllopf/Alis/commit/3e185981fb61b9f86b9785c11f53c73ff164cbb1) - add new word "Profile" to language *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dd6788e`](https://github.com/pabllopf/Alis/commit/dd6788ef9f9c0598e598deeb496b8bc3e36bc8fc) - add new word "Plugin" to language *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`aec557e`](https://github.com/pabllopf/Alis/commit/aec557e7423ad8f2c40bae241330877a88ecd7ef) - add new word "Scene" to language *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`43934ca`](https://github.com/pabllopf/Alis/commit/43934cafea7f87024de58eb1982886d2f308ce80) - add new word "Script" to language *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3b7943e`](https://github.com/pabllopf/Alis/commit/3b7943eb76efc143c5aa711619d95087a518500a) - add new word "Store" to language *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0637768`](https://github.com/pabllopf/Alis/commit/0637768639be956e6c162192ab951932d197e1ad) - add new word "Version" to language *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bda8e2d`](https://github.com/pabllopf/Alis/commit/bda8e2de92a9ecfd250257b82b998469f1686d67) - add new word "World" to language *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c37d128`](https://github.com/pabllopf/Alis/commit/c37d1285673023c598fdbfe101c9a443fa014758) - add new core integration with the new module "Ecs" *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ed76833`](https://github.com/pabllopf/Alis/commit/ed768336461d6c1d4eca740da475f0db345881d7) - version 1.0 of Translation module with simple sample. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f3ef811`](https://github.com/pabllopf/Alis/commit/f3ef81141473cf97185e53a0493e617d1cef83c0) - define the global.json *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`91cc935`](https://github.com/pabllopf/Alis/commit/91cc9358852d1dfed59ac2043b360b3d43c83c21) - define default test to all modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2198102`](https://github.com/pabllopf/Alis/commit/2198102bbf8bf437020172110cd54718231c564f) - include the basic logic on the physic manager. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`98a717e`](https://github.com/pabllopf/Alis/commit/98a717ed91e332f9985a557e4e441f75b56f5506) - add new sample game flappy bird, create new custom render textures and create new loader of assets *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2a30f1d`](https://github.com/pabllopf/Alis/commit/2a30f1d556b6cf90cb67f06bea6943f911d32bf3) - add the soundtrack to the new sample game flappy bird. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1c8f945`](https://github.com/pabllopf/Alis/commit/1c8f9457ba092b141fb5dba4cbf7a5208536601f) - add the floor animation to game sample flaply bird *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bae725b`](https://github.com/pabllopf/Alis/commit/bae725bf691bf617a8f723c6d86450721add5ae2) - add the main menu test, the counter and the bird textures. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`790c308`](https://github.com/pabllopf/Alis/commit/790c308d9698b2fe4a0bec6d4feeb6340f56c803) - add animation to the bird *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`be796cd`](https://github.com/pabllopf/Alis/commit/be796cdfcec208e61327ea32d77bacf3ff296926) - implement the basic change of scenes. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b5884f7`](https://github.com/pabllopf/Alis/commit/b5884f7b35eb746fb31978b058612c87b073c953) - add new sound when fly the bird. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1198075`](https://github.com/pabllopf/Alis/commit/1198075c19bed941f4c103cfbd155491b8b71c96) - add new icon and controller to pong game *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8e6cec5`](https://github.com/pabllopf/Alis/commit/8e6cec5d2868ce6f063f59352f2e7705522833ac) - implement simple counter on flappy bird *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`edeb99a`](https://github.com/pabllopf/Alis/commit/edeb99ae962ee7d3f7b0014e63030135e1ed27e8) - add new simple font render and create new collisions and refactor code of flappy bird sample *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c80bda9`](https://github.com/pabllopf/Alis/commit/c80bda9922331e3c32aafeab87efd7aef4a3c5c4) - add the collision and trigger methods to component base object *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`29500c0`](https://github.com/pabllopf/Alis/commit/29500c0ce4d84f699272df169028011eb0783de6) - delete sprites of flappy bird *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`074a6aa`](https://github.com/pabllopf/Alis/commit/074a6aa91317876e31ceff288eba037b8fbc4cce) - move licence file of alis to output dir when compile a game. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`99dcb95`](https://github.com/pabllopf/Alis/commit/99dcb95f1dc569fe44f04b3fb4acf3a4a5640ce0) - add new pipeline controller to flappy bird *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`013e25f`](https://github.com/pabllopf/Alis/commit/013e25fce9613a9ae55f670f0cbfa6d8f13acd79) - add new collision detection methods to component of alis. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`eebac11`](https://github.com/pabllopf/Alis/commit/eebac11fc2b0299171dcaae860be8a4fe782452e) - add new default black windows sample game *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9cfc570`](https://github.com/pabllopf/Alis/commit/9cfc570c89302605bb5fc32972f8a8fcff6268a2) - update the build script to test compilation *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`d507c99`](https://github.com/pabllopf/Alis/commit/d507c9947a157592aa33508e19047329b0ab3bd7) - deltatime of collisions and windows *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fdeb840`](https://github.com/pabllopf/Alis/commit/fdeb8404c31a2468d0fa0fc09fcb8f747c4f9f71) - windows loop with automatic backend *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b880928`](https://github.com/pabllopf/Alis/commit/b8809283f79aeaed7ed8870c98710f32d40e96ce) - delete the opengl backend of linux and set automatic detection. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`48523e4`](https://github.com/pabllopf/Alis/commit/48523e49d5482b386e1f5107998e2be8bbc08905) - don't include on compilation the *.md and *.cd files. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`95df01d`](https://github.com/pabllopf/Alis/commit/95df01d7834341b39946c46cbd6c3b178456797f) - implement the Input and Graphic managers and optimice with new builder. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7533e9e`](https://github.com/pabllopf/Alis/commit/7533e9e9fe609732235733a6ea80fa4f06d07e76) - the transform position of component *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1748b9a`](https://github.com/pabllopf/Alis/commit/1748b9ad9bbeb84638d8deebe4527fb1fedd25e1) - include the engine to the sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dec3c60`](https://github.com/pabllopf/Alis/commit/dec3c60327e14fa39c22245653ff4e1852ad9f01) - delete  <PublishAot>true</PublishAot>  config on debug mode *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`545ad32`](https://github.com/pabllopf/Alis/commit/545ad32271714356f7bb0838a6e05b4778ce33b9) - the Assert.Equal("<7, 8>", result); test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`df5ce1e`](https://github.com/pabllopf/Alis/commit/df5ce1e101e27ea17abd267e4e907485c45557a4) - delete public readonly override string ToString() => ToString("G", CultureInfo.CurrentCulture); *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2859247`](https://github.com/pabllopf/Alis/commit/2859247e9d841a598bd9aede915f9cc73161472b) - the target trim *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e948a7c`](https://github.com/pabllopf/Alis/commit/e948a7c3539290dc5e181f3aad0d9a45d7a98caf) - auto trim detection *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ab884b5`](https://github.com/pabllopf/Alis/commit/ab884b544a4b1cacb897869b930d4bb826f1d935) - the space of videogame *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1b10c02`](https://github.com/pabllopf/Alis/commit/1b10c027e20648361a1ad7633499fad3b928fb1f) - the Path combine *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fa15fb2`](https://github.com/pabllopf/Alis/commit/fa15fb255b8d955eebe01ee3f6e3433cdfe4361f) - 3 bugs of Dispose when it is no longer needed. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e8147d7`](https://github.com/pabllopf/Alis/commit/e8147d7170e14fba04f738f98a04c855ec6890fd) - trim error *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d14aec9`](https://github.com/pabllopf/Alis/commit/d14aec91ee4338572949e16b4c05e4c9f805fcac) - trim error checker *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1359743`](https://github.com/pabllopf/Alis/commit/13597431f381e81771cd5e2af3ae729a789758e6) - workflow *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6a4b161`](https://github.com/pabllopf/Alis/commit/6a4b161b8ba3b9a2bdf2c78d3d5957240839229f) - the Box2d body 'vibrates' when it is in contact. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a8d83e8`](https://github.com/pabllopf/Alis/commit/a8d83e87f064090590dad6bdcbc29021376cd1ff) - trim error *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2556506`](https://github.com/pabllopf/Alis/commit/2556506054540b203acc94b364a62bb82a72342e) - soundtrack when start the game of flappy bird *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`9d1a15e`](https://github.com/pabllopf/Alis/commit/9d1a15ea183cf88f64a36717478b3fbe4a3d758c) - the name file on editor template for rider *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`526a1e7`](https://github.com/pabllopf/Alis/commit/526a1e7eefe164c0974369fb04d9655595f455d3) - the comments on windows 10 and optimice input controller. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`de27816`](https://github.com/pabllopf/Alis/commit/de278165c1e5b247348a4291508a81f4a309be15) - audio crash when try to play a lot of sound at the same time. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`95efc74`](https://github.com/pabllopf/Alis/commit/95efc741b8d7c09d7fb4f3cca8db8268f311e91b) - main theme of the sample *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a5fee4a`](https://github.com/pabllopf/Alis/commit/a5fee4a4b6e10b7f6c83b26fa3d2733d545071c7) - set red color to default mode of pong game *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b17599b`](https://github.com/pabllopf/Alis/commit/b17599b35ba5051ee720e168a6532be63d853bec) - name of default build for desktops *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`aa4f762`](https://github.com/pabllopf/Alis/commit/aa4f7626bc1a58655bebceeb31dc1d139caa5eff) - add new GameTests to Alis.Core and Alis.Core.Ecs modules. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`0551bc9`](https://github.com/pabllopf/Alis/commit/0551bc92d7206a324c6834bc2d58e28fc1d70e05) - simple test to check uncover test *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6626745`](https://github.com/pabllopf/Alis/commit/662674555b47fafc7dba73ae434b1f8d8b5bd6b4) - covert 100% of test the logger module. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4a770fc`](https://github.com/pabllopf/Alis/commit/4a770fc6c4623da1e7b105bf209ebfcb222e53bc) - cover the 100% of tests on the namespace Alis.Core.Aspect.Time *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e64a902`](https://github.com/pabllopf/Alis/commit/e64a902095faf4dfc39090c271d0493631403c01) - add simple tests to memory module. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e32a349`](https://github.com/pabllopf/Alis/commit/e32a349087baa18605311c71bd91384d387ed590) - cover 100% of namespace Alis.Core.Aspect.Translation *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5a59cdb`](https://github.com/pabllopf/Alis/commit/5a59cdb70ee9004722a72b526055711ce4463381) - cover 100% with test the namespace Alis.Core.Aspect.Data *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b54d1e6`](https://github.com/pabllopf/Alis/commit/b54d1e6c774037d6049f17462f2288bfd091c596) - cover 100% of vector2 class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a2ced08`](https://github.com/pabllopf/Alis/commit/a2ced08df2d982e92346adccd546cb17741c988f) - fix the asset manager tests. *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :construction_worker: Build System
+- [`d8f6fa4`](https://github.com/pabllopf/Alis/commit/d8f6fa4831b436da8f83fc2ede6740c5beeaf242) - **deps**: bump actions/setup-java from 3 to 4 *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+- [`1dc0518`](https://github.com/pabllopf/Alis/commit/1dc0518e3280598e45711c6d63a786dde7915390) - **deps**: bump actions/stale from 8 to 9 *(commit by [@dependabot[bot]](https://github.com/apps/dependabot))*
+
+### :memo: Documentation Changes
+- [`0ba5632`](https://github.com/pabllopf/Alis/commit/0ba5632584ddcd81f627a10489ab062a52709902) - change Visible to false on docs folder *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bde1c8c`](https://github.com/pabllopf/Alis/commit/bde1c8c5207cca284299ea75dd83a886ba3c0e91) - add new ESC.md file to document the module. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a1bd2e4`](https://github.com/pabllopf/Alis/commit/a1bd2e4759bcf706c76f67abe434d77539344f37) - define and write the objetives to develop the Alis.Core.Script module. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e4204d6`](https://github.com/pabllopf/Alis/commit/e4204d6cf25e06a178b3a56126f2e453540f7ab8) - define and write the Alis.Core.Store module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a895f16`](https://github.com/pabllopf/Alis/commit/a895f16f601b9e0169ab3920c247fb9567491cca) - add new alis.md file and alis.cd diagram class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6d6d0cf`](https://github.com/pabllopf/Alis/commit/6d6d0cf4ce80922e383b3862a698067c764d7e4d) - copy by default a simple .md with licence *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :art: Code Style Changes
+- [`2c8c6bb`](https://github.com/pabllopf/Alis/commit/2c8c6bb5cf55119bbfa883ce3aeb3c7e28e16bc3) - set default value to logger details: LogLevel = Info and DetailLevel = Full *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`39acf7c`](https://github.com/pabllopf/Alis/commit/39acf7c6818e5ac846f492ec05249346179060f3) - change struct to class transform entity. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`66e525f`](https://github.com/pabllopf/Alis/commit/66e525f5f5b09ba7ed6a613ec12fd4a6540d88c8) - change namespace of math aspect to adjust to the new directories. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`06d2877`](https://github.com/pabllopf/Alis/commit/06d2877bee712d57073b26829ef0d29bc467df88) - delete empty static constructor of AssetManager *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c79c576`](https://github.com/pabllopf/Alis/commit/c79c5762d6d9ccd4eccbb1a4f0fb91e2a8ab802b) - adjust the sample to the new core. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`abaaab3`](https://github.com/pabllopf/Alis/commit/abaaab32df47d23293942d9bef76bfb362601121) - delete all dependencies with SFML and change  File:Utf8Manager.cs to namespace Alis.Core.Graphic.SDL *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bb83205`](https://github.com/pabllopf/Alis/commit/bb83205bce555333bc268885752f46ef05e987c2) - move class and exceptions to the namespace Alis.Core.Physic.Exceptions and delete some old class *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4a79ff5`](https://github.com/pabllopf/Alis/commit/4a79ff54155ffe93a2c6f628a81e52781190b21c) - include new filter for covert test ant measure the correct % of test. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`10149c2`](https://github.com/pabllopf/Alis/commit/10149c2cf3016148f342226ca505b8fd12ba29a7) - delete public readonly string ToString(string format) => ToString(format, CultureInfo.CurrentCulture); *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5b50275`](https://github.com/pabllopf/Alis/commit/5b5027533e9ad3675c1e71f0bb50ad8b98298931) - add comment on component floor animation. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`ccbe69c`](https://github.com/pabllopf/Alis/commit/ccbe69c088d9a8f5b2574cb60a670569166143f2) - add new comment *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d70560f`](https://github.com/pabllopf/Alis/commit/d70560f236174ef167e84262a4f072f38b6026ee) - delete all unnecessary sound files of flappy bird sample *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :flying_saucer: Other Changes
+- [`8144178`](https://github.com/pabllopf/Alis/commit/8144178fbb24fc8722cd9eca78fb47bfdbd6e268) - delete unnecessary usings of sample. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`20a2294`](https://github.com/pabllopf/Alis/commit/20a2294c8654cbb6a4514c5b7c41066de8b2bf45) - disable engine project to check repo settings *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.2.3] - 2023-10-11
 ### :art: Code Style Changes
 - [`0fbb988`](https://github.com/pabllopf/Alis/commit/0fbb9885f81a300c4002a5bfad51c83123b268b4) - update the Physic sample *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -1374,3 +1486,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.2.1]: https://github.com/pabllopf/Alis/compare/v0.2.0...v0.2.1
 [v0.2.2]: https://github.com/pabllopf/Alis/compare/v0.2.1...v0.2.2
 [v0.2.3]: https://github.com/pabllopf/Alis/compare/v0.2.2...v0.2.3
+[v0.2.4]: https://github.com/pabllopf/Alis/compare/v0.2.3...v0.2.4
