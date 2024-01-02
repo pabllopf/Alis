@@ -101,11 +101,17 @@ jobs:
       - name: Publish nugets TO github
         run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg --source "https://nuget.pkg.github.com/pabllopf/index.json" -k ${{secrets.GITHUB_TOKEN}} --skip-duplicate
 
-      - name: git config user.name github-actions
-        run: git config user.name "${{ secrets.USER_NAME }}"
+      - name: git config --global user.name github-actions
+        run: git config --global user.name "${{ secrets.USER_NAME }}"
 
-      - name: git config user.email github-actions@github.com
-        run: git config user.email "${{ secrets.USER_EMAIL }}"
+      - name: git config --global user.email github-actions@github.com
+        run: git config --global user.email "${{ secrets.USER_EMAIL }}"
+
+      - name: git config user.name
+        run: git config user.name
+
+      - name: git config user.email
+        run: git config user.email
 
       - name: Find common ancestor
         run: git merge-base --fork-point origin/master
@@ -124,19 +130,19 @@ jobs:
         run: git tag -s "v${{ env.VERSIONFINAL }}" -m "v${{ env.VERSIONFINAL }}"
         env:
           GITHUB_TOKEN: ${{ secrets.OSLASH_BOT_GITHUB_TOKEN }}
-          GIT_AUTHOR_NAME: ${{ steps.import-gpg.outputs.name }}
-          GIT_AUTHOR_EMAIL: ${{ steps.import-gpg.outputs.email }}
-          GIT_COMMITTER_NAME: ${{ steps.import-gpg.outputs.name }}
-          GIT_COMMITTER_EMAIL: ${{ steps.import-gpg.outputs.email }}
+          GIT_AUTHOR_NAME: ${{ secrets.USER_NAME }}
+          GIT_AUTHOR_EMAIL: ${{ secrets.USER_EMAIL }}
+          GIT_COMMITTER_NAME: ${{ secrets.USER_NAME }}
+          GIT_COMMITTER_EMAIL: ${{ secrets.USER_EMAIL }}
 
       - name: git push --tags
         run: git push --tags
         env:
           GITHUB_TOKEN: ${{ secrets.OSLASH_BOT_GITHUB_TOKEN }}
-          GIT_AUTHOR_NAME: ${{ steps.import-gpg.outputs.name }}
-          GIT_AUTHOR_EMAIL: ${{ steps.import-gpg.outputs.email }}
-          GIT_COMMITTER_NAME: ${{ steps.import-gpg.outputs.name }}
-          GIT_COMMITTER_EMAIL: ${{ steps.import-gpg.outputs.email }}
+          GIT_AUTHOR_NAME: ${{ secrets.USER_NAME }}
+          GIT_AUTHOR_EMAIL: ${{ secrets.USER_EMAIL }}
+          GIT_COMMITTER_NAME: ${{ secrets.USER_NAME }}
+          GIT_COMMITTER_EMAIL: ${{ secrets.USER_EMAIL }}
 
       - name: Update CHANGELOG
         id: changelog
@@ -176,16 +182,16 @@ jobs:
         run: git commit -S -m "Create the packages of version '$VERSIONFINAL'."
         env:
           GITHUB_TOKEN: ${{ secrets.OSLASH_BOT_GITHUB_TOKEN }}
-          GIT_AUTHOR_NAME: ${{ steps.import-gpg.outputs.name }}
-          GIT_AUTHOR_EMAIL: ${{ steps.import-gpg.outputs.email }}
-          GIT_COMMITTER_NAME: ${{ steps.import-gpg.outputs.name }}
-          GIT_COMMITTER_EMAIL: ${{ steps.import-gpg.outputs.email }}
+          GIT_AUTHOR_NAME: ${{ secrets.USER_NAME }}
+          GIT_AUTHOR_EMAIL: ${{ secrets.USER_EMAIL }}
+          GIT_COMMITTER_NAME: ${{ secrets.USER_NAME }}
+          GIT_COMMITTER_EMAIL: ${{ secrets.USER_EMAIL }}
 
       - name: git push
         run: git push
         env:
           GITHUB_TOKEN: ${{ secrets.OSLASH_BOT_GITHUB_TOKEN }}
-          GIT_AUTHOR_NAME: ${{ steps.import-gpg.outputs.name }}
-          GIT_AUTHOR_EMAIL: ${{ steps.import-gpg.outputs.email }}
-          GIT_COMMITTER_NAME: ${{ steps.import-gpg.outputs.name }}
-          GIT_COMMITTER_EMAIL: ${{ steps.import-gpg.outputs.email }}
+          GIT_AUTHOR_NAME: ${{ secrets.USER_NAME }}
+          GIT_AUTHOR_EMAIL: ${{ secrets.USER_EMAIL }}
+          GIT_COMMITTER_NAME: ${{ secrets.USER_NAME }}
+          GIT_COMMITTER_EMAIL: ${{ secrets.USER_EMAIL }}
