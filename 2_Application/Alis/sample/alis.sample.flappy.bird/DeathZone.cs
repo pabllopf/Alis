@@ -28,8 +28,15 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Data;
+using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
+using Alis.Core.Ecs.Component.Audio;
+using Alis.Core.Ecs.Component.Collider;
+using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.Entity.GameObject;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Flappy.Bird
 {
@@ -39,6 +46,7 @@ namespace Alis.Sample.Flappy.Bird
     /// <seealso cref="Component" />
     public class DeathZone : Component
     {
+
         /// <summary>
         ///     Ons the collision enter using the specified game object
         /// </summary>
@@ -48,6 +56,22 @@ namespace Alis.Sample.Flappy.Bird
             if (gameObject.Tag == "Player")
             {
                 Console.WriteLine($"Player dead by '{this.GameObject.Name}'");
+
+                if (gameObject.Contains<BirdController>() && !gameObject.Get<BirdController>().IsDead)
+                {
+                    gameObject.Get<AudioSource>().AudioClip = new AudioClip(AssetManager.Find("die.wav"));
+                    gameObject.Get<AudioSource>().Play();
+                    
+                    gameObject.Remove(gameObject.Get<BirdController>());
+                    Console.WriteLine("Player remove bird controller");
+
+                    gameObject.Get<BoxCollider>().Body.Rotation = 45f;
+                    gameObject.Get<BoxCollider>().Body.LinearVelocity = new Vector2(0, 7);
+                    gameObject.Get<BoxCollider>().IsTrigger = true;
+                    gameObject.Get<BoxCollider>().Body.BodyType = BodyType.Kinematic;
+                    
+                    gameObject.Remove(gameObject.Get<Animator>());
+                }
             }
         }
     }
