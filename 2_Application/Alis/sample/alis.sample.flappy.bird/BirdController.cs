@@ -67,11 +67,10 @@ namespace Alis.Sample.Flappy.Bird
         /// <param name="key">The key</param>
         public override void OnPressKey(SdlKeycode key)
         {
-            if (key == SdlKeycode.SdlkSpace && !audioSource.IsPlaying)
+            if (key == SdlKeycode.SdlkSpace)
             {
                 boxCollider.Body.LinearVelocity = new Vector2(0, -17f);
                 Console.WriteLine("Go up!");
-                audioSource.Play();
             }
         }
     }

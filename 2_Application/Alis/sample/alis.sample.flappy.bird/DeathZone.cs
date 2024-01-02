@@ -43,11 +43,11 @@ namespace Alis.Sample.Flappy.Bird
         ///     Ons the collision enter using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        public override void OnCollisionEnter(GameObject gameObject)
+        public override void OnCollisionEnter(IGameObject gameObject)
         {
             if (gameObject.Tag == "Player")
             {
-                Console.WriteLine("Player dead");
+                Console.WriteLine($"Player dead by '{this.GameObject.Name}'");
             }
         }
     }

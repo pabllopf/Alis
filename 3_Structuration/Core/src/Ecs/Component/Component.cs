@@ -30,6 +30,7 @@
 using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Entity.GameObject;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.Component
 {
@@ -181,6 +182,18 @@ namespace Alis.Core.Ecs.Component
         public virtual void OnPressKey(SdlKeycode key) => Logger.Trace();
 
         /// <summary>
+        /// Ons the collision enter using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
+        public virtual void OnCollisionEnter(IGameObject gameObject) => Logger.Trace();
+
+        /// <summary>
+        /// Ons the collision exit using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
+        public virtual void OnCollisionExit(IGameObject gameObject) => Logger.Trace();
+
+        /// <summary>
         ///     Ons the press button using the specified button
         /// </summary>
         /// <param name="button">The button</param>
@@ -218,18 +231,6 @@ namespace Alis.Core.Ecs.Component
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>
         public virtual void OnReleaseButton(Button button, int device) => Logger.Trace();
-
-        /// <summary>
-        ///     Ons the collision enter using the specified game object
-        /// </summary>
-        /// <param name="gameObject">The game object</param>
-        public virtual void OnCollisionEnter(GameObject gameObject) => Logger.Trace();
-
-        /// <summary>
-        ///     Ons the collision exit using the specified game object
-        /// </summary>
-        /// <param name="gameObject">The game object</param>
-        public virtual void OnCollisionExit(GameObject gameObject) => Logger.Trace();
 
         /// <summary>
         ///     Ons the collision stay using the specified game object

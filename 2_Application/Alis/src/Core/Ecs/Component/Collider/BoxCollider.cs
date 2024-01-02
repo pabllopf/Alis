@@ -34,6 +34,8 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs.Entity.GameObject;
+using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Figure;
 using Sprite = Alis.Core.Ecs.Component.Render.Sprite;
@@ -202,9 +204,73 @@ namespace Alis.Core.Ecs.Component.Collider
             Body.LinearVelocity = LinearVelocity;
             Body.Awake = true;
             Body.IsSensor = IsTrigger;
+            Body.GameObject = this.GameObject;
+            
+            Body.OnCollision += OnCollision;
+            Body.OnSeparation += OnSeparation;
 
             VideoGame.Instance.GraphicManager.Attach(this);
             VideoGame.Instance.PhysicManager.Attach(Body);
+        }
+
+        /// <summary>
+        /// Ons the separation using the specified fixturea
+        /// </summary>
+        /// <param name="fixturea">The fixturea</param>
+        /// <param name="fixtureb">The fixtureb</param>
+        /// <param name="contact">The contact</param>
+        private void OnSeparation(Fixture fixturea, Fixture fixtureb, Contact contact)
+        {
+            // Check if collision this gameobject with others gameobjects:
+            GameObject fixtureAGameObject = (GameObject) fixturea.Body.GameObject;
+            GameObject fixtureBGameObject = (GameObject) fixtureb.Body.GameObject;
+            
+            if (fixtureAGameObject.Equals(this.GameObject))
+            {
+                if (fixtureBGameObject.Contains<BoxCollider>())
+                {
+                    fixtureBGameObject.Components.ForEach(i => i.OnCollisionExit(GameObject as GameObject));
+                    //Console.WriteLine($"Gameobject {fixtureAGameObject.Name} collision with " + fixtureBGameObject.Name);
+                }
+            }
+            else if (fixtureBGameObject.Equals(this.GameObject))
+            {
+                if (fixtureAGameObject.Contains<BoxCollider>())
+                {
+                    fixtureAGameObject.Components.ForEach(i => i.OnCollisionExit(GameObject as GameObject));
+                    //Console.WriteLine($"Gameobject {fixtureBGameObject.Name} collision with " + fixtureAGameObject.Name);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ons the collision using the specified fixturea
+        /// </summary>
+        /// <param name="fixturea">The fixturea</param>
+        /// <param name="fixtureb">The fixtureb</param>
+        /// <param name="contact">The contact</param>
+        private void OnCollision(Fixture fixturea, Fixture fixtureb, Contact contact)
+        {
+            // Check if collision this gameobject with others gameobjects:
+            GameObject fixtureAGameObject = (GameObject) fixturea.Body.GameObject;
+            GameObject fixtureBGameObject = (GameObject) fixtureb.Body.GameObject;
+            
+            if (fixtureAGameObject.Equals(this.GameObject))
+            {
+                if (fixtureBGameObject.Contains<BoxCollider>())
+                {
+                    fixtureBGameObject.Components.ForEach(i => i.OnCollisionEnter(GameObject as GameObject));
+                    //Console.WriteLine($"Gameobject {fixtureAGameObject.Name} collision with " + fixtureBGameObject.Name);
+                }
+            }
+            else if (fixtureBGameObject.Equals(this.GameObject))
+            {
+                if (fixtureAGameObject.Contains<BoxCollider>())
+                {
+                    fixtureAGameObject.Components.ForEach(i => i.OnCollisionEnter(GameObject as GameObject));
+                    //Console.WriteLine($"Gameobject {fixtureBGameObject.Name} collision with " + fixtureAGameObject.Name);
+                }
+            }
         }
 
         /// <summary>
