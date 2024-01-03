@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -27,7 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Sample.Template.Desktop
+using System;
+using Alis.Core.Aspect.Data;
+using Alis.Core.Ecs;
+
+namespace Alis.Sample.Desktop
 {
     /// <summary>
     ///     The program class
@@ -41,4 +45,5 @@ namespace Alis.Sample.Template.Desktop
         /// <param name="args">The args</param>
         public static void Main(string[] args) => VideoGame.Builder().Run();
     }
+
 }

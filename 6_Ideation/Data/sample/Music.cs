@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: Program.cs
+//  File: ${File.FileName}
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,42 +27,53 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Aspect.Data.Json;
 
 namespace Alis.Core.Aspect.Data.Sample
 {
     /// <summary>
-    ///     The program class
+    /// The music class
     /// </summary>
-    public static class Program
+    public class Music
     {
+       
         /// <summary>
-        ///     Main the args
+        /// Gets or sets the value of the name
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Music musicInfo2 = new Music
-            {
-                Name = "Prince Charming",
-                Artist = "Metallica",
-                Genre = "Rock and Metal",
-                Album = "Reload",
-                AlbumImage = "http://up203.siz.co.il/up2/u2zzzw4mjayz.png",
-                Link = "http://f2h.co.il/7779182246886"
-            };
+        public string Name { get; set; }
 
-            // This will produce a JSON String
-            string serialized2 = JsonSerializer.Serialize(musicInfo2);
-            
-            Console.WriteLine(serialized2);
 
-            // This will produce a copy of the instance you created earlier
-            Music deserialized2 = JsonSerializer.Deserialize<Music>(serialized2);
+        /// <summary>
+        /// Gets or sets the value of the artist
+        /// </summary>
+        public string Artist { get; set; }
 
-            Console.WriteLine("deserialized 2");
-        }
+   
+        /// <summary>
+        /// Gets or sets the value of the genre
+        /// </summary>
+        public string Genre { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the album
+        /// </summary>
+        public string Album { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the album image
+        /// </summary>
+        public string AlbumImage { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets the value of the link
+        /// </summary>
+        public string Link { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets the value of the other
+        /// </summary>
+        public int Other { get; set; } = 1;
+
     }
-
 }

@@ -69,7 +69,7 @@ namespace Alis.Sample.Flappy.Bird
         /// <summary>
         /// The velocity
         /// </summary>
-        private static float velocity = 10;
+        public static float velocity = 10;
 
         /// <summary>
         /// The factor velocity
@@ -84,8 +84,12 @@ namespace Alis.Sample.Flappy.Bird
             posOrigin = GameObject.Transform;
             boxCollider = GameObject.Get<BoxCollider>();
             boxCollider.LinearVelocity = new Vector2(-velocity, 0);
-
+            
+            velocity = 10;
+            factorVelocity = 1.1f;
+            
             generated = true;
+            IsStop = false;
             randomHeight = new Random().Next(0, 100);
             randomDirection = new Random().Next(0, 2);
             Console.WriteLine($"{GameObject.Name} NUM={randomHeight} Direction={randomDirection}");
@@ -96,7 +100,15 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         public override void OnUpdate()
         {
-            if (GameObject.Transform.Position.X <= -27)
+            if (IsStop && velocity != 0)
+            {
+                velocity = 0;
+                factorVelocity = 0;
+                boxCollider.LinearVelocity = new Vector2(0, 0);
+                return;
+            }
+            
+            if (GameObject.Transform.Position.X <= -27 && !IsStop)
             {
                 if (!generated)
                 {
@@ -131,11 +143,16 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         public override void OnAfterUpdate()
         {
-            if (generated)
+            if (generated && !IsStop)
             {
                 velocity *= factorVelocity;
                 generated = false;
             }
         }
+        
+        /// <summary>
+        /// The is stop
+        /// </summary>
+        public static bool IsStop = false;
     }
 }

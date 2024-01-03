@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Alis.Core.Ecs.Entity.Scene;
 
@@ -47,7 +48,7 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         ///     Gets or sets the value of the scenes
         /// </summary>
         public List<IScene> Scenes { get; set; } = new List<IScene>();
-
+        
         /// <summary>
         ///     Ons the enable
         /// </summary>
@@ -270,11 +271,14 @@ namespace Alis.Core.Ecs.System.Manager.Scene
         {
             CurrentScene.OnStop();
             CurrentScene.OnExit();
+            Console.WriteLine($"ID={CurrentScene.GetHashCode()}");
             CurrentScene = Scenes.Find(i => i.Name == name);
+            Console.WriteLine($"ID={CurrentScene.GetHashCode()}");
             CurrentScene.OnInit();
             CurrentScene.OnAwake();
             CurrentScene.OnStart();
         }
+        
 
         /// <summary>
         ///     Loads the scene using the specified index

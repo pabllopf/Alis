@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: Program.cs
+//  File: ${File.FileName}
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,41 +28,45 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Data.Json;
 
-namespace Alis.Core.Aspect.Data.Sample
+namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    ///     The program class
+    /// The customer class
     /// </summary>
-    public static class Program
+    public class Customer
     {
         /// <summary>
-        ///     Main the args
+        /// Initializes a new instance of the <see cref="Customer"/> class
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        public Customer()
         {
-            Music musicInfo2 = new Music
-            {
-                Name = "Prince Charming",
-                Artist = "Metallica",
-                Genre = "Rock and Metal",
-                Album = "Reload",
-                AlbumImage = "http://up203.siz.co.il/up2/u2zzzw4mjayz.png",
-                Link = "http://f2h.co.il/7779182246886"
-            };
+            Id = Guid.NewGuid();
 
-            // This will produce a JSON String
-            string serialized2 = JsonSerializer.Serialize(musicInfo2);
-            
-            Console.WriteLine(serialized2);
-
-            // This will produce a copy of the instance you created earlier
-            Music deserialized2 = JsonSerializer.Deserialize<Music>(serialized2);
-
-            Console.WriteLine("deserialized 2");
         }
-    }
 
+        /// <summary>
+        /// Gets the value of the id
+        /// </summary>
+        public Guid Id { get; }
+        /// <summary>
+        /// Gets or sets the value of the index
+        /// </summary>
+        public int Index { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the name
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the addresses
+        /// </summary>
+        public Address[] Addresses { get; set; }
+
+        /// <summary>
+        /// Returns the string
+        /// </summary>
+        /// <returns>The string</returns>
+        public override string ToString() => Name;
+    }
 }

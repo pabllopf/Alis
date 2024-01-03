@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Alis.Core.Ecs.Entity.GameObject;
 using Alis.Core.Ecs.System.Property;
@@ -36,11 +37,17 @@ namespace Alis.Core.Ecs.Entity.Scene
     /// <summary>
     ///     The scene interface
     /// </summary>
-    public interface IScene : IEntity, ICrud<IGameObject>
+    public interface IScene : IEntity, ICrud<IGameObject>, ICloneable
     {
         /// <summary>
         ///     Gets or sets the value of the game objects
         /// </summary>
         public List<IGameObject> GameObjects { get; set; }
+
+        /// <summary>
+        /// Clones this instance
+        /// </summary>
+        /// <returns>The object</returns>
+        public new object Clone();
     }
 }

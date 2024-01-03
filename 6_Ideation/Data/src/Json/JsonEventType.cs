@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: Program.cs
+//  File: ${File.FileName}
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,42 +27,56 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Aspect.Data.Json;
-
-namespace Alis.Core.Aspect.Data.Sample
+namespace Alis.Core.Aspect.Data.Json
 {
     /// <summary>
-    ///     The program class
+    /// Defines a type of JSON event.
     /// </summary>
-    public static class Program
+    public enum JsonEventType
     {
         /// <summary>
-        ///     Main the args
+        /// An unspecified type of event.
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Music musicInfo2 = new Music
-            {
-                Name = "Prince Charming",
-                Artist = "Metallica",
-                Genre = "Rock and Metal",
-                Album = "Reload",
-                AlbumImage = "http://up203.siz.co.il/up2/u2zzzw4mjayz.png",
-                Link = "http://f2h.co.il/7779182246886"
-            };
+        Unspecified,
 
-            // This will produce a JSON String
-            string serialized2 = JsonSerializer.Serialize(musicInfo2);
-            
-            Console.WriteLine(serialized2);
+        /// <summary>
+        /// The write value event type.
+        /// </summary>
+        WriteValue,
 
-            // This will produce a copy of the instance you created earlier
-            Music deserialized2 = JsonSerializer.Deserialize<Music>(serialized2);
+        /// <summary>
+        /// The before write object event type.
+        /// </summary>
+        BeforeWriteObject,
 
-            Console.WriteLine("deserialized 2");
-        }
+        /// <summary>
+        /// The after write object event type.
+        /// </summary>
+        AfterWriteObject,
+
+        /// <summary>
+        /// The write named value object event type.
+        /// </summary>
+        WriteNamedValueObject,
+
+        /// <summary>
+        /// The create instance event type.
+        /// </summary>
+        CreateInstance,
+
+        /// <summary>
+        /// The map entry event type.
+        /// </summary>
+        MapEntry,
+
+        /// <summary>
+        /// The apply entry event type.
+        /// </summary>
+        ApplyEntry,
+
+        /// <summary>
+        /// The get list object event type.
+        /// </summary>
+        GetListObject,
     }
-
 }

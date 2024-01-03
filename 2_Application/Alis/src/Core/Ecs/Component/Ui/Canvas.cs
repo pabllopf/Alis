@@ -29,7 +29,6 @@
 
 using Alis.Builder.Core.Ecs.Component.Ui;
 using Alis.Core.Aspect.Fluent;
-using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.Component.Ui
 {

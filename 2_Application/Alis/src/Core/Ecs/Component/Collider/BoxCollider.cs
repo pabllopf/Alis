@@ -341,5 +341,14 @@ namespace Alis.Core.Ecs.Component.Collider
             RectangleF.x = GameObject.Transform.Position.X + RelativePosition.X - Width / 2;
             RectangleF.y = GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2;
         }
+
+        /// <summary>
+        /// Ons the exit
+        /// </summary>
+        public override void OnExit()
+        {
+            VideoGame.Instance.GraphicManager.UnAttach(this);
+            VideoGame.Instance.PhysicManager.UnAttach(Body);
+        }
     }
 }

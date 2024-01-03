@@ -32,9 +32,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Threading;
 using Alis.Core.Aspect.Base.Dll;
-using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
@@ -62,13 +60,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <summary>
         ///     The box collider
         /// </summary>
-        private static readonly BoxCollider[] ColliderBases = new BoxCollider[128];
-
-        /// <summary>
-        ///     The length
-        /// </summary>
-        private readonly RectangleF[] rectangles = new RectangleF[ColliderBases.Length];
-
+        private static List<BoxCollider> ColliderBases = new List<BoxCollider>();
+        
         /// <summary>
         ///     The default size
         /// </summary>
@@ -181,8 +174,10 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 // render color
                 Sdl.SetRenderDrawColor(Renderer, color.R, color.G, color.B, color.A);
 
+                RectangleF[] rectangles = new RectangleF[ColliderBases.Count];
+                
                 // Draws rectangles:
-                for (int i = 0; i < ColliderBases.Length; i++)
+                for (int i = 0; i < ColliderBases.Count; i++)
                 {
                     if (ColliderBases[i] != null)
                     {
@@ -592,7 +587,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         ///     Attaches the sprite
         /// </summary>
         /// <param name="sprite">The sprite</param>
-        public static void Attach(Sprite sprite)
+        public void Attach(Sprite sprite)
         {
             Sprites.Add(sprite);
             Sprites = Sprites.OrderBy(o => o.Depth).ToList();
@@ -602,7 +597,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         ///     Uns the attach using the specified sprite
         /// </summary>
         /// <param name="sprite">The sprite</param>
-        public static void UnAttach(Sprite sprite)
+        public void UnAttach(Sprite sprite)
         {
             Sprites.Remove(sprite);
             Sprites = Sprites.OrderBy(o => o.Depth).ToList();
@@ -614,22 +609,16 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <param name="collider">The collider</param>
         public void Attach(BoxCollider collider)
         {
-            for (int i = 0; i < ColliderBases.Length; i++)
-            {
-                if (ColliderBases[i] == null)
-                {
-                    ColliderBases[i] = collider;
-                    return;
-                }
-            }
+            ColliderBases.Add(collider);
         }
 
         /// <summary>
         ///     Uns the attach using the specified collider
         /// </summary>
         /// <param name="collider">The collider</param>
-        public static void UnAttach(Collider collider)
+        public void UnAttach(BoxCollider collider)
         {
+            ColliderBases.Remove(collider);
         }
     }
 }
