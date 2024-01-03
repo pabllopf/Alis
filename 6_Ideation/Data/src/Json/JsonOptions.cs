@@ -248,7 +248,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <summary>
         /// Gets the value of the final streaming buffer chunk size
         /// </summary>
-        internal int FinalStreamingBufferChunkSize => Math.Max(512, StreamingBufferChunkSize);
+        internal int FinalStreamingBufferChunkSize => System.Math.Max(512, StreamingBufferChunkSize);
         /// <summary>
         /// Gets the value of the final object graph
         /// </summary>

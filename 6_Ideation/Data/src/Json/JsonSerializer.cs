@@ -2637,8 +2637,8 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 var offset = TimeZoneInfo.Local.GetUtcOffset(dt);
                 writer.Write((offset.Ticks >= 0) ? '+' : '-');
-                writer.Write(Math.Abs(offset.Hours).ToString(_d2Format));
-                writer.Write(Math.Abs(offset.Minutes).ToString(_d2Format));
+                writer.Write(System.Math.Abs(offset.Hours).ToString(_d2Format));
+                writer.Write(System.Math.Abs(offset.Minutes).ToString(_d2Format));
             }
         }
 
