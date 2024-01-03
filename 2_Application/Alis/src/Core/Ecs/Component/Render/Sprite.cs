@@ -30,7 +30,6 @@
 using System;
 using Alis.Builder.Core.Ecs.Component.Render;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Ecs.System.Manager.Graphic;
 
 namespace Alis.Core.Ecs.Component.Render
 {
@@ -97,7 +96,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnAwake()
         {
-            GraphicManager.Attach(this);
+            VideoGame.Instance.GraphicManager.Attach(this);
         }
 
         /// <summary>
@@ -135,7 +134,7 @@ namespace Alis.Core.Ecs.Component.Render
         /// </summary>
         public override void OnExit()
         {
-            GraphicManager.UnAttach(this);
+            VideoGame.Instance.GraphicManager.UnAttach(this);
         }
     }
 }

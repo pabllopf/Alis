@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Audio;
 using Alis.Core.Ecs.Entity.GameObject;
@@ -46,6 +45,9 @@ namespace Alis.Sample.Flappy.Bird
         /// </summary>
         public int Counter { get; set; }
 
+        /// <summary>
+        /// The is enter
+        /// </summary>
         private bool isEnter = false;
         
         /// <summary>
@@ -83,6 +85,10 @@ namespace Alis.Sample.Flappy.Bird
            audioSource = GameObject.Get<AudioSource>();
         }
 
+        /// <summary>
+        /// Ons the collision enter using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
         public override void OnCollisionEnter(IGameObject gameObject)
         {
             if (gameObject.Tag == "Player" && !isEnter)
@@ -94,6 +100,10 @@ namespace Alis.Sample.Flappy.Bird
             }
         }
 
+        /// <summary>
+        /// Ons the collision exit using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
         public override void OnCollisionExit(IGameObject gameObject)
         {
             if (gameObject.Tag == "Player" && isEnter)

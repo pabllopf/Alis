@@ -30,7 +30,6 @@
 using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.Entity.GameObject;
-using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Core.Ecs.Component
 {

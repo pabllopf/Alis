@@ -29,7 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Data;
-using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
 using Alis.Core.Ecs.Component.Audio;
@@ -46,6 +46,40 @@ namespace Alis.Sample.Flappy.Bird
     /// <seealso cref="Component" />
     public class DeathZone : Component
     {
+        /// <summary>
+        /// The is death
+        /// </summary>
+        public static bool isDeath = false;
+
+        /// <summary>
+        /// The time delta
+        /// </summary>
+        public static float timeDelta = 10.0f;
+
+        /// <summary>
+        /// Ons the init
+        /// </summary>
+        public override void OnInit()
+        {
+            isDeath = false;
+            timeDelta = 100f;
+        }
+
+        /// <summary>
+        /// Ons the update
+        /// </summary>
+        public override void OnUpdate()
+        {
+            if (isDeath)
+            {
+                timeDelta -= 0.01f;
+                if (timeDelta <= 0.0f)
+                {
+                    VideoGame.Instance.SceneManager.LoadScene("Main Menu");
+                    Console.WriteLine("RESET LEVEL");
+                }
+            }
+        }
 
         /// <summary>
         ///     Ons the collision enter using the specified game object
@@ -71,6 +105,12 @@ namespace Alis.Sample.Flappy.Bird
                     gameObject.Get<BoxCollider>().Body.BodyType = BodyType.Kinematic;
                     
                     gameObject.Remove(gameObject.Get<Animator>());
+
+                    PipelineController.IsStop = true;
+                    
+                    
+                    
+                    isDeath = true;
                 }
             }
         }

@@ -31,7 +31,6 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Ecs.System.Setting.Profile;
-using NotImplementedException = System.NotImplementedException;
 
 namespace Alis.Builder.Core.Ecs.System.Setting.Profile
 {

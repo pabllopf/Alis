@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: BirdController.cs
+//  File: AssetManagerTest.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,55 +28,54 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Base.Mapping;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Ecs.Component;
-using Alis.Core.Ecs.Component.Audio;
-using Alis.Core.Ecs.Component.Collider;
+using System.IO;
+using Alis.Core.Aspect.Data.Resource;
+using Xunit;
 
-namespace Alis.Sample.Flappy.Bird
+namespace Alis.Core.Aspect.Data.Test.Resource
 {
     /// <summary>
-    ///     The bird controller class
+    ///     The asset manager test class
     /// </summary>
-    /// <seealso cref="Component" />
-    public class BirdController : Component
+    public class AssetManagerTest
     {
         /// <summary>
-        ///     The audio source
+        ///     Tests that find valid asset name should return correct path
         /// </summary>
-        private AudioSource audioSource;
-
-        /// <summary>
-        /// The box collider
-        /// </summary>
-        private BoxCollider boxCollider;
-
-        /// <summary>
-        /// Gets or sets the value of the is dead
-        /// </summary>
-        public bool IsDead { get; set; } = false;
-
-        /// <summary>
-        ///     Ons the init
-        /// </summary>
-        public override void OnInit()
+        /// <exception cref="InvalidOperationException"></exception>
+        [Fact]
+        public void Find_ValidAssetName_ShouldReturnCorrectPath()
         {
-            audioSource = GameObject.Get<AudioSource>();
-            boxCollider = GameObject.Get<BoxCollider>();
+            // Arrange
+            const string assetName = "example.txt";
+            string directory = Path.Combine(Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory) ?? throw new InvalidOperationException()), "Assets");
+            string expectedPath = Path.Combine(directory, assetName);
+
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+
+            if (!File.Exists(expectedPath))
+            {
+                File.Create(expectedPath);
+            }
+
+            // Act
+            string result = AssetManager.Find(assetName);
+
+            // Assert
+            Assert.Equal(expectedPath, result);
         }
 
         /// <summary>
-        ///     Ons the press key using the specified key
+        ///     Tests that find null asset name should throw argument null exception
         /// </summary>
-        /// <param name="key">The key</param>
-        public override void OnPressKey(SdlKeycode key)
+        [Fact]
+        public void Find_NullAssetName_ShouldThrowArgumentNullException()
         {
-            if (key == SdlKeycode.SdlkSpace)
-            {
-                boxCollider.Body.LinearVelocity = new Vector2(0, -17f);
-                Console.WriteLine("Go up!");
-            }
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(() => AssetManager.Find(null));
         }
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: Program.cs
+//  File: ${File.FileName}
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,42 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Aspect.Data.Json;
-
-namespace Alis.Core.Aspect.Data.Sample
+namespace Alis.Core.Aspect.Data.Json
 {
     /// <summary>
-    ///     The program class
+    /// Defines a callback delegate to customize JSON serialization and deserialization.
     /// </summary>
-    public static class Program
-    {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Music musicInfo2 = new Music
-            {
-                Name = "Prince Charming",
-                Artist = "Metallica",
-                Genre = "Rock and Metal",
-                Album = "Reload",
-                AlbumImage = "http://up203.siz.co.il/up2/u2zzzw4mjayz.png",
-                Link = "http://f2h.co.il/7779182246886"
-            };
-
-            // This will produce a JSON String
-            string serialized2 = JsonSerializer.Serialize(musicInfo2);
-            
-            Console.WriteLine(serialized2);
-
-            // This will produce a copy of the instance you created earlier
-            Music deserialized2 = JsonSerializer.Deserialize<Music>(serialized2);
-
-            Console.WriteLine("deserialized 2");
-        }
-    }
-
+    public delegate void JsonCallback(JsonEventArgs e);
 }

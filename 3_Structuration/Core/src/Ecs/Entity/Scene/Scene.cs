@@ -63,6 +63,15 @@ namespace Alis.Core.Ecs.Entity.Scene
         public List<IGameObject> GameObjects { get; set; } = new List<IGameObject>();
 
         /// <summary>
+        /// Clones this instance
+        /// </summary>
+        /// <returns>The object</returns>
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+        /// <summary>
         ///     Ons the enable
         /// </summary>
         public void OnEnable() => GameObjects.ForEach(i => i.OnEnable());

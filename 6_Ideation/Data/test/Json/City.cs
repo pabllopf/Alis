@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: AssetManagerTest.cs
+//  File: ${File.FileName}
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,54 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using Xunit;
-
-namespace Alis.Core.Aspect.Data.Test
+namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    ///     The asset manager test class
+    /// The city class
     /// </summary>
-    public class AssetManagerTest
+    public class City
     {
         /// <summary>
-        ///     Tests that find valid asset name should return correct path
+        /// Gets or sets the value of the name
         /// </summary>
-        /// <exception cref="InvalidOperationException"></exception>
-        [Fact]
-        public void Find_ValidAssetName_ShouldReturnCorrectPath()
-        {
-            // Arrange
-            const string assetName = "example.txt";
-            string directory = Path.Combine(Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory) ?? throw new InvalidOperationException()), "Assets");
-            string expectedPath = Path.Combine(directory, assetName);
-
-            if (!Directory.Exists(directory))
-            {
-                Directory.CreateDirectory(directory);
-            }
-
-            if (!File.Exists(expectedPath))
-            {
-                File.Create(expectedPath);
-            }
-
-            // Act
-            string result = AssetManager.Find(assetName);
-
-            // Assert
-            Assert.Equal(expectedPath, result);
-        }
+        public string Name { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the country
+        /// </summary>
+        public Country Country { get; set; }
 
         /// <summary>
-        ///     Tests that find null asset name should throw argument null exception
+        /// Returns the string
         /// </summary>
-        [Fact]
-        public void Find_NullAssetName_ShouldThrowArgumentNullException()
-        {
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>(() => AssetManager.Find(null));
-        }
+        /// <returns>The string</returns>
+        public override string ToString() => Name;
     }
 }

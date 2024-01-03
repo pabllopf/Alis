@@ -67,7 +67,7 @@ namespace Alis.Core.Ecs.Entity.GameObject
         ///     Gets or sets the value of the transform
         /// </summary>
         public Transform Transform { get; set; } = new Transform(new Vector2(0, 0), new Rotation(0), new Vector2(1, 1));
-
+        
         /// <summary>
         ///     Adds the component
         /// </summary>
@@ -194,7 +194,10 @@ namespace Alis.Core.Ecs.Entity.GameObject
         /// <summary>
         ///     Ons the exit
         /// </summary>
-        public void OnExit() => Components.ForEach(i => i.OnExit());
+        public void OnExit()
+        {
+            Components.ForEach(i => i.OnExit());
+        }
 
         /// <summary>
         ///     Ons the destroy

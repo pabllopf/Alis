@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: Program.cs
+//  File: ${File.FileName}
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,42 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Aspect.Data.Json;
-
-namespace Alis.Core.Aspect.Data.Sample
+namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    ///     The program class
+    /// The address class
     /// </summary>
-    public static class Program
+    public class Address
     {
         /// <summary>
-        ///     Main the args
+        /// Gets or sets the value of the city
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Music musicInfo2 = new Music
-            {
-                Name = "Prince Charming",
-                Artist = "Metallica",
-                Genre = "Rock and Metal",
-                Album = "Reload",
-                AlbumImage = "http://up203.siz.co.il/up2/u2zzzw4mjayz.png",
-                Link = "http://f2h.co.il/7779182246886"
-            };
+        public City City { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the zip code
+        /// </summary>
+        public int ZipCode { get; set; }
 
-            // This will produce a JSON String
-            string serialized2 = JsonSerializer.Serialize(musicInfo2);
-            
-            Console.WriteLine(serialized2);
-
-            // This will produce a copy of the instance you created earlier
-            Music deserialized2 = JsonSerializer.Deserialize<Music>(serialized2);
-
-            Console.WriteLine("deserialized 2");
-        }
+        /// <summary>
+        /// Returns the string
+        /// </summary>
+        /// <returns>The string</returns>
+        public override string ToString() => ZipCode.ToString();
     }
-
 }

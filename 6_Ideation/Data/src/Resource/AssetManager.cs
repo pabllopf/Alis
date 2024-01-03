@@ -31,7 +31,7 @@ using System;
 using System.IO;
 using System.Reflection;
 
-namespace Alis.Core.Aspect.Data
+namespace Alis.Core.Aspect.Data.Resource
 {
     /// <summary>
     ///     The example class
