@@ -31,17 +31,10 @@ jobs:
       - name: Dotnet test Release
         run: dotnet test alis.sln --configuration Release
 
-      - uses: actions/upload-artifact@v3  
-        if: success() || failure()       
-        with:
-          name: test-results-macos
-          path: './.test/*.trx' 
-
       - name: use this action, test solution dir
         uses: zyborg/dotnet-tests-report@v1
         with:
           test_results_path: "./.test/"
-          project_path: alis
           report_name: test_macos_report
           report_title: My MacOs Tests
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -64,12 +57,6 @@ jobs:
 
       - name: Dotnet test Release
         run: dotnet test alis.sln --configuration Release
-
-      - uses: actions/upload-artifact@v3
-        if: success() || failure()
-        with:
-          name: test-results-windows
-          path: './.test/*.trx'
   
   Run_Test_On_Ubuntu_Latest:
     runs-on: ubuntu-latest
@@ -89,10 +76,4 @@ jobs:
 
       - name: Dotnet test Release
         run: dotnet test alis.sln --configuration Release
-
-      - uses: actions/upload-artifact@v3
-        if: success() || failure()
-        with:
-          name: test-results-ubuntu
-          path: './.test/*.trx'  
     
