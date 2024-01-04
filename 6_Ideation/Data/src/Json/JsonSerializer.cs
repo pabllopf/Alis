@@ -3175,7 +3175,7 @@ namespace Alis.Core.Aspect.Data.Json
             if (string.IsNullOrEmpty(value))
                 return null;
 
-            StringBuilder builder = null;
+            StringBuilder builder = new StringBuilder();
             var startIndex = 0;
             var count = 0;
             for (var i = 0; i < value.Length; i++)
@@ -3193,10 +3193,6 @@ namespace Alis.Core.Aspect.Data.Json
                     (c == '\f') ||
                     (c < ' '))
                 {
-                    if (builder == null)
-                    {
-                        builder = new StringBuilder(value.Length + 5);
-                    }
 
                     if (count > 0)
                     {
