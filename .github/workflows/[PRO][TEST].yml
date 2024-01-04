@@ -34,9 +34,9 @@ jobs:
       - name: use this action, test solution dir
         uses: zyborg/dotnet-tests-report@v1
         with:
-          test_results_path: "./.test/"
+          test_results_path: "test/"
           report_name: test_macos_report
-          report_title: My MacOs Tests
+          report_title: MacOs Tests Report 
           github_token: ${{ secrets.GITHUB_TOKEN }}
   
   Run_Test_On_Windows_Latest:
