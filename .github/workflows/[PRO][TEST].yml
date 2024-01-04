@@ -36,18 +36,13 @@ jobs:
         with:
           name: test-results-macos
           path: './.test/*.trx' 
-  
-  report_macos_test:
-    needs: Run_Test_On_MacOs_Latest
-    runs-on: macos-latest
-    steps:
+
       - uses: dorny/test-reporter@v1
         with:
           artifact: test-results-macos            # artifact name
           name: Tests Report MacOs                  # Name of the check run which will be created
-          path: './.test/*.trx'                     # Path to test results (inside artifact .zip)
+          path: '*.trx'                     # Path to test results (inside artifact .zip)
           reporter: dotnet-trx              # Format of test results
-  
   
   Run_Test_On_Windows_Latest:
     runs-on: windows-latest
