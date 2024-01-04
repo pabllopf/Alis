@@ -3249,9 +3249,6 @@ namespace Alis.Core.Aspect.Data.Json
                 }
             }
 
-            if (builder == null)
-                return value;
-
             if (count > 0)
             {
                 builder.Append(value, startIndex, count);
