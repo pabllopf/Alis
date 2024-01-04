@@ -36,6 +36,7 @@ jobs:
         with:
           report_name: test_macos_report
           report_title: MacOs Tests Report 
+          test_results_path: "/.test/*.trx"
           github_token: ${{ secrets.GITHUB_TOKEN }}
   
   Run_Test_On_Windows_Latest:
