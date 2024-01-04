@@ -32,7 +32,7 @@ namespace Alis.App.Engine
     /// <summary>
     ///     The program class
     /// </summary>
-    internal class Program
+    internal static class Program
     {
         /// <summary>
         ///     Main the args
