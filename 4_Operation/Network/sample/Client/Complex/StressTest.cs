@@ -110,33 +110,35 @@ namespace Alis.Core.Network.Sample.Client.Complex
             };
             using (_webSocket = await _clientFactory.ConnectAsync(_uri, options))
             {
-                CancellationTokenSource source = new CancellationTokenSource();
-                _token = source.Token;
-
-                RandomNumberGenerator rand = RandomNumberGenerator.Create();
-
-                _expectedValues = new byte[50][];
-                for (int i = 0; i < _expectedValues.Length; i++)
+                using (CancellationTokenSource source = new CancellationTokenSource())
                 {
-                    int numBytes = RandomNumberGenerator.GetInt32(_minNumBytesPerMessage, _maxNumBytesPerMessage);
-                    byte[] bytes = new byte[numBytes];
-                    rand.GetBytes(bytes);
-                    _expectedValues[i] = bytes;
-                }
+                    _token = source.Token;
 
-                Task recTask = Task.Run(ReceiveLoop);
-                byte[] sendBuffer = new byte[_maxNumBytesPerMessage];
-                for (int i = 0; i < _numItems; i++)
-                {
-                    int index = i % _expectedValues.Length;
-                    byte[] bytes = _expectedValues[index];
-                    Buffer.BlockCopy(bytes, 0, sendBuffer, 0, bytes.Length);
-                    ArraySegment<byte> buffer = new ArraySegment<byte>(sendBuffer, 0, bytes.Length);
-                    await _webSocket.SendAsync(buffer, WebSocketMessageType.Binary, true, source.Token);
-                }
+                    RandomNumberGenerator rand = RandomNumberGenerator.Create();
 
-                await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, null, source.Token);
-                recTask.Wait();
+                    _expectedValues = new byte[50][];
+                    for (int i = 0; i < _expectedValues.Length; i++)
+                    {
+                        int numBytes = RandomNumberGenerator.GetInt32(_minNumBytesPerMessage, _maxNumBytesPerMessage);
+                        byte[] bytes = new byte[numBytes];
+                        rand.GetBytes(bytes);
+                        _expectedValues[i] = bytes;
+                    }
+
+                    Task recTask = Task.Run(ReceiveLoop);
+                    byte[] sendBuffer = new byte[_maxNumBytesPerMessage];
+                    for (int i = 0; i < _numItems; i++)
+                    {
+                        int index = i % _expectedValues.Length;
+                        byte[] bytes = _expectedValues[index];
+                        Buffer.BlockCopy(bytes, 0, sendBuffer, 0, bytes.Length);
+                        ArraySegment<byte> buffer = new ArraySegment<byte>(sendBuffer, 0, bytes.Length);
+                        await _webSocket.SendAsync(buffer, WebSocketMessageType.Binary, true, source.Token);
+                    }
+
+                    await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, null, source.Token);
+                    recTask.Wait();
+                }
             }
         }
 
