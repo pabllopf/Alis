@@ -1,24 +1,29 @@
 .vs/
 .vscode/
 .idea/
+.test/
 
 /**/.vs/
 /**/.publish/
 /**/.nuget/
 /**/.vscode/
 /**/.idea/
+/**/.test/
 
 /**/.vs/**
 /**/.nuget/**
 /**/.vscode/**
 /**/.idea/**
+/**/.test/**
 
 /**/**/[Bb]in/**
 /**/**/[Oo]bj/**
 /**/**/[Ll]ib/**
+/**/**/.[Tt]est/**
 /**/vs/**
 /**/vscode/**
 /**/idea/**
+/**/.[Tt]est/**
 
 /**/**/[Pp]ublish/**
 /**/[Pp]ublish/**
