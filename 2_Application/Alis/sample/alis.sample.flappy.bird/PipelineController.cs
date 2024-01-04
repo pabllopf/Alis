@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Security.Cryptography;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
@@ -87,12 +88,19 @@ namespace Alis.Sample.Flappy.Bird
             
             velocity = 10;
             factorVelocity = 1.1f;
+
+            using (RandomNumberGenerator randomGenerator = RandomNumberGenerator.Create())
+            {
+                data = new byte[16];
+                randomGenerator.GetBytes(data); 
+            }
+            
+            randomHeight = Math.Abs(BitConverter.ToInt32(data, 0) % 100);
+            randomDirection = Math.Abs(BitConverter.ToInt32(data, 4) % 2);
+            Console.WriteLine($"{GameObject.Name} NUM={randomHeight} Direction={randomDirection}");
             
             generated = true;
             IsStop = false;
-            randomHeight = new Random().Next(0, 100);
-            randomDirection = new Random().Next(0, 2);
-            Console.WriteLine($"{GameObject.Name} NUM={randomHeight} Direction={randomDirection}");
         }
 
         /// <summary>
@@ -154,5 +162,7 @@ namespace Alis.Sample.Flappy.Bird
         /// The is stop
         /// </summary>
         public static bool IsStop = false;
+        
+        private byte[] data;
     }
 }
