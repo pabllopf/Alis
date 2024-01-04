@@ -121,8 +121,8 @@ namespace Alis.Sample.Flappy.Bird
                 if (!generated)
                 {
                     generated = true;
-                    randomHeight = new Random().Next(10, 75);
-                    randomDirection = new Random().Next(0, 2);
+                    randomHeight = Math.Abs(BitConverter.ToInt32(data, 0) % 100);
+                    randomDirection = Math.Abs(BitConverter.ToInt32(data, 4) % 2);
                     Console.WriteLine($"{GameObject.Name} NUM={randomHeight} Direction={randomDirection} velocity={velocity}");
                 }
 
