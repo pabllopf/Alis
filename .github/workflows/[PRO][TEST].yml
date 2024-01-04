@@ -36,7 +36,7 @@ jobs:
         with:
           report_name: test_macos_report
           report_title: MacOs Tests Report 
-          test_results_path: .test
+          test_results_path: ./.test/*.trx
           github_token: ${{ secrets.GITHUB_TOKEN }}
   
   Run_Test_On_Windows_Latest:
@@ -57,6 +57,12 @@ jobs:
 
       - name: Dotnet test Release
         run: dotnet test alis.sln --configuration Release
+
+      - uses: bibipkins/dotnet-test-reporter@v1.3.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          comment-title: 'Unit Test Windows Results'
+          results-path: ./.test/*.trx
   
   Run_Test_On_Ubuntu_Latest:
     runs-on: ubuntu-latest
