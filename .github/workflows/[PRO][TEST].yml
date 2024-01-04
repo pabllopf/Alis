@@ -59,7 +59,7 @@ jobs:
 
       - uses: dorny/test-reporter@v1
         with:
-          name: MacOs Test Report                  # Name of the check run which will be created
+          name: Windows Test Report                  # Name of the check run which will be created
           path: './.test/*.trx'                     # Path to test results (inside artifact .zip)
           reporter: dotnet-trx              # Format of test results
           list-tests: 'all'
@@ -82,4 +82,11 @@ jobs:
 
       - name: Dotnet test Release
         run: dotnet test alis.sln --configuration Release
+
+      - uses: dorny/test-reporter@v1
+        with:
+          name: Ubuntu Test Report                  # Name of the check run which will be created
+          path: './.test/*.trx'                     # Path to test results (inside artifact .zip)
+          reporter: dotnet-trx              # Format of test results
+          list-tests: 'all'
     
