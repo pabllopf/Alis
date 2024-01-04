@@ -36,7 +36,6 @@ namespace Alis.App.Engine.Test
     /// </summary>
     public class DefaultTest
     {
-        
         /// <summary>
         ///     Tests that test
         /// </summary>
