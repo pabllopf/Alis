@@ -37,13 +37,12 @@ jobs:
           path: './.test/*.trx'                     # Path to test results (inside artifact .zip)
           reporter: dotnet-trx              # Format of test results
       
-      - name: Process trx reports with default
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
-        # You may also reference just the major or major.minor version
-        uses: im-open/process-dotnet-test-results@v2.3.4
         with:
-          base-directory: './.test'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          files: |
+            .test/**/*.trx
   
   Run_Test_On_Windows_Latest:
     runs-on: windows-latest
