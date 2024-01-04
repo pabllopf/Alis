@@ -1,0 +1,23 @@
+name: "[PRO][TEST][REPORT]"
+
+on:
+  workflow_run:
+    workflows: ['[PRO][TEST]']                     
+    types:
+      - completed
+
+permissions:
+  contents: read
+  actions: read
+  checks: write
+  
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dorny/test-reporter@v1
+        with:
+          artifact: test-results-ubuntu            # artifact name
+          name: Tests Report Ubuntu                  # Name of the check run which will be created
+          path: '*.trx'                     # Path to test results (inside artifact .zip)
+          reporter: dotnet-trx              # Format of test results
