@@ -37,12 +37,14 @@ jobs:
           name: test-results-macos
           path: './.test/*.trx' 
 
-      - uses: dorny/test-reporter@v1
+      - name: use this action, test solution dir
+        uses: zyborg/dotnet-tests-report@v1
         with:
-          artifact: test-results-macos            # artifact name
-          name: Tests Report MacOs                  # Name of the check run which will be created
-          path: '*.trx'                     # Path to test results (inside artifact .zip)
-          reporter: dotnet-trx              # Format of test results
+          test_results_path: "./.test/"
+          project_path: alis
+          report_name: test_macos_report
+          report_title: My MacOs Tests
+          github_token: ${{ secrets.GITHUB_TOKEN }}
   
   Run_Test_On_Windows_Latest:
     runs-on: windows-latest
