@@ -155,8 +155,7 @@ namespace Alis.Core.Network.Sample.Server
         /// <param name="tcpClient">The tcp client</param>
         private async Task ProcessTcpClientAsync(TcpClient tcpClient)
         {
-            CancellationTokenSource source = new CancellationTokenSource();
-
+            using CancellationTokenSource source = new CancellationTokenSource();
             try
             {
                 if (_isDisposed)
