@@ -31,13 +31,12 @@ jobs:
       - name: Dotnet test Release
         run: dotnet test alis.sln --configuration Release
 
-      - name: use this action, test solution dir
-        uses: zyborg/dotnet-tests-report@v1
+      - uses: dorny/test-reporter@v1
         with:
-          report_name: test_macos_report
-          report_title: MacOs Tests Report 
-          test_results_path: ./.test/*.trx
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          name: MacOs Test Report                  # Name of the check run which will be created
+          path: './.test/*.trx'                     # Path to test results (inside artifact .zip)
+          reporter: dotnet-trx              # Format of test results
+          list-tests: 'all'
   
   Run_Test_On_Windows_Latest:
     runs-on: windows-latest
@@ -58,11 +57,12 @@ jobs:
       - name: Dotnet test Release
         run: dotnet test alis.sln --configuration Release
 
-      - uses: bibipkins/dotnet-test-reporter@v1.3.0
+      - uses: dorny/test-reporter@v1
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          comment-title: 'Unit Test Windows Results'
-          results-path: ./.test/*.trx
+          name: MacOs Test Report                  # Name of the check run which will be created
+          path: './.test/*.trx'                     # Path to test results (inside artifact .zip)
+          reporter: dotnet-trx              # Format of test results
+          list-tests: 'all'
   
   Run_Test_On_Ubuntu_Latest:
     runs-on: ubuntu-latest
