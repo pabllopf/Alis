@@ -48,9 +48,7 @@ namespace Alis.Core.Aspect.Data.Sample
                 Name = "Prince Charming",
                 Artist = "Metallica",
                 Genre = "Rock and Metal",
-                Album = "Reload",
-                AlbumImage = "http://up203.siz.co.il/up2/u2zzzw4mjayz.png",
-                Link = "http://f2h.co.il/7779182246886"
+                Album = "Reload"
             };
 
             // This will produce a JSON String
