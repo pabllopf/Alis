@@ -36,7 +36,7 @@ jobs:
         with:
           artifact: test-results            
           name: dotnet-trx               
-          path: '.test/*.trx'                    
+          path: '*.trx'                     
           reporter: dotnet-trx
           list-tests: 'all'
   
@@ -65,7 +65,7 @@ jobs:
         with:
           artifact: test-results            
           name: dotnet-trx               
-          path: '.test/*.trx'                    
+          path: '*.trx'                      
           reporter: dotnet-trx
           list-tests: 'all'
   
@@ -93,7 +93,7 @@ jobs:
         with:
           artifact: test-results            
           name: dotnet-trx               
-          path: '.test/*.trx'                    
+          path: '*.trx'                    
           reporter: dotnet-trx
           list-tests: 'all'
     
