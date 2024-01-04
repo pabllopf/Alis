@@ -30,6 +30,15 @@ jobs:
 
       - name: Dotnet test Release
         run: dotnet test alis.sln --configuration Release
+
+      - name: Test report (macos-latest)
+        uses: dorny/test-reporter@v1
+        with:
+          artifact: test-results            
+          name: dotnet-trx               
+          path: '*.trx'                     
+          reporter: dotnet-trx
+          list-tests: 'all'
   
   
   Run_Test_On_Windows_Latest:
@@ -50,6 +59,15 @@ jobs:
 
       - name: Dotnet test Release
         run: dotnet test alis.sln --configuration Release
+
+      - name: Test report (windows-latest)
+        uses: dorny/test-reporter@v1
+        with:
+          artifact: test-results            
+          name: dotnet-trx               
+          path: '*.trx'                      
+          reporter: dotnet-trx
+          list-tests: 'all'
   
   Run_Test_On_Ubuntu_Latest:
     runs-on: ubuntu-latest
@@ -69,4 +87,13 @@ jobs:
 
       - name: Dotnet test Release
         run: dotnet test alis.sln --configuration Release
+
+      - name: Test report (ubuntu-latest)
+        uses: dorny/test-reporter@v1
+        with:
+          artifact: test-results            
+          name: dotnet-trx               
+          path: '*.trx'                    
+          reporter: dotnet-trx
+          list-tests: 'all'
     
