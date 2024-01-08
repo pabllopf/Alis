@@ -94,7 +94,7 @@ jobs:
         with:
           files: |
             .test/**/*.trx
-            
+
       - name: Set badge color
         shell: bash
         run: |
@@ -109,7 +109,7 @@ jobs:
               echo "BADGE_COLOR=696969" >> $GITHUB_ENV
               ;;
           esac
-      
+
       - name: Create badge
         uses: emibcn/badge-action@v2.0.2
         with:
@@ -117,7 +117,7 @@ jobs:
           status: '${{ fromJSON( steps.test-results.outputs.json ).formatted.stats.tests }} tests, ${{ fromJSON( steps.test-results.outputs.json ).formatted.stats.runs }} runs: ${{ fromJSON( steps.test-results.outputs.json ).conclusion }}'
           color: ${{ env.BADGE_COLOR }}
           path: badge.svg
-      
+
       - name: Upload badge to Gist
         # Upload only for master branch
         if: >

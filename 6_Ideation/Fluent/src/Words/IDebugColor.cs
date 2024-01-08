@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ${File.FileName}
+//  File: IDebugColor.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The debug color interface
+    ///     The debug color interface
     /// </summary>
     public interface IDebugColor<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Debugs the color using the specified value
+        ///     Debugs the color using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

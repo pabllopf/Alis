@@ -204,8 +204,8 @@ namespace Alis.Core.Ecs.Component.Collider
             Body.LinearVelocity = LinearVelocity;
             Body.Awake = true;
             Body.IsSensor = IsTrigger;
-            Body.GameObject = this.GameObject;
-            
+            Body.GameObject = GameObject;
+
             Body.OnCollision += OnCollision;
             Body.OnSeparation += OnSeparation;
 
@@ -214,7 +214,7 @@ namespace Alis.Core.Ecs.Component.Collider
         }
 
         /// <summary>
-        /// Ons the separation using the specified fixturea
+        ///     Ons the separation using the specified fixturea
         /// </summary>
         /// <param name="fixturea">The fixturea</param>
         /// <param name="fixtureb">The fixtureb</param>
@@ -224,8 +224,8 @@ namespace Alis.Core.Ecs.Component.Collider
             // Check if collision this gameobject with others gameobjects:
             GameObject fixtureAGameObject = (GameObject) fixturea.Body.GameObject;
             GameObject fixtureBGameObject = (GameObject) fixtureb.Body.GameObject;
-            
-            if (fixtureAGameObject.Equals(this.GameObject))
+
+            if (fixtureAGameObject.Equals(GameObject))
             {
                 if (fixtureBGameObject.Contains<BoxCollider>())
                 {
@@ -233,7 +233,7 @@ namespace Alis.Core.Ecs.Component.Collider
                     //Console.WriteLine($"Gameobject {fixtureAGameObject.Name} collision with " + fixtureBGameObject.Name);
                 }
             }
-            else if (fixtureBGameObject.Equals(this.GameObject))
+            else if (fixtureBGameObject.Equals(GameObject))
             {
                 if (fixtureAGameObject.Contains<BoxCollider>())
                 {
@@ -244,7 +244,7 @@ namespace Alis.Core.Ecs.Component.Collider
         }
 
         /// <summary>
-        /// Ons the collision using the specified fixturea
+        ///     Ons the collision using the specified fixturea
         /// </summary>
         /// <param name="fixturea">The fixturea</param>
         /// <param name="fixtureb">The fixtureb</param>
@@ -254,8 +254,8 @@ namespace Alis.Core.Ecs.Component.Collider
             // Check if collision this gameobject with others gameobjects:
             GameObject fixtureAGameObject = (GameObject) fixturea.Body.GameObject;
             GameObject fixtureBGameObject = (GameObject) fixtureb.Body.GameObject;
-            
-            if (fixtureAGameObject.Equals(this.GameObject))
+
+            if (fixtureAGameObject.Equals(GameObject))
             {
                 if (fixtureBGameObject.Contains<BoxCollider>())
                 {
@@ -263,7 +263,7 @@ namespace Alis.Core.Ecs.Component.Collider
                     //Console.WriteLine($"Gameobject {fixtureAGameObject.Name} collision with " + fixtureBGameObject.Name);
                 }
             }
-            else if (fixtureBGameObject.Equals(this.GameObject))
+            else if (fixtureBGameObject.Equals(GameObject))
             {
                 if (fixtureAGameObject.Contains<BoxCollider>())
                 {
@@ -343,7 +343,7 @@ namespace Alis.Core.Ecs.Component.Collider
         }
 
         /// <summary>
-        /// Ons the exit
+        ///     Ons the exit
         /// </summary>
         public override void OnExit()
         {

@@ -33,18 +33,18 @@ using Alis.Core.Ecs.Component.Ui;
 namespace Alis.Builder.Core.Ecs.Component.Ui
 {
     /// <summary>
-    /// The canvas builder class
+    ///     The canvas builder class
     /// </summary>
-    /// <seealso cref="IBuild{Canvas}"/>
+    /// <seealso cref="IBuild{Canvas}" />
     public class CanvasBuilder : IBuild<Canvas>
     {
         /// <summary>
-        /// The canvas
+        ///     The canvas
         /// </summary>
         private readonly Canvas canvas = new Canvas();
 
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The canvas</returns>
         public Canvas Build() => canvas;

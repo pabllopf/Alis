@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ${File.FileName}
+//  File: JsonEventType.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,53 +30,53 @@
 namespace Alis.Core.Aspect.Data.Json
 {
     /// <summary>
-    /// Defines a type of JSON event.
+    ///     Defines a type of JSON event.
     /// </summary>
     public enum JsonEventType
     {
         /// <summary>
-        /// An unspecified type of event.
+        ///     An unspecified type of event.
         /// </summary>
         Unspecified,
 
         /// <summary>
-        /// The write value event type.
+        ///     The write value event type.
         /// </summary>
         WriteValue,
 
         /// <summary>
-        /// The before write object event type.
+        ///     The before write object event type.
         /// </summary>
         BeforeWriteObject,
 
         /// <summary>
-        /// The after write object event type.
+        ///     The after write object event type.
         /// </summary>
         AfterWriteObject,
 
         /// <summary>
-        /// The write named value object event type.
+        ///     The write named value object event type.
         /// </summary>
         WriteNamedValueObject,
 
         /// <summary>
-        /// The create instance event type.
+        ///     The create instance event type.
         /// </summary>
         CreateInstance,
 
         /// <summary>
-        /// The map entry event type.
+        ///     The map entry event type.
         /// </summary>
         MapEntry,
 
         /// <summary>
-        /// The apply entry event type.
+        ///     The apply entry event type.
         /// </summary>
         ApplyEntry,
 
         /// <summary>
-        /// The get list object event type.
+        ///     The get list object event type.
         /// </summary>
-        GetListObject,
+        GetListObject
     }
 }

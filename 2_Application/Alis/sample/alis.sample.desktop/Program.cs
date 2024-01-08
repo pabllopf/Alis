@@ -5,10 +5,10 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File: Program.cs
 // 
-//  Author:Pablo Perdomo Falcón
-//  Web: https://www.pabllopf.dev/
+//  Author: Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
@@ -27,10 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Aspect.Data;
-using Alis.Core.Ecs;
-
 namespace Alis.Sample.Desktop
 {
     /// <summary>
@@ -38,12 +34,10 @@ namespace Alis.Sample.Desktop
     /// </summary>
     public static class Program
     {
-        
         /// <summary>
         ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
         public static void Main(string[] args) => VideoGame.Builder().Run();
     }
-
 }

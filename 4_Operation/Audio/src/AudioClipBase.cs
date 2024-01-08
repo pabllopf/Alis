@@ -60,6 +60,7 @@ namespace Alis.Core.Audio
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
             Logger.Log($"Init music: '{fullPathAudio}'");
         }
 
@@ -130,7 +131,7 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     Gets or sets the value of the is playing
         /// </summary>
-        public bool IsPlaying { get => player.Playing; }
+        public bool IsPlaying => player.Playing;
 
         /// <summary>
         ///     Gets or sets the value of the full path audio file
@@ -169,6 +170,7 @@ namespace Alis.Core.Audio
                         {
                             Task.Run(() => player.Play(FullPathAudioFile).Wait());
                         }
+
                         break;
                     case AudioBackendType.Sld:
                     default:
@@ -192,7 +194,7 @@ namespace Alis.Core.Audio
                         {
                             Task.Run(() => player.Stop());
                         }
-                        
+
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

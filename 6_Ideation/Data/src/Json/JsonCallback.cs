@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ${File.FileName}
+//  File: JsonCallback.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,7 +30,7 @@
 namespace Alis.Core.Aspect.Data.Json
 {
     /// <summary>
-    /// Defines a callback delegate to customize JSON serialization and deserialization.
+    ///     Defines a callback delegate to customize JSON serialization and deserialization.
     /// </summary>
     public delegate void JsonCallback(JsonEventArgs e);
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ${File.FileName}
+//  File: JsonOptions.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -34,21 +34,22 @@ using System.Globalization;
 namespace Alis.Core.Aspect.Data.Json
 {
     /// <summary>
-    /// Define options for JSON.
+    ///     Define options for JSON.
     /// </summary>
     public class JsonOptions
     {
         /// <summary>
-        /// The exception
-        /// </summary>
-        private readonly List<Exception> _exceptions = new List<Exception>();
-        /// <summary>
-        /// The allow white spaces
+        ///     The allow white spaces
         /// </summary>
         internal static DateTimeStyles _defaultDateTimeStyles = DateTimeStyles.AssumeUniversal | DateTimeStyles.AllowInnerWhite | DateTimeStyles.AllowLeadingWhite | DateTimeStyles.AllowTrailingWhite | DateTimeStyles.AllowWhiteSpaces;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JsonOptions" /> class.
+        ///     The exception
+        /// </summary>
+        private readonly List<Exception> _exceptions = new List<Exception>();
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="JsonOptions" /> class.
         /// </summary>
         public JsonOptions()
         {
@@ -61,100 +62,174 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Gets a value indicating the current serialization level.
+        ///     Gets a value indicating the current serialization level.
         /// </summary>
         /// <value>
-        /// The current serialization level.
+        ///     The current serialization level.
         /// </value>
         public int SerializationLevel { get; internal set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether exceptions can be thrown during serialization or deserialization.
-        /// If this is set to false, exceptions will be stored in the Exceptions collection.
-        /// However, if the number of exceptions is equal to or higher than MaximumExceptionsCount, an exception will be thrown.
+        ///     Gets or sets a value indicating whether exceptions can be thrown during serialization or deserialization.
+        ///     If this is set to false, exceptions will be stored in the Exceptions collection.
+        ///     However, if the number of exceptions is equal to or higher than MaximumExceptionsCount, an exception will be
+        ///     thrown.
         /// </summary>
         /// <value>
-        /// <c>true</c> if exceptions can be thrown on serialization or deserialization; otherwise, <c>false</c>.
+        ///     <c>true</c> if exceptions can be thrown on serialization or deserialization; otherwise, <c>false</c>.
         /// </value>
         public virtual bool ThrowExceptions { get; set; }
 
         /// <summary>
-        /// Gets or sets the maximum exceptions count.
+        ///     Gets or sets the maximum exceptions count.
         /// </summary>
         /// <value>
-        /// The maximum exceptions count.
+        ///     The maximum exceptions count.
         /// </value>
         public virtual int MaximumExceptionsCount { get; set; }
 
         /// <summary>
-        /// Gets or sets the JSONP callback. It will be added as wrapper around the result.
-        /// Check this article for more: http://en.wikipedia.org/wiki/JSONP
+        ///     Gets or sets the JSONP callback. It will be added as wrapper around the result.
+        ///     Check this article for more: http://en.wikipedia.org/wiki/JSONP
         /// </summary>
         /// <value>
-        /// The JSONP callback name.
+        ///     The JSONP callback name.
         /// </value>
         public virtual string JsonPCallback { get; set; }
 
         /// <summary>
-        /// Gets or sets the guid format.
+        ///     Gets or sets the guid format.
         /// </summary>
         /// <value>
-        /// The guid format.
+        ///     The guid format.
         /// </value>
         public virtual string GuidFormat { get; set; }
 
         /// <summary>
-        /// Gets or sets the date time format.
+        ///     Gets or sets the date time format.
         /// </summary>
         /// <value>
-        /// The date time format.
+        ///     The date time format.
         /// </value>
         public virtual string DateTimeFormat { get; set; }
 
         /// <summary>
-        /// Gets or sets the date time offset format.
+        ///     Gets or sets the date time offset format.
         /// </summary>
         /// <value>
-        /// The date time offset format.
+        ///     The date time offset format.
         /// </value>
         public virtual string DateTimeOffsetFormat { get; set; }
 
         /// <summary>
-        /// Gets or sets the date time styles.
+        ///     Gets or sets the date time styles.
         /// </summary>
         /// <value>
-        /// The date time styles.
+        ///     The date time styles.
         /// </value>
         public virtual DateTimeStyles DateTimeStyles { get; set; }
 
         /// <summary>
-        /// Gets or sets the size of the streaming buffer chunk. Minimum value is 512.
+        ///     Gets or sets the size of the streaming buffer chunk. Minimum value is 512.
         /// </summary>
         /// <value>
-        /// The size of the streaming buffer chunk.
+        ///     The size of the streaming buffer chunk.
         /// </value>
         public virtual int StreamingBufferChunkSize { get; set; }
 
         /// <summary>
-        /// Gets or sets the formatting tab string.
+        ///     Gets or sets the formatting tab string.
         /// </summary>
         /// <value>
-        /// The formatting tab.
+        ///     The formatting tab.
         /// </value>
         public virtual string FormattingTab { get; set; }
 
         /// <summary>
-        /// Gets the deseralization exceptions. Will be empty if ThrowExceptions is set to false.
+        ///     Gets the deseralization exceptions. Will be empty if ThrowExceptions is set to false.
         /// </summary>
         /// <value>
-        /// The list of deseralization exceptions.
+        ///     The list of deseralization exceptions.
         /// </value>
 #pragma warning disable CA1819 // Properties should not return arrays
         public virtual Exception[] Exceptions => _exceptions.ToArray();
 #pragma warning restore CA1819 // Properties should not return arrays
 
         /// <summary>
-        /// Finalizes the serialization members from an initial setup of members.
+        ///     Gets or sets the serialization options.
+        /// </summary>
+        /// <value>The serialization options.</value>
+        public virtual JsonSerializationOptions SerializationOptions { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a write value callback.
+        /// </summary>
+        /// <value>The callback.</value>
+        public virtual JsonCallback WriteValueCallback { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a callback that is called before an object (not a value) is serialized.
+        /// </summary>
+        /// <value>The callback.</value>
+        public virtual JsonCallback BeforeWriteObjectCallback { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a callback that is called before an object (not a value) is serialized.
+        /// </summary>
+        /// <value>The callback.</value>
+        public virtual JsonCallback AfterWriteObjectCallback { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a callback that is called before an object field or property is serialized.
+        /// </summary>
+        /// <value>The callback.</value>
+        public virtual JsonCallback WriteNamedValueObjectCallback { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a callback that is called before an instance of an object is created.
+        /// </summary>
+        /// <value>The callback.</value>
+        public virtual JsonCallback CreateInstanceCallback { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a callback that is called during deserialization, before a dictionary entry is mapped to a target
+        ///     object.
+        /// </summary>
+        /// <value>The callback.</value>
+        public virtual JsonCallback MapEntryCallback { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a callback that is called during deserialization, before a dictionary entry is applied to a target
+        ///     object.
+        /// </summary>
+        /// <value>The callback.</value>
+        public virtual JsonCallback ApplyEntryCallback { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a callback that is called during deserialization, to deserialize a list object.
+        /// </summary>
+        /// <value>The callback.</value>
+        public virtual JsonCallback GetListObjectCallback { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a utility class that will store an object graph to avoid serialization cycles.
+        ///     If null, a Dictionary&lt;object, object&gt; using an object reference comparer will be used.
+        /// </summary>
+        /// <value>The object graph instance.</value>
+        public virtual IDictionary<object, object> ObjectGraph { get; set; }
+
+        /// <summary>
+        ///     Gets the value of the final streaming buffer chunk size
+        /// </summary>
+        internal int FinalStreamingBufferChunkSize => Math.Max(512, StreamingBufferChunkSize);
+
+        /// <summary>
+        ///     Gets the value of the final object graph
+        /// </summary>
+        internal IDictionary<object, object> FinalObjectGraph => ObjectGraph ?? new Dictionary<object, object>(JsonSerializer.ReferenceComparer.Instance);
+
+        /// <summary>
+        ///     Finalizes the serialization members from an initial setup of members.
         /// </summary>
         /// <param name="type">The input type. May not be null.</param>
         /// <param name="members">The members. May not be null.</param>
@@ -162,7 +237,7 @@ namespace Alis.Core.Aspect.Data.Json
         public virtual IEnumerable<JsonSerializer.MemberDefinition> FinalizeSerializationMembers(Type type, IEnumerable<JsonSerializer.MemberDefinition> members) => members;
 
         /// <summary>
-        /// Finalizes the deserialization members from an initial setup of members.
+        ///     Finalizes the deserialization members from an initial setup of members.
         /// </summary>
         /// <param name="type">The input type. May not be null.</param>
         /// <param name="members">The members. May not be null.</param>
@@ -170,68 +245,7 @@ namespace Alis.Core.Aspect.Data.Json
         public virtual IEnumerable<JsonSerializer.MemberDefinition> FinalizeDeserializationMembers(Type type, IEnumerable<JsonSerializer.MemberDefinition> members) => members;
 
         /// <summary>
-        /// Gets or sets the serialization options.
-        /// </summary>
-        /// <value>The serialization options.</value>
-        public virtual JsonSerializationOptions SerializationOptions { get; set; }
-
-        /// <summary>
-        /// Gets or sets a write value callback.
-        /// </summary>
-        /// <value>The callback.</value>
-        public virtual JsonCallback WriteValueCallback { get; set; }
-
-        /// <summary>
-        /// Gets or sets a callback that is called before an object (not a value) is serialized.
-        /// </summary>
-        /// <value>The callback.</value>
-        public virtual JsonCallback BeforeWriteObjectCallback { get; set; }
-
-        /// <summary>
-        /// Gets or sets a callback that is called before an object (not a value) is serialized.
-        /// </summary>
-        /// <value>The callback.</value>
-        public virtual JsonCallback AfterWriteObjectCallback { get; set; }
-
-        /// <summary>
-        /// Gets or sets a callback that is called before an object field or property is serialized.
-        /// </summary>
-        /// <value>The callback.</value>
-        public virtual JsonCallback WriteNamedValueObjectCallback { get; set; }
-
-        /// <summary>
-        /// Gets or sets a callback that is called before an instance of an object is created.
-        /// </summary>
-        /// <value>The callback.</value>
-        public virtual JsonCallback CreateInstanceCallback { get; set; }
-
-        /// <summary>
-        /// Gets or sets a callback that is called during deserialization, before a dictionary entry is mapped to a target object.
-        /// </summary>
-        /// <value>The callback.</value>
-        public virtual JsonCallback MapEntryCallback { get; set; }
-
-        /// <summary>
-        /// Gets or sets a callback that is called during deserialization, before a dictionary entry is applied to a target object.
-        /// </summary>
-        /// <value>The callback.</value>
-        public virtual JsonCallback ApplyEntryCallback { get; set; }
-
-        /// <summary>
-        /// Gets or sets a callback that is called during deserialization, to deserialize a list object.
-        /// </summary>
-        /// <value>The callback.</value>
-        public virtual JsonCallback GetListObjectCallback { get; set; }
-
-        /// <summary>
-        /// Gets or sets a utility class that will store an object graph to avoid serialization cycles.
-        /// If null, a Dictionary&lt;object, object&gt; using an object reference comparer will be used.
-        /// </summary>
-        /// <value>The object graph instance.</value>
-        public virtual IDictionary<object, object> ObjectGraph { get; set; }
-
-        /// <summary>
-        /// Adds an exception to the list of exceptions.
+        ///     Adds an exception to the list of exceptions.
         /// </summary>
         /// <param name="error">The exception to add.</param>
         public virtual void AddException(Exception error)
@@ -246,16 +260,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Gets the value of the final streaming buffer chunk size
-        /// </summary>
-        internal int FinalStreamingBufferChunkSize => System.Math.Max(512, StreamingBufferChunkSize);
-        /// <summary>
-        /// Gets the value of the final object graph
-        /// </summary>
-        internal IDictionary<object, object> FinalObjectGraph => ObjectGraph ?? new Dictionary<object, object>(JsonSerializer.ReferenceComparer.Instance);
-
-        /// <summary>
-        /// Clones this instance.
+        ///     Clones this instance.
         /// </summary>
         /// <returns>A newly created insance of this class with all values copied.</returns>
         public virtual JsonOptions Clone()
@@ -285,9 +290,9 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Gets a key that can be used for type cache.
+        ///     Gets a key that can be used for type cache.
         /// </summary>
         /// <returns>A cache key.</returns>
-        public virtual string GetCacheKey() => ((int)SerializationOptions).ToString();
+        public virtual string GetCacheKey() => ((int) SerializationOptions).ToString();
     }
 }

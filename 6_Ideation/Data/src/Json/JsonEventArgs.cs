@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ${File.FileName}
+//  File: JsonEventArgs.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -34,12 +34,12 @@ using System.IO;
 namespace Alis.Core.Aspect.Data.Json
 {
     /// <summary>
-    /// Provides data for a JSON event.
+    ///     Provides data for a JSON event.
     /// </summary>
     public class JsonEventArgs : EventArgs
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="JsonEventArgs"/> class.
+        ///     Initializes a new instance of the <see cref="JsonEventArgs" /> class.
         /// </summary>
         /// <param name="writer">The writer currently in use.</param>
         /// <param name="value">The value on the stack.</param>
@@ -51,7 +51,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JsonEventArgs"/> class.
+        ///     Initializes a new instance of the <see cref="JsonEventArgs" /> class.
         /// </summary>
         /// <param name="writer">The writer currently in use.</param>
         /// <param name="value">The value on the stack.</param>
@@ -70,60 +70,61 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Gets the options currently in use.
+        ///     Gets the options currently in use.
         /// </summary>
         /// <value>The options.</value>
         public JsonOptions Options { get; }
 
         /// <summary>
-        /// Gets the writer currently in use.
+        ///     Gets the writer currently in use.
         /// </summary>
         /// <value>The writer.</value>
         public TextWriter Writer { get; }
 
         /// <summary>
-        /// Gets the current serialization object graph.
+        ///     Gets the current serialization object graph.
         /// </summary>
         /// <value>The object graph.</value>
         public IDictionary<object, object> ObjectGraph { get; }
 
         /// <summary>
-        /// Gets the component holding the value. May be null.
+        ///     Gets the component holding the value. May be null.
         /// </summary>
         /// <value>The component.</value>
         public virtual object Component { get; }
 
         /// <summary>
-        /// Gets or sets the type of the event.
+        ///     Gets or sets the type of the event.
         /// </summary>
         /// <value>
-        /// The type of the event.
+        ///     The type of the event.
         /// </value>
         public virtual JsonEventType EventType { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="JsonEventArgs"/> is handled.
-        /// An handled object can be skipped, not written to the stream. If the object is written, First must be set to false, otherwise it must not be changed.
+        ///     Gets or sets a value indicating whether this <see cref="JsonEventArgs" /> is handled.
+        ///     An handled object can be skipped, not written to the stream. If the object is written, First must be set to false,
+        ///     otherwise it must not be changed.
         /// </summary>
         /// <value><c>true</c> if handled; otherwise, <c>false</c>.</value>
         public virtual bool Handled { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the object being handled is first in the list.
-        /// If the object is handled and written to the stream, this must be set to false after the stream is written.
-        /// If the object is skipped, it must not be changed.
+        ///     Gets or sets a value indicating whether the object being handled is first in the list.
+        ///     If the object is handled and written to the stream, this must be set to false after the stream is written.
+        ///     If the object is skipped, it must not be changed.
         /// </summary>
         /// <value><c>true</c> if this is the first object; otherwise, <c>false</c>.</value>
         public virtual bool First { get; set; }
 
         /// <summary>
-        /// Gets or sets the value on the stack.
+        ///     Gets or sets the value on the stack.
         /// </summary>
         /// <value>The value.</value>
         public virtual object Value { get; set; }
 
         /// <summary>
-        /// Gets or sets the name on the stack. The Name can be a property or field name when serializing objects. May be null.
+        ///     Gets or sets the name on the stack. The Name can be a property or field name when serializing objects. May be null.
         /// </summary>
         /// <value>The value.</value>
         public virtual string Name { get; set; }

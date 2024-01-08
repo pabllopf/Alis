@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ${File.FileName}
+//  File: JsonSerializer.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -45,99 +45,117 @@ using System.Xml.Serialization;
 namespace Alis.Core.Aspect.Data.Json
 {
     /// <summary>
-    /// A utility class to serialize and deserialize JSON.
+    ///     A utility class to serialize and deserialize JSON.
     /// </summary>
     public static class JsonSerializer
     {
         /// <summary>
-        /// The null
+        ///     The null
         /// </summary>
         private const string _null = "null";
+
         /// <summary>
-        /// The true
+        ///     The true
         /// </summary>
         private const string _true = "true";
+
         /// <summary>
-        /// The false
+        ///     The false
         /// </summary>
         private const string _false = "false";
+
         /// <summary>
-        /// The zero arg
+        ///     The zero arg
         /// </summary>
         private const string _zeroArg = "{0}";
+
         /// <summary>
-        /// The date start js
+        ///     The date start js
         /// </summary>
         private const string _dateStartJs = "new Date(";
+
         /// <summary>
-        /// The date end js
+        ///     The date end js
         /// </summary>
         private const string _dateEndJs = ")";
+
         /// <summary>
-        /// The date start
+        ///     The date start
         /// </summary>
         private const string _dateStart = @"""\/Date(";
+
         /// <summary>
-        /// The date start
+        ///     The date start
         /// </summary>
         private const string _dateStart2 = @"/Date(";
+
         /// <summary>
-        /// The date end
+        ///     The date end
         /// </summary>
         private const string _dateEnd = @")\/""";
+
         /// <summary>
-        /// The date end
+        ///     The date end
         /// </summary>
         private const string _dateEnd2 = @")/";
+
         /// <summary>
-        /// The round trip format
+        ///     The round trip format
         /// </summary>
         private const string _roundTripFormat = "R";
+
         /// <summary>
-        /// The enum format
+        ///     The enum format
         /// </summary>
         private const string _enumFormat = "D";
+
         /// <summary>
-        /// The format
+        ///     The format
         /// </summary>
         private const string _x4Format = "{0:X4}";
+
         /// <summary>
-        /// The format
+        ///     The format
         /// </summary>
         private const string _d2Format = "D2";
+
         /// <summary>
-        /// The script ignore
+        ///     The script ignore
         /// </summary>
         private const string _scriptIgnore = "ScriptIgnore";
+
         /// <summary>
-        /// The serialization type token
+        ///     The serialization type token
         /// </summary>
         private const string _serializationTypeToken = "__type";
 
         /// <summary>
-        /// The date formats utc
+        ///     The date formats utc
         /// </summary>
-        private static readonly string[] _dateFormatsUtc = { "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'", "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", "yyyy'-'MM'-'dd'T'HH':'mm'Z'", "yyyyMMdd'T'HH':'mm':'ss'Z'" };
+        private static readonly string[] _dateFormatsUtc = {"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'", "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", "yyyy'-'MM'-'dd'T'HH':'mm'Z'", "yyyyMMdd'T'HH':'mm':'ss'Z'"};
+
         /// <summary>
-        /// The utc
+        ///     The utc
         /// </summary>
         private static readonly DateTime _minDateTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
         /// <summary>
-        /// The ticks
+        ///     The ticks
         /// </summary>
         private static readonly long _minDateTimeTicks = _minDateTime.Ticks;
+
         /// <summary>
-        /// The formatter converter
+        ///     The formatter converter
         /// </summary>
         private static readonly FormatterConverter _defaultFormatterConverter = new FormatterConverter();
 
         /// <summary>
-        /// Serializes the specified object. Supports anonymous and dynamic types.
+        ///     Serializes the specified object. Supports anonymous and dynamic types.
         /// </summary>
         /// <param name="value">The object to serialize.</param>
         /// <param name="options">Options to use for serialization.</param>
         /// <returns>
-        /// A JSON representation of the serialized object.
+        ///     A JSON representation of the serialized object.
         /// </returns>
         public static string Serialize(object value, JsonOptions options = null)
         {
@@ -149,7 +167,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Serializes the specified object to the specified TextWriter. Supports anonymous and dynamic types.
+        ///     Serializes the specified object to the specified TextWriter. Supports anonymous and dynamic types.
         /// </summary>
         /// <param name="writer">The output writer. May not be null.</param>
         /// <param name="value">The object to serialize.</param>
@@ -179,13 +197,13 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Deserializes an object from the specified text.
+        ///     Deserializes an object from the specified text.
         /// </summary>
         /// <param name="text">The text text.</param>
         /// <param name="targetType">The required target type.</param>
         /// <param name="options">Options to use for deserialization.</param>
         /// <returns>
-        /// An instance of an object representing the input data.
+        ///     An instance of an object representing the input data.
         /// </returns>
         public static object Deserialize(string text, Type targetType = null, JsonOptions options = null)
         {
@@ -207,35 +225,35 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Deserializes an object from the specified TextReader.
+        ///     Deserializes an object from the specified TextReader.
         /// </summary>
         /// <typeparam name="T">The target type.</typeparam>
         /// <param name="reader">The input reader. May not be null.</param>
         /// <param name="options">Options to use for deserialization.</param>
         /// <returns>
-        /// An instance of an object representing the input data.
+        ///     An instance of an object representing the input data.
         /// </returns>
-        public static T Deserialize<T>(TextReader reader, JsonOptions options = null) => (T)Deserialize(reader, typeof(T), options);
+        public static T Deserialize<T>(TextReader reader, JsonOptions options = null) => (T) Deserialize(reader, typeof(T), options);
 
         /// <summary>
-        /// Deserializes an object from the specified TextReader.
+        ///     Deserializes an object from the specified TextReader.
         /// </summary>
         /// <typeparam name="T">The target type.</typeparam>
         /// <param name="text">The text to deserialize.</param>
         /// <param name="options">Options to use for deserialization.</param>
         /// <returns>
-        /// An instance of an object representing the input data.
+        ///     An instance of an object representing the input data.
         /// </returns>
-        public static T Deserialize<T>(string text, JsonOptions options = null) => (T)Deserialize(text, typeof(T), options);
+        public static T Deserialize<T>(string text, JsonOptions options = null) => (T) Deserialize(text, typeof(T), options);
 
         /// <summary>
-        /// Deserializes an object from the specified TextReader.
+        ///     Deserializes an object from the specified TextReader.
         /// </summary>
         /// <param name="reader">The input reader. May not be null.</param>
         /// <param name="targetType">The required target type.</param>
         /// <param name="options">Options to use for deserialization.</param>
         /// <returns>
-        /// An instance of an object representing the input data.
+        ///     An instance of an object representing the input data.
         /// </returns>
         public static object Deserialize(TextReader reader, Type targetType = null, JsonOptions options = null)
         {
@@ -259,7 +277,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Deserializes data from the specified text and populates a specified object instance.
+        ///     Deserializes data from the specified text and populates a specified object instance.
         /// </summary>
         /// <param name="text">The text to deserialize.</param>
         /// <param name="target">The object instance to populate.</param>
@@ -276,7 +294,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Deserializes data from the specified TextReader and populates a specified object instance.
+        ///     Deserializes data from the specified TextReader and populates a specified object instance.
         /// </summary>
         /// <param name="reader">The input reader. May not be null.</param>
         /// <param name="target">The object instance to populate.</param>
@@ -294,7 +312,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Applies the content of an array or dictionary to a target object.
+        ///     Applies the content of an array or dictionary to a target object.
         /// </summary>
         /// <param name="input">The input object.</param>
         /// <param name="target">The target object.</param>
@@ -321,13 +339,12 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     lo.List = target;
                     ApplyToListTarget(target, input as IEnumerable, lo, options);
-                    return;
                 }
             }
         }
 
         /// <summary>
-        /// Creates the instance using the specified target
+        ///     Creates the instance using the specified target
         /// </summary>
         /// <param name="target">The target</param>
         /// <param name="type">The type</param>
@@ -361,6 +378,7 @@ namespace Alis.Core.Aspect.Data.Json
                     var elementType = type.GetElementType();
                     return Array.CreateInstance(elementType, elementsCount);
                 }
+
                 return Activator.CreateInstance(type);
             }
             catch (Exception e)
@@ -371,7 +389,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Gets the list object using the specified type
+        ///     Gets the list object using the specified type
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="options">The options</param>
@@ -411,7 +429,7 @@ namespace Alis.Core.Aspect.Data.Json
             if (type.IsGenericType)
             {
                 if (type.GetGenericTypeDefinition() == typeof(ICollection<>))
-                    return (ListObject)Activator.CreateInstance(typeof(ICollectionTObject<>).MakeGenericType(type.GetGenericArguments()[0]));
+                    return (ListObject) Activator.CreateInstance(typeof(ICollectionTObject<>).MakeGenericType(type.GetGenericArguments()[0]));
             }
 
             foreach (var iface in type.GetInterfaces())
@@ -420,47 +438,14 @@ namespace Alis.Core.Aspect.Data.Json
                     continue;
 
                 if (iface.GetGenericTypeDefinition() == typeof(ICollection<>))
-                    return (ListObject)Activator.CreateInstance(typeof(ICollectionTObject<>).MakeGenericType(iface.GetGenericArguments()[0]));
+                    return (ListObject) Activator.CreateInstance(typeof(ICollectionTObject<>).MakeGenericType(iface.GetGenericArguments()[0]));
             }
+
             return null;
         }
 
         /// <summary>
-        /// Defines an object that handles list deserialization.
-        /// </summary>
-        public abstract class ListObject
-        {
-            /// <summary>
-            /// Gets or sets the list object.
-            /// </summary>
-            /// <value>
-            /// The list.
-            /// </value>
-            public virtual object List { get; set; }
-
-            /// <summary>
-            /// Clears the list object.
-            /// </summary>
-            public abstract void Clear();
-
-            /// <summary>
-            /// Adds a value to the list object.
-            /// </summary>
-            /// <param name="value">The value.</param>
-            /// <param name="options">The options.</param>
-            public abstract void Add(object value, JsonOptions options = null);
-
-            /// <summary>
-            /// Gets the current context.
-            /// </summary>
-            /// <value>
-            /// The context. May be null.
-            /// </value>
-            public virtual IDictionary<string, object> Context => null;
-        }
-
-        /// <summary>
-        /// Applies the to list target using the specified target
+        ///     Applies the to list target using the specified target
         /// </summary>
         /// <param name="target">The target</param>
         /// <param name="input">The input</param>
@@ -495,7 +480,7 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     if (array != null)
                     {
-                        if ((i - 1) == max)
+                        if (i - 1 == max)
                             break;
 
                         array.SetValue(ChangeType(target, value, itemType, options), i++);
@@ -526,6 +511,7 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     list.Context["action"] = "clear";
                 }
+
                 list.Clear();
             }
 
@@ -536,7 +522,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Applies the input
+        ///     Applies the input
         /// </summary>
         /// <param name="input">The input</param>
         /// <param name="target">The target</param>
@@ -562,7 +548,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether are values equal
+        ///     Describes whether are values equal
         /// </summary>
         /// <param name="o1">The </param>
         /// <param name="o2">The </param>
@@ -579,7 +565,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try get object default value
+        ///     Describes whether try get object default value
         /// </summary>
         /// <param name="att">The att</param>
         /// <param name="value">The value</param>
@@ -603,7 +589,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Gets the object name using the specified att
+        ///     Gets the object name using the specified att
         /// </summary>
         /// <param name="att">The att</param>
         /// <returns>The string</returns>
@@ -622,7 +608,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether try get object default value
+        ///     Describes whether try get object default value
         /// </summary>
         /// <param name="mi">The mi</param>
         /// <param name="value">The value</param>
@@ -638,12 +624,13 @@ namespace Alis.Core.Aspect.Data.Json
                         return true;
                 }
             }
+
             value = null;
             return false;
         }
 
         /// <summary>
-        /// Gets the object name using the specified mi
+        ///     Gets the object name using the specified mi
         /// </summary>
         /// <param name="mi">The mi</param>
         /// <param name="defaultName">The default name</param>
@@ -660,11 +647,12 @@ namespace Alis.Core.Aspect.Data.Json
                         return name;
                 }
             }
+
             return defaultName;
         }
 
         /// <summary>
-        /// Describes whether try get object default value
+        ///     Describes whether try get object default value
         /// </summary>
         /// <param name="pd">The pd</param>
         /// <param name="value">The value</param>
@@ -682,7 +670,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Gets the object name using the specified pd
+        ///     Gets the object name using the specified pd
         /// </summary>
         /// <param name="pd">The pd</param>
         /// <param name="defaultName">The default name</param>
@@ -695,11 +683,12 @@ namespace Alis.Core.Aspect.Data.Json
                 if (name != null)
                     return name;
             }
+
             return defaultName;
         }
 
         /// <summary>
-        /// Describes whether has script ignore
+        ///     Describes whether has script ignore
         /// </summary>
         /// <param name="pd">The pd</param>
         /// <returns>The bool</returns>
@@ -716,11 +705,12 @@ namespace Alis.Core.Aspect.Data.Json
                 if (att.GetType().Name.StartsWith(_scriptIgnore))
                     return true;
             }
+
             return false;
         }
 
         /// <summary>
-        /// Describes whether has script ignore
+        ///     Describes whether has script ignore
         /// </summary>
         /// <param name="mi">The mi</param>
         /// <returns>The bool</returns>
@@ -743,11 +733,12 @@ namespace Alis.Core.Aspect.Data.Json
                 if (att.GetType().Name.StartsWith(_scriptIgnore))
                     return true;
             }
+
             return false;
         }
 
         /// <summary>
-        /// Applies the dictionary
+        ///     Applies the dictionary
         /// </summary>
         /// <param name="dictionary">The dictionary</param>
         /// <param name="target">The target</param>
@@ -774,6 +765,7 @@ namespace Alis.Core.Aspect.Data.Json
                         dicTarget[entry.Key] = ChangeType(target, entry.Value, itemType, options);
                     }
                 }
+
                 return;
             }
 
@@ -810,7 +802,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Gets the json attribute using the specified pi
+        ///     Gets the json attribute using the specified pi
         /// </summary>
         /// <param name="pi">The pi</param>
         /// <returns>The json attribute</returns>
@@ -829,13 +821,13 @@ namespace Alis.Core.Aspect.Data.Json
 
                 if (att is JsonAttribute xatt)
                     return xatt;
-
             }
+
             return null;
         }
 
         /// <summary>
-        /// Gets the type of elements in a collection type.
+        ///     Gets the type of elements in a collection type.
         /// </summary>
         /// <param name="collectionType">The collection type.</param>
         /// <returns>The element type or typeof(object) if it was not determined.</returns>
@@ -861,31 +853,32 @@ namespace Alis.Core.Aspect.Data.Json
                 if (iface.GetGenericTypeDefinition() == typeof(IEnumerable<>))
                     return iface.GetGenericArguments()[0];
             }
+
             return typeof(object);
         }
 
         /// <summary>
-        /// Returns a System.Object with a specified type and whose value is equivalent to a specified input object.
-        /// If an error occurs, a computed default value of the target type will be returned.
+        ///     Returns a System.Object with a specified type and whose value is equivalent to a specified input object.
+        ///     If an error occurs, a computed default value of the target type will be returned.
         /// </summary>
         /// <param name="value">The input object. May be null.</param>
         /// <param name="conversionType">The target type. May not be null.</param>
         /// <param name="options">The options to use.</param>
         /// <returns>
-        /// An object of the target type whose value is equivalent to input value.
+        ///     An object of the target type whose value is equivalent to input value.
         /// </returns>
         public static object ChangeType(object value, Type conversionType, JsonOptions options) => ChangeType(null, value, conversionType, options);
 
         /// <summary>
-        /// Returns a System.Object with a specified type and whose value is equivalent to a specified input object.
-        /// If an error occurs, a computed default value of the target type will be returned.
+        ///     Returns a System.Object with a specified type and whose value is equivalent to a specified input object.
+        ///     If an error occurs, a computed default value of the target type will be returned.
         /// </summary>
         /// <param name="target">The target. May be null.</param>
         /// <param name="value">The input object. May be null.</param>
         /// <param name="conversionType">The target type. May not be null.</param>
         /// <param name="options">The options to use.</param>
         /// <returns>
-        /// An object of the target type whose value is equivalent to input value.
+        ///     An object of the target type whose value is equivalent to input value.
         /// </returns>
         public static object ChangeType(object target, object value, Type conversionType, JsonOptions options = null)
         {
@@ -914,6 +907,7 @@ namespace Alis.Core.Aspect.Data.Json
                         {
                             Array.Copy(list.ToArray(), array, list.Count);
                         }
+
                         return array;
                     }
                 }
@@ -937,10 +931,11 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     Apply(dic, instance, options);
                 }
+
                 return instance;
             }
 
-            if (conversionType == typeof(byte[]) && value is string str)
+            if ((conversionType == typeof(byte[])) && value is string str)
             {
                 if (options.SerializationOptions.HasFlag(JsonSerializationOptions.ByteArrayAsBase64))
                 {
@@ -983,7 +978,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Reads the array using the specified reader
+        ///     Reads the array using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
@@ -1002,6 +997,7 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     list.Add(value);
                 }
+
                 if (arrayEnd)
                     return list.ToArray();
 
@@ -1010,13 +1006,11 @@ namespace Alis.Core.Aspect.Data.Json
                     HandleException(GetExpectedCharacterException(GetPosition(reader), ']'), options);
                     return list.ToArray();
                 }
-
-            }
-            while (true);
+            } while (true);
         }
 
         /// <summary>
-        /// Gets the expected character exception using the specified pos
+        ///     Gets the expected character exception using the specified pos
         /// </summary>
         /// <param name="pos">The pos</param>
         /// <param name="c">The </param>
@@ -1024,13 +1018,14 @@ namespace Alis.Core.Aspect.Data.Json
         private static JsonException GetExpectedCharacterException(long pos, char c)
         {
             if (pos < 0)
-                return new JsonException("JSO0002: JSON deserialization error detected. Expecting '" + c + "' character."); ;
+                return new JsonException("JSO0002: JSON deserialization error detected. Expecting '" + c + "' character.");
+            ;
 
             return new JsonException("JSO0003: JSON deserialization error detected at position " + pos + ". Expecting '" + c + "' character.");
         }
 
         /// <summary>
-        /// Gets the unexpected character exception using the specified pos
+        ///     Gets the unexpected character exception using the specified pos
         /// </summary>
         /// <param name="pos">The pos</param>
         /// <param name="c">The </param>
@@ -1038,26 +1033,28 @@ namespace Alis.Core.Aspect.Data.Json
         private static JsonException GetUnexpectedCharacterException(long pos, char c)
         {
             if (pos < 0)
-                return new JsonException("JSO0004: JSON deserialization error detected. Unexpected '" + c + "' character."); ;
+                return new JsonException("JSO0004: JSON deserialization error detected. Unexpected '" + c + "' character.");
+            ;
 
             return new JsonException("JSO0005: JSON deserialization error detected at position " + pos + ". Unexpected '" + c + "' character.");
         }
 
         /// <summary>
-        /// Gets the expected hexa character exception using the specified pos
+        ///     Gets the expected hexa character exception using the specified pos
         /// </summary>
         /// <param name="pos">The pos</param>
         /// <returns>The json exception</returns>
         private static JsonException GetExpectedHexaCharacterException(long pos)
         {
             if (pos < 0)
-                return new JsonException("JSO0006: JSON deserialization error detected. Expecting hexadecimal character."); ;
+                return new JsonException("JSO0006: JSON deserialization error detected. Expecting hexadecimal character.");
+            ;
 
             return new JsonException("JSO0007: JSON deserialization error detected at position " + pos + ". Expecting hexadecimal character.");
         }
 
         /// <summary>
-        /// Gets the type exception using the specified pos
+        ///     Gets the type exception using the specified pos
         /// </summary>
         /// <param name="pos">The pos</param>
         /// <param name="typeName">The type name</param>
@@ -1072,14 +1069,14 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Gets the eof exception using the specified c
+        ///     Gets the eof exception using the specified c
         /// </summary>
         /// <param name="c">The </param>
         /// <returns>The json exception</returns>
         private static JsonException GetEofException(char c) => new JsonException("JSO0012: JSON deserialization error detected at end of text. Expecting '" + c + "' character.");
 
         /// <summary>
-        /// Gets the position using the specified reader
+        ///     Gets the position using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <returns>The long</returns>
@@ -1088,7 +1085,7 @@ namespace Alis.Core.Aspect.Data.Json
             if (reader == null)
                 return -1;
 
-            if (reader is StreamReader sr && sr.BaseStream != null)
+            if (reader is StreamReader sr && (sr.BaseStream != null))
             {
                 try
                 {
@@ -1104,13 +1101,14 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 var fi = typeof(StringReader).GetField("_pos", BindingFlags.Instance | BindingFlags.NonPublic);
                 if (fi != null)
-                    return (int)fi.GetValue(str);
+                    return (int) fi.GetValue(str);
             }
+
             return -1;
         }
 
         /// <summary>
-        /// Reads the dictionary using the specified reader
+        ///     Reads the dictionary using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
@@ -1131,7 +1129,7 @@ namespace Alis.Core.Aspect.Data.Json
                     return dictionary;
                 }
 
-                var c = (char)reader.Read();
+                var c = (char) reader.Read();
                 switch (c)
                 {
                     case '}':
@@ -1145,7 +1143,7 @@ namespace Alis.Core.Aspect.Data.Json
                             return dictionary;
                         }
 
-                        c = (char)reader.Peek();
+                        c = (char) reader.Peek();
                         if (c != ':')
                         {
                             HandleException(GetExpectedCharacterException(GetPosition(reader), ':'), options);
@@ -1169,12 +1167,11 @@ namespace Alis.Core.Aspect.Data.Json
                         HandleException(GetUnexpectedCharacterException(GetPosition(reader), c), options);
                         return dictionary;
                 }
-            }
-            while (true);
+            } while (true);
         }
 
         /// <summary>
-        /// Reads the string using the specified reader
+        ///     Reads the string using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
@@ -1191,7 +1188,7 @@ namespace Alis.Core.Aspect.Data.Json
                     return null;
                 }
 
-                var c = (char)reader.Read();
+                var c = (char) reader.Read();
                 if (c == '"')
                     break;
 
@@ -1204,7 +1201,7 @@ namespace Alis.Core.Aspect.Data.Json
                         return null;
                     }
 
-                    var next = (char)reader.Read();
+                    var next = (char) reader.Read();
                     switch (next)
                     {
                         case 'b':
@@ -1235,7 +1232,7 @@ namespace Alis.Core.Aspect.Data.Json
 
                         case 'u': // unicode
                             var us = ReadX4(reader, options);
-                            sb.Append((char)us);
+                            sb.Append((char) us);
                             break;
 
                         default:
@@ -1248,13 +1245,13 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     sb.Append(c);
                 }
-            }
-            while (true);
+            } while (true);
+
             return sb.ToString();
         }
 
         /// <summary>
-        /// Reads the serializable using the specified reader
+        ///     Reads the serializable using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
@@ -1274,7 +1271,7 @@ namespace Alis.Core.Aspect.Data.Json
                 return null;
             }
 
-            var ctor = type.GetConstructor(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance, null, new[] { typeof(SerializationInfo), typeof(StreamingContext) }, null);
+            var ctor = type.GetConstructor(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance, null, new[] {typeof(SerializationInfo), typeof(StreamingContext)}, null);
             var info = new SerializationInfo(type, _defaultFormatterConverter);
 
             foreach (var kvp in values)
@@ -1285,7 +1282,7 @@ namespace Alis.Core.Aspect.Data.Json
             var ctx = new StreamingContext(StreamingContextStates.Remoting, null);
             try
             {
-                return (ISerializable)ctor.Invoke(new object[] { info, ctx });
+                return (ISerializable) ctor.Invoke(new object[] {info, ctx});
             }
             catch (Exception e)
             {
@@ -1295,14 +1292,15 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Reads the value using the specified reader
+        ///     Reads the value using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
         /// <returns>The object</returns>
         private static object ReadValue(TextReader reader, JsonOptions options) => ReadValue(reader, options, false, out var _);
+
         /// <summary>
-        /// Reads the value using the specified reader
+        ///     Reads the value using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
@@ -1326,10 +1324,9 @@ namespace Alis.Core.Aspect.Data.Json
                 }
                 else
                     break;
-            }
-            while (true);
+            } while (true);
 
-            var c = (char)i;
+            var c = (char) i;
             if (c == '"')
             {
                 reader.Read();
@@ -1339,6 +1336,7 @@ namespace Alis.Core.Aspect.Data.Json
                     if (TryParseDateTime(s, options.DateTimeStyles, out var dt))
                         return dt;
                 }
+
                 return s;
             }
 
@@ -1357,6 +1355,7 @@ namespace Alis.Core.Aspect.Data.Json
                         }
                     }
                 }
+
                 return dic;
             }
 
@@ -1388,7 +1387,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Reads the new using the specified reader
+        ///     Reads the new using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
@@ -1404,10 +1403,10 @@ namespace Alis.Core.Aspect.Data.Json
                 if (i < 0)
                     break;
 
-                if (((char)i) == '}')
+                if ((char) i == '}')
                     break;
 
-                var c = (char)reader.Read();
+                var c = (char) reader.Read();
                 if (c == ',')
                     break;
 
@@ -1418,8 +1417,7 @@ namespace Alis.Core.Aspect.Data.Json
                 }
 
                 sb.Append(c);
-            }
-            while (true);
+            } while (true);
 
             var text = sb.ToString();
             if (string.Compare(_null, text.Trim(), StringComparison.OrdinalIgnoreCase) == 0)
@@ -1428,7 +1426,7 @@ namespace Alis.Core.Aspect.Data.Json
             if (text.StartsWith(_dateStartJs) && text.EndsWith(_dateEndJs))
             {
                 if (long.TryParse(text.Substring(_dateStartJs.Length, text.Length - _dateStartJs.Length - _dateEndJs.Length), out var l))
-                    return new DateTime((l * 10000) + _minDateTimeTicks, DateTimeKind.Utc);
+                    return new DateTime(l * 10000 + _minDateTimeTicks, DateTimeKind.Utc);
             }
 
             HandleException(GetUnexpectedCharacterException(GetPosition(reader), text[0]), options);
@@ -1436,7 +1434,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Reads the number or literal using the specified reader
+        ///     Reads the number or literal using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
@@ -1452,10 +1450,10 @@ namespace Alis.Core.Aspect.Data.Json
                 if (i < 0)
                     break;
 
-                if (((char)i) == '}')
+                if ((char) i == '}')
                     break;
 
-                var c = (char)reader.Read();
+                var c = (char) reader.Read();
                 if (char.IsWhiteSpace(c) || c == ',')
                     break;
 
@@ -1466,8 +1464,7 @@ namespace Alis.Core.Aspect.Data.Json
                 }
 
                 sb.Append(c);
-            }
-            while (true);
+            } while (true);
 
             var text = sb.ToString();
             if (string.Compare(_null, text, StringComparison.OrdinalIgnoreCase) == 0)
@@ -1509,7 +1506,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Converts the JSON string representation of a date time to its DateTime equivalent.
+        ///     Converts the JSON string representation of a date time to its DateTime equivalent.
         /// </summary>
         /// <param name="text">The input text.</param>
         /// <returns>A DateTime value if the text was converted successfully; otherwise, null.</returns>
@@ -1522,7 +1519,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Converts the JSON string representation of a date time to its DateTime equivalent.
+        ///     Converts the JSON string representation of a date time to its DateTime equivalent.
         /// </summary>
         /// <param name="text">The input text.</param>
         /// <param name="styles">The styles to use.</param>
@@ -1536,7 +1533,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Converts the JSON string representation of a date time to its DateTime equivalent.
+        ///     Converts the JSON string representation of a date time to its DateTime equivalent.
         /// </summary>
         /// <param name="text">The input text.</param>
         /// <param name="dt">When this method returns, contains the DateTime equivalent.</param>
@@ -1544,13 +1541,13 @@ namespace Alis.Core.Aspect.Data.Json
         public static bool TryParseDateTime(string text, out DateTime dt) => TryParseDateTime(text, JsonOptions._defaultDateTimeStyles, out dt);
 
         /// <summary>
-        /// Converts the JSON string representation of a date time to its DateTime equivalent.
+        ///     Converts the JSON string representation of a date time to its DateTime equivalent.
         /// </summary>
         /// <param name="text">The input text.</param>
         /// <param name="styles">The styles to use.</param>
         /// <param name="dt">When this method returns, contains the DateTime equivalent.</param>
         /// <returns>
-        /// true if the text was converted successfully; otherwise, false.
+        ///     true if the text was converted successfully; otherwise, false.
         /// </returns>
         public static bool TryParseDateTime(string text, DateTimeStyles styles, out DateTime dt)
         {
@@ -1560,7 +1557,7 @@ namespace Alis.Core.Aspect.Data.Json
 
             if (text.Length > 2)
             {
-                if (text[0] == '"' && text[text.Length - 1] == '"')
+                if ((text[0] == '"') && (text[text.Length - 1] == '"'))
                 {
                     using (var reader = new StringReader(text))
                     {
@@ -1588,17 +1585,17 @@ namespace Alis.Core.Aspect.Data.Json
             // s format length is 19, as in '2012-02-21T17:07:14'
             // so we can do quick checks
             // this portion of code is needed because we assume UTC and the default DateTime parse behavior is not that (even with AssumeUniversal)
-            if (text.Length >= len &&
-                text[4] == '-' &&
-                text[7] == '-' &&
+            if ((text.Length >= len) &&
+                (text[4] == '-') &&
+                (text[7] == '-') &&
                 (text[10] == 'T' || text[10] == 't') &&
-                text[13] == ':' &&
-                text[16] == ':')
+                (text[13] == ':') &&
+                (text[16] == ':'))
             {
                 if (DateTime.TryParseExact(text, "o", null, DateTimeStyles.AssumeUniversal, out dt))
                     return true;
 
-                var tz = text.Substring(len).IndexOfAny(new[] { '+', '-' });
+                var tz = text.Substring(len).IndexOfAny(new[] {'+', '-'});
                 var text2 = text;
                 if (tz >= 0)
                 {
@@ -1614,6 +1611,7 @@ namespace Alis.Core.Aspect.Data.Json
                             offsetHours = -offsetHours;
                             offsetMinutes = -offsetMinutes;
                         }
+
                         text2 = text.Substring(0, tz);
                     }
                 }
@@ -1631,6 +1629,7 @@ namespace Alis.Core.Aspect.Data.Json
                         {
                             dt = dt.AddMinutes(offsetMinutes);
                         }
+
                         return true;
                     }
                 }
@@ -1643,9 +1642,9 @@ namespace Alis.Core.Aspect.Data.Json
 
             // 01234567890123456
             // 20150525T15:50:00
-            if (text != null && text.Length == 17)
+            if ((text != null) && (text.Length == 17))
             {
-                if ((text[8] == 'T' || text[8] == 't') && text[11] == ':' && text[14] == ':')
+                if ((text[8] == 'T' || text[8] == 't') && (text[11] == ':') && (text[14] == ':'))
                 {
                     _ = int.TryParse(text.Substring(0, 4), out var year);
                     _ = int.TryParse(text.Substring(4, 2), out var month);
@@ -1653,12 +1652,12 @@ namespace Alis.Core.Aspect.Data.Json
                     _ = int.TryParse(text.Substring(9, 2), out var hour);
                     _ = int.TryParse(text.Substring(12, 2), out var minute);
                     _ = int.TryParse(text.Substring(15, 2), out var second);
-                    if (month > 0 && month < 13 &&
-                        day > 0 && day < 32 &&
-                        year >= 0 &&
-                        hour >= 0 && hour < 24 &&
-                        minute >= 0 && minute < 60 &&
-                        second >= 0 && second < 60)
+                    if ((month > 0) && (month < 13) &&
+                        (day > 0) && (day < 32) &&
+                        (year >= 0) &&
+                        (hour >= 0) && (hour < 24) &&
+                        (minute >= 0) && (minute < 60) &&
+                        (second >= 0) && (second < 60))
                     {
                         try
                         {
@@ -1686,8 +1685,8 @@ namespace Alis.Core.Aspect.Data.Json
 
             if (!string.IsNullOrEmpty(ticks))
             {
-                var startIndex = (ticks[0] == '-') || (ticks[0] == '+') ? 1 : 0;
-                var pos = ticks.IndexOfAny(new[] { '+', '-' }, startIndex);
+                var startIndex = ticks[0] == '-' || ticks[0] == '+' ? 1 : 0;
+                var pos = ticks.IndexOfAny(new[] {'+', '-'}, startIndex);
                 if (pos >= 0)
                 {
                     var neg = ticks[pos] == '-';
@@ -1708,7 +1707,7 @@ namespace Alis.Core.Aspect.Data.Json
 
                 if (long.TryParse(ticks, NumberStyles.Number, CultureInfo.InvariantCulture, out var l))
                 {
-                    dt = new DateTime((l * 10000) + _minDateTimeTicks, kind);
+                    dt = new DateTime(l * 10000 + _minDateTimeTicks, kind);
                     if (offsetHours != 0)
                     {
                         dt = dt.AddHours(offsetHours);
@@ -1718,12 +1717,13 @@ namespace Alis.Core.Aspect.Data.Json
                     {
                         dt = dt.AddMinutes(offsetMinutes);
                     }
+
                     return true;
                 }
             }
 
             // don't parse pure timespan style XX:YY:ZZ
-            if (text.Length == 8 && text[2] == ':' && text[5] == ':')
+            if ((text.Length == 8) && (text[2] == ':') && (text[5] == ':'))
             {
                 dt = DateTime.MinValue;
                 return false;
@@ -1733,22 +1733,23 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Handles the exception using the specified ex
+        ///     Handles the exception using the specified ex
         /// </summary>
         /// <param name="ex">The ex</param>
         /// <param name="options">The options</param>
         private static void HandleException(Exception ex, JsonOptions options)
         {
-            if (options != null && !options.ThrowExceptions)
+            if ((options != null) && !options.ThrowExceptions)
             {
                 options.AddException(ex);
                 return;
             }
+
             throw ex;
         }
 
         /// <summary>
-        /// Gets the hex value using the specified reader
+        ///     Gets the hex value using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="c">The </param>
@@ -1764,7 +1765,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             if (c <= '9')
-                return (byte)(c - '0');
+                return (byte) (c - '0');
 
             if (c < 'a')
             {
@@ -1773,14 +1774,14 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             if (c <= 'f')
-                return (byte)(c - 'a' + 10);
+                return (byte) (c - 'a' + 10);
 
             HandleException(GetExpectedHexaCharacterException(GetPosition(reader)), options);
             return 0;
         }
 
         /// <summary>
-        /// Reads the x 4 using the specified reader
+        ///     Reads the x 4 using the specified reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="options">The options</param>
@@ -1797,19 +1798,21 @@ namespace Alis.Core.Aspect.Data.Json
                     return 0;
                 }
 
-                u += GetHexValue(reader, (char)reader.Read(), options);
+                u += GetHexValue(reader, (char) reader.Read(), options);
             }
-            return (ushort)u;
+
+            return (ushort) u;
         }
 
         /// <summary>
-        /// Describes whether read whitespaces
+        ///     Describes whether read whitespaces
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <returns>The bool</returns>
         private static bool ReadWhitespaces(TextReader reader) => ReadWhile(reader, char.IsWhiteSpace);
+
         /// <summary>
-        /// Describes whether read while
+        ///     Describes whether read while
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="cont">The cont</param>
@@ -1822,422 +1825,15 @@ namespace Alis.Core.Aspect.Data.Json
                 if (i < 0)
                     return false;
 
-                if (!cont((char)i))
+                if (!cont((char) i))
                     return true;
 
                 reader.Read();
-            }
-            while (true);
+            } while (true);
         }
 
         /// <summary>
-        /// Defines an interface for setting or getting options.
-        /// </summary>
-        public interface IOptionsHolder
-        {
-            /// <summary>
-            /// Gets or sets the options.
-            /// </summary>
-            /// <value>The options.</value>
-            JsonOptions Options { get; set; }
-        }
-
-        /// <summary>
-        /// Defines an interface for quick access to a type member.
-        /// </summary>
-        public interface IMemberAccessor
-        {
-            /// <summary>
-            /// Gets a component value.
-            /// </summary>
-            /// <param name="component">The component.</param>
-            /// <returns>The value.</returns>
-            object Get(object component);
-
-            /// <summary>
-            /// Sets a component's value.
-            /// </summary>
-            /// <param name="component">The component.</param>
-            /// <param name="value">The value to set.</param>
-            void Set(object component, object value);
-        }
-
-        /// <summary>
-        /// Defines a type's member.
-        /// </summary>
-        public class MemberDefinition
-        {
-            /// <summary>
-            /// The name
-            /// </summary>
-            private string _name;
-            /// <summary>
-            /// The wire name
-            /// </summary>
-            private string _wireName;
-            /// <summary>
-            /// The escaped wire name
-            /// </summary>
-            private string _escapedWireName;
-            /// <summary>
-            /// The accessor
-            /// </summary>
-            private IMemberAccessor _accessor;
-            /// <summary>
-            /// The type
-            /// </summary>
-            private Type _type;
-
-            /// <summary>
-            /// Gets or sets the member name.
-            /// </summary>
-            /// <value>
-            /// The name.
-            /// </value>
-            public virtual string Name
-            {
-                get => _name;
-                set
-                {
-                    if (string.IsNullOrEmpty(value))
-                        throw new ArgumentException(null, nameof(value));
-
-                    _name = value;
-                }
-            }
-
-            /// <summary>
-            /// Gets or sets the name used for serialization and deserialiation.
-            /// </summary>
-            /// <value>
-            /// The name used during serialization and deserialization.
-            /// </value>
-            public virtual string WireName
-            {
-                get => _wireName;
-                set
-                {
-                    if (string.IsNullOrEmpty(value))
-                        throw new ArgumentException(null, nameof(value));
-
-                    _wireName = value;
-                }
-            }
-
-            /// <summary>
-            /// Gets or sets the escaped name used during serialization and deserialiation.
-            /// </summary>
-            /// <value>
-            /// The escaped name used during serialization and deserialiation.
-            /// </value>
-            public virtual string EscapedWireName
-            {
-                get => _escapedWireName;
-                set
-                {
-                    if (string.IsNullOrEmpty(value))
-                        throw new ArgumentException(null, nameof(value));
-
-                    _escapedWireName = value;
-                }
-            }
-
-            /// <summary>
-            /// Gets or sets a value indicating whether this instance has default value.
-            /// </summary>
-            /// <value>
-            /// <c>true</c> if this instance has default value; otherwise, <c>false</c>.
-            /// </value>
-            public virtual bool HasDefaultValue { get; set; }
-
-            /// <summary>
-            /// Gets or sets the default value.
-            /// </summary>
-            /// <value>
-            /// The default value.
-            /// </value>
-            public virtual object DefaultValue { get; set; }
-
-            /// <summary>
-            /// Gets or sets the accessor.
-            /// </summary>
-            /// <value>
-            /// The accessor.
-            /// </value>
-            public virtual IMemberAccessor Accessor
-            {
-                get => _accessor;
-                set => _accessor = value ?? throw new ArgumentNullException(nameof(value));
-            }
-
-            /// <summary>
-            /// Gets or sets the member type.
-            /// </summary>
-            /// <value>
-            /// The type.
-            /// </value>
-            public virtual Type Type
-            {
-                get => _type;
-                set => _type = value ?? throw new ArgumentNullException(nameof(value));
-            }
-
-            /// <summary>
-            /// Returns a <see cref="string" /> that represents this instance.
-            /// </summary>
-            /// <returns>
-            /// A <see cref="string" /> that represents this instance.
-            /// </returns>
-            public override string ToString() => Name;
-
-            /// <summary>
-            /// Gets or creates a member instance.
-            /// </summary>
-            /// <param name="target">The target.</param>
-            /// <param name="elementsCount">The elements count.</param>
-            /// <param name="options">The options.</param>
-            /// <returns>A new or existing instance.</returns>
-            public virtual object GetOrCreateInstance(object target, int elementsCount, JsonOptions options = null)
-            {
-                object targetValue;
-                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.ContinueOnValueError))
-                {
-                    try
-                    {
-                        targetValue = Accessor.Get(target);
-                    }
-                    catch
-                    {
-                        return null;
-                    }
-                }
-                else
-                {
-                    targetValue = Accessor.Get(target);
-                }
-
-                // sufficient array?
-                if (targetValue == null || (targetValue is Array array && array.GetLength(0) < elementsCount))
-                {
-                    if (Type.IsInterface)
-                        return null;
-
-                    targetValue = CreateInstance(target, Type, elementsCount, options, targetValue);
-                    if (targetValue != null)
-                    {
-                        Accessor.Set(target, targetValue);
-                    }
-                }
-                return targetValue;
-            }
-
-            /// <summary>
-            /// Applies the dictionary entry to this member.
-            /// </summary>
-            /// <param name="dictionary">The input dictionary.</param>
-            /// <param name="target">The target object.</param>
-            /// <param name="key">The entry key.</param>
-            /// <param name="value">The entry value.</param>
-            /// <param name="options">The options.</param>
-            public virtual void ApplyEntry(IDictionary dictionary, object target, string key, object value, JsonOptions options = null)
-            {
-                if (options.ApplyEntryCallback != null)
-                {
-                    var og = new Dictionary<object, object>
-                    {
-                        ["dictionary"] = dictionary,
-                        ["member"] = this
-                    };
-
-                    var e = new JsonEventArgs(null, value, og, options, key, target)
-                    {
-                        EventType = JsonEventType.ApplyEntry
-                    };
-                    options.ApplyEntryCallback(e);
-                    if (e.Handled)
-                        return;
-
-                    value = e.Value;
-                }
-
-                if (value is IDictionary dic)
-                {
-                    var targetValue = GetOrCreateInstance(target, dic.Count, options);
-                    Apply(dic, targetValue, options);
-                    return;
-
-                }
-
-                var lo = GetListObject(Type, options, target, value, dictionary, key);
-                if (lo != null)
-                {
-                    if (value is IEnumerable enumerable)
-                    {
-                        lo.List = GetOrCreateInstance(target, enumerable is ICollection coll ? coll.Count : 0, options);
-                        ApplyToListTarget(target, enumerable, lo, options);
-                        return;
-                    }
-                }
-
-
-                var cvalue = ChangeType(target, value, Type, options);
-                Accessor.Set(target, cvalue);
-            }
-
-            /// <summary>
-            /// Determines whether the specified value is equal to the zero value for its type.
-            /// </summary>
-            /// <param name="value">The value.</param>
-            /// <returns>true if the specified value is equal to the zero value.</returns>
-            public virtual bool IsNullDateTimeValue(object value) => value == null || DateTime.MinValue.Equals(value);
-
-            /// <summary>
-            /// Determines whether the specified value is equal to the zero value for its type.
-            /// </summary>
-            /// <param name="value">The value.</param>
-            /// <returns>true if the specified value is equal to the zero value.</returns>
-            public virtual bool IsZeroValue(object value)
-            {
-                if (value == null)
-                    return false;
-
-                var type = value.GetType();
-                if (type != Type)
-                    return false;
-
-                return IsZeroValueType(value);
-            }
-
-            /// <summary>
-            /// Determines if a value equals the default value.
-            /// </summary>
-            /// <param name="value">The value to compare.</param>
-            /// <returns>true if both values are equal; false otherwise.</returns>
-            public virtual bool EqualsDefaultValue(object value) => AreValuesEqual(DefaultValue, value);
-
-            /// <summary>
-            /// Removes a deserialization member.
-            /// </summary>
-            /// <param name="type">The type. May not be null.</param>
-            /// <param name="options">The options. May be null.</param>
-            /// <param name="member">The member. May not be null.</param>
-            /// <returns>true if item is successfully removed; otherwise, false.</returns>
-            public static bool RemoveDeserializationMember(Type type, JsonOptions options, MemberDefinition member)
-            {
-                if (type == null)
-                    throw new ArgumentNullException(nameof(type));
-
-                if (member == null)
-                    throw new ArgumentNullException(nameof(member));
-
-                options = options ?? new JsonOptions();
-                return TypeDef.RemoveDeserializationMember(type, options, member);
-            }
-
-            /// <summary>
-            /// Removes a serialization member.
-            /// </summary>
-            /// <param name="type">The type. May not be null.</param>
-            /// <param name="options">The options. May be null.</param>
-            /// <param name="member">The member. May not be null.</param>
-            /// <returns>true if item is successfully removed; otherwise, false.</returns>
-            public static bool RemoveSerializationMember(Type type, JsonOptions options, MemberDefinition member)
-            {
-                if (type == null)
-                    throw new ArgumentNullException(nameof(type));
-
-                if (member == null)
-                    throw new ArgumentNullException(nameof(member));
-
-                options = options ?? new JsonOptions();
-                return TypeDef.RemoveSerializationMember(type, options, member);
-            }
-
-            /// <summary>
-            /// Adds a deserialization member.
-            /// </summary>
-            /// <param name="type">The type. May not be null.</param>
-            /// <param name="options">The options. May be null.</param>
-            /// <param name="member">The member. May not be null.</param>
-            /// <returns>true if item is successfully added; otherwise, false.</returns>
-            public static void AddDeserializationMember(Type type, JsonOptions options, MemberDefinition member)
-            {
-                if (type == null)
-                    throw new ArgumentNullException(nameof(type));
-
-                if (member == null)
-                    throw new ArgumentNullException(nameof(member));
-
-                options = options ?? new JsonOptions();
-                TypeDef.AddDeserializationMember(type, options, member);
-            }
-
-            /// <summary>
-            /// Adds a serialization member.
-            /// </summary>
-            /// <param name="type">The type. May not be null.</param>
-            /// <param name="options">The options. May be null.</param>
-            /// <param name="member">The member. May not be null.</param>
-            /// <returns>true if item is successfully added; otherwise, false.</returns>
-            public static void AddSerializationMember(Type type, JsonOptions options, MemberDefinition member)
-            {
-                if (type == null)
-                    throw new ArgumentNullException(nameof(type));
-
-                if (member == null)
-                    throw new ArgumentNullException(nameof(member));
-
-                options = options ?? new JsonOptions();
-                TypeDef.AddSerializationMember(type, options, member);
-            }
-
-            /// <summary>
-            /// Gets the serialization members for a given type.
-            /// </summary>
-            /// <param name="type">The type. May not be null.</param>
-            /// <param name="options">The options. May be null.</param>
-            /// <returns>A list of serialization members.</returns>
-            public static MemberDefinition[] GetSerializationMembers(Type type, JsonOptions options = null)
-            {
-                if (type == null)
-                    throw new ArgumentNullException(nameof(type));
-
-                options = options ?? new JsonOptions();
-                return TypeDef.GetSerializationMembers(type, options);
-            }
-
-            /// <summary>
-            /// Gets the deserialization members for a given type.
-            /// </summary>
-            /// <param name="type">The type. May not be null.</param>
-            /// <param name="options">The options. May be null.</param>
-            /// <returns>A list of deserialization members.</returns>
-            public static MemberDefinition[] GetDeserializationMembers(Type type, JsonOptions options = null)
-            {
-                if (type == null)
-                    throw new ArgumentNullException(nameof(type));
-
-                options = options ?? new JsonOptions();
-                return TypeDef.GetDeserializationMembers(type, options);
-            }
-
-            /// <summary>
-            /// Run a specified action, using the member definition lock.
-            /// </summary>
-            /// <typeparam name="T">The action input type.</typeparam>
-            /// <param name="action">The action. May not be null.</param>
-            /// <param name="state">The state. May be null.</param>
-            public static void UsingLock<T>(Action<T> action, T state)
-            {
-                if (action == null)
-                    throw new ArgumentNullException(nameof(action));
-
-                TypeDef.Lock(action, state);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value to a JSON writer.
+        ///     Writes a value to a JSON writer.
         /// </summary>
         /// <param name="writer">The writer. May not be null.</param>
         /// <param name="value">The value to writer.</param>
@@ -2263,7 +1859,7 @@ namespace Alis.Core.Aspect.Data.Json
                     return;
             }
 
-            if ((value == null) || Convert.IsDBNull(value))
+            if (value == null || Convert.IsDBNull(value))
             {
                 writer.Write(_null);
                 return;
@@ -2312,6 +1908,7 @@ namespace Alis.Core.Aspect.Data.Json
                     writer.Write(_null);
                     return;
                 }
+
                 WriteString(writer, c.ToString());
                 return;
             }
@@ -2326,6 +1923,7 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     writer.Write(@enum.ToString(_enumFormat));
                 }
+
                 return;
             }
 
@@ -2339,6 +1937,7 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     writer.Write(ts.Ticks);
                 }
+
                 return;
             }
 
@@ -2368,6 +1967,7 @@ namespace Alis.Core.Aspect.Data.Json
                     writer.Write((dto.ToUniversalTime().Ticks - _minDateTimeTicks) / 10000);
                     writer.Write(_dateEnd);
                 }
+
                 return;
             }
             // read this http://weblogs.asp.net/bleroy/archive/2008/01/18/dates-and-json.aspx
@@ -2402,6 +2002,7 @@ namespace Alis.Core.Aspect.Data.Json
                     AppendTimeZoneUtcOffset(writer, dt);
                     writer.Write(_dateEnd);
                 }
+
                 return;
             }
 
@@ -2423,6 +2024,7 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     WriteUnescapedString(writer, guid.ToString());
                 }
+
                 return;
             }
 
@@ -2491,7 +2093,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Writes a stream to a JSON writer.
+        ///     Writes a stream to a JSON writer.
         /// </summary>
         /// <param name="writer">The writer. May not be null.</param>
         /// <param name="stream">The stream. May not be null.</param>
@@ -2511,13 +2113,13 @@ namespace Alis.Core.Aspect.Data.Json
             SetOptions(objectGraph, options);
 
             var total = 0L;
-            if (writer is StreamWriter sw && sw.BaseStream != null)
+            if (writer is StreamWriter sw && (sw.BaseStream != null))
             {
                 sw.Flush();
                 return WriteBase64Stream(stream, sw.BaseStream, options);
             }
 
-            if (writer is IndentedTextWriter itw && itw.InnerWriter != null)
+            if (writer is IndentedTextWriter itw && (itw.InnerWriter != null))
             {
                 itw.Flush();
                 return WriteBase64Stream(itw.InnerWriter, stream, objectGraph, options);
@@ -2534,8 +2136,7 @@ namespace Alis.Core.Aspect.Data.Json
 
                     ms.Write(bytes, 0, read);
                     total += read;
-                }
-                while (true);
+                } while (true);
 
                 writer.Write('"');
                 writer.Write(Convert.ToBase64String(ms.ToArray()));
@@ -2545,7 +2146,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Sets the options using the specified obj
+        ///     Sets the options using the specified obj
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <param name="options">The options</param>
@@ -2558,7 +2159,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Writes the base 64 stream using the specified input stream
+        ///     Writes the base 64 stream using the specified input stream
         /// </summary>
         /// <param name="inputStream">The input stream</param>
         /// <param name="outputStream">The output stream</param>
@@ -2566,7 +2167,7 @@ namespace Alis.Core.Aspect.Data.Json
         /// <returns>The total</returns>
         private static long WriteBase64Stream(Stream inputStream, Stream outputStream, JsonOptions options)
         {
-            outputStream.WriteByte((byte)'"');
+            outputStream.WriteByte((byte) '"');
             // don't dispose this stream or it will dispose the outputStream as well
             var b64 = new CryptoStream(outputStream, new ToBase64Transform(), CryptoStreamMode.Write);
             var total = 0L;
@@ -2579,17 +2180,16 @@ namespace Alis.Core.Aspect.Data.Json
 
                 b64.Write(bytes, 0, read);
                 total += read;
-            }
-            while (true);
+            } while (true);
 
             b64.FlushFinalBlock();
             b64.Flush();
-            outputStream.WriteByte((byte)'"');
+            outputStream.WriteByte((byte) '"');
             return total;
         }
 
         /// <summary>
-        /// Describes whether internal is key value pair enumerable
+        ///     Describes whether internal is key value pair enumerable
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="keyType">The key type</param>
@@ -2623,11 +2223,12 @@ namespace Alis.Core.Aspect.Data.Json
                     }
                 }
             }
+
             return false;
         }
 
         /// <summary>
-        /// Appends the time zone utc offset using the specified writer
+        ///     Appends the time zone utc offset using the specified writer
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="dt">The dt</param>
@@ -2636,14 +2237,14 @@ namespace Alis.Core.Aspect.Data.Json
             if (dt.Kind != DateTimeKind.Utc)
             {
                 var offset = TimeZoneInfo.Local.GetUtcOffset(dt);
-                writer.Write((offset.Ticks >= 0) ? '+' : '-');
-                writer.Write(System.Math.Abs(offset.Hours).ToString(_d2Format));
-                writer.Write(System.Math.Abs(offset.Minutes).ToString(_d2Format));
+                writer.Write(offset.Ticks >= 0 ? '+' : '-');
+                writer.Write(Math.Abs(offset.Hours).ToString(_d2Format));
+                writer.Write(Math.Abs(offset.Minutes).ToString(_d2Format));
             }
         }
 
         /// <summary>
-        /// Writes an enumerable to a JSON writer.
+        ///     Writes an enumerable to a JSON writer.
         /// </summary>
         /// <param name="writer">The writer. May not be null.</param>
         /// <param name="array">The array. May not be null.</param>
@@ -2670,6 +2271,7 @@ namespace Alis.Core.Aspect.Data.Json
                         ms.Position = 0;
                         WriteBase64Stream(writer, ms, objectGraph, options);
                     }
+
                     return;
                 }
             }
@@ -2680,7 +2282,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Writes the array using the specified writer
+        ///     Writes the array using the specified writer
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="array">The array</param>
@@ -2702,6 +2304,7 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     writer.Write(',');
                 }
+
                 newIndices[indices.Length] = i;
 
                 if (array.Rank == newIndices.Length)
@@ -2713,11 +2316,12 @@ namespace Alis.Core.Aspect.Data.Json
                     WriteArray(writer, array, objectGraph, options, newIndices);
                 }
             }
+
             writer.Write(']');
         }
 
         /// <summary>
-        /// Writes an enumerable to a JSON writer.
+        ///     Writes an enumerable to a JSON writer.
         /// </summary>
         /// <param name="writer">The writer. May not be null.</param>
         /// <param name="enumerable">The enumerable. May not be null.</param>
@@ -2747,13 +2351,15 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     first = false;
                 }
+
                 WriteValue(writer, value, objectGraph, options);
             }
+
             writer.Write(']');
         }
 
         /// <summary>
-        /// Writes a dictionary to a JSON writer.
+        ///     Writes a dictionary to a JSON writer.
         /// </summary>
         /// <param name="writer">The writer. May not be null.</param>
         /// <param name="dictionary">The dictionary. May not be null.</param>
@@ -2800,11 +2406,12 @@ namespace Alis.Core.Aspect.Data.Json
                 writer.Write(':');
                 WriteValue(writer, entry.Value, objectGraph, options);
             }
+
             writer.Write('}');
         }
 
         /// <summary>
-        /// Writes the serializable using the specified writer
+        ///     Writes the serializable using the specified writer
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="serializable">The serializable</param>
@@ -2844,14 +2451,14 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Describes whether force serializable
+        ///     Describes whether force serializable
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The bool</returns>
         private static bool ForceSerializable(object obj) => obj is Exception;
 
         /// <summary>
-        /// Writes an object to the JSON writer.
+        ///     Writes an object to the JSON writer.
         /// </summary>
         /// <param name="writer">The writer. May not be null.</param>
         /// <param name="value">The object to serialize. May not be null.</param>
@@ -2913,7 +2520,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Determines whether the specified value is a value type and is equal to zero.
+        ///     Determines whether the specified value is a value type and is equal to zero.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>true if the specified value is a value type and is equal to zero; false otherwise.</returns>
@@ -2930,7 +2537,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Writes a name/value pair to a JSON writer.
+        ///     Writes a name/value pair to a JSON writer.
         /// </summary>
         /// <param name="writer">The input writer. May not be null.</param>
         /// <param name="name">The name. null values will be converted to empty values.</param>
@@ -2961,7 +2568,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Writes a string to a JSON writer.
+        ///     Writes a string to a JSON writer.
         /// </summary>
         /// <param name="writer">The input writer. May not be null.</param>
         /// <param name="text">The text.</param>
@@ -2982,7 +2589,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Writes a string to a JSON writer.
+        ///     Writes a string to a JSON writer.
         /// </summary>
         /// <param name="writer">The input writer. May not be null.</param>
         /// <param name="text">The text.</param>
@@ -3003,7 +2610,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Appends the char as unicode using the specified sb
+        ///     Appends the char as unicode using the specified sb
         /// </summary>
         /// <param name="sb">The sb</param>
         /// <param name="c">The </param>
@@ -3011,11 +2618,11 @@ namespace Alis.Core.Aspect.Data.Json
         {
             sb.Append('\\');
             sb.Append('u');
-            sb.AppendFormat(CultureInfo.InvariantCulture, _x4Format, (ushort)c);
+            sb.AppendFormat(CultureInfo.InvariantCulture, _x4Format, (ushort) c);
         }
 
         /// <summary>
-        /// Serializes an object with format. Note this is more for debugging purposes as it's not designed to be fast.
+        ///     Serializes an object with format. Note this is more for debugging purposes as it's not designed to be fast.
         /// </summary>
         /// <param name="value">The JSON object. May be null.</param>
         /// <param name="options">The options to use. May be null.</param>
@@ -3030,7 +2637,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Serializes an object with format. Note this is more for debugging purposes as it's not designed to be fast.
+        ///     Serializes an object with format. Note this is more for debugging purposes as it's not designed to be fast.
         /// </summary>
         /// <param name="writer">The output writer. May not be null.</param>
         /// <param name="value">The JSON object. May be null.</param>
@@ -3047,7 +2654,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Writes a JSON deserialized object formatted.
+        ///     Writes a JSON deserialized object formatted.
         /// </summary>
         /// <param name="jsonObject">The JSON object. May be null.</param>
         /// <param name="options">The options to use. May be null.</param>
@@ -3062,7 +2669,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Writes a JSON deserialized object formatted.
+        ///     Writes a JSON deserialized object formatted.
         /// </summary>
         /// <param name="writer">The output writer. May not be null.</param>
         /// <param name="jsonObject">The JSON object. May be null.</param>
@@ -3078,7 +2685,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Writes the formatted using the specified writer
+        ///     Writes the formatted using the specified writer
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="jsonObject">The json object</param>
@@ -3166,7 +2773,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Escapes a string using JSON representation.
+        ///     Escapes a string using JSON representation.
         /// </summary>
         /// <param name="value">The string to escape.</param>
         /// <returns>A JSON-escaped string.</returns>
@@ -3181,23 +2788,23 @@ namespace Alis.Core.Aspect.Data.Json
             for (var i = 0; i < value.Length; i++)
             {
                 var c = value[i];
-                if ((c == '\r') ||
-                    (c == '\t') ||
-                    (c == '"') ||
-                    (c == '\'') ||
-                    (c == '<') ||
-                    (c == '>') ||
-                    (c == '\\') ||
-                    (c == '\n') ||
-                    (c == '\b') ||
-                    (c == '\f') ||
-                    (c < ' '))
+                if (c == '\r' ||
+                    c == '\t' ||
+                    c == '"' ||
+                    c == '\'' ||
+                    c == '<' ||
+                    c == '>' ||
+                    c == '\\' ||
+                    c == '\n' ||
+                    c == '\b' ||
+                    c == '\f' ||
+                    c < ' ')
                 {
-
                     if (count > 0)
                     {
                         builder.Append(value, startIndex, count);
                     }
+
                     startIndex = i + 1;
                     count = 0;
                 }
@@ -3253,17 +2860,19 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 builder.Append(value, startIndex, count);
             }
+
             return builder.ToString();
         }
 
         /// <summary>
-        /// Gets a nullified string value from a dictionary by its path.
-        /// This is useful to get a string value from the object that the untyped Deserialize method returns which is often of IDictionary&lt;string, object&gt; type.
+        ///     Gets a nullified string value from a dictionary by its path.
+        ///     This is useful to get a string value from the object that the untyped Deserialize method returns which is often of
+        ///     IDictionary&lt;string, object&gt; type.
         /// </summary>
         /// <param name="dictionary">The input dictionary.</param>
         /// <param name="path">The path, composed of dictionary keys separated by a . character. May not be null.</param>
         /// <returns>
-        /// The nullified string value or null if not found.
+        ///     The nullified string value or null if not found.
         /// </returns>
         public static string GetNullifiedStringValueByPath(this IDictionary<string, object> dictionary, string path)
         {
@@ -3277,27 +2886,28 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Gets a value from a dictionary by its path.
-        /// This is useful to get a value from the object that the untyped Deserialize method returns which is often of IDictionary&lt;string, object&gt; type.
+        ///     Gets a value from a dictionary by its path.
+        ///     This is useful to get a value from the object that the untyped Deserialize method returns which is often of
+        ///     IDictionary&lt;string, object&gt; type.
         /// </summary>
         /// <typeparam name="T">The final type to which to convert the retrieved value.</typeparam>
         /// <param name="dictionary">The input dictionary.</param>
         /// <param name="path">The path, composed of dictionary keys separated by a . character. May not be null.</param>
         /// <param name="value">The value to retrieve.</param>
         /// <returns>
-        /// true if the value parameter was retrieved successfully; otherwise, false.
+        ///     true if the value parameter was retrieved successfully; otherwise, false.
         /// </returns>
         public static bool TryGetValueByPath<T>(this IDictionary<string, object> dictionary, string path, out T value)
         {
             if (dictionary == null)
             {
-                value = default;
+                value = default(T);
                 return false;
             }
 
             if (!TryGetValueByPath(dictionary, path, out object obj))
             {
-                value = default;
+                value = default(T);
                 return false;
             }
 
@@ -3305,14 +2915,15 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Gets a value from a dictionary by its path.
-        /// This is useful to get a value from the object that the untyped Deserialize method returns which is often of IDictionary&lt;string, object&gt; type.
+        ///     Gets a value from a dictionary by its path.
+        ///     This is useful to get a value from the object that the untyped Deserialize method returns which is often of
+        ///     IDictionary&lt;string, object&gt; type.
         /// </summary>
         /// <param name="dictionary">The input dictionary.</param>
         /// <param name="path">The path, composed of dictionary keys separated by a . character. May not be null.</param>
         /// <param name="value">The value to retrieve.</param>
         /// <returns>
-        /// true if the value parameter was retrieved successfully; otherwise, false.
+        ///     true if the value parameter was retrieved successfully; otherwise, false.
         /// </returns>
         public static bool TryGetValueByPath(this IDictionary<string, object> dictionary, string path, out object value)
         {
@@ -3340,22 +2951,25 @@ namespace Alis.Core.Aspect.Data.Json
                     value = newElement;
                     return true;
                 }
+
                 current = newElement as IDictionary<string, object>;
                 if (current == null)
                     break;
             }
+
             return false;
         }
 
         /// <summary>
-        /// Gets the attribute using the specified descriptor
+        ///     Gets the attribute using the specified descriptor
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="descriptor">The descriptor</param>
         /// <returns>The</returns>
         private static T GetAttribute<T>(this PropertyDescriptor descriptor) where T : Attribute => GetAttribute<T>(descriptor.Attributes);
+
         /// <summary>
-        /// Gets the attribute using the specified attributes
+        ///     Gets the attribute using the specified attributes
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="attributes">The attributes</param>
@@ -3365,13 +2979,14 @@ namespace Alis.Core.Aspect.Data.Json
             foreach (var att in attributes)
             {
                 if (typeof(T).IsAssignableFrom(att.GetType()))
-                    return (T)att;
+                    return (T) att;
             }
+
             return null;
         }
 
         /// <summary>
-        /// Describes whether equals ignore case
+        ///     Describes whether equals ignore case
         /// </summary>
         /// <param name="str">The str</param>
         /// <param name="text">The text</param>
@@ -3398,7 +3013,7 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// Nullifies the str
+        ///     Nullifies the str
         /// </summary>
         /// <param name="str">The str</param>
         /// <returns>The string</returns>
@@ -3415,35 +3030,478 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// The key value type enumerator class
+        ///     Defines an object that handles list deserialization.
         /// </summary>
-        /// <seealso cref="IDictionaryEnumerator"/>
+        public abstract class ListObject
+        {
+            /// <summary>
+            ///     Gets or sets the list object.
+            /// </summary>
+            /// <value>
+            ///     The list.
+            /// </value>
+            public virtual object List { get; set; }
+
+            /// <summary>
+            ///     Gets the current context.
+            /// </summary>
+            /// <value>
+            ///     The context. May be null.
+            /// </value>
+            public virtual IDictionary<string, object> Context => null;
+
+            /// <summary>
+            ///     Clears the list object.
+            /// </summary>
+            public abstract void Clear();
+
+            /// <summary>
+            ///     Adds a value to the list object.
+            /// </summary>
+            /// <param name="value">The value.</param>
+            /// <param name="options">The options.</param>
+            public abstract void Add(object value, JsonOptions options = null);
+        }
+
+        /// <summary>
+        ///     Defines an interface for setting or getting options.
+        /// </summary>
+        public interface IOptionsHolder
+        {
+            /// <summary>
+            ///     Gets or sets the options.
+            /// </summary>
+            /// <value>The options.</value>
+            JsonOptions Options { get; set; }
+        }
+
+        /// <summary>
+        ///     Defines an interface for quick access to a type member.
+        /// </summary>
+        public interface IMemberAccessor
+        {
+            /// <summary>
+            ///     Gets a component value.
+            /// </summary>
+            /// <param name="component">The component.</param>
+            /// <returns>The value.</returns>
+            object Get(object component);
+
+            /// <summary>
+            ///     Sets a component's value.
+            /// </summary>
+            /// <param name="component">The component.</param>
+            /// <param name="value">The value to set.</param>
+            void Set(object component, object value);
+        }
+
+        /// <summary>
+        ///     Defines a type's member.
+        /// </summary>
+        public class MemberDefinition
+        {
+            /// <summary>
+            ///     The accessor
+            /// </summary>
+            private IMemberAccessor _accessor;
+
+            /// <summary>
+            ///     The escaped wire name
+            /// </summary>
+            private string _escapedWireName;
+
+            /// <summary>
+            ///     The name
+            /// </summary>
+            private string _name;
+
+            /// <summary>
+            ///     The type
+            /// </summary>
+            private Type _type;
+
+            /// <summary>
+            ///     The wire name
+            /// </summary>
+            private string _wireName;
+
+            /// <summary>
+            ///     Gets or sets the member name.
+            /// </summary>
+            /// <value>
+            ///     The name.
+            /// </value>
+            public virtual string Name
+            {
+                get => _name;
+                set
+                {
+                    if (string.IsNullOrEmpty(value))
+                        throw new ArgumentException(null, nameof(value));
+
+                    _name = value;
+                }
+            }
+
+            /// <summary>
+            ///     Gets or sets the name used for serialization and deserialiation.
+            /// </summary>
+            /// <value>
+            ///     The name used during serialization and deserialization.
+            /// </value>
+            public virtual string WireName
+            {
+                get => _wireName;
+                set
+                {
+                    if (string.IsNullOrEmpty(value))
+                        throw new ArgumentException(null, nameof(value));
+
+                    _wireName = value;
+                }
+            }
+
+            /// <summary>
+            ///     Gets or sets the escaped name used during serialization and deserialiation.
+            /// </summary>
+            /// <value>
+            ///     The escaped name used during serialization and deserialiation.
+            /// </value>
+            public virtual string EscapedWireName
+            {
+                get => _escapedWireName;
+                set
+                {
+                    if (string.IsNullOrEmpty(value))
+                        throw new ArgumentException(null, nameof(value));
+
+                    _escapedWireName = value;
+                }
+            }
+
+            /// <summary>
+            ///     Gets or sets a value indicating whether this instance has default value.
+            /// </summary>
+            /// <value>
+            ///     <c>true</c> if this instance has default value; otherwise, <c>false</c>.
+            /// </value>
+            public virtual bool HasDefaultValue { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the default value.
+            /// </summary>
+            /// <value>
+            ///     The default value.
+            /// </value>
+            public virtual object DefaultValue { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the accessor.
+            /// </summary>
+            /// <value>
+            ///     The accessor.
+            /// </value>
+            public virtual IMemberAccessor Accessor
+            {
+                get => _accessor;
+                set => _accessor = value ?? throw new ArgumentNullException(nameof(value));
+            }
+
+            /// <summary>
+            ///     Gets or sets the member type.
+            /// </summary>
+            /// <value>
+            ///     The type.
+            /// </value>
+            public virtual Type Type
+            {
+                get => _type;
+                set => _type = value ?? throw new ArgumentNullException(nameof(value));
+            }
+
+            /// <summary>
+            ///     Returns a <see cref="string" /> that represents this instance.
+            /// </summary>
+            /// <returns>
+            ///     A <see cref="string" /> that represents this instance.
+            /// </returns>
+            public override string ToString() => Name;
+
+            /// <summary>
+            ///     Gets or creates a member instance.
+            /// </summary>
+            /// <param name="target">The target.</param>
+            /// <param name="elementsCount">The elements count.</param>
+            /// <param name="options">The options.</param>
+            /// <returns>A new or existing instance.</returns>
+            public virtual object GetOrCreateInstance(object target, int elementsCount, JsonOptions options = null)
+            {
+                object targetValue;
+                if (options.SerializationOptions.HasFlag(JsonSerializationOptions.ContinueOnValueError))
+                {
+                    try
+                    {
+                        targetValue = Accessor.Get(target);
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                }
+                else
+                {
+                    targetValue = Accessor.Get(target);
+                }
+
+                // sufficient array?
+                if (targetValue == null || (targetValue is Array array && (array.GetLength(0) < elementsCount)))
+                {
+                    if (Type.IsInterface)
+                        return null;
+
+                    targetValue = CreateInstance(target, Type, elementsCount, options, targetValue);
+                    if (targetValue != null)
+                    {
+                        Accessor.Set(target, targetValue);
+                    }
+                }
+
+                return targetValue;
+            }
+
+            /// <summary>
+            ///     Applies the dictionary entry to this member.
+            /// </summary>
+            /// <param name="dictionary">The input dictionary.</param>
+            /// <param name="target">The target object.</param>
+            /// <param name="key">The entry key.</param>
+            /// <param name="value">The entry value.</param>
+            /// <param name="options">The options.</param>
+            public virtual void ApplyEntry(IDictionary dictionary, object target, string key, object value, JsonOptions options = null)
+            {
+                if (options.ApplyEntryCallback != null)
+                {
+                    var og = new Dictionary<object, object>
+                    {
+                        ["dictionary"] = dictionary,
+                        ["member"] = this
+                    };
+
+                    var e = new JsonEventArgs(null, value, og, options, key, target)
+                    {
+                        EventType = JsonEventType.ApplyEntry
+                    };
+                    options.ApplyEntryCallback(e);
+                    if (e.Handled)
+                        return;
+
+                    value = e.Value;
+                }
+
+                if (value is IDictionary dic)
+                {
+                    var targetValue = GetOrCreateInstance(target, dic.Count, options);
+                    Apply(dic, targetValue, options);
+                    return;
+                }
+
+                var lo = GetListObject(Type, options, target, value, dictionary, key);
+                if (lo != null)
+                {
+                    if (value is IEnumerable enumerable)
+                    {
+                        lo.List = GetOrCreateInstance(target, enumerable is ICollection coll ? coll.Count : 0, options);
+                        ApplyToListTarget(target, enumerable, lo, options);
+                        return;
+                    }
+                }
+
+
+                var cvalue = ChangeType(target, value, Type, options);
+                Accessor.Set(target, cvalue);
+            }
+
+            /// <summary>
+            ///     Determines whether the specified value is equal to the zero value for its type.
+            /// </summary>
+            /// <param name="value">The value.</param>
+            /// <returns>true if the specified value is equal to the zero value.</returns>
+            public virtual bool IsNullDateTimeValue(object value) => value == null || DateTime.MinValue.Equals(value);
+
+            /// <summary>
+            ///     Determines whether the specified value is equal to the zero value for its type.
+            /// </summary>
+            /// <param name="value">The value.</param>
+            /// <returns>true if the specified value is equal to the zero value.</returns>
+            public virtual bool IsZeroValue(object value)
+            {
+                if (value == null)
+                    return false;
+
+                var type = value.GetType();
+                if (type != Type)
+                    return false;
+
+                return IsZeroValueType(value);
+            }
+
+            /// <summary>
+            ///     Determines if a value equals the default value.
+            /// </summary>
+            /// <param name="value">The value to compare.</param>
+            /// <returns>true if both values are equal; false otherwise.</returns>
+            public virtual bool EqualsDefaultValue(object value) => AreValuesEqual(DefaultValue, value);
+
+            /// <summary>
+            ///     Removes a deserialization member.
+            /// </summary>
+            /// <param name="type">The type. May not be null.</param>
+            /// <param name="options">The options. May be null.</param>
+            /// <param name="member">The member. May not be null.</param>
+            /// <returns>true if item is successfully removed; otherwise, false.</returns>
+            public static bool RemoveDeserializationMember(Type type, JsonOptions options, MemberDefinition member)
+            {
+                if (type == null)
+                    throw new ArgumentNullException(nameof(type));
+
+                if (member == null)
+                    throw new ArgumentNullException(nameof(member));
+
+                options = options ?? new JsonOptions();
+                return TypeDef.RemoveDeserializationMember(type, options, member);
+            }
+
+            /// <summary>
+            ///     Removes a serialization member.
+            /// </summary>
+            /// <param name="type">The type. May not be null.</param>
+            /// <param name="options">The options. May be null.</param>
+            /// <param name="member">The member. May not be null.</param>
+            /// <returns>true if item is successfully removed; otherwise, false.</returns>
+            public static bool RemoveSerializationMember(Type type, JsonOptions options, MemberDefinition member)
+            {
+                if (type == null)
+                    throw new ArgumentNullException(nameof(type));
+
+                if (member == null)
+                    throw new ArgumentNullException(nameof(member));
+
+                options = options ?? new JsonOptions();
+                return TypeDef.RemoveSerializationMember(type, options, member);
+            }
+
+            /// <summary>
+            ///     Adds a deserialization member.
+            /// </summary>
+            /// <param name="type">The type. May not be null.</param>
+            /// <param name="options">The options. May be null.</param>
+            /// <param name="member">The member. May not be null.</param>
+            /// <returns>true if item is successfully added; otherwise, false.</returns>
+            public static void AddDeserializationMember(Type type, JsonOptions options, MemberDefinition member)
+            {
+                if (type == null)
+                    throw new ArgumentNullException(nameof(type));
+
+                if (member == null)
+                    throw new ArgumentNullException(nameof(member));
+
+                options = options ?? new JsonOptions();
+                TypeDef.AddDeserializationMember(type, options, member);
+            }
+
+            /// <summary>
+            ///     Adds a serialization member.
+            /// </summary>
+            /// <param name="type">The type. May not be null.</param>
+            /// <param name="options">The options. May be null.</param>
+            /// <param name="member">The member. May not be null.</param>
+            /// <returns>true if item is successfully added; otherwise, false.</returns>
+            public static void AddSerializationMember(Type type, JsonOptions options, MemberDefinition member)
+            {
+                if (type == null)
+                    throw new ArgumentNullException(nameof(type));
+
+                if (member == null)
+                    throw new ArgumentNullException(nameof(member));
+
+                options = options ?? new JsonOptions();
+                TypeDef.AddSerializationMember(type, options, member);
+            }
+
+            /// <summary>
+            ///     Gets the serialization members for a given type.
+            /// </summary>
+            /// <param name="type">The type. May not be null.</param>
+            /// <param name="options">The options. May be null.</param>
+            /// <returns>A list of serialization members.</returns>
+            public static MemberDefinition[] GetSerializationMembers(Type type, JsonOptions options = null)
+            {
+                if (type == null)
+                    throw new ArgumentNullException(nameof(type));
+
+                options = options ?? new JsonOptions();
+                return TypeDef.GetSerializationMembers(type, options);
+            }
+
+            /// <summary>
+            ///     Gets the deserialization members for a given type.
+            /// </summary>
+            /// <param name="type">The type. May not be null.</param>
+            /// <param name="options">The options. May be null.</param>
+            /// <returns>A list of deserialization members.</returns>
+            public static MemberDefinition[] GetDeserializationMembers(Type type, JsonOptions options = null)
+            {
+                if (type == null)
+                    throw new ArgumentNullException(nameof(type));
+
+                options = options ?? new JsonOptions();
+                return TypeDef.GetDeserializationMembers(type, options);
+            }
+
+            /// <summary>
+            ///     Run a specified action, using the member definition lock.
+            /// </summary>
+            /// <typeparam name="T">The action input type.</typeparam>
+            /// <param name="action">The action. May not be null.</param>
+            /// <param name="state">The state. May be null.</param>
+            public static void UsingLock<T>(Action<T> action, T state)
+            {
+                if (action == null)
+                    throw new ArgumentNullException(nameof(action));
+
+                TypeDef.Lock(action, state);
+            }
+        }
+
+        /// <summary>
+        ///     The key value type enumerator class
+        /// </summary>
+        /// <seealso cref="IDictionaryEnumerator" />
         private sealed class KeyValueTypeEnumerator : IDictionaryEnumerator
         {
             /// <summary>
-            /// The enumerator
+            ///     The enumerator
             /// </summary>
             private readonly IEnumerator _enumerator;
+
             /// <summary>
-            /// The key prop
+            ///     The key prop
             /// </summary>
             private PropertyInfo _keyProp;
+
             /// <summary>
-            /// The value prop
+            ///     The value prop
             /// </summary>
             private PropertyInfo _valueProp;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="KeyValueTypeEnumerator"/> class
+            ///     Initializes a new instance of the <see cref="KeyValueTypeEnumerator" /> class
             /// </summary>
             /// <param name="value">The value</param>
-            public KeyValueTypeEnumerator(object value)
-            {
-                _enumerator = ((IEnumerable)value).GetEnumerator();
-            }
+            public KeyValueTypeEnumerator(object value) => _enumerator = ((IEnumerable) value).GetEnumerator();
 
             /// <summary>
-            /// Gets the value of the entry
+            ///     Gets the value of the entry
             /// </summary>
             public DictionaryEntry Entry
             {
@@ -3454,174 +3512,197 @@ namespace Alis.Core.Aspect.Data.Json
                         _keyProp = _enumerator.Current.GetType().GetProperty("Key");
                         _valueProp = _enumerator.Current.GetType().GetProperty("Value");
                     }
+
                     return new DictionaryEntry(_keyProp.GetValue(_enumerator.Current, null), _valueProp.GetValue(_enumerator.Current, null));
                 }
             }
 
             /// <summary>
-            /// Gets the value of the key
+            ///     Gets the value of the key
             /// </summary>
             public object Key => Entry.Key;
+
             /// <summary>
-            /// Gets the value of the value
+            ///     Gets the value of the value
             /// </summary>
             public object Value => Entry.Value;
+
             /// <summary>
-            /// Gets the value of the current
+            ///     Gets the value of the current
             /// </summary>
             public object Current => Entry;
 
             /// <summary>
-            /// Describes whether this instance move next
+            ///     Describes whether this instance move next
             /// </summary>
             /// <returns>The bool</returns>
             public bool MoveNext() => _enumerator.MoveNext();
+
             /// <summary>
-            /// Resets this instance
+            ///     Resets this instance
             /// </summary>
             public void Reset() => _enumerator.Reset();
         }
 
         /// <summary>
-        /// The key value type dictionary class
+        ///     The key value type dictionary class
         /// </summary>
-        /// <seealso cref="IDictionary"/>
+        /// <seealso cref="IDictionary" />
         private sealed class KeyValueTypeDictionary : IDictionary
         {
             /// <summary>
-            /// The enumerator
+            ///     The enumerator
             /// </summary>
             private readonly KeyValueTypeEnumerator _enumerator;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="KeyValueTypeDictionary"/> class
+            ///     Initializes a new instance of the <see cref="KeyValueTypeDictionary" /> class
             /// </summary>
             /// <param name="value">The value</param>
-            public KeyValueTypeDictionary(object value)
+            public KeyValueTypeDictionary(object value) => _enumerator = new KeyValueTypeEnumerator(value);
+
+            /// <summary>
+            ///     Gets the value of the count
+            /// </summary>
+            public int Count => throw new NotSupportedException();
+
+            /// <summary>
+            ///     Gets the value of the is synchronized
+            /// </summary>
+            public bool IsSynchronized => throw new NotSupportedException();
+
+            /// <summary>
+            ///     Gets the value of the sync root
+            /// </summary>
+            public object SyncRoot => throw new NotSupportedException();
+
+            /// <summary>
+            ///     Gets the value of the is fixed size
+            /// </summary>
+            public bool IsFixedSize => throw new NotSupportedException();
+
+            /// <summary>
+            ///     Gets the value of the is read only
+            /// </summary>
+            public bool IsReadOnly => throw new NotSupportedException();
+
+            /// <summary>
+            ///     Gets the value of the keys
+            /// </summary>
+            public ICollection Keys => throw new NotSupportedException();
+
+            /// <summary>
+            ///     Gets the value of the values
+            /// </summary>
+            public ICollection Values => throw new NotSupportedException();
+
+            /// <summary>
+            ///     The not supported exception
+            /// </summary>
+            public object this[object key]
             {
-                _enumerator = new KeyValueTypeEnumerator(value);
+                get => throw new NotSupportedException();
+                set => throw new NotSupportedException();
             }
 
             /// <summary>
-            /// Gets the value of the count
-            /// </summary>
-            public int Count => throw new NotSupportedException();
-            /// <summary>
-            /// Gets the value of the is synchronized
-            /// </summary>
-            public bool IsSynchronized => throw new NotSupportedException();
-            /// <summary>
-            /// Gets the value of the sync root
-            /// </summary>
-            public object SyncRoot => throw new NotSupportedException();
-            /// <summary>
-            /// Gets the value of the is fixed size
-            /// </summary>
-            public bool IsFixedSize => throw new NotSupportedException();
-            /// <summary>
-            /// Gets the value of the is read only
-            /// </summary>
-            public bool IsReadOnly => throw new NotSupportedException();
-            /// <summary>
-            /// Gets the value of the keys
-            /// </summary>
-            public ICollection Keys => throw new NotSupportedException();
-            /// <summary>
-            /// Gets the value of the values
-            /// </summary>
-            public ICollection Values => throw new NotSupportedException();
-            /// <summary>
-            /// The not supported exception
-            /// </summary>
-            public object this[object key] { get => throw new NotSupportedException(); set => throw new NotSupportedException(); }
-
-            /// <summary>
-            /// Adds the key
+            ///     Adds the key
             /// </summary>
             /// <param name="key">The key</param>
             /// <param name="value">The value</param>
             public void Add(object key, object value) => throw new NotSupportedException();
+
             /// <summary>
-            /// Clears this instance
+            ///     Clears this instance
             /// </summary>
             public void Clear() => throw new NotSupportedException();
+
             /// <summary>
-            /// Describes whether this instance contains
+            ///     Describes whether this instance contains
             /// </summary>
             /// <param name="key">The key</param>
             /// <returns>The bool</returns>
             public bool Contains(object key) => throw new NotSupportedException();
+
             /// <summary>
-            /// Gets the enumerator
+            ///     Gets the enumerator
             /// </summary>
             /// <returns>The dictionary enumerator</returns>
             public IDictionaryEnumerator GetEnumerator() => _enumerator;
+
             /// <summary>
-            /// Removes the key
+            ///     Removes the key
             /// </summary>
             /// <param name="key">The key</param>
             public void Remove(object key) => throw new NotSupportedException();
+
             /// <summary>
-            /// Copies the to using the specified array
+            ///     Copies the to using the specified array
             /// </summary>
             /// <param name="array">The array</param>
             /// <param name="index">The index</param>
             public void CopyTo(Array array, int index) => throw new NotSupportedException();
+
             /// <summary>
-            /// Gets the enumerator
+            ///     Gets the enumerator
             /// </summary>
             /// <returns>The enumerator</returns>
             IEnumerator IEnumerable.GetEnumerator() => throw new NotSupportedException();
         }
 
         /// <summary>
-        /// The key value type class
+        ///     The key value type class
         /// </summary>
         private sealed class KeyValueType
         {
             /// <summary>
-            /// The key type
+            ///     The key type
             /// </summary>
             public Type KeyType;
+
             /// <summary>
-            /// The value type
+            ///     The value type
             /// </summary>
             public Type ValueType;
         }
 
         /// <summary>
-        /// The type def class
+        ///     The type def class
         /// </summary>
         private sealed class TypeDef
         {
             /// <summary>
-            /// The type def
+            ///     The type def
             /// </summary>
             private static readonly Dictionary<string, TypeDef> _defs = new Dictionary<string, TypeDef>();
+
             /// <summary>
-            /// The key value type
+            ///     The key value type
             /// </summary>
             private static readonly Dictionary<Type, KeyValueType> _iskvpe = new Dictionary<Type, KeyValueType>();
+
             /// <summary>
-            /// The lock
+            ///     The lock
             /// </summary>
             private static readonly object _lock = new object();
 
             /// <summary>
-            /// The member definition
-            /// </summary>
-            private readonly List<MemberDefinition> _serializationMembers = new List<MemberDefinition>();
-            /// <summary>
-            /// The member definition
+            ///     The member definition
             /// </summary>
             private readonly List<MemberDefinition> _deserializationMembers = new List<MemberDefinition>();
+
             /// <summary>
-            /// The type
+            ///     The member definition
+            /// </summary>
+            private readonly List<MemberDefinition> _serializationMembers = new List<MemberDefinition>();
+
+            /// <summary>
+            ///     The type
             /// </summary>
             private readonly Type _type;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="TypeDef"/> class
+            ///     Initializes a new instance of the <see cref="TypeDef" /> class
             /// </summary>
             /// <param name="type">The type</param>
             /// <param name="options">The options</param>
@@ -3637,6 +3718,7 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     members = EnumerateDefinitionsUsingTypeDescriptors(true, type, options);
                 }
+
                 _serializationMembers = new List<MemberDefinition>(options.FinalizeSerializationMembers(type, members));
 
                 if (options.SerializationOptions.HasFlag(JsonSerializationOptions.UseReflection))
@@ -3647,11 +3729,12 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     members = EnumerateDefinitionsUsingTypeDescriptors(false, type, options);
                 }
+
                 _deserializationMembers = new List<MemberDefinition>(options.FinalizeDeserializationMembers(type, members));
             }
 
             /// <summary>
-            /// Gets the deserialization member using the specified key
+            ///     Gets the deserialization member using the specified key
             /// </summary>
             /// <param name="key">The key</param>
             /// <returns>The member definition</returns>
@@ -3665,11 +3748,12 @@ namespace Alis.Core.Aspect.Data.Json
                     if (string.Compare(def.WireName, key, StringComparison.OrdinalIgnoreCase) == 0)
                         return def;
                 }
+
                 return null;
             }
 
             /// <summary>
-            /// Applies the entry using the specified dictionary
+            ///     Applies the entry using the specified dictionary
             /// </summary>
             /// <param name="dictionary">The dictionary</param>
             /// <param name="target">The target</param>
@@ -3686,7 +3770,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             /// <summary>
-            /// Writes the values using the specified writer
+            ///     Writes the values using the specified writer
             /// </summary>
             /// <param name="writer">The writer</param>
             /// <param name="component">The component</param>
@@ -3775,20 +3859,21 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             /// <summary>
-            /// Returns the string
+            ///     Returns the string
             /// </summary>
             /// <returns>The string</returns>
             public override string ToString() => _type.AssemblyQualifiedName;
 
             /// <summary>
-            /// Gets the key using the specified type
+            ///     Gets the key using the specified type
             /// </summary>
             /// <param name="type">The type</param>
             /// <param name="options">The options</param>
             /// <returns>The string</returns>
             private static string GetKey(Type type, JsonOptions options) => type.AssemblyQualifiedName + '\0' + options.GetCacheKey();
+
             /// <summary>
-            /// Unlockeds the get using the specified type
+            ///     Unlockeds the get using the specified type
             /// </summary>
             /// <param name="type">The type</param>
             /// <param name="options">The options</param>
@@ -3801,11 +3886,12 @@ namespace Alis.Core.Aspect.Data.Json
                     ta = new TypeDef(type, options);
                     _defs.Add(key, ta);
                 }
+
                 return ta;
             }
 
             /// <summary>
-            /// Locks the action
+            ///     Locks the action
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <param name="action">The action</param>
@@ -3819,7 +3905,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             /// <summary>
-            /// Describes whether remove deserialization member
+            ///     Describes whether remove deserialization member
             /// </summary>
             /// <param name="type">The type</param>
             /// <param name="options">The options</param>
@@ -3835,7 +3921,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             /// <summary>
-            /// Describes whether remove serialization member
+            ///     Describes whether remove serialization member
             /// </summary>
             /// <param name="type">The type</param>
             /// <param name="options">The options</param>
@@ -3851,7 +3937,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             /// <summary>
-            /// Adds the deserialization member using the specified type
+            ///     Adds the deserialization member using the specified type
             /// </summary>
             /// <param name="type">The type</param>
             /// <param name="options">The options</param>
@@ -3866,7 +3952,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             /// <summary>
-            /// Adds the serialization member using the specified type
+            ///     Adds the serialization member using the specified type
             /// </summary>
             /// <param name="type">The type</param>
             /// <param name="options">The options</param>
@@ -3881,7 +3967,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             /// <summary>
-            /// Gets the deserialization members using the specified type
+            ///     Gets the deserialization members using the specified type
             /// </summary>
             /// <param name="type">The type</param>
             /// <param name="options">The options</param>
@@ -3896,7 +3982,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             /// <summary>
-            /// Gets the serialization members using the specified type
+            ///     Gets the serialization members using the specified type
             /// </summary>
             /// <param name="type">The type</param>
             /// <param name="options">The options</param>
@@ -3911,7 +3997,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             /// <summary>
-            /// Gets the type
+            ///     Gets the type
             /// </summary>
             /// <param name="type">The type</param>
             /// <param name="options">The options</param>
@@ -3925,7 +4011,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             /// <summary>
-            /// Describes whether is key value pair enumerable
+            ///     Describes whether is key value pair enumerable
             /// </summary>
             /// <param name="type">The type</param>
             /// <param name="keyType">The key type</param>
@@ -3949,7 +4035,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             /// <summary>
-            /// Enumerates the definitions using reflection using the specified serialization
+            ///     Enumerates the definitions using reflection using the specified serialization
             /// </summary>
             /// <param name="serialization">The serialization</param>
             /// <param name="type">The type</param>
@@ -4014,7 +4100,7 @@ namespace Alis.Core.Aspect.Data.Json
 
                     ma.HasDefaultValue = TryGetObjectDefaultValue(info, out var defaultValue);
                     ma.DefaultValue = defaultValue;
-                    ma.Accessor = (IMemberAccessor)Activator.CreateInstance(typeof(PropertyInfoAccessor<,>).MakeGenericType(info.DeclaringType, info.PropertyType), info);
+                    ma.Accessor = (IMemberAccessor) Activator.CreateInstance(typeof(PropertyInfoAccessor<,>).MakeGenericType(info.DeclaringType, info.PropertyType), info);
                     yield return ma;
                 }
 
@@ -4066,14 +4152,14 @@ namespace Alis.Core.Aspect.Data.Json
 
                         ma.HasDefaultValue = TryGetObjectDefaultValue(info, out var defaultValue);
                         ma.DefaultValue = defaultValue;
-                        ma.Accessor = (IMemberAccessor)Activator.CreateInstance(typeof(FieldInfoAccessor), info);
+                        ma.Accessor = (IMemberAccessor) Activator.CreateInstance(typeof(FieldInfoAccessor), info);
                         yield return ma;
                     }
                 }
             }
 
             /// <summary>
-            /// Enumerates the definitions using type descriptors using the specified serialization
+            ///     Enumerates the definitions using type descriptors using the specified serialization
             /// </summary>
             /// <param name="serialization">The serialization</param>
             /// <param name="type">The type</param>
@@ -4130,38 +4216,39 @@ namespace Alis.Core.Aspect.Data.Json
 
                     ma.HasDefaultValue = TryGetObjectDefaultValue(descriptor, out var defaultValue);
                     ma.DefaultValue = defaultValue;
-                    ma.Accessor = (IMemberAccessor)Activator.CreateInstance(typeof(PropertyDescriptorAccessor), descriptor);
+                    ma.Accessor = (IMemberAccessor) Activator.CreateInstance(typeof(PropertyDescriptorAccessor), descriptor);
                     yield return ma;
                 }
             }
         }
 
         /// <summary>
-        /// A utility class to compare object by their reference.
+        ///     A utility class to compare object by their reference.
         /// </summary>
         public sealed class ReferenceComparer : IEqualityComparer<object>
         {
             /// <summary>
-            /// Gets the instance of the ReferenceComparer class.
+            ///     Gets the instance of the ReferenceComparer class.
             /// </summary>
             public static readonly ReferenceComparer Instance = new ReferenceComparer();
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="ReferenceComparer"/> class
+            ///     Initializes a new instance of the <see cref="ReferenceComparer" /> class
             /// </summary>
             private ReferenceComparer()
             {
             }
 
             /// <summary>
-            /// Describes whether this instance equals
+            ///     Describes whether this instance equals
             /// </summary>
             /// <param name="x">The </param>
             /// <param name="y">The </param>
             /// <returns>The bool</returns>
             bool IEqualityComparer<object>.Equals(object x, object y) => ReferenceEquals(x, y);
+
             /// <summary>
-            /// Gets the hash code using the specified obj
+            ///     Gets the hash code using the specified obj
             /// </summary>
             /// <param name="obj">The obj</param>
             /// <returns>The int</returns>
@@ -4169,18 +4256,18 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// The collection object class
+        ///     The collection object class
         /// </summary>
-        /// <seealso cref="ListObject"/>
+        /// <seealso cref="ListObject" />
         private sealed class ICollectionTObject<T> : ListObject
         {
             /// <summary>
-            /// The coll
+            ///     The coll
             /// </summary>
             private ICollection<T> _coll;
 
             /// <summary>
-            /// Gets or sets the value of the list
+            ///     Gets or sets the value of the list
             /// </summary>
             public override object List
             {
@@ -4188,43 +4275,44 @@ namespace Alis.Core.Aspect.Data.Json
                 set
                 {
                     base.List = value;
-                    _coll = (ICollection<T>)value;
+                    _coll = (ICollection<T>) value;
                 }
             }
 
             /// <summary>
-            /// Clears this instance
+            ///     Clears this instance
             /// </summary>
             public override void Clear() => _coll.Clear();
+
             /// <summary>
-            /// Adds the value
+            ///     Adds the value
             /// </summary>
             /// <param name="value">The value</param>
             /// <param name="options">The options</param>
             public override void Add(object value, JsonOptions options = null)
             {
-                if (value == null && typeof(T).IsValueType)
+                if ((value == null) && typeof(T).IsValueType)
                 {
                     HandleException(new JsonException("JSO0014: JSON error detected. Cannot add null to a collection of '" + typeof(T) + "' elements."), options);
                 }
 
-                _coll.Add((T)value);
+                _coll.Add((T) value);
             }
         }
 
         /// <summary>
-        /// The list object class
+        ///     The list object class
         /// </summary>
-        /// <seealso cref="ListObject"/>
+        /// <seealso cref="ListObject" />
         private sealed class IListObject : ListObject
         {
             /// <summary>
-            /// The list
+            ///     The list
             /// </summary>
             private IList _list;
 
             /// <summary>
-            /// Gets or sets the value of the list
+            ///     Gets or sets the value of the list
             /// </summary>
             public override object List
             {
@@ -4232,16 +4320,17 @@ namespace Alis.Core.Aspect.Data.Json
                 set
                 {
                     base.List = value;
-                    _list = (IList)value;
+                    _list = (IList) value;
                 }
             }
 
             /// <summary>
-            /// Clears this instance
+            ///     Clears this instance
             /// </summary>
             public override void Clear() => _list.Clear();
+
             /// <summary>
-            /// Adds the value
+            ///     Adds the value
             /// </summary>
             /// <param name="value">The value</param>
             /// <param name="options">The options</param>
@@ -4249,33 +4338,31 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// The field info accessor class
+        ///     The field info accessor class
         /// </summary>
-        /// <seealso cref="IMemberAccessor"/>
+        /// <seealso cref="IMemberAccessor" />
         private sealed class FieldInfoAccessor : IMemberAccessor
         {
             /// <summary>
-            /// The fi
+            ///     The fi
             /// </summary>
             private readonly FieldInfo _fi;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="FieldInfoAccessor"/> class
+            ///     Initializes a new instance of the <see cref="FieldInfoAccessor" /> class
             /// </summary>
             /// <param name="fi">The fi</param>
-            public FieldInfoAccessor(FieldInfo fi)
-            {
-                _fi = fi;
-            }
+            public FieldInfoAccessor(FieldInfo fi) => _fi = fi;
 
             /// <summary>
-            /// Gets the component
+            ///     Gets the component
             /// </summary>
             /// <param name="component">The component</param>
             /// <returns>The object</returns>
             public object Get(object component) => _fi.GetValue(component);
+
             /// <summary>
-            /// Sets the component
+            ///     Sets the component
             /// </summary>
             /// <param name="component">The component</param>
             /// <param name="value">The value</param>
@@ -4283,33 +4370,31 @@ namespace Alis.Core.Aspect.Data.Json
         }
 
         /// <summary>
-        /// The property descriptor accessor class
+        ///     The property descriptor accessor class
         /// </summary>
-        /// <seealso cref="IMemberAccessor"/>
+        /// <seealso cref="IMemberAccessor" />
         private sealed class PropertyDescriptorAccessor : IMemberAccessor
         {
             /// <summary>
-            /// The pd
+            ///     The pd
             /// </summary>
             private readonly PropertyDescriptor _pd;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="PropertyDescriptorAccessor"/> class
+            ///     Initializes a new instance of the <see cref="PropertyDescriptorAccessor" /> class
             /// </summary>
             /// <param name="pd">The pd</param>
-            public PropertyDescriptorAccessor(PropertyDescriptor pd)
-            {
-                _pd = pd;
-            }
+            public PropertyDescriptorAccessor(PropertyDescriptor pd) => _pd = pd;
 
             /// <summary>
-            /// Gets the component
+            ///     Gets the component
             /// </summary>
             /// <param name="component">The component</param>
             /// <returns>The object</returns>
             public object Get(object component) => _pd.GetValue(component);
+
             /// <summary>
-            /// Sets the component
+            ///     Sets the component
             /// </summary>
             /// <param name="component">The component</param>
             /// <param name="value">The value</param>
@@ -4324,31 +4409,33 @@ namespace Alis.Core.Aspect.Data.Json
 
         // note: Funcs & Action<T> needs .NET 4+
         /// <summary>
-        /// The func
+        ///     The func
         /// </summary>
         private delegate TResult JFunc<T, TResult>(T arg);
+
         /// <summary>
-        /// The action
+        ///     The action
         /// </summary>
         private delegate void JAction<T1, T2>(T1 arg1, T2 arg2);
 
         /// <summary>
-        /// The property info accessor class
+        ///     The property info accessor class
         /// </summary>
-        /// <seealso cref="IMemberAccessor"/>
+        /// <seealso cref="IMemberAccessor" />
         private sealed class PropertyInfoAccessor<TComponent, TMember> : IMemberAccessor
         {
             /// <summary>
-            /// The get
+            ///     The get
             /// </summary>
             private readonly JFunc<TComponent, TMember> _get;
+
             /// <summary>
-            /// The set
+            ///     The set
             /// </summary>
             private readonly JAction<TComponent, TMember> _set;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="PropertyInfoAccessor"/> class
+            ///     Initializes a new instance of the <see cref="PropertyInfoAccessor" /> class
             /// </summary>
             /// <param name="pi">The pi</param>
             public PropertyInfoAccessor(PropertyInfo pi)
@@ -4356,18 +4443,18 @@ namespace Alis.Core.Aspect.Data.Json
                 var get = pi.GetGetMethod();
                 if (get != null)
                 {
-                    _get = (JFunc<TComponent, TMember>)Delegate.CreateDelegate(typeof(JFunc<TComponent, TMember>), get);
+                    _get = (JFunc<TComponent, TMember>) Delegate.CreateDelegate(typeof(JFunc<TComponent, TMember>), get);
                 }
 
                 var set = pi.GetSetMethod();
                 if (set != null)
                 {
-                    _set = (JAction<TComponent, TMember>)Delegate.CreateDelegate(typeof(JAction<TComponent, TMember>), set);
+                    _set = (JAction<TComponent, TMember>) Delegate.CreateDelegate(typeof(JAction<TComponent, TMember>), set);
                 }
             }
 
             /// <summary>
-            /// Gets the component
+            ///     Gets the component
             /// </summary>
             /// <param name="component">The component</param>
             /// <returns>The object</returns>
@@ -4376,11 +4463,11 @@ namespace Alis.Core.Aspect.Data.Json
                 if (_get == null)
                     return null;
 
-                return _get((TComponent)component);
+                return _get((TComponent) component);
             }
 
             /// <summary>
-            /// Sets the component
+            ///     Sets the component
             /// </summary>
             /// <param name="component">The component</param>
             /// <param name="value">The value</param>
@@ -4389,40 +4476,41 @@ namespace Alis.Core.Aspect.Data.Json
                 if (_set == null)
                     return;
 
-                _set((TComponent)component, (TMember)value);
+                _set((TComponent) component, (TMember) value);
             }
         }
 
         /// <summary>
-        /// The conversions class
+        ///     The conversions class
         /// </summary>
         private static class Conversions
         {
             /// <summary>
-            /// The enum separators
+            ///     The enum separators
             /// </summary>
-            private static readonly char[] _enumSeparators = new char[] { ',', ';', '+', '|', ' ' };
-            /// <summary>
-            /// The date formats utc
-            /// </summary>
-            private static readonly string[] _dateFormatsUtc = { "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", "yyyy'-'MM'-'dd'T'HH':'mm'Z'", "yyyyMMdd'T'HH':'mm':'ss'Z'" };
+            private static readonly char[] _enumSeparators = {',', ';', '+', '|', ' '};
 
             /// <summary>
-            /// Describes whether is valid
+            ///     The date formats utc
+            /// </summary>
+            private static readonly string[] _dateFormatsUtc = {"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", "yyyy'-'MM'-'dd'T'HH':'mm'Z'", "yyyyMMdd'T'HH':'mm':'ss'Z'"};
+
+            /// <summary>
+            ///     Describes whether is valid
             /// </summary>
             /// <param name="dt">The dt</param>
             /// <returns>The bool</returns>
-            private static bool IsValid(DateTime dt) => dt != DateTime.MinValue && dt != DateTime.MaxValue && dt.Kind != DateTimeKind.Unspecified;
+            private static bool IsValid(DateTime dt) => (dt != DateTime.MinValue) && (dt != DateTime.MaxValue) && (dt.Kind != DateTimeKind.Unspecified);
 
             /// <summary>
-            /// Changes the type using the specified input
+            ///     Changes the type using the specified input
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <param name="input">The input</param>
             /// <param name="defaultValue">The default value</param>
             /// <param name="provider">The provider</param>
             /// <returns>The value</returns>
-            public static T ChangeType<T>(object input, T defaultValue = default, IFormatProvider provider = null)
+            public static T ChangeType<T>(object input, T defaultValue = default(T), IFormatProvider provider = null)
             {
                 if (!TryChangeType(input, provider, out T value))
                     return defaultValue;
@@ -4431,15 +4519,16 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             /// <summary>
-            /// Describes whether try change type
+            ///     Describes whether try change type
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <param name="input">The input</param>
             /// <param name="value">The value</param>
             /// <returns>The bool</returns>
             public static bool TryChangeType<T>(object input, out T value) => TryChangeType(input, null, out value);
+
             /// <summary>
-            /// Describes whether try change type
+            ///     Describes whether try change type
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <param name="input">The input</param>
@@ -4450,16 +4539,16 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 if (!TryChangeType(input, typeof(T), provider, out var tvalue))
                 {
-                    value = default;
+                    value = default(T);
                     return false;
                 }
 
-                value = (T)tvalue;
+                value = (T) tvalue;
                 return true;
             }
 
             /// <summary>
-            /// Changes the type using the specified input
+            ///     Changes the type using the specified input
             /// </summary>
             /// <param name="input">The input</param>
             /// <param name="conversionType">The conversion type</param>
@@ -4483,15 +4572,16 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             /// <summary>
-            /// Describes whether try change type
+            ///     Describes whether try change type
             /// </summary>
             /// <param name="input">The input</param>
             /// <param name="conversionType">The conversion type</param>
             /// <param name="value">The value</param>
             /// <returns>The bool</returns>
             public static bool TryChangeType(object input, Type conversionType, out object value) => TryChangeType(input, conversionType, null, out value);
+
             /// <summary>
-            /// Describes whether try change type
+            ///     Describes whether try change type
             /// </summary>
             /// <param name="input">The input</param>
             /// <param name="conversionType">The conversion type</param>
@@ -4552,37 +4642,38 @@ namespace Alis.Core.Aspect.Data.Json
                         switch (tc)
                         {
                             case TypeCode.Int32:
-                                value = (int)input;
+                                value = (int) input;
                                 return true;
 
                             case TypeCode.Int16:
-                                value = (int)(short)input;
+                                value = (int) (short) input;
                                 return true;
 
                             case TypeCode.Int64:
-                                value = (int)(long)input;
+                                value = (int) (long) input;
                                 return true;
 
                             case TypeCode.UInt32:
-                                value = (int)(uint)input;
+                                value = (int) (uint) input;
                                 return true;
 
                             case TypeCode.UInt16:
-                                value = (int)(ushort)input;
+                                value = (int) (ushort) input;
                                 return true;
 
                             case TypeCode.UInt64:
-                                value = (int)(ulong)input;
+                                value = (int) (ulong) input;
                                 return true;
 
                             case TypeCode.Byte:
-                                value = (int)(byte)input;
+                                value = (int) (byte) input;
                                 return true;
 
                             case TypeCode.SByte:
-                                value = (int)(sbyte)input;
+                                value = (int) (sbyte) input;
                                 return true;
                         }
+
                         return false;
                     }
 
@@ -4591,37 +4682,38 @@ namespace Alis.Core.Aspect.Data.Json
                         switch (tc)
                         {
                             case TypeCode.Int32:
-                                value = (short)(int)input;
+                                value = (short) (int) input;
                                 return true;
 
                             case TypeCode.Int16:
-                                value = (short)input;
+                                value = (short) input;
                                 return true;
 
                             case TypeCode.Int64:
-                                value = (short)(long)input;
+                                value = (short) (long) input;
                                 return true;
 
                             case TypeCode.UInt32:
-                                value = (short)(uint)input;
+                                value = (short) (uint) input;
                                 return true;
 
                             case TypeCode.UInt16:
-                                value = (short)(ushort)input;
+                                value = (short) (ushort) input;
                                 return true;
 
                             case TypeCode.UInt64:
-                                value = (short)(ulong)input;
+                                value = (short) (ulong) input;
                                 return true;
 
                             case TypeCode.Byte:
-                                value = (short)(byte)input;
+                                value = (short) (byte) input;
                                 return true;
 
                             case TypeCode.SByte:
-                                value = (short)(sbyte)input;
+                                value = (short) (sbyte) input;
                                 return true;
                         }
+
                         return false;
                     }
 
@@ -4630,37 +4722,38 @@ namespace Alis.Core.Aspect.Data.Json
                         switch (tc)
                         {
                             case TypeCode.Int32:
-                                value = (long)(int)input;
+                                value = (long) (int) input;
                                 return true;
 
                             case TypeCode.Int16:
-                                value = (long)(short)input;
+                                value = (long) (short) input;
                                 return true;
 
                             case TypeCode.Int64:
-                                value = (long)input;
+                                value = (long) input;
                                 return true;
 
                             case TypeCode.UInt32:
-                                value = (long)(uint)input;
+                                value = (long) (uint) input;
                                 return true;
 
                             case TypeCode.UInt16:
-                                value = (long)(ushort)input;
+                                value = (long) (ushort) input;
                                 return true;
 
                             case TypeCode.UInt64:
-                                value = (long)(ulong)input;
+                                value = (long) (ulong) input;
                                 return true;
 
                             case TypeCode.Byte:
-                                value = (long)(byte)input;
+                                value = (long) (byte) input;
                                 return true;
 
                             case TypeCode.SByte:
-                                value = (long)(sbyte)input;
+                                value = (long) (sbyte) input;
                                 return true;
                         }
+
                         return false;
                     }
 
@@ -4669,37 +4762,38 @@ namespace Alis.Core.Aspect.Data.Json
                         switch (tc)
                         {
                             case TypeCode.Int32:
-                                value = (uint)(int)input;
+                                value = (uint) (int) input;
                                 return true;
 
                             case TypeCode.Int16:
-                                value = (uint)(short)input;
+                                value = (uint) (short) input;
                                 return true;
 
                             case TypeCode.Int64:
-                                value = (uint)(long)input;
+                                value = (uint) (long) input;
                                 return true;
 
                             case TypeCode.UInt32:
-                                value = (uint)input;
+                                value = (uint) input;
                                 return true;
 
                             case TypeCode.UInt16:
-                                value = (uint)(ushort)input;
+                                value = (uint) (ushort) input;
                                 return true;
 
                             case TypeCode.UInt64:
-                                value = (uint)(ulong)input;
+                                value = (uint) (ulong) input;
                                 return true;
 
                             case TypeCode.Byte:
-                                value = (uint)(byte)input;
+                                value = (uint) (byte) input;
                                 return true;
 
                             case TypeCode.SByte:
-                                value = (uint)(sbyte)input;
+                                value = (uint) (sbyte) input;
                                 return true;
                         }
+
                         return false;
                     }
 
@@ -4708,37 +4802,38 @@ namespace Alis.Core.Aspect.Data.Json
                         switch (tc)
                         {
                             case TypeCode.Int32:
-                                value = (ushort)(int)input;
+                                value = (ushort) (int) input;
                                 return true;
 
                             case TypeCode.Int16:
-                                value = (ushort)(short)input;
+                                value = (ushort) (short) input;
                                 return true;
 
                             case TypeCode.Int64:
-                                value = (ushort)(long)input;
+                                value = (ushort) (long) input;
                                 return true;
 
                             case TypeCode.UInt32:
-                                value = (ushort)(uint)input;
+                                value = (ushort) (uint) input;
                                 return true;
 
                             case TypeCode.UInt16:
-                                value = (ushort)input;
+                                value = (ushort) input;
                                 return true;
 
                             case TypeCode.UInt64:
-                                value = (ushort)(ulong)input;
+                                value = (ushort) (ulong) input;
                                 return true;
 
                             case TypeCode.Byte:
-                                value = (ushort)(byte)input;
+                                value = (ushort) (byte) input;
                                 return true;
 
                             case TypeCode.SByte:
-                                value = (ushort)(sbyte)input;
+                                value = (ushort) (sbyte) input;
                                 return true;
                         }
+
                         return false;
                     }
 
@@ -4747,37 +4842,38 @@ namespace Alis.Core.Aspect.Data.Json
                         switch (tc)
                         {
                             case TypeCode.Int32:
-                                value = (ulong)(int)input;
+                                value = (ulong) (int) input;
                                 return true;
 
                             case TypeCode.Int16:
-                                value = (ulong)(short)input;
+                                value = (ulong) (short) input;
                                 return true;
 
                             case TypeCode.Int64:
-                                value = (ulong)(long)input;
+                                value = (ulong) (long) input;
                                 return true;
 
                             case TypeCode.UInt32:
-                                value = (ulong)(uint)input;
+                                value = (ulong) (uint) input;
                                 return true;
 
                             case TypeCode.UInt16:
-                                value = (ulong)(ushort)input;
+                                value = (ulong) (ushort) input;
                                 return true;
 
                             case TypeCode.UInt64:
-                                value = (ulong)input;
+                                value = (ulong) input;
                                 return true;
 
                             case TypeCode.Byte:
-                                value = (ulong)(byte)input;
+                                value = (ulong) (byte) input;
                                 return true;
 
                             case TypeCode.SByte:
-                                value = (ulong)(sbyte)input;
+                                value = (ulong) (sbyte) input;
                                 return true;
                         }
+
                         return false;
                     }
 
@@ -4786,37 +4882,38 @@ namespace Alis.Core.Aspect.Data.Json
                         switch (tc)
                         {
                             case TypeCode.Int32:
-                                value = (byte)(int)input;
+                                value = (byte) (int) input;
                                 return true;
 
                             case TypeCode.Int16:
-                                value = (byte)(short)input;
+                                value = (byte) (short) input;
                                 return true;
 
                             case TypeCode.Int64:
-                                value = (byte)(long)input;
+                                value = (byte) (long) input;
                                 return true;
 
                             case TypeCode.UInt32:
-                                value = (byte)(uint)input;
+                                value = (byte) (uint) input;
                                 return true;
 
                             case TypeCode.UInt16:
-                                value = (byte)(ushort)input;
+                                value = (byte) (ushort) input;
                                 return true;
 
                             case TypeCode.UInt64:
-                                value = (byte)(ulong)input;
+                                value = (byte) (ulong) input;
                                 return true;
 
                             case TypeCode.Byte:
-                                value = (byte)input;
+                                value = (byte) input;
                                 return true;
 
                             case TypeCode.SByte:
-                                value = (byte)(sbyte)input;
+                                value = (byte) (sbyte) input;
                                 return true;
                         }
+
                         return false;
                     }
 
@@ -4825,37 +4922,38 @@ namespace Alis.Core.Aspect.Data.Json
                         switch (tc)
                         {
                             case TypeCode.Int32:
-                                value = (sbyte)(int)input;
+                                value = (sbyte) (int) input;
                                 return true;
 
                             case TypeCode.Int16:
-                                value = (sbyte)(short)input;
+                                value = (sbyte) (short) input;
                                 return true;
 
                             case TypeCode.Int64:
-                                value = (sbyte)(long)input;
+                                value = (sbyte) (long) input;
                                 return true;
 
                             case TypeCode.UInt32:
-                                value = (sbyte)(uint)input;
+                                value = (sbyte) (uint) input;
                                 return true;
 
                             case TypeCode.UInt16:
-                                value = (sbyte)(ushort)input;
+                                value = (sbyte) (ushort) input;
                                 return true;
 
                             case TypeCode.UInt64:
-                                value = (sbyte)(ulong)input;
+                                value = (sbyte) (ulong) input;
                                 return true;
 
                             case TypeCode.Byte:
-                                value = (sbyte)(byte)input;
+                                value = (sbyte) (byte) input;
                                 return true;
 
                             case TypeCode.SByte:
-                                value = (sbyte)input;
+                                value = (sbyte) input;
                                 return true;
                         }
+
                         return false;
                     }
                 }
@@ -4863,22 +4961,24 @@ namespace Alis.Core.Aspect.Data.Json
                 if (conversionType == typeof(Guid))
                 {
                     var svalue = string.Format(provider, "{0}", input).Nullify();
-                    if (svalue != null && Guid.TryParse(svalue, out var guid))
+                    if ((svalue != null) && Guid.TryParse(svalue, out var guid))
                     {
                         value = guid;
                         return true;
                     }
+
                     return false;
                 }
 
                 if (conversionType == typeof(Uri))
                 {
                     var svalue = string.Format(provider, "{0}", input).Nullify();
-                    if (svalue != null && Uri.TryCreate(svalue, UriKind.RelativeOrAbsolute, out var uri))
+                    if ((svalue != null) && Uri.TryCreate(svalue, UriKind.RelativeOrAbsolute, out var uri))
                     {
                         value = uri;
                         return true;
                     }
+
                     return false;
                 }
 
@@ -4897,6 +4997,7 @@ namespace Alis.Core.Aspect.Data.Json
                         value = new IntPtr(i);
                         return true;
                     }
+
                     return false;
                 }
 
@@ -4904,25 +5005,25 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     if (inputType == typeof(uint))
                     {
-                        value = unchecked((int)(uint)input);
+                        value = unchecked((int) (uint) input);
                         return true;
                     }
 
                     if (inputType == typeof(ulong))
                     {
-                        value = unchecked((int)(ulong)input);
+                        value = unchecked((int) (ulong) input);
                         return true;
                     }
 
                     if (inputType == typeof(ushort))
                     {
-                        value = unchecked((int)(ushort)input);
+                        value = (int) (ushort) input;
                         return true;
                     }
 
                     if (inputType == typeof(byte))
                     {
-                        value = unchecked((int)(byte)input);
+                        value = (int) (byte) input;
                         return true;
                     }
                 }
@@ -4931,31 +5032,31 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     if (inputType == typeof(uint))
                     {
-                        value = unchecked((long)(uint)input);
+                        value = (long) (uint) input;
                         return true;
                     }
 
                     if (inputType == typeof(ulong))
                     {
-                        value = unchecked((long)(ulong)input);
+                        value = unchecked((long) (ulong) input);
                         return true;
                     }
 
                     if (inputType == typeof(ushort))
                     {
-                        value = unchecked((long)(ushort)input);
+                        value = (long) (ushort) input;
                         return true;
                     }
 
                     if (inputType == typeof(byte))
                     {
-                        value = unchecked((long)(byte)input);
+                        value = (long) (byte) input;
                         return true;
                     }
 
                     if (inputType == typeof(TimeSpan))
                     {
-                        value = ((TimeSpan)input).Ticks;
+                        value = ((TimeSpan) input).Ticks;
                         return true;
                     }
                 }
@@ -4964,25 +5065,25 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     if (inputType == typeof(uint))
                     {
-                        value = unchecked((short)(uint)input);
+                        value = unchecked((short) (uint) input);
                         return true;
                     }
 
                     if (inputType == typeof(ulong))
                     {
-                        value = unchecked((short)(ulong)input);
+                        value = unchecked((short) (ulong) input);
                         return true;
                     }
 
                     if (inputType == typeof(ushort))
                     {
-                        value = unchecked((short)(ushort)input);
+                        value = unchecked((short) (ushort) input);
                         return true;
                     }
 
                     if (inputType == typeof(byte))
                     {
-                        value = unchecked((short)(byte)input);
+                        value = (short) (byte) input;
                         return true;
                     }
                 }
@@ -4991,25 +5092,25 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     if (inputType == typeof(uint))
                     {
-                        value = unchecked((sbyte)(uint)input);
+                        value = unchecked((sbyte) (uint) input);
                         return true;
                     }
 
                     if (inputType == typeof(ulong))
                     {
-                        value = unchecked((sbyte)(ulong)input);
+                        value = unchecked((sbyte) (ulong) input);
                         return true;
                     }
 
                     if (inputType == typeof(ushort))
                     {
-                        value = unchecked((sbyte)(ushort)input);
+                        value = unchecked((sbyte) (ushort) input);
                         return true;
                     }
 
                     if (inputType == typeof(byte))
                     {
-                        value = unchecked((sbyte)(byte)input);
+                        value = unchecked((sbyte) (byte) input);
                         return true;
                     }
                 }
@@ -5018,25 +5119,25 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     if (inputType == typeof(int))
                     {
-                        value = unchecked((uint)(int)input);
+                        value = unchecked((uint) (int) input);
                         return true;
                     }
 
                     if (inputType == typeof(long))
                     {
-                        value = unchecked((uint)(long)input);
+                        value = unchecked((uint) (long) input);
                         return true;
                     }
 
                     if (inputType == typeof(short))
                     {
-                        value = unchecked((uint)(short)input);
+                        value = unchecked((uint) (short) input);
                         return true;
                     }
 
                     if (inputType == typeof(sbyte))
                     {
-                        value = unchecked((uint)(sbyte)input);
+                        value = unchecked((uint) (sbyte) input);
                         return true;
                     }
                 }
@@ -5045,25 +5146,25 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     if (inputType == typeof(int))
                     {
-                        value = unchecked((ulong)(int)input);
+                        value = unchecked((ulong) (int) input);
                         return true;
                     }
 
                     if (inputType == typeof(long))
                     {
-                        value = unchecked((ulong)(long)input);
+                        value = unchecked((ulong) (long) input);
                         return true;
                     }
 
                     if (inputType == typeof(short))
                     {
-                        value = unchecked((ulong)(short)input);
+                        value = unchecked((ulong) (short) input);
                         return true;
                     }
 
                     if (inputType == typeof(sbyte))
                     {
-                        value = unchecked((ulong)(sbyte)input);
+                        value = unchecked((ulong) (sbyte) input);
                         return true;
                     }
                 }
@@ -5072,25 +5173,25 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     if (inputType == typeof(int))
                     {
-                        value = unchecked((ushort)(int)input);
+                        value = unchecked((ushort) (int) input);
                         return true;
                     }
 
                     if (inputType == typeof(long))
                     {
-                        value = unchecked((ushort)(long)input);
+                        value = unchecked((ushort) (long) input);
                         return true;
                     }
 
                     if (inputType == typeof(short))
                     {
-                        value = unchecked((ushort)(short)input);
+                        value = unchecked((ushort) (short) input);
                         return true;
                     }
 
                     if (inputType == typeof(sbyte))
                     {
-                        value = unchecked((ushort)(sbyte)input);
+                        value = unchecked((ushort) (sbyte) input);
                         return true;
                     }
                 }
@@ -5099,25 +5200,25 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     if (inputType == typeof(int))
                     {
-                        value = unchecked((byte)(int)input);
+                        value = unchecked((byte) (int) input);
                         return true;
                     }
 
                     if (inputType == typeof(long))
                     {
-                        value = unchecked((byte)(long)input);
+                        value = unchecked((byte) (long) input);
                         return true;
                     }
 
                     if (inputType == typeof(short))
                     {
-                        value = unchecked((byte)(short)input);
+                        value = unchecked((byte) (short) input);
                         return true;
                     }
 
                     if (inputType == typeof(sbyte))
                     {
-                        value = unchecked((byte)(sbyte)input);
+                        value = unchecked((byte) (sbyte) input);
                         return true;
                     }
                 }
@@ -5126,13 +5227,13 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     if (inputType == typeof(long))
                     {
-                        value = new DateTime((long)input, DateTimeKind.Utc);
+                        value = new DateTime((long) input, DateTimeKind.Utc);
                         return true;
                     }
 
                     if (inputType == typeof(DateTimeOffset))
                     {
-                        value = ((DateTimeOffset)input).DateTime;
+                        value = ((DateTimeOffset) input).DateTime;
                         return true;
                     }
                 }
@@ -5141,16 +5242,16 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     if (inputType == typeof(long))
                     {
-                        value = new DateTimeOffset(new DateTime((long)input, DateTimeKind.Utc));
+                        value = new DateTimeOffset(new DateTime((long) input, DateTimeKind.Utc));
                         return true;
                     }
 
                     if (inputType == typeof(DateTime))
                     {
-                        var dt = (DateTime)input;
+                        var dt = (DateTime) input;
                         if (IsValid(dt))
                         {
-                            value = new DateTimeOffset((DateTime)input);
+                            value = new DateTimeOffset((DateTime) input);
                             return true;
                         }
                     }
@@ -5160,19 +5261,19 @@ namespace Alis.Core.Aspect.Data.Json
                 {
                     if (inputType == typeof(long))
                     {
-                        value = new TimeSpan((long)input);
+                        value = new TimeSpan((long) input);
                         return true;
                     }
 
                     if (inputType == typeof(DateTime))
                     {
-                        value = ((DateTime)value).TimeOfDay;
+                        value = ((DateTime) value).TimeOfDay;
                         return true;
                     }
 
                     if (inputType == typeof(DateTimeOffset))
                     {
-                        value = ((DateTimeOffset)value).TimeOfDay;
+                        value = ((DateTimeOffset) value).TimeOfDay;
                         return true;
                     }
 
@@ -5193,7 +5294,7 @@ namespace Alis.Core.Aspect.Data.Json
                             elementType = conversionType.GetElementType();
                         }
 
-                        var list = (IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(elementType));
+                        var list = (IList) Activator.CreateInstance(typeof(List<>).MakeGenericType(elementType));
                         var count = 0;
                         foreach (var obj in enumerable)
                         {
@@ -5205,7 +5306,7 @@ namespace Alis.Core.Aspect.Data.Json
                         }
 
                         // at least one was converted
-                        if (count > 0 && list.Count > 0)
+                        if ((count > 0) && (list.Count > 0))
                         {
                             if (isGenericList)
                             {
@@ -5215,6 +5316,7 @@ namespace Alis.Core.Aspect.Data.Json
                             {
                                 value = list.GetType().GetMethod(nameof(List<object>.ToArray)).Invoke(list, null);
                             }
+
                             return true;
                         }
                     }
@@ -5229,26 +5331,25 @@ namespace Alis.Core.Aspect.Data.Json
                             value = CultureInfo.GetCultureInfo(lcid);
                             return true;
                         }
-                        else
-                        {
-                            var si = input?.ToString();
-                            if (si != null)
-                            {
-                                if (int.TryParse(si, out lcid))
-                                {
-                                    value = CultureInfo.GetCultureInfo(lcid);
-                                    return true;
-                                }
 
-                                value = CultureInfo.GetCultureInfo(si);
+                        var si = input?.ToString();
+                        if (si != null)
+                        {
+                            if (int.TryParse(si, out lcid))
+                            {
+                                value = CultureInfo.GetCultureInfo(lcid);
                                 return true;
                             }
+
+                            value = CultureInfo.GetCultureInfo(si);
+                            return true;
                         }
                     }
                     catch
                     {
                         // do nothing, wrong culture, etc.
                     }
+
                     return false;
                 }
 
@@ -5293,23 +5394,21 @@ namespace Alis.Core.Aspect.Data.Json
                         value = bl != 0;
                         return true;
                     }
+
                     return false;
                 }
 
                 // in general, nothing is convertible to anything but one of these, IConvertible is 100% stupid thing
-                bool isWellKnownConvertible()
-                {
-                    return conversionType == typeof(short) || conversionType == typeof(int) ||
-                           conversionType == typeof(string) || conversionType == typeof(byte) ||
-                           conversionType == typeof(char) || conversionType == typeof(DateTime) ||
-                           conversionType == typeof(DBNull) || conversionType == typeof(decimal) ||
-                           conversionType == typeof(double) || conversionType.IsEnum ||
-                           conversionType == typeof(short) || conversionType == typeof(int) ||
-                           conversionType == typeof(long) || conversionType == typeof(sbyte) ||
-                           conversionType == typeof(bool) || conversionType == typeof(float) ||
-                           conversionType == typeof(ushort) || conversionType == typeof(uint) ||
-                           conversionType == typeof(ulong);
-                }
+                bool isWellKnownConvertible() => conversionType == typeof(short) || conversionType == typeof(int) ||
+                                                 conversionType == typeof(string) || conversionType == typeof(byte) ||
+                                                 conversionType == typeof(char) || conversionType == typeof(DateTime) ||
+                                                 conversionType == typeof(DBNull) || conversionType == typeof(decimal) ||
+                                                 conversionType == typeof(double) || conversionType.IsEnum ||
+                                                 conversionType == typeof(short) || conversionType == typeof(int) ||
+                                                 conversionType == typeof(long) || conversionType == typeof(sbyte) ||
+                                                 conversionType == typeof(bool) || conversionType == typeof(float) ||
+                                                 conversionType == typeof(ushort) || conversionType == typeof(uint) ||
+                                                 conversionType == typeof(ulong);
 
                 if (isWellKnownConvertible() && input is IConvertible convertible)
                 {
@@ -5387,7 +5486,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             /// <summary>
-            /// Enums the to u int 64 using the specified value
+            ///     Enums the to u int 64 using the specified value
             /// </summary>
             /// <param name="value">The value</param>
             /// <exception cref="ArgumentNullException"></exception>
@@ -5408,7 +5507,7 @@ namespace Alis.Core.Aspect.Data.Json
                     case TypeCode.Int16:
                     case TypeCode.Int32:
                     case TypeCode.Int64:
-                        return (ulong)Convert.ToInt64(value, CultureInfo.InvariantCulture);
+                        return (ulong) Convert.ToInt64(value, CultureInfo.InvariantCulture);
 
                     case TypeCode.Byte:
                     case TypeCode.UInt16:
@@ -5423,7 +5522,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             /// <summary>
-            /// Describes whether string to enum
+            ///     Describes whether string to enum
             /// </summary>
             /// <param name="type">The type</param>
             /// <param name="names">The names</param>
@@ -5445,9 +5544,9 @@ namespace Alis.Core.Aspect.Data.Json
                 for (var i = 0; i < values.GetLength(0); i++)
                 {
                     var valuei = values.GetValue(i);
-                    if (input.Length > 0 && input[0] == '-')
+                    if ((input.Length > 0) && (input[0] == '-'))
                     {
-                        var ul = (long)EnumToUInt64(valuei);
+                        var ul = (long) EnumToUInt64(valuei);
                         if (ul.ToString().EqualsIgnoreCase(input))
                         {
                             value = valuei;
@@ -5483,7 +5582,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             /// <summary>
-            /// Enums the to object using the specified enum type
+            ///     Enums the to object using the specified enum type
             /// </summary>
             /// <param name="enumType">The enum type</param>
             /// <param name="value">The value</param>
@@ -5513,7 +5612,7 @@ namespace Alis.Core.Aspect.Data.Json
                 if (underlyingType == typeof(int))
                     return Enum.ToObject(enumType, ChangeType<int>(value));
 
-                if ((underlyingType == typeof(uint)))
+                if (underlyingType == typeof(uint))
                     return Enum.ToObject(enumType, ChangeType<uint>(value));
 
                 if (underlyingType == typeof(short))
@@ -5532,7 +5631,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             /// <summary>
-            /// Returns the enum using the specified text
+            ///     Returns the enum using the specified text
             /// </summary>
             /// <param name="text">The text</param>
             /// <param name="enumType">The enum type</param>
@@ -5549,7 +5648,7 @@ namespace Alis.Core.Aspect.Data.Json
 
             // Enum.TryParse is not supported by all .NET versions the same way
             /// <summary>
-            /// Describes whether enum try parse
+            ///     Describes whether enum try parse
             /// </summary>
             /// <param name="type">The type</param>
             /// <param name="input">The input</param>
@@ -5597,7 +5696,7 @@ namespace Alis.Core.Aspect.Data.Json
 
                 var values = Enum.GetValues(type);
                 // some enums like System.CodeDom.MemberAttributes *are* flags but are not declared with Flags...
-                if (!type.IsDefined(typeof(FlagsAttribute), true) && stringInput.IndexOfAny(_enumSeparators) < 0)
+                if (!type.IsDefined(typeof(FlagsAttribute), true) && (stringInput.IndexOfAny(_enumSeparators) < 0))
                     return StringToEnum(type, names, values, stringInput, out value);
 
                 // multi value enum
@@ -5632,7 +5731,7 @@ namespace Alis.Core.Aspect.Data.Json
                         case TypeCode.Int32:
                         case TypeCode.Int64:
                         case TypeCode.SByte:
-                            tokenUl = (ulong)Convert.ToInt64(tokenValue, CultureInfo.InvariantCulture);
+                            tokenUl = (ulong) Convert.ToInt64(tokenValue, CultureInfo.InvariantCulture);
                             break;
 
                         default:
@@ -5642,12 +5741,13 @@ namespace Alis.Core.Aspect.Data.Json
 
                     ul |= tokenUl;
                 }
+
                 value = Enum.ToObject(type, ul);
                 return true;
             }
 
             /// <summary>
-            /// Describes whether is generic list
+            ///     Describes whether is generic list
             /// </summary>
             /// <param name="type">The type</param>
             /// <param name="elementType">The element type</param>
@@ -5658,7 +5758,7 @@ namespace Alis.Core.Aspect.Data.Json
                 if (type == null)
                     throw new ArgumentNullException(nameof(type));
 
-                if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(List<>))
+                if (type.IsGenericType && (type.GetGenericTypeDefinition() == typeof(List<>)))
                 {
                     elementType = type.GetGenericArguments()[0];
                     return true;
@@ -5669,7 +5769,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             /// <summary>
-            /// Describes whether is really value type
+            ///     Describes whether is really value type
             /// </summary>
             /// <param name="type">The type</param>
             /// <exception cref="ArgumentNullException"></exception>
@@ -5683,7 +5783,7 @@ namespace Alis.Core.Aspect.Data.Json
             }
 
             /// <summary>
-            /// Describes whether is nullable
+            ///     Describes whether is nullable
             /// </summary>
             /// <param name="type">The type</param>
             /// <exception cref="ArgumentNullException"></exception>
@@ -5693,7 +5793,7 @@ namespace Alis.Core.Aspect.Data.Json
                 if (type == null)
                     throw new ArgumentNullException(nameof(type));
 
-                return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
+                return type.IsGenericType && (type.GetGenericTypeDefinition() == typeof(Nullable<>));
             }
         }
     }

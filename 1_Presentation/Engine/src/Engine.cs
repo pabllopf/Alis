@@ -704,6 +704,7 @@ namespace Alis.App.Engine
             float top = drawData.DisplayPos.Y;
             float bottom = drawData.DisplayPos.Y + drawData.DisplaySize.Y;
 
+
             _shader["Texture"].SetValue(0);
             _shader["ProjMtx"].SetValue(Matrix4X4.CreateOrthographicOffCenter(left, right, bottom, top, -1, 1));
             Gl.GlBindSampler(0, 0);

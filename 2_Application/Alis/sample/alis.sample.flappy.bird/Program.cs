@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Ecs.Component.Audio;
@@ -98,7 +97,6 @@ namespace Alis.Sample.Flappy.Bird
                                 .Depth(0)
                                 .Build())
                             .Build())
-                        
                         .Add<GameObject>(gameObject => gameObject
                             .Name("UI")
                             .AddComponent<Canvas>(canvas => canvas
@@ -311,7 +309,7 @@ namespace Alis.Sample.Flappy.Bird
                                 .Scale(1f, 1.0f)
                                 .Build())
                             .Build())
-                        
+
                         ////////////////////////////////////////
                         // GAME SCENE: PIPELINE UP
                         ////////////////////////////////////////
@@ -345,7 +343,7 @@ namespace Alis.Sample.Flappy.Bird
                             .AddComponent(new PipelineController())
                             .AddComponent(new DeathZone())
                             .Build())
-                        
+
                         ////////////////////////////////////////
                         // GAME SCENE: PIPELINE MIDDLE
                         ////////////////////////////////////////
@@ -382,7 +380,7 @@ namespace Alis.Sample.Flappy.Bird
                             .AddComponent(new PipelineController())
                             .AddComponent(new CounterController())
                             .Build())
-                        
+
                         ////////////////////////////////////////
                         // GAME SCENE: PIPELINE DOWN
                         ////////////////////////////////////////
@@ -416,7 +414,6 @@ namespace Alis.Sample.Flappy.Bird
                             .AddComponent(new PipelineController())
                             .AddComponent(new DeathZone())
                             .Build())
-                        
 
                         ////////////////////////////////////////
                         // GAME SCENE: BIRD

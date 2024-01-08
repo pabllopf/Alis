@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs.Component;
@@ -47,17 +46,17 @@ namespace Alis.Sample.Flappy.Bird
     public class DeathZone : Component
     {
         /// <summary>
-        /// The is death
+        ///     The is death
         /// </summary>
-        public static bool isDeath = false;
+        public static bool isDeath;
 
         /// <summary>
-        /// The time delta
+        ///     The time delta
         /// </summary>
         public static float timeDelta = 10.0f;
 
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
@@ -66,7 +65,7 @@ namespace Alis.Sample.Flappy.Bird
         }
 
         /// <summary>
-        /// Ons the update
+        ///     Ons the update
         /// </summary>
         public override void OnUpdate()
         {
@@ -89,13 +88,13 @@ namespace Alis.Sample.Flappy.Bird
         {
             if (gameObject.Tag == "Player")
             {
-                Console.WriteLine($"Player dead by '{this.GameObject.Name}'");
+                Console.WriteLine($"Player dead by '{GameObject.Name}'");
 
                 if (gameObject.Contains<BirdController>() && !gameObject.Get<BirdController>().IsDead)
                 {
                     gameObject.Get<AudioSource>().AudioClip = new AudioClip(AssetManager.Find("die.wav"));
                     gameObject.Get<AudioSource>().Play();
-                    
+
                     gameObject.Remove(gameObject.Get<BirdController>());
                     Console.WriteLine("Player remove bird controller");
 
@@ -103,13 +102,12 @@ namespace Alis.Sample.Flappy.Bird
                     gameObject.Get<BoxCollider>().Body.LinearVelocity = new Vector2(0, 7);
                     gameObject.Get<BoxCollider>().IsTrigger = true;
                     gameObject.Get<BoxCollider>().Body.BodyType = BodyType.Kinematic;
-                    
+
                     gameObject.Remove(gameObject.Get<Animator>());
 
                     PipelineController.IsStop = true;
-                    
-                    
-                    
+
+
                     isDeath = true;
                 }
             }

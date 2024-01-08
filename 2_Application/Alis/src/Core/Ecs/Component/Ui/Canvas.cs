@@ -33,23 +33,24 @@ using Alis.Core.Aspect.Fluent;
 namespace Alis.Core.Ecs.Component.Ui
 {
     /// <summary>
-    /// The canvas class
+    ///     The canvas class
     /// </summary>
-    /// <seealso cref="Component"/>
+    /// <seealso cref="Component" />
     public class Canvas : Component,
         IBuilder<CanvasBuilder>
     {
         /// <summary>
-        /// Gets or sets the value of the width
+        ///     Gets or sets the value of the width
         /// </summary>
         public int Width { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the height
+        ///     Gets or sets the value of the height
         /// </summary>
         public int Height { get; set; }
 
         /// <summary>
-        /// Builders this instance
+        ///     Builders this instance
         /// </summary>
         /// <returns>The canvas builder</returns>
         public CanvasBuilder Builder() => new CanvasBuilder();

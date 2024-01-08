@@ -45,7 +45,7 @@ namespace Alis.Core.Ecs.Entity.Scene
         public List<IGameObject> GameObjects { get; set; }
 
         /// <summary>
-        /// Clones this instance
+        ///     Clones this instance
         /// </summary>
         /// <returns>The object</returns>
         public new object Clone();

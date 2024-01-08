@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ${File.FileName}
+//  File: City.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,21 +30,22 @@
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The city class
+    ///     The city class
     /// </summary>
     public class City
     {
         /// <summary>
-        /// Gets or sets the value of the name
+        ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the country
+        ///     Gets or sets the value of the country
         /// </summary>
         public Country Country { get; set; }
 
         /// <summary>
-        /// Returns the string
+        ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
         public override string ToString() => Name;
