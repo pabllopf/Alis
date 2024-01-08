@@ -23,7 +23,6 @@ find ./ -name "*.dylib" -exec rm -f {} \;
 find ./ -name "*.exe" -exec rm -f {} \; 
 find ./ -name "*.pdb" -exec rm -f {} \; 
 find ./ -name "*.mdb" -exec rm -f {} \; 
-find ./ -name "*.xml" -exec rm -f {} \; 
 
 echo "-------------------------------------------------"
 echo "Total size of repository (after): " && du -hs .
