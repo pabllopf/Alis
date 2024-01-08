@@ -55,6 +55,11 @@ namespace Alis.Core.Physic.Dynamics
         private float angularVelocity;
 
         /// <summary>
+        ///     The game object
+        /// </summary>
+        public object GameObject;
+
+        /// <summary>
         ///     The inertia
         /// </summary>
         private float inertia;
@@ -68,11 +73,6 @@ namespace Alis.Core.Physic.Dynamics
         ///     The mass
         /// </summary>
         private float mass;
-        
-        /// <summary>
-        /// The game object
-        /// </summary>
-        public object GameObject;
 
         /// <summary>
         ///     Fires when two shapes collide and a contact is created between them. Note that the first fixture argument is

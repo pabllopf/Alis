@@ -31,7 +31,7 @@ jobs:
 
       - name: Dotnet test release
         run: dotnet test alis.sln --configuration Release
-        
+
       - name: Define file name to update version
         run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
 

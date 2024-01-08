@@ -48,6 +48,11 @@ namespace Alis.Core.Ecs.System.Setting.Physic
         public bool DebugMode { get; set; } = false;
 
         /// <summary>
+        ///     Gets or sets the value of the debug color
+        /// </summary>
+        public Color DebugColor { get; set; }
+
+        /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The physic setting builder</returns>
@@ -57,10 +62,5 @@ namespace Alis.Core.Ecs.System.Setting.Physic
         ///     Gets or sets the value of the gravity
         /// </summary>
         public Vector2 Gravity { get; set; } = new Vector2(0.0f, 9.8f);
-
-        /// <summary>
-        /// Gets or sets the value of the debug color
-        /// </summary>
-        public Color DebugColor { get; set; }
     }
 }

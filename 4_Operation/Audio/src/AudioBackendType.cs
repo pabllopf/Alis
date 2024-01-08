@@ -43,9 +43,9 @@ namespace Alis.Core.Audio
         ///     The os audio type
         /// </summary>
         Os = 1,
-        
+
         /// <summary>
-        /// The sld audio backend type
+        ///     The sld audio backend type
         /// </summary>
         Sld = 2
     }

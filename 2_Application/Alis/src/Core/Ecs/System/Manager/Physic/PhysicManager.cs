@@ -206,9 +206,9 @@ namespace Alis.Core.Ecs.System.Manager.Physic
         {
             world.AddBody(body);
         }
-        
+
         /// <summary>
-        /// Uns the attach using the specified body
+        ///     Uns the attach using the specified body
         /// </summary>
         /// <param name="body">The body</param>
         public void UnAttach(Body body)

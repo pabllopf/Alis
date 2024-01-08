@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Math
         public float Cosine;
 
         /// <summary>
-        /// The angle
+        ///     The angle
         /// </summary>
         public float angle;
 

@@ -53,7 +53,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Profile
         public ProfileSetting Build() => profileSetting;
 
         /// <summary>
-        /// Logs the level using the specified value
+        ///     Logs the level using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The profile setting builder</returns>
@@ -65,7 +65,7 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Profile
         }
 
         /// <summary>
-        /// Logs the detail using the specified value
+        ///     Logs the detail using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The profile setting builder</returns>

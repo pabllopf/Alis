@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ${File.FileName}
+//  File: ILogLevel.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The log level interface
+    ///     The log level interface
     /// </summary>
     public interface ILogLevel<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Logs the level using the specified value
+        ///     Logs the level using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

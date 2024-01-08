@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ${File.FileName}
+//  File: Address.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,21 +30,22 @@
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The address class
+    ///     The address class
     /// </summary>
     public class Address
     {
         /// <summary>
-        /// Gets or sets the value of the city
+        ///     Gets or sets the value of the city
         /// </summary>
         public City City { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the zip code
+        ///     Gets or sets the value of the zip code
         /// </summary>
         public int ZipCode { get; set; }
 
         /// <summary>
-        /// Returns the string
+        ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
         public override string ToString() => ZipCode.ToString();

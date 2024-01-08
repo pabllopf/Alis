@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ${File.FileName}
+//  File: CustomOptions.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -36,38 +36,30 @@ using Alis.Core.Aspect.Data.Json;
 namespace Alis.Core.Aspect.Data.Test.Json
 {
     /// <summary>
-    /// The custom options class
+    ///     The custom options class
     /// </summary>
-    /// <seealso cref="JsonOptions"/>
-    class CustomOptions : JsonOptions
+    /// <seealso cref="JsonOptions" />
+    internal class CustomOptions : JsonOptions
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CustomOptions"/> class
+        ///     Initializes a new instance of the <see cref="CustomOptions" /> class
         /// </summary>
-        public CustomOptions()
-        {
-            ObjectGraph = new CustomObjectGraph();
-        }
+        public CustomOptions() => ObjectGraph = new CustomObjectGraph();
 
         /// <summary>
-        /// The custom object graph class
+        ///     The custom object graph class
         /// </summary>
-        /// <seealso cref="IDictionary{object, object}"/>
-        /// <seealso cref="JsonSerializer.IOptionsHolder"/>
+        /// <seealso cref="IDictionary{TKey,TValue}" />
+        /// <seealso cref="JsonSerializer.IOptionsHolder" />
         private class CustomObjectGraph : IDictionary<object, object>, JsonSerializer.IOptionsHolder
         {
             /// <summary>
-            /// The dictionary
+            ///     The dictionary
             /// </summary>
             private readonly Dictionary<object, int> _hash = new Dictionary<object, int>();
 
             /// <summary>
-            /// Gets or sets the value of the options
-            /// </summary>
-            public JsonOptions Options { get; set; }
-
-            /// <summary>
-            /// Adds the key
+            ///     Adds the key
             /// </summary>
             /// <param name="key">The key</param>
             /// <param name="value">The value</param>
@@ -77,7 +69,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
             }
 
             /// <summary>
-            /// Describes whether this instance contains key
+            ///     Describes whether this instance contains key
             /// </summary>
             /// <param name="key">The key</param>
             /// <returns>The bool</returns>
@@ -93,75 +85,97 @@ namespace Alis.Core.Aspect.Data.Test.Json
             }
 
             /// <summary>
-            /// The not implemented exception
+            ///     The not implemented exception
             /// </summary>
-            public object this[object key] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+            public object this[object key]
+            {
+                get => throw new NotImplementedException();
+                set => throw new NotImplementedException();
+            }
+
             /// <summary>
-            /// Gets the value of the keys
+            ///     Gets the value of the keys
             /// </summary>
             public ICollection<object> Keys => throw new NotImplementedException();
+
             /// <summary>
-            /// Gets the value of the values
+            ///     Gets the value of the values
             /// </summary>
             public ICollection<object> Values => throw new NotImplementedException();
+
             /// <summary>
-            /// Gets the value of the count
+            ///     Gets the value of the count
             /// </summary>
             public int Count => throw new NotImplementedException();
+
             /// <summary>
-            /// Gets the value of the is read only
+            ///     Gets the value of the is read only
             /// </summary>
             public bool IsReadOnly => throw new NotImplementedException();
+
             /// <summary>
-            /// Adds the item
+            ///     Adds the item
             /// </summary>
             /// <param name="item">The item</param>
             public void Add(KeyValuePair<object, object> item) => throw new NotImplementedException();
+
             /// <summary>
-            /// Clears this instance
+            ///     Clears this instance
             /// </summary>
             public void Clear() => throw new NotImplementedException();
+
             /// <summary>
-            /// Describes whether this instance contains
+            ///     Describes whether this instance contains
             /// </summary>
             /// <param name="item">The item</param>
             /// <returns>The bool</returns>
             public bool Contains(KeyValuePair<object, object> item) => throw new NotImplementedException();
+
             /// <summary>
-            /// Copies the to using the specified array
+            ///     Copies the to using the specified array
             /// </summary>
             /// <param name="array">The array</param>
             /// <param name="arrayIndex">The array index</param>
             public void CopyTo(KeyValuePair<object, object>[] array, int arrayIndex) => throw new NotImplementedException();
+
             /// <summary>
-            /// Gets the enumerator
+            ///     Gets the enumerator
             /// </summary>
             /// <returns>An enumerator of key value pair object and object</returns>
             public IEnumerator<KeyValuePair<object, object>> GetEnumerator() => throw new NotImplementedException();
+
             /// <summary>
-            /// Describes whether this instance remove
+            ///     Describes whether this instance remove
             /// </summary>
             /// <param name="key">The key</param>
             /// <returns>The bool</returns>
             public bool Remove(object key) => throw new NotImplementedException();
+
             /// <summary>
-            /// Describes whether this instance remove
+            ///     Describes whether this instance remove
             /// </summary>
             /// <param name="item">The item</param>
             /// <returns>The bool</returns>
             public bool Remove(KeyValuePair<object, object> item) => throw new NotImplementedException();
+
             /// <summary>
-            /// Describes whether this instance try get value
+            ///     Describes whether this instance try get value
             /// </summary>
             /// <param name="key">The key</param>
             /// <param name="value">The value</param>
             /// <returns>The bool</returns>
             public bool TryGetValue(object key, [MaybeNullWhen(false)] out object value) => throw new NotImplementedException();
+
             /// <summary>
-            /// Gets the enumerator
+            ///     Gets the enumerator
             /// </summary>
             /// <returns>The enumerator</returns>
             IEnumerator IEnumerable.GetEnumerator() => throw new NotImplementedException();
+
+            /// <summary>
+            ///     Gets or sets the value of the options
+            /// </summary>
+            public JsonOptions Options { get; set; }
         }
     }
 }

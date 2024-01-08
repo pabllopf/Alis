@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Data;
 using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
@@ -61,7 +60,7 @@ namespace Alis.Sample.Pong
                         .License("GNU General Public License v3.0")
                         .Icon(AssetManager.Find("app.png"))
                         .Build())
-                    .Profile(profile=> profile
+                    .Profile(profile => profile
                         .LogLevel(LogLevel.Critical)
                         .Build())
                     .Audio(audio => audio

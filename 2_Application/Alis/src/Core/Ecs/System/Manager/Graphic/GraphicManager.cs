@@ -60,18 +60,18 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
         /// <summary>
         ///     The box collider
         /// </summary>
-        private static List<BoxCollider> ColliderBases = new List<BoxCollider>();
-        
+        private static readonly List<BoxCollider> ColliderBases = new List<BoxCollider>();
+
         /// <summary>
         ///     The default size
         /// </summary>
         private Vector2 defaultSize;
-        
+
         /// <summary>
         ///     The renderWindow
         /// </summary>
         public IntPtr Renderer;
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
         /// </summary>
@@ -170,12 +170,12 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             {
                 // Sets color
                 Color color = VideoGame.Instance.Settings.Physic.DebugColor;
-                
+
                 // render color
                 Sdl.SetRenderDrawColor(Renderer, color.R, color.G, color.B, color.A);
 
                 RectangleF[] rectangles = new RectangleF[ColliderBases.Count];
-                
+
                 // Draws rectangles:
                 for (int i = 0; i < ColliderBases.Count; i++)
                 {
@@ -462,7 +462,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Console.WriteLine($"SDL_TTF Version: {SdlTtf.SdlTtfVersion().major}.{SdlTtf.SdlTtfVersion().minor}.{SdlTtf.SdlTtfVersion().patch}");
 
             /*
-            
+
             int outlineSize = 1;
 
             // Load the font
@@ -498,10 +498,10 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             //SDL_SetSurfaceBlendMode(fg_surface, SDL_BLENDMODE_BLEND); :
             Sdl.SetSurfaceBlendMode(fg_surface, SdlBlendMode.SdlBlendModeBlend);
 
-            //SDL_BlitSurface(fg_surface, NULL, bg_surface, &rect); 
+            //SDL_BlitSurface(fg_surface, NULL, bg_surface, &rect);
             Sdl.BlitSurface(fg_surface, IntPtr.Zero, bg_surface, ref rect);
 
-            //SDL_FreeSurface(fg_surface); 
+            //SDL_FreeSurface(fg_surface);
             Sdl.FreeSurface(fg_surface);
 
 
@@ -521,7 +521,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             dstRectFont1 = new RectangleI(0, 0, textureWidth, textureHeight);
 
             */
-            
+
             /*
             Console.WriteLine(Sdl.Init(Sdl.InitAudio) < 0 ? $@"There was an issue initializing SDL AUDIO. {Sdl.GetError()}" : "SDL2 AUDIO INIT OK");
 
@@ -531,34 +531,34 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             uint audioLen;
 
             IntPtr audio_loaded = Sdl.LoadWav(
-                AssetManager.Find("main_theme.wav"), 
-                out spec, 
-                out audiobuf, 
+                AssetManager.Find("main_theme.wav"),
+                out spec,
+                out audiobuf,
                 out audioLen);
-            
+
             // open audio device
 
 
 
             string audioDevice = "";
-            
+
             int count = Sdl.GetNumAudioDevices(0);
             for (int i = 0; i < count; i++)
             {
                 audioDevice = Sdl.GetAudioDeviceName(0, 0);
                 Console.WriteLine($"Device id={i} name={audioDevice}");
             }
-            
+
             uint device = Sdl.SdlOpenAudioDevice(audioDevice, 0, ref spec, out SdlAudioSpec specOut ,0);
-            
+
             int success = Sdl.SdlQueueAudio(device, audiobuf, audioLen);
             Sdl.SdlPauseAudioDevice(device, 0);
 
             Sdl.Delay(4000);
-            
+
             Sdl.CloseAudioDevice(device);
             Sdl.FreeWav(audiobuf);*/
-            
+
             /*
             Sdl.SetHint(Sdl.HintXInputEnabled, "0");
             Sdl.SetHint(Sdl.SdlHintJoystickThread, "1");
@@ -579,7 +579,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                                       $"SDL_JoystickNumButtons={Sdl.JoystickNumButtons(myJoystick)}");
                 }
             }*/
-            
+
             Console.WriteLine("End config SDL2");
         }
 

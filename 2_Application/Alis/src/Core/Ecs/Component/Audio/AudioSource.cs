@@ -127,7 +127,7 @@ namespace Alis.Core.Ecs.Component.Audio
         public AudioSourceBuilder Builder() => new AudioSourceBuilder();
 
         /// <summary>
-        /// Ons the init
+        ///     Ons the init
         /// </summary>
         public override void OnInit()
         {
@@ -144,11 +144,10 @@ namespace Alis.Core.Ecs.Component.Audio
                 Play();
             }
         }
-        
-        
+
 
         /// <summary>
-        /// Ons the stop
+        ///     Ons the stop
         /// </summary>
         public override void OnStop()
         {

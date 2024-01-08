@@ -68,13 +68,13 @@ namespace Alis.Core.Ecs.Component
         public void OnPressKey(SdlKeycode key);
 
         /// <summary>
-        /// Ons the collision enter using the specified game object
+        ///     Ons the collision enter using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public void OnCollisionEnter(IGameObject gameObject);
 
         /// <summary>
-        /// Ons the collision exit using the specified game object
+        ///     Ons the collision exit using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public void OnCollisionExit(IGameObject gameObject);

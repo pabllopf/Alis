@@ -48,12 +48,12 @@ namespace Alis.Sample.Flappy.Bird
         private AudioSource audioSource;
 
         /// <summary>
-        /// The box collider
+        ///     The box collider
         /// </summary>
         private BoxCollider boxCollider;
 
         /// <summary>
-        /// Gets or sets the value of the is dead
+        ///     Gets or sets the value of the is dead
         /// </summary>
         public bool IsDead { get; set; } = false;
 

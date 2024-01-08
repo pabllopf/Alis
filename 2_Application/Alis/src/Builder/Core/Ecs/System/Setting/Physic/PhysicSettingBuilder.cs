@@ -68,6 +68,17 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Physic
         }
 
         /// <summary>
+        ///     Debugs the color using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The physic setting builder</returns>
+        public PhysicSettingBuilder DebugColor(Color value)
+        {
+            physicSetting.DebugColor = value;
+            return this;
+        }
+
+        /// <summary>
         ///     Gravities the x
         /// </summary>
         /// <param name="x">The </param>
@@ -76,17 +87,6 @@ namespace Alis.Builder.Core.Ecs.System.Setting.Physic
         public PhysicSettingBuilder Gravity(float x, float y)
         {
             physicSetting.Gravity = new Vector2(x, y);
-            return this;
-        }
-
-        /// <summary>
-        /// Debugs the color using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The physic setting builder</returns>
-        public PhysicSettingBuilder DebugColor(Color value)
-        {
-            physicSetting.DebugColor = value;
             return this;
         }
     }

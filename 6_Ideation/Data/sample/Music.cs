@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ${File.FileName}
+//  File: Music.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,53 +27,50 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 namespace Alis.Core.Aspect.Data.Sample
 {
     /// <summary>
-    /// The music class
+    ///     The music class
     /// </summary>
     public class Music
     {
-       
         /// <summary>
-        /// Gets or sets the value of the name
+        ///     Gets or sets the value of the name
         /// </summary>
         public string Name { get; set; }
 
 
         /// <summary>
-        /// Gets or sets the value of the artist
+        ///     Gets or sets the value of the artist
         /// </summary>
         public string Artist { get; set; }
 
-   
+
         /// <summary>
-        /// Gets or sets the value of the genre
+        ///     Gets or sets the value of the genre
         /// </summary>
         public string Genre { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the album
+        ///     Gets or sets the value of the album
         /// </summary>
         public string Album { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the album image
+        ///     Gets or sets the value of the album image
         /// </summary>
         public string AlbumImage { get; set; }
 
 
         /// <summary>
-        /// Gets or sets the value of the link
+        ///     Gets or sets the value of the link
         /// </summary>
         public string Link { get; set; }
 
 
         /// <summary>
-        /// Gets or sets the value of the other
+        ///     Gets or sets the value of the other
         /// </summary>
         public int Other { get; set; } = 1;
-
     }
 }

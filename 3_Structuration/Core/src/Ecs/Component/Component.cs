@@ -181,13 +181,13 @@ namespace Alis.Core.Ecs.Component
         public virtual void OnPressKey(SdlKeycode key) => Logger.Trace();
 
         /// <summary>
-        /// Ons the collision enter using the specified game object
+        ///     Ons the collision enter using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public virtual void OnCollisionEnter(IGameObject gameObject) => Logger.Trace();
 
         /// <summary>
-        /// Ons the collision exit using the specified game object
+        ///     Ons the collision exit using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public virtual void OnCollisionExit(IGameObject gameObject) => Logger.Trace();
