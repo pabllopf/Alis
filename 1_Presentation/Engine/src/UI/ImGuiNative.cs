@@ -269,7 +269,7 @@ namespace Alis.App.Engine.UI
         /// <param name="outerSize">The outer size</param>
         /// <param name="innerWidth">The inner width</param>
         /// <returns>The byte</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, , EntryPoint = "igBeginTable")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginTable")]
         public static extern byte igBeginTable(byte* strId, int column, ImGuiTableFlags flags, Vector2 outerSize, float innerWidth);
 
         /// <summary>
