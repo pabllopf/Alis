@@ -11,6 +11,7 @@
         <PublishTrimmed>true</PublishTrimmed>
         <PublishAot>true</PublishAot>
         <SelfContained>false</SelfContained>
+        <SonarQubeExclude>true</SonarQubeExclude>
     </PropertyGroup>
 
     <PropertyGroup Condition="
