@@ -51,7 +51,6 @@
 *.booproj
 *.svd
 *.pdb
-*.xml
 *.deb
 *.tar
 *.mdb
