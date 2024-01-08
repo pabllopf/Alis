@@ -25,7 +25,6 @@ select yn in "Yes" "No"; do
           find ./ -name "*.exe" -exec rm -f {} \; 
           find ./ -name "*.pdb" -exec rm -f {} \; 
           find ./ -name "*.mdb" -exec rm -f {} \; 
-          find ./ -name "*.xml" -exec rm -f {} \; 
           
           sudo chmod 777 -R .
           
