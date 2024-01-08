@@ -39,19 +39,40 @@ namespace Alis.App.Engine.UI
     public static unsafe partial class ImGuiNative
     {
         /// <summary>
+        /// The dll name
+        /// </summary>
+        private const string DllName = "cimgui";
+
+        /// <summary>
         ///     Igs the accept drag drop payload using the specified type
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="flags">The flags</param>
         /// <returns>The im gui payload</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName ,CallingConvention = CallingConvention.Cdecl, EntryPoint = "igAcceptDragDropPayload")]
         public static extern ImGuiPayload* igAcceptDragDropPayload(byte* type, ImGuiDragDropFlags flags);
 
         /// <summary>
         ///     Igs the align text to frame padding
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igAlignTextToFramePadding")]
         public static extern void igAlignTextToFramePadding();
+        
+        /// <summary>
+        ///     Ims the gui platform io set platform get window pos using the specified platform io
+        /// </summary>
+        /// <param name="platformIo">The platform io</param>
+        /// <param name="funcPtr">The func ptr</param>
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPlatformIO_Set_Platform_GetWindowPos")]
+        public static extern void ImGuiPlatformIO_Set_Platform_GetWindowPos(ImGuiPlatformIo* platformIo, IntPtr funcPtr);
+
+        /// <summary>
+        ///     Ims the gui platform io set platform get window size using the specified platform io
+        /// </summary>
+        /// <param name="platformIo">The platform io</param>
+        /// <param name="funcPtr">The func ptr</param>
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "ImGuiPlatformIO_Set_Platform_GetWindowSize")]
+        public static extern void ImGuiPlatformIO_Set_Platform_GetWindowSize(ImGuiPlatformIo* platformIo, IntPtr funcPtr);
 
         /// <summary>
         ///     Igs the arrow button using the specified str id
@@ -59,7 +80,7 @@ namespace Alis.App.Engine.UI
         /// <param name="strId">The str id</param>
         /// <param name="dir">The dir</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igArrowButton")]
         public static extern byte igArrowButton(byte* strId, ImGuiDir dir);
 
         /// <summary>
@@ -69,7 +90,7 @@ namespace Alis.App.Engine.UI
         /// <param name="pOpen">The open</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBegin")]
         public static extern byte igBegin(byte* name, byte* pOpen, ImGuiWindowFlags flags);
 
         /// <summary>
@@ -80,7 +101,7 @@ namespace Alis.App.Engine.UI
         /// <param name="border">The border</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginChild_Str")]
         public static extern byte igBeginChild_Str(byte* strId, Vector2 size, byte border, ImGuiWindowFlags flags);
 
         /// <summary>
@@ -91,7 +112,7 @@ namespace Alis.App.Engine.UI
         /// <param name="border">The border</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginChild_ID")]
         public static extern byte igBeginChild_ID(uint id, Vector2 size, byte border, ImGuiWindowFlags flags);
 
         /// <summary>
@@ -101,7 +122,7 @@ namespace Alis.App.Engine.UI
         /// <param name="size">The size</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginChildFrame")]
         public static extern byte igBeginChildFrame(uint id, Vector2 size, ImGuiWindowFlags flags);
 
         /// <summary>
@@ -111,14 +132,14 @@ namespace Alis.App.Engine.UI
         /// <param name="previewValue">The preview value</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginCombo")]
         public static extern byte igBeginCombo(byte* label, byte* previewValue, ImGuiComboFlags flags);
 
         /// <summary>
         ///     Igs the begin disabled using the specified disabled
         /// </summary>
         /// <param name="disabled">The disabled</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginDisabled")]
         public static extern void igBeginDisabled(byte disabled);
 
         /// <summary>
@@ -126,20 +147,20 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginDragDropSource")]
         public static extern byte igBeginDragDropSource(ImGuiDragDropFlags flags);
 
         /// <summary>
         ///     Igs the begin drag drop target
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginDragDropTarget")]
         public static extern byte igBeginDragDropTarget();
 
         /// <summary>
         ///     Igs the begin group
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginGroup")]
         public static extern void igBeginGroup();
 
         /// <summary>
@@ -148,14 +169,14 @@ namespace Alis.App.Engine.UI
         /// <param name="label">The label</param>
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginListBox")]
         public static extern byte igBeginListBox(byte* label, Vector2 size);
 
         /// <summary>
         ///     Igs the begin main menu bar
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginMainMenuBar")]
         public static extern byte igBeginMainMenuBar();
 
         /// <summary>
@@ -164,14 +185,14 @@ namespace Alis.App.Engine.UI
         /// <param name="label">The label</param>
         /// <param name="enabled">The enabled</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginMenu")]
         public static extern byte igBeginMenu(byte* label, byte enabled);
 
         /// <summary>
         ///     Igs the begin menu bar
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginMenuBar")]
         public static extern byte igBeginMenuBar();
 
         /// <summary>
@@ -180,7 +201,7 @@ namespace Alis.App.Engine.UI
         /// <param name="strId">The str id</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginPopup")]
         public static extern byte igBeginPopup(byte* strId, ImGuiWindowFlags flags);
 
         /// <summary>
@@ -189,7 +210,7 @@ namespace Alis.App.Engine.UI
         /// <param name="strId">The str id</param>
         /// <param name="popupFlags">The popup flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginPopupContextItem")]
         public static extern byte igBeginPopupContextItem(byte* strId, ImGuiPopupFlags popupFlags);
 
         /// <summary>
@@ -198,7 +219,7 @@ namespace Alis.App.Engine.UI
         /// <param name="strId">The str id</param>
         /// <param name="popupFlags">The popup flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginPopupContextVoid")]   
         public static extern byte igBeginPopupContextVoid(byte* strId, ImGuiPopupFlags popupFlags);
 
         /// <summary>
@@ -207,7 +228,7 @@ namespace Alis.App.Engine.UI
         /// <param name="strId">The str id</param>
         /// <param name="popupFlags">The popup flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginPopupContextWindow")]
         public static extern byte igBeginPopupContextWindow(byte* strId, ImGuiPopupFlags popupFlags);
 
         /// <summary>
@@ -217,7 +238,7 @@ namespace Alis.App.Engine.UI
         /// <param name="pOpen">The open</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginPopupModal")]
         public static extern byte igBeginPopupModal(byte* name, byte* pOpen, ImGuiWindowFlags flags);
 
         /// <summary>
@@ -226,7 +247,7 @@ namespace Alis.App.Engine.UI
         /// <param name="strId">The str id</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginTabBar")]
         public static extern byte igBeginTabBar(byte* strId, ImGuiTabBarFlags flags);
 
         /// <summary>
@@ -236,7 +257,7 @@ namespace Alis.App.Engine.UI
         /// <param name="pOpen">The open</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginTabItem")]
         public static extern byte igBeginTabItem(byte* label, byte* pOpen, ImGuiTabItemFlags flags);
 
         /// <summary>
@@ -248,26 +269,26 @@ namespace Alis.App.Engine.UI
         /// <param name="outerSize">The outer size</param>
         /// <param name="innerWidth">The inner width</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, , EntryPoint = "igBeginTable")]
         public static extern byte igBeginTable(byte* strId, int column, ImGuiTableFlags flags, Vector2 outerSize, float innerWidth);
 
         /// <summary>
         ///     Igs the begin tooltip
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginTooltip")]
         public static extern void igBeginTooltip();
 
         /// <summary>
         ///     Igs the bullet
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBullet")]
         public static extern void igBullet();
 
         /// <summary>
         ///     Igs the bullet text using the specified fmt
         /// </summary>
         /// <param name="fmt">The fmt</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBulletText")]
         public static extern void igBulletText(byte* fmt);
 
         /// <summary>
@@ -276,14 +297,14 @@ namespace Alis.App.Engine.UI
         /// <param name="label">The label</param>
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igButton")]
         public static extern byte igButton(byte* label, Vector2 size);
 
         /// <summary>
         ///     Igs the calc item width
         /// </summary>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCalcItemWidth")]
         public static extern float igCalcItemWidth();
 
         /// <summary>
@@ -294,7 +315,7 @@ namespace Alis.App.Engine.UI
         /// <param name="textEnd">The text end</param>
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
         /// <param name="wrapWidth">The wrap width</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCalcTextSize")]
         public static extern void igCalcTextSize(Vector2* pOut, byte* text, byte* textEnd, byte hideTextAfterDoubleHash, float wrapWidth);
 
         /// <summary>
@@ -303,7 +324,7 @@ namespace Alis.App.Engine.UI
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCheckbox")]
         public static extern byte igCheckbox(byte* label, byte* v);
 
         /// <summary>
@@ -313,7 +334,7 @@ namespace Alis.App.Engine.UI
         /// <param name="flags">The flags</param>
         /// <param name="flagsValue">The flags value</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCheckboxFlags_IntPtr")]
         public static extern byte igCheckboxFlags_IntPtr(byte* label, int* flags, int flagsValue);
 
         /// <summary>
@@ -323,13 +344,13 @@ namespace Alis.App.Engine.UI
         /// <param name="flags">The flags</param>
         /// <param name="flagsValue">The flags value</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCheckboxFlags_UintPtr")]
         public static extern byte igCheckboxFlags_UintPtr(byte* label, uint* flags, uint flagsValue);
 
         /// <summary>
         ///     Igs the close current popup
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCloseCurrentPopup")]
         public static extern void igCloseCurrentPopup();
 
         /// <summary>
@@ -338,7 +359,7 @@ namespace Alis.App.Engine.UI
         /// <param name="label">The label</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCollapsingHeader_TreeNodeFlags")]
         public static extern byte igCollapsingHeader_TreeNodeFlags(byte* label, ImGuiTreeNodeFlags flags);
 
         /// <summary>
@@ -348,7 +369,7 @@ namespace Alis.App.Engine.UI
         /// <param name="pVisible">The visible</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCollapsingHeader_BoolPtr")]
         public static extern byte igCollapsingHeader_BoolPtr(byte* label, byte* pVisible, ImGuiTreeNodeFlags flags);
 
         /// <summary>
@@ -359,7 +380,7 @@ namespace Alis.App.Engine.UI
         /// <param name="flags">The flags</param>
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorButton")]
         public static extern byte igColorButton(byte* descId, Vector4 col, ImGuiColorEditFlags flags, Vector2 size);
 
         /// <summary>
@@ -367,7 +388,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="in">The in</param>
         /// <returns>The uint</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorConvertFloat4ToU32")]
         public static extern uint igColorConvertFloat4ToU32(Vector4 @in);
 
         /// <summary>
@@ -379,7 +400,7 @@ namespace Alis.App.Engine.UI
         /// <param name="outR">The out</param>
         /// <param name="outG">The out</param>
         /// <param name="outB">The out</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorConvertHSVtoRGB")]
         public static extern void igColorConvertHSVtoRGB(float h, float s, float v, float* outR, float* outG, float* outB);
 
         /// <summary>
@@ -391,7 +412,7 @@ namespace Alis.App.Engine.UI
         /// <param name="outH">The out</param>
         /// <param name="outS">The out</param>
         /// <param name="outV">The out</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorConvertRGBtoHSV")]
         public static extern void igColorConvertRGBtoHSV(float r, float g, float b, float* outH, float* outS, float* outV);
 
         /// <summary>
@@ -399,7 +420,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="pOut">The out</param>
         /// <param name="in">The in</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorConvertU32ToFloat4")]
         public static extern void igColorConvertU32ToFloat4(Vector4* pOut, uint @in);
 
         /// <summary>
@@ -409,7 +430,7 @@ namespace Alis.App.Engine.UI
         /// <param name="col">The col</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorEdit3")]
         public static extern byte igColorEdit3(byte* label, Vector3* col, ImGuiColorEditFlags flags);
 
         /// <summary>
@@ -419,7 +440,7 @@ namespace Alis.App.Engine.UI
         /// <param name="col">The col</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorEdit4")]
         public static extern byte igColorEdit4(byte* label, Vector4* col, ImGuiColorEditFlags flags);
 
         /// <summary>
@@ -429,7 +450,7 @@ namespace Alis.App.Engine.UI
         /// <param name="col">The col</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorPicker3")]
         public static extern byte igColorPicker3(byte* label, Vector3* col, ImGuiColorEditFlags flags);
 
         /// <summary>
@@ -440,7 +461,7 @@ namespace Alis.App.Engine.UI
         /// <param name="flags">The flags</param>
         /// <param name="refCol">The ref col</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColorPicker4")]
         public static extern byte igColorPicker4(byte* label, Vector4* col, ImGuiColorEditFlags flags, float* refCol);
 
         /// <summary>
@@ -449,7 +470,7 @@ namespace Alis.App.Engine.UI
         /// <param name="count">The count</param>
         /// <param name="id">The id</param>
         /// <param name="border">The border</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igColumns")]
         public static extern void igColumns(int count, byte* id, byte border);
 
         /// <summary>
@@ -461,7 +482,7 @@ namespace Alis.App.Engine.UI
         /// <param name="itemsCount">The items count</param>
         /// <param name="popupMaxHeightInItems">The popup max height in items</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCombo_Str_arr")]
         public static extern byte igCombo_Str_arr(byte* label, int* currentItem, byte** items, int itemsCount, int popupMaxHeightInItems);
 
         /// <summary>
@@ -472,7 +493,7 @@ namespace Alis.App.Engine.UI
         /// <param name="itemsSeparatedByZeros">The items separated by zeros</param>
         /// <param name="popupMaxHeightInItems">The popup max height in items</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCombo_Str")]
         public static extern byte igCombo_Str(byte* label, int* currentItem, byte* itemsSeparatedByZeros, int popupMaxHeightInItems);
 
         /// <summary>
@@ -480,7 +501,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="sharedFontAtlas">The shared font atlas</param>
         /// <returns>The int ptr</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igCreateContext")]
         public static extern IntPtr igCreateContext(ImFontAtlas* sharedFontAtlas);
 
         /// <summary>
@@ -494,27 +515,27 @@ namespace Alis.App.Engine.UI
         /// <param name="szDrawvert">The sz drawvert</param>
         /// <param name="szDrawidx">The sz drawidx</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDebugCheckVersionAndDataLayout")]
         public static extern byte igDebugCheckVersionAndDataLayout(byte* versionStr, uint szIo, uint szStyle, uint szVec2, uint szVec4, uint szDrawvert, uint szDrawidx);
 
         /// <summary>
         ///     Igs the debug text encoding using the specified text
         /// </summary>
         /// <param name="text">The text</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDebugTextEncoding")]
         public static extern void igDebugTextEncoding(byte* text);
 
         /// <summary>
         ///     Igs the destroy context using the specified ctx
         /// </summary>
         /// <param name="ctx">The ctx</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDestroyContext")]
         public static extern void igDestroyContext(IntPtr ctx);
 
         /// <summary>
         ///     Igs the destroy platform windows
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDestroyPlatformWindows")]
         public static extern void igDestroyPlatformWindows();
 
         /// <summary>
@@ -525,7 +546,7 @@ namespace Alis.App.Engine.UI
         /// <param name="flags">The flags</param>
         /// <param name="windowClass">The window class</param>
         /// <returns>The uint</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockSpace")]
         public static extern uint igDockSpace(uint id, Vector2 size, ImGuiDockNodeFlags flags, ImGuiWindowClass* windowClass);
 
         /// <summary>
@@ -535,7 +556,7 @@ namespace Alis.App.Engine.UI
         /// <param name="flags">The flags</param>
         /// <param name="windowClass">The window class</param>
         /// <returns>The uint</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDockSpaceOverViewport")]
         public static extern uint igDockSpaceOverViewport(ImGuiViewport* viewport, ImGuiDockNodeFlags flags, ImGuiWindowClass* windowClass);
 
         /// <summary>
@@ -549,7 +570,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragFloat")]
         public static extern byte igDragFloat(byte* label, float* v, float vSpeed, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -563,7 +584,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragFloat2")]
         public static extern byte igDragFloat2(byte* label, Vector2* v, float vSpeed, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -577,7 +598,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragFloat3")]
         public static extern byte igDragFloat3(byte* label, Vector3* v, float vSpeed, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -591,7 +612,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragFloat4")]
         public static extern byte igDragFloat4(byte* label, Vector4* v, float vSpeed, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -607,7 +628,7 @@ namespace Alis.App.Engine.UI
         /// <param name="formatMax">The format max</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragFloatRange2")]
         public static extern byte igDragFloatRange2(byte* label, float* vCurrentMin, float* vCurrentMax, float vSpeed, float vMin, float vMax, byte* format, byte* formatMax, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -621,7 +642,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragInt")]
         public static extern byte igDragInt(byte* label, int* v, float vSpeed, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -635,7 +656,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragInt2")]
         public static extern byte igDragInt2(byte* label, int* v, float vSpeed, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -649,7 +670,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragInt3")]
         public static extern byte igDragInt3(byte* label, int* v, float vSpeed, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -663,7 +684,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragInt4")]
         public static extern byte igDragInt4(byte* label, int* v, float vSpeed, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -679,7 +700,7 @@ namespace Alis.App.Engine.UI
         /// <param name="formatMax">The format max</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragIntRange2")]
         public static extern byte igDragIntRange2(byte* label, int* vCurrentMin, int* vCurrentMax, float vSpeed, int vMin, int vMax, byte* format, byte* formatMax, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -694,7 +715,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragScalar")]
         public static extern byte igDragScalar(byte* label, ImGuiDataType dataType, void* pData, float vSpeed, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -710,122 +731,122 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDragScalarN")]
         public static extern byte igDragScalarN(byte* label, ImGuiDataType dataType, void* pData, int components, float vSpeed, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the dummy using the specified size
         /// </summary>
         /// <param name="size">The size</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igDummy")]
         public static extern void igDummy(Vector2 size);
 
         /// <summary>
         ///     Igs the end
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEnd")]
         public static extern void igEnd();
 
         /// <summary>
         ///     Igs the end child
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndChild")]
         public static extern void igEndChild();
 
         /// <summary>
         ///     Igs the end child frame
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndChildFrame")]
         public static extern void igEndChildFrame();
 
         /// <summary>
         ///     Igs the end combo
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndCombo")]
         public static extern void igEndCombo();
 
         /// <summary>
         ///     Igs the end disabled
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndDisabled")]
         public static extern void igEndDisabled();
 
         /// <summary>
         ///     Igs the end drag drop source
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndDragDropSource")]
         public static extern void igEndDragDropSource();
 
         /// <summary>
         ///     Igs the end drag drop target
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndDragDropTarget")]
         public static extern void igEndDragDropTarget();
 
         /// <summary>
         ///     Igs the end frame
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndFrame")]
         public static extern void igEndFrame();
 
         /// <summary>
         ///     Igs the end group
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndGroup")]
         public static extern void igEndGroup();
 
         /// <summary>
         ///     Igs the end list box
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndListBox")]
         public static extern void igEndListBox();
 
         /// <summary>
         ///     Igs the end main menu bar
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndMainMenuBar")]
         public static extern void igEndMainMenuBar();
 
         /// <summary>
         ///     Igs the end menu
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndMenu")]
         public static extern void igEndMenu();
 
         /// <summary>
         ///     Igs the end menu bar
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndMenuBar")]
         public static extern void igEndMenuBar();
 
         /// <summary>
         ///     Igs the end popup
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndPopup")]
         public static extern void igEndPopup();
 
         /// <summary>
         ///     Igs the end tab bar
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndTabBar")]
         public static extern void igEndTabBar();
 
         /// <summary>
         ///     Igs the end tab item
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndTabItem")]
         public static extern void igEndTabItem();
 
         /// <summary>
         ///     Igs the end table
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndTable")]
         public static extern void igEndTable();
 
         /// <summary>
         ///     Igs the end tooltip
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igEndTooltip")]
         public static extern void igEndTooltip();
 
         /// <summary>
@@ -833,7 +854,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns>The im gui viewport</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igFindViewportByID")]
         public static extern ImGuiViewport* igFindViewportByID(uint id);
 
         /// <summary>
@@ -841,7 +862,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="platformHandle">The platform handle</param>
         /// <returns>The im gui viewport</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igFindViewportByPlatformHandle")]
         public static extern ImGuiViewport* igFindViewportByPlatformHandle(void* platformHandle);
 
         /// <summary>
@@ -850,14 +871,14 @@ namespace Alis.App.Engine.UI
         /// <param name="pAllocFunc">The alloc func</param>
         /// <param name="pFreeFunc">The free func</param>
         /// <param name="pUserData">The user data</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetAllocatorFunctions")]
         public static extern void igGetAllocatorFunctions(IntPtr* pAllocFunc, IntPtr* pFreeFunc, void** pUserData);
 
         /// <summary>
         ///     Igs the get background draw list nil
         /// </summary>
         /// <returns>The im draw list</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetBackgroundDrawList_Nil")]
         public static extern ImDrawList* igGetBackgroundDrawList_Nil();
 
         /// <summary>
@@ -865,14 +886,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="viewport">The viewport</param>
         /// <returns>The im draw list</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetBackgroundDrawList_ViewportPtr")]
         public static extern ImDrawList* igGetBackgroundDrawList_ViewportPtr(ImGuiViewport* viewport);
 
         /// <summary>
         ///     Igs the get clipboard text
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetClipboardText")]
         public static extern byte* igGetClipboardText();
 
         /// <summary>
@@ -881,7 +902,7 @@ namespace Alis.App.Engine.UI
         /// <param name="idx">The idx</param>
         /// <param name="alphaMul">The alpha mul</param>
         /// <returns>The uint</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetColorU32_Col")]
         public static extern uint igGetColorU32_Col(ImGuiCol idx, float alphaMul);
 
         /// <summary>
@@ -889,7 +910,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="col">The col</param>
         /// <returns>The uint</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetColorU32_Vec4")]
         public static extern uint igGetColorU32_Vec4(Vector4 col);
 
         /// <summary>
@@ -897,14 +918,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="col">The col</param>
         /// <returns>The uint</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetColorU32_U32")]
         public static extern uint igGetColorU32_U32(uint col);
 
         /// <summary>
         ///     Igs the get column index
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetColumnIndex")]
         public static extern int igGetColumnIndex();
 
         /// <summary>
@@ -912,14 +933,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="columnIndex">The column index</param>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetColumnOffset")]
         public static extern float igGetColumnOffset(int columnIndex);
 
         /// <summary>
         ///     Igs the get columns count
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetColumnsCount")]
         public static extern int igGetColumnsCount();
 
         /// <summary>
@@ -927,112 +948,112 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="columnIndex">The column index</param>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetColumnWidth")]
         public static extern float igGetColumnWidth(int columnIndex);
 
         /// <summary>
         ///     Igs the get content region avail using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetContentRegionAvail")]
         public static extern void igGetContentRegionAvail(Vector2* pOut);
 
         /// <summary>
         ///     Igs the get content region max using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetContentRegionMax")]
         public static extern void igGetContentRegionMax(Vector2* pOut);
 
         /// <summary>
         ///     Igs the get current context
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetCurrentContext")]
         public static extern IntPtr igGetCurrentContext();
 
         /// <summary>
         ///     Igs the get cursor pos using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetCursorPos")]
         public static extern void igGetCursorPos(Vector2* pOut);
 
         /// <summary>
         ///     Igs the get cursor pos x
         /// </summary>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetCursorPosX")]
         public static extern float igGetCursorPosX();
 
         /// <summary>
         ///     Igs the get cursor pos y
         /// </summary>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetCursorPosY")]
         public static extern float igGetCursorPosY();
 
         /// <summary>
         ///     Igs the get cursor screen pos using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetCursorScreenPos")]
         public static extern void igGetCursorScreenPos(Vector2* pOut);
 
         /// <summary>
         ///     Igs the get cursor start pos using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetCursorStartPos")]
         public static extern void igGetCursorStartPos(Vector2* pOut);
 
         /// <summary>
         ///     Igs the get drag drop payload
         /// </summary>
         /// <returns>The im gui payload</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetDragDropPayload")]
         public static extern ImGuiPayload* igGetDragDropPayload();
 
         /// <summary>
         ///     Igs the get draw data
         /// </summary>
         /// <returns>The im draw data</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetDrawData")]
         public static extern ImDrawData* igGetDrawData();
 
         /// <summary>
         ///     Igs the get draw list shared data
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetDrawListSharedData")]
         public static extern IntPtr igGetDrawListSharedData();
 
         /// <summary>
         ///     Igs the get font
         /// </summary>
         /// <returns>The im font</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetFont")]
         public static extern ImFont* igGetFont();
 
         /// <summary>
         ///     Igs the get font size
         /// </summary>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetFontSize")]
         public static extern float igGetFontSize();
 
         /// <summary>
         ///     Igs the get font tex uv white pixel using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetFontTexUvWhitePixel")]
         public static extern void igGetFontTexUvWhitePixel(Vector2* pOut);
 
         /// <summary>
         ///     Igs the get foreground draw list nil
         /// </summary>
         /// <returns>The im draw list</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetForegroundDrawList_Nil")]
         public static extern ImDrawList* igGetForegroundDrawList_Nil();
 
         /// <summary>
@@ -1040,28 +1061,28 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="viewport">The viewport</param>
         /// <returns>The im draw list</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetForegroundDrawList_ViewportPtr")]
         public static extern ImDrawList* igGetForegroundDrawList_ViewportPtr(ImGuiViewport* viewport);
 
         /// <summary>
         ///     Igs the get frame count
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetFrameCount")]
         public static extern int igGetFrameCount();
 
         /// <summary>
         ///     Igs the get frame height
         /// </summary>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetFrameHeight")]
         public static extern float igGetFrameHeight();
 
         /// <summary>
         ///     Igs the get frame height with spacing
         /// </summary>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetFrameHeightWithSpacing")]
         public static extern float igGetFrameHeightWithSpacing();
 
         /// <summary>
@@ -1069,7 +1090,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="strId">The str id</param>
         /// <returns>The uint</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetID_Str")]
         public static extern uint igGetID_Str(byte* strId);
 
         /// <summary>
@@ -1078,7 +1099,7 @@ namespace Alis.App.Engine.UI
         /// <param name="strIdBegin">The str id begin</param>
         /// <param name="strIdEnd">The str id end</param>
         /// <returns>The uint</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetID_StrStr")]
         public static extern uint igGetID_StrStr(byte* strIdBegin, byte* strIdEnd);
 
         /// <summary>
@@ -1086,35 +1107,35 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="ptrId">The ptr id</param>
         /// <returns>The uint</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetID_Ptr")]
         public static extern uint igGetID_Ptr(void* ptrId);
 
         /// <summary>
         ///     Igs the get io
         /// </summary>
         /// <returns>The im gui io</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetIO")]
         public static extern ImGuiIo* igGetIO();
 
         /// <summary>
         ///     Igs the get item rect max using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetItemRectMax")]
         public static extern void igGetItemRectMax(Vector2* pOut);
 
         /// <summary>
         ///     Igs the get item rect min using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetItemRectMin")]
         public static extern void igGetItemRectMin(Vector2* pOut);
 
         /// <summary>
         ///     Igs the get item rect size using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetItemRectSize")]
         public static extern void igGetItemRectSize(Vector2* pOut);
 
         /// <summary>
@@ -1122,7 +1143,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="key">The key</param>
         /// <returns>The im gui key</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetKeyIndex")]
         public static extern ImGuiKey igGetKeyIndex(ImGuiKey key);
 
         /// <summary>
@@ -1130,7 +1151,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="key">The key</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igGetKeyName")]
         public static extern byte* igGetKeyName(ImGuiKey key);
 
         /// <summary>
@@ -1140,14 +1161,14 @@ namespace Alis.App.Engine.UI
         /// <param name="repeatDelay">The repeat delay</param>
         /// <param name="rate">The rate</param>
         /// <returns>The int</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int igGetKeyPressedAmount(ImGuiKey key, float repeatDelay, float rate);
 
         /// <summary>
         ///     Igs the get main viewport
         /// </summary>
         /// <returns>The im gui viewport</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiViewport* igGetMainViewport();
 
         /// <summary>
@@ -1155,14 +1176,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="button">The button</param>
         /// <returns>The int</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int igGetMouseClickedCount(ImGuiMouseButton button);
 
         /// <summary>
         ///     Igs the get mouse cursor
         /// </summary>
         /// <returns>The im gui mouse cursor</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiMouseCursor igGetMouseCursor();
 
         /// <summary>
@@ -1171,70 +1192,70 @@ namespace Alis.App.Engine.UI
         /// <param name="pOut">The out</param>
         /// <param name="button">The button</param>
         /// <param name="lockThreshold">The lock threshold</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igGetMouseDragDelta(Vector2* pOut, ImGuiMouseButton button, float lockThreshold);
 
         /// <summary>
         ///     Igs the get mouse pos using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igGetMousePos(Vector2* pOut);
 
         /// <summary>
         ///     Igs the get mouse pos on opening current popup using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igGetMousePosOnOpeningCurrentPopup(Vector2* pOut);
 
         /// <summary>
         ///     Igs the get platform io
         /// </summary>
         /// <returns>The im gui platform io</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiPlatformIo* igGetPlatformIO();
 
         /// <summary>
         ///     Igs the get scroll max x
         /// </summary>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern float igGetScrollMaxX();
 
         /// <summary>
         ///     Igs the get scroll max y
         /// </summary>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern float igGetScrollMaxY();
 
         /// <summary>
         ///     Igs the get scroll x
         /// </summary>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern float igGetScrollX();
 
         /// <summary>
         ///     Igs the get scroll y
         /// </summary>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern float igGetScrollY();
 
         /// <summary>
         ///     Igs the get state storage
         /// </summary>
         /// <returns>The im gui storage</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiStorage* igGetStateStorage();
 
         /// <summary>
         ///     Igs the get style
         /// </summary>
         /// <returns>The im gui style</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiStyle* igGetStyle();
 
         /// <summary>
@@ -1242,7 +1263,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte* igGetStyleColorName(ImGuiCol idx);
 
         /// <summary>
@@ -1250,112 +1271,112 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <returns>The vector</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern Vector4* igGetStyleColorVec4(ImGuiCol idx);
 
         /// <summary>
         ///     Igs the get text line height
         /// </summary>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern float igGetTextLineHeight();
 
         /// <summary>
         ///     Igs the get text line height with spacing
         /// </summary>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern float igGetTextLineHeightWithSpacing();
 
         /// <summary>
         ///     Igs the get time
         /// </summary>
         /// <returns>The double</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern double igGetTime();
 
         /// <summary>
         ///     Igs the get tree node to label spacing
         /// </summary>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern float igGetTreeNodeToLabelSpacing();
 
         /// <summary>
         ///     Igs the get version
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte* igGetVersion();
 
         /// <summary>
         ///     Igs the get window content region max using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igGetWindowContentRegionMax(Vector2* pOut);
 
         /// <summary>
         ///     Igs the get window content region min using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igGetWindowContentRegionMin(Vector2* pOut);
 
         /// <summary>
         ///     Igs the get window dock id
         /// </summary>
         /// <returns>The uint</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint igGetWindowDockID();
 
         /// <summary>
         ///     Igs the get window dpi scale
         /// </summary>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern float igGetWindowDpiScale();
 
         /// <summary>
         ///     Igs the get window draw list
         /// </summary>
         /// <returns>The im draw list</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImDrawList* igGetWindowDrawList();
 
         /// <summary>
         ///     Igs the get window height
         /// </summary>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern float igGetWindowHeight();
 
         /// <summary>
         ///     Igs the get window pos using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igGetWindowPos(Vector2* pOut);
 
         /// <summary>
         ///     Igs the get window size using the specified p out
         /// </summary>
         /// <param name="pOut">The out</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igGetWindowSize(Vector2* pOut);
 
         /// <summary>
         ///     Igs the get window viewport
         /// </summary>
         /// <returns>The im gui viewport</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiViewport* igGetWindowViewport();
 
         /// <summary>
         ///     Igs the get window width
         /// </summary>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern float igGetWindowWidth();
 
         /// <summary>
@@ -1367,7 +1388,7 @@ namespace Alis.App.Engine.UI
         /// <param name="uv1">The uv</param>
         /// <param name="tintCol">The tint col</param>
         /// <param name="borderCol">The border col</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igImage(IntPtr userTextureId, Vector2 size, Vector2 uv0, Vector2 uv1, Vector4 tintCol, Vector4 borderCol);
 
         /// <summary>
@@ -1381,14 +1402,14 @@ namespace Alis.App.Engine.UI
         /// <param name="bgCol">The bg col</param>
         /// <param name="tintCol">The tint col</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igImageButton(byte* strId, IntPtr userTextureId, Vector2 size, Vector2 uv0, Vector2 uv1, Vector4 bgCol, Vector4 tintCol);
 
         /// <summary>
         ///     Igs the indent using the specified indent w
         /// </summary>
         /// <param name="indentW">The indent</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igIndent(float indentW);
 
         /// <summary>
@@ -1401,7 +1422,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igInputDouble(byte* label, double* v, double step, double stepFast, byte* format, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1414,7 +1435,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igInputFloat(byte* label, float* v, float step, float stepFast, byte* format, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1425,7 +1446,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igInputFloat2(byte* label, Vector2* v, byte* format, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1436,7 +1457,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igInputFloat3(byte* label, Vector3* v, byte* format, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1447,7 +1468,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igInputFloat4(byte* label, Vector4* v, byte* format, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1459,7 +1480,7 @@ namespace Alis.App.Engine.UI
         /// <param name="stepFast">The step fast</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igInputInt(byte* label, int* v, int step, int stepFast, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1469,7 +1490,7 @@ namespace Alis.App.Engine.UI
         /// <param name="v">The </param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igInputInt2(byte* label, int* v, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1479,7 +1500,7 @@ namespace Alis.App.Engine.UI
         /// <param name="v">The </param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igInputInt3(byte* label, int* v, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1489,7 +1510,7 @@ namespace Alis.App.Engine.UI
         /// <param name="v">The </param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igInputInt4(byte* label, int* v, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1503,7 +1524,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igInputScalar(byte* label, ImGuiDataType dataType, void* pData, void* pStep, void* pStepFast, byte* format, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1518,7 +1539,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igInputScalarN(byte* label, ImGuiDataType dataType, void* pData, int components, void* pStep, void* pStepFast, byte* format, ImGuiInputTextFlags flags);
 
         /// <summary>
@@ -1531,7 +1552,7 @@ namespace Alis.App.Engine.UI
         /// <param name="callback">The callback</param>
         /// <param name="userData">The user data</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igInputText(byte* label, byte* buf, uint bufSize, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, void* userData);
 
         /// <summary>
@@ -1545,7 +1566,7 @@ namespace Alis.App.Engine.UI
         /// <param name="callback">The callback</param>
         /// <param name="userData">The user data</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igInputTextMultiline(byte* label, byte* buf, uint bufSize, Vector2 size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, void* userData);
 
         /// <summary>
@@ -1559,7 +1580,7 @@ namespace Alis.App.Engine.UI
         /// <param name="callback">The callback</param>
         /// <param name="userData">The user data</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igInputTextWithHint(byte* label, byte* hint, byte* buf, uint bufSize, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, void* userData);
 
         /// <summary>
@@ -1569,49 +1590,49 @@ namespace Alis.App.Engine.UI
         /// <param name="size">The size</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igInvisibleButton(byte* strId, Vector2 size, ImGuiButtonFlags flags);
 
         /// <summary>
         ///     Igs the is any item active
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsAnyItemActive();
 
         /// <summary>
         ///     Igs the is any item focused
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsAnyItemFocused();
 
         /// <summary>
         ///     Igs the is any item hovered
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsAnyItemHovered();
 
         /// <summary>
         ///     Igs the is any mouse down
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsAnyMouseDown();
 
         /// <summary>
         ///     Igs the is item activated
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsItemActivated();
 
         /// <summary>
         ///     Igs the is item active
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsItemActive();
 
         /// <summary>
@@ -1619,35 +1640,35 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="mouseButton">The mouse button</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsItemClicked(ImGuiMouseButton mouseButton);
 
         /// <summary>
         ///     Igs the is item deactivated
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsItemDeactivated();
 
         /// <summary>
         ///     Igs the is item deactivated after edit
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsItemDeactivatedAfterEdit();
 
         /// <summary>
         ///     Igs the is item edited
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsItemEdited();
 
         /// <summary>
         ///     Igs the is item focused
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsItemFocused();
 
         /// <summary>
@@ -1655,21 +1676,21 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsItemHovered(ImGuiHoveredFlags flags);
 
         /// <summary>
         ///     Igs the is item toggled open
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsItemToggledOpen();
 
         /// <summary>
         ///     Igs the is item visible
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsItemVisible();
 
         /// <summary>
@@ -1677,7 +1698,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="key">The key</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsKeyDown_Nil(ImGuiKey key);
 
         /// <summary>
@@ -1686,7 +1707,7 @@ namespace Alis.App.Engine.UI
         /// <param name="key">The key</param>
         /// <param name="repeat">The repeat</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsKeyPressed_Bool(ImGuiKey key, byte repeat);
 
         /// <summary>
@@ -1694,7 +1715,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="key">The key</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsKeyReleased_Nil(ImGuiKey key);
 
         /// <summary>
@@ -1703,7 +1724,7 @@ namespace Alis.App.Engine.UI
         /// <param name="button">The button</param>
         /// <param name="repeat">The repeat</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsMouseClicked_Bool(ImGuiMouseButton button, byte repeat);
 
         /// <summary>
@@ -1711,7 +1732,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="button">The button</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsMouseDoubleClicked(ImGuiMouseButton button);
 
         /// <summary>
@@ -1719,7 +1740,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="button">The button</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsMouseDown_Nil(ImGuiMouseButton button);
 
         /// <summary>
@@ -1728,7 +1749,7 @@ namespace Alis.App.Engine.UI
         /// <param name="button">The button</param>
         /// <param name="lockThreshold">The lock threshold</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsMouseDragging(ImGuiMouseButton button, float lockThreshold);
 
         /// <summary>
@@ -1738,7 +1759,7 @@ namespace Alis.App.Engine.UI
         /// <param name="rMax">The max</param>
         /// <param name="clip">The clip</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsMouseHoveringRect(Vector2 rMin, Vector2 rMax, byte clip);
 
         /// <summary>
@@ -1746,7 +1767,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="mousePos">The mouse pos</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsMousePosValid(Vector2* mousePos);
 
         /// <summary>
@@ -1754,7 +1775,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="button">The button</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsMouseReleased_Nil(ImGuiMouseButton button);
 
         /// <summary>
@@ -1763,7 +1784,7 @@ namespace Alis.App.Engine.UI
         /// <param name="strId">The str id</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsPopupOpen_Str(byte* strId, ImGuiPopupFlags flags);
 
         /// <summary>
@@ -1771,7 +1792,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsRectVisible_Nil(Vector2 size);
 
         /// <summary>
@@ -1780,28 +1801,28 @@ namespace Alis.App.Engine.UI
         /// <param name="rectMin">The rect min</param>
         /// <param name="rectMax">The rect max</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsRectVisible_Vec2(Vector2 rectMin, Vector2 rectMax);
 
         /// <summary>
         ///     Igs the is window appearing
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsWindowAppearing();
 
         /// <summary>
         ///     Igs the is window collapsed
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsWindowCollapsed();
 
         /// <summary>
         ///     Igs the is window docked
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsWindowDocked();
 
         /// <summary>
@@ -1809,7 +1830,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsWindowFocused(ImGuiFocusedFlags flags);
 
         /// <summary>
@@ -1817,7 +1838,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igIsWindowHovered(ImGuiHoveredFlags flags);
 
         /// <summary>
@@ -1825,7 +1846,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="fmt">The fmt</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igLabelText(byte* label, byte* fmt);
 
         /// <summary>
@@ -1837,14 +1858,14 @@ namespace Alis.App.Engine.UI
         /// <param name="itemsCount">The items count</param>
         /// <param name="heightInItems">The height in items</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igListBox_Str_arr(byte* label, int* currentItem, byte** items, int itemsCount, int heightInItems);
 
         /// <summary>
         ///     Igs the load ini settings from disk using the specified ini filename
         /// </summary>
         /// <param name="iniFilename">The ini filename</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igLoadIniSettingsFromDisk(byte* iniFilename);
 
         /// <summary>
@@ -1852,33 +1873,33 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="iniData">The ini data</param>
         /// <param name="iniSize">The ini size</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igLoadIniSettingsFromMemory(byte* iniData, uint iniSize);
 
         /// <summary>
         ///     Igs the log buttons
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igLogButtons();
 
         /// <summary>
         ///     Igs the log finish
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igLogFinish();
 
         /// <summary>
         ///     Igs the log text using the specified fmt
         /// </summary>
         /// <param name="fmt">The fmt</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igLogText(byte* fmt);
 
         /// <summary>
         ///     Igs the log to clipboard using the specified auto open depth
         /// </summary>
         /// <param name="autoOpenDepth">The auto open depth</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igLogToClipboard(int autoOpenDepth);
 
         /// <summary>
@@ -1886,14 +1907,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="autoOpenDepth">The auto open depth</param>
         /// <param name="filename">The filename</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igLogToFile(int autoOpenDepth, byte* filename);
 
         /// <summary>
         ///     Igs the log to tty using the specified auto open depth
         /// </summary>
         /// <param name="autoOpenDepth">The auto open depth</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igLogToTTY(int autoOpenDepth);
 
         /// <summary>
@@ -1901,14 +1922,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="size">The size</param>
         /// <returns>The void</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void* igMemAlloc(uint size);
 
         /// <summary>
         ///     Igs the mem free using the specified ptr
         /// </summary>
         /// <param name="ptr">The ptr</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igMemFree(void* ptr);
 
         /// <summary>
@@ -1919,7 +1940,7 @@ namespace Alis.App.Engine.UI
         /// <param name="selected">The selected</param>
         /// <param name="enabled">The enabled</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igMenuItem_Bool(byte* label, byte* shortcut, byte selected, byte enabled);
 
         /// <summary>
@@ -1930,25 +1951,25 @@ namespace Alis.App.Engine.UI
         /// <param name="pSelected">The selected</param>
         /// <param name="enabled">The enabled</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igMenuItem_BoolPtr(byte* label, byte* shortcut, byte* pSelected, byte enabled);
 
         /// <summary>
         ///     Igs the new frame
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igNewFrame();
 
         /// <summary>
         ///     Igs the new line
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igNewLine();
 
         /// <summary>
         ///     Igs the next column
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igNextColumn();
 
         /// <summary>
@@ -1956,7 +1977,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="strId">The str id</param>
         /// <param name="popupFlags">The popup flags</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igOpenPopup_Str(byte* strId, ImGuiPopupFlags popupFlags);
 
         /// <summary>
@@ -1964,7 +1985,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="id">The id</param>
         /// <param name="popupFlags">The popup flags</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igOpenPopup_ID(uint id, ImGuiPopupFlags popupFlags);
 
         /// <summary>
@@ -1972,7 +1993,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="strId">The str id</param>
         /// <param name="popupFlags">The popup flags</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igOpenPopupOnItemClick(byte* strId, ImGuiPopupFlags popupFlags);
 
         /// <summary>
@@ -1987,7 +2008,7 @@ namespace Alis.App.Engine.UI
         /// <param name="scaleMax">The scale max</param>
         /// <param name="graphSize">The graph size</param>
         /// <param name="stride">The stride</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPlotHistogram_FloatPtr(byte* label, float* values, int valuesCount, int valuesOffset, byte* overlayText, float scaleMin, float scaleMax, Vector2 graphSize, int stride);
 
         /// <summary>
@@ -2002,63 +2023,63 @@ namespace Alis.App.Engine.UI
         /// <param name="scaleMax">The scale max</param>
         /// <param name="graphSize">The graph size</param>
         /// <param name="stride">The stride</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPlotLines_FloatPtr(byte* label, float* values, int valuesCount, int valuesOffset, byte* overlayText, float scaleMin, float scaleMax, Vector2 graphSize, int stride);
 
         /// <summary>
         ///     Igs the pop allow keyboard focus
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPopAllowKeyboardFocus();
 
         /// <summary>
         ///     Igs the pop button repeat
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPopButtonRepeat();
 
         /// <summary>
         ///     Igs the pop clip rect
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPopClipRect();
 
         /// <summary>
         ///     Igs the pop font
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPopFont();
 
         /// <summary>
         ///     Igs the pop id
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPopID();
 
         /// <summary>
         ///     Igs the pop item width
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPopItemWidth();
 
         /// <summary>
         ///     Igs the pop style color using the specified count
         /// </summary>
         /// <param name="count">The count</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPopStyleColor(int count);
 
         /// <summary>
         ///     Igs the pop style var using the specified count
         /// </summary>
         /// <param name="count">The count</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPopStyleVar(int count);
 
         /// <summary>
         ///     Igs the pop text wrap pos
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPopTextWrapPos();
 
         /// <summary>
@@ -2067,21 +2088,21 @@ namespace Alis.App.Engine.UI
         /// <param name="fraction">The fraction</param>
         /// <param name="sizeArg">The size arg</param>
         /// <param name="overlay">The overlay</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igProgressBar(float fraction, Vector2 sizeArg, byte* overlay);
 
         /// <summary>
         ///     Igs the push allow keyboard focus using the specified allow keyboard focus
         /// </summary>
         /// <param name="allowKeyboardFocus">The allow keyboard focus</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPushAllowKeyboardFocus(byte allowKeyboardFocus);
 
         /// <summary>
         ///     Igs the push button repeat using the specified repeat
         /// </summary>
         /// <param name="repeat">The repeat</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPushButtonRepeat(byte repeat);
 
         /// <summary>
@@ -2090,21 +2111,21 @@ namespace Alis.App.Engine.UI
         /// <param name="clipRectMin">The clip rect min</param>
         /// <param name="clipRectMax">The clip rect max</param>
         /// <param name="intersectWithCurrentClipRect">The intersect with current clip rect</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPushClipRect(Vector2 clipRectMin, Vector2 clipRectMax, byte intersectWithCurrentClipRect);
 
         /// <summary>
         ///     Igs the push font using the specified font
         /// </summary>
         /// <param name="font">The font</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPushFont(ImFont* font);
 
         /// <summary>
         ///     Igs the push id str using the specified str id
         /// </summary>
         /// <param name="strId">The str id</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPushID_Str(byte* strId);
 
         /// <summary>
@@ -2112,28 +2133,28 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="strIdBegin">The str id begin</param>
         /// <param name="strIdEnd">The str id end</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPushID_StrStr(byte* strIdBegin, byte* strIdEnd);
 
         /// <summary>
         ///     Igs the push id ptr using the specified ptr id
         /// </summary>
         /// <param name="ptrId">The ptr id</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPushID_Ptr(void* ptrId);
 
         /// <summary>
         ///     Igs the push id int using the specified int id
         /// </summary>
         /// <param name="intId">The int id</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPushID_Int(int intId);
 
         /// <summary>
         ///     Igs the push item width using the specified item width
         /// </summary>
         /// <param name="itemWidth">The item width</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPushItemWidth(float itemWidth);
 
         /// <summary>
@@ -2141,7 +2162,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <param name="col">The col</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPushStyleColor_U32(ImGuiCol idx, uint col);
 
         /// <summary>
@@ -2149,7 +2170,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <param name="col">The col</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPushStyleColor_Vec4(ImGuiCol idx, Vector4 col);
 
         /// <summary>
@@ -2157,7 +2178,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <param name="val">The val</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPushStyleVar_Float(ImGuiStyleVar idx, float val);
 
         /// <summary>
@@ -2165,14 +2186,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="idx">The idx</param>
         /// <param name="val">The val</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPushStyleVar_Vec2(ImGuiStyleVar idx, Vector2 val);
 
         /// <summary>
         ///     Igs the push text wrap pos using the specified wrap local pos x
         /// </summary>
         /// <param name="wrapLocalPosX">The wrap local pos</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igPushTextWrapPos(float wrapLocalPosX);
 
         /// <summary>
@@ -2181,7 +2202,7 @@ namespace Alis.App.Engine.UI
         /// <param name="label">The label</param>
         /// <param name="active">The active</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igRadioButton_Bool(byte* label, byte active);
 
         /// <summary>
@@ -2191,13 +2212,13 @@ namespace Alis.App.Engine.UI
         /// <param name="v">The </param>
         /// <param name="vButton">The button</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igRadioButton_IntPtr(byte* label, int* v, int vButton);
 
         /// <summary>
         ///     Igs the render
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igRender();
 
         /// <summary>
@@ -2205,14 +2226,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="platformRenderArg">The platform render arg</param>
         /// <param name="rendererRenderArg">The renderer render arg</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igRenderPlatformWindowsDefault(void* platformRenderArg, void* rendererRenderArg);
 
         /// <summary>
         ///     Igs the reset mouse drag delta using the specified button
         /// </summary>
         /// <param name="button">The button</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igResetMouseDragDelta(ImGuiMouseButton button);
 
         /// <summary>
@@ -2220,14 +2241,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="offsetFromStartX">The offset from start</param>
         /// <param name="spacing">The spacing</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSameLine(float offsetFromStartX, float spacing);
 
         /// <summary>
         ///     Igs the save ini settings to disk using the specified ini filename
         /// </summary>
         /// <param name="iniFilename">The ini filename</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSaveIniSettingsToDisk(byte* iniFilename);
 
         /// <summary>
@@ -2235,7 +2256,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="outIniSize">The out ini size</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte* igSaveIniSettingsToMemory(uint* outIniSize);
 
         /// <summary>
@@ -2246,7 +2267,7 @@ namespace Alis.App.Engine.UI
         /// <param name="flags">The flags</param>
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igSelectable_Bool(byte* label, byte selected, ImGuiSelectableFlags flags, Vector2 size);
 
         /// <summary>
@@ -2257,13 +2278,13 @@ namespace Alis.App.Engine.UI
         /// <param name="flags">The flags</param>
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igSelectable_BoolPtr(byte* label, byte* pSelected, ImGuiSelectableFlags flags, Vector2 size);
 
         /// <summary>
         ///     Igs the separator
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSeparator();
 
         /// <summary>
@@ -2272,21 +2293,21 @@ namespace Alis.App.Engine.UI
         /// <param name="allocFunc">The alloc func</param>
         /// <param name="freeFunc">The free func</param>
         /// <param name="userData">The user data</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetAllocatorFunctions(IntPtr allocFunc, IntPtr freeFunc, void* userData);
 
         /// <summary>
         ///     Igs the set clipboard text using the specified text
         /// </summary>
         /// <param name="text">The text</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetClipboardText(byte* text);
 
         /// <summary>
         ///     Igs the set color edit options using the specified flags
         /// </summary>
         /// <param name="flags">The flags</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetColorEditOptions(ImGuiColorEditFlags flags);
 
         /// <summary>
@@ -2294,7 +2315,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="columnIndex">The column index</param>
         /// <param name="offsetX">The offset</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetColumnOffset(int columnIndex, float offsetX);
 
         /// <summary>
@@ -2302,42 +2323,42 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="columnIndex">The column index</param>
         /// <param name="width">The width</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetColumnWidth(int columnIndex, float width);
 
         /// <summary>
         ///     Igs the set current context using the specified ctx
         /// </summary>
         /// <param name="ctx">The ctx</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetCurrentContext(IntPtr ctx);
 
         /// <summary>
         ///     Igs the set cursor pos using the specified local pos
         /// </summary>
         /// <param name="localPos">The local pos</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetCursorPos(Vector2 localPos);
 
         /// <summary>
         ///     Igs the set cursor pos x using the specified local x
         /// </summary>
         /// <param name="localX">The local</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetCursorPosX(float localX);
 
         /// <summary>
         ///     Igs the set cursor pos y using the specified local y
         /// </summary>
         /// <param name="localY">The local</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetCursorPosY(float localY);
 
         /// <summary>
         ///     Igs the set cursor screen pos using the specified pos
         /// </summary>
         /// <param name="pos">The pos</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetCursorScreenPos(Vector2 pos);
 
         /// <summary>
@@ -2348,47 +2369,47 @@ namespace Alis.App.Engine.UI
         /// <param name="sz">The sz</param>
         /// <param name="cond">The cond</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igSetDragDropPayload(byte* type, void* data, uint sz, ImGuiCond cond);
 
         /// <summary>
         ///     Igs the set item allow overlap
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetItemAllowOverlap();
 
         /// <summary>
         ///     Igs the set item default focus
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetItemDefaultFocus();
 
         /// <summary>
         ///     Igs the set keyboard focus here using the specified offset
         /// </summary>
         /// <param name="offset">The offset</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetKeyboardFocusHere(int offset);
 
         /// <summary>
         ///     Igs the set mouse cursor using the specified cursor type
         /// </summary>
         /// <param name="cursorType">The cursor type</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetMouseCursor(ImGuiMouseCursor cursorType);
 
         /// <summary>
         ///     Igs the set next frame want capture keyboard using the specified want capture keyboard
         /// </summary>
         /// <param name="wantCaptureKeyboard">The want capture keyboard</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetNextFrameWantCaptureKeyboard(byte wantCaptureKeyboard);
 
         /// <summary>
         ///     Igs the set next frame want capture mouse using the specified want capture mouse
         /// </summary>
         /// <param name="wantCaptureMouse">The want capture mouse</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetNextFrameWantCaptureMouse(byte wantCaptureMouse);
 
         /// <summary>
@@ -2396,28 +2417,28 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="isOpen">The is open</param>
         /// <param name="cond">The cond</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetNextItemOpen(byte isOpen, ImGuiCond cond);
 
         /// <summary>
         ///     Igs the set next item width using the specified item width
         /// </summary>
         /// <param name="itemWidth">The item width</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetNextItemWidth(float itemWidth);
 
         /// <summary>
         ///     Igs the set next window bg alpha using the specified alpha
         /// </summary>
         /// <param name="alpha">The alpha</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetNextWindowBgAlpha(float alpha);
 
         /// <summary>
         ///     Igs the set next window using the specified window class
         /// </summary>
         /// <param name="windowClass">The window class</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetNextWindowClass(ImGuiWindowClass* windowClass);
 
         /// <summary>
@@ -2425,14 +2446,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="collapsed">The collapsed</param>
         /// <param name="cond">The cond</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetNextWindowCollapsed(byte collapsed, ImGuiCond cond);
 
         /// <summary>
         ///     Igs the set next window content size using the specified size
         /// </summary>
         /// <param name="size">The size</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetNextWindowContentSize(Vector2 size);
 
         /// <summary>
@@ -2440,13 +2461,13 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="dockId">The dock id</param>
         /// <param name="cond">The cond</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetNextWindowDockID(uint dockId, ImGuiCond cond);
 
         /// <summary>
         ///     Igs the set next window focus
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetNextWindowFocus();
 
         /// <summary>
@@ -2455,14 +2476,14 @@ namespace Alis.App.Engine.UI
         /// <param name="pos">The pos</param>
         /// <param name="cond">The cond</param>
         /// <param name="pivot">The pivot</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetNextWindowPos(Vector2 pos, ImGuiCond cond, Vector2 pivot);
 
         /// <summary>
         ///     Igs the set next window scroll using the specified scroll
         /// </summary>
         /// <param name="scroll">The scroll</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetNextWindowScroll(Vector2 scroll);
 
         /// <summary>
@@ -2470,7 +2491,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="size">The size</param>
         /// <param name="cond">The cond</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetNextWindowSize(Vector2 size, ImGuiCond cond);
 
         /// <summary>
@@ -2480,14 +2501,14 @@ namespace Alis.App.Engine.UI
         /// <param name="sizeMax">The size max</param>
         /// <param name="customCallback">The custom callback</param>
         /// <param name="customCallbackData">The custom callback data</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetNextWindowSizeConstraints(Vector2 sizeMin, Vector2 sizeMax, ImGuiSizeCallback customCallback, void* customCallbackData);
 
         /// <summary>
         ///     Igs the set next window viewport using the specified viewport id
         /// </summary>
         /// <param name="viewportId">The viewport id</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetNextWindowViewport(uint viewportId);
 
         /// <summary>
@@ -2495,7 +2516,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="localX">The local</param>
         /// <param name="centerXRatio">The center ratio</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetScrollFromPosX_Float(float localX, float centerXRatio);
 
         /// <summary>
@@ -2503,56 +2524,56 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="localY">The local</param>
         /// <param name="centerYRatio">The center ratio</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetScrollFromPosY_Float(float localY, float centerYRatio);
 
         /// <summary>
         ///     Igs the set scroll here x using the specified center x ratio
         /// </summary>
         /// <param name="centerXRatio">The center ratio</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetScrollHereX(float centerXRatio);
 
         /// <summary>
         ///     Igs the set scroll here y using the specified center y ratio
         /// </summary>
         /// <param name="centerYRatio">The center ratio</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetScrollHereY(float centerYRatio);
 
         /// <summary>
         ///     Igs the set scroll x float using the specified scroll x
         /// </summary>
         /// <param name="scrollX">The scroll</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetScrollX_Float(float scrollX);
 
         /// <summary>
         ///     Igs the set scroll y float using the specified scroll y
         /// </summary>
         /// <param name="scrollY">The scroll</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetScrollY_Float(float scrollY);
 
         /// <summary>
         ///     Igs the set state storage using the specified storage
         /// </summary>
         /// <param name="storage">The storage</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetStateStorage(ImGuiStorage* storage);
 
         /// <summary>
         ///     Igs the set tab item closed using the specified tab or docked window label
         /// </summary>
         /// <param name="tabOrDockedWindowLabel">The tab or docked window label</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetTabItemClosed(byte* tabOrDockedWindowLabel);
 
         /// <summary>
         ///     Igs the set tooltip using the specified fmt
         /// </summary>
         /// <param name="fmt">The fmt</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetTooltip(byte* fmt);
 
         /// <summary>
@@ -2560,7 +2581,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="collapsed">The collapsed</param>
         /// <param name="cond">The cond</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetWindowCollapsed_Bool(byte collapsed, ImGuiCond cond);
 
         /// <summary>
@@ -2569,27 +2590,27 @@ namespace Alis.App.Engine.UI
         /// <param name="name">The name</param>
         /// <param name="collapsed">The collapsed</param>
         /// <param name="cond">The cond</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetWindowCollapsed_Str(byte* name, byte collapsed, ImGuiCond cond);
 
         /// <summary>
         ///     Igs the set window focus nil
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetWindowFocus_Nil();
 
         /// <summary>
         ///     Igs the set window focus str using the specified name
         /// </summary>
         /// <param name="name">The name</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetWindowFocus_Str(byte* name);
 
         /// <summary>
         ///     Igs the set window font scale using the specified scale
         /// </summary>
         /// <param name="scale">The scale</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetWindowFontScale(float scale);
 
         /// <summary>
@@ -2597,7 +2618,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="pos">The pos</param>
         /// <param name="cond">The cond</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetWindowPos_Vec2(Vector2 pos, ImGuiCond cond);
 
         /// <summary>
@@ -2606,7 +2627,7 @@ namespace Alis.App.Engine.UI
         /// <param name="name">The name</param>
         /// <param name="pos">The pos</param>
         /// <param name="cond">The cond</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetWindowPos_Str(byte* name, Vector2 pos, ImGuiCond cond);
 
         /// <summary>
@@ -2614,7 +2635,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="size">The size</param>
         /// <param name="cond">The cond</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetWindowSize_Vec2(Vector2 size, ImGuiCond cond);
 
         /// <summary>
@@ -2623,56 +2644,56 @@ namespace Alis.App.Engine.UI
         /// <param name="name">The name</param>
         /// <param name="size">The size</param>
         /// <param name="cond">The cond</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSetWindowSize_Str(byte* name, Vector2 size, ImGuiCond cond);
 
         /// <summary>
         ///     Igs the show about window using the specified p open
         /// </summary>
         /// <param name="pOpen">The open</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igShowAboutWindow(byte* pOpen);
 
         /// <summary>
         ///     Igs the show debug log window using the specified p open
         /// </summary>
         /// <param name="pOpen">The open</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igShowDebugLogWindow(byte* pOpen);
 
         /// <summary>
         ///     Igs the show demo window using the specified p open
         /// </summary>
         /// <param name="pOpen">The open</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igShowDemoWindow(byte* pOpen);
 
         /// <summary>
         ///     Igs the show font selector using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igShowFontSelector(byte* label);
 
         /// <summary>
         ///     Igs the show metrics window using the specified p open
         /// </summary>
         /// <param name="pOpen">The open</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igShowMetricsWindow(byte* pOpen);
 
         /// <summary>
         ///     Igs the show stack tool window using the specified p open
         /// </summary>
         /// <param name="pOpen">The open</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igShowStackToolWindow(byte* pOpen);
 
         /// <summary>
         ///     Igs the show style editor using the specified ref
         /// </summary>
         /// <param name="ref">The ref</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igShowStyleEditor(ImGuiStyle* @ref);
 
         /// <summary>
@@ -2680,13 +2701,13 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="label">The label</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igShowStyleSelector(byte* label);
 
         /// <summary>
         ///     Igs the show user guide
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igShowUserGuide();
 
         /// <summary>
@@ -2699,7 +2720,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igSliderAngle(byte* label, float* vRad, float vDegreesMin, float vDegreesMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2712,7 +2733,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igSliderFloat(byte* label, float* v, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2725,7 +2746,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igSliderFloat2(byte* label, Vector2* v, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2738,7 +2759,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igSliderFloat3(byte* label, Vector3* v, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2751,7 +2772,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igSliderFloat4(byte* label, Vector4* v, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2764,7 +2785,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igSliderInt(byte* label, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2777,7 +2798,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igSliderInt2(byte* label, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2790,7 +2811,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igSliderInt3(byte* label, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2803,7 +2824,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igSliderInt4(byte* label, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2817,7 +2838,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igSliderScalar(byte* label, ImGuiDataType dataType, void* pData, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2832,7 +2853,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igSliderScalarN(byte* label, ImGuiDataType dataType, void* pData, int components, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -2840,34 +2861,34 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="label">The label</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igSmallButton(byte* label);
 
         /// <summary>
         ///     Igs the spacing
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igSpacing();
 
         /// <summary>
         ///     Igs the style colors classic using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igStyleColorsClassic(ImGuiStyle* dst);
 
         /// <summary>
         ///     Igs the style colors dark using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igStyleColorsDark(ImGuiStyle* dst);
 
         /// <summary>
         ///     Igs the style colors light using the specified dst
         /// </summary>
         /// <param name="dst">The dst</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igStyleColorsLight(ImGuiStyle* dst);
 
         /// <summary>
@@ -2876,14 +2897,14 @@ namespace Alis.App.Engine.UI
         /// <param name="label">The label</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igTabItemButton(byte* label, ImGuiTabItemFlags flags);
 
         /// <summary>
         ///     Igs the table get column count
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int igTableGetColumnCount();
 
         /// <summary>
@@ -2891,14 +2912,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="columnN">The column</param>
         /// <returns>The im gui table column flags</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiTableColumnFlags igTableGetColumnFlags(int columnN);
 
         /// <summary>
         ///     Igs the table get column index
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int igTableGetColumnIndex();
 
         /// <summary>
@@ -2906,41 +2927,41 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="columnN">The column</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte* igTableGetColumnName_Int(int columnN);
 
         /// <summary>
         ///     Igs the table get row index
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int igTableGetRowIndex();
 
         /// <summary>
         ///     Igs the table get sort specs
         /// </summary>
         /// <returns>The im gui table sort specs</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiTableSortSpecs* igTableGetSortSpecs();
 
         /// <summary>
         ///     Igs the table header using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igTableHeader(byte* label);
 
         /// <summary>
         ///     Igs the table headers row
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igTableHeadersRow();
 
         /// <summary>
         ///     Igs the table next column
         /// </summary>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igTableNextColumn();
 
         /// <summary>
@@ -2948,7 +2969,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="rowFlags">The row flags</param>
         /// <param name="minRowHeight">The min row height</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igTableNextRow(ImGuiTableRowFlags rowFlags, float minRowHeight);
 
         /// <summary>
@@ -2957,7 +2978,7 @@ namespace Alis.App.Engine.UI
         /// <param name="target">The target</param>
         /// <param name="color">The color</param>
         /// <param name="columnN">The column</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igTableSetBgColor(ImGuiTableBgTarget target, uint color, int columnN);
 
         /// <summary>
@@ -2965,7 +2986,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="columnN">The column</param>
         /// <param name="v">The </param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igTableSetColumnEnabled(int columnN, byte v);
 
         /// <summary>
@@ -2973,7 +2994,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="columnN">The column</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igTableSetColumnIndex(int columnN);
 
         /// <summary>
@@ -2983,7 +3004,7 @@ namespace Alis.App.Engine.UI
         /// <param name="flags">The flags</param>
         /// <param name="initWidthOrWeight">The init width or weight</param>
         /// <param name="userId">The user id</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igTableSetupColumn(byte* label, ImGuiTableColumnFlags flags, float initWidthOrWeight, uint userId);
 
         /// <summary>
@@ -2991,14 +3012,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="cols">The cols</param>
         /// <param name="rows">The rows</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igTableSetupScrollFreeze(int cols, int rows);
 
         /// <summary>
         ///     Igs the text using the specified fmt
         /// </summary>
         /// <param name="fmt">The fmt</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igText(byte* fmt);
 
         /// <summary>
@@ -3006,14 +3027,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="col">The col</param>
         /// <param name="fmt">The fmt</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igTextColored(Vector4 col, byte* fmt);
 
         /// <summary>
         ///     Igs the text disabled using the specified fmt
         /// </summary>
         /// <param name="fmt">The fmt</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igTextDisabled(byte* fmt);
 
         /// <summary>
@@ -3021,14 +3042,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="text">The text</param>
         /// <param name="textEnd">The text end</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igTextUnformatted(byte* text, byte* textEnd);
 
         /// <summary>
         ///     Igs the text wrapped using the specified fmt
         /// </summary>
         /// <param name="fmt">The fmt</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igTextWrapped(byte* fmt);
 
         /// <summary>
@@ -3036,7 +3057,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="label">The label</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igTreeNode_Str(byte* label);
 
         /// <summary>
@@ -3045,7 +3066,7 @@ namespace Alis.App.Engine.UI
         /// <param name="strId">The str id</param>
         /// <param name="fmt">The fmt</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igTreeNode_StrStr(byte* strId, byte* fmt);
 
         /// <summary>
@@ -3054,7 +3075,7 @@ namespace Alis.App.Engine.UI
         /// <param name="ptrId">The ptr id</param>
         /// <param name="fmt">The fmt</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igTreeNode_Ptr(void* ptrId, byte* fmt);
 
         /// <summary>
@@ -3063,7 +3084,7 @@ namespace Alis.App.Engine.UI
         /// <param name="label">The label</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igTreeNodeEx_Str(byte* label, ImGuiTreeNodeFlags flags);
 
         /// <summary>
@@ -3073,7 +3094,7 @@ namespace Alis.App.Engine.UI
         /// <param name="flags">The flags</param>
         /// <param name="fmt">The fmt</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igTreeNodeEx_StrStr(byte* strId, ImGuiTreeNodeFlags flags, byte* fmt);
 
         /// <summary>
@@ -3083,40 +3104,40 @@ namespace Alis.App.Engine.UI
         /// <param name="flags">The flags</param>
         /// <param name="fmt">The fmt</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igTreeNodeEx_Ptr(void* ptrId, ImGuiTreeNodeFlags flags, byte* fmt);
 
         /// <summary>
         ///     Igs the tree pop
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igTreePop();
 
         /// <summary>
         ///     Igs the tree push str using the specified str id
         /// </summary>
         /// <param name="strId">The str id</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igTreePush_Str(byte* strId);
 
         /// <summary>
         ///     Igs the tree push ptr using the specified ptr id
         /// </summary>
         /// <param name="ptrId">The ptr id</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igTreePush_Ptr(void* ptrId);
 
         /// <summary>
         ///     Igs the unindent using the specified indent w
         /// </summary>
         /// <param name="indentW">The indent</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igUnindent(float indentW);
 
         /// <summary>
         ///     Igs the update platform windows
         /// </summary>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igUpdatePlatformWindows();
 
         /// <summary>
@@ -3124,7 +3145,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="prefix">The prefix</param>
         /// <param name="b">The </param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igValue_Bool(byte* prefix, byte b);
 
         /// <summary>
@@ -3132,7 +3153,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="prefix">The prefix</param>
         /// <param name="v">The </param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igValue_Int(byte* prefix, int v);
 
         /// <summary>
@@ -3140,7 +3161,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="prefix">The prefix</param>
         /// <param name="v">The </param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igValue_Uint(byte* prefix, uint v);
 
         /// <summary>
@@ -3149,7 +3170,7 @@ namespace Alis.App.Engine.UI
         /// <param name="prefix">The prefix</param>
         /// <param name="v">The </param>
         /// <param name="floatFormat">The float format</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void igValue_Float(byte* prefix, float v, byte* floatFormat);
 
         /// <summary>
@@ -3163,7 +3184,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igVSliderFloat(byte* label, Vector2 size, float* v, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -3177,7 +3198,7 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igVSliderInt(byte* label, Vector2 size, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
@@ -3192,14 +3213,14 @@ namespace Alis.App.Engine.UI
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte igVSliderScalar(byte* label, Vector2 size, ImGuiDataType dataType, void* pData, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Ims the color destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImColor_destroy(ImColor* self);
 
         /// <summary>
@@ -3210,14 +3231,14 @@ namespace Alis.App.Engine.UI
         /// <param name="s">The </param>
         /// <param name="v">The </param>
         /// <param name="a">The </param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImColor_HSV(ImColor* pOut, float h, float s, float v, float a);
 
         /// <summary>
         ///     Ims the color im color nil
         /// </summary>
         /// <returns>The im color</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImColor* ImColor_ImColor_Nil();
 
         /// <summary>
@@ -3228,7 +3249,7 @@ namespace Alis.App.Engine.UI
         /// <param name="b">The </param>
         /// <param name="a">The </param>
         /// <returns>The im color</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImColor* ImColor_ImColor_Float(float r, float g, float b, float a);
 
         /// <summary>
@@ -3236,7 +3257,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="col">The col</param>
         /// <returns>The im color</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImColor* ImColor_ImColor_Vec4(Vector4 col);
 
         /// <summary>
@@ -3247,7 +3268,7 @@ namespace Alis.App.Engine.UI
         /// <param name="b">The </param>
         /// <param name="a">The </param>
         /// <returns>The im color</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImColor* ImColor_ImColor_Int(int r, int g, int b, int a);
 
         /// <summary>
@@ -3255,7 +3276,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="rgba">The rgba</param>
         /// <returns>The im color</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImColor* ImColor_ImColor_U32(uint rgba);
 
         /// <summary>
@@ -3266,14 +3287,14 @@ namespace Alis.App.Engine.UI
         /// <param name="s">The </param>
         /// <param name="v">The </param>
         /// <param name="a">The </param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImColor_SetHSV(ImColor* self, float h, float s, float v, float a);
 
         /// <summary>
         ///     Ims the draw cmd destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawCmd_destroy(ImDrawCmd* self);
 
         /// <summary>
@@ -3281,42 +3302,42 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The int ptr</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr ImDrawCmd_GetTexID(ImDrawCmd* self);
 
         /// <summary>
         ///     Ims the draw cmd im draw cmd
         /// </summary>
         /// <returns>The im draw cmd</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImDrawCmd* ImDrawCmd_ImDrawCmd();
 
         /// <summary>
         ///     Ims the draw data clear using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawData_Clear(ImDrawData* self);
 
         /// <summary>
         ///     Ims the draw data de index all buffers using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawData_DeIndexAllBuffers(ImDrawData* self);
 
         /// <summary>
         ///     Ims the draw data destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawData_destroy(ImDrawData* self);
 
         /// <summary>
         ///     Ims the draw data im draw data
         /// </summary>
         /// <returns>The im draw data</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImDrawData* ImDrawData_ImDrawData();
 
         /// <summary>
@@ -3324,7 +3345,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="fbScale">The fb scale</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawData_ScaleClipRects(ImDrawData* self, Vector2 fbScale);
 
         /// <summary>
@@ -3333,35 +3354,35 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="radius">The radius</param>
         /// <returns>The int</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int ImDrawList__CalcCircleAutoSegmentCount(ImDrawList* self, float radius);
 
         /// <summary>
         ///     Ims the draw list clear free memory using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList__ClearFreeMemory(ImDrawList* self);
 
         /// <summary>
         ///     Ims the draw list on changed clip rect using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList__OnChangedClipRect(ImDrawList* self);
 
         /// <summary>
         ///     Ims the draw list on changed texture id using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList__OnChangedTextureID(ImDrawList* self);
 
         /// <summary>
         ///     Ims the draw list on changed vtx offset using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList__OnChangedVtxOffset(ImDrawList* self);
 
         /// <summary>
@@ -3373,7 +3394,7 @@ namespace Alis.App.Engine.UI
         /// <param name="aMinSample">The min sample</param>
         /// <param name="aMaxSample">The max sample</param>
         /// <param name="aStep">The step</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList__PathArcToFastEx(ImDrawList* self, Vector2 center, float radius, int aMinSample, int aMaxSample, int aStep);
 
         /// <summary>
@@ -3385,28 +3406,28 @@ namespace Alis.App.Engine.UI
         /// <param name="aMin">The min</param>
         /// <param name="aMax">The max</param>
         /// <param name="numSegments">The num segments</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList__PathArcToN(ImDrawList* self, Vector2 center, float radius, float aMin, float aMax, int numSegments);
 
         /// <summary>
         ///     Ims the draw list pop unused draw cmd using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList__PopUnusedDrawCmd(ImDrawList* self);
 
         /// <summary>
         ///     Ims the draw list reset for new frame using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList__ResetForNewFrame(ImDrawList* self);
 
         /// <summary>
         ///     Ims the draw list try merge draw cmds using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList__TryMergeDrawCmds(ImDrawList* self);
 
         /// <summary>
@@ -3420,7 +3441,7 @@ namespace Alis.App.Engine.UI
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         /// <param name="numSegments">The num segments</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddBezierCubic(ImDrawList* self, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col, float thickness, int numSegments);
 
         /// <summary>
@@ -3433,7 +3454,7 @@ namespace Alis.App.Engine.UI
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
         /// <param name="numSegments">The num segments</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddBezierQuadratic(ImDrawList* self, Vector2 p1, Vector2 p2, Vector2 p3, uint col, float thickness, int numSegments);
 
         /// <summary>
@@ -3442,7 +3463,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="callback">The callback</param>
         /// <param name="callbackData">The callback data</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddCallback(ImDrawList* self, IntPtr callback, void* callbackData);
 
         /// <summary>
@@ -3454,7 +3475,7 @@ namespace Alis.App.Engine.UI
         /// <param name="col">The col</param>
         /// <param name="numSegments">The num segments</param>
         /// <param name="thickness">The thickness</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddCircle(ImDrawList* self, Vector2 center, float radius, uint col, int numSegments, float thickness);
 
         /// <summary>
@@ -3465,7 +3486,7 @@ namespace Alis.App.Engine.UI
         /// <param name="radius">The radius</param>
         /// <param name="col">The col</param>
         /// <param name="numSegments">The num segments</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddCircleFilled(ImDrawList* self, Vector2 center, float radius, uint col, int numSegments);
 
         /// <summary>
@@ -3475,14 +3496,14 @@ namespace Alis.App.Engine.UI
         /// <param name="points">The points</param>
         /// <param name="numPoints">The num points</param>
         /// <param name="col">The col</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddConvexPolyFilled(ImDrawList* self, Vector2* points, int numPoints, uint col);
 
         /// <summary>
         ///     Ims the draw list add draw cmd using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddDrawCmd(ImDrawList* self);
 
         /// <summary>
@@ -3495,7 +3516,7 @@ namespace Alis.App.Engine.UI
         /// <param name="uvMin">The uv min</param>
         /// <param name="uvMax">The uv max</param>
         /// <param name="col">The col</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddImage(ImDrawList* self, IntPtr userTextureId, Vector2 pMin, Vector2 pMax, Vector2 uvMin, Vector2 uvMax, uint col);
 
         /// <summary>
@@ -3512,7 +3533,7 @@ namespace Alis.App.Engine.UI
         /// <param name="uv3">The uv</param>
         /// <param name="uv4">The uv</param>
         /// <param name="col">The col</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddImageQuad(ImDrawList* self, IntPtr userTextureId, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, Vector2 uv1, Vector2 uv2, Vector2 uv3, Vector2 uv4, uint col);
 
         /// <summary>
@@ -3527,7 +3548,7 @@ namespace Alis.App.Engine.UI
         /// <param name="col">The col</param>
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddImageRounded(ImDrawList* self, IntPtr userTextureId, Vector2 pMin, Vector2 pMax, Vector2 uvMin, Vector2 uvMax, uint col, float rounding, ImDrawFlags flags);
 
         /// <summary>
@@ -3538,7 +3559,7 @@ namespace Alis.App.Engine.UI
         /// <param name="p2">The </param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddLine(ImDrawList* self, Vector2 p1, Vector2 p2, uint col, float thickness);
 
         /// <summary>
@@ -3550,7 +3571,7 @@ namespace Alis.App.Engine.UI
         /// <param name="col">The col</param>
         /// <param name="numSegments">The num segments</param>
         /// <param name="thickness">The thickness</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddNgon(ImDrawList* self, Vector2 center, float radius, uint col, int numSegments, float thickness);
 
         /// <summary>
@@ -3561,7 +3582,7 @@ namespace Alis.App.Engine.UI
         /// <param name="radius">The radius</param>
         /// <param name="col">The col</param>
         /// <param name="numSegments">The num segments</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddNgonFilled(ImDrawList* self, Vector2 center, float radius, uint col, int numSegments);
 
         /// <summary>
@@ -3573,7 +3594,7 @@ namespace Alis.App.Engine.UI
         /// <param name="col">The col</param>
         /// <param name="flags">The flags</param>
         /// <param name="thickness">The thickness</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddPolyline(ImDrawList* self, Vector2* points, int numPoints, uint col, ImDrawFlags flags, float thickness);
 
         /// <summary>
@@ -3586,7 +3607,7 @@ namespace Alis.App.Engine.UI
         /// <param name="p4">The </param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddQuad(ImDrawList* self, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col, float thickness);
 
         /// <summary>
@@ -3598,7 +3619,7 @@ namespace Alis.App.Engine.UI
         /// <param name="p3">The </param>
         /// <param name="p4">The </param>
         /// <param name="col">The col</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddQuadFilled(ImDrawList* self, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col);
 
         /// <summary>
@@ -3611,7 +3632,7 @@ namespace Alis.App.Engine.UI
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
         /// <param name="thickness">The thickness</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddRect(ImDrawList* self, Vector2 pMin, Vector2 pMax, uint col, float rounding, ImDrawFlags flags, float thickness);
 
         /// <summary>
@@ -3623,7 +3644,7 @@ namespace Alis.App.Engine.UI
         /// <param name="col">The col</param>
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddRectFilled(ImDrawList* self, Vector2 pMin, Vector2 pMax, uint col, float rounding, ImDrawFlags flags);
 
         /// <summary>
@@ -3636,7 +3657,7 @@ namespace Alis.App.Engine.UI
         /// <param name="colUprRight">The col upr right</param>
         /// <param name="colBotRight">The col bot right</param>
         /// <param name="colBotLeft">The col bot left</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddRectFilledMultiColor(ImDrawList* self, Vector2 pMin, Vector2 pMax, uint colUprLeft, uint colUprRight, uint colBotRight, uint colBotLeft);
 
         /// <summary>
@@ -3647,7 +3668,7 @@ namespace Alis.App.Engine.UI
         /// <param name="col">The col</param>
         /// <param name="textBegin">The text begin</param>
         /// <param name="textEnd">The text end</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddText_Vec2(ImDrawList* self, Vector2 pos, uint col, byte* textBegin, byte* textEnd);
 
         /// <summary>
@@ -3662,7 +3683,7 @@ namespace Alis.App.Engine.UI
         /// <param name="textEnd">The text end</param>
         /// <param name="wrapWidth">The wrap width</param>
         /// <param name="cpuFineClipRect">The cpu fine clip rect</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddText_FontPtr(ImDrawList* self, ImFont* font, float fontSize, Vector2 pos, uint col, byte* textBegin, byte* textEnd, float wrapWidth, Vector4* cpuFineClipRect);
 
         /// <summary>
@@ -3674,7 +3695,7 @@ namespace Alis.App.Engine.UI
         /// <param name="p3">The </param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddTriangle(ImDrawList* self, Vector2 p1, Vector2 p2, Vector2 p3, uint col, float thickness);
 
         /// <summary>
@@ -3685,14 +3706,14 @@ namespace Alis.App.Engine.UI
         /// <param name="p2">The </param>
         /// <param name="p3">The </param>
         /// <param name="col">The col</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_AddTriangleFilled(ImDrawList* self, Vector2 p1, Vector2 p2, Vector2 p3, uint col);
 
         /// <summary>
         ///     Ims the draw list channels merge using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_ChannelsMerge(ImDrawList* self);
 
         /// <summary>
@@ -3700,7 +3721,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="n">The </param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_ChannelsSetCurrent(ImDrawList* self, int n);
 
         /// <summary>
@@ -3708,7 +3729,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="count">The count</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_ChannelsSplit(ImDrawList* self, int count);
 
         /// <summary>
@@ -3716,14 +3737,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The im draw list</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImDrawList* ImDrawList_CloneOutput(ImDrawList* self);
 
         /// <summary>
         ///     Ims the draw list destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_destroy(ImDrawList* self);
 
         /// <summary>
@@ -3731,7 +3752,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="pOut">The out</param>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_GetClipRectMax(Vector2* pOut, ImDrawList* self);
 
         /// <summary>
@@ -3739,7 +3760,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="pOut">The out</param>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_GetClipRectMin(Vector2* pOut, ImDrawList* self);
 
         /// <summary>
@@ -3747,7 +3768,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="sharedData">The shared data</param>
         /// <returns>The im draw list</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImDrawList* ImDrawList_ImDrawList(IntPtr sharedData);
 
         /// <summary>
@@ -3759,7 +3780,7 @@ namespace Alis.App.Engine.UI
         /// <param name="aMin">The min</param>
         /// <param name="aMax">The max</param>
         /// <param name="numSegments">The num segments</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PathArcTo(ImDrawList* self, Vector2 center, float radius, float aMin, float aMax, int numSegments);
 
         /// <summary>
@@ -3770,7 +3791,7 @@ namespace Alis.App.Engine.UI
         /// <param name="radius">The radius</param>
         /// <param name="aMinOf12">The min of 12</param>
         /// <param name="aMaxOf12">The max of 12</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PathArcToFast(ImDrawList* self, Vector2 center, float radius, int aMinOf12, int aMaxOf12);
 
         /// <summary>
@@ -3781,7 +3802,7 @@ namespace Alis.App.Engine.UI
         /// <param name="p3">The </param>
         /// <param name="p4">The </param>
         /// <param name="numSegments">The num segments</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PathBezierCubicCurveTo(ImDrawList* self, Vector2 p2, Vector2 p3, Vector2 p4, int numSegments);
 
         /// <summary>
@@ -3791,14 +3812,14 @@ namespace Alis.App.Engine.UI
         /// <param name="p2">The </param>
         /// <param name="p3">The </param>
         /// <param name="numSegments">The num segments</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PathBezierQuadraticCurveTo(ImDrawList* self, Vector2 p2, Vector2 p3, int numSegments);
 
         /// <summary>
         ///     Ims the draw list path clear using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PathClear(ImDrawList* self);
 
         /// <summary>
@@ -3806,7 +3827,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="col">The col</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PathFillConvex(ImDrawList* self, uint col);
 
         /// <summary>
@@ -3814,7 +3835,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="pos">The pos</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PathLineTo(ImDrawList* self, Vector2 pos);
 
         /// <summary>
@@ -3822,7 +3843,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="pos">The pos</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PathLineToMergeDuplicate(ImDrawList* self, Vector2 pos);
 
         /// <summary>
@@ -3833,7 +3854,7 @@ namespace Alis.App.Engine.UI
         /// <param name="rectMax">The rect max</param>
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PathRect(ImDrawList* self, Vector2 rectMin, Vector2 rectMax, float rounding, ImDrawFlags flags);
 
         /// <summary>
@@ -3843,21 +3864,21 @@ namespace Alis.App.Engine.UI
         /// <param name="col">The col</param>
         /// <param name="flags">The flags</param>
         /// <param name="thickness">The thickness</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PathStroke(ImDrawList* self, uint col, ImDrawFlags flags, float thickness);
 
         /// <summary>
         ///     Ims the draw list pop clip rect using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PopClipRect(ImDrawList* self);
 
         /// <summary>
         ///     Ims the draw list pop texture id using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PopTextureID(ImDrawList* self);
 
         /// <summary>
@@ -3873,7 +3894,7 @@ namespace Alis.App.Engine.UI
         /// <param name="uvC">The uv</param>
         /// <param name="uvD">The uv</param>
         /// <param name="col">The col</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PrimQuadUV(ImDrawList* self, Vector2 a, Vector2 b, Vector2 c, Vector2 d, Vector2 uvA, Vector2 uvB, Vector2 uvC, Vector2 uvD, uint col);
 
         /// <summary>
@@ -3883,7 +3904,7 @@ namespace Alis.App.Engine.UI
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <param name="col">The col</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PrimRect(ImDrawList* self, Vector2 a, Vector2 b, uint col);
 
         /// <summary>
@@ -3895,7 +3916,7 @@ namespace Alis.App.Engine.UI
         /// <param name="uvA">The uv</param>
         /// <param name="uvB">The uv</param>
         /// <param name="col">The col</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PrimRectUV(ImDrawList* self, Vector2 a, Vector2 b, Vector2 uvA, Vector2 uvB, uint col);
 
         /// <summary>
@@ -3904,7 +3925,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="idxCount">The idx count</param>
         /// <param name="vtxCount">The vtx count</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PrimReserve(ImDrawList* self, int idxCount, int vtxCount);
 
         /// <summary>
@@ -3913,7 +3934,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="idxCount">The idx count</param>
         /// <param name="vtxCount">The vtx count</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PrimUnreserve(ImDrawList* self, int idxCount, int vtxCount);
 
         /// <summary>
@@ -3923,7 +3944,7 @@ namespace Alis.App.Engine.UI
         /// <param name="pos">The pos</param>
         /// <param name="uv">The uv</param>
         /// <param name="col">The col</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PrimVtx(ImDrawList* self, Vector2 pos, Vector2 uv, uint col);
 
         /// <summary>
@@ -3931,7 +3952,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="idx">The idx</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PrimWriteIdx(ImDrawList* self, ushort idx);
 
         /// <summary>
@@ -3941,7 +3962,7 @@ namespace Alis.App.Engine.UI
         /// <param name="pos">The pos</param>
         /// <param name="uv">The uv</param>
         /// <param name="col">The col</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PrimWriteVtx(ImDrawList* self, Vector2 pos, Vector2 uv, uint col);
 
         /// <summary>
@@ -3951,14 +3972,14 @@ namespace Alis.App.Engine.UI
         /// <param name="clipRectMin">The clip rect min</param>
         /// <param name="clipRectMax">The clip rect max</param>
         /// <param name="intersectWithCurrentClipRect">The intersect with current clip rect</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PushClipRect(ImDrawList* self, Vector2 clipRectMin, Vector2 clipRectMax, byte intersectWithCurrentClipRect);
 
         /// <summary>
         ///     Ims the draw list push clip rect full screen using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PushClipRectFullScreen(ImDrawList* self);
 
         /// <summary>
@@ -3966,35 +3987,35 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="textureId">The texture id</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawList_PushTextureID(ImDrawList* self, IntPtr textureId);
 
         /// <summary>
         ///     Ims the draw list splitter clear using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawListSplitter_Clear(ImDrawListSplitter* self);
 
         /// <summary>
         ///     Ims the draw list splitter clear free memory using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawListSplitter_ClearFreeMemory(ImDrawListSplitter* self);
 
         /// <summary>
         ///     Ims the draw list splitter destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawListSplitter_destroy(ImDrawListSplitter* self);
 
         /// <summary>
         ///     Ims the draw list splitter im draw list splitter
         /// </summary>
         /// <returns>The im draw list splitter</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImDrawListSplitter* ImDrawListSplitter_ImDrawListSplitter();
 
         /// <summary>
@@ -4002,7 +4023,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="drawList">The draw list</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawListSplitter_Merge(ImDrawListSplitter* self, ImDrawList* drawList);
 
         /// <summary>
@@ -4011,7 +4032,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="drawList">The draw list</param>
         /// <param name="channelIdx">The channel idx</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawListSplitter_SetCurrentChannel(ImDrawListSplitter* self, ImDrawList* drawList, int channelIdx);
 
         /// <summary>
@@ -4020,7 +4041,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="drawList">The draw list</param>
         /// <param name="count">The count</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImDrawListSplitter_Split(ImDrawListSplitter* self, ImDrawList* drawList, int count);
 
         /// <summary>
@@ -4038,7 +4059,7 @@ namespace Alis.App.Engine.UI
         /// <param name="u1">The </param>
         /// <param name="v1">The </param>
         /// <param name="advanceX">The advance</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFont_AddGlyph(ImFont* self, ImFontConfig* srcCfg, ushort c, float x0, float y0, float x1, float y1, float u0, float v0, float u1, float v1, float advanceX);
 
         /// <summary>
@@ -4048,14 +4069,14 @@ namespace Alis.App.Engine.UI
         /// <param name="dst">The dst</param>
         /// <param name="src">The src</param>
         /// <param name="overwriteDst">The overwrite dst</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFont_AddRemapChar(ImFont* self, ushort dst, ushort src, byte overwriteDst);
 
         /// <summary>
         ///     Ims the font build lookup table using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFont_BuildLookupTable(ImFont* self);
 
         /// <summary>
@@ -4069,7 +4090,7 @@ namespace Alis.App.Engine.UI
         /// <param name="textBegin">The text begin</param>
         /// <param name="textEnd">The text end</param>
         /// <param name="remaining">The remaining</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFont_CalcTextSizeA(Vector2* pOut, ImFont* self, float size, float maxWidth, float wrapWidth, byte* textBegin, byte* textEnd, byte** remaining);
 
         /// <summary>
@@ -4081,21 +4102,21 @@ namespace Alis.App.Engine.UI
         /// <param name="textEnd">The text end</param>
         /// <param name="wrapWidth">The wrap width</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte* ImFont_CalcWordWrapPositionA(ImFont* self, float scale, byte* text, byte* textEnd, float wrapWidth);
 
         /// <summary>
         ///     Ims the font clear output data using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFont_ClearOutputData(ImFont* self);
 
         /// <summary>
         ///     Ims the font destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFont_destroy(ImFont* self);
 
         /// <summary>
@@ -4104,7 +4125,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="c">The </param>
         /// <returns>The im font glyph</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImFontGlyph* ImFont_FindGlyph(ImFont* self, ushort c);
 
         /// <summary>
@@ -4113,7 +4134,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="c">The </param>
         /// <returns>The im font glyph</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImFontGlyph* ImFont_FindGlyphNoFallback(ImFont* self, ushort c);
 
         /// <summary>
@@ -4122,7 +4143,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="c">The </param>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern float ImFont_GetCharAdvance(ImFont* self, ushort c);
 
         /// <summary>
@@ -4130,7 +4151,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte* ImFont_GetDebugName(ImFont* self);
 
         /// <summary>
@@ -4138,14 +4159,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="newSize">The new size</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFont_GrowIndex(ImFont* self, int newSize);
 
         /// <summary>
         ///     Ims the font im font
         /// </summary>
         /// <returns>The im font</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImFont* ImFont_ImFont();
 
         /// <summary>
@@ -4155,7 +4176,7 @@ namespace Alis.App.Engine.UI
         /// <param name="cBegin">The begin</param>
         /// <param name="cLast">The last</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImFont_IsGlyphRangeUnused(ImFont* self, uint cBegin, uint cLast);
 
         /// <summary>
@@ -4163,7 +4184,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImFont_IsLoaded(ImFont* self);
 
         /// <summary>
@@ -4175,7 +4196,7 @@ namespace Alis.App.Engine.UI
         /// <param name="pos">The pos</param>
         /// <param name="col">The col</param>
         /// <param name="c">The </param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFont_RenderChar(ImFont* self, ImDrawList* drawList, float size, Vector2 pos, uint col, ushort c);
 
         /// <summary>
@@ -4191,7 +4212,7 @@ namespace Alis.App.Engine.UI
         /// <param name="textEnd">The text end</param>
         /// <param name="wrapWidth">The wrap width</param>
         /// <param name="cpuFineClip">The cpu fine clip</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFont_RenderText(ImFont* self, ImDrawList* drawList, float size, Vector2 pos, uint col, Vector4 clipRect, byte* textBegin, byte* textEnd, float wrapWidth, byte cpuFineClip);
 
         /// <summary>
@@ -4200,7 +4221,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="c">The </param>
         /// <param name="visible">The visible</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFont_SetGlyphVisible(ImFont* self, ushort c, byte visible);
 
         /// <summary>
@@ -4214,7 +4235,7 @@ namespace Alis.App.Engine.UI
         /// <param name="advanceX">The advance</param>
         /// <param name="offset">The offset</param>
         /// <returns>The int</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int ImFontAtlas_AddCustomRectFontGlyph(ImFontAtlas* self, ImFont* font, ushort id, int width, int height, float advanceX, Vector2 offset);
 
         /// <summary>
@@ -4224,7 +4245,7 @@ namespace Alis.App.Engine.UI
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
         /// <returns>The int</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int ImFontAtlas_AddCustomRectRegular(ImFontAtlas* self, int width, int height);
 
         /// <summary>
@@ -4233,7 +4254,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="fontCfg">The font cfg</param>
         /// <returns>The im font</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImFont* ImFontAtlas_AddFont(ImFontAtlas* self, ImFontConfig* fontCfg);
 
         /// <summary>
@@ -4242,7 +4263,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="fontCfg">The font cfg</param>
         /// <returns>The im font</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImFont* ImFontAtlas_AddFontDefault(ImFontAtlas* self, ImFontConfig* fontCfg);
 
         /// <summary>
@@ -4254,7 +4275,7 @@ namespace Alis.App.Engine.UI
         /// <param name="fontCfg">The font cfg</param>
         /// <param name="glyphRanges">The glyph ranges</param>
         /// <returns>The im font</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImFont* ImFontAtlas_AddFontFromFileTTF(ImFontAtlas* self, byte* filename, float sizePixels, ImFontConfig* fontCfg, ushort* glyphRanges);
 
         /// <summary>
@@ -4266,7 +4287,7 @@ namespace Alis.App.Engine.UI
         /// <param name="fontCfg">The font cfg</param>
         /// <param name="glyphRanges">The glyph ranges</param>
         /// <returns>The im font</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImFont* ImFontAtlas_AddFontFromMemoryCompressedBase85TTF(ImFontAtlas* self, byte* compressedFontDataBase85, float sizePixels, ImFontConfig* fontCfg, ushort* glyphRanges);
 
         /// <summary>
@@ -4279,7 +4300,7 @@ namespace Alis.App.Engine.UI
         /// <param name="fontCfg">The font cfg</param>
         /// <param name="glyphRanges">The glyph ranges</param>
         /// <returns>The im font</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImFont* ImFontAtlas_AddFontFromMemoryCompressedTTF(ImFontAtlas* self, void* compressedFontData, int compressedFontSize, float sizePixels, ImFontConfig* fontCfg, ushort* glyphRanges);
 
         /// <summary>
@@ -4292,7 +4313,7 @@ namespace Alis.App.Engine.UI
         /// <param name="fontCfg">The font cfg</param>
         /// <param name="glyphRanges">The glyph ranges</param>
         /// <returns>The im font</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImFont* ImFontAtlas_AddFontFromMemoryTTF(ImFontAtlas* self, void* fontData, int fontSize, float sizePixels, ImFontConfig* fontCfg, ushort* glyphRanges);
 
         /// <summary>
@@ -4300,7 +4321,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImFontAtlas_Build(ImFontAtlas* self);
 
         /// <summary>
@@ -4310,42 +4331,42 @@ namespace Alis.App.Engine.UI
         /// <param name="rect">The rect</param>
         /// <param name="outUvMin">The out uv min</param>
         /// <param name="outUvMax">The out uv max</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontAtlas_CalcCustomRectUV(ImFontAtlas* self, ImFontAtlasCustomRect* rect, Vector2* outUvMin, Vector2* outUvMax);
 
         /// <summary>
         ///     Ims the font atlas clear using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontAtlas_Clear(ImFontAtlas* self);
 
         /// <summary>
         ///     Ims the font atlas clear fonts using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontAtlas_ClearFonts(ImFontAtlas* self);
 
         /// <summary>
         ///     Ims the font atlas clear input data using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontAtlas_ClearInputData(ImFontAtlas* self);
 
         /// <summary>
         ///     Ims the font atlas clear tex data using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontAtlas_ClearTexData(ImFontAtlas* self);
 
         /// <summary>
         ///     Ims the font atlas destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontAtlas_destroy(ImFontAtlas* self);
 
         /// <summary>
@@ -4354,7 +4375,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="index">The index</param>
         /// <returns>The im font atlas custom rect</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImFontAtlasCustomRect* ImFontAtlas_GetCustomRectByIndex(ImFontAtlas* self, int index);
 
         /// <summary>
@@ -4362,7 +4383,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort* ImFontAtlas_GetGlyphRangesChineseFull(ImFontAtlas* self);
 
         /// <summary>
@@ -4370,7 +4391,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort* ImFontAtlas_GetGlyphRangesChineseSimplifiedCommon(ImFontAtlas* self);
 
         /// <summary>
@@ -4378,7 +4399,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort* ImFontAtlas_GetGlyphRangesCyrillic(ImFontAtlas* self);
 
         /// <summary>
@@ -4386,7 +4407,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort* ImFontAtlas_GetGlyphRangesDefault(ImFontAtlas* self);
 
         /// <summary>
@@ -4394,7 +4415,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort* ImFontAtlas_GetGlyphRangesGreek(ImFontAtlas* self);
 
         /// <summary>
@@ -4402,7 +4423,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort* ImFontAtlas_GetGlyphRangesJapanese(ImFontAtlas* self);
 
         /// <summary>
@@ -4410,7 +4431,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort* ImFontAtlas_GetGlyphRangesKorean(ImFontAtlas* self);
 
         /// <summary>
@@ -4418,7 +4439,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort* ImFontAtlas_GetGlyphRangesThai(ImFontAtlas* self);
 
         /// <summary>
@@ -4426,7 +4447,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The ushort</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort* ImFontAtlas_GetGlyphRangesVietnamese(ImFontAtlas* self);
 
         /// <summary>
@@ -4439,7 +4460,7 @@ namespace Alis.App.Engine.UI
         /// <param name="outUvBorder">The out uv border</param>
         /// <param name="outUvFill">The out uv fill</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImFontAtlas_GetMouseCursorTexData(ImFontAtlas* self, ImGuiMouseCursor cursor, Vector2* outOffset, Vector2* outSize, Vector2* outUvBorder, Vector2* outUvFill);
 
         /// <summary>
@@ -4450,7 +4471,7 @@ namespace Alis.App.Engine.UI
         /// <param name="outWidth">The out width</param>
         /// <param name="outHeight">The out height</param>
         /// <param name="outBytesPerPixel">The out bytes per pixel</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontAtlas_GetTexDataAsAlpha8(ImFontAtlas* self, byte** outPixels, int* outWidth, int* outHeight, int* outBytesPerPixel);
 
         /// <summary>
@@ -4461,7 +4482,7 @@ namespace Alis.App.Engine.UI
         /// <param name="outWidth">The out width</param>
         /// <param name="outHeight">The out height</param>
         /// <param name="outBytesPerPixel">The out bytes per pixel</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontAtlas_GetTexDataAsAlpha8(ImFontAtlas* self, IntPtr* outPixels, int* outWidth, int* outHeight, int* outBytesPerPixel);
 
         /// <summary>
@@ -4472,7 +4493,7 @@ namespace Alis.App.Engine.UI
         /// <param name="outWidth">The out width</param>
         /// <param name="outHeight">The out height</param>
         /// <param name="outBytesPerPixel">The out bytes per pixel</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontAtlas_GetTexDataAsRGBA32(ImFontAtlas* self, byte** outPixels, int* outWidth, int* outHeight, int* outBytesPerPixel);
 
         /// <summary>
@@ -4483,14 +4504,14 @@ namespace Alis.App.Engine.UI
         /// <param name="outWidth">The out width</param>
         /// <param name="outHeight">The out height</param>
         /// <param name="outBytesPerPixel">The out bytes per pixel</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontAtlas_GetTexDataAsRGBA32(ImFontAtlas* self, IntPtr* outPixels, int* outWidth, int* outHeight, int* outBytesPerPixel);
 
         /// <summary>
         ///     Ims the font atlas im font atlas
         /// </summary>
         /// <returns>The im font atlas</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImFontAtlas* ImFontAtlas_ImFontAtlas();
 
         /// <summary>
@@ -4498,7 +4519,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImFontAtlas_IsBuilt(ImFontAtlas* self);
 
         /// <summary>
@@ -4506,21 +4527,21 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="id">The id</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontAtlas_SetTexID(ImFontAtlas* self, IntPtr id);
 
         /// <summary>
         ///     Ims the font atlas custom rect destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontAtlasCustomRect_destroy(ImFontAtlasCustomRect* self);
 
         /// <summary>
         ///     Ims the font atlas custom rect im font atlas custom rect
         /// </summary>
         /// <returns>The im font atlas custom rect</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImFontAtlasCustomRect* ImFontAtlasCustomRect_ImFontAtlasCustomRect();
 
         /// <summary>
@@ -4528,21 +4549,21 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImFontAtlasCustomRect_IsPacked(ImFontAtlasCustomRect* self);
 
         /// <summary>
         ///     Ims the font config destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontConfig_destroy(ImFontConfig* self);
 
         /// <summary>
         ///     Ims the font config im font config
         /// </summary>
         /// <returns>The im font config</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImFontConfig* ImFontConfig_ImFontConfig();
 
         /// <summary>
@@ -4550,7 +4571,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="c">The </param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontGlyphRangesBuilder_AddChar(ImFontGlyphRangesBuilder* self, ushort c);
 
         /// <summary>
@@ -4558,7 +4579,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="ranges">The ranges</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontGlyphRangesBuilder_AddRanges(ImFontGlyphRangesBuilder* self, ushort* ranges);
 
         /// <summary>
@@ -4567,7 +4588,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="text">The text</param>
         /// <param name="textEnd">The text end</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontGlyphRangesBuilder_AddText(ImFontGlyphRangesBuilder* self, byte* text, byte* textEnd);
 
         /// <summary>
@@ -4575,21 +4596,21 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="outRanges">The out ranges</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontGlyphRangesBuilder_BuildRanges(ImFontGlyphRangesBuilder* self, ImVector* outRanges);
 
         /// <summary>
         ///     Ims the font glyph ranges builder clear using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontGlyphRangesBuilder_Clear(ImFontGlyphRangesBuilder* self);
 
         /// <summary>
         ///     Ims the font glyph ranges builder destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontGlyphRangesBuilder_destroy(ImFontGlyphRangesBuilder* self);
 
         /// <summary>
@@ -4598,14 +4619,14 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="n">The </param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImFontGlyphRangesBuilder_GetBit(ImFontGlyphRangesBuilder* self, uint n);
 
         /// <summary>
         ///     Ims the font glyph ranges builder im font glyph ranges builder
         /// </summary>
         /// <returns>The im font glyph ranges builder</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImFontGlyphRangesBuilder* ImFontGlyphRangesBuilder_ImFontGlyphRangesBuilder();
 
         /// <summary>
@@ -4613,14 +4634,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="n">The </param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImFontGlyphRangesBuilder_SetBit(ImFontGlyphRangesBuilder* self, uint n);
 
         /// <summary>
         ///     Ims the gui input text callback data clear selection using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiInputTextCallbackData_ClearSelection(ImGuiInputTextCallbackData* self);
 
         /// <summary>
@@ -4629,14 +4650,14 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="pos">The pos</param>
         /// <param name="bytesCount">The bytes count</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiInputTextCallbackData_DeleteChars(ImGuiInputTextCallbackData* self, int pos, int bytesCount);
 
         /// <summary>
         ///     Ims the gui input text callback data destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiInputTextCallbackData_destroy(ImGuiInputTextCallbackData* self);
 
         /// <summary>
@@ -4644,14 +4665,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImGuiInputTextCallbackData_HasSelection(ImGuiInputTextCallbackData* self);
 
         /// <summary>
         ///     Ims the gui input text callback data im gui input text callback data
         /// </summary>
         /// <returns>The im gui input text callback data</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiInputTextCallbackData* ImGuiInputTextCallbackData_ImGuiInputTextCallbackData();
 
         /// <summary>
@@ -4661,14 +4682,14 @@ namespace Alis.App.Engine.UI
         /// <param name="pos">The pos</param>
         /// <param name="text">The text</param>
         /// <param name="textEnd">The text end</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiInputTextCallbackData_InsertChars(ImGuiInputTextCallbackData* self, int pos, byte* text, byte* textEnd);
 
         /// <summary>
         ///     Ims the gui input text callback data select all using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiInputTextCallbackData_SelectAll(ImGuiInputTextCallbackData* self);
 
         /// <summary>
@@ -4676,7 +4697,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="focused">The focused</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiIO_AddFocusEvent(ImGuiIo* self, byte focused);
 
         /// <summary>
@@ -4684,7 +4705,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="c">The </param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiIO_AddInputCharacter(ImGuiIo* self, uint c);
 
         /// <summary>
@@ -4692,7 +4713,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="str">The str</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiIO_AddInputCharactersUTF8(ImGuiIo* self, byte* str);
 
         /// <summary>
@@ -4700,7 +4721,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="c">The </param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiIO_AddInputCharacterUTF16(ImGuiIo* self, ushort c);
 
         /// <summary>
@@ -4710,7 +4731,7 @@ namespace Alis.App.Engine.UI
         /// <param name="key">The key</param>
         /// <param name="down">The down</param>
         /// <param name="v">The </param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiIO_AddKeyAnalogEvent(ImGuiIo* self, ImGuiKey key, byte down, float v);
 
         /// <summary>
@@ -4719,7 +4740,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="key">The key</param>
         /// <param name="down">The down</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiIO_AddKeyEvent(ImGuiIo* self, ImGuiKey key, byte down);
 
         /// <summary>
@@ -4728,7 +4749,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="button">The button</param>
         /// <param name="down">The down</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiIO_AddMouseButtonEvent(ImGuiIo* self, int button, byte down);
 
         /// <summary>
@@ -4737,7 +4758,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiIO_AddMousePosEvent(ImGuiIo* self, float x, float y);
 
         /// <summary>
@@ -4745,7 +4766,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="id">The id</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiIO_AddMouseViewportEvent(ImGuiIo* self, uint id);
 
         /// <summary>
@@ -4754,35 +4775,35 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="whX">The wh</param>
         /// <param name="whY">The wh</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiIO_AddMouseWheelEvent(ImGuiIo* self, float whX, float whY);
 
         /// <summary>
         ///     Ims the gui io clear input characters using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiIO_ClearInputCharacters(ImGuiIo* self);
 
         /// <summary>
         ///     Ims the gui io clear input keys using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiIO_ClearInputKeys(ImGuiIo* self);
 
         /// <summary>
         ///     Ims the gui io destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiIO_destroy(ImGuiIo* self);
 
         /// <summary>
         ///     Ims the gui io im gui io
         /// </summary>
         /// <returns>The im gui io</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiIo* ImGuiIO_ImGuiIO();
 
         /// <summary>
@@ -4790,7 +4811,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="acceptingEvents">The accepting events</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiIO_SetAppAcceptingEvents(ImGuiIo* self, byte acceptingEvents);
 
         /// <summary>
@@ -4801,7 +4822,7 @@ namespace Alis.App.Engine.UI
         /// <param name="nativeKeycode">The native keycode</param>
         /// <param name="nativeScancode">The native scancode</param>
         /// <param name="nativeLegacyIndex">The native legacy index</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiIO_SetKeyEventNativeData(ImGuiIo* self, ImGuiKey key, int nativeKeycode, int nativeScancode, int nativeLegacyIndex);
 
         /// <summary>
@@ -4810,21 +4831,21 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="itemsCount">The items count</param>
         /// <param name="itemsHeight">The items height</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiListClipper_Begin(ImGuiListClipper* self, int itemsCount, float itemsHeight);
 
         /// <summary>
         ///     Ims the gui list clipper destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiListClipper_destroy(ImGuiListClipper* self);
 
         /// <summary>
         ///     Ims the gui list clipper end using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiListClipper_End(ImGuiListClipper* self);
 
         /// <summary>
@@ -4833,14 +4854,14 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="itemMin">The item min</param>
         /// <param name="itemMax">The item max</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiListClipper_ForceDisplayRangeByIndices(ImGuiListClipper* self, int itemMin, int itemMax);
 
         /// <summary>
         ///     Ims the gui list clipper im gui list clipper
         /// </summary>
         /// <returns>The im gui list clipper</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiListClipper* ImGuiListClipper_ImGuiListClipper();
 
         /// <summary>
@@ -4848,42 +4869,42 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImGuiListClipper_Step(ImGuiListClipper* self);
 
         /// <summary>
         ///     Ims the gui once upon a frame destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiOnceUponAFrame_destroy(ImGuiOnceUponAFrame* self);
 
         /// <summary>
         ///     Ims the gui once upon a frame im gui once upon a frame
         /// </summary>
         /// <returns>The im gui once upon frame</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiOnceUponAFrame* ImGuiOnceUponAFrame_ImGuiOnceUponAFrame();
 
         /// <summary>
         ///     Ims the gui payload clear using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiPayload_Clear(ImGuiPayload* self);
 
         /// <summary>
         ///     Ims the gui payload destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiPayload_destroy(ImGuiPayload* self);
 
         /// <summary>
         ///     Ims the gui payload im gui payload
         /// </summary>
         /// <returns>The im gui payload</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiPayload* ImGuiPayload_ImGuiPayload();
 
         /// <summary>
@@ -4892,7 +4913,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="type">The type</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImGuiPayload_IsDataType(ImGuiPayload* self, byte* type);
 
         /// <summary>
@@ -4900,7 +4921,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImGuiPayload_IsDelivery(ImGuiPayload* self);
 
         /// <summary>
@@ -4908,63 +4929,63 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImGuiPayload_IsPreview(ImGuiPayload* self);
 
         /// <summary>
         ///     Ims the gui platform ime data destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiPlatformImeData_destroy(ImGuiPlatformImeData* self);
 
         /// <summary>
         ///     Ims the gui platform ime data im gui platform ime data
         /// </summary>
         /// <returns>The im gui platform ime data</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiPlatformImeData* ImGuiPlatformImeData_ImGuiPlatformImeData();
 
         /// <summary>
         ///     Ims the gui platform io destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiPlatformIO_destroy(ImGuiPlatformIo* self);
 
         /// <summary>
         ///     Ims the gui platform io im gui platform io
         /// </summary>
         /// <returns>The im gui platform io</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiPlatformIo* ImGuiPlatformIO_ImGuiPlatformIO();
 
         /// <summary>
         ///     Ims the gui platform monitor destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiPlatformMonitor_destroy(ImGuiPlatformMonitor* self);
 
         /// <summary>
         ///     Ims the gui platform monitor im gui platform monitor
         /// </summary>
         /// <returns>The im gui platform monitor</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiPlatformMonitor* ImGuiPlatformMonitor_ImGuiPlatformMonitor();
 
         /// <summary>
         ///     Ims the gui storage build sort by key using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiStorage_BuildSortByKey(ImGuiStorage* self);
 
         /// <summary>
         ///     Ims the gui storage clear using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiStorage_Clear(ImGuiStorage* self);
 
         /// <summary>
@@ -4974,7 +4995,7 @@ namespace Alis.App.Engine.UI
         /// <param name="key">The key</param>
         /// <param name="defaultVal">The default val</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImGuiStorage_GetBool(ImGuiStorage* self, uint key, byte defaultVal);
 
         /// <summary>
@@ -4984,7 +5005,7 @@ namespace Alis.App.Engine.UI
         /// <param name="key">The key</param>
         /// <param name="defaultVal">The default val</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte* ImGuiStorage_GetBoolRef(ImGuiStorage* self, uint key, byte defaultVal);
 
         /// <summary>
@@ -4994,7 +5015,7 @@ namespace Alis.App.Engine.UI
         /// <param name="key">The key</param>
         /// <param name="defaultVal">The default val</param>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern float ImGuiStorage_GetFloat(ImGuiStorage* self, uint key, float defaultVal);
 
         /// <summary>
@@ -5004,7 +5025,7 @@ namespace Alis.App.Engine.UI
         /// <param name="key">The key</param>
         /// <param name="defaultVal">The default val</param>
         /// <returns>The float</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern float* ImGuiStorage_GetFloatRef(ImGuiStorage* self, uint key, float defaultVal);
 
         /// <summary>
@@ -5014,7 +5035,7 @@ namespace Alis.App.Engine.UI
         /// <param name="key">The key</param>
         /// <param name="defaultVal">The default val</param>
         /// <returns>The int</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int ImGuiStorage_GetInt(ImGuiStorage* self, uint key, int defaultVal);
 
         /// <summary>
@@ -5024,7 +5045,7 @@ namespace Alis.App.Engine.UI
         /// <param name="key">The key</param>
         /// <param name="defaultVal">The default val</param>
         /// <returns>The int</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int* ImGuiStorage_GetIntRef(ImGuiStorage* self, uint key, int defaultVal);
 
         /// <summary>
@@ -5033,7 +5054,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="key">The key</param>
         /// <returns>The void</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void* ImGuiStorage_GetVoidPtr(ImGuiStorage* self, uint key);
 
         /// <summary>
@@ -5043,7 +5064,7 @@ namespace Alis.App.Engine.UI
         /// <param name="key">The key</param>
         /// <param name="defaultVal">The default val</param>
         /// <returns>The void</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void** ImGuiStorage_GetVoidPtrRef(ImGuiStorage* self, uint key, void* defaultVal);
 
         /// <summary>
@@ -5051,7 +5072,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="val">The val</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiStorage_SetAllInt(ImGuiStorage* self, int val);
 
         /// <summary>
@@ -5060,7 +5081,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="key">The key</param>
         /// <param name="val">The val</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiStorage_SetBool(ImGuiStorage* self, uint key, byte val);
 
         /// <summary>
@@ -5069,7 +5090,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="key">The key</param>
         /// <param name="val">The val</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiStorage_SetFloat(ImGuiStorage* self, uint key, float val);
 
         /// <summary>
@@ -5078,7 +5099,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="key">The key</param>
         /// <param name="val">The val</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiStorage_SetInt(ImGuiStorage* self, uint key, int val);
 
         /// <summary>
@@ -5087,14 +5108,14 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="key">The key</param>
         /// <param name="val">The val</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiStorage_SetVoidPtr(ImGuiStorage* self, uint key, void* val);
 
         /// <summary>
         ///     Ims the gui storage pair destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiStoragePair_destroy(ImGuiStoragePair* self);
 
         /// <summary>
@@ -5103,7 +5124,7 @@ namespace Alis.App.Engine.UI
         /// <param name="key">The key</param>
         /// <param name="valI">The val</param>
         /// <returns>The im gui storage pair</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiStoragePair* ImGuiStoragePair_ImGuiStoragePair_Int(uint key, int valI);
 
         /// <summary>
@@ -5112,7 +5133,7 @@ namespace Alis.App.Engine.UI
         /// <param name="key">The key</param>
         /// <param name="valF">The val</param>
         /// <returns>The im gui storage pair</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiStoragePair* ImGuiStoragePair_ImGuiStoragePair_Float(uint key, float valF);
 
         /// <summary>
@@ -5121,21 +5142,21 @@ namespace Alis.App.Engine.UI
         /// <param name="key">The key</param>
         /// <param name="valP">The val</param>
         /// <returns>The im gui storage pair</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiStoragePair* ImGuiStoragePair_ImGuiStoragePair_Ptr(uint key, void* valP);
 
         /// <summary>
         ///     Ims the gui style destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiStyle_destroy(ImGuiStyle* self);
 
         /// <summary>
         ///     Ims the gui style im gui style
         /// </summary>
         /// <returns>The im gui style</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiStyle* ImGuiStyle_ImGuiStyle();
 
         /// <summary>
@@ -5143,35 +5164,35 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="scaleFactor">The scale factor</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiStyle_ScaleAllSizes(ImGuiStyle* self, float scaleFactor);
 
         /// <summary>
         ///     Ims the gui table column sort specs destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiTableColumnSortSpecs_destroy(ImGuiTableColumnSortSpecs* self);
 
         /// <summary>
         ///     Ims the gui table column sort specs im gui table column sort specs
         /// </summary>
         /// <returns>The im gui table column sort specs</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiTableColumnSortSpecs* ImGuiTableColumnSortSpecs_ImGuiTableColumnSortSpecs();
 
         /// <summary>
         ///     Ims the gui table sort specs destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiTableSortSpecs_destroy(ImGuiTableSortSpecs* self);
 
         /// <summary>
         ///     Ims the gui table sort specs im gui table sort specs
         /// </summary>
         /// <returns>The im gui table sort specs</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiTableSortSpecs* ImGuiTableSortSpecs_ImGuiTableSortSpecs();
 
         /// <summary>
@@ -5180,7 +5201,7 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="str">The str</param>
         /// <param name="strEnd">The str end</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiTextBuffer_append(ImGuiTextBuffer* self, byte* str, byte* strEnd);
 
         /// <summary>
@@ -5188,7 +5209,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="fmt">The fmt</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiTextBuffer_appendf(ImGuiTextBuffer* self, byte* fmt);
 
         /// <summary>
@@ -5196,7 +5217,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte* ImGuiTextBuffer_begin(ImGuiTextBuffer* self);
 
         /// <summary>
@@ -5204,21 +5225,21 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte* ImGuiTextBuffer_c_str(ImGuiTextBuffer* self);
 
         /// <summary>
         ///     Ims the gui text buffer clear using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiTextBuffer_clear(ImGuiTextBuffer* self);
 
         /// <summary>
         ///     Ims the gui text buffer destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiTextBuffer_destroy(ImGuiTextBuffer* self);
 
         /// <summary>
@@ -5226,7 +5247,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImGuiTextBuffer_empty(ImGuiTextBuffer* self);
 
         /// <summary>
@@ -5234,14 +5255,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte* ImGuiTextBuffer_end(ImGuiTextBuffer* self);
 
         /// <summary>
         ///     Ims the gui text buffer im gui text buffer
         /// </summary>
         /// <returns>The im gui text buffer</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiTextBuffer* ImGuiTextBuffer_ImGuiTextBuffer();
 
         /// <summary>
@@ -5249,7 +5270,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="capacity">The capacity</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiTextBuffer_reserve(ImGuiTextBuffer* self, int capacity);
 
         /// <summary>
@@ -5257,28 +5278,28 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The int</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int ImGuiTextBuffer_size(ImGuiTextBuffer* self);
 
         /// <summary>
         ///     Ims the gui text filter build using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiTextFilter_Build(ImGuiTextFilter* self);
 
         /// <summary>
         ///     Ims the gui text filter clear using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiTextFilter_Clear(ImGuiTextFilter* self);
 
         /// <summary>
         ///     Ims the gui text filter destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiTextFilter_destroy(ImGuiTextFilter* self);
 
         /// <summary>
@@ -5288,7 +5309,7 @@ namespace Alis.App.Engine.UI
         /// <param name="label">The label</param>
         /// <param name="width">The width</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImGuiTextFilter_Draw(ImGuiTextFilter* self, byte* label, float width);
 
         /// <summary>
@@ -5296,7 +5317,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="defaultFilter">The default filter</param>
         /// <returns>The im gui text filter</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiTextFilter* ImGuiTextFilter_ImGuiTextFilter(byte* defaultFilter);
 
         /// <summary>
@@ -5304,7 +5325,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImGuiTextFilter_IsActive(ImGuiTextFilter* self);
 
         /// <summary>
@@ -5314,14 +5335,14 @@ namespace Alis.App.Engine.UI
         /// <param name="text">The text</param>
         /// <param name="textEnd">The text end</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImGuiTextFilter_PassFilter(ImGuiTextFilter* self, byte* text, byte* textEnd);
 
         /// <summary>
         ///     Ims the gui text range destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiTextRange_destroy(ImGuiTextRange* self);
 
         /// <summary>
@@ -5329,14 +5350,14 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="self">The self</param>
         /// <returns>The byte</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte ImGuiTextRange_empty(ImGuiTextRange* self);
 
         /// <summary>
         ///     Ims the gui text range im gui text range nil
         /// </summary>
         /// <returns>The im gui text range</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiTextRange* ImGuiTextRange_ImGuiTextRange_Nil();
 
         /// <summary>
@@ -5345,7 +5366,7 @@ namespace Alis.App.Engine.UI
         /// <param name="b">The </param>
         /// <param name="e">The </param>
         /// <returns>The im gui text range</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiTextRange* ImGuiTextRange_ImGuiTextRange_Str(byte* b, byte* e);
 
         /// <summary>
@@ -5354,14 +5375,14 @@ namespace Alis.App.Engine.UI
         /// <param name="self">The self</param>
         /// <param name="separator">The separator</param>
         /// <param name="out">The out</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiTextRange_split(ImGuiTextRange* self, byte separator, ImVector* @out);
 
         /// <summary>
         ///     Ims the gui viewport destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiViewport_destroy(ImGuiViewport* self);
 
         /// <summary>
@@ -5369,7 +5390,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="pOut">The out</param>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiViewport_GetCenter(Vector2* pOut, ImGuiViewport* self);
 
         /// <summary>
@@ -5377,42 +5398,42 @@ namespace Alis.App.Engine.UI
         /// </summary>
         /// <param name="pOut">The out</param>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiViewport_GetWorkCenter(Vector2* pOut, ImGuiViewport* self);
 
         /// <summary>
         ///     Ims the gui viewport im gui viewport
         /// </summary>
         /// <returns>The im gui viewport</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiViewport* ImGuiViewport_ImGuiViewport();
 
         /// <summary>
         ///     Ims the gui window class destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImGuiWindowClass_destroy(ImGuiWindowClass* self);
 
         /// <summary>
         ///     Ims the gui window class im gui window
         /// </summary>
         /// <returns>The im gui window class</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ImGuiWindowClass* ImGuiWindowClass_ImGuiWindowClass();
 
         /// <summary>
         ///     Ims the vec 2 destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImVec2_destroy(Vector2* self);
 
         /// <summary>
         ///     Ims the vec 2 im vec 2 nil
         /// </summary>
         /// <returns>The vector</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern Vector2* ImVec2_ImVec2_Nil();
 
         /// <summary>
@@ -5421,21 +5442,21 @@ namespace Alis.App.Engine.UI
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The vector</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern Vector2* ImVec2_ImVec2_Float(float x, float y);
 
         /// <summary>
         ///     Ims the vec 4 destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void ImVec4_destroy(Vector4* self);
 
         /// <summary>
         ///     Ims the vec 4 im vec 4 nil
         /// </summary>
         /// <returns>The vector</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern Vector4* ImVec4_ImVec4_Nil();
 
         /// <summary>
@@ -5446,7 +5467,7 @@ namespace Alis.App.Engine.UI
         /// <param name="z">The </param>
         /// <param name="w">The </param>
         /// <returns>The vector</returns>
-        [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
         public static extern Vector4* ImVec4_ImVec4_Float(float x, float y, float z, float w);
     }
 }
