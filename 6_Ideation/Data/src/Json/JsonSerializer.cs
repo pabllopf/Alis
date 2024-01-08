@@ -35,6 +35,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using static System.Math;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
@@ -2238,10 +2239,17 @@ namespace Alis.Core.Aspect.Data.Json
             {
                 var offset = TimeZoneInfo.Local.GetUtcOffset(dt);
                 writer.Write(offset.Ticks >= 0 ? '+' : '-');
-                writer.Write(Math.Abs(offset.Hours).ToString(_d2Format));
-                writer.Write(Math.Abs(offset.Minutes).ToString(_d2Format));
+                writer.Write(Abs(offset.Hours).ToString(_d2Format));
+                writer.Write(Abs(offset.Minutes).ToString(_d2Format));
             }
         }
+        
+        /// <summary>
+        /// Abses the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The float</returns>
+        public static float Abs(float value) => value < 0f ? -value : value;
 
         /// <summary>
         ///     Writes an enumerable to a JSON writer.
