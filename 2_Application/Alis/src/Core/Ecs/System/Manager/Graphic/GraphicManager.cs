@@ -441,11 +441,10 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             if ((string.IsNullOrEmpty(VideoGame.Instance.Settings.General.Icon) == false) && File.Exists(VideoGame.Instance.Settings.General.Icon))
             {
-                IntPtr icon = SdlImage.Img_Load(VideoGame.Instance.Settings.General.Icon);
+                IntPtr icon = SdlImage.ImgLoad(VideoGame.Instance.Settings.General.Icon);
                 Sdl.SetWindowIcon(_window, icon);
             }
-
-
+            
             // INIT SDL_IMAGE FLAGS
             ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
 
