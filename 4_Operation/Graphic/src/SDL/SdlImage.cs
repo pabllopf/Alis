@@ -29,6 +29,7 @@
 
 using System;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Memory;
@@ -70,7 +71,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_Linked_Version", CallingConvention = CallingConvention.Cdecl), NotNull]
-        private static extern SdlVersion IMGLinkedVersion();
+        public static extern SdlVersion IMGLinkedVersion();
         
         /// <summary>
         ///     Img the init using the specified flags
@@ -176,7 +177,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="free">The free</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_SavePNG_RW", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int ImgSavePngRw(IntPtr surface, IntPtr dst, int free);
+        public static extern int ImgSavePngRw(IntPtr surface, IntPtr dst, int free);
         
         /// <summary>
         ///     Internals the img save jpg using the specified surface
@@ -258,6 +259,21 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_LoadGIFAnimation_RW" ,CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr ImgLoadGifAnimationRw([NotNull] IntPtr src);
+        private static extern IntPtr InternalImgLoadGifAnimationRw([NotNull] IntPtr src);
+        
+        /// <summary>
+        /// Img the load gif animation rw using the specified src
+        /// </summary>
+        /// <param name="src">The src</param>
+        /// <returns>The result</returns>
+        [return: NotNull]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr ImgLoadGifAnimationRw([NotNull] IntPtr src)
+        {
+            Validator.ValidateInput(src);
+            IntPtr result = InternalImgLoadGifAnimationRw(src);
+            Validator.ValidateOutput(result);
+            return result;
+        }
     }
 }
