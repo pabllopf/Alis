@@ -125,7 +125,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_LoadTexture", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        public static extern IntPtr ImgLoadTexture([NotNull] IntPtr renderer, [NotNull] byte[] file);
+        public static extern IntPtr ImgLoadTexture([NotNull] IntPtr renderer, [NotNull] string file);
         
         /// <summary>
         ///     Img the load texture rw using the specified renderer
