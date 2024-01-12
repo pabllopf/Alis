@@ -33,7 +33,7 @@ using System.Text;
 using Alis.App.Engine.OpenGL.Delegates;
 using Alis.App.Engine.OpenGL.Enums;
 using Alis.Core.Aspect.Math.Matrix;
-using Alis.Core.Graphic.SDL;
+using Alis.Core.Graphic.Sdl2;
 
 namespace Alis.App.Engine.OpenGL
 {
