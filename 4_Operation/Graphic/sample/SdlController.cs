@@ -35,10 +35,10 @@ using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
-using Alis.Core.Graphic.SDL;
-using Alis.Core.Graphic.SDL.Enums;
-using Alis.Core.Graphic.SDL.Structs;
-using Sdl = Alis.Core.Graphic.SDL.Sdl;
+using Alis.Core.Graphic.Sdl2;
+using Alis.Core.Graphic.Sdl2.Enums;
+using Alis.Core.Graphic.Sdl2.Structs;
+using Sdl = Alis.Core.Graphic.Sdl2.Sdl;
 
 namespace Alis.Core.Graphic.Sample
 {

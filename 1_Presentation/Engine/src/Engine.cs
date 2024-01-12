@@ -42,9 +42,9 @@ using Alis.App.Engine.Windows;
 using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic.SDL;
-using Alis.Core.Graphic.SDL.Enums;
-using Alis.Core.Graphic.SDL.Structs;
+using Alis.Core.Graphic.Sdl2;
+using Alis.Core.Graphic.Sdl2.Enums;
+using Alis.Core.Graphic.Sdl2.Structs;
 using Type = Alis.App.Engine.OpenGL.Enums.Type;
 
 namespace Alis.App.Engine
