@@ -53,11 +53,11 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The large magnitude
         /// </summary>
-        public readonly ushort large_magnitude;
+        public readonly ushort largeMagnitude;
 
         /// <summary>
         ///     The small magnitude
         /// </summary>
-        public readonly ushort small_magnitude;
+        public readonly ushort smallMagnitude;
     }
 }

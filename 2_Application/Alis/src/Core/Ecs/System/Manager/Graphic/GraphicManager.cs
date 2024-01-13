@@ -400,10 +400,10 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Sdl.GetRendererInfo(Renderer, out SdlRendererInfo rendererInfo);
             Console.WriteLine($"Renderer Name: {rendererInfo.GetName()} \n" +
                               $"Renderer Flags: {rendererInfo.flags} \n" +
-                              $"Max Texture Width: {rendererInfo.max_texture_width} \n" +
-                              $"Max Texture Height: {rendererInfo.max_texture_height} + \n" +
-                              $"Max Texture Width: {rendererInfo.max_texture_width} \n" +
-                              $"Max Texture Height: {rendererInfo.max_texture_height}");
+                              $"Max Texture Width: {rendererInfo.maxTextureWidth} \n" +
+                              $"Max Texture Height: {rendererInfo.maxTextureHeight} + \n" +
+                              $"Max Texture Width: {rendererInfo.maxTextureWidth} \n" +
+                              $"Max Texture Height: {rendererInfo.maxTextureHeight}");
 
             // GET RENDERER OUTPUT SIZE
             Sdl.GetRendererOutputSize(Renderer, out int w, out int h);

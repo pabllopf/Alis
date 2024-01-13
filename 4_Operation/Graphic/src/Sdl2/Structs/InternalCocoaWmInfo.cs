@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The internal cocoa wminfo
+    ///     The internal cocoa wm info
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct InternalCocoaWmInfo

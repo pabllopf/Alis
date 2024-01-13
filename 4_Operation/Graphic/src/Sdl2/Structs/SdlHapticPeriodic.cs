@@ -95,21 +95,21 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The attack length
         /// </summary>
-        public readonly ushort attack_length;
+        public readonly ushort attackLength;
 
         /// <summary>
         ///     The attack level
         /// </summary>
-        public readonly ushort attack_level;
+        public readonly ushort attackLevel;
 
         /// <summary>
         ///     The fade length
         /// </summary>
-        public readonly ushort fade_length;
+        public readonly ushort fadeLength;
 
         /// <summary>
         ///     The fade level
         /// </summary>
-        public readonly ushort fade_level;
+        public readonly ushort fadeLevel;
     }
 }

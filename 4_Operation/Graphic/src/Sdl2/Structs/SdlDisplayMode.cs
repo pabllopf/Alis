@@ -59,7 +59,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         public readonly int refresh_rate;
 
         /// <summary>
-        ///     The driverdata
+        ///     The driver data
         /// </summary>
         public IntPtr driverData;
     }

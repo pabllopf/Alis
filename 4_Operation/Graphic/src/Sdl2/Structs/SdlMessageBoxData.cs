@@ -42,7 +42,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The flags
         /// </summary>
-        public readonly SdlMessageBoxFlags flags;
+        public SdlMessageBoxFlags flags;
 
         /// <summary>
         ///     The window
@@ -52,26 +52,26 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The title
         /// </summary>
-        public readonly string title; 
+        public string title; 
 
         /// <summary>
         ///     The message
         /// </summary>
-        public readonly string message; 
+        public string message; 
 
         /// <summary>
         ///     The num buttons
         /// </summary>
-        public readonly int numButtons;
+        public int numButtons;
 
         /// <summary>
         ///     The buttons
         /// </summary>
-        public readonly SdlMessageBoxButtonData[] buttons;
+        public SdlMessageBoxButtonData[] buttons;
 
         /// <summary>
         ///     The color scheme
         /// </summary>
-        public SdlMessageBoxColorScheme? colorScheme; 
+        public SdlMessageBoxColorScheme colorScheme; 
     }
 }

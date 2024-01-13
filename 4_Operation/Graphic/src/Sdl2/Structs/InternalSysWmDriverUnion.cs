@@ -90,7 +90,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The vivante
         /// </summary>
-        [FieldOffset(0)] public InternalVivanteWmInfo vivante;
+        [FieldOffset(0)] public InternalVivanteWmInfo VivanteWmInfo;
 
         /// <summary>
         ///     The ksm

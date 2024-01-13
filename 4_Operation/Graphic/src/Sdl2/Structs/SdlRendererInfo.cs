@@ -136,12 +136,12 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The max texture width
         /// </summary>
-        public readonly int max_texture_width;
+        public readonly int maxTextureWidth;
 
         /// <summary>
         ///     The max texture height
         /// </summary>
-        public readonly int max_texture_height;
+        public readonly int maxTextureHeight;
 
         /// <summary>
         ///     Gets the name
