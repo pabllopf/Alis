@@ -232,19 +232,19 @@ namespace Alis.App.Engine
 
 
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
-            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlContextFlags, (int) SdlGlContext.SdlGlContextForwardCompatibleFlag);
-            Sdl.GlSetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
-            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlContextMajorVersion, 3);
-            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlContextMinorVersion, 2);
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlContextFlags, (int) SdlGlContext.SdlGlContextForwardCompatibleFlag);
+            Sdl.SetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlContextMajorVersion, 3);
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlContextMinorVersion, 2);
 
-            Sdl.GlSetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
-            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlDoubleBuffer, 1);
-            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlDepthSize, 24);
-            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlAlphaSize, 8);
-            Sdl.GlSetAttributeByInt(SdlGlAttr.SdlGlStencilSize, 8);
+            Sdl.SetAttributeByProfile(SdlGlAttr.SdlGlContextProfileMask, SdlGlProfile.SdlGlContextProfileCore);
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlDoubleBuffer, 1);
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlDepthSize, 24);
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlAlphaSize, 8);
+            Sdl.SetAttributeByInt(SdlGlAttr.SdlGlStencilSize, 8);
 
             // Enable vsync
-            Sdl.GlSetSwapInterval(1);
+            Sdl.SetSwapInterval(1);
 
             // create the window which should be able to have a valid OpenGL context and is resizable
             SdlWindowFlags flags = SdlWindowFlags.SdlWindowOpengl | SdlWindowFlags.SdlWindowResizable | SdlWindowFlags.SdlWindowMaximized;
@@ -397,7 +397,7 @@ namespace Alis.App.Engine
 
                 // Setup display size (every frame to accommodate for window resizing)
                 Sdl.GetWindowSize(_window, out int w, out int h);
-                Sdl.GlGetDrawableSize(_window, out int displayW, out int displayH);
+                Sdl.GetDrawableSize(_window, out int displayW, out int displayH);
                 io.DisplaySize = new Vector2(w, h);
                 if ((w > 0) && (h > 0))
                 {
@@ -500,7 +500,7 @@ namespace Alis.App.Engine
                 ImGui.PopFont();
 
 
-                Sdl.GlMakeCurrent(_window, _glContext);
+                Sdl.MakeCurrent(_window, _glContext);
                 ImGui.Render();
 
                 Gl.GlViewport(0, 0, (int) io.DisplaySize.X, (int) io.DisplaySize.Y);
@@ -508,15 +508,15 @@ namespace Alis.App.Engine
 
                 RenderDrawData();
 
-                IntPtr backupCurrentWindow = Sdl.GlGetCurrentWindow();
-                IntPtr backupCurrentContext = Sdl.GlGetCurrentContext();
+                IntPtr backupCurrentWindow = Sdl.GetCurrentWindow();
+                IntPtr backupCurrentContext = Sdl.GetCurrentContext();
                 ImGui.UpdatePlatformWindows();
                 ImGui.RenderPlatformWindowsDefault();
-                Sdl.GlMakeCurrent(backupCurrentWindow, backupCurrentContext);
+                Sdl.MakeCurrent(backupCurrentWindow, backupCurrentContext);
 
 
                 Gl.GlDisable(EnableCap.ScissorTest);
-                Sdl.GlSwapWindow(_window);
+                Sdl.SwapWindow(_window);
             }
 
             if (_shader != null)
@@ -529,7 +529,7 @@ namespace Alis.App.Engine
                 Gl.DeleteTexture(_fontTextureId);
             }
 
-            Sdl.GlDeleteContext(_glContext);
+            Sdl.DeleteContext(_glContext);
             Sdl.DestroyWindow(_window);
             Sdl.Quit();
         }
@@ -736,19 +736,19 @@ namespace Alis.App.Engine
         /// <returns>The gl context</returns>
         private static IntPtr CreateGlContext(IntPtr window)
         {
-            IntPtr glContext = Sdl.GlCreateContext(window);
+            IntPtr glContext = Sdl.CreateContext(window);
             if (glContext == IntPtr.Zero)
             {
                 throw new Exception("CouldNotCreateContext");
             }
 
-            Sdl.GlMakeCurrent(window, glContext);
-            Sdl.GlSetSwapInterval(1);
+            Sdl.MakeCurrent(window, glContext);
+            Sdl.SetSwapInterval(1);
 
             // initialize the screen to black as soon as possible
             Gl.GlClearColor(0f, 0f, 0f, 1f);
             Gl.GlClear(ClearBufferMask.ColorBufferBit);
-            Sdl.GlSwapWindow(window);
+            Sdl.SwapWindow(window);
 
             Console.WriteLine($"GL Version: {Gl.GlGetString(StringName.Version)}");
             return glContext;
