@@ -57,7 +57,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sdl" /> class
         /// </summary>
-        static NativeSdl() => EmbeddedDllClass.ExtractEmbeddedDlls("sdl2", Sdl2Dlls.SdlDllBytes, Assembly.GetExecutingAssembly());
+        static NativeSdl() => EmbeddedDllClass.ExtractEmbeddedDlls("sdl2", Sdl2Dlls.GlSdlDllBytes, Assembly.GetExecutingAssembly());
 
         /// <summary>
         ///     Sdl the haptic rumble play using the specified haptic
