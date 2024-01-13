@@ -3807,93 +3807,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalBlitSurface([NotNull] IntPtr src, [NotNull] IntPtr srcRect, [NotNull] IntPtr dst, [NotNull] IntPtr dstRect);
-
-        /// <summary>
-        ///     Sdl the blit scaled using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="srcRect">The src rect</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstRect">The dst rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_UpperBlitScaled", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalBlitScaled([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect);
-
-        /// <summary>
-        ///     Sdl the blit scaled using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="srcRect">The src rect</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstRect">The dst rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_UpperBlitScaled", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalBlitScaled([NotNull] IntPtr src, [NotNull] IntPtr srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect);
-
-        /// <summary>
-        ///     Sdl the blit scaled using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="srcRect">The src rect</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstRect">The dst rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_UpperBlitScaled", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalBlitScaled([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, [NotNull] IntPtr dstRect);
-
-        /// <summary>
-        ///     Sdl the blit scaled using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="srcRect">The src rect</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstRect">The dst rect</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_UpperBlitScaled", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalBlitScaled([NotNull] IntPtr src, [NotNull] IntPtr srcRect, [NotNull] IntPtr dst, [NotNull] IntPtr dstRect);
-
-        /// <summary>
-        ///     Sdl the convert pixels using the specified width
-        /// </summary>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="srcFormat">The src format</param>
-        /// <param name="src">The src</param>
-        /// <param name="srcPitch">The src pitch</param>
-        /// <param name="dstFormat">The dst format</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstPitch">The dst pitch</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_ConvertPixels", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalConvertPixels([NotNull] int width, [NotNull] int height, [NotNull] uint srcFormat, [NotNull] IntPtr src, [NotNull] int srcPitch, [NotNull] uint dstFormat, [NotNull] IntPtr dst, [NotNull] int dstPitch);
-
-        /// <summary>
-        ///     Sdl the premultiply alpha using the specified width
-        /// </summary>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="srcFormat">The src format</param>
-        /// <param name="src">The src</param>
-        /// <param name="srcPitch">The src pitch</param>
-        /// <param name="dstFormat">The dst format</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstPitch">The dst pitch</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_PremultiplyAlpha", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalPremultiplyAlpha([NotNull] int width, [NotNull] int height, [NotNull] uint srcFormat, [NotNull] IntPtr src, [NotNull] int srcPitch, [NotNull] uint dstFormat, [NotNull] IntPtr dst, [NotNull] int dstPitch);
-
+        
         /// <summary>
         ///     Sdl the convert surface using the specified src
         /// </summary>
@@ -6930,24 +6844,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalUpdateTexture([NotNull] IntPtr texture, [NotNull] IntPtr rect, [NotNull] IntPtr pixels, [NotNull] int pitch);
-
-        /// <summary>
-        ///     Sdl the update yuv texture using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="rect">The rect</param>
-        /// <param name="yPlane">The plane</param>
-        /// <param name="yPitch">The pitch</param>
-        /// <param name="uPlane">The plane</param>
-        /// <param name="uPitch">The pitch</param>
-        /// <param name="vPlane">The plane</param>
-        /// <param name="vPitch">The pitch</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_UpdateYUVTexture", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalUpdateYUVTexture([NotNull] IntPtr texture, ref RectangleI rect, [NotNull] IntPtr yPlane, [NotNull] int yPitch, [NotNull] IntPtr uPlane, [NotNull] int uPitch, [NotNull] IntPtr vPlane, [NotNull] int vPitch);
-
+        
         /// <summary>
         ///     Sdl the update nv texture using the specified texture
         /// </summary>
