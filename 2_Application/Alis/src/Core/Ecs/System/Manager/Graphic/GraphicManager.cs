@@ -460,7 +460,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Console.WriteLine(SdlTtf.TtfInit() < 0 ? $"There was an issue initializing SDL_TTF. {Sdl.GetError()}" : "SDL_TTF Initialized");
 
             // GET VERSION SDL_TTF
-            Console.WriteLine($"SDL_TTF Version: {SdlTtf.SdlTtfVersion().major}.{SdlTtf.SdlTtfVersion().minor}.{SdlTtf.SdlTtfVersion().patch}");
+            Console.WriteLine($"SDL_TTF Version: {SdlTtf.GetTtfVersion().major}.{SdlTtf.GetTtfVersion().minor}.{SdlTtf.GetTtfVersion().patch}");
 
             /*
 
