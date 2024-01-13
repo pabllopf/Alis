@@ -1,4 +1,4 @@
 {
-  "parallelizeTestCollections":  false,
+  "parallelizeTestCollections": false,
   "appDomain": "denied"
 }

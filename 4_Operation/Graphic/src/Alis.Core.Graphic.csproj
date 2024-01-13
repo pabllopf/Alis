@@ -11,6 +11,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Sdl2\Extensions\" />
+        <Folder Include="Sdl2\Extensions\"/>
     </ItemGroup>
 </Project>

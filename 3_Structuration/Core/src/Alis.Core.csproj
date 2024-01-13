@@ -11,6 +11,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Update="..\..\..\4_Operation\Graphic\src\SDL" />
+        <Folder Update="..\..\..\4_Operation\Graphic\src\SDL"/>
     </ItemGroup>
 </Project>
