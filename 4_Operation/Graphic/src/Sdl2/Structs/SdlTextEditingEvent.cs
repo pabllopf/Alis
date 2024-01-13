@@ -34,7 +34,7 @@ using Alis.Core.Graphic.Sdl2.Enums;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl texteditingevent
+    ///     The sdl text editing event
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlTextEditingEvent
@@ -55,7 +55,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         public readonly uint windowID;
 
         /// <summary>
-        ///     The sdl texteditingevent text size
+        ///     The sdl text editing event text size
         /// </summary>
         private readonly IntPtr textPtr;
 

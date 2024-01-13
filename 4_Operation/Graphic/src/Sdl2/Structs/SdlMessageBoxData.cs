@@ -34,7 +34,7 @@ using Alis.Core.Graphic.Sdl2.Enums;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl messageboxdata
+    ///     The sdl message box data
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlMessageBoxData
@@ -47,22 +47,22 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The window
         /// </summary>
-        public IntPtr window; /* Parent window, can be NULL */
+        public IntPtr window; 
 
         /// <summary>
         ///     The title
         /// </summary>
-        public readonly string title; /* UTF-8 title */
+        public readonly string title; 
 
         /// <summary>
         ///     The message
         /// </summary>
-        public readonly string message; /* UTF-8 message text */
+        public readonly string message; 
 
         /// <summary>
-        ///     The numbuttons
+        ///     The num buttons
         /// </summary>
-        public readonly int numbuttons;
+        public readonly int numButtons;
 
         /// <summary>
         ///     The buttons
@@ -72,6 +72,6 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The color scheme
         /// </summary>
-        public SdlMessageBoxColorScheme? colorScheme; /* Can be NULL to use system settings */
+        public SdlMessageBoxColorScheme? colorScheme; 
     }
 }

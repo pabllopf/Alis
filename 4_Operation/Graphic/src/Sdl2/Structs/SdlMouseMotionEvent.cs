@@ -33,7 +33,7 @@ using Alis.Core.Graphic.Sdl2.Enums;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl mousemotionevent
+    ///     The sdl mouse motion event
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlMouseMotionEvent
@@ -61,7 +61,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The state
         /// </summary>
-        public readonly byte state; /* bitmask of buttons */
+        public readonly byte state; 
 
         /// <summary>
         ///     The padding
@@ -89,13 +89,13 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         public readonly int y;
 
         /// <summary>
-        ///     The xrel
+        ///     The x rel
         /// </summary>
-        public readonly int xrel;
+        public readonly int xRel;
 
         /// <summary>
-        ///     The yrel
+        ///     The y rel
         /// </summary>
-        public readonly int yrel;
+        public readonly int yRel;
     }
 }

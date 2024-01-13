@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: SdlKeysym.cs
+//  File: SdlKeySym.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -34,10 +34,10 @@ using Alis.Core.Graphic.Sdl2.Enums;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl keysym
+    ///     The sdl key sym
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct SdlKeysym
+    public struct SdlKeySym
     {
         /// <summary>
         ///     The scancode

@@ -2374,15 +2374,15 @@ namespace Alis.Core.Graphic.Sdl2
                 window = messageBoxData.window,
                 title = NativeSdl.AllocUtf8(messageBoxData.title),
                 message = NativeSdl.AllocUtf8(messageBoxData.message),
-                numbuttons = messageBoxData.numbuttons
+                numbuttons = messageBoxData.numButtons
             };
 
-            InternalSdlMessageBoxButtonData[] buttons = new InternalSdlMessageBoxButtonData[messageBoxData.numbuttons];
+            InternalSdlMessageBoxButtonData[] buttons = new InternalSdlMessageBoxButtonData[messageBoxData.numButtons];
             IntPtr buttonsPtr = IntPtr.Zero;
 
             try
             {
-                for (int i = 0; i < messageBoxData.numbuttons; i++)
+                for (int i = 0; i < messageBoxData.numButtons; i++)
                 {
                     buttons[i] = new InternalSdlMessageBoxButtonData
                     {
@@ -2410,7 +2410,7 @@ namespace Alis.Core.Graphic.Sdl2
 
                 int result = NativeSdl.InternalShowMessageBox(ref data, out buttonId);
 
-                for (int i = 0; i < messageBoxData.numbuttons; i++)
+                for (int i = 0; i < messageBoxData.numButtons; i++)
                 {
                     NativeSdl.InternalFree(buttons[i].text);
                 }
@@ -8439,6 +8439,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void LockAudioDevice([NotNull] uint dev)
         {
+            Validator.ValidateInput(dev);
             NativeSdl.InternalLockAudioDevice(dev);
         }
 
@@ -8453,6 +8454,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void MixAudio([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)] [NotNull] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 2)] [NotNull] byte[] src, [NotNull] uint len, [NotNull] int volume)
         {
+            Validator.ValidateInput(dst);
+            Validator.ValidateInput(src);
+            Validator.ValidateInput(len);
+            Validator.ValidateInput(volume);
             NativeSdl.InternalMixAudio(dst, src, len, volume);
         }
 
@@ -8488,6 +8493,11 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void MixAudioFormat([Out, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [NotNull] byte[] dst, [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 3)] [NotNull] byte[] src, [NotNull] ushort format, [NotNull] uint len, [NotNull] int volume)
         {
+            Validator.ValidateInput(dst);
+            Validator.ValidateInput(src);
+            Validator.ValidateInput(format);
+            Validator.ValidateInput(len);
+            Validator.ValidateInput(volume);
             NativeSdl.InternalMixAudioFormat(dst, src, format, len, volume);
         }
 
@@ -9180,7 +9190,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlBool SdlGetWindowWmInfo([NotNull] IntPtr window, ref SdlSysWMinfo info)
+        public static SdlBool SdlGetWindowWmInfo([NotNull] IntPtr window, ref SdlSysWmInfo info)
         {
             Validator.ValidateInput(window);
             SdlBool result = NativeSdl.InternalGetWindowWMInfo(window, ref info);

@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl hapticcustom
+    ///     The sdl haptic custom
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlHapticCustom

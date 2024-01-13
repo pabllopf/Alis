@@ -33,7 +33,7 @@ using Alis.Core.Graphic.Sdl2.Enums;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl quitevent
+    ///     The sdl quit event
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlQuitEvent

@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl hapticconstant
+    ///     The sdl haptic constant
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlHapticConstant

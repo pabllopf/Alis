@@ -33,7 +33,7 @@ using Alis.Core.Graphic.Sdl2.Enums;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl mousewheelevent
+    ///     The sdl mouse wheel event
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlMouseWheelEvent
@@ -61,26 +61,26 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The
         /// </summary>
-        public readonly int x; /* amount scrolled horizontally */
+        public readonly int x; 
 
         /// <summary>
         ///     The
         /// </summary>
-        public readonly int y; /* amount scrolled vertically */
+        public readonly int y; 
 
         /// <summary>
         ///     The direction
         /// </summary>
-        public readonly uint direction; /* Set to one of the SDL_MOUSEWHEEL_* defines */
+        public readonly uint direction; 
 
         /// <summary>
         ///     The precise
         /// </summary>
-        public readonly float preciseX; /* Requires >= 2.0.18 */
+        public readonly float preciseX; 
 
         /// <summary>
         ///     The precise
         /// </summary>
-        public readonly float preciseY; /* Requires >= 2.0.18 */
+        public readonly float preciseY; 
     }
 }

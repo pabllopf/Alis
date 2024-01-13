@@ -33,7 +33,7 @@ using Alis.Core.Graphic.Sdl2.Enums;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl messageboxcolorscheme
+    ///     The sdl message box color scheme
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlMessageBoxColorScheme

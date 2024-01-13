@@ -234,32 +234,32 @@ namespace Alis.Core.Graphic.Sample
                             _running = false;
                             break;
                         case SdlEventType.SdlKeydown:
-                            if (_sdlEvent.key.keysym.sym == SdlKeycode.SdlkEscape)
+                            if (_sdlEvent.key.keySym.sym == SdlKeycode.SdlkEscape)
                             {
                                 _running = false;
                             }
 
-                            if (_sdlEvent.key.keysym.sym == SdlKeycode.SdlkUp)
+                            if (_sdlEvent.key.keySym.sym == SdlKeycode.SdlkUp)
                             {
                                 rectBorder.y -= 10;
                             }
 
-                            if (_sdlEvent.key.keysym.sym == SdlKeycode.SdlkDown)
+                            if (_sdlEvent.key.keySym.sym == SdlKeycode.SdlkDown)
                             {
                                 rectBorder.y += 10;
                             }
 
-                            if (_sdlEvent.key.keysym.sym == SdlKeycode.SdlkLeft)
+                            if (_sdlEvent.key.keySym.sym == SdlKeycode.SdlkLeft)
                             {
                                 rectBorder.x -= 10;
                             }
 
-                            if (_sdlEvent.key.keysym.sym == SdlKeycode.SdlkRight)
+                            if (_sdlEvent.key.keySym.sym == SdlKeycode.SdlkRight)
                             {
                                 rectBorder.x += 10;
                             }
 
-                            Console.WriteLine(_sdlEvent.key.keysym.sym + " was pressed");
+                            Console.WriteLine(_sdlEvent.key.keySym.sym + " was pressed");
                             break;
                     }
 

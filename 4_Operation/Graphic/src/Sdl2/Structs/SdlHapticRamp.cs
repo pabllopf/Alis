@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl hapticramp
+    ///     The sdl haptic ramp
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlHapticRamp

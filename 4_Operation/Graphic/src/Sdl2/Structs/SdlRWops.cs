@@ -33,10 +33,10 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl rwops
+    ///     The sdl rw ops
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct SdlRWops
+    public struct SdlRwOps
     {
         /// <summary>
         ///     The size

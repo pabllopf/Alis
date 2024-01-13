@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl hapticeffect
+    ///     The sdl haptic effect
     /// </summary>
     [StructLayout(LayoutKind.Explicit)]
     public struct SdlHapticEffect
@@ -63,9 +63,9 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         [FieldOffset(0)] public SdlHapticRamp ramp;
 
         /// <summary>
-        ///     The leftright
+        ///     The left right
         /// </summary>
-        [FieldOffset(0)] public SdlHapticLeftRight leftright;
+        [FieldOffset(0)] public SdlHapticLeftRight leftRight;
 
         /// <summary>
         ///     The custom

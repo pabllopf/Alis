@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl multigestureevent
+    ///     The sdl multi gesture event
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlMultiGestureEvent
@@ -50,7 +50,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The touch id
         /// </summary>
-        public readonly long touchId; // SDL_TouchID
+        public readonly long touchId; 
 
         /// <summary>
         ///     The theta

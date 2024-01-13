@@ -172,7 +172,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
                         break;
 
                     case SdlEventType.SdlKeyup:
-                        SdlKeycode indexUp = _sdlEvent.key.keysym.sym;
+                        SdlKeycode indexUp = _sdlEvent.key.keySym.sym;
 
                         if (tempListOfKeys.Contains(indexUp))
                         {
@@ -183,7 +183,7 @@ namespace Alis.Core.Ecs.System.Manager.Input
 
                         break;
                     case SdlEventType.SdlKeydown:
-                        SdlKeycode indexDown = _sdlEvent.key.keysym.sym;
+                        SdlKeycode indexDown = _sdlEvent.key.keySym.sym;
                         if (!tempListOfKeys.Contains(indexDown))
                         {
                             //Console.WriteLine(indexDown + " was pressed");

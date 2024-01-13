@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl hapticleftright
+    ///     The sdl haptic left right
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlHapticLeftRight

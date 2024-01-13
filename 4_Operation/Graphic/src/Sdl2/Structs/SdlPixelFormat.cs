@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl pixelformat
+    ///     The sdl pixel format
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlPixelFormat
@@ -46,7 +46,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The palette
         /// </summary>
-        public IntPtr palette; // SDL_Palette*
+        public IntPtr palette; 
 
         /// <summary>
         ///     The bits per pixel
@@ -59,73 +59,73 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         public readonly byte BytesPerPixel;
 
         /// <summary>
-        ///     The rmask
+        ///     The r mask
         /// </summary>
-        public readonly uint Rmask;
+        public readonly uint RMask;
 
         /// <summary>
-        ///     The gmask
+        ///     The g mask
         /// </summary>
-        public readonly uint Gmask;
+        public readonly uint GMask;
 
         /// <summary>
-        ///     The bmask
+        ///     The b mask
         /// </summary>
-        public readonly uint Bmask;
+        public readonly uint BMask;
 
         /// <summary>
-        ///     The amask
+        ///     The a mask
         /// </summary>
-        public readonly uint Amask;
+        public readonly uint AMask;
 
         /// <summary>
-        ///     The rloss
+        ///     The r loss
         /// </summary>
-        public readonly byte Rloss;
+        public readonly byte RLoss;
 
         /// <summary>
-        ///     The gloss
+        ///     The g loss
         /// </summary>
         public readonly byte Gloss;
 
         /// <summary>
-        ///     The bloss
+        ///     The b loss
         /// </summary>
-        public readonly byte Bloss;
+        public readonly byte BLoss;
 
         /// <summary>
-        ///     The aloss
+        ///     The a loss
         /// </summary>
-        public readonly byte Aloss;
+        public readonly byte ALoss;
 
         /// <summary>
-        ///     The rshift
+        ///     The r shift
         /// </summary>
-        public readonly byte Rshift;
+        public readonly byte RShift;
 
         /// <summary>
-        ///     The gshift
+        ///     The g shift
         /// </summary>
-        public readonly byte Gshift;
+        public readonly byte GShift;
 
         /// <summary>
-        ///     The bshift
+        ///     The b shift
         /// </summary>
-        public readonly byte Bshift;
+        public readonly byte BShift;
 
         /// <summary>
-        ///     The ashift
+        ///     The a shift
         /// </summary>
-        public readonly byte Ashift;
+        public readonly byte AShift;
 
         /// <summary>
-        ///     The refcount
+        ///     The ref count
         /// </summary>
-        public readonly int refcount;
+        public readonly int refCount;
 
         /// <summary>
         ///     The next
         /// </summary>
-        public IntPtr next; // SDL_PixelFormat*
+        public IntPtr next; 
     }
 }
