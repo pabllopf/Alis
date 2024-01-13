@@ -1433,10 +1433,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static uint Fourcc(byte a, byte b, byte c, byte d)
-        {
-            return (uint) (a | (b << 8) | (c << 16) | (d << 24));
-        }
+        private static uint Fourcc(byte a, byte b, byte c, byte d) => (uint) (a | (b << 8) | (c << 16) | (d << 24));
 
         /// <summary>
         ///     Malloc the size
@@ -1447,7 +1444,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr Malloc([NotNull, NotZero] int size)
         {
-            return NativeSdl.InternalMalloc(size);
+            Validator.ValidateInput(size);
+            IntPtr result = NativeSdl.InternalMalloc(size);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -1458,6 +1458,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Free([NotNull] IntPtr memBlock)
         {
+            Validator.ValidateInput(memBlock);
             NativeSdl.InternalFree(memBlock);
         }
 
@@ -1472,7 +1473,12 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr MemCpy([NotNull] IntPtr dst, [NotNull] IntPtr src, [NotNull] IntPtr len)
         {
-            return NativeSdl.InternalMemCpy(dst, src, len);
+            Validator.ValidateInput(dst);
+            Validator.ValidateInput(src);
+            Validator.ValidateInput(len);
+            IntPtr result = NativeSdl.InternalMemCpy(dst, src, len);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -1485,7 +1491,11 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static IntPtr RwFromFile([NotNull] string file, [NotNull] string mode)
         {
-            return NativeSdl.InternalRWFromFile(file, mode);
+            Validator.ValidateInput(file);
+            Validator.ValidateInput(mode);
+            IntPtr result = NativeSdl.InternalRWFromFile(file, mode);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -1496,7 +1506,9 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr AllocRw()
         {
-            return NativeSdl.InternalAllocRW();
+            IntPtr result = NativeSdl.InternalAllocRW();
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -1505,6 +1517,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="area">The area</param>
         public static void FreeRw([NotNull] IntPtr area)
         {
+            Validator.ValidateInput(area);
             NativeSdl.InternalFreeRW(area);
         }
 
@@ -1516,7 +1529,11 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         public static IntPtr RwFromFp([NotNull] IntPtr fp, [NotNull] SdlBool autoClose)
         {
-            return NativeSdl.InternalRWFromFP(fp, autoClose);
+            Validator.ValidateInput(fp);
+            Validator.ValidateInput(autoClose);
+            IntPtr result = NativeSdl.InternalRWFromFP(fp, autoClose);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -1529,7 +1546,11 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr RwFromMem([NotNull] IntPtr mem, [NotNull] int size)
         {
-            return NativeSdl.InternalRWFromMem(mem, size);
+            Validator.ValidateInput(mem);
+            Validator.ValidateInput(size);
+            IntPtr result = NativeSdl.InternalRWFromMem(mem, size);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -1542,7 +1563,11 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr RwFromConstMem([NotNull] IntPtr mem, [NotNull] int size)
         {
-            return NativeSdl.InternalRWFromConstMem(mem, size);
+            Validator.ValidateInput(mem);
+            Validator.ValidateInput(size);
+            IntPtr result = NativeSdl.InternalRWFromConstMem(mem, size);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -1554,7 +1579,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static long RwSize([NotNull] IntPtr context)
         {
-            return NativeSdl.InternalRwSize(context);
+            Validator.ValidateInput(context);
+            long result = NativeSdl.InternalRwSize(context);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -1568,7 +1596,12 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static long RwSeek([NotNull] IntPtr context, [NotNull] long offset, [NotNull] int whence)
         {
-            return NativeSdl.InternalRwSeek(context, offset, whence);
+            Validator.ValidateInput(context);
+            Validator.ValidateInput(offset);
+            Validator.ValidateInput(whence);
+            long result = NativeSdl.InternalRwSeek(context, offset, whence);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -1580,7 +1613,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static long RwTell([NotNull] IntPtr context)
         {
-            return NativeSdl.InternalRwTell(context);
+            Validator.ValidateInput(context);
+            long result = NativeSdl.InternalRwTell(context);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -1595,7 +1631,13 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static long RwRead([NotNull] IntPtr context, [NotNull] IntPtr ptr, [NotNull] IntPtr size, [NotNull] IntPtr maxNum)
         {
-            return NativeSdl.InternalRwRead(context, ptr, size, maxNum);
+            Validator.ValidateInput(context);
+            Validator.ValidateInput(ptr);
+            Validator.ValidateInput(size);
+            Validator.ValidateInput(maxNum);
+            long result = NativeSdl.InternalRwRead(context, ptr, size, maxNum);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -1610,7 +1652,13 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static long RwWrite([NotNull] IntPtr context, [NotNull] IntPtr ptr, [NotNull] IntPtr size, [NotNull] IntPtr maxNum)
         {
-            return NativeSdl.InternalRwWrite(context, ptr, size, maxNum);
+            Validator.ValidateInput(context);
+            Validator.ValidateInput(ptr);
+            Validator.ValidateInput(size);
+            Validator.ValidateInput(maxNum);
+            long result = NativeSdl.InternalRwWrite(context, ptr, size, maxNum);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -1622,7 +1670,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static byte ReadU8([NotNull] IntPtr src)
         {
-            return NativeSdl.InternalReadU8(src);
+            Validator.ValidateInput(src);
+            byte result = NativeSdl.InternalReadU8(src);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -1634,7 +1685,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ushort ReadLe16([NotNull] IntPtr src)
         {
-            return NativeSdl.InternalReadLE16(src);
+            Validator.ValidateInput(src);
+            ushort result = NativeSdl.InternalReadLE16(src);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -1646,7 +1700,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ushort ReadBe16([NotNull] IntPtr src)
         {
-            return NativeSdl.InternalReadBE16(src);
+            Validator.ValidateInput(src);
+            ushort result = NativeSdl.InternalReadBE16(src);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -1658,7 +1715,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint ReadLe32([NotNull] IntPtr src)
         {
-            return NativeSdl.InternalReadLE32(src);
+            Validator.ValidateInput(src);
+            uint result = NativeSdl.InternalReadLE32(src);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -1670,7 +1730,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint ReadBe32([NotNull] IntPtr src)
         {
-            return NativeSdl.InternalReadBE32(src);
+            Validator.ValidateInput(src);
+            uint result = NativeSdl.InternalReadBE32(src);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -1682,7 +1745,10 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ulong ReadLe64([NotNull] IntPtr src)
         {
-            return NativeSdl.InternalReadLE64(src);
+            Validator.ValidateInput(src);
+            ulong result = NativeSdl.InternalReadLE64(src);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
