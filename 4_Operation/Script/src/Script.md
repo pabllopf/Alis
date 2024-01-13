@@ -1,7 +1,8 @@
 # Script module
 
 ## Description
-This module is used to execute a script on the target machine. 
+
+This module is used to execute a script on the target machine.
 
 Module responsible for compiling and reloading script made during the development of Alis.
 

@@ -10,19 +10,19 @@
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
-//  Copyright (c) 2021 GNU General Internal License v3.0
+//  Copyright (c) 2021 GNU General Public License v3.0
 // 
 //  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Internal License as published by
+//  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Internal License for more details.
+//  GNU General Public License for more details.
 // 
-//  You should have received a copy of the GNU General Internal License
+//  You should have received a copy of the GNU General Public License
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
@@ -45,15 +45,15 @@ using Alis.Core.Graphic.Sdl2.Structs;
 namespace Alis.Core.Graphic.Sdl2
 {
     /// <summary>
-    /// The native sdl class
+    ///     The native sdl class
     /// </summary>
     internal static class NativeSdl
     {
         /// <summary>
-        /// The native lib name
+        ///     The native lib name
         /// </summary>
         private const string NativeLibName = "sdl2";
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sdl" /> class
         /// </summary>
@@ -3807,7 +3807,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalBlitSurface([NotNull] IntPtr src, [NotNull] IntPtr srcRect, [NotNull] IntPtr dst, [NotNull] IntPtr dstRect);
-        
+
         /// <summary>
         ///     Sdl the convert surface using the specified src
         /// </summary>
@@ -3831,7 +3831,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalConvertSurfaceFormat([NotNull] IntPtr src, [NotNull] uint pixelFormat, [NotNull] uint flags);
-        
+
         /// <summary>
         ///     Sdl the create rgb surface with format using the specified flags
         /// </summary>
@@ -6425,7 +6425,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalRenderGeometry([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [In] SdlVertex[] vertices, [NotNull] int numVertices, [In] [NotNull] int[] indices, [NotNull] int numIndices);
-        
+
         /// <summary>
         ///     Sdl the render draw point f using the specified renderer
         /// </summary>
@@ -6809,7 +6809,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalUpdateTexture([NotNull] IntPtr texture, [NotNull] IntPtr rect, [NotNull] IntPtr pixels, [NotNull] int pitch);
-        
+
         /// <summary>
         ///     Sdl the update nv texture using the specified texture
         /// </summary>
