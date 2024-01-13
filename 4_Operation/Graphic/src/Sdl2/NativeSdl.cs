@@ -3831,42 +3831,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalConvertSurfaceFormat([NotNull] IntPtr src, [NotNull] uint pixelFormat, [NotNull] uint flags);
-
-        /// <summary>
-        ///     Sdl the create rgb surface using the specified flags
-        /// </summary>
-        /// <param name="flags">The flags</param>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="depth">The depth</param>
-        /// <param name="rMask">The r mask</param>
-        /// <param name="gMask">The g mask</param>
-        /// <param name="bMask">The b mask</param>
-        /// <param name="aMask">The a mask</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_CreateRGBSurface", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalCreateRGBSurface([NotNull] uint flags, [NotNull] int width, [NotNull] int height, [NotNull] int depth, [NotNull] uint rMask, [NotNull] uint gMask, [NotNull] uint bMask, [NotNull] uint aMask);
-
-        /// <summary>
-        ///     Sdl the create rgb surface from using the specified pixels
-        /// </summary>
-        /// <param name="pixels">The pixels</param>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="depth">The depth</param>
-        /// <param name="pitch">The pitch</param>
-        /// <param name="rMask">The r mask</param>
-        /// <param name="gMask">The g mask</param>
-        /// <param name="bMask">The b mask</param>
-        /// <param name="aMask">The a mask</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_CreateRGBSurfaceFrom", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalCreateRGBSurfaceFrom([NotNull] IntPtr pixels, [NotNull] int width, [NotNull] int height, [NotNull] int depth, [NotNull] int pitch, [NotNull] uint rMask, [NotNull] uint gMask, [NotNull] uint bMask, [NotNull] uint aMask);
-
+        
         /// <summary>
         ///     Sdl the create rgb surface with format using the specified flags
         /// </summary>

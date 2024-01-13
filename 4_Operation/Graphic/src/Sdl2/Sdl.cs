@@ -6265,48 +6265,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             return NativeSdl.InternalConvertSurfaceFormat(src, pixelFormat, flags);
         }
-
-
-        /// <summary>
-        ///     Creates the rgb surface using the specified flags
-        /// </summary>
-        /// <param name="flags">The flags</param>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="depth">The depth</param>
-        /// <param name="rMask">The mask</param>
-        /// <param name="gMask">The mask</param>
-        /// <param name="bMask">The mask</param>
-        /// <param name="aMask">The mask</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr CreateRgbSurface([NotNull] uint flags, [NotNull] int width, [NotNull] int height, [NotNull] int depth, [NotNull] uint rMask, [NotNull] uint gMask, [NotNull] uint bMask, [NotNull] uint aMask)
-        {
-            return NativeSdl.InternalCreateRGBSurface(flags, width, height, depth, rMask, gMask, bMask, aMask);
-        }
-
-
-        /// <summary>
-        ///     Creates the rgb surface from using the specified pixels
-        /// </summary>
-        /// <param name="pixels">The pixels</param>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="depth">The depth</param>
-        /// <param name="pitch">The pitch</param>
-        /// <param name="rMask">The mask</param>
-        /// <param name="gMask">The mask</param>
-        /// <param name="bMask">The mask</param>
-        /// <param name="aMask">The mask</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr CreateRgbSurfaceFrom([NotNull] IntPtr pixels, [NotNull] int width, [NotNull] int height, [NotNull] int depth, [NotNull] int pitch, [NotNull] uint rMask, [NotNull] uint gMask, [NotNull] uint bMask, [NotNull] uint aMask)
-        {
-            return NativeSdl.InternalCreateRGBSurfaceFrom(pixels, width, height, depth, pitch, rMask, gMask, bMask, aMask);
-        }
-
+        
         /// <summary>
         ///     Creates the rgb surface with format using the specified flags
         /// </summary>
