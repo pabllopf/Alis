@@ -30,12 +30,12 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.Sdl2
+namespace Alis.Core.Graphic.Properties
 {
     /// <summary>
     ///     The im gui dlls class
     /// </summary>
-    public static class SdlDlls
+    public static class Sdl2Dlls
     {
         /// <summary>
         ///     The osx arm64 sdl2

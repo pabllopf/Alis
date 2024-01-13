@@ -36,6 +36,7 @@ using Alis.Core.Aspect.Base.Mapping;
 using Alis.Core.Aspect.Math.Shape.Point;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Aspect.Memory.Attributes;
+using Alis.Core.Graphic.Properties;
 using Alis.Core.Graphic.Sdl2.Delegates;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
@@ -1432,7 +1433,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sdl" /> class
         /// </summary>
-        static Sdl() => EmbeddedDllClass.ExtractEmbeddedDlls("sdl2", SdlDlls.SdlDllBytes, Assembly.GetExecutingAssembly());
+        static Sdl() => EmbeddedDllClass.ExtractEmbeddedDlls("sdl2", Sdl2Dlls.SdlDllBytes, Assembly.GetExecutingAssembly());
 
         /// <summary>
         ///     Sdl the fourcc using the specified a
@@ -1506,7 +1507,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_RWFromFile", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_RWFromFile([NotNull] byte[] file, [NotNull] byte[] mode);
+        private static extern IntPtr INTERNAL_SDL_RWFromFile([NotNull] string file, [NotNull] string mode);
 
         /// <summary>
         ///     Sdl the rw from file using the specified file
@@ -1515,7 +1516,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="mode">The mode</param>
         /// <returns>The rw ops</returns>
         [return: NotNull]
-        private static IntPtr RwFromFile([NotNull] string file, [NotNull] string mode) => INTERNAL_SDL_RWFromFile(Utf8Manager.Utf8EncodeHeap(file), Utf8Manager.Utf8EncodeHeap(mode));
+        private static IntPtr RwFromFile([NotNull] string file, [NotNull] string mode) => INTERNAL_SDL_RWFromFile(file, mode);
 
         /// <summary>
         ///     Sdl the alloc rw
@@ -1979,7 +1980,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_LoadFile", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_LoadFile([NotNull] byte[] file, out IntPtr dataSize);
+        private static extern IntPtr INTERNAL_SDL_LoadFile([NotNull] string file, out IntPtr dataSize);
 
         /// <summary>
         ///     Sdl the load file using the specified file
@@ -1988,7 +1989,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="dataSize">The data size</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static IntPtr LoadFile([NotNull] string file, out IntPtr dataSize) => INTERNAL_SDL_LoadFile(Utf8Manager.Utf8EncodeHeap(file), out dataSize);
+        public static IntPtr LoadFile([NotNull] string file, out IntPtr dataSize) => INTERNAL_SDL_LoadFile(file, out dataSize);
 
         /// <summary>
         ///     Sdl the set main ready
@@ -2127,14 +2128,14 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetPlatform", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GetPlatform();
+        private static extern string INTERNAL_SDL_GetPlatform();
 
         /// <summary>
         ///     Sdl the get platform
         /// </summary>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GetPlatform() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetPlatform());
+        public static string GetPlatform() => INTERNAL_SDL_GetPlatform();
 
         /// <summary>
         ///     Sdl the clear hints
@@ -2156,7 +2157,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetHint", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GetHint([NotNull] byte[] name);
+        private static extern string INTERNAL_SDL_GetHint([NotNull] string name);
 
         /// <summary>
         ///     Sdl the get hint using the specified name
@@ -2164,7 +2165,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="name">The name</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GetHint([NotNull] string name) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetHint(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name))));
+        public static string GetHint([NotNull] string name) => INTERNAL_SDL_GetHint(name);
 
         /// <summary>
         ///     Internals the sdl set hint using the specified name
@@ -2174,7 +2175,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetHint", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool INTERNAL_SDL_SetHint([NotNull] byte[] name, [NotNull] byte[] value);
+        private static extern SdlBool INTERNAL_SDL_SetHint([NotNull] string name, [NotNull] string value);
 
         /// <summary>
         ///     Sdl the set hint using the specified name
@@ -2183,7 +2184,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="value">The value</param>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SetHint([NotNull] string name, [NotNull] string value) => INTERNAL_SDL_SetHint(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)), Utf8Manager.Utf8Encode(value, new byte[Utf8Manager.Utf8Size(value)], Utf8Manager.Utf8Size(value)));
+        public static SdlBool SetHint([NotNull] string name, [NotNull] string value) => INTERNAL_SDL_SetHint(name, value);
 
         /// <summary>
         ///     Internals the sdl set hint with priority using the specified name
@@ -2194,7 +2195,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetHintWithPriority", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool INTERNAL_SDL_SetHintWithPriority([NotNull] byte[] name, [NotNull] byte[] value, SdlHintPriority priority);
+        private static extern SdlBool INTERNAL_SDL_SetHintWithPriority([NotNull] string name, [NotNull] string value, SdlHintPriority priority);
 
         /// <summary>
         ///     Sdl the set hint with priority using the specified name
@@ -2204,7 +2205,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="priority">The priority</param>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool SetHintWithPriority([NotNull] string name, [NotNull] string value, SdlHintPriority priority) => INTERNAL_SDL_SetHintWithPriority(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)), Utf8Manager.Utf8Encode(value, new byte[Utf8Manager.Utf8Size(value)], Utf8Manager.Utf8Size(value)), priority);
+        public static SdlBool SetHintWithPriority([NotNull] string name, [NotNull] string value, SdlHintPriority priority) => INTERNAL_SDL_SetHintWithPriority(name, value, priority);
 
         /// <summary>
         ///     Internals the sdl get hint boolean using the specified name
@@ -2214,7 +2215,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetHintBoolean", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool INTERNAL_SDL_GetHintBoolean([NotNull] byte[] name, SdlBool defaultValue);
+        private static extern SdlBool INTERNAL_SDL_GetHintBoolean([NotNull] string name, SdlBool defaultValue);
 
         /// <summary>
         ///     Sdl the get hint boolean using the specified name
@@ -2223,7 +2224,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="defaultValue">The default value</param>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool GetHintBoolean([NotNull] string name, SdlBool defaultValue) => INTERNAL_SDL_GetHintBoolean(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)), defaultValue);
+        public static SdlBool GetHintBoolean([NotNull] string name, SdlBool defaultValue) => INTERNAL_SDL_GetHintBoolean(name, defaultValue);
 
         /// <summary>
         ///     Sdl the clear error
@@ -2244,14 +2245,14 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetError", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GetError();
+        private static extern string INTERNAL_SDL_GetError();
 
         /// <summary>
         ///     Sdl the get error
         /// </summary>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GetError() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetError());
+        public static string GetError() => INTERNAL_SDL_GetError();
 
         /// <summary>
         ///     Internals the sdl set error using the specified fmt and arg list
@@ -2259,14 +2260,14 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetError", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void INTERNAL_SDL_SetError([NotNull] byte[] fmtAndArgList);
+        private static extern void INTERNAL_SDL_SetError([NotNull] string fmtAndArgList);
 
         /// <summary>
         ///     Sdl the set error using the specified fmt and arg list
         /// </summary>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [return: NotNull]
-        public static void SetError([NotNull] string fmtAndArgList) => INTERNAL_SDL_SetError(Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void SetError([NotNull] string fmtAndArgList) => INTERNAL_SDL_SetError(fmtAndArgList);
 
         /// <summary>
         ///     Sdl the get error msg using the specified err str
@@ -2292,14 +2293,14 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_Log", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void INTERNAL_SDL_Log([NotNull] byte[] fmtAndArgList);
+        private static extern void INTERNAL_SDL_Log([NotNull] string fmtAndArgList);
 
         /// <summary>
         ///     Sdl the log using the specified fmt and arg list
         /// </summary>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [return: NotNull]
-        public static void Log([NotNull] string fmtAndArgList) => INTERNAL_SDL_Log(Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void Log([NotNull] string fmtAndArgList) => INTERNAL_SDL_Log(fmtAndArgList);
 
         /// <summary>
         ///     Internals the sdl log verbose using the specified category
@@ -2308,7 +2309,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogVerbose", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void INTERNAL_SDL_LogVerbose([NotNull] int category, [NotNull] byte[] fmtAndArgList);
+        private static extern void INTERNAL_SDL_LogVerbose([NotNull] int category, [NotNull] string fmtAndArgList);
 
         /// <summary>
         ///     Sdl the log verbose using the specified category
@@ -2316,7 +2317,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [return: NotNull]
-        public static void LogVerbose([NotNull] int category, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogVerbose(category, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void LogVerbose([NotNull] int category, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogVerbose(category, fmtAndArgList);
 
         /// <summary>
         ///     Internals the sdl log debug using the specified category
@@ -2325,14 +2326,14 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogDebug", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void INTERNAL_SDL_LogDebug([NotNull] int category, [NotNull] byte[] fmtAndArgList);
+        private static extern void INTERNAL_SDL_LogDebug([NotNull] int category, [NotNull] string fmtAndArgList);
 
         /// <summary>
         ///     Sdl the log debug using the specified category
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
-        public static void LogDebug([NotNull] int category, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogDebug(category, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void LogDebug([NotNull] int category, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogDebug(category, fmtAndArgList);
 
         /// <summary>
         ///     Internals the sdl log info using the specified category
@@ -2341,14 +2342,14 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogInfo", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void INTERNAL_SDL_LogInfo([NotNull] int category, [NotNull] byte[] fmtAndArgList);
+        private static extern void INTERNAL_SDL_LogInfo([NotNull] int category, [NotNull] string fmtAndArgList);
 
         /// <summary>
         ///     Sdl the log info using the specified category
         /// </summary>
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
-        public static void LogInfo([NotNull] int category, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogInfo(category, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void LogInfo([NotNull] int category, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogInfo(category, fmtAndArgList);
 
         /// <summary>
         ///     Internals the sdl log warn using the specified category
@@ -2357,7 +2358,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogWarn", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void INTERNAL_SDL_LogWarn([NotNull] int category, [NotNull] byte[] fmtAndArgList);
+        private static extern void INTERNAL_SDL_LogWarn([NotNull] int category, [NotNull] string fmtAndArgList);
 
         /// <summary>
         ///     Sdl the log warn using the specified category
@@ -2365,7 +2366,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [return: NotNull]
-        public static void LogWarning([NotNull] int category, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogWarn(category, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void LogWarning([NotNull] int category, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogWarn(category, fmtAndArgList);
 
         /// <summary>
         ///     Internals the sdl log error using the specified category
@@ -2374,7 +2375,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogError", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void INTERNAL_SDL_LogError([NotNull] int category, [NotNull] byte[] fmtAndArgList);
+        private static extern void INTERNAL_SDL_LogError([NotNull] int category, [NotNull] string fmtAndArgList);
 
         /// <summary>
         ///     Sdl the log error using the specified category
@@ -2382,7 +2383,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [return: NotNull]
-        public static void LogError([NotNull] int category, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogError(category, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void LogError([NotNull] int category, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogError(category, fmtAndArgList);
 
         /// <summary>
         ///     Internals the sdl log critical using the specified category
@@ -2391,7 +2392,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogCritical", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void INTERNAL_SDL_LogCritical([NotNull] int category, [NotNull] byte[] fmtAndArgList);
+        private static extern void INTERNAL_SDL_LogCritical([NotNull] int category, [NotNull] string fmtAndArgList);
 
         /// <summary>
         ///     Sdl the log critical using the specified category
@@ -2399,7 +2400,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="category">The category</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [return: NotNull]
-        public static void LogCritical([NotNull] int category, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogCritical(category, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void LogCritical([NotNull] int category, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogCritical(category, fmtAndArgList);
 
         /// <summary>
         ///     Internals the sdl log message using the specified category
@@ -2409,7 +2410,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogMessage", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void INTERNAL_SDL_LogMessage([NotNull] int category, SdlLogPriority priority, [NotNull] byte[] fmtAndArgList);
+        private static extern void INTERNAL_SDL_LogMessage([NotNull] int category, SdlLogPriority priority, [NotNull] string fmtAndArgList);
 
         /// <summary>
         ///     Sdl the log message using the specified category
@@ -2418,7 +2419,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="priority">The priority</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [return: NotNull]
-        public static void LogMessage([NotNull] int category, SdlLogPriority priority, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogMessage(category, priority, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void LogMessage([NotNull] int category, SdlLogPriority priority, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogMessage(category, priority, fmtAndArgList);
 
         /// <summary>
         ///     Internals the sdl log message v using the specified category
@@ -2428,7 +2429,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_LogMessageV", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void INTERNAL_SDL_LogMessageV([NotNull] int category, SdlLogPriority priority, [NotNull] byte[] fmtAndArgList);
+        private static extern void INTERNAL_SDL_LogMessageV([NotNull] int category, SdlLogPriority priority, [NotNull] string fmtAndArgList);
 
         /// <summary>
         ///     Sdl the log message v using the specified category
@@ -2437,7 +2438,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="priority">The priority</param>
         /// <param name="fmtAndArgList">The fmt and arg list</param>
         [return: NotNull]
-        public static void LogMessageV([NotNull] int category, SdlLogPriority priority, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogMessageV(category, priority, Utf8Manager.Utf8Encode(fmtAndArgList, new byte[Utf8Manager.Utf8Size(fmtAndArgList)], Utf8Manager.Utf8Size(fmtAndArgList)));
+        public static void LogMessageV([NotNull] int category, SdlLogPriority priority, [NotNull] string fmtAndArgList) => INTERNAL_SDL_LogMessageV(category, priority, fmtAndArgList);
 
         /// <summary>
         ///     Sdl the log get priority using the specified category
@@ -2665,7 +2666,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_ShowSimpleMessageBox", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int INTERNAL_SDL_ShowSimpleMessageBox(SdlMessageBoxFlags flags, [NotNull] byte[] title, [NotNull] byte[] message, [NotNull] IntPtr window);
+        private static extern int INTERNAL_SDL_ShowSimpleMessageBox(SdlMessageBoxFlags flags, [NotNull] string title, [NotNull] string message, [NotNull] IntPtr window);
 
         /// <summary>
         ///     Sdl the show simple message box using the specified flags
@@ -2677,7 +2678,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [return: NotNull]
         public static int ShowSimpleMessageBox(SdlMessageBoxFlags flags, [NotNull] string title, [NotNull] string message, [NotNull] IntPtr window)
-            => INTERNAL_SDL_ShowSimpleMessageBox(flags, Utf8Manager.Utf8Encode(title, new byte[Utf8Manager.Utf8Size(title)], Utf8Manager.Utf8Size(title)), Utf8Manager.Utf8Encode(message, new byte[Utf8Manager.Utf8Size(message)], Utf8Manager.Utf8Size(message)), window);
+            => INTERNAL_SDL_ShowSimpleMessageBox(flags, title, message, window);
 
         /// <summary>
         ///     Sdl the version
@@ -2729,14 +2730,14 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetRevision", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GetRevision();
+        private static extern string INTERNAL_SDL_GetRevision();
 
         /// <summary>
         ///     Sdl the get revision
         /// </summary>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GetRevision() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetRevision());
+        public static string GetRevision() => INTERNAL_SDL_GetRevision();
 
         /// <summary>
         ///     Sdl the get revision number
@@ -2793,7 +2794,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_CreateWindow", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_CreateWindow([NotNull] [NotNull] byte[] title, [NotNull] int x, [NotNull] int y, [NotNull] int w, [NotNull] int h, [NotNull] SdlWindowFlags flags);
+        private static extern IntPtr INTERNAL_SDL_CreateWindow([NotNull] [NotNull] string title, [NotNull] int x, [NotNull] int y, [NotNull] int w, [NotNull] int h, [NotNull] SdlWindowFlags flags);
 
         /// <summary>
         ///     Sdl the create window using the specified title
@@ -2806,7 +2807,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="flags">The flags</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr CreateWindow([NotNull] string title, [NotNull] int x, [NotNull] int y, [NotNull] int w, [NotNull] int h, [NotNull] SdlWindowFlags flags) => INTERNAL_SDL_CreateWindow(Utf8Manager.Utf8Encode(title, new byte[Utf8Manager.Utf8Size(title)], Utf8Manager.Utf8Size(title)), x, y, w, h, flags);
+        public static IntPtr CreateWindow([NotNull] string title, [NotNull] int x, [NotNull] int y, [NotNull] int w, [NotNull] int h, [NotNull] SdlWindowFlags flags) => INTERNAL_SDL_CreateWindow(title, x, y, w, h, flags);
 
         /// <summary>
         ///     Sdl the create window and renderer using the specified width
@@ -2935,13 +2936,13 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetCurrentVideoDriver", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GetCurrentVideoDriver();
+        private static extern string INTERNAL_SDL_GetCurrentVideoDriver();
 
         /// <summary>
         ///     Sdl the get current video driver
         /// </summary>
         /// <returns>The string</returns>
-        public static string SDL_GetCurrentVideoDriver() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetCurrentVideoDriver());
+        public static string SDL_GetCurrentVideoDriver() => INTERNAL_SDL_GetCurrentVideoDriver();
 
         /// <summary>
         ///     Sdl the get desktop display mode using the specified display index
@@ -2969,7 +2970,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetDisplayName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GetDisplayName([NotNull] int index);
+        private static extern string INTERNAL_SDL_GetDisplayName([NotNull] int index);
 
         /// <summary>
         ///     Sdl the get display name using the specified index
@@ -2977,7 +2978,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="index">The index</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GetDisplayName([NotNull] int index) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetDisplayName(index));
+        public static string GetDisplayName([NotNull] int index) => INTERNAL_SDL_GetDisplayName(index);
 
         /// <summary>
         ///     Sdl the get display bounds using the specified display index
@@ -3143,7 +3144,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="index">The index</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GetVideoDriver([NotNull] int index) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetVideoDriver(index));
+        public static string GetVideoDriver([NotNull] int index) => Marshal.PtrToStringAnsi(INTERNAL_SDL_GetVideoDriver(index));
 
         /// <summary>
         ///     Sdl the get window brightness using the specified window
@@ -3244,7 +3245,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowData", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GetWindowData([NotNull] IntPtr window, [NotNull] byte[] name);
+        private static extern IntPtr INTERNAL_SDL_GetWindowData([NotNull] IntPtr window, [NotNull] string name);
 
         /// <summary>
         ///     Sdl the get window data using the specified window
@@ -3253,7 +3254,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="name">The name</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr GetWindowData([NotNull] IntPtr window, [NotNull] string name) => INTERNAL_SDL_GetWindowData(window, Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)));
+        public static IntPtr GetWindowData([NotNull] IntPtr window, [NotNull] string name) => INTERNAL_SDL_GetWindowData(window, name);
 
         /// <summary>
         ///     Sdl the get window display index using the specified window
@@ -3556,7 +3557,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowTitle", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GetWindowTitle([NotNull] IntPtr window);
+        private static extern string INTERNAL_SDL_GetWindowTitle([NotNull] IntPtr window);
 
         /// <summary>
         ///     Sdl the get window title using the specified window
@@ -3564,7 +3565,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GetWindowTitle([NotNull] IntPtr window) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetWindowTitle(window));
+        public static string GetWindowTitle([NotNull] IntPtr window) => INTERNAL_SDL_GetWindowTitle(window);
 
         /// <summary>
         ///     Sdl the gl bind texture using the specified texture
@@ -3626,7 +3627,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_LoadLibrary", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int INTERNAL_SDL_GL_LoadLibrary([NotNull] byte[] path);
+        private static extern int INTERNAL_SDL_GL_LoadLibrary([NotNull] string path);
 
         /// <summary>
         ///     Sdl the gl load library using the specified path
@@ -3634,7 +3635,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="path">The path</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static int GlLoadLibrary([NotNull] string path) => INTERNAL_SDL_GL_LoadLibrary(Utf8Manager.Utf8EncodeHeap(path));
+        public static int GlLoadLibrary([NotNull] string path) => INTERNAL_SDL_GL_LoadLibrary(path);
 
         /// <summary>
         ///     Sdl the gl get proc address using the specified proc
@@ -3643,7 +3644,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_GetProcAddress", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GL_GetProcAddress([NotNull] byte[] proc);
+        private static extern IntPtr INTERNAL_SDL_GL_GetProcAddress([NotNull] string proc);
 
         /// <summary>
         ///     Sdl the gl get proc address using the specified proc
@@ -3651,7 +3652,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="proc">The proc</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr GlGetProcAddress([NotNull] string proc) => INTERNAL_SDL_GL_GetProcAddress(Utf8Manager.Utf8Encode(proc, new byte[Utf8Manager.Utf8Size(proc)], Utf8Manager.Utf8Size(proc)));
+        public static IntPtr GlGetProcAddress([NotNull] string proc) => INTERNAL_SDL_GL_GetProcAddress(proc);
 
         /// <summary>
         ///     Sdl the gl unload library
@@ -3673,7 +3674,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GL_ExtensionSupported", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool INTERNAL_SDL_GL_ExtensionSupported([NotNull] byte[] extension);
+        private static extern SdlBool INTERNAL_SDL_GL_ExtensionSupported([NotNull] string extension);
 
         /// <summary>
         ///     Sdl the gl extension supported using the specified extension
@@ -3681,7 +3682,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="extension">The extension</param>
         /// <returns>The sdl bool</returns>
         [return: NotNull]
-        public static SdlBool GlExtensionSupported([NotNull] string extension) => INTERNAL_SDL_GL_ExtensionSupported(Utf8Manager.Utf8Encode(extension, new byte[Utf8Manager.Utf8Size(extension)], Utf8Manager.Utf8Size(extension)));
+        public static SdlBool GlExtensionSupported([NotNull] string extension) => INTERNAL_SDL_GL_ExtensionSupported(extension);
 
         /// <summary>
         ///     Sdl the gl reset attributes
@@ -3994,7 +3995,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowData", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_SetWindowData([NotNull] IntPtr window, [NotNull] byte[] name, [NotNull] IntPtr userdata);
+        private static extern IntPtr INTERNAL_SDL_SetWindowData([NotNull] IntPtr window, [NotNull] string name, [NotNull] IntPtr userdata);
 
         /// <summary>
         ///     Sdl the set window data using the specified window
@@ -4004,7 +4005,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="userdata">The userdata</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr SetWindowData([NotNull] IntPtr window, [NotNull] string name, [NotNull] IntPtr userdata) => INTERNAL_SDL_SetWindowData(window, Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)), userdata);
+        public static IntPtr SetWindowData([NotNull] IntPtr window, [NotNull] string name, [NotNull] IntPtr userdata) => INTERNAL_SDL_SetWindowData(window, name, userdata);
 
         /// <summary>
         ///     Sdl the set window display mode using the specified window
@@ -4316,7 +4317,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="title">The title</param>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetWindowTitle", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern void INTERNAL_SDL_SetWindowTitle([NotNull] IntPtr window, [NotNull] byte[] title);
+        private static extern void INTERNAL_SDL_SetWindowTitle([NotNull] IntPtr window, [NotNull] string title);
 
         /// <summary>
         ///     Sdl the set window title using the specified window
@@ -4324,7 +4325,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="window">The window</param>
         /// <param name="title">The title</param>
         [return: NotNull]
-        public static void SetWindowTitle([NotNull] IntPtr window, [NotNull] string title) => INTERNAL_SDL_SetWindowTitle(window, Utf8Manager.Utf8Encode(title, new byte[Utf8Manager.Utf8Size(title)], Utf8Manager.Utf8Size(title)));
+        public static void SetWindowTitle([NotNull] IntPtr window, [NotNull] string title) => INTERNAL_SDL_SetWindowTitle(window, title);
 
         /// <summary>
         ///     Sdl the show window using the specified window
@@ -4386,7 +4387,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_VideoInit", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int INTERNAL_SDL_VideoInit([NotNull] byte[] driverName);
+        private static extern int INTERNAL_SDL_VideoInit([NotNull] string driverName);
 
         /// <summary>
         ///     Sdl the video init using the specified driver name
@@ -4394,7 +4395,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="driverName">The driver name</param>
         /// <returns>The int</returns>
         [return: NotNull]
-        public static int VideoInit([NotNull] string driverName) => INTERNAL_SDL_VideoInit(Utf8Manager.Utf8Encode(driverName, new byte[Utf8Manager.Utf8Size(driverName)], Utf8Manager.Utf8Size(driverName)));
+        public static int VideoInit([NotNull] string driverName) => INTERNAL_SDL_VideoInit(driverName);
 
         /// <summary>
         ///     Sdl the video quit
@@ -4554,14 +4555,14 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_Vulkan_LoadLibrary", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int INTERNAL_SDL_Vulkan_LoadLibrary([NotNull] byte[] path);
+        private static extern int INTERNAL_SDL_Vulkan_LoadLibrary([NotNull] string path);
 
         /// <summary>
         ///     Sdl the vulkan load library using the specified path
         /// </summary>
         /// <param name="path">The path</param>
         /// <returns>The result</returns>
-        public static int VulkanLoadLibrary([NotNull] string path) => INTERNAL_SDL_Vulkan_LoadLibrary(Utf8Manager.Utf8EncodeHeap(path));
+        public static int VulkanLoadLibrary([NotNull] string path) => INTERNAL_SDL_Vulkan_LoadLibrary(path);
 
         /// <summary>
         ///     Sdl the vulkan get vk get instance proc addr
@@ -7324,7 +7325,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetPixelFormatName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GetPixelFormatName([NotNull] uint format);
+        private static extern string INTERNAL_SDL_GetPixelFormatName([NotNull] uint format);
 
         /// <summary>
         ///     Sdl the get pixel format name using the specified format
@@ -7332,7 +7333,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="format">The format</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GetPixelFormatName([NotNull] uint format) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetPixelFormatName(format));
+        public static string GetPixelFormatName([NotNull] uint format) => INTERNAL_SDL_GetPixelFormatName(format);
 
         /// <summary>
         ///     Sdl the get rgb using the specified pixel
@@ -8690,14 +8691,14 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetClipboardText", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GetClipboardText();
+        private static extern string INTERNAL_SDL_GetClipboardText();
 
         /// <summary>
         ///     Sdl the get clipboard text
         /// </summary>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GetClipboardText() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetClipboardText(), true);
+        public static string GetClipboardText() => INTERNAL_SDL_GetClipboardText();
 
         /// <summary>
         ///     Internals the sdl set clipboard text using the specified text
@@ -8706,7 +8707,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetClipboardText", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int INTERNAL_SDL_SetClipboardText([NotNull] byte[] text);
+        private static extern int INTERNAL_SDL_SetClipboardText([NotNull] string text);
 
         /// <summary>
         ///     Sdl the set clipboard text using the specified text
@@ -8714,7 +8715,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="text">The text</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static int SetClipboardText([NotNull] string text) => INTERNAL_SDL_SetClipboardText(Utf8Manager.Utf8EncodeHeap(text));
+        public static int SetClipboardText([NotNull] string text) => INTERNAL_SDL_SetClipboardText(text);
 
         /// <summary>
         ///     Sdl the pump events
@@ -9142,7 +9143,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetScancodeName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GetScancodeName(SdlScancode scancode);
+        private static extern string INTERNAL_SDL_GetScancodeName(SdlScancode scancode);
 
         /// <summary>
         ///     Sdl the get scancode name using the specified scancode
@@ -9150,7 +9151,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="scancode">The scancode</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GetScancodeName(SdlScancode scancode) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetScancodeName(scancode));
+        public static string GetScancodeName(SdlScancode scancode) => INTERNAL_SDL_GetScancodeName(scancode);
 
         /// <summary>
         ///     Internals the sdl get scancode from name using the specified name
@@ -9159,7 +9160,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl scancode</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetScancodeFromName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlScancode INTERNAL_SDL_GetScancodeFromName([NotNull] byte[] name);
+        private static extern SdlScancode INTERNAL_SDL_GetScancodeFromName([NotNull] string name);
 
         /// <summary>
         ///     Sdl the get scancode from name using the specified name
@@ -9167,7 +9168,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="name">The name</param>
         /// <returns>The sdl scancode</returns>
         [return: NotNull]
-        public static SdlScancode GetScancodeFromName([NotNull] string name) => INTERNAL_SDL_GetScancodeFromName(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)));
+        public static SdlScancode GetScancodeFromName([NotNull] string name) => INTERNAL_SDL_GetScancodeFromName(name);
 
         /// <summary>
         ///     Internals the sdl get key name using the specified key
@@ -9176,7 +9177,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GetKeyName(SdlKeycode key);
+        private static extern string INTERNAL_SDL_GetKeyName(SdlKeycode key);
 
         /// <summary>
         ///     Sdl the get key name using the specified key
@@ -9184,7 +9185,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="key">The key</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SGetKeyName(SdlKeycode key) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetKeyName(key));
+        public static string SGetKeyName(SdlKeycode key) => INTERNAL_SDL_GetKeyName(key);
 
         /// <summary>
         ///     Internals the sdl get key from name using the specified name
@@ -9193,7 +9194,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl keycode</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetKeyFromName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlKeycode INTERNAL_SDL_GetKeyFromName([NotNull] byte[] name);
+        private static extern SdlKeycode INTERNAL_SDL_GetKeyFromName([NotNull] string name);
 
         /// <summary>
         ///     Sdl the get key from name using the specified name
@@ -9201,7 +9202,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="name">The name</param>
         /// <returns>The sdl keycode</returns>
         [return: NotNull]
-        public static SdlKeycode GetKeyFromName([NotNull] string name) => INTERNAL_SDL_GetKeyFromName(Utf8Manager.Utf8Encode(name, new byte[Utf8Manager.Utf8Size(name)], Utf8Manager.Utf8Size(name)));
+        public static SdlKeycode GetKeyFromName([NotNull] string name) => INTERNAL_SDL_GetKeyFromName(name);
 
         /// <summary>
         ///     Sdl the start text input
@@ -9971,7 +9972,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_JoystickName([NotNull] IntPtr joystick);
+        private static extern string INTERNAL_SDL_JoystickName([NotNull] IntPtr joystick);
 
         /// <summary>
         ///     Sdl the joystick name using the specified joystick
@@ -9979,7 +9980,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="joystick">The joystick</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string JoystickName([NotNull] IntPtr joystick) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_JoystickName(joystick));
+        public static string JoystickName([NotNull] IntPtr joystick) => INTERNAL_SDL_JoystickName(joystick);
 
         /// <summary>
         ///     Internals the sdl joystick name for index using the specified device index
@@ -9988,7 +9989,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickNameForIndex", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_JoystickNameForIndex([NotNull] int deviceIndex);
+        private static extern string INTERNAL_SDL_JoystickNameForIndex([NotNull] int deviceIndex);
 
         /// <summary>
         ///     Sdl the joystick name for index using the specified device index
@@ -9996,7 +9997,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string JoystickNameForIndex([NotNull] int deviceIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_JoystickNameForIndex(deviceIndex));
+        public static string JoystickNameForIndex([NotNull] int deviceIndex) => INTERNAL_SDL_JoystickNameForIndex(deviceIndex);
 
         /// <summary>
         ///     Sdl the joystick num axes using the specified joystick
@@ -10171,7 +10172,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The guid</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetGUIDFromString", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern Guid INTERNAL_SDL_JoystickGetGUIDFromString([NotNull] byte[] pchGuid);
+        private static extern Guid INTERNAL_SDL_JoystickGetGUIDFromString([NotNull] string pchGuid);
 
         /// <summary>
         ///     Sdl the joystick get guid from string using the specified pch guid
@@ -10179,7 +10180,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="pchGuid">The pch guid</param>
         /// <returns>The guid</returns>
         [return: NotNull]
-        public static Guid JoystickGetGuidFromString([NotNull] string pchGuid) => INTERNAL_SDL_JoystickGetGUIDFromString(Utf8Manager.Utf8Encode(pchGuid, new byte[Utf8Manager.Utf8Size(pchGuid)], Utf8Manager.Utf8Size(pchGuid)));
+        public static Guid JoystickGetGuidFromString([NotNull] string pchGuid) => INTERNAL_SDL_JoystickGetGUIDFromString(pchGuid);
 
         /// <summary>
         ///     Sdl the joystick get device vendor using the specified device index
@@ -10324,7 +10325,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_JoystickGetSerial", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_JoystickGetSerial([NotNull] IntPtr joystick);
+        private static extern string INTERNAL_SDL_JoystickGetSerial([NotNull] IntPtr joystick);
 
         /// <summary>
         ///     Sdl the joystick get serial using the specified joystick
@@ -10332,7 +10333,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="joystick">The joystick</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string JoystickGetSerial([NotNull] IntPtr joystick) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_JoystickGetSerial(joystick));
+        public static string JoystickGetSerial([NotNull] IntPtr joystick) => INTERNAL_SDL_JoystickGetSerial(joystick);
 
         /// <summary>
         ///     Sdl the joystick get type using the specified joystick
@@ -10702,7 +10703,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerAddMapping", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int INTERNAL_SDL_GameControllerAddMapping([NotNull] byte[] mappingString);
+        private static extern int INTERNAL_SDL_GameControllerAddMapping([NotNull] string mappingString);
 
         /// <summary>
         ///     Sdl the game controller add mapping using the specified mapping string
@@ -10710,7 +10711,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="mappingString">The mapping string</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static int GameControllerAddMapping([NotNull] string mappingString) => INTERNAL_SDL_GameControllerAddMapping(Utf8Manager.Utf8EncodeHeap(mappingString));
+        public static int GameControllerAddMapping([NotNull] string mappingString) => INTERNAL_SDL_GameControllerAddMapping(mappingString);
 
         /// <summary>
         ///     Sdl the game controller num mappings
@@ -10734,7 +10735,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerMappingForIndex", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GameControllerMappingForIndex([NotNull] int mappingIndex);
+        private static extern string INTERNAL_SDL_GameControllerMappingForIndex([NotNull] int mappingIndex);
 
         /// <summary>
         ///     Sdl the game controller mapping for index using the specified mapping index
@@ -10742,7 +10743,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="mappingIndex">The mapping index</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GameControllerMappingForIndex([NotNull] int mappingIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerMappingForIndex(mappingIndex), true);
+        public static string GameControllerMappingForIndex([NotNull] int mappingIndex) => INTERNAL_SDL_GameControllerMappingForIndex(mappingIndex);
 
         /// <summary>
         ///     Internals the sdl game controller add mappings from rw using the specified rw
@@ -10769,7 +10770,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerMappingForGUID", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GameControllerMappingForGUID(Guid guid);
+        private static extern string INTERNAL_SDL_GameControllerMappingForGUID(Guid guid);
 
         /// <summary>
         ///     Sdl the game controller mapping for guid using the specified guid
@@ -10777,7 +10778,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="guid">The guid</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GameControllerMappingForGuid(Guid guid) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerMappingForGUID(guid), true);
+        public static string GameControllerMappingForGuid(Guid guid) => INTERNAL_SDL_GameControllerMappingForGUID(guid);
 
         /// <summary>
         ///     Internals the sdl game controller mapping using the specified game controller
@@ -10786,7 +10787,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerMapping", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GameControllerMapping([NotNull] IntPtr gameController);
+        private static extern string INTERNAL_SDL_GameControllerMapping([NotNull] IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller mapping using the specified game controller
@@ -10794,7 +10795,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="gameController">The game controller</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GameControllerMapping([NotNull] IntPtr gameController) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerMapping(gameController), true);
+        public static string GameControllerMapping([NotNull] IntPtr gameController) => INTERNAL_SDL_GameControllerMapping(gameController);
 
         /// <summary>
         ///     Sdl the is game controller using the specified joystick index
@@ -10820,7 +10821,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerNameForIndex", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GameControllerNameForIndex([NotNull] int joystickIndex);
+        private static extern string INTERNAL_SDL_GameControllerNameForIndex([NotNull] int joystickIndex);
 
         /// <summary>
         ///     Sdl the game controller name for index using the specified joystick index
@@ -10828,7 +10829,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GameControllerNameForIndex([NotNull] int joystickIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerNameForIndex(joystickIndex));
+        public static string GameControllerNameForIndex([NotNull] int joystickIndex) => INTERNAL_SDL_GameControllerNameForIndex(joystickIndex);
 
         /// <summary>
         ///     Internals the sdl game controller mapping for device index using the specified joystick index
@@ -10837,7 +10838,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerMappingForDeviceIndex", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GameControllerMappingForDeviceIndex([NotNull] int joystickIndex);
+        private static extern string INTERNAL_SDL_GameControllerMappingForDeviceIndex([NotNull] int joystickIndex);
 
         /// <summary>
         ///     Sdl the game controller mapping for device index using the specified joystick index
@@ -10845,7 +10846,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="joystickIndex">The joystick index</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GameControllerMappingForDeviceIndex([NotNull] int joystickIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerMappingForDeviceIndex(joystickIndex), true);
+        public static string GameControllerMappingForDeviceIndex([NotNull] int joystickIndex) => INTERNAL_SDL_GameControllerMappingForDeviceIndex(joystickIndex);
 
         /// <summary>
         ///     Sdl the game controller open using the specified joystick index
@@ -10871,7 +10872,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GameControllerName([NotNull] IntPtr gameController);
+        private static extern string INTERNAL_SDL_GameControllerName([NotNull] IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller name using the specified game controller
@@ -10879,7 +10880,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="gameController">The game controller</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GameControllerName([NotNull] IntPtr gameController) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerName(gameController));
+        public static string GameControllerName([NotNull] IntPtr gameController) => INTERNAL_SDL_GameControllerName(gameController);
 
         /// <summary>
         ///     Sdl the game controller get vendor using the specified game controller
@@ -10940,7 +10941,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetSerial", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GameControllerGetSerial([NotNull] IntPtr gameController);
+        private static extern string INTERNAL_SDL_GameControllerGetSerial([NotNull] IntPtr gameController);
 
         /// <summary>
         ///     Sdl the game controller get serial using the specified game controller
@@ -10948,7 +10949,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="gameController">The game controller</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerGetSerial([NotNull] IntPtr gameController) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerGetSerial(gameController));
+        public static string SDL_GameControllerGetSerial([NotNull] IntPtr gameController) => INTERNAL_SDL_GameControllerGetSerial(gameController);
 
         /// <summary>
         ///     Sdl the game controller get attached using the specified game controller
@@ -11021,7 +11022,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl game controller axis</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetAxisFromString", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlGameControllerAxis INTERNAL_SDL_GameControllerGetAxisFromString([NotNull] byte[] pchString);
+        private static extern SdlGameControllerAxis INTERNAL_SDL_GameControllerGetAxisFromString([NotNull] string pchString);
 
         /// <summary>
         ///     Sdl the game controller get axis from string using the specified pch string
@@ -11029,7 +11030,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller axis</returns>
         [return: NotNull]
-        public static SdlGameControllerAxis GameControllerGetAxisFromString([NotNull] string pchString) => INTERNAL_SDL_GameControllerGetAxisFromString(Utf8Manager.Utf8Encode(pchString, new byte[Utf8Manager.Utf8Size(pchString)], Utf8Manager.Utf8Size(pchString)));
+        public static SdlGameControllerAxis GameControllerGetAxisFromString([NotNull] string pchString) => INTERNAL_SDL_GameControllerGetAxisFromString(pchString);
 
         /// <summary>
         ///     Internals the sdl game controller get string for axis using the specified axis
@@ -11038,7 +11039,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetStringForAxis", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GameControllerGetStringForAxis(SdlGameControllerAxis axis);
+        private static extern string INTERNAL_SDL_GameControllerGetStringForAxis(SdlGameControllerAxis axis);
 
         /// <summary>
         ///     Sdl the game controller get string for axis using the specified axis
@@ -11046,7 +11047,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="axis">The axis</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GameControllerGetStringForAxis(SdlGameControllerAxis axis) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerGetStringForAxis(axis));
+        public static string GameControllerGetStringForAxis(SdlGameControllerAxis axis) => INTERNAL_SDL_GameControllerGetStringForAxis(axis);
 
         /// <summary>
         ///     Internals the sdl game controller get bind for axis using the specified game controller
@@ -11107,7 +11108,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl game controller button</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetButtonFromString", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlGameControllerButton INTERNAL_SDL_GameControllerGetButtonFromString([NotNull] byte[] pchString);
+        private static extern SdlGameControllerButton INTERNAL_SDL_GameControllerGetButtonFromString([NotNull] string pchString);
 
         /// <summary>
         ///     Sdl the game controller get button from string using the specified pch string
@@ -11115,7 +11116,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="pchString">The pch string</param>
         /// <returns>The sdl game controller button</returns>
         [return: NotNull]
-        public static SdlGameControllerButton SDL_GameControllerGetButtonFromString([NotNull] string pchString) => INTERNAL_SDL_GameControllerGetButtonFromString(Utf8Manager.Utf8Encode(pchString, new byte[Utf8Manager.Utf8Size(pchString)], Utf8Manager.Utf8Size(pchString)));
+        public static SdlGameControllerButton SDL_GameControllerGetButtonFromString([NotNull] string pchString) => INTERNAL_SDL_GameControllerGetButtonFromString(pchString);
 
         /// <summary>
         ///     Internals the sdl game controller get string for button using the specified button
@@ -11124,7 +11125,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetStringForButton", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GameControllerGetStringForButton(SdlGameControllerButton button);
+        private static extern string INTERNAL_SDL_GameControllerGetStringForButton(SdlGameControllerButton button);
 
         /// <summary>
         ///     Sdl the game controller get string for button using the specified button
@@ -11132,7 +11133,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="button">The button</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GameControllerGetStringForButton(SdlGameControllerButton button) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerGetStringForButton(button));
+        public static string GameControllerGetStringForButton(SdlGameControllerButton button) => INTERNAL_SDL_GameControllerGetStringForButton(button);
 
         /// <summary>
         ///     Internals the sdl game controller get bind for button using the specified game controller
@@ -11258,7 +11259,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetAppleSFSymbolsNameForButton", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForButton([NotNull] IntPtr gameController, SdlGameControllerButton button);
+        private static extern string INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForButton([NotNull] IntPtr gameController, SdlGameControllerButton button);
 
         /// <summary>
         ///     Sdl the game controller get apple sf symbols name for button using the specified game controller
@@ -11267,7 +11268,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="button">The button</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerGetAppleSFSymbolsNameForButton([NotNull] IntPtr gameController, SdlGameControllerButton button) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForButton(gameController, button));
+        public static string SDL_GameControllerGetAppleSFSymbolsNameForButton([NotNull] IntPtr gameController, SdlGameControllerButton button) => INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForButton(gameController, button);
 
         /// <summary>
         ///     Internals the sdl game controller get apple sf symbols name for axis using the specified game controller
@@ -11277,7 +11278,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GameControllerGetAppleSFSymbolsNameForAxis", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForAxis([NotNull] IntPtr gameController, SdlGameControllerAxis axis);
+        private static extern string INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForAxis([NotNull] IntPtr gameController, SdlGameControllerAxis axis);
 
         /// <summary>
         ///     Sdl the game controller get apple sf symbols name for axis using the specified game controller
@@ -11286,7 +11287,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="axis">The axis</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SDL_GameControllerGetAppleSFSymbolsNameForAxis([NotNull] IntPtr gameController, SdlGameControllerAxis axis) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForAxis(gameController, axis));
+        public static string SDL_GameControllerGetAppleSFSymbolsNameForAxis([NotNull] IntPtr gameController, SdlGameControllerAxis axis) => INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForAxis(gameController, axis);
 
         /// <summary>
         ///     Sdl the game controller from instance id using the specified joy id
@@ -11775,7 +11776,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_HapticName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_HapticName([NotNull] int deviceIndex);
+        private static extern string INTERNAL_SDL_HapticName([NotNull] int deviceIndex);
 
         /// <summary>
         ///     Sdl the haptic name using the specified device index
@@ -11783,7 +11784,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string HapticName([NotNull] int deviceIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_HapticName(deviceIndex));
+        public static string HapticName([NotNull] int deviceIndex) => INTERNAL_SDL_HapticName(deviceIndex);
 
         /// <summary>
         ///     Sdl the haptic new effect using the specified haptic
@@ -12229,7 +12230,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetDeviceName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_SensorGetDeviceName([NotNull] int deviceIndex);
+        private static extern string INTERNAL_SDL_SensorGetDeviceName([NotNull] int deviceIndex);
 
         /// <summary>
         ///     Sdl the sensor get device name using the specified device index
@@ -12237,7 +12238,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SensorGetDeviceName([NotNull] int deviceIndex) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_SensorGetDeviceName(deviceIndex));
+        public static string SensorGetDeviceName([NotNull] int deviceIndex) => INTERNAL_SDL_SensorGetDeviceName(deviceIndex);
 
         /// <summary>
         ///     Sdl the sensor get device type using the specified device index
@@ -12331,7 +12332,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SensorGetName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_SensorGetName([NotNull] IntPtr sensor);
+        private static extern string INTERNAL_SDL_SensorGetName([NotNull] IntPtr sensor);
 
         /// <summary>
         ///     Sdl the sensor get name using the specified sensor
@@ -12339,7 +12340,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="sensor">The sensor</param>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SensorGetName([NotNull] IntPtr sensor) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_SensorGetName(sensor));
+        public static string SensorGetName([NotNull] IntPtr sensor) => INTERNAL_SDL_SensorGetName(sensor);
 
         /// <summary>
         ///     Sdl the sensor get type using the specified sensor
@@ -12523,14 +12524,14 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AudioInit", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int INTERNAL_SDL_AudioInit([NotNull] byte[] driverName);
+        private static extern int INTERNAL_SDL_AudioInit([NotNull] string driverName);
 
         /// <summary>
         ///     Sdl the audio init using the specified driver name
         /// </summary>
         /// <param name="driverName">The driver name</param>
         /// <returns>The int</returns>
-        public static int AudioInit([NotNull] string driverName) => INTERNAL_SDL_AudioInit(Utf8Manager.Utf8Encode(driverName, new byte[Utf8Manager.Utf8Size(driverName)], Utf8Manager.Utf8Size(driverName)));
+        public static int AudioInit([NotNull] string driverName) => INTERNAL_SDL_AudioInit(driverName);
 
         /// <summary>
         ///     Sdl the audio quit
@@ -12596,7 +12597,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetAudioDeviceName", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GetAudioDeviceName([NotNull] int index, [NotNull] int isCapture);
+        private static extern string INTERNAL_SDL_GetAudioDeviceName([NotNull] int index, [NotNull] int isCapture);
 
         /// <summary>
         ///     Sdl the get audio device name using the specified index
@@ -12604,7 +12605,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="index">The index</param>
         /// <param name="isCapture">The is capture</param>
         /// <returns>The string</returns>
-        public static string GetAudioDeviceName([NotNull] int index, [NotNull] int isCapture) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetAudioDeviceName(index, isCapture));
+        public static string GetAudioDeviceName([NotNull] int index, [NotNull] int isCapture) => INTERNAL_SDL_GetAudioDeviceName(index, isCapture);
 
         /// <summary>
         ///     Sdl the get audio device status using the specified dev
@@ -12630,14 +12631,14 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetAudioDriver", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GetAudioDriver([NotNull] int index);
+        private static extern string INTERNAL_SDL_GetAudioDriver([NotNull] int index);
 
         /// <summary>
         ///     Sdl the get audio driver using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The string</returns>
-        public static string GetAudioDriver([NotNull] int index) => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetAudioDriver(index));
+        public static string GetAudioDriver([NotNull] int index) => INTERNAL_SDL_GetAudioDriver(index);
 
         /// <summary>
         ///     Sdl the get audio status
@@ -12660,14 +12661,14 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetCurrentAudioDriver", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GetCurrentAudioDriver();
+        private static extern string INTERNAL_SDL_GetCurrentAudioDriver();
 
         /// <summary>
         ///     Sdl the get current audio driver
         /// </summary>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string GetCurrentAudioDriver() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetCurrentAudioDriver());
+        public static string GetCurrentAudioDriver() => INTERNAL_SDL_GetCurrentAudioDriver();
 
         /// <summary>
         ///     Sdl the get num audio devices using the specified is capture
@@ -12894,7 +12895,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_OpenAudioDevice", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern uint INTERNAL_SDL_OpenAudioDevice([NotNull] byte[] device, [NotNull] int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, [NotNull] int allowedChanges);
+        private static extern uint INTERNAL_SDL_OpenAudioDevice([NotNull] string device, [NotNull] int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, [NotNull] int allowedChanges);
 
         /// <summary>
         ///     Sdl the open audio device using the specified device
@@ -12907,7 +12908,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         public static uint SdlOpenAudioDevice(string device, int isCapture, ref SdlAudioSpec desired, out SdlAudioSpec obtained, int allowedChanges)
-            => INTERNAL_SDL_OpenAudioDevice(Utf8Manager.Utf8Encode(device, new byte[Utf8Manager.Utf8Size(device)], Utf8Manager.Utf8Size(device)), isCapture, ref desired, out obtained, allowedChanges);
+            => INTERNAL_SDL_OpenAudioDevice(device, isCapture, ref desired, out obtained, allowedChanges);
 
         /// <summary>
         ///     Sdl the pause audio using the specified pause on
@@ -13483,14 +13484,14 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AndroidGetInternalStoragePath", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_AndroidGetInternalStoragePath();
+        private static extern string INTERNAL_SDL_AndroidGetInternalStoragePath();
 
         /// <summary>
         ///     Sdl the android get internal storage path
         /// </summary>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SdlAndroidGetInternalStoragePath() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_AndroidGetInternalStoragePath());
+        public static string SdlAndroidGetInternalStoragePath() => INTERNAL_SDL_AndroidGetInternalStoragePath();
 
         /// <summary>
         ///     Sdl the android get external storage state
@@ -13513,14 +13514,14 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AndroidGetExternalStoragePath", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_AndroidGetExternalStoragePath();
+        private static extern string INTERNAL_SDL_AndroidGetExternalStoragePath();
 
         /// <summary>
         ///     Sdl the android get external storage path
         /// </summary>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SdlAndroidGetExternalStoragePath() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_AndroidGetExternalStoragePath());
+        public static string SdlAndroidGetExternalStoragePath() => INTERNAL_SDL_AndroidGetExternalStoragePath();
 
         /// <summary>
         ///     Sdl the get android sdk version
@@ -13544,7 +13545,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AndroidRequestPermission", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern SdlBool INTERNAL_SDL_AndroidRequestPermission([NotNull] byte[] permission);
+        private static extern SdlBool INTERNAL_SDL_AndroidRequestPermission([NotNull] string permission);
 
         /// <summary>
         ///     Sdl the android request permission using the specified permission
@@ -13552,7 +13553,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="permission">The permission</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static SdlBool SdlAndroidRequestPermission([NotNull] string permission) => INTERNAL_SDL_AndroidRequestPermission(Utf8Manager.Utf8EncodeHeap(permission));
+        public static SdlBool SdlAndroidRequestPermission([NotNull] string permission) => INTERNAL_SDL_AndroidRequestPermission(permission);
 
         /// <summary>
         ///     Internals the sdl android show toast using the specified message
@@ -13565,7 +13566,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_AndroidShowToast", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern int INTERNAL_SDL_AndroidShowToast([NotNull] byte[] message, [NotNull] int duration, [NotNull] int gravity, [NotNull] int xOffset, [NotNull] int yOffset);
+        private static extern int INTERNAL_SDL_AndroidShowToast([NotNull] string message, [NotNull] int duration, [NotNull] int gravity, [NotNull] int xOffset, [NotNull] int yOffset);
 
         /// <summary>
         ///     Sdl the android show toast using the specified message
@@ -13577,7 +13578,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="yOffset">The offset</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static int SDL_AndroidShowToast([NotNull] string message, [NotNull] int duration, [NotNull] int gravity, [NotNull] int xOffset, [NotNull] int yOffset) => INTERNAL_SDL_AndroidShowToast(Utf8Manager.Utf8EncodeHeap(message), duration, gravity, xOffset, yOffset);
+        public static int SDL_AndroidShowToast([NotNull] string message, [NotNull] int duration, [NotNull] int gravity, [NotNull] int xOffset, [NotNull] int yOffset) => INTERNAL_SDL_AndroidShowToast(message, duration, gravity, xOffset, yOffset);
 
         /// <summary>
         ///     Sdl the win rt get device family
@@ -13634,14 +13635,14 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetBasePath", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GetBasePath();
+        private static extern string INTERNAL_SDL_GetBasePath();
 
         /// <summary>
         ///     Sdl the get base path
         /// </summary>
         /// <returns>The string</returns>
         [return: NotNull]
-        public static string SdlGetBasePath() => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetBasePath(), true);
+        public static string SdlGetBasePath() => INTERNAL_SDL_GetBasePath();
 
         /// <summary>
         ///     Internals the sdl get pref path using the specified org
@@ -13651,7 +13652,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetPrefPath", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_SDL_GetPrefPath([NotNull] byte[] org, [NotNull] byte[] app);
+        private static extern string INTERNAL_SDL_GetPrefPath([NotNull] string org, [NotNull] string app);
 
         /// <summary>
         ///     Sdl the get pref path using the specified org
@@ -13661,7 +13662,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The string</returns>
         [return: NotNull]
         public static string SdlGetPrefPath([NotNull] string org, [NotNull] string app)
-            => Utf8Manager.Utf8ToManaged(INTERNAL_SDL_GetPrefPath(Utf8Manager.Utf8Encode(org, new byte[Utf8Manager.Utf8Size(org)], Utf8Manager.Utf8Size(org)), Utf8Manager.Utf8Encode(app, new byte[Utf8Manager.Utf8Size(app)], Utf8Manager.Utf8Size(app))), true);
+            => INTERNAL_SDL_GetPrefPath(org, app);
 
         /// <summary>
         ///     Sdl the get power info using the specified secs
