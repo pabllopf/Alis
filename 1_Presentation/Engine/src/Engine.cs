@@ -633,7 +633,7 @@ namespace Alis.App.Engine
                     Console.WriteLine("io.KeysDown[" + key + "] = " + evt.type + io.KeysDown[(int) key]);
                     io.KeyShift = (Sdl.GetModState() & SdlKeyMod.KModShift) != 0;
                     io.KeyCtrl = (Sdl.GetModState() & SdlKeyMod.KModCtrl) != 0;
-                    io.KeyAlt = (Sdl.GetModState() & SdlKeyMod.KmodAlt) != 0;
+                    io.KeyAlt = (Sdl.GetModState() & SdlKeyMod.KModAlt) != 0;
                     io.KeySuper = (Sdl.GetModState() & SdlKeyMod.KModGui) != 0;
                     break;
                 }
