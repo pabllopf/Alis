@@ -5027,30 +5027,6 @@ namespace Alis.Core.Graphic.Sdl2
             return NativeSdl.InternalRenderGeometry(renderer, texture, vertices, numVertices, indices, numIndices);
         }
 
-
-        /// <summary>
-        ///     Renders the geometry raw using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="xy">The xy</param>
-        /// <param name="xyStride">The xy stride</param>
-        /// <param name="color">The color</param>
-        /// <param name="colorStride">The color stride</param>
-        /// <param name="uv">The uv</param>
-        /// <param name="uvStride">The uv stride</param>
-        /// <param name="numVertices">The num vertices</param>
-        /// <param name="indices">The indices</param>
-        /// <param name="numIndices">The num indices</param>
-        /// <param name="sizeIndices">The size indices</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int RenderGeometryRaw([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [In] float[] xy, [NotNull] int xyStride, [In] [NotNull] int[] color, [NotNull] int colorStride, [In] float[] uv, [NotNull] int uvStride, [NotNull] int numVertices, [NotNull] IntPtr indices, [NotNull] int numIndices, [NotNull] int sizeIndices)
-        {
-            return NativeSdl.InternalRenderGeometryRaw(renderer, texture, xy, xyStride, color, colorStride, uv, uvStride, numVertices, indices, numIndices, sizeIndices);
-        }
-
         /// <summary>
         ///     Renders the draw point f using the specified renderer
         /// </summary>
