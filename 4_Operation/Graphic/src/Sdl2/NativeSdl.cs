@@ -6546,28 +6546,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalRenderGeometry([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [In] SdlVertex[] vertices, [NotNull] int numVertices, [In] [NotNull] int[] indices, [NotNull] int numIndices);
-
-        /// <summary>
-        ///     Sdl the render geometry raw using the specified renderer
-        /// </summary>
-        /// <param name="renderer">The renderer</param>
-        /// <param name="texture">The texture</param>
-        /// <param name="xy">The xy</param>
-        /// <param name="xyStride">The xy stride</param>
-        /// <param name="color">The color</param>
-        /// <param name="colorStride">The color stride</param>
-        /// <param name="uv">The uv</param>
-        /// <param name="uvStride">The uv stride</param>
-        /// <param name="numVertices">The num vertices</param>
-        /// <param name="indices">The indices</param>
-        /// <param name="numIndices">The num indices</param>
-        /// <param name="sizeIndices">The size indices</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_RenderGeometryRaw", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalRenderGeometryRaw([NotNull] IntPtr renderer, [NotNull] IntPtr texture, [In] float[] xy, [NotNull] int xyStride, [In] [NotNull] int[] color, [NotNull] int colorStride, [In] float[] uv, [NotNull] int uvStride, [NotNull] int numVertices, [NotNull] IntPtr indices, [NotNull] int numIndices, [NotNull] int sizeIndices);
-
+        
         /// <summary>
         ///     Sdl the render draw point f using the specified renderer
         /// </summary>
