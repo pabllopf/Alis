@@ -631,10 +631,10 @@ namespace Alis.App.Engine
                     SdlScancode key = evt.key.keySym.scancode;
                     io.KeysDown[(int) key] = evt.type == SdlEventType.SdlKeydown;
                     Console.WriteLine("io.KeysDown[" + key + "] = " + evt.type + io.KeysDown[(int) key]);
-                    io.KeyShift = (Sdl.GetModState() & SdlKeymod.KmodShift) != 0;
-                    io.KeyCtrl = (Sdl.GetModState() & SdlKeymod.KmodCtrl) != 0;
-                    io.KeyAlt = (Sdl.GetModState() & SdlKeymod.KmodAlt) != 0;
-                    io.KeySuper = (Sdl.GetModState() & SdlKeymod.KmodGui) != 0;
+                    io.KeyShift = (Sdl.GetModState() & SdlKeyMod.KModShift) != 0;
+                    io.KeyCtrl = (Sdl.GetModState() & SdlKeyMod.KModCtrl) != 0;
+                    io.KeyAlt = (Sdl.GetModState() & SdlKeyMod.KmodAlt) != 0;
+                    io.KeySuper = (Sdl.GetModState() & SdlKeyMod.KModGui) != 0;
                     break;
                 }
             }
