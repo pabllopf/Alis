@@ -110,12 +110,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The sdl init joystick
         /// </summary>
-        private const uint InitJoystick = 0x00000200;
+        public const uint InitJoystick = 0x00000200;
 
         /// <summary>
         ///     The sdl init haptic
         /// </summary>
-        private const uint InitHaptic = 0x00001000;
+        public const uint InitHaptic = 0x00001000;
 
         /// <summary>
         ///     The sdl init game controller
@@ -125,12 +125,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The sdl init events
         /// </summary>
-        private const uint InitEvents = 0x00004000;
+        public const uint InitEvents = 0x00004000;
 
         /// <summary>
         ///     The sdl init sensor
         /// </summary>
-        private const uint InitSensor = 0x00008000;
+        public const uint InitSensor = 0x00008000;
 
         /// <summary>
         ///     The sdl init no parachute
@@ -760,12 +760,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The sdl window pos undefined mask
         /// </summary>
-        private const int WindowPosUndefinedMask = 0x1FFF0000;
+        public const int WindowPosUndefinedMask = 0x1FFF0000;
 
         /// <summary>
         ///     The sdl window pos centered mask
         /// </summary>
-        private const int WindowPosCenteredMask = 0x2FFF0000;
+        public const int WindowPosCenteredMask = 0x2FFF0000;
 
         /// <summary>
         ///     The sdl window pos undefined
@@ -790,7 +790,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The sdl rle accel
         /// </summary>
-        private const uint RleAccel = 0x00000002;
+        public const uint RleAccel = 0x00000002;
 
         /// <summary>
         ///     The sdl dont free
@@ -820,7 +820,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The sdl query
         /// </summary>
-        private const int Query = -1;
+        public const int Query = -1;
 
         /// <summary>
         ///     The sdl ignore
@@ -860,12 +860,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The sdl button x1
         /// </summary>
-        private const uint ButtonX1 = 4;
+        public const uint ButtonX1 = 4;
 
         /// <summary>
         ///     The sdl button x2
         /// </summary>
-        private const uint ButtonX2 = 5;
+        public const uint ButtonX2 = 5;
 
         /// <summary>
         ///     The max value
@@ -880,22 +880,22 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The sdl hat up
         /// </summary>
-        private const byte HatUp = 0x01;
+        public const byte HatUp = 0x01;
 
         /// <summary>
         ///     The sdl hat right
         /// </summary>
-        private const byte HatRight = 0x02;
+        public const byte HatRight = 0x02;
 
         /// <summary>
         ///     The sdl hat down
         /// </summary>
-        private const byte HatDown = 0x04;
+        public const byte HatDown = 0x04;
 
         /// <summary>
         ///     The sdl hat left
         /// </summary>
-        private const byte HatLeft = 0x08;
+        public const byte HatLeft = 0x08;
 
         /// <summary>
         ///     The sdl hat up
@@ -1031,22 +1031,22 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The sdl audio mask bit size
         /// </summary>
-        private const ushort AudioMaskBitSize = 0xFF;
+        public const ushort AudioMaskBitSize = 0xFF;
 
         /// <summary>
         ///     The sdl audio mask datatype
         /// </summary>
-        private const ushort AudioMaskDatatype = 1 << 8;
+        public const ushort AudioMaskDatatype = 1 << 8;
 
         /// <summary>
         ///     The sdl audio mask endian
         /// </summary>
-        private const ushort AudioMaskEndian = 1 << 12;
+        public const ushort AudioMaskEndian = 1 << 12;
 
         /// <summary>
         ///     The sdl audio mask signed
         /// </summary>
-        private const ushort AudioMaskSigned = 1 << 15;
+        public const ushort AudioMaskSigned = 1 << 15;
 
         /// <summary>
         ///     The audio u8
@@ -1061,22 +1061,22 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The audio u16lsb
         /// </summary>
-        private const ushort AudioU16Lsb = 0x0010;
+        public const ushort AudioU16Lsb = 0x0010;
 
         /// <summary>
         ///     The audio s16lsb
         /// </summary>
-        private const ushort AudioS16Lsb = 0x8010;
+        public const ushort AudioS16Lsb = 0x8010;
 
         /// <summary>
         ///     The audio u16msb
         /// </summary>
-        private const ushort AudioU16Msb = 0x1010;
+        public const ushort AudioU16Msb = 0x1010;
 
         /// <summary>
         ///     The audio s16msb
         /// </summary>
-        private const ushort AudioS16Msb = 0x9010;
+        public const ushort AudioS16Msb = 0x9010;
 
         /// <summary>
         ///     The audio u16lsb
@@ -1091,12 +1091,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The audio s32lsb
         /// </summary>
-        private const ushort AudioS32Lsb = 0x8020;
+        public const ushort AudioS32Lsb = 0x8020;
 
         /// <summary>
         ///     The audio s32msb
         /// </summary>
-        private const ushort AudioS32Msb = 0x9020;
+        public const ushort AudioS32Msb = 0x9020;
 
         /// <summary>
         ///     The audio s32lsb
@@ -1106,12 +1106,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The audio f32lsb
         /// </summary>
-        private const ushort AudioF32Lsb = 0x8120;
+        public const ushort AudioF32Lsb = 0x8120;
 
         /// <summary>
         ///     The audio f32msb
         /// </summary>
-        private const ushort AudioF32Msb = 0x9120;
+        public const ushort AudioF32Msb = 0x9120;
 
         /// <summary>
         ///     The audio f32lsb
@@ -1121,22 +1121,22 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The sdl audio allow frequency change
         /// </summary>
-        private const uint AudioAllowFrequencyChange = 0x00000001;
+        public const uint AudioAllowFrequencyChange = 0x00000001;
 
         /// <summary>
         ///     The sdl audio allow format change
         /// </summary>
-        private const uint AudioAllowFormatChange = 0x00000002;
+        public const uint AudioAllowFormatChange = 0x00000002;
 
         /// <summary>
         ///     The sdl audio allow channels change
         /// </summary>
-        private const uint AudioAllowChannelsChange = 0x00000004;
+        public const uint AudioAllowChannelsChange = 0x00000004;
 
         /// <summary>
         ///     The sdl audio allow samples change
         /// </summary>
-        private const uint AudioAllowSamplesChange = 0x00000008;
+        public const uint AudioAllowSamplesChange = 0x00000008;
 
         /// <summary>
         ///     The sdl audio allow samples change
@@ -1161,7 +1161,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The sdl patch level
         /// </summary>
-        private static readonly int CompiledVersion = VersionNum(MajorVersion, MinorVersion, PatchLevel);
+        public static readonly int GlCompiledVersion = VersionNum(MajorVersion, MinorVersion, PatchLevel);
 
         /// <summary>
         ///     The sdl pixel format unknown
@@ -1201,42 +1201,42 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        private static readonly uint FormatXRgb444 = SdlDefinePixelFormat(Type.TypePacked16, (uint) PackedOrder.PackedOrderXRgb, PackedLayout.PackedLayout4444, 12, 2);
+        public static readonly uint GlFormatXRgb444 = SdlDefinePixelFormat(Type.TypePacked16, (uint) PackedOrder.PackedOrderXRgb, PackedLayout.PackedLayout4444, 12, 2);
 
         /// <summary>
         ///     The sdl pixel format x rgb 444
         /// </summary>
-        public static readonly uint PixelFormatRgb444 = FormatXRgb444;
+        public static readonly uint PixelFormatRgb444 = GlFormatXRgb444;
 
         /// <summary>
         ///     The sdl packed layout 4444
         /// </summary>
-        private static readonly uint FormatXBgr444 = SdlDefinePixelFormat(Type.TypePacked16, (uint) PackedOrder.PackedOrderXBgr, PackedLayout.PackedLayout4444, 12, 2);
+        public static readonly uint GlFormatXBgr444 = SdlDefinePixelFormat(Type.TypePacked16, (uint) PackedOrder.PackedOrderXBgr, PackedLayout.PackedLayout4444, 12, 2);
 
         /// <summary>
         ///     The sdl pixel format x bgr 444
         /// </summary>
-        public static readonly uint PixelFormatBgr444 = FormatXBgr444;
+        public static readonly uint PixelFormatBgr444 = GlFormatXBgr444;
 
         /// <summary>
         ///     The sdl packed layout 1555
         /// </summary>
-        private static readonly uint FormatXRgb1555 = SdlDefinePixelFormat(Type.TypePacked16, (uint) PackedOrder.PackedOrderXRgb, PackedLayout.PackedLayout1555, 15, 2);
+        public static readonly uint GlFormatXRgb1555 = SdlDefinePixelFormat(Type.TypePacked16, (uint) PackedOrder.PackedOrderXRgb, PackedLayout.PackedLayout1555, 15, 2);
 
         /// <summary>
         ///     The sdl pixel format xrgb1555
         /// </summary>
-        public static readonly uint PixelFormatRgb555 = FormatXRgb1555;
+        public static readonly uint PixelFormatRgb555 = GlFormatXRgb1555;
 
         /// <summary>
         ///     The sdl packed layout 1555
         /// </summary>
-        private static readonly uint FormatXBgr1555 = SdlDefinePixelFormat(Type.TypeIndex1, (uint) BitmapOrder.BitMapOrder4321, PackedLayout.PackedLayout1555, 15, 2);
+        public static readonly uint GlFormatXBgr1555 = SdlDefinePixelFormat(Type.TypeIndex1, (uint) BitmapOrder.BitMapOrder4321, PackedLayout.PackedLayout1555, 15, 2);
 
         /// <summary>
         ///     The sdl pixel format xbgr1555
         /// </summary>
-        public static readonly uint PixelFormatBgr555 = FormatXBgr1555;
+        public static readonly uint PixelFormatBgr555 = GlFormatXBgr1555;
 
         /// <summary>
         ///     The sdl packed layout 4444
@@ -1301,12 +1301,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        private static readonly uint FormatXRgb888 = SdlDefinePixelFormat(Type.TypePacked32, (uint) PackedOrder.PackedOrderXRgb, PackedLayout.PackedLayout8888, 24, 4);
+        public static readonly uint GlFormatXRgb888 = SdlDefinePixelFormat(Type.TypePacked32, (uint) PackedOrder.PackedOrderXRgb, PackedLayout.PackedLayout8888, 24, 4);
 
         /// <summary>
         ///     The sdl pixel format x rgb 888
         /// </summary>
-        public static readonly uint PixelFormatRgb888 = FormatXRgb888;
+        public static readonly uint PixelFormatRgb888 = GlFormatXRgb888;
 
         /// <summary>
         ///     The sdl packed layout 8888
@@ -1316,12 +1316,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The sdl packed layout 8888
         /// </summary>
-        private static readonly uint FormatXBgr888 = SdlDefinePixelFormat(Type.TypePacked32, (uint) PackedOrder.PackedOrderXBgr, PackedLayout.PackedLayout8888, 24, 4);
+        public static readonly uint GlFormatXBgr888 = SdlDefinePixelFormat(Type.TypePacked32, (uint) PackedOrder.PackedOrderXBgr, PackedLayout.PackedLayout8888, 24, 4);
 
         /// <summary>
         ///     The sdl pixel format x bgr 888
         /// </summary>
-        public static readonly uint PixelFormatBgr888 = FormatXBgr888;
+        public static readonly uint PixelFormatBgr888 = GlFormatXBgr888;
 
         /// <summary>
         ///     The sdl packed layout 8888
@@ -1366,17 +1366,17 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The sdl define pixel four
         /// </summary>
-        private static readonly uint FormatYuy2 = SdlDefinePixelFourcc((byte) 'Y', (byte) 'U', (byte) 'Y', (byte) '2');
+        public static readonly uint GlFormatYuy2 = SdlDefinePixelFourcc((byte) 'Y', (byte) 'U', (byte) 'Y', (byte) '2');
 
         /// <summary>
         ///     The sdl define pixel four
         /// </summary>
-        private static readonly uint FormatUy = SdlDefinePixelFourcc((byte) 'U', (byte) 'Y', (byte) 'V', (byte) 'Y');
+        public static readonly uint GlFormatUy = SdlDefinePixelFourcc((byte) 'U', (byte) 'Y', (byte) 'V', (byte) 'Y');
 
         /// <summary>
         ///     The sdl define pixel four
         /// </summary>
-        private static readonly uint FormatYv = SdlDefinePixelFourcc((byte) 'Y', (byte) 'V', (byte) 'Y', (byte) 'U');
+        public static readonly uint GlFormatYv = SdlDefinePixelFourcc((byte) 'Y', (byte) 'V', (byte) 'Y', (byte) 'U');
 
         /// <summary>
         ///     The sdl button left
@@ -1433,7 +1433,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static uint Fourcc(byte a, byte b, byte c, byte d) => (uint) (a | (b << 8) | (c << 16) | (d << 24));
+        public static uint Fourcc(byte a, byte b, byte c, byte d) => (uint) (a | (b << 8) | (c << 16) | (d << 24));
 
         /// <summary>
         ///     Malloc the size
@@ -1489,7 +1489,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The rw ops</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static IntPtr RwFromFile([NotNull] string file, [NotNull] string mode)
+        public static IntPtr RwFromFile([NotNull] string file, [NotNull] string mode)
         {
             Validator.ValidateInput(file);
             Validator.ValidateInput(mode);
@@ -2471,7 +2471,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="y">The </param>
         /// <param name="z">The </param>
         /// <returns>The int</returns>
-        private static int VersionNum([NotNull] int x, [NotNull] int y, [NotNull] int z)
+        public static int VersionNum([NotNull] int x, [NotNull] int y, [NotNull] int z)
         {
             return x * 1000 + y * 100 + z;
         }
@@ -2485,7 +2485,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The bool</returns>
         public static bool VersionAtLeast([NotNull] int x, [NotNull] int y, [NotNull] int z)
         {
-            return CompiledVersion >= VersionNum(x, y, z);
+            return GlCompiledVersion >= VersionNum(x, y, z);
         }
 
         /// <summary>
@@ -5653,7 +5653,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static uint SdlDefinePixelFourcc([NotNull] byte a, [NotNull] byte b, [NotNull] byte c, [NotNull] byte d)
+        public static uint SdlDefinePixelFourcc([NotNull] byte a, [NotNull] byte b, [NotNull] byte c, [NotNull] byte d)
         {
             return Fourcc(a, b, c, d);
         }
@@ -5669,7 +5669,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The uint</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static uint SdlDefinePixelFormat(Type type, [NotNull] uint order, PackedLayout layout, [NotNull] byte bits, [NotNull] byte bytes)
+        public static uint SdlDefinePixelFormat(Type type, [NotNull] uint order, PackedLayout layout, [NotNull] byte bits, [NotNull] byte bytes)
         {
             return (uint) ((1 << 28) | ((byte) type << 24) | ((byte) order << 20) | ((byte) layout << 16) | (bits << 8) | bytes);
         }
@@ -5681,7 +5681,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The byte</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static byte SdlPixelFlag([NotNull] uint x)
+        public static byte SdlPixelFlag([NotNull] uint x)
         {
             return (byte) ((x >> 28) & 0x0F);
         }
@@ -5693,7 +5693,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The byte</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static byte SdlPixelType([NotNull] uint x)
+        public static byte SdlPixelType([NotNull] uint x)
         {
             return (byte) ((x >> 24) & 0x0F);
         }
@@ -5705,7 +5705,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The byte</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static byte SdlPixelOrder([NotNull] uint x)
+        public static byte SdlPixelOrder([NotNull] uint x)
         {
             return (byte) ((x >> 20) & 0x0F);
         }
@@ -5745,9 +5745,9 @@ namespace Alis.Core.Graphic.Sdl2
         {
             if (SdlIsPixelFormatFour(x))
             {
-                if (x == FormatYuy2 ||
-                    x == FormatUy ||
-                    x == FormatYv)
+                if (x == GlFormatYuy2 ||
+                    x == GlFormatUy ||
+                    x == GlFormatYv)
                 {
                     return 2;
                 }
@@ -5786,7 +5786,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static bool SdlIsPixelFormatPacked([NotNull] uint format)
+        public static bool SdlIsPixelFormatPacked([NotNull] uint format)
         {
             if (SdlIsPixelFormatFour(format))
             {
@@ -5807,7 +5807,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static bool SdlIsPixelFormatArray([NotNull] uint format)
+        public static bool SdlIsPixelFormatArray([NotNull] uint format)
         {
             if (SdlIsPixelFormatFour(format))
             {
@@ -5862,7 +5862,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The bool</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static bool SdlIsPixelFormatFour([NotNull] uint format)
+        public static bool SdlIsPixelFormatFour([NotNull] uint format)
         {
             return (format == 0) && (SdlPixelFlag(format) != 1);
         }

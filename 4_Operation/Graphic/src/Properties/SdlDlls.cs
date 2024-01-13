@@ -40,7 +40,7 @@ namespace Alis.Core.Graphic.Properties
         /// <summary>
         ///     The osx arm64 sdl2
         /// </summary>
-        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), string> SdlDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), string>
+        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), string> GlSdlDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), string>
         {
             {(OSPlatform.Windows, Architecture.X86), "Alis.Core.Graphic.resources.win_x86.win-x86_sdl2.zip"},
             {(OSPlatform.Windows, Architecture.X64), "Alis.Core.Graphic.resources.win_x64.win-x64_sdl2.zip"},
@@ -61,7 +61,7 @@ namespace Alis.Core.Graphic.Properties
         /// <summary>
         ///     The sdl2 image
         /// </summary>
-        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), string> SdlImageDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), string>
+        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), string> GlSdlImageDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), string>
         {
             {(OSPlatform.Windows, Architecture.X86), "Alis.Core.Graphic.resources.win_x86.win-x86_sdl2_image.zip"},
             {(OSPlatform.Windows, Architecture.X64), "Alis.Core.Graphic.resources.win_x64.win-x64_sdl2_image.zip"},
@@ -82,7 +82,7 @@ namespace Alis.Core.Graphic.Properties
         /// <summary>
         ///     The sdl2 ttf
         /// </summary>
-        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), string> SdlTtfDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), string>
+        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), string> GlSdlTtfDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), string>
         {
             {(OSPlatform.Windows, Architecture.X86), "Alis.Core.Graphic.resources.win_x86.win-x86_sdl2_ttf.zip"},
             {(OSPlatform.Windows, Architecture.X64), "Alis.Core.Graphic.resources.win_x64.win-x64_sdl2_ttf.zip"},
