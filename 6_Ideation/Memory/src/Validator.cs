@@ -27,29 +27,27 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Diagnostics;
 
 namespace Alis.Core.Aspect.Memory
 {
     /// <summary>
-    /// The validator class
+    ///     The validator class
     /// </summary>
     public static class Validator
     {
         /// <summary>
-        /// Validates the value
+        ///     Validates the value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         [Conditional("DEBUG")]
         public static void Validate<T>(T value)
         {
-            
         }
 
         /// <summary>
-        /// Validates the input using the specified value
+        ///     Validates the input using the specified value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
@@ -59,7 +57,7 @@ namespace Alis.Core.Aspect.Memory
         }
 
         /// <summary>
-        /// Validates the output using the specified value
+        ///     Validates the output using the specified value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>

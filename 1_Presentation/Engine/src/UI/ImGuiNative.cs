@@ -36,10 +36,10 @@ namespace Alis.App.Engine.UI
     /// <summary>
     ///     The im gui native class
     /// </summary>
-    public static unsafe partial class ImGuiNative
+    public static unsafe class ImGuiNative
     {
         /// <summary>
-        /// The dll name
+        ///     The dll name
         /// </summary>
         private const string DllName = "cimgui";
 
@@ -49,7 +49,7 @@ namespace Alis.App.Engine.UI
         /// <param name="type">The type</param>
         /// <param name="flags">The flags</param>
         /// <returns>The im gui payload</returns>
-        [DllImport(DllName ,CallingConvention = CallingConvention.Cdecl, EntryPoint = "igAcceptDragDropPayload")]
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igAcceptDragDropPayload")]
         public static extern ImGuiPayload* igAcceptDragDropPayload(byte* type, ImGuiDragDropFlags flags);
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igAlignTextToFramePadding")]
         public static extern void igAlignTextToFramePadding();
-        
+
         /// <summary>
         ///     Ims the gui platform io set platform get window pos using the specified platform io
         /// </summary>
@@ -219,7 +219,7 @@ namespace Alis.App.Engine.UI
         /// <param name="strId">The str id</param>
         /// <param name="popupFlags">The popup flags</param>
         /// <returns>The byte</returns>
-        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginPopupContextVoid")]   
+        [DllImport(DllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "igBeginPopupContextVoid")]
         public static extern byte igBeginPopupContextVoid(byte* strId, ImGuiPopupFlags popupFlags);
 
         /// <summary>

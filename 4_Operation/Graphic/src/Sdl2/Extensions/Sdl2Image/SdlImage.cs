@@ -37,12 +37,12 @@ using Alis.Core.Graphic.Sdl2.Structs;
 namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
 {
     /// <summary>
-    /// The sdl image class
+    ///     The sdl image class
     /// </summary>
     public static class SdlImage
     {
         /// <summary>
-        /// Gets the sdl image version
+        ///     Gets the sdl image version
         /// </summary>
         /// <returns>The result</returns>
         [return: NotNull]
@@ -53,9 +53,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
-        /// Gets the img linked version
+        ///     Gets the img linked version
         /// </summary>
         /// <returns>The result</returns>
         [return: NotNull]
@@ -66,9 +66,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
-        /// Img the init using the specified flags
+        ///     Img the init using the specified flags
         /// </summary>
         /// <param name="flags">The flags</param>
         /// <returns>The result</returns>
@@ -81,15 +81,15 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
-        /// Img the quit
+        ///     Img the quit
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void ImgQuit() => NativeSdlImage.InternalImgQuit();
-        
+
         /// <summary>
-        /// Img the load using the specified file
+        ///     Img the load using the specified file
         /// </summary>
         /// <param name="file">The file</param>
         /// <returns>The result</returns>
@@ -102,16 +102,16 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
-        /// Img the load rw using the specified src
+        ///     Img the load rw using the specified src
         /// </summary>
         /// <param name="src">The src</param>
         /// <param name="free">The free</param>
         /// <returns>The result</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static  IntPtr ImgLoadRw([NotNull] IntPtr src, [NotNull, NotZero] int free)
+        public static IntPtr ImgLoadRw([NotNull] IntPtr src, [NotNull, NotZero] int free)
         {
             Validator.ValidateInput(src);
             Validator.ValidateInput(free);
@@ -119,9 +119,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
-        /// Img the load typed rw using the specified src
+        ///     Img the load typed rw using the specified src
         /// </summary>
         /// <param name="src">The src</param>
         /// <param name="free">The free</param>
@@ -129,7 +129,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
         /// <returns>The result</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static  IntPtr ImgLoadTypedRw([NotNull] IntPtr src, [NotNull] int free, [NotNull] byte[] type)
+        public static IntPtr ImgLoadTypedRw([NotNull] IntPtr src, [NotNull] int free, [NotNull] byte[] type)
         {
             Validator.ValidateInput(src);
             Validator.ValidateInput(free);
@@ -140,7 +140,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
         }
 
         /// <summary>
-        /// Img the load texture using the specified renderer
+        ///     Img the load texture using the specified renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <param name="file">The file</param>
@@ -157,7 +157,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
         }
 
         /// <summary>
-        /// Img the load texture rw using the specified renderer
+        ///     Img the load texture rw using the specified renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <param name="src">The src</param>
@@ -165,7 +165,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
         /// <returns>The result</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static  IntPtr ImgLoadTextureRw([NotNull] IntPtr renderer, [NotNull] IntPtr src, [NotNull] int free)
+        public static IntPtr ImgLoadTextureRw([NotNull] IntPtr renderer, [NotNull] IntPtr src, [NotNull] int free)
         {
             Validator.ValidateInput(renderer);
             Validator.ValidateInput(src);
@@ -176,7 +176,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
         }
 
         /// <summary>
-        /// Img the load texture typed rw using the specified renderer
+        ///     Img the load texture typed rw using the specified renderer
         /// </summary>
         /// <param name="renderer">The renderer</param>
         /// <param name="src">The src</param>
@@ -185,7 +185,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
         /// <returns>The result</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static  IntPtr ImgLoadTextureTypedRw([NotNull] IntPtr renderer, [NotNull] IntPtr src, [NotNull] int free, [NotNull] byte[] type)
+        public static IntPtr ImgLoadTextureTypedRw([NotNull] IntPtr renderer, [NotNull] IntPtr src, [NotNull] int free, [NotNull] byte[] type)
         {
             Validator.ValidateInput(renderer);
             Validator.ValidateInput(src);
@@ -195,31 +195,31 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
-        /// Img the read xpm from array using the specified xpm
+        ///     Img the read xpm from array using the specified xpm
         /// </summary>
         /// <param name="xpm">The xpm</param>
         /// <returns>The result</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static  IntPtr ImgReadXpmFromArray([NotNull] string[] xpm)
+        public static IntPtr ImgReadXpmFromArray([NotNull] string[] xpm)
         {
             Validator.ValidateInput(xpm);
             IntPtr result = NativeSdlImage.InternalImgReadXpmFromArray(xpm);
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
-        /// Img the save png using the specified surface
+        ///     Img the save png using the specified surface
         /// </summary>
         /// <param name="surface">The surface</param>
         /// <param name="file">The file</param>
         /// <returns>The result</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static  int ImgSavePng([NotNull] IntPtr surface, [NotNull] byte[] file)
+        public static int ImgSavePng([NotNull] IntPtr surface, [NotNull] byte[] file)
         {
             Validator.ValidateInput(surface);
             Validator.ValidateInput(file);
@@ -227,9 +227,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
-        /// Img the save png rw using the specified surface
+        ///     Img the save png rw using the specified surface
         /// </summary>
         /// <param name="surface">The surface</param>
         /// <param name="dst">The dst</param>
@@ -246,9 +246,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
-        /// Img the save jpg using the specified surface
+        ///     Img the save jpg using the specified surface
         /// </summary>
         /// <param name="surface">The surface</param>
         /// <param name="file">The file</param>
@@ -256,7 +256,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
         /// <returns>The result</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static  int ImgSaveJpg([NotNull] IntPtr surface, [NotNull] byte[] file, [NotNull] int quality)
+        public static int ImgSaveJpg([NotNull] IntPtr surface, [NotNull] byte[] file, [NotNull] int quality)
         {
             Validator.ValidateInput(surface);
             Validator.ValidateInput(file);
@@ -265,9 +265,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
-        /// Img the save using the specified surface
+        ///     Img the save using the specified surface
         /// </summary>
         /// <param name="surface">The surface</param>
         /// <param name="dst">The dst</param>
@@ -286,31 +286,31 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
-        /// Img the load animation using the specified file
+        ///     Img the load animation using the specified file
         /// </summary>
         /// <param name="file">The file</param>
         /// <returns>The result</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static  IntPtr ImgLoadAnimation(string file)
+        public static IntPtr ImgLoadAnimation(string file)
         {
             Validator.ValidateInput(file);
             IntPtr result = NativeSdlImage.InternalImgLoadAnimation(file);
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
-        /// Img the load animation rw using the specified src
+        ///     Img the load animation rw using the specified src
         /// </summary>
         /// <param name="src">The src</param>
         /// <param name="freeSrc">The free src</param>
         /// <returns>The result</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static  IntPtr ImgLoadAnimationRw(IntPtr src, int freeSrc)
+        public static IntPtr ImgLoadAnimationRw(IntPtr src, int freeSrc)
         {
             Validator.ValidateInput(src);
             Validator.ValidateInput(freeSrc);
@@ -318,9 +318,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
-        /// Img the load animation typed rw using the specified src
+        ///     Img the load animation typed rw using the specified src
         /// </summary>
         /// <param name="src">The src</param>
         /// <param name="freeSrc">The free src</param>
@@ -328,7 +328,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
         /// <returns>The result</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static  IntPtr ImgLoadAnimationTypedRw(IntPtr src, int freeSrc, string type)
+        public static IntPtr ImgLoadAnimationTypedRw(IntPtr src, int freeSrc, string type)
         {
             Validator.ValidateInput(src);
             Validator.ValidateInput(freeSrc);
@@ -337,21 +337,21 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
 
         /// <summary>
-        /// Img the free animation using the specified anim
+        ///     Img the free animation using the specified anim
         /// </summary>
         /// <param name="anim">The anim</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static  void ImgFreeAnimation([NotNull] IntPtr anim)
+        public static void ImgFreeAnimation([NotNull] IntPtr anim)
         {
             Validator.ValidateInput(anim);
             NativeSdlImage.InternalImgFreeAnimation(anim);
         }
-        
+
         /// <summary>
-        /// Img the load gif animation rw using the specified src
+        ///     Img the load gif animation rw using the specified src
         /// </summary>
         /// <param name="src">The src</param>
         /// <returns>The result</returns>

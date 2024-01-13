@@ -446,7 +446,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 IntPtr icon = SdlImage.ImgLoad(VideoGame.Instance.Settings.General.Icon);
                 Sdl.SetWindowIcon(_window, icon);
             }
-            
+
             // INIT SDL_IMAGE FLAGS
             ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
 

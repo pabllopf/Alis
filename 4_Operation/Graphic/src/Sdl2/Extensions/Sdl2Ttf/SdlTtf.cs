@@ -99,7 +99,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         ///     The ttf hinting light subpixel
         /// </summary>
         public const int TtfHintingLightSubpixel = 4;
-        
+
         /// <summary>
         ///     Internals the ttf linked version
         /// </summary>
@@ -138,7 +138,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
         ///     Ttf the open font rw using the specified src
         /// </summary>
@@ -504,7 +504,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
         ///     Ttf the glyph metrics 32 using the specified font
         /// </summary>
@@ -526,7 +526,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
         ///     Ttf the size text using the specified font
         /// </summary>
@@ -1301,7 +1301,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateOutput(result);
             return result;
         }
-        
+
         /// <summary>
         ///     Sdl the ttf version using the specified x
         /// </summary>

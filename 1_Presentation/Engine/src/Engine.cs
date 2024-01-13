@@ -539,7 +539,6 @@ namespace Alis.App.Engine
         /// </summary>
         public void ShowDemos()
         {
-            
             ImGui.ShowDemoWindow();
 
             ImGui.Begin("simple node editor");
