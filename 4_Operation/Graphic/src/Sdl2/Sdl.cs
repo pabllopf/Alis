@@ -5497,26 +5497,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             return NativeSdl.InternalUpdateTexture(texture, rect, pixels, pitch);
         }
-
-        /// <summary>
-        ///     Updates the yuv texture using the specified texture
-        /// </summary>
-        /// <param name="texture">The texture</param>
-        /// <param name="rect">The rect</param>
-        /// <param name="yPlane">The plane</param>
-        /// <param name="yPitch">The pitch</param>
-        /// <param name="uPlane">The plane</param>
-        /// <param name="uPitch">The pitch</param>
-        /// <param name="vPlane">The plane</param>
-        /// <param name="vPitch">The pitch</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int UpdateYuvTexture([NotNull] IntPtr texture, ref RectangleI rect, [NotNull] IntPtr yPlane, [NotNull] int yPitch, [NotNull] IntPtr uPlane, [NotNull] int uPitch, [NotNull] IntPtr vPlane, [NotNull] int vPitch)
-        {
-            return NativeSdl.InternalUpdateYUVTexture(texture, ref rect, yPlane, yPitch, uPlane, uPitch, vPlane, vPitch);
-        }
-
+        
         /// <summary>
         ///     Updates the nv texture using the specified texture
         /// </summary>
@@ -6226,111 +6207,7 @@ namespace Alis.Core.Graphic.Sdl2
         {
             return NativeSdl.InternalBlitSurface(src, srcRect, dst, dstRect);
         }
-
-
-        /// <summary>
-        ///     Blit the scaled using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="srcRect">The src rect</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstRect">The dst rect</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int BlitScaled([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect)
-        {
-            return NativeSdl.InternalBlitScaled(src, ref srcRect, dst, ref dstRect);
-        }
-
-
-        /// <summary>
-        ///     Blit the scaled using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="srcRect">The src rect</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstRect">The dst rect</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int BlitScaled([NotNull] IntPtr src, [NotNull] IntPtr srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect)
-        {
-            return NativeSdl.InternalBlitScaled(src, srcRect, dst, ref dstRect);
-        }
-
-
-        /// <summary>
-        ///     Blit the scaled using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="srcRect">The src rect</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstRect">The dst rect</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int BlitScaled([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, [NotNull] IntPtr dstRect)
-        {
-            return NativeSdl.InternalBlitScaled(src, ref srcRect, dst, dstRect);
-        }
-
-        /// <summary>
-        ///     Blit the scaled using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="srcRect">The src rect</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstRect">The dst rect</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int BlitScaled([NotNull] IntPtr src, [NotNull] IntPtr srcRect, [NotNull] IntPtr dst, [NotNull] IntPtr dstRect)
-        {
-            return NativeSdl.InternalBlitScaled(src, srcRect, dst, dstRect);
-        }
-
-
-        /// <summary>
-        ///     Converts the pixels using the specified width
-        /// </summary>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="srcFormat">The src format</param>
-        /// <param name="src">The src</param>
-        /// <param name="srcPitch">The src pitch</param>
-        /// <param name="dstFormat">The dst format</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstPitch">The dst pitch</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int ConvertPixels([NotNull] int width, [NotNull] int height, [NotNull] uint srcFormat, [NotNull] IntPtr src, [NotNull] int srcPitch, [NotNull] uint dstFormat, [NotNull] IntPtr dst, [NotNull] int dstPitch)
-        {
-            return NativeSdl.InternalConvertPixels(width, height, srcFormat, src, srcPitch, dstFormat, dst, dstPitch);
-        }
-
-
-        /// <summary>
-        ///     Pre the alpha using the specified width
-        /// </summary>
-        /// <param name="width">The width</param>
-        /// <param name="height">The height</param>
-        /// <param name="srcFormat">The src format</param>
-        /// <param name="src">The src</param>
-        /// <param name="srcPitch">The src pitch</param>
-        /// <param name="dstFormat">The dst format</param>
-        /// <param name="dst">The dst</param>
-        /// <param name="dstPitch">The dst pitch</param>
-        /// <returns>The int</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int PremultiplyAlpha([NotNull] int width, [NotNull] int height, [NotNull] uint srcFormat, [NotNull] IntPtr src, [NotNull] int srcPitch, [NotNull] uint dstFormat, [NotNull] IntPtr dst, [NotNull] int dstPitch)
-        {
-            return NativeSdl.InternalPremultiplyAlpha(width, height, srcFormat, src, srcPitch, dstFormat, dst, dstPitch);
-        }
-
-
+        
         /// <summary>
         ///     Converts the surface using the specified src
         /// </summary>
