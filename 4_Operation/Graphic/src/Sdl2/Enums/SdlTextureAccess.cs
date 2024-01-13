@@ -30,23 +30,23 @@
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl textureaccess enum
+    ///     The sdl texture access enum
     /// </summary>
     public enum SdlTextureAccess
     {
         /// <summary>
-        ///     The sdl textureaccess static sdl textureaccess
+        ///     The sdl texture access static sdl texture access
         /// </summary>
-        SdlTextureaccessStatic,
+        SdlTextureAccessStatic,
 
         /// <summary>
-        ///     The sdl textureaccess streaming sdl textureaccess
+        ///     The sdl texture access streaming sdl texture access
         /// </summary>
-        SdlTextureaccessStreaming,
+        SdlTextureAccessStreaming,
 
         /// <summary>
-        ///     The sdl textureaccess target sdl textureaccess
+        ///     The sdl texture access target sdl texture access
         /// </summary>
-        SdlTextureaccessTarget
+        SdlTextureAccessTarget
     }
 }

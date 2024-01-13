@@ -30,28 +30,28 @@
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl winrt devicefamily enum
+    ///     The sdl winrt device family enum
     /// </summary>
     public enum SdlWinRtDeviceFamily
     {
         /// <summary>
-        ///     The sdl winrt devicefamily unknown sdl winrt devicefamily
+        ///     The sdl winrt device family unknown sdl winrt device family
         /// </summary>
-        SdlWinrtDevicefamilyUnknown,
+        SdlWinrtDeviceFamilyUnknown,
 
         /// <summary>
-        ///     The sdl winrt devicefamily desktop sdl winrt devicefamily
+        ///     The sdl winrt device family desktop sdl winrt device family
         /// </summary>
-        SdlWinrtDevicefamilyDesktop,
+        SdlWinrtDeviceFamilyDesktop,
 
         /// <summary>
-        ///     The sdl winrt devicefamily mobile sdl winrt devicefamily
+        ///     The sdl winrt device family mobile sdl winrt device family
         /// </summary>
-        SdlWinrtDevicefamilyMobile,
+        SdlWinrtDeviceFamilyMobile,
 
         /// <summary>
-        ///     The sdl winrt devicefamily xbox sdl winrt devicefamily
+        ///     The sdl winrt device family xbox sdl winrt device family
         /// </summary>
-        SdlWinrtDevicefamilyXbox
+        SdlWinrtDeviceFamilyXbox
     }
 }

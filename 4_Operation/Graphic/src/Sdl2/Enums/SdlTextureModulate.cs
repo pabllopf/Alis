@@ -32,24 +32,24 @@ using System;
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl texturemodulate enum
+    ///     The sdl texture modulate enum
     /// </summary>
     [Flags]
     public enum SdlTextureModulate
     {
         /// <summary>
-        ///     The sdl texturemodulate none sdl texturemodulate
+        ///     The sdl texture modulate none sdl texture modulate
         /// </summary>
         None = 0x00000000,
 
         /// <summary>
-        ///     The sdl texturemodulate horizontal sdl texturemodulate
+        ///     The sdl texture modulate horizontal sdl texture modulate
         /// </summary>
-        SdlTexturemodulateHorizontal = 0x00000001,
+        SdlTextureModulateHorizontal = 0x00000001,
 
         /// <summary>
-        ///     The sdl texturemodulate vertical sdl texturemodulate
+        ///     The sdl texture modulate vertical sdl texture modulate
         /// </summary>
-        SdlTexturemodulateVertical = 0x00000002
+        SdlTextureModulateVertical = 0x00000002
     }
 }

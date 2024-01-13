@@ -30,22 +30,22 @@
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl scalemode enum
+    ///     The sdl scale mode enum
     /// </summary>
     public enum SdlScaleMode
     {
         /// <summary>
-        ///     The sdl scalemodenearest sdl scalemode
+        ///     The sdl scale mode nearest sdl scale mode
         /// </summary>
         SdlScaleModeNearest,
 
         /// <summary>
-        ///     The sdl scalemodelinear sdl scalemode
+        ///     The sdl scale mode linear sdl scale mode
         /// </summary>
         SdlScaleModeLinear,
 
         /// <summary>
-        ///     The sdl scalemodebest sdl scalemode
+        ///     The sdl scale mode best sdl scale mode
         /// </summary>
         SdlScaleModeBest
     }

@@ -30,72 +30,72 @@
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl systemcursor enum
+    ///     The sdl system cursor enum
     /// </summary>
     public enum SdlSystemCursor
     {
         /// <summary>
-        ///     The sdl system cursor arrow sdl systemcursor
+        ///     The sdl system cursor arrow sdl system cursor
         /// </summary>
-        SdlSystemCursorArrow, // Arrow
+        SdlSystemCursorArrow, 
 
         /// <summary>
-        ///     The sdl system cursor ibeam sdl systemcursor
+        ///     The sdl system cursor ibe am sdl system cursor
         /// </summary>
-        SdlSystemCursorIbeam, // I-beam
+        SdlSystemCursorIbeAm, 
 
         /// <summary>
-        ///     The sdl system cursor wait sdl systemcursor
+        ///     The sdl system cursor wait sdl system cursor
         /// </summary>
-        SdlSystemCursorWait, // Wait
+        SdlSystemCursorWait, 
 
         /// <summary>
-        ///     The sdl system cursor crosshair sdl systemcursor
+        ///     The sdl system cursor crosshair sdl system cursor
         /// </summary>
-        SdlSystemCursorCrosshair, // Crosshair
+        SdlSystemCursorCrosshair, 
 
         /// <summary>
-        ///     The sdl system cursor waitarrow sdl systemcursor
+        ///     The sdl system cursor wait arrow sdl system cursor
         /// </summary>
-        SdlSystemCursorWaitarrow, // Small wait cursor (or Wait if not available)
+        SdlSystemCursorWaitArrow,
 
         /// <summary>
-        ///     The sdl system cursor sizenwse sdl systemcursor
+        ///     The sdl system cursor size n wse sdl system cursor
         /// </summary>
-        SdlSystemCursorSizenwse, // Double arrow pointing northwest and southeast
+        SdlSystemCursorSizeNwSe, 
 
         /// <summary>
-        ///     The sdl system cursor sizenesw sdl systemcursor
+        ///     The sdl system cursor size nes w sdl system cursor
         /// </summary>
-        SdlSystemCursorSizenesw, // Double arrow pointing northeast and southwest
+        SdlSystemCursorSizeNesW, 
 
         /// <summary>
-        ///     The sdl system cursor sizewe sdl systemcursor
+        ///     The sdl system cursor size we sdl system cursor
         /// </summary>
-        SdlSystemCursorSizewe, // Double arrow pointing west and east
+        SdlSystemCursorSizeWe, 
 
         /// <summary>
-        ///     The sdl system cursor sizens sdl systemcursor
+        ///     The sdl system cursor size ns sdl system cursor
         /// </summary>
-        SdlSystemCursorSizens, // Double arrow pointing north and south
+        SdlSystemCursorSizeNs, 
 
         /// <summary>
-        ///     The sdl system cursor sizeall sdl systemcursor
+        ///     The sdl system cursor size all sdl system cursor
         /// </summary>
-        SdlSystemCursorSizeall, // Four pointed arrow pointing north, south, east, and west
+        SdlSystemCursorSizeAll, 
 
         /// <summary>
-        ///     The sdl system cursor no sdl systemcursor
+        ///     The sdl system cursor no sdl system cursor
         /// </summary>
-        SdlSystemCursorNo, // Slashed circle or crossbones
+        SdlSystemCursorNo, 
 
         /// <summary>
-        ///     The sdl system cursor hand sdl systemcursor
+        ///     The sdl system cursor hand sdl system cursor
         /// </summary>
-        SdlSystemCursorHand, // Hand
+        SdlSystemCursorHand, 
 
         /// <summary>
-        ///     The sdl num system cursors sdl systemcursor
+        ///     The sdl num system cursors sdl system cursor
         /// </summary>
         SdlNumSystemCursors
     }

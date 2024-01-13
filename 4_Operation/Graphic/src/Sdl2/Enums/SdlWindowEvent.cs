@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl windowevent
+    ///     The sdl window event
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlWindowEvent
@@ -55,7 +55,7 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         /// <summary>
         ///     The window event
         /// </summary>
-        public readonly SdlWindowEventId windowEvent; // event, lolC#
+        public readonly SdlWindowEventId windowEvent; 
 
         /// <summary>
         ///     The padding

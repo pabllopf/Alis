@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: SdlSyswmType.cs
+//  File: SdlSysWmType.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,78 +30,78 @@
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl syswm type enum
+    ///     The sdl sys wm type enum
     /// </summary>
-    public enum SdlSyswmType
+    public enum SdlSysWmType
     {
         /// <summary>
-        ///     The sdl syswm unknown sdl syswm type
+        ///     The sdl sys wm unknown sdl sys wm type
         /// </summary>
-        SdlSyswmUnknown,
+        SdlSysWmUnknown,
 
         /// <summary>
-        ///     The sdl syswm windows sdl syswm type
+        ///     The sdl sys wm windows sdl sys wm type
         /// </summary>
-        SdlSyswmWindows,
+        SdlSysWmWindows,
 
         /// <summary>
-        ///     The sdl syswm x11 sdl syswm type
+        ///     The sdl sys wm x11 sdl sys wm type
         /// </summary>
-        SdlSyswmX11,
+        SdlSysWmX11,
 
         /// <summary>
-        ///     The sdl syswm directfb sdl syswm type
+        ///     The sdl sys wm directfb sdl sys wm type
         /// </summary>
-        SdlSyswmDirectfb,
+        SdlSysWmDirectfb,
 
         /// <summary>
-        ///     The sdl syswm cocoa sdl syswm type
+        ///     The sdl sys wm cocoa sdl sys wm type
         /// </summary>
-        SdlSyswmCocoa,
+        SdlSysWmCocoa,
 
         /// <summary>
-        ///     The sdl syswm uikit sdl syswm type
+        ///     The sdl sys wm uikit sdl sys wm type
         /// </summary>
-        SdlSyswmUikit,
+        SdlSysWmUikit,
 
         /// <summary>
-        ///     The sdl syswm wayland sdl syswm type
+        ///     The sdl sys wm wayland sdl sys wm type
         /// </summary>
-        SdlSyswmWayland,
+        SdlSysWmWayland,
 
         /// <summary>
-        ///     The sdl syswm mir sdl syswm type
+        ///     The sdl sys wm mir sdl sys wm type
         /// </summary>
-        SdlSyswmMir,
+        SdlSysWmMir,
 
         /// <summary>
-        ///     The sdl syswm winrt sdl syswm type
+        ///     The sdl sys wm winrt sdl sys wm type
         /// </summary>
-        SdlSyswmWinrt,
+        SdlSysWmWinrt,
 
         /// <summary>
-        ///     The sdl syswm android sdl syswm type
+        ///     The sdl sys wm android sdl sys wm type
         /// </summary>
-        SdlSyswmAndroid,
+        SdlSysWmAndroid,
 
         /// <summary>
-        ///     The sdl syswm vivante sdl syswm type
+        ///     The sdl sys wm vivante sdl sys wm type
         /// </summary>
-        SdlSyswmVivante,
+        SdlSysWmVivante,
 
         /// <summary>
-        ///     The sdl syswm os2 sdl syswm type
+        ///     The sdl sys wm os2 sdl sys wm type
         /// </summary>
-        SdlSyswmOs2,
+        SdlSysWmOs2,
 
         /// <summary>
-        ///     The sdl syswm haiku sdl syswm type
+        ///     The sdl sys wm haiku sdl sys wm type
         /// </summary>
-        SdlSyswmHaiku,
+        SdlSysWmHaiku,
 
         /// <summary>
-        ///     The sdl syswm kmsdrm sdl syswm type
+        ///     The sdl sys wm kms drm sdl sys wm type
         /// </summary>
-        SdlSyswmKmsdrm /* requires >= 2.0.16 */
+        SdlSysWmKmsDrm 
     }
 }

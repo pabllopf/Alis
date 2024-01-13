@@ -32,23 +32,23 @@ using System;
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl messageboxflags enum
+    ///     The sdl message box flags enum
     /// </summary>
     [Flags]
     public enum SdlMessageBoxFlags : uint
     {
         /// <summary>
-        ///     The sdl messagebox error sdl messageboxflags
+        ///     The sdl messagebox error sdl message box flags
         /// </summary>
         SdlMessageboxError = 0x00000010,
 
         /// <summary>
-        ///     The sdl messagebox warning sdl messageboxflags
+        ///     The sdl messagebox warning sdl message box flags
         /// </summary>
         SdlMessageboxWarning = 0x00000020,
 
         /// <summary>
-        ///     The sdl messagebox information sdl messageboxflags
+        ///     The sdl messagebox information sdl message box flags
         /// </summary>
         SdlMessageboxInformation = 0x00000040
     }

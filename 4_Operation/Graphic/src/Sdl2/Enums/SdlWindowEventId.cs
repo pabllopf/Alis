@@ -30,105 +30,103 @@
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl windoweventid enum
+    ///     The sdl window event id enum
     /// </summary>
     public enum SdlWindowEventId : byte
     {
         /// <summary>
-        ///     The sdl windowevent none sdl windoweventid
+        ///     The sdl window event none sdl window event id
         /// </summary>
-        SdlWindoweventNone,
+        SdlWindowEventNone,
 
         /// <summary>
-        ///     The sdl windowevent shown sdl windoweventid
+        ///     The sdl window event shown sdl window event id
         /// </summary>
-        SdlWindoweventShown,
+        SdlWindowEventShown,
 
         /// <summary>
-        ///     The sdl windowevent hidden sdl windoweventid
+        ///     The sdl window event hidden sdl window event id
         /// </summary>
-        SdlWindoweventHidden,
+        SdlWindowEventHidden,
 
         /// <summary>
-        ///     The sdl windowevent exposed sdl windoweventid
+        ///     The sdl window event exposed sdl window event id
         /// </summary>
-        SdlWindoweventExposed,
+        SdlWindowEventExposed,
 
         /// <summary>
-        ///     The sdl windowevent moved sdl windoweventid
+        ///     The sdl window event moved sdl window event id
         /// </summary>
-        SdlWindoweventMoved,
+        SdlWindowEventMoved,
 
         /// <summary>
-        ///     The sdl windowevent resized sdl windoweventid
+        ///     The sdl window event resized sdl window event id
         /// </summary>
-        SdlWindoweventResized,
+        SdlWindowEventResized,
 
         /// <summary>
-        ///     The sdl windowevent size changed sdl windoweventid
+        ///     The sdl window event size changed sdl window event id
         /// </summary>
-        SdlWindoweventSizeChanged,
+        SdlWindowEventSizeChanged,
 
         /// <summary>
-        ///     The sdl windowevent minimized sdl windoweventid
+        ///     The sdl window event minimized sdl window event id
         /// </summary>
-        SdlWindoweventMinimized,
+        SdlWindowEventMinimized,
 
         /// <summary>
-        ///     The sdl windowevent maximized sdl windoweventid
+        ///     The sdl window event maximized sdl window event id
         /// </summary>
-        SdlWindoweventMaximized,
+        SdlWindowEventMaximized,
 
         /// <summary>
-        ///     The sdl windowevent restored sdl windoweventid
+        ///     The sdl window event restored sdl window event id
         /// </summary>
-        SdlWindoweventRestored,
+        SdlWindowEventRestored,
 
         /// <summary>
-        ///     The sdl windowevent enter sdl windoweventid
+        ///     The sdl window event enter sdl window event id
         /// </summary>
-        SdlWindoweventEnter,
+        SdlWindowEventEnter,
 
         /// <summary>
-        ///     The sdl windowevent leave sdl windoweventid
+        ///     The sdl window event leave sdl window event id
         /// </summary>
-        SdlWindoweventLeave,
+        SdlWindowEventLeave,
 
         /// <summary>
-        ///     The sdl windowevent focus gained sdl windoweventid
+        ///     The sdl window event focus gained sdl window event id
         /// </summary>
-        SdlWindoweventFocusGained,
+        SdlWindowEventFocusGained,
 
         /// <summary>
-        ///     The sdl windowevent focus lost sdl windoweventid
+        ///     The sdl window event focus lost sdl window event id
         /// </summary>
-        SdlWindoweventFocusLost,
+        SdlWindowEventFocusLost,
 
         /// <summary>
-        ///     The sdl windowevent close sdl windoweventid
+        ///     The sdl window event close sdl window event id
         /// </summary>
-        SdlWindoweventClose,
-
+        SdlWindowEventClose,
+        
+        /// <summary>
+        ///     The sdl window event take focus sdl window event id
+        /// </summary>
+        SdlWindowEventTakeFocus,
 
         /// <summary>
-        ///     The sdl windowevent take focus sdl windoweventid
+        ///     The sdl window event hit test sdl window event id
         /// </summary>
-        SdlWindoweventTakeFocus,
+        SdlWindowEventHitTest,
+        
+        /// <summary>
+        ///     The sdl window event icc prof changed sdl window event id
+        /// </summary>
+        SdlWindowEventIccProfChanged,
 
         /// <summary>
-        ///     The sdl windowevent hit test sdl windoweventid
+        ///     The sdl window event display changed sdl window event id
         /// </summary>
-        SdlWindoweventHitTest,
-
-
-        /// <summary>
-        ///     The sdl windowevent iccprof changed sdl windoweventid
-        /// </summary>
-        SdlWindoweventIccprofChanged,
-
-        /// <summary>
-        ///     The sdl windowevent display changed sdl windoweventid
-        /// </summary>
-        SdlWindoweventDisplayChanged
+        SdlWindowEventDisplayChanged
     }
 }
