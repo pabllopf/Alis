@@ -398,7 +398,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             // GET RENDERER INFO
             Sdl.GetRendererInfo(Renderer, out SdlRendererInfo rendererInfo);
-            Console.WriteLine($"Renderer Name: {rendererInfo.name} \n" +
+            Console.WriteLine($"Renderer Name: {rendererInfo.GetName()} \n" +
                               $"Renderer Flags: {rendererInfo.flags} \n" +
                               $"Max Texture Width: {rendererInfo.max_texture_width} \n" +
                               $"Max Texture Height: {rendererInfo.max_texture_height} + \n" +

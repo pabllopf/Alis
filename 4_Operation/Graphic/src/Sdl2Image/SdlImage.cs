@@ -288,30 +288,6 @@ namespace Alis.Core.Graphic.Sdl2Image
         }
         
         /// <summary>
-        /// Img the get error
-        /// </summary>
-        /// <returns>The result</returns>
-        [return: NotNull, NotEmpty]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string ImgGetError()
-        {
-            string result = NativeSdlImage.InternalImgGetError();
-            Validator.ValidateOutput(result);
-            return result;
-        }
-        
-        /// <summary>
-        /// Img the set error using the specified fmt and arg list
-        /// </summary>
-        /// <param name="fmtAndArgList">The fmt and arg list</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void ImgSetError([NotNull, NotEmpty] string fmtAndArgList)
-        {
-            Validator.ValidateInput(fmtAndArgList);
-            NativeSdlImage.InternalImgSetError(fmtAndArgList);
-        }
-        
-        /// <summary>
         /// Img the load animation using the specified file
         /// </summary>
         /// <param name="file">The file</param>

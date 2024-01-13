@@ -32,7 +32,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Memory.Attributes;
-using Alis.Core.Graphic.Sdl2;
+using Alis.Core.Graphic.Properties;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 
@@ -51,7 +51,7 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// <summary>
         ///     Initializes a new instance of the <see cref="NativeSdlImage" /> class
         /// </summary>
-        static NativeSdlImage() => EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_image", SdlDlls.SdlImageDllBytes, Assembly.GetExecutingAssembly());
+        static NativeSdlImage() => EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_image", Sdl2Dlls.SdlImageDllBytes, Assembly.GetExecutingAssembly());
         
         /// <summary>
         ///     Internals the img linked version
@@ -189,19 +189,6 @@ namespace Alis.Core.Graphic.Sdl2Image
         [return: NotNull]
         internal static extern int InternalImgSave([NotNull] IntPtr surface, [NotNull] IntPtr dst, [NotNull] int free, [NotNull] int quality);
         
-        /// <summary>
-        ///     Img the get error
-        /// </summary>
-        /// <returns>The string</returns>
-        [return: NotNull, NotEmpty]
-        internal static string InternalImgGetError() => Sdl.GetError();
-
-        /// <summary>
-        ///     Img the set error using the specified fmt and arg
-        /// </summary>
-        /// <param name="fmtAndArgList">The fmt and arg list</param>
-        internal static void InternalImgSetError([NotNull, NotEmpty] string fmtAndArgList) => Sdl.SetError(fmtAndArgList);
-
         /// <summary>
         ///     Img the load animation using the specified file
         /// </summary>

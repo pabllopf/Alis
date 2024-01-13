@@ -36,6 +36,7 @@ using Alis.App.Engine.OpenGL;
 using Alis.App.Engine.OpenGL.Constructs;
 using Alis.App.Engine.OpenGL.Enums;
 using Alis.App.Engine.UI;
+using Alis.App.Engine.UI.Extras.Guizmo;
 using Alis.App.Engine.UI.Extras.Node;
 using Alis.App.Engine.UI.Extras.Plot;
 using Alis.App.Engine.Windows;
@@ -284,9 +285,9 @@ namespace Alis.App.Engine
             io.ConfigFlags |= ImGuiConfigFlags.DockingEnable;
             io.ConfigFlags |= ImGuiConfigFlags.ViewportsEnable;
 
-            //ImNodes.CreateContext();
-            //ImPlot.CreateContext();
-            //ImGuizmo.SetImGuiContext(_context);
+            ImNodes.CreateContext();
+            ImPlot.CreateContext();
+            ImGuizmo.SetImGuiContext(_context);
             ImGui.SetCurrentContext(_context);
 
             // REBUILD ATLAS
@@ -462,7 +463,7 @@ namespace Alis.App.Engine
                 }
 
                 windows.ForEach(i => i.Render());
-                //ShowDemos();
+                ShowDemos();
 
                 // Add menu bar flag and disable everything else
                 ImGuiWindowFlags styleGlagsMenuDown =
@@ -538,6 +539,7 @@ namespace Alis.App.Engine
         /// </summary>
         public void ShowDemos()
         {
+            
             ImGui.ShowDemoWindow();
 
             ImGui.Begin("simple node editor");
