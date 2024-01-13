@@ -30,17 +30,17 @@
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl mousewheeldirection enum
+    ///     The sdl mouse wheel direction enum
     /// </summary>
     public enum SdlMouseWheelDirection : uint
     {
         /// <summary>
-        ///     The sdl mousewheel normal sdl mousewheeldirection
+        ///     The sdl mousewheel normal sdl mouse wheel direction
         /// </summary>
         SdlMousewheelNormal,
 
         /// <summary>
-        ///     The sdl mousewheel flipped sdl mousewheeldirection
+        ///     The sdl mousewheel flipped sdl mouse wheel direction
         /// </summary>
         SdlMousewheelFlipped
     }

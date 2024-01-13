@@ -30,27 +30,27 @@
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl sensortype enum
+    ///     The sdl sensor type enum
     /// </summary>
     public enum SdlSensorType
     {
         /// <summary>
-        ///     The sdl sensor invalid sdl sensortype
+        ///     The sdl sensor invalid sdl sensor type
         /// </summary>
         SdlSensorInvalid = -1,
 
         /// <summary>
-        ///     The sdl sensor unknown sdl sensortype
+        ///     The sdl sensor unknown sdl sensor type
         /// </summary>
         SdlSensorUnknown,
 
         /// <summary>
-        ///     The sdl sensor accel sdl sensortype
+        ///     The sdl sensor accel sdl sensor type
         /// </summary>
         SdlSensorAccel,
 
         /// <summary>
-        ///     The sdl sensor gyro sdl sensortype
+        ///     The sdl sensor gyro sdl sensor type
         /// </summary>
         SdlSensorGyro
     }

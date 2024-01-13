@@ -30,33 +30,33 @@
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl powerstate enum
+    ///     The sdl power state enum
     /// </summary>
     public enum SdlPowerState
     {
         /// <summary>
-        ///     The sdl powerstate unknown sdl powerstate
+        ///     The sdl power state unknown sdl power state
         /// </summary>
-        SdlPowerstateUnknown = 0,
+        SdlPowerStateUnknown = 0,
 
         /// <summary>
-        ///     The sdl powerstate on battery sdl powerstate
+        ///     The sdl power state on battery sdl power state
         /// </summary>
-        SdlPowerstateOnBattery,
+        SdlPowerStateOnBattery,
 
         /// <summary>
-        ///     The sdl powerstate no battery sdl powerstate
+        ///     The sdl power state no battery sdl power state
         /// </summary>
-        SdlPowerstateNoBattery,
+        SdlPowerStateNoBattery,
 
         /// <summary>
-        ///     The sdl powerstate charging sdl powerstate
+        ///     The sdl power state charging sdl power state
         /// </summary>
-        SdlPowerstateCharging,
+        SdlPowerStateCharging,
 
         /// <summary>
-        ///     The sdl powerstate charged sdl powerstate
+        ///     The sdl power state charged sdl power state
         /// </summary>
-        SdlPowerstateCharged
+        SdlPowerStateCharged
     }
 }

@@ -32,23 +32,23 @@ using System;
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl rendererflip enum
+    ///     The sdl renderer flip enum
     /// </summary>
     [Flags]
     public enum SdlRendererFlip
     {
         /// <summary>
-        ///     The sdl flip none sdl rendererflip
+        ///     The sdl flip none sdl renderer flip
         /// </summary>
         None = 0x00000000,
 
         /// <summary>
-        ///     The sdl flip horizontal sdl rendererflip
+        ///     The sdl flip horizontal sdl renderer flip
         /// </summary>
         SdlFlipHorizontal = 0x00000001,
 
         /// <summary>
-        ///     The sdl flip vertical sdl rendererflip
+        ///     The sdl flip vertical sdl renderer flip
         /// </summary>
         SdlFlipVertical = 0x00000002
     }

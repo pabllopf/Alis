@@ -255,7 +255,7 @@ namespace Alis.App.Engine
 
             if (highDpi)
             {
-                flags |= SdlWindowFlags.SdlWindowAllowHighdpi;
+                flags |= SdlWindowFlags.SdlWindowAllowHighDpi;
             }
 
             _window = Sdl.CreateWindow(NameEngine, Sdl.WindowPosCentered, Sdl.WindowPosCentered, widthWindow, heightWindow, flags);

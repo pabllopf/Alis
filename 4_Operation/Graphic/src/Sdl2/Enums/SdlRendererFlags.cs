@@ -32,29 +32,29 @@ using System;
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl rendererflags enum
+    ///     The sdl renderer flags enum
     /// </summary>
     [Flags]
     public enum SdlRendererFlags : uint
     {
         /// <summary>
-        ///     The sdl renderer software sdl rendererflags
+        ///     The sdl renderer software sdl renderer flags
         /// </summary>
         SdlRendererSoftware = 0x00000001,
 
         /// <summary>
-        ///     The sdl renderer accelerated sdl rendererflags
+        ///     The sdl renderer accelerated sdl renderer flags
         /// </summary>
         SdlRendererAccelerated = 0x00000002,
 
         /// <summary>
-        ///     The sdl renderer presentvsync sdl rendererflags
+        ///     The sdl renderer present vsync sdl renderer flags
         /// </summary>
-        SdlRendererPresentvsync = 0x00000004,
+        SdlRendererPresentVSync = 0x00000004,
 
         /// <summary>
-        ///     The sdl renderer targettexture sdl rendererflags
+        ///     The sdl renderer target texture sdl renderer flags
         /// </summary>
-        SdlRendererTargettexture = 0x00000008
+        SdlRendererTargetTexture = 0x00000008
     }
 }

@@ -32,19 +32,19 @@ using System;
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl messageboxbuttonflags enum
+    ///     The sdl message box button flags enum
     /// </summary>
     [Flags]
     public enum SdlMessageBoxButtonFlags : uint
     {
         /// <summary>
-        ///     The sdl messagebox button returnkey default sdl messageboxbuttonflags
+        ///     The sdl messagebox button return key default sdl message box button flags
         /// </summary>
-        SdlMessageboxButtonReturnkeyDefault = 0x00000001,
+        SdlMessageboxButtonReturnKeyDefault = 0x00000001,
 
         /// <summary>
-        ///     The sdl messagebox button escapekey default sdl messageboxbuttonflags
+        ///     The sdl messagebox button escape key default sdl message box button flags
         /// </summary>
-        SdlMessageboxButtonEscapekeyDefault = 0x00000002
+        SdlMessageboxButtonEscapeKeyDefault = 0x00000002
     }
 }
