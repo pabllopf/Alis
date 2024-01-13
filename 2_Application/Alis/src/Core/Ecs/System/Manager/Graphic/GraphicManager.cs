@@ -42,9 +42,9 @@ using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.System.Setting.Graphic;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
+using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image;
+using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
 using Alis.Core.Graphic.Sdl2.Structs;
-using Alis.Core.Graphic.Sdl2Image;
-using Alis.Core.Graphic.Sdl2Ttf;
 
 namespace Alis.Core.Ecs.System.Manager.Graphic
 {

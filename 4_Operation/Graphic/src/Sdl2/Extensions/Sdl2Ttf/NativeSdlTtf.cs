@@ -36,7 +36,7 @@ using Alis.Core.Aspect.Memory.Attributes;
 using Alis.Core.Graphic.Properties;
 using Alis.Core.Graphic.Sdl2.Structs;
 
-namespace Alis.Core.Graphic.Sdl2Ttf
+namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
 {
     /// <summary>
     /// The native sdl ttf class

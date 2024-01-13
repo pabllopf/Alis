@@ -37,8 +37,8 @@ using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
+using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image;
 using Alis.Core.Graphic.Sdl2.Structs;
-using Alis.Core.Graphic.Sdl2Image;
 using Sdl = Alis.Core.Graphic.Sdl2.Sdl;
 
 namespace Alis.Core.Graphic.Sample
