@@ -6049,7 +6049,6 @@ namespace Alis.Core.Graphic.Sdl2
             return NativeSdl.InternalEnclosePoints(points, count, ref clip, out result);
         }
 
-
         /// <summary>
         ///     Has the intersection using the specified a
         /// </summary>
@@ -6128,6 +6127,8 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void UnionRect(RectangleI a, RectangleI b, out RectangleI result)
         {
+            Validator.ValidateInput(a);
+            Validator.ValidateInput(b);
             NativeSdl.InternalUnionRect(a, b, out result);
         }
 
@@ -6159,7 +6160,13 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int BlitSurface([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect)
         {
-            return NativeSdl.InternalBlitSurface(src, ref srcRect, dst, ref dstRect);
+            Validator.ValidateInput(src);
+            Validator.ValidateInput(srcRect);
+            Validator.ValidateInput(dst);
+            Validator.ValidateInput(dstRect);
+            int result = NativeSdl.InternalBlitSurface(src, ref srcRect, dst, ref dstRect);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
 
@@ -6175,7 +6182,13 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int BlitSurface([NotNull] IntPtr src, [NotNull] IntPtr srcRect, [NotNull] IntPtr dst, ref RectangleI dstRect)
         {
-            return NativeSdl.InternalBlitSurface(src, srcRect, dst, ref dstRect);
+            Validator.ValidateInput(src);
+            Validator.ValidateInput(srcRect);
+            Validator.ValidateInput(dst);
+            Validator.ValidateInput(dstRect);
+            int result = NativeSdl.InternalBlitSurface(src, srcRect, dst, ref dstRect);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -6190,7 +6203,13 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int BlitSurface([NotNull] IntPtr src, ref RectangleI srcRect, [NotNull] IntPtr dst, [NotNull] IntPtr dstRect)
         {
-            return NativeSdl.InternalBlitSurface(src, ref srcRect, dst, dstRect);
+            Validator.ValidateInput(src);
+            Validator.ValidateInput(srcRect);
+            Validator.ValidateInput(dst);
+            Validator.ValidateInput(dstRect);
+            int result = NativeSdl.InternalBlitSurface(src, ref srcRect, dst, dstRect);
+            Validator.ValidateOutput(result);
+            return result;
         }
 
         /// <summary>
@@ -6205,7 +6224,13 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int BlitSurface([NotNull] IntPtr src, [NotNull] IntPtr srcRect, [NotNull] IntPtr dst, [NotNull] IntPtr dstRect)
         {
-            return NativeSdl.InternalBlitSurface(src, srcRect, dst, dstRect);
+            Validator.ValidateInput(src);
+            Validator.ValidateInput(srcRect);
+            Validator.ValidateInput(dst);
+            Validator.ValidateInput(dstRect);
+            int result = NativeSdl.InternalBlitSurface(src, srcRect, dst, dstRect);
+            Validator.ValidateOutput(result);
+            return result;
         }
         
         /// <summary>
@@ -6219,10 +6244,14 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IntPtr ConvertSurface([NotNull] IntPtr src, [NotNull] IntPtr fmt, [NotNull] uint flags)
         {
-            return NativeSdl.InternalConvertSurface(src, fmt, flags);
+            Validator.ValidateInput(src);
+            Validator.ValidateInput(fmt);
+            Validator.ValidateInput(flags);
+            IntPtr result = NativeSdl.InternalConvertSurface(src, fmt, flags);
+            Validator.ValidateOutput(result);
+            return result;
         }
-
-
+        
         /// <summary>
         ///     Converts the surface format using the specified src
         /// </summary>
