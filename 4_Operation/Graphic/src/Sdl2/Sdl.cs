@@ -2374,7 +2374,7 @@ namespace Alis.Core.Graphic.Sdl2
                 window = messageBoxData.window,
                 title = NativeSdl.AllocUtf8(messageBoxData.title),
                 message = NativeSdl.AllocUtf8(messageBoxData.message),
-                numbuttons = messageBoxData.numButtons
+                numButtons = messageBoxData.numButtons
             };
 
             InternalSdlMessageBoxButtonData[] buttons = new InternalSdlMessageBoxButtonData[messageBoxData.numButtons];
@@ -2402,10 +2402,10 @@ namespace Alis.Core.Graphic.Sdl2
                 data.buttons = buttonsPtr;
 
                 IntPtr colorSchemePtr = IntPtr.Zero;
-                if (messageBoxData.colorScheme != null)
+                if (messageBoxData.colorScheme.colors != null)
                 {
                     colorSchemePtr = Marshal.AllocHGlobal(Marshal.SizeOf<SdlMessageBoxColorScheme>());
-                    Marshal.StructureToPtr(messageBoxData.colorScheme.Value, colorSchemePtr, false);
+                    Marshal.StructureToPtr(messageBoxData.colorScheme, colorSchemePtr, false);
                 }
 
                 int result = NativeSdl.InternalShowMessageBox(ref data, out buttonId);

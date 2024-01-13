@@ -139,7 +139,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         [FieldOffset(0)] public SdlControllerSensorEvent cSensor;
 
         /// <summary>
-        ///     The adevice
+        ///     The audio device
         /// </summary>
         [FieldOffset(0)] public SdlAudioDeviceEvent aDevice;
 

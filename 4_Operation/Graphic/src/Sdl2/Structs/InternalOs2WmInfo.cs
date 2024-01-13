@@ -39,12 +39,12 @@ namespace Alis.Core.Graphic.Sdl2.Structs
     public struct InternalOs2WmInfo
     {
         /// <summary>
-        ///     Refers to an HWND
+        ///     Refers to window
         /// </summary>
         public IntPtr hwnd;
 
         /// <summary>
-        ///     efers to an HWND
+        ///     Refers to frame  
         /// </summary>
         public IntPtr hwndFrame;
     }
