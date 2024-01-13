@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Memory.Attributes;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
 
-namespace Alis.Core.Graphic.Sdl2Image
+namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
 {
     /// <summary>
     /// The sdl image class

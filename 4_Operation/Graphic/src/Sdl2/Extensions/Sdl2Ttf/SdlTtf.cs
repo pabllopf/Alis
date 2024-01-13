@@ -31,10 +31,9 @@ using System;
 using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Memory;
 using Alis.Core.Aspect.Memory.Attributes;
-using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Structs;
 
-namespace Alis.Core.Graphic.Sdl2Ttf
+namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
 {
     /// <summary>
     ///     The sdl ttf extern class

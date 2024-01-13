@@ -29,7 +29,7 @@
 
 using System;
 using System.IO;
-using Alis.Core.Graphic.Sdl2Image;
+using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image;
 
 namespace Alis.Core.Graphic
 {
