@@ -182,14 +182,11 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        /// Maxes the val 1
+        ///     Maxes the val 1
         /// </summary>
         /// <param name="val1">The val</param>
         /// <param name="val2">The val</param>
         /// <returns>The int</returns>
-        public static int Max(int val1, int val2)
-        {
-            return (val1 >= val2) ? val1 : val2;
-        }
+        public static int Max(int val1, int val2) => val1 >= val2 ? val1 : val2;
     }
 }

@@ -35,7 +35,6 @@ using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using static System.Math;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
@@ -2243,9 +2242,9 @@ namespace Alis.Core.Aspect.Data.Json
                 writer.Write(Abs(offset.Minutes).ToString(_d2Format));
             }
         }
-        
+
         /// <summary>
-        /// Abses the value
+        ///     Abses the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The float</returns>

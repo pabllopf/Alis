@@ -41,8 +41,8 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The name
         /// </summary>
-        public IntPtr name; 
-        
+        public IntPtr name;
+
         /// <summary>
         ///     The flags
         /// </summary>
@@ -142,15 +142,12 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         ///     The max texture height
         /// </summary>
         public readonly int max_texture_height;
-        
+
         /// <summary>
-        /// Gets the name
+        ///     Gets the name
         /// </summary>
         /// <returns>The string</returns>
-        public string GetName()
-        {
-            return Marshal.PtrToStringAnsi(name);
-        }
+        public string GetName() => Marshal.PtrToStringAnsi(name);
 
         /// <summary>
         ///     Gets or sets the value of the text

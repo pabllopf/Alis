@@ -224,20 +224,17 @@ namespace Alis.Core.Aspect.Data.Json
         internal int FinalStreamingBufferChunkSize => Max(512, StreamingBufferChunkSize);
 
         /// <summary>
-        /// Maxes the val 1
+        ///     Gets the value of the final object graph
+        /// </summary>
+        internal IDictionary<object, object> FinalObjectGraph => ObjectGraph ?? new Dictionary<object, object>(JsonSerializer.ReferenceComparer.Instance);
+
+        /// <summary>
+        ///     Maxes the val 1
         /// </summary>
         /// <param name="val1">The val</param>
         /// <param name="val2">The val</param>
         /// <returns>The int</returns>
-        public int Max(int val1, int val2)
-        {
-            return (val1 >= val2) ? val1 : val2;
-        }
-
-        /// <summary>
-        ///     Gets the value of the final object graph
-        /// </summary>
-        internal IDictionary<object, object> FinalObjectGraph => ObjectGraph ?? new Dictionary<object, object>(JsonSerializer.ReferenceComparer.Instance);
+        public int Max(int val1, int val2) => val1 >= val2 ? val1 : val2;
 
         /// <summary>
         ///     Finalizes the serialization members from an initial setup of members.

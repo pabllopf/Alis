@@ -73,7 +73,7 @@ namespace Alis.Sample.Flappy.Bird
         private BoxCollider boxCollider;
 
         /// <summary>
-        /// The data
+        ///     The data
         /// </summary>
         private byte[] data;
 

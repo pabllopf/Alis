@@ -33,7 +33,7 @@ using BenchmarkDotNet.Attributes;
 namespace Alis.Benchmark.TryCatch
 {
     /// <summary>
-    /// The test try catch class
+    ///     The test try catch class
     /// </summary>
     public class TestTryCatch
     {
@@ -43,9 +43,9 @@ namespace Alis.Benchmark.TryCatch
         [Params(10, 100, 1000)]
         // ReSharper disable once MemberCanBePrivate.Global
         public int N { get; set; }
-        
+
         /// <summary>
-        /// Calls the internal method without try catch
+        ///     Calls the internal method without try catch
         /// </summary>
         [Benchmark]
         public void CallInternalMethodWithoutTryCatch()
@@ -57,7 +57,7 @@ namespace Alis.Benchmark.TryCatch
         }
 
         /// <summary>
-        /// Calls the internal method with try catch
+        ///     Calls the internal method with try catch
         /// </summary>
         [Benchmark]
         public void CallInternalMethodWithTryCatch()
@@ -75,14 +75,11 @@ namespace Alis.Benchmark.TryCatch
         }
 
         /// <summary>
-        /// Sums the a
+        ///     Sums the a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The int</returns>
-        private static int Sum(int a, int b)
-        {
-            return a + b;
-        }
+        private static int Sum(int a, int b) => a + b;
     }
 }
