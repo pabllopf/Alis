@@ -29,6 +29,7 @@
 
 using System;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Memory.Attributes;
@@ -51,13 +52,18 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// <summary>
         ///     Initializes a new instance of the <see cref="NativeSdlImage" /> class
         /// </summary>
-        static NativeSdlImage() => EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_image", Sdl2Dlls.SdlImageDllBytes, Assembly.GetExecutingAssembly());
-        
+        static NativeSdlImage()
+        {
+            EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_image", Sdl2Dlls.SdlImageDllBytes, Assembly.GetExecutingAssembly());
+        }
+
         /// <summary>
         ///     Internals the img linked version
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "IMG_Linked_Version", CallingConvention = CallingConvention.Cdecl), NotNull]
+        [DllImport(NativeLibName, EntryPoint = "IMG_Linked_Version", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern SdlVersion InternalImgLinkedVersion();
         
         /// <summary>
@@ -66,6 +72,7 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// <param name="flags">The flags</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_Init", CallingConvention = CallingConvention.Cdecl)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern int InternalImgInit(ImgInitFlags flags);
 
@@ -73,6 +80,7 @@ namespace Alis.Core.Graphic.Sdl2Image
         ///     Img the quit
         /// </summary>
         [DllImport(NativeLibName, EntryPoint = "IMG_Quit", CallingConvention = CallingConvention.Cdecl)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalImgQuit();
 
         /// <summary>
@@ -81,6 +89,7 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// <param name="file">The file</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_Load", CallingConvention = CallingConvention.Cdecl)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern IntPtr InternalImgLoad([NotNull] string file);
         
@@ -91,6 +100,7 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// <param name="free">The free</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_Load_RW", CallingConvention = CallingConvention.Cdecl)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern IntPtr InternalImgLoadRw([NotNull] IntPtr src, [NotNull, NotZero] int free);
         
@@ -102,6 +112,7 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// <param name="type">The type</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_LoadTyped_RW", CallingConvention = CallingConvention.Cdecl)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern IntPtr InternalImgLoadTypedRw([NotNull] IntPtr src, [NotNull] int free, [NotNull] byte[] type);
         
@@ -112,6 +123,7 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// <param name="file">The file</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_LoadTexture", CallingConvention = CallingConvention.Cdecl)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern IntPtr InternalImgLoadTexture([NotNull] IntPtr renderer, [NotNull] string file);
         
@@ -123,6 +135,8 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// <param name="free">The free</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_LoadTexture_RW", CallingConvention = CallingConvention.Cdecl)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [return: NotNull]
         internal static extern IntPtr InternalImgLoadTextureRw([NotNull] IntPtr renderer, [NotNull] IntPtr src, [NotNull] int free);
 
         /// <summary>
@@ -134,6 +148,7 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// <param name="type">The type</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_LoadTextureTyped_RW", CallingConvention = CallingConvention.Cdecl)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern IntPtr InternalImgLoadTextureTypedRw([NotNull] IntPtr renderer, [NotNull] IntPtr src, [NotNull] int free, [NotNull] byte[] type);
         
@@ -143,6 +158,7 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// <param name="xpm">The xpm</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_ReadXPMFromArray", CallingConvention = CallingConvention.Cdecl)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern IntPtr InternalImgReadXpmFromArray([NotNull] string[] xpm);
         
@@ -153,6 +169,7 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// <param name="file">The file</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_SavePNG", CallingConvention = CallingConvention.Cdecl)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern int InternalImgSavePng([NotNull] IntPtr surface, [NotNull] byte[] file);
         
@@ -164,6 +181,8 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// <param name="free">The free</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_SavePNG_RW", CallingConvention = CallingConvention.Cdecl)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [return: NotNull, NotZero]
         internal static extern int InternalImgSavePngRw(IntPtr surface, IntPtr dst, int free);
         
         /// <summary>
@@ -174,6 +193,7 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// <param name="quality">The quality</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_SaveJPG", CallingConvention = CallingConvention.Cdecl)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern int InternalImgSaveJpg([NotNull] IntPtr surface, [NotNull] byte[] file, [NotNull] int quality);
         
@@ -186,6 +206,7 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// <param name="quality">The quality</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_Save", CallingConvention = CallingConvention.Cdecl)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern int InternalImgSave([NotNull] IntPtr surface, [NotNull] IntPtr dst, [NotNull] int free, [NotNull] int quality);
         
@@ -195,6 +216,7 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// <param name="file">The file</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName,EntryPoint = "IMG_LoadAnimation", CallingConvention = CallingConvention.Cdecl)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern IntPtr InternalImgLoadAnimation(string file);
         
@@ -205,6 +227,7 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// <param name="freeSrc">The free src</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_LoadAnimation_RW", CallingConvention = CallingConvention.Cdecl)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern IntPtr InternalImgLoadAnimationRw(IntPtr src, int freeSrc);
         
@@ -216,6 +239,7 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// <param name="type">The type</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_LoadAnimationTyped_RW", CallingConvention = CallingConvention.Cdecl)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern IntPtr InternalImgLoadAnimationTypedRw(IntPtr src, int freeSrc, string type);
         
@@ -224,6 +248,7 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// </summary>
         /// <param name="anim">The anim</param>
         [DllImport(NativeLibName,EntryPoint = "IMG_FreeAnimation" ,CallingConvention = CallingConvention.Cdecl)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalImgFreeAnimation([NotNull] IntPtr anim);
 
         /// <summary>
@@ -232,6 +257,7 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// <param name="src">The src</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_LoadGIFAnimation_RW" ,CallingConvention = CallingConvention.Cdecl)]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern IntPtr InternalImgLoadGifAnimationRw([NotNull] IntPtr src);
 
@@ -239,6 +265,8 @@ namespace Alis.Core.Graphic.Sdl2Image
         /// Internals the get version
         /// </summary>
         /// <returns>The sdl version</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [return: NotNull]
         internal static SdlVersion InternalGetVersion() => new SdlVersion(2, 0, 6);
     }
 }

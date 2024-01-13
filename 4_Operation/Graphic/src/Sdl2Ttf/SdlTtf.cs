@@ -28,12 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Base.Dll;
+using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Memory;
 using Alis.Core.Aspect.Memory.Attributes;
-using Alis.Core.Graphic.Properties;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Structs;
 
@@ -44,26 +41,6 @@ namespace Alis.Core.Graphic.Sdl2Ttf
     /// </summary>
     public static class SdlTtf
     {
-        /// <summary>
-        ///     The native lib name
-        /// </summary>
-        private const string NativeLibName = "sdl2_ttf";
-
-        /// <summary>
-        ///     The sdl ttf major version
-        /// </summary>
-        private const int SdlTtfMajorVersion = 2;
-
-        /// <summary>
-        ///     The sdl ttf minor version
-        /// </summary>
-        private const int SdlTtfMinorVersion = 0;
-
-        /// <summary>
-        ///     The sdl ttf patch level
-        /// </summary>
-        private const int SdlTtfPatchLevel = 16;
-
         /// <summary>
         ///     The unicode bom native
         /// </summary>
@@ -123,88 +100,46 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         ///     The ttf hinting light subpixel
         /// </summary>
         public const int TtfHintingLightSubpixel = 4;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="SdlTtf" /> class
-        /// </summary>
-        static SdlTtf() => EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf", Sdl2Dlls.SdlTtfDllBytes, Assembly.GetExecutingAssembly());
-
-        /// <summary>
-        ///     Internals the ttf linked version
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_LinkedVersion", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr INTERNAL_TTF_LinkedVersion();
-
+        
         /// <summary>
         ///     Internals the ttf linked version
         /// </summary>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        private static IntPtr InternalTtfLinkedVersion() => INTERNAL_TTF_LinkedVersion();
-
-        /// <summary>
-        ///     Ttf the byte swapped unicode using the specified swapped
-        /// </summary>
-        /// <param name="swapped">The swapped</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern void TTF_ByteSwappedUNICODE([NotNull, NotZero] int swapped);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfLinkedVersion()
+        {
+            IntPtr result = NativeSdlTtf.InternalLinkedVersion();
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the byte swapped unicode using the specified swapped
         /// </summary>
         /// <param name="swapped">The swapped</param>
         [return: NotNull]
-        public static void TtfByteSwappedUnicode([NotNull, NotZero] int swapped) => TTF_ByteSwappedUNICODE(swapped);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void TtfByteSwappedUnicode([NotNull, NotZero] int swapped)
+        {
+            Validator.ValidateInput(swapped);
+            NativeSdlTtf.InternalByteSwappedUNICODE(swapped);
+        }
 
         /// <summary>
         ///     Ttf the init
         /// </summary>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern int TTF_Init();
-
-        /// <summary>
-        ///     Ttf the init
-        /// </summary>
-        /// <exception cref="Exception">TTF_Init failed</exception>
+        /// <exception cref="Exception">InternalInit failed</exception>
         /// <returns>The result</returns>
         [return: NotNull, NotZero]
-        public static int TtfInit() => TTF_Init() == -1 ? throw new Exception("TTF_Init failed") : 0;
-
-        /// <summary>
-        ///     Internals the ttf open font using the specified file
-        /// </summary>
-        /// <param name="file">The file</param>
-        /// <param name="ptSize">The ptSize</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_OpenFont", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr INTERNAL_TTF_OpenFont([NotNull, NotEmpty] byte[] file, [NotNull, NotZero] int ptSize);
-
-        /// <summary>
-        ///     Internal ttf the open font using the specified file
-        /// </summary>
-        /// <param name="file">The file</param>
-        /// <param name="ptSize">The pt size</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        private static IntPtr TtfOpenFont([NotNull, NotEmpty] byte[] file, [NotNull, NotZero] int ptSize) => INTERNAL_TTF_OpenFont(file, ptSize);
-
-        /// <summary>
-        ///     Ttf the open font rw using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="freeSrc">The freeSrc</param>
-        /// <param name="ptSize">The ptSize</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr TTF_OpenFontRW([NotNull] IntPtr src, [NotNull, NotZero] int freeSrc, [NotNull, NotZero] int ptSize);
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfInit()
+        {
+            int result = NativeSdlTtf.InternalInit();
+            Validator.ValidateOutput(result);
+            return result;
+        }
+        
         /// <summary>
         ///     Ttf the open font rw using the specified src
         /// </summary>
@@ -213,18 +148,16 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="ptSize">The pt size</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr TtfOpenFontRw([NotNull] IntPtr src, [NotNull, NotZero] int freeSrc, [NotNull, NotZero] int ptSize) => TTF_OpenFontRW(src, freeSrc, ptSize);
-
-        /// <summary>
-        ///     Internals the ttf open font index using the specified file
-        /// </summary>
-        /// <param name="file">The file</param>
-        /// <param name="ptSize">the size</param>
-        /// <param name="index">The index</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_OpenFontIndex", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr INTERNAL_TTF_OpenFontIndex([NotNull, NotEmpty] string file, [NotNull, NotZero] int ptSize, [NotNull, NotZero] long index);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfOpenFontRw([NotNull] IntPtr src, [NotNull, NotZero] int freeSrc, [NotNull, NotZero] int ptSize)
+        {
+            Validator.ValidateInput(src);
+            Validator.ValidateInput(freeSrc);
+            Validator.ValidateInput(ptSize);
+            IntPtr result = NativeSdlTtf.InternalOpenFontRW(src, freeSrc, ptSize);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Internals the ttf open font index using the specified file
@@ -234,19 +167,16 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="index">The index</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        private static IntPtr InternalTtfOpenFontIndex([NotNull, NotEmpty] string file, [NotNull, NotZero] int ptSize, [NotNull, NotZero] long index) => INTERNAL_TTF_OpenFontIndex(file, ptSize, index);
-
-        /// <summary>
-        ///     Ttf the open font index rw using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="freeSrc">The free src</param>
-        /// <param name="ptSize">The pt size</param>
-        /// <param name="index">The index</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr TTF_OpenFontIndexRW([NotNull] IntPtr src, [NotNull, NotZero] int freeSrc, [NotNull, NotZero] int ptSize, [NotNull, NotZero] long index);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfOpenFontIndex([NotNull, NotEmpty] string file, [NotNull, NotZero] int ptSize, [NotNull, NotZero] long index)
+        {
+            Validator.ValidateInput(file);
+            Validator.ValidateInput(ptSize);
+            Validator.ValidateInput(index);
+            IntPtr result = NativeSdlTtf.InternalOpenFontIndex(file, ptSize, index);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the open font index rw using the specified src
@@ -257,17 +187,17 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="index">The index</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr TtfOpenFontIndexRw([NotNull] IntPtr src, [NotNull, NotZero] int freeSrc, [NotNull, NotZero] int ptSize, [NotNull, NotZero] long index) => TTF_OpenFontIndexRW(src, freeSrc, ptSize, index);
-
-        /// <summary>
-        ///     Ttf the set font size using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="ptSize">The size</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern int TTF_SetFontSize([NotNull] IntPtr font, [NotNull, NotZero] int ptSize);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfOpenFontIndexRw([NotNull] IntPtr src, [NotNull, NotZero] int freeSrc, [NotNull, NotZero] int ptSize, [NotNull, NotZero] long index)
+        {
+            Validator.ValidateInput(src);
+            Validator.ValidateInput(freeSrc);
+            Validator.ValidateInput(ptSize);
+            Validator.ValidateInput(index);
+            IntPtr result = NativeSdlTtf.InternalOpenFontIndexRW(src, freeSrc, ptSize, index);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the set font size using the specified font
@@ -276,48 +206,43 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="ptSize">The pt size</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfSetFontSize([NotNull] IntPtr font, [NotNull, NotZero] int ptSize) => TTF_SetFontSize(font, ptSize);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfSetFontSize([NotNull] IntPtr font, [NotNull, NotZero] int ptSize)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(ptSize);
+            int result = NativeSdlTtf.InternalSetFontSize(font, ptSize);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the get font style using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull, NotZero]
-        private static extern int TTF_GetFontStyle([NotNull] IntPtr font);
-
-        /// <summary>
-        ///     Ttf the get font style using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <returns>The int</returns>
-        [return: NotNull, NotZero]
-        public static int TtfGetFontStyle([NotNull] IntPtr font) => TTF_GetFontStyle(font);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfGetFontStyle([NotNull] IntPtr font)
+        {
+            Validator.ValidateInput(font);
+            int result = NativeSdlTtf.InternalGetFontStyle(font);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the set font style using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="style">The style</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        private static extern void TTF_SetFontStyle([NotNull] IntPtr font, [NotNull, NotZero] int style);
-
-        /// <summary>
-        ///     Ttf the set font style using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="style">The style</param>
-        public static void TtfSetFontStyle([NotNull] IntPtr font, [NotNull, NotZero] int style) => TTF_SetFontStyle(font, style);
-
-        /// <summary>
-        ///     Ttf the get font outline using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern int TTF_GetFontOutline([NotNull] IntPtr font);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void TtfSetFontStyle([NotNull] IntPtr font, [NotNull, NotZero] int style)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(style);
+            NativeSdlTtf.InternalSetFontStyle(font, style);
+        }
 
         /// <summary>
         ///     Ttf the get font outline using the specified font
@@ -325,33 +250,28 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfGetFontOutline([NotNull] IntPtr font) => TTF_GetFontOutline(font);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfGetFontOutline([NotNull] IntPtr font)
+        {
+            Validator.ValidateInput(font);
+            int result = NativeSdlTtf.InternalGetFontOutline(font);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the set font outline using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="outline">The outline</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull, NotZero]
-        private static extern void TTF_SetFontOutline([NotNull] IntPtr font, [NotNull, NotZero] int outline);
-
-        /// <summary>
-        ///     Ttf the set font outline using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="outline">The outline</param>
-        [return: NotNull, NotZero]
-        public static void TtfSetFontOutline([NotNull] IntPtr font, [NotNull, NotZero] int outline) => TTF_SetFontOutline(font, outline);
-
-        /// <summary>
-        ///     Ttf the get font hinting using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern int TTF_GetFontHinting([NotNull] IntPtr font);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void TtfSetFontOutline([NotNull] IntPtr font, [NotNull, NotZero] int outline)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(outline);
+            NativeSdlTtf.InternalSetFontOutline(font, outline);
+        }
 
         /// <summary>
         ///     Ttf the get font hinting using the specified font
@@ -359,31 +279,27 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfGetFontHinting([NotNull] IntPtr font) => TTF_GetFontHinting(font);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfGetFontHinting([NotNull] IntPtr font)
+        {
+            Validator.ValidateInput(font);
+            int result = NativeSdlTtf.InternalGetFontHinting(font);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the set font hinting using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="hinting">The hinting</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        private static extern void TTF_SetFontHinting([NotNull] IntPtr font, [NotNull, NotZero] int hinting);
-
-        /// <summary>
-        ///     Ttf the set font hinting using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="hinting">The hinting</param>
-        public static void TtfSetFontHinting([NotNull] IntPtr font, [NotNull, NotZero] int hinting) => TTF_SetFontHinting(font, hinting);
-
-        /// <summary>
-        ///     Ttf the font height using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern int TTF_FontHeight([NotNull] IntPtr font);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void TtfSetFontHinting([NotNull] IntPtr font, [NotNull, NotZero] int hinting)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(hinting);
+            NativeSdlTtf.InternalSetFontHinting(font, hinting);
+        }
 
         /// <summary>
         ///     Ttf the font height using the specified font
@@ -391,16 +307,14 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfFontHeight([NotNull] IntPtr font) => TTF_FontHeight(font);
-
-        /// <summary>
-        ///     Ttf the font ascent using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern int TTF_FontAscent([NotNull] IntPtr font);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfFontHeight([NotNull] IntPtr font)
+        {
+            Validator.ValidateInput(font);
+            int result = NativeSdlTtf.InternalFontHeight(font);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the font ascent using the specified font
@@ -408,33 +322,29 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfFontAscent([NotNull] IntPtr font) => TTF_FontAscent(font);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfFontAscent([NotNull] IntPtr font)
+        {
+            Validator.ValidateInput(font);
+            int result = NativeSdlTtf.InternalFontAscent(font);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the font descent using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull, NotZero]
-        private static extern int TTF_FontDescent([NotNull] IntPtr font);
-
-        /// <summary>
-        ///     Ttf the font descent using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <returns>The int</returns>
-        [return: NotNull, NotZero]
-        public static int TtfFontDescent([NotNull] IntPtr font) => TTF_FontDescent(font);
-
-        /// <summary>
-        ///     Ttf the font line skip using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern int TTF_FontLineSkip([NotNull] IntPtr font);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfFontDescent([NotNull] IntPtr font)
+        {
+            Validator.ValidateInput(font);
+            int result = NativeSdlTtf.InternalFontDescent(font);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the font line skip using the specified font
@@ -442,16 +352,14 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfFontLineSkip([NotNull] IntPtr font) => TTF_FontLineSkip(font);
-
-        /// <summary>
-        ///     Ttf the get font kerning using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern int TTF_GetFontKerning([NotNull] IntPtr font);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfFontLineSkip([NotNull] IntPtr font)
+        {
+            Validator.ValidateInput(font);
+            int result = NativeSdlTtf.InternalFontLineSkip(font);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the get font kerning using the specified font
@@ -459,33 +367,28 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfGetFontKerning([NotNull] IntPtr font) => TTF_GetFontKerning(font);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfGetFontKerning([NotNull] IntPtr font)
+        {
+            Validator.ValidateInput(font);
+            int result = NativeSdlTtf.InternalGetFontKerning(font);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the set font kerning using the specified font
         /// </summary>
         /// <param name="font">The font</param>
         /// <param name="allowed">The allowed</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull, NotZero]
-        private static extern void TTF_SetFontKerning([NotNull] IntPtr font, [NotNull, NotZero] int allowed);
-
-        /// <summary>
-        ///     Ttf the set font kerning using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="allowed">The allowed</param>
-        [return: NotNull, NotZero]
-        public static void TtfSetFontKerning([NotNull] IntPtr font, [NotNull, NotZero] int allowed) => TTF_SetFontKerning(font, allowed);
-
-        /// <summary>
-        ///     Ttf the font faces using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern IntPtr TTF_FontFaces([NotNull] IntPtr font);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void TtfSetFontKerning([NotNull] IntPtr font, [NotNull, NotZero] int allowed)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(allowed);
+            NativeSdlTtf.InternalSetFontKerning(font, allowed);
+        }
 
         /// <summary>
         ///     Ttf the font faces using the specified font
@@ -493,16 +396,14 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="font">The font</param>
         /// <returns>The int ptr</returns>
         [return: NotNull, NotZero]
-        public static IntPtr TtfFontFaces([NotNull] IntPtr font) => TTF_FontFaces(font);
-
-        /// <summary>
-        ///     Ttf the font face is fixed width using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern int TTF_FontFaceIsFixedWidth([NotNull] IntPtr font);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfFontFaces([NotNull] IntPtr font)
+        {
+            Validator.ValidateInput(font);
+            IntPtr result = NativeSdlTtf.InternalFontFaces(font);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the font face is fixed width using the specified font
@@ -510,16 +411,14 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="font">The font</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfFontFaceIsFixedWidth([NotNull] IntPtr font) => TTF_FontFaceIsFixedWidth(font);
-
-        /// <summary>
-        ///     Internals the ttf font face family name using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_FontFaceFamilyName", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern string INTERNAL_TTF_FontFaceFamilyName([NotNull] IntPtr font);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfFontFaceIsFixedWidth([NotNull] IntPtr font)
+        {
+            Validator.ValidateInput(font);
+            int result = NativeSdlTtf.InternalFontFaceIsFixedWidth(font);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the font face family name using the specified font
@@ -527,16 +426,14 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="font">The font</param>
         /// <returns>The string</returns>
         [return: NotNull, NotEmpty]
-        public static string TtfFontFaceFamilyName([NotNull] IntPtr font) => INTERNAL_TTF_FontFaceFamilyName(font);
-
-        /// <summary>
-        ///     Internals the ttf font face style name using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_FontFaceStyleName", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern string INTERNAL_TTF_FontFaceStyleName([NotNull] IntPtr font);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static string TtfFontFaceFamilyName([NotNull] IntPtr font)
+        {
+            Validator.ValidateInput(font);
+            string result = NativeSdlTtf.InternalFontFaceFamilyName(font);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Internals the ttf font face style name using the specified font
@@ -544,7 +441,14 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="font">The font</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        private static string InternalTtfFontFaceStyleName([NotNull] IntPtr font) => INTERNAL_TTF_FontFaceStyleName(font);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static string TtfFontFaceStyleName([NotNull] IntPtr font)
+        {
+            Validator.ValidateInput(font);
+            string result = NativeSdlTtf.InternalFontFaceStyleName(font);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the glyph is provided using the specified font
@@ -552,28 +456,16 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="font">The font</param>
         /// <param name="ch">The ch</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull, NotZero]
-        private static extern int TTF_GlyphIsProvided([NotNull] IntPtr font, [NotNull, NotZero] ushort ch);
-
-        /// <summary>
-        ///     Ttf the glyph is provided using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="ch">The ch</param>
-        /// <returns>The int</returns>
-        [return: NotNull, NotZero]
-        public static int TtfGlyphIsProvided(IntPtr font, ushort ch) => TTF_GlyphIsProvided(font, ch);
-
-        /// <summary>
-        ///     Ttf the glyph is provided 32 using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="ch">The ch</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern int TTF_GlyphIsProvided32([NotNull] IntPtr font, [NotNull, NotZero] uint ch);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfGlyphIsProvided(IntPtr font, ushort ch)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(ch);
+            int result = NativeSdlTtf.InternalGlyphIsProvided(font, ch);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the glyph is provided 32 using the specified font
@@ -582,22 +474,15 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="ch">The ch</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfGlyphIsProvided32([NotNull] IntPtr font, [NotNull, NotZero] uint ch) => TTF_GlyphIsProvided32(font, ch);
-
-        /// <summary>
-        ///     Ttf the glyph metrics using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="ch">The ch</param>
-        /// <param name="minx">The minx</param>
-        /// <param name="max">The max</param>
-        /// <param name="miny">The miny</param>
-        /// <param name="maxy">The maxy</param>
-        /// <param name="advance">The advance</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern int TTF_GlyphMetrics([NotNull] IntPtr font, [NotNull, NotZero] ushort ch, [NotNull, NotZero] out int minx, [NotNull, NotZero] out int max, [NotNull, NotZero] out int miny, [NotNull, NotZero] out int maxy, [NotNull, NotZero] out int advance);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfGlyphIsProvided32([NotNull] IntPtr font, [NotNull, NotZero] uint ch)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(ch);
+            int result = NativeSdlTtf.InternalGlyphIsProvided32(font, ch);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the glyph metrics using the specified font
@@ -611,8 +496,16 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="advance">The advance</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfGlyphMetrics([NotNull] IntPtr font, [NotNull, NotZero] ushort ch, [NotNull, NotZero] out int minx, [NotNull, NotZero] out int max, [NotNull, NotZero] out int miny, [NotNull, NotZero] out int maxy, [NotNull, NotZero] out int advance) => TTF_GlyphMetrics(font, ch, out minx, out max, out miny, out maxy, out advance);
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfGlyphMetrics([NotNull] IntPtr font, [NotNull, NotZero] ushort ch, [NotNull, NotZero] out int minx, [NotNull, NotZero] out int max, [NotNull, NotZero] out int miny, [NotNull, NotZero] out int maxy, [NotNull, NotZero] out int advance)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(ch);
+            int result = NativeSdlTtf.InternalGlyphMetrics(font, ch, out minx, out max, out miny, out maxy, out advance);
+            Validator.ValidateOutput(result);
+            return result;
+        }
+        
         /// <summary>
         ///     Ttf the glyph metrics 32 using the specified font
         /// </summary>
@@ -624,36 +517,17 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="maxy">The maxy</param>
         /// <param name="advance">The advance</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull, NotZero]
-        private static extern int TTF_GlyphMetrics32([NotNull] IntPtr font, [NotNull, NotZero] uint ch, [NotNull, NotZero] out int minx, [NotNull, NotZero] out int max, [NotNull, NotZero] out int miny, [NotNull, NotZero] out int maxy, [NotNull, NotZero] out int advance);
-
-        /// <summary>
-        ///     Ttf the glyph metrics 32 using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="ch">The ch</param>
-        /// <param name="minx">The minx</param>
-        /// <param name="max">The max</param>
-        /// <param name="miny">The miny</param>
-        /// <param name="maxy">The maxy</param>
-        /// <param name="advance">The advance</param>
-        /// <returns>The int</returns>
-        [return: NotNull, NotZero]
-        public static int TtfGlyphMetrics32([NotNull] IntPtr font, [NotNull, NotZero] uint ch, [NotNull, NotZero] out int minx, [NotNull, NotZero] out int max, [NotNull, NotZero] out int miny, [NotNull, NotZero] out int maxy, [NotNull, NotZero] out int advance) => TTF_GlyphMetrics32(font, ch, out minx, out max, out miny, out maxy, out advance);
-
-        /// <summary>
-        ///     Ttf the size text using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern int TTF_SizeText([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] out int w, [NotNull, NotZero] out int h);
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfGlyphMetrics32([NotNull] IntPtr font, [NotNull, NotZero] uint ch, [NotNull, NotZero] out int minx, [NotNull, NotZero] out int max, [NotNull, NotZero] out int miny, [NotNull, NotZero] out int maxy, [NotNull, NotZero] out int advance)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(ch);
+            int result = NativeSdlTtf.InternalGlyphMetrics32(font, ch, out minx, out max, out miny, out maxy, out advance);
+            Validator.ValidateOutput(result);
+            return result;
+        }
+        
         /// <summary>
         ///     Ttf the size text using the specified font
         /// </summary>
@@ -663,19 +537,15 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="h">The </param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfSizeText([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] out int w, [NotNull, NotZero] out int h) => TTF_SizeText(font, text, out w, out h);
-
-        /// <summary>
-        ///     Internals the ttf size utf 8 using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_SizeUTF8", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern int INTERNAL_TTF_SizeUTF8([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] out int w, [NotNull, NotZero] out int h);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfSizeText([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] out int w, [NotNull, NotZero] out int h)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            int result = NativeSdlTtf.InternalSizeText(font, text, out w, out h);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Internals the ttf size utf 8 using the specified font
@@ -686,7 +556,15 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="h">The </param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        private static int InternalTtfSizeUtf8([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] out int w, [NotNull, NotZero] out int h) => INTERNAL_TTF_SizeUTF8(font, text, out w, out h);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfSizeUtf8([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] out int w, [NotNull, NotZero] out int h)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            int result = NativeSdlTtf.InternalSizeUTF8(font, text, out w, out h);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the size unicode using the specified font
@@ -696,33 +574,16 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="w">The </param>
         /// <param name="h">The </param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull, NotZero]
-        private static extern int TTF_SizeUNICODE([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] out int w, [NotNull, NotZero] out int h);
-
-        /// <summary>
-        ///     Ttf the size unicode using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        /// <returns>The int</returns>
-        [return: NotNull, NotZero]
-        public static int TtfSizeUnicode([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] out int w, [NotNull, NotZero] out int h) => TTF_SizeUNICODE(font, text, out w, out h);
-
-        /// <summary>
-        ///     Ttf the measure text using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="measureWidth">The measure width</param>
-        /// <param name="extent">The extent</param>
-        /// <param name="count">The count</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern int TTF_MeasureText([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] int measureWidth, [NotNull, NotZero] out int extent, [NotNull, NotZero] out int count);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfSizeUnicode([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] out int w, [NotNull, NotZero] out int h)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            int result = NativeSdlTtf.InternalSizeUNICODE(font, text, out w, out h);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the measure text using the specified font
@@ -734,7 +595,16 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfMeasureText([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] int measureWidth, [NotNull, NotZero] out int extent, [NotNull, NotZero] out int count) => TTF_MeasureText(font, text, measureWidth, out extent, out count);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfMeasureText([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] int measureWidth, [NotNull, NotZero] out int extent, [NotNull, NotZero] out int count)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(measureWidth);
+            int result = NativeSdlTtf.InternalMeasureText(font, text, measureWidth, out extent, out count);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Internals the ttf measure utf 8 using the specified font
@@ -745,34 +615,17 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="extent">The extent</param>
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_MeasureUTF8", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull, NotZero]
-        private static extern int INTERNAL_TTF_MeasureUTF8([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] int measureWidth, [NotNull, NotZero] out int extent, [NotNull, NotZero] out int count);
-
-        /// <summary>
-        ///     Internals the ttf measure utf 8 using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="measureWidth">The measure width</param>
-        /// <param name="extent">The extent</param>
-        /// <param name="count">The count</param>
-        /// <returns>The int</returns>
-        [return: NotNull, NotZero]
-        private static int InternalTtfMeasureUtf8([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] int measureWidth, [NotNull, NotZero] out int extent, [NotNull, NotZero] out int count) => INTERNAL_TTF_MeasureUTF8(font, text, measureWidth, out extent, out count);
-
-        /// <summary>
-        ///     Ttf the measure unicode using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="measureWidth">The measure width</param>
-        /// <param name="extent">The extent</param>
-        /// <param name="count">The count</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern int TTF_MeasureUNICODE([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] int measureWidth, [NotNull, NotZero] out int extent, [NotNull, NotZero] out int count);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfMeasureUtf8([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] int measureWidth, [NotNull, NotZero] out int extent, [NotNull, NotZero] out int count)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(measureWidth);
+            int result = NativeSdlTtf.InternalMeasureUTF8(font, text, measureWidth, out extent, out count);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the measure unicode using the specified font
@@ -784,7 +637,16 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfMeasureUnicode([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] int measureWidth, [NotNull, NotZero] out int extent, [NotNull, NotZero] out int count) => TTF_MeasureUNICODE(font, text, measureWidth, out extent, out count);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfMeasureUnicode([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] int measureWidth, [NotNull, NotZero] out int extent, [NotNull, NotZero] out int count)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(measureWidth);
+            int result = NativeSdlTtf.InternalMeasureUNICODE(font, text, measureWidth, out extent, out count);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the render text solid using the specified font
@@ -793,30 +655,17 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr TTF_RenderText_Solid([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg);
-
-        /// <summary>
-        ///     Ttf the render text solid using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        public static IntPtr TtfRenderTextSolid([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg) => TTF_RenderText_Solid(font, text, fg);
-
-        /// <summary>
-        ///     Internals the ttf render utf 8 solid using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_RenderUTF8_Solid", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr INTERNAL_TTF_RenderUTF8_Solid([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderTextSolid([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(fg);
+            IntPtr result = NativeSdlTtf.InternalRenderText_Solid(font, text, fg);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Internals the ttf render utf 8 solid using the specified font
@@ -826,7 +675,16 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        private static IntPtr InternalTtfRenderUtf8Solid([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg) => INTERNAL_TTF_RenderUTF8_Solid(font, text, fg);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderUtf8Solid([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(fg);
+            IntPtr result = NativeSdlTtf.InternalRenderUTF8_Solid(font, text, fg);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the render unicode solid using the specified font
@@ -835,31 +693,17 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr TTF_RenderUNICODE_Solid([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg);
-
-        /// <summary>
-        ///     Ttf the render unicode solid using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        public static IntPtr TtfRenderUnicodeSolid([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg) => TTF_RenderUNICODE_Solid(font, text, fg);
-
-        /// <summary>
-        ///     Ttf the render text solid wrapped using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="wrapLength">The wrap length</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr TTF_RenderText_Solid_Wrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, SdlColor fg, [NotNull, NotZero] uint wrapLength);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderUnicodeSolid([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(fg);
+            IntPtr result = NativeSdlTtf.InternalRenderUNICODE_Solid(font, text, fg);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the render text solid wrapped using the specified font
@@ -870,7 +714,17 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr TtfRenderTextSolidWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapLength) => TTF_RenderText_Solid_Wrapped(font, text, fg, wrapLength);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderTextSolidWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapLength)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(fg);
+            Validator.ValidateInput(wrapLength);
+            IntPtr result = NativeSdlTtf.InternalRenderText_Solid_Wrapped(font, text, fg, wrapLength);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Internals the ttf render utf 8 solid wrapped using the specified font
@@ -880,32 +734,18 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_RenderUTF8_Solid_Wrapped", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_TTF_RenderUTF8_Solid_Wrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapLength);
-
-        /// <summary>
-        ///     Internals the ttf render utf 8 solid wrapped using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="wrapLength">The wrap length</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        private static IntPtr InternalTtfRenderUtf8SolidWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapLength) => INTERNAL_TTF_RenderUTF8_Solid_Wrapped(font, text, fg, wrapLength);
-
-        /// <summary>
-        ///     Ttf the render unicode solid wrapped using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="wrapLength">The wrap length</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr TTF_RenderUNICODE_Solid_Wrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapLength);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderUtf8SolidWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapLength)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(fg);
+            Validator.ValidateInput(wrapLength);
+            IntPtr result = NativeSdlTtf.InternalRenderUTF8_Solid_Wrapped(font, text, fg, wrapLength);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the render unicode solid wrapped using the specified font
@@ -916,7 +756,17 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr TtfRenderUnicodeSolidWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapLength) => TTF_RenderUNICODE_Solid_Wrapped(font, text, fg, wrapLength);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderUnicodeSolidWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapLength)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(fg);
+            Validator.ValidateInput(wrapLength);
+            IntPtr result = NativeSdlTtf.InternalRenderUNICODE_Solid_Wrapped(font, text, fg, wrapLength);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the render glyph solid using the specified font
@@ -925,30 +775,17 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="ch">The ch</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr TTF_RenderGlyph_Solid([NotNull] IntPtr font, [NotNull, NotZero] ushort ch, [NotNull] SdlColor fg);
-
-        /// <summary>
-        ///     Ttf the render glyph solid using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="ch">The ch</param>
-        /// <param name="fg">The fg</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        public static IntPtr TtfRenderGlyphSolid([NotNull] IntPtr font, [NotNull, NotZero] ushort ch, [NotNull] SdlColor fg) => TTF_RenderGlyph_Solid(font, ch, fg);
-
-        /// <summary>
-        ///     Ttf the render glyph 32 solid using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="ch">The ch</param>
-        /// <param name="fg">The fg</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr TTF_RenderGlyph32_Solid([NotNull] IntPtr font, [NotNull, NotZero] uint ch, [NotNull] SdlColor fg);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderGlyphSolid([NotNull] IntPtr font, [NotNull, NotZero] ushort ch, [NotNull] SdlColor fg)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(ch);
+            Validator.ValidateInput(fg);
+            IntPtr result = NativeSdlTtf.InternalRenderGlyph_Solid(font, ch, fg);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the render glyph 32 solid using the specified font
@@ -958,19 +795,16 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr TtfRenderGlyph32Solid([NotNull] IntPtr font, [NotNull, NotZero] uint ch, [NotNull] SdlColor fg) => TTF_RenderGlyph32_Solid(font, ch, fg);
-
-        /// <summary>
-        ///     Ttf the render text shaded using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="bg">The bg</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr TTF_RenderText_Shaded([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderGlyph32Solid([NotNull] IntPtr font, [NotNull, NotZero] uint ch, [NotNull] SdlColor fg)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(ch);
+            Validator.ValidateInput(fg);
+            IntPtr result = NativeSdlTtf.InternalRenderGlyph32_Solid(font, ch, fg);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the render text shaded using the specified font
@@ -981,7 +815,17 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="bg">The bg</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr TtfRenderTextShaded([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg) => TTF_RenderText_Shaded(font, text, fg, bg);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderTextShaded([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(fg);
+            Validator.ValidateInput(bg);
+            IntPtr result = NativeSdlTtf.InternalRenderText_Shaded(font, text, fg, bg);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Internals the ttf render utf 8 shaded using the specified font
@@ -991,32 +835,18 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="bg">The bg</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_RenderUTF8_Shaded", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_TTF_RenderUTF8_Shaded([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg);
-
-        /// <summary>
-        ///     Internals the ttf render utf 8 shaded using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="bg">The bg</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        private static IntPtr InternalTtfRenderUtf8Shaded([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg) => INTERNAL_TTF_RenderUTF8_Shaded(font, text, fg, bg);
-
-        /// <summary>
-        ///     Ttf the render unicode shaded using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="bg">The bg</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr TTF_RenderUNICODE_Shaded([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderUtf8Shaded([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(fg);
+            Validator.ValidateInput(bg);
+            IntPtr result = NativeSdlTtf.InternalRenderUTF8_Shaded(font, text, fg, bg);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the render unicode shaded using the specified font
@@ -1027,20 +857,17 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="bg">The bg</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr TtfRenderUnicodeShaded([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg) => TTF_RenderUNICODE_Shaded(font, text, fg, bg);
-
-        /// <summary>
-        ///     Ttf the render text shaded wrapped using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="bg">The bg</param>
-        /// <param name="wrapLength">The wrap length</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr TTF_RenderText_Shaded_Wrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, SdlColor bg, [NotNull, NotZero] uint wrapLength);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderUnicodeShaded([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(fg);
+            Validator.ValidateInput(bg);
+            IntPtr result = NativeSdlTtf.InternalRenderUNICODE_Shaded(font, text, fg, bg);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the render text shaded wrapped using the specified font
@@ -1052,7 +879,18 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr TtfRenderTextShadedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg, [NotNull, NotZero] uint wrapLength) => TTF_RenderText_Shaded_Wrapped(font, text, fg, bg, wrapLength);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderTextShadedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg, [NotNull, NotZero] uint wrapLength)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(fg);
+            Validator.ValidateInput(bg);
+            Validator.ValidateInput(wrapLength);
+            IntPtr result = NativeSdlTtf.InternalRenderText_Shaded_Wrapped(font, text, fg, bg, wrapLength);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Internals the ttf render utf 8 shaded wrapped using the specified font
@@ -1063,34 +901,19 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="bg">The bg</param>
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_RenderUTF8_Shaded_Wrapped", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr INTERNAL_TTF_RenderUTF8_Shaded_Wrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg, [NotNull, NotZero] uint wrapLength);
-
-        /// <summary>
-        ///     Internals the ttf render utf 8 shaded wrapped using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="bg">The bg</param>
-        /// <param name="wrapLength">The wrap length</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        private static IntPtr InternalTtfRenderUtf8ShadedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg, [NotNull, NotZero] uint wrapLength) => INTERNAL_TTF_RenderUTF8_Shaded_Wrapped(font, text, fg, bg, wrapLength);
-
-        /// <summary>
-        ///     Ttf the render unicode shaded wrapped using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="bg">The bg</param>
-        /// <param name="wrapLength">The wrap length</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr TTF_RenderUNICODE_Shaded_Wrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg, [NotNull, NotZero] uint wrapLength);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderUtf8ShadedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg, [NotNull, NotZero] uint wrapLength)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(fg);
+            Validator.ValidateInput(bg);
+            Validator.ValidateInput(wrapLength);
+            IntPtr result = NativeSdlTtf.InternalRenderUTF8_Shaded_Wrapped(font, text, fg, bg, wrapLength);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the render unicode shaded wrapped using the specified font
@@ -1102,7 +925,18 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr TtfRenderUnicodeShadedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg, [NotNull, NotZero] uint wrapLength) => TTF_RenderUNICODE_Shaded_Wrapped(font, text, fg, bg, wrapLength);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderUnicodeShadedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg, [NotNull, NotZero] uint wrapLength)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(fg);
+            Validator.ValidateInput(bg);
+            Validator.ValidateInput(wrapLength);
+            IntPtr result = NativeSdlTtf.InternalRenderUNICODE_Shaded_Wrapped(font, text, fg, bg, wrapLength);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the render glyph shaded using the specified font
@@ -1112,32 +946,18 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="bg">The bg</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr TTF_RenderGlyph_Shaded([NotNull] IntPtr font, [NotNull, NotZero] ushort ch, [NotNull] SdlColor fg, [NotNull] SdlColor bg);
-
-        /// <summary>
-        ///     Ttf the render glyph shaded using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="ch">The ch</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="bg">The bg</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        public static IntPtr TtfRenderGlyphShaded([NotNull] IntPtr font, [NotNull, NotZero] ushort ch, [NotNull] SdlColor fg, [NotNull] SdlColor bg) => TTF_RenderGlyph_Shaded(font, ch, fg, bg);
-
-        /// <summary>
-        ///     Ttf the render glyph 32 shaded using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="ch">The ch</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="bg">The bg</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr TTF_RenderGlyph32_Shaded([NotNull] IntPtr font, [NotNull, NotZero] uint ch, [NotNull] SdlColor fg, [NotNull] SdlColor bg);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderGlyphShaded([NotNull] IntPtr font, [NotNull, NotZero] ushort ch, [NotNull] SdlColor fg, [NotNull] SdlColor bg)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(ch);
+            Validator.ValidateInput(fg);
+            Validator.ValidateInput(bg);
+            IntPtr result = NativeSdlTtf.InternalRenderGlyph_Shaded(font, ch, fg, bg);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the render glyph 32 shaded using the specified font
@@ -1148,7 +968,17 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="bg">The bg</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr TtfRenderGlyph32Shaded([NotNull] IntPtr font, [NotNull, NotZero] uint ch, [NotNull] SdlColor fg, [NotNull] SdlColor bg) => TTF_RenderGlyph32_Shaded(font, ch, fg, bg);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderGlyph32Shaded([NotNull] IntPtr font, [NotNull, NotZero] uint ch, [NotNull] SdlColor fg, [NotNull] SdlColor bg)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(ch);
+            Validator.ValidateInput(fg);
+            Validator.ValidateInput(bg);
+            IntPtr result = NativeSdlTtf.InternalRenderGlyph32_Shaded(font, ch, fg, bg);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the render text blended using the specified font
@@ -1157,51 +987,17 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr TTF_RenderText_Blended([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg);
-
-        /// <summary>
-        ///     Ttf the render text blended using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        public static IntPtr TtfRenderTextBlended([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg) => TTF_RenderText_Blended(font, text, fg);
-
-        /// <summary>
-        ///     Internals the ttf render utf 8 blended using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_RenderUTF8_Blended", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr INTERNAL_TTF_RenderUTF8_Blended([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg);
-
-        /// <summary>
-        ///     Internals the ttf render utf 8 blended using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        private static IntPtr InternalTtfRenderUtf8Blended([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg) => INTERNAL_TTF_RenderUTF8_Blended(font, text, fg);
-
-        /// <summary>
-        ///     Ttf the render unicode blended using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr TTF_RenderUNICODE_Blended([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderTextBlended([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(fg);
+            IntPtr result = NativeSdlTtf.InternalRenderText_Blended(font, text, fg);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the render unicode blended using the specified font
@@ -1211,19 +1007,16 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr TtfRenderUnicodeBlended([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg) => TTF_RenderUNICODE_Blended(font, text, fg);
-
-        /// <summary>
-        ///     Ttf the render text blended wrapped using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="wrapped">The wrapped</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr TTF_RenderText_Blended_Wrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapped);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderUnicodeBlended([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(fg);
+            IntPtr result = NativeSdlTtf.InternalRenderUNICODE_Blended(font, text, fg);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the render text blended wrapped using the specified font
@@ -1234,19 +1027,17 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="wrapped">The wrapped</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr TtfRenderTextBlendedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapped) => TTF_RenderText_Blended_Wrapped(font, text, fg, wrapped);
-
-        /// <summary>
-        ///     Internals the ttf render utf 8 blended wrapped using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="wrapped">The wrapped</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_RenderUTF8_Blended_Wrapped", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr INTERNAL_TTF_RenderUTF8_Blended_Wrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapped);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderTextBlendedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapped)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(fg);
+            Validator.ValidateInput(wrapped);
+            IntPtr result = NativeSdlTtf.InternalRenderText_Blended_Wrapped(font, text, fg, wrapped);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Internals the ttf render utf 8 blended wrapped using the specified font
@@ -1257,7 +1048,17 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="wrapped">The wrapped</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        private static IntPtr InternalTtfRenderUtf8BlendedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor sdlColor, [NotNull, NotZero] uint wrapped) => INTERNAL_TTF_RenderUTF8_Blended_Wrapped(font, text, sdlColor, wrapped);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderUtf8BlendedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor sdlColor, [NotNull, NotZero] uint wrapped)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(sdlColor);
+            Validator.ValidateInput(wrapped);
+            IntPtr result = NativeSdlTtf.InternalRenderUTF8_Blended_Wrapped(font, text, sdlColor, wrapped);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the render unicode blended wrapped using the specified font
@@ -1267,31 +1068,18 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <param name="wrapped">The wrapped</param>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
-        private static extern IntPtr TTF_RenderUNICODE_Blended_Wrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapped);
-
-        /// <summary>
-        ///     Ttf the render unicode blended wrapped using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="wrapped">The wrapped</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        public static IntPtr TtfRenderUnicodeBlendedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapped) => TTF_RenderUNICODE_Blended_Wrapped(font, text, fg, wrapped);
-
-        /// <summary>
-        ///     Ttf the render glyph blended using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="ch">The ch</param>
-        /// <param name="fg">The fg</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr TTF_RenderGlyph_Blended([NotNull] IntPtr font, [NotNull, NotZero] ushort ch, [NotNull] SdlColor fg);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderUnicodeBlendedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapped)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(fg);
+            Validator.ValidateInput(wrapped);
+            IntPtr result = NativeSdlTtf.InternalRenderUNICODE_Blended_Wrapped(font, text, fg, wrapped);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the render glyph blended using the specified font
@@ -1301,18 +1089,16 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr TtfRenderGlyphBlended([NotNull] IntPtr font, [NotNull, NotZero] ushort ch, [NotNull] SdlColor fg) => TTF_RenderGlyph_Blended(font, ch, fg);
-
-        /// <summary>
-        ///     Ttf the render glyph 32 blended using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="ch">The ch</param>
-        /// <param name="fg">The fg</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        private static extern IntPtr TTF_RenderGlyph32_Blended([NotNull] IntPtr font, [NotNull, NotZero] uint ch, [NotNull] SdlColor fg);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderGlyphBlended([NotNull] IntPtr font, [NotNull, NotZero] ushort ch, [NotNull] SdlColor fg)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(ch);
+            Validator.ValidateInput(fg);
+            IntPtr result = NativeSdlTtf.InternalRenderGlyph_Blended(font, ch, fg);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the render glyph 32 blended using the specified font
@@ -1322,33 +1108,31 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
         [return: NotNull]
-        public static IntPtr TtfRenderGlyph32Blended([NotNull] IntPtr font, [NotNull] uint ch, [NotNull] SdlColor fg) => TTF_RenderGlyph32_Blended(font, ch, fg);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderGlyph32Blended([NotNull] IntPtr font, [NotNull] uint ch, [NotNull] SdlColor fg)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(ch);
+            Validator.ValidateInput(fg);
+            IntPtr result = NativeSdlTtf.InternalRenderGlyph32_Blended(font, ch, fg);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the set direction using the specified direction
         /// </summary>
         /// <param name="direction">The direction</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull, NotZero]
-        private static extern int TTF_SetDirection([NotNull, NotZero] int direction);
-
-        /// <summary>
-        ///     Ttf the set direction using the specified direction
-        /// </summary>
-        /// <param name="direction">The direction</param>
-        /// <returns>The int</returns>
-        [return: NotNull, NotZero]
-        public static int TtfSetDirection([NotNull, NotZero] int direction) => TTF_SetDirection(direction);
-
-        /// <summary>
-        ///     Ttf the set script using the specified script
-        /// </summary>
-        /// <param name="script">The script</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern int TTF_SetScript([NotNull, NotZero] int script);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfSetDirection([NotNull, NotZero] int direction)
+        {
+            Validator.ValidateInput(direction);
+            int result = NativeSdlTtf.InternalSetDirection(direction);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the set script using the specified script
@@ -1356,59 +1140,48 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="script">The script</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfSetScript([NotNull, NotZero] int script) => TTF_SetScript(script);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfSetScript([NotNull, NotZero] int script)
+        {
+            Validator.ValidateInput(script);
+            int result = NativeSdlTtf.InternalSetScript(script);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the close font using the specified font
         /// </summary>
         /// <param name="font">The font</param>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        private static extern void TTF_CloseFont([NotNull] IntPtr font);
-
-        /// <summary>
-        ///     Ttf the close font using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        public static void TtfCloseFont([NotNull] IntPtr font) => TTF_CloseFont(font);
-
-        /// <summary>
-        ///     Ttf the quit
-        /// </summary>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern void TTF_Quit();
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void TtfCloseFont([NotNull] IntPtr font)
+        {
+            Validator.ValidateInput(font);
+            NativeSdlTtf.InternalCloseFont(font);
+        }
 
         /// <summary>
         ///     Ttf the quit
         /// </summary>
         [return: NotNull, NotZero]
-        public static void TtfQuit() => TTF_Quit();
-
-        /// <summary>
-        ///     Ttf the was init
-        /// </summary>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern int TTF_WasInit();
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void TtfQuit()
+        {
+            NativeSdlTtf.InternalQuit();
+        }
 
         /// <summary>
         ///     Ttf the was init
         /// </summary>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfWasInit() => TTF_WasInit();
-
-        /// <summary>
-        ///     Sdl the get font kerning size using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="prevIndex">The prev index</param>
-        /// <param name="index">The index</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern int SDL_GetFontKerningSize([NotNull] IntPtr font, [NotNull, NotZero] int prevIndex, [NotNull, NotZero] int index);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfWasInit()
+        {
+            int result = NativeSdlTtf.InternalWasInit();
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Sdl the get font kerning size using the specified font
@@ -1418,7 +1191,16 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="index">The index</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int SdlGetFontKerningSize([NotNull] IntPtr font, [NotNull, NotZero] int prevIndex, [NotNull, NotZero] int index) => SDL_GetFontKerningSize(font, prevIndex, index);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int SdlGetFontKerningSize([NotNull] IntPtr font, [NotNull, NotZero] int prevIndex, [NotNull, NotZero] int index)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(prevIndex);
+            Validator.ValidateInput(index);
+            int result = NativeSdlTtf.InternalGetFontKerningSize(font, prevIndex, index);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the get font kerning size glyphs using the specified font
@@ -1427,30 +1209,17 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="previousCh">The previous ch</param>
         /// <param name="ch">The ch</param>
         /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull, NotZero]
-        private static extern int TTF_GetFontKerningSizeGlyphs([NotNull] IntPtr font, [NotNull, NotZero] ushort previousCh, [NotNull, NotZero] ushort ch);
-
-        /// <summary>
-        ///     Ttf the get font kerning size glyphs using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="previousCh">The previous ch</param>
-        /// <param name="ch">The ch</param>
-        /// <returns>The int</returns>
-        [return: NotNull, NotZero]
-        public static int TtfGetFontKerningSizeGlyphs([NotNull] IntPtr font, [NotNull, NotZero] ushort previousCh, [NotNull, NotZero] ushort ch) => TTF_GetFontKerningSizeGlyphs(font, previousCh, ch);
-
-        /// <summary>
-        ///     Ttf the get font kerning size glyphs 32 using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="previousCh">The previous ch</param>
-        /// <param name="ch">The ch</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull, NotZero]
-        private static extern int TTF_GetFontKerningSizeGlyphs32([NotNull] IntPtr font, [NotNull, NotZero] ushort previousCh, [NotNull, NotZero] ushort ch);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfGetFontKerningSizeGlyphs([NotNull] IntPtr font, [NotNull, NotZero] ushort previousCh, [NotNull, NotZero] ushort ch)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(previousCh);
+            Validator.ValidateInput(ch);
+            int result = NativeSdlTtf.InternalGetFontKerningSizeGlyphs(font, previousCh, ch);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the get font kerning size glyphs 32 using the specified font
@@ -1460,7 +1229,16 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="ch">The ch</param>
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
-        public static int TtfGetFontKerningSizeGlyphs32([NotNull] IntPtr font, [NotNull, NotZero] ushort previousCh, [NotNull, NotZero] ushort ch) => TTF_GetFontKerningSizeGlyphs32(font, previousCh, ch);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int TtfGetFontKerningSizeGlyphs32([NotNull] IntPtr font, [NotNull, NotZero] ushort previousCh, [NotNull, NotZero] ushort ch)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(previousCh);
+            Validator.ValidateInput(ch);
+            int result = NativeSdlTtf.InternalGetFontKerningSizeGlyphs32(font, previousCh, ch);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the open font using the specified file
@@ -1469,65 +1247,40 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="ptSize">The pt size</param>
         /// <returns>The handle</returns>
         [return: NotNull]
-        public static IntPtr TtfOpenFont([NotNull, NotEmpty] string file, [NotNull, NotZero] int ptSize) => TtfOpenFont(file, ptSize);
-
-        /// <summary>
-        ///     Ttf the render utf 8 blended wrapped using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="wrapped">The wrapped</param>
-        /// <returns>The result</returns>
-        [return: NotNull]
-        public static IntPtr TtfRenderUtf8BlendedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapped) => InternalTtfRenderUtf8BlendedWrapped(font, text, fg, wrapped);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfOpenFont([NotNull, NotEmpty] string file, [NotNull, NotZero] int ptSize)
+        {
+            Validator.ValidateInput(file);
+            Validator.ValidateInput(ptSize);
+            IntPtr result = NativeSdlTtf.InternalOpenFont(file, ptSize);
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the get error
         /// </summary>
         /// <returns>The string</returns>
         [return: NotNull, NotEmpty]
-        public static string TtfGetError() => Sdl.GetError();
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static string TtfGetError()
+        {
+            string result = Sdl.GetError();
+            Validator.ValidateOutput(result);
+            return result;
+        }
 
         /// <summary>
         ///     Ttf the set error using the specified fmt and arg
         /// </summary>
         /// <param name="fmtAndArgList">The fmt and arg</param>
         [return: NotNull]
-        public static void TtfSetError([NotNull, NotEmpty] string fmtAndArgList) => Sdl.SetError(fmtAndArgList);
-
-        /// <summary>
-        ///     Ttf the render utf 8 blended using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <returns>The result</returns>
-        [return: NotNull]
-        public static IntPtr TtfRenderUtf8Blended([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg) => InternalTtfRenderUtf8Blended(font, text, fg);
-
-        /// <summary>
-        ///     Ttf the render utf 8 shaded wrapped using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="bg">The bg</param>
-        /// <param name="wrapLength">The wrap length</param>
-        /// <returns>The result</returns>
-        [return: NotNull]
-        public static IntPtr TtfRenderUtf8ShadedWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg, [NotNull] uint wrapLength) => InternalTtfRenderUtf8ShadedWrapped(font, text, fg, bg, wrapLength);
-
-        /// <summary>
-        ///     Ttf the render utf 8 shaded using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <param name="bg">The bg</param>
-        /// <returns>The result</returns>
-        [return: NotNull]
-        public static IntPtr TtfRenderUtf8Shaded([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull] SdlColor bg) => InternalTtfRenderUtf8Shaded(font, text, fg, bg);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void TtfSetError([NotNull, NotEmpty] string fmtAndArgList)
+        {
+            Validator.ValidateInput(fmtAndArgList);
+            Sdl.SetError(fmtAndArgList);
+        }
 
         /// <summary>
         ///     Ttf the render utf 8 solid wrapped using the specified font
@@ -1538,70 +1291,47 @@ namespace Alis.Core.Graphic.Sdl2Ttf
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The result</returns>
         [return: NotNull]
-        public static IntPtr TTF_RenderUTF8_Solid_Wrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapLength) => InternalTtfRenderUtf8SolidWrapped(font, text, fg, wrapLength);
-
-        /// <summary>
-        ///     Ttf the render utf 8 solid using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="fg">The fg</param>
-        /// <returns>The result</returns>
-        [return: NotNull]
-        public static IntPtr TtfRenderUtf8Solid([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg) => InternalTtfRenderUtf8Solid(font, text, fg);
-
-        /// <summary>
-        ///     Ttf the measure utf 8 using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="measureWidth">The measure width</param>
-        /// <param name="extent">The extent</param>
-        /// <param name="count">The count</param>
-        /// <returns>The result</returns>
-        [return: NotNull]
-        public static int TtfMeasureUtf8([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] int measureWidth, [NotNull] out int extent, [NotNull] out int count) => InternalTtfMeasureUtf8(font, text, measureWidth, out extent, out count);
-
-        /// <summary>
-        ///     Ttf the size utf 8 using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <param name="text">The text</param>
-        /// <param name="w">The </param>
-        /// <param name="h">The </param>
-        /// <returns>The result</returns>
-        [return: NotNull]
-        public static int TtfSizeUtf8([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] out int w, [NotNull] out int h) => InternalTtfSizeUtf8(font, text, out w, out h);
-
-        /// <summary>
-        ///     Ttf the font face style name using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <returns>The string</returns>
-        [return: NotNull]
-        public static string TtfFontFaceStyleName([NotNull] IntPtr font) => InternalTtfFontFaceStyleName(font);
-
-        /// <summary>
-        ///     Ttf the open font index using the specified file
-        /// </summary>
-        /// <param name="file">The file</param>
-        /// <param name="ptSize">The pt size</param>
-        /// <param name="index">The index</param>
-        /// <returns>The handle</returns>
-        [return: NotNull]
-        public static IntPtr TtfOpenFontIndex([NotNull, NotEmpty] string file, [NotNull, NotZero] int ptSize, [NotNull] long index) => InternalTtfOpenFontIndex(file, ptSize, index);
-
-        /// <summary>
-        ///     Ttf the linked version
-        /// </summary>
-        /// <returns>The result</returns>
-        [return: NotNull]
-        public static SdlVersion TtfLinkedVersion() => (SdlVersion) Marshal.PtrToStructure(InternalTtfLinkedVersion(), typeof(SdlVersion));
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr RenderUtf8SolidWrapped([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg, [NotNull, NotZero] uint wrapLength)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(fg);
+            Validator.ValidateInput(wrapLength);
+            IntPtr result = NativeSdlTtf.InternalRenderUTF8_Solid_Wrapped(font, text, fg, wrapLength);
+            Validator.ValidateOutput(result);
+            return result;
+        }
+        
         /// <summary>
         ///     Sdl the ttf version using the specified x
         /// </summary>
         [return: NotNull]
-        public static SdlVersion SdlTtfVersion() => new SdlVersion(SdlTtfMajorVersion, SdlTtfMinorVersion, SdlTtfPatchLevel);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static SdlVersion GetTtfVersion()
+        {
+            SdlVersion result = NativeSdlTtf.InternalGetTtfVersion();
+            Validator.ValidateOutput(result);
+            return result;
+        }
+
+        /// <summary>
+        ///     Internals the ttf render utf 8 blended using the specified font
+        /// </summary>
+        /// <param name="font">The font</param>
+        /// <param name="text">The text</param>
+        /// <param name="fg">The fg</param>
+        /// <returns>The int ptr</returns>
+        [return: NotNull]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IntPtr TtfRenderUtf8Blended([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull] SdlColor fg)
+        {
+            Validator.ValidateInput(font);
+            Validator.ValidateInput(text);
+            Validator.ValidateInput(fg);
+            IntPtr result = NativeSdlTtf.InternalRenderUTF8_Blended(font, text, fg);
+            Validator.ValidateOutput(result);
+            return result;
+        }
     }
 }

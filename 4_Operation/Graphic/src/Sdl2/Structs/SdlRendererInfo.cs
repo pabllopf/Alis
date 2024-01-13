@@ -143,6 +143,10 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// </summary>
         public readonly int max_texture_height;
         
+        /// <summary>
+        /// Gets the name
+        /// </summary>
+        /// <returns>The string</returns>
         public string GetName()
         {
             return Marshal.PtrToStringAnsi(name);
