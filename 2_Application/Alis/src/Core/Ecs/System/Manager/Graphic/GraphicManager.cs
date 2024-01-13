@@ -43,6 +43,8 @@ using Alis.Core.Ecs.System.Setting.Graphic;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
+using Alis.Core.Graphic.Sdl2Image;
+using Alis.Core.Graphic.Sdl2Ttf;
 
 namespace Alis.Core.Ecs.System.Manager.Graphic
 {
@@ -452,7 +454,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Console.WriteLine(SdlImage.ImgInit(flagImage) < 0 ? $"There was an issue initializing SDL_Image. {Sdl.GetError()}" : "SDL_Image Initialized");
 
             // GET VERSION SDL_IMAGE
-            Console.WriteLine($"SDL_Image Version: {SdlImage.SdlImageVersion().major}.{SdlImage.SdlImageVersion().minor}.{SdlImage.SdlImageVersion().patch}");
+            Console.WriteLine($"SDL_Image Version: {SdlImage.GetVersion().major}.{SdlImage.GetVersion().minor}.{SdlImage.GetVersion().patch}");
 
             // INIT SDL_TTF
             Console.WriteLine(SdlTtf.TtfInit() < 0 ? $"There was an issue initializing SDL_TTF. {Sdl.GetError()}" : "SDL_TTF Initialized");

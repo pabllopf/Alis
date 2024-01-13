@@ -38,6 +38,7 @@ using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Structs;
+using Alis.Core.Graphic.Sdl2Image;
 using Sdl = Alis.Core.Graphic.Sdl2.Sdl;
 
 namespace Alis.Core.Graphic.Sample
@@ -184,7 +185,7 @@ namespace Alis.Core.Graphic.Sample
             Console.WriteLine(SdlImage.ImgInit(flagImage) < 0 ? $"There was an issue initializing SDL_Image. {Sdl.GetError()}" : "SDL_Image Initialized");
 
             // GET VERSION SDL_IMAGE
-            Console.WriteLine($"SDL_Image Version: {SdlImage.SdlImageVersion().major}.{SdlImage.SdlImageVersion().minor}.{SdlImage.SdlImageVersion().patch}");
+            Console.WriteLine($"SDL_Image Version: {SdlImage.GetVersion().major}.{SdlImage.GetVersion().minor}.{SdlImage.GetVersion().patch}");
 
             Sdlinput();
 
