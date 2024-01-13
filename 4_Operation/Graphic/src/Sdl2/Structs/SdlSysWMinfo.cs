@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: SdlSysWMinfo.cs
+//  File: SdlSysWmInfo.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,10 +33,10 @@ using Alis.Core.Graphic.Sdl2.Enums;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl syswminfo
+    ///     The sdl sys wm info
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct SdlSysWMinfo
+    public struct SdlSysWmInfo
     {
         /// <summary>
         ///     The version

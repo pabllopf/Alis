@@ -39,9 +39,9 @@ namespace Alis.Core.Graphic.Sdl2.Structs
     public struct SdlPalette
     {
         /// <summary>
-        ///     The ncolors
+        ///     The n colors
         /// </summary>
-        public readonly int ncolors;
+        public readonly int nColors;
 
         /// <summary>
         ///     The colors
@@ -54,8 +54,8 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         public readonly int version;
 
         /// <summary>
-        ///     The refcount
+        ///     The ref count
         /// </summary>
-        public readonly int refcount;
+        public readonly int refCount;
     }
 }

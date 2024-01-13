@@ -33,7 +33,7 @@ using Alis.Core.Graphic.Sdl2.Enums;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl joyaxisevent
+    ///     The sdl joy axis event
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlJoyAxisEvent
@@ -51,7 +51,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The which
         /// </summary>
-        public readonly int which; /* SDL_JoystickID */
+        public readonly int which; 
 
         /// <summary>
         ///     The axis
@@ -76,7 +76,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The axis value
         /// </summary>
-        public readonly short axisValue; /* value, lolC# */
+        public readonly short axisValue; 
 
         /// <summary>
         ///     The padding

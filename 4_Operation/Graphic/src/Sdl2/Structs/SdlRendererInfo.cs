@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl rendererinfo
+    ///     The sdl renderer info
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlRendererInfo
@@ -156,7 +156,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         {
             get
             {
-                return new int[16]
+                return new[]
                 {
                     textureFormats0,
                     textureFormats1,

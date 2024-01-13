@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl touchfingerevent
+    ///     The sdl touch finger event
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlTouchFingerEvent
@@ -50,12 +50,12 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The touch id
         /// </summary>
-        public readonly long touchId; // SDL_TouchID
+        public readonly long touchId; 
 
         /// <summary>
         ///     The finger id
         /// </summary>
-        public readonly long fingerId; // SDL_GestureID
+        public readonly long fingerId; 
 
         /// <summary>
         ///     The

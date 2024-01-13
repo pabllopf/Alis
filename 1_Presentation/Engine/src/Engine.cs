@@ -377,7 +377,7 @@ namespace Alis.App.Engine
                         }
                         case SdlEventType.SdlKeydown:
                         {
-                            switch (e.key.keysym.sym)
+                            switch (e.key.keySym.sym)
                             {
                                 case SdlKeycode.SdlkEscape:
                                 case SdlKeycode.SdlkQ:
@@ -628,7 +628,7 @@ namespace Alis.App.Engine
                 case SdlEventType.SdlKeydown:
                 case SdlEventType.SdlKeyup:
                 {
-                    SdlScancode key = evt.key.keysym.scancode;
+                    SdlScancode key = evt.key.keySym.scancode;
                     io.KeysDown[(int) key] = evt.type == SdlEventType.SdlKeydown;
                     Console.WriteLine("io.KeysDown[" + key + "] = " + evt.type + io.KeysDown[(int) key]);
                     io.KeyShift = (Sdl.GetModState() & SdlKeymod.KmodShift) != 0;

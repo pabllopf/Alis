@@ -33,7 +33,7 @@ using Alis.Core.Graphic.Sdl2.Enums;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl keyboardevent
+    ///     The sdl keyboard event
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlKeyboardEvent
@@ -74,8 +74,8 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         private readonly byte padding3;
 
         /// <summary>
-        ///     The keysym
+        ///     The key sym
         /// </summary>
-        public SdlKeysym keysym;
+        public SdlKeySym keySym;
     }
 }

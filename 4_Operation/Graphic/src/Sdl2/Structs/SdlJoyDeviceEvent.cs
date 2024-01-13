@@ -33,7 +33,7 @@ using Alis.Core.Graphic.Sdl2.Enums;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl joydeviceevent
+    ///     The sdl joy device event
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlJoyDeviceEvent
@@ -51,6 +51,6 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The which
         /// </summary>
-        public readonly int which; /* SDL_JoystickID */
+        public readonly int which; 
     }
 }

@@ -33,7 +33,7 @@ using Alis.Core.Graphic.Sdl2.Enums;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl joybuttonevent
+    ///     The sdl joy button event
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlJoyButtonEvent
@@ -51,7 +51,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The which
         /// </summary>
-        public readonly int which; /* SDL_JoystickID */
+        public readonly int which; 
 
         /// <summary>
         ///     The button
@@ -61,7 +61,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The state
         /// </summary>
-        public readonly byte state; /* SDL_PRESSED or SDL_RELEASED */
+        public readonly byte state;
 
         /// <summary>
         ///     The padding

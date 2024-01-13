@@ -33,7 +33,7 @@ using Alis.Core.Graphic.Sdl2.Enums;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl joyballevent
+    ///     The sdl joy ball event
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlJoyBallEvent
@@ -51,7 +51,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The which
         /// </summary>
-        public readonly int which; /* SDL_JoystickID */
+        public readonly int which; 
 
         /// <summary>
         ///     The ball
@@ -74,13 +74,13 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         private readonly byte padding3;
 
         /// <summary>
-        ///     The xrel
+        ///     The x rel
         /// </summary>
-        public readonly short xrel;
+        public readonly short xRel;
 
         /// <summary>
-        ///     The yrel
+        ///     The y rel
         /// </summary>
-        public readonly short yrel;
+        public readonly short yRel;
     }
 }

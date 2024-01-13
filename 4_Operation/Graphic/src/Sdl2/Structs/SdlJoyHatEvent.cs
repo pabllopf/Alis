@@ -33,7 +33,7 @@ using Alis.Core.Graphic.Sdl2.Enums;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl joyhatevent
+    ///     The sdl joy hat event
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlJoyHatEvent
@@ -51,17 +51,17 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The which
         /// </summary>
-        public readonly int which; /* SDL_JoystickID */
+        public readonly int which; 
 
         /// <summary>
         ///     The hat
         /// </summary>
-        public readonly byte hat; /* index of the hat */
+        public readonly byte hat; 
 
         /// <summary>
         ///     The hat value
         /// </summary>
-        public readonly byte hatValue; /* value, lolC# */
+        public readonly byte hatValue; 
 
         /// <summary>
         ///     The padding

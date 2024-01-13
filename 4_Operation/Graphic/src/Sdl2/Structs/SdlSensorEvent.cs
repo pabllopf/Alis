@@ -33,7 +33,7 @@ using Alis.Core.Graphic.Sdl2.Enums;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl sensorevent
+    ///     The sdl sensor event
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlSensorEvent
@@ -90,7 +90,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         {
             get
             {
-                return new float[6]
+                return new[]
                 {
                     float0,
                     float1,

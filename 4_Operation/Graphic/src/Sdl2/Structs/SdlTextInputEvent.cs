@@ -33,7 +33,7 @@ using Alis.Core.Graphic.Sdl2.Enums;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl textinputevent
+    ///     The sdl text input event
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlTextInputEvent
@@ -220,8 +220,7 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         {
             get
             {
-                byte[] textBytes = new byte[32]
-                {
+                byte[] textBytes = {
                     byte0,
                     byte1,
                     byte2,

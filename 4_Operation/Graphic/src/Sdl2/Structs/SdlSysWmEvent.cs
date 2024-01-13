@@ -34,7 +34,7 @@ using Alis.Core.Graphic.Sdl2.Enums;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl syswmevent
+    ///     The sdl sys wm event
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlSysWmEvent

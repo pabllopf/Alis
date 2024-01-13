@@ -989,7 +989,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetWindowWMInfo", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalGetWindowWMInfo([NotNull] IntPtr window, ref SdlSysWMinfo info);
+        internal static extern SdlBool InternalGetWindowWMInfo([NotNull] IntPtr window, ref SdlSysWmInfo info);
 
         /// <summary>
         ///     Internals the sdl get base path

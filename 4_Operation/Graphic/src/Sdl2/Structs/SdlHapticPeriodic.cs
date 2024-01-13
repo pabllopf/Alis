@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl hapticperiodic
+    ///     The sdl haptic periodic
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlHapticPeriodic

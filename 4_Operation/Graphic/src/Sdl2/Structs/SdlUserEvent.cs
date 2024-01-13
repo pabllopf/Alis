@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Graphic.Sdl2.Structs
 {
     /// <summary>
-    ///     The sdl userevent
+    ///     The sdl user event
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct SdlUserEvent
@@ -61,11 +61,11 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         /// <summary>
         ///     The data
         /// </summary>
-        public IntPtr data1; /* user-defined */
+        public IntPtr data1; 
 
         /// <summary>
         ///     The data
         /// </summary>
-        public IntPtr data2; /* user-defined */
+        public IntPtr data2; 
     }
 }

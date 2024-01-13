@@ -49,8 +49,8 @@ namespace Alis.Core.Graphic.Sdl2.Structs
         public SdlColor color;
 
         /// <summary>
-        ///     The tex coord
+        ///     The text coordinate
         /// </summary>
-        public PointF tex_coord;
+        public PointF texCoordinate;
     }
 }
