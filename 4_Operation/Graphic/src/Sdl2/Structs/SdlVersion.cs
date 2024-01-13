@@ -34,22 +34,25 @@ namespace Alis.Core.Graphic.Sdl2.Structs
     /// <summary>
     ///     The sdl version
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Explicit)]
     public struct SdlVersion
     {
         /// <summary>
         ///     The major
         /// </summary>
+        [FieldOffset(0)]
         public byte major;
 
         /// <summary>
         ///     The minor
         /// </summary>
+        [FieldOffset(1)]
         public byte minor;
 
         /// <summary>
         ///     The patch
         /// </summary>
+        [FieldOffset(2)]
         public byte patch;
 
         /// <summary>

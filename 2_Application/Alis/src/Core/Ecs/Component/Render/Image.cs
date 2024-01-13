@@ -31,6 +31,7 @@ using System;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.Sdl2;
+using Alis.Core.Graphic.Sdl2Image;
 
 namespace Alis.Core.Ecs.Component.Render
 {
