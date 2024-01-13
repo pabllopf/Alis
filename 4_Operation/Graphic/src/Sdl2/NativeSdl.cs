@@ -1332,7 +1332,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_GetModState", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlKeymod InternalGetModState();
+        internal static extern SdlKeyMod InternalGetModState();
 
         /// <summary>
         ///     Sdl the set mod state using the specified mod state
@@ -1341,7 +1341,7 @@ namespace Alis.Core.Graphic.Sdl2
         [DllImport(NativeLibName, EntryPoint = "SDL_SetModState", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalSetModState(SdlKeymod modState);
+        internal static extern void InternalSetModState(SdlKeyMod modState);
 
         /// <summary>
         ///     Sdl the get key from scancode using the specified scancode

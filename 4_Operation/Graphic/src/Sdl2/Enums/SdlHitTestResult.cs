@@ -30,58 +30,58 @@
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl hittestresult enum
+    ///     The sdl hit test result enum
     /// </summary>
     public enum SdlHitTestResult
     {
         /// <summary>
-        ///     The sdl hittest normal sdl hittestresult
+        ///     The sdl hit test normal sdl hit test result
         /// </summary>
-        SdlHittestNormal,
+        SdlHitTestNormal,
 
         /// <summary>
-        ///     The sdl hittest draggable sdl hittestresult
+        ///     The sdl hit test draggable sdl hit test result
         /// </summary>
-        SdlHittestDraggable,
+        SdlHitTestDraggable,
 
         /// <summary>
-        ///     The sdl hittest resize topleft sdl hittestresult
+        ///     The sdl hit test resize top left sdl hit test result
         /// </summary>
-        SdlHittestResizeTopleft,
+        SdlHitTestResizeTopLeft,
 
         /// <summary>
-        ///     The sdl hittest resize top sdl hittestresult
+        ///     The sdl hit test resize top sdl hit test result
         /// </summary>
-        SdlHittestResizeTop,
+        SdlHitTestResizeTop,
 
         /// <summary>
-        ///     The sdl hittest resize topright sdl hittestresult
+        ///     The sdl hit test resize top right sdl hit test result
         /// </summary>
-        SdlHittestResizeTopright,
+        SdlHitTestResizeTopRight,
 
         /// <summary>
-        ///     The sdl hittest resize right sdl hittestresult
+        ///     The sdl hit test resize right sdl hit test result
         /// </summary>
-        SdlHittestResizeRight,
+        SdlHitTestResizeRight,
 
         /// <summary>
-        ///     The sdl hittest resize bottomright sdl hittestresult
+        ///     The sdl hit test resize bottom right sdl hit test result
         /// </summary>
-        SdlHittestResizeBottomright,
+        SdlHitTestResizeBottomRight,
 
         /// <summary>
-        ///     The sdl hittest resize bottom sdl hittestresult
+        ///     The sdl hit test resize bottom sdl hit test result
         /// </summary>
-        SdlHittestResizeBottom,
+        SdlHitTestResizeBottom,
 
         /// <summary>
-        ///     The sdl hittest resize bottomleft sdl hittestresult
+        ///     The sdl hit test resize bottom left sdl hit test result
         /// </summary>
-        SdlHittestResizeBottomleft,
+        SdlHitTestResizeBottomLeft,
 
         /// <summary>
-        ///     The sdl hittest resize left sdl hittestresult
+        ///     The sdl hit test resize left sdl hit test result
         /// </summary>
-        SdlHittestResizeLeft
+        SdlHitTestResizeLeft
     }
 }

@@ -37,36 +37,36 @@ namespace Alis.Core.Graphic.Sdl2.Enums
         /// <summary>
         ///     The sdl array order none sdl array order
         /// </summary>
-        SdlArrayorderNone,
+        SdlArrayOrderNone,
 
         /// <summary>
         ///     The sdl array order rgb sdl array order
         /// </summary>
-        SdlArrayorderRgb,
+        SdlArrayOrderRgb,
 
         /// <summary>
         ///     The sdl array order rgba sdl array order
         /// </summary>
-        SdlArrayorderRgba,
+        SdlArrayOrderRgba,
 
         /// <summary>
         ///     The sdl array order argb sdl array order
         /// </summary>
-        SdlArrayorderArgb,
+        SdlArrayOrderArgb,
 
         /// <summary>
         ///     The sdl array order bgr sdl array order
         /// </summary>
-        SdlArrayorderBgr,
+        SdlArrayOrderBgr,
 
         /// <summary>
         ///     The sdl array order bgr sdl array order
         /// </summary>
-        SdlArrayorderBgra,
+        SdlArrayOrderBgrA,
 
         /// <summary>
         ///     The sdl array order abg sdl array order
         /// </summary>
-        SdlArrayorderAbgr
+        SdlArrayOrderAbgR
     }
 }

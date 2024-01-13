@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: SdlKeymod.cs
+//  File: SdlKeyMod.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,100 +32,99 @@ using System;
 namespace Alis.Core.Graphic.Sdl2.Enums
 {
     /// <summary>
-    ///     The sdl keymod enum
+    ///     The sdl key mod enum
     /// </summary>
     [Flags]
-    public enum SdlKeymod : ushort
+    public enum SdlKeyMod : ushort
     {
         /// <summary>
-        ///     The kmod none sdl keymod
+        ///     The k mod none sdl key mod
         /// </summary>
         None = 0x0000,
 
         /// <summary>
-        ///     The kmod lshift sdl keymod
+        ///     The k mod l shift sdl key mod
         /// </summary>
-        KmodLshift = 0x0001,
+        KModLShift = 0x0001,
 
         /// <summary>
-        ///     The kmod rshift sdl keymod
+        ///     The k mod r shift sdl key mod
         /// </summary>
-        KmodRshift = 0x0002,
+        KModRShift = 0x0002,
 
         /// <summary>
-        ///     The kmod lctrl sdl keymod
+        ///     The k mod l ctrl sdl key mod
         /// </summary>
-        KmodLctrl = 0x0040,
+        KModLCtrl = 0x0040,
 
         /// <summary>
-        ///     The kmod rctrl sdl keymod
+        ///     The k mod r ctrl sdl key mod
         /// </summary>
-        KmodRctrl = 0x0080,
+        KModRCtrl = 0x0080,
 
         /// <summary>
-        ///     The kmod lalt sdl keymod
+        ///     The k mod l alt sdl key mod
         /// </summary>
-        KmodLalt = 0x0100,
+        KModLAlt = 0x0100,
 
         /// <summary>
-        ///     The kmod ralt sdl keymod
+        ///     The k mod r alt sdl key mod
         /// </summary>
-        KmodRalt = 0x0200,
+        KModRAlt = 0x0200,
 
         /// <summary>
-        ///     The kmod lgui sdl keymod
+        ///     The k mod l gui sdl key mod
         /// </summary>
-        KmodLgui = 0x0400,
+        KModLGui = 0x0400,
 
         /// <summary>
-        ///     The kmod rgui sdl keymod
+        ///     The k mod r gui sdl key mod
         /// </summary>
-        KmodRgui = 0x0800,
+        KModRGui = 0x0800,
 
         /// <summary>
-        ///     The kmod num sdl keymod
+        ///     The k mod num sdl key mod
         /// </summary>
-        KmodNum = 0x1000,
+        KModNum = 0x1000,
 
         /// <summary>
-        ///     The kmod caps sdl keymod
+        ///     The k mod caps sdl key mod
         /// </summary>
-        KmodCaps = 0x2000,
+        KModCaps = 0x2000,
 
         /// <summary>
-        ///     The kmod mode sdl keymod
+        ///     The k mod mode sdl key mod
         /// </summary>
-        KmodMode = 0x4000,
+        KModMode = 0x4000,
 
         /// <summary>
-        ///     The kmod scroll sdl keymod
+        ///     The k mod scroll sdl key mod
         /// </summary>
-        KmodScroll = 0x8000,
-
-        /* These are defines in the SDL headers */
+        KModScroll = 0x8000,
+        
         /// <summary>
-        ///     The kmod ctrl sdl keymod
+        ///     The k mod ctrl sdl key mod
         /// </summary>
-        KmodCtrl = KmodLctrl | KmodRctrl,
-
-        /// <summary>
-        ///     The kmod shift sdl keymod
-        /// </summary>
-        KmodShift = KmodLshift | KmodRshift,
+        KModCtrl = KModLCtrl | KModRCtrl,
 
         /// <summary>
-        ///     The kmod alt sdl keymod
+        ///     The k mod shift sdl key mod
         /// </summary>
-        KmodAlt = KmodLalt | KmodRalt,
+        KModShift = KModLShift | KModRShift,
 
         /// <summary>
-        ///     The kmod gui sdl keymod
+        ///     The k mod alt sdl key mod
         /// </summary>
-        KmodGui = KmodLgui | KmodRgui,
+        KModAlt = KModLAlt | KModRAlt,
 
         /// <summary>
-        ///     The kmod reserved sdl keymod
+        ///     The k mod gui sdl key mod
         /// </summary>
-        KmodReserved = KmodScroll
+        KModGui = KModLGui | KModRGui,
+
+        /// <summary>
+        ///     The k mod reserved sdl key mod
+        /// </summary>
+        KModReserved = KModScroll
     }
 }

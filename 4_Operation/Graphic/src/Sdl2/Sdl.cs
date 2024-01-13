@@ -1291,12 +1291,12 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     The sdl array order rgb
         /// </summary>
-        public static readonly uint PixelFormatRgb24 = SdlDefinePixelFormat(Type.TypeArrayU8, (uint) SdlArrayOrder.SdlArrayorderRgb, 0, 24, 3);
+        public static readonly uint PixelFormatRgb24 = SdlDefinePixelFormat(Type.TypeArrayU8, (uint) SdlArrayOrder.SdlArrayOrderRgb, 0, 24, 3);
 
         /// <summary>
         ///     The sdl array order bgr
         /// </summary>
-        public static readonly uint PixelFormatBgr24 = SdlDefinePixelFormat(Type.TypeArrayU8, (uint) SdlArrayOrder.SdlArrayorderBgr, 0, 24, 3);
+        public static readonly uint PixelFormatBgr24 = SdlDefinePixelFormat(Type.TypeArrayU8, (uint) SdlArrayOrder.SdlArrayOrderBgr, 0, 24, 3);
 
         /// <summary>
         ///     The sdl packed layout 8888
@@ -5377,10 +5377,10 @@ namespace Alis.Core.Graphic.Sdl2
             {
                 SdlArrayOrder aOrder =
                     (SdlArrayOrder) SdlPixelOrder(format);
-                return aOrder == SdlArrayOrder.SdlArrayorderArgb ||
-                       aOrder == SdlArrayOrder.SdlArrayorderRgba ||
-                       aOrder == SdlArrayOrder.SdlArrayorderAbgr ||
-                       aOrder == SdlArrayOrder.SdlArrayorderBgra;
+                return aOrder == SdlArrayOrder.SdlArrayOrderArgb ||
+                       aOrder == SdlArrayOrder.SdlArrayOrderRgba ||
+                       aOrder == SdlArrayOrder.SdlArrayOrderAbgR ||
+                       aOrder == SdlArrayOrder.SdlArrayOrderBgrA;
             }
 
             return false;
@@ -6377,7 +6377,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <returns>The sdl key mod</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlKeymod GetModState() => NativeSdl.InternalGetModState();
+        public static SdlKeyMod GetModState() => NativeSdl.InternalGetModState();
 
         /// <summary>
         ///     Sets the mod state using the specified mod state
@@ -6385,7 +6385,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="modState">The mod state</param>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SetModState(SdlKeymod modState)
+        public static void SetModState(SdlKeyMod modState)
         {
             NativeSdl.InternalSetModState(modState);
         }
