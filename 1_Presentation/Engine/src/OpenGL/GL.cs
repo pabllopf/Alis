@@ -336,7 +336,7 @@ namespace Alis.App.Engine.OpenGL
         /// <returns>The</returns>
         private static T _<T>(string command) where T : class
         {
-            IntPtr ptr = Sdl.GlGetProcAddress(command);
+            IntPtr ptr = Sdl.GetProcAddress(command);
             if (ptr == IntPtr.Zero)
             {
                 throw new ExternalException($"{command} from {typeof(T).Name}");

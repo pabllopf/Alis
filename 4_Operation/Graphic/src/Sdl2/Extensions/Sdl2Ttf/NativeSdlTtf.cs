@@ -819,6 +819,10 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [return: NotNull, NotZero]
         internal static extern int InternalGetFontKerning([NotNull] IntPtr font);
 
+        /// <summary>
+        /// Internals the get ttf version
+        /// </summary>
+        /// <returns>The sdl version</returns>
         public static SdlVersion InternalGetTtfVersion() => new SdlVersion(2, 0, 16);
     }
 }
