@@ -7,10 +7,6 @@
         $(AssemblyName.Contains('Benchmark')) == true 
         ">
         <TargetFramework2>net6.0</TargetFramework2>
-        <IsTrimmable Condition="'$(TargetFramework)' == 'net8.0'">true</IsTrimmable>
-        <PublishTrimmed>true</PublishTrimmed>
-        <PublishAot>true</PublishAot>
-        <SelfContained>false</SelfContained>
         <SonarQubeExclude>true</SonarQubeExclude>
     </PropertyGroup>
 
@@ -22,9 +18,5 @@
         $(AssemblyName.Contains('Benchmark')) == false 
         ">
         <TargetFramework2>netstandard2.0</TargetFramework2>
-        <IsTrimmable Condition="'$(TargetFramework)' == 'net8.0'">true</IsTrimmable>
-        <PublishTrimmed>true</PublishTrimmed>
-        <PublishAot>true</PublishAot>
-        <SelfContained>false</SelfContained>
     </PropertyGroup>
 </Project>

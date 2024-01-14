@@ -4,7 +4,7 @@
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     </PropertyGroup>
-
+    
     <Import Project="$(SolutionDir).config/application/TargetFrameworks.props"/>
     <Import Project="$(SolutionDir).config/application/Runtimes.props"/>
     <Import Project="$(SolutionDir).config/application/LangVersion.props"/>
