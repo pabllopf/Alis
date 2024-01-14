@@ -28,12 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
-using Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.Wrapper;
-using Moq;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 {
@@ -42,20 +40,6 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
     /// </summary>
     public class SdlTtfTest
     {
-        /// <summary>
-        /// The test output helper
-        /// </summary>
-        private readonly ITestOutputHelper testOutputHelper;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SdlTtfTest"/> class
-        /// </summary>
-        /// <param name="testOutputHelper">The test output helper</param>
-        public SdlTtfTest(ITestOutputHelper testOutputHelper)
-        {
-            this.testOutputHelper = testOutputHelper;
-        }
-
         /// <summary>
         /// Tests that test
         /// </summary>
@@ -74,33 +58,70 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             int resultSdl = Sdl.Init(Sdl.InitEverything);
             Assert.Equal(0, resultSdl);
             
-            int resultTft = SdlTtf.TtfInit();
+            int resultTft = SdlTtf.Init();
             Assert.Equal(0, resultTft);
             
-            IntPtr version = SdlTtf.TtfLinkedVersion();
-            
-            Assert.NotEqual(IntPtr.Zero, version);
+            try
+            {
+                IntPtr version = SdlTtf.LinkedVersion();
+                Assert.NotEqual(IntPtr.Zero, version);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex}");
+            }
         }
 
+        
         /// <summary>
-        /// Tests that ttf linked version abstract returns non null int ptr
+        /// Tests that byte swapped unicode test
         /// </summary>
         [Fact]
-        public void TtfLinkedVersion_Abstract_ReturnsNonNullIntPtr()
+        public void ByteSwappedUnicodeTest()
         {
-            // Arrange
-            Mock<INativeSdlTtfWrapper> mockNativeSdlTtfWrapper = new Mock<INativeSdlTtfWrapper>();
-            IntPtr expectedIntPtr = new IntPtr(123);
+            int resultSdl = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, resultSdl);
 
-            mockNativeSdlTtfWrapper.Setup(x => x.InternalLinkedVersion()).Returns(expectedIntPtr);
-
-            // Act
-            IntPtr result = mockNativeSdlTtfWrapper.Object.InternalLinkedVersion();
-
-            // Assert
-            Assert.NotEqual(IntPtr.Zero, result);
-            Assert.Equal(expectedIntPtr, result);
-
+            int resultTft = SdlTtf.Init();
+            Assert.Equal(0, resultTft);
+            
+            // Act & Assert
+            try
+            {
+                const int input = 1;
+                SdlTtf.ByteSwappedUnicode(input);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex}");
+            }
         }
+        
+        [Fact]
+        public void OpenFontIndex_NoExceptionThrown()
+        {
+            int resultSdl = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, resultSdl);
+
+            int resultTft = SdlTtf.Init();
+            Assert.Equal(0, resultTft);
+            
+            // Arrange
+            string file = AssetManager.Find("FontSample.otf");
+            const int ptSize = 12; 
+            const long index = 0; 
+
+            // Act & Assert
+            try
+            {
+                IntPtr result = SdlTtf.OpenFontIndex(file, ptSize, index);
+                Assert.NotEqual(IntPtr.Zero, result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex} ");
+            }
+        }
+
     }
 }

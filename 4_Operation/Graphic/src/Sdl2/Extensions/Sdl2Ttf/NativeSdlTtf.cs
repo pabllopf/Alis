@@ -656,7 +656,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_ByteSwappedUNICODE", CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
-        internal static extern void InternalByteSwappedUNICODE([NotNull, NotZero] int swapped);
+        internal static extern void InternalByteSwappedUnicode([NotNull, NotZero] int swapped);
 
         /// <summary>
         ///     Ttf the init
@@ -677,19 +677,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern IntPtr InternalOpenFont([NotNull, NotEmpty] string file, [NotNull, NotZero] int ptSize);
-
-        /// <summary>
-        ///     Ttf the open font rw using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="freeSrc">The freeSrc</param>
-        /// <param name="ptSize">The ptSize</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_OpenFontRW", CallingConvention = CallingConvention.Cdecl)]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: NotNull]
-        internal static extern IntPtr InternalOpenFontRW([NotNull] IntPtr src, [NotNull, NotZero] int freeSrc, [NotNull, NotZero] int ptSize);
-
+        
         /// <summary>
         ///     Internals the ttf open font index using the specified file
         /// </summary>
@@ -701,20 +689,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern IntPtr InternalOpenFontIndex([NotNull, NotEmpty] string file, [NotNull, NotZero] int ptSize, [NotNull, NotZero] long index);
-
-        /// <summary>
-        ///     Ttf the open font index rw using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="freeSrc">The free src</param>
-        /// <param name="ptSize">The pt size</param>
-        /// <param name="index">The index</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_OpenFontIndexRW", CallingConvention = CallingConvention.Cdecl)]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: NotNull]
-        internal static extern IntPtr InternalOpenFontIndexRW([NotNull] IntPtr src, [NotNull, NotZero] int freeSrc, [NotNull, NotZero] int ptSize, [NotNull, NotZero] long index);
-
+        
         /// <summary>
         ///     Ttf the set font size using the specified font
         /// </summary>

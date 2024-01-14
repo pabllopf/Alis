@@ -38,7 +38,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
     /// <summary>
     ///     The sdl ttf extern class
     /// </summary>
-    public static class SdlTtf
+    public static class SdlTtf 
     {
         /// <summary>
         ///     The unicode bom native
@@ -106,7 +106,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr TtfLinkedVersion()
+        public static IntPtr LinkedVersion()
         {
             IntPtr result = NativeSdlTtf.InternalLinkedVersion();
             Validator.ValidateOutput(result);
@@ -119,10 +119,10 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="swapped">The swapped</param>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void TtfByteSwappedUnicode([NotNull, NotZero] int swapped)
+        public static void ByteSwappedUnicode([NotNull, NotZero] int swapped)
         {
             Validator.ValidateInput(swapped);
-            NativeSdlTtf.InternalByteSwappedUNICODE(swapped);
+            NativeSdlTtf.InternalByteSwappedUnicode(swapped);
         }
 
         /// <summary>
@@ -132,32 +132,13 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <returns>The result</returns>
         [return: NotNull, NotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int TtfInit()
+        public static int Init()
         {
             int result = NativeSdlTtf.InternalInit();
             Validator.ValidateOutput(result);
             return result;
         }
-
-        /// <summary>
-        ///     Ttf the open font rw using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="freeSrc">The free src</param>
-        /// <param name="ptSize">The pt size</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr TtfOpenFontRw([NotNull] IntPtr src, [NotNull, NotZero] int freeSrc, [NotNull, NotZero] int ptSize)
-        {
-            Validator.ValidateInput(src);
-            Validator.ValidateInput(freeSrc);
-            Validator.ValidateInput(ptSize);
-            IntPtr result = NativeSdlTtf.InternalOpenFontRW(src, freeSrc, ptSize);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
+        
         /// <summary>
         ///     Internals the ttf open font index using the specified file
         /// </summary>
@@ -167,7 +148,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <returns>The int ptr</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr TtfOpenFontIndex([NotNull, NotEmpty] string file, [NotNull, NotZero] int ptSize, [NotNull, NotZero] long index)
+        public static IntPtr OpenFontIndex([NotNull, NotEmpty] string file, [NotNull, NotZero] int ptSize, [NotNull, NotZero] long index)
         {
             Validator.ValidateInput(file);
             Validator.ValidateInput(ptSize);
@@ -176,28 +157,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateOutput(result);
             return result;
         }
-
-        /// <summary>
-        ///     Ttf the open font index rw using the specified src
-        /// </summary>
-        /// <param name="src">The src</param>
-        /// <param name="freeSrc">The free src</param>
-        /// <param name="ptSize">The pt size</param>
-        /// <param name="index">The index</param>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr TtfOpenFontIndexRw([NotNull] IntPtr src, [NotNull, NotZero] int freeSrc, [NotNull, NotZero] int ptSize, [NotNull, NotZero] long index)
-        {
-            Validator.ValidateInput(src);
-            Validator.ValidateInput(freeSrc);
-            Validator.ValidateInput(ptSize);
-            Validator.ValidateInput(index);
-            IntPtr result = NativeSdlTtf.InternalOpenFontIndexRW(src, freeSrc, ptSize, index);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
+        
         /// <summary>
         ///     Ttf the set font size using the specified font
         /// </summary>
