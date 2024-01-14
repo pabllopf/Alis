@@ -54,6 +54,12 @@ namespace Alis.Core.Aspect.Base.Dll
             string dllPath = Path.Combine(Environment.CurrentDirectory, $"{dllName}.{extension}");
             //string dllPath = Path.Combine(Path.GetTempPath(), $"{dllName}.{extension}");
 
+            if (File.Exists(dllPath))
+            {
+                File.Delete(dllPath);
+                Console.WriteLine($"Delete {dllPath}");
+            }
+            
             if (!File.Exists(dllPath))
             {
                 OSPlatform currentPlatform = GetCurrentPlatform();
