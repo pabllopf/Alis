@@ -37,6 +37,7 @@ using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image;
+using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Sdl = Alis.Core.Graphic.Sdl2.Sdl;
 
@@ -113,7 +114,7 @@ namespace Alis.Core.Graphic.Sample
 
             // GET VERSION SDL2
             Sdl.GetVersion(out SdlVersion version);
-            Logger.Log(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
+            Console.WriteLine($"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
 
             /*
             // CONFIG THE SDL2 AN OPENGL CONFIGURATION
@@ -186,6 +187,9 @@ namespace Alis.Core.Graphic.Sample
             // GET VERSION SDL_IMAGE
             Console.WriteLine($"SDL_Image Version: {SdlImage.GetVersion().major}.{SdlImage.GetVersion().minor}.{SdlImage.GetVersion().patch}");
 
+            SdlTtf.Init();
+            Console.WriteLine($"SDL_TTF Version: {SdlTtf.GetTtfVersion().major}.{SdlTtf.GetTtfVersion().minor}.{SdlTtf.GetTtfVersion().patch}");
+            
             Sdlinput();
 
             // Rectangle to be drawn outline.

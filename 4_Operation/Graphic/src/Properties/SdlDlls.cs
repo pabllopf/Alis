@@ -52,8 +52,8 @@ namespace Alis.Core.Graphic.Properties
             {(OSPlatform.Linux, Architecture.Arm), "Alis.Core.Graphic.resources.linux_arm.linux-arm_sdl2.zip"},
             {(OSPlatform.Linux, Architecture.Arm64), "Alis.Core.Graphic.resources.linux_arm64.linux-arm64_sdl2.zip"},
 
-            {(OSPlatform.OSX, Architecture.X86), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2.zip"},
-            {(OSPlatform.OSX, Architecture.X64), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2.zip"},
+            {(OSPlatform.OSX, Architecture.X86), "Alis.Core.Graphic.resources.osx_x64.osx-x64_sdl2.zip"},
+            {(OSPlatform.OSX, Architecture.X64), "Alis.Core.Graphic.resources.osx_x64.osx-x64_sdl2.zip"},
             {(OSPlatform.OSX, Architecture.Arm64), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2.zip"},
             {(OSPlatform.OSX, Architecture.Arm), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2.zip"}
         };
@@ -73,8 +73,8 @@ namespace Alis.Core.Graphic.Properties
             {(OSPlatform.Linux, Architecture.Arm), "Alis.Core.Graphic.resources.linux_arm.linux-arm_sdl2_image.zip"},
             {(OSPlatform.Linux, Architecture.Arm64), "Alis.Core.Graphic.resources.linux_arm64.linux-arm64_sdl2_image.zip"},
 
-            {(OSPlatform.OSX, Architecture.X86), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_image.zip"},
-            {(OSPlatform.OSX, Architecture.X64), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_image.zip"},
+            {(OSPlatform.OSX, Architecture.X86), "Alis.Core.Graphic.resources.osx_x64.osx-x64_sdl2_image.zip"},
+            {(OSPlatform.OSX, Architecture.X64), "Alis.Core.Graphic.resources.osx_x64.osx-x64_sdl2_image.zip"},
             {(OSPlatform.OSX, Architecture.Arm64), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_image.zip"},
             {(OSPlatform.OSX, Architecture.Arm), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_image.zip"}
         };
@@ -94,8 +94,8 @@ namespace Alis.Core.Graphic.Properties
             {(OSPlatform.Linux, Architecture.Arm), "Alis.Core.Graphic.resources.linux_arm.linux-arm_sdl2_ttf.zip"},
             {(OSPlatform.Linux, Architecture.Arm64), "Alis.Core.Graphic.resources.linux_arm64.linux-arm64_sdl2_ttf.zip"},
 
-            {(OSPlatform.OSX, Architecture.X86), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_ttf.zip"},
-            {(OSPlatform.OSX, Architecture.X64), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_ttf.zip"},
+            {(OSPlatform.OSX, Architecture.X86), "Alis.Core.Graphic.resources.osx_x64.osx-x64_sdl2_ttf.zip"},
+            {(OSPlatform.OSX, Architecture.X64), "Alis.Core.Graphic.resources.osx_x64.osx-x64_sdl2_ttf.zip"},
             {(OSPlatform.OSX, Architecture.Arm64), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_ttf.zip"},
             {(OSPlatform.OSX, Architecture.Arm), "Alis.Core.Graphic.resources.osx_arm64.osx-arm64_sdl2_ttf.zip"}
         };
