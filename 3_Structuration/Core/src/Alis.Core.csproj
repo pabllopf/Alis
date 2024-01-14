@@ -9,8 +9,5 @@
     <PropertyGroup>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
     </PropertyGroup>
-
-    <ItemGroup>
-        <Folder Update="..\..\..\4_Operation\Graphic\src\SDL"/>
-    </ItemGroup>
+    
 </Project>
