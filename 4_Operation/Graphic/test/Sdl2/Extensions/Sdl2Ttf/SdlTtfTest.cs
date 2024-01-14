@@ -27,7 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Core.Graphic.Sdl2;
+using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
+using Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.Wrapper;
+using Moq;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 {
@@ -37,12 +43,64 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
     public class SdlTtfTest
     {
         /// <summary>
+        /// The test output helper
+        /// </summary>
+        private readonly ITestOutputHelper testOutputHelper;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SdlTtfTest"/> class
+        /// </summary>
+        /// <param name="testOutputHelper">The test output helper</param>
+        public SdlTtfTest(ITestOutputHelper testOutputHelper)
+        {
+            this.testOutputHelper = testOutputHelper;
+        }
+
+        /// <summary>
         /// Tests that test
         /// </summary>
         [Fact]
         public void Test()
         {
             Assert.True(true);
+        }
+        
+        /// <summary>
+        /// Tests that ttf linked version returns non null int ptr
+        /// </summary>
+        [Fact]
+        public void TtfLinkedVersion_Integration_ReturnsNonNullIntPtr()
+        {
+            int resultSdl = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, resultSdl);
+            
+            int resultTft = SdlTtf.TtfInit();
+            Assert.Equal(0, resultTft);
+            
+            IntPtr version = SdlTtf.TtfLinkedVersion();
+            
+            Assert.NotEqual(IntPtr.Zero, version);
+        }
+
+        /// <summary>
+        /// Tests that ttf linked version abstract returns non null int ptr
+        /// </summary>
+        [Fact]
+        public void TtfLinkedVersion_Abstract_ReturnsNonNullIntPtr()
+        {
+            // Arrange
+            Mock<INativeSdlTtfWrapper> mockNativeSdlTtfWrapper = new Mock<INativeSdlTtfWrapper>();
+            IntPtr expectedIntPtr = new IntPtr(123);
+
+            mockNativeSdlTtfWrapper.Setup(x => x.InternalLinkedVersion()).Returns(expectedIntPtr);
+
+            // Act
+            IntPtr result = mockNativeSdlTtfWrapper.Object.InternalLinkedVersion();
+
+            // Assert
+            Assert.NotEqual(IntPtr.Zero, result);
+            Assert.Equal(expectedIntPtr, result);
+
         }
     }
 }

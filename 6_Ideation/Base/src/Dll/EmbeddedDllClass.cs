@@ -51,7 +51,10 @@ namespace Alis.Core.Aspect.Base.Dll
         {
             string extension = GetDllExtension();
 
-            string dllPath = Path.Combine(Environment.CurrentDirectory, $"{dllName}.{extension}");
+            //string dllPath = Path.Combine(Environment.CurrentDirectory, $"{dllName}.{extension}");
+            string dllPath = Path.Combine(Path.GetTempPath(), $"{dllName}.{extension}");
+            
+            Console.WriteLine($"dllPath: {dllPath}");
 
             if (!File.Exists(dllPath))
             {

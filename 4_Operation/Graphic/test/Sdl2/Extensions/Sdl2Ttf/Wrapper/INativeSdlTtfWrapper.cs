@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: Program.cs
+//  File:d.cs
 // 
-//  Author: Pablo Perdomo Falcón
+//  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -29,21 +29,17 @@
 
 using System;
 
-namespace Alis.Core.Sample
+namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.Wrapper
 {
     /// <summary>
-    ///     The program class
+    /// The native sdl ttf wrapper interface
     /// </summary>
-    public static class Program
+    public interface INativeSdlTtfWrapper
     {
         /// <summary>
-        ///     Main the args
+        /// Internals the linked version
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Console.WriteLine("End of program. Press any key to exit.");
-            Console.ReadKey();
-        }
+        /// <returns>The int ptr</returns>
+        IntPtr InternalLinkedVersion();
     }
 }

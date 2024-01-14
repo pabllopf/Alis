@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
     /// <summary>
     ///     The native sdl ttf class
     /// </summary>
-    internal static class NativeSdlTtf
+    internal static class NativeSdlTtf 
     {
         /// <summary>
         ///     The native lib name
@@ -65,14 +65,14 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         public static void Initialize(IEmbeddedDllClass embeddedDllClass)
         {
             _embeddedDllClass = embeddedDllClass ?? throw new ArgumentNullException(nameof(embeddedDllClass));
-            _embeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf", Sdl2Dlls.GlSdlTtfDllBytes, Assembly.GetExecutingAssembly());
+            _embeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf", Sdl2Dlls.GlSdlTtfDllBytes, Assembly.GetAssembly(typeof(Sdl2Dlls)));
         }
 
         /// <summary>
         ///     Internals the ttf linked version
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_LinkedVersion", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "TTF_Linked_Version", CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern IntPtr InternalLinkedVersion();
