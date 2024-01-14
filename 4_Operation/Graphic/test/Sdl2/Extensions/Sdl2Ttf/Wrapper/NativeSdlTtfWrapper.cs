@@ -5,9 +5,9 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: Program.cs
+//  File:NativeSdlTtfWrapper.cs
 // 
-//  Author: Pablo Perdomo Falcón
+//  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
@@ -28,22 +28,23 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
 
-namespace Alis.Core.Sample
+namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf.Wrapper
 {
     /// <summary>
-    ///     The program class
+    /// The native sdl ttf wrapper class
     /// </summary>
-    public static class Program
+    /// <seealso cref="INativeSdlTtfWrapper"/>
+    public class NativeSdlTtfWrapper : INativeSdlTtfWrapper
     {
         /// <summary>
-        ///     Main the args
+        /// Internals the linked version
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        /// <returns>The int ptr</returns>
+        public IntPtr InternalLinkedVersion()
         {
-            Console.WriteLine("End of program. Press any key to exit.");
-            Console.ReadKey();
+            return NativeSdlTtf.InternalLinkedVersion();
         }
     }
 }
