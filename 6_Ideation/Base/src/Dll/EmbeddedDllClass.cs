@@ -39,7 +39,7 @@ namespace Alis.Core.Aspect.Base.Dll
     /// <summary>
     ///     The embedded dll class
     /// </summary>
-    public static class EmbeddedDllClass
+    public class EmbeddedDllClass : IEmbeddedDllClass
     {
         /// <summary>
         ///     Extracts the embedded dlls using the specified dll name
@@ -47,7 +47,7 @@ namespace Alis.Core.Aspect.Base.Dll
         /// <param name="dllName">The dll name</param>
         /// <param name="dllBytes">The dll bytes</param>
         /// <param name="assembly">The assembly</param>
-        public static void ExtractEmbeddedDlls(string dllName, Dictionary<(OSPlatform Platform, Architecture Arch), string> dllBytes, Assembly assembly)
+        public void ExtractEmbeddedDlls(string dllName, Dictionary<(OSPlatform Platform, Architecture Arch), string> dllBytes, Assembly assembly)
         {
             string extension = GetDllExtension();
 

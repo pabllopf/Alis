@@ -45,7 +45,7 @@ namespace Alis.App.Engine.UI
         /// </summary>
         static ImGui()
         {
-            EmbeddedDllClass.ExtractEmbeddedDlls("cimgui", ImGuiDlls.PixelCImGuiDllBytes, Assembly.GetExecutingAssembly());
+            new EmbeddedDllClass().ExtractEmbeddedDlls("cimgui", ImGuiDlls.PixelCImGuiDllBytes, Assembly.GetExecutingAssembly());
         }
 
         /// <summary>
