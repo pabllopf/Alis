@@ -96,5 +96,6 @@ namespace Alis.Core.Graphic
 
             return nativePointer;
         }
+        
     }
 }
