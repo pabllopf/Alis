@@ -51,7 +51,8 @@ namespace Alis.Core.Aspect.Base.Dll
         {
             string extension = GetDllExtension();
 
-            string dllPath = Path.Combine(Environment.CurrentDirectory, $"{dllName}.{extension}");
+            string dllPath = Path.Combine(Environment.CurrentDirectory, $".native");
+            dllPath = Path.Combine(dllPath, $"{dllName}.{extension}");
             //string dllPath = Path.Combine(Path.GetTempPath(), $"{dllName}.{extension}");
 
             if (File.Exists(dllPath))
@@ -149,16 +150,14 @@ namespace Alis.Core.Aspect.Base.Dll
             using ZipArchive archive = new ZipArchive(ms);
             foreach (ZipArchiveEntry entry in archive.Entries)
             {
-                string entryPath = Path.Combine(Environment.CurrentDirectory, fileName);
-
-                if (File.Exists(entryPath))
+                if (File.Exists(filePath))
                 {
                     continue; // Skip if the file already exists
                 }
 
-                Directory.CreateDirectory(Path.GetDirectoryName(entryPath));
+                Directory.CreateDirectory(Path.GetDirectoryName(filePath));
                 using Stream entryStream = entry.Open();
-                using FileStream fs = File.Create(entryPath);
+                using FileStream fs = File.Create(filePath);
                 entryStream.CopyTo(fs);
             }
         }
