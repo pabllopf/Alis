@@ -381,7 +381,8 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             for (int i = 0; i < totalDisplays; ++i)
             {
-                Console.WriteLine($"Display {i}: {Sdl.GetDisplayName(i)}");
+                string displayName = Sdl.GetDisplayName(i + 1);
+                Console.WriteLine($"Display {i}: {displayName}");
 
                 // GET DISPLAY BOUNDS
                 Sdl.GetDisplayBounds(i, out RectangleI displayBounds);

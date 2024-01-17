@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Reflection;
@@ -50,11 +51,14 @@ namespace Alis.Core.Aspect.Base.Dll
         public void ExtractEmbeddedDlls(string dllName, Dictionary<(OSPlatform Platform, Architecture Arch), string> dllBytes, Assembly assembly)
         {
             string extension = GetDllExtension();
-
-            string dllPath = Path.Combine(Environment.CurrentDirectory, $".native");
+            
+            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
+            string version = fvi.FileVersion.Replace(".","_");
+            
+            string dllPath = Path.Combine(Path.GetTempPath(), $"Alis_{version}");
             dllPath = Path.Combine(dllPath, $"{dllName}.{extension}");
             //string dllPath = Path.Combine(Path.GetTempPath(), $"{dllName}.{extension}");
-
+            
             if (File.Exists(dllPath))
             {
                 File.Delete(dllPath);
@@ -69,7 +73,7 @@ namespace Alis.Core.Aspect.Base.Dll
                 if (dllBytes.TryGetValue((currentPlatform, currentArchitecture), out string resourceName))
                 {
                     ExtractZipFile(dllPath, $"{dllName}.{extension}", LoadResource(resourceName, assembly));
-                    Console.WriteLine($"OSPlatform={currentPlatform} | Architecture={currentArchitecture} -> lib: {dllName}");
+                    Console.WriteLine($"OSPlatform={currentPlatform} | Architecture={currentArchitecture} -> lib: {dllName} dir={dllPath}");
                 }
             }
         }
