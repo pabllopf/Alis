@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="$(SolutionDir).config/Config.props"/>
+    <Import Project="$(SolutionDir).config/Config.props" />
 
     <PropertyGroup>
         <TargetFramework>$(TargetFramework2)</TargetFramework>
@@ -11,6 +11,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Sdl2\Extensions\"/>
+        <Folder Include="Sdl2\Extensions\" />
     </ItemGroup>
 </Project>

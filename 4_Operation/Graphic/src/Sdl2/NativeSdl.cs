@@ -57,7 +57,7 @@ namespace Alis.Core.Graphic.Sdl2
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sdl" /> class
         /// </summary>
-        static NativeSdl() => new EmbeddedDllClass().ExtractEmbeddedDlls("sdl2", Sdl2Dlls.GlSdlDllBytes, Assembly.GetExecutingAssembly());
+        static NativeSdl() => new EmbeddedDllClass().ExtractEmbeddedDlls("sdl2", Sdl2Dlls.GlSdlDllBytes, Assembly.GetAssembly(typeof(Sdl2Dlls)));
 
         /// <summary>
         ///     Sdl the haptic rumble play using the specified haptic
@@ -3038,9 +3038,9 @@ namespace Alis.Core.Graphic.Sdl2
         /// <param name="index">The index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetDisplayName", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGetDisplayName([NotNull] int index);
+        [return: NotNull]
+        internal static extern IntPtr InternalGetDisplayName([NotNull] int index);
 
         /// <summary>
         ///     Sdl the get display bounds using the specified display index

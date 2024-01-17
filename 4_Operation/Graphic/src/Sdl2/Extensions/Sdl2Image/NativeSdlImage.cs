@@ -54,7 +54,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
         /// </summary>
         static NativeSdlImage()
         {
-            new EmbeddedDllClass().ExtractEmbeddedDlls("sdl2_image", Sdl2Dlls.GlSdlImageDllBytes, Assembly.GetExecutingAssembly());
+            new EmbeddedDllClass().ExtractEmbeddedDlls("sdl2_image", Sdl2Dlls.GlSdlImageDllBytes, Assembly.GetAssembly(typeof(Sdl2Dlls)));
         }
 
         /// <summary>

@@ -2672,7 +2672,7 @@ namespace Alis.Core.Graphic.Sdl2
         public static string GetDisplayName([NotNull] int index)
         {
             Validator.ValidateInput(index);
-            string result = NativeSdl.InternalGetDisplayName(index);
+            string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetDisplayName(index));
             Validator.ValidateOutput(result);
             return result;
         }
