@@ -56,7 +56,14 @@ namespace Alis.Core.Aspect.Base.Dll
             string version = fvi.FileVersion.Replace(".","_");
             
             string dllPath = Path.Combine(Path.GetTempPath(), $"Alis_{version}");
+
+            if (!Directory.Exists(dllPath))
+            {
+                Directory.CreateDirectory(dllPath);
+            }
+            
             dllPath = Path.Combine(dllPath, $"{dllName}.{extension}");
+            
             //string dllPath = Path.Combine(Path.GetTempPath(), $"{dllName}.{extension}");
             
             if (File.Exists(dllPath))
