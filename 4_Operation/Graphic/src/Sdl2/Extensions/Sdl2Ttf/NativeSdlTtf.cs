@@ -49,24 +49,9 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         private const string NativeLibName = "sdl2_ttf";
         
         /// <summary>
-        /// The embedded dll
-        /// </summary>
-        private static IEmbeddedDllClass _embeddedDllClass;
-        
-        /// <summary>
         ///     Initializes a new instance of the <see cref="SdlTtf" /> class
         /// </summary>
-        static NativeSdlTtf() => Initialize(new EmbeddedDllClass());
-        
-        /// <summary>
-        /// Initializes the embedded dll class
-        /// </summary>
-        /// <param name="embeddedDllClass">The embedded dll</param>
-        public static void Initialize(IEmbeddedDllClass embeddedDllClass)
-        {
-            _embeddedDllClass = embeddedDllClass ?? throw new ArgumentNullException(nameof(embeddedDllClass));
-            _embeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf", Sdl2Dlls.GlSdlTtfDllBytes, Assembly.GetAssembly(typeof(Sdl2Dlls)));
-        }
+        static NativeSdlTtf() => new EmbeddedDllClass().ExtractEmbeddedDlls("sdl2_ttf", Sdl2Dlls.GlSdlTtfDllBytes, Assembly.GetAssembly(typeof(Sdl2Dlls)));
 
         /// <summary>
         ///     Internals the ttf linked version
@@ -804,11 +789,5 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// </summary>
         /// <returns>The sdl version</returns>
         public static SdlVersion InternalGetTtfVersion() => new SdlVersion(2, 0, 16);
-
-        /// <summary>
-        /// Gets the embedded dll
-        /// </summary>
-        /// <returns>The embedded dll class</returns>
-        public static IEmbeddedDllClass GetEmbeddedDllClass() => _embeddedDllClass;
     }
 }
