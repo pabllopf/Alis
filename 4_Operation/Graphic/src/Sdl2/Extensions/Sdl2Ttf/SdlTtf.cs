@@ -381,21 +381,6 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        ///     Ttf the font face family name using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <returns>The string</returns>
-        [return: NotNull, NotEmpty]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string FontFaceFamilyName([NotNull] IntPtr font)
-        {
-            Validator.ValidateInput(font);
-            string result = Marshal.PtrToStringAuto(NativeSdlTtf.InternalFontFaceFamilyName(font));
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
         ///     Internals the ttf font face style name using the specified font
         /// </summary>
         /// <param name="font">The font</param>
