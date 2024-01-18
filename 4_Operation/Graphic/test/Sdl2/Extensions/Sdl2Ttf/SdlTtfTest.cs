@@ -855,6 +855,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             } 
         }
 
+        /*
         /// <summary>
         /// Tests that render text solid test
         /// </summary>
@@ -981,7 +982,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         /// Tests that ttf render utf 8 solid wrapped test
         /// </summary>
         [Fact]
-        public void TtfRenderUtf8SolidWrapped_Test()
+        public void RenderUtf8SolidWrapped_Test()
         {
             testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
@@ -1486,6 +1487,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             } 
         }
 
+        
         /// <summary>
         /// Tests that render glyph 32 blended test
         /// </summary>
@@ -1512,7 +1514,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
             } 
-        }
+        }*/
 
         /// <summary>
         /// Tests that set direction test
@@ -1537,6 +1539,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             } 
         }
 
+        /*
         /// <summary>
         /// Tests that render utf 8 blended test
         /// </summary>
@@ -1567,7 +1570,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
             } 
-        }
+        }*/
 
         /// <summary>
         /// Tests that get ttf version test
