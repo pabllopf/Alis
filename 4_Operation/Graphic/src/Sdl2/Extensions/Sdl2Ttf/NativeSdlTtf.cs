@@ -552,17 +552,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull, NotZero]
         internal static extern int InternalSetDirection([NotNull, NotZero] int direction);
-
-        /// <summary>
-        ///     Ttf the set script using the specified script
-        /// </summary>
-        /// <param name="script">The script</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_SetScript", CallingConvention = CallingConvention.Cdecl)]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: NotNull, NotZero]
-        internal static extern int InternalSetScript([NotNull, NotZero] int script);
-
+        
         /// <summary>
         ///     Ttf the close font using the specified font
         /// </summary>

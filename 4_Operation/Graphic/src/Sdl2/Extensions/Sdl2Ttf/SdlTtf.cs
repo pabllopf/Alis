@@ -1059,21 +1059,6 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        ///     Ttf the set script using the specified script
-        /// </summary>
-        /// <param name="script">The script</param>
-        /// <returns>The int</returns>
-        [return: NotNull, NotZero]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SetScript([NotNull, NotZero] int script)
-        {
-            Validator.ValidateInput(script);
-            int result = NativeSdlTtf.InternalSetScript(script);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
         ///     Ttf the close font using the specified font
         /// </summary>
         /// <param name="font">The font</param>
@@ -1179,31 +1164,6 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             IntPtr result = NativeSdlTtf.InternalOpenFont(file, ptSize);
             Validator.ValidateOutput(result);
             return result;
-        }
-
-        /// <summary>
-        ///     Ttf the get error
-        /// </summary>
-        /// <returns>The string</returns>
-        [return: NotNull, NotEmpty]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string GetError()
-        {
-            string result = Sdl.GetError();
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
-        ///     Ttf the set error using the specified fmt and arg
-        /// </summary>
-        /// <param name="fmtAndArgList">The fmt and arg</param>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SetError([NotNull, NotEmpty] string fmtAndArgList)
-        {
-            Validator.ValidateInput(fmtAndArgList);
-            Sdl.SetError(fmtAndArgList);
         }
 
         /// <summary>

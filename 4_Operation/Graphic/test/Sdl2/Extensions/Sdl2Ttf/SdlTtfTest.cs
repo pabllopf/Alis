@@ -1592,48 +1592,6 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         }
 
         /// <summary>
-        /// Tests that set error test
-        /// </summary>
-        [Fact]
-        public void SetError_Test()
-        {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-            
-            // Act & Assert
-            try
-            {
-                SdlTtf.SetError("Test");
-                string result = SdlTtf.GetError();
-                Assert.Equal("Test", result);
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
-        }
-        
-        /// <summary>
-        /// Tests that get error test
-        /// </summary>
-        [Fact]
-        public void GetError_Test()
-        {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-            
-            // Act & Assert
-            try
-            {
-                SdlTtf.SetError("Test");
-                string result = SdlTtf.GetError();
-                Assert.Equal("Test", result);
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
-        }
-
-        /// <summary>
         /// Tests that open font test
         /// </summary>
         [Fact]
@@ -1809,30 +1767,6 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
             } 
-        }
-
-        /// <summary>
-        /// Tests that set script test
-        /// </summary>
-        [Fact]
-        public void SetScript_Test()
-        {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
-            // Arrange
-            const int script = 1;
-
-            // Act & Assert
-            try
-            {
-                int result = SdlTtf.SetScript(script);
-                Assert.Equal(0, result);
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            }
-            
         }
     }
 }
