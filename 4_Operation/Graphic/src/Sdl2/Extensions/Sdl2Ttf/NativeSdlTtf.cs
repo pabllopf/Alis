@@ -311,17 +311,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
         internal static extern string InternalFontFaceStyleName([NotNull] IntPtr font);
-
-        /// <summary>
-        ///     Internals the ttf font face family name using the specified font
-        /// </summary>
-        /// <param name="font">The font</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_FontFaceFamilyName", CallingConvention = CallingConvention.Cdecl)]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: NotNull]
-        internal static extern IntPtr InternalFontFaceFamilyName([NotNull] IntPtr font);
-
+        
         /// <summary>
         ///     Ttf the font face is fixed width using the specified font
         /// </summary>
