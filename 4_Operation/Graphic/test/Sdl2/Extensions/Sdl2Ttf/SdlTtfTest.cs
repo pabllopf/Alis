@@ -153,11 +153,6 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             {
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.SetFontSize(font, newPtSize);
-                if (result == -1)
-                {
-                    throw new Exception("Error setting font size");
-                }
-
                 Assert.Equal(0, result);
             }
             catch (Exception ex)
