@@ -540,7 +540,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
-            int result = NativeSdlTtf.InternalSizeUNICODE(font, text, out w, out h);
+            int result = NativeSdlTtf.InternalSizeUnicode(font, text, out w, out h);
             Validator.ValidateOutput(result);
             return result;
         }

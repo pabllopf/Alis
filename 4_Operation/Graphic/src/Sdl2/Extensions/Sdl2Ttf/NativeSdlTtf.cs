@@ -158,7 +158,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         [DllImport(NativeLibName, EntryPoint = "TTF_SizeUNICODE", CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull, NotZero]
-        internal static extern int InternalSizeUNICODE([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] out int w, [NotNull, NotZero] out int h);
+        internal static extern int InternalSizeUnicode([NotNull] IntPtr font, [NotNull, NotEmpty] string text, [NotNull, NotZero] out int w, [NotNull, NotZero] out int h);
 
         /// <summary>
         ///     Ttf the measure text using the specified font
