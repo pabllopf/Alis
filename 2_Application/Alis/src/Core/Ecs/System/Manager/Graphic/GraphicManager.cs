@@ -293,7 +293,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             Sdl.DestroyRenderer(Renderer);
             Sdl.DestroyWindow(_window);
-            SdlImage.ImgQuit();
+            SdlImage.Quit();
             Sdl.Quit();
         }
 
@@ -444,7 +444,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             if ((string.IsNullOrEmpty(VideoGame.Instance.Settings.General.Icon) == false) && File.Exists(VideoGame.Instance.Settings.General.Icon))
             {
-                IntPtr icon = SdlImage.ImgLoad(VideoGame.Instance.Settings.General.Icon);
+                IntPtr icon = SdlImage.Load(VideoGame.Instance.Settings.General.Icon);
                 Sdl.SetWindowIcon(_window, icon);
             }
 
@@ -452,7 +452,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
 
             // INIT SDL_IMAGE
-            Console.WriteLine(SdlImage.ImgInit(flagImage) < 0 ? $"There was an issue initializing SDL_Image. {Sdl.GetError()}" : "SDL_Image Initialized");
+            Console.WriteLine(SdlImage.Init(flagImage) < 0 ? $"There was an issue initializing SDL_Image. {Sdl.GetError()}" : "SDL_Image Initialized");
 
             // GET VERSION SDL_IMAGE
             Console.WriteLine($"SDL_Image Version: {SdlImage.GetVersion().major}.{SdlImage.GetVersion().minor}.{SdlImage.GetVersion().patch}");

@@ -79,7 +79,7 @@ namespace Alis.Core.Graphic
                 throw new FileNotFoundException("The image file does not exist");
             }
 
-            nativePointer = SdlImage.ImgLoad("Assets/tile000.png");
+            nativePointer = SdlImage.Load("Assets/tile000.png");
             isLoaded = true;
         }
 
