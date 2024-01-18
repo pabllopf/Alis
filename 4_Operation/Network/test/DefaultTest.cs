@@ -40,7 +40,7 @@ namespace Alis.Core.Network.Test
         ///     Tests that test
         /// </summary>
         [Fact]
-        public void Test()
+        public void Test_Default()
         {
             Assert.True(true);
         }
