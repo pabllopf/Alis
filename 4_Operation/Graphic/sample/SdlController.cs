@@ -182,7 +182,7 @@ namespace Alis.Core.Graphic.Sample
             ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
 
             // INIT SDL_IMAGE
-            Console.WriteLine(SdlImage.ImgInit(flagImage) < 0 ? $"There was an issue initializing SDL_Image. {Sdl.GetError()}" : "SDL_Image Initialized");
+            Console.WriteLine(SdlImage.Init(flagImage) < 0 ? $"There was an issue initializing SDL_Image. {Sdl.GetError()}" : "SDL_Image Initialized");
 
             // GET VERSION SDL_IMAGE
             Console.WriteLine($"SDL_Image Version: {SdlImage.GetVersion().major}.{SdlImage.GetVersion().minor}.{SdlImage.GetVersion().patch}");
@@ -322,7 +322,7 @@ namespace Alis.Core.Graphic.Sample
             Sdl.DestroyWindow(window);
             //Sdl.FreeSurface(imageTile);
             //Sdl.DestroyTexture(textureTile);
-            SdlImage.ImgQuit();
+            SdlImage.Quit();
             Sdl.Quit();
         }
 
