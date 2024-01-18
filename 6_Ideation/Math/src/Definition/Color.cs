@@ -70,6 +70,21 @@ namespace Alis.Core.Aspect.Math.Definition
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Color"/> class
+        /// </summary>
+        /// <param name="r">The </param>
+        /// <param name="g">The </param>
+        /// <param name="b">The </param>
+        /// <param name="a">The </param>
+        public Color(int r, int g, int b, int a)
+        {
+            R = (byte) r;
+            G = (byte) g;
+            B = (byte) b;
+            A = (byte) a;
+        }
+
+        /// <summary>
         ///     Gets the value of the black
         /// </summary>
         public static Color Black => new Color(0, 0, 0, 255);
