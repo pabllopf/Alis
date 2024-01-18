@@ -210,7 +210,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int TtfGetFontOutline([NotNull] IntPtr font)
+        public static int GetFontOutline([NotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             int result = NativeSdlTtf.InternalGetFontOutline(font);
@@ -225,7 +225,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="outline">The outline</param>
         [return: NotNull, NotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void TtfSetFontOutline([NotNull] IntPtr font, [NotNull, NotZero] int outline)
+        public static void SetFontOutline([NotNull] IntPtr font, [NotNull, NotZero] int outline)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(outline);
@@ -239,7 +239,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int TtfGetFontHinting([NotNull] IntPtr font)
+        public static int GetFontHinting([NotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             int result = NativeSdlTtf.InternalGetFontHinting(font);
@@ -253,7 +253,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="font">The font</param>
         /// <param name="hinting">The hinting</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void TtfSetFontHinting([NotNull] IntPtr font, [NotNull, NotZero] int hinting)
+        public static void SetFontHinting([NotNull] IntPtr font, [NotNull, NotZero] int hinting)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(hinting);
@@ -267,7 +267,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int TtfFontHeight([NotNull] IntPtr font)
+        public static int FontHeight([NotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             int result = NativeSdlTtf.InternalFontHeight(font);
@@ -282,7 +282,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int TtfFontAscent([NotNull] IntPtr font)
+        public static int FontAscent([NotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             int result = NativeSdlTtf.InternalFontAscent(font);
@@ -297,7 +297,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int TtfFontDescent([NotNull] IntPtr font)
+        public static int FontDescent([NotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             int result = NativeSdlTtf.InternalFontDescent(font);
@@ -312,7 +312,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int TtfFontLineSkip([NotNull] IntPtr font)
+        public static int FontLineSkip([NotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             int result = NativeSdlTtf.InternalFontLineSkip(font);
@@ -327,7 +327,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <returns>The int</returns>
         [return: NotNull, NotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int TtfGetFontKerning([NotNull] IntPtr font)
+        public static int GetFontKerning([NotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             int result = NativeSdlTtf.InternalGetFontKerning(font);
@@ -342,7 +342,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <param name="allowed">The allowed</param>
         [return: NotNull, NotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void TtfSetFontKerning([NotNull] IntPtr font, [NotNull, NotZero] int allowed)
+        public static void SetFontKerning([NotNull] IntPtr font, [NotNull, NotZero] int allowed)
         {
             Validator.ValidateInput(font);
             Validator.ValidateInput(allowed);
@@ -356,7 +356,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// <returns>The int ptr</returns>
         [return: NotNull, NotZero]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr TtfFontFaces([NotNull] IntPtr font)
+        public static IntPtr FontFaces([NotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
             IntPtr result = NativeSdlTtf.InternalFontFaces(font);

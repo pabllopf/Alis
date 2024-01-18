@@ -40,9 +40,6 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
         /// Tests that test
         /// </summary>
         [Fact]
-        public void Test()
-        {
-            Assert.True(true);
-        }
+        public void Test_Default() => Assert.True(true);
     }
 }

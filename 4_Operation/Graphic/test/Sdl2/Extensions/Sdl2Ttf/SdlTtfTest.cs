@@ -44,11 +44,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         /// Tests that test
         /// </summary>
         [Fact]
-        public void Test()
-        {
-            Assert.True(true);
-        }
-        
+        public void Test_Default() => Assert.True(true);
+
         /// <summary>
         /// Tests that ttf linked version returns non null int ptr
         /// </summary>
@@ -97,6 +94,9 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             }
         }
         
+        /// <summary>
+        /// Tests that open font index no exception thrown
+        /// </summary>
         [Fact]
         public void OpenFontIndex_NoExceptionThrown()
         {
@@ -123,5 +123,392 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             }
         }
 
+        /// <summary>
+        /// Tests that set font size test
+        /// </summary>
+        /// <exception cref="Exception">Error setting font size</exception>
+        [Fact]
+        public void SetFontSize_Test()
+        {
+            int resultSdl = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, resultSdl);
+
+            int resultTft = SdlTtf.Init();
+            Assert.Equal(0, resultTft);
+            
+            string file = AssetManager.Find("FontSample.otf");
+            const int ptSize = 12; 
+            const int newPtSize = 16; 
+            const long index = 0;
+
+                // Act & Assert
+                try
+                {
+                    IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
+                    int result = SdlTtf.SetFontSize(font, newPtSize);
+                    if (result == -1)
+                    {
+                        throw new Exception("Error setting font size");
+                    }
+                    Assert.Equal(0, result);
+                }
+                catch (Exception ex)
+                {
+                    Assert.Fail($"No expected exception, but was thrown: {ex} ");
+                }
+        }
+
+        /// <summary>
+        /// Tests that get font style test
+        /// </summary>
+        [Fact]
+        public void GetFontStyle_Test()
+        {
+            int resultSdl = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, resultSdl);
+
+            int resultTft = SdlTtf.Init();
+            Assert.Equal(0, resultTft);
+            
+            string file = AssetManager.Find("FontSample.otf");
+            const int ptSize = 12; 
+            const long index = 0;
+            
+            // Act & Assert
+            try
+            {
+                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
+                int result = SdlTtf.GetFontStyle(font);
+                Assert.Equal(0, result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex} ");
+            }
+        }
+
+        /// <summary>
+        /// Tests that set font style test
+        /// </summary>
+        [Fact]
+        public void SetFontStyle_Test()
+        {
+            int resultSdl = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, resultSdl);
+
+            int resultTft = SdlTtf.Init();
+            Assert.Equal(0, resultTft);
+            
+            string file = AssetManager.Find("FontSample.otf");
+            const int ptSize = 12; 
+            const long index = 0;
+            
+            // Act & Assert
+            try
+            {
+                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
+                SdlTtf.SetFontStyle(font, SdlTtf.TtfStyleItalic);
+                int result = SdlTtf.GetFontStyle(font);
+                Assert.Equal(2, result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex} ");
+            }
+        }
+
+        /// <summary>
+        /// Tests that get font outline test
+        /// </summary>
+        [Fact]
+        public void GetFontOutline_Test()
+        {
+            int resultSdl = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, resultSdl);
+
+            int resultTft = SdlTtf.Init();
+            Assert.Equal(0, resultTft);
+            
+            string file = AssetManager.Find("FontSample.otf");
+            const int ptSize = 12; 
+            const long index = 0;
+            
+            // Act & Assert
+            try
+            {
+                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
+                int result = SdlTtf.GetFontOutline(font);
+                Assert.Equal(0, result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex} ");
+            }
+        }
+        
+        /// <summary>
+        /// Tests that set font outline test
+        /// </summary>
+        [Fact]
+        public void SetFontOutline_Test()
+        {
+            int resultSdl = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, resultSdl);
+
+            int resultTft = SdlTtf.Init();
+            Assert.Equal(0, resultTft);
+            
+            string file = AssetManager.Find("FontSample.otf");
+            const int ptSize = 12; 
+            const long index = 0;
+            
+            // Act & Assert
+            try
+            {
+                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
+                SdlTtf.SetFontOutline(font, 1);
+                int result = SdlTtf.GetFontOutline(font);
+                Assert.Equal(1, result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex} ");
+            }
+        }
+
+        /// <summary>
+        /// Tests that get font hinting test
+        /// </summary>
+        [Fact]
+        public void GetFontHinting_Test()
+        {
+            int resultSdl = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, resultSdl);
+
+            int resultTft = SdlTtf.Init();
+            Assert.Equal(0, resultTft);
+            
+            string file = AssetManager.Find("FontSample.otf");
+            const int ptSize = 12;
+            const long index = 0;
+            
+            // Act & Assert
+            try
+            {
+                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
+                int result = SdlTtf.GetFontHinting(font);
+                Assert.Equal(0, result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex} ");
+            }
+        }
+
+        /// <summary>
+        /// Tests that set font hinting test
+        /// </summary>
+        [Fact]
+        public void SetFontHinting_Test()
+        {
+            int resultSdl = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, resultSdl);
+
+            int resultTft = SdlTtf.Init();
+            Assert.Equal(0, resultTft);
+            
+            string file = AssetManager.Find("FontSample.otf");
+            const int ptSize = 12;
+            const long index = 0;
+            
+            // Act & Assert
+            try
+            {
+                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
+                SdlTtf.SetFontHinting(font, SdlTtf.TtfHintingNormal);
+                int result = SdlTtf.GetFontHinting(font);
+                Assert.Equal(0, result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex} ");
+            }
+        }
+
+        /// <summary>
+        /// Tests that font height test
+        /// </summary>
+        [Fact]
+        public void FontHeight_Test()
+        {
+            int resultSdl = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, resultSdl);
+
+            int resultTft = SdlTtf.Init();
+            Assert.Equal(0, resultTft);
+            
+            // Arrange
+            string file = AssetManager.Find("FontSample.otf");
+            const int ptSize = 12;
+            const long index = 0;
+            
+            // Act & Assert
+            try
+            {
+                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
+                int result = SdlTtf.FontHeight(font);
+                Assert.Equal(15, result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex} ");
+            }
+        }
+
+        /// <summary>
+        /// Tests that font ascent test
+        /// </summary>
+        [Fact]
+        public void FontAscent_Test()
+        {
+            int resultSdl = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, resultSdl);
+
+            int resultTft = SdlTtf.Init();
+            Assert.Equal(0, resultTft);
+            
+            // Arrange
+            string file = AssetManager.Find("FontSample.otf");
+            const int ptSize = 12;
+            const long index = 0;
+            
+            // Act & Assert
+            try
+            {
+                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
+                int result = SdlTtf.FontAscent(font);
+                Assert.Equal(11, result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex} ");
+            }
+        }
+
+        /// <summary>
+        /// Tests that font descent test
+        /// </summary>
+        [Fact]
+        public void FontDescent_Test()
+        {
+            int resultSdl = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, resultSdl);
+
+            int resultTft = SdlTtf.Init();
+            Assert.Equal(0, resultTft);
+            
+            // Arrange
+            string file = AssetManager.Find("FontSample.otf");
+            const int ptSize = 12;
+            const long index = 0;
+            
+            // Act & Assert
+            try
+            {
+                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
+                int result = SdlTtf.FontAscent(font);
+                Assert.Equal(11, result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex} ");
+            }
+        }
+        
+        [Fact]
+        public void FontLineSkip_Test()
+        {
+            // Arrange
+            string file = AssetManager.Find("FontSample.otf");
+            const int ptSize = 12;
+            const long index = 0;
+            
+            // Act & Assert
+            try
+            {
+                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
+                int result = SdlTtf.FontLineSkip(font);
+                Assert.Equal(15, result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex} ");
+            }
+        }
+        
+        [Fact]
+        public void GetFontKerning_Test()
+        {
+            // Arrange
+            string file = AssetManager.Find("FontSample.otf");
+            const int ptSize = 12;
+            const long index = 0;
+            
+            // Act & Assert
+            try
+            {
+                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
+                long result = SdlTtf.GetFontKerning(font);
+                Assert.Equal(1, result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex} ");
+            }
+        }
+        
+        [Fact]
+        public void SetFontKerning_Test()
+        {
+            // Arrange
+            string file = AssetManager.Find("FontSample.otf");
+            const int ptSize = 12;
+            const long index = 0;
+            const int kerning = 0;
+            
+            // Act & Assert
+            try
+            {
+                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
+                SdlTtf.SetFontKerning(font, kerning);
+                long result = SdlTtf.GetFontKerning(font);
+                Assert.Equal(0, result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex} ");
+            }
+        }
+        
+        [Fact]
+        public void FontFaces_Test()
+        {
+            // Arrange
+            string file = AssetManager.Find("FontSample.otf");
+            const int ptSize = 12;
+            const long index = 0;
+            
+            // Act & Assert
+            try
+            {
+                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
+                IntPtr result = SdlTtf.FontFaces(font);
+                Assert.NotEqual(IntPtr.Zero, result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex} ");
+            }
+        }
     }
 }
