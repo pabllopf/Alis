@@ -33,6 +33,7 @@ using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 {
@@ -41,14 +42,20 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
     /// </summary>
     public class SdlTtfTest
     {
+        private readonly ITestOutputHelper testOutputHelper;
+
         /// <summary>
         /// Tests that test
         /// </summary>
         [Fact]
         public void Test_Default() => Assert.True(true);
         
-        public SdlTtfTest()
+        public SdlTtfTest(ITestOutputHelper testOutputHelper)
         {
+            this.testOutputHelper = testOutputHelper;
+            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            
             int resultSdl = Sdl.Init(Sdl.InitEverything);
             Assert.Equal(0, resultSdl);
 
@@ -63,6 +70,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void TtfLinkedVersion_Integration_ReturnsNonNullIntPtr()
         {
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            
             try
             {
                 IntPtr version = SdlTtf.LinkedVersion();
@@ -81,6 +90,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void ByteSwappedUnicodeTest()
         {
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+                
             // Act & Assert
             try
             {
@@ -99,6 +110,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void OpenFontIndex_NoExceptionThrown()
         {
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -123,7 +136,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetFontSize_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -149,7 +162,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontStyle_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -174,7 +187,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetFontStyle_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -200,7 +213,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontOutline_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -225,7 +238,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetFontOutline_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -251,7 +264,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontHinting_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -276,7 +289,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetFontHinting_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -302,7 +315,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontHeight_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -328,7 +341,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontAscent_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -354,7 +367,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontLineSkip_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -380,7 +393,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontKerning_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -406,7 +419,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetFontKerning_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -434,7 +447,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontFaces_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -460,7 +473,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontDescent_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             int resultTft = SdlTtf.Init();
 
@@ -489,7 +502,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontFaceIsFixedWidth_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -515,7 +528,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontFaceStyleName_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -541,7 +554,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GlyphIsProvided_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -568,7 +581,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GlyphIsProvided32_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -595,7 +608,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GlyphMetrics_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -627,7 +640,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GlyphMetrics32_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -659,7 +672,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SizeText_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             const string text = "Hello World";
@@ -688,7 +701,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SizeUtf8_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             const string text = "Hello World";
@@ -717,7 +730,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SizeUnicode_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             const string text = "Hello World";
@@ -746,7 +759,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void MeasureText_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             int resultTft = SdlTtf.Init();
 
@@ -780,7 +793,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void MeasureUtf8_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             int resultTft = SdlTtf.Init();
 
@@ -814,7 +827,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void MeasureUnicode_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             int resultTft = SdlTtf.Init();
 
@@ -848,7 +861,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderTextSolid_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             int resultTft = SdlTtf.Init();
 
@@ -879,7 +892,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUtf8Solid_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             int resultTft = SdlTtf.Init();
 
@@ -910,7 +923,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUnicodeSolid_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             int resultTft = SdlTtf.Init();
 
@@ -941,7 +954,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderTextSolidWrapped_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             const string text = "Hello World";
@@ -970,7 +983,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void TtfRenderUtf8SolidWrapped_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             int resultTft = Sdl.Init(Sdl.InitEverything);
             Assert.Equal(0, resultTft);
@@ -1002,7 +1015,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUnicodeSolidWrapped_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             int resultTft = Sdl.Init(Sdl.InitEverything);
             Assert.Equal(0, resultTft);
@@ -1034,7 +1047,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderGlyphSolid_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             const int ch = 0x0041;
@@ -1062,7 +1075,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderGlyph32Solid_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             const int ch = 0x0041;
@@ -1090,12 +1103,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderTextShaded_Test()
         {
-            
-
-            int result = SdlTtf.Init();
-            Assert.Equal(0, result);
-
-            // Arrange
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");// Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -1122,12 +1130,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUtf8Shaded_Test()
         {
-            
-
-            int result = SdlTtf.Init();
-            Assert.Equal(0, result);
-
-            // Arrange
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");// Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -1154,12 +1157,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUnicodeShaded_Test()
         {
-            
-
-            int result = SdlTtf.Init();
-            Assert.Equal(0, result);
-
-            // Arrange
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");// Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -1186,12 +1184,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderTextShadedWrapped_Test()
         {
-            
-
-            int result = SdlTtf.Init();
-            Assert.Equal(0, result);
-
-            // Arrange
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");// Arrange
             const string text = "Hello World";
             const int wrapLength = 10;
             string file = AssetManager.Find("FontSample.otf");
@@ -1220,12 +1213,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUtf8ShadedWrapped_Test()
         {
-
-
-            int result = SdlTtf.Init();
-            Assert.Equal(0, result);
-
-            // Arrange
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");// Arrange
             const string text = "Hello World";
             const int wrapLength = 10;
             string file = AssetManager.Find("FontSample.otf");
@@ -1253,12 +1241,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUnicodeShadedWrapped_Test()
         {
-
-
-            int result = SdlTtf.Init();
-            Assert.Equal(0, result);
-
-            // Arrange
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");// Arrange
             const string text = "Hello World";
             const int wrapLength = 10;
             string file = AssetManager.Find("FontSample.otf");
@@ -1286,12 +1269,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderGlyphShaded_Test()
         {
-
-
-            int result = SdlTtf.Init();
-            Assert.Equal(0, result);
-
-            // Arrange
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");// Arrange
             const int ch = 0x0041;
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -1318,12 +1296,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderGlyph32Shaded_Test()
         {
-
-
-            int result = SdlTtf.Init();
-            Assert.Equal(0, result);
-
-            // Arrange
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");// Arrange
             const int ch = 0x0041;
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -1350,12 +1323,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderTextBlended_Test()
         {
-
-
-            int result = SdlTtf.Init();
-            Assert.Equal(0, result);
-
-            // Arrange
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");// Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -1381,10 +1349,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUnicodeBlended_Test()
         {
-
-
-            int result = SdlTtf.Init();
-            Assert.Equal(0, result);
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             const string text = "Hello World";
@@ -1412,11 +1377,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderTextBlendedWrapped_Test()
         {
-
-
-            int result = SdlTtf.Init();
-
-            Assert.Equal(0, result);
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            
             // Arrange
             const string text = "Hello World";
             const int wrapLength = 10;
@@ -1444,11 +1406,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUtf8BlendedWrapped_Test()
         {
-
-
-            int result = SdlTtf.Init();
-
-            Assert.Equal(0, result);
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            
             // Arrange
             const string text = "Hello World";
             const int wrapLength = 10;
@@ -1476,10 +1435,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUnicodeBlendedWrapped_Test()
         {
-            
-
-            int result = SdlTtf.Init();
-            Assert.Equal(0, result);
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
             
             // Arrange
             const string text = "Hello World";
@@ -1508,11 +1464,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderGlyphBlended_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
-            int result = SdlTtf.Init();
-
-            Assert.Equal(0, result);
             // Arrange
             const int ch = 0x0041;
             string file = AssetManager.Find("FontSample.otf");
@@ -1539,11 +1492,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderGlyph32Blended_Test()
         {
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
             
-
-            int result = SdlTtf.Init();
-
-            Assert.Equal(0, result);
             // Arrange
             const int ch = 0x0041;
             string file = AssetManager.Find("FontSample.otf");
@@ -1570,11 +1520,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetDirection_Test()
         {
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
             
-
-            int result = SdlTtf.Init();
-
-            Assert.Equal(0, result);
             // Arrange
             const int direction = 1;
 
@@ -1596,7 +1543,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUtf8Blended_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             int result = Sdl.Init(Sdl.InitEverything);
             Assert.Equal(0, result);
@@ -1628,7 +1575,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetTtfVersion_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
             
             // Act & Assert
             try
@@ -1650,7 +1597,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetError_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
             
             // Act & Assert
             try
@@ -1671,7 +1618,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetError_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
             
             // Act & Assert
             try
@@ -1692,7 +1639,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void OpenFont_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
             
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -1716,7 +1663,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontKerningSizeGlyphs32_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
             
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -1744,7 +1691,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontKerningSizeGlyphs_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
             
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -1772,7 +1719,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontKerningSize_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
             
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -1800,7 +1747,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void WasInit_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
             
             int resultTft = SdlTtf.Init();
             Assert.Equal(0, resultTft);
@@ -1824,7 +1771,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void Quit_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
             
             // Act & Assert
             try
@@ -1845,7 +1792,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void CloseFont_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
             
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -1870,7 +1817,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetScript_Test()
         {
-            
+            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
 
             // Arrange
             const int script = 1;
