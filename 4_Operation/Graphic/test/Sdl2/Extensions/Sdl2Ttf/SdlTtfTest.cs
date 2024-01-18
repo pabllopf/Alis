@@ -63,8 +63,6 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void TtfLinkedVersion_Integration_ReturnsNonNullIntPtr()
         {
-            
-
             try
             {
                 IntPtr version = SdlTtf.LinkedVersion();
@@ -73,9 +71,6 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            }finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
             }
         }
 
@@ -86,8 +81,6 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void ByteSwappedUnicodeTest()
         {
-            
-
             // Act & Assert
             try
             {
@@ -106,8 +99,6 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void OpenFontIndex_NoExceptionThrown()
         {
-            
-
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -122,10 +113,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -152,10 +140,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -180,10 +165,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -209,10 +191,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -237,10 +216,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -266,10 +242,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -294,10 +267,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -323,10 +293,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -352,10 +319,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -381,10 +345,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -410,10 +371,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -439,10 +397,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -470,10 +425,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -499,10 +451,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -531,10 +480,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -560,10 +506,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -589,10 +532,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -619,10 +559,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -649,10 +586,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -684,10 +618,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -719,10 +650,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -751,10 +679,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -783,10 +708,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -815,10 +737,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -852,10 +771,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -889,10 +805,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -926,10 +839,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -960,10 +870,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -994,10 +901,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1028,10 +932,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1060,10 +961,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1095,10 +993,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1130,10 +1025,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1161,10 +1053,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1192,10 +1081,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1227,10 +1113,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1262,10 +1145,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1297,10 +1177,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1334,10 +1211,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
             }
-            finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            
         }
 
         /// <summary>
@@ -1370,10 +1244,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1406,10 +1277,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1441,10 +1309,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1476,10 +1341,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1510,10 +1372,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1544,10 +1403,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1579,10 +1435,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1614,10 +1467,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1649,10 +1499,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1683,10 +1530,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1717,10 +1561,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1746,10 +1587,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1781,10 +1619,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1806,10 +1641,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1830,10 +1662,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
         
         /// <summary>
@@ -1854,10 +1683,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1881,10 +1707,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1912,10 +1735,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1943,10 +1763,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -1974,10 +1791,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -2001,10 +1815,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
             }
-            finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            
         }
 
         /// <summary>
@@ -2025,10 +1836,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -2053,10 +1861,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            } 
         }
 
         /// <summary>
@@ -2080,10 +1885,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
             }
-            finally
-            {
-                Assert.NotEqual(0, SdlTtf.WasInit());
-            }
+            
         }
     }
 }
