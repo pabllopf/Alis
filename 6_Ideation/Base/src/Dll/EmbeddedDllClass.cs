@@ -52,27 +52,7 @@ namespace Alis.Core.Aspect.Base.Dll
         {
             string extension = GetDllExtension();
             
-            //FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
-            //string version = fvi.FileVersion.Replace(".","_");
-            
-            //string dllPath = Path.Combine(Path.GetTempPath(), $"Alis_{version}");
-
-            //string dllPath = Path.Combine(Environment.CurrentDirectory, "Alis");
-            
-            //if (!Directory.Exists(dllPath))
-            //{
-            //    Directory.CreateDirectory(dllPath);
-            //}
-            
             string dllPath = Path.Combine(Environment.CurrentDirectory, $"{dllName}.{extension}");
-            
-            //string dllPath = Path.Combine(Path.GetTempPath(), $"{dllName}.{extension}");
-            
-            if (File.Exists(dllPath))
-            {
-                File.Delete(dllPath);
-                Console.WriteLine($"Delete {dllPath}");
-            }
             
             if (!File.Exists(dllPath))
             {
