@@ -2671,21 +2671,30 @@ namespace Alis.Core.Graphic.Sdl2
         internal static extern SdlBool InternalGetHintBoolean([NotNull] string name, SdlBool defaultValue);
 
         /// <summary>
-        ///     Sdl the clear error
-        /// </summary>
-        [DllImport(NativeLibName, EntryPoint = "SDL_ClearError", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern void InternalClearError();
-
-        /// <summary>
         ///     Internals the sdl get error
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_GetError", CallingConvention = CallingConvention.Cdecl)]
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGetError();
+        internal static extern IntPtr InternalGetError();
+        
+        /// <summary>
+        ///     Sdl the clear error
+        /// </summary>
+        [DllImport(NativeLibName, EntryPoint = "SDL_ClearError", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static extern void InternalClearError();
+        
+        /// <summary>
+        ///     Internals the sdl set error using the specified fmt and arg list
+        /// </summary>
+        /// <param name="fmtAndArgList">The fmt and arg list</param>
+        [DllImport(NativeLibName, EntryPoint = "SDL_SetError", CallingConvention = CallingConvention.Cdecl)]
+        [return: NotNull]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static extern void InternalSetError([NotNull] string fmtAndArgList);
 
         /// <summary>
         ///     Internals the sdl show message box using the specified message box data

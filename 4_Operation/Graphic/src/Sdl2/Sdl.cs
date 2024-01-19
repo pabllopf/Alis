@@ -1959,6 +1959,41 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
+        
+        /// <summary>
+        ///     Sdl the clear error
+        /// </summary>
+        [return: NotNull]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void ClearError()
+        {
+            NativeSdl.InternalClearError();
+        }
+
+        /// <summary>
+        ///     Sdl the get error
+        /// </summary>
+        /// <returns>The string</returns>
+        [return: NotNull]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static string GetError()
+        {
+            string result = Marshal.PtrToStringAnsi(NativeSdl.InternalGetError());
+            Validator.ValidateOutput(result);
+            return result;
+        }
+
+        /// <summary>
+        ///     Sdl the set error using the specified fmt and arg list
+        /// </summary>
+        /// <param name="fmtAndArgList">The fmt and arg list</param>
+        [return: NotNull]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void SetError([NotNull] string fmtAndArgList)
+        {
+            Validator.ValidateInput(fmtAndArgList);
+            NativeSdl.InternalSetError(fmtAndArgList);
+        }
 
         /// <summary>
         ///     Sdl the init using the specified flags
@@ -2112,29 +2147,6 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateInput(name);
             Validator.ValidateInput(defaultValue);
             SdlBool result = NativeSdl.InternalGetHintBoolean(name, defaultValue);
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
-        ///     Sdl the clear error
-        /// </summary>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void ClearError()
-        {
-            NativeSdl.InternalClearError();
-        }
-
-        /// <summary>
-        ///     Sdl the get error
-        /// </summary>
-        /// <returns>The string</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string GetError()
-        {
-            string result = NativeSdl.InternalGetError();
             Validator.ValidateOutput(result);
             return result;
         }

@@ -390,7 +390,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         public static string FontFaceStyleName([NotNull] IntPtr font)
         {
             Validator.ValidateInput(font);
-            string result = NativeSdlTtf.InternalFontFaceStyleName(font);
+            string result = Marshal.PtrToStringAnsi(NativeSdlTtf.InternalFontFaceStyleName(font));
             Validator.ValidateOutput(result);
             return result;
         }
@@ -588,7 +588,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
             Validator.ValidateInput(measureWidth);
-            int result = NativeSdlTtf.InternalMeasureUNICODE(font, text, measureWidth, out extent, out count);
+            int result = NativeSdlTtf.InternalMeasureUnicode(font, text, measureWidth, out extent, out count);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -607,7 +607,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
             Validator.ValidateInput(fg);
-            IntPtr result = NativeSdlTtf.InternalRenderText_Solid(font, text, fg);
+            IntPtr result = NativeSdlTtf.InternalRenderTextSolid(font, text, fg);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -626,7 +626,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
             Validator.ValidateInput(fg);
-            IntPtr result = NativeSdlTtf.InternalRenderUTF8_Solid(font, text, fg);
+            IntPtr result = NativeSdlTtf.InternalRenderUTF8Solid(font, text, fg);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -645,7 +645,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
             Validator.ValidateInput(fg);
-            IntPtr result = NativeSdlTtf.InternalRenderUNICODE_Solid(font, text, fg);
+            IntPtr result = NativeSdlTtf.InternalRenderUnicodeSolid(font, text, fg);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -706,7 +706,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateInput(font);
             Validator.ValidateInput(ch);
             Validator.ValidateInput(fg);
-            IntPtr result = NativeSdlTtf.InternalRenderGlyph_Solid(font, ch, fg);
+            IntPtr result = NativeSdlTtf.InternalRenderGlyphSolid(font, ch, fg);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -725,7 +725,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateInput(font);
             Validator.ValidateInput(ch);
             Validator.ValidateInput(fg);
-            IntPtr result = NativeSdlTtf.InternalRenderGlyph32_Solid(font, ch, fg);
+            IntPtr result = NativeSdlTtf.InternalRenderGlyph32Solid(font, ch, fg);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -746,7 +746,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateInput(text);
             Validator.ValidateInput(fg);
             Validator.ValidateInput(bg);
-            IntPtr result = NativeSdlTtf.InternalRenderText_Shaded(font, text, fg, bg);
+            IntPtr result = NativeSdlTtf.InternalRenderTextShaded(font, text, fg, bg);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -767,7 +767,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateInput(text);
             Validator.ValidateInput(fg);
             Validator.ValidateInput(bg);
-            IntPtr result = NativeSdlTtf.InternalRenderUTF8_Shaded(font, text, fg, bg);
+            IntPtr result = NativeSdlTtf.InternalRenderUtf8Shaded(font, text, fg, bg);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -788,7 +788,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateInput(text);
             Validator.ValidateInput(fg);
             Validator.ValidateInput(bg);
-            IntPtr result = NativeSdlTtf.InternalRenderUNICODE_Shaded(font, text, fg, bg);
+            IntPtr result = NativeSdlTtf.InternalRenderUnicodeShaded(font, text, fg, bg);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -811,7 +811,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateInput(fg);
             Validator.ValidateInput(bg);
             Validator.ValidateInput(wrapLength);
-            IntPtr result = NativeSdlTtf.InternalRenderText_Shaded_Wrapped(font, text, fg, bg, wrapLength);
+            IntPtr result = NativeSdlTtf.InternalRenderTextShadedWrapped(font, text, fg, bg, wrapLength);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -834,7 +834,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateInput(fg);
             Validator.ValidateInput(bg);
             Validator.ValidateInput(wrapLength);
-            IntPtr result = NativeSdlTtf.InternalRenderUTF8_Shaded_Wrapped(font, text, fg, bg, wrapLength);
+            IntPtr result = NativeSdlTtf.InternalRenderUtf8ShadedWrapped(font, text, fg, bg, wrapLength);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -857,7 +857,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateInput(fg);
             Validator.ValidateInput(bg);
             Validator.ValidateInput(wrapLength);
-            IntPtr result = NativeSdlTtf.InternalRenderUNICODE_Shaded_Wrapped(font, text, fg, bg, wrapLength);
+            IntPtr result = NativeSdlTtf.InternalRenderUnicodeShadedWrapped(font, text, fg, bg, wrapLength);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -878,7 +878,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateInput(ch);
             Validator.ValidateInput(fg);
             Validator.ValidateInput(bg);
-            IntPtr result = NativeSdlTtf.InternalRenderGlyph_Shaded(font, ch, fg, bg);
+            IntPtr result = NativeSdlTtf.InternalRenderGlyphShaded(font, ch, fg, bg);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -899,7 +899,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateInput(ch);
             Validator.ValidateInput(fg);
             Validator.ValidateInput(bg);
-            IntPtr result = NativeSdlTtf.InternalRenderGlyph32_Shaded(font, ch, fg, bg);
+            IntPtr result = NativeSdlTtf.InternalRenderGlyph32Shaded(font, ch, fg, bg);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -918,7 +918,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateInput(font);
             Validator.ValidateInput(text);
             Validator.ValidateInput(fg);
-            IntPtr result = NativeSdlTtf.InternalRenderText_Blended(font, text, fg);
+            IntPtr result = NativeSdlTtf.InternalRenderTextBlended(font, text, fg);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -979,7 +979,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateInput(text);
             Validator.ValidateInput(sdlColor);
             Validator.ValidateInput(wrapped);
-            IntPtr result = NativeSdlTtf.InternalRenderUTF8_Blended_Wrapped(font, text, sdlColor, wrapped);
+            IntPtr result = NativeSdlTtf.InternalRenderUtf8BlendedWrapped(font, text, sdlColor, wrapped);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -1019,7 +1019,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateInput(font);
             Validator.ValidateInput(ch);
             Validator.ValidateInput(fg);
-            IntPtr result = NativeSdlTtf.InternalRenderGlyph_Blended(font, ch, fg);
+            IntPtr result = NativeSdlTtf.InternalRenderGlyphBlended(font, ch, fg);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -1038,7 +1038,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             Validator.ValidateInput(font);
             Validator.ValidateInput(ch);
             Validator.ValidateInput(fg);
-            IntPtr result = NativeSdlTtf.InternalRenderGlyph32_Blended(font, ch, fg);
+            IntPtr result = NativeSdlTtf.InternalRenderGlyph32Blended(font, ch, fg);
             Validator.ValidateOutput(result);
             return result;
         }
@@ -1185,6 +1185,31 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
             IntPtr result = NativeSdlTtf.InternalRenderUtf8SolidWrapped(font, text, fg, wrapLength);
             Validator.ValidateOutput(result);
             return result;
+        }
+        
+        /// <summary>
+        ///     Ttf the get error
+        /// </summary>
+        /// <returns>The string</returns>
+        [return: NotNull, NotEmpty]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static string GetError()
+        {
+            string result = Sdl.GetError();
+            Validator.ValidateOutput(result);
+            return result;
+        }
+
+        /// <summary>
+        ///     Ttf the set error using the specified fmt and arg
+        /// </summary>
+        /// <param name="fmtAndArgList">The fmt and arg</param>
+        [return: NotNull]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void SetError([NotNull, NotEmpty] string fmtAndArgList)
+        {
+            Validator.ValidateInput(fmtAndArgList);
+            Sdl.SetError(fmtAndArgList);
         }
 
         /// <summary>
