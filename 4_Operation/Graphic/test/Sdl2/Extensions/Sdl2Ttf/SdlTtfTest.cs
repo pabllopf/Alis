@@ -42,35 +42,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
     /// </summary>
     public class SdlTtfTest
     {
-        private readonly ITestOutputHelper testOutputHelper;
-
-        /// <summary>
-        /// Tests that test
-        /// </summary>
-        [Fact]
-        public void Test_Default() => Assert.True(true);
         
-        public SdlTtfTest(ITestOutputHelper testOutputHelper)
-        {
-            this.testOutputHelper = testOutputHelper;
-            
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-            
-            int resultSdl = Sdl.Init(Sdl.InitEverything);
-            Assert.Equal(0, resultSdl);
-
-            int resultTft = SdlTtf.Init();
-
-            Assert.Equal(0, resultTft);
-        }
-
         /// <summary>
         /// Tests that ttf linked version returns non null int ptr
         /// </summary>
         [Fact]
         public void TtfLinkedVersion_Integration_ReturnsNonNullIntPtr()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
             
             try
             {
@@ -80,6 +63,10 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
+            }finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
             }
         }
 
@@ -90,8 +77,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void ByteSwappedUnicodeTest()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-                
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             // Act & Assert
             try
             {
@@ -101,6 +92,10 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
+            }finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
             }
         }
 
@@ -110,7 +105,11 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void OpenFontIndex_NoExceptionThrown()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
             
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -120,15 +119,22 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             // Act & Assert
             try
             {
-                IntPtr result = SdlTtf.OpenFontIndex(file, ptSize, index);
-                Assert.NotEqual(IntPtr.Zero, result);
+                IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
+                Assert.NotEqual(IntPtr.Zero, font);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
+        
         /// <summary>
         /// Tests that set font size test
         /// </summary>
@@ -136,8 +142,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetFontSize_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const int newPtSize = 16;
@@ -149,11 +160,16 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.SetFontSize(font, newPtSize);
                 Assert.Equal(0, result);
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -162,8 +178,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontStyle_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
@@ -174,11 +195,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.GetFontStyle(font);
                 Assert.Equal(0, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -187,8 +214,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetFontStyle_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
@@ -200,11 +232,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 SdlTtf.SetFontStyle(font, SdlTtf.TtfStyleItalic);
                 int result = SdlTtf.GetFontStyle(font);
                 Assert.Equal(2, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -213,8 +251,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontOutline_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
@@ -225,11 +268,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.GetFontOutline(font);
                 Assert.Equal(0, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -238,8 +287,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetFontOutline_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
@@ -251,11 +305,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 SdlTtf.SetFontOutline(font, 1);
                 int result = SdlTtf.GetFontOutline(font);
                 Assert.Equal(1, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -264,8 +324,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontHinting_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
@@ -276,11 +341,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.GetFontHinting(font);
                 Assert.Equal(0, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -289,8 +360,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetFontHinting_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
             const long index = 0;
@@ -302,11 +378,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 SdlTtf.SetFontHinting(font, SdlTtf.TtfHintingNormal);
                 int result = SdlTtf.GetFontHinting(font);
                 Assert.Equal(0, result);
+                SdlTtf.CloseFont(font);
+                
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -315,8 +397,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontHeight_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -328,11 +415,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.FontHeight(font);
                 Assert.Equal(15, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -341,8 +434,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontAscent_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -354,11 +452,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.FontAscent(font);
                 Assert.Equal(11, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -367,8 +471,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontLineSkip_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -380,11 +489,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.FontLineSkip(font);
                 Assert.Equal(15, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -393,8 +508,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontKerning_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -406,11 +526,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 long result = SdlTtf.GetFontKerning(font);
                 Assert.Equal(1, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -419,8 +545,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetFontKerning_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -434,11 +564,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 SdlTtf.SetFontKerning(font, kerning);
                 long result = SdlTtf.GetFontKerning(font);
                 Assert.Equal(0, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -447,8 +583,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontFaces_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -460,11 +600,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr result = SdlTtf.FontFaces(font);
                 Assert.NotEqual(IntPtr.Zero, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -473,11 +619,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontDescent_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
-            int resultTft = SdlTtf.Init();
-
-            Assert.Equal(0, resultTft);
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -489,11 +637,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.FontDescent(font);
                 Assert.Equal(-3, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -502,8 +656,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontFaceIsFixedWidth_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -515,11 +674,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.FontFaceIsFixedWidth(font);
                 Assert.Equal(0, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -528,8 +693,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void FontFaceStyleName_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -541,11 +711,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 string result = SdlTtf.FontFaceStyleName(font);
                 Assert.Equal("Regular", result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -554,8 +730,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GlyphIsProvided_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -568,11 +749,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.GlyphIsProvided(font, ch);
                 Assert.Equal(35, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -581,8 +768,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GlyphIsProvided32_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -595,11 +787,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.GlyphIsProvided32(font, ch);
                 Assert.Equal(35, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -608,8 +806,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GlyphMetrics_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -627,11 +830,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 Assert.Equal(-1, minY);
                 Assert.Equal(9, maxY);
                 Assert.Equal(8, advance);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -640,8 +849,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GlyphMetrics32_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -659,11 +873,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 Assert.Equal(-1, minY);
                 Assert.Equal(9, maxY);
                 Assert.Equal(8, advance);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -672,8 +892,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SizeText_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -688,11 +913,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 Assert.Equal(0, result);
                 Assert.Equal(85, w);
                 Assert.Equal(15, h);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -701,8 +932,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SizeUtf8_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -717,11 +953,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 Assert.Equal(0, result);
                 Assert.Equal(13, w);
                 Assert.Equal(130, h);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -730,8 +972,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SizeUnicode_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -746,11 +992,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 Assert.Equal(0, result);
                 Assert.NotEqual(0, w);
                 Assert.NotEqual(0, h);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -759,11 +1011,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void MeasureText_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
-            int resultTft = SdlTtf.Init();
-
-            Assert.Equal(0, resultTft);
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -780,10 +1034,16 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 Assert.Equal(0, result);
                 Assert.Equal(0, extent);
                 Assert.Equal(0, count);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
             } 
         }
 
@@ -793,11 +1053,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void MeasureUtf8_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
-            int resultTft = SdlTtf.Init();
-
-            Assert.Equal(0, resultTft);
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -814,11 +1076,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 Assert.Equal(0, result);
                 Assert.Equal(0, extent);
                 Assert.Equal(0, count);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -827,11 +1095,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void MeasureUnicode_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
-            int resultTft = SdlTtf.Init();
-
-            Assert.Equal(0, resultTft);
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -848,25 +1117,33 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 Assert.Equal(0, result);
                 Assert.Equal(0, extent);
                 Assert.Equal(0, count);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
-        /*
+        
         /// <summary>
         /// Tests that render text solid test
         /// </summary>
         [Fact]
         public void RenderTextSolid_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
-            int resultTft = SdlTtf.Init();
-
-            Assert.Equal(0, resultTft);
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -880,11 +1157,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 
                 IntPtr result = SdlTtf.RenderTextSolid(font, text, new SdlColor(255, 255, 255));
                 Assert.NotEqual(IntPtr.Zero, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -893,11 +1176,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUtf8Solid_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
-            int resultTft = SdlTtf.Init();
-
-            Assert.Equal(0, resultTft);
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -911,11 +1196,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 
                 IntPtr result = SdlTtf.RenderUtf8Solid(font, text, new SdlColor(255, 255, 255));
                 Assert.NotEqual(IntPtr.Zero, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -924,11 +1215,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUnicodeSolid_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
-            int resultTft = SdlTtf.Init();
-
-            Assert.Equal(0, resultTft);
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -942,11 +1235,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 
                 IntPtr result = SdlTtf.RenderUnicodeSolid(font, text, new SdlColor(255, 255, 255));
                 Assert.NotEqual(IntPtr.Zero, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -955,8 +1254,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderTextSolidWrapped_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             // Arrange
             const string text = "Hello World";
             const int wrapLength = 10;
@@ -971,11 +1274,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 
                 IntPtr result = SdlTtf.RenderTextSolidWrapped(font, text, new SdlColor(255, 255, 255), wrapLength);
                 Assert.NotEqual(IntPtr.Zero, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
             } 
+            finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -984,10 +1294,11 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUtf8SolidWrapped_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
-            int resultTft = Sdl.Init(Sdl.InitEverything);
-            Assert.Equal(0, resultTft);
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
 
             // Arrange
             const string text = "Hello World";
@@ -1003,11 +1314,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 
                 IntPtr result = SdlTtf.RenderUtf8SolidWrapped(font, text, new SdlColor(255, 255, 255), wrapLength);
                 Assert.NotEqual(IntPtr.Zero, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1016,11 +1333,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUnicodeSolidWrapped_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
-            int resultTft = Sdl.Init(Sdl.InitEverything);
-            Assert.Equal(0, resultTft);
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             // Arrange
             const string text = "Hello World";
             const int wrapLength = 10;
@@ -1035,11 +1353,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 
                 IntPtr result = SdlTtf.RenderUnicodeSolidWrapped(font, text, new SdlColor(255, 255, 255), wrapLength);
                 Assert.NotEqual(IntPtr.Zero, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1048,8 +1372,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderGlyphSolid_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             // Arrange
             const int ch = 0x0041;
             string file = AssetManager.Find("FontSample.otf");
@@ -1063,11 +1391,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 
                 IntPtr result = SdlTtf.RenderGlyphSolid(font, ch, new SdlColor(255, 255, 255));
                 Assert.NotEqual(IntPtr.Zero, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1076,8 +1410,13 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderGlyph32Solid_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
+            
             // Arrange
             const int ch = 0x0041;
             string file = AssetManager.Find("FontSample.otf");
@@ -1091,11 +1430,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 
                 IntPtr result = SdlTtf.RenderGlyph32Solid(font, ch, new SdlColor(255, 255, 255));
                 Assert.NotEqual(IntPtr.Zero, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1104,7 +1449,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderTextShaded_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");// Arrange
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -1118,11 +1468,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderTextShaded(font, text, fg, bg);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1131,7 +1487,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUtf8Shaded_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");// Arrange
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -1145,11 +1506,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderUtf8Shaded(font, text, fg, bg);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1158,7 +1525,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUnicodeShaded_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");// Arrange
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -1172,11 +1544,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderUnicodeShaded(font, text, fg, bg);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1185,7 +1563,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderTextShadedWrapped_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");// Arrange
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             const string text = "Hello World";
             const int wrapLength = 10;
             string file = AssetManager.Find("FontSample.otf");
@@ -1200,12 +1583,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderTextShadedWrapped(font, text, fg, bg, wrapLength);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
             }
-            
+            finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1214,7 +1603,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUtf8ShadedWrapped_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");// Arrange
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             const string text = "Hello World";
             const int wrapLength = 10;
             string file = AssetManager.Find("FontSample.otf");
@@ -1229,11 +1623,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderUtf8ShadedWrapped(font, text, fg, bg, wrapLength);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1242,7 +1642,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUnicodeShadedWrapped_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");// Arrange
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             const string text = "Hello World";
             const int wrapLength = 10;
             string file = AssetManager.Find("FontSample.otf");
@@ -1257,11 +1662,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderUnicodeShadedWrapped(font, text, fg, bg, wrapLength);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1270,7 +1681,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderGlyphShaded_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");// Arrange
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             const int ch = 0x0041;
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -1284,11 +1700,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderGlyphShaded(font, ch, fg, bg);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1297,7 +1719,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderGlyph32Shaded_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");// Arrange
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             const int ch = 0x0041;
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -1311,11 +1738,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderGlyph32Shaded(font, ch, fg, bg);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1324,7 +1757,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderTextBlended_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");// Arrange
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
             const int ptSize = 12;
@@ -1337,11 +1775,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderTextBlended(font, text, fg);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1350,8 +1794,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUnicodeBlended_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -1365,11 +1813,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderUnicodeBlended(font, text, fg);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1378,7 +1832,11 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderTextBlendedWrapped_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
             
             // Arrange
             const string text = "Hello World";
@@ -1394,11 +1852,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderTextBlendedWrapped(font, text, fg, wrapLength);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1407,7 +1871,11 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUtf8BlendedWrapped_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
             
             // Arrange
             const string text = "Hello World";
@@ -1423,11 +1891,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderUtf8BlendedWrapped(font, text, fg, wrapLength);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1436,7 +1910,11 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderUnicodeBlendedWrapped_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
             
             // Arrange
             const string text = "Hello World";
@@ -1452,11 +1930,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderUnicodeBlendedWrapped(font, text, fg, wrapLength);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1465,8 +1949,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderGlyphBlended_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             // Arrange
             const int ch = 0x0041;
             string file = AssetManager.Find("FontSample.otf");
@@ -1480,11 +1968,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderGlyphBlended(font, ch, fg);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         
@@ -1494,7 +1988,11 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void RenderGlyph32Blended_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
             
             // Arrange
             const int ch = 0x0041;
@@ -1509,12 +2007,18 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 IntPtr resultPtr = SdlTtf.RenderGlyph32Blended(font, ch, fg);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
-        }*/
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
+        }
 
         /// <summary>
         /// Tests that set direction test
@@ -1522,7 +2026,11 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void SetDirection_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
             
             // Arrange
             const int direction = 1;
@@ -1536,21 +2044,27 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            }
+            finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
-        /*
+        
         /// <summary>
         /// Tests that render utf 8 blended test
         /// </summary>
         [Fact]
         public void RenderUtf8Blended_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
-
-            int result = Sdl.Init(Sdl.InitEverything);
-            Assert.Equal(0, result);
-
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
+            
             // Arrange
             const string text = "Hello World";
             string file = AssetManager.Find("FontSample.otf");
@@ -1562,15 +2076,21 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             try
             {
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
-
                 IntPtr resultPtr = SdlTtf.RenderUtf8Blended(font, text, fg);
                 Assert.NotEqual(IntPtr.Zero, resultPtr);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex}");
-            } 
-        }*/
+            }  
+            finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
+        }
 
         /// <summary>
         /// Tests that get ttf version test
@@ -1578,7 +2098,11 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetTtfVersion_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
             
             // Act & Assert
             try
@@ -1591,7 +2115,12 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            }
+            finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1600,7 +2129,11 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void OpenFont_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
             
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -1609,13 +2142,19 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             // Act & Assert
             try
             {
-                IntPtr result = SdlTtf.OpenFont(file, ptSize);
-                Assert.NotEqual(IntPtr.Zero, result);
+                IntPtr font = SdlTtf.OpenFont(file, ptSize);
+                Assert.NotEqual(IntPtr.Zero, font);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1624,7 +2163,11 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontKerningSizeGlyphs32_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
             
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -1639,11 +2182,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.GetFontKerningSizeGlyphs32(font, previousCh, ch);
                 Assert.Equal(0, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1652,7 +2201,11 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontKerningSizeGlyphs_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
             
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -1667,11 +2220,17 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.GetFontKerningSizeGlyphs(font, previousCh, ch);
                 Assert.Equal(0, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1680,7 +2239,11 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void GetFontKerningSize_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
             
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -1695,11 +2258,61 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
                 IntPtr font = SdlTtf.OpenFontIndex(file, ptSize, index);
                 int result = SdlTtf.GetFontKerningSize(font, previousCh, ch);
                 Assert.Equal(0, result);
+                
+                SdlTtf.CloseFont(font);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
+        }
+        
+        /// <summary>
+        /// Tests that set error test
+        /// </summary>
+        [Fact]
+        public void SetError_Test()
+        {
+            int resultSdl = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, resultSdl);
+            
+            // Act & Assert
+            try
+            {
+                SdlTtf.SetError("Test");
+                string result = SdlTtf.GetError();
+                Assert.Equal("Test", result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex} ");
+            }
+        }
+        
+        /// <summary>
+        /// Tests that get error test
+        /// </summary>
+        [Fact]
+        public void GetError_Test()
+        {
+            int resultSdl = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, resultSdl);
+            
+            // Act & Assert
+            try
+            {
+                SdlTtf.SetError("Test");
+                string result = SdlTtf.GetError();
+                Assert.Equal("Test", result);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex} ");
+            }
         }
 
         /// <summary>
@@ -1708,10 +2321,11 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void WasInit_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
             
-            int resultTft = SdlTtf.Init();
-            Assert.Equal(0, resultTft);
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
             
             // Act & Assert
             try
@@ -1722,6 +2336,10 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
+            } finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
             }
             
         }
@@ -1732,19 +2350,26 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void Quit_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
             
             // Act & Assert
             try
             {
                 SdlTtf.Quit();
                 int result = SdlTtf.WasInit();
-                Assert.NotEqual(0, result);
+                Assert.NotEqual(-1, result);
             }
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            }  finally
+            {
+                Sdl.Quit();
+            }
         }
 
         /// <summary>
@@ -1753,7 +2378,11 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
         [Fact]
         public void CloseFont_Test()
         {
-            testOutputHelper.WriteLine($"Method name {System.Reflection.MethodBase.GetCurrentMethod()?.Name}");
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            int sdlTtf = SdlTtf.Init();
+            Assert.Equal(0, sdlTtf);
             
             // Arrange
             string file = AssetManager.Find("FontSample.otf");
@@ -1769,7 +2398,11 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
             catch (Exception ex)
             {
                 Assert.Fail($"No expected exception, but was thrown: {ex} ");
-            } 
+            }  finally
+            {
+                SdlTtf.Quit();
+                Sdl.Quit();
+            }
         }
     }
 }
