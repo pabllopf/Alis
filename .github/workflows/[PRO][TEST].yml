@@ -14,6 +14,7 @@ on:
 jobs:
   Run_Test_On_MacOs_Latest:
     runs-on: macos-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -21,9 +22,12 @@ jobs:
           ref: master
 
       - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: | 
+            6.0.x
+            7.0.x
+            8.0.x
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln --configuration Debug
@@ -39,6 +43,7 @@ jobs:
   
   Run_Test_On_Windows_Latest:
     runs-on: windows-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -48,7 +53,10 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: | 
+            6.0.x
+            7.0.x
+            8.0.x
 
       - name: Dotnet test Debug
         run: dotnet test alis.sln --configuration Debug
@@ -64,6 +72,7 @@ jobs:
   
   Run_Test_On_Ubuntu_Latest:
     runs-on: ubuntu-latest
+        
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -71,9 +80,12 @@ jobs:
           ref: master
 
       - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: | 
+            6.0.x
+            7.0.x
+            8.0.x
         
       - name: Dotnet test Debug
         run: dotnet test alis.sln --configuration Debug
