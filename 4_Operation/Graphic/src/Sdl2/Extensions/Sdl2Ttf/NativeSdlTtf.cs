@@ -54,15 +54,6 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         static NativeSdlTtf() => new EmbeddedDllClass().ExtractEmbeddedDlls("sdl2_ttf", Sdl2Dlls.GlSdlTtfDllBytes, Assembly.GetAssembly(typeof(Sdl2Dlls)));
         
         /// <summary>
-        ///     Internals the ttf linked version
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "TTF_Linked_Version", CallingConvention = CallingConvention.Cdecl)]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        [return: NotNull]
-        internal static extern IntPtr InternalLinkedVersion();
-
-        /// <summary>
         ///     Ttf the glyph is provided 32 using the specified font
         /// </summary>
         /// <param name="font">The font</param>

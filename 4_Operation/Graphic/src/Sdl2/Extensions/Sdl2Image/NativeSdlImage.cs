@@ -58,15 +58,6 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
         }
 
         /// <summary>
-        ///     Internals the img linked version
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "IMG_Linked_Version", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlVersion InternalImgLinkedVersion();
-
-        /// <summary>
         ///     Img the init using the specified flags
         /// </summary>
         /// <param name="flags">The flags</param>

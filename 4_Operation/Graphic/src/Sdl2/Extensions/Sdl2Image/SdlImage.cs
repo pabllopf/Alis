@@ -55,19 +55,6 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
         }
 
         /// <summary>
-        ///     Gets the img linked version
-        /// </summary>
-        /// <returns>The result</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlVersion GetImgLinkedVersion()
-        {
-            SdlVersion result = NativeSdlImage.InternalImgLinkedVersion();
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
-        /// <summary>
         ///     Img the init using the specified flags
         /// </summary>
         /// <param name="flags">The flags</param>

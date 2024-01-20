@@ -99,7 +99,13 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         private static SdlEvent _sdlEvent;
 
+        /// <summary>
+        /// The texture font
+        /// </summary>
         private static IntPtr textureFont1;
+        /// <summary>
+        /// The dst rect font
+        /// </summary>
         private static RectangleI dstRectFont1;
 
         /// <summary>
@@ -183,7 +189,7 @@ namespace Alis.Core.Graphic.Sample
             }
 
             // INIT SDL_IMAGE FLAGS
-            ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
+            const ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
 
             // INIT SDL_IMAGE
             Console.WriteLine(SdlImage.Init(flagImage) < 0 ? $"There was an issue initializing SDL_Image. {Sdl.GetError()}" : "SDL_Image Initialized");
