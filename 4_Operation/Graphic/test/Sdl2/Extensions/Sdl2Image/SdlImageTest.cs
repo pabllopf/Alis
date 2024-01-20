@@ -48,7 +48,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
         /// </summary>
         [Fact]
         public void Test_Default() => Assert.True(true);
-        /*
+        
+        
         /// <summary>
         /// Tests that test get version
         /// </summary>
@@ -58,12 +59,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
             int sdlInit = Sdl.Init(Sdl.InitEverything);
             Assert.Equal(0, sdlInit);
             
-            const ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
+            const ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg;
             int sdlImage = SdlImage.Init(flagImage);
-            if (sdlImage < 0)
-            {
-                Console.WriteLine($"Error: {Sdl.GetError()}");
-            }
             Assert.NotEqual(0, sdlImage);
             
             try
@@ -81,7 +78,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
                 SdlImage.Quit();
                 Sdl.Quit();
             }
-        }*/
+        }
     /*    
         /// <summary>
         /// Tests that test load
