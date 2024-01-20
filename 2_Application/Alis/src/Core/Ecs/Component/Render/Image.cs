@@ -31,7 +31,6 @@ using System;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image;
 
 namespace Alis.Core.Ecs.Component.Render
 {
@@ -58,7 +57,7 @@ namespace Alis.Core.Ecs.Component.Render
             Logger.Trace();
             Path = path;
             //Load Texture:
-            Texture = SdlImage.LoadTexture(VideoGame.Instance.GraphicManager.Renderer, path);
+            Texture = Sdl.LoadBmp(path);
 
             // get the size of sprite.Image.Texture
             Sdl.QueryTexture(Texture, out _, out _, out int w, out int h);

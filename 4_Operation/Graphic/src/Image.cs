@@ -29,7 +29,7 @@
 
 using System;
 using System.IO;
-using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image;
+using Alis.Core.Graphic.Sdl2;
 
 namespace Alis.Core.Graphic
 {
@@ -79,7 +79,7 @@ namespace Alis.Core.Graphic
                 throw new FileNotFoundException("The image file does not exist");
             }
 
-            nativePointer = SdlImage.Load("Assets/tile000.png");
+            nativePointer = Sdl.LoadBmp("Assets/tile000.bmp");
             isLoaded = true;
         }
 
