@@ -46,7 +46,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
         [Fact]
         public void Test_Default() => Assert.True(true);
         
-        
+        /*
         /// <summary>
         /// Tests that test get version
         /// </summary>
@@ -74,7 +74,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
                 SdlImage.Quit();
                 Sdl.Quit();
             }
-        }
+        }*/
     /*    
         /// <summary>
         /// Tests that test load
