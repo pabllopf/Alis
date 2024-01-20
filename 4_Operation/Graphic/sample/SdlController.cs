@@ -37,7 +37,6 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Definition;
 using Alis.Core.Aspect.Math.Shape.Rectangle;
 using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Sdl = Alis.Core.Graphic.Sdl2.Sdl;
@@ -188,12 +187,6 @@ namespace Alis.Core.Graphic.Sample
                 Logger.Info("Renderer created");
             }
             
-            // INIT SDL_IMAGE
-            Console.WriteLine(SdlImage.Init() < 0 ? $"There was an issue initializing SDL_Image. {Sdl.GetError()}" : "SDL_Image Initialized");
-
-            // GET VERSION SDL_IMAGE
-            Console.WriteLine($"SDL_Image Version: {SdlImage.GetVersion().major}.{SdlImage.GetVersion().minor}.{SdlImage.GetVersion().patch}");
-
             SdlTtf.Init();
             Console.WriteLine($"SDL_TTF Version: {SdlTtf.GetTtfVersion().major}.{SdlTtf.GetTtfVersion().minor}.{SdlTtf.GetTtfVersion().patch}");
             
@@ -283,7 +276,7 @@ namespace Alis.Core.Graphic.Sample
             };
 
             // Load the image from the specified path.
-            Image imageTile = new Image("Assets/tile000.png");
+            Image imageTile = new Image("Assets/tile000.bmp");
 
             // Create a new texture from the image.
             Texture textureTile = new Texture(renderer, imageTile, tileRectangleI);
@@ -388,7 +381,6 @@ namespace Alis.Core.Graphic.Sample
             Sdl.DestroyWindow(window);
             //Sdl.FreeSurface(imageTile);
             //Sdl.DestroyTexture(textureTile);
-            SdlImage.Quit();
             Sdl.Quit();
         }
 

@@ -42,7 +42,6 @@ using Alis.Core.Ecs.Component.Render;
 using Alis.Core.Ecs.System.Setting.Graphic;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
-using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
 using Alis.Core.Graphic.Sdl2.Structs;
 
@@ -293,7 +292,6 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             Sdl.DestroyRenderer(Renderer);
             Sdl.DestroyWindow(_window);
-            SdlImage.Quit();
             Sdl.Quit();
         }
 
@@ -444,16 +442,10 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
 
             if ((string.IsNullOrEmpty(VideoGame.Instance.Settings.General.Icon) == false) && File.Exists(VideoGame.Instance.Settings.General.Icon))
             {
-                IntPtr icon = SdlImage.Load(VideoGame.Instance.Settings.General.Icon);
+                IntPtr icon = Sdl.LoadBmp(VideoGame.Instance.Settings.General.Icon);
                 Sdl.SetWindowIcon(_window, icon);
             }
             
-            // INIT SDL_IMAGE
-            Console.WriteLine(SdlImage.Init() < 0 ? $"There was an issue initializing SDL_Image. {Sdl.GetError()}" : "SDL_Image Initialized");
-
-            // GET VERSION SDL_IMAGE
-            Console.WriteLine($"SDL_Image Version: {SdlImage.GetVersion().major}.{SdlImage.GetVersion().minor}.{SdlImage.GetVersion().patch}");
-
             // INIT SDL_TTF
             Console.WriteLine(SdlTtf.Init() < 0 ? $"There was an issue initializing SDL_TTF. {Sdl.GetError()}" : "SDL_TTF Initialized");
 
