@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image;
 using Alis.Core.Graphic.Sdl2.Structs;
@@ -46,7 +47,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
         [Fact]
         public void Test_Default() => Assert.True(true);
         
-        /*
+        
         /// <summary>
         /// Tests that test get version
         /// </summary>
@@ -74,8 +75,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
                 SdlImage.Quit();
                 Sdl.Quit();
             }
-        }*/
-    /*    
+        }
+       
         /// <summary>
         /// Tests that test load
         /// </summary>
@@ -84,9 +85,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
         {
             int sdlInit = Sdl.Init(Sdl.InitEverything);
             Assert.Equal(0, sdlInit);
-            
-            const ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
-            int sdlImage = SdlImage.Init(flagImage);
+
+            int sdlImage = SdlImage.Init();
             Assert.NotEqual(0, sdlImage);
             Assert.NotEqual(-1, sdlImage);
             
@@ -114,9 +114,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
         {
             int sdlInit = Sdl.Init(Sdl.InitEverything);
             Assert.Equal(0, sdlInit);
-            
-            const ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
-            int sdlImage = SdlImage.Init(flagImage);
+
+            int sdlImage = SdlImage.Init();
             Assert.NotEqual(0, sdlImage);
             Assert.NotEqual(-1, sdlImage);
             
@@ -145,9 +144,8 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
         {
             int sdlInit = Sdl.Init(Sdl.InitEverything);
             Assert.Equal(0, sdlInit);
-            
-            const ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
-            int sdlImage = SdlImage.Init(flagImage);
+
+            int sdlImage = SdlImage.Init();
             Assert.NotEqual(0, sdlImage);
             Assert.NotEqual(-1, sdlImage);
             
@@ -166,6 +164,6 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
                 SdlImage.Quit();
                 Sdl.Quit();
             }
-        }*/
+        }
     }
 }
