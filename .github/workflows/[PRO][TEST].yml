@@ -74,57 +74,6 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x
-
-      - name: update
-        run: sudo apt-get update
-
-      - name: install_dependencies
-        run: |
-          sudo add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu `lsb_release -sc` main universe restricted multiverse"
-          sudo apt-get update -y -qq
-          sudo apt-get install libsdl2-dev
-
-      - name: Setup Linux dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install wayland-protocols \
-            pkg-config \
-            ninja-build \
-            libasound2-dev \
-            libdbus-1-dev \
-            libegl1-mesa-dev \
-            libgl1-mesa-dev \
-            libgles2-mesa-dev \
-            libglu1-mesa-dev \
-            libibus-1.0-dev \
-            libpulse-dev \
-            libsdl2-2.0-0 \
-            libsndio-dev \
-            libudev-dev \
-            libwayland-dev \
-            libwayland-client++0 \
-            wayland-scanner++ \
-            libwayland-cursor++0 \
-            libx11-dev \
-            libxcursor-dev \
-            libxext-dev \
-            libxi-dev \
-            libxinerama-dev \
-            libxkbcommon-dev \
-            libxrandr-dev \
-            libxss-dev \
-            libxt-dev \
-            libxv-dev \
-            libxxf86vm-dev \
-            libdrm-dev \
-            libgbm-dev\
-            libpulse-dev
-          
-      - name: Install SDL2
-        run: sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev
-  
-      - name: update
-        run: sudo apt-get install wayland-protocols pkg-config ninja-build
         
       - name: Dotnet test Debug
         run: dotnet test alis.sln --configuration Debug
