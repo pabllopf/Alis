@@ -76,7 +76,7 @@ jobs:
           dotnet-version: 6.0.x
           
       - name: Install SDL2
-        run: apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev
+        run: sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev
         
       - name: Dotnet test Debug
         run: dotnet test alis.sln --configuration Debug
