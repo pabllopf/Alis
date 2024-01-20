@@ -27,6 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Core.Graphic.Sdl2;
+using Alis.Core.Graphic.Sdl2.Enums;
+using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image;
+using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
+using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
@@ -41,5 +47,32 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
         /// </summary>
         [Fact]
         public void Test_Default() => Assert.True(true);
+        
+        [Fact]
+        public void Test_GetVersion()
+        {
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            const ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
+            int sdlTtf = SdlImage.Init(flagImage);
+            Assert.Equal(15, sdlTtf);
+            
+            try
+            {
+                SdlVersion version = SdlImage.GetVersion();
+                Assert.Equal(2, version.major);
+                Assert.Equal(0, version.minor);
+                Assert.Equal(6, version.patch);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex}");
+            }finally
+            {
+                SdlImage.Quit();
+                Sdl.Quit();
+            }
+        }
     }
 }
