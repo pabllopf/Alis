@@ -11,11 +11,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Update="Assets\tile000.png">
-        <LinkBase>Assets/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
+        <None Update="Assets\tile000.png">
+            <LinkBase>Assets/</LinkBase>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+        </None>
     </ItemGroup>
-    
+
 </Project>
