@@ -3,19 +3,10 @@
     <Import Project="$(SolutionDir).config/Config.props"/>
 
     <PropertyGroup>
-        <TargetFramework>$(TargetFramework2)</TargetFramework>
+        <TargetFrameworks>$(TargetFramework1);$(TargetFramework2)</TargetFrameworks>
     </PropertyGroup>
 
     <PropertyGroup>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
     </PropertyGroup>
-
-    <ItemGroup>
-        <None Update="Assets\tile000.png">
-            <LinkBase>Assets/</LinkBase>
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-            <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-        </None>
-    </ItemGroup>
-
 </Project>

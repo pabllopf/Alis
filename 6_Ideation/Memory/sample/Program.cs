@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Core.Aspect.Memory.Sample
 {
     /// <summary>
@@ -40,8 +42,8 @@ namespace Alis.Core.Aspect.Memory.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            MyClass instance = new MyClass();
-            instance.MyMethod("");
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
         }
     }
 }

@@ -3,7 +3,7 @@
     <Import Project="$(SolutionDir).config/Config.props"/>
 
     <PropertyGroup>
-        <TargetFramework>$(TargetFramework2)</TargetFramework>
+        <TargetFrameworks>$(TargetFramework1);$(TargetFramework2)</TargetFrameworks>
     </PropertyGroup>
 
     <PropertyGroup>
