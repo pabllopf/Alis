@@ -104,5 +104,32 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
                 Sdl.Quit();
             }
         }
+
+        [Fact]
+        public void Test_LoadRw()
+        {
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            const ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
+            int sdlTtf = SdlImage.Init(flagImage);
+            Assert.Equal(15, sdlTtf);
+            
+            try
+            {
+                string file = AssetManager.Find("tile000.png");
+                IntPtr rw = Sdl.RwFromFile(file, "rb");
+                IntPtr surface = SdlImage.LoadRw(rw, 0);
+                Assert.NotEqual(IntPtr.Zero, surface);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex}");
+            }finally
+            {
+                SdlImage.Quit();
+                Sdl.Quit();
+            }
+        }
     }
 }
