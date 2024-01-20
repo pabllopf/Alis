@@ -42,35 +42,6 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
     /// </summary>
     public class SdlTtfTest
     {
-        
-        /// <summary>
-        /// Tests that ttf linked version returns non null int ptr
-        /// </summary>
-        [Fact]
-        public void TtfLinkedVersion_Integration_ReturnsNonNullIntPtr()
-        {
-            int sdlInit = Sdl.Init(Sdl.InitEverything);
-            Assert.Equal(0, sdlInit);
-            
-            int sdlTtf = SdlTtf.Init();
-            Assert.Equal(0, sdlTtf);
-            
-            try
-            {
-                IntPtr version = SdlTtf.LinkedVersion();
-                Assert.NotEqual(IntPtr.Zero, version);
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail($"No expected exception, but was thrown: {ex}");
-            }finally
-            {
-                SdlTtf.Quit();
-                Sdl.Quit();
-            }
-        }
-
-
         /// <summary>
         /// Tests that byte swapped unicode test
         /// </summary>

@@ -100,20 +100,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         ///     The ttf hinting light subpixel
         /// </summary>
         public const int TtfHintingLightSubpixel = 4;
-
-        /// <summary>
-        ///     Internals the ttf linked version
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr LinkedVersion()
-        {
-            IntPtr result = NativeSdlTtf.InternalLinkedVersion();
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
+        
         /// <summary>
         ///     Ttf the byte swapped unicode using the specified swapped
         /// </summary>
