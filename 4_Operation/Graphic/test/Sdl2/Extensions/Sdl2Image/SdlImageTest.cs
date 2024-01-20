@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image;
@@ -67,6 +68,32 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
                 Assert.Equal(2, version.major);
                 Assert.Equal(0, version.minor);
                 Assert.Equal(6, version.patch);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail($"No expected exception, but was thrown: {ex}");
+            }finally
+            {
+                SdlImage.Quit();
+                Sdl.Quit();
+            }
+        }
+        
+        [Fact]
+        public void Test_Load()
+        {
+            int sdlInit = Sdl.Init(Sdl.InitEverything);
+            Assert.Equal(0, sdlInit);
+            
+            const ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
+            int sdlTtf = SdlImage.Init(flagImage);
+            Assert.Equal(15, sdlTtf);
+            
+            try
+            {
+                string file = AssetManager.Find("tile000.png");
+                IntPtr surface = SdlImage.Load(file);
+                Assert.NotEqual(IntPtr.Zero, surface);
             }
             catch (Exception ex)
             {
