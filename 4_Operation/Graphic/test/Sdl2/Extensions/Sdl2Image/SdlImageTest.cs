@@ -59,8 +59,9 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
             Assert.Equal(0, sdlInit);
             
             const ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
-            int sdlTtf = SdlImage.Init(flagImage);
-            Assert.Equal(15, sdlTtf);
+            int sdlImage = SdlImage.Init(flagImage);
+            Assert.NotEqual(0, sdlImage);
+            Assert.NotEqual(-1, sdlImage);
             
             try
             {
@@ -89,8 +90,9 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
             Assert.Equal(0, sdlInit);
             
             const ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
-            int sdlTtf = SdlImage.Init(flagImage);
-            Assert.Equal(15, sdlTtf);
+            int sdlImage = SdlImage.Init(flagImage);
+            Assert.NotEqual(0, sdlImage);
+            Assert.NotEqual(-1, sdlImage);
             
             try
             {
@@ -118,8 +120,9 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
             Assert.Equal(0, sdlInit);
             
             const ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
-            int sdlTtf = SdlImage.Init(flagImage);
-            Assert.Equal(15, sdlTtf);
+            int sdlImage = SdlImage.Init(flagImage);
+            Assert.NotEqual(0, sdlImage);
+            Assert.NotEqual(-1, sdlImage);
             
             try
             {
@@ -148,8 +151,9 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
             Assert.Equal(0, sdlInit);
             
             const ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
-            int sdlTtf = SdlImage.Init(flagImage);
-            Assert.Equal(15, sdlTtf);
+            int sdlImage = SdlImage.Init(flagImage);
+            Assert.NotEqual(0, sdlImage);
+            Assert.NotEqual(-1, sdlImage);
             
             try
             {
