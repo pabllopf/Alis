@@ -187,12 +187,9 @@ namespace Alis.Core.Graphic.Sample
             {
                 Logger.Info("Renderer created");
             }
-
-            // INIT SDL_IMAGE FLAGS
-            const ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
-
+            
             // INIT SDL_IMAGE
-            Console.WriteLine(SdlImage.Init(flagImage) < 0 ? $"There was an issue initializing SDL_Image. {Sdl.GetError()}" : "SDL_Image Initialized");
+            Console.WriteLine(SdlImage.Init() < 0 ? $"There was an issue initializing SDL_Image. {Sdl.GetError()}" : "SDL_Image Initialized");
 
             // GET VERSION SDL_IMAGE
             Console.WriteLine($"SDL_Image Version: {SdlImage.GetVersion().major}.{SdlImage.GetVersion().minor}.{SdlImage.GetVersion().patch}");

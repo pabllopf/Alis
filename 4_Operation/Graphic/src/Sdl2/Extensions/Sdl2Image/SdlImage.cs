@@ -57,14 +57,12 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
         /// <summary>
         ///     Img the init using the specified flags
         /// </summary>
-        /// <param name="flags">The flags</param>
         /// <returns>The result</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Init(ImgInitFlags flags)
+        public static int Init()
         {
-            Validator.ValidateInput(flags);
-            int result = NativeSdlImage.InternalImgInit(flags);
+            int result = NativeSdlImage.InternalImgInit(ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg);
             Validator.ValidateOutput(result);
             return result;
         }

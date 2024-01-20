@@ -447,12 +447,9 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
                 IntPtr icon = SdlImage.Load(VideoGame.Instance.Settings.General.Icon);
                 Sdl.SetWindowIcon(_window, icon);
             }
-
-            // INIT SDL_IMAGE FLAGS
-            ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitTif | ImgInitFlags.ImgInitWebp;
-
+            
             // INIT SDL_IMAGE
-            Console.WriteLine(SdlImage.Init(flagImage) < 0 ? $"There was an issue initializing SDL_Image. {Sdl.GetError()}" : "SDL_Image Initialized");
+            Console.WriteLine(SdlImage.Init() < 0 ? $"There was an issue initializing SDL_Image. {Sdl.GetError()}" : "SDL_Image Initialized");
 
             // GET VERSION SDL_IMAGE
             Console.WriteLine($"SDL_Image Version: {SdlImage.GetVersion().major}.{SdlImage.GetVersion().minor}.{SdlImage.GetVersion().patch}");

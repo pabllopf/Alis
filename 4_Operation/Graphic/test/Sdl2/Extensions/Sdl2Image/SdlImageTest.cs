@@ -28,11 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Data.Resource;
 using Alis.Core.Graphic.Sdl2;
-using Alis.Core.Graphic.Sdl2.Enums;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image;
-using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
 
@@ -59,8 +56,7 @@ namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Image
             int sdlInit = Sdl.Init(Sdl.InitEverything);
             Assert.Equal(0, sdlInit);
             
-            const ImgInitFlags flagImage = ImgInitFlags.ImgInitPng | ImgInitFlags.ImgInitJpg;
-            int sdlImage = SdlImage.Init(flagImage);
+            int sdlImage = SdlImage.Init();
             Assert.NotEqual(0, sdlImage);
             
             try

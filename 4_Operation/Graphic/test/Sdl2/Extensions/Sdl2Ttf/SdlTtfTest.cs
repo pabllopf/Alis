@@ -33,7 +33,6 @@ using Alis.Core.Graphic.Sdl2;
 using Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf;
 using Alis.Core.Graphic.Sdl2.Structs;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Alis.Core.Graphic.Test.Sdl2.Extensions.Sdl2Ttf
 {
