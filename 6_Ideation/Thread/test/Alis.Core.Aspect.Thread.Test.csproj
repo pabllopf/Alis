@@ -8,5 +8,10 @@
 
     <PropertyGroup>
         <OutDir>bin/$(Configuration)/$(RuntimeIdentifier)/lib/$(TargetFramework)/</OutDir>
+        <PublishTrimmed>false</PublishTrimmed>
+        <PublishReadyToRun>false</PublishReadyToRun>
+        <PublishSingleFile>false</PublishSingleFile>
+        <PublishReadyToRunShowWarnings>false</PublishReadyToRunShowWarnings>
+        <IsTrimmable>false</IsTrimmable>
     </PropertyGroup>
 </Project>
