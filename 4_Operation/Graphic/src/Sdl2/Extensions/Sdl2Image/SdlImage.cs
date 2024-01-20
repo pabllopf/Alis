@@ -116,7 +116,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
         /// <returns>The result</returns>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IntPtr LoadTypedRw([NotNull] IntPtr src, [NotNull] int free, [NotNull] byte[] type)
+        public static IntPtr LoadTypedRw([NotNull] IntPtr src, [NotNull] int free, [NotNull] string type)
         {
             Validator.ValidateInput(src);
             Validator.ValidateInput(free);

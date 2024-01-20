@@ -105,7 +105,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Image
         [DllImport(NativeLibName, EntryPoint = "IMG_LoadTyped_RW", CallingConvention = CallingConvention.Cdecl)]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [return: NotNull]
-        internal static extern IntPtr InternalImgLoadTypedRw([NotNull] IntPtr src, [NotNull] int free, [NotNull] byte[] type);
+        internal static extern IntPtr InternalImgLoadTypedRw([NotNull] IntPtr src, [NotNull] int free, [NotNull] string type);
 
         /// <summary>
         ///     Internals the img load texture using the specified renderer
