@@ -29,7 +29,6 @@
 
 using System.Collections.Generic;
 using System.Reflection;
-using System.Runtime.InteropServices;
 
 namespace Alis.Core.Aspect.Base.Dll
 {
@@ -44,6 +43,6 @@ namespace Alis.Core.Aspect.Base.Dll
         /// <param name="dllName">The dll name</param>
         /// <param name="dllBytes">The dll bytes</param>
         /// <param name="assembly">The assembly</param>
-        public void ExtractEmbeddedDlls(string dllName, Dictionary<(OSPlatform Platform, Architecture Arch), string> dllBytes, Assembly assembly);
+        public void ExtractEmbeddedDlls(string dllName, Dictionary<PlatformInfo, string> dllBytes, Assembly assembly);
     }
 }

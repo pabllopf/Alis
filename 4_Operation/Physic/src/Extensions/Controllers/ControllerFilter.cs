@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: PhysicsLogic.cs
+//  File: ControllerFilter.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,50 +27,35 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Dynamics;
-
-namespace Alis.Core.Physic.Extensions.PhysicsLogics.PhysicsLogicBase
+namespace Alis.Core.Physic.Extensions.Controllers
 {
     /// <summary>
-    ///     The physics logic class
+    ///     The controller filter
     /// </summary>
-    /// <seealso cref="FilterData" />
-    public abstract class PhysicsLogic : FilterData
+    public struct ControllerFilter
     {
         /// <summary>
-        ///     The type
+        ///     The controller flags
         /// </summary>
-        private readonly PhysicsLogicType type;
+        public ControllerType ControllerFlags;
 
-        /// <summary>
-        ///     The world
-        /// </summary>
-        public World World;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="PhysicsLogic" /> class
-        /// </summary>
-        /// <param name="world">The world</param>
-        /// <param name="type">The type</param>
-        protected PhysicsLogic(World world, PhysicsLogicType type)
+        /// <summary>Ignores the controller. The controller has no effect on this body.</summary>
+        /// <param name="controller">The controller type.</param>
+        public void IgnoreController(ControllerType controller)
         {
-            this.type = type;
-            World = world;
+            ControllerFlags |= controller;
         }
 
-        /// <summary>
-        ///     Describes whether this instance is active on
-        /// </summary>
-        /// <param name="body">The body</param>
-        /// <returns>The bool</returns>
-        public override bool IsActiveOn(Body body)
+        /// <summary>Restore the controller. The controller affects this body.</summary>
+        /// <param name="controller">The controller type.</param>
+        public void RestoreController(ControllerType controller)
         {
-            if (body.PhysicsLogicFilter.IsPhysicsLogicIgnored(type))
-            {
-                return false;
-            }
-
-            return base.IsActiveOn(body);
+            ControllerFlags &= ~controller;
         }
+
+        /// <summary>Determines whether this body ignores the specified controller.</summary>
+        /// <param name="controller">The controller type.</param>
+        /// <returns><c>true</c> if the body has the specified flag; otherwise, <c>false</c>.</returns>
+        public bool IsControllerIgnored(ControllerType controller) => (ControllerFlags & controller) == controller;
     }
 }

@@ -30,7 +30,7 @@
 using Alis.Core.Physic.Collision.Filtering;
 using Alis.Core.Physic.Dynamics;
 
-namespace Alis.Core.Physic.Extensions.PhysicsLogics.PhysicsLogicBase
+namespace Alis.Core.Physic.Extensions.PhysicsLogics
 {
     /// <summary>Contains filter data that can determine whether an object should be processed or not.</summary>
     public abstract class FilterData

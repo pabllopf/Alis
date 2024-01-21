@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ShapeData.cs
+//  File: ControllerType.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,28 +27,34 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Dynamics;
+using System;
 
-namespace Alis.Core.Physic.Extensions.PhysicsLogics.PhysicsLogicBase
+namespace Alis.Core.Physic.Extensions.Controllers
 {
     /// <summary>
-    ///     The shape data
+    ///     The controller type enum
     /// </summary>
-    public struct ShapeData
+    [Flags]
+    public enum ControllerType
     {
         /// <summary>
-        ///     The body
+        ///     The gravity controller controller type
         /// </summary>
-        public Body Body;
+        GravityController = 1 << 0,
 
         /// <summary>
-        ///     The max
+        ///     The velocity limit controller controller type
         /// </summary>
-        public float Max;
+        VelocityLimitController = 1 << 1,
 
         /// <summary>
-        ///     The min
+        ///     The abstract force controller controller type
         /// </summary>
-        public float Min; // absolute angles
+        AbstractForceController = 1 << 2,
+
+        /// <summary>
+        ///     The buoyancy controller controller type
+        /// </summary>
+        BuoyancyController = 1 << 3
     }
 }

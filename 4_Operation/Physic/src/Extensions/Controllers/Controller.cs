@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: ControllerFilter.cs
+//  File: Controller.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,35 +27,57 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physic.Extensions.Controllers.ControllerBase
+using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Extensions.PhysicsLogics;
+
+namespace Alis.Core.Physic.Extensions.Controllers
 {
     /// <summary>
-    ///     The controller filter
+    ///     The controller class
     /// </summary>
-    public struct ControllerFilter
+    /// <seealso cref="FilterData" />
+    public abstract class Controller : FilterData
     {
         /// <summary>
-        ///     The controller flags
+        ///     The type
         /// </summary>
-        public ControllerType ControllerFlags;
+        private readonly ControllerType type;
 
-        /// <summary>Ignores the controller. The controller has no effect on this body.</summary>
-        /// <param name="controller">The controller type.</param>
-        public void IgnoreController(ControllerType controller)
+        /// <summary>
+        ///     The enabled
+        /// </summary>
+        public bool Enabled;
+
+        /// <summary>
+        ///     The world
+        /// </summary>
+        public World World;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Controller" /> class
+        /// </summary>
+        /// <param name="controllerType">The controller type</param>
+        protected Controller(ControllerType controllerType) => type = controllerType;
+
+        /// <summary>
+        ///     Describes whether this instance is active on
+        /// </summary>
+        /// <param name="body">The body</param>
+        /// <returns>The bool</returns>
+        public override bool IsActiveOn(Body body)
         {
-            ControllerFlags |= controller;
+            if (body.ControllerFilter.IsControllerIgnored(type))
+            {
+                return false;
+            }
+
+            return base.IsActiveOn(body);
         }
 
-        /// <summary>Restore the controller. The controller affects this body.</summary>
-        /// <param name="controller">The controller type.</param>
-        public void RestoreController(ControllerType controller)
-        {
-            ControllerFlags &= ~controller;
-        }
-
-        /// <summary>Determines whether this body ignores the specified controller.</summary>
-        /// <param name="controller">The controller type.</param>
-        /// <returns><c>true</c> if the body has the specified flag; otherwise, <c>false</c>.</returns>
-        public bool IsControllerIgnored(ControllerType controller) => (ControllerFlags & controller) == controller;
+        /// <summary>
+        ///     Updates the dt
+        /// </summary>
+        /// <param name="dt">The dt</param>
+        public abstract void Update(float dt);
     }
 }

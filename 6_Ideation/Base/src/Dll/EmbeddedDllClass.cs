@@ -47,20 +47,22 @@ namespace Alis.Core.Aspect.Base.Dll
         /// <param name="dllName">The dll name</param>
         /// <param name="dllBytes">The dll bytes</param>
         /// <param name="assembly">The assembly</param>
-        public void ExtractEmbeddedDlls(string dllName, Dictionary<(OSPlatform Platform, Architecture Arch), string> dllBytes, Assembly assembly)
+        public void ExtractEmbeddedDlls(string dllName, Dictionary<PlatformInfo, string> dllBytes, Assembly assembly)
         {
             string extension = GetDllExtension();
-            
-            string dllPath = Path.Combine(Environment.CurrentDirectory, $"{dllName}.{extension}");
+            string currentDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? string.Empty;
+            string dllPath = Path.Combine(currentDirectory, $"{dllName}.{extension}");
             
             if (!File.Exists(dllPath))
             {
                 OSPlatform currentPlatform = GetCurrentPlatform();
                 Architecture currentArchitecture = RuntimeInformation.ProcessArchitecture;
-
-                if (dllBytes.TryGetValue((currentPlatform, currentArchitecture), out string resourceName))
+                
+                PlatformInfo platformInfo = new PlatformInfo(currentPlatform, currentArchitecture);
+                
+                if (dllBytes.TryGetValue(platformInfo, out string resourceName))
                 {
-                    ExtractZipFile(dllPath, $"{dllName}.{extension}", LoadResource(resourceName, assembly));
+                    ExtractZipFile(dllPath, LoadResource(resourceName, assembly));
                     Console.WriteLine($"OSPlatform={currentPlatform} | Architecture={currentArchitecture} -> lib: {dllName} dir={dllPath}");
                 }
             }
@@ -134,9 +136,8 @@ namespace Alis.Core.Aspect.Base.Dll
         ///     Extracts the zip file using the specified file path
         /// </summary>
         /// <param name="filePath">The file path</param>
-        /// <param name="fileName">The file name</param>
         /// <param name="zipData">The zip data</param>
-        private static void ExtractZipFile(string filePath, string fileName, MemoryStream zipData)
+        private static void ExtractZipFile(string filePath, MemoryStream zipData)
         {
             using MemoryStream ms = zipData;
             using ZipArchive archive = new ZipArchive(ms);
@@ -196,12 +197,12 @@ namespace Alis.Core.Aspect.Base.Dll
         ///     Describes whether isi os specific condition met
         /// </summary>
         /// <returns>The bool</returns>
-        private static bool IsiOsSpecificConditionMet() => Assembly.Load("Xamarin.iOS") != null;
+        private static bool IsiOsSpecificConditionMet() => Assembly.Load(new AssemblyName("Xamarin.iOS")) != null;
 
         /// <summary>
         ///     Describes whether is android specific condition met
         /// </summary>
         /// <returns>The bool</returns>
-        private static bool IsAndroidSpecificConditionMet() => Assembly.Load("Xamarin.Android") != null;
+        private static bool IsAndroidSpecificConditionMet() => Assembly.Load(new AssemblyName("Xamarin.Android")) != null;
     }
 }

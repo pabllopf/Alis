@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: GravityType.cs
+//  File: ShapeData.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,21 +27,28 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physic.Extensions.Controllers.Gravity
+using Alis.Core.Physic.Dynamics;
+
+namespace Alis.Core.Physic.Extensions.PhysicsLogics
 {
     /// <summary>
-    ///     The gravity type enum
+    ///     The shape data
     /// </summary>
-    public enum GravityType
+    public struct ShapeData
     {
         /// <summary>
-        ///     The linear gravity type
+        ///     The body
         /// </summary>
-        Linear,
+        public Body Body;
 
         /// <summary>
-        ///     The distance squared gravity type
+        ///     The max
         /// </summary>
-        DistanceSquared
+        public float Max;
+
+        /// <summary>
+        ///     The min
+        /// </summary>
+        public float Min; // absolute angles
     }
 }

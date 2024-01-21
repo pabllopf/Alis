@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: CurveContinuity.cs
+//  File: PhysicsLogic.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,17 +27,50 @@
 // 
 //  --------------------------------------------------------------------------
 
-// ReSharper disable once CheckNamespace
+using Alis.Core.Physic.Dynamics;
 
-namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
+namespace Alis.Core.Physic.Extensions.PhysicsLogics
 {
-    /// <summary>Defines the continuity of keys on a <see cref="Curve" />.</summary>
-    public enum CurveContinuity
+    /// <summary>
+    ///     The physics logic class
+    /// </summary>
+    /// <seealso cref="FilterData" />
+    public abstract class PhysicsLogic : FilterData
     {
-        /// <summary>Interpolation can be used between this key and the next.</summary>
-        Smooth,
+        /// <summary>
+        ///     The type
+        /// </summary>
+        private readonly PhysicsLogicType type;
 
-        /// <summary>Interpolation cannot be used. A position between the two points returns this point.</summary>
-        Step
+        /// <summary>
+        ///     The world
+        /// </summary>
+        public World World;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="PhysicsLogic" /> class
+        /// </summary>
+        /// <param name="world">The world</param>
+        /// <param name="type">The type</param>
+        protected PhysicsLogic(World world, PhysicsLogicType type)
+        {
+            this.type = type;
+            World = world;
+        }
+
+        /// <summary>
+        ///     Describes whether this instance is active on
+        /// </summary>
+        /// <param name="body">The body</param>
+        /// <returns>The bool</returns>
+        public override bool IsActiveOn(Body body)
+        {
+            if (body.PhysicsLogicFilter.IsPhysicsLogicIgnored(type))
+            {
+                return false;
+            }
+
+            return base.IsActiveOn(body);
+        }
     }
 }

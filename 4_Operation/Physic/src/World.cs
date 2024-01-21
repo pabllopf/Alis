@@ -36,7 +36,7 @@ using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 using Alis.Core.Physic.Dynamics.Solver;
-using Alis.Core.Physic.Extensions.Controllers.ControllerBase;
+using Alis.Core.Physic.Extensions.Controllers;
 
 namespace Alis.Core.Physic
 {

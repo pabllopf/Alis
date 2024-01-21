@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Base.Dll;
 
 namespace Alis.App.Engine.UI
 {
@@ -40,22 +41,22 @@ namespace Alis.App.Engine.UI
         /// <summary>
         ///     The arm
         /// </summary>
-        internal static readonly Dictionary<(OSPlatform Platform, Architecture Arch), string> PixelCImGuiDllBytes = new Dictionary<(OSPlatform Platform, Architecture Arch), string>
+        internal static readonly Dictionary<PlatformInfo, string> PixelCImGuiDllBytes = new Dictionary<PlatformInfo, string>
         {
-            {(OSPlatform.Windows, Architecture.X86), "Alis.App.Engine.resources.win_x86.win-x86_cimgui.zip"},
-            {(OSPlatform.Windows, Architecture.X64), "Alis.App.Engine.resources.win_x64.win-x64_cimgui.zip"},
-            {(OSPlatform.Windows, Architecture.Arm), "Alis.App.Engine.resources.win_arm.win-arm_cimgui.zip"},
-            {(OSPlatform.Windows, Architecture.Arm64), "Alis.App.Engine.resources.win_arm64.win-arm64_cimgui.zip"},
+            {new PlatformInfo(OSPlatform.Windows, Architecture.X86), "Alis.App.Engine.resources.win_x86.win-x86_cimgui.zip"},
+            {new PlatformInfo(OSPlatform.Windows, Architecture.X64), "Alis.App.Engine.resources.win_x64.win-x64_cimgui.zip"},
+            {new PlatformInfo(OSPlatform.Windows, Architecture.Arm), "Alis.App.Engine.resources.win_arm.win-arm_cimgui.zip"},
+            {new PlatformInfo(OSPlatform.Windows, Architecture.Arm64), "Alis.App.Engine.resources.win_arm64.win-arm64_cimgui.zip"},
 
-            {(OSPlatform.Linux, Architecture.X86), "Alis.App.Engine.resources.linux_x86.linux-x86_cimgui.zip"},
-            {(OSPlatform.Linux, Architecture.X64), "Alis.App.Engine.resources.linux_x64.linux-x64_cimgui.zip"},
-            {(OSPlatform.Linux, Architecture.Arm), "Alis.App.Engine.resources.linux_arm.linux-arm_cimgui.zip"},
-            {(OSPlatform.Linux, Architecture.Arm64), "Alis.App.Engine.resources.linux_arm64.linux-arm64_cimgui.zip"},
+            {new PlatformInfo(OSPlatform.Linux, Architecture.X86), "Alis.App.Engine.resources.linux_x86.linux-x86_cimgui.zip"},
+            {new PlatformInfo(OSPlatform.Linux, Architecture.X64), "Alis.App.Engine.resources.linux_x64.linux-x64_cimgui.zip"},
+            {new PlatformInfo(OSPlatform.Linux, Architecture.Arm), "Alis.App.Engine.resources.linux_arm.linux-arm_cimgui.zip"},
+            {new PlatformInfo(OSPlatform.Linux, Architecture.Arm64), "Alis.App.Engine.resources.linux_arm64.linux-arm64_cimgui.zip"},
 
-            {(OSPlatform.OSX, Architecture.X86), "Alis.App.Engine.resources.osx_arm64.osx-arm64_cimgui.zip"},
-            {(OSPlatform.OSX, Architecture.X64), "Alis.App.Engine.resources.osx_arm64.osx-arm64_cimgui.zip"},
-            {(OSPlatform.OSX, Architecture.Arm64), "Alis.App.Engine.resources.osx_arm64.osx-arm64_cimgui.zip"},
-            {(OSPlatform.OSX, Architecture.Arm), "Alis.App.Engine.resources.osx_arm64.osx-arm64_cimgui.zip"}
+            {new PlatformInfo(OSPlatform.OSX, Architecture.X86), "Alis.App.Engine.resources.osx_arm64.osx-arm64_cimgui.zip"},
+            {new PlatformInfo(OSPlatform.OSX, Architecture.X64), "Alis.App.Engine.resources.osx_arm64.osx-arm64_cimgui.zip"},
+            {new PlatformInfo(OSPlatform.OSX, Architecture.Arm64), "Alis.App.Engine.resources.osx_arm64.osx-arm64_cimgui.zip"},
+            {new PlatformInfo(OSPlatform.OSX, Architecture.Arm), "Alis.App.Engine.resources.osx_arm64.osx-arm64_cimgui.zip"}
         };
     }
 }
