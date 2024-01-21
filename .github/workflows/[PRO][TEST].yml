@@ -38,7 +38,7 @@ jobs:
       - uses: dorny/test-reporter@v1
         with:
           name: MacOs Test Report                  # Name of the check run which will be created
-          path: './.test/*.trx'                     # Path to test results (inside artifact .zip)
+          path: '.test/**/**/*.trx'                     # Path to test results (inside artifact .zip)
           reporter: dotnet-trx              # Format of test results
   
   Run_Test_On_Windows_Latest:
@@ -67,7 +67,7 @@ jobs:
       - uses: dorny/test-reporter@v1
         with:
           name: Windows Test Report                  # Name of the check run which will be created
-          path: './.test/*.trx'                     # Path to test results (inside artifact .zip)
+          path: '.test/**/**/*.trx'                     # Path to test results (inside artifact .zip)
           reporter: dotnet-trx              # Format of test results
   
   Run_Test_On_Ubuntu_Latest:
@@ -96,7 +96,7 @@ jobs:
       - uses: dorny/test-reporter@v1
         with:
           name: Ubuntu Test Report                  # Name of the check run which will be created
-          path: './.test/*.trx'                      # Path to test results (inside artifact .zip)
+          path: '.test/**/**/*.trx'                      # Path to test results (inside artifact .zip)
           reporter: dotnet-trx              # Format of test results
 
       - name: Publish Test Results
@@ -105,7 +105,7 @@ jobs:
         if: always()
         with:
           files: |
-            .test/**/*.trx
+            .test/**/**/*.trx
 
       - name: Set badge color
         shell: bash
