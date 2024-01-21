@@ -5,7 +5,7 @@
 
     <PropertyGroup>
         <VSTestLogger>trx%3bLogFileName=$(MSBuildProjectName).trx</VSTestLogger>
-        <VSTestResultsDirectory>$(SolutionDir).test/$(TargetFramework)</VSTestResultsDirectory>
+        <VSTestResultsDirectory>$(SolutionDir).test</VSTestResultsDirectory>
     </PropertyGroup>
 
     <PropertyGroup>
