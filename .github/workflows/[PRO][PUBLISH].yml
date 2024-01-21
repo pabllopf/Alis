@@ -21,10 +21,12 @@ jobs:
           ref: master
 
       - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: |
+          dotnet-version: | 
             6.0.x
+            7.0.x
+            8.0.x
 
       - name: Dotnet test debug
         run: dotnet test alis.sln --configuration Debug
