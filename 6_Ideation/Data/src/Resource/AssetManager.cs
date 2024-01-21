@@ -51,7 +51,7 @@ namespace Alis.Core.Aspect.Data.Resource
         public static string Find(string assetName)
         {
             // Get the base directory of the project (where the executable is located)
-            string baseDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? string.Empty;
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
             // Construct the full path of the "assets" folder
             string assetsDirectory = Path.Combine(baseDirectory, "Assets");
