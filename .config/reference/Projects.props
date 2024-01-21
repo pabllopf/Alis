@@ -62,23 +62,7 @@
         <EmbeddedResource Condition="$(IsX64) == true AND $(IsLinux) == true" Include="$(ProjectDir)/resources/**/linux-x64/*linux-x64*.zip"/>
         <EmbeddedResource Condition="$(IsX86) == true AND $(IsLinux) == true" Include="$(ProjectDir)/resources/**/linux-x86/*linux-x86*.zip"/>
     </ItemGroup>
-
-
-    <PropertyGroup Condition="
-        $(AssemblyName.Contains('Test')) == False AND
-        $(AssemblyName.Contains('App.Installer')) == False AND 
-        $(AssemblyName.Contains('Sample')) == False AND
-        $(AssemblyName.Contains('Template')) == False AND 
-        $(AssemblyName.Contains('Benchmark')) == False AND 
-        $(Configuration) == 'Release'">
-
-        <Deterministic>true</Deterministic>
-        <ProduceOnlyReferenceAssembly>false</ProduceOnlyReferenceAssembly>
-        <Optimize>true</Optimize>
-        <PublishTrimmed>true</PublishTrimmed>
-        <TrimMode>Link</TrimMode>
-    </PropertyGroup>
-
+    
     <ItemGroup Condition="
         $(AssemblyName.Contains('Test')) == False AND
         $(AssemblyName.Contains('App.Installer')) == False AND 
