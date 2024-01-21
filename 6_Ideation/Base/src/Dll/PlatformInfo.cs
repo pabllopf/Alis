@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: Controller.cs
+//  File: PlatformInfo.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,57 +27,50 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Dynamics;
-using Alis.Core.Physic.Extensions.PhysicsLogics.PhysicsLogicBase;
+using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Util;
 
-namespace Alis.Core.Physic.Extensions.Controllers.ControllerBase
+namespace Alis.Core.Aspect.Base.Dll
 {
     /// <summary>
-    ///     The controller class
+    /// The platform info class
     /// </summary>
-    /// <seealso cref="FilterData" />
-    public abstract class Controller : FilterData
+    public class PlatformInfo
     {
         /// <summary>
-        ///     The type
+        /// Gets the value of the platform
         /// </summary>
-        private readonly ControllerType type;
+        public OSPlatform Platform { get; }
+        
+        /// <summary>
+        /// Gets the value of the arch
+        /// </summary>
+        public Architecture Arch { get; }
 
         /// <summary>
-        ///     The enabled
+        /// Initializes a new instance of the <see cref="PlatformInfo"/> class
         /// </summary>
-        public bool Enabled;
-
-        /// <summary>
-        ///     The world
-        /// </summary>
-        public World World;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Controller" /> class
-        /// </summary>
-        /// <param name="controllerType">The controller type</param>
-        protected Controller(ControllerType controllerType) => type = controllerType;
-
-        /// <summary>
-        ///     Describes whether this instance is active on
-        /// </summary>
-        /// <param name="body">The body</param>
-        /// <returns>The bool</returns>
-        public override bool IsActiveOn(Body body)
+        /// <param name="platform">The platform</param>
+        /// <param name="arch">The arch</param>
+        public PlatformInfo(OSPlatform platform, Architecture arch)
         {
-            if (body.ControllerFilter.IsControllerIgnored(type))
+            Platform = platform;
+            Arch = arch;
+        }
+        
+        public override bool Equals(object obj)
+        {
+            if (obj is PlatformInfo other)
             {
-                return false;
+                return Platform == other.Platform && Arch == other.Arch;
             }
 
-            return base.IsActiveOn(body);
+            return false;
         }
 
-        /// <summary>
-        ///     Updates the dt
-        /// </summary>
-        /// <param name="dt">The dt</param>
-        public abstract void Update(float dt);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Platform, Arch);
+        }
     }
 }

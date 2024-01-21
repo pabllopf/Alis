@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File: CurveTangent.cs
+//  File: PhysicsLogicType.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,30 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve;
+using System;
 
-namespace Alis.Core.Physic.Extensions.Controllers.Wind.Curve
+namespace Alis.Core.Physic.Extensions.PhysicsLogics
 {
     /// <summary>
-    ///     Defines the different tangent types to be calculated for <see cref="CurveKey" /> points in a
-    ///     <see cref="Curve" />.
+    ///     The physics logic type enum
     /// </summary>
-    public enum CurveTangent
+    [Flags]
+    public enum PhysicsLogicType
     {
-        /// <summary>The tangent which always has a value equal to zero.</summary>
-        Flat,
-
         /// <summary>
-        ///     The tangent which contains a difference between current tangent value and the tangent value from the previous
-        ///     <see cref="CurveKey" />.
+        ///     The explosion physics logic type
         /// </summary>
-        Linear,
-
-        /// <summary>
-        ///     The smoouth tangent which contains the inflection between <see cref="CurveKey.TangentIn" /> and
-        ///     <see cref="CurveKey.TangentOut" /> by taking into account the values of both neighbors of the
-        ///     <see cref="CurveKey" />.
-        /// </summary>
-        Smooth
+        Explosion = 1 << 0
     }
 }

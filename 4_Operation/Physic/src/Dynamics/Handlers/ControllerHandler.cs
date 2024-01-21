@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Extensions.Controllers.ControllerBase;
+using Alis.Core.Physic.Extensions.Controllers;
 
 namespace Alis.Core.Physic.Dynamics.Handlers
 {
