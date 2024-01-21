@@ -50,7 +50,7 @@ namespace Alis.Core.Aspect.Base.Dll
         public void ExtractEmbeddedDlls(string dllName, Dictionary<PlatformInfo, string> dllBytes, Assembly assembly)
         {
             string extension = GetDllExtension();
-            string currentDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? string.Empty;
+            string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string dllPath = Path.Combine(currentDirectory, $"{dllName}.{extension}");
             
             if (!File.Exists(dllPath))
