@@ -94,6 +94,7 @@ namespace Alis.Core.Aspect.Data.Json
         ///     The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual
         ///     information about the source or destination.
         /// </param>
+        [Obsolete("Obsolete")]
         protected JsonException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {

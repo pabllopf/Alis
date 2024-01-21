@@ -68,6 +68,7 @@ namespace Alis.Core.Network
         /// </summary>
         /// <param name="secWebSocketKey">The web socket key to base the accept string on</param>
         /// <returns>A web socket accept string</returns>
+        [Obsolete("Obsolete")]
         public static string ComputeSocketAcceptString(string secWebSocketKey)
         {
             // this is a guid as per the web socket spec
