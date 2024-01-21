@@ -41,7 +41,6 @@
 
 *.log
 *.exe
-*.dll
 *.txt
 *.nupkg
 *.suo
