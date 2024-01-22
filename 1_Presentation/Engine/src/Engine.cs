@@ -227,8 +227,7 @@ namespace Alis.App.Engine
             }
 
             // GET VERSION SDL2
-            SdlVersion version;
-            Sdl.GetVersion(out version);
+            SdlVersion version = Sdl.GetVersion();
             Console.WriteLine(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
 
 

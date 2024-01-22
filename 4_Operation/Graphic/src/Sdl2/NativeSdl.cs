@@ -2501,16 +2501,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalGetVersion(out SdlVersion ver);
-
-        /// <summary>
-        ///     Internals the sdl get revision
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetRevision", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGetRevision();
-
+        
         /// <summary>
         ///     Sdl the get revision number
         /// </summary>
@@ -4594,34 +4585,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern int InternalHapticRumbleInit([NotNull] IntPtr haptic);
-
-        /// <summary>
-        ///     Sdl the has 3 d now
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_Has3DNow", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalHas3DNow();
-
-        /// <summary>
-        ///     Sdl the has avx 512 f
-        /// </summary>
-        /// <returns>The sdl bool</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_HasAVX512F", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern SdlBool InternalHasAvx512F();
-
-        /// <summary>
-        ///     Sdl the get system ram
-        /// </summary>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetSystemRAM", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalGetSystemRam();
-
+        
         /// <summary>
         ///     Sdl the simd get alignment
         /// </summary>
@@ -4668,15 +4632,6 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern void InternalHasArmSimd();
-
-        /// <summary>
-        ///     Sdl the get preferred locales
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetPreferredLocales", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern IntPtr InternalGetPreferredLocales();
         
         /// <summary>
         ///     Sdl the gl get drawable size using the specified window

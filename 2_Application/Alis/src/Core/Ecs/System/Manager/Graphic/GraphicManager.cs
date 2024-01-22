@@ -314,7 +314,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             }
 
             // GET VERSION SDL2
-            Sdl.GetVersion(out SdlVersion version);
+            SdlVersion version = Sdl.GetVersion();
             Console.WriteLine(@$"SDL2 VERSION {version.major}.{version.minor}.{version.patch}");
 
             /*
@@ -450,7 +450,7 @@ namespace Alis.Core.Ecs.System.Manager.Graphic
             Console.WriteLine(SdlTtf.Init() < 0 ? $"There was an issue initializing SDL_TTF. {Sdl.GetError()}" : "SDL_TTF Initialized");
 
             // GET VERSION SDL_TTF
-            Console.WriteLine($"SDL_TTF Version: {SdlTtf.GetTtfVersion().major}.{SdlTtf.GetTtfVersion().minor}.{SdlTtf.GetTtfVersion().patch}");
+            Console.WriteLine($"SDL_TTF Version: {SdlTtf.GetVersion().major}.{SdlTtf.GetVersion().minor}.{SdlTtf.GetVersion().patch}");
 
             /*
 

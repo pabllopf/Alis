@@ -1204,7 +1204,7 @@ namespace Alis.Core.Graphic.Sdl2.Extensions.Sdl2Ttf
         /// </summary>
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SdlVersion GetTtfVersion()
+        public static SdlVersion GetVersion()
         {
             SdlVersion result = NativeSdlTtf.InternalGetTtfVersion();
             Validator.ValidateOutput(result);
