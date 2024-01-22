@@ -1836,20 +1836,6 @@ namespace Alis.Core.Graphic.Sdl2
             Validator.ValidateOutput(result);
             return result;
         }
-
-        /// <summary>
-        ///     Sdl the get platform
-        /// </summary>
-        /// <returns>The string</returns>
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string GetPlatform()
-        {
-            string result = NativeSdl.InternalGetPlatform();
-            Validator.ValidateOutput(result);
-            return result;
-        }
-
         /// <summary>
         ///     Clears the hints
         /// </summary>

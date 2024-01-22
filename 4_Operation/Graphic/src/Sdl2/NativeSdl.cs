@@ -2371,16 +2371,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern uint InternalWasInit([NotNull] uint flags);
-
-        /// <summary>
-        ///     Internals the sdl get platform
-        /// </summary>
-        /// <returns>The int ptr</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_GetPlatform", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern string InternalGetPlatform();
-
+        
         /// <summary>
         ///     Sdl the clear hints
         /// </summary>
@@ -4686,17 +4677,7 @@ namespace Alis.Core.Graphic.Sdl2
         [return: NotNull]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static extern IntPtr InternalGetPreferredLocales();
-
-        /// <summary>
-        ///     Internals the sdl open url using the specified url
-        /// </summary>
-        /// <param name="url">The url</param>
-        /// <returns>The int</returns>
-        [DllImport(NativeLibName, EntryPoint = "SDL_OpenURL", CallingConvention = CallingConvention.Cdecl)]
-        [return: NotNull]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static extern int InternalOpenURL([NotNull, NotEmpty] byte[] url);
-
+        
         /// <summary>
         ///     Sdl the gl get drawable size using the specified window
         /// </summary>

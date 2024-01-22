@@ -190,6 +190,9 @@ namespace Alis.Core.Graphic.Sample
             SdlTtf.Init();
             Console.WriteLine($"SDL_TTF Version: {SdlTtf.GetTtfVersion().major}.{SdlTtf.GetTtfVersion().minor}.{SdlTtf.GetTtfVersion().patch}");
             
+            Console.WriteLine("Platform: " + EmbeddedDllClass.GetCurrentPlatform());
+            Console.WriteLine("Processor: " + RuntimeInformation.ProcessArchitecture);
+            
              int outlineSize = 1;
 
             // Load the font
