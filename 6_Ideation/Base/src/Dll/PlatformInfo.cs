@@ -58,6 +58,11 @@ namespace Alis.Core.Aspect.Base.Dll
             Arch = arch;
         }
         
+        /// <summary>
+        /// Describes whether this instance equals
+        /// </summary>
+        /// <param name="obj">The obj</param>
+        /// <returns>The bool</returns>
         public override bool Equals(object obj)
         {
             if (obj is PlatformInfo other)
@@ -68,6 +73,10 @@ namespace Alis.Core.Aspect.Base.Dll
             return false;
         }
 
+        /// <summary>
+        /// Gets the hash code
+        /// </summary>
+        /// <returns>The int</returns>
         public override int GetHashCode()
         {
             return HashCode.Combine(Platform, Arch);

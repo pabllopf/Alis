@@ -5191,10 +5191,7 @@ namespace Alis.Core.Graphic.Sdl2
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool SdlMustLock([NotNull] IntPtr surface)
         {
-            SdlSurface sur = (SdlSurface) Marshal.PtrToStructure(
-                surface,
-                typeof(SdlSurface)
-            );
+            SdlSurface sur = Marshal.PtrToStructure<SdlSurface>(surface);
             return (sur.flags & RleAccel) != 0;
         }
 
